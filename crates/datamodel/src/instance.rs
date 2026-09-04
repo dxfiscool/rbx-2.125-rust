@@ -992,10 +992,35 @@ pub struct IMetric {
     _opaque: (),
 }
 
-/// Rust model of `RBX::DataModel::GenericJob` (IDA `0x4335e0`): a scheduled
-/// job handle; the scheduler lands with the task subsystem.
+/// Rust model of `RBX::DataModel::GenericJob` (IDA `0x4335e0`, `0x46ff84`):
+/// a scheduled job with its parent link, name, and task type; stepping lands
+/// with the task subsystem.
 #[derive(Default)]
 pub struct GenericJob {
+    pub parent: Option<SharedPtr<GenericJob>>,
+    pub name: String,
+    pub task: u32,
+}
+
+/// Rust model of `boost::thread_specific_ptr<GenericJob>::delete_data` (IDA
+/// `0x46f24c`): the thread-local deleter; deletion lands with the TLS store.
+#[derive(Default)]
+pub struct TlsJobDeleter {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::DataModel::MouseStats` (IDA `0x46fd8c`): the mouse
+/// statistics block; sampling lands with the input subsystem.
+#[derive(Default)]
+pub struct MouseStats {
+    _opaque: (),
+}
+
+/// Rust model of `rbx::timestamped_safe_queue_item<void(DataModel*)>` (IDA
+/// `0x4708e0`): a timestamped queue entry; the callback lands with the task
+/// subsystem.
+#[derive(Default)]
+pub struct TimestampedItem {
     _opaque: (),
 }
 
@@ -25193,103 +25218,158 @@ pub fn stub_0x46f034() -> &'static Mutex<Option<SharedPtr<GenericJob>>> {
 
 // 0x46f148 — __ZN3rbx25thread_specific_referenceIN3RBX9DataModel10GenericJobEED1Ev
 #[doc(alias = "rbx::thread_specific_reference<RBX::DataModel::GenericJob>::~thread_specific_reference()")]
-pub fn stub_0x46f148() -> ! {
-    todo!("0x46f148 rbx::thread_specific_reference<RBX::DataModel::GenericJob>::~thread_specific_reference()")
+pub fn stub_0x46f148(_holder: *mut TlsJobDeleter) {
+    // IDA 0x46f148: `thread_specific_reference<GenericJob>::D1` — releases
+    // the thread-local reference; the TLS store is unmodeled, so the release
+    // collapses.
+    // SAFETY: `_holder` must point to a valid holder.
 }
 
 // 0x46f158 — __ZN5boost19thread_specific_ptrIPN3RBX9DataModel10GenericJobEED2Ev
 #[doc(alias = "boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::~thread_specific_ptr()")]
 // was: boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::~thread_specific_ptr()
-pub fn stub_0x46f158() -> ! {
-    todo!("0x46f158 boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::~thread_specific_ptr()")
+pub fn stub_0x46f158(_tsp: *mut TlsJobDeleter) {
+    // IDA 0x46f158: `thread_specific_ptr<GenericJob>::D2` — destroys the
+    // thread-local pointer and its data in place; the TLS store is unmodeled,
+    // so the teardown collapses.
+    // SAFETY: `_tsp` must point to a valid holder.
 }
 
 // 0x46f24c — __ZN5boost19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataD1Ev
 #[doc(alias = "boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data::~delete_data()")]
 // was: boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data::~delete_data()
-pub fn stub_0x46f24c() -> ! {
-    todo!("0x46f24c boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data::~delete_data()")
+pub fn stub_0x46f24c(_deleter: *mut TlsJobDeleter) {
+    // IDA 0x46f24c: `thread_specific_ptr::delete_data::D1` — memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_deleter` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_deleter));
+    }
 }
 
 // 0x46f250 — __ZN5boost19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataD0Ev
 #[doc(alias = "boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data::~delete_data()")]
 // was: boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data::~delete_data()
-pub fn stub_0x46f250() -> ! {
-    todo!("0x46f250 boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data::~delete_data()")
+pub fn stub_0x46f250(_deleter: *mut TlsJobDeleter) {
+    // IDA 0x46f250: `thread_specific_ptr::delete_data::D0` — vtable install
+    // plus memberwise teardown; dropping the box is the same release. Twin of
+    // 0x46f24c.
+    // SAFETY: `_deleter` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_deleter));
+    }
 }
 
 // 0x46f254 — __ZN5boost19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataclEPv
 #[doc(alias = "boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data::operator()(void *)")]
 // was: boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data::operator()(void *)
-pub fn stub_0x46f254() -> ! {
-    todo!("0x46f254 boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data::operator()(void *)")
+pub fn stub_0x46f254(job: *mut GenericJob) {
+    // IDA 0x46f254: `thread_specific_ptr::delete_data::call(void*)` —
+    // deletes the thread-local job data; dropping the box is the same
+    // release.
+    // SAFETY: `job` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(job));
+    }
 }
 
 // 0x46f260 — __ZN5boost6detail12shared_countC2IPNS_19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataENS0_14do_heap_deleteIS9_EEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>(boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>)")]
 // was: boost::detail::shared_count::shared_count<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>(boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>)
-pub fn stub_0x46f260() -> ! {
-    todo!("0x46f260 boost::detail::shared_count::shared_count<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>(boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>)")
+pub fn stub_0x46f260(ptr: *mut TlsJobDeleter) -> ControlBlockP<TlsJobDeleter> {
+    // IDA 0x46f260: plain `shared_count` ctor over the deleter — `new` block
+    // with both counts at 1. Same shape as 0x4593dc.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockP::new(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x46f358 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataENS0_14do_heap_deleteIS8_EEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::~sp_counted_impl_pd()
-pub fn stub_0x46f358() -> ! {
-    todo!("0x46f358 boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::~sp_counted_impl_pd()")
+pub fn stub_0x46f358(_block: *mut ControlBlockP<TlsJobDeleter>) {
+    // IDA 0x46f358: `BX LR` — empty; same as 0x4594d4.
 }
 
 // 0x46f35c — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataENS0_14do_heap_deleteIS8_EEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::~sp_counted_impl_pd()
-pub fn stub_0x46f35c() -> ! {
-    todo!("0x46f35c boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::~sp_counted_impl_pd()")
+pub fn stub_0x46f35c(block: *mut ControlBlockP<TlsJobDeleter>) {
+    // IDA 0x46f35c: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x4594d8.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x46f360 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataENS0_14do_heap_deleteIS8_EEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::dispose(void)
-pub fn stub_0x46f360() -> ! {
-    todo!("0x46f360 boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::dispose(void)")
+pub fn stub_0x46f360(_block: *mut ControlBlockP<TlsJobDeleter>) {
+    // IDA 0x46f360: `dispose` runs the owned `delete` before the release
+    // path; under `SharedPtr` the `Arc` drop owns disposal, so the body
+    // collapses. Same shape as 0x4594dc.
 }
 
 // 0x46f370 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataENS0_14do_heap_deleteIS8_EEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::get_deleter(std::type_info const&)
-pub fn stub_0x46f370() -> ! {
-    todo!("0x46f370 boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::get_deleter(std::type_info const&)")
+pub fn stub_0x46f370(block: *const ControlBlockP<TlsJobDeleter>) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x46f370: `return 0` — a plain `_p` block never carries a deleter.
+    // Same shape as 0x4594ec.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter() }
 }
 
 // 0x46f388 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataENS0_14do_heap_deleteIS8_EEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::get_untyped_deleter(void)
-pub fn stub_0x46f388() -> ! {
-    todo!("0x46f388 boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::get_untyped_deleter(void)")
+pub fn stub_0x46f388(block: *const ControlBlockP<TlsJobDeleter>) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x46f388: unconditional null deleter on a plain `_p` block. Same
+    // shape as 0x4594f0.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x46fd8c — __ZN3RBX9DataModel10MouseStatsC2Ev
 #[doc(alias = "RBX::DataModel::MouseStats::MouseStats(void)")]
-pub fn stub_0x46fd8c() -> ! {
-    todo!("0x46fd8c RBX::DataModel::MouseStats::MouseStats(void)")
+pub fn stub_0x46fd8c() -> MouseStats {
+    // IDA 0x46fd8c: `DataModel::MouseStats::C2` — default-constructs the
+    // mouse statistics block.
+    MouseStats::default()
 }
 
 // 0x46ff84 — __ZN3RBX9DataModel10GenericJobC2EN5boost10shared_ptrIS0_EEPKcNS_12DataModelJob8TaskTypeE
 #[doc(alias = "RBX::DataModel::GenericJob::GenericJob(rbx_core::SharedPtr<RBX::DataModel>,char const*,RBX::DataModelJob::TaskType)")]
 // was: RBX::DataModel::GenericJob::GenericJob(boost::shared_ptr<RBX::DataModel>,char const*,RBX::DataModelJob::TaskType)
-pub fn stub_0x46ff84() -> ! {
-    todo!("0x46ff84 RBX::DataModel::GenericJob::GenericJob(boost::shared_ptr<RBX::DataModel>,char const*,RBX::DataModelJob::TaskType)")
+pub fn stub_0x46ff84(parent: &SharedPtr<GenericJob>, name: &str, task: u32) -> GenericJob {
+    // IDA 0x46ff84: `GenericJob::C2(shared<GenericJob>, name, TaskType)` —
+    // links the parent job and keeps the name plus the task type. (The first
+    // shared is read as the parent link; re-verify if a second job role is
+    // ever modeled.)
+    GenericJob { parent: Some(parent.clone()), name: name.to_owned(), task }
 }
 
 // 0x47013c — __ZN3RBX9DataModel10GenericJobD1Ev
 #[doc(alias = "RBX::DataModel::GenericJob::~GenericJob()")]
-pub fn stub_0x47013c() -> ! {
-    todo!("0x47013c RBX::DataModel::GenericJob::~GenericJob()")
+pub fn stub_0x47013c(_job: *mut GenericJob) {
+    // IDA 0x47013c: `GenericJob::D1` — memberwise teardown (parent link,
+    // name, task); dropping the box is the same release.
+    // SAFETY: `_job` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_job));
+    }
 }
 
 // 0x47025c — __ZN3RBX9DataModel10GenericJobD0Ev
 #[doc(alias = "RBX::DataModel::GenericJob::~GenericJob()")]
-pub fn stub_0x47025c() -> ! {
-    todo!("0x47025c RBX::DataModel::GenericJob::~GenericJob()")
+pub fn stub_0x47025c(_job: *mut GenericJob) {
+    // IDA 0x47025c: `GenericJob::D0` — vtable install plus memberwise
+    // teardown; dropping the box is the same release. Twin of 0x47013c.
+    // SAFETY: `_job` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_job));
+    }
 }
 
 // 0x470390 — __ZN3RBX9DataModel10GenericJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE
@@ -25326,52 +25406,73 @@ pub fn stub_0x470818() -> ! {
 // 0x4708e0 — __ZNSt5dequeIN3rbx14implementation27timestamped_safe_queue_itemIN5boost8functionIFvPN3RBX9DataModelEEEEEESaISA_EED2Ev
 #[doc(alias = "std::deque<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>>::~deque()")]
 // was: std::deque<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>>::~deque()
-pub fn stub_0x4708e0() -> ! {
-    todo!("0x4708e0 std::deque<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>>::~deque()")
+pub fn stub_0x4708e0(queue: &mut std::collections::VecDeque<SharedPtr<TimestampedItem>>) {
+    // IDA 0x4708e0 (`deque<timestamped-item>::D2`): destroys the elements in
+    // place (storage released by the D0 path); `clear` drops each retained
+    // item the same way. Same shape as 0x46e8cc.
+    queue.clear();
 }
 
 // 0x4709c8 — __ZNSt11_Deque_baseIN3rbx14implementation27timestamped_safe_queue_itemIN5boost8functionIFvPN3RBX9DataModelEEEEEESaISA_EED2Ev
 #[doc(alias = "std::_Deque_base<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>>::~_Deque_base()")]
 // was: std::_Deque_base<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>>::~_Deque_base()
-pub fn stub_0x4709c8() -> ! {
-    todo!("0x4709c8 std::_Deque_base<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>>::~_Deque_base()")
+pub fn stub_0x4709c8(queue: &mut std::collections::VecDeque<SharedPtr<TimestampedItem>>) {
+    // IDA 0x4709c8 (`_Deque_base<timestamped-item>::D2`): releases the map;
+    // clearing drops the same retained items. Twin of 0x46e9b4.
+    queue.clear();
 }
 
 // 0x4709f8 — __ZNSt5dequeIN3rbx14implementation27timestamped_safe_queue_itemIN5boost8functionIFvPN3RBX9DataModelEEEEEESaISA_EEC2ERKSC_
 #[doc(alias = "std::deque<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>>::deque(std::deque<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>> const&)")]
 // was: std::deque<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>>::deque(std::deque<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>> const&)
-pub fn stub_0x4709f8() -> ! {
-    todo!("0x4709f8 std::deque<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>>::deque(std::deque<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>> const&)")
+pub fn stub_0x4709f8(
+    dst: &mut std::collections::VecDeque<SharedPtr<TimestampedItem>>,
+    src: &std::collections::VecDeque<SharedPtr<TimestampedItem>>,
+) {
+    // IDA 0x4709f8 (`deque<timestamped-item>::deque(copy)`): copies every
+    // retained element; same deep (shared-retaining) copy as 0x46ed6c.
+    *dst = src.clone();
 }
 
 // 0x470b30 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_8Instance10SaveFilterEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>> *)")]
-pub fn stub_0x470b30() -> ! {
-    todo!("0x470b30 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>> *)")
+pub fn stub_0x470b30(map: &mut BTreeMap<String, i32>, key: &str) {
+    // IDA 0x470b30 (`_Rb_tree<Name, SaveFilter>::_M_erase` by node): unlinks
+    // and frees the node holding the key; `remove` is the same keyed erase.
+    // Same shape as 0x3df534.
+    map.remove(key);
 }
 
 // 0x470b58 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel8GearTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DataModel::GearType>> *)")]
-pub fn stub_0x470b58() -> ! {
-    todo!("0x470b58 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DataModel::GearType>> *)")
+pub fn stub_0x470b58(map: &mut BTreeMap<String, i32>, key: &str) {
+    // IDA 0x470b58 (`_Rb_tree<Name, GearType>::_M_erase` by node): same keyed
+    // erase as 0x470b30.
+    map.remove(key);
 }
 
 // 0x470b80 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel16GearGenreSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>> *)")]
-pub fn stub_0x470b80() -> ! {
-    todo!("0x470b80 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>> *)")
+pub fn stub_0x470b80(map: &mut BTreeMap<String, i32>, key: &str) {
+    // IDA 0x470b80 (`_Rb_tree<Name, GearGenreSetting>::_M_erase` by node):
+    // same keyed erase as 0x470b30.
+    map.remove(key);
 }
 
 // 0x470ba8 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel5GenreEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::Genre>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DataModel::Genre>> *)")]
-pub fn stub_0x470ba8() -> ! {
-    todo!("0x470ba8 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::Genre>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DataModel::Genre>> *)")
+pub fn stub_0x470ba8(map: &mut BTreeMap<String, i32>, key: &str) {
+    // IDA 0x470ba8 (`_Rb_tree<Name, Genre>::_M_erase` by node): same keyed
+    // erase as 0x470b30.
+    map.remove(key);
 }
 
 // 0x470bd0 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel11CreatorTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>> *)")]
-pub fn stub_0x470bd0() -> ! {
-    todo!("0x470bd0 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>> *)")
+pub fn stub_0x470bd0(map: &mut BTreeMap<String, i32>, key: &str) {
+    // IDA 0x470bd0 (`_Rb_tree<Name, CreatorType>::_M_erase` by node): same
+    // keyed erase as 0x470b30.
+    map.remove(key);
 }
 
 // 0x4727ec — __ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEEC1Ev
