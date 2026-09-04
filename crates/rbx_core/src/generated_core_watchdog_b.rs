@@ -392,7 +392,7 @@ pub mod member_registry {
     /// vector, the `const char* -> T*` map at +3 (`a1 + 3`, IDA 0x25f712), and the
     /// sub-collection vector at +9 (`a1[9..10]`, IDA 0x25f71e).
     /// `hiding_hook` is the process-global hook (IDA 0x25f802/0x25fa3c).
-    #[derive(Debug, Default)]
+    #[derive(Debug, Default, Clone)]
     pub struct MemberContainer {
         pub members: Vec<usize>,
         pub by_name: HashMap<String, usize>,
@@ -791,6 +791,212 @@ pub mod member_registry {
     /// split as 0xb740): write at `finish` + bump when not full, else the slow path.
     pub fn container_ptr_vec_push_back(list: &mut Vec<usize>, value: usize) {
         list.push(value);
+    }
+
+    /// Batch 7: was: `RBX::Reflection::StringHashPredicate::operator()` (IDA 0x262f6c):
+    /// `for (h = 0; len; h ^= (h << 6) + (h >> 2) + c - 1640531527)` over `strlen`
+    /// bytes — the content hash behind every unordered name map here. Wrapping
+    /// arithmetic matches the 32-bit overflow.
+    pub fn string_hash_predicate(key: &[u8]) -> u32 {
+        let mut hash: u32 = 0;
+        for &byte in key {
+            hash ^= hash
+                .wrapping_shl(6)
+                .wrapping_add(hash.wrapping_shr(2))
+                .wrapping_add(byte as u32)
+                .wrapping_sub(1_640_531_527);
+        }
+        hash
+    }
+
+    /// Batch 7: was: `prime_list_template<unsigned long>::value` — 38 bucket-count
+    /// primes read from the binary at 0xFA7760 (via IDA MCP `py_eval`, `get_dword`
+    /// walk). Starts at 17 in this build.
+    pub const UNORDERED_PRIME_LIST: [u32; 38] = [
+        17, 29, 37, 53, 67, 79, 97, 131, 193, 257, 389, 521, 769, 1031, 1543, 2053,
+        3079, 6151, 12289, 24593, 49157, 98317, 196613, 393241, 786433, 1572869,
+        3145739, 6291469, 12582917, 25165843, 50331653, 100663319, 201326611,
+        402653189, 805306457, 1610612741, 3221225473, 4294967291,
+    ];
+
+    /// Batch 7: was: `table::min_buckets_for_size(size)` (IDA 0x262db0) —
+    /// `floor(size / mlf)`, clamped to `0` past `4294967300.0`, `+1`, then the
+    /// prime-list `lower_bound` (0x262e10 loop) with the end-clamp: when the need
+    /// exceeds the largest prime the search runs past the end (`&unk_FA77F8`) and
+    /// steps back one (0x262e2a-0x262e2c), returning the largest prime —
+    /// preserved here, quirk and all.
+    pub fn unordered_min_buckets_for_size(size: u64, mlf: f32) -> u32 {
+        let need = (size as f64 / mlf as f64).floor();
+        let want: u32 = if need < 4_294_967_300.0 {
+            (need as u64).wrapping_add(1) as u32
+        } else {
+            // Binary-search `lower_bound(0)` lands on the first prime (0x262e10).
+            0
+        };
+        let mut lo = 0;
+        let mut hi = UNORDERED_PRIME_LIST.len();
+        while lo < hi {
+            let mid = (lo + hi) / 2;
+            if UNORDERED_PRIME_LIST[mid] < want {
+                lo = mid + 1;
+            } else {
+                hi = mid;
+            }
+        }
+        // End-clamp (IDA 0x262e2a): past-the-end steps back to the largest prime.
+        UNORDERED_PRIME_LIST[lo.min(UNORDERED_PRIME_LIST.len() - 1)]
+    }
+
+    /// Batch 7: was: `table` construction state — bucket count at +4, size at +16,
+    /// max load factor at +12 (`1065353216` = `1.0f`, IDA 0x263100).
+    #[derive(Debug, Clone)]
+    pub struct UnorderedTable {
+        pub bucket_count: u32,
+        pub size: usize,
+        /// was: `*(float*)(table + 12)`; `1.0` observed at construction.
+        pub max_load_factor: f32,
+    }
+
+    /// Batch 7, IDA 0x26309c `table::table(requested)` — flag byte clear, prime
+    /// `lower_bound(requested)` with the same end-clamp, size zero, mlf `1.0`.
+    pub fn unordered_table_construct(requested: u32) -> UnorderedTable {
+        let mut lo = 0;
+        let mut hi = UNORDERED_PRIME_LIST.len();
+        while lo < hi {
+            let mid = (lo + hi) / 2;
+            if UNORDERED_PRIME_LIST[mid] < requested {
+                lo = mid + 1;
+            } else {
+                hi = mid;
+            }
+        }
+        UnorderedTable {
+            bucket_count: UNORDERED_PRIME_LIST[lo.min(UNORDERED_PRIME_LIST.len() - 1)],
+            size: 0,
+            max_load_factor: 1.0,
+        }
+    }
+
+    /// Batch 7, IDA 0x262c88 `table::create_buckets(n)` — installs
+    /// `max(current, min_buckets_for_size)` buckets. `HashMap` sizes itself, so
+    /// the port records the count on the table and reserves the map.
+    pub fn unordered_create_buckets(
+        table: &mut UnorderedTable,
+        map: &mut HashMap<String, usize>,
+        n: usize,
+    ) -> u32 {
+        let want = unordered_min_buckets_for_size(n as u64, table.max_load_factor);
+        if want > table.bucket_count {
+            table.bucket_count = want;
+        }
+        map.reserve(n);
+        table.bucket_count
+    }
+
+    /// Batch 7, IDA 0x262e40 `table_impl::rehash_impl(n)` — recompute buckets for
+    /// the new size and relink (`place_in_bucket` per node, 0x262e6c mechanics).
+    /// Node relinking collapses; the port reserves and reports the count.
+    pub fn unordered_rehash(
+        table: &mut UnorderedTable,
+        map: &mut HashMap<String, usize>,
+        n: usize,
+    ) -> u32 {
+        table.bucket_count = unordered_min_buckets_for_size(n as u64, table.max_load_factor);
+        map.reserve(n);
+        table.bucket_count
+    }
+
+    /// Batch 7: was: `node_constructor` state — the `+4` node word and the
+    /// `+8/+9` use/flag bytes (IDA 0x262ec4).
+    #[derive(Debug, Default)]
+    pub struct NodeConstructor {
+        pub node: Option<[u8; 16]>,
+        pub flag: u8,
+    }
+
+    /// Batch 7, IDA 0x262ec4 `node_constructor::construct` — when a node is held,
+    /// return its flag byte (clearing a set flag, 0x262ed0-0x262ed8); otherwise
+    /// zero the word, alloc `0x10`, zero the alloc tail, set the use flag and
+    /// return `1` (0x262ede-0x262ef6).
+    pub fn node_constructor_construct(state: &mut NodeConstructor) -> u8 {
+        if state.node.is_some() {
+            let flag = state.flag;
+            if state.flag != 0 {
+                state.flag = 0;
+                return 0;
+            }
+            return flag;
+        }
+        state.node = Some([0u8; 16]);
+        state.flag = 1;
+        1
+    }
+
+    /// Batch 7, IDA 0x262efc `find_node_impl(hash, key)` — `hash % bucket_count`
+    /// selects the chain (0x262f1a); each link compares the stored hash (0x262f44)
+    /// and, on match, `strcmp` content equality (0x262f50, the grounded
+    /// `StringEqualPredicate` body); a stored hash from another bucket ends the
+    /// walk (0x262f5e-0x262f64). Miss yields null (`None`).
+    /// The port verifies the passed hash against `string_hash_predicate` — a
+    /// mismatched hash looks in the wrong bucket and misses, exactly like the
+    /// binary — then does the content lookup.
+    pub fn unordered_find_node(
+        map: &HashMap<String, usize>,
+        hash: u32,
+        key: &str,
+    ) -> Option<usize> {
+        if hash != string_hash_predicate(key.as_bytes()) {
+            return None;
+        }
+        map.get(key).copied()
+    }
+
+    /// Batch 7, IDA 0x262e6c `place_in_bucket(node)` — intrusive bucket-list
+    /// surgery (`hash % buckets` slot, head splice, 0x262e80-0x262eb0). Linking
+    /// collapses; the KEY to VALUE association is the observable effect, so the
+    /// port performs the insert and returns the displaced value, like the
+    /// original's node return.
+    pub fn unordered_place_in_bucket(
+        map: &mut HashMap<String, usize>,
+        key: &str,
+        value: usize,
+    ) -> Option<usize> {
+        map.insert(key.to_string(), value)
+    }
+
+    /// Batch 7: shared container-ctor core behind 0x261830/0x261948/0x261a60/
+    /// 0x261b78/0x261c90 (verified identical modulo type): zero the member vector
+    /// (0x261854), build the hash table with the ctor bucket prime (0x2618a0 —
+    /// `table(11, ...)` picks the prime-list entry for 11, i.e. 17), zero the
+    /// sub-collection vector, link `[12] = base`, and when based run
+    /// `mergeMembers` (0x2618c4) then register self in the base's `+36` sub-list
+    /// (0x2618d6 `push_back`). Returns the slot (`return a1`).
+    pub fn container_construct<'a>(
+        child: &'a mut MemberContainer,
+        store: &DescriptorStore,
+        base: Option<&mut MemberContainer>,
+    ) -> &'a mut MemberContainer {
+        *child = MemberContainer::default();
+        if let Some(base_container) = base {
+            child.parent = Some(Box::new(MemberContainer {
+                members: base_container.members.clone(),
+                by_name: base_container.by_name.clone(),
+                sub_collections: Vec::new(),
+                hiding_hook: base_container.hiding_hook,
+                parent: base_container.parent.clone(),
+            }));
+            let snapshot = child.parent.clone();
+            if let Some(parent) = snapshot {
+                merge_members(child, store, &parent);
+            }
+            // IDA 0x2618d6 `push_back(a2 + 36, this)` — register in the base's
+            // sub-list. Stored as a construction-time snapshot: with caller-owned
+            // containers there is no live back-link, so post-link declares on the
+            // child are invisible through the parent (`[INFERENCE]` limitation,
+            // noted rather than modeled).
+            base_container.sub_collections.push(child.clone());
+        }
+        child
     }
 
     /// Batch 6: was: `MemberDescriptorContainer<CallbackDescriptor>::mergeMembers`
@@ -1711,36 +1917,46 @@ pub fn stub_261798(name: &str, flag: bool, tag: u32) -> member_registry::Descrip
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>*)")]
 // 0x261830 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18PropertyDescriptorEEC2EPS3_
 // type: _DWORD *__fastcall(_DWORD *, int)
-pub fn stub_261830() -> ! {
-    todo!("0x261830 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18PropertyDescriptorEEC2EPS3_")
+// IDA 0x261830: `Container<PropertyDescriptor>` ctor — zeroed vec, `table(11)` map, sub-vec zero, `[12] = base`, merge + sub-list link when based.
+// Returns the slot (`return a1`).
+pub fn stub_261830<'a>(child: &'a mut member_registry::MemberContainer, store: &member_registry::DescriptorStore, base: Option<&mut member_registry::MemberContainer>) -> &'a mut member_registry::MemberContainer {
+    member_registry::container_construct(child, store, base)
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>*)")]
 // 0x261948 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEEC2EPS3_
 // type: int __fastcall(_DWORD *, int)
-pub fn stub_261948() -> ! {
-    todo!("0x261948 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEEC2EPS3_")
+// IDA 0x261948: `Container<EventDescriptor>` ctor — same shared shape as 0x261830.
+// Returns the slot (`return a1`).
+pub fn stub_261948<'a>(child: &'a mut member_registry::MemberContainer, store: &member_registry::DescriptorStore, base: Option<&mut member_registry::MemberContainer>) -> &'a mut member_registry::MemberContainer {
+    member_registry::container_construct(child, store, base)
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::FunctionDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::FunctionDescriptor>*)")]
 // 0x261a60 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18FunctionDescriptorEEC2EPS3_
 // type: int __fastcall(_DWORD *, int)
-pub fn stub_261a60() -> ! {
-    todo!("0x261a60 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18FunctionDescriptorEEC2EPS3_")
+// IDA 0x261a60: `Container<FunctionDescriptor>` ctor — same shared shape as 0x261830.
+// Returns the slot (`return a1`).
+pub fn stub_261a60<'a>(child: &'a mut member_registry::MemberContainer, store: &member_registry::DescriptorStore, base: Option<&mut member_registry::MemberContainer>) -> &'a mut member_registry::MemberContainer {
+    member_registry::container_construct(child, store, base)
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>*)")]
 // 0x261b78 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEEC2EPS3_
 // type: int __fastcall(_DWORD *, int)
-pub fn stub_261b78() -> ! {
-    todo!("0x261b78 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEEC2EPS3_")
+// IDA 0x261b78: `Container<YieldFunctionDescriptor>` ctor — same shared shape as 0x261830.
+// Returns the slot (`return a1`).
+pub fn stub_261b78<'a>(child: &'a mut member_registry::MemberContainer, store: &member_registry::DescriptorStore, base: Option<&mut member_registry::MemberContainer>) -> &'a mut member_registry::MemberContainer {
+    member_registry::container_construct(child, store, base)
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>*)")]
 // 0x261c90 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEEC2EPS3_
 // type: _DWORD *__fastcall(_DWORD *, int)
-pub fn stub_261c90() -> ! {
-    todo!("0x261c90 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEEC2EPS3_")
+// IDA 0x261c90: `Container<CallbackDescriptor>` ctor — same shared shape as 0x261830.
+// Returns the slot (`return a1`).
+pub fn stub_261c90<'a>(child: &'a mut member_registry::MemberContainer, store: &member_registry::DescriptorStore, base: Option<&mut member_registry::MemberContainer>) -> &'a mut member_registry::MemberContainer {
+    member_registry::container_construct(child, store, base)
 }
 
 #[doc(alias = "std::vector<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::ClassDescriptor **,std::vector<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>>,RBX::Reflection::ClassDescriptor * const&)")]
@@ -1807,145 +2023,175 @@ pub fn stub_2625d4(list: &mut Vec<usize>, value: usize) {
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::Collection::~Collection()")]
 // 0x262600 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE10CollectionD1Ev
 // type: void **__fastcall(void **)
-pub fn stub_262600() -> ! {
-    todo!("0x262600 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE10CollectionD1Ev")
+// IDA 0x262600: Callback `Collection::~Collection` — free the owned slot.
+pub fn stub_262600(slot: &mut Option<Box<[u8]>>) {
+    member_registry::collection_d1(slot)
 }
 
 #[doc(alias = "std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> **,std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *>>>,RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> * const&)")]
 // 0x262618 — __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18CallbackDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_
 // type: char *__fastcall(int, char *__src, _DWORD *)
-pub fn stub_262618() -> ! {
-    todo!("0x262618 __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18CallbackDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_")
+// IDA 0x262618: container-pointer `_M_insert_aux` — same 1-or-double growth rule.
+pub fn stub_262618(list: &mut Vec<usize>, pos: usize, value: usize) -> usize {
+    member_registry::class_vec_insert_aux(list, pos, value)
 }
 
 #[doc(alias = "std::_Vector_base<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *>>::_M_allocate(unsigned long)")]
 // 0x2626f8 — __ZNSt12_Vector_baseIPN3RBX10Reflection25MemberDescriptorContainerINS1_18CallbackDescriptorEEESaIS5_EE11_M_allocateEm
 // type: int __fastcall(int, unsigned int)
-pub fn stub_2626f8() -> ! {
-    todo!("0x2626f8 __ZNSt12_Vector_baseIPN3RBX10Reflection25MemberDescriptorContainerINS1_18CallbackDescriptorEEESaIS5_EE11_M_allocateEm")
+// IDA 0x2626f8: container-pointer `_M_allocate(n)` — `bad_alloc` at `n >= 0x40000000`.
+pub fn stub_2626f8(n: usize) -> usize {
+    member_registry::vector_allocate(n)
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::declare(RBX::Reflection::CallbackDescriptor*)")]
 // 0x262710 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE7declareEPS2_
 // type: int __fastcall(int **, int)
-pub fn stub_262710() -> ! {
-    todo!("0x262710 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE7declareEPS2_")
+// IDA 0x262710: `Container<CallbackDescriptor>::declare` — same shared core.
+pub fn stub_262710(container: &mut member_registry::MemberContainer, store: &member_registry::DescriptorStore, desc: usize) -> usize {
+    member_registry::declare(container, store, desc)
 }
 
 #[doc(alias = "std::vector<RBX::Reflection::CallbackDescriptor *,std::allocator<RBX::Reflection::CallbackDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::CallbackDescriptor **,std::vector<RBX::Reflection::CallbackDescriptor *,std::allocator<RBX::Reflection::CallbackDescriptor *>>>,RBX::Reflection::CallbackDescriptor * const&)")]
 // 0x262890 — __ZNSt6vectorIPN3RBX10Reflection18CallbackDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
 // type: int __fastcall(int *, _DWORD *, _DWORD *)
-pub fn stub_262890() -> ! {
-    todo!("0x262890 __ZNSt6vectorIPN3RBX10Reflection18CallbackDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_")
+// IDA 0x262890: `vector<CallbackDescriptor*>::insert` — end fast-path or slow path.
+pub fn stub_262890(list: &mut Vec<usize>, pos: usize, value: usize) -> usize {
+    member_registry::descriptor_vec_insert(list, pos, value)
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::declareSub(RBX::Reflection::CallbackDescriptor*,RBX::Reflection::CallbackDescriptor*)")]
 // 0x2628c8 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE10declareSubEPS2_S4_
 // type: int *__fastcall(int *, int, int, const void *)
-pub fn stub_2628c8() -> ! {
-    todo!("0x2628c8 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE10declareSubEPS2_S4_")
+// IDA 0x2628c8: `Container<CallbackDescriptor>::declareSub` — same shared core.
+pub fn stub_2628c8(container: &mut member_registry::MemberContainer, store: &member_registry::DescriptorStore, desc: usize, replaceable: usize) -> usize {
+    member_registry::declare_sub(container, store, desc, replaceable)
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::initStaticData(void)")]
 // 0x262a44 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE14initStaticDataEv
-pub fn stub_262a44() -> ! {
-    todo!("0x262a44 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE14initStaticDataEv")
+// IDA 0x262a44: Callback `initStaticData` — thunk into `staticData`.
+pub fn stub_262a44() -> &'static std::sync::Mutex<Vec<usize>> {
+    member_registry::static_data()
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::staticData(void)")]
 // 0x262a48 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE10staticDataEv
 // type: double *()
-pub fn stub_262a48() -> ! {
-    todo!("0x262a48 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE10staticDataEv")
+// IDA 0x262a48: Callback `staticData` — same collapsed global list (see 0x25fa50 note).
+pub fn stub_262a48() -> &'static std::sync::Mutex<Vec<usize>> {
+    member_registry::static_data()
 }
 
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")]
 // 0x262ab0 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_
 // type: char **__fastcall(_DWORD *, char **, int, int, void *, int, int, int, int)
-pub fn stub_262ab0() -> ! {
-    todo!("0x262ab0 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_")
+// IDA 0x262ab0: `table_impl::operator[]` over `map<const char*, CallbackDescriptor*>`.
+pub fn stub_262ab0(map: &mut std::collections::HashMap<String, usize>, key: *const std::os::raw::c_char) -> &mut usize {
+    member_registry::unordered_index_or_insert(map, key)
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::reserve_for_insert(unsigned long)")]
 // 0x262c34 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE18reserve_for_insertEm
 // type: unsigned int __fastcall(_DWORD *, unsigned int)
-pub fn stub_262c34() -> ! {
-    todo!("0x262c34 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE18reserve_for_insertEm")
+// IDA 0x262c34: Callback `table::reserve_for_insert(n)` — rehash or create buckets.
+pub fn stub_262c34(map: &mut std::collections::HashMap<String, usize>, additional: usize) -> usize {
+    member_registry::unordered_reserve(map, additional)
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::create_buckets(unsigned long)")]
 // 0x262c88 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm
 // type: void __fastcall(int, unsigned int)
-pub fn stub_262c88() -> ! {
-    todo!("0x262c88 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm")
+// IDA 0x262c88: Callback `table::create_buckets(n)` — install `max(current, min_buckets)`.
+pub fn stub_262c88(table: &mut member_registry::UnorderedTable, map: &mut std::collections::HashMap<String, usize>, n: usize) -> u32 {
+    member_registry::unordered_create_buckets(table, map, n)
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::min_buckets_for_size(unsigned long)const")]
 // 0x262db0 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE20min_buckets_for_sizeEm
 // type: int __fastcall(int, unsigned int)
-pub fn stub_262db0() -> ! {
-    todo!("0x262db0 __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE20min_buckets_for_sizeEm")
+// IDA 0x262db0: `table::min_buckets_for_size(size)` — `floor(size / mlf)`, prime
+// `lower_bound` with the past-the-end largest-prime clamp (binary-exact table
+// at 0xFA7760). `mlf` is `1.0` at construction (IDA 0x263100).
+pub fn stub_262db0(size: u64, mlf: f32) -> u32 {
+    member_registry::unordered_min_buckets_for_size(size, mlf)
 }
 
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::rehash_impl(unsigned long)")]
 // 0x262e40 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm
 // type: int __fastcall(int, unsigned int)
-pub fn stub_262e40() -> ! {
-    todo!("0x262e40 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm")
+// IDA 0x262e40: Callback `table_impl::rehash_impl(n)` — recompute buckets, relink nodes.
+pub fn stub_262e40(table: &mut member_registry::UnorderedTable, map: &mut std::collections::HashMap<String, usize>, n: usize) -> u32 {
+    member_registry::unordered_rehash(table, map, n)
 }
 
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>> &,boost::unordered::detail::ptr_bucket *)")]
 // 0x262e6c — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE15place_in_bucketERNS1_5tableISG_EEPNS1_10ptr_bucketE
 // type: _DWORD *__fastcall(int, _DWORD *)
-pub fn stub_262e6c() -> ! {
-    todo!("0x262e6c __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE15place_in_bucketERNS1_5tableISG_EEPNS1_10ptr_bucketE")
+// IDA 0x262e6c: `place_in_bucket(node)` — intrusive bucket splice; the observable
+// KEY to VALUE association is the insert, whose displaced value is returned.
+pub fn stub_262e6c(map: &mut std::collections::HashMap<String, usize>, key: &str, value: usize) -> Option<usize> {
+    member_registry::unordered_place_in_bucket(map, key, value)
 }
 
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>>>::construct(void)")]
 // 0x262ec4 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEEEEE9constructEv
 // type: int __fastcall(int)
-pub fn stub_262ec4() -> ! {
-    todo!("0x262ec4 __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEEEEE9constructEv")
+// IDA 0x262ec4: `node_constructor::construct` — held-node flag protocol, else alloc
+// `0x10`, zero tail, set use flag, return `1`.
+pub fn stub_262ec4(state: &mut member_registry::NodeConstructor) -> u8 {
+    member_registry::node_constructor_construct(state)
 }
 
 #[doc(alias = "boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::find_node_impl<char const*,RBX::Reflection::StringEqualPredicate>(unsigned long,char const* const&,RBX::Reflection::StringEqualPredicate const&)const")]
 // 0x262efc — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14find_node_implIS6_SF_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISC_EEEEmRKT_RKT0_
 // type: int __fastcall(_DWORD *, unsigned int, const char **)
-pub fn stub_262efc() -> ! {
-    todo!("0x262efc __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14find_node_implIS6_SF_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISC_EEEEmRKT_RKT0_")
+// IDA 0x262efc: `find_node_impl(hash, key)` — `hash % buckets` chain, stored-hash
+// check, `strcmp` equality; a foreign-bucket hash ends the walk. Miss is null.
+// A hash that disagrees with the content misses, like the wrong bucket would.
+pub fn stub_262efc(map: &std::collections::HashMap<String, usize>, hash: u32, key: &str) -> Option<usize> {
+    member_registry::unordered_find_node(map, hash, key)
 }
 
 #[doc(alias = "RBX::Reflection::StringHashPredicate::operator()(char const*)const")]
 // 0x262f6c — __ZNK3RBX10Reflection19StringHashPredicateclEPKc
 // type: unsigned int __fastcall(int, char *__s)
-pub fn stub_262f6c() -> ! {
-    todo!("0x262f6c __ZNK3RBX10Reflection19StringHashPredicateclEPKc")
+// IDA 0x262f6c: `StringHashPredicate::operator()` — `h ^= (h << 6) + (h >> 2) +
+// c - 1640531527` per byte, wrapping. The content hash of every name map here.
+pub fn stub_262f6c(key: &[u8]) -> u32 {
+    member_registry::string_hash_predicate(key)
 }
 
 #[doc(alias = "std::vector<RBX::Reflection::CallbackDescriptor *,std::allocator<RBX::Reflection::CallbackDescriptor *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::CallbackDescriptor **,std::vector<RBX::Reflection::CallbackDescriptor *,std::allocator<RBX::Reflection::CallbackDescriptor *>>>,RBX::Reflection::CallbackDescriptor * const&)")]
 // 0x262fa4 — __ZNSt6vectorIPN3RBX10Reflection18CallbackDescriptorESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
 // type: char *__fastcall(int, char *__src, _DWORD *)
-pub fn stub_262fa4() -> ! {
-    todo!("0x262fa4 __ZNSt6vectorIPN3RBX10Reflection18CallbackDescriptorESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_")
+// IDA 0x262fa4: `vector<CallbackDescriptor*>::_M_insert_aux` — same growth rule.
+pub fn stub_262fa4(list: &mut Vec<usize>, pos: usize, value: usize) -> usize {
+    member_registry::class_vec_insert_aux(list, pos, value)
 }
 
 #[doc(alias = "std::_Vector_base<RBX::Reflection::CallbackDescriptor *,std::allocator<RBX::Reflection::CallbackDescriptor *>>::_M_allocate(unsigned long)")]
 // 0x263084 — __ZNSt12_Vector_baseIPN3RBX10Reflection18CallbackDescriptorESaIS3_EE11_M_allocateEm
 // type: int __fastcall(int, unsigned int)
-pub fn stub_263084() -> ! {
-    todo!("0x263084 __ZNSt12_Vector_baseIPN3RBX10Reflection18CallbackDescriptorESaIS3_EE11_M_allocateEm")
+// IDA 0x263084: Callback `_M_allocate(n)` — same `bad_alloc` gate.
+pub fn stub_263084(n: usize) -> usize {
+    member_registry::vector_allocate(n)
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::table(unsigned long,RBX::Reflection::StringHashPredicate const&,RBX::Reflection::StringEqualPredicate const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>> const&)")]
 // 0x26309c — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEC2EmRKSE_RKSF_RKSaINS1_8ptr_nodeISC_EEE
 // type: int __fastcall(int result, unsigned int)
-pub fn stub_26309c() -> ! {
-    todo!("0x26309c __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEC2EmRKSE_RKSF_RKSaINS1_8ptr_nodeISC_EEE")
+// IDA 0x26309c: Callback `table::table(requested)` — prime `lower_bound`, size
+// zero, mlf `1.0f` (`1065353216`).
+pub fn stub_26309c(requested: u32) -> member_registry::UnorderedTable {
+    member_registry::unordered_table_construct(requested)
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::mergeMembers(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> const*)")]
 // 0x263108 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE12mergeMembersEPKS3_
 // type: int __fastcall(int result, int *)
-pub fn stub_263108() -> ! {
-    todo!("0x263108 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE12mergeMembersEPKS3_")
+// IDA 0x263108: `Container<YieldFunctionDescriptor>::mergeMembers` — same
+// parent-chain declare walk as 0x2625ac.
+pub fn stub_263108(dest: &mut member_registry::MemberContainer, store: &member_registry::DescriptorStore, base: &member_registry::MemberContainer) {
+    member_registry::merge_members(dest, store, base)
 }
