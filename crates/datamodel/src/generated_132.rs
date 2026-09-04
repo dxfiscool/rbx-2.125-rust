@@ -17,9 +17,7 @@ pub fn stub_393c44() -> ! {
 
 // 0x39406c — __ZNK3RBX13PartAdornment19getAdorneeDangerousEv
 #[doc(alias = "RBX::PartAdornment::getAdorneeDangerous(void)const")]
-pub fn stub_39406c() -> ! {
-    todo!("0x39406c RBX::PartAdornment::getAdorneeDangerous(void)const")
-}
+pub use crate::model::stub_0x39406c as stub_39406c;
 
 // 0x3bb99c — __ZN3RBX14FormFactorPartC2Ev
 #[doc(alias = "RBX::FormFactorPart::FormFactorPart(void)")]
