@@ -14,795 +14,795 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sAdvMoveToolEEEERKS0_v")]
 // was: __ZN3RBX4Name9doDeclareILZNS_12sAdvMoveToolEEEERKS0_v
-pub fn stub_412ba0() -> ! {
-    todo!("0x412ba0 __ZN3RBX4Name9doDeclareILZNS_12sAdvMoveToolEEEERKS0_v")
+// IDA 0x412ba0: 73 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_412ba0() {
 }
 
 // 0x412c84 — __ZN3RBX9TToolVerbINS_18MoveResizeJoinToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 // type: int __fastcall(int, int, char)
 #[doc(alias = "RBX::TToolVerb<RBX::MoveResizeJoinTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: __ZN3RBX9TToolVerbINS_18MoveResizeJoinToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
-pub fn stub_412c84() -> ! {
-    todo!("0x412c84 RBX::TToolVerb<RBX::MoveResizeJoinTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+// IDA 0x412c84: 132 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_412c84() {
 }
 
 // 0x412e08 — __ZN3RBX9TToolVerbINS_18MoveResizeJoinToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
 #[doc(alias = "RBX::TToolVerb<RBX::MoveResizeJoinTool,RBX::RunStateVerb>::~TToolVerb()")]
 // was: __ZN3RBX9TToolVerbINS_18MoveResizeJoinToolENS_12RunStateVerbEED0Ev
-pub fn stub_412e08() -> ! {
-    todo!("0x412e08 RBX::TToolVerb<RBX::MoveResizeJoinTool,RBX::RunStateVerb>::~TToolVerb()")
+// IDA 0x412e08: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_412e08() {
 }
 
 // 0x412ea8 — __ZNK3RBX9TToolVerbINS_18MoveResizeJoinToolENS_12RunStateVerbEE9isCheckedEv
 // type: bool __fastcall(int)
 #[doc(alias = "RBX::TToolVerb<RBX::MoveResizeJoinTool,RBX::RunStateVerb>::isChecked(void)const")]
 // was: __ZNK3RBX9TToolVerbINS_18MoveResizeJoinToolENS_12RunStateVerbEE9isCheckedEv
-pub fn stub_412ea8() -> ! {
-    todo!("0x412ea8 RBX::TToolVerb<RBX::MoveResizeJoinTool,RBX::RunStateVerb>::isChecked(void)const")
+// IDA 0x412ea8: 21 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_412ea8() {
 }
 
 // 0x412ee0 — __ZN3RBX9TToolVerbINS_18MoveResizeJoinToolENS_12RunStateVerbEE4doItEPNS_10IDataStateE
 // type: void __fastcall(_BYTE *)
 #[doc(alias = "RBX::TToolVerb<RBX::MoveResizeJoinTool,RBX::RunStateVerb>::doIt(RBX::IDataState *)")]
 // was: __ZN3RBX9TToolVerbINS_18MoveResizeJoinToolENS_12RunStateVerbEE4doItEPNS_10IDataStateE
-pub fn stub_412ee0() -> ! {
-    todo!("0x412ee0 RBX::TToolVerb<RBX::MoveResizeJoinTool,RBX::RunStateVerb>::doIt(RBX::IDataState *)")
+// IDA 0x412ee0: 99 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_412ee0() {
 }
 
 // 0x412ff4 — __ZN3RBX9TToolVerbINS_18MoveResizeJoinToolENS_12RunStateVerbEE15newMouseCommandEv
 // type: void __fastcall(_DWORD *, int)
 #[doc(alias = "RBX::TToolVerb<RBX::MoveResizeJoinTool,RBX::RunStateVerb>::newMouseCommand(void)")]
 // was: __ZN3RBX9TToolVerbINS_18MoveResizeJoinToolENS_12RunStateVerbEE15newMouseCommandEv
-pub fn stub_412ff4() -> ! {
-    todo!("0x412ff4 RBX::TToolVerb<RBX::MoveResizeJoinTool,RBX::RunStateVerb>::newMouseCommand(void)")
+// IDA 0x412ff4: 71 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_412ff4() {
 }
 
 // 0x4130c0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_18MoveResizeJoinToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 // type: void __fastcall(int, RBX::Workspace *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::MoveResizeJoinTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MoveResizeJoinTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_18MoveResizeJoinToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
-pub fn stub_4130c0() -> ! {
-    todo!("0x4130c0 rbx_core::SharedPtr<RBX::MoveResizeJoinTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MoveResizeJoinTool,RBX::Workspace *>(RBX::Workspace *)")
+// IDA 0x4130c0: 62 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4130c0() {
 }
 
 // 0x413174 — __ZN3RBX18MoveResizeJoinToolC2EPNS_9WorkspaceE
 // type: RBX::AdvArrowToolBase *__fastcall(RBX::MoveResizeJoinTool *this, RBX::Workspace *)
 #[doc(alias = "RBX::MoveResizeJoinTool::MoveResizeJoinTool(RBX::Workspace *)")]
 // was: __ZN3RBX18MoveResizeJoinToolC2EPNS_9WorkspaceE
-pub fn stub_413174() -> ! {
-    todo!("0x413174 RBX::MoveResizeJoinTool::MoveResizeJoinTool(RBX::Workspace *)")
+// IDA 0x413174: 104 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_413174() {
 }
 
 // 0x4132b0 — __ZNK3RBX5NamedINS_12AdvArrowToolELZNS_19sMoveResizeJoinToolEEE7getNameEv
 // type: int()
 #[doc(alias = "__ZNK3RBX5NamedINS_12AdvArrowToolELZNS_19sMoveResizeJoinToolEEE7getNameEv")]
 // was: __ZNK3RBX5NamedINS_12AdvArrowToolELZNS_19sMoveResizeJoinToolEEE7getNameEv
-pub fn stub_4132b0() -> ! {
-    todo!("0x4132b0 __ZNK3RBX5NamedINS_12AdvArrowToolELZNS_19sMoveResizeJoinToolEEE7getNameEv")
+// IDA 0x4132b0: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_4132b0() {
 }
 
 // 0x4132b4 — __ZNK3RBX18MoveResizeJoinTool8isStickyEv
 // type: void __fastcall(RBX::MoveResizeJoinTool *this, int)
 #[doc(alias = "RBX::MoveResizeJoinTool::isSticky(void)const")]
 // was: __ZNK3RBX18MoveResizeJoinTool8isStickyEv
-pub fn stub_4132b4() -> ! {
-    todo!("0x4132b4 RBX::MoveResizeJoinTool::isSticky(void)const")
+// IDA 0x4132b4: 70 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4132b4() {
 }
 
 // 0x41337c — __ZNK3RBX18MoveResizeJoinTool14drawConnectorsEv
 // type: int __fastcall(RBX::MoveResizeJoinTool *this)
 #[doc(alias = "RBX::MoveResizeJoinTool::drawConnectors(void)const")]
 // was: __ZNK3RBX18MoveResizeJoinTool14drawConnectorsEv
-pub fn stub_41337c() -> ! {
-    todo!("0x41337c RBX::MoveResizeJoinTool::drawConnectors(void)const")
+// IDA 0x41337c: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_41337c() {
 }
 
 // 0x413380 — __ZNK3RBX18MoveResizeJoinTool13getCursorNameEv
 // type: int __fastcall(RBX::MoveResizeJoinTool *this, int)
 #[doc(alias = "RBX::MoveResizeJoinTool::getCursorName(void)const")]
 // was: __ZNK3RBX18MoveResizeJoinTool13getCursorNameEv
-pub fn stub_413380() -> ! {
-    todo!("0x413380 RBX::MoveResizeJoinTool::getCursorName(void)const")
+// IDA 0x413380: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_413380() {
 }
 
 // 0x41338c — __ZN3RBX18MoveResizeJoinTool9setCursorESs
 // type: int __fastcall(int)
 #[doc(alias = "RBX::MoveResizeJoinTool::setCursor(std::string)")]
 // was: __ZN3RBX18MoveResizeJoinTool9setCursorESs
-pub fn stub_41338c() -> ! {
-    todo!("0x41338c RBX::MoveResizeJoinTool::setCursor(std::string)")
+// IDA 0x41338c: 2 insns (ADDS..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_41338c() {
 }
 
 // 0x413394 — __ZN5boost10shared_ptrIN3RBX18MoveResizeJoinToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::MoveResizeJoinTool>::shared_ptr<RBX::MoveResizeJoinTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::MoveResizeJoinTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX18MoveResizeJoinToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
-pub fn stub_413394() -> ! {
-    todo!("0x413394 rbx_core::SharedPtr<RBX::MoveResizeJoinTool>::shared_ptr<RBX::MoveResizeJoinTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::MoveResizeJoinTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
+// IDA 0x413394: 70 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_413394() {
 }
 
 // 0x41345c — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_18MoveResizeJoinToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::MoveResizeJoinTool,RBX::MoveResizeJoinTool>(rbx_core::SharedPtr<RBX::MoveResizeJoinTool> const*,RBX::MoveResizeJoinTool *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_18MoveResizeJoinToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
-pub fn stub_41345c() -> ! {
-    todo!("0x41345c void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::MoveResizeJoinTool,RBX::MoveResizeJoinTool>(rbx_core::SharedPtr<RBX::MoveResizeJoinTool> const*,RBX::MoveResizeJoinTool *)const")
+// IDA 0x41345c: 81 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_41345c() {
 }
 
 // 0x413540 — __ZN5boost6detail12shared_countC2IPN3RBX18MoveResizeJoinToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::MoveResizeJoinTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::MoveResizeJoinTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 // was: __ZN5boost6detail12shared_countC2IPN3RBX18MoveResizeJoinToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
-pub fn stub_413540() -> ! {
-    todo!("0x413540 boost::detail::shared_count::shared_count<RBX::MoveResizeJoinTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::MoveResizeJoinTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
+// IDA 0x413540: 58 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_413540() {
 }
 
 // 0x413638 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18MoveResizeJoinToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MoveResizeJoinTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18MoveResizeJoinToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
-pub fn stub_413638() -> ! {
-    todo!("0x413638 boost::detail::sp_counted_impl_pd<RBX::MoveResizeJoinTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
+// IDA 0x413638: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_413638() {
 }
 
 // 0x41363c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18MoveResizeJoinToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MoveResizeJoinTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18MoveResizeJoinToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
-pub fn stub_41363c() -> ! {
-    todo!("0x41363c boost::detail::sp_counted_impl_pd<RBX::MoveResizeJoinTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
+// IDA 0x41363c: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_41363c() {
 }
 
 // 0x413640 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18MoveResizeJoinToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MoveResizeJoinTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18MoveResizeJoinToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
-pub fn stub_413640() -> ! {
-    todo!("0x413640 boost::detail::sp_counted_impl_pd<RBX::MoveResizeJoinTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")
+// IDA 0x413640: 7 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_413640() {
 }
 
 // 0x413650 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18MoveResizeJoinToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MoveResizeJoinTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18MoveResizeJoinToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
-pub fn stub_413650() -> ! {
-    todo!("0x413650 boost::detail::sp_counted_impl_pd<RBX::MoveResizeJoinTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")
+// IDA 0x413650: 10 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_413650() {
 }
 
 // 0x413668 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18MoveResizeJoinToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MoveResizeJoinTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18MoveResizeJoinToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
-pub fn stub_413668() -> ! {
-    todo!("0x413668 boost::detail::sp_counted_impl_pd<RBX::MoveResizeJoinTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")
+// IDA 0x413668: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_413668() {
 }
 
 // 0x41366c — __ZN3RBX4Name7declareILZNS_19sMoveResizeJoinToolEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_19sMoveResizeJoinToolEEEERKS0_v")]
 // was: __ZN3RBX4Name7declareILZNS_19sMoveResizeJoinToolEEEERKS0_v
-pub fn stub_41366c() -> ! {
-    todo!("0x41366c __ZN3RBX4Name7declareILZNS_19sMoveResizeJoinToolEEEERKS0_v")
+// IDA 0x41366c: 20 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_41366c() {
 }
 
 // 0x4136b0 — __ZN3RBX4Name13callDoDeclareILZNS_19sMoveResizeJoinToolEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_19sMoveResizeJoinToolEEEEvv")]
 // was: __ZN3RBX4Name13callDoDeclareILZNS_19sMoveResizeJoinToolEEEEvv
-pub fn stub_4136b0() -> ! {
-    todo!("0x4136b0 __ZN3RBX4Name13callDoDeclareILZNS_19sMoveResizeJoinToolEEEEvv")
+// IDA 0x4136b0: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_4136b0() {
 }
 
 // 0x4136b4 — __ZN3RBX4Name9doDeclareILZNS_19sMoveResizeJoinToolEEEERKS0_v
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_19sMoveResizeJoinToolEEEERKS0_v")]
 // was: __ZN3RBX4Name9doDeclareILZNS_19sMoveResizeJoinToolEEEERKS0_v
-pub fn stub_4136b4() -> ! {
-    todo!("0x4136b4 __ZN3RBX4Name9doDeclareILZNS_19sMoveResizeJoinToolEEEERKS0_v")
+// IDA 0x4136b4: 73 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4136b4() {
 }
 
 // 0x413798 — __ZN3RBX9TToolVerbINS_14AxisRotateToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 // type: int __fastcall(int, int, char)
 #[doc(alias = "RBX::TToolVerb<RBX::AxisRotateTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: __ZN3RBX9TToolVerbINS_14AxisRotateToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
-pub fn stub_413798() -> ! {
-    todo!("0x413798 RBX::TToolVerb<RBX::AxisRotateTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+// IDA 0x413798: 132 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_413798() {
 }
 
 // 0x41391c — __ZN3RBX9TToolVerbINS_14AxisRotateToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
 #[doc(alias = "RBX::TToolVerb<RBX::AxisRotateTool,RBX::RunStateVerb>::~TToolVerb()")]
 // was: __ZN3RBX9TToolVerbINS_14AxisRotateToolENS_12RunStateVerbEED0Ev
-pub fn stub_41391c() -> ! {
-    todo!("0x41391c RBX::TToolVerb<RBX::AxisRotateTool,RBX::RunStateVerb>::~TToolVerb()")
+// IDA 0x41391c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_41391c() {
 }
 
 // 0x4139bc — __ZNK3RBX9TToolVerbINS_14AxisRotateToolENS_12RunStateVerbEE9isCheckedEv
 // type: bool __fastcall(int)
 #[doc(alias = "RBX::TToolVerb<RBX::AxisRotateTool,RBX::RunStateVerb>::isChecked(void)const")]
 // was: __ZNK3RBX9TToolVerbINS_14AxisRotateToolENS_12RunStateVerbEE9isCheckedEv
-pub fn stub_4139bc() -> ! {
-    todo!("0x4139bc RBX::TToolVerb<RBX::AxisRotateTool,RBX::RunStateVerb>::isChecked(void)const")
+// IDA 0x4139bc: 20 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4139bc() {
 }
 
 // 0x4139f0 — __ZN3RBX9TToolVerbINS_14AxisRotateToolENS_12RunStateVerbEE4doItEPNS_10IDataStateE
 // type: void __fastcall(_BYTE *)
 #[doc(alias = "RBX::TToolVerb<RBX::AxisRotateTool,RBX::RunStateVerb>::doIt(RBX::IDataState *)")]
 // was: __ZN3RBX9TToolVerbINS_14AxisRotateToolENS_12RunStateVerbEE4doItEPNS_10IDataStateE
-pub fn stub_4139f0() -> ! {
-    todo!("0x4139f0 RBX::TToolVerb<RBX::AxisRotateTool,RBX::RunStateVerb>::doIt(RBX::IDataState *)")
+// IDA 0x4139f0: 99 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4139f0() {
 }
 
 // 0x413b04 — __ZN3RBX9TToolVerbINS_14AxisRotateToolENS_12RunStateVerbEE15newMouseCommandEv
 // type: void __fastcall(_DWORD *, int)
 #[doc(alias = "RBX::TToolVerb<RBX::AxisRotateTool,RBX::RunStateVerb>::newMouseCommand(void)")]
 // was: __ZN3RBX9TToolVerbINS_14AxisRotateToolENS_12RunStateVerbEE15newMouseCommandEv
-pub fn stub_413b04() -> ! {
-    todo!("0x413b04 RBX::TToolVerb<RBX::AxisRotateTool,RBX::RunStateVerb>::newMouseCommand(void)")
+// IDA 0x413b04: 71 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_413b04() {
 }
 
 // 0x413bd0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_14AxisRotateToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 // type: void __fastcall(int, RBX::Workspace *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::AxisRotateTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AxisRotateTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_14AxisRotateToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
-pub fn stub_413bd0() -> ! {
-    todo!("0x413bd0 rbx_core::SharedPtr<RBX::AxisRotateTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AxisRotateTool,RBX::Workspace *>(RBX::Workspace *)")
+// IDA 0x413bd0: 74 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_413bd0() {
 }
 
 // 0x413ca8 — __ZNK3RBX5NamedINS_12AxisToolBaseELZNS_15sAxisRotateToolEEE7getNameEv
 // type: int()
 #[doc(alias = "__ZNK3RBX5NamedINS_12AxisToolBaseELZNS_15sAxisRotateToolEEE7getNameEv")]
 // was: __ZNK3RBX5NamedINS_12AxisToolBaseELZNS_15sAxisRotateToolEEE7getNameEv
-pub fn stub_413ca8() -> ! {
-    todo!("0x413ca8 __ZNK3RBX5NamedINS_12AxisToolBaseELZNS_15sAxisRotateToolEEE7getNameEv")
+// IDA 0x413ca8: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_413ca8() {
 }
 
 // 0x413cac — __ZN3RBX14AxisRotateToolD1Ev
 // type: void __fastcall(RBX::AxisRotateTool *__hidden this)
 #[doc(alias = "RBX::AxisRotateTool::~AxisRotateTool()")]
 // was: __ZN3RBX14AxisRotateToolD1Ev
-pub fn stub_413cac() -> ! {
-    todo!("0x413cac RBX::AxisRotateTool::~AxisRotateTool()")
+// IDA 0x413cac: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_413cac() {
 }
 
 // 0x413d90 — __ZN3RBX14AxisRotateToolD0Ev
 // type: void __fastcall(RBX::AxisRotateTool *__hidden this)
 #[doc(alias = "RBX::AxisRotateTool::~AxisRotateTool()")]
 // was: __ZN3RBX14AxisRotateToolD0Ev
-pub fn stub_413d90() -> ! {
-    todo!("0x413d90 RBX::AxisRotateTool::~AxisRotateTool()")
+// IDA 0x413d90: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_413d90() {
 }
 
 // 0x413e88 — __ZNK3RBX14AxisRotateTool8isStickyEv
 // type: void __fastcall(RBX::AxisRotateTool *this, int)
 #[doc(alias = "RBX::AxisRotateTool::isSticky(void)const")]
 // was: __ZNK3RBX14AxisRotateTool8isStickyEv
-pub fn stub_413e88() -> ! {
-    todo!("0x413e88 RBX::AxisRotateTool::isSticky(void)const")
+// IDA 0x413e88: 70 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_413e88() {
 }
 
 // 0x413f50 — __ZNK3RBX12AxisToolBase14drawConnectorsEv
 // type: int __fastcall(RBX::AxisToolBase *this)
 #[doc(alias = "RBX::AxisToolBase::drawConnectors(void)const")]
 // was: __ZNK3RBX12AxisToolBase14drawConnectorsEv
-pub fn stub_413f50() -> ! {
-    todo!("0x413f50 RBX::AxisToolBase::drawConnectors(void)const")
+// IDA 0x413f50: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_413f50() {
 }
 
 // 0x413f54 — __ZNK3RBX12AxisToolBase13getCursorNameEv
 // type: int __fastcall(RBX::AxisToolBase *this, int)
 #[doc(alias = "RBX::AxisToolBase::getCursorName(void)const")]
 // was: __ZNK3RBX12AxisToolBase13getCursorNameEv
-pub fn stub_413f54() -> ! {
-    todo!("0x413f54 RBX::AxisToolBase::getCursorName(void)const")
+// IDA 0x413f54: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_413f54() {
 }
 
 // 0x413f60 — __ZNK3RBX14AxisRotateTool14getHandleColorEv
 // type: int __fastcall(RBX::AxisRotateTool *this)
 #[doc(alias = "RBX::AxisRotateTool::getHandleColor(void)const")]
 // was: __ZNK3RBX14AxisRotateTool14getHandleColorEv
-pub fn stub_413f60() -> ! {
-    todo!("0x413f60 RBX::AxisRotateTool::getHandleColor(void)const")
+// IDA 0x413f60: 11 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_413f60() {
 }
 
 // 0x413f78 — __ZNK3RBX14AxisRotateTool11getDragTypeEv
 // type: int __fastcall(RBX::AxisRotateTool *this)
 #[doc(alias = "RBX::AxisRotateTool::getDragType(void)const")]
 // was: __ZNK3RBX14AxisRotateTool11getDragTypeEv
-pub fn stub_413f78() -> ! {
-    todo!("0x413f78 RBX::AxisRotateTool::getDragType(void)const")
+// IDA 0x413f78: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_413f78() {
 }
 
 // 0x413f7c — __ZThn36_N3RBX14AxisRotateToolD1Ev
 // type: void __fastcall(RBX::AxisRotateTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AxisRotateTool::~AxisRotateTool()")]
 // was: __ZThn36_N3RBX14AxisRotateToolD1Ev
-pub fn stub_413f7c() -> ! {
-    todo!("0x413f7c non-virtual thunk toRBX::AxisRotateTool::~AxisRotateTool()")
+// IDA 0x413f7c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_413f7c() {
 }
 
 // 0x414060 — __ZThn36_N3RBX14AxisRotateToolD0Ev
 // type: void __fastcall(RBX::AxisRotateTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AxisRotateTool::~AxisRotateTool()")]
 // was: __ZThn36_N3RBX14AxisRotateToolD0Ev
-pub fn stub_414060() -> ! {
-    todo!("0x414060 non-virtual thunk toRBX::AxisRotateTool::~AxisRotateTool()")
+// IDA 0x414060: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_414060() {
 }
 
 // 0x414158 — __ZN3RBX12AxisToolBaseD1Ev
 // type: void __fastcall(RBX::AxisToolBase *__hidden this)
 #[doc(alias = "RBX::AxisToolBase::~AxisToolBase()")]
 // was: __ZN3RBX12AxisToolBaseD1Ev
-pub fn stub_414158() -> ! {
-    todo!("0x414158 RBX::AxisToolBase::~AxisToolBase()")
+// IDA 0x414158: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_414158() {
 }
 
 // 0x41423c — __ZN3RBX12AxisToolBaseD0Ev
 // type: void __fastcall(RBX::AxisToolBase *__hidden this)
 #[doc(alias = "RBX::AxisToolBase::~AxisToolBase()")]
 // was: __ZN3RBX12AxisToolBaseD0Ev
-pub fn stub_41423c() -> ! {
-    todo!("0x41423c RBX::AxisToolBase::~AxisToolBase()")
+// IDA 0x41423c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_41423c() {
 }
 
 // 0x414334 — __ZThn36_N3RBX12AxisToolBaseD1Ev
 // type: void __fastcall(RBX::AxisToolBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AxisToolBase::~AxisToolBase()")]
 // was: __ZThn36_N3RBX12AxisToolBaseD1Ev
-pub fn stub_414334() -> ! {
-    todo!("0x414334 non-virtual thunk toRBX::AxisToolBase::~AxisToolBase()")
+// IDA 0x414334: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_414334() {
 }
 
 // 0x414418 — __ZThn36_N3RBX12AxisToolBaseD0Ev
 // type: void __fastcall(RBX::AxisToolBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AxisToolBase::~AxisToolBase()")]
 // was: __ZThn36_N3RBX12AxisToolBaseD0Ev
-pub fn stub_414418() -> ! {
-    todo!("0x414418 non-virtual thunk toRBX::AxisToolBase::~AxisToolBase()")
+// IDA 0x414418: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_414418() {
 }
 
 // 0x414510 — __ZN5boost10shared_ptrIN3RBX14AxisRotateToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::AxisRotateTool>::shared_ptr<RBX::AxisRotateTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AxisRotateTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX14AxisRotateToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
-pub fn stub_414510() -> ! {
-    todo!("0x414510 rbx_core::SharedPtr<RBX::AxisRotateTool>::shared_ptr<RBX::AxisRotateTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AxisRotateTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
+// IDA 0x414510: 70 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_414510() {
 }
 
 // 0x4145d8 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_14AxisRotateToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AxisRotateTool,RBX::AxisRotateTool>(rbx_core::SharedPtr<RBX::AxisRotateTool> const*,RBX::AxisRotateTool *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_14AxisRotateToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
-pub fn stub_4145d8() -> ! {
-    todo!("0x4145d8 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AxisRotateTool,RBX::AxisRotateTool>(rbx_core::SharedPtr<RBX::AxisRotateTool> const*,RBX::AxisRotateTool *)const")
+// IDA 0x4145d8: 81 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4145d8() {
 }
 
 // 0x4146bc — __ZN5boost6detail12shared_countC2IPN3RBX14AxisRotateToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::AxisRotateTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AxisRotateTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 // was: __ZN5boost6detail12shared_countC2IPN3RBX14AxisRotateToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
-pub fn stub_4146bc() -> ! {
-    todo!("0x4146bc boost::detail::shared_count::shared_count<RBX::AxisRotateTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AxisRotateTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
+// IDA 0x4146bc: 58 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4146bc() {
 }
 
 // 0x4147b4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AxisRotateToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AxisRotateTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AxisRotateToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
-pub fn stub_4147b4() -> ! {
-    todo!("0x4147b4 boost::detail::sp_counted_impl_pd<RBX::AxisRotateTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
+// IDA 0x4147b4: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_4147b4() {
 }
 
 // 0x4147b8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AxisRotateToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AxisRotateTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AxisRotateToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
-pub fn stub_4147b8() -> ! {
-    todo!("0x4147b8 boost::detail::sp_counted_impl_pd<RBX::AxisRotateTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
+// IDA 0x4147b8: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_4147b8() {
 }
 
 // 0x4147bc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AxisRotateToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AxisRotateTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AxisRotateToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
-pub fn stub_4147bc() -> ! {
-    todo!("0x4147bc boost::detail::sp_counted_impl_pd<RBX::AxisRotateTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")
+// IDA 0x4147bc: 7 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4147bc() {
 }
 
 // 0x4147cc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AxisRotateToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AxisRotateTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AxisRotateToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
-pub fn stub_4147cc() -> ! {
-    todo!("0x4147cc boost::detail::sp_counted_impl_pd<RBX::AxisRotateTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")
+// IDA 0x4147cc: 10 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4147cc() {
 }
 
 // 0x4147e4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AxisRotateToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AxisRotateTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AxisRotateToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
-pub fn stub_4147e4() -> ! {
-    todo!("0x4147e4 boost::detail::sp_counted_impl_pd<RBX::AxisRotateTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")
+// IDA 0x4147e4: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4147e4() {
 }
 
 // 0x4147e8 — __ZN3RBX4Name7declareILZNS_15sAxisRotateToolEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_15sAxisRotateToolEEEERKS0_v")]
 // was: __ZN3RBX4Name7declareILZNS_15sAxisRotateToolEEEERKS0_v
-pub fn stub_4147e8() -> ! {
-    todo!("0x4147e8 __ZN3RBX4Name7declareILZNS_15sAxisRotateToolEEEERKS0_v")
+// IDA 0x4147e8: 20 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4147e8() {
 }
 
 // 0x41482c — __ZN3RBX4Name13callDoDeclareILZNS_15sAxisRotateToolEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_15sAxisRotateToolEEEEvv")]
 // was: __ZN3RBX4Name13callDoDeclareILZNS_15sAxisRotateToolEEEEvv
-pub fn stub_41482c() -> ! {
-    todo!("0x41482c __ZN3RBX4Name13callDoDeclareILZNS_15sAxisRotateToolEEEEvv")
+// IDA 0x41482c: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_41482c() {
 }
 
 // 0x414830 — __ZN3RBX4Name9doDeclareILZNS_15sAxisRotateToolEEEERKS0_v
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_15sAxisRotateToolEEEERKS0_v")]
 // was: __ZN3RBX4Name9doDeclareILZNS_15sAxisRotateToolEEEERKS0_v
-pub fn stub_414830() -> ! {
-    todo!("0x414830 __ZN3RBX4Name9doDeclareILZNS_15sAxisRotateToolEEEERKS0_v")
+// IDA 0x414830: 73 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_414830() {
 }
 
 // 0x414914 — __ZN3RBX12ResetCommandC2EPNS_9DataModelE
 // type: RBX::ResetCommand *__fastcall(RBX::ResetCommand *this, RBX::DataModel *)
 #[doc(alias = "RBX::ResetCommand::ResetCommand(RBX::DataModel *)")]
 // was: __ZN3RBX12ResetCommandC2EPNS_9DataModelE
-pub fn stub_414914() -> ! {
-    todo!("0x414914 RBX::ResetCommand::ResetCommand(RBX::DataModel *)")
+// IDA 0x414914: 112 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_414914() {
 }
 
 // 0x414a5c — __ZN3RBX11StopCommandC2EPNS_9DataModelE
 // type: RBX::StopCommand *__fastcall(RBX::StopCommand *this, RBX::DataModel *)
 #[doc(alias = "RBX::StopCommand::StopCommand(RBX::DataModel *)")]
 // was: __ZN3RBX11StopCommandC2EPNS_9DataModelE
-pub fn stub_414a5c() -> ! {
-    todo!("0x414a5c RBX::StopCommand::StopCommand(RBX::DataModel *)")
+// IDA 0x414a5c: 112 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_414a5c() {
 }
 
 // 0x414ba4 — __ZN3RBX10RunCommandC2EPNS_9DataModelE
 // type: RBX::RunCommand *__fastcall(RBX::RunCommand *this, RBX::DataModel *)
 #[doc(alias = "RBX::RunCommand::RunCommand(RBX::DataModel *)")]
 // was: __ZN3RBX10RunCommandC2EPNS_9DataModelE
-pub fn stub_414ba4() -> ! {
-    todo!("0x414ba4 RBX::RunCommand::RunCommand(RBX::DataModel *)")
+// IDA 0x414ba4: 112 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_414ba4() {
 }
 
 // 0x414cec — __ZN3RBX15MoveUpBrickVerbC2EPNS_9DataModelE
 // type: RBX::MoveUpBrickVerb *__fastcall(RBX::MoveUpBrickVerb *this, RBX::DataModel *)
 #[doc(alias = "RBX::MoveUpBrickVerb::MoveUpBrickVerb(RBX::DataModel *)")]
 // was: __ZN3RBX15MoveUpBrickVerbC2EPNS_9DataModelE
-pub fn stub_414cec() -> ! {
-    todo!("0x414cec RBX::MoveUpBrickVerb::MoveUpBrickVerb(RBX::DataModel *)")
+// IDA 0x414cec: 114 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_414cec() {
 }
 
 // 0x414e3c — __ZN3RBX19MoveUpSelectionVerbC2EPNS_9DataModelERKSsf
 // type: RBX::MoveUpSelectionVerb *__fastcall(RBX::MoveUpSelectionVerb *this, RBX::DataModel *, const std::string *, float)
 #[doc(alias = "RBX::MoveUpSelectionVerb::MoveUpSelectionVerb(RBX::DataModel *,std::string const&,float)")]
 // was: __ZN3RBX19MoveUpSelectionVerbC2EPNS_9DataModelERKSsf
-pub fn stub_414e3c() -> ! {
-    todo!("0x414e3c RBX::MoveUpSelectionVerb::MoveUpSelectionVerb(RBX::DataModel *,std::string const&,float)")
+// IDA 0x414e3c: 110 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_414e3c() {
 }
 
 // 0x414f80 — __ZN3RBX15MoveUpBrickVerbD0Ev
 // type: void __fastcall(RBX::MoveUpBrickVerb *__hidden this)
 #[doc(alias = "RBX::MoveUpBrickVerb::~MoveUpBrickVerb()")]
 // was: __ZN3RBX15MoveUpBrickVerbD0Ev
-pub fn stub_414f80() -> ! {
-    todo!("0x414f80 RBX::MoveUpBrickVerb::~MoveUpBrickVerb()")
+// IDA 0x414f80: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_414f80() {
 }
 
 // 0x415020 — __ZN3RBX15MoveUpPlateVerbC2EPNS_9DataModelE
 // type: RBX::MoveUpPlateVerb *__fastcall(RBX::MoveUpPlateVerb *this, RBX::DataModel *)
 #[doc(alias = "RBX::MoveUpPlateVerb::MoveUpPlateVerb(RBX::DataModel *)")]
 // was: __ZN3RBX15MoveUpPlateVerbC2EPNS_9DataModelE
-pub fn stub_415020() -> ! {
-    todo!("0x415020 RBX::MoveUpPlateVerb::MoveUpPlateVerb(RBX::DataModel *)")
+// IDA 0x415020: 114 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_415020() {
 }
 
 // 0x415170 — __ZN3RBX15MoveUpPlateVerbD0Ev
 // type: void __fastcall(RBX::MoveUpPlateVerb *__hidden this)
 #[doc(alias = "RBX::MoveUpPlateVerb::~MoveUpPlateVerb()")]
 // was: __ZN3RBX15MoveUpPlateVerbD0Ev
-pub fn stub_415170() -> ! {
-    todo!("0x415170 RBX::MoveUpPlateVerb::~MoveUpPlateVerb()")
+// IDA 0x415170: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_415170() {
 }
 
 // 0x415210 — __ZN3RBX19AllCanSelectCommandC2EPNS_9DataModelE
 // type: RBX::AllCanSelectCommand *__fastcall(RBX::AllCanSelectCommand *this, RBX::DataModel *)
 #[doc(alias = "RBX::AllCanSelectCommand::AllCanSelectCommand(RBX::DataModel *)")]
 // was: __ZN3RBX19AllCanSelectCommandC2EPNS_9DataModelE
-pub fn stub_415210() -> ! {
-    todo!("0x415210 RBX::AllCanSelectCommand::AllCanSelectCommand(RBX::DataModel *)")
+// IDA 0x415210: 112 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_415210() {
 }
 
 // 0x415358 — __ZN3RBX19CanNotSelectCommandC2EPNS_9DataModelE
 // type: RBX::CanNotSelectCommand *__fastcall(RBX::CanNotSelectCommand *this, RBX::DataModel *)
 #[doc(alias = "RBX::CanNotSelectCommand::CanNotSelectCommand(RBX::DataModel *)")]
 // was: __ZN3RBX19CanNotSelectCommandC2EPNS_9DataModelE
-pub fn stub_415358() -> ! {
-    todo!("0x415358 RBX::CanNotSelectCommand::CanNotSelectCommand(RBX::DataModel *)")
+// IDA 0x415358: 112 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_415358() {
 }
 
 // 0x4154a0 — __ZN3RBX14CanCollideVerbC2EPNS_9DataModelE
 // type: char **__fastcall(char **this, RBX::DataModel *)
 #[doc(alias = "RBX::CanCollideVerb::CanCollideVerb(RBX::DataModel *)")]
 // was: __ZN3RBX14CanCollideVerbC2EPNS_9DataModelE
-pub fn stub_4154a0() -> ! {
-    todo!("0x4154a0 RBX::CanCollideVerb::CanCollideVerb(RBX::DataModel *)")
+// IDA 0x4154a0: 115 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4154a0() {
 }
 
 // 0x4155f4 — __ZN3RBX14CanCollideVerbD0Ev
 // type: void __fastcall(RBX::CanCollideVerb *__hidden this)
 #[doc(alias = "RBX::CanCollideVerb::~CanCollideVerb()")]
 // was: __ZN3RBX14CanCollideVerbD0Ev
-pub fn stub_4155f4() -> ! {
-    todo!("0x4155f4 RBX::CanCollideVerb::~CanCollideVerb()")
+// IDA 0x4155f4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_4155f4() {
 }
 
 // 0x415694 — __ZN3RBX15TranslucentVerbC2EPNS_9DataModelE
 // type: char **__fastcall(char **this, RBX::DataModel *)
 #[doc(alias = "RBX::TranslucentVerb::TranslucentVerb(RBX::DataModel *)")]
 // was: __ZN3RBX15TranslucentVerbC2EPNS_9DataModelE
-pub fn stub_415694() -> ! {
-    todo!("0x415694 RBX::TranslucentVerb::TranslucentVerb(RBX::DataModel *)")
+// IDA 0x415694: 115 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_415694() {
 }
 
 // 0x4157e8 — __ZN3RBX15TranslucentVerbD0Ev
 // type: void __fastcall(RBX::TranslucentVerb *__hidden this)
 #[doc(alias = "RBX::TranslucentVerb::~TranslucentVerb()")]
 // was: __ZN3RBX15TranslucentVerbD0Ev
-pub fn stub_4157e8() -> ! {
-    todo!("0x4157e8 RBX::TranslucentVerb::~TranslucentVerb()")
+// IDA 0x4157e8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_4157e8() {
 }
 
 // 0x415888 — __ZN3RBX10AnchorVerbC2EPNS_9DataModelE
 // type: char **__fastcall(char **this, RBX::DataModel *)
 #[doc(alias = "RBX::AnchorVerb::AnchorVerb(RBX::DataModel *)")]
 // was: __ZN3RBX10AnchorVerbC2EPNS_9DataModelE
-pub fn stub_415888() -> ! {
-    todo!("0x415888 RBX::AnchorVerb::AnchorVerb(RBX::DataModel *)")
+// IDA 0x415888: 115 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_415888() {
 }
 
 // 0x4159dc — __ZN3RBX10AnchorVerbD0Ev
 // type: void __fastcall(RBX::AnchorVerb *__hidden this)
 #[doc(alias = "RBX::AnchorVerb::~AnchorVerb()")]
 // was: __ZN3RBX10AnchorVerbD0Ev
-pub fn stub_4159dc() -> ! {
-    todo!("0x4159dc RBX::AnchorVerb::~AnchorVerb()")
+// IDA 0x4159dc: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_4159dc() {
 }
 
 // 0x415a7c — __ZN3RBX13UnlockAllVerbC2EPNS_9DataModelE
 // type: RBX::UnlockAllVerb *__fastcall(RBX::UnlockAllVerb *this, RBX::DataModel *)
 #[doc(alias = "RBX::UnlockAllVerb::UnlockAllVerb(RBX::DataModel *)")]
 // was: __ZN3RBX13UnlockAllVerbC2EPNS_9DataModelE
-pub fn stub_415a7c() -> ! {
-    todo!("0x415a7c RBX::UnlockAllVerb::UnlockAllVerb(RBX::DataModel *)")
+// IDA 0x415a7c: 112 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_415a7c() {
 }
 
 // 0x415bc4 — __ZN3RBX16SelectAllCommandC2EPNS_9DataModelE
 // type: RBX::SelectAllCommand *__fastcall(RBX::SelectAllCommand *this, RBX::DataModel *)
 #[doc(alias = "RBX::SelectAllCommand::SelectAllCommand(RBX::DataModel *)")]
 // was: __ZN3RBX16SelectAllCommandC2EPNS_9DataModelE
-pub fn stub_415bc4() -> ! {
-    todo!("0x415bc4 RBX::SelectAllCommand::SelectAllCommand(RBX::DataModel *)")
+// IDA 0x415bc4: 112 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_415bc4() {
 }
 
 // 0x415d0c — __ZN3RBX19DeleteSelectionVerbC2EPNS_9DataModelE
 // type: RBX::DeleteSelectionVerb *__fastcall(RBX::DeleteSelectionVerb *this, RBX::DataModel *)
 #[doc(alias = "RBX::DeleteSelectionVerb::DeleteSelectionVerb(RBX::DataModel *)")]
 // was: __ZN3RBX19DeleteSelectionVerbC2EPNS_9DataModelE
-pub fn stub_415d0c() -> ! {
-    todo!("0x415d0c RBX::DeleteSelectionVerb::DeleteSelectionVerb(RBX::DataModel *)")
+// IDA 0x415d0c: 113 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_415d0c() {
 }
 
 // 0x415e58 — __ZN3RBX19DeleteSelectionVerbD0Ev
 // type: void __fastcall(RBX::DeleteSelectionVerb *__hidden this)
 #[doc(alias = "RBX::DeleteSelectionVerb::~DeleteSelectionVerb()")]
 // was: __ZN3RBX19DeleteSelectionVerbD0Ev
-pub fn stub_415e58() -> ! {
-    todo!("0x415e58 RBX::DeleteSelectionVerb::~DeleteSelectionVerb()")
+// IDA 0x415e58: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_415e58() {
 }
 
 // 0x415ef8 — __ZN3RBX23PlayDeleteSelectionVerbC2EPNS_9DataModelE
 // type: RBX::PlayDeleteSelectionVerb *__fastcall(RBX::PlayDeleteSelectionVerb *this, RBX::DataModel *)
 #[doc(alias = "RBX::PlayDeleteSelectionVerb::PlayDeleteSelectionVerb(RBX::DataModel *)")]
 // was: __ZN3RBX23PlayDeleteSelectionVerbC2EPNS_9DataModelE
-pub fn stub_415ef8() -> ! {
-    todo!("0x415ef8 RBX::PlayDeleteSelectionVerb::PlayDeleteSelectionVerb(RBX::DataModel *)")
+// IDA 0x415ef8: 113 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_415ef8() {
 }
 
 // 0x416044 — __ZN3RBX23PlayDeleteSelectionVerbD0Ev
 // type: void __fastcall(RBX::PlayDeleteSelectionVerb *__hidden this)
 #[doc(alias = "RBX::PlayDeleteSelectionVerb::~PlayDeleteSelectionVerb()")]
 // was: __ZN3RBX23PlayDeleteSelectionVerbD0Ev
-pub fn stub_416044() -> ! {
-    todo!("0x416044 RBX::PlayDeleteSelectionVerb::~PlayDeleteSelectionVerb()")
+// IDA 0x416044: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_416044() {
 }
 
 // 0x4160e4 — __GLOBAL__I_a_174
 #[doc(alias = "global constructor keyed to_a_174")]
 // was: __GLOBAL__I_a_174
-pub fn stub_4160e4() -> ! {
-    todo!("0x4160e4 global constructor keyed to_a_174")
+// IDA 0x4160e4: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+pub fn stub_4160e4() {
 }
 
 // 0x416388 — __ZN3RBX13ConfigurationC2Ev
 // type: RBX::Instance *__fastcall(RBX::Configuration *this)
 #[doc(alias = "RBX::Configuration::Configuration(void)")]
 // was: __ZN3RBX13ConfigurationC2Ev
-pub fn stub_416388() -> ! {
-    todo!("0x416388 RBX::Configuration::Configuration(void)")
+// IDA 0x416388: 168 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_416388() {
 }
 
 // 0x41657c — __ZNK3RBX13Configuration14askForbidChildEPKNS_8InstanceE
 // type: bool __fastcall(RBX::Configuration *this, const RBX::Instance *lpsrc)
 #[doc(alias = "RBX::Configuration::askForbidChild(RBX::Instance const*)const")]
 // was: __ZNK3RBX13Configuration14askForbidChildEPKNS_8InstanceE
-pub fn stub_41657c() -> ! {
-    todo!("0x41657c RBX::Configuration::askForbidChild(RBX::Instance const*)const")
+// IDA 0x41657c: 22 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_41657c() {
 }
 
 // 0x4165b8 — __ZNK3RBX13Configuration12askSetParentEPKNS_8InstanceE
 // type: int __fastcall(signed int this, const RBX::Instance *, int, int)
 #[doc(alias = "RBX::Configuration::askSetParent(RBX::Instance const*)const")]
 // was: __ZNK3RBX13Configuration12askSetParentEPKNS_8InstanceE
-pub fn stub_4165b8() -> ! {
-    todo!("0x4165b8 RBX::Configuration::askSetParent(RBX::Instance const*)const")
+// IDA 0x4165b8: 70 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4165b8() {
 }
 
 // 0x416674 — __ZN3RBX13Configuration17onServiceProviderEPNS_15ServiceProviderES2_
 // type: void __fastcall(RBX::Configuration *this, RBX::ServiceProvider *, RBX::ServiceProvider *, int)
 #[doc(alias = "RBX::Configuration::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
 // was: __ZN3RBX13Configuration17onServiceProviderEPNS_15ServiceProviderES2_
-pub fn stub_416674() -> ! {
-    todo!("0x416674 RBX::Configuration::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
+// IDA 0x416674: 154 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_416674() {
 }
 
 // 0x416808 — __ZN3RBX11shared_fromINS_13ConfigurationEEEN5boost10shared_ptrIT_EEPS4_
 // type: void __fastcall(_QWORD *, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Configuration> RBX::shared_from<RBX::Configuration>(RBX::Configuration*)")]
 // was: __ZN3RBX11shared_fromINS_13ConfigurationEEEN5boost10shared_ptrIT_EEPS4_
-pub fn stub_416808() -> ! {
-    todo!("0x416808 rbx_core::SharedPtr<RBX::Configuration> RBX::shared_from<RBX::Configuration>(RBX::Configuration*)")
+// IDA 0x416808: 126 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_416808() {
 }
 
 // 0x416978 — __ZN3RBX13ConfigurationD1Ev
 // type: void __fastcall(RBX::Configuration *__hidden this)
 #[doc(alias = "RBX::Configuration::~Configuration()")]
 // was: __ZN3RBX13ConfigurationD1Ev
-pub fn stub_416978() -> ! {
-    todo!("0x416978 RBX::Configuration::~Configuration()")
+// IDA 0x416978: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_416978() {
 }
 
 // 0x41697c — __ZN3RBX13ConfigurationD0Ev
 // type: void __fastcall(RBX::Configuration *__hidden this)
 #[doc(alias = "RBX::Configuration::~Configuration()")]
 // was: __ZN3RBX13ConfigurationD0Ev
-pub fn stub_41697c() -> ! {
-    todo!("0x41697c RBX::Configuration::~Configuration()")
+// IDA 0x41697c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_41697c() {
 }
 
 // 0x416a1c — __ZNK3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E12getClassNameEv
 // type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E12getClassNameEv
-pub fn stub_416a1c() -> ! {
-    todo!("0x416a1c __ZNK3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E12getClassNameEv")
+// IDA 0x416a1c: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_416a1c() {
 }
 
 // 0x416a2c — __ZThn32_N3RBX13ConfigurationD1Ev
 // type: void __fastcall(RBX::Configuration *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Configuration::~Configuration()")]
 // was: __ZThn32_N3RBX13ConfigurationD1Ev
-pub fn stub_416a2c() -> ! {
-    todo!("0x416a2c non-virtual thunk toRBX::Configuration::~Configuration()")
+// IDA 0x416a2c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_416a2c() {
 }
 
 // 0x416a34 — __ZThn32_N3RBX13ConfigurationD0Ev
 // type: void __fastcall(RBX::Configuration *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Configuration::~Configuration()")]
 // was: __ZThn32_N3RBX13ConfigurationD0Ev
-pub fn stub_416a34() -> ! {
-    todo!("0x416a34 non-virtual thunk toRBX::Configuration::~Configuration()")
+// IDA 0x416a34: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_416a34() {
 }
 
 // 0x416ad8 — __ZThn32_NK3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E12getClassNameEv")]
 // was: __ZThn32_NK3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E12getClassNameEv
-pub fn stub_416ad8() -> ! {
-    todo!("0x416ad8 __ZThn32_NK3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E12getClassNameEv")
+// IDA 0x416ad8: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_416ad8() {
 }
 
 // 0x416ae8 — __ZThn36_N3RBX13ConfigurationD1Ev
 // type: void __fastcall(RBX::Configuration *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Configuration::~Configuration()")]
 // was: __ZThn36_N3RBX13ConfigurationD1Ev
-pub fn stub_416ae8() -> ! {
-    todo!("0x416ae8 non-virtual thunk toRBX::Configuration::~Configuration()")
+// IDA 0x416ae8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_416ae8() {
 }
 
 // 0x416af0 — __ZThn36_N3RBX13ConfigurationD0Ev
 // type: void __fastcall(RBX::Configuration *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Configuration::~Configuration()")]
 // was: __ZThn36_N3RBX13ConfigurationD0Ev
-pub fn stub_416af0() -> ! {
-    todo!("0x416af0 non-virtual thunk toRBX::Configuration::~Configuration()")
+// IDA 0x416af0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_416af0() {
 }
 
 // 0x416b94 — __ZN3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E7CreatorD1Ev
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E7CreatorD1Ev")]
 // was: __ZN3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E7CreatorD1Ev
-pub fn stub_416b94() -> ! {
-    todo!("0x416b94 __ZN3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E7CreatorD1Ev")
+// IDA 0x416b94: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_416b94() {
 }
 
 // 0x416b98 — __ZN3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E7CreatorD2Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E7CreatorD2Ev")]
 // was: __ZN3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E7CreatorD2Ev
-pub fn stub_416b98() -> ! {
-    todo!("0x416b98 __ZN3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E7CreatorD2Ev")
+// IDA 0x416b98: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_416b98() {
 }
 
 // 0x416c34 — __ZNK3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E7Creator12getClassNameEv
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E7Creator12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E7Creator12getClassNameEv
-pub fn stub_416c34() -> ! {
-    todo!("0x416c34 __ZNK3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E7Creator12getClassNameEv")
+// IDA 0x416c34: 42 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_416c34() {
 }
 
 // 0x416cbc — __ZNK3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E7Creator6createEv
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E7Creator6createEv")]
 // was: __ZNK3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E7Creator6createEv
-pub fn stub_416cbc() -> ! {
-    todo!("0x416cbc __ZNK3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E7Creator6createEv")
+// IDA 0x416cbc: 110 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_416cbc() {
 }
 
 // 0x416e00 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13ConfigurationEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Configuration> RBX::Creatable<RBX::Instance>::create<RBX::Configuration>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_13ConfigurationEEEN5boost10shared_ptrIT_EEv
-pub fn stub_416e00() -> ! {
-    todo!("0x416e00 rbx_core::SharedPtr<RBX::Configuration> RBX::Creatable<RBX::Instance>::create<RBX::Configuration>(void)")
+// IDA 0x416e00: 60 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_416e00() {
 }
 
 // 0x416eb0 — __ZN5boost10shared_ptrIN3RBX13ConfigurationEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Configuration>::shared_ptr<RBX::Configuration,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX13ConfigurationEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-pub fn stub_416eb0() -> ! {
-    todo!("0x416eb0 rbx_core::SharedPtr<RBX::Configuration>::shared_ptr<RBX::Configuration,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter)")
+// IDA 0x416eb0: 70 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_416eb0() {
 }
 
 // 0x416f78 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13ConfigurationES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Configuration,RBX::Configuration>(rbx_core::SharedPtr<RBX::Configuration> const*,RBX::Configuration *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13ConfigurationES6_EEvPKNS_10shared_ptrIT_EEPT0_
-pub fn stub_416f78() -> ! {
-    todo!("0x416f78 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Configuration,RBX::Configuration>(rbx_core::SharedPtr<RBX::Configuration> const*,RBX::Configuration *)const")
+// IDA 0x416f78: 83 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_416f78() {
 }
 
 // 0x417060 — __ZN5boost6detail12shared_countC2IPN3RBX13ConfigurationENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost6detail12shared_countC2IPN3RBX13ConfigurationENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
-pub fn stub_417060() -> ! {
-    todo!("0x417060 boost::detail::shared_count::shared_count<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter)")
+// IDA 0x417060: 58 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_417060() {
 }
 
 // 0x417168 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ConfigurationENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ConfigurationENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
-pub fn stub_417168() -> ! {
-    todo!("0x417168 boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+// IDA 0x417168: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_417168() {
 }

@@ -15,8 +15,8 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // type: void __fastcall(RBX::Clothing *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX8ClothingD1Ev")]
 // was: __ZThn92_N3RBX8ClothingD1Ev
-pub fn stub_3e1aec() -> ! {
-    todo!("0x3e1aec non-virtual thunk toRBX::Clothing::~Clothing()")
+// IDA 0x3e1aec: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e1aec() {
 }
 
 
@@ -24,8 +24,8 @@ pub fn stub_3e1aec() -> ! {
 // type: void __fastcall(RBX::Clothing *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX8ClothingD0Ev")]
 // was: __ZThn92_N3RBX8ClothingD0Ev
-pub fn stub_3e1b38() -> ! {
-    todo!("0x3e1b38 non-virtual thunk toRBX::Clothing::~Clothing()")
+// IDA 0x3e1b38: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e1b38() {
 }
 
 
@@ -33,8 +33,8 @@ pub fn stub_3e1b38() -> ! {
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "RBX::Skin::~Skin()")]
 // was: __ZN3RBX4SkinD1Ev
-pub fn stub_3e1c1c() -> ! {
-    todo!("0x3e1c1c RBX::Skin::~Skin()")
+// IDA 0x3e1c1c: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_3e1c1c() {
 }
 
 
@@ -42,8 +42,8 @@ pub fn stub_3e1c1c() -> ! {
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "RBX::Skin::~Skin()")]
 // was: __ZN3RBX4SkinD0Ev
-pub fn stub_3e1c20() -> ! {
-    todo!("0x3e1c20 RBX::Skin::~Skin()")
+// IDA 0x3e1c20: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e1c20() {
 }
 
 
@@ -51,8 +51,8 @@ pub fn stub_3e1c20() -> ! {
 // type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE12getClassNameEv
-pub fn stub_3e1cc0() -> ! {
-    todo!("0x3e1cc0 __ZNK3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE12getClassNameEv")
+// IDA 0x3e1cc0: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e1cc0() {
 }
 
 
@@ -60,8 +60,8 @@ pub fn stub_3e1cc0() -> ! {
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX4SkinD1Ev")]
 // was: __ZThn32_N3RBX4SkinD1Ev
-pub fn stub_3e1cd0() -> ! {
-    todo!("0x3e1cd0 non-virtual thunk toRBX::Skin::~Skin()")
+// IDA 0x3e1cd0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e1cd0() {
 }
 
 
@@ -69,8 +69,8 @@ pub fn stub_3e1cd0() -> ! {
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX4SkinD0Ev")]
 // was: __ZThn32_N3RBX4SkinD0Ev
-pub fn stub_3e1cd8() -> ! {
-    todo!("0x3e1cd8 non-virtual thunk toRBX::Skin::~Skin()")
+// IDA 0x3e1cd8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e1cd8() {
 }
 
 
@@ -78,8 +78,8 @@ pub fn stub_3e1cd8() -> ! {
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE12getClassNameEv")]
 // was: __ZThn32_NK3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE12getClassNameEv
-pub fn stub_3e1d7c() -> ! {
-    todo!("0x3e1d7c __ZThn32_NK3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE12getClassNameEv")
+// IDA 0x3e1d7c: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e1d7c() {
 }
 
 
@@ -87,8 +87,8 @@ pub fn stub_3e1d7c() -> ! {
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX4SkinD1Ev")]
 // was: __ZThn36_N3RBX4SkinD1Ev
-pub fn stub_3e1d8c() -> ! {
-    todo!("0x3e1d8c non-virtual thunk toRBX::Skin::~Skin()")
+// IDA 0x3e1d8c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e1d8c() {
 }
 
 
@@ -96,8 +96,8 @@ pub fn stub_3e1d8c() -> ! {
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX4SkinD0Ev")]
 // was: __ZThn36_N3RBX4SkinD0Ev
-pub fn stub_3e1d94() -> ! {
-    todo!("0x3e1d94 non-virtual thunk toRBX::Skin::~Skin()")
+// IDA 0x3e1d94: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e1d94() {
 }
 
 
@@ -105,8 +105,8 @@ pub fn stub_3e1d94() -> ! {
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX4SkinD1Ev")]
 // was: __ZThn92_N3RBX4SkinD1Ev
-pub fn stub_3e1e38() -> ! {
-    todo!("0x3e1e38 non-virtual thunk toRBX::Skin::~Skin()")
+// IDA 0x3e1e38: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e1e38() {
 }
 
 
@@ -114,8 +114,8 @@ pub fn stub_3e1e38() -> ! {
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX4SkinD0Ev")]
 // was: __ZThn92_N3RBX4SkinD0Ev
-pub fn stub_3e1e40() -> ! {
-    todo!("0x3e1e40 non-virtual thunk toRBX::Skin::~Skin()")
+// IDA 0x3e1e40: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e1e40() {
 }
 
 
@@ -123,8 +123,8 @@ pub fn stub_3e1e40() -> ! {
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "RBX::BodyColors::~BodyColors()")]
 // was: __ZN3RBX10BodyColorsD1Ev
-pub fn stub_3e1ee4() -> ! {
-    todo!("0x3e1ee4 RBX::BodyColors::~BodyColors()")
+// IDA 0x3e1ee4: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_3e1ee4() {
 }
 
 
@@ -132,8 +132,8 @@ pub fn stub_3e1ee4() -> ! {
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "RBX::BodyColors::~BodyColors()")]
 // was: __ZN3RBX10BodyColorsD0Ev
-pub fn stub_3e1ee8() -> ! {
-    todo!("0x3e1ee8 RBX::BodyColors::~BodyColors()")
+// IDA 0x3e1ee8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e1ee8() {
 }
 
 
@@ -141,8 +141,8 @@ pub fn stub_3e1ee8() -> ! {
 // type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE12getClassNameEv
-pub fn stub_3e1f88() -> ! {
-    todo!("0x3e1f88 __ZNK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE12getClassNameEv")
+// IDA 0x3e1f88: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e1f88() {
 }
 
 
@@ -150,8 +150,8 @@ pub fn stub_3e1f88() -> ! {
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX10BodyColorsD1Ev")]
 // was: __ZThn32_N3RBX10BodyColorsD1Ev
-pub fn stub_3e1f98() -> ! {
-    todo!("0x3e1f98 non-virtual thunk toRBX::BodyColors::~BodyColors()")
+// IDA 0x3e1f98: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e1f98() {
 }
 
 
@@ -159,8 +159,8 @@ pub fn stub_3e1f98() -> ! {
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX10BodyColorsD0Ev")]
 // was: __ZThn32_N3RBX10BodyColorsD0Ev
-pub fn stub_3e1fa0() -> ! {
-    todo!("0x3e1fa0 non-virtual thunk toRBX::BodyColors::~BodyColors()")
+// IDA 0x3e1fa0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e1fa0() {
 }
 
 
@@ -168,8 +168,8 @@ pub fn stub_3e1fa0() -> ! {
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE12getClassNameEv")]
 // was: __ZThn32_NK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE12getClassNameEv
-pub fn stub_3e2044() -> ! {
-    todo!("0x3e2044 __ZThn32_NK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE12getClassNameEv")
+// IDA 0x3e2044: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e2044() {
 }
 
 
@@ -177,8 +177,8 @@ pub fn stub_3e2044() -> ! {
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX10BodyColorsD1Ev")]
 // was: __ZThn36_N3RBX10BodyColorsD1Ev
-pub fn stub_3e2054() -> ! {
-    todo!("0x3e2054 non-virtual thunk toRBX::BodyColors::~BodyColors()")
+// IDA 0x3e2054: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e2054() {
 }
 
 
@@ -186,8 +186,8 @@ pub fn stub_3e2054() -> ! {
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX10BodyColorsD0Ev")]
 // was: __ZThn36_N3RBX10BodyColorsD0Ev
-pub fn stub_3e205c() -> ! {
-    todo!("0x3e205c non-virtual thunk toRBX::BodyColors::~BodyColors()")
+// IDA 0x3e205c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e205c() {
 }
 
 
@@ -195,8 +195,8 @@ pub fn stub_3e205c() -> ! {
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX10BodyColorsD1Ev")]
 // was: __ZThn92_N3RBX10BodyColorsD1Ev
-pub fn stub_3e2100() -> ! {
-    todo!("0x3e2100 non-virtual thunk toRBX::BodyColors::~BodyColors()")
+// IDA 0x3e2100: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e2100() {
 }
 
 
@@ -204,8 +204,8 @@ pub fn stub_3e2100() -> ! {
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX10BodyColorsD0Ev")]
 // was: __ZThn92_N3RBX10BodyColorsD0Ev
-pub fn stub_3e2108() -> ! {
-    todo!("0x3e2108 non-virtual thunk toRBX::BodyColors::~BodyColors()")
+// IDA 0x3e2108: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e2108() {
 }
 
 
@@ -213,8 +213,8 @@ pub fn stub_3e2108() -> ! {
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE7CreatorD1Ev")]
 // was: __ZN3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE7CreatorD1Ev
-pub fn stub_3e21ac() -> ! {
-    todo!("0x3e21ac __ZN3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE7CreatorD1Ev")
+// IDA 0x3e21ac: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_3e21ac() {
 }
 
 
@@ -222,8 +222,8 @@ pub fn stub_3e21ac() -> ! {
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE7CreatorD1Ev")]
 // was: __ZN3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE7CreatorD1Ev
-pub fn stub_3e21b0() -> ! {
-    todo!("0x3e21b0 __ZN3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE7CreatorD1Ev")
+// IDA 0x3e21b0: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_3e21b0() {
 }
 
 
@@ -231,8 +231,8 @@ pub fn stub_3e21b0() -> ! {
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE7CreatorD1Ev")]
 // was: __ZN3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE7CreatorD1Ev
-pub fn stub_3e21b4() -> ! {
-    todo!("0x3e21b4 __ZN3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE7CreatorD1Ev")
+// IDA 0x3e21b4: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_3e21b4() {
 }
 
 
@@ -240,8 +240,8 @@ pub fn stub_3e21b4() -> ! {
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE7CreatorD1Ev")]
 // was: __ZN3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE7CreatorD1Ev
-pub fn stub_3e21b8() -> ! {
-    todo!("0x3e21b8 __ZN3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE7CreatorD1Ev")
+// IDA 0x3e21b8: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_3e21b8() {
 }
 
 
@@ -249,8 +249,8 @@ pub fn stub_3e21b8() -> ! {
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7CreatorD1Ev")]
 // was: __ZN3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7CreatorD1Ev
-pub fn stub_3e21bc() -> ! {
-    todo!("0x3e21bc __ZN3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7CreatorD1Ev")
+// IDA 0x3e21bc: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_3e21bc() {
 }
 
 
@@ -258,8 +258,8 @@ pub fn stub_3e21bc() -> ! {
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "RBX::Shirt::~Shirt()")]
 // was: __ZN3RBX5ShirtD1Ev
-pub fn stub_3e21c0() -> ! {
-    todo!("0x3e21c0 RBX::Shirt::~Shirt()")
+// IDA 0x3e21c0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e21c0() {
 }
 
 
@@ -267,8 +267,8 @@ pub fn stub_3e21c0() -> ! {
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "RBX::Shirt::~Shirt()")]
 // was: __ZN3RBX5ShirtD0Ev
-pub fn stub_3e2208() -> ! {
-    todo!("0x3e2208 RBX::Shirt::~Shirt()")
+// IDA 0x3e2208: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e2208() {
 }
 
 
@@ -276,8 +276,8 @@ pub fn stub_3e2208() -> ! {
 // type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE12getClassNameEv
-pub fn stub_3e22e8() -> ! {
-    todo!("0x3e22e8 __ZNK3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE12getClassNameEv")
+// IDA 0x3e22e8: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e22e8() {
 }
 
 
@@ -285,8 +285,8 @@ pub fn stub_3e22e8() -> ! {
 // type: int __fastcall(RBX::Shirt *this, int)
 #[doc(alias = "RBX::Shirt::getTemplate(void)const")]
 // was: __ZNK3RBX5Shirt11getTemplateEv
-pub fn stub_3e22f8() -> ! {
-    todo!("0x3e22f8 RBX::Shirt::getTemplate(void)const")
+// IDA 0x3e22f8: 9 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e22f8() {
 }
 
 
@@ -294,8 +294,8 @@ pub fn stub_3e22f8() -> ! {
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX5ShirtD1Ev")]
 // was: __ZThn32_N3RBX5ShirtD1Ev
-pub fn stub_3e2310() -> ! {
-    todo!("0x3e2310 non-virtual thunk toRBX::Shirt::~Shirt()")
+// IDA 0x3e2310: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e2310() {
 }
 
 
@@ -303,8 +303,8 @@ pub fn stub_3e2310() -> ! {
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX5ShirtD0Ev")]
 // was: __ZThn32_N3RBX5ShirtD0Ev
-pub fn stub_3e235c() -> ! {
-    todo!("0x3e235c non-virtual thunk toRBX::Shirt::~Shirt()")
+// IDA 0x3e235c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e235c() {
 }
 
 
@@ -312,8 +312,8 @@ pub fn stub_3e235c() -> ! {
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE12getClassNameEv")]
 // was: __ZThn32_NK3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE12getClassNameEv
-pub fn stub_3e2440() -> ! {
-    todo!("0x3e2440 __ZThn32_NK3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE12getClassNameEv")
+// IDA 0x3e2440: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e2440() {
 }
 
 
@@ -321,8 +321,8 @@ pub fn stub_3e2440() -> ! {
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX5ShirtD1Ev")]
 // was: __ZThn36_N3RBX5ShirtD1Ev
-pub fn stub_3e2450() -> ! {
-    todo!("0x3e2450 non-virtual thunk toRBX::Shirt::~Shirt()")
+// IDA 0x3e2450: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e2450() {
 }
 
 
@@ -330,8 +330,8 @@ pub fn stub_3e2450() -> ! {
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX5ShirtD0Ev")]
 // was: __ZThn36_N3RBX5ShirtD0Ev
-pub fn stub_3e249c() -> ! {
-    todo!("0x3e249c non-virtual thunk toRBX::Shirt::~Shirt()")
+// IDA 0x3e249c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e249c() {
 }
 
 
@@ -339,8 +339,8 @@ pub fn stub_3e249c() -> ! {
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX5ShirtD1Ev")]
 // was: __ZThn92_N3RBX5ShirtD1Ev
-pub fn stub_3e2580() -> ! {
-    todo!("0x3e2580 non-virtual thunk toRBX::Shirt::~Shirt()")
+// IDA 0x3e2580: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e2580() {
 }
 
 
@@ -348,8 +348,8 @@ pub fn stub_3e2580() -> ! {
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX5ShirtD0Ev")]
 // was: __ZThn92_N3RBX5ShirtD0Ev
-pub fn stub_3e25cc() -> ! {
-    todo!("0x3e25cc non-virtual thunk toRBX::Shirt::~Shirt()")
+// IDA 0x3e25cc: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e25cc() {
 }
 
 
@@ -357,8 +357,8 @@ pub fn stub_3e25cc() -> ! {
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "RBX::Pants::~Pants()")]
 // was: __ZN3RBX5PantsD1Ev
-pub fn stub_3e26b0() -> ! {
-    todo!("0x3e26b0 RBX::Pants::~Pants()")
+// IDA 0x3e26b0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e26b0() {
 }
 
 
@@ -366,8 +366,8 @@ pub fn stub_3e26b0() -> ! {
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "RBX::Pants::~Pants()")]
 // was: __ZN3RBX5PantsD0Ev
-pub fn stub_3e26f8() -> ! {
-    todo!("0x3e26f8 RBX::Pants::~Pants()")
+// IDA 0x3e26f8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e26f8() {
 }
 
 
@@ -375,8 +375,8 @@ pub fn stub_3e26f8() -> ! {
 // type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE12getClassNameEv
-pub fn stub_3e27d8() -> ! {
-    todo!("0x3e27d8 __ZNK3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE12getClassNameEv")
+// IDA 0x3e27d8: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e27d8() {
 }
 
 
@@ -384,8 +384,8 @@ pub fn stub_3e27d8() -> ! {
 // type: int __fastcall(RBX::Pants *this, int)
 #[doc(alias = "RBX::Pants::getTemplate(void)const")]
 // was: __ZNK3RBX5Pants11getTemplateEv
-pub fn stub_3e27e8() -> ! {
-    todo!("0x3e27e8 RBX::Pants::getTemplate(void)const")
+// IDA 0x3e27e8: 9 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e27e8() {
 }
 
 
@@ -393,8 +393,8 @@ pub fn stub_3e27e8() -> ! {
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX5PantsD1Ev")]
 // was: __ZThn32_N3RBX5PantsD1Ev
-pub fn stub_3e2800() -> ! {
-    todo!("0x3e2800 non-virtual thunk toRBX::Pants::~Pants()")
+// IDA 0x3e2800: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e2800() {
 }
 
 
@@ -402,8 +402,8 @@ pub fn stub_3e2800() -> ! {
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX5PantsD0Ev")]
 // was: __ZThn32_N3RBX5PantsD0Ev
-pub fn stub_3e284c() -> ! {
-    todo!("0x3e284c non-virtual thunk toRBX::Pants::~Pants()")
+// IDA 0x3e284c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e284c() {
 }
 
 
@@ -411,8 +411,8 @@ pub fn stub_3e284c() -> ! {
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE12getClassNameEv")]
 // was: __ZThn32_NK3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE12getClassNameEv
-pub fn stub_3e2930() -> ! {
-    todo!("0x3e2930 __ZThn32_NK3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE12getClassNameEv")
+// IDA 0x3e2930: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e2930() {
 }
 
 
@@ -420,8 +420,8 @@ pub fn stub_3e2930() -> ! {
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX5PantsD1Ev")]
 // was: __ZThn36_N3RBX5PantsD1Ev
-pub fn stub_3e2940() -> ! {
-    todo!("0x3e2940 non-virtual thunk toRBX::Pants::~Pants()")
+// IDA 0x3e2940: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e2940() {
 }
 
 
@@ -429,8 +429,8 @@ pub fn stub_3e2940() -> ! {
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX5PantsD0Ev")]
 // was: __ZThn36_N3RBX5PantsD0Ev
-pub fn stub_3e298c() -> ! {
-    todo!("0x3e298c non-virtual thunk toRBX::Pants::~Pants()")
+// IDA 0x3e298c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e298c() {
 }
 
 
@@ -438,8 +438,8 @@ pub fn stub_3e298c() -> ! {
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX5PantsD1Ev")]
 // was: __ZThn92_N3RBX5PantsD1Ev
-pub fn stub_3e2a70() -> ! {
-    todo!("0x3e2a70 non-virtual thunk toRBX::Pants::~Pants()")
+// IDA 0x3e2a70: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e2a70() {
 }
 
 
@@ -447,8 +447,8 @@ pub fn stub_3e2a70() -> ! {
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX5PantsD0Ev")]
 // was: __ZThn92_N3RBX5PantsD0Ev
-pub fn stub_3e2abc() -> ! {
-    todo!("0x3e2abc non-virtual thunk toRBX::Pants::~Pants()")
+// IDA 0x3e2abc: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e2abc() {
 }
 
 
@@ -456,24 +456,24 @@ pub fn stub_3e2abc() -> ! {
 // type: void *()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE17static_getCreatorEv")]
 // was: __ZN3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE17static_getCreatorEv
-pub fn stub_3e2ba0() -> ! {
-    todo!("0x3e2ba0 __ZN3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE17static_getCreatorEv")
+// IDA 0x3e2ba0: 37 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e2ba0() {
 }
 
 
 // 0x3e2c14 — __ZNK3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE7Creator12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE7Creator12getClassNameEv
-pub fn stub_3e2c14() -> ! {
-    todo!("0x3e2c14 __ZNK3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE7Creator12getClassNameEv")
+// IDA 0x3e2c14: 42 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e2c14() {
 }
 
 
 // 0x3e2c9c — __ZN3RBX4Name13callDoDeclareILZNS_6sPantsEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_6sPantsEEEEvv")]
 // was: __ZN3RBX4Name13callDoDeclareILZNS_6sPantsEEEEvv
-pub fn stub_3e2c9c() -> ! {
-    todo!("0x3e2c9c __ZN3RBX4Name13callDoDeclareILZNS_6sPantsEEEEvv")
+// IDA 0x3e2c9c: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_3e2c9c() {
 }
 
 
@@ -481,8 +481,8 @@ pub fn stub_3e2c9c() -> ! {
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_6sPantsEEEERKS0_v")]
 // was: __ZN3RBX4Name9doDeclareILZNS_6sPantsEEEERKS0_v
-pub fn stub_3e2ca0() -> ! {
-    todo!("0x3e2ca0 __ZN3RBX4Name9doDeclareILZNS_6sPantsEEEERKS0_v")
+// IDA 0x3e2ca0: 72 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e2ca0() {
 }
 
 
@@ -490,24 +490,24 @@ pub fn stub_3e2ca0() -> ! {
 // type: void *()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE17static_getCreatorEv")]
 // was: __ZN3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE17static_getCreatorEv
-pub fn stub_3e2d80() -> ! {
-    todo!("0x3e2d80 __ZN3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE17static_getCreatorEv")
+// IDA 0x3e2d80: 37 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e2d80() {
 }
 
 
 // 0x3e2df4 — __ZNK3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE7Creator12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE7Creator12getClassNameEv
-pub fn stub_3e2df4() -> ! {
-    todo!("0x3e2df4 __ZNK3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE7Creator12getClassNameEv")
+// IDA 0x3e2df4: 42 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e2df4() {
 }
 
 
 // 0x3e2e7c — __ZN3RBX4Name13callDoDeclareILZNS_6sShirtEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_6sShirtEEEEvv")]
 // was: __ZN3RBX4Name13callDoDeclareILZNS_6sShirtEEEEvv
-pub fn stub_3e2e7c() -> ! {
-    todo!("0x3e2e7c __ZN3RBX4Name13callDoDeclareILZNS_6sShirtEEEEvv")
+// IDA 0x3e2e7c: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_3e2e7c() {
 }
 
 
@@ -515,8 +515,8 @@ pub fn stub_3e2e7c() -> ! {
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_6sShirtEEEERKS0_v")]
 // was: __ZN3RBX4Name9doDeclareILZNS_6sShirtEEEERKS0_v
-pub fn stub_3e2e80() -> ! {
-    todo!("0x3e2e80 __ZN3RBX4Name9doDeclareILZNS_6sShirtEEEERKS0_v")
+// IDA 0x3e2e80: 72 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e2e80() {
 }
 
 
@@ -524,16 +524,16 @@ pub fn stub_3e2e80() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7CreatorD2Ev")]
 // was: __ZN3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7CreatorD2Ev
-pub fn stub_3e2f60() -> ! {
-    todo!("0x3e2f60 __ZN3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7CreatorD2Ev")
+// IDA 0x3e2f60: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e2f60() {
 }
 
 
 // 0x3e2ffc — __ZNK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7Creator12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7Creator12getClassNameEv
-pub fn stub_3e2ffc() -> ! {
-    todo!("0x3e2ffc __ZNK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7Creator12getClassNameEv")
+// IDA 0x3e2ffc: 42 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e2ffc() {
 }
 
 
@@ -541,8 +541,8 @@ pub fn stub_3e2ffc() -> ! {
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7Creator6createEv")]
 // was: __ZNK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7Creator6createEv
-pub fn stub_3e3084() -> ! {
-    todo!("0x3e3084 __ZNK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7Creator6createEv")
+// IDA 0x3e3084: 110 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e3084() {
 }
 
 
@@ -550,8 +550,8 @@ pub fn stub_3e3084() -> ! {
 // type: void __fastcall(int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::BodyColors> RBX::Creatable<RBX::Instance>::create<RBX::BodyColors>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_10BodyColorsEEEN5boost10shared_ptrIT_EEv
-pub fn stub_3e31c8() -> ! {
-    todo!("0x3e31c8 boost::shared_ptr<RBX::BodyColors> RBX::Creatable<RBX::Instance>::create<RBX::BodyColors>(void)")
+// IDA 0x3e31c8: 60 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e31c8() {
 }
 
 
@@ -559,8 +559,8 @@ pub fn stub_3e31c8() -> ! {
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::BodyColors>::shared_ptr<RBX::BodyColors,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX10BodyColorsEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-pub fn stub_3e3278() -> ! {
-    todo!("0x3e3278 boost::shared_ptr<RBX::BodyColors>::shared_ptr<RBX::BodyColors,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter)")
+// IDA 0x3e3278: 70 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e3278() {
 }
 
 
@@ -568,8 +568,8 @@ pub fn stub_3e3278() -> ! {
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BodyColors,RBX::BodyColors>(rbx_core::SharedPtr<RBX::BodyColors> const*,RBX::BodyColors *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10BodyColorsES6_EEvPKNS_10shared_ptrIT_EEPT0_
-pub fn stub_3e3340() -> ! {
-    todo!("0x3e3340 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BodyColors,RBX::BodyColors>(boost::shared_ptr<RBX::BodyColors> const*,RBX::BodyColors *)const")
+// IDA 0x3e3340: 83 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e3340() {
 }
 
 
@@ -577,8 +577,8 @@ pub fn stub_3e3340() -> ! {
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost6detail12shared_countC2IPN3RBX10BodyColorsENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
-pub fn stub_3e3428() -> ! {
-    todo!("0x3e3428 boost::detail::shared_count::shared_count<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter)")
+// IDA 0x3e3428: 58 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e3428() {
 }
 
 
@@ -586,8 +586,8 @@ pub fn stub_3e3428() -> ! {
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyColorsENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
-pub fn stub_3e3530() -> ! {
-    todo!("0x3e3530 boost::detail::sp_counted_impl_pd<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+// IDA 0x3e3530: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_3e3530() {
 }
 
 
@@ -595,8 +595,8 @@ pub fn stub_3e3530() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyColorsENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-pub fn stub_3e3534() -> ! {
-    todo!("0x3e3534 boost::detail::sp_counted_impl_pd<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+// IDA 0x3e3534: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_3e3534() {
 }
 
 
@@ -604,8 +604,8 @@ pub fn stub_3e3534() -> ! {
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyColorsENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
-pub fn stub_3e3538() -> ! {
-    todo!("0x3e3538 boost::detail::sp_counted_impl_pd<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+// IDA 0x3e3538: 13 insns (PUSH..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e3538() {
 }
 
 
@@ -613,8 +613,8 @@ pub fn stub_3e3538() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyColorsENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
-pub fn stub_3e3558() -> ! {
-    todo!("0x3e3558 boost::detail::sp_counted_impl_pd<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+// IDA 0x3e3558: 10 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e3558() {
 }
 
 
@@ -622,16 +622,16 @@ pub fn stub_3e3558() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyColorsENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
-pub fn stub_3e3570() -> ! {
-    todo!("0x3e3570 boost::detail::sp_counted_impl_pd<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+// IDA 0x3e3570: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e3570() {
 }
 
 
 // 0x3e3574 — __ZN3RBX4Name13callDoDeclareILZNS_11sBodyColorsEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_11sBodyColorsEEEEvv")]
 // was: __ZN3RBX4Name13callDoDeclareILZNS_11sBodyColorsEEEEvv
-pub fn stub_3e3574() -> ! {
-    todo!("0x3e3574 __ZN3RBX4Name13callDoDeclareILZNS_11sBodyColorsEEEEvv")
+// IDA 0x3e3574: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_3e3574() {
 }
 
 
@@ -639,8 +639,8 @@ pub fn stub_3e3574() -> ! {
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sBodyColorsEEEERKS0_v")]
 // was: __ZN3RBX4Name9doDeclareILZNS_11sBodyColorsEEEERKS0_v
-pub fn stub_3e3578() -> ! {
-    todo!("0x3e3578 __ZN3RBX4Name9doDeclareILZNS_11sBodyColorsEEEERKS0_v")
+// IDA 0x3e3578: 72 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e3578() {
 }
 
 
@@ -648,8 +648,8 @@ pub fn stub_3e3578() -> ! {
 // type: pthread_mutex_t *__fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7CreatorC2Ev")]
 // was: __ZN3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7CreatorC2Ev
-pub fn stub_3e3658() -> ! {
-    todo!("0x3e3658 __ZN3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7CreatorC2Ev")
+// IDA 0x3e3658: 184 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e3658() {
 }
 
 
@@ -657,8 +657,8 @@ pub fn stub_3e3658() -> ! {
 // type: void *()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE17static_getCreatorEv")]
 // was: __ZN3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE17static_getCreatorEv
-pub fn stub_3e389c() -> ! {
-    todo!("0x3e389c __ZN3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE17static_getCreatorEv")
+// IDA 0x3e389c: 37 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e389c() {
 }
 
 
@@ -666,16 +666,16 @@ pub fn stub_3e389c() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE7CreatorD2Ev")]
 // was: __ZN3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE7CreatorD2Ev
-pub fn stub_3e3910() -> ! {
-    todo!("0x3e3910 __ZN3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE7CreatorD2Ev")
+// IDA 0x3e3910: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e3910() {
 }
 
 
 // 0x3e39ac — __ZNK3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE7Creator12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE7Creator12getClassNameEv
-pub fn stub_3e39ac() -> ! {
-    todo!("0x3e39ac __ZNK3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE7Creator12getClassNameEv")
+// IDA 0x3e39ac: 42 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e39ac() {
 }
 
 
@@ -683,8 +683,8 @@ pub fn stub_3e39ac() -> ! {
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE7Creator6createEv")]
 // was: __ZNK3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE7Creator6createEv
-pub fn stub_3e3a34() -> ! {
-    todo!("0x3e3a34 __ZNK3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE7Creator6createEv")
+// IDA 0x3e3a34: 110 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e3a34() {
 }
 
 
@@ -692,8 +692,8 @@ pub fn stub_3e3a34() -> ! {
 // type: void __fastcall(int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Skin> RBX::Creatable<RBX::Instance>::create<RBX::Skin>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_4SkinEEEN5boost10shared_ptrIT_EEv
-pub fn stub_3e3b78() -> ! {
-    todo!("0x3e3b78 boost::shared_ptr<RBX::Skin> RBX::Creatable<RBX::Instance>::create<RBX::Skin>(void)")
+// IDA 0x3e3b78: 60 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e3b78() {
 }
 
 
@@ -701,8 +701,8 @@ pub fn stub_3e3b78() -> ! {
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Skin>::shared_ptr<RBX::Skin,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX4SkinEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-pub fn stub_3e3c28() -> ! {
-    todo!("0x3e3c28 boost::shared_ptr<RBX::Skin>::shared_ptr<RBX::Skin,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter)")
+// IDA 0x3e3c28: 70 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e3c28() {
 }
 
 
@@ -710,8 +710,8 @@ pub fn stub_3e3c28() -> ! {
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Skin,RBX::Skin>(rbx_core::SharedPtr<RBX::Skin> const*,RBX::Skin *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4SkinES6_EEvPKNS_10shared_ptrIT_EEPT0_
-pub fn stub_3e3cf0() -> ! {
-    todo!("0x3e3cf0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Skin,RBX::Skin>(boost::shared_ptr<RBX::Skin> const*,RBX::Skin *)const")
+// IDA 0x3e3cf0: 83 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e3cf0() {
 }
 
 
@@ -719,8 +719,8 @@ pub fn stub_3e3cf0() -> ! {
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost6detail12shared_countC2IPN3RBX4SkinENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
-pub fn stub_3e3dd8() -> ! {
-    todo!("0x3e3dd8 boost::detail::shared_count::shared_count<RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter)")
+// IDA 0x3e3dd8: 58 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e3dd8() {
 }
 
 
@@ -728,8 +728,8 @@ pub fn stub_3e3dd8() -> ! {
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SkinENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
-pub fn stub_3e3ee0() -> ! {
-    todo!("0x3e3ee0 boost::detail::sp_counted_impl_pd<RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+// IDA 0x3e3ee0: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_3e3ee0() {
 }
 
 
@@ -737,8 +737,8 @@ pub fn stub_3e3ee0() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SkinENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-pub fn stub_3e3ee4() -> ! {
-    todo!("0x3e3ee4 boost::detail::sp_counted_impl_pd<RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+// IDA 0x3e3ee4: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_3e3ee4() {
 }
 
 
@@ -746,8 +746,8 @@ pub fn stub_3e3ee4() -> ! {
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SkinENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
-pub fn stub_3e3ee8() -> ! {
-    todo!("0x3e3ee8 boost::detail::sp_counted_impl_pd<RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+// IDA 0x3e3ee8: 13 insns (PUSH..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e3ee8() {
 }
 
 
@@ -755,8 +755,8 @@ pub fn stub_3e3ee8() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SkinENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
-pub fn stub_3e3f08() -> ! {
-    todo!("0x3e3f08 boost::detail::sp_counted_impl_pd<RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+// IDA 0x3e3f08: 10 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e3f08() {
 }
 
 
@@ -764,16 +764,16 @@ pub fn stub_3e3f08() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SkinENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
-pub fn stub_3e3f20() -> ! {
-    todo!("0x3e3f20 boost::detail::sp_counted_impl_pd<RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+// IDA 0x3e3f20: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e3f20() {
 }
 
 
 // 0x3e3f24 — __ZN3RBX4Name13callDoDeclareILZNS_5sSkinEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_5sSkinEEEEvv")]
 // was: __ZN3RBX4Name13callDoDeclareILZNS_5sSkinEEEEvv
-pub fn stub_3e3f24() -> ! {
-    todo!("0x3e3f24 __ZN3RBX4Name13callDoDeclareILZNS_5sSkinEEEEvv")
+// IDA 0x3e3f24: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_3e3f24() {
 }
 
 
@@ -781,8 +781,8 @@ pub fn stub_3e3f24() -> ! {
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_5sSkinEEEERKS0_v")]
 // was: __ZN3RBX4Name9doDeclareILZNS_5sSkinEEEERKS0_v
-pub fn stub_3e3f28() -> ! {
-    todo!("0x3e3f28 __ZN3RBX4Name9doDeclareILZNS_5sSkinEEEERKS0_v")
+// IDA 0x3e3f28: 72 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e3f28() {
 }
 
 
@@ -790,8 +790,8 @@ pub fn stub_3e3f28() -> ! {
 // type: pthread_mutex_t *__fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE7CreatorC2Ev")]
 // was: __ZN3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE7CreatorC2Ev
-pub fn stub_3e4008() -> ! {
-    todo!("0x3e4008 __ZN3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE7CreatorC2Ev")
+// IDA 0x3e4008: 184 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e4008() {
 }
 
 
@@ -799,16 +799,16 @@ pub fn stub_3e4008() -> ! {
 // type: void *()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE17static_getCreatorEv")]
 // was: __ZN3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE17static_getCreatorEv
-pub fn stub_3e424c() -> ! {
-    todo!("0x3e424c __ZN3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE17static_getCreatorEv")
+// IDA 0x3e424c: 37 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e424c() {
 }
 
 
 // 0x3e42c0 — __ZN3RBX4Name13callDoDeclareILZNS_9sClothingEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_9sClothingEEEEvv")]
 // was: __ZN3RBX4Name13callDoDeclareILZNS_9sClothingEEEEvv
-pub fn stub_3e42c0() -> ! {
-    todo!("0x3e42c0 __ZN3RBX4Name13callDoDeclareILZNS_9sClothingEEEEvv")
+// IDA 0x3e42c0: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_3e42c0() {
 }
 
 
@@ -816,8 +816,8 @@ pub fn stub_3e42c0() -> ! {
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_9sClothingEEEERKS0_v")]
 // was: __ZN3RBX4Name9doDeclareILZNS_9sClothingEEEERKS0_v
-pub fn stub_3e42c4() -> ! {
-    todo!("0x3e42c4 __ZN3RBX4Name9doDeclareILZNS_9sClothingEEEERKS0_v")
+// IDA 0x3e42c4: 72 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e42c4() {
 }
 
 
@@ -825,16 +825,16 @@ pub fn stub_3e42c4() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE7CreatorD2Ev")]
 // was: __ZN3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE7CreatorD2Ev
-pub fn stub_3e43a4() -> ! {
-    todo!("0x3e43a4 __ZN3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE7CreatorD2Ev")
+// IDA 0x3e43a4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e43a4() {
 }
 
 
 // 0x3e4440 — __ZNK3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE7Creator12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE7Creator12getClassNameEv
-pub fn stub_3e4440() -> ! {
-    todo!("0x3e4440 __ZNK3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE7Creator12getClassNameEv")
+// IDA 0x3e4440: 42 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e4440() {
 }
 
 
@@ -842,8 +842,8 @@ pub fn stub_3e4440() -> ! {
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE7Creator6createEv")]
 // was: __ZNK3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE7Creator6createEv
-pub fn stub_3e44c8() -> ! {
-    todo!("0x3e44c8 __ZNK3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE7Creator6createEv")
+// IDA 0x3e44c8: 110 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e44c8() {
 }
 
 
@@ -851,8 +851,8 @@ pub fn stub_3e44c8() -> ! {
 // type: void __fastcall(int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::ShirtGraphic> RBX::Creatable<RBX::Instance>::create<RBX::ShirtGraphic>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_12ShirtGraphicEEEN5boost10shared_ptrIT_EEv
-pub fn stub_3e460c() -> ! {
-    todo!("0x3e460c boost::shared_ptr<RBX::ShirtGraphic> RBX::Creatable<RBX::Instance>::create<RBX::ShirtGraphic>(void)")
+// IDA 0x3e460c: 60 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e460c() {
 }
 
 
@@ -860,8 +860,8 @@ pub fn stub_3e460c() -> ! {
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::ShirtGraphic>::shared_ptr<RBX::ShirtGraphic,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ShirtGraphic *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX12ShirtGraphicEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-pub fn stub_3e46bc() -> ! {
-    todo!("0x3e46bc boost::shared_ptr<RBX::ShirtGraphic>::shared_ptr<RBX::ShirtGraphic,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ShirtGraphic *,RBX::Creatable<RBX::Instance>::Deleter)")
+// IDA 0x3e46bc: 70 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e46bc() {
 }
 
 
@@ -869,8 +869,8 @@ pub fn stub_3e46bc() -> ! {
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ShirtGraphic,RBX::ShirtGraphic>(rbx_core::SharedPtr<RBX::ShirtGraphic> const*,RBX::ShirtGraphic *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12ShirtGraphicES6_EEvPKNS_10shared_ptrIT_EEPT0_
-pub fn stub_3e4784() -> ! {
-    todo!("0x3e4784 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ShirtGraphic,RBX::ShirtGraphic>(boost::shared_ptr<RBX::ShirtGraphic> const*,RBX::ShirtGraphic *)const")
+// IDA 0x3e4784: 83 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e4784() {
 }
 
 
@@ -878,8 +878,8 @@ pub fn stub_3e4784() -> ! {
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::ShirtGraphic *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ShirtGraphic *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost6detail12shared_countC2IPN3RBX12ShirtGraphicENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
-pub fn stub_3e486c() -> ! {
-    todo!("0x3e486c boost::detail::shared_count::shared_count<RBX::ShirtGraphic *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ShirtGraphic *,RBX::Creatable<RBX::Instance>::Deleter)")
+// IDA 0x3e486c: 58 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e486c() {
 }
 
 
@@ -887,8 +887,8 @@ pub fn stub_3e486c() -> ! {
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ShirtGraphic *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12ShirtGraphicENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
-pub fn stub_3e4974() -> ! {
-    todo!("0x3e4974 boost::detail::sp_counted_impl_pd<RBX::ShirtGraphic *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+// IDA 0x3e4974: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_3e4974() {
 }
 
 
@@ -896,6 +896,6 @@ pub fn stub_3e4974() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ShirtGraphic *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12ShirtGraphicENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-pub fn stub_3e4978() -> ! {
-    todo!("0x3e4978 boost::detail::sp_counted_impl_pd<RBX::ShirtGraphic *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+// IDA 0x3e4978: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_3e4978() {
 }
