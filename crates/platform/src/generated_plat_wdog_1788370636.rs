@@ -550,314 +550,391 @@ pub fn stub_1caa0() {
 // 0x1cac8 — -[HomeViewController signUpButtonDidTouchUpInside:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController signUpButtonDidTouchUpInside:]")]
-pub fn stub_1cac8() -> ! {
-    todo!("0x1cac8 -[HomeViewController signUpButtonDidTouchUpInside:]")
+pub fn stub_1cac8() {
+    // delegate of crate::roblox_view (IDA 0x1cac8)
+    HOME.signup_button_did_touch_up_inside();
 }
 
 // 0x1cacc — -[HomeViewController logInButtonDidTouchUpInside:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController logInButtonDidTouchUpInside:]")]
-pub fn stub_1cacc() -> ! {
-    todo!("0x1cacc -[HomeViewController logInButtonDidTouchUpInside:]")
+pub fn stub_1cacc() {
+    // delegate of crate::roblox_view (IDA 0x1cacc)
+    HOME.login_button_did_touch_up_inside();
 }
 
 // 0x1cae0 — -[HomeViewController buttonForWebDidTouchUpInside:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController buttonForWebDidTouchUpInside:]")]
-pub fn stub_1cae0() -> ! {
-    todo!("0x1cae0 -[HomeViewController buttonForWebDidTouchUpInside:]")
+pub fn stub_1cae0(logged_in: bool) {
+    // delegate of crate::roblox_view (IDA 0x1cae0)
+    HOME.button_for_web_did_touch_up_inside(logged_in);
 }
 
 // 0x1cbac — -[HomeViewController btnTouchPlayButtonDisabled:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController btnTouchPlayButtonDisabled:]")]
-pub fn stub_1cbac() -> ! {
-    todo!("0x1cbac -[HomeViewController btnTouchPlayButtonDisabled:]")
+pub fn stub_1cbac() {
+    // delegate of crate::roblox_view (IDA 0x1cbac)
+    HOME.btn_touch_play_button_disabled();
 }
 
 // 0x1cc1c — +[HomeViewController getUrlForButtonTag:recordPageView:]
 // type: id __cdecl(id, SEL, int, char)
 #[doc(alias = "+[HomeViewController getUrlForButtonTag:recordPageView:]")]
-pub fn stub_1cc1c() -> ! {
-    todo!("0x1cc1c +[HomeViewController getUrlForButtonTag:recordPageView:]")
+pub fn stub_1cc1c(
+    base_url: &str,
+    search_url: &str,
+    tablet: bool,
+    tag: i32,
+    record_page_view: bool,
+) -> Option<String> {
+    // delegate of crate::roblox_view (IDA 0x1cc1c)
+    crate::roblox_view::HomeViewControllerState::url_for_button_tag_no_query(
+        base_url,
+        search_url,
+        tablet,
+        tag,
+        record_page_view,
+    )
 }
 
 // 0x1cc54 — +[HomeViewController getUrlForButtonTag:recordPageView:query:]
 // type: id __cdecl(id, SEL, int, char, id)
 #[doc(alias = "+[HomeViewController getUrlForButtonTag:recordPageView:query:]")]
-pub fn stub_1cc54() -> ! {
-    todo!("0x1cc54 +[HomeViewController getUrlForButtonTag:recordPageView:query:]")
+pub fn stub_1cc54(
+    base_url: &str,
+    search_url: &str,
+    tablet: bool,
+    tag: i32,
+    record_page_view: bool,
+    query: &str,
+) -> Option<String> {
+    // delegate of crate::roblox_view (IDA 0x1cc54)
+    crate::roblox_view::HomeViewControllerState::url_for_button_tag(
+        base_url,
+        search_url,
+        tablet,
+        tag,
+        record_page_view,
+        query,
+    )
 }
 
 // 0x1cfe8 — -[HomeViewController prepareForSegue:sender:]
 // type: void __cdecl(HomeViewController *self, SEL, id, id)
 #[doc(alias = "-[HomeViewController prepareForSegue:sender:]")]
-pub fn stub_1cfe8() -> ! {
-    todo!("0x1cfe8 -[HomeViewController prepareForSegue:sender:]")
+pub fn stub_1cfe8(
+    dest_is_nav_bar: bool,
+    sender: crate::roblox_view::HomeSegueSender,
+    base_url: &str,
+    search_url: &str,
+    tablet: bool,
+) -> Option<String> {
+    // delegate of crate::roblox_view (IDA 0x1cfe8)
+    HOME.prepare_for_segue(dest_is_nav_bar, sender, base_url, search_url, tablet)
 }
 
 // 0x1d238 — -[HomeViewController viewMustSegueAfterLoad]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController viewMustSegueAfterLoad]")]
-pub fn stub_1d238() -> ! {
-    todo!("0x1d238 -[HomeViewController viewMustSegueAfterLoad]")
+pub fn stub_1d238() {
+    // delegate of crate::roblox_view (IDA 0x1d238)
+    HOME.view_must_segue_after_load();
 }
 
 // 0x1d248 — -[HomeViewController setJumpToPlaceID:]
 // type: void __cdecl(HomeViewController *self, SEL, int)
 #[doc(alias = "-[HomeViewController setJumpToPlaceID:]")]
-pub fn stub_1d248() -> ! {
-    todo!("0x1d248 -[HomeViewController setJumpToPlaceID:]")
+pub fn stub_1d248(place_id: i32) {
+    // delegate of crate::roblox_view (IDA 0x1d248)
+    HOME.set_jump_to_place_id(place_id);
 }
 
 // 0x1d258 — -[HomeViewController blueFrame]
 // type: UIImageView *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController blueFrame]")]
-pub fn stub_1d258() -> ! {
-    todo!("0x1d258 -[HomeViewController blueFrame]")
+pub fn stub_1d258() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x1d258)
+    HOME.blue_frame()
 }
 
 // 0x1d268 — -[HomeViewController setBlueFrame:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBlueFrame:]")]
-pub fn stub_1d268() -> ! {
-    todo!("0x1d268 -[HomeViewController setBlueFrame:]")
+pub fn stub_1d268(value: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x1d268)
+    HOME.set_blue_frame(value);
 }
 
 // 0x1d28c — -[HomeViewController imgAvatar]
 // type: UIImageView *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController imgAvatar]")]
-pub fn stub_1d28c() -> ! {
-    todo!("0x1d28c -[HomeViewController imgAvatar]")
+pub fn stub_1d28c() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x1d28c)
+    HOME.img_avatar()
 }
 
 // 0x1d29c — -[HomeViewController setImgAvatar:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setImgAvatar:]")]
-pub fn stub_1d29c() -> ! {
-    todo!("0x1d29c -[HomeViewController setImgAvatar:]")
+pub fn stub_1d29c(value: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x1d29c)
+    HOME.set_img_avatar(value);
 }
 
 // 0x1d2c0 — -[HomeViewController lblPlayerName]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController lblPlayerName]")]
-pub fn stub_1d2c0() -> ! {
-    todo!("0x1d2c0 -[HomeViewController lblPlayerName]")
+pub fn stub_1d2c0() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x1d2c0)
+    HOME.lbl_player_name()
 }
 
 // 0x1d2d0 — -[HomeViewController setLblPlayerName:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setLblPlayerName:]")]
-pub fn stub_1d2d0() -> ! {
-    todo!("0x1d2d0 -[HomeViewController setLblPlayerName:]")
+pub fn stub_1d2d0(value: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x1d2d0)
+    HOME.set_lbl_player_name(value);
 }
 
 // 0x1d2f4 — -[HomeViewController placeId]
 // type: UITextField *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController placeId]")]
-pub fn stub_1d2f4() -> ! {
-    todo!("0x1d2f4 -[HomeViewController placeId]")
+pub fn stub_1d2f4() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x1d2f4)
+    HOME.place_id()
 }
 
 // 0x1d304 — -[HomeViewController setPlaceId:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setPlaceId:]")]
-pub fn stub_1d304() -> ! {
-    todo!("0x1d304 -[HomeViewController setPlaceId:]")
+pub fn stub_1d304(value: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x1d304)
+    HOME.set_place_id(value);
 }
 
 // 0x1d328 — -[HomeViewController portId]
 // type: UITextField *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController portId]")]
-pub fn stub_1d328() -> ! {
-    todo!("0x1d328 -[HomeViewController portId]")
+pub fn stub_1d328() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x1d328)
+    HOME.port_id()
 }
 
 // 0x1d338 — -[HomeViewController setPortId:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setPortId:]")]
-pub fn stub_1d338() -> ! {
-    todo!("0x1d338 -[HomeViewController setPortId:]")
+pub fn stub_1d338(value: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x1d338)
+    HOME.set_port_id(value);
 }
 
 // 0x1d35c — -[HomeViewController ipId]
 // type: UITextField *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController ipId]")]
-pub fn stub_1d35c() -> ! {
-    todo!("0x1d35c -[HomeViewController ipId]")
+pub fn stub_1d35c() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x1d35c)
+    HOME.ip_id()
 }
 
 // 0x1d36c — -[HomeViewController setIpId:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setIpId:]")]
-pub fn stub_1d36c() -> ! {
-    todo!("0x1d36c -[HomeViewController setIpId:]")
+pub fn stub_1d36c(value: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x1d36c)
+    HOME.set_ip_id(value);
 }
 
 // 0x1d390 — -[HomeViewController btnPlaceLauncher]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController btnPlaceLauncher]")]
-pub fn stub_1d390() -> ! {
-    todo!("0x1d390 -[HomeViewController btnPlaceLauncher]")
+pub fn stub_1d390() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x1d390)
+    HOME.btn_place_launcher()
 }
 
 // 0x1d3a0 — -[HomeViewController setBtnPlaceLauncher:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBtnPlaceLauncher:]")]
-pub fn stub_1d3a0() -> ! {
-    todo!("0x1d3a0 -[HomeViewController setBtnPlaceLauncher:]")
+pub fn stub_1d3a0(btn: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x1d3a0)
+    HOME.set_btn_place_launcher(btn);
 }
 
 // 0x1d3c4 — -[HomeViewController btnGames]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController btnGames]")]
-pub fn stub_1d3c4() -> ! {
-    todo!("0x1d3c4 -[HomeViewController btnGames]")
+pub fn stub_1d3c4() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x1d3c4)
+    HOME.btn_games()
 }
 
 // 0x1d3d4 — -[HomeViewController setBtnGames:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBtnGames:]")]
-pub fn stub_1d3d4() -> ! {
-    todo!("0x1d3d4 -[HomeViewController setBtnGames:]")
+pub fn stub_1d3d4(value: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x1d3d4)
+    HOME.set_btn_games(value);
 }
 
 // 0x1d3f8 — -[HomeViewController btnDebugSettings]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController btnDebugSettings]")]
-pub fn stub_1d3f8() -> ! {
-    todo!("0x1d3f8 -[HomeViewController btnDebugSettings]")
+pub fn stub_1d3f8() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x1d3f8)
+    HOME.btn_debug_settings()
 }
 
 // 0x1d408 — -[HomeViewController setBtnDebugSettings:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBtnDebugSettings:]")]
-pub fn stub_1d408() -> ! {
-    todo!("0x1d408 -[HomeViewController setBtnDebugSettings:]")
+pub fn stub_1d408(value: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x1d408)
+    HOME.set_btn_debug_settings(value);
 }
 
 // 0x1d42c — -[HomeViewController lblRobux]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController lblRobux]")]
-pub fn stub_1d42c() -> ! {
-    todo!("0x1d42c -[HomeViewController lblRobux]")
+pub fn stub_1d42c() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x1d42c)
+    HOME.lbl_robux()
 }
 
 // 0x1d43c — -[HomeViewController setLblRobux:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setLblRobux:]")]
-pub fn stub_1d43c() -> ! {
-    todo!("0x1d43c -[HomeViewController setLblRobux:]")
+pub fn stub_1d43c(value: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x1d43c)
+    HOME.set_lbl_robux(value);
 }
 
 // 0x1d460 — -[HomeViewController lblTix]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController lblTix]")]
-pub fn stub_1d460() -> ! {
-    todo!("0x1d460 -[HomeViewController lblTix]")
+pub fn stub_1d460() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x1d460)
+    HOME.lbl_tix()
 }
 
 // 0x1d470 — -[HomeViewController setLblTix:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setLblTix:]")]
-pub fn stub_1d470() -> ! {
-    todo!("0x1d470 -[HomeViewController setLblTix:]")
+pub fn stub_1d470(value: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x1d470)
+    HOME.set_lbl_tix(value);
 }
 
 // 0x1d494 — -[HomeViewController btnMessages]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController btnMessages]")]
-pub fn stub_1d494() -> ! {
-    todo!("0x1d494 -[HomeViewController btnMessages]")
+pub fn stub_1d494() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x1d494)
+    HOME.btn_messages()
 }
 
 // 0x1d4a4 — -[HomeViewController setBtnMessages:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBtnMessages:]")]
-pub fn stub_1d4a4() -> ! {
-    todo!("0x1d4a4 -[HomeViewController setBtnMessages:]")
+pub fn stub_1d4a4(value: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x1d4a4)
+    HOME.set_btn_messages(value);
 }
 
 // 0x1d4c8 — -[HomeViewController gameLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController gameLabel]")]
-pub fn stub_1d4c8() -> ! {
-    todo!("0x1d4c8 -[HomeViewController gameLabel]")
+pub fn stub_1d4c8() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x1d4c8)
+    HOME.game_label()
 }
 
 // 0x1d4d8 — -[HomeViewController setGameLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setGameLabel:]")]
-pub fn stub_1d4d8() -> ! {
-    todo!("0x1d4d8 -[HomeViewController setGameLabel:]")
+pub fn stub_1d4d8(value: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x1d4d8)
+    HOME.set_game_label(value);
 }
 
 // 0x1d4fc — -[HomeViewController catalogLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController catalogLabel]")]
-pub fn stub_1d4fc() -> ! {
-    todo!("0x1d4fc -[HomeViewController catalogLabel]")
+pub fn stub_1d4fc() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x1d4fc)
+    HOME.catalog_label()
 }
 
 // 0x1d50c — -[HomeViewController setCatalogLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setCatalogLabel:]")]
-pub fn stub_1d50c() -> ! {
-    todo!("0x1d50c -[HomeViewController setCatalogLabel:]")
+pub fn stub_1d50c(value: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x1d50c)
+    HOME.set_catalog_label(value);
 }
 
 // 0x1d530 — -[HomeViewController inventoryLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController inventoryLabel]")]
-pub fn stub_1d530() -> ! {
-    todo!("0x1d530 -[HomeViewController inventoryLabel]")
+pub fn stub_1d530() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x1d530)
+    HOME.inventory_label()
 }
 
 // 0x1d540 — -[HomeViewController setInventoryLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setInventoryLabel:]")]
-pub fn stub_1d540() -> ! {
-    todo!("0x1d540 -[HomeViewController setInventoryLabel:]")
+pub fn stub_1d540(value: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x1d540)
+    HOME.set_inventory_label(value);
 }
 
 // 0x1d564 — -[HomeViewController buildersClubLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController buildersClubLabel]")]
-pub fn stub_1d564() -> ! {
-    todo!("0x1d564 -[HomeViewController buildersClubLabel]")
+pub fn stub_1d564() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x1d564)
+    HOME.builders_club_label()
 }
 
 // 0x1d574 — -[HomeViewController setBuildersClubLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBuildersClubLabel:]")]
-pub fn stub_1d574() -> ! {
-    todo!("0x1d574 -[HomeViewController setBuildersClubLabel:]")
+pub fn stub_1d574(value: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x1d574)
+    HOME.set_builders_club_label(value);
 }
 
 // 0x1d598 — -[HomeViewController profileLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController profileLabel]")]
-pub fn stub_1d598() -> ! {
-    todo!("0x1d598 -[HomeViewController profileLabel]")
+pub fn stub_1d598() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x1d598)
+    HOME.profile_label()
 }
 
 // 0x1d5a8 — -[HomeViewController setProfileLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setProfileLabel:]")]
-pub fn stub_1d5a8() -> ! {
-    todo!("0x1d5a8 -[HomeViewController setProfileLabel:]")
+pub fn stub_1d5a8(value: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x1d5a8)
+    HOME.set_profile_label(value);
 }
 
 // 0x1d5cc — -[HomeViewController messagesLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController messagesLabel]")]
-pub fn stub_1d5cc() -> ! {
-    todo!("0x1d5cc -[HomeViewController messagesLabel]")
+pub fn stub_1d5cc() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x1d5cc)
+    HOME.messages_label()
 }
 
 // 0x1d5dc — -[HomeViewController setMessagesLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setMessagesLabel:]")]
-pub fn stub_1d5dc() -> ! {
-    todo!("0x1d5dc -[HomeViewController setMessagesLabel:]")
+pub fn stub_1d5dc(value: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x1d5dc)
+    HOME.set_messages_label(value);
 }
