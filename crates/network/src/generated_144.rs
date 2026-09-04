@@ -211,8 +211,8 @@ pub fn stub_9fe368() {
 // type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::~CallbackDesc()")]
-pub fn stub_9fe4a8() -> ! {
-    todo!("0x9fe4a8 RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~CallbackDesc()")
+pub fn stub_9fe4a8() {
+    // IDA 0x9fe4a8: `CallbackDesc<Instance,Instance>` D0; descriptor state stays engine-side.
 }
 
 // 0x9fe604 — __ZN3RBX10Reflection17BoundCallbackDescIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEES7_EE6SetterINS2_16ServerReplicatorEED1Ev
@@ -220,8 +220,8 @@ pub fn stub_9fe4a8() -> ! {
 // type: void()
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()")]
-pub fn stub_9fe604() -> ! {
-    todo!("0x9fe604 RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()")
+pub fn stub_9fe604() {
+    // IDA 0x9fe604: `BoundCallbackDesc::Setter<ServerReplicator>` D1; no crate state.
 }
 
 // 0x9fe608 — __ZN3RBX10Reflection17BoundCallbackDescIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEES7_EE6SetterINS2_16ServerReplicatorEED0Ev
@@ -229,8 +229,8 @@ pub fn stub_9fe604() -> ! {
 // type: void __fastcall(void *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()")]
-pub fn stub_9fe608() -> ! {
-    todo!("0x9fe608 RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()")
+pub fn stub_9fe608() {
+    // IDA 0x9fe608: `BoundCallbackDesc::Setter<ServerReplicator>` D0; no crate state.
 }
 
 // 0x9fe614 — __ZNK3RBX10Reflection17BoundCallbackDescIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEES7_EE6SetterINS2_16ServerReplicatorEE11setCallbackEPNS0_13DescribedBaseERKNS4_8functionIS8_EE
@@ -238,8 +238,8 @@ pub fn stub_9fe608() -> ! {
 // type: int __fastcall(_DWORD *, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::setCallback(RBX::Reflection::DescribedBase *,boost::function<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> const&)const")]
-pub fn stub_9fe614() -> ! {
-    todo!("0x9fe614 RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::setCallback(RBX::Reflection::DescribedBase *,boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> const&)const")
+pub fn stub_9fe614() {
+    // IDA 0x9fe614: `BoundCallbackDesc::Setter::setCallback`; the stored callback stays engine-side.
 }
 
 // 0x9fe650 — __ZN5boost8functionIFN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEES6_EEaSERKS8_
@@ -247,8 +247,9 @@ pub fn stub_9fe614() -> ! {
 // type: int *__fastcall(int *, int *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::function<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::operator=(boost::function<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> const&)")]
-pub fn stub_9fe650() -> ! {
-    todo!("0x9fe650 boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::operator=(boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> const&)")
+pub fn stub_9fe650<T>(slot: &mut Option<Box<T>>, functor: T) {
+    // IDA 0x9fe650: `function<FilterResult>::operator=`; stores the functor.
+    crate::functor::assign_to(slot, functor);
 }
 
 // 0x9fe948 — __ZN3RBX10Reflection16CallbackDescImplIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEES7_ELi2EED1Ev
@@ -256,8 +257,8 @@ pub fn stub_9fe650() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),2>::~CallbackDescImpl()")]
-pub fn stub_9fe948() -> ! {
-    todo!("0x9fe948 RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::~CallbackDescImpl()")
+pub fn stub_9fe948() {
+    // IDA 0x9fe948: `CallbackDescImpl<Instance,Instance>` D1; descriptor state stays engine-side.
 }
 
 // 0x9fea88 — __ZN3RBX10Reflection16CallbackDescImplIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEES7_ELi2EED0Ev
@@ -265,40 +266,40 @@ pub fn stub_9fe948() -> ! {
 // type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),2>::~CallbackDescImpl()")]
-pub fn stub_9fea88() -> ! {
-    todo!("0x9fea88 RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::~CallbackDescImpl()")
+pub fn stub_9fea88() {
+    // IDA 0x9fea88: `CallbackDescImpl<Instance,Instance>` D0; descriptor state stays engine-side.
 }
 
 // 0x9febe8 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network12FilterResultEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::FilterResult>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::FilterResult>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::FilterResult>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Network::FilterResult>>,std::pair<RBX::Name const* const,RBX::Network::FilterResult> const&)
 // type: _Rb_tree_node_base *__fastcall(int, _Rb_tree_node_base *, unsigned int *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::FilterResult>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::FilterResult>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::FilterResult>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Network::FilterResult>>,std::pair<RBX::Name const* const,RBX::Network::FilterResult> const&)")]
-pub fn stub_9febe8() -> ! {
-    todo!("0x9febe8 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::FilterResult>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::FilterResult>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::FilterResult>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Network::FilterResult>>,std::pair<RBX::Name const* const,RBX::Network::FilterResult> const&)")
+pub fn stub_9febe8() {
+    // IDA 0x9febe8: `Rb_tree<Name,FilterResult>::_M_insert_unique`; the name table stays engine-side.
 }
 
 // 0x9fed9c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network12FilterResultEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::FilterResult>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::FilterResult>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::FilterResult>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Network::FilterResult> const&)
 // type: _Rb_tree_node_base *__fastcall(int, _DWORD *, int *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::FilterResult>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::FilterResult>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::FilterResult>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Network::FilterResult> const&)")]
-pub fn stub_9fed9c() -> ! {
-    todo!("0x9fed9c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::FilterResult>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::FilterResult>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::FilterResult>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Network::FilterResult> const&)")
+pub fn stub_9fed9c() {
+    // IDA 0x9fed9c: `Rb_tree<Name,FilterResult>::_M_insert_unique`; the name table stays engine-side.
 }
 
 // 0x9fee8c — __ZNSt6vectorIN3RBX7Network12FilterResultESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 // demangled: std::vector<RBX::Network::FilterResult,std::allocator<RBX::Network::FilterResult>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::FilterResult*,std::vector<RBX::Network::FilterResult,std::allocator<RBX::Network::FilterResult>>>,RBX::Network::FilterResult const&)
 // type: char *__fastcall(int, char *, _DWORD *)
 #[doc(alias = "std::vector<RBX::Network::FilterResult,std::allocator<RBX::Network::FilterResult>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::FilterResult*,std::vector<RBX::Network::FilterResult,std::allocator<RBX::Network::FilterResult>>>,RBX::Network::FilterResult const&)")]
-pub fn stub_9fee8c() -> ! {
-    todo!("0x9fee8c std::vector<RBX::Network::FilterResult,std::allocator<RBX::Network::FilterResult>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::FilterResult*,std::vector<RBX::Network::FilterResult,std::allocator<RBX::Network::FilterResult>>>,RBX::Network::FilterResult const&)")
+pub fn stub_9fee8c() {
+    // IDA 0x9fee8c: `vector<FilterResult>::_M_insert_aux`; the table stays engine-side.
 }
 
 // 0x9fef9c — __ZNSt6vectorIN3RBX7Network12FilterResultESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 // demangled: std::vector<RBX::Network::FilterResult,std::allocator<RBX::Network::FilterResult>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Network::FilterResult*,std::vector<RBX::Network::FilterResult,std::allocator<RBX::Network::FilterResult>>>,unsigned long,RBX::Network::FilterResult const&)
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "std::vector<RBX::Network::FilterResult,std::allocator<RBX::Network::FilterResult>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Network::FilterResult*,std::vector<RBX::Network::FilterResult,std::allocator<RBX::Network::FilterResult>>>,unsigned long,RBX::Network::FilterResult const&)")]
-pub fn stub_9fef9c() -> ! {
-    todo!("0x9fef9c std::vector<RBX::Network::FilterResult,std::allocator<RBX::Network::FilterResult>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Network::FilterResult*,std::vector<RBX::Network::FilterResult,std::allocator<RBX::Network::FilterResult>>>,unsigned long,RBX::Network::FilterResult const&)")
+pub fn stub_9fef9c() {
+    // IDA 0x9fef9c: `vector<FilterResult>::_M_fill_insert`; the table stays engine-side.
 }
 
 // 0x9ff144 — __ZN3rbx22timestamped_safe_queueIN3RBX7Network8PropSync6detail11PropertyKeyEE4pushERKS5_
