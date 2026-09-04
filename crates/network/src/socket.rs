@@ -502,6 +502,43 @@ mod tests {
         assert_eq!(rak_string(), "");
         assert_eq!(rak_string_format("x"), "x");
     }
+    #[test]
+    fn string_pool_random_gates() {
+        // IDA 0xa6ec8c/0xa6eed4/0xa6ef14/0xa6f210/0xa6f3c0: pool ops.
+        let mut s = rak_string_format("abc");
+        rak_string_assign(&mut s, "de");
+        assert_eq!(s, "de");
+        rak_string_allocate(&mut s, 64);
+        assert_eq!(s, "de");
+        rak_string_free(&mut s);
+        assert_eq!(s, "");
+        rak_string_free_pool();
+        rak_string_list_drop();
+        spawn_rak_thread();
+        // IDA 0xa6f328/0xa6f358: length-prefixed wire form.
+        let mut stream = BitStream::new();
+        rak_string_serialize(&mut stream, "hi");
+        let mut r = BitStream::from_bytes(&stream.into_bytes());
+        assert_eq!(rak_string_deserialize(&mut r), Some("hi".to_owned()));
+        let mut stream = BitStream::new();
+        rak_string_serialize(&mut stream, "");
+        let mut r = BitStream::from_bytes(&stream.into_bytes());
+        assert_eq!(rak_string_deserialize(&mut r), Some(String::new()));
+        assert_eq!(rak_string_deserialize(&mut BitStream::from_bytes(&[])), None);
+        // IDA 0xa70260/0xa70278/0xa702a4: deterministic MT sequence.
+        let mut rng = RakNetRandom::new();
+        rng.seed_mt(42);
+        let (a, b) = (rng.random_mt(), rng.random_mt());
+        let mut rng2 = RakNetRandom::new();
+        rng2.seed_mt(42);
+        assert_eq!((rng2.random_mt(), rng2.random_mt()), (a, b));
+        rng2.seed_mt(44);
+        assert_ne!(rng2.random_mt(), a);
+        // First draw twists: state[0] is the tempered twist output.
+        let mut rng3 = RakNetRandom::new();
+        rng3.seed_mt(1);
+        let _ = rng3.random_mt();
+    }
 }
 
 /// `RakNet::UNASSIGNED_RAKNET_GUID` (IDA 0xa5c018).
@@ -818,6 +855,133 @@ pub fn rak_string() -> String {
 #[must_use]
 pub fn rak_string_format(formatted: &str) -> String {
  formatted.to_owned()
+}
+
+/// `RakNet::RakString::Free` (IDA 0xa6ec8c): drops a reference and
+/// recycles at zero, ending empty either way; the shared pool stays
+/// engine-side.
+pub fn rak_string_free(s: &mut String) {
+ s.clear();
+}
+
+/// `RakNet::RakString::operator=` (IDA 0xa6eed4): copies the text.
+pub fn rak_string_assign(dst: &mut String, src: &str) {
+ dst.clear();
+ dst.push_str(src);
+}
+
+/// `RakNet::RakString::Allocate` (IDA 0xa6ef14): reserves through the
+/// shared-string pool engine-side; the inline 112-byte fast path and
+/// heap doubling stay there too.
+pub fn rak_string_allocate(s: &mut String, capacity: usize) {
+ s.reserve(capacity);
+}
+
+/// `RakNet::RakString::FreeMemoryNoMutex` (IDA 0xa6f210): drains the
+/// global pool; nothing observable here.
+pub fn rak_string_free_pool() {}
+
+/// `RakNet::RakString::Serialize` (IDA 0xa6f328): `u16` length plus
+/// aligned bytes.
+pub fn rak_string_serialize(stream: &mut BitStream, s: &str) {
+ stream.write_u16(s.len() as u16);
+ stream.write_aligned_bytes(s.as_bytes());
+}
+
+/// `RakNet::RakString::Deserialize` (IDA 0xa6f358): frees first, then
+/// the length; empty strings only consume the alignment pad. Returns
+/// `None` on short reads.
+#[must_use]
+pub fn rak_string_deserialize(stream: &mut BitStream) -> Option<String> {
+ let len = stream.read_u16()?;
+ if len == 0 {
+ let mut pad: [u8; 0] = [];
+ stream.read_aligned_bytes(&mut pad);
+ return Some(String::new());
+ }
+ let mut buf = vec![0u8; len as usize];
+ if !stream.read_aligned_bytes(&mut buf) {
+ return None;
+ }
+ String::from_utf8(buf).ok()
+}
+
+/// `List<SharedString *>::~List` (IDA 0xa6f3c0): node release stays
+/// engine-side.
+pub fn rak_string_list_drop() {}
+
+/// `RakNet::RakThread::Create` (IDA 0xa6fa3c): thread spawn stays
+/// engine-side.
+pub fn spawn_rak_thread() {}
+
+/// `RakNet::RakNetRandom` (IDA 0xa70260): MT19937 state with the
+/// remaining-use count beside it.
+#[derive(Clone, Debug)]
+pub struct RakNetRandom {
+ state: [u32; 624],
+ remaining: i32,
+}
+
+impl Default for RakNetRandom {
+ /// Ctor (IDA 0xa70260): the use count starts at -1, state uninit.
+ fn default() -> Self {
+ Self { state: [0; 624], remaining: -1 }
+ }
+}
+
+impl RakNetRandom {
+ /// `RakNetRandom::RakNetRandom` (IDA 0xa70260).
+ pub fn new() -> Self {
+ Self::default()
+ }
+
+ /// `RakNetRandom::SeedMT` (IDA 0xa70278): `state[0] = seed | 1`,
+ /// then multiply-only chaining with `0x10DCD` (the address-plus-one
+ /// of the `getStringValue`method IDA names at 0xa70278). The use
+ /// count resets to 0 so the next draw twists first.
+ pub fn seed_mt(&mut self, seed: u32) {
+ let mut s = seed | 1;
+ self.state[0] = s;
+ for i in 1..624 {
+ s = s.wrapping_mul(0x10DCD);
+ self.state[i] = s;
+ }
+ self.remaining = 0;
+ }
+
+ /// Standard MT19937 twist (IDA 0xa700b8 `reloadMT`, `MATRIX_A`
+ /// `0x9908B0DF`).
+ fn twist(&mut self) {
+ for i in 0..624 {
+ let y = (self.state[i] & 0x8000_0000) | (self.state[(i + 1) % 624] & 0x7FFF_FFFF);
+ let mut x = self.state[(i + 397) % 624] ^ (y >> 1);
+ if y & 1 != 0 {
+ x ^= 0x9908_B0DF;
+ }
+ self.state[i] = x;
+ }
+ }
+
+ /// Standard MT19937 temper (IDA 0xa702d4/0xa702e6).
+ fn temper(y: u32) -> u32 {
+ let y = y ^ (y >> 11);
+ let y = y ^ ((y << 7) & 0x9D2C_5680);
+ let y = y ^ ((y << 15) & 0xEFC6_0000);
+ y ^ (y >> 18)
+ }
+
+ /// `RakNetRandom::RandomMT` (IDA 0xa702a4): counts down, twisting
+ /// for a fresh cycle (the global reseed for a never-seeded instance
+ /// stays engine-side).
+ pub fn random_mt(&mut self) -> u32 {
+ self.remaining -= 1;
+ if self.remaining < 0 {
+ self.twist();
+ self.remaining = 623;
+ return Self::temper(self.state[0]);
+ }
+ Self::temper(self.state[623 - self.remaining as usize])
+ }
 }
 
 /// `SuperFastHashIncremental` (IDA 0xa7cb08, Paul Hsieh's hash as

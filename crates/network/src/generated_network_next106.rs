@@ -141,22 +141,25 @@ pub fn stub_a6ec7c(text: String) {
 // 0xa6ec8c — __ZN6RakNet9RakString4FreeEv
 // type: void __fastcall(RakNet::SimpleMutex ***this)
 #[doc(alias = "RakNet::RakString::Free(void)")]
-pub fn stub_a6ec8c() -> ! {
-    todo!("0xa6ec8c RakNet::RakString::Free(void)")
+pub fn stub_a6ec8c(s: &mut String) {
+ // IDA 0xa6ec8c: release ending empty.
+ crate::socket::rak_string_free(s)
 }
 
 // 0xa6eed4 — __ZN6RakNet9RakStringaSERKS0_
 // type: RakNet::RakString *__fastcall(RakNet::RakString *, RakNet::SimpleMutex ***)
 #[doc(alias = "RakNet::RakString::operator=(RakNet::RakString const&)")]
-pub fn stub_a6eed4() -> ! {
-    todo!("0xa6eed4 RakNet::RakString::operator=(RakNet::RakString const&)")
+pub fn stub_a6eed4(dst: &mut String, src: &str) {
+ // IDA 0xa6eed4: copy the text.
+ crate::socket::rak_string_assign(dst, src)
 }
 
 // 0xa6ef14 — __ZN6RakNet9RakString8AllocateEm
 // type: void __fastcall(RakNet::RakString *this, unsigned int)
 #[doc(alias = "RakNet::RakString::Allocate(unsigned long)")]
-pub fn stub_a6ef14() -> ! {
-    todo!("0xa6ef14 RakNet::RakString::Allocate(unsigned long)")
+pub fn stub_a6ef14(s: &mut String, capacity: usize) {
+ // IDA 0xa6ef14: reserve through the pool.
+ crate::socket::rak_string_allocate(s, capacity)
 }
 
 // 0xa6f1ac — __ZN6RakNet9RakString14IPAddressMatchEPKc
@@ -170,64 +173,73 @@ pub fn stub_a6f1ac(pattern: &str, addr: &str) -> bool {
 // 0xa6f210 — __ZN6RakNet9RakString17FreeMemoryNoMutexEv
 // type: void __fastcall(RakNet::RakString *this)
 #[doc(alias = "RakNet::RakString::FreeMemoryNoMutex(void)")]
-pub fn stub_a6f210() -> ! {
-    todo!("0xa6f210 RakNet::RakString::FreeMemoryNoMutex(void)")
+pub fn stub_a6f210() {
+ // IDA 0xa6f210: drain the global pool.
+ crate::socket::rak_string_free_pool()
 }
 
 // 0xa6f328 — __ZNK6RakNet9RakString9SerializeEPNS_9BitStreamE
 // type: RakNet::BitStream *__fastcall(RakNet::RakString *this, RakNet::BitStream *)
 #[doc(alias = "RakNet::RakString::Serialize(RakNet::BitStream *)const")]
-pub fn stub_a6f328() -> ! {
-    todo!("0xa6f328 RakNet::RakString::Serialize(RakNet::BitStream *)const")
+pub fn stub_a6f328(stream: &mut crate::bitstream::BitStream, s: &str) {
+ // IDA 0xa6f328: u16 length plus aligned bytes.
+ crate::socket::rak_string_serialize(stream, s)
 }
 
 // 0xa6f358 — __ZN6RakNet9RakString11DeserializeEPNS_9BitStreamE
 // type: int __fastcall(RakNet::SimpleMutex ***this, RakNet::BitStream *)
 #[doc(alias = "RakNet::RakString::Deserialize(RakNet::BitStream *)")]
-pub fn stub_a6f358() -> ! {
-    todo!("0xa6f358 RakNet::RakString::Deserialize(RakNet::BitStream *)")
+pub fn stub_a6f358(stream: &mut crate::bitstream::BitStream) -> Option<String> {
+ // IDA 0xa6f358: length then aligned bytes.
+ crate::socket::rak_string_deserialize(stream)
 }
 
 // 0xa6f3c0 — __ZN14DataStructures4ListIPN6RakNet9RakString12SharedStringEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "DataStructures::List<RakNet::RakString::SharedString *>::~List()")]
-pub fn stub_a6f3c0() -> ! {
-    todo!("0xa6f3c0 DataStructures::List<RakNet::RakString::SharedString *>::~List()")
+pub fn stub_a6f3c0() {
+ // IDA 0xa6f3c0: node release stays engine-side.
+ crate::socket::rak_string_list_drop()
 }
 
 // 0xa6fa3c — __ZN6RakNet9RakThread6CreateEPFPvS1_ES1_i
 // type: int __fastcall(RakNet::RakThread *this, void *(__fastcall *)(void *), int, int)
 #[doc(alias = "RakNet::RakThread::Create(void * (*)(void *),void *,int)")]
-pub fn stub_a6fa3c() -> ! {
-    todo!("0xa6fa3c RakNet::RakThread::Create(void * (*)(void *),void *,int)")
+pub fn stub_a6fa3c() {
+ // IDA 0xa6fa3c: thread spawn stays engine-side.
+ crate::socket::spawn_rak_thread()
 }
 
 // 0xa70260 — __ZN6RakNet12RakNetRandomC1Ev
 // type: int __fastcall(int this)
 #[doc(alias = "RakNet::RakNetRandom::RakNetRandom(void)")]
-pub fn stub_a70260() -> ! {
-    todo!("0xa70260 RakNet::RakNetRandom::RakNetRandom(void)")
+pub fn stub_a70260() -> crate::socket::RakNetRandom {
+ // IDA 0xa70260: use count starts at -1.
+ crate::socket::RakNetRandom::new()
 }
 
 // 0xa70270 — __ZN6RakNet12RakNetRandomD1Ev
 // type: void __fastcall(RakNet::RakNetRandom *__hidden this)
 #[doc(alias = "RakNet::RakNetRandom::~RakNetRandom()")]
-pub fn stub_a70270() -> ! {
-    todo!("0xa70270 RakNet::RakNetRandom::~RakNetRandom()")
+pub fn stub_a70270(rng: crate::socket::RakNetRandom) {
+ // IDA 0xa70270: frees; Rust drops it.
+ drop(rng);
 }
 
 // 0xa70278 — __ZN6RakNet12RakNetRandom6SeedMTEj
 // type: unsigned int *__fastcall(unsigned int *this, unsigned int)
 #[doc(alias = "RakNet::RakNetRandom::SeedMT(unsigned int)")]
-pub fn stub_a70278() -> ! {
-    todo!("0xa70278 RakNet::RakNetRandom::SeedMT(unsigned int)")
+pub fn stub_a70278(rng: &mut crate::socket::RakNetRandom, seed: u32) {
+ // IDA 0xa70278: multiply-only chain with 0x10DCD.
+ rng.seed_mt(seed)
 }
 
 // 0xa702a4 — __ZN6RakNet12RakNetRandom8RandomMTEv
 // type: unsigned int __fastcall(RakNet::RakNetRandom *this)
 #[doc(alias = "RakNet::RakNetRandom::RandomMT(void)")]
-pub fn stub_a702a4() -> ! {
-    todo!("0xa702a4 RakNet::RakNetRandom::RandomMT(void)")
+pub fn stub_a702a4(rng: &mut crate::socket::RakNetRandom) -> u32 {
+ // IDA 0xa702a4: countdown with twist refill.
+ rng.random_mt()
 }
 
 // 0xa7090c — __ZN6RakNet22SplitPacketChannelCompERKtRKPNS_18SplitPacketChannelE
