@@ -1,8 +1,4 @@
-//! rendering shard 141 — 27 stubs EA-sorted filtered wide (15586 total, 15559->15586 covered, 0 remaining) — 0xc6eb18..0xf6ad84
-//! Each stub preserves IDA ea + mangled + demangled for rg.
-//! Batch-2 impl: all 27 ported from IDA decompile+disasm (see per-EA notes).
-
-#![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
+use std::cell::Cell;
 
 use rbx_core::SharedPtr;
 
@@ -279,7 +275,10 @@ impl CompositionPass {
 #[derive(Clone, Debug)]
 pub struct CompositionTargetPass {
     /// Owning `CompositionTechnique *` at `+0` (IDA `0xc70b0e`).
-    pub parent: usize,
+    /// `Cell` because C++ fixes this pointer at in-place construction
+    /// while Rust moves the technique on return from `new`; the owning
+    /// technique refreshes it in `output_target_pass()` (IDA `0xc71788`).
+    pub parent: Cell<usize>,
     /// Input mode at `+4` (init `0`, IDA `0xc70b18`).
     pub input_mode: u32,
     /// Output name at `+8` (init blank, IDA `0xc70b28`).
@@ -304,7 +303,7 @@ impl CompositionTargetPass {
     /// `0xc70ae4`, via C1 at `0xc70ad8`).
     pub fn new(parent: usize, render_system_scheme: Option<&str>) -> Self {
         Self {
-            parent,
+            parent: Cell::new(parent),
             input_mode: 0,
             output_name: String::new(),
             passes: Vec::new(),
@@ -438,16 +437,17 @@ impl CompositionTechnique {
     /// `0xc71094`, via C1 at `0xc71088`): empty definition/pass lists,
     /// blank scheme, fresh output target pass owned by `self`.
     pub fn new(parent: usize) -> Self {
-        let mut technique = Self {
+        // NOTE: C++ writes `this` into the output pass at in-place
+        // construction; Rust moves the value on return, so no address taken
+        // here is valid. The live address is refreshed on every
+        // `output_target_pass()` access (IDA `0xc71788` reads `+40`).
+        Self {
             parent,
             texture_definitions: Vec::new(),
             target_passes: Vec::new(),
             output_target_pass: CompositionTargetPass::new(0, None),
             scheme_name: String::new(),
-        };
-        let addr = &technique as *const Self as usize;
-        technique.output_target_pass.parent = addr;
-        technique
+        }
     }
 
     /// `CompositionTechnique::removeAllTextureDefinitions` (IDA `0xc71474`):
@@ -480,8 +480,13 @@ impl CompositionTechnique {
     }
 
     /// `CompositionTechnique::getOutputTargetPass` (IDA `0xc71788`): word at
-    /// `+40`.
+    /// `+40`. Refreshes the back-pointer to the live `self` address:
+    /// the C++ ctor runs in place, but Rust may have moved the technique
+    /// since `new` (see `CompositionTargetPass::parent`).
     pub fn output_target_pass(&self) -> &CompositionTargetPass {
+        self.output_target_pass
+            .parent
+            .set(self as *const Self as usize);
         &self.output_target_pass
     }
 

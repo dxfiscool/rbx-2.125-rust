@@ -526,7 +526,7 @@ fn stencil_quad_custom_and_support() {
 #[test]
 fn target_pass_lifecycle() {
     let mut target = g::stub_c70ad8(0x9000, None);
-    assert_eq!(target.parent, 0x9000);
+    assert_eq!(target.parent.get(), 0x9000);
     assert_eq!(target.material_scheme, "Default");
     assert_eq!(target.visibility_mask, u32::MAX);
     assert_eq!(target.lod_bias, 1.0);
@@ -607,7 +607,7 @@ fn technique_lifecycle_and_support() {
     assert!(technique.texture_definitions().is_empty());
     assert!(technique.target_passes.is_empty());
     // Ctor-created output target pass carries the technique address.
-    assert_eq!(g::stub_c71788(&technique).parent, &technique as *const _ as usize);
+    assert_eq!(g::stub_c71788(&technique).parent.get(), &technique as *const _ as usize);
     g::stub_c718d0(&mut technique, "Mask");
     assert_eq!(technique.scheme_name, "Mask");
     let di = g::stub_c715e0(&mut technique, "rt");
