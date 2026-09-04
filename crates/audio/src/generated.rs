@@ -5046,8 +5046,15 @@ pub fn stub_f30344(func: &mut SoundServiceSoundFunc, arg_name: &str, default: Op
 
 // 0xf30354 — j___ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundServiceEFvNS_9SoundTypeEELi1EEC2EMS3_FvS4_EPKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::BoundFuncDesc(void (RBX::Soundscape::SoundService::*)(RBX::SoundType),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_f30354() -> ! {
-    todo!("0xf30354 RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::BoundFuncDesc(void (RBX::Soundscape::SoundService::*)(RBX::SoundType),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_f30354(
+    call: Box<dyn Fn(&mut SoundService, SoundType) + Send + Sync>,
+    name: &str,
+    arg_name: &str,
+    permissions: u32,
+    attributes: u32,
+) -> SoundServiceSoundFunc {
+    // IDA 0xf30354 (j__ thunk, __picsymbolstub4): tail-calls BoundFuncDesc<SoundService,void(SoundType),1>::BoundFuncDesc (0x37ad84). Host: delegate.
+    stub_37ad84(call, name, arg_name, permissions, attributes)
 }
 
 // 0xf30364 — j___ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelENS2_7SoundIdEEC2IMS3_KFS4_vEMS3_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -5135,8 +5142,16 @@ pub fn stub_f303a4(
 // 0xf303b4 — j___ZN3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEEC2IMS3_KFS4_vEMS3_FvRKS4_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::EnumPropDescriptor<RBX::Soundscape::ReverbType (RBX::Soundscape::SoundService::*)(void)const,void (RBX::Soundscape::SoundService::*)(RBX::Soundscape::ReverbType const&)>(char const*,char const*,RBX::Soundscape::ReverbType (RBX::Soundscape::SoundService::*)(void)const,void (RBX::Soundscape::SoundService::*)(RBX::Soundscape::ReverbType const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_f303b4() -> ! {
-    todo!("0xf303b4 RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::EnumPropDescriptor<RBX::Soundscape::ReverbType (RBX::Soundscape::SoundService::*)(void)const,void (RBX::Soundscape::SoundService::*)(RBX::Soundscape::ReverbType const&)>(char const*,char const*,RBX::Soundscape::ReverbType (RBX::Soundscape::SoundService::*)(void)const,void (RBX::Soundscape::SoundService::*)(RBX::Soundscape::ReverbType const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_f303b4(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&SoundService) -> ReverbType + Send + Sync>,
+    set: Box<dyn Fn(&mut SoundService, ReverbType) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> SoundServiceReverbDesc {
+    // IDA 0xf303b4 (j__ thunk, __picsymbolstub4): tail-calls EnumPropDescriptor<SoundService,ReverbType>::EnumPropDescriptor (0x37b218). The member-pointer pair rides the caller's closures; host: delegate.
+    stub_37b218(name, category, SoundServiceReverbAccess { get, set }, attributes, permissions)
 }
 
 // 0xf303c4 — j___ZN3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEEC2ERNS0_15ClassDescriptorEPKcS8_St8auto_ptrINS4_6GetSetEENS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -5339,83 +5354,99 @@ pub fn stub_f30504() -> &'static str {
 // 0xf30524 — j___ZN3RBX9CreatableINS_8InstanceEE6createI21SoundServiceStatsItemPKNS_10Soundscape12SoundServiceEEEN5boost10shared_ptrIT_EET0_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<SoundServiceStatsItem> RBX::Creatable<RBX::Instance>::create<SoundServiceStatsItem,RBX::Soundscape::SoundService const*>(RBX::Soundscape::SoundService const*)")]
-pub fn stub_f30524() -> ! {
-    todo!("0xf30524 j___ZN3RBX9CreatableINS_8InstanceEE6createI21SoundServiceStatsItemPKNS_10Soundscape12SoundServiceEEEN5boost10shared_ptrIT_EET0_")
+pub fn stub_f30524(service: &SoundService) -> SharedPtr<SoundServiceStatsItem> {
+    // IDA 0xf30524 (j__ thunk, __picsymbolstub4): tail-calls Creatable<Instance>::create<SoundServiceStatsItem, const SoundService*>; the instantiation builds the zeroed item with its bound children (cf. 0x376ac4). Host: delegate.
+    stub_376ac4(service)
 }
 
 // 0xf30534 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_10Soundscape12SoundChannelEEEN5boost10shared_ptrIT_EEv
 // type: int __fastcall(_DWORD)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundChannel> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundChannel>(void)")]
-pub fn stub_f30534() -> ! {
-    todo!("0xf30534 j___ZN3RBX9CreatableINS_8InstanceEE6createINS_10Soundscape12SoundChannelEEEN5boost10shared_ptrIT_EEv")
+pub fn stub_f30534() -> SharedPtr<SoundChannel> {
+    // IDA 0xf30534 (j__ thunk, __picsymbolstub4): tail-calls Creatable<Instance>::create<SoundChannel> (0x3780c8). Host: delegate.
+    stub_3780c8()
 }
 
 // 0xf30544 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_10StockSoundEEEN5boost10shared_ptrIT_EEv
 // type: int __fastcall(__guard *, int, int, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::StockSound> RBX::Creatable<RBX::Instance>::create<RBX::StockSound>(void)")]
-pub fn stub_f30544() -> ! {
-    todo!("0xf30544 j___ZN3RBX9CreatableINS_8InstanceEE6createINS_10StockSoundEEEN5boost10shared_ptrIT_EEv")
+pub fn stub_f30544() -> SharedPtr<StockSound> {
+    // IDA 0xf30544 (j__ thunk, __picsymbolstub4): tail-calls Creatable<Instance>::create<StockSound> (0x37677c). Host: delegate.
+    stub_37677c()
 }
 
 // 0xf30564 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_10Soundscape10ReverbTypeEEERS3_RKT_
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::Soundscape::ReverbType>(RBX::Soundscape::ReverbType const&)")]
-pub fn stub_f30564() -> ! {
-    todo!("0xf30564 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::Soundscape::ReverbType>(RBX::Soundscape::ReverbType const&)")
+pub fn stub_f30564<'a>(slot: &'a mut PlacementAny, value: ReverbType) -> &'a mut PlacementAny {
+    // IDA 0xf30564 (j__ thunk, __picsymbolstub4): tail-calls placement_any<Region3>::operator=<ReverbType> (0x377988). Host: delegate.
+    stub_377988(slot, value)
 }
 
 // 0xf30574 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_10Soundscape7SoundIdEEERS3_RKT_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::Soundscape::SoundId>(RBX::Soundscape::SoundId const&)")]
-pub fn stub_f30574() -> ! {
-    todo!("0xf30574 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::Soundscape::SoundId>(RBX::Soundscape::SoundId const&)")
+pub fn stub_f30574<'a>(slot: &'a mut PlacementAny, value: &SoundId) -> &'a mut PlacementAny {
+    // IDA 0xf30574 (j__ thunk, __picsymbolstub4): tail-calls placement_any<Region3>::operator=<SoundId> (0x376c84). Host: delegate.
+    stub_376c84(slot, value)
 }
 
 // 0xf30584 — j___ZN3rbx14implementation12typed_holderIN3RBX10Soundscape10ReverbTypeEE9singletonEv
 // type: int(void)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Soundscape::ReverbType>::singleton(void)")]
-pub fn stub_f30584() -> ! {
-    todo!("0xf30584 rbx::implementation::typed_holder<RBX::Soundscape::ReverbType>::singleton(void)")
+pub fn stub_f30584() -> &'static ReverbTypeHolder {
+    // IDA 0xf30584 (j__ thunk, __picsymbolstub4): tail-calls typed_holder<ReverbType>::singleton (0x3779d8). Host: delegate.
+    stub_3779d8()
 }
 
 // 0xf30594 — j___ZN3rbx14implementation12typed_holderIN3RBX10Soundscape7SoundIdEE9singletonEv
 // type: int(void)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Soundscape::SoundId>::singleton(void)")]
-pub fn stub_f30594() -> ! {
-    todo!("0xf30594 rbx::implementation::typed_holder<RBX::Soundscape::SoundId>::singleton(void)")
+pub fn stub_f30594() -> &'static SoundIdHolder {
+    // IDA 0xf30594 (j__ thunk, __picsymbolstub4): tail-calls typed_holder<SoundId>::singleton (0x37bddc). Host: delegate.
+    stub_37bddc()
 }
 
 // 0xf305a4 — j___ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE7connectIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_10Soundscape12SoundChannelES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEEEENS0_10connectionERKT_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Heartbeat const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>> const&)")]
-pub fn stub_f305a4() -> ! {
-    todo!("0xf305a4 j___ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE7connectIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_10Soundscape12SoundChannelES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEEEENS0_10connectionERKT_")
+pub fn stub_f305a4(
+    signal: &Signal<Heartbeat>,
+    channel: SharedPtr<SoundChannel>,
+    handler: impl Fn(&SoundChannel, Heartbeat) + Send + Sync + 'static,
+) -> HeartbeatConnection {
+    // IDA 0xf305a4 (j__ thunk, __picsymbolstub4): tail-calls signal<Heartbeat>::connect<bind_t<SoundChannel::onHeartbeat>> (0x3770e0). Boost mapping: bind/function -> closure; host: delegate.
+    stub_3770e0(signal, channel, handler)
 }
 
 // 0xf305b4 — j___ZN3rbx8any_castIN3RBX10Soundscape7SoundIdENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE
 #[doc(alias = "RBX::Soundscape::SoundId * rbx::any_cast<RBX::Soundscape::SoundId,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")]
-pub fn stub_f305b4() -> ! {
-    todo!("0xf305b4 RBX::Soundscape::SoundId * rbx::any_cast<RBX::Soundscape::SoundId,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")
+pub fn stub_f305b4(slot: &PlacementAny) -> Option<&SoundId> {
+    // IDA 0xf305b4 (j__ thunk, __picsymbolstub4): tail-calls any_cast<SoundId,Region3>(ptr) (0x37bc94); mismatch -> null. Host: delegate.
+    stub_37bc94(slot)
 }
 
 // 0xf305c4 — j___ZN3rbx8any_castIRKN3RBX10Soundscape10ReverbTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: int __fastcall(_DWORD)
 #[doc(alias = "RBX::Soundscape::ReverbType const& rbx::any_cast<RBX::Soundscape::ReverbType const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_f305c4() -> ! {
-    todo!("0xf305c4 RBX::Soundscape::ReverbType const& rbx::any_cast<RBX::Soundscape::ReverbType const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_f305c4(slot: &PlacementAny) -> Result<&ReverbType, SoundCastError> {
+    // IDA 0xf305c4 (j__ thunk, __picsymbolstub4): tail-calls any_cast<const ReverbType&,Region3> (0x377b20). Host: delegate.
+    stub_377b20(slot)
 }
 
 // 0xf305d4 — j___ZN3rbx8any_castIRKN3RBX10Soundscape7SoundIdENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: int __fastcall(_DWORD)
 #[doc(alias = "RBX::Soundscape::SoundId const& rbx::any_cast<RBX::Soundscape::SoundId const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_f305d4() -> ! {
-    todo!("0xf305d4 RBX::Soundscape::SoundId const& rbx::any_cast<RBX::Soundscape::SoundId const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_f305d4(slot: &PlacementAny) -> Result<&SoundId, SoundCastError> {
+    // IDA 0xf305d4 (j__ thunk, __picsymbolstub4): tail-calls any_cast<const SoundId&,Region3> (0x37aacc). Host: delegate.
+    stub_37aacc(slot)
 }
 
 // 0xf305e4 — j___ZN3rbx8any_castIRN3RBX10Soundscape7SoundIdENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: int __fastcall(_DWORD)
 #[doc(alias = "RBX::Soundscape::SoundId & rbx::any_cast<RBX::Soundscape::SoundId &,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_f305e4() -> ! {
-    todo!("0xf305e4 RBX::Soundscape::SoundId & rbx::any_cast<RBX::Soundscape::SoundId &,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_f305e4(slot: &PlacementAny) -> Result<&SoundId, SoundCastError> {
+    // IDA 0xf305e4 (j__ thunk, __picsymbolstub4): tail-calls any_cast<SoundId&,Region3> (0x37bcec); shared refs collapse on host. Host: delegate.
+    stub_37bcec(slot)
 }
 
 // 0xf305f4 — j___ZN5boost10scoped_ptrIN3RBX10Soundscape21CollisionSoundManagerEED2Ev
@@ -5428,70 +5459,90 @@ pub fn stub_f305f4() {
 // 0xf30604 — j___ZN5boost10shared_ptrI21SoundServiceStatsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<SoundServiceStatsItem>::shared_ptr<SoundServiceStatsItem,RBX::Creatable<RBX::Instance>::Deleter>(SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_f30604() -> ! {
-    todo!("0xf30604 j___ZN5boost10shared_ptrI21SoundServiceStatsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_")
+pub fn stub_f30604(item: SoundServiceStatsItem) -> SharedPtr<SoundServiceStatsItem> {
+    // IDA 0xf30604 (j__ thunk, __picsymbolstub4): shared_ptr<StatsItem, Creatable::Deleter> ctor — adopts the raw pointer with a disposing control block (host: Arc construction, twin of 0x378178).
+    SharedPtr::new(item)
 }
 
 // 0xf30614 — j___ZN5boost10shared_ptrIN3RBX10Soundscape12SoundChannelEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>::shared_ptr<RBX::Soundscape::SoundChannel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_f30614() -> ! {
-    todo!("0xf30614 j___ZN5boost10shared_ptrIN3RBX10Soundscape12SoundChannelEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+pub fn stub_f30614(channel: SoundChannel) -> SharedPtr<SoundChannel> {
+    // IDA 0xf30614 (j__ thunk, __picsymbolstub4): tail-calls shared_ptr<SoundChannel, Creatable::Deleter> ctor (0x378178). Host: delegate.
+    stub_378178(channel)
 }
 
 // 0xf30624 — j___ZN5boost10shared_ptrIN3RBX10Soundscape12SoundChannelEEaSINS1_10StockSoundEEERS4_RKNS0_IT_EE
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>& rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>::operator=<RBX::StockSound>(rbx_core::SharedPtr<RBX::StockSound> const&)")]
-pub fn stub_f30624() -> ! {
-    todo!("0xf30624 j___ZN5boost10shared_ptrIN3RBX10Soundscape12SoundChannelEEaSINS1_10StockSoundEEERS4_RKNS0_IT_EE")
+pub fn stub_f30624(
+    dst: &mut SharedPtr<SoundChannel>,
+    src: &SharedPtr<StockSound>,
+) -> SharedPtr<SoundChannel> {
+    // IDA 0xf30624 (j__ thunk, __picsymbolstub4): tail-calls shared_ptr<SoundChannel>::operator=<StockSound> (0x376a24). Host: delegate.
+    stub_376a24(dst, src)
 }
 
 // 0xf30634 — j___ZN5boost10shared_ptrIN3RBX10Soundscape12SoundService8SoundJobEEC2IS4_EEPT_
 // type: int __fastcall(int, void *, int, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundService::SoundJob>::shared_ptr<RBX::Soundscape::SoundService::SoundJob>(RBX::Soundscape::SoundService::SoundJob *)")]
-pub fn stub_f30634() -> ! {
-    todo!("0xf30634 j___ZN5boost10shared_ptrIN3RBX10Soundscape12SoundService8SoundJobEEC2IS4_EEPT_")
+pub fn stub_f30634(job: SoundJob) -> SharedPtr<SoundJob> {
+    // IDA 0xf30634 (j__ thunk, __picsymbolstub4): shared_ptr<SoundJob> ctor — adopts the raw pointer (host: Arc construction, twin of 0x378178).
+    SharedPtr::new(job)
 }
 
 // 0xf30644 — j___ZN5boost10shared_ptrIN3RBX10Soundscape12SoundService8SoundJobEEaSERKS5_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundService::SoundJob>::operator=(rbx_core::SharedPtr<RBX::Soundscape::SoundService::SoundJob> const&)")]
-pub fn stub_f30644() -> ! {
-    todo!("0xf30644 j___ZN5boost10shared_ptrIN3RBX10Soundscape12SoundService8SoundJobEEaSERKS5_")
+pub fn stub_f30644(dst: &mut SharedPtr<SoundJob>, src: &SharedPtr<SoundJob>) -> SharedPtr<SoundJob> {
+    // IDA 0xf30644 (j__ thunk, __picsymbolstub4): tail-calls shared_ptr<SoundJob>::operator= (0x376a58). Host: delegate.
+    stub_376a58(dst, src)
 }
 
 // 0xf30654 — j___ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEEC2IS3_EEPT_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::Sound>::shared_ptr<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")]
-pub fn stub_f30654() -> ! {
-    todo!("0xf30654 j___ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEEC2IS3_EEPT_")
+pub fn stub_f30654(sound: Sound) -> SharedPtr<Sound> {
+    // IDA 0xf30654 (j__ thunk, __picsymbolstub4): shared_ptr<Sound> ctor — adopts the raw pointer (host: Arc construction, twin of 0x378178).
+    SharedPtr::new(sound)
 }
 
 // 0xf30664 — j___ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEEaSERKS4_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::Sound>::operator=(rbx_core::SharedPtr<RBX::Soundscape::Sound> const&)")]
-pub fn stub_f30664() -> ! {
-    todo!("0xf30664 j___ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEEaSERKS4_")
+pub fn stub_f30664(dst: &mut SharedPtr<Sound>, src: &SharedPtr<Sound>) -> SharedPtr<Sound> {
+    // IDA 0xf30664 (j__ thunk, __picsymbolstub4): tail-calls shared_ptr<Sound>::operator= (0x37716c: shared_count copy, word swap, old release; host: Arc clone assigns). Host: delegate.
+    stub_37716c(dst, src)
 }
 
 // 0xf30674 — j___ZN5boost10shared_ptrIN3RBX10StockSoundEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<RBX::StockSound>::shared_ptr<RBX::StockSound,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_f30674() -> ! {
-    todo!("0xf30674 j___ZN5boost10shared_ptrIN3RBX10StockSoundEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+pub fn stub_f30674(stock: StockSound) -> SharedPtr<StockSound> {
+    // IDA 0xf30674 (j__ thunk, __picsymbolstub4): shared_ptr<StockSound, Creatable::Deleter> ctor — adopts the raw pointer with a disposing control block (host: Arc construction, twin of 0x378178).
+    SharedPtr::new(stock)
 }
 
 // 0xf30684 — j___ZN5boost10shared_ptrIN3RBX8InstanceEEaSI21SoundServiceStatsItemEERS3_RKNS0_IT_EE
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<SoundServiceStatsItem>(rbx_core::SharedPtr<SoundServiceStatsItem> const&)")]
-pub fn stub_f30684() -> ! {
-    todo!("0xf30684 j___ZN5boost10shared_ptrIN3RBX8InstanceEEaSI21SoundServiceStatsItemEERS3_RKNS0_IT_EE")
+pub fn stub_f30684(
+    dst: &mut SharedPtr<SoundServiceStatsItem>,
+    src: &SharedPtr<SoundServiceStatsItem>,
+) -> SharedPtr<SoundServiceStatsItem> {
+    // IDA 0xf30684 (j__ thunk, __picsymbolstub4): tail-calls shared_ptr<Instance>::operator=<StatsItem> (0x376a90); the Instance target is the offset-0 base, i.e. the same block. Host: delegate.
+    stub_376a90(dst, src)
 }
 
 // 0xf30694 — j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape12SoundChannelERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS7_EEvRKT_
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>::operator()<RBX::Heartbeat>(RBX::Heartbeat const&)")]
-pub fn stub_f30694() -> ! {
-    todo!("0xf30694 j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape12SoundChannelERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS7_EEvRKT_")
+pub fn stub_f30694(
+    channel: &SoundChannel,
+    heartbeat: Heartbeat,
+    target: impl FnOnce(&SoundChannel, Heartbeat),
+) {
+    // IDA 0xf30694 (j__ thunk, __picsymbolstub4): tail-calls bind_t::operator()<Heartbeat> (0x3791a4) — unpacks the stored channel value and the arg<1> forwarder into the member call. Boost mapping: bind/function -> closure; host: delegate.
+    stub_3791a4(channel, heartbeat, target)
 }
 
 // 0xf306a4 — j___ZN5boost6detail12shared_countC2IN3RBX10Soundscape12SoundService8SoundJobEEEPT_
@@ -5532,43 +5583,49 @@ pub fn stub_f306e4() {
 // 0xf30704 — j___ZN9__gnu_cxx13new_allocatorISt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS3_5SoundEEEEE7destroyEPSA_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__gnu_cxx::new_allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>::destroy(std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>*)")]
-pub fn stub_f30704() -> ! {
-    todo!("0xf30704 j___ZN9__gnu_cxx13new_allocatorISt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS3_5SoundEEEEE7destroyEPSA_")
+pub fn stub_f30704(pair: (SoundId, Option<SharedPtr<Sound>>)) {
+    // IDA 0xf30704 (j__ thunk, __picsymbolstub4): tail-calls new_allocator<pair<SoundId const, shared_ptr<Sound>>>::destroy (0x3792e4) — explicit dtor of the key plus release of the value. Host: delegate; drop glue is implicit.
+    stub_3792e4(pair)
 }
 
 // 0xf30714 — j___ZNK3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEE11setIntValueEPNS0_13DescribedBaseEi
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_f30714() -> ! {
-    todo!("0xf30714 RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_f30714(desc: &SoundServiceReverbDesc, obj: &mut SoundService, value: i32) -> bool {
+    // IDA 0xf30714 (j__ thunk, __picsymbolstub4): tail-calls EnumPropDescriptor<SoundService,ReverbType>::setIntValue (0x37ba04). Host: delegate.
+    stub_37ba04(desc, obj, value)
 }
 
 // 0xf30724 — j___ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE13convertToItemERKS3_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToItem(RBX::Soundscape::ReverbType const&)const")]
-pub fn stub_f30724() -> ! {
-    todo!("0xf30724 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToItem(RBX::Soundscape::ReverbType const&)const")
+pub fn stub_f30724(value: ReverbType) -> u32 {
+    // IDA 0xf30724 (j__ thunk, __picsymbolstub4): tail-calls EnumDesc<ReverbType>::convertToItem (0x377a54). Host: delegate.
+    stub_377a54(value)
 }
 
 // 0xf30734 — j___ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE14convertToIndexES3_
 // type: int(void)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToIndex(RBX::Soundscape::ReverbType)const")]
-pub fn stub_f30734() -> ! {
-    todo!("0xf30734 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToIndex(RBX::Soundscape::ReverbType)const")
+pub fn stub_f30734(value: ReverbType) -> i32 {
+    // IDA 0xf30734 (j__ thunk, __picsymbolstub4): tail-calls EnumDesc<ReverbType>::convertToIndex (0x37b994); failure returns -1 here, unlike convertToItem. Host: delegate.
+    stub_37b994(value as i32)
 }
 
 // 0xf30744 — j___ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToValue(RBX::Name const&,RBX::Soundscape::ReverbType&)const")]
-pub fn stub_f30744() -> ! {
-    todo!("0xf30744 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToValue(RBX::Name const&,RBX::Soundscape::ReverbType&)const")
+pub fn stub_f30744(name: &str, out: &mut ReverbType) -> bool {
+    // IDA 0xf30744 (j__ thunk, __picsymbolstub4): tail-calls EnumDesc<ReverbType>::convertToValue (0x377c10). Host: delegate.
+    stub_377c10(name, out)
 }
 
 // 0xf30754 — j___ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE15convertToStringERKS3_
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToString(RBX::Soundscape::ReverbType const&)const")]
-pub fn stub_f30754() -> ! {
-    todo!("0xf30754 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToString(RBX::Soundscape::ReverbType const&)const")
+pub fn stub_f30754(value: ReverbType, out: &mut String) {
+    // IDA 0xf30754 (j__ thunk, __picsymbolstub4): tail-calls EnumDesc<ReverbType>::convertToString (0x3777e8). Host: delegate.
+    stub_3777e8(value as i32, out)
 }
 
 // 0xf30764 — j___ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator12getClassNameEv
