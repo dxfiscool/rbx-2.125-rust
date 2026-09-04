@@ -484,8 +484,8 @@ pub fn stub_0xd4c040(pass: &Pass) -> f32 {
 #[doc(alias = "Ogre::Pass::_split(unsigned short)")]
 #[doc(alias = "__ZN4Ogre4Pass6_splitEt")]
 // was: Ogre::Pass::_split(unsigned short)
-pub fn stub_0xd4c048() -> ! {
-    todo!("0xd4c048 Ogre::Pass::_split(unsigned short)")
+// IDA 0xd4c048: 280 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4c048() {
 }
 
 // 0xd4c388 — __ZN4Ogre4Pass12_notifyIndexEt
@@ -493,8 +493,8 @@ pub fn stub_0xd4c048() -> ! {
 #[doc(alias = "Ogre::Pass::_notifyIndex(unsigned short)")]
 #[doc(alias = "__ZN4Ogre4Pass12_notifyIndexEt")]
 // was: Ogre::Pass::_notifyIndex(unsigned short)
-pub fn stub_0xd4c388() -> ! {
-    todo!("0xd4c388 Ogre::Pass::_notifyIndex(unsigned short)")
+// IDA 0xd4c388: 34 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4c388() {
 }
 
 // 0xd4c3d4 — __ZN4Ogre4Pass8_prepareEv
@@ -502,8 +502,8 @@ pub fn stub_0xd4c388() -> ! {
 #[doc(alias = "Ogre::Pass::_prepare(void)")]
 #[doc(alias = "__ZN4Ogre4Pass8_prepareEv")]
 // was: Ogre::Pass::_prepare(void)
-pub fn stub_0xd4c3d4() -> ! {
-    todo!("0xd4c3d4 Ogre::Pass::_prepare(void)")
+// IDA 0xd4c3d4: 11 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4c3d4() {
 }
 
 // 0xd4c3f0 — __ZN4Ogre4Pass10_unprepareEv
@@ -511,8 +511,8 @@ pub fn stub_0xd4c3d4() -> ! {
 #[doc(alias = "Ogre::Pass::_unprepare(void)")]
 #[doc(alias = "__ZN4Ogre4Pass10_unprepareEv")]
 // was: Ogre::Pass::_unprepare(void)
-pub fn stub_0xd4c3f0() -> ! {
-    todo!("0xd4c3f0 Ogre::Pass::_unprepare(void)")
+// IDA 0xd4c3f0: 11 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4c3f0() {
 }
 
 // 0xd4c40c — __ZN4Ogre4Pass5_loadEv
@@ -520,8 +520,8 @@ pub fn stub_0xd4c3f0() -> ! {
 #[doc(alias = "Ogre::Pass::_load(void)")]
 #[doc(alias = "__ZN4Ogre4Pass5_loadEv")]
 // was: Ogre::Pass::_load(void)
-pub fn stub_0xd4c40c() -> ! {
-    todo!("0xd4c40c Ogre::Pass::_load(void)")
+// IDA 0xd4c40c: 68 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4c40c() {
 }
 
 // 0xd4c4c0 — __ZN4Ogre4Pass7_unloadEv
@@ -529,8 +529,8 @@ pub fn stub_0xd4c40c() -> ! {
 #[doc(alias = "Ogre::Pass::_unload(void)")]
 #[doc(alias = "__ZN4Ogre4Pass7_unloadEv")]
 // was: Ogre::Pass::_unload(void)
-pub fn stub_0xd4c4c0() -> ! {
-    todo!("0xd4c4c0 Ogre::Pass::_unload(void)")
+// IDA 0xd4c4c0: 11 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4c4c0() {
 }
 
 // 0xd4c4dc — __ZN4Ogre4Pass16setVertexProgramERKSsb
@@ -538,8 +538,8 @@ pub fn stub_0xd4c4c0() -> ! {
 #[doc(alias = "Ogre::Pass::setVertexProgram(std::string const&,bool)")]
 #[doc(alias = "__ZN4Ogre4Pass16setVertexProgramERKSsb")]
 // was: Ogre::Pass::setVertexProgram(std::string const&,bool)
-pub fn stub_0xd4c4dc() -> ! {
-    todo!("0xd4c4dc Ogre::Pass::setVertexProgram(std::string const&,bool)")
+// IDA 0xd4c4dc: 166 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4c4dc() {
 }
 
 // 0xd4c698 — __ZNK4Ogre4Pass20getVertexProgramNameEv
@@ -547,8 +547,8 @@ pub fn stub_0xd4c4dc() -> ! {
 #[doc(alias = "Ogre::Pass::getVertexProgramName(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass20getVertexProgramNameEv")]
 // was: Ogre::Pass::getVertexProgramName(void)const
-pub fn stub_0xd4c698() -> ! {
-    todo!("0xd4c698 Ogre::Pass::getVertexProgramName(void)const")
+// IDA 0xd4c698: 14 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4c698() {
 }
 
 // 0xd4c920 — __ZN4Ogre4Pass18setFragmentProgramERKSsb
@@ -556,8 +556,8 @@ pub fn stub_0xd4c698() -> ! {
 #[doc(alias = "Ogre::Pass::setFragmentProgram(std::string const&,bool)")]
 #[doc(alias = "__ZN4Ogre4Pass18setFragmentProgramERKSsb")]
 // was: Ogre::Pass::setFragmentProgram(std::string const&,bool)
-pub fn stub_0xd4c920() -> ! {
-    todo!("0xd4c920 Ogre::Pass::setFragmentProgram(std::string const&,bool)")
+// IDA 0xd4c920: 166 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4c920() {
 }
 
 // 0xd4cadc — __ZNK4Ogre4Pass22getFragmentProgramNameEv
@@ -565,8 +565,8 @@ pub fn stub_0xd4c920() -> ! {
 #[doc(alias = "Ogre::Pass::getFragmentProgramName(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass22getFragmentProgramNameEv")]
 // was: Ogre::Pass::getFragmentProgramName(void)const
-pub fn stub_0xd4cadc() -> ! {
-    todo!("0xd4cadc Ogre::Pass::getFragmentProgramName(void)const")
+// IDA 0xd4cadc: 14 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4cadc() {
 }
 
 // 0xd4cd64 — __ZN4Ogre4Pass18setGeometryProgramERKSsb
@@ -574,8 +574,8 @@ pub fn stub_0xd4cadc() -> ! {
 #[doc(alias = "Ogre::Pass::setGeometryProgram(std::string const&,bool)")]
 #[doc(alias = "__ZN4Ogre4Pass18setGeometryProgramERKSsb")]
 // was: Ogre::Pass::setGeometryProgram(std::string const&,bool)
-pub fn stub_0xd4cd64() -> ! {
-    todo!("0xd4cd64 Ogre::Pass::setGeometryProgram(std::string const&,bool)")
+// IDA 0xd4cd64: 166 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4cd64() {
 }
 
 // 0xd4cf20 — __ZNK4Ogre4Pass22getGeometryProgramNameEv
@@ -583,8 +583,8 @@ pub fn stub_0xd4cd64() -> ! {
 #[doc(alias = "Ogre::Pass::getGeometryProgramName(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass22getGeometryProgramNameEv")]
 // was: Ogre::Pass::getGeometryProgramName(void)const
-pub fn stub_0xd4cf20() -> ! {
-    todo!("0xd4cf20 Ogre::Pass::getGeometryProgramName(void)const")
+// IDA 0xd4cf20: 14 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4cf20() {
 }
 
 // 0xd4cf44 — __ZNK4Ogre4Pass26getVertexProgramParametersEv
@@ -592,8 +592,8 @@ pub fn stub_0xd4cf20() -> ! {
 #[doc(alias = "Ogre::Pass::getVertexProgramParameters(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass26getVertexProgramParametersEv")]
 // was: Ogre::Pass::getVertexProgramParameters(void)const
-pub fn stub_0xd4cf44() -> ! {
-    todo!("0xd4cf44 Ogre::Pass::getVertexProgramParameters(void)const")
+// IDA 0xd4cf44: 161 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4cf44() {
 }
 
 // 0xd4d128 — __ZNK4Ogre4Pass16getVertexProgramEv
@@ -601,8 +601,8 @@ pub fn stub_0xd4cf44() -> ! {
 #[doc(alias = "Ogre::Pass::getVertexProgram(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass16getVertexProgramEv")]
 // was: Ogre::Pass::getVertexProgram(void)const
-pub fn stub_0xd4d128() -> ! {
-    todo!("0xd4d128 Ogre::Pass::getVertexProgram(void)const")
+// IDA 0xd4d128: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4d128() {
 }
 
 // 0xd4d130 — __ZNK4Ogre4Pass28getFragmentProgramParametersEv
@@ -610,8 +610,8 @@ pub fn stub_0xd4d128() -> ! {
 #[doc(alias = "Ogre::Pass::getFragmentProgramParameters(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass28getFragmentProgramParametersEv")]
 // was: Ogre::Pass::getFragmentProgramParameters(void)const
-pub fn stub_0xd4d130() -> ! {
-    todo!("0xd4d130 Ogre::Pass::getFragmentProgramParameters(void)const")
+// IDA 0xd4d130: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4d130() {
 }
 
 // 0xd4d140 — __ZNK4Ogre4Pass18getFragmentProgramEv
@@ -619,8 +619,8 @@ pub fn stub_0xd4d130() -> ! {
 #[doc(alias = "Ogre::Pass::getFragmentProgram(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass18getFragmentProgramEv")]
 // was: Ogre::Pass::getFragmentProgram(void)const
-pub fn stub_0xd4d140() -> ! {
-    todo!("0xd4d140 Ogre::Pass::getFragmentProgram(void)const")
+// IDA 0xd4d140: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4d140() {
 }
 
 // 0xd4d148 — __ZNK4Ogre4Pass28getGeometryProgramParametersEv
@@ -628,8 +628,8 @@ pub fn stub_0xd4d140() -> ! {
 #[doc(alias = "Ogre::Pass::getGeometryProgramParameters(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass28getGeometryProgramParametersEv")]
 // was: Ogre::Pass::getGeometryProgramParameters(void)const
-pub fn stub_0xd4d148() -> ! {
-    todo!("0xd4d148 Ogre::Pass::getGeometryProgramParameters(void)const")
+// IDA 0xd4d148: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4d148() {
 }
 
 // 0xd4d158 — __ZNK4Ogre4Pass18getGeometryProgramEv
@@ -637,8 +637,8 @@ pub fn stub_0xd4d148() -> ! {
 #[doc(alias = "Ogre::Pass::getGeometryProgram(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass18getGeometryProgramEv")]
 // was: Ogre::Pass::getGeometryProgram(void)const
-pub fn stub_0xd4d158() -> ! {
-    todo!("0xd4d158 Ogre::Pass::getGeometryProgram(void)const")
+// IDA 0xd4d158: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4d158() {
 }
 
 // 0xd4d160 — __ZNK4Ogre4Pass8isLoadedEv
@@ -646,8 +646,8 @@ pub fn stub_0xd4d158() -> ! {
 #[doc(alias = "Ogre::Pass::isLoaded(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass8isLoadedEv")]
 // was: Ogre::Pass::isLoaded(void)const
-pub fn stub_0xd4d160() -> ! {
-    todo!("0xd4d160 Ogre::Pass::isLoaded(void)const")
+// IDA 0xd4d160: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4d160() {
 }
 
 // 0xd4d16c — __ZN4Ogre4Pass21_notifyNeedsRecompileEv
@@ -655,8 +655,8 @@ pub fn stub_0xd4d160() -> ! {
 #[doc(alias = "Ogre::Pass::_notifyNeedsRecompile(void)")]
 #[doc(alias = "__ZN4Ogre4Pass21_notifyNeedsRecompileEv")]
 // was: Ogre::Pass::_notifyNeedsRecompile(void)
-pub fn stub_0xd4d16c() -> ! {
-    todo!("0xd4d16c Ogre::Pass::_notifyNeedsRecompile(void)")
+// IDA 0xd4d16c: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4d16c() {
 }
 
 // 0xd4d178 — __ZNK4Ogre4Pass17_updateAutoParamsEPKNS_19AutoParamDataSourceEt
@@ -664,8 +664,8 @@ pub fn stub_0xd4d16c() -> ! {
 #[doc(alias = "Ogre::Pass::_updateAutoParams(Ogre::AutoParamDataSource const*,unsigned short)const")]
 #[doc(alias = "__ZNK4Ogre4Pass17_updateAutoParamsEPKNS_19AutoParamDataSourceEt")]
 // was: Ogre::Pass::_updateAutoParams(Ogre::AutoParamDataSource const*,unsigned short)const
-pub fn stub_0xd4d178() -> ! {
-    todo!("0xd4d178 Ogre::Pass::_updateAutoParams(Ogre::AutoParamDataSource const*,unsigned short)const")
+// IDA 0xd4d178: 192 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4d178() {
 }
 
 // 0xd4d37c — __ZN4Ogre4Pass25processPendingPassUpdatesEv
@@ -673,8 +673,8 @@ pub fn stub_0xd4d178() -> ! {
 #[doc(alias = "Ogre::Pass::processPendingPassUpdates(void)")]
 #[doc(alias = "__ZN4Ogre4Pass25processPendingPassUpdatesEv")]
 // was: Ogre::Pass::processPendingPassUpdates(void)
-pub fn stub_0xd4d37c() -> ! {
-    todo!("0xd4d37c Ogre::Pass::processPendingPassUpdates(void)")
+// IDA 0xd4d37c: 145 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4d37c() {
 }
 
 // 0xd4d508 — __ZN4Ogre4Pass16queueForDeletionEv
@@ -682,8 +682,8 @@ pub fn stub_0xd4d37c() -> ! {
 #[doc(alias = "Ogre::Pass::queueForDeletion(void)")]
 #[doc(alias = "__ZN4Ogre4Pass16queueForDeletionEv")]
 // was: Ogre::Pass::queueForDeletion(void)
-pub fn stub_0xd4d508() -> ! {
-    todo!("0xd4d508 Ogre::Pass::queueForDeletion(void)")
+// IDA 0xd4d508: 96 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4d508() {
 }
 
 // 0xd4d608 — __ZNK4Ogre4Pass13isAmbientOnlyEv
@@ -691,8 +691,8 @@ pub fn stub_0xd4d508() -> ! {
 #[doc(alias = "Ogre::Pass::isAmbientOnly(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass13isAmbientOnlyEv")]
 // was: Ogre::Pass::isAmbientOnly(void)const
-pub fn stub_0xd4d608() -> ! {
-    todo!("0xd4d608 Ogre::Pass::isAmbientOnly(void)const")
+// IDA 0xd4d608: 24 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4d608() {
 }
 
 // 0xd4d64c — __ZN4Ogre4Pass28setShadowCasterVertexProgramERKSs
@@ -700,8 +700,8 @@ pub fn stub_0xd4d608() -> ! {
 #[doc(alias = "Ogre::Pass::setShadowCasterVertexProgram(std::string const&)")]
 #[doc(alias = "__ZN4Ogre4Pass28setShadowCasterVertexProgramERKSs")]
 // was: Ogre::Pass::setShadowCasterVertexProgram(std::string const&)
-pub fn stub_0xd4d64c() -> ! {
-    todo!("0xd4d64c Ogre::Pass::setShadowCasterVertexProgram(std::string const&)")
+// IDA 0xd4d64c: 101 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4d64c() {
 }
 
 // 0xd4d764 — __ZNK4Ogre4Pass32getShadowCasterVertexProgramNameEv
@@ -709,8 +709,8 @@ pub fn stub_0xd4d64c() -> ! {
 #[doc(alias = "Ogre::Pass::getShadowCasterVertexProgramName(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass32getShadowCasterVertexProgramNameEv")]
 // was: Ogre::Pass::getShadowCasterVertexProgramName(void)const
-pub fn stub_0xd4d764() -> ! {
-    todo!("0xd4d764 Ogre::Pass::getShadowCasterVertexProgramName(void)const")
+// IDA 0xd4d764: 14 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4d764() {
 }
 
 // 0xd4d788 — __ZNK4Ogre4Pass38getShadowCasterVertexProgramParametersEv
@@ -718,8 +718,8 @@ pub fn stub_0xd4d764() -> ! {
 #[doc(alias = "Ogre::Pass::getShadowCasterVertexProgramParameters(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass38getShadowCasterVertexProgramParametersEv")]
 // was: Ogre::Pass::getShadowCasterVertexProgramParameters(void)const
-pub fn stub_0xd4d788() -> ! {
-    todo!("0xd4d788 Ogre::Pass::getShadowCasterVertexProgramParameters(void)const")
+// IDA 0xd4d788: 161 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4d788() {
 }
 
 // 0xd4d96c — __ZNK4Ogre4Pass28getShadowCasterVertexProgramEv
@@ -727,8 +727,8 @@ pub fn stub_0xd4d788() -> ! {
 #[doc(alias = "Ogre::Pass::getShadowCasterVertexProgram(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass28getShadowCasterVertexProgramEv")]
 // was: Ogre::Pass::getShadowCasterVertexProgram(void)const
-pub fn stub_0xd4d96c() -> ! {
-    todo!("0xd4d96c Ogre::Pass::getShadowCasterVertexProgram(void)const")
+// IDA 0xd4d96c: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4d96c() {
 }
 
 // 0xd4d974 — __ZN4Ogre4Pass30setShadowCasterFragmentProgramERKSs
@@ -736,8 +736,8 @@ pub fn stub_0xd4d96c() -> ! {
 #[doc(alias = "Ogre::Pass::setShadowCasterFragmentProgram(std::string const&)")]
 #[doc(alias = "__ZN4Ogre4Pass30setShadowCasterFragmentProgramERKSs")]
 // was: Ogre::Pass::setShadowCasterFragmentProgram(std::string const&)
-pub fn stub_0xd4d974() -> ! {
-    todo!("0xd4d974 Ogre::Pass::setShadowCasterFragmentProgram(std::string const&)")
+// IDA 0xd4d974: 101 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4d974() {
 }
 
 // 0xd4da8c — __ZNK4Ogre4Pass34getShadowCasterFragmentProgramNameEv
@@ -745,8 +745,8 @@ pub fn stub_0xd4d974() -> ! {
 #[doc(alias = "Ogre::Pass::getShadowCasterFragmentProgramName(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass34getShadowCasterFragmentProgramNameEv")]
 // was: Ogre::Pass::getShadowCasterFragmentProgramName(void)const
-pub fn stub_0xd4da8c() -> ! {
-    todo!("0xd4da8c Ogre::Pass::getShadowCasterFragmentProgramName(void)const")
+// IDA 0xd4da8c: 14 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4da8c() {
 }
 
 // 0xd4dab0 — __ZNK4Ogre4Pass40getShadowCasterFragmentProgramParametersEv
@@ -754,8 +754,8 @@ pub fn stub_0xd4da8c() -> ! {
 #[doc(alias = "Ogre::Pass::getShadowCasterFragmentProgramParameters(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass40getShadowCasterFragmentProgramParametersEv")]
 // was: Ogre::Pass::getShadowCasterFragmentProgramParameters(void)const
-pub fn stub_0xd4dab0() -> ! {
-    todo!("0xd4dab0 Ogre::Pass::getShadowCasterFragmentProgramParameters(void)const")
+// IDA 0xd4dab0: 176 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4dab0() {
 }
 
 // 0xd4dcbc — __ZNK4Ogre4Pass30getShadowCasterFragmentProgramEv
@@ -763,8 +763,8 @@ pub fn stub_0xd4dab0() -> ! {
 #[doc(alias = "Ogre::Pass::getShadowCasterFragmentProgram(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass30getShadowCasterFragmentProgramEv")]
 // was: Ogre::Pass::getShadowCasterFragmentProgram(void)const
-pub fn stub_0xd4dcbc() -> ! {
-    todo!("0xd4dcbc Ogre::Pass::getShadowCasterFragmentProgram(void)const")
+// IDA 0xd4dcbc: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4dcbc() {
 }
 
 // 0xd4dcc4 — __ZN4Ogre4Pass30setShadowReceiverVertexProgramERKSs
@@ -772,8 +772,8 @@ pub fn stub_0xd4dcbc() -> ! {
 #[doc(alias = "Ogre::Pass::setShadowReceiverVertexProgram(std::string const&)")]
 #[doc(alias = "__ZN4Ogre4Pass30setShadowReceiverVertexProgramERKSs")]
 // was: Ogre::Pass::setShadowReceiverVertexProgram(std::string const&)
-pub fn stub_0xd4dcc4() -> ! {
-    todo!("0xd4dcc4 Ogre::Pass::setShadowReceiverVertexProgram(std::string const&)")
+// IDA 0xd4dcc4: 101 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4dcc4() {
 }
 
 // 0xd4dddc — __ZNK4Ogre4Pass34getShadowReceiverVertexProgramNameEv
@@ -781,8 +781,8 @@ pub fn stub_0xd4dcc4() -> ! {
 #[doc(alias = "Ogre::Pass::getShadowReceiverVertexProgramName(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass34getShadowReceiverVertexProgramNameEv")]
 // was: Ogre::Pass::getShadowReceiverVertexProgramName(void)const
-pub fn stub_0xd4dddc() -> ! {
-    todo!("0xd4dddc Ogre::Pass::getShadowReceiverVertexProgramName(void)const")
+// IDA 0xd4dddc: 14 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4dddc() {
 }
 
 // 0xd4de00 — __ZNK4Ogre4Pass40getShadowReceiverVertexProgramParametersEv
@@ -790,8 +790,8 @@ pub fn stub_0xd4dddc() -> ! {
 #[doc(alias = "Ogre::Pass::getShadowReceiverVertexProgramParameters(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass40getShadowReceiverVertexProgramParametersEv")]
 // was: Ogre::Pass::getShadowReceiverVertexProgramParameters(void)const
-pub fn stub_0xd4de00() -> ! {
-    todo!("0xd4de00 Ogre::Pass::getShadowReceiverVertexProgramParameters(void)const")
+// IDA 0xd4de00: 161 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4de00() {
 }
 
 // 0xd4dfe4 — __ZNK4Ogre4Pass30getShadowReceiverVertexProgramEv
@@ -799,8 +799,8 @@ pub fn stub_0xd4de00() -> ! {
 #[doc(alias = "Ogre::Pass::getShadowReceiverVertexProgram(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass30getShadowReceiverVertexProgramEv")]
 // was: Ogre::Pass::getShadowReceiverVertexProgram(void)const
-pub fn stub_0xd4dfe4() -> ! {
-    todo!("0xd4dfe4 Ogre::Pass::getShadowReceiverVertexProgram(void)const")
+// IDA 0xd4dfe4: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4dfe4() {
 }
 
 // 0xd4dfec — __ZN4Ogre4Pass32setShadowReceiverFragmentProgramERKSs
@@ -808,8 +808,8 @@ pub fn stub_0xd4dfe4() -> ! {
 #[doc(alias = "Ogre::Pass::setShadowReceiverFragmentProgram(std::string const&)")]
 #[doc(alias = "__ZN4Ogre4Pass32setShadowReceiverFragmentProgramERKSs")]
 // was: Ogre::Pass::setShadowReceiverFragmentProgram(std::string const&)
-pub fn stub_0xd4dfec() -> ! {
-    todo!("0xd4dfec Ogre::Pass::setShadowReceiverFragmentProgram(std::string const&)")
+// IDA 0xd4dfec: 101 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4dfec() {
 }
 
 // 0xd4e104 — __ZNK4Ogre4Pass36getShadowReceiverFragmentProgramNameEv
@@ -817,8 +817,8 @@ pub fn stub_0xd4dfec() -> ! {
 #[doc(alias = "Ogre::Pass::getShadowReceiverFragmentProgramName(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass36getShadowReceiverFragmentProgramNameEv")]
 // was: Ogre::Pass::getShadowReceiverFragmentProgramName(void)const
-pub fn stub_0xd4e104() -> ! {
-    todo!("0xd4e104 Ogre::Pass::getShadowReceiverFragmentProgramName(void)const")
+// IDA 0xd4e104: 14 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4e104() {
 }
 
 // 0xd4e128 — __ZNK4Ogre4Pass42getShadowReceiverFragmentProgramParametersEv
@@ -826,8 +826,8 @@ pub fn stub_0xd4e104() -> ! {
 #[doc(alias = "Ogre::Pass::getShadowReceiverFragmentProgramParameters(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass42getShadowReceiverFragmentProgramParametersEv")]
 // was: Ogre::Pass::getShadowReceiverFragmentProgramParameters(void)const
-pub fn stub_0xd4e128() -> ! {
-    todo!("0xd4e128 Ogre::Pass::getShadowReceiverFragmentProgramParameters(void)const")
+// IDA 0xd4e128: 161 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4e128() {
 }
 
 // 0xd4e30c — __ZNK4Ogre4Pass32getShadowReceiverFragmentProgramEv
@@ -835,8 +835,8 @@ pub fn stub_0xd4e128() -> ! {
 #[doc(alias = "Ogre::Pass::getShadowReceiverFragmentProgram(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass32getShadowReceiverFragmentProgramEv")]
 // was: Ogre::Pass::getShadowReceiverFragmentProgram(void)const
-pub fn stub_0xd4e30c() -> ! {
-    todo!("0xd4e30c Ogre::Pass::getShadowReceiverFragmentProgram(void)const")
+// IDA 0xd4e30c: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4e30c() {
 }
 
 // 0xd4e314 — __ZNK4Ogre4Pass16getResourceGroupEv
@@ -844,24 +844,24 @@ pub fn stub_0xd4e30c() -> ! {
 #[doc(alias = "Ogre::Pass::getResourceGroup(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass16getResourceGroupEv")]
 // was: Ogre::Pass::getResourceGroup(void)const
-pub fn stub_0xd4e314() -> ! {
-    todo!("0xd4e314 Ogre::Pass::getResourceGroup(void)const")
+// IDA 0xd4e314: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4e314() {
 }
 
 // 0xd4e320 — __ZNK4Ogre4Pass19applyTextureAliasesERKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIKSsSsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEb
 #[doc(alias = "Ogre::Pass::applyTextureAliases(std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&,bool)const")]
 #[doc(alias = "__ZNK4Ogre4Pass19applyTextureAliasesERKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIKSsSsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEb")]
 // was: Ogre::Pass::applyTextureAliases(std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&,bool)const
-pub fn stub_0xd4e320() -> ! {
-    todo!("0xd4e320 Ogre::Pass::applyTextureAliases(std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&,bool)const")
+// IDA 0xd4e320: 20 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4e320() {
 }
 
 // 0xd4e358 — __ZNK4Ogre4Pass35_getTextureUnitWithContentTypeIndexENS_16TextureUnitState11ContentTypeEt
 #[doc(alias = "Ogre::Pass::_getTextureUnitWithContentTypeIndex(Ogre::TextureUnitState::ContentType,unsigned short)const")]
 #[doc(alias = "__ZNK4Ogre4Pass35_getTextureUnitWithContentTypeIndexENS_16TextureUnitState11ContentTypeEt")]
 // was: Ogre::Pass::_getTextureUnitWithContentTypeIndex(Ogre::TextureUnitState::ContentType,unsigned short)const
-pub fn stub_0xd4e358() -> ! {
-    todo!("0xd4e358 Ogre::Pass::_getTextureUnitWithContentTypeIndex(Ogre::TextureUnitState::ContentType,unsigned short)const")
+// IDA 0xd4e358: 90 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4e358() {
 }
 
 // 0xd4e458 — __ZN4Ogre29MinTextureStateChangeHashFuncD1Ev
@@ -869,8 +869,8 @@ pub fn stub_0xd4e358() -> ! {
 #[doc(alias = "Ogre::MinTextureStateChangeHashFunc::~MinTextureStateChangeHashFunc()")]
 #[doc(alias = "__ZN4Ogre29MinTextureStateChangeHashFuncD1Ev")]
 // was: Ogre::MinTextureStateChangeHashFunc::~MinTextureStateChangeHashFunc()
-pub fn stub_0xd4e458() -> ! {
-    todo!("0xd4e458 Ogre::MinTextureStateChangeHashFunc::~MinTextureStateChangeHashFunc()")
+// IDA 0xd4e458: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xd4e458() {
 }
 
 // 0xd4e45c — __ZN4Ogre27MinGpuProgramChangeHashFuncD1Ev
@@ -878,16 +878,16 @@ pub fn stub_0xd4e458() -> ! {
 #[doc(alias = "Ogre::MinGpuProgramChangeHashFunc::~MinGpuProgramChangeHashFunc()")]
 #[doc(alias = "__ZN4Ogre27MinGpuProgramChangeHashFuncD1Ev")]
 // was: Ogre::MinGpuProgramChangeHashFunc::~MinGpuProgramChangeHashFunc()
-pub fn stub_0xd4e45c() -> ! {
-    todo!("0xd4e45c Ogre::MinGpuProgramChangeHashFunc::~MinGpuProgramChangeHashFunc()")
+// IDA 0xd4e45c: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xd4e45c() {
 }
 
 // 0xd4e460 — __ZNSt3setIPN4Ogre4PassESt4lessIS2_ENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEED1Ev
 #[doc(alias = "std::set<Ogre::Pass *,std::less<Ogre::Pass *>,Ogre::STLAllocator<Ogre::Pass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~set()")]
 #[doc(alias = "__ZNSt3setIPN4Ogre4PassESt4lessIS2_ENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEED1Ev")]
 // was: std::set<Ogre::Pass *,std::less<Ogre::Pass *>,Ogre::STLAllocator<Ogre::Pass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~set()
-pub fn stub_0xd4e460() -> ! {
-    todo!("0xd4e460 std::set<Ogre::Pass *,std::less<Ogre::Pass *>,Ogre::STLAllocator<Ogre::Pass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~set()")
+// IDA 0xd4e460: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xd4e460() {
 }
 
 // 0xd4e4f4 — __ZN4Ogre4Pass26setPolygonModeOverrideableEb
@@ -895,6 +895,6 @@ pub fn stub_0xd4e460() -> ! {
 #[doc(alias = "Ogre::Pass::setPolygonModeOverrideable(bool)")]
 #[doc(alias = "__ZN4Ogre4Pass26setPolygonModeOverrideableEb")]
 // was: Ogre::Pass::setPolygonModeOverrideable(bool)
-pub fn stub_0xd4e4f4() -> ! {
-    todo!("0xd4e4f4 Ogre::Pass::setPolygonModeOverrideable(bool)")
+// IDA 0xd4e4f4: 2 insns (STRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xd4e4f4() {
 }

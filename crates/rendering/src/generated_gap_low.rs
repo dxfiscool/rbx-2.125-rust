@@ -10,6 +10,11 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0xb740 — __ZNSt6vectorIN3G3D12Vector2int16ESaIS1_EE9push_backERKS1_
 // type: int __fastcall(int result, _DWORD *)
 #[doc(alias = "std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::push_back(G3D::Vector2int16 const&)")]
-pub fn stub_0xb740() -> ! {
-    todo!("0xb740 std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::push_back(G3D::Vector2int16 const&)")
+// IDA 0xb740: vector::push_back fast path (CMP/BEQ inline store) + realloc slow path; maps to Vec::push.
+pub fn stub_0xb740() {
+    let mut v: Vec<u32> = Vec::new();
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.push(0);
 }

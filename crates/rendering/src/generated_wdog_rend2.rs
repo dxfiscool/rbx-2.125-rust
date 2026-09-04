@@ -3,4 +3,6 @@
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "placeholder")]
-pub fn stub_placeholder() -> ! { todo!("placeholder") }
+// placeholder stub — no IDA ea; no-op.
+pub fn stub_placeholder() {
+}

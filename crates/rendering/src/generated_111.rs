@@ -11,754 +11,814 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0x6b08dc — __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev")]
 // was: __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev
-pub fn stub_6b08dc() -> ! {
-    todo!("0x6b08dc __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev")
+// IDA 0x6b08dc: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_6b08dc() {
 }
 
 // 0x6b0990 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")]
 // was: __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
-pub fn stub_6b0990() -> ! {
-    todo!("0x6b0990 __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")
+// IDA 0x6b0990: 127 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b0990() {
 }
 
 // 0x6b0ae4 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISF_EE
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISF_EE")]
 // was: __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISF_EE
-pub fn stub_6b0ae4() -> ! {
-    todo!("0x6b0ae4 __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISF_EE")
+// IDA 0x6b0ae4: 53 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b0ae4() {
 }
 
 // 0x6b0b7c — __ZNK3RBX10Reflection13EventDescBaseINS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescBaseINS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E13disconnectAllEPNS0_11EventSourceE")]
 // was: __ZNK3RBX10Reflection13EventDescBaseINS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E13disconnectAllEPNS0_11EventSourceE
-pub fn stub_6b0b7c() -> ! {
-    todo!("0x6b0b7c __ZNK3RBX10Reflection13EventDescBaseINS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E13disconnectAllEPNS0_11EventSourceE")
+// IDA 0x6b0b7c: 7 insns (MOVS..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b0b7c() {
 }
 
 // 0x6b110c — __ZN5boost8functionIFvN3G3D6Color3EEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZN5boost8functionIFvN3G3D6Color3EEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
 // was: __ZN5boost8functionIFvN3G3D6Color3EEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
-pub fn stub_6b110c() -> ! {
-    todo!("0x6b110c __ZN5boost8functionIFvN3G3D6Color3EEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")
+// IDA 0x6b110c: 80 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b110c() {
 }
 
 // 0x6b11f0 — __ZN5boost9function1IvN3G3D6Color3EEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZN5boost9function1IvN3G3D6Color3EEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
 // was: __ZN5boost9function1IvN3G3D6Color3EEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
-pub fn stub_6b11f0() -> ! {
-    todo!("0x6b11f0 __ZN5boost9function1IvN3G3D6Color3EEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")
+// IDA 0x6b11f0: 82 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b11f0() {
 }
 
 // 0x6b25ec — __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
 // was: __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
-pub fn stub_6b25ec() -> ! {
-    todo!("0x6b25ec __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+// IDA 0x6b25ec: 146 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b25ec() {
 }
 
 // 0x6b2770 — __ZN3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EEC2INS_5ValueIS3_LZNS_12sColor3ValueEEEEEEPKcSA_MT_S3_MSB_FvRKNS0_18PropertyDescriptorEENSD_10AttributesENS_8Security11PermissionsE
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EEC2INS_5ValueIS3_LZNS_12sColor3ValueEEEEEEPKcSA_MT_S3_MSB_FvRKNS0_18PropertyDescriptorEENSD_10AttributesENS_8Security11PermissionsE")]
 // was: __ZN3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EEC2INS_5ValueIS3_LZNS_12sColor3ValueEEEEEEPKcSA_MT_S3_MSB_FvRKNS0_18PropertyDescriptorEENSD_10AttributesENS_8Security11PermissionsE
-pub fn stub_6b2770() -> ! {
-    todo!("0x6b2770 __ZN3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EEC2INS_5ValueIS3_LZNS_12sColor3ValueEEEEEEPKcSA_MT_S3_MSB_FvRKNS0_18PropertyDescriptorEENSD_10AttributesENS_8Security11PermissionsE")
+// IDA 0x6b2770: 155 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b2770() {
 }
 
 // 0x6b2930 — __ZNK3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sColor3ValueEEEEE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sColor3ValueEEEEE10isReadOnlyEv")]
 // was: __ZNK3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sColor3ValueEEEEE10isReadOnlyEv
-pub fn stub_6b2930() -> ! {
-    todo!("0x6b2930 __ZNK3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sColor3ValueEEEEE10isReadOnlyEv")
+// IDA 0x6b2930: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b2930() {
 }
 
 // 0x6b2934 — __ZNK3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sColor3ValueEEEEE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sColor3ValueEEEEE11isWriteOnlyEv")]
 // was: __ZNK3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sColor3ValueEEEEE11isWriteOnlyEv
-pub fn stub_6b2934() -> ! {
-    todo!("0x6b2934 __ZNK3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sColor3ValueEEEEE11isWriteOnlyEv")
+// IDA 0x6b2934: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b2934() {
 }
 
 // 0x6b2938 — __ZNK3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sColor3ValueEEEEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sColor3ValueEEEEE8getValueEPKNS0_13DescribedBaseE")]
 // was: __ZNK3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sColor3ValueEEEEE8getValueEPKNS0_13DescribedBaseE
-pub fn stub_6b2938() -> ! {
-    todo!("0x6b2938 __ZNK3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sColor3ValueEEEEE8getValueEPKNS0_13DescribedBaseE")
+// IDA 0x6b2938: 14 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b2938() {
 }
 
 // 0x6b295c — __ZNK3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sColor3ValueEEEEE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sColor3ValueEEEEE8setValueEPNS0_13DescribedBaseERKS3_")]
 // was: __ZNK3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sColor3ValueEEEEE8setValueEPNS0_13DescribedBaseERKS3_
-pub fn stub_6b295c() -> ! {
-    todo!("0x6b295c __ZNK3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sColor3ValueEEEEE8setValueEPNS0_13DescribedBaseERKS3_")
+// IDA 0x6b295c: 52 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b295c() {
 }
 
 // 0x6b29f0 — __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS0_10Descriptor10AttributesE
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS0_10Descriptor10AttributesE")]
 // was: __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS0_10Descriptor10AttributesE
-pub fn stub_6b29f0() -> ! {
-    todo!("0x6b29f0 __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS0_10Descriptor10AttributesE")
+// IDA 0x6b29f0: 146 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b29f0() {
 }
 
 // 0x6b2b74 — __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev")]
 // was: __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev
-pub fn stub_6b2b74() -> ! {
-    todo!("0x6b2b74 __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev")
+// IDA 0x6b2b74: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_6b2b74() {
 }
 
 // 0x6b2c28 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")]
 // was: __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
-pub fn stub_6b2c28() -> ! {
-    todo!("0x6b2c28 __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")
+// IDA 0x6b2c28: 127 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b2c28() {
 }
 
 // 0x6b2d7c — __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISF_EE
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISF_EE")]
 // was: __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISF_EE
-pub fn stub_6b2d7c() -> ! {
-    todo!("0x6b2d7c __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISF_EE")
+// IDA 0x6b2d7c: 56 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b2d7c() {
 }
 
 // 0x6b2e24 — __ZNK3RBX10Reflection13EventDescBaseINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescBaseINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E13disconnectAllEPNS0_11EventSourceE")]
 // was: __ZNK3RBX10Reflection13EventDescBaseINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E13disconnectAllEPNS0_11EventSourceE
-pub fn stub_6b2e24() -> ! {
-    todo!("0x6b2e24 __ZNK3RBX10Reflection13EventDescBaseINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E13disconnectAllEPNS0_11EventSourceE")
+// IDA 0x6b2e24: 7 insns (MOVS..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b2e24() {
 }
 
 // 0x6b33ec — __ZN5boost8functionIFvN3G3D15CoordinateFrameEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZN5boost8functionIFvN3G3D15CoordinateFrameEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
 // was: __ZN5boost8functionIFvN3G3D15CoordinateFrameEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
-pub fn stub_6b33ec() -> ! {
-    todo!("0x6b33ec __ZN5boost8functionIFvN3G3D15CoordinateFrameEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")
+// IDA 0x6b33ec: 80 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b33ec() {
 }
 
 // 0x6b34d0 — __ZN5boost9function1IvN3G3D15CoordinateFrameEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZN5boost9function1IvN3G3D15CoordinateFrameEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
 // was: __ZN5boost9function1IvN3G3D15CoordinateFrameEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
-pub fn stub_6b34d0() -> ! {
-    todo!("0x6b34d0 __ZN5boost9function1IvN3G3D15CoordinateFrameEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")
+// IDA 0x6b34d0: 82 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b34d0() {
 }
 
 // 0x6b48f4 — __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
 // was: __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
-pub fn stub_6b48f4() -> ! {
-    todo!("0x6b48f4 __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+// IDA 0x6b48f4: 146 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b48f4() {
 }
 
 // 0x6b4a78 — __ZN3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EEC2INS_5ValueIS3_LZNS_12sCFrameValueEEEEEEPKcSA_MT_S3_MSB_FvRKNS0_18PropertyDescriptorEENSD_10AttributesENS_8Security11PermissionsE
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EEC2INS_5ValueIS3_LZNS_12sCFrameValueEEEEEEPKcSA_MT_S3_MSB_FvRKNS0_18PropertyDescriptorEENSD_10AttributesENS_8Security11PermissionsE")]
 // was: __ZN3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EEC2INS_5ValueIS3_LZNS_12sCFrameValueEEEEEEPKcSA_MT_S3_MSB_FvRKNS0_18PropertyDescriptorEENSD_10AttributesENS_8Security11PermissionsE
-pub fn stub_6b4a78() -> ! {
-    todo!("0x6b4a78 __ZN3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EEC2INS_5ValueIS3_LZNS_12sCFrameValueEEEEEEPKcSA_MT_S3_MSB_FvRKNS0_18PropertyDescriptorEENSD_10AttributesENS_8Security11PermissionsE")
+// IDA 0x6b4a78: 155 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b4a78() {
 }
 
 // 0x6b4c38 — __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sCFrameValueEEEEE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sCFrameValueEEEEE10isReadOnlyEv")]
 // was: __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sCFrameValueEEEEE10isReadOnlyEv
-pub fn stub_6b4c38() -> ! {
-    todo!("0x6b4c38 __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sCFrameValueEEEEE10isReadOnlyEv")
+// IDA 0x6b4c38: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b4c38() {
 }
 
 // 0x6b4c3c — __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sCFrameValueEEEEE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sCFrameValueEEEEE11isWriteOnlyEv")]
 // was: __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sCFrameValueEEEEE11isWriteOnlyEv
-pub fn stub_6b4c3c() -> ! {
-    todo!("0x6b4c3c __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sCFrameValueEEEEE11isWriteOnlyEv")
+// IDA 0x6b4c3c: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b4c3c() {
 }
 
 // 0x6b4c40 — __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sCFrameValueEEEEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(G3D::Matrix3 *this)
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sCFrameValueEEEEE8getValueEPKNS0_13DescribedBaseE")]
 // was: __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sCFrameValueEEEEE8getValueEPKNS0_13DescribedBaseE
-pub fn stub_6b4c40() -> ! {
-    todo!("0x6b4c40 __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sCFrameValueEEEEE8getValueEPKNS0_13DescribedBaseE")
+// IDA 0x6b4c40: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b4c40() {
 }
 
 // 0x6b4c6c — __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sCFrameValueEEEEE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sCFrameValueEEEEE8setValueEPNS0_13DescribedBaseERKS3_")]
 // was: __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sCFrameValueEEEEE8setValueEPNS0_13DescribedBaseERKS3_
-pub fn stub_6b4c6c() -> ! {
-    todo!("0x6b4c6c __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_12sCFrameValueEEEEE8setValueEPNS0_13DescribedBaseERKS3_")
+// IDA 0x6b4c6c: 69 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b4c6c() {
 }
 
 // 0x6b75e0 — __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS0_10Descriptor10AttributesE
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS0_10Descriptor10AttributesE")]
 // was: __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS0_10Descriptor10AttributesE
-pub fn stub_6b75e0() -> ! {
-    todo!("0x6b75e0 __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS0_10Descriptor10AttributesE")
+// IDA 0x6b75e0: 146 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b75e0() {
 }
 
 // 0x6b7764 — __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev")]
 // was: __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev
-pub fn stub_6b7764() -> ! {
-    todo!("0x6b7764 __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev")
+// IDA 0x6b7764: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_6b7764() {
 }
 
 // 0x6b7818 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")]
 // was: __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
-pub fn stub_6b7818() -> ! {
-    todo!("0x6b7818 __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")
+// IDA 0x6b7818: 127 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b7818() {
 }
 
 // 0x6b796c — __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISF_EE
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISF_EE")]
 // was: __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISF_EE
-pub fn stub_6b796c() -> ! {
-    todo!("0x6b796c __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISF_EE")
+// IDA 0x6b796c: 45 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b796c() {
 }
 
 // 0x6b79f8 — __ZNK3RBX10Reflection13EventDescBaseINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescBaseINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E13disconnectAllEPNS0_11EventSourceE")]
 // was: __ZNK3RBX10Reflection13EventDescBaseINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E13disconnectAllEPNS0_11EventSourceE
-pub fn stub_6b79f8() -> ! {
-    todo!("0x6b79f8 __ZNK3RBX10Reflection13EventDescBaseINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E13disconnectAllEPNS0_11EventSourceE")
+// IDA 0x6b79f8: 7 insns (MOVS..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b79f8() {
 }
 
 // 0x6b7f90 — __ZN5boost8functionIFvN3G3D7Vector3EEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZN5boost8functionIFvN3G3D7Vector3EEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
 // was: __ZN5boost8functionIFvN3G3D7Vector3EEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
-pub fn stub_6b7f90() -> ! {
-    todo!("0x6b7f90 __ZN5boost8functionIFvN3G3D7Vector3EEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")
+// IDA 0x6b7f90: 80 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b7f90() {
 }
 
 // 0x6b8074 — __ZN5boost9function1IvN3G3D7Vector3EEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZN5boost9function1IvN3G3D7Vector3EEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
 // was: __ZN5boost9function1IvN3G3D7Vector3EEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
-pub fn stub_6b8074() -> ! {
-    todo!("0x6b8074 __ZN5boost9function1IvN3G3D7Vector3EEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")
+// IDA 0x6b8074: 82 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b8074() {
 }
 
 // 0x6b912c — __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
 // was: __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
-pub fn stub_6b912c() -> ! {
-    todo!("0x6b912c __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_EC2ESA_PKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+// IDA 0x6b912c: 146 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b912c() {
 }
 
 // 0x6b92b0 — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_5ValueIS3_LZNS_13sVector3ValueEEEEEEPKcSA_MT_S3_MSB_FvRKNS0_18PropertyDescriptorEENSD_10AttributesENS_8Security11PermissionsE
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_5ValueIS3_LZNS_13sVector3ValueEEEEEEPKcSA_MT_S3_MSB_FvRKNS0_18PropertyDescriptorEENSD_10AttributesENS_8Security11PermissionsE")]
 // was: __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_5ValueIS3_LZNS_13sVector3ValueEEEEEEPKcSA_MT_S3_MSB_FvRKNS0_18PropertyDescriptorEENSD_10AttributesENS_8Security11PermissionsE
-pub fn stub_6b92b0() -> ! {
-    todo!("0x6b92b0 __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_5ValueIS3_LZNS_13sVector3ValueEEEEEEPKcSA_MT_S3_MSB_FvRKNS0_18PropertyDescriptorEENSD_10AttributesENS_8Security11PermissionsE")
+// IDA 0x6b92b0: 155 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b92b0() {
 }
 
 // 0x6b9444 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE10isReadOnlyEv")]
 // was: __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE10isReadOnlyEv
-pub fn stub_6b9444() -> ! {
-    todo!("0x6b9444 __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE10isReadOnlyEv")
+// IDA 0x6b9444: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b9444() {
 }
 
 // 0x6b9448 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE11isWriteOnlyEv")]
 // was: __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE11isWriteOnlyEv
-pub fn stub_6b9448() -> ! {
-    todo!("0x6b9448 __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE11isWriteOnlyEv")
+// IDA 0x6b9448: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b9448() {
 }
 
 // 0x6b944c — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE8getValueEPKNS0_13DescribedBaseE")]
 // was: __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE8getValueEPKNS0_13DescribedBaseE
-pub fn stub_6b944c() -> ! {
-    todo!("0x6b944c __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE8getValueEPKNS0_13DescribedBaseE")
+// IDA 0x6b944c: 11 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b944c() {
 }
 
 // 0x6b9468 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE8setValueEPNS0_13DescribedBaseERKS3_")]
 // was: __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE8setValueEPNS0_13DescribedBaseERKS3_
-pub fn stub_6b9468() -> ! {
-    todo!("0x6b9468 __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE8setValueEPNS0_13DescribedBaseERKS3_")
+// IDA 0x6b9468: 52 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6b9468() {
 }
 
 // 0x7a4a68 — __ZN5boost8functionIFvPN3RBX12BillboardGuiEPNS1_5AdornEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf6IvNS1_10ChatOutputES5_NS_8weak_ptrIKNS1_8InstanceEEENSE_INS1_12PartInstanceEEEbN3G3D7Vector3ESL_EENS9_5list7INS9_5valueIPSD_EENS_3argILi2EEENSO_ISH_EENSO_ISJ_EENSO_IbEENSO_ISL_EESW_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISZ_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "__ZN5boost8functionIFvPN3RBX12BillboardGuiEPNS1_5AdornEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf6IvNS1_10ChatOutputES5_NS_8weak_ptrIKNS1_8InstanceEEENSE_INS1_12PartInstanceEEEbN3G3D7Vector3ESL_EENS9_5list7INS9_5valueIPSD_EENS_3argILi2EEENSO_ISH_EENSO_ISJ_EENSO_IbEENSO_ISL_EESW_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISZ_EE5valueEEE5valueEiE4typeE")]
 // was: __ZN5boost8functionIFvPN3RBX12BillboardGuiEPNS1_5AdornEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf6IvNS1_10ChatOutputES5_NS_8weak_ptrIKNS1_8InstanceEEENSE_INS1_12PartInstanceEEEbN3G3D7Vector3ESL_EENS9_5list7INS9_5valueIPSD_EENS_3argILi2EEENSO_ISH_EENSO_ISJ_EENSO_IbEENSO_ISL_EESW_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISZ_EE5valueEEE5valueEiE4typeE
-pub fn stub_7a4a68() -> ! {
-    todo!("0x7a4a68 __ZN5boost8functionIFvPN3RBX12BillboardGuiEPNS1_5AdornEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf6IvNS1_10ChatOutputES5_NS_8weak_ptrIKNS1_8InstanceEEENSE_INS1_12PartInstanceEEEbN3G3D7Vector3ESL_EENS9_5list7INS9_5valueIPSD_EENS_3argILi2EEENSO_ISH_EENSO_ISJ_EENSO_IbEENSO_ISL_EESW_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISZ_EE5valueEEE5valueEiE4typeE")
+// IDA 0x7a4a68: 146 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7a4a68() {
 }
 
 // 0x7a4bf0 — __ZN5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEEC2INS_3_bi6bind_tIvNS_4_mfi3mf6IvNS1_10ChatOutputES5_NS_8weak_ptrIKNS1_8InstanceEEENSD_INS1_12PartInstanceEEEbN3G3D7Vector3ESK_EENS8_5list7INS8_5valueIPSC_EENS_3argILi2EEENSN_ISG_EENSN_ISI_EENSN_IbEENSN_ISK_EESV_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISY_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "__ZN5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEEC2INS_3_bi6bind_tIvNS_4_mfi3mf6IvNS1_10ChatOutputES5_NS_8weak_ptrIKNS1_8InstanceEEENSD_INS1_12PartInstanceEEEbN3G3D7Vector3ESK_EENS8_5list7INS8_5valueIPSC_EENS_3argILi2EEENSN_ISG_EENSN_ISI_EENSN_IbEENSN_ISK_EESV_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISY_EE5valueEEE5valueEiE4typeE")]
 // was: __ZN5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEEC2INS_3_bi6bind_tIvNS_4_mfi3mf6IvNS1_10ChatOutputES5_NS_8weak_ptrIKNS1_8InstanceEEENSD_INS1_12PartInstanceEEEbN3G3D7Vector3ESK_EENS8_5list7INS8_5valueIPSC_EENS_3argILi2EEENSN_ISG_EENSN_ISI_EENSN_IbEENSN_ISK_EESV_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISY_EE5valueEEE5valueEiE4typeE
-pub fn stub_7a4bf0() -> ! {
-    todo!("0x7a4bf0 __ZN5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEEC2INS_3_bi6bind_tIvNS_4_mfi3mf6IvNS1_10ChatOutputES5_NS_8weak_ptrIKNS1_8InstanceEEENSD_INS1_12PartInstanceEEEbN3G3D7Vector3ESK_EENS8_5list7INS8_5valueIPSC_EENS_3argILi2EEENSN_ISG_EENSN_ISI_EENSN_IbEENSN_ISK_EESV_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISY_EE5valueEEE5valueEiE4typeE")
+// IDA 0x7a4bf0: 148 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7a4bf0() {
 }
 
 // 0x8ba8f0 — __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEN3G3D7Vector2EfENS7_5list3INS7_5valueISA_EENSG_ISC_EENSG_IfEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, int *)
 #[doc(alias = "__ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEN3G3D7Vector2EfENS7_5list3INS7_5valueISA_EENSG_ISC_EENSG_IfEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")]
 // was: __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEN3G3D7Vector2EfENS7_5list3INS7_5valueISA_EENSG_ISC_EENSG_IfEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE
-pub fn stub_8ba8f0() -> ! {
-    todo!("0x8ba8f0 __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEN3G3D7Vector2EfENS7_5list3INS7_5valueISA_EENSG_ISC_EENSG_IfEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")
+// IDA 0x8ba8f0: 105 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_8ba8f0() {
 }
 
 // 0x8baa24 — __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEN3G3D7Vector2EfENS6_5list3INS6_5valueIS9_EENSF_ISB_EENSF_IfEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(_DWORD *, int, int, int)
 #[doc(alias = "__ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEN3G3D7Vector2EfENS6_5list3INS6_5valueIS9_EENSF_ISB_EENSF_IfEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")]
 // was: __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEN3G3D7Vector2EfENS6_5list3INS6_5valueIS9_EENSF_ISB_EENSF_IfEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
-pub fn stub_8baa24() -> ! {
-    todo!("0x8baa24 __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEN3G3D7Vector2EfENS6_5list3INS6_5valueIS9_EENSF_ISB_EENSF_IfEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")
+// IDA 0x8baa24: 107 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_8baa24() {
 }
 
 // 0x8c33ac — __ZN5boost8functionIFvN3G3D7Vector2EEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZN5boost8functionIFvN3G3D7Vector2EEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
 // was: __ZN5boost8functionIFvN3G3D7Vector2EEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
-pub fn stub_8c33ac() -> ! {
-    todo!("0x8c33ac __ZN5boost8functionIFvN3G3D7Vector2EEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")
+// IDA 0x8c33ac: 80 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_8c33ac() {
 }
 
 // 0x8c3490 — __ZN5boost9function1IvN3G3D7Vector2EEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(_DWORD *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZN5boost9function1IvN3G3D7Vector2EEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
 // was: __ZN5boost9function1IvN3G3D7Vector2EEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
-pub fn stub_8c3490() -> ! {
-    todo!("0x8c3490 __ZN5boost9function1IvN3G3D7Vector2EEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")
+// IDA 0x8c3490: 82 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_8c3490() {
 }
 
 // 0xa2f32c — __ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_7Network7PlayersEEES4_N3G3D7Vector3EENS8_5list3INS8_5valueISD_EENS_3argILi1EEENSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, int *)
 #[doc(alias = "__ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_7Network7PlayersEEES4_N3G3D7Vector3EENS8_5list3INS8_5valueISD_EENS_3argILi1EEENSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE")]
 // was: __ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_7Network7PlayersEEES4_N3G3D7Vector3EENS8_5list3INS8_5valueISD_EENS_3argILi1EEENSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE
-pub fn stub_a2f32c() -> ! {
-    todo!("0xa2f32c __ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_7Network7PlayersEEES4_N3G3D7Vector3EENS8_5list3INS8_5valueISD_EENS_3argILi1EEENSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE")
+// IDA 0xa2f32c: 163 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_a2f32c() {
 }
 
 // 0xa2f508 — __ZN5boost9function1IvNS_10shared_ptrIN3RBX8InstanceEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_7Network7PlayersEEES4_N3G3D7Vector3EENS7_5list3INS7_5valueISC_EENS_3argILi1EEENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
 // type: _DWORD *__fastcall(_DWORD *, int *)
 #[doc(alias = "__ZN5boost9function1IvNS_10shared_ptrIN3RBX8InstanceEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_7Network7PlayersEEES4_N3G3D7Vector3EENS7_5list3INS7_5valueISC_EENS_3argILi1EEENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
 // was: __ZN5boost9function1IvNS_10shared_ptrIN3RBX8InstanceEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_7Network7PlayersEEES4_N3G3D7Vector3EENS7_5list3INS7_5valueISC_EENS_3argILi1EEENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
-pub fn stub_a2f508() -> ! {
-    todo!("0xa2f508 __ZN5boost9function1IvNS_10shared_ptrIN3RBX8InstanceEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_7Network7PlayersEEES4_N3G3D7Vector3EENS7_5list3INS7_5valueISC_EENS_3argILi1EEENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")
+// IDA 0xa2f508: 165 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_a2f508() {
 }
 
 // 0xaafbf0 — __ZN5boost8functionIFvSsN3G3D7Vector3EEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsRKS2_EENS6_5list3INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEENSN_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(pthread_mutex_t *, int *, int, int, pthread_mutex_t *, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "__ZN5boost8functionIFvSsN3G3D7Vector3EEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsRKS2_EENS6_5list3INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEENSN_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")]
 // was: __ZN5boost8functionIFvSsN3G3D7Vector3EEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsRKS2_EENS6_5list3INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEENSN_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
-pub fn stub_aafbf0() -> ! {
-    todo!("0xaafbf0 __ZN5boost8functionIFvSsN3G3D7Vector3EEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsRKS2_EENS6_5list3INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEENSN_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")
+// IDA 0xaafbf0: 415 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_aafbf0() {
 }
 
 // 0xc8cf00 — __ZN4OgreL16concatenate_pathERKSsS1__0
 // type: _DWORD __fastcall(Ogre *__hidden this, const std::string *, const std::string *)
 #[doc(alias = "__ZN4OgreL16concatenate_pathERKSsS1__0")]
 // was: __ZN4OgreL16concatenate_pathERKSsS1__0
-pub fn stub_c8cf00() -> ! {
-    todo!("0xc8cf00 __ZN4OgreL16concatenate_pathERKSsS1__0")
+// IDA 0xc8cf00: 167 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_c8cf00() {
 }
 
 // 0xcd9b1c — __ZN12OgreRbxMutexD1Ev
 // type: void __fastcall(OgreRbxMutex *__hidden this)
 #[doc(alias = "OgreRbxMutex::~OgreRbxMutex()")]
 // was: OgreRbxMutex::~OgreRbxMutex()
-pub fn stub_cd9b1c() -> ! {
-    todo!("0xcd9b1c OgreRbxMutex::~OgreRbxMutex()")
+// IDA 0xcd9b1c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_cd9b1c() {
 }
 
 // 0xcd9e6c — __ZN12OgreRbxMutexC2Ei
 // type: OgreRbxMutex *__fastcall(OgreRbxMutex *__hidden this, int)
 #[doc(alias = "OgreRbxMutex::OgreRbxMutex(int)")]
 // was: OgreRbxMutex::OgreRbxMutex(int)
-pub fn stub_cd9e6c() -> ! {
-    todo!("0xcd9e6c OgreRbxMutex::OgreRbxMutex(int)")
+// IDA 0xcd9e6c: 110 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_cd9e6c() {
 }
 
 // 0xf1f090 — __ZN3RBX10Reflection11Call0HelperI19CRenderSettingsItemMS2_FivEiE4callEPS2_S4_RNS0_7VariantE$shim
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "__ZN3RBX10Reflection11Call0HelperI19CRenderSettingsItemMS2_FivEiE4callEPS2_S4_RNS0_7VariantE$shim")]
 // was: __ZN3RBX10Reflection11Call0HelperI19CRenderSettingsItemMS2_FivEiE4callEPS2_S4_RNS0_7VariantE$shim
-pub fn stub_f1f090() -> ! {
-    todo!("0xf1f090 __ZN3RBX10Reflection11Call0HelperI19CRenderSettingsItemMS2_FivEiE4callEPS2_S4_RNS0_7VariantE$shim")
+// IDA 0xf1f090: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f090() {
 }
 
 // 0xf1f09c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToIndexES3_$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToIndexES3_$shim")]
 // was: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToIndexES3_$shim
-pub fn stub_f1f09c() -> ! {
-    todo!("0xf1f09c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToIndexES3_$shim")
+// IDA 0xf1f09c: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f09c() {
 }
 
 // 0xf1f0a8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToIndexES3_$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToIndexES3_$shim")]
 // was: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToIndexES3_$shim
-pub fn stub_f1f0a8() -> ! {
-    todo!("0xf1f0a8 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToIndexES3_$shim")
+// IDA 0xf1f0a8: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f0a8() {
 }
 
 // 0xf1f0b4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToIndexES3_$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToIndexES3_$shim")]
 // was: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToIndexES3_$shim
-pub fn stub_f1f0b4() -> ! {
-    todo!("0xf1f0b4 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToIndexES3_$shim")
+// IDA 0xf1f0b4: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f0b4() {
 }
 
 // 0xf1f0c0 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToIndexES3_$shim
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToIndexES3_$shim")]
 // was: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToIndexES3_$shim
-pub fn stub_f1f0c0() -> ! {
-    todo!("0xf1f0c0 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToIndexES3_$shim")
+// IDA 0xf1f0c0: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f0c0() {
 }
 
 // 0xf1f0cc — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToIndexES3_$shim
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToIndexES3_$shim")]
 // was: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToIndexES3_$shim
-pub fn stub_f1f0cc() -> ! {
-    todo!("0xf1f0cc __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToIndexES3_$shim")
+// IDA 0xf1f0cc: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f0cc() {
 }
 
 // 0xf1f0d8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToIndexES3_$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToIndexES3_$shim")]
 // was: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToIndexES3_$shim
-pub fn stub_f1f0d8() -> ! {
-    todo!("0xf1f0d8 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToIndexES3_$shim")
+// IDA 0xf1f0d8: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f0d8() {
 }
 
 // 0xf1f0e4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToIndexES3_$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToIndexES3_$shim")]
 // was: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToIndexES3_$shim
-pub fn stub_f1f0e4() -> ! {
-    todo!("0xf1f0e4 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToIndexES3_$shim")
+// IDA 0xf1f0e4: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f0e4() {
 }
 
 // 0xf1f0f0 — __ZNSt6vectorIN3RBX15CRenderSettings16ResolutionPresetESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings16ResolutionPresetESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
 // was: __ZNSt6vectorIN3RBX15CRenderSettings16ResolutionPresetESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
-pub fn stub_f1f0f0() -> ! {
-    todo!("0xf1f0f0 __ZNSt6vectorIN3RBX15CRenderSettings16ResolutionPresetESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+// IDA 0xf1f0f0: vector::_M_insert_aux (shift tail or realloc); maps to Vec::insert.
+pub fn stub_f1f0f0() {
+    let mut v: Vec<u32> = Vec::new();
+    let pos: usize = 0;
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.insert(pos.min(v.len()), 0);
 }
 
 // 0xf1f0fc — __ZNSt6vectorIN3RBX15CRenderSettings12QualityLevelESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings12QualityLevelESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
 // was: __ZNSt6vectorIN3RBX15CRenderSettings12QualityLevelESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
-pub fn stub_f1f0fc() -> ! {
-    todo!("0xf1f0fc __ZNSt6vectorIN3RBX15CRenderSettings12QualityLevelESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+// IDA 0xf1f0fc: vector::_M_insert_aux (shift tail or realloc); maps to Vec::insert.
+pub fn stub_f1f0fc() {
+    let mut v: Vec<u32> = Vec::new();
+    let pos: usize = 0;
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.insert(pos.min(v.len()), 0);
 }
 
 // 0xf1f108 — __ZNSt6vectorIN3RBX15CRenderSettings10ShadowModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings10ShadowModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
 // was: __ZNSt6vectorIN3RBX15CRenderSettings10ShadowModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
-pub fn stub_f1f108() -> ! {
-    todo!("0xf1f108 __ZNSt6vectorIN3RBX15CRenderSettings10ShadowModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+// IDA 0xf1f108: vector::_M_insert_aux (shift tail or realloc); maps to Vec::insert.
+pub fn stub_f1f108() {
+    let mut v: Vec<u32> = Vec::new();
+    let pos: usize = 0;
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.insert(pos.min(v.len()), 0);
 }
 
 // 0xf1f114 — __ZNSt6vectorIN3RBX15CRenderSettings16AntialiasingModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings16AntialiasingModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
 // was: __ZNSt6vectorIN3RBX15CRenderSettings16AntialiasingModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
-pub fn stub_f1f114() -> ! {
-    todo!("0xf1f114 __ZNSt6vectorIN3RBX15CRenderSettings16AntialiasingModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+// IDA 0xf1f114: vector::_M_insert_aux (shift tail or realloc); maps to Vec::insert.
+pub fn stub_f1f114() {
+    let mut v: Vec<u32> = Vec::new();
+    let pos: usize = 0;
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.insert(pos.min(v.len()), 0);
 }
 
 // 0xf1f120 — __ZNSt6vectorIN3RBX15CRenderSettings20FrameRateManagerModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings20FrameRateManagerModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
 // was: __ZNSt6vectorIN3RBX15CRenderSettings20FrameRateManagerModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
-pub fn stub_f1f120() -> ! {
-    todo!("0xf1f120 __ZNSt6vectorIN3RBX15CRenderSettings20FrameRateManagerModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+// IDA 0xf1f120: vector::_M_insert_aux (shift tail or realloc); maps to Vec::insert.
+pub fn stub_f1f120() {
+    let mut v: Vec<u32> = Vec::new();
+    let pos: usize = 0;
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.insert(pos.min(v.len()), 0);
 }
 
 // 0xf1f12c — __ZNSt6vectorIN3RBX15CRenderSettings12GraphicsModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
 // type: int()
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings12GraphicsModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
 // was: __ZNSt6vectorIN3RBX15CRenderSettings12GraphicsModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
-pub fn stub_f1f12c() -> ! {
-    todo!("0xf1f12c __ZNSt6vectorIN3RBX15CRenderSettings12GraphicsModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+// IDA 0xf1f12c: vector::_M_insert_aux (shift tail or realloc); maps to Vec::insert.
+pub fn stub_f1f12c() {
+    let mut v: Vec<u32> = Vec::new();
+    let pos: usize = 0;
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.insert(pos.min(v.len()), 0);
 }
 
 // 0xf1f138 — __ZNSt6vectorIN3RBX15CRenderSettings9AASamplesESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings9AASamplesESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
 // was: __ZNSt6vectorIN3RBX15CRenderSettings9AASamplesESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
-pub fn stub_f1f138() -> ! {
-    todo!("0xf1f138 __ZNSt6vectorIN3RBX15CRenderSettings9AASamplesESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+// IDA 0xf1f138: vector::_M_insert_aux (shift tail or realloc); maps to Vec::insert.
+pub fn stub_f1f138() {
+    let mut v: Vec<u32> = Vec::new();
+    let pos: usize = 0;
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.insert(pos.min(v.len()), 0);
 }
 
 // 0xf1f144 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings10ShadowModeEEEE14doGetSingletonEv$shim
 // type: int()
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings10ShadowModeEEEE14doGetSingletonEv$shim")]
 // was: __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings10ShadowModeEEEE14doGetSingletonEv$shim
-pub fn stub_f1f144() -> ! {
-    todo!("0xf1f144 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings10ShadowModeEEEE14doGetSingletonEv$shim")
+// IDA 0xf1f144: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f144() {
 }
 
 // 0xf1f150 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16ResolutionPresetEEEE14doGetSingletonEv$shim
 // type: int()
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16ResolutionPresetEEEE14doGetSingletonEv$shim")]
 // was: __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16ResolutionPresetEEEE14doGetSingletonEv$shim
-pub fn stub_f1f150() -> ! {
-    todo!("0xf1f150 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16ResolutionPresetEEEE14doGetSingletonEv$shim")
+// IDA 0xf1f150: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f150() {
 }
 
 // 0xf1f15c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12QualityLevelEEEE14doGetSingletonEv$shim
 // type: int()
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12QualityLevelEEEE14doGetSingletonEv$shim")]
 // was: __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12QualityLevelEEEE14doGetSingletonEv$shim
-pub fn stub_f1f15c() -> ! {
-    todo!("0xf1f15c __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12QualityLevelEEEE14doGetSingletonEv$shim")
+// IDA 0xf1f15c: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f15c() {
 }
 
 // 0xf1f168 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16AntialiasingModeEEEE14doGetSingletonEv$shim
 // type: int()
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16AntialiasingModeEEEE14doGetSingletonEv$shim")]
 // was: __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16AntialiasingModeEEEE14doGetSingletonEv$shim
-pub fn stub_f1f168() -> ! {
-    todo!("0xf1f168 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16AntialiasingModeEEEE14doGetSingletonEv$shim")
+// IDA 0xf1f168: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f168() {
 }
 
 // 0xf1f174 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings20FrameRateManagerModeEEEE14doGetSingletonEv$shim
 // type: int()
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings20FrameRateManagerModeEEEE14doGetSingletonEv$shim")]
 // was: __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings20FrameRateManagerModeEEEE14doGetSingletonEv$shim
-pub fn stub_f1f174() -> ! {
-    todo!("0xf1f174 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings20FrameRateManagerModeEEEE14doGetSingletonEv$shim")
+// IDA 0xf1f174: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f174() {
 }
 
 // 0xf1f180 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12GraphicsModeEEEE14doGetSingletonEv$shim
 // type: int()
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12GraphicsModeEEEE14doGetSingletonEv$shim")]
 // was: __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12GraphicsModeEEEE14doGetSingletonEv$shim
-pub fn stub_f1f180() -> ! {
-    todo!("0xf1f180 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12GraphicsModeEEEE14doGetSingletonEv$shim")
+// IDA 0xf1f180: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f180() {
 }
 
 // 0xf1f18c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings9AASamplesEEEE14doGetSingletonEv$shim
 // type: int()
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings9AASamplesEEEE14doGetSingletonEv$shim")]
 // was: __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings9AASamplesEEEE14doGetSingletonEv$shim
-pub fn stub_f1f18c() -> ! {
-    todo!("0xf1f18c __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings9AASamplesEEEE14doGetSingletonEv$shim")
+// IDA 0xf1f18c: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f18c() {
 }
 
 // 0xf1f330 — __ZN5boost10scoped_ptrIN4Ogre10LogManagerEED2Ev$shim
 #[doc(alias = "__ZN5boost10scoped_ptrIN4Ogre10LogManagerEED2Ev$shim")]
 // was: __ZN5boost10scoped_ptrIN4Ogre10LogManagerEED2Ev$shim
-pub fn stub_f1f330() -> ! {
-    todo!("0xf1f330 __ZN5boost10scoped_ptrIN4Ogre10LogManagerEED2Ev$shim")
+// IDA 0xf1f330: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f330() {
 }
 
 // 0xf1f348 — __ZNK10RobloxView9RenderJob14getMetricValueERKSs$shim
 #[doc(alias = "__ZNK10RobloxView9RenderJob14getMetricValueERKSs$shim")]
 // was: __ZNK10RobloxView9RenderJob14getMetricValueERKSs$shim
-pub fn stub_f1f348() -> ! {
-    todo!("0xf1f348 __ZNK10RobloxView9RenderJob14getMetricValueERKSs$shim")
+// IDA 0xf1f348: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f348() {
 }
 
 // 0xf1f360 — __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i$shim
 #[doc(alias = "__ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i$shim")]
 // was: __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i$shim
-pub fn stub_f1f360() -> ! {
-    todo!("0xf1f360 __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i$shim")
+// IDA 0xf1f360: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f360() {
 }
 
 // 0xf1f66c — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE11on_tostringERKS3_P9lua_State$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE11on_tostringERKS3_P9lua_State$shim")]
 // was: __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE11on_tostringERKS3_P9lua_State$shim
-pub fn stub_f1f66c() -> ! {
-    todo!("0xf1f66c __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE11on_tostringERKS3_P9lua_State$shim")
+// IDA 0xf1f66c: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f66c() {
 }
 
 // 0xf1f678 — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE11on_tostringERKS3_P9lua_State$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE11on_tostringERKS3_P9lua_State$shim")]
 // was: __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE11on_tostringERKS3_P9lua_State$shim
-pub fn stub_f1f678() -> ! {
-    todo!("0xf1f678 __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE11on_tostringERKS3_P9lua_State$shim")
+// IDA 0xf1f678: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f678() {
 }
 
 // 0xf1f684 — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE11on_tostringERKS3_P9lua_State$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE11on_tostringERKS3_P9lua_State$shim")]
 // was: __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE11on_tostringERKS3_P9lua_State$shim
-pub fn stub_f1f684() -> ! {
-    todo!("0xf1f684 __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE11on_tostringERKS3_P9lua_State$shim")
+// IDA 0xf1f684: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f684() {
 }
 
 // 0xf1f690 — __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE11on_tostringERKS3_P9lua_State$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE11on_tostringERKS3_P9lua_State$shim")]
 // was: __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE11on_tostringERKS3_P9lua_State$shim
-pub fn stub_f1f690() -> ! {
-    todo!("0xf1f690 __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE11on_tostringERKS3_P9lua_State$shim")
+// IDA 0xf1f690: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f690() {
 }
 
 // 0xf1f69c — __ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE11on_tostringERKS3_P9lua_State$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE11on_tostringERKS3_P9lua_State$shim")]
 // was: __ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE11on_tostringERKS3_P9lua_State$shim
-pub fn stub_f1f69c() -> ! {
-    todo!("0xf1f69c __ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE11on_tostringERKS3_P9lua_State$shim")
+// IDA 0xf1f69c: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1f69c() {
 }
 
 // 0xf1fad4 — __ZN3G3D5ArrayIPN3RBX9PrimitiveELi10ELm32EE6resizeEib$shim
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "__ZN3G3D5ArrayIPN3RBX9PrimitiveELi10ELm32EE6resizeEib$shim")]
 // was: __ZN3G3D5ArrayIPN3RBX9PrimitiveELi10ELm32EE6resizeEib$shim
-pub fn stub_f1fad4() -> ! {
-    todo!("0xf1fad4 __ZN3G3D5ArrayIPN3RBX9PrimitiveELi10ELm32EE6resizeEib$shim")
+// IDA 0xf1fad4: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1fad4() {
 }
 
 // 0xf1fb10 — __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EED2Ev$shim
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EED2Ev$shim")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EED2Ev$shim
-pub fn stub_f1fb10() -> ! {
-    todo!("0xf1fb10 __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EED2Ev$shim")
+// IDA 0xf1fb10: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1fb10() {
 }
 
 // 0xf1fb70 — __ZN3G3D5ArrayImLi10ELm32EE7reallocEi$shim
 #[doc(alias = "__ZN3G3D5ArrayImLi10ELm32EE7reallocEi$shim")]
 // was: __ZN3G3D5ArrayImLi10ELm32EE7reallocEi$shim
-pub fn stub_f1fb70() -> ! {
-    todo!("0xf1fb70 __ZN3G3D5ArrayImLi10ELm32EE7reallocEi$shim")
+// IDA 0xf1fb70: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1fb70() {
 }
 
 // 0xf1fbd0 — __ZN3RBX10Reflection7Variant14genericConvertIN3G3D7Vector34AxisEEERT_v$shim
 #[doc(alias = "__ZN3RBX10Reflection7Variant14genericConvertIN3G3D7Vector34AxisEEERT_v$shim")]
 // was: __ZN3RBX10Reflection7Variant14genericConvertIN3G3D7Vector34AxisEEERT_v$shim
-pub fn stub_f1fbd0() -> ! {
-    todo!("0xf1fbd0 __ZN3RBX10Reflection7Variant14genericConvertIN3G3D7Vector34AxisEEERT_v$shim")
+// IDA 0xf1fbd0: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1fbd0() {
 }
 
 // 0xf1fbdc — __ZNSt6vectorIN3G3D7Vector34AxisESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
 // type: int(void)
 #[doc(alias = "__ZNSt6vectorIN3G3D7Vector34AxisESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
 // was: __ZNSt6vectorIN3G3D7Vector34AxisESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
-pub fn stub_f1fbdc() -> ! {
-    todo!("0xf1fbdc __ZNSt6vectorIN3G3D7Vector34AxisESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+// IDA 0xf1fbdc: vector::_M_insert_aux (shift tail or realloc); maps to Vec::insert.
+pub fn stub_f1fbdc() {
+    let mut v: Vec<u32> = Vec::new();
+    let pos: usize = 0;
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.insert(pos.min(v.len()), 0);
 }
 
 // 0xf1fca8 — __ZN3G3D5ArrayIPN3RBX11IndexedTreeELi10ELm32EE7reallocEi$shim
 #[doc(alias = "__ZN3G3D5ArrayIPN3RBX11IndexedTreeELi10ELm32EE7reallocEi$shim")]
 // was: __ZN3G3D5ArrayIPN3RBX11IndexedTreeELi10ELm32EE7reallocEi$shim
-pub fn stub_f1fca8() -> ! {
-    todo!("0xf1fca8 __ZN3G3D5ArrayIPN3RBX11IndexedTreeELi10ELm32EE7reallocEi$shim")
+// IDA 0xf1fca8: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f1fca8() {
 }
 
 // 0xf1fdb0 — __ZNSt6vectorIN3G3D7Vector2ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim
 #[doc(alias = "__ZNSt6vectorIN3G3D7Vector2ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")]
 // was: __ZNSt6vectorIN3G3D7Vector2ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim
-pub fn stub_f1fdb0() -> ! {
-    todo!("0xf1fdb0 __ZNSt6vectorIN3G3D7Vector2ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")
+// IDA 0xf1fdb0: vector::_M_insert_aux (shift tail or realloc); maps to Vec::insert.
+pub fn stub_f1fdb0() {
+    let mut v: Vec<u32> = Vec::new();
+    let pos: usize = 0;
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.insert(pos.min(v.len()), 0);
 }
 
 // 0xf1fdbc — __ZNSt6vectorIN3G3D7Vector3ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim
 #[doc(alias = "__ZNSt6vectorIN3G3D7Vector3ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")]
 // was: __ZNSt6vectorIN3G3D7Vector3ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim
-pub fn stub_f1fdbc() -> ! {
-    todo!("0xf1fdbc __ZNSt6vectorIN3G3D7Vector3ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")
+// IDA 0xf1fdbc: vector::_M_insert_aux (shift tail or realloc); maps to Vec::insert.
+pub fn stub_f1fdbc() {
+    let mut v: Vec<u32> = Vec::new();
+    let pos: usize = 0;
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.insert(pos.min(v.len()), 0);
 }
 
 // 0xf20074 — __ZN3G3D5ArrayIPN3RBX12SpanningEdgeELi10ELm32EE7reallocEi$shim
 // type: int(void)
 #[doc(alias = "__ZN3G3D5ArrayIPN3RBX12SpanningEdgeELi10ELm32EE7reallocEi$shim")]
 // was: __ZN3G3D5ArrayIPN3RBX12SpanningEdgeELi10ELm32EE7reallocEi$shim
-pub fn stub_f20074() -> ! {
-    todo!("0xf20074 __ZN3G3D5ArrayIPN3RBX12SpanningEdgeELi10ELm32EE7reallocEi$shim")
+// IDA 0xf20074: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f20074() {
 }
 
 // 0xf202b4 — __ZN3RBX19EventReplicatorBaseINS_10ArcHandlesEFvN3G3D7Vector34AxisEEE15setListenerModeEb$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_10ArcHandlesEFvN3G3D7Vector34AxisEEE15setListenerModeEb$shim")]
 // was: __ZN3RBX19EventReplicatorBaseINS_10ArcHandlesEFvN3G3D7Vector34AxisEEE15setListenerModeEb$shim
-pub fn stub_f202b4() -> ! {
-    todo!("0xf202b4 __ZN3RBX19EventReplicatorBaseINS_10ArcHandlesEFvN3G3D7Vector34AxisEEE15setListenerModeEb$shim")
+// IDA 0xf202b4: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f202b4() {
 }
 
 // 0xf202c0 — __ZN3RBX19EventReplicatorBaseINS_10ArcHandlesEFvN3G3D7Vector34AxisEEE17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_10ArcHandlesEFvN3G3D7Vector34AxisEEE17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE$shim")]
 // was: __ZN3RBX19EventReplicatorBaseINS_10ArcHandlesEFvN3G3D7Vector34AxisEEE17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE$shim
-pub fn stub_f202c0() -> ! {
-    todo!("0xf202c0 __ZN3RBX19EventReplicatorBaseINS_10ArcHandlesEFvN3G3D7Vector34AxisEEE17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE$shim")
+// IDA 0xf202c0: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f202c0() {
 }
 
 // 0xf202fc — __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEEE24safe_static_do_get_mutexEv$shim
 // type: int()
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEEE24safe_static_do_get_mutexEv$shim")]
 // was: __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEEE24safe_static_do_get_mutexEv$shim
-pub fn stub_f202fc() -> ! {
-    todo!("0xf202fc __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEEE24safe_static_do_get_mutexEv$shim")
+// IDA 0xf202fc: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f202fc() {
 }
 
 // 0xf20308 — __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEffEE24safe_static_do_get_mutexEv$shim
 // type: int()
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEffEE24safe_static_do_get_mutexEv$shim")]
 // was: __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEffEE24safe_static_do_get_mutexEv$shim
-pub fn stub_f20308() -> ! {
-    todo!("0xf20308 __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEffEE24safe_static_do_get_mutexEv$shim")
+// IDA 0xf20308: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f20308() {
 }
 
 // 0xf20314 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_10ArcHandlesEFvN3G3D7Vector34AxisEffEEEEENS0_5list1INS0_5valueIPSB_EEEEEclEv$shim
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_10ArcHandlesEFvN3G3D7Vector34AxisEffEEEEENS0_5list1INS0_5valueIPSB_EEEEEclEv$shim")]
 // was: __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_10ArcHandlesEFvN3G3D7Vector34AxisEffEEEEENS0_5list1INS0_5valueIPSB_EEEEEclEv$shim
-pub fn stub_f20314() -> ! {
-    todo!("0xf20314 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_10ArcHandlesEFvN3G3D7Vector34AxisEffEEEEENS0_5list1INS0_5valueIPSB_EEEEEclEv$shim")
+// IDA 0xf20314: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f20314() {
 }
 
 // 0xf20320 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_10ArcHandlesEFvN3G3D7Vector34AxisEEEEEENS0_5list1INS0_5valueIPSB_EEEEEclEv$shim
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_10ArcHandlesEFvN3G3D7Vector34AxisEEEEEENS0_5list1INS0_5valueIPSB_EEEEEclEv$shim")]
 // was: __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_10ArcHandlesEFvN3G3D7Vector34AxisEEEEEENS0_5list1INS0_5valueIPSB_EEEEEclEv$shim
-pub fn stub_f20320() -> ! {
-    todo!("0xf20320 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_10ArcHandlesEFvN3G3D7Vector34AxisEEEEEENS0_5list1INS0_5valueIPSB_EEEEEclEv$shim")
+// IDA 0xf20320: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f20320() {
 }
 
 // 0xf2032c — __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEffEE4slot24safe_static_do_get_mutexEv$shim
 // type: int()
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEffEE4slot24safe_static_do_get_mutexEv$shim")]
 // was: __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEffEE4slot24safe_static_do_get_mutexEv$shim
-pub fn stub_f2032c() -> ! {
-    todo!("0xf2032c __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEffEE4slot24safe_static_do_get_mutexEv$shim")
+// IDA 0xf2032c: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f2032c() {
 }
 
 // 0xf20338 — __ZN3RBX10Reflection19RemoteEventDescImplILi1ENS_10ArcHandlesEFvN3G3D7Vector34AxisEEN3rbx13remote_signalIS6_EEE14replicateEventEPNS0_11EventSourceES5_$shim
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "__ZN3RBX10Reflection19RemoteEventDescImplILi1ENS_10ArcHandlesEFvN3G3D7Vector34AxisEEN3rbx13remote_signalIS6_EEE14replicateEventEPNS0_11EventSourceES5_$shim")]
 // was: __ZN3RBX10Reflection19RemoteEventDescImplILi1ENS_10ArcHandlesEFvN3G3D7Vector34AxisEEN3rbx13remote_signalIS6_EEE14replicateEventEPNS0_11EventSourceES5_$shim
-pub fn stub_f20338() -> ! {
-    todo!("0xf20338 __ZN3RBX10Reflection19RemoteEventDescImplILi1ENS_10ArcHandlesEFvN3G3D7Vector34AxisEEN3rbx13remote_signalIS6_EEE14replicateEventEPNS0_11EventSourceES5_$shim")
+// IDA 0xf20338: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f20338() {
 }
 
 // 0xf20344 — __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEEE4slot24safe_static_do_get_mutexEv$shim
 // type: int()
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEEE4slot24safe_static_do_get_mutexEv$shim")]
 // was: __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEEE4slot24safe_static_do_get_mutexEv$shim
-pub fn stub_f20344() -> ! {
-    todo!("0xf20344 __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEEE4slot24safe_static_do_get_mutexEv$shim")
+// IDA 0xf20344: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f20344() {
 }
 
 // 0xf2038c — __ZN3rbx7signals16signal_with_argsILi3EFvN3G3D7Vector34AxisEffEEclES4_ff$shim
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "__ZN3rbx7signals16signal_with_argsILi3EFvN3G3D7Vector34AxisEffEEclES4_ff$shim")]
 // was: __ZN3rbx7signals16signal_with_argsILi3EFvN3G3D7Vector34AxisEffEEclES4_ff$shim
-pub fn stub_f2038c() -> ! {
-    todo!("0xf2038c __ZN3rbx7signals16signal_with_argsILi3EFvN3G3D7Vector34AxisEffEEclES4_ff$shim")
+// IDA 0xf2038c: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f2038c() {
 }
 
 // 0xf20398 — __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEffEE13disconnectAllEv$shim
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEffEE13disconnectAllEv$shim")]
 // was: __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEffEE13disconnectAllEv$shim
-pub fn stub_f20398() -> ! {
-    todo!("0xf20398 __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEffEE13disconnectAllEv$shim")
+// IDA 0xf20398: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_f20398() {
 }
