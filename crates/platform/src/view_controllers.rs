@@ -1345,6 +1345,9 @@ impl Flurry {
     }
 }
 
+/// Review URL template substituted in `+[Appirater rateApp]` (IDA 0x18f6e).
+pub const APPIRATER_REVIEW_URL_TEMPLATE: &str = "itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=APP_ID";
+
 /// `Appirater` configuration counterpart (IDA 0x1953a..0x1959a, 0x19bf0) plus the
 /// full rating-prompt state machine from the `Appirater` class cluster
 /// (IDA 0x17df0..0x19224): class-level config globals (`_MergedGlobals243`,
@@ -1378,6 +1381,15 @@ pub struct Appirater {
     delegate_display_notifies: std::sync::atomic::AtomicU32,
     app_launched_calls: std::sync::atomic::AtomicU32,
     entered_foreground_calls: std::sync::atomic::AtomicU32,
+    current_version: parking_lot::Mutex<String>,
+    rating_alert_hides: std::sync::atomic::AtomicU32,
+    rate_app_calls: std::sync::atomic::AtomicU32,
+    last_review_url: parking_lot::Mutex<String>,
+    alert_button_taps: std::sync::atomic::AtomicU32,
+    last_alert_button: std::sync::atomic::AtomicI32,
+    delegate_remind_later_notifies: std::sync::atomic::AtomicU32,
+    delegate_rated_notifies: std::sync::atomic::AtomicU32,
+    delegate_declined_notifies: std::sync::atomic::AtomicU32,
 }
 
 impl Appirater {
@@ -1545,6 +1557,151 @@ impl Appirater {
     }
     pub fn entered_foreground_call_count() -> u32 {
         Self::shared().entered_foreground_calls.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `-[Appirater incrementUseCount]` (IDA 0x185b0): `CFBundleVersion`
+    /// against `kAppiraterCurrentVersion`. Same version: seed
+    /// `kAppiraterFirstUseDate` once, bump `kAppiraterUseCount`
+    /// (0x18694..0x1875a). New version: reset the whole `kAppirater*` group
+    /// with `useCount = 1` (0x1877a..0x1884e). Always `synchronize` (0x1886a).
+    /// `current_version` is the bundle version, `now_secs` is `+[NSDate date]`.
+    pub fn increment_use_count(&self, current_version: &str, now_secs: f64) {
+        let mut stored = self.current_version.lock();
+        if stored.is_empty() {
+            *stored = current_version.to_owned();
+        }
+        if *stored == current_version {
+            if *self.first_use_date_secs.lock() == 0.0 {
+                *self.first_use_date_secs.lock() = now_secs;
+            }
+            self.use_count.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        } else {
+            *stored = current_version.to_owned();
+            *self.first_use_date_secs.lock() = now_secs;
+            self.use_count.store(1, std::sync::atomic::Ordering::SeqCst);
+            self.significant_event_count.store(0, std::sync::atomic::Ordering::SeqCst);
+            self.rated_current_version.store(false, std::sync::atomic::Ordering::SeqCst);
+            self.declined_to_rate.store(false, std::sync::atomic::Ordering::SeqCst);
+            *self.reminder_request_date_secs.lock() = 0.0;
+        }
+    }
+    /// `-[Appirater incrementSignificantEventCount]` (IDA 0x18878): twin of
+    /// `incrementUseCount` over `kAppiraterSignificantEventCount`; the
+    /// new-version reset carries `useCount = 0, significantEventCount = 1`
+    /// (0x18a40..0x18aec). Same as the 0x185b0 anchor. Family-verified.
+    pub fn increment_significant_event_count(&self, current_version: &str, now_secs: f64) {
+        let mut stored = self.current_version.lock();
+        if stored.is_empty() {
+            *stored = current_version.to_owned();
+        }
+        if *stored == current_version {
+            if *self.first_use_date_secs.lock() == 0.0 {
+                *self.first_use_date_secs.lock() = now_secs;
+            }
+            self.significant_event_count.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        } else {
+            *stored = current_version.to_owned();
+            *self.first_use_date_secs.lock() = now_secs;
+            self.use_count.store(0, std::sync::atomic::Ordering::SeqCst);
+            self.significant_event_count.store(1, std::sync::atomic::Ordering::SeqCst);
+            self.rated_current_version.store(false, std::sync::atomic::Ordering::SeqCst);
+            self.declined_to_rate.store(false, std::sync::atomic::Ordering::SeqCst);
+            *self.reminder_request_date_secs.lock() = 0.0;
+        }
+    }
+    pub fn use_count(&self) -> u32 {
+        self.use_count.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn significant_event_count(&self) -> u32 {
+        self.significant_event_count.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn first_use_date_secs(&self) -> f64 {
+        *self.first_use_date_secs.lock()
+    }
+    pub fn declined_to_rate(&self) -> bool {
+        self.declined_to_rate.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn rated_current_version(&self) -> bool {
+        self.rated_current_version.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn current_version(&self) -> String {
+        self.current_version.lock().clone()
+    }
+    /// `-[Appirater hideRatingAlert]` (IDA 0x18d4c): when `ratingAlert`
+    /// `isVisible` (0x18d72), dismiss with button `-1`, no animation
+    /// (0x18d9e..0x18db8). Reports whether a visible alert was dismissed.
+    pub fn hide_rating_alert(&self) -> bool {
+        if self.rating_alert_visible.swap(false, std::sync::atomic::Ordering::SeqCst) {
+            self.rating_alert_hides.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            true
+        } else {
+            false
+        }
+    }
+    pub fn rating_alert_hide_count(&self) -> u32 {
+        self.rating_alert_hides.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `+[Appirater rateApp]` (IDA 0x18f24): substitutes the stored app id
+    /// into the review template (0x18f6e: `itms-apps://...id=APP_ID`),
+    /// flags `kAppiraterRatedCurrentVersion`, and opens the URL (0x18fbe..0x19024).
+    /// Returns the opened URL.
+    pub fn rate_app(&self) -> String {
+        let url = APPIRATER_REVIEW_URL_TEMPLATE.replace("APP_ID", &self.app_id.lock());
+        self.rated_current_version.store(true, std::sync::atomic::Ordering::SeqCst);
+        *self.last_review_url.lock() = url.clone();
+        self.rate_app_calls.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        url
+    }
+    pub fn rate_app_call_count(&self) -> u32 {
+        self.rate_app_calls.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn last_review_url(&self) -> String {
+        self.last_review_url.lock().clone()
+    }
+    /// `-[Appirater alertView:clickedButtonAtIndex:]` (IDA 0x19028): button 2
+    /// stamps `kAppiraterReminderRequestDate` (0x190c4..0x19108), button 1
+    /// rates (0x19070), button 0 flags `kAppiraterDeclinedToRate`
+    /// (0x19160..0x19172); each then pings its delegate selector when the
+    /// delegate answers it (0x19186..0x191ca). A `nil` delegate ends the case
+    /// after the persist (0x1908a/0x19122).
+    pub fn alert_view_clicked_button(&self, button_index: i32, now_secs: f64) {
+        self.alert_button_taps.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.last_alert_button.store(button_index, std::sync::atomic::Ordering::SeqCst);
+        match button_index {
+            2 => {
+                *self.reminder_request_date_secs.lock() = now_secs;
+                if *self.delegate.lock() != NIL_ID {
+                    self.delegate_remind_later_notifies.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+                }
+            }
+            1 => {
+                self.rate_app();
+                if *self.delegate.lock() != NIL_ID {
+                    self.delegate_rated_notifies.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+                }
+            }
+            0 => {
+                self.declined_to_rate.store(true, std::sync::atomic::Ordering::SeqCst);
+                if *self.delegate.lock() != NIL_ID {
+                    self.delegate_declined_notifies.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+                }
+            }
+            _ => {}
+        }
+    }
+    pub fn alert_button_tap_count(&self) -> u32 {
+        self.alert_button_taps.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn last_alert_button(&self) -> i32 {
+        self.last_alert_button.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn delegate_remind_later_notify_count(&self) -> u32 {
+        self.delegate_remind_later_notifies.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn delegate_rated_notify_count(&self) -> u32 {
+        self.delegate_rated_notifies.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn delegate_declined_notify_count(&self) -> u32 {
+        self.delegate_declined_notifies.load(std::sync::atomic::Ordering::SeqCst)
     }
 }
 

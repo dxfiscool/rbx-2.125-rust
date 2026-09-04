@@ -476,200 +476,290 @@ pub fn stub_183d8(instance: &Appirater, now_secs: f64) -> bool {
 // mangled: -[Appirater incrementUseCount]
 // type: void __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater incrementUseCount]")]
-pub fn stub_185b0() -> ! {
-    todo!("0x185b0 -[Appirater incrementUseCount]")
+pub fn stub_185b0(instance: &Appirater, current_version: &str, now_secs: f64) {
+    // IDA 0x185b0 (`-[Appirater incrementUseCount]`): version-gated
+    // first-use/use-count bookkeeping over the `kAppirater*` defaults
+    // (0x185d2..0x1886a) lives in the model; `current_version` is
+    // `CFBundleVersion`, `now_secs` is `+[NSDate date]`. Verified via IDA
+    // decompile.
+    instance.increment_use_count(current_version, now_secs);
 }
 
 // 0x18878 — -[Appirater incrementSignificantEventCount]
 // mangled: -[Appirater incrementSignificantEventCount]
 // type: void __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater incrementSignificantEventCount]")]
-pub fn stub_18878() -> ! {
-    todo!("0x18878 -[Appirater incrementSignificantEventCount]")
+pub fn stub_18878(instance: &Appirater, current_version: &str, now_secs: f64) {
+    // IDA 0x18878 (`-[Appirater incrementSignificantEventCount]`): twin of
+    // 0x185b0 over `kAppiraterSignificantEventCount` (0x1889a..0x18b08).
+    // Same as the 0x185b0 anchor. Family-verified.
+    instance.increment_significant_event_count(current_version, now_secs);
 }
 
 // 0x18b18 — -[Appirater incrementAndRate:]
 // mangled: -[Appirater incrementAndRate:]
 // type: void __cdecl(Appirater *self, SEL, char)
 #[doc(alias = "-[Appirater incrementAndRate:]")]
-pub fn stub_18b18() -> ! {
-    todo!("0x18b18 -[Appirater incrementAndRate:]")
+pub fn stub_18b18(instance: &Appirater, can_rate: bool, current_version: &str, now_secs: f64) {
+    // IDA 0x18b18 (`-[Appirater incrementAndRate:]`): `incrementUseCount`
+    // (0x18b30); when `a3` and `ratingConditionsHaveBeenMet` (0x18b48) and
+    // `connectedToNetwork` (0x18b60), `dispatch_async` to main of the
+    // `showRatingAlert` block (0x18b98..0x18baa). The queue hop collapses;
+    // the block is `stub_18bb4`. Verified via IDA decompile.
+    instance.increment_use_count(current_version, now_secs);
+    if can_rate
+        && instance.rating_conditions_have_been_met(now_secs)
+        && instance.connected_to_network()
+    {
+        stub_18bb4(instance);
+    }
 }
 
 // 0x18bb4 — ___30-[Appirater incrementAndRate:]_block_invoke
 // mangled: ___30-[Appirater incrementAndRate:]_block_invoke
 // type: 
 #[doc(alias = "___30-[Appirater incrementAndRate:]_block_invoke")]
-pub fn stub_18bb4() -> ! {
-    todo!("0x18bb4 ___30-[Appirater incrementAndRate:]_block_invoke")
+pub fn stub_18bb4(instance: &Appirater) {
+    // IDA 0x18bb4 (`__30-[Appirater incrementAndRate:]_block_invoke`): single
+    // `objc_msgSend` of `showRatingAlert` to the captured `self`
+    // (`a1 + 20`). Verified via IDA decompile.
+    instance.show_rating_alert();
 }
 
 // 0x18bc8 — ___copy_helper_block_125
 // mangled: ___copy_helper_block_125
 // type: 
 #[doc(alias = "___copy_helper_block_125")]
-pub fn stub_18bc8() -> ! {
-    todo!("0x18bc8 ___copy_helper_block_125")
+pub fn stub_18bc8(slot: &mut Option<ObjCId>, src: Option<ObjCId>) {
+    // IDA 0x18bc8 (`__copy_helper_block_125`): `_Block_object_assign_shim`
+    // retaining the capture (0x18bce). Same as the 0x18094 anchor.
+    // Family-verified.
+    *slot = src;
 }
 
 // 0x18bd4 — ___destroy_helper_block_126
 // mangled: ___destroy_helper_block_126
 // type: 
 #[doc(alias = "___destroy_helper_block_126")]
-pub fn stub_18bd4() -> ! {
-    todo!("0x18bd4 ___destroy_helper_block_126")
+pub fn stub_18bd4(slot: &mut Option<ObjCId>) {
+    // IDA 0x18bd4 (`__destroy_helper_block_126`):
+    // `_Block_object_dispose_shim` releasing the capture (0x18bd8). Same as
+    // the 0x180a0 anchor. Family-verified.
+    *slot = None;
 }
 
 // 0x18bdc — -[Appirater incrementSignificantEventAndRate:]
 // mangled: -[Appirater incrementSignificantEventAndRate:]
 // type: void __cdecl(Appirater *self, SEL, char)
 #[doc(alias = "-[Appirater incrementSignificantEventAndRate:]")]
-pub fn stub_18bdc() -> ! {
-    todo!("0x18bdc -[Appirater incrementSignificantEventAndRate:]")
+pub fn stub_18bdc(instance: &Appirater, can_rate: bool, current_version: &str, now_secs: f64) {
+    // IDA 0x18bdc (`-[Appirater incrementSignificantEventAndRate:]`): twin
+    // of 0x18b18 over `incrementSignificantEventCount` (0x18bf4..0x18c6e)
+    // with the `showRatingAlert` block at 0x18c68. Same as the 0x18b18
+    // anchor. Family-verified.
+    instance.increment_significant_event_count(current_version, now_secs);
+    if can_rate
+        && instance.rating_conditions_have_been_met(now_secs)
+        && instance.connected_to_network()
+    {
+        stub_18c78(instance);
+    }
 }
 
 // 0x18c78 — ___46-[Appirater incrementSignificantEventAndRate:]_block_invoke
 // mangled: ___46-[Appirater incrementSignificantEventAndRate:]_block_invoke
 // type: 
 #[doc(alias = "___46-[Appirater incrementSignificantEventAndRate:]_block_invoke")]
-pub fn stub_18c78() -> ! {
-    todo!("0x18c78 ___46-[Appirater incrementSignificantEventAndRate:]_block_invoke")
+pub fn stub_18c78(instance: &Appirater) {
+    // IDA 0x18c78 (`__46-[Appirater incrementSignificantEventAndRate:]_
+    // block_invoke`): `showRatingAlert` to the captured `self`. Same as the
+    // 0x18bb4 anchor. Family-verified.
+    instance.show_rating_alert();
 }
 
 // 0x18c8c — ___copy_helper_block_130
 // mangled: ___copy_helper_block_130
 // type: 
 #[doc(alias = "___copy_helper_block_130")]
-pub fn stub_18c8c() -> ! {
-    todo!("0x18c8c ___copy_helper_block_130")
+pub fn stub_18c8c(slot: &mut Option<ObjCId>, src: Option<ObjCId>) {
+    // IDA 0x18c8c (`__copy_helper_block_130`): retain the capture (0x18c92).
+    // Same as the 0x18094 anchor. Family-verified.
+    *slot = src;
 }
 
 // 0x18c98 — ___destroy_helper_block_131
 // mangled: ___destroy_helper_block_131
 // type: 
 #[doc(alias = "___destroy_helper_block_131")]
-pub fn stub_18c98() -> ! {
-    todo!("0x18c98 ___destroy_helper_block_131")
+pub fn stub_18c98(slot: &mut Option<ObjCId>) {
+    // IDA 0x18c98 (`__destroy_helper_block_131`): release the capture
+    // (0x18c9c). Same as the 0x180a0 anchor. Family-verified.
+    *slot = None;
 }
 
 // 0x18ca0 — +[Appirater appLaunched]
 // mangled: +[Appirater appLaunched]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[Appirater appLaunched]")]
-pub fn stub_18ca0() -> ! {
-    todo!("0x18ca0 +[Appirater appLaunched]")
+pub fn stub_18ca0(current_version: &str, now_secs: f64) {
+    // IDA 0x18ca0 (`+[Appirater appLaunched]`): forwards `YES` to
+    // `appLaunched:` (0x18cba). Verified via IDA decompile.
+    stub_18cc0(true, current_version, now_secs);
 }
 
 // 0x18cc0 — +[Appirater appLaunched:]
 // mangled: +[Appirater appLaunched:]
 // type: void __cdecl(id, SEL, char)
 #[doc(alias = "+[Appirater appLaunched:]")]
-pub fn stub_18cc0() -> ! {
-    todo!("0x18cc0 +[Appirater appLaunched:]")
+pub fn stub_18cc0(first_launch: bool, current_version: &str, now_secs: f64) {
+    // IDA 0x18cc0 (`+[Appirater appLaunched:]`): captures `a3` into the
+    // stack block and `dispatch_async`es it to a global queue
+    // (0x18cd0..0x18d08). The queue hop collapses; the block is `stub_18d10`.
+    // Verified via IDA decompile.
+    stub_18d10(first_launch, current_version, now_secs);
 }
 
 // 0x18d10 — ___25+[Appirater appLaunched:]_block_invoke
 // mangled: ___25+[Appirater appLaunched:]_block_invoke
 // type: 
 #[doc(alias = "___25+[Appirater appLaunched:]_block_invoke")]
-pub fn stub_18d10() -> ! {
-    todo!("0x18d10 ___25+[Appirater appLaunched:]_block_invoke")
+pub fn stub_18d10(can_rate: bool, current_version: &str, now_secs: f64) {
+    // IDA 0x18d10 (`__25+[Appirater appLaunched:]_block_invoke`):
+    // `sharedInstance` (0x18d2e) then `incrementAndRate:` with the captured
+    // flag (`a1 + 20`). Verified via IDA decompile.
+    stub_18b18(Appirater::shared_instance(), can_rate, current_version, now_secs);
 }
 
 // 0x18d4c — -[Appirater hideRatingAlert]
 // mangled: -[Appirater hideRatingAlert]
 // type: void __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater hideRatingAlert]")]
-pub fn stub_18d4c() -> ! {
-    todo!("0x18d4c -[Appirater hideRatingAlert]")
+pub fn stub_18d4c(instance: &Appirater) -> bool {
+    // IDA 0x18d4c (`-[Appirater hideRatingAlert]`): dismisses `ratingAlert`
+    // when visible (0x18d62..0x18db8); the `_debug` `NSLog` (0x18d8a..0x18d96)
+    // has no host sink. Reports whether an alert was dismissed. Verified via
+    // IDA decompile.
+    instance.hide_rating_alert()
 }
 
 // 0x18dbc — +[Appirater appWillResignActive]
 // mangled: +[Appirater appWillResignActive]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[Appirater appWillResignActive]")]
-pub fn stub_18dbc() -> ! {
-    todo!("0x18dbc +[Appirater appWillResignActive]")
+pub fn stub_18dbc() {
+    // IDA 0x18dbc (`+[Appirater appWillResignActive]`): `_debug` `NSLog`
+    // (0x18dcc..0x18dd8, no host sink), then `hideRatingAlert` on
+    // `sharedInstance` (0x18df4..0x18e08). Verified via IDA decompile.
+    Appirater::shared_instance().hide_rating_alert();
 }
 
 // 0x18e0c — +[Appirater appEnteredForeground:]
 // mangled: +[Appirater appEnteredForeground:]
 // type: void __cdecl(id, SEL, char)
 #[doc(alias = "+[Appirater appEnteredForeground:]")]
-pub fn stub_18e0c() -> ! {
-    todo!("0x18e0c +[Appirater appEnteredForeground:]")
+pub fn stub_18e0c(entered: bool, current_version: &str, now_secs: f64) {
+    // IDA 0x18e0c (`+[Appirater appEnteredForeground:]`): same shape as
+    // 0x18cc0 — capture `a3`, `dispatch_async` to a global queue
+    // (0x18e1c..0x18e54); the block is `stub_18e5c`. Same as the 0x18cc0
+    // anchor. Family-verified.
+    stub_18e5c(entered, current_version, now_secs);
 }
 
 // 0x18e5c — ___34+[Appirater appEnteredForeground:]_block_invoke
 // mangled: ___34+[Appirater appEnteredForeground:]_block_invoke
 // type: 
 #[doc(alias = "___34+[Appirater appEnteredForeground:]_block_invoke")]
-pub fn stub_18e5c() -> ! {
-    todo!("0x18e5c ___34+[Appirater appEnteredForeground:]_block_invoke")
+pub fn stub_18e5c(can_rate: bool, current_version: &str, now_secs: f64) {
+    // IDA 0x18e5c (`__34+[Appirater appEnteredForeground:]_block_invoke`):
+    // `sharedInstance` (0x18e7a) then `incrementAndRate:`. Same as the
+    // 0x18d10 anchor. Family-verified.
+    stub_18b18(Appirater::shared_instance(), can_rate, current_version, now_secs);
 }
 
 // 0x18e98 — +[Appirater userDidSignificantEvent:]
 // mangled: +[Appirater userDidSignificantEvent:]
 // type: void __cdecl(id, SEL, char)
 #[doc(alias = "+[Appirater userDidSignificantEvent:]")]
-pub fn stub_18e98() -> ! {
-    todo!("0x18e98 +[Appirater userDidSignificantEvent:]")
+pub fn stub_18e98(significant: bool, current_version: &str, now_secs: f64) {
+    // IDA 0x18e98 (`+[Appirater userDidSignificantEvent:]`): same dispatch
+    // shape over `incrementSignificantEventAndRate:` (0x18ea8..0x18ee0);
+    // the block is `stub_18ee8`. Same as the 0x18cc0 anchor.
+    // Family-verified.
+    stub_18ee8(significant, current_version, now_secs);
 }
 
 // 0x18ee8 — ___37+[Appirater userDidSignificantEvent:]_block_invoke
 // mangled: ___37+[Appirater userDidSignificantEvent:]_block_invoke
 // type: 
 #[doc(alias = "___37+[Appirater userDidSignificantEvent:]_block_invoke")]
-pub fn stub_18ee8() -> ! {
-    todo!("0x18ee8 ___37+[Appirater userDidSignificantEvent:]_block_invoke")
+pub fn stub_18ee8(can_rate: bool, current_version: &str, now_secs: f64) {
+    // IDA 0x18ee8 (`__37+[Appirater userDidSignificantEvent:]_block_invoke`):
+    // `sharedInstance` (0x18f06) then `incrementSignificantEventAndRate:`.
+    // Verified via IDA decompile.
+    stub_18bdc(Appirater::shared_instance(), can_rate, current_version, now_secs);
 }
 
 // 0x18f24 — +[Appirater rateApp]
 // mangled: +[Appirater rateApp]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[Appirater rateApp]")]
-pub fn stub_18f24() -> ! {
-    todo!("0x18f24 +[Appirater rateApp]")
+pub fn stub_18f24() -> String {
+    // IDA 0x18f24 (`+[Appirater rateApp]`): review URL from the template with
+    // `APP_ID` replaced (0x18f48..0x18fa2), flag
+    // `kAppiraterRatedCurrentVersion`, `synchronize`, `openURL:`
+    // (0x18fbe..0x19024). Returns the opened URL. Verified via IDA decompile.
+    Appirater::shared_instance().rate_app()
 }
 
 // 0x19028 — -[Appirater alertView:clickedButtonAtIndex:]
 // mangled: -[Appirater alertView:clickedButtonAtIndex:]
 // type: void __cdecl(Appirater *self, SEL, id, int)
 #[doc(alias = "-[Appirater alertView:clickedButtonAtIndex:]")]
-pub fn stub_19028() -> ! {
-    todo!("0x19028 -[Appirater alertView:clickedButtonAtIndex:]")
+pub fn stub_19028(instance: &Appirater, button_index: i32, now_secs: f64) {
+    // IDA 0x19028 (`-[Appirater alertView:clickedButtonAtIndex:]`): the
+    // three-way button switch with delegate callbacks (0x19052..0x191ca)
+    // lives in the model. Verified via IDA decompile.
+    instance.alert_view_clicked_button(button_index, now_secs);
 }
 
 // 0x191d4 — -[Appirater ratingAlert]
 // mangled: -[Appirater ratingAlert]
 // type: UIAlertView *__cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater ratingAlert]")]
-pub fn stub_191d4() -> ! {
-    todo!("0x191d4 -[Appirater ratingAlert]")
+pub fn stub_191d4(instance: &Appirater) -> ObjCId {
+    // IDA 0x191d4 (`-[Appirater ratingAlert]`): returns the `ratingAlert`
+    // ivar (0x191e2). Verified via IDA decompile.
+    instance.rating_alert()
 }
 
 // 0x191e4 — -[Appirater setRatingAlert:]
 // mangled: -[Appirater setRatingAlert:]
 // type: void __cdecl(Appirater *self, SEL, id)
 #[doc(alias = "-[Appirater setRatingAlert:]")]
-pub fn stub_191e4() -> ! {
-    todo!("0x191e4 -[Appirater setRatingAlert:]")
+pub fn stub_191e4(instance: &Appirater, alert: ObjCId) {
+    // IDA 0x191e4 (`-[Appirater setRatingAlert:]`): retained-property store
+    // via `objc_setProperty` (0x19200). Verified via IDA decompile.
+    instance.set_rating_alert(alert);
 }
 
 // 0x19208 — -[Appirater delegate]
 // mangled: -[Appirater delegate]
 // type: AppiraterDelegate *__cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater delegate]")]
-pub fn stub_19208() -> ! {
-    todo!("0x19208 -[Appirater delegate]")
+pub fn stub_19208(instance: &Appirater) -> ObjCId {
+    // IDA 0x19208 (`-[Appirater delegate]`): returns the `_delegate` ivar
+    // (0x19216). Verified via IDA decompile.
+    instance.delegate()
 }
 
 // 0x19218 — -[Appirater setDelegate:]
 // mangled: -[Appirater setDelegate:]
 // type: void __cdecl(Appirater *self, SEL, id)
 #[doc(alias = "-[Appirater setDelegate:]")]
-pub fn stub_19218() -> ! {
-    todo!("0x19218 -[Appirater setDelegate:]")
+pub fn stub_19218(instance: &Appirater, delegate: ObjCId) {
+    // IDA 0x19218 (`-[Appirater setDelegate:]`): plain ivar store
+    // (0x19224). Verified via IDA decompile.
+    instance.set_delegate(delegate);
 }
 
 // 0x19228 — -[AppDelegate init]
@@ -950,4 +1040,125 @@ pub fn stub_1aea8() -> ! {
 #[doc(alias = "-[DebugSettingsViewController displayTouchUp:]")]
 pub fn stub_1aed0() -> ! {
     todo!("0x1aed0 -[DebugSettingsViewController displayTouchUp:]")
+}
+
+#[cfg(test)]
+mod appirater_tests {
+    use super::*;
+    use crate::view_controllers::NIL_ID;
+
+    #[test]
+    fn rating_prompt_chain() {
+        // Config setters round-trip (IDA 0x17df0..0x17e58).
+        stub_17df0("431946152");
+        stub_17e00(3.0);
+        stub_17e14(10);
+        stub_17e24(5);
+        stub_17e34(10.0);
+        stub_17e48(false);
+        stub_17e58(4242);
+        assert_eq!(Appirater::app_id(), "431946152");
+        assert_eq!(Appirater::days_until_prompt(), 3.0);
+        assert_eq!(Appirater::uses_until_prompt(), 10);
+        assert_eq!(Appirater::significant_events_until_prompt(), 5);
+        assert_eq!(Appirater::time_before_reminding(), 10.0);
+        assert!(!Appirater::is_debug());
+        assert_eq!(Appirater::class_delegate(), 4242);
+        // `sharedInstance` (0x17f80) + its `dispatch_once` block (0x17fe4)
+        let inst = stub_17f80();
+        assert_eq!(inst.delegate(), NIL_ID);
+        assert_eq!(stub_17fe4().delegate(), 4242);
+        let inst = Appirater::shared_instance();
+        assert_eq!(inst.delegate(), 4242);
+        assert!(Appirater::resign_active_observed());
+        // Reachability default (0x17e68).
+        assert!(stub_17e68(inst));
+        Appirater::set_network_reachable(false);
+        assert!(!stub_17e68(inst));
+        Appirater::set_network_reachable(true);
+        // Debug forces the conditions (0x183d8 fast path).
+        stub_17e48(true);
+        assert!(stub_183d8(inst, 1_700_000_000.0));
+        stub_17e48(false);
+        // Fresh counters sit below the configured thresholds.
+        assert!(!stub_183d8(inst, 1_700_000_000.0));
+        // Loosen every gate, then walk the prompt path end to end.
+        stub_17e00(0.0);
+        stub_17e14(0);
+        stub_17e24(0);
+        stub_17e34(0.0);
+        let now = 1_700_000_000.0;
+        stub_185b0(inst, "2.125", now);
+        stub_18878(inst, "2.125", now);
+        assert_eq!(inst.use_count(), 1);
+        assert_eq!(inst.significant_event_count(), 1);
+        assert!(stub_183d8(inst, now + 1.0));
+        // `incrementAndRate:YES` (0x18b18) shows the alert on the main-queue
+        // block (0x18bb4); the block helpers retain/release the capture.
+        let shows = inst.rating_alert_show_count();
+        stub_18b18(inst, true, "2.125", now + 1.0);
+        assert_eq!(inst.rating_alert_show_count(), shows + 1);
+        assert!(inst.is_rating_alert_visible());
+        stub_18bb4(inst);
+        assert_eq!(inst.rating_alert_show_count(), shows + 2);
+        let mut slot: Option<ObjCId> = None;
+        stub_18094(&mut slot, Some(7));
+        assert_eq!(slot, Some(7));
+        stub_18bc8(&mut slot, Some(9));
+        assert_eq!(slot, Some(9));
+        stub_180a0(&mut slot);
+        assert_eq!(slot, None);
+        stub_18bd4(&mut slot);
+        stub_18c8c(&mut slot, Some(11));
+        stub_18c98(&mut slot);
+        assert_eq!(slot, None);
+        // Significant-event variant gates identically (0x18bdc/0x18c78).
+        stub_18bdc(inst, true, "2.125", now + 2.0);
+        stub_18c78(inst);
+        // Hide reports the dismissal (0x18d4c/0x18dbc).
+        assert!(stub_18d4c(inst));
+        assert!(!inst.is_rating_alert_visible());
+        assert!(!stub_18d4c(inst));
+        stub_18dbc();
+        // `rateApp` (0x18f24) substitutes the stored app id into the 0x18f6e
+        // template and flags the version.
+        let url = stub_18f24();
+        assert!(url.ends_with("id=431946152"), "{url}");
+        assert!(inst.rated_current_version());
+        // Rating the version closes the gate again.
+        assert!(!stub_183d8(inst, now + 3.0));
+        // Alert-button dispatch (0x19028): decline flags, remind stamps.
+        stub_19028(inst, 2, now + 4.0);
+        assert_eq!(inst.last_alert_button(), 2);
+        stub_19028(inst, 0, now + 5.0);
+        assert!(inst.declined_to_rate());
+        // Ivar accessors (0x191d4..0x19218).
+        stub_191e4(inst, 77);
+        assert_eq!(stub_191d4(inst), 77);
+        stub_19218(inst, 4242);
+        assert_eq!(stub_19208(inst), 4242);
+        // `appLaunched:`/`appEnteredForeground:`/`userDidSignificantEvent:`
+        // chains reach `incrementAndRate:` (0x18ca0..0x18ee8).
+        stub_18ca0("2.125", now + 6.0);
+        stub_18cc0(true, "2.125", now + 6.0);
+        stub_18d10(true, "2.125", now + 6.0);
+        stub_18e0c(true, "2.125", now + 6.0);
+        stub_18e5c(true, "2.125", now + 6.0);
+        stub_18e98(true, "2.125", now + 6.0);
+        stub_18ee8(true, "2.125", now + 6.0);
+        assert!(inst.use_count() >= 7);
+        // Tuple ownership twins (0x179f4/0x17aac/0x17b80).
+        let mut slot = SharedPtr::new(ReflectionTuple);
+        stub_179f4(&mut slot);
+        let adopted = stub_17aac(SharedPtr::new(ReflectionTuple));
+        let copied = stub_17b80(&adopted);
+        assert!(SharedPtr::ptr_eq(&adopted, &copied));
+        // Empty DataModel leaves + global ctors run clean (0x16e4c/0x17c58,
+        // 0x179e8..0x179f0).
+        stub_16e4c();
+        stub_17c58();
+        stub_179e8();
+        stub_179ec();
+        stub_179f0();
+    }
 }
