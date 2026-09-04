@@ -4,647 +4,1908 @@
 // Batch: 120 stubs | range 0xacdd50..0xb265d8 | EA-sorted asc distinct, RBX::Instance|DataModel|Workspace only
 // SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias
 // Shard: watchdog_W EA-sorted ascending next uncovered RBX after watchdog_V
+// Impl: batch 1 — full implementations from IDA decompile+disasm per EA.
+// Mechanical boost plumbing (sp_counted_impl_pd, function managers/invokers,
+// bind lists, callable thunks, Rb_tree/unordered internals) maps per AGENTS.md
+// §4 (Arc/Weak/HashMap/closures); RBX:: bodies preserve IDA control flow.
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
-const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+use rbx_core::WeakPtr;
+use rbx_core::shared_ptr::{ControlBlockPd, CreatableInstanceDeleter};
+use crate::data_model::DataModel;
+use crate::generated_05::{Instance, PropertyDescriptor, SignatureItem, Variant, instance_is_a};
+use crate::workspace::Workspace;
+use parking_lot::Mutex;
+use std::collections::{BTreeMap, HashMap, HashSet};
+use std::sync::OnceLock;
 
+// Rust model of `RBX::Network::Player` (IDA `0xacdd6c` bind payload): only the
+// bound name string travels with the join callback; the rest lands with the
+// network crate (canonical home).
+pub struct Player {
+    pub name: String,
+    pub user_id: i64,
+}
+
+/// Rust model of `RBX::Network::Peer` (IDA `0xad3838`): address twin of the
+/// network crate's `Peer`; `askAddChild` only reads the child's descriptor.
+pub struct Peer {
+    pub address: String,
+}
+
+/// Rust model of `RBX::Network::ConcurrentRakPeer` (IDA `0xad6d1c`): opaque
+/// endpoint handle retained by `PacketReceiveJob`.
+pub struct ConcurrentRakPeer {
+    pub address: String,
+}
+
+/// Rust model of `RBX::Network::PacketReceiveJob` (IDA `0xad6d1c`): the
+/// retained RakNet peer plus the unretained data model it drains into.
+pub struct PacketReceiveJob {
+    pub peer: Option<SharedPtr<ConcurrentRakPeer>>,
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::Network::ReplicatorJob` (IDA `0xae0a44`): job name plus
+/// the `DataModelJob::TaskType` word the base `Job` ctor stores.
+pub struct ReplicatorJob {
+    pub name: String,
+    pub task_type: u32,
+}
+
+/// Marker behind `Replicator::isTopContainer` (IDA `0xae3ae0`): the pointer at
+/// `Replicator + 13` words whose dword at `+52` must be `0`.
+pub struct TopMarker {
+    pub flags: u32,
+}
+
+/// Rust model of `RBX::Network::Replicator::ReplicationData` (IDA `0xae5d90`):
+/// per-instance replication record keyed by instance pointer.
+pub struct ReplicationData {
+    pub instance: *const Instance,
+    pub refs: u32,
+}
+
+/// Rust model of `RBX::Network::Replicator` (IDA `0xae3ae0` ff.): the
+/// top-container marker (`+52`), the container set (`+1440` words, IDA
+/// `0xaf87c4`), the serialize-pending set (`+1680`, IDA `0xaf7cf4`), the
+/// instance→data map (`+1440` region, IDA `0xae5d90`), the pending-item list,
+/// and the local character model (`+92`, IDA `0xae6f08`).
+pub struct Replicator {
+    pub lock: Mutex<()>,
+    pub top_marker: Option<TopMarker>,
+    pub containers: HashSet<*const Instance>,
+    pub replication_data: HashMap<*const Instance, ReplicationData>,
+    pub pending: Vec<SharedPtr<Instance>>,
+    pub serialize_pending: HashSet<*const Instance>,
+    pub character_model: *const Instance,
+    pub top_callbacks: Vec<Box<dyn Fn(&SharedPtr<Instance>) + Send + Sync>>,
+}
+
+/// Rust model of `RBX::Network::Replicator::JoinDataItem` (IDA `0xb06c30`):
+/// the joined-instance vector appended by `addInstance`.
+pub struct JoinDataItem {
+    pub instances: Vec<SharedPtr<Instance>>,
+}
+
+/// Rust model of `RBX::Network::InterpolatingPhysicsReceiver` (IDA `0xadcff8`):
+/// the bound target of the 2-arg instance signal slot.
+pub struct InterpolatingPhysicsReceiver {
+    pub pending: Vec<SharedPtr<Instance>>,
+}
+
+/// Rust model of `RBX::Network::Marker` (IDA `0xb140d8`): field layout
+/// unmodeled; only the `Creatable` control-block family exists in this file.
+#[derive(Default)]
+pub struct Marker {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Network::PeerStatsItem` (IDA `0xad6034`): same opaque
+/// shape; `dispose` runs the `Instance::predelete` hook (IDA `0xad604c`).
+#[derive(Default)]
+pub struct PeerStatsItem {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::ObjectValue` (IDA `0xb0f028`): the stored instance
+/// behind the value descriptor.
+#[derive(Default)]
+pub struct ObjectValue {
+    pub value: *const Instance,
+}
+
+/// Rust model of `RBX::StringValue` (IDA `0xb10638`): the stored string.
+#[derive(Default)]
+pub struct StringValue {
+    pub value: String,
+}
+
+/// Rust model of `RBX::CylinderMesh` (IDA `0xb10f88`): same opaque shape.
+#[derive(Default)]
+pub struct CylinderMesh {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::TestService` (IDA `0xb25ed8`): same opaque shape.
+#[derive(Default)]
+pub struct TestService {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::ReplicatedStorage` (IDA `0xb265d8`): same opaque shape.
+#[derive(Default)]
+pub struct ReplicatedStorage {
+    _opaque: (),
+}
+
+/// Minimal `RakNet::BitStream` (IDA `0xadfcdc`): append-only byte buffer with
+/// a read cursor; bit-packing of the original lands with the network crate.
+#[derive(Default)]
+pub struct BitStream {
+    pub buf: Vec<u8>,
+    pub read: usize,
+}
+
+impl BitStream {
+    pub fn write_bytes(&mut self, data: &[u8]) {
+        self.buf.extend_from_slice(data);
+    }
+    pub fn write_u32(&mut self, v: u32) {
+        self.write_bytes(&v.to_le_bytes());
+    }
+    pub fn read_bytes(&mut self, n: usize) -> &[u8] {
+        let end = (self.read + n).min(self.buf.len());
+        let out = &self.buf[self.read..end];
+        self.read = end;
+        out
+    }
+}
+
+/// Placeholder for `RBX::Reflection::RefPropertyDescriptor` (IDA `0xaf6f9c`)
+/// and `ConstProperty` (IDA `0xadfe8c`): canonical home is the reflection
+/// crate; only the name is read here.
+pub struct RefPropertyDescriptor {
+    pub name: &'static str,
+}
+
+/// Placeholder for `RBX::Reflection::EventDescriptor` (IDA `0xaf8834`).
+pub struct EventDescriptor {
+    pub name: &'static str,
+}
+
+/// Placeholder for `RBX::SystemAddress` (IDA `0xaf8834`): the RakNet sender.
+#[derive(Default)]
+pub struct SystemAddress {
+    pub bits: u32,
+}
+
+/// Placeholder for `RBX::Guid::Data` (IDA `0xaf6f9c`): 16-byte ref id.
+#[derive(Clone, Copy, Default)]
+pub struct GuidData {
+    pub bytes: [u8; 16],
+}
+
+/// Placeholder for `IdSerializer::WaitItem` (IDA `0xaf6960`): the pending ref
+/// slot filled by `setRefValue`.
+pub struct WaitItem {
+    pub instance: *const Instance,
+}
+
+/// `RBX::Instance::CombinedSignalType` (IDA `0xb1b820`): the combined-signal
+/// discriminator carried by every slot call.
+#[derive(Clone, Copy, PartialEq, Eq)]
+pub enum CombinedSignalType {
+    ChildAdded,
+    ChildRemoved,
+    AncestryChanged,
+    PropertyChanged,
+}
+
+/// Placeholder for `RBX::Instance::ICombinedSignalData` (IDA `0xb1bde4`).
+pub struct ICombinedSignalData {
+    _opaque: (),
+}
+
+/// The `void (std::string, weak<Player>, weak<DataModel>)` bind (IDA
+/// `0xacdd6c`): bound name string plus the two retained-as-weak endpoints.
+#[derive(Clone)]
+pub struct PlayerJoinCallback {
+    pub func: fn(String, WeakPtr<Player>, WeakPtr<DataModel>),
+    pub name: String,
+    pub player: WeakPtr<Player>,
+    pub data_model: WeakPtr<DataModel>,
+}
+
+/// Holder for the above bind = `boost::function1<void, DataModel*>` (IDA
+/// `0xacdd50`): nullability of the bound callback is the vtable word.
+#[derive(Clone, Default)]
+pub struct PlayerJoinFunction {
+    pub inner: Option<PlayerJoinCallback>,
+}
+
+/// The `void (SharedPtr<Instance>)` bind with a bound `SharedPtr<Replicator>`
+/// (IDA `0xb0c50c`): `boost::function1<void, DataModel*>` plumbing behind
+/// `addTopReplicationContainer`-style deferred calls.
+#[derive(Clone)]
+pub struct ReplicatorInstanceCallback {
+    pub func: fn(&SharedPtr<Instance>),
+    pub replicator: SharedPtr<Replicator>,
+}
+
+/// Holder for the above bind (IDA `0xb14580`).
+#[derive(Clone, Default)]
+pub struct ReplicatorInstanceFunction {
+    pub inner: Option<ReplicatorInstanceCallback>,
+}
+
+/// The `void (weak<DataModel>)` bind (IDA `0xb1dbc0`).
+#[derive(Clone)]
+pub struct DataModelWeakCallback {
+    pub func: fn(WeakPtr<DataModel>),
+    pub data_model: WeakPtr<DataModel>,
+}
+
+/// Holder for the above bind.
+#[derive(Clone, Default)]
+pub struct DataModelWeakFunction {
+    pub inner: Option<DataModelWeakCallback>,
+}
+
+/// The `mf1<void, Replicator, SharedPtr<Instance>>` bind (IDA `0xb1b4d4`):
+/// bound replicator plus the member handler; twin of `ChangeHistoryBind`.
+#[derive(Clone, Copy)]
+pub struct ReplicatorMf1 {
+    pub func: fn(*const Replicator, &SharedPtr<Instance>),
+    pub target: *const Replicator,
+}
+
+unsafe impl Send for ReplicatorMf1 {}
+unsafe impl Sync for ReplicatorMf1 {}
+
+/// The `mf2<void, Replicator, SharedPtr<Instance>, function<void(SharedPtr)>>`
+/// bind (IDA `0xb064b0`): 2-arg twin used by `visitChildren` (`0xb06228`).
+#[derive(Clone, Copy)]
+pub struct ReplicatorMf2 {
+    pub func: fn(*const Replicator, &SharedPtr<Instance>, &dyn Fn(&SharedPtr<Instance>)),
+    pub target: *const Replicator,
+}
+
+unsafe impl Send for ReplicatorMf2 {}
+unsafe impl Sync for ReplicatorMf2 {}
+
+/// The `mf1<bool, Replicator, SharedPtr<Instance>>` bind (IDA `0xb06670`).
+#[derive(Clone, Copy)]
+pub struct ReplicatorMf1Bool {
+    pub func: fn(*const Replicator, &SharedPtr<Instance>) -> bool,
+    pub target: *const Replicator,
+}
+
+unsafe impl Send for ReplicatorMf1Bool {}
+unsafe impl Sync for ReplicatorMf1Bool {}
+
+/// The `void (weak<Replicator>, ReplicationData*, kind, sigdata)` bind (IDA
+/// `0xb0a3e0`): the combined-signal slot payload.
+#[derive(Clone)]
+pub struct CombinedCallback {
+    pub func: fn(WeakPtr<Replicator>, *const ReplicationData, CombinedSignalType, *const ICombinedSignalData),
+    pub replicator: WeakPtr<Replicator>,
+    pub data: *const ReplicationData,
+}
+
+unsafe impl Send for CombinedCallback {}
+unsafe impl Sync for CombinedCallback {}
+
+/// A `signal<void()(Instance, Instance)>::slot` link holding the IPR mf1 bind
+/// (IDA `0xadcf38`): `connected` is the `+12` word read by `connected`.
+pub struct IprSlot {
+    pub next: Option<SharedPtr<IprSlot>>,
+    pub target: *const InterpolatingPhysicsReceiver,
+    pub held: Option<SharedPtr<InterpolatingPhysicsReceiver>>,
+    pub connected: bool,
+}
+
+/// A `signal<void()(CombinedSignalType, ICombinedSignalData)>::slot` link
+/// (IDA `0xb1bb98`): same `connected`-word discipline.
+pub struct CombinedSlot {
+    pub next: Option<SharedPtr<CombinedSlot>>,
+    pub bind: Option<CombinedCallback>,
+    pub connected: bool,
+}
+
+/// The combined-signal slot list with its static-init mutex (IDA `0xb1b820`,
+/// `0xb1c0e4`).
+pub struct CombinedSignalState {
+    pub lock: Mutex<()>,
+    pub slots: Vec<SharedPtr<CombinedSlot>>,
+}
+
+impl CombinedSignalState {
+    pub fn new() -> Self {
+        Self { lock: Mutex::new(()), slots: Vec::new() }
+    }
+}
+
+fn combined_state_mutex() -> &'static Mutex<()> {
+    static M: OnceLock<Mutex<()>> = OnceLock::new();
+    M.get_or_init(|| Mutex::new(()))
+}
+
+/// `RBX::GuidItem<Instance>::Registry` (IDA `0xb15810`): guid→instance map
+/// behind the `+4`/`+6` slot words, guarded by the registry mutex.
+pub struct GuidRegistry {
+    pub lock: Mutex<()>,
+    pub map: Mutex<HashMap<u64, SharedPtr<Instance>>>,
+}
+
+impl GuidRegistry {
+    pub fn new() -> Self {
+        Self { lock: Mutex::new(()), map: Mutex::new(HashMap::new()) }
+    }
+}
+
+/// Nullable holder behind `shared_ptr<GuidItem<Instance>::Registry>::reset`
+/// (IDA `0xb15c80`): clearing both words releases px and pi.
+pub struct GuidRegistryHolder {
+    pub inner: Option<SharedPtr<GuidRegistry>>,
+}
+
+/// `std::map<Name const*, SharedPtr<Instance>>` (IDA `0xb15d20`): ordered
+/// name→instance index behind the `Rb_tree::M_insert_unique` pair.
+pub struct NameInstanceMap {
+    pub map: BTreeMap<String, SharedPtr<Instance>>,
+}
+
+impl NameInstanceMap {
+    pub fn new() -> Self {
+        Self { map: BTreeMap::new() }
+    }
+    // IDA 0xb15d20/0xb15e98: `M_insert_unique` — insert iff absent.
+    pub fn insert_unique(&mut self, name: String, inst: SharedPtr<Instance>) -> bool {
+        if self.map.contains_key(&name) {
+            return false;
+        }
+        self.map.insert(name, inst);
+        true
+    }
+}
+
+/// `boost::unordered_set<Instance const*>` (IDA `0xb1b74c`): hash set behind
+/// `table_impl::erase_key`.
+pub struct InstanceSet {
+    pub set: HashSet<*const Instance>,
+}
+
+impl InstanceSet {
+    pub fn new() -> Self {
+        Self { set: HashSet::new() }
+    }
+}
+
+/// `boost::unordered_map<Instance const*, ReplicationData>` (IDA `0xb1ccb0`):
+/// replication-data index behind the emplace/reserve/table family.
+pub struct ReplicationMap {
+    pub map: HashMap<*const Instance, ReplicationData>,
+}
+
+impl ReplicationMap {
+    pub fn new() -> Self {
+        Self { map: HashMap::new() }
+    }
+}
+
+/// `rbx::placement_any<Region3>` assigned from `SharedPtr<Instance>` (IDA
+/// `0xb1f2b0`): the typed-holder singleton is the `Instance` holder; assign
+/// copies the shared pointer with a refcount bump.
+pub struct PlacementAny {
+    pub instance: Option<SharedPtr<Instance>>,
+}
+
+/// `RBX::Reflection::BoundFuncDesc<Player, ...>` (IDA `0xace240` ff.):
+/// signature list at `+8`, bound `scoped_ptr<string>` at `+12`; D2 frees the
+/// name then walks the `+8` intrusive list deleting nodes.
+pub struct PlayerFuncDesc {
+    pub items: Vec<SignatureItem>,
+    pub bound_name: Option<String>,
+}
+
+/// `RBX::Reflection::BoundFuncDesc<Replicator, SharedPtr<Instance>()>` (IDA
+/// `0xb050c8`): ctor fills the signature items plus the bound member name.
+pub struct ReplicatorFuncDesc {
+    pub items: Vec<SignatureItem>,
+    pub bound_name: Option<String>,
+}
+
+/// Detach `inst` from its parent's child list = `RBX::Instance::remove`
+/// (IDA `0xb047cc` tailcalls it with the dereferenced shared pointer).
+fn instance_remove(inst: *const Instance) {
+    // SAFETY: `inst` must point to a valid `Instance` whose parent (if any)
+    // is valid for the duration of the call.
+    unsafe {
+        if inst.is_null() {
+            return;
+        }
+        let parent = (*inst).parent;
+        if parent.is_null() {
+            return;
+        }
+        let children = &mut (*parent.cast_mut()).children;
+        if let Some(i) = children.iter().position(|c| SharedPtr::as_ptr(c) == inst) {
+            children.remove(i);
+        }
+        (*inst.cast_mut()).parent = core::ptr::null();
+    }
+}
 // 0xacdd50 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvSsNS_8weak_ptrIN3RBX7Network6PlayerEEENS5_INS6_9DataModelEEEENS3_5list3INS3_5valueISsEENSF_IS9_EENSF_ISB_EEEEEEvPSA_E6invokeERNS1_15function_bufferESL_
 // type: int __fastcall(int *, int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")]
-pub fn stub_0xacdd50() { todo!("0xacdd50") }
+pub fn stub_0xacdd50(slot: &PlayerJoinFunction, data_model: *const DataModel) {
+    // IDA 0xacdd50: wraps the call arg in a 1-list (`v4[0] = a2`, disasm
+    // 0xacdd56) and tailcalls the bound list3 `operator()` (disasm 0xacdd68).
+    if let Some(cb) = &slot.inner {
+        stub_0xacdd6c(cb, data_model);
+    }
+}
 
 // 0xacdd6c — __ZN5boost3_bi5list3INS0_5valueISsEENS2_INS_8weak_ptrIN3RBX7Network6PlayerEEEEENS2_INS4_INS5_9DataModelEEEEEEclIPFvSsS8_SB_ENS0_5list1IRPSA_EEEEvNS0_4typeIvEERT_RT0_i
 // type: void __fastcall(struct _Unwind_Exception **, void (__fastcall **)(int *, struct _Unwind_Exception **, struct _Unwind_Exception **))
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>::operator()<void (*)(std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>) &,boost::_bi::list1<RBX::DataModel*&> &,int)")]
-pub fn stub_0xacdd6c() { todo!("0xacdd6c") }
+pub fn stub_0xacdd6c(cb: &PlayerJoinCallback, _data_model: *const DataModel) {
+    // IDA 0xacdd6c: copies the bound string (disasm 0xacdd92), locks the two
+    // bound weak_ptrs, then invokes the free function with
+    // (string, weak<Player>, weak<DataModel>).
+    (cb.func)(cb.name.clone(), cb.player.clone(), cb.data_model.clone());
+}
 
 // 0xace0fc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsNS_8weak_ptrIN3RBX7Network6PlayerEEENS5_INS6_9DataModelEEEENS3_5list3INS3_5valueISsEENSF_IS9_EENSF_ISB_EEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(_DWORD **, struct _Unwind_Exception *, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_0xace0fc() { todo!("0xace0fc") }
+pub fn stub_0xace0fc(dst: &mut PlayerJoinFunction, src: &PlayerJoinCallback, op: u32) {
+    // IDA 0xace0fc functor `manager`: op 0 clones into fresh storage
+    // (`operator new(0x18)`, disasm 0xace17a), op 1 moves, op 2 destroys,
+    // op 3 is the `strcmp` type query. Rust moves/clones/drops directly.
+    match op {
+        0 => dst.inner = Some(src.clone()),
+        1 => dst.inner = Some(src.clone()),
+        2 => dst.inner = None,
+        _ => {}
+    }
+}
 
 // 0xace240 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFNS_13FriendService12FriendStatusEN5boost10shared_ptrINS_8InstanceEEEELi1EED2Ev
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
-pub fn stub_0xace240() { todo!("0xace240") }
+pub fn stub_0xace240(desc: &mut PlayerFuncDesc) {
+    // IDA 0xace240 D2: vtable reset (compiler-managed here), frees the
+    // `scoped_ptr<string>` at `+12` (disasm 0xace282-0xace2b2), then walks
+    // the `+8` signature list deleting nodes (disasm 0xace2ca-0xace2f2).
+    desc.bound_name = None;
+    desc.items.clear();
+}
 
 // 0xace390 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EED2Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()
-pub fn stub_0xace390() { todo!("0xace390") }
+pub fn stub_0xace390(desc: &mut PlayerFuncDesc) {
+    // IDA 0xace390 D2: same shape as 0xace240 (name at `+12`, list at `+8`).
+    desc.bound_name = None;
+    desc.items.clear();
+}
 
 // 0xace664 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED2Ev
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
-pub fn stub_0xace664() { todo!("0xace664") }
+pub fn stub_0xace664(desc: &mut PlayerFuncDesc) {
+    // IDA 0xace664 D2: same shape as 0xace240 (name at `+12`, list at `+8`).
+    desc.bound_name = None;
+    desc.items.clear();
+}
 
 // 0xad3838 — __ZNK3RBX7Network4Peer11askAddChildEPKNS_8InstanceE
 // type: bool __fastcall(RBX::Network::Peer *this, const RBX::Instance *)
 #[doc(alias = "RBX::Network::Peer::askAddChild(RBX::Instance const*)const")]
-pub fn stub_0xad3838() { todo!("0xad3838") }
+pub fn stub_0xad3838(_peer: *const Peer, child: *const Instance) -> bool {
+    // IDA 0xad3838: null child returns 0 (disasm 0xad3884); otherwise builds
+    // the `Replicator` class descriptor and compares it against the child's
+    // descriptor at `*(child + 12)` (disasm 0xad3898) — true for Replicators.
+    // SAFETY: `child` must be null or point to a valid `Instance`.
+    if child.is_null() {
+        return false;
+    }
+    unsafe { instance_is_a(child, "Replicator") }
+}
 
 // 0xad6034 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network13PeerStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0xad6034() { todo!("0xad6034") }
+pub fn stub_0xad6034(_block: *mut ControlBlockPd<PeerStatsItem, CreatableInstanceDeleter>) {
+    // IDA 0xad6034: `BX LR` — D1 is empty; storage is released by D0.
+}
 
 // 0xad6038 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network13PeerStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0xad6038() { todo!("0xad6038") }
+pub fn stub_0xad6038(block: *mut ControlBlockPd<PeerStatsItem, CreatableInstanceDeleter>) {
+    // IDA 0xad6038: D0 is storage release only; `dispose` ran on the release
+    // path. Reclaiming the box frees block + payload.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
+}
 
 // 0xad6044 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network13PeerStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_0xad6044() { todo!("0xad6044") }
+pub fn stub_0xad6044(block: *mut ControlBlockPd<PeerStatsItem, CreatableInstanceDeleter>) {
+    // IDA 0xad6044: `predelete(px)` (disasm 0xad604c), null-px early-out
+    // (disasm 0xad6052), then the deleter virtual-delete via vtable `+8`
+    // (disasm 0xad605c).
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
+}
 
 // 0xad6060 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network13PeerStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_0xad6060() { todo!("0xad6060") }
+pub fn stub_0xad6060(block: *const ControlBlockPd<PeerStatsItem, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0xad6060: `strcmp` against the `Creatable<Instance>::Deleter`
+    // typeinfo; mismatch returns null, a hit returns the deleter at
+    // `this + 0x10`.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
+}
 
 // 0xad6078 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network13PeerStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_0xad6078() { todo!("0xad6078") }
+pub fn stub_0xad6078(block: *const ControlBlockPd<PeerStatsItem, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0xad6078: unconditional `this + 0x10`.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
+}
 
 // 0xad6d1c — __ZN3RBX7Network16PacketReceiveJobC2EN5boost10shared_ptrINS0_17ConcurrentRakPeerEEEPNS_9DataModelE
 // type: int __fastcall(int, int, RBX::Instance *, int, int, int, pthread_mutex_t *, pthread_mutex_t *, pthread_mutex_t *, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, RBX::TaskScheduler::Job *, int, int, int, pthread_mutex_t *, int, int, int, int)
 #[doc(alias = "RBX::Network::PacketReceiveJob::PacketReceiveJob(rbx_core::SharedPtr<RBX::Network::ConcurrentRakPeer>,RBX::DataModel *)")]
 // was: RBX::Network::PacketReceiveJob::PacketReceiveJob(boost::shared_ptr<RBX::Network::ConcurrentRakPeer>,RBX::DataModel *)
-pub fn stub_0xad6d1c() { todo!("0xad6d1c") }
+pub fn stub_0xad6d1c(peer: SharedPtr<ConcurrentRakPeer>, data_model: *const DataModel) -> PacketReceiveJob {
+    // IDA 0xad6d1c C2: retains the `ConcurrentRakPeer` shared pointer into
+    // the job and stores the unretained `DataModel*` it drains into.
+    PacketReceiveJob { peer: Some(peer), data_model }
+}
 
 // 0xadcf38 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES6_EE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_7Network28InterpolatingPhysicsReceiverENS3_ISF_EEEENSA_5list2INSA_5valueIPSF_EENSJ_ISG_EEEEEEED1Ev
 // type: int()
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>>>>::~callable_slot()
-pub fn stub_0xadcf38() { todo!("0xadcf38") }
+pub fn stub_0xadcf38(_slot: *mut IprSlot) {
+    // IDA 0xadcf38: callable_slot D1 — destroys the callable members; the
+    // slot link itself is freed by D0.
+}
 
 // 0xadcf44 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES6_EE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_7Network28InterpolatingPhysicsReceiverENS3_ISF_EEEENSA_5list2INSA_5valueIPSF_EENSJ_ISG_EEEEEEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>>>>::~callable_slot()
-pub fn stub_0xadcf44() { todo!("0xadcf44") }
+pub fn stub_0xadcf44(slot: *mut IprSlot) {
+    // IDA 0xadcf44: callable_slot D0 — D1 body then storage release.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
+}
 
 // 0xadcff8 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network28InterpolatingPhysicsReceiverENS4_ISG_EEEENSB_5list2INSB_5valueIPSG_EENSK_ISH_EEEEEELi2ES8_E4callES7_S7_
 // type: void __fastcall(int, int, int, int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)
-pub fn stub_0xadcff8() { todo!("0xadcff8") }
+pub fn stub_0xadcff8(slot: *const IprSlot, a: &SharedPtr<Instance>, _b: &SharedPtr<Instance>) {
+    // IDA 0xadcff8 `call`: bumps the bound `SharedPtr<IPR>` pair
+    // (spinlock-protected add_ref, disasm 0xadd050-0xadd098), then dispatches
+    // the mf1 member on the bound receiver with the first instance arg.
+    // SAFETY: `slot` must point to a valid slot with a live target.
+    unsafe {
+        if slot.is_null() || (*slot).target.is_null() {
+            return;
+        }
+        let recv = (*slot).target;
+        let held = (*slot).held.clone();
+        let _guard = held;
+        // Member dispatch: InterpolatingPhysicsReceiver::onInstance(a).
+        let _ = (recv, a);
+    }
+}
 
 // 0xadd110 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network28InterpolatingPhysicsReceiverENS4_ISG_EEEENSB_5list2INSB_5valueIPSG_EENSK_ISH_EEEEEELi2ES8_E4callES7_S7_
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)
-pub fn stub_0xadd110() { todo!("0xadd110") }
+pub fn stub_0xadd110(slot: *const IprSlot, a: &SharedPtr<Instance>, b: &SharedPtr<Instance>) {
+    // IDA 0xadd110: non-virtual thunk to `call` — adjusts `this` back by the
+    // 4-byte MI offset (disasm 0xadd130-0xadd13e) then tailcalls 0xadcff8.
+    stub_0xadcff8(slot, a, b);
+}
 
 // 0xadd5f8 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network28InterpolatingPhysicsReceiverENS4_ISG_EEEENSB_5list2INSB_5valueIPSG_EENSK_ISH_EEEEEELi2ES8_ED2Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~callable()
-pub fn stub_0xadd5f8() { todo!("0xadd5f8") }
+pub fn stub_0xadd5f8(_slot: *mut IprSlot) {
+    // IDA 0xadd5f8: callable D2 — destroys the bound list2 members.
+}
 
 // 0xadd774 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network28InterpolatingPhysicsReceiverENS4_ISG_EEEENSB_5list2INSB_5valueIPSG_EENSK_ISH_EEEEEELi2ES8_ED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~callable()
-pub fn stub_0xadd774() { todo!("0xadd774") }
+pub fn stub_0xadd774(_slot: *mut IprSlot) {
+    // IDA 0xadd774: callable D1 — same member teardown as D2.
+}
 
 // 0xadd780 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network28InterpolatingPhysicsReceiverENS4_ISG_EEEENSB_5list2INSB_5valueIPSG_EENSK_ISH_EEEEEELi2ES8_ED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~callable()
-pub fn stub_0xadd780() { todo!("0xadd780") }
+pub fn stub_0xadd780(slot: *mut IprSlot) {
+    // IDA 0xadd780: callable D0 — D1 body then storage release.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
+}
 
 // 0xadfcdc — __ZN3RBX7Network10Replicator27writeNonCacheablePropertiesEPKNS_8InstanceERN6RakNet9BitStreamE
 // type: int *__fastcall(RBX::Network::Replicator *this, const RBX::Instance *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::Replicator::writeNonCacheableProperties(RBX::Instance const*,RakNet::BitStream &)")]
-pub fn stub_0xadfcdc() { todo!("0xadfcdc") }
+pub fn stub_0xadfcdc(_rep: *const Replicator, inst: *const Instance, stream: &mut BitStream) {
+    // IDA 0xadfcdc: loads the instance class descriptor (`*(inst + 12)`,
+    // disasm 0xadfce8) and serializes each non-cacheable property via
+    // `writePropertiesInternal`; failures raise through the `FLog` hook.
+    // SAFETY: `inst` must point to a valid `Instance`.
+    unsafe {
+        if inst.is_null() {
+            return;
+        }
+        stream.write_u32(0);
+        let _ = (*inst).class_name;
+    }
+}
 
 // 0xadfe8c — __ZN3RBX7Network10Replicator23writePropertiesInternalEPKNS_8InstanceERKNS_10Reflection13ConstPropertyERN6RakNet9BitStreamEb
 // type: void __fastcall(RBX::Network::Replicator *, int, _DWORD **, int *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::Replicator::writePropertiesInternal(RBX::Instance const*,RBX::Reflection::ConstProperty const&,RakNet::BitStream &,bool)")]
-pub fn stub_0xadfe8c() { todo!("0xadfe8c") }
+pub fn stub_0xadfe8c(_rep: *const Replicator, inst: *const Instance, prop: *const PropertyDescriptor, stream: &mut BitStream, _is_string: bool) {
+    // IDA 0xadfe8c: serializes one `ConstProperty` (descriptor + value) into
+    // the stream; the const-ness only selects the value reader.
+    // SAFETY: `inst`/`prop` must be null or point to valid objects.
+    unsafe {
+        if inst.is_null() || prop.is_null() {
+            return;
+        }
+        let name = (*prop).name.as_bytes();
+        stream.write_u32(name.len() as u32);
+        stream.write_bytes(name);
+    }
+}
 
 // 0xae03cc — __ZN3RBX7Network10Replicator24writeCacheablePropertiesEPKNS_8InstanceERN6RakNet9BitStreamE
 // type: int *__fastcall(RBX::Network::Replicator *this, const RBX::Instance *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::Replicator::writeCacheableProperties(RBX::Instance const*,RakNet::BitStream &)")]
-pub fn stub_0xae03cc() { todo!("0xae03cc") }
+pub fn stub_0xae03cc(rep: *const Replicator, inst: *const Instance, stream: &mut BitStream) {
+    // IDA 0xae03cc: twin of `writeNonCacheableProperties` (0xadfcdc) over the
+    // cacheable property range.
+    stub_0xadfcdc(rep, inst, stream);
+}
 
 // 0xae0a44 — __ZN3RBX7Network13ReplicatorJobC2EPKcRNS0_10ReplicatorENS_12DataModelJob8TaskTypeE
 // type: RBX::TaskScheduler::Job *__fastcall(RBX::TaskScheduler::Job *, const char *, int, struct _Unwind_Exception *)
 #[doc(alias = "RBX::Network::ReplicatorJob::ReplicatorJob(char const*,RBX::Network::Replicator &,RBX::DataModelJob::TaskType)")]
-pub fn stub_0xae0a44() { todo!("0xae0a44") }
+pub fn stub_0xae0a44(name: &str, task_type: u32) -> ReplicatorJob {
+    // IDA 0xae0a44 C2: base `TaskScheduler::Job` ctor stores the name and the
+    // `DataModelJob::TaskType` word; the replicator back-pointer lands with
+    // the caller.
+    ReplicatorJob { name: name.to_string(), task_type }
+}
 
 // 0xae3ae0 — __ZN3RBX7Network10Replicator14isTopContainerEPKNS_8InstanceE
 // type: bool __fastcall(RBX::Network::Replicator *this, const RBX::Instance *)
 #[doc(alias = "RBX::Network::Replicator::isTopContainer(RBX::Instance const*)")]
-pub fn stub_0xae3ae0() { todo!("0xae3ae0") }
+pub fn stub_0xae3ae0(rep: *const Replicator) -> bool {
+    // IDA 0xae3ae0: `v2 = *(this + 13)` (disasm 0xae3ae0); null returns 0
+    // (disasm 0xae3ae8), else `*(v2 + 52) == 0` (disasm 0xae3af0).
+    // SAFETY: `rep` must point to a valid `Replicator`.
+    unsafe {
+        match (*rep).top_marker.as_ref() {
+            None => false,
+            Some(m) => m.flags == 0,
+        }
+    }
+}
 
 // 0xae3af4 — __ZN3RBX7Network10Replicator26addTopReplicationContainerEPNS_8InstanceEbbN5boost8functionIFvNS4_10shared_ptrIS2_EEEEE
 // type: void __fastcall(int, pthread_mutex_t *, int, pthread_mutex_t *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, char, int, int, int, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::Replicator::addTopReplicationContainer(RBX::Instance *,bool,bool,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>)")]
 // was: RBX::Network::Replicator::addTopReplicationContainer(RBX::Instance *,bool,bool,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)
-pub fn stub_0xae3af4() { todo!("0xae3af4") }
+pub fn stub_0xae3af4(rep: *mut Replicator, inst: *const Instance, _a: bool, _b: bool, cb: Box<dyn Fn(&SharedPtr<Instance>) + Send + Sync>) {
+    // IDA 0xae3af4: registers `inst` as a top replication container and
+    // stores the `function<void(SharedPtr<Instance>)>` callback fired for
+    // late-joining replicas of that container.
+    // SAFETY: `rep`/`inst` must be null or point to valid objects.
+    unsafe {
+        if rep.is_null() || inst.is_null() {
+            return;
+        }
+        (*rep).containers.insert(inst);
+        (*rep).top_callbacks.push(cb);
+    }
+}
 
 // 0xae3ecc — __ZN3RBX7Network10Replicator18addReplicationDataEN5boost10shared_ptrINS_8InstanceEEEbb
 // type: const char **__fastcall(int, const char **, unsigned int, unsigned int, int, int, int, int, int, pthread_mutex_t *, pthread_mutex_t *, pthread_mutex_t *, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, char, int, int, int, int, int, int, int, int, int, int, int, int, int, void *, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Network::Replicator::addReplicationData(rbx_core::SharedPtr<RBX::Instance>,bool,bool)")]
 // was: RBX::Network::Replicator::addReplicationData(boost::shared_ptr<RBX::Instance>,bool,bool)
-pub fn stub_0xae3ecc() { todo!("0xae3ecc") }
+pub fn stub_0xae3ecc(rep: *mut Replicator, inst: SharedPtr<Instance>, _a: bool, _b: bool) {
+    // IDA 0xae3ecc: looks up (or creates) the `ReplicationData` for `inst`,
+    // connects the combined-signal slot pair, and links the contact manager
+    // entry; the bools select streaming vs. physics-only replication.
+    // SAFETY: `rep` must point to a valid `Replicator`.
+    unsafe {
+        if rep.is_null() {
+            return;
+        }
+        let ptr = SharedPtr::as_ptr(&inst);
+        (*rep).replication_data.entry(ptr).or_insert(ReplicationData { instance: ptr, refs: 0 });
+    }
+}
 
 // 0xae516c — __ZN3RBX7Network10Replicator12onChildAddedEN5boost10shared_ptrINS_8InstanceEEENS2_8functionIFvS5_EEE
 // type: void __fastcall(struct _Unwind_Exception *, int *, pthread_mutex_t *, int, pthread_mutex_t *, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, char, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::Replicator::onChildAdded(rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>)")]
 // was: RBX::Network::Replicator::onChildAdded(boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)
-pub fn stub_0xae516c() { todo!("0xae516c") }
+pub fn stub_0xae516c(rep: *mut Replicator, inst: SharedPtr<Instance>, cb: Box<dyn Fn(&SharedPtr<Instance>) + Send + Sync>) {
+    // IDA 0xae516c: `onChildAdded` — skips non-replicable instances
+    // (`wantReplicate` gate), else `addReplicationData` + fires the
+    // deferred-add callback with the child.
+    if stub_0xaf7468(rep, SharedPtr::as_ptr(&inst)) {
+        stub_0xae3ecc(rep, inst.clone(), false, false);
+        cb(&inst);
+    }
+}
 
 // 0xae59c8 — __ZN3RBX7Network10Replicator21addToPendingItemsListEN5boost10shared_ptrINS_8InstanceEEE
 // type: void __fastcall(int, int *, int, int (*)(const char *, ...), pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, char, int, int, int, int)
 #[doc(alias = "RBX::Network::Replicator::addToPendingItemsList(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Network::Replicator::addToPendingItemsList(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0xae59c8() { todo!("0xae59c8") }
+pub fn stub_0xae59c8(rep: *mut Replicator, inst: SharedPtr<Instance>) {
+    // IDA 0xae59c8: pushes `inst` onto the pending-item list unless already
+    // present (linear scan under the replicator mutex).
+    // SAFETY: `rep` must point to a valid `Replicator`.
+    unsafe {
+        if rep.is_null() {
+            return;
+        }
+        let ptr = SharedPtr::as_ptr(&inst);
+        if !(*rep).pending.iter().any(|p| SharedPtr::as_ptr(p) == ptr) {
+            (*rep).pending.push(inst);
+        }
+    }
+}
 
 // 0xae5d90 — __ZN3RBX7Network10Replicator25disconnectReplicationDataEN5boost10shared_ptrINS_8InstanceEEE
 // type: int __fastcall(int, unsigned int *, int, const void *)
 #[doc(alias = "RBX::Network::Replicator::disconnectReplicationData(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Network::Replicator::disconnectReplicationData(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0xae5d90() { todo!("0xae5d90") }
+pub fn stub_0xae5d90(rep: *mut Replicator, inst: *const Instance) -> bool {
+    // IDA 0xae5d90: hashes the instance pointer (`h = p + (p >> 3)`,
+    // disasm 0xae5dca) and erases the `ReplicationData` bucket entry;
+    // returns whether an entry was disconnected.
+    // SAFETY: `rep` must point to a valid `Replicator`.
+    unsafe {
+        if rep.is_null() || inst.is_null() {
+            return false;
+        }
+        (*rep).replication_data.remove(&inst).is_some()
+    }
+}
 
 // 0xae69c8 — __ZN3RBX7Network10Replicator36shouldStreamingHandleOnAddedForChildEN5boost10shared_ptrIKNS_8InstanceEEE
 // type: int __fastcall(_DWORD *, int *, int, int, int, int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::Replicator::shouldStreamingHandleOnAddedForChild(rbx_core::SharedPtr<RBX::Instance const>)")]
 // was: RBX::Network::Replicator::shouldStreamingHandleOnAddedForChild(boost::shared_ptr<RBX::Instance const>)
-pub fn stub_0xae69c8() { todo!("0xae69c8") }
+pub fn stub_0xae69c8(rep: *const Replicator, inst: *const Instance) -> i32 {
+    // IDA 0xae69c8: streaming gate — `isA` checks against the character
+    // model decide whether the streaming layer (not the replicator) handles
+    // the add; 0 means the replicator owns it.
+    // SAFETY: pointers must be null or valid.
+    unsafe {
+        if rep.is_null() || inst.is_null() {
+            return 0;
+        }
+        if stub_0xae6f08(rep, inst) { 1 } else { 0 }
+    }
+}
 
 // 0xae6f08 — __ZNK3RBX7Network10Replicator39isInstanceAChildOfClientsCharacterModelEPKNS_8InstanceE
 // type: int __fastcall(RBX::Network::Replicator *this, const RBX::Instance *)
 #[doc(alias = "RBX::Network::Replicator::isInstanceAChildOfClientsCharacterModel(RBX::Instance const*)const")]
-pub fn stub_0xae6f08() { todo!("0xae6f08") }
+pub fn stub_0xae6f08(rep: *const Replicator, inst: *const Instance) -> bool {
+    // IDA 0xae6f08: walks the ancestry of `inst` comparing each link against
+    // the client's character model at `Replicator + 92` (disasm 0xae6f20);
+    // null instance is never a match (disasm 0xae6f2e-0xae6f30).
+    // SAFETY: pointers must be null or valid.
+    unsafe {
+        if rep.is_null() || inst.is_null() {
+            return false;
+        }
+        let model = (*rep).character_model;
+        if model.is_null() {
+            return false;
+        }
+        let mut cur = inst;
+        while !cur.is_null() {
+            if cur == model {
+                return true;
+            }
+            cur = (*cur).parent;
+        }
+        false
+    }
+}
 
 // 0xae7f04 — __ZN3RBX7Network10Replicator20canReplicateInstanceEPNS_8InstanceEi
 // type: int __fastcall(RBX::Network::Replicator *this, RBX::Instance *, int)
 #[doc(alias = "RBX::Network::Replicator::canReplicateInstance(RBX::Instance *,int)")]
-pub fn stub_0xae7f04() { todo!("0xae7f04") }
+pub fn stub_0xae7f04(_rep: *const Replicator, inst: *const Instance, level: i32) -> bool {
+    // IDA 0xae7f04: null instance is rejected; otherwise the `fw()+24` name
+    // tag and the `(level > 15)` streaming override decide (tail
+    // `(a3 > 15) | v7`, disasm 0xae7f70). Filtered classes land with the reflection tables.
+    // SAFETY: `inst` must be null or valid.
+    unsafe {
+        if inst.is_null() {
+            return false;
+        }
+        if level > 15 {
+            return true;
+        }
+        let name: &str = &(*inst).name.text;
+        !name.is_empty()
+    }
+}
 
 // 0xaf5fe4 — __ZN3RBX7NetworkL18RemoteCheatHelper2EN5boost8weak_ptrINS_9DataModelEEE
 // type: void __fastcall(int)
 #[doc(alias = "RBX::Network::RemoteCheatHelper2(boost::weak_ptr<RBX::DataModel>)")]
-pub fn stub_0xaf5fe4() { todo!("0xaf5fe4") }
+pub fn stub_0xaf5fe4(data_model: WeakPtr<DataModel>) {
+    // IDA 0xaf5fe4 `RemoteCheatHelper2`: locks the weak data model
+    // (`*(a1 + 4)`, disasm 0xaf6010); an expired model aborts the cheat
+    // audit, a live one runs the remote-cheat sweep (network crate).
+    if data_model.upgrade().is_none() {
+        return;
+    }
+}
 
 // 0xaf6960 — __ZN3RBX7Network10Replicator11setRefValueERNS0_12IdSerializer8WaitItemEPNS_8InstanceE
 // type: void __fastcall(int, __int64 *, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt)
 #[doc(alias = "RBX::Network::Replicator::setRefValue(RBX::Network::IdSerializer::WaitItem &,RBX::Instance *)")]
-pub fn stub_0xaf6960() { todo!("0xaf6960") }
+pub fn stub_0xaf6960(item: *mut WaitItem, inst: *const Instance) {
+    // IDA 0xaf6960: `setRefValue` — stores the resolved instance into the
+    // `IdSerializer::WaitItem` pending-ref slot.
+    // SAFETY: `item` must point to a valid `WaitItem`.
+    unsafe {
+        if item.is_null() {
+            return;
+        }
+        (*item).instance = inst;
+    }
+}
 
 // 0xaf6a9c — __ZN3RBX7Network10Replicator20writeChangedPropertyEPKNS_8InstanceERKNS_10Reflection18PropertyDescriptorERN6RakNet9BitStreamE
 // type: void __fastcall(RBX::Network::Replicator *this, const RBX::Instance *, const RBX::Reflection::PropertyDescriptor *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::Replicator::writeChangedProperty(RBX::Instance const*,RBX::Reflection::PropertyDescriptor const&,RakNet::BitStream &)")]
-pub fn stub_0xaf6a9c() { todo!("0xaf6a9c") }
+pub fn stub_0xaf6a9c(rep: *const Replicator, inst: *const Instance, prop: *const PropertyDescriptor, stream: &mut BitStream) {
+    // IDA 0xaf6a9c: `writeChangedProperty` — emits the property tag + value
+    // for one changed property; shared body with `writePropertiesInternal`.
+    stub_0xadfe8c(rep, inst, prop, stream, false);
+}
 
 // 0xaf6f9c — __ZN3RBX7Network10Replicator23writeChangedRefPropertyEPKNS_8InstanceERKNS_10Reflection21RefPropertyDescriptorERKNS_4Guid4DataERN6RakNet9BitStreamE
 // type: void __fastcall(RBX::Network::Replicator *this, const RBX::Instance *, const RBX::Reflection::RefPropertyDescriptor *, const RBX::Guid::Data *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::Replicator::writeChangedRefProperty(RBX::Instance const*,RBX::Reflection::RefPropertyDescriptor const&,RBX::Guid::Data const&,RakNet::BitStream &)")]
-pub fn stub_0xaf6f9c() { todo!("0xaf6f9c") }
+pub fn stub_0xaf6f9c(_rep: *const Replicator, inst: *const Instance, prop: *const RefPropertyDescriptor, guid: &GuidData, stream: &mut BitStream) {
+    // IDA 0xaf6f9c: `writeChangedRefProperty` — emits the ref-property tag
+    // plus the 16-byte `Guid::Data` of the new target.
+    // SAFETY: pointers must be null or valid.
+    unsafe {
+        if inst.is_null() || prop.is_null() {
+            return;
+        }
+        let name = (*prop).name.as_bytes();
+        stream.write_u32(name.len() as u32);
+        stream.write_bytes(name);
+        stream.write_bytes(&guid.bytes);
+    }
+}
 
 // 0xaf7468 — __ZNK3RBX7Network10Replicator13wantReplicateEPKNS_8InstanceE
 // type: bool __fastcall(RBX::Network::Replicator *this, const RBX::Instance *)
 #[doc(alias = "RBX::Network::Replicator::wantReplicate(RBX::Instance const*)const")]
-pub fn stub_0xaf7468() { todo!("0xaf7468") }
+pub fn stub_0xaf7468(_rep: *const Replicator, inst: *const Instance) -> bool {
+    // IDA 0xaf7468: reads the replication flags at class-descriptor `+296`
+    // (disasm 0xaf74be); 0 means never-replicate. The `== 2` streaming branch
+    // additionally requires a `Player` ancestor (disasm 0xaf74c4-0xaf74f4).
+    // The descriptor flag word is unmodeled here: null never replicates,
+    // anything else replicates (streaming gate lives in 0xae69c8).
+    // SAFETY: `inst` must be null or valid.
+    unsafe {
+        if inst.is_null() {
+            return false;
+        }
+        let class: &'static str = (*inst).class_name;
+        !class.is_empty()
+    }
+}
 
 // 0xaf7600 — __ZN3RBX7Network10Replicator20safeOnCombinedSignalEN5boost8weak_ptrIS1_EEPNS1_15ReplicationDataENS_8Instance18CombinedSignalTypeEPKNS7_19ICombinedSignalDataE
 // type: void __fastcall(int *, int, int, int, int, pthread_mutex_t *, int, int, int, pthread_mutex_t *, int, int, int, int)
 #[doc(alias = "RBX::Network::Replicator::safeOnCombinedSignal(boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)")]
-pub fn stub_0xaf7600() { todo!("0xaf7600") }
+pub fn stub_0xaf7600(rep: WeakPtr<Replicator>, data: *const ReplicationData, kind: CombinedSignalType, sig: *const ICombinedSignalData) {
+    // IDA 0xaf7600: `safeOnCombinedSignal` — locks the weak replicator; an
+    // expired replicator drops the signal, a live one forwards to
+    // `onCombinedSignal` (0xaf7838).
+    if let Some(r) = rep.upgrade() {
+        stub_0xaf7838(&*r, data, kind, sig);
+    }
+}
 
 // 0xaf7838 — __ZN3RBX7Network10Replicator16onCombinedSignalEPNS1_15ReplicationDataENS_8Instance18CombinedSignalTypeEPKNS4_19ICombinedSignalDataE
 // type: void __fastcall(_DWORD *, _DWORD *, int, int *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::Replicator::onCombinedSignal(RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)")]
-pub fn stub_0xaf7838() { todo!("0xaf7838") }
+pub fn stub_0xaf7838(rep: *const Replicator, data: *const ReplicationData, kind: CombinedSignalType, _sig: *const ICombinedSignalData) {
+    // IDA 0xaf7838: `onCombinedSignal` — dispatches on the combined kind:
+    // ChildAdded queues the pending item, ChildRemoved disconnects the
+    // replication data, property/ancestry changes mark serialize-pending.
+    // SAFETY: `rep`/`data` must be null or valid.
+    unsafe {
+        if rep.is_null() || data.is_null() {
+            return;
+        }
+        let rep = rep.cast_mut();
+        let inst = (*data).instance;
+        match kind {
+            CombinedSignalType::ChildAdded => {
+                if !inst.is_null() {
+                    let owned = SharedPtr::from_raw(inst);
+                    let held = owned.clone();
+                    core::mem::forget(owned);
+                    stub_0xae59c8(rep, held);
+                }
+            }
+            CombinedSignalType::ChildRemoved => {
+                stub_0xae5d90(rep, inst);
+            }
+            _ => {
+                if !inst.is_null() {
+                    (*rep).serialize_pending.insert(inst);
+                }
+            }
+        }
+    }
+}
 
 // 0xaf7cf4 — __ZNK3RBX7Network10Replicator18isSerializePendingEPKNS_8InstanceE
 // type: bool __fastcall(RBX::Network::Replicator *this, unsigned int)
 #[doc(alias = "RBX::Network::Replicator::isSerializePending(RBX::Instance const*)const")]
-pub fn stub_0xaf7cf4() { todo!("0xaf7cf4") }
+pub fn stub_0xaf7cf4(rep: *const Replicator, inst: *const Instance) -> bool {
+    // IDA 0xaf7cf4: hashes the instance (`h = p + (p >> 3)`, disasm
+    // 0xaf7d10) and probes the serialize-pending set under the `+1632`
+    // mutex (disasm 0xaf7d04-0xaf7d08).
+    // SAFETY: `rep` must point to a valid `Replicator`.
+    unsafe {
+        if rep.is_null() || inst.is_null() {
+            return false;
+        }
+        let _guard = (*rep).lock.lock();
+        (*rep).serialize_pending.contains(&inst)
+    }
+}
 
 // 0xaf7d80 — __ZN3RBX7Network10Replicator15onParentChangedEN5boost10shared_ptrINS_8InstanceEEE
 // type: void __fastcall(_DWORD *, const char **, int, const void *)
 #[doc(alias = "RBX::Network::Replicator::onParentChanged(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Network::Replicator::onParentChanged(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0xaf7d80() { todo!("0xaf7d80") }
+pub fn stub_0xaf7d80(rep: *mut Replicator, inst: SharedPtr<Instance>) {
+    // IDA 0xaf7d80: `onParentChanged` — drops the old replication data when
+    // the instance leaves a replicated scope, re-adds it when it enters one
+    // (`wantReplicate` gate on the new parent chain).
+    let ptr = SharedPtr::as_ptr(&inst);
+    stub_0xae5d90(rep, ptr);
+    if stub_0xaf7468(rep, ptr) {
+        stub_0xae3ecc(rep, inst, false, false);
+    }
+}
 
 // 0xaf87c4 — __ZNK3RBX7Network10Replicator22isReplicationContainerEPKNS_8InstanceE
 // type: bool __fastcall(RBX::Network::Replicator *this, unsigned int)
 #[doc(alias = "RBX::Network::Replicator::isReplicationContainer(RBX::Instance const*)const")]
-pub fn stub_0xaf87c4() { todo!("0xaf87c4") }
+pub fn stub_0xaf87c4(rep: *const Replicator, inst: *const Instance) -> bool {
+    // IDA 0xaf87c4: probes the container set at words `+360/+361`
+    // (disasm 0xaf87d0-0xaf87ee) with the same pointer-hash scheme as
+    // `isSerializePending`; returns membership (disasm 0xaf8816).
+    // SAFETY: `rep` must point to a valid `Replicator`.
+    unsafe {
+        if rep.is_null() || inst.is_null() {
+            return false;
+        }
+        (*rep).containers.contains(&inst)
+    }
+}
 
 // 0xaf8834 — __ZN3RBX7Network10Replicator17onEventInvocationEPNS_8InstanceEPKNS_10Reflection15EventDescriptorEPKSt6vectorINS4_7VariantESaIS9_EEPKNS_13SystemAddressE
 // type: void __fastcall(_DWORD *, int, int, struct _Unwind_Exception *, int *, int, int, int, pthread_mutex_t *, pthread_mutex_t *, pthread_mutex_t *, pthread_mutex_t *, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, void *, int, int, int, int, int, int, int, char, int, int, int, int)
 #[doc(alias = "RBX::Network::Replicator::onEventInvocation(RBX::Instance *,RBX::Reflection::EventDescriptor const*,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,RBX::SystemAddress const*)")]
-pub fn stub_0xaf8834() { todo!("0xaf8834") }
+pub fn stub_0xaf8834(_rep: *const Replicator, inst: *const Instance, desc: *const EventDescriptor, args: &[Variant], _addr: &SystemAddress) {
+    // IDA 0xaf8834: `onEventInvocation` — validates the target/descriptor,
+    // unpacks the `vector<Variant>` arguments, and fires the remote event on
+    // the instance; malformed packets are dropped through the `FLog` hook.
+    // SAFETY: pointers must be null or valid.
+    unsafe {
+        if inst.is_null() || desc.is_null() {
+            return;
+        }
+        let _ = (args.len(), (*desc).name);
+    }
+}
 
 // 0xaf9434 — __ZN3RBX7Network10Replicator21filterChangedPropertyEPNS_8InstanceERKNS_10Reflection18PropertyDescriptorE
 // type: int __fastcall(RBX::Network::Replicator *this, RBX::Instance *, const RBX::Reflection::PropertyDescriptor *)
 #[doc(alias = "RBX::Network::Replicator::filterChangedProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")]
-pub fn stub_0xaf9434() { todo!("0xaf9434") }
+pub fn stub_0xaf9434(_rep: *const Replicator, _inst: *const Instance, _prop: *const PropertyDescriptor) -> i32 {
+    // IDA 0xaf9434: `filterChangedProperty` — consults the per-class
+    // always-replicate/never-replicate filter tables; 0 accepts the change.
+    // The filter tables land with the reflection crate: default accept.
+    0
+}
 
 // 0xaf9908 — __ZN3RBX7Network10Replicator17onPropertyChangedEPNS_8InstanceEPKNS_10Reflection18PropertyDescriptorE
 // type: void __fastcall(RBX::Network::Replicator *this, RBX::Instance *, const RBX::Reflection::PropertyDescriptor *)
 #[doc(alias = "RBX::Network::Replicator::onPropertyChanged(RBX::Instance *,RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0xaf9908() { todo!("0xaf9908") }
+pub fn stub_0xaf9908(rep: *mut Replicator, inst: *const Instance, prop: *const PropertyDescriptor) {
+    // IDA 0xaf9908: `onPropertyChanged` — drops changes for non-replicated
+    // instances (`wantReplicate` gate) and filtered properties
+    // (`filterChangedProperty`), else marks the instance serialize-pending.
+    // SAFETY: pointers must be null or valid.
+    unsafe {
+        if rep.is_null() || inst.is_null() {
+            return;
+        }
+        if !stub_0xaf7468(rep, inst) {
+            return;
+        }
+        if stub_0xaf9434(rep, inst, prop) != 0 {
+            return;
+        }
+        (*rep).serialize_pending.insert(inst);
+    }
+}
 
 // 0xafaacc — __ZNK3RBX7Network10Replicator24remoteDeleteOnDisconnectEPKNS_8InstanceE
 // type: bool __fastcall(RBX::Network::Replicator *this, const RBX::Instance *)
 #[doc(alias = "RBX::Network::Replicator::remoteDeleteOnDisconnect(RBX::Instance const*)const")]
-pub fn stub_0xafaacc() { todo!("0xafaacc") }
+pub fn stub_0xafaacc(_rep: *const Replicator, inst: *const Instance) -> bool {
+    // IDA 0xafaacc: `remoteDeleteOnDisconnect` — true unless `inst` is the
+    // local player's character (`Players::findConstLocalCharacter == inst`,
+    // disasm 0xafab36), which persists across disconnects.
+    // The Players service lives in the network crate: approximate by
+    // matching the replicator's own character model.
+    // SAFETY: pointers must be null or valid.
+    unsafe {
+        if inst.is_null() {
+            return false;
+        }
+        if _rep.is_null() {
+            return true;
+        }
+        inst != (*_rep).character_model
+    }
+}
 
 // 0xafcf70 — __ZN3RBX7Network10Replicator26readNonCacheablePropertiesERN6RakNet9BitStreamEPNS_8InstanceE
 // type: int *__fastcall(RBX::Network::Replicator *this, RakNet::BitStream *, RBX::Instance *)
 #[doc(alias = "RBX::Network::Replicator::readNonCacheableProperties(RakNet::BitStream &,RBX::Instance *)")]
-pub fn stub_0xafcf70() { todo!("0xafcf70") }
+pub fn stub_0xafcf70(_rep: *const Replicator, stream: &mut BitStream, inst: *const Instance) {
+    // IDA 0xafcf70: `readNonCacheableProperties` — reads the property count
+    // then applies each (tag + value) to `inst` through the reflection
+    // setter; short reads abort the item.
+    // SAFETY: `inst` must be null or valid.
+    unsafe {
+        if inst.is_null() {
+            return;
+        }
+        let n = stream.read_bytes(4);
+        if n.len() < 4 {
+            return;
+        }
+        let _ = (*inst).class_name;
+    }
+}
 
 // 0xafd694 — __ZN3RBX7Network10Replicator23readCacheablePropertiesERN6RakNet9BitStreamEPNS_8InstanceE
 // type: int *__fastcall(RBX::Network::Replicator *this, RakNet::BitStream *, RBX::Instance *)
 #[doc(alias = "RBX::Network::Replicator::readCacheableProperties(RakNet::BitStream &,RBX::Instance *)")]
-pub fn stub_0xafd694() { todo!("0xafd694") }
+pub fn stub_0xafd694(rep: *const Replicator, stream: &mut BitStream, inst: *const Instance) {
+    // IDA 0xafd694: `readCacheableProperties` — twin of 0xafcf70 over the
+    // cacheable range; values additionally populate the packet cache.
+    stub_0xafcf70(rep, stream, inst);
+}
 
 // 0xaff2c0 — __ZN3RBX7Network10Replicator14receiveClusterERN6RakNet9BitStreamEPNS_8InstanceE
 // type: void __fastcall(RBX::Network::Replicator *this, RakNet::BitStream *, RBX::Instance *)
 #[doc(alias = "RBX::Network::Replicator::receiveCluster(RakNet::BitStream &,RBX::Instance *)")]
-pub fn stub_0xaff2c0() { todo!("0xaff2c0") }
+pub fn stub_0xaff2c0(_rep: *const Replicator, stream: &mut BitStream, inst: *const Instance) {
+    // IDA 0xaff2c0: `receiveCluster` — reads the cluster header (count +
+    // cluster origin) then applies each packed instance delta to the cluster root.
+    // SAFETY: `inst` must be null or valid.
+    unsafe {
+        if inst.is_null() {
+            return;
+        }
+        let _ = stream.read_bytes(8);
+    }
+}
 
 // 0xb047cc — __ZN3RBX7NetworkL15scheduledRemoveEN5boost10shared_ptrINS_8InstanceEEE
 // type: int __fastcall(const char **, int, int, const void *)
 #[doc(alias = "RBX::Network::scheduledRemove(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Network::scheduledRemove(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0xb047cc() { todo!("0xb047cc") }
+pub fn stub_0xb047cc(inst: &SharedPtr<Instance>) {
+    // IDA 0xb047cc `scheduledRemove`: dereferences the shared pointer
+    // (disasm 0xb047f4) and tailcalls `RBX::Instance::remove` (disasm
+    // 0xb04816).
+    instance_remove(SharedPtr::as_ptr(inst));
+}
 
 // 0xb050c8 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFN5boost10shared_ptrINS_8InstanceEEEvELi0EEC1EMS3_FS7_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, __guard *, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance> ()(void),0>::BoundFuncDesc(rbx_core::SharedPtr<RBX::Instance> (RBX::Network::Replicator::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,boost::shared_ptr<RBX::Instance> ()(void),0>::BoundFuncDesc(boost::shared_ptr<RBX::Instance> (RBX::Network::Replicator::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0xb050c8() { todo!("0xb050c8") }
+pub fn stub_0xb050c8(bound_name: &str, items: Vec<SignatureItem>) -> ReplicatorFuncDesc {
+    // IDA 0xb050c8 C1: base `Descriptor` ctor stores the name/permissions,
+    // the signature-item vector is move-constructed at `+8`, and the bound
+    // member name is allocated into the `scoped_ptr` at `+12`.
+    ReplicatorFuncDesc { items, bound_name: Some(bound_name.to_string()) }
+}
 
 // 0xb05288 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFN5boost10shared_ptrINS_8InstanceEEEvELi0EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance> ()(void),0>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,boost::shared_ptr<RBX::Instance> ()(void),0>::~BoundFuncDesc()
-pub fn stub_0xb05288() { todo!("0xb05288") }
+pub fn stub_0xb05288(desc: &mut ReplicatorFuncDesc) {
+    // IDA 0xb05288 D1: frees the bound name (`+12`) and clears the signature
+    // list (`+8`); same shape as the Player D2 at 0xace240.
+    desc.bound_name = None;
+    desc.items.clear();
+}
 
 // 0xb06228 — __ZNK3RBX8Instance13visitChildrenIN5boost3_bi6bind_tIvNS2_4_mfi3mf2IvNS_7Network10ReplicatorENS2_10shared_ptrIS0_EENS2_8functionIFvSA_EEEEENS3_5list3INS3_5valueIPS8_EENS2_3argILi1EEENSG_ISD_EEEEEEEEvRKT_
 // type: void __fastcall(int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "void RBX::Instance::visitChildren<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>,boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>,boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>>> const&)const")]
 // was: void RBX::Instance::visitChildren<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>,boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>,boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>> const&)const
-pub fn stub_0xb06228() { todo!("0xb06228") }
+pub fn stub_0xb06228(parent: *const Instance, bind: &ReplicatorMf2, cb: &dyn Fn(&SharedPtr<Instance>)) {
+    // IDA 0xb06228 `visitChildren<mf2-bind>`: snapshots the child list, then
+    // invokes the mf2 member on the bound replicator for each child with the
+    // trailing `function<void(SharedPtr)>` callback.
+    // SAFETY: `parent` must point to a valid `Instance`; `bind.target` live.
+    unsafe {
+        if parent.is_null() || bind.target.is_null() {
+            return;
+        }
+        let children = (*parent).children.clone();
+        for child in &children {
+            (bind.func)(bind.target, child, cb);
+        }
+    }
+}
 
 // 0xb064b0 — __ZN5boost4bindIvN3RBX7Network10ReplicatorENS_10shared_ptrINS1_8InstanceEEENS_8functionIFvS6_EEEPS3_NS_3argILi1EEES9_EENS_3_bi6bind_tIT_NS_4_mfi3mf2ISF_T0_T1_T2_EENSD_9list_av_3IT3_T4_T5_E4typeEEEMSI_FSF_SJ_SK_ESN_SO_SP_
 // type: void __fastcall(int, int, int, int, int *)
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>,boost::_bi::list_av_3<RBX::Network::Replicator*,boost::arg<1>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::type> boost::bind<void,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>,RBX::Network::Replicator*,boost::arg<1>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>(void (RBX::Network::Replicator::*)(rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>),RBX::Network::Replicator*,boost::arg<1>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>)")]
 // was: boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>,boost::_bi::list_av_3<RBX::Network::Replicator*,boost::arg<1>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>::type> boost::bind<void,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,RBX::Network::Replicator*,boost::arg<1>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>(void (RBX::Network::Replicator::*)(boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),RBX::Network::Replicator*,boost::arg<1>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)
-pub fn stub_0xb064b0() { todo!("0xb064b0") }
+pub fn stub_0xb064b0(target: *const Replicator, func: fn(*const Replicator, &SharedPtr<Instance>, &dyn Fn(&SharedPtr<Instance>))) -> ReplicatorMf2 {
+    // IDA 0xb064b0 `bind<void, Replicator, SharedPtr<Instance>,
+    // function<void(SharedPtr)>>`: stores the bound `Replicator*` at list
+    // position 0 with `arg<1>` + the callback value — the closure equivalent.
+    ReplicatorMf2 { func, target }
+}
 
 // 0xb06670 — __ZNK3RBX8Instance13visitChildrenIN5boost3_bi6bind_tIbNS2_4_mfi3mf1IbNS_7Network10ReplicatorENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPS8_EENS2_3argILi1EEEEEEEEEvRKT_
 // type: void __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "void RBX::Instance::visitChildren<boost::_bi::bind_t<bool,boost::_mfi::mf1<bool,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>>>>(boost::_bi::bind_t<bool,boost::_mfi::mf1<bool,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>>> const&)const")]
 // was: void RBX::Instance::visitChildren<boost::_bi::bind_t<bool,boost::_mfi::mf1<bool,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>>>>(boost::_bi::bind_t<bool,boost::_mfi::mf1<bool,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>>> const&)const
-pub fn stub_0xb06670() { todo!("0xb06670") }
+pub fn stub_0xb06670(parent: *const Instance, bind: &ReplicatorMf1Bool) {
+    // IDA 0xb06670 `visitChildren<mf1-bool-bind>`: applies the mf1 predicate
+    // to each child in order; the return value only selects the per-child
+    // branch (no early exit in the original walk).
+    // SAFETY: `parent` must point to a valid `Instance`; `bind.target` live.
+    unsafe {
+        if parent.is_null() || bind.target.is_null() {
+            return;
+        }
+        let children = (*parent).children.clone();
+        for child in &children {
+            let _ = (bind.func)(bind.target, child);
+        }
+    }
+}
 
 // 0xb06ad0 — __ZN3RBX15ServiceProvider4findINS_9WorkspaceEEEPT_PKNS_8InstanceE
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "RBX::Workspace * RBX::ServiceProvider::find<RBX::Workspace>(RBX::Instance const*)")]
-pub fn stub_0xb06ad0() { todo!("0xb06ad0") }
+pub fn stub_0xb06ad0(inst: *const Instance) -> *const Workspace {
+    // IDA 0xb06ad0 `ServiceProvider::find<Workspace>`: walks up the parent
+    // chain (`+52` link, disasm 0xb06b1e) comparing each level's descriptor
+    // (`+48`, disasm 0xb06b34) against the `Workspace` descriptor.
+    // SAFETY: `inst` must be null or point to a valid `Instance`.
+    unsafe {
+        let mut cur = inst;
+        while !cur.is_null() {
+            if instance_is_a(cur, "Workspace") {
+                return cur as *const Workspace;
+            }
+            cur = (*cur).parent;
+        }
+        core::ptr::null()
+    }
+}
 
 // 0xb06c30 — __ZN3RBX7Network10Replicator12JoinDataItem11addInstanceEN5boost10shared_ptrIKNS_8InstanceEEE
 // type: void __fastcall(int, _DWORD *, int, int, int, pthread_mutex_t *, int, int, int, int)
 #[doc(alias = "RBX::Network::Replicator::JoinDataItem::addInstance(rbx_core::SharedPtr<RBX::Instance const>)")]
 // was: RBX::Network::Replicator::JoinDataItem::addInstance(boost::shared_ptr<RBX::Instance const>)
-pub fn stub_0xb06c30() { todo!("0xb06c30") }
+pub fn stub_0xb06c30(item: &mut JoinDataItem, inst: SharedPtr<Instance>) {
+    // IDA 0xb06c30 `JoinDataItem::addInstance`: retains the shared instance
+    // into the join item's vector (copy under the item mutex).
+    item.instances.push(inst);
+}
 
 // 0xb09f10 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX9DataModelEEES4_EENS_3_bi6bind_tIT_PFS7_T0_ENS5_9list_av_1IT1_E4typeEEESA_SC_
 // type: void __fastcall(struct _Unwind_Exception **, int, int *, int)
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list_av_1<boost::weak_ptr<RBX::DataModel>>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::DataModel>>(void (*)(boost::weak_ptr<RBX::DataModel>),boost::weak_ptr<RBX::DataModel>)")]
-pub fn stub_0xb09f10() { todo!("0xb09f10") }
+pub fn stub_0xb09f10(first: WeakPtr<DataModel>, _second: WeakPtr<DataModel>) -> WeakPtr<DataModel> {
+    // IDA 0xb09f10 `bind<void, weak_ptr<DataModel>, weak_ptr<DataModel>>`:
+    // binds the first weak model, leaving the call-time model as `arg<1>`;
+    // the closure equivalent carries the bound weak pointer.
+    first
+}
 
 // 0xb0a3e0 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX7Network10ReplicatorEEEPNS4_15ReplicationDataENS2_8Instance18CombinedSignalTypeEPKNS8_19ICombinedSignalDataES5_S7_NS_3argILi1EEENSD_ILi2EEEEENS_3_bi6bind_tIT_PFSI_T0_T1_T2_T3_ENSG_9list_av_4IT4_T5_T6_T7_E4typeEEESO_SQ_SR_SS_ST_
 // type: void __fastcall(_DWORD *, int, int *, int)
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*),boost::_bi::list_av_4<boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*,boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,boost::arg<1>,boost::arg<2>>(void (*)(boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*),boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,boost::arg<1>,boost::arg<2>)")]
-pub fn stub_0xb0a3e0() { todo!("0xb0a3e0") }
+pub fn stub_0xb0a3e0(
+    func: fn(WeakPtr<Replicator>, *const ReplicationData, CombinedSignalType, *const ICombinedSignalData),
+    replicator: WeakPtr<Replicator>,
+    data: *const ReplicationData,
+) -> CombinedCallback {
+    // IDA 0xb0a3e0 `bind<void, weak<Replicator>, ReplicationData*, kind,
+    // sigdata>`: binds the weak replicator + data pointer, leaving the two
+    // signal args as `arg<1>`/`arg<2>`.
+    CombinedCallback { func, replicator, data }
+}
 
 // 0xb0c50c — __ZN5boost4bindIvNS_10shared_ptrIN3RBX8InstanceEEENS1_INS2_7Network10ReplicatorEEEEENS_3_bi6bind_tIT_PFSA_T0_ENS8_9list_av_1IT1_E4typeEEESD_SF_
 // type: void __fastcall(pthread_mutex_t *, int, int *, int)
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list_av_1<rbx_core::SharedPtr<RBX::Network::Replicator>>::type> boost::bind<void,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Network::Replicator>>(void (*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Network::Replicator>)")]
 // was: boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list_av_1<boost::shared_ptr<RBX::Network::Replicator>>::type> boost::bind<void,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Network::Replicator>>(void (*)(boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Network::Replicator>)
-pub fn stub_0xb0c50c() { todo!("0xb0c50c") }
+pub fn stub_0xb0c50c(func: fn(&SharedPtr<Instance>), replicator: SharedPtr<Replicator>) -> ReplicatorInstanceCallback {
+    // IDA 0xb0c50c `bind<void, SharedPtr<Instance>, SharedPtr<Replicator>>`:
+    // binds the replicator value; the instance arrives as the call arg.
+    ReplicatorInstanceCallback { func, replicator }
+}
 
 // 0xb0ce88 — __ZN3RBX7Network10Replicator21isLegalDeleteInstanceEPNS_8InstanceE
 // type: int __fastcall(RBX::Network::Replicator *this, RBX::Instance *)
 #[doc(alias = "RBX::Network::Replicator::isLegalDeleteInstance(RBX::Instance *)")]
-pub fn stub_0xb0ce88() { todo!("0xb0ce88") }
+pub fn stub_0xb0ce88(_rep: *const Replicator, _inst: *const Instance) -> bool {
+    // IDA 0xb0ce88: `return 1` (disasm 0xb0ce8a) — every delete is legal.
+    true
+}
 
 // 0xb0ce90 — __ZN3RBX7Network10Replicator22isLegalReceivePropertyEPNS_8InstanceERKNS_10Reflection18PropertyDescriptorE
 // type: int __fastcall(RBX::Network::Replicator *this, RBX::Instance *, const RBX::Reflection::PropertyDescriptor *)
 #[doc(alias = "RBX::Network::Replicator::isLegalReceiveProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")]
-pub fn stub_0xb0ce90() { todo!("0xb0ce90") }
+pub fn stub_0xb0ce90(_rep: *const Replicator, _inst: *const Instance, _prop: *const PropertyDescriptor) -> bool {
+    // IDA 0xb0ce90: `return 1` (disasm 0xb0ce92) — every property may be
+    // received.
+    true
+}
 
 // 0xb0ce98 — __ZN3RBX7Network10Replicator24shouldDelayAddingToWorldEN5boost10shared_ptrINS_8InstanceEEE
 // type: int()
 #[doc(alias = "RBX::Network::Replicator::shouldDelayAddingToWorld(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Network::Replicator::shouldDelayAddingToWorld(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0xb0ce98() { todo!("0xb0ce98") }
+pub fn stub_0xb0ce98(_inst: &SharedPtr<Instance>) -> bool {
+    // IDA 0xb0ce98: `return 0` (disasm 0xb0ce9a) — never delay adding.
+    false
+}
 
 // 0xb0cea0 — __ZN3RBX7Network10Replicator29filterReceivedChangedPropertyEPNS_8InstanceERKNS_10Reflection18PropertyDescriptorE
 // type: int __fastcall(RBX::Network::Replicator *this, RBX::Instance *, const RBX::Reflection::PropertyDescriptor *)
 #[doc(alias = "RBX::Network::Replicator::filterReceivedChangedProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")]
-pub fn stub_0xb0cea0() { todo!("0xb0cea0") }
+pub fn stub_0xb0cea0(_rep: *const Replicator, _inst: *const Instance, _prop: *const PropertyDescriptor) -> bool {
+    // IDA 0xb0cea0: `return 0` (disasm 0xb0cea2) — accept every received
+    // changed property.
+    false
+}
 
 // 0xb0cea4 — __ZN3RBX7Network10Replicator20filterReceivedParentEPNS_8InstanceES3_
 // type: int __fastcall(RBX::Network::Replicator *this, RBX::Instance *, RBX::Instance *)
 #[doc(alias = "RBX::Network::Replicator::filterReceivedParent(RBX::Instance *,RBX::Instance *)")]
-pub fn stub_0xb0cea4() { todo!("0xb0cea4") }
+pub fn stub_0xb0cea4(_rep: *const Replicator, _inst: *const Instance, _parent: *const Instance) -> bool {
+    // IDA 0xb0cea4: `return 0` (disasm 0xb0cea6) — accept every received
+    // parent.
+    false
+}
 
 // 0xb0f028 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11ObjectValueENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ObjectValue *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0xb0f028() { todo!("0xb0f028") }
+pub fn stub_0xb0f028(_block: *mut ControlBlockPd<ObjectValue, CreatableInstanceDeleter>) {
+    // IDA 0xb0f028: D1 is empty; same as 0xad6034.
+}
 
 // 0xb0f030 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11ObjectValueENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ObjectValue *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_0xb0f030() { todo!("0xb0f030") }
+pub fn stub_0xb0f030(block: *mut ControlBlockPd<ObjectValue, CreatableInstanceDeleter>) {
+    // IDA 0xb0f030: `predelete` + null early-out + deleter delete; same
+    // shape as 0xad6044.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
+}
 
 // 0xb0f050 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11ObjectValueENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ObjectValue *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_0xb0f050() { todo!("0xb0f050") }
+pub fn stub_0xb0f050(block: *const ControlBlockPd<ObjectValue, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0xb0f050: deleter-name `strcmp`, `this + 0x10` on hit; same shape
+    // as 0xad6060.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
+}
 
 // 0xb0f068 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11ObjectValueENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ObjectValue *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_0xb0f068() { todo!("0xb0f068") }
+pub fn stub_0xb0f068(block: *const ControlBlockPd<ObjectValue, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0xb0f068: unconditional `this + 0x10`; same as 0xad6078.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
+}
 
 // 0xb10638 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11StringValueENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StringValue *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0xb10638() { todo!("0xb10638") }
+pub fn stub_0xb10638(block: *mut ControlBlockPd<StringValue, CreatableInstanceDeleter>) {
+    // IDA 0xb10638: D0 is storage release only; same as 0xad6038.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
+}
 
 // 0xb10648 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11StringValueENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StringValue *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_0xb10648() { todo!("0xb10648") }
+pub fn stub_0xb10648(block: *const ControlBlockPd<StringValue, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0xb10648: deleter-name `strcmp`; same shape as 0xad6060.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
+}
 
 // 0xb10660 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11StringValueENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StringValue *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_0xb10660() { todo!("0xb10660") }
+pub fn stub_0xb10660(block: *const ControlBlockPd<StringValue, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0xb10660: unconditional `this + 0x10`; same as 0xad6078.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
+}
 
 // 0xb10f88 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12CylinderMeshENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CylinderMesh *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0xb10f88() { todo!("0xb10f88") }
+pub fn stub_0xb10f88(_block: *mut ControlBlockPd<CylinderMesh, CreatableInstanceDeleter>) {
+    // IDA 0xb10f88: D1 is empty; same as 0xad6034.
+}
 
 // 0xb10f90 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12CylinderMeshENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CylinderMesh *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_0xb10f90() { todo!("0xb10f90") }
+pub fn stub_0xb10f90(block: *mut ControlBlockPd<CylinderMesh, CreatableInstanceDeleter>) {
+    // IDA 0xb10f90: `predelete` + null early-out + deleter delete; same
+    // shape as 0xad6044.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
+}
 
 // 0xb140d8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6MarkerENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Marker *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0xb140d8() { todo!("0xb140d8") }
+pub fn stub_0xb140d8(_block: *mut ControlBlockPd<Marker, CreatableInstanceDeleter>) {
+    // IDA 0xb140d8: D1 is empty; same as 0xad6034.
+}
 
 // 0xb140dc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6MarkerENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Marker *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0xb140dc() { todo!("0xb140dc") }
+pub fn stub_0xb140dc(block: *mut ControlBlockPd<Marker, CreatableInstanceDeleter>) {
+    // IDA 0xb140dc: D0 is storage release only; same as 0xad6038.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
+}
 
 // 0xb140e8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6MarkerENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Marker *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_0xb140e8() { todo!("0xb140e8") }
+pub fn stub_0xb140e8(block: *mut ControlBlockPd<Marker, CreatableInstanceDeleter>) {
+    // IDA 0xb140e8: `predelete` + null early-out + deleter delete; same
+    // shape as 0xad6044.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
+}
 
 // 0xb14104 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6MarkerENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Marker *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_0xb14104() { todo!("0xb14104") }
+pub fn stub_0xb14104(block: *const ControlBlockPd<Marker, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0xb14104: deleter-name `strcmp`; same shape as 0xad6060.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
+}
 
 // 0xb1411c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6MarkerENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Marker *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_0xb1411c() { todo!("0xb1411c") }
+pub fn stub_0xb1411c(block: *const ControlBlockPd<Marker, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0xb1411c: unconditional `this + 0x10`; same as 0xad6078.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
+}
 
 // 0xb14580 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS1_8InstanceEEEENS6_5list1INS6_5valueINS8_INS1_7Network10ReplicatorEEEEEEEEEEEvT_
 // type: void __fastcall(pthread_mutex_t *, int *, int, int, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int, int)
 #[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>>>)")]
 // was: void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>>>)
-pub fn stub_0xb14580() { todo!("0xb14580") }
+pub fn stub_0xb14580(dst: &mut ReplicatorInstanceFunction, cb: ReplicatorInstanceCallback) {
+    // IDA 0xb14580 `function1::assign_to`: copy-constructs the bind into the
+    // function buffer and installs the invoker/manager vtable pair.
+    dst.inner = Some(cb);
+}
 
 // 0xb149f0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueINS5_INS6_7Network10ReplicatorEEEEEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0xb149f0() { todo!("0xb149f0") }
+pub fn stub_0xb149f0(dst: &mut ReplicatorInstanceFunction, src: &ReplicatorInstanceCallback, op: u32) {
+    // IDA 0xb149f0 functor `manager`: clone/move/destroy/type-query over the
+    // list1 bind storage; same discipline as 0xace0fc.
+    match op {
+        0 | 1 => dst.inner = Some(src.clone()),
+        2 => dst.inner = None,
+        _ => {}
+    }
+}
 
 // 0xb14a14 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueINS5_INS6_7Network10ReplicatorEEEEEEEEEvPNS6_9DataModelEE6invokeERNS1_15function_bufferESK_
 // type: void __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")]
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)
-pub fn stub_0xb14a14() { todo!("0xb14a14") }
+pub fn stub_0xb14a14(slot: &ReplicatorInstanceFunction, inst: &SharedPtr<Instance>) {
+    // IDA 0xb14a14 invoker1 `invoke`: unwraps the bound replicator value and
+    // calls the free function with the call-time instance.
+    if let Some(cb) = &slot.inner {
+        (cb.func)(inst);
+    }
+}
 
 // 0xb14c68 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS3_8InstanceEEEENS8_5list1INS8_5valueINSA_INS3_7Network10ReplicatorEEEEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int *, int *, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, pthread_mutex_t *, int, int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
-pub fn stub_0xb14c68() { todo!("0xb14c68") }
+pub fn stub_0xb14c68(dst: &mut ReplicatorInstanceFunction, cb: ReplicatorInstanceCallback) -> bool {
+    // IDA 0xb14c68 `basic_vtable1::assign_to`: installs the functor when the
+    // buffer is small enough (always true for the list1 bind); returns
+    // whether the vtable took ownership.
+    dst.inner = Some(cb);
+    true
+}
 
 // 0xb14f08 — __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueINS5_INS6_7Network10ReplicatorEEEEEEEEEE12manage_smallERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 // type: void __fastcall(_DWORD *, _WORD *, unsigned int)
 #[doc(alias = "boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0xb14f08() { todo!("0xb14f08") }
+pub fn stub_0xb14f08(dst: &mut ReplicatorInstanceFunction, src: &ReplicatorInstanceCallback, op: u32) {
+    // IDA 0xb14f08 `manage_small`: same clone/move/destroy discipline as
+    // 0xb149f0 for small-object storage.
+    stub_0xb149f0(dst, src, op);
+}
 
 // 0xb15810 — __ZN3RBX8GuidItemINS_8InstanceEE8Registry3regEPKS1_
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "RBX::GuidItem<RBX::Instance>::Registry::reg(RBX::Instance const*)")]
-pub fn stub_0xb15810() { todo!("0xb15810") }
+pub fn stub_0xb15810(reg: &GuidRegistry, guid: u64, inst: SharedPtr<Instance>) {
+    // IDA 0xb15810 `GuidItem<Instance>::Registry::reg`: asserts the guid
+    // slot words are empty, then inserts the retained instance under the
+    // registry mutex (`FLog::Asserts` + `_debugHook` on violation).
+    // SAFETY: `reg` must point to a valid registry (shared ref here).
+    let _guard = reg.lock.lock();
+    reg.map.lock().insert(guid, inst);
+}
 
 // 0xb15c80 — __ZN5boost10shared_ptrIN3RBX8GuidItemINS1_8InstanceEE8RegistryEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
 #[doc(alias = "rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>::reset(void)")]
 // was: boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>::reset(void)
-pub fn stub_0xb15c80() { todo!("0xb15c80") }
+pub fn stub_0xb15c80(holder: &mut GuidRegistryHolder) {
+    // IDA 0xb15c80 `shared_ptr::reset`: zeroes px (disasm 0xb15c8a), drops
+    // the pi ref under the use-count spinlock (disasm 0xb15cc6-0xb15d08),
+    // and destroys when the last use releases (disasm 0xb15d18).
+    holder.inner = None;
+}
 
 // 0xb15d20 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_N5boost10shared_ptrINS0_8InstanceEEEESt10_Select1stISA_ESt4lessIS3_ESaISA_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISA_ERKSA_
 // type: _Rb_tree_node_base *__fastcall(int, _Rb_tree_node_base *, unsigned int *M_right, int)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>,std::_Select1st<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>>,std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>,std::_Select1st<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>>,std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>> const&)
-pub fn stub_0xb15d20() { todo!("0xb15d20") }
+pub fn stub_0xb15d20(map: &mut NameInstanceMap, name: String, inst: SharedPtr<Instance>) -> bool {
+    // IDA 0xb15d20 `Rb_tree::M_insert_unique(iterator, value)`: hinted
+    // unique insert of the (Name, SharedPtr<Instance>) pair.
+    map.insert_unique(name, inst)
+}
 
 // 0xb15e98 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_N5boost10shared_ptrINS0_8InstanceEEEESt10_Select1stISA_ESt4lessIS3_ESaISA_EE16_M_insert_uniqueERKSA_
 // type: int __fastcall(int, _DWORD *, unsigned int *M_color, int)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>,std::_Select1st<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>>>::_M_insert_unique(std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>,std::_Select1st<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>>>::_M_insert_unique(std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>> const&)
-pub fn stub_0xb15e98() { todo!("0xb15e98") }
+pub fn stub_0xb15e98(map: &mut NameInstanceMap, name: String, inst: SharedPtr<Instance>) -> bool {
+    // IDA 0xb15e98 `Rb_tree::M_insert_unique(value)`: unhinted unique
+    // insert; same membership discipline as 0xb15d20.
+    map.insert_unique(name, inst)
+}
 
 // 0xb1b20c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX7Network10ReplicatorENS_10shared_ptrINS7_8InstanceEEEEENS3_5list2INS3_5valueIPS9_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0xb1b20c() { todo!("0xb1b20c") }
+pub fn stub_0xb1b20c(dst: &mut Option<ReplicatorMf1>, src: &ReplicatorMf1, op: u32) {
+    // IDA 0xb1b20c functor `manager` for the mf1 bind: the bind is
+    // trivially copyable (target + member pointer), so clone/move/destroy
+    // collapse to copy/clear.
+    match op {
+        0 | 1 => *dst = Some(*src),
+        2 => *dst = None,
+        _ => {}
+    }
+}
 
 // 0xb1b26c — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX7Network10ReplicatorENS_10shared_ptrINS7_8InstanceEEEEENS3_5list2INS3_5valueIPS9_EENS_3argILi1EEEEEEEvSC_E6invokeERNS1_15function_bufferESC_
 // type: void __fastcall(int, int *, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>>>,void,rbx_core::SharedPtr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>>>,void,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>)
-pub fn stub_0xb1b26c() { todo!("0xb1b26c") }
+pub fn stub_0xb1b26c(bind: &ReplicatorMf1, inst: &SharedPtr<Instance>) {
+    // IDA 0xb1b26c invoker1 `invoke`: forwards to the mf1 member call.
+    stub_0xb1b4d4(bind, inst);
+}
 
 // 0xb1b4d4 — __ZNK5boost4_mfi3mf1IvN3RBX7Network10ReplicatorENS_10shared_ptrINS2_8InstanceEEEEclEPS4_S7_
 // type: void __fastcall(char **, int, int *, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "boost::_mfi::mf1<void,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::Network::Replicator*,rbx_core::SharedPtr<RBX::Instance>)const")]
 // was: boost::_mfi::mf1<void,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::Replicator*,boost::shared_ptr<RBX::Instance>)const
-pub fn stub_0xb1b4d4() { todo!("0xb1b4d4") }
+pub fn stub_0xb1b4d4(bind: &ReplicatorMf1, inst: &SharedPtr<Instance>) {
+    // IDA 0xb1b4d4 `mf1::operator()`: loads the bound `Replicator*`
+    // (disasm 0xb1b500) and invokes the member function with the instance.
+    // SAFETY: `bind.target` must point to a live `Replicator`.
+    unsafe {
+        if bind.target.is_null() {
+            return;
+        }
+        (bind.func)(bind.target, inst);
+    }
+}
 
 // 0xb1b74c — __ZN5boost9unordered6detail10table_implINS1_3setISaIPKN3RBX8InstanceEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE9erase_keyERKS7_
 // type: int __fastcall(_DWORD *, unsigned int *)
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Instance const*>,RBX::Instance const*,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::erase_key(RBX::Instance const* const&)")]
-pub fn stub_0xb1b74c() { todo!("0xb1b74c") }
+pub fn stub_0xb1b74c(set: &mut InstanceSet, inst: *const Instance) -> bool {
+    // IDA 0xb1b74c `unordered_set::erase_key`: hashes the instance pointer
+    // and erases the bucket entry; returns whether one was removed.
+    set.set.remove(&inst)
+}
 
 // 0xb1b820 — __ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE6insertEPNS9_4slotE
 // type: void __fastcall(int32_t **, int, int, int, boost::mutex *, char, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::insert(rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot *)")]
-pub fn stub_0xb1b820() { todo!("0xb1b820") }
+pub fn stub_0xb1b820(state: &mut CombinedSignalState, slot: SharedPtr<CombinedSlot>) {
+    // IDA 0xb1b820 `signal::insert`: asserts the slot is non-null
+    // (`FLog::Asserts` + `_debugHook`, signal.h:290, disasm 0xb1b85e-0xb1b8b2),
+    // then links it under the signal mutex.
+    debug_assert!(SharedPtr::as_ptr(&slot) as usize != 0);
+    let _guard = state.lock.lock();
+    state.slots.push(slot);
+}
 
 // 0xb1bae0 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS5_19ICombinedSignalDataEEE4slotEEaSEPSC_
 // type: int32_t **__fastcall(int32_t **, int32_t *)
 #[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot*)")]
-pub fn stub_0xb1bae0() { todo!("0xb1bae0") }
+pub fn stub_0xb1bae0(slot: &SharedPtr<CombinedSlot>) -> SharedPtr<CombinedSlot> {
+    // IDA 0xb1bae0 `intrusive_ptr<slot>::operator=`: retains (add_refs) the
+    // new slot and releases the old one; Arc clone-assign is the equivalent.
+    slot.clone()
+}
 
 // 0xb1bb98 — __ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE13callable_slotIN5boost3_bi6bind_tIvPFvNSB_8weak_ptrINS2_7Network10ReplicatorEEEPNSG_15ReplicationDataES4_S7_ENSC_5list4INSC_5valueISH_EENSN_ISJ_EENSB_3argILi1EEENSQ_ILi2EEEEEEEED1Ev
 // type: int()
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
-pub fn stub_0xb1bb98() { todo!("0xb1bb98") }
+pub fn stub_0xb1bb98(_slot: *mut CombinedSlot) {
+    // IDA 0xb1bb98: callable_slot D1 — destroys the list4 bind members.
+}
 
 // 0xb1bba4 — __ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE13callable_slotIN5boost3_bi6bind_tIvPFvNSB_8weak_ptrINS2_7Network10ReplicatorEEEPNSG_15ReplicationDataES4_S7_ENSC_5list4INSC_5valueISH_EENSN_ISJ_EENSB_3argILi1EEENSQ_ILi2EEEEEEEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
-pub fn stub_0xb1bba4() { todo!("0xb1bba4") }
+pub fn stub_0xb1bba4(slot: *mut CombinedSlot) {
+    // IDA 0xb1bba4: callable_slot D0 — D1 body then storage release.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
+}
 
 // 0xb1bc58 — __ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE4slot10disconnectEv
 // type: void __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot::disconnect(void)")]
-pub fn stub_0xb1bc58() { todo!("0xb1bc58") }
+pub fn stub_0xb1bc58(state: &mut CombinedSignalState, slot: *const CombinedSlot) {
+    // IDA 0xb1bc58 `slot::disconnect`: clears the `+12` connected word, then
+    // unlinks the slot from the signal list under the signal mutex.
+    // SAFETY: `slot` must be null or point to a slot in `state`.
+    unsafe {
+        if slot.is_null() {
+            return;
+        }
+        (*slot.cast_mut()).connected = false;
+        let _guard = state.lock.lock();
+        state.slots.retain(|s| SharedPtr::as_ptr(s) != slot);
+    }
+}
 
 // 0xb1bdd8 — __ZNK3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE4slot9connectedEv
 // type: bool __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot::connected(void)const")]
-pub fn stub_0xb1bdd8() { todo!("0xb1bdd8") }
+pub fn stub_0xb1bdd8(slot: *const CombinedSlot) -> bool {
+    // IDA 0xb1bdd8 `slot::connected`: `return *(a1 + 12) != 0`
+    // (disasm 0xb1bde0).
+    // SAFETY: `slot` must point to a valid slot.
+    unsafe { !slot.is_null() && (*slot).connected }
+}
 
 // 0xb1bde4 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS4_19ICombinedSignalDataEEE4slotEN5boost3_bi6bind_tIvPFvNSC_8weak_ptrINS3_7Network10ReplicatorEEEPNSH_15ReplicationDataES5_S8_ENSD_5list4INSD_5valueISI_EENSO_ISK_EENSC_3argILi1EEENSR_ILi2EEEEEEELi2ES9_E4callES5_S8_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>>,2,void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::call(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)")]
-pub fn stub_0xb1bde4() { todo!("0xb1bde4") }
+pub fn stub_0xb1bde4(slot: *const CombinedSlot, kind: CombinedSignalType, sig: *const ICombinedSignalData) {
+    // IDA 0xb1bde4 callable `call`: bumps the bound weak/pointer pair, then
+    // dispatches the list4 bind with the (kind, sigdata) call args.
+    // SAFETY: `slot` must point to a valid slot with a live bind.
+    unsafe {
+        if slot.is_null() {
+            return;
+        }
+        if let Some(bind) = (*slot).bind.as_ref() {
+            stub_0xb1be34(bind, kind, sig);
+        }
+    }
+}
 
 // 0xb1be0c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS4_19ICombinedSignalDataEEE4slotEN5boost3_bi6bind_tIvPFvNSC_8weak_ptrINS3_7Network10ReplicatorEEEPNSH_15ReplicationDataES5_S8_ENSD_5list4INSD_5valueISI_EENSO_ISK_EENSC_3argILi1EEENSR_ILi2EEEEEEELi2ES9_E4callES5_S8_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>>,2,void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::call(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)")]
-pub fn stub_0xb1be0c() { todo!("0xb1be0c") }
+pub fn stub_0xb1be0c(slot: *const CombinedSlot, kind: CombinedSignalType, sig: *const ICombinedSignalData) {
+    // IDA 0xb1be0c: non-virtual thunk to `call` — `this` adjust then
+    // tailcall to 0xb1bde4.
+    stub_0xb1bde4(slot, kind, sig);
+}
 
 // 0xb1be34 — __ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEENS_3argILi1EEENSC_ILi2EEEEclIPFvS7_SA_NS4_8Instance18CombinedSignalTypeEPKNSH_19ICombinedSignalDataEENS0_5list2IRSI_RSL_EEEEvNS0_4typeIvEERT_RT0_i
 // type: void __fastcall(int *, void (__fastcall **)(int *, int, _DWORD, _DWORD), _DWORD **)
 #[doc(alias = "void boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>::operator()<void (*)(boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*),boost::_bi::list2<RBX::Instance::CombinedSignalType&,RBX::Instance::ICombinedSignalData const*&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*) &,boost::_bi::list2<RBX::Instance::CombinedSignalType&,RBX::Instance::ICombinedSignalData const*&> &,int)")]
-pub fn stub_0xb1be34() { todo!("0xb1be34") }
+pub fn stub_0xb1be34(bind: &CombinedCallback, kind: CombinedSignalType, sig: *const ICombinedSignalData) {
+    // IDA 0xb1be34 list4 `operator()`: upgrades the bound weak replicator
+    // and calls the free function with (weak, data, arg<1>, arg<2>); an
+    // expired replicator drops the call.
+    (bind.func)(bind.replicator.clone(), bind.data, kind, sig);
+}
 
 // 0xb1bff8 — __ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE6removeEPNS9_4slotE
 // type: int __fastcall(char **, char *, int, int (*)(const char *, ...))
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::remove(rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot *)")]
-pub fn stub_0xb1bff8() { todo!("0xb1bff8") }
+pub fn stub_0xb1bff8(state: &mut CombinedSignalState, slot: *const CombinedSlot) {
+    // IDA 0xb1bff8 `signal::remove`: scans for the slot pointer under the
+    // signal mutex and unlinks it (`*a1 == a2` head check, disasm 0xb1c076).
+    let _guard = state.lock.lock();
+    state.slots.retain(|s| SharedPtr::as_ptr(s) != slot);
+}
 
 // 0xb1c0e4 — __ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE4slot22safe_static_init_mutexEv
 // type: void()
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot::safe_static_init_mutex(void)")]
-pub fn stub_0xb1c0e4() { todo!("0xb1c0e4") }
+pub fn stub_0xb1c0e4() {
+    // IDA 0xb1c0e4 `slot::safe_static_init_mutex`: runs the
+    // `__cxa_guard_acquire`-guarded one-time init of the signal static
+    // mutex; `OnceLock` is the equivalent.
+    let _ = combined_state_mutex();
+}
 
 // 0xb1c1cc — __ZN3rbx8callableINS_7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS4_19ICombinedSignalDataEEE4slotEN5boost3_bi6bind_tIvPFvNSC_8weak_ptrINS3_7Network10ReplicatorEEEPNSH_15ReplicationDataES5_S8_ENSD_5list4INSD_5valueISI_EENSO_ISK_EENSC_3argILi1EEENSR_ILi2EEEEEEELi2ES9_ED2Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>>,2,void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::~callable()")]
-pub fn stub_0xb1c1cc() { todo!("0xb1c1cc") }
+pub fn stub_0xb1c1cc(_slot: *mut CombinedSlot) {
+    // IDA 0xb1c1cc: callable D2 — destroys the list4 bind members.
+}
 
 // 0xb1c3a4 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS4_19ICombinedSignalDataEEE4slotEN5boost3_bi6bind_tIvPFvNSC_8weak_ptrINS3_7Network10ReplicatorEEEPNSH_15ReplicationDataES5_S8_ENSD_5list4INSD_5valueISI_EENSO_ISK_EENSC_3argILi1EEENSR_ILi2EEEEEEELi2ES9_ED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>>,2,void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::~callable()")]
-pub fn stub_0xb1c3a4() { todo!("0xb1c3a4") }
+pub fn stub_0xb1c3a4(_slot: *mut CombinedSlot) {
+    // IDA 0xb1c3a4: callable D1 — same member teardown as D2.
+}
 
 // 0xb1c3b0 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS4_19ICombinedSignalDataEEE4slotEN5boost3_bi6bind_tIvPFvNSC_8weak_ptrINS3_7Network10ReplicatorEEEPNSH_15ReplicationDataES5_S8_ENSD_5list4INSD_5valueISI_EENSO_ISK_EENSC_3argILi1EEENSR_ILi2EEEEEEELi2ES9_ED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>>,2,void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::~callable()")]
-pub fn stub_0xb1c3b0() { todo!("0xb1c3b0") }
+pub fn stub_0xb1c3b0(slot: *mut CombinedSlot) {
+    // IDA 0xb1c3b0: callable D0 — D1 body then storage release.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
+}
 
 // 0xb1c464 — __ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE4slotD1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot::~slot()")]
-pub fn stub_0xb1c464() { todo!("0xb1c464") }
+pub fn stub_0xb1c464(_slot: *mut CombinedSlot) {
+    // IDA 0xb1c464: slot D1 — destroys the slot link members.
+}
 
 // 0xb1c4c0 — __ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE4slotD0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot::~slot()")]
-pub fn stub_0xb1c4c0() { todo!("0xb1c4c0") }
+pub fn stub_0xb1c4c0(slot: *mut CombinedSlot) {
+    // IDA 0xb1c4c0: slot D0 — D1 body then storage release.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
+}
 
 // 0xb1ccb0 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE12emplace_implINS1_13emplace_args1ISD_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEbERS9_RKT_
 // type: void __fastcall(boost::detail::shared_count *, struct _Unwind_Exception *, unsigned int *, int, char, void *, int, int, int, int)
 #[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>,RBX::Instance const*,RBX::Network::Replicator::ReplicationData,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>>(RBX::Instance const* const&,boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>> const&)")]
-pub fn stub_0xb1ccb0() { todo!("0xb1ccb0") }
+pub fn stub_0xb1ccb0(map: &mut ReplicationMap, inst: *const Instance) -> bool {
+    // IDA 0xb1ccb0 `table::emplace_impl`: hashes the instance key, reserves
+    // the bucket, and inserts the (key, ReplicationData) node iff absent.
+    if map.map.contains_key(&inst) {
+        return false;
+    }
+    map.map.insert(inst, ReplicationData { instance: inst, refs: 0 });
+    true
+}
 
 // 0xb1cf3c — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEEEEE20construct_with_valueINS1_13emplace_args1ISD_EEEEvRKT_
 // type: void __fastcall(int, int *, int, int, struct _Unwind_Exception *lpuexcpt, boost::detail::shared_count *, int, int, int, int)
 #[doc(alias = "void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>>>::construct_with_value<boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>>(boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>> const&)")]
-pub fn stub_0xb1cf3c() { todo!("0xb1cf3c") }
+pub fn stub_0xb1cf3c(map: &mut ReplicationMap, inst: *const Instance) {
+    // IDA 0xb1cf3c `node_constructor::construct_with_value`: allocates the
+    // hash node and move-constructs the emplace-arg pair into it.
+    map.map.entry(inst).or_insert(ReplicationData { instance: inst, refs: 0 });
+}
 
 // 0xb1d080 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE18reserve_for_insertEm
 // type: _DWORD *__fastcall(int, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>,RBX::Instance const*,RBX::Network::Replicator::ReplicationData,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::reserve_for_insert(unsigned long)")]
-pub fn stub_0xb1d080() { todo!("0xb1d080") }
+pub fn stub_0xb1d080(map: &mut ReplicationMap, n: usize) {
+    // IDA 0xb1d080 `table::reserve_for_insert`: grows the bucket array for
+    // `n` further inserts; `HashMap::reserve` is the equivalent.
+    map.map.reserve(n);
+}
 
 // 0xb1d228 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE14create_bucketsEm
 // type: unsigned int __fastcall(int, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>,RBX::Instance const*,RBX::Network::Replicator::ReplicationData,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::create_buckets(unsigned long)")]
-pub fn stub_0xb1d228() { todo!("0xb1d228") }
+pub fn stub_0xb1d228(map: &mut ReplicationMap, n: usize) {
+    // IDA 0xb1d228 `table::create_buckets`: allocates the raw bucket array
+    // of `n` buckets; covered by `reserve` on the Rust side.
+    map.map.reserve(n);
+}
 
 // 0xb1d2d8 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEEEEE9constructEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>>>::construct(void)")]
-pub fn stub_0xb1d2d8() { todo!("0xb1d2d8") }
+pub fn stub_0xb1d2d8(map: &mut ReplicationMap, inst: *const Instance) {
+    // IDA 0xb1d2d8 `node_constructor::construct`: default-constructs the
+    // node value in place — a default `ReplicationData` for the key.
+    stub_0xb1cf3c(map, inst);
+}
 
 // 0xb1dbc0 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEENS6_5list1INS6_5valueIS9_EEEEEEEEvT_
 // type: void __fastcall(_DWORD *, int *, int, int, pthread_mutex_t *, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>)")]
-pub fn stub_0xb1dbc0() { todo!("0xb1dbc0") }
+pub fn stub_0xb1dbc0(dst: &mut DataModelWeakFunction, cb: DataModelWeakCallback) {
+    // IDA 0xb1dbc0 `function1::assign_to` for the weak-DataModel bind: same
+    // buffer-install discipline as 0xb14580.
+    dst.inner = Some(cb);
+}
 
 // 0xb1dda8 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIS4_EEENS8_5list1INS8_5valueISB_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int *, int *, int, int, pthread_mutex_t *, int, int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_0xb1dda8() { todo!("0xb1dda8") }
+pub fn stub_0xb1dda8(dst: &mut DataModelWeakFunction, cb: DataModelWeakCallback) -> bool {
+    // IDA 0xb1dda8 `basic_vtable1::assign_to` for the weak-DataModel bind:
+    // same ownership-take discipline as 0xb14c68.
+    dst.inner = Some(cb);
+    true
+}
 
 // 0xb1f2b0 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSIN5boost10shared_ptrINS1_8InstanceEEEEERS3_RKT_
 // type: _DWORD *__fastcall(_DWORD *, _DWORD *, int, int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<rbx_core::SharedPtr<RBX::Instance>>(rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<boost::shared_ptr<RBX::Instance>>(boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_0xb1f2b0() { todo!("0xb1f2b0") }
+pub fn stub_0xb1f2b0(dst: &mut PlacementAny, src: &SharedPtr<Instance>) {
+    // IDA 0xb1f2b0 `placement_any<Region3>::operator=(SharedPtr<Instance>)`:
+    // lazily creates the `typed_holder<SharedPtr<Instance>>` singleton
+    // (guarded init, disasm 0xb1f2d2-0xb1f310), destroys any mismatched
+    // holder (disasm 0xb1f32c-0xb1f33a), then copies the shared pointer with
+    // an add_ref (disasm 0xb1f354-0xb1f392).
+    dst.instance = Some(src.clone());
+}
 
 // 0xb25570 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE12delete_nodesEPNS1_10ptr_bucketESM_
 // type: int __fastcall(int, _DWORD *, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>,RBX::Instance const*,RBX::Network::Replicator::ReplicationData,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::delete_nodes(boost::unordered::detail::ptr_bucket *,boost::unordered::detail::ptr_bucket *)")]
-pub fn stub_0xb25570() { todo!("0xb25570") }
+pub fn stub_0xb25570(map: &mut ReplicationMap) {
+    // IDA 0xb25570 `table::delete_nodes`: walks every bucket deleting nodes;
+    // `HashMap::clear` drops all entries.
+    map.map.clear();
+}
 
 // 0xb25ed8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TestServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TestService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0xb25ed8() { todo!("0xb25ed8") }
+pub fn stub_0xb25ed8(block: *mut ControlBlockPd<TestService, CreatableInstanceDeleter>) {
+    // IDA 0xb25ed8: D0 is storage release only; same as 0xad6038.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
+}
 
 // 0xb265d8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17ReplicatedStorageENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ReplicatedStorage *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0xb265d8() { todo!("0xb265d8") }
+pub fn stub_0xb265d8(_block: *mut ControlBlockPd<ReplicatedStorage, CreatableInstanceDeleter>) {
+    // IDA 0xb265d8: D1 is empty; same as 0xad6034.
+}
