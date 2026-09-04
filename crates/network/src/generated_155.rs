@@ -262,6 +262,7 @@ pub fn stub_24540() {
 pub struct PlaceLauncherState {
     pub has_received_memory_warning: bool,
     pub is_currently_playing_game: bool,
+    pub is_leaving_game: bool,
     pub last_place_id: i32,
     pub teleporter_window: u32,
     pub did_leave_game_notification: String,
@@ -300,7 +301,7 @@ pub struct PartCountWarning {
 #[doc(alias = "-[PlaceLauncher init]")]
 pub fn stub_246d8(window: u32) -> PlaceLauncherState {
     // IDA 0x246d8: super init (0x2471a); zeroed view/flags/placeId (0x24760..0x24780); Teleporter(window) installed + SetCallback (0x2478e..0x247dc); RBXDidLeaveGame/RBXStartLeaveGame/RBXGameFinishedLoading notification names (0x24800..0x24890).
-    PlaceLauncherState { has_received_memory_warning: false, is_currently_playing_game: false, last_place_id: 0, teleporter_window: window, did_leave_game_notification: "RBXDidLeaveGameNotification".to_owned(), start_leave_game_notification: "RBXStartLeaveGameNotification".to_owned(), game_finished_loading_notification: "RBXGameFinishedLoadingNotification".to_owned() }
+    PlaceLauncherState { has_received_memory_warning: false, is_currently_playing_game: false, is_leaving_game: false, last_place_id: 0, teleporter_window: window, did_leave_game_notification: "RBXDidLeaveGameNotification".to_owned(), start_leave_game_notification: "RBXStartLeaveGameNotification".to_owned(), game_finished_loading_notification: "RBXGameFinishedLoadingNotification".to_owned() }
 }
 
 // 0x248dc — -[PlaceLauncher dealloc]
@@ -901,291 +902,411 @@ pub fn stub_28d98(base_url: &str, place_id: i32) -> SoloJoinScript {
         SoloJoinScript::Visit { base_url: base_url.to_owned(), place_id }
     }
 }
+/// Host join captured by `-[PlaceLauncher startGameWithJoinScript:...]` (IDA 0x29280).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct JoinScriptJoin {
+    pub script: String,
+}
+
+/// Host spawn of `-[PlaceLauncher startGame:controller:preloadedGame:...]` (IDA 0x29490).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct GameStartSpawn {
+    pub thread_name: &'static str,
+    pub present_automatically: bool,
+}
+
+/// Host path of `-[PlaceLauncher leaveGame]` (IDA 0x298e0).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum LeaveGameAction {
+    ShutdownDirect,
+    ShutdownDispatched,
+}
 
 // 0x29280 — -[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]
 // demangled: -[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, id, id, char)
 #[doc(alias = "-[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]")]
-pub fn stub_29280() -> ! {
-    todo!("0x29280 -[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]")
+pub fn stub_29280(has_launcher: bool, game_ready: bool, started: bool, script: &str) -> Option<(JoinScriptJoin, bool)> {
+    // IDA 0x29280: nil self yields false (0x293b8..0x293be); setupPreloadedGameWithNonGameController:isApp: (0x292f4) gates binding joinGameWithJoinScript(script UTF8) (0x29314..0x2934c) and startGame:controller:preloadedGame:presentGameAutomatically: whose result returns (0x29352..0x293e8) — boost::bind/function0 map to the captured script closure.
+    if !has_launcher || !game_ready {
+        None
+    } else {
+        Some((JoinScriptJoin { script: script.to_owned() }, started))
+    }
 }
 
 // 0x29490 — -[PlaceLauncher startGame:controller:preloadedGame:presentGameAutomatically:]
 // demangled: -[PlaceLauncher startGame:controller:preloadedGame:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, function0<void>, id, shared_ptr<RBX::Game>, char)
 #[doc(alias = "-[PlaceLauncher startGame:controller:preloadedGame:presentGameAutomatically:]")]
-pub fn stub_29490() -> ! {
-    todo!("0x29490 -[PlaceLauncher startGame:controller:preloadedGame:presentGameAutomatically:]")
+pub fn stub_29490(present_automatically: bool) -> GameStartSpawn {
+    // IDA 0x29490: RBX::thread_wrapper + boost::thread run the join closure as "GameStartScript" (0x294c0..0x294fc), then createGame:presentGameAutomatically: (0x29510..0x29534); always returns 1 (0x29560) — boost::thread maps to std::thread, caller runs stub_261d8 next.
+    GameStartSpawn { thread_name: "GameStartScript", present_automatically }
 }
 
 // 0x295c0 — -[PlaceLauncher leaveGameShutdown]
 // demangled: -[PlaceLauncher leaveGameShutdown]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher leaveGameShutdown]")]
-pub fn stub_295c0() -> ! {
-    todo!("0x295c0 -[PlaceLauncher leaveGameShutdown]")
+pub fn stub_295c0(state: &PlaceLauncherState) -> &str {
+    // IDA 0x295c0: posts startLeaveGameNotification (0x295fe..0x29622), then dismissViewControllerAnimated:completion: of the ogre controller with the 0x29684 block (0x29634..0x2967c) — returns the posted name; caller runs stub_29684 next.
+    &state.start_leave_game_notification
 }
 
 // 0x29684 — ___34-[PlaceLauncher leaveGameShutdown]_block_invoke
 // demangled: ___34-[PlaceLauncher leaveGameShutdown]_block_invoke
-// type: 
+// type:
 #[doc(alias = "___34-[PlaceLauncher leaveGameShutdown]_block_invoke")]
-pub fn stub_29684() -> ! {
-    todo!("0x29684 ___34-[PlaceLauncher leaveGameShutdown]_block_invoke")
+pub fn stub_29684(state: &mut PlaceLauncherState) -> &str {
+    // IDA 0x29684: releases + nils the ogre controller/view/window (0x2969e..0x296ee), deleteRobloxView (0x29700), clears playing/leaving/warning flags (0x2971c..0x297e8), posts didLeaveGameNotification (0x29740..0x29764), drops RobloxGameState defaults (0x29790..0x297c2), ends the bg task (0x297f4..0x29872) — returns the posted name.
+    state.is_currently_playing_game = false;
+    state.is_leaving_game = false;
+    state.has_received_memory_warning = false;
+    &state.did_leave_game_notification
 }
 
 // 0x298a0 — ___copy_helper_block_191
 // demangled: ___copy_helper_block_191
-// type: 
+// type:
 #[doc(alias = "___copy_helper_block_191")]
-pub fn stub_298a0() -> ! {
-    todo!("0x298a0 ___copy_helper_block_191")
+pub fn stub_298a0(dst: u32, src: u32) {
+    // IDA 0x298a0: __copy_helper_block_191 — two _Block_object_assign slots (0x298b0..0x298c0); block retain has no host carrier.
+    let _ = (dst, src);
 }
 
 // 0x298c4 — ___destroy_helper_block_192
 // demangled: ___destroy_helper_block_192
-// type: 
+// type:
 #[doc(alias = "___destroy_helper_block_192")]
-pub fn stub_298c4() -> ! {
-    todo!("0x298c4 ___destroy_helper_block_192")
+pub fn stub_298c4(handle: u32) {
+    // IDA 0x298c4: __destroy_helper_block_192 — two _Block_object_dispose slots (0x298ce..0x298da); block release has no host carrier.
+    let _ = handle;
 }
 
 // 0x298e0 — -[PlaceLauncher leaveGame]
 // demangled: -[PlaceLauncher leaveGame]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher leaveGame]")]
-pub fn stub_298e0() -> ! {
-    todo!("0x298e0 -[PlaceLauncher leaveGame]")
+pub fn stub_298e0(state: &mut PlaceLauncherState, has_ogre_controller: bool, system_version: f32) -> Option<LeaveGameAction> {
+    // IDA 0x298e0: no-ops unless currently playing, not already leaving, and the ogre controller exists (0x2996e..0x2998e); else sets isLeavingGame + idle timer off + RobloxGameState=leaveGame (0x299a2..0x29a36), closeChildConnections + SessionReporter(4) + Visit/Success/LeaveGame (0x29a48..0x29a92), bg task begin (0x29aec..0x29b12); iOS >= 6.0 dispatches leaveGameShutdown async (0x29b62..0x29ba8), older runs it inline (0x29b72).
+    if !state.is_currently_playing_game || state.is_leaving_game || !has_ogre_controller {
+        return None;
+    }
+    state.is_leaving_game = true;
+    if system_version >= 6.0 {
+        Some(LeaveGameAction::ShutdownDispatched)
+    } else {
+        Some(LeaveGameAction::ShutdownDirect)
+    }
 }
 
 // 0x29bb4 — ___26-[PlaceLauncher leaveGame]_block_invoke
 // demangled: ___26-[PlaceLauncher leaveGame]_block_invoke
 // type: 
 #[doc(alias = "___26-[PlaceLauncher leaveGame]_block_invoke")]
-pub fn stub_29bb4() -> ! {
-    todo!("0x29bb4 ___26-[PlaceLauncher leaveGame]_block_invoke")
+pub fn stub_29bb4(state: &mut PlaceLauncherState) -> bool {
+    // IDA 0x29bb4: expiration handler clears isLeavingGame (0x29bde) and ends the bg task (0x29be8..0x29c0c) — returns whether the task was ended.
+    state.is_leaving_game = false;
+    true
 }
 
 // 0x29c34 — ___copy_helper_block_217
 // demangled: ___copy_helper_block_217
 // type: 
 #[doc(alias = "___copy_helper_block_217")]
-pub fn stub_29c34() -> ! {
-    todo!("0x29c34 ___copy_helper_block_217")
+pub fn stub_29c34(dst: u32, src: u32) {
+    // IDA 0x29c34: __copy_helper_block_217 — two _Block_object_assign slots (0x29c44..0x29c54); block retain has no host carrier.
+    let _ = (dst, src);
 }
 
 // 0x29c58 — ___destroy_helper_block_218
 // demangled: ___destroy_helper_block_218
 // type: 
 #[doc(alias = "___destroy_helper_block_218")]
-pub fn stub_29c58() -> ! {
-    todo!("0x29c58 ___destroy_helper_block_218")
+pub fn stub_29c58(handle: u32) {
+    // IDA 0x29c58: __destroy_helper_block_218 — two _Block_object_dispose slots (0x29c62..0x29c6e); block release has no host carrier.
+    let _ = handle;
 }
 
 // 0x29c74 — ___26-[PlaceLauncher leaveGame]_block_invoke231
 // demangled: ___26-[PlaceLauncher leaveGame]_block_invoke231
 // type: 
 #[doc(alias = "___26-[PlaceLauncher leaveGame]_block_invoke231")]
-pub fn stub_29c74() -> ! {
-    todo!("0x29c74 ___26-[PlaceLauncher leaveGame]_block_invoke231")
+pub fn stub_29c74(state: &PlaceLauncherState) -> &str {
+    // IDA 0x29c74: main-queue block forwards to leaveGameShutdown (0x29ba2) — returns the notification stub_295c0 posts.
+    &state.start_leave_game_notification
 }
 
 // 0x29c88 — ___copy_helper_block_232
 // demangled: ___copy_helper_block_232
 // type: 
 #[doc(alias = "___copy_helper_block_232")]
-pub fn stub_29c88() -> ! {
-    todo!("0x29c88 ___copy_helper_block_232")
+pub fn stub_29c88(dst: u32, src: u32) {
+    // IDA 0x29c88: __copy_helper_block_232 — single _Block_object_assign slot (0x29c8e); block retain has no host carrier.
+    let _ = (dst, src);
 }
 
 // 0x29c94 — ___destroy_helper_block_233
 // demangled: ___destroy_helper_block_233
 // type: 
 #[doc(alias = "___destroy_helper_block_233")]
-pub fn stub_29c94() -> ! {
-    todo!("0x29c94 ___destroy_helper_block_233")
+pub fn stub_29c94(handle: u32) {
+    // IDA 0x29c94: __destroy_helper_block_233 — single _Block_object_dispose slot (0x29c98); block release has no host carrier.
+    let _ = handle;
 }
 
 // 0x29c9c — -[PlaceLauncher disableViewBecauseGoingToBackground]
 // demangled: -[PlaceLauncher disableViewBecauseGoingToBackground]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher disableViewBecauseGoingToBackground]")]
-pub fn stub_29c9c() -> ! {
-    todo!("0x29c9c -[PlaceLauncher disableViewBecauseGoingToBackground]")
+pub fn stub_29c9c(has_view: bool) -> bool {
+    // IDA 0x29c9c: non-nil rbxView runs RobloxView::requestStopRenderingForBackgroundMode (0x29ca8..0x29cae) — returns whether rendering was stopped.
+    has_view
 }
 
 // 0x29cb4 — -[PlaceLauncher enableViewBecauseGoingToForeground]
 // demangled: -[PlaceLauncher enableViewBecauseGoingToForeground]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher enableViewBecauseGoingToForeground]")]
-pub fn stub_29cb4() -> ! {
-    todo!("0x29cb4 -[PlaceLauncher enableViewBecauseGoingToForeground]")
+pub fn stub_29cb4(has_view: bool) -> bool {
+    // IDA 0x29cb4: non-nil rbxView runs RobloxView::requestResumeRendering (0x29cc0..0x29cc6) — returns whether rendering was resumed.
+    has_view
 }
 
 // 0x29ccc — -[PlaceLauncher teleport:withAuthentication:withScript:]
 // demangled: -[PlaceLauncher teleport:withAuthentication:withScript:]
 // type: void __cdecl(PlaceLauncher *self, SEL, id, id, id)
 #[doc(alias = "-[PlaceLauncher teleport:withAuthentication:withScript:]")]
-pub fn stub_29ccc() -> ! {
-    todo!("0x29ccc -[PlaceLauncher teleport:withAuthentication:withScript:]")
+pub fn stub_29ccc(place: &str, auth: &str, script: &str) -> TeleportRequest {
+    // IDA 0x29ccc: stashes the last non-game controller (0x29d0a..0x29d42), builds a SecurePlayerGame + binds joinGameTeleport(place, auth, script) on a detached thread (0x29d58..0x29e40, boost::thread maps to std::thread), deleteRobloxView (0x29ec6), then a 0.5s UIView animation running the 0x2a8c8 frame block with 0x2a99c completion (0x29f04..0x29fca) — returns the bound teleport triple; caller runs stub_2a350 for the fetch leg and stub_2a8c8/stub_2a99c for the animation legs.
+    TeleportRequest { place: place.to_owned(), auth: auth.to_owned(), script: script.to_owned(), animation_secs: TELEPORT_ANIM_SECS }
+}
+
+/// Teleport animation length of `-[PlaceLauncher teleport:...]` and `finishTeleportHelper` (IDA 0x29fca, 0x2b90e).
+pub const TELEPORT_ANIM_SECS: f64 = 0.5;
+
+/// Host triple bound by `-[PlaceLauncher teleport:withAuthentication:withScript:]` (IDA 0x29ccc).
+#[derive(Debug, Clone, PartialEq)]
+pub struct TeleportRequest {
+    pub place: String,
+    pub auth: String,
+    pub script: String,
+    pub animation_secs: f64,
+}
+
+/// Host outcome of `-[PlaceLauncher applicationDidReceiveMemoryWarning]` (IDA 0x2ae54).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum MemoryWarningOutcome {
+    Ignored,
+    Shutdown { early_exit: bool, alert: bool },
+}
+
+/// Host route of `-[PlaceLauncher childAdded:]` (IDA 0x2b1bc).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum ChildAddedRoute {
+    NoView,
+    NoDatamodel,
+    NoPlayers,
+    NoPlayer,
+    PlayerIsChild,
+    PlayerOther,
 }
 
 // 0x2a350 — __ZL16joinGameTeleportSsSsSsP8NSObjectN5boost10shared_ptrIN3RBX4GameEEE // was: boost::shared_ptr
 // demangled: joinGameTeleport(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>)
 // type: 
 #[doc(alias = "joinGameTeleport(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_2a350() -> ! {
-    todo!("0x2a350 joinGameTeleport(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>)")
+pub fn stub_2a350(base_url: &str, place: &str, suggest: &str, has_controller: bool) -> (String, bool) {
+    // IDA 0x2a350: copies place, appends "?suggest="+auth when non-empty (0x2a3b8..0x2a3dc), RBX::Http GET of base+url (0x2a3f2..0x2a438), executeUrlScript with the game (0x2a46e..0x2a48a), then handleStartGameSuccess on the controller when non-nil (0x2a49c..0x2a4b0) — returns the fetched URL + whether success was notified; HTTP stays with the caller.
+    let mut url = format!("{base_url}{place}");
+    if !suggest.is_empty() {
+        url.push_str("?suggest=");
+        url.push_str(suggest);
+    }
+    (url, has_controller)
 }
 
 // 0x2a8c8 — ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke
 // demangled: ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke
 // type: 
 #[doc(alias = "___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke")]
-pub fn stub_2a8c8() -> ! {
-    todo!("0x2a8c8 ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke")
+pub fn stub_2a8c8(has_view: bool, width: f32, height: f32) -> (f32, f32) {
+    // IDA 0x2a8c8: animation block halves the ogre view frame origin (vmul 0.5, 0x2a908..0x2a914) and re-sets the frame (0x2a940..0x2a984); nil view centers at zero (0x2a920..0x2a922).
+    if has_view { (width * 0.5, height * 0.5) } else { (0.0, 0.0) }
 }
 
 // 0x2a988 — ___copy_helper_block_243
 // demangled: ___copy_helper_block_243
 // type: 
 #[doc(alias = "___copy_helper_block_243")]
-pub fn stub_2a988() -> ! {
-    todo!("0x2a988 ___copy_helper_block_243")
+pub fn stub_2a988(dst: u32, src: u32) {
+    // IDA 0x2a988: __copy_helper_block_243 — single _Block_object_assign slot (0x2a98e); block retain has no host carrier.
+    let _ = (dst, src);
 }
 
 // 0x2a994 — ___destroy_helper_block_244
 // demangled: ___destroy_helper_block_244
 // type: 
 #[doc(alias = "___destroy_helper_block_244")]
-pub fn stub_2a994() -> ! {
-    todo!("0x2a994 ___destroy_helper_block_244")
+pub fn stub_2a994(handle: u32) {
+    // IDA 0x2a994: __destroy_helper_block_244 — single _Block_object_dispose slot (0x2a998); block release has no host carrier.
+    let _ = handle;
 }
 
 // 0x2a99c — ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke246
 // demangled: ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke246
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke246")]
-pub fn stub_2a99c() -> ! {
-    todo!("0x2a99c ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke246")
+pub fn stub_2a99c(has_launcher: bool) -> bool {
+    // IDA 0x2a99c: completion runs finishGameSetup:gameViewController: (0x2aa18), then binds finishTeleport(view, game, marshaller) and submits it via RBX::DataModel::submitTask (0x2aa3c..0x2aaaa) — boost::bind/function map to a host closure; returns whether the task was submitted.
+    has_launcher
 }
 
 // 0x2aba4 — __ZL14finishTeleportP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEEPNS3_18FunctionMarshallerE // was: boost::shared_ptr
 // demangled: finishTeleport(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *)
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
 #[doc(alias = "finishTeleport(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *)")]
-pub fn stub_2aba4() -> ! {
-    todo!("0x2aba4 finishTeleport(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *)")
+pub fn stub_2aba4(has_view: bool, has_game: bool) -> bool {
+    // IDA 0x2aba4: binds finishTeleportHelper(view, game) and executes it on the marshaller (0x2abd8..0x2ac32, RBX::FunctionMarshaller::Execute) — boost::bind/function map to a host closure; returns whether dispatch proceeds.
+    has_view && has_game
 }
 
 // 0x2acec — ___copy_helper_block_247
 // demangled: ___copy_helper_block_247
 // type: void __fastcall(_DWORD *, const shared_count *)
 #[doc(alias = "___copy_helper_block_247")]
-pub fn stub_2acec() -> ! {
-    todo!("0x2acec ___copy_helper_block_247")
+pub fn stub_2acec(dst: u32, src: u32) {
+    // IDA 0x2acec: __copy_helper_block_247 — two _Block_object_assign slots + a shared_count copy (0x2ad18..0x2ad64); block retain has no host carrier.
+    let _ = (dst, src);
 }
 
 // 0x2ada4 — ___destroy_helper_block_248
 // demangled: ___destroy_helper_block_248
 // type: 
 #[doc(alias = "___destroy_helper_block_248")]
-pub fn stub_2ada4() -> ! {
-    todo!("0x2ada4 ___destroy_helper_block_248")
+pub fn stub_2ada4(handle: u32) {
+    // IDA 0x2ada4: __destroy_helper_block_248 — two _Block_object_dispose slots + a shared_count release (0x2adc6..0x2ae06); block release has no host carrier.
+    let _ = handle;
 }
 
 // 0x2ae44 — -[PlaceLauncher isCurrentlyPlayingGame]
 // demangled: -[PlaceLauncher isCurrentlyPlayingGame]
 // type: char __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher isCurrentlyPlayingGame]")]
-pub fn stub_2ae44() -> ! {
-    todo!("0x2ae44 -[PlaceLauncher isCurrentlyPlayingGame]")
+pub fn stub_2ae44(state: &PlaceLauncherState) -> bool {
+    // IDA 0x2ae44: returns self->isCurrentlyPlayingGame (0x2ae52).
+    state.is_currently_playing_game
 }
 
 // 0x2ae54 — -[PlaceLauncher applicationDidReceiveMemoryWarning]
 // demangled: -[PlaceLauncher applicationDidReceiveMemoryWarning]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher applicationDidReceiveMemoryWarning]")]
-pub fn stub_2ae54() -> ! {
-    todo!("0x2ae54 -[PlaceLauncher applicationDidReceiveMemoryWarning]")
+pub fn stub_2ae54(state: &PlaceLauncherState, child_connected: bool, player_connected: bool, warnings_enabled: bool) -> MemoryWarningOutcome {
+    // IDA 0x2ae54: out of game logs and ignores (0x2afc2..0x2afe8); in game logs free memory (0x2aebe..0x2aed6), connected child/player selects OutOfMemory_EarlyExit + SessionReporter(5) vs OutOfMemory + SessionReporter(6) (0x2aeee..0x2b03c), closeChildConnections (0x2b056), warnings_preference gates the MemoryError alert (0x2b074..0x2b100), then leaveGame (0x2b142) — caller runs stub_298e0 next.
+    if !state.is_currently_playing_game {
+        return MemoryWarningOutcome::Ignored;
+    }
+    MemoryWarningOutcome::Shutdown { early_exit: child_connected || player_connected, alert: warnings_enabled }
 }
 
 // 0x2b1bc — -[PlaceLauncher childAdded:]
 // demangled: -[PlaceLauncher childAdded:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Instance>)
 #[doc(alias = "-[PlaceLauncher childAdded:]")]
-pub fn stub_2b1bc() -> ! {
-    todo!("0x2b1bc -[PlaceLauncher childAdded:]")
+pub fn stub_2b1bc(has_view: bool, has_datamodel: bool, has_players: bool, has_player: bool, player_is_child: bool) -> ChildAddedRoute {
+    // IDA 0x2b1bc: nil view/datamodel/players/player each log + closeChildConnections (0x2b248..0x2b3be); a live player connects playerLoaded: onto the child-added signal — same-slot rewire when the player is the added child, cross-slot otherwise (0x2b264..0x2b472, rbx::signals maps to rbx_core::signal) — returns the route taken; caller runs stub_2b5e0 on the close legs.
+    if !has_view {
+        ChildAddedRoute::NoView
+    } else if !has_datamodel {
+        ChildAddedRoute::NoDatamodel
+    } else if !has_players {
+        ChildAddedRoute::NoPlayers
+    } else if !has_player {
+        ChildAddedRoute::NoPlayer
+    } else if player_is_child {
+        ChildAddedRoute::PlayerIsChild
+    } else {
+        ChildAddedRoute::PlayerOther
+    }
 }
 
 // 0x2b548 — -[PlaceLauncher playerLoaded:]
 // demangled: -[PlaceLauncher playerLoaded:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Instance>)
 #[doc(alias = "-[PlaceLauncher playerLoaded:]")]
-pub fn stub_2b548() -> ! {
-    todo!("0x2b548 -[PlaceLauncher playerLoaded:]")
+pub fn stub_2b548() -> &'static str {
+    // IDA 0x2b548: disconnects playerConnection (0x2b56a), closeChildConnections (0x2b57c), stores RobloxGameState=inGame (0x2b59a..0x2b5da) — returns the stored state value.
+    "inGame"
 }
 
 // 0x2b5e0 — -[PlaceLauncher closeChildConnections]
 // demangled: -[PlaceLauncher closeChildConnections]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher closeChildConnections]")]
-pub fn stub_2b5e0() -> ! {
-    todo!("0x2b5e0 -[PlaceLauncher closeChildConnections]")
+pub fn stub_2b5e0(child_connected: bool, player_connected: bool) -> (bool, bool) {
+    // IDA 0x2b5e0: disconnects childConnection/playerConnection when connected (0x2b5f2..0x2b61e, rbx::signals maps to rbx_core::signal), then stops the free-memory checker (0x2b63a..0x2b64e) — returns which slots were disconnected.
+    (child_connected, player_connected)
 }
 
 // 0x2b654 — -[PlaceLauncher .cxx_destruct]
 // demangled: -[PlaceLauncher .cxx_destruct]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher .cxx_destruct]")]
-pub fn stub_2b654() -> ! {
-    todo!("0x2b654 -[PlaceLauncher .cxx_destruct]")
+pub fn stub_2b654(has_teleporter: bool, has_child_slot: bool, has_player_slot: bool) {
+    // IDA 0x2b654: weak-releases the player/child connection slots when set (0x2b68e..0x2b6cc, boost::intrusive_ptr maps to rbx_core::SharedPtr drop) and deletes the teleporter (0x2b6de..0x2b6e6) — host drops carry the same lifetimes; faithful no-op shell.
+    let _ = (has_teleporter, has_child_slot, has_player_slot);
 }
 
 // 0x2b724 — -[PlaceLauncher .cxx_construct]
 // demangled: -[PlaceLauncher .cxx_construct]
 // type: id __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher .cxx_construct]")]
-pub fn stub_2b724() -> ! {
-    todo!("0x2b724 -[PlaceLauncher .cxx_construct]")
+pub fn stub_2b724() {
+    // IDA 0x2b724: zeroes teleporter.px + child/player connection slots (0x2b73c..0x2b74e) — host PlaceLauncherState::default carries the same zeroed flags; faithful no-op shell.
 }
 
 // 0x2b754 — __ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE // was: boost::shared_ptr
 // demangled: finishTeleportHelper(RobloxView *,boost::shared_ptr<RBX::Game>)
 // type: 
 #[doc(alias = "finishTeleportHelper(RobloxView *,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_2b754() -> ! {
-    todo!("0x2b754 finishTeleportHelper(RobloxView *,boost::shared_ptr<RBX::Game>)")
+pub fn stub_2b754(has_controller: bool, has_subview: bool) -> bool {
+    // IDA 0x2b754: with a MainViewController sets the teleported game on the first ogre subview (0x2b7a4..0x2b878), then a 0.5s UIView animation running the 0x2b980 frame block with 0x2ba14 completion (0x2b8be..0x2b90e) — returns whether the game was attached.
+    has_controller && has_subview
 }
 
 // 0x2b980 — ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke // was: boost
 // demangled: ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke
 // type: 
 #[doc(alias = "____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke")]
-pub fn stub_2b980() -> ! {
-    todo!("0x2b980 ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke")
+pub fn stub_2b980(has_screen: bool, x: i32, y: i32, w: i32, h: i32) -> (i32, i32, i32, i32) {
+    // IDA 0x2b980: animation block re-sets the view frame to the main-screen bounds (0x2b9c8..0x2b9fe); nil screen zeroes the frame (0x2b9b8..0x2b9f8).
+    if has_screen { (x, y, w, h) } else { (0, 0, 0, 0) }
 }
 
 // 0x2ba00 — ___copy_helper_block_425
 // demangled: ___copy_helper_block_425
 // type: 
 #[doc(alias = "___copy_helper_block_425")]
-pub fn stub_2ba00() -> ! {
-    todo!("0x2ba00 ___copy_helper_block_425")
+pub fn stub_2ba00(dst: u32, src: u32) {
+    // IDA 0x2ba00: __copy_helper_block_425 — single _Block_object_assign slot (0x2ba06); block retain has no host carrier.
+    let _ = (dst, src);
 }
 
 // 0x2ba0c — ___destroy_helper_block_426
 // demangled: ___destroy_helper_block_426
 // type: 
 #[doc(alias = "___destroy_helper_block_426")]
-pub fn stub_2ba0c() -> ! {
-    todo!("0x2ba0c ___destroy_helper_block_426")
+pub fn stub_2ba0c(handle: u32) {
+    // IDA 0x2ba0c: __destroy_helper_block_426 — single _Block_object_dispose slot (0x2ba10); block release has no host carrier.
+    let _ = handle;
 }
 
 // 0x2ba14 — ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke428 // was: boost
 // demangled: ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke428
 // type: 
 #[doc(alias = "____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke428")]
-pub fn stub_2ba14() -> ! {
-    todo!("0x2ba14 ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke428")
+pub fn stub_2ba14() -> bool {
+    // IDA 0x2ba14: completion clears clipsToBounds on the view (0x2ba26) — returns the resulting flag.
+    false
 }
