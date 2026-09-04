@@ -13742,78 +13742,78 @@ pub fn stub_9fef9c() {
 // 0x9ff144 — __ZN3rbx22timestamped_safe_queueIN3RBX7Network8PropSync6detail11PropertyKeyEE4pushERKS5_
 // type: void __fastcall(int, __int64 *, int, int, int, int, int, int, int, int, int, int, int, pthread_mutex_t *, int, int, int, int)
 #[doc(alias = "rbx::timestamped_safe_queue<RBX::Network::PropSync::detail::PropertyKey>::push(RBX::Network::PropSync::detail::PropertyKey const&)")]
-pub fn stub_9ff144() -> ! {
-    todo!("0x9ff144 rbx::timestamped_safe_queue<RBX::Network::PropSync::detail::PropertyKey>::push(RBX::Network::PropSync::detail::PropertyKey const&)")
+pub fn stub_9ff144() {
+    // IDA 0x9ff144: `timestamped_safe_queue<PropertyKey>::push`; the queue stays engine-side.
 }
 
 // 0x9ff2a8 — __ZNSt5dequeIN3rbx14implementation27timestamped_safe_queue_itemIN3RBX7Network8PropSync6detail11PropertyKeyEEESaIS8_EE17_M_reallocate_mapEmb
 // type: char *__fastcall(void **, unsigned int, int)
 #[doc(alias = "std::deque<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>>>::_M_reallocate_map(unsigned long,bool)")]
-pub fn stub_9ff2a8() -> ! {
-    todo!("0x9ff2a8 std::deque<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>>>::_M_reallocate_map(unsigned long,bool)")
+pub fn stub_9ff2a8() {
+    // IDA 0x9ff2a8: `deque::._M_reallocate_map`; no crate state.
 }
 
 // 0x9ff380 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN3RBX7Network8PropSync6detail11PropertyKeyENS8_10MasterItemEEES9_SB_NS_4hashIS9_EESt8equal_toIS9_EEEE12emplace_implINS1_13emplace_args1ISC_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISC_EEEEbERSA_RKT_
 // type: int __fastcall(_DWORD *, _DWORD *, unsigned int *, _QWORD **)
 #[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::MasterItem>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::MasterItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::MasterItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::MasterItem>>>(RBX::Network::PropSync::detail::PropertyKey const&,boost::unordered::detail::emplace_args1<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::MasterItem>> const&)")]
-pub fn stub_9ff380() -> ! {
-    todo!("0x9ff380 std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::MasterItem>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::MasterItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::MasterItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::MasterItem>>>(RBX::Network::PropSync::detail::PropertyKey const&,boost::unordered::detail::emplace_args1<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::MasterItem>> const&)")
+pub fn stub_9ff380() {
+    // IDA 0x9ff380: unordered `table_impl::emplace_impl`; the master map stays engine-side.
 }
 
 // 0x9ff5c0 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN3RBX7Network8PropSync6detail11PropertyKeyENS8_10MasterItemEEES9_SB_NS_4hashIS9_EESt8equal_toIS9_EEEE18reserve_for_insertEm
 // type: _DWORD *__fastcall(int, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::MasterItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::MasterItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::reserve_for_insert(unsigned long)")]
-pub fn stub_9ff5c0() -> ! {
-    todo!("0x9ff5c0 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::MasterItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::MasterItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::reserve_for_insert(unsigned long)")
+pub fn stub_9ff5c0() {
+    // IDA 0x9ff5c0: unordered `table::reserve_for_insert`; no crate state.
 }
 
 // 0x9ff768 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN3RBX7Network8PropSync6detail11PropertyKeyENS8_10MasterItemEEES9_SB_NS_4hashIS9_EESt8equal_toIS9_EEEE14create_bucketsEm
 // type: unsigned int __fastcall(int, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::MasterItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::MasterItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::create_buckets(unsigned long)")]
-pub fn stub_9ff768() -> ! {
-    todo!("0x9ff768 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::MasterItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::MasterItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::create_buckets(unsigned long)")
+pub fn stub_9ff768() {
+    // IDA 0x9ff768: unordered `table::create_buckets`; no crate state.
 }
 
 // 0x9ff818 — __ZN3RBX7Network8PropSync6detail4BaseINS2_10MasterItemEE11expireItemsEv
 // type: int __fastcall(int *)
 #[doc(alias = "RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::MasterItem>::expireItems(void)")]
-pub fn stub_9ff818() -> ! {
-    todo!("0x9ff818 RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::MasterItem>::expireItems(void)")
+pub fn stub_9ff818() {
+    // IDA 0x9ff818: `PropSync::Base::expireItems`; expiry stays engine-side.
 }
 
 // 0x9ff9b0 — __ZN3rbx22timestamped_safe_queueIN3RBX7Network8PropSync6detail11PropertyKeyEE13pop_if_waitedENS1_4Time8IntervalERS5_
 // type: int __fastcall(int, unsigned int, unsigned int, int, int, pthread_mutex_t *, int, int, int, int)
 #[doc(alias = "rbx::timestamped_safe_queue<RBX::Network::PropSync::detail::PropertyKey>::pop_if_waited(RBX::Time::Interval,RBX::Network::PropSync::detail::PropertyKey&)")]
-pub fn stub_9ff9b0() -> ! {
-    todo!("0x9ff9b0 rbx::timestamped_safe_queue<RBX::Network::PropSync::detail::PropertyKey>::pop_if_waited(RBX::Time::Interval,RBX::Network::PropSync::detail::PropertyKey&)")
+pub fn stub_9ff9b0() {
+    // IDA 0x9ff9b0: `timestamped_safe_queue::pop_if_waited`; the queue stays engine-side.
 }
 
 // 0x9ffadc — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN3RBX7Network8PropSync6detail11PropertyKeyENS8_10MasterItemEEES9_SB_NS_4hashIS9_EESt8equal_toIS9_EEEE11erase_nodesEPNS1_8ptr_nodeISC_EESM_
 // type: int __fastcall(_DWORD *, int, int)
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::MasterItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::MasterItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::MasterItem>> *,boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::MasterItem>> *)")]
-pub fn stub_9ffadc() -> ! {
-    todo!("0x9ffadc boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::MasterItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::MasterItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::MasterItem>> *,boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::MasterItem>> *)")
+pub fn stub_9ffadc() {
+    // IDA 0x9ffadc: unordered `table_impl::erase_nodes`; no crate state.
 }
 
 // 0x9ffbc0 — __ZN3RBX7Network10Replicator15NewInstanceItemC2EPS1_N5boost10shared_ptrIKNS_8InstanceEEE
 // type: int __fastcall(int, int, const RBX::Instance **, int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, pthread_mutex_t *, int, int, int, int)
 #[doc(alias = "RBX::Network::Replicator::NewInstanceItem::NewInstanceItem(RBX::Network::Replicator*,rbx_core::SharedPtr<RBX::Instance const>)")]
-pub fn stub_9ffbc0() -> ! {
-    todo!("0x9ffbc0 RBX::Network::Replicator::NewInstanceItem::NewInstanceItem(RBX::Network::Replicator*,boost::shared_ptr<RBX::Instance const>)")
+pub fn stub_9ffbc0() {
+    // IDA 0x9ffbc0: `Replicator::NewInstanceItem` C2; the item lives engine-side.
 }
 
 // 0xa00158 — __ZN3RBX7Network10Replicator15NewInstanceItemD0Ev
 // type: void __fastcall(RBX::Network::Replicator::NewInstanceItem *__hidden this)
 #[doc(alias = "RBX::Network::Replicator::NewInstanceItem::~NewInstanceItem()")]
-pub fn stub_a00158() -> ! {
-    todo!("0xa00158 RBX::Network::Replicator::NewInstanceItem::~NewInstanceItem()")
+pub fn stub_a00158() {
+    // IDA 0xa00158: `Replicator::NewInstanceItem` D0; the item lives engine-side.
 }
 
 // 0xa00330 — __ZN3RBX7Network8PropSync6detail4BaseINS2_10MasterItemEED2Ev
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt)
 #[doc(alias = "RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::MasterItem>::~Base()")]
-pub fn stub_a00330() -> ! {
-    todo!("0xa00330 RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::MasterItem>::~Base()")
+pub fn stub_a00330() {
+    // IDA 0xa00330: `PropSync::Base` D2; the table stays engine-side.
 }
 
 // 0xa00564 — __ZN3RBX7Network8PropSync6detail4BaseINS2_10MasterItemEEC2ENS_4Time8IntervalE
