@@ -3183,26 +3183,30 @@ pub fn stub_a63378(peer: &crate::socket::RakPeer) -> u64 {
 
 // 0xa6338c — __ZN6RakNet7RakPeer17GetMyBoundAddressEi
 #[doc(alias = "RakNet::RakPeer::GetMyBoundAddress(int)")]
-pub fn stub_a6338c() -> ! {
-    todo!("0xa6338c RakNet::RakPeer::GetMyBoundAddress(int)")
+pub fn stub_a6338c(sockets: &[crate::socket::SystemAddress], index: usize, unassigned: crate::socket::SystemAddress) -> crate::socket::SystemAddress {
+ // IDA 0xa6338c: socket bound address or unassigned.
+ crate::socket::RakPeer::my_bound_address(sockets, index, unassigned)
 }
 
 // 0xa63490 — __ZNK6RakNet7RakPeer24GetGuidFromSystemAddressENS_13SystemAddressE
 #[doc(alias = "RakNet::RakPeer::GetGuidFromSystemAddress(RakNet::SystemAddress)const")]
-pub fn stub_a63490() -> ! {
-    todo!("0xa63490 RakNet::RakPeer::GetGuidFromSystemAddress(RakNet::SystemAddress)const")
+pub fn stub_a63490(addr: &crate::socket::SystemAddress, unassigned: &crate::socket::SystemAddress, own_guid: u64, remotes: &[(crate::socket::SystemAddress, u64)], hint: Option<usize>) -> u64 {
+ // IDA 0xa63490: own, hint, scan, unassigned.
+ crate::socket::RakPeer::guid_from_system_address(addr, unassigned, own_guid, remotes, hint)
 }
 
 // 0xa63574 — __ZNK6RakNet7RakPeer22GetSystemIndexFromGuidENS_10RakNetGUIDE
 #[doc(alias = "RakNet::RakPeer::GetSystemIndexFromGuid(RakNet::RakNetGUID)const")]
-pub fn stub_a63574() -> ! {
-    todo!("0xa63574 RakNet::RakPeer::GetSystemIndexFromGuid(RakNet::RakNetGUID)const")
+pub fn stub_a63574(remotes: &[(u64, crate::socket::SystemAddress)], guid: u64, unassigned: u64, own_guid: u64, hint: Option<usize>) -> i32 {
+ // IDA 0xa63574: -1 for unassigned/own, else scan.
+ crate::socket::RakPeer::system_index_from_guid(remotes, guid, unassigned, own_guid, hint)
 }
 
 // 0xa63620 — __ZNK6RakNet7RakPeer24GetSystemAddressFromGuidENS_10RakNetGUIDE
 #[doc(alias = "RakNet::RakPeer::GetSystemAddressFromGuid(RakNet::RakNetGUID)const")]
-pub fn stub_a63620() -> ! {
-    todo!("0xa63620 RakNet::RakPeer::GetSystemAddressFromGuid(RakNet::RakNetGUID)const")
+pub fn stub_a63620(guid: u64, unassigned_guid: u64, own_guid: u64, own_bound: crate::socket::SystemAddress, unassigned_addr: crate::socket::SystemAddress, remotes: &[(u64, crate::socket::SystemAddress)], hint: Option<usize>) -> crate::socket::SystemAddress {
+ // IDA 0xa63620: unassigned, own bound, scan.
+ crate::socket::RakPeer::system_address_from_guid(guid, unassigned_guid, own_guid, own_bound, unassigned_addr, remotes, hint)
 }
 
 // 0xa63750 — __ZNK6RakNet7RakPeer35GetClientPublicKeyFromSystemAddressENS_13SystemAddressEPc
@@ -3215,44 +3219,51 @@ pub fn stub_a63750() -> ! {
 
 // 0xa63754 — __ZN6RakNet7RakPeer14SetTimeoutTimeEjNS_13SystemAddressE
 #[doc(alias = "RakNet::RakPeer::SetTimeoutTime(unsigned int,RakNet::SystemAddress)")]
-pub fn stub_a63754() -> ! {
-    todo!("0xa63754 RakNet::RakPeer::SetTimeoutTime(unsigned int,RakNet::SystemAddress)")
+pub fn stub_a63754(peer: &mut crate::socket::RakPeer, addr: &crate::socket::SystemAddress, unassigned: &crate::socket::SystemAddress, ms: u32, apply_all: &mut dyn FnMut(), apply_one: &mut dyn FnMut()) {
+ // IDA 0xa63754: default fan-out or single set.
+ peer.set_timeout_time(addr, unassigned, ms, apply_all, apply_one)
 }
 
 // 0xa63844 — __ZN6RakNet7RakPeer14GetTimeoutTimeENS_13SystemAddressE
 #[doc(alias = "RakNet::RakPeer::GetTimeoutTime(RakNet::SystemAddress)")]
-pub fn stub_a63844() -> ! {
-    todo!("0xa63844 RakNet::RakPeer::GetTimeoutTime(RakNet::SystemAddress)")
+pub fn stub_a63844(addr: &crate::socket::SystemAddress, unassigned: &crate::socket::SystemAddress, default_ms: u32, slot: Option<u32>) -> u32 {
+ // IDA 0xa63844: slot timeout or default.
+ crate::socket::RakPeer::timeout_time(addr, unassigned, default_ms, slot)
 }
 
 // 0xa638fc — __ZNK6RakNet7RakPeer10GetMTUSizeENS_13SystemAddressE
 #[doc(alias = "RakNet::RakPeer::GetMTUSize(RakNet::SystemAddress)const")]
-pub fn stub_a638fc() -> ! {
-    todo!("0xa638fc RakNet::RakPeer::GetMTUSize(RakNet::SystemAddress)const")
+pub fn stub_a638fc(matched: Option<u32>, default_mtu: u32) -> u32 {
+ // IDA 0xa638fc: slot MTU or peer default.
+ crate::socket::RakPeer::mtu_size(matched, default_mtu)
 }
 
 // 0xa639b4 — __ZN6RakNet7RakPeer20GetNumberOfAddressesEv
 #[doc(alias = "RakNet::RakPeer::GetNumberOfAddresses(void)")]
-pub fn stub_a639b4() -> ! {
-    todo!("0xa639b4 RakNet::RakPeer::GetNumberOfAddresses(void)")
+pub fn stub_a639b4(locals: &[crate::socket::SystemAddress]) -> usize {
+ // IDA 0xa639b4: local address count.
+ crate::socket::RakPeer::number_of_addresses(locals)
 }
 
 // 0xa639e4 — __ZN6RakNet7RakPeer10GetLocalIPEj
 #[doc(alias = "RakNet::RakPeer::GetLocalIP(unsigned int)")]
-pub fn stub_a639e4() -> ! {
-    todo!("0xa639e4 RakNet::RakPeer::GetLocalIP(unsigned int)")
+pub fn stub_a639e4(locals: &[crate::socket::SystemAddress], index: usize) -> String {
+ // IDA 0xa639e4: indexed local address dotted.
+ crate::socket::RakPeer::local_ip(locals, index)
 }
 
 // 0xa63a28 — __ZN6RakNet7RakPeer9IsLocalIPEPKc
 #[doc(alias = "RakNet::RakPeer::IsLocalIP(char const*)")]
-pub fn stub_a63a28() -> ! {
-    todo!("0xa63a28 RakNet::RakPeer::IsLocalIP(char const*)")
+pub fn stub_a63a28(addr: &str, locals: &[String]) -> bool {
+ // IDA 0xa63a28: loopback names or list membership.
+ crate::socket::RakPeer::is_local_ip(addr, locals)
 }
 
 // 0xa63aa8 — __ZN6RakNet7RakPeer34AllowConnectionResponseIPMigrationEb
 #[doc(alias = "RakNet::RakPeer::AllowConnectionResponseIPMigration(bool)")]
-pub fn stub_a63aa8() -> ! {
-    todo!("0xa63aa8 RakNet::RakPeer::AllowConnectionResponseIPMigration(bool)")
+pub fn stub_a63aa8(peer: &mut crate::socket::RakPeer, allow: bool) {
+ // IDA 0xa63aa8: store the migration flag.
+ peer.allow_connection_response_ip_migration(allow)
 }
 
 // 0xa63ab0 — __ZN6RakNet7RakPeer15AdvertiseSystemEPKctS2_ij

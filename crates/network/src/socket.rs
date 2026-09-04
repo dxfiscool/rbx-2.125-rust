@@ -387,6 +387,51 @@ mod tests {
         peer.my_guid = 0x1234;
         assert_eq!(peer.my_guid(), 0x1234);
     }
+    #[test]
+    fn bound_timeout_mtu_gates() {
+        let un = SystemAddress::new();
+        let a = SystemAddress { family: 2, port: 1, binary: 1, debug_port: 1, system_index: 0 };
+        let b = SystemAddress { family: 2, port: 2, binary: 2, debug_port: 2, system_index: 0 };
+        // IDA 0xa6338c/0xa63490/0xa63574/0xa63620: bound and cross lookups.
+        assert_eq!(RakPeer::my_bound_address(&[a, b], 1, un), b);
+        assert_eq!(RakPeer::my_bound_address(&[a], 5, un), un);
+        let remotes = vec![(a, 7u64)];
+        assert_eq!(RakPeer::guid_from_system_address(&un, &un, 99, &remotes, None), 99);
+        assert_eq!(RakPeer::guid_from_system_address(&a, &un, 99, &remotes, Some(0)), 7);
+        assert_eq!(RakPeer::guid_from_system_address(&b, &un, 99, &remotes, None), UNASSIGNED_RAKNET_GUID);
+        let gremotes = vec![(7u64, a)];
+        assert_eq!(RakPeer::system_index_from_guid(&gremotes, UNASSIGNED_RAKNET_GUID, UNASSIGNED_RAKNET_GUID, 99, None), -1);
+        assert_eq!(RakPeer::system_index_from_guid(&gremotes, 99, UNASSIGNED_RAKNET_GUID, 99, None), -1);
+        assert_eq!(RakPeer::system_index_from_guid(&gremotes, 7, UNASSIGNED_RAKNET_GUID, 99, Some(0)), 0);
+        assert_eq!(RakPeer::system_index_from_guid(&gremotes, 8, UNASSIGNED_RAKNET_GUID, 99, None), -1);
+        assert_eq!(RakPeer::system_address_from_guid(UNASSIGNED_RAKNET_GUID, UNASSIGNED_RAKNET_GUID, 99, a, un, &gremotes, None), un);
+        assert_eq!(RakPeer::system_address_from_guid(99, UNASSIGNED_RAKNET_GUID, 99, a, un, &gremotes, None), a);
+        assert_eq!(RakPeer::system_address_from_guid(7, UNASSIGNED_RAKNET_GUID, 99, a, un, &gremotes, Some(0)), a);
+        assert_eq!(RakPeer::system_address_from_guid(8, UNASSIGNED_RAKNET_GUID, 99, a, un, &gremotes, None), un);
+        // IDA 0xa63754/0xa63844/0xa638fc: timeout and MTU paths.
+        let mut peer = RakPeer::new();
+        let order = std::cell::RefCell::new(Vec::new());
+        peer.set_timeout_time(&un, &un, 5000, &mut || order.borrow_mut().push("all"), &mut || order.borrow_mut().push("one"));
+        peer.set_timeout_time(&a, &un, 5000, &mut || order.borrow_mut().push("all"), &mut || order.borrow_mut().push("one"));
+        assert_eq!(peer.default_timeout_ms, 5000);
+        assert_eq!(order.borrow().as_slice(), ["all", "one"]);
+        assert_eq!(RakPeer::timeout_time(&un, &un, 5000, Some(9)), 5000);
+        assert_eq!(RakPeer::timeout_time(&a, &un, 5000, Some(9)), 9);
+        assert_eq!(RakPeer::timeout_time(&a, &un, 5000, None), 5000);
+        assert_eq!(RakPeer::mtu_size(Some(1400), 1500), 1400);
+        assert_eq!(RakPeer::mtu_size(None, 1500), 1500);
+        // IDA 0xa639b4/0xa639e4/0xa63a28/0xa63aa8: local address surface.
+        assert_eq!(RakPeer::number_of_addresses(&[a, b]), 2);
+        assert_eq!(RakPeer::local_ip(&[a], 0), a.dotted());
+        assert_eq!(RakPeer::local_ip(&[a], 3), "");
+        assert!(RakPeer::is_local_ip("127.0.0.1", &[]));
+        assert!(RakPeer::is_local_ip("localhost", &[]));
+        assert!(RakPeer::is_local_ip("10.0.0.9", &["10.0.0.9".to_owned()]));
+        assert!(!RakPeer::is_local_ip("10.0.0.9", &[]));
+        assert!(!RakPeer::is_local_ip("", &[]));
+        peer.allow_connection_response_ip_migration(true);
+        assert!(peer.allow_ip_migration);
+    }
 }
 
 /// `RakNet::UNASSIGNED_RAKNET_GUID` (IDA 0xa5c018).
@@ -752,6 +797,10 @@ pub struct RakPeer {
  pub occasional_ping: bool,
  /// Own guid (IDA 0xa63378).
  pub my_guid: u64,
+ /// Default timeout ms at +1348 (IDA 0xa63754).
+ pub default_timeout_ms: u32,
+ /// Connection-response IP migration flag (IDA 0xa63aa8).
+ pub allow_ip_migration: bool,
 }
 
 impl RakPeer {
@@ -1262,6 +1311,164 @@ impl RakPeer {
  #[must_use]
  pub fn my_guid(&self) -> u64 {
  self.my_guid
+ }
+
+ /// `RakPeer::GetMyBoundAddress` (IDA 0xa6338c): the socket's bound
+ /// address at the index, or unassigned without sockets.
+ #[must_use]
+ pub fn my_bound_address(sockets: &[SystemAddress], index: usize, unassigned: SystemAddress) -> SystemAddress {
+ sockets.get(index).copied().unwrap_or(unassigned)
+ }
+
+ /// `RakPeer::GetGuidFromSystemAddress` (IDA 0xa63490): the peer's
+ /// own guid for unassigned input, else the hint-then-scan match, else
+ /// unassigned.
+ #[must_use]
+ pub fn guid_from_system_address(
+ addr: &SystemAddress,
+ unassigned: &SystemAddress,
+ own_guid: u64,
+ remotes: &[(SystemAddress, u64)],
+ hint: Option<usize>,
+ ) -> u64 {
+ if addr.equals(unassigned) {
+ return own_guid;
+ }
+ if let Some(h) = hint {
+ if let Some((a, g)) = remotes.get(h) {
+ if a.equals(addr) {
+ return *g;
+ }
+ }
+ }
+ remotes.iter().find(|(a, _)| a.equals(addr)).map(|(_, g)| *g).unwrap_or(UNASSIGNED_RAKNET_GUID)
+ }
+
+ /// `RakPeer::GetSystemIndexFromGuid` (IDA 0xa63574): -1 for
+ /// unassigned or own guids, else the hint-then-scan match.
+ #[must_use]
+ pub fn system_index_from_guid(
+ remotes: &[(u64, SystemAddress)],
+ guid: u64,
+ unassigned: u64,
+ own_guid: u64,
+ hint: Option<usize>,
+ ) -> i32 {
+ if guid == unassigned || guid == own_guid {
+ return -1;
+ }
+ if let Some(h) = hint {
+ if let Some((g, _)) = remotes.get(h) {
+ if *g == guid {
+ return h as i32;
+ }
+ }
+ }
+ remotes.iter().position(|(g, _)| *g == guid).map_or(-1, |i| i as i32)
+ }
+
+ /// `RakPeer::GetSystemAddressFromGuid` (IDA 0xa63620): unassigned
+ /// for unassigned input, the bound address for the own guid, else
+ /// the hint-then-scan match.
+ #[must_use]
+ pub fn system_address_from_guid(
+ guid: u64,
+ unassigned_guid: u64,
+ own_guid: u64,
+ own_bound: SystemAddress,
+ unassigned_addr: SystemAddress,
+ remotes: &[(u64, SystemAddress)],
+ hint: Option<usize>,
+ ) -> SystemAddress {
+ if guid == unassigned_guid {
+ return unassigned_addr;
+ }
+ if guid == own_guid {
+ return own_bound;
+ }
+ if let Some(h) = hint {
+ if let Some((g, a)) = remotes.get(h) {
+ if *g == guid {
+ return *a;
+ }
+ }
+ }
+ remotes.iter().find(|(g, _)| *g == guid).map(|(_, a)| *a).unwrap_or(unassigned_addr)
+ }
+
+ /// `RakPeer::SetTimeoutTime` (IDA 0xa63754): unassigned addresses
+ /// set the default and fan out to every active system; otherwise the
+ /// matching system is set engine-side.
+ pub fn set_timeout_time(
+ &mut self,
+ addr: &SystemAddress,
+ unassigned: &SystemAddress,
+ ms: u32,
+ apply_all: &mut dyn FnMut(),
+ apply_one: &mut dyn FnMut(),
+ ) {
+ if addr.equals(unassigned) {
+ self.default_timeout_ms = ms;
+ apply_all();
+ } else {
+ apply_one();
+ }
+ }
+
+ /// `RakPeer::GetTimeoutTime` (IDA 0xa63844): the matching system's
+ /// reliability timeout, else the default.
+ #[must_use]
+ pub fn timeout_time(
+ addr: &SystemAddress,
+ unassigned: &SystemAddress,
+ default_ms: u32,
+ slot: Option<u32>,
+ ) -> u32 {
+ if !addr.equals(unassigned) {
+ if let Some(t) = slot {
+ return t;
+ }
+ }
+ default_ms
+ }
+
+ /// `RakPeer::GetMTUSize` (IDA 0xa638fc): the matching active
+ /// system's MTU, else the peer default.
+ #[must_use]
+ pub fn mtu_size(matched: Option<u32>, default_mtu: u32) -> u32 {
+ matched.unwrap_or(default_mtu)
+ }
+
+ /// `RakPeer::GetNumberOfAddresses` (IDA 0xa639b4): the local address
+ /// count.
+ #[must_use]
+ pub fn number_of_addresses(locals: &[SystemAddress]) -> usize {
+ locals.len()
+ }
+
+ /// `RakPeer::GetLocalIP` (IDA 0xa639e4): the indexed local address
+ /// dotted (the engine refreshes via `GetMyIP` when inactive).
+ #[must_use]
+ pub fn local_ip(locals: &[SystemAddress], index: usize) -> String {
+ locals.get(index).map(|a| a.dotted()).unwrap_or_default()
+ }
+
+ /// `RakPeer::IsLocalIP` (IDA 0xa63a28): loopback names or membership
+ /// in the local list.
+ #[must_use]
+ pub fn is_local_ip(addr: &str, locals: &[String]) -> bool {
+ if addr.is_empty() {
+ return false;
+ }
+ if addr == "127.0.0.1" || addr == "localhost" {
+ return true;
+ }
+ locals.iter().any(|l| l == addr)
+ }
+
+ /// `RakPeer::AllowConnectionResponseIPMigration` (IDA 0xa63aa8).
+ pub fn allow_connection_response_ip_migration(&mut self, allow: bool) {
+ self.allow_ip_migration = allow;
  }
 }
 
