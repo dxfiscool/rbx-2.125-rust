@@ -2649,10 +2649,36 @@ pub struct FFEnumPropDescriptor {
 }
 
 /// Rust model of `RBX::Reflection::EnumPropDescriptor<BasicPartInstance,
-/// BasicPartInstance::LegacyPartType>` (IDA `0x3bc460`): same shape.
+/// BasicPartInstance::LegacyPartType>` (IDA `0x3bc460`): the
+/// conditionally-deleted heap payload plus the impl kind behind the `+44`
+/// word — getter+setter (`GetSetImpl`, 0x14 payload, vtable `off_123DBF8`)
+/// versus setter-only (`SetImpl`, 0xC payload, vtable `off_123DCD8`), which
+/// is what the descriptor `isWriteOnly` reports (0x3bdc9c returns `0`,
+/// 0x3bde94 returns `1`).
 #[derive(Default)]
 pub struct BPEnumPropDescriptor {
     pub owned: Option<Box<PVRefExtra>>,
+    pub set_only: bool,
+}
+
+/// Name/value helpers behind the `LegacyPartType` desc suite (IDA `0x49b530`):
+/// `Ball = 0`, `Block = 1`, `Cylinder = 2` (`addPair` decomp
+/// `0x49b614/0x49b62a/0x49b640`).
+fn legacy_part_type_to_name(value: LegacyPartType) -> &'static str {
+    match value {
+        LegacyPartType::Ball => "Ball",
+        LegacyPartType::Block => "Block",
+        LegacyPartType::Cylinder => "Cylinder",
+    }
+}
+
+fn legacy_part_type_from_name(name: &str) -> Option<LegacyPartType> {
+    match name {
+        "Ball" => Some(LegacyPartType::Ball),
+        "Block" => Some(LegacyPartType::Block),
+        "Cylinder" => Some(LegacyPartType::Cylinder),
+        _ => None,
+    }
 }
 
 /// Rust model of `RBX::Reflection::RefPropDescriptor<BillboardGui, Instance>`
@@ -10812,211 +10838,418 @@ pub fn stub_0x3bc6d8(_part: *const BasicPartInstance, _form_factor: &mut FormFac
 // 0x3bd46c — __ZN3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::EnumPropDescriptor<RBX::BasicPartInstance::LegacyPartType (RBX::BasicPartInstance::*)(void)const,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>(char const*,char const*,RBX::BasicPartInstance::LegacyPartType (RBX::BasicPartInstance::*)(void)const,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::EnumPropDescriptor<RBX::BasicPartInstance::LegacyPartType (RBX::BasicPartInstance::*)(void)const,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>(char const*,char const*,RBX::BasicPartInstance::LegacyPartType (RBX::BasicPartInstance::*)(void)const,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x3bd46c() -> ! {
-    todo!("0x3bd46c RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::EnumPropDescriptor<RBX::BasicPartInstance::LegacyPartType (RBX::BasicPartInstance::*)(void)const,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>(char const*,char const*,RBX::BasicPartInstance::LegacyPartType (RBX::BasicPartInstance::*)(void)const,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x3bd46c(desc: *mut BPEnumPropDescriptor, read_only: bool, write_only: bool) {
+    // IDA 0x3bd46c: `classDescriptor` + `EnumDesc` singleton `call_once`
+    // (0x3bd490-0x3bd4b4) + `PropertyDescriptor` base C2 (0x3bd4fe, enum-desc
+    // heads at `+40/+48`, 0x3bd522/0x3bd58c) + the `0x14` GetSetImpl payload
+    // at `+44` carrying the getter/setter member pair (0x3bd54a-0x3bd570,
+    // vtable `off_123DBF8`) + attribute-flag masking through the
+    // `isReadOnly`/`isWriteOnly` virtuals (0x3bd59c-0x3bd5c2). Singletons,
+    // base and member encodings collapse; the modeled half is the payload
+    // claim plus the flags. The member pair is `getLegacyPartType` (0x3bc484)
+    // / `setLegacyPartTypeXml` (0x3bbe50).
+    // SAFETY: `desc` must point to a valid (possibly uninit) `BPEnumPropDescriptor`.
+    unsafe {
+        (*desc).owned = Some(Box::new(PVRefExtra { words: [0; 8] }));
+        (*desc).set_only = false;
+        let _ = (read_only, write_only);
+    }
 }
 
 // 0x3bd620 — __ZN3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::~EnumPropDescriptor()")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::~EnumPropDescriptor()
-pub fn stub_0x3bd620() -> ! {
-    todo!("0x3bd620 RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::~EnumPropDescriptor()")
+pub fn stub_0x3bd620(desc: *mut BPEnumPropDescriptor) {
+    // IDA 0x3bd620: D0 — vtable reset (0x3bd634, compiler-managed) plus the
+    // conditional `operator delete` of the `+11` payload (0x3bd636-0x3bd63c)
+    // plus `operator delete` of the descriptor itself (0x3bd63c tail). Twin
+    // of the `FFEnumPropDescriptor` D1 (0x3bc1fc) with the D0 storage
+    // release; the box reclaim is all three.
+    // SAFETY: `desc` must be a live box pointer never used again.
+    unsafe {
+        (*desc).owned = None;
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0x3bd64c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::isReadOnly(void)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::isReadOnly(void)const
-pub fn stub_0x3bd64c() -> ! {
-    todo!("0x3bd64c RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::isReadOnly(void)const")
+pub fn stub_0x3bd64c(_desc: *const BPEnumPropDescriptor) -> bool {
+    // IDA 0x3bd64c: delegates to the `+44` impl slot `+0`
+    // (`GetSetImpl::isReadOnly`, 0x3bd658), which returns `0` (0x3bdc9a) —
+    // twin of 0x396168. The `SetImpl` twin (0x3bde90) also returns `0`.
+    false
 }
 
 // 0x3bd65c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::isWriteOnly(void)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::isWriteOnly(void)const
-pub fn stub_0x3bd65c() -> ! {
-    todo!("0x3bd65c RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::isWriteOnly(void)const")
+pub fn stub_0x3bd65c(desc: *const BPEnumPropDescriptor) -> bool {
+    // IDA 0x3bd65c: delegates to the `+44` impl slot `+1` (0x3bd668):
+    // `GetSetImpl::isWriteOnly` returns `0` (0x3bdc9e) while
+    // `SetImpl::isWriteOnly` returns `1` (0x3bde96) — the int+setter C2
+    // (0x3bdce4) descriptor reports write-only. The impl kind is `set_only`.
+    // SAFETY: `desc` must point to a valid `BPEnumPropDescriptor`.
+    unsafe { (*desc).set_only }
 }
 
 // 0x3bd66c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x3bd66c() -> ! {
-    todo!("0x3bd66c RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x3bd66c(
+    desc: *const BPEnumPropDescriptor,
+    first: *const BasicPartInstance,
+    second: *const BasicPartInstance,
+) -> bool {
+    // IDA 0x3bd66c: `getValue` on both sides through the `+44` impl slot `+8`
+    // (0x3bd67c-0x3bd692) — same shape as 0x395cac. The impl fetch collapses
+    // to `stub_0x3bdca0`.
+    // SAFETY: `desc` must point to a valid descriptor; `first`/`second` must
+    // point to valid `BasicPartInstance`s.
+    let _ = desc;
+    stub_0x3bdca0(first) == stub_0x3bdca0(second)
 }
 
 // 0x3bd694 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const
-pub fn stub_0x3bd694() -> ! {
-    todo!("0x3bd694 RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x3bd694(desc: *const BPEnumPropDescriptor, obj: *const BasicPartInstance) -> i32 {
+    // IDA 0x3bd694: `getIndexValue` through the vtable `+68` slot (0x3bd6a2),
+    // then `Type::getSingleton<int>` + `placement_any<int>` store
+    // (0x3bd6a8-0x3bd6b6). The Variant box collapses; the modeled half is the
+    // index value.
+    // SAFETY: `desc`/`obj` must point to valid values.
+    stub_0x3bdaf0(desc, obj)
 }
 
 // 0x3bd6b8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const
-pub fn stub_0x3bd6b8() -> ! {
-    todo!("0x3bd6b8 RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x3bd6b8(desc: *const BPEnumPropDescriptor, obj: *mut BasicPartInstance, value: i32) {
+    // IDA 0x3bd6b8: an int-typed Variant unboxes directly (0x3bd702-0x3bd784,
+    // `any_cast<int>`); any other type goes through `Variant::convert<int>`
+    // with the manager retain/release dance (0x3bd738-0x3bd774) — then the
+    // `+72` vtable slot, `setIndexValue` (0x3bd794). The unbox/convert
+    // collapses into the typed `value`.
+    // SAFETY: `desc` must point to a valid descriptor; `obj` must point to a
+    // valid `BasicPartInstance`.
+    stub_0x3bdb0c(desc, obj, value);
 }
 
 // 0x3bd804 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const
-pub fn stub_0x3bd804() -> ! {
-    todo!("0x3bd804 RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x3bd804(
+    desc: *const BPEnumPropDescriptor,
+    src: *const BasicPartInstance,
+    dst: *mut BasicPartInstance,
+) {
+    // IDA 0x3bd804: `getValue` spill through the `+44` slot `+8` (0x3bd816)
+    // then `setValue` through slot `+12` (0x3bd826) — same shape as 0x395eb4.
+    // The spill retain is the value move.
+    // SAFETY: `desc` must point to a valid descriptor; `src`/`dst` must point
+    // to valid `BasicPartInstance`s.
+    let current = stub_0x3bdca0(src);
+    stub_0x3bdcc0(desc, dst, current);
 }
 
 // 0x3bd828 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::hasStringValue(void)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::hasStringValue(void)const
-pub fn stub_0x3bd828() -> ! {
-    todo!("0x3bd828 RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::hasStringValue(void)const")
+pub fn stub_0x3bd828() -> bool {
+    // IDA 0x3bd828: `return 1` (0x3bd82a) — every enum value has a string form.
+    true
 }
 
 // 0x3bd82c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::getStringValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x3bd82c() -> ! {
-    todo!("0x3bd82c RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x3bd82c(desc: *const BPEnumPropDescriptor, obj: *const BasicPartInstance) -> &'static str {
+    // IDA 0x3bd82c: `getValue` through the `+44` slot `+8` (0x3bd83e) then
+    // `EnumDesc::convertToString` with the `+48` desc head (0x3bd836-0x3bd84e).
+    // The desc-head lookup collapses to the `LegacyPartType` name table
+    // (IDA `0x49b530`).
+    // SAFETY: `desc`/`obj` must point to valid values.
+    let _ = desc;
+    legacy_part_type_to_name(stub_0x3bdca0(obj))
 }
 
 // 0x3bd850 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const
-pub fn stub_0x3bd850() -> ! {
-    todo!("0x3bd850 RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x3bd850(
+    desc: *const BPEnumPropDescriptor,
+    obj: *mut BasicPartInstance,
+    name: &str,
+) -> bool {
+    // IDA 0x3bd850: `Name::lookup` (0x3bd862) + `EnumDesc::convertToValue`
+    // (0x3bd870); on success the `+44` slot `+12` setter runs (0x3bd87c-0x3bd888),
+    // else `0` (0x3bd872-0x3bd88c). Unknown names miss the table — no store.
+    // SAFETY: `desc` must point to a valid descriptor; `obj` must point to a
+    // valid `BasicPartInstance`.
+    match legacy_part_type_from_name(name) {
+        Some(value) => {
+            stub_0x3bdcc0(desc, obj, value);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x3bd890 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const
-pub fn stub_0x3bd890() -> ! {
-    todo!("0x3bd890 RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x3bd890(desc: *const BPEnumPropDescriptor, obj: *const BasicPartInstance) -> i32 {
+    // IDA 0x3bd890: `getValue` through the `+44` slot `+8` (0x3bd89e), then
+    // the XML pair is cleared and tagged int (`clearValue`, `a3[4] = 5`) with
+    // the value stored (0x3bd8a4-0x3bd8ae). The XML store is out of domain;
+    // the modeled half is the raw value, like the `RefProp` writeValues.
+    // SAFETY: `desc`/`obj` must point to valid values.
+    let _ = desc;
+    stub_0x3bdca0(obj) as i32
 }
 
 // 0x3bd8b0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const
-pub fn stub_0x3bd8b0() -> ! {
-    todo!("0x3bd8b0 RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x3bd8b0(desc: *const BPEnumPropDescriptor, obj: *mut BasicPartInstance, value: LegacyPartType) {
+    // IDA 0x3bd8b0: `xsi:nil` returns early (0x3bd8d4); an int payload routes
+    // through `setIntValue` (0x3bd91c-0x3bd92c); else a string payload goes
+    // through `Name::lookup` + `EnumDesc::convertToValue` into the `+44`
+    // slot-`+12` setter (0x3bd93a-0x3bd996); an empty string falls back to
+    // the defaulted setter (0x3bd9b8-0x3bda6a) and any other miss hits
+    // `ReleaseAssert("false", Reflection.h:359)` (0x3bd9f0+). Same shape as
+    // the `FormFactorPart` twin (0x3bc220); XML/names collapse into the
+    // resolved value.
+    // SAFETY: `desc` must point to a valid descriptor; `obj` must point to a
+    // valid `BasicPartInstance`.
+    stub_0x3bdcc0(desc, obj, value);
 }
 
 // 0x3bdaf0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::getIndexValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x3bdaf0() -> ! {
-    todo!("0x3bdaf0 RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x3bdaf0(desc: *const BPEnumPropDescriptor, obj: *const BasicPartInstance) -> i32 {
+    // IDA 0x3bdaf0: `getValue` through the `+44` slot `+8` (0x3bdb00) then
+    // `EnumDesc::convertToIndex` (0x3bdb0a, grounded at 0x3bdbe8). The dense
+    // table maps `Ball/Block/Cylinder` to `0/1/2`, so the index is the value.
+    // SAFETY: `desc`/`obj` must point to valid values.
+    let _ = desc;
+    stub_0x3bdca0(obj) as i32
 }
 
 // 0x3bdb0c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const
-pub fn stub_0x3bdb0c() -> ! {
-    todo!("0x3bdb0c RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x3bdb0c(desc: *const BPEnumPropDescriptor, obj: *mut BasicPartInstance, index: i32) -> bool {
+    // IDA 0x3bdb0c: out-of-range indices (`+40` count check, 0x3bdb1e) return
+    // `0`; else the index-table value feeds the `+44` slot-`+12` setter
+    // (0x3bdb28-0x3bdb34). The dense table maps `0/1/2` to
+    // `Ball/Block/Cylinder`, so in-range indices convert directly.
+    // SAFETY: `desc` must point to a valid descriptor; `obj` must point to a
+    // valid `BasicPartInstance`.
+    let _ = desc;
+    let value = match index {
+        0 => LegacyPartType::Ball,
+        1 => LegacyPartType::Block,
+        2 => LegacyPartType::Cylinder,
+        _ => return false,
+    };
+    stub_0x3bdcc0(desc, obj, value);
+    true
 }
 
 // 0x3bdb40 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::getEnumValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x3bdb40() -> ! {
-    todo!("0x3bdb40 RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x3bdb40(desc: *const BPEnumPropDescriptor, obj: *const BasicPartInstance) -> LegacyPartType {
+    // IDA 0x3bdb40: `getValue` through the `+44` slot `+8` (0x3bdb46) — the
+    // raw enum value, no index translation.
+    // SAFETY: `desc`/`obj` must point to valid values.
+    let _ = desc;
+    stub_0x3bdca0(obj)
 }
 
 // 0x3bdb48 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const
-pub fn stub_0x3bdb48() -> ! {
-    todo!("0x3bdb48 RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x3bdb48(
+    desc: *const BPEnumPropDescriptor,
+    obj: *mut BasicPartInstance,
+    value: i32,
+) -> bool {
+    // IDA 0x3bdb48: `__find_if` with `EnumDescriptor::equalValue` over the
+    // `+28/+32` item range (0x3bdb56-0x3bdb72); a miss returns `0`
+    // (0x3bdb74-0x3bdb90), a hit feeds the `+44` slot-`+12` setter and returns
+    // `1` (0x3bdb7a-0x3bdb88). The item search collapses to the dense
+    // `0/1/2` domain check.
+    // SAFETY: `desc` must point to a valid descriptor; `obj` must point to a
+    // valid `BasicPartInstance`.
+    let typed = match value {
+        0 => LegacyPartType::Ball,
+        1 => LegacyPartType::Block,
+        2 => LegacyPartType::Cylinder,
+        _ => return false,
+    };
+    stub_0x3bdcc0(desc, obj, typed);
+    true
 }
 
 // 0x3bdb94 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::getEnumItem(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x3bdb94() -> ! {
-    todo!("0x3bdb94 RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x3bdb94(desc: *const BPEnumPropDescriptor, obj: *const BasicPartInstance) -> &'static str {
+    // IDA 0x3bdb94: `getValue` through the `+44` slot `+8` (0x3bdba6) then
+    // `EnumDesc::convertToItem` (0x3bdbb2). The item lookup collapses to the
+    // name table, like `getStringValue` (0x3bd82c).
+    // SAFETY: `desc`/`obj` must point to valid values.
+    stub_0x3bd82c(desc, obj)
 }
 
 // 0x3bdbb4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const
-pub fn stub_0x3bdbb4() -> ! {
-    todo!("0x3bdbb4 RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x3bdbb4(
+    desc: *const BPEnumPropDescriptor,
+    obj: *mut BasicPartInstance,
+    name: &str,
+) -> bool {
+    // IDA 0x3bdbb4: `EnumDesc::convertToValue` on the pre-looked-up `Name`
+    // (0x3bdbca); on success the `+44` slot-`+12` setter runs (0x3bdbe0),
+    // else `0` (0x3bdbcc-0x3bdbe6). The `Name` wrapper collapses — same
+    // contract as the string twin (0x3bd850).
+    // SAFETY: `desc` must point to a valid descriptor; `obj` must point to a
+    // valid `BasicPartInstance`.
+    stub_0x3bd850(desc, obj, name)
 }
 
 // 0x3bdbe8 — __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToIndex(RBX::BasicPartInstance::LegacyPartType)const")]
 // was: RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToIndex(RBX::BasicPartInstance::LegacyPartType)const
-pub fn stub_0x3bdbe8() -> ! {
-    todo!("0x3bdbe8 RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToIndex(RBX::BasicPartInstance::LegacyPartType)const")
+pub fn stub_0x3bdbe8(value: LegacyPartType) -> i32 {
+    // IDA 0x3bdbe8: negative values hit
+    // `ReleaseAssert("value>=0", enumconverter.h:350)` (0x3bdbfc-0x3bdc40);
+    // the `+156` index-table lookup returns the slot or `-1` when
+    // out-of-range (0x3bdc42-0x3bdc56). The dense table maps
+    // `Ball/Block/Cylinder` to `0/1/2`, so the index is the value;
+    // out-of-range values are unrepresentable in the typed model.
+    value as i32
 }
 
 // 0x3bdc58 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::setIntValue(RBX::Reflection::DescribedBase *,int)const
-pub fn stub_0x3bdc58() -> ! {
-    todo!("0x3bdc58 RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x3bdc58(desc: *const BPEnumPropDescriptor, obj: *mut BasicPartInstance, value: i32) -> bool {
+    // IDA 0x3bdc58: negative values return `0` (0x3bdc62); the `+132`
+    // index-table lookup must cover the value (0x3bdc66-0x3bdc74) and the
+    // slot must not be `-1` (0x3bdc80); then the `+44` slot-`+12` setter runs
+    // and `1` returns (0x3bdc82-0x3bdc8e). Same gate shape as `setIndexValue`
+    // (0x3bdb0c).
+    // SAFETY: `desc` must point to a valid descriptor; `obj` must point to a
+    // valid `BasicPartInstance`.
+    stub_0x3bdb0c(desc, obj, value)
 }
 
 // 0x3bdc98 — __ZNK3RBX10Reflection14PropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::GetSetImpl<RBX::BasicPartInstance::LegacyPartType (RBX::BasicPartInstance::*)(void)const,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::GetSetImpl<RBX::BasicPartInstance::LegacyPartType (RBX::BasicPartInstance::*)(void)const,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::isReadOnly(void)const
-pub fn stub_0x3bdc98() -> ! {
-    todo!("0x3bdc98 RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::GetSetImpl<RBX::BasicPartInstance::LegacyPartType (RBX::BasicPartInstance::*)(void)const,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::isReadOnly(void)const")
+pub fn stub_0x3bdc98() -> bool {
+    // IDA 0x3bdc98: `GetSetImpl::isReadOnly` returns `0` (0x3bdc9a) — twin of
+    // 0x396168.
+    false
 }
 
 // 0x3bdc9c — __ZNK3RBX10Reflection14PropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::GetSetImpl<RBX::BasicPartInstance::LegacyPartType (RBX::BasicPartInstance::*)(void)const,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::GetSetImpl<RBX::BasicPartInstance::LegacyPartType (RBX::BasicPartInstance::*)(void)const,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::isWriteOnly(void)const
-pub fn stub_0x3bdc9c() -> ! {
-    todo!("0x3bdc9c RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::GetSetImpl<RBX::BasicPartInstance::LegacyPartType (RBX::BasicPartInstance::*)(void)const,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::isWriteOnly(void)const")
+pub fn stub_0x3bdc9c() -> bool {
+    // IDA 0x3bdc9c: `GetSetImpl::isWriteOnly` returns `0` (0x3bdc9e) — twin
+    // of 0x39616c.
+    false
 }
 
 // 0x3bdca0 — __ZNK3RBX10Reflection14PropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::GetSetImpl<RBX::BasicPartInstance::LegacyPartType (RBX::BasicPartInstance::*)(void)const,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::GetSetImpl<RBX::BasicPartInstance::LegacyPartType (RBX::BasicPartInstance::*)(void)const,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::getValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x3bdca0() -> ! {
-    todo!("0x3bdca0 RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::GetSetImpl<RBX::BasicPartInstance::LegacyPartType (RBX::BasicPartInstance::*)(void)const,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x3bdca0(obj: *const BasicPartInstance) -> LegacyPartType {
+    // IDA 0x3bdca0: null stays `0`, else `-36` DescribedBase strip
+    // (0x3bdca0-0x3bdca6), member-getter fetch at `+4`/`+8` with the virtual
+    // encoding (0x3bdcaa-0x3bdba) — same shape as 0x396170. Encoding + strip
+    // collapse; the member is `getLegacyPartType` (0x3bc484).
+    // SAFETY: `obj` must point to a valid `BasicPartInstance`.
+    stub_0x3bc484(obj)
 }
 
 // 0x3bdcc0 — __ZNK3RBX10Reflection14PropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::GetSetImpl<RBX::BasicPartInstance::LegacyPartType (RBX::BasicPartInstance::*)(void)const,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::setValue(RBX::Reflection::DescribedBase *,RBX::BasicPartInstance::LegacyPartType const&)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::GetSetImpl<RBX::BasicPartInstance::LegacyPartType (RBX::BasicPartInstance::*)(void)const,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::setValue(RBX::Reflection::DescribedBase *,RBX::BasicPartInstance::LegacyPartType const&)const
-pub fn stub_0x3bdcc0() -> ! {
-    todo!("0x3bdcc0 RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::GetSetImpl<RBX::BasicPartInstance::LegacyPartType (RBX::BasicPartInstance::*)(void)const,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::setValue(RBX::Reflection::DescribedBase *,RBX::BasicPartInstance::LegacyPartType const&)const")
+pub fn stub_0x3bdcc0(desc: *const BPEnumPropDescriptor, obj: *mut BasicPartInstance, value: LegacyPartType) {
+    // IDA 0x3bdcc0: null stays `0`, else `-36` strip (0x3bdcc0-0x3bdcc8),
+    // member-setter fetch at `+12`/`+16` with the virtual encoding
+    // (0x3bdccc-0x3bdcdc) — same shape as 0x396190. Encoding + strip
+    // collapse; the member is `setLegacyPartTypeXml` (0x3bbe50).
+    // SAFETY: `desc` must point to a valid descriptor; `obj` must point to a
+    // valid `BasicPartInstance`.
+    let _ = desc;
+    stub_0x3bbe50(obj, value);
 }
 
 // 0x3bdce4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEEC2IiMS2_FvS3_EEEPKcS9_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::EnumPropDescriptor<int,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>(char const*,char const*,int,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::EnumPropDescriptor<int,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>(char const*,char const*,int,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x3bdce4() -> ! {
-    todo!("0x3bdce4 RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::EnumPropDescriptor<int,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>(char const*,char const*,int,void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x3bdce4(desc: *mut BPEnumPropDescriptor, read_only: bool, write_only: bool) {
+    // IDA 0x3bdce4: same build as the getter+setter C2 (0x3bd46c) — class
+    // head, singleton `call_once`, base C2, vtable set — but the `+44`
+    // payload is the `0xC` setter-only `SetImpl` (0x3bddc0-0x3bddde, vtable
+    // `off_123DCD8`) holding just the setter member, with the same flag
+    // masking (0x3bde0a-0x3bde30). The member is `setLegacyPartTypeXml`
+    // (0x3bbe50); the setter-only kind is `set_only`, which is what this
+    // descriptor reports from `isWriteOnly` (0x3bde94 returns `1`).
+    // SAFETY: `desc` must point to a valid (possibly uninit) `BPEnumPropDescriptor`.
+    unsafe {
+        (*desc).owned = Some(Box::new(PVRefExtra { words: [0; 8] }));
+        (*desc).set_only = true;
+        let _ = (read_only, write_only);
+    }
 }
 
 // 0x3bde90 — __ZNK3RBX10Reflection14PropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE7SetImplIMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::SetImpl<void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::SetImpl<void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::isReadOnly(void)const
-pub fn stub_0x3bde90() -> ! {
-    todo!("0x3bde90 RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::SetImpl<void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::isReadOnly(void)const")
+pub fn stub_0x3bde90() -> bool {
+    // IDA 0x3bde90: `SetImpl::isReadOnly` returns `0` (0x3bde92).
+    false
 }
 
 // 0x3bde94 — __ZNK3RBX10Reflection14PropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE7SetImplIMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::SetImpl<void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::SetImpl<void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::isWriteOnly(void)const
-pub fn stub_0x3bde94() -> ! {
-    todo!("0x3bde94 RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::SetImpl<void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::isWriteOnly(void)const")
+pub fn stub_0x3bde94() -> bool {
+    // IDA 0x3bde94: `SetImpl::isWriteOnly` returns `1` (0x3bde96) — a
+    // setter-only impl admits no reads.
+    true
 }
 
 // 0x3bde98 — __ZNK3RBX10Reflection14PropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE7SetImplIMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::SetImpl<void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::SetImpl<void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::getValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x3bde98() -> ! {
-    todo!("0x3bde98 RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::SetImpl<void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x3bde98(_obj: *const BasicPartInstance) -> ! {
+    // IDA 0x3bde98: `SetImpl::getValue` throws
+    // `runtime_error("can't get value")` unconditionally (0x3bdec4-0x3bdfa8)
+    // — a setter-only impl has nothing to read.
+    panic!("0x3bde98 getValue<BasicPartInstance>: can't get value");
 }
 
 // 0x3bdfb8 — __ZNK3RBX10Reflection14PropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEE7SetImplIMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::SetImpl<void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::setValue(RBX::Reflection::DescribedBase *,RBX::BasicPartInstance::LegacyPartType const&)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::SetImpl<void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::setValue(RBX::Reflection::DescribedBase *,RBX::BasicPartInstance::LegacyPartType const&)const
-pub fn stub_0x3bdfb8() -> ! {
-    todo!("0x3bdfb8 RBX::Reflection::PropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::SetImpl<void (RBX::BasicPartInstance::*)(RBX::BasicPartInstance::LegacyPartType)>::setValue(RBX::Reflection::DescribedBase *,RBX::BasicPartInstance::LegacyPartType const&)const")
+pub fn stub_0x3bdfb8(obj: *mut BasicPartInstance, value: LegacyPartType) {
+    // IDA 0x3bdfb8: same member-setter fetch as the `GetSetImpl` twin
+    // (0x3bdfb8-0x3bdfd4, payload at `+4`/`+8`) — the member is
+    // `setLegacyPartTypeXml` (0x3bbe50).
+    // SAFETY: `obj` must point to a valid `BasicPartInstance`.
+    stub_0x3bbe50(obj, value);
 }
 
 // 0x3bdfdc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE11setIntValueEPNS0_13DescribedBaseEi
