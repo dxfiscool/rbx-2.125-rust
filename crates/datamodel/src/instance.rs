@@ -544,6 +544,13 @@ pub struct RotateAxisCommand {
     pub data_model: *const DataModel,
 }
 
+/// Rust model of `RBX::ModelInstance` (IDA `0x3f87c0` region): the grouping
+/// model behind `create<ModelInstance>`; members land with the model batch.
+#[derive(Default)]
+pub struct ModelInstance {
+    _opaque: (),
+}
+
 /// Cached class index behind `doGetClassIndex<FilteredSelection>` (IDA
 /// `0x3ff958`): assigned once from the provider index counter.
 static FILTERED_SELECTION_INDEX: AtomicUsize = AtomicUsize::new(0);
@@ -12851,71 +12858,115 @@ pub fn stub_0x401104(selection: *const FilteredSelection, _this: *mut FilteredSe
 // 0x40110c — __ZThn32_N3RBX17FilteredSelectionINS_13ModelInstanceEED0Ev
 #[doc(alias = "non-virtual thunk to RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")]
 // was: non-virtual thunk to RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()
-pub fn stub_0x40110c() -> ! {
-    todo!("0x40110c non-virtual thunk to RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")
+pub fn stub_0x40110c(selection: *const FilteredSelection) {
+    // IDA 0x40110c: `__ZThn32_` thunk to the D0 — the `this - 32` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D0 of
+    // 0x400e70.
+    // SAFETY: `selection` must be a live box pointer never used again.
+    unsafe {
+        let _ = Box::from_raw(selection as *mut FilteredSelection);
+    }
 }
 
 // 0x401114 — __ZThn36_N3RBX17FilteredSelectionINS_13ModelInstanceEED1Ev
 #[doc(alias = "non-virtual thunk to RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")]
 // was: non-virtual thunk to RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()
-pub fn stub_0x401114() -> ! {
-    todo!("0x401114 non-virtual thunk to RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")
+pub fn stub_0x401114(selection: *const FilteredSelection, _this: *mut FilteredSelection) {
+    // IDA 0x401114: `__ZThn36_` thunk to the D1 — the `this - 36` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D1 of
+    // 0x400e6c.
+    // SAFETY: `selection` must be a live box pointer never used again.
+    let _ = selection;
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x40111c — __ZThn36_N3RBX17FilteredSelectionINS_13ModelInstanceEED0Ev
 #[doc(alias = "non-virtual thunk to RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")]
 // was: non-virtual thunk to RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()
-pub fn stub_0x40111c() -> ! {
-    todo!("0x40111c non-virtual thunk to RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")
+pub fn stub_0x40111c(selection: *const FilteredSelection) {
+    // IDA 0x40111c: `__ZThn36_` thunk to the D0 — the `this - 36` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D0 of
+    // 0x400e70.
+    // SAFETY: `selection` must be a live box pointer never used again.
+    unsafe {
+        let _ = Box::from_raw(selection as *mut FilteredSelection);
+    }
 }
 
 // 0x401124 — __ZThn96_N3RBX17FilteredSelectionINS_13ModelInstanceEE18onSelectionChangedERKNS_16SelectionChangedE
 #[doc(alias = "non-virtual thunk to RBX::FilteredSelection<RBX::ModelInstance>::onSelectionChanged(RBX::SelectionChanged const&)")]
 // was: non-virtual thunk to RBX::FilteredSelection<RBX::ModelInstance>::onSelectionChanged(RBX::SelectionChanged const&)
-pub fn stub_0x401124() -> ! {
-    todo!("0x401124 non-virtual thunk to RBX::FilteredSelection<RBX::ModelInstance>::onSelectionChanged(RBX::SelectionChanged const&)")
+pub fn stub_0x401124(selection: &mut FilteredSelection, added: *const Instance, removed: *const Instance) {
+    // IDA 0x401124: `__ZThn96_` thunk to `onSelectionChanged<ModelInstance>`
+    // — the `this - 96` adjustment is a layout artifact, so the thunk
+    // collapses into the direct handler of 0x401088.
+    stub_0x401088(selection, added, removed);
 }
 
 // 0x40112c — __ZNSt6vectorIPN3RBX13ModelInstanceESaIS2_EE9push_backERKS2_
 #[doc(alias = "std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>::push_back(RBX::ModelInstance * const&)")]
 // was: std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>::push_back(RBX::ModelInstance * const&)
-pub fn stub_0x40112c() -> ! {
-    todo!("0x40112c std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>::push_back(RBX::ModelInstance * const&)")
+pub fn stub_0x40112c(items: &mut Vec<*const ModelInstance>, item: *const ModelInstance) {
+    // IDA 0x40112c (`vector<ModelInstance*>::push_back`): grows and copies
+    // the raw pointer into the tail; `push` is the same append.
+    items.push(item);
 }
 
 // 0x401158 — __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPPN3RBX13ModelInstanceESt6vectorIS4_SaIS4_EEEEPNS2_8InstanceEET_SC_SC_RKT0_St26random_access_iterator_tag
 #[doc(alias = "__gnu_cxx::__normal_iterator<RBX::ModelInstance **,std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>> std::__find<__gnu_cxx::__normal_iterator<RBX::ModelInstance **,std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>>,RBX::Instance *>(__gnu_cxx::__normal_iterator<RBX::ModelInstance **,std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>>,__gnu_cxx::__normal_iterator<RBX::ModelInstance **,std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>>,RBX::Instance * const&,std::random_access_iterator_tag)")]
 // was: __gnu_cxx::__normal_iterator<RBX::ModelInstance **,std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>> std::__find<__gnu_cxx::__normal_iterator<RBX::ModelInstance **,std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>>,RBX::Instance *>(__gnu_cxx::__normal_iterator<RBX::ModelInstance **,std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>>,__gnu_cxx::__normal_iterator<RBX::ModelInstance **,std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>>,RBX::Instance * const&,std::random_access_iterator_tag)
-pub fn stub_0x401158() -> ! {
-    todo!("0x401158 __gnu_cxx::__normal_iterator<RBX::ModelInstance **,std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>> std::__find<__gnu_cxx::__normal_iterator<RBX::ModelInstance **,std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>>,RBX::Instance *>(__gnu_cxx::__normal_iterator<RBX::ModelInstance **,std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>>,__gnu_cxx::__normal_iterator<RBX::ModelInstance **,std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>>,RBX::Instance * const&,std::random_access_iterator_tag)")
+pub fn stub_0x401158(items: &[*const ModelInstance], target: *const Instance) -> Option<usize> {
+    // IDA 0x401158 (`__find` over the `ModelInstance*` range): linear search
+    // with the end iterator on miss; the iterator collapses into the
+    // position. Same shape as 0x400110.
+    items.iter().position(|item| *item as *const Instance == target)
 }
 
 // 0x4011e8 — __ZNSt6vectorIPN3RBX13ModelInstanceESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::ModelInstance **,std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>>,RBX::ModelInstance * const&)")]
 // was: std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::ModelInstance **,std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>>,RBX::ModelInstance * const&)
-pub fn stub_0x4011e8() -> ! {
-    todo!("0x4011e8 std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::ModelInstance **,std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>>,RBX::ModelInstance * const&)")
+pub fn stub_0x4011e8(items: &mut Vec<*const ModelInstance>, index: usize, item: *const ModelInstance) {
+    // IDA 0x4011e8 (`vector<ModelInstance*>::_M_insert_aux`): shifts the tail
+    // and copies the pointer into the hole; `insert` is the same splice (the
+    // index stands in for the iterator position).
+    let at = index.min(items.len());
+    items.insert(at, item);
 }
 
 // 0x4012c8 — __ZNSt12_Vector_baseIPN3RBX13ModelInstanceESaIS2_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>::_M_allocate(unsigned long)")]
 // was: std::_Vector_base<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>::_M_allocate(unsigned long)
-pub fn stub_0x4012c8() -> ! {
-    todo!("0x4012c8 std::_Vector_base<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *>>::_M_allocate(unsigned long)")
+pub fn stub_0x4012c8(capacity: usize) -> Vec<*const ModelInstance> {
+    // IDA 0x4012c8 (`_Vector_base<ModelInstance*>::_M_allocate`): allocates
+    // raw storage for the elements without constructing any; an empty vector
+    // with the same capacity is the same allocation, safely.
+    Vec::with_capacity(capacity)
 }
 
 // 0x4012e0 — __ZN3RBX17FilteredSelectionINS_13ModelInstanceEED2Ev
 #[doc(alias = "RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")]
 // was: RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()
-pub fn stub_0x4012e0() -> ! {
-    todo!("0x4012e0 RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")
+pub fn stub_0x4012e0(selection: &mut FilteredSelection) {
+    // IDA 0x4012e0: `FilteredSelection<ModelInstance>::D2` — releases the
+    // root link and clears the lists in place. Twin of 0x4001a0.
+    selection.root = None;
+    selection.items.clear();
+    selection.selected.clear();
 }
 
 // 0x401414 — __ZN5boost10shared_ptrIN3RBX17FilteredSelectionINS1_13ModelInstanceEEEEC2IS4_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::FilteredSelection<RBX::ModelInstance>>::shared_ptr<RBX::FilteredSelection<RBX::ModelInstance>,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::FilteredSelection<RBX::ModelInstance>>::shared_ptr<RBX::FilteredSelection<RBX::ModelInstance>,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x401414() -> ! {
-    todo!("0x401414 boost::shared_ptr<RBX::FilteredSelection<RBX::ModelInstance>>::shared_ptr<RBX::FilteredSelection<RBX::ModelInstance>,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x401414(ptr: *mut FilteredSelection, _deleter: CreatableInstanceDeleter) -> SharedPtr<FilteredSelection> {
+    // IDA 0x401414: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0x4003f4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(FilteredSelection::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x4014dc — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17FilteredSelectionINS1_13ModelInstanceEEES8_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -12928,57 +12979,96 @@ pub fn stub_0x4014dc() -> ! {
 // 0x4015c4 — __ZN5boost6detail12shared_countC2IPN3RBX17FilteredSelectionINS3_13ModelInstanceEEENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x4015c4() -> ! {
-    todo!("0x4015c4 boost::detail::shared_count::shared_count<RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x4015c4(ptr: *mut FilteredSelection, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<FilteredSelection, CreatableInstanceDeleter> {
+    // IDA 0x4015c4: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0x4005a4.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x4016cc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_13ModelInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x4016cc() -> ! {
-    todo!("0x4016cc boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x4016cc(_block: *mut ControlBlockPd<FilteredSelection, CreatableInstanceDeleter>) {
+    // IDA 0x4016cc: `BX LR` — empty; same as 0x4006ac.
 }
 
 // 0x4016d0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_13ModelInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x4016d0() -> ! {
-    todo!("0x4016d0 boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x4016d0(block: *mut ControlBlockPd<FilteredSelection, CreatableInstanceDeleter>) {
+    // IDA 0x4016d0: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x4006b0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x4016d4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_13ModelInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x4016d4() -> ! {
-    todo!("0x4016d4 boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x4016d4(_block: *mut ControlBlockPd<FilteredSelection, CreatableInstanceDeleter>) {
+    // IDA 0x4016d4: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x4006b4.
 }
 
 // 0x4016f4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_13ModelInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x4016f4() -> ! {
-    todo!("0x4016f4 boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x4016f4(block: *const ControlBlockPd<FilteredSelection, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x4016f4: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x4006d4.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x40170c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_13ModelInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x40170c() -> ! {
-    todo!("0x40170c boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::ModelInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x40170c(block: *const ControlBlockPd<FilteredSelection, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x40170c: unconditional `this + 0x10`; same as 0x4006ec.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x401710 — __ZN5boost3_bi5list1INS_3argILi1EEEEclIPFvNS_10shared_ptrIN3RBX8InstanceEEEENS1_IRKS9_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list1<boost::arg<1>>::operator()<void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::Instance>) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")]
 // was: void boost::_bi::list1<boost::arg<1>>::operator()<void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::Instance>) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)
-pub fn stub_0x401710() -> ! {
-    todo!("0x401710 void boost::_bi::list1<boost::arg<1>>::operator()<void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::Instance>) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)")
+pub fn stub_0x401710(func: fn(&SharedPtr<Instance>), arg: &SharedPtr<Instance>) {
+    // IDA 0x401710: `list1<arg1>::operator()` over a free `void(shared)` —
+    // retains the incoming arg, applies the callee, releases on scope exit;
+    // the retain/release collapses into a clone (decomp 0x401722 loop head).
+    func(&arg.clone());
 }
 
 // 0x4017dc — __ZN3RBX8Instance14findCommonNodeEPS0_S1_
 #[doc(alias = "RBX::Instance::findCommonNode(RBX::Instance*,RBX::Instance*)")]
 // was: RBX::Instance::findCommonNode(RBX::Instance*,RBX::Instance*)
-pub fn stub_0x4017dc() -> ! {
-    todo!("0x4017dc RBX::Instance::findCommonNode(RBX::Instance*,RBX::Instance*)")
+pub fn stub_0x4017dc(a: *const Instance, b: *const Instance) -> *const Instance {
+    // IDA 0x4017dc: walks both `+13` parent chains (decomp 0x4017e4-0x40180c)
+    // for the meeting point — the lowest common ancestor, null when the
+    // chains never meet. The ancestor-set walk returns the same node.
+    // SAFETY: `a`/`b` must be null or point to valid `Instance`s whose
+    // ancestor chains outlive the call.
+    unsafe {
+        let mut ancestors = HashSet::new();
+        let mut node = a;
+        while !node.is_null() {
+            ancestors.insert(node);
+            node = (*node).parent;
+        }
+        let mut other = b;
+        while !other.is_null() {
+            if ancestors.contains(&other) {
+                return other;
+            }
+            other = (*other).parent;
+        }
+        core::ptr::null()
+    }
 }
 
 // 0x40181c — __ZNK3RBX8Instance11canAddChildEPKS0_
@@ -12991,15 +13081,24 @@ pub fn stub_0x40181c() -> ! {
 // 0x40187c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13ModelInstanceEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::ModelInstance> RBX::Creatable<RBX::Instance>::create<RBX::ModelInstance>(void)")]
 // was: boost::shared_ptr<RBX::ModelInstance> RBX::Creatable<RBX::Instance>::create<RBX::ModelInstance>(void)
-pub fn stub_0x40187c() -> ! {
-    todo!("0x40187c boost::shared_ptr<RBX::ModelInstance> RBX::Creatable<RBX::Instance>::create<RBX::ModelInstance>(void)")
+pub fn stub_0x40187c() -> SharedPtr<ModelInstance> {
+    // IDA 0x40187c: `Creatable::create<ModelInstance>` — `operator new` +
+    // default ctor + adoption with the `Creatable` deleter; same collapse as
+    // 0xef04.
+    SharedPtr::new(ModelInstance::default())
 }
 
 // 0x401930 — __ZN5boost10shared_ptrIN3RBX13ModelInstanceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::ModelInstance>::shared_ptr<RBX::ModelInstance,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ModelInstance *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::ModelInstance>::shared_ptr<RBX::ModelInstance,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ModelInstance *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x401930() -> ! {
-    todo!("0x401930 boost::shared_ptr<RBX::ModelInstance>::shared_ptr<RBX::ModelInstance,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ModelInstance *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x401930(ptr: *mut ModelInstance, _deleter: CreatableInstanceDeleter) -> SharedPtr<ModelInstance> {
+    // IDA 0x401930: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(ModelInstance::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x4019f8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13ModelInstanceES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -13012,22 +13111,28 @@ pub fn stub_0x4019f8() -> ! {
 // 0x401ae0 — __ZN5boost6detail12shared_countC2IPN3RBX13ModelInstanceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::ModelInstance *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ModelInstance *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::ModelInstance *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ModelInstance *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x401ae0() -> ! {
-    todo!("0x401ae0 boost::detail::shared_count::shared_count<RBX::ModelInstance *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ModelInstance *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x401ae0(ptr: *mut ModelInstance, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<ModelInstance, CreatableInstanceDeleter> {
+    // IDA 0x401ae0: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x401be8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ModelInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ModelInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::ModelInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x401be8() -> ! {
-    todo!("0x401be8 boost::detail::sp_counted_impl_pd<RBX::ModelInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x401be8(_block: *mut ControlBlockPd<ModelInstance, CreatableInstanceDeleter>) {
+    // IDA 0x401be8: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x401bec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ModelInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ModelInstance *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::ModelInstance *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x401bec() -> ! {
-    todo!("0x401bec boost::detail::sp_counted_impl_pd<RBX::ModelInstance *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x401bec(_block: *mut ControlBlockPd<ModelInstance, CreatableInstanceDeleter>) {
+    // IDA 0x401bec: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x401e80 — __ZN3RBX17FilteredSelectionINS_10PVInstanceEE12getSelectionEv
