@@ -491,9 +491,7 @@ pub fn stub_0x4ef0f4() -> ! {
 // 0x5cb594 — __ZNK3RBX13ModelInstance23getPrimaryPartSetByUserEv
 #[doc(alias = "RBX::ModelInstance::getPrimaryPartSetByUser(void)const")]
 // was: RBX::ModelInstance::getPrimaryPartSetByUser(void)const
-pub fn stub_0x5cb594() -> ! {
-    todo!("0x5cb594 RBX::ModelInstance::getPrimaryPartSetByUser(void)const")
-}
+pub use crate::instance::stub_0x5cb594 as stub_0x5cb594;
 
 // 0x5cb5b8 — __ZN3RBX13ModelInstance23setPrimaryPartSetByUserEPNS_12PartInstanceE
 #[doc(alias = "RBX::ModelInstance::setPrimaryPartSetByUser(RBX::PartInstance *)")]
@@ -547,16 +545,12 @@ pub fn stub_0x5cbbf8() -> ! {
 // 0x5cbe18 — __ZN3RBX13ModelInstanceC1Ev
 #[doc(alias = "RBX::ModelInstance::ModelInstance(void)")]
 // was: RBX::ModelInstance::ModelInstance(void)
-pub fn stub_0x5cbe18() -> ! {
-    todo!("0x5cbe18 RBX::ModelInstance::ModelInstance(void)")
-}
+pub use crate::instance::stub_0x5cbe18 as stub_0x5cbe18;
 
 // 0x5cc128 — __ZN3RBX13ModelInstanceC2Ev
 #[doc(alias = "RBX::ModelInstance::ModelInstance(void)")]
 // was: RBX::ModelInstance::ModelInstance(void)
-pub fn stub_0x5cc128() -> ! {
-    todo!("0x5cc128 RBX::ModelInstance::ModelInstance(void)")
-}
+pub use crate::instance::stub_0x5cc128 as stub_0x5cc128;
 
 // 0x5cc458 — __ZN3RBX13ModelInstanceD0Ev
 #[doc(alias = "RBX::ModelInstance::~ModelInstance()")]
