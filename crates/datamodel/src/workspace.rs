@@ -4,6 +4,13 @@
 
 #![allow(non_snake_case, dead_code, unused_variables)]
 
+/// Rust model of `RBX::Workspace`: the scene root behind the studio verbs
+/// and service lookups; members land with the workspace batch.
+#[derive(Default)]
+pub struct Workspace {
+    _opaque: (),
+}
+
 // 196 stubs in this file | batch range 0x380a4..0x710100 (76 existing + 120 new shard B)
 
 // 0x380a4 — __ZN10RobloxView13bindWorkspaceEN5boost10shared_ptrIN3RBX8ViewBaseEEENS1_INS2_9DataModelEEENS1_INS2_16OverlayDataModelEEE
