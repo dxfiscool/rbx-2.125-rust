@@ -579,6 +579,15 @@ fn placement_any_holder_name(holder: *const PlacementAnyHolder) -> Option<&'stat
     if holder == stub_0xd9bc() as *const PlacementAnyHolder {
         return Some("N3RBX15CRenderSettings16AntialiasingModeE");
     }
+    if holder == stub_0xdefc() as *const PlacementAnyHolder {
+        return Some("N3RBX15CRenderSettings20FrameRateManagerModeE");
+    }
+    if holder == stub_0xe43c() as *const PlacementAnyHolder {
+        return Some("N3RBX15CRenderSettings12GraphicsModeE");
+    }
+    if holder == stub_0xe97c() as *const PlacementAnyHolder {
+        return Some("N3RBX15CRenderSettings9AASamplesE");
+    }
     None
 }
 
@@ -900,118 +909,258 @@ pub fn stub_0xda28(src: *const u32, dst: *mut u32) -> u32 {
 // 0xda34 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::destruct_func(char *)")]
-pub fn stub_0xda34() -> ! {
-    todo!("0xda34 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE13destruct_funcEPc")
+pub fn stub_0xda34() {
+    // IDA 0xda34: empty body (see also `placement_any_noop_destruct`).
 }
 
 // 0xdb04 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings16AntialiasingModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::AntialiasingMode const& rbx::any_cast<RBX::CRenderSettings::AntialiasingMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0xdb04() -> ! {
-    todo!("0xdb04 __ZN3rbx8any_castIRKN3RBX15CRenderSettings16AntialiasingModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0xdb04(slot: *mut PlacementAnyRegion3) -> *mut u32 {
+    unsafe {
+        // IDA 0xdb04: holder identity vs the N3RBX15CRenderSettings16AntialiasingModeE holder, falling back to
+        // the typeinfo-name comparison.
+        let holder = (*slot).holder;
+        let matches = holder == stub_0xd9bc()
+            || placement_any_holder_name(holder) == Some("N3RBX15CRenderSettings16AntialiasingModeE");
+        if !matches {
+            // boost::throw_exception<rbx::bad_placement_any_cast> mapped to a host panic.
+            panic!("rbx::bad_placement_any_cast at IDA 0xdb04");
+        }
+        &mut (*slot).storage
+    }
 }
 
 // 0xdeac — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings20FrameRateManagerModeEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::FrameRateManagerMode>(RBX::CRenderSettings::FrameRateManagerMode const&)")]
-pub fn stub_0xdeac() -> ! {
-    todo!("0xdeac __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings20FrameRateManagerModeEEERS3_RKT_")
+pub fn stub_0xdeac(this: *mut PlacementAnyRegion3, value: *const u32) -> *mut PlacementAnyRegion3 {
+    unsafe {
+        let singleton = stub_0xdefc(); // 0xdeac holder
+        let current = (*this).holder;
+        if current == singleton {
+            // Same type, just assign the value word.
+            (*this).storage = *value;
+        } else {
+            if !current.is_null() {
+                // Destroy old payload, clear holder.
+                ((*current).destruct)(&mut (*this).storage);
+                (*this).holder = core::ptr::null_mut();
+            }
+            (*this).storage = *value;
+            (*this).holder = singleton;
+        }
+        this
+    }
 }
 
 // 0xdefc — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings20FrameRateManagerModeEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::FrameRateManagerMode>::singleton(void)")]
-pub fn stub_0xdefc() -> ! {
-    todo!("0xdefc __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings20FrameRateManagerModeEE9singletonEv")
+pub fn stub_0xdefc() -> *mut PlacementAnyHolder {
+    // IDA 0xdefc: guarded init — s[0] = &typeinfo, s[1] = destruct;
+    // same shape as 0xc95c (`LazyLock` is the host `__cxa_guard_acquire` gate).
+    static TYPE_ID_DEFC: u8 = 0;
+    static HOLDER_DEFC: LazyLock<PlacementAnyHolder> = LazyLock::new(|| PlacementAnyHolder {
+        type_id: &TYPE_ID_DEFC,
+        destruct: placement_any_noop_destruct,
+    });
+    &*HOLDER_DEFC as *const PlacementAnyHolder as *mut PlacementAnyHolder
 }
 
 // 0xdf68 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings20FrameRateManagerModeEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::FrameRateManagerMode>::construct_func(char const*,char *)")]
-pub fn stub_0xdf68() -> ! {
-    todo!("0xdf68 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings20FrameRateManagerModeEE14construct_funcEPKcPc")
+pub fn stub_0xdf68(src: *const u32, dst: *mut u32) -> u32 {
+    // IDA 0xdf68: same shape as 0xc9c8: if (dst) { value = *src; *dst = value; } return value.
+    unsafe {
+        if !dst.is_null() {
+            let value = *src;
+            *dst = value;
+            value
+        } else {
+            src as u32
+        }
+    }
 }
 
 // 0xdf74 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings20FrameRateManagerModeEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::FrameRateManagerMode>::destruct_func(char *)")]
-pub fn stub_0xdf74() -> ! {
-    todo!("0xdf74 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings20FrameRateManagerModeEE13destruct_funcEPc")
+pub fn stub_0xdf74() {
+    // IDA 0xdf74: empty body (see also `placement_any_noop_destruct`).
 }
 
 // 0xe044 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings20FrameRateManagerModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::FrameRateManagerMode const& rbx::any_cast<RBX::CRenderSettings::FrameRateManagerMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0xe044() -> ! {
-    todo!("0xe044 __ZN3rbx8any_castIRKN3RBX15CRenderSettings20FrameRateManagerModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0xe044(slot: *mut PlacementAnyRegion3) -> *mut u32 {
+    unsafe {
+        // IDA 0xe044: holder identity vs the N3RBX15CRenderSettings20FrameRateManagerModeE holder, falling back to
+        // the typeinfo-name comparison.
+        let holder = (*slot).holder;
+        let matches = holder == stub_0xdefc()
+            || placement_any_holder_name(holder) == Some("N3RBX15CRenderSettings20FrameRateManagerModeE");
+        if !matches {
+            // boost::throw_exception<rbx::bad_placement_any_cast> mapped to a host panic.
+            panic!("rbx::bad_placement_any_cast at IDA 0xe044");
+        }
+        &mut (*slot).storage
+    }
 }
 
 // 0xe3ec — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings12GraphicsModeEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::GraphicsMode>(RBX::CRenderSettings::GraphicsMode const&)")]
-pub fn stub_0xe3ec() -> ! {
-    todo!("0xe3ec __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings12GraphicsModeEEERS3_RKT_")
+pub fn stub_0xe3ec(this: *mut PlacementAnyRegion3, value: *const u32) -> *mut PlacementAnyRegion3 {
+    unsafe {
+        let singleton = stub_0xe43c(); // 0xe3ec holder
+        let current = (*this).holder;
+        if current == singleton {
+            // Same type, just assign the value word.
+            (*this).storage = *value;
+        } else {
+            if !current.is_null() {
+                // Destroy old payload, clear holder.
+                ((*current).destruct)(&mut (*this).storage);
+                (*this).holder = core::ptr::null_mut();
+            }
+            (*this).storage = *value;
+            (*this).holder = singleton;
+        }
+        this
+    }
 }
 
 // 0xe43c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12GraphicsModeEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::GraphicsMode>::singleton(void)")]
-pub fn stub_0xe43c() -> ! {
-    todo!("0xe43c __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12GraphicsModeEE9singletonEv")
+pub fn stub_0xe43c() -> *mut PlacementAnyHolder {
+    // IDA 0xe43c: guarded init — s[0] = &typeinfo, s[1] = destruct;
+    // same shape as 0xc95c (`LazyLock` is the host `__cxa_guard_acquire` gate).
+    static TYPE_ID_E43C: u8 = 0;
+    static HOLDER_E43C: LazyLock<PlacementAnyHolder> = LazyLock::new(|| PlacementAnyHolder {
+        type_id: &TYPE_ID_E43C,
+        destruct: placement_any_noop_destruct,
+    });
+    &*HOLDER_E43C as *const PlacementAnyHolder as *mut PlacementAnyHolder
 }
 
 // 0xe4a8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12GraphicsModeEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::GraphicsMode>::construct_func(char const*,char *)")]
-pub fn stub_0xe4a8() -> ! {
-    todo!("0xe4a8 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12GraphicsModeEE14construct_funcEPKcPc")
+pub fn stub_0xe4a8(src: *const u32, dst: *mut u32) -> u32 {
+    // IDA 0xe4a8: same shape as 0xc9c8: if (dst) { value = *src; *dst = value; } return value.
+    unsafe {
+        if !dst.is_null() {
+            let value = *src;
+            *dst = value;
+            value
+        } else {
+            src as u32
+        }
+    }
 }
 
 // 0xe4b4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12GraphicsModeEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::GraphicsMode>::destruct_func(char *)")]
-pub fn stub_0xe4b4() -> ! {
-    todo!("0xe4b4 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12GraphicsModeEE13destruct_funcEPc")
+pub fn stub_0xe4b4() {
+    // IDA 0xe4b4: empty body (see also `placement_any_noop_destruct`).
 }
 
 // 0xe584 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings12GraphicsModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::GraphicsMode const& rbx::any_cast<RBX::CRenderSettings::GraphicsMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0xe584() -> ! {
-    todo!("0xe584 __ZN3rbx8any_castIRKN3RBX15CRenderSettings12GraphicsModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0xe584(slot: *mut PlacementAnyRegion3) -> *mut u32 {
+    unsafe {
+        // IDA 0xe584: holder identity vs the N3RBX15CRenderSettings12GraphicsModeE holder, falling back to
+        // the typeinfo-name comparison.
+        let holder = (*slot).holder;
+        let matches = holder == stub_0xe43c()
+            || placement_any_holder_name(holder) == Some("N3RBX15CRenderSettings12GraphicsModeE");
+        if !matches {
+            // boost::throw_exception<rbx::bad_placement_any_cast> mapped to a host panic.
+            panic!("rbx::bad_placement_any_cast at IDA 0xe584");
+        }
+        &mut (*slot).storage
+    }
 }
 
 // 0xe92c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings9AASamplesEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::AASamples>(RBX::CRenderSettings::AASamples const&)")]
-pub fn stub_0xe92c() -> ! {
-    todo!("0xe92c __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings9AASamplesEEERS3_RKT_")
+pub fn stub_0xe92c(this: *mut PlacementAnyRegion3, value: *const u32) -> *mut PlacementAnyRegion3 {
+    unsafe {
+        let singleton = stub_0xe97c(); // 0xe92c holder
+        let current = (*this).holder;
+        if current == singleton {
+            // Same type, just assign the value word.
+            (*this).storage = *value;
+        } else {
+            if !current.is_null() {
+                // Destroy old payload, clear holder.
+                ((*current).destruct)(&mut (*this).storage);
+                (*this).holder = core::ptr::null_mut();
+            }
+            (*this).storage = *value;
+            (*this).holder = singleton;
+        }
+        this
+    }
 }
 
 // 0xe97c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings9AASamplesEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AASamples>::singleton(void)")]
-pub fn stub_0xe97c() -> ! {
-    todo!("0xe97c __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings9AASamplesEE9singletonEv")
+pub fn stub_0xe97c() -> *mut PlacementAnyHolder {
+    // IDA 0xe97c: guarded init — s[0] = &typeinfo, s[1] = destruct;
+    // same shape as 0xc95c (`LazyLock` is the host `__cxa_guard_acquire` gate).
+    static TYPE_ID_E97C: u8 = 0;
+    static HOLDER_E97C: LazyLock<PlacementAnyHolder> = LazyLock::new(|| PlacementAnyHolder {
+        type_id: &TYPE_ID_E97C,
+        destruct: placement_any_noop_destruct,
+    });
+    &*HOLDER_E97C as *const PlacementAnyHolder as *mut PlacementAnyHolder
 }
 
 // 0xe9e8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings9AASamplesEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AASamples>::construct_func(char const*,char *)")]
-pub fn stub_0xe9e8() -> ! {
-    todo!("0xe9e8 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings9AASamplesEE14construct_funcEPKcPc")
+pub fn stub_0xe9e8(src: *const u32, dst: *mut u32) -> u32 {
+    // IDA 0xe9e8: same shape as 0xc9c8: if (dst) { value = *src; *dst = value; } return value.
+    unsafe {
+        if !dst.is_null() {
+            let value = *src;
+            *dst = value;
+            value
+        } else {
+            src as u32
+        }
+    }
 }
 
 // 0xe9f4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings9AASamplesEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AASamples>::destruct_func(char *)")]
-pub fn stub_0xe9f4() -> ! {
-    todo!("0xe9f4 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings9AASamplesEE13destruct_funcEPc")
+pub fn stub_0xe9f4() {
+    // IDA 0xe9f4: empty body (see also `placement_any_noop_destruct`).
 }
 
 // 0xeac4 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings9AASamplesENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::AASamples const& rbx::any_cast<RBX::CRenderSettings::AASamples const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0xeac4() -> ! {
-    todo!("0xeac4 __ZN3rbx8any_castIRKN3RBX15CRenderSettings9AASamplesENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0xeac4(slot: *mut PlacementAnyRegion3) -> *mut u32 {
+    unsafe {
+        // IDA 0xeac4: holder identity vs the N3RBX15CRenderSettings9AASamplesE holder, falling back to
+        // the typeinfo-name comparison.
+        let holder = (*slot).holder;
+        let matches = holder == stub_0xe97c()
+            || placement_any_holder_name(holder) == Some("N3RBX15CRenderSettings9AASamplesE");
+        if !matches {
+            // boost::throw_exception<rbx::bad_placement_any_cast> mapped to a host panic.
+            panic!("rbx::bad_placement_any_cast at IDA 0xeac4");
+        }
+        &mut (*slot).storage
+    }
 }
