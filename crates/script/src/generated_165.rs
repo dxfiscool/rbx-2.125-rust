@@ -256,6 +256,185 @@ pub struct BlockCapture {
     pub target: Option<u32>,
 }
 
+/// Host-side `UpgradeCheckHelper` state (UpgradeCheckHelper.m, IDA
+/// 0x20e78..0x21ba0). UIKit objects (`UIAlertView`, `NSURLConnection`,
+/// GCD queues) live on the platform side; only the observable latches
+/// are modeled here.
+#[derive(Debug, Clone, Default)]
+pub struct UpgradeCheckState {
+    /// `init` ran (IDA 0x20f1c).
+    pub initialized: bool,
+    /// `dealloc` ran (IDA 0x21038).
+    pub released: bool,
+    /// Alert-view buttons; index 0 is the `UpgradeButtonText` button
+    /// added by `init` (IDA 0x20f1c).
+    pub buttons: Vec<AlertButton>,
+    /// `upgradeResponseData` bytes (IDA 0x20f1c/0x21254/0x21b24).
+    pub response_data: Vec<u8>,
+    /// `upgradeConnection` handle; `None` = nil (IDA 0x20f1c/0x21254/0x21b58).
+    pub connection: Option<u32>,
+    /// Next connection handle (host-side `alloc` identity).
+    pub next_connection: u32,
+    /// Request URL behind the live connection (IDA 0x21254).
+    pub connection_request: Option<String>,
+    /// `NSLog(@"ItsBloodyNil...")` fired on a nil request (IDA 0x21254).
+    pub nil_request_logged: bool,
+    /// Alert title/message latched by `processCheckForUpdateResponse`
+    /// (IDA 0x214a4).
+    pub alert_title: Option<String>,
+    pub alert_message: Option<String>,
+    /// Main-queue `show` block dispatched (IDA 0x214a4 -> 0x21abc/0x21af0);
+    /// the hop is synchronous here.
+    pub show_dispatched: bool,
+    /// `show` ran on the alert view (IDA 0x21abc/0x21af0).
+    pub alert_shown: bool,
+    /// JSON parse error text (IDA 0x214a4).
+    pub last_parse_error: Option<String>,
+    /// Last `RobloxAlertWithMessage:` key (IDA 0x212cc).
+    pub last_alert: Option<String>,
+    /// App-store URL opened from button 0 (IDA 0x21ba0).
+    pub opened_url: Option<String>,
+}
+
+/// Alert-view button (`UIButton` subview of the `UIAlertView`, IDA 0x2111c).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct AlertButton {
+    pub title: String,
+    pub enabled: bool,
+    pub handle: u32,
+}
+
+/// `+[UpgradeCheckHelper getUpgradeCheckHelper]` singleton cell (IDA
+/// 0x20e78): `dword_130C410` predicate + `dword_130C414` instance.
+#[derive(Debug, Clone, Default)]
+pub struct UpgradeCheckRegistry {
+    /// `dispatch_once` predicate (IDA 0x20e78).
+    pub once_token: bool,
+    pub helper: UpgradeCheckState,
+}
+
+/// C++ static-init cell for `__GLOBAL__I_a_6` (IDA 0x21c18): the
+/// `boost::system` category statics, `std::ios_base::Init`, and the
+/// `boost::exception_detail` static-exception guards.
+#[derive(Debug, Clone, Default)]
+pub struct CxxRuntimeA6 {
+    pub initialized: bool,
+}
+
+/// `iOSSettingsService` reader key (IDA 0x21ce0): the
+/// `std::map<std::string, void (*)(char const *)>` value behind each
+/// registered setting name.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum SettingsHandler {
+    IPadMinimumVersion,
+    IPadMaximumVersion,
+    IPhoneMinimumVersion,
+    IPhoneMaximumVersion,
+    IPodMinimumVersion,
+    IPodMaximumVersion,
+    DisablePlayButtonForAll,
+    DisablePlayButtonForNonBC,
+    IPad1MaximumIdealParts,
+    IPad2MaximumIdealParts,
+    IPad3MaximumIdealParts,
+    IPad4MaximumIdealParts,
+    IPod4MaximumIdealParts,
+    IPod5MaximumIdealParts,
+    IPhone4sMaximumIdealParts,
+    IPhone5MaximumIdealParts,
+    TimeIntervalBetweenRobuxPurchaseInMinutes,
+    TimeIntervalBetweenBCPurchaseInMinutes,
+    TimeIntervalBetweenCatalogPurchaseInMinutes,
+    TimeLimitForBillingServiceRetriesBeforeGivingUp,
+    TestFlightLoggingLevel,
+    TestFlightPercentage,
+    BugSensePercentage,
+    BugSenseLogLines,
+    BugSenseLogLevel,
+    IOSGoogleAnalyticsAccount2,
+    IOSGoogleAnalyticsSampleRate,
+    SearchEndpointIPad,
+    SearchEndpointIPhone,
+    CacheUIWebViews,
+    ThumbstickControlStyle,
+    FreeMemoryCheckerActive,
+    FreeMemoryCheckerRateMilliSeconds,
+    FreeMemoryCheckerThresholdKiloBytes,
+    MemoryBouncerActive,
+    MemoryBouncerEnforceRateMilliSeconds,
+    MemoryBouncerThresholdKiloBytes,
+    MemoryBouncerLimitMegaBytes,
+    MemoryBouncerLimitMegaBytesForLowMemDevices,
+}
+
+/// Host-side `iOSSettingsService` (IDA 0x21ce0..): `var1` is the
+/// name -> reader map, `var3` the init flag, `+44` a trailing word
+/// zeroed by `Init`.
+#[derive(Debug, Clone, Default)]
+pub struct IosSettingsService {
+    /// `this->var3 = 1` (IDA 0x21ce0).
+    pub initialized: bool,
+    /// `this->var1` reader map (IDA 0x21ce0).
+    pub handlers: HashMap<String, SettingsHandler>,
+    /// `*(this + 44) = 0` (IDA 0x21ce0).
+    pub reserved_44: u32,
+}
+
+/// Reads a `"key": <string | null>` value from a flat JSON object
+/// (IDA 0x214a4 `NSJSONSerialization` host model). Outer `None` = key
+/// absent or a non-string scalar (no usable value); `Some(None)` = `null`.
+fn json_string_or_null(s: &str, key: &str) -> Option<Option<String>> {
+    let quoted = format!("\"{key}\"");
+    let mut from = 0usize;
+    while let Some(rel) = s.get(from..)?.find(quoted.as_str()) {
+        let mut pos = from + rel + quoted.len();
+        while matches!(s.get(pos..pos + 1), Some(" " | "\t" | "\n" | "\r")) {
+            pos += 1;
+        }
+        if s.get(pos..pos + 1) != Some(":") {
+            from = pos + 1;
+            continue;
+        }
+        pos += 1;
+        while matches!(s.get(pos..pos + 1), Some(" " | "\t" | "\n" | "\r")) {
+            pos += 1;
+        }
+        let rest = s.get(pos..)?;
+        if rest.starts_with("null") {
+            return Some(None);
+        }
+        if rest.starts_with('"') {
+            let mut out = String::new();
+            let mut chars = rest[1..].chars();
+            loop {
+                match chars.next() {
+                    None => return None,
+                    Some('\\') => out.push(chars.next()?),
+                    Some('"') => return Some(Some(out)),
+                    Some(c) => out.push(c),
+                }
+            }
+        }
+        return None;
+    }
+    None
+}
+
+/// Parsed `processCheckForUpdateResponse` payload (IDA 0x214a4): the
+/// `data` dictionary's `UpgradeAction`/`Message` pair. `Ok(None)` = no
+/// actionable upgrade (`data`/`UpgradeAction` null or absent);
+/// `Err(())` = `NSJSONSerialization` failure.
+fn upgrade_action_and_message(json: &str) -> Result<Option<(String, Option<String>)>, ()> {
+    let text = json.trim();
+    if !text.starts_with('{') || !text.ends_with('}') {
+        return Err(());
+    }
+    match json_string_or_null(text, "UpgradeAction") {
+        None | Some(None) => Ok(None),
+        Some(Some(action)) => Ok(Some((action, json_string_or_null(text, "Message").flatten()))),
+    }
+}
+
 // 0x19b60 — -[AppDelegate applicationWillEnterForeground:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationWillEnterForeground:]")]
@@ -1486,100 +1665,258 @@ pub fn stub_0x1d3d4(state: &mut HomeViewState, view: Option<u32>) {
 // 0x2111c — -[UpgradeCheckHelper getAlertViewButton:]
 // type: id __cdecl(UpgradeCheckHelper *self, SEL, id)
 #[doc(alias = "-[UpgradeCheckHelper getAlertViewButton:]")]
-pub fn stub_0x2111c() -> ! {
-    todo!("0x2111c -[UpgradeCheckHelper getAlertViewButton:]")
+pub fn stub_0x2111c(state: &UpgradeCheckState, title: &str) -> Option<u32> {
+    // IDA 0x2111c: fast-enumerates `upgradeAlertView.subviews`, keeps
+    // the first `UIButton` whose `currentTitle isEqualToString:` the
+    // argument (enumeration-mutation guard folds into the host borrow).
+    state.buttons.iter().find(|button| button.title == title).map(|button| button.handle)
 }
 
 // 0x21254 — -[UpgradeCheckHelper makeUpgradeRequest:]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL, id)
 #[doc(alias = "-[UpgradeCheckHelper makeUpgradeRequest:]")]
-pub fn stub_0x21254() -> ! {
-    todo!("0x21254 -[UpgradeCheckHelper makeUpgradeRequest:]")
+pub fn stub_0x21254(state: &mut UpgradeCheckState, request_url: Option<&str>) {
+    // IDA 0x21254 `-[UpgradeCheckHelper makeUpgradeRequest:]`:
+    // `setData:nil` clears `upgradeResponseData`; a nil request logs
+    // `ItsBloodyNil...` but still connects; the new `NSURLConnection`
+    // becomes `upgradeConnection`.
+    state.response_data.clear();
+    if request_url.is_none() {
+        state.nil_request_logged = true;
+    }
+    let handle = state.next_connection;
+    state.next_connection = state.next_connection.wrapping_add(1);
+    state.connection = Some(handle);
+    state.connection_request = request_url.map(str::to_string);
 }
 
 // 0x212cc — +[UpgradeCheckHelper checkForUpdate]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[UpgradeCheckHelper checkForUpdate]")]
-pub fn stub_0x212cc() -> ! {
-    todo!("0x212cc +[UpgradeCheckHelper checkForUpdate]")
+pub fn stub_0x212cc(state: &mut UpgradeCheckState, short_version: Option<&str>, reachable: bool, base_url: &str) {
+    // IDA 0x212cc `+[UpgradeCheckHelper checkForUpdate]`: no
+    // `CFBundleShortVersionString` -> nothing; no reachability ->
+    // `RobloxAlertWithMessage:@"ConnectionError"`; else formats
+    // `AppiOSV%@`, appends it to `+[UpgradeCheckHelper getUpgradeUrl]`
+    // (0x210b4), retains the request, and runs `makeUpgradeRequest:`
+    // on the helper (retain/release fold into the synchronous call).
+    let Some(version) = short_version else {
+        return;
+    };
+    if !reachable {
+        state.last_alert = Some("ConnectionError".to_string());
+        return;
+    }
+    let template = crate::generated_bg_2::stub_0x210b4(base_url);
+    let url = template.replace("%@", &format!("AppiOSV{version}"));
+    stub_0x21254(state, Some(&url));
 }
 
 // 0x214a4 — -[UpgradeCheckHelper processCheckForUpdateResponse]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL)
 #[doc(alias = "-[UpgradeCheckHelper processCheckForUpdateResponse]")]
-pub fn stub_0x214a4() -> ! {
-    todo!("0x214a4 -[UpgradeCheckHelper processCheckForUpdateResponse]")
+pub fn stub_0x214a4(state: &mut UpgradeCheckState) {
+    // IDA 0x214a4: `NSJSONSerialization` over `upgradeResponseData`
+    // (options 0); failure logs `Error parsing JSON in AppDelegate: %s`
+    // via `RBX::StandardOut` (here `last_parse_error`). A null/absent
+    // `data`/`UpgradeAction` (NSNull) falls through with no alert;
+    // `Recommended` latches the recommend title/body and enables (or
+    // adds) the ignore button, `Required` latches the require
+    // title/body and disables the ignore button; both `dispatch_async`
+    // the main-queue `show` block (synchronous here).
+    let text = match std::str::from_utf8(&state.response_data) {
+        Ok(text) => text.to_owned(),
+        Err(_) => {
+            state.last_parse_error = Some("response is not UTF-8".to_string());
+            return;
+        }
+    };
+    match upgrade_action_and_message(&text) {
+        Err(_) => {
+            state.last_parse_error = Some("invalid JSON".to_string());
+        }
+        Ok(None) => {}
+        Ok(Some((action, message))) => {
+            if action == "Recommended" {
+                let body = message.unwrap_or_else(|| "RecommendUpgradeBody".to_string());
+                state.alert_title = Some("RecommendUpgradeTitle".to_string());
+                state.alert_message = Some(body);
+                if let Some(button) = state.buttons.iter_mut().find(|button| button.title == "IgnoreButtonText") {
+                    button.enabled = true;
+                } else {
+                    let handle = state.buttons.len() as u32;
+                    state.buttons.push(AlertButton {
+                        title: "IgnoreButtonText".to_string(),
+                        enabled: true,
+                        handle,
+                    });
+                }
+                state.show_dispatched = true;
+                stub_0x21abc(state);
+            } else if action == "Required" {
+                let body = message.unwrap_or_else(|| "RequireUpgradeBody".to_string());
+                state.alert_title = Some("RequireUpgradeTitle".to_string());
+                state.alert_message = Some(body);
+                if let Some(button) = state.buttons.iter_mut().find(|button| button.title == "IgnoreButtonText") {
+                    button.enabled = false;
+                }
+                state.show_dispatched = true;
+                stub_0x21af0(state);
+            }
+        }
+    }
 }
 
 // 0x21abc — ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke")]
-pub fn stub_0x21abc() -> ! {
-    todo!("0x21abc ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke")
+pub fn stub_0x21abc(state: &mut UpgradeCheckState) {
+    // IDA 0x21abc: main-queue block showing the recommended-upgrade
+    // alert (`[upgradeAlertView show]` on the captured self).
+    state.alert_shown = true;
 }
 
 // 0x21adc — ___copy_helper_block_132
 #[doc(alias = "___copy_helper_block_132")]
-pub fn stub_0x21adc() -> ! {
-    todo!("0x21adc ___copy_helper_block_132")
+pub fn stub_0x21adc(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x21adc `__copy_helper_block_132`: single
+    // `_Block_object_assign` retain (cf. 0x1f660).
+    *dst = src.clone();
 }
 
 // 0x21ae8 — ___destroy_helper_block_133
 #[doc(alias = "___destroy_helper_block_133")]
-pub fn stub_0x21ae8() -> ! {
-    todo!("0x21ae8 ___destroy_helper_block_133")
+pub fn stub_0x21ae8(slot: &mut BlockCapture) {
+    // IDA 0x21ae8 `__destroy_helper_block_133`: single
+    // `_Block_object_dispose` release (cf. 0x1f4a0).
+    *slot = BlockCapture::default();
 }
 
 // 0x21af0 — ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke141
 #[doc(alias = "___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke141")]
-pub fn stub_0x21af0() -> ! {
-    todo!("0x21af0 ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke141")
+pub fn stub_0x21af0(state: &mut UpgradeCheckState) {
+    // IDA 0x21af0: main-queue block showing the required-upgrade
+    // alert (`[upgradeAlertView show]` on the captured self).
+    state.alert_shown = true;
 }
 
 // 0x21b10 — ___copy_helper_block_142
 #[doc(alias = "___copy_helper_block_142")]
-pub fn stub_0x21b10() -> ! {
-    todo!("0x21b10 ___copy_helper_block_142")
+pub fn stub_0x21b10(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x21b10 `__copy_helper_block_142`: single
+    // `_Block_object_assign` retain (cf. 0x1f660).
+    *dst = src.clone();
 }
 
 // 0x21b1c — ___destroy_helper_block_143
 #[doc(alias = "___destroy_helper_block_143")]
-pub fn stub_0x21b1c() -> ! {
-    todo!("0x21b1c ___destroy_helper_block_143")
+pub fn stub_0x21b1c(slot: &mut BlockCapture) {
+    // IDA 0x21b1c `__destroy_helper_block_143`: single
+    // `_Block_object_dispose` release (cf. 0x1f4a0).
+    *slot = BlockCapture::default();
 }
 
 // 0x21b24 — -[UpgradeCheckHelper connection:didReceiveData:]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL, id, id)
 #[doc(alias = "-[UpgradeCheckHelper connection:didReceiveData:]")]
-pub fn stub_0x21b24() -> ! {
-    todo!("0x21b24 -[UpgradeCheckHelper connection:didReceiveData:]")
+pub fn stub_0x21b24(state: &mut UpgradeCheckState, connection: u32, data: &[u8]) {
+    // IDA 0x21b24: appends only when the connection is the live
+    // `upgradeConnection` (`appendData:`).
+    if state.connection == Some(connection) {
+        state.response_data.extend_from_slice(data);
+    }
 }
 
 // 0x21b58 — -[UpgradeCheckHelper connectionDidFinishLoading:]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL, id)
 #[doc(alias = "-[UpgradeCheckHelper connectionDidFinishLoading:]")]
-pub fn stub_0x21b58() -> ! {
-    todo!("0x21b58 -[UpgradeCheckHelper connectionDidFinishLoading:]")
+pub fn stub_0x21b58(state: &mut UpgradeCheckState, connection: u32) {
+    // IDA 0x21b58: on the live `upgradeConnection`, releases it, nils
+    // the ivar, and runs `processCheckForUpdateResponse`.
+    if state.connection == Some(connection) {
+        state.connection = None;
+        state.connection_request = None;
+        stub_0x214a4(state);
+    }
 }
 
 // 0x21ba0 — -[UpgradeCheckHelper alertView:clickedButtonAtIndex:]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL, id, int)
 #[doc(alias = "-[UpgradeCheckHelper alertView:clickedButtonAtIndex:]")]
-pub fn stub_0x21ba0() -> ! {
-    todo!("0x21ba0 -[UpgradeCheckHelper alertView:clickedButtonAtIndex:]")
+pub fn stub_0x21ba0(state: &mut UpgradeCheckState, is_upgrade_alert: bool, button_index: i32) {
+    // IDA 0x21ba0: button 0 of the `upgradeAlertView` opens
+    // `itms://itunes.com/apps/robloxmobile`.
+    if is_upgrade_alert && button_index == 0 {
+        state.opened_url = Some("itms://itunes.com/apps/robloxmobile".to_string());
+    }
 }
 
 // 0x21c18 — __GLOBAL__I_a_6
 #[doc(alias = "global constructor keyed to_a_6")]
-pub fn stub_0x21c18() -> ! {
-    todo!("0x21c18 __GLOBAL__I_a_6")
+pub fn stub_0x21c18(runtime: &mut CxxRuntimeA6) {
+    // IDA 0x21c18 `__GLOBAL__I_a_6`: C++ static init — the
+    // `boost::system` generic/system category statics,
+    // `std::ios_base::Init`, and the `boost::exception_detail`
+    // static-exception guards (disasm `BL generic_category`,
+    // `__cxa_atexit` chain).
+    runtime.initialized = true;
 }
 
 // 0x21ce0 — __ZN18iOSSettingsService4InitEv
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::Init(void)")]
-pub fn stub_0x21ce0() -> ! {
-    todo!("0x21ce0 __ZN18iOSSettingsService4InitEv")
+pub fn stub_0x21ce0(service: &mut IosSettingsService) {
+    // IDA 0x21ce0 `iOSSettingsService::Init`: sets `var3 = 1`,
+    // registers the 39 name -> reader pairs in `var1`
+    // (`std::map<std::string, void (*)(char const *)>::operator[]`;
+    // string temporaries destroyed after each insert), and zeroes the
+    // trailing word at `+44` (refcounts/`__dmb` fold into host ownership).
+    service.initialized = true;
+    let pairs: [(&str, SettingsHandler); 39] = [
+        ("iPadMinimumVersion", SettingsHandler::IPadMinimumVersion),
+        ("iPadMaximumVersion", SettingsHandler::IPadMaximumVersion),
+        ("iPhoneMinimumVersion", SettingsHandler::IPhoneMinimumVersion),
+        ("iPhoneMaximumVersion", SettingsHandler::IPhoneMaximumVersion),
+        ("iPodMinimumVersion", SettingsHandler::IPodMinimumVersion),
+        ("iPodMaximumVersion", SettingsHandler::IPodMaximumVersion),
+        ("DisablePlayButtonForAll", SettingsHandler::DisablePlayButtonForAll),
+        ("DisablePlayButtonForNonBC", SettingsHandler::DisablePlayButtonForNonBC),
+        ("iPad1_MaximumIdealParts", SettingsHandler::IPad1MaximumIdealParts),
+        ("iPad2_MaximumIdealParts", SettingsHandler::IPad2MaximumIdealParts),
+        ("iPad3_MaximumIdealParts", SettingsHandler::IPad3MaximumIdealParts),
+        ("iPad4_MaximumIdealParts", SettingsHandler::IPad4MaximumIdealParts),
+        ("iPod4_MaximumIdealParts", SettingsHandler::IPod4MaximumIdealParts),
+        ("iPod5_MaximumIdealParts", SettingsHandler::IPod5MaximumIdealParts),
+        ("iPhone4s_MaximumIdealParts", SettingsHandler::IPhone4sMaximumIdealParts),
+        ("iPhone5_MaximumIdealParts", SettingsHandler::IPhone5MaximumIdealParts),
+        ("TimeIntervalBetweenRobuxPurchaseInMinutes", SettingsHandler::TimeIntervalBetweenRobuxPurchaseInMinutes),
+        ("TimeIntervalBetweenBCPurchaseInMinutes", SettingsHandler::TimeIntervalBetweenBCPurchaseInMinutes),
+        ("TimeIntervalBetweenCatalogPurchaseInMinutes", SettingsHandler::TimeIntervalBetweenCatalogPurchaseInMinutes),
+        ("TimeLimitForBillingServiceRetriesBeforeGivingUp", SettingsHandler::TimeLimitForBillingServiceRetriesBeforeGivingUp),
+        ("TestFlightLoggingLevel", SettingsHandler::TestFlightLoggingLevel),
+        ("TestFlightPercentage", SettingsHandler::TestFlightPercentage),
+        ("BugSensePercentage", SettingsHandler::BugSensePercentage),
+        ("BugSenseLogLines", SettingsHandler::BugSenseLogLines),
+        ("BugSenseLogLevel", SettingsHandler::BugSenseLogLevel),
+        ("iOSGoogleAnalyticsAccount2", SettingsHandler::IOSGoogleAnalyticsAccount2),
+        ("iOSGoogleAnalyticsSampleRate", SettingsHandler::IOSGoogleAnalyticsSampleRate),
+        ("SearchEndpointIPad", SettingsHandler::SearchEndpointIPad),
+        ("SearchEndpointIPhone", SettingsHandler::SearchEndpointIPhone),
+        ("CacheUIWebViews", SettingsHandler::CacheUIWebViews),
+        ("ThumbstickControlStyle", SettingsHandler::ThumbstickControlStyle),
+        ("FreeMemoryCheckerActive", SettingsHandler::FreeMemoryCheckerActive),
+        ("FreeMemoryCheckerRateMilliSeconds", SettingsHandler::FreeMemoryCheckerRateMilliSeconds),
+        ("FreeMemoryCheckerThresholdKiloBytes", SettingsHandler::FreeMemoryCheckerThresholdKiloBytes),
+        ("MemoryBouncerActive", SettingsHandler::MemoryBouncerActive),
+        ("MemoryBouncerEnforceRateMilliSeconds", SettingsHandler::MemoryBouncerEnforceRateMilliSeconds),
+        ("MemoryBouncerThresholdKiloBytes", SettingsHandler::MemoryBouncerThresholdKiloBytes),
+        ("MemoryBouncerLimitMegaBytes", SettingsHandler::MemoryBouncerLimitMegaBytes),
+        ("MemoryBouncerLimitMegaBytesForLowMemDevices", SettingsHandler::MemoryBouncerLimitMegaBytesForLowMemDevices),
+    ];
+    for (name, handler) in pairs {
+        service.handlers.insert(name.to_string(), handler);
+    }
+    service.reserved_44 = 0;
 }
 
 // 0x239ec — __ZN18iOSSettingsService27ReadValueiPadMinimumVersionEPKc

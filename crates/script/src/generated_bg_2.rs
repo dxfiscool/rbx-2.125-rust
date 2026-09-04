@@ -7,7 +7,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
-use crate::generated_165::BlockCapture;
+use crate::generated_165::{AlertButton, BlockCapture, UpgradeCheckRegistry, UpgradeCheckState};
 use crate::generated_165::stub_0x1cc1c as home_url_for_button_tag;
 use crate::generated_bg_1::LoginViewState;
 use std::collections::HashMap;
@@ -991,66 +991,110 @@ pub fn stub_0x20e10(state: &AboutState) -> Option<u32> {
 // 0x20e20 — -[AboutController setAgreementWebView:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setAgreementWebView:]")]
-pub fn stub_0x20e20() -> ! {
-    todo!("0x20e20 -[AboutController setAgreementWebView:]")
+pub fn stub_0x20e20(state: &mut AboutState, view: Option<u32>) {
+    // IDA 0x20e20 `-[AboutController setAgreementWebView:]`: SET
+    // (`objc_setProperty` prologue, cf. 0x20dec); host ownership is the
+    // outlet slot.
+    state.outlets.insert("agreementWebView".to_string(), view);
 }
 
 // 0x20e44 — -[AboutController domainName]
 // type: UILabel *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController domainName]")]
-pub fn stub_0x20e44() -> ! {
-    todo!("0x20e44 -[AboutController domainName]")
+pub fn stub_0x20e44(state: &AboutState) -> Option<u32> {
+    // IDA 0x20e44 `-[AboutController domainName]`: GET (`_domainName`
+    // IVAR load); the text is `domain_text` (cf. 0x20924).
+    state.outlets.get("domainName").copied().flatten()
 }
 
 // 0x20e54 — -[AboutController setDomainName:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setDomainName:]")]
-pub fn stub_0x20e54() -> ! {
-    todo!("0x20e54 -[AboutController setDomainName:]")
+pub fn stub_0x20e54(state: &mut AboutState, view: Option<u32>) {
+    // IDA 0x20e54 `-[AboutController setDomainName:]`: SET
+    // (`objc_setProperty` prologue, cf. 0x20dec); host ownership is the
+    // outlet slot.
+    state.outlets.insert("domainName".to_string(), view);
 }
 
 // 0x20e78 — +[UpgradeCheckHelper getUpgradeCheckHelper]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[UpgradeCheckHelper getUpgradeCheckHelper]")]
-pub fn stub_0x20e78() -> ! {
-    todo!("0x20e78 +[UpgradeCheckHelper getUpgradeCheckHelper]")
+pub fn stub_0x20e78(reg: &mut UpgradeCheckRegistry) -> &mut UpgradeCheckState {
+    // IDA 0x20e78 `+[UpgradeCheckHelper getUpgradeCheckHelper]`:
+    // `dispatch_once` singleton (0x20e9a..0x20ea6 -> 0x20ed4);
+    // the predicate folds into `once_token`.
+    if !reg.once_token {
+        stub_0x20ed4(reg);
+        reg.once_token = true;
+    }
+    &mut reg.helper
 }
 
 // 0x20ed4 — ___43+[UpgradeCheckHelper getUpgradeCheckHelper]_block_invoke
 #[doc(alias = "___43+[UpgradeCheckHelper getUpgradeCheckHelper]_block_invoke")]
-pub fn stub_0x20ed4() -> ! {
-    todo!("0x20ed4 ___43+[UpgradeCheckHelper getUpgradeCheckHelper]_block_invoke")
+pub fn stub_0x20ed4(reg: &mut UpgradeCheckRegistry) {
+    // IDA 0x20ed4: `alloc` + `init` into `dword_130C414`.
+    reg.helper = UpgradeCheckState::default();
+    stub_0x20f1c(&mut reg.helper);
 }
 
 // 0x20f08 — ___copy_helper_block__3
 #[doc(alias = "___copy_helper_block__3")]
-pub fn stub_0x20f08() -> ! {
-    todo!("0x20f08 ___copy_helper_block__3")
+pub fn stub_0x20f08(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x20f08 `__copy_helper_block__3`: single
+    // `_Block_object_assign` retain (cf. 0x1f660).
+    *dst = src.clone();
 }
 
 // 0x20f14 — ___destroy_helper_block__3
 #[doc(alias = "___destroy_helper_block__3")]
-pub fn stub_0x20f14() -> ! {
-    todo!("0x20f14 ___destroy_helper_block__3")
+pub fn stub_0x20f14(slot: &mut BlockCapture) {
+    // IDA 0x20f14 `__destroy_helper_block__3`: single
+    // `_Block_object_dispose` release (cf. 0x1f4a0).
+    *slot = BlockCapture::default();
 }
 
 // 0x20f1c — -[UpgradeCheckHelper init]
 // type: UpgradeCheckHelper *__cdecl(UpgradeCheckHelper *self, SEL)
 #[doc(alias = "-[UpgradeCheckHelper init]")]
-pub fn stub_0x20f1c() -> ! {
-    todo!("0x20f1c -[UpgradeCheckHelper init]")
+pub fn stub_0x20f1c(state: &mut UpgradeCheckState) {
+    // IDA 0x20f1c `-[UpgradeCheckHelper init]`: super `init`, fresh
+    // `UIAlertView` (delegate self) + `UpgradeButtonText` button
+    // (localized on the platform side; key kept here), empty
+    // `upgradeResponseData`, nil `upgradeConnection`.
+    state.initialized = true;
+    state.released = false;
+    state.buttons = vec![AlertButton {
+        title: "UpgradeButtonText".to_string(),
+        enabled: true,
+        handle: 0,
+    }];
+    state.response_data.clear();
+    state.connection = None;
+    state.connection_request = None;
 }
 
 // 0x21038 — -[UpgradeCheckHelper dealloc]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL)
 #[doc(alias = "-[UpgradeCheckHelper dealloc]")]
-pub fn stub_0x21038() -> ! {
-    todo!("0x21038 -[UpgradeCheckHelper dealloc]")
+pub fn stub_0x21038(state: &mut UpgradeCheckState) {
+    // IDA 0x21038 `-[UpgradeCheckHelper dealloc]`: releases the alert
+    // view, the live connection (if any), and the response data, then
+    // super `dealloc` (releases fold into host ownership).
+    state.buttons.clear();
+    state.connection = None;
+    state.connection_request = None;
+    state.response_data.clear();
+    state.released = true;
 }
 
 // 0x210b4 — +[UpgradeCheckHelper getUpgradeUrl]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[UpgradeCheckHelper getUpgradeUrl]")]
-pub fn stub_0x210b4() -> ! {
-    todo!("0x210b4 +[UpgradeCheckHelper getUpgradeUrl]")
+pub fn stub_0x210b4(base_url: &str) -> String {
+    // IDA 0x210b4 `+[UpgradeCheckHelper getUpgradeUrl]`:
+    // `infoDictionary[RbxBaseUrl] stringByAppendingString:
+    // @"mobileapi/check-app-version?appVersion=%@"`.
+    format!("{base_url}mobileapi/check-app-version?appVersion=%@")
 }
