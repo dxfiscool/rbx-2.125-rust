@@ -6,20 +6,112 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+
+/// ObjC block captured-object slot index for the +20 byte field (word 5).
+pub const BLOCK_CAPTURE_WORD: usize = 5;
+/// `_Block_object_assign` / `_Block_object_dispose` kind for retained objects (BLOCK_FIELD_IS_OBJECT).
+pub const BLOCK_FIELD_IS_OBJECT: usize = 3;
+
+/// `boost::shared_ptr` value slot: raw pointer plus its counted control word.
+#[derive(Clone, Copy, Debug, Default)]
+pub struct SharedSlot {
+    pub ptr: usize,
+    pub counted: usize,
+}
+
+/// `boost::_bi::bind_t` capture: target fn plus bound `(cstr, game)` pair (IDA 0x2ca7c).
+#[derive(Clone, Debug, Default)]
+pub struct BindCstrGame {
+    pub target: usize,
+    pub cstr: usize,
+    pub game: SharedSlot,
+}
+
+/// `boost::_bi::bind_t` capture: target fn plus `(int, cstr, game)` triple (IDA 0x2cb64).
+#[derive(Clone, Debug, Default)]
+pub struct BindIntCstrGame {
+    pub target: usize,
+    pub arg0: i32,
+    pub cstr: usize,
+    pub game: SharedSlot,
+}
+
+/// `boost::_bi::bind_t` capture: target fn plus `(int, game, JoinGameRequest)` triple (IDA 0x2cc54).
+#[derive(Clone, Debug, Default)]
+pub struct BindIntGameJoin {
+    pub target: usize,
+    pub arg0: i32,
+    pub game: SharedSlot,
+    pub join_request: usize,
+}
+
+/// `boost::_bi::bind_t` capture: target fn plus `(int, game)` pair (IDA 0x2cd44).
+#[derive(Clone, Debug, Default)]
+pub struct BindIntGame {
+    pub target: usize,
+    pub arg0: i32,
+    pub game: SharedSlot,
+}
+
+/// `boost::_bi::bind_t` capture: target fn plus `(string x3, page, game)` list5 (IDA 0x2ce2c).
+#[derive(Clone, Debug, Default)]
+pub struct BindStringsPageGame {
+    pub target: usize,
+    pub s0: String,
+    pub s1: String,
+    pub s2: String,
+    pub page: usize,
+    pub game: SharedSlot,
+}
+
+/// `boost::_bi::bind_t` capture: target fn plus `(RobloxView, game, FunctionMarshaller)` (IDA 0x2d280).
+#[derive(Clone, Debug, Default)]
+pub struct BindViewGameMarshaller {
+    pub target: usize,
+    pub view: usize,
+    pub game: SharedSlot,
+    pub marshaller: usize,
+}
+
+/// `boost::function<void(RBX::DataModel *)>` holding one bound functor (IDA 0x2d370).
+#[derive(Clone, Debug, Default)]
+pub struct DataModelCallback {
+    pub bound: Option<BindViewGameMarshaller>,
+}
+
+/// `rbx::signals::connection` slot for `signal<void(std::string)>` (IDA 0x2c8c0).
+#[derive(Clone, Debug, Default)]
+pub struct StringSignalConn {
+    pub id: u64,
+    pub live: bool,
+}
+
+/// `ControlView` construction result of `initControlViewHelper` (IDA 0x2c224).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct ControlViewInit {
+    pub ogre_view: usize,
+    pub ogre_window: usize,
+    pub control_view: usize,
+}
 // 0x2ba40 — ___copy_helper_block_429
 // demangled: ___copy_helper_block_429
 // type: 
 #[doc(alias = "___copy_helper_block_429")]
-pub fn stub_2ba40() -> ! {
-    todo!("0x2ba40 ___copy_helper_block_429")
+pub fn stub_2ba40(dst: &mut [usize], src: &[usize]) {
+    // IDA 0x2ba40: _Block_object_assign(dst + 20, src[20], BLOCK_FIELD_IS_OBJECT).
+    let retained = src.get(BLOCK_CAPTURE_WORD).copied().unwrap_or(0);
+    if let Some(slot) = dst.get_mut(BLOCK_CAPTURE_WORD) {
+        *slot = retained;
+    }
 }
 
 // 0x2ba4c — ___destroy_helper_block_430
 // demangled: ___destroy_helper_block_430
 // type: 
 #[doc(alias = "___destroy_helper_block_430")]
-pub fn stub_2ba4c() -> ! {
-    todo!("0x2ba4c ___destroy_helper_block_430")
+pub fn stub_2ba4c(block: &[usize], release: &mut dyn FnMut(usize)) {
+    // IDA 0x2ba4c: _Block_object_dispose(block[20], BLOCK_FIELD_IS_OBJECT).
+    release(block.get(BLOCK_CAPTURE_WORD).copied().unwrap_or(0));
 }
 
 // 0x2ba54 — __ZL16executeUrlScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
@@ -27,8 +119,23 @@ pub fn stub_2ba4c() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "executeUrlScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
-pub fn stub_2ba54() -> ! {
-    todo!("0x2ba54 executeUrlScript(boost::shared_ptr<RBX::DataModel>,std::string const&)")
+pub fn stub_2ba54(
+    game: usize,
+    url: &str,
+    enter_play_identity: &mut dyn FnMut(),
+    is_url: &mut dyn FnMut(usize, &str) -> bool,
+    fetch_body: &mut dyn FnMut(usize, &str) -> Option<String>,
+    run_signed: &mut dyn FnMut(usize, &str),
+) {
+    // IDA 0x2ba54: Impersonator(Identities 7); if ContentProvider::isUrl: LegacyLock, ContentId +
+    // getContent streamed into a string, then executeSignedScript; else just teardown.
+    enter_play_identity();
+    if !is_url(game, url) {
+        return;
+    }
+    if let Some(body) = fetch_body(game, url) {
+        run_signed(game, &body);
+    }
 }
 
 // 0x2bdb0 — __ZL19executeSignedScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
@@ -36,8 +143,15 @@ pub fn stub_2ba54() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "executeSignedScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
-pub fn stub_2bdb0() -> ! {
-    todo!("0x2bdb0 executeSignedScript(boost::shared_ptr<RBX::DataModel>,std::string const&)")
+pub fn stub_2bdb0(
+    game: usize,
+    script: &str,
+    verify_signature: &mut dyn FnMut(usize, &str) -> String,
+    run: &mut dyn FnMut(usize, &str),
+) {
+    // IDA 0x2bdb0: verified = ContentProvider::verifyScriptSignature; assign to string; executeScript.
+    let verified = verify_signature(game, script);
+    run(game, &verified);
 }
 
 // 0x2bf74 — __ZL13executeScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
@@ -45,48 +159,106 @@ pub fn stub_2bdb0() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "executeScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
-pub fn stub_2bf74() -> ! {
-    todo!("0x2bf74 executeScript(boost::shared_ptr<RBX::DataModel>,std::string const&)")
+pub fn stub_2bf74(
+    game: usize,
+    script: &str,
+    script_execution_enabled: bool,
+    execute_in_new_thread: &mut dyn FnMut(usize, &str),
+) {
+    // IDA 0x2bf74: LegacyLock; if byte at DataModel + 3005: ProtectedString::fromTrustedSource then
+    // ScriptContext::executeInNewThread(7, ...).
+    if script_execution_enabled {
+        execute_in_new_thread(game, script);
+    }
 }
 
 // 0x2c138 — ____ZL15presentGameViewv_block_invoke
 // demangled: ____ZL15presentGameViewv_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "____ZL15presentGameViewv_block_invoke")]
-pub fn stub_2c138() -> ! {
-    todo!("0x2c138 ____ZL15presentGameViewv_block_invoke")
+pub fn stub_2c138(
+    shared_instance: &mut dyn FnMut() -> usize,
+    ogre_view_controller: &mut dyn FnMut(usize) -> usize,
+    last_non_game_controller: &mut dyn FnMut(usize) -> usize,
+    presented_view_controller: &mut dyn FnMut(usize) -> usize,
+    present_view_controller: &mut dyn FnMut(usize, usize),
+) {
+    // IDA 0x2c138: shared MainViewController; if its presented controller is not the Ogre
+    // controller, present it (animated 0) with the handleStartGameSuccess completion block.
+    let mvc = shared_instance();
+    if mvc == 0 {
+        return;
+    }
+    let ogre = ogre_view_controller(mvc);
+    if ogre == 0 {
+        return;
+    }
+    let host = last_non_game_controller(mvc);
+    if host == 0 {
+        return;
+    }
+    if presented_view_controller(host) != ogre {
+        present_view_controller(host, ogre);
+    }
 }
 
 // 0x2c1f8 — ____ZL15presentGameViewv_block_invoke_2
 // demangled: ____ZL15presentGameViewv_block_invoke_2
 // type: id __fastcall(int)
 #[doc(alias = "____ZL15presentGameViewv_block_invoke_2")]
-pub fn stub_2c1f8() -> ! {
-    todo!("0x2c1f8 ____ZL15presentGameViewv_block_invoke_2")
+pub fn stub_2c1f8(block: &[usize], handle_start_game_success: &mut dyn FnMut(usize) -> usize) -> usize {
+    // IDA 0x2c1f8: target = block[20]; return target ? [target handleStartGameSuccess] : target.
+    let target = block.get(BLOCK_CAPTURE_WORD).copied().unwrap_or(0);
+    if target != 0 {
+        handle_start_game_success(target)
+    } else {
+        target
+    }
 }
 
 // 0x2c210 — ___copy_helper_block_499
 // demangled: ___copy_helper_block_499
 // type: 
 #[doc(alias = "___copy_helper_block_499")]
-pub fn stub_2c210() -> ! {
-    todo!("0x2c210 ___copy_helper_block_499")
+pub fn stub_2c210(dst: &mut [usize], src: &[usize]) {
+    // IDA 0x2c210: _Block_object_assign(dst + 20, src[20], BLOCK_FIELD_IS_OBJECT).
+    let retained = src.get(BLOCK_CAPTURE_WORD).copied().unwrap_or(0);
+    if let Some(slot) = dst.get_mut(BLOCK_CAPTURE_WORD) {
+        *slot = retained;
+    }
 }
 
 // 0x2c21c — ___destroy_helper_block_500
 // demangled: ___destroy_helper_block_500
 // type: 
 #[doc(alias = "___destroy_helper_block_500")]
-pub fn stub_2c21c() -> ! {
-    todo!("0x2c21c ___destroy_helper_block_500")
+pub fn stub_2c21c(block: &[usize], release: &mut dyn FnMut(usize)) {
+    // IDA 0x2c21c: _Block_object_dispose(block[20], BLOCK_FIELD_IS_OBJECT).
+    release(block.get(BLOCK_CAPTURE_WORD).copied().unwrap_or(0));
 }
 
 // 0x2c224 — __ZL21initControlViewHelperP10RobloxViewa
 // demangled: initControlViewHelper(RobloxView *,signed char)
 // type: _DWORD __fastcall(RobloxView *, signed __int8)
 #[doc(alias = "initControlViewHelper(RobloxView *,signed char)")]
-pub fn stub_2c224() -> ! {
-    todo!("0x2c224 initControlViewHelper(RobloxView *,signed char)")
+pub fn stub_2c224(
+    has_controller: bool,
+    has_render_window: bool,
+    present_on_main: bool,
+    build_views: &mut dyn FnMut() -> ControlViewInit,
+    dispatch_main: &mut dyn FnMut(),
+) -> ControlViewInit {
+    // IDA 0x2c224: if MainViewController.sharedInstance && RobloxView.var7: resolve the VIEW/WINDOW
+    // render targets, setOgreView/setOgreWindow, alloc ControlView initWithGame(mainScreen.bounds)
+    // autorelease + addSubview twice. If a2: dispatch_async(main, block_global505).
+    let mut out = ControlViewInit::default();
+    if has_controller && has_render_window {
+        out = build_views();
+    }
+    if present_on_main {
+        dispatch_main();
+    }
+    out
 }
 
 // 0x2c5b0 — __ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEE9singletonEv
@@ -94,8 +266,18 @@ pub fn stub_2c224() -> ! {
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, boost::mutex *, char, int, int, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEE9singletonEv")]
-pub fn stub_2c5b0() -> ! {
-    todo!("0x2c5b0 __ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEE9singletonEv")
+pub fn stub_2c5b0(cell: &mut Option<usize>, create_settings: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x2c5b0: fast path returns sing; else GlobalAdvancedSettings::singleton, mutex lock,
+    // create TaskSchedulerSettings + setParentInternal, ReleaseAssert(s.get() == sing), unlock.
+    if let Some(sing) = *cell {
+        return sing;
+    }
+    let created = create_settings();
+    if cell.is_none() {
+        *cell = Some(created);
+    }
+    debug_assert_eq!(*cell, Some(created));
+    created
 }
 
 // 0x2c764 — __ZNK3RBX15ServiceProvider4findINS_10GuiServiceEEEPT_v
@@ -103,8 +285,27 @@ pub fn stub_2c5b0() -> ! {
 // type: int __fastcall(pthread_mutex_t *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "RBX::GuiService * RBX::ServiceProvider::find<RBX::GuiService>(void)const")]
-pub fn stub_2c764() -> ! {
-    todo!("0x2c764 RBX::GuiService * RBX::ServiceProvider::find<RBX::GuiService>(void)const")
+pub fn stub_2c764(
+    cache: &mut Vec<usize>,
+    class_index: &mut dyn FnMut() -> usize,
+    find_service_by_class_name: &mut dyn FnMut() -> usize,
+) -> usize {
+    // IDA 0x2c764: call_once(doGetClassIndex<GuiService>); cached slot hit returns early (vector
+    // resized when the index is out of range); else findServiceByClassName, store, return.
+    let idx = class_index();
+    if idx + 1 <= cache.len() {
+        let hit = cache[idx];
+        if hit != 0 {
+            return hit;
+        }
+    } else {
+        cache.resize(idx + 1, 0);
+    }
+    let found = find_service_by_class_name();
+    if found != 0 {
+        cache[idx] = found;
+    }
+    found
 }
 
 // 0x2c8c0 — __ZN3rbx7signals6signalIFvSsEE7connectIN5boost8functionIS2_EEEENS0_10connectionERKT_
@@ -112,8 +313,12 @@ pub fn stub_2c764() -> ! {
 // type: int __fastcall(char, boost::mutex *, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(std::string)>::connect<boost::function<void ()(std::string)>>(boost::function<void ()(std::string)> const&)")]
-pub fn stub_2c8c0() -> ! {
-    todo!("0x2c8c0 rbx::signals::connection rbx::signals::signal<void ()(std::string)>::connect<boost::function<void ()(std::string)>>(boost::function<void ()(std::string)> const&)")
+pub fn stub_2c8c0(slots: &mut Vec<StringSignalConn>) -> u64 {
+    // IDA 0x2c8c0: operator new islot(32); callable<slot, boost::function> ctor; signal::insert;
+    // the returned connection holds a weak ref to the slot.
+    let id = slots.len() as u64;
+    slots.push(StringSignalConn { id, live: true });
+    id
 }
 
 // 0x2c9a8 — __ZN5boost10shared_ptrIN3RBX4GameEEC1INS1_16SecurePlayerGameEEEPT_
@@ -121,8 +326,10 @@ pub fn stub_2c8c0() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RBX::Game>::shared_ptr<RBX::SecurePlayerGame>(RBX::SecurePlayerGame *)")]
-pub fn stub_2c9a8() -> ! {
-    todo!("0x2c9a8 boost::shared_ptr<RBX::Game>::shared_ptr<RBX::SecurePlayerGame>(RBX::SecurePlayerGame *)")
+pub fn stub_2c9a8(slot: &mut SharedSlot, raw: usize, counted: usize) {
+    // IDA 0x2c9a8: shared_ptr<Game> from SecurePlayerGame*: px = raw, shared_count ctor, swap in.
+    slot.ptr = raw;
+    slot.counted = counted;
 }
 
 // 0x2ca7c — __ZN5boost4bindIvRKSsNS_10shared_ptrIN3RBX4GameEEEPKcS6_EENS_3_bi6bind_tIT_PFSB_T0_T1_ENS9_9list_av_2IT2_T3_E4typeEEESF_SH_SI_
@@ -130,8 +337,9 @@ pub fn stub_2c9a8() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(std::string const&,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list_av_2<char const*,rbx_core::SharedPtr<RBX::Game>>::type> boost::bind<void,std::string const&,rbx_core::SharedPtr<RBX::Game>,char const*,rbx_core::SharedPtr<RBX::Game>>(void (*)(std::string const&,rbx_core::SharedPtr<RBX::Game>),char const*,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_2ca7c() -> ! {
-    todo!("0x2ca7c boost::_bi::bind_t<void,void (*)(std::string const&,boost::shared_ptr<RBX::Game>),boost::_bi::list_av_2<char const*,boost::shared_ptr<RBX::Game>>::type> boost::bind<void,std::strin")
+pub fn stub_2ca7c(target: usize, cstr: usize, game: SharedSlot) -> BindCstrGame {
+    // IDA 0x2ca7c: list2<value<char const*>, value<shared_ptr<Game>>> ctor; bind_t{target, args}.
+    BindCstrGame { target, cstr, game }
 }
 
 // 0x2cb64 — __ZN5boost4bindIviRKSsNS_10shared_ptrIN3RBX4GameEEEiPKcS6_EENS_3_bi6bind_tIT_PFSB_T0_T1_T2_ENS9_9list_av_3IT3_T4_T5_E4typeEEESG_SI_SJ_SK_
@@ -139,8 +347,9 @@ pub fn stub_2ca7c() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(int,std::string const&,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list_av_3<int,char const*,rbx_core::SharedPtr<RBX::Game>>::type> boost::bind<void,int,std::string const&,rbx_core::SharedPtr<RBX::Game>,int,char const*,rbx_core::SharedPtr<RBX::Game>>(void (*)(int,std::string const&,rbx_core::SharedPtr<RBX::Game>),int,char const*,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_2cb64() -> ! {
-    todo!("0x2cb64 boost::_bi::bind_t<void,void (*)(int,std::string const&,boost::shared_ptr<RBX::Game>),boost::_bi::list_av_3<int,char const*,boost::shared_ptr<RBX::Game>>::type> boost::bind<void,in")
+pub fn stub_2cb64(target: usize, arg0: i32, cstr: usize, game: SharedSlot) -> BindIntCstrGame {
+    // IDA 0x2cb64: list3<value<int>, value<char const*>, value<shared_ptr<Game>>> ctor; bind_t pack.
+    BindIntCstrGame { target, arg0, cstr, game }
 }
 
 // 0x2cc54 — __ZN5boost4bindIviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestiS4_S5_EENS_3_bi6bind_tIT_PFS8_T0_T1_T2_ENS6_9list_av_3IT3_T4_T5_E4typeEEESD_SF_SG_SH_
@@ -148,8 +357,9 @@ pub fn stub_2cb64() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest),boost::_bi::list_av_3<int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest>::type> boost::bind<void,int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest,int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest>(void (*)(int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest),int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest)")]
-pub fn stub_2cc54() -> ! {
-    todo!("0x2cc54 boost::_bi::bind_t<void,void (*)(int,boost::shared_ptr<RBX::Game>,JoinGameRequest),boost::_bi::list_av_3<int,boost::shared_ptr<RBX::Game>,JoinGameRequest>::type> boost::bind<void,i")
+pub fn stub_2cc54(target: usize, arg0: i32, game: SharedSlot, join_request: usize) -> BindIntGameJoin {
+    // IDA 0x2cc54: list3<value<int>, value<shared_ptr<Game>>, value<JoinGameRequest>> ctor; pack.
+    BindIntGameJoin { target, arg0, game, join_request }
 }
 
 // 0x2cd44 — __ZN5boost4bindIviNS_10shared_ptrIN3RBX4GameEEEiS4_EENS_3_bi6bind_tIT_PFS7_T0_T1_ENS5_9list_av_2IT2_T3_E4typeEEESB_SD_SE_
@@ -157,8 +367,9 @@ pub fn stub_2cc54() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list_av_2<int,rbx_core::SharedPtr<RBX::Game>>::type> boost::bind<void,int,rbx_core::SharedPtr<RBX::Game>,int,rbx_core::SharedPtr<RBX::Game>>(void (*)(int,rbx_core::SharedPtr<RBX::Game>),int,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_2cd44() -> ! {
-    todo!("0x2cd44 boost::_bi::bind_t<void,void (*)(int,boost::shared_ptr<RBX::Game>),boost::_bi::list_av_2<int,boost::shared_ptr<RBX::Game>>::type> boost::bind<void,int,boost::shared_ptr<RBX::Game>,")
+pub fn stub_2cd44(target: usize, arg0: i32, game: SharedSlot) -> BindIntGame {
+    // IDA 0x2cd44: list2<value<int>, value<shared_ptr<Game>>> ctor; bind_t pack.
+    BindIntGame { target, arg0, game }
 }
 
 // 0x2ce2c — __ZN5boost4bindIvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEESsSsSsP24RobloxPageViewControllerS6_EENS_3_bi6bind_tIT_PFSB_T0_T1_T2_T3_T4_ENS9_9list_av_5IT5_T6_T7_T8_T9_E4typeEEESI_SK_SL_SM_SN_SO_
@@ -166,8 +377,23 @@ pub fn stub_2cd44() -> ! {
 // type: int __fastcall(int, int, std::string *, int, std::string *, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list_av_5<std::string,std::string,std::string,RobloxPageViewController *,rbx_core::SharedPtr<RBX::Game>>::type> boost::bind<void,std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>,std::string,std::string,std::string,RobloxPageViewController *,boost::share")]
-pub fn stub_2ce2c() -> ! {
-    todo!("0x2ce2c boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list_av_5<std::string,std::string,std::string,RobloxPageVi")
+pub fn stub_2ce2c(
+    target: usize,
+    s0: &str,
+    s1: &str,
+    s2: &str,
+    page: usize,
+    game: SharedSlot,
+) -> BindStringsPageGame {
+    // IDA 0x2ce2c: three std::string copies + shared_count copy into list5; bind_t pack; temps released.
+    BindStringsPageGame {
+        target,
+        s0: s0.to_owned(),
+        s1: s1.to_owned(),
+        s2: s2.to_owned(),
+        page,
+        game,
+    }
 }
 
 // 0x2d280 — __ZN5boost4bindIvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS4_18FunctionMarshallerES2_S6_S8_EENS_3_bi6bind_tIT_PFSB_T0_T1_T2_ENS9_9list_av_3IT3_T4_T5_E4typeEEESG_SI_SJ_SK_
@@ -175,8 +401,9 @@ pub fn stub_2ce2c() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list_av_3<RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *>::type> boost::bind<void,RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *,RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *>(void (*)(RobloxView *,rbx_core::SharedPtr<RBX::G")]
-pub fn stub_2d280() -> ! {
-    todo!("0x2d280 boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list_av_3<RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionM")
+pub fn stub_2d280(target: usize, view: usize, game: SharedSlot, marshaller: usize) -> BindViewGameMarshaller {
+    // IDA 0x2d280: list3<value<RobloxView*>, value<shared_ptr<Game>>, value<FunctionMarshaller*>> ctor; pack.
+    BindViewGameMarshaller { target, view, game, marshaller }
 }
 
 // 0x2d370 — __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS7_5list3INS7_5valueISA_EENSJ_ISD_EENSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
@@ -184,8 +411,9 @@ pub fn stub_2d280() -> ! {
 // type: int __fastcall(int, boost::detail::sp_counted_base *, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "__ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS7_5list3INS7_5valueISA_EENSJ_ISD_EENSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_2d370() -> ! {
-    todo!("0x2d370 __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS7_5list3INS7_5valueISA_EENSJ_ISD_EENSJ_ISF_EEEE")
+pub fn stub_2d370(bound: BindViewGameMarshaller) -> DataModelCallback {
+    // IDA 0x2d370: function<void(DataModel*)> ctor: bind_t copied to a temp, forwarded to function1 ctor.
+    DataModelCallback { bound: Some(bound) }
 }
 
 // 0x2d458 — __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
@@ -193,8 +421,11 @@ pub fn stub_2d370() -> ! {
 // type: int __fastcall(int, struct _Unwind_Exception *lpuexcpt, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "__ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_2d458() -> ! {
-    todo!("0x2d458 __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEE")
+pub fn stub_2d458(bound: BindViewGameMarshaller) -> DataModelCallback {
+    // IDA 0x2d458: function1 ctor: *a1 = 0, then assign_to with the bind_t copy; temp released.
+    let mut cb = DataModelCallback::default();
+    stub_2d544(&mut cb, bound);
+    cb
 }
 
 // 0x2d544 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEEEEEvT_
@@ -202,8 +433,9 @@ pub fn stub_2d458() -> ! {
 // type: int __fastcall(int, boost::detail::sp_counted_base *, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshall")]
-pub fn stub_2d544() -> ! {
-    todo!("0x2d544 void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boos")
+pub fn stub_2d544(cb: &mut DataModelCallback, bound: BindViewGameMarshaller) {
+    // IDA 0x2d544: basic_vtable1::assign_to(stored_vtable, buffer a1 + 4, functor copy).
+    cb.bound = Some(bound);
 }
 
 // 0x2d644 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
@@ -211,8 +443,17 @@ pub fn stub_2d544() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail")]
-pub fn stub_2d644() -> ! {
-    todo!("0x2d644 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<R")
+pub fn stub_2d644(op: i32, out_type: &mut usize, out_flags: &mut u16) -> usize {
+    // IDA 0x2d644: op != 4 (get_type): tail-call functor_manager::manager table; else store the
+    // bind_t typeinfo, clear the small-object flags word, return the typeinfo.
+    const MANAGER_TABLE: usize = 0x2d648;
+    const BIND_T_TYPEINFO: usize = 0x2d65a;
+    if op != 4 {
+        return MANAGER_TABLE;
+    }
+    *out_type = BIND_T_TYPEINFO;
+    *out_flags = 0;
+    BIND_T_TYPEINFO
 }
 
 // 0x2d660 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEvPNS8_9DataModelEE6invokeERNS1_15function_bufferESN_
@@ -220,8 +461,10 @@ pub fn stub_2d644() -> ! {
 // type: int __fastcall(int, int)
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")]
-pub fn stub_2d660() -> ! {
-    todo!("0x2d660 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_")
+pub fn stub_2d660(bound: &BindViewGameMarshaller, invoke: &mut dyn FnMut(usize, usize, usize)) {
+    // IDA 0x2d660: void_function_obj_invoker1::invoke: functor f from the buffer, DataModel* arg in
+    // list1; list3::operator() calls f(view, game, marshaller).
+    invoke(bound.view, bound.game.ptr, bound.marshaller);
 }
 
 // 0x2d67c — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS3_4GameEEEPNS3_18FunctionMarshallerEENS8_5list3INS8_5valueISB_EENSK_ISE_EENSK_ISG_EEEEEEEEbT_RNS1_15function_bufferE
