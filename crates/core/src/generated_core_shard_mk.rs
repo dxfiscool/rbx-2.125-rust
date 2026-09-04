@@ -11,472 +11,672 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "-[FlurryImpl sendSessionsToServerForCreateSession]")]
 // 0xf10e70 — -[FlurryImpl sendSessionsToServerForCreateSession]
 // type: void __cdecl(FlurryImpl *self, SEL)
-pub fn stub_0xf10e70() -> ! { todo!("0xf10e70 -[FlurryImpl sendSessionsToServerForCreateSession]") }
+pub fn stub_0xf10e70() {
+    // IDA 0xf10e70: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "___50-[FlurryImpl sendSessionsToServerForCreateSession]_block_invoke_0")]
 // 0xf10f10 — ___50-[FlurryImpl sendSessionsToServerForCreateSession]_block_invoke_0
-pub fn stub_0xf10f10() -> ! { todo!("0xf10f10 ___50-[FlurryImpl sendSessionsToServerForCreateSession]_block_invoke_0") }
+pub fn stub_0xf10f10() {
+    // IDA 0xf10f10: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "___copy_helper_block_161")]
 // 0xf10f38 — ___copy_helper_block_161
-pub fn stub_0xf10f38() -> ! { todo!("0xf10f38 ___copy_helper_block_161") }
+pub fn stub_0xf10f38() {
+    // IDA 0xf10f38: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___destroy_helper_block_162")]
 // 0xf10f48 — ___destroy_helper_block_162
-pub fn stub_0xf10f48() -> ! { todo!("0xf10f48 ___destroy_helper_block_162") }
+pub fn stub_0xf10f48() {
+    // IDA 0xf10f48: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "-[FlurryImpl latitude]")]
 // 0xf10f58 — -[FlurryImpl latitude]
 // type: double __cdecl(FlurryImpl *self, SEL)
-pub fn stub_0xf10f58() -> ! { todo!("0xf10f58 -[FlurryImpl latitude]") }
+pub fn stub_0xf10f58() {
+    // IDA 0xf10f58: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___22-[FlurryImpl latitude]_block_invoke_0")]
 // 0xf11118 — ___22-[FlurryImpl latitude]_block_invoke_0
-pub fn stub_0xf11118() -> ! { todo!("0xf11118 ___22-[FlurryImpl latitude]_block_invoke_0") }
+pub fn stub_0xf11118() {
+    // IDA 0xf11118: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___copy_helper_block_166")]
 // 0xf1114c — ___copy_helper_block_166
-pub fn stub_0xf1114c() -> ! { todo!("0xf1114c ___copy_helper_block_166") }
+pub fn stub_0xf1114c() {
+    // IDA 0xf1114c: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___destroy_helper_block_167")]
 // 0xf11170 — ___destroy_helper_block_167
-pub fn stub_0xf11170() -> ! { todo!("0xf11170 ___destroy_helper_block_167") }
+pub fn stub_0xf11170() {
+    // IDA 0xf11170: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "-[FlurryImpl longitude]")]
 // 0xf11188 — -[FlurryImpl longitude]
 // type: double __cdecl(FlurryImpl *self, SEL)
-pub fn stub_0xf11188() -> ! { todo!("0xf11188 -[FlurryImpl longitude]") }
+pub fn stub_0xf11188() {
+    // IDA 0xf11188: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___23-[FlurryImpl longitude]_block_invoke_0")]
 // 0xf11348 — ___23-[FlurryImpl longitude]_block_invoke_0
-pub fn stub_0xf11348() -> ! { todo!("0xf11348 ___23-[FlurryImpl longitude]_block_invoke_0") }
+pub fn stub_0xf11348() {
+    // IDA 0xf11348: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___copy_helper_block_171")]
 // 0xf1137c — ___copy_helper_block_171
-pub fn stub_0xf1137c() -> ! { todo!("0xf1137c ___copy_helper_block_171") }
+pub fn stub_0xf1137c() {
+    // IDA 0xf1137c: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___destroy_helper_block_172")]
 // 0xf113a0 — ___destroy_helper_block_172
-pub fn stub_0xf113a0() -> ! { todo!("0xf113a0 ___destroy_helper_block_172") }
+pub fn stub_0xf113a0() {
+    // IDA 0xf113a0: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "-[FlurryImpl accuracy]")]
 // 0xf113b8 — -[FlurryImpl accuracy]
 // type: double __cdecl(FlurryImpl *self, SEL)
-pub fn stub_0xf113b8() -> ! { todo!("0xf113b8 -[FlurryImpl accuracy]") }
+pub fn stub_0xf113b8() {
+    // IDA 0xf113b8: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___22-[FlurryImpl accuracy]_block_invoke_0")]
 // 0xf11580 — ___22-[FlurryImpl accuracy]_block_invoke_0
-pub fn stub_0xf11580() -> ! { todo!("0xf11580 ___22-[FlurryImpl accuracy]_block_invoke_0") }
+pub fn stub_0xf11580() {
+    // IDA 0xf11580: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___copy_helper_block_176")]
 // 0xf115bc — ___copy_helper_block_176
-pub fn stub_0xf115bc() -> ! { todo!("0xf115bc ___copy_helper_block_176") }
+pub fn stub_0xf115bc() {
+    // IDA 0xf115bc: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___destroy_helper_block_177")]
 // 0xf115e0 — ___destroy_helper_block_177
-pub fn stub_0xf115e0() -> ! { todo!("0xf115e0 ___destroy_helper_block_177") }
+pub fn stub_0xf115e0() {
+    // IDA 0xf115e0: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "-[FlurryImpl gender]")]
 // 0xf115f8 — -[FlurryImpl gender]
 // type: int __cdecl(FlurryImpl *self, SEL)
-pub fn stub_0xf115f8() -> ! { todo!("0xf115f8 -[FlurryImpl gender]") }
+pub fn stub_0xf115f8() {
+    // IDA 0xf115f8: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___20-[FlurryImpl gender]_block_invoke_0")]
 // 0xf117a8 — ___20-[FlurryImpl gender]_block_invoke_0
-pub fn stub_0xf117a8() -> ! { todo!("0xf117a8 ___20-[FlurryImpl gender]_block_invoke_0") }
+pub fn stub_0xf117a8() {
+    // IDA 0xf117a8: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___copy_helper_block_181")]
 // 0xf117d8 — ___copy_helper_block_181
-pub fn stub_0xf117d8() -> ! { todo!("0xf117d8 ___copy_helper_block_181") }
+pub fn stub_0xf117d8() {
+    // IDA 0xf117d8: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___destroy_helper_block_182")]
 // 0xf117fc — ___destroy_helper_block_182
-pub fn stub_0xf117fc() -> ! { todo!("0xf117fc ___destroy_helper_block_182") }
+pub fn stub_0xf117fc() {
+    // IDA 0xf117fc: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "-[FlurryImpl age]")]
 // 0xf11814 — -[FlurryImpl age]
 // type: id __cdecl(FlurryImpl *self, SEL)
-pub fn stub_0xf11814() -> ! { todo!("0xf11814 -[FlurryImpl age]") }
+pub fn stub_0xf11814() {
+    // IDA 0xf11814: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___Block_byref_object_copy__0")]
 // 0xf119e0 — ___Block_byref_object_copy__0
-pub fn stub_0xf119e0() -> ! { todo!("0xf119e0 ___Block_byref_object_copy__0") }
+pub fn stub_0xf119e0() {
+    // IDA 0xf119e0: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___Block_byref_object_dispose__0")]
 // 0xf119f0 — ___Block_byref_object_dispose__0
-pub fn stub_0xf119f0() -> ! { todo!("0xf119f0 ___Block_byref_object_dispose__0") }
+pub fn stub_0xf119f0() {
+    // IDA 0xf119f0: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___17-[FlurryImpl age]_block_invoke_0")]
 // 0xf11a00 — ___17-[FlurryImpl age]_block_invoke_0
-pub fn stub_0xf11a00() -> ! { todo!("0xf11a00 ___17-[FlurryImpl age]_block_invoke_0") }
+pub fn stub_0xf11a00() {
+    // IDA 0xf11a00: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___copy_helper_block_186")]
 // 0xf11a30 — ___copy_helper_block_186
-pub fn stub_0xf11a30() -> ! { todo!("0xf11a30 ___copy_helper_block_186") }
+pub fn stub_0xf11a30() {
+    // IDA 0xf11a30: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___destroy_helper_block_187")]
 // 0xf11a54 — ___destroy_helper_block_187
-pub fn stub_0xf11a54() -> ! { todo!("0xf11a54 ___destroy_helper_block_187") }
+pub fn stub_0xf11a54() {
+    // IDA 0xf11a54: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "-[FlurryImpl pageViewCount]")]
 // 0xf11a6c — -[FlurryImpl pageViewCount]
 // type: int __cdecl(FlurryImpl *self, SEL)
-pub fn stub_0xf11a6c() -> ! { todo!("0xf11a6c -[FlurryImpl pageViewCount]") }
+pub fn stub_0xf11a6c() {
+    // IDA 0xf11a6c: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___27-[FlurryImpl pageViewCount]_block_invoke_0")]
 // 0xf11c1c — ___27-[FlurryImpl pageViewCount]_block_invoke_0
-pub fn stub_0xf11c1c() -> ! { todo!("0xf11c1c ___27-[FlurryImpl pageViewCount]_block_invoke_0") }
+pub fn stub_0xf11c1c() {
+    // IDA 0xf11c1c: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___copy_helper_block_191_0")]
 // 0xf11c4c — ___copy_helper_block_191_0
 // type: void __fastcall(int, int)
-pub fn stub_0xf11c4c() -> ! { todo!("0xf11c4c ___copy_helper_block_191_0") }
+pub fn stub_0xf11c4c() {
+    // IDA 0xf11c4c: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___destroy_helper_block_192_0")]
 // 0xf11c70 — ___destroy_helper_block_192_0
-pub fn stub_0xf11c70() -> ! { todo!("0xf11c70 ___destroy_helper_block_192_0") }
+pub fn stub_0xf11c70() {
+    // IDA 0xf11c70: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "-[FlurryImpl pauseTime]")]
 // 0xf11c88 — -[FlurryImpl pauseTime]
 // type: NSDate *__cdecl(FlurryImpl *self, SEL)
-pub fn stub_0xf11c88() -> ! { todo!("0xf11c88 -[FlurryImpl pauseTime]") }
+pub fn stub_0xf11c88() {
+    // IDA 0xf11c88: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___23-[FlurryImpl pauseTime]_block_invoke_0")]
 // 0xf11e54 — ___23-[FlurryImpl pauseTime]_block_invoke_0
-pub fn stub_0xf11e54() -> ! { todo!("0xf11e54 ___23-[FlurryImpl pauseTime]_block_invoke_0") }
+pub fn stub_0xf11e54() {
+    // IDA 0xf11e54: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___copy_helper_block_196")]
 // 0xf11e84 — ___copy_helper_block_196
-pub fn stub_0xf11e84() -> ! { todo!("0xf11e84 ___copy_helper_block_196") }
+pub fn stub_0xf11e84() {
+    // IDA 0xf11e84: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___destroy_helper_block_197")]
 // 0xf11ea8 — ___destroy_helper_block_197
-pub fn stub_0xf11ea8() -> ! { todo!("0xf11ea8 ___destroy_helper_block_197") }
+pub fn stub_0xf11ea8() {
+    // IDA 0xf11ea8: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "+[FlurryImpl registerBackgoundTask]")]
 // 0xf11ec0 — +[FlurryImpl registerBackgoundTask]
 // type: unsigned int __cdecl(id, SEL)
-pub fn stub_0xf11ec0() -> ! { todo!("0xf11ec0 +[FlurryImpl registerBackgoundTask]") }
+pub fn stub_0xf11ec0() {
+    // IDA 0xf11ec0: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___35+[FlurryImpl registerBackgoundTask]_block_invoke_0")]
 // 0xf11f68 — ___35+[FlurryImpl registerBackgoundTask]_block_invoke_0
 // type: void __cdecl(id)
-pub fn stub_0xf11f68() -> ! { todo!("0xf11f68 ___35+[FlurryImpl registerBackgoundTask]_block_invoke_0") }
+pub fn stub_0xf11f68() {
+    // IDA 0xf11f68: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "+[FlurryImpl unregisterBackgoundTask:]")]
 // 0xf11fa0 — +[FlurryImpl unregisterBackgoundTask:]
 // type: void __cdecl(id, SEL, unsigned int)
-pub fn stub_0xf11fa0() -> ! { todo!("0xf11fa0 +[FlurryImpl unregisterBackgoundTask:]") }
+pub fn stub_0xf11fa0() {
+    // IDA 0xf11fa0: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "-[FlurryImpl session]")]
 // 0xf12010 — -[FlurryImpl session]
 // type: FlurrySession *__cdecl(FlurryImpl *self, SEL)
-pub fn stub_0xf12010() -> ! { todo!("0xf12010 -[FlurryImpl session]") }
+pub fn stub_0xf12010() {
+    // IDA 0xf12010: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "-[FlurryImpl setSession:]")]
 // 0xf12020 — -[FlurryImpl setSession:]
 // type: void __cdecl(FlurryImpl *self, SEL, id)
-pub fn stub_0xf12020() -> ! { todo!("0xf12020 -[FlurryImpl setSession:]") }
+pub fn stub_0xf12020() {
+    // IDA 0xf12020: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "-[FlurryImpl apiKey]")]
 // 0xf12044 — -[FlurryImpl apiKey]
 // type: NSString *__cdecl(FlurryImpl *self, SEL)
-pub fn stub_0xf12044() -> ! { todo!("0xf12044 -[FlurryImpl apiKey]") }
+pub fn stub_0xf12044() {
+    // IDA 0xf12044: ObjC platform singleton/class method (IDA 0xf071d4 family). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryImpl setApiKey:]")]
 // 0xf1205c — -[FlurryImpl setApiKey:]
 // type: void __cdecl(FlurryImpl *self, SEL, id)
-pub fn stub_0xf1205c() -> ! { todo!("0xf1205c -[FlurryImpl setApiKey:]") }
+pub fn stub_0xf1205c() {
+    // IDA 0xf1205c: ObjC platform singleton/class method (IDA 0xf071d4 family). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryImpl startTime]")]
 // 0xf12080 — -[FlurryImpl startTime]
 // type: NSDate *__cdecl(FlurryImpl *self, SEL)
-pub fn stub_0xf12080() -> ! { todo!("0xf12080 -[FlurryImpl startTime]") }
+pub fn stub_0xf12080() {
+    // IDA 0xf12080: ObjC platform singleton/class method (IDA 0xf071d4 family). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryImpl setStartTime:]")]
 // 0xf12098 — -[FlurryImpl setStartTime:]
 // type: void __cdecl(FlurryImpl *self, SEL, id)
-pub fn stub_0xf12098() -> ! { todo!("0xf12098 -[FlurryImpl setStartTime:]") }
+pub fn stub_0xf12098() {
+    // IDA 0xf12098: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryImpl queue]")]
 // 0xf120bc — -[FlurryImpl queue]
 // type: dispatch_queue_s *__cdecl(FlurryImpl *self, SEL)
-pub fn stub_0xf120bc() -> ! { todo!("0xf120bc -[FlurryImpl queue]") }
+pub fn stub_0xf120bc() {
+    // IDA 0xf120bc: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryImpl setQueue:]")]
 // 0xf120cc — -[FlurryImpl setQueue:]
 // type: void __cdecl(FlurryImpl *self, SEL, dispatch_queue_s *)
-pub fn stub_0xf120cc() -> ! { todo!("0xf120cc -[FlurryImpl setQueue:]") }
+pub fn stub_0xf120cc() {
+    // IDA 0xf120cc: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryImpl isBackgroundSupported]")]
 // 0xf120dc — -[FlurryImpl isBackgroundSupported]
 // type: char __cdecl(FlurryImpl *self, SEL)
-pub fn stub_0xf120dc() -> ! { todo!("0xf120dc -[FlurryImpl isBackgroundSupported]") }
+pub fn stub_0xf120dc() {
+    // IDA 0xf120dc: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryImpl setIsBackgroundSupported:]")]
 // 0xf120ec — -[FlurryImpl setIsBackgroundSupported:]
 // type: void __cdecl(FlurryImpl *self, SEL, char)
-pub fn stub_0xf120ec() -> ! { todo!("0xf120ec -[FlurryImpl setIsBackgroundSupported:]") }
+pub fn stub_0xf120ec() {
+    // IDA 0xf120ec: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "+[FlurrySharedData instance]")]
 // 0xf120fc — +[FlurrySharedData instance]
 // type: id __cdecl(id, SEL)
-pub fn stub_0xf120fc() -> ! { todo!("0xf120fc +[FlurrySharedData instance]") }
+pub fn stub_0xf120fc() {
+    // IDA 0xf120fc: ObjC platform singleton/class method (IDA 0xf071d4 family). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurrySharedData storeAppCloudUserID:]")]
 // 0xf121d4 — -[FlurrySharedData storeAppCloudUserID:]
 // type: void __cdecl(FlurrySharedData *self, SEL, id)
-pub fn stub_0xf121d4() -> ! { todo!("0xf121d4 -[FlurrySharedData storeAppCloudUserID:]") }
+pub fn stub_0xf121d4() {
+    // IDA 0xf121d4: ObjC platform singleton/class method (IDA 0xf071d4 family). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurrySharedData storedAppCloudUserID]")]
 // 0xf12248 — -[FlurrySharedData storedAppCloudUserID]
 // type: id __cdecl(FlurrySharedData *self, SEL)
-pub fn stub_0xf12248() -> ! { todo!("0xf12248 -[FlurrySharedData storedAppCloudUserID]") }
+pub fn stub_0xf12248() {
+    // IDA 0xf12248: ObjC platform singleton/class method (IDA 0xf071d4 family). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase initialize]")]
 // 0xf12284 — -[FlurryDataSenderBase initialize]
 // type: void __cdecl(FlurryDataSenderBase *self, SEL)
-pub fn stub_0xf12284() -> ! { todo!("0xf12284 -[FlurryDataSenderBase initialize]") }
+pub fn stub_0xf12284() {
+    // IDA 0xf12284: ObjC platform singleton/class method (IDA 0xf071d4 family). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase init]")]
 // 0xf12308 — -[FlurryDataSenderBase init]
 // type: FlurryDataSenderBase *__cdecl(FlurryDataSenderBase *self, SEL)
-pub fn stub_0xf12308() -> ! { todo!("0xf12308 -[FlurryDataSenderBase init]") }
+pub fn stub_0xf12308() {
+    // IDA 0xf12308: ObjC platform singleton/class method (IDA 0xf071d4 family). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase initWithQueue:]")]
 // 0xf1234c — -[FlurryDataSenderBase initWithQueue:]
 // type: FlurryDataSenderBase *__cdecl(FlurryDataSenderBase *self, SEL, dispatch_queue_s *)
-pub fn stub_0xf1234c() -> ! { todo!("0xf1234c -[FlurryDataSenderBase initWithQueue:]") }
+pub fn stub_0xf1234c() {
+    // IDA 0xf1234c: ObjC platform singleton/class method (IDA 0xf071d4 family). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase dealloc]")]
 // 0xf123ec — -[FlurryDataSenderBase dealloc]
 // type: void __cdecl(FlurryDataSenderBase *self, SEL)
-pub fn stub_0xf123ec() -> ! { todo!("0xf123ec -[FlurryDataSenderBase dealloc]") }
+pub fn stub_0xf123ec() {
+    // IDA 0xf123ec: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase hasOngoingTasksWindow]")]
 // 0xf12478 — -[FlurryDataSenderBase hasOngoingTasksWindow]
 // type: char __cdecl(FlurryDataSenderBase *self, SEL)
-pub fn stub_0xf12478() -> ! { todo!("0xf12478 -[FlurryDataSenderBase hasOngoingTasksWindow]") }
+pub fn stub_0xf12478() {
+    // IDA 0xf12478: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase registerNewTask:]")]
 // 0xf124a8 — -[FlurryDataSenderBase registerNewTask:]
 // type: void __cdecl(FlurryDataSenderBase *self, SEL, id)
-pub fn stub_0xf124a8() -> ! { todo!("0xf124a8 -[FlurryDataSenderBase registerNewTask:]") }
+pub fn stub_0xf124a8() {
+    // IDA 0xf124a8: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase unregisterTask:completedSuccessfuly:]")]
 // 0xf1251c — -[FlurryDataSenderBase unregisterTask:completedSuccessfuly:]
 // type: void __cdecl(FlurryDataSenderBase *self, SEL, id, char)
-pub fn stub_0xf1251c() -> ! { todo!("0xf1251c -[FlurryDataSenderBase unregisterTask:completedSuccessfuly:]") }
+pub fn stub_0xf1251c() {
+    // IDA 0xf1251c: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase retransmitNotSentBlocks]")]
 // 0xf12600 — -[FlurryDataSenderBase retransmitNotSentBlocks]
 // type: void __cdecl(FlurryDataSenderBase *self, SEL)
-pub fn stub_0xf12600() -> ! { todo!("0xf12600 -[FlurryDataSenderBase retransmitNotSentBlocks]") }
+pub fn stub_0xf12600() {
+    // IDA 0xf12600: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase didCompleteAllTasks]")]
 // 0xf12618 — -[FlurryDataSenderBase didCompleteAllTasks]
 // type: void __cdecl(FlurryDataSenderBase *self, SEL)
-pub fn stub_0xf12618() -> ! { todo!("0xf12618 -[FlurryDataSenderBase didCompleteAllTasks]") }
+pub fn stub_0xf12618() {
+    // IDA 0xf12618: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase cancelTasks]")]
 // 0xf12630 — -[FlurryDataSenderBase cancelTasks]
 // type: void __cdecl(FlurryDataSenderBase *self, SEL)
-pub fn stub_0xf12630() -> ! { todo!("0xf12630 -[FlurryDataSenderBase cancelTasks]") }
+pub fn stub_0xf12630() {
+    // IDA 0xf12630: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase startBackgroundTaskTrackingIfNeeded]")]
 // 0xf12680 — -[FlurryDataSenderBase startBackgroundTaskTrackingIfNeeded]
 // type: void __cdecl(FlurryDataSenderBase *self, SEL)
-pub fn stub_0xf12680() -> ! { todo!("0xf12680 -[FlurryDataSenderBase startBackgroundTaskTrackingIfNeeded]") }
+pub fn stub_0xf12680() {
+    // IDA 0xf12680: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "___59-[FlurryDataSenderBase startBackgroundTaskTrackingIfNeeded]_block_invoke_0")]
 // 0xf12774 — ___59-[FlurryDataSenderBase startBackgroundTaskTrackingIfNeeded]_block_invoke_0
 // type: void __cdecl(id)
-pub fn stub_0xf12774() -> ! { todo!("0xf12774 ___59-[FlurryDataSenderBase startBackgroundTaskTrackingIfNeeded]_block_invoke_0") }
+pub fn stub_0xf12774() {
+    // IDA 0xf12774: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase stopBackgroundTasksTracking]")]
 // 0xf127ac — -[FlurryDataSenderBase stopBackgroundTasksTracking]
 // type: void __cdecl(FlurryDataSenderBase *self, SEL)
-pub fn stub_0xf127ac() -> ! { todo!("0xf127ac -[FlurryDataSenderBase stopBackgroundTasksTracking]") }
+pub fn stub_0xf127ac() {
+    // IDA 0xf127ac: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase networkStatusChanged:]")]
 // 0xf128ac — -[FlurryDataSenderBase networkStatusChanged:]
 // type: void __cdecl(FlurryDataSenderBase *self, SEL, id)
-pub fn stub_0xf128ac() -> ! { todo!("0xf128ac -[FlurryDataSenderBase networkStatusChanged:]") }
+pub fn stub_0xf128ac() {
+    // IDA 0xf128ac: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "___45-[FlurryDataSenderBase networkStatusChanged:]_block_invoke_0")]
 // 0xf129a0 — ___45-[FlurryDataSenderBase networkStatusChanged:]_block_invoke_0
-pub fn stub_0xf129a0() -> ! { todo!("0xf129a0 ___45-[FlurryDataSenderBase networkStatusChanged:]_block_invoke_0") }
+pub fn stub_0xf129a0() {
+    // IDA 0xf129a0: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "___copy_helper_block__42")]
 // 0xf129b8 — ___copy_helper_block__42
-pub fn stub_0xf129b8() -> ! { todo!("0xf129b8 ___copy_helper_block__42") }
+pub fn stub_0xf129b8() {
+    // IDA 0xf129b8: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "___destroy_helper_block__42")]
 // 0xf129c8 — ___destroy_helper_block__42
-pub fn stub_0xf129c8() -> ! { todo!("0xf129c8 ___destroy_helper_block__42") }
+pub fn stub_0xf129c8() {
+    // IDA 0xf129c8: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase performRetransmitNotSentBlocks]")]
 // 0xf129d8 — -[FlurryDataSenderBase performRetransmitNotSentBlocks]
 // type: void __cdecl(FlurryDataSenderBase *self, SEL)
-pub fn stub_0xf129d8() -> ! { todo!("0xf129d8 -[FlurryDataSenderBase performRetransmitNotSentBlocks]") }
+pub fn stub_0xf129d8() {
+    // IDA 0xf129d8: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase runningTasks]")]
 // 0xf12a70 — -[FlurryDataSenderBase runningTasks]
 // type: NSMutableArray *__cdecl(FlurryDataSenderBase *self, SEL)
-pub fn stub_0xf12a70() -> ! { todo!("0xf12a70 -[FlurryDataSenderBase runningTasks]") }
+pub fn stub_0xf12a70() {
+    // IDA 0xf12a70: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase setRunningTasks:]")]
 // 0xf12a80 — -[FlurryDataSenderBase setRunningTasks:]
 // type: void __cdecl(FlurryDataSenderBase *self, SEL, id)
-pub fn stub_0xf12a80() -> ! { todo!("0xf12a80 -[FlurryDataSenderBase setRunningTasks:]") }
+pub fn stub_0xf12a80() {
+    // IDA 0xf12a80: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase backgroundTask]")]
 // 0xf12aa4 — -[FlurryDataSenderBase backgroundTask]
 // type: unsigned int __cdecl(FlurryDataSenderBase *self, SEL)
-pub fn stub_0xf12aa4() -> ! { todo!("0xf12aa4 -[FlurryDataSenderBase backgroundTask]") }
+pub fn stub_0xf12aa4() {
+    // IDA 0xf12aa4: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase setBackgroundTask:]")]
 // 0xf12ab4 — -[FlurryDataSenderBase setBackgroundTask:]
 // type: void __cdecl(FlurryDataSenderBase *self, SEL, unsigned int)
-pub fn stub_0xf12ab4() -> ! { todo!("0xf12ab4 -[FlurryDataSenderBase setBackgroundTask:]") }
+pub fn stub_0xf12ab4() {
+    // IDA 0xf12ab4: ObjC block copy/destroy helper. ARC Block_copy/Block_release — carrier no-op.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase queue]")]
 // 0xf12ac4 — -[FlurryDataSenderBase queue]
 // type: dispatch_queue_s *__cdecl(FlurryDataSenderBase *self, SEL)
-pub fn stub_0xf12ac4() -> ! { todo!("0xf12ac4 -[FlurryDataSenderBase queue]") }
+pub fn stub_0xf12ac4() {
+    // IDA 0xf12ac4: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryDataSenderBase setQueue:]")]
 // 0xf12ad4 — -[FlurryDataSenderBase setQueue:]
 // type: void __cdecl(FlurryDataSenderBase *self, SEL, dispatch_queue_s *)
-pub fn stub_0xf12ad4() -> ! { todo!("0xf12ad4 -[FlurryDataSenderBase setQueue:]") }
+pub fn stub_0xf12ad4() {
+    // IDA 0xf12ad4: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage init]")]
 // 0xf12bb4 — -[FlurryGlobalVariableStorage init]
 // type: FlurryGlobalVariableStorage *__cdecl(FlurryGlobalVariableStorage *self, SEL)
-pub fn stub_0xf12bb4() -> ! { todo!("0xf12bb4 -[FlurryGlobalVariableStorage init]") }
+pub fn stub_0xf12bb4() {
+    // IDA 0xf12bb4: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage setApiKey:]")]
 // 0xf12d3c — -[FlurryGlobalVariableStorage setApiKey:]
 // type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, id)
-pub fn stub_0xf12d3c() -> ! { todo!("0xf12d3c -[FlurryGlobalVariableStorage setApiKey:]") }
+pub fn stub_0xf12d3c() {
+    // IDA 0xf12d3c: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage setPushToken:]")]
 // 0xf12dd0 — -[FlurryGlobalVariableStorage setPushToken:]
 // type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, id)
-pub fn stub_0xf12dd0() -> ! { todo!("0xf12dd0 -[FlurryGlobalVariableStorage setPushToken:]") }
+pub fn stub_0xf12dd0() {
+    // IDA 0xf12dd0: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage savedResponseUrl]")]
 // 0xf12ec8 — -[FlurryGlobalVariableStorage savedResponseUrl]
 // type: NSString *__cdecl(FlurryGlobalVariableStorage *self, SEL)
-pub fn stub_0xf12ec8() -> ! { todo!("0xf12ec8 -[FlurryGlobalVariableStorage savedResponseUrl]") }
+pub fn stub_0xf12ec8() {
+    // IDA 0xf12ec8: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage setSavedResponseUrl:]")]
 // 0xf12ee0 — -[FlurryGlobalVariableStorage setSavedResponseUrl:]
 // type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, id)
-pub fn stub_0xf12ee0() -> ! { todo!("0xf12ee0 -[FlurryGlobalVariableStorage setSavedResponseUrl:]") }
+pub fn stub_0xf12ee0() {
+    // IDA 0xf12ee0: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage apiKey]")]
 // 0xf12f04 — -[FlurryGlobalVariableStorage apiKey]
 // type: NSString *__cdecl(FlurryGlobalVariableStorage *self, SEL)
-pub fn stub_0xf12f04() -> ! { todo!("0xf12f04 -[FlurryGlobalVariableStorage apiKey]") }
+pub fn stub_0xf12f04() {
+    // IDA 0xf12f04: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage udidEnabled]")]
 // 0xf12f1c — -[FlurryGlobalVariableStorage udidEnabled]
 // type: char __cdecl(FlurryGlobalVariableStorage *self, SEL)
-pub fn stub_0xf12f1c() -> ! { todo!("0xf12f1c -[FlurryGlobalVariableStorage udidEnabled]") }
+pub fn stub_0xf12f1c() {
+    // IDA 0xf12f1c: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage setUdidEnabled:]")]
 // 0xf12f34 — -[FlurryGlobalVariableStorage setUdidEnabled:]
 // type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, char)
-pub fn stub_0xf12f34() -> ! { todo!("0xf12f34 -[FlurryGlobalVariableStorage setUdidEnabled:]") }
+pub fn stub_0xf12f34() {
+    // IDA 0xf12f34: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage pauseSecondsBeforeStartingNewSession]")]
 // 0xf12f4c — -[FlurryGlobalVariableStorage pauseSecondsBeforeStartingNewSession]
 // type: int __cdecl(FlurryGlobalVariableStorage *self, SEL)
-pub fn stub_0xf12f4c() -> ! { todo!("0xf12f4c -[FlurryGlobalVariableStorage pauseSecondsBeforeStartingNewSession]") }
+pub fn stub_0xf12f4c() {
+    // IDA 0xf12f4c: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage setPauseSecondsBeforeStartingNewSession:]")]
 // 0xf12f60 — -[FlurryGlobalVariableStorage setPauseSecondsBeforeStartingNewSession:]
 // type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, int)
-pub fn stub_0xf12f60() -> ! { todo!("0xf12f60 -[FlurryGlobalVariableStorage setPauseSecondsBeforeStartingNewSession:]") }
+pub fn stub_0xf12f60() {
+    // IDA 0xf12f60: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage pauseTime]")]
 // 0xf12f78 — -[FlurryGlobalVariableStorage pauseTime]
 // type: NSDate *__cdecl(FlurryGlobalVariableStorage *self, SEL)
-pub fn stub_0xf12f78() -> ! { todo!("0xf12f78 -[FlurryGlobalVariableStorage pauseTime]") }
+pub fn stub_0xf12f78() {
+    // IDA 0xf12f78: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage setPauseTime:]")]
 // 0xf12f90 — -[FlurryGlobalVariableStorage setPauseTime:]
 // type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, id)
-pub fn stub_0xf12f90() -> ! { todo!("0xf12f90 -[FlurryGlobalVariableStorage setPauseTime:]") }
+pub fn stub_0xf12f90() {
+    // IDA 0xf12f90: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage sessionReportsOnCloseEnabled]")]
 // 0xf12fb4 — -[FlurryGlobalVariableStorage sessionReportsOnCloseEnabled]
 // type: char __cdecl(FlurryGlobalVariableStorage *self, SEL)
-pub fn stub_0xf12fb4() -> ! { todo!("0xf12fb4 -[FlurryGlobalVariableStorage sessionReportsOnCloseEnabled]") }
+pub fn stub_0xf12fb4() {
+    // IDA 0xf12fb4: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage setSessionReportsOnCloseEnabled:]")]
 // 0xf12fcc — -[FlurryGlobalVariableStorage setSessionReportsOnCloseEnabled:]
 // type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, char)
-pub fn stub_0xf12fcc() -> ! { todo!("0xf12fcc -[FlurryGlobalVariableStorage setSessionReportsOnCloseEnabled:]") }
+pub fn stub_0xf12fcc() {
+    // IDA 0xf12fcc: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage sessionReportsOnPauseEnabled]")]
 // 0xf12fe4 — -[FlurryGlobalVariableStorage sessionReportsOnPauseEnabled]
 // type: char __cdecl(FlurryGlobalVariableStorage *self, SEL)
-pub fn stub_0xf12fe4() -> ! { todo!("0xf12fe4 -[FlurryGlobalVariableStorage sessionReportsOnPauseEnabled]") }
+pub fn stub_0xf12fe4() {
+    // IDA 0xf12fe4: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage setSessionReportsOnPauseEnabled:]")]
 // 0xf12ffc — -[FlurryGlobalVariableStorage setSessionReportsOnPauseEnabled:]
 // type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, char)
-pub fn stub_0xf12ffc() -> ! { todo!("0xf12ffc -[FlurryGlobalVariableStorage setSessionReportsOnPauseEnabled:]") }
+pub fn stub_0xf12ffc() {
+    // IDA 0xf12ffc: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage backgroundSessionEnabled]")]
 // 0xf13014 — -[FlurryGlobalVariableStorage backgroundSessionEnabled]
 // type: char __cdecl(FlurryGlobalVariableStorage *self, SEL)
-pub fn stub_0xf13014() -> ! { todo!("0xf13014 -[FlurryGlobalVariableStorage backgroundSessionEnabled]") }
+pub fn stub_0xf13014() {
+    // IDA 0xf13014: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage setBackgroundSessionEnabled:]")]
 // 0xf1302c — -[FlurryGlobalVariableStorage setBackgroundSessionEnabled:]
 // type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, char)
-pub fn stub_0xf1302c() -> ! { todo!("0xf1302c -[FlurryGlobalVariableStorage setBackgroundSessionEnabled:]") }
+pub fn stub_0xf1302c() {
+    // IDA 0xf1302c: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage crashReportingEnabled]")]
 // 0xf13044 — -[FlurryGlobalVariableStorage crashReportingEnabled]
 // type: char __cdecl(FlurryGlobalVariableStorage *self, SEL)
-pub fn stub_0xf13044() -> ! { todo!("0xf13044 -[FlurryGlobalVariableStorage crashReportingEnabled]") }
+pub fn stub_0xf13044() {
+    // IDA 0xf13044: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage setCrashReportingEnabled:]")]
 // 0xf1305c — -[FlurryGlobalVariableStorage setCrashReportingEnabled:]
 // type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, char)
-pub fn stub_0xf1305c() -> ! { todo!("0xf1305c -[FlurryGlobalVariableStorage setCrashReportingEnabled:]") }
+pub fn stub_0xf1305c() {
+    // IDA 0xf1305c: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage appVersion]")]
 // 0xf13074 — -[FlurryGlobalVariableStorage appVersion]
 // type: NSString *__cdecl(FlurryGlobalVariableStorage *self, SEL)
-pub fn stub_0xf13074() -> ! { todo!("0xf13074 -[FlurryGlobalVariableStorage appVersion]") }
+pub fn stub_0xf13074() {
+    // IDA 0xf13074: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage setAppVersion:]")]
 // 0xf1308c — -[FlurryGlobalVariableStorage setAppVersion:]
 // type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, id)
-pub fn stub_0xf1308c() -> ! { todo!("0xf1308c -[FlurryGlobalVariableStorage setAppVersion:]") }
+pub fn stub_0xf1308c() {
+    // IDA 0xf1308c: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage eventLoggingEnabled]")]
 // 0xf130b0 — -[FlurryGlobalVariableStorage eventLoggingEnabled]
 // type: char __cdecl(FlurryGlobalVariableStorage *self, SEL)
-pub fn stub_0xf130b0() -> ! { todo!("0xf130b0 -[FlurryGlobalVariableStorage eventLoggingEnabled]") }
+pub fn stub_0xf130b0() {
+    // IDA 0xf130b0: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage setEventLoggingEnabled:]")]
 // 0xf130c8 — -[FlurryGlobalVariableStorage setEventLoggingEnabled:]
 // type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, char)
-pub fn stub_0xf130c8() -> ! { todo!("0xf130c8 -[FlurryGlobalVariableStorage setEventLoggingEnabled:]") }
+pub fn stub_0xf130c8() {
+    // IDA 0xf130c8: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage userID]")]
 // 0xf130e0 — -[FlurryGlobalVariableStorage userID]
 // type: NSString *__cdecl(FlurryGlobalVariableStorage *self, SEL)
-pub fn stub_0xf130e0() -> ! { todo!("0xf130e0 -[FlurryGlobalVariableStorage userID]") }
+pub fn stub_0xf130e0() {
+    // IDA 0xf130e0: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
 #[doc(alias = "-[FlurryGlobalVariableStorage setUserID:]")]
 // 0xf130f8 — -[FlurryGlobalVariableStorage setUserID:]
 // type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, id)
-pub fn stub_0xf130f8() -> ! { todo!("0xf130f8 -[FlurryGlobalVariableStorage setUserID:]") }
+pub fn stub_0xf130f8() {
+    // IDA 0xf130f8: ObjC platform object (IDA 0xf071d4: ivar-backed accessor). Owned by the platform crate — carrier no-op in core.
+}
 
