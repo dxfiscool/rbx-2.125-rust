@@ -255,15 +255,11 @@ pub fn stub_f5bb04() -> ! {
 
 // 0xf5bb14 — j___ZN3RBX10Reflection13BoundFuncDescINS_16OverlayDataModelEFviELi1EEC2EMS2_FviEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::OverlayDataModel,void ()(int),1>::BoundFuncDesc(void (RBX::OverlayDataModel::*)(int),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_f5bb14() -> ! {
-    todo!("0xf5bb14 RBX::Reflection::BoundFuncDesc<RBX::OverlayDataModel,void ()(int),1>::BoundFuncDesc(void (RBX::OverlayDataModel::*)(int),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
-}
+pub use crate::generated_296::stub_0xf5bb14 as stub_f5bb14;
 
 // 0xf5bb24 — j___ZN3RBX10Reflection14PropDescriptorINS_16OverlayDataModelEiEC2IMS2_KFivEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::OverlayDataModel,int>::PropDescriptor<int (RBX::OverlayDataModel::*)(void)const,int>(char const*,char const*,int (RBX::OverlayDataModel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_f5bb24() -> ! {
-    todo!("0xf5bb24 RBX::Reflection::PropDescriptor<RBX::OverlayDataModel,int>::PropDescriptor<int (RBX::OverlayDataModel::*)(void)const,int>(char const*,char const*,int (RBX::OverlayDataModel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
-}
+pub use crate::generated_296::stub_0xf5bb24 as stub_f5bb24;
 
 // 0xf5bb34 — j___ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEiiESI_Li2EE16declareSignatureEPKcS7_SM_S7_
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int,int),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)
@@ -341,16 +337,12 @@ pub fn stub_f5bd34() -> ! {
 // 0xf5bd74 — j___ZN5boost10shared_ptrIN3RBX16OverlayDataModelEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // was: boost::shared_ptr<RBX::OverlayDataModel>::shared_ptr<RBX::OverlayDataModel>(boost::weak_ptr<RBX::OverlayDataModel> const&,boost::detail::sp_nothrow_tag)
 #[doc(alias = "rbx_core::SharedPtr<RBX::OverlayDataModel>::shared_ptr<RBX::OverlayDataModel>(rbx_core::Weak<RBX::OverlayDataModel> const&,boost::detail::sp_nothrow_tag)")]
-pub fn stub_f5bd74() -> ! {
-    todo!("0xf5bd74 rbx_core::SharedPtr<RBX::OverlayDataModel>::shared_ptr<RBX::OverlayDataModel>(rbx_core::Weak<RBX::OverlayDataModel> const&,boost::detail::sp_nothrow_tag)")
-}
+pub use crate::generated_296::stub_0xf5bd74 as stub_f5bd74;
 
 // 0xf5bdf4 — j___ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX16OverlayDataModelEEEEENS2_ISsEEEC2ES7_S8_
 // was: boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::weak_ptr<RBX::OverlayDataModel>>,boost::_bi::value<std::string>)
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>)")]
-pub fn stub_f5bdf4() -> ! {
-    todo!("0xf5bdf4 boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>)")
-}
+pub use crate::generated_296::stub_0xf5bdf4 as stub_f5bdf4;
 
 // 0xf5be04 — j___ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX16OverlayDataModelEEEEENS2_ISsEEEclIPFvS6_SsENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 // was: void boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>::operator()<void (*)(boost::weak_ptr<RBX::OverlayDataModel>,std::string),boost::_bi::list0>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::OverlayDataModel>,std::string) &,boost::_bi::list0 &,int)
@@ -362,9 +354,7 @@ pub fn stub_f5be04() -> ! {
 // 0xf5be14 — j___ZN5boost3_bi5list3INS0_5valueINS_10shared_ptrIN3RBX16OverlayDataModelEEEEENS_3argILi1EEENS8_ILi2EEEEC2ES7_S9_SA_
 // was: boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>::list3(boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>)
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>::list3(boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>)")]
-pub fn stub_f5be14() -> ! {
-    todo!("0xf5be14 boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>::list3(boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>)")
-}
+pub use crate::generated_296::stub_0xf5be14 as stub_f5be14;
 
 // 0xf5be24 — j___ZN5boost3_bi5list3INS0_5valueINS_10shared_ptrIN3RBX16OverlayDataModelEEEEENS_3argILi1EEENS8_ILi2EEEEclINS_4_mfi3mf2IvS5_PKSsPKSt9exceptionEENS0_5list2IRPSsRPSH_EEEEvNS0_4typeIvEERT_RT0_i
 // was: void boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>::operator()<boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list2<std::string *&,std::exception*&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*> &,boost::_bi::list2<std::string *&,std::exception*&> &,int)
@@ -383,9 +373,7 @@ pub fn stub_f5be34() -> ! {
 // 0xf5be44 — j___ZN5boost3_bi5list4INS0_5valueIPN3RBX16OverlayDataModelEEENS2_IiEENS2_ISsEENS2_INS4_8JoinTypeEEEEC2ES6_S7_S8_SA_
 // was: boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>::list4(boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>)
 #[doc(alias = "boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>::list4(boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>)")]
-pub fn stub_f5be44() -> ! {
-    todo!("0xf5be44 boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>::list4(boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>)")
-}
+pub use crate::generated_296::stub_0xf5be44 as stub_f5be44;
 
 // 0xf5be54 — j___ZN5boost3_bi5list4INS0_5valueIPN3RBX16OverlayDataModelEEENS2_IiEENS2_ISsEENS2_INS4_8JoinTypeEEEEclINS_4_mfi3mf3IvS4_iSsS9_EENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 // was: void boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>::operator()<boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType> &,boost::_bi::list0 &,int)
@@ -404,72 +392,52 @@ pub fn stub_f5beb4() -> ! {
 // 0xf5bed4 — j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX16OverlayDataModelEEEEENS_3argILi1EEEEC2ES7_S9_
 // was: boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>)
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>>::storage2(boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>)")]
-pub fn stub_f5bed4() -> ! {
-    todo!("0xf5bed4 boost::_bi::storage2<boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>>::storage2(boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>)")
-}
+pub use crate::generated_296::stub_0xf5bed4 as stub_f5bed4;
 
 // 0xf5bef4 — j___ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX16OverlayDataModelEEEEENS2_ISsEEEC2ES7_S8_
 // was: boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::OverlayDataModel>>,boost::_bi::value<std::string>)
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>)")]
-pub fn stub_f5bef4() -> ! {
-    todo!("0xf5bef4 boost::_bi::storage2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>)")
-}
+pub use crate::generated_296::stub_0xf5bef4 as stub_f5bef4;
 
 // 0xf5bf04 — j___ZN5boost3_bi8storage3INS0_5valueINS_10shared_ptrIN3RBX16OverlayDataModelEEEEENS_3argILi1EEENS8_ILi2EEEEC2ES7_S9_SA_
 // was: boost::_bi::storage3<boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>::storage3(boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>)
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>::storage3(boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>)")]
-pub fn stub_f5bf04() -> ! {
-    todo!("0xf5bf04 boost::_bi::storage3<boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>::storage3(boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>)")
-}
+pub use crate::generated_296::stub_0xf5bf04 as stub_f5bf04;
 
 // 0xf5bf14 — j___ZN5boost3_bi8storage4INS0_5valueIPN3RBX16OverlayDataModelEEENS2_IiEENS2_ISsEENS2_INS4_8JoinTypeEEEEC2ES6_S7_S8_SA_
 // was: boost::_bi::storage4<boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>::storage4(boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>)
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>::storage4(boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>)")]
-pub fn stub_f5bf14() -> ! {
-    todo!("0xf5bf14 boost::_bi::storage4<boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>::storage4(boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>)")
-}
+pub use crate::generated_296::stub_0xf5bf14 as stub_f5bf14;
 
 // 0xf5bf64 — j___ZN5boost4bindIvN3RBX16OverlayDataModelEPKSsPKSt9exceptionNS_10shared_ptrIS2_EENS_3argILi1EEENSA_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISF_T0_T1_T2_EENSD_9list_av_3IT3_T4_T5_E4typeEEEMSI_FSF_SJ_SK_ESN_SO_SP_
 // was: boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list_av_3<boost::shared_ptr<RBX::OverlayDataModel>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::OverlayDataModel,std::string const*,std::exception const*,boost::shared_ptr<RBX::OverlayDataModel>,boost::arg<1>,boost::arg<2>>(void (RBX::OverlayDataModel::*)(std::string const*,std::exception const*),boost::shared_ptr<RBX::OverlayDataModel>,boost::arg<1>,boost::arg<2>)
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list_av_3<rbx_core::SharedPtr<RBX::OverlayDataModel>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::OverlayDataModel,std::string const*,std::exception const*,rbx_core::SharedPtr<RBX::OverlayDataModel>,boost::arg<1>,boost::arg<2>>(void (RBX::OverlayDataModel::*)(std::string const*,std::exception const*),rbx_core::SharedPtr<RBX::OverlayDataModel>,boost::arg<1>,boost::arg<2>)")]
-pub fn stub_f5bf64() -> ! {
-    todo!("0xf5bf64 boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list_av_3<rbx_core::SharedPtr<RBX::OverlayDataModel>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::OverlayDataModel,std::string const*,std::exception const*,rbx_core::SharedPtr<RBX::OverlayDataModel>,boost::arg<1>,boost::arg<2>>(void (RBX::OverlayDataModel::*)(std::string const*,std::exception const*),rbx_core::SharedPtr<RBX::OverlayDataModel>,boost::arg<1>,boost::arg<2>)")
-}
+pub use crate::generated_296::stub_0xf5bf64 as stub_f5bf64;
 
 // 0xf5bf74 — j___ZN5boost4bindIvN3RBX16OverlayDataModelEiSsNS2_8JoinTypeEPS2_iSsS3_EENS_3_bi6bind_tIT_NS_4_mfi3mf3IS7_T0_T1_T2_T3_EENS5_9list_av_4IT4_T5_T6_T7_E4typeEEEMSA_FS7_SB_SC_SD_ESG_SH_SI_SJ_
 // was: boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list_av_4<RBX::OverlayDataModel*,int,std::string,RBX::OverlayDataModel::JoinType>::type> boost::bind<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType,RBX::OverlayDataModel*,int,std::string,RBX::OverlayDataModel::JoinType>(void (RBX::OverlayDataModel::*)(int,std::string,RBX::OverlayDataModel::JoinType),RBX::OverlayDataModel*,int,std::string,RBX::OverlayDataModel::JoinType)
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list_av_4<RBX::OverlayDataModel*,int,std::string,RBX::OverlayDataModel::JoinType>::type> boost::bind<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType,RBX::OverlayDataModel*,int,std::string,RBX::OverlayDataModel::JoinType>(void (RBX::OverlayDataModel::*)(int,std::string,RBX::OverlayDataModel::JoinType),RBX::OverlayDataModel*,int,std::string,RBX::OverlayDataModel::JoinType)")]
-pub fn stub_f5bf74() -> ! {
-    todo!("0xf5bf74 boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list_av_4<RBX::OverlayDataModel*,int,std::string,RBX::OverlayDataModel::JoinType>::type> boost::bind<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType,RBX::OverlayDataModel*,int,std::string,RBX::OverlayDataModel::JoinType>(void (RBX::OverlayDataModel::*)(int,std::string,RBX::OverlayDataModel::JoinType),RBX::OverlayDataModel*,int,std::string,RBX::OverlayDataModel::JoinType)")
-}
+pub use crate::generated_296::stub_0xf5bf74 as stub_f5bf74;
 
 // 0xf5bfa4 — j___ZN5boost4bindIvNS_8weak_ptrIN3RBX16OverlayDataModelEEESsS4_SsEENS_3_bi6bind_tIT_PFS7_T0_T1_ENS5_9list_av_2IT2_T3_E4typeEEESB_SD_SE_
 // was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::OverlayDataModel>,std::string),boost::_bi::list_av_2<boost::weak_ptr<RBX::OverlayDataModel>,std::string>::type> boost::bind<void,boost::weak_ptr<RBX::OverlayDataModel>,std::string,boost::weak_ptr<RBX::OverlayDataModel>,std::string>(void (*)(boost::weak_ptr<RBX::OverlayDataModel>,std::string),boost::weak_ptr<RBX::OverlayDataModel>,std::string)
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list_av_2<rbx_core::Weak<RBX::OverlayDataModel>,std::string>::type> boost::bind<void,rbx_core::Weak<RBX::OverlayDataModel>,std::string,rbx_core::Weak<RBX::OverlayDataModel>,std::string>(void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),rbx_core::Weak<RBX::OverlayDataModel>,std::string)")]
-pub fn stub_f5bfa4() -> ! {
-    todo!("0xf5bfa4 boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list_av_2<rbx_core::Weak<RBX::OverlayDataModel>,std::string>::type> boost::bind<void,rbx_core::Weak<RBX::OverlayDataModel>,std::string,rbx_core::Weak<RBX::OverlayDataModel>,std::string>(void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),rbx_core::Weak<RBX::OverlayDataModel>,std::string)")
-}
+pub use crate::generated_296::stub_0xf5bfa4 as stub_f5bfa4;
 
 // 0xf5c014 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX16OverlayDataModelEPKSsPKSt9exceptionEENS3_5list3INS3_5valueINS_10shared_ptrIS8_EEEENS_3argILi1EEENSK_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_f5c014() -> ! {
-    todo!("0xf5c014 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
-}
+pub use crate::generated_296::stub_0xf5c014 as stub_f5c014;
 
 // 0xf5c024 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX16OverlayDataModelEiSsNS8_8JoinTypeEEENS3_5list4INS3_5valueIPS8_EENSC_IiEENSC_ISsEENSC_IS9_EEEEEEE7managerERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_f5c024() -> ! {
-    todo!("0xf5c024 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
-}
+pub use crate::generated_296::stub_0xf5c024 as stub_f5c024;
 
 // 0xf5c054 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16OverlayDataModelEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_f5c054() -> ! {
-    todo!("0xf5c054 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
-}
+pub use crate::generated_296::stub_0xf5c054 as stub_f5c054;
 
 // 0xf5c144 — j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX16OverlayDataModelEiSsNS8_8JoinTypeEEENS3_5list4INS3_5valueIPS8_EENSC_IiEENSC_ISsEENSC_IS9_EEEEEEEEvT_
 // was: void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>)
@@ -523,30 +491,22 @@ pub fn stub_f5c3a4() -> ! {
 // 0xf5c3e4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX16OverlayDataModelEiSsNSA_8JoinTypeEEENS5_5list4INS5_5valueIPSA_EENSE_IiEENSE_ISsEENSE_ISB_EEEEEEEEbT_RNS1_15function_bufferE
 // was: bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>,boost::detail::function::function_buffer &)const
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>,boost::detail::function::function_buffer &)const")]
-pub fn stub_f5c3e4() -> ! {
-    todo!("0xf5c3e4 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>,boost::detail::function::function_buffer &)const")
-}
+pub use crate::generated_296::stub_0xf5c3e4 as stub_f5c3e4;
 
 // 0xf5c3f4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX16OverlayDataModelEiSsNSA_8JoinTypeEEENS5_5list4INS5_5valueIPSA_EENSE_IiEENSE_ISsEENSE_ISB_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // was: bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_f5c3f4() -> ! {
-    todo!("0xf5c3f4 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
-}
+pub use crate::generated_296::stub_0xf5c3f4 as stub_f5c3f4;
 
 // 0xf5c404 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16OverlayDataModelEEESsENS5_5list2INS5_5valueISA_EENSE_ISsEEEEEEEEbT_RNS1_15function_bufferE
 // was: bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")]
-pub fn stub_f5c404() -> ! {
-    todo!("0xf5c404 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")
-}
+pub use crate::generated_296::stub_0xf5c404 as stub_f5c404;
 
 // 0xf5c414 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16OverlayDataModelEEESsENS5_5list2INS5_5valueISA_EENSE_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // was: bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_f5c414() -> ! {
-    todo!("0xf5c414 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
-}
+pub use crate::generated_296::stub_0xf5c414 as stub_f5c414;
 
 // 0xf5c4a4 — j___ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX16OverlayDataModelEPKSsPKS4_EENS8_5list3INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // was: void boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
@@ -558,16 +518,12 @@ pub fn stub_f5c4a4() -> ! {
 // 0xf5c4d4 — j___ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX16OverlayDataModelEPKSsPKS4_EENS8_5list3INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEbT_RNS1_15function_bufferE
 // was: bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const
 #[doc(alias = "bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")]
-pub fn stub_f5c4d4() -> ! {
-    todo!("0xf5c4d4 bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")
-}
+pub use crate::generated_296::stub_0xf5c4d4 as stub_f5c4d4;
 
 // 0xf5c4e4 — j___ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX16OverlayDataModelEPKSsPKS4_EENS8_5list3INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // was: bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 #[doc(alias = "bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_f5c4e4() -> ! {
-    todo!("0xf5c4e4 bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
-}
+pub use crate::generated_296::stub_0xf5c4e4 as stub_f5c4e4;
 
 // 0xf5de14 — j___ZN5boost9unordered6detail10copy_nodesISaINS1_8ptr_nodeISt4pairIKPN3RBX12PartInstanceENS_8weak_ptrIS6_EEEEEEE6createERKSB_
 // was: boost::unordered::detail::copy_nodes<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>>>::create(std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>> const&)
@@ -593,9 +549,7 @@ pub fn stub_f5de44() -> ! {
 // 0xf5de54 — j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPN3RBX12PartInstanceENS_8weak_ptrIS6_EEEES7_SA_NS_4hashIS7_EESt8equal_toIS7_EEEEixERS8_
 // was: boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>,RBX::PartInstance *,boost::weak_ptr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>>::operator[](RBX::PartInstance * const&)
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,rbx_core::Weak<RBX::PartInstance>>>,RBX::PartInstance *,rbx_core::Weak<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>>::operator[](RBX::PartInstance * const&)")]
-pub fn stub_f5de54() -> ! {
-    todo!("0xf5de54 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,rbx_core::Weak<RBX::PartInstance>>>,RBX::PartInstance *,rbx_core::Weak<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>>::operator[](RBX::PartInstance * const&)")
-}
+pub use crate::generated_295::stub_0xf5de54 as stub_f5de54;
 
 // 0xf5df44 — j___ZN5boost9unordered6detail11node_holderISaINS1_8ptr_nodeISt4pairIKPN3RBX12PartInstanceENS_8weak_ptrIS6_EEEEEEED2Ev
 // was: boost::unordered::detail::node_holder<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>>>::~node_holder()
@@ -670,6 +624,4 @@ pub fn stub_f5e174() -> ! {
 // 0xf5e234 — j___ZSt24__uninitialized_copy_auxIPN5boost8weak_ptrIN3RBX19MegaClusterInstanceEEES5_ET0_T_S7_S6_St12__false_type
 // was: boost::weak_ptr<RBX::MegaClusterInstance> * std::__uninitialized_copy_aux<boost::weak_ptr<RBX::MegaClusterInstance> *,boost::weak_ptr<RBX::MegaClusterInstance> *>(boost::weak_ptr<RBX::MegaClusterInstance> *,boost::weak_ptr<RBX::MegaClusterInstance> *,boost::weak_ptr<RBX::MegaClusterInstance> *,std::__false_type)
 #[doc(alias = "rbx_core::Weak<RBX::MegaClusterInstance> * std::__uninitialized_copy_aux<rbx_core::Weak<RBX::MegaClusterInstance> *,rbx_core::Weak<RBX::MegaClusterInstance> *>(rbx_core::Weak<RBX::MegaClusterInstance> *,rbx_core::Weak<RBX::MegaClusterInstance> *,rbx_core::Weak<RBX::MegaClusterInstance> *,std::__false_type)")]
-pub fn stub_f5e234() -> ! {
-    todo!("0xf5e234 rbx_core::Weak<RBX::MegaClusterInstance> * std::__uninitialized_copy_aux<rbx_core::Weak<RBX::MegaClusterInstance> *,rbx_core::Weak<RBX::MegaClusterInstance> *>(rbx_core::Weak<RBX::MegaClusterInstance> *,rbx_core::Weak<RBX::MegaClusterInstance> *,rbx_core::Weak<RBX::MegaClusterInstance> *,std::__false_type)")
-}
+pub use crate::generated_datamodel_delta_a::stub_0xf5e234 as stub_f5e234;
