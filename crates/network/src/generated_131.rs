@@ -703,57 +703,69 @@ pub fn stub_9c8110(server: &mut crate::server::Server) {
 // 0x9c87d4 — __ZThn32_N3RBX7Network6ServerD1Ev
 // type: void __fastcall(RBX::Network::Server *this, int, int, const void *)
 #[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
-pub fn stub_9c87d4() -> ! {
-    todo!("0x9c87d4 __ZThn32_N3RBX7Network6ServerD1Ev")
+pub fn stub_9c87d4(mut server: crate::server::Server) {
+    // IDA 0x9c87d4 (ZThn32 D1): adjusts `this`, then D1.
+    server.tear_down();
 }
 
 // 0x9c87e0 — __ZThn36_N3RBX7Network6ServerD1Ev
 // type: void __fastcall(RBX::Network::Server *this, int, int, const void *)
 #[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
-pub fn stub_9c87e0() -> ! {
-    todo!("0x9c87e0 __ZThn36_N3RBX7Network6ServerD1Ev")
+pub fn stub_9c87e0(mut server: crate::server::Server) {
+    // IDA 0x9c87e0 (ZThn36 D1): adjusts `this`, then D1.
+    server.tear_down();
 }
 
 // 0x9c87ec — __ZThn92_N3RBX7Network6ServerD1Ev
 // type: void __fastcall(RBX::Network::Server *this, int, int, const void *)
 #[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
-pub fn stub_9c87ec() -> ! {
-    todo!("0x9c87ec __ZThn92_N3RBX7Network6ServerD1Ev")
+pub fn stub_9c87ec(mut server: crate::server::Server) {
+    // IDA 0x9c87ec (ZThn92 D1): adjusts `this`, then D1.
+    server.tear_down();
 }
 
 // 0x9c87f8 — __ZN3RBX7Network6Server15serverIsPresentEPKNS_8InstanceEb
 // type: bool __fastcall(RBX::Network::Server *this, int, bool, int (*)(const char *, ...))
 #[doc(alias = "RBX::Network::Server::serverIsPresent(RBX::Instance const*,bool)")]
-pub fn stub_9c87f8() -> ! {
-    todo!("0x9c87f8 __ZN3RBX7Network6Server15serverIsPresentEPKNS_8InstanceEb")
+pub fn stub_9c87f8(
+    root_provider_present: bool,
+    test_in_datamodel: bool,
+    hosting_server: bool,
+) -> bool {
+    // IDA 0x9c87f8: root-provider `find<Server>` behind the :96 assert.
+    crate::server::server_is_present(root_provider_present, test_in_datamodel, hosting_server)
 }
 
 // 0x9c8b20 — __ZN3RBX7Network6Server15onCreateRakPeerEv
 // type: int __fastcall(RBX::Network::ConcurrentRakPeer **this)
 #[doc(alias = "RBX::Network::Server::onCreateRakPeer(void)")]
-pub fn stub_9c8b20() -> ! {
-    todo!("0x9c8b20 __ZN3RBX7Network6Server15onCreateRakPeerEv")
+pub fn stub_9c8b20(version: &str, debug_local_rcc: bool) -> &str {
+    // IDA 0x9c8b20: max-incoming 128 + version-match gate; only the version branch is observable.
+    crate::server::incoming_version_match(version, debug_local_rcc)
 }
 
 // 0x9c8b88 — __ZN3RBX7Network6Server17onServiceProviderEPNS_15ServiceProviderES3_
 // type: void __fastcall(struct _Unwind_Exception *this, RBX::ServiceProvider *, pthread_mutex_t *, int)
 #[doc(alias = "RBX::Network::Server::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
-pub fn stub_9c8b88() -> ! {
-    todo!("0x9c8b88 __ZN3RBX7Network6Server17onServiceProviderEPNS_15ServiceProviderES3_")
+pub fn stub_9c8b88(server: &mut crate::server::Server, old_present: bool, new_present: bool) {
+    // IDA 0x9c8b88: leave stops+drops, join wires Players and scans descendants.
+    server.on_service_provider(old_present, new_present);
 }
 
 // 0x9c9b78 — __ZN3RBX7Network6Server11onItemAddedEN5boost10shared_ptrINS_8InstanceEEE
 // type: void __fastcall(int, int, int, int)
 #[doc(alias = "RBX::Network::Server::onItemAdded(rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_9c9b78() -> ! {
-    todo!("0x9c9b78 __ZN3RBX7Network6Server11onItemAddedEN5boost10shared_ptrINS_8InstanceEEE")
+pub fn stub_9c9b78(is_script: bool, name: &str, embedded: Option<&str>) -> Option<String> {
+    // IDA 0x9c9b78: added Script registers its name or embedded source.
+    crate::server::script_registry_key(is_script, name, embedded)
 }
 
 // 0x9c9f74 — __ZNK3RBX7Network6Server11askAddChildEPKNS_8InstanceE
 // type: _DWORD __fastcall(RBX::Network::Server *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::Network::Server::askAddChild(RBX::Instance const*)const")]
-pub fn stub_9c9f74() -> ! {
-    todo!("0x9c9f74 __ZNK3RBX7Network6Server11askAddChildEPKNS_8InstanceE")
+pub fn stub_9c9f74(child_present: bool, is_server_replicator: bool) -> bool {
+    // IDA 0x9c9f74: null refused, ServerReplicator accepted.
+    crate::server::ask_add_child(child_present, is_server_replicator)
 }
 
 // 0x9c9fb0 — __ZN3RBX7Network6Server9OnReceiveEPN6RakNet6PacketE

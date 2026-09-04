@@ -762,32 +762,36 @@ pub fn stub_9c8110(server: &mut crate::server::Server) {
 // type: void __fastcall(RBX::Network::Server *this, int, int, const void *)
 #[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
 #[doc(alias = "__ZThn32_N3RBX7Network6ServerD1Ev")]
-pub fn stub_9c87d4() -> ! {
-    todo!("0x9c87d4 __ZThn32_N3RBX7Network6ServerD1Ev")
+pub fn stub_9c87d4(mut server: crate::server::Server) {
+    // IDA 0x9c87d4 (ZThn32 D1): adjusts `this`, then D1.
+    server.tear_down();
 }
 
 // 0x9c87e0 — __ZThn36_N3RBX7Network6ServerD1Ev
 // type: void __fastcall(RBX::Network::Server *this, int, int, const void *)
 #[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
 #[doc(alias = "__ZThn36_N3RBX7Network6ServerD1Ev")]
-pub fn stub_9c87e0() -> ! {
-    todo!("0x9c87e0 __ZThn36_N3RBX7Network6ServerD1Ev")
+pub fn stub_9c87e0(mut server: crate::server::Server) {
+    // IDA 0x9c87e0 (ZThn36 D1): adjusts `this`, then D1.
+    server.tear_down();
 }
 
 // 0x9c87ec — __ZThn92_N3RBX7Network6ServerD1Ev
 // type: void __fastcall(RBX::Network::Server *this, int, int, const void *)
 #[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
 #[doc(alias = "__ZThn92_N3RBX7Network6ServerD1Ev")]
-pub fn stub_9c87ec() -> ! {
-    todo!("0x9c87ec __ZThn92_N3RBX7Network6ServerD1Ev")
+pub fn stub_9c87ec(mut server: crate::server::Server) {
+    // IDA 0x9c87ec (ZThn92 D1): adjusts `this`, then D1.
+    server.tear_down();
 }
 
 // 0x9c8b20 — __ZN3RBX7Network6Server15onCreateRakPeerEv
 // type: int __fastcall(RBX::Network::ConcurrentRakPeer **this)
 #[doc(alias = "RBX::Network::Server::onCreateRakPeer(void)")]
 #[doc(alias = "__ZN3RBX7Network6Server15onCreateRakPeerEv")]
-pub fn stub_9c8b20() -> ! {
-    todo!("0x9c8b20 __ZN3RBX7Network6Server15onCreateRakPeerEv")
+pub fn stub_9c8b20(version: &str, debug_local_rcc: bool) -> &str {
+    // IDA 0x9c8b20: max-incoming 128 + version-match gate; only the version branch is observable.
+    crate::server::incoming_version_match(version, debug_local_rcc)
 }
 
 // 0x9c9fb0 — __ZN3RBX7Network6Server9OnReceiveEPN6RakNet6PacketE

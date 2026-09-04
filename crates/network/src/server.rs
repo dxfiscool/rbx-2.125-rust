@@ -205,6 +205,85 @@ impl Server {
         self.port = None;
         self.active = false;
     }
+    /// `RBX::Network::Server::onServiceProvider` (IDA 0x9c8b88): leaving a
+    /// provider removes the scheduler job, clears the `Players`
+    /// connection, stops the peer with a 1000ms block (0x9c8d24), and
+    /// drops `Players` (0x9c8bd2..0x9c8d38). Joining one runs
+    /// `Peer::onServiceProvider`, creates the `Players` service with its
+    /// connection, visits descendants through `onItemAdded`, and creates
+    /// the conditional packet caches plus the `NetworkOwnerJob`
+    /// (0x9c8d4c..0x9c9504, engine-side). The crate keeps the stop/drop
+    /// half and notes the fresh player list.
+    pub fn on_service_provider(&mut self, old_present: bool, new_present: bool) {
+        if old_present {
+            self.stop(1000);
+            self.players = None;
+        }
+        if new_present {
+            self.players = Some(Vec::new());
+        }
+    }
+}
+
+
+/// `RBX::Network::Server::serverIsPresent` (IDA 0x9c87f8): resolves the
+/// instance's root `ServiceProvider` and reports whether it hosts a
+/// `Server` service (`ServiceProvider::find<Server>`, 0x9c8986),
+/// asserting `!testInDatamodel || serviceProvider != NULL` (Server.cpp:96).
+/// Provider lookup stays engine-side.
+pub fn server_is_present(
+    root_provider_present: bool,
+    test_in_datamodel: bool,
+    hosting_server: bool,
+) -> bool {
+    debug_assert!(
+        !test_in_datamodel || root_provider_present,
+        "!testInDatamodel || serviceProvider!=NULL Client/Network/Server.cpp line: 96"
+    );
+    // IDA 0x9c8908/0x9c8972..0x9c89a6: no provider -> false, else the find verdict.
+    if !root_provider_present {
+        return false;
+    }
+    hosting_server
+}
+
+/// `RBX::Network::Server::onCreateRakPeer` (IDA 0x9c8b20): after
+/// `Peer::onCreateRakPeer` the raw peer takes
+/// `SetMaximumIncomingConnections(128)` (0x9c8b38) and
+/// `SetIncomingVersionMatch(versionB)` (0x9c8b86). `versionB` becomes
+/// `"test"` under `DebugLocalRccServerConnection` (0x9c8b48..0x9c8b62);
+/// peer-handle calls stay engine-side.
+pub fn incoming_version_match(version: &str, debug_local_rcc: bool) -> &str {
+    if debug_local_rcc {
+        "test"
+    } else {
+        version
+    }
+}
+
+/// `RBX::Network::Server::onItemAdded` (IDA 0x9c9b78): each added `Script`
+/// registers its source in the +2844 name bimap — by script name when one
+/// is present (0x9c9c04..0x9c9c40), else by embedded-source lookup with a
+/// fresh id (0x9c9c5c..0x9c9d96). Non-scripts are ignored. Reflection and
+/// the bimap stay engine-side; this resolves the registered key.
+pub fn script_registry_key(is_script: bool, name: &str, embedded: Option<&str>) -> Option<String> {
+    if !is_script {
+        return None;
+    }
+    if !name.is_empty() {
+        return Some(name.to_owned());
+    }
+    embedded.map(str::to_owned)
+}
+
+/// `RBX::Network::Server::askAddChild` (IDA 0x9c9f74): null children are
+/// refused (disasm 0x9c9f78..0x9c9f84); a `ServerReplicator` child is
+/// accepted via `isA` (0x9c9f86..0x9c9fac), anything else refused.
+pub fn ask_add_child(child_present: bool, is_server_replicator: bool) -> bool {
+    if !child_present {
+        return false;
+    }
+    is_server_replicator
 }
 
 impl Drop for Server {
@@ -335,5 +414,33 @@ mod tests {
         assert!(server.players.is_none());
         assert!(server.port.is_none());
         assert!(!server.active);
+    }
+
+    #[test]
+    fn provider_swap_resets_and_renotes() {
+        // IDA 0x9c8b88: leave stops+drops, join notes a fresh list.
+        let mut server = Server { players: Some(vec![]), port: Some(1), active: true };
+        server.on_service_provider(true, false);
+        assert!(server.players.is_none());
+        assert!(!server.active);
+        server.on_service_provider(false, true);
+        assert_eq!(server.players.as_ref().map(Vec::len), Some(0));
+    }
+
+    #[test]
+    fn presence_version_registry_gates() {
+        // IDA 0x9c87f8/0x9c8b20/0x9c9b78/0x9c9f74.
+        assert!(!server_is_present(false, false, true));
+        assert!(server_is_present(true, false, true));
+        assert!(!server_is_present(true, false, false));
+        assert_eq!(incoming_version_match("v2", true), "test");
+        assert_eq!(incoming_version_match("v2", false), "v2");
+        assert_eq!(script_registry_key(false, "x", None), None);
+        assert_eq!(script_registry_key(true, "Main", None).as_deref(), Some("Main"));
+        assert_eq!(script_registry_key(true, "", Some("print(1)")).as_deref(), Some("print(1)"));
+        assert_eq!(script_registry_key(true, "", None), None);
+        assert!(!ask_add_child(false, true));
+        assert!(!ask_add_child(true, false));
+        assert!(ask_add_child(true, true));
     }
 }
