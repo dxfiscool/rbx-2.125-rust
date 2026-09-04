@@ -3564,15 +3564,22 @@ pub fn stub_c85294() {
 // 0xc8585c — __ZN4Ogre6Entity25backgroundLoadingCompleteEPNS_8ResourceE
 #[doc(alias = "Ogre::Entity::backgroundLoadingComplete(Ogre::Resource *)")]
 // was: Ogre::Entity::backgroundLoadingComplete(Ogre::Resource *)
-// IDA 0xc8585c: 9 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c8585c() {
+// IDA 0xc8585c: `if (*(this+49) == resource) _initialise(this, false)` —
+// decompile shows the pending-mesh compare at `0xc85866` and the
+// `_initialise(entity, 0)` call at `0xc8586c`; a mismatch returns as-is.
+pub fn stub_c8585c(entity: &mut crate::movable::Entity, resource_mesh: &str) -> bool {
+    entity.background_loading_complete(resource_mesh)
 }
 
 // 0xc85874 — __ZThn188_N4Ogre6Entity25backgroundLoadingCompleteEPNS_8ResourceE
 #[doc(alias = "non-virtual thunk toOgre::Entity::backgroundLoadingComplete(Ogre::Resource *)")]
 // was: non-virtual thunk to Ogre::Entity::backgroundLoadingComplete(Ogre::Resource *)
-// IDA 0xc85874: 10 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c85874() {
+// IDA 0xc85874: non-virtual thunk — `this - 188` adjustor (`0xc85880`), then
+// the same pending-resource check and `_initialise(entity, false)` at
+// `0xc85884`. Rust has no `Resource` base subobject, so the adjustor is a
+// documented no-op and control flow matches the decompiled branches.
+pub fn stub_c85874(entity: &mut crate::movable::Entity, resource_mesh: &str) -> bool {
+    entity.background_loading_complete(resource_mesh)
 }
 
 // 0xc8588c — __ZN4Ogre6Entity13_deinitialiseEv
@@ -3601,15 +3608,20 @@ pub fn stub_c85cf8() {
 // 0xc85e98 — __ZN4Ogre6Entity26reevaluateVertexProcessingEv
 #[doc(alias = "Ogre::Entity::reevaluateVertexProcessing(void)")]
 // was: Ogre::Entity::reevaluateVertexProcessing(void)
-// IDA 0xc85e98: 13 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c85e98() {
+// IDA 0xc85e98: `_M_erase` of the `ushort -> bool` request map at `+424`
+// (`0xc85ea6`), then root/sentinel reset (`0xc85eb0..0xc85ec0`).
+pub fn stub_c85e98(entity: &mut crate::movable::Entity) {
+    entity.reevaluate_vertex_processing()
 }
 
 // 0xc85ec4 — __ZN4Ogre6Entity20detachAllObjectsImplEv
 #[doc(alias = "Ogre::Entity::detachAllObjectsImpl(void)")]
 // was: Ogre::Entity::detachAllObjectsImpl(void)
-// IDA 0xc85ec4: 36 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c85ec4() {
+// IDA 0xc85ec4: walk the child map (`0xc85ed2..0xc85ef6`, one
+// `freeTagPoint` per entry), `_M_erase` the map at `+584` and reset its
+// sentinels (`0xc85f0c..0xc85f1e`).
+pub fn stub_c85ec4(entity: &mut crate::movable::Entity) {
+    entity.detach_all_objects_impl()
 }
 
 // 0xc85f28 — __ZN4Ogre6Entity27stopSharingSkeletonInstanceEv
@@ -3669,31 +3681,36 @@ pub fn stub_c8675c() {
 }
 
 // 0xc86768 — __ZNK4Ogre6Entity7getMeshEv
-#[doc(alias = "Ogre::Entity::getMesh(void)const")]
-// was: Ogre::Entity::getMesh(void)const
-// IDA 0xc86768: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c86768() {
+// IDA 0xc86768: `ADDS R0,#0xC0; BX LR` — returns the mesh word at `+192`
+// (disasm confirms the single-add offset past the `MovableObject` base).
+pub fn stub_c86768(entity: &crate::movable::Entity) -> &str {
+    entity.mesh_name()
 }
 
 // 0xc8676c — __ZNK4Ogre6Entity12getSubEntityEj
-#[doc(alias = "Ogre::Entity::getSubEntity(unsigned int)const")]
-// was: Ogre::Entity::getSubEntity(unsigned int)const
-// IDA 0xc8676c: 161 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c8676c() {
+// IDA 0xc8676c: `(end - begin) >> 2 <= index` guard (`0xc867c2`); in range
+// returns `begin[index]` (`0xc867e4`), else throws
+// `InvalidParametersException` ("Index out of bounds.",
+// `Entity::getSubEntity`, `OgreEntity.cpp:324` via `__cxa_throw`).
+pub fn stub_c8676c(
+    entity: &crate::movable::Entity,
+    index: u32,
+) -> Result<&crate::movable::SubEntity, crate::movable::OgreException> {
+    entity.sub_entity(index)
 }
 
 // 0xc86950 — __ZNK4Ogre6Entity17getNumSubEntitiesEv
-#[doc(alias = "Ogre::Entity::getNumSubEntities(void)const")]
-// was: Ogre::Entity::getNumSubEntities(void)const
-// IDA 0xc86950: 4 insns (LDRD.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c86950() {
+// IDA 0xc86958: `(end - begin) >> 2` — word-count of the sub-entity vector
+// at `+212`.
+pub fn stub_c86950(entity: &crate::movable::Entity) -> usize {
+    entity.num_sub_entities()
 }
 
 // 0xc8695c — __ZN4Ogre6Entity15setMaterialNameERKSsS2_
-#[doc(alias = "Ogre::Entity::setMaterialName(std::string const&,std::string const&)")]
-// was: Ogre::Entity::setMaterialName(std::string const&,std::string const&)
-// IDA 0xc8695c: 19 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c8695c() {
+// IDA 0xc86964..0xc86988: iterate `[begin, end)` at `+212` and call
+// `SubEntity::setMaterialName` on each slot (`0xc8697e`).
+pub fn stub_c8695c(entity: &mut crate::movable::Entity, name: &str, group: &str) {
+    entity.set_material_name(name, group)
 }
 
 // 0xc86990 — __ZN4Ogre6Entity20_notifyCurrentCameraEPNS_6CameraE
@@ -3706,29 +3723,42 @@ pub fn stub_c86990() {
 // 0xc86b10 — __ZNK4Ogre6Entity14getBoundingBoxEv
 #[doc(alias = "Ogre::Entity::getBoundingBox(void)const")]
 // was: Ogre::Entity::getBoundingBox(void)const
-// IDA 0xc86b10: 166 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c86b10() {
+// IDA 0xc86b10: when the mesh is bounds-aware (`0xc86b6c`), copy
+// `Mesh::getBounds` into the cache at `+612` (`0xc86ba4..0xc86bc2`), fold
+// in `getChildObjectsBoundingBox` (`0xc86bd0`) with a component-wise
+// min/max merge (`0xc86bf8..0xc86c90`).
+pub fn stub_c86b10(entity: &mut crate::movable::Entity) -> crate::movable::AxisAlignedBox {
+    entity.bounding_box()
 }
 
 // 0xc86d08 — __ZNK4Ogre6Entity26getChildObjectsBoundingBoxEv
 #[doc(alias = "Ogre::Entity::getChildObjectsBoundingBox(void)const")]
 // was: Ogre::Entity::getChildObjectsBoundingBox(void)const
-// IDA 0xc86d08: 246 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c86d08() {
+// IDA 0xc86d08: seed a null box (`0xc86d98..0xc86da6`), walk the child map
+// (`0xc86de8`), transform each child box by its tag-point matrix
+// (`0xc86e40..0xc86e48`) and merge (`0xc86ed0..0xc86f3e`); null when empty.
+pub fn stub_c86d08(entity: &crate::movable::Entity) -> crate::movable::AxisAlignedBox {
+    entity.child_objects_bounding_box()
 }
 
 // 0xc86fbc — __ZNK4Ogre6Entity19getWorldBoundingBoxEb
 #[doc(alias = "Ogre::Entity::getWorldBoundingBox(bool)const")]
 // was: Ogre::Entity::getWorldBoundingBox(bool)const
-// IDA 0xc86fbc: 25 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c86fbc() {
+// IDA 0xc86fbc: with `derive=true`, refresh every child object first
+// (`0xc86fce..0xc86fec` update loop), then take the `MovableObject` world
+// box (`0xc86ffa` tail call).
+pub fn stub_c86fbc(entity: &mut crate::movable::Entity, derive: bool) -> crate::movable::AxisAlignedBox {
+    entity.world_bounding_box(derive)
 }
 
 // 0xc86ffc — __ZNK4Ogre6Entity22getWorldBoundingSphereEb
 #[doc(alias = "Ogre::Entity::getWorldBoundingSphere(bool)const")]
 // was: Ogre::Entity::getWorldBoundingSphere(bool)const
-// IDA 0xc86ffc: 25 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c86ffc() {
+// IDA 0xc86ffc: sphere twin of `getWorldBoundingBox` — same
+// derive-refresh loop (`0xc8700e..0xc8702c`), then the `MovableObject`
+// world sphere (`0xc8703a` tail call).
+pub fn stub_c86ffc(entity: &mut crate::movable::Entity, derive: bool) -> crate::movable::BoundingSphere {
+    entity.world_bounding_sphere(derive)
 }
 
 // 0xc8703c — __ZN4Ogre6Entity18_updateRenderQueueEPNS_11RenderQueueE
@@ -3748,29 +3778,40 @@ pub fn stub_c87320() {
 // 0xc8790c — __ZNK4Ogre6Entity21getAllAnimationStatesEv
 #[doc(alias = "Ogre::Entity::getAllAnimationStates(void)const")]
 // was: Ogre::Entity::getAllAnimationStates(void)const
-// IDA 0xc8790c: 2 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c8790c() {
+// IDA 0xc8790c: `LDR.W R0,[R0,#0xE0]; BX LR` — animation-state set word at
+// `+224`.
+pub fn stub_c8790c(entity: &crate::movable::Entity) -> &[String] {
+    entity.all_animation_states()
 }
 
 // 0xc87914 — __ZNK4Ogre6Entity14getMovableTypeEv
 #[doc(alias = "Ogre::Entity::getMovableType(void)const")]
 // was: Ogre::Entity::getMovableType(void)const
-// IDA 0xc87914: 3 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c87914() {
+// IDA 0xc87914: `MOV R0,=FACTORY_TYPE_NAME; ADD R0,PC` (disasm confirms
+// the PC-relative load of `EntityFactory::FACTORY_TYPE_NAME`).
+pub fn stub_c87914() -> &'static str {
+    crate::movable::Entity::movable_type()
 }
 
 // 0xc87920 — __ZNK4Ogre6Entity26tempVertexAnimBuffersBoundEv
 #[doc(alias = "Ogre::Entity::tempVertexAnimBuffersBound(void)const")]
 // was: Ogre::Entity::tempVertexAnimBuffersBound(void)const
-// IDA 0xc87920: 62 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c87920() {
+// IDA 0xc87920: skeleton-level checkout first (`0xc8792c..0xc87954`), then
+// per-sub-entity: skip unanimated slots, fail when an animated slot lacks
+// its checkout (`0xc87960..0xc879ca`).
+pub fn stub_c87920(entity: &crate::movable::Entity) -> bool {
+    entity.temp_vertex_anim_buffers_bound()
 }
 
 // 0xc879cc — __ZN4Ogre6Entity26isHardwareAnimationEnabledEv
 #[doc(alias = "Ogre::Entity::isHardwareAnimationEnabled(void)")]
 // was: Ogre::Entity::isHardwareAnimationEnabled(void)
-// IDA 0xc879cc: 42 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c879cc() {
+// IDA 0xc879cc: scheme-map lookup against the material manager value
+// (`0xc879d4..0xc87a00`); on a miss re-run `calcVertexProcessing`
+// (`0xc87a16`) and record a fresh entry (`0xc87a2a`), then return the
+// cached enable byte (`0xc87a34`).
+pub fn stub_c879cc(entity: &mut crate::movable::Entity) -> bool {
+    entity.is_hardware_animation_enabled()
 }
 
 // 0xc87a38 — __ZN4Ogre6Entity20applyVertexAnimationEbb
@@ -3783,8 +3824,11 @@ pub fn stub_c87a38() {
 // 0xc884f0 — __ZNK4Ogre6Entity19_isSkeletonAnimatedEv
 #[doc(alias = "Ogre::Entity::_isSkeletonAnimated(void)const")]
 // was: Ogre::Entity::_isSkeletonAnimated(void)const
-// IDA 0xc884f0: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c884f0() {
+// IDA 0xc884f0: no skeleton yields 0 (`0xc884fc`); with one the answer is
+// 1 unless the state set is empty, in which case the skeleton's own
+// vtable predicate decides (`0xc8850a..0xc88514`).
+pub fn stub_c884f0(entity: &crate::movable::Entity) -> bool {
+    entity.is_skeleton_animated()
 }
 
 // 0xc8851c — __ZN4Ogre6Entity24initialisePoseVertexDataEPKNS_10VertexDataEPS1_b
@@ -3813,8 +3857,10 @@ pub fn stub_c88bc4() {
 // 0xc88fc4 — __ZN4Ogre6Entity28_markBuffersUsedForAnimationEv
 #[doc(alias = "Ogre::Entity::_markBuffersUsedForAnimation(void)")]
 // was: Ogre::Entity::_markBuffersUsedForAnimation(void)
-// IDA 0xc88fc4: 3 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c88fc4() {
+// IDA 0xc88fc4: `MOVS R1,#1; STRB.W R1,[R0,#0x188]; BX LR` (disasm
+// confirms the byte store at `+392`).
+pub fn stub_c88fc4(entity: &mut crate::movable::Entity) {
+    entity.mark_buffers_used_for_animation()
 }
 
 // 0xc88fcc — __ZN4Ogre6Entity30bindMissingHardwarePoseBuffersEPKNS_10VertexDataEPS1_
@@ -3829,15 +3875,17 @@ pub fn stub_c88fcc() {
 // 0xc891a4 — __ZNK4Ogre6Entity32_getSoftwareVertexAnimVertexDataEv
 #[doc(alias = "Ogre::Entity::_getSoftwareVertexAnimVertexData(void)const")]
 // was: Ogre::Entity::_getSoftwareVertexAnimVertexData(void)const
-// IDA 0xc891a4: 2 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c891a4() {
+// IDA 0xc891a4: `LDR.W R0,[R0,#0x180]; BX LR` — vertex-data word at `+384`.
+pub fn stub_c891a4(entity: &crate::movable::Entity) -> Option<usize> {
+    entity.software_vertex_anim_data()
 }
 
 // 0xc891ac — __ZNK4Ogre6Entity32_getHardwareVertexAnimVertexDataEv
 #[doc(alias = "Ogre::Entity::_getHardwareVertexAnimVertexData(void)const")]
 // was: Ogre::Entity::_getHardwareVertexAnimVertexData(void)const
-// IDA 0xc891ac: 2 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c891ac() {
+// IDA 0xc891ac: `LDR.W R0,[R0,#0x184]; BX LR` — vertex-data word at `+388`.
+pub fn stub_c891ac(entity: &crate::movable::Entity) -> Option<usize> {
+    entity.hardware_vertex_anim_data()
 }
 
 // 0xc891b4 — __ZN4Ogre6Entity20detachObjectFromBoneEPNS_13MovableObjectE
@@ -3850,8 +3898,10 @@ pub fn stub_c891b4() {
 // 0xc8926c — __ZNK4Ogre6Entity17getBoundingRadiusEv
 #[doc(alias = "Ogre::Entity::getBoundingRadius(void)const")]
 // was: Ogre::Entity::getBoundingRadius(void)const
-// IDA 0xc8926c: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c8926c() {
+// IDA 0xc8926c: tail call `Mesh::getBoundingSphereRadius(*(this + 49))`
+// (`0xc89278`) — the radius lives on the mesh, not the entity.
+pub fn stub_c8926c(entity: &crate::movable::Entity) -> f32 {
+    entity.bounding_radius()
 }
 
 // 0xc8927c — __ZN4Ogre6Entity21extractTempBufferInfoEPNS_10VertexDataEPNS_21TempBlendedBufferInfoE
@@ -3859,8 +3909,10 @@ pub fn stub_c8926c() {
     alias = "Ogre::Entity::extractTempBufferInfo(Ogre::VertexData *,Ogre::TempBlendedBufferInfo *)"
 )]
 // was: Ogre::Entity::extractTempBufferInfo(Ogre::VertexData *,Ogre::TempBlendedBufferInfo *)
-// IDA 0xc8927c: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c8927c() {
+// IDA 0xc8927c: single tail call `TempBlendedBufferInfo::extractFrom(a3,
+// a2)` (`0xc89286`); `this` is unused.
+pub fn stub_c8927c(info: &mut crate::movable::TempBlendedBufferInfo, vertex_data_id: usize) {
+    info.extract_from(vertex_data_id)
 }
 
 // 0xc89288 — __ZN4Ogre6Entity30cloneVertexDataRemoveBlendInfoEPKNS_10VertexDataE
@@ -3873,22 +3925,28 @@ pub fn stub_c89288() {
 // 0xc8933c — __ZN4Ogre6Entity11getEdgeListEv
 #[doc(alias = "Ogre::Entity::getEdgeList(void)")]
 // was: Ogre::Entity::getEdgeList(void)
-// IDA 0xc8933c: 6 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c8933c() {
+// IDA 0xc8933c: `Mesh::getEdgeList(mesh, lodIndex)` with the LOD word at
+// `+470` (`0xc8934c`); null when the mesh has no edge list.
+pub fn stub_c8933c(entity: &crate::movable::Entity) -> Option<u16> {
+    entity.edge_list_lod()
 }
 
 // 0xc89350 — __ZN4Ogre6Entity11hasEdgeListEv
 #[doc(alias = "Ogre::Entity::hasEdgeList(void)")]
 // was: Ogre::Entity::hasEdgeList(void)
-// IDA 0xc89350: 9 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c89350() {
+// IDA 0xc89350: `Mesh::getEdgeList(...) != 0` (`0xc89366`).
+pub fn stub_c89350(entity: &crate::movable::Entity) -> bool {
+    entity.has_edge_list()
 }
 
 // 0xc89368 — __ZN4Ogre6Entity20calcVertexProcessingEv
 #[doc(alias = "Ogre::Entity::calcVertexProcessing(void)")]
 // was: Ogre::Entity::calcVertexProcessing(void)
-// IDA 0xc89368: 306 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c89368() {
+// IDA 0xc89368 (306 insns): decides hardware vs. software vertex
+// processing from the skeleton binding and per-sub-mesh animation types;
+// morph slots force the software path.
+pub fn stub_c89368(entity: &mut crate::movable::Entity) {
+    entity.calc_vertex_processing()
 }
 
 // 0xc89684 — __ZN4Ogre6Entity33getShadowVolumeRenderableIteratorENS_15ShadowTechniqueEPKNS_5LightEPNS_28HardwareIndexBufferSharedPtrEbfm
@@ -3910,8 +3968,11 @@ pub fn stub_c89c68() {
 // 0xc89e9c — __ZN4Ogre6Entity15_notifyAttachedEPNS_4NodeEb
 #[doc(alias = "Ogre::Entity::_notifyAttached(Ogre::Node *,bool)")]
 // was: Ogre::Entity::_notifyAttached(Ogre::Node *,bool)
-// IDA 0xc89e9c: 21 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c89e9c() {
+// IDA 0xc89e9c: `MovableObject::_notifyAttached(this, node, attached)`
+// first (`0xc89eaa`), then propagate to every object in the child map
+// (`0xc89eb8..0xc89ed0` vtable call `+88` per entry).
+pub fn stub_c89e9c(entity: &mut crate::movable::Entity, attached: bool) {
+    entity.notify_attached(attached)
 }
 
 // 0xc89ed4 — __ZN4Ogre6Entity22EntityShadowRenderableC2EPS0_PNS_28HardwareIndexBufferSharedPtrEPKNS_10VertexDataEbPNS_9SubEntityEb
