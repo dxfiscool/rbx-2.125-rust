@@ -1984,6 +1984,21 @@ pub struct Message {
     _opaque: (),
 }
 
+
+
+/// Rust model of `RBX::Reflection::PropDescriptor<ModelInstance, ...>` (IDA
+/// `0x5cdb10`): same storage-only family treatment as `DataModelFuncDesc`.
+pub struct ModelPropDesc {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Reflection::BoundFuncDesc<ModelInstance, ...>` (IDA
+/// `0x5cdb84`): same storage-only family treatment.
+#[derive(Default)]
+pub struct ModelFuncDesc {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::Keyframe` (IDA `0x5b1bb0`): the keyframe leaf; poses
 /// attach as children through `setParentInternal`, so no pose list is
 /// modeled here.
@@ -2376,11 +2391,13 @@ pub struct RotateAxisCommand {
     pub data_model: *const DataModel,
 }
 
-/// Rust model of `RBX::ModelInstance` (IDA `0x3f87c0` region): the grouping
-/// model behind `create<ModelInstance>`; members land with the model batch.
+/// Rust model of `RBX::ModelInstance` (IDA `0x3f87c0` region, primary slot
+/// `0x5cb594`): the grouping model with the retained user-set primary part
+/// at `+148` behind `get/setPrimaryPartSetByUser`; extents/physics members
+/// land with the part batch.
 #[derive(Default)]
 pub struct ModelInstance {
-    _opaque: (),
+    pub primary_part: Option<SharedPtr<PartInstance>>,
 }
 
 /// Cached class index behind `doGetClassIndex<FilteredSelection>` (IDA
@@ -40134,36 +40151,49 @@ pub fn stub_0x5caa64(ptr: *mut Message, _deleter: CreatableInstanceDeleter) -> C
 // 0x5cab6c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7MessageENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x5cab6c() -> ! {
-    todo!("0x5cab6c boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x5cab6c(_block: *mut ControlBlockPd<Message, CreatableInstanceDeleter>) {
+    // IDA 0x5cab6c: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x5cab70 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7MessageENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x5cab70() -> ! {
-    todo!("0x5cab70 boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x5cab70(block: *mut ControlBlockPd<Message, CreatableInstanceDeleter>) {
+    // IDA 0x5cab70: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x5cab74 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7MessageENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x5cab74() -> ! {
-    todo!("0x5cab74 boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x5cab74(_block: *mut ControlBlockPd<Message, CreatableInstanceDeleter>) {
+    // IDA 0x5cab74: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x5cab94 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7MessageENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x5cab94() -> ! {
-    todo!("0x5cab94 boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x5cab94(block: *const ControlBlockPd<Message, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x5cab94: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x5cabac — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7MessageENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x5cabac() -> ! {
-    todo!("0x5cabac boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x5cabac(block: *const ControlBlockPd<Message, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x5cabac: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x5cc74c — __ZN3RBXL9TranslateEN5boost10shared_ptrINS_8InstanceEEEPKN3G3D7Vector3E
@@ -40204,8 +40234,16 @@ pub fn stub_0x5cca4c() -> ! {
 // 0x5cca68 — __ZNK3RBX13ModelInstance12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::ModelInstance::askSetParent(RBX::Instance const*)const")]
 // was: RBX::ModelInstance::askSetParent(RBX::Instance const*)const
-pub fn stub_0x5cca68() -> ! {
-    todo!("0x5cca68 RBX::ModelInstance::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x5cca68(parent: *const Instance) -> bool {
+    // IDA 0x5cca68: null parent returns false (disasm 0x5cca6c-0x5cca78);
+    // otherwise the parent's `classDescriptor` is checked against the `Model`
+    // described descriptor — a model may only parent under a model. Same
+    // shape as 0x4a9668.
+    // SAFETY: `parent` must be null or point to a valid `Instance`.
+    if parent.is_null() {
+        return false;
+    }
+    instance_is_a(parent, "ModelInstance")
 }
 
 // 0x5ccaa4 — __ZN3RBX13ModelInstance17onDescendantAddedEPNS_8InstanceE
@@ -41947,15 +41985,20 @@ pub fn stub_0x395cac() -> ! {
 // 0x5cb594 — __ZNK3RBX13ModelInstance23getPrimaryPartSetByUserEv
 #[doc(alias = "RBX::ModelInstance::getPrimaryPartSetByUser(void)const")]
 // was: RBX::ModelInstance::getPrimaryPartSetByUser(void)const
-pub fn stub_0x5cb594() -> ! {
-    todo!("0x5cb594 RBX::ModelInstance::getPrimaryPartSetByUser(void)const")
+pub fn stub_0x5cb594(model: &ModelInstance) -> Option<SharedPtr<PartInstance>> {
+    // IDA 0x5cb594: copies the retained `shared_ptr<PartInstance>` at
+    // `this + 148` (decompiled `0x5cb5a0`-`0x5cb5b4`) — the user-set primary
+    // part slot.
+    model.primary_part.clone()
 }
 
 // 0x5cb5b8 — __ZN3RBX13ModelInstance23setPrimaryPartSetByUserEPNS_12PartInstanceE
 #[doc(alias = "RBX::ModelInstance::setPrimaryPartSetByUser(RBX::PartInstance *)")]
 // was: RBX::ModelInstance::setPrimaryPartSetByUser(RBX::PartInstance *)
-pub fn stub_0x5cb5b8() -> ! {
-    todo!("0x5cb5b8 RBX::ModelInstance::setPrimaryPartSetByUser(RBX::PartInstance *)")
+pub fn stub_0x5cb5b8(model: &mut ModelInstance, part: &SharedPtr<PartInstance>) {
+    // IDA 0x5cb5b8 (`ModelInstance::setPrimaryPartSetByUser`, decompiled
+    // head): stores the retained user-set primary part at `this + 148`.
+    model.primary_part = Some(part.clone());
 }
 
 // 0x5cb690 — __ZN3RBX13ModelInstance11breakJointsEv
@@ -42010,29 +42053,47 @@ pub fn stub_0x5cbbf8() -> ! {
 // 0x5cbe18 — __ZN3RBX13ModelInstanceC1Ev
 #[doc(alias = "RBX::ModelInstance::ModelInstance(void)")]
 // was: RBX::ModelInstance::ModelInstance(void)
-pub fn stub_0x5cbe18() -> ! {
-    todo!("0x5cbe18 RBX::ModelInstance::ModelInstance(void)")
+pub fn stub_0x5cbe18() -> ModelInstance {
+    // IDA 0x5cbe18: `ModelInstance::C1` — `PVInstance` base init (decompiled
+    // `0x5cbe50`-`0x5cbe54`) plus member setup; the user-set primary slot
+    // starts empty (models construct partless), so the model default is the
+    // constructed state.
+    ModelInstance::default()
 }
 
 // 0x5cc128 — __ZN3RBX13ModelInstanceC2Ev
 #[doc(alias = "RBX::ModelInstance::ModelInstance(void)")]
 // was: RBX::ModelInstance::ModelInstance(void)
-pub fn stub_0x5cc128() -> ! {
-    todo!("0x5cc128 RBX::ModelInstance::ModelInstance(void)")
+pub fn stub_0x5cc128() -> ModelInstance {
+    // IDA 0x5cc128: `ModelInstance::C2` — named `PVInstance` base init
+    // (`"Model"`, decompiled `0x5cc160`) plus member setup; same collapse as
+    // 0x5cbe18.
+    ModelInstance::default()
 }
 
 // 0x5cc458 — __ZN3RBX13ModelInstanceD0Ev
 #[doc(alias = "RBX::ModelInstance::~ModelInstance()")]
 // was: RBX::ModelInstance::~ModelInstance()
-pub fn stub_0x5cc458() -> ! {
-    todo!("0x5cc458 RBX::ModelInstance::~ModelInstance()")
+pub fn stub_0x5cc458(_model: *mut ModelInstance) {
+    // IDA 0x5cc458: `ModelInstance::D0` — vtable installs plus memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_model` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_model));
+    }
 }
 
 // 0x5cc504 — __ZN3RBX13ModelInstanceD1Ev
 #[doc(alias = "RBX::ModelInstance::~ModelInstance()")]
 // was: RBX::ModelInstance::~ModelInstance()
-pub fn stub_0x5cc504() -> ! {
-    todo!("0x5cc504 RBX::ModelInstance::~ModelInstance()")
+pub fn stub_0x5cc504(_model: *mut ModelInstance) {
+    // IDA 0x5cc504: `ModelInstance::D1` — `PVInstance` base plus memberwise
+    // teardown; no modeled members beyond the primary slot, which releases
+    // here.
+    // SAFETY: `_model` must point to a valid `ModelInstance`.
+    unsafe {
+        (*_model).primary_part = None;
+    }
 }
 
 // 0x5cc514 — __ZThn32_N3RBX13ModelInstanceD0Ev
@@ -42059,8 +42120,14 @@ pub fn stub_0x5cc524() -> ! {
 // 0x5cc52c — __ZN3RBX13ModelInstanceD2Ev
 #[doc(alias = "RBX::ModelInstance::~ModelInstance()")]
 // was: RBX::ModelInstance::~ModelInstance()
-pub fn stub_0x5cc52c() -> ! {
-    todo!("0x5cc52c RBX::ModelInstance::~ModelInstance()")
+pub fn stub_0x5cc52c(model: *mut ModelInstance) {
+    // IDA 0x5cc52c: `ModelInstance::D2` — vtable resets (compiler-managed)
+    // plus memberwise teardown; the retained primary slot releases here
+    // (decompiled head shows the vtable/member teardown sequence).
+    // SAFETY: `model` must point to a valid `ModelInstance`.
+    unsafe {
+        (*model).primary_part = None;
+    }
 }
 
 // 0x5cc6b0 — __ZThn32_N3RBX13ModelInstanceD1Ev
@@ -42157,50 +42224,82 @@ pub fn stub_0x5cdad8() -> ! {
 // 0x5cdb10 — __ZN3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::~PropDescriptor()
-pub fn stub_0x5cdb10() -> ! {
-    todo!("0x5cdb10 RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::~PropDescriptor()")
+pub fn stub_0x5cdb10(_desc: *mut ModelPropDesc) {
+    // IDA 0x5cdb10: `PropDescriptor<ModelInstance, CoordinateFrame>::D1` —
+    // memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5cdb84 — __ZN3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFN3G3D7Vector3EvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::Vector3 ()(void),0>::~BoundFuncDesc()
-pub fn stub_0x5cdb84() -> ! {
-    todo!("0x5cdb84 RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")
+pub fn stub_0x5cdb84(_desc: *mut ModelFuncDesc) {
+    // IDA 0x5cdb84: `BoundFuncDesc<ModelInstance, Vector3>::D1` — memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5cdba8 — __ZN3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFN3G3D15CoordinateFrameEvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::CoordinateFrame ()(void),0>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::CoordinateFrame ()(void),0>::~BoundFuncDesc()
-pub fn stub_0x5cdba8() -> ! {
-    todo!("0x5cdba8 RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::CoordinateFrame ()(void),0>::~BoundFuncDesc()")
+pub fn stub_0x5cdba8(_desc: *mut ModelFuncDesc) {
+    // IDA 0x5cdba8: `BoundFuncDesc<ModelInstance, CoordinateFrame>::D1` —
+    // memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5cdbcc — __ZN3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFvN3G3D7Vector3EELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,void ()(G3D::Vector3),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,void ()(G3D::Vector3),1>::~BoundFuncDesc()
-pub fn stub_0x5cdbcc() -> ! {
-    todo!("0x5cdbcc RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,void ()(G3D::Vector3),1>::~BoundFuncDesc()")
+pub fn stub_0x5cdbcc(_desc: *mut ModelFuncDesc) {
+    // IDA 0x5cdbcc: `BoundFuncDesc<ModelInstance, void(Vector3)>::D1` —
+    // memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5ce724 — __ZN3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFvN3G3D7Vector3EELi1EEC2EMS2_FvS4_EPKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,void ()(G3D::Vector3),1>::BoundFuncDesc(void (RBX::ModelInstance::*)(G3D::Vector3),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,void ()(G3D::Vector3),1>::BoundFuncDesc(void (RBX::ModelInstance::*)(G3D::Vector3),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x5ce724() -> ! {
-    todo!("0x5ce724 RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,void ()(G3D::Vector3),1>::BoundFuncDesc(void (RBX::ModelInstance::*)(G3D::Vector3),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x5ce724() -> ModelFuncDesc {
+    // IDA 0x5ce724: `BoundFuncDesc<ModelInstance, void(Vector3)>::C2` over
+    // `(member-fn, names, permissions, attributes)` — binds the member
+    // function into the class descriptor; the binding lands with reflection,
+    // so the model starts at defaults. Same shape as 0x5b0f8c.
+    ModelFuncDesc::default()
 }
 
 // 0x5ce89c — __ZN3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFvN3G3D7Vector3EELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,void ()(G3D::Vector3),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,void ()(G3D::Vector3),1>::declareSignature(char const*,RBX::Reflection::Variant)
-pub fn stub_0x5ce89c() -> ! {
-    todo!("0x5ce89c RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,void ()(G3D::Vector3),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x5ce89c(_name: &str, _sig: &[Variant]) {
+    // IDA 0x5ce89c: `BoundFuncDesc<ModelInstance, void(Vector3)>::
+    // declareSignature` — registers the signature words into the reflection
+    // table. Same shape as 0x5b1124.
 }
 
 // 0x5ce8cc — __ZN3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFvN3G3D7Vector3EELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,void ()(G3D::Vector3),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,void ()(G3D::Vector3),1>::~BoundFuncDesc()
-pub fn stub_0x5ce8cc() -> ! {
-    todo!("0x5ce8cc RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,void ()(G3D::Vector3),1>::~BoundFuncDesc()")
+pub fn stub_0x5ce8cc(_desc: *mut ModelFuncDesc) {
+    // IDA 0x5ce8cc: `BoundFuncDesc<ModelInstance, void(Vector3)>::D0` —
+    // vtable install plus memberwise teardown; dropping the box is the same
+    // release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5ce9a0 — __ZNK3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFvN3G3D7Vector3EELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
