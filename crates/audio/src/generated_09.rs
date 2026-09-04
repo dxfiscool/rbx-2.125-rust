@@ -45,6 +45,59 @@ pub struct JpegMarkerIccView {
     pub data_length: u32,
     pub data: *const c_char,
 }
+/// FreeImageIO hook table as consumed by the TIFF client procs
+/// (IDA 0x11600c..0x116378): read_proc at +0, write_proc at +4,
+/// seek_proc at +8, tell_proc at +12. The original reassembles each entry
+/// byte-wise from the table (four LDRB + ORR, e.g. 0x1160b0..0x1160c8) —
+/// a little-endian function-pointer word. IDA prints the callees
+/// __fastcall, which on ARM is the default AAPCS ABI, spelled
+/// `extern "C"` here.
+#[repr(C)]
+pub struct TiffIoHooks {
+    pub read_proc: unsafe extern "C" fn(*mut c_void, u32, u32, *mut c_void) -> u32,
+    pub write_proc: unsafe extern "C" fn(*mut c_void, u32, u32, *mut c_void) -> u32,
+    pub seek_proc: unsafe extern "C" fn(*mut c_void, u32, i32),
+    pub tell_proc: unsafe extern "C" fn(*mut c_void) -> u32,
+}
+
+/// libtiff `thandle_t` for this client: the IO table plus the opaque
+/// FreeImage handle. IDA 0x11600c: `*a1` is the table (deref'd for the
+/// proc word), `a1[1]` is the handle forwarded to every proc call.
+#[repr(C)]
+pub struct TiffHandlePair {
+    pub io: *const TiffIoHooks,
+    pub handle: *mut c_void,
+}
+
+/// FreeImage `Plugin` vtable slots filled by InitTIFF, in target field
+/// order (IDA 0x11629c..0x116334: +0x00 format through +0x38
+/// supports-ICC).
+/// BUG: fields are pointer-sized, so on a 64-bit host this struct is
+/// wider than the 32-bit target's 60 bytes; the slot order — not the
+/// byte offsets — is what this port preserves.
+#[repr(C)]
+pub struct TiffPluginView {
+    pub format: *const c_void,
+    pub description: *const c_void,
+    pub extension: *const c_void,
+    pub reg_expr: *const c_void,
+    pub open: *const c_void,
+    pub close: *const c_void,
+    pub page_count: *const c_void,
+    pub reserved: *const c_void,
+    pub load: *const c_void,
+    pub save: *const c_void,
+    pub validate: *const c_void,
+    pub mime_type: *const c_void,
+    pub supports_export_depth: *const c_void,
+    pub supports_export_type: *const c_void,
+    pub supports_icc_profiles: *const c_void,
+}
+
+/// `s_format_id` global written by InitTIFF (IDA 0x116280..0x116288:
+/// STR R1,[PC,R12] to `s_format_id_1`).
+static TIFF_S_FORMAT_ID: core::sync::atomic::AtomicI32 =
+    core::sync::atomic::AtomicI32::new(0);
 
 // 0x82b700 — __ZL9math_fmodP9lua_State
 #[doc(alias = "math_fmod(lua_State *)")]
@@ -454,44 +507,99 @@ pub fn stub_11535c() -> ! {
 
 // 0x11600c — __ZL13_tiffReadProcPvS_i
 #[doc(alias = "_tiffReadProc(void *,void *,int)")]
-pub fn stub_11600c() -> ! {
-    todo!("0x11600c _tiffReadProc(void *,void *,int)")
+pub fn stub_11600c(pair: *const TiffHandlePair, buf: *mut c_void, size: i32) -> i32 {
+    // IDA 0x11600c: read_proc = io[+0] word, little-endian (four LDRB +
+    // ORR, 0x116018..0x116030); decompile: return size *
+    // read_proc(buf, size, 1, handle) (0x116050).
+    // SAFETY: libtiff guarantees `pair`/`pair.io` readable and `buf`
+    // writable for `size` bytes; the stored proc obeys the FreeImageIO
+    // (buffer, size, count, handle) contract.
+    unsafe {
+        let pair = &*pair;
+        let io = &*pair.io;
+        let count = (io.read_proc)(buf, size as u32, 1, pair.handle);
+        (size as u32).wrapping_mul(count) as i32
+    }
 }
 
 // 0x116054 — __ZL14_tiffWriteProcPvS_i
 #[doc(alias = "_tiffWriteProc(void *,void *,int)")]
-pub fn stub_116054() -> ! {
-    todo!("0x116054 _tiffWriteProc(void *,void *,int)")
+pub fn stub_116054(pair: *const TiffHandlePair, buf: *mut c_void, size: i32) -> i32 {
+    // IDA 0x116054: same shape as _tiffReadProc but with write_proc =
+    // io[+4] word, little-endian (four LDRB + ORR, 0x116060..0x116078);
+    // decompile: return size * write_proc(buf, size, 1, handle) (0x116098).
+    // SAFETY: as for stub_11600c, with `buf` readable for `size` bytes.
+    unsafe {
+        let pair = &*pair;
+        let io = &*pair.io;
+        let count = (io.write_proc)(buf, size as u32, 1, pair.handle);
+        (size as u32).wrapping_mul(count) as i32
+    }
 }
 
 // 0x11609c — __ZL13_tiffSeekProcPvji
 #[doc(alias = "_tiffSeekProc(void *,unsigned int,int)")]
-pub fn stub_11609c() -> ! {
-    todo!("0x11609c _tiffSeekProc(void *,unsigned int,int)")
+pub fn stub_11609c(pair: *const TiffHandlePair, offset: u32, whence: i32) -> i32 {
+    // IDA 0x11609c: handle = pair[1] (0x1160ac); seek_proc = io[+8]
+    // word, little-endian (0x1160b0..0x1160c8); seek_proc(handle, offset,
+    // whence) (0x1160cc); tell_proc = io[+12] word, little-endian
+    // (0x1160d4..0x1160e4); decompile tail: return tell_proc(handle).
+    // SAFETY: `pair`/`pair.io` readable; `handle` valid for both procs.
+    unsafe {
+        let pair = &*pair;
+        let io = &*pair.io;
+        (io.seek_proc)(pair.handle, offset, whence);
+        (io.tell_proc)(pair.handle) as i32
+    }
 }
 
 // 0x1160fc — __ZL14_tiffCloseProcPv
 #[doc(alias = "_tiffCloseProc(void *)")]
-pub fn stub_1160fc() -> ! {
-    todo!("0x1160fc _tiffCloseProc(void *)")
+pub fn stub_1160fc(_handle: *mut c_void) -> i32 {
+    // IDA 0x1160fc: MOV R0,#0 (0x1160fc); BX LR (0x116100). Closing is a
+    // no-op — the FreeImage handle is owned by the caller, not libtiff.
+    0
 }
 
 // 0x116104 — __ZL13_tiffSizeProcPv
 #[doc(alias = "_tiffSizeProc(void *)")]
-pub fn stub_116104() -> ! {
-    todo!("0x116104 _tiffSizeProc(void *)")
+pub fn stub_116104(pair: *const TiffHandlePair) -> i32 {
+    // IDA 0x116104: pos = tell_proc(handle), io[+12] LE (0x116114..0x116134,
+    // saved in R6); seek_proc(handle, 0, SEEK_END) — MOV R2,#2 (0x116158),
+    // R1=#0 (0x116164), BLX (0x116168); end = tell_proc(handle)
+    // (0x11618c..0x116190, saved in R5 at 0x1161ac);
+    // seek_proc(handle, pos, SEEK_SET) — MOV R2,#0 (0x1161b4), R1=R6
+    // (0x1161c0), BLX (0x1161c4); return end (0x1161c8..0x1161cc).
+    // SAFETY: as for stub_11609c.
+    unsafe {
+        let pair = &*pair;
+        let io = &*pair.io;
+        let pos = (io.tell_proc)(pair.handle);
+        (io.seek_proc)(pair.handle, 0, 2);
+        let end = (io.tell_proc)(pair.handle);
+        (io.seek_proc)(pair.handle, pos, 0);
+        end as i32
+    }
 }
 
 // 0x1161d0 — __ZL12_tiffMapProcPvPS_Pj
 #[doc(alias = "_tiffMapProc(void *,void **,unsigned int *)")]
-pub fn stub_1161d0() -> ! {
-    todo!("0x1161d0 _tiffMapProc(void *,void **,unsigned int *)")
+pub fn stub_1161d0(
+    _handle: *mut c_void,
+    _base: *mut *mut c_void,
+    _size: *mut u32,
+) -> i32 {
+    // IDA 0x1161d0: MOV R0,#0 (0x1161d0); BX LR (0x1161d4). No
+    // memory-mapped IO — returning 0 makes libtiff fall back to
+    // read/write procs.
+    0
 }
 
 // 0x1161d8 — __ZL14_tiffUnmapProcPvS_j
 #[doc(alias = "_tiffUnmapProc(void *,void *,unsigned int)")]
-pub fn stub_1161d8() -> ! {
-    todo!("0x1161d8 _tiffUnmapProc(void *,void *,unsigned int)")
+pub fn stub_1161d8(_handle: *mut c_void, _base: *mut c_void, _size: u32) {
+    // IDA 0x1161d8: single BX LR — unmap counterpart of the
+    // always-zero map proc; nothing to release.
 }
 
 // 0x1161dc — __ZL19msdosWarningHandlerPKcS0_Pv
@@ -510,92 +618,216 @@ pub fn stub_1161e0(_module: *const c_char, _fmt: *const c_char, _ap: *mut c_void
 
 // 0x1161e4 — __ZL6Formatv_1
 #[doc(alias = "__ZL6Formatv_1")]
-pub fn stub_1161e4() -> ! {
-    todo!("0x1161e4 __ZL6Formatv_1")
+pub fn stub_1161e4() -> &'static str {
+    // IDA 0x1161e4: LDR R0,=aTiff (0x1161e4); ADD R0,PC (0x1161e8);
+    // BX LR (0x1161ec).
+    "TIFF"
 }
 
 // 0x1161f4 — __ZL11Descriptionv_1
 #[doc(alias = "__ZL11Descriptionv_1")]
-pub fn stub_1161f4() -> ! {
-    todo!("0x1161f4 __ZL11Descriptionv_1")
+pub fn stub_1161f4() -> &'static str {
+    // IDA 0x1161f4: LDR R0,=aTaggedImageFil (0x1161f4); ADD R0,PC
+    // (0x1161f8); BX LR (0x1161fc).
+    "Tagged Image File Format"
 }
 
 // 0x116204 — __ZL9Extensionv_1
 #[doc(alias = "__ZL9Extensionv_1")]
-pub fn stub_116204() -> ! {
-    todo!("0x116204 __ZL9Extensionv_1")
+pub fn stub_116204() -> &'static str {
+    // IDA 0x116204: LDR R0,=aTifTiff (0x116204); ADD R0,PC (0x116208);
+    // BX LR (0x11620c).
+    "tif,tiff"
 }
 
 // 0x116214 — __ZL7RegExprv_1
 #[doc(alias = "__ZL7RegExprv_1")]
-pub fn stub_116214() -> ! {
-    todo!("0x116214 __ZL7RegExprv_1")
+pub fn stub_116214() -> &'static str {
+    // IDA 0x116214: LDR R0,=aMiMiX01X01 (0x116214); ADD R0,PC (0x116218);
+    // BX LR (0x11621c). Raw bytes at 0x10cfaf4 start
+    // 5E 5B 4D 49 5D 5B 4D 49 5D 5B 5C 78 30 31 2A 5D 5B 5C … — the
+    // `\x01` runs are literal backslash-x-0-1 text (all ASCII), so &str
+    // holds the exact image bytes here (unlike the JPEG regex at
+    // 0x111e98, which needs &[u8]).
+    "^[MI][MI][\\x01*][\\x01*]"
 }
 
 // 0x116224 — __ZL8MimeTypev_1
 #[doc(alias = "__ZL8MimeTypev_1")]
-pub fn stub_116224() -> ! {
-    todo!("0x116224 __ZL8MimeTypev_1")
+pub fn stub_116224() -> &'static str {
+    // IDA 0x116224: LDR R0,=aImageTiff (0x116224); ADD R0,PC (0x116228);
+    // BX LR (0x11622c).
+    "image/tiff"
 }
 
 // 0x116234 — __ZL19SupportsExportDepthi_1
 #[doc(alias = "__ZL19SupportsExportDepthi_1")]
-pub fn stub_116234() -> ! {
-    todo!("0x116234 __ZL19SupportsExportDepthi_1")
+pub fn stub_116234(depth: i32) -> bool {
+    // IDA 0x116234: CMP R0,#4 (0x116234); CMPNE R0,#1 (0x116238);
+    // EQ -> 1 (0x11623c -> 0x11625c); CMP R0,#0x18 (0x116240);
+    // CMPNE R0,#8 (0x116244); EQ -> 1 (0x116248 -> 0x11625c);
+    // CMP R0,#0x20 (0x11624c); EQ -> 1 else 0 (0x116250..0x116260).
+    // Same {1, 4, 8, 24, 32} shape as the PNG twin at 0x1142e4.
+    matches!(depth, 1 | 4 | 8 | 24 | 32)
 }
 
 // 0x116264 — __ZL18SupportsExportType15FREE_IMAGE_TYPE_1
 #[doc(alias = "__ZL18SupportsExportType15FREE_IMAGE_TYPE_1")]
-pub fn stub_116264() -> ! {
-    todo!("0x116264 __ZL18SupportsExportType15FREE_IMAGE_TYPE_1")
+pub fn stub_116264(image_type: i32) -> bool {
+    // IDA 0x116264: SUB R0,R0,#1 (0x116264); CMP R0,#0xA (0x116268);
+    // HI -> 0 (0x11626c), LS -> 1 (0x116270); BX LR (0x116274).
+    // (image_type - 1) <= 10 unsigned, i.e. image_type in 1..=11 —
+    // every FreeImage type up to FIT_RGBAF exports to TIFF.
+    matches!(image_type, 1..=11)
 }
 
 // 0x116278 — __ZL19SupportsICCProfilesv_1
 #[doc(alias = "__ZL19SupportsICCProfilesv_1")]
-pub fn stub_116278() -> ! {
-    todo!("0x116278 __ZL19SupportsICCProfilesv_1")
+pub fn stub_116278() -> i32 {
+    // IDA 0x116278: MOV R0,#1 (0x116278); BX LR (0x11627c). Always TRUE.
+    1
 }
 
 // 0x116280 — __Z8InitTIFFP6Plugini
 #[doc(alias = "InitTIFF(Plugin *,int)")]
-pub fn stub_116280() -> ! {
-    todo!("0x116280 InitTIFF(Plugin *,int)")
+pub fn stub_116280(plugin: *mut TiffPluginView, format_id: i32) -> *mut TiffPluginView {
+    // IDA 0x116280: s_format_id = a2 (0x116280..0x116288); then one STR
+    // per vtable slot: +0x00 Format (0x11629c), +0x08 Extension (0x1162a0),
+    // +0x04 Description (0x1162b4), +0x0C RegExpr (0x1162c4),
+    // +0x14 Close (0x1162bc..0x1162c8), +0x10 Open (0x1162e0),
+    // +0x20 Load (0x1162e4), +0x1C 0 (0x1162f0), +0x18 PageCount (0x1162f8),
+    // +0x24 Save (0x116308), +0x28 Validate (0x11630c), +0x2C MimeType
+    // (0x116314), +0x30 SupportsExportDepth (0x11632c), +0x34
+    // SupportsExportType (0x116330), +0x38 SupportsICCProfiles (0x116334);
+    // returns the plugin (BX LR, 0x116338).
+    // BUG: Open/Close/PageCount/Load/Save still carry todo!() bodies, so
+    // those wired slots panic with their EA if invoked before they land.
+    // SAFETY: `plugin` is a writable Plugin per the caller.
+    TIFF_S_FORMAT_ID.store(format_id, core::sync::atomic::Ordering::Relaxed);
+    let p = unsafe { &mut *plugin };
+    p.format = stub_1161e4 as *const c_void;
+    p.description = stub_1161f4 as *const c_void;
+    p.extension = stub_116204 as *const c_void;
+    p.reg_expr = stub_116214 as *const c_void;
+    p.open = stub_116f34 as *const c_void;
+    p.close = stub_116e58 as *const c_void;
+    p.page_count = stub_116e20 as *const c_void;
+    p.reserved = core::ptr::null();
+    p.load = stub_11855c as *const c_void;
+    p.save = stub_116fe8 as *const c_void;
+    p.validate = stub_116378 as *const c_void;
+    p.mime_type = stub_116224 as *const c_void;
+    p.supports_export_depth = stub_116234 as *const c_void;
+    p.supports_export_type = stub_116264 as *const c_void;
+    p.supports_icc_profiles = stub_116278 as *const c_void;
+    plugin
 }
 
 // 0x116378 — __ZL8ValidateP11FreeImageIOPv_1
 #[doc(alias = "__ZL8ValidateP11FreeImageIOPv_1")]
-pub fn stub_116378() -> ! {
-    todo!("0x116378 __ZL8ValidateP11FreeImageIOPv_1")
+pub fn stub_116378(io: *const TiffIoHooks, handle: *mut c_void) -> bool {
+    // IDA 0x116378: dst = "II*\0" (static C.189 = 49 49 2A 00;
+    // 0x116388..0x11639c), want = "MM\0*" (static C.190 = 4D 4D 00 2A;
+    // 0x1163a0..0x1163b0); sig zero-filled (static C.191_0 = 00 00 00 00;
+    // 0x1163b4..0x1163c4); read_proc = io[+0] word, little-endian
+    // (0x1163c8..0x1163dc); read_proc(sig, 1, 4, handle)
+    // (0x1163e4..0x1163f4); memcmp(dst, sig, 4) == 0 -> true
+    // (0x1163f8..0x116410), else memcmp(want, sig, 4) == 0
+    // (0x116414..0x116428). TIFF magic in either byte order validates.
+    // SAFETY: `io` readable; `handle` valid for the stored read_proc.
+    let mut sig = [0u8; 4];
+    unsafe {
+        let io = &*io;
+        (io.read_proc)(sig.as_mut_ptr() as *mut c_void, 1, 4, handle);
+    }
+    sig == *b"II*\0" || sig == *b"MM\0*"
 }
 
 // 0x116440 — __TIFFmemcmp
 #[doc(alias = "__TIFFmemcmp")]
-pub fn stub_116440() -> ! {
-    todo!("0x116440 __TIFFmemcmp")
+pub fn stub_116440(a1: *const c_void, a2: *const c_void, n: usize) -> i32 {
+    // IDA 0x116440: BL _memcmp (0x11644c) — tail call to system memcmp.
+    // SAFETY: both pointers are readable for `n` bytes per the caller.
+    unsafe {
+        let a = core::slice::from_raw_parts(a1 as *const u8, n);
+        let b = core::slice::from_raw_parts(a2 as *const u8, n);
+        for i in 0..n {
+            let d = (a[i] as i32) - (b[i] as i32);
+            if d != 0 {
+                return d;
+            }
+        }
+        0
+    }
 }
 
 // 0x116450 — __TIFFmalloc
 #[doc(alias = "__TIFFmalloc")]
-pub fn stub_116450() -> ! {
-    todo!("0x116450 __TIFFmalloc")
+pub fn stub_116450(size: usize) -> *mut c_void {
+    // IDA 0x116450: BL _malloc (0x11645c) — tail call to system malloc.
+    // BUG: no libc link in this crate, so this hosts malloc on
+    // std::alloc with a 16-byte size-prefix header (base stays
+    // 16-aligned, and free recovers the layout from the header).
+    // Pointer identity therefore differs from system malloc: blocks
+    // must be released with stub_116460, not foreign free.
+    const HDR: usize = 16;
+    const ALIGN: usize = 16;
+    let total = size.saturating_add(HDR).max(1);
+    let Ok(layout) = core::alloc::Layout::from_size_align(total, ALIGN) else {
+        return core::ptr::null_mut();
+    };
+    let base = unsafe { std::alloc::alloc(layout) };
+    if base.is_null() {
+        return core::ptr::null_mut();
+    }
+    unsafe {
+        (base as *mut usize).write(size);
+        base.add(HDR) as *mut c_void
+    }
 }
 
 // 0x116460 — __TIFFfree
 #[doc(alias = "__TIFFfree")]
-pub fn stub_116460() -> ! {
-    todo!("0x116460 __TIFFfree")
+pub fn stub_116460(ptr: *mut c_void) {
+    // IDA 0x116460: BL _free (0x116468) — tail call to system free.
+    // BUG: paired with the prefixed stub_116460 allocator above, not
+    // system free (see stub_116450). free(NULL) stays a no-op, as in C.
+    const HDR: usize = 16;
+    const ALIGN: usize = 16;
+    if ptr.is_null() {
+        return;
+    }
+    unsafe {
+        let base = (ptr as *mut u8).sub(HDR);
+        let size = (base as *const usize).read();
+        let layout =
+            core::alloc::Layout::from_size_align(size.saturating_add(HDR).max(1), ALIGN)
+                .expect("TIFFfree layout");
+        std::alloc::dealloc(base, layout);
+    }
 }
 
 // 0x116470 — __TIFFmemcpy
 #[doc(alias = "__TIFFmemcpy")]
-pub fn stub_116470() -> ! {
-    todo!("0x116470 __TIFFmemcpy")
+pub fn stub_116470(dst: *mut c_void, src: *const c_void, n: usize) -> *mut c_void {
+    // IDA 0x116470: BL _memcpy (0x11647c) — tail call to system memcpy.
+    // SAFETY: `src` readable and `dst` writable for `n` bytes; ranges
+    // must not overlap, exactly as with C memcpy.
+    unsafe {
+        core::ptr::copy_nonoverlapping(src as *const u8, dst as *mut u8, n);
+        dst
+    }
 }
 
 // 0x116480 — __TIFFmemset
 #[doc(alias = "__TIFFmemset")]
-pub fn stub_116480() -> ! {
-    todo!("0x116480 __TIFFmemset")
+pub fn stub_116480(dst: *mut c_void, c: i32, n: usize) -> *mut c_void {
+    // IDA 0x116480: BL _memset (0x11648c) — tail call to system memset.
+    // SAFETY: `dst` writable for `n` bytes per the caller.
+    unsafe {
+        core::ptr::write_bytes(dst as *mut u8, c as u8, n);
+        dst
+    }
 }
 
 // 0x116490 — __ZL11ReadPaletteP4tiffttP8FIBITMAP
