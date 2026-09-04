@@ -17122,29 +17122,44 @@ pub fn stub_0x438b50() -> ! {
 // 0x438b84 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE15convertToStringEmRSs
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToString(unsigned long,std::string &)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToString(unsigned long,std::string &)const
-pub fn stub_0x438b84() -> ! {
-    todo!("0x438b84 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToString(unsigned long,std::string &)const")
+pub fn stub_0x438b84(desc: &EnumDesc, value: i32) -> Option<&'static str> {
+    // IDA 0x438b84: `EnumDesc<Genre>::convertToString(int)` — same
+    // assert-then-search shape as 0x439a84.
+    debug_assert!((0..desc.pairs.len() as i32).contains(&value), "0x438b84: value>=0 && value<size");
+    desc.pairs.iter().find(|(v, _)| *v == value).map(|(_, text)| *text)
 }
 
 // 0x438cc8 — __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()
-pub fn stub_0x438cc8() -> ! {
-    todo!("0x438cc8 RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()")
+pub fn stub_0x438cc8(_desc: *mut EnumDesc) {
+    // IDA 0x438cc8: `EnumDesc<GearGenreSetting>::D1` — table teardown;
+    // dropping the box is the same release. Twin of 0x4387f0.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x438ccc — __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED0Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()
-pub fn stub_0x438ccc() -> ! {
-    todo!("0x438ccc RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()")
+pub fn stub_0x438ccc(_desc: *mut EnumDesc) {
+    // IDA 0x438ccc: `EnumDesc<GearGenreSetting>::D0` — vtable install plus
+    // table teardown; dropping the box is the same release. Twin of 0x4387f4.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x438d6c — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::lookup(char const*)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::lookup(char const*)const
-pub fn stub_0x438d6c() -> ! {
-    todo!("0x438d6c RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::lookup(char const*)const")
+pub fn stub_0x438d6c(desc: &EnumDesc, name: &str) -> Option<i32> {
+    // IDA 0x438d6c: `EnumDesc<GearGenreSetting>::lookup(name)` — same
+    // name-search shape as 0x438894.
+    desc.pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
 }
 
 // 0x438d9c — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE6lookupERKNS0_7VariantE
@@ -17164,29 +17179,45 @@ pub fn stub_0x438dbc() -> ! {
 // 0x438df0 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE15convertToStringEmRSs
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToString(unsigned long,std::string &)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToString(unsigned long,std::string &)const
-pub fn stub_0x438df0() -> ! {
-    todo!("0x438df0 RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToString(unsigned long,std::string &)const")
+pub fn stub_0x438df0(desc: &EnumDesc, value: i32) -> Option<&'static str> {
+    // IDA 0x438df0: `EnumDesc<GearGenreSetting>::convertToString(int)` —
+    // same assert-then-search shape as the typed overload 0x43a0fc over the
+    // int key.
+    debug_assert!((0..desc.pairs.len() as i32).contains(&value), "0x438df0: value>=0 && value<size");
+    desc.pairs.iter().find(|(v, _)| *v == value).map(|(_, text)| *text)
 }
 
 // 0x438f34 — __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()
-pub fn stub_0x438f34() -> ! {
-    todo!("0x438f34 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()")
+pub fn stub_0x438f34(_desc: *mut EnumDesc) {
+    // IDA 0x438f34: `EnumDesc<GearType>::D1` — table teardown; dropping the
+    // box is the same release. Twin of 0x4387f0.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x438f38 — __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED0Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()
-pub fn stub_0x438f38() -> ! {
-    todo!("0x438f38 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()")
+pub fn stub_0x438f38(_desc: *mut EnumDesc) {
+    // IDA 0x438f38: `EnumDesc<GearType>::D0` — vtable install plus table
+    // teardown; dropping the box is the same release. Twin of 0x4387f4.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x438fd8 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::lookup(char const*)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::lookup(char const*)const
-pub fn stub_0x438fd8() -> ! {
-    todo!("0x438fd8 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::lookup(char const*)const")
+pub fn stub_0x438fd8(desc: &EnumDesc, name: &str) -> Option<i32> {
+    // IDA 0x438fd8: `EnumDesc<GearType>::lookup(name)` — same name-search
+    // shape as 0x438894.
+    desc.pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
 }
 
 // 0x439008 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE6lookupERKNS0_7VariantE
@@ -17206,29 +17237,44 @@ pub fn stub_0x439028() -> ! {
 // 0x43905c — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE15convertToStringEmRSs
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToString(unsigned long,std::string &)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToString(unsigned long,std::string &)const
-pub fn stub_0x43905c() -> ! {
-    todo!("0x43905c RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToString(unsigned long,std::string &)const")
+pub fn stub_0x43905c(desc: &EnumDesc, value: i32) -> Option<&'static str> {
+    // IDA 0x43905c: `EnumDesc<GearType>::convertToString(int)` — same
+    // assert-then-search shape as 0x439a84.
+    debug_assert!((0..desc.pairs.len() as i32).contains(&value), "0x43905c: value>=0 && value<size");
+    desc.pairs.iter().find(|(v, _)| *v == value).map(|(_, text)| *text)
 }
 
 // 0x4391a0 — __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEED1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()
-pub fn stub_0x4391a0() -> ! {
-    todo!("0x4391a0 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()")
+pub fn stub_0x4391a0(_desc: *mut EnumDesc) {
+    // IDA 0x4391a0: `EnumDesc<SaveFilter>::D1` — table teardown; dropping the
+    // box is the same release. Twin of 0x4387f0.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4391a4 — __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEED0Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()
-pub fn stub_0x4391a4() -> ! {
-    todo!("0x4391a4 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()")
+pub fn stub_0x4391a4(_desc: *mut EnumDesc) {
+    // IDA 0x4391a4: `EnumDesc<SaveFilter>::D0` — vtable install plus table
+    // teardown; dropping the box is the same release. Twin of 0x4387f4.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x439244 — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::lookup(char const*)const")]
 // was: RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::lookup(char const*)const
-pub fn stub_0x439244() -> ! {
-    todo!("0x439244 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::lookup(char const*)const")
+pub fn stub_0x439244(desc: &EnumDesc, name: &str) -> Option<i32> {
+    // IDA 0x439244: `EnumDesc<SaveFilter>::lookup(name)` — same name-search
+    // shape as 0x438894.
+    desc.pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
 }
 
 // 0x439274 — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE6lookupERKNS0_7VariantE
@@ -17248,15 +17294,21 @@ pub fn stub_0x439294() -> ! {
 // 0x4392c8 — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE15convertToStringEmRSs
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToString(unsigned long,std::string &)const")]
 // was: RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToString(unsigned long,std::string &)const
-pub fn stub_0x4392c8() -> ! {
-    todo!("0x4392c8 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToString(unsigned long,std::string &)const")
+pub fn stub_0x4392c8(desc: &EnumDesc, value: i32) -> Option<&'static str> {
+    // IDA 0x4392c8: `EnumDesc<SaveFilter>::convertToString(int)` — same
+    // assert-then-search shape as 0x43940c over the int key.
+    debug_assert!((0..desc.pairs.len() as i32).contains(&value), "0x4392c8: value>=0 && value<size");
+    desc.pairs.iter().find(|(v, _)| *v == value).map(|(_, text)| *text)
 }
 
 // 0x43940c — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToString(RBX::Instance::SaveFilter const&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToString(RBX::Instance::SaveFilter const&)const
-pub fn stub_0x43940c() -> ! {
-    todo!("0x43940c RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToString(RBX::Instance::SaveFilter const&)const")
+pub fn stub_0x43940c(desc: &EnumDesc, value: i32) -> Option<&'static str> {
+    // IDA 0x43940c: `EnumDesc<SaveFilter>::convertToString(typed)` — same
+    // assert-then-search shape as 0x439a84.
+    debug_assert!((0..desc.pairs.len() as i32).contains(&value), "0x43940c: value>=0 && value<size");
+    desc.pairs.iter().find(|(v, _)| *v == value).map(|(_, text)| *text)
 }
 
 // 0x4395ac — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_8Instance10SaveFilterEEERS3_RKT_
@@ -17311,15 +17363,21 @@ pub fn stub_0x439834() -> ! {
 // 0x4398b0 — __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()
-pub fn stub_0x4398b0() -> ! {
-    todo!("0x4398b0 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()")
+pub fn stub_0x4398b0(desc: &mut EnumDesc) {
+    // IDA 0x4398b0: `EnumDesc<SaveFilter>::D2` — clears the table in place.
+    // Twin of 0x43a5a0.
+    desc.pairs.clear();
 }
 
 // 0x439a84 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToString(RBX::DataModel::GearType const&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToString(RBX::DataModel::GearType const&)const
-pub fn stub_0x439a84() -> ! {
-    todo!("0x439a84 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToString(RBX::DataModel::GearType const&)const")
+pub fn stub_0x439a84(desc: &EnumDesc, value: i32) -> Option<&'static str> {
+    // IDA 0x439a84: `EnumDesc<GearType>::convertToString(typed)` — asserts
+    // `value>=0 && value<size` (decomp 0x439ac0-0x439b34, enumconverter.h:262)
+    // then assigns the matching name; same collapse as 0x43a0fc.
+    debug_assert!((0..desc.pairs.len() as i32).contains(&value), "0x439a84: value>=0 && value<size");
+    desc.pairs.iter().find(|(v, _)| *v == value).map(|(_, text)| *text)
 }
 
 // 0x439c24 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel8GearTypeEEERS3_RKT_
@@ -17353,8 +17411,12 @@ pub fn stub_0x439cec() -> ! {
 // 0x439cf0 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToItem(RBX::DataModel::GearType const&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToItem(RBX::DataModel::GearType const&)const
-pub fn stub_0x439cf0() -> ! {
-    todo!("0x439cf0 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToItem(RBX::DataModel::GearType const&)const")
+pub fn stub_0x439cf0(desc: &EnumDesc, name: &str) -> Option<(i32, &'static str)> {
+    // IDA 0x439cf0: `EnumDesc<GearType>::convertToItem(Name)` — finds the
+    // pair by name, miss yields null; the item collapses into the
+    // `(value, name)` pair and the `Name` key into its text (same collapse as
+    // the name lookups).
+    desc.pairs.iter().find(|(_, text)| *text == name).copied()
 }
 
 // 0x439dbc — __ZN3rbx8any_castIRKN3RBX9DataModel8GearTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
@@ -17374,15 +17436,22 @@ pub fn stub_0x439eac() -> ! {
 // 0x439f28 — __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()
-pub fn stub_0x439f28() -> ! {
-    todo!("0x439f28 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()")
+pub fn stub_0x439f28(desc: &mut EnumDesc) {
+    // IDA 0x439f28: `EnumDesc<GearType>::D2` — clears the table in place.
+    // Twin of 0x43a5a0.
+    desc.pairs.clear();
 }
 
 // 0x43a0fc — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToString(RBX::DataModel::GearGenreSetting const&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToString(RBX::DataModel::GearGenreSetting const&)const
-pub fn stub_0x43a0fc() -> ! {
-    todo!("0x43a0fc RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToString(RBX::DataModel::GearGenreSetting const&)const")
+pub fn stub_0x43a0fc(desc: &EnumDesc, value: i32) -> Option<&'static str> {
+    // IDA 0x43a0fc: `EnumDesc<GearGenreSetting>::convertToString(typed)` —
+    // asserts `value>=0 && value<size` (same enumconverter.h:262 shape as
+    // 0x439a84), then assigns the matching name; the assert is debug-only
+    // and the miss collapses into `None`.
+    debug_assert!((0..desc.pairs.len() as i32).contains(&value), "0x43a0fc: value>=0 && value<size");
+    desc.pairs.iter().find(|(v, _)| *v == value).map(|(_, text)| *text)
 }
 
 // 0x43a29c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel16GearGenreSettingEEERS3_RKT_
@@ -17437,15 +17506,20 @@ pub fn stub_0x43a524() -> ! {
 // 0x43a5a0 — __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()
-pub fn stub_0x43a5a0() -> ! {
-    todo!("0x43a5a0 RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()")
+pub fn stub_0x43a5a0(desc: &mut EnumDesc) {
+    // IDA 0x43a5a0: `EnumDesc<GearGenreSetting>::D2` — clears the table in
+    // place (no storage release; that is the D0 path).
+    desc.pairs.clear();
 }
 
 // 0x43a774 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToString(RBX::DataModel::Genre const&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToString(RBX::DataModel::Genre const&)const
-pub fn stub_0x43a774() -> ! {
-    todo!("0x43a774 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToString(RBX::DataModel::Genre const&)const")
+pub fn stub_0x43a774(desc: &EnumDesc, value: i32) -> Option<&'static str> {
+    // IDA 0x43a774: `EnumDesc<Genre>::convertToString(typed)` — same
+    // assert-then-search shape as 0x439a84.
+    debug_assert!((0..desc.pairs.len() as i32).contains(&value), "0x43a774: value>=0 && value<size");
+    desc.pairs.iter().find(|(v, _)| *v == value).map(|(_, text)| *text)
 }
 
 // 0x43a914 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel5GenreEEERS3_RKT_
@@ -17479,8 +17553,10 @@ pub fn stub_0x43a9dc() -> ! {
 // 0x43a9e0 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToItem(RBX::DataModel::Genre const&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToItem(RBX::DataModel::Genre const&)const
-pub fn stub_0x43a9e0() -> ! {
-    todo!("0x43a9e0 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToItem(RBX::DataModel::Genre const&)const")
+pub fn stub_0x43a9e0(desc: &EnumDesc, name: &str) -> Option<(i32, &'static str)> {
+    // IDA 0x43a9e0: `EnumDesc<Genre>::convertToItem(Name)` — same pair-search
+    // shape as 0x439cf0.
+    desc.pairs.iter().find(|(_, text)| *text == name).copied()
 }
 
 // 0x43aaac — __ZN3rbx8any_castIRKN3RBX9DataModel5GenreENS1_7Region3EEET_RNS_13placement_anyIT0_EE
@@ -17500,15 +17576,20 @@ pub fn stub_0x43ab9c() -> ! {
 // 0x43ac18 — __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()
-pub fn stub_0x43ac18() -> ! {
-    todo!("0x43ac18 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")
+pub fn stub_0x43ac18(desc: &mut EnumDesc) {
+    // IDA 0x43ac18: `EnumDesc<Genre>::D2` — clears the table in place. Twin
+    // of 0x43a5a0.
+    desc.pairs.clear();
 }
 
 // 0x43adec — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToString(RBX::DataModel::CreatorType const&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToString(RBX::DataModel::CreatorType const&)const
-pub fn stub_0x43adec() -> ! {
-    todo!("0x43adec RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToString(RBX::DataModel::CreatorType const&)const")
+pub fn stub_0x43adec(desc: &EnumDesc, value: i32) -> Option<&'static str> {
+    // IDA 0x43adec: `EnumDesc<CreatorType>::convertToString(typed)` — same
+    // assert-then-search shape as 0x439a84.
+    debug_assert!((0..desc.pairs.len() as i32).contains(&value), "0x43adec: value>=0 && value<size");
+    desc.pairs.iter().find(|(v, _)| *v == value).map(|(_, text)| *text)
 }
 
 // 0x43af8c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel11CreatorTypeEEERS3_RKT_
