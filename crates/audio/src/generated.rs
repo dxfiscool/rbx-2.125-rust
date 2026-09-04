@@ -4401,6 +4401,46 @@ pub struct CollisionSoundManager {
     pub channel_group: u32,
     pub sounds: HashMap<u32, Option<SharedPtr<CollisionSound>>>,
 }
+/// std::map<CollisionSoundType, shared_ptr<CollisionSound>> — the mapped
+/// pointer is nullable in C++, hence Option (IDA 0x7fd084 inserts an empty
+/// shared_ptr on miss), same convention as SoundMap.
+pub type CollisionSoundMap = HashMap<u32, Option<SharedPtr<CollisionSound>>>;
+
+/// RBX::Primitive view for the collision-sound paths (IDA 0x7fcd04/0x7f9bb8):
+/// the fw material word at +28 (PartInstance::fw), the linear velocity, the
+/// part-size extents, the coordinate-frame position, the [prim+0xAC] touch
+/// cooldown word, and an opaque host identity for the IsPartPlayer compare.
+#[derive(Clone, Copy, Default)]
+pub struct CollisionPartView {
+    pub material: u32,
+    pub velocity: [f32; 3],
+    pub size: [f32; 3],
+    pub position: [f32; 3],
+    pub touch_cooldown: u32,
+    pub part_id: u32,
+}
+
+/// The six fast body parts IsPartPlayer compares against (IDA 0x7fcf16..0x7fcf66:
+/// left/right leg, left/right arm, torso, head).
+#[derive(Clone, Copy, Default)]
+pub struct PlayerPartSet {
+    pub left_leg: u32,
+    pub right_leg: u32,
+    pub left_arm: u32,
+    pub right_arm: u32,
+    pub torso: u32,
+    pub head: u32,
+}
+
+/// CollisionSound::Play request (IDA 0x7fcee2: sound, FMOD system/group words,
+/// frame position, velocity, volume). The FMOD words stay on the manager; the
+/// host plays the request through its own FMOD seam.
+pub struct CollisionPlayRequest {
+    pub sound: SharedPtr<CollisionSound>,
+    pub position: [f32; 3],
+    pub velocity: [f32; 3],
+    pub volume: f32,
+}
 
 /// The 63 (type, asset) pairs loaded by LoadSounds (IDA 0x7f9e70,
 /// 0x7f9ee4..0x7face8): upper-triangular material matrix in
@@ -4560,33 +4600,132 @@ pub fn stub_7fca48(manager: &mut CollisionSoundManager, key: u32, asset: &str) {
 
 // 0x7fcd04 — __ZN3RBX10Soundscape21CollisionSoundManager9PlaySoundESt4pairIPNS_9PrimitiveES4_E
 #[doc(alias = "RBX::Soundscape::CollisionSoundManager::PlaySound(std::pair<RBX::Primitive *,RBX::Primitive *>)")]
-pub fn stub_7fcd04() -> ! {
-    todo!("0x7fcd04 RBX::Soundscape::CollisionSoundManager::PlaySound(std::pair<RBX::Primitive *,RBX::Primitive *>)")
+pub fn stub_7fcd04(
+    manager: &CollisionSoundManager,
+    a: &CollisionPartView,
+    b: &CollisionPartView,
+    variant: u32,
+    local_humanoid: Option<&PlayerPartSet>,
+    base_volume: f32,
+    play: impl FnOnce(CollisionPlayRequest),
+) -> Option<SharedPtr<CollisionSound>> {
+    // IDA 0x7fcd04: fromPrimitive both prims (0x7fcd2e/0x7fcd36, host: the
+    // views); fold the fw material words (PartInstance::fw + 28,
+    // 0x7fcd3e/0x7fcd46) into the canonical pair key with the smaller word
+    // low, plus rand() % 3 (0x7fcd4a..0x7fcd90, host: the variant param);
+    // lower_bound over the map at +8 (0x7fcda0..0x7fcdb2, miss or key mismatch
+    // returns, host: the get); the faster part's velocity wins
+    // (0x7fce6c/0x7fce6e); the smaller part's size sum picks the sounding
+    // side (0x7fce80); the IsPartPlayer gate (0x7fce84/0x7fcea2, 0x7fcf00)
+    // and the [prim+0xAC] touch-cooldown gate (0x7fce8c/0x7fcea8, > 1 skips)
+    // apply to that side; then CollisionSound::Play(system, group, frame pos,
+    // velocity, (size_sum - base) * -120.0) (0x7fceb8..0x7fcee2, host: the
+    // play seam).
+    let key = CollisionSoundType::with_variant(a.material, b.material, variant % 3);
+    let sound = manager.sounds.get(&key.0).and_then(|slot| slot.clone())?;
+    let speed = |v: &[f32; 3]| v[0] * v[0] + v[1] * v[1] + v[2] * v[2];
+    let velocity = if speed(&a.velocity) <= speed(&b.velocity) {
+        b.velocity
+    } else {
+        a.velocity
+    };
+    let size_sum = |v: &[f32; 3]| v[0] + v[1] + v[2];
+    let (side, size) = if size_sum(&a.size) > size_sum(&b.size) {
+        (b, size_sum(&b.size))
+    } else {
+        (a, size_sum(&a.size))
+    };
+    if stub_7fcf00(local_humanoid, side.part_id) || side.touch_cooldown > 1 {
+        return None;
+    }
+    play(CollisionPlayRequest {
+        sound: SharedPtr::clone(&sound),
+        position: side.position,
+        velocity,
+        volume: (size - base_volume) * -120.0,
+    });
+    Some(sound)
 }
 
 // 0x7fcf00 — __ZN3RBX10Soundscape21CollisionSoundManager12IsPartPlayerEPNS_12PartInstanceE
 // type: _DWORD __fastcall(RBX::Soundscape::CollisionSoundManager *__hidden this, RBX::PartInstance *)
 #[doc(alias = "RBX::Soundscape::CollisionSoundManager::IsPartPlayer(RBX::PartInstance *)")]
-pub fn stub_7fcf00() -> ! {
-    todo!("0x7fcf00 RBX::Soundscape::CollisionSoundManager::IsPartPlayer(RBX::PartInstance *)")
+pub fn stub_7fcf00(local_humanoid: Option<&PlayerPartSet>, part: u32) -> bool {
+    // IDA 0x7fcf00: getLocalHumanoidFromContext (0x7fcf08, host: the option);
+    // null -> 0 (0x7fcf0e/0x7fcf6a), else identity against the left/right leg,
+    // left/right arm, torso and head fast parts (0x7fcf16..0x7fcf66).
+    let Some(humanoid) = local_humanoid else {
+        return false;
+    };
+    part == humanoid.left_leg
+        || part == humanoid.right_leg
+        || part == humanoid.left_arm
+        || part == humanoid.right_arm
+        || part == humanoid.torso
+        || part == humanoid.head
 }
 
 // 0x7fcf70 — __ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEE5resetIS3_EEvPT_
 #[doc(alias = "void rbx_core::SharedPtr<RBX::Soundscape::Sound>::reset<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")]
-pub fn stub_7fcf70() -> ! {
-    todo!("0x7fcf70 __ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEE5resetIS3_EEvPT_")
+pub fn stub_7fcf70(slot: &mut Option<SharedPtr<Sound>>, sound: Sound) {
+    // IDA 0x7fcf70: shared_ptr<Sound> temp from the raw (0x7fcf7a), word swap
+    // with the slot (0x7fcf80..0x7fcf8c), release of the old count
+    // (0x7fcf90..0x7fcf92). Host: Arc adopt drops the old value.
+    *slot = Some(SharedPtr::new(sound));
 }
 
 // 0x7fcf9c — __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE7connectIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_10Soundscape21CollisionSoundManagerES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>> const&)")]
-pub fn stub_7fcf9c() -> ! {
-    todo!("0x7fcf9c __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE7connectIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_10Soundscape21CollisionSoundManagerES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_")
+/// RBX::Primitive* signal payloads for the collision-manager connects (IDA
+/// 0x7fcf9c/0x7fd010): host identities for the touched primitives.
+#[derive(Clone, Copy, Default)]
+pub struct TouchedPrimitive(pub u32);
+#[derive(Clone, Copy, Default)]
+pub struct TouchedPrimitivePair(pub u32, pub u32);
+/// Connection returned by the pair connect (IDA 0x7fcf9c): owns a strong ref
+/// to the slot because Signal stores only a Weak (cf. HeartbeatConnection).
+pub struct PrimitivePairConnection {
+    _slot: Arc<dyn Fn(TouchedPrimitivePair) + Send + Sync>,
+}
+/// Connection returned by the single-prim connect (IDA 0x7fd010): same slot
+/// ownership as the pair connection.
+pub struct PrimitiveConnection {
+    _slot: Arc<dyn Fn(TouchedPrimitive) + Send + Sync>,
+}
+pub fn stub_7fcf9c(
+    signal: &Signal<TouchedPrimitivePair>,
+    manager: SharedPtr<CollisionSoundManager>,
+    handler: impl Fn(&CollisionSoundManager, TouchedPrimitivePair) + Send + Sync + 'static,
+) -> PrimitivePairConnection {
+    // IDA 0x7fcf9c: operator new(28) the slot (0x7fcfb4, host: Arc), fill the
+    // bind (manager value + arg<1> forwarder, 0x7fcfcc..0x7fcff2, host:
+    // closure), insert into the signal (0x7fcff6), return the connection
+    // owning a slot ref (0x7fcffc..0x7fd004, host: strong Arc since Signal
+    // keeps only a Weak; twin of the Heartbeat path at 0x3770e0).
+    let slot = Arc::new(move |pair: TouchedPrimitivePair| handler(&*manager, pair));
+    signal.connect(Arc::clone(&slot));
+    PrimitivePairConnection {
+        _slot: slot as Arc<dyn Fn(TouchedPrimitivePair) + Send + Sync>,
+    }
 }
 
 // 0x7fd010 — __ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE7connectIN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS2_10Soundscape21CollisionSoundManagerES4_EENS9_5list2INS9_5valueIPSE_EENS8_3argILi1EEEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Primitive *)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>> const&)")]
-pub fn stub_7fd010() -> ! {
-    todo!("0x7fd010 __ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE7connectIN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS2_10Soundscape21CollisionSoundManagerES4_EENS9_5list2INS9_5valueIPSE_EENS8_3argILi1EEEEEEEEENS0_10connectionERKT_")
+pub fn stub_7fd010(
+    signal: &Signal<TouchedPrimitive>,
+    manager: SharedPtr<CollisionSoundManager>,
+    handler: impl Fn(&CollisionSoundManager, TouchedPrimitive) + Send + Sync + 'static,
+) -> PrimitiveConnection {
+    // IDA 0x7fd010: operator new(28) the slot (0x7fd028, host: Arc), fill the
+    // bind (manager value + arg<1> forwarder, 0x7fd040..0x7fd066, host:
+    // closure), insert into the signal (0x7fd06a), return the connection
+    // owning a slot ref (0x7fd070..0x7fd078, host: strong Arc; twin of the
+    // pair path at 0x7fcf9c and the Heartbeat path at 0x3770e0).
+    let slot = Arc::new(move |prim: TouchedPrimitive| handler(&*manager, prim));
+    signal.connect(Arc::clone(&slot));
+    PrimitiveConnection {
+        _slot: slot as Arc<dyn Fn(TouchedPrimitive) + Send + Sync>,
+    }
 }
 
 // 0x7fd084 — __ZNSt3mapIN3RBX10Soundscape18CollisionSoundTypeEN5boost10shared_ptrINS1_14CollisionSoundEEESt4lessIS2_ESaISt4pairIKS2_S6_EEEixERSA_
@@ -4603,30 +4742,56 @@ pub fn stub_7fd084(
 }
 // 0x7fd1cc — __ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEaSERKS4_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>::operator=(rbx_core::SharedPtr<RBX::Soundscape::CollisionSound> const&)")]
-
-pub fn stub_7fd1cc() -> ! {
-    todo!("0x7fd1cc __ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEaSERKS4_")
+pub fn stub_7fd1cc(
+    dst: &mut SharedPtr<CollisionSound>,
+    src: &SharedPtr<CollisionSound>,
+) -> SharedPtr<CollisionSound> {
+    // IDA 0x7fd1cc: shared_count copy (0x7fd1e0), ptr word adopt (0x7fd1ea),
+    // old count release (0x7fd1f2..0x7fd1f8). Host: Arc clone assigns, old Arc
+    // drops (twin of the Sound path at 0x37716c).
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x7fd204 — __ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>> const&)")]
-pub fn stub_7fd204() -> ! {
-    todo!("0x7fd204 __ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_")
+pub fn stub_7fd204(map: &mut CollisionSoundMap, key: u32, value: Option<SharedPtr<CollisionSound>>) -> bool {
+    // IDA 0x7fd204: _M_insert_unique with a position hint — the hint only
+    // seeds the lower_bound walk (0x7fd214..0x7fd2a6); a duplicate key still
+    // inserts nothing. Host: hint is meaningless for HashMap, delegate to the
+    // unique insert (twin of the Sound-map path at 0x3788dc).
+    stub_7fd304(map, key, value)
 }
 
 // 0x7fd2b8 — __ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>> const&)")]
-pub fn stub_7fd2b8() -> ! {
-    todo!("0x7fd2b8 __ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_")
+pub fn stub_7fd2b8(map: &mut CollisionSoundMap, key: u32, value: Option<SharedPtr<CollisionSound>>) -> bool {
+    // IDA 0x7fd2b8: _M_insert(parent, node, value) — links the created node
+    // into the tree and rebalances; the caller established the miss. Host:
+    // entry API keeps the first insert on duplicates, same boolean (twin of
+    // the Sound-map path at 0x3789c4).
+    stub_7fd304(map, key, value)
 }
 
 // 0x7fd304 — __ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueERKS9_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::_M_insert_unique(std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>> const&)")]
-pub fn stub_7fd304() -> ! {
-    todo!("0x7fd304 __ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueERKS9_")
+pub fn stub_7fd304(map: &mut CollisionSoundMap, key: u32, value: Option<SharedPtr<CollisionSound>>) -> bool {
+    // IDA 0x7fd304: _M_insert_unique(value) — lower_bound on the key
+    // (0x7fd310..0x7fd330); on a miss create the node and link it, else
+    // return the existing node. Host: HashMap insert reports vacant (true)
+    // vs occupied (false); the occupied slot keeps its value (twin of the
+    // Sound-map path at 0x378a14).
+    use std::collections::hash_map::Entry;
+    match map.entry(key) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x7fd36c — __ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE14_M_create_nodeERKS9_
@@ -4638,8 +4803,11 @@ pub fn stub_7fd36c() {
 
 // 0x7fd45c — __ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEC2IS3_EEPT_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>::shared_ptr<RBX::Soundscape::CollisionSound>(RBX::Soundscape::CollisionSound *)")]
-pub fn stub_7fd45c() -> ! {
-    todo!("0x7fd45c __ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEC2IS3_EEPT_")
+pub fn stub_7fd45c(sound: CollisionSound) -> SharedPtr<CollisionSound> {
+    // IDA 0x7fd45c: shared_ptr<CollisionSound> ctor from a raw pointer with a
+    // plain control block (0x7fd48a..0x7fd4c2, host: Arc construction; twin of
+    // the Sound path at 0x378ba0).
+    SharedPtr::new(sound)
 }
 
 // 0x7fd530 — __ZN5boost6detail12shared_countC2IN3RBX10Soundscape14CollisionSoundEEEPT_
@@ -4693,8 +4861,14 @@ pub fn stub_7fd724() {
 
 // 0x7fd7f8 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_10Soundscape21CollisionSoundManagerES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEELi1ES6_E4callES5_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Primitive *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>,1,void ()(RBX::Primitive *)>::call(RBX::Primitive *)")]
-pub fn stub_7fd7f8() -> ! {
-    todo!("0x7fd7f8 __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_10Soundscape21CollisionSoundManagerES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEELi1ES6_E4callES5_")
+pub fn stub_7fd7f8(
+    manager: &CollisionSoundManager,
+    prim: TouchedPrimitive,
+    apply: impl FnOnce(&CollisionSoundManager, TouchedPrimitive),
+) {
+    // IDA 0x7fd7f8: callable::call copies the prim into a list1 (0x7fd7fc)
+    // and forwards to the bind at slot + 16 (0x7fd80a, 0x7fd820).
+    stub_7fd820(manager, prim, apply);
 }
 
 // 0x7fd80c — __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_10Soundscape21CollisionSoundManagerES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEELi1ES6_E4callES5_
@@ -4705,8 +4879,17 @@ pub fn stub_7fd80c() {
 
 // 0x7fd820 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape21CollisionSoundManagerEPNS4_9PrimitiveEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS8_EEvRT_
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>::operator()<RBX::Primitive *>(RBX::Primitive * &)")]
-pub fn stub_7fd820() -> ! {
-    todo!("0x7fd820 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape21CollisionSoundManagerEPNS4_9PrimitiveEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS8_EEvRT_")
+pub fn stub_7fd820(
+    manager: &CollisionSoundManager,
+    prim: TouchedPrimitive,
+    apply: impl FnOnce(&CollisionSoundManager, TouchedPrimitive),
+) {
+    // IDA 0x7fd820: bind_t::operator() — load the mf1 (PlaySound(Primitive*),
+    // 0x7fd820) and the bound manager value (0x7fd820..0x7fd82c), adjust this
+    // for the multiple-inheritance thunk when the tag is odd
+    // (0x7fd830..0x7fd834, host: no adjustment), invoke mf1(manager, prim)
+    // (0x7fd836, host: the apply closure).
+    apply(manager, prim);
 }
 
 // 0x7fd838 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_10Soundscape21CollisionSoundManagerES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEELi1ES6_ED1Ev
@@ -4735,8 +4918,16 @@ pub fn stub_7fdb94() {
 
 // 0x7fdd84 — __ZN3rbx8callableINS_7signals6signalIFvSt4pairIPN3RBX9PrimitiveES6_EEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS4_10Soundscape21CollisionSoundManagerES7_EENSC_5list2INSC_5valueIPSH_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>,1,void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::call(std::pair<RBX::Primitive *,RBX::Primitive *>)")]
-pub fn stub_7fdd84() -> ! {
-    todo!("0x7fdd84 __ZN3rbx8callableINS_7signals6signalIFvSt4pairIPN3RBX9PrimitiveES6_EEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS4_10Soundscape21CollisionSoundManagerES7_EENSC_5list2INSC_5valueIPSH_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_")
+pub fn stub_7fdd84(
+    manager: &CollisionSoundManager,
+    first: TouchedPrimitive,
+    second: TouchedPrimitive,
+    apply: impl FnOnce(&CollisionSoundManager, TouchedPrimitivePair),
+) {
+    // IDA 0x7fdd84: callable::call builds the pair (v4[0]/v4[1], 0x7fdd8a)
+    // and a list1 over it (0x7fdd94), then forwards to the list2 bind at slot
+    // + 24 (0x7fdda4, 0x7fddcc).
+    stub_7fddcc(manager, TouchedPrimitivePair(first.0, second.0), apply);
 }
 
 // 0x7fdda8 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSt4pairIPN3RBX9PrimitiveES6_EEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS4_10Soundscape21CollisionSoundManagerES7_EENSC_5list2INSC_5valueIPSH_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
@@ -4747,8 +4938,16 @@ pub fn stub_7fdda8() {
 
 // 0x7fddcc — __ZN5boost3_bi5list2INS0_5valueIPN3RBX10Soundscape21CollisionSoundManagerEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS5_St4pairIPNS3_9PrimitiveESG_EEENS0_5list1IRSH_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list1<std::pair<RBX::Primitive *,RBX::Primitive *>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>> &,boost::_bi::list1<std::pair<RBX::Primitive *,RBX::Primitive *>&> &,int)")]
-pub fn stub_7fddcc() -> ! {
-    todo!("0x7fddcc __ZN5boost3_bi5list2INS0_5valueIPN3RBX10Soundscape21CollisionSoundManagerEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS5_St4pairIPNS3_9PrimitiveESG_EEENS0_5list1IRSH_EEEEvNS0_4typeIvEERT_RT0_i")
+pub fn stub_7fddcc(
+    manager: &CollisionSoundManager,
+    pair: TouchedPrimitivePair,
+    apply: impl FnOnce(&CollisionSoundManager, TouchedPrimitivePair),
+) {
+    // IDA 0x7fddcc: list2::operator() — load the mf1 (PlaySound(pair),
+    // 0x7fddd6) and the bound manager value (0x7fddd8..0x7fdde2), adjust this
+    // when the tag is odd (0x7fddea..0x7fddee, host: none), invoke
+    // mf1(manager, first, second) (0x7fddf2, host: the apply closure).
+    apply(manager, pair);
 }
 
 // 0x7fe0e4 — __ZN3rbx8callableINS_7signals6signalIFvSt4pairIPN3RBX9PrimitiveES6_EEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS4_10Soundscape21CollisionSoundManagerES7_EENSC_5list2INSC_5valueIPSH_EENSB_3argILi1EEEEEEELi1ES8_ED1Ev
@@ -4778,8 +4977,15 @@ pub fn stub_7fe20c() {
 // 0xb29978 — __ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7Creator6createEv
 // type: void __fastcall(RBX::Soundscape::SoundService **, int, int, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, RBX::Instance *, int, int, pthread_mutex_t *, int, int, void *, int)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7Creator6createEv")]
-pub fn stub_b29978() -> ! {
-    todo!("0xb29978 __ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7Creator6createEv")
+pub fn stub_b29978() -> SharedPtr<SoundService> {
+    // IDA 0xb29978: FLog::Asserts-gated wasConstructed() ReleaseAssert
+    // (Object.h:231, 0xb299c2..0xb29a32, host: folded into the Creatable
+    // path), operator new(0xE0) (0xb29a34), SoundService ctor (0xb29a48),
+    // shared_ptr with the Creatable deleter plus _internal_accept_owner
+    // (0xb29a5a..0xb29aa0, host: Arc construction adopts owners). Host:
+    // delegate to Creatable::create<SoundService> (twin of the SoundChannel
+    // path at 0x377f84).
+    stub_452950()
 }
 
 // 0xb29db0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
@@ -4799,8 +5005,11 @@ pub fn stub_b29dc8() {
 // 0xf30314 — j___ZN21SoundServiceStatsItem6createEPKN3RBX10Soundscape12SoundServiceE
 // type: _DWORD __fastcall(SoundServiceStatsItem *__hidden this, const RBX::Soundscape::SoundService *)
 #[doc(alias = "SoundServiceStatsItem::create(RBX::Soundscape::SoundService const*)")]
-pub fn stub_f30314() -> ! {
-    todo!("0xf30314 SoundServiceStatsItem::create(RBX::Soundscape::SoundService const*)")
+pub fn stub_f30314(service: &SoundService) -> SharedPtr<SoundServiceStatsItem> {
+    // IDA 0xf30314: PIC trampoline (LDR PC,[R12], __picsymbolstub4,
+    // 0xf30314..0xf3031c) into SoundServiceStatsItem::create (0x376ac4).
+    // Host: delegate.
+    stub_376ac4(service)
 }
 
 // 0xf30324 — j___ZN21SoundServiceStatsItemC2EPKN3RBX10Soundscape12SoundServiceE
@@ -5764,44 +5973,81 @@ pub fn stub_f526a4() -> ! {
 
 // 0xf547e4 — j___ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE7connectIN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS2_10Soundscape21CollisionSoundManagerES4_EENS9_5list2INS9_5valueIPSE_EENS8_3argILi1EEEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Primitive *)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>> const&)")]
-pub fn stub_f547e4() -> ! {
-    todo!("0xf547e4 j___ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE7connectIN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS2_10Soundscape21CollisionSoundManagerES4_EENS9_5list2INS9_5valueIPSE_EENS8_3argILi1EEEEEEEEENS0_10connectionERKT_")
+pub fn stub_f547e4(
+    signal: &Signal<TouchedPrimitive>,
+    manager: SharedPtr<CollisionSoundManager>,
+    handler: impl Fn(&CollisionSoundManager, TouchedPrimitive) + Send + Sync + 'static,
+) -> PrimitiveConnection {
+    // IDA 0xf547e4: PIC trampoline (LDR PC,[R12], __picsymbolstub4,
+    // 0xf547e4..0xf547ec) into the single-prim connect (0x7fd010). Host:
+    // delegate.
+    stub_7fd010(signal, manager, handler)
 }
 
 // 0xf54824 — j___ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE7connectIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_10Soundscape21CollisionSoundManagerES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>> const&)")]
-pub fn stub_f54824() -> ! {
-    todo!("0xf54824 j___ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE7connectIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_10Soundscape21CollisionSoundManagerES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_")
+pub fn stub_f54824(
+    signal: &Signal<TouchedPrimitivePair>,
+    manager: SharedPtr<CollisionSoundManager>,
+    handler: impl Fn(&CollisionSoundManager, TouchedPrimitivePair) + Send + Sync + 'static,
+) -> PrimitivePairConnection {
+    // IDA 0xf54824: PIC trampoline (LDR PC,[R12], __picsymbolstub4,
+    // 0xf54824..0xf5482c) into the pair connect (0x7fcf9c). Host: delegate.
+    stub_7fcf9c(signal, manager, handler)
 }
 
 // 0xf54834 — j___ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEC2IS3_EEPT_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>::shared_ptr<RBX::Soundscape::CollisionSound>(RBX::Soundscape::CollisionSound *)")]
-pub fn stub_f54834() -> ! {
-    todo!("0xf54834 j___ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEC2IS3_EEPT_")
+pub fn stub_f54834(sound: CollisionSound) -> SharedPtr<CollisionSound> {
+    // IDA 0xf54834: PIC trampoline (LDR PC,[R12], __picsymbolstub4,
+    // 0xf54834..0xf5483c) into the shared_ptr<CollisionSound> ctor (0x7fd45c).
+    // Host: delegate.
+    stub_7fd45c(sound)
 }
 
 // 0xf54844 — j___ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEaSERKS4_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>::operator=(rbx_core::SharedPtr<RBX::Soundscape::CollisionSound> const&)")]
-pub fn stub_f54844() -> ! {
-    todo!("0xf54844 j___ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEaSERKS4_")
+pub fn stub_f54844(
+    dst: &mut SharedPtr<CollisionSound>,
+    src: &SharedPtr<CollisionSound>,
+) -> SharedPtr<CollisionSound> {
+    // IDA 0xf54844: PIC trampoline (LDR PC,[R12], __picsymbolstub4,
+    // 0xf54844..0xf5484c) into shared_ptr<CollisionSound>::operator=
+    // (0x7fd1cc). Host: delegate.
+    stub_7fd1cc(dst, src)
 }
 
 // 0xf54854 — j___ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEE5resetIS3_EEvPT_
 #[doc(alias = "void rbx_core::SharedPtr<RBX::Soundscape::Sound>::reset<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")]
-pub fn stub_f54854() -> ! {
-    todo!("0xf54854 j___ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEE5resetIS3_EEvPT_")
+pub fn stub_f54854(slot: &mut Option<SharedPtr<Sound>>, sound: Sound) {
+    // IDA 0xf54854: PIC trampoline (LDR PC,[R12], __picsymbolstub4,
+    // 0xf54854..0xf5485c) into shared_ptr<Sound>::reset (0x7fcf70). Host:
+    // delegate.
+    stub_7fcf70(slot, sound);
 }
 
 // 0xf54874 — j___ZN5boost3_bi5list2INS0_5valueIPN3RBX10Soundscape21CollisionSoundManagerEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS5_St4pairIPNS3_9PrimitiveESG_EEENS0_5list1IRSH_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list1<std::pair<RBX::Primitive *,RBX::Primitive *>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>> &,boost::_bi::list1<std::pair<RBX::Primitive *,RBX::Primitive *>&> &,int)")]
-pub fn stub_f54874() -> ! {
-    todo!("0xf54874 j___ZN5boost3_bi5list2INS0_5valueIPN3RBX10Soundscape21CollisionSoundManagerEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS5_St4pairIPNS3_9PrimitiveESG_EEENS0_5list1IRSH_EEEEvNS0_4typeIvEERT_RT0_i")
+pub fn stub_f54874(
+    manager: &CollisionSoundManager,
+    pair: TouchedPrimitivePair,
+    apply: impl FnOnce(&CollisionSoundManager, TouchedPrimitivePair),
+) {
+    // IDA 0xf54874: PIC trampoline (LDR PC,[R12], __picsymbolstub4,
+    // 0xf54874..0xf5487c) into list2::operator() (0x7fddcc). Host: delegate.
+    stub_7fddcc(manager, pair, apply);
 }
 
 // 0xf54884 — j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape21CollisionSoundManagerEPNS4_9PrimitiveEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS8_EEvRT_
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>::operator()<RBX::Primitive *>(RBX::Primitive * &)")]
-pub fn stub_f54884() -> ! {
-    todo!("0xf54884 j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape21CollisionSoundManagerEPNS4_9PrimitiveEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS8_EEvRT_")
+pub fn stub_f54884(
+    manager: &CollisionSoundManager,
+    prim: TouchedPrimitive,
+    apply: impl FnOnce(&CollisionSoundManager, TouchedPrimitive),
+) {
+    // IDA 0xf54884: PIC trampoline (LDR PC,[R12], __picsymbolstub4,
+    // 0xf54884..0xf5488c) into bind_t::operator() (0x7fd820). Host: delegate.
+    stub_7fd820(manager, prim, apply);
 }
 
 // 0xf54894 — j___ZN5boost6detail12shared_countC2IN3RBX10Soundscape14CollisionSoundEEEPT_
