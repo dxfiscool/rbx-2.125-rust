@@ -307,11 +307,12 @@ pub fn stub_a74dc0() -> ! {
 }
 
 // 0xa75100 — __ZN6RakNet16ReliabilityLayer11SplitPacketEPNS_14InternalPacketE
+#[doc(alias = "RakNet::ReliabilityLayer::SplitPacket(RakNet::InternalPacket *)")]
 // demangled: RakNet::ReliabilityLayer::SplitPacket(RakNet::InternalPacket *)
 // type: int __fastcall(int, int)
-#[doc(alias = "RakNet::ReliabilityLayer::SplitPacket(RakNet::InternalPacket *)")]
-pub fn stub_a75100() -> ! {
-    todo!("0xa75100 RakNet::ReliabilityLayer::SplitPacket(RakNet::InternalPacket *)")
+pub fn stub_a75100(bit_length: u32, mtu: u32, reliability: u8) -> u32 {
+ // IDA 0xa75100: split count half of SplitPacket.
+ crate::reliability::split_packet_count(bit_length, mtu, reliability)
 }
 
 // 0xa75548 — __ZN6RakNet16ReliabilityLayer6UpdateEiRNS_13SystemAddressEiyjRN14DataStructures4ListIPNS_16PluginInterface2EEEPNS_12RakNetRandomEtjRNS_9BitStreamE
@@ -323,11 +324,12 @@ pub fn stub_a75548() -> ! {
 }
 
 // 0xa7641c — __ZN6RakNet16ReliabilityLayer10AckTimeoutEy
+#[doc(alias = "RakNet::ReliabilityLayer::AckTimeout(unsigned long long)")]
 // demangled: RakNet::ReliabilityLayer::AckTimeout(unsigned long long)
 // type: int __fastcall(RakNet::ReliabilityLayer *this, unsigned __int64)
-#[doc(alias = "RakNet::ReliabilityLayer::AckTimeout(unsigned long long)")]
-pub fn stub_a7641c() -> ! {
-    todo!("0xa7641c RakNet::ReliabilityLayer::AckTimeout(unsigned long long)")
+pub fn stub_a7641c(now_ms: u64, sent_ms: u64, timeout_ms: u32) -> bool {
+ // IDA 0xa7641c: AckTimeout age gate.
+ crate::reliability::ack_timeout(now_ms, sent_ms, timeout_ms)
 }
 
 // 0xa76468 — __ZN6RakNet16ReliabilityLayer8SendACKsEiRNS_13SystemAddressEyPNS_12RakNetRandomEtjRNS_9BitStreamE
@@ -339,19 +341,21 @@ pub fn stub_a76468() -> ! {
 }
 
 // 0xa765e0 — __ZN6RakNet16ReliabilityLayer24ResetPacketsAndDatagramsEv
+#[doc(alias = "RakNet::ReliabilityLayer::ResetPacketsAndDatagrams(void)")]
 // demangled: RakNet::ReliabilityLayer::ResetPacketsAndDatagrams(void)
 // type: int __fastcall(RakNet::ReliabilityLayer *this)
-#[doc(alias = "RakNet::ReliabilityLayer::ResetPacketsAndDatagrams(void)")]
-pub fn stub_a765e0() -> ! {
-    todo!("0xa765e0 RakNet::ReliabilityLayer::ResetPacketsAndDatagrams(void)")
+pub fn stub_a765e0(layer: &mut crate::reliability::ReliabilityLayer) {
+ // IDA 0xa765e0: counter resets.
+ layer.reset_packets_and_datagrams();
 }
 
 // 0xa766b8 — __ZN6RakNet16ReliabilityLayer12PushDatagramEv
+#[doc(alias = "RakNet::ReliabilityLayer::PushDatagram(void)")]
 // demangled: RakNet::ReliabilityLayer::PushDatagram(void)
 // type: int __fastcall(RakNet::ReliabilityLayer *this)
-#[doc(alias = "RakNet::ReliabilityLayer::PushDatagram(void)")]
-pub fn stub_a766b8() -> ! {
-    todo!("0xa766b8 RakNet::ReliabilityLayer::PushDatagram(void)")
+pub fn stub_a766b8(layer: &mut crate::reliability::ReliabilityLayer, push: &mut dyn FnMut()) {
+ // IDA 0xa766b8: queue the pending datagram.
+ layer.push_datagram(push);
 }
 
 // 0xa76828 — __ZN6RakNet16ReliabilityLayer10PushPacketEyPNS_14InternalPacketEb
@@ -387,35 +391,39 @@ pub fn stub_a76b88() -> ! {
 }
 
 // 0xa76c68 — __ZN6RakNet16ReliabilityLayer21IsOutgoingDataWaitingEv
+#[doc(alias = "RakNet::ReliabilityLayer::IsOutgoingDataWaiting(void)")]
 // demangled: RakNet::ReliabilityLayer::IsOutgoingDataWaiting(void)
 // type: bool __fastcall(RakNet::ReliabilityLayer *this)
-#[doc(alias = "RakNet::ReliabilityLayer::IsOutgoingDataWaiting(void)")]
-pub fn stub_a76c68() -> ! {
-    todo!("0xa76c68 RakNet::ReliabilityLayer::IsOutgoingDataWaiting(void)")
+pub fn stub_a76c68(waiting: bool) -> bool {
+ // IDA 0xa76c68: IsOutgoingDataWaiting gate.
+ crate::reliability::ReliabilityLayer::is_outgoing_data_waiting(waiting)
 }
 
 // 0xa76c84 — __ZN6RakNet16ReliabilityLayer14AreAcksWaitingEv
+#[doc(alias = "RakNet::ReliabilityLayer::AreAcksWaiting(void)")]
 // demangled: RakNet::ReliabilityLayer::AreAcksWaiting(void)
 // type: bool __fastcall(RakNet::ReliabilityLayer *this)
-#[doc(alias = "RakNet::ReliabilityLayer::AreAcksWaiting(void)")]
-pub fn stub_a76c84() -> ! {
-    todo!("0xa76c84 RakNet::ReliabilityLayer::AreAcksWaiting(void)")
+pub fn stub_a76c84(waiting: bool) -> bool {
+ // IDA 0xa76c84: AreAcksWaiting gate.
+ crate::reliability::ReliabilityLayer::are_acks_waiting(waiting)
 }
 
 // 0xa76c90 — __ZN6RakNet16ReliabilityLayer31SetSplitMessageProgressIntervalEi
+#[doc(alias = "RakNet::ReliabilityLayer::SetSplitMessageProgressInterval(int)")]
 // demangled: RakNet::ReliabilityLayer::SetSplitMessageProgressInterval(int)
 // type: int __fastcall(int this, int)
-#[doc(alias = "RakNet::ReliabilityLayer::SetSplitMessageProgressInterval(int)")]
-pub fn stub_a76c90() -> ! {
-    todo!("0xa76c90 RakNet::ReliabilityLayer::SetSplitMessageProgressInterval(int)")
+pub fn stub_a76c90(layer: &mut crate::reliability::ReliabilityLayer, interval: i32) {
+ // IDA 0xa76c90.
+ layer.set_split_message_progress_interval(interval);
 }
 
 // 0xa76c94 — __ZN6RakNet16ReliabilityLayer20SetUnreliableTimeoutEj
+#[doc(alias = "RakNet::ReliabilityLayer::SetUnreliableTimeout(unsigned int)")]
 // demangled: RakNet::ReliabilityLayer::SetUnreliableTimeout(unsigned int)
 // type: int __fastcall(int this, unsigned int)
-#[doc(alias = "RakNet::ReliabilityLayer::SetUnreliableTimeout(unsigned int)")]
-pub fn stub_a76c94() -> ! {
-    todo!("0xa76c94 RakNet::ReliabilityLayer::SetUnreliableTimeout(unsigned int)")
+pub fn stub_a76c94(layer: &mut crate::reliability::ReliabilityLayer, timeout_ms: u32) {
+ // IDA 0xa76c94.
+ layer.set_unreliable_timeout(timeout_ms);
 }
 
 // 0xa76ca4 — __ZN6RakNet16ReliabilityLayer30BuildPacketFromSplitPacketListEPNS_18SplitPacketChannelEy
@@ -427,27 +435,30 @@ pub fn stub_a76ca4() -> ! {
 }
 
 // 0xa76e6c — __ZNK6RakNet16ReliabilityLayer16IsDeadConnectionEv
+#[doc(alias = "RakNet::ReliabilityLayer::IsDeadConnection(void)const")]
 // demangled: RakNet::ReliabilityLayer::IsDeadConnection(void)const
 // type: int __fastcall(RakNet::ReliabilityLayer *this)
-#[doc(alias = "RakNet::ReliabilityLayer::IsDeadConnection(void)const")]
-pub fn stub_a76e6c() -> ! {
-    todo!("0xa76e6c RakNet::ReliabilityLayer::IsDeadConnection(void)const")
+pub fn stub_a76e6c(layer: &crate::reliability::ReliabilityLayer) -> bool {
+ // IDA 0xa76e6c: flag at +0x8b4.
+ layer.is_dead_connection()
 }
 
 // 0xa76e74 — __ZN6RakNet16ReliabilityLayer13GetStatisticsEPNS_16RakNetStatisticsE
+#[doc(alias = "RakNet::ReliabilityLayer::GetStatistics(RakNet::RakNetStatistics *)")]
 // demangled: RakNet::ReliabilityLayer::GetStatistics(RakNet::RakNetStatistics *)
 // type: int __fastcall(int, int)
-#[doc(alias = "RakNet::ReliabilityLayer::GetStatistics(RakNet::RakNetStatistics *)")]
-pub fn stub_a76e74() -> ! {
-    todo!("0xa76e74 RakNet::ReliabilityLayer::GetStatistics(RakNet::RakNetStatistics *)")
+pub fn stub_a76e74(layer: &crate::reliability::ReliabilityLayer, fill: &mut dyn FnMut()) {
+ // IDA 0xa76e74: stats fill is the callback.
+ layer.get_statistics(fill);
 }
 
 // 0xa77058 — __ZN20DatagramHeaderFormat11DeserializeEPN6RakNet9BitStreamE
+#[doc(alias = "DatagramHeaderFormat::Deserialize(RakNet::BitStream *)")]
 // demangled: DatagramHeaderFormat::Deserialize(RakNet::BitStream *)
 // type: _DWORD __fastcall(DatagramHeaderFormat *__hidden this, RakNet::BitStream *)
-#[doc(alias = "DatagramHeaderFormat::Deserialize(RakNet::BitStream *)")]
-pub fn stub_a77058() -> ! {
-    todo!("0xa77058 DatagramHeaderFormat::Deserialize(RakNet::BitStream *)")
+pub fn stub_a77058(stream: &mut crate::bitstream::BitStream) -> crate::reliability::DatagramHeader {
+ // IDA 0xa77058: sequential flag-bit header reads.
+ crate::reliability::deserialize_datagram_header(stream)
 }
 
 // 0xa771e8 — __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE11DeserializeEPNS1_9BitStreamE
