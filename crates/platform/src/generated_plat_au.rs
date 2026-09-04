@@ -2564,9 +2564,10 @@ mod tiff_leaf_tests {
         let bx = [10u32, 0, 7];
         let cx = [9u32, 0, 0];
         unsafe {
-            // equal tags, nonzero subfield: (*b)[2] - (*a)[2] = 7 - 3.
-            assert_eq!(tag_compare(&ax.as_ptr(), &bx.as_ptr()), -4);
-            assert_eq!(tag_compare(&bx.as_ptr(), &ax.as_ptr()), 4);
+            // equal tags, nonzero subfield: (*b)[2] - (*a)[2] (IDA 0x183d20..0x183d2c:
+            // `RSBNE R0,R0,R1` with R0=(*a)[2], R1=(*b)[2]).
+            assert_eq!(tag_compare(&ax.as_ptr(), &bx.as_ptr()), 4);
+            assert_eq!(tag_compare(&bx.as_ptr(), &ax.as_ptr()), -4);
             // different tags: **a - **b.
             assert_eq!(tag_compare(&ax.as_ptr(), &cx.as_ptr()), 1);
             // equal everything -> 0.
