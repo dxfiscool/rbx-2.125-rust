@@ -1184,7 +1184,7 @@ impl TaskSchedulerSettings {
     pub fn singleton() -> &'static Self {
         // Verified via IDA decompile.
         static SINGLETON: std::sync::LazyLock<TaskSchedulerSettings> =
-            std::sync::LazyLock::new(|| Self { parented: std::sync::atomic::AtomicBool::new(true) });
+            std::sync::LazyLock::new(|| TaskSchedulerSettings { parented: std::sync::atomic::AtomicBool::new(true) });
         &SINGLETON
     }
     pub fn is_parented(&self) -> bool {
