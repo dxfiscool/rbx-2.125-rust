@@ -7,40 +7,61 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use std::collections::BTreeMap;
 
 // 0x16d84 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings10ShadowModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>> *)")]
-pub fn stub_0x16d84() -> ! {
-    todo!("0x16d84 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings10ShadowModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_0x16d84(map: &mut BTreeMap<u32, i32>) {
+    // IDA 0x16d84 `_Rb_tree<Name const*, ShadowMode>::_M_erase(node)`:
+    // recursive left-subtree erase, node delete, right walk (cf. 0x16d34
+    // in generated_script_gap_015ef8.rs). Host has no tree nodes;
+    // granularity collapses to the owning map.
+    map.clear();
 }
 
 // 0x16dac — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16AntialiasingModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>> *)")]
-pub fn stub_0x16dac() -> ! {
-    todo!("0x16dac __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16AntialiasingModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_0x16dac(map: &mut BTreeMap<u32, i32>) {
+    // IDA 0x16dac `_Rb_tree<Name const*, AntialiasingMode>::_M_erase(node)`:
+    // recursive left-subtree erase, node delete, right walk (cf. 0x16d34
+    // in generated_script_gap_015ef8.rs). Host has no tree nodes;
+    // granularity collapses to the owning map.
+    map.clear();
 }
 
 // 0x16dd4 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings20FrameRateManagerModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>> *)")]
-pub fn stub_0x16dd4() -> ! {
-    todo!("0x16dd4 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings20FrameRateManagerModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_0x16dd4(map: &mut BTreeMap<u32, i32>) {
+    // IDA 0x16dd4 `_Rb_tree<Name const*, FrameRateManagerMode>::_M_erase(node)`:
+    // recursive left-subtree erase, node delete, right walk (cf. 0x16d34
+    // in generated_script_gap_015ef8.rs). Host has no tree nodes;
+    // granularity collapses to the owning map.
+    map.clear();
 }
 
 // 0x16dfc — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings12GraphicsModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>> *)")]
-pub fn stub_0x16dfc() -> ! {
-    todo!("0x16dfc __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings12GraphicsModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_0x16dfc(map: &mut BTreeMap<u32, i32>) {
+    // IDA 0x16dfc `_Rb_tree<Name const*, GraphicsMode>::_M_erase(node)`:
+    // recursive left-subtree erase, node delete, right walk (cf. 0x16d34
+    // in generated_script_gap_015ef8.rs). Host has no tree nodes;
+    // granularity collapses to the owning map.
+    map.clear();
 }
 
 // 0x16e24 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings9AASamplesEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>> *)")]
-pub fn stub_0x16e24() -> ! {
-    todo!("0x16e24 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings9AASamplesEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_0x16e24(map: &mut BTreeMap<u32, i32>) {
+    // IDA 0x16e24 `_Rb_tree<Name const*, AASamples>::_M_erase(node)`:
+    // recursive left-subtree erase, node delete, right walk (cf. 0x16d34
+    // in generated_script_gap_015ef8.rs). Host has no tree nodes;
+    // granularity collapses to the owning map.
+    map.clear();
 }
 
 // 0x23a04 — __ZNSt3mapISsPFvPKcESt4lessISsESaISt4pairIKSsS3_EEEixERS7_
