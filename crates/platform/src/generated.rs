@@ -9838,141 +9838,161 @@ pub fn stub_20a7c(animated: bool) {
 // 0x20b00 — -[AboutController webViewDidFinishLoad:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController webViewDidFinishLoad:]")]
-pub fn stub_20b00() -> ! {
-    todo!("0x20b00 -[AboutController webViewDidFinishLoad:]")
+pub fn stub_20b00(web_view: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x20b00)
+    crate::view_controllers::AboutController::shared_instance().web_view_did_finish_load(web_view);
 }
 
 // 0x20b28 — -[AboutController webView:shouldStartLoadWithRequest:navigationType:]
 // type: char __cdecl(AboutController *self, SEL, id, id, int)
 #[doc(alias = "-[AboutController webView:shouldStartLoadWithRequest:navigationType:]")]
-pub fn stub_20b28() -> ! {
-    todo!("0x20b28 -[AboutController webView:shouldStartLoadWithRequest:navigationType:]")
+pub fn stub_20b28(url: Option<&str>) -> bool {
+    // delegate of crate::view_controllers (IDA 0x20b28)
+    crate::view_controllers::AboutController::shared_instance().web_view_should_start_load(url)
 }
 
 // 0x20bb0 — -[AboutController prepareForSegue:sender:]
 // type: void __cdecl(AboutController *self, SEL, id, id)
 #[doc(alias = "-[AboutController prepareForSegue:sender:]")]
-pub fn stub_20bb0() -> ! {
-    todo!("0x20bb0 -[AboutController prepareForSegue:sender:]")
+pub fn stub_20bb0(identifier: &str, sender_url: Option<&str>) {
+    // delegate of crate::view_controllers (IDA 0x20bb0)
+    crate::view_controllers::AboutController::shared_instance().prepare_for_segue(identifier, sender_url);
 }
 
 // 0x20c14 — -[AboutController closeButtonPressed:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController closeButtonPressed:]")]
-pub fn stub_20c14() -> ! {
-    todo!("0x20c14 -[AboutController closeButtonPressed:]")
+pub fn stub_20c14() {
+    // delegate of crate::view_controllers (IDA 0x20c14)
+    crate::view_controllers::AboutController::shared_instance().close_button_pressed();
 }
 
 // 0x20c28 — -[AboutController clearCookiesButtonPressed:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController clearCookiesButtonPressed:]")]
-pub fn stub_20c28() -> ! {
-    todo!("0x20c28 -[AboutController clearCookiesButtonPressed:]")
+pub fn stub_20c28(message: &str) {
+    // delegate of crate::view_controllers (IDA 0x20c28)
+    crate::view_controllers::AboutController::shared_instance().clear_cookies_button_pressed(message);
 }
 
 // 0x20cb4 — -[AboutController viewDidUnload]
 // type: void __cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController viewDidUnload]")]
-pub fn stub_20cb4() -> ! {
-    todo!("0x20cb4 -[AboutController viewDidUnload]")
+pub fn stub_20cb4() {
+    // delegate of crate::view_controllers (IDA 0x20cb4)
+    crate::view_controllers::AboutController::shared_instance().view_did_unload();
 }
 
 // 0x20d0c — -[AboutController navigationTitle]
 // type: UINavigationItem *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController navigationTitle]")]
-pub fn stub_20d0c() -> ! {
-    todo!("0x20d0c -[AboutController navigationTitle]")
+pub fn stub_20d0c() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x20d0c)
+    crate::view_controllers::AboutController::shared_instance().navigation_title()
 }
 
 // 0x20d1c — -[AboutController setNavigationTitle:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setNavigationTitle:]")]
-pub fn stub_20d1c() -> ! {
-    todo!("0x20d1c -[AboutController setNavigationTitle:]")
+pub fn stub_20d1c(item: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x20d1c)
+    crate::view_controllers::AboutController::shared_instance().set_navigation_title(item);
 }
 
 // 0x20d40 — -[AboutController closeButton]
 // type: UIBarButtonItem *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController closeButton]")]
-pub fn stub_20d40() -> ! {
-    todo!("0x20d40 -[AboutController closeButton]")
+pub fn stub_20d40() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x20d40)
+    crate::view_controllers::AboutController::shared_instance().close_button()
 }
 
 // 0x20d50 — -[AboutController setCloseButton:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setCloseButton:]")]
-pub fn stub_20d50() -> ! {
-    todo!("0x20d50 -[AboutController setCloseButton:]")
+pub fn stub_20d50(button: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x20d50)
+    crate::view_controllers::AboutController::shared_instance().set_close_button(button);
 }
 
 // 0x20d74 — -[AboutController clearCookies]
 // type: UIBarButtonItem *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController clearCookies]")]
-pub fn stub_20d74() -> ! {
-    todo!("0x20d74 -[AboutController clearCookies]")
+pub fn stub_20d74() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x20d74)
+    crate::view_controllers::AboutController::shared_instance().clear_cookies()
 }
 
 // 0x20d84 — -[AboutController setClearCookies:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setClearCookies:]")]
-pub fn stub_20d84() -> ! {
-    todo!("0x20d84 -[AboutController setClearCookies:]")
+pub fn stub_20d84(button: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x20d84)
+    crate::view_controllers::AboutController::shared_instance().set_clear_cookies(button);
 }
 
 // 0x20da8 — -[AboutController legalTextView]
 // type: UITextView *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController legalTextView]")]
-pub fn stub_20da8() -> ! {
-    todo!("0x20da8 -[AboutController legalTextView]")
+pub fn stub_20da8() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x20da8)
+    crate::view_controllers::AboutController::shared_instance().legal_text_view()
 }
 
 // 0x20db8 — -[AboutController setLegalTextView:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setLegalTextView:]")]
-pub fn stub_20db8() -> ! {
-    todo!("0x20db8 -[AboutController setLegalTextView:]")
+pub fn stub_20db8(view: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x20db8)
+    crate::view_controllers::AboutController::shared_instance().set_legal_text_view(view);
 }
 
 // 0x20ddc — -[AboutController versionLabel]
 // type: UILabel *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController versionLabel]")]
-pub fn stub_20ddc() -> ! {
-    todo!("0x20ddc -[AboutController versionLabel]")
+pub fn stub_20ddc() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x20ddc)
+    crate::view_controllers::AboutController::shared_instance().about_version_label()
 }
 
 // 0x20dec — -[AboutController setVersionLabel:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setVersionLabel:]")]
-pub fn stub_20dec() -> ! {
-    todo!("0x20dec -[AboutController setVersionLabel:]")
+pub fn stub_20dec(label: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x20dec)
+    crate::view_controllers::AboutController::shared_instance().set_about_version_label(label);
 }
 
 // 0x20e10 — -[AboutController agreementWebView]
 // type: UIWebView *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController agreementWebView]")]
-pub fn stub_20e10() -> ! {
-    todo!("0x20e10 -[AboutController agreementWebView]")
+pub fn stub_20e10() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x20e10)
+    crate::view_controllers::AboutController::shared_instance().agreement_web_view()
 }
 
 // 0x20e20 — -[AboutController setAgreementWebView:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setAgreementWebView:]")]
-pub fn stub_20e20() -> ! {
-    todo!("0x20e20 -[AboutController setAgreementWebView:]")
+pub fn stub_20e20(view: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x20e20)
+    crate::view_controllers::AboutController::shared_instance().set_agreement_web_view(view);
 }
 
 // 0x20e44 — -[AboutController domainName]
 // type: UILabel *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController domainName]")]
-pub fn stub_20e44() -> ! {
-    todo!("0x20e44 -[AboutController domainName]")
+pub fn stub_20e44() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x20e44)
+    crate::view_controllers::AboutController::shared_instance().domain_name()
 }
 
 // 0x20e54 — -[AboutController setDomainName:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setDomainName:]")]
-pub fn stub_20e54() -> ! {
-    todo!("0x20e54 -[AboutController setDomainName:]")
+pub fn stub_20e54(label: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x20e54)
+    crate::view_controllers::AboutController::shared_instance().set_domain_name(label);
 }
 
 // 0x20e78 — +[UpgradeCheckHelper getUpgradeCheckHelper]

@@ -2927,6 +2927,19 @@ pub struct AboutController {
     legal_text_key: parking_lot::Mutex<&'static str>,
     appear_count: std::sync::atomic::AtomicU32,
     applied_bounds: parking_lot::Mutex<(f64, f64, f64, f64)>,
+    // Batch 4 (IDA 0x20b00..0x20e54): web-view flow, segue, outlet ids.
+    navigation_title: parking_lot::Mutex<ObjCId>,
+    close_button: parking_lot::Mutex<ObjCId>,
+    clear_cookies: parking_lot::Mutex<ObjCId>,
+    legal_text_view: parking_lot::Mutex<ObjCId>,
+    version_label_outlet: parking_lot::Mutex<ObjCId>,
+    agreement_web_view: parking_lot::Mutex<ObjCId>,
+    domain_name: parking_lot::Mutex<ObjCId>,
+    dismissals: std::sync::atomic::AtomicU32,
+    cookie_clears: std::sync::atomic::AtomicU32,
+    agreement_segues: std::sync::atomic::AtomicU32,
+    segue_preparations: std::sync::atomic::AtomicU32,
+    unload_marks: std::sync::atomic::AtomicU32,
 }
 impl AboutController {
     pub fn new() -> Self {
@@ -3027,6 +3040,219 @@ impl AboutController {
     }
     pub fn applied_bounds(&self) -> (f64, f64, f64, f64) {
         *self.applied_bounds.lock()
+    }
+    // 0x20b00 — -[AboutController webViewDidFinishLoad:]
+    // type: void __cdecl(AboutController *self, SEL, id)
+    // IDA 0x20b00
+    #[doc(alias = "-[AboutController webViewDidFinishLoad:]")]
+    #[doc = "-[AboutController webViewDidFinishLoad:]"]
+    pub fn web_view_did_finish_load(&self, web_view: ObjCId) {
+        // Only the agreement web view unhides (IDA 0x20b10..0x20b24).
+        if web_view == *self.agreement_web_view.lock() && web_view != NIL_ID {
+            self.agreement_hidden.store(false, std::sync::atomic::Ordering::SeqCst);
+        }
+    }
+    pub fn is_agreement_hidden(&self) -> bool {
+        self.agreement_hidden.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x20b28 — -[AboutController webView:shouldStartLoadWithRequest:navigationType:]
+    // type: char __cdecl(AboutController *self, SEL, id, id, int)
+    // IDA 0x20b28
+    #[doc(alias = "-[AboutController webView:shouldStartLoadWithRequest:navigationType:]")]
+    #[doc = "-[AboutController webView:shouldStartLoadWithRequest:navigationType:]"]
+    pub fn web_view_should_start_load(&self, url: Option<&str>) -> bool {
+        // Nil URL loads (IDA 0x20b56..0x20baa); `file` URLs load inline
+        // (IDA 0x20b72..0x20bae); anything else segues to the agreement page
+        // and cancels the load (IDA 0x20b80..0x20ba0).
+        match url {
+            None => true,
+            Some(u) if u.contains("file") => true,
+            Some(u) => {
+                self.agreement_segues.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+                *self.domain_text.lock() = u.to_owned();
+                false
+            }
+        }
+    }
+    pub fn agreement_segue_count(&self) -> u32 {
+        self.agreement_segues.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x20bb0 — -[AboutController prepareForSegue:sender:]
+    // type: void __cdecl(AboutController *self, SEL, id, id)
+    // IDA 0x20bb0
+    #[doc(alias = "-[AboutController prepareForSegue:sender:]")]
+    #[doc = "-[AboutController prepareForSegue:sender:]"]
+    pub fn prepare_for_segue(&self, identifier: &str, sender_url: Option<&str>) {
+        // Only `AboutToAgreementSegue` forwards the sender as the
+        // destination URL (IDA 0x20bc6..0x20c10).
+        self.segue_preparations.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        if identifier == "AboutToAgreementSegue" {
+            *self.domain_text.lock() = sender_url.unwrap_or_default().to_owned();
+        }
+    }
+    // 0x20c14 — -[AboutController closeButtonPressed:]
+    // type: void __cdecl(AboutController *self, SEL, id)
+    // IDA 0x20c14
+    #[doc(alias = "-[AboutController closeButtonPressed:]")]
+    #[doc = "-[AboutController closeButtonPressed:]"]
+    pub fn close_button_pressed(&self) {
+        // Animated dismiss, no completion (IDA 0x20c24).
+        self.dismissals.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn dismissal_count(&self) -> u32 {
+        self.dismissals.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x20c28 — -[AboutController clearCookiesButtonPressed:]
+    // type: void __cdecl(AboutController *self, SEL, id)
+    // IDA 0x20c28
+    #[doc(alias = "-[AboutController clearCookiesButtonPressed:]")]
+    #[doc = "-[AboutController clearCookiesButtonPressed:]"]
+    pub fn clear_cookies_button_pressed(&self, message: &str) {
+        // `clearAllRobloxCookie` (IDA 0x20c46, UserInfo out of slice) then a
+        // `CookiesClearedMessage` alert (IDA 0x20c6e..0x20cb0).
+        self.cookie_clears.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        RobloxAlert::alert_with_message(message);
+    }
+    pub fn cookie_clear_count(&self) -> u32 {
+        self.cookie_clears.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x20cb4 — -[AboutController viewDidUnload]
+    // type: void __cdecl(AboutController *self, SEL)
+    // IDA 0x20cb4
+    #[doc(alias = "-[AboutController viewDidUnload]")]
+    #[doc = "-[AboutController viewDidUnload]"]
+    pub fn view_did_unload(&self) {
+        // `setDomainName:nil` + `setClearCookies:nil` (IDA 0x20ccc..0x20ce0),
+        // then super `viewDidUnload` (out of slice, IDA 0x20cf8..0x20d02).
+        *self.domain_name.lock() = NIL_ID;
+        *self.clear_cookies.lock() = NIL_ID;
+        self.unload_marks.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    // 0x20d0c — -[AboutController navigationTitle]
+    // type: id __cdecl(AboutController *self, SEL)
+    // IDA 0x20d0c
+    #[doc(alias = "-[AboutController navigationTitle]")]
+    #[doc = "-[AboutController navigationTitle]"]
+    pub fn navigation_title(&self) -> ObjCId {
+        // Five-instruction ivar load (IDA 0x20d0c..0x20d1a, verified via disasm).
+        *self.navigation_title.lock()
+    }
+    // 0x20d1c — -[AboutController setNavigationTitle:]
+    // type: void __cdecl(AboutController *self, SEL, id)
+    // IDA 0x20d1c
+    #[doc(alias = "-[AboutController setNavigationTitle:]")]
+    #[doc = "-[AboutController setNavigationTitle:]"]
+    pub fn set_navigation_title(&self, item: ObjCId) {
+        // Retained `_navigationTitle` ivar store.
+        *self.navigation_title.lock() = item;
+    }
+    // 0x20d40 — -[AboutController closeButton]
+    // type: id __cdecl(AboutController *self, SEL)
+    // IDA 0x20d40
+    #[doc(alias = "-[AboutController closeButton]")]
+    #[doc = "-[AboutController closeButton]"]
+    pub fn close_button(&self) -> ObjCId {
+        // Five-instruction ivar load (same pattern as IDA 0x20d0c).
+        *self.close_button.lock()
+    }
+    // 0x20d50 — -[AboutController setCloseButton:]
+    // type: void __cdecl(AboutController *self, SEL, id)
+    // IDA 0x20d50
+    #[doc(alias = "-[AboutController setCloseButton:]")]
+    #[doc = "-[AboutController setCloseButton:]"]
+    pub fn set_close_button(&self, button: ObjCId) {
+        // Retained `_closeButton` ivar store.
+        *self.close_button.lock() = button;
+    }
+    // 0x20d74 — -[AboutController clearCookies]
+    // type: id __cdecl(AboutController *self, SEL)
+    // IDA 0x20d74
+    #[doc(alias = "-[AboutController clearCookies]")]
+    #[doc = "-[AboutController clearCookies]"]
+    pub fn clear_cookies(&self) -> ObjCId {
+        // Five-instruction ivar load (same pattern as IDA 0x20d0c).
+        *self.clear_cookies.lock()
+    }
+    // 0x20d84 — -[AboutController setClearCookies:]
+    // type: void __cdecl(AboutController *self, SEL, id)
+    // IDA 0x20d84
+    #[doc(alias = "-[AboutController setClearCookies:]")]
+    #[doc = "-[AboutController setClearCookies:]"]
+    pub fn set_clear_cookies(&self, button: ObjCId) {
+        // Retained `_clearCookies` ivar store.
+        *self.clear_cookies.lock() = button;
+    }
+    // 0x20da8 — -[AboutController legalTextView]
+    // type: id __cdecl(AboutController *self, SEL)
+    // IDA 0x20da8
+    #[doc(alias = "-[AboutController legalTextView]")]
+    #[doc = "-[AboutController legalTextView]"]
+    pub fn legal_text_view(&self) -> ObjCId {
+        // Five-instruction ivar load (same pattern as IDA 0x20d0c).
+        *self.legal_text_view.lock()
+    }
+    // 0x20db8 — -[AboutController setLegalTextView:]
+    // type: void __cdecl(AboutController *self, SEL, id)
+    // IDA 0x20db8
+    #[doc(alias = "-[AboutController setLegalTextView:]")]
+    #[doc = "-[AboutController setLegalTextView:]"]
+    pub fn set_legal_text_view(&self, view: ObjCId) {
+        // Retained `_legalTextView` ivar store.
+        *self.legal_text_view.lock() = view;
+    }
+    // 0x20ddc — -[AboutController versionLabel]
+    // type: id __cdecl(AboutController *self, SEL)
+    // IDA 0x20ddc
+    #[doc(alias = "-[AboutController versionLabel]")]
+    #[doc = "-[AboutController versionLabel]"]
+    pub fn about_version_label(&self) -> ObjCId {
+        // Five-instruction ivar load (same pattern as IDA 0x20d0c).
+        *self.version_label_outlet.lock()
+    }
+    // 0x20dec — -[AboutController setVersionLabel:]
+    // type: void __cdecl(AboutController *self, SEL, id)
+    // IDA 0x20dec
+    #[doc(alias = "-[AboutController setVersionLabel:]")]
+    #[doc = "-[AboutController setVersionLabel:]"]
+    pub fn set_about_version_label(&self, label: ObjCId) {
+        // Retained `_versionLabel` ivar store.
+        *self.version_label_outlet.lock() = label;
+    }
+    // 0x20e10 — -[AboutController agreementWebView]
+    // type: id __cdecl(AboutController *self, SEL)
+    // IDA 0x20e10
+    #[doc(alias = "-[AboutController agreementWebView]")]
+    #[doc = "-[AboutController agreementWebView]"]
+    pub fn agreement_web_view(&self) -> ObjCId {
+        // Five-instruction ivar load (same pattern as IDA 0x20d0c).
+        *self.agreement_web_view.lock()
+    }
+    // 0x20e20 — -[AboutController setAgreementWebView:]
+    // type: void __cdecl(AboutController *self, SEL, id)
+    // IDA 0x20e20
+    #[doc(alias = "-[AboutController setAgreementWebView:]")]
+    #[doc = "-[AboutController setAgreementWebView:]"]
+    pub fn set_agreement_web_view(&self, view: ObjCId) {
+        // Retained `_agreementWebView` ivar store.
+        *self.agreement_web_view.lock() = view;
+    }
+    // 0x20e44 — -[AboutController domainName]
+    // type: id __cdecl(AboutController *self, SEL)
+    // IDA 0x20e44
+    #[doc(alias = "-[AboutController domainName]")]
+    #[doc = "-[AboutController domainName]"]
+    pub fn domain_name(&self) -> ObjCId {
+        // Five-instruction ivar load (same pattern as IDA 0x20d0c).
+        *self.domain_name.lock()
+    }
+    // 0x20e54 — -[AboutController setDomainName:]
+    // type: void __cdecl(AboutController *self, SEL, id)
+    // IDA 0x20e54
+    #[doc(alias = "-[AboutController setDomainName:]")]
+    #[doc = "-[AboutController setDomainName:]"]
+    pub fn set_domain_name(&self, label: ObjCId) {
+        // Retained `_domainName` ivar store.
+        *self.domain_name.lock() = label;
     }
 }
 
