@@ -22616,14 +22616,23 @@ pub fn stub_0x45f894() {
 
 // 0x45f9b4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEEC2IMS2_KFS3_vEiEEPKcS9_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::EnumPropDescriptor<RBX::DataModel::CreatorType (RBX::DataModel::*)(void)const,int>(char const*,char const*,RBX::DataModel::CreatorType (RBX::DataModel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x45f9b4() -> ! {
-    todo!("0x45f9b4 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::EnumPropDescriptor<RBX::DataModel::CreatorType (RBX::DataModel::*)(void)const,int>(char const*,char const*,RBX::DataModel::CreatorType (RBX::DataModel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x45f9b4() -> DataModelEnumPropDesc {
+    // IDA 0x45f9b4: `EnumPropDescriptor<DataModel, CreatorType>::C2` — binds
+    // the enum property into the class descriptor; the binding lands with
+    // reflection, so the model starts empty. Same shape as 0x45e6d0.
+    DataModelEnumPropDesc { _opaque: () }
 }
 
 // 0x45fb60 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::~EnumPropDescriptor()")]
-pub fn stub_0x45fb60() -> ! {
-    todo!("0x45fb60 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::~EnumPropDescriptor()")
+pub fn stub_0x45fb60(_desc: *mut DataModelEnumPropDesc) {
+    // IDA 0x45fb60: `EnumPropDescriptor<DataModel, CreatorType>::D0` —
+    // vtable install plus memberwise teardown; dropping the box is the same
+    // release. Twin of 0x45e87c.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x45fb8c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEE10isReadOnlyEv
@@ -22640,8 +22649,11 @@ pub fn stub_0x45fb9c() -> ! {
 
 // 0x45fbac — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x45fbac() -> ! {
-    todo!("0x45fbac RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x45fbac(a: &DataModel, b: &DataModel) -> bool {
+    // IDA 0x45fbac: reads both values through the desc's member getter and
+    // compares; the getter collapses into the `creator_type` field this
+    // descriptor binds. Same shape as 0x45e8c8.
+    a.creator_type == b.creator_type
 }
 
 // 0x45fbd4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -22664,20 +22676,32 @@ pub fn stub_0x45fd44() -> ! {
 
 // 0x45fd68 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::hasStringValue(void)const")]
-pub fn stub_0x45fd68() -> ! {
-    todo!("0x45fd68 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::hasStringValue(void)const")
+pub fn stub_0x45fd68() -> bool {
+    // IDA 0x45fd68: enum properties always carry string values. Same shape as
+    // 0x45ea88.
+    true
 }
 
 // 0x45fd6c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x45fd6c() -> ! {
-    todo!("0x45fd6c RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x45fd6c(model: &DataModel) -> Option<String> {
+    // IDA 0x45fd6c: reads the value through the member getter, then converts
+    // to the enum name. Same shape as 0x45ea8c over the `creator_type` field
+    // and the `CreatorType` table.
+    stub_0x45a548().pairs.iter().find(|(v, _)| *v == model.creator_type).map(|(_, text)| text.to_string())
 }
 
 // 0x45fd90 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x45fd90() -> ! {
-    todo!("0x45fd90 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x45fd90(model: &mut DataModel, name: &str) -> bool {
+    // IDA 0x45fd90: converts via the desc table and sets on hit, false on
+    // miss. Same shape as 0x45eab0 over `creator_type` (converter 0x41de60).
+    if let Some(value) = stub_0x41de60(name) {
+        model.creator_type = value;
+        true
+    } else {
+        false
+    }
 }
 // 0x45fdd0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
@@ -22693,80 +22717,137 @@ pub fn stub_0x45fdf0() -> ! {
 
 // 0x460030 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x460030() -> ! {
-    todo!("0x460030 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x460030(model: &DataModel) -> Option<usize> {
+    // IDA 0x460030: reads the value through the member getter, then the
+    // position search. Same shape as 0x45ed50 over `creator_type`.
+    let table = stub_0x45a548();
+    table.pairs.iter().position(|(v, _)| *v == model.creator_type)
 }
 
 // 0x46004c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_0x46004c() -> ! {
-    todo!("0x46004c RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x46004c(model: &mut DataModel, index: usize) -> bool {
+    // IDA 0x46004c: bounds-checks the index, reads the value, and sets;
+    // out-of-range sets nothing. Same shape as 0x45ed6c over `creator_type`.
+    if let Some((value, _)) = stub_0x45a548().pairs.get(index) {
+        model.creator_type = *value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x460080 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x460080() -> ! {
-    todo!("0x460080 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x460080(model: &DataModel) -> i32 {
+    // IDA 0x460080: reads the value through the member getter. Same shape as
+    // 0x45eda0 over `creator_type`.
+    model.creator_type
 }
 
 // 0x460088 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x460088() -> ! {
-    todo!("0x460088 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x460088(model: &mut DataModel, value: i32) -> bool {
+    // IDA 0x460088: validates the value against the table, sets on hit and
+    // returns true, false on miss. Same shape as 0x45eda8 over
+    // `creator_type`.
+    if stub_0x45a548().pairs.iter().any(|(v, _)| *v == value) {
+        model.creator_type = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x4600d4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4600d4() -> ! {
-    todo!("0x4600d4 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x4600d4(model: &DataModel) -> Option<(i32, &'static str)> {
+    // IDA 0x4600d4: reads the value through the member getter, then the item
+    // search. Same shape as 0x45edf4 over `creator_type`.
+    let table = stub_0x45a548();
+    table.pairs.iter().find(|(v, _)| *v == model.creator_type).copied()
 }
 
 // 0x4600f4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_0x4600f4() -> ! {
-    todo!("0x4600f4 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x4600f4(model: &mut DataModel, name: &str) -> bool {
+    // IDA 0x4600f4: converts via the desc table and sets on hit, false on
+    // miss. Same shape as 0x45fd90.
+    if let Some(value) = stub_0x41de60(name) {
+        model.creator_type = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x460128 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToIndex(RBX::DataModel::CreatorType)const")]
-pub fn stub_0x460128() -> ! {
-    todo!("0x460128 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToIndex(RBX::DataModel::CreatorType)const")
+pub fn stub_0x460128(value: i32) -> Option<usize> {
+    // IDA 0x460128: asserts `value>=0`, then the position search. Same shape
+    // as 0x45ee4c over the `CreatorType` table.
+    debug_assert!(value >= 0, "0x460128: value>=0");
+    stub_0x45a548().pairs.iter().position(|(v, _)| *v == value)
 }
 
 // 0x460198 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x460198() -> ! {
-    todo!("0x460198 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x460198(model: &mut DataModel, index: usize) -> bool {
+    // IDA 0x460198: bounds-checks the index (skipping `-1` sentinel entries
+    // like 0x45eebc), reads the value, and sets. Same shape as 0x45eebc over
+    // `creator_type`.
+    if let Some((value, _)) = stub_0x45a548().pairs.get(index) {
+        if *value != -1 {
+            model.creator_type = *value;
+            return true;
+        }
+    }
+    false
 }
 
 // 0x4601d8 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelENS2_11CreatorTypeEE7GetImplIMS2_KFS3_vEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::GetImpl<RBX::DataModel::CreatorType (RBX::DataModel::*)(void)const>::isReadOnly(void)const")]
-pub fn stub_0x4601d8() -> ! {
-    todo!("0x4601d8 RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::GetImpl<RBX::DataModel::CreatorType (RBX::DataModel::*)(void)const>::isReadOnly(void)const")
+pub fn stub_0x4601d8() -> bool {
+    // IDA 0x4601d8: `MOVS R0, #1; BX LR` (disasm 0x4601d8-0x4601da) — this
+    // enum property reads as read-only.
+    true
 }
 
 // 0x4601dc — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelENS2_11CreatorTypeEE7GetImplIMS2_KFS3_vEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::GetImpl<RBX::DataModel::CreatorType (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")]
-pub fn stub_0x4601dc() -> ! {
-    todo!("0x4601dc RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::GetImpl<RBX::DataModel::CreatorType (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_0x4601dc() -> bool {
+    // IDA 0x4601dc: `MOVS R0, #0; BX LR` (disasm 0x4601dc-0x4601de) — this
+    // enum property is never write-only.
+    false
 }
 
 // 0x4601e0 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelENS2_11CreatorTypeEE7GetImplIMS2_KFS3_vEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::GetImpl<RBX::DataModel::CreatorType (RBX::DataModel::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4601e0() -> ! {
-    todo!("0x4601e0 RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::GetImpl<RBX::DataModel::CreatorType (RBX::DataModel::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x4601e0(model: &DataModel) -> i32 {
+    // IDA 0x4601e0: `GetImpl<creator-getter>::getValue` invokes the bound
+    // member getter; the demangle names the `CreatorType` member, so the read
+    // collapses into the `creator_type` field. Same shape as 0x45f874.
+    model.creator_type
 }
 
 // 0x460200 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelENS2_11CreatorTypeEE7GetImplIMS2_KFS3_vEE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::GetImpl<RBX::DataModel::CreatorType (RBX::DataModel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::DataModel::CreatorType const&)const")]
-pub fn stub_0x460200() -> ! {
-    todo!("0x460200 RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::GetImpl<RBX::DataModel::CreatorType (RBX::DataModel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::DataModel::CreatorType const&)const")
+pub fn stub_0x460200() {
+    // IDA 0x460200: `__cxa_allocate_exception` + `__cxa_throw` (disasm
+    // 0x46021e/0x460310) — setting a read-only enum property always throws;
+    // the panic preserves the never-returns-normally contract. Same shape as
+    // 0x45ef28.
+    panic!("0x460200: read-only CreatorType property");
 }
 
 // 0x460320 — __ZN3RBX10Reflection14PropDescriptorINS_9DataModelEiEC2IMS2_KFivEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,int>::PropDescriptor<int (RBX::DataModel::*)(void)const,int>(char const*,char const*,int (RBX::DataModel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x460320() -> ! {
-    todo!("0x460320 RBX::Reflection::PropDescriptor<RBX::DataModel,int>::PropDescriptor<int (RBX::DataModel::*)(void)const,int>(char const*,char const*,int (RBX::DataModel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x460320() -> DataModelPropDesc {
+    // IDA 0x460320: `PropDescriptor<DataModel, int>::C2` — binds the int
+    // property into the class descriptor; the binding lands with reflection,
+    // so the model starts empty. Same family box as the string prop (no
+    // behavioral divergence).
+    DataModelPropDesc { _opaque: () }
 }
 
 // 0x460430 — __ZN3RBX10Reflection14PropDescriptorINS_9DataModelEiED0Ev
@@ -22777,14 +22858,18 @@ pub fn stub_0x460430() -> ! {
 
 // 0x460460 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEiE7GetImplIMS2_KFivEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,int>::GetImpl<int (RBX::DataModel::*)(void)const>::isReadOnly(void)const")]
-pub fn stub_0x460460() -> ! {
-    todo!("0x460460 RBX::Reflection::PropDescriptor<RBX::DataModel,int>::GetImpl<int (RBX::DataModel::*)(void)const>::isReadOnly(void)const")
+pub fn stub_0x460460() -> bool {
+    // IDA 0x460460: `MOVS R0, #1; BX LR` (disasm 0x460460-0x460462) — this int
+    // property reads as read-only.
+    true
 }
 
 // 0x460464 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEiE7GetImplIMS2_KFivEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,int>::GetImpl<int (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")]
-pub fn stub_0x460464() -> ! {
-    todo!("0x460464 RBX::Reflection::PropDescriptor<RBX::DataModel,int>::GetImpl<int (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_0x460464() -> bool {
+    // IDA 0x460464: `MOVS R0, #0; BX LR` (disasm 0x460464-0x460466) — this int
+    // property is never write-only.
+    false
 }
 
 // 0x460468 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEiE7GetImplIMS2_KFivEE8getValueEPKNS0_13DescribedBaseE
@@ -22795,20 +22880,33 @@ pub fn stub_0x460468() -> ! {
 
 // 0x460488 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEiE7GetImplIMS2_KFivEE8setValueEPNS0_13DescribedBaseERKi
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,int>::GetImpl<int (RBX::DataModel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,int const&)const")]
-pub fn stub_0x460488() -> ! {
-    todo!("0x460488 RBX::Reflection::PropDescriptor<RBX::DataModel,int>::GetImpl<int (RBX::DataModel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+pub fn stub_0x460488() {
+    // IDA 0x460488: `__cxa_allocate_exception` + `__cxa_throw` (disasm
+    // 0x4604a6/0x460598) — setting a read-only int property always throws;
+    // the panic preserves the never-returns-normally contract. Same shape as
+    // 0x460200. (The bound int member is unmapped, so only the throw lands.)
+    panic!("0x460488: read-only int property");
 }
 
 // 0x4605a8 — __ZN3RBX10Reflection17RefPropDescriptorINS_9DataModelENS_8InstanceEEC2IMS2_KFPS3_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Instance>::RefPropDescriptor<RBX::Instance* (RBX::DataModel::*)(void)const,int>(char const*,char const*,RBX::Instance* (RBX::DataModel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x4605a8() -> ! {
-    todo!("0x4605a8 RBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Instance>::RefPropDescriptor<RBX::Instance* (RBX::DataModel::*)(void)const,int>(char const*,char const*,RBX::Instance* (RBX::DataModel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x4605a8() -> DataModelRefDesc {
+    // IDA 0x4605a8: `RefPropDescriptor<DataModel, Instance>::C2` — binds the
+    // reference property into the class descriptor; the binding lands with
+    // reflection, so the model starts empty. Same shape as 0x45c664.
+    DataModelRefDesc { _opaque: () }
 }
 
 // 0x46064c — __ZN3RBX10Reflection17RefPropDescriptorINS_9DataModelENS_8InstanceEED0Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Instance>::~RefPropDescriptor()")]
-pub fn stub_0x46064c() -> ! {
-    todo!("0x46064c RBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Instance>::~RefPropDescriptor()")
+pub fn stub_0x46064c(_desc: *mut DataModelRefDesc) {
+    // IDA 0x46064c: `RefPropDescriptor<DataModel, Instance>::D0` — vtable
+    // install plus memberwise teardown; dropping the box is the same release.
+    // Twin of 0x431924.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x46067c — __ZNK3RBX10Reflection17RefPropDescriptorINS_9DataModelENS_8InstanceEE10isReadOnlyEv
