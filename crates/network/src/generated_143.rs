@@ -12,152 +12,158 @@ use rbx_core::SharedPtr;
 // type: RBX::Stats::Item *__fastcall(RBX::Stats::Item *, int, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, RBX::Network::Replicator::StatsItem *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Network::ServerReplicator::ServerStatsItem::ServerStatsItem(rbx_core::SharedPtr<RBX::Network::ServerReplicator const> const&)")]
-pub fn stub_9e8a8c() -> ! {
-    todo!("0x9e8a8c RBX::Network::ServerReplicator::ServerStatsItem::ServerStatsItem(boost::shared_ptr<RBX::Network::ServerReplicator const> const&)")
+pub fn stub_9e8a8c() -> crate::replicator::ServerStatsItem {
+    // IDA 0x9e8a8c (C2): `ServerStatsItem` from the replicator shared pointer; stateless.
+    crate::replicator::create_stats_item()
 }
 
 // 0x9e9460 — __ZN3RBX7Network10Replicator9StatsItemD2Ev
 // demangled: RBX::Network::Replicator::StatsItem::~StatsItem()
 // type: void __fastcall(RBX::Network::Replicator::StatsItem *__hidden this)
 #[doc(alias = "RBX::Network::Replicator::StatsItem::~StatsItem()")]
-pub fn stub_9e9460() -> ! {
-    todo!("0x9e9460 RBX::Network::Replicator::StatsItem::~StatsItem()")
+pub fn stub_9e9460() {
+    // IDA 0x9e9460: `StatsItem` D2; rows stay engine-side.
 }
 
 // 0x9e967c — __ZN3RBX7Network16ServerReplicator15ServerStatsItemD1Ev
 // demangled: RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()
 // type: void __fastcall(RBX::Network::ServerReplicator::ServerStatsItem *__hidden this)
 #[doc(alias = "RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")]
-pub fn stub_9e967c() -> ! {
-    todo!("0x9e967c RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")
+pub fn stub_9e967c(_item: crate::replicator::ServerStatsItem) {
+    // IDA 0x9e967c (D1): tail-calls D2; stateless drop covers it.
 }
 
 // 0x9e9688 — __ZN3RBX7Network16ServerReplicator15ServerStatsItemD0Ev
 // demangled: RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()
 // type: void __fastcall(RBX::Network::ServerReplicator::ServerStatsItem *__hidden this)
 #[doc(alias = "RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")]
-pub fn stub_9e9688() -> ! {
-    todo!("0x9e9688 RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")
+pub fn stub_9e9688(item: crate::replicator::ServerStatsItem) {
+    // IDA 0x9e9688 (D0): D2 then `operator delete`; by-value drop covers both.
+    drop(item);
 }
 
 // 0x9e9728 — __ZN3RBX7Network16ServerReplicator15ServerStatsItem6updateEv
 // demangled: RBX::Network::ServerReplicator::ServerStatsItem::update(void)
 // type: void __fastcall(RBX::Network::ServerReplicator::ServerStatsItem *this)
 #[doc(alias = "RBX::Network::ServerReplicator::ServerStatsItem::update(void)")]
-pub fn stub_9e9728() -> ! {
-    todo!("0x9e9728 RBX::Network::ServerReplicator::ServerStatsItem::update(void)")
+pub fn stub_9e9728(replicator_present: bool, base_refresh: &mut dyn FnMut(), extra_refresh: &mut dyn FnMut()) {
+    // IDA 0x9e9728: base update first, then the per-replicator rows.
+    crate::replicator::server_stats_item_update(replicator_present, base_refresh, extra_refresh);
 }
 
 // 0x9e9b30 — __ZThn32_N3RBX7Network16ServerReplicator15ServerStatsItemD1Ev
 // demangled: non-virtual thunk to RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()
 // type: void __fastcall(RBX::Network::ServerReplicator::ServerStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")]
-pub fn stub_9e9b30() -> ! {
-    todo!("0x9e9b30 non-virtual thunk to RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")
+pub fn stub_9e9b30(_item: crate::replicator::ServerStatsItem) {
+    // IDA 0x9e9b30 (ZThn32 D1): adjusts `this`, then D1.
 }
 
 // 0x9e9b3c — __ZThn32_N3RBX7Network16ServerReplicator15ServerStatsItemD0Ev
 // demangled: non-virtual thunk to RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()
 // type: void __fastcall(RBX::Network::ServerReplicator::ServerStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")]
-pub fn stub_9e9b3c() -> ! {
-    todo!("0x9e9b3c non-virtual thunk to RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")
+pub fn stub_9e9b3c(item: crate::replicator::ServerStatsItem) {
+    // IDA 0x9e9b3c (ZThn32 D0): adjusts `this`, then D0.
+    drop(item);
 }
 
 // 0x9e9be4 — __ZThn36_N3RBX7Network16ServerReplicator15ServerStatsItemD1Ev
 // demangled: non-virtual thunk to RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()
 // type: void __fastcall(RBX::Network::ServerReplicator::ServerStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")]
-pub fn stub_9e9be4() -> ! {
-    todo!("0x9e9be4 non-virtual thunk to RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")
+pub fn stub_9e9be4(_item: crate::replicator::ServerStatsItem) {
+    // IDA 0x9e9be4 (ZThn36 D1): adjusts `this`, then D1.
 }
 
 // 0x9e9bf0 — __ZThn36_N3RBX7Network16ServerReplicator15ServerStatsItemD0Ev
 // demangled: non-virtual thunk to RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()
 // type: void __fastcall(RBX::Network::ServerReplicator::ServerStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")]
-pub fn stub_9e9bf0() -> ! {
-    todo!("0x9e9bf0 non-virtual thunk to RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")
+pub fn stub_9e9bf0(item: crate::replicator::ServerStatsItem) {
+    // IDA 0x9e9bf0 (ZThn36 D0): adjusts `this`, then D0.
+    drop(item);
 }
 
 // 0x9e9c98 — __ZN3RBX7Network10Replicator9StatsItem6updateEv
 // demangled: RBX::Network::Replicator::StatsItem::update(void)
 // type: void __fastcall(RBX::Network::Replicator::StatsItem *this)
 #[doc(alias = "RBX::Network::Replicator::StatsItem::update(void)")]
-pub fn stub_9e9c98() -> ! {
-    todo!("0x9e9c98 RBX::Network::Replicator::StatsItem::update(void)")
+pub fn stub_9e9c98(refresh: &mut dyn FnMut()) {
+    // IDA 0x9e9c98: refresh the base stats rows.
+    crate::replicator::base_stats_item_update(refresh);
 }
 
 // 0x9ea2b8 — __ZN3RBX7Network10Replicator9StatsItemD1Ev
 // demangled: RBX::Network::Replicator::StatsItem::~StatsItem()
 // type: void __fastcall(RBX::Network::Replicator::StatsItem *__hidden this)
 #[doc(alias = "RBX::Network::Replicator::StatsItem::~StatsItem()")]
-pub fn stub_9ea2b8() -> ! {
-    todo!("0x9ea2b8 RBX::Network::Replicator::StatsItem::~StatsItem()")
+pub fn stub_9ea2b8() {
+    // IDA 0x9ea2b8: `StatsItem` D1; rows stay engine-side.
 }
 
 // 0x9ea2c4 — __ZN3RBX7Network10Replicator9StatsItemD0Ev
 // demangled: RBX::Network::Replicator::StatsItem::~StatsItem()
 // type: void __fastcall(RBX::Network::Replicator::StatsItem *__hidden this)
 #[doc(alias = "RBX::Network::Replicator::StatsItem::~StatsItem()")]
-pub fn stub_9ea2c4() -> ! {
-    todo!("0x9ea2c4 RBX::Network::Replicator::StatsItem::~StatsItem()")
+pub fn stub_9ea2c4() {
+    // IDA 0x9ea2c4: `StatsItem` D0; rows stay engine-side.
 }
 
 // 0x9ea364 — __ZThn32_N3RBX7Network10Replicator9StatsItemD1Ev
 // demangled: non-virtual thunk to RBX::Network::Replicator::StatsItem::~StatsItem()
 // type: void __fastcall(RBX::Network::Replicator::StatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::Network::Replicator::StatsItem::~StatsItem()")]
-pub fn stub_9ea364() -> ! {
-    todo!("0x9ea364 non-virtual thunk to RBX::Network::Replicator::StatsItem::~StatsItem()")
+pub fn stub_9ea364() {
+    // IDA 0x9ea364 (ZThn32 D1): adjusts `this`, then D1.
 }
 
 // 0x9ea370 — __ZThn32_N3RBX7Network10Replicator9StatsItemD0Ev
 // demangled: non-virtual thunk to RBX::Network::Replicator::StatsItem::~StatsItem()
 // type: void __fastcall(RBX::Network::Replicator::StatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::Network::Replicator::StatsItem::~StatsItem()")]
-pub fn stub_9ea370() -> ! {
-    todo!("0x9ea370 non-virtual thunk to RBX::Network::Replicator::StatsItem::~StatsItem()")
+pub fn stub_9ea370() {
+    // IDA 0x9ea370 (ZThn32 D0): adjusts `this`, then D0.
 }
 
 // 0x9ea414 — __ZThn36_N3RBX7Network10Replicator9StatsItemD1Ev
 // demangled: non-virtual thunk to RBX::Network::Replicator::StatsItem::~StatsItem()
 // type: void __fastcall(RBX::Network::Replicator::StatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::Network::Replicator::StatsItem::~StatsItem()")]
-pub fn stub_9ea414() -> ! {
-    todo!("0x9ea414 non-virtual thunk to RBX::Network::Replicator::StatsItem::~StatsItem()")
+pub fn stub_9ea414() {
+    // IDA 0x9ea414 (ZThn36 D1): adjusts `this`, then D1.
 }
 
 // 0x9ea420 — __ZThn36_N3RBX7Network10Replicator9StatsItemD0Ev
 // demangled: non-virtual thunk to RBX::Network::Replicator::StatsItem::~StatsItem()
 // type: void __fastcall(RBX::Network::Replicator::StatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::Network::Replicator::StatsItem::~StatsItem()")]
-pub fn stub_9ea420() -> ! {
-    todo!("0x9ea420 non-virtual thunk to RBX::Network::Replicator::StatsItem::~StatsItem()")
+pub fn stub_9ea420() {
+    // IDA 0x9ea420 (ZThn36 D0): adjusts `this`, then D0.
 }
 
 // 0x9eaa38 — __ZN3RBX7Network12RakStatsItemD1Ev
 // demangled: RBX::Network::RakStatsItem::~RakStatsItem()
 // type: void __fastcall(RBX::Network::RakStatsItem *__hidden this)
 #[doc(alias = "RBX::Network::RakStatsItem::~RakStatsItem()")]
-pub fn stub_9eaa38() -> ! {
-    todo!("0x9eaa38 RBX::Network::RakStatsItem::~RakStatsItem()")
+pub fn stub_9eaa38() {
+    // IDA 0x9eaa38: `RakStatsItem` D1; rows stay engine-side.
 }
 
 // 0x9eaab0 — __ZThn32_N3RBX7Network12RakStatsItemD1Ev
 // demangled: non-virtual thunk to RBX::Network::RakStatsItem::~RakStatsItem()
 // type: void __fastcall(RBX::Network::RakStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::Network::RakStatsItem::~RakStatsItem()")]
-pub fn stub_9eaab0() -> ! {
-    todo!("0x9eaab0 non-virtual thunk to RBX::Network::RakStatsItem::~RakStatsItem()")
+pub fn stub_9eaab0() {
+    // IDA 0x9eaab0 (ZThn32 D1): adjusts `this`, then D1.
 }
 
 // 0x9eab30 — __ZThn32_N3RBX7Network12RakStatsItemD0Ev
 // demangled: non-virtual thunk to RBX::Network::RakStatsItem::~RakStatsItem()
 // type: void __fastcall(RBX::Network::RakStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::Network::RakStatsItem::~RakStatsItem()")]
-pub fn stub_9eab30() -> ! {
-    todo!("0x9eab30 non-virtual thunk to RBX::Network::RakStatsItem::~RakStatsItem()")
+pub fn stub_9eab30() {
+    // IDA 0x9eab30 (ZThn32 D0): adjusts `this`, then D0.
 }
 
 // 0x9ebd98 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network12RakStatsItemES7_EEvPKNS_10shared_ptrIT_EEPT0_

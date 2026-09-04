@@ -662,6 +662,30 @@ pub fn data_out_step(expire_items: &mut dyn FnMut(), base_step: &mut dyn FnMut()
     base_step();
 }
 
+/// `Replicator::StatsItem::update` (IDA 0x9e9c98): refreshes the stats
+/// rows (`formatValue`/`formatRate`/`formatMem` over receiver,
+/// replicator, and peer counters, 0x9e9d4c..0x9e9f22) behind the +56
+/// owner lock. All rows stay engine-side; the caller runs the refresh.
+pub fn base_stats_item_update(refresh: &mut dyn FnMut()) {
+    refresh();
+}
+
+/// `ServerReplicator::ServerStatsItem::update` (IDA 0x9e9728): runs the
+/// base update first (0x9e9748), then the per-replicator rows
+/// (`formatValue` over the +5916/+1576/+820/+780/+524 counters,
+/// 0x9e9890..0x9e9922) when the replicator is present. Rows stay
+/// engine-side behind the closures.
+pub fn server_stats_item_update(
+    replicator_present: bool,
+    base_refresh: &mut dyn FnMut(),
+    extra_refresh: &mut dyn FnMut(),
+) {
+    base_refresh();
+    if replicator_present {
+        extra_refresh();
+    }
+}
+
 /// `ServerReplicator::readPlayerSimulationRegion` (IDA 0x9d8700): without
 /// a player, or a player without a character head, there is no region
 /// (0x9d871e..0x9d8736). Otherwise the head's `xz` plus the radius select
@@ -1244,5 +1268,27 @@ mod tests {
             &mut || order.borrow_mut().push("added"),
         );
         assert_eq!(order.into_inner(), vec!["base", "added"]);
+    }
+
+    #[test]
+    fn stats_update_runs_base_then_extras() {
+        // IDA 0x9e9728/0x9e9c98: base rows first, extras only when present.
+        let order = core::cell::RefCell::new(Vec::new());
+        server_stats_item_update(
+            true,
+            &mut || order.borrow_mut().push("base"),
+            &mut || order.borrow_mut().push("extra"),
+        );
+        assert_eq!(order.into_inner(), vec!["base", "extra"]);
+        let order = core::cell::RefCell::new(Vec::new());
+        server_stats_item_update(
+            false,
+            &mut || order.borrow_mut().push("base"),
+            &mut || order.borrow_mut().push("extra"),
+        );
+        assert_eq!(order.into_inner(), vec!["base"]);
+        let mut ran = false;
+        base_stats_item_update(&mut || ran = true);
+        assert!(ran);
     }
     }
