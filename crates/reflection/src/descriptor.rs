@@ -2,6 +2,203 @@
 //! Remaining batch — compile-only cutover points.
 
 // --- remaining batch (150) from ida/export.json: RBX::Reflection not yet stubbed, sorted by ea ---
+use rbx_core::SharedPtr;
+use rbx_core::signal::Signal;
+
+/// Opaque `RBX::Instance` handle. Reflection only forwards it through signals and
+/// variants; the real type lives in datamodel (which depends on this crate).
+#[derive(Debug, Clone, PartialEq, Eq, Hash, Default)]
+pub struct InstanceHandle {
+    pub id: u32,
+}
+
+/// Minimal `RBX::Reflection::Variant` covering the payloads used below.
+#[derive(Debug, Clone)]
+pub enum Variant {
+    Int(i32),
+    Float(f32),
+    Instance(SharedPtr<InstanceHandle>),
+}
+
+impl Variant {
+    /// `RBX::Reflection::Variant::convert<int>` as used at 0x4a5b2c: int payloads pass
+    /// through, floats truncate; anything else threw in the original and panics here.
+    pub fn convert_to_int(&self) -> i32 {
+        match self {
+            Variant::Int(v) => *v,
+            Variant::Float(v) => *v as i32,
+            Variant::Instance(_) => panic!("Variant::convert<int> on non-numeric payload (IDA 0x4a5a80)"),
+        }
+    }
+}
+
+/// `RBX::Reflection::GenericSlotWrapper`: wraps one generic slot. `execute2` packs
+/// `(instance, value)` into a 2-Variant vector and dispatches the stored callable
+/// (IDA 0x4a40c8: vector fill, `vfptr+8` call, vector teardown).
+pub struct GenericSlotWrapper {
+    pub invoke: Box<dyn Fn(&[Variant]) + Send + Sync>,
+}
+
+impl GenericSlotWrapper {
+    pub fn execute2(&self, instance: &SharedPtr<InstanceHandle>, value: f32) {
+        // IDA 0x4a40c8: `vector<Variant>{ (Instance, arg0), (float, arg1) }`, virtual
+        // dispatch into the wrapped slot, then destroy the vector.
+        (self.invoke)(&[
+            Variant::Instance(SharedPtr::clone(instance)),
+            Variant::Float(value),
+        ]);
+    }
+}
+
+
+/// Signature argument kinds of `EventDesc<Explosion, void(SharedPtr<Instance>, float)>`
+/// (IDA 0x4a3966 `Type::getSingleton<SharedPtr<Instance>>`, 0x4a39a2 `getSingleton<float>`).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum ExplosionEventArg {
+    Instance,
+    Float,
+}
+
+/// Connected slot: the original signal owns its slots until `disconnectAll`; the strong
+/// refs live in `holders` because `Signal::connect` keeps only weak refs.
+type ExplosionSlot = SharedPtr<dyn Fn((SharedPtr<InstanceHandle>, f32)) + Send + Sync>;
+
+/// `RBX::Reflection::EventDesc<Explosion, void(SharedPtr<Instance>, float), ...>`
+/// (IDA 0x4a38b8): base `EventDescriptor` init, member-signal pointer stored at +40
+/// (`v54[10] = a2`), two-item signature list appended.
+#[derive(Debug, Clone)]
+pub struct ExplosionEventDesc {
+    pub name: String,
+    pub category: String,
+    pub title: String,
+    pub member: usize,
+    pub signature: Vec<(String, ExplosionEventArg)>,
+    pub permissions: u32,
+    pub attributes: u32,
+}
+
+/// `RBX::Reflection::EventSource` for the Explosion signal: owns the connected slots.
+/// Backed by `rbx_core::signal::Signal` (IDA 0x4a3b5c/0x4a3e20).
+#[derive(Default)]
+pub struct EventSource {
+    signal: Signal<(SharedPtr<InstanceHandle>, f32)>,
+    holders: parking_lot::Mutex<Vec<(SharedPtr<GenericSlotWrapper>, ExplosionSlot)>>,
+}
+
+impl EventSource {
+    pub fn connect_slot(&self, wrapper: SharedPtr<GenericSlotWrapper>) {
+        let w = SharedPtr::clone(&wrapper);
+        let slot = std::sync::Arc::new(
+            move |payload: (SharedPtr<InstanceHandle>, f32)| {
+                w.execute2(&payload.0, payload.1);
+            },
+        );
+        self.signal.connect(SharedPtr::clone(&slot));
+        let slot: ExplosionSlot = slot;
+        self.holders.lock().push((wrapper, slot));
+    }
+
+    pub fn fire(&self, instance: &SharedPtr<InstanceHandle>, value: f32) {
+        self.signal.fire((SharedPtr::clone(instance), value));
+    }
+
+    pub fn disconnect_all(&self) {
+        self.holders.lock().clear();
+        self.signal.disconnect_all();
+    }
+}
+/// `boost::_bi::bind_t<mf2<GenericSlotWrapper, ...>, list3<value<SharedPtr<GenericSlotWrapper>>, arg<1>, arg<2>>>`
+/// (IDA 0x4a3fac): stores the member-function triple plus the bound wrapper and the
+/// two placeholders. The member function is fixed (`execute2`), so the triple folds
+/// into the target.
+#[derive(Clone)]
+pub struct BoundExplosionSlot {
+    pub target: SharedPtr<GenericSlotWrapper>,
+}
+
+impl BoundExplosionSlot {
+    /// `bind_t::operator()<SharedPtr<Instance>, float>` (IDA 0x4a47f4): member-pointer
+    /// dispatch `(target->*mf)(args)`. The `(v1 & 1)` virtual-adjust branch is
+    /// member-pointer mechanics with no Rust equivalent.
+    pub fn call(&self, instance: &SharedPtr<InstanceHandle>, value: f32) {
+        self.target.execute2(instance, value);
+    }
+}
+
+/// `boost::function2<void, SharedPtr<Instance>, float>` holding one bound slot
+/// (IDA 0x4a442c/0x4a4554/0x4a463c).
+#[derive(Default, Clone)]
+pub struct ExplosionSlotFunction {
+    bound: Option<BoundExplosionSlot>,
+}
+
+impl ExplosionSlotFunction {
+    pub fn is_empty(&self) -> bool {
+        self.bound.is_none()
+    }
+
+    pub fn invoke(&self, instance: &SharedPtr<InstanceHandle>, value: f32) {
+        // Calling an empty `boost::function` throws `bad_function_call`; panic mirrors it.
+        self.bound
+            .as_ref()
+            .expect("bad_function_call")
+            .call(instance, value);
+    }
+}
+
+/// `boost::detail::function::functor_manager_operation_type` cases as switched at 0x4a4810.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum FunctorOp {
+    CloneFunctor,
+    MoveFunctor,
+    DestroyFunctor,
+    CheckFunctorType,
+    GetFunctorTypeInfo,
+}
+
+/// typeinfo name compared by `manager` case 3 (IDA 0x4a490a `strcmp` literal).
+pub const EXPLOSION_BIND_T_TYPEINFO: &str = "N5boost3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS4_8InstanceEEERKfEENS0_5list3INS0_5valueINS7_IS6_EEEENS_3argILi1EEENSJ_ILi2EEEEEEE";
+
+/// Minimal `RBX::Explosion` state visible to its enum descriptor. The real type lives
+/// in datamodel; the descriptor only reads/writes the reflected field through the
+/// bound pair below.
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
+pub struct ExplosionState {
+    pub explosion_type: i32,
+}
+
+/// Get/set pair behind `EnumPropDescriptor<Explosion, ExplosionType>` (the +44 member
+/// desc: IDA 0x4a5938 `new(0x14)` holding the getter/setter member pointers).
+pub struct ExplosionTypeAccess {
+    pub get: Box<dyn Fn(&ExplosionState) -> i32 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut ExplosionState, i32) + Send + Sync>,
+}
+/// `RBX::Reflection::EnumPropDescriptor<Explosion, ExplosionType>` (IDA 0x4a5834).
+pub struct ExplosionEnumPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: ExplosionTypeAccess,
+    /// Singleton link stored at +40/+48 (IDA 0x4a58ea/0x4a5954).
+    pub enum_desc: &'static crate::enum_desc::EnumDesc,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+/// `Singleton<EnumDesc<ExplosionType>>::doGetSingleton` (IDA 0x4b6a3c: guard-once
+/// construct + `__cxa_atexit`; C2 at 0x49f614 registers the pairs). Rust: `LazyLock`;
+/// the destructor runs at process exit.
+/// Items grounded in disasm 0x49f6f6/0x49f70c/0x49f722 (`MOVS R1, #0/#1/#2` into `addPair`).
+static EXPLOSION_TYPE_DESC: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+    std::sync::LazyLock::new(|| {
+        let mut d = crate::enum_desc::EnumDesc::new("ExplosionType");
+        d.add_pair(0, "NoCraters");
+        d.add_pair(1, "Craters");
+        d.add_pair(2, "CratersAndDebris");
+        d
+    });
+
+pub fn explosion_type_enum_desc() -> &'static crate::enum_desc::EnumDesc {
+    &EXPLOSION_TYPE_DESC
+}
 
 // 0x4a15b0 — __ZN3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::~EnumDesc()")]
@@ -17,8 +214,29 @@ pub fn stub_0x4a2ae8() {
 
 // 0x4a38b8 — __ZN3RBX10Reflection9EventDescINS_9ExplosionEFvN5boost10shared_ptrINS_8InstanceEEEfEN3rbx6signalIS7_EEMS2_SA_EC2ESB_PKcSE_SE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Explosion,void ()(rbx_core::SharedPtr<RBX::Instance>,float),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)> RBX::Explosion::*>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)> RBX::Explosion::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x4a38b8() -> ! {
-    todo!("0x4a38b8 __ZN3RBX10Reflection9EventDescINS_9ExplosionEFvN5boost10shared_ptrINS_8InstanceEEEfEN3rbx6signalIS7_EEMS2_SA_EC2ESB_PKcSE_SE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+pub fn stub_0x4a38b8(
+    member: usize,
+    name: &str,
+    category: &str,
+    title: &str,
+    permissions: u32,
+    attributes: u32,
+) -> ExplosionEventDesc {
+    // IDA 0x4a38b8: base `EventDescriptor` init, member-signal pointer stored at +40
+    // (`v54[10] = a2`), vtable install, then two signature items appended:
+    // `(arg0_name, SharedPtr<Instance>)` (0x4a3966) and `(arg1_name, float)` (0x4a39a2).
+    ExplosionEventDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        title: title.to_owned(),
+        member,
+        signature: vec![
+            (category.to_owned(), ExplosionEventArg::Instance),
+            (title.to_owned(), ExplosionEventArg::Float),
+        ],
+        permissions,
+        attributes,
+    }
 }
 
 // 0x4a3aa8 — __ZN3RBX10Reflection9EventDescINS_9ExplosionEFvN5boost10shared_ptrINS_8InstanceEEEfEN3rbx6signalIS7_EEMS2_SA_ED0Ev
@@ -29,86 +247,191 @@ pub fn stub_0x4a3aa8() {
 
 // 0x4a3b5c — __ZNK3RBX10Reflection13EventDescImplILi2ENS_9ExplosionEFvN5boost10shared_ptrINS_8InstanceEEEfEN3rbx6signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::Explosion,void ()(rbx_core::SharedPtr<RBX::Instance>,float),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)> RBX::Explosion::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
-pub fn stub_0x4a3b5c() -> ! {
-    todo!("0x4a3b5c __ZNK3RBX10Reflection13EventDescImplILi2ENS_9ExplosionEFvN5boost10shared_ptrINS_8InstanceEEEfEN3rbx6signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE")
+pub fn stub_0x4a3b5c(source: Option<&EventSource>, wrapper: SharedPtr<GenericSlotWrapper>) {
+    // IDA 0x4a3b5c: builds `bind(execute2, wrapper, _1, _2)` (0x4a3bd4), wraps it in a
+    // `boost::function` (0x4a3be0), then `signal::connect(member-signal-of-source, fn)`
+    // (0x4a3bfc). Null source stores an empty connection (`*v44 = 0`, 0x4a3c06).
+    if let Some(source) = source {
+        source.connect_slot(wrapper);
+    }
+    // `function2::clear()` (0x4a3c0e) drops the temp; `Arc` drop glue covers it.
 }
 
 // 0x4a3cb0 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_9ExplosionEFvN5boost10shared_ptrINS_8InstanceEEEfEN3rbx6signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
-#[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::Explosion,void ()(rbx_core::SharedPtr<RBX::Instance>,float),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)> RBX::Explosion::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
-pub fn stub_0x4a3cb0() -> ! {
-    todo!("0x4a3cb0 __ZNK3RBX10Reflection13EventDescImplILi2ENS_9ExplosionEFvN5boost10shared_ptrINS_8InstanceEEEfEN3rbx6signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE")
+pub fn stub_0x4a3cb0(source: &EventSource, args: &[Variant]) {
+    // IDA 0x4a3cb0: `ReleaseAssert(args.size() == 2)` (Event.h:349, 0x4a3d14), then
+    // `any_cast<SharedPtr<Instance>>(args[0])` (0x4a3d6c), `any_cast<float>(args[1])`
+    // (0x4a3da2), and `signal_with_args<2>::operator()` (0x4a3db4).
+    assert!(args.len() == 2, "args.size() == 2 include/Reflection/Event.h:349");
+    let Variant::Instance(instance) = &args[0] else {
+        panic!("any_cast<SharedPtr<Instance>> failed (IDA 0x4a3d6c)");
+    };
+    let Variant::Float(value) = &args[1] else {
+        panic!("any_cast<float> failed (IDA 0x4a3da2)");
+    };
+    source.fire(instance, *value);
 }
 
 // 0x4a3e20 — __ZNK3RBX10Reflection13EventDescBaseINS_9ExplosionEFvN5boost10shared_ptrINS_8InstanceEEEfEN3rbx6signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Explosion,void ()(rbx_core::SharedPtr<RBX::Instance>,float),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)> RBX::Explosion::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
-pub fn stub_0x4a3e20() -> ! {
-    todo!("0x4a3e20 __ZNK3RBX10Reflection13EventDescBaseINS_9ExplosionEFvN5boost10shared_ptrINS_8InstanceEEEfEN3rbx6signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE")
+pub fn stub_0x4a3e20(source: &EventSource) {
+    // IDA 0x4a3e20: member-offset adjust (`a2 ? a2 - 36 : 0`, 0x4a3e24-0x4a3e26), then
+    // `signal::disconnectAll(member)`. The adjust is member-pointer mechanics; the
+    // observable effect is dropping every slot.
+    source.disconnect_all();
 }
 
 // 0x4a3fac — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS1_8InstanceEEERKfNS4_IS3_EENS_3argILi1EEENSC_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISH_T0_T1_T2_EENSF_9list_av_3IT3_T4_T5_E4typeEEEMSK_FSH_SL_SM_ESP_SQ_SR_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list_av_3<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(rbx_core::SharedPtr<RBX::Instance> const&,float const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")]
-pub fn stub_0x4a3fac() -> ! {
-    todo!("0x4a3fac __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS1_8InstanceEEERKfNS4_IS3_EENS_3argILi1EEENSC_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISH_T0_T1_T2_EENSF_9list_av_3IT3_T4_T5_E4typeEEEMSK_FSH_SL_SM_ESP_SQ_SR_")
+pub fn stub_0x4a3fac(wrapper: SharedPtr<GenericSlotWrapper>) -> BoundExplosionSlot {
+    // IDA 0x4a3fac: `list3(value(wrapper-shared), arg<1>, arg<2>)` (0x4a4016) plus the
+    // member-function triple stored into the bind_t out (0x4a401e-0x4a4034). The member
+    // function is fixed (`execute2`), so the triple folds into the bound target.
+    BoundExplosionSlot { target: wrapper }
 }
 
 // 0x4a40c8 — __ZN3RBX10Reflection18GenericSlotWrapper8execute2IN5boost10shared_ptrINS_8InstanceEEEfEEvRKT_RKT0_
 #[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute2<rbx_core::SharedPtr<RBX::Instance>,float>(rbx_core::SharedPtr<RBX::Instance> const&,float const&)")]
-pub fn stub_0x4a40c8() -> ! {
-    todo!("0x4a40c8 __ZN3RBX10Reflection18GenericSlotWrapper8execute2IN5boost10shared_ptrINS_8InstanceEEEfEEvRKT_RKT0_")
+pub fn stub_0x4a40c8(
+    wrapper: &GenericSlotWrapper,
+    instance: &SharedPtr<InstanceHandle>,
+    value: f32,
+) {
+    // IDA 0x4a40c8: packs `vector<Variant>{ (Instance, arg0), (float, arg1) }`
+    // (0x4a413c-0x4a418a), dispatches the wrapped slot (`vfptr+8`, 0x4a419a), destroys
+    // the vector (0x4a41a4).
+    wrapper.execute2(instance, value);
 }
 
 // 0x4a442c — __ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEfE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS2_10Reflection18GenericSlotWrapperERKS4_RKfEENS7_5list3INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEEvT_
 #[doc(alias = "void boost::function2<void,rbx_core::SharedPtr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)")]
-pub fn stub_0x4a442c() -> ! {
-    todo!("0x4a442c __ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEfE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS2_10Reflection18GenericSlotWrapperERKS4_RKfEENS7_5list3INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEEvT_")
+pub fn stub_0x4a442c(func: &mut ExplosionSlotFunction, bound: &BoundExplosionSlot) {
+    // IDA 0x4a442c: copies the bind_t triple plus shared count into a temp (0x4a4450-0x4a4464),
+    // delegates to `basic_vtable2::assign_to(stored_vtable, tmp, buf)` (0x4a44b4), releases
+    // the temp (0x4a44ba). Net effect: the function object owns a clone of the functor.
+    stub_0x4a4554(func, bound);
 }
 
 // 0x4a4524 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKfEENS3_5list3INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSM_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_0x4a4524() -> ! {
-    todo!("0x4a4524 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKfEENS3_5list3INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSM_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeE")
+pub fn stub_0x4a4524(
+    op: FunctorOp,
+    src: &BoundExplosionSlot,
+    slot: &mut Option<Box<BoundExplosionSlot>>,
+) -> &'static str {
+    // IDA 0x4a4524: any op but 4 delegates to `manager()` (0x4a4528); op 4 answers the
+    // bind_t typeinfo without touching the buffers (0x4a453a-0x4a453e). Either way the
+    // call reports the functor type.
+    if op != FunctorOp::GetFunctorTypeInfo {
+        stub_0x4a4810(op, src, slot);
+    }
+    EXPLOSION_BIND_T_TYPEINFO
 }
 
 // 0x4a4540 — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKfEENS3_5list3INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSM_ILi2EEEEEEEvSC_fE6invokeERNS1_15function_bufferESC_f
 #[doc(alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,void,rbx_core::SharedPtr<RBX::Instance>,float>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::Instance>,float)")]
-pub fn stub_0x4a4540() -> ! {
-    todo!("0x4a4540 __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKfEENS3_5list3INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSM_ILi2EEEEEEEvSC_fE6invokeERNS1_15function_bufferESC_f")
+pub fn stub_0x4a4540(
+    bound: &BoundExplosionSlot,
+    instance: &SharedPtr<InstanceHandle>,
+    value: f32,
+) {
+    // IDA 0x4a4540: tail-jumps to `bind_t::operator()<SharedPtr<Instance>, float>` (0x4a4552).
+    stub_0x4a47f4(bound, instance, value);
 }
 
 // 0x4a4554 — __ZNK5boost6detail8function13basic_vtable2IvNS_10shared_ptrIN3RBX8InstanceEEEfE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS4_10Reflection18GenericSlotWrapperERKS6_RKfEENS9_5list3INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEbT_RNS1_15function_bufferE
 #[doc(alias = "bool boost::detail::function::basic_vtable2<void,rbx_core::SharedPtr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")]
-pub fn stub_0x4a4554() -> ! {
-    todo!("0x4a4554 __ZNK5boost6detail8function13basic_vtable2IvNS_10shared_ptrIN3RBX8InstanceEEEfE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS4_10Reflection18GenericSlotWrapperERKS6_RKfEENS9_5list3INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEbT_RNS1_15function_bufferE")
+pub fn stub_0x4a4554(func: &mut ExplosionSlotFunction, bound: &BoundExplosionSlot) -> bool {
+    // IDA 0x4a4554: copies the functor triple (0x4a4574-0x4a458e), delegates to the
+    // tag-dispatch overload (0x4a45d2), releases the temp, returns 1 (0x4a4600).
+    stub_0x4a463c(func, bound)
 }
 
 // 0x4a463c — __ZNK5boost6detail8function13basic_vtable2IvNS_10shared_ptrIN3RBX8InstanceEEEfE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS4_10Reflection18GenericSlotWrapperERKS6_RKfEENS9_5list3INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 #[doc(alias = "bool boost::detail::function::basic_vtable2<void,rbx_core::SharedPtr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_0x4a463c() -> ! {
-    todo!("0x4a463c __ZNK5boost6detail8function13basic_vtable2IvNS_10shared_ptrIN3RBX8InstanceEEEfE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS4_10Reflection18GenericSlotWrapperERKS6_RKfEENS9_5list3INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+pub fn stub_0x4a463c(func: &mut ExplosionSlotFunction, bound: &BoundExplosionSlot) -> bool {
+    // IDA 0x4a463c: copies the functor triple (0x4a465c-0x4a468a), heap-clones it via
+    // `assign_functor` (0x4a46b4), releases the temp, returns 1 (0x4a46e2).
+    func.bound = Some(*stub_0x4a4720(bound));
+    true
 }
 
 // 0x4a4720 — __ZNK5boost6detail8function13basic_vtable2IvNS_10shared_ptrIN3RBX8InstanceEEEfE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS4_10Reflection18GenericSlotWrapperERKS6_RKfEENS9_5list3INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 #[doc(alias = "void boost::detail::function::basic_vtable2<void,rbx_core::SharedPtr<RBX::Instance>,float>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
-pub fn stub_0x4a4720() -> ! {
-    todo!("0x4a4720 __ZNK5boost6detail8function13basic_vtable2IvNS_10shared_ptrIN3RBX8InstanceEEEfE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS4_10Reflection18GenericSlotWrapperERKS6_RKfEENS9_5list3INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+pub fn stub_0x4a4720(bound: &BoundExplosionSlot) -> Box<BoundExplosionSlot> {
+    // IDA 0x4a4720 (`mpl::bool_<false>` = not-small-object): `operator new(0x10)`
+    // (0x4a4748), 16-byte functor copy plus shared-count bump (0x4a475a-0x4a47a2),
+    // out-ptr store (0x4a47aa). Rust: the heap clone is `Box::new`.
+    Box::new(bound.clone())
 }
 
 // 0x4a47f4 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS4_8InstanceEEERKfEENS0_5list3INS0_5valueINS7_IS6_EEEENS_3argILi1EEENSJ_ILi2EEEEEEclIS9_fEEvRT_RT0_
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<rbx_core::SharedPtr<RBX::Instance>,float>(rbx_core::SharedPtr<RBX::Instance> &,float &)")]
-pub fn stub_0x4a47f4() -> ! {
-    todo!("0x4a47f4 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS4_8InstanceEEERKfEENS0_5list3INS0_5valueINS7_IS6_EEEENS_3argILi1EEENSJ_ILi2EEEEEEclIS9_fEEvRT_RT0_")
+pub fn stub_0x4a47f4(
+    bound: &BoundExplosionSlot,
+    instance: &SharedPtr<InstanceHandle>,
+    value: f32,
+) {
+    // IDA 0x4a47f4: member-function dispatch out of the bind_t triple (0x4a47f4-0x4a4808):
+    // adjust the stored object (`v1 >> 1`, virtual via `v1 & 1`), call through it,
+    // forwarding the `(instance, value)` call args. Rust folds the triple into the target.
+    bound.call(instance, value);
 }
 
 // 0x4a4810 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKfEENS3_5list3INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSM_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_0x4a4810() -> ! {
-    todo!("0x4a4810 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKfEENS3_5list3INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSM_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+pub fn stub_0x4a4810(
+    op: FunctorOp,
+    src: &BoundExplosionSlot,
+    slot: &mut Option<Box<BoundExplosionSlot>>,
+) -> bool {
+    // IDA 0x4a4810 (`mpl::bool_<false>` = heap functor): 0 clone (`new(0x10)` copy,
+    // 0x4a488e-0x4a48c0), 1 move (copy + zero the source, 0x4a48c6-0x4a48cc), 2 destroy
+    // (release + `operator delete`, out = 0, 0x4a48d0-0x4a48ee), 3 get (`strcmp` the
+    // bind_t typeinfo name: hit copies, miss writes 0, 0x4a490a-0x4a4914), default
+    // answers the typeinfo (0x4a486e-0x4a4870). The model is monomorphic, so the
+    // checked name always matches. Returns whether a live functor was stored.
+    match op {
+        FunctorOp::CloneFunctor | FunctorOp::MoveFunctor | FunctorOp::CheckFunctorType => {
+            *slot = Some(Box::new(src.clone()));
+            true
+        }
+        FunctorOp::DestroyFunctor => {
+            *slot = None;
+            false
+        }
+        FunctorOp::GetFunctorTypeInfo => true,
+    }
 }
 
 // 0x4a5834 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::EnumPropDescriptor<RBX::Explosion::ExplosionType (RBX::Explosion::*)(void)const,void (RBX::Explosion::*)(RBX::Explosion::ExplosionType)>(char const*,char const*,RBX::Explosion::ExplosionType (RBX::Explosion::*)(void)const,void (RBX::Explosion::*)(RBX::Explosion::ExplosionType),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x4a5834() -> ! {
-    todo!("0x4a5834 __ZN3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0x4a5834(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&ExplosionState) -> i32 + Send + Sync>,
+    set: Box<dyn Fn(&mut ExplosionState, i32) + Send + Sync>,
+    mut attributes: u32,
+    permissions: u32,
+) -> ExplosionEnumPropDesc {
+    // IDA 0x4a5834: `Singleton<EnumDesc<ExplosionType>>` via `call_once` + `doGetSingleton`
+    // (0x4a5878-0x4a587c), base `PropertyDescriptor` init (0x4a58c6), enum-desc links at
+    // +40/+48 (0x4a58ea/0x4a5954), `new(0x14)` member desc at +44 holding
+    // (getter, setter) (0x4a5912-0x4a5938). Then `if (isReadOnly() == 1) attrs &= ~0x14`
+    // (0x4a5964-0x4a596e) and `if (isWriteOnly() == 1) attrs &= ~0x0C` (0x4a5980-0x4a598a);
+    // both query the GetSetImpl member desc, which hardcodes 0 (see stub_0x4a606c and
+    // stub_0x4a6070), so the masks never fire.
+    if stub_0x4a606c() {
+        attributes &= !0x14;
+    }
+    ExplosionEnumPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: ExplosionTypeAccess { get, set },
+        enum_desc: explosion_type_enum_desc(),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x4a59e8 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEED0Ev
@@ -131,26 +454,40 @@ pub fn stub_0x4a5a24() {
 
 // 0x4a5a34 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4a5a34() -> ! {
-    todo!("0x4a5a34 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE11equalValuesEPKNS0_13DescribedBaseES7_")
+pub fn stub_0x4a5a34(desc: &ExplosionEnumPropDesc, a: &ExplosionState, b: &ExplosionState) -> bool {
+    // IDA 0x4a5a34: `v = member(+44)->get(a)` then `return v == member->get(b)`
+    // (both through vf+8, 0x4a5a44-0x4a5a5a).
+    (desc.access.get)(a) == (desc.access.get)(b)
 }
 
 // 0x4a5a5c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x4a5a5c() -> ! {
-    todo!("0x4a5a5c __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
+pub fn stub_0x4a5a5c(desc: &ExplosionEnumPropDesc, obj: &ExplosionState) -> Variant {
+    // IDA 0x4a5a5c: `v = getEnumValue(obj)` (vf+68, 0x4a5a6a); out = `Variant(int, v)`
+    // (0x4a5a70-0x4a5a7e).
+    Variant::Int((desc.access.get)(obj))
 }
 
 // 0x4a5a80 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x4a5a80() -> ! {
-    todo!("0x4a5a80 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")
+pub fn stub_0x4a5a80(desc: &ExplosionEnumPropDesc, obj: &mut ExplosionState, value: &Variant) {
+    // IDA 0x4a5a80: int-typed payloads use `any_cast<int>` directly (0x4a5b4c); anything
+    // else goes through `Variant::convert<int>` (0x4a5b00-0x4a5b3c); then
+    // `setEnumValue(obj, v)` (vf+72, 0x4a5b5c).
+    let v = match value {
+        Variant::Int(v) => *v,
+        other => other.convert_to_int(),
+    };
+    (desc.access.set)(obj, v);
 }
 
 // 0x4a5bcc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x4a5bcc() -> ! {
-    todo!("0x4a5bcc __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE9copyValueEPKNS0_13DescribedBaseEPS5_")
+pub fn stub_0x4a5bcc(desc: &ExplosionEnumPropDesc, src: &ExplosionState, dst: &mut ExplosionState) {
+    // IDA 0x4a5bcc: `v = member(+44)->get(src)` (vf+8, 0x4a5bde), then
+    // `member->set(dst, v)` (vf+12, 0x4a5bee).
+    let v = (desc.access.get)(src);
+    (desc.access.set)(dst, v);
 }
 
 // 0x4a5bf4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE14hasStringValueEv
@@ -162,8 +499,11 @@ pub fn stub_0x4a5bf4() -> bool {
 
 // 0x4a5bf8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4a5bf8() -> ! {
-    todo!("0x4a5bf8 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE14getStringValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x4a5bf8(desc: &ExplosionEnumPropDesc, obj: &ExplosionState) -> String {
+    // IDA 0x4a5bf8: `v = member(+44)->get(obj)` (0x4a5c0a), then
+    // `EnumDesc<ExplosionType>::convertToString(enumdesc@+48, v)` (0x4a5c1a).
+    let v = (desc.access.get)(obj);
+    desc.enum_desc.lookup_name(v).unwrap_or_default().to_owned()
 }
 
 // 0x4a5c1c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE14setStringValueEPNS0_13DescribedBaseERKSs
@@ -921,4 +1261,130 @@ pub fn stub_0x4ab204() -> ! {
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Material>(void)")]
 pub fn stub_0x4ab238() -> ! {
     todo!("0x4ab238 __ZN3RBX10Reflection4Type12getSingletonINS_8MaterialEEERKS1_v")
+}
+
+#[cfg(test)]
+mod descriptor_batch_tests {
+    use super::*;
+    use std::sync::atomic::{AtomicI32, Ordering};
+
+    fn test_desc() -> ExplosionEnumPropDesc {
+        stub_0x4a5834(
+            "ExplosionType",
+            "Behavior",
+            Box::new(|s: &ExplosionState| s.explosion_type),
+            Box::new(|s: &mut ExplosionState, v: i32| s.explosion_type = v),
+            0,
+            0,
+        )
+    }
+
+    #[test]
+    fn explosion_type_singleton_items_match_ida() {
+        // Disasm 0x49f6f6/0x49f70c/0x49f722: addPair(0, NoCraters), (1, Craters), (2, CratersAndDebris).
+        let d = explosion_type_enum_desc();
+        assert_eq!(d.lookup_value("NoCraters"), Some(0));
+        assert_eq!(d.lookup_value("Craters"), Some(1));
+        assert_eq!(d.lookup_value("CratersAndDebris"), Some(2));
+        assert_eq!(d.lookup_name(2), Some("CratersAndDebris"));
+    }
+
+    #[test]
+    fn enum_value_round_trip_through_bound_pair() {
+        let desc = test_desc();
+        let mut state = ExplosionState::default();
+        stub_0x4a5a80(&desc, &mut state, &Variant::Int(1));
+        assert_eq!(state.explosion_type, 1);
+        assert!(matches!(stub_0x4a5a5c(&desc, &state), Variant::Int(1)));
+        assert_eq!(stub_0x4a5bf8(&desc, &state), "Craters");
+        stub_0x4a5a80(&desc, &mut state, &Variant::Float(2.0));
+        assert_eq!(state.explosion_type, 2);
+        let mut other = ExplosionState::default();
+        stub_0x4a5bcc(&desc, &state, &mut other);
+        assert!(stub_0x4a5a34(&desc, &state, &other));
+        other.explosion_type = 0;
+        assert!(!stub_0x4a5a34(&desc, &state, &other));
+    }
+
+    #[test]
+    fn event_connect_fire_disconnect() {
+        let source = EventSource::default();
+        let seen = std::sync::Arc::new(AtomicI32::new(-1));
+        let seen2 = std::sync::Arc::clone(&seen);
+        let wrapper: SharedPtr<GenericSlotWrapper> = std::sync::Arc::new(GenericSlotWrapper {
+            invoke: Box::new(move |args: &[Variant]| {
+                if let Variant::Float(v) = args[1] {
+                    seen2.store(v as i32, Ordering::SeqCst);
+                }
+            }),
+        });
+        let inst: SharedPtr<InstanceHandle> = std::sync::Arc::new(InstanceHandle { id: 7 });
+        stub_0x4a3b5c(Some(&source), SharedPtr::clone(&wrapper));
+        stub_0x4a3cb0(
+            &source,
+            &[Variant::Instance(inst), Variant::Float(3.0)],
+        );
+        assert_eq!(seen.load(Ordering::SeqCst), 3);
+        stub_0x4a3e20(&source);
+        stub_0x4a3cb0(
+            &source,
+            &[
+                Variant::Instance(std::sync::Arc::new(InstanceHandle { id: 7 })),
+                Variant::Float(9.0),
+            ],
+        );
+        assert_eq!(seen.load(Ordering::SeqCst), 3);
+        // Null source stores an empty connection: no-op, no panic.
+        stub_0x4a3b5c(None, wrapper);
+    }
+
+    #[test]
+    fn functor_manager_lifecycle() {
+        let wrapper: SharedPtr<GenericSlotWrapper> = std::sync::Arc::new(GenericSlotWrapper {
+            invoke: Box::new(|_| {}),
+        });
+        let bound = stub_0x4a3fac(wrapper);
+        let mut slot: Option<Box<BoundExplosionSlot>> = None;
+        assert!(stub_0x4a4810(FunctorOp::CloneFunctor, &bound, &mut slot));
+        assert!(slot.is_some());
+        assert!(stub_0x4a4810(FunctorOp::CheckFunctorType, &bound, &mut slot));
+        assert!(!stub_0x4a4810(FunctorOp::DestroyFunctor, &bound, &mut slot));
+        assert!(slot.is_none());
+        assert!(stub_0x4a4810(FunctorOp::GetFunctorTypeInfo, &bound, &mut slot));
+        assert!(slot.is_none());
+        let mut slot2: Option<Box<BoundExplosionSlot>> = None;
+        assert_eq!(
+            stub_0x4a4524(FunctorOp::MoveFunctor, &bound, &mut slot2),
+            EXPLOSION_BIND_T_TYPEINFO
+        );
+        assert!(slot2.is_some());
+    }
+
+    #[test]
+    fn function_assign_and_invoke() {
+        let wrapper: SharedPtr<GenericSlotWrapper> = std::sync::Arc::new(GenericSlotWrapper {
+            invoke: Box::new(|_| {}),
+        });
+        let bound = stub_0x4a3fac(wrapper);
+        let mut func = ExplosionSlotFunction::default();
+        assert!(func.is_empty());
+        stub_0x4a442c(&mut func, &bound);
+        assert!(!func.is_empty());
+        let inst: SharedPtr<InstanceHandle> = std::sync::Arc::new(InstanceHandle::default());
+        stub_0x4a4540(&bound, &inst, 1.0);
+        func.invoke(&inst, 1.0);
+        assert!(stub_0x4a4554(&mut func, &bound));
+    }
+
+    #[test]
+    fn event_desc_ctor_builds_two_item_signature() {
+        let d = stub_0x4a38b8(0, "Exploded", "Behavior", "Exploded", 0, 0);
+        assert_eq!(
+            d.signature,
+            vec![
+                ("Behavior".to_owned(), ExplosionEventArg::Instance),
+                ("Exploded".to_owned(), ExplosionEventArg::Float),
+            ]
+        );
+    }
 }
