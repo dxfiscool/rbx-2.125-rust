@@ -119,137 +119,1080 @@ unsafe fn ctx_str(ctx: *const c_char) -> String {
     CStr::from_ptr(ctx).to_string_lossy().into_owned()
 }
 
+/// ---- Vendored-libpng write-chunk cluster (IDA 0x17a8c0..0x17f65c) ----
+///
+/// `png_ptr` is the `png_struct` handle; only the byte offsets named in each
+/// doc comment are touched (`+152` mode flags, `+328` palette size,
+/// `+342/343/344/346/347` color fields, `+608` palette-valid word, the zlib
+/// stream at `+164`, ...). Callees living at other EAs keep explicit typed
+/// edges (`edge_*`, each bottoming out in the canonical `stub_*` of its home
+/// file) so later batches can bind them without touching call sites.
+
+/// Raw `png_struct` field access at the IDA-observed byte offsets.
+#[inline]
+unsafe fn png_u8(p: *mut u8, off: usize) -> u8 {
+    *p.add(off)
+}
+#[inline]
+unsafe fn png_set_u8(p: *mut u8, off: usize, v: u8) {
+    *p.add(off) = v;
+}
+#[inline]
+unsafe fn png_u16(p: *mut u8, off: usize) -> u16 {
+    ptr::read_unaligned(p.add(off) as *const u16)
+}
+#[inline]
+unsafe fn png_set_u16(p: *mut u8, off: usize, v: u16) {
+    ptr::write_unaligned(p.add(off) as *mut u16, v);
+}
+#[inline]
+unsafe fn png_u32(p: *mut u8, off: usize) -> u32 {
+    ptr::read_unaligned(p.add(off) as *const u32)
+}
+#[inline]
+unsafe fn png_set_u32(p: *mut u8, off: usize, v: u32) {
+    ptr::write_unaligned(p.add(off) as *mut u32, v);
+}
+
+/// PNG chunk-type words handed to `png_write_chunk_start` (IDA 0x17a910
+/// loads them from globals such as `_png_hIST_ptr`); the values are the
+/// ASCII chunk names as big-endian words, per the PNG spec.
+const PNG_HIST: u32 = u32::from_be_bytes(*b"hIST");
+const PNG_SPLT: u32 = u32::from_be_bytes(*b"sPLT");
+const PNG_ICCP: u32 = u32::from_be_bytes(*b"iCCP");
+const PNG_PLTE: u32 = u32::from_be_bytes(*b"PLTE");
+const PNG_TIME: u32 = u32::from_be_bytes(*b"tIME");
+const PNG_PHYS: u32 = u32::from_be_bytes(*b"pHYs");
+const PNG_SCAL: u32 = u32::from_be_bytes(*b"sCAL");
+const PNG_OFFS: u32 = u32::from_be_bytes(*b"oFFs");
+const PNG_BKGD: u32 = u32::from_be_bytes(*b"bKGD");
+const PNG_TRNS: u32 = u32::from_be_bytes(*b"tRNS");
+const PNG_CHRM: u32 = u32::from_be_bytes(*b"cHRM");
+const PNG_SBIT: u32 = u32::from_be_bytes(*b"sBIT");
+const PNG_SRGB: u32 = u32::from_be_bytes(*b"sRGB");
+const PNG_GAMA: u32 = u32::from_be_bytes(*b"gAMA");
+const PNG_IEND: u32 = u32::from_be_bytes(*b"IEND");
+const PNG_IDAT: u32 = u32::from_be_bytes(*b"IDAT");
+const PNG_IHDR: u32 = u32::from_be_bytes(*b"IHDR");
+
+/// Edge: `_png_write_chunk_start` (IDA 0x17a088, stub in
+/// `generated_plat_at`).
+fn edge_chunk_start(png_ptr: *mut u8, name: u32, len: u32) {
+    let _ = (png_ptr, name, len);
+    crate::generated_plat_at::stub_17a088()
+}
+/// Edge: `_png_write_chunk_data` (IDA 0x179f80, stub in
+/// `generated_plat_at`).
+fn edge_chunk_data(png_ptr: *mut u8, data: *const u8, len: u32) {
+    let _ = (png_ptr, data, len);
+    crate::generated_plat_at::stub_179f80()
+}
+/// Edge: `_png_write_chunk_end` (IDA 0x179ef0, stub in
+/// `generated_plat_at`).
+fn edge_chunk_end(png_ptr: *mut u8) -> i32 {
+    let _ = png_ptr;
+    crate::generated_plat_at::stub_179ef0()
+}
+/// Edge: `_png_save_uint_16` (IDA 0x1795d8, stub in `generated_plat_at`).
+fn edge_save_u16(buf: *mut u8, v: u16) {
+    let _ = (buf, v);
+    crate::generated_plat_at::stub_1795d8()
+}
+/// Edge: `_png_save_uint_32` (IDA 0x179598, stub in `generated_plat_at`).
+fn edge_save_u32(buf: *mut u8, v: u32) {
+    let _ = (buf, v);
+    crate::generated_plat_at::stub_179598()
+}
+/// Edge: `_png_save_int_32` (IDA 0x1795b8, stub in `generated_plat_at`).
+fn edge_save_i32(buf: *mut u8, v: i32) {
+    let _ = (buf, v);
+    crate::generated_plat_at::stub_1795b8()
+}
+/// Edge: `_png_warning` (IDA 0x15d790, stub in `generated_plat_as`).
+fn edge_warning(png_ptr: *mut u8, msg: *const u8) -> i32 {
+    let _ = (png_ptr, msg);
+    crate::generated_plat_as::stub_15d790()
+}
+/// Edge: `_png_error` (IDA 0x15d924, stub in `generated_plat_as`). Fatal
+/// in the original (longjmp); the edge diverges the same way.
+fn edge_error(png_ptr: *mut u8, msg: *const u8) -> ! {
+    let _ = (png_ptr, msg);
+    crate::generated_plat_as::stub_15d924()
+}
+/// Edge: `_png_check_keyword` (IDA 0x179ca4, stub in `generated_plat_at`).
+fn edge_check_keyword(png_ptr: *mut u8, key: *const u8, out: *mut *mut u8) -> i32 {
+    let _ = (png_ptr, key, out);
+    crate::generated_plat_at::stub_179ca4()
+}
+/// Edge: `_png_check_cHRM_fixed` (IDA 0x15c778, stub in
+/// `generated_plat_as`).
+#[allow(clippy::too_many_arguments)]
+fn edge_check_chrm(
+    png_ptr: *mut u8,
+    wx: u32,
+    wy: u32,
+    rx: u32,
+    ry: u32,
+    gx: u32,
+    gy: u32,
+    bx: u32,
+    by: u32,
+) -> i32 {
+    let _ = (png_ptr, wx, wy, rx, ry, gx, gy, bx, by);
+    crate::generated_plat_as::stub_15c778()
+}
+/// Edge: `_png_text_compress` (IDA 0x1799ec, stub in `generated_plat_at`).
+/// The original calls it through the `png_text_compress` global; the edge
+/// names the function the global points at.
+fn edge_text_compress(
+    png_ptr: *mut u8,
+    data: *mut u8,
+    len: u32,
+    level: i32,
+    out: *mut u8,
+) -> i32 {
+    let _ = (png_ptr, data, len, level, out);
+    crate::generated_plat_at::stub_1799ec()
+}
+/// Edge: `_png_write_compressed_data_out` (IDA 0x179fbc, stub in
+/// `generated_plat_at`).
+fn edge_compressed_out(png_ptr: *mut u8, job: *mut u8) {
+    let _ = (png_ptr, job);
+    crate::generated_plat_at::stub_179fbc()
+}
+/// Edge: `_png_free` (IDA 0x15ddbc, stub in `generated_plat_as`).
+fn edge_free(png_ptr: *mut u8, ptr: *mut u8) -> i32 {
+    let _ = (png_ptr, ptr);
+    crate::generated_plat_as::stub_15ddbc()
+}
+/// Edge: `_png_write_flush` (IDA 0x176ecc, stub in `generated_plat_at`).
+fn edge_flush(png_ptr: *mut u8) -> u32 {
+    let _ = png_ptr;
+    crate::generated_plat_at::stub_176ecc()
+}
+/// Edge: zlib `deflate` on the stream at `png_ptr+164`. A local shim (not
+/// a real extern) so the crate still links without zlib; rebind when the
+/// workspace vendors it. Callers: IDA 0x17bb94, 0x17bc7c.
+fn edge_deflate(strm: *mut u8, flush: i32) -> i32 {
+    let _ = (strm, flush);
+    todo!("deflate (callers 0x17bb94 0x17bc7c)")
+}
+/// Edge: zlib `deflateReset` (caller IDA 0x17bc10).
+fn edge_deflate_reset(strm: *mut u8) -> i32 {
+    let _ = strm;
+    todo!("deflateReset (caller 0x17bc10)")
+}
+/// Edge: zlib `deflateInit2_` (caller IDA 0x17f98c; version `"1.2.3"`,
+/// stream size 56).
+fn edge_deflate_init2(
+    strm: *mut u8,
+    level: i32,
+    method: i32,
+    window_bits: i32,
+    mem_level: i32,
+    strategy: i32,
+) -> i32 {
+    let _ = (strm, level, method, window_bits, mem_level, strategy);
+    todo!("deflateInit2_ (caller 0x17f98c)")
+}
+
 // 0x17a8c0 — _png_write_hIST
-// type: 
+// type:
 #[doc(alias = "_png_write_hIST")]
-pub fn stub_17a8c0() -> ! {
-    todo!("0x17a8c0 _png_write_hIST")
+pub unsafe fn stub_17a8c0(png_ptr: *mut u8, hist: *mut u16, num_hist: u32) -> i32 {
+    // IDA 0x17a8c0
+    png_write_hist(png_ptr, hist, num_hist)
+}
+
+/// hIST chunk (IDA 0x17a8c0..0x17aa54): warns unless the palette size
+/// (`u16` at `+328`, IDA 0x17a8d8) covers `num_hist` (IDA 0x17a8e8);
+/// writes `num_hist` BE `u16` frequencies (IDA 0x17a90c..0x17aa48). The
+/// `(num & 3)` prologue (IDA 0x17a934..0x17a9b8) plus 4-wide body
+/// (IDA 0x17a9bc..0x17aa48) are one pass here — same order.
+pub unsafe fn png_write_hist(png_ptr: *mut u8, hist: *mut u16, num_hist: u32) -> i32 {
+    if (png_u16(png_ptr, 328) as u32) < num_hist {
+        return edge_warning(
+            png_ptr,
+            b"Invalid number of histogram entries specified\0".as_ptr(),
+        );
+    }
+    edge_chunk_start(png_ptr, PNG_HIST, num_hist.wrapping_mul(2));
+    let mut buf = [0u8; 2];
+    for i in 0..num_hist {
+        edge_save_u16(buf.as_mut_ptr(), ptr::read_unaligned(hist.add(i as usize)));
+        edge_chunk_data(png_ptr, buf.as_ptr(), 2);
+    }
+    edge_chunk_end(png_ptr)
 }
 
 // 0x17aa58 — _png_write_sPLT
 // type: int __fastcall(int, int *)
 #[doc(alias = "_png_write_sPLT")]
-pub fn stub_17aa58() -> ! {
-    todo!("0x17aa58 _png_write_sPLT")
+pub unsafe fn stub_17aa58(png_ptr: *mut u8, splt: *mut u8) -> i32 {
+    // IDA 0x17aa58
+    png_write_splt(png_ptr, splt)
+}
+
+/// sPLT chunk (IDA 0x17aa58..0x17ab9c): `name` = word 0, entry depth byte
+/// at `+4` (8 selects the 6-byte raw form, else 10-byte BE form,
+/// IDA 0x17aa74..0x17aa84), entries = word 2, count = word 3
+/// (IDA 0x17aa6c..0x17aad0). Each record is 5 `u16` (RGBA + frequency,
+/// IDA 0x17aad4..0x17ab60); the depth byte is re-read per record
+/// (IDA 0x17aae4). Returns the keyword length on a miss
+/// (IDA 0x17ab9c), else the `png_free` result (IDA 0x17ab90).
+pub unsafe fn png_write_splt(png_ptr: *mut u8, splt: *mut u8) -> i32 {
+    let nentries = ptr::read_unaligned(splt.add(12) as *const i32);
+    let name = ptr::read_unaligned(splt.add(0) as *const *const u8);
+    let mut validated: *mut u8 = ptr::null_mut();
+    let key_len = edge_check_keyword(png_ptr, name, &mut validated);
+    if key_len == 0 {
+        return 0;
+    }
+    let row_len: u32 = if *splt.add(4) == 8 { 6 } else { 10 };
+    edge_chunk_start(
+        png_ptr,
+        PNG_SPLT,
+        (key_len.wrapping_add(2).wrapping_add(nentries.wrapping_mul(row_len as i32))) as u32,
+    );
+    edge_chunk_data(png_ptr, validated as *const u8, (key_len + 1) as u32);
+    edge_chunk_data(png_ptr, splt.add(4), 1);
+    let mut buf = [0u8; 10];
+    for k in 0..nentries {
+        let depth_is_8 = *splt.add(4) == 8;
+        let entries = ptr::read_unaligned(splt.add(8) as *const *mut u16);
+        let e = entries.add(5 * k as usize);
+        let c0 = ptr::read_unaligned(e);
+        let c1 = ptr::read_unaligned(e.add(1));
+        let c2 = ptr::read_unaligned(e.add(2));
+        let c3 = ptr::read_unaligned(e.add(3));
+        let freq = ptr::read_unaligned(e.add(4));
+        if depth_is_8 {
+            buf[0] = c0 as u8;
+            buf[1] = c1 as u8;
+            buf[2] = c2 as u8;
+            buf[3] = c3 as u8;
+            edge_save_u16(buf.as_mut_ptr().add(4), freq);
+        } else {
+            edge_save_u16(buf.as_mut_ptr(), c0);
+            edge_save_u16(buf.as_mut_ptr().add(2), c1);
+            edge_save_u16(buf.as_mut_ptr().add(4), c2);
+            edge_save_u16(buf.as_mut_ptr().add(6), c3);
+            edge_save_u16(buf.as_mut_ptr().add(8), freq);
+        }
+        edge_chunk_data(png_ptr, buf.as_ptr(), row_len);
+    }
+    edge_chunk_end(png_ptr);
+    edge_free(png_ptr, validated)
 }
 
 // 0x17aba4 — _png_write_iCCP
-// type: 
+// type:
 #[doc(alias = "_png_write_iCCP")]
-pub fn stub_17aba4() -> ! {
-    todo!("0x17aba4 _png_write_iCCP")
+pub unsafe fn stub_17aba4(
+    png_ptr: *mut u8,
+    name: *const u8,
+    compression: i32,
+    profile: *mut u8,
+    profile_len: u32,
+) {
+    // IDA 0x17aba4
+    png_write_iccp(png_ptr, name, compression, profile, profile_len)
+}
+
+/// iCCP chunk (IDA 0x17aba4..0x17ad00): validates the keyword
+/// (IDA 0x17abe4, miss returns silently, IDA 0x17ad00), warns on unknown
+/// compression (IDA 0x17abf0..0x17ac00) and on a negative or oversized
+/// embedded-profile length (BE `u32` at `profile+0`, IDA 0x17ac2c..0x17ac58,
+/// truncating with a warning, IDA 0x17ac60..0x17ac74). A null profile is an
+/// empty one (IDA 0x17ad04); a short (`<= 3`) profile skips the length
+/// check (IDA 0x17ac10). The payload is `name + NUL + compress-bytes`
+/// (IDA 0x17acc8..0x17acd4) via `text_compress` (IDA 0x17acac) and
+/// `write_compressed_data_out` (IDA 0x17ace8).
+pub unsafe fn png_write_iccp(
+    png_ptr: *mut u8,
+    name: *const u8,
+    compression: i32,
+    profile: *mut u8,
+    profile_len: u32,
+) {
+    let mut comp: [u32; 5] = [0; 5];
+    let mut validated: *mut u8 = ptr::null_mut();
+    let key_len = edge_check_keyword(png_ptr, name, &mut validated);
+    if key_len == 0 {
+        return;
+    }
+    if compression != 0 {
+        edge_warning(png_ptr, b"Unknown compression type in iCCP chunk\0".as_ptr());
+    }
+    let mut v8 = profile_len as i32;
+    // IDA 0x17ac08..0x17ad0c: resolve the checked length `v10`.
+    let mut v10: i32 = 0;
+    if !profile.is_null() {
+        if profile_len > 3 {
+            v10 = ptr::read_unaligned(profile as *const u32).swap_bytes() as i32;
+            if v10 < 0 {
+                edge_warning(
+                    png_ptr,
+                    b"Embedded profile length in iCCP chunk is negative\0".as_ptr(),
+                );
+                edge_free(png_ptr, validated);
+                return;
+            }
+        } else {
+            // Short profile: `v10` stays 0, `v8` stays `profile_len`.
+            iccp_emit(png_ptr, validated, key_len, profile, v8, 0, comp.as_mut_ptr() as *mut u8);
+            edge_free(png_ptr, validated);
+            return;
+        }
+    } else {
+        v8 = 0;
+    }
+    iccp_emit(png_ptr, validated, key_len, profile, v8, v10, comp.as_mut_ptr() as *mut u8);
+    edge_free(png_ptr, validated);
+}
+
+/// Shared iCCP payload emitter (IDA 0x17ac48..0x17acf0, `LABEL_8`): warns
+/// when the profile claims more than it carries (IDA 0x17ac50..0x17ac58),
+/// truncates with a warning (IDA 0x17ac60..0x17ac74), then writes the
+/// chunk (IDA 0x17acb4..0x17acf0).
+unsafe fn iccp_emit(
+    png_ptr: *mut u8,
+    validated: *mut u8,
+    key_len: i32,
+    profile: *mut u8,
+    mut v8: i32,
+    v10: i32,
+    comp: *mut u8,
+) {
+    if v8 < v10 {
+        edge_warning(
+            png_ptr,
+            b"Embedded profile length too large in iCCP chunk\0".as_ptr(),
+        );
+        return;
+    }
+    if v8 > v10 {
+        edge_warning(
+            png_ptr,
+            b"Truncating profile to actual length in iCCP chunk\0".as_ptr(),
+        );
+        v8 = v10;
+    }
+    if v8 != 0 {
+        let clen = edge_text_compress(png_ptr, profile, v8 as u32, 0, comp);
+        edge_chunk_start(png_ptr, PNG_ICCP, (key_len.wrapping_add(2).wrapping_add(clen)) as u32);
+        *validated.add((key_len + 1) as usize) = 0;
+        edge_chunk_data(png_ptr, validated as *const u8, (key_len + 2) as u32);
+        if clen != 0 {
+            edge_compressed_out(png_ptr, comp);
+        }
+    } else {
+        edge_chunk_start(png_ptr, PNG_ICCP, (key_len + 2) as u32);
+        *validated.add((key_len + 1) as usize) = 0;
+        edge_chunk_data(png_ptr, validated as *const u8, (key_len + 2) as u32);
+    }
+    edge_chunk_end(png_ptr);
 }
 
 // 0x17ad6c — _png_write_PLTE
-// type: 
+// type:
 #[doc(alias = "_png_write_PLTE")]
-pub fn stub_17ad6c() -> ! {
-    todo!("0x17ad6c _png_write_PLTE")
+pub unsafe fn stub_17ad6c(png_ptr: *mut u8, palette: *mut u8, num_palette: u32) -> i32 {
+    // IDA 0x17ad6c
+    png_write_plte(png_ptr, palette, num_palette)
+}
+
+/// PLTE chunk (IDA 0x17ad6c..0x17af48): the entry count rides a `u64`
+/// whose high dword is `*(u32*)(png_ptr+608) ^ 1` (IDA 0x17ad8c) — zero
+/// when a nonzero count is passed (IDA 0x17ad94), else bit 32 survives
+/// only if word `+608` is even (IDA 0x17ad98). Over 256 entries errors
+/// for palettes (IDA 0x17adb4..0x17adc0, fatal) and warns otherwise
+/// (IDA 0x17adcc..0x17add0); grayscale images warn (IDA 0x17addc..0x17adf0).
+/// Stores the count (`u16` at `+328`, IDA 0x17ae08), writes `3 * num`
+/// payload bytes (IDA 0x17ae10..0x17af94; the 3-entry prologue plus 4-wide
+/// body are one pass here) and sets mode bit 1 (`+152`, IDA 0x17ae3c).
+pub unsafe fn png_write_plte(png_ptr: *mut u8, palette: *mut u8, num_palette: u32) -> i32 {
+    let flag = png_u32(png_ptr, 608);
+    if (num_palette == 0 && ((flag ^ 1) & 1) == 1) || num_palette > 0x100 {
+        if png_u8(png_ptr, 342) == 3 {
+            // Disasm 0x17adc4 falls through to the grayscale check after
+            // the fatal call; the edge diverges the same way.
+            edge_error(png_ptr, b"Invalid number of colors in palette\0".as_ptr());
+        } else {
+            return edge_warning(png_ptr, b"Invalid number of colors in palette\0".as_ptr());
+        }
+    }
+    if png_u8(png_ptr, 342) & 2 == 0 {
+        return edge_warning(
+            png_ptr,
+            b"Ignoring request to write a PLTE chunk in grayscale PNG\0".as_ptr(),
+        );
+    }
+    png_set_u16(png_ptr, 328, num_palette as u16);
+    edge_chunk_start(png_ptr, PNG_PLTE, num_palette.wrapping_mul(3));
+    let mut buf = [0u8; 3];
+    // NOTE: a negative count would underflow the original prologue too;
+    // real callers pass 0..=256, for which this is the identical order.
+    for i in 0..num_palette {
+        let e = palette.add(3 * i as usize);
+        buf[0] = *e;
+        buf[1] = *e.add(1);
+        buf[2] = *e.add(2);
+        edge_chunk_data(png_ptr, buf.as_ptr(), 3);
+    }
+    let end = edge_chunk_end(png_ptr);
+    png_set_u32(png_ptr, 152, png_u32(png_ptr, 152) | 2);
+    end
 }
 
 // 0x17afac — _png_write_chunk
 // type: int __fastcall(int result, int, int, int)
 #[doc(alias = "_png_write_chunk")]
-pub fn stub_17afac() -> ! {
-    todo!("0x17afac _png_write_chunk")
+pub unsafe fn stub_17afac(png_ptr: *mut u8, chunk_name: u32, data: *const u8, len: u32) -> i32 {
+    // IDA 0x17afac
+    png_write_chunk(png_ptr, chunk_name, data, len)
+}
+
+/// One-shot chunk writer (IDA 0x17afac..0x17afe4): null handle returns 0
+/// (IDA 0x17afc0), else start/data/end (IDA 0x17afc8..0x17afe4).
+pub unsafe fn png_write_chunk(png_ptr: *mut u8, chunk_name: u32, data: *const u8, len: u32) -> i32 {
+    if png_ptr.is_null() {
+        return 0;
+    }
+    edge_chunk_start(png_ptr, chunk_name, len);
+    edge_chunk_data(png_ptr, data, len);
+    edge_chunk_end(png_ptr)
 }
 
 // 0x17afe8 — _png_write_tIME
-// type: 
+// type:
 #[doc(alias = "_png_write_tIME")]
-pub fn stub_17afe8() -> ! {
-    todo!("0x17afe8 _png_write_tIME")
+pub unsafe fn stub_17afe8(png_ptr: *mut u8, mod_time: *mut u8) -> i32 {
+    // IDA 0x17afe8
+    png_write_time(png_ptr, mod_time)
+}
+
+/// tIME chunk (IDA 0x17afe8..0x17b0a0): validates month/day/hour/second
+/// (year is a LE `u16` at `+0`, stored BE; minute at `+5` is unchecked,
+/// IDA 0x17b038..0x17b094) and writes the 7-byte payload via
+/// `png_write_chunk` (IDA 0x17b0a0).
+pub unsafe fn png_write_time(png_ptr: *mut u8, mod_time: *mut u8) -> i32 {
+    let month = *mod_time.add(2);
+    let day = *mod_time.add(3);
+    let hour = *mod_time.add(4);
+    let second = *mod_time.add(6);
+    if month.wrapping_sub(1) > 0x0B || day > 0x1F || day == 0 || hour > 0x17 || second > 0x3C {
+        return edge_warning(png_ptr, b"Invalid time specified for tIME chunk\0".as_ptr());
+    }
+    let year = ptr::read_unaligned(mod_time as *const u16);
+    let mut buf = [0u8; 7];
+    edge_save_u16(buf.as_mut_ptr(), year);
+    buf[2] = month;
+    buf[3] = day;
+    buf[4] = hour;
+    buf[5] = *mod_time.add(5);
+    buf[6] = second;
+    png_write_chunk(png_ptr, PNG_TIME, buf.as_ptr(), 7)
 }
 
 // 0x17b0ac — _png_write_pHYs
-// type: 
+// type:
 #[doc(alias = "_png_write_pHYs")]
-pub fn stub_17b0ac() -> ! {
-    todo!("0x17b0ac _png_write_pHYs")
+pub unsafe fn stub_17b0ac(png_ptr: *mut u8, res_x: u32, res_y: u32, unit: i32) -> i32 {
+    // IDA 0x17b0ac
+    png_write_phys(png_ptr, res_x, res_y, unit)
+}
+
+/// pHYs chunk (IDA 0x17b0ac..0x17b11c): warns on unit > 1 but writes
+/// anyway (IDA 0x17b0d0..0x17b0dc); two BE `u32` plus the unit byte
+/// (IDA 0x17b0e8..0x17b11c).
+pub unsafe fn png_write_phys(png_ptr: *mut u8, res_x: u32, res_y: u32, unit: i32) -> i32 {
+    if unit > 1 {
+        edge_warning(png_ptr, b"Unrecognized unit type for pHYs chunk\0".as_ptr());
+    }
+    let mut buf = [0u8; 9];
+    edge_save_u32(buf.as_mut_ptr(), res_x);
+    edge_save_u32(buf.as_mut_ptr().add(4), res_y);
+    buf[8] = unit as u8;
+    png_write_chunk(png_ptr, PNG_PHYS, buf.as_ptr(), 9)
 }
 
 // 0x17b128 — _png_write_sCAL
-// type: 
+// type:
 #[doc(alias = "_png_write_sCAL")]
-pub fn stub_17b128() -> ! {
-    todo!("0x17b128 _png_write_sCAL")
+pub unsafe fn stub_17b128(png_ptr: *mut u8, unit: u8, width: f64, height: f64) -> i32 {
+    // IDA 0x17b128
+    png_write_scal(png_ptr, unit, width, height)
+}
+
+extern "C" {
+    /// Backs the two `%12.12e` renders in `png_write_sCAL`
+    /// (IDA 0x17b164/0x17b190); libc, always linked.
+    fn snprintf(s: *mut c_char, n: usize, fmt: *const c_char, ...) -> i32;
+    /// Backs `strlen` in `png_write_sCAL` (IDA 0x17b16c/0x17b198).
+    fn strlen(s: *const c_char) -> usize;
+}
+
+/// sCAL chunk (IDA 0x17b128..0x17b1bc): renders width/height as `%12.12e`
+/// into a 64-byte unit-prefixed buffer (IDA 0x17b140..0x17b198; the second
+/// render overwrites the first string's tail, lengths `v6+2` and `v9`) and
+/// writes it via `png_write_chunk` (IDA 0x17b1bc). `strlen` caps at 62 so
+/// `62 - v6` (IDA 0x17b190) cannot underflow.
+pub unsafe fn png_write_scal(png_ptr: *mut u8, unit: u8, width: f64, height: f64) -> i32 {
+    let mut buf = [0u8; 64];
+    buf[0] = unit;
+    snprintf(
+        buf.as_mut_ptr().add(1) as *mut c_char,
+        63,
+        b"%12.12e\0".as_ptr() as *const c_char,
+        width,
+    );
+    let v6 = strlen(buf.as_ptr().add(1) as *const c_char);
+    snprintf(
+        buf.as_mut_ptr().add(v6.wrapping_add(2)) as *mut c_char,
+        62usize.wrapping_sub(v6),
+        b"%12.12e\0".as_ptr() as *const c_char,
+        height,
+    );
+    let v9 = strlen(buf.as_ptr().add(v6.wrapping_add(2)) as *const c_char);
+    png_write_chunk(png_ptr, PNG_SCAL, buf.as_ptr(), v6.wrapping_add(2).wrapping_add(v9) as u32)
 }
 
 // 0x17b1c8 — _png_write_oFFs
-// type: 
+// type:
 #[doc(alias = "_png_write_oFFs")]
-pub fn stub_17b1c8() -> ! {
-    todo!("0x17b1c8 _png_write_oFFs")
+pub unsafe fn stub_17b1c8(png_ptr: *mut u8, off_x: i32, off_y: i32, unit: i32) -> i32 {
+    // IDA 0x17b1c8
+    png_write_offs(png_ptr, off_x, off_y, unit)
+}
+
+/// oFFs chunk (IDA 0x17b1c8..0x17b238): warns on unit > 1 but writes
+/// anyway (IDA 0x17b1ec..0x17b1f8); two BE `i32` plus the unit byte
+/// (IDA 0x17b204..0x17b238).
+pub unsafe fn png_write_offs(png_ptr: *mut u8, off_x: i32, off_y: i32, unit: i32) -> i32 {
+    if unit > 1 {
+        edge_warning(png_ptr, b"Unrecognized unit type for oFFs chunk\0".as_ptr());
+    }
+    let mut buf = [0u8; 9];
+    edge_save_i32(buf.as_mut_ptr(), off_x);
+    edge_save_i32(buf.as_mut_ptr().add(4), off_y);
+    buf[8] = unit as u8;
+    png_write_chunk(png_ptr, PNG_OFFS, buf.as_ptr(), 9)
 }
 
 // 0x17b244 — _png_write_bKGD
-// type: 
+// type:
 #[doc(alias = "_png_write_bKGD")]
-pub fn stub_17b244() -> ! {
-    todo!("0x17b244 _png_write_bKGD")
+pub unsafe fn stub_17b244(png_ptr: *mut u8, background: *mut u8, color_type: i32) -> i32 {
+    // IDA 0x17b244
+    png_write_bkgd(png_ptr, background, color_type)
+}
+
+/// bKGD chunk (IDA 0x17b244..0x17b37c): palette images write the index
+/// byte when nonzero palette size covers it, else warn (IDA 0x17b264..0x17b29c;
+/// with an empty palette word `+608` bit 0 decides, IDA 0x17b278); RGB
+/// writes 3 BE `u16` unless bit depth is 8 with nonzero high bytes
+/// (IDA 0x17b2c0..0x17b330); gray writes one BE `u16` in range
+/// (IDA 0x17b334..0x17b370). The `1 << bit_depth` uses wrapping shift,
+/// matching the arm `LSL`.
+pub unsafe fn png_write_bkgd(png_ptr: *mut u8, background: *mut u8, color_type: i32) -> i32 {
+    if color_type != 3 {
+        if color_type & 2 != 0 {
+            let mut buf = [0u8; 6];
+            edge_save_u16(buf.as_mut_ptr(), ptr::read_unaligned(background.add(2) as *const u16));
+            edge_save_u16(buf.as_mut_ptr().add(2), ptr::read_unaligned(background.add(4) as *const u16));
+            edge_save_u16(buf.as_mut_ptr().add(4), ptr::read_unaligned(background.add(6) as *const u16));
+            if png_u8(png_ptr, 343) != 8 || (buf[4] | buf[2] | buf[0]) == 0 {
+                return png_write_chunk(png_ptr, PNG_BKGD, buf.as_ptr(), 6);
+            }
+            return edge_warning(
+                png_ptr,
+                b"Ignoring attempt to write 16-bit bKGD chunk when bit_depth is 8\0".as_ptr(),
+            );
+        }
+        let v = ptr::read_unaligned(background.add(8) as *const u16);
+        if (v as u32) < 1u32.wrapping_shl(png_u8(png_ptr, 343) as u32) {
+            let mut buf = [0u8; 2];
+            edge_save_u16(buf.as_mut_ptr(), v);
+            return png_write_chunk(png_ptr, PNG_BKGD, buf.as_ptr(), 2);
+        }
+        return edge_warning(
+            png_ptr,
+            b"Ignoring attempt to write bKGD chunk out-of-range for bit_depth\0".as_ptr(),
+        );
+    }
+    if png_u16(png_ptr, 328) != 0 {
+        if (*background as u32) < png_u16(png_ptr, 328) as u32 {
+            return png_write_chunk(png_ptr, PNG_BKGD, background as *const u8, 1);
+        }
+        return edge_warning(png_ptr, b"Invalid background palette index\0".as_ptr());
+    }
+    if png_u32(png_ptr, 608) & 1 == 0 {
+        return edge_warning(png_ptr, b"Invalid background palette index\0".as_ptr());
+    }
+    png_write_chunk(png_ptr, PNG_BKGD, background as *const u8, 1)
 }
 
 // 0x17b398 — _png_write_tRNS
-// type: 
+// type:
 #[doc(alias = "_png_write_tRNS")]
-pub fn stub_17b398() -> ! {
-    todo!("0x17b398 _png_write_tRNS")
+pub unsafe fn stub_17b398(
+    png_ptr: *mut u8,
+    trans_alpha: *mut u8,
+    num_trans: i32,
+    trans_color: *mut u8,
+    color_type: i32,
+) -> i32 {
+    // IDA 0x17b398
+    png_write_trns(png_ptr, trans_alpha, num_trans, trans_color, color_type)
+}
+
+/// tRNS chunk (IDA 0x17b398..0x17b4c4): palette images write
+/// `0 < num_trans <= palette size` raw bytes (IDA 0x17b3d0..0x17b3d8);
+/// gray writes one in-range BE `u16` (IDA 0x17b3f8..0x17b430); RGB writes
+/// 3 BE `u16` unless bit depth is 8 with nonzero high bytes
+/// (IDA 0x17b448..0x17b4a8); anything with alpha warns
+/// (IDA 0x17b4b8).
+pub unsafe fn png_write_trns(
+    png_ptr: *mut u8,
+    trans_alpha: *mut u8,
+    num_trans: i32,
+    trans_color: *mut u8,
+    color_type: i32,
+) -> i32 {
+    if color_type != 3 {
+        if color_type != 0 {
+            if color_type != 2 {
+                return edge_warning(png_ptr, b"Can't write tRNS with an alpha channel\0".as_ptr());
+            }
+            let mut buf = [0u8; 6];
+            edge_save_u16(buf.as_mut_ptr(), ptr::read_unaligned(trans_color.add(2) as *const u16));
+            edge_save_u16(buf.as_mut_ptr().add(2), ptr::read_unaligned(trans_color.add(4) as *const u16));
+            edge_save_u16(buf.as_mut_ptr().add(4), ptr::read_unaligned(trans_color.add(6) as *const u16));
+            if png_u8(png_ptr, 343) == 8 && (buf[4] | buf[2] | buf[0]) != 0 {
+                return edge_warning(
+                    png_ptr,
+                    b"Ignoring attempt to write 16-bit tRNS chunk when bit_depth is 8\0".as_ptr(),
+                );
+            }
+            return png_write_chunk(png_ptr, PNG_TRNS, buf.as_ptr(), 6);
+        }
+        let v = ptr::read_unaligned(trans_color.add(8) as *const u16);
+        if (v as u32) >= 1u32.wrapping_shl(png_u8(png_ptr, 343) as u32) {
+            return edge_warning(
+                png_ptr,
+                b"Ignoring attempt to write tRNS chunk out-of-range for bit_depth\0".as_ptr(),
+            );
+        }
+        let mut buf = [0u8; 2];
+        edge_save_u16(buf.as_mut_ptr(), v);
+        return png_write_chunk(png_ptr, PNG_TRNS, buf.as_ptr(), 2);
+    }
+    if num_trans > 0 && (num_trans as u32) <= png_u16(png_ptr, 328) as u32 {
+        return png_write_chunk(png_ptr, PNG_TRNS, trans_alpha as *const u8, num_trans as u32);
+    }
+    edge_warning(png_ptr, b"Invalid number of transparent colors specified\0".as_ptr())
 }
 
 // 0x17b4e4 — _png_write_cHRM
-// type: 
+// type:
 #[doc(alias = "_png_write_cHRM")]
-pub fn stub_17b4e4() -> ! {
-    todo!("0x17b4e4 _png_write_cHRM")
+pub unsafe fn stub_17b4e4(
+    png_ptr: *mut u8,
+    white_x: f64,
+    white_y: f64,
+    red_x: f64,
+    red_y: f64,
+    green_x: f64,
+    green_y: f64,
+    blue_x: f64,
+    blue_y: f64,
+) -> i32 {
+    // IDA 0x17b4e4
+    png_write_chrm(png_ptr, white_x, white_y, red_x, red_y, green_x, green_y, blue_x, blue_y)
+}
+
+/// cHRM chunk (IDA 0x17b4e4..0x17b66c): scales the 8 white-point/RGB
+/// doubles by 100000 (IDA 0x17b558..0x17b638; the decompile's stray
+/// `int`/`float` args are mis-split doubles — the 8 scaled values fed to
+/// `png_check_cHRM_fixed` at IDA 0x17b5d0 disambiguate), writes 8 BE
+/// `u32` on approval (IDA 0x17b5e4..0x17b650), else returns 0
+/// (IDA 0x17b66c).
+#[allow(clippy::too_many_arguments)]
+pub unsafe fn png_write_chrm(
+    png_ptr: *mut u8,
+    white_x: f64,
+    white_y: f64,
+    red_x: f64,
+    red_y: f64,
+    green_x: f64,
+    green_y: f64,
+    blue_x: f64,
+    blue_y: f64,
+) -> i32 {
+    let fix = |v: f64| (v * 100000.0 + 0.5) as u32;
+    let (wx, wy, rx, ry, gx, gy, bx, by) = (
+        fix(white_x),
+        fix(white_y),
+        fix(red_x),
+        fix(red_y),
+        fix(green_x),
+        fix(green_y),
+        fix(blue_x),
+        fix(blue_y),
+    );
+    if edge_check_chrm(png_ptr, wx, wy, rx, ry, gx, gy, bx, by) == 0 {
+        return 0;
+    }
+    let mut buf = [0u8; 32];
+    edge_save_u32(buf.as_mut_ptr(), wx);
+    edge_save_u32(buf.as_mut_ptr().add(4), wy);
+    edge_save_u32(buf.as_mut_ptr().add(8), rx);
+    edge_save_u32(buf.as_mut_ptr().add(12), ry);
+    edge_save_u32(buf.as_mut_ptr().add(16), gx);
+    edge_save_u32(buf.as_mut_ptr().add(20), gy);
+    edge_save_u32(buf.as_mut_ptr().add(24), bx);
+    edge_save_u32(buf.as_mut_ptr().add(28), by);
+    png_write_chunk(png_ptr, PNG_CHRM, buf.as_ptr(), 32)
 }
 
 // 0x17b67c — _png_write_sBIT
-// type: 
+// type:
 #[doc(alias = "_png_write_sBIT")]
-pub fn stub_17b67c() -> ! {
-    todo!("0x17b67c _png_write_sBIT")
+pub unsafe fn stub_17b67c(png_ptr: *mut u8, sig_bit: *mut u8, color_type: i32) -> i32 {
+    // IDA 0x17b67c
+    png_write_sbit(png_ptr, sig_bit, color_type)
+}
+
+/// sBIT chunk (IDA 0x17b67c..0x17b784): truecolor writes the 3 channel
+/// depths (palettes cap at 8, else at bit depth `+344`, IDA 0x17b690..0x17b6e4),
+/// gray writes the single depth at `+3` (IDA 0x17b710..0x17b714), and an
+/// alpha channel appends its depth (IDA 0x17b72c..0x17b750); any zero or
+/// over-cap depth warns (IDA 0x17b6f8/0x17b768).
+pub unsafe fn png_write_sbit(png_ptr: *mut u8, sig_bit: *mut u8, color_type: i32) -> i32 {
+    let bit_depth = png_u8(png_ptr, 344);
+    let mut buf = [0u8; 4];
+    let mut len: u8;
+    if color_type & 2 != 0 {
+        let cap = if color_type == 3 { 8 } else { bit_depth };
+        let r = *sig_bit;
+        let g = *sig_bit.add(1);
+        let b = *sig_bit.add(2);
+        if r == 0 || cap < r || g == 0 || cap < g || b == 0 || cap < b {
+            return edge_warning(png_ptr, b"Invalid sBIT depth specified\0".as_ptr());
+        }
+        buf[0] = r;
+        buf[1] = g;
+        buf[2] = b;
+        len = 3;
+    } else {
+        let g = *sig_bit.add(3);
+        if g == 0 || bit_depth < g {
+            return edge_warning(png_ptr, b"Invalid sBIT depth specified\0".as_ptr());
+        }
+        buf[0] = g;
+        len = 1;
+    }
+    if color_type & 4 != 0 {
+        let a = *sig_bit.add(4);
+        if a != 0 && bit_depth >= a {
+            buf[len as usize] = a;
+            len += 1;
+            return png_write_chunk(png_ptr, PNG_SBIT, buf.as_ptr(), len as u32);
+        }
+        return edge_warning(png_ptr, b"Invalid sBIT depth specified\0".as_ptr());
+    }
+    png_write_chunk(png_ptr, PNG_SBIT, buf.as_ptr(), len as u32)
 }
 
 // 0x17b798 — _png_write_sRGB
-// type: 
+// type:
 #[doc(alias = "_png_write_sRGB")]
-pub fn stub_17b798() -> ! {
-    todo!("0x17b798 _png_write_sRGB")
+pub unsafe fn stub_17b798(png_ptr: *mut u8, intent: i32) -> i32 {
+    // IDA 0x17b798
+    png_write_srgb(png_ptr, intent)
+}
+
+/// sRGB chunk (IDA 0x17b798..0x17b7e0): warns on intent > 3 but writes
+/// anyway (IDA 0x17b7b0..0x17b7bc).
+pub unsafe fn png_write_srgb(png_ptr: *mut u8, intent: i32) -> i32 {
+    if intent > 3 {
+        edge_warning(png_ptr, b"Invalid sRGB rendering intent specified\0".as_ptr());
+    }
+    png_write_chunk(png_ptr, PNG_SRGB, &(intent as u8) as *const u8, 1)
 }
 
 // 0x17b7ec — _png_write_gAMA
-// type: 
+// type:
 #[doc(alias = "_png_write_gAMA")]
-pub fn stub_17b7ec() -> ! {
-    todo!("0x17b7ec _png_write_gAMA")
+pub unsafe fn stub_17b7ec(png_ptr: *mut u8, gamma: f64) -> i32 {
+    // IDA 0x17b7ec
+    png_write_gama(png_ptr, gamma)
+}
+
+/// gAMA chunk (IDA 0x17b7ec..0x17b838): stores
+/// `(u32)(gamma * 100000.0 + 0.5)` BE (IDA 0x17b818).
+pub unsafe fn png_write_gama(png_ptr: *mut u8, gamma: f64) -> i32 {
+    let mut buf = [0u8; 4];
+    edge_save_u32(buf.as_mut_ptr(), (gamma * 100000.0 + 0.5) as u32);
+    png_write_chunk(png_ptr, PNG_GAMA, buf.as_ptr(), 4)
 }
 
 // 0x17b848 — _png_write_IEND
-// type: 
+// type:
 #[doc(alias = "_png_write_IEND")]
-pub fn stub_17b848() -> ! {
-    todo!("0x17b848 _png_write_IEND")
+pub unsafe fn stub_17b848(png_ptr: *mut u8) -> i32 {
+    // IDA 0x17b848
+    png_write_iend(png_ptr)
+}
+
+/// IEND chunk (IDA 0x17b848..0x17b874): empty chunk, then sets mode bit 4
+/// (`+152`, IDA 0x17b870) and returns the previous flags word
+/// (IDA 0x17b868..0x17b874).
+pub unsafe fn png_write_iend(png_ptr: *mut u8) -> i32 {
+    png_write_chunk(png_ptr, PNG_IEND, ptr::null(), 0);
+    let prev = png_u32(png_ptr, 152);
+    png_set_u32(png_ptr, 152, prev | 0x10);
+    prev as i32
 }
 
 // 0x17b87c — _png_write_IDAT
-// type: 
+// type:
 #[doc(alias = "_png_write_IDAT")]
-pub fn stub_17b87c() -> ! {
-    todo!("0x17b87c _png_write_IDAT")
+pub unsafe fn stub_17b87c(png_ptr: *mut u8, data: *mut u8, len: u32) -> i32 {
+    // IDA 0x17b87c
+    png_write_idat(png_ptr, data, len)
+}
+
+/// IDAT chunk (IDA 0x17b87c..0x17b9c8): unless already finished
+/// (`+152` bit 2) or using a custom compressor (`+648`,
+/// IDA 0x17b89c), validates the zlib header (deflate method, window
+/// window size, IDA 0x17b8c0, fatal otherwise) and, for multi-byte
+/// payloads with small rows (both dims `<= 0x3FFF`, IDA 0x17b8d8..0x17b8e4),
+/// rewrites the header to the smallest window covering the image
+/// (IDA 0x17b900..0x17b98c, `FCHECK` recomputed mod 31). Always sets mode
+/// bit 2 (`+152`, IDA 0x17b9c4). Shifts use wrapping semantics like the
+/// arm `LSR`/`LSL`.
+pub unsafe fn png_write_idat(png_ptr: *mut u8, data: *mut u8, len: u32) -> i32 {
+    if png_u32(png_ptr, 152) & 4 == 0 && png_u8(png_ptr, 648) == 0 {
+        let first = *data;
+        if (first & 0xF) != 8 || (first & 0xF0) > 0x70 {
+            edge_error(png_ptr, b"Invalid zlib compression method or flags in IDAT\0".as_ptr());
+        }
+        if len > 1 {
+            let height = png_u32(png_ptr, 252);
+            if height <= 0x3FFF {
+                let width = png_u32(png_ptr, 248);
+                if width <= 0x3FFF {
+                    let row_bits = width
+                        .wrapping_mul(png_u8(png_ptr, 343) as u32)
+                        .wrapping_mul(png_u8(png_ptr, 346) as u32);
+                    let row_bytes = row_bits.wrapping_add(15) >> 3;
+                    let mut window_bits = (first >> 4) as u32;
+                    let uncompressed = height.wrapping_mul(row_bytes);
+                    let mut i = 1u32.wrapping_shl(window_bits.wrapping_add(7));
+                    loop {
+                        let mut fits = uncompressed <= i;
+                        if i <= 0xFF {
+                            fits = false;
+                        }
+                        if !fits {
+                            break;
+                        }
+                        window_bits = window_bits.wrapping_sub(1);
+                        i >>= 1;
+                    }
+                    let patched = window_bits.wrapping_mul(16) | 8;
+                    if first != patched as u8 {
+                        let check = (*data.add(1) & 0xE0) as u32;
+                        *data = patched as u8;
+                        *data.add(1) =
+                            (check.wrapping_add(31).wrapping_sub(
+                                (patched.wrapping_shl(8).wrapping_add(check)) % 0x1F,
+                            )) as u8;
+                    }
+                }
+            }
+        }
+    }
+    let end = png_write_chunk(png_ptr, PNG_IDAT, data as *const u8, len);
+    png_set_u32(png_ptr, 152, png_u32(png_ptr, 152) | 4);
+    end
 }
 
 // 0x17b9d8 — _png_write_finish_row
-// type: 
+// type:
 #[doc(alias = "_png_write_finish_row")]
-pub fn stub_17b9d8() -> ! {
-    todo!("0x17b9d8 _png_write_finish_row")
+pub unsafe fn stub_17b9d8(png_ptr: *mut u8) -> u32 {
+    // IDA 0x17b9d8
+    png_write_finish_row(png_ptr)
+}
+
+/// Adam7 interlace pass tables (IDA 0x17ba04..0x17ba68: the `v20..v47`
+/// stack words, read through `&vars0[pass] - {14, 7, 28, 21}` at IDA
+/// 0x17baec/0x17bb10).
+const PNG_PASS_XINC: [u32; 7] = [8, 8, 4, 4, 2, 2, 1];
+const PNG_PASS_XSTART: [u32; 7] = [0, 4, 0, 2, 0, 1, 0];
+const PNG_PASS_YINC: [u32; 7] = [8, 8, 8, 4, 4, 2, 2];
+const PNG_PASS_YSTART: [u32; 7] = [0, 0, 4, 0, 2, 0, 1];
+
+/// Row/pass driver (IDA 0x17b9d8..0x17bc3c): bumps the row counter
+/// (`+276`) and returns while rows remain (IDA 0x17ba6c..0x17ba80).
+/// Interlaced images (`+339`) advance the Adam7 pass (`+340`) — either by
+/// increment (IDA 0x17baa8) or by skipping empty passes via the tables
+/// above (IDA 0x17bab0..0x17bb2c) — zero the previous-row buffer and
+/// return (IDA 0x17bb38..0x17bb80). Otherwise the zlib stream (`+164`)
+/// is finished (`Z_FINISH` = 4, IDA 0x17bb94), flushing IDAT chunks on
+/// the way (IDA 0x17bba0..0x17bbc8) and writing any tail bytes
+/// (IDA 0x17bc20..0x17bc08), then `deflateReset` (IDA 0x17bc10). A
+/// nonzero `deflate` result other than 1 errors out (IDA 0x17bbd4..0x17bbf4).
+pub unsafe fn png_write_finish_row(png_ptr: *mut u8) -> u32 {
+    let row = png_u32(png_ptr, 276);
+    png_set_u32(png_ptr, 276, row.wrapping_add(1));
+    if row.wrapping_add(1) < png_u32(png_ptr, 256) {
+        return row;
+    }
+    if png_u8(png_ptr, 339) != 0 {
+        png_set_u32(png_ptr, 276, 0);
+        let xform = png_u32(png_ptr, 160);
+        // IDA `result`: the entry row number, reassigned to each pass
+        // height by the scan loop (IDA 0x17bb10) — LABEL_9 returns
+        // whichever it holds (IDA 0x17bb84).
+        let mut ret = row;
+        let mut at_label9 = false;
+        if xform & 2 != 0 {
+            png_set_u8(png_ptr, 340, png_u8(png_ptr, 340).wrapping_add(1));
+            at_label9 = true;
+        } else {
+            loop {
+                let np = png_u8(png_ptr, 340).wrapping_add(1);
+                png_set_u8(png_ptr, 340, np);
+                if np > 6 {
+                    break;
+                }
+                let p = np as usize;
+                let w = png_u32(png_ptr, 248);
+                let h = png_u32(png_ptr, 252);
+                let pw = w
+                    .wrapping_sub(1)
+                    .wrapping_add(PNG_PASS_XINC[p])
+                    .wrapping_sub(PNG_PASS_XSTART[p])
+                    / PNG_PASS_XINC[p];
+                let ph = h
+                    .wrapping_sub(1)
+                    .wrapping_add(PNG_PASS_YINC[p])
+                    .wrapping_sub(PNG_PASS_YSTART[p])
+                    / PNG_PASS_YINC[p];
+                png_set_u32(png_ptr, 260, pw);
+                png_set_u32(png_ptr, 256, ph);
+                ret = ph;
+                if (xform & 2) != 0 || (pw != 0 && ph != 0) {
+                    at_label9 = true;
+                    break;
+                }
+            }
+        }
+        // IDA LABEL_9 (0x17bb38): passes 0..=6 with a live row buffer
+        // return early; pass 7 falls through to the zlib finish.
+        if at_label9 && png_u8(png_ptr, 340) <= 6 {
+            let prev = ptr::read_unaligned(png_ptr.add(280) as *const *mut u8);
+            if !prev.is_null() {
+                let pixd = png_u8(png_ptr, 347) as u32 * png_u8(png_ptr, 344) as u32;
+                let width = png_u32(png_ptr, 248);
+                let n = if pixd > 7 {
+                    (pixd >> 3).wrapping_mul(width)
+                } else {
+                    (width.wrapping_mul(pixd).wrapping_add(7)) >> 3
+                };
+                ptr::write_bytes(prev, 0, n.wrapping_add(1) as usize);
+                // IDA 0x17bb80 returns the `memset` pointer, truncated.
+                return prev as u32;
+            }
+            return ret;
+        }
+    }
+    loop {
+        let r = edge_deflate(png_ptr.add(164), 4);
+        if r != 0 {
+            if r != 1 {
+                let msg = ptr::read_unaligned(png_ptr.add(188) as *const *const u8);
+                edge_error(
+                    png_ptr,
+                    if msg.is_null() { b"zlib error\0".as_ptr() } else { msg },
+                );
+            }
+            break;
+        }
+        if png_u32(png_ptr, 180) == 0 {
+            let zbuf = ptr::read_unaligned(png_ptr.add(220) as *const *mut u8);
+            let zlen = png_u32(png_ptr, 224);
+            png_write_idat(png_ptr, zbuf, zlen);
+            ptr::write_unaligned(png_ptr.add(176) as *mut *mut u8, zbuf);
+            png_set_u32(png_ptr, 180, zlen);
+        }
+    }
+    let avail = png_u32(png_ptr, 180);
+    let zlen = png_u32(png_ptr, 224);
+    if avail < zlen {
+        png_write_idat(
+            png_ptr,
+            ptr::read_unaligned(png_ptr.add(220) as *const *mut u8),
+            zlen.wrapping_sub(avail),
+        );
+    }
+    let reset = edge_deflate_reset(png_ptr.add(164));
+    png_set_u32(png_ptr, 208, 0);
+    reset as u32
 }
 
 // 0x17bc54 — _png_write_filtered_row
-// type: 
+// type:
 #[doc(alias = "_png_write_filtered_row")]
-pub fn stub_17bc54() -> ! {
-    todo!("0x17bc54 _png_write_filtered_row")
+pub unsafe fn stub_17bc54(png_ptr: *mut u8, row: *mut u8) -> u32 {
+    // IDA 0x17bc54
+    png_write_filtered_row(png_ptr, row)
+}
+
+/// Filtered-row pump (IDA 0x17bc54..0x17bd20): feeds the row to zlib
+/// (`next_in` at `+164`, `avail_in` = word `+308` + 1, IDA 0x17bc60..0x17bc70),
+/// flushing IDAT chunks while output space runs out (IDA 0x17bc7c..0x17bcd4),
+/// swaps the two row buffers (IDA 0x17bce0..0x17bcf4), finishes the row
+/// (IDA 0x17bcf8) and flushes the stream when the flush-row limit
+/// (`+384/+388`) is hit (IDA 0x17bd00..0x17bd20).
+pub unsafe fn png_write_filtered_row(png_ptr: *mut u8, row: *mut u8) -> u32 {
+    ptr::write_unaligned(png_ptr.add(164) as *mut *mut u8, row);
+    png_set_u32(png_ptr, 168, png_u32(png_ptr, 308).wrapping_add(1));
+    loop {
+        let r = edge_deflate(png_ptr.add(164), 0);
+        if r != 0 {
+            let msg = ptr::read_unaligned(png_ptr.add(188) as *const *const u8);
+            edge_error(png_ptr, if msg.is_null() { b"zlib error\0".as_ptr() } else { msg });
+        }
+        if png_u32(png_ptr, 180) == 0 {
+            let zbuf = ptr::read_unaligned(png_ptr.add(220) as *const *mut u8);
+            let zlen = png_u32(png_ptr, 224);
+            png_write_idat(png_ptr, zbuf, zlen);
+            ptr::write_unaligned(png_ptr.add(176) as *mut *mut u8, zbuf);
+            png_set_u32(png_ptr, 180, zlen);
+        }
+        if png_u32(png_ptr, 168) == 0 {
+            break;
+        }
+    }
+    let a = ptr::read_unaligned(png_ptr.add(280) as *const *mut u8);
+    if !a.is_null() {
+        let b = ptr::read_unaligned(png_ptr.add(284) as *const *mut u8);
+        ptr::write_unaligned(png_ptr.add(284) as *mut *mut u8, a);
+        ptr::write_unaligned(png_ptr.add(280) as *mut *mut u8, b);
+    }
+    let fr = png_write_finish_row(png_ptr);
+    let grown = png_u32(png_ptr, 388).wrapping_add(1);
+    let limit = png_u32(png_ptr, 384);
+    png_set_u32(png_ptr, 388, grown);
+    if limit != 0 && grown >= limit {
+        return edge_flush(png_ptr);
+    }
+    fr
 }
 
 // 0x17bd2c — _png_write_find_filter
@@ -260,10 +1203,198 @@ pub fn stub_17bd2c() -> ! {
 }
 
 // 0x17f65c — _png_write_IHDR
-// type: 
+// type:
 #[doc(alias = "_png_write_IHDR")]
-pub fn stub_17f65c() -> ! {
-    todo!("0x17f65c _png_write_IHDR")
+pub unsafe fn stub_17f65c(
+    png_ptr: *mut u8,
+    width: u32,
+    height: u32,
+    bit_depth: u32,
+    color_type: i32,
+    compression: i32,
+    filter: i32,
+    interlace: u32,
+) -> i32 {
+    // IDA 0x17f65c
+    png_write_ihdr(png_ptr, width, height, bit_depth, color_type, compression, filter, interlace)
+}
+
+/// IHDR chunk (IDA 0x17f65c..0x17fa60, libpng 1.2.3): validates
+/// bit-depth/color-type pairs (IDA 0x17f68c..0x17f774, fatal otherwise),
+/// warns on bad compression/filter/interlace values but writes anyway
+/// (IDA 0x17f780..0x17f7f4; filter 64 is accepted for truecolor when word
+/// `+608` bit 2 is set and `+152` bit 12 clear, IDA 0x17f7a8..0x17f7bc),
+/// derives channels/rowbytes (IDA 0x17f800..0x17f868), writes the
+/// 13-byte chunk (IDA 0x17f874..0x17f8c0), installs the zalloc/zfree hooks
+/// (IDA 0x17f8dc..0x17f8e4), applies compression-level defaults
+/// (IDA 0x17f910..0x17f970 — the `+232` store is conditional on
+/// `+156` bit 4 per disasm 17f960..0x17f970) and `deflateInit2_`s the
+/// stream (IDA 0x17f98c, version `"1.2.3"`, size 56), returning the
+/// zbuffer size (IDA 0x17f9f4..0x17fa0c). `deflateInit2_` errors map to
+/// `png_error` texts (IDA 0x17f99c..0x17f9ec).
+#[allow(clippy::too_many_arguments)]
+pub unsafe fn png_write_ihdr(
+    png_ptr: *mut u8,
+    width: u32,
+    height: u32,
+    bit_depth: u32,
+    color_type: i32,
+    compression: i32,
+    mut filter: i32,
+    mut interlace: u32,
+) -> i32 {
+    let bd = bit_depth as u8;
+    let channels: u8 = match color_type {
+        0 => {
+            if bit_depth <= 0x10 && ((1u32.wrapping_shl(bit_depth) & 0x10116) != 0) {
+                1
+            } else {
+                edge_error(png_ptr, b"Invalid bit depth for grayscale image\0".as_ptr());
+            }
+        }
+        2 => {
+            if bit_depth != 8 && bit_depth != 16 {
+                edge_error(png_ptr, b"Invalid bit depth for RGB image\0".as_ptr());
+            }
+            3
+        }
+        3 => {
+            if bit_depth > 8 || ((1u32.wrapping_shl(bit_depth) & 0x116) == 0) {
+                edge_error(png_ptr, b"Invalid bit depth for paletted image\0".as_ptr());
+            }
+            1
+        }
+        4 => {
+            if bit_depth != 8 && bit_depth != 16 {
+                edge_error(png_ptr, b"Invalid bit depth for grayscale+alpha image\0".as_ptr());
+            }
+            2
+        }
+        6 => {
+            if bit_depth != 8 && bit_depth != 16 {
+                edge_error(png_ptr, b"Invalid bit depth for RGBA image\0".as_ptr());
+            }
+            4
+        }
+        _ => edge_error(png_ptr, b"Invalid image color type specified\0".as_ptr()),
+    };
+    if compression != 0 {
+        edge_warning(png_ptr, b"Invalid compression type specified\0".as_ptr());
+    }
+    let skip_filter_check = png_u32(png_ptr, 608) & 4 != 0
+        && png_u32(png_ptr, 152) & 0x1000 == 0
+        && (color_type == 2 || color_type == 6)
+        && filter == 64;
+    if !skip_filter_check && filter != 0 {
+        edge_warning(png_ptr, b"Invalid filter type specified\0".as_ptr());
+        filter = 0;
+    }
+    if interlace > 1 {
+        edge_warning(png_ptr, b"Invalid interlace type specified\0".as_ptr());
+        interlace = 1;
+    }
+    png_set_u8(png_ptr, 343, bd);
+    png_set_u32(png_ptr, 248, width);
+    png_set_u8(png_ptr, 342, color_type as u8);
+    let pixd = channels.wrapping_mul(bd);
+    png_set_u8(png_ptr, 648, 0);
+    let rowbytes = if pixd > 7 {
+        (pixd as u32 >> 3).wrapping_mul(width)
+    } else {
+        (width.wrapping_mul(pixd as u32).wrapping_add(7)) >> 3
+    };
+    png_set_u8(png_ptr, 345, pixd);
+    png_set_u32(png_ptr, 260, width);
+    png_set_u8(png_ptr, 339, interlace as u8);
+    png_set_u32(png_ptr, 264, rowbytes);
+    png_set_u32(png_ptr, 252, height);
+    png_set_u8(png_ptr, 347, channels);
+    png_set_u8(png_ptr, 344, bd);
+    png_set_u8(png_ptr, 616, filter as u8);
+    let mut buf = [0u8; 13];
+    edge_save_u32(buf.as_mut_ptr(), width);
+    edge_save_u32(buf.as_mut_ptr().add(4), height);
+    buf[8] = bd;
+    buf[9] = color_type as u8;
+    buf[10] = 0;
+    buf[11] = filter as u8;
+    buf[12] = interlace as u8;
+    png_write_chunk(png_ptr, PNG_IHDR, buf.as_ptr(), 13);
+    // zalloc/zfree hook addresses (IDA 0x17f8dc..0x17f8e4); the edge
+    // stubs diverge if zlib ever calls them, like the real hooks would
+    // only after a port binds them.
+    ptr::write_unaligned(
+        png_ptr.add(196) as *mut usize,
+        crate::generated_plat_as::stub_15cf64 as *const () as usize,
+    );
+    ptr::write_unaligned(
+        png_ptr.add(200) as *mut usize,
+        crate::generated_plat_as::stub_15d41c as *const () as usize,
+    );
+    ptr::write_unaligned(png_ptr.add(204) as *mut *mut u8, png_ptr);
+    if png_u8(png_ptr, 341) == 0 {
+        png_set_u8(
+            png_ptr,
+            341,
+            if color_type == 3 || bd <= 7 { 8 } else { 0xF8 },
+        );
+    }
+    let strat_flags = png_u32(png_ptr, 156);
+    if strat_flags & 1 == 0 {
+        png_set_u32(
+            png_ptr,
+            244,
+            if png_u8(png_ptr, 341) == 8 { strat_flags & 1 } else { 1 },
+        );
+    }
+    let strategy = png_u32(png_ptr, 244) as i32;
+    if strat_flags & 2 == 0 {
+        png_set_u32(png_ptr, 228, -1i32 as u32);
+    }
+    if strat_flags & 4 == 0 {
+        png_set_u32(png_ptr, 240, 8);
+    }
+    let mem_level = png_u32(png_ptr, 240) as i32;
+    if strat_flags & 8 == 0 {
+        png_set_u32(png_ptr, 236, 15);
+    }
+    if strat_flags & 0x10 == 0 {
+        png_set_u32(png_ptr, 232, 8);
+    }
+    let init = edge_deflate_init2(
+        png_ptr.add(164),
+        png_u32(png_ptr, 228) as i32,
+        png_u32(png_ptr, 232) as i32,
+        png_u32(png_ptr, 236) as i32,
+        mem_level,
+        strategy,
+    );
+    if init != 0 {
+        match init {
+            -6 => edge_error(
+                png_ptr,
+                b"zlib failed to initialize compressor -- version error\0".as_ptr(),
+            ),
+            -2 => edge_error(
+                png_ptr,
+                b"zlib failed to initialize compressor -- stream error\0".as_ptr(),
+            ),
+            -4 => edge_error(
+                png_ptr,
+                b"zlib failed to initialize compressor -- mem error\0".as_ptr(),
+            ),
+            _ => edge_error(png_ptr, b"zlib failed to initialize compressor\0".as_ptr()),
+        }
+    }
+    let zlen = png_u32(png_ptr, 224);
+    ptr::write_unaligned(
+        png_ptr.add(176) as *mut *mut u8,
+        ptr::read_unaligned(png_ptr.add(220) as *const *mut u8),
+    );
+    png_set_u32(png_ptr, 180, zlen);
+    png_set_u32(png_ptr, 208, 0);
+    png_set_u32(png_ptr, 152, 1);
+    zlen as i32
 }
 
 // 0x17fa64 — _TIFFVGetFieldDefaulted
