@@ -474,6 +474,204 @@ impl ControlViewState {
 }
 static CONTROL_VIEW: std::sync::LazyLock<ControlViewState> =
     std::sync::LazyLock::new(ControlViewState::default);
+/// CharacterMove / ControlComponent harness + ObjC-bind functor slots
+/// (IDA 0x463cc..0x4bfcc; see per-stub notes).
+/// `boost::bind`/`function` become closures/`Box<dyn Fn>`; `SharedPtr` is
+/// `rbx_core::SharedPtr` (`Arc`), never `boost::shared_ptr`; `rbx::signals`
+/// slots are `CharacterMovePropConnection` below. ObjC `id` is `ControlId`;
+/// `None`/`NIL_CONTROL` is `nil`.
+/// Host id standing in for the `CharacterMove` `self`.
+const CHARACTER_MOVE_ID: ControlId = 2;
+/// `setUserInteractionEnabled:` latch for `-[ControlComponent init]` (IDA 0x47178).
+static CONTROL_USER_INTERACTION: AtomicBool = AtomicBool::new(false);
+/// `bind_t<void(objc_object *, SEL, bool, void *, UIEvent), ...>` bundle
+/// (IDA 0x463cc): the bound target; the three call args (`bool`, `void *,
+/// `UIEvent`) arrive at invoke (0x4642c).
+#[derive(Debug, Clone, Copy, Default)]
+pub struct UiOverlayEventCallback {
+    pub target: Option<ControlId>,
+}
+/// `bind_t<void(objc_object *, SEL, PropertyDescriptor const *), ...>` bundle
+/// (IDA 0x4a21c): bound target for `localCharacterMovementEnabledChange:`.
+#[derive(Debug, Clone, Copy, Default)]
+pub struct PropChangedCallback {
+    pub target: Option<ControlId>,
+}
+/// `bind_t<void(objc_object *, SEL, shared_ptr<TextBox>), ...>` bundle
+/// (IDA 0x4b010): bound target for `textBoxFocusGained:`.
+#[derive(Debug, Clone, Copy, Default)]
+pub struct TextBoxFocusCallback {
+    pub target: Option<ControlId>,
+}
+/// `bind_t<void(objc_object *, SEL, DataModel *), ...>` bundle (IDA 0x4bf6c):
+/// bound target for `dataModelChanged:`.
+#[derive(Debug, Clone, Copy, Default)]
+pub struct DataModelChangedCallback {
+    pub target: Option<ControlId>,
+}
+/// `rbx::signals::signal<void(PropertyDescriptor const *)>` slot holding the
+/// `bind_t<void(objc_object *, SEL, void const *)>` for `CharacterMove`
+/// (IDA 0x46c18..0x46eb4): `connect` allocates it (`operator new(28)`),
+/// `call` forwards the descriptor, `disconnect` drops the weak ref.
+#[derive(Debug, Clone, Copy, Default)]
+pub struct CharacterMovePropConnection {
+    pub target: Option<ControlId>,
+    pub connected: bool,
+}
+impl CharacterMovePropConnection {
+    pub fn connect(target: Option<ControlId>) -> Self {
+        CHARACTER_MOVE.bump(&CHARACTER_MOVE.prop_connects);
+        let live = target.is_some();
+        CHARACTER_MOVE.prop_connected.store(live, Ordering::SeqCst);
+        Self { target, connected: live }
+    }
+    pub fn disconnect(&mut self) {
+        self.connected = false;
+        CHARACTER_MOVE.prop_connected.store(false, Ordering::SeqCst);
+    }
+    pub fn call(&self, descriptor_present: bool) -> bool {
+        if !self.connected || self.target.is_none() {
+            return false;
+        }
+        let _ = descriptor_present;
+        CHARACTER_MOVE.prop_changed();
+        true
+    }
+}
+/// Minimal `CharacterMove` counterpart (`Client/iOS/CharacterMove.*`):
+/// the tracked `thumbstickTouch`, the last `moveLocalCharacter` vector and
+/// observable counters for the `UserInputService` steps out of slice.
+#[derive(Debug, Default)]
+pub struct CharacterMoveState {
+    initialized: AtomicBool,
+    prop_connected: AtomicBool,
+    setup_runs: AtomicU32,
+    prop_connects: AtomicU32,
+    prop_change_calls: AtomicU32,
+    thumbstick_touch: parking_lot::Mutex<Option<ControlId>>,
+    move_calls: AtomicU32,
+    last_move: parking_lot::Mutex<(f32, f32)>,
+    cancel_calls: AtomicU32,
+}
+impl CharacterMoveState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-[CharacterMove init:]` (IDA 0x466cc): super
+    /// `-[ThumbStickControl init:]` with the frame; host init succeeds.
+    pub fn init_move(&self) -> Option<ControlId> {
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(CHARACTER_MOVE_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    /// `-[CharacterMove setupCharacterMoveConnection]` (IDA 0x46704): the
+    /// `UserInputService` lookup (0x46738); a nil service skips the connect,
+    /// else `methodForSelector:` + `signal::connect<bind_t>` wires
+    /// `localCharacterMovementEnabledChange:` (0x4678e..0x4679c), with a
+    /// `weak_release` when the slot is held (0x467a4..0x467aa).
+    pub fn setup_connection(&self, has_input_service: bool) -> Option<CharacterMovePropConnection> {
+        if !has_input_service {
+            return None;
+        }
+        self.bump(&self.setup_runs);
+        Some(CharacterMovePropConnection::connect(Some(CHARACTER_MOVE_ID)))
+    }
+    pub fn setup_run_count(&self) -> u32 {
+        self.setup_runs.load(Ordering::SeqCst)
+    }
+    pub fn is_prop_connected(&self) -> bool {
+        self.prop_connected.load(Ordering::SeqCst)
+    }
+    /// `-[CharacterMove localCharacterMovementEnabledChange:]` (IDA 0x467e8):
+    /// empty body; the dispatch itself is counted.
+    pub fn prop_changed(&self) {
+        self.bump(&self.prop_change_calls);
+    }
+    pub fn prop_change_count(&self) -> u32 {
+        self.prop_change_calls.load(Ordering::SeqCst)
+    }
+    /// `-[CharacterMove touchesEnded:withEvent:]` (0x467ec) /
+    /// `touchesCancelled:` (0x468bc): fast-enumerate the touches
+    /// (`countByEnumeratingWithState`, mutation-guarded); the tracked
+    /// `thumbstickTouch` lifting runs `cancelMovement`.
+    pub fn end_touches(&self, touches: &[ControlTouch]) -> bool {
+        let tracked = *self.thumbstick_touch.lock();
+        if tracked.is_some() && touches.iter().any(|t| Some(t.id) == tracked) {
+            self.cancel_movement(true);
+            return true;
+        }
+        false
+    }
+    /// `-[CharacterMove cancelMovement]` (IDA 0x4698c): super
+    /// `-[ThumbStickControl cancelMovement]` (0x469b2), then
+    /// `UserInputService::moveLocalCharacter(zero, 0)` (0x469c4..0x469de);
+    /// a nil service skips the move.
+    pub fn cancel_movement(&self, has_input_service: bool) {
+        *self.thumbstick_touch.lock() = None;
+        *self.last_move.lock() = (0.0, 0.0);
+        self.bump(&self.cancel_calls);
+        if has_input_service {
+            self.bump(&self.move_calls);
+        }
+    }
+    /// `-[CharacterMove touchesMoved:withEvent:]` (IDA 0x469e8): super
+    /// `touchesMoved:` first (0x46a36), then the enumerate hunts the tracked
+    /// `thumbstickTouch` (0x46a66..0x46aa2); a nil `UserInputService` returns
+    /// early (0x46adc). Otherwise the move vector (inner-center minus
+    /// outer-center, 0x46b00..0x46b96, quarter-frame scaled 0x46bba..0x46bc6)
+    /// forwards via `moveLocalCharacter` (0x46be8); nil image views read as
+    /// zero centers, so the touch point carries the vector here.
+    pub fn move_stick(&self, touches: &[ControlTouch], has_input_service: bool) -> bool {
+        let tracked = *self.thumbstick_touch.lock();
+        let Some(id) = tracked else { return false };
+        let Some(touch) = touches.iter().find(|t| Some(t.id) == Some(id)) else { return false };
+        if !has_input_service {
+            return false;
+        }
+        *self.last_move.lock() = (touch.x, touch.y);
+        self.bump(&self.move_calls);
+        true
+    }
+    pub fn set_thumbstick_touch(&self, touch: Option<ControlId>) {
+        *self.thumbstick_touch.lock() = touch;
+    }
+    pub fn thumbstick_touch(&self) -> Option<ControlId> {
+        *self.thumbstick_touch.lock()
+    }
+    pub fn last_move(&self) -> (f32, f32) {
+        *self.last_move.lock()
+    }
+    pub fn move_call_count(&self) -> u32 {
+        self.move_calls.load(Ordering::SeqCst)
+    }
+    pub fn cancel_call_count(&self) -> u32 {
+        self.cancel_calls.load(Ordering::SeqCst)
+    }
+}
+static CHARACTER_MOVE: std::sync::LazyLock<CharacterMoveState> =
+    std::sync::LazyLock::new(CharacterMoveState::default);
+/// `-[ControlComponent init]` (IDA 0x47178): super init (0x4719c, nil stays
+/// nil) then `setUserInteractionEnabled:1` (0x471b4).
+pub fn control_component_init(super_ok: bool) -> Option<ControlId> {
+    if !super_ok {
+        return None;
+    }
+    CONTROL_USER_INTERACTION.store(true, Ordering::SeqCst);
+    Some(CONTROL_SELF_ID)
+}
+pub fn control_user_interaction_enabled() -> bool {
+    CONTROL_USER_INTERACTION.load(Ordering::SeqCst)
+}
+/// `-[ControlComponent getUserInputServiceForGameDataModel]` (IDA 0x47338):
+/// `getGameFromControlView` (0x47368) + `shared_count` copy (0x473a0), then
+/// `ServiceProvider::find<UserInputService>` (0x473b2) and `release`
+/// (0x473be). The `Arc` clone/drop is the count handoff; a missing game has
+/// no service.
+pub fn user_input_service_for_game(has_game: bool, service_present: bool) -> bool {
+    has_game && service_present
+}
 // 0x1d390 — -[HomeViewController btnPlaceLauncher]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController btnPlaceLauncher]")]
@@ -10655,64 +10853,84 @@ pub fn stub_45454() -> ! {
 // 0x466cc — -[CharacterMove init:]
 // type: id __cdecl(CharacterMove *self, SEL, CGRect)
 #[doc(alias = "-[CharacterMove init:]")]
-pub fn stub_466cc() -> ! {
-    todo!("0x466cc -[CharacterMove init:]")
+pub fn stub_466cc() -> Option<ControlId> {
+    // IDA 0x466cc `-[CharacterMove init:]`: super `-[ThumbStickControl init:]`
+    // with the frame (0x46702).
+    CHARACTER_MOVE.init_move()
 }
 
 // 0x46704 — -[CharacterMove setupCharacterMoveConnection]
 // type: void __cdecl(CharacterMove *self, SEL)
 #[doc(alias = "-[CharacterMove setupCharacterMoveConnection]")]
-pub fn stub_46704() -> ! {
-    todo!("0x46704 -[CharacterMove setupCharacterMoveConnection]")
+pub fn stub_46704(has_input_service: bool) {
+    // IDA 0x46704 `-[CharacterMove setupCharacterMoveConnection]`: the
+    // `UserInputService` lookup (0x46738); nil skips the connect, else
+    // `methodForSelector:` + `signal::connect<bind_t>` (0x4678e..0x4679c).
+    CHARACTER_MOVE.setup_connection(has_input_service);
 }
 
 // 0x467e8 — -[CharacterMove localCharacterMovementEnabledChange:]
 // type: void __cdecl(CharacterMove *self, SEL, const PropertyDescriptor *)
 #[doc(alias = "-[CharacterMove localCharacterMovementEnabledChange:]")]
-pub fn stub_467e8() -> ! {
-    todo!("0x467e8 -[CharacterMove localCharacterMovementEnabledChange:]")
+pub fn stub_467e8() {
+    // IDA 0x467e8 `-[CharacterMove localCharacterMovementEnabledChange:]`:
+    // empty body; the dispatch is counted on the harness.
+    CHARACTER_MOVE.prop_changed();
 }
 
 // 0x467ec — -[CharacterMove touchesEnded:withEvent:]
 // type: void __cdecl(CharacterMove *self, SEL, id, id)
 #[doc(alias = "-[CharacterMove touchesEnded:withEvent:]")]
-pub fn stub_467ec() -> ! {
-    todo!("0x467ec -[CharacterMove touchesEnded:withEvent:]")
+pub fn stub_467ec(touches: &[ControlTouch]) {
+    // IDA 0x467ec `-[CharacterMove touchesEnded:withEvent:]`: enumerate the
+    // touches; the tracked `thumbstickTouch` lifting runs `cancelMovement`.
+    CHARACTER_MOVE.end_touches(touches);
 }
 
 // 0x468bc — -[CharacterMove touchesCancelled:withEvent:]
 // type: void __cdecl(CharacterMove *self, SEL, id, id)
 #[doc(alias = "-[CharacterMove touchesCancelled:withEvent:]")]
-pub fn stub_468bc() -> ! {
-    todo!("0x468bc -[CharacterMove touchesCancelled:withEvent:]")
+pub fn stub_468bc(touches: &[ControlTouch]) {
+    // IDA 0x468bc `-[CharacterMove touchesCancelled:withEvent:]`: same shape
+    // as `touchesEnded:` above; the tracked touch runs `cancelMovement`.
+    CHARACTER_MOVE.end_touches(touches);
 }
 
 // 0x4698c — -[CharacterMove cancelMovement]
 // type: void __cdecl(CharacterMove *self, SEL)
 #[doc(alias = "-[CharacterMove cancelMovement]")]
-pub fn stub_4698c() -> ! {
-    todo!("0x4698c -[CharacterMove cancelMovement]")
+pub fn stub_4698c(has_input_service: bool) {
+    // IDA 0x4698c `-[CharacterMove cancelMovement]`: super cancel (0x469b2),
+    // then `UserInputService::moveLocalCharacter(zero, 0)` (0x469c4..0x469de).
+    CHARACTER_MOVE.cancel_movement(has_input_service);
 }
 
 // 0x469e8 — -[CharacterMove touchesMoved:withEvent:]
 // type: void __cdecl(CharacterMove *self, SEL, id, id)
 #[doc(alias = "-[CharacterMove touchesMoved:withEvent:]")]
-pub fn stub_469e8() -> ! {
-    todo!("0x469e8 -[CharacterMove touchesMoved:withEvent:]")
+pub fn stub_469e8(touches: &[ControlTouch], has_input_service: bool) -> bool {
+    // IDA 0x469e8 `-[CharacterMove touchesMoved:withEvent:]`: super first,
+    // hunt the tracked touch, service guard, then the inner-minus-outer
+    // vector forwards via `moveLocalCharacter`.
+    CHARACTER_MOVE.move_stick(touches, has_input_service)
 }
 
 // 0x47178 — -[ControlComponent init]
 // type: ControlComponent *__cdecl(ControlComponent *self, SEL)
 #[doc(alias = "-[ControlComponent init]")]
-pub fn stub_47178() -> ! {
-    todo!("0x47178 -[ControlComponent init]")
+pub fn stub_47178(super_ok: bool) -> Option<ControlId> {
+    // IDA 0x47178 `-[ControlComponent init]`: super init (nil stays nil) +
+    // `setUserInteractionEnabled:1`.
+    control_component_init(super_ok)
 }
 
 // 0x47338 — -[ControlComponent getUserInputServiceForGameDataModel]
 // type: UserInputService *__cdecl(ControlComponent *self, SEL)
 #[doc(alias = "-[ControlComponent getUserInputServiceForGameDataModel]")]
-pub fn stub_47338() -> ! {
-    todo!("0x47338 -[ControlComponent getUserInputServiceForGameDataModel]")
+pub fn stub_47338(has_game: bool, service_present: bool) -> bool {
+    // IDA 0x47338 `-[ControlComponent getUserInputServiceForGameDataModel]`:
+    // game lookup + `shared_count` copy + `ServiceProvider::find` + release.
+    user_input_service_for_game(has_game, service_present)
 }
 
 // 0x4c248 — -[GameInputViewController init:withBundle:withGame:overlayDataModel:]
@@ -23002,8 +23220,13 @@ pub fn stub_432c8() {
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_463cc() -> ! {
-    todo!("0x463cc boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_463cc(op: crate::roblox_view::FunctorOp, slot: &mut Option<UiOverlayEventCallback>) -> bool {
+    // IDA 0x463cc `functor_manager<bind_t(objc, bool, void *, UIEvent)>::manage`:
+    // op <= 1 clones the 12-byte functor into `a2` (0x463de..0x463e6), op 2 is
+    // a small-object no-op, op 3 `strcmp`s the stored type name (match rebinds
+    // `a2` to the source, mismatch clears it), op >= 4 publishes the `bind_t`
+    // typeinfo. `boost::shared_ptr` is `rbx_core::SharedPtr` (Arc) here.
+    crate::roblox_view::manage_boxed_slot(op, slot)
 }
 
 // 0x4642c — boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>,void,bool,objc_selector *,RBX>::invoke(boost::detail::function::function_buffer &,bool,objc_selector *,RBX)
@@ -23011,8 +23234,14 @@ pub fn stub_463cc() -> ! {
 // type: int __fastcall(int, int, int, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>,void,bool,objc_selector *,RBX>::invoke(boost::detail::function::function_buffer &,bool,objc_selector *,RBX)")]
-pub fn stub_4642c() -> ! {
-    todo!("0x4642c boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>,void,bool,objc_selector *,RBX>::invoke(boost::detail::function::function_buffer &,bool,objc_selector *,RBX)")
+pub fn stub_4642c(slot: &Option<UiOverlayEventCallback>, processed: bool, has_event: bool) {
+    // IDA 0x4642c `void_function_obj_invoker3<bind_t(objc, bool, void *,
+    // UIEvent)>::invoke`: chains into `list5::operator()` (sole call, 0x46462),
+    // i.e. `f(target, sel, processed, input, event)` — the
+    // `postMouseEventProcessedFromOverlay:` shape (cf. 0x47c40).
+    if matches!(slot, Some(cb) if cb.target.is_some()) {
+        stub_47c40(processed, has_event);
+    }
 }
 
 // 0x46c18 — rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)
@@ -23020,8 +23249,12 @@ pub fn stub_4642c() -> ! {
 // type: int __fastcall(int *, int, __int64 *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)")]
-pub fn stub_46c18() -> ! {
-    todo!("0x46c18 rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)")
+pub fn stub_46c18(target: Option<ControlId>) -> CharacterMovePropConnection {
+    // IDA 0x46c18 `signal<void(PropertyDescriptor const *)>::connect<bind_t>`:
+    // `operator new(28)` slot (0x46c30), vtable + bind copy (0x46c48..0x46c6e),
+    // `insert` (0x46c72), out-param store + `weak_add` (0x46c78..0x46c80).
+    // `boost::bind` becomes the stored target.
+    CharacterMovePropConnection::connect(target)
 }
 
 // 0x46c8c — rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()
@@ -23029,8 +23262,10 @@ pub fn stub_46c18() -> ! {
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_46c8c() -> ! {
-    todo!("0x46c8c rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_46c8c(slot: &mut CharacterMovePropConnection) {
+    // IDA 0x46c8c `callable_slot<...>::~callable_slot` (D1): vtable reset
+    // (0x46cce) + `intrusive_ptr_release` when the slot is held (0x46cee..0x46cf6).
+    slot.disconnect();
 }
 
 // 0x46d38 — rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()
@@ -23038,8 +23273,11 @@ pub fn stub_46c8c() -> ! {
 // type: void __fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_46d38() -> ! {
-    todo!("0x46d38 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_46d38(slot: CharacterMovePropConnection) {
+    // IDA 0x46d38 `callable_slot<...>::~callable_slot` (D0, deleting): D1
+    // above + `operator delete` (0x46da8); the host `Arc` drop frees.
+    let mut slot = slot;
+    slot.disconnect();
 }
 
 // 0x46de8 — rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
@@ -23047,8 +23285,10 @@ pub fn stub_46d38() -> ! {
 // type: int __fastcall(int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_46de8() -> ! {
-    todo!("0x46de8 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_46de8(slot: &CharacterMovePropConnection, descriptor_present: bool) -> bool {
+    // IDA 0x46de8 `callable<slot, bind_t, 1>::call`: forwards
+    // `(target, sel, desc)` through the bound functor (sole indirect call).
+    slot.call(descriptor_present)
 }
 
 // 0x46df8 — non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
@@ -23056,8 +23296,10 @@ pub fn stub_46de8() -> ! {
 // type: int __fastcall(int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_46df8() -> ! {
-    todo!("0x46df8 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_46df8(slot: &CharacterMovePropConnection, descriptor_present: bool) -> bool {
+    // IDA 0x46df8 non-virtual thunk to `callable::call`: the `this - 4`
+    // adjust is a no-op on the host; same forward as 0x46de8.
+    slot.call(descriptor_present)
 }
 
 // 0x46e08 — rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()
@@ -23065,8 +23307,10 @@ pub fn stub_46df8() -> ! {
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
-pub fn stub_46e08() -> ! {
-    todo!("0x46e08 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_46e08(slot: &mut CharacterMovePropConnection) {
+    // IDA 0x46e08 `callable<...>::~callable` (D1): vtable reset (0x46e4a) +
+    // `intrusive_ptr_release` when held (0x46e6a..0x46e72).
+    slot.disconnect();
 }
 
 // 0x46eb4 — rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()
@@ -23074,8 +23318,11 @@ pub fn stub_46e08() -> ! {
 // type: void __fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
-pub fn stub_46eb4() -> ! {
-    todo!("0x46eb4 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_46eb4(slot: CharacterMovePropConnection) {
+    // IDA 0x46eb4 `callable<...>::~callable` (D0, deleting): D1 above +
+    // `operator delete` (0x46f24); the host `Arc` drop frees.
+    let mut slot = slot;
+    slot.disconnect();
 }
 
 // 0x4a21c — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)
@@ -23083,8 +23330,11 @@ pub fn stub_46eb4() -> ! {
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_4a21c() -> ! {
-    todo!("0x4a21c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_4a21c(op: crate::roblox_view::FunctorOp, slot: &mut Option<PropChangedCallback>) -> bool {
+    // IDA 0x4a21c `functor_manager<bind_t(objc, PropertyDescriptor
+    // const *)>::manage`: same clone/no-op/strcmp/typeinfo dispatch as 0x463cc
+    // (0x4a22c..0x4a278). `boost::shared_ptr` is `rbx_core::SharedPtr`.
+    crate::roblox_view::manage_boxed_slot(op, slot)
 }
 
 // 0x4a27c — boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::Reflection::PropertyDescriptor const>::invoke(boost::detail::function::function_buffer &,RBX::Reflection::PropertyDescriptor const)
@@ -23092,8 +23342,14 @@ pub fn stub_4a21c() -> ! {
 // type: int __fastcall(int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::Reflection::PropertyDescriptor const>::invoke(boost::detail::function::function_buffer &,RBX::Reflection::PropertyDescriptor const)")]
-pub fn stub_4a27c() -> ! {
-    todo!("0x4a27c boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::Reflection::PropertyDescriptor const>::invoke(boost::detail::function::function_buffer &,RBX::Reflection::PropertyDescriptor const)")
+pub fn stub_4a27c(slot: &Option<PropChangedCallback>, descriptor_present: bool) {
+    // IDA 0x4a27c `void_function_obj_invoker1<bind_t(objc, PropertyDescriptor
+    // const *)>::invoke`: `f(target, sel, desc)` (sole call) — the
+    // `localCharacterMovementEnabledChange:` target (cf. 0x467e8).
+    if matches!(slot, Some(cb) if cb.target.is_some()) {
+        let _ = descriptor_present;
+        CHARACTER_MOVE.prop_changed();
+    }
 }
 
 // 0x4b010 — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)
@@ -23101,8 +23357,10 @@ pub fn stub_4a27c() -> ! {
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,rbx_core::SharedPtr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,rbx_core::SharedPtr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_4b010() -> ! {
-    todo!("0x4b010 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_4b010(op: crate::roblox_view::FunctorOp, slot: &mut Option<TextBoxFocusCallback>) -> bool {
+    // IDA 0x4b010 `functor_manager<bind_t(objc, shared_ptr<TextBox>)>::manage`:
+    // same clone/no-op/strcmp/typeinfo dispatch as 0x463cc (0x4b020..0x4b06c).
+    crate::roblox_view::manage_boxed_slot(op, slot)
 }
 
 // 0x4b070 — boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::TextBox>::invoke(boost::detail::function::function_buffer &,RBX::TextBox)
@@ -23110,8 +23368,14 @@ pub fn stub_4b010() -> ! {
 // type: int __fastcall(int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,rbx_core::SharedPtr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::TextBox>::invoke(boost::detail::function::function_buffer &,RBX::TextBox)")]
-pub fn stub_4b070() -> ! {
-    todo!("0x4b070 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::TextBox>::invoke(boost::detail::function::function_buffer &,RBX::TextBox)")
+pub fn stub_4b070(slot: &Option<TextBoxFocusCallback>, has_text: bool) {
+    // IDA 0x4b070 `void_function_obj_invoker1<bind_t(objc, shared_ptr<TextBox>)>`
+    // `::invoke` (decompile unavailable; disasm matches the 0x4a27c invoker1
+    // shape — buffer words +4/+8 forwarded with the arg): `f(target, sel,
+    // textBox)` — the `textBoxFocusGained:` target (cf. 0x47d7c).
+    if matches!(slot, Some(cb) if cb.target.is_some()) {
+        CONTROL_VIEW.text_box_focus_gained(has_text);
+    }
 }
 
 // 0x4b088 — void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::TextBox>),boost::_bi::list1<RBX::TextBox&>>(boost::_bi::type<void>,void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::TextBox>) &,boost::_bi::list1<RBX::TextBox&> &,int)
@@ -23119,8 +23383,14 @@ pub fn stub_4b070() -> ! {
 // type: void __fastcall(int *, void (__fastcall **)(int, int, sp_counted_base **), const shared_count **, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,rbx_core::SharedPtr<RBX::TextBox>),boost::_bi::list1<RBX::TextBox&>>(boost::_bi::type<void>,void (*)(objc_object *,objc_selector,rbx_core::SharedPtr<RBX::TextBox>) &,boost::_bi::list1<RBX::TextBox&> &,int)")]
-pub fn stub_4b088() -> ! {
-    todo!("0x4b088 void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::TextBox>),boost::_bi::list1<RBX::TextBox&>>(boost::_bi::type<void>,void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::TextBox>) &,boost::_bi::list1<RBX::TextBox&> &,int)")
+pub fn stub_4b088(target: Option<ControlId>, has_text: bool) {
+    // IDA 0x4b088 `list3<value<objc *>, value<sel *>,
+    // arg<1>>::operator()` for `f(objc, sel, shared_ptr<TextBox>)`:
+    // `shared_count` copy (0x4b0ec), the call (0x4b0fa), `release`
+    // (0x4b0fe..0x4b104); the `Arc` clone/drop is the count handoff.
+    if target.is_some() {
+        CONTROL_VIEW.text_box_focus_gained(has_text);
+    }
 }
 
 // 0x4bf6c — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)
@@ -23128,8 +23398,10 @@ pub fn stub_4b088() -> ! {
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_4bf6c() -> ! {
-    todo!("0x4bf6c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_4bf6c(op: crate::roblox_view::FunctorOp, slot: &mut Option<DataModelChangedCallback>) -> bool {
+    // IDA 0x4bf6c `functor_manager<bind_t(objc, DataModel *)>::manage`: same
+    // clone/no-op/strcmp/typeinfo dispatch as 0x463cc (0x4bf7c..0x4bfc8).
+    crate::roblox_view::manage_boxed_slot(op, slot)
 }
 
 // 0x4bfcc — boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::DataModel>::invoke(boost::detail::function::function_buffer &,RBX::DataModel)
@@ -23137,8 +23409,13 @@ pub fn stub_4bf6c() -> ! {
 // type: int __fastcall(int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::DataModel>::invoke(boost::detail::function::function_buffer &,RBX::DataModel)")]
-pub fn stub_4bfcc() -> ! {
-    todo!("0x4bfcc boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::DataModel>::invoke(boost::detail::function::function_buffer &,RBX::DataModel)")
+pub fn stub_4bfcc(slot: &Option<DataModelChangedCallback>, has_datamodel: bool) {
+    // IDA 0x4bfcc `void_function_obj_invoker1<bind_t(objc, DataModel *)>`
+    // `::invoke`: `f(target, sel, datamodel)` (sole call) — the
+    // `dataModelChanged:` target (cf. 0x47afc).
+    if matches!(slot, Some(cb) if cb.target.is_some()) {
+        CONTROL_VIEW.data_model_changed(has_datamodel);
+    }
 }
 
 // 0x4f470 — rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)
