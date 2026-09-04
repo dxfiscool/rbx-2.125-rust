@@ -21473,57 +21473,92 @@ pub fn stub_0x45af00(items: &mut Vec<i32>, value: i32) {
 // 0x45af28 — __ZNSt3mapIPKN3RBX4NameENS0_9DataModel8GearTypeESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 #[doc(alias = "std::map<RBX::Name const*,RBX::DataModel::GearType,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>>::operator[](RBX::Name const* const&)")]
 // was: std::map<RBX::Name const*,RBX::DataModel::GearType,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>>::operator[](RBX::Name const* const&)
-pub fn stub_0x45af28() -> ! {
-    todo!("0x45af28 std::map<RBX::Name const*,RBX::DataModel::GearType,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>>::operator[](RBX::Name const* const&)")
+pub fn stub_0x45af28<'a>(map: &'a mut BTreeMap<String, i32>, key: &str) -> &'a mut i32 {
+    // IDA 0x45af28 (`map<Name, GearType>::operator[]`): same lookup-or-create
+    // shape as 0x45a8e4.
+    map.entry(key.to_owned()).or_insert(0)
 }
 
 // 0x45af80 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel8GearTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>,std::pair<RBX::Name const* const,RBX::DataModel::GearType> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>,std::pair<RBX::Name const* const,RBX::DataModel::GearType> const&)
-pub fn stub_0x45af80() -> ! {
-    todo!("0x45af80 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>,std::pair<RBX::Name const* const,RBX::DataModel::GearType> const&)")
+pub fn stub_0x45af80(map: &mut BTreeMap<String, i32>, key: &str, value: i32) -> bool {
+    // IDA 0x45af80 (`_Rb_tree::_M_insert_unique` with the position hint):
+    // the hint only seeds the search, so the hinted insert collapses into a
+    // plain unique insert. Same shape as 0x45a93c.
+    use std::collections::btree_map::Entry;
+    match map.entry(key.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x45b034 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel8GearTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DataModel::GearType> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DataModel::GearType> const&)
-pub fn stub_0x45b034() -> ! {
-    todo!("0x45b034 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DataModel::GearType> const&)")
+pub fn stub_0x45b034(map: &mut BTreeMap<String, i32>, key: &str, value: i32) {
+    // IDA 0x45b034 (`_Rb_tree::_M_insert`): links the already-uniqueness-
+    // checked node into the tree; after the check the link is a plain insert.
+    // Same shape as 0x45a9f0.
+    map.insert(key.to_owned(), value);
 }
 
 // 0x45b08c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel8GearTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DataModel::GearType> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DataModel::GearType> const&)
-pub fn stub_0x45b08c() -> ! {
-    todo!("0x45b08c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DataModel::GearType> const&)")
+pub fn stub_0x45b08c(map: &mut BTreeMap<String, i32>, key: &str, value: i32) -> bool {
+    // IDA 0x45b08c (`_Rb_tree::_M_insert_unique` by value): search, then link
+    // on miss. Same shape as 0x45aa48.
+    use std::collections::btree_map::Entry;
+    match map.entry(key.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x45b0f4 — __ZNSt6vectorIN3RBX9DataModel8GearTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DataModel::GearType*,std::vector<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>>,RBX::DataModel::GearType const&)")]
 // was: std::vector<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DataModel::GearType*,std::vector<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>>,RBX::DataModel::GearType const&)
-pub fn stub_0x45b0f4() -> ! {
-    todo!("0x45b0f4 std::vector<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DataModel::GearType*,std::vector<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>>,RBX::DataModel::GearType const&)")
+pub fn stub_0x45b0f4(items: &mut Vec<i32>, index: usize, value: i32) {
+    // IDA 0x45b0f4 (`vector<GearType>::_M_insert_aux`): same splice as
+    // 0x45aab4.
+    let at = index.min(items.len());
+    items.insert(at, value);
 }
 
 // 0x45b1d8 — __ZNSt12_Vector_baseIN3RBX9DataModel8GearTypeESaIS2_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>::_M_allocate(unsigned long)")]
 // was: std::_Vector_base<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>::_M_allocate(unsigned long)
-pub fn stub_0x45b1d8() -> ! {
-    todo!("0x45b1d8 std::_Vector_base<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>::_M_allocate(unsigned long)")
+pub fn stub_0x45b1d8(capacity: usize) -> Vec<i32> {
+    // IDA 0x45b1d8 (`_Vector_base<GearType>::_M_allocate`): same safe
+    // allocation as 0x45ab98.
+    Vec::with_capacity(capacity)
 }
 
 // 0x45b1f0 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX9DataModel8GearTypeES6_EET0_T_S8_S7_
 #[doc(alias = "RBX::DataModel::GearType * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DataModel::GearType *,RBX::DataModel::GearType *>(RBX::DataModel::GearType *,RBX::DataModel::GearType *,RBX::DataModel::GearType *)")]
 // was: RBX::DataModel::GearType * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DataModel::GearType *,RBX::DataModel::GearType *>(RBX::DataModel::GearType *,RBX::DataModel::GearType *,RBX::DataModel::GearType *)
-pub fn stub_0x45b1f0() -> ! {
-    todo!("0x45b1f0 RBX::DataModel::GearType * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DataModel::GearType *,RBX::DataModel::GearType *>(RBX::DataModel::GearType *,RBX::DataModel::GearType *,RBX::DataModel::GearType *)")
+pub fn stub_0x45b1f0(items: &mut Vec<i32>, first: usize, last: usize, result: usize) {
+    // IDA 0x45b1f0 (`__copy_backward` over the `GearType` range): same
+    // overlap-safe copy as 0x45abb0.
+    let len = last.saturating_sub(first);
+    items.copy_within(first..last, result.saturating_sub(len));
 }
 
 // 0x45b22c — __ZNSt6vectorIN3RBX9DataModel8GearTypeESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 #[doc(alias = "std::vector<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DataModel::GearType*,std::vector<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>>,unsigned long,RBX::DataModel::GearType const&)")]
 // was: std::vector<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DataModel::GearType*,std::vector<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>>,unsigned long,RBX::DataModel::GearType const&)
-pub fn stub_0x45b22c() -> ! {
-    todo!("0x45b22c std::vector<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DataModel::GearType*,std::vector<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>>,unsigned long,RBX::DataModel::GearType const&)")
+pub fn stub_0x45b22c(items: &mut Vec<i32>, index: usize, count: usize, value: i32) {
+    // IDA 0x45b22c (`vector<GearType>::_M_fill_insert`): same splice as
+    // 0x45abf0.
+    let at = index.min(items.len());
+    items.splice(at..at, std::iter::repeat(value).take(count));
 }
 
 // 0x45b3bc — __ZN3rbx8any_castIN3RBX9DataModel16GearGenreSettingENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE
@@ -21543,71 +21578,107 @@ pub fn stub_0x45b414() -> ! {
 // 0x45b504 — __ZNSt6vectorIN3RBX9DataModel16GearGenreSettingESaIS2_EE6resizeEmS2_
 #[doc(alias = "std::vector<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>::resize(unsigned long,RBX::DataModel::GearGenreSetting)")]
 // was: std::vector<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>::resize(unsigned long,RBX::DataModel::GearGenreSetting)
-pub fn stub_0x45b504() -> ! {
-    todo!("0x45b504 std::vector<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>::resize(unsigned long,RBX::DataModel::GearGenreSetting)")
+pub fn stub_0x45b504(items: &mut Vec<i32>, len: usize, value: i32) {
+    // IDA 0x45b504 (`vector<GearGenreSetting>::resize`): same shape as
+    // 0x45a880.
+    items.resize(len, value);
 }
 
 // 0x45b538 — __ZNSt6vectorIN3RBX9DataModel16GearGenreSettingESaIS2_EE9push_backERKS2_
 #[doc(alias = "std::vector<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>::push_back(RBX::DataModel::GearGenreSetting const&)")]
 // was: std::vector<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>::push_back(RBX::DataModel::GearGenreSetting const&)
-pub fn stub_0x45b538() -> ! {
-    todo!("0x45b538 std::vector<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>::push_back(RBX::DataModel::GearGenreSetting const&)")
+pub fn stub_0x45b538(items: &mut Vec<i32>, value: i32) {
+    // IDA 0x45b538 (`vector<GearGenreSetting>::push_back`): same shape as
+    // 0x45a8b8.
+    items.push(value);
 }
 
 // 0x45b560 — __ZNSt3mapIPKN3RBX4NameENS0_9DataModel16GearGenreSettingESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 #[doc(alias = "std::map<RBX::Name const*,RBX::DataModel::GearGenreSetting,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>>::operator[](RBX::Name const* const&)")]
 // was: std::map<RBX::Name const*,RBX::DataModel::GearGenreSetting,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>>::operator[](RBX::Name const* const&)
-pub fn stub_0x45b560() -> ! {
-    todo!("0x45b560 std::map<RBX::Name const*,RBX::DataModel::GearGenreSetting,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>>::operator[](RBX::Name const* const&)")
+pub fn stub_0x45b560<'a>(map: &'a mut BTreeMap<String, i32>, key: &str) -> &'a mut i32 {
+    // IDA 0x45b560 (`map<Name, GearGenreSetting>::operator[]`): same
+    // lookup-or-create shape as 0x45a8e4.
+    map.entry(key.to_owned()).or_insert(0)
 }
 
 // 0x45b5b8 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel16GearGenreSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>,std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>,std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting> const&)
-pub fn stub_0x45b5b8() -> ! {
-    todo!("0x45b5b8 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>,std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting> const&)")
+pub fn stub_0x45b5b8(map: &mut BTreeMap<String, i32>, key: &str, value: i32) -> bool {
+    // IDA 0x45b5b8 (`_Rb_tree::_M_insert_unique` with hint): same shape as
+    // 0x45af80.
+    use std::collections::btree_map::Entry;
+    match map.entry(key.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x45b66c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel16GearGenreSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting> const&)
-pub fn stub_0x45b66c() -> ! {
-    todo!("0x45b66c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting> const&)")
+pub fn stub_0x45b66c(map: &mut BTreeMap<String, i32>, key: &str, value: i32) {
+    // IDA 0x45b66c (`_Rb_tree::_M_insert`): same plain insert as 0x45a9f0.
+    map.insert(key.to_owned(), value);
 }
 
 // 0x45b6c4 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel16GearGenreSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting> const&)
-pub fn stub_0x45b6c4() -> ! {
-    todo!("0x45b6c4 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting> const&)")
+pub fn stub_0x45b6c4(map: &mut BTreeMap<String, i32>, key: &str, value: i32) -> bool {
+    // IDA 0x45b6c4 (`_Rb_tree::_M_insert_unique` by value): same shape as
+    // 0x45aa48.
+    use std::collections::btree_map::Entry;
+    match map.entry(key.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x45b72c — __ZNSt6vectorIN3RBX9DataModel16GearGenreSettingESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DataModel::GearGenreSetting*,std::vector<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>>,RBX::DataModel::GearGenreSetting const&)")]
 // was: std::vector<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DataModel::GearGenreSetting*,std::vector<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>>,RBX::DataModel::GearGenreSetting const&)
-pub fn stub_0x45b72c() -> ! {
-    todo!("0x45b72c std::vector<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DataModel::GearGenreSetting*,std::vector<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>>,RBX::DataModel::GearGenreSetting const&)")
+pub fn stub_0x45b72c(items: &mut Vec<i32>, index: usize, value: i32) {
+    // IDA 0x45b72c (`vector<GearGenreSetting>::_M_insert_aux`): same splice
+    // as 0x45aab4.
+    let at = index.min(items.len());
+    items.insert(at, value);
 }
 
 // 0x45b810 — __ZNSt12_Vector_baseIN3RBX9DataModel16GearGenreSettingESaIS2_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>::_M_allocate(unsigned long)")]
 // was: std::_Vector_base<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>::_M_allocate(unsigned long)
-pub fn stub_0x45b810() -> ! {
-    todo!("0x45b810 std::_Vector_base<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>::_M_allocate(unsigned long)")
+pub fn stub_0x45b810(capacity: usize) -> Vec<i32> {
+    // IDA 0x45b810 (`_Vector_base<GearGenreSetting>::_M_allocate`): same safe
+    // allocation as 0x45ab98.
+    Vec::with_capacity(capacity)
 }
 
 // 0x45b828 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX9DataModel16GearGenreSettingES6_EET0_T_S8_S7_
 #[doc(alias = "RBX::DataModel::GearGenreSetting * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DataModel::GearGenreSetting *,RBX::DataModel::GearGenreSetting *>(RBX::DataModel::GearGenreSetting *,RBX::DataModel::GearGenreSetting *,RBX::DataModel::GearGenreSetting *)")]
 // was: RBX::DataModel::GearGenreSetting * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DataModel::GearGenreSetting *,RBX::DataModel::GearGenreSetting *>(RBX::DataModel::GearGenreSetting *,RBX::DataModel::GearGenreSetting *,RBX::DataModel::GearGenreSetting *)
-pub fn stub_0x45b828() -> ! {
-    todo!("0x45b828 RBX::DataModel::GearGenreSetting * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DataModel::GearGenreSetting *,RBX::DataModel::GearGenreSetting *>(RBX::DataModel::GearGenreSetting *,RBX::DataModel::GearGenreSetting *,RBX::DataModel::GearGenreSetting *)")
+pub fn stub_0x45b828(items: &mut Vec<i32>, first: usize, last: usize, result: usize) {
+    // IDA 0x45b828 (`__copy_backward` over the `GearGenreSetting` range):
+    // same overlap-safe copy as 0x45abb0.
+    let len = last.saturating_sub(first);
+    items.copy_within(first..last, result.saturating_sub(len));
 }
 
 // 0x45b864 — __ZNSt6vectorIN3RBX9DataModel16GearGenreSettingESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 #[doc(alias = "std::vector<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DataModel::GearGenreSetting*,std::vector<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>>,unsigned long,RBX::DataModel::GearGenreSetting const&)")]
 // was: std::vector<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DataModel::GearGenreSetting*,std::vector<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>>,unsigned long,RBX::DataModel::GearGenreSetting const&)
-pub fn stub_0x45b864() -> ! {
-    todo!("0x45b864 std::vector<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DataModel::GearGenreSetting*,std::vector<RBX::DataModel::GearGenreSetting,std::allocator<RBX::DataModel::GearGenreSetting>>>,unsigned long,RBX::DataModel::GearGenreSetting const&)")
+pub fn stub_0x45b864(items: &mut Vec<i32>, index: usize, count: usize, value: i32) {
+    // IDA 0x45b864 (`vector<GearGenreSetting>::_M_fill_insert`): same splice
+    // as 0x45abf0.
+    let at = index.min(items.len());
+    items.splice(at..at, std::iter::repeat(value).take(count));
 }
 
 // 0x45b9f4 — __ZN3rbx8any_castIN3RBX9DataModel5GenreENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE
@@ -21627,29 +21698,42 @@ pub fn stub_0x45ba4c() -> ! {
 // 0x45bb3c — __ZNSt6vectorIN3RBX9DataModel5GenreESaIS2_EE6resizeEmS2_
 #[doc(alias = "std::vector<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>::resize(unsigned long,RBX::DataModel::Genre)")]
 // was: std::vector<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>::resize(unsigned long,RBX::DataModel::Genre)
-pub fn stub_0x45bb3c() -> ! {
-    todo!("0x45bb3c std::vector<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>::resize(unsigned long,RBX::DataModel::Genre)")
+pub fn stub_0x45bb3c(items: &mut Vec<i32>, len: usize, value: i32) {
+    // IDA 0x45bb3c (`vector<Genre>::resize`): same shape as 0x45a880.
+    items.resize(len, value);
 }
 
 // 0x45bb70 — __ZNSt6vectorIN3RBX9DataModel5GenreESaIS2_EE9push_backERKS2_
 #[doc(alias = "std::vector<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>::push_back(RBX::DataModel::Genre const&)")]
 // was: std::vector<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>::push_back(RBX::DataModel::Genre const&)
-pub fn stub_0x45bb70() -> ! {
-    todo!("0x45bb70 std::vector<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>::push_back(RBX::DataModel::Genre const&)")
+pub fn stub_0x45bb70(items: &mut Vec<i32>, value: i32) {
+    // IDA 0x45bb70 (`vector<Genre>::push_back`): same shape as 0x45a8b8.
+    items.push(value);
 }
 
 // 0x45bb98 — __ZNSt3mapIPKN3RBX4NameENS0_9DataModel5GenreESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 #[doc(alias = "std::map<RBX::Name const*,RBX::DataModel::Genre,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>>::operator[](RBX::Name const* const&)")]
 // was: std::map<RBX::Name const*,RBX::DataModel::Genre,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>>::operator[](RBX::Name const* const&)
-pub fn stub_0x45bb98() -> ! {
-    todo!("0x45bb98 std::map<RBX::Name const*,RBX::DataModel::Genre,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>>::operator[](RBX::Name const* const&)")
+pub fn stub_0x45bb98<'a>(map: &'a mut BTreeMap<String, i32>, key: &str) -> &'a mut i32 {
+    // IDA 0x45bb98 (`map<Name, Genre>::operator[]`): same lookup-or-create
+    // shape as 0x45a8e4.
+    map.entry(key.to_owned()).or_insert(0)
 }
 
 // 0x45bbf0 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel5GenreEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::Genre>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>,std::pair<RBX::Name const* const,RBX::DataModel::Genre> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::Genre>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>,std::pair<RBX::Name const* const,RBX::DataModel::Genre> const&)
-pub fn stub_0x45bbf0() -> ! {
-    todo!("0x45bbf0 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::Genre>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>,std::pair<RBX::Name const* const,RBX::DataModel::Genre> const&)")
+pub fn stub_0x45bbf0(map: &mut BTreeMap<String, i32>, key: &str, value: i32) -> bool {
+    // IDA 0x45bbf0 (`_Rb_tree::_M_insert_unique` with hint): same shape as
+    // 0x45af80.
+    use std::collections::btree_map::Entry;
+    match map.entry(key.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x45bca4 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel5GenreEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
