@@ -39,6 +39,7 @@ pub struct IosSettingsService {
     pub iphone_minimum_version: AtomicI32,
     pub iphone_maximum_version: AtomicI32,
     pub ipod_minimum_version: AtomicI32,
+    pub ipod_maximum_version: AtomicI32,
     pub disable_play_button_for_all: AtomicBool,
     pub disable_play_button_for_non_bc: AtomicBool,
     pub ipad1_maximum_ideal_parts: AtomicI32,
