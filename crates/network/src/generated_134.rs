@@ -329,32 +329,37 @@ pub fn stub_9e00b0() -> ! {
     todo!("0x9e00b0 __ZN3RBX7Network16ServerReplicator17onPropertyChangedEPNS_8InstanceEPKNS_10Reflection18PropertyDescriptorE")
 }
 
-// 0x9e013c — __ZN3RBX7Network16ServerReplicator20writeChangedPropertyEPKNS_8InstanceERKNS_10Reflection18PropertyDescriptorERN6RakNet9BitStreamE
-// type: void __fastcall(RBX::Network::ServerReplicator *this, const RBX::Instance *, const RBX::Reflection::PropertyDescriptor *, RakNet::BitStream *)
-#[doc(alias = "RBX::Network::ServerReplicator::writeChangedProperty(RBX::Instance const*,RBX::Reflection::PropertyDescriptor const&,RakNet::BitStream &)")]
-pub fn stub_9e013c() -> ! {
-    todo!("0x9e013c __ZN3RBX7Network16ServerReplicator20writeChangedPropertyEPKNS_8InstanceERKNS_10Reflection18PropertyDescriptorERN6RakNet9BitStreamE")
-}
 
 // 0x9e06cc — __ZN3RBX7Network16ServerReplicator23writeChangedRefPropertyEPKNS_8InstanceERKNS_10Reflection21RefPropertyDescriptorERKNS_4Guid4DataERN6RakNet9BitStreamE
 // type: void __fastcall(RBX::Network::ServerReplicator *this, const RBX::Instance *, const RBX::Reflection::RefPropertyDescriptor *, const RBX::Guid::Data *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::ServerReplicator::writeChangedRefProperty(RBX::Instance const*,RBX::Reflection::RefPropertyDescriptor const&,RBX::Guid::Data const&,RakNet::BitStream &)")]
-pub fn stub_9e06cc() -> ! {
-    todo!("0x9e06cc __ZN3RBX7Network16ServerReplicator23writeChangedRefPropertyEPKNS_8InstanceERKNS_10Reflection21RefPropertyDescriptorERKNS_4Guid4DataERN6RakNet9BitStreamE")
+pub fn stub_9e06cc(
+    stream: &mut crate::bitstream::BitStream,
+    serializer: &mut crate::id_serializer::IdSerializer,
+    sender: &crate::id_serializer::DescriptorSender,
+    packet: &crate::replicator::ChangedProperty,
+    should_send: bool,
+    target: crate::id_serializer::GuidData,
+    write_value: impl FnOnce(&mut crate::bitstream::BitStream),
+) {
+    // IDA 0x9e06cc: same packet as `writeChangedProperty` plus the trailing ref-target guid (null name → 8 zero bits).
+    crate::replicator::write_changed_ref_property(stream, serializer, sender, packet, should_send, target, write_value)
 }
 
 // 0x9e0c14 — __ZN3RBX7Network16ServerReplicator22serializePropertyValueERKNS_10Reflection13ConstPropertyERN6RakNet9BitStreamEb
 // type: void __fastcall(RBX::Network::Replicator *, int *, RakNet::BitStream *, int)
 #[doc(alias = "RBX::Network::ServerReplicator::serializePropertyValue(RBX::Reflection::ConstProperty const&,RakNet::BitStream &,bool)")]
-pub fn stub_9e0c14() -> ! {
-    todo!("0x9e0c14 __ZN3RBX7Network16ServerReplicator22serializePropertyValueERKNS_10Reflection13ConstPropertyERN6RakNet9BitStreamEb")
+pub fn stub_9e0c14(stream: &mut crate::bitstream::BitStream, write: impl FnOnce(&mut crate::bitstream::BitStream)) {
+    // IDA 0x9e0c14: the reflection type-switch stays engine-side; runs the caller-supplied writer.
+    crate::replicator::serialize_property_value(stream, write)
 }
 
 // 0x9e10f4 — __ZN3RBX7Network16ServerReplicator24deserializePropertyValueERN6RakNet9BitStreamENS_10Reflection8PropertyEb
 // type: void __fastcall(RBX::Network::IdSerializer *, pthread_mutex_t *, int *, pthread_mutex_t *)
 #[doc(alias = "RBX::Network::ServerReplicator::deserializePropertyValue(RakNet::BitStream &,RBX::Reflection::Property,bool)")]
-pub fn stub_9e10f4() -> ! {
-    todo!("0x9e10f4 __ZN3RBX7Network16ServerReplicator24deserializePropertyValueERN6RakNet9BitStreamENS_10Reflection8PropertyEb")
+pub fn stub_9e10f4(stream: &mut crate::bitstream::BitStream, mut read: impl FnMut(&mut crate::bitstream::BitStream)) {
+    // IDA 0x9e10f4: the reflection type-switch stays engine-side; runs the caller-supplied reader.
+    crate::replicator::deserialize_property_value(stream, read)
 }
 
 // 0x9e16cc — __ZN3RBX7Network16ServerReplicator17onServiceProviderEPNS_15ServiceProviderES3_
@@ -362,6 +367,21 @@ pub fn stub_9e10f4() -> ! {
 #[doc(alias = "RBX::Network::ServerReplicator::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
 pub fn stub_9e16cc() -> ! {
     todo!("0x9e16cc __ZN3RBX7Network16ServerReplicator17onServiceProviderEPNS_15ServiceProviderES3_")
+}
+
+// 0x9e013c — __ZN3RBX7Network16ServerReplicator20writeChangedPropertyEPKNS_8InstanceERKNS_10Reflection18PropertyDescriptorERN6RakNet9BitStreamE
+// type: void __fastcall(RBX::Network::ServerReplicator *this, const RBX::Instance *, const RBX::Reflection::PropertyDescriptor *, RakNet::BitStream *)
+#[doc(alias = "RBX::Network::ServerReplicator::writeChangedProperty(RBX::Instance const*,RBX::Reflection::PropertyDescriptor const&,RakNet::BitStream &)")]
+pub fn stub_9e013c(
+    stream: &mut crate::bitstream::BitStream,
+    serializer: &mut crate::id_serializer::IdSerializer,
+    sender: &crate::id_serializer::DescriptorSender,
+    packet: &crate::replicator::ChangedProperty,
+    should_send: bool,
+    write_value: impl FnOnce(&mut crate::bitstream::BitStream),
+) {
+    // IDA 0x9e013c: gate + `[itemType = 3][id][propIndex][syncFlag][value]` (log + packet-count engine-side).
+    crate::replicator::write_changed_property(stream, serializer, sender, packet, should_send, write_value)
 }
 
 // 0x9e2024 — __ZN3RBX7Network16ServerReplicator16serializeSFFlagsERN6RakNet9BitStreamE

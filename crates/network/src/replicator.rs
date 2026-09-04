@@ -139,6 +139,88 @@ pub fn filter_received_parent(filter: Option<bool>) -> bool {
     filter.unwrap_or(true)
 }
 
+/// `writeChangedProperty` item type (IDA 0x9e013c:
+/// `Item::writeItemType(stream, 3)`).
+pub const CHANGED_PROPERTY_ITEM_TYPE: u8 = 3;
+
+/// One `writeChangedProperty` packet (IDA 0x9e013c): the instance, the
+/// property descriptor id, and the `onPropertySend(...) == 0` flag bit.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct ChangedProperty {
+    pub instance: Option<super::id_serializer::GuidData>,
+    pub descriptor: u32,
+    pub sync_flag: bool,
+}
+
+/// `ServerReplicator::writeChangedProperty` (IDA 0x9e013c): pairs
+/// `(descriptor, instance + 36)` with a debug membership assert, gates on
+/// the should-send predicate, then writes `[itemType = 3][id][propIndex]`
+/// (verbose log + packet-count engine-side), the `onPropertySend == 0`
+/// flag bit, and the value through the +312 virtual
+/// (`serializePropertyValue`, engine-side value codec supplied by the
+/// caller).
+pub fn write_changed_property(
+    stream: &mut BitStream,
+    serializer: &mut super::id_serializer::IdSerializer,
+    sender: &super::id_serializer::DescriptorSender,
+    packet: &ChangedProperty,
+    should_send: bool,
+    write_value: impl FnOnce(&mut BitStream),
+) {
+    // IDA 0x9e013c: `if (shouldSend(this, pair) != 1) return` (nothing
+    // written when gated).
+    if !should_send {
+        return;
+    }
+    super::item::write_item_type(stream, CHANGED_PROPERTY_ITEM_TYPE);
+    serializer.serialize_id(stream, packet.instance);
+    sender.send_index(stream, packet.descriptor);
+    stream.write_bool(packet.sync_flag);
+    write_value(stream);
+}
+
+/// `ServerReplicator::writeChangedRefProperty` (IDA 0x9e06cc): same packet
+/// as [`write_changed_property`] plus the trailing ref-target guid —
+/// a null name writes 8 zero bits, otherwise the full `serializeId`.
+pub fn write_changed_ref_property(
+    stream: &mut BitStream,
+    serializer: &mut super::id_serializer::IdSerializer,
+    sender: &super::id_serializer::DescriptorSender,
+    packet: &ChangedProperty,
+    should_send: bool,
+    target: super::id_serializer::GuidData,
+    write_value: impl FnOnce(&mut BitStream),
+) {
+    if !should_send {
+        return;
+    }
+    super::item::write_item_type(stream, CHANGED_PROPERTY_ITEM_TYPE);
+    serializer.serialize_id(stream, packet.instance);
+    sender.send_index(stream, packet.descriptor);
+    stream.write_bool(packet.sync_flag);
+    // IDA 0x9e06cc tail: null target name → 8 zero bits, else `serializeId`.
+    if target.name == super::id_serializer::NULL_NAME {
+        stream.write_u8(0);
+    } else {
+        serializer.serialize_guid(stream, &target);
+    }
+    write_value(stream);
+}
+
+/// `ServerReplicator::serializePropertyValue` (IDA 0x9e0c14): the
+/// reflection type-switch over the value codec stays engine-side; this
+/// runs the caller-supplied writer (the +312 virtual's payload).
+pub fn serialize_property_value(stream: &mut BitStream, write: impl FnOnce(&mut BitStream)) {
+    write(stream);
+}
+
+/// `ServerReplicator::deserializePropertyValue` (IDA 0x9e10f4): the
+/// reflection type-switch stays engine-side; this runs the
+/// caller-supplied reader.
+pub fn deserialize_property_value(stream: &mut BitStream, mut read: impl FnMut(&mut BitStream)) {
+    read(stream);
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -213,4 +295,82 @@ mod tests {
         assert!(filter_received_parent(Some(true)));
         assert!(!filter_received_parent(Some(false)));
     }
-}
+
+    #[test]
+    fn changed_property_packet_layout() {
+        // IDA 0x9e013c: gate + `[3][id][propIndex][sync][value]`.
+        use super::super::id_serializer::{DescriptorSender, GuidData, IdSerializer};
+        let mut serializer = IdSerializer::new();
+        serializer.set_max_guid_index_bit(32);
+        let name = serializer.declare_name("Part");
+        let sender = DescriptorSender::new(&[7]);
+        let packet = ChangedProperty {
+            instance: Some(GuidData { name, index: 1 }),
+            descriptor: 7,
+            sync_flag: true,
+        };
+        // Gated off: nothing written.
+        let mut s = BitStream::new();
+        write_changed_property(&mut s, &mut serializer, &sender, &packet, false, |_| panic!("gated"));
+        assert_eq!(s.bits_written(), 0);
+        // Open: decode field by field. Fresh sender: code byte 0x80,
+        // `"Part"` string, 32 index bits; prop index 0 in 1 bit; flag; value.
+        let mut s = BitStream::new();
+        write_changed_property(&mut s, &mut serializer, &sender, &packet, true, |st| st.write_u8(0xAA));
+        assert_eq!(s.bits_written(), 2 + 8 + 64 + 32 + 1 + 1 + 8);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        assert_eq!(r.read_bits(2), Some(3));
+        assert_eq!(r.read_u8(), Some(0x80));
+        assert_eq!(r.read_string(), "Part");
+        assert_eq!(r.read_bits(32), Some(1));
+        assert_eq!(r.read_bits(1), Some(0));
+        assert_eq!(r.read_bit(), Some(true));
+        assert_eq!(r.read_u8(), Some(0xAA));
+    }
+
+    #[test]
+    fn changed_ref_property_null_target_is_one_zero_byte() {
+        use super::super::id_serializer::{DescriptorSender, GuidData, IdSerializer, NULL_NAME};
+        let mut serializer = IdSerializer::new();
+        serializer.set_max_guid_index_bit(32);
+        let name = serializer.declare_name("Part");
+        let sender = DescriptorSender::new(&[7]);
+        let packet = ChangedProperty {
+            instance: Some(GuidData { name, index: 1 }),
+            descriptor: 7,
+            sync_flag: false,
+        };
+        // IDA 0x9e06cc tail: null target name → a single zero byte, then the value.
+        let mut s = BitStream::new();
+        write_changed_ref_property(
+            &mut s,
+            &mut serializer,
+            &sender,
+            &packet,
+            true,
+            GuidData { name: NULL_NAME, index: 0 },
+            |st| st.write_u8(0xBB),
+        );
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        assert_eq!(r.read_bits(2), Some(3));
+        assert_eq!(r.read_u8(), Some(0x80));
+        assert_eq!(r.read_string(), "Part");
+        assert_eq!(r.read_bits(32), Some(1));
+        assert_eq!(r.read_bits(1), Some(0));
+        assert_eq!(r.read_bit(), Some(false));
+        // IDA 0x9e06cc tail: null target name → a single zero byte…
+        assert_eq!(r.read_u8(), Some(0));
+        // …then the value.
+        assert_eq!(r.read_u8(), Some(0xBB));
+    }
+
+    #[test]
+    fn property_value_hooks_delegate() {
+        let mut s = BitStream::new();
+        serialize_property_value(&mut s, |st| st.write_u8(9));
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        let mut seen = 0u8;
+        deserialize_property_value(&mut r, |st| seen = st.read_u8().expect("byte"));
+        assert_eq!(seen, 9);
+    }
+    }

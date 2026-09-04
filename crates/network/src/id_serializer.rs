@@ -432,6 +432,17 @@ impl DescriptorSender {
     pub fn bits(&self) -> u32 {
         self.bits
     }
+
+    /// `DescriptorSender<PropertyDescriptor>::send` (IDA 0x9e013c, via the
+    /// `this + 1304` sender): writes the dense index in `bits` bits.
+    /// Unknown descriptors panic, mirroring the original's inability to
+    /// encode them (engine-side always sends known ones).
+    pub fn send_index(&self, stream: &mut crate::bitstream::BitStream, descriptor: u32) {
+        let index = self
+            .index_of(descriptor)
+            .expect("DescriptorSender::send: unknown descriptor");
+        stream.write_bits(index, self.bits as u8);
+    }
 }
 
 /// `DescriptorSender<ClassDescriptor/EventDescriptor...>::teachName` for
