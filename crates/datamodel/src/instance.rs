@@ -531,6 +531,103 @@ pub struct SetManualJointToStrong {
     pub data_model: *const DataModel,
 }
 
+/// Rust model of `RBX::CommonVerbs` (IDA `0x403820`): the shared studio verb
+/// set plus the owning data model.
+pub struct CommonVerbs {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::HammerTool` (IDA `0x4047d4`): the studio hammer mouse
+/// command plus the owning workspace.
+pub struct HammerTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<HammerTool, RunStateVerb>` (IDA `0x404394`):
+/// the hammer tool verb with its active flag plus the owning data model.
+pub struct HammerToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::CloneTool` (IDA `0x4050c8`): the studio clone mouse
+/// command plus the owning workspace.
+pub struct CloneTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<CloneTool, RunStateVerb>` (IDA `0x404c8c`):
+/// the clone tool verb with its active flag plus the owning data model.
+pub struct CloneToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::GrabTool` (IDA `0x4059bc`): the studio grab mouse
+/// command plus the owning workspace.
+pub struct GrabTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<GrabTool, RunStateVerb>` (IDA `0x405580`):
+/// the grab tool verb with its active flag plus the owning data model.
+pub struct GrabToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::GameTool` (IDA `0x4062b0`): the studio game mouse
+/// command plus the owning workspace.
+pub struct GameTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<GameTool, RunStateVerb>` (IDA `0x405e74`):
+/// the game tool verb with its active flag plus the owning data model.
+pub struct GameToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::NullTool` (IDA `0x406ba4`): the studio null mouse
+/// command plus the owning workspace.
+pub struct NullTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<NullTool, RunStateVerb>` (IDA `0x406768`):
+/// the null tool verb with its active flag plus the owning data model.
+pub struct NullToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::DropperTool` (IDA `0x407498`): the studio dropper mouse
+/// command plus the owning workspace.
+pub struct DropperTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<DropperTool, RunStateVerb>` (IDA `0x40705c`):
+/// the dropper tool verb with its active flag plus the owning data model.
+pub struct DropperToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::MaterialTool` (IDA `0x407dd0`): the studio material
+/// mouse command plus the owning workspace.
+pub struct MaterialTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<MaterialTool, RunStateVerb>` (IDA `0x407994`):
+/// the material tool verb with its active flag plus the owning data model.
+pub struct MaterialToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
 /// Rust model of `RBX::SetManualJointToInfinite` (IDA `0x3fc608`): the studio
 /// joint-strength command plus the owning data model.
 pub struct SetManualJointToInfinite {
@@ -13418,43 +13515,72 @@ pub fn stub_0x402df0(_block: *mut ControlBlockPd<FilteredSelection, CreatableIns
 // 0x402df4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x402df4() -> ! {
-    todo!("0x402df4 boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x402df4(block: *mut ControlBlockPd<FilteredSelection, CreatableInstanceDeleter>) {
+    // IDA 0x402df4: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x4016d0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x402df8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x402df8() -> ! {
-    todo!("0x402df8 boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x402df8(_block: *mut ControlBlockPd<FilteredSelection, CreatableInstanceDeleter>) {
+    // IDA 0x402df8: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x4016d4.
 }
 
 // 0x402e18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x402e18() -> ! {
-    todo!("0x402e18 boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x402e18(block: *const ControlBlockPd<FilteredSelection, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x402e18: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x4016f4.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x402e30 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x402e30() -> ! {
-    todo!("0x402e30 boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x402e30(block: *const ControlBlockPd<FilteredSelection, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x402e30: unconditional `this + 0x10`; same as 0x40170c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x402e34 — __ZNK3RBX13ServiceClientINS_17FilteredSelectionINS_10PVInstanceEEEE13createServiceEv
 #[doc(alias = "RBX::ServiceClient<RBX::FilteredSelection<RBX::PVInstance>>::createService(void)const")]
 // was: RBX::ServiceClient<RBX::FilteredSelection<RBX::PVInstance>>::createService(void)const
-pub fn stub_0x402e34() -> ! {
-    todo!("0x402e34 RBX::ServiceClient<RBX::FilteredSelection<RBX::PVInstance>>::createService(void)const")
+pub fn stub_0x402e34(
+    client: &mut FilteredSelectionClient,
+    instance: *const Instance,
+) -> Option<SharedPtr<FilteredSelection>> {
+    // IDA 0x402e34: `ServiceClient<FilteredSelection<PVInstance>>::createService`
+    // — same lazy-init cached shape as 0x2f88fc (the PV `create` fills the
+    // same shared-model cache).
+    // SAFETY: `instance` must be null or point to a valid `Instance`.
+    if client.cached.is_none() {
+        client.cached = Some(SharedPtr::new(FilteredSelection::default()));
+    }
+    client.cached.clone()
 }
 
 // 0x402f14 — __ZN5boost10shared_ptrIN3RBX17FilteredSelectionINS1_10PVInstanceEEEEaSERKS5_
 #[doc(alias = "rbx_core::SharedPtr<RBX::FilteredSelection<RBX::PVInstance>>::operator=(rbx_core::SharedPtr<RBX::FilteredSelection<RBX::PVInstance>> const&)")]
 // was: boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>>::operator=(boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>> const&)
-pub fn stub_0x402f14() -> ! {
-    todo!("0x402f14 boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>>::operator=(boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>> const&)")
+pub fn stub_0x402f14(dst: *mut Option<SharedPtr<FilteredSelection>>, src: &Option<SharedPtr<FilteredSelection>>) {
+    // IDA 0x402f14: same-type `shared_ptr` copy-assign — retain, store,
+    // release-old; clone-then-assign is self-assignment safe. Twin of
+    // 0x3d7b2c/0x2f89dc.
+    // SAFETY: `dst` must be writable; `src` must be readable.
+    unsafe {
+        *dst = src.clone();
+    }
 }
 
 // 0x402f4c — __ZN3RBX11shared_fromINS_17FilteredSelectionINS_10PVInstanceEEEEEN5boost10shared_ptrIT_EEPS6_
@@ -13474,127 +13600,181 @@ pub fn stub_0x403034() -> ! {
 // 0x403278 — __ZSt9__find_ifIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS2_3_bi6bind_tIbPFbPKcS6_ENSD_5list2INSD_5valueISG_EENS2_3argILi1EEEEEEEET_SQ_SQ_T0_St26random_access_iterator_tag
 #[doc(alias = "__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> std::__find_if<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<bool,bool (*)(char const*,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<bool,bool (*)(char const*,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>>,std::random_access_iterator_tag)")]
 // was: __gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> std::__find_if<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<bool,bool (*)(char const*,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<bool,bool (*)(char const*,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>>,std::random_access_iterator_tag)
-pub fn stub_0x403278() -> ! {
-    todo!("0x403278 __gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> std::__find_if<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<bool,bool (*)(char const*,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<bool,bool (*)(char const*,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>>,std::random_access_iterator_tag)")
+pub fn stub_0x403278(
+    items: &[SharedPtr<Instance>],
+    name: &str,
+    pred: fn(&str, &SharedPtr<Instance>) -> bool,
+) -> Option<usize> {
+    // IDA 0x403278: `find_if` over the const shared range with a
+    // `bind_t<bool(*)(char const*, shared), value(name), arg1>` predicate —
+    // first match wins, miss yields the end iterator; the iterator collapses
+    // into the position.
+    items
+        .iter()
+        .position(|item| pred(name, &item.clone()))
 }
 
 // 0x40336c — __ZN5boost3_bi5list2INS0_5valueIPKcEENS_3argILi1EEEEclIbPFbS4_NS_10shared_ptrIN3RBX8InstanceEEEENS0_5list1IRKSD_EEEET_NS0_4typeISK_EERT0_RT1_l
 #[doc(alias = "bool boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>::operator()<bool,bool (*)(char const*,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<bool>,bool (*)(char const*,rbx_core::SharedPtr<RBX::Instance>) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,long)")]
 // was: bool boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>::operator()<bool,bool (*)(char const*,boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<bool>,bool (*)(char const*,boost::shared_ptr<RBX::Instance>) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,long)
-pub fn stub_0x40336c() -> ! {
-    todo!("0x40336c bool boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>::operator()<bool,bool (*)(char const*,boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<bool>,bool (*)(char const*,boost::shared_ptr<RBX::Instance>) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,long)")
+pub fn stub_0x40336c(
+    func: fn(&str, &SharedPtr<Instance>) -> bool,
+    name: &str,
+    instance: &SharedPtr<Instance>,
+) -> bool {
+    // IDA 0x40336c: `list2<value<char const*>, arg1>::operator()` over a
+    // `bool(*)(char const*, shared)` — applies the predicate to the bound
+    // name and the incoming instance.
+    func(name, &instance.clone())
 }
 
 // 0x403820 — __ZN3RBX11CommonVerbsC1EPNS_9DataModelE
 #[doc(alias = "RBX::CommonVerbs::CommonVerbs(RBX::DataModel *)")]
 // was: RBX::CommonVerbs::CommonVerbs(RBX::DataModel *)
-pub fn stub_0x403820() -> ! {
-    todo!("0x403820 RBX::CommonVerbs::CommonVerbs(RBX::DataModel *)")
+pub fn stub_0x403820(data_model: *const DataModel) -> CommonVerbs {
+    // IDA 0x403820: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x403824(data_model)
 }
 
 // 0x403824 — __ZN3RBX11CommonVerbsC2EPNS_9DataModelE
 #[doc(alias = "RBX::CommonVerbs::CommonVerbs(RBX::DataModel *)")]
 // was: RBX::CommonVerbs::CommonVerbs(RBX::DataModel *)
-pub fn stub_0x403824() -> ! {
-    todo!("0x403824 RBX::CommonVerbs::CommonVerbs(RBX::DataModel *)")
+pub fn stub_0x403824(data_model: *const DataModel) -> CommonVerbs {
+    // IDA 0x403824: `CommonVerbs::C2(DataModel*)` — links the model.
+    CommonVerbs { data_model }
 }
 
 // 0x404394 — __ZN3RBX9TToolVerbINS_10HammerToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::HammerTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::HammerTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x404394() -> ! {
-    todo!("0x404394 RBX::TToolVerb<RBX::HammerTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x404394(data_model: *const DataModel, active: bool) -> HammerToolVerb {
+    // IDA 0x404394: `TToolVerb<HammerTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag.
+    HammerToolVerb { data_model, active }
 }
 
 // 0x4047d4 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_10HammerToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::HammerTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::HammerTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::HammerTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::HammerTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x4047d4() -> ! {
-    todo!("0x4047d4 boost::shared_ptr<RBX::HammerTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::HammerTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x4047d4(workspace: *const crate::workspace::Workspace) -> SharedPtr<HammerTool> {
+    // IDA 0x4047d4: `Creatable<MouseCommand>::create<HammerTool>(Workspace)`
+    // — constructs the tool linked to the workspace; the MouseCommand
+    // registration lands with the command subsystem.
+    SharedPtr::new(HammerTool { workspace })
 }
 
 // 0x404c8c — __ZN3RBX9TToolVerbINS_9CloneToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::CloneTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::CloneTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x404c8c() -> ! {
-    todo!("0x404c8c RBX::TToolVerb<RBX::CloneTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x404c8c(data_model: *const DataModel, active: bool) -> CloneToolVerb {
+    // IDA 0x404c8c: `TToolVerb<CloneTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    CloneToolVerb { data_model, active }
 }
 
 // 0x4050c8 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_9CloneToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::CloneTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::CloneTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::CloneTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::CloneTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x4050c8() -> ! {
-    todo!("0x4050c8 boost::shared_ptr<RBX::CloneTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::CloneTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x4050c8(workspace: *const crate::workspace::Workspace) -> SharedPtr<CloneTool> {
+    // IDA 0x4050c8: `Creatable<MouseCommand>::create<CloneTool>(Workspace)` —
+    // same shape as 0x4047d4.
+    SharedPtr::new(CloneTool { workspace })
 }
 
 // 0x405580 — __ZN3RBX9TToolVerbINS_8GrabToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::GrabTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::GrabTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x405580() -> ! {
-    todo!("0x405580 RBX::TToolVerb<RBX::GrabTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x405580(data_model: *const DataModel, active: bool) -> GrabToolVerb {
+    // IDA 0x405580: `TToolVerb<GrabTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    GrabToolVerb { data_model, active }
 }
 
 // 0x4059bc — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8GrabToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::GrabTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GrabTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::GrabTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GrabTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x4059bc() -> ! {
-    todo!("0x4059bc boost::shared_ptr<RBX::GrabTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GrabTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x4059bc(workspace: *const crate::workspace::Workspace) -> SharedPtr<GrabTool> {
+    // IDA 0x4059bc: `Creatable<MouseCommand>::create<GrabTool>(Workspace)` —
+    // same shape as 0x4047d4.
+    SharedPtr::new(GrabTool { workspace })
 }
 
 // 0x405e74 — __ZN3RBX9TToolVerbINS_8GameToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::GameTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::GameTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x405e74() -> ! {
-    todo!("0x405e74 RBX::TToolVerb<RBX::GameTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x405e74(data_model: *const DataModel, active: bool) -> GameToolVerb {
+    // IDA 0x405e74: `TToolVerb<GameTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    GameToolVerb { data_model, active }
 }
 
 // 0x4062b0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8GameToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::GameTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GameTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::GameTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GameTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x4062b0() -> ! {
-    todo!("0x4062b0 boost::shared_ptr<RBX::GameTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GameTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x4062b0(workspace: *const crate::workspace::Workspace) -> SharedPtr<GameTool> {
+    // IDA 0x4062b0: `Creatable<MouseCommand>::create<GameTool>(Workspace)` —
+    // same shape as 0x4047d4.
+    SharedPtr::new(GameTool { workspace })
 }
 
 // 0x406768 — __ZN3RBX9TToolVerbINS_8NullToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::NullTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::NullTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x406768() -> ! {
-    todo!("0x406768 RBX::TToolVerb<RBX::NullTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x406768(data_model: *const DataModel, active: bool) -> NullToolVerb {
+    // IDA 0x406768: `TToolVerb<NullTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    NullToolVerb { data_model, active }
 }
 
 // 0x406ba4 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8NullToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::NullTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::NullTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::NullTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::NullTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x406ba4() -> ! {
-    todo!("0x406ba4 boost::shared_ptr<RBX::NullTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::NullTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x406ba4(workspace: *const crate::workspace::Workspace) -> SharedPtr<NullTool> {
+    // IDA 0x406ba4: `Creatable<MouseCommand>::create<NullTool>(Workspace)` —
+    // same shape as 0x4047d4.
+    SharedPtr::new(NullTool { workspace })
 }
 
 // 0x40705c — __ZN3RBX9TToolVerbINS_11DropperToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::DropperTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::DropperTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x40705c() -> ! {
-    todo!("0x40705c RBX::TToolVerb<RBX::DropperTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x40705c(data_model: *const DataModel, active: bool) -> DropperToolVerb {
+    // IDA 0x40705c: `TToolVerb<DropperTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    DropperToolVerb { data_model, active }
 }
 
 // 0x407498 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_11DropperToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::DropperTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::DropperTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::DropperTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::DropperTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x407498() -> ! {
-    todo!("0x407498 boost::shared_ptr<RBX::DropperTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::DropperTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x407498(workspace: *const crate::workspace::Workspace) -> SharedPtr<DropperTool> {
+    // IDA 0x407498: `Creatable<MouseCommand>::create<DropperTool>(Workspace)`
+    // — same shape as 0x4047d4.
+    SharedPtr::new(DropperTool { workspace })
 }
 
 // 0x407994 — __ZN3RBX9TToolVerbINS_12MaterialToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::MaterialTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::MaterialTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x407994() -> ! {
-    todo!("0x407994 RBX::TToolVerb<RBX::MaterialTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x407994(data_model: *const DataModel, active: bool) -> MaterialToolVerb {
+    // IDA 0x407994: `TToolVerb<MaterialTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    MaterialToolVerb { data_model, active }
 }
 
 // 0x407dd0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_12MaterialToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::MaterialTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MaterialTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::MaterialTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MaterialTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x407dd0() -> ! {
-    todo!("0x407dd0 boost::shared_ptr<RBX::MaterialTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MaterialTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x407dd0(workspace: *const crate::workspace::Workspace) -> SharedPtr<MaterialTool> {
+    // IDA 0x407dd0: `Creatable<MouseCommand>::create<MaterialTool>(Workspace)`
+    // — same shape as 0x4047d4.
+    SharedPtr::new(MaterialTool { workspace })
 }
 
 // 0x408394 — __ZN3RBX9TToolVerbINS_8FillToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
