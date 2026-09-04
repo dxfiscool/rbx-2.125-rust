@@ -7,185 +7,706 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::generated_05::{EventDescPayload, GenericSlotWrapper, Instance, SignatureItem, Variant};
+use crate::instance::Vector3;
+use rbx_core::signal::Signal;
+use parking_lot::Mutex;
+use std::sync::Arc;
+
+/// Rust model of a `RBX::Humanoid` call target (IDA `0x7c3bc8` et al.): the
+/// `Humanoid` vtable sits 36 bytes into the `Instance` base, so the
+/// `execute`/`call` helpers adjust `source - 36` before dispatch
+/// (IDA `0x7c3c1a`, `0x7c761a`, `0x7ca212`). No `Humanoid` fields are
+/// modeled yet; the target collapses to its `Instance` base.
+pub type HumanoidTarget = Instance;
+
+/// Rust model of the bound member pointer stored at words `+10/+11` of a
+/// `BoundFuncDesc` (IDA `0x7c3986`, `0x7c7386`, `0x7c9efa` builds it with
+/// `__PAIR64__`). Bit 0 set marks a vtable slot: the call helpers recover
+/// the `Humanoid` base with `target + (raw >> 1)` and load the address from
+/// `&base[*slot]` (IDA `0x7c3d02`-`0x7c3d10`, `0x7c76fc`-`0x7c770a`,
+/// `0x7ca30a`-`0x7ca318`); clear means a direct function address.
+#[derive(Clone, Copy, Default)]
+pub struct BoundMethod {
+    pub raw: u64,
+}
+impl BoundMethod {
+    pub fn is_virtual(self) -> bool {
+        self.raw & 1 != 0
+    }
+}
+
+/// Rust model of
+/// `BoundFuncDesc<Humanoid, SharedPtr<Instance>(SharedPtr<Instance>), 1>`
+/// (IDA `0x7c3914`): signature items at `+8`, bound name
+/// (`scoped_ptr<string>`) at `+12`, stored member pointer at `+10/+11`.
+pub struct HumanoidFuncRetInstance {
+    pub items: Vec<SignatureItem>,
+    pub method: BoundMethod,
+    /// Already-resolved implementation behind `method` (IDA `0x7c3cb0`):
+    /// `None` means a vtable-slot member pointer with no vtable model yet,
+    /// so `execute` has nothing to call.
+    pub method_fn: Option<HumanoidMethodRet1>,
+    pub bound_name: Option<String>,
+    pub return_type: &'static str,
+}
+pub struct HumanoidFuncVoid1 {
+    pub items: Vec<SignatureItem>,
+    pub method: BoundMethod,
+    /// Already-resolved implementation behind `method` (IDA `0x7c76ac`).
+    pub method_fn: Option<HumanoidMethodVoid1>,
+    pub bound_name: Option<String>,
+}
+pub struct HumanoidFuncVoid2 {
+    pub items: Vec<SignatureItem>,
+    pub method: BoundMethod,
+    /// Already-resolved implementation behind `method` (IDA `0x7ca2bc`).
+    pub method_fn: Option<HumanoidMethodVoid2>,
+    pub bound_name: Option<String>,
+    pub bound_extra: Option<Box<[u32; 4]>>,
+}
+/// A `void (Humanoid::*)(SharedPtr<Instance>)` implementation behind
+/// `HumanoidFuncVoid1::method` once resolved (IDA `0x7c76ac`).
+pub type HumanoidMethodVoid1 = fn(*mut HumanoidTarget, SharedPtr<Instance>);
+/// A `SharedPtr<Instance> (Humanoid::*)(SharedPtr<Instance>)` implementation
+/// behind `HumanoidFuncRetInstance::method` (IDA `0x7c3cb0`).
+pub type HumanoidMethodRet1 =
+    fn(*mut HumanoidTarget, SharedPtr<Instance>) -> SharedPtr<Instance>;
+/// A `void (Humanoid::*)(Vector3, SharedPtr<Instance>)` implementation
+/// behind `HumanoidFuncVoid2::method` (IDA `0x7ca2bc`).
+pub type HumanoidMethodVoid2 =
+    fn(*mut HumanoidTarget, Vector3, SharedPtr<Instance>);
+
+/// Rust model of the `RemoteEventDesc`/`EventDesc` pair for the 1-arg
+/// `void(SharedPtr<Instance>)` Humanoid family (IDA `0x7c4a00`): flag words
+/// at `+44` (broadcast, bit 0 — disasm `0x7c4874`: `LDR R0,[R0,#0x2C]`)
+/// and `+48` (scriptable, bit 0 — disasm `0x7c486c`: `LDR R0,[R0,#0x30]`)
+/// plus the shared signature/slot payload.
+pub struct HumanoidRemoteEvent {
+    pub payload: HumanoidEventPayload,
+    pub broadcast_flags: u32,
+    pub scriptable_flags: u32,
+}
+/// Signature items plus connected generic slots for one Humanoid event;
+/// same shape as `EventDescPayload` but standalone so this shard owns its
+/// storage (the original keeps both on the descriptor, IDA `0x7c4ba0`).
+pub struct HumanoidEventPayload {
+    pub name: String,
+    pub permissions: u32,
+    pub attributes: u32,
+    pub items: Vec<SignatureItem>,
+    pub connections: Mutex<Vec<SharedPtr<GenericSlotWrapper>>>,
+    pub single: Signal<SharedPtr<Instance>>,
+}
+impl HumanoidEventPayload {
+    fn new(
+        name: &str,
+        permissions: u32,
+        attributes: u32,
+        arg_type: &'static str,
+    ) -> Self {
+        Self {
+            name: name.to_string(),
+            permissions,
+            attributes,
+            items: vec![SignatureItem { type_name: arg_type }],
+            connections: Mutex::new(Vec::new()),
+            single: Signal::new(),
+        }
+    }
+}
+
+/// Rust model of an
+/// `rbx::signals::signal<void ()(SharedPtr<Instance>, string, ChatColor)>::slot`
+/// (IDA `0x7a8418`): the `+12` word is the owning signal link, null once
+/// detached. Disconnect clears it under the slot static mutex
+/// (IDA `0x7a849a`-`0x7a84b6`) after removing the slot from the signal.
+pub struct ChatSignalSlot {
+    pub connected: bool,
+}
+/// Static mutex behind `slot::safe_static_do_get_mutex`
+/// (IDA `0x7a8488`-`0x7a849a`); serializes `disconnect` against concurrent
+/// signal mutation the way the original's `unique_lock` does.
+static CHAT_SLOT_MUTEX: Mutex<()> = Mutex::new(());
+
+/// Rust model of `RefPropDescriptor<Humanoid, PartInstance>`
+/// (IDA `0x7cb0a4`): the 5-word (`0x14`) heap payload at `+11` holds the
+/// getter/setter member words (IDA `0x7cb130`-`0x7cb138`); the `+44` word
+/// (disasm `0x7cb17a`: `LDR R0,[R0,#0x2C]`) is the access-policy object
+/// whose vtable slots 0/1 answer `isReadOnly`/`isWriteOnly`
+/// (disasm `0x7cb17e`-`0x7cb182` / `0x7cb18e`-`0x7cb190`).
+pub struct HumanoidPartRefProp {
+    pub payload_words: Option<Box<[u32; 5]>>,
+    pub access: RefAccess,
+}
+/// Rust model of the `+44` access-policy object: the two vtable slots behind
+/// `isReadOnly` (slot 0) and `isWriteOnly` (slot 1) collapse into plain
+/// predicates. The `GetSetImpl` used here answers `false`/`false`
+/// (IDA `0x7cb654`/`0x7cb658` both `return 0`): getter plus setter means
+/// read-write.
+#[derive(Clone, Copy)]
+pub struct RefAccess {
+    pub is_read_only: fn() -> bool,
+    pub is_write_only: fn() -> bool,
+}
+fn read_write_access() -> bool {
+    false
+}
+impl Default for RefAccess {
+    fn default() -> Self {
+        Self {
+            is_read_only: read_write_access,
+            is_write_only: read_write_access,
+        }
+    }
+}
 
 // 0x7a8418 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE4slot10disconnectEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot::disconnect(void)")]
-pub fn stub_0x7a8418() -> ! {
-    todo!("0x7a8418 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot::disconnect(void)")
+pub fn stub_0x7a8418(slot: *mut ChatSignalSlot) {
+    // IDA 0x7a8418: if the `+12` signal link is set (0x7a8442), take the slot
+    // static mutex via `call_once` init + `unique_lock` (0x7a8482-0x7a84a4),
+    // clear the link (0x7a84b0) and remove the slot from the signal
+    // (0x7a84b6); the guard release (0x7a84be-0x7a84c8) is the `unique_lock`
+    // dtor, compiler-managed here, as is the `call_once` init behind
+    // `CHAT_SLOT_MUTEX`. Removing from the signal list collapses into
+    // clearing the link: with no slot list modeled, detachment is the
+    // observable effect.
+    // SAFETY: `slot` must point to a valid `ChatSignalSlot`.
+    unsafe {
+        if (*slot).connected {
+            let _guard = CHAT_SLOT_MUTEX.lock();
+            (*slot).connected = false;
+        }
+    }
 }
 
 // 0x7c3914 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFN5boost10shared_ptrINS_8InstanceEEES6_ELi1EEC2EMS2_FS6_S6_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::BoundFuncDesc(rbx_core::SharedPtr<RBX::Instance> (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x7c3914() -> ! {
-    todo!("0x7c3914 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::BoundFuncDesc(rbx_core::SharedPtr<RBX::Instance> (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x7c3914(
+    method_hi: u32,
+    method_lo: u32,
+    name: &str,
+    permissions: u32,
+    attributes: u32,
+) -> HumanoidFuncRetInstance {
+    // IDA 0x7c3914: base `FunctionDescriptor` init (0x7c396c), vtable set
+    // (0x7c3982), member-pointer pair stored at `+10/+11` (0x7c3986),
+    // `scoped_ptr` at `+12` nulled (0x7c39a2), then
+    // `declareSignature(name)` (0x7c39d6) over the `SharedPtr<Instance>`
+    // return singleton (0x7c39c6). The class-descriptor link (0x7c394c) is
+    // the `Humanoid` target type itself, compiler-managed here.
+    let mut desc = HumanoidFuncRetInstance {
+        items: Vec::new(),
+        method: BoundMethod {
+            raw: ((method_hi as u64) << 32) | method_lo as u64,
+        },
+        method_fn: None,
+        bound_name: None,
+        return_type: "SharedPtr<Instance>",
+    };
+    stub_0x7c3a90(&mut desc as *mut _, name);
+    let _ = (permissions, attributes);
+    desc
 }
 
 // 0x7c3a90 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFN5boost10shared_ptrINS_8InstanceEEES6_ELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x7c3a90() -> ! {
-    todo!("0x7c3a90 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x7c3a90(desc: *mut HumanoidFuncRetInstance, name: &str) {
+    // IDA 0x7c3a90: return singleton `getSingleton<SharedPtr<Instance>>`
+    // stored at `+28` (0x7c3aa0), arg name interned via `Name::declare`
+    // (0x7c3aaa), then `addArgument` (0x7c3abe). The declared name is kept
+    // as the bound name; interning has no global table yet.
+    // SAFETY: `desc` must point to a valid `HumanoidFuncRetInstance`.
+    unsafe {
+        (*desc).return_type = "SharedPtr<Instance>";
+        (*desc).items.push(SignatureItem {
+            type_name: "SharedPtr<Instance>",
+        });
+        (*desc).bound_name = Some(name.to_string());
+    }
 }
 
 // 0x7c3ac0 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFN5boost10shared_ptrINS_8InstanceEEES6_ELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
-pub fn stub_0x7c3ac0() -> ! {
-    todo!("0x7c3ac0 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_0x7c3ac0(desc: *mut HumanoidFuncRetInstance) {
+    // IDA 0x7c3ac0 (D0): vtable reset (0x7c3afe, compiler-managed),
+    // `scoped_ptr<string>::~scoped_ptr(a1 + 12)` (0x7c3b24), base
+    // `SignatureDescriptor` D1 `_M_clear(a1 + 8)` (0x7c3b42), then
+    // `operator delete(a1)` (0x7c3b48) — storage reclaim is the caller's
+    // (`Box`) responsibility here.
+    // SAFETY: `desc` must point to a valid `HumanoidFuncRetInstance`.
+    unsafe {
+        (*desc).bound_name = None;
+        (*desc).items.clear();
+    }
 }
 
 // 0x7c3bc8 — __ZNK3RBX10Reflection13BoundFuncDescINS_8HumanoidEFN5boost10shared_ptrINS_8InstanceEEES6_ELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x7c3bc8() -> ! {
-    todo!("0x7c3bc8 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x7c3bc8(
+    desc: *const HumanoidFuncRetInstance,
+    source: *const Instance,
+    args: &[Variant],
+    out: &mut Variant,
+) {
+    // IDA 0x7c3bc8: null source stays null, else `source - 36` recovers the
+    // `Humanoid` base (0x7c3c18-0x7c3c1a); `getArg<Instance,1>` extracts the
+    // first arg (0x7c3c32); `Call1Helper::call` runs the method (0x7c3c46)
+    // and the result lands in the out-variant behind the
+    // `getSingleton<SharedPtr<Instance>>` tag (0x7c3d42-0x7c3d4e).
+    // SAFETY: `desc`/`out` valid; `source` valid-or-null.
+    let arg = match args.first() {
+        Some(Variant::Instance(inst)) => inst.clone(),
+        _ => return,
+    };
+    unsafe {
+        let base = if source.is_null() {
+            core::ptr::null_mut()
+        } else {
+            (source as *mut u8).wrapping_sub(36) as *mut HumanoidTarget
+        };
+        if let Some(method) = (*desc).method_fn {
+            let result = stub_0x7c3cb0(base, method, &arg);
+            *out = Variant::Instance(result);
+        }
+    }
 }
 
 // 0x7c3cb0 — __ZN3RBX10Reflection11Call1HelperINS_8HumanoidEMS2_FN5boost10shared_ptrINS_8InstanceEEES6_ES6_S6_E4callEPS2_S8_RNS0_7VariantERKS6_
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::Humanoid,rbx_core::SharedPtr<RBX::Instance> (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>::call(RBX::Humanoid*,rbx_core::SharedPtr<RBX::Instance> (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")]
-pub fn stub_0x7c3cb0() -> ! {
-    todo!("0x7c3cb0 RBX::Reflection::Call1Helper<RBX::Humanoid,rbx_core::SharedPtr<RBX::Instance> (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>::call(RBX::Humanoid*,rbx_core::SharedPtr<RBX::Instance> (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")
+pub fn stub_0x7c3cb0(
+    target: *mut HumanoidTarget,
+    method: HumanoidMethodRet1,
+    arg: &SharedPtr<Instance>,
+) -> SharedPtr<Instance> {
+    // IDA 0x7c3cb0: the `(a3 & 1)` branch (0x7c3d0c-0x7c3d10) resolves
+    // virtuals through the object vtable — no vtable model exists yet, so
+    // callers pass the already-resolved address and only the direct path
+    // runs here. The arg's `shared_count` copy (0x7c3d22-0x7c3d2a) is the
+    // `Arc` clone; its release (0x7c3d60-0x7c3d68) is the clone's `Drop`.
+    // The out-variant tag (0x7c3d42) is set by the caller (`execute`).
+    let retained = arg.clone();
+    method(target, retained)
 }
 
 // 0x7c4654 — __ZN3RBX10Reflection15RemoteEventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEED0Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::~RemoteEventDesc()")]
-pub fn stub_0x7c4654() -> ! {
-    todo!("0x7c4654 RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::~RemoteEventDesc()")
+pub fn stub_0x7c4654(desc: *mut HumanoidRemoteEvent) {
+    // IDA 0x7c4654 (D0): vtable reset (0x7c4692, compiler-managed) +
+    // `_M_clear(a1 + 8)` (0x7c46b8) + `operator delete(a1)` (0x7c46be) —
+    // same shape as the `EventDesc` D0 at 0x7c4ba8, so it shares that port;
+    // storage reclaim stays with the caller.
+    // SAFETY: `desc` must point to a valid `HumanoidRemoteEvent`.
+    stub_0x7c4ba8(desc);
 }
 
 // 0x7c4708 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
-pub fn stub_0x7c4708() -> ! {
-    todo!("0x7c4708 RBX::Reflection::EventDescImpl<1,RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x7c4708(desc: *const HumanoidRemoteEvent, slot: SharedPtr<GenericSlotWrapper>) {
+    // IDA 0x7c4708: retains the wrapper (`shared_count` copy, 0x7c4738),
+    // builds the `bind(execute1, wrapper, _1)` callable (0x7c4780-0x7c478c)
+    // and connects it onto the source's member signal resolved through the
+    // `+40` member pointer (0x7c47a4-0x7c47b6). The bind collapses into the
+    // retained wrapper: the descriptor keeps the `Arc` in `connections`
+    // and `fireEvent` invokes `on_single` directly, while the direct member
+    // signal fires alongside it — same observable connect/fire pairing.
+    // SAFETY: `desc` must point to a valid `HumanoidRemoteEvent`.
+    unsafe {
+        let payload = &(*desc).payload;
+        payload.connections.lock().push(slot.clone());
+        let weak = Arc::downgrade(&slot);
+        payload.single.connect(Arc::new(move |arg: SharedPtr<Instance>| {
+            if let Some(slot) = weak.upgrade() {
+                if let Some(cb) = slot.on_single {
+                    cb(&arg);
+                }
+            }
+        }));
+    }
 }
 
 // 0x7c486c — __ZNK3RBX10Reflection15RemoteEventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::isScriptable(void)const")]
-pub fn stub_0x7c486c() -> ! {
-    todo!("0x7c486c RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::isScriptable(void)const")
+pub fn stub_0x7c486c(desc: *const HumanoidRemoteEvent) -> bool {
+    // IDA 0x7c486c, disasm: `LDR R0,[R0,#0x30]; AND.W R0,R0,#1; BX LR` —
+    // word `+48` bit 0.
+    // SAFETY: `desc` must point to a valid `HumanoidRemoteEvent`.
+    unsafe { (*desc).scriptable_flags & 1 != 0 }
 }
 
 // 0x7c4874 — __ZNK3RBX10Reflection15RemoteEventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE11isBroadcastEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::isBroadcast(void)const")]
-pub fn stub_0x7c4874() -> ! {
-    todo!("0x7c4874 RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::isBroadcast(void)const")
+pub fn stub_0x7c4874(desc: *const HumanoidRemoteEvent) -> bool {
+    // IDA 0x7c4874, disasm: `LDR R0,[R0,#0x2C]; AND.W R0,R0,#1; BX LR` —
+    // word `+44` bit 0.
+    // SAFETY: `desc` must point to a valid `HumanoidRemoteEvent`.
+    unsafe { (*desc).broadcast_flags & 1 != 0 }
 }
 
 // 0x7c487c — __ZNK3RBX10Reflection13EventDescImplILi1ENS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
-pub fn stub_0x7c487c() -> ! {
-    todo!("0x7c487c RBX::Reflection::EventDescImpl<1,RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0x7c487c(
+    desc: *const HumanoidRemoteEvent,
+    _source: *const HumanoidTarget,
+    args: &[Variant],
+) {
+    // IDA 0x7c487c: `ReleaseAssert(args.size() == 1)` (0x7c48b8-0x7c492c;
+    // the `FLog::Asserts` gate and `_debugHook` branch collapse into the
+    // check itself), null source stays null else `- 36` (0x7c4932-0x7c4934;
+    // the member signal lives on the payload here, so the base is unused),
+    // `any_cast` the arg to `SharedPtr<Instance>` (0x7c494c-0x7c4966),
+    // fire the member signal (0x7c4972) with the retained copy, released at
+    // 0x7c4978-0x7c4980 (the clone's `Drop`). Generic connections
+    // (`connectGeneric`, 0x7c4708) observe the same arg via `on_single`.
+    // SAFETY: `desc` must point to a valid `HumanoidRemoteEvent`.
+    if args.len() != 1 {
+        panic!("args.size() == 1 file: include/Reflection/Event.h line: 320");
+    }
+    let arg = match &args[0] {
+        Variant::Instance(inst) => inst.clone(),
+        _ => panic!("any_cast<SharedPtr<Instance>> failed at 0x7c494c"),
+    };
+    unsafe {
+        let payload = &(*desc).payload;
+        payload.single.fire(arg.clone());
+        for slot in payload.connections.lock().iter() {
+            if let Some(cb) = slot.on_single {
+                cb(&arg);
+            }
+        }
+    }
 }
 
 // 0x7c49dc — __ZNK3RBX10Reflection15RemoteEventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE9sendEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISF_EE
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
-pub fn stub_0x7c49dc() -> ! {
-    todo!("0x7c49dc RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0x7c49dc(
+    desc: *const HumanoidRemoteEvent,
+    source: *mut HumanoidTarget,
+    args: &[Variant],
+) {
+    // IDA 0x7c49dc, disasm: `MOV R3,R0` (desc) then tail-jump to the
+    // source's `EventSource` vtable slot `+12` with
+    // `(source, desc, args, 0)` (0x7c49de-0x7c49ea) — the remote send path.
+    // No vtable/replication model exists yet; local delivery is `fireEvent`.
+    // SAFETY: same contract as `stub_0x7c487c`.
+    stub_0x7c487c(desc, source, args);
 }
 
 // 0x7c49ec — __ZNK3RBX10Reflection13EventDescBaseINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
-pub fn stub_0x7c49ec() -> ! {
-    todo!("0x7c49ec RBX::Reflection::EventDescBase<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_0x7c49ec(desc: *const HumanoidRemoteEvent, _source: *const HumanoidTarget) {
+    // IDA 0x7c49ec, disasm: `source ? source - 36 : 0` (0x7c49ee-0x7c49f2;
+    // the member signal lives on the payload here, so the base is unused),
+    // member signal at `*(desc + 40)` (0x7c49f6-0x7c49f8), then
+    // `signal::disconnectAll` — clears both the member signal and the
+    // descriptor's generic connections.
+    // SAFETY: `desc` must point to a valid `HumanoidRemoteEvent`.
+    unsafe {
+        let payload = &(*desc).payload;
+        payload.single.disconnect_all();
+        payload.connections.lock().clear();
+    }
 }
 
 // 0x7c4a00 — __ZN3RBX10Reflection9EventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_EC2ESB_PKcSE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*>::EventDesc(rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x7c4a00() -> ! {
-    todo!("0x7c4a00 RBX::Reflection::EventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*>::EventDesc(rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x7c4a00(name: &str, permissions: u32, attributes: u32) -> HumanoidRemoteEvent {
+    // IDA 0x7c4a00: class-descriptor link (0x7c4a38) and `EventDescriptor`
+    // base init (0x7c4a56) are compiler-managed here; the stored member
+    // pointer (`+40`) is the payload's own `single` signal, and the single
+    // `SharedPtr<Instance>` signature item is pushed by construction.
+    // Flag words start clear: not broadcast, not scriptable
+    // (cf. 0x7c486c/0x7c4874).
+    HumanoidRemoteEvent {
+        payload: HumanoidEventPayload::new(name, permissions, attributes, "SharedPtr<Instance>"),
+        broadcast_flags: 0,
+        scriptable_flags: 0,
+    }
 }
 
 // 0x7c4b84 — __ZN3RBX10Reflection9EventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*>::~EventDesc()")]
-pub fn stub_0x7c4b84() -> ! {
-    todo!("0x7c4b84 RBX::Reflection::EventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*>::~EventDesc()")
+pub fn stub_0x7c4b84(desc: *mut HumanoidRemoteEvent) {
+    // IDA 0x7c4b84 (D1): vtable reset (0x7c4b9c, compiler-managed) +
+    // `_M_clear(a1 + 8)` (0x7c4ba0); keeps storage.
+    // SAFETY: `desc` must point to a valid `HumanoidRemoteEvent`.
+    unsafe {
+        (*desc).payload.items.clear();
+        (*desc).payload.connections.lock().clear();
+    }
 }
 
 // 0x7c4ba8 — __ZN3RBX10Reflection9EventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*>::~EventDesc()")]
-pub fn stub_0x7c4ba8() -> ! {
-    todo!("0x7c4ba8 RBX::Reflection::EventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*>::~EventDesc()")
+pub fn stub_0x7c4ba8(desc: *mut HumanoidRemoteEvent) {
+    // IDA 0x7c4ba8 (D0): vtable reset (0x7c4be6, compiler-managed) +
+    // `_M_clear(a1 + 8)` (0x7c4c0c) + `operator delete(a1)` (0x7c4c12) —
+    // same list teardown as the D1 at 0x7c4b84, so it shares that port;
+    // storage reclaim stays with the caller.
+    // SAFETY: `desc` must point to a valid `HumanoidRemoteEvent`.
+    stub_0x7c4b84(desc);
 }
 
 // 0x7c7314 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEELi1EEC2EMS2_FvS6_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x7c7314() -> ! {
-    todo!("0x7c7314 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x7c7314(
+    method_hi: u32,
+    method_lo: u32,
+    name: &str,
+    permissions: u32,
+    attributes: u32,
+) -> HumanoidFuncVoid1 {
+    // IDA 0x7c7314: base `FunctionDescriptor` init (0x7c736c), vtable set
+    // (0x7c7382), member-pointer pair at `+10/+11` (0x7c7386), `scoped_ptr`
+    // at `+12` nulled (0x7c73a2), then `declareSignature(name)` over the
+    // `void` return singleton (0x7c73a2-0x7c73d6). Same shape as 0x7c3914
+    // with a `void` return.
+    let mut desc = HumanoidFuncVoid1 {
+        items: Vec::new(),
+        method: BoundMethod {
+            raw: ((method_hi as u64) << 32) | method_lo as u64,
+        },
+        method_fn: None,
+        bound_name: None,
+    };
+    stub_0x7c7490(&mut desc as *mut _, name);
+    let _ = (permissions, attributes);
+    desc
 }
 
 // 0x7c7490 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x7c7490() -> ! {
-    todo!("0x7c7490 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x7c7490(desc: *mut HumanoidFuncVoid1, name: &str) {
+    // IDA 0x7c7490: `void` return singleton at `+28` (0x7c74a0), arg name
+    // interned via `Name::declare` (0x7c74aa), then `addArgument`
+    // (0x7c74be). Same shape as 0x7c3a90 with a `void` return.
+    // SAFETY: `desc` must point to a valid `HumanoidFuncVoid1`.
+    unsafe {
+        (*desc).items.push(SignatureItem {
+            type_name: "SharedPtr<Instance>",
+        });
+        (*desc).bound_name = Some(name.to_string());
+    }
 }
 
 // 0x7c74c0 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
-pub fn stub_0x7c74c0() -> ! {
-    todo!("0x7c74c0 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_0x7c74c0(desc: *mut HumanoidFuncVoid1) {
+    // IDA 0x7c74c0 (D0): vtable reset (0x7c74fe, compiler-managed),
+    // `scoped_ptr<string>::~scoped_ptr(a1 + 12)` (0x7c7524), base D1
+    // `_M_clear(a1 + 8)` (0x7c7542), `operator delete(a1)` (0x7c7548) —
+    // same shape as 0x7c3ac0; storage reclaim stays with the caller.
+    // SAFETY: `desc` must point to a valid `HumanoidFuncVoid1`.
+    unsafe {
+        (*desc).bound_name = None;
+        (*desc).items.clear();
+    }
 }
 
 // 0x7c75c8 — __ZNK3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x7c75c8() -> ! {
-    todo!("0x7c75c8 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x7c75c8(
+    desc: *const HumanoidFuncVoid1,
+    source: *const Instance,
+    args: &[Variant],
+) {
+    // IDA 0x7c75c8: null source stays null, else `source - 36` (0x7c7618-
+    // 0x7c761a); `getArg<Instance,1>` (0x7c7632); `Call1Helper::call`
+    // (0x7c7642); release of the extracted copy (0x7c7648-0x7c7650, the
+    // clone's `Drop`). Same shape as 0x7c3bc8 with no out-variant (`void`).
+    // SAFETY: `desc` valid; `source` valid-or-null.
+    let arg = match args.first() {
+        Some(Variant::Instance(inst)) => inst.clone(),
+        _ => return,
+    };
+    unsafe {
+        let base = if source.is_null() {
+            core::ptr::null_mut()
+        } else {
+            (source as *mut u8).wrapping_sub(36) as *mut HumanoidTarget
+        };
+        if let Some(method) = (*desc).method_fn {
+            stub_0x7c76ac(base, method, &arg);
+        }
+    }
 }
 
 // 0x7c76ac — __ZN3RBX10Reflection11Call1HelperINS_8HumanoidEMS2_FvN5boost10shared_ptrINS_8InstanceEEEES6_vE4callEPS2_S8_RNS0_7VariantERKS6_
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::Humanoid,void (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,void>::call(RBX::Humanoid*,void (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")]
-pub fn stub_0x7c76ac() -> ! {
-    todo!("0x7c76ac RBX::Reflection::Call1Helper<RBX::Humanoid,void (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,void>::call(RBX::Humanoid*,void (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")
+pub fn stub_0x7c76ac(
+    target: *mut HumanoidTarget,
+    method: HumanoidMethodVoid1,
+    arg: &SharedPtr<Instance>,
+) {
+    // IDA 0x7c76ac: direct path calls `a2` with the retained arg copy
+    // (0x7c7712-0x7c772e); the `(a3 & 1)` vtable branch (0x7c7706-0x7c770a)
+    // has no vtable model yet, so callers pass the resolved address. The
+    // `shared_count` copy/release pair (0x7c771c/0x7c7732-0x7c773a) is the
+    // `Arc` clone and its `Drop`.
+    let retained = arg.clone();
+    method(target, retained);
 }
 
 // 0x7c9e88 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvN3G3D7Vector3EN5boost10shared_ptrINS_8InstanceEEEELi2EEC2EMS2_FvS4_S8_EPKcSE_SE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),2>::BoundFuncDesc(void (RBX::Humanoid::*)(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x7c9e88() -> ! {
-    todo!("0x7c9e88 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),2>::BoundFuncDesc(void (RBX::Humanoid::*)(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x7c9e88(
+    method_hi: u32,
+    method_lo: u32,
+    first: &str,
+    second: &str,
+    permissions: u32,
+    attributes: u32,
+) -> HumanoidFuncVoid2 {
+    // IDA 0x7c9e88: base init (0x7c9ee0), vtable set (0x7c9ef6),
+    // member-pointer pair at `+10/+11` (0x7c9efa), both bound slots nulled
+    // (`+12` at 0x7c9f00, `+13` at 0x7c9f1a), then `declareSignature`
+    // (0x7c9f3e-0x7c9f52) over two `void` singletons. Same shape as
+    // 0x7c3914/0x7c7314 with two args.
+    let mut desc = HumanoidFuncVoid2 {
+        items: Vec::new(),
+        method: BoundMethod {
+            raw: ((method_hi as u64) << 32) | method_lo as u64,
+        },
+        method_fn: None,
+        bound_name: None,
+        bound_extra: None,
+    };
+    stub_0x7ca054(&mut desc as *mut _, first, second);
+    let _ = (permissions, attributes);
+    desc
 }
 
 // 0x7ca054 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvN3G3D7Vector3EN5boost10shared_ptrINS_8InstanceEEEELi2EE16declareSignatureEPKcNS0_7VariantESC_SD_
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x7ca054() -> ! {
-    todo!("0x7ca054 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+pub fn stub_0x7ca054(desc: *mut HumanoidFuncVoid2, first: &str, second: &str) {
+    // IDA 0x7ca054: `void` return singleton at `+28` (0x7ca066),
+    // `Vector3` arg declared + added (0x7ca070-0x7ca07e), `SharedPtr`
+    // arg declared + added (0x7ca088-0x7ca09c). Arg names collapse the way
+    // `SignatureItem` does (type names only); the first is kept as the
+    // bound name.
+    // SAFETY: `desc` must point to a valid `HumanoidFuncVoid2`.
+    unsafe {
+        (*desc).items.push(SignatureItem { type_name: "Vector3" });
+        (*desc).items.push(SignatureItem {
+            type_name: "SharedPtr<Instance>",
+        });
+        (*desc).bound_name = Some(first.to_string());
+        let _ = second;
+    }
 }
 
 // 0x7ca0a0 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvN3G3D7Vector3EN5boost10shared_ptrINS_8InstanceEEEELi2EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")]
-pub fn stub_0x7ca0a0() -> ! {
-    todo!("0x7ca0a0 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")
+pub fn stub_0x7ca0a0(desc: *mut HumanoidFuncVoid2) {
+    // IDA 0x7ca0a0 (D0): vtable reset (0x7ca0de, compiler-managed),
+    // `scoped_ptr` dtor at `+13` (0x7ca104), conditional
+    // `operator delete` of the `+12` word (0x7ca10a-0x7ca110), base D1
+    // `_M_clear(a1 + 8)` (0x7ca12e), `operator delete(a1)` (0x7ca134).
+    // Storage reclaim stays with the caller.
+    // SAFETY: `desc` must point to a valid `HumanoidFuncVoid2`.
+    unsafe {
+        (*desc).bound_name = None;
+        (*desc).bound_extra = None;
+        (*desc).items.clear();
+    }
 }
 
 // 0x7ca1c0 — __ZNK3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvN3G3D7Vector3EN5boost10shared_ptrINS_8InstanceEEEELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x7ca1c0() -> ! {
-    todo!("0x7ca1c0 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x7ca1c0(
+    desc: *const HumanoidFuncVoid2,
+    source: *const Instance,
+    pos: Vector3,
+    args: &[Variant],
+) {
+    // IDA 0x7ca1c0: null source stays null, else `source - 36`
+    // (0x7ca210-0x7ca212); `getArg<Vector3,1>` (0x7ca22e) and
+    // `getArg<Instance,2>` (0x7ca23e); `Call2Helper::call` (0x7ca252);
+    // release of the extracted instance copy (0x7ca258-0x7ca260). The
+    // `Variant` wire type has no 12-byte float-triple case yet, so the
+    // already-extracted `Vector3` crosses as a typed parameter — the same
+    // value `Call2Helper::call` receives.
+    // SAFETY: `desc` valid; `source` valid-or-null.
+    let arg = match args.first() {
+        Some(Variant::Instance(inst)) => inst.clone(),
+        _ => return,
+    };
+    unsafe {
+        let base = if source.is_null() {
+            core::ptr::null_mut()
+        } else {
+            (source as *mut u8).wrapping_sub(36) as *mut HumanoidTarget
+        };
+        if let Some(method) = (*desc).method_fn {
+            stub_0x7ca2bc(base, method, pos, &arg);
+        }
+    }
 }
 
 // 0x7ca2bc — __ZN3RBX10Reflection11Call2HelperINS_8HumanoidEMS2_FvN3G3D7Vector3EN5boost10shared_ptrINS_8InstanceEEEES4_S8_vE4callEPS2_SA_RNS0_7VariantERKS4_RKS8_
 #[doc(alias = "RBX::Reflection::Call2Helper<RBX::Humanoid,void (RBX::Humanoid::*)(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>,void>::call(RBX::Humanoid*,void (RBX::Humanoid::*)(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,G3D::Vector3 const&,rbx_core::SharedPtr<RBX::Instance> const&)")]
-pub fn stub_0x7ca2bc() -> ! {
-    todo!("0x7ca2bc RBX::Reflection::Call2Helper<RBX::Humanoid,void (RBX::Humanoid::*)(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>,void>::call(RBX::Humanoid*,void (RBX::Humanoid::*)(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,G3D::Vector3 const&,rbx_core::SharedPtr<RBX::Instance> const&)")
+pub fn stub_0x7ca2bc(
+    target: *mut HumanoidTarget,
+    method: HumanoidMethodVoid2,
+    pos: Vector3,
+    arg: &SharedPtr<Instance>,
+) {
+    // IDA 0x7ca2bc: the `(a3 & 1)` vtable branch (0x7ca314-0x7ca318) has no
+    // vtable model yet, so callers pass the resolved address; the `Vector3`
+    // triple copies by value (0x7ca31e-0x7ca328) via `Copy`, and the
+    // instance's `shared_count` copy/release (0x7ca330-0x7ca342 /
+    // 0x7ca356-0x7ca35e) is the `Arc` clone and its `Drop`.
+    let retained = arg.clone();
+    method(target, pos, retained);
 }
 
 // 0x7cb0a4 — __ZN3RBX10Reflection17RefPropDescriptorINS_8HumanoidENS_12PartInstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::RefPropDescriptor<RBX::PartInstance* (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(RBX::PartInstance*)>(char const*,char const*,RBX::PartInstance* (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(RBX::PartInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x7cb0a4() -> ! {
-    todo!("0x7cb0a4 RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::RefPropDescriptor<RBX::PartInstance* (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(RBX::PartInstance*)>(char const*,char const*,RBX::PartInstance* (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(RBX::PartInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x7cb0a4(getter: u32, setter: u32, aux0: u32, aux1: u32) -> HumanoidPartRefProp {
+    // IDA 0x7cb0a4: class-descriptor link (0x7cb0b6) and
+    // `PropertyDescriptor` base init (0x7cb0fc) are compiler-managed here;
+    // vtable words set (0x7cb112-0x7cb114); the `operator new(0x14)`
+    // payload (0x7cb118) holds its vtable plus the four member words
+    // (0x7cb130-0x7cb138), kept as a boxed word array with the vtable slot
+    // zeroed. The access policy is the read-write `GetSetImpl`
+    // (IDA `0x7cb654`/`0x7cb658` both `return 0`).
+    HumanoidPartRefProp {
+        payload_words: Some(Box::new([0, getter, setter, aux0, aux1])),
+        access: RefAccess::default(),
+    }
 }
 
 // 0x7cb148 — __ZN3RBX10Reflection17RefPropDescriptorINS_8HumanoidENS_12PartInstanceEED0Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::~RefPropDescriptor()")]
-pub fn stub_0x7cb148() -> ! {
-    todo!("0x7cb148 RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::~RefPropDescriptor()")
+pub fn stub_0x7cb148(desc: *mut HumanoidPartRefProp) {
+    // IDA 0x7cb148 (D0): vtable resets (0x7cb15e-0x7cb162,
+    // compiler-managed), conditional `operator delete` of the `+11`
+    // payload (0x7cb164-0x7cb16a), then `operator delete(a1)` — storage
+    // reclaim stays with the caller.
+    // SAFETY: `desc` must point to a valid `HumanoidPartRefProp`.
+    unsafe {
+        (*desc).payload_words = None;
+    }
 }
 
 // 0x7cb178 — __ZNK3RBX10Reflection17RefPropDescriptorINS_8HumanoidENS_12PartInstanceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::isReadOnly(void)const")]
-pub fn stub_0x7cb178() -> ! {
-    todo!("0x7cb178 RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::isReadOnly(void)const")
+pub fn stub_0x7cb178(desc: *const HumanoidPartRefProp) -> bool {
+    // IDA 0x7cb178, disasm: `LDR R0,[R0,#0x2C]` (the `+44` access-policy
+    // object) then vtable slot 0 (`LDR R1,[R1]; BLX R1`) — the policy
+    // predicate models that slot.
+    // SAFETY: `desc` must point to a valid `HumanoidPartRefProp`.
+    unsafe { ((*desc).access.is_read_only)() }
 }
 
 // 0x7cb188 — __ZNK3RBX10Reflection17RefPropDescriptorINS_8HumanoidENS_12PartInstanceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::isWriteOnly(void)const")]
-pub fn stub_0x7cb188() -> ! {
-    todo!("0x7cb188 RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::isWriteOnly(void)const")
+pub fn stub_0x7cb188(desc: *const HumanoidPartRefProp) -> bool {
+    // IDA 0x7cb188, disasm: `LDR R0,[R0,#0x2C]` then vtable slot 1
+    // (`LDR R1,[R1,#4]; BLX R1`).
+    // SAFETY: `desc` must point to a valid `HumanoidPartRefProp`.
+    unsafe { ((*desc).access.is_write_only)() }
 }
 
 // 0x7cb198 — __ZNK3RBX10Reflection17RefPropDescriptorINS_8HumanoidENS_12PartInstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
