@@ -11,7 +11,7 @@ use rbx_core::shared_ptr::{ControlBlockPd, CreatableInstanceDeleter};
 use parking_lot::Mutex;
 use rbx_core::signal::Signal;
 use crate::data_model::DataModel;
-use crate::generated_05::{EventDescPayload, FunctorOp, GenericSlotWrapper, Instance, SignatureItem, Variant, instance_is_a};
+use crate::generated_05::{EventDescPayload, FunctorOp, GenericSlotWrapper, Instance, SignatureItem, SingleFunction, Variant, instance_is_a};
 use crate::generated_13::{FriendStatus, HttpRequestResult, ModelLoadBind, Player, PlayerAppearanceBind, PlayerDataModelBind, PlayerInstMethod, PlayerMouse, stub_a8d6b4, stub_a90080, stub_a91498};
 use crate::instance::{Backpack, ModelInstance};
 
@@ -80,6 +80,14 @@ pub struct FriendWrapperFunction {
 /// check-type path (disasm `0xab76d2`-`0xab76de`, `__ZTS` symbol).
 pub const FRIEND_BIND_TYPE_NAME: &str =
     "N5boost3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS4_8InstanceEEERKNS4_13FriendService12FriendStatusEEENS0_5list3INS0_5valueINS7_IS6_EEEENS_3argILi1EEENSL_ILi2EEEEEEE";
+/// Rust model of an `rbx::signals::signal<void ()(SharedPtr<Instance>,
+/// FriendStatus)>::slot` link holding a `boost::function` (IDA `0xab7aac`
+/// D1): the intrusive successor becomes `next`; retain/release become
+/// `clone`/`drop`. Function-held twin of `FriendSlotNode`.
+pub struct FriendFuncSlotNode {
+    pub next: Option<SharedPtr<FriendFuncSlotNode>>,
+    pub func: FriendWrapperFunction,
+}
 
 // 0xaa1e2c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11PlayerMouseENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PlayerMouse *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
@@ -755,169 +763,389 @@ pub fn stub_ab72c8(dst: &mut FriendWrapperFunction, src: &FriendWrapperBind) -> 
 // 0xab75b0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKNS7_13FriendService12FriendStatusEEENS3_5list3INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSO_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSU_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,RBX::FriendService::FriendStatus const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,RBX::FriendService::FriendStatus const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
-pub fn stub_ab75b0() -> ! {
-    todo!("0xab75b0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,RBX::FriendService::FriendStatus const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_ab75b0(src: &FriendWrapperBind, dst: &mut FriendWrapperFunction, op: FunctorOp, type_name: &str) -> bool {
+    // IDA 0xab75b0: `functor_manager::manager` switch on `op` (disasm
+    // 0xab7614): 0 heap-clone the bind plus a `shared_count` retain, 1 move
+    // the words and clear the source, 2 destroy the count and free,
+    // 3 conditional copy on `strcmp` against the bind `__ZTS` name (disasm
+    // 0xab76d2-0xab76de). The heap words collapse into the retained clone;
+    // `CheckType` reports the match. Twin of 0xaa6970.
+    match op {
+        FunctorOp::Clone | FunctorOp::Move => {
+            dst.target = Some(src.target.clone());
+            true
+        }
+        FunctorOp::Destroy => {
+            dst.target = None;
+            false
+        }
+        FunctorOp::CheckType => type_name == FRIEND_BIND_TYPE_NAME,
+        FunctorOp::GetType => true,
+    }
 }
 
 // 0xab7744 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_13FriendService12FriendStatusEEE6insertEPNSA_4slotE
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::insert(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot *)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::insert(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot *)
-pub fn stub_ab7744() -> ! {
-    todo!("0xab7744 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::insert(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot *)")
+pub fn stub_ab7744(head: *mut Option<SharedPtr<FriendFuncSlotNode>>, slot: *mut FriendFuncSlotNode) {
+    // IDA 0xab7744: `ReleaseAssert(item)` on the null slot, mutex
+    // acquisition, then the intrusive link with the `next == head` assert
+    // and list-head publish. The signal list itself is unmodeled, so the
+    // head is an explicit out-param. Twin of 0xa4c674 on
+    // `FriendFuncSlotNode`.
+    // SAFETY: `head` must be writable; `slot` must be a live box pointer with
+    // no concurrent/shared mutation; the node must stay alive while linked.
+    unsafe {
+        assert!(!slot.is_null(), "0xab7744: item");
+        let guard = FRIEND_SLOT_STATIC_MUTEX.lock();
+        let owned = SharedPtr::from_raw(slot);
+        let linked = owned.clone();
+        core::mem::forget(owned);
+        (*slot).next = (*head).clone();
+        *head = Some(linked);
+        drop(guard);
+    }
 }
 
 // 0xab79f8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEENS5_13FriendService12FriendStatusEEE4slotEEaSEPSC_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot>::operator=(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot*)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot>::operator=(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot*)
-pub fn stub_ab79f8() -> ! {
-    todo!("0xab79f8 boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot>::operator=(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot*)")
+pub fn stub_ab79f8(dst: *mut Option<SharedPtr<FriendFuncSlotNode>>, src: *mut FriendFuncSlotNode) {
+    // IDA 0xab79f8: move-assign (`aSEPSC_`, pointer `src`, decompile
+    // 0xab7a08-0xab7a68): null skips the add_ref (with the `strong < max -
+    // 10` assert), store, release-old with virtual delete + free. The `Arc`
+    // clone is the add_ref and the overwritten `Option` drop is the
+    // release. Twin of 0xa4c934.
+    // SAFETY: `dst` must be writable; `src` must be null or a live
+    // `SharedPtr`-owned node pointer whose ownership moves to `dst`.
+    unsafe {
+        if src.is_null() {
+            *dst = None;
+        } else {
+            let owned = SharedPtr::from_raw(src);
+            let cloned = owned.clone();
+            core::mem::forget(owned);
+            *dst = Some(cloned);
+        }
+    }
 }
 
 // 0xab7aac — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_13FriendService12FriendStatusEEE13callable_slotINS2_8functionIS9_EEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::callable_slot<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>>::~callable_slot()
-pub fn stub_ab7aac() -> ! {
-    todo!("0xab7aac rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::callable_slot<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>>::~callable_slot()")
+pub fn stub_ab7aac(slot: *mut FriendFuncSlotNode) {
+    // IDA 0xab7aac: `callable_slot<function>` D1 delegates to `callable` D1
+    // — vtable resets (compiler-managed) + function clear + link release;
+    // storage kept. Twin of 0xa4c9e8.
+    // SAFETY: `slot` must point to a valid `FriendFuncSlotNode`.
+    unsafe {
+        (*slot).func = FriendWrapperFunction::default();
+        (*slot).next = None;
+    }
 }
 
 // 0xab7ab8 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_13FriendService12FriendStatusEEE13callable_slotINS2_8functionIS9_EEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::callable_slot<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>>::~callable_slot()
-pub fn stub_ab7ab8() -> ! {
-    todo!("0xab7ab8 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::callable_slot<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>>::~callable_slot()")
+pub fn stub_ab7ab8(slot: *mut FriendFuncSlotNode) {
+    // IDA 0xab7ab8: `callable_slot<function>` D0 — the D1 body (function
+    // clear + link release) plus `operator delete`; the box reclaim runs
+    // the field drops and frees together. Twin of 0xa4daa8.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
 }
 
 // 0xab7b6c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_13FriendService12FriendStatusEEE4slot10disconnectEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot::disconnect(void)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot::disconnect(void)
-pub fn stub_ab7b6c() -> ! {
-    todo!("0xab7b6c rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot::disconnect(void)")
+pub fn stub_ab7b6c(slot: *mut FriendFuncSlotNode) {
+    // IDA 0xab7b6c: `slot::disconnect` — connected-gated (`*(a1 + 12)`,
+    // decompile 0xab7b96), `call_once` + mutex acquisition (decompile
+    // 0xab7bd8), then unlink of the item from the signal list. The lock
+    // collapses; the gate becomes a linked-assert and the unlink clears
+    // the successor. Twin of 0xa4d734.
+    // SAFETY: `slot` must point to a valid `FriendFuncSlotNode`.
+    unsafe {
+        debug_assert!((*slot).next.is_some(), "0xab7b6c: intrusive_ptr_expired");
+        (*slot).next = None;
+    }
 }
 
 // 0xab7ce0 — __ZNK3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_13FriendService12FriendStatusEEE4slot9connectedEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot::connected(void)const")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot::connected(void)const
-pub fn stub_ab7ce0() -> ! {
-    todo!("0xab7ce0 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot::connected(void)const")
+pub fn stub_ab7ce0(slot: *const FriendFuncSlotNode) -> bool {
+    // IDA 0xab7ce0: `return *(a1 + 12) != 0` (decompile 0xab7ce8) — the
+    // `+12` link word is the intrusive successor. Linked iff a successor
+    // is present.
+    // SAFETY: `slot` must point to a valid `FriendFuncSlotNode`.
+    unsafe { (*slot).next.is_some() }
 }
 
 // 0xab7cec — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS5_13FriendService12FriendStatusEEE4slotENS3_8functionISA_EELi2ESA_E4callES7_S9_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::call(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::call(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)
-pub fn stub_ab7cec() -> ! {
-    todo!("0xab7cec rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::call(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)")
+pub fn stub_ab7cec(slot: &FriendFuncSlotNode, inst: &SharedPtr<Instance>, status: FriendStatus) {
+    // IDA 0xab7cec: retain the instance arg, `function2::operator()` on the
+    // slot functor, then the mirrored release. Clone plus the operator()
+    // dispatch plus `Drop` is the same sequence. Twin of 0xa4cc34.
+    let inst = inst.clone();
+    stub_ab806c(&slot.func, &inst, status);
 }
 
 // 0xab7e04 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS5_13FriendService12FriendStatusEEE4slotENS3_8functionISA_EELi2ESA_E4callES7_S9_
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::call(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)")]
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::call(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)
-pub fn stub_ab7e04() -> ! {
-    todo!("0xab7e04 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::call(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)")
+pub fn stub_ab7e04(slot: &FriendFuncSlotNode, inst: &SharedPtr<Instance>, status: FriendStatus) {
+    // IDA 0xab7e04: non-virtual thunk — adjusts the `callable` subobject
+    // back to the slot base, then tail-calls `callable::call`. The
+    // adjustment is a vtable-layout detail that collapses away here. Twin
+    // of 0xa4d130.
+    stub_ab7cec(slot, inst, status);
 }
 
 // 0xab806c — __ZNK5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEENS2_13FriendService12FriendStatusEEclES4_S6_
 #[doc(alias = "boost::function2<void,rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus>::operator()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)const")]
 // was: boost::function2<void,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus>::operator()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)const
-pub fn stub_ab806c() -> ! {
-    todo!("0xab806c boost::function2<void,rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus>::operator()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)const")
+pub fn stub_ab806c(func: &FriendWrapperFunction, inst: &SharedPtr<Instance>, status: FriendStatus) {
+    // IDA 0xab806c: `bad_function_call` throw on the null vtable, else
+    // retain the `shared_ptr` arg, dispatch through the invoker vtable,
+    // then the mirrored release (same shape as decompile 0xab806c with its
+    // `std::runtime_error` temp). The empty check plus the `execute2`
+    // dispatch plus `Drop` are the same sequence. Twin of 0xa4d148.
+    let target = func.target.as_ref().expect("0xab806c: call to empty boost::function");
+    let inst = inst.clone();
+    stub_ab6724(target, &inst, status);
 }
 
 // 0xab83c4 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_13FriendService12FriendStatusEEE6removeEPNSA_4slotE
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::remove(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot *)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::remove(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot *)
-pub fn stub_ab83c4() -> ! {
-    todo!("0xab83c4 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::remove(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot *)")
+pub fn stub_ab83c4(slot: *mut FriendFuncSlotNode) {
+    // IDA 0xab83c4: `ReleaseAssert(!intrusive_ptr_expired(item))`, log line,
+    // then unlink of the item from the signal list. The log collapses; the
+    // expired-assert becomes a linked-assert and the unlink clears the
+    // successor. Twin of 0xa4d734 on `FriendFuncSlotNode`.
+    // SAFETY: `slot` must point to a valid `FriendFuncSlotNode`.
+    unsafe {
+        debug_assert!((*slot).next.is_some(), "0xab83c4: intrusive_ptr_expired");
+        (*slot).next = None;
+    }
 }
 
 // 0xab84b0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_13FriendService12FriendStatusEEE4slot22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot::safe_static_init_mutex(void)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot::safe_static_init_mutex(void)
-pub fn stub_ab84b0() -> ! {
-    todo!("0xab84b0 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot::safe_static_init_mutex(void)")
+pub fn stub_ab84b0() -> &'static Mutex<()> {
+    // IDA 0xab84b0: `slot::safe_static_init_mutex` — guard-checked once-init
+    // of the function-local `safe_static_do_get_mutex::value`. A `static`
+    // with `const` init is the same once-init. Twin of 0xa4d820.
+    &FRIEND_SLOT_STATIC_MUTEX
 }
 
 // 0xab8594 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS5_13FriendService12FriendStatusEEE4slotENS3_8functionISA_EELi2ESA_ED2Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::~callable()")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::~callable()
-pub fn stub_ab8594() -> ! {
-    todo!("0xab8594 rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::~callable()")
+pub fn stub_ab8594(slot: *mut FriendFuncSlotNode) {
+    // IDA 0xab8594: `callable` D2 — vtable resets (compiler-managed),
+    // `function2::clear` running the bind manager destroy op, then release
+    // of the link; storage kept. Twin of 0xa4d904.
+    // SAFETY: `slot` must point to a valid `FriendFuncSlotNode`.
+    unsafe {
+        (*slot).func.target = None;
+        (*slot).next = None;
+    }
 }
 
 // 0xab872c — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS5_13FriendService12FriendStatusEEE4slotENS3_8functionISA_EELi2ESA_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::~callable()")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::~callable()
-pub fn stub_ab872c() -> ! {
-    todo!("0xab872c rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::~callable()")
+pub fn stub_ab872c(slot: *mut FriendFuncSlotNode) {
+    // IDA 0xab872c: `callable` D1 — same vtable-reset + `function2::clear` +
+    // link-release sequence as D2 (IDA 0xab8594); storage kept. Twin of
+    // 0xa4da9c.
+    // SAFETY: `slot` must point to a valid `FriendFuncSlotNode`.
+    stub_ab8594(slot);
 }
 
 // 0xab8738 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS5_13FriendService12FriendStatusEEE4slotENS3_8functionISA_EELi2ESA_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::~callable()")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::~callable()
-pub fn stub_ab8738() -> ! {
-    todo!("0xab8738 rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::~callable()")
+pub fn stub_ab8738(slot: *mut FriendFuncSlotNode) {
+    // IDA 0xab8738: `callable` D0 — the D1 body (`clear` + `release`) plus
+    // `operator delete`; the box reclaim runs the field drops and frees
+    // together. Twin of 0xa4daa8.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
 }
 
 // 0xab87ec — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_13FriendService12FriendStatusEEE4slotD1Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot::~slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot::~slot()
-pub fn stub_ab87ec() -> ! {
-    todo!("0xab87ec rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot::~slot()")
+pub fn stub_ab87ec(slot: *mut FriendFuncSlotNode) {
+    // IDA 0xab87ec: `slot` D1 — vtable resets (compiler-managed) plus the
+    // link release; the callback word was already cleared by the derived
+    // `callable` D1. Storage kept. Twin of 0xa4db5c.
+    // SAFETY: `slot` must point to a valid `FriendFuncSlotNode`.
+    unsafe {
+        (*slot).next = None;
+    }
 }
 
 // 0xab8848 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_13FriendService12FriendStatusEEE4slotD0Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot::~slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot::~slot()
-pub fn stub_ab8848() -> ! {
-    todo!("0xab8848 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot::~slot()")
+pub fn stub_ab8848(slot: *mut FriendFuncSlotNode) {
+    // IDA 0xab8848: `slot` D0 — the D1 body (link release) plus `operator
+    // delete`; the box reclaim runs the field drops and frees together.
+    // Twin of 0xa4dbb8.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
 }
 
 // 0xab94c0 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_EC2ESC_PKcSF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::EventDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::EventDesc(rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_ab94c0() -> ! {
-    todo!("0xab94c0 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_ab94c0(this: *mut EventDescPayload, name: &str, permissions: u32, attributes: u32) {
+    // IDA 0xab94c0: `Player::classDescriptor` once-init, base
+    // `EventDescriptor` init, then one signature item —
+    // `shared_ptr<Instance>` — via `Type::getSingleton` + `Item::Item` +
+    // list `hook`. The member signal offset collapses into the payload-side
+    // list, as in the `0x707b28` twin.
+    // SAFETY: `this` must point to valid uninitialized `EventDescPayload` storage.
+    unsafe {
+        core::ptr::write(
+            this,
+            EventDescPayload {
+                name: name.to_string(),
+                permissions,
+                attributes,
+                items: vec![SignatureItem { type_name: "SharedPtr<Instance>" }],
+                connections: Mutex::new(Vec::new()),
+                single: Signal::new(),
+                triple: Signal::new(),
+                triple_isi: Signal::new(),
+                pair_if: Signal::new(),
+            },
+        );
+    }
 }
 
 // 0xab9770 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::~EventDesc()")]
 // was: RBX::Reflection::EventDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::~EventDesc()
-pub fn stub_ab9770() -> ! {
-    todo!("0xab9770 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::~EventDesc()")
+pub fn stub_ab9770(this: *mut EventDescPayload) {
+    // IDA 0xab9770: D0 — vtable reset plus signature-list `_M_clear` plus
+    // `operator delete`; the box reclaim runs the field drops and frees
+    // together. Same shape as 0xa4a0a0.
+    // SAFETY: `this` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 
 // 0xab984c — __ZNK3RBX10Reflection13EventDescImplILi1ENS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E14connectGenericEPNS0_11EventSourceENS5_INS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: RBX::Reflection::EventDescImpl<1,RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
-pub fn stub_ab984c() -> ! {
-    todo!("0xab984c RBX::Reflection::EventDescImpl<1,RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_ab984c(desc: *const EventDescPayload, slot: &SharedPtr<GenericSlotWrapper>) {
+    // IDA 0xab984c: retain the wrapper (the `shared_count` copy), bind the
+    // 1-arg member, wrap in `function1`, `EventDescBase::connect`, then the
+    // mirrored releases. Collapses to a retained clone + push onto the
+    // payload-side list. 1-arg twin of 0xab56c4.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    unsafe {
+        (*desc).connections.lock().push(slot.clone());
+    }
 }
 
 // 0xab9cd0 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISH_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 // was: RBX::Reflection::EventDescImpl<1,RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const
-pub fn stub_ab9cd0() -> ! {
-    todo!("0xab9cd0 RBX::Reflection::EventDescImpl<1,RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_ab9cd0(desc: *const EventDescPayload, args: &[Variant]) {
+    // IDA 0xab9cd0: `ReleaseAssert(args.size() == 1)`, one `any_cast` to
+    // `shared_ptr<Instance>` (`bad_cast` on mismatch), then
+    // `signal_with_args<1>::operator()` fans out to each connected slot's
+    // `callable::call`. 1-arg twin of 0xab5b48.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    assert!(args.len() == 1, "0xab9cd0: args.size() == 1");
+    let inst = match &args[0] {
+        Variant::Instance(a) => a,
+        _ => panic!("0xab9cd0: any_cast<SharedPtr<Instance>> failed"),
+    };
+    unsafe {
+        let slots = (*desc).connections.lock().clone();
+        for slot in slots.iter() {
+            if let Some(cb) = slot.on_single {
+                cb(inst);
+            }
+        }
+    }
 }
 
 // 0xaba024 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
 // was: RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::disconnectAll(RBX::Reflection::EventSource *)const
-pub fn stub_aba024() -> ! {
-    todo!("0xaba024 RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_aba024(desc: *const EventDescPayload) {
+    // IDA 0xaba024: `source ? source - 36 : 0` selects the member signal,
+    // then `signal::disconnectAll`; the addressing collapses into the
+    // payload-side list, so this clears the connections. Twin of 0xab5f20.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    unsafe {
+        (*desc).connections.lock().clear();
+    }
 }
 
 // 0xaba03c — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E7connectEPNS0_11EventSourceERKNS4_8functionIS8_EE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)> const&)const")]
 // was: RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(boost::shared_ptr<RBX::Instance>)> const&)const
-pub fn stub_aba03c() -> ! {
-    todo!("0xaba03c RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)> const&)const")
+pub fn stub_aba03c(desc: *const EventDescPayload, func: &SingleFunction) -> Option<SharedPtr<GenericSlotWrapper>> {
+    // IDA 0xaba03c: null function returns a null connection; else `malloc`
+    // the `callable` slot, copy the functor into it, `signal::insert` into
+    // the member signal, publish the connection. Collapses to retaining the
+    // bound wrapper and pushing it onto the payload-side list; the returned
+    // clone is the connection keep-alive. 1-arg twin of 0xab60e4.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    let target = func.target.clone()?;
+    unsafe {
+        (*desc).connections.lock().push(target.clone());
+    }
+    Some(target)
 }
 
 // 0xaba210 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_EC2ESC_PKcSF_SF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::EventDesc(rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::EventDesc(rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_aba210() -> ! {
-    todo!("0xaba210 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::EventDesc(rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_aba210(this: *mut EventDescPayload, name: &str, permissions: u32, attributes: u32) {
+    // IDA 0xaba210: `Player::classDescriptor` once-init, base
+    // `EventDescriptor` init, then two signature items — `string` and
+    // `shared_ptr<Instance>` — via `Type::getSingleton` + `Item::Item` +
+    // list `hook`. Twin of 0xab524c with (string, Instance) args.
+    // SAFETY: `this` must point to valid uninitialized `EventDescPayload` storage.
+    unsafe {
+        core::ptr::write(
+            this,
+            EventDescPayload {
+                name: name.to_string(),
+                permissions,
+                attributes,
+                items: vec![
+                    SignatureItem { type_name: "string" },
+                    SignatureItem { type_name: "SharedPtr<Instance>" },
+                ],
+                connections: Mutex::new(Vec::new()),
+                single: Signal::new(),
+                triple: Signal::new(),
+                triple_isi: Signal::new(),
+                pair_if: Signal::new(),
+            },
+        );
+    }
 }
 
 // 0xaba5ac — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_ED0Ev
