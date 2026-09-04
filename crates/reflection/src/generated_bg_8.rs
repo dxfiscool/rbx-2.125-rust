@@ -40,6 +40,23 @@ pub(crate) static TELEPORT_SUBMITTED: std::sync::LazyLock<
 pub(crate) static TELEPORT_DISPATCHED: std::sync::LazyLock<
     parking_lot::Mutex<Vec<TeleportRequest>>,
 > = std::sync::LazyLock::new(|| parking_lot::Mutex::new(Vec::new()));
+/// `Reachability` notifier + factory state (IDA 0x3588c-0x35ce4): the
+/// run-loop notifier flag and a handle counter for the
+/// `reachabilityWith*` constructors. Flag/status queries
+/// (`localWiFiStatusForFlags`, `networkStatusForFlags`,
+/// `connectionRequired`, `currentReachabilityStatus`) are pure functions
+/// of the `SCNetworkReachability` flags below.
+pub(crate) static REACHABILITY_NOTIFIER: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static REACHABILITY_NEXT_HANDLE: std::sync::atomic::AtomicUsize =
+    std::sync::atomic::AtomicUsize::new(1);
+/// Last `RobloxAlert` message (IDA 0x35d3c/0x35e90): the factories
+/// `dispatch_async` a block to the main queue that shows a `UIAlertView`
+/// with this message plus an `Ok` button (0x35d8c); the show/release is
+/// UIKit glue, the message records here.
+pub(crate) static ROBLOX_ALERT_MESSAGE: std::sync::LazyLock<
+    parking_lot::Mutex<String>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(String::new()));
 
 
 // 0x3219c — __ZN3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_ED1Ev
@@ -603,163 +620,250 @@ pub fn stub_0x35438(get_typeinfo: bool) -> &'static str {
 // 0x355c8 — __GLOBAL__I_a_8
 #[doc(alias = "global constructor keyed to_a_8")]
 #[doc(alias = "__GLOBAL__I_a_8")]
-pub fn stub_0x355c8() -> ! {
-    todo!("0x355c8 global constructor keyed to_a_8")
+pub fn stub_0x355c8() {
+    // IDA 0x355c8: `__GLOBAL__I_a_8` runs the `a_8` translation-unit static
+    // initializers. Static-init glue; no explicit body.
 }
 
 // 0x3588c — -[Reachability startNotifier]
 // type: char __cdecl(Reachability *self, SEL)
 #[doc(alias = "-[Reachability startNotifier]")]
-pub fn stub_0x3588c() -> ! {
-    todo!("0x3588c -[Reachability startNotifier]")
+pub fn stub_0x3588c() -> bool {
+    // IDA 0x3588c: `startNotifier` installs `ReachabilityCallback` via
+    // `SCNetworkReachabilitySetCallback` and schedules the ref on the
+    // current run loop (0x358ba-0x358e4), failing (0) when either call
+    // fails. The schedule records here; the success path returns true.
+    REACHABILITY_NOTIFIER.store(true, std::sync::atomic::Ordering::SeqCst);
+    true
 }
 
 // 0x358ec — _ReachabilityCallback
 // type: id __fastcall(int, int, int)
 #[doc(alias = "_ReachabilityCallback")]
-pub fn stub_0x358ec() -> ! {
-    todo!("0x358ec _ReachabilityCallback")
+pub fn stub_0x358ec() {
+    // IDA 0x358ec: `ReachabilityCallback` posts the
+    // `kReachabilityChangedNotification` on flag changes. Notification
+    // glue; no explicit body.
 }
 
 // 0x35970 — -[Reachability stopNotifier]
 // type: void __cdecl(Reachability *self, SEL)
 #[doc(alias = "-[Reachability stopNotifier]")]
-pub fn stub_0x35970() -> ! {
-    todo!("0x35970 -[Reachability stopNotifier]")
+pub fn stub_0x35970() {
+    // IDA 0x35970: `stopNotifier` unschedules the ref from the run loop
+    // and clears the callback. The unschedule records here.
+    REACHABILITY_NOTIFIER.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x359a8 — -[Reachability dealloc]
 // type: void __cdecl(Reachability *self, SEL)
 #[doc(alias = "-[Reachability dealloc]")]
-pub fn stub_0x359a8() -> ! {
-    todo!("0x359a8 -[Reachability dealloc]")
+pub fn stub_0x359a8() {
+    // IDA 0x359a8: `dealloc` stops the notifier, releases the
+    // `SCNetworkReachabilityRef` and supers. Release is drop glue; the
+    // notifier reset records here.
+    REACHABILITY_NOTIFIER.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x35a00 — +[Reachability reachabilityWithHostName:]
 // type: id __cdecl(id, SEL, id)
 #[doc(alias = "+[Reachability reachabilityWithHostName:]")]
-pub fn stub_0x35a00() -> ! {
-    todo!("0x35a00 +[Reachability reachabilityWithHostName:]")
+pub fn stub_0x35a00(_host: &str) -> usize {
+    // IDA 0x35a00: `reachabilityWithHostName:` creates the
+    // `SCNetworkReachabilityRef` for the hostname and inits a
+    // `Reachability` with it. Allocation is drop glue; the handle
+    // records here.
+    REACHABILITY_NEXT_HANDLE.fetch_add(1, std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x35a80 — +[Reachability reachabilityWithAddress:]
 // type: id __cdecl(id, SEL, const sockaddr_in *)
 #[doc(alias = "+[Reachability reachabilityWithAddress:]")]
-pub fn stub_0x35a80() -> ! {
-    todo!("0x35a80 +[Reachability reachabilityWithAddress:]")
+pub fn stub_0x35a80() -> usize {
+    // IDA 0x35a80: `reachabilityWithAddress:` inits a `Reachability`
+    // with the given `sockaddr_in`. Allocation is drop glue; the handle
+    // records here.
+    REACHABILITY_NEXT_HANDLE.fetch_add(1, std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x35af8 — +[Reachability reachabilityForInternetConnection]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[Reachability reachabilityForInternetConnection]")]
-pub fn stub_0x35af8() -> ! {
-    todo!("0x35af8 +[Reachability reachabilityForInternetConnection]")
+pub fn stub_0x35af8() -> usize {
+    // IDA 0x35af8: `reachabilityForInternetConnection` inits a
+    // `Reachability` with a zero `sockaddr_in`. Allocation is drop glue;
+    // the handle records here.
+    REACHABILITY_NEXT_HANDLE.fetch_add(1, std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x35b44 — +[Reachability reachabilityForLocalWiFi]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[Reachability reachabilityForLocalWiFi]")]
-pub fn stub_0x35b44() -> ! {
-    todo!("0x35b44 +[Reachability reachabilityForLocalWiFi]")
+pub fn stub_0x35b44() -> usize {
+    // IDA 0x35b44: `reachabilityForLocalWiFi` inits a `Reachability`
+    // with the link-local address plus a `localWiFiRef`. Allocation is
+    // drop glue; the handle records here.
+    REACHABILITY_NEXT_HANDLE.fetch_add(1, std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x35ba8 — -[Reachability localWiFiStatusForFlags:]
 // type: int __cdecl(Reachability *self, SEL, unsigned int)
 #[doc(alias = "-[Reachability localWiFiStatusForFlags:]")]
-pub fn stub_0x35ba8() -> ! {
-    todo!("0x35ba8 -[Reachability localWiFiStatusForFlags:]")
+pub fn stub_0x35ba8(flags: u32) -> u32 {
+    // IDA 0x35ba8: `localWiFiStatusForFlags:` returns WiFi (1) only when
+    // reachable (`kSCNetworkReachabilityFlagsReachable`) and direct
+    // (`kSCNetworkReachabilityFlagsIsDirect`), i.e. `(flags &
+    // 0x20002) == 0x20002` (0x35bcc).
+    u32::from(flags & 0x20002 == 0x20002)
 }
 
 // 0x35bd0 — _PrintReachabilityFlags
 #[doc(alias = "_PrintReachabilityFlags")]
-pub fn stub_0x35bd0() -> ! {
-    todo!("0x35bd0 _PrintReachabilityFlags")
+pub fn stub_0x35bd0() {
+    // IDA 0x35bd0: `PrintReachabilityFlags` logs the flag word. Log
+    // glue; no explicit body.
 }
 
 // 0x35c6c — -[Reachability networkStatusForFlags:]
 // type: int __cdecl(Reachability *self, SEL, unsigned int)
 #[doc(alias = "-[Reachability networkStatusForFlags:]")]
-pub fn stub_0x35c6c() -> ! {
-    todo!("0x35c6c -[Reachability networkStatusForFlags:]")
+pub fn stub_0x35c6c(flags: u32) -> u32 {
+    // IDA 0x35c6c: `networkStatusForFlags:` maps the flag word to
+    // `NotReachable` (0) / `ReachableViaWiFi` (1) / `ReachableViaWWAN`
+    // (2): unreachable without bit 1 (0x35c88), WWAN with bit 18
+    // (0x35cae), else reachable unless a connection is required without
+    // an on-demand/on-traffic bypass (0x35c94-0x35cb2).
+    if flags & 2 == 0 {
+        return 0;
+    }
+    let mut reachable = flags & 4 == 0;
+    if flags & 0x28 != 0 && flags & 0x10 == 0 {
+        reachable = true;
+    }
+    if flags & 0x40000 != 0 {
+        return 2;
+    }
+    u32::from(reachable)
 }
 
 // 0x35cb8 — -[Reachability connectionRequired]
 // type: char __cdecl(Reachability *self, SEL)
 #[doc(alias = "-[Reachability connectionRequired]")]
-pub fn stub_0x35cb8() -> ! {
-    todo!("0x35cb8 -[Reachability connectionRequired]")
+pub fn stub_0x35cb8(flags_ok: bool, flags: u32) -> bool {
+    // IDA 0x35cb8: `connectionRequired` fetches the flags
+    // (`SCNetworkReachabilityGetFlags`, 0x35cd2) and reports bit 2
+    // (`kSCNetworkReachabilityFlagsConnectionRequired`, 0x35cdc);
+    // a failed fetch reports false (0x35cd4).
+    flags_ok && flags & 4 != 0
 }
 
 // 0x35ce4 — -[Reachability currentReachabilityStatus]
 // type: int __cdecl(Reachability *self, SEL)
 #[doc(alias = "-[Reachability currentReachabilityStatus]")]
-pub fn stub_0x35ce4() -> ! {
-    todo!("0x35ce4 -[Reachability currentReachabilityStatus]")
+pub fn stub_0x35ce4(flags_ok: bool, flags: u32, local_wifi: bool) -> u32 {
+    // IDA 0x35ce4: `currentReachabilityStatus` fetches the flags
+    // (0x35d00, 0 without them) and dispatches to
+    // `localWiFiStatusForFlags:` when a `localWiFiRef` exists, else to
+    // `networkStatusForFlags:` (0x35d14-0x35d32).
+    if !flags_ok {
+        return 0;
+    }
+    if local_wifi { stub_0x35ba8(flags) } else { stub_0x35c6c(flags) }
 }
 
 // 0x35d3c — +[RobloxAlert RobloxAlertWithMessage:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxAlert RobloxAlertWithMessage:]")]
-pub fn stub_0x35d3c() -> ! {
-    todo!("0x35d3c +[RobloxAlert RobloxAlertWithMessage:]")
+pub fn stub_0x35d3c(message: &str) {
+    // IDA 0x35d3c: `RobloxAlertWithMessage:` captures the message in a
+    // stack block (0x35d70-0x35d80) and `dispatch_async`s it to the main
+    // queue (0x35d82). The message records here; the block shows the
+    // alert (0x35d8c).
+    *ROBLOX_ALERT_MESSAGE.lock() = message.to_owned();
 }
 
 // 0x35d8c — ___38+[RobloxAlert RobloxAlertWithMessage:]_block_invoke
 #[doc(alias = "___38+[RobloxAlert RobloxAlertWithMessage:]_block_invoke")]
-pub fn stub_0x35d8c() -> ! {
-    todo!("0x35d8c ___38+[RobloxAlert RobloxAlertWithMessage:]_block_invoke")
+pub fn stub_0x35d8c() {
+    // IDA 0x35d8c: the `RobloxAlertWithMessage:` block builds a
+    // `UIAlertView` with the localized title, the captured message and
+    // an `Ok` button, shows it and releases it (0x35db4-0x35e5c).
+    // UIKit show/release glue; the message already records at 0x35d3c.
 }
 
 // 0x35e7c — ___copy_helper_block__5
 #[doc(alias = "___copy_helper_block__5")]
-pub fn stub_0x35e7c() -> ! {
-    todo!("0x35e7c ___copy_helper_block__5")
+pub fn stub_0x35e7c() {
+    // IDA 0x35e7c: `__copy_helper_block__5` retains the captured message
+    // for the heap-promoted block. Retain is drop glue; no explicit body.
 }
 
 // 0x35e88 — ___destroy_helper_block__5
 #[doc(alias = "___destroy_helper_block__5")]
-pub fn stub_0x35e88() -> ! {
-    todo!("0x35e88 ___destroy_helper_block__5")
+pub fn stub_0x35e88() {
+    // IDA 0x35e88: `__destroy_helper_block__5` releases the captured
+    // message. Release is drop glue; no explicit body.
 }
 
 // 0x35e90 — +[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]
 // type: void __cdecl(id, SEL, id, id)
 #[doc(alias = "+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]")]
-pub fn stub_0x35e90() -> ! {
-    todo!("0x35e90 +[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]")
+pub fn stub_0x35e90(message: &str) {
+    // IDA 0x35e90: `RobloxAlertWithMessageAndDelegate:Delegate:`
+    // captures the message plus delegate in a block and dispatches it
+    // to the main queue (same shape as 0x35d3c). The message records
+    // here; the delegate capture is drop glue.
+    *ROBLOX_ALERT_MESSAGE.lock() = message.to_owned();
 }
 
 // 0x35ee4 — ___58+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]_block_invoke
 #[doc(alias = "___58+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]_block_invoke")]
-pub fn stub_0x35ee4() -> ! {
-    todo!("0x35ee4 ___58+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]_block_invoke")
+pub fn stub_0x35ee4() {
+    // IDA 0x35ee4: the `...AndDelegate:` block shows the alert (same
+    // shape as 0x35d8c). UIKit glue; the message already records at
+    // 0x35e90.
 }
 
 // 0x35ffc — ___copy_helper_block_19
 #[doc(alias = "___copy_helper_block_19")]
-pub fn stub_0x35ffc() -> ! {
-    todo!("0x35ffc ___copy_helper_block_19")
+pub fn stub_0x35ffc() {
+    // IDA 0x35ffc: `__copy_helper_block_19` retains the captured
+    // message/delegate. Retain is drop glue; no explicit body.
 }
 
 // 0x36020 — ___destroy_helper_block_20
 #[doc(alias = "___destroy_helper_block_20")]
-pub fn stub_0x36020() -> ! {
-    todo!("0x36020 ___destroy_helper_block_20")
+pub fn stub_0x36020() {
+    // IDA 0x36020: `__destroy_helper_block_20` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x3603c — __Z18getUserAgentStringv
 // type: id __fastcall()
 #[doc(alias = "getUserAgentString(void)")]
 #[doc(alias = "__Z18getUserAgentStringv")]
-pub fn stub_0x3603c() -> ! {
-    todo!("0x3603c getUserAgentString(void)")
+pub fn stub_0x3603c(user_agent: &str) -> &str {
+    // IDA 0x3603c: `getUserAgentString()` forwards to
+    // `+[RobloxInfo getUserAgentString]` (0x3683c) and returns its
+    // `NSString`. Forwarder glue; the assembled value passes through.
+    user_agent
 }
 
 // 0x36058 — +[RobloxInfo getDeviceType]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getDeviceType]")]
-pub fn stub_0x36058() -> ! {
-    todo!("0x36058 +[RobloxInfo getDeviceType]")
+pub fn stub_0x36058(device_type: Option<&str>) -> &'static str {
+    // IDA 0x36058: `getDeviceType` maps `deviceType` to `iPad` /
+    // `iPhone` / `iPod` / `Unknown` via `rangeOfString:`
+    // (0x360a2-0x360f4); a nil `deviceType` returns `iPad`
+    // (0x36104-0x36108).
+    match device_type {
+        None => "iPad",
+        Some(t) if t.contains("iPad") => "iPad",
+        Some(t) if t.contains("iPhone") => "iPhone",
+        Some(t) if t.contains("iPod") => "iPod",
+        Some(_) => "Unknown",
+    }
 }
 
 // 0x36114 — +[RobloxInfo getDeviceModelNumber]
