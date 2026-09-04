@@ -717,40 +717,45 @@ pub fn stub_a59c8c() -> ! {
 // demangled: RakNet::PluginInterface2::PluginInterface2(void)
 // type: _DWORD *__fastcall(_DWORD *this)
 #[doc(alias = "RakNet::PluginInterface2::PluginInterface2(void)")]
-pub fn stub_a5a2ac() -> ! {
-    todo!("0xa5a2ac RakNet::PluginInterface2::PluginInterface2(void)")
+pub fn stub_a5a2ac() -> crate::socket::PluginInterface2 {
+ // IDA 0xa5a2ac: default construct.
+ crate::socket::PluginInterface2::new()
 }
 
 // 0xa5a2c4 — __ZN6RakNet16PluginInterface2D0Ev
 // demangled: RakNet::PluginInterface2::~PluginInterface2()
 // type: void __fastcall(RakNet::PluginInterface2 *__hidden this)
 #[doc(alias = "RakNet::PluginInterface2::~PluginInterface2()")]
-pub fn stub_a5a2c4() -> ! {
-    todo!("0xa5a2c4 RakNet::PluginInterface2::~PluginInterface2()")
+pub fn stub_a5a2c4(plugin: crate::socket::PluginInterface2) {
+ // IDA 0xa5a2c4: frees; Rust drops it.
+ drop(plugin);
 }
 
 // 0xa5a2d0 — __ZN6RakNet16PluginInterface2D1Ev
 // demangled: RakNet::PluginInterface2::~PluginInterface2()
 // type: void __fastcall(RakNet::PluginInterface2 *__hidden this)
 #[doc(alias = "RakNet::PluginInterface2::~PluginInterface2()")]
-pub fn stub_a5a2d0() -> ! {
-    todo!("0xa5a2d0 RakNet::PluginInterface2::~PluginInterface2()")
+pub fn stub_a5a2d0(plugin: crate::socket::PluginInterface2) {
+ // IDA 0xa5a2d0: frees; Rust drops it.
+ drop(plugin);
 }
 
 // 0xa5a2d4 — __ZN6RakNet16PluginInterface2D2Ev
 // demangled: RakNet::PluginInterface2::~PluginInterface2()
 // type: void __fastcall(RakNet::PluginInterface2 *__hidden this)
 #[doc(alias = "RakNet::PluginInterface2::~PluginInterface2()")]
-pub fn stub_a5a2d4() -> ! {
-    todo!("0xa5a2d4 RakNet::PluginInterface2::~PluginInterface2()")
+pub fn stub_a5a2d4(plugin: crate::socket::PluginInterface2) {
+ // IDA 0xa5a2d4: frees; Rust drops it.
+ drop(plugin);
 }
 
 // 0xa5a2d8 — __ZN6RakNet16PluginInterface219SetRakPeerInterfaceEPNS_16RakPeerInterfaceE
 // demangled: RakNet::PluginInterface2::SetRakPeerInterface(RakNet::RakPeerInterface *)
 // type: int __fastcall(int result, int)
 #[doc(alias = "RakNet::PluginInterface2::SetRakPeerInterface(RakNet::RakPeerInterface *)")]
-pub fn stub_a5a2d8() -> ! {
-    todo!("0xa5a2d8 RakNet::PluginInterface2::SetRakPeerInterface(RakNet::RakPeerInterface *)")
+pub fn stub_a5a2d8(plugin: &mut crate::socket::PluginInterface2, peer: Option<u32>) {
+ // IDA 0xa5a2d8: store the peer handle.
+ plugin.set_rak_peer_interface(peer)
 }
 
 // 0xa5a2dc — __GLOBAL__I_a_519
@@ -772,24 +777,27 @@ pub fn stub_a5a8fc() -> ! {
 // demangled: RakNet::_RakMalloc_Ex(unsigned long,char const*,unsigned int)
 // type: void *__fastcall(RakNet *this, unsigned int, const char *, unsigned int)
 #[doc(alias = "RakNet::_RakMalloc_Ex(unsigned long,char const*,unsigned int)")]
-pub fn stub_a5a900() -> ! {
-    todo!("0xa5a900 RakNet::_RakMalloc_Ex(unsigned long,char const*,unsigned int)")
+pub fn stub_a5a900(size: usize) -> Vec<u8> {
+ // IDA 0xa5a900: zeroed allocation.
+ crate::socket::rak_malloc(size)
 }
 
 // 0xa5a90c — __ZN6RakNet14_RakRealloc_ExEPvmPKcj
 // demangled: RakNet::_RakRealloc_Ex(void *,unsigned long,char const*,unsigned int)
 // type: void *__fastcall(RakNet *this, size_t, unsigned int, const char *, unsigned int)
 #[doc(alias = "RakNet::_RakRealloc_Ex(void *,unsigned long,char const*,unsigned int)")]
-pub fn stub_a5a90c() -> ! {
-    todo!("0xa5a90c RakNet::_RakRealloc_Ex(void *,unsigned long,char const*,unsigned int)")
+pub fn stub_a5a90c(buf: Vec<u8>, size: usize) -> Vec<u8> {
+ // IDA 0xa5a90c: resize, tails zero-fill.
+ crate::socket::rak_realloc(buf, size)
 }
 
 // 0xa5a918 — __ZN6RakNet11_RakFree_ExEPvPKcj
 // demangled: RakNet::_RakFree_Ex(void *,char const*,unsigned int)
 // type: void __fastcall(RakNet *this, void *, const char *, unsigned int)
 #[doc(alias = "RakNet::_RakFree_Ex(void *,char const*,unsigned int)")]
-pub fn stub_a5a918() -> ! {
-    todo!("0xa5a918 RakNet::_RakFree_Ex(void *,char const*,unsigned int)")
+pub fn stub_a5a918(buf: Vec<u8>) {
+ // IDA 0xa5a918: free.
+ crate::socket::rak_free(buf)
 }
 
 // 0xa5a924 — __GLOBAL__I_a_520
@@ -803,16 +811,18 @@ pub fn stub_a5a924() -> ! {
 // demangled: RakNet::RakNetSocket::RakNetSocket(void)
 // type: RakNet::RakNetSocket *__fastcall(RakNet::RakNetSocket *this)
 #[doc(alias = "RakNet::RakNetSocket::RakNetSocket(void)")]
-pub fn stub_a5af38() -> ! {
-    todo!("0xa5af38 RakNet::RakNetSocket::RakNetSocket(void)")
+pub fn stub_a5af38() {
+ // IDA 0xa5af38: descriptor init stays engine-side.
+ crate::socket::init_raknet_socket()
 }
 
 // 0xa5af50 — __ZN6RakNet12RakNetSocketD1Ev
 // demangled: RakNet::RakNetSocket::~RakNetSocket()
 // type: void __fastcall(RakNet::RakNetSocket *__hidden this)
 #[doc(alias = "RakNet::RakNetSocket::~RakNetSocket()")]
-pub fn stub_a5af50() -> ! {
-    todo!("0xa5af50 RakNet::RakNetSocket::~RakNetSocket()")
+pub fn stub_a5af50() {
+ // IDA 0xa5af50: descriptor close stays engine-side.
+ crate::socket::free_raknet_socket()
 }
 
 // 0xa5af7c — __GLOBAL__I_a_521
@@ -826,8 +836,9 @@ pub fn stub_a5af7c() -> ! {
 // demangled: RakNet::StatisticsToString(RakNet::RakNetStatistics const*,char *,int)
 // type: int __fastcall(unsigned int *, char *, int)
 #[doc(alias = "RakNet::StatisticsToString(RakNet::RakNetStatistics const*,char *,int)")]
-pub fn stub_a5b5b0() -> ! {
-    todo!("0xa5b5b0 RakNet::StatisticsToString(RakNet::RakNetStatistics const*,char *,int)")
+pub fn stub_a5b5b0(present: bool, verbose: u32, sent_per_sec: u64, received_per_sec: u64, packetloss: f32, full: &mut dyn FnMut() -> String) -> String {
+ // IDA 0xa5b5b0: null/brief/full verbosity arms.
+ crate::socket::statistics_to_string(present, verbose, sent_per_sec, received_per_sec, packetloss, full)
 }
 
 // 0xa5b9cc — __GLOBAL__I_a_522
