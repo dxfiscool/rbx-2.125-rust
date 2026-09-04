@@ -475,72 +475,81 @@ pub fn stub_a55f48() -> bool {
 // demangled: RakNet::BitStream::ReverseBytes(unsigned char *,unsigned char *,unsigned int)
 // type: int __fastcall(int this, unsigned __int8 *, unsigned __int8 *, unsigned int)
 #[doc(alias = "RakNet::BitStream::ReverseBytes(unsigned char *,unsigned char *,unsigned int)")]
-pub fn stub_a55f4c() -> ! {
-    todo!("0xa55f4c RakNet::BitStream::ReverseBytes(unsigned char *,unsigned char *,unsigned int)")
+pub fn stub_a55f4c(data: &[u8]) -> Vec<u8> {
+ // IDA 0xa55f4c: byte reversal into a fresh buffer.
+ crate::bitstream::reverse_bytes(data)
 }
 
 // 0xa55f64 — __ZN6RakNet9BitStream16WriteAlignedVar8EPKc
 // demangled: RakNet::BitStream::WriteAlignedVar8(char const*)
 // type: int __fastcall(RakNet::BitStream *this, const char *)
 #[doc(alias = "RakNet::BitStream::WriteAlignedVar8(char const*)")]
-pub fn stub_a55f64() -> ! {
-    todo!("0xa55f64 RakNet::BitStream::WriteAlignedVar8(char const*)")
+pub fn stub_a55f64(stream: &mut crate::bitstream::BitStream, value: u8) {
+ // IDA 0xa55f64: direct byte store.
+ stream.write_aligned_var8(value)
 }
 
 // 0xa5602c — __ZN6RakNet9BitStream15ReadAlignedVar8EPc
 // demangled: RakNet::BitStream::ReadAlignedVar8(char *)
 // type: int __fastcall(RakNet::BitStream *this, char *)
 #[doc(alias = "RakNet::BitStream::ReadAlignedVar8(char *)")]
-pub fn stub_a5602c() -> ! {
-    todo!("0xa5602c RakNet::BitStream::ReadAlignedVar8(char *)")
+pub fn stub_a5602c(stream: &mut crate::bitstream::BitStream) -> Option<u8> {
+ // IDA 0xa5602c: direct byte load.
+ stream.read_aligned_var8()
 }
 
 // 0xa56050 — __ZN6RakNet9BitStream17WriteAlignedVar16EPKc
 // demangled: RakNet::BitStream::WriteAlignedVar16(char const*)
 // type: int __fastcall(RakNet::BitStream *this, char *)
 #[doc(alias = "RakNet::BitStream::WriteAlignedVar16(char const*)")]
-pub fn stub_a56050() -> ! {
-    todo!("0xa56050 RakNet::BitStream::WriteAlignedVar16(char const*)")
+pub fn stub_a56050(stream: &mut crate::bitstream::BitStream, value: u16) {
+ // IDA 0xa56050: big-endian pair, direct store.
+ stream.write_aligned_var16(value)
 }
 
 // 0xa5617c — __ZN6RakNet9BitStream16ReadAlignedVar16EPc
 // demangled: RakNet::BitStream::ReadAlignedVar16(char *)
 // type: int __fastcall(RakNet::BitStream *this, char *)
 #[doc(alias = "RakNet::BitStream::ReadAlignedVar16(char *)")]
-pub fn stub_a5617c() -> ! {
-    todo!("0xa5617c RakNet::BitStream::ReadAlignedVar16(char *)")
+pub fn stub_a5617c(stream: &mut crate::bitstream::BitStream) -> Option<u16> {
+ // IDA 0xa5617c: big-endian pair, direct load.
+ stream.read_aligned_var16()
 }
 
 // 0xa5620c — __ZN6RakNet9BitStream17WriteAlignedVar32EPKc
 // demangled: RakNet::BitStream::WriteAlignedVar32(char const*)
 // type: int __fastcall(RakNet::BitStream *this, char *)
 #[doc(alias = "RakNet::BitStream::WriteAlignedVar32(char const*)")]
-pub fn stub_a5620c() -> ! {
-    todo!("0xa5620c RakNet::BitStream::WriteAlignedVar32(char const*)")
+pub fn stub_a5620c(stream: &mut crate::bitstream::BitStream, value: u32) {
+ // IDA 0xa5620c: big-endian quad, direct store.
+ stream.write_aligned_var32(value)
 }
 
 // 0xa56378 — __ZN6RakNet9BitStream16ReadAlignedVar32EPc
 // demangled: RakNet::BitStream::ReadAlignedVar32(char *)
 // type: int __fastcall(RakNet::BitStream *this, char *)
 #[doc(alias = "RakNet::BitStream::ReadAlignedVar32(char *)")]
-pub fn stub_a56378() -> ! {
-    todo!("0xa56378 RakNet::BitStream::ReadAlignedVar32(char *)")
+pub fn stub_a56378(stream: &mut crate::bitstream::BitStream) -> Option<u32> {
+ // IDA 0xa56378: big-endian quad, direct load.
+ stream.read_aligned_var32()
 }
 
 // 0xa56438 — __ZN6RakNet9BitStream11ReadFloat16ERfff
 // demangled: RakNet::BitStream::ReadFloat16(float &,float,float)
 // type: int __fastcall(RakNet::BitStream *this, float *, float, float)
 #[doc(alias = "RakNet::BitStream::ReadFloat16(float &,float,float)")]
-pub fn stub_a56438() -> ! {
-    todo!("0xa56438 RakNet::BitStream::ReadFloat16(float &,float,float)")
+pub fn stub_a56438(stream: &mut crate::bitstream::BitStream, min: f32, max: f32) -> Option<f32> {
+ // IDA 0xa56438: normalized 16-bit float.
+ stream.read_float16(min, max)
 }
 
 // 0xa5653c — __ZN6RakNet9BitStream12WriteFloat16Efff
 // demangled: RakNet::BitStream::WriteFloat16(float,float,float)
 // type: unsigned int __fastcall(RakNet::BitStream *this, float32_t, float32_t, float32_t)
 #[doc(alias = "RakNet::BitStream::WriteFloat16(float,float,float)")]
-pub fn stub_a5653c() -> ! {
-    todo!("0xa5653c RakNet::BitStream::WriteFloat16(float,float,float)")
+pub fn stub_a5653c(stream: &mut crate::bitstream::BitStream, value: f32, min: f32, max: f32) {
+ // IDA 0xa5653c: normalized 16-bit float.
+ stream.write_float16(value, min, max)
 }
 
 // 0xa565f0 — __GLOBAL__I_a_511

@@ -407,6 +407,62 @@ impl BitStream {
  self.bytes.clone()
  }
 
+ /// `RakNet::BitStream::WriteAlignedVar8` (IDA 0xa55f64): stores the
+ /// byte directly at the write cursor without aligning, then advances
+ /// 8 bits.
+ pub fn write_aligned_var8(&mut self, value: u8) {
+ let idx = self.written_bits >> 3;
+ if idx >= self.bytes.len() {
+ self.bytes.resize(idx + 1, 0);
+ }
+ self.bytes[idx] = value;
+ self.written_bits += 8;
+ }
+
+ /// `RakNet::BitStream::ReadAlignedVar8` (IDA 0xa5602c): the byte at
+ /// the read cursor without aligning; `None` when short.
+ pub fn read_aligned_var8(&mut self) -> Option<u8> {
+ if self.read_bit + 8 > self.written_bits {
+ return None;
+ }
+ let b = self.bytes[self.read_bit >> 3];
+ self.read_bit += 8;
+ Some(b)
+ }
+
+ /// `RakNet::BitStream::WriteAlignedVar16` (IDA 0xa56050): big-endian
+ /// pair (`IsNetworkOrder` is 0), stored direct like
+ /// [`write_aligned_var8`](Self::write_aligned_var8).
+ pub fn write_aligned_var16(&mut self, value: u16) {
+ for b in value.to_be_bytes() {
+ self.write_aligned_var8(b);
+ }
+ }
+
+ /// `RakNet::BitStream::ReadAlignedVar16` (IDA 0xa5617c).
+ pub fn read_aligned_var16(&mut self) -> Option<u16> {
+ Some(u16::from_be_bytes([self.read_aligned_var8()?, self.read_aligned_var8()?]))
+ }
+
+ /// `RakNet::BitStream::WriteAlignedVar32` (IDA 0xa5620c): big-endian
+ /// quad, stored direct.
+ pub fn write_aligned_var32(&mut self, value: u32) {
+ for b in value.to_be_bytes() {
+ self.write_aligned_var8(b);
+ }
+ }
+
+ /// `RakNet::BitStream::ReadAlignedVar32` (IDA 0xa56378).
+ pub fn read_aligned_var32(&mut self) -> Option<u32> {
+ Some(u32::from_be_bytes([
+ self.read_aligned_var8()?,
+ self.read_aligned_var8()?,
+ self.read_aligned_var8()?,
+ self.read_aligned_var8()?,
+ ]))
+ }
+
+
     /// Advance the write cursor to the next byte boundary, zero-filling
     /// (IDA 0xa77d60: `*this += ((u8)*this + 7) & 7 ^ 7`).
     ///
@@ -622,6 +678,13 @@ impl BitStream {
         }
         String::from_utf8(out).expect("BitStream >> std::string: bad utf8")
     }
+}
+
+/// `RakNet::BitStream::ReverseBytes` (IDA 0xa55f4c): byte-reverses `data`
+/// into a fresh buffer (the out-param stays engine-side).
+#[must_use]
+pub fn reverse_bytes(data: &[u8]) -> Vec<u8> {
+ data.iter().rev().copied().collect()
 }
 
 #[cfg(test)]
@@ -847,5 +910,29 @@ mod tests {
         s.pad_with_zero_to_byte_length(4);
         assert_eq!(s.copy_data(), vec![1, 0, 0, 0]);
         s.pad_with_zero_to_byte_length(1);
+    }
+    #[test]
+    fn aligned_var_roundtrip() {
+        // IDA 0xa55f64/0xa5602c/0xa56050/0xa5617c/0xa5620c/0xa56378:
+        // direct bytes, big-endian pairs/quads.
+        let mut s = BitStream::new();
+        s.write_aligned_var8(0xAB);
+        s.write_aligned_var16(0x1234);
+        s.write_aligned_var32(0xDEAD_BEEF);
+        assert_eq!(s.copy_data(), vec![0xAB, 0x12, 0x34, 0xDE, 0xAD, 0xBE, 0xEF]);
+        let mut r = BitStream::from_bytes(&s.copy_data());
+        assert_eq!(r.read_aligned_var8(), Some(0xAB));
+        assert_eq!(r.read_aligned_var16(), Some(0x1234));
+        assert_eq!(r.read_aligned_var32(), Some(0xDEAD_BEEF));
+        assert_eq!(r.read_aligned_var8(), None);
+        // IDA 0xa55f4c: reversal.
+        assert_eq!(reverse_bytes(&[1, 2, 3]), vec![3, 2, 1]);
+        assert_eq!(reverse_bytes(&[]), Vec::<u8>::new());
+        // IDA 0xa56438/0xa5653c: float16 over [-1, 1].
+        let mut s = BitStream::new();
+        s.write_float16(0.5, -1.0, 1.0);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        let v = r.read_float16(-1.0, 1.0).expect("float16");
+        assert!((v - 0.5).abs() < 0.001, "v={v}");
     }
 }
