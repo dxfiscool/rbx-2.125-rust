@@ -26,16 +26,12 @@ pub fn stub_0x44c468() -> ! {
 // 0x44c550 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_25ScriptInformationProviderEEEmv
 // type: int()
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::ScriptInformationProvider>(void)")]
-pub fn stub_0x44c550() -> ! {
-    todo!("0x44c550 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::ScriptInformationProvider>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44c550 as stub_0x44c550;
 
 // 0x44c6f0 — __ZNK3RBX15ServiceProvider4findINS_13DebrisServiceEEEPT_v
 // type: RBX::Name *__fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::DebrisService * RBX::ServiceProvider::find<RBX::DebrisService>(void)const")]
-pub fn stub_0x44c6f0() -> ! {
-    todo!("0x44c6f0 RBX::DebrisService * RBX::ServiceProvider::find<RBX::DebrisService>(void)const")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44c6f0 as stub_0x44c6f0;
 
 // 0x44c948 — __ZN3RBX4Name7declareILZNS_14sDebrisServiceEEEERKS0_v
 // type: int(void)
@@ -59,16 +55,12 @@ pub fn stub_0x44c990() -> ! {
 
 // 0x44ca74 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_13DebrisServiceEEEvv
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::DebrisService>(void)")]
-pub fn stub_0x44ca74() -> ! {
-    todo!("0x44ca74 void RBX::ServiceProvider::callDoGetClassIndex<RBX::DebrisService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44ca74 as stub_0x44ca74;
 
 // 0x44ca78 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_13DebrisServiceEEEmv
 // type: int()
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::DebrisService>(void)")]
-pub fn stub_0x44ca78() -> ! {
-    todo!("0x44ca78 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::DebrisService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44ca78 as stub_0x44ca78;
 
 // 0x44cc18 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13DebrisServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
@@ -81,9 +73,7 @@ pub fn stub_0x44cc18() -> ! {
 // 0x44cef0 — __ZNK3RBX15ServiceProvider4findINS_15GamePassServiceEEEPT_v
 // type: RBX::Name *__fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::GamePassService * RBX::ServiceProvider::find<RBX::GamePassService>(void)const")]
-pub fn stub_0x44cef0() -> ! {
-    todo!("0x44cef0 RBX::GamePassService * RBX::ServiceProvider::find<RBX::GamePassService>(void)const")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44cef0 as stub_0x44cef0;
 
 // 0x44d148 — __ZN3RBX4Name7declareILZNS_16sGamePassServiceEEEERKS0_v
 // type: int(void)
@@ -107,16 +97,12 @@ pub fn stub_0x44d190() -> ! {
 
 // 0x44d274 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_15GamePassServiceEEEvv
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::GamePassService>(void)")]
-pub fn stub_0x44d274() -> ! {
-    todo!("0x44d274 void RBX::ServiceProvider::callDoGetClassIndex<RBX::GamePassService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44d274 as stub_0x44d274;
 
 // 0x44d278 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_15GamePassServiceEEEmv
 // type: int()
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::GamePassService>(void)")]
-pub fn stub_0x44d278() -> ! {
-    todo!("0x44d278 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::GamePassService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44d278 as stub_0x44d278;
 
 // 0x44d418 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15GamePassServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
@@ -129,9 +115,7 @@ pub fn stub_0x44d418() -> ! {
 // 0x44d6f0 — __ZNK3RBX15ServiceProvider4findINS_13SocialServiceEEEPT_v
 // type: RBX::Name *__fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::SocialService * RBX::ServiceProvider::find<RBX::SocialService>(void)const")]
-pub fn stub_0x44d6f0() -> ! {
-    todo!("0x44d6f0 RBX::SocialService * RBX::ServiceProvider::find<RBX::SocialService>(void)const")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44d6f0 as stub_0x44d6f0;
 
 // 0x44d948 — __ZN3RBX4Name7declareILZNS_14sSocialServiceEEEERKS0_v
 // type: int(void)
@@ -155,16 +139,12 @@ pub fn stub_0x44d990() -> ! {
 
 // 0x44da74 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_13SocialServiceEEEvv
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::SocialService>(void)")]
-pub fn stub_0x44da74() -> ! {
-    todo!("0x44da74 void RBX::ServiceProvider::callDoGetClassIndex<RBX::SocialService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44da74 as stub_0x44da74;
 
 // 0x44da78 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_13SocialServiceEEEmv
 // type: int()
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::SocialService>(void)")]
-pub fn stub_0x44da78() -> ! {
-    todo!("0x44da78 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::SocialService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44da78 as stub_0x44da78;
 
 // 0x44dc18 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13SocialServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
@@ -176,16 +156,12 @@ pub fn stub_0x44dc18() -> ! {
 
 // 0x44e228 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_13InsertServiceEEEvv
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::InsertService>(void)")]
-pub fn stub_0x44e228() -> ! {
-    todo!("0x44e228 void RBX::ServiceProvider::callDoGetClassIndex<RBX::InsertService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44e228 as stub_0x44e228;
 
 // 0x44e22c — __ZN3RBX15ServiceProvider15doGetClassIndexINS_13InsertServiceEEEmv
 // type: int()
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::InsertService>(void)")]
-pub fn stub_0x44e22c() -> ! {
-    todo!("0x44e22c unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::InsertService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44e22c as stub_0x44e22c;
 
 // 0x44e3ec — __ZN3RBX4Name7declareILZNS_19sRenderHooksServiceEEEERKS0_v
 // type: int(void)
@@ -209,16 +185,12 @@ pub fn stub_0x44e434() -> ! {
 
 // 0x44e518 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_18RenderHooksServiceEEEvv
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::RenderHooksService>(void)")]
-pub fn stub_0x44e518() -> ! {
-    todo!("0x44e518 void RBX::ServiceProvider::callDoGetClassIndex<RBX::RenderHooksService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44e518 as stub_0x44e518;
 
 // 0x44e51c — __ZN3RBX15ServiceProvider15doGetClassIndexINS_18RenderHooksServiceEEEmv
 // type: int()
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::RenderHooksService>(void)")]
-pub fn stub_0x44e51c() -> ! {
-    todo!("0x44e51c unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::RenderHooksService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44e51c as stub_0x44e51c;
 
 // 0x44e6bc — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18RenderHooksServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
@@ -244,23 +216,17 @@ pub fn stub_0x44ec38() -> ! {
 
 // 0x44edc8 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_13FriendServiceEEEvv
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::FriendService>(void)")]
-pub fn stub_0x44edc8() -> ! {
-    todo!("0x44edc8 void RBX::ServiceProvider::callDoGetClassIndex<RBX::FriendService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44edc8 as stub_0x44edc8;
 
 // 0x44edcc — __ZN3RBX15ServiceProvider15doGetClassIndexINS_13FriendServiceEEEmv
 // type: int()
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::FriendService>(void)")]
-pub fn stub_0x44edcc() -> ! {
-    todo!("0x44edcc unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::FriendService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44edcc as stub_0x44edcc;
 
 // 0x44eea4 — __ZNK3RBX15ServiceProvider4findINS_15GeometryServiceEEEPT_v
 // type: RBX::Name *__fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::GeometryService * RBX::ServiceProvider::find<RBX::GeometryService>(void)const")]
-pub fn stub_0x44eea4() -> ! {
-    todo!("0x44eea4 RBX::GeometryService * RBX::ServiceProvider::find<RBX::GeometryService>(void)const")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44eea4 as stub_0x44eea4;
 
 // 0x44f0fc — __ZN3RBX4Name7declareILZNS_16sGeometryServiceEEEERKS0_v
 // type: int(void)
@@ -277,16 +243,12 @@ pub fn stub_0x44f140() -> ! {
 
 // 0x44f148 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_15GeometryServiceEEEvv
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::GeometryService>(void)")]
-pub fn stub_0x44f148() -> ! {
-    todo!("0x44f148 void RBX::ServiceProvider::callDoGetClassIndex<RBX::GeometryService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44f148 as stub_0x44f148;
 
 // 0x44f14c — __ZN3RBX15ServiceProvider15doGetClassIndexINS_15GeometryServiceEEEmv
 // type: int()
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::GeometryService>(void)")]
-pub fn stub_0x44f14c() -> ! {
-    todo!("0x44f14c unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::GeometryService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44f14c as stub_0x44f14c;
 
 // 0x44f2ec — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15GeometryServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
@@ -319,29 +281,21 @@ pub fn stub_0x44f94c() -> ! {
 // 0x44fc58 — __ZNK3RBX15ServiceProvider4findINS_12BadgeServiceEEEPT_v
 // type: RBX::Name *__fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::BadgeService * RBX::ServiceProvider::find<RBX::BadgeService>(void)const")]
-pub fn stub_0x44fc58() -> ! {
-    todo!("0x44fc58 RBX::BadgeService * RBX::ServiceProvider::find<RBX::BadgeService>(void)const")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44fc58 as stub_0x44fc58;
 
 // 0x44fe74 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_12BadgeServiceEEEvv
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::BadgeService>(void)")]
-pub fn stub_0x44fe74() -> ! {
-    todo!("0x44fe74 void RBX::ServiceProvider::callDoGetClassIndex<RBX::BadgeService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44fe74 as stub_0x44fe74;
 
 // 0x44fe78 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_12BadgeServiceEEEmv
 // type: int()
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::BadgeService>(void)")]
-pub fn stub_0x44fe78() -> ! {
-    todo!("0x44fe78 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::BadgeService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44fe78 as stub_0x44fe78;
 
 // 0x44ffb8 — __ZNK3RBX15ServiceProvider4findINS_14PhysicsServiceEEEPT_v
 // type: RBX::Name *__fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::PhysicsService * RBX::ServiceProvider::find<RBX::PhysicsService>(void)const")]
-pub fn stub_0x44ffb8() -> ! {
-    todo!("0x44ffb8 RBX::PhysicsService * RBX::ServiceProvider::find<RBX::PhysicsService>(void)const")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_44ffb8 as stub_0x44ffb8;
 
 // 0x450210 — __ZN3RBX4Name7declareILZNS_15sPhysicsServiceEEEERKS0_v
 // type: int(void)
@@ -360,9 +314,7 @@ pub fn stub_0x450258() -> ! {
 // 0x450340 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_14PhysicsServiceEEEmv
 // type: int()
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::PhysicsService>(void)")]
-pub fn stub_0x450340() -> ! {
-    todo!("0x450340 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::PhysicsService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_450340 as stub_0x450340;
 
 // 0x450418 — __ZN3RBX14PhysicsServiceC2Ev
 // type: RBX::Instance *__fastcall(RBX::PhysicsService *this)
@@ -389,9 +341,7 @@ pub fn stub_0x4511a4() -> ! {
 // 0x45147c — __ZNK3RBX15ServiceProvider4findINS_17CollectionServiceEEEPT_v
 // type: RBX::Name *__fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::CollectionService * RBX::ServiceProvider::find<RBX::CollectionService>(void)const")]
-pub fn stub_0x45147c() -> ! {
-    todo!("0x45147c RBX::CollectionService * RBX::ServiceProvider::find<RBX::CollectionService>(void)const")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_45147c as stub_0x45147c;
 
 // 0x4516d4 — __ZN3RBX4Name7declareILZNS_18sCollectionServiceEEEERKS0_v
 // type: int(void)
@@ -415,16 +365,12 @@ pub fn stub_0x45171c() -> ! {
 
 // 0x451800 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_17CollectionServiceEEEvv
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::CollectionService>(void)")]
-pub fn stub_0x451800() -> ! {
-    todo!("0x451800 void RBX::ServiceProvider::callDoGetClassIndex<RBX::CollectionService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_451800 as stub_0x451800;
 
 // 0x451804 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_17CollectionServiceEEEmv
 // type: int()
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::CollectionService>(void)")]
-pub fn stub_0x451804() -> ! {
-    todo!("0x451804 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::CollectionService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_451804 as stub_0x451804;
 
 // 0x4519a4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17CollectionServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
@@ -506,9 +452,7 @@ pub fn stub_0x453030() -> ! {
 
 // 0x453038 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_10RunServiceEEEvv
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::RunService>(void)")]
-pub fn stub_0x453038() -> ! {
-    todo!("0x453038 void RBX::ServiceProvider::callDoGetClassIndex<RBX::RunService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_453038 as stub_0x453038;
 
 // 0x453108 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14CoreGuiServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CoreGuiService,RBX::CoreGuiService>(rbx_core::SharedPtr<RBX::CoreGuiService> const*,RBX::CoreGuiService *)const")]
@@ -520,9 +464,7 @@ pub fn stub_0x453108() -> ! {
 // 0x453200 — __ZNK3RBX15ServiceProvider4findINS_17StarterGuiServiceEEEPT_v
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::StarterGuiService * RBX::ServiceProvider::find<RBX::StarterGuiService>(void)const")]
-pub fn stub_0x453200() -> ! {
-    todo!("0x453200 RBX::StarterGuiService * RBX::ServiceProvider::find<RBX::StarterGuiService>(void)const")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_453200 as stub_0x453200;
 
 // 0x453458 — __ZN3RBX4Name7declareILZNS_18sStarterGuiServiceEEEERKS0_v
 // type: int(void)
@@ -539,15 +481,11 @@ pub fn stub_0x4534a0() -> ! {
 
 // 0x453584 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_17StarterGuiServiceEEEvv
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::StarterGuiService>(void)")]
-pub fn stub_0x453584() -> ! {
-    todo!("0x453584 void RBX::ServiceProvider::callDoGetClassIndex<RBX::StarterGuiService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_453584 as stub_0x453584;
 
 // 0x453588 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_17StarterGuiServiceEEEmv
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::StarterGuiService>(void)")]
-pub fn stub_0x453588() -> ! {
-    todo!("0x453588 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::StarterGuiService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_453588 as stub_0x453588;
 
 // 0x453728 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17StarterGuiServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterGuiService,RBX::StarterGuiService>(rbx_core::SharedPtr<RBX::StarterGuiService> const*,RBX::StarterGuiService *)const")]
@@ -566,9 +504,7 @@ pub fn stub_0x453940() -> ! {
 // 0x4539e0 — __ZNK3RBX15ServiceProvider4findINS_18StarterPackServiceEEEPT_v
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::StarterPackService * RBX::ServiceProvider::find<RBX::StarterPackService>(void)const")]
-pub fn stub_0x4539e0() -> ! {
-    todo!("0x4539e0 RBX::StarterPackService * RBX::ServiceProvider::find<RBX::StarterPackService>(void)const")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_4539e0 as stub_0x4539e0;
 
 // 0x453b58 — __ZN3RBX4Name7declareILZNS_19sStarterPackServiceEEEERKS0_v
 // type: int(void)
@@ -586,9 +522,7 @@ pub fn stub_0x453ba0() -> ! {
 // 0x453c88 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_18StarterPackServiceEEEmv
 // type: int()
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::StarterPackService>(void)")]
-pub fn stub_0x453c88() -> ! {
-    todo!("0x453c88 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::StarterPackService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_453c88 as stub_0x453c88;
 
 // 0x453e28 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18StarterPackServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterPackService,RBX::StarterPackService>(rbx_core::SharedPtr<RBX::StarterPackService> const*,RBX::StarterPackService *)const")]
@@ -614,9 +548,7 @@ pub fn stub_0x454088() -> ! {
 // 0x4542c0 — __ZNK3RBX15ServiceProvider4findINS_13LocalBackpackEEEPT_v
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::LocalBackpack * RBX::ServiceProvider::find<RBX::LocalBackpack>(void)const")]
-pub fn stub_0x4542c0() -> ! {
-    todo!("0x4542c0 RBX::LocalBackpack * RBX::ServiceProvider::find<RBX::LocalBackpack>(void)const")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_4542c0 as stub_0x4542c0;
 
 // 0x454518 — __ZN3RBX4Name7declareILZNS_14sLocalBackpackEEEERKS0_v
 // type: int(void)
