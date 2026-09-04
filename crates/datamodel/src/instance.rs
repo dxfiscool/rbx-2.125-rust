@@ -1321,6 +1321,26 @@ pub struct DataModelEventDesc {
     pub broadcast: bool,
 }
 
+/// Rust model of `RBX::Reflection::RefType<Instance*>` (IDA `0x460ce0`): the
+/// reflection type tag for instance references; behavior lands with the
+/// reflection subsystem.
+#[derive(Default)]
+pub struct RefTypeInstance {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Reflection::RefType<Workspace*>` (IDA `0x460d90`): the
+/// reflection type tag for workspace references; same treatment as
+/// `RefTypeInstance`.
+#[derive(Default)]
+pub struct RefTypeWorkspace {
+    _opaque: (),
+}
+
+/// Static `RefType` storage behind `RefType<Workspace*>::singleton` (IDA
+/// `0x460d90`).
+static WORKSPACE_REFTYPE_SINGLETON: OnceLock<RefTypeWorkspace> = OnceLock::new();
+
 /// Rust model of `RBX::SelectAllCommand` (IDA `0x415bc4`): the studio
 /// select-all command plus the owning data model.
 pub struct SelectAllCommand {
@@ -22989,14 +23009,18 @@ pub fn stub_0x460b90() -> ! {
 
 // 0x460b98 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::DataModel::*)(void)const>::isReadOnly(void)const")]
-pub fn stub_0x460b98() -> ! {
-    todo!("0x460b98 RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::DataModel::*)(void)const>::isReadOnly(void)const")
+pub fn stub_0x460b98() -> bool {
+    // IDA 0x460b98: `MOVS R0, #1; BX LR` (disasm 0x460b98-0x460b9a) — this
+    // instance property reads as read-only.
+    true
 }
 
 // 0x460b9c — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")]
-pub fn stub_0x460b9c() -> ! {
-    todo!("0x460b9c RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_0x460b9c() -> bool {
+    // IDA 0x460b9c: `MOVS R0, #0; BX LR` (disasm 0x460b9c-0x460b9e) — this
+    // instance property is never write-only.
+    false
 }
 
 // 0x460ba0 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE
@@ -23007,38 +23031,64 @@ pub fn stub_0x460ba0() -> ! {
 
 // 0x460bc0 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::DataModel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::Instance * const&)const")]
-pub fn stub_0x460bc0() -> ! {
-    todo!("0x460bc0 RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::DataModel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::Instance * const&)const")
+pub fn stub_0x460bc0() {
+    // IDA 0x460bc0: `__noreturn` + `runtime_error` throw (same shape as the
+    // decompiled 0x45ef28 path and disassembled 0x460200 path) — setting a
+    // read-only instance property always throws; the panic preserves the
+    // never-returns-normally contract.
+    panic!("0x460bc0: read-only Instance property");
 }
 
 // 0x460ce0 — __ZN3RBX10Reflection7RefTypeIPNS_8InstanceEED1Ev
 #[doc(alias = "RBX::Reflection::RefType<RBX::Instance *>::~RefType()")]
-pub fn stub_0x460ce0() -> ! {
-    todo!("0x460ce0 RBX::Reflection::RefType<RBX::Instance *>::~RefType()")
+pub fn stub_0x460ce0(_ty: *mut RefTypeInstance) {
+    // IDA 0x460ce0: `RefType<Instance*>::D1` — memberwise teardown; dropping
+    // the box is the same release.
+    // SAFETY: `_ty` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_ty));
+    }
 }
 
 // 0x460ce8 — __ZN3RBX10Reflection7RefTypeIPNS_8InstanceEED0Ev
 #[doc(alias = "RBX::Reflection::RefType<RBX::Instance *>::~RefType()")]
-pub fn stub_0x460ce8() -> ! {
-    todo!("0x460ce8 RBX::Reflection::RefType<RBX::Instance *>::~RefType()")
+pub fn stub_0x460ce8(_ty: *mut RefTypeInstance) {
+    // IDA 0x460ce8: `RefType<Instance*>::D0` — vtable install plus memberwise
+    // teardown; dropping the box is the same release. Twin of 0x460ce0.
+    // SAFETY: `_ty` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_ty));
+    }
 }
 
 // 0x460cec — __ZN3RBX10Reflection17RefPropDescriptorINS_9DataModelENS_9WorkspaceEEC2IMS2_KFPS3_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Workspace>::RefPropDescriptor<RBX::Workspace* (RBX::DataModel::*)(void)const,int>(char const*,char const*,RBX::Workspace* (RBX::DataModel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x460cec() -> ! {
-    todo!("0x460cec RBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Workspace>::RefPropDescriptor<RBX::Workspace* (RBX::DataModel::*)(void)const,int>(char const*,char const*,RBX::Workspace* (RBX::DataModel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x460cec() -> DataModelRefDesc {
+    // IDA 0x460cec: `RefPropDescriptor<DataModel, Workspace>::C2` — binds the
+    // reference property into the class descriptor; the binding lands with
+    // reflection, so the model starts empty. Same shape as 0x4605a8.
+    DataModelRefDesc { _opaque: () }
 }
 
 // 0x460d90 — __ZN3RBX10Reflection7RefTypeIPNS_9WorkspaceEE9singletonEv
 #[doc(alias = "RBX::Reflection::RefType<RBX::Workspace *>::singleton(void)")]
-pub fn stub_0x460d90() -> ! {
-    todo!("0x460d90 RBX::Reflection::RefType<RBX::Workspace *>::singleton(void)")
+pub fn stub_0x460d90() -> &'static RefTypeWorkspace {
+    // IDA 0x460d90: `RefType<Workspace*>::singleton` — guard-once
+    // construction of the static type tag (decomp 0x460dec-0x460e1a); the
+    // guard collapses into `OnceLock`.
+    WORKSPACE_REFTYPE_SINGLETON.get_or_init(RefTypeWorkspace::default)
 }
 
 // 0x460e88 — __ZN3RBX10Reflection17RefPropDescriptorINS_9DataModelENS_9WorkspaceEED0Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Workspace>::~RefPropDescriptor()")]
-pub fn stub_0x460e88() -> ! {
-    todo!("0x460e88 RBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Workspace>::~RefPropDescriptor()")
+pub fn stub_0x460e88(_desc: *mut DataModelRefDesc) {
+    // IDA 0x460e88: `RefPropDescriptor<DataModel, Workspace>::D0` — vtable
+    // install plus memberwise teardown; dropping the box is the same release.
+    // Twin of 0x46064c.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x460eb8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_9DataModelENS_9WorkspaceEE10isReadOnlyEv
@@ -23121,68 +23171,110 @@ pub fn stub_0x46138c() -> ! {
 
 // 0x461394 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEPNS_9WorkspaceEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Workspace *>::GetImpl<RBX::Workspace * (RBX::DataModel::*)(void)const>::isReadOnly(void)const")]
-pub fn stub_0x461394() -> ! {
-    todo!("0x461394 RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Workspace *>::GetImpl<RBX::Workspace * (RBX::DataModel::*)(void)const>::isReadOnly(void)const")
+pub fn stub_0x461394() -> bool {
+    // IDA 0x461394: `MOVS R0, #1; BX LR` (disasm 0x461394-0x461396) — this
+    // workspace property reads as read-only.
+    true
 }
 
 // 0x461398 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEPNS_9WorkspaceEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Workspace *>::GetImpl<RBX::Workspace * (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")]
-pub fn stub_0x461398() -> ! {
-    todo!("0x461398 RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Workspace *>::GetImpl<RBX::Workspace * (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_0x461398() -> bool {
+    // IDA 0x461398: `MOVS R0, #0; BX LR` (disasm 0x461398-0x46139a) — this
+    // workspace property is never write-only.
+    false
 }
 
 // 0x46139c — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEPNS_9WorkspaceEE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Workspace *>::GetImpl<RBX::Workspace * (RBX::DataModel::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x46139c() -> ! {
-    todo!("0x46139c RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Workspace *>::GetImpl<RBX::Workspace * (RBX::DataModel::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x46139c(model: &DataModel) -> *const crate::workspace::Workspace {
+    // IDA 0x46139c: `GetImpl<workspace-getter>::getValue` invokes the bound
+    // member getter; the demangle names the `Workspace` member and
+    // `getWorkspace` (0x43191c) reads the same `+734` link, so the read
+    // collapses into the `workspace` field.
+    model.workspace
 }
 
 // 0x4613bc — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEPNS_9WorkspaceEE7GetImplIMS2_KFS4_vEE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Workspace *>::GetImpl<RBX::Workspace * (RBX::DataModel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::Workspace * const&)const")]
-pub fn stub_0x4613bc() -> ! {
-    todo!("0x4613bc RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Workspace *>::GetImpl<RBX::Workspace * (RBX::DataModel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::Workspace * const&)const")
+pub fn stub_0x4613bc() {
+    // IDA 0x4613bc: `__cxa_allocate_exception` + `__cxa_throw` (disasm
+    // 0x4613da/0x4614cc) — setting a read-only workspace property always
+    // throws; the panic preserves the never-returns-normally contract. Same
+    // shape as 0x460bc0.
+    panic!("0x4613bc: read-only Workspace property");
 }
 
 // 0x4614dc — __ZN3RBX10Reflection7RefTypeIPNS_9WorkspaceEED1Ev
 #[doc(alias = "RBX::Reflection::RefType<RBX::Workspace *>::~RefType()")]
-pub fn stub_0x4614dc() -> ! {
-    todo!("0x4614dc RBX::Reflection::RefType<RBX::Workspace *>::~RefType()")
+pub fn stub_0x4614dc(_ty: *mut RefTypeWorkspace) {
+    // IDA 0x4614dc: `RefType<Workspace*>::D1` — memberwise teardown; dropping
+    // the box is the same release. Twin of 0x460ce0.
+    // SAFETY: `_ty` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_ty));
+    }
 }
 
 // 0x4614e0 — __ZN3RBX10Reflection4TypeC2IPNS_9WorkspaceEEEPKcS6_PT_
 #[doc(alias = "RBX::Reflection::Type::Type<RBX::Workspace *>(char const*,char const*,RBX::Workspace * *)")]
-pub fn stub_0x4614e0() -> ! {
-    todo!("0x4614e0 RBX::Reflection::Type::Type<RBX::Workspace *>(char const*,char const*,RBX::Workspace * *)")
+pub fn stub_0x4614e0() -> RefTypeWorkspace {
+    // IDA 0x4614e0: `Type<Workspace*>::C2(name, name, tag?)` — constructs the
+    // type tag; details land with reflection, so construction collapses to
+    // defaults.
+    RefTypeWorkspace::default()
 }
 
 // 0x46158c — __ZN3RBX10Reflection7RefTypeIPNS_9WorkspaceEED0Ev
 #[doc(alias = "RBX::Reflection::RefType<RBX::Workspace *>::~RefType()")]
-pub fn stub_0x46158c() -> ! {
-    todo!("0x46158c RBX::Reflection::RefType<RBX::Workspace *>::~RefType()")
+pub fn stub_0x46158c(_ty: *mut RefTypeWorkspace) {
+    // IDA 0x46158c: `RefType<Workspace*>::D0` — vtable install plus memberwise
+    // teardown; dropping the box is the same release. Twin of 0x460ce8.
+    // SAFETY: `_ty` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_ty));
+    }
 }
 
 // 0x461590 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvNS2_16GearGenreSettingEiELi2EEC2EMS2_FvS3_iEPKcS9_S9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::GearGenreSetting,int),2>::BoundFuncDesc(void (RBX::DataModel::*)(RBX::DataModel::GearGenreSetting,int),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x461590() -> ! {
-    todo!("0x461590 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::GearGenreSetting,int),2>::BoundFuncDesc(void (RBX::DataModel::*)(RBX::DataModel::GearGenreSetting,int),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x461590() -> DataModelFuncDesc {
+    // IDA 0x461590: `BoundFuncDesc<DataModel, void(GearGenre, int)>::C2` —
+    // binds the member into the class descriptor; the binding lands with
+    // reflection, so the model starts empty. Same shape as 0x45c664.
+    DataModelFuncDesc { _opaque: () }
 }
 
 // 0x461758 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvNS2_16GearGenreSettingEiELi2EE16declareSignatureEPKcNS0_7VariantES7_S8_
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::GearGenreSetting,int),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x461758() -> ! {
-    todo!("0x461758 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::GearGenreSetting,int),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+pub fn stub_0x461758(_name: &str, _sig: &[Variant]) {
+    // IDA 0x461758: `BoundFuncDesc<DataModel, ...>::declareSignature` —
+    // same registration collapse as 0x3f0290.
 }
 
 // 0x4617a4 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvNS2_16GearGenreSettingEiELi2EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::GearGenreSetting,int),2>::~BoundFuncDesc()")]
-pub fn stub_0x4617a4() -> ! {
-    todo!("0x4617a4 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::GearGenreSetting,int),2>::~BoundFuncDesc()")
+pub fn stub_0x4617a4(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x4617a4: `BoundFuncDesc<DataModel, ...>::D0` — vtable install plus
+    // memberwise teardown; dropping the box is the same release. Twin of
+    // 0x45c878.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x461884 — __ZNK3RBX10Reflection13BoundFuncDescINS_9DataModelEFvNS2_16GearGenreSettingEiELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::GearGenreSetting,int),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x461884() -> ! {
-    todo!("0x461884 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::GearGenreSetting,int),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x461884(model: &mut DataModel, genre: i32, value: i32) {
+    // IDA 0x461884 (`BoundFuncDesc<DataModel, void(GearGenre, int)>::execute`,
+    // same unmarshal-then-member shape as 0x45e474): unmarshals the pair and
+    // invokes the bound member. The only `void(GearGenreSetting, int)` member
+    // in the model is `setGear` (0x41d340), so the call collapses into it;
+    // the marshalling collapses into the params.
+    // NOTE: member identity by signature elimination — re-verify if another
+    // `void(GearGenreSetting, int)` member is ever modeled.
+    stub_0x41d340(model, genre, value);
 }
 
 // 0x4618d8 — __ZN3RBX10Reflection9ArgHelper6getArgINS_9DataModel16GearGenreSettingELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
@@ -23201,26 +23293,43 @@ pub fn stub_0x461a68() -> ! {
 
 // 0x461abc — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvNS2_5GenreEELi1EEC2EMS2_FvS3_EPKcS9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::Genre),1>::BoundFuncDesc(void (RBX::DataModel::*)(RBX::DataModel::Genre),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x461abc() -> ! {
-    todo!("0x461abc RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::Genre),1>::BoundFuncDesc(void (RBX::DataModel::*)(RBX::DataModel::Genre),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x461abc() -> DataModelFuncDesc {
+    // IDA 0x461abc: `BoundFuncDesc<DataModel, void(Genre)>::C2` — binds the
+    // member into the class descriptor; the binding lands with reflection, so
+    // the model starts empty. Same shape as 0x45c664.
+    DataModelFuncDesc { _opaque: () }
 }
 
 // 0x461c34 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvNS2_5GenreEELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::Genre),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x461c34() -> ! {
-    todo!("0x461c34 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::Genre),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x461c34(_name: &str, _sig: &[Variant]) {
+    // IDA 0x461c34: `BoundFuncDesc<DataModel, ...>::declareSignature` —
+    // same registration collapse as 0x3f0290.
 }
 
 // 0x461c64 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvNS2_5GenreEELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::Genre),1>::~BoundFuncDesc()")]
-pub fn stub_0x461c64() -> ! {
-    todo!("0x461c64 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::Genre),1>::~BoundFuncDesc()")
+pub fn stub_0x461c64(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x461c64: `BoundFuncDesc<DataModel, ...>::D0` — vtable install plus
+    // memberwise teardown; dropping the box is the same release. Twin of
+    // 0x45c878.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x461d38 — __ZNK3RBX10Reflection13BoundFuncDescINS_9DataModelEFvNS2_5GenreEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::Genre),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x461d38() -> ! {
-    todo!("0x461d38 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::Genre),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x461d38(model: &mut DataModel, genre: i32) {
+    // IDA 0x461d38 (`BoundFuncDesc<DataModel, void(Genre)>::execute`, same
+    // unmarshal-then-member shape as 0x45e474): unmarshals the value and
+    // invokes the bound member. The only `void(Genre)` member in the model is
+    // `setGenre` (0x41d320), so the call collapses into it; the marshalling
+    // collapses into the param.
+    // NOTE: member identity by signature elimination — re-verify if another
+    // `void(Genre)` member is ever modeled.
+    stub_0x41d320(model, genre);
 }
 
 // 0x461d6c — __ZN3RBX10Reflection9ArgHelper6getArgINS_9DataModel5GenreELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
