@@ -1302,6 +1302,42 @@ pub mod gui_textbutton {
         (svc.release)(); // IDA 0x67370e-0x673716
         fits
     }
+
+    /// Teardown for `RBX::GuiTextButton` storage (IDA 0x673ce4-0x673d56):
+    /// string at +804, then the `GuiButton` base; `free` is the `operator
+    /// delete` half of D0.
+    pub struct GuiButtonFini {
+        pub drop_text: unsafe fn(*mut u8),
+        pub base: unsafe fn(*mut u8),
+        pub free: unsafe fn(*mut u8),
+    }
+    /// IDA 0x673ce4 D1: `~string(this + 804)` then `~GuiButton(this)`.
+    pub unsafe fn guibutton_d1(this: *mut u8, fini: &GuiButtonFini) {
+        (fini.drop_text)(this.add(804)); // IDA 0x673cee
+        (fini.base)(this); // IDA 0x673cf8
+    }
+    /// IDA 0x673cfc D0: D1 then `operator delete`.
+    pub unsafe fn guibutton_d0(this: *mut u8, fini: &GuiButtonFini) {
+        guibutton_d1(this, fini); // IDA 0x673d20-0x673d56
+        (fini.free)(this);
+    }
+    /// IDA 0x67390c `render2d`: virtual dispatch through vtable word 49
+    /// (`(*(this + 196))(this, a2, 0)`), tail arg `0`.
+    pub unsafe fn guibutton_render2d(this: *mut u8, adorn: *mut u8) -> i32 {
+        let vtab = *(this as *mut *mut usize);
+        let slot = *vtab.add(RENDER2D_VTAB_WORD);
+        let f: unsafe fn(*mut u8, *mut u8, u32) -> i32 = std::mem::transmute::<usize, unsafe fn(*mut u8, *mut u8, u32) -> i32>(slot);
+        f(this, adorn, 0)
+    }
+    /// IDA 0x673918 thunk: `this - 96` adjust, vtable read off the adjusted
+    /// base (`*((this - 96) + 196)`), same `(adj, a2, 0)` call shape.
+    pub unsafe fn guibutton_render2d_thunk(this: *mut u8, adorn: *mut u8) -> i32 {
+        let adj = this.sub(96); // IDA `(char *)this - 96`
+        let vtab = *(adj as *mut *mut usize);
+        let slot = *vtab.add(RENDER2D_VTAB_WORD);
+        let f: unsafe fn(*mut u8, *mut u8, u32) -> i32 = std::mem::transmute::<usize, unsafe fn(*mut u8, *mut u8, u32) -> i32>(slot);
+        f(adj, adorn, 0)
+    }
 }
 // 0x672230 — __ZN3RBX7TextBoxD2Ev
 // type: void __fastcall(RBX::TextBox *this, int, int, int)
@@ -1556,112 +1592,135 @@ pub fn stub_0x673888(base: i32, text_len: usize) -> i32 {
 // 0x67390c — __ZN3RBX13GuiTextButton8render2dEPNS_5AdornE
 // type: int __fastcall(RBX::GuiTextButton *this, RBX::Adorn *)
 #[doc(alias = "__ZN3RBX13GuiTextButton8render2dEPNS_5AdornE")]
-pub fn stub_0x67390c() {
-    // IDA 0x67390c: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
+pub unsafe fn stub_0x67390c(this: *mut u8, adorn: *mut u8) -> i32 {
+    // IDA 0x67390c: vtable-word-49 dispatch `(this, a2, 0)`.
+    gui_textbutton::guibutton_render2d(this, adorn)
 }
 
 // 0x673918 — __ZThn96_N3RBX13GuiTextButton8render2dEPNS_5AdornE
 // type: int __fastcall(RBX::GuiTextButton *this, RBX::Adorn *)
 #[doc(alias = "__ZThn96_N3RBX13GuiTextButton8render2dEPNS_5AdornE")]
-pub fn stub_0x673918() {
-    // IDA 0x673918: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
+pub unsafe fn stub_0x673918(this: *mut u8, adorn: *mut u8) -> i32 {
+    // IDA 0x673918: `this - 96` adjust + same dispatch shape.
+    gui_textbutton::guibutton_render2d_thunk(this, adorn)
 }
 
 // 0x673ce4 — __ZN3RBX13GuiTextButtonD1Ev
 // type: void __fastcall(RBX::GuiTextButton *__hidden this)
 #[doc(alias = "__ZN3RBX13GuiTextButtonD1Ev")]
-pub fn stub_0x673ce4() {
-    // IDA 0x673ce4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x673ce4(this: *mut u8, fini: &gui_textbutton::GuiButtonFini) {
+    // IDA 0x673ce4: `~string(+804)` + `~GuiButton`.
+    gui_textbutton::guibutton_d1(this, fini)
 }
 
 // 0x673cfc — __ZN3RBX13GuiTextButtonD0Ev
 // type: void __fastcall(RBX::GuiTextButton *__hidden this)
 #[doc(alias = "__ZN3RBX13GuiTextButtonD0Ev")]
-pub fn stub_0x673cfc() {
-    // IDA 0x673cfc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x673cfc(this: *mut u8, fini: &gui_textbutton::GuiButtonFini) {
+    // IDA 0x673cfc: D1 (0x673d20-0x673d56) then `operator delete`.
+    gui_textbutton::guibutton_d0(this, fini)
 }
 
 // 0x673da8 — __ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0x673da8() {
-    // IDA 0x673da8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x673da8() -> &'static str {
+    // IDA 0x673da8: `static_getCreator` (0x673dac) + Creator `getClassName` shim.
+    gui_textbutton::creator_class_name()
 }
 
 // 0x673db8 — __ZThn32_N3RBX13GuiTextButtonD1Ev
 // type: void __fastcall(RBX::GuiTextButton *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX13GuiTextButtonD1Ev")]
-pub fn stub_0x673db8() {
-    // IDA 0x673db8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x673db8(this: *mut u8, fini: &gui_textbutton::GuiButtonFini) {
+    // IDA 0x673db8: `this - 32` adjust into D1 (string at +772, base at -32).
+    stub_0x673ce4(this.sub(32), fini)
 }
 
 // 0x673dd4 — __ZThn32_N3RBX13GuiTextButtonD0Ev
 // type: void __fastcall(RBX::GuiTextButton *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX13GuiTextButtonD0Ev")]
-pub fn stub_0x673dd4() {
-    // IDA 0x673dd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x673dd4(this: *mut u8, fini: &gui_textbutton::GuiButtonFini) {
+    // IDA 0x673dd4: `v1 = this - 32` (0x673df2), D0, delete.
+    stub_0x673cfc(this.sub(32), fini)
 }
 
 // 0x673e80 — __ZThn32_NK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0x673e80() {
-    // IDA 0x673e80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x673e80() -> &'static str {
+    // IDA 0x673e80: same `static_getCreator` + `getClassName` tail as 0x673da8.
+    gui_textbutton::creator_class_name()
 }
 
 // 0x673e90 — __ZThn36_N3RBX13GuiTextButtonD1Ev
 // type: void __fastcall(RBX::GuiTextButton *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX13GuiTextButtonD1Ev")]
-pub fn stub_0x673e90() {
-    // IDA 0x673e90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x673e90(this: *mut u8, fini: &gui_textbutton::GuiButtonFini) {
+    // IDA 0x673e90: `this - 36` adjust into D1 (string at +768, base at -36).
+    stub_0x673ce4(this.sub(36), fini)
 }
 
 // 0x673eac — __ZThn36_N3RBX13GuiTextButtonD0Ev
 // type: void __fastcall(RBX::GuiTextButton *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX13GuiTextButtonD0Ev")]
-pub fn stub_0x673eac() {
-    // IDA 0x673eac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x673eac(this: *mut u8, fini: &gui_textbutton::GuiButtonFini) {
+    // IDA 0x673eac: `v1 = this - 36` (0x673eca), D0, delete.
+    stub_0x673cfc(this.sub(36), fini)
 }
 
 // 0x673f58 — __ZN3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7CreatorD1Ev
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_0x673f58() {
-    // IDA 0x673f58: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x673f58(slot: *mut gui_textbox::Creator) -> *mut gui_textbox::Creator {
+    // IDA 0x673f58: D1 thunk straight into D2 (`$shim`, same as TextBox 0x668fb4).
+    gui_textbutton::creator_destroy(slot)
 }
 
 // 0x673f5c — __ZN3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7CreatorD2Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_0x673f5c() {
-    // IDA 0x673f5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x673f5c(slot: *mut gui_textbox::Creator) -> *mut gui_textbox::Creator {
+    // IDA 0x673f5c: vtable restore (`*a1 = &off_128E43C`) + `wasConstructed`
+    // assert + creators erase (same template as TextBox 0x668fb8).
+    gui_textbutton::creator_destroy(slot)
 }
 
 // 0x673ff8 — __ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_0x673ff8() {
-    // IDA 0x673ff8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x673ff8() -> &'static str {
+    // IDA 0x673ff8 (disasm: FLog::Asserts prologue): assert-guarded
+    // class-name read; same tail as TextBox 0x669054.
+    gui_textbutton::creator_class_name()
 }
 
 // 0x674080 — __ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7Creator6createEv
 // type: void __fastcall(_DWORD *, int, int)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7Creator6createEv")]
-pub fn stub_0x674080() {
-    // IDA 0x674080: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x674080(
+    out: *mut gui_textbox::TextBoxShared,
+    alloc: unsafe fn() -> (*mut u8, crate::SharedPtr<u8>),
+) {
+    // IDA 0x674080: assert + `Creatable::create<GuiTextButton>` + `+32` +
+    // count move (same template as TextBox 0x6690dc).
+    gui_textbutton::guitextbutton_create(out, alloc)
 }
 
 // 0x674658 — __ZN3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7CreatorC2Ev
 // type: pthread_mutex_t *__fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_0x674658() {
-    // IDA 0x674658: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x674658(slot: *mut gui_textbox::Creator) -> *mut gui_textbox::Creator {
+    // IDA 0x674658: declare-once + creators insert + `isConstructed = 666`
+    // (same template as TextBox 0x6696b4, `sGuiTextButton` name).
+    gui_textbutton::creator_construct(slot)
 }
 
 // 0x67489c — __ZN3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE17static_getCreatorEv
 // type: void *()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_0x67489c() {
-    // IDA 0x67489c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x67489c() -> *const gui_textbox::Creator {
+    // IDA 0x67489c: `wasConstructed` assert (Object.h:282) + `&creatorPrivateE`.
+    gui_textbutton::static_get_creator()
 }
 
 // 0x6782ec — __ZN3RBX9TextLabelC1Ev
