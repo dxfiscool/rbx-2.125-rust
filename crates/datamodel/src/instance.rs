@@ -973,6 +973,13 @@ pub struct LegacyLock {
     pub task: u32,
 }
 
+/// Rust model of `IMetric` (IDA `0x427db8`): the metric sink behind
+/// `setNetworkMetric`; sampling lands with the metrics subsystem.
+#[derive(Default)]
+pub struct IMetric {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::SelectAllCommand` (IDA `0x415bc4`): the studio
 /// select-all command plus the owning data model.
 pub struct SelectAllCommand {
@@ -15603,38 +15610,81 @@ pub fn stub_0x421c44(model: *const DataModel) {
 
 // 0x421c4c — __ZN3RBX9DataModelD2Ev
 #[doc(alias = "RBX::DataModel::~DataModel()")]
-pub fn stub_0x421c4c() -> ! {
-    todo!("0x421c4c RBX::DataModel::~DataModel()")
+pub fn stub_0x421c4c(model: &mut DataModel) {
+    // IDA 0x421c4c: `DataModel::D2` — memberwise teardown in place (strings
+    // cleared, member signals disconnected; scalars need no teardown). Same
+    // shape as the FilteredSelection D2s.
+    model.server_save_url.clear();
+    model.screenshot_seo.clear();
+    model.video_seo.clear();
+    model.ui_message.clear();
+    model.gear_changed.disconnect_all();
+    model.game_loaded_signal.disconnect_all();
 }
 
 // 0x4228ac — __ZThn32_N3RBX9DataModelD1Ev
 #[doc(alias = "non-virtual thunk to RBX::DataModel::~DataModel()")]
-pub fn stub_0x4228ac() -> ! {
-    todo!("0x4228ac non-virtual thunk to RBX::DataModel::~DataModel()")
+pub fn stub_0x4228ac(model: *const DataModel, _this: *mut DataModel) {
+    // IDA 0x4228ac: `__ZThn32_` thunk to the D1 — the `this - 32` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D1 of
+    // 0x421c20.
+    // SAFETY: `model` must be a live box pointer never used again.
+    let _ = model;
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x4228b4 — __ZThn36_N3RBX9DataModelD1Ev
 #[doc(alias = "non-virtual thunk to RBX::DataModel::~DataModel()")]
-pub fn stub_0x4228b4() -> ! {
-    todo!("0x4228b4 non-virtual thunk to RBX::DataModel::~DataModel()")
+pub fn stub_0x4228b4(model: *const DataModel, _this: *mut DataModel) {
+    // IDA 0x4228b4: `__ZThn36_` thunk to the D1 — the `this - 36` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D1 of
+    // 0x421c20.
+    // SAFETY: `model` must be a live box pointer never used again.
+    let _ = model;
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x4228bc — __ZThn144_N3RBX9DataModelD1Ev
 #[doc(alias = "non-virtual thunk to RBX::DataModel::~DataModel()")]
-pub fn stub_0x4228bc() -> ! {
-    todo!("0x4228bc non-virtual thunk to RBX::DataModel::~DataModel()")
+pub fn stub_0x4228bc(model: *const DataModel, _this: *mut DataModel) {
+    // IDA 0x4228bc: `__ZThn144_` thunk to the D1 — the `this - 144`
+    // adjustment is a layout artifact, so the thunk collapses into the direct
+    // D1 of 0x421c20.
+    // SAFETY: `model` must be a live box pointer never used again.
+    let _ = model;
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x4228c4 — __ZThn180_N3RBX9DataModelD1Ev
 #[doc(alias = "non-virtual thunk to RBX::DataModel::~DataModel()")]
-pub fn stub_0x4228c4() -> ! {
-    todo!("0x4228c4 non-virtual thunk to RBX::DataModel::~DataModel()")
+pub fn stub_0x4228c4(model: *const DataModel, _this: *mut DataModel) {
+    // IDA 0x4228c4: `__ZThn180_` thunk to the D1 — the `this - 180`
+    // adjustment is a layout artifact, so the thunk collapses into the direct
+    // D1 of 0x421c20.
+    // SAFETY: `model` must be a live box pointer never used again.
+    let _ = model;
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x4228cc — __ZThn184_N3RBX9DataModelD1Ev
 #[doc(alias = "non-virtual thunk to RBX::DataModel::~DataModel()")]
-pub fn stub_0x4228cc() -> ! {
-    todo!("0x4228cc non-virtual thunk to RBX::DataModel::~DataModel()")
+pub fn stub_0x4228cc(model: *const DataModel, _this: *mut DataModel) {
+    // IDA 0x4228cc: `__ZThn184_` thunk to the D1 — the `this - 184`
+    // adjustment is a layout artifact, so the thunk collapses into the direct
+    // D1 of 0x421c20.
+    // SAFETY: `model` must be a live box pointer never used again.
+    let _ = model;
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 // 0x4228d4 — __ZN3RBX9DataModel13getGenericJobENS_12DataModelJob8TaskTypeE
 #[doc(alias = "RBX::DataModel::getGenericJob(RBX::DataModelJob::TaskType)")]
@@ -15646,8 +15696,13 @@ pub fn stub_0x4228d4() -> ! {
 // 0x422ae8 — __ZN3RBX9DataModel10LegacyLockC2EN5boost10shared_ptrIS0_EENS_12DataModelJob8TaskTypeE
 #[doc(alias = "RBX::DataModel::LegacyLock::LegacyLock(rbx_core::SharedPtr<RBX::DataModel>,RBX::DataModelJob::TaskType)")]
 // was: RBX::DataModel::LegacyLock::LegacyLock(boost::shared_ptr<RBX::DataModel>,RBX::DataModelJob::TaskType)
-pub fn stub_0x422ae8() -> ! {
-    todo!("0x422ae8 RBX::DataModel::LegacyLock::LegacyLock(boost::shared_ptr<RBX::DataModel>,RBX::DataModelJob::TaskType)")
+pub fn stub_0x422ae8(model: &SharedPtr<DataModel>, task: u32) -> LegacyLock {
+    // IDA 0x422ae8: `LegacyLock::C2(shared, TaskType)` — retains the model,
+    // keeps the task type, and initializes the lock implementation member
+    // (decomp head past the frame setup); the implementation lands with the
+    // job subsystem, so construction is the retain + task pair. Same shape as
+    // the inlined C1 of 0x41ede0.
+    LegacyLock { model: model.clone(), task }
 }
 
 // 0x422c64 — __ZN3RBX9DataModel10LegacyLockC1EPS0_NS_12DataModelJob8TaskTypeE
@@ -15856,8 +15911,12 @@ pub fn stub_0x427bac() -> ! {
 // 0x427db8 — __ZN3RBX9DataModel16setNetworkMetricEPNS_7IMetricE
 #[doc(alias = "RBX::DataModel::setNetworkMetric(RBX::IMetric *)")]
 // was: RBX::DataModel::setNetworkMetric(RBX::IMetric *)
-pub fn stub_0x427db8() -> ! {
-    todo!("0x427db8 RBX::DataModel::setNetworkMetric(RBX::IMetric *)")
+pub fn stub_0x427db8(model: &mut DataModel, metric: *const IMetric) {
+    // IDA 0x427db8: stores the raw metric pointer at `this + 3000` (decomp
+    // 0x427db8) and returns `this`; the store is the observable half.
+    // SAFETY: `metric` must be null or point to a live metric outliving the
+    // model link.
+    model.network_metric = metric;
 }
 
 // 0x427dc0 — __ZNK3RBX9DataModel14getMetricValueERKSs
@@ -15905,8 +15964,15 @@ pub fn stub_0x42fb68() -> ! {
 // 0x430004 — __ZN3RBX9DataModel10gameLoadedEv
 #[doc(alias = "RBX::DataModel::gameLoaded(void)")]
 // was: RBX::DataModel::gameLoaded(void)
-pub fn stub_0x430004() -> ! {
-    todo!("0x430004 RBX::DataModel::gameLoaded(void)")
+pub fn stub_0x430004(model: &mut DataModel) {
+    // IDA 0x430004: if the loaded flag at `+3108` is unset (decomp
+    // 0x430004), sets it (decomp 0x430010) and fires the 0-arg member signal
+    // at `+2792` (decomp 0x430018); already-loaded returns at once (decomp
+    // 0x43000c).
+    if !model.game_loaded {
+        model.game_loaded = true;
+        model.game_loaded_signal.fire(());
+    }
 }
 
 // 0x43001c — __ZN3RBXL22appendJobExtendedStatsEPNS_9DataModelEN5boost10shared_ptrIKNS_13TaskScheduler3JobEEEPSt6vectorINS_10Reflection7VariantESaISA_EE

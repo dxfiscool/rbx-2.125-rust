@@ -44,6 +44,13 @@ pub struct DataModel {
     /// Arbiter member at `+184` behind `getSyncronizationArbiter` (IDA
     /// `0x41e84c`).
     pub sync_arbiter: crate::instance::SyncArbiter,
+    /// Raw `IMetric*` at `+3000` behind `setNetworkMetric` (IDA `0x427db8`);
+    /// unretained, hence dangerous.
+    pub network_metric: *const crate::instance::IMetric,
+    /// Byte `+3108` behind `gameLoaded` (IDA `0x430004`).
+    pub game_loaded: bool,
+    /// 0-arg member signal at `+2792` fired by `gameLoaded` (IDA `0x430018`).
+    pub game_loaded_signal: rbx_core::signal::Signal<()>,
 }
 
 // 46 stubs in this file | batch range 0xef04..0x28838c
