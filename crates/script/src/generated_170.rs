@@ -6,187 +6,325 @@
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
-use rbx_core::SharedPtr;
+use parking_lot::Mutex;
+use std::sync::LazyLock;
+use std::sync::atomic::{AtomicBool, Ordering};
+
+// ---- Batch model: UserInfo ivars + RobloxGoogleAnalytics init/page-view path ----
+// IDA ground truth per stub below (decompile + disasm via IDA MCP).
+// Unmodeled throughout: ObjC runtime messaging/retain accounting (the Mutex
+// store is the retained slot; objc_setProperty atomic=0/copy=0 needs no more),
+// GAI/GAITracker SDK internals (dispatch interval, tracking id, sample rate
+// and sent views are the observable state), the main-queue async hop (the
+// dispatched flag stands in for the queued block), the iOS settings-service
+// fetch (caller passes the tracking id / sample rate it returned), and the
+// C++ static-destruction registrations (__cxa_atexit has no host here).
+
+/// ObjC `id` with no host runtime: an opaque handle, `None` is `nil`.
+/// Matches the `ObjCId` convention used for the iOS lifecycle bridge.
+pub type ObjCId = usize;
+
+/// was: `UserInfo` ObjC class — ten retained ivars at +8..+44.
+/// Each getter below is one `LDR [R0, ivar]` (IDA 0x419f4..0x41bd8); each
+/// setter is `objc_setProperty(..., atomic=0, copy=0)` at the matching offset.
+#[derive(Debug, Default)]
+pub struct UserInfo {
+    user_info_dict: Mutex<Option<ObjCId>>,
+    userinfo: Mutex<Option<ObjCId>>,
+    rbx_bal: Mutex<Option<ObjCId>>,
+    tik_bal: Mutex<Option<ObjCId>>,
+    user_thumb_nail_url: Mutex<Option<ObjCId>>,
+    bc_member: Mutex<Option<ObjCId>>,
+    encoded_password: Mutex<Option<ObjCId>>,
+    encoded_username: Mutex<Option<ObjCId>>,
+    username: Mutex<Option<ObjCId>>,
+    password: Mutex<Option<ObjCId>>,
+}
+
+/// was: `RobloxGoogleAnalytics` class state (`_initializeDone` at 0x41cd0 plus
+/// the `GAI` default tracker configured by the init block).
+#[derive(Debug, Default)]
+pub struct GoogleAnalyticsState {
+    /// Set by `+[RobloxGoogleAnalytics initialize]` (IDA 0x41cc4): the init
+    /// block was queued on the main queue shim.
+    pub init_dispatched: AtomicBool,
+    /// `_initializeDone`; set by the init block (IDA 0x41e5a), read by
+    /// `initialize` (IDA 0x41cce) and `setPageViewTracking:` (IDA 0x41f8c).
+    pub initialize_done: AtomicBool,
+    /// `-[GAI setDispatchInterval:]` value; always 10.0s (IDA 0x41dcc).
+    pub dispatch_interval_secs: Mutex<f64>,
+    /// `-[GAI trackerWithTrackingId:]` value from the settings service.
+    pub tracking_id: Mutex<Option<String>>,
+    /// `-[GAITracker setSampleRate:]` value (IDA 0x41e4a).
+    pub sample_rate: Mutex<f64>,
+    /// `-[GAITracker sendView:]` log (IDA 0x41fd6).
+    pub sent_page_views: Mutex<Vec<String>>,
+    /// `performSelector:withObject:afterDelay:0` retry queue used while not
+    /// yet initialized (IDA 0x42012..0x4203a).
+    pub deferred_page_views: Mutex<Vec<String>>,
+}
+
+static GOOGLE_ANALYTICS: LazyLock<GoogleAnalyticsState> = LazyLock::new(GoogleAnalyticsState::default);
+
+/// Process-wide analytics state backing the class-method stubs below.
+pub fn google_analytics() -> &'static GoogleAnalyticsState {
+    &GOOGLE_ANALYTICS
+}
+
+/// was: `__GLOBAL__I_a_11` TU statics — two `boost::system::generic_category`
+/// slots, one `system_category` slot, one `std::ios_base::Init`, and the
+/// `bad_alloc` / `bad_exception` static-exception guards (IDA 0x41bfc).
+/// The `__cxa_atexit` destructor registrations have no host and are not kept.
+#[derive(Debug, Default)]
+pub struct CxxModuleStatics {
+    pub generic_category_a: Mutex<bool>,
+    pub generic_category_b: Mutex<bool>,
+    pub system_category: Mutex<bool>,
+    pub ios_base_init: Mutex<bool>,
+    pub bad_alloc_init: Mutex<bool>,
+    pub bad_exception_init: Mutex<bool>,
+}
 
 // 0x419f4 — -[UserInfo userInfoDict]
 // type: NSDictionary *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo userInfoDict]")]
-pub fn stub_0x419f4() -> ! {
-    todo!("0x419f4 -[UserInfo userInfoDict]")
+// IDA 0x419f4: `return self->userInfoDict` (ivar load, no retain).
+pub fn stub_0x419f4(info: &UserInfo) -> Option<ObjCId> {
+    *info.user_info_dict.lock()
 }
 
 // 0x41a04 — -[UserInfo setUserInfoDict:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setUserInfoDict:]")]
-pub fn stub_0x41a04() -> ! {
-    todo!("0x41a04 -[UserInfo setUserInfoDict:]")
+// IDA 0x41a04: `objc_setProperty(self, sel, 8, value, atomic=0, copy=0)`.
+pub fn stub_0x41a04(info: &UserInfo, value: Option<ObjCId>) {
+    *info.user_info_dict.lock() = value;
 }
 
 // 0x41a28 — -[UserInfo userinfo]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo userinfo]")]
-pub fn stub_0x41a28() -> ! {
-    todo!("0x41a28 -[UserInfo userinfo]")
+// IDA 0x41a28: `return self->userinfo` (ivar load, no retain).
+pub fn stub_0x41a28(info: &UserInfo) -> Option<ObjCId> {
+    *info.userinfo.lock()
 }
 
 // 0x41a38 — -[UserInfo setUserinfo:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setUserinfo:]")]
-pub fn stub_0x41a38() -> ! {
-    todo!("0x41a38 -[UserInfo setUserinfo:]")
+// IDA 0x41a38: `objc_setProperty(self, sel, 12, value, atomic=0, copy=0)`.
+pub fn stub_0x41a38(info: &UserInfo, value: Option<ObjCId>) {
+    *info.userinfo.lock() = value;
 }
 
 // 0x41a5c — -[UserInfo rbxBal]
 // type: NSNumber *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo rbxBal]")]
-pub fn stub_0x41a5c() -> ! {
-    todo!("0x41a5c -[UserInfo rbxBal]")
+// IDA 0x41a5c: `return self->rbxBal` (NSNumber* ivar load, no retain).
+pub fn stub_0x41a5c(info: &UserInfo) -> Option<ObjCId> {
+    *info.rbx_bal.lock()
 }
 
 // 0x41a6c — -[UserInfo setRbxBal:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setRbxBal:]")]
-pub fn stub_0x41a6c() -> ! {
-    todo!("0x41a6c -[UserInfo setRbxBal:]")
+// IDA 0x41a6c: `objc_setProperty(self, sel, 16, value, atomic=0, copy=0)`.
+pub fn stub_0x41a6c(info: &UserInfo, value: Option<ObjCId>) {
+    *info.rbx_bal.lock() = value;
 }
 
 // 0x41a90 — -[UserInfo tikBal]
 // type: NSNumber *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo tikBal]")]
-pub fn stub_0x41a90() -> ! {
-    todo!("0x41a90 -[UserInfo tikBal]")
+// IDA 0x41a90: `return self->tikBal` (NSNumber* ivar load, no retain).
+pub fn stub_0x41a90(info: &UserInfo) -> Option<ObjCId> {
+    *info.tik_bal.lock()
 }
 
 // 0x41aa0 — -[UserInfo setTikBal:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setTikBal:]")]
-pub fn stub_0x41aa0() -> ! {
-    todo!("0x41aa0 -[UserInfo setTikBal:]")
+// IDA 0x41aa0: `objc_setProperty(self, sel, 20, value, atomic=0, copy=0)`.
+pub fn stub_0x41aa0(info: &UserInfo, value: Option<ObjCId>) {
+    *info.tik_bal.lock() = value;
 }
 
 // 0x41ac4 — -[UserInfo userThumbNailUrl]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo userThumbNailUrl]")]
-pub fn stub_0x41ac4() -> ! {
-    todo!("0x41ac4 -[UserInfo userThumbNailUrl]")
+// IDA 0x41ac4: `return self->userThumbNailUrl` (ivar load, no retain).
+pub fn stub_0x41ac4(info: &UserInfo) -> Option<ObjCId> {
+    *info.user_thumb_nail_url.lock()
 }
 
 // 0x41ad4 — -[UserInfo setUserThumbNailUrl:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setUserThumbNailUrl:]")]
-pub fn stub_0x41ad4() -> ! {
-    todo!("0x41ad4 -[UserInfo setUserThumbNailUrl:]")
+// IDA 0x41ad4: `objc_setProperty(self, sel, 24, value, atomic=0, copy=0)`.
+pub fn stub_0x41ad4(info: &UserInfo, value: Option<ObjCId>) {
+    *info.user_thumb_nail_url.lock() = value;
 }
 
 // 0x41af8 — -[UserInfo bcMember]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo bcMember]")]
-pub fn stub_0x41af8() -> ! {
-    todo!("0x41af8 -[UserInfo bcMember]")
+// IDA 0x41af8: `return self->bcMember` (ivar load, no retain).
+pub fn stub_0x41af8(info: &UserInfo) -> Option<ObjCId> {
+    *info.bc_member.lock()
 }
 
 // 0x41b08 — -[UserInfo setBcMember:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setBcMember:]")]
-pub fn stub_0x41b08() -> ! {
-    todo!("0x41b08 -[UserInfo setBcMember:]")
+// IDA 0x41b08: `objc_setProperty(self, sel, 28, value, atomic=0, copy=0)`.
+pub fn stub_0x41b08(info: &UserInfo, value: Option<ObjCId>) {
+    *info.bc_member.lock() = value;
 }
 
 // 0x41b2c — -[UserInfo encodedPassword]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo encodedPassword]")]
-pub fn stub_0x41b2c() -> ! {
-    todo!("0x41b2c -[UserInfo encodedPassword]")
+// IDA 0x41b2c: `return self->encodedPassword` (ivar load, no retain).
+pub fn stub_0x41b2c(info: &UserInfo) -> Option<ObjCId> {
+    *info.encoded_password.lock()
 }
 
 // 0x41b3c — -[UserInfo setEncodedPassword:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setEncodedPassword:]")]
-pub fn stub_0x41b3c() -> ! {
-    todo!("0x41b3c -[UserInfo setEncodedPassword:]")
+// IDA 0x41b3c: `objc_setProperty(self, sel, 32, value, atomic=0, copy=0)`.
+pub fn stub_0x41b3c(info: &UserInfo, value: Option<ObjCId>) {
+    *info.encoded_password.lock() = value;
 }
 
 // 0x41b60 — -[UserInfo encodedUsername]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo encodedUsername]")]
-pub fn stub_0x41b60() -> ! {
-    todo!("0x41b60 -[UserInfo encodedUsername]")
+// IDA 0x41b60: `return self->encodedUsername` (ivar load, no retain).
+pub fn stub_0x41b60(info: &UserInfo) -> Option<ObjCId> {
+    *info.encoded_username.lock()
 }
 
 // 0x41b70 — -[UserInfo setEncodedUsername:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setEncodedUsername:]")]
-pub fn stub_0x41b70() -> ! {
-    todo!("0x41b70 -[UserInfo setEncodedUsername:]")
+// IDA 0x41b70: `objc_setProperty(self, sel, 36, value, atomic=0, copy=0)`.
+pub fn stub_0x41b70(info: &UserInfo, value: Option<ObjCId>) {
+    *info.encoded_username.lock() = value;
 }
 
 // 0x41b94 — -[UserInfo username]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo username]")]
-pub fn stub_0x41b94() -> ! {
-    todo!("0x41b94 -[UserInfo username]")
+// IDA 0x41b94: `return self->_username` (ivar load, no retain).
+pub fn stub_0x41b94(info: &UserInfo) -> Option<ObjCId> {
+    *info.username.lock()
 }
 
 // 0x41ba4 — -[UserInfo setUsername:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setUsername:]")]
-pub fn stub_0x41ba4() -> ! {
-    todo!("0x41ba4 -[UserInfo setUsername:]")
+// IDA 0x41ba4: `objc_setProperty(self, sel, 40, value, atomic=0, copy=0)`.
+pub fn stub_0x41ba4(info: &UserInfo, value: Option<ObjCId>) {
+    *info.username.lock() = value;
 }
 
 // 0x41bc8 — -[UserInfo password]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo password]")]
-pub fn stub_0x41bc8() -> ! {
-    todo!("0x41bc8 -[UserInfo password]")
+// IDA 0x41bc8: `return self->_password` (ivar load, no retain).
+pub fn stub_0x41bc8(info: &UserInfo) -> Option<ObjCId> {
+    *info.password.lock()
 }
 
 // 0x41bd8 — -[UserInfo setPassword:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setPassword:]")]
-pub fn stub_0x41bd8() -> ! {
-    todo!("0x41bd8 -[UserInfo setPassword:]")
+// IDA 0x41bd8: `objc_setProperty(self, sel, 44, value, atomic=0, copy=0)`.
+pub fn stub_0x41bd8(info: &UserInfo, value: Option<ObjCId>) {
+    *info.password.lock() = value;
 }
 
 // 0x41bfc — __GLOBAL__I_a_11
 #[doc(alias = "global constructor keyed to_a_11")]
-pub fn stub_0x41bfc() -> ! {
-    todo!("0x41bfc global constructor keyed to_a_11")
+// IDA 0x41bfc: installs `generic_category` twice, `system_category` once,
+// runs `std::ios_base::Init::Init`, and one-time inits the `bad_alloc` /
+// `bad_exception` static exception objects behind byte guards (0x41c50,
+// 0x41c8e). The `__cxa_atexit` registrations are unmodeled.
+pub fn stub_0x41bfc(statics: &CxxModuleStatics) {
+    *statics.generic_category_a.lock() = true;
+    *statics.generic_category_b.lock() = true;
+    *statics.system_category.lock() = true;
+    *statics.ios_base_init.lock() = true;
+    if !*statics.bad_alloc_init.lock() {
+        *statics.bad_alloc_init.lock() = true;
+    }
+    if !*statics.bad_exception_init.lock() {
+        *statics.bad_exception_init.lock() = true;
+    }
 }
 
 // 0x41cc4 — +[RobloxGoogleAnalytics initialize]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[RobloxGoogleAnalytics initialize]")]
-pub fn stub_0x41cc4() -> ! {
-    todo!("0x41cc4 +[RobloxGoogleAnalytics initialize]")
+// IDA 0x41cc4: `if (!initializeDone) dispatch_async(main_q, block)`; the
+// early `BXNE LR` (0x41cd2) makes repeat calls after init a no-op.
+// Returns whether the init block was newly queued.
+pub fn stub_0x41cc4(state: &GoogleAnalyticsState) -> bool {
+    if state.initialize_done.load(Ordering::SeqCst) {
+        return false;
+    }
+    state.init_dispatched.store(true, Ordering::SeqCst);
+    true
 }
 
 // 0x41cf0 — ___35+[RobloxGoogleAnalytics initialize]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___35+[RobloxGoogleAnalytics initialize]_block_invoke")]
-pub fn stub_0x41cf0() -> ! {
-    todo!("0x41cf0 ___35+[RobloxGoogleAnalytics initialize]_block_invoke")
+// IDA 0x41cf0: reads the settings-service tracking id (`var19`) and sample
+// (`var20`); when the id string is non-empty (0x41d68) installs the GAI
+// tracker — dispatch interval 10.0s, `trackerWithTrackingId:`, sample rate —
+// and sets `initializeDone = 1` (0x41e5a). Empty id: string dtor only.
+// Returns whether the tracker was installed.
+pub fn stub_0x41cf0(state: &GoogleAnalyticsState, tracking_id: &str, sample_rate: f64) -> bool {
+    if tracking_id.is_empty() {
+        return false;
+    }
+    *state.dispatch_interval_secs.lock() = 10.0;
+    *state.tracking_id.lock() = Some(tracking_id.to_owned());
+    *state.sample_rate.lock() = sample_rate;
+    state.initialize_done.store(true, Ordering::SeqCst);
+    true
 }
 
 // 0x41f28 — +[RobloxGoogleAnalytics release]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[RobloxGoogleAnalytics release]")]
-pub fn stub_0x41f28() -> ! {
-    todo!("0x41f28 +[RobloxGoogleAnalytics release]")
-}
+// IDA 0x41f28: empty body — `+release` on the class object is a no-op.
+pub fn stub_0x41f28() {}
 
 // 0x41f2c — +[RobloxGoogleAnalytics callBackPageTracking:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics callBackPageTracking:]")]
-pub fn stub_0x41f2c() -> ! {
-    todo!("0x41f2c +[RobloxGoogleAnalytics callBackPageTracking:]")
+// IDA 0x41f2c: `url = [params objectForKey:@"url"]` (0x41f56), then
+// `+[RobloxGoogleAnalytics setPageViewTracking:url]` (0x41f6e). The dict
+// lookup is the caller's; the forward is modeled here.
+pub fn stub_0x41f2c(state: &GoogleAnalyticsState, url: &str) {
+    stub_0x41f74(state, url);
 }
 
 // 0x41f74 — +[RobloxGoogleAnalytics setPageViewTracking:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics setPageViewTracking:]")]
-pub fn stub_0x41f74() -> ! {
-    todo!("0x41f74 +[RobloxGoogleAnalytics setPageViewTracking:]")
+// IDA 0x41f74: if initialized, `[[GAI sharedInstance] defaultTracker]
+// sendView:url` (0x41faa..0x41fd6); else re-queues via
+// `performSelector:callBackPageTracking: withObject:{url:} afterDelay:0`.
+pub fn stub_0x41f74(state: &GoogleAnalyticsState, url: &str) {
+    if state.initialize_done.load(Ordering::SeqCst) {
+        state.sent_page_views.lock().push(url.to_owned());
+    } else {
+        state.deferred_page_views.lock().push(url.to_owned());
+    }
 }
 
 // 0x4203c — +[RobloxGoogleAnalytics callBackEventTracking:]
