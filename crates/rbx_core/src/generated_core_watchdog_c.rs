@@ -1074,13 +1074,16 @@ pub mod camera_enum {
     pub const CAMERA_REF_DESC_VTAB: &str = "off_1240708"; // IDA 0x3c8c84
     pub const CAMERA_REF_SUB_VTAB: &str = "off_124075C"; // IDA 0x3c8c84
     /// was: `BoundFuncDesc` vtables restored before the base restore + list clear
-    /// (IDA 0x3c8cb0/0x3c8d24/0x3c8d64/0x3c8da4/0x3c8de4/0x3c8e24).
+    /// (IDA 0x3c8cb0/0x3c8d24/0x3c8d64/0x3c8da4/0x3c8de4/0x3c8e24; the arity-0
+    /// `float ()(void)` C2 at IDA 0x3cff78 installs `off_12406B8` = vtable
+    /// `__ZTVN3RBX10Reflection13BoundFuncDescINS_6CameraEFfvELi0EEE` (0x12406b0) + 8).
     pub const BOUND_VOID_FLOAT_VTAB: &str = "off_12406E8"; // IDA 0x3c8cb0
     pub const BOUND_VOID_PANMODE_VTAB: &str = "off_1240688"; // IDA 0x3c8d24
     pub const BOUND_BOOL_FLOAT_VTAB: &str = "off_1240668"; // IDA 0x3c8d64
     pub const BOUND_VOID_INT_VTAB: &str = "off_1240648"; // IDA 0x3c8da4
     pub const BOUND_BOOL_INT_VTAB: &str = "off_1240628"; // IDA 0x3c8de4
     pub const BOUND_VOID_CF3_VTAB: &str = "off_12405E8"; // IDA 0x3c8e24
+    pub const BOUND_FLOAT_VOID_VTAB: &str = "off_12406B8"; // IDA 0x3cff78
 
     /// IDA 0x3c437c `EnumDesc<CameraType>::EnumDesc` — base
     /// `EnumDescriptor("CameraType")`, empty-table init, then the seven
@@ -1130,6 +1133,25 @@ pub mod camera_enum {
         d.add_pair(0, "Classic");
         d.add_pair(1, "EdgeBump");
         d
+    }
+    /// was: `Singleton<EnumDesc<CameraPanMode> const>::doGetSingleton::s` —
+    /// the function-local static built once under the `__cxa_guard_*` protocol
+    /// with a `__cxa_atexit`-registered `~EnumDesc` (IDA 0x3cfe88: guard check,
+    /// `EnumDesc<CameraPanMode>::EnumDesc` (0x3c4778) into the slot, atexit the
+    /// D1). `LazyLock` is the host equivalent of that guard + atexit pair.
+    static PAN_MODE_SINGLETON: std::sync::LazyLock<EnumDescData> =
+        std::sync::LazyLock::new(camera_pan_mode_desc);
+
+    /// IDA 0x3cfe88 `Singleton<EnumDesc<CameraPanMode> const>::doGetSingleton`:
+    /// guard-var lazy init of the `CameraPanMode` enum descriptor; returns `&s`.
+    pub fn pan_mode_singleton() -> &'static EnumDescData {
+        &PAN_MODE_SINGLETON
+    }
+
+    /// IDA 0x3cfe84 `Singleton<EnumDesc<CameraPanMode> const>::initSingleton`:
+    /// tail-calls `doGetSingleton` (a `B.W` shim in the binary).
+    pub fn init_pan_mode_singleton() -> &'static EnumDescData {
+        pan_mode_singleton()
     }
 
     /// Shared `EnumDesc<T>::addPair(value, name)` core (IDA 0x3c8ec0/0x3c9220/
@@ -1941,6 +1963,198 @@ pub mod camera_boundfunc {
         );
         callee.call(adjusted, a, b, c)
     }
+    /// was: bound `void (Camera::*)(int)` — the IDA 0x3cf4f4 `execute` tail-calls
+    /// the member directly (no `Call1Helper` is emitted for this instantiation):
+    /// member dispatch (`derived + (adj >> 1)`, odd-`adj` virtual branch), then
+    /// the call with the `getArg<int, 1>` value.
+    pub trait FnCameraIntVoid {
+        fn call(&self, this: *const u8, arg: i32);
+    }
+
+    /// was: bound `bool (Camera::*)(float)` — the `Call1Helper` callee
+    /// (IDA 0x3cf7e4): member dispatch, `call(this, arg)`, `bool` out-param
+    /// (`Type::getSingleton<bool>` + `placement_any<bool>`).
+    pub trait FnCameraFloatBool {
+        fn call(&self, this: *const u8, arg: f32) -> bool;
+    }
+
+    /// was: bound `void (Camera::*)(CameraPanMode)` — the IDA 0x3cfc6c `execute`
+    /// tail-calls the member directly (same shape as 0x3cf4f4, with
+    /// `getArg<CameraPanMode, 1>`).
+    pub trait FnCameraPanModeVoid {
+        fn call(&self, this: *const u8, arg: super::camera_enum::CameraPanMode);
+    }
+
+    /// was: bound `float (Camera::*)()` — the `Call0Helper` callee
+    /// (IDA 0x3d0154): member dispatch, `call(this)`, `float` out-param
+    /// (`Type::getSingleton<float>` + `placement_any<float>`).
+    pub trait FnCameraVoidFloat {
+        fn call(&self, this: *const u8) -> f32;
+    }
+
+    /// was: bound `void (Camera::*)(float)` — the IDA 0x3d02fc-family `execute`
+    /// callee (same 1-arg tail-call template as 0x3cf4f4/0x3cfc6c, with
+    /// `getArg<float, 1>`; the `Call1Helper` lives past this file's range).
+    pub trait FnCameraFloatVoid {
+        fn call(&self, this: *const u8, arg: f32);
+    }
+
+    /// IDA 0x3cf4f4 `BoundFuncDesc<void ()(int), 1>::execute`: derived `a2 - 36`
+    /// (null stays null), member pair from `+40`, `ArgHelper::getArg<int, 1>`,
+    /// then the member tail-call (`(adj >> 1)` adjust, odd-`adj` virtual hop).
+    pub unsafe fn execute_int_void(
+        desc: &BoundFuncDescriptor,
+        obj: *const u8,
+        arg: i32,
+        callee: &dyn FnCameraIntVoid,
+    ) {
+        let derived = if obj.is_null() {
+            obj
+        } else {
+            obj.wrapping_sub(super::billboard_ref::BASE_TO_DERIVED)
+        };
+        let this = (derived as usize).wrapping_add(desc.member_adj >> 1) as *const u8;
+        let _ = unsafe { resolve_target(
+            super::billboard_prop::MemberPtr { func: desc.member_func, adj: desc.member_adj },
+            this,
+        ) };
+        callee.call(this, arg)
+    }
+
+    /// IDA 0x3cf7a4 `BoundFuncDesc<bool ()(float), 1>::execute`: derived
+    /// `a2 - 36`, member pair from `+40`, `ArgHelper::getArg<float, 1>`, then
+    /// `Call1Helper::call` (0x3cf7e4).
+    pub unsafe fn execute_float_bool(
+        desc: &BoundFuncDescriptor,
+        obj: *const u8,
+        arg: f32,
+        callee: &dyn FnCameraFloatBool,
+    ) -> bool {
+        let derived = if obj.is_null() {
+            obj
+        } else {
+            obj.wrapping_sub(super::billboard_ref::BASE_TO_DERIVED)
+        };
+        let this = (derived as usize).wrapping_add(desc.member_adj >> 1) as *const u8;
+        let _ = unsafe { resolve_target(
+            super::billboard_prop::MemberPtr { func: desc.member_func, adj: desc.member_adj },
+            this,
+        ) };
+        call_float_bool(this, desc.member_func, desc.member_adj, arg, callee)
+    }
+
+    /// IDA 0x3cf7e4 `Call1Helper::call`: `(adj >> 1)` adjust + odd-`adj`
+    /// virtual branch, `call(this, arg)`, then the `bool` out-param hop
+    /// (collapsed here into the return value).
+    /// `this` is already the derived `Camera*` (no DescribedBase bias).
+    pub unsafe fn call_float_bool(
+        this: *const u8,
+        member_func: usize,
+        member_adj: usize,
+        arg: f32,
+        callee: &dyn FnCameraFloatBool,
+    ) -> bool {
+        let adjusted = (this as usize).wrapping_add(member_adj >> 1) as *const u8;
+        let _ = resolve_target(
+            super::billboard_prop::MemberPtr { func: member_func, adj: member_adj },
+            adjusted,
+        );
+        callee.call(adjusted, arg)
+    }
+
+    /// IDA 0x3cfc6c `BoundFuncDesc<void ()(CameraPanMode), 1>::execute`: derived
+    /// `a2 - 36`, member pair from `+40`, `ArgHelper::getArg<CameraPanMode, 1>`,
+    /// then the member tail-call (same dispatch as 0x3cf4f4).
+    pub unsafe fn execute_panmode_void(
+        desc: &BoundFuncDescriptor,
+        obj: *const u8,
+        arg: super::camera_enum::CameraPanMode,
+        callee: &dyn FnCameraPanModeVoid,
+    ) {
+        let derived = if obj.is_null() {
+            obj
+        } else {
+            obj.wrapping_sub(super::billboard_ref::BASE_TO_DERIVED)
+        };
+        let this = (derived as usize).wrapping_add(desc.member_adj >> 1) as *const u8;
+        let _ = unsafe { resolve_target(
+            super::billboard_prop::MemberPtr { func: desc.member_func, adj: desc.member_adj },
+            this,
+        ) };
+        callee.call(this, arg)
+    }
+
+    /// Records the `operator new`'d `CameraPanMode` default box at `+0x30`
+    /// (IDA 0x3cf9bc: `new(4)`, `*box = arg_4`). The void-default siblings keep
+    /// a zeroed box, which `construct` already models as `None`.
+    pub fn set_default_panmode(desc: &mut BoundFuncDescriptor, default: super::camera_enum::CameraPanMode) {
+        let bytes = (default as i32).to_le_bytes();
+        if desc.arg_boxes.is_empty() {
+            desc.arg_boxes.push(Some(bytes.to_vec().into_boxed_slice()));
+        } else {
+            desc.arg_boxes[0] = Some(bytes.to_vec().into_boxed_slice());
+        }
+    }
+
+    /// IDA 0x3d0130 `BoundFuncDesc<float ()(void), 0>::execute`: derived
+    /// `a2 - 36` (null stays null), member pair from `+40`, then
+    /// `Call0Helper::call` (0x3d0154, tail-jumped via its `$shim`).
+    pub unsafe fn execute_float_0(
+        desc: &BoundFuncDescriptor,
+        obj: *const u8,
+        callee: &dyn FnCameraVoidFloat,
+    ) -> f32 {
+        let derived = if obj.is_null() {
+            obj
+        } else {
+            obj.wrapping_sub(super::billboard_ref::BASE_TO_DERIVED)
+        };
+        let this = (derived as usize).wrapping_add(desc.member_adj >> 1) as *const u8;
+        let _ = unsafe { resolve_target(
+            super::billboard_prop::MemberPtr { func: desc.member_func, adj: desc.member_adj },
+            this,
+        ) };
+        call_float_0(this, desc.member_func, desc.member_adj, callee)
+    }
+
+    /// IDA 0x3d0154 `Call0Helper::call`: `(adj >> 1)` adjust + odd-`adj`
+    /// virtual branch, `call(this)`, then the `float` out-param hop
+    /// (collapsed here into the return value).
+    /// `this` is already the derived `Camera*` (no DescribedBase bias).
+    pub unsafe fn call_float_0(
+        this: *const u8,
+        member_func: usize,
+        member_adj: usize,
+        callee: &dyn FnCameraVoidFloat,
+    ) -> f32 {
+        let adjusted = (this as usize).wrapping_add(member_adj >> 1) as *const u8;
+        let _ = resolve_target(
+            super::billboard_prop::MemberPtr { func: member_func, adj: member_adj },
+            adjusted,
+        );
+        callee.call(adjusted)
+    }
+
+    /// IDA 0x3d02fc-family `BoundFuncDesc<void ()(float), 1>::execute`
+    /// (same 1-arg tail-call template as 0x3cf4f4/0x3cfc6c, `getArg<float, 1>`).
+    pub unsafe fn execute_float_void(
+        desc: &BoundFuncDescriptor,
+        obj: *const u8,
+        arg: f32,
+        callee: &dyn FnCameraFloatVoid,
+    ) {
+        let derived = if obj.is_null() {
+            obj
+        } else {
+            obj.wrapping_sub(super::billboard_ref::BASE_TO_DERIVED)
+        };
+        let this = (derived as usize).wrapping_add(desc.member_adj >> 1) as *const u8;
+        let _ = unsafe { resolve_target(
+            super::billboard_prop::MemberPtr { func: desc.member_func, adj: desc.member_adj },
+            this,
+        ) };
+        callee.call(this, arg)
+    }
 
     #[cfg(test)]
     mod tests {
@@ -2020,6 +2234,90 @@ pub mod camera_boundfunc {
                 assert!(execute_int_bool(&d, 0x100 as *const u8, 7, &f));
                 assert!(!execute_int_bool(&d, std::ptr::null(), 0, &f));
             }
+        }
+
+        struct FakeIntVoid {
+            last: AtomicUsize,
+        }
+        impl FnCameraIntVoid for FakeIntVoid {
+            fn call(&self, _: *const u8, arg: i32) {
+                self.last.store(arg as usize, Ordering::SeqCst);
+            }
+        }
+        struct FakeFloatBool;
+        impl FnCameraFloatBool for FakeFloatBool {
+            fn call(&self, _: *const u8, arg: f32) -> bool {
+                arg > 0.0
+            }
+        }
+        struct FakePanVoid {
+            last: AtomicUsize,
+        }
+        impl FnCameraPanModeVoid for FakePanVoid {
+            fn call(&self, _: *const u8, arg: super::super::camera_enum::CameraPanMode) {
+                self.last.store(arg as usize, Ordering::SeqCst);
+            }
+        }
+        struct FakeVoidFloat(f32);
+        impl FnCameraVoidFloat for FakeVoidFloat {
+            fn call(&self, _: *const u8) -> f32 {
+                self.0
+            }
+        }
+        struct FakeFloatVoid {
+            last: AtomicBool,
+        }
+        impl FnCameraFloatVoid for FakeFloatVoid {
+            fn call(&self, _: *const u8, arg: f32) {
+                self.last.store(arg > 0.0, Ordering::SeqCst);
+            }
+        }
+
+        #[test]
+        fn int_void_float_bool_panmode_roundtrip() {
+            let d = BoundFuncDescriptor::default();
+            let f = FakeIntVoid { last: AtomicUsize::new(0) };
+            unsafe {
+                execute_int_void(&d, 0x100 as *const u8, 9, &f);
+            }
+            assert_eq!(f.last.load(Ordering::SeqCst), 9);
+            let g = FakeFloatBool;
+            unsafe {
+                assert!(execute_float_bool(&d, 0x100 as *const u8, 1.5, &g));
+                assert!(!call_float_bool(0x100 as *const u8, 0, 0, -1.0, &g));
+            }
+            let mut p = BoundFuncDescriptor::default();
+            set_default_panmode(&mut p, super::super::camera_enum::CameraPanMode::EdgeBump);
+            assert_eq!(p.arg_boxes.len(), 1);
+            assert_eq!(
+                p.arg_boxes[0].as_deref(),
+                Some((1i32).to_le_bytes().as_slice())
+            );
+            let h = FakePanVoid { last: AtomicUsize::new(99) };
+            unsafe {
+                execute_panmode_void(
+                    &p,
+                    0x100 as *const u8,
+                    super::super::camera_enum::CameraPanMode::Classic,
+                    &h,
+                );
+            }
+            assert_eq!(h.last.load(Ordering::SeqCst), 0);
+        }
+
+        #[test]
+        fn float_0_and_float_void_roundtrip() {
+            let d = BoundFuncDescriptor::default();
+            let f = FakeVoidFloat(2.5);
+            unsafe {
+                assert_eq!(execute_float_0(&d, 0x100 as *const u8, &f), 2.5);
+                assert_eq!(call_float_0(0x100 as *const u8, 0, 0, &f), 2.5);
+            }
+            let g = FakeFloatVoid { last: AtomicBool::new(false) };
+            unsafe {
+                execute_float_void(&d, std::ptr::null(), 3.0, &g);
+            }
+            assert!(g.last.load(Ordering::SeqCst));
         }
     }
 }
@@ -2568,32 +2866,307 @@ pub fn stub_3c4778() -> crate::generated_core_watchdog_k::render_settings::EnumD
     camera_enum::camera_pan_mode_desc()
 }
 
+/// Batch 7: 4 IDA-grounded `Camera` view ports (disasm-first — the decompiler
+/// yields nothing for all four): `askSetParent` (0x3c4e90), `isPartVisibleFast`
+/// (0x3c4f8c), `isPartInFrustum` (0x3c50fc), `zoomExtents(ModelInstance*,
+/// ZoomType)` (0x3c7590). Conventions: raw `Instance`/`PartInstance` graph
+/// access collapses into hook traits (the datamodel/rendering owners live
+/// outside `rbx_core`); `[INFERENCE]` marks what the binary does not pin down;
+/// everything else follows the disassembly branch-for-branch.
+pub mod camera_view {
+    /// was: `RBX::Camera::ZoomType` — forwarded opaquely by IDA 0x3c7590 into
+    /// `zoomExtents(Extents, ZoomType)` (0x3c75e4, owned by the datamodel
+    /// crate). `[INFERENCE]` the enumerators; the width is observed (`MOV R4, R2`).
+    pub type ZoomType = i32;
+
+    /// IDA 0x3c4e90 `Camera::askSetParent(parent)`: null parent returns 0;
+    /// otherwise the `DescribedBase` view (`parent + 0x24`) lends its
+    /// `ClassDescriptor` (`[adjusted + 0xC]`) to
+    /// `Workspace::classDescriptor()->isA(desc)`. A non-`Workspace` parent
+    /// returns 0; a `Workspace` parent returns `adjusted != 0x24` (i.e. 1 —
+    /// null was already excluded). `[INFERENCE]` the descriptor registry
+    /// lives outside core; caller hooks stand in for both lookups.
+    pub fn ask_set_parent(
+        parent: *const u8,
+        parent_desc: *const u8,
+        workspace_desc: *const u8,
+        is_a: fn(*const u8, *const u8) -> bool,
+    ) -> u32 {
+        if parent.is_null() {
+            return 0;
+        }
+        // `R4 = parent + 0x24` (IT NE guard: null adds nothing, returns above).
+        let adjusted = (parent as usize).wrapping_add(0x24);
+        if !is_a(parent_desc, workspace_desc) {
+            return 0;
+        }
+        // `CMP R4, #0x24; MOVNE R0, #1`.
+        u32::from(adjusted != 0x24)
+    }
+
+    /// was: `isPartVisibleFast` scene query — the camera eye (`[cam + 0x94]`,
+    /// `+0x98`, `+0x9C`), the part center (`PartInstance::getCoordinateFrame`
+    /// `+0x24/+0x28/+0x2C`), and `ContactManager::getHit` over the
+    /// `ignoreBool`/`dummyCellID` filter set. `[INFERENCE]` the trait boundary
+    /// only; the arithmetic below mirrors the binary exactly.
+    pub trait VisibleFastHooks {
+        fn camera_pos(&self, cam: *const u8) -> [f32; 3];
+        fn part_center(&self, part: *const u8) -> [f32; 3];
+        fn get_hit(&self, origin: &[f32; 3], dir: &[f32; 3]) -> *const u8;
+        fn part_primitive(&self, part: *const u8) -> *const u8;
+    }
+
+    /// IDA 0x3c4f8c `Camera::isPartVisibleFast(part, rect, contacts)`: builds
+    /// the `RbxRay` (eye at the camera position, direction `2 * (center -
+    /// eye)` — the binary doubles each component: `VADD D5, D20, D20` etc.),
+    /// runs `ContactManager::getHit`, and returns 1 iff the first hit is the
+    /// part's own primitive (`[part + 0xAC]`); a null hit returns 0 (`CBZ`).
+    pub fn is_part_visible_fast(
+        cam: *const u8,
+        part: *const u8,
+        hooks: &dyn VisibleFastHooks,
+    ) -> bool {
+        let eye = hooks.camera_pos(cam);
+        let center = hooks.part_center(part);
+        // `VSUB` + `VADD x, x, x` per lane.
+        let dir = [
+            (center[0] - eye[0]) + (center[0] - eye[0]),
+            (center[1] - eye[1]) + (center[1] - eye[1]),
+            (center[2] - eye[2]) + (center[2] - eye[2]),
+        ];
+        let hit = hooks.get_hit(&eye, &dir);
+        // `CBZ R0, miss`.
+        if hit.is_null() {
+            return false;
+        }
+        // `CMP R0, [part + 0xAC]; MOVEQ R4, #1`.
+        hit == hooks.part_primitive(part)
+    }
+
+    /// was: `Camera::frustum(rect)` + `PartInstance::containedByFrustum` —
+    /// the `G3D::Array<G3D::Plane, 10, 32>` scratch lives on the IDA frame and
+    /// is destroyed before return. `[INFERENCE]` the trait boundary only.
+    pub trait FrustumHooks {
+        fn frustum_planes(&self, cam: *const u8, rect: &[f32; 4]) -> Vec<[f32; 4]>;
+        fn contained_by_frustum(&self, part: *const u8, planes: &[[f32; 4]]) -> bool;
+    }
+
+    /// IDA 0x3c50fc `Camera::isPartInFrustum(part, rect)`: `frustum = frustum(rect)`,
+    /// return `part->containedByFrustum(frustum)`.
+    pub fn is_part_in_frustum(
+        cam: *const u8,
+        part: *const u8,
+        rect: &[f32; 4],
+        hooks: &dyn FrustumHooks,
+    ) -> bool {
+        let planes = hooks.frustum_planes(cam, rect);
+        hooks.contained_by_frustum(part, &planes)
+    }
+
+    /// was: `ModelInstance` extents source (`[model]->vtab[0x88]`, IDA 0x3c7598)
+    /// and the `Tolerance::millionCube` clamp bound, forwarded into
+    /// `zoomExtents(Extents, ZoomType)` (0x3c75e4). `[INFERENCE]` the trait
+    /// boundary only.
+    pub trait ZoomHooks {
+        fn model_extents(&self, model: *const u8) -> ([f32; 3], [f32; 3]);
+        fn million_cube(&self) -> ([f32; 3], [f32; 3]);
+        fn zoom_extents(&self, cam: *mut u8, extents: &([f32; 3], [f32; 3]), zoom: ZoomType);
+    }
+
+    /// IDA 0x3c75b8-0x3c75ba `Extents::clampInsideOf(millionCube)` —
+    /// component-wise clamp of both corners into the bound corners.
+    pub fn clamp_inside_of(
+        extents: &([f32; 3], [f32; 3]),
+        bounds: &([f32; 3], [f32; 3]),
+    ) -> ([f32; 3], [f32; 3]) {
+        let mut out = ([0.0f32; 3], [0.0f32; 3]);
+        for i in 0..3 {
+            out.0[i] = extents.0[i].clamp(bounds.0[i], bounds.1[i]);
+            out.1[i] = extents.1[i].clamp(bounds.0[i], bounds.1[i]);
+        }
+        out
+    }
+
+    /// IDA 0x3c7590 `Camera::zoomExtents(model, zoom)`: fetch the model
+    /// extents, clamp inside `millionCube`, call `zoomExtents(extents, zoom)`.
+    pub fn zoom_extents_model(
+        cam: *mut u8,
+        model: *const u8,
+        zoom: ZoomType,
+        hooks: &dyn ZoomHooks,
+    ) {
+        let extents = hooks.model_extents(model);
+        let clamped = clamp_inside_of(&extents, &hooks.million_cube());
+        hooks.zoom_extents(cam, &clamped, zoom)
+    }
+
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+
+        fn is_a(a: *const u8, b: *const u8) -> bool {
+            !a.is_null() && a == b
+        }
+
+        #[test]
+        fn ask_set_parent_branches() {
+            let ws = 0x700 as *const u8;
+            assert_eq!(ask_set_parent(std::ptr::null(), ws, ws, is_a), 0);
+            assert_eq!(ask_set_parent(0x100 as *const u8, std::ptr::null(), ws, is_a), 0);
+            assert_eq!(ask_set_parent(0x100 as *const u8, ws, ws, is_a), 1);
+        }
+
+        struct Vis {
+            hit: *const u8,
+            prim: *const u8,
+        }
+        impl VisibleFastHooks for Vis {
+            fn camera_pos(&self, _: *const u8) -> [f32; 3] {
+                [0.0, 0.0, 0.0]
+            }
+            fn part_center(&self, _: *const u8) -> [f32; 3] {
+                [1.0, 2.0, 4.0]
+            }
+            fn get_hit(&self, origin: &[f32; 3], dir: &[f32; 3]) -> *const u8 {
+                assert_eq!(origin, &[0.0, 0.0, 0.0]);
+                assert_eq!(dir, &[2.0, 4.0, 8.0]);
+                self.hit
+            }
+            fn part_primitive(&self, _: *const u8) -> *const u8 {
+                self.prim
+            }
+        }
+
+        #[test]
+        fn visible_fast_hit_miss_null() {
+            let p = 0x200 as *const u8;
+            assert!(is_part_visible_fast(
+                0x100 as *const u8,
+                p,
+                &Vis { hit: p, prim: p }
+            ));
+            assert!(!is_part_visible_fast(
+                0x100 as *const u8,
+                p,
+                &Vis { hit: 0x300 as *const u8, prim: p }
+            ));
+            assert!(!is_part_visible_fast(
+                0x100 as *const u8,
+                p,
+                &Vis { hit: std::ptr::null(), prim: p }
+            ));
+        }
+
+        struct Fr(bool);
+        impl FrustumHooks for Fr {
+            fn frustum_planes(&self, _: *const u8, rect: &[f32; 4]) -> Vec<[f32; 4]> {
+                assert_eq!(rect.len(), 4);
+                vec![[1.0, 0.0, 0.0, 5.0]]
+            }
+            fn contained_by_frustum(&self, _: *const u8, planes: &[[f32; 4]]) -> bool {
+                assert_eq!(planes.len(), 1);
+                self.0
+            }
+        }
+
+        #[test]
+        fn frustum_forwards() {
+            assert!(is_part_in_frustum(
+                0x100 as *const u8,
+                0x200 as *const u8,
+                &[0.0, 0.0, 64.0, 64.0],
+                &Fr(true)
+            ));
+            assert!(!is_part_in_frustum(
+                0x100 as *const u8,
+                0x200 as *const u8,
+                &[0.0, 0.0, 64.0, 64.0],
+                &Fr(false)
+            ));
+        }
+
+        struct Zm {
+            seen: std::cell::Cell<([f32; 3], [f32; 3])>,
+        }
+        impl ZoomHooks for Zm {
+            fn model_extents(&self, _: *const u8) -> ([f32; 3], [f32; 3]) {
+                ([-100.0, -100.0, -100.0], [100.0, 5.0, 5.0])
+            }
+            fn million_cube(&self) -> ([f32; 3], [f32; 3]) {
+                ([-10.0, -10.0, -10.0], [10.0, 10.0, 10.0])
+            }
+            fn zoom_extents(&self, _: *mut u8, extents: &([f32; 3], [f32; 3]), zoom: ZoomType) {
+                assert_eq!(zoom, 2);
+                self.seen.set(*extents);
+            }
+        }
+
+        #[test]
+        fn zoom_clamps_then_calls() {
+            let z = Zm { seen: std::cell::Cell::new(([0.0; 3], [0.0; 3])) };
+            zoom_extents_model(0x100 as *mut u8, 0x200 as *const u8, 2, &z);
+            assert_eq!(z.seen.get(), ([-10.0, -10.0, -10.0], [10.0, 5.0, 5.0]));
+            assert_eq!(
+                clamp_inside_of(&([0.0, 0.0, 0.0], [1.0, 1.0, 1.0]), &z.million_cube()),
+                ([0.0, 0.0, 0.0], [1.0, 1.0, 1.0])
+            );
+        }
+    }
+}
+
 #[doc(alias = "RBX::Camera::askSetParent(RBX::Instance const*)const")]
 // 0x3c4e90 — __ZNK3RBX6Camera12askSetParentEPKNS_8InstanceE
 // type: _DWORD __fastcall(RBX::Camera *__hidden this, const RBX::Instance *)
-pub fn stub_3c4e90() -> ! {
-    todo!("0x3c4e90 __ZNK3RBX6Camera12askSetParentEPKNS_8InstanceE")
+pub fn stub_3c4e90(
+    parent: *const u8,
+    parent_desc: *const u8,
+    workspace_desc: *const u8,
+    is_a: fn(*const u8, *const u8) -> bool,
+) -> u32 {
+    // IDA 0x3c4e90: null -> 0; +0x24 adjust; Workspace::classDescriptor isA;
+    // non-Workspace -> 0; else adjusted != 0x24.
+    camera_view::ask_set_parent(parent, parent_desc, workspace_desc, is_a)
 }
 
 #[doc(alias = "RBX::Camera::isPartVisibleFast(RBX::PartInstance const&,G3D::Rect2D const&,RBX::ContactManager const&)const")]
 // 0x3c4f8c — __ZNK3RBX6Camera17isPartVisibleFastERKNS_12PartInstanceERKN3G3D6Rect2DERKNS_14ContactManagerE
 // type: bool __fastcall(_DWORD *, RBX::PartInstance *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, void *, int, int, int, int, int, int, int, int, int)
-pub fn stub_3c4f8c() -> ! {
-    todo!("0x3c4f8c __ZNK3RBX6Camera17isPartVisibleFastERKNS_12PartInstanceERKN3G3D6Rect2DERKNS_14ContactManagerE")
+pub fn stub_3c4f8c(
+    cam: *const u8,
+    part: *const u8,
+    hooks: &dyn camera_view::VisibleFastHooks,
+) -> bool {
+    // IDA 0x3c4f8c: RbxRay eye->2*(center-eye), ContactManager::getHit,
+    // 1 iff the first hit is the part's own primitive ([part + 0xAC]).
+    camera_view::is_part_visible_fast(cam, part, hooks)
 }
 
 #[doc(alias = "RBX::Camera::isPartInFrustum(RBX::PartInstance const&,G3D::Rect2D const&)const")]
 // 0x3c50fc — __ZNK3RBX6Camera15isPartInFrustumERKNS_12PartInstanceERKN3G3D6Rect2DE
 // type: int __fastcall(int, RBX::PartInstance *)
-pub fn stub_3c50fc() -> ! {
-    todo!("0x3c50fc __ZNK3RBX6Camera15isPartInFrustumERKNS_12PartInstanceERKN3G3D6Rect2DE")
+pub fn stub_3c50fc(
+    cam: *const u8,
+    part: *const u8,
+    rect: &[f32; 4],
+    hooks: &dyn camera_view::FrustumHooks,
+) -> bool {
+    // IDA 0x3c50fc: frustum = Camera::frustum(rect);
+    // return PartInstance::containedByFrustum(frustum).
+    camera_view::is_part_in_frustum(cam, part, rect, hooks)
 }
 
 #[doc(alias = "RBX::Camera::zoomExtents(RBX::ModelInstance const*,RBX::Camera::ZoomType)")]
 // 0x3c7590 — __ZN3RBX6Camera11zoomExtentsEPKNS_13ModelInstanceENS0_8ZoomTypeE
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
-pub fn stub_3c7590() -> ! {
-    todo!("0x3c7590 __ZN3RBX6Camera11zoomExtentsEPKNS_13ModelInstanceENS0_8ZoomTypeE")
+pub fn stub_3c7590(
+    cam: *mut u8,
+    model: *const u8,
+    zoom: camera_view::ZoomType,
+    hooks: &dyn camera_view::ZoomHooks,
+) {
+    // IDA 0x3c7590: model extents via vtab[0x88], clampInsideOf(millionCube),
+    // zoomExtents(extents, zoom) (0x3c75e4).
+    camera_view::zoom_extents_model(cam, model, zoom, hooks)
 }
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Camera,RBX::Camera::CameraType>::~EnumPropDescriptor()")]
 // 0x3c8bec — __ZN3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEED1Ev
@@ -3424,152 +3997,293 @@ pub unsafe fn stub_3cf240(
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(int),1>::BoundFuncDesc(void (RBX::Camera::*)(int),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // 0x3cf278 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFviELi1EEC2EMS2_FviEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, unsigned int, int, int, int, int, int, int)
-pub fn stub_3cf278() -> ! {
-    todo!("0x3cf278 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFviELi1EEC2EMS2_FviEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+pub unsafe fn stub_3cf278(
+    slot: *mut camera_enum::BoundFuncDescriptor,
+    member_func: usize,
+    member_adj: usize,
+    n0: *const std::os::raw::c_char,
+) -> *mut camera_enum::BoundFuncDescriptor {
+    // IDA 0x3cf278: base init + off_1240648 + PAIR64 member + zeroed +0x30 box
+    // + void-default declareSignature (same template as 0x3cef84/0x3cf528/0x3d0184).
+    let a0 = if n0.is_null() { String::new() } else { std::ffi::CStr::from_ptr(n0).to_string_lossy().into_owned() };
+    camera_boundfunc::construct(
+        slot,
+        camera_enum::BOUND_VOID_INT_VTAB,
+        member_func,
+        member_adj,
+        "void",
+        &[(a0.as_str(), "int")],
+    )
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(int),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 // 0x3cf3f0 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFviELi1EE16declareSignatureEPKcNS0_7VariantE
 // type: int __fastcall(int, int, int)
-pub fn stub_3cf3f0() -> ! {
-    todo!("0x3cf3f0 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFviELi1EE16declareSignatureEPKcNS0_7VariantE")
+pub unsafe fn stub_3cf3f0(
+    desc: *mut camera_enum::BoundFuncDescriptor,
+    n0: *const std::os::raw::c_char,
+) {
+    // IDA 0x3cf3f0: void return + Name::declare + int singleton + addArgument.
+    camera_boundfunc::declare_signature(desc, "void", &[(n0, "int")])
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(int),1>::~BoundFuncDesc()")]
 // 0x3cf420 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFviELi1EED0Ev
 // type: void __fastcall(_DWORD *)
-pub fn stub_3cf420() -> ! {
-    todo!("0x3cf420 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFviELi1EED0Ev")
+pub fn stub_3cf420(slot: &mut camera_enum::BoundFuncDescriptor) {
+    // IDA 0x3cf420 D0: off_1240648, delete a1[12] (+0x30 box), off_1222248,
+    // clear +8 list (+ delete).
+    camera_enum::BoundFuncDescriptor::destroy(slot, Some(camera_enum::BOUND_VOID_INT_VTAB), 1)
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(int),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // 0x3cf4f4 — __ZNK3RBX10Reflection13BoundFuncDescINS_6CameraEFviELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // type: int __fastcall(int, int, int)
-pub fn stub_3cf4f4() -> ! {
-    todo!("0x3cf4f4 __ZNK3RBX10Reflection13BoundFuncDescINS_6CameraEFviELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")
+pub unsafe fn stub_3cf4f4(
+    desc: &camera_enum::BoundFuncDescriptor,
+    obj: *const u8,
+    arg: i32,
+    callee: &dyn camera_boundfunc::FnCameraIntVoid,
+) {
+    // IDA 0x3cf4f4: derived-36 + member pair + getArg<int,1> + member tail-call.
+    camera_boundfunc::execute_int_void(desc, obj, arg, callee)
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,bool ()(float),1>::BoundFuncDesc(bool (RBX::Camera::*)(float),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // 0x3cf528 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbfELi1EEC2EMS2_FbfEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, unsigned int, int, int, int, int, int, int)
-pub fn stub_3cf528() -> ! {
-    todo!("0x3cf528 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbfELi1EEC2EMS2_FbfEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+pub unsafe fn stub_3cf528(
+    slot: *mut camera_enum::BoundFuncDescriptor,
+    member_func: usize,
+    member_adj: usize,
+    n0: *const std::os::raw::c_char,
+) -> *mut camera_enum::BoundFuncDescriptor {
+    // IDA 0x3cf528: base init + off_1240668 + PAIR64 member + zeroed +0x30 box
+    // + void-default declareSignature (same template as 0x3cf278).
+    let a0 = if n0.is_null() { String::new() } else { std::ffi::CStr::from_ptr(n0).to_string_lossy().into_owned() };
+    camera_boundfunc::construct(
+        slot,
+        camera_enum::BOUND_BOOL_FLOAT_VTAB,
+        member_func,
+        member_adj,
+        "bool",
+        &[(a0.as_str(), "float")],
+    )
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,bool ()(float),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 // 0x3cf6a0 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbfELi1EE16declareSignatureEPKcNS0_7VariantE
 // type: int __fastcall(int, int, int)
-pub fn stub_3cf6a0() -> ! {
-    todo!("0x3cf6a0 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbfELi1EE16declareSignatureEPKcNS0_7VariantE")
+pub unsafe fn stub_3cf6a0(
+    desc: *mut camera_enum::BoundFuncDescriptor,
+    n0: *const std::os::raw::c_char,
+) {
+    // IDA 0x3cf6a0: bool return + Name::declare + float singleton + addArgument.
+    camera_boundfunc::declare_signature(desc, "bool", &[(n0, "float")])
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,bool ()(float),1>::~BoundFuncDesc()")]
 // 0x3cf6d0 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbfELi1EED0Ev
 // type: void __fastcall(_DWORD *)
-pub fn stub_3cf6d0() -> ! {
-    todo!("0x3cf6d0 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbfELi1EED0Ev")
+pub fn stub_3cf6d0(slot: &mut camera_enum::BoundFuncDescriptor) {
+    // IDA 0x3cf6d0 D0: off_1240668, delete a1[12] (+0x30 box), off_1222248,
+    // clear +8 list (+ delete).
+    camera_enum::BoundFuncDescriptor::destroy(slot, Some(camera_enum::BOUND_BOOL_FLOAT_VTAB), 1)
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,bool ()(float),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // 0x3cf7a4 — __ZNK3RBX10Reflection13BoundFuncDescINS_6CameraEFbfELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // type: int __fastcall(int, int, int)
-pub fn stub_3cf7a4() -> ! {
-    todo!("0x3cf7a4 __ZNK3RBX10Reflection13BoundFuncDescINS_6CameraEFbfELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")
+pub unsafe fn stub_3cf7a4(
+    desc: &camera_enum::BoundFuncDescriptor,
+    obj: *const u8,
+    arg: f32,
+    callee: &dyn camera_boundfunc::FnCameraFloatBool,
+) -> bool {
+    // IDA 0x3cf7a4: derived-36 + member pair + getArg<float,1> + Call1Helper.
+    camera_boundfunc::execute_float_bool(desc, obj, arg, callee)
 }
 
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::Camera,bool (RBX::Camera::*)(float),float,bool>::call(RBX::Camera*,bool (RBX::Camera::*)(float),RBX::Reflection::Variant &,float const&)")]
 // 0x3cf7e4 — __ZN3RBX10Reflection11Call1HelperINS_6CameraEMS2_FbfEfbE4callEPS2_S4_RNS0_7VariantERKf
 // type: int __fastcall(int, char *, int, _DWORD *, _DWORD *)
-pub fn stub_3cf7e4() -> ! {
-    todo!("0x3cf7e4 __ZN3RBX10Reflection11Call1HelperINS_6CameraEMS2_FbfEfbE4callEPS2_S4_RNS0_7VariantERKf")
+pub unsafe fn stub_3cf7e4(
+    this: *const u8,
+    member_func: usize,
+    member_adj: usize,
+    arg: f32,
+    callee: &dyn camera_boundfunc::FnCameraFloatBool,
+) -> bool {
+    // IDA 0x3cf7e4 Call1Helper: (adj>>1) adjust + virtual branch + call + bool out.
+    camera_boundfunc::call_float_bool(this, member_func, member_adj, arg, callee)
 }
-
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(RBX::Camera::CameraPanMode),1>::BoundFuncDesc(void (RBX::Camera::*)(RBX::Camera::CameraPanMode),char const*,char const*,RBX::Camera::CameraPanMode,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // 0x3cf9bc — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvNS2_13CameraPanModeEELi1EEC2EMS2_FvS3_EPKcS9_S3_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, unsigned int, int, int, int, int, int, int, int)
-pub fn stub_3cf9bc() -> ! {
-    todo!("0x3cf9bc __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvNS2_13CameraPanModeEELi1EEC2EMS2_FvS3_EPKcS9_S3_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+pub unsafe fn stub_3cf9bc(
+    slot: *mut camera_enum::BoundFuncDescriptor,
+    member_func: usize,
+    member_adj: usize,
+    n0: *const std::os::raw::c_char,
+    default: camera_enum::CameraPanMode,
+) -> *mut camera_enum::BoundFuncDescriptor {
+    // IDA 0x3cf9bc: base init + off_1240688 + PAIR64 member + operator new(4)
+    // default box at +0x30 (*box = arg_4) + CameraPanMode-singleton +
+    // typed_holder::singleton declareSignature.
+    let a0 = if n0.is_null() { String::new() } else { std::ffi::CStr::from_ptr(n0).to_string_lossy().into_owned() };
+    let out = camera_boundfunc::construct(
+        slot,
+        camera_enum::BOUND_VOID_PANMODE_VTAB,
+        member_func,
+        member_adj,
+        "void",
+        &[(a0.as_str(), "CameraPanMode")],
+    );
+    camera_boundfunc::set_default_panmode(&mut *slot, default);
+    out
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(RBX::Camera::CameraPanMode),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 // 0x3cfb68 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvNS2_13CameraPanModeEELi1EE16declareSignatureEPKcNS0_7VariantE
 // type: int __fastcall(int, int, int)
-pub fn stub_3cfb68() -> ! {
-    todo!("0x3cfb68 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvNS2_13CameraPanModeEELi1EE16declareSignatureEPKcNS0_7VariantE")
+pub unsafe fn stub_3cfb68(
+    desc: *mut camera_enum::BoundFuncDescriptor,
+    n0: *const std::os::raw::c_char,
+) {
+    // IDA 0x3cfb68: void return + Name::declare + CameraPanMode singleton + addArgument.
+    camera_boundfunc::declare_signature(desc, "void", &[(n0, "CameraPanMode")])
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(RBX::Camera::CameraPanMode),1>::~BoundFuncDesc()")]
 // 0x3cfb98 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvNS2_13CameraPanModeEELi1EED0Ev
 // type: void __fastcall(_DWORD *)
-pub fn stub_3cfb98() -> ! {
-    todo!("0x3cfb98 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvNS2_13CameraPanModeEELi1EED0Ev")
+pub fn stub_3cfb98(slot: &mut camera_enum::BoundFuncDescriptor) {
+    // IDA 0x3cfb98 D0: off_1240688, delete a1[12] (+0x30 default box),
+    // off_1222248, clear +8 list (+ delete).
+    camera_enum::BoundFuncDescriptor::destroy(slot, Some(camera_enum::BOUND_VOID_PANMODE_VTAB), 1)
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(RBX::Camera::CameraPanMode),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // 0x3cfc6c — __ZNK3RBX10Reflection13BoundFuncDescINS_6CameraEFvNS2_13CameraPanModeEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // type: int __fastcall(int, int, int)
-pub fn stub_3cfc6c() -> ! {
-    todo!("0x3cfc6c __ZNK3RBX10Reflection13BoundFuncDescINS_6CameraEFvNS2_13CameraPanModeEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")
+pub unsafe fn stub_3cfc6c(
+    desc: &camera_enum::BoundFuncDescriptor,
+    obj: *const u8,
+    arg: camera_enum::CameraPanMode,
+    callee: &dyn camera_boundfunc::FnCameraPanModeVoid,
+) {
+    // IDA 0x3cfc6c: derived-36 + member pair + getArg<CameraPanMode,1> + member tail-call.
+    camera_boundfunc::execute_panmode_void(desc, obj, arg, callee)
 }
-
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode> const>::initSingleton(void)")]
 // 0x3cfe84 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Camera13CameraPanModeEEEE13initSingletonEv
-pub fn stub_3cfe84() -> ! {
-    todo!("0x3cfe84 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Camera13CameraPanModeEEEE13initSingletonEv")
+pub fn stub_3cfe84() -> &'static crate::generated_core_watchdog_k::render_settings::EnumDescData {
+    // IDA 0x3cfe84: B.W shim tail-calling doGetSingleton (0x3cfe88).
+    camera_enum::init_pan_mode_singleton()
 }
 
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode> const>::doGetSingleton(void)")]
 // 0x3cfe88 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Camera13CameraPanModeEEEE14doGetSingletonEv
 // type: void *()
-pub fn stub_3cfe88() -> ! {
-    todo!("0x3cfe88 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Camera13CameraPanModeEEEE14doGetSingletonEv")
+pub fn stub_3cfe88() -> &'static crate::generated_core_watchdog_k::render_settings::EnumDescData {
+    // IDA 0x3cfe88: __cxa_guard acquire/release around EnumDesc<CameraPanMode>::EnumDesc
+    // (0x3c4778) into the function-local slot, __cxa_atexit the D1; returns &s.
+    camera_enum::pan_mode_singleton()
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,float ()(void),0>::BoundFuncDesc(float (RBX::Camera::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // 0x3cff78 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFfvELi0EEC2EMS2_FfvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, unsigned int, unsigned int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int)
-pub fn stub_3cff78() -> ! {
-    todo!("0x3cff78 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFfvELi0EEC2EMS2_FfvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+pub unsafe fn stub_3cff78(
+    slot: *mut camera_enum::BoundFuncDescriptor,
+    member_func: usize,
+    member_adj: usize,
+) -> *mut camera_enum::BoundFuncDescriptor {
+    // IDA 0x3cff78: base init + off_12406B8 + PAIR64 member, then
+    // Type::getSingleton<float> stored at +0x1C (the return type); arity 0
+    // takes no names and emits no declareSignature call.
+    camera_boundfunc::construct(
+        slot,
+        camera_enum::BOUND_FLOAT_VOID_VTAB,
+        member_func,
+        member_adj,
+        "float",
+        &[],
+    )
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,float ()(void),0>::~BoundFuncDesc()")]
 // 0x3d007c — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFfvELi0EED0Ev
 // type: void __fastcall(_DWORD *)
-pub fn stub_3d007c() -> ! {
-    todo!("0x3d007c __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFfvELi0EED0Ev")
+pub fn stub_3d007c(slot: &mut camera_enum::BoundFuncDescriptor) {
+    // IDA 0x3d007c D0: no derived restore and no arg boxes (arity 0);
+    // off_1222248, clear +8 list (+ delete).
+    camera_enum::BoundFuncDescriptor::destroy(slot, None, 0)
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,float ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // 0x3d0130 — __ZNK3RBX10Reflection13BoundFuncDescINS_6CameraEFfvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // type: int __fastcall(int, int, int)
-pub fn stub_3d0130() -> ! {
-    todo!("0x3d0130 __ZNK3RBX10Reflection13BoundFuncDescINS_6CameraEFfvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")
+pub unsafe fn stub_3d0130(
+    desc: &camera_enum::BoundFuncDescriptor,
+    obj: *const u8,
+    callee: &dyn camera_boundfunc::FnCameraVoidFloat,
+) -> f32 {
+    // IDA 0x3d0130: derived-36 + member pair, tail-jump to Call0Helper (0x3d0154).
+    camera_boundfunc::execute_float_0(desc, obj, callee)
 }
 
 #[doc(alias = "RBX::Reflection::Call0Helper<RBX::Camera,float (RBX::Camera::*)(void),float>::call(RBX::Camera*,float (RBX::Camera::*)(void),RBX::Reflection::Variant &)")]
 // 0x3d0154 — __ZN3RBX10Reflection11Call0HelperINS_6CameraEMS2_FfvEfE4callEPS2_S4_RNS0_7VariantE
 // type: int __fastcall(int, __int64 (__fastcall *)(_DWORD), int, _DWORD *)
-pub fn stub_3d0154() -> ! {
-    todo!("0x3d0154 __ZN3RBX10Reflection11Call0HelperINS_6CameraEMS2_FfvEfE4callEPS2_S4_RNS0_7VariantE")
+pub unsafe fn stub_3d0154(
+    this: *const u8,
+    member_func: usize,
+    member_adj: usize,
+    callee: &dyn camera_boundfunc::FnCameraVoidFloat,
+) -> f32 {
+    // IDA 0x3d0154 Call0Helper: (adj>>1) adjust + virtual branch + call + float out.
+    camera_boundfunc::call_float_0(this, member_func, member_adj, callee)
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(float),1>::BoundFuncDesc(void (RBX::Camera::*)(float),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // 0x3d0184 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvfELi1EEC2EMS2_FvfEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, unsigned int, int, int, int, int, int, int)
-pub fn stub_3d0184() -> ! {
-    todo!("0x3d0184 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvfELi1EEC2EMS2_FvfEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+pub unsafe fn stub_3d0184(
+    slot: *mut camera_enum::BoundFuncDescriptor,
+    member_func: usize,
+    member_adj: usize,
+    n0: *const std::os::raw::c_char,
+) -> *mut camera_enum::BoundFuncDescriptor {
+    // IDA 0x3d0184: base init + off_12406E8 + PAIR64 member + zeroed +0x30 box
+    // + void-default declareSignature (same template as 0x3cf278).
+    let a0 = if n0.is_null() { String::new() } else { std::ffi::CStr::from_ptr(n0).to_string_lossy().into_owned() };
+    camera_boundfunc::construct(
+        slot,
+        camera_enum::BOUND_VOID_FLOAT_VTAB,
+        member_func,
+        member_adj,
+        "void",
+        &[(a0.as_str(), "float")],
+    )
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(float),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 // 0x3d02fc — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvfELi1EE16declareSignatureEPKcNS0_7VariantE
 // type: int __fastcall(int, int, int)
-pub fn stub_3d02fc() -> ! {
-    todo!("0x3d02fc __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvfELi1EE16declareSignatureEPKcNS0_7VariantE")
+pub unsafe fn stub_3d02fc(
+    desc: *mut camera_enum::BoundFuncDescriptor,
+    n0: *const std::os::raw::c_char,
+) {
+    // IDA 0x3d02fc: void return + Name::declare + float singleton + addArgument.
+    camera_boundfunc::declare_signature(desc, "void", &[(n0, "float")])
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(float),1>::~BoundFuncDesc()")]
 // 0x3d032c — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvfELi1EED0Ev
 // type: void __fastcall(_DWORD *)
-pub fn stub_3d032c() -> ! {
-    todo!("0x3d032c __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvfELi1EED0Ev")
+pub fn stub_3d032c(slot: &mut camera_enum::BoundFuncDescriptor) {
+    // IDA 0x3d032c D0: off_12406E8, delete a1[12] (+0x30 box), off_1222248,
+    // clear +8 list (+ delete).
+    camera_enum::BoundFuncDescriptor::destroy(slot, Some(camera_enum::BOUND_VOID_FLOAT_VTAB), 1)
 }
