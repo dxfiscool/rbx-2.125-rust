@@ -591,172 +591,382 @@ pub fn stub_20e78() -> Option<u32> {
     Some(0)
 }
 
+/// Host state built by `-[UpgradeCheckHelper init]` (IDA 0x20f1c).
+#[derive(Debug, Clone, PartialEq, Eq, Default)]
+pub struct UpgradeCheckState {
+    pub upgrade_button_title: String,
+    pub response_bytes: Vec<u8>,
+    pub connection_open: bool,
+}
+
+/// Host outcome of `+[UpgradeCheckHelper checkForUpdate]` (IDA 0x212cc).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum CheckForUpdate {
+    Request { url: String },
+    ConnectionError,
+    Skipped,
+}
+
+/// Host outcome of `-[UpgradeCheckHelper processCheckForUpdateResponse]` (IDA 0x214a4).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum IgnoreButton {
+    EnableFound,
+    AddNew,
+    DisableFound,
+}
+
+/// Host alert assembled by `-[UpgradeCheckHelper processCheckForUpdateResponse]` (IDA 0x214a4).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct UpgradePrompt {
+    pub title_key: &'static str,
+    pub message: String,
+    pub ignore: Option<IgnoreButton>,
+}
+
+/// Setting keys registered by `iOSSettingsService::Init` (IDA 0x21ce0), in registration order.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum IosSettingKey {
+    IpadMinimumVersion,
+    IpadMaximumVersion,
+    IphoneMinimumVersion,
+    IphoneMaximumVersion,
+    IpodMinimumVersion,
+    IpodMaximumVersion,
+    DisablePlayButtonForAll,
+    DisablePlayButtonForNonBc,
+    Ipad1MaximumIdealParts,
+    Ipad2MaximumIdealParts,
+    Ipad3MaximumIdealParts,
+    Ipad4MaximumIdealParts,
+    Ipod4MaximumIdealParts,
+    Ipod5MaximumIdealParts,
+    Iphone4sMaximumIdealParts,
+    Iphone5MaximumIdealParts,
+    TimeIntervalBetweenRobuxPurchaseInMinutes,
+    TimeIntervalBetweenBcPurchaseInMinutes,
+    TimeIntervalBetweenCatalogPurchaseInMinutes,
+    TimeLimitForBillingServiceRetriesBeforeGivingUp,
+    TestFlightLoggingLevel,
+    TestFlightPercentage,
+    BugSensePercentage,
+    BugSenseLogLines,
+    BugSenseLogLevel,
+    IosGoogleAnalyticsAccount2,
+    IosGoogleAnalyticsSampleRate,
+    SearchEndpointIpad,
+    SearchEndpointIphone,
+    CacheUiWebViews,
+    ThumbstickControlStyle,
+    FreeMemoryCheckerActive,
+    FreeMemoryCheckerRateMilliSeconds,
+    FreeMemoryCheckerThresholdKiloBytes,
+    MemoryBouncerActive,
+    MemoryBouncerEnforceRateMilliSeconds,
+    MemoryBouncerThresholdKiloBytes,
+    MemoryBouncerLimitMegaBytes,
+    MemoryBouncerLimitMegaBytesForLowMemDevices,
+}
+
+impl IosSettingKey {
+    /// Reader-table keys in `Init` registration order (IDA 0x21d42..0x227c8).
+    pub fn all() -> [IosSettingKey; 39] {
+        use IosSettingKey::*;
+        [
+            IpadMinimumVersion, IpadMaximumVersion, IphoneMinimumVersion, IphoneMaximumVersion,
+            IpodMinimumVersion, IpodMaximumVersion, DisablePlayButtonForAll, DisablePlayButtonForNonBc,
+            Ipad1MaximumIdealParts, Ipad2MaximumIdealParts, Ipad3MaximumIdealParts, Ipad4MaximumIdealParts,
+            Ipod4MaximumIdealParts, Ipod5MaximumIdealParts, Iphone4sMaximumIdealParts, Iphone5MaximumIdealParts,
+            TimeIntervalBetweenRobuxPurchaseInMinutes, TimeIntervalBetweenBcPurchaseInMinutes,
+            TimeIntervalBetweenCatalogPurchaseInMinutes, TimeLimitForBillingServiceRetriesBeforeGivingUp,
+            TestFlightLoggingLevel, TestFlightPercentage, BugSensePercentage, BugSenseLogLines,
+            BugSenseLogLevel, IosGoogleAnalyticsAccount2, IosGoogleAnalyticsSampleRate,
+            SearchEndpointIpad, SearchEndpointIphone, CacheUiWebViews, ThumbstickControlStyle,
+            FreeMemoryCheckerActive, FreeMemoryCheckerRateMilliSeconds, FreeMemoryCheckerThresholdKiloBytes,
+            MemoryBouncerActive, MemoryBouncerEnforceRateMilliSeconds, MemoryBouncerThresholdKiloBytes,
+            MemoryBouncerLimitMegaBytes, MemoryBouncerLimitMegaBytesForLowMemDevices,
+        ]
+    }
+    pub fn name(self) -> &'static str {
+        use IosSettingKey::*;
+        match self {
+            IpadMinimumVersion => "iPadMinimumVersion",
+            IpadMaximumVersion => "iPadMaximumVersion",
+            IphoneMinimumVersion => "iPhoneMinimumVersion",
+            IphoneMaximumVersion => "iPhoneMaximumVersion",
+            IpodMinimumVersion => "iPodMinimumVersion",
+            IpodMaximumVersion => "iPodMaximumVersion",
+            DisablePlayButtonForAll => "DisablePlayButtonForAll",
+            DisablePlayButtonForNonBc => "DisablePlayButtonForNonBC",
+            Ipad1MaximumIdealParts => "iPad1_MaximumIdealParts",
+            Ipad2MaximumIdealParts => "iPad2_MaximumIdealParts",
+            Ipad3MaximumIdealParts => "iPad3_MaximumIdealParts",
+            Ipad4MaximumIdealParts => "iPad4_MaximumIdealParts",
+            Ipod4MaximumIdealParts => "iPod4_MaximumIdealParts",
+            Ipod5MaximumIdealParts => "iPod5_MaximumIdealParts",
+            Iphone4sMaximumIdealParts => "iPhone4s_MaximumIdealParts",
+            Iphone5MaximumIdealParts => "iPhone5_MaximumIdealParts",
+            TimeIntervalBetweenRobuxPurchaseInMinutes => "TimeIntervalBetweenRobuxPurchaseInMinutes",
+            TimeIntervalBetweenBcPurchaseInMinutes => "TimeIntervalBetweenBCPurchaseInMinutes",
+            TimeIntervalBetweenCatalogPurchaseInMinutes => "TimeIntervalBetweenCatalogPurchaseInMinutes",
+            TimeLimitForBillingServiceRetriesBeforeGivingUp => "TimeLimitForBillingServiceRetriesBeforeGivingUp",
+            TestFlightLoggingLevel => "TestFlightLoggingLevel",
+            TestFlightPercentage => "TestFlightPercentage",
+            BugSensePercentage => "BugSensePercentage",
+            BugSenseLogLines => "BugSenseLogLines",
+            BugSenseLogLevel => "BugSenseLogLevel",
+            IosGoogleAnalyticsAccount2 => "iOSGoogleAnalyticsAccount2",
+            IosGoogleAnalyticsSampleRate => "iOSGoogleAnalyticsSampleRate",
+            SearchEndpointIpad => "SearchEndpointIPad",
+            SearchEndpointIphone => "SearchEndpointIPhone",
+            CacheUiWebViews => "CacheUIWebViews",
+            ThumbstickControlStyle => "ThumbstickControlStyle",
+            FreeMemoryCheckerActive => "FreeMemoryCheckerActive",
+            FreeMemoryCheckerRateMilliSeconds => "FreeMemoryCheckerRateMilliSeconds",
+            FreeMemoryCheckerThresholdKiloBytes => "FreeMemoryCheckerThresholdKiloBytes",
+            MemoryBouncerActive => "MemoryBouncerActive",
+            MemoryBouncerEnforceRateMilliSeconds => "MemoryBouncerEnforceRateMilliSeconds",
+            MemoryBouncerThresholdKiloBytes => "MemoryBouncerThresholdKiloBytes",
+            MemoryBouncerLimitMegaBytes => "MemoryBouncerLimitMegaBytes",
+            MemoryBouncerLimitMegaBytesForLowMemDevices => "MemoryBouncerLimitMegaBytesForLowMemDevices",
+        }
+    }
+    /// Defaults stored on the singleton by `Init` (IDA 0x21d0c..0x227bc); `None` keys are
+    /// zero-init engine-side (false / empty) until their reader parses a value.
+    pub fn default_int(self) -> Option<i64> {
+        use IosSettingKey::*;
+        match self {
+            IpadMinimumVersion => Some(1),
+            IpadMaximumVersion => Some(0),
+            IphoneMinimumVersion => Some(1),
+            IphoneMaximumVersion => Some(0),
+            IpodMinimumVersion => Some(1),
+            IpodMaximumVersion => Some(0),
+            Ipad1MaximumIdealParts | Ipad2MaximumIdealParts | Ipad3MaximumIdealParts
+            | Ipad4MaximumIdealParts | Ipod4MaximumIdealParts | Ipod5MaximumIdealParts
+            | Iphone4sMaximumIdealParts => Some(0),
+            TimeIntervalBetweenRobuxPurchaseInMinutes => Some(10),
+            TimeIntervalBetweenBcPurchaseInMinutes => Some(1440),
+            TimeIntervalBetweenCatalogPurchaseInMinutes => Some(10),
+            TimeLimitForBillingServiceRetriesBeforeGivingUp => Some(48),
+            TestFlightLoggingLevel => Some(4),
+            TestFlightPercentage => Some(100),
+            BugSensePercentage => Some(0),
+            BugSenseLogLines => Some(20),
+            IosGoogleAnalyticsSampleRate => Some(100),
+            ThumbstickControlStyle => Some(1),
+            FreeMemoryCheckerRateMilliSeconds => Some(10000),
+            FreeMemoryCheckerThresholdKiloBytes => Some(20480),
+            MemoryBouncerEnforceRateMilliSeconds => Some(100),
+            MemoryBouncerThresholdKiloBytes => Some(5120),
+            MemoryBouncerLimitMegaBytes => Some(250),
+            MemoryBouncerLimitMegaBytesForLowMemDevices => Some(0),
+            _ => None,
+        }
+    }
+}
+
 // 0x20ed4 — ___43+[UpgradeCheckHelper getUpgradeCheckHelper]_block_invoke
 // demangled: ___43+[UpgradeCheckHelper getUpgradeCheckHelper]_block_invoke
 // type: 
 #[doc(alias = "___43+[UpgradeCheckHelper getUpgradeCheckHelper]_block_invoke")]
-pub fn stub_20ed4() -> ! {
-    todo!("0x20ed4 ___43+[UpgradeCheckHelper getUpgradeCheckHelper]_block_invoke")
+pub fn stub_20ed4() -> Option<u32> {
+    // IDA 0x20ed4: dispatch_once block — alloc+init stored to dword_130C414 (0x20ee6..0x20f04); returns the singleton handle.
+    Some(0)
 }
 
 // 0x20f08 — ___copy_helper_block__3
 // demangled: ___copy_helper_block__3
 // type: 
 #[doc(alias = "___copy_helper_block__3")]
-pub fn stub_20f08() -> ! {
-    todo!("0x20f08 ___copy_helper_block__3")
+pub fn stub_20f08(dst: u32, src: u32) {
+    // IDA 0x20f08: __copy_helper_block — single _Block_object_assign slot (0x20f0e); block retain has no host carrier.
+    let _ = (dst, src);
 }
 
 // 0x20f14 — ___destroy_helper_block__3
 // demangled: ___destroy_helper_block__3
 // type: 
 #[doc(alias = "___destroy_helper_block__3")]
-pub fn stub_20f14() -> ! {
-    todo!("0x20f14 ___destroy_helper_block__3")
+pub fn stub_20f14(handle: u32) {
+    // IDA 0x20f14: __destroy_helper_block — single _Block_object_dispose slot (0x20f18); block release has no host carrier.
+    let _ = handle;
 }
 
 // 0x20f1c — -[UpgradeCheckHelper init]
 // demangled: -[UpgradeCheckHelper init]
 // type: UpgradeCheckHelper *__cdecl(UpgradeCheckHelper *self, SEL)
 #[doc(alias = "-[UpgradeCheckHelper init]")]
-pub fn stub_20f1c() -> ! {
-    todo!("0x20f1c -[UpgradeCheckHelper init]")
+pub fn stub_20f1c(upgrade_button_text: &str) -> UpgradeCheckState {
+    // IDA 0x20f1c: super init (0x20f4a); alert alloc+init, delegate=self, addButton UpgradeButtonText (0x20f6c..0x20ff2); fresh response data, connection=nil (0x21004..0x21028).
+    UpgradeCheckState { upgrade_button_title: upgrade_button_text.to_owned(), response_bytes: Vec::new(), connection_open: false }
 }
 
 // 0x21038 — -[UpgradeCheckHelper dealloc]
 // demangled: -[UpgradeCheckHelper dealloc]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL)
 #[doc(alias = "-[UpgradeCheckHelper dealloc]")]
-pub fn stub_21038() -> ! {
-    todo!("0x21038 -[UpgradeCheckHelper dealloc]")
+pub fn stub_21038(handle: u32) {
+    // IDA 0x21038: dealloc — releases alert/connection (guarded, 0x2106c..0x21074)/response data (0x2105c..0x21088) then super dealloc (0x210a0..0x210aa); ref traffic stays engine-side.
+    let _ = handle;
 }
 
 // 0x210b4 — +[UpgradeCheckHelper getUpgradeUrl]
 // demangled: +[UpgradeCheckHelper getUpgradeUrl]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[UpgradeCheckHelper getUpgradeUrl]")]
-pub fn stub_210b4() -> ! {
-    todo!("0x210b4 +[UpgradeCheckHelper getUpgradeUrl]")
+pub fn stub_210b4(base_url: &str) -> String {
+    // IDA 0x210b4: infoDictionary RbxBaseUrl (0x210d0..0x210fa) + "mobileapi/check-app-version?appVersion=%@" (format arg for 0x213aa).
+    format!("{base_url}mobileapi/check-app-version?appVersion=%@")
 }
 
 // 0x2111c — -[UpgradeCheckHelper getAlertViewButton:]
 // demangled: -[UpgradeCheckHelper getAlertViewButton:]
 // type: id __cdecl(UpgradeCheckHelper *self, SEL, id)
 #[doc(alias = "-[UpgradeCheckHelper getAlertViewButton:]")]
-pub fn stub_2111c() -> ! {
-    todo!("0x2111c -[UpgradeCheckHelper getAlertViewButton:]")
+pub fn stub_2111c(buttons: &[String], title: &str) -> Option<usize> {
+    // IDA 0x2111c: fast-enumerate alert subviews (0x2116a..0x21230); first isKindOfClass:UIButton whose currentTitle equals a3 (0x211f0..0x21214); nil when none matches.
+    buttons.iter().position(|t| t == title)
 }
 
 // 0x21254 — -[UpgradeCheckHelper makeUpgradeRequest:]
 // demangled: -[UpgradeCheckHelper makeUpgradeRequest:]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL, id)
 #[doc(alias = "-[UpgradeCheckHelper makeUpgradeRequest:]")]
-pub fn stub_21254() -> ! {
-    todo!("0x21254 -[UpgradeCheckHelper makeUpgradeRequest:]")
+pub fn stub_21254(state: &mut UpgradeCheckState, has_request: bool) -> bool {
+    // IDA 0x21254: response setData:nil reset (0x21278); nil request logs (0x2127c..0x21288); connection alloc+init retained (0x212a4..0x212c8) — returns whether the nil log fired.
+    state.response_bytes.clear();
+    state.connection_open = true;
+    !has_request
 }
 
 // 0x212cc — +[UpgradeCheckHelper checkForUpdate]
 // demangled: +[UpgradeCheckHelper checkForUpdate]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[UpgradeCheckHelper checkForUpdate]")]
-pub fn stub_212cc() -> ! {
-    todo!("0x212cc +[UpgradeCheckHelper checkForUpdate]")
+pub fn stub_212cc(version: Option<&str>, reachable: bool, upgrade_url_format: &str) -> CheckForUpdate {
+    // IDA 0x212cc: nil CFBundleShortVersionString skips (0x21322); unreachable alerts ConnectionError (0x2134e..0x2143e); else AppiOSV%@ URL formatted (0x21380..0x213d4) and requested (0x2139e..0x214a0).
+    match (version, reachable) {
+        (None, _) => CheckForUpdate::Skipped,
+        (Some(_), false) => CheckForUpdate::ConnectionError,
+        (Some(v), true) => CheckForUpdate::Request { url: upgrade_url_format.replace("%@", &format!("AppiOSV{v}")) },
+    }
 }
 
 // 0x214a4 — -[UpgradeCheckHelper processCheckForUpdateResponse]
 // demangled: -[UpgradeCheckHelper processCheckForUpdateResponse]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL)
 #[doc(alias = "-[UpgradeCheckHelper processCheckForUpdateResponse]")]
-pub fn stub_214a4() -> ! {
-    todo!("0x214a4 -[UpgradeCheckHelper processCheckForUpdateResponse]")
+pub fn stub_214a4(action: Option<&str>, message: Option<&str>, default_body: &str, ignore_present: bool) -> Option<UpgradePrompt> {
+    // IDA 0x214a4: JSON parse of response data, error logged engine-side (0x214e2..0x21814); null data/UpgradeAction gates (0x2155c..0x215d2); Message null falls back to the localized body (0x21618..0x21634, 0x21852..0x218a0); Recommended enables (or adds) Ignore and shows (0x2165e..0x21a74), Required disables a found Ignore and shows (0x21850..0x219ea).
+    let (title_key, ignore) = match action {
+        Some("Recommended") => ("RecommendUpgradeTitle", Some(if ignore_present { IgnoreButton::EnableFound } else { IgnoreButton::AddNew })),
+        Some("Required") => ("RequireUpgradeTitle", ignore_present.then_some(IgnoreButton::DisableFound)),
+        _ => return None,
+    };
+    Some(UpgradePrompt { title_key, message: message.unwrap_or(default_body).to_owned(), ignore })
 }
 
 // 0x21abc — ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke
 // demangled: ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke")]
-pub fn stub_21abc() -> ! {
-    todo!("0x21abc ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke")
+pub fn stub_21abc() {
+    // IDA 0x21abc: show block — alert show dispatched on the main queue (0x21a74); dispatch engine-side, faithful no-op shell.
 }
 
 // 0x21adc — ___copy_helper_block_132
 // demangled: ___copy_helper_block_132
 // type: 
 #[doc(alias = "___copy_helper_block_132")]
-pub fn stub_21adc() -> ! {
-    todo!("0x21adc ___copy_helper_block_132")
+pub fn stub_21adc(dst: u32, src: u32) {
+    // IDA 0x21adc: __copy_helper_block — single _Block_object_assign slot (0x21ae2); block retain has no host carrier.
+    let _ = (dst, src);
 }
 
 // 0x21ae8 — ___destroy_helper_block_133
 // demangled: ___destroy_helper_block_133
 // type: 
 #[doc(alias = "___destroy_helper_block_133")]
-pub fn stub_21ae8() -> ! {
-    todo!("0x21ae8 ___destroy_helper_block_133")
+pub fn stub_21ae8(handle: u32) {
+    // IDA 0x21ae8: __destroy_helper_block — single _Block_object_dispose slot (0x21aec); block release has no host carrier.
+    let _ = handle;
 }
 
 // 0x21af0 — ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke141
 // demangled: ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke141
 // type: 
 #[doc(alias = "___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke141")]
-pub fn stub_21af0() -> ! {
-    todo!("0x21af0 ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke141")
+pub fn stub_21af0() {
+    // IDA 0x21af0: show block (Required path) — alert show dispatched on the main queue (0x219ea); dispatch engine-side, faithful no-op shell.
 }
 
 // 0x21b10 — ___copy_helper_block_142
 // demangled: ___copy_helper_block_142
 // type: 
 #[doc(alias = "___copy_helper_block_142")]
-pub fn stub_21b10() -> ! {
-    todo!("0x21b10 ___copy_helper_block_142")
+pub fn stub_21b10(dst: u32, src: u32) {
+    // IDA 0x21b10: __copy_helper_block — single _Block_object_assign slot (0x21b16); block retain has no host carrier.
+    let _ = (dst, src);
 }
 
 // 0x21b1c — ___destroy_helper_block_143
 // demangled: ___destroy_helper_block_143
 // type: 
 #[doc(alias = "___destroy_helper_block_143")]
-pub fn stub_21b1c() -> ! {
-    todo!("0x21b1c ___destroy_helper_block_143")
+pub fn stub_21b1c(handle: u32) {
+    // IDA 0x21b1c: __destroy_helper_block — single _Block_object_dispose slot (0x21b20); block release has no host carrier.
+    let _ = handle;
 }
 
 // 0x21b24 — -[UpgradeCheckHelper connection:didReceiveData:]
 // demangled: -[UpgradeCheckHelper connection:didReceiveData:]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL, id, id)
 #[doc(alias = "-[UpgradeCheckHelper connection:didReceiveData:]")]
-pub fn stub_21b24() -> ! {
-    todo!("0x21b24 -[UpgradeCheckHelper connection:didReceiveData:]")
+pub fn stub_21b24(state: &mut UpgradeCheckState, connection_matches: bool, chunk: &[u8]) {
+    // IDA 0x21b24: appends data only when the connection is ours (0x21b34..0x21b54).
+    if connection_matches {
+        state.response_bytes.extend_from_slice(chunk);
+    }
 }
 
 // 0x21b58 — -[UpgradeCheckHelper connectionDidFinishLoading:]
 // demangled: -[UpgradeCheckHelper connectionDidFinishLoading:]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL, id)
 #[doc(alias = "-[UpgradeCheckHelper connectionDidFinishLoading:]")]
-pub fn stub_21b58() -> ! {
-    todo!("0x21b58 -[UpgradeCheckHelper connectionDidFinishLoading:]")
+pub fn stub_21b58(state: &mut UpgradeCheckState, connection_matches: bool) -> bool {
+    // IDA 0x21b58: matching connection released + zeroed, then processCheckForUpdateResponse (0x21b6e..0x21b9a) — returns whether the caller should process the response.
+    if connection_matches {
+        state.connection_open = false;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x21ba0 — -[UpgradeCheckHelper alertView:clickedButtonAtIndex:]
 // demangled: -[UpgradeCheckHelper alertView:clickedButtonAtIndex:]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL, id, int)
 #[doc(alias = "-[UpgradeCheckHelper alertView:clickedButtonAtIndex:]")]
-pub fn stub_21ba0() -> ! {
-    todo!("0x21ba0 -[UpgradeCheckHelper alertView:clickedButtonAtIndex:]")
+pub fn stub_21ba0(is_upgrade_alert: bool, button_index: i32) -> Option<&'static str> {
+    // IDA 0x21ba0: alert identity + button 0 (0x21bb0..0x21bb8) opens itms://itunes.com/apps/robloxmobile (0x21bd8..0x21c14) — returns the URL to open.
+    (is_upgrade_alert && button_index == 0).then_some("itms://itunes.com/apps/robloxmobile")
 }
 
 // 0x21c18 — __GLOBAL__I_a_6
 // demangled: global constructor keyed to_a_6
 // type: 
 #[doc(alias = "global constructor keyed to_a_6")]
-pub fn stub_21c18() -> ! {
-    todo!("0x21c18 global constructor keyed to_a_6")
+pub fn stub_21c18() {
+    // IDA 0x21c18: __GLOBAL__I_a_6 — static init storing boost::system generic_category + system_category into merged globals (was: boost::system::error_category singletons; host maps to std::io error kinds — faithful no-op shell).
 }
 
 // 0x21ce0 — __ZN18iOSSettingsService4InitEv
 // demangled: iOSSettingsService::Init(void)
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::Init(void)")]
-pub fn stub_21ce0() -> ! {
-    todo!("0x21ce0 iOSSettingsService::Init(void)")
+pub fn stub_21ce0() -> Vec<(&'static str, IosSettingKey)> {
+    // IDA 0x21ce0: Init builds the string->ReadValue map (39 entries, 0x21d42..0x227c8) and stores Init defaults on the singleton (0x21d0c..0x227bc; see IosSettingKey::default_int) — returns the reader table.
+    IosSettingKey::all().into_iter().map(|k| (k.name(), k)).collect()
 }
 
 // 0x239ec — __ZN18iOSSettingsService27ReadValueiPadMinimumVersionEPKc
