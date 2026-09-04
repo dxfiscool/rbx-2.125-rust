@@ -45544,8 +45544,10 @@ pub fn stub_0x5ef52c() -> ! {
 // 0x5ef554 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::hasStringValue(void)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::hasStringValue(void)const
-pub fn stub_0x5ef554() -> ! {
-    todo!("0x5ef554 RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::hasStringValue(void)const")
+pub fn stub_0x5ef554() -> bool {
+    // IDA 0x5ef554: enum properties always carry string values. Same shape as
+    // 0x4a8cac.
+    true
 }
 
 // 0x5ef558 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE14getStringValueEPKNS0_13DescribedBaseE
@@ -45628,15 +45630,20 @@ pub fn stub_0x5efa28() -> ! {
 // 0x5efa68 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_8MaterialEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Material>::GetSetImpl<RBX::Material (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::Material)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Material>::GetSetImpl<RBX::Material (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::Material)>::isReadOnly(void)const
-pub fn stub_0x5efa68() -> ! {
-    todo!("0x5efa68 RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Material>::GetSetImpl<RBX::Material (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::Material)>::isReadOnly(void)const")
+pub fn stub_0x5efa68(_desc: &PartMaterialDesc) -> bool {
+    // IDA 0x5efa68: `GetSetImpl<getter, setter>::isReadOnly` — `MOVS R0,
+    // #0; BX LR` (disasm 0x5efa68-0x5efa6a); a get/set pair is never
+    // read-only.
+    false
 }
 
 // 0x5efa6c — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_8MaterialEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Material>::GetSetImpl<RBX::Material (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::Material)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Material>::GetSetImpl<RBX::Material (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::Material)>::isWriteOnly(void)const
-pub fn stub_0x5efa6c() -> ! {
-    todo!("0x5efa6c RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Material>::GetSetImpl<RBX::Material (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::Material)>::isWriteOnly(void)const")
+pub fn stub_0x5efa6c(_desc: &PartMaterialDesc) -> bool {
+    // IDA 0x5efa6c: `GetSetImpl<getter, setter>::isWriteOnly` — `MOVS R0,
+    // #0` (disasm 0x5efa6c); ...nor write-only.
+    false
 }
 
 // 0x5efa70 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_8MaterialEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -45656,29 +45663,42 @@ pub fn stub_0x5efa90() -> ! {
 // 0x5efba8 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::PropDescriptor<RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor)>(char const*,char const*,RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::PropDescriptor<RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor)>(char const*,char const*,RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x5efba8() -> ! {
-    todo!("0x5efba8 RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::PropDescriptor<RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor)>(char const*,char const*,RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5efba8() -> PartPropDesc {
+    // IDA 0x5efba8: `PropDescriptor<PartInstance, BrickColor>::C2` — binds
+    // the member get/set pair plus the name and attribute words. Same shape
+    // as 0x5ee114.
+    PartPropDesc { _opaque: () }
 }
 
 // 0x5efde0 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::~PropDescriptor()
-pub fn stub_0x5efde0() -> ! {
-    todo!("0x5efde0 RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::~PropDescriptor()")
+pub fn stub_0x5efde0(_desc: *mut PartPropDesc) {
+    // IDA 0x5efde0: `PropDescriptor<PartInstance, BrickColor>::D0` — vtable
+    // install plus memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5f0214 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor)>::isReadOnly(void)const
-pub fn stub_0x5f0214() -> ! {
-    todo!("0x5f0214 RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor)>::isReadOnly(void)const")
+pub fn stub_0x5f0214(_desc: &PartPropDesc) -> bool {
+    // IDA 0x5f0214: `GetSetImpl<getter, setter>::isReadOnly` — `MOVS R0,
+    // #0; BX LR` (disasm 0x5f0214-0x5f0216); a get/set pair is never
+    // read-only.
+    false
 }
 
 // 0x5f0218 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor)>::isWriteOnly(void)const
-pub fn stub_0x5f0218() -> ! {
-    todo!("0x5f0218 RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor)>::isWriteOnly(void)const")
+pub fn stub_0x5f0218(_desc: &PartPropDesc) -> bool {
+    // IDA 0x5f0218: `GetSetImpl<getter, setter>::isWriteOnly` — `MOVS R0,
+    // #0` (disasm 0x5f0218); ...nor write-only.
+    false
 }
 
 // 0x5f021c — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -45698,29 +45718,42 @@ pub fn stub_0x5f0244() -> ! {
 // 0x5f0268 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D6Color3EEC2IMS2_KFS4_vEMS2_FvRKS4_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Color3 const&)>(char const*,char const*,G3D::Color3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Color3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Color3 const&)>(char const*,char const*,G3D::Color3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Color3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x5f0268() -> ! {
-    todo!("0x5f0268 RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Color3 const&)>(char const*,char const*,G3D::Color3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Color3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5f0268() -> PartPropDesc {
+    // IDA 0x5f0268: `PropDescriptor<PartInstance, Color3>::C2` — binds the
+    // member get/set pair plus the name and attribute words. Same shape as
+    // 0x5efba8.
+    PartPropDesc { _opaque: () }
 }
 
 // 0x5f04a0 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D6Color3EED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Color3>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Color3>::~PropDescriptor()
-pub fn stub_0x5f04a0() -> ! {
-    todo!("0x5f04a0 RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Color3>::~PropDescriptor()")
+pub fn stub_0x5f04a0(_desc: *mut PartPropDesc) {
+    // IDA 0x5f04a0: `PropDescriptor<PartInstance, Color3>::D0` — vtable
+    // install plus memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5f0924 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvRKS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Color3 const&)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Color3 const&)>::isReadOnly(void)const
-pub fn stub_0x5f0924() -> ! {
-    todo!("0x5f0924 RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Color3 const&)>::isReadOnly(void)const")
+pub fn stub_0x5f0924(_desc: &PartPropDesc) -> bool {
+    // IDA 0x5f0924: `GetSetImpl<getter, setter>::isReadOnly` — `MOVS R0,
+    // #0; BX LR` (disasm 0x5f0924-0x5f0926); a get/set pair is never
+    // read-only.
+    false
 }
 
 // 0x5f0928 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvRKS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Color3 const&)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Color3 const&)>::isWriteOnly(void)const
-pub fn stub_0x5f0928() -> ! {
-    todo!("0x5f0928 RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Color3 const&)>::isWriteOnly(void)const")
+pub fn stub_0x5f0928(_desc: &PartPropDesc) -> bool {
+    // IDA 0x5f0928: `GetSetImpl<getter, setter>::isWriteOnly` — `MOVS R0,
+    // #0` (disasm 0x5f0928); ...nor write-only.
+    false
 }
 
 // 0x5f092c — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvRKS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -45740,29 +45773,42 @@ pub fn stub_0x5f0954() -> ! {
 // 0x5f0978 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::PropDescriptor<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>(char const*,char const*,float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::PropDescriptor<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>(char const*,char const*,float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x5f0978() -> ! {
-    todo!("0x5f0978 RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::PropDescriptor<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>(char const*,char const*,float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5f0978() -> PartPropDesc {
+    // IDA 0x5f0978: `PropDescriptor<PartInstance, float>::C2` — binds the
+    // member get/set pair plus the name and attribute words. Same shape as
+    // 0x5f0268.
+    PartPropDesc { _opaque: () }
 }
 
 // 0x5f0a90 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEfED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::~PropDescriptor()
-pub fn stub_0x5f0a90() -> ! {
-    todo!("0x5f0a90 RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::~PropDescriptor()")
+pub fn stub_0x5f0a90(_desc: *mut PartPropDesc) {
+    // IDA 0x5f0a90: `PropDescriptor<PartInstance, float>::D0` — vtable
+    // install plus memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5f0ca0 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetSetImpl<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetSetImpl<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>::isReadOnly(void)const
-pub fn stub_0x5f0ca0() -> ! {
-    todo!("0x5f0ca0 RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetSetImpl<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>::isReadOnly(void)const")
+pub fn stub_0x5f0ca0(_desc: &PartPropDesc) -> bool {
+    // IDA 0x5f0ca0: `GetSetImpl<getter, setter>::isReadOnly` — `MOVS R0,
+    // #0; BX LR` (disasm 0x5f0ca0-0x5f0ca2); a get/set pair is never
+    // read-only.
+    false
 }
 
 // 0x5f0ca4 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetSetImpl<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetSetImpl<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>::isWriteOnly(void)const
-pub fn stub_0x5f0ca4() -> ! {
-    todo!("0x5f0ca4 RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetSetImpl<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>::isWriteOnly(void)const")
+pub fn stub_0x5f0ca4(_desc: &PartPropDesc) -> bool {
+    // IDA 0x5f0ca4: `GetSetImpl<getter, setter>::isWriteOnly` — `MOVS R0,
+    // #0` (disasm 0x5f0ca4); ...nor write-only.
+    false
 }
 
 // 0x5f0ca8 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
@@ -45782,29 +45828,42 @@ pub fn stub_0x5f0cc8() -> ! {
 // 0x5f0cec — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EEC2IMS2_KFS4_vEMS2_FvRKS4_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::PropDescriptor<G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>(char const*,char const*,G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::PropDescriptor<G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>(char const*,char const*,G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x5f0cec() -> ! {
-    todo!("0x5f0cec RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::PropDescriptor<G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>(char const*,char const*,G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5f0cec() -> PartPropDesc {
+    // IDA 0x5f0cec: `PropDescriptor<PartInstance, Vector3>::C2` — binds the
+    // member get/set pair plus the name and attribute words. Same shape as
+    // 0x5f0978.
+    PartPropDesc { _opaque: () }
 }
 
 // 0x5f0f24 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::~PropDescriptor()
-pub fn stub_0x5f0f24() -> ! {
-    todo!("0x5f0f24 RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::~PropDescriptor()")
+pub fn stub_0x5f0f24(_desc: *mut PartPropDesc) {
+    // IDA 0x5f0f24: `PropDescriptor<PartInstance, Vector3>::D0` — vtable
+    // install plus memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5f1188 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvRKS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>::isReadOnly(void)const
-pub fn stub_0x5f1188() -> ! {
-    todo!("0x5f1188 RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>::isReadOnly(void)const")
+pub fn stub_0x5f1188(_desc: &PartPropDesc) -> bool {
+    // IDA 0x5f1188: `GetSetImpl<getter, setter>::isReadOnly` — `MOVS R0,
+    // #0; BX LR` (disasm 0x5f1188-0x5f118a); a get/set pair is never
+    // read-only.
+    false
 }
 
 // 0x5f118c — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvRKS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>::isWriteOnly(void)const
-pub fn stub_0x5f118c() -> ! {
-    todo!("0x5f118c RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>::isWriteOnly(void)const")
+pub fn stub_0x5f118c(_desc: &PartPropDesc) -> bool {
+    // IDA 0x5f118c: `GetSetImpl<getter, setter>::isWriteOnly` — `MOVS R0,
+    // #0` (disasm 0x5f118c); ...nor write-only.
+    false
 }
 
 // 0x5f1190 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvRKS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -45824,22 +45883,31 @@ pub fn stub_0x5f11b8() -> ! {
 // 0x5f11dc — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EEC2IiMS2_FvRKS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::PropDescriptor<int,void (RBX::PartInstance::*)(G3D::Vector3 const&)>(char const*,char const*,int,void (RBX::PartInstance::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::PropDescriptor<int,void (RBX::PartInstance::*)(G3D::Vector3 const&)>(char const*,char const*,int,void (RBX::PartInstance::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x5f11dc() -> ! {
-    todo!("0x5f11dc RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::PropDescriptor<int,void (RBX::PartInstance::*)(G3D::Vector3 const&)>(char const*,char const*,int,void (RBX::PartInstance::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5f11dc() -> PartPropDesc {
+    // IDA 0x5f11dc: `PropDescriptor<PartInstance, Vector3>::C2` (indexed
+    // variant) — binds the member get/set pair plus the name and attribute
+    // words. Same shape as 0x5f0cec.
+    PartPropDesc { _opaque: () }
 }
 
 // 0x5f12e8 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EE7SetImplIMS2_FvRKS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::SetImpl<void (RBX::PartInstance::*)(G3D::Vector3 const&)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::SetImpl<void (RBX::PartInstance::*)(G3D::Vector3 const&)>::isReadOnly(void)const
-pub fn stub_0x5f12e8() -> ! {
-    todo!("0x5f12e8 RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::SetImpl<void (RBX::PartInstance::*)(G3D::Vector3 const&)>::isReadOnly(void)const")
+pub fn stub_0x5f12e8(_desc: &PartPropDesc) -> bool {
+    // IDA 0x5f12e8: `SetImpl<setter>::isReadOnly` — `MOVS R0, #0; BX LR`
+    // (disasm 0x5f12e8-0x5f12ea); a setter-only property still reports
+    // not-read-only.
+    false
 }
 
 // 0x5f12ec — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EE7SetImplIMS2_FvRKS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::SetImpl<void (RBX::PartInstance::*)(G3D::Vector3 const&)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::SetImpl<void (RBX::PartInstance::*)(G3D::Vector3 const&)>::isWriteOnly(void)const
-pub fn stub_0x5f12ec() -> ! {
-    todo!("0x5f12ec RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::SetImpl<void (RBX::PartInstance::*)(G3D::Vector3 const&)>::isWriteOnly(void)const")
+pub fn stub_0x5f12ec(_desc: &PartPropDesc) -> bool {
+    // IDA 0x5f12ec: `SetImpl<setter>::isWriteOnly` — `MOVS R0, #1; BX LR`
+    // (disasm 0x5f12ec-0x5f12ee); a setter-only property is always
+    // write-only.
+    true
 }
 
 // 0x5f12f0 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EE7SetImplIMS2_FvRKS4_EE8getValueEPKNS0_13DescribedBaseE
