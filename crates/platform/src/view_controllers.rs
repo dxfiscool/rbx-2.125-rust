@@ -1306,6 +1306,23 @@ impl CrashReporter {
 #[derive(Debug, Default)]
 pub struct UpgradeCheckHelper {
     check_calls: std::sync::atomic::AtomicU32,
+    // Batch 5 (IDA 0x20e78..0x21ba0): alert/response/connection state.
+    initialized: std::sync::atomic::AtomicBool,
+    alert_buttons: parking_lot::Mutex<Vec<String>>,
+    response_data: parking_lot::Mutex<Vec<u8>>,
+    has_connection: std::sync::atomic::AtomicBool,
+    connection_releases: std::sync::atomic::AtomicU32,
+    check_requests: std::sync::atomic::AtomicU32,
+    last_check_url: parking_lot::Mutex<String>,
+    connection_error_alerts: std::sync::atomic::AtomicU32,
+    alert_title_key: parking_lot::Mutex<&'static str>,
+    alert_message: parking_lot::Mutex<String>,
+    ignore_button_enabled: std::sync::atomic::AtomicBool,
+    alert_shows: std::sync::atomic::AtomicU32,
+    last_upgrade_action: parking_lot::Mutex<UpgradeAction>,
+    json_errors: std::sync::atomic::AtomicU32,
+    finish_calls: std::sync::atomic::AtomicU32,
+    app_store_opens: std::sync::atomic::AtomicU32,
 }
 
 impl UpgradeCheckHelper {
@@ -1320,6 +1337,226 @@ impl UpgradeCheckHelper {
     }
     pub fn check_call_count() -> u32 {
         Self::shared().check_calls.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x20e78 — +[UpgradeCheckHelper getUpgradeCheckHelper]
+    // type: id __cdecl(id, SEL)
+    // IDA 0x20e78
+    #[doc(alias = "+[UpgradeCheckHelper getUpgradeCheckHelper]")]
+    #[doc = "+[UpgradeCheckHelper getUpgradeCheckHelper]"]
+    pub fn shared_instance() -> &'static Self {
+        // `dispatch_once` singleton returning `dword_130C414`
+        // (IDA 0x20ea4..0x20ece); the once-block runs inline here.
+        Self::shared()
+    }
+    // 0x20ed4 — ___43+[UpgradeCheckHelper getUpgradeCheckHelper]_block_invoke
+    // IDA 0x20ed4
+    #[doc(alias = "___43+[UpgradeCheckHelper getUpgradeCheckHelper]_block_invoke")]
+    #[doc = "___43+[UpgradeCheckHelper getUpgradeCheckHelper]_block_invoke"]
+    pub fn shared_block_invoke(&self) {
+        // `alloc` + `init` into `dword_130C414` (IDA 0x20ee6..0x20f04).
+        self.init_helper();
+    }
+    // 0x20f1c — -[UpgradeCheckHelper init]
+    // type: UpgradeCheckHelper *__cdecl(UpgradeCheckHelper *self, SEL)
+    // IDA 0x20f1c
+    #[doc(alias = "-[UpgradeCheckHelper init]")]
+    #[doc = "-[UpgradeCheckHelper init]"]
+    pub fn init_helper(&self) {
+        // Alert view with `self` delegate + `UpgradeButtonText` button
+        // (IDA 0x20f6c..0x20ff2), fresh response data, no connection
+        // (IDA 0x21004..0x21028).
+        self.alert_buttons.lock().push("UpgradeButtonText".to_owned());
+        self.response_data.lock().clear();
+        self.has_connection.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.initialized.store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn did_init(&self) -> bool {
+        self.initialized.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x21038 — -[UpgradeCheckHelper dealloc]
+    // type: void __cdecl(UpgradeCheckHelper *self, SEL)
+    // IDA 0x21038
+    #[doc(alias = "-[UpgradeCheckHelper dealloc]")]
+    #[doc = "-[UpgradeCheckHelper dealloc]"]
+    pub fn dealloc_helper(&self) {
+        // Alert view + response data releases, conditional connection
+        // release (IDA 0x2105c..0x21088), then super `dealloc` (out of slice).
+        if self.has_connection.load(std::sync::atomic::Ordering::SeqCst) {
+            self.connection_releases.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            self.has_connection.store(false, std::sync::atomic::Ordering::SeqCst);
+        }
+        self.connection_releases.fetch_add(2, std::sync::atomic::Ordering::SeqCst);
+        self.alert_buttons.lock().clear();
+        self.response_data.lock().clear();
+    }
+    // 0x210b4 — +[UpgradeCheckHelper getUpgradeUrl]
+    // type: id __cdecl(id, SEL)
+    // IDA 0x210b4
+    #[doc(alias = "+[UpgradeCheckHelper getUpgradeUrl]")]
+    #[doc = "+[UpgradeCheckHelper getUpgradeUrl]"]
+    pub fn upgrade_url(base_url: &str) -> String {
+        // `RbxBaseUrl` + `mobileapi/check-app-version?appVersion=%@`
+        // (IDA 0x210d0..0x210fa).
+        format!("{}mobileapi/check-app-version?appVersion=%@", base_url)
+    }
+    // 0x2111c — -[UpgradeCheckHelper getAlertViewButton:]
+    // type: id __cdecl(UpgradeCheckHelper *self, SEL, id)
+    // IDA 0x2111c
+    #[doc(alias = "-[UpgradeCheckHelper getAlertViewButton:]")]
+    #[doc = "-[UpgradeCheckHelper getAlertViewButton:]"]
+    pub fn get_alert_view_button(&self, title: &str) -> Option<String> {
+        // Enumerates alert subviews for the `UIButton` whose `currentTitle`
+        // equals `a3` (IDA 0x2116a..0x2124c); nil when absent.
+        self.alert_buttons.lock().iter().find(|b| b.as_str() == title).cloned()
+    }
+    // 0x21254 — -[UpgradeCheckHelper makeUpgradeRequest:]
+    // type: void __cdecl(UpgradeCheckHelper *self, SEL, id)
+    // IDA 0x21254
+    #[doc(alias = "-[UpgradeCheckHelper makeUpgradeRequest:]")]
+    #[doc = "-[UpgradeCheckHelper makeUpgradeRequest:]"]
+    pub fn make_upgrade_request(&self, url: &str, has_request: bool) {
+        // Response data reset (IDA 0x21278); a nil request only logs
+        // (IDA 0x2127c..0x21288); otherwise a connection opens with `self`
+        // as delegate (IDA 0x212a4..0x212c8).
+        self.response_data.lock().clear();
+        *self.last_check_url.lock() = url.to_owned();
+        if has_request {
+            self.has_connection.store(true, std::sync::atomic::Ordering::SeqCst);
+            self.check_requests.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        }
+    }
+    pub fn check_request_count(&self) -> u32 {
+        Self::shared().check_requests.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn last_check_url(&self) -> String {
+        Self::shared().last_check_url.lock().clone()
+    }
+    // 0x212cc — +[UpgradeCheckHelper checkForUpdate]
+    // type: void __cdecl(id, SEL)
+    // IDA 0x212cc
+    #[doc(alias = "+[UpgradeCheckHelper checkForUpdate]")]
+    #[doc = "+[UpgradeCheckHelper checkForUpdate]"]
+    pub fn check_for_update_request(&self, short_version: Option<&str>, reachable: bool, base_url: &str) {
+        // Without `CFBundleShortVersionString` nothing happens
+        // (IDA 0x21322); offline shows the `ConnectionError` alert
+        // (IDA 0x2134e..0x2143e); otherwise `AppiOSV<ver>` formats into the
+        // upgrade URL and a request opens (IDA 0x21380..0x214a0).
+        let Some(version) = short_version else { return };
+        if !reachable {
+            self.connection_error_alerts.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            RobloxAlert::alert_with_message("ConnectionError");
+            return;
+        }
+        let tagged = format!("AppiOSV{}", version);
+        let url = Self::upgrade_url(base_url).replacen("%@", &tagged, 1);
+        self.make_upgrade_request(&url, true);
+    }
+    pub fn connection_error_alert_count(&self) -> u32 {
+        Self::shared().connection_error_alerts.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x214a4 — -[UpgradeCheckHelper processCheckForUpdateResponse]
+    // type: void __cdecl(UpgradeCheckHelper *self, SEL)
+    // IDA 0x214a4
+    #[doc(alias = "-[UpgradeCheckHelper processCheckForUpdateResponse]")]
+    #[doc = "-[UpgradeCheckHelper processCheckForUpdateResponse]"]
+    pub fn process_check_for_update_response(&self, action: UpgradeAction, message: Option<&str>, json_ok: bool) {
+        // JSON parse failure logs via StandardOut (IDA 0x214e2..0x21814);
+        // `Recommended` titles the alert `RecommendUpgradeTitle` with
+        // `RecommendUpgradeBody` fallback, enabling (or adding) the ignore
+        // button (IDA 0x21618..0x21a74); `Required` uses the
+        // `RequireUpgrade*` keys and disables ignore (IDA 0x21850..0x219ea);
+        // both show via the main-queue block inline.
+        if !json_ok {
+            self.json_errors.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            return;
+        }
+        *self.last_upgrade_action.lock() = action;
+        match action {
+            UpgradeAction::Recommended => {
+                *self.alert_title_key.lock() = "RecommendUpgradeTitle";
+                *self.alert_message.lock() = message.unwrap_or("RecommendUpgradeBody").to_owned();
+                if self.get_alert_view_button("IgnoreButtonText").is_none() {
+                    self.alert_buttons.lock().push("IgnoreButtonText".to_owned());
+                }
+                self.ignore_button_enabled.store(true, std::sync::atomic::Ordering::SeqCst);
+                self.process_response_show_block();
+            }
+            UpgradeAction::Required => {
+                *self.alert_title_key.lock() = "RequireUpgradeTitle";
+                *self.alert_message.lock() = message.unwrap_or("RequireUpgradeBody").to_owned();
+                self.ignore_button_enabled.store(false, std::sync::atomic::Ordering::SeqCst);
+                self.process_response_show_block_141();
+            }
+            _ => {}
+        }
+    }
+    pub fn last_upgrade_action(&self) -> UpgradeAction {
+        Self::shared().last_upgrade_action.lock().clone()
+    }
+    pub fn alert_message(&self) -> String {
+        Self::shared().alert_message.lock().clone()
+    }
+    // 0x21abc — ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke
+    // IDA 0x21abc
+    #[doc(alias = "___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke")]
+    #[doc = "___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke"]
+    pub fn process_response_show_block(&self) {
+        // `upgradeAlertView show` (IDA 0x21abc).
+        self.alert_shows.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    // 0x21af0 — ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke141
+    // IDA 0x21af0
+    #[doc(alias = "___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke141")]
+    #[doc = "___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke141"]
+    pub fn process_response_show_block_141(&self) {
+        // `upgradeAlertView show` (IDA 0x21af0).
+        self.alert_shows.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn alert_show_count(&self) -> u32 {
+        Self::shared().alert_shows.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x21b24 — -[UpgradeCheckHelper connection:didReceiveData:]
+    // type: void __cdecl(UpgradeCheckHelper *self, SEL, id, id)
+    // IDA 0x21b24
+    #[doc(alias = "-[UpgradeCheckHelper connection:didReceiveData:]")]
+    #[doc = "-[UpgradeCheckHelper connection:didReceiveData:]"]
+    pub fn connection_did_receive_data(&self, is_self_connection: bool, bytes: &[u8]) {
+        // Appends only for the live connection (IDA 0x21b34..0x21b54).
+        if is_self_connection {
+            self.response_data.lock().extend_from_slice(bytes);
+        }
+    }
+    pub fn response_len(&self) -> usize {
+        Self::shared().response_data.lock().len()
+    }
+    // 0x21b58 — -[UpgradeCheckHelper connectionDidFinishLoading:]
+    // type: void __cdecl(UpgradeCheckHelper *self, SEL, id)
+    // IDA 0x21b58
+    #[doc(alias = "-[UpgradeCheckHelper connectionDidFinishLoading:]")]
+    #[doc = "-[UpgradeCheckHelper connectionDidFinishLoading:]"]
+    pub fn connection_did_finish_loading(&self, is_self_connection: bool) {
+        // Releases and clears the live connection, then processes the
+        // response (IDA 0x21b6e..0x21b9a).
+        if is_self_connection {
+            self.connection_releases.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            self.has_connection.store(false, std::sync::atomic::Ordering::SeqCst);
+            self.finish_calls.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        }
+    }
+    // 0x21ba0 — -[UpgradeCheckHelper alertView:clickedButtonAtIndex:]
+    // type: void __cdecl(UpgradeCheckHelper *self, SEL, id, int)
+    // IDA 0x21ba0
+    #[doc(alias = "-[UpgradeCheckHelper alertView:clickedButtonAtIndex:]")]
+    #[doc = "-[UpgradeCheckHelper alertView:clickedButtonAtIndex:]"]
+    pub fn alert_view_clicked_button(&self, is_upgrade_alert: bool, button_index: i32) {
+        // Button 0 of the upgrade alert opens the App Store URL
+        // (IDA 0x21bb0..0x21c14, `itms://itunes.com/apps/robloxmobile`).
+        if is_upgrade_alert && button_index == 0 {
+            self.app_store_opens.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        }
+    }
+    pub fn app_store_open_count(&self) -> u32 {
+        Self::shared().app_store_opens.load(std::sync::atomic::Ordering::SeqCst)
     }
 }
 
@@ -3254,6 +3491,16 @@ impl AboutController {
         // Retained `_domainName` ivar store.
         *self.domain_name.lock() = label;
     }
+}
+/// Upgrade action parsed from the `mobileapi/check-app-version` response
+/// (IDA 0x214a4: `UpgradeAction` is `Recommended`, `Required`, or other).
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum UpgradeAction {
+    #[default]
+    None,
+    Recommended,
+    Required,
+    Other,
 }
 
 /// Minimal `RobloxAlert` counterpart: the `UIAlertView` rows behind

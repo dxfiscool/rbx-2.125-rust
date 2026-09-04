@@ -9998,99 +9998,113 @@ pub fn stub_20e54(label: crate::view_controllers::ObjCId) {
 // 0x20e78 — +[UpgradeCheckHelper getUpgradeCheckHelper]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[UpgradeCheckHelper getUpgradeCheckHelper]")]
-pub fn stub_20e78() -> ! {
-    todo!("0x20e78 +[UpgradeCheckHelper getUpgradeCheckHelper]")
+pub fn stub_20e78() -> &'static crate::view_controllers::UpgradeCheckHelper {
+    // delegate of crate::view_controllers (IDA 0x20e78)
+    crate::view_controllers::UpgradeCheckHelper::shared_instance()
 }
 
 // 0x20ed4 — ___43+[UpgradeCheckHelper getUpgradeCheckHelper]_block_invoke
 // type: (unknown)
 #[doc(alias = "___43+[UpgradeCheckHelper getUpgradeCheckHelper]_block_invoke")]
-pub fn stub_20ed4() -> ! {
-    todo!("0x20ed4 ___43+[UpgradeCheckHelper getUpgradeCheckHelper]_block_invoke")
+pub fn stub_20ed4() {
+    // delegate of crate::view_controllers (IDA 0x20ed4)
+    crate::view_controllers::UpgradeCheckHelper::shared_instance().shared_block_invoke();
 }
 
 // 0x20f1c — -[UpgradeCheckHelper init]
 // type: UpgradeCheckHelper *__cdecl(UpgradeCheckHelper *self, SEL)
 #[doc(alias = "-[UpgradeCheckHelper init]")]
-pub fn stub_20f1c() -> ! {
-    todo!("0x20f1c -[UpgradeCheckHelper init]")
+pub fn stub_20f1c() {
+    // delegate of crate::view_controllers (IDA 0x20f1c)
+    crate::view_controllers::UpgradeCheckHelper::shared_instance().init_helper();
 }
 
 // 0x21038 — -[UpgradeCheckHelper dealloc]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL)
 #[doc(alias = "-[UpgradeCheckHelper dealloc]")]
-pub fn stub_21038() -> ! {
-    todo!("0x21038 -[UpgradeCheckHelper dealloc]")
+pub fn stub_21038() {
+    // delegate of crate::view_controllers (IDA 0x21038)
+    crate::view_controllers::UpgradeCheckHelper::shared_instance().dealloc_helper();
 }
 
 // 0x210b4 — +[UpgradeCheckHelper getUpgradeUrl]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[UpgradeCheckHelper getUpgradeUrl]")]
-pub fn stub_210b4() -> ! {
-    todo!("0x210b4 +[UpgradeCheckHelper getUpgradeUrl]")
+pub fn stub_210b4(base_url: &str) -> String {
+    // delegate of crate::view_controllers (IDA 0x210b4)
+    crate::view_controllers::UpgradeCheckHelper::upgrade_url(base_url)
 }
 
 // 0x2111c — -[UpgradeCheckHelper getAlertViewButton:]
 // type: id __cdecl(UpgradeCheckHelper *self, SEL, id)
 #[doc(alias = "-[UpgradeCheckHelper getAlertViewButton:]")]
-pub fn stub_2111c() -> ! {
-    todo!("0x2111c -[UpgradeCheckHelper getAlertViewButton:]")
+pub fn stub_2111c(title: &str) -> Option<String> {
+    // delegate of crate::view_controllers (IDA 0x2111c)
+    crate::view_controllers::UpgradeCheckHelper::shared_instance().get_alert_view_button(title)
 }
 
 // 0x21254 — -[UpgradeCheckHelper makeUpgradeRequest:]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL, id)
 #[doc(alias = "-[UpgradeCheckHelper makeUpgradeRequest:]")]
-pub fn stub_21254() -> ! {
-    todo!("0x21254 -[UpgradeCheckHelper makeUpgradeRequest:]")
+pub fn stub_21254(url: &str, has_request: bool) {
+    // delegate of crate::view_controllers (IDA 0x21254)
+    crate::view_controllers::UpgradeCheckHelper::shared_instance().make_upgrade_request(url, has_request);
 }
 
 // 0x212cc — +[UpgradeCheckHelper checkForUpdate]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[UpgradeCheckHelper checkForUpdate]")]
-pub fn stub_212cc() -> ! {
-    todo!("0x212cc +[UpgradeCheckHelper checkForUpdate]")
+pub fn stub_212cc(short_version: Option<&str>, reachable: bool, base_url: &str) {
+    // delegate of crate::view_controllers (IDA 0x212cc)
+    crate::view_controllers::UpgradeCheckHelper::shared_instance().check_for_update_request(short_version, reachable, base_url);
 }
 
 // 0x214a4 — -[UpgradeCheckHelper processCheckForUpdateResponse]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL)
 #[doc(alias = "-[UpgradeCheckHelper processCheckForUpdateResponse]")]
-pub fn stub_214a4() -> ! {
-    todo!("0x214a4 -[UpgradeCheckHelper processCheckForUpdateResponse]")
+pub fn stub_214a4(action: crate::view_controllers::UpgradeAction, message: Option<&str>, json_ok: bool) {
+    // delegate of crate::view_controllers (IDA 0x214a4)
+    crate::view_controllers::UpgradeCheckHelper::shared_instance().process_check_for_update_response(action, message, json_ok);
 }
 
 // 0x21abc — ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke")]
-pub fn stub_21abc() -> ! {
-    todo!("0x21abc ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke")
+pub fn stub_21abc() {
+    // delegate of crate::view_controllers (IDA 0x21abc)
+    crate::view_controllers::UpgradeCheckHelper::shared_instance().process_response_show_block();
 }
 
 // 0x21af0 — ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke141
 // type: (unknown)
 #[doc(alias = "___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke141")]
-pub fn stub_21af0() -> ! {
-    todo!("0x21af0 ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke141")
+pub fn stub_21af0() {
+    // delegate of crate::view_controllers (IDA 0x21af0)
+    crate::view_controllers::UpgradeCheckHelper::shared_instance().process_response_show_block_141();
 }
 
 // 0x21b24 — -[UpgradeCheckHelper connection:didReceiveData:]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL, id, id)
 #[doc(alias = "-[UpgradeCheckHelper connection:didReceiveData:]")]
-pub fn stub_21b24() -> ! {
-    todo!("0x21b24 -[UpgradeCheckHelper connection:didReceiveData:]")
+pub fn stub_21b24(is_self_connection: bool, bytes: &[u8]) {
+    // delegate of crate::view_controllers (IDA 0x21b24)
+    crate::view_controllers::UpgradeCheckHelper::shared_instance().connection_did_receive_data(is_self_connection, bytes);
 }
 
 // 0x21b58 — -[UpgradeCheckHelper connectionDidFinishLoading:]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL, id)
 #[doc(alias = "-[UpgradeCheckHelper connectionDidFinishLoading:]")]
-pub fn stub_21b58() -> ! {
-    todo!("0x21b58 -[UpgradeCheckHelper connectionDidFinishLoading:]")
+pub fn stub_21b58(is_self_connection: bool) {
+    // delegate of crate::view_controllers (IDA 0x21b58)
+    crate::view_controllers::UpgradeCheckHelper::shared_instance().connection_did_finish_loading(is_self_connection);
 }
 
 // 0x21ba0 — -[UpgradeCheckHelper alertView:clickedButtonAtIndex:]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL, id, int)
 #[doc(alias = "-[UpgradeCheckHelper alertView:clickedButtonAtIndex:]")]
-pub fn stub_21ba0() -> ! {
-    todo!("0x21ba0 -[UpgradeCheckHelper alertView:clickedButtonAtIndex:]")
+pub fn stub_21ba0(is_upgrade_alert: bool, button_index: i32) {
+    // delegate of crate::view_controllers (IDA 0x21ba0)
+    crate::view_controllers::UpgradeCheckHelper::shared_instance().alert_view_clicked_button(is_upgrade_alert, button_index);
 }
 
 // 0x3588c — -[Reachability startNotifier]
@@ -22492,208 +22506,234 @@ pub fn stub_f06ee0() -> ! {
 // mangled: __ZN18iOSSettingsService4InitEv
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::Init(void)")]
-pub fn stub_21ce0() -> ! {
-    todo!("0x21ce0 iOSSettingsService::Init(void)")
+pub fn stub_21ce0() {
+    // delegate of crate::ios_settings (IDA 0x21ce0)
+    crate::ios_settings::IosSettingsService::init();
 }
 
 // 0x239ec — iOSSettingsService::ReadValueiPadMinimumVersion(char const*)
 // mangled: __ZN18iOSSettingsService27ReadValueiPadMinimumVersionEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPadMinimumVersion(char const*)")]
-pub fn stub_239ec() -> ! {
-    todo!("0x239ec iOSSettingsService::ReadValueiPadMinimumVersion(char const*)")
+pub fn stub_239ec(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x239ec)
+    crate::ios_settings::IosSettingsService::read_value_ipad_minimum_version(text)
 }
 
 // 0x23b50 — iOSSettingsService::ReadValueiPadMaximumVersion(char const*)
 // mangled: __ZN18iOSSettingsService27ReadValueiPadMaximumVersionEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPadMaximumVersion(char const*)")]
-pub fn stub_23b50() -> ! {
-    todo!("0x23b50 iOSSettingsService::ReadValueiPadMaximumVersion(char const*)")
+pub fn stub_23b50(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23b50)
+    crate::ios_settings::IosSettingsService::read_value_ipad_maximum_version(text)
 }
 
 // 0x23b68 — iOSSettingsService::ReadValueiPhoneMinimumVersion(char const*)
 // mangled: __ZN18iOSSettingsService29ReadValueiPhoneMinimumVersionEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPhoneMinimumVersion(char const*)")]
-pub fn stub_23b68() -> ! {
-    todo!("0x23b68 iOSSettingsService::ReadValueiPhoneMinimumVersion(char const*)")
+pub fn stub_23b68(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23b68)
+    crate::ios_settings::IosSettingsService::read_value_iphone_minimum_version(text)
 }
 
 // 0x23b80 — iOSSettingsService::ReadValueiPhoneMaximumVersion(char const*)
 // mangled: __ZN18iOSSettingsService29ReadValueiPhoneMaximumVersionEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPhoneMaximumVersion(char const*)")]
-pub fn stub_23b80() -> ! {
-    todo!("0x23b80 iOSSettingsService::ReadValueiPhoneMaximumVersion(char const*)")
+pub fn stub_23b80(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23b80)
+    crate::ios_settings::IosSettingsService::read_value_iphone_maximum_version(text)
 }
 
 // 0x23b98 — iOSSettingsService::ReadValueiPodMinimumVersion(char const*)
 // mangled: __ZN18iOSSettingsService27ReadValueiPodMinimumVersionEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPodMinimumVersion(char const*)")]
-pub fn stub_23b98() -> ! {
-    todo!("0x23b98 iOSSettingsService::ReadValueiPodMinimumVersion(char const*)")
+pub fn stub_23b98(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23b98)
+    crate::ios_settings::IosSettingsService::read_value_ipod_minimum_version(text)
 }
 
 // 0x23bb0 — iOSSettingsService::ReadValueiPodMaximumVersion(char const*)
 // mangled: __ZN18iOSSettingsService27ReadValueiPodMaximumVersionEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPodMaximumVersion(char const*)")]
-pub fn stub_23bb0() -> ! {
-    todo!("0x23bb0 iOSSettingsService::ReadValueiPodMaximumVersion(char const*)")
+pub fn stub_23bb0(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23bb0)
+    crate::ios_settings::IosSettingsService::read_value_ipod_maximum_version(text)
 }
 
 // 0x23bc8 — iOSSettingsService::ReadValueDisablePlayButtonForAll(char const*)
 // mangled: __ZN18iOSSettingsService32ReadValueDisablePlayButtonForAllEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueDisablePlayButtonForAll(char const*)")]
-pub fn stub_23bc8() -> ! {
-    todo!("0x23bc8 iOSSettingsService::ReadValueDisablePlayButtonForAll(char const*)")
+pub fn stub_23bc8(text: &str) -> bool {
+    // delegate of crate::ios_settings (IDA 0x23bc8)
+    crate::ios_settings::IosSettingsService::read_value_disable_play_button_for_all(text)
 }
 
 // 0x23be4 — iOSSettingsService::ReadValueDisablePlayButtonForNonBC(char const*)
 // mangled: __ZN18iOSSettingsService34ReadValueDisablePlayButtonForNonBCEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueDisablePlayButtonForNonBC(char const*)")]
-pub fn stub_23be4() -> ! {
-    todo!("0x23be4 iOSSettingsService::ReadValueDisablePlayButtonForNonBC(char const*)")
+pub fn stub_23be4(text: &str) -> bool {
+    // delegate of crate::ios_settings (IDA 0x23be4)
+    crate::ios_settings::IosSettingsService::read_value_disable_play_button_for_non_bc(text)
 }
 
 // 0x23c00 — iOSSettingsService::ReadValueiPad1_MaximumIdealParts(char const*)
 // mangled: __ZN18iOSSettingsService32ReadValueiPad1_MaximumIdealPartsEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPad1_MaximumIdealParts(char const*)")]
-pub fn stub_23c00() -> ! {
-    todo!("0x23c00 iOSSettingsService::ReadValueiPad1_MaximumIdealParts(char const*)")
+pub fn stub_23c00(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23c00)
+    crate::ios_settings::IosSettingsService::read_value_ipad1_maximum_ideal_parts(text)
 }
 
 // 0x23c18 — iOSSettingsService::ReadValueiPad2_MaximumIdealParts(char const*)
 // mangled: __ZN18iOSSettingsService32ReadValueiPad2_MaximumIdealPartsEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPad2_MaximumIdealParts(char const*)")]
-pub fn stub_23c18() -> ! {
-    todo!("0x23c18 iOSSettingsService::ReadValueiPad2_MaximumIdealParts(char const*)")
+pub fn stub_23c18(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23c18)
+    crate::ios_settings::IosSettingsService::read_value_ipad2_maximum_ideal_parts(text)
 }
 
 // 0x23c30 — iOSSettingsService::ReadValueiPad3_MaximumIdealParts(char const*)
 // mangled: __ZN18iOSSettingsService32ReadValueiPad3_MaximumIdealPartsEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPad3_MaximumIdealParts(char const*)")]
-pub fn stub_23c30() -> ! {
-    todo!("0x23c30 iOSSettingsService::ReadValueiPad3_MaximumIdealParts(char const*)")
+pub fn stub_23c30(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23c30)
+    crate::ios_settings::IosSettingsService::read_value_ipad3_maximum_ideal_parts(text)
 }
 
 // 0x23c48 — iOSSettingsService::ReadValueiPad4_MaximumIdealParts(char const*)
 // mangled: __ZN18iOSSettingsService32ReadValueiPad4_MaximumIdealPartsEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPad4_MaximumIdealParts(char const*)")]
-pub fn stub_23c48() -> ! {
-    todo!("0x23c48 iOSSettingsService::ReadValueiPad4_MaximumIdealParts(char const*)")
+pub fn stub_23c48(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23c48)
+    crate::ios_settings::IosSettingsService::read_value_ipad4_maximum_ideal_parts(text)
 }
 
 // 0x23c60 — iOSSettingsService::ReadValueiPod4_MaximumIdealParts(char const*)
 // mangled: __ZN18iOSSettingsService32ReadValueiPod4_MaximumIdealPartsEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPod4_MaximumIdealParts(char const*)")]
-pub fn stub_23c60() -> ! {
-    todo!("0x23c60 iOSSettingsService::ReadValueiPod4_MaximumIdealParts(char const*)")
+pub fn stub_23c60(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23c60)
+    crate::ios_settings::IosSettingsService::read_value_ipod4_maximum_ideal_parts(text)
 }
 
 // 0x23c78 — iOSSettingsService::ReadValueiPod5_MaximumIdealParts(char const*)
 // mangled: __ZN18iOSSettingsService32ReadValueiPod5_MaximumIdealPartsEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPod5_MaximumIdealParts(char const*)")]
-pub fn stub_23c78() -> ! {
-    todo!("0x23c78 iOSSettingsService::ReadValueiPod5_MaximumIdealParts(char const*)")
+pub fn stub_23c78(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23c78)
+    crate::ios_settings::IosSettingsService::read_value_ipod5_maximum_ideal_parts(text)
 }
 
 // 0x23c90 — iOSSettingsService::ReadValueiPhone4s_MaximumIdealParts(char const*)
 // mangled: __ZN18iOSSettingsService35ReadValueiPhone4s_MaximumIdealPartsEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPhone4s_MaximumIdealParts(char const*)")]
-pub fn stub_23c90() -> ! {
-    todo!("0x23c90 iOSSettingsService::ReadValueiPhone4s_MaximumIdealParts(char const*)")
+pub fn stub_23c90(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23c90)
+    crate::ios_settings::IosSettingsService::read_value_iphone4s_maximum_ideal_parts(text)
 }
 
 // 0x23ca8 — iOSSettingsService::ReadValueiPhone5_MaximumIdealParts(char const*)
 // mangled: __ZN18iOSSettingsService34ReadValueiPhone5_MaximumIdealPartsEPKc
 // type: int __fastcall(iOSSettingsService *this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPhone5_MaximumIdealParts(char const*)")]
-pub fn stub_23ca8() -> ! {
-    todo!("0x23ca8 iOSSettingsService::ReadValueiPhone5_MaximumIdealParts(char const*)")
+pub fn stub_23ca8(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23ca8)
+    crate::ios_settings::IosSettingsService::read_value_iphone5_maximum_ideal_parts(text)
 }
 
 // 0x23cc0 — iOSSettingsService::ReadValueTimeIntervalBetweenRobuxPurchaseInMinutes(char const*)
 // mangled: __ZN18iOSSettingsService50ReadValueTimeIntervalBetweenRobuxPurchaseInMinutesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueTimeIntervalBetweenRobuxPurchaseInMinutes(char const*)")]
-pub fn stub_23cc0() -> ! {
-    todo!("0x23cc0 iOSSettingsService::ReadValueTimeIntervalBetweenRobuxPurchaseInMinutes(char const*)")
+pub fn stub_23cc0(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23cc0)
+    crate::ios_settings::IosSettingsService::read_value_time_interval_between_robux_purchase_in_minutes(text)
 }
 
 // 0x23cd8 — iOSSettingsService::ReadValueTimeIntervalBetweenBCPurchaseInMinutes(char const*)
 // mangled: __ZN18iOSSettingsService47ReadValueTimeIntervalBetweenBCPurchaseInMinutesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueTimeIntervalBetweenBCPurchaseInMinutes(char const*)")]
-pub fn stub_23cd8() -> ! {
-    todo!("0x23cd8 iOSSettingsService::ReadValueTimeIntervalBetweenBCPurchaseInMinutes(char const*)")
+pub fn stub_23cd8(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23cd8)
+    crate::ios_settings::IosSettingsService::read_value_time_interval_between_bc_purchase_in_minutes(text)
 }
 
 // 0x23cf0 — iOSSettingsService::ReadValueTimeIntervalBetweenCatalogPurchaseInMinutes(char const*)
 // mangled: __ZN18iOSSettingsService52ReadValueTimeIntervalBetweenCatalogPurchaseInMinutesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueTimeIntervalBetweenCatalogPurchaseInMinutes(char const*)")]
-pub fn stub_23cf0() -> ! {
-    todo!("0x23cf0 iOSSettingsService::ReadValueTimeIntervalBetweenCatalogPurchaseInMinutes(char const*)")
+pub fn stub_23cf0(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23cf0)
+    crate::ios_settings::IosSettingsService::read_value_time_interval_between_catalog_purchase_in_minutes(text)
 }
 
 // 0x23d08 — iOSSettingsService::ReadValueTimeLimitForBillingServiceRetriesBeforeGivingUp(char const*)
 // mangled: __ZN18iOSSettingsService56ReadValueTimeLimitForBillingServiceRetriesBeforeGivingUpEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueTimeLimitForBillingServiceRetriesBeforeGivingUp(char const*)")]
-pub fn stub_23d08() -> ! {
-    todo!("0x23d08 iOSSettingsService::ReadValueTimeLimitForBillingServiceRetriesBeforeGivingUp(char const*)")
+pub fn stub_23d08(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23d08)
+    crate::ios_settings::IosSettingsService::read_value_time_limit_for_billing_service_retries_before_giving_up(text)
 }
 
 // 0x23d20 — iOSSettingsService::ReadValueTestFlightLoggingLevel(char const*)
 // mangled: __ZN18iOSSettingsService31ReadValueTestFlightLoggingLevelEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueTestFlightLoggingLevel(char const*)")]
-pub fn stub_23d20() -> ! {
-    todo!("0x23d20 iOSSettingsService::ReadValueTestFlightLoggingLevel(char const*)")
+pub fn stub_23d20(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23d20)
+    crate::ios_settings::IosSettingsService::read_value_test_flight_logging_level(text)
 }
 
 // 0x23d38 — iOSSettingsService::ReadValueTestFlightPercentage(char const*)
 // mangled: __ZN18iOSSettingsService29ReadValueTestFlightPercentageEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueTestFlightPercentage(char const*)")]
-pub fn stub_23d38() -> ! {
-    todo!("0x23d38 iOSSettingsService::ReadValueTestFlightPercentage(char const*)")
+pub fn stub_23d38(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23d38)
+    crate::ios_settings::IosSettingsService::read_value_test_flight_percentage(text)
 }
 
 // 0x23d50 — iOSSettingsService::ReadValueBugSensePercentage(char const*)
 // mangled: __ZN18iOSSettingsService27ReadValueBugSensePercentageEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueBugSensePercentage(char const*)")]
-pub fn stub_23d50() -> ! {
-    todo!("0x23d50 iOSSettingsService::ReadValueBugSensePercentage(char const*)")
+pub fn stub_23d50(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23d50)
+    crate::ios_settings::IosSettingsService::read_value_bug_sense_percentage(text)
 }
 
 // 0x23d68 — iOSSettingsService::ReadValueBugSenseLogLines(char const*)
 // mangled: __ZN18iOSSettingsService25ReadValueBugSenseLogLinesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueBugSenseLogLines(char const*)")]
-pub fn stub_23d68() -> ! {
-    todo!("0x23d68 iOSSettingsService::ReadValueBugSenseLogLines(char const*)")
+pub fn stub_23d68(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23d68)
+    crate::ios_settings::IosSettingsService::read_value_bug_sense_log_lines(text)
 }
 
 // 0x23d80 — iOSSettingsService::ReadValueBugSenseLogLevel(char const*)
 // mangled: __ZN18iOSSettingsService25ReadValueBugSenseLogLevelEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueBugSenseLogLevel(char const*)")]
-pub fn stub_23d80() -> ! {
-    todo!("0x23d80 iOSSettingsService::ReadValueBugSenseLogLevel(char const*)")
+pub fn stub_23d80(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23d80)
+    crate::ios_settings::IosSettingsService::read_value_bug_sense_log_level(text)
 }
 
 // 0x23d9c — iOSSettingsService::ReadValueiOSGoogleAnalyticsAccount2(char const*)
