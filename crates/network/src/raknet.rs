@@ -10778,57 +10778,70 @@ pub fn stub_9c6214(
 // 0x9c6234 — __ZN3RBX7Network13PhysicsSender3Job5errorERKNS_13TaskScheduler3Job5StatsE
 // type: int __fastcall(RBX::Network::PhysicsSender::Job *this, const RBX::TaskScheduler::Job::Stats *, double *)
 #[doc(alias = "RBX::Network::PhysicsSender::Job::error(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_9c6234() -> ! {
-    todo!("0x9c6234 RBX::Network::PhysicsSender::Job::error(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_9c6234(
+    gate: &crate::physics::SendGate,
+    error: f64,
+    rate_hz: f32,
+) -> crate::physics::StandardError {
+    // IDA 0x9c6248..0x9c627e: `canSendPacket` selects the zero shape or `computeStandardError`.
+    crate::physics::SendJob::error(gate, error, rate_hz)
 }
 
 // 0x9c6288 — __ZN3RBX7Network13PhysicsSender3Job16stepDataModelJobERKNS_13TaskScheduler3Job5StatsE
 // type: int __fastcall(RBX::Network::PhysicsSender::Job *this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RBX::Network::PhysicsSender::Job::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_9c6288() -> ! {
-    todo!("0x9c6288 RBX::Network::PhysicsSender::Job::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_9c6288(stats_present: bool, job_present: bool, step: &mut dyn FnMut()) -> bool {
+    // IDA 0x9c6288: stats/job gates around the stats-sample step.
+    crate::physics::SendJob::step_data_model_job(stats_present, job_present, step)
 }
 
 // 0x9c6568 — __ZN3RBX7Network13PhysicsSender3JobD2Ev
 // type: void __fastcall(RBX::Network::PhysicsSender::Job *__hidden this)
 #[doc(alias = "RBX::Network::PhysicsSender::Job::~Job()")]
-pub fn stub_9c6568() -> ! {
-    todo!("0x9c6568 RBX::Network::PhysicsSender::Job::~Job()")
+pub fn stub_9c6568(_job: crate::physics::SendJob) {
+    // IDA 0x9c65a0..0x9c6654 (D2): vtable reset, weak-ref/shared-count dtors, base Job dtor.
 }
 
 // 0x9c6da4 — __ZN3RBX7Network6Server5startEii
 // type: int __fastcall(RBX::Network::ConcurrentRakPeer **this, unsigned __int16, int, const void *)
 #[doc(alias = "RBX::Network::Server::start(int,int)")]
-pub fn stub_9c6da4() -> ! {
-    todo!("0x9c6da4 RBX::Network::Server::start(int,int)")
+pub fn stub_9c6da4(
+    server: &mut crate::server::Server,
+    startup: Result<u16, i32>,
+) -> Result<u16, String> {
+    // IDA 0x9c6e64..0x9c6e90: `Startup(128, ...)` failure throws, success stores the bound port.
+    server.start(startup)
 }
 
 // 0x9c7234 — __ZN3RBX7Network6Server4stopEi
 // type: int __fastcall(RBX::Network::ConcurrentRakPeer **this, char *, int, const void *)
 #[doc(alias = "RBX::Network::Server::stop(int)")]
-pub fn stub_9c7234() -> ! {
-    todo!("0x9c7234 RBX::Network::Server::stop(int)")
+pub fn stub_9c7234(server: &mut crate::server::Server, block_duration_ms: i32) -> bool {
+    // IDA 0x9c7274..0x9c72a2: unlock children, drop them, disconnect when active.
+    server.stop(block_duration_ms)
 }
 
 // 0x9c72a8 — __ZN3RBX7Network6Server14getClientCountEv
 // type: _DWORD __fastcall(RBX::Network::Server *__hidden this)
 #[doc(alias = "RBX::Network::Server::getClientCount(void)")]
-pub fn stub_9c72a8() -> ! {
-    todo!("0x9c72a8 RBX::Network::Server::getClientCount(void)")
+pub fn stub_9c72a8(server: &crate::server::Server) -> usize {
+    server.client_count()
 }
 
 // 0x9c7444 — __ZN3RBX7Network6ServerC1Ev
 // type: int __fastcall(RBX::Network::Server *this)
 #[doc(alias = "RBX::Network::Server::Server(void)")]
-pub fn stub_9c7444() -> ! {
-    todo!("0x9c7444 RBX::Network::Server::Server(void)")
+pub fn stub_9c7444() -> crate::server::Server {
+    // IDA 0x9c7444 (C1): Peer init; a fresh server has no players and no bound port.
+    crate::server::Server::default()
 }
 
 // 0x9c7450 — __ZN3RBX7Network6ServerC2Ev
 // type: RBX::Network::Peer *__fastcall(RBX::Network::Server *this)
 #[doc(alias = "RBX::Network::Server::Server(void)")]
-pub fn stub_9c7450() -> ! {
-    todo!("0x9c7450 RBX::Network::Server::Server(void)")
+pub fn stub_9c7450() -> crate::server::Server {
+    // IDA 0x9c7450 (C2): Peer init; a fresh server has no players and no bound port.
+    crate::server::Server::default()
 }
 
 // 0x9c7e78 — __ZN3RBX7Network6ServerD0Ev

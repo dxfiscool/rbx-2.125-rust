@@ -694,6 +694,26 @@ impl SendJob {
         }
         StandardError::compute(error, rate_hz)
     }
+
+    /// `RBX::Network::PhysicsSender::Job::stepDataModelJob` (IDA 0x9c6288):
+    /// same stats/job gates as the `TouchJob` step; the engine-side body
+    /// replicates into `physicsSenderStats`, samples the
+    /// buffer-availability average, and steps. The verdict is whether both
+    /// were present. Refcount traffic stays engine-side.
+    pub fn step_data_model_job(
+        stats_present: bool,
+        job_present: bool,
+        step: &mut dyn FnMut(),
+    ) -> bool {
+        if !stats_present {
+            return false;
+        }
+        if job_present {
+            step();
+            return true;
+        }
+        false
+    }
 }
 
 /// Approximate-zero test used by `writeCompactCFrame` (IDA 0x9c2b54..0x9c2b8e):
