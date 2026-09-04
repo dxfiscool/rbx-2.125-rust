@@ -298,6 +298,35 @@ pub struct SoundChannelBoolProp {
     pub permissions: u32,
 }
 
+/// Bound member-void(SoundType) callable behind
+/// BoundFuncDesc<SoundService, void(SoundType), 1> (IDA 0x37ad84 keeps the
+/// member-pointer pair at +40 with a void return tag at +28; the single
+/// argument is declared by declareSignature at 0x37aefc. Host: the closure
+/// plus its name/argument wiring).
+pub struct SoundServiceSoundFunc {
+    pub name: String,
+    pub arg_name: String,
+    pub default: Option<SoundType>,
+    pub call: Box<dyn Fn(&mut SoundService, SoundType) + Send + Sync>,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// One actual argument behind FunctionDescriptor::Arguments on the
+/// SoundService void(SoundType) call path (IDA 0x37b034/0x37b1c4).
+#[derive(Clone)]
+pub enum SoundFuncArg {
+    SoundType(SoundType),
+    Text(String),
+}
+
+/// RBX::Reflection::FunctionDescriptor::Arguments view for the single-arg
+/// SoundService call (IDA 0x37b000 reads argument 1 through ArgHelper).
+#[derive(Clone, Default)]
+pub struct SoundFuncArguments {
+    pub args: Vec<SoundFuncArg>,
+}
+
 /// PropDescriptor<SoundChannel, bool> with a getter only (IDA 0x379b4c: 0xC
 /// GetImpl block; get-only, so isReadOnly (0x379c84) is true).
 pub struct SoundChannelBoolGetDesc {
@@ -338,6 +367,17 @@ pub struct SoundChannelFloatGetSetDesc {
 
 /// PropDescriptor<SoundChannel, SoundId> with a getter/setter pair (IDA 0x37a24c).
 pub struct SoundChannelSoundIdGetSetDesc {
+    pub name: String,
+    pub category: String,
+    pub access: SoundChannelSoundIdAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// TypedPropertyDescriptor<SoundId> over a SoundChannel GetSet pair (IDA 0x37a360:
+/// PropertyDescriptor base init plus the owned GetSetImpl block at +40; host:
+/// name/category/access wiring, same shape as SoundChannelSoundIdGetSetDesc).
+pub struct TypedSoundIdDesc {
     pub name: String,
     pub category: String,
     pub access: SoundChannelSoundIdAccess,
@@ -466,6 +506,100 @@ const REVERB_BY_NAME_SORTED: &[(&str, i32)] = &[
     ("StoneRoom", 5),
     ("UnderWater", 21),
 ];
+
+/// RBX::SoundType — the 15 stock sounds in image order (IDA 0x37f4dc:
+/// EnumDesc<SoundType> ctor addPair calls, 0x37f5c0..0x37f6f4).
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+#[repr(i32)]
+pub enum SoundType {
+    NoSound = 0,
+    Boing = 1,
+    Bomb = 2,
+    Break = 3,
+    Click = 4,
+    Clock = 5,
+    Slingshot = 6,
+    Page = 7,
+    Ping = 8,
+    Snap = 9,
+    Splat = 10,
+    Step = 11,
+    StepOn = 12,
+    Swoosh = 13,
+    Victory = 14,
+}
+
+impl SoundType {
+    fn from_i32(value: i32) -> Option<SoundType> {
+        match value {
+            0 => Some(SoundType::NoSound),
+            1 => Some(SoundType::Boing),
+            2 => Some(SoundType::Bomb),
+            3 => Some(SoundType::Break),
+            4 => Some(SoundType::Click),
+            5 => Some(SoundType::Clock),
+            6 => Some(SoundType::Slingshot),
+            7 => Some(SoundType::Page),
+            8 => Some(SoundType::Ping),
+            9 => Some(SoundType::Snap),
+            10 => Some(SoundType::Splat),
+            11 => Some(SoundType::Step),
+            12 => Some(SoundType::StepOn),
+            13 => Some(SoundType::Swoosh),
+            14 => Some(SoundType::Victory),
+            _ => None,
+        }
+    }
+}
+
+/// (name, value) in image/index order; index doubles as the value.
+pub const SOUND_TYPE_ITEMS: &[(&str, i32)] = &[
+    ("NoSound", 0),
+    ("Boing", 1),
+    ("Bomb", 2),
+    ("Break", 3),
+    ("Click", 4),
+    ("Clock", 5),
+    ("Slingshot", 6),
+    ("Page", 7),
+    ("Ping", 8),
+    ("Snap", 9),
+    ("Splat", 10),
+    ("Step", 11),
+    ("StepOn", 12),
+    ("Swoosh", 13),
+    ("Victory", 14),
+];
+
+/// Same pairs sorted by name for the EnumDesc convertToValue search (cf. the
+/// Reverb twin at 0x377c10; binary search has the same ordering semantics as
+/// the image's RB-tree walk).
+const SOUND_TYPE_BY_NAME_SORTED: &[(&str, i32)] = &[
+    ("Boing", 1),
+    ("Bomb", 2),
+    ("Break", 3),
+    ("Click", 4),
+    ("Clock", 5),
+    ("NoSound", 0),
+    ("Page", 7),
+    ("Ping", 8),
+    ("Slingshot", 6),
+    ("Snap", 9),
+    ("Splat", 10),
+    ("Step", 11),
+    ("StepOn", 12),
+    ("Swoosh", 13),
+    ("Victory", 14),
+];
+
+/// RBX::Reflection::EnumDesc<SoundType>::convertToValue (cf. the Reverb twin
+/// at 0x377c10): name -> value through the sorted table.
+pub fn sound_type_from_name(name: &str) -> Option<SoundType> {
+    match SOUND_TYPE_BY_NAME_SORTED.binary_search_by(|probe| probe.0.cmp(name)) {
+        Ok(found) => SoundType::from_i32(SOUND_TYPE_BY_NAME_SORTED[found].1),
+        Err(_) => None,
+    }
+}
 
 /// rbx::placement_any<RBX::Region3> holding the audio payloads seen in this batch.
 #[derive(Clone, Default)]
@@ -1942,8 +2076,26 @@ pub fn stub_37a24c(
 // 0x37a360 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEEC2ERNS0_15ClassDescriptorEPKcS8_St8auto_ptrINS4_6GetSetEENS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int *, int, int, char, int)
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_37a360() -> ! {
-    todo!("0x37a360 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_37a360(
+    name: &str,
+    category: &str,
+    access: SoundChannelSoundIdAccess,
+    attributes: u32,
+    permissions: u32,
+) -> TypedSoundIdDesc {
+    // IDA 0x37a360: PropertyDescriptor base init with the ContentId singleton
+    // type (0x37a38e..0x37a3b0), vtable install (0x37a3ce), take the GetSet
+    // block (0x37a3d4..0x37a3e2), then clear attribute bits when the GetSet
+    // reports write-only (0x37a40a..0x37a414) / read-only (0x37a426..0x37a430).
+    // The SoundId GetSetImpl reports false/false (0x37ac0c/0x37ac10), so the
+    // masking is a no-op and the host keeps the wired descriptor.
+    TypedSoundIdDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access,
+        attributes,
+        permissions,
+    }
 }
 
 // 0x37a484 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelENS2_7SoundIdEED0Ev
@@ -1956,50 +2108,87 @@ pub fn stub_37a484() {
 // 0x37a4b0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE10isReadOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::isReadOnly(void)const")]
-pub fn stub_37a4b0() -> ! {
-    todo!("0x37a4b0 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::isReadOnly(void)const")
+pub fn stub_37a4b0(_desc: &TypedSoundIdDesc) -> bool {
+    // IDA 0x37a4b0: forward to the GetSet block at +40 (0x37a4bc).
+    stub_37ac0c()
 }
 
 // 0x37a4c0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE11isWriteOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::isWriteOnly(void)const")]
-pub fn stub_37a4c0() -> ! {
-    todo!("0x37a4c0 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::isWriteOnly(void)const")
+pub fn stub_37a4c0(_desc: &TypedSoundIdDesc) -> bool {
+    // IDA 0x37a4c0: forward to the GetSet block at +40 (0x37a4cc).
+    stub_37ac10()
 }
 
 // 0x37a4d0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE11equalValuesEPKNS0_13DescribedBaseES7_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_37a4d0() -> ! {
-    todo!("0x37a4d0 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_37a4d0(desc: &TypedSoundIdDesc, a: &SoundChannel, b: &SoundChannel) -> bool {
+    // IDA 0x37a4d0: getValue both sides through the +40 GetSet (0x37a4fa/0x37a536),
+    // RBX::operator== on the pair (0x37a544), then release both temps
+    // (0x37a554..0x37a5ce). Host: derived SoundId equality; Arc-free clone
+    // temps drop in place.
+    stub_37ac14(&desc.access, a) == stub_37ac14(&desc.access, b)
 }
 
 // 0x37a67c — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 // type: void __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_37a67c() -> ! {
-    todo!("0x37a67c RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_37a67c(desc: &TypedSoundIdDesc, obj: &SoundChannel) -> Variant {
+    // IDA 0x37a67c: getValue through the +40 GetSet into a temp (0x37a6a4), tag
+    // the out Variant with the ContentId singleton (0x37a6da), placement-move
+    // the temp in (0x37a6e6), release the temp (0x37a6f8..0x37a73e). Host: the
+    // tag is implied by the Variant::SoundId payload.
+    Variant::SoundId(stub_37ac14(&desc.access, obj))
 }
 
 // 0x37a7a8 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_37a7a8() -> ! {
-    todo!("0x37a7a8 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_37a7a8(desc: &TypedSoundIdDesc, obj: &mut SoundChannel, variant: &Variant) {
+    // IDA 0x37a7a8: fast path when the Variant holds a SoundId (typeinfo or
+    // "N3RBX10Soundscape7SoundIdE" name hit, 0x37a832) -> any_cast it
+    // (0x37a894); else copy the payload and Variant::convert<SoundId> it
+    // (0x37a836..0x37a884, string holdings convert via StringConverter, misses
+    // throw). Either way the id is copied into a temp (0x37a89c/0x37a86a) and
+    // set through the +40 GetSet (0x37a8b0), then the temp is released
+    // (0x37a8c0..0x37a918).
+    let id = match variant {
+        Variant::SoundId(id) => id.clone(),
+        Variant::Text(text) => string_to_sound_id(text),
+        other => panic!(
+            "Unable to cast {} to N3RBX10Soundscape7SoundIdE",
+            other.type_name()
+        ),
+    };
+    stub_37ac3c(&desc.access, obj, &id);
 }
 
 // 0x37a9a4 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE9copyValueEPKNS0_13DescribedBaseEPS5_
 // type: void __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_37a9a4() -> ! {
-    todo!("0x37a9a4 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_37a9a4(desc: &TypedSoundIdDesc, src: &SoundChannel, dst: &mut SoundChannel) {
+    // IDA 0x37a9a4: getValue src through the +40 GetSet into a temp
+    // (0x37a9d0), setValue dst from the temp (0x37aa0c), release the temp
+    // (0x37aa1c..0x37aa62).
+    let id = stub_37ac14(&desc.access, src);
+    stub_37ac3c(&desc.access, dst, &id);
 }
 
 // 0x37aacc — __ZN3rbx8any_castIRKN3RBX10Soundscape7SoundIdENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::Soundscape::SoundId const& rbx::any_cast<RBX::Soundscape::SoundId const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_37aacc() -> ! {
-    todo!("0x37aacc RBX::Soundscape::SoundId const& rbx::any_cast<RBX::Soundscape::SoundId const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_37aacc(slot: &PlacementAny) -> Result<&SoundId, SoundCastError> {
+    // IDA 0x37aacc: null holder -> void typeinfo (0x37aaf6..0x37ab28); holder or
+    // name ("N3RBX10Soundscape7SoundIdE", 0x37ab38..0x37ab54) mismatch -> throw
+    // bad_placement_any_cast (0x37ab82..0x37abae); else payload at +1
+    // (0x37ab72). Host: the enum tag subsumes both checks (same shape as the
+    // Reverb twin at 0x377b20).
+    match slot {
+        PlacementAny::SoundId(id) => Ok(id),
+        _ => Err(SoundCastError::BadPlacementAnyCast),
+    }
 }
 
 // 0x37abbc — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEED1Ev
@@ -2019,43 +2208,82 @@ pub fn stub_37abe0() {
 // 0x37ac0c — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelENS2_7SoundIdEE10GetSetImplIMS3_KFS4_vEMS3_FvS4_EE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::isReadOnly(void)const")]
-pub fn stub_37ac0c() -> ! {
-    todo!("0x37ac0c RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::isReadOnly(void)const")
+pub fn stub_37ac0c() -> bool {
+    // IDA 0x37ac0c: GetSetImpl<SoundId getter/setter>::isReadOnly — hardcoded
+    // `return 0` (0x37ac0e; get/set-bound props are never read-only).
+    false
 }
 
 // 0x37ac10 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelENS2_7SoundIdEE10GetSetImplIMS3_KFS4_vEMS3_FvS4_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::isWriteOnly(void)const")]
-pub fn stub_37ac10() -> ! {
-    todo!("0x37ac10 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::isWriteOnly(void)const")
+pub fn stub_37ac10() -> bool {
+    // IDA 0x37ac10: GetSetImpl<SoundId getter/setter>::isWriteOnly — hardcoded
+    // `return 0` (0x37ac12; get/set-bound props are never write-only).
+    false
 }
 
 // 0x37ac14 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelENS2_7SoundIdEE10GetSetImplIMS3_KFS4_vEMS3_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_37ac14() -> ! {
-    todo!("0x37ac14 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_37ac14(access: &SoundChannelSoundIdAccess, obj: &SoundChannel) -> SoundId {
+    // IDA 0x37ac14: null -> obj-36 adjust (0x37ac1a..0x37ac1c), split the
+    // getter member pointer (fn at +4, encoding at +8), virtual-adjust when
+    // the low bit is set (0x37ac2c..0x37ac34), call it (0x37ac38). The image
+    // builds the SoundId into the caller's temp; the host returns it owned.
+    (access.get)(obj)
 }
 
 // 0x37ac3c — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelENS2_7SoundIdEE10GetSetImplIMS3_KFS4_vEMS3_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 // type: void __fastcall(int, int, const std::string *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::setValue(RBX::Reflection::DescribedBase *,RBX::Soundscape::SoundId const&)const")]
-pub fn stub_37ac3c() -> ! {
-    todo!("0x37ac3c RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::setValue(RBX::Reflection::DescribedBase *,RBX::Soundscape::SoundId const&)const")
+pub fn stub_37ac3c(access: &SoundChannelSoundIdAccess, obj: &mut SoundChannel, value: &SoundId) {
+    // IDA 0x37ac3c: null -> obj-36 adjust (0x37ac8c..0x37ac8e), split the
+    // setter member pointer (fn at +12, encoding at +16), virtual-adjust when
+    // the low bit is set (0x37aca2..0x37acaa), copy the value into a temp
+    // (string assign + trailing word, 0x37acb4..0x37acbc), call the setter
+    // (0x37acc6), release the temp (0x37acd6..0x37ad1c).
+    (access.set)(obj, value.clone());
 }
 
 // 0x37ad84 — __ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundServiceEFvNS_9SoundTypeEELi1EEC2EMS3_FvS4_EPKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: _DWORD *__fastcall(_DWORD *, unsigned int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::BoundFuncDesc(void (RBX::Soundscape::SoundService::*)(RBX::SoundType),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_37ad84() -> ! {
-    todo!("0x37ad84 RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::BoundFuncDesc(void (RBX::Soundscape::SoundService::*)(RBX::SoundType),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_37ad84(
+    call: Box<dyn Fn(&mut SoundService, SoundType) + Send + Sync>,
+    name: &str,
+    arg_name: &str,
+    permissions: u32,
+    attributes: u32,
+) -> SoundServiceSoundFunc {
+    // IDA 0x37ad84: FunctionDescriptor base init over the SoundService class
+    // descriptor (0x37adbc..0x37addc), vtable install (0x37adf2), the
+    // member-pointer pair stored at +40 (0x37ae00) with a null tag at +48
+    // (0x37ae0a), then declareSignature for the SoundType argument (0x37ae40).
+    // Host: the closure is the member pointer; the signature wiring runs
+    // through stub_37aefc with the image's void default (0x37ae30..0x37ae36).
+    let mut func = SoundServiceSoundFunc {
+        name: name.to_owned(),
+        arg_name: String::new(),
+        default: None,
+        call,
+        attributes,
+        permissions,
+    };
+    stub_37aefc(&mut func, arg_name, None);
+    func
 }
 
 // 0x37aefc — __ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundServiceEFvNS_9SoundTypeEELi1EE16declareSignatureEPKcNS0_7VariantE
 // type: int __fastcall(int, int, int *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
-pub fn stub_37aefc() -> ! {
-    todo!("0x37aefc RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_37aefc(func: &mut SoundServiceSoundFunc, arg_name: &str, default: Option<SoundType>) {
+    // IDA 0x37aefc: return tag = Type::getSingleton<void> (0x37af0c), declare
+    // the argument name (0x37af16), tag it with the SoundType singleton
+    // (0x37af18), addArgument with the default variant (0x37af2a). Host: the
+    // void return is implied by the closure signature; the rest is stored.
+    func.arg_name = arg_name.to_owned();
+    func.default = default;
 }
 
 // 0x37af2c — __ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundServiceEFvNS_9SoundTypeEELi1EED0Ev
@@ -2068,22 +2296,71 @@ pub fn stub_37af2c() {
 // 0x37b000 — __ZNK3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundServiceEFvNS_9SoundTypeEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_37b000() -> ! {
-    todo!("0x37b000 RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_37b000(
+    func: &SoundServiceSoundFunc,
+    obj: &mut SoundService,
+    args: &SoundFuncArguments,
+) {
+    // IDA 0x37b000: null -> obj-36 DescribedBase-to-SoundService adjust
+    // (0x37b006..0x37b008), split the member pointer (fn at +40, encoding at
+    // +44), fetch argument 1 through ArgHelper::getArg<SoundType, 1>
+    // (0x37b01c), virtual-adjust when the low bit is set (0x37b01e..0x37b02a),
+    // call it (0x37b02c). The adjust/encoding is member-pointer mechanics;
+    // the observable effect is getArg + the call. The original returns the
+    // (void) call's word; the host drops it.
+    let arg = stub_37b034(args, func.default);
+    (func.call)(obj, arg);
 }
 
 // 0x37b034 — __ZN3RBX10Reflection9ArgHelper6getArgINS_9SoundTypeELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS4_EEPNS8_10disable_ifINS8_7is_sameIS4_NS8_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // type: int (__fastcall ***__fastcall(int (__fastcall ***)(_DWORD), int))(_DWORD)
 #[doc(alias = "RBX::SoundType RBX::Reflection::ArgHelper::getArg<RBX::SoundType,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::SoundType> const&,boost::disable_if<boost::is_same<RBX::SoundType,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
-pub fn stub_37b034() -> ! {
-    todo!("0x37b034 __ZN3RBX10Reflection9ArgHelper6getArgINS_9SoundTypeELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS4_EEPNS8_10disable_ifINS8_7is_sameIS4_NS8_10shared_ptrIKNS0_5TupleEEEEEvE4typeE")
+pub fn stub_37b034(args: &SoundFuncArguments, default: Option<SoundType>) -> SoundType {
+    // IDA 0x37b034: empty call (0x37b06c) -> LABEL_10; try_enum<SoundType>
+    // hit (0x37b0ac..0x37b0b0) -> the enum value; else fetch argument 1 as a
+    // Variant (0x37b0d0) and Variant::convert<SoundType> it (0x37b0dc..0x37b0de)
+    // — for the string holdings our model carries (cf. 0x37a7a8) this is the
+    // same name lookup try_enum already performs; on miss LABEL_10 uses the
+    // bound default (0x37b0fc..0x37b0fe) or throws runtime_error
+    // "Argument %d missing or nil" (0x37b140..0x37b196, host: panic).
+    if !args.args.is_empty() {
+        let mut value = SoundType::NoSound;
+        if stub_37b1c4(args, &mut value) {
+            return value;
+        }
+    }
+    match default {
+        Some(fallback) => fallback,
+        None => panic!("Argument 1 missing or nil"),
+    }
 }
 
 // 0x37b1c4 — __ZN3RBX10Reflection9ArgHelper8try_enumILi1ENS_9SoundTypeEEEbRNS0_18FunctionDescriptor9ArgumentsERT0_PN5boost9enable_ifINS9_7is_enumIS7_EEvE4typeE
 // type: int __fastcall(int, _DWORD *, int, int)
 #[doc(alias = "bool RBX::Reflection::ArgHelper::try_enum<1,RBX::SoundType>(RBX::Reflection::FunctionDescriptor::Arguments &,RBX::SoundType &,boost::enable_if<boost::is_enum<RBX::SoundType>,void>::type *)")]
-pub fn stub_37b1c4() -> ! {
-    todo!("0x37b1c4 bool RBX::Reflection::ArgHelper::try_enum<1,RBX::SoundType>(RBX::Reflection::FunctionDescriptor::Arguments &,RBX::SoundType &,boost::enable_if<boost::is_enum<RBX::SoundType>,void>::type *)")
+pub fn stub_37b1c4(args: &SoundFuncArguments, out: &mut SoundType) -> bool {
+    // IDA 0x37b1c4: fetch argument 1 and convert it through the SoundType
+    // EnumDesc singleton (0x37b1e4..0x37b206, singleton init 0x37b1ea..0x37b1ee);
+    // 1 -> store the value and return 1 (0x37b20c..0x37b212), else 0
+    // (0x37b208/0x37b216). Host: SoundType holdings hit directly; text
+    // holdings convert through the name table (cf. stub_377c10).
+    let arg = match args.args.first() {
+        Some(arg) => arg,
+        None => return false,
+    };
+    match arg {
+        SoundFuncArg::SoundType(value) => {
+            *out = *value;
+            true
+        }
+        SoundFuncArg::Text(name) => match sound_type_from_name(name) {
+            Some(value) => {
+                *out = value;
+                true
+            }
+            None => false,
+        },
+    }
 }
 
 // 0x37b218 — __ZN3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEEC2IMS3_KFS4_vEMS3_FvRKS4_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE

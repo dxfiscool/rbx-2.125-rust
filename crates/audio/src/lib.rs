@@ -148,6 +148,8 @@ pub mod vorbis_data;
 pub const FMOD_OK: i32 = 0;
 // IDA 0x68824 / 0x690e4: MemPool::alloc failure returns 44 (FMOD_ERR_MEMORY).
 pub const FMOD_ERR_MEMORY: i32 = 44;
+// IDA 0x7130c/0x71324: ChannelEmulated null-out-pointer return (invalid param).
+pub const FMOD_ERR_INVALID_PARAM: i32 = 37;
 
 // IDA off_11CD410 / off_11CD424 / off_11CD438 / off_11CD44C: image-relative
 // vtables installed by the C2 ctors below; 0 here = unlinked host model.
@@ -4116,84 +4118,234 @@ pub unsafe fn stub_712d8<I: ChannelInner>(ch: *const u8) -> i32 {
     I::stop(inner)
 }
 
+/// FMOD::ChannelReal base prefix modelled on the host: flag word at +36
+/// (word 9; 0x40 = emulated position track, IDA 0x7136c) ahead of the
+/// unmodelled remainder. The full ChannelReal layout lives outside this batch.
+#[repr(C)]
+pub struct ChannelRealBase {
+    _pad0: [u8; 36],
+    pub flags: u32,
+    _pad1: [u8; 332],
+}
+
+impl Default for ChannelRealBase {
+    fn default() -> Self {
+        ChannelRealBase {
+            _pad0: [0; 36],
+            flags: 0,
+            _pad1: [0; 332],
+        }
+    }
+}
+
+/// FMOD::ChannelEmulated host state — ChannelReal base plus the DSP-head word
+/// at +372 (word 93; IDA 0x71320/0x71558/0x71668); the embedded DSPI unit at
+/// +80 (IDA 0x716bc) rides inside the pad.
+#[repr(C)]
+pub struct ChannelEmulatedState {
+    pub base: ChannelRealBase,
+    _pad: [u8; 332],
+    pub dsp_head: *mut u8,
+}
+
+impl Default for ChannelEmulatedState {
+    fn default() -> Self {
+        ChannelEmulatedState {
+            base: ChannelRealBase::default(),
+            _pad: [0; 332],
+            dsp_head: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl ChannelEmulatedState {
+    /// Embedded DSPI unit address (this+80, IDA 0x716bc).
+    pub fn dsp_unit(&mut self) -> *mut u8 {
+        // SAFETY: +80 lies inside the 372-byte ChannelReal prefix by construction.
+        unsafe { (self as *mut Self as *mut u8).add(80) }
+    }
+}
+
+/// Host seam for the ChannelReal twin plus the DSP/System/Reverb hooks behind
+/// FMOD::ChannelEmulated (IDA 0x71344..0x71814). It extends the ChannelInner
+/// seam: the real_* hooks are the ChannelReal methods the emulated bodies
+/// delegate to, and the dsp_*/create_head/stop_cleanup hooks are the
+/// DSPI/SystemI/ReverbI calls living outside this batch (same shape as the
+/// ChannelInner/AsyncOs seams).
+pub trait EmulatedInner: ChannelInner {
+    fn real_update(ch: *mut ChannelEmulatedState, ms: i32) -> i32;
+    fn advance_emulated(ch: *mut ChannelEmulatedState, ms: i32);
+    fn real_close(ch: *mut ChannelEmulatedState) -> i32;
+    fn dsp_release(dsp: *mut u8);
+    fn real_alloc(ch: *mut ChannelEmulatedState) -> i32;
+    fn dsp_relink(ch: *mut ChannelEmulatedState) -> i32;
+    fn real_init(
+        ch: *mut ChannelEmulatedState,
+        index: i32,
+        system: *mut u8,
+        output: *mut u8,
+        dsp: *mut u8,
+    ) -> i32;
+    fn create_head(ch: *mut ChannelEmulatedState) -> i32;
+    fn real_construct(ch: *mut ChannelEmulatedState);
+    fn dsp_construct(dsp: *mut u8);
+    fn stop_cleanup(ch: *mut ChannelEmulatedState);
+    fn real_stop(ch: *mut ChannelEmulatedState) -> i32;
+}
+
 // 0x71304 — __ZN4FMOD15ChannelEmulated9isVirtualEPb
 #[doc(alias = "FMOD::ChannelEmulated::isVirtual(bool *)")]
-pub fn stub_71304() -> ! {
-    todo!("0x71304 FMOD::ChannelEmulated::isVirtual(bool *)")
+pub unsafe fn stub_71304(out: *mut bool) -> i32 {
+    // IDA 0x71304: null out -> FMOD_ERR_INVALID_PARAM (0x7130c..0x71318);
+    // else *out = 1 (0x71314, emulated channels are always virtual), FMOD_OK.
+    if out.is_null() {
+        return FMOD_ERR_INVALID_PARAM;
+    }
+    *out = true;
+    FMOD_OK
 }
 
 // 0x7131c — __ZN4FMOD15ChannelEmulated10getDSPHeadEPPNS_4DSPIE
 #[doc(alias = "FMOD::ChannelEmulated::getDSPHead(FMOD::DSPI **)")]
-pub fn stub_7131c() -> ! {
-    todo!("0x7131c FMOD::ChannelEmulated::getDSPHead(FMOD::DSPI **)")
+pub unsafe fn stub_7131c(ch: *const ChannelEmulatedState, out: *mut *mut u8) -> i32 {
+    // IDA 0x7131c: null out -> FMOD_ERR_INVALID_PARAM (0x71324..0x71330);
+    // else *out = the DSP-head word at +372 (0x71320), FMOD_OK.
+    if out.is_null() {
+        return FMOD_ERR_INVALID_PARAM;
+    }
+    *out = (*ch).dsp_head;
+    FMOD_OK
 }
 
 // 0x71334 — __ZN4FMOD15ChannelEmulated16setSpeakerLevelsEiPfi
 #[doc(alias = "FMOD::ChannelEmulated::setSpeakerLevels(int,float *,int)")]
-pub fn stub_71334() -> ! {
-    todo!("0x71334 FMOD::ChannelEmulated::setSpeakerLevels(int,float *,int)")
+pub fn stub_71334(_index: i32, _values: *mut f32, _count: i32) -> i32 {
+    // IDA 0x71334: hardcoded `return 0` (0x71338) — emulated channels drop
+    // speaker levels on the floor.
+    FMOD_OK
 }
 
 // 0x7133c — __ZN4FMOD15ChannelEmulated13setSpeakerMixEffffffff
 #[doc(
     alias = "FMOD::ChannelEmulated::setSpeakerMix(float,float,float,float,float,float,float,float)"
 )]
-pub fn stub_7133c() -> ! {
-    todo!("0x7133c FMOD::ChannelEmulated::setSpeakerMix(float,float,float,float,float,float,float,float)")
+pub fn stub_7133c(
+    _v0: f32,
+    _v1: f32,
+    _v2: f32,
+    _v3: f32,
+    _v4: f32,
+    _v5: f32,
+    _v6: f32,
+    _v7: f32,
+) -> i32 {
+    // IDA 0x7133c: hardcoded `return 0` (0x71340) — emulated channels drop
+    // the speaker mix on the floor.
+    FMOD_OK
 }
 
 // 0x71344 — __ZN4FMOD15ChannelEmulated6updateEi
 #[doc(alias = "FMOD::ChannelEmulated::update(int)")]
-pub fn stub_71344() -> ! {
-    todo!("0x71344 FMOD::ChannelEmulated::update(int)")
+pub unsafe fn stub_71344<I: EmulatedInner>(ch: *mut ChannelEmulatedState, ms: i32) -> i32 {
+    // IDA 0x71344: rc = ChannelReal::update (0x71358); nonzero -> return it
+    // (0x71374); zero with (flag word+9 & 0x60) == 0x40 (0x7136c) -> run the
+    // emulated position track (0x71378..0x71534, seam: the sound/system words
+    // it samples live outside this batch).
+    let rc = I::real_update(ch, ms);
+    if rc == 0 && ((*ch).base.flags & 0x60) == 0x40 {
+        I::advance_emulated(ch, ms);
+    }
+    rc
 }
 
 // 0x71540 — __ZN4FMOD15ChannelEmulated5closeEv
 #[doc(alias = "FMOD::ChannelEmulated::close(void)")]
-pub fn stub_71540() -> ! {
-    todo!("0x71540 FMOD::ChannelEmulated::close(void)")
+pub unsafe fn stub_71540<I: EmulatedInner>(ch: *mut ChannelEmulatedState) -> i32 {
+    // IDA 0x71540: rc = ChannelReal::close (0x71550); zero with the DSP-head
+    // word+93 (+372) non-null (0x71558..0x71560) -> release it (0x71570) and
+    // null the word (0x71574).
+    let rc = I::real_close(ch);
+    if rc == 0 && !(*ch).dsp_head.is_null() {
+        I::dsp_release((*ch).dsp_head);
+        (*ch).dsp_head = core::ptr::null_mut();
+    }
+    rc
 }
 
 // 0x71580 — __ZN4FMOD15ChannelEmulated5allocEv
 #[doc(alias = "FMOD::ChannelEmulated::alloc(void)")]
-pub fn stub_71580() -> ! {
-    todo!("0x71580 FMOD::ChannelEmulated::alloc(void)")
+pub unsafe fn stub_71580<I: EmulatedInner>(ch: *mut ChannelEmulatedState) -> i32 {
+    // IDA 0x71580: rc = ChannelReal::alloc (0x71594); zero with a DSP head
+    // (0x7159c..0x715a4) -> DSPI::disconnectFrom (0x715b0) then
+    // addInputQueued off the system mixer (0x715e0); the seam folds both DSP
+    // calls into dsp_relink.
+    let rc = I::real_alloc(ch);
+    if rc == 0 && !(*ch).dsp_head.is_null() {
+        return I::dsp_relink(ch);
+    }
+    rc
 }
 
 // 0x715e8 — __ZN4FMOD15ChannelEmulated4initEiPNS_7SystemIEPNS_6OutputEPNS_4DSPIE
 #[doc(alias = "FMOD::ChannelEmulated::init(int,FMOD::SystemI *,FMOD::Output *,FMOD::DSPI *)")]
-pub fn stub_715e8() -> ! {
-    todo!("0x715e8 FMOD::ChannelEmulated::init(int,FMOD::SystemI *,FMOD::Output *,FMOD::DSPI *)")
+pub unsafe fn stub_715e8<I: EmulatedInner>(
+    ch: *mut ChannelEmulatedState,
+    index: i32,
+    system: *mut u8,
+    output: *mut u8,
+    dsp: *mut u8,
+) -> i32 {
+    // IDA 0x715e8: ChannelReal::init (0x71600, result unread); the system
+    // word+24 & 4 check (0x71610) and the "EmulatedChannel DSPHead Unit"
+    // createDSP into +372 plus fword+18 = -fword+17 (0x71634..0x71684) ride
+    // the create_head seam (SystemI/DSPI words outside this batch).
+    I::real_init(ch, index, system, output, dsp);
+    I::create_head(ch)
 }
 
 // 0x71698 — __ZN4FMOD15ChannelEmulatedC2Ev
 #[doc(alias = "FMOD::ChannelEmulated::ChannelEmulated(void)")]
-pub fn stub_71698() -> ! {
-    todo!("0x71698 FMOD::ChannelEmulated::ChannelEmulated(void)")
+pub unsafe fn stub_71698<I: EmulatedInner>(ch: *mut ChannelEmulatedState) -> *mut ChannelEmulatedState {
+    // IDA 0x71698: ChannelReal::ChannelReal (0x716a4), vtable installs
+    // (0x716b8/0x716cc), embedded DSPI::DSPI at +80 (0x716bc), head word+93
+    // (+372) = 0 (0x716d4).
+    I::real_construct(ch);
+    I::dsp_construct((*ch).dsp_unit());
+    (*ch).dsp_head = core::ptr::null_mut();
+    ch
 }
 
 // 0x716e4 — __ZN4FMOD15ChannelEmulatedC1Ev
 #[doc(alias = "FMOD::ChannelEmulated::ChannelEmulated(void)")]
-pub fn stub_716e4() -> ! {
-    todo!("0x716e4 FMOD::ChannelEmulated::ChannelEmulated(void)")
+pub unsafe fn stub_716e4<I: EmulatedInner>(ch: *mut ChannelEmulatedState) -> *mut ChannelEmulatedState {
+    // IDA 0x716e4: thunk (B.W) into the C2 ctor at 0x71698.
+    stub_71698::<I>(ch)
 }
 
 // 0x716e8 — __ZN4FMOD15ChannelEmulated4stopEv
 #[doc(alias = "FMOD::ChannelEmulated::stop(void)")]
-pub fn stub_716e8() -> ! {
-    todo!("0x716e8 FMOD::ChannelEmulated::stop(void)")
+pub unsafe fn stub_716e8<I: EmulatedInner>(ch: *mut ChannelEmulatedState) -> i32 {
+    // IDA 0x716e8: sound flag-word poke (0x716f4..0x71720), DSP-head
+    // disconnectAll + flag clear (0x71724..0x71748), reverb connection resets
+    // (0x7174c..0x717c0) plus the reverb-list sweep (0x717c8..0x71808) — all
+    // Sound/DSPI/ReverbI words outside this batch, folded into stop_cleanup —
+    // then ChannelReal::stop (0x71814).
+    I::stop_cleanup(ch);
+    I::real_stop(ch)
 }
 
 // 0x71818 — __ZN4FMOD15ChannelEmulatedD0Ev
 #[doc(alias = "FMOD::ChannelEmulated::~ChannelEmulated()")]
-pub fn stub_71818() -> ! {
-    todo!("0x71818 FMOD::ChannelEmulated::~ChannelEmulated()")
+pub fn stub_71818() {
+    // IDA 0x71818: D0 deleting dtor — vtable reset (0x7182c) + operator
+    // delete (0x71830). Drop glue — no-op.
 }
 
 // 0x7183c — __ZN4FMOD15ChannelEmulatedD1Ev
 #[doc(alias = "FMOD::ChannelEmulated::~ChannelEmulated()")]
-pub fn stub_7183c() -> ! {
-    todo!("0x7183c FMOD::ChannelEmulated::~ChannelEmulated()")
+pub fn stub_7183c() {
+    // IDA 0x7183c: D1 dtor — vtable reset (0x71848); members/twins drop with
+    // the host owner. Drop glue — no-op.
 }
 
 // 0x71854 — __ZN4FMOD11ChannelRealC2Ev
