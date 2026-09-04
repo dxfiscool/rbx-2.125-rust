@@ -2188,10 +2188,54 @@ pub fn stub_0x6219e4() {
     // IDA 0x6219e4: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
+/// `RBX::Reflection::RefPropDescriptor<C, T*>` cutover (IDA 0x62307c):
+/// name/category/attributes/permissions, the `RefType<T*>` tag in
+/// `expected`, and the live target id. The member GetSet (+44) folds into
+/// direct field access; the `DescribedBase`/`+ 36` Instance-side adjusts
+/// (0x6231dc/0x62349e/0x62352e) are `Arc` pointer mechanics with no Rust
+/// equivalent.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct RefProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+    pub expected: &'static str,
+    pub target: Option<u32>,
+}
+
+impl RefProp {
+    pub fn new(
+        name: &str,
+        category: &str,
+        expected: &'static str,
+        attributes: u32,
+        permissions: u32,
+    ) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+            expected,
+            target: None,
+        }
+    }
+}
+
 // 0x6227bc — __ZN3RBX10Reflection14PropDescriptorINS_19SelectionPointLassoEN3G3D7Vector3EEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SelectionPointLasso,G3D::Vector3>::PropDescriptor<G3D::Vector3 (RBX::SelectionPointLasso::*)(void)const,void (RBX::SelectionPointLasso::*)(G3D::Vector3)>(char const*,char const*,G3D::Vector3 (RBX::SelectionPointLasso::*)(void)const,void (RBX::SelectionPointLasso::*)(G3D::Vector3),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x6227bc() -> ! {
-    todo!("0x6227bc RBX::Reflection::PropDescriptor<RBX::SelectionPointLasso,G3D::Vector3>::PropDescriptor<G3D::Vector3 (RBX::SelectionPointLasso::*)(void)const,void (RBX::SelectionPointLasso::*)(G3D::Vector3)>(char const*,char const*,G3D::Vector3 (RBX::SelectionPointLasso::*)(void)const,void (RBX::SelectionPointLasso::*)(G3D::Vector3),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x6227bc(
+    name: &str,
+    category: &str,
+    initial: Vector3,
+    attributes: u32,
+    permissions: u32,
+) -> Prop<Vector3> {
+    // IDA 0x6227bc: `PropDescriptor<SelectionPointLasso, Vector3>` get/set
+    // ctor: `new` the GetSetImpl, forward into the
+    // `TypedPropertyDescriptor` ctor. Same shape as 0x5f0cec.
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x6228d0 — __ZN3RBX10Reflection14PropDescriptorINS_19SelectionPointLassoEN3G3D7Vector3EED0Ev
@@ -2216,20 +2260,33 @@ pub fn stub_0x622900() -> bool {
 
 // 0x622904 — __ZNK3RBX10Reflection14PropDescriptorINS_19SelectionPointLassoEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SelectionPointLasso,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::SelectionPointLasso::*)(void)const,void (RBX::SelectionPointLasso::*)(G3D::Vector3)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x622904() -> ! {
-    todo!("0x622904 RBX::Reflection::PropDescriptor<RBX::SelectionPointLasso,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::SelectionPointLasso::*)(void)const,void (RBX::SelectionPointLasso::*)(G3D::Vector3)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x622904(prop: &Prop<Vector3>) -> Vector3 {
+    // IDA 0x622904: `GetSetImpl<Vector3>::getValue` for SelectionPointLasso:
+    // header strip, getter member-pointer decode, invoke.
+    prop.value
 }
 
 // 0x62292c — __ZNK3RBX10Reflection14PropDescriptorINS_19SelectionPointLassoEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SelectionPointLasso,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::SelectionPointLasso::*)(void)const,void (RBX::SelectionPointLasso::*)(G3D::Vector3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
-pub fn stub_0x62292c() -> ! {
-    todo!("0x62292c RBX::Reflection::PropDescriptor<RBX::SelectionPointLasso,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::SelectionPointLasso::*)(void)const,void (RBX::SelectionPointLasso::*)(G3D::Vector3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+pub fn stub_0x62292c(prop: &mut Prop<Vector3>, value: Vector3) {
+    // IDA 0x62292c: `GetSetImpl<Vector3>::setValue` for SelectionPointLasso:
+    // header strip, setter member-pointer decode, invoke.
+    prop.value = value;
 }
 
 // 0x62307c — __ZN3RBX10Reflection17RefPropDescriptorINS_18SelectionPartLassoENS_12PartInstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::RefPropDescriptor<RBX::PartInstance* (RBX::SelectionPartLasso::*)(void)const,void (RBX::SelectionPartLasso::*)(RBX::PartInstance*)>(char const*,char const*,RBX::PartInstance* (RBX::SelectionPartLasso::*)(void)const,void (RBX::SelectionPartLasso::*)(RBX::PartInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x62307c() -> ! {
-    todo!("0x62307c RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::RefPropDescriptor<RBX::PartInstance* (RBX::SelectionPartLasso::*)(void)const,void (RBX::SelectionPartLasso::*)(RBX::PartInstance*)>(char const*,char const*,RBX::PartInstance* (RBX::SelectionPartLasso::*)(void)const,void (RBX::SelectionPartLasso::*)(RBX::PartInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x62307c(
+    name: &str,
+    category: &str,
+    expected: &'static str,
+    attributes: u32,
+    permissions: u32,
+) -> RefProp {
+    // IDA 0x62307c: `RefPropDescriptor<SelectionPartLasso, PartInstance>`
+    // ctor: link the `RefType<PartInstance*>` singleton, `new` the member
+    // GetSet, forward into the typed-descriptor ctor.
+    RefProp::new(name, category, expected, attributes, permissions)
 }
 
 // 0x623120 — __ZN3RBX10Reflection17RefPropDescriptorINS_18SelectionPartLassoENS_12PartInstanceEED0Ev
@@ -2252,62 +2309,99 @@ pub fn stub_0x623160() {
 
 // 0x623170 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SelectionPartLassoENS_12PartInstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x623170() -> ! {
-    todo!("0x623170 RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x623170(a: &RefProp, b: &RefProp) -> bool {
+    // IDA 0x623170: `equalValues`: get both sides via the +44 member
+    // (0x623180/0x623196), raw-pointer compare.
+    a.target == b.target
 }
 
 // 0x623198 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SelectionPartLassoENS_12PartInstanceEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x623198() -> ! {
-    todo!("0x623198 RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x623198(prop: &RefProp) -> Value {
+    // IDA 0x623198: `getVariant`: get via slot 8 (0x6231bc),
+    // `shared_from<PartInstance>` with the `+ 36` adjust (0x6231c4-0x6231dc),
+    // pack the shared ref into the out Variant.
+    match prop.target {
+        Some(id) => Value::Instance(id),
+        None => Value::Nil,
+    }
 }
 
 // 0x6232b0 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SelectionPartLassoENS_12PartInstanceEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x6232b0() -> ! {
-    todo!("0x6232b0 RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x6232b0(prop: &mut RefProp, value: &Value) {
+    // IDA 0x6232b0: `setVariant`: `Variant::get<shared_ptr<DescribedBase>>`
+    // (0x6232d4), then the checked set entry (vf+64, 0x623312).
+    match value {
+        Value::Instance(id) => prop.target = Some(*id),
+        Value::Nil => prop.target = None,
+        other => panic!("Variant::get<shared_ptr<DescribedBase>> on {other:?} (IDA 0x6232b0)"),
+    }
 }
 
 // 0x623378 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SelectionPartLassoENS_12PartInstanceEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x623378() -> ! {
-    todo!("0x623378 RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x623378(dst: &mut RefProp, src: &RefProp) {
+    // IDA 0x623378: `copyValue`: get temp via slot 8 (0x62338a), set via
+    // slot 12 (0x62339a).
+    dst.target = src.target;
 }
 
 // 0x62339c — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SelectionPartLassoENS_12PartInstanceEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_0x62339c() -> ! {
-    todo!("0x62339c RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x62339c(prop: &RefProp) -> Option<u32> {
+    // IDA 0x62339c: `writeValue`: get via slot 8 (0x6233c0), `+ 36` adjust
+    // (0x6233ca), `InstanceHandle` wrap, `XmlNameValuePair::setValue`
+    // (0x6233ce-0x623406). Returns the serialized ref.
+    prop.target
 }
 
 // 0x623470 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SelectionPartLassoENS_12PartInstanceEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_0x623470() -> ! {
-    todo!("0x623470 RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x623470(prop: &mut RefProp, id: Option<u32>) {
+    // IDA 0x623470: `readValue`: `a3 + 12` skips the Xml pair header, then
+    // the `IReferenceBinder` entry (vf+4) resolves and sets. Binder
+    // resolution collapses into the id parameter.
+    prop.target = id;
 }
 
 // 0x623494 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SelectionPartLassoENS_12PartInstanceEE11getRefValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x623494() -> ! {
-    todo!("0x623494 RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x623494(prop: &RefProp) -> Option<u32> {
+    // IDA 0x623494: `getRefValue`: get via slot 8 (0x62349e), `+ 36`
+    // Instance-side adjust when nonzero (0x6234a2-0x6234a4).
+    prop.target
 }
 
 // 0x6234a8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SelectionPartLassoENS_12PartInstanceEE11setRefValueEPNS0_13DescribedBaseES6_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
-pub fn stub_0x6234a8() -> ! {
-    todo!("0x6234a8 RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_0x6234a8(prop: &mut RefProp, id: Option<u32>, actual: Option<&'static str>) {
+    // IDA 0x6234a8: `setRefValue`: null passes; else
+    // `__dynamic_cast<PartInstance>` (0x6234d6); miss throws `bad_cast`
+    // (0x6234f0-0x62351e); hit sets via slot 12 (0x6234ec). Rust cutover
+    // panics with the same type name.
+    match (id, actual) {
+        (None, _) => prop.target = None,
+        (Some(id), Some(t)) if t != prop.expected => panic!("std::bad_cast (IDA 0x6234a8): {t} is not a {}", prop.expected),
+        (Some(id), _) => prop.target = Some(id),
+    }
 }
 
 // 0x623524 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SelectionPartLassoENS_12PartInstanceEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
-pub fn stub_0x623524() -> ! {
-    todo!("0x623524 RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_0x623524(prop: &mut RefProp, id: Option<u32>) {
+    // IDA 0x623524: `setRefValueUnsafe`: `a3 - 36` header strip
+    // (0x62352e-0x623534), set via slot 12 with no `__dynamic_cast` check.
+    prop.target = id;
 }
 
 // 0x623544 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SelectionPartLassoENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x623544() -> ! {
-    todo!("0x623544 RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x623544(prop: &mut RefProp, id: u32) {
+    // IDA 0x623544: `assignIDREF`: `shared_count` copy (0x623572),
+    // `pi - 36` Instance adjust (0x6235aa), set via slot 12. Rust: `Arc`
+    // clone/drop covers the refcounts.
+    prop.target = Some(id);
 }
 
 // 0x623624 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SelectionPartLassoENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
@@ -2332,20 +2426,33 @@ pub fn stub_0x623630() -> bool {
 
 // 0x623634 — __ZNK3RBX10Reflection14PropDescriptorINS_18SelectionPartLassoEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::SelectionPartLasso::*)(void)const,void (RBX::SelectionPartLasso::*)(RBX::PartInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x623634() -> ! {
-    todo!("0x623634 RBX::Reflection::PropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::SelectionPartLasso::*)(void)const,void (RBX::SelectionPartLasso::*)(RBX::PartInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x623634(prop: &RefProp) -> Option<u32> {
+    // IDA 0x623634: `GetSetImpl<PartInstance*>::getValue`: header strip,
+    // getter member-pointer decode, invoke.
+    prop.target
 }
 
 // 0x623654 — __ZNK3RBX10Reflection14PropDescriptorINS_18SelectionPartLassoEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::SelectionPartLasso::*)(void)const,void (RBX::SelectionPartLasso::*)(RBX::PartInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PartInstance * const&)const")]
-pub fn stub_0x623654() -> ! {
-    todo!("0x623654 RBX::Reflection::PropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::SelectionPartLasso::*)(void)const,void (RBX::SelectionPartLasso::*)(RBX::PartInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PartInstance * const&)const")
+pub fn stub_0x623654(prop: &mut RefProp, id: Option<u32>) {
+    // IDA 0x623654: `GetSetImpl<PartInstance*>::setValue`: header strip,
+    // setter member-pointer decode, invoke.
+    prop.target = id;
 }
 
 // 0x623b10 — __ZN3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::RefPropDescriptor<RBX::Humanoid* (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid*)>(char const*,char const*,RBX::Humanoid* (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x623b10() -> ! {
-    todo!("0x623b10 RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::RefPropDescriptor<RBX::Humanoid* (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid*)>(char const*,char const*,RBX::Humanoid* (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x623b10(
+    name: &str,
+    category: &str,
+    expected: &'static str,
+    attributes: u32,
+    permissions: u32,
+) -> RefProp {
+    // IDA 0x623b10: `RefPropDescriptor<SelectionLasso, Humanoid>` ctor:
+    // `RefType<Humanoid*>` link, member GetSet `new`, typed-descriptor
+    // forward (same shape as 0x62307c).
+    RefProp::new(name, category, expected, attributes, permissions)
 }
 
 // 0x623bb4 — __ZN3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEED0Ev
@@ -2368,62 +2475,95 @@ pub fn stub_0x623bf4() {
 
 // 0x623c04 — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x623c04() -> ! {
-    todo!("0x623c04 RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x623c04(a: &RefProp, b: &RefProp) -> bool {
+    // IDA 0x623c04: `equalValues`: raw-pointer compare via slot 8
+    // (same shape as 0x623170).
+    a.target == b.target
 }
 
 // 0x623c2c — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x623c2c() -> ! {
-    todo!("0x623c2c RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x623c2c(prop: &RefProp) -> Value {
+    // IDA 0x623c2c: `getVariant`: get via slot 8, `shared_from<Humanoid>`,
+    // pack the shared ref (same shape as 0x623198).
+    match prop.target {
+        Some(id) => Value::Instance(id),
+        None => Value::Nil,
+    }
 }
 
 // 0x623d44 — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x623d44() -> ! {
-    todo!("0x623d44 RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x623d44(prop: &mut RefProp, value: &Value) {
+    // IDA 0x623d44: `setVariant` through the checked `setRefValue` entry
+    // (vf+64, same shape as 0x6232b0).
+    match value {
+        Value::Instance(id) => prop.target = Some(*id),
+        Value::Nil => prop.target = None,
+        other => panic!("Variant::get<shared_ptr<DescribedBase>> on {other:?} (IDA 0x623d44)"),
+    }
 }
 
 // 0x623e0c — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x623e0c() -> ! {
-    todo!("0x623e0c RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x623e0c(dst: &mut RefProp, src: &RefProp) {
+    // IDA 0x623e0c: `copyValue`: get temp via slot 8, set via slot 12
+    // (same shape as 0x623378).
+    dst.target = src.target;
 }
 
 // 0x623e30 — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_0x623e30() -> ! {
-    todo!("0x623e30 RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x623e30(prop: &RefProp) -> Option<u32> {
+    // IDA 0x623e30: `writeValue`: `InstanceHandle` wrap + `+ 36` adjust,
+    // `XmlNameValuePair::setValue` (same shape as 0x62339c). Returns the
+    // serialized ref.
+    prop.target
 }
 
 // 0x623f04 — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_0x623f04() -> ! {
-    todo!("0x623f04 RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x623f04(prop: &mut RefProp, id: Option<u32>) {
+    // IDA 0x623f04: `readValue`: binder lookup on the Xml pair payload,
+    // set on hit (same shape as 0x623470). Binder resolution collapses
+    // into the id parameter.
+    prop.target = id;
 }
 
 // 0x623f28 — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE11getRefValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x623f28() -> ! {
-    todo!("0x623f28 RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::getRefValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x623f28(prop: &RefProp) -> Option<u32> {
+    // IDA 0x623f28: `getRefValue`: get via slot 8, `+ 36` Instance adjust
+    // when nonzero (same shape as 0x623494).
+    prop.target
 }
 
 // 0x623f3c — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE11setRefValueEPNS0_13DescribedBaseES6_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
-pub fn stub_0x623f3c() -> ! {
-    todo!("0x623f3c RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_0x623f3c(prop: &mut RefProp, id: Option<u32>, actual: Option<&'static str>) {
+    // IDA 0x623f3c: `setRefValue` with the `__dynamic_cast<Humanoid>` check
+    // (same shape as 0x6234a8).
+    match (id, actual) {
+        (None, _) => prop.target = None,
+        (Some(id), Some(t)) if t != prop.expected => panic!("std::bad_cast (IDA 0x623f3c): {t} is not a {}", prop.expected),
+        (Some(id), _) => prop.target = Some(id),
+    }
 }
 
 // 0x623fb8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
-pub fn stub_0x623fb8() -> ! {
-    todo!("0x623fb8 RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_0x623fb8(prop: &mut RefProp, id: Option<u32>) {
+    // IDA 0x623fb8: `setRefValueUnsafe`: `a3 - 36` header strip, set via
+    // slot 12 with no `__dynamic_cast` check.
+    prop.target = id;
 }
 
 // 0x623fd8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x623fd8() -> ! {
-    todo!("0x623fd8 RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x623fd8(prop: &mut RefProp, id: u32) {
+    // IDA 0x623fd8: `assignIDREF`: `shared_count` copy, `pi - 36` adjust,
+    // set via slot 12. Rust: `Arc` clone/drop covers the refcounts.
+    prop.target = Some(id);
 }
 
 // 0x6240b8 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
@@ -2448,14 +2588,18 @@ pub fn stub_0x6240c4() -> bool {
 
 // 0x6240c8 — __ZNK3RBX10Reflection14PropDescriptorINS_14SelectionLassoEPNS_8HumanoidEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SelectionLasso,RBX::Humanoid *>::GetSetImpl<RBX::Humanoid * (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid *)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x6240c8() -> ! {
-    todo!("0x6240c8 RBX::Reflection::PropDescriptor<RBX::SelectionLasso,RBX::Humanoid *>::GetSetImpl<RBX::Humanoid * (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid *)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x6240c8(prop: &RefProp) -> Option<u32> {
+    // IDA 0x6240c8: `GetSetImpl<Humanoid*>::getValue`: header strip, getter
+    // member-pointer decode, invoke.
+    prop.target
 }
 
 // 0x6240e8 — __ZNK3RBX10Reflection14PropDescriptorINS_14SelectionLassoEPNS_8HumanoidEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SelectionLasso,RBX::Humanoid *>::GetSetImpl<RBX::Humanoid * (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid *)>::setValue(RBX::Reflection::DescribedBase *,RBX::Humanoid * const&)const")]
-pub fn stub_0x6240e8() -> ! {
-    todo!("0x6240e8 RBX::Reflection::PropDescriptor<RBX::SelectionLasso,RBX::Humanoid *>::GetSetImpl<RBX::Humanoid * (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid *)>::setValue(RBX::Reflection::DescribedBase *,RBX::Humanoid * const&)const")
+pub fn stub_0x6240e8(prop: &mut RefProp, id: Option<u32>) {
+    // IDA 0x6240e8: `GetSetImpl<Humanoid*>::setValue`: header strip, setter
+    // member-pointer decode, invoke.
+    prop.target = id;
 }
 
 // 0x625080 — __ZN3RBX10Reflection14PropDescriptorINS_20SkateboardControllerEfED1Ev
