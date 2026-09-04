@@ -547,6 +547,9 @@ pub struct RotateAxisCommand {
 /// Cached class index behind `doGetClassIndex<FilteredSelection>` (IDA
 /// `0x3ff958`): assigned once from the provider index counter.
 static FILTERED_SELECTION_INDEX: AtomicUsize = AtomicUsize::new(0);
+/// Cached class index behind `doGetClassIndex<FilteredSelection<ModelInstance>>`
+/// (IDA `0x40092c`): separate instantiation, separate cache.
+static FILTERED_MI_INDEX: AtomicUsize = AtomicUsize::new(0);
 /// Provider-wide class-index counter behind `ServiceProvider::newIndex`.
 static NEXT_CLASS_INDEX: AtomicUsize = AtomicUsize::new(1);
 
@@ -12556,36 +12559,58 @@ pub fn stub_0x4000f8(selection: *const FilteredSelection, _this: *mut FilteredSe
 // 0x400100 — __ZThn36_N3RBX17FilteredSelectionINS_8InstanceEED0Ev
 #[doc(alias = "non-virtual thunk to RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")]
 // was: non-virtual thunk to RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()
-pub fn stub_0x400100() -> ! {
-    todo!("0x400100 non-virtual thunk to RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")
+pub fn stub_0x400100(selection: *const FilteredSelection) {
+    // IDA 0x400100: `__ZThn36_` thunk to the D0 — the `this - 36` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D0 of
+    // 0x3ffe9c.
+    // SAFETY: `selection` must be a live box pointer never used again.
+    unsafe {
+        let _ = Box::from_raw(selection as *mut FilteredSelection);
+    }
 }
 
 // 0x400108 — __ZThn96_N3RBX17FilteredSelectionINS_8InstanceEE18onSelectionChangedERKNS_16SelectionChangedE
 #[doc(alias = "non-virtual thunk to RBX::FilteredSelection<RBX::Instance>::onSelectionChanged(RBX::SelectionChanged const&)")]
 // was: non-virtual thunk to RBX::FilteredSelection<RBX::Instance>::onSelectionChanged(RBX::SelectionChanged const&)
-pub fn stub_0x400108() -> ! {
-    todo!("0x400108 non-virtual thunk to RBX::FilteredSelection<RBX::Instance>::onSelectionChanged(RBX::SelectionChanged const&)")
+pub fn stub_0x400108(selection: &mut FilteredSelection, added: *const Instance, removed: *const Instance) {
+    // IDA 0x400108: `__ZThn96_` thunk to `onSelectionChanged` — the `this -
+    // 96` adjustment is a layout artifact, so the thunk collapses into the
+    // direct handler of 0x400090.
+    stub_0x400090(selection, added, removed);
 }
 
 // 0x400110 — __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPPN3RBX8InstanceESt6vectorIS4_SaIS4_EEEES4_ET_SA_SA_RKT0_St26random_access_iterator_tag
 #[doc(alias = "__gnu_cxx::__normal_iterator<RBX::Instance **,std::vector<RBX::Instance *,std::allocator<RBX::Instance *>>> std::__find<__gnu_cxx::__normal_iterator<RBX::Instance **,std::vector<RBX::Instance *,std::allocator<RBX::Instance *>>>,RBX::Instance *>(__gnu_cxx::__normal_iterator<RBX::Instance **,std::vector<RBX::Instance *,std::allocator<RBX::Instance *>>>,__gnu_cxx::__normal_iterator<RBX::Instance **,std::vector<RBX::Instance *,std::allocator<RBX::Instance *>>>,RBX::Instance * const&,std::random_access_iterator_tag)")]
 // was: __gnu_cxx::__normal_iterator<RBX::Instance **,std::vector<RBX::Instance *,std::allocator<RBX::Instance *>>> std::__find<__gnu_cxx::__normal_iterator<RBX::Instance **,std::vector<RBX::Instance *,std::allocator<RBX::Instance *>>>,RBX::Instance *>(__gnu_cxx::__normal_iterator<RBX::Instance **,std::vector<RBX::Instance *,std::allocator<RBX::Instance *>>>,__gnu_cxx::__normal_iterator<RBX::Instance **,std::vector<RBX::Instance *,std::allocator<RBX::Instance *>>>,RBX::Instance * const&,std::random_access_iterator_tag)
-pub fn stub_0x400110() -> ! {
-    todo!("0x400110 __gnu_cxx::__normal_iterator<RBX::Instance **,std::vector<RBX::Instance *,std::allocator<RBX::Instance *>>> std::__find<__gnu_cxx::__normal_iterator<RBX::Instance **,std::vector<RBX::Instance *,std::allocator<RBX::Instance *>>>,RBX::Instance *>(__gnu_cxx::__normal_iterator<RBX::Instance **,std::vector<RBX::Instance *,std::allocator<RBX::Instance *>>>,__gnu_cxx::__normal_iterator<RBX::Instance **,std::vector<RBX::Instance *,std::allocator<RBX::Instance *>>>,RBX::Instance * const&,std::random_access_iterator_tag)")
+pub fn stub_0x400110(items: &[*const Instance], target: *const Instance) -> Option<usize> {
+    // IDA 0x400110 (`__find` over the raw-instance range): linear search with
+    // the end iterator on miss; the iterator collapses into the position.
+    items.iter().position(|item| *item == target)
 }
 
 // 0x4001a0 — __ZN3RBX17FilteredSelectionINS_8InstanceEED2Ev
 #[doc(alias = "RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")]
 // was: RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()
-pub fn stub_0x4001a0() -> ! {
-    todo!("0x4001a0 RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")
+pub fn stub_0x4001a0(selection: &mut FilteredSelection) {
+    // IDA 0x4001a0: `FilteredSelection<Instance>::D2` — releases the root
+    // link and clears the filtered list in place (no storage release; that
+    // is the D0 path).
+    selection.root = None;
+    selection.items.clear();
+    selection.selected.clear();
 }
 
 // 0x4003f4 — __ZN5boost10shared_ptrIN3RBX17FilteredSelectionINS1_8InstanceEEEEC2IS4_NS1_9CreatableIS3_E7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::FilteredSelection<RBX::Instance>>::shared_ptr<RBX::FilteredSelection<RBX::Instance>,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::FilteredSelection<RBX::Instance>>::shared_ptr<RBX::FilteredSelection<RBX::Instance>,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x4003f4() -> ! {
-    todo!("0x4003f4 boost::shared_ptr<RBX::FilteredSelection<RBX::Instance>>::shared_ptr<RBX::FilteredSelection<RBX::Instance>,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x4003f4(ptr: *mut FilteredSelection, _deleter: CreatableInstanceDeleter) -> SharedPtr<FilteredSelection> {
+    // IDA 0x4003f4: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(FilteredSelection::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x4004bc — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17FilteredSelectionINS1_8InstanceEEES8_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -12598,50 +12623,69 @@ pub fn stub_0x4004bc() -> ! {
 // 0x4005a4 — __ZN5boost6detail12shared_countC2IPN3RBX17FilteredSelectionINS3_8InstanceEEENS3_9CreatableIS5_E7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x4005a4() -> ! {
-    todo!("0x4005a4 boost::detail::shared_count::shared_count<RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x4005a4(ptr: *mut FilteredSelection, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<FilteredSelection, CreatableInstanceDeleter> {
+    // IDA 0x4005a4: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x4006ac — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_8InstanceEEENS2_9CreatableIS4_E7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x4006ac() -> ! {
-    todo!("0x4006ac boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x4006ac(_block: *mut ControlBlockPd<FilteredSelection, CreatableInstanceDeleter>) {
+    // IDA 0x4006ac: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x4006b0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_8InstanceEEENS2_9CreatableIS4_E7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x4006b0() -> ! {
-    todo!("0x4006b0 boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x4006b0(block: *mut ControlBlockPd<FilteredSelection, CreatableInstanceDeleter>) {
+    // IDA 0x4006b0: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x4006b4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_8InstanceEEENS2_9CreatableIS4_E7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x4006b4() -> ! {
-    todo!("0x4006b4 boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x4006b4(_block: *mut ControlBlockPd<FilteredSelection, CreatableInstanceDeleter>) {
+    // IDA 0x4006b4: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x4006d4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_8InstanceEEENS2_9CreatableIS4_E7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x4006d4() -> ! {
-    todo!("0x4006d4 boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x4006d4(block: *const ControlBlockPd<FilteredSelection, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x4006d4: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x4006ec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_8InstanceEEENS2_9CreatableIS4_E7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x4006ec() -> ! {
-    todo!("0x4006ec boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::Instance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x4006ec(block: *const ControlBlockPd<FilteredSelection, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x4006ec: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x4006f0 — __ZN3RBX17FilteredSelectionINS_13ModelInstanceEE12getSelectionEv
 #[doc(alias = "RBX::FilteredSelection<RBX::ModelInstance>::getSelection(void)")]
 // was: RBX::FilteredSelection<RBX::ModelInstance>::getSelection(void)
-pub fn stub_0x4006f0() -> ! {
-    todo!("0x4006f0 RBX::FilteredSelection<RBX::ModelInstance>::getSelection(void)")
+pub fn stub_0x4006f0(selection: &FilteredSelection) -> SharedPtr<SelectionService> {
+    // IDA 0x4006f0: `FilteredSelection<ModelInstance>::getSelection` — same
+    // `ReleaseAssert(root != NULL)` + return-root shape as 0x3ff598; the
+    // specialization shares the layout, so the one model serves both.
+    selection.root.as_ref().expect("0x4006f0: rootSelection!=NULL").clone()
 }
 
 // 0x400748 — __ZN3RBX7UngroupclERKN5boost10shared_ptrINS_8InstanceEEE
@@ -12654,36 +12698,77 @@ pub fn stub_0x400748() -> ! {
 // 0x4007b4 — __ZNK3RBX15ServiceProvider4findINS_17FilteredSelectionINS_13ModelInstanceEEEEEPT_v
 #[doc(alias = "RBX::FilteredSelection<RBX::ModelInstance> * RBX::ServiceProvider::find<RBX::FilteredSelection<RBX::ModelInstance>>(void)const")]
 // was: RBX::FilteredSelection<RBX::ModelInstance> * RBX::ServiceProvider::find<RBX::FilteredSelection<RBX::ModelInstance>>(void)const
-pub fn stub_0x4007b4() -> ! {
-    todo!("0x4007b4 RBX::FilteredSelection<RBX::ModelInstance> * RBX::ServiceProvider::find<RBX::FilteredSelection<RBX::ModelInstance>>(void)const")
+pub fn stub_0x4007b4(instance: *const Instance) -> *const Instance {
+    // IDA 0x4007b4: `find<FilteredSelection<ModelInstance>>(instance)` —
+    // same root-walk + pre-order shape as 0x3ff614, matching the
+    // `FilteredSelection<ModelInstance>` class.
+    // SAFETY: `instance` must be null or point to a valid `Instance` whose
+    // whole ancestry/subtree outlives the call.
+    unsafe {
+        let mut root = instance;
+        while !root.is_null() && !(*root).parent.is_null() {
+            root = (*root).parent;
+        }
+        if root.is_null() {
+            return core::ptr::null();
+        }
+        let mut stack: Vec<*const Instance> = vec![root];
+        while let Some(node) = stack.pop() {
+            if instance_is_a(node, "FilteredSelection") {
+                return node;
+            }
+            let mut children: Vec<*const Instance> = (*node)
+                .children
+                .iter()
+                .map(|child| SharedPtr::as_ptr(child) as *const Instance)
+                .collect();
+            children.reverse();
+            stack.extend(children);
+        }
+        core::ptr::null()
+    }
 }
 
 // 0x400928 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_17FilteredSelectionINS_13ModelInstanceEEEEEvv
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::FilteredSelection<RBX::ModelInstance>>(void)")]
 // was: void RBX::ServiceProvider::callDoGetClassIndex<RBX::FilteredSelection<RBX::ModelInstance>>(void)
-pub fn stub_0x400928() -> ! {
-    todo!("0x400928 void RBX::ServiceProvider::callDoGetClassIndex<RBX::FilteredSelection<RBX::ModelInstance>>(void)")
+pub fn stub_0x400928() -> usize {
+    // IDA 0x400928: `callDoGetClassIndex<FilteredSelection<ModelInstance>>` —
+    // forwards to the cached `doGetClassIndex`. Same shape as 0x3ff954.
+    stub_0x40092c()
 }
 
 // 0x40092c — __ZN3RBX15ServiceProvider15doGetClassIndexINS_17FilteredSelectionINS_13ModelInstanceEEEEEmv
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::FilteredSelection<RBX::ModelInstance>>(void)")]
 // was: unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::FilteredSelection<RBX::ModelInstance>>(void)
-pub fn stub_0x40092c() -> ! {
-    todo!("0x40092c unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::FilteredSelection<RBX::ModelInstance>>(void)")
+pub fn stub_0x40092c() -> usize {
+    // IDA 0x40092c: `doGetClassIndex<FilteredSelection<ModelInstance>>` —
+    // guard-once assignment from `newIndex`, then the cached index. Separate
+    // instantiation, separate cache from 0x3ff958.
+    if FILTERED_MI_INDEX.load(Ordering::Relaxed) == 0 {
+        let fresh = NEXT_CLASS_INDEX.fetch_add(1, Ordering::Relaxed);
+        FILTERED_MI_INDEX.store(fresh, Ordering::Relaxed);
+    }
+    FILTERED_MI_INDEX.load(Ordering::Relaxed)
 }
 
 // 0x400a04 — __ZNK3RBX15ServiceProvider6createINS_17FilteredSelectionINS_13ModelInstanceEEEEEPT_v
 #[doc(alias = "RBX::FilteredSelection<RBX::ModelInstance> * RBX::ServiceProvider::create<RBX::FilteredSelection<RBX::ModelInstance>>(void)const")]
 // was: RBX::FilteredSelection<RBX::ModelInstance> * RBX::ServiceProvider::create<RBX::FilteredSelection<RBX::ModelInstance>>(void)const
-pub fn stub_0x400a04() -> ! {
-    todo!("0x400a04 RBX::FilteredSelection<RBX::ModelInstance> * RBX::ServiceProvider::create<RBX::FilteredSelection<RBX::ModelInstance>>(void)const")
+pub fn stub_0x400a04() -> SharedPtr<FilteredSelection> {
+    // IDA 0x400a04: `ServiceProvider::create<FilteredSelection<ModelInstance>>`
+    // (void overload) — default-constructs; the provider registration lands
+    // with the service registry. Same shape as 0x3ffa30.
+    SharedPtr::new(FilteredSelection::default())
 }
 
 // 0x400bcc — __ZN3RBX9CreatableINS_8InstanceEE6createINS_17FilteredSelectionINS_13ModelInstanceEEEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::FilteredSelection<RBX::ModelInstance>> RBX::Creatable<RBX::Instance>::create<RBX::FilteredSelection<RBX::ModelInstance>>(void)")]
 // was: boost::shared_ptr<RBX::FilteredSelection<RBX::ModelInstance>> RBX::Creatable<RBX::Instance>::create<RBX::FilteredSelection<RBX::ModelInstance>>(void)
-pub fn stub_0x400bcc() -> ! {
-    todo!("0x400bcc boost::shared_ptr<RBX::FilteredSelection<RBX::ModelInstance>> RBX::Creatable<RBX::Instance>::create<RBX::FilteredSelection<RBX::ModelInstance>>(void)")
+pub fn stub_0x400bcc() -> SharedPtr<FilteredSelection> {
+    // IDA 0x400bcc: `Creatable::create<FilteredSelection<ModelInstance>>` —
+    // same collapse as 0x3ffbf8.
+    SharedPtr::new(FilteredSelection::default())
 }
 
 // 0x400c7c — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_17FilteredSelectionINS1_13ModelInstanceEEEEERS3_RKNS0_IT_EE
@@ -12696,43 +12781,71 @@ pub fn stub_0x400c7c() -> ! {
 // 0x400cb0 — __ZN3RBX17FilteredSelectionINS_13ModelInstanceEEC2Ev
 #[doc(alias = "RBX::FilteredSelection<RBX::ModelInstance>::FilteredSelection(void)")]
 // was: RBX::FilteredSelection<RBX::ModelInstance>::FilteredSelection(void)
-pub fn stub_0x400cb0() -> ! {
-    todo!("0x400cb0 RBX::FilteredSelection<RBX::ModelInstance>::FilteredSelection(void)")
+pub fn stub_0x400cb0() -> FilteredSelection {
+    // IDA 0x400cb0: `FilteredSelection<ModelInstance>::C2` — same default
+    // shape as 0x3ffcdc.
+    FilteredSelection::default()
 }
 
 // 0x400e6c — __ZN3RBX17FilteredSelectionINS_13ModelInstanceEED1Ev
 #[doc(alias = "RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")]
 // was: RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()
-pub fn stub_0x400e6c() -> ! {
-    todo!("0x400e6c RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")
+pub fn stub_0x400e6c(_selection: *mut FilteredSelection) {
+    // IDA 0x400e6c: `FilteredSelection<ModelInstance>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x3ffe98.
+    // SAFETY: `_selection` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_selection));
+    }
 }
 
 // 0x400e70 — __ZN3RBX17FilteredSelectionINS_13ModelInstanceEED0Ev
 #[doc(alias = "RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")]
 // was: RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()
-pub fn stub_0x400e70() -> ! {
-    todo!("0x400e70 RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")
+pub fn stub_0x400e70(_selection: *mut FilteredSelection) {
+    // IDA 0x400e70: `FilteredSelection<ModelInstance>::D0` — vtable install
+    // plus memberwise teardown; dropping the box is the same release. Twin of
+    // 0x3ffe9c.
+    // SAFETY: `_selection` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_selection));
+    }
 }
 
 // 0x400f10 — __ZN3RBX17FilteredSelectionINS_13ModelInstanceEE17onAncestorChangedERKNS_15AncestorChangedE
 #[doc(alias = "RBX::FilteredSelection<RBX::ModelInstance>::onAncestorChanged(RBX::AncestorChanged const&)")]
 // was: RBX::FilteredSelection<RBX::ModelInstance>::onAncestorChanged(RBX::AncestorChanged const&)
-pub fn stub_0x400f10() -> ! {
-    todo!("0x400f10 RBX::FilteredSelection<RBX::ModelInstance>::onAncestorChanged(RBX::AncestorChanged const&)")
+pub fn stub_0x400f10(
+    selection: &mut FilteredSelection,
+    root: &SharedPtr<SelectionService>,
+    instance: *const Instance,
+) {
+    // IDA 0x400f10: `FilteredSelection<ModelInstance>::onAncestorChanged` —
+    // same re-root + push shape as 0x3fff3c.
+    stub_0x3fff3c(selection, root, instance);
 }
 
 // 0x401088 — __ZN3RBX17FilteredSelectionINS_13ModelInstanceEE18onSelectionChangedERKNS_16SelectionChangedE
 #[doc(alias = "RBX::FilteredSelection<RBX::ModelInstance>::onSelectionChanged(RBX::SelectionChanged const&)")]
 // was: RBX::FilteredSelection<RBX::ModelInstance>::onSelectionChanged(RBX::SelectionChanged const&)
-pub fn stub_0x401088() -> ! {
-    todo!("0x401088 RBX::FilteredSelection<RBX::ModelInstance>::onSelectionChanged(RBX::SelectionChanged const&)")
+pub fn stub_0x401088(selection: &mut FilteredSelection, added: *const Instance, removed: *const Instance) {
+    // IDA 0x401088: `FilteredSelection<ModelInstance>::onSelectionChanged` —
+    // same push-on-add/erase-on-remove shape as 0x400090.
+    stub_0x400090(selection, added, removed);
 }
 
 // 0x401104 — __ZThn32_N3RBX17FilteredSelectionINS_13ModelInstanceEED1Ev
 #[doc(alias = "non-virtual thunk to RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")]
 // was: non-virtual thunk to RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()
-pub fn stub_0x401104() -> ! {
-    todo!("0x401104 non-virtual thunk to RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")
+pub fn stub_0x401104(selection: *const FilteredSelection, _this: *mut FilteredSelection) {
+    // IDA 0x401104: `__ZThn32_` thunk to the D1 — the `this - 32` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D1 of
+    // 0x400e6c.
+    // SAFETY: `selection` must be a live box pointer never used again.
+    let _ = selection;
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x40110c — __ZThn32_N3RBX17FilteredSelectionINS_13ModelInstanceEED0Ev
