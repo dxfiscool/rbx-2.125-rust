@@ -161,176 +161,237 @@ pub fn stub_0x1d564(state: &HomeViewState) -> Option<u32> {
 // 0x1d574 — -[HomeViewController setBuildersClubLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBuildersClubLabel:]")]
-pub fn stub_0x1d574() -> ! {
-    todo!("0x1d574 -[HomeViewController setBuildersClubLabel:]")
+pub fn stub_0x1d574(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d574 `-[HomeViewController setBuildersClubLabel:]`: SET
+    // (disasm `objc_setProperty` prologue); host ownership is the outlet
+    // slot (cf. 0x1d540).
+    state.set_outlet("buildersClubLabel", view);
 }
 
 // 0x1d598 — -[HomeViewController profileLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController profileLabel]")]
-pub fn stub_0x1d598() -> ! {
-    todo!("0x1d598 -[HomeViewController profileLabel]")
+pub fn stub_0x1d598(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d598 `-[HomeViewController profileLabel]`: GET (disasm
+    // `_profileLabel` IVAR load); the handle — the text lives in the
+    // `labels` table (cf. 0x1bc10).
+    state.outlet("profileLabel")
 }
 
 // 0x1d5a8 — -[HomeViewController setProfileLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setProfileLabel:]")]
-pub fn stub_0x1d5a8() -> ! {
-    todo!("0x1d5a8 -[HomeViewController setProfileLabel:]")
+pub fn stub_0x1d5a8(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d5a8 `-[HomeViewController setProfileLabel:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.set_outlet("profileLabel", view);
 }
 
 // 0x1d5cc — -[HomeViewController messagesLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController messagesLabel]")]
-pub fn stub_0x1d5cc() -> ! {
-    todo!("0x1d5cc -[HomeViewController messagesLabel]")
+pub fn stub_0x1d5cc(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d5cc `-[HomeViewController messagesLabel]`: GET (disasm
+    // `_messagesLabel` IVAR load); the handle — the text lives in the
+    // `labels` table (cf. 0x1bc10).
+    state.outlet("messagesLabel")
 }
 
 // 0x1d5dc — -[HomeViewController setMessagesLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setMessagesLabel:]")]
-pub fn stub_0x1d5dc() -> ! {
-    todo!("0x1d5dc -[HomeViewController setMessagesLabel:]")
+pub fn stub_0x1d5dc(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d5dc `-[HomeViewController setMessagesLabel:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.set_outlet("messagesLabel", view);
 }
 
 // 0x1d600 — -[HomeViewController btnPlayDisabled]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController btnPlayDisabled]")]
-pub fn stub_0x1d600() -> ! {
-    todo!("0x1d600 -[HomeViewController btnPlayDisabled]")
+pub fn stub_0x1d600(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d600 `-[HomeViewController btnPlayDisabled]`: GET (disasm
+    // `_btnPlayDisabled` IVAR load); opaque platform handle on the host.
+    state.outlet("btnPlayDisabled")
 }
 
 // 0x1d610 — -[HomeViewController setBtnPlayDisabled:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBtnPlayDisabled:]")]
-pub fn stub_0x1d610() -> ! {
-    todo!("0x1d610 -[HomeViewController setBtnPlayDisabled:]")
+pub fn stub_0x1d610(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d610 `-[HomeViewController setBtnPlayDisabled:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.set_outlet("btnPlayDisabled", view);
 }
 
 // 0x1d634 — -[HomeViewController communityLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController communityLabel]")]
-pub fn stub_0x1d634() -> ! {
-    todo!("0x1d634 -[HomeViewController communityLabel]")
+pub fn stub_0x1d634(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d634 `-[HomeViewController communityLabel]`: GET (disasm
+    // `_communityLabel` IVAR load); the handle — the text lives in the
+    // `labels` table (cf. 0x1bc10).
+    state.outlet("communityLabel")
 }
 
 // 0x1d644 — -[HomeViewController setCommunityLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setCommunityLabel:]")]
-pub fn stub_0x1d644() -> ! {
-    todo!("0x1d644 -[HomeViewController setCommunityLabel:]")
+pub fn stub_0x1d644(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d644 `-[HomeViewController setCommunityLabel:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.set_outlet("communityLabel", view);
 }
 
 // 0x1d668 — -[HomeViewController communityButton]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController communityButton]")]
-pub fn stub_0x1d668() -> ! {
-    todo!("0x1d668 -[HomeViewController communityButton]")
+pub fn stub_0x1d668(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d668 `-[HomeViewController communityButton]`: GET (disasm
+    // `_communityButton` IVAR load); opaque platform handle on the host.
+    state.outlet("communityButton")
 }
 
 // 0x1d678 — -[HomeViewController setCommunityButton:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setCommunityButton:]")]
-pub fn stub_0x1d678() -> ! {
-    todo!("0x1d678 -[HomeViewController setCommunityButton:]")
+pub fn stub_0x1d678(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d678 `-[HomeViewController setCommunityButton:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.set_outlet("communityButton", view);
 }
 
 // 0x1d69c — -[HomeViewController buttonView]
 // type: UIView *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController buttonView]")]
-pub fn stub_0x1d69c() -> ! {
-    todo!("0x1d69c -[HomeViewController buttonView]")
+pub fn stub_0x1d69c(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d69c `-[HomeViewController buttonView]`: GET (disasm
+    // `_buttonView` IVAR load); opaque platform handle on the host.
+    state.outlet("buttonView")
 }
 
 // 0x1d6ac — -[HomeViewController setButtonView:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setButtonView:]")]
-pub fn stub_0x1d6ac() -> ! {
-    todo!("0x1d6ac -[HomeViewController setButtonView:]")
+pub fn stub_0x1d6ac(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d6ac `-[HomeViewController setButtonView:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.set_outlet("buttonView", view);
 }
 
 // 0x1d6d0 — -[HomeViewController searchTextField]
 // type: UITextField *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController searchTextField]")]
-pub fn stub_0x1d6d0() -> ! {
-    todo!("0x1d6d0 -[HomeViewController searchTextField]")
+pub fn stub_0x1d6d0(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d6d0 `-[HomeViewController searchTextField]`: GET (disasm
+    // `_searchTextField` IVAR load); opaque platform handle on the host.
+    state.outlet("searchTextField")
 }
 
 // 0x1d6e0 — -[HomeViewController setSearchTextField:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setSearchTextField:]")]
-pub fn stub_0x1d6e0() -> ! {
-    todo!("0x1d6e0 -[HomeViewController setSearchTextField:]")
+pub fn stub_0x1d6e0(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d6e0 `-[HomeViewController setSearchTextField:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.set_outlet("searchTextField", view);
 }
 
 // 0x1d704 — -[HomeViewController loggedInView]
 // type: UIView *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController loggedInView]")]
-pub fn stub_0x1d704() -> ! {
-    todo!("0x1d704 -[HomeViewController loggedInView]")
+pub fn stub_0x1d704(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d704 `-[HomeViewController loggedInView]`: GET (disasm
+    // `_loggedInView` IVAR load); visibility tracked by `logged_in_shown`
+    // (cf. 0x1c788).
+    state.outlet("loggedInView")
 }
 
 // 0x1d714 — -[HomeViewController setLoggedInView:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setLoggedInView:]")]
-pub fn stub_0x1d714() -> ! {
-    todo!("0x1d714 -[HomeViewController setLoggedInView:]")
+pub fn stub_0x1d714(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d714 `-[HomeViewController setLoggedInView:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.set_outlet("loggedInView", view);
 }
 
 // 0x1d738 — -[HomeViewController notLoggedInView]
 // type: UIView *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController notLoggedInView]")]
-pub fn stub_0x1d738() -> ! {
-    todo!("0x1d738 -[HomeViewController notLoggedInView]")
+pub fn stub_0x1d738(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d738 `-[HomeViewController notLoggedInView]`: GET (disasm
+    // `_notLoggedInView` IVAR load); visibility tracked by
+    // `logged_in_shown` (cf. 0x1c788).
+    state.outlet("notLoggedInView")
 }
 
 // 0x1d748 — -[HomeViewController setNotLoggedInView:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setNotLoggedInView:]")]
-pub fn stub_0x1d748() -> ! {
-    todo!("0x1d748 -[HomeViewController setNotLoggedInView:]")
+pub fn stub_0x1d748(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d748 `-[HomeViewController setNotLoggedInView:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.set_outlet("notLoggedInView", view);
 }
 
 // 0x1d76c — -[HomeViewController signUpButtonLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController signUpButtonLabel]")]
-pub fn stub_0x1d76c() -> ! {
-    todo!("0x1d76c -[HomeViewController signUpButtonLabel]")
+pub fn stub_0x1d76c(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d76c `-[HomeViewController signUpButtonLabel]`: GET (disasm
+    // `_signUpButtonLabel` IVAR load); the handle — the text lives in the
+    // `labels` table (cf. 0x1bc10).
+    state.outlet("signUpButtonLabel")
 }
 
 // 0x1d77c — -[HomeViewController setSignUpButtonLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setSignUpButtonLabel:]")]
-pub fn stub_0x1d77c() -> ! {
-    todo!("0x1d77c -[HomeViewController setSignUpButtonLabel:]")
+pub fn stub_0x1d77c(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d77c `-[HomeViewController setSignUpButtonLabel:]`: SET
+    // (disasm `objc_setProperty` prologue); host ownership is the outlet
+    // slot.
+    state.set_outlet("signUpButtonLabel", view);
 }
 
 // 0x1d7a0 — -[HomeViewController loginButtonLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController loginButtonLabel]")]
-pub fn stub_0x1d7a0() -> ! {
-    todo!("0x1d7a0 -[HomeViewController loginButtonLabel]")
+pub fn stub_0x1d7a0(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d7a0 `-[HomeViewController loginButtonLabel]`: GET (disasm
+    // `_loginButtonLabel` IVAR load); the handle — the text lives in the
+    // `labels` table (cf. 0x1bc10).
+    state.outlet("loginButtonLabel")
 }
 
 // 0x1d7b0 — -[HomeViewController setLoginButtonLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setLoginButtonLabel:]")]
-pub fn stub_0x1d7b0() -> ! {
-    todo!("0x1d7b0 -[HomeViewController setLoginButtonLabel:]")
+pub fn stub_0x1d7b0(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d7b0 `-[HomeViewController setLoginButtonLabel:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.set_outlet("loginButtonLabel", view);
 }
 
 // 0x1d7d4 — -[HomeViewController welcomeToRobloxTextView]
 // type: UITextView *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController welcomeToRobloxTextView]")]
-pub fn stub_0x1d7d4() -> ! {
-    todo!("0x1d7d4 -[HomeViewController welcomeToRobloxTextView]")
+pub fn stub_0x1d7d4(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d7d4 `-[HomeViewController welcomeToRobloxTextView]`: GET
+    // (disasm `_welcomeToRobloxTextView` IVAR load); the handle — the text
+    // lives in the `labels` table (cf. 0x1bc10).
+    state.outlet("welcomeToRobloxTextView")
 }
 
 // 0x1d7e4 — -[HomeViewController setWelcomeToRobloxTextView:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setWelcomeToRobloxTextView:]")]
-pub fn stub_0x1d7e4() -> ! {
-    todo!("0x1d7e4 -[HomeViewController setWelcomeToRobloxTextView:]")
+pub fn stub_0x1d7e4(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d7e4 `-[HomeViewController setWelcomeToRobloxTextView:]`: SET
+    // (disasm `objc_setProperty` prologue); host ownership is the outlet
+    // slot.
+    state.set_outlet("welcomeToRobloxTextView", view);
 }
 
 // 0x1d808 — -[HomeViewController youAreCurrentlyLoggedInAsTextView]
