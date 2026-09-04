@@ -10,175 +10,431 @@ use rbx_core::SharedPtr;
 const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
+use core::ffi::c_void;
+use parking_lot::{Condvar, Mutex, Once};
+use std::collections::{BTreeMap, VecDeque};
+use std::sync::LazyLock;
+
+// ---- 0x43f74..0x45eb0 shared carriers ----
+
+/// was: `boost::recursive_mutex` — pthread recursive mutex (AGENTS.md section 4:
+/// boost::thread/mutex -> std::thread). Owner tracking gives the recursive
+/// acquire/release semantics the `unique_lock::lock` path relies on.
+// IDA 0x442bc: ctor runs pthread_mutexattr_settype(RECURSIVE) + init (disasm).
+pub struct BoostRecursiveMutex {
+    state: Mutex<RecursiveMutexState>,
+    cvar: Condvar,
+}
+struct RecursiveMutexState {
+    owner: Option<std::thread::ThreadId>,
+    depth: u32,
+}
+impl BoostRecursiveMutex {
+    pub fn new() -> Self {
+        Self {
+            state: Mutex::new(RecursiveMutexState { owner: None, depth: 0 }),
+            cvar: Condvar::new(),
+        }
+    }
+    pub fn lock(&self) {
+        let current = std::thread::current().id();
+        let mut state = self.state.lock();
+        while let Some(owner) = state.owner {
+            if owner == current {
+                break;
+            }
+            self.cvar.wait(&mut state);
+        }
+        state.owner = Some(current);
+        state.depth += 1;
+    }
+    pub fn unlock(&self) {
+        let mut state = self.state.lock();
+        if state.depth > 0 {
+            state.depth -= 1;
+        }
+        if state.depth == 0 {
+            state.owner = None;
+            self.cvar.notify_one();
+        }
+    }
+}
+impl Default for BoostRecursiveMutex {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+/// was: `std::deque<boost::function<void ()(void)> *>` — the deque stores
+/// unowned function pointers, so elements stay opaque `*mut c_void` and only
+/// the node map itself is owned (VecDeque drop frees it, never the pointees).
+// IDA 0x44564/0x44590/0x44700: node walk + delete, map alloc, per-slot buffers.
+#[derive(Clone, Default)]
+pub struct FunctionPtrDeque {
+    inner: VecDeque<*mut c_void>,
+}
+impl FunctionPtrDeque {
+    pub fn with_nodes(node_count: usize) -> Self {
+        Self {
+            inner: (0..node_count).map(|_| core::ptr::null_mut()).collect(),
+        }
+    }
+    pub fn create_nodes(&mut self, first: usize, last: usize) {
+        let last = last.min(self.inner.len());
+        let first = first.min(last);
+        for i in first..last {
+            if let Some(slot) = self.inner.get_mut(i) {
+                *slot = core::ptr::null_mut();
+            }
+        }
+    }
+}
+
+/// was: `boost::function<void ()(bool, void *, RBX::UIEvent)>` — Box<dyn Fn> is
+/// the boost::function mapping (AGENTS.md section 4). `RBX::UIEvent` has no host
+/// definition in this crate, so the view/event words stay opaque pointers.
+// IDA 0x45dc8: operator() throws bad_function_call on empty, else dispatches
+// through the functor vtable (decompile).
+pub type UiEventCallback = Box<dyn Fn(bool, *mut c_void, *const c_void) + Send + Sync + 'static>;
+
+/// was: `rbx::signals::signal<void ()(bool, void *, RBX::UIEvent)>::slot` —
+/// intrusive slot node. Offset +0xC holds the signal back-pointer: connected
+/// holds exactly while the signal link is set (IDA 0x45d5c: `LDR R0,[R0,#0xC];
+/// return R0 != 0`; 0x45c4c clears it before `remove`). `SharedPtr` is
+/// `rbx_core::SharedPtr` (`Arc`), never `boost::intrusive_ptr`.
+pub struct UiEventSlot {
+    callback: Mutex<Option<UiEventCallback>>,
+    signal: Mutex<Option<SharedPtr<UiEventSignal>>>,
+    next: Mutex<Option<SharedPtr<UiEventSlot>>>,
+}
+
+/// was: `rbx::signals::signal<void ()(bool, void *, RBX::UIEvent)>` — owns the
+/// intrusive slot-list head; every mutation runs under the class-wide static
+/// mutex from `safe_static_do_get_mutex` (IDA 0x45554, decompile).
+pub struct UiEventSignal {
+    head: Mutex<Option<SharedPtr<UiEventSlot>>>,
+}
+
+/// was: `rbx::signals::connection` — handle returned by `connect`; the weak ref
+/// the original adds (`intrusive_ptr_add_weak_ref`, IDA 0x4546c) is automatic
+/// for `Weak`, so only the strong slot is retained here.
+pub struct UiEventConnection {
+    slot: SharedPtr<UiEventSlot>,
+}
+
+/// Slot-class static mutex (`slot::mutex()` once_init in IDA 0x45c4c; the
+/// `safe_static_*` instantiations sort later in this file).
+fn uievent_slot_mutex() -> &'static Mutex<()> {
+    static VALUE: LazyLock<Mutex<()>> = LazyLock::new(|| Mutex::new(()));
+    &VALUE
+}
 
 // 0x43f74 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE16_M_insert_uniqueERKS5_
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert_unique(std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")]
-pub fn stub_43f74() -> ! {
-    todo!("0x43f74 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert_unique(std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")
+pub fn rb_tree_insert_unique_marshaller_43f74(
+    map: &mut BTreeMap<u32, usize>,
+    key: u32,
+    marshaller: usize,
+) -> bool {
+// IDA 0x43f74: _M_insert_unique walks with less<unsigned> and inserts only when
+// the key is absent (decompile). BTreeMap is the std::map narrowing; values are
+// FunctionMarshaller* addresses held as usize.
+    map.insert(key, marshaller).is_none()
 }
 
 // 0x43fdc — __ZN5boost11unique_lockINS_15recursive_mutexEE4lockEv
 // type: int __fastcall(_DWORD)
 #[doc(alias = "boost::unique_lock<boost::recursive_mutex>::lock(void)")]
-pub fn stub_43fdc() -> ! {
-    todo!("0x43fdc boost::unique_lock<boost::recursive_mutex>::lock(void)")
+pub fn lock_recursive_mutex_43fdc(mutex: &BoostRecursiveMutex) {
+// IDA 0x43fdc: unique_lock<recursive_mutex>::lock — pthread-level acquire with
+// owner tracking (disasm).
+    mutex.lock();
 }
 
 // 0x441a8 — __ZN3RBX18FunctionMarshaller27safe_static_init_staticDataEv
 // type: _DWORD __fastcall(RBX::FunctionMarshaller *__hidden this)
 #[doc(alias = "RBX::FunctionMarshaller::safe_static_init_staticData(void)")]
-pub fn stub_441a8() -> ! {
-    todo!("0x441a8 RBX::FunctionMarshaller::safe_static_init_staticData(void)")
+pub fn init_function_marshaller_static_data_441a8() {
+// IDA 0x441a8: safe_static_init_staticData tail-branches (B.W) into
+// safe_static_do_get_staticData at 0x441ac (disasm) — init is the getter.
+    function_marshaller_static_data_441ac();
 }
 
 // 0x441ac — __ZN3RBX18FunctionMarshaller29safe_static_do_get_staticDataEv
 // type: void *__fastcall(RBX::FunctionMarshaller *this)
 #[doc(alias = "RBX::FunctionMarshaller::safe_static_do_get_staticData(void)")]
-pub fn stub_441ac() -> ! {
-    todo!("0x441ac RBX::FunctionMarshaller::safe_static_do_get_staticData(void)")
+pub fn function_marshaller_static_data_441ac() -> &'static Mutex<BTreeMap<u32, usize>> {
+// IDA 0x441ac: function-local static behind the __ZGV...value_ptr guard
+// (disasm). The guarded registry has the same unsigned->FunctionMarshaller*
+// shape written by _M_insert_unique at 0x43f74 [INFERENCE].
+    static STATIC_DATA: LazyLock<Mutex<BTreeMap<u32, usize>>> =
+        LazyLock::new(|| Mutex::new(BTreeMap::new()));
+    &STATIC_DATA
 }
 
 // 0x442bc — __ZN5boost15recursive_mutexC2Ev
 // type: _DWORD __fastcall(boost::recursive_mutex *__hidden this)
 #[doc(alias = "boost::recursive_mutex::recursive_mutex(void)")]
-pub fn stub_442bc() -> ! {
-    todo!("0x442bc boost::recursive_mutex::recursive_mutex(void)")
+pub fn new_recursive_mutex_442bc() -> BoostRecursiveMutex {
+// IDA 0x442bc: recursive_mutex ctor — pthread_mutexattr_settype(RECURSIVE) +
+// init (disasm); the Rust narrowing starts unlocked and unowned.
+    BoostRecursiveMutex::new()
 }
 
 // 0x44564 — __ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EED2Ev
 // type: int __fastcall(_DWORD)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::~_Deque_base()")]
-pub fn stub_44564() -> ! {
-    todo!("0x44564 std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::~_Deque_base()")
+pub fn drop_function_ptr_deque_44564(deque: FunctionPtrDeque) {
+// IDA 0x44564: _Deque_base dtor walks _M_start.._M_finish releasing node buffers
+// via operator delete (disasm); elements are unowned function* and are not freed.
+    drop(deque);
 }
 
 // 0x44590 — __ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE17_M_initialize_mapEm
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, void *, int)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_initialize_map(unsigned long)")]
-pub fn stub_44590() -> ! {
-    todo!("0x44590 std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_initialize_map(unsigned long)")
+pub fn initialize_function_ptr_deque_map_44590(node_count: usize) -> FunctionPtrDeque {
+// IDA 0x44590: _M_initialize_map allocates the node map and creates the node
+// buffers (disasm).
+    FunctionPtrDeque::with_nodes(node_count)
 }
 
 // 0x446e8 — __ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE15_M_allocate_mapEm
 // type: int(void)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_allocate_map(unsigned long)")]
-pub fn stub_446e8() -> ! {
-    todo!("0x446e8 std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_allocate_map(unsigned long)")
+pub fn allocate_function_ptr_deque_map_446e8(node_count: usize) -> usize {
+// IDA 0x446e8: _M_allocate_map throws bad_alloc when count >= 0x40000000, else
+// returns node_count<<2 bytes from operator new (disasm).
+    if node_count >= 0x4000_0000 {
+        panic!("std::__throw_bad_alloc");
+    }
+    node_count << 2
 }
 
 // 0x44700 — __ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE15_M_create_nodesEPPS4_S8_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_create_nodes(boost::function<void ()(void)> ***,boost::function<void ()(void)> ***)")]
-pub fn stub_44700() -> ! {
-    todo!("0x44700 std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_create_nodes(boost::function<void ()(void)> ***,boost::function<void ()(void)> ***)")
+pub fn create_function_ptr_deque_nodes_44700(
+    deque: &mut FunctionPtrDeque,
+    first: usize,
+    last: usize,
+) {
+// IDA 0x44700: _M_create_nodes news a buffer per map slot in [first, last)
+// (disasm); buffers start null, matching with_nodes state.
+    deque.create_nodes(first, last);
 }
 
 // 0x447f4 — __ZNSt5dequeIPN5boost8functionIFvvEEESaIS4_EEC2ERKS6_
 // type: int __fastcall(int)
 #[doc(alias = "std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::deque(std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>> const&)")]
-pub fn stub_447f4() -> ! {
-    todo!("0x447f4 std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::deque(std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>> const&)")
+pub fn copy_function_ptr_deque_447f4(source: &FunctionPtrDeque) -> FunctionPtrDeque {
+// IDA 0x447f4: deque copy ctor sizes the new map from the source range and copies
+// the (unowned) function* elements (disasm). Clone copies the pointers only.
+    source.clone()
 }
 
 // 0x44888 — __ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyISt15_Deque_iteratorIPN5boost8functionIFvvEEERKS8_PS9_ES3_IS8_RS8_PS8_EEET0_T_SH_SG_
 #[doc(alias = "std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **> std::__copy<false,std::random_access_iterator_tag>::copy<std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>>(std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>)")]
-pub fn stub_44888() -> ! {
-    todo!("0x44888 std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **> std::__copy<false,std::random_access_iterator_tag>::copy<std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>>(std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>)")
+pub fn copy_function_ptr_range_44888(source: &[*mut c_void]) -> Vec<*mut c_void> {
+// IDA 0x44888: __copy over _Deque_iterator<function*> ranges — elementwise copy
+// across node boundaries (disasm); contiguous narrowing below.
+    source.to_vec()
 }
 
 // 0x44924 — __GLOBAL__I_a_14
 #[doc(alias = "global constructor keyed to_a_14")]
-pub fn stub_44924() -> ! {
-    todo!("0x44924 global constructor keyed to_a_14")
+pub fn init_global_a14_44924() {
+// IDA 0x44924: global ctor keyed to _a_14 — boost::system generic/system category
+// slots + std::ios_base::Init + atexit fini registration (disasm). The Rust
+// runtime pre-initializes iostream state, so only once-semantics remain.
+    static ONCE: Once = Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x4546c — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE7connectIN5boost8functionIS5_EEEENS0_10connectionERKT_
 // type: int __fastcall(char, boost::mutex *, int, int, int)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::connect<boost::function<void ()(bool,void *,RBX::UIEvent)>>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&)")]
-pub fn stub_4546c() -> ! {
-    todo!("0x4546c rbx::signals::connection rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::connect<boost::function<void ()(bool,void *,RBX::UIEvent)>>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&)")
+pub fn connect_uievent_signal_4546c(
+    signal: &SharedPtr<UiEventSignal>,
+    callback: UiEventCallback,
+) -> UiEventConnection {
+// IDA 0x4546c: signal::connect news a 32-byte callable_slot, runs the callable
+// ctor (vtable tags + signal link + assign_to_own of the functor), inserts it,
+// and weak-refs the returned connection (decompile).
+    let slot = new_uievent_callable_459a4(signal, callback);
+    insert_uievent_slot_45554(signal, SharedPtr::clone(&slot));
+    UiEventConnection { slot }
 }
 
 // 0x45554 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE6insertEPNS6_4slotE
 // type: int __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::insert(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)")]
-pub fn stub_45554() -> ! {
-    todo!("0x45554 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::insert(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)")
+pub fn insert_uievent_slot_45554(signal: &UiEventSignal, slot: SharedPtr<UiEventSlot>) {
+// IDA 0x45554: ReleaseAssert(item) per signal.h:290, call_once static-mutex init,
+// lock_guard, then head-insert on the intrusive list with the signal.h:310
+// next==head linkage check (decompile).
+    debug_assert!(SharedPtr::strong_count(&slot) > 0, "item");
+    let _guard = uievent_signal_mutex_458ac().lock();
+    let mut head = signal.head.lock();
+    *slot.next.lock() = head.take();
+    // signal.h:310 next==head holds by construction: item->next is the old head.
+    *head = Some(slot);
 }
 
 // 0x45764 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slotEEaSEPS9_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot*)")]
-pub fn stub_45764() -> ! {
-    todo!("0x45764 boost::intrusive_ptr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot*)")
+pub fn retain_uievent_slot_45764(slot: SharedPtr<UiEventSlot>) -> SharedPtr<UiEventSlot> {
+// IDA 0x45764: intrusive_ptr::operator=(slot*) — add_ref(new), swap, release(old).
+    // Arc move folds addref+release — return the retained slot.
+    slot
 }
 
 // 0x45808 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slotEEaSERKSA_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot> const&)")]
-pub fn stub_45808() -> ! {
-    todo!("0x45808 boost::intrusive_ptr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot> const&)")
+pub fn clone_uievent_slot_45808(slot: &SharedPtr<UiEventSlot>) -> SharedPtr<UiEventSlot> {
+// IDA 0x45808: intrusive_ptr::operator=(const&) — add_ref plus assign.
+    SharedPtr::clone(slot)
 }
 
 // 0x458ac — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::safe_static_do_get_mutex(void)")]
-pub fn stub_458ac() -> ! {
-    todo!("0x458ac rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::safe_static_do_get_mutex(void)")
+pub fn uievent_signal_mutex_458ac() -> &'static Mutex<()> {
+// IDA 0x458ac: safe_static_do_get_mutex — guard-checked init of the class-wide
+// signal mutex value (disasm: __ZGV...value_ptr guard).
+    static VALUE: LazyLock<Mutex<()>> = LazyLock::new(|| Mutex::new(()));
+    &VALUE
 }
 
 // 0x459a4 — __ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_EC2IPS7_EERKSB_T_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&,rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*)")]
-pub fn stub_459a4() -> ! {
-    todo!("0x459a4 rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&,rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*)")
+pub fn new_uievent_callable_459a4(
+    signal: &SharedPtr<UiEventSignal>,
+    callback: UiEventCallback,
+) -> SharedPtr<UiEventSlot> {
+// IDA 0x459a4: callable ctor — next=0, signal link=a3, vtable tags, functor-empty
+// marker, then function3::assign_to_own copies the functor in (decompile).
+    SharedPtr::new(UiEventSlot {
+        callback: Mutex::new(Some(callback)),
+        signal: Mutex::new(Some(SharedPtr::clone(signal))),
+        next: Mutex::new(None),
+    })
 }
 
 // 0x45aa0 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE13callable_slotIN5boost8functionIS5_EEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::callable_slot<boost::function<void ()(bool,void *,RBX::UIEvent)>>::~callable_slot()")]
-pub fn stub_45aa0() -> ! {
-    todo!("0x45aa0 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::callable_slot<boost::function<void ()(bool,void *,RBX::UIEvent)>>::~callable_slot()")
+pub fn drop_uievent_callable_slot_45aa0(slot: &SharedPtr<UiEventSlot>) {
+// IDA 0x45aa0: callable_slot D1 — vtable reset + function::clear + member release.
+    slot.callback.lock().take();
 }
 
 // 0x45b74 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE13callable_slotIN5boost8functionIS5_EEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::callable_slot<boost::function<void ()(bool,void *,RBX::UIEvent)>>::~callable_slot()")]
-pub fn stub_45b74() -> ! {
-    todo!("0x45b74 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::callable_slot<boost::function<void ()(bool,void *,RBX::UIEvent)>>::~callable_slot()")
+pub fn delete_uievent_callable_slot_45b74(slot: SharedPtr<UiEventSlot>) {
+// IDA 0x45b74: callable_slot D0 — D1 above plus operator delete; the Arc drop
+// below is the delete.
+    slot.callback.lock().take();
+    drop(slot);
 }
 
 // 0x45c4c — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot10disconnectEv
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::disconnect(void)")]
-pub fn stub_45c4c() -> ! {
-    todo!("0x45c4c rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::disconnect(void)")
+pub fn disconnect_uievent_slot_45c4c(slot: &SharedPtr<UiEventSlot>) {
+// IDA 0x45c4c: if (slot->signal) { call_once slot-mutex init; lock; if still set
+// { slot->signal = 0; signal->remove(slot); } unlock; } (decompile).
+    if uievent_slot_connected_45d5c(slot) {
+        let _guard = uievent_slot_mutex().lock();
+        let signal = slot.signal.lock().take();
+        if let Some(signal) = signal {
+            remove_uievent_slot_45eb0(&signal, slot);
+        }
+    }
 }
 
 // 0x45d5c — __ZNK3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot9connectedEv
 // type: bool __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::connected(void)const")]
-pub fn stub_45d5c() -> ! {
-    todo!("0x45d5c rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::connected(void)const")
+pub fn uievent_slot_connected_45d5c(slot: &SharedPtr<UiEventSlot>) -> bool {
+// IDA 0x45d5c: LDR R0,[R0,#0xC]; return R0 != 0 (disasm) — the +0xC word is the
+// signal back-pointer, so connected holds exactly while the signal link is set.
+    slot.signal.lock().is_some()
 }
 
 // 0x45d68 — __ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEbS3_S5_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")]
-pub fn stub_45d68() -> ! {
-    todo!("0x45d68 rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")
+pub fn call_uievent_callable_45d68(
+    slot: &SharedPtr<UiEventSlot>,
+    confirmed: bool,
+    view: *mut c_void,
+    event: *const c_void,
+) {
+// IDA 0x45d68: callable::call forwards (bool,void*,UIEvent) to the embedded
+// function3 at this+0x10 (disasm: ADDS R0,#0x10; BLX function3::op).
+    let callback = slot.callback.lock();
+    invoke_uievent_function_45dc8(callback.as_ref(), confirmed, view, event);
 }
 
 // 0x45d98 — __ZThn4_N3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEbS3_S5_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")]
-pub fn stub_45d98() -> ! {
-    todo!("0x45d98 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")
+pub fn call_uievent_callable_thunk_45d98(
+    slot: &SharedPtr<UiEventSlot>,
+    confirmed: bool,
+    view: *mut c_void,
+    event: *const c_void,
+) {
+// IDA 0x45d98: non-virtual thunk — this+0xC steps past the second vtable where
+// 0x45d68 uses +0x10 (disasm), then the identical forward. Same slot carrier.
+    call_uievent_callable_45d68(slot, confirmed, view, event);
 }
 
 // 0x45dc8 — __ZNK5boost9function3IvbPvN3RBX7UIEventEEclEbS1_S3_
 #[doc(alias = "boost::function3<void,bool,void *,RBX::UIEvent>::operator()(bool,void *,RBX::UIEvent)const")]
-pub fn stub_45dc8() -> ! {
-    todo!("0x45dc8 boost::function3<void,bool,void *,RBX::UIEvent>::operator()(bool,void *,RBX::UIEvent)const")
+pub fn invoke_uievent_function_45dc8(
+    func: Option<&UiEventCallback>,
+    confirmed: bool,
+    view: *mut c_void,
+    event: *const c_void,
+) {
+// IDA 0x45dc8: function3::operator() throws bad_function_call on empty, else
+// dispatches via the functor vtable (*(vtable & ~1) + 4) (decompile).
+    match func {
+        Some(callback) => callback(confirmed, view, event),
+        None => panic!("boost::bad_function_call"),
+    }
 }
 
 // 0x45eb0 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE6removeEPNS6_4slotE
 // type: int __fastcall(int, char *)
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::remove(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)")]
-pub fn stub_45eb0() -> ! {
-    todo!("0x45eb0 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::remove(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)")
+pub fn remove_uievent_slot_45eb0(signal: &UiEventSignal, slot: &SharedPtr<UiEventSlot>) {
+// IDA 0x45eb0: ReleaseAssert(!intrusive_ptr_expired(item)) (signal.h:261),
+// optional FLog::SignalPrints trace, unlink-by-identity (head or predecessor
+// splice via intrusive_ptr assign — item->next is preserved, not cleared),
+// then the signal.h:284 expired re-check (decompile).
+    debug_assert!(SharedPtr::strong_count(slot) > 0, "!intrusive_ptr_expired(item)");
+    let mut head = signal.head.lock();
+    let head_is_item = head
+        .as_ref()
+        .map(|current| SharedPtr::ptr_eq(current, slot))
+        .unwrap_or(false);
+    if head_is_item {
+        let next = head
+            .as_ref()
+            .and_then(|current| current.next.lock().clone());
+        *head = next;
+        return;
+    }
+    let mut predecessor = head.clone();
+    while let Some(node) = predecessor {
+        let next = node.next.lock().clone();
+        match next {
+            Some(following) if SharedPtr::ptr_eq(&following, slot) => {
+                *node.next.lock() = following.next.lock().clone();
+                break;
+            }
+            other => predecessor = other,
+        }
+    }
 }
 
 // 0x45fa0 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot22safe_static_init_mutexEv
