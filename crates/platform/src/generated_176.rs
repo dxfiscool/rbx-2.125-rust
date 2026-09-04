@@ -8,6 +8,11 @@ use rbx_core::SharedPtr;
 use std::collections::BTreeMap;
 use std::sync::LazyLock;
 use super::generated_171::{RenderEnumDesc, RenderSettingsItem};
+use super::view_controllers::{Appirater, ObjCId};
+use rbx_reflection::generated::{
+    Tuple as ReflectionTuple, stub_0x179f4 as tuple_upload_place,
+    stub_0x17aac as tuple_shared_ptr_adopt, stub_0x17b80 as tuple_shared_ptr_const_copy,
+};
 
 const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
@@ -226,180 +231,245 @@ pub fn stub_16e24(map: &mut BTreeMap<String, i32>) {
 // mangled: __GLOBAL__I_a
 // type: 
 #[doc(alias = "global constructor keyed to_a")]
-pub fn stub_16e4c() -> ! {
-    todo!("0x16e4c global constructor keyed to_a")
+pub fn stub_16e4c() {
+    // IDA 0x16e4c (`__GLOBAL__I_a`): stores `generic_category()` twice plus
+    // `system_category()` (0x16e56..0x16e70), constructs `std::ios_base::Init`
+    // with `__cxa_atexit` teardown (0x16e72..0x16e9a), then the guarded
+    // `exception_ptr` static objects (`bad_alloc_`/`bad_exception_`, from
+    // 0x16e9e). Host statics initialize on use; nothing to run.
 }
-
 // 0x179e8 — __ZN3RBX9DataModel10serverSaveEv
 // mangled: __ZN3RBX9DataModel10serverSaveEv
 // type: void __fastcall(RBX::DataModel *this)
 #[doc(alias = "RBX::DataModel::serverSave(void)")]
-pub fn stub_179e8() -> ! {
-    todo!("0x179e8 RBX::DataModel::serverSave(void)")
+pub fn stub_179e8() {
+    // IDA 0x179e8 (`RBX::DataModel::serverSave`): single `BX LR` — stubbed
+    // out in this build. Verified via IDA disasm.
 }
-
 // 0x179ec — __ZN3RBX9DataModel17internalSaveAsyncENS_9ContentIdEN5boost8functionIFvbEEE
 // mangled: __ZN3RBX9DataModel17internalSaveAsyncENS_9ContentIdEN5boost8functionIFvbEEE
 // type: void()
 // was: RBX::DataModel::internalSaveAsync(RBX::ContentId,boost::function<void ()(bool)>) (boost::function -> Box<dyn Fn>)
 #[doc(alias = "RBX::DataModel::internalSaveAsync(RBX::ContentId,Box<dyn Fn<void ()(bool)>)")]
-pub fn stub_179ec() -> ! {
-    todo!("0x179ec RBX::DataModel::internalSaveAsync(RBX::ContentId,boost::function<void ()(bool)>)")
+pub fn stub_179ec() {
+    // IDA 0x179ec (`RBX::DataModel::internalSaveAsync`): single `BX LR` —
+    // stubbed out in this build. Verified via IDA disasm.
 }
-
 // 0x179f0 — __ZN3RBX9DataModel12internalSaveENS_9ContentIdE
 // mangled: __ZN3RBX9DataModel12internalSaveENS_9ContentIdE
 // type: void()
 #[doc(alias = "RBX::DataModel::internalSave(RBX::ContentId)")]
-pub fn stub_179f0() -> ! {
-    todo!("0x179f0 RBX::DataModel::internalSave(RBX::ContentId)")
+pub fn stub_179f0() {
+    // IDA 0x179f0 (`RBX::DataModel::internalSave`): single `BX LR` — stubbed
+    // out in this build. Verified via IDA disasm.
 }
-
 // 0x179f4 — __ZN3RBX9DataModel11uploadPlaceERKSsNS_8Instance10SaveFilterEN5boost8functionIFvNS5_10shared_ptrIKNS_10Reflection5TupleEEEEEENS6_IFvSsEEE
 // mangled: __ZN3RBX9DataModel11uploadPlaceERKSsNS_8Instance10SaveFilterEN5boost8functionIFvNS5_10shared_ptrIKNS_10Reflection5TupleEEEEEENS6_IFvSsEEE
 // type: void __fastcall(int)
 // was: RBX::DataModel::uploadPlace(std::string const&,RBX::Instance::SaveFilter,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>) (boost::shared_ptr -> rbx_core::SharedPtr)
 #[doc(alias = "RBX::DataModel::uploadPlace(std::string const&,RBX::Instance::SaveFilter,Box<dyn Fn<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,Box<dyn Fn<void ()(std::string)>)")]
-pub fn stub_179f4() -> ! {
-    todo!("0x179f4 RBX::DataModel::uploadPlace(std::string const&,RBX::Instance::SaveFilter,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)")
+pub fn stub_179f4(slot: &mut SharedPtr<ReflectionTuple>) {
+    // IDA 0x179f4 (`RBX::DataModel::uploadPlace`): holder init, fresh empty
+    // `Tuple` shared_ptr (0x17a2a), const-copy into the member (0x17a32),
+    // temp release (0x17a64). Same as the `rbx_reflection::generated::stub_0x179f4`
+    // anchor. Family-verified.
+    tuple_upload_place(slot);
 }
 
 // 0x17aac — __ZN5boost10shared_ptrIN3RBX10Reflection5TupleEEC1IS3_EEPT_
 // mangled: __ZN5boost10shared_ptrIN3RBX10Reflection5TupleEEC1IS3_EEPT_
-// type: 
+// type:
 // was: boost::shared_ptr<RBX::Reflection::Tuple>::shared_ptr<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *) (boost::shared_ptr -> rbx_core::SharedPtr)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Reflection::Tuple>::shared_ptr<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)")]
-pub fn stub_17aac() -> ! {
-    todo!("0x17aac boost::shared_ptr<RBX::Reflection::Tuple>::shared_ptr<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)")
+pub fn stub_17aac(ptr: SharedPtr<ReflectionTuple>) -> SharedPtr<ReflectionTuple> {
+    // IDA 0x17aac (`shared_ptr<Tuple>::shared_ptr` adopt ctor): store + adopt
+    // the control block (0x17ada/0x17b08), release the previous (0x17b16).
+    // Same as the `rbx_reflection::generated::stub_0x17aac` anchor.
+    // Family-verified.
+    tuple_shared_ptr_adopt(ptr)
 }
 
 // 0x17b80 — __ZN5boost10shared_ptrIKN3RBX10Reflection5TupleEEC2IS3_EERKNS0_IT_EENS_6detail24sp_enable_if_convertibleIS7_S4_E4typeE
 // mangled: __ZN5boost10shared_ptrIKN3RBX10Reflection5TupleEEC2IS3_EERKNS0_IT_EENS_6detail24sp_enable_if_convertibleIS7_S4_E4typeE
-// type: 
+// type:
 // was: boost::shared_ptr<RBX::Reflection::Tuple const>::shared_ptr<RBX::Reflection::Tuple>(boost::shared_ptr<RBX::Reflection::Tuple> const&,boost::detail::sp_enable_if_convertible<RBX::Reflection::Tuple,RBX::Reflection::Tuple const>::type) (boost::shared_ptr -> rbx_core::SharedPtr)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Reflection::Tuple const>::shared_ptr<RBX::Reflection::Tuple>(rbx_core::SharedPtr<RBX::Reflection::Tuple> const&,boost::detail::sp_enable_if_convertible<RBX::Reflection::Tuple,RBX::Reflection::Tuple const>::type)")]
-pub fn stub_17b80() -> ! {
-    todo!("0x17b80 boost::shared_ptr<RBX::Reflection::Tuple const>::shared_ptr<RBX::Reflection::Tuple>(boost::shared_ptr<RBX::Reflection::Tuple> const&,boost::detail::sp_enable_if_convertible<RBX::Reflection::Tuple,RBX::Reflection::Tuple const>::type)")
+pub fn stub_17b80(other: &SharedPtr<ReflectionTuple>) -> SharedPtr<ReflectionTuple> {
+    // IDA 0x17b80 (`shared_ptr<Tuple const>` copy ctor): copy both words
+    // (0x17ba8..0x17bb4), bump the use count under the spinlock pool mutex
+    // (0x17bfe..0x17c14) — exactly `Arc` clone. Same as the
+    // `rbx_reflection::generated::stub_0x17b80` anchor. Family-verified.
+    tuple_shared_ptr_const_copy(other)
 }
-
 // 0x17c58 — __GLOBAL__I_a_0
 // mangled: __GLOBAL__I_a_0
-// type: 
+// type:
 #[doc(alias = "global constructor keyed to_a_0")]
-pub fn stub_17c58() -> ! {
-    todo!("0x17c58 global constructor keyed to_a_0")
+pub fn stub_17c58() {
+    // IDA 0x17c58 (`__GLOBAL__I_a_0`): same shape as 0x16e4c — category
+    // stores (0x17c5c..0x17c76), `ios_base::Init` + `__cxa_atexit`
+    // (0x17c78..0x17c9a), guarded `exception_ptr` statics (from 0x17c9e).
+    // Host statics initialize on use; nothing to run. Family-verified.
 }
 
 // 0x17df0 — +[Appirater setAppId:]
 // mangled: +[Appirater setAppId:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[Appirater setAppId:]")]
-pub fn stub_17df0() -> ! {
-    todo!("0x17df0 +[Appirater setAppId:]")
+pub fn stub_17df0(app_id: &str) {
+    // IDA 0x17df0 (`+[Appirater setAppId:]`): stores `a3` into
+    // `_MergedGlobals243` (0x17dfa). Verified via IDA decompile.
+    Appirater::set_app_id(app_id);
 }
 
 // 0x17e00 — +[Appirater setDaysUntilPrompt:]
 // mangled: +[Appirater setDaysUntilPrompt:]
 // type: void __cdecl(id, SEL, double)
 #[doc(alias = "+[Appirater setDaysUntilPrompt:]")]
-pub fn stub_17e00() -> ! {
-    todo!("0x17e00 +[Appirater setDaysUntilPrompt:]")
+pub fn stub_17e00(days: f64) {
+    // IDA 0x17e00 (`+[Appirater setDaysUntilPrompt:]`): stores `a3` into
+    // `_daysUntilPrompt` (0x17e0e). Verified via IDA decompile.
+    Appirater::set_days_until_prompt(days);
 }
 
 // 0x17e14 — +[Appirater setUsesUntilPrompt:]
 // mangled: +[Appirater setUsesUntilPrompt:]
 // type: void __cdecl(id, SEL, int)
 #[doc(alias = "+[Appirater setUsesUntilPrompt:]")]
-pub fn stub_17e14() -> ! {
-    todo!("0x17e14 +[Appirater setUsesUntilPrompt:]")
+pub fn stub_17e14(uses: u32) {
+    // IDA 0x17e14 (`+[Appirater setUsesUntilPrompt:]`): stores `a3` into
+    // `_MergedGlobals` (0x17e1e). Verified via IDA decompile.
+    Appirater::set_uses_until_prompt(uses);
 }
 
 // 0x17e24 — +[Appirater setSignificantEventsUntilPrompt:]
 // mangled: +[Appirater setSignificantEventsUntilPrompt:]
 // type: void __cdecl(id, SEL, int)
 #[doc(alias = "+[Appirater setSignificantEventsUntilPrompt:]")]
-pub fn stub_17e24() -> ! {
-    todo!("0x17e24 +[Appirater setSignificantEventsUntilPrompt:]")
+pub fn stub_17e24(count: u32) {
+    // IDA 0x17e24 (`+[Appirater setSignificantEventsUntilPrompt:]`): stores
+    // `a3` into `dword_122316C` (0x17e2e). Verified via IDA decompile.
+    Appirater::set_significant_events_until_prompt(count);
 }
 
 // 0x17e34 — +[Appirater setTimeBeforeReminding:]
 // mangled: +[Appirater setTimeBeforeReminding:]
 // type: void __cdecl(id, SEL, double)
 #[doc(alias = "+[Appirater setTimeBeforeReminding:]")]
-pub fn stub_17e34() -> ! {
-    todo!("0x17e34 +[Appirater setTimeBeforeReminding:]")
+pub fn stub_17e34(days: f64) {
+    // IDA 0x17e34 (`+[Appirater setTimeBeforeReminding:]`): stores `a3` into
+    // `_timeBeforeReminding` (0x17e42). Verified via IDA decompile.
+    Appirater::set_time_before_reminding(days);
 }
 
 // 0x17e48 — +[Appirater setDebug:]
 // mangled: +[Appirater setDebug:]
 // type: void __cdecl(id, SEL, char)
 #[doc(alias = "+[Appirater setDebug:]")]
-pub fn stub_17e48() -> ! {
-    todo!("0x17e48 +[Appirater setDebug:]")
+pub fn stub_17e48(debug: bool) {
+    // IDA 0x17e48 (`+[Appirater setDebug:]`): stores `a3` into `_debug`
+    // (0x17e52). Verified via IDA decompile.
+    Appirater::set_debug(debug);
 }
 
 // 0x17e58 — +[Appirater setDelegate:]
 // mangled: +[Appirater setDelegate:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[Appirater setDelegate:]")]
-pub fn stub_17e58() -> ! {
-    todo!("0x17e58 +[Appirater setDelegate:]")
+pub fn stub_17e58(delegate: ObjCId) {
+    // IDA 0x17e58 (`+[Appirater setDelegate:]`): stores `a3` into
+    // `dword_130C394` (0x17e62), consumed by the `sharedInstance` block at
+    // 0x18036. Verified via IDA decompile.
+    Appirater::set_class_delegate(delegate);
 }
 
 // 0x17e68 — -[Appirater connectedToNetwork]
 // mangled: -[Appirater connectedToNetwork]
 // type: char __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater connectedToNetwork]")]
-pub fn stub_17e68() -> ! {
-    todo!("0x17e68 -[Appirater connectedToNetwork]")
+pub fn stub_17e68(instance: &Appirater) -> bool {
+    // IDA 0x17e68 (`-[Appirater connectedToNetwork]`): zeroed `sockaddr`
+    // probe via `SCNetworkReachabilityCreateWithAddress`/`GetFlags`
+    // (0x17e92..0x17eb8), then a test `NSURLConnection` to apple.com
+    // (0x17ede..0x17f3a); reachable flags (`(flags & 6) == 2 || flags & 1`,
+    // 0x17f4a) report `connection != nil` (0x17f52), which cannot fail on
+    // device. The unreachable-flags path logs and returns 0
+    // (0x17f60..0x17f64). Verified via IDA decompile.
+    instance.connected_to_network()
 }
 
 // 0x17f80 — +[Appirater sharedInstance]
 // mangled: +[Appirater sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[Appirater sharedInstance]")]
-pub fn stub_17f80() -> ! {
-    todo!("0x17f80 +[Appirater sharedInstance]")
+pub fn stub_17f80() -> &'static Appirater {
+    // IDA 0x17f80 (`+[Appirater sharedInstance]`): returns `dword_130C398`,
+    // materializing it once via `dispatch_once` on the 0x17fe4 block
+    // (0x17fb8..0x17fe0). The host `LazyLock` is that once. Verified via IDA
+    // decompile.
+    Appirater::shared_instance()
 }
 
 // 0x17fe4 — ___27+[Appirater sharedInstance]_block_invoke
 // mangled: ___27+[Appirater sharedInstance]_block_invoke
 // type: 
 #[doc(alias = "___27+[Appirater sharedInstance]_block_invoke")]
-pub fn stub_17fe4() -> ! {
-    todo!("0x17fe4 ___27+[Appirater sharedInstance]_block_invoke")
+pub fn stub_17fe4() -> &'static Appirater {
+    // IDA 0x17fe4 (`__27+[Appirater sharedInstance]_block_invoke`):
+    // `[[Appirater alloc] init]` into `dword_130C398` (0x18008..0x18030),
+    // `setDelegate:` from `dword_130C394` (0x18036), observer for
+    // `UIApplicationWillResignActiveNotification` → `appWillResignActive`
+    // (0x18052..0x18092). Verified via IDA decompile.
+    Appirater::init_shared()
 }
 
 // 0x18094 — ___copy_helper_block_
 // mangled: ___copy_helper_block_
 // type: 
 #[doc(alias = "___copy_helper_block_")]
-pub fn stub_18094() -> ! {
-    todo!("0x18094 ___copy_helper_block_")
+pub fn stub_18094(slot: &mut Option<ObjCId>, src: Option<ObjCId>) {
+    // IDA 0x18094 (`__copy_helper_block_`): `_Block_object_assign_shim`
+    // retaining the captured `self` (`a1 + 20 <- a2 + 20`, 0x1809a). `Arc`
+    // captures retain on clone; the slot copy is the retain. Verified via IDA
+    // decompile.
+    *slot = src;
 }
 
 // 0x180a0 — ___destroy_helper_block_
 // mangled: ___destroy_helper_block_
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_")]
-pub fn stub_180a0() -> ! {
-    todo!("0x180a0 ___destroy_helper_block_")
+pub fn stub_180a0(slot: &mut Option<ObjCId>) {
+    // IDA 0x180a0 (`__destroy_helper_block_`): `_Block_object_dispose_shim`
+    // releasing the capture (`a1 + 20`, 0x180a4). Dropping the host slot is
+    // the release. Verified via IDA decompile.
+    *slot = None;
 }
 
 // 0x180a8 — -[Appirater showRatingAlert]
 // mangled: -[Appirater showRatingAlert]
 // type: void __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater showRatingAlert]")]
-pub fn stub_180a8() -> ! {
-    todo!("0x180a8 -[Appirater showRatingAlert]")
+pub fn stub_180a8(instance: &Appirater) {
+    // IDA 0x180a8 (`-[Appirater showRatingAlert]`): `UIAlertView` built from
+    // the `RatingTitle`/`RatingString`/button locals (0x180d0..0x18346),
+    // retained into `ratingAlert` (0x18358), shown (0x1836a), then
+    // `appiraterDidDisplayAlert:` when the delegate answers it
+    // (0x1837e..0x183c6). UIKit strings collapse into the model call.
+    // Verified via IDA decompile.
+    instance.show_rating_alert();
 }
 
 // 0x183d8 — -[Appirater ratingConditionsHaveBeenMet]
 // mangled: -[Appirater ratingConditionsHaveBeenMet]
 // type: char __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater ratingConditionsHaveBeenMet]")]
-pub fn stub_183d8() -> ! {
-    todo!("0x183d8 -[Appirater ratingConditionsHaveBeenMet]")
+pub fn stub_183d8(instance: &Appirater, now_secs: f64) -> bool {
+    // IDA 0x183d8 (`-[Appirater ratingConditionsHaveBeenMet]`): the
+    // short-circuit chain over the `kAppirater*` defaults with the initializer
+    // dates (0x1841a..0x18594) lives in the model; `now_secs` is `+[NSDate
+    // date]` in seconds since 1970. Verified via IDA decompile.
+    instance.rating_conditions_have_been_met(now_secs)
 }
 
 // 0x185b0 — -[Appirater incrementUseCount]

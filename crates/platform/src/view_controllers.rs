@@ -1345,22 +1345,67 @@ impl Flurry {
     }
 }
 
-/// `Appirater` configuration counterpart (IDA 0x1953a..0x1959a, 0x19bf0).
+/// `Appirater` configuration counterpart (IDA 0x1953a..0x1959a, 0x19bf0) plus the
+/// full rating-prompt state machine from the `Appirater` class cluster
+/// (IDA 0x17df0..0x19224): class-level config globals (`_MergedGlobals243`,
+/// `_daysUntilPrompt`, `_MergedGlobals`, `dword_122316C`,
+/// `_timeBeforeReminding`, `_debug`, `dword_130C394`) and the shared-instance
+/// ivars (`ratingAlert`, `_delegate`). `NSUserDefaults` persistence
+/// (`kAppiraterFirstUseDate`, `kAppiraterUseCount`, ...) is modeled as plain
+/// host state; `UIAlertView`/`NSURLConnection` objects collapse to flags and
+/// `ObjCId` tokens (`None`/`0` is `nil`).
 #[derive(Debug, Default)]
 pub struct Appirater {
     app_id: parking_lot::Mutex<String>,
     days_until_prompt: parking_lot::Mutex<f64>,
     uses_until_prompt: std::sync::atomic::AtomicU32,
+    significant_events_until_prompt: std::sync::atomic::AtomicU32,
     time_before_reminding: parking_lot::Mutex<f64>,
+    debug: std::sync::atomic::AtomicBool,
+    pending_delegate: parking_lot::Mutex<ObjCId>,
+    delegate: parking_lot::Mutex<ObjCId>,
+    rating_alert: parking_lot::Mutex<ObjCId>,
+    rating_alert_visible: std::sync::atomic::AtomicBool,
+    rating_alert_shows: std::sync::atomic::AtomicU32,
+    resign_active_observed: std::sync::atomic::AtomicBool,
+    use_count: std::sync::atomic::AtomicU32,
+    significant_event_count: std::sync::atomic::AtomicU32,
+    first_use_date_secs: parking_lot::Mutex<f64>,
+    reminder_request_date_secs: parking_lot::Mutex<f64>,
+    declined_to_rate: std::sync::atomic::AtomicBool,
+    rated_current_version: std::sync::atomic::AtomicBool,
+    network_reachable: std::sync::atomic::AtomicBool,
+    delegate_display_notifies: std::sync::atomic::AtomicU32,
     app_launched_calls: std::sync::atomic::AtomicU32,
     entered_foreground_calls: std::sync::atomic::AtomicU32,
 }
 
 impl Appirater {
     fn shared() -> &'static Self {
-        static APPIRATER: std::sync::LazyLock<Appirater> =
-            std::sync::LazyLock::new(Appirater::default);
+        static APPIRATER: std::sync::LazyLock<Appirater> = std::sync::LazyLock::new(|| {
+            let appirater = Appirater::default();
+            // Reachability flags read clean on a live device, so the
+            // `connectedToNetwork` (IDA 0x17e68) fast path starts reachable.
+            appirater.network_reachable.store(true, std::sync::atomic::Ordering::SeqCst);
+            appirater
+        });
         &APPIRATER
+    }
+    /// `+sharedInstance` (IDA 0x17f80): `dispatch_once` materialization.
+    pub fn shared_instance() -> &'static Self {
+        Self::shared()
+    }
+    /// Block `__27+[Appirater sharedInstance]_block_invoke` (IDA 0x17fe4):
+    /// `[[Appirater alloc] init]`, `setDelegate:` from the class-level
+    /// delegate slot, observer for `UIApplicationWillResignActiveNotification`.
+    pub fn init_shared() -> &'static Self {
+        let inst = Self::shared();
+        *inst.delegate.lock() = *inst.pending_delegate.lock();
+        inst.resign_active_observed.store(true, std::sync::atomic::Ordering::SeqCst);
+        inst
+    }
+    pub fn resign_active_observed() -> bool {
+        Self::shared().resign_active_observed.load(std::sync::atomic::Ordering::SeqCst)
     }
     /// `+setAppId:`.
     pub fn set_app_id(id: &str) {
@@ -1383,12 +1428,109 @@ impl Appirater {
     pub fn uses_until_prompt() -> u32 {
         Self::shared().uses_until_prompt.load(std::sync::atomic::Ordering::SeqCst)
     }
+    /// `+setSignificantEventsUntilPrompt:`.
+    pub fn set_significant_events_until_prompt(count: u32) {
+        Self::shared().significant_events_until_prompt.store(count, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn significant_events_until_prompt() -> u32 {
+        Self::shared().significant_events_until_prompt.load(std::sync::atomic::Ordering::SeqCst)
+    }
     /// `+setTimeBeforeReminding:`.
     pub fn set_time_before_reminding(days: f64) {
         *Self::shared().time_before_reminding.lock() = days;
     }
     pub fn time_before_reminding() -> f64 {
         *Self::shared().time_before_reminding.lock()
+    }
+    /// `+setDebug:`.
+    pub fn set_debug(debug: bool) {
+        Self::shared().debug.store(debug, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn is_debug() -> bool {
+        Self::shared().debug.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `+setDelegate:` (class-level slot consumed by `init_shared`).
+    pub fn set_class_delegate(delegate: ObjCId) {
+        *Self::shared().pending_delegate.lock() = delegate;
+    }
+    pub fn class_delegate() -> ObjCId {
+        *Self::shared().pending_delegate.lock()
+    }
+    /// `-[Appirater delegate]` / `-[Appirater setDelegate:]` (instance ivar).
+    pub fn set_delegate(&self, delegate: ObjCId) {
+        *self.delegate.lock() = delegate;
+    }
+    pub fn delegate(&self) -> ObjCId {
+        *self.delegate.lock()
+    }
+    /// `-[Appirater ratingAlert]` / `-[Appirater setRatingAlert:]` (retained ivar).
+    pub fn set_rating_alert(&self, alert: ObjCId) {
+        *self.rating_alert.lock() = alert;
+    }
+    pub fn rating_alert(&self) -> ObjCId {
+        *self.rating_alert.lock()
+    }
+    /// `-[Appirater connectedToNetwork]` (IDA 0x17e68): zeroed `sockaddr`
+    /// reachability probe plus a test `NSURLConnection` to apple.com. The
+    /// connection alloc cannot fail on device, so a good-flags result is
+    /// exactly "reachable"; the host keeps only that flag.
+    pub fn connected_to_network(&self) -> bool {
+        self.network_reachable.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn set_network_reachable(reachable: bool) {
+        Self::shared().network_reachable.store(reachable, std::sync::atomic::Ordering::SeqCst);
+    }
+    /// `-[Appirater showRatingAlert]` (IDA 0x180a8): builds the `UIAlertView`
+    /// from the `RatingTitle`/`RatingString`/button locals, retains it into
+    /// `ratingAlert`, shows it, and pings `appiraterDidDisplayAlert:` when the
+    /// delegate answers it. UIKit strings collapse; the token is non-`nil`.
+    pub fn show_rating_alert(&self) {
+        *self.rating_alert.lock() = 1;
+        self.rating_alert_visible.store(true, std::sync::atomic::Ordering::SeqCst);
+        self.rating_alert_shows.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        if *self.delegate.lock() != NIL_ID {
+            self.delegate_display_notifies.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        }
+    }
+    pub fn rating_alert_show_count(&self) -> u32 {
+        self.rating_alert_shows.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn is_rating_alert_visible(&self) -> bool {
+        self.rating_alert_visible.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn delegate_display_notify_count(&self) -> u32 {
+        self.delegate_display_notifies.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `-[Appirater ratingConditionsHaveBeenMet]` (IDA 0x183d8): short-circuit
+    /// chain over the `kAppirater*` defaults. `_debug` forces true (0x183f6);
+    /// time gates use `>=`, count gates use strict `>` (0x184aa/0x184dc/0x184f6).
+    pub fn rating_conditions_have_been_met(&self, now_secs: f64) -> bool {
+        if self.debug.load(std::sync::atomic::Ordering::SeqCst) {
+            return true;
+        }
+        if now_secs - *self.first_use_date_secs.lock()
+            < *self.days_until_prompt.lock() * 86400.0
+        {
+            return false;
+        }
+        if self.use_count.load(std::sync::atomic::Ordering::SeqCst)
+            <= self.uses_until_prompt.load(std::sync::atomic::Ordering::SeqCst)
+        {
+            return false;
+        }
+        if self.significant_event_count.load(std::sync::atomic::Ordering::SeqCst)
+            <= self.significant_events_until_prompt.load(std::sync::atomic::Ordering::SeqCst)
+        {
+            return false;
+        }
+        if self.declined_to_rate.load(std::sync::atomic::Ordering::SeqCst) {
+            return false;
+        }
+        if self.rated_current_version.load(std::sync::atomic::Ordering::SeqCst) {
+            return false;
+        }
+        now_secs - *self.reminder_request_date_secs.lock()
+            >= *self.time_before_reminding.lock() * 86400.0
     }
     /// `+appLaunched:`.
     pub fn app_launched(_first_launch: bool) {
