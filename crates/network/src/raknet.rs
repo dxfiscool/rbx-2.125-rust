@@ -6947,118 +6947,343 @@ pub fn stub_f647b4() -> ! {
 }
 
 
+/// One ancestor level of the `ClickDetector` part/parent walk (IDA 0x3f1234 / 0x3f15b8).
+#[derive(Clone, Copy, Debug)]
+pub struct ClickAncestor {
+    /// `ClassDescriptor::isA(Instance)` for this level (IDA 0x3f1252; refresh thunk at 0x3f12a4).
+    pub is_instance: bool,
+    /// `findConstFirstChildOfType<ClickDetector>` hit: its `maxActivationDistance` (+120).
+    pub detector_max_distance: Option<f32>,
+    /// `ClassDescriptor::isA(Workspace)` for this level (IDA 0x3f12b2 / 0x3f1718).
+    pub is_workspace: bool,
+}
+
+/// One ancestor level of the `ClickDetector::stopHover` walk (IDA 0x3f154c).
+#[derive(Clone, Copy, Debug)]
+pub struct StopHoverLevel {
+    /// `findConstFirstChildOfType<ClickDetector>` hit (IDA 0x3f1586).
+    pub has_detector: bool,
+    /// `ClassDescriptor::isA(Workspace)` — ends the walk (IDA 0x3f15a8).
+    pub is_workspace: bool,
+}
+
+/// `NetworkOwner::colorFromAddress` outcome (IDA 0x5e1e40).
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum OwnerColor {
+    /// Address equals `Server()` → `G3D::Color3::white` (IDA 0x5e1e5e).
+    White,
+    /// Address equals `Unassigned()` or `ServerUnassigned()` → `G3D::Color3::black` (IDA 0x5e1e82..0x5e1e8a).
+    Black,
+    /// Otherwise `RBX::Color::colorFromInt(port + binary)` (IDA 0x5e1e9c); the mixed word.
+    Index(u32),
+}
+
+/// `DataModel::updatePhysicsInstructions` mode outcome (IDA 0x425d58).
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum PhysicsUpdate {
+    /// Modes 5/6 (`filter` 0, duties 0.5, DataModel.cpp:1879) and mode 0 (`filter` 2, duties 0.25,
+    /// DataModel.cpp:1886): fixed duty pair, then the streaming-flag tail.
+    Fixed { filter: u32, duty: f64 },
+    /// Mode 1: `filter` 4, zeroed region, `dPhysicsServerDutyPercent`, then the tail (DataModel.cpp:1893).
+    Server,
+    /// Modes 2/4: `filter` 1, duties 0, returns 0 immediately (DataModel.cpp:1902).
+    Idle,
+    /// Mode 3: `filter` 3, `buildClientRegion`, client duty percent, returns 1 (DataModel.cpp:1909).
+    Client { e_throttle_bump_up: bool },
+}
+
+/// `enable_shared_from_this::_internal_accept_owner` outcome (IDA 0x44ab28).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct AcceptedOwner {
+    /// Stored owner word (`a3 + 36`, IDA 0x44ab86).
+    pub stored: u32,
+}
+
+/// Throttle ring/accumulator words owned by `PhysicsInstructions::setThrottles` (IDA 0x5f6a90).
+#[derive(Clone, Debug, Default)]
+pub struct ThrottleState {
+    /// Ring head/count pair advanced `(head + 1) % count` (IDA 0x5f6ace).
+    pub head_a: u32,
+    pub count_a: u32,
+    /// Second ring head/count pair (IDA 0x5f6af6).
+    pub head_b: u32,
+    pub count_b: u32,
+    /// Accumulator vs limit pair; past the limit words +48/+52 reset with `EThrottle::increaseLoad`.
+    pub acc_a: f64,
+    pub limit_a: f64,
+    /// Second accumulator vs limit pair (IDA 0x5f6bf2..0x5f6c06).
+    pub acc_b: f64,
+    pub limit_b: f64,
+    /// Byte at +72: forces the max-radius tail path (IDA 0x5f6c2e).
+    pub force_max: bool,
+    /// Computed load ratio compared against 0.4 on the tail (IDA 0x5f6c2e).
+    pub load_ratio: f64,
+}
+
 // 0x3c9c4c — __ZN3RBX15ServiceProvider6createINS_7Network7PlayersEEEPT_PKNS_8InstanceE
 #[doc(alias = "RBX::Network::Players * RBX::ServiceProvider::create<RBX::Network::Players>(RBX::Instance const*)")]
-pub fn stub_3c9c4c() -> ! {
-    todo!("0x3c9c4c RBX::Network::Players * RBX::ServiceProvider::create<RBX::Network::Players>(RBX::Instance const*)")
+pub fn stub_3c9c4c(provider_found: bool, create: &mut dyn FnMut() -> u32) -> u32 {
+    // IDA 0x3c9c4c: `findServiceProvider` hit (0x3c9c50) runs the nullary `create<Players>` (0x3c9c60), else null (0x3c9c58).
+    if provider_found {
+        create()
+    } else {
+        0
+    }
 }
 
 // 0x3f1114 — __ZN3RBX13ClickDetector14fireMouseClickEfPNS_7Network6PlayerE
 #[doc(alias = "RBX::ClickDetector::fireMouseClick(float,RBX::Network::Player *)")]
-pub fn stub_3f1114() -> ! {
-    todo!("0x3f1114 RBX::ClickDetector::fireMouseClick(float,RBX::Network::Player *)")
+pub fn stub_3f1114(max_distance: f32, distance: f32, fire: &mut dyn FnMut()) {
+    // IDA 0x3f1114: `maxActivationDistance` (+120) gate (0x3f1170), then `shared_from<Player>` plus
+    // `fireAndReplicateEvent` (0x3f117e..0x3f11a6).
+    if max_distance > distance {
+        fire();
+    }
 }
 
 // 0x3f1234 — __ZN3RBX13ClickDetector11isClickableEN5boost10shared_ptrINS_12PartInstanceEEEfbPNS_7Network6PlayerE
 #[doc(alias = "RBX::ClickDetector::isClickable(rbx_core::SharedPtr<RBX::PartInstance>,float,bool,RBX::Network::Player *)")]
-pub fn stub_3f1234() -> ! {
-    todo!("0x3f1234 RBX::ClickDetector::isClickable(boost::shared_ptr<RBX::PartInstance>,float,bool,RBX::Network::Player *)")
+pub fn stub_3f1234(distance: f32, fire_click: bool, chain: &[ClickAncestor], fire: &mut dyn FnMut()) -> bool {
+    // IDA 0x3f1234: null part returns 0 (0x3f124e); the level must be an `Instance` (0x3f1252..0x3f126e).
+    // Each level runs `findConstFirstChildOfType<ClickDetector>` (0x3f1286); a detector whose
+    // `maxActivationDistance` exceeds the distance (0x3f129a) breaks out with 1 (0x3f12c0), firing
+    // `fireMouseClick` first when requested (0x3f12d0). Otherwise the walk climbs via +52 (0x3f129c),
+    // stopping at null (0x3f12a0) or a `Workspace` parent (0x3f12b2..0x3f12be).
+    if chain.is_empty() || !chain[0].is_instance {
+        return false;
+    }
+    let mut level = 0;
+    loop {
+        if let Some(max) = chain[level].detector_max_distance {
+            if max > distance {
+                if fire_click {
+                    fire();
+                }
+                return true;
+            }
+        }
+        level += 1;
+        if level >= chain.len() {
+            return false;
+        }
+        if chain[level].is_workspace {
+            return false;
+        }
+    }
 }
 
 // 0x3f12e0 — __ZN3RBX13ClickDetector19updateLastHoverPartEN5boost10shared_ptrINS_8InstanceEEEPNS_7Network6PlayerE
 #[doc(alias = "RBX::ClickDetector::updateLastHoverPart(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::Player *)")]
-pub fn stub_3f12e0() -> ! {
-    todo!("0x3f12e0 RBX::ClickDetector::updateLastHoverPart(boost::shared_ptr<RBX::Instance>,RBX::Network::Player *)")
+pub fn stub_3f12e0(hovered: Option<u32>, last_hovered: Option<u32>, fire: &mut dyn FnMut()) -> (Option<u32>, bool) {
+    // IDA 0x3f12e0: a changed hovered part (0x3f12f2) fires `fireMouseHover` when non-null (0x3f12fa),
+    // stores it via `shared_ptr::operator=` into +124 (0x3f1302), and returns 1 (0x3f1306); else 0.
+    if hovered != last_hovered {
+        if hovered.is_some() {
+            fire();
+        }
+        (hovered, true)
+    } else {
+        (last_hovered, false)
+    }
 }
 
 // 0x3f130c — __ZN3RBX13ClickDetector14fireMouseHoverEPNS_7Network6PlayerE
 #[doc(alias = "RBX::ClickDetector::fireMouseHover(RBX::Network::Player *)")]
-pub fn stub_3f130c() -> ! {
-    todo!("0x3f130c RBX::ClickDetector::fireMouseHover(RBX::Network::Player *)")
+pub fn stub_3f130c(fire: &mut dyn FnMut()) {
+    // IDA 0x3f130c: `shared_from<Player>` plus `fireAndReplicateEvent` (0x3f132e..0x3f1382).
+    fire();
 }
 
 // 0x3f1410 — __ZN3RBX13ClickDetector19fireMouseHoverLeaveEPNS_7Network6PlayerE
 #[doc(alias = "RBX::ClickDetector::fireMouseHoverLeave(RBX::Network::Player *)")]
-pub fn stub_3f1410() -> ! {
-    todo!("0x3f1410 RBX::ClickDetector::fireMouseHoverLeave(RBX::Network::Player *)")
+pub fn stub_3f1410(fire: &mut dyn FnMut()) {
+    // IDA 0x3f1410: `fireAndReplicateEvent` (0x3f1432..0x3f1486), then `lastHoverPart` (+124) is
+    // cleared back to null (0x3f14b4); the caller owns the stored word.
+    fire();
 }
 
 // 0x3f154c — __ZN3RBX13ClickDetector9stopHoverEN5boost10shared_ptrINS_12PartInstanceEEEPNS_7Network6PlayerE
 #[doc(alias = "RBX::ClickDetector::stopHover(rbx_core::SharedPtr<RBX::PartInstance>,RBX::Network::Player *)")]
-pub fn stub_3f154c() -> ! {
-    todo!("0x3f154c RBX::ClickDetector::stopHover(boost::shared_ptr<RBX::PartInstance>,RBX::Network::Player *)")
+pub fn stub_3f154c(is_instance: bool, levels: &[StopHoverLevel], fire: &mut dyn FnMut()) {
+    // IDA 0x3f154c: null part returns (0x3f1554); the level must be an `Instance` (0x3f155c..0x3f1574).
+    // Each level fires `fireMouseHoverLeave` for its first detector child (0x3f1586..0x3f1590), then
+    // climbs via +52 (0x3f1594) until null (0x3f1596) or a `Workspace` parent (0x3f15a8).
+    if levels.is_empty() || !is_instance {
+        return;
+    }
+    let mut level = 0;
+    loop {
+        if levels[level].has_detector {
+            fire();
+        }
+        level += 1;
+        if level >= levels.len() || levels[level].is_workspace {
+            break;
+        }
+    }
 }
 
 // 0x3f15b8 — __ZN3RBX13ClickDetector9isHoveredEPNS_12PartInstanceEfbPNS_7Network6PlayerE
 #[doc(alias = "RBX::ClickDetector::isHovered(RBX::PartInstance *,float,bool,RBX::Network::Player *)")]
-pub fn stub_3f15b8() -> ! {
-    todo!("0x3f15b8 RBX::ClickDetector::isHovered(RBX::PartInstance *,float,bool,RBX::Network::Player *)")
+pub fn stub_3f15b8(threshold: f32, chain: &[ClickAncestor], update_last_hover: &mut dyn FnMut() -> bool) -> bool {
+    // IDA 0x3f15b8: null detector returns 0 (0x3f173a). Each level runs `findConstFirstChildOfType`
+    // (0x3f165e); a detector whose `maxActivationDistance` exceeds the threshold (0x3f1684) runs
+    // `updateLastHoverPart` (0x3f16a8) and stops. Otherwise the walk climbs via +52 (0x3f16d8..0x3f16e4)
+    // until null (0x3f16f8) or a `Workspace` parent (0x3f1718). The result is the update verdict gated
+    // by the walk reaching a detector (0x3f1730..0x3f175a).
+    if chain.is_empty() {
+        return false;
+    }
+    for (level, node) in chain.iter().enumerate() {
+        if let Some(max) = node.detector_max_distance {
+            if max > threshold {
+                return update_last_hover();
+            }
+        }
+        let next = level + 1;
+        if next >= chain.len() || chain[next].is_workspace {
+            return false;
+        }
+    }
+    false
 }
 
 // 0x3f7df0 — __ZN3RBX19NetworkStatsCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::NetworkStatsCommand::NetworkStatsCommand(RBX::DataModel *)")]
-pub fn stub_3f7df0() -> ! {
-    todo!("0x3f7df0 RBX::NetworkStatsCommand::NetworkStatsCommand(RBX::DataModel *)")
+pub fn stub_3f7df0() -> &'static str {
+    // IDA 0x3f7df0: C1 thunk into C2 (0x3f7df4).
+    stub_3f7df4()
+}
+
+/// `NetworkStatsCommand` verb name (IDA 0x3f7e50: `Verb::Verb(this, container, "NetworkStats")`).
+pub const NETWORK_STATS_VERB_NAME: &str = "NetworkStats";
+
+/// `NetworkStatsCommand` verb container: `DataModel + 144` (IDA 0x3f7e60; null passes through).
+pub fn network_stats_container(datamodel: u32) -> u32 {
+    if datamodel == 0 {
+        0
+    } else {
+        datamodel.wrapping_add(144)
+    }
 }
 
 // 0x3f7df4 — __ZN3RBX19NetworkStatsCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::NetworkStatsCommand::NetworkStatsCommand(RBX::DataModel *)")]
-pub fn stub_3f7df4() -> ! {
-    todo!("0x3f7df4 RBX::NetworkStatsCommand::NetworkStatsCommand(RBX::DataModel *)")
+pub fn stub_3f7df4() -> &'static str {
+    // IDA 0x3f7df4: `Verb::Verb(this, container, "NetworkStats")` (0x3f7e64); member init stays engine-side.
+    NETWORK_STATS_VERB_NAME
 }
 
 // 0x3f7f80 — __ZN3RBX19NetworkStatsCommand4doItEPNS_10IDataStateE
 #[doc(alias = "RBX::NetworkStatsCommand::doIt(RBX::IDataState *)")]
-pub fn stub_3f7f80() -> ! {
-    todo!("0x3f7f80 RBX::NetworkStatsCommand::doIt(RBX::IDataState *)")
+pub fn stub_3f7f80(
+    stats_visible: Option<bool>,
+    stats2_visible: Option<bool>,
+    settings_enabled: bool,
+    saved_private: bool,
+) -> (Option<bool>, Option<bool>, bool, bool) {
+    // IDA 0x3f7f80: `FLog::Verbs` fast-log (0x3f7fec); each present panel toggles `visible ^ 1`
+    // (0x3f808a, 0x3f8112). When `NetworkStats2` ends visible (0x3f8124) the command stashes the old
+    // `NetworkSettings` word 101 and sets it (0x3f812c..0x3f813a), otherwise it restores the stash
+    // (0x3f8140..0x3f8148). GuiItem lookups (`findConstFirstChildByName` + `isA`) stay engine-side.
+    let stats_visible = stats_visible.map(|v| !v);
+    let stats2_visible = stats2_visible.map(|v| !v);
+    if stats2_visible == Some(true) {
+        (stats_visible, stats2_visible, true, settings_enabled)
+    } else {
+        (stats_visible, stats2_visible, saved_private, saved_private)
+    }
 }
 
 // 0x3f8268 — __ZNK3RBX19NetworkStatsCommand9isEnabledEv
 #[doc(alias = "RBX::NetworkStatsCommand::isEnabled(void)const")]
-pub fn stub_3f8268() -> ! {
-    todo!("0x3f8268 RBX::NetworkStatsCommand::isEnabled(void)const")
+pub fn stub_3f8268(child_found: bool, is_gui_item: bool) -> bool {
+    // IDA 0x3f8268: the `NetworkStats` child of the DataModel gui (`findConstFirstChildByName`,
+    // 0x3f82d4) enables the verb exactly when it casts to `GuiItem` via `isA` (0x3f82ee..0x3f8312).
+    child_found && is_gui_item
 }
 
 // 0x3f83e4 — __ZNK3RBX19NetworkStatsCommand9isCheckedEv
 #[doc(alias = "RBX::NetworkStatsCommand::isChecked(void)const")]
-pub fn stub_3f83e4() -> ! {
-    todo!("0x3f83e4 RBX::NetworkStatsCommand::isChecked(void)const")
+pub fn stub_3f83e4(child_found: bool, is_gui_item: bool, visible: bool) -> bool {
+    // IDA 0x3f83e4: same `NetworkStats` GuiItem lookup as `isEnabled`; when present the checked state
+    // is the panel virtual at +148 (0x3f84bc), else 0 (0x3f84da).
+    if child_found && is_gui_item {
+        visible
+    } else {
+        false
+    }
 }
 
 // 0x3fe628 — __ZN3RBX19NetworkStatsCommandD1Ev
 #[doc(alias = "RBX::NetworkStatsCommand::~NetworkStatsCommand()")]
-pub fn stub_3fe628() -> ! {
-    todo!("0x3fe628 RBX::NetworkStatsCommand::~NetworkStatsCommand()")
+pub fn stub_3fe628() {
+    // IDA 0x3fe628: thunk into `Verb::~Verb`; vtable teardown stays engine-side.
 }
 
 // 0x3fe62c — __ZN3RBX19NetworkStatsCommandD0Ev
 #[doc(alias = "RBX::NetworkStatsCommand::~NetworkStatsCommand()")]
-pub fn stub_3fe62c() -> ! {
-    todo!("0x3fe62c RBX::NetworkStatsCommand::~NetworkStatsCommand()")
+pub fn stub_3fe62c() {
+    // IDA 0x3fe62c: `Verb::~Verb` (0x3fe67c) plus `operator delete` (0x3fe682); the Rust owner drops instead.
 }
 
 // 0x425d58 — __ZN3RBX9DataModel25updatePhysicsInstructionsENS_7Network8GameModeE
 #[doc(alias = "RBX::DataModel::updatePhysicsInstructions(RBX::Network::GameMode)")]
-pub fn stub_425d58() -> ! {
-    todo!("0x425d58 RBX::DataModel::updatePhysicsInstructions(RBX::Network::GameMode)")
+pub fn stub_425d58(game_mode: u32, e_throttle_bump_up: bool, streaming_flag: u32) -> (Option<PhysicsUpdate>, u32) {
+    // IDA 0x425d58: the `simSendFilter` address comes from `findLocalSimulatorAddress` (0x425d78..0x425d8c).
+    // Modes 5/6 and 0 store fixed duty pairs (0.5 at 0x425eee, 0.25 at 0x425f6a); mode 1 stores filter 4 with
+    // the zeroed region and `dPhysicsServerDutyPercent` (0x425fd8..0x42600a); modes 2/4 store filter 1 with
+    // zeroed duties and return 0 (0x425e78..0x425e86); mode 3 builds the client region with the client duty
+    // percent and returns 1 (0x42607a..0x4260c8). Modes 5/6/0/1 fall into the streaming-flag tail, which
+    // returns 1 exactly when the flag is 1 (0x426012..0x42601c). Anything else hits `ReleaseAssert("0",
+    // DataModel.cpp:1921, 0x425dbe..0x425dfa) and returns 0. Per-mode asserts (DataModel.cpp:1879..1909)
+    // stay engine-side.
+    let tail = u32::from(streaming_flag == 1);
+    match game_mode {
+        5 | 6 => (Some(PhysicsUpdate::Fixed { filter: 0, duty: 0.5 }), tail),
+        0 => (Some(PhysicsUpdate::Fixed { filter: 2, duty: 0.25 }), tail),
+        1 => (Some(PhysicsUpdate::Server), tail),
+        2 | 4 => (Some(PhysicsUpdate::Idle), 0),
+        3 => (
+            Some(PhysicsUpdate::Client {
+                e_throttle_bump_up,
+            }),
+            1,
+        ),
+        _ => (None, 0),
+    }
 }
 
 // 0x44ab28 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network7PlayersES7_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Players,RBX::Network::Players>(rbx_core::SharedPtr<RBX::Network::Players> const*,RBX::Network::Players *)const")]
-pub fn stub_44ab28() -> ! {
-    todo!("0x44ab28 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Players,RBX::Network::Players>(boost::shared_ptr<RBX::Network::Players> const*,RBX::Network::Players *)const")
+pub fn stub_44ab28(weak_use_count: u32, owner: u32) -> Option<AcceptedOwner> {
+    // IDA 0x44ab28: an occupied weak (`use_count != 0`) leaves everything alone (0x44ab50); otherwise the
+    // owner word `a3 + 36` is stored (0x44ab86) and the incoming `shared_count` is adopted into the weak
+    // (0x44ab9a..0x44abaa). Boost `weak_count`/`shared_count` plumbing is `Arc`/`Weak` engine-side.
+    if weak_use_count != 0 {
+        return None;
+    }
+    Some(AcceptedOwner {
+        stored: owner.wrapping_add(36),
+    })
 }
 
 // 0x44ac18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network7PlayersENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Players *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_44ac18() -> ! {
-    todo!("0x44ac18 boost::detail::sp_counted_impl_pd<RBX::Network::Players *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_44ac18() {
+    // IDA 0x44ac18: deleting destructor forwards to `operator delete`; the Rust owner drops instead.
+    // was: boost::detail::sp_counted_impl_pd<RBX::Network::Players *,RBX::Creatable<RBX::Instance>::Deleter>
 }
 
 // 0x4f1df8 — __ZN3RBX4Flag21canBePickedUpByPlayerEPNS_7Network6PlayerE
 #[doc(alias = "RBX::Flag::canBePickedUpByPlayer(RBX::Network::Player *)")]
-pub fn stub_4f1df8() -> ! {
-    todo!("0x4f1df8 RBX::Flag::canBePickedUpByPlayer(RBX::Network::Player *)")
+pub fn stub_4f1df8(flag_side: u32, player_side: u32, player_guarded: bool) -> bool {
+    // IDA 0x4f1df8: a guarded player (+104, 0x4f1df8) can never pick up; otherwise the player side (+100)
+    // must differ from the flag side (+472, 0x4f1e10).
+    if player_guarded {
+        return false;
+    }
+    player_side != flag_side
 }
 
 // 0x5e1de8 — __ZN3RBX7Network12NetworkOwner16ServerUnassignedEv
@@ -7070,14 +7295,25 @@ pub fn stub_5e1de8() -> crate::player::NetworkOwner {
 
 // 0x5e1e40 — __ZN3RBX7Network12NetworkOwner16colorFromAddressERKNS_13SystemAddressE
 #[doc(alias = "RBX::Network::NetworkOwner::colorFromAddress(RBX::SystemAddress const&)")]
-pub fn stub_5e1e40() -> ! {
-    todo!("0x5e1e40 RBX::Network::NetworkOwner::colorFromAddress(RBX::SystemAddress const&)")
+pub fn stub_5e1e40(is_server: bool, is_unassigned: bool, addr_mix: u32) -> OwnerColor {
+    // IDA 0x5e1e40: `Server()` address yields `Color3::white` (0x5e1e5e); `Unassigned()` or
+    // `ServerUnassigned()` (short-circuit `||`, 0x5e1e82) yields `Color3::black` (0x5e1e8a); otherwise
+    // `Color::colorFromInt(*(u16 *)(addr + 4) + *addr)` (0x5e1e9c).
+    if is_server {
+        OwnerColor::White
+    } else if is_unassigned {
+        OwnerColor::Black
+    } else {
+        OwnerColor::Index(addr_mix)
+    }
 }
 
 // 0x5e1eac — __ZN3RBX7Network12NetworkOwner8isClientERKNS_13SystemAddressE
 #[doc(alias = "RBX::Network::NetworkOwner::isClient(RBX::SystemAddress const&)")]
-pub fn stub_5e1eac() -> ! {
-    todo!("0x5e1eac RBX::Network::NetworkOwner::isClient(RBX::SystemAddress const&)")
+pub fn stub_5e1eac(is_server: bool, is_unassigned: bool, is_server_unassigned: bool) -> bool {
+    // IDA 0x5e1eac: client iff the address differs from `Server()` (0x5e1ec4), `Unassigned()` (0x5e1edc),
+    // and `ServerUnassigned()` (0x5e1ef0).
+    !is_server && !is_unassigned && !is_server_unassigned
 }
 
 // 0x5e1ef8 — __ZN3RBX7Network12NetworkOwner6ServerEv
@@ -7089,20 +7325,56 @@ pub fn stub_5e1ef8() -> crate::player::NetworkOwner {
 
 // 0x5f6978 — __ZN3RBX19PhysicsInstructions22changeSimulationRadiusEPNS_7Network6PlayerEf
 #[doc(alias = "RBX::PhysicsInstructions::changeSimulationRadius(RBX::Network::Player *,float)")]
-pub fn stub_5f6978() -> ! {
-    todo!("0x5f6978 RBX::PhysicsInstructions::changeSimulationRadius(RBX::Network::Player *,float)")
+pub fn stub_5f6978(player_factor: f32, radius: f32) -> f32 {
+    // IDA 0x5f6978: words +40/+44 zeroed (0x5f698a..0x5f6990); `ReleaseAssert("dPhysPlayer", ...
+    // PhysicsInstructions.cpp:55)` when the player is null (0x5f6992..0x5f69ce); delegates to
+    // `Player::setSimulationRadius(player[40] * radius)` (0x5f69d6).
+    player_factor * radius
 }
 
 // 0x5f69ec — __ZN3RBX19PhysicsInstructions25changeMaxSimulationRadiusEPNS_7Network6PlayerEf
 #[doc(alias = "RBX::PhysicsInstructions::changeMaxSimulationRadius(RBX::Network::Player *,float)")]
-pub fn stub_5f69ec() -> ! {
-    todo!("0x5f69ec RBX::PhysicsInstructions::changeMaxSimulationRadius(RBX::Network::Player *,float)")
+pub fn stub_5f69ec(player_factor: f32, radius: f32) -> f32 {
+    // IDA 0x5f69ec: `ReleaseAssert("dPhysPlayer", ... PhysicsInstructions.cpp:63)` when the player is null
+    // (0x5f6a00..0x5f6a3c); delegates to `Player::setMaxSimulationRadius(player[41] * radius)` (0x5f6a44).
+    player_factor * radius
 }
 
 // 0x5f6a90 — __ZN3RBX19PhysicsInstructions12setThrottlesEPNS_7Network6PlayerEPNS_9WorkspaceEdd
 #[doc(alias = "RBX::PhysicsInstructions::setThrottles(RBX::Network::Player *,RBX::Workspace *,double,double)")]
-pub fn stub_5f6a90() -> ! {
-    todo!("0x5f6a90 RBX::PhysicsInstructions::setThrottles(RBX::Network::Player *,RBX::Workspace *,double,double)")
+pub fn stub_5f6a90(
+    state: &mut ThrottleState,
+    step_a: f64,
+    step_b: f64,
+    load: f64,
+    radius: f32,
+    increase_load: &mut dyn FnMut(f64),
+    change_radius: &mut dyn FnMut(bool, f32),
+) -> bool {
+    // IDA 0x5f6a90: both throttle rings advance `(head + 1) % count` (0x5f6ace/0x5f6af6); the windowed
+    // sums that feed each step stay engine-side and arrive as `step_a`/`step_b`. Each accumulator adds
+    // its step and, once past its limit, resets with `EThrottle::increaseLoad` (0x5f6bbc..0x5f6c06).
+    // The tail (0x5f6c2e..0x5f6ca6) takes `changeMaxSimulationRadius` when forced (+72) or the load
+    // ratio exceeds 0.4, else `changeSimulationRadius`; the return reports the max-radius dispatch.
+    if state.count_a != 0 {
+        state.head_a = (state.head_a + 1) % state.count_a;
+    }
+    if state.count_b != 0 {
+        state.head_b = (state.head_b + 1) % state.count_b;
+    }
+    state.acc_a += step_a;
+    if state.acc_a >= state.limit_a {
+        state.acc_a = 0.0;
+        increase_load(load);
+    }
+    state.acc_b += step_b;
+    if state.acc_b >= state.limit_b {
+        state.acc_b = 0.0;
+        increase_load(load);
+    }
+    let use_max = state.force_max || state.load_ratio > 0.4;
+    change_radius(use_max, radius);
+    use_max
 }
 
 // 0x63df08 — __ZN3RBX14SpawnerService16GetSpawnLocationEPNS_7Network6PlayerESs
@@ -7567,14 +7839,23 @@ pub fn stub_955b80() -> ! {
 
 // 0x33454 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network7PlayersENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Players *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_33454() -> ! {
-    todo!("0x33454 boost::detail::sp_counted_impl_pd<RBX::Network::Players *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_33454(deleter_tag_matches: bool) -> Option<u32> {
+    // IDA 0x33454: the deleter word at `a1 + 16` (0x33458) is published only when the incoming
+    // `type_info` matches `Creatable<Instance>::Deleter` (0x33466), else null (0x33468).
+    // was: boost::detail::sp_counted_impl_pd<RBX::Network::Players *,RBX::Creatable<RBX::Instance>::Deleter>
+    if deleter_tag_matches {
+        Some(16)
+    } else {
+        None
+    }
 }
 
 // 0x3346c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network7PlayersENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Players *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_3346c() -> ! {
-    todo!("0x3346c boost::detail::sp_counted_impl_pd<RBX::Network::Players *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_3346c() -> u32 {
+    // IDA 0x3346c: the untyped deleter word at `a1 + 16` (0x3346e).
+    // was: boost::detail::sp_counted_impl_pd<RBX::Network::Players *,RBX::Creatable<RBX::Instance>::Deleter>
+    16
 }
 
 // 0x955c8c — __ZN3RBX10Reflection4Type12getSingletonINS_7Network7Players14PlayerChatTypeEEERKS1_v
