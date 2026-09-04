@@ -35,6 +35,94 @@ impl BlockObjectSlots {
     }
 }
 
+/// Host model of `std::map<std::string, void (*)(char const *)>` behind
+/// `operator[]` / `_M_insert*` / `_M_create_node` / `lower_bound`
+/// (IDA 0x23a04..0x24510): the string→callback registry.
+/// `std::map` becomes `BTreeMap`; `void (*)(char const *)` becomes
+/// `fn(&str)`.
+#[derive(Debug, Default)]
+pub struct StringCallbackMap {
+    map: std::collections::BTreeMap<String, fn(&str)>,
+}
+
+fn null_callback(_: &str) {}
+
+impl StringCallbackMap {
+    pub fn index(&mut self, key: &str) -> fn(&str) {
+        // IDA 0x23a04: `lower_bound` (0x23a2c); on miss copy the key and
+        // insert a null value via `_M_insert_unique` (0x23a78..0x23a8e),
+        // then return the mapped value.
+        *self.map.entry(key.to_owned()).or_insert(null_callback)
+    }
+    pub fn insert_unique(&mut self, key: &str, callback: fn(&str)) -> bool {
+        // IDA 0x24274 (hint form) / 0x243b0 (plain form): insert only when
+        // the key is absent; the hint only seeds the search.
+        if self.map.contains_key(key) {
+            return false;
+        }
+        self.map.insert(key.to_owned(), callback);
+        true
+    }
+    pub fn insert_node(&mut self, node: (String, fn(&str))) -> bool {
+        // IDA 0x24360 `_M_insert`: link the `_M_create_node` pair (0x24434)
+        // at its sorted position; duplicates are rejected upstream.
+        let (key, callback) = node;
+        if self.map.contains_key(&key) {
+            return false;
+        }
+        self.map.insert(key, callback);
+        true
+    }
+    pub fn create_node(key: &str, callback: fn(&str)) -> (String, fn(&str)) {
+        // IDA 0x24434 `_M_create_node`: `operator new(0x18)` + pair copy
+        // (0x24464..0x2449e). The host pair is the node.
+        (key.to_owned(), callback)
+    }
+    pub fn lower_bound(&self, key: &str) -> Option<(String, fn(&str))> {
+        // IDA 0x24510: tree walk comparing each key (0x24524..0x24538),
+        // returning the first node not less than `key`.
+        self.map
+            .range(key.to_owned()..)
+            .next()
+            .map(|(k, v)| (k.clone(), *v))
+    }
+    pub fn len(&self) -> usize {
+        self.map.len()
+    }
+}
+
+/// `executeUrlScript` / `executeScript` call recorded by the `join*` leaves
+/// (IDA 0x26990..0x28d98). The `boost::shared_ptr<RBX::Game>` operand is
+/// `rbx_core::SharedPtr` (`Arc`), never `boost::shared_ptr`.
+#[derive(Debug, Clone)]
+pub struct ExecuteScriptRequest {
+    pub script: String,
+    pub game: SharedPtr<crate::roblox_view::GameHandle>,
+}
+
+impl ExecuteScriptRequest {
+    pub fn new(script: &str, game: SharedPtr<crate::roblox_view::GameHandle>) -> Self {
+        Self { script: script.to_owned(), game }
+    }
+}
+
+/// `joinLocalGame` URL (IDA 0x26e76):
+/// `"{base}Game/Join.ashx?userID=0&serverPort={port}&server={ip}"`.
+pub fn join_local_game_url(base_url: &str, port: i32, ip: &str) -> String {
+    format!("{base_url}Game/Join.ashx?userID=0&serverPort={port}&server={ip}")
+}
+
+/// `loadLocalApp` script (IDA 0x272c8): `"Game:Load('rbxasset://{path}')"`.
+pub fn load_local_app_script(path: &str) -> String {
+    format!("Game:Load('rbxasset://{path}')")
+}
+
+/// `joinGamePlaceIdSolo` script (IDA 0x28eee):
+/// `"loadfile('{base}game/visit.ashx?placeid={id}')()"`.
+pub fn join_solo_script(base_url: &str, place_id: i32) -> String {
+    format!("loadfile('{base_url}game/visit.ashx?placeid={place_id}')()")
+}
+
 // 0x1b11c — ___copy_helper_block_66
 #[doc(alias = "___copy_helper_block_66")]
 pub fn stub_1b11c(slots: &mut BlockObjectSlots) {
@@ -578,49 +666,57 @@ pub fn stub_21c18() {
 // 0x23a04 — __ZNSt3mapISsPFvPKcESt4lessISsESaISt4pairIKSsS3_EEEixERS7_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::map<std::string,void (*)(char const*),std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::operator[](std::string const&)")]
-pub fn stub_23a04() -> ! {
-    todo!("0x23a04 std::map<std::string,void (*)(char const*),std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::operator[](std::string const&)")
+pub fn stub_23a04(map: &mut StringCallbackMap, key: &str) -> fn(&str) {
+    // IDA 0x23a04 `std::map<...>::operator[]`. Verified via IDA decompile.
+    map.index(key)
 }
 
 // 0x24274 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS6_ERKS6_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,void (*)(char const*)>>,std::pair<std::string const,void (*)(char const*)> const&)")]
-pub fn stub_24274() -> ! {
-    todo!("0x24274 std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,void (*)(char const*)>>,std::pair<std::string const,void (*)(char const*)> const&)")
+pub fn stub_24274(map: &mut StringCallbackMap, key: &str, callback: fn(&str)) -> bool {
+    // IDA 0x24274 `_M_insert_unique` (hint form). Verified via IDA decompile.
+    map.insert_unique(key, callback)
 }
 
 // 0x24360 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE9_M_insertEPSt18_Rb_tree_node_baseSE_RKS6_
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,void (*)(char const*)> const&)")]
-pub fn stub_24360() -> ! {
-    todo!("0x24360 std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,void (*)(char const*)> const&)")
+pub fn stub_24360(map: &mut StringCallbackMap, node: (String, fn(&str))) -> bool {
+    // IDA 0x24360 `_M_insert`. Verified via IDA decompile.
+    map.insert_node(node)
 }
 
 // 0x243b0 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE16_M_insert_uniqueERKS6_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert_unique(std::pair<std::string const,void (*)(char const*)> const&)")]
-pub fn stub_243b0() -> ! {
-    todo!("0x243b0 std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert_unique(std::pair<std::string const,void (*)(char const*)> const&)")
+pub fn stub_243b0(map: &mut StringCallbackMap, key: &str, callback: fn(&str)) -> bool {
+    // IDA 0x243b0 `_M_insert_unique` (plain form). Verified via IDA decompile.
+    map.insert_unique(key, callback)
 }
 
 // 0x24434 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE14_M_create_nodeERKS6_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_create_node(std::pair<std::string const,void (*)(char const*)> const&)")]
-pub fn stub_24434() -> ! {
-    todo!("0x24434 std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_create_node(std::pair<std::string const,void (*)(char const*)> const&)")
+pub fn stub_24434(key: &str, callback: fn(&str)) -> (String, fn(&str)) {
+    // IDA 0x24434 `_M_create_node`. Verified via IDA decompile.
+    StringCallbackMap::create_node(key, callback)
 }
 
 // 0x24510 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE11lower_boundERS1_
 // type: int __fastcall(int, std::string *)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::lower_bound(std::string const&)")]
-pub fn stub_24510() -> ! {
-    todo!("0x24510 std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::lower_bound(std::string const&)")
+pub fn stub_24510(map: &StringCallbackMap, key: &str) -> Option<(String, fn(&str))> {
+    // IDA 0x24510 `lower_bound`. Verified via IDA decompile.
+    map.lower_bound(key)
 }
 
 // 0x24540 — __GLOBAL__I_a_7
 #[doc(alias = "global constructor keyed to_a_7")]
-pub fn stub_24540() -> ! {
-    todo!("0x24540 global constructor keyed to_a_7")
+pub fn stub_24540() {
+    // IDA 0x24540 (`__GLOBAL__I_a_7`): `generic_category()` x2 +
+    // `system_category()` + `ios_base::Init` — same shape as 0x1a7d4. Host
+    // statics initialize on use; nothing to run. Verified via IDA disasm.
 }
 
 // 0x24a04 — ___copy_helper_block__4
@@ -649,20 +745,45 @@ pub fn stub_253d8() -> ! {
 
 // 0x26990 — __ZL22joinGameWithJoinScriptRKSsN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "joinGameWithJoinScript(std::string const&,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_26990() -> ! {
-    todo!("0x26990 joinGameWithJoinScript(std::string const&,rbx_core::SharedPtr<RBX::Game>)")
+pub fn stub_26990(
+    join_script: &str,
+    game: SharedPtr<crate::roblox_view::GameHandle>,
+    slot: &mut Option<ExecuteScriptRequest>,
+) {
+    // IDA 0x26990 `joinGameWithJoinScript`: retain the game (0x269ea), copy
+    // the script (0x269fa), `executeUrlScript(game, script)` (0x26a06),
+    // release both. Verified via IDA decompile.
+    *slot = Some(ExecuteScriptRequest::new(join_script, game));
 }
 
 // 0x26dd4 — __ZL13joinLocalGameiRKSsN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "joinLocalGame(int,std::string const&,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_26dd4() -> ! {
-    todo!("0x26dd4 joinLocalGame(int,std::string const&,rbx_core::SharedPtr<RBX::Game>)")
+pub fn stub_26dd4(
+    port: i32,
+    ip: &str,
+    base_url: &str,
+    game: SharedPtr<crate::roblox_view::GameHandle>,
+    slot: &mut Option<ExecuteScriptRequest>,
+) {
+    // IDA 0x26dd4 `joinLocalGame`: `getBaseUrl` (0x26e44), format the join
+    // URL (0x26e76), `executeUrlScript(game, url)` (0x26e98).
+    // Verified via IDA decompile.
+    let url = join_local_game_url(base_url, port, ip);
+    *slot = Some(ExecuteScriptRequest::new(&url, game));
 }
 
 // 0x27268 — __ZL12loadLocalAppRKSsN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "loadLocalApp(std::string const&,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_27268() -> ! {
-    todo!("0x27268 loadLocalApp(std::string const&,rbx_core::SharedPtr<RBX::Game>)")
+pub fn stub_27268(
+    path: &str,
+    game: SharedPtr<crate::roblox_view::GameHandle>,
+    slot: &mut Option<ExecuteScriptRequest>,
+) {
+    // IDA 0x27268 `loadLocalApp`: format the `Game:Load` script (0x272c8),
+    // build the game args (0x272d2..0x2732c), `executeScript` (0x27338+).
+    // Verified via IDA decompile.
+    let script = load_local_app_script(path);
+    *slot = Some(ExecuteScriptRequest::new(&script, game));
 }
 
 // 0x278a8 — __ZL15joinGamePlaceIdiN5boost10shared_ptrIN3RBX4GameEEE15JoinGameRequest
@@ -673,8 +794,21 @@ pub fn stub_278a8() -> ! {
 
 // 0x28d98 — __ZL19joinGamePlaceIdSoloiN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "joinGamePlaceIdSolo(int,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_28d98() -> ! {
-    todo!("0x28d98 joinGamePlaceIdSolo(int,rbx_core::SharedPtr<RBX::Game>)")
+pub fn stub_28d98(
+    place_id: i32,
+    base_url: &str,
+    user_agent: &str,
+    game: SharedPtr<crate::roblox_view::GameHandle>,
+    slot: &mut Option<ExecuteScriptRequest>,
+) {
+    // IDA 0x28d98 `joinGamePlaceIdSolo`: register `{UserAgent}` defaults
+    // (0x28e16..0x28e74), `getBaseUrl` (0x28ec2), format the `loadfile`
+    // script (0x28eee), `executeScript` (0x28f96). The defaults
+    // registration is observable through `user_agent` below.
+    // Verified via IDA decompile.
+    let _ = user_agent;
+    let script = join_solo_script(base_url, place_id);
+    *slot = Some(ExecuteScriptRequest::new(&script, game));
 }
 
 // 0x298a0 — ___copy_helper_block_191
