@@ -1346,12 +1346,32 @@ pub struct DataModelEventDesc {
     pub broadcast: bool,
 }
 
+/// Rust model of `G3D::Vector3` (IDA `0x475108`): three floats; NaN/Inf
+/// components sanitize to zero on mesh stores.
+#[derive(Clone, Copy, Default, PartialEq)]
+pub struct Vector3 {
+    pub x: f32,
+    pub y: f32,
+    pub z: f32,
+}
+
 /// Rust model of `RBX::DataModelMesh` (IDA `0x4750c8`): the data-model mesh
-/// with its level-of-detail axes; mesh data lands with the rendering batch.
+/// with its level-of-detail axes plus the scale/color/offset vectors; mesh
+/// data lands with the rendering batch.
 #[derive(Default)]
 pub struct DataModelMesh {
     pub lod_x: i32,
     pub lod_y: i32,
+    pub scale: Vector3,
+    pub vert_color: Vector3,
+    pub offset: Vector3,
+}
+
+/// Rust model of `RBX::Reflection::PropDescriptor<DataModelMesh, Vector3>`
+/// (IDA `0x475878`): same storage-only family treatment as
+/// `DataModelPropDesc`.
+pub struct DataModelMeshPropDesc {
+    _opaque: (),
 }
 
 /// Rust model of `RBX::DataModel::LegacyLock::Implementation::Events` (IDA
@@ -25791,162 +25811,259 @@ pub fn stub_0x4750e8(mesh: &mut DataModelMesh, level: i32) {
 // 0x475108 — __ZN3RBX13DataModelMesh8setScaleERKN3G3D7Vector3E
 #[doc(alias = "RBX::DataModelMesh::setScale(G3D::Vector3 const&)")]
 // was: RBX::DataModelMesh::setScale(G3D::Vector3 const&)
-pub fn stub_0x475108() -> ! {
-    todo!("0x475108 RBX::DataModelMesh::setScale(G3D::Vector3 const&)")
+pub fn stub_0x475108(mesh: &mut DataModelMesh, scale: &Vector3) {
+    // IDA 0x475108: sanitizes each component with `Math::isNanInf` (decomp
+    // 0x47512e-0x475132, NaN/Inf becomes 0), then stores; the store is the
+    // observable half.
+    fn clean(v: f32) -> f32 {
+        if v.is_nan() || v.is_infinite() { 0.0 } else { v }
+    }
+    mesh.scale = Vector3 { x: clean(scale.x), y: clean(scale.y), z: clean(scale.z) };
 }
 
 // 0x4751a8 — __ZN3RBX13DataModelMesh12setVertColorERKN3G3D7Vector3E
 #[doc(alias = "RBX::DataModelMesh::setVertColor(G3D::Vector3 const&)")]
 // was: RBX::DataModelMesh::setVertColor(G3D::Vector3 const&)
-pub fn stub_0x4751a8() -> ! {
-    todo!("0x4751a8 RBX::DataModelMesh::setVertColor(G3D::Vector3 const&)")
+pub fn stub_0x4751a8(mesh: &mut DataModelMesh, color: &Vector3) {
+    // IDA 0x4751a8: `setVertColor` — same sanitize-and-store shape as
+    // 0x475108 over the vertex color.
+    fn clean(v: f32) -> f32 {
+        if v.is_nan() || v.is_infinite() { 0.0 } else { v }
+    }
+    mesh.vert_color = Vector3 { x: clean(color.x), y: clean(color.y), z: clean(color.z) };
 }
 
 // 0x475210 — __ZN3RBX13DataModelMesh9setOffsetERKN3G3D7Vector3E
 #[doc(alias = "RBX::DataModelMesh::setOffset(G3D::Vector3 const&)")]
 // was: RBX::DataModelMesh::setOffset(G3D::Vector3 const&)
-pub fn stub_0x475210() -> ! {
-    todo!("0x475210 RBX::DataModelMesh::setOffset(G3D::Vector3 const&)")
+pub fn stub_0x475210(mesh: &mut DataModelMesh, offset: &Vector3) {
+    // IDA 0x475210: `setOffset` — same sanitize-and-store shape as 0x475108
+    // over the offset.
+    fn clean(v: f32) -> f32 {
+        if v.is_nan() || v.is_infinite() { 0.0 } else { v }
+    }
+    mesh.offset = Vector3 { x: clean(offset.x), y: clean(offset.y), z: clean(offset.z) };
 }
 
 // 0x475278 — __ZN3RBX13DataModelMeshC2Ev
 #[doc(alias = "RBX::DataModelMesh::DataModelMesh(void)")]
 // was: RBX::DataModelMesh::DataModelMesh(void)
-pub fn stub_0x475278() -> ! {
-    todo!("0x475278 RBX::DataModelMesh::DataModelMesh(void)")
+pub fn stub_0x475278() -> DataModelMesh {
+    // IDA 0x475278: `DataModelMesh::C2` — default-constructs the mesh.
+    DataModelMesh::default()
 }
 
 // 0x4754a4 — __ZNK3RBX13DataModelMesh12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::DataModelMesh::askSetParent(RBX::Instance const*)const")]
 // was: RBX::DataModelMesh::askSetParent(RBX::Instance const*)const
-pub fn stub_0x4754a4() -> ! {
-    todo!("0x4754a4 RBX::DataModelMesh::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x4754a4(parent: *const Instance) -> bool {
+    // IDA 0x4754a4: null parent returns false (disasm 0x4754a8-0x4754b4);
+    // otherwise the parent's `classDescriptor` is checked against the
+    // `PartInstance` described descriptor — a mesh may only parent under a
+    // Part. Same shape as 0x3f1b9c.
+    // SAFETY: `parent` must be null or point to a valid `Instance`.
+    if parent.is_null() {
+        return false;
+    }
+    instance_is_a(parent, "PartInstance")
 }
 
 // 0x4754e0 — __ZN3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::addPair(RBX::DataModelMesh::LODType,char const*)")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::addPair(RBX::DataModelMesh::LODType,char const*)
-pub fn stub_0x4754e0() -> ! {
-    todo!("0x4754e0 RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::addPair(RBX::DataModelMesh::LODType,char const*)")
+pub fn stub_0x4754e0(desc: &mut EnumDesc, value: i32, name: &'static str) {
+    // IDA 0x4754e0: `EnumDesc<LODType>::addPair` — same push shape as
+    // 0x431b48.
+    desc.pairs.push((value, name));
 }
 
 // 0x475840 — __ZNK3RBX13DataModelMesh17getLevelOfDetailXEv
 #[doc(alias = "RBX::DataModelMesh::getLevelOfDetailX(void)const")]
 // was: RBX::DataModelMesh::getLevelOfDetailX(void)const
-pub fn stub_0x475840() -> ! {
-    todo!("0x475840 RBX::DataModelMesh::getLevelOfDetailX(void)const")
+pub fn stub_0x475840(mesh: &DataModelMesh) -> i32 {
+    // IDA 0x475840: returns the word at `+32` (decomp 0x475844, byte `0x80`)
+    // — the `lod_x` field.
+    mesh.lod_x
 }
 
 // 0x475848 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::~EnumPropDescriptor()")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::~EnumPropDescriptor()
-pub fn stub_0x475848() -> ! {
-    todo!("0x475848 RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::~EnumPropDescriptor()")
+pub fn stub_0x475848(_desc: *mut DataModelEnumPropDesc) {
+    // IDA 0x475848: `EnumPropDescriptor<DataModelMesh, LODType>::D1` —
+    // memberwise teardown; dropping the box is the same release. Twin of the
+    // D1 family.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x47586c — __ZNK3RBX13DataModelMesh17getLevelOfDetailYEv
 #[doc(alias = "RBX::DataModelMesh::getLevelOfDetailY(void)const")]
 // was: RBX::DataModelMesh::getLevelOfDetailY(void)const
-pub fn stub_0x47586c() -> ! {
-    todo!("0x47586c RBX::DataModelMesh::getLevelOfDetailY(void)const")
+pub fn stub_0x47586c(mesh: &DataModelMesh) -> i32 {
+    // IDA 0x47586c: returns the Y level-of-detail axis — the `lod_y` field.
+    // Twin of 0x475840.
+    mesh.lod_y
 }
 
 // 0x475874 — __ZNK3RBX13DataModelMesh8getScaleEv
 #[doc(alias = "RBX::DataModelMesh::getScale(void)const")]
 // was: RBX::DataModelMesh::getScale(void)const
-pub fn stub_0x475874() -> ! {
-    todo!("0x475874 RBX::DataModelMesh::getScale(void)const")
+pub fn stub_0x475874(mesh: &DataModelMesh) -> Vector3 {
+    // IDA 0x475874: `getScale` returns the scale vector by value.
+    mesh.scale
 }
 
 // 0x475878 — __ZN3RBX10Reflection14PropDescriptorINS_13DataModelMeshEN3G3D7Vector3EED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::~PropDescriptor()
-pub fn stub_0x475878() -> ! {
-    todo!("0x475878 RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::~PropDescriptor()")
+pub fn stub_0x475878(_desc: *mut DataModelMeshPropDesc) {
+    // IDA 0x475878: `PropDescriptor<DataModelMesh, Vector3>::D1` —
+    // memberwise teardown; dropping the box is the same release. Twin of the
+    // D1 family.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x47589c — __ZNK3RBX13DataModelMesh12getVertColorEv
 #[doc(alias = "RBX::DataModelMesh::getVertColor(void)const")]
 // was: RBX::DataModelMesh::getVertColor(void)const
-pub fn stub_0x47589c() -> ! {
-    todo!("0x47589c RBX::DataModelMesh::getVertColor(void)const")
+pub fn stub_0x47589c(mesh: &DataModelMesh) -> Vector3 {
+    // IDA 0x47589c: `getVertColor` returns the vertex-color vector by value.
+    // Same shape as 0x475874.
+    mesh.vert_color
 }
 
 // 0x4758a0 — __ZNK3RBX13DataModelMesh9getOffsetEv
 #[doc(alias = "RBX::DataModelMesh::getOffset(void)const")]
 // was: RBX::DataModelMesh::getOffset(void)const
-pub fn stub_0x4758a0() -> ! {
-    todo!("0x4758a0 RBX::DataModelMesh::getOffset(void)const")
+pub fn stub_0x4758a0(mesh: &DataModelMesh) -> Vector3 {
+    // IDA 0x4758a0: `getOffset` returns the offset vector by value. Same
+    // shape as 0x475874.
+    mesh.offset
 }
 
 // 0x4758a4 — __ZN3RBX13DataModelMeshD1Ev
 #[doc(alias = "RBX::DataModelMesh::~DataModelMesh()")]
 // was: RBX::DataModelMesh::~DataModelMesh()
-pub fn stub_0x4758a4() -> ! {
-    todo!("0x4758a4 RBX::DataModelMesh::~DataModelMesh()")
+pub fn stub_0x4758a4(_mesh: *mut DataModelMesh) {
+    // IDA 0x4758a4: `DataModelMesh::D1` — memberwise teardown; dropping the
+    // box is the same release.
+    // SAFETY: `_mesh` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_mesh));
+    }
 }
 
 // 0x4758a8 — __ZN3RBX13DataModelMeshD0Ev
 #[doc(alias = "RBX::DataModelMesh::~DataModelMesh()")]
 // was: RBX::DataModelMesh::~DataModelMesh()
-pub fn stub_0x4758a8() -> ! {
-    todo!("0x4758a8 RBX::DataModelMesh::~DataModelMesh()")
+pub fn stub_0x4758a8(_mesh: *mut DataModelMesh) {
+    // IDA 0x4758a8: `DataModelMesh::D0` — vtable install plus memberwise
+    // teardown; dropping the box is the same release. Twin of 0x4758a4.
+    // SAFETY: `_mesh` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_mesh));
+    }
 }
 
 // 0x475970 — __ZThn32_N3RBX13DataModelMeshD1Ev
 #[doc(alias = "non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")]
 // was: non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()
-pub fn stub_0x475970() -> ! {
-    todo!("0x475970 non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")
+pub fn stub_0x475970(mesh: *const DataModelMesh, _this: *mut DataModelMesh) {
+    // IDA 0x475970: `__ZThn32_` thunk to the D1 — the `this - 32` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D1 of
+    // 0x4758a4.
+    // SAFETY: `mesh` must be a live box pointer never used again.
+    let _ = mesh;
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x475978 — __ZThn32_N3RBX13DataModelMeshD0Ev
 #[doc(alias = "non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")]
 // was: non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()
-pub fn stub_0x475978() -> ! {
-    todo!("0x475978 non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")
+pub fn stub_0x475978(mesh: *const DataModelMesh) {
+    // IDA 0x475978: `__ZThn32_` thunk to the D0 — the `this - 32` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D0 of
+    // 0x4758a8.
+    // SAFETY: `mesh` must be a live box pointer never used again.
+    unsafe {
+        let _ = Box::from_raw(mesh as *mut DataModelMesh);
+    }
 }
 
 // 0x475a44 — __ZThn36_N3RBX13DataModelMeshD1Ev
 #[doc(alias = "non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")]
 // was: non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()
-pub fn stub_0x475a44() -> ! {
-    todo!("0x475a44 non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")
+pub fn stub_0x475a44(mesh: *const DataModelMesh, _this: *mut DataModelMesh) {
+    // IDA 0x475a44: `__ZThn36_` thunk to the D1 — the `this - 36` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D1 of
+    // 0x4758a4.
+    // SAFETY: `mesh` must be a live box pointer never used again.
+    let _ = mesh;
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x475a4c — __ZThn36_N3RBX13DataModelMeshD0Ev
 #[doc(alias = "non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")]
 // was: non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()
-pub fn stub_0x475a4c() -> ! {
-    todo!("0x475a4c non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")
+pub fn stub_0x475a4c(mesh: *const DataModelMesh) {
+    // IDA 0x475a4c: `__ZThn36_` thunk to the D0 — the `this - 36` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D0 of
+    // 0x4758a8.
+    // SAFETY: `mesh` must be a live box pointer never used again.
+    unsafe {
+        let _ = Box::from_raw(mesh as *mut DataModelMesh);
+    }
 }
 
 // 0x475dd0 — __ZN3RBX10Reflection14PropDescriptorINS_13DataModelMeshEN3G3D7Vector3EEC2IMS2_KFRKS4_vEMS2_FvS8_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::PropDescriptor<G3D::Vector3 const& (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(G3D::Vector3 const&)>(char const*,char const*,G3D::Vector3 const& (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::PropDescriptor<G3D::Vector3 const& (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(G3D::Vector3 const&)>(char const*,char const*,G3D::Vector3 const& (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x475dd0() -> ! {
-    todo!("0x475dd0 RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::PropDescriptor<G3D::Vector3 const& (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(G3D::Vector3 const&)>(char const*,char const*,G3D::Vector3 const& (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x475dd0() -> DataModelMeshPropDesc {
+    // IDA 0x475dd0: `PropDescriptor<DataModelMesh, Vector3>::C2` — binds the
+    // vector property into the class descriptor; the binding lands with
+    // reflection, so the model starts empty. Same shape as 0x45d9ec.
+    DataModelMeshPropDesc { _opaque: () }
 }
 
 // 0x475ee4 — __ZN3RBX10Reflection14PropDescriptorINS_13DataModelMeshEN3G3D7Vector3EED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::~PropDescriptor()
-pub fn stub_0x475ee4() -> ! {
-    todo!("0x475ee4 RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::~PropDescriptor()")
+pub fn stub_0x475ee4(_desc: *mut DataModelMeshPropDesc) {
+    // IDA 0x475ee4: `PropDescriptor<DataModelMesh, Vector3>::D0` — vtable
+    // install plus memberwise teardown; dropping the box is the same release.
+    // Twin of 0x475878.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x475f10 — __ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(G3D::Vector3 const&)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(G3D::Vector3 const&)>::isReadOnly(void)const
-pub fn stub_0x475f10() -> ! {
-    todo!("0x475f10 RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(G3D::Vector3 const&)>::isReadOnly(void)const")
+pub fn stub_0x475f10() -> bool {
+    // IDA 0x475f10: `MOVS R0, #0; BX LR` (disasm 0x475f10-0x475f12) — a
+    // get/set pair is neither read-only...
+    false
 }
 
 // 0x475f14 — __ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(G3D::Vector3 const&)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(G3D::Vector3 const&)>::isWriteOnly(void)const
-pub fn stub_0x475f14() -> ! {
-    todo!("0x475f14 RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(G3D::Vector3 const&)>::isWriteOnly(void)const")
+pub fn stub_0x475f14() -> bool {
+    // IDA 0x475f14: `MOVS R0, #0; BX LR` (disasm 0x475f14-0x475f16) — ...nor
+    // write-only.
+    false
 }
 
 // 0x475f18 — __ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8getValueEPKNS0_13DescribedBaseE
@@ -25966,15 +26083,25 @@ pub fn stub_0x475f4c() -> ! {
 // 0x475f70 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::EnumPropDescriptor<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>(char const*,char const*,RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::EnumPropDescriptor<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>(char const*,char const*,RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x475f70() -> ! {
-    todo!("0x475f70 RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::EnumPropDescriptor<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>(char const*,char const*,RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x475f70() -> DataModelEnumPropDesc {
+    // IDA 0x475f70: `EnumPropDescriptor<DataModelMesh, LODType>::C2` — binds
+    // the enum property into the class descriptor; the binding lands with
+    // reflection, so the model starts empty. Same family box as the DataModel
+    // enum props (no behavioral divergence).
+    DataModelEnumPropDesc { _opaque: () }
 }
 
 // 0x476124 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::~EnumPropDescriptor()")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::~EnumPropDescriptor()
-pub fn stub_0x476124() -> ! {
-    todo!("0x476124 RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::~EnumPropDescriptor()")
+pub fn stub_0x476124(_desc: *mut DataModelEnumPropDesc) {
+    // IDA 0x476124: `EnumPropDescriptor<DataModelMesh, LODType>::D0` —
+    // vtable install plus memberwise teardown; dropping the box is the same
+    // release. Twin of 0x45e87c.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x476150 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE10isReadOnlyEv
