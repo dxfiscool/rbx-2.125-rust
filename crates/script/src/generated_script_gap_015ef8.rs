@@ -8,6 +8,88 @@
 
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+use parking_lot::Mutex;
+use rbx_reflection::generated::Tuple;
+use std::collections::HashMap;
+use std::sync::LazyLock;
+
+/// `NSUserDefaults` value behind the `kAppirater*` keys (IDA 0x183d8..0x185b0).
+#[derive(Debug, Clone)]
+pub enum AppiraterPref {
+    Int(i64),
+    Float(f64),
+    Bool(bool),
+    Str(String),
+}
+
+/// `Appirater` instance state (Appirater.m, IDA 0x17df0..0x19a30).
+/// ObjC `+[Appirater ...]`/`-[Appirater ...]` map to the `stub_0x*` fns below
+/// (originals searchable via the `#[doc(alias)]` lines); `NSUserDefaults`
+/// becomes [`HashMap`], `dispatch_once` sharedInstance becomes [`LazyLock`],
+/// `NSURLConnection` probing folds into [`Appirater::network_reachable`].
+#[derive(Debug, Default)]
+pub struct Appirater {
+    /// `+[Appirater setAppId:]` global (IDA 0x17dfa).
+    pub app_id: Option<String>,
+    /// `+[Appirater setDaysUntilPrompt:]` (IDA 0x17e0e).
+    pub days_until_prompt: f64,
+    /// `+[Appirater setUsesUntilPrompt:]` (IDA 0x17e1e).
+    pub uses_until_prompt: i64,
+    /// `+[Appirater setSignificantEventsUntilPrompt:]` (IDA 0x17e2e).
+    pub significant_events_until_prompt: i64,
+    /// `+[Appirater setTimeBeforeReminding:]` (IDA 0x17e42).
+    pub time_before_reminding: f64,
+    /// `+[Appirater setDebug:]` (IDA 0x17e52).
+    pub debug: bool,
+    /// `+[Appirater setDelegate:]` slot (IDA 0x17e62).
+    pub delegate: Option<u32>,
+    /// `NSUserDefaults` suite (`kAppirater*` keys).
+    pub prefs: HashMap<String, AppiraterPref>,
+    /// `-[Appirater connectedToNetwork]` latch (IDA 0x17e68..0x17f78):
+    /// reachability flags plus the `NSURLConnection` probe, both true on a
+    /// live device.
+    pub network_reachable: bool,
+    /// `-[Appirater showRatingAlert]` ran (IDA 0x180a8).
+    pub rating_alert_visible: bool,
+    /// `appWillResignActive` observer installed by the sharedInstance block
+    /// (IDA 0x17fe4..0x18092).
+    pub observes_resign_active: bool,
+}
+
+impl Appirater {
+    pub fn new() -> Self {
+        Self { network_reachable: true, ..Default::default() }
+    }
+    fn pref_int(&self, key: &str) -> i64 {
+        match self.prefs.get(key) {
+            Some(AppiraterPref::Int(v)) => *v,
+            Some(AppiraterPref::Float(v)) => *v as i64,
+            Some(AppiraterPref::Bool(v)) => i64::from(*v),
+            _ => 0,
+        }
+    }
+    fn pref_float(&self, key: &str) -> f64 {
+        match self.prefs.get(key) {
+            Some(AppiraterPref::Float(v)) => *v,
+            Some(AppiraterPref::Int(v)) => *v as f64,
+            _ => 0.0,
+        }
+    }
+    fn pref_bool(&self, key: &str) -> bool {
+        matches!(self.prefs.get(key), Some(AppiraterPref::Bool(true)))
+    }
+    fn pref_str(&self, key: &str) -> Option<&str> {
+        match self.prefs.get(key) {
+            Some(AppiraterPref::Str(v)) => Some(v),
+            _ => None,
+        }
+    }
+}
+
+/// `+[Appirater sharedInstance]` slot (IDA 0x17f80..0x17fe0): `dispatch_once`
+/// init folded into [`LazyLock`]; `boost::shared_ptr` -> [`SharedPtr`].
+static APPIRATER_SHARED: LazyLock<SharedPtr<Mutex<Appirater>>> =
+    LazyLock::new(|| SharedPtr::new(Mutex::new(Appirater::new())));
 use rbx_reflection::enum_desc::EnumDesc;
 use rbx_reflection::generated::{
     antialiasing_mode_enum_desc, frame_rate_manager_mode_enum_desc,
@@ -310,203 +392,365 @@ pub fn stub_0x16d34(map: &mut BTreeMap<u32, i32>) {
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings12QualityLevelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0x16d5c() -> ! {
-    todo!("0x16d5c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>> *)")
+pub fn stub_0x16d5c(map: &mut BTreeMap<u32, i32>) {
+    // IDA 0x16d5c `_Rb_tree<Name, QualityLevel>::_M_erase(node)`:
+    // recursive left-subtree erase, node delete, right walk (cf. 0x16d34).
+    // Host has no tree nodes; granularity collapses to the owning map.
+    map.clear();
 }
 
 // 0x16e4c — __GLOBAL__I_a
 #[doc(alias = "global constructor keyed to_a")]
 #[doc(alias = "__GLOBAL__I_a")]
-pub fn stub_0x16e4c() -> ! {
-    todo!("0x16e4c global constructor keyed to_a")
+pub fn stub_0x16e4c() {
+    // IDA 0x16e4c `__GLOBAL__I_a`: static init storing
+    // `boost::system::generic_category()`/`system_category()` singletons
+    // into merged globals (disasm PUSH/R4-R7 + two BL category calls). Host
+    // error categories need no init beyond `std::io`.
 }
 
 // 0x179e8 — __ZN3RBX9DataModel10serverSaveEv
 // type: void __fastcall(RBX::DataModel *this)
 #[doc(alias = "RBX::DataModel::serverSave(void)")]
 #[doc(alias = "__ZN3RBX9DataModel10serverSaveEv")]
-pub fn stub_0x179e8() -> ! {
-    todo!("0x179e8 RBX::DataModel::serverSave(void)")
+pub fn stub_0x179e8() {
+    // IDA 0x179e8 `RBX::DataModel::serverSave`: empty body — no-op.
 }
 
 // 0x179ec — __ZN3RBX9DataModel17internalSaveAsyncENS_9ContentIdEN5boost8functionIFvbEEE
 // type: void()
 #[doc(alias = "RBX::DataModel::internalSaveAsync(RBX::ContentId,boost::function<void ()(bool)>)")]
 #[doc(alias = "__ZN3RBX9DataModel17internalSaveAsyncENS_9ContentIdEN5boost8functionIFvbEEE")]
-pub fn stub_0x179ec() -> ! {
-    todo!("0x179ec RBX::DataModel::internalSaveAsync(RBX::ContentId,boost::function<void ()(bool)>)")
+pub fn stub_0x179ec() {
+    // IDA 0x179ec `RBX::DataModel::internalSaveAsync`: empty body — no-op.
 }
 
 // 0x179f0 — __ZN3RBX9DataModel12internalSaveENS_9ContentIdE
 // type: void()
 #[doc(alias = "RBX::DataModel::internalSave(RBX::ContentId)")]
 #[doc(alias = "__ZN3RBX9DataModel12internalSaveENS_9ContentIdE")]
-pub fn stub_0x179f0() -> ! {
-    todo!("0x179f0 RBX::DataModel::internalSave(RBX::ContentId)")
+pub fn stub_0x179f0() {
+    // IDA 0x179f0 `RBX::DataModel::internalSave`: empty body — no-op.
 }
 
 // 0x179f4 — __ZN3RBX9DataModel11uploadPlaceERKSsNS_8Instance10SaveFilterEN5boost8functionIFvNS5_10shared_ptrIKNS_10Reflection5TupleEEEEEENS6_IFvSsEEE
 // type: void __fastcall(int)
 #[doc(alias = "RBX::DataModel::uploadPlace(std::string const&,RBX::Instance::SaveFilter,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)")]
 #[doc(alias = "__ZN3RBX9DataModel11uploadPlaceERKSsNS_8Instance10SaveFilterEN5boost8functionIFvNS5_10shared_ptrIKNS_10Reflection5TupleEEEEEENS6_IFvSsEEE")]
-pub fn stub_0x179f4() -> ! {
-    todo!("0x179f4 RBX::DataModel::uploadPlace(std::string const&,RBX::Instance::SaveFilter,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)")
+pub fn stub_0x179f4() {
+    // IDA 0x179f4 `RBX::DataModel::uploadPlace`: empty Tuple
+    // `shared_ptr` + aliasing `shared_ptr(a1)` (0x17a2a..0x17a32), both
+    // released on return (0x17a64..0x17a6c). Net effect is nil;
+    // `boost::shared_ptr` -> [`SharedPtr`] per AGENTS.md.
+    let _keep = SharedPtr::new(Tuple);
+    let _alias = SharedPtr::clone(&_keep);
 }
 
 // 0x17aac — __ZN5boost10shared_ptrIN3RBX10Reflection5TupleEEC1IS3_EEPT_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Reflection::Tuple>::shared_ptr<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX10Reflection5TupleEEC1IS3_EEPT_")]
-pub fn stub_0x17aac() -> ! {
-    todo!("0x17aac rbx_core::SharedPtr<RBX::Reflection::Tuple>::shared_ptr<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)")
+pub fn stub_0x17aac(shared: &SharedPtr<Tuple>) -> SharedPtr<Tuple> {
+    // IDA 0x17aac `shared_ptr<Tuple>::shared_ptr(ptr, args)`: pointer store
+    // (0x17ada) + `shared_count` attach (0x17b08) with old-count release
+    // (0x17b10..0x17b1c). Host folds both into the [`SharedPtr`] clone.
+    SharedPtr::clone(shared)
 }
 
 // 0x17b80 — __ZN5boost10shared_ptrIKN3RBX10Reflection5TupleEEC2IS3_EERKNS0_IT_EENS_6detail24sp_enable_if_convertibleIS7_S4_E4typeE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Reflection::Tuple const>::shared_ptr<RBX::Reflection::Tuple>(rbx_core::SharedPtr<RBX::Reflection::Tuple> const&,boost::detail::sp_enable_if_convertible<RBX::Reflection::Tuple,RBX::Reflection::Tuple const>::type)")]
 #[doc(alias = "__ZN5boost10shared_ptrIKN3RBX10Reflection5TupleEEC2IS3_EERKNS0_IT_EENS_6detail24sp_enable_if_convertibleIS7_S4_E4typeE")]
-pub fn stub_0x17b80() -> ! {
-    todo!("0x17b80 rbx_core::SharedPtr<RBX::Reflection::Tuple const>::shared_ptr<RBX::Reflection::Tuple>(rbx_core::SharedPtr<RBX::Reflection::Tuple> const&,boost::detail::sp_enable_if_convertible<RBX::Reflection::Tuple,RBX::Reflection::Tuple const>::type)")
+pub fn stub_0x17b80(shared: &SharedPtr<Tuple>) -> SharedPtr<Tuple> {
+    // IDA 0x17b80 `shared_ptr<Tuple const>::shared_ptr(copy)`: payload copy
+    // (0x17ba8) + spinlock-guarded count bump (0x17bfe..0x17c14). Host folds
+    // both into the [`SharedPtr`] clone.
+    SharedPtr::clone(shared)
 }
 
 // 0x17c58 — __GLOBAL__I_a_0
 #[doc(alias = "global constructor keyed to_a_0")]
 #[doc(alias = "__GLOBAL__I_a_0")]
-pub fn stub_0x17c58() -> ! {
-    todo!("0x17c58 global constructor keyed to_a_0")
+pub fn stub_0x17c58() {
+    // IDA 0x17c58 `__GLOBAL__I_a`: static init storing
+    // `boost::system::generic_category()` (x2) + `system_category()` into
+    // merged globals (disasm 0x17c5c..0x17c76). Host categories need no
+    // init (cf. 0x16e4c).
 }
 
 // 0x17df0 — +[Appirater setAppId:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[Appirater setAppId:]")]
-pub fn stub_0x17df0() -> ! {
-    todo!("0x17df0 +[Appirater setAppId:]")
+pub fn stub_0x17df0(state: &mut Appirater, app_id: &str) {
+    // IDA 0x17df0 `+[Appirater setAppId:]`: global store (0x17dfa).
+    state.app_id = Some(app_id.to_owned());
 }
 
 // 0x17e00 — +[Appirater setDaysUntilPrompt:]
 // type: void __cdecl(id, SEL, double)
 #[doc(alias = "+[Appirater setDaysUntilPrompt:]")]
-pub fn stub_0x17e00() -> ! {
-    todo!("0x17e00 +[Appirater setDaysUntilPrompt:]")
+pub fn stub_0x17e00(state: &mut Appirater, days: f64) {
+    // IDA 0x17e00 `+[Appirater setDaysUntilPrompt:]`: global store
+    // (0x17e0e).
+    state.days_until_prompt = days;
 }
 
 // 0x17e14 — +[Appirater setUsesUntilPrompt:]
 // type: void __cdecl(id, SEL, int)
 #[doc(alias = "+[Appirater setUsesUntilPrompt:]")]
-pub fn stub_0x17e14() -> ! {
-    todo!("0x17e14 +[Appirater setUsesUntilPrompt:]")
+pub fn stub_0x17e14(state: &mut Appirater, uses: i64) {
+    // IDA 0x17e14 `+[Appirater setUsesUntilPrompt:]`: global store
+    // (0x17e1e).
+    state.uses_until_prompt = uses;
 }
 
 // 0x17e24 — +[Appirater setSignificantEventsUntilPrompt:]
 // type: void __cdecl(id, SEL, int)
 #[doc(alias = "+[Appirater setSignificantEventsUntilPrompt:]")]
-pub fn stub_0x17e24() -> ! {
-    todo!("0x17e24 +[Appirater setSignificantEventsUntilPrompt:]")
+pub fn stub_0x17e24(state: &mut Appirater, events: i64) {
+    // IDA 0x17e24 `+[Appirater setSignificantEventsUntilPrompt:]`: global
+    // store (0x17e2e).
+    state.significant_events_until_prompt = events;
 }
 
 // 0x17e34 — +[Appirater setTimeBeforeReminding:]
 // type: void __cdecl(id, SEL, double)
 #[doc(alias = "+[Appirater setTimeBeforeReminding:]")]
-pub fn stub_0x17e34() -> ! {
-    todo!("0x17e34 +[Appirater setTimeBeforeReminding:]")
+pub fn stub_0x17e34(state: &mut Appirater, days: f64) {
+    // IDA 0x17e34 `+[Appirater setTimeBeforeReminding:]`: global store
+    // (0x17e42).
+    state.time_before_reminding = days;
 }
 
 // 0x17e48 — +[Appirater setDebug:]
 // type: void __cdecl(id, SEL, char)
 #[doc(alias = "+[Appirater setDebug:]")]
-pub fn stub_0x17e48() -> ! {
-    todo!("0x17e48 +[Appirater setDebug:]")
+pub fn stub_0x17e48(state: &mut Appirater, debug: bool) {
+    // IDA 0x17e48 `+[Appirater setDebug:]`: global store (0x17e52).
+    state.debug = debug;
 }
 
 // 0x17e58 — +[Appirater setDelegate:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[Appirater setDelegate:]")]
-pub fn stub_0x17e58() -> ! {
-    todo!("0x17e58 +[Appirater setDelegate:]")
+pub fn stub_0x17e58(state: &mut Appirater, delegate: Option<u32>) {
+    // IDA 0x17e58 `+[Appirater setDelegate:]`: global slot store (0x17e62).
+    state.delegate = delegate;
 }
 
 // 0x17e68 — -[Appirater connectedToNetwork]
 // type: char __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater connectedToNetwork]")]
-pub fn stub_0x17e68() -> ! {
-    todo!("0x17e68 -[Appirater connectedToNetwork]")
+pub fn stub_0x17e68(state: &Appirater) -> bool {
+    // IDA 0x17e68 `-[Appirater connectedToNetwork]`:
+    // `SCNetworkReachability` flags probe (0x17ea8..0x17eb8), then an
+    // `NSURLConnection` probe to apple.com (0x17ede..0x17f3a); reachable
+    // when `(flags & 6) == 2 || (flags & 1) != 0` and the connection is
+    // non-null (0x17f4a..0x17f52), else 0 with an NSLog (0x17f60..0x17f64).
+    // Host has no reachability API here; both fold into the latch.
+    state.network_reachable
 }
 
 // 0x17f80 — +[Appirater sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[Appirater sharedInstance]")]
-pub fn stub_0x17f80() -> ! {
-    todo!("0x17f80 +[Appirater sharedInstance]")
+pub fn stub_0x17f80() -> SharedPtr<Mutex<Appirater>> {
+    // IDA 0x17f80 `+[Appirater sharedInstance]`: nil-checked
+    // `dispatch_once` alloc (0x17f92..0x17fdc). Host folds the once-guard
+    // into [`LazyLock`].
+    SharedPtr::clone(&APPIRATER_SHARED)
 }
 
 // 0x17fe4 — ___27+[Appirater sharedInstance]_block_invoke
 #[doc(alias = "___27+[Appirater sharedInstance]_block_invoke")]
-pub fn stub_0x17fe4() -> ! {
-    todo!("0x17fe4 ___27+[Appirater sharedInstance]_block_invoke")
+pub fn stub_0x17fe4(state: &mut Appirater, delegate: Option<u32>) {
+    // IDA 0x17fe4 `__27+[Appirater sharedInstance]_block_invoke`: alloc+init
+    // (0x18008..0x18030), `setDelegate:` (0x18036), `addObserver` for
+    // `appWillResignActive` (0x18052..0x18092).
+    *state = Appirater::new();
+    state.delegate = delegate;
+    state.observes_resign_active = true;
 }
 
 // 0x18094 — ___copy_helper_block_
 #[doc(alias = "___copy_helper_block_")]
-pub fn stub_0x18094() -> ! {
-    todo!("0x18094 ___copy_helper_block_")
+pub fn stub_0x18094(dst: &mut Option<SharedPtr<Mutex<Appirater>>>, src: &Option<SharedPtr<Mutex<Appirater>>>) {
+    // IDA 0x18094 `__copy_helper_block_`: `_Block_object_assign` retain of
+    // the captured self (0x1809a). Host folds the retain into the clone.
+    *dst = src.clone();
 }
 
 // 0x180a0 — ___destroy_helper_block_
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_")]
-pub fn stub_0x180a0() -> ! {
-    todo!("0x180a0 ___destroy_helper_block_")
+pub fn stub_0x180a0(slot: &mut Option<SharedPtr<Mutex<Appirater>>>) {
+    // IDA 0x180a0 `__destroy_helper_block_`: `_Block_object_dispose`
+    // release of the captured self (0x180a4).
+    *slot = None;
 }
 
 // 0x180a8 — -[Appirater showRatingAlert]
 // type: void __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater showRatingAlert]")]
-pub fn stub_0x180a8() -> ! {
-    todo!("0x180a8 -[Appirater showRatingAlert]")
+pub fn stub_0x180a8(state: &mut Appirater) -> bool {
+    // IDA 0x180a8 `-[Appirater showRatingAlert]`: localized `UIAlertView`
+    // build from the main bundle (0x180d0..0x1812c+) gated on the delegate,
+    // then shown. The view hierarchy lives on the platform side; the model
+    // keeps the shown latch (delegate refusal = hidden).
+    if state.delegate.is_some() || state.app_id.is_some() {
+        state.rating_alert_visible = true;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x183d8 — -[Appirater ratingConditionsHaveBeenMet]
 // type: char __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater ratingConditionsHaveBeenMet]")]
-pub fn stub_0x183d8() -> ! {
-    todo!("0x183d8 -[Appirater ratingConditionsHaveBeenMet]")
+pub fn stub_0x183d8(state: &Appirater, now_epoch: f64) -> bool {
+    // IDA 0x183d8 `-[Appirater ratingConditionsHaveBeenMet]`: `_debug`
+    // short-circuits true (0x183ea..0x183f6); otherwise all of: days since
+    // `kAppiraterFirstUseDate` >= `daysUntilPrompt` (0x1841a..0x184aa),
+    // `kAppiraterUseCount` > `usesUntilPrompt` (0x184d0..0x184dc),
+    // `kAppiraterSignificantEventCount` > threshold (0x184f2..0x184f6), not
+    // `kAppiraterDeclinedToRate` (0x18516..0x18518), not
+    // `kAppiraterRatedCurrentVersion` (0x18530..0x18532), days since
+    // `kAppiraterReminderRequestDate` >= `timeBeforeReminding`
+    // (0x18552..0x18594).
+    if state.debug {
+        return true;
+    }
+    if now_epoch - state.pref_float("kAppiraterFirstUseDate")
+        < state.days_until_prompt * 86400.0
+    {
+        return false;
+    }
+    if state.pref_int("kAppiraterUseCount") <= state.uses_until_prompt {
+        return false;
+    }
+    if state.pref_int("kAppiraterSignificantEventCount")
+        <= state.significant_events_until_prompt
+    {
+        return false;
+    }
+    if state.pref_bool("kAppiraterDeclinedToRate") {
+        return false;
+    }
+    if state.pref_bool("kAppiraterRatedCurrentVersion") {
+        return false;
+    }
+    now_epoch - state.pref_float("kAppiraterReminderRequestDate")
+        >= state.time_before_reminding * 86400.0
 }
 
 // 0x185b0 — -[Appirater incrementUseCount]
 // type: void __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater incrementUseCount]")]
-pub fn stub_0x185b0() -> ! {
-    todo!("0x185b0 -[Appirater incrementUseCount]")
+pub fn stub_0x185b0(state: &mut Appirater, bundle_version: &str, now_epoch: f64) {
+    // IDA 0x185b0 `-[Appirater incrementUseCount]`: stores
+    // `kAppiraterCurrentVersion` when unset (0x18640..0x18662); when it
+    // matches the bundle version (0x18694), stamps `kAppiraterFirstUseDate`
+    // when unset (0x186b8..0x1870a) and bumps `kAppiraterUseCount`
+    // (0x18730..0x18740); on a version change resets all four keys
+    // (0x1877a..0x187fe+).
+    if state.pref_str("kAppiraterCurrentVersion").is_none() {
+        state.prefs.insert(
+            "kAppiraterCurrentVersion".to_owned(),
+            AppiraterPref::Str(bundle_version.to_owned()),
+        );
+    }
+    if state.pref_str("kAppiraterCurrentVersion") == Some(bundle_version) {
+        if state.pref_float("kAppiraterFirstUseDate") == 0.0 {
+            state.prefs.insert(
+                "kAppiraterFirstUseDate".to_owned(),
+                AppiraterPref::Float(now_epoch),
+            );
+        }
+        let next = state.pref_int("kAppiraterUseCount") + 1;
+        state.prefs.insert("kAppiraterUseCount".to_owned(), AppiraterPref::Int(next));
+    } else {
+        state.prefs.insert(
+            "kAppiraterCurrentVersion".to_owned(),
+            AppiraterPref::Str(bundle_version.to_owned()),
+        );
+        state.prefs.insert(
+            "kAppiraterFirstUseDate".to_owned(),
+            AppiraterPref::Float(now_epoch),
+        );
+        state.prefs.insert("kAppiraterUseCount".to_owned(), AppiraterPref::Int(1));
+        state.prefs.insert(
+            "kAppiraterSignificantEventCount".to_owned(),
+            AppiraterPref::Int(0),
+        );
+    }
 }
 
 // 0x18878 — -[Appirater incrementSignificantEventCount]
 // type: void __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater incrementSignificantEventCount]")]
-pub fn stub_0x18878() -> ! {
-    todo!("0x18878 -[Appirater incrementSignificantEventCount]")
+pub fn stub_0x18878(state: &mut Appirater, bundle_version: &str, now_epoch: f64) {
+    // IDA 0x18878 `-[Appirater incrementSignificantEventCount]`: same
+    // version-gate shape as `incrementUseCount` (0x1889a..0x18990), but bumps
+    // `kAppiraterSignificantEventCount` (0x189f8+).
+    if state.pref_str("kAppiraterCurrentVersion").is_none() {
+        state.prefs.insert(
+            "kAppiraterCurrentVersion".to_owned(),
+            AppiraterPref::Str(bundle_version.to_owned()),
+        );
+    }
+    if state.pref_str("kAppiraterCurrentVersion") == Some(bundle_version) {
+        if state.pref_float("kAppiraterFirstUseDate") == 0.0 {
+            state.prefs.insert(
+                "kAppiraterFirstUseDate".to_owned(),
+                AppiraterPref::Float(now_epoch),
+            );
+        }
+        let next = state.pref_int("kAppiraterSignificantEventCount") + 1;
+        state.prefs.insert(
+            "kAppiraterSignificantEventCount".to_owned(),
+            AppiraterPref::Int(next),
+        );
+    }
 }
 
 // 0x18b18 — -[Appirater incrementAndRate:]
 // type: void __cdecl(Appirater *self, SEL, char)
 #[doc(alias = "-[Appirater incrementAndRate:]")]
-pub fn stub_0x18b18() -> ! {
-    todo!("0x18b18 -[Appirater incrementAndRate:]")
+pub fn stub_0x18b18(state: &mut Appirater, bundle_version: &str, now_epoch: f64, can_rate: bool) {
+    // IDA 0x18b18 `-[Appirater incrementAndRate:]`: `incrementUseCount`
+    // (0x18b30); when `canRate` and conditions hold (0x18b48) and the
+    // network is up (0x18b60), the alert block runs on the main queue
+    // (0x18b98..0x18baa -> 0x18bb4). The queue hop is synchronous here.
+    stub_0x185b0(state, bundle_version, now_epoch);
+    if can_rate && stub_0x183d8(state, now_epoch) && stub_0x17e68(state) {
+        stub_0x18bb4(state);
+    }
 }
 
 // 0x18bb4 — ___30-[Appirater incrementAndRate:]_block_invoke
 #[doc(alias = "___30-[Appirater incrementAndRate:]_block_invoke")]
-pub fn stub_0x18bb4() -> ! {
-    todo!("0x18bb4 ___30-[Appirater incrementAndRate:]_block_invoke")
+pub fn stub_0x18bb4(state: &mut Appirater) -> bool {
+    // IDA 0x18bb4 `__30-[Appirater incrementAndRate:]_block_invoke`:
+    // `showRatingAlert` shim (single `objc_msgSend`).
+    stub_0x180a8(state)
 }
 
 // 0x18bc8 — ___copy_helper_block_125
 #[doc(alias = "___copy_helper_block_125")]
-pub fn stub_0x18bc8() -> ! {
-    todo!("0x18bc8 ___copy_helper_block_125")
+pub fn stub_0x18bc8(
+    dst: &mut Option<SharedPtr<Mutex<Appirater>>>,
+    src: &Option<SharedPtr<Mutex<Appirater>>>,
+) {
+    // IDA 0x18bc8 `__copy_helper_block_125`: `_Block_object_assign` retain
+    // of the captured self (0x18bce; cf. 0x18094).
+    *dst = src.clone();
 }
 
 // 0x18bd4 — ___destroy_helper_block_126
 #[doc(alias = "___destroy_helper_block_126")]
-pub fn stub_0x18bd4() -> ! {
-    todo!("0x18bd4 ___destroy_helper_block_126")
+pub fn stub_0x18bd4(slot: &mut Option<SharedPtr<Mutex<Appirater>>>) {
+    // IDA 0x18bd4 `__destroy_helper_block_126`: `_Block_object_dispose`
+    // release of the captured self (0x18bd8; cf. 0x180a0).
+    *slot = None;
 }
 
 // 0x18bdc — -[Appirater incrementSignificantEventAndRate:]
