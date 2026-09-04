@@ -10,6 +10,77 @@ use rbx_core::SharedPtr;
 const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
+use std::sync::atomic::{AtomicU32, Ordering};
+
+/// `RakNet::CCRakNetSlidingWindow` (IDA 0xb4ac68..0xb4b034): congestion-control
+/// window. `mtu_bytes` at +0, last-RTT µs at +4 (`-1.0` = unset), congestion
+/// window at +12, slow-start threshold at +20, last-ACK time at +28, next
+/// datagram sequence (uint24) at +36, oldest unacked (uint24) at +40,
+/// recovery flag at +44, expected receive sequence (uint24) at +48,
+/// CC-active flag at +52.
+#[derive(Clone, Debug)]
+pub struct CcRakNetSlidingWindow {
+    pub mtu_bytes: u32,
+    pub last_rtt_us: f64,
+    pub cwnd_bytes: f64,
+    pub ss_thresh_bytes: f64,
+    pub last_ack_time_us: u64,
+    pub next_seq: u32,
+    pub oldest_unacked_seq: u32,
+    pub in_recovery: bool,
+    pub expected_seq: u32,
+    pub cc_active: bool,
+}
+
+impl Default for CcRakNetSlidingWindow {
+    fn default() -> Self {
+        // IDA 0xb4ac68: ctor body is a single BX LR, nothing initialized;
+        // `last_rtt_us` starts at the `-1.0` sentinel `Init` (0xb4ac78)
+        // establishes with the dword stores `0` / `0xBFF00000`.
+        Self {
+            mtu_bytes: 0,
+            last_rtt_us: -1.0,
+            cwnd_bytes: 0.0,
+            ss_thresh_bytes: 0.0,
+            last_ack_time_us: 0,
+            next_seq: 0,
+            oldest_unacked_seq: 0,
+            in_recovery: false,
+            expected_seq: 0,
+            cc_active: false,
+        }
+    }
+}
+
+/// Shared halving step behind `OnResend` (IDA 0xb4ade0) and `OnNAK`
+/// (IDA 0xb4ae38): when CC is active, not already in recovery, and the window
+/// exceeds twice the MTU, park half the window (floored at one MTU) in the
+/// slow-start threshold, drop the window to one MTU, and enter recovery.
+fn halve_congestion_window(win: &mut CcRakNetSlidingWindow) {
+    let mtu = win.mtu_bytes as f64;
+    if win.cc_active && !win.in_recovery && win.cwnd_bytes > 2.0 * mtu {
+        win.ss_thresh_bytes = (win.cwnd_bytes * 0.5).max(mtu);
+        win.cwnd_bytes = mtu;
+        win.in_recovery = true;
+    }
+}
+
+/// `RakNet::LocklessUint32_t` (IDA 0xb4b65c..0xb4b684): ldrex/strex CAS-loop
+/// counter with `dmb` barriers on both sides; `AtomicU32` with SeqCst keeps
+/// that shape, and both updates report the previous value like the `ldrex`
+/// register the originals return.
+#[derive(Debug, Default)]
+pub struct LocklessUint32 {
+    pub value: AtomicU32,
+}
+
+/// `DataBlockEncryptor` (IDA 0xb4bcfc): chained-block cipher state; the AES
+/// key schedule at `this+576` and the `blockEncrypt` primitive stay
+/// engine-side, so this keeps the key the framing layer is built around.
+#[derive(Clone, Debug, Default)]
+pub struct DataBlockEncryptor {
+    pub key: [u8; 16],
+}
 
 // 0xb21844 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSEPSH_
 // type: int32_t **__fastcall(int32_t **, int32_t *)
@@ -211,208 +282,355 @@ pub fn stub_0xb374c8() -> ! {
 // type: void __fastcall(RakNet::CCRakNetSlidingWindow *this)
 #[doc(alias = "RakNet::CCRakNetSlidingWindow::CCRakNetSlidingWindow(void)")]
 #[doc(alias = "__ZN6RakNet21CCRakNetSlidingWindowC1Ev")]
-pub fn stub_0xb4ac68() -> ! {
-    todo!("0xb4ac68 RakNet::CCRakNetSlidingWindow::CCRakNetSlidingWindow(void)")
+pub fn stub_0xb4ac68() -> CcRakNetSlidingWindow {
+ // IDA 0xb4ac68: empty ctor (single BX LR); see `Default`.
+    CcRakNetSlidingWindow::default()
 }
 
 // 0xb4ac70 — __ZN6RakNet21CCRakNetSlidingWindowD1Ev
 // type: void __fastcall(RakNet::CCRakNetSlidingWindow *__hidden this)
 #[doc(alias = "RakNet::CCRakNetSlidingWindow::~CCRakNetSlidingWindow()")]
 #[doc(alias = "__ZN6RakNet21CCRakNetSlidingWindowD1Ev")]
-pub fn stub_0xb4ac70() -> ! {
-    todo!("0xb4ac70 RakNet::CCRakNetSlidingWindow::~CCRakNetSlidingWindow()")
+pub fn stub_0xb4ac70(win: CcRakNetSlidingWindow) {
+ // IDA 0xb4ac70: empty dtor (single BX LR); Rust drops the window.
+    drop(win);
 }
 
 // 0xb4ac78 — __ZN6RakNet21CCRakNetSlidingWindow4InitEyj
 // type: _QWORD *__fastcall(RakNet::CCRakNetSlidingWindow *this, unsigned __int64, unsigned int)
-#[doc(alias = "RakNet::CCRakNetSlidingWindow::Init(unsigned long long,unsigned int)")]
-#[doc(alias = "__ZN6RakNet21CCRakNetSlidingWindow4InitEyj")]
-pub fn stub_0xb4ac78() -> ! {
-    todo!("0xb4ac78 RakNet::CCRakNetSlidingWindow::Init(unsigned long long,unsigned int)")
+pub fn stub_0xb4ac78(win: &mut CcRakNetSlidingWindow, mtu_bytes: u32) {
+ // IDA 0xb4ac78: stores the MTU at +0, the `-1.0` sentinel at +4 (dword
+ // stores `0` / `0xBFF00000`), the window `(double)mtu` at +12, and zeroes
+ // +20..+48 (threshold, ACK time, both sequences, recovery flag) and the
+ // active flag at +52. The u64 cur-time arg is unused.
+    win.mtu_bytes = mtu_bytes;
+    win.last_rtt_us = -1.0;
+    win.cwnd_bytes = mtu_bytes as f64;
+    win.ss_thresh_bytes = 0.0;
+    win.last_ack_time_us = 0;
+    win.next_seq = 0;
+    win.oldest_unacked_seq = 0;
+    win.in_recovery = false;
+    win.expected_seq = 0;
+    win.cc_active = false;
 }
 
 // 0xb4acac — __ZN6RakNet21CCRakNetSlidingWindow6UpdateEyb
 // type: void __fastcall(RakNet::CCRakNetSlidingWindow *this, unsigned __int64, bool)
-#[doc(alias = "RakNet::CCRakNetSlidingWindow::Update(unsigned long long,bool)")]
-#[doc(alias = "__ZN6RakNet21CCRakNetSlidingWindow6UpdateEyb")]
-pub fn stub_0xb4acac() -> ! {
-    todo!("0xb4acac RakNet::CCRakNetSlidingWindow::Update(unsigned long long,bool)")
+pub fn stub_0xb4acac() {
+ // IDA 0xb4acac: single BX LR; the update is a no-op in this build.
 }
 
 // 0xb4acb0 — __ZN6RakNet21CCRakNetSlidingWindow26GetRetransmissionBandwidthEyyjb
 // type: unsigned int __fastcall(RakNet::CCRakNetSlidingWindow *this, unsigned __int64, unsigned __int64, unsigned int, bool)
-#[doc(alias = "RakNet::CCRakNetSlidingWindow::GetRetransmissionBandwidth(unsigned long long,unsigned long long,unsigned int,bool)")]
-#[doc(alias = "__ZN6RakNet21CCRakNetSlidingWindow26GetRetransmissionBandwidthEyyjb")]
-pub fn stub_0xb4acb0() -> ! {
-    todo!("0xb4acb0 RakNet::CCRakNetSlidingWindow::GetRetransmissionBandwidth(unsigned long long,unsigned long long,unsigned int,bool)")
+pub fn stub_0xb4acb0(bandwidth: u32) -> u32 {
+ // IDA 0xb4acb0: returns the bandwidth arg unchanged; the window, both
+ // times, and the flag arg are unread.
+    bandwidth
 }
 
 // 0xb4acb4 — __ZN6RakNet21CCRakNetSlidingWindow24GetTransmissionBandwidthEyyjb
 // type: int __fastcall(RakNet::CCRakNetSlidingWindow *this, unsigned __int64, unsigned __int64, unsigned int, bool)
-#[doc(alias = "RakNet::CCRakNetSlidingWindow::GetTransmissionBandwidth(unsigned long long,unsigned long long,unsigned int,bool)")]
-#[doc(alias = "__ZN6RakNet21CCRakNetSlidingWindow24GetTransmissionBandwidthEyyjb")]
-pub fn stub_0xb4acb4() -> ! {
-    todo!("0xb4acb4 RakNet::CCRakNetSlidingWindow::GetTransmissionBandwidth(unsigned long long,unsigned long long,unsigned int,bool)")
+pub fn stub_0xb4acb4(win: &mut CcRakNetSlidingWindow, used_bytes: u32, active: bool) -> u32 {
+ // IDA 0xb4acb4: latches the flag at +52, then the headroom `cwnd - used`
+ // when the used bytes fit, else zero. Both time args are unread.
+    win.cc_active = active;
+    if (used_bytes as f64) <= win.cwnd_bytes {
+        (win.cwnd_bytes - used_bytes as f64) as u32
+    } else {
+        0
+    }
 }
 
 // 0xb4ace8 — __ZN6RakNet21CCRakNetSlidingWindow14ShouldSendACKsEyy
 // type: bool __fastcall(RakNet::CCRakNetSlidingWindow *this, unsigned __int64, unsigned __int64)
-#[doc(alias = "RakNet::CCRakNetSlidingWindow::ShouldSendACKs(unsigned long long,unsigned long long)")]
-#[doc(alias = "__ZN6RakNet21CCRakNetSlidingWindow14ShouldSendACKsEyy")]
-pub fn stub_0xb4ace8() -> ! {
-    todo!("0xb4ace8 RakNet::CCRakNetSlidingWindow::ShouldSendACKs(unsigned long long,unsigned long long)")
+pub fn stub_0xb4ace8(win: &CcRakNetSlidingWindow, cur_time_us: u64) -> bool {
+ // IDA 0xb4ace8: with no RTT yet (`-1.0`) report true; otherwise, when
+ // `(u64)(rtt + 10000.0)` is nonzero, ACK when the last-ACK time plus
+ // 10000µs is at or before now. The second time arg is unread.
+    if win.last_rtt_us != -1.0 && (win.last_rtt_us + 10_000.0) as u64 != 0 {
+        return win.last_ack_time_us.wrapping_add(10_000) <= cur_time_us;
+    }
+    true
 }
 
 // 0xb4ad50 — __ZN6RakNet21CCRakNetSlidingWindow29GetNextDatagramSequenceNumberEv
 // type: _DWORD *__fastcall(_DWORD *this, int)
-#[doc(alias = "RakNet::CCRakNetSlidingWindow::GetNextDatagramSequenceNumber(void)")]
-#[doc(alias = "__ZN6RakNet21CCRakNetSlidingWindow29GetNextDatagramSequenceNumberEv")]
-pub fn stub_0xb4ad50() -> ! {
-    todo!("0xb4ad50 RakNet::CCRakNetSlidingWindow::GetNextDatagramSequenceNumber(void)")
+pub fn stub_0xb4ad50(win: &CcRakNetSlidingWindow) -> u32 {
+ // IDA 0xb4ad50: copies the next datagram sequence at +36 to the out-param.
+    win.next_seq
 }
 
 // 0xb4ad58 — __ZN6RakNet21CCRakNetSlidingWindow41GetAndIncrementNextDatagramSequenceNumberEv
 // type: int __fastcall(RakNet::CCRakNetSlidingWindow *this, int)
-#[doc(alias = "RakNet::CCRakNetSlidingWindow::GetAndIncrementNextDatagramSequenceNumber(void)")]
-#[doc(alias = "__ZN6RakNet21CCRakNetSlidingWindow41GetAndIncrementNextDatagramSequenceNumberEv")]
-pub fn stub_0xb4ad58() -> ! {
-    todo!("0xb4ad58 RakNet::CCRakNetSlidingWindow::GetAndIncrementNextDatagramSequenceNumber(void)")
+pub fn stub_0xb4ad58(win: &mut CcRakNetSlidingWindow) -> u32 {
+ // IDA 0xb4ad58: reports the next sequence, then advances it mod 2^24;
+ // returns the advanced value.
+    win.next_seq = (win.next_seq.wrapping_add(1)) & 0xFF_FFFF;
+    win.next_seq
 }
 
 // 0xb4ad68 — __ZN6RakNet21CCRakNetSlidingWindow11OnSendBytesEyj
 // type: void __fastcall(RakNet::CCRakNetSlidingWindow *this, unsigned __int64, unsigned int)
 #[doc(alias = "RakNet::CCRakNetSlidingWindow::OnSendBytes(unsigned long long,unsigned int)")]
 #[doc(alias = "__ZN6RakNet21CCRakNetSlidingWindow11OnSendBytesEyj")]
-pub fn stub_0xb4ad68() -> ! {
-    todo!("0xb4ad68 RakNet::CCRakNetSlidingWindow::OnSendBytes(unsigned long long,unsigned int)")
+pub fn stub_0xb4ad68() {
+ // IDA 0xb4ad68: single BX LR; sending bytes touches no CC state here.
 }
 
 // 0xb4ad6c — __ZN6RakNet21CCRakNetSlidingWindow15OnGotPacketPairENS_8uint24_tEjy
 // type: void()
 #[doc(alias = "RakNet::CCRakNetSlidingWindow::OnGotPacketPair(RakNet::uint24_t,unsigned int,unsigned long long)")]
 #[doc(alias = "__ZN6RakNet21CCRakNetSlidingWindow15OnGotPacketPairENS_8uint24_tEjy")]
-pub fn stub_0xb4ad6c() -> ! {
-    todo!("0xb4ad6c RakNet::CCRakNetSlidingWindow::OnGotPacketPair(RakNet::uint24_t,unsigned int,unsigned long long)")
+pub fn stub_0xb4ad6c() {
+ // IDA 0xb4ad6c: single BX LR; packet-pair timing is untracked here.
 }
 
 // 0xb4ad70 — __ZN6RakNet21CCRakNetSlidingWindow11OnGotPacketENS_8uint24_tEbyjPj
 // type: int __fastcall(int, int *, int, int, int, int, _DWORD *)
 #[doc(alias = "RakNet::CCRakNetSlidingWindow::OnGotPacket(RakNet::uint24_t,bool,unsigned long long,unsigned int,unsigned int *)")]
 #[doc(alias = "__ZN6RakNet21CCRakNetSlidingWindow11OnGotPacketENS_8uint24_tEbyjPj")]
-pub fn stub_0xb4ad70() -> ! {
-    todo!("0xb4ad70 RakNet::CCRakNetSlidingWindow::OnGotPacket(RakNet::uint24_t,bool,unsigned long long,unsigned int,unsigned int *)")
+pub fn stub_0xb4ad70(
+    win: &mut CcRakNetSlidingWindow,
+    seq: u32,
+    cur_time_us: u64,
+) -> Option<u32> {
+ // IDA 0xb4ad70: stamps the ACK time (at +28) on first use from the u64
+ // cur-time arg pair, then uint24- compares the sequence against the
+ // expected one at +48: exact or older (`(expected - seq) & 0x800000 == 0`)
+ // accepts with zero loss; a gap up to 1000 accepts reporting the gap, up
+ // to 50000 accepts capped at 1000, beyond that rejects (`None`, the
+ // out-param left unwritten and the expectation untouched). Accepts advance
+ // the expectation to `(seq + 1) & 0xFFFFFF`. The continuity/size args are
+ // unread.
+    if win.last_ack_time_us == 0 {
+        win.last_ack_time_us = cur_time_us;
+    }
+    let expected = win.expected_seq;
+    let lost = if seq == expected || (expected.wrapping_sub(seq) & 0x80_0000) == 0 {
+        0
+    } else {
+        let gap = seq.wrapping_sub(expected) & 0xFF_FFFF;
+        if gap <= 1_000 {
+            gap
+        } else if gap <= 50_000 {
+            1_000
+        } else {
+            return None;
+        }
+    };
+    win.expected_seq = seq.wrapping_add(1) & 0xFF_FFFF;
+    Some(lost)
 }
 
 // 0xb4ade0 — __ZN6RakNet21CCRakNetSlidingWindow8OnResendEy
 // type: int __fastcall(int this, unsigned __int64)
 #[doc(alias = "RakNet::CCRakNetSlidingWindow::OnResend(unsigned long long)")]
-#[doc(alias = "__ZN6RakNet21CCRakNetSlidingWindow8OnResendEy")]
-pub fn stub_0xb4ade0() -> ! {
-    todo!("0xb4ade0 RakNet::CCRakNetSlidingWindow::OnResend(unsigned long long)")
+pub fn stub_0xb4ade0(win: &mut CcRakNetSlidingWindow) {
+ // IDA 0xb4ade0: the resend halving; see `halve_congestion_window`. The u64
+ // time arg is unread, and the returned `this` needs no Rust equivalent.
+    halve_congestion_window(win);
 }
 
 // 0xb4ae38 — __ZN6RakNet21CCRakNetSlidingWindow5OnNAKEyNS_8uint24_tE
 // type: int __fastcall(int result)
 #[doc(alias = "RakNet::CCRakNetSlidingWindow::OnNAK(unsigned long long,RakNet::uint24_t)")]
 #[doc(alias = "__ZN6RakNet21CCRakNetSlidingWindow5OnNAKEyNS_8uint24_tE")]
-pub fn stub_0xb4ae38() -> ! {
-    todo!("0xb4ae38 RakNet::CCRakNetSlidingWindow::OnNAK(unsigned long long,RakNet::uint24_t)")
+pub fn stub_0xb4ae38(win: &mut CcRakNetSlidingWindow) {
+ // IDA 0xb4ae38: same halving as `OnResend` (0xb4ade0), sequence and time
+ // args unread; see `halve_congestion_window`.
+    halve_congestion_window(win);
 }
 
 // 0xb4ae90 — __ZN6RakNet21CCRakNetSlidingWindow5OnAckEyybdddbNS_8uint24_tE
 // type: int __fastcall(int, int, int, unsigned int, unsigned int, int, int, int, int, int, int, int, int, _DWORD *)
 #[doc(alias = "RakNet::CCRakNetSlidingWindow::OnAck(unsigned long long,unsigned long long,bool,double,double,double,bool,RakNet::uint24_t)")]
 #[doc(alias = "__ZN6RakNet21CCRakNetSlidingWindow5OnAckEyybdddbNS_8uint24_tE")]
-pub fn stub_0xb4ae90() -> ! {
-    todo!("0xb4ae90 RakNet::CCRakNetSlidingWindow::OnAck(unsigned long long,unsigned long long,bool,double,double,double,bool,RakNet::uint24_t)")
+pub fn stub_0xb4ae90(
+    win: &mut CcRakNetSlidingWindow,
+    cur_time_us: u64,
+    acked_seq: u32,
+    active: bool,
+) -> bool {
+ // IDA 0xb4ae90: stamps the RTT at +4 and latches the flag at +52. When
+ // active: an ACK older than the oldest unacked (uint24 wrap compare)
+ // resyncs it to the next sequence, clears recovery, and marks the
+ // duplicate flag the return value reports. In slow start (`cwnd <=
+ // thresh` or zero thresh) the window doubles below 10M, clamped to
+ // `thresh + mtu*mtu/thresh`; otherwise a duplicate ACK grows it by
+ // `mtu*mtu/cwnd`. The leading time pair and the B/AS doubles are unread.
+    win.last_rtt_us = cur_time_us as f64;
+    win.cc_active = active;
+    let mut duplicate = false;
+    if active {
+        if win.oldest_unacked_seq != acked_seq
+            && (win.oldest_unacked_seq.wrapping_sub(acked_seq) & 0x80_0000) != 0
+        {
+            win.oldest_unacked_seq = win.next_seq;
+            win.in_recovery = false;
+            duplicate = true;
+        }
+        let mtu = win.mtu_bytes as f64;
+        if win.cwnd_bytes <= win.ss_thresh_bytes || win.ss_thresh_bytes == 0.0 {
+            if win.cwnd_bytes < 10_000_000.0 {
+                win.cwnd_bytes *= 2.0;
+                if win.cwnd_bytes > win.ss_thresh_bytes && win.ss_thresh_bytes != 0.0 {
+                    win.cwnd_bytes = win.ss_thresh_bytes + mtu * mtu / win.ss_thresh_bytes;
+                }
+            }
+        } else if duplicate {
+            win.cwnd_bytes += mtu * mtu / win.cwnd_bytes;
+        }
+    }
+    duplicate
 }
 
 // 0xb4af58 — __ZNK6RakNet21CCRakNetSlidingWindow13IsInSlowStartEv
 // type: bool __fastcall(RakNet::CCRakNetSlidingWindow *this)
 #[doc(alias = "RakNet::CCRakNetSlidingWindow::IsInSlowStart(void)const")]
 #[doc(alias = "__ZNK6RakNet21CCRakNetSlidingWindow13IsInSlowStartEv")]
-pub fn stub_0xb4af58() -> ! {
-    todo!("0xb4af58 RakNet::CCRakNetSlidingWindow::IsInSlowStart(void)const")
+pub fn stub_0xb4af58(win: &CcRakNetSlidingWindow) -> bool {
+ // IDA 0xb4af58: past the threshold only a zero threshold still counts as
+ // slow start; at or below it always does.
+    if win.cwnd_bytes > win.ss_thresh_bytes {
+        win.ss_thresh_bytes == 0.0
+    } else {
+        true
+    }
 }
 
 // 0xb4af80 — __ZN6RakNet21CCRakNetSlidingWindow18OnSendAckGetBAndASEyPbPdS2_
 // type: int __fastcall(RakNet::CCRakNetSlidingWindow *this, unsigned __int64, bool *, double *, double *)
 #[doc(alias = "RakNet::CCRakNetSlidingWindow::OnSendAckGetBAndAS(unsigned long long,bool *,double *,double *)")]
 #[doc(alias = "__ZN6RakNet21CCRakNetSlidingWindow18OnSendAckGetBAndASEyPbPdS2_")]
-pub fn stub_0xb4af80() -> ! {
-    todo!("0xb4af80 RakNet::CCRakNetSlidingWindow::OnSendAckGetBAndAS(unsigned long long,bool *,double *,double *)")
+pub fn stub_0xb4af80(has_b_and_as: &mut bool) -> u32 {
+ // IDA 0xb4af80: reports no bandwidth estimate and zero paced bytes; the
+ // B/AS double outs are left unwritten and the window/time args unread.
+    *has_b_and_as = false;
+    0
 }
 
 // 0xb4af88 — __ZN6RakNet21CCRakNetSlidingWindow9OnSendAckEyj
-// type: int __fastcall(int this, unsigned __int64, unsigned int)
-#[doc(alias = "RakNet::CCRakNetSlidingWindow::OnSendAck(unsigned long long,unsigned int)")]
-#[doc(alias = "__ZN6RakNet21CCRakNetSlidingWindow9OnSendAckEyj")]
-pub fn stub_0xb4af88() -> ! {
-    todo!("0xb4af88 RakNet::CCRakNetSlidingWindow::OnSendAck(unsigned long long,unsigned int)")
+pub fn stub_0xb4af88(win: &mut CcRakNetSlidingWindow) {
+ // IDA 0xb4af88: clears the last-ACK stamp at +28/+32; the time/size args
+ // are unread and the returned `this` needs no Rust equivalent.
+    win.last_ack_time_us = 0;
 }
 
 // 0xb4af90 — __ZNK6RakNet21CCRakNetSlidingWindow23GetRTOForRetransmissionEv
 // type: unsigned __int64 __fastcall(RakNet::CCRakNetSlidingWindow *this)
 #[doc(alias = "RakNet::CCRakNetSlidingWindow::GetRTOForRetransmission(void)const")]
 #[doc(alias = "__ZNK6RakNet21CCRakNetSlidingWindow23GetRTOForRetransmissionEv")]
-pub fn stub_0xb4af90() -> ! {
-    todo!("0xb4af90 RakNet::CCRakNetSlidingWindow::GetRTOForRetransmission(void)const")
+pub fn stub_0xb4af90(win: &CcRakNetSlidingWindow) -> u64 {
+ // IDA 0xb4af90: without an RTT (or past 2s) the 2s cap (0x1E8480); triple
+ // the RTT inside 100ms..2s, else the 100ms floor (0x186A0).
+    if win.last_rtt_us == -1.0 || win.last_rtt_us * 3.0 > 2_000_000.0 {
+        2_000_000
+    } else if win.last_rtt_us * 3.0 >= 100_000.0 {
+        3 * win.last_rtt_us as u64
+    } else {
+        100_000
+    }
 }
 
 // 0xb4b00c — __ZNK6RakNet21CCRakNetSlidingWindow6GetMTUEv
 // type: int __fastcall(RakNet::CCRakNetSlidingWindow *this)
 #[doc(alias = "RakNet::CCRakNetSlidingWindow::GetMTU(void)const")]
 #[doc(alias = "__ZNK6RakNet21CCRakNetSlidingWindow6GetMTUEv")]
-pub fn stub_0xb4b00c() -> ! {
-    todo!("0xb4b00c RakNet::CCRakNetSlidingWindow::GetMTU(void)const")
+pub fn stub_0xb4b00c(win: &CcRakNetSlidingWindow) -> u32 {
+ // IDA 0xb4b00c: loads the MTU at +0.
+    win.mtu_bytes
 }
 
 // 0xb4b010 — __ZN6RakNet21CCRakNetSlidingWindow8LessThanENS_8uint24_tES1_
 // type: bool __fastcall(int *, int *)
 #[doc(alias = "RakNet::CCRakNetSlidingWindow::LessThan(RakNet::uint24_t,RakNet::uint24_t)")]
 #[doc(alias = "__ZN6RakNet21CCRakNetSlidingWindow8LessThanENS_8uint24_tES1_")]
-pub fn stub_0xb4b010() -> ! {
-    todo!("0xb4b010 RakNet::CCRakNetSlidingWindow::LessThan(RakNet::uint24_t,RakNet::uint24_t)")
+pub fn stub_0xb4b010(first: u32, second: u32) -> bool {
+ // IDA 0xb4b010: equal sequences are not less; otherwise the mod-2^24
+ // distance must beat the literal 0x7FFFFE bound (not the usual 0x800000).
+    if second != first {
+        return (second.wrapping_sub(first) & 0xFF_FFFF) < 0x7F_FFFE;
+    }
+    false
 }
 
 // 0xb4b034 — __ZNK6RakNet21CCRakNetSlidingWindow41GetBytesPerSecondLimitByCongestionControlEv
 // type: __int64 __fastcall(RakNet::CCRakNetSlidingWindow *this)
 #[doc(alias = "RakNet::CCRakNetSlidingWindow::GetBytesPerSecondLimitByCongestionControl(void)const")]
 #[doc(alias = "__ZNK6RakNet21CCRakNetSlidingWindow41GetBytesPerSecondLimitByCongestionControlEv")]
-pub fn stub_0xb4b034() -> ! {
-    todo!("0xb4b034 RakNet::CCRakNetSlidingWindow::GetBytesPerSecondLimitByCongestionControl(void)const")
+pub fn stub_0xb4b034() -> u64 {
+ // IDA 0xb4b034: returns 0; this window never caps bytes-per-second.
+    0
 }
 
 // 0xb4b65c — __ZN6RakNet16LocklessUint32_tC1Ev
 // type: _DWORD *__fastcall(_DWORD *this)
 #[doc(alias = "RakNet::LocklessUint32_t::LocklessUint32_t(void)")]
 #[doc(alias = "__ZN6RakNet16LocklessUint32_tC1Ev")]
-pub fn stub_0xb4b65c() -> ! {
-    todo!("0xb4b65c RakNet::LocklessUint32_t::LocklessUint32_t(void)")
+pub fn stub_0xb4b65c() -> LocklessUint32 {
+ // IDA 0xb4b65c: zeroes the counter.
+    LocklessUint32 { value: AtomicU32::new(0) }
 }
 
 // 0xb4b664 — __ZN6RakNet16LocklessUint32_t9IncrementEv
 // type: unsigned int __fastcall(RakNet::LocklessUint32_t *this)
 #[doc(alias = "RakNet::LocklessUint32_t::Increment(void)")]
 #[doc(alias = "__ZN6RakNet16LocklessUint32_t9IncrementEv")]
-pub fn stub_0xb4b664() -> ! {
-    todo!("0xb4b664 RakNet::LocklessUint32_t::Increment(void)")
+pub fn stub_0xb4b664(counter: &LocklessUint32) -> u32 {
+ // IDA 0xb4b664: `dmb` + `ldrex`/`strex` add-one loop returning the prior
+ // value; SeqCst covers both barriers.
+    counter.value.fetch_add(1, Ordering::SeqCst)
 }
 
 // 0xb4b684 — __ZN6RakNet16LocklessUint32_t9DecrementEv
 // type: unsigned int __fastcall(RakNet::LocklessUint32_t *this)
 #[doc(alias = "RakNet::LocklessUint32_t::Decrement(void)")]
 #[doc(alias = "__ZN6RakNet16LocklessUint32_t9DecrementEv")]
-pub fn stub_0xb4b684() -> ! {
-    todo!("0xb4b684 RakNet::LocklessUint32_t::Decrement(void)")
+pub fn stub_0xb4b684(counter: &LocklessUint32) -> u32 {
+ // IDA 0xb4b684: `dmb` + `ldrex`/`strex` subtract-one loop returning the
+ // prior value; SeqCst covers both barriers.
+    counter.value.fetch_sub(1, Ordering::SeqCst)
 }
 
 // 0xb4bcfc — __ZN18DataBlockEncryptor7EncryptEPhjS0_PjPN6RakNet12RakNetRandomE
 // type: unsigned int __fastcall(DataBlockEncryptor *this, unsigned __int8 *, size_t, unsigned __int8 *, unsigned int *, RakNet::RakNetRandom *)
 #[doc(alias = "DataBlockEncryptor::Encrypt(unsigned char *,unsigned int,unsigned char *,unsigned int *,RakNet::RakNetRandom *)")]
 #[doc(alias = "__ZN18DataBlockEncryptor7EncryptEPhjS0_PjPN6RakNet12RakNetRandomE")]
-pub fn stub_0xb4bcfc() -> ! {
-    todo!("0xb4bcfc DataBlockEncryptor::Encrypt(unsigned char *,unsigned int,unsigned char *,unsigned int *,RakNet::RakNetRandom *)")
+pub fn stub_0xb4bcfc(
+    _enc: &DataBlockEncryptor,
+    input: &[u8],
+    rng: &mut dyn FnMut() -> u8,
+) -> Vec<u8> {
+ // IDA 0xb4bcfc: frames `input` for the chained cipher: the pad count is
+ // `((len as u8) + 5) & 0xF ^ 0xF`, so the total `len + pad + 6` is always a
+ // 16-byte multiple; two header bytes (random, then `pad | rand << 4`) and
+ // `pad` random bytes precede the payload (`memmove` when in-place, else
+ // `memcpy`). `CheckSum::Add` (0xa56c10, seeded `D971/CE6D/58BF`) covers the
+ // header, pad, and payload with the total stored LE at +0. The per-block
+ // `blockEncrypt` AES + backward XOR chaining stays engine-side, so this
+ // returns the framed plaintext; `RakNetRandom::RandomMT` is the `rng`
+ // callback and the out length is the returned length.
+    let unpadded = ((input.len() as u8).wrapping_add(5)) & 0xF;
+    let pad = (unpadded ^ 0xF) as usize;
+    let mut out = vec![0u8; input.len() + pad + 6];
+    out[4] = rng();
+    out[5] = pad as u8 | ((rng() & 0xF) << 4);
+    if unpadded != 15 {
+        for i in 0..pad {
+            out[6 + i] = rng();
+        }
+    }
+    out[6 + pad..].copy_from_slice(input);
+    let mut checksum = crate::generated_148::CheckSum {
+        sum: 0xD9_71,
+        mult_a: 0xCE_6D,
+        mult_b: 0x58_BF,
+        total: 0,
+    };
+    crate::generated_148::stub_a56c10(&mut checksum, &out[4..]);
+    out[..4].copy_from_slice(&checksum.total.to_le_bytes());
+    out
 }
 
 // 0xf202b4 — __ZN3RBX19EventReplicatorBaseINS_10ArcHandlesEFvN3G3D7Vector34AxisEEE15setListenerModeEb$shim
