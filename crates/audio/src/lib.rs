@@ -16358,8 +16358,31 @@ pub fn stub_37619c() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::addPair(RBX::Soundscape::ReverbType,char const*)"
 )]
-pub fn stub_376244() -> ! {
-    todo!("0x376244 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::addPair(RBX::Soundscape::ReverbType,char const*)")
+pub fn stub_376244(value: crate::generated::ReverbType, name: &str) {
+    // IDA 0x376244: Descriptor::Descriptor(name) item (0x3762b0), push it
+    // into the item table (0x3762ea), grow + fill the enumToItem/value maps
+    // (0x3762f2..0x37631e), the value>=0 / value<=2304 asserts
+    // (0x376326..0x3763c8, enumconverter.h:210/211), grow + fill the name
+    // tables (0x3763c8..0x376494), file the name->item map entry (0x3764d0)
+    // with the log2 count word (0x3764da..0x3764f2). Host tables are const
+    // and already hold the ctor pairs, so only the asserts plus the pair's
+    // agreement with the table survive (host: panic; twin of the SoundType
+    // path at 0x37f818).
+    let raw = value as i32;
+    if crate::generated::flog_asserts() {
+        assert!(
+            raw >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 210"
+        );
+        assert!(
+            raw <= 2304,
+            "(int)value<=2304 file: include/reflection/enumconverter.h line: 211"
+        );
+    }
+    if (raw as usize) < crate::generated::REVERB_TYPE_ITEMS.len() {
+        debug_assert_eq!(crate::generated::REVERB_TYPE_ITEMS[raw as usize].0, name);
+        debug_assert_eq!(crate::generated::REVERB_TYPE_ITEMS[raw as usize].1, raw);
+    }
 }
 
 // 0x3765a4 — __ZSt8for_eachISt17_Rb_tree_iteratorISt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS3_5SoundEEEEEPFvRKS1_IS4_S9_EEET0_T_SI_SH_

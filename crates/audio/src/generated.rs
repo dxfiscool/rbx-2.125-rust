@@ -31,7 +31,7 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 /// FLog::Asserts gate read by the EnumDesc assert paths (IDA `FLog::Asserts`).
 static FLOG_ASSERTS: AtomicBool = AtomicBool::new(true);
 
-fn flog_asserts() -> bool {
+pub(crate) fn flog_asserts() -> bool {
     FLOG_ASSERTS.load(Ordering::Relaxed)
 }
 
@@ -5015,22 +5015,33 @@ pub fn stub_f30314(service: &SoundService) -> SharedPtr<SoundServiceStatsItem> {
 // 0xf30324 — j___ZN21SoundServiceStatsItemC2EPKN3RBX10Soundscape12SoundServiceE
 // type: SoundServiceStatsItem *__fastcall(SoundServiceStatsItem *__hidden this, const RBX::Soundscape::SoundService *)
 #[doc(alias = "SoundServiceStatsItem::SoundServiceStatsItem(RBX::Soundscape::SoundService const*)")]
-pub fn stub_f30324() -> ! {
-    todo!("0xf30324 SoundServiceStatsItem::SoundServiceStatsItem(RBX::Soundscape::SoundService const*)")
+pub fn stub_f30324(service: &SoundService) -> SoundServiceStatsItem {
+    // IDA 0xf30324 (j__ thunk): tail-calls SoundServiceStatsItem::SoundServiceStatsItem
+    // (0x37de98; LDR PC,[R12] at 0xf3032c, __picsymbolstub4). Host: delegate.
+    stub_37de98(service)
 }
 
 // 0xf30334 — j___ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundChannelEFvvELi0EEC2EMS3_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::BoundFuncDesc(void (RBX::Soundscape::SoundChannel::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_f30334() -> ! {
-    todo!("0xf30334 RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::BoundFuncDesc(void (RBX::Soundscape::SoundChannel::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_f30334(
+    call: Box<dyn Fn(&mut SoundChannel) + Send + Sync>,
+    name: &str,
+    permissions: u32,
+    attributes: u32,
+) -> SoundChannelVoidFunc {
+    // IDA 0xf30334 (j__ thunk): tail-calls BoundFuncDesc<SoundChannel,void(),0>::BoundFuncDesc
+    // (0x379780). The member-pointer pair rides the caller's closure; host: delegate.
+    stub_379780(call, name, permissions, attributes)
 }
 
 // 0xf30344 — j___ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundServiceEFvNS_9SoundTypeEELi1EE16declareSignatureEPKcNS0_7VariantE
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
-pub fn stub_f30344() -> ! {
-    todo!("0xf30344 RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_f30344(func: &mut SoundServiceSoundFunc, arg_name: &str, default: Option<SoundType>) {
+    // IDA 0xf30344 (j__ thunk): tail-calls BoundFuncDesc<SoundService,void(SoundType),1>::
+    // declareSignature (0x37aefc). Host: delegate.
+    stub_37aefc(func, arg_name, default);
 }
 
 // 0xf30354 — j___ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundServiceEFvNS_9SoundTypeEELi1EEC2EMS3_FvS4_EPKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -5042,36 +5053,83 @@ pub fn stub_f30354() -> ! {
 // 0xf30364 — j___ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelENS2_7SoundIdEEC2IMS3_KFS4_vEMS3_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::PropDescriptor<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>(char const*,char const*,RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_f30364() -> ! {
-    todo!("0xf30364 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::PropDescriptor<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>(char const*,char const*,RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_f30364(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&SoundChannel) -> SoundId + Send + Sync>,
+    set: Box<dyn Fn(&mut SoundChannel, SoundId) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> SoundChannelSoundIdGetSetDesc {
+    // IDA 0xf30364 (j__ thunk): tail-calls PropDescriptor<SoundChannel,SoundId>::PropDescriptor
+    // (0x37a24c). The getter/setter member-pointer pair rides the caller's closures;
+    // host: delegate.
+    stub_37a24c(name, category, get, set, attributes, permissions)
 }
 
 // 0xf30374 — j___ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbEC2IMS3_KFbvEMS3_FvbEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::PropDescriptor<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>(char const*,char const*,bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_f30374() -> ! {
-    todo!("0xf30374 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::PropDescriptor<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>(char const*,char const*,bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_f30374(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&SoundChannel) -> bool + Send + Sync>,
+    set: Box<dyn Fn(&mut SoundChannel, bool) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> SoundChannelBoolGetSetDesc {
+    // IDA 0xf30374 (j__ thunk): tail-calls PropDescriptor<SoundChannel,bool>::PropDescriptor
+    // (0x379dd0). Host: delegate.
+    stub_379dd0(name, category, get, set, attributes, permissions)
 }
 
 // 0xf30384 — j___ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbEC2IMS3_KFbvEiEEPKcS9_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::PropDescriptor<bool (RBX::Soundscape::SoundChannel::*)(void)const,int>(char const*,char const*,bool (RBX::Soundscape::SoundChannel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_f30384() -> ! {
-    todo!("0xf30384 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::PropDescriptor<bool (RBX::Soundscape::SoundChannel::*)(void)const,int>(char const*,char const*,bool (RBX::Soundscape::SoundChannel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_f30384(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&SoundChannel) -> bool + Send + Sync>,
+    _tag: i32,
+    attributes: u32,
+    permissions: u32,
+) -> SoundChannelBoolGetDesc {
+    // IDA 0xf30384 (j__ thunk): tail-calls PropDescriptor<SoundChannel,bool>::PropDescriptor
+    // with the int tag (0x379b4c). The tag rides the member-pointer encoding on the
+    // getValue path; host: delegate.
+    stub_379b4c(name, category, get, _tag, attributes, permissions)
 }
 
 // 0xf30394 — j___ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEfEC2IMS3_KFfvEMS3_FvfEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::PropDescriptor<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>(char const*,char const*,float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_f30394() -> ! {
-    todo!("0xf30394 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::PropDescriptor<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>(char const*,char const*,float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_f30394(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&SoundChannel) -> f32 + Send + Sync>,
+    set: Box<dyn Fn(&mut SoundChannel, f32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> SoundChannelFloatGetSetDesc {
+    // IDA 0xf30394 (j__ thunk): tail-calls PropDescriptor<SoundChannel,float>::PropDescriptor
+    // (0x37a0c0). Host: delegate.
+    stub_37a0c0(name, category, get, set, attributes, permissions)
 }
 
 // 0xf303a4 — j___ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEiEC2IMS3_KFivEMS3_FviEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::PropDescriptor<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>(char const*,char const*,int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_f303a4() -> ! {
-    todo!("0xf303a4 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::PropDescriptor<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>(char const*,char const*,int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_f303a4(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&SoundChannel) -> i32 + Send + Sync>,
+    set: Box<dyn Fn(&mut SoundChannel, i32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> SoundChannelIntGetSetDesc {
+    // IDA 0xf303a4 (j__ thunk): tail-calls PropDescriptor<SoundChannel,int>::PropDescriptor
+    // (0x379f34). Host: delegate.
+    stub_379f34(name, category, get, set, attributes, permissions)
 }
 
 // 0xf303b4 — j___ZN3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEEC2IMS3_KFS4_vEMS3_FvRKS4_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -5084,22 +5142,34 @@ pub fn stub_f303b4() -> ! {
 // 0xf303c4 — j___ZN3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEEC2ERNS0_15ClassDescriptorEPKcS8_St8auto_ptrINS4_6GetSetEENS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_f303c4() -> ! {
-    todo!("0xf303c4 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_f303c4(
+    name: &str,
+    category: &str,
+    access: SoundChannelSoundIdAccess,
+    attributes: u32,
+    permissions: u32,
+) -> TypedSoundIdDesc {
+    // IDA 0xf303c4 (j__ thunk): tail-calls TypedPropertyDescriptor<SoundId>::TypedPropertyDescriptor
+    // (0x37a360). The GetSet auto_ptr block rides the caller's access; host: delegate.
+    stub_37a360(name, category, access, attributes, permissions)
 }
 
 // 0xf303d4 — j___ZN3RBX10Reflection7Variant14genericConvertINS_10Soundscape7SoundIdEEERT_v
 // type: int __fastcall(_DWORD)
 #[doc(alias = "RBX::Soundscape::SoundId & RBX::Reflection::Variant::genericConvert<RBX::Soundscape::SoundId>(void)")]
-pub fn stub_f303d4() -> ! {
-    todo!("0xf303d4 RBX::Soundscape::SoundId & RBX::Reflection::Variant::genericConvert<RBX::Soundscape::SoundId>(void)")
+pub fn stub_f303d4(variant: &mut Variant) -> Result<&SoundId, SoundCastError> {
+    // IDA 0xf303d4 (j__ thunk): tail-calls Variant::genericConvert<SoundId> (0x376ce4).
+    // Host: delegate.
+    stub_376ce4(variant)
 }
 
 // 0xf303e4 — j___ZN3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE7addPairES3_PKc
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::addPair(RBX::Soundscape::ReverbType,char const*)")]
-pub fn stub_f303e4() -> ! {
-    todo!("0xf303e4 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::addPair(RBX::Soundscape::ReverbType,char const*)")
+pub fn stub_f303e4(value: ReverbType, name: &str) {
+    // IDA 0xf303e4 (j__ thunk): tail-calls EnumDesc<ReverbType>::addPair (0x376244;
+    // decompile shows a direct tail-call at 0xf303ec). Host: delegate.
+    crate::stub_376244(value, name);
 }
 
 // 0xf303f4 — j___ZN3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEED2Ev
@@ -5112,68 +5182,101 @@ pub fn stub_f303f4() {
 // 0xf30404 — j___ZN3RBX10Reflection9ArgHelper6getArgINS_9SoundTypeELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS4_EEPNS8_10disable_ifINS8_7is_sameIS4_NS8_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RBX::SoundType RBX::Reflection::ArgHelper::getArg<RBX::SoundType,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::SoundType> const&,boost::disable_if<boost::is_same<RBX::SoundType,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
-pub fn stub_f30404() -> ! {
-    todo!("0xf30404 j___ZN3RBX10Reflection9ArgHelper6getArgINS_9SoundTypeELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS4_EEPNS8_10disable_ifINS8_7is_sameIS4_NS8_10shared_ptrIKNS0_5TupleEEEEEvE4typeE")
+pub fn stub_f30404(args: &SoundFuncArguments, default: Option<SoundType>) -> SoundType {
+    // IDA 0xf30404 (j__ thunk): tail-calls ArgHelper::getArg<SoundType,1> (0x37b034).
+    // Host: delegate.
+    stub_37b034(args, default)
 }
 
 // 0xf30414 — j___ZN3RBX10Reflection9ArgHelper8try_enumILi1ENS_9SoundTypeEEEbRNS0_18FunctionDescriptor9ArgumentsERT0_PN5boost9enable_ifINS9_7is_enumIS7_EEvE4typeE
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "bool RBX::Reflection::ArgHelper::try_enum<1,RBX::SoundType>(RBX::Reflection::FunctionDescriptor::Arguments &,RBX::SoundType &,boost::enable_if<boost::is_enum<RBX::SoundType>,void>::type *)")]
-pub fn stub_f30414() -> ! {
-    todo!("0xf30414 bool RBX::Reflection::ArgHelper::try_enum<1,RBX::SoundType>(RBX::Reflection::FunctionDescriptor::Arguments &,RBX::SoundType &,boost::enable_if<boost::is_enum<RBX::SoundType>,void>::type *)")
+pub fn stub_f30414(args: &SoundFuncArguments, out: &mut SoundType) -> bool {
+    // IDA 0xf30414 (j__ thunk): tail-calls ArgHelper::try_enum<1,SoundType> (0x37b1c4).
+    // Host: delegate.
+    stub_37b1c4(args, out)
 }
 
 // 0xf30424 — j___ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_10Soundscape12SoundChannelEEEPKcS8_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Soundscape::SoundChannel>(char const*,char const*,bool RBX::Soundscape::SoundChannel::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_f30424() -> ! {
-    todo!("0xf30424 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Soundscape::SoundChannel>(char const*,char const*,bool RBX::Soundscape::SoundChannel::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_f30424(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&SoundChannel) -> bool + Send + Sync>,
+    set: Box<dyn Fn(&mut SoundChannel, bool) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> SoundChannelBoolProp {
+    // IDA 0xf30424 (j__ thunk): tail-calls BoundProp<bool,Mutable>::BoundProp<SoundChannel>
+    // (0x379958). The data-member pointer rides the caller's closures; host: delegate.
+    stub_379958(name, category, get, set, attributes, permissions)
 }
 
 // 0xf30434 — j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_10Soundscape12SoundServiceEEEPKcS8_MT_fMS9_FvRKNS0_18PropertyDescriptorEENSB_10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Soundscape::SoundService>(char const*,char const*,float RBX::Soundscape::SoundService::*,void (RBX::Soundscape::SoundService::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_f30434() -> ! {
-    todo!("0xf30434 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Soundscape::SoundService>(char const*,char const*,float RBX::Soundscape::SoundService::*,void (RBX::Soundscape::SoundService::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_f30434(
+    name: &str,
+    category: &str,
+    access: SoundServiceFloatAccess,
+    attributes: u32,
+    permissions: u32,
+) -> SoundServiceFloatDesc {
+    // IDA 0xf30434 (j__ thunk): tail-calls BoundProp<float,Mutable>::BoundProp<SoundService>
+    // (0x37ba90). The member + notify pointers ride the caller's access; host: delegate.
+    stub_37ba90(name, category, access, attributes, permissions)
 }
 
 // 0xf30444 — j___ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "j___ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_f30444() -> ! {
-    todo!("0xf30444 j___ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+pub fn stub_f30444() -> &'static ClassDescriptor {
+    // IDA 0xf30444 (j__ thunk): tail-calls Described<SoundChannel>::classDescriptor
+    // (0x3771a4; LDR PC,[R12] at 0xf3044c, __picsymbolstub4). Host: delegate.
+    stub_3771a4()
 }
 
 // 0xf30454 — j___ZN3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "j___ZN3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_f30454() -> ! {
-    todo!("0xf30454 j___ZN3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+pub fn stub_f30454() -> &'static ClassDescriptor {
+    // IDA 0xf30454 (j__ thunk): tail-calls Described<StockSound>::classDescriptor
+    // (0x378f78). Host: delegate.
+    stub_378f78()
 }
 
 // 0xf30464 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10Soundscape10ReverbTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType> const>::doGetSingleton(void)")]
-pub fn stub_f30464() -> ! {
-    todo!("0xf30464 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType> const>::doGetSingleton(void)")
+pub fn stub_f30464() -> &'static ReverbEnumDesc {
+    // IDA 0xf30464 (j__ thunk): tail-calls Singleton<EnumDesc<ReverbType>>::doGetSingleton
+    // (0x378e88). Host: delegate.
+    stub_378e88()
 }
 
 // 0xf30474 — j___ZN3RBX10Soundscape12SoundService8SoundJobC2EPS1_
 // type: _DWORD __fastcall(RBX::Soundscape::SoundService::SoundJob *__hidden this, RBX::Soundscape::SoundService *)
 #[doc(alias = "RBX::Soundscape::SoundService::SoundJob::SoundJob(RBX::Soundscape::SoundService*)")]
-pub fn stub_f30474() -> ! {
-    todo!("0xf30474 RBX::Soundscape::SoundService::SoundJob::SoundJob(RBX::Soundscape::SoundService*)")
+pub fn stub_f30474(service: &SoundService) -> SoundJob {
+    // IDA 0xf30474 (j__ thunk): tail-calls SoundService::SoundJob::SoundJob (0x37e86c).
+    // Host: delegate.
+    stub_37e86c(service)
 }
 
 // 0xf30484 — j___ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E17static_getCreatorEv
 // type: int(void)
 #[doc(alias = "j___ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E17static_getCreatorEv")]
-pub fn stub_f30484() -> ! {
-    todo!("0xf30484 j___ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E17static_getCreatorEv")
+pub fn stub_f30484() -> &'static SoundChannelCreator {
+    // IDA 0xf30484 (j__ thunk): tail-calls FactoryProduct<SoundChannel>::static_getCreator
+    // (0x3787a0). Host: delegate.
+    stub_3787a0()
 }
 
 // 0xf30494 — j___ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorC2Ev
 // type: int __fastcall(pthread_mutex_t *)
 #[doc(alias = "j___ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorC2Ev")]
-pub fn stub_f30494() -> ! {
-    todo!("0xf30494 j___ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorC2Ev")
+pub fn stub_f30494() -> &'static SoundChannelCreator {
+    // IDA 0xf30494 (j__ thunk): tail-calls FactoryProduct<SoundChannel>::Creator::Creator
+    // (0x37855c). Host: delegate.
+    stub_37855c()
 }
 
 // 0xf304a4 — j___ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD2Ev
@@ -5185,15 +5288,19 @@ pub fn stub_f304a4() {
 // 0xf304b4 — j___ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE17static_getCreatorEv
 // type: int(void)
 #[doc(alias = "j___ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_f304b4() -> ! {
-    todo!("0xf304b4 j___ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE17static_getCreatorEv")
+pub fn stub_f304b4() -> &'static StockSoundCreator {
+    // IDA 0xf304b4 (j__ thunk): tail-calls FactoryProduct<StockSound>::static_getCreator
+    // (0x37cb50). Host: delegate.
+    stub_37cb50()
 }
 
 // 0xf304c4 — j___ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorC2Ev
 // type: int __fastcall(pthread_mutex_t *)
 #[doc(alias = "j___ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_f304c4() -> ! {
-    todo!("0xf304c4 j___ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorC2Ev")
+pub fn stub_f304c4() -> &'static StockSoundCreator {
+    // IDA 0xf304c4 (j__ thunk): tail-calls FactoryProduct<StockSound>::Creator::Creator
+    // (0x37c6f0). Host: delegate.
+    stub_37c6f0()
 }
 
 // 0xf304d4 — j___ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD2Ev
@@ -5201,24 +5308,32 @@ pub fn stub_f304c4() -> ! {
 pub fn stub_f304d4() {
     // IDA 0xf304d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
-
 // 0xf304e4 — j___ZN3RBX15ServiceProvider4findINS_10Soundscape12SoundServiceEEEPT_PKNS_8InstanceE
 // type: int __fastcall(_DWORD)
 #[doc(alias = "RBX::Soundscape::SoundService * RBX::ServiceProvider::find<RBX::Soundscape::SoundService>(RBX::Instance const*)")]
-pub fn stub_f304e4() -> ! {
-    todo!("0xf304e4 RBX::Soundscape::SoundService * RBX::ServiceProvider::find<RBX::Soundscape::SoundService>(RBX::Instance const*)")
+pub fn stub_f304e4(
+    provider: Option<&ServiceProvider>,
+    context: Option<&Instance>,
+) -> Option<SharedPtr<SoundService>> {
+    // IDA 0xf304e4 (j__ thunk): tail-calls ServiceProvider::find<SoundService>
+    // (0x377154). Host: delegate.
+    stub_377154(provider, context)
 }
 
 // 0xf304f4 — j___ZN3RBX4Name9doDeclareILZNS_10Soundscape13sSoundChannelEEEERKS0_v
 #[doc(alias = "j___ZN3RBX4Name9doDeclareILZNS_10Soundscape13sSoundChannelEEEERKS0_v")]
-pub fn stub_f304f4() -> ! {
-    todo!("0xf304f4 j___ZN3RBX4Name9doDeclareILZNS_10Soundscape13sSoundChannelEEEERKS0_v")
+pub fn stub_f304f4() -> &'static str {
+    // IDA 0xf304f4 (j__ thunk): tail-calls Name::doDeclare<sSoundChannel> (0x37847c).
+    // Host: delegate.
+    stub_37847c()
 }
 
 // 0xf30504 — j___ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v
 #[doc(alias = "j___ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v")]
-pub fn stub_f30504() -> ! {
-    todo!("0xf30504 j___ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v")
+pub fn stub_f30504() -> &'static str {
+    // IDA 0xf30504 (j__ thunk): tail-calls Name::doDeclare<sStockSound> (0x37c610).
+    // Host: delegate.
+    stub_37c610()
 }
 
 // 0xf30524 — j___ZN3RBX9CreatableINS_8InstanceEE6createI21SoundServiceStatsItemPKNS_10Soundscape12SoundServiceEEEN5boost10shared_ptrIT_EET0_
