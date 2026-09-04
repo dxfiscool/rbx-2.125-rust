@@ -8,11 +8,12 @@ use rbx_core::SharedPtr;
 use crate::data_model::DataModel;
 use rbx_core::WeakPtr;
 use rbx_core::shared_ptr::{ControlBlockP, ControlBlockPd, CreatableInstanceDeleter, shared_ptr_from_raw};
-use crate::generated_05::{EventDescPayload, FunctorOp, GenericSlotWrapper, Instance, SLOT_EXCEPTION_HANDLER, SignatureItem, Variant, instance_is_a};
+use crate::generated_05::{EventDescPayload, FunctorOp, GenericSlotWrapper, Instance, PropertyDescriptor, SLOT_EXCEPTION_HANDLER, SignatureItem, Variant, instance_is_a};
 use rbx_core::signal::Signal;
 use parking_lot::Mutex;
 use std::any::Any;
 use std::collections::BTreeSet;
+use std::collections::HashSet;
 
 /// Rust model of `CRenderSettingsItem` (IDA `0xef04`): field layout unmodeled;
 /// lifecycle runs through `Creatable` + `SharedPtr`. Raw pointers into this
@@ -63,6 +64,7 @@ pub struct CamRefPropDescriptor {
 pub struct Waypoint {
     pub name: String,
     pub items: BTreeSet<*const Instance>,
+    pub records: Vec<HistoryItem>,
 }
 
 /// Rust model of `RBX::ChangeHistoryService` (IDA `0x3d43a4`): the waypoint
@@ -71,6 +73,7 @@ pub struct Waypoint {
 pub struct ChangeHistoryService {
     pub waypoints: Vec<Waypoint>,
 }
+
 
 /// Rust model of `RBX::Network::Players` (IDA `0x33454`): same shape; only the
 /// deleter-query pair exists in this file (partial cluster).
@@ -189,6 +192,54 @@ pub struct TypedStatsItemBool {
 /// Rust model of `RBX::AdvLuaDragger` (IDA `0x2d0a70`): same opaque shape.
 #[derive(Default)]
 pub struct AdvLuaDragger {
+    _opaque: (),
+}
+
+/// Rust model of `boost::_bi::bind_t<void, mf1<void, ChangeHistoryService,
+/// SharedPtr<Instance>>, list2<value<ChangeHistoryService*>, arg<1>>>` (IDA
+/// `0x3d73f8`): the bound service plus the member handler. Same shape as
+/// `AnimatorBind`.
+#[derive(Clone, Copy)]
+pub struct ChangeHistoryBind {
+    pub func: fn(*const ChangeHistoryService, &SharedPtr<Instance>),
+    pub target: *const ChangeHistoryService,
+}
+
+/// The bound target travels inside tree-walk frames and `Signal` closures;
+/// sound under the slot-lifetime contract like `HeartbeatBind`.
+unsafe impl Send for ChangeHistoryBind {}
+unsafe impl Sync for ChangeHistoryBind {}
+
+/// Rust model of `boost::_bi::bind_t<void, mf2<void, ChangeHistoryService,
+/// SharedPtr<Instance>, PropertyDescriptor const*>, list3<value<CHS*>, arg1,
+/// arg2>>` (IDA `0x3d746c`): the 2-arg twin for the property signal.
+#[derive(Clone, Copy)]
+pub struct ChangeHistoryBind2 {
+    pub func: fn(*const ChangeHistoryService, &SharedPtr<Instance>, *const PropertyDescriptor),
+    pub target: *const ChangeHistoryService,
+}
+
+/// Twin `Send`/`Sync` contract for the 2-arg bind.
+unsafe impl Send for ChangeHistoryBind2 {}
+unsafe impl Sync for ChangeHistoryBind2 {}
+
+/// Rust model of an `rbx::signals::signal<void ()(SharedPtr<Instance>,
+/// PropertyDescriptor const*)>::slot` link holding the mf2 bind (IDA
+/// `0x3d9b20` D1).
+pub struct PropSlotNode {
+    pub next: Option<SharedPtr<PropSlotNode>>,
+    pub bind: Option<ChangeHistoryBind2>,
+}
+
+/// One history record behind `Waypoint::getItem`'s list walk (IDA `0x3d76f0`).
+pub struct HistoryItem {
+    pub instance: *const Instance,
+}
+
+/// Rust model of `RBX::MegaClusterInstance` (IDA `0x3d7b2c`): field layout
+/// unmodeled; voxel chunks land with the geometry subsystem.
+#[derive(Default)]
+pub struct MegaClusterInstance {
     _opaque: (),
 }
 
@@ -8701,7 +8752,7 @@ pub fn stub_0x3d43a4(service: *mut ChangeHistoryService, name: &str) -> *mut Way
         if let Some(slot) = (*service).waypoints.iter_mut().find(|w| w.name == name) {
             return slot as *mut Waypoint;
         }
-        (*service).waypoints.push(Waypoint { name: name.to_string(), items: BTreeSet::new() });
+        (*service).waypoints.push(Waypoint { name: name.to_string(), items: BTreeSet::new(), records: Vec::new() });
         (*service).waypoints.last_mut().unwrap() as *mut Waypoint
     }
 }
@@ -8801,22 +8852,63 @@ pub fn stub_0x3d6fe0() -> ! {
 // 0x3d72f0 — __ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_20ChangeHistoryServiceENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvRKT_
 #[doc(alias = "void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>> const&)const")]
 // was: void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>> const&)const
-pub fn stub_0x3d72f0() -> ! {
-    todo!("0x3d72f0 void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>> const&)const")
+pub fn stub_0x3d72f0(
+    this: *const Instance,
+    service: *const ChangeHistoryService,
+    func: fn(*const ChangeHistoryService, &SharedPtr<Instance>),
+) {
+    // IDA 0x3d72f0: `visitDescendants` with the ChangeHistory mf1 binder —
+    // snapshot the child vector, then apply `func(bound_service, child)` to
+    // every descendant pre-order with per-child retain/release. Same
+    // traversal as 0x70430c/0x3a55fc.
+    // SAFETY: `this` must point to a valid `Instance` whose subtree outlives
+    // the call; `service` must stay live.
+    unsafe {
+        let mut stack: Vec<SharedPtr<Instance>> = (*this).children.clone();
+        stack.reverse();
+        while let Some(child) = stack.pop() {
+            let nested: Vec<SharedPtr<Instance>> =
+                (*SharedPtr::as_ptr(&child)).children.clone();
+            for grand in nested.into_iter().rev() {
+                stack.push(grand);
+            }
+            func(service, &child);
+        }
+    }
 }
 
 // 0x3d73f8 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_20ChangeHistoryServiceES6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>> const&)")]
 // was: rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>> const&)
-pub fn stub_0x3d73f8() -> ! {
-    todo!("0x3d73f8 rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>> const&)")
+pub fn stub_0x3d73f8(sig: &Signal<SharedPtr<Instance>>, bind: &ChangeHistoryBind) -> TripleConnection {
+    // IDA 0x3d73f8: `signal::connect<mf1-bind>` with the concrete-closure
+    // `Arc` (cf. the `0x708c08` `Sized` fix); whole-struct capture keeps the
+    // raw target under the bind's `Send`/`Sync` contract.
+    let retained = *bind;
+    let cb = SharedPtr::new(move |arg: SharedPtr<Instance>| {
+        let bound = retained;
+        (bound.func)(bound.target, &arg);
+    });
+    sig.connect(cb.clone());
+    TripleConnection { keep: cb }
 }
 
 // 0x3d746c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf2IvNS4_20ChangeHistoryServiceES6_SA_EENSE_5list3INSE_5valueIPSI_EENS2_3argILi1EEENSO_ILi2EEEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>> const&)")]
 // was: rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>> const&)
-pub fn stub_0x3d746c() -> ! {
-    todo!("0x3d746c rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>> const&)")
+pub fn stub_0x3d746c(
+    sig: &Signal<(SharedPtr<Instance>, *const PropertyDescriptor)>,
+    bind: &ChangeHistoryBind2,
+) -> TripleConnection {
+    // IDA 0x3d746c: `signal::connect<mf2-bind>` — same closure discipline as
+    // 0x3d73f8 over the `(Instance, PropertyDescriptor)` signal.
+    let retained = *bind;
+    let cb = SharedPtr::new(move |args: (SharedPtr<Instance>, *const PropertyDescriptor)| {
+        let bound = retained;
+        (bound.func)(bound.target, &args.0, args.1);
+    });
+    sig.connect(cb.clone());
+    TripleConnection { keep: cb }
 }
 
 // 0x3d7558 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSI22ChangeHistoryStatsItemEERS3_RKNS0_IT_EE
@@ -8829,15 +8921,31 @@ pub fn stub_0x3d7558() -> ! {
 // 0x3d76f0 — __ZN3RBX20ChangeHistoryService8Waypoint7getItemEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::ChangeHistoryService::Waypoint::getItem(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::ChangeHistoryService::Waypoint::getItem(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x3d76f0() -> ! {
-    todo!("0x3d76f0 RBX::ChangeHistoryService::Waypoint::getItem(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x3d76f0(waypoint: *const Waypoint, instance: &SharedPtr<Instance>) -> *const HistoryItem {
+    // IDA 0x3d76f0: walks the waypoint's item-record list
+    // (`std::_List_node_base` chain) for the matching instance; hit returns
+    // the record, miss returns null. Linear scan is the same lookup.
+    // SAFETY: `waypoint` must point to a valid `Waypoint`.
+    unsafe {
+        for record in (*waypoint).records.iter() {
+            if record.instance == SharedPtr::as_ptr(instance) {
+                return record as *const HistoryItem;
+            }
+        }
+        core::ptr::null()
+    }
 }
 
 // 0x3d7b2c — __ZN5boost10shared_ptrIN3RBX19MegaClusterInstanceEEaSERKS3_
 #[doc(alias = "rbx_core::SharedPtr<RBX::MegaClusterInstance>::operator=(rbx_core::SharedPtr<RBX::MegaClusterInstance> const&)")]
 // was: boost::shared_ptr<RBX::MegaClusterInstance>::operator=(boost::shared_ptr<RBX::MegaClusterInstance> const&)
-pub fn stub_0x3d7b2c() -> ! {
-    todo!("0x3d7b2c boost::shared_ptr<RBX::MegaClusterInstance>::operator=(boost::shared_ptr<RBX::MegaClusterInstance> const&)")
+pub fn stub_0x3d7b2c(dst: *mut Option<SharedPtr<MegaClusterInstance>>, src: &Option<SharedPtr<MegaClusterInstance>>) {
+    // IDA 0x3d7b2c: same-type `shared_ptr` copy-assign — retain, store,
+    // release-old; clone-then-assign is self-assignment safe. Twin of 0x3bbf8.
+    // SAFETY: `dst` must be writable; `src` must be readable.
+    unsafe {
+        *dst = src.clone();
+    }
 }
 
 // 0x3d7df0 — __ZN3RBX20ChangeHistoryService4Item14addClusterDataINS_19MegaClusterInstanceEEEvPKT_
@@ -8857,71 +8965,115 @@ pub fn stub_0x3d82b0() -> ! {
 // 0x3d82c8 — __ZN3RBX9Selection12setSelectionISt14_List_iteratorIN5boost10shared_ptrINS_8InstanceEEEEEEvT_S8_
 #[doc(alias = "void RBX::Selection::setSelection<std::_List_iterator<rbx_core::SharedPtr<RBX::Instance>>>(std::_List_iterator<rbx_core::SharedPtr<RBX::Instance>>,std::_List_iterator<rbx_core::SharedPtr<RBX::Instance>>)")]
 // was: void RBX::Selection::setSelection<std::_List_iterator<boost::shared_ptr<RBX::Instance>>>(std::_List_iterator<boost::shared_ptr<RBX::Instance>>,std::_List_iterator<boost::shared_ptr<RBX::Instance>>)
-pub fn stub_0x3d82c8() -> ! {
-    todo!("0x3d82c8 void RBX::Selection::setSelection<std::_List_iterator<boost::shared_ptr<RBX::Instance>>>(std::_List_iterator<boost::shared_ptr<RBX::Instance>>,std::_List_iterator<boost::shared_ptr<RBX::Instance>>)")
+pub fn stub_0x3d82c8(service: &mut SelectionService, items: &[SharedPtr<Instance>]) {
+    // IDA 0x3d82c8: `clearSelection` (disasm 0x3d82d2) then `addToSelection`
+    // per list element (disasm 0x3d82dc-0x3d82e6); clearing plus retained
+    // clones is the same replacement.
+    service.selected.clear();
+    service.selected.extend(items.iter().cloned());
 }
 
 // 0x3d87a4 — __ZN5boost3_bi5list2INS0_5valueIPN3RBX20ChangeHistoryServiceEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRKSF_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>> &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")]
 // was: void boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)
-pub fn stub_0x3d87a4() -> ! {
-    todo!("0x3d87a4 void boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)")
+pub fn stub_0x3d87a4(
+    func: fn(*const ChangeHistoryService, &SharedPtr<Instance>),
+    service: *const ChangeHistoryService,
+    arg: &SharedPtr<Instance>,
+) {
+    // IDA 0x3d87a4: `list2` operator() — `shared_count` retain of the incoming
+    // arg, then the stored mf1 callee on the bound service; release on scope
+    // exit collapses into clone + drop. Same shape as the Animator list op.
+    func(service, &arg.clone());
 }
 
 // 0x3d887c — __ZNK5boost4_mfi3mf1IvN3RBX20ChangeHistoryServiceENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_
 #[doc(alias = "boost::_mfi::mf1<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::ChangeHistoryService*,rbx_core::SharedPtr<RBX::Instance>)const")]
 // was: boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>::operator()(RBX::ChangeHistoryService*,boost::shared_ptr<RBX::Instance>)const
-pub fn stub_0x3d887c() -> ! {
-    todo!("0x3d887c boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>::operator()(RBX::ChangeHistoryService*,boost::shared_ptr<RBX::Instance>)const")
+pub fn stub_0x3d887c(
+    func: fn(*const ChangeHistoryService, &SharedPtr<Instance>),
+    service: *const ChangeHistoryService,
+    arg: &SharedPtr<Instance>,
+) {
+    // IDA 0x3d887c: `mf1::operator()` — applies `(service, arg)` with the
+    // per-child retain/release folded into a clone; mirror of 0x3a5dac.
+    func(service, &arg.clone());
 }
 
 // 0x3d8964 — __ZNSt4listIN5boost10shared_ptrIN3RBX8InstanceEEESaIS4_EE14_M_create_nodeERKS4_
 #[doc(alias = "std::list<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>::_M_create_node(rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: std::list<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_create_node(boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_0x3d8964() -> ! {
-    todo!("0x3d8964 std::list<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_create_node(boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_0x3d8964(item: &SharedPtr<Instance>) -> Box<SharedPtr<Instance>> {
+    // IDA 0x3d8964 (`std::list<shared_ptr<Instance>>::_M_create_node`):
+    // `operator new(0x10)` plus the retained shared copy; a boxed clone is
+    // the same node payload. Twin of 0x3a1a54.
+    Box::new(item.clone())
 }
 
 // 0x3d8a48 — __ZNK5boost9unordered6detail10table_implINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14find_node_implIS6_SB_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS6_EEEEmRKT_RKT0_
 #[doc(alias = "boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<RBX::Instance *>> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::find_node_impl<RBX::Instance *,std::equal_to<RBX::Instance *>>(unsigned long,RBX::Instance * const&,std::equal_to<RBX::Instance *> const&)const")]
 // was: boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<RBX::Instance *>> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::find_node_impl<RBX::Instance *,std::equal_to<RBX::Instance *>>(unsigned long,RBX::Instance * const&,std::equal_to<RBX::Instance *> const&)const
-pub fn stub_0x3d8a48() -> ! {
-    todo!("0x3d8a48 boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<RBX::Instance *>> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::find_node_impl<RBX::Instance *,std::equal_to<RBX::Instance *>>(unsigned long,RBX::Instance * const&,std::equal_to<RBX::Instance *> const&)const")
+pub fn stub_0x3d8a48(set: &HashSet<*const Instance>, instance: *const Instance) -> Option<*const Instance> {
+    // IDA 0x3d8a48 (`table_impl<set<Instance*>>::find_node_impl`): `hash %
+    // bucket_count`, then the chain walk with the equal-to compare; hit
+    // returns the node, miss returns null. Same lookup.
+    if set.contains(&instance) {
+        Some(instance)
+    } else {
+        None
+    }
 }
 
 // 0x3d8ab4 — __ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE12emplace_implINS1_13emplace_args1IS6_EEEESt4pairINS0_15iterator_detail8iteratorINS1_8ptr_nodeIS6_EEEEbERKS6_RKT_
 #[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<RBX::Instance *>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::emplace_impl<boost::unordered::detail::emplace_args1<RBX::Instance *>>(RBX::Instance * const&,boost::unordered::detail::emplace_args1<RBX::Instance *> const&)")]
 // was: std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<RBX::Instance *>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::emplace_impl<boost::unordered::detail::emplace_args1<RBX::Instance *>>(RBX::Instance * const&,boost::unordered::detail::emplace_args1<RBX::Instance *> const&)
-pub fn stub_0x3d8ab4() -> ! {
-    todo!("0x3d8ab4 std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<RBX::Instance *>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::emplace_impl<boost::unordered::detail::emplace_args1<RBX::Instance *>>(RBX::Instance * const&,boost::unordered::detail::emplace_args1<RBX::Instance *> const&)")
+pub fn stub_0x3d8ab4(set: &mut HashSet<*const Instance>, instance: *const Instance) -> bool {
+    // IDA 0x3d8ab4 (`table_impl<set<Instance*>>::emplace_impl`): find-or-place
+    // into the bucket with a fresh node on miss; `insert` is the same
+    // placement and reports newness.
+    set.insert(instance)
 }
 
 // 0x3d8c44 — __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE18reserve_for_insertEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::reserve_for_insert(unsigned long)")]
 // was: boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::reserve_for_insert(unsigned long)
-pub fn stub_0x3d8c44() -> ! {
-    todo!("0x3d8c44 boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::reserve_for_insert(unsigned long)")
+pub fn stub_0x3d8c44(set: &mut HashSet<*const Instance>, additional: usize) {
+    // IDA 0x3d8c44 (`table<set<Instance*>>::reserve_for_insert`): skips when
+    // buckets exist and the size already fits (disasm 0x3d8c4a-0x3d8c54),
+    // else grows the table; `reserve` is the same growth.
+    if set.capacity() < set.len().saturating_add(additional) {
+        set.reserve(additional);
+    }
 }
 
 // 0x3d8c98 — __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14create_bucketsEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::create_buckets(unsigned long)")]
 // was: boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::create_buckets(unsigned long)
-pub fn stub_0x3d8c98() -> ! {
-    todo!("0x3d8c98 boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::create_buckets(unsigned long)")
+pub fn stub_0x3d8c98(set: &mut HashSet<*const Instance>, buckets: usize) {
+    // IDA 0x3d8c98 (`table<set<Instance*>>::create_buckets`): lays out the
+    // bucket array; over an existing table `reserve` is the same allocation
+    // without dropping contents.
+    set.reserve(buckets.saturating_sub(set.len()));
 }
 
 // 0x3d8dc0 — __ZNK5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE20min_buckets_for_sizeEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::min_buckets_for_size(unsigned long)const")]
 // was: boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::min_buckets_for_size(unsigned long)const
-pub fn stub_0x3d8dc0() -> ! {
-    todo!("0x3d8dc0 boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::min_buckets_for_size(unsigned long)const")
+pub fn stub_0x3d8dc0(size: usize) -> usize {
+    // IDA 0x3d8dc0 (`table<set<Instance*>>::min_buckets_for_size`): `size /
+    // max_load_factor` in floating point (disasm 0x3d8c4c-0x3d8d8), with the
+    // default factor of 1.0 so the minimum is the size itself.
+    size
 }
 
 // 0x3d8e50 — __ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE11rehash_implEm
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::rehash_impl(unsigned long)")]
 // was: boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::rehash_impl(unsigned long)
-pub fn stub_0x3d8e50() -> ! {
-    todo!("0x3d8e50 boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::rehash_impl(unsigned long)")
+pub fn stub_0x3d8e50(set: &mut HashSet<*const Instance>, buckets: usize) {
+    // IDA 0x3d8e50 (`table_impl<set<Instance*>>::rehash_impl`): `create_buckets`
+    // then re-links every node (disasm 0x3d8e56); over the live set `reserve`
+    // is the same growth since Rust rehashes automatically.
+    set.reserve(buckets.saturating_sub(set.len()));
 }
 
 // 0x3d8e7c — __ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE15place_in_bucketERNS1_5tableISC_EEPNS1_10ptr_bucketE
@@ -9046,36 +9198,63 @@ pub fn stub_0x3d9544() -> ! {
 // 0x3d9b20 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf2IvNS4_20ChangeHistoryServiceES6_SA_EENSE_5list3INSE_5valueIPSI_EENS2_3argILi1EEENSO_ILi2EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()
-pub fn stub_0x3d9b20() -> ! {
-    todo!("0x3d9b20 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")
+pub fn stub_0x3d9b20(node: *const PropSlotNode, _this: *mut PropSlotNode) {
+    // IDA 0x3d9b20: vtable install plus memberwise teardown of the
+    // `(Instance, PropertyDescriptor)` slot link with its mf2 bind; dropping
+    // the box is the same release. Twin of 0x3bbf00.
+    // SAFETY: `node` must be a live box pointer never used again.
+    let _ = node;
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x3d9b4c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf2IvNS4_20ChangeHistoryServiceES6_SA_EENSE_5list3INSE_5valueIPSI_EENS2_3argILi1EEENSO_ILi2EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()
-pub fn stub_0x3d9b4c() -> ! {
-    todo!("0x3d9b4c rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")
+pub fn stub_0x3d9b4c(node: *const PropSlotNode) {
+    // IDA 0x3d9b4c: vtable install plus memberwise teardown of the
+    // `(Instance, PropertyDescriptor)` slot link with its mf2 bind; dropping
+    // the box is the same release. Twin of 0x3bbf76.
+    // SAFETY: `node` must be a live box pointer never used again.
+    unsafe {
+        let _ = Box::from_raw(node as *mut PropSlotNode);
+    }
 }
 
 // 0x3d9c20 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4slot10disconnectEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::disconnect(void)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::disconnect(void)
-pub fn stub_0x3d9c20() -> ! {
-    todo!("0x3d9c20 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::disconnect(void)")
+pub fn stub_0x3d9c20(node: &mut PropSlotNode) {
+    // IDA 0x3d9c20: `slot::disconnect` on the `(Instance, PropertyDescriptor)`
+    // link — unhook plus release of the mf2 binder; `None` is the same
+    // released bind state. Twin of 0x3bc042.
+    node.bind = None;
 }
 
 // 0x3d9d30 — __ZNK3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4slot9connectedEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::connected(void)const")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::connected(void)const
-pub fn stub_0x3d9d30() -> ! {
-    todo!("0x3d9d30 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::connected(void)const")
+pub fn stub_0x3d9d30(node: &PropSlotNode) -> bool {
+    // IDA 0x3d9d30: `slot::connected` on the `(Instance, PropertyDescriptor)`
+    // link — presence of the live mf2 binder; same predicate. Twin of
+    // 0x3bc046.
+    node.bind.is_some()
 }
 
 // 0x3d9d3c — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_20ChangeHistoryServiceES7_SB_EENSF_5list3INSF_5valueIPSJ_EENS3_3argILi1EEENSP_ILi2EEEEEEELi2ESC_E4callES7_SB_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::call(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::call(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)
-pub fn stub_0x3d9d3c() -> ! {
-    todo!("0x3d9d3c rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::call(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x3d9d3c(
+    func: fn(*const ChangeHistoryService, &SharedPtr<Instance>, *const PropertyDescriptor),
+    service: *const ChangeHistoryService,
+    instance: &SharedPtr<Instance>,
+    prop: *const PropertyDescriptor,
+) {
+    // IDA 0x3d9d3c: invokes the mf2 callee on the bound service with the
+    // retained `(Instance, PropertyDescriptor)` pair; clones keep both alive
+    // across the call like the 3-arg call path.
+    func(service, &instance.clone(), prop);
 }
 
 // 0x3d9d60 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_20ChangeHistoryServiceES7_SB_EENSF_5list3INSF_5valueIPSJ_EENS3_3argILi1EEENSP_ILi2EEEEEEELi2ESC_E4callES7_SB_
