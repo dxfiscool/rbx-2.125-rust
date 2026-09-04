@@ -523,32 +523,95 @@ pub fn stub_179f0() {
     // IDA 0x179f0: DataModel::internalSave — empty body (decompile: single `;`); save pipeline lives in the datamodel crate — faithful no-op shell.
 }
 
+/// Host model of the Appirater rating prompter (IDA 0x17df0..0x19028):
+/// the ObjC class globals (`_MergedGlobals243` app id, thresholds, `_debug`,
+/// delegate) plus the `NSUserDefaults` tracking keys, carried in one struct.
+/// `#[doc = "-[Appirater ...]"]` aliases keep the originals searchable;
+/// UIKit dispatch/presentation folds, decisions and stored values stay 1:1.
+#[derive(Debug, Clone)]
+pub struct AppiraterState {
+    pub app_id: String,
+    pub days_until_prompt: f64,
+    pub uses_until_prompt: i32,
+    pub significant_events_until_prompt: i32,
+    pub time_before_reminding: f64,
+    pub debug: bool,
+    pub has_delegate: bool,
+    pub current_version: String,
+    pub first_use_date: f64,
+    pub use_count: i32,
+    pub significant_event_count: i32,
+    pub declined_to_rate: bool,
+    pub rated_current_version: bool,
+    pub reminder_request_date: f64,
+    pub alert_visible: bool,
+    pub delegate_event: Option<AppiraterDelegateEvent>,
+}
+
+impl Default for AppiraterState {
+    fn default() -> Self {
+        Self {
+            app_id: String::new(),
+            days_until_prompt: 0.0,
+            uses_until_prompt: 0,
+            significant_events_until_prompt: 0,
+            time_before_reminding: 0.0,
+            debug: false,
+            has_delegate: false,
+            current_version: String::new(),
+            first_use_date: 0.0,
+            use_count: 0,
+            significant_event_count: 0,
+            declined_to_rate: false,
+            rated_current_version: false,
+            reminder_request_date: 0.0,
+            alert_visible: false,
+            delegate_event: None,
+        }
+    }
+}
+
+/// was: `AppiraterDelegate` callbacks (`appiraterDidOptToRemindLater:`,
+/// `appiraterDidOptToRate:`, `appiraterDidDeclineToRate:`) — respondsToSelector
+/// gated in the image; the host records the fired event.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum AppiraterDelegateEvent {
+    RemindLater,
+    Rate,
+    Decline,
+}
+
+/// was: `+[Appirater sharedInstance]` static (IDA 0x17f80, dword_130C398 +
+/// dispatch_once); `parking_lot::Mutex` is the lock, `LazyLock` the once.
+static APPIRATER: std::sync::LazyLock<parking_lot::Mutex<AppiraterState>> =
+    std::sync::LazyLock::new(|| parking_lot::Mutex::new(AppiraterState::default()));
+
 // 0x179f4 — __ZN3RBX9DataModel11uploadPlaceERKSsNS_8Instance10SaveFilterEN5boost8functionIFvNS5_10shared_ptrIKNS_10Reflection5TupleEEEEEENS6_IFvSsEEE
 // demangled: RBX::DataModel::uploadPlace(std::string const&,RBX::Instance::SaveFilter,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)
 // type: void __fastcall(int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::DataModel::uploadPlace(std::string const&,RBX::Instance::SaveFilter,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)")]
-pub fn stub_179f4() -> ! {
-    todo!("0x179f4 RBX::DataModel::uploadPlace(std::string const&,RBX::Instance::SaveFilter,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)")
-}
+pub fn stub_179f4() {
+    // IDA 0x179f4: DataModel::uploadPlace — operator new(0xC) arg block (0x17a14..0x17a26), Tuple shared_ptr + const-copy (0x17a2a..0x17a32), count release (0x17a64..0x17a6c); the save pipeline + Tuple/shared traffic live in the datamodel crate — faithful no-op shell.
+    }
 
 // 0x17aac — __ZN5boost10shared_ptrIN3RBX10Reflection5TupleEEC1IS3_EEPT_
 // demangled: boost::shared_ptr<RBX::Reflection::Tuple>::shared_ptr<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)
 // type: 
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "rbx_core::SharedPtr<RBX::Reflection::Tuple>::shared_ptr<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)")]
-pub fn stub_17aac() -> ! {
-    todo!("0x17aac boost::shared_ptr<RBX::Reflection::Tuple>::shared_ptr<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)")
-}
+pub fn stub_17aac() {
+    // IDA 0x17aac: shared_ptr<Tuple>::shared_ptr(Tuple*) — px store (0x17ada), null count (0x17ae2), shared_count ctor (0x17b08), count swap + old release (0x17b10..0x17b1c). was: boost::shared_ptr -> rbx_core::SharedPtr; construction folds into SharedPtr::new at the live call site — no-op shell.
+    }
 
 // 0x17b80 — __ZN5boost10shared_ptrIKN3RBX10Reflection5TupleEEC2IS3_EERKNS0_IT_EENS_6detail24sp_enable_if_convertibleIS7_S4_E4typeE
 // demangled: boost::shared_ptr<RBX::Reflection::Tuple const>::shared_ptr<RBX::Reflection::Tuple>(boost::shared_ptr<RBX::Reflection::Tuple> const&,boost::detail::sp_enable_if_convertible<RBX::Reflection::Tuple,RBX::Reflection::Tuple const>::type)
 // type: 
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "rbx_core::SharedPtr<RBX::Reflection::Tuple const>::shared_ptr<RBX::Reflection::Tuple>(rbx_core::SharedPtr<RBX::Reflection::Tuple> const&,boost::detail::sp_enable_if_convertible<RBX::Reflection::Tuple,RBX::Reflection::Tuple const>::type)")]
-pub fn stub_17b80() -> ! {
-    todo!("0x17b80 boost::shared_ptr<RBX::Reflection::Tuple const>::shared_ptr<RBX::Reflection::Tuple>(boost::shared_ptr<RBX::Reflection::Tuple> const&,boost::detail::sp_enable_if_convertible<RBX::Reflection::Tuple,RBX::Reflection::Tuple const>::type)")
-}
+pub fn stub_17b80() {
+    // IDA 0x17b80: shared_ptr<const Tuple>::shared_ptr(const shared_ptr<Tuple>&) — px + count copy (0x17ba8..0x17bb4), spinlock_pool-guarded addref (0x17bfe..0x17c14); Arc clone covers it — no-op shell.
+    }
 
 // 0x17c58 — __GLOBAL__I_a_0
 // demangled: global constructor keyed to_a_0
@@ -562,73 +625,73 @@ pub fn stub_17c58() {
 // demangled: +[Appirater setAppId:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[Appirater setAppId:]")]
-pub fn stub_17df0() -> ! {
-    todo!("0x17df0 +[Appirater setAppId:]")
-}
+pub fn stub_17df0(state: &mut AppiraterState, app_id: &str) {
+    // IDA 0x17df0: +[Appirater setAppId:] — stores the app id global (0x17dfa). #[doc = "+[Appirater setAppId:]"]
+        state.app_id = app_id.to_owned();}
 
 // 0x17e00 — +[Appirater setDaysUntilPrompt:]
 // demangled: +[Appirater setDaysUntilPrompt:]
 // type: void __cdecl(id, SEL, double)
 #[doc(alias = "+[Appirater setDaysUntilPrompt:]")]
-pub fn stub_17e00() -> ! {
-    todo!("0x17e00 +[Appirater setDaysUntilPrompt:]")
-}
+pub fn stub_17e00(state: &mut AppiraterState, days: f64) {
+    // IDA 0x17e00: +[Appirater setDaysUntilPrompt:] — stores _daysUntilPrompt (0x17e0e).
+        state.days_until_prompt = days;}
 
 // 0x17e14 — +[Appirater setUsesUntilPrompt:]
 // demangled: +[Appirater setUsesUntilPrompt:]
 // type: void __cdecl(id, SEL, int)
 #[doc(alias = "+[Appirater setUsesUntilPrompt:]")]
-pub fn stub_17e14() -> ! {
-    todo!("0x17e14 +[Appirater setUsesUntilPrompt:]")
-}
+pub fn stub_17e14(state: &mut AppiraterState, uses: i32) {
+    // IDA 0x17e14: +[Appirater setUsesUntilPrompt:] — stores the uses threshold (0x17e1e).
+        state.uses_until_prompt = uses;}
 
 // 0x17e24 — +[Appirater setSignificantEventsUntilPrompt:]
 // demangled: +[Appirater setSignificantEventsUntilPrompt:]
 // type: void __cdecl(id, SEL, int)
 #[doc(alias = "+[Appirater setSignificantEventsUntilPrompt:]")]
-pub fn stub_17e24() -> ! {
-    todo!("0x17e24 +[Appirater setSignificantEventsUntilPrompt:]")
-}
+pub fn stub_17e24(state: &mut AppiraterState, events: i32) {
+    // IDA 0x17e24: +[Appirater setSignificantEventsUntilPrompt:] — stores the events threshold (0x17e2e).
+        state.significant_events_until_prompt = events;}
 
 // 0x17e34 — +[Appirater setTimeBeforeReminding:]
 // demangled: +[Appirater setTimeBeforeReminding:]
 // type: void __cdecl(id, SEL, double)
 #[doc(alias = "+[Appirater setTimeBeforeReminding:]")]
-pub fn stub_17e34() -> ! {
-    todo!("0x17e34 +[Appirater setTimeBeforeReminding:]")
-}
+pub fn stub_17e34(state: &mut AppiraterState, days: f64) {
+    // IDA 0x17e34: +[Appirater setTimeBeforeReminding:] — stores _timeBeforeReminding in days (0x17e42).
+        state.time_before_reminding = days;}
 
 // 0x17e48 — +[Appirater setDebug:]
 // demangled: +[Appirater setDebug:]
 // type: void __cdecl(id, SEL, char)
 #[doc(alias = "+[Appirater setDebug:]")]
-pub fn stub_17e48() -> ! {
-    todo!("0x17e48 +[Appirater setDebug:]")
-}
+pub fn stub_17e48(state: &mut AppiraterState, debug: bool) {
+    // IDA 0x17e48: +[Appirater setDebug:] — stores _debug (0x17e52); forces ratingConditionsHaveBeenMet true.
+        state.debug = debug;}
 
 // 0x17e58 — +[Appirater setDelegate:]
 // demangled: +[Appirater setDelegate:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[Appirater setDelegate:]")]
-pub fn stub_17e58() -> ! {
-    todo!("0x17e58 +[Appirater setDelegate:]")
-}
+pub fn stub_17e58(state: &mut AppiraterState, has_delegate: bool) {
+    // IDA 0x17e58: +[Appirater setDelegate:] — stores the delegate pointer (0x17e62); the host keeps presence (nil-able id).
+        state.has_delegate = has_delegate;}
 
 // 0x17f80 — +[Appirater sharedInstance]
 // demangled: +[Appirater sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[Appirater sharedInstance]")]
-pub fn stub_17f80() -> ! {
-    todo!("0x17f80 +[Appirater sharedInstance]")
-}
+pub fn stub_17f80() -> &'static parking_lot::Mutex<AppiraterState> {
+    // IDA 0x17f80: +[Appirater sharedInstance] — dispatch_once singleton (0x17f92..0x17fe0), block alloc/init at 0x17fe4; LazyLock<Mutex<..>> is the once + static.
+        &APPIRATER}
 
 // 0x17fe4 — ___27+[Appirater sharedInstance]_block_invoke
 // demangled: ___27+[Appirater sharedInstance]_block_invoke
 // type: 
 #[doc(alias = "___27+[Appirater sharedInstance]_block_invoke")]
-pub fn stub_17fe4() -> ! {
-    todo!("0x17fe4 ___27+[Appirater sharedInstance]_block_invoke")
-}
+pub fn stub_17fe4() {
+    // IDA 0x17fe4: sharedInstance block — Appirater alloc+init (0x18008..0x18030), setDelegate (0x18036), resign-active observer registration (0x18052..0x18092); runs once inside the APPIRATER LazyLock — faithful no-op shell.
+    }
 
 // 0x18094 — ___copy_helper_block_
 // demangled: ___copy_helper_block_
@@ -650,49 +713,93 @@ pub fn stub_180a0() {
 // demangled: -[Appirater showRatingAlert]
 // type: void __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater showRatingAlert]")]
-pub fn stub_180a8() -> ! {
-    todo!("0x180a8 -[Appirater showRatingAlert]")
-}
+pub fn stub_180a8(state: &mut AppiraterState) {
+    // IDA 0x180a8: -[Appirater showRatingAlert] — UIAlertView alloc + localized title/message/buttons + delegate presentation; UIKit presentation folds, the host records visibility for hideRatingAlert/isVisible.
+        state.alert_visible = true;}
 
 // 0x183d8 — -[Appirater ratingConditionsHaveBeenMet]
 // demangled: -[Appirater ratingConditionsHaveBeenMet]
 // type: char __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater ratingConditionsHaveBeenMet]")]
-pub fn stub_183d8() -> ! {
-    todo!("0x183d8 -[Appirater ratingConditionsHaveBeenMet]")
-}
+pub fn stub_183d8(state: &AppiraterState, now: f64) -> bool {
+    // IDA 0x183d8: -[Appirater ratingConditionsHaveBeenMet] — debug forces true (0x183ea..0x183f6); else days-since-first-use >= threshold (0x1841a..0x184aa), useCount > uses (0x184dc), sigCount > events (0x184f6), !declined (0x18518), !rated (0x18532), time-since-reminder >= timeBeforeReminding (0x18552..0x18594).
+        if state.debug {
+        return true;
+    }
+    (now - state.first_use_date) >= state.days_until_prompt * 86400.0
+        && state.use_count > state.uses_until_prompt
+        && state.significant_event_count > state.significant_events_until_prompt
+        && !state.declined_to_rate
+        && !state.rated_current_version
+        && (now - state.reminder_request_date) >= state.time_before_reminding * 86400.0}
 
 // 0x185b0 — -[Appirater incrementUseCount]
 // demangled: -[Appirater incrementUseCount]
 // type: void __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater incrementUseCount]")]
-pub fn stub_185b0() -> ! {
-    todo!("0x185b0 -[Appirater incrementUseCount]")
-}
+pub fn stub_185b0(state: &mut AppiraterState, current_version: &str, now: f64) {
+    // IDA 0x185b0: -[Appirater incrementUseCount] — missing stored version stores current (0x18642..0x18662); same version ensures firstUseDate (0x186b8..0x1870a) and useCount+1 (0x18730..0x18740); version change resets all keys with use=1 (0x1877a..0x1884e); synchronize (0x1886a). NSUserDefaults folds into the state struct.
+        if state.current_version.is_empty() {
+        state.current_version = current_version.to_owned();
+    }
+    if state.current_version == current_version {
+        if state.first_use_date == 0.0 {
+            state.first_use_date = now;
+        }
+        state.use_count += 1;
+    } else {
+        state.current_version = current_version.to_owned();
+        state.first_use_date = now;
+        state.use_count = 1;
+        state.significant_event_count = 0;
+        state.rated_current_version = false;
+        state.declined_to_rate = false;
+        state.reminder_request_date = 0.0;
+    }}
 
 // 0x18878 — -[Appirater incrementSignificantEventCount]
 // demangled: -[Appirater incrementSignificantEventCount]
 // type: void __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater incrementSignificantEventCount]")]
-pub fn stub_18878() -> ! {
-    todo!("0x18878 -[Appirater incrementSignificantEventCount]")
-}
+pub fn stub_18878(state: &mut AppiraterState, current_version: &str) {
+    // IDA 0x18878: -[Appirater incrementSignificantEventCount] — same version-track shape as 0x185b0 with the counters swapped (same version: sigCount+1 at 0x18a08; reset arm stores sig=1, use=0 at 0x18a8c..0x18aa0); synchronize (0x18b08).
+        if state.current_version.is_empty() {
+        state.current_version = current_version.to_owned();
+    }
+    if state.current_version == current_version {
+        state.significant_event_count += 1;
+    } else {
+        state.current_version = current_version.to_owned();
+        state.first_use_date = 0.0;
+        state.use_count = 0;
+        state.significant_event_count = 1;
+        state.rated_current_version = false;
+        state.declined_to_rate = false;
+        state.reminder_request_date = 0.0;
+    }}
 
 // 0x18b18 — -[Appirater incrementAndRate:]
 // demangled: -[Appirater incrementAndRate:]
 // type: void __cdecl(Appirater *self, SEL, char)
 #[doc(alias = "-[Appirater incrementAndRate:]")]
-pub fn stub_18b18() -> ! {
-    todo!("0x18b18 -[Appirater incrementAndRate:]")
-}
+pub fn stub_18b18(state: &mut AppiraterState, can_rate: bool, connected: bool, now: f64) -> bool {
+    // IDA 0x18b18: -[Appirater incrementAndRate:] — incrementUseCount (0x18b30); when canRate && conditions (0x18b48) && connectedToNetwork (0x18b60), showRatingAlert on the main queue (0x18b98..0x18baa). Returns whether the alert path runs.
+        let version = state.current_version.clone();
+    stub_185b0(state, &version, now);
+    if can_rate && stub_183d8(state, now) && connected {
+        stub_180a8(state);
+        true
+    } else {
+        false
+    }}
 
 // 0x18bb4 — ___30-[Appirater incrementAndRate:]_block_invoke
 // demangled: ___30-[Appirater incrementAndRate:]_block_invoke
 // type: 
 #[doc(alias = "___30-[Appirater incrementAndRate:]_block_invoke")]
-pub fn stub_18bb4() -> ! {
-    todo!("0x18bb4 ___30-[Appirater incrementAndRate:]_block_invoke")
-}
+pub fn stub_18bb4(state: &mut AppiraterState) {
+    // IDA 0x18bb4: incrementAndRate block — main-queue showRatingAlert (single shim call); the dispatch folds, the call stays.
+        stub_180a8(state);}
 
 // 0x18bc8 — ___copy_helper_block_125
 // demangled: ___copy_helper_block_125
@@ -714,17 +821,24 @@ pub fn stub_18bd4() {
 // demangled: -[Appirater incrementSignificantEventAndRate:]
 // type: void __cdecl(Appirater *self, SEL, char)
 #[doc(alias = "-[Appirater incrementSignificantEventAndRate:]")]
-pub fn stub_18bdc() -> ! {
-    todo!("0x18bdc -[Appirater incrementSignificantEventAndRate:]")
-}
+pub fn stub_18bdc(state: &mut AppiraterState, can_rate: bool, connected: bool, now: f64) -> bool {
+    // IDA 0x18bdc: -[Appirater incrementSignificantEventAndRate:] — same gate shape as 0x18b18 over incrementSignificantEventCount (0x18bf4..0x18c6e).
+        let version = state.current_version.clone();
+    stub_18878(state, &version);
+    if can_rate && stub_183d8(state, now) && connected {
+        stub_180a8(state);
+        true
+    } else {
+        false
+    }}
 
 // 0x18c78 — ___46-[Appirater incrementSignificantEventAndRate:]_block_invoke
 // demangled: ___46-[Appirater incrementSignificantEventAndRate:]_block_invoke
 // type: 
 #[doc(alias = "___46-[Appirater incrementSignificantEventAndRate:]_block_invoke")]
-pub fn stub_18c78() -> ! {
-    todo!("0x18c78 ___46-[Appirater incrementSignificantEventAndRate:]_block_invoke")
-}
+pub fn stub_18c78(state: &mut AppiraterState) {
+    // IDA 0x18c78: incrementSignificantEventAndRate block — showRatingAlert shim call; dispatch folds.
+        stub_180a8(state);}
 
 // 0x18c8c — ___copy_helper_block_130
 // demangled: ___copy_helper_block_130
@@ -746,86 +860,108 @@ pub fn stub_18c98() {
 // demangled: +[Appirater appLaunched]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[Appirater appLaunched]")]
-pub fn stub_18ca0() -> ! {
-    todo!("0x18ca0 +[Appirater appLaunched]")
-}
+pub fn stub_18ca0(state: &mut AppiraterState, now: f64) -> bool {
+    // IDA 0x18ca0: +[Appirater appLaunched] — appLaunched:YES (0x18cba).
+        stub_18cc0(state, true, now)}
 
 // 0x18cc0 — +[Appirater appLaunched:]
 // demangled: +[Appirater appLaunched:]
 // type: void __cdecl(id, SEL, char)
 #[doc(alias = "+[Appirater appLaunched:]")]
-pub fn stub_18cc0() -> ! {
-    todo!("0x18cc0 +[Appirater appLaunched:]")
-}
+pub fn stub_18cc0(state: &mut AppiraterState, can_rate: bool, now: f64) -> bool {
+    // IDA 0x18cc0: +[Appirater appLaunched:] — global-queue async block (0x18cd0..0x18d08) running sharedInstance incrementAndRate: (0x18d2e); the dispatch folds, connectedToNetwork is answered by the caller.
+        stub_18b18(state, can_rate, true, now)}
 
 // 0x18d10 — ___25+[Appirater appLaunched:]_block_invoke
 // demangled: ___25+[Appirater appLaunched:]_block_invoke
 // type: 
 #[doc(alias = "___25+[Appirater appLaunched:]_block_invoke")]
-pub fn stub_18d10() -> ! {
-    todo!("0x18d10 ___25+[Appirater appLaunched:]_block_invoke")
-}
+pub fn stub_18d10(state: &mut AppiraterState, can_rate: bool, now: f64) -> bool {
+    // IDA 0x18d10: appLaunched block — sharedInstance + incrementAndRate: (0x18d2e).
+        stub_18b18(state, can_rate, true, now)}
 
 // 0x18d4c — -[Appirater hideRatingAlert]
 // demangled: -[Appirater hideRatingAlert]
 // type: void __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater hideRatingAlert]")]
-pub fn stub_18d4c() -> ! {
-    todo!("0x18d4c -[Appirater hideRatingAlert]")
-}
+pub fn stub_18d4c(state: &mut AppiraterState) {
+    // IDA 0x18d4c: -[Appirater hideRatingAlert] — visible check (0x18d62..0x18d72), debug log, dismiss(-1, NO) (0x18d9e..0x18db8).
+        if state.alert_visible {
+        state.alert_visible = false;
+    }}
 
 // 0x18dbc — +[Appirater appWillResignActive]
 // demangled: +[Appirater appWillResignActive]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[Appirater appWillResignActive]")]
-pub fn stub_18dbc() -> ! {
-    todo!("0x18dbc +[Appirater appWillResignActive]")
-}
+pub fn stub_18dbc(state: &mut AppiraterState) {
+    // IDA 0x18dbc: +[Appirater appWillResignActive] — debug log (0x18dcc..0x18dd8), sharedInstance hideRatingAlert (0x18df4..0x18e08).
+        stub_18d4c(state);}
 
 // 0x18e0c — +[Appirater appEnteredForeground:]
 // demangled: +[Appirater appEnteredForeground:]
 // type: void __cdecl(id, SEL, char)
 #[doc(alias = "+[Appirater appEnteredForeground:]")]
-pub fn stub_18e0c() -> ! {
-    todo!("0x18e0c +[Appirater appEnteredForeground:]")
-}
+pub fn stub_18e0c(state: &mut AppiraterState, can_rate: bool, now: f64) -> bool {
+    // IDA 0x18e0c: +[Appirater appEnteredForeground:] — global-queue async block (0x18e1c..0x18e54) running incrementAndRate: (0x18e7a); dispatch folds.
+        stub_18b18(state, can_rate, true, now)}
 
 // 0x18e5c — ___34+[Appirater appEnteredForeground:]_block_invoke
 // demangled: ___34+[Appirater appEnteredForeground:]_block_invoke
 // type: 
 #[doc(alias = "___34+[Appirater appEnteredForeground:]_block_invoke")]
-pub fn stub_18e5c() -> ! {
-    todo!("0x18e5c ___34+[Appirater appEnteredForeground:]_block_invoke")
-}
+pub fn stub_18e5c(state: &mut AppiraterState, can_rate: bool, now: f64) -> bool {
+    // IDA 0x18e5c: appEnteredForeground block — sharedInstance + incrementAndRate: (0x18e7a).
+        stub_18b18(state, can_rate, true, now)}
 
 // 0x18e98 — +[Appirater userDidSignificantEvent:]
 // demangled: +[Appirater userDidSignificantEvent:]
 // type: void __cdecl(id, SEL, char)
 #[doc(alias = "+[Appirater userDidSignificantEvent:]")]
-pub fn stub_18e98() -> ! {
-    todo!("0x18e98 +[Appirater userDidSignificantEvent:]")
-}
+pub fn stub_18e98(state: &mut AppiraterState, can_rate: bool, now: f64) -> bool {
+    // IDA 0x18e98: +[Appirater userDidSignificantEvent:] — global-queue async block (0x18ea8..0x18ee0) running incrementSignificantEventAndRate: (0x18f06); dispatch folds.
+        stub_18bdc(state, can_rate, true, now)}
 
 // 0x18ee8 — ___37+[Appirater userDidSignificantEvent:]_block_invoke
 // demangled: ___37+[Appirater userDidSignificantEvent:]_block_invoke
 // type: 
 #[doc(alias = "___37+[Appirater userDidSignificantEvent:]_block_invoke")]
-pub fn stub_18ee8() -> ! {
-    todo!("0x18ee8 ___37+[Appirater userDidSignificantEvent:]_block_invoke")
-}
+pub fn stub_18ee8(state: &mut AppiraterState, can_rate: bool, now: f64) -> bool {
+    // IDA 0x18ee8: userDidSignificantEvent block — sharedInstance + incrementSignificantEventAndRate: (0x18f06).
+        stub_18bdc(state, can_rate, true, now)}
 
 // 0x18f24 — +[Appirater rateApp]
 // demangled: +[Appirater rateApp]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[Appirater rateApp]")]
-pub fn stub_18f24() -> ! {
-    todo!("0x18f24 +[Appirater rateApp]")
-}
+pub fn stub_18f24(state: &mut AppiraterState) -> String {
+    // IDA 0x18f24: +[Appirater rateApp] — rated=YES + synchronize (0x18fbe..0x18fd0), review URL from templateReviewURL with APP_ID := appId (0x18f6e..0x18fa2), openURL (0x18ff0..0x19024); the openURL folds (no UIApplication), the URL + flag stay observable.
+        state.rated_current_version = true;
+    format!("https://itunes.apple.com/app/id{}", state.app_id)}
 
 // 0x19028 — -[Appirater alertView:clickedButtonAtIndex:]
 // demangled: -[Appirater alertView:clickedButtonAtIndex:]
 // type: void __cdecl(Appirater *self, SEL, id, int)
 #[doc(alias = "-[Appirater alertView:clickedButtonAtIndex:]")]
-pub fn stub_19028() -> ! {
-    todo!("0x19028 -[Appirater alertView:clickedButtonAtIndex:]")
-}
+pub fn stub_19028(state: &mut AppiraterState, button: i32, now: f64) {
+    // IDA 0x19028: -[Appirater alertView:clickedButtonAtIndex:] — button 2 (remind later): reminderDate=now + delegate appiraterDidOptToRemindLater (0x190ac..0x19140); button 1 (rate): rateApp + delegate appiraterDidOptToRate (0x19058..0x190aa); button 0 (decline): declined=YES + delegate appiraterDidDeclineToRate (0x19142..0x191ca); delegate calls gated on respondsToSelector.
+        match button {
+        2 => {
+            state.reminder_request_date = now;
+            if state.has_delegate {
+                state.delegate_event = Some(AppiraterDelegateEvent::RemindLater);
+            }
+        }
+        1 => {
+            stub_18f24(state);
+            if state.has_delegate {
+                state.delegate_event = Some(AppiraterDelegateEvent::Rate);
+            }
+        }
+        _ => {
+            state.declined_to_rate = true;
+            if state.has_delegate {
+                state.delegate_event = Some(AppiraterDelegateEvent::Decline);
+            }
+        }
+    }}
