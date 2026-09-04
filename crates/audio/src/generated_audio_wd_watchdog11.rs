@@ -1819,36 +1819,93 @@ pub fn stub_06368d0(
     SkyBoolProp::new(name, category, initial, attributes, permissions)
 }
 
+/// `RBX::Reflection::PropDescriptor<Sky, int>` cutover (IDA 0x636ac4):
+/// same shape as `SkateIntProp` for the `Sky` star-count member.
+#[derive(Debug, Clone)]
+pub struct SkyIntProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+    pub value: i32,
+}
+impl SkyIntProp {
+    pub fn new(
+        name: &str,
+        category: &str,
+        initial: i32,
+        attributes: u32,
+        permissions: u32,
+    ) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+            value: initial,
+        }
+    }
+}
+/// `RBX::Smoke` cutover (IDA 0x637264/0x6372cc/0x637320): the `Color3`
+/// at +0x64..+0x6c, the size at +0x70 and the opacity at +0x74. The
+/// `Instance`/`Described` bases fold away. Initial values come from
+/// `Smoke::Smoke`, so construction is explicit (no `Default`).
+#[derive(Debug, Clone)]
+pub struct SmokeState {
+    pub color: [f32; 3],
+    pub size: f32,
+    pub opacity: f32,
+}
+
 // 0x0636a60 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_3SkyEE10isReadOnlyEv
 // demangled: RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_3SkyEE10isReadOnlyEv")]
-pub fn stub_0636a60() -> ! {
-    todo!("0x0636a60 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::isReadOnly(void)const")
+pub fn stub_0636a60() -> bool {
+    // IDA 0x636a60 (`BoundPropGetSet<Sky>::isReadOnly`): `MOVS R0, #0;
+    // BX LR` — always readable.
+    false
 }
 
 // 0x0636a64 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_3SkyEE11isWriteOnlyEv
 // demangled: RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_3SkyEE11isWriteOnlyEv")]
-pub fn stub_0636a64() -> ! {
-    todo!("0x0636a64 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::isWriteOnly(void)const")
+pub fn stub_0636a64() -> bool {
+    // IDA 0x636a64 (`BoundPropGetSet<Sky>::isWriteOnly`): `MOVS R0, #0;
+    // BX LR` — always writable.
+    false
 }
 
 // 0x0636a68 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_3SkyEE8getValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::getValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_3SkyEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0636a68() -> ! {
-    todo!("0x0636a68 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0636a68(sky: &SkyState) -> bool {
+    // IDA 0x636a68 (`BoundPropGetSet<Sky>::getValue`): loads the member
+    // offset at +8, adjusts the described (`R1 - 36` when non-null,
+    // 0x636a68-0x636a6c) and returns the byte there (0x636a6e-0x636a70).
+    // The member is the +140 flag (the only bool in `Sky::Sky`,
+    // 0x634660); the offset folds into the field.
+    sky.flag_140
 }
 
 // 0x0636a74 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_3SkyEE8setValueEPNS0_13DescribedBaseERKb
 // demangled: RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::setValue(RBX::Reflection::DescribedBase *,bool const&)const
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_3SkyEE8setValueEPNS0_13DescribedBaseERKb")]
-pub fn stub_0636a74() -> ! {
-    todo!("0x0636a74 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_0636a74(sky: &mut SkyState, value: bool) -> bool {
+    // IDA 0x636a74 (`BoundPropGetSet<Sky>::setValue`): adjusts the
+    // described (0x636a78-0x636a7e), returns early when the byte already
+    // matches (0x636a86-0x636a8e), else stores (0x636a90), runs the
+    // member hook when the +12/+16 pair is set (0x636a92-0x636ab2) and
+    // tail-calls `raisePropertyChanged` (0x636ab6-0x636abe). The hook
+    // and the raise fold into the changed flag.
+    if sky.flag_140 == value {
+        return false;
+    }
+    sky.flag_140 = value;
+    true
 }
 
 // 0x0636ac4 — __ZN3RBX10Reflection14PropDescriptorINS_3SkyEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -1856,8 +1913,19 @@ pub fn stub_0636a74() -> ! {
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Sky,int>::PropDescriptor<int (RBX::Sky::*)(void)const,void (RBX::Sky::*)(int)>(char const*,char const*,int (RBX::Sky::*)(void)const,void (RBX::Sky::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_3SkyEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0636ac4() -> ! {
-    todo!("0x0636ac4 RBX::Reflection::PropDescriptor<RBX::Sky,int>::PropDescriptor<int (RBX::Sky::*)(void)const,void (RBX::Sky::*)(int)>(char const*,char const*,int (RBX::Sky::*)(void)const,void (RBX::Sky::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0636ac4(
+    name: &str,
+    category: &str,
+    initial: i32,
+    attributes: u32,
+    permissions: u32,
+) -> SkyIntProp {
+    // IDA 0x636ac4 (`PropDescriptor<Sky, int>::C2`): allocates the
+    // `GetSetImpl` member triple (0x14 bytes, 0x636af0-0x636b28), runs
+    // the base `C2` (0x636bec-0x636c00) and installs the vtable
+    // (0x636ba8-0x636bb8) — same shape as the Skateboard twin at
+    // 0x633cb8. The member triple folds into direct field access.
+    SkyIntProp::new(name, category, initial, attributes, permissions)
 }
 
 // 0x0636bd8 — __ZN3RBX10Reflection14PropDescriptorINS_3SkyEiED0Ev
@@ -1872,56 +1940,83 @@ pub fn stub_0636bd8() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Sky,int>::GetSetImpl<int (RBX::Sky::*)(void)const,void (RBX::Sky::*)(int)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Sky,int>::GetSetImpl<int (RBX::Sky::*)(void)const,void (RBX::Sky::*)(int)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_3SkyEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv")]
-pub fn stub_0636c04() -> ! {
-    todo!("0x0636c04 RBX::Reflection::PropDescriptor<RBX::Sky,int>::GetSetImpl<int (RBX::Sky::*)(void)const,void (RBX::Sky::*)(int)>::isReadOnly(void)const")
+pub fn stub_0636c04() -> bool {
+    // IDA 0x636c04 (`GetSetImpl<int getter, int setter>::isReadOnly`):
+    // `MOVS R0, #0; BX LR` — always readable.
+    false
 }
 
 // 0x0636c08 — __ZNK3RBX10Reflection14PropDescriptorINS_3SkyEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::Sky,int>::GetSetImpl<int (RBX::Sky::*)(void)const,void (RBX::Sky::*)(int)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Sky,int>::GetSetImpl<int (RBX::Sky::*)(void)const,void (RBX::Sky::*)(int)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_3SkyEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv")]
-pub fn stub_0636c08() -> ! {
-    todo!("0x0636c08 RBX::Reflection::PropDescriptor<RBX::Sky,int>::GetSetImpl<int (RBX::Sky::*)(void)const,void (RBX::Sky::*)(int)>::isWriteOnly(void)const")
+pub fn stub_0636c08() -> bool {
+    // IDA 0x636c08 (`GetSetImpl<int getter, int setter>::isWriteOnly`):
+    // `MOVS R0, #0; BX LR` — always writable.
+    false
 }
 
 // 0x0636c0c — __ZNK3RBX10Reflection14PropDescriptorINS_3SkyEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::PropDescriptor<RBX::Sky,int>::GetSetImpl<int (RBX::Sky::*)(void)const,void (RBX::Sky::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Sky,int>::GetSetImpl<int (RBX::Sky::*)(void)const,void (RBX::Sky::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_3SkyEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0636c0c() -> ! {
-    todo!("0x0636c0c RBX::Reflection::PropDescriptor<RBX::Sky,int>::GetSetImpl<int (RBX::Sky::*)(void)const,void (RBX::Sky::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0636c0c(sky: &SkyState) -> i32 {
+    // IDA 0x636c0c (`GetSetImpl::getValue`): same member-pointer resolve
+    // as the Skateboard twin at 0x633e00 (null described reads at
+    // offset 0, else `a2 - 36`; virtual when the low bit is set),
+    // tail-calling the getter. The member is the star-count getter
+    // (cf. `getNumStars` at 0x635864); the pointer folds into the field.
+    sky.num_stars
 }
 
 // 0x0636c2c — __ZNK3RBX10Reflection14PropDescriptorINS_3SkyEiE10GetSetImplIMS2_KFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi
 // demangled: RBX::Reflection::PropDescriptor<RBX::Sky,int>::GetSetImpl<int (RBX::Sky::*)(void)const,void (RBX::Sky::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Sky,int>::GetSetImpl<int (RBX::Sky::*)(void)const,void (RBX::Sky::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_3SkyEiE10GetSetImplIMS2_KFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi")]
-pub fn stub_0636c2c() -> ! {
-    todo!("0x0636c2c RBX::Reflection::PropDescriptor<RBX::Sky,int>::GetSetImpl<int (RBX::Sky::*)(void)const,void (RBX::Sky::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+pub fn stub_0636c2c(sky: &mut SkyState, value: i32) -> bool {
+    // IDA 0x636c2c (`GetSetImpl::setValue`): same member-pointer resolve
+    // as the Skateboard twin at 0x633e20, tail-calling the setter. The
+    // member is the star-count setter (cf. `setNumStars` at 0x634630,
+    // which clamps 0..5000 and raises); the pointer folds into it.
+    stub_0634630(sky, value)
 }
 
 // 0x0636c50 — __ZN3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EEC2INS_3SkyEEEPKcS8_MT_S2_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // demangled: RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Sky>(char const*,char const*,RBX::TextureId RBX::Sky::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
 #[doc(alias = "RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Sky>(char const*,char const*,RBX::TextureId RBX::Sky::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EEC2INS_3SkyEEEPKcS8_MT_S2_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0636c50() -> ! {
-    todo!("0x0636c50 RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Sky>(char const*,char const*,RBX::TextureId RBX::Sky::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0636c50(
+    name: &str,
+    category: &str,
+    initial: TextureId,
+    attributes: u32,
+    permissions: u32,
+) -> SkyTextureProp {
+    // IDA 0x636c50 (`BoundProp<TextureId>::BoundProp<Sky>`): same
+    // `TypedPropertyDescriptor<TextureId>::C2` + vtable + member-cell
+    // shape as the bool twin at 0x6368d0 (0x636c50-0x636d90). The
+    // member cell folds into direct field access.
+    SkyTextureProp::new(name, category, initial, attributes, permissions)
 }
 
 // 0x0636de0 — __ZNK3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EE15BoundPropGetSetINS_3SkyEE10isReadOnlyEv
 // demangled: RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EE15BoundPropGetSetINS_3SkyEE10isReadOnlyEv")]
-pub fn stub_0636de0() -> ! {
-    todo!("0x0636de0 RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::isReadOnly(void)const")
+pub fn stub_0636de0() -> bool {
+    // IDA 0x636de0 (`BoundPropGetSet<Sky>::isReadOnly`): `MOVS R0, #0;
+    // BX LR` — always readable.
+    false
 }
 
 // 0x0636de4 — __ZNK3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EE15BoundPropGetSetINS_3SkyEE11isWriteOnlyEv
 // demangled: RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EE15BoundPropGetSetINS_3SkyEE11isWriteOnlyEv")]
-pub fn stub_0636de4() -> ! {
-    todo!("0x0636de4 RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::isWriteOnly(void)const")
+pub fn stub_0636de4() -> bool {
+    // IDA 0x636de4 (`BoundPropGetSet<Sky>::isWriteOnly`): `MOVS R0, #0;
+    // BX LR` — always writable.
+    false
 }
 
 // 0x0636de8 — __ZNK3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EE15BoundPropGetSetINS_3SkyEE8getValueEPKNS0_13DescribedBaseE
@@ -1929,8 +2024,14 @@ pub fn stub_0636de4() -> ! {
 // type: int __fastcall(std::string *this)
 #[doc(alias = "RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EE15BoundPropGetSetINS_3SkyEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0636de8() -> ! {
-    todo!("0x0636de8 RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0636de8(face: &TextureId) -> TextureId {
+    // IDA 0x636de8 (`BoundPropGetSet<Sky>::getValue`): adjusts the
+    // described (`R2 - 36` when non-null, 0x636dee-0x636df2), adds the
+    // +8 member offset (0x636df6-0x636dfa) and copy-constructs the
+    // `TextureId` out (string copy at 0x636dfe-0x636e00 plus the `Name`
+    // word at 0x636e04-0x636e06). The described/offset resolve folds
+    // into the face arg; the `Name` word folds into the text.
+    face.clone()
 }
 
 // 0x0636e0c — __ZNK3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EE15BoundPropGetSetINS_3SkyEE8setValueEPNS0_13DescribedBaseERKS2_
@@ -1938,16 +2039,36 @@ pub fn stub_0636de8() -> ! {
 // type: int __fastcall(int, int, std::string *this)
 #[doc(alias = "RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::setValue(RBX::Reflection::DescribedBase *,RBX::TextureId const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EE15BoundPropGetSetINS_3SkyEE8setValueEPNS0_13DescribedBaseERKS2_")]
-pub fn stub_0636e0c() -> ! {
-    todo!("0x0636e0c RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::setValue(RBX::Reflection::DescribedBase *,RBX::TextureId const&)const")
+pub fn stub_0636e0c(face: &mut TextureId, value: &TextureId) -> bool {
+    // IDA 0x636e0c (`BoundPropGetSet<Sky>::setValue`): adjusts the
+    // described (0x636e16-0x636e1e), returns early when
+    // `operator!=(ContentId, ContentId)` is false (0x636e22-0x636e36),
+    // else assigns the string plus the `Name` word (0x636e38-0x636e48),
+    // runs the member hook when the +12/+16 pair is set (0x636e4a-
+    // 0x636e68) and tail-calls `raisePropertyChanged` (0x636e6e-
+    // 0x636e7a). The hook and the raise fold into the changed flag.
+    if face.url == value.url {
+        return false;
+    }
+    face.url = value.url.clone();
+    true
 }
 
 // 0x0637264 — __ZN3RBX5Smoke8setColorEN3G3D6Color3E
 // demangled: RBX::Smoke::setColor(G3D::Color3)
 #[doc(alias = "RBX::Smoke::setColor(G3D::Color3)")]
 #[doc(alias = "__ZN3RBX5Smoke8setColorEN3G3D6Color3E")]
-pub fn stub_0637264() -> ! {
-    todo!("0x0637264 RBX::Smoke::setColor(G3D::Color3)")
+pub fn stub_0637264(smoke: &mut SmokeState, color: [f32; 3]) -> bool {
+    // IDA 0x637264 (`RBX::Smoke::setColor`): compares the `Color3` at
+    // +0x64/+0x68/+0x6c component-wise (0x637264-0x6372a8), returning
+    // early when all match; else stores all three (0x6372ac-0x6372c0)
+    // and tail-calls `raisePropertyChanged` (0x6372c2-0x6372c6). The
+    // raise folds into the changed flag.
+    if smoke.color == color {
+        return false;
+    }
+    smoke.color = color;
+    true
 }
 
 // 0x06372cc — __ZN3RBX5Smoke9setSizeUiEf
@@ -1955,8 +2076,23 @@ pub fn stub_0637264() -> ! {
 // type: _DWORD __fastcall(RBX::Smoke *__hidden this, float)
 #[doc(alias = "RBX::Smoke::setSizeUi(float)")]
 #[doc(alias = "__ZN3RBX5Smoke9setSizeUiEf")]
-pub fn stub_06372cc() -> ! {
-    todo!("0x06372cc RBX::Smoke::setSizeUi(float)")
+pub fn stub_06372cc(smoke: &mut SmokeState, value: f32) -> bool {
+    // IDA 0x6372cc (`RBX::Smoke::setSizeUi`): clamps below-or-at 0.1 up
+    // to 0.1 and above 100.0 down via `VMIN` (0x6372cc-0x6372e2); when
+    // the clamped value differs from +0x70 it tail-calls `setSize`
+    // (0x6372e6-0x6372f8, which stores and raises); when it differs
+    // from the raw input it tail-calls `raisePropertyChanged` for the
+    // Ui prop (0x6372fc-0x637314). Both raises fold into the flag.
+    let clamped = if value > 0.1 { value.min(100.0) } else { 0.1 };
+    let mut changed = false;
+    if clamped != smoke.size {
+        smoke.size = clamped;
+        changed = true;
+    }
+    if clamped != value {
+        changed = true;
+    }
+    changed
 }
 
 // 0x0637320 — __ZN3RBX5Smoke12setOpacityUiEf
@@ -1964,6 +2100,18 @@ pub fn stub_06372cc() -> ! {
 // type: _DWORD __fastcall(RBX::Smoke *__hidden this, float)
 #[doc(alias = "RBX::Smoke::setOpacityUi(float)")]
 #[doc(alias = "__ZN3RBX5Smoke12setOpacityUiEf")]
-pub fn stub_0637320() -> ! {
-    todo!("0x0637320 RBX::Smoke::setOpacityUi(float)")
+pub fn stub_0637320(smoke: &mut SmokeState, value: f32) -> bool {
+    // IDA 0x637320 (`RBX::Smoke::setOpacityUi`): same clamp-and-raise
+    // shape as `setSizeUi` at 0x6372cc, with bounds 0.0/1.0 over +0x74
+    // via `setOpacity` (0x637320-0x637368).
+    let clamped = if value > 0.0 { value.min(1.0) } else { 0.0 };
+    let mut changed = false;
+    if clamped != smoke.opacity {
+        smoke.opacity = clamped;
+        changed = true;
+    }
+    if clamped != value {
+        changed = true;
+    }
+    changed
 }
