@@ -69,6 +69,42 @@ pub fn block_dispose_3(slots: &mut [BlockSlot]) {
     block_dispose_slot(&mut slots[1]);
     block_dispose_slot(&mut slots[2]);
 }
+// ---- impl batch-2 0x1c874..0x1f6a8 (30 fns, IDA decompile+disasm grounded) ----
+//
+// All 28 block helpers below share one shape: copy retains captured ObjC
+// objects (`_Block_object_assign`, `_Block_object_assign_shim`), destroy
+// releases them (`_Block_object_dispose`, `_Block_object_dispose_shim`).
+// The plain vs `_shim` spelling differs only in nil-tolerance, so both map
+// to block_assign_slot / block_dispose_slot (flag 3 = BLOCK_FIELD_IS_OBJECT).
+
+/// Dual-capture copy helper shape (IDA `dst + 20/24` from `src + 20/24`;
+/// grounded by 0x1ec44: assign then assign_shim).
+pub fn block_copy_2(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_assign_slot(&mut dst[0], &src[0]);
+    block_assign_slot(&mut dst[1], &src[1]);
+}
+
+/// Dual-capture destroy helper shape (IDA dispose of `a1 + 20/24`;
+/// grounded by 0x1ec68: dispose then dispose_shim).
+pub fn block_dispose_2(slots: &mut [BlockSlot]) {
+    block_dispose_slot(&mut slots[0]);
+    block_dispose_slot(&mut slots[1]);
+}
+
+/// IDA `dword_130C3F0` — the `+[LoginViewController sharedInstance]` cell
+/// read at 0x1da66..0x1da68 (MOV PC-relative base, ADD, LDR, BX LR).
+static LOGIN_VIEW_CONTROLLER_SHARED: Mutex<usize> = Mutex::new(0);
+
+/// Write path for IDA `dword_130C3F0` (test hook for the singleton below).
+pub fn set_login_view_controller_shared(value: usize) {
+    *LOGIN_VIEW_CONTROLLER_SHARED.lock() = value;
+}
+
+/// IDA `+[LoginViewController sharedInstance]` (0x1da5c): pure load of
+/// `dword_130C3F0`, no retain/autorelease in the 4-insn fast path.
+pub fn login_view_controller_shared() -> usize {
+    *LOGIN_VIEW_CONTROLLER_SHARED.lock()
+}
 
 /// IDA `OBJC_CLASS___Appirater` instance (0x17fe4: alloc + init).
 pub struct Appirater {
@@ -637,215 +673,246 @@ pub fn stub_0x1c740(slots: &mut [BlockSlot]) {
 // 0x1c874 — ___copy_helper_block_261
 #[doc(alias = "___copy_helper_block_261")]
 // was: ___copy_helper_block_261
-// IDA 0x1c874: 4 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1c874() {
+// IDA 0x1c874: `_Block_object_assign_shim(dst + 20, src + 20, 3)` — retain the single captured object.
+pub fn stub_0x1c874(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_1(dst, src);
 }
 
 // 0x1c880 — ___destroy_helper_block_262
 #[doc(alias = "___destroy_helper_block_262")]
 // was: ___destroy_helper_block_262
-// IDA 0x1c880: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1c880() {
+// IDA 0x1c880: `_Block_object_dispose_shim(*(a1 + 20), 3)` — release the single captured object.
+pub fn stub_0x1c880(slots: &mut [BlockSlot]) {
+    block_dispose_1(slots);
 }
 
 // 0x1d870 — __GLOBAL__I_a_4
 #[doc(alias = "global constructor keyed to_a_4")]
 // was: global constructor keyed to_a_4
-// IDA 0x1d870: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+// IDA 0x1d870: __GLOBAL__I_a TU prologue (generic_category x2 + system_category stores, cf. 0x16e4c); decompile N/A, disasm-grounded.
 pub fn stub_0x1d870() {
+    ensure_error_categories();
 }
 
 // 0x1da5c — +[LoginViewController sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[LoginViewController sharedInstance]")]
 // was: +[LoginViewController sharedInstance]
-// IDA 0x1da5c: 4 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1da5c() {
+// IDA 0x1da5c: `+[LoginViewController sharedInstance]` — pure LDR of dword_130C3F0 then BX LR.
+pub fn stub_0x1da5c(class_token: usize) -> usize {
+    let _ = class_token;
+    login_view_controller_shared()
 }
 
 // 0x1e2d8 — ___copy_helper_block__2
 #[doc(alias = "___copy_helper_block__2")]
 // was: ___copy_helper_block__2
-// IDA 0x1e2d8: 4 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1e2d8() {
+// IDA 0x1e2d8: `_Block_object_assign_shim(dst + 20, src + 20, 3)` — retain the single captured object.
+pub fn stub_0x1e2d8(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_1(dst, src);
 }
 
 // 0x1e2e4 — ___destroy_helper_block__2
 #[doc(alias = "___destroy_helper_block__2")]
 // was: ___destroy_helper_block__2
-// IDA 0x1e2e4: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1e2e4() {
+// IDA 0x1e2e4: `_Block_object_dispose_shim(*(a1 + 20), 3)` — release the single captured object.
+pub fn stub_0x1e2e4(slots: &mut [BlockSlot]) {
+    block_dispose_1(slots);
 }
 
 // 0x1eb08 — ___copy_helper_block_226
 // type: void __fastcall(int, const void **)
 #[doc(alias = "___copy_helper_block_226")]
 // was: ___copy_helper_block_226
-// IDA 0x1eb08: 17 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1eb08() {
+// IDA 0x1eb08: `_Block_object_assign(dst + 20, src[5], 3); _Block_object_assign(dst + 24, src[6], 3); _Block_object_assign_shim(dst + 28, src[7], 3)` — retain three captures.
+pub fn stub_0x1eb08(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_3(dst, src);
 }
 
 // 0x1eb38 — ___destroy_helper_block_227
 #[doc(alias = "___destroy_helper_block_227")]
 // was: ___destroy_helper_block_227
-// IDA 0x1eb38: 13 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1eb38() {
+// IDA 0x1eb38: `_Block_object_dispose(a1[5], 3); _Block_object_dispose(a1[6], 3); _Block_object_dispose_shim(a1[7], 3)` — release three captures.
+pub fn stub_0x1eb38(slots: &mut [BlockSlot]) {
+    block_dispose_3(slots);
 }
 
 // 0x1ec44 — ___copy_helper_block_234
 #[doc(alias = "___copy_helper_block_234")]
 // was: ___copy_helper_block_234
-// IDA 0x1ec44: 13 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1ec44() {
+// IDA 0x1ec44: `_Block_object_assign(dst + 20, src + 20, 3); _Block_object_assign_shim(dst + 24, src + 24, 3)` — retain two captures.
+pub fn stub_0x1ec44(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_2(dst, src);
 }
 
 // 0x1ec68 — ___destroy_helper_block_235
 #[doc(alias = "___destroy_helper_block_235")]
 // was: ___destroy_helper_block_235
-// IDA 0x1ec68: 10 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1ec68() {
+// IDA 0x1ec68: `_Block_object_dispose(*(a1 + 20), 3); _Block_object_dispose_shim(*(a1 + 24), 3)` — release two captures.
+pub fn stub_0x1ec68(slots: &mut [BlockSlot]) {
+    block_dispose_2(slots);
 }
 
 // 0x1ed30 — ___copy_helper_block_242
 #[doc(alias = "___copy_helper_block_242")]
 // was: ___copy_helper_block_242
-// IDA 0x1ed30: 4 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1ed30() {
+// IDA 0x1ed30: `_Block_object_assign_shim(dst + 20, src + 20, 3)` — retain the single captured object.
+pub fn stub_0x1ed30(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_1(dst, src);
 }
 
 // 0x1ed3c — ___destroy_helper_block_243
 #[doc(alias = "___destroy_helper_block_243")]
 // was: ___destroy_helper_block_243
-// IDA 0x1ed3c: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1ed3c() {
+// IDA 0x1ed3c: `_Block_object_dispose_shim(*(a1 + 20), 3)` — release the single captured object.
+pub fn stub_0x1ed3c(slots: &mut [BlockSlot]) {
+    block_dispose_1(slots);
 }
 
 // 0x1ee84 — ___copy_helper_block_252
 #[doc(alias = "___copy_helper_block_252")]
 // was: ___copy_helper_block_252
-// IDA 0x1ee84: 4 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1ee84() {
+// IDA 0x1ee84: `_Block_object_assign_shim(dst + 20, src + 20, 3)` — retain the single captured object.
+pub fn stub_0x1ee84(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_1(dst, src);
 }
 
 // 0x1ee90 — ___destroy_helper_block_253
 #[doc(alias = "___destroy_helper_block_253")]
 // was: ___destroy_helper_block_253
-// IDA 0x1ee90: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1ee90() {
+// IDA 0x1ee90: `_Block_object_dispose_shim(*(a1 + 20), 3)` — release the single captured object.
+pub fn stub_0x1ee90(slots: &mut [BlockSlot]) {
+    block_dispose_1(slots);
 }
 
 // 0x1ee98 — ___copy_helper_block_257
 #[doc(alias = "___copy_helper_block_257")]
 // was: ___copy_helper_block_257
-// IDA 0x1ee98: 4 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1ee98() {
+// IDA 0x1ee98: `_Block_object_assign_shim(dst + 20, src + 20, 3)` — retain the single captured object.
+pub fn stub_0x1ee98(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_1(dst, src);
 }
 
 // 0x1eea4 — ___destroy_helper_block_258
 #[doc(alias = "___destroy_helper_block_258")]
 // was: ___destroy_helper_block_258
-// IDA 0x1eea4: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1eea4() {
+// IDA 0x1eea4: `_Block_object_dispose_shim(*(a1 + 20), 3)` — release the single captured object.
+pub fn stub_0x1eea4(slots: &mut [BlockSlot]) {
+    block_dispose_1(slots);
 }
 
 // 0x1efdc — ___copy_helper_block_260
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_260")]
 // was: ___copy_helper_block_260
-// IDA 0x1efdc: 4 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1efdc() {
+// IDA 0x1efdc: `_Block_object_assign_shim(dst + 20, src + 20, 3)` — retain the single captured object.
+pub fn stub_0x1efdc(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_1(dst, src);
 }
 
 // 0x1efe8 — ___destroy_helper_block_261
 #[doc(alias = "___destroy_helper_block_261")]
 // was: ___destroy_helper_block_261
-// IDA 0x1efe8: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1efe8() {
+// IDA 0x1efe8: `_Block_object_dispose_shim(*(a1 + 20), 3)` — release the single captured object.
+pub fn stub_0x1efe8(slots: &mut [BlockSlot]) {
+    block_dispose_1(slots);
 }
 
 // 0x1eff0 — ___copy_helper_block_263
 #[doc(alias = "___copy_helper_block_263")]
 // was: ___copy_helper_block_263
-// IDA 0x1eff0: 4 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1eff0() {
+// IDA 0x1eff0: `_Block_object_assign_shim(dst + 20, src + 20, 3)` — retain the single captured object.
+pub fn stub_0x1eff0(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_1(dst, src);
 }
 
 // 0x1effc — ___destroy_helper_block_264
 #[doc(alias = "___destroy_helper_block_264")]
 // was: ___destroy_helper_block_264
-// IDA 0x1effc: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1effc() {
+// IDA 0x1effc: `_Block_object_dispose_shim(*(a1 + 20), 3)` — release the single captured object.
+pub fn stub_0x1effc(slots: &mut [BlockSlot]) {
+    block_dispose_1(slots);
 }
 
 // 0x1f480 — ___copy_helper_block_300
 #[doc(alias = "___copy_helper_block_300")]
 // was: ___copy_helper_block_300
-// IDA 0x1f480: 4 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1f480() {
+// IDA 0x1f480: `_Block_object_assign_shim(dst + 20, src + 20, 3)` — retain the single captured object.
+pub fn stub_0x1f480(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_1(dst, src);
 }
 
 // 0x1f48c — ___destroy_helper_block_301
 #[doc(alias = "___destroy_helper_block_301")]
 // was: ___destroy_helper_block_301
-// IDA 0x1f48c: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1f48c() {
+// IDA 0x1f48c: `_Block_object_dispose_shim(*(a1 + 20), 3)` — release the single captured object.
+pub fn stub_0x1f48c(slots: &mut [BlockSlot]) {
+    block_dispose_1(slots);
 }
 
 // 0x1f494 — ___copy_helper_block_305
 #[doc(alias = "___copy_helper_block_305")]
 // was: ___copy_helper_block_305
-// IDA 0x1f494: 4 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1f494() {
+// IDA 0x1f494: `_Block_object_assign_shim(dst + 20, src + 20, 3)` — retain the single captured object.
+pub fn stub_0x1f494(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_1(dst, src);
 }
 
 // 0x1f4a0 — ___destroy_helper_block_306
 #[doc(alias = "___destroy_helper_block_306")]
 // was: ___destroy_helper_block_306
-// IDA 0x1f4a0: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1f4a0() {
+// IDA 0x1f4a0: `_Block_object_dispose_shim(*(a1 + 20), 3)` — release the single captured object.
+pub fn stub_0x1f4a0(slots: &mut [BlockSlot]) {
+    block_dispose_1(slots);
 }
 
 // 0x1f660 — ___copy_helper_block_308
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_308")]
 // was: ___copy_helper_block_308
-// IDA 0x1f660: 4 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1f660() {
+// IDA 0x1f660: `_Block_object_assign_shim(dst + 20, src + 20, 3)` — retain the single captured object.
+pub fn stub_0x1f660(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_1(dst, src);
 }
 
 // 0x1f66c — ___destroy_helper_block_309
 #[doc(alias = "___destroy_helper_block_309")]
 // was: ___destroy_helper_block_309
-// IDA 0x1f66c: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1f66c() {
+// IDA 0x1f66c: `_Block_object_dispose_shim(*(a1 + 20), 3)` — release the single captured object.
+pub fn stub_0x1f66c(slots: &mut [BlockSlot]) {
+    block_dispose_1(slots);
 }
 
 // 0x1f688 — ___copy_helper_block_314
 #[doc(alias = "___copy_helper_block_314")]
 // was: ___copy_helper_block_314
-// IDA 0x1f688: 4 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1f688() {
+// IDA 0x1f688: `_Block_object_assign_shim(dst + 20, src + 20, 3)` — retain the single captured object.
+pub fn stub_0x1f688(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_1(dst, src);
 }
 
 // 0x1f694 — ___destroy_helper_block_315
 #[doc(alias = "___destroy_helper_block_315")]
 // was: ___destroy_helper_block_315
-// IDA 0x1f694: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1f694() {
+// IDA 0x1f694: `_Block_object_dispose_shim(*(a1 + 20), 3)` — release the single captured object.
+pub fn stub_0x1f694(slots: &mut [BlockSlot]) {
+    block_dispose_1(slots);
 }
 
 // 0x1f69c — ___copy_helper_block_320
 #[doc(alias = "___copy_helper_block_320")]
 // was: ___copy_helper_block_320
-// IDA 0x1f69c: 4 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1f69c() {
+// IDA 0x1f69c: `_Block_object_assign_shim(dst + 20, src + 20, 3)` — retain the single captured object.
+pub fn stub_0x1f69c(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_1(dst, src);
 }
 
 // 0x1f6a8 — ___destroy_helper_block_321
 #[doc(alias = "___destroy_helper_block_321")]
 // was: ___destroy_helper_block_321
-// IDA 0x1f6a8: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1f6a8() {
+// IDA 0x1f6a8: `_Block_object_dispose_shim(*(a1 + 20), 3)` — release the single captured object.
+pub fn stub_0x1f6a8(slots: &mut [BlockSlot]) {
+    block_dispose_1(slots);
 }
 
 // 0x1f82c — ___copy_helper_block_323

@@ -59,3 +59,64 @@ fn global_ctors_run_idempotently() {
     g::stub_0x17c58();
     g::stub_0x16e4c();
 }
+
+#[test]
+fn batch2_single_copy_dispose_pairs() {
+    // Spot-check every single-capture batch-2 pair retains then releases.
+    let src = vec![Some(SharedPtr::new(()))];
+    let mut dst: Vec<g::BlockSlot> = vec![None];
+    g::stub_0x1c874(&mut dst, &src);
+    assert!(dst[0].is_some());
+    g::stub_0x1c880(&mut dst);
+    assert!(dst[0].is_none());
+    g::stub_0x1e2d8(&mut dst, &src);
+    g::stub_0x1e2e4(&mut dst);
+    assert!(dst[0].is_none());
+    g::stub_0x1ed30(&mut dst, &src);
+    g::stub_0x1ed3c(&mut dst);
+    g::stub_0x1ee84(&mut dst, &src);
+    g::stub_0x1ee90(&mut dst);
+    g::stub_0x1ee98(&mut dst, &src);
+    g::stub_0x1eea4(&mut dst);
+    g::stub_0x1efdc(&mut dst, &src);
+    g::stub_0x1efe8(&mut dst);
+    g::stub_0x1eff0(&mut dst, &src);
+    g::stub_0x1effc(&mut dst);
+    g::stub_0x1f480(&mut dst, &src);
+    g::stub_0x1f48c(&mut dst);
+    g::stub_0x1f494(&mut dst, &src);
+    g::stub_0x1f4a0(&mut dst);
+    g::stub_0x1f660(&mut dst, &src);
+    g::stub_0x1f66c(&mut dst);
+    g::stub_0x1f688(&mut dst, &src);
+    g::stub_0x1f694(&mut dst);
+    g::stub_0x1f69c(&mut dst, &src);
+    g::stub_0x1f6a8(&mut dst);
+    assert!(dst[0].is_none());
+}
+
+#[test]
+fn batch2_multi_capture_pairs() {
+    let src3 = vec![Some(SharedPtr::new(())), Some(SharedPtr::new(())), Some(SharedPtr::new(()))];
+    let mut dst3: Vec<g::BlockSlot> = vec![None, None, None];
+    g::stub_0x1eb08(&mut dst3, &src3);
+    assert!(dst3.iter().all(|s| s.is_some()));
+    g::stub_0x1eb38(&mut dst3);
+    assert!(dst3.iter().all(|s| s.is_none()));
+    let src2 = vec![Some(SharedPtr::new(())), Some(SharedPtr::new(()))];
+    let mut dst2: Vec<g::BlockSlot> = vec![None, None];
+    g::stub_0x1ec44(&mut dst2, &src2);
+    assert!(dst2.iter().all(|s| s.is_some()));
+    g::stub_0x1ec68(&mut dst2);
+    assert!(dst2.iter().all(|s| s.is_none()));
+}
+
+#[test]
+fn batch2_login_singleton_and_global_ctor() {
+    g::set_login_view_controller_shared(0x1234);
+    assert_eq!(g::stub_0x1da5c(0x9999), 0x1234);
+    g::set_login_view_controller_shared(0);
+    assert_eq!(g::stub_0x1da5c(0x9999), 0);
+    g::stub_0x1d870();
+    g::stub_0x1d870();
+}
