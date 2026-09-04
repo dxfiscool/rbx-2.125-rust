@@ -1321,6 +1321,31 @@ pub struct DataModelEventDesc {
     pub broadcast: bool,
 }
 
+/// Rust model of `RBX::DataModel::LegacyLock::Implementation::Events` (IDA
+/// `0x46d698`): the legacy-lock event payload; dispatch lands with the job
+/// subsystem.
+#[derive(Default)]
+pub struct LegacyLockEvents {
+    _opaque: (),
+}
+
+/// Rust model of `boost::bind(void(*)(shared<LegacyLockEvents>),
+/// shared<LegacyLockEvents>)` (IDA `0x46d7a4`): the free function plus the
+/// retained event; no args stay late-bound (`list_av_1` holds the value).
+#[derive(Clone)]
+pub struct EventsBind {
+    pub func: fn(&SharedPtr<LegacyLockEvents>),
+    pub target: SharedPtr<LegacyLockEvents>,
+}
+
+/// Rust model of `boost::function1<void, shared<LegacyLockEvents>>` holding
+/// the events bind (IDA `0x46df08`): nullability of the retained bind
+/// collapses the vtable word, same as `PropFunction`.
+#[derive(Clone, Default)]
+pub struct EventsFunction {
+    pub target: Option<EventsBind>,
+}
+
 /// Rust model of `boost::function2<void, SharedPtr<Instance>,
 /// PropertyDescriptor const*>` holding the `execute2` bind (IDA `0x46badc`):
 /// nullability of the retained wrapper collapses the vtable word, same as
@@ -24645,48 +24670,82 @@ pub fn stub_0x46c958(
 // 0x46ca70 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4slot24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::safe_static_do_get_mutex(void)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::safe_static_do_get_mutex(void)
-pub fn stub_0x46ca70() -> ! {
-    todo!("0x46ca70 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::safe_static_do_get_mutex(void)")
+pub fn stub_0x46ca70() -> &'static Mutex<()> {
+    // IDA 0x46ca70: `slot::safe_static_do_get_mutex` for the `(Instance,
+    // PropertyDescriptor)` signal — returns the same static init guard.
+    // Twin of 0x43bc00.
+    stub_0x43bbfc()
 }
 
 // 0x46cb60 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_8functionISC_EELi2ESC_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::~callable()
-pub fn stub_0x46cb60() -> ! {
-    todo!("0x46cb60 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_0x46cb60(node: *const PropFuncNode, _this: *mut PropFuncNode) {
+    // IDA 0x46cb60: vtable install plus memberwise teardown of the
+    // function-carrying `callable_slot` link; dropping the box is the same
+    // release. Twin of 0x46c634.
+    // SAFETY: `node` must be a live box pointer never used again.
+    let _ = node;
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x46cc70 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_8functionISC_EELi2ESC_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::~callable()
-pub fn stub_0x46cc70() -> ! {
-    todo!("0x46cc70 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_0x46cc70(node: *const PropFuncNode) {
+    // IDA 0x46cc70: vtable install plus memberwise teardown of the
+    // function-carrying `callable_slot` link; dropping the box is the same
+    // release. Twin of 0x46c744.
+    // SAFETY: `node` must be a live box pointer never used again.
+    unsafe {
+        let _ = Box::from_raw(node as *mut PropFuncNode);
+    }
 }
 
 // 0x46cda0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4slotD1Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::~slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::~slot()
-pub fn stub_0x46cda0() -> ! {
-    todo!("0x46cda0 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::~slot()")
+pub fn stub_0x46cda0(node: *const PropFuncNode, _this: *mut PropFuncNode) {
+    // IDA 0x46cda0: vtable install plus memberwise teardown of the
+    // `(Instance, PropertyDescriptor)` slot link with its function payload;
+    // dropping the box is the same release. Twin of 0x46cb60.
+    // SAFETY: `node` must be a live box pointer never used again.
+    let _ = node;
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x46cdd0 — __ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS2_10Reflection18PropertyDescriptorEE13assign_to_ownERKS9_
 #[doc(alias = "boost::function2<void,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>::assign_to_own(boost::function2<void,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*> const&)")]
 // was: boost::function2<void,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>::assign_to_own(boost::function2<void,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*> const&)
-pub fn stub_0x46cdd0() -> ! {
-    todo!("0x46cdd0 boost::function2<void,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>::assign_to_own(boost::function2<void,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*> const&)")
+pub fn stub_0x46cdd0(dst: &mut PropFunction, src: &PropFunction) {
+    // IDA 0x46cdd0: `function2::assign_to_own` — self-type copy; the retained
+    // wrapper clone is the same copy either way. Same shape as 0x3efcb8.
+    dst.target = src.target.clone();
 }
 
 // 0x46ce00 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(void),0>::BoundFuncDesc(void (RBX::DataModel::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x46ce00() -> ! {
-    todo!("0x46ce00 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(void),0>::BoundFuncDesc(void (RBX::DataModel::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x46ce00() -> DataModelFuncDesc {
+    // IDA 0x46ce00: `BoundFuncDesc<DataModel, void()>::C2` — binds the member
+    // into the class descriptor; the binding lands with reflection, so the
+    // model starts empty. Same shape as 0x45c664.
+    DataModelFuncDesc { _opaque: () }
 }
 
 // 0x46cf04 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_0x46cf04() -> ! {
-    todo!("0x46cf04 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_0x46cf04(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x46cf04: `BoundFuncDesc<DataModel, ...>::D0` — vtable install plus
+    // memberwise teardown; dropping the box is the same release. Twin of
+    // 0x45c878.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x46cfb8 — __ZNK3RBX10Reflection13BoundFuncDescINS_9DataModelEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -24719,22 +24778,35 @@ pub fn stub_0x46d248() -> ! {
 // 0x46d698 — __ZN3rbx10safe_queueIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEE14pop_if_presentERS8_
 #[doc(alias = "rbx::safe_queue<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>::pop_if_present(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>&)")]
 // was: rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::pop_if_present(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&)
-pub fn stub_0x46d698() -> ! {
-    todo!("0x46d698 rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::pop_if_present(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&)")
+pub fn stub_0x46d698(queue: &mut std::collections::VecDeque<SharedPtr<LegacyLockEvents>>) -> Option<SharedPtr<LegacyLockEvents>> {
+    // IDA 0x46d698: `safe_queue::pop_if_present(queue&)` — pops the front
+    // item when present; the empty-shared miss collapses into `None` and the
+    // lock collapses (no concurrent mutation in the model).
+    queue.pop_front()
 }
 
 // 0x46d778 — __ZN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEE5resetIS5_EEvPT_
 #[doc(alias = "void rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>::reset<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)")]
 // was: void boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::reset<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)
-pub fn stub_0x46d778() -> ! {
-    todo!("0x46d778 void boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::reset<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)")
+pub fn stub_0x46d778(dst: &mut SharedPtr<LegacyLockEvents>, ptr: *mut LegacyLockEvents) {
+    // IDA 0x46d778 (`shared_ptr<Events>::reset(raw)`): releases the old
+    // payload and adopts the raw pointer with a fresh count; reassigning from
+    // the adopted box is the same take. Same shape as 0x3f379c.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    *dst = shared_ptr_from_raw(unsafe { Box::from_raw(ptr) });
 }
 
 // 0x46d7a4 — __ZN5boost4bindIvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEES7_EENS_3_bi6bind_tIT_PFSA_T0_ENS8_9list_av_1IT1_E4typeEEESD_SF_
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list_av_1<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>::type> boost::bind<void,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>(void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>)")]
 // was: boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list_av_1<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::type> boost::bind<void,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>(void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>)
-pub fn stub_0x46d7a4() -> ! {
-    todo!("0x46d7a4 boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list_av_1<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::type> boost::bind<void,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>(void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>)")
+pub fn stub_0x46d7a4(
+    func: fn(&SharedPtr<LegacyLockEvents>),
+    events: &SharedPtr<LegacyLockEvents>,
+) -> EventsBind {
+    // IDA 0x46d7a4: `boost::bind(f, events)` over `void(*)(shared<Events>)`
+    // — keeps the free function and retains the event into the bind object
+    // (`list_av_1` holds the value, so no args stay late-bound).
+    EventsBind { func, target: events.clone() }
 }
 
 // 0x46d8bc — __ZN3RBX9DataModel10LegacyLock14Implementation4taskEN5boost10shared_ptrINS2_6EventsEEE
@@ -24747,43 +24819,58 @@ pub fn stub_0x46d8bc() -> ! {
 // 0x46d908 — __ZN3rbx10safe_queueIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEE4pushERKS8_
 #[doc(alias = "rbx::safe_queue<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>::push(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")]
 // was: rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::push(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)
-pub fn stub_0x46d908() -> ! {
-    todo!("0x46d908 rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::push(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")
+pub fn stub_0x46d908(queue: &mut std::collections::VecDeque<SharedPtr<LegacyLockEvents>>, events: &SharedPtr<LegacyLockEvents>) {
+    // IDA 0x46d908: `safe_queue::push(queue&, event)` — appends the retained
+    // event; the lock collapses (no concurrent mutation in the model).
+    queue.push_back(events.clone());
 }
 
 // 0x46d9cc — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE9push_backERKS7_
 #[doc(alias = "std::deque<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>::push_back(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")]
 // was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::push_back(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)
-pub fn stub_0x46d9cc() -> ! {
-    todo!("0x46d9cc std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::push_back(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")
+pub fn stub_0x46d9cc(queue: &mut std::collections::VecDeque<SharedPtr<LegacyLockEvents>>, events: &SharedPtr<LegacyLockEvents>) {
+    // IDA 0x46d9cc (`deque<Events>::push_back`): grows and copies the
+    // retained event into the tail; `push_back` is the same append.
+    queue.push_back(events.clone());
 }
 
 // 0x46da0c — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE16_M_push_back_auxERKS7_
 #[doc(alias = "std::deque<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_push_back_aux(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")]
 // was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_push_back_aux(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)
-pub fn stub_0x46da0c() -> ! {
-    todo!("0x46da0c std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_push_back_aux(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")
+pub fn stub_0x46da0c(queue: &mut std::collections::VecDeque<SharedPtr<LegacyLockEvents>>, events: &SharedPtr<LegacyLockEvents>) {
+    // IDA 0x46da0c (`deque<Events>::_M_push_back_aux`): the slow-path push
+    // with identical observable effect to `push_back`. Same shape as
+    // 0x46d9cc.
+    queue.push_back(events.clone());
 }
 
 // 0x46db60 — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE22_M_reserve_map_at_backEm
 #[doc(alias = "std::deque<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_reserve_map_at_back(unsigned long)")]
 // was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_reserve_map_at_back(unsigned long)
-pub fn stub_0x46db60() -> ! {
-    todo!("0x46db60 std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_reserve_map_at_back(unsigned long)")
+pub fn stub_0x46db60(queue: &mut std::collections::VecDeque<SharedPtr<LegacyLockEvents>>, additional: usize) {
+    // IDA 0x46db60 (`deque<Events>::_M_reserve_map_at_back(n)`): grows the
+    // map for `n` appended nodes; `reserve` is the same growth.
+    queue.reserve(additional);
 }
 
 // 0x46db7c — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE17_M_reallocate_mapEmb
 #[doc(alias = "std::deque<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_reallocate_map(unsigned long,bool)")]
 // was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_reallocate_map(unsigned long,bool)
-pub fn stub_0x46db7c() -> ! {
-    todo!("0x46db7c std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_reallocate_map(unsigned long,bool)")
+pub fn stub_0x46db7c(queue: &mut std::collections::VecDeque<SharedPtr<LegacyLockEvents>>, additional: usize) {
+    // IDA 0x46db7c (`deque<Events>::_M_reallocate_map`): reallocates the map
+    // around the live range; `reserve` is the same growth without moving the
+    // logical contents.
+    queue.reserve(additional);
 }
 
 // 0x46dc54 — __ZNSt11_Deque_baseIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE15_M_allocate_mapEm
 #[doc(alias = "std::_Deque_base<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_allocate_map(unsigned long)")]
 // was: std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_allocate_map(unsigned long)
-pub fn stub_0x46dc54() -> ! {
-    todo!("0x46dc54 std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_allocate_map(unsigned long)")
+pub fn stub_0x46dc54(capacity: usize) -> std::collections::VecDeque<SharedPtr<LegacyLockEvents>> {
+    // IDA 0x46dc54 (`_Deque_base<Events>::_M_allocate_map`): allocates raw
+    // map storage without constructing any; an empty deque with the same
+    // capacity is the same allocation, safely.
+    std::collections::VecDeque::with_capacity(capacity)
 }
 
 // 0x46dc6c — __ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEEEEC2ESA_
@@ -24796,29 +24883,54 @@ pub fn stub_0x46dc6c() -> ! {
 // 0x46df08 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS6_5list1INS6_5valueISC_EEEEEEEEvT_
 #[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>>)")]
 // was: void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>)
-pub fn stub_0x46df08() -> ! {
-    todo!("0x46df08 void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>)")
+pub fn stub_0x46df08(dst: &mut EventsFunction, src: &EventsBind) {
+    // IDA 0x46df08: `function1::assign_to<bind_t>` spills the bind functor
+    // and routes through the vtable into `assign_functor`; the retained
+    // (func, event) clone is that same copy. Same shape as 0x46bcd8, one arg
+    // fewer.
+    dst.target = Some(src.clone());
 }
 
 // 0x46dff8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEENS3_5list1INS3_5valueISB_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x46dff8() -> ! {
-    todo!("0x46dff8 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x46dff8(src: &EventsBind, dst: &mut EventsBind, op: FunctorOp) -> bool {
+    // IDA 0x46dff8: the op-4 (get) fast path and the manager arms mirror the
+    // `0x46bdd0` discriminants: clone/move copy the bind, destroy drops,
+    // check/get report.
+    match op {
+        FunctorOp::Clone | FunctorOp::Move => {
+            *dst = src.clone();
+            true
+        }
+        FunctorOp::Destroy => false,
+        FunctorOp::CheckType => {
+            *dst = src.clone();
+            true
+        }
+        FunctorOp::GetType => true,
+    }
 }
 
 // 0x46e014 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEENS3_5list1INS3_5valueISB_EEEEEEvPS7_E6invokeERNS1_15function_bufferESJ_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")]
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)
-pub fn stub_0x46e014() -> ! {
-    todo!("0x46e014 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")
+pub fn stub_0x46e014(bind: &EventsBind) {
+    // IDA 0x46e014: tail-calls the `bind_t::operator()` dispatch; the
+    // `list_av_1` value (not a placeholder) means the call applies the stored
+    // free function to the retained event.
+    (bind.func)(&bind.target.clone());
 }
 
 // 0x46e030 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS4_10LegacyLock14Implementation6EventsEEEENS8_5list1INS8_5valueISE_EEEEEEEEbT_RNS1_15function_bufferE
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,boost::detail::function::function_buffer &)const")]
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,boost::detail::function::function_buffer &)const
-pub fn stub_0x46e030() -> ! {
-    todo!("0x46e030 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_0x46e030(dst: &mut EventsFunction, src: &EventsBind) -> bool {
+    // IDA 0x46e030: `basic_vtable1::assign_to` heap-installs the bind via
+    // `assign_functor`; always fits, hence always true. Same shape as
+    // 0x46be00, one arg fewer.
+    stub_0x46df08(dst, src);
+    true
 }
 
 // 0x46e110 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS4_10LegacyLock14Implementation6EventsEEEENS8_5list1INS8_5valueISE_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
