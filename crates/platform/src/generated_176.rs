@@ -8,7 +8,11 @@ use rbx_core::SharedPtr;
 use std::collections::BTreeMap;
 use std::sync::LazyLock;
 use super::generated_171::{RenderEnumDesc, RenderSettingsItem};
-use super::view_controllers::{Appirater, ObjCId};
+use super::view_controllers::{
+    AppDelegate, Appirater, LaunchAction, ObjCId, ViewControllerGraph,
+    did_become_active_fetch_settings_block, did_finish_launching_appirater_block,
+    did_finish_launching_flurry_block, top_most_controller,
+};
 use rbx_reflection::generated::{
     Tuple as ReflectionTuple, stub_0x179f4 as tuple_upload_place,
     stub_0x17aac as tuple_shared_ptr_adopt, stub_0x17b80 as tuple_shared_ptr_const_copy,
@@ -766,280 +770,555 @@ pub fn stub_19218(instance: &Appirater, delegate: ObjCId) {
 // mangled: -[AppDelegate init]
 // type: AppDelegate *__cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate init]")]
-pub fn stub_19228() -> ! {
-    todo!("0x19228 -[AppDelegate init]")
+pub fn stub_19228() -> AppDelegate {
+    // IDA 0x19228 (`-[AppDelegate init]`): only `objc_msgSendSuper2` init
+    // (0x19242..0x19252); no ivar stores. Verified via IDA decompile.
+    AppDelegate::init()
 }
 
 // 0x19254 — -[AppDelegate dealloc]
 // mangled: -[AppDelegate dealloc]
 // type: void __cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate dealloc]")]
-pub fn stub_19254() -> ! {
-    todo!("0x19254 -[AppDelegate dealloc]")
+pub fn stub_19254(delegate: AppDelegate) {
+    // IDA 0x19254 (`-[AppDelegate dealloc]`): `+[RobloxGoogleAnalytics
+    // release]` (0x19276), `-[UIWindow release]` (0x1928a), then super
+    // dealloc (0x192ac, runs as drop). Verified via IDA decompile.
+    delegate.dealloc();
 }
 
 // 0x192b4 — -[AppDelegate application:didFinishLaunchingWithOptions:]
 // mangled: -[AppDelegate application:didFinishLaunchingWithOptions:]
 // type: char __cdecl(AppDelegate *self, SEL, id, id)
 #[doc(alias = "-[AppDelegate application:didFinishLaunchingWithOptions:]")]
-pub fn stub_192b4() -> ! {
-    todo!("0x192b4 -[AppDelegate application:didFinishLaunchingWithOptions:]")
+pub fn stub_192b4(delegate: &AppDelegate) -> bool {
+    // IDA 0x192b4: defaults registration (0x192f8..0x19366), CrashReporter /
+    // SessionReporter(7) / GA counters (0x19384..0x193c4), two global-queue
+    // blocks (0x193d6..0x193ee -> 0x194ec/0x19514), UpgradeCheck, cookie
+    // policy, CurrentPlayer username/password restore (0x1940a..0x194ce),
+    // returns 1 (0x194e4). Body lives in the model. Verified via IDA decompile.
+    delegate.application_did_finish_launching()
 }
 
 // 0x194ec — ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke
 // mangled: ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke")]
-pub fn stub_194ec() -> ! {
-    todo!("0x194ec ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke")
+pub fn stub_194ec() {
+    // IDA 0x194ec: `+[Flurry startSession:]` with `FM7DNRW56339NC22K8GR`
+    // (0x1950e). Verified via IDA decompile.
+    did_finish_launching_flurry_block();
 }
 
 // 0x19514 — ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2
 // mangled: ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2
 // type: void __cdecl(id)
 #[doc(alias = "___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2")]
-pub fn stub_19514() -> ! {
-    todo!("0x19514 ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2")
+pub fn stub_19514() {
+    // IDA 0x19514: Appirater config + `appLaunched:` (0x1953a..0x1959a).
+    // Verified via IDA decompile.
+    did_finish_launching_appirater_block();
 }
 
 // 0x195a0 — -[AppDelegate applicationWillResignActive:]
 // mangled: -[AppDelegate applicationWillResignActive:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationWillResignActive:]")]
-pub fn stub_195a0() -> ! {
-    todo!("0x195a0 -[AppDelegate applicationWillResignActive:]")
+pub fn stub_195a0(delegate: &AppDelegate) {
+    // IDA 0x195a0: begin/end `StandardOut::printf` traces (0x19600/0x1965e)
+    // around `disableViewBecauseGoingToBackground` (0x1962e..0x19640).
+    // Verified via IDA decompile.
+    delegate.application_will_resign_active();
 }
 
 // 0x196e4 — -[AppDelegate applicationDidEnterBackground:]
 // mangled: -[AppDelegate applicationDidEnterBackground:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationDidEnterBackground:]")]
-pub fn stub_196e4() -> ! {
-    todo!("0x196e4 -[AppDelegate applicationDidEnterBackground:]")
+pub fn stub_196e4(delegate: &AppDelegate) {
+    // IDA 0x196e4: `RobloxAppState=tryBackground` + synchronize
+    // (0x19742..0x1975c), `leaveGame`, signup/login persistence,
+    // `reportSessionFor:1`, page-view tracking, then clears `RobloxAppState`
+    // (0x197d4..0x199b6). Body lives in the model. Verified via IDA decompile.
+    delegate.application_did_enter_background();
 }
 
 // 0x19a30 — -[AppDelegate applicationDidReceiveMemoryWarning:]
 // mangled: -[AppDelegate applicationDidReceiveMemoryWarning:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationDidReceiveMemoryWarning:]")]
-pub fn stub_19a30() -> ! {
-    todo!("0x19a30 -[AppDelegate applicationDidReceiveMemoryWarning:]")
+pub fn stub_19a30(delegate: &AppDelegate) {
+    // IDA 0x19a30: OOM `printf` (0x19a90), `stopMemoryBouncer:0`
+    // (0x19ac0..0x19ad8); falls through to PlaceLauncher only when it
+    // returns false (0x19aee..0x19b00). Verified via IDA decompile.
+    delegate.application_did_receive_memory_warning();
 }
 
 // 0x19b60 — -[AppDelegate applicationWillEnterForeground:]
 // mangled: -[AppDelegate applicationWillEnterForeground:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationWillEnterForeground:]")]
-pub fn stub_19b60() -> ! {
-    todo!("0x19b60 -[AppDelegate applicationWillEnterForeground:]")
+pub fn stub_19b60(delegate: &AppDelegate) {
+    // IDA 0x19b60: begin/end traces (0x19bc0/0x19c54), `appEnteredForeground:`
+    // (0x19bf0), UpgradeCheck (0x19c0e), page-view tracking (0x19c36).
+    // Verified via IDA decompile.
+    delegate.application_will_enter_foreground();
 }
 
 // 0x19cdc — -[AppDelegate applicationDidBecomeActive:]
 // mangled: -[AppDelegate applicationDidBecomeActive:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationDidBecomeActive:]")]
-pub fn stub_19cdc() -> ! {
-    todo!("0x19cdc -[AppDelegate applicationDidBecomeActive:]")
+pub fn stub_19cdc(delegate: &AppDelegate) {
+    // IDA 0x19cdc: `RobloxAppState=tryForeground` (0x19d3c..0x19d56),
+    // `enableViewBecauseGoingToForeground`, `reportSessionFor:0`, global-queue
+    // settings block (0x19dce..0x19e22 -> 0x19f34), pending `appPlaceID`
+    // launch (0x19e32..0x19e48), then `RobloxAppState=inApp`
+    // (0x19ea6..0x19eb8). Verified via IDA decompile.
+    delegate.application_did_become_active();
 }
 
 // 0x19f34 — ___42-[AppDelegate applicationDidBecomeActive:]_block_invoke
 // mangled: ___42-[AppDelegate applicationDidBecomeActive:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___42-[AppDelegate applicationDidBecomeActive:]_block_invoke")]
-pub fn stub_19f34() -> ! {
-    todo!("0x19f34 ___42-[AppDelegate applicationDidBecomeActive:]_block_invoke")
+pub fn stub_19f34() {
+    // IDA 0x19f34: `ClientAppSettings::Initialize` + singleton feed
+    // `FetchClientSettingsData("iOSAppSettings", ...)` (0x19f38..0x19f56),
+    // then `getiOSSettingsServiceWithForcedReadFromWeb:NO` (0x19f78).
+    // Verified via IDA decompile.
+    did_become_active_fetch_settings_block();
 }
 
 // 0x19f7c — -[AppDelegate applicationWillTerminate:]
 // mangled: -[AppDelegate applicationWillTerminate:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationWillTerminate:]")]
-pub fn stub_19f7c() -> ! {
-    todo!("0x19f7c -[AppDelegate applicationWillTerminate:]")
+pub fn stub_19f7c(delegate: &AppDelegate) {
+    // IDA 0x19f7c: logs `RobloxGameState`/`RobloxAppState` (0x19fbc..0x19ff8),
+    // sets `RobloxAppState=terminated` (0x1a01e..0x1a038), LoginManager
+    // teardown (0x1a054..0x1a064), exit page-view tracking (0x1a092).
+    // Verified via IDA decompile.
+    delegate.application_will_terminate();
 }
 
 // 0x1a098 — __Z18_topMostControllerP16UIViewController
 // mangled: __Z18_topMostControllerP16UIViewController
 // type: id __fastcall(id)
 #[doc(alias = "_topMostController(UIViewController *)")]
-pub fn stub_1a098() -> ! {
-    todo!("0x1a098 _topMostController(UIViewController *)")
+pub fn stub_1a098(graph: &ViewControllerGraph, root: ObjCId) -> Option<ObjCId> {
+    // IDA 0x1a098: walk `presentedViewController` to the chain end
+    // (0x1a0ae..0x1a0ca), resolve a navigation controller to its visible
+    // controller (0x1a0e4..0x1a118), nil when nothing sits above the root
+    // (0x1a11c..0x1a122). Verified via IDA decompile.
+    top_most_controller(graph, root)
 }
 
 // 0x1a124 — __Z17topMostControllerv
 // mangled: __Z17topMostControllerv
 // type: _DWORD __fastcall()
 #[doc(alias = "topMostController(void)")]
-pub fn stub_1a124() -> ! {
-    todo!("0x1a124 topMostController(void)")
+pub fn stub_1a124(graph: &ViewControllerGraph, key_window_root: ObjCId) -> ObjCId {
+    // IDA 0x1a124: `sharedApplication` (0x1a140) -> `keyWindow` (0x1a150) ->
+    // `rootViewController` (0x1a160, passed in on the host), then loop
+    // `_topMostController` until nil (0x1a164..0x1a16c) and return the last
+    // controller (0x1a170). Verified via IDA decompile.
+    let mut top = key_window_root;
+    while let Some(next) = top_most_controller(graph, top) {
+        top = next;
+    }
+    top
 }
 
 // 0x1a174 — -[AppDelegate application:openURL:sourceApplication:annotation:]
 // mangled: -[AppDelegate application:openURL:sourceApplication:annotation:]
 // type: char __cdecl(AppDelegate *self, SEL, id, id, id, id)
 #[doc(alias = "-[AppDelegate application:openURL:sourceApplication:annotation:]")]
-pub fn stub_1a174() -> ! {
-    todo!("0x1a174 -[AppDelegate application:openURL:sourceApplication:annotation:]")
+pub fn stub_1a174(
+    delegate: &AppDelegate,
+    url_absolute_string: &str,
+    url_host: &str,
+    url_path: &str,
+    source_application: &str,
+    annotation: &str,
+) -> bool {
+    // IDA 0x1a174: logs the open (0x1a18a), requires the `robloxmobile`
+    // prefix (0x1a19c..0x1a1c2), logs host/path (0x1a1d6..0x1a208), stashes
+    // `appPlaceID = [host intValue]` (0x1a210..0x1a22e), returns 1 (0x1a230).
+    // Verified via IDA decompile.
+    delegate.application_open_url(
+        url_absolute_string,
+        url_host,
+        url_path,
+        source_application,
+        annotation,
+    )
 }
 
 // 0x1a234 — -[AppDelegate TryLaunchPlace:]
 // mangled: -[AppDelegate TryLaunchPlace:]
 // type: void __cdecl(AppDelegate *self, SEL, int)
 #[doc(alias = "-[AppDelegate TryLaunchPlace:]")]
-pub fn stub_1a234() -> ! {
-    todo!("0x1a234 -[AppDelegate TryLaunchPlace:]")
+pub fn stub_1a234(
+    delegate: &AppDelegate,
+    place_id: i32,
+    top_controller_class: &str,
+) -> LaunchAction {
+    // IDA 0x1a234: window/root + keyWindow trace (0x1a24c..0x1a2f2) feeds the
+    // `topMostController` class read (0x1a2fc..0x1a316); dispatch over
+    // Login/Home/RobloxNavBar/Game controllers (0x1a334..0x1a488) lives in
+    // the model. Verified via IDA decompile.
+    delegate.try_launch_place(place_id, top_controller_class)
 }
 
 // 0x1a494 — -[AppDelegate bgTask]
 // mangled: -[AppDelegate bgTask]
 // type: unsigned int __cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate bgTask]")]
-pub fn stub_1a494() -> ! {
-    todo!("0x1a494 -[AppDelegate bgTask]")
+pub fn stub_1a494(delegate: &AppDelegate) -> u32 {
+    // IDA 0x1a494: `LDR` the `bgTask` ivar (0x1a4a0) + `DMB ISH` (0x1a4a2).
+    // Verified via IDA decompile.
+    delegate.bg_task()
 }
 
 // 0x1a4a8 — -[AppDelegate setBgTask:]
 // mangled: -[AppDelegate setBgTask:]
 // type: void __cdecl(AppDelegate *self, SEL, unsigned int)
 #[doc(alias = "-[AppDelegate setBgTask:]")]
-pub fn stub_1a4a8() -> ! {
-    todo!("0x1a4a8 -[AppDelegate setBgTask:]")
+pub fn stub_1a4a8(delegate: &AppDelegate, task: u32) {
+    // IDA 0x1a4a8: `DMB ISH` (0x1a4b0), store the `bgTask` ivar (0x1a4b8),
+    // `DMB ISH` (0x1a4ba). Verified via IDA decompile.
+    delegate.set_bg_task(task);
 }
 
 // 0x1a4c0 — -[AppDelegate window]
 // mangled: -[AppDelegate window]
 // type: UIWindow *__cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate window]")]
-pub fn stub_1a4c0() -> ! {
-    todo!("0x1a4c0 -[AppDelegate window]")
+pub fn stub_1a4c0(delegate: &AppDelegate) -> Option<ObjCId> {
+    // IDA 0x1a4c0: returns `self->_window` (0x1a4ce). Verified via IDA decompile.
+    delegate.window()
 }
 
 // 0x1a4d0 — -[AppDelegate setWindow:]
 // mangled: -[AppDelegate setWindow:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate setWindow:]")]
-pub fn stub_1a4d0() -> ! {
-    todo!("0x1a4d0 -[AppDelegate setWindow:]")
+pub fn stub_1a4d0(delegate: &AppDelegate, window: Option<ObjCId>) {
+    // IDA 0x1a4d0: retained-property store via `objc_setProperty`
+    // (0x1a4ec). Verified via IDA decompile.
+    delegate.set_window(window);
 }
 
 // 0x1a4f4 — -[AppDelegate .cxx_destruct]
 // mangled: -[AppDelegate .cxx_destruct]
 // type: void __cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate .cxx_destruct]")]
-pub fn stub_1a4f4() -> ! {
-    todo!("0x1a4f4 -[AppDelegate .cxx_destruct]")
+pub fn stub_1a4f4(delegate: &AppDelegate) {
+    // IDA 0x1a4f4: `connection::disconnect` (0x1a552) + weak-slot release
+    // (0x1a558..0x1a560). Verified via IDA decompile.
+    delegate.cxx_destruct();
 }
 
 // 0x1a5bc — -[AppDelegate .cxx_construct]
 // mangled: -[AppDelegate .cxx_construct]
 // type: id __cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate .cxx_construct]")]
-pub fn stub_1a5bc() -> ! {
-    todo!("0x1a5bc -[AppDelegate .cxx_construct]")
+pub fn stub_1a5bc(delegate: &AppDelegate) {
+    // IDA 0x1a5bc: zeroes `messageOutConnection.con.weak_slot.p_` (0x1a5ca),
+    // returns self (0x1a5cc; the host returns `()`). Verified via IDA decompile.
+    delegate.cxx_construct();
 }
 
 // 0x1a5d0 — __GLOBAL__I_a_1
 // mangled: __GLOBAL__I_a_1
-// type: 
+// type:
 #[doc(alias = "global constructor keyed to_a_1")]
-pub fn stub_1a5d0() -> ! {
-    todo!("0x1a5d0 global constructor keyed to_a_1")
+pub fn stub_1a5d0() {
+    // IDA 0x1a5d0 (`__GLOBAL__I_a_1`): `generic_category()` x2 +
+    // `system_category()` stores, `std::ios_base::Init` with `__cxa_atexit`
+    // teardown, guarded statics. Host statics initialize on use; nothing to
+    // run. Same shape as 0x16e4c. Verified via IDA disasm.
 }
 
 // 0x1a768 — _main
 // mangled: _main
 // type: int __fastcall(int argc, const char **argv, const char **envp)
 #[doc(alias = "_main")]
-pub fn stub_1a768() -> ! {
-    todo!("0x1a768 _main")
+pub fn stub_1a768(delegate: &AppDelegate, argc: i32) -> i32 {
+    // IDA 0x1a768: `NSAutoreleasePool` alloc/init (0x1a788..0x1a7a0),
+    // `UIApplicationMain(argc, argv, @"UIApplication", @"AppDelegate")`
+    // (0x1a7ba), pool release (0x1a7ca), return status (0x1a7d0). The UIKit
+    // event loop has no host counterpart; the observable half is the launch
+    // sequence, whose YES/NO maps to exit 0/1. Verified via IDA decompile.
+    let _ = argc;
+    if delegate.application_did_finish_launching() {
+        0
+    } else {
+        1
+    }
 }
-
 // 0x1a7d4 — __GLOBAL__I_a_2
 // mangled: __GLOBAL__I_a_2
-// type: 
+// type:
 #[doc(alias = "global constructor keyed to_a_2")]
-pub fn stub_1a7d4() -> ! {
-    todo!("0x1a7d4 global constructor keyed to_a_2")
+pub fn stub_1a7d4() {
+    // IDA 0x1a7d4 (`__GLOBAL__I_a_2`): same `generic_category()` x2 +
+    // `system_category()` + `ios_base::Init` shape as 0x1a5d0/0x16e4c. Host
+    // statics initialize on use; nothing to run. Verified via IDA disasm.
 }
-
 // 0x1a970 — -[DebugSettingsViewController initWithCoder:]
 // mangled: -[DebugSettingsViewController initWithCoder:]
+// DebugSettingsViewController model — nib-loaded debug panel (IDA 0x1a970..0x1aed0).
+// UIKit views have no host counterpart; the model keeps the nib-loaded state
+// (`window` frame, `keyboardOffset`, `displayPickerArray`) plus the
+// `RBX::GuiBuilder` debug-display mode the panel edits.
+#[derive(Debug, Default)]
+pub struct DebugSettingsViewController {
+    window_frame: parking_lot::Mutex<(f64, f64, f64, f64)>,
+    keyboard_offset: std::sync::atomic::AtomicI32,
+    display_picker_items: parking_lot::Mutex<Vec<String>>,
+    debug_display: std::sync::atomic::AtomicI32,
+    view_did_load_calls: std::sync::atomic::AtomicU32,
+    animation_runs: std::sync::atomic::AtomicU32,
+}
+impl DebugSettingsViewController {
+    #[doc(alias = "-[DebugSettingsViewController initWithCoder:]")]
+    #[doc = "-[DebugSettingsViewController initWithCoder:]"]
+    pub fn init_with_coder(
+        super_ok: bool,
+        idiom_pad: bool,
+        screen_bounds: Option<(f64, f64, f64, f64)>,
+    ) -> Option<Self> {
+        // Super `initWithCoder:` first (0x1a98e..0x1a99c); nil stays nil (0x1a9a0).
+        if !super_ok {
+            return None; // IDA 0x1ab1c
+        }
+        // iPad (`userInterfaceIdiom != 0`, 0x1a9f4) gets the fixed
+        // 540x508 panel (0x1aa1c..0x1aa1e); otherwise the main-screen bounds
+        // (0x1aa4e..0x1aa76). IDA 0x1a9c0..0x1aa76.
+        let frame = if idiom_pad {
+            (0.0, 0.0, 540.0, 508.0)
+        } else {
+            screen_bounds.unwrap_or_default()
+        };
+        let this = Self {
+            window_frame: parking_lot::Mutex::new(frame), // IDA 0x1aa76
+            keyboard_offset: std::sync::atomic::AtomicI32::new(114), // IDA 0x1aa7a
+            display_picker_items: parking_lot::Mutex::new(
+                ["None", "FPS", "Summary", "Physics", "PhysicsAndOwner", "Render"]
+                    .into_iter()
+                    .map(str::to_owned)
+                    .collect(),
+            ), // IDA 0x1aaa2..0x1ab12
+            ..Self::default()
+        };
+        Some(this) // IDA 0x1ab12
+    }
+    #[doc(alias = "-[DebugSettingsViewController dealloc]")]
+    #[doc = "-[DebugSettingsViewController dealloc]"]
+    pub fn dealloc(self) {
+        // `-[NSArray release]` the picker array (0x1ab42), then super
+        // dealloc (0x1ab5a..0x1ab64, runs as drop).
+    }
+    #[doc(alias = "-[DebugSettingsViewController reloadOldData]")]
+    #[doc = "-[DebugSettingsViewController reloadOldData]"]
+    pub fn reload_old_data(&self) {
+        // IDA 0x1ab6c: empty body.
+    }
+    #[doc(alias = "-[DebugSettingsViewController viewDidLoad]")]
+    #[doc = "-[DebugSettingsViewController viewDidLoad]"]
+    pub fn view_did_load(&self) {
+        // Super `viewDidLoad` (0x1ab8c..0x1ab96) then `reloadOldData`
+        // (0x1aba8). IDA 0x1ab70.
+        self.view_did_load_calls
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.reload_old_data();
+    }
+    /// `RBX::GuiBuilder::getDebugDisplay` label mapping (IDA 0x1abe6..0x1ac02).
+    pub fn display_label(&self) -> &'static str {
+        match self.debug_display.load(std::sync::atomic::Ordering::SeqCst) {
+            1 => "FPS",       // IDA 0x1ac22
+            2 => "Summary",   // IDA 0x1ac38
+            3 => "Physics",   // IDA 0x1ac4e
+            4 => "PhysicsAndOwner", // IDA 0x1ac64
+            5 => "Render",    // IDA 0x1ac7a
+            _ => "None",      // IDA 0x1ac02
+        }
+    }
+    #[doc(alias = "-[DebugSettingsViewController setDisplayUI]")]
+    #[doc = "-[DebugSettingsViewController setDisplayUI]"]
+    pub fn set_display_ui(&self) -> &'static str {
+        // `viewWithTag:100` (0x1abc0..0x1abd2) is always present on the host;
+        // the switch result is `setText:` (0x1ac0c). IDA 0x1abb0.
+        self.display_label()
+    }
+    #[doc(alias = "-[DebugSettingsViewController displayPickerDoneClicked:]")]
+    #[doc = "-[DebugSettingsViewController displayPickerDoneClicked:]"]
+    pub fn display_picker_done_clicked(&self, selected_row: i32) -> &'static str {
+        // Both tag views present (0x1ac9c..0x1ad0) gates the
+        // `animateWithDuration:animations:` dispatch (0x1ad0a..0x1ad34),
+        // recorded here; `selectedRowInComponent:0 >= 0` stores the debug
+        // display (0x1ad4e..0x1ad50); finishes with `setDisplayUI`
+        // (0x1ad62). IDA 0x1ac80.
+        self.animation_runs
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        if selected_row >= 0 {
+            self.debug_display
+                .store(selected_row, std::sync::atomic::Ordering::SeqCst);
+        }
+        self.set_display_ui()
+    }
+    #[doc(alias = "___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke")]
+    #[doc = "___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke"]
+    pub fn display_picker_animation_frame(&self) {
+        // Frame shuffle between the picker, self and the toolbar
+        // (0x1ad90..0x1ae74): pure UIKit geometry, recorded. IDA 0x1ad78.
+        self.animation_runs
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    #[doc(alias = "-[DebugSettingsViewController displayTouchUp:]")]
+    #[doc = "-[DebugSettingsViewController displayTouchUp:]"]
+    pub fn display_touch_up(&self) {
+        // Same tag lookup + animation dispatch as done-clicked
+        // (0x1aeec..0x1af86) without the picker read or `setDisplayUI`.
+        // IDA 0x1aed0.
+        self.animation_runs
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn window_frame(&self) -> (f64, f64, f64, f64) {
+        *self.window_frame.lock()
+    }
+    pub fn keyboard_offset(&self) -> i32 {
+        self.keyboard_offset.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn animation_run_count(&self) -> u32 {
+        self.animation_runs.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn view_did_load_count(&self) -> u32 {
+        self.view_did_load_calls.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
 // type: DebugSettingsViewController *__cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController initWithCoder:]")]
-pub fn stub_1a970() -> ! {
-    todo!("0x1a970 -[DebugSettingsViewController initWithCoder:]")
+pub fn stub_1a970(
+    super_ok: bool,
+    idiom_pad: bool,
+    screen_bounds: Option<(f64, f64, f64, f64)>,
+) -> Option<DebugSettingsViewController> {
+    // IDA 0x1a970: super init (0x1a98e..0x1a99c), iPad fixed frame vs screen
+    // bounds (0x1a9c0..0x1aa76), `keyboardOffset = 114` (0x1aa7a), six-item
+    // picker array (0x1aaa2..0x1ab12). Verified via IDA decompile.
+    DebugSettingsViewController::init_with_coder(super_ok, idiom_pad, screen_bounds)
 }
 
 // 0x1ab20 — -[DebugSettingsViewController dealloc]
 // mangled: -[DebugSettingsViewController dealloc]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController dealloc]")]
-pub fn stub_1ab20() -> ! {
-    todo!("0x1ab20 -[DebugSettingsViewController dealloc]")
+pub fn stub_1ab20(controller: DebugSettingsViewController) {
+    // IDA 0x1ab20: picker-array release (0x1ab42) + super dealloc
+    // (0x1ab5a..0x1ab64, runs as drop). Verified via IDA decompile.
+    controller.dealloc();
 }
 
 // 0x1ab6c — -[DebugSettingsViewController reloadOldData]
 // mangled: -[DebugSettingsViewController reloadOldData]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController reloadOldData]")]
-pub fn stub_1ab6c() -> ! {
-    todo!("0x1ab6c -[DebugSettingsViewController reloadOldData]")
+pub fn stub_1ab6c(controller: &DebugSettingsViewController) {
+    // IDA 0x1ab6c: empty body. Verified via IDA decompile.
+    controller.reload_old_data();
 }
 
 // 0x1ab70 — -[DebugSettingsViewController viewDidLoad]
 // mangled: -[DebugSettingsViewController viewDidLoad]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController viewDidLoad]")]
-pub fn stub_1ab70() -> ! {
-    todo!("0x1ab70 -[DebugSettingsViewController viewDidLoad]")
+pub fn stub_1ab70(controller: &DebugSettingsViewController) {
+    // IDA 0x1ab70: super `viewDidLoad` (0x1ab8c..0x1ab96) then
+    // `reloadOldData` (0x1aba8). Verified via IDA decompile.
+    controller.view_did_load();
 }
 
 // 0x1abb0 — -[DebugSettingsViewController setDisplayUI]
 // mangled: -[DebugSettingsViewController setDisplayUI]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController setDisplayUI]")]
-pub fn stub_1abb0() -> ! {
-    todo!("0x1abb0 -[DebugSettingsViewController setDisplayUI]")
+pub fn stub_1abb0(controller: &DebugSettingsViewController) -> &'static str {
+    // IDA 0x1abb0: `viewWithTag:100` (0x1abc0..0x1abd2) then the
+    // `getDebugDisplay` switch (0x1abe6..0x1ac02) into `setText:` (0x1ac0c).
+    // Returns the label. Verified via IDA decompile.
+    controller.set_display_ui()
 }
 
 // 0x1ac80 — -[DebugSettingsViewController displayPickerDoneClicked:]
 // mangled: -[DebugSettingsViewController displayPickerDoneClicked:]
 // type: void __cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController displayPickerDoneClicked:]")]
-pub fn stub_1ac80() -> ! {
-    todo!("0x1ac80 -[DebugSettingsViewController displayPickerDoneClicked:]")
+pub fn stub_1ac80(controller: &DebugSettingsViewController, selected_row: i32) -> &'static str {
+    // IDA 0x1ac80: tag-5012/5011 lookup (0x1ac9c..0x1ad0), animation dispatch
+    // (0x1ad0a..0x1ad34), `selectedRowInComponent:0 >= 0` store (0x1ad4e),
+    // `setDisplayUI` (0x1ad62). Returns the label. Verified via IDA decompile.
+    controller.display_picker_done_clicked(selected_row)
 }
 
 // 0x1ad78 — ___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke
 // mangled: ___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke")]
-pub fn stub_1ad78() -> ! {
-    todo!("0x1ad78 ___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke")
+pub fn stub_1ad78(controller: &DebugSettingsViewController) {
+    // IDA 0x1ad78: `setFrame:` shuffle over the picker/self/toolbar frames
+    // (0x1ad90..0x1ae74). Pure UIKit geometry, recorded. Verified via IDA
+    // decompile.
+    controller.display_picker_animation_frame();
 }
 
 // 0x1ae78 — ___copy_helper_block__0
 // mangled: ___copy_helper_block__0
 // type: void __fastcall(int, const void **)
 #[doc(alias = "___copy_helper_block__0")]
-pub fn stub_1ae78() -> ! {
-    todo!("0x1ae78 ___copy_helper_block__0")
+pub fn stub_1ae78(
+    picker_slot: &mut Option<ObjCId>,
+    self_slot: &mut Option<ObjCId>,
+    toolbar_slot: &mut Option<ObjCId>,
+    picker_src: Option<ObjCId>,
+    self_src: Option<ObjCId>,
+    toolbar_src: Option<ObjCId>,
+) {
+    // IDA 0x1ae78: `_Block_object_assign` x2 (0x1ae88..0x1ae94) +
+    // `_Block_object_assign` shim (0x1aea4); `Arc` clones retain.
+    // Verified via IDA decompile.
+    *picker_slot = picker_src;
+    *self_slot = self_src;
+    *toolbar_slot = toolbar_src;
 }
 
 // 0x1aea8 — ___destroy_helper_block__0
 // mangled: ___destroy_helper_block__0
-// type: 
+// type:
 #[doc(alias = "___destroy_helper_block__0")]
-pub fn stub_1aea8() -> ! {
-    todo!("0x1aea8 ___destroy_helper_block__0")
+pub fn stub_1aea8(
+    picker_slot: &mut Option<ObjCId>,
+    self_slot: &mut Option<ObjCId>,
+    toolbar_slot: &mut Option<ObjCId>,
+) {
+    // IDA 0x1aea8: `_Block_object_dispose` x2 (0x1aeb2..0x1aeba) + dispose
+    // shim (0x1aec6); dropping the host slots is the release. Verified via
+    // IDA decompile.
+    *picker_slot = None;
+    *self_slot = None;
+    *toolbar_slot = None;
 }
 
 // 0x1aed0 — -[DebugSettingsViewController displayTouchUp:]
 // mangled: -[DebugSettingsViewController displayTouchUp:]
 // type: void __cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController displayTouchUp:]")]
-pub fn stub_1aed0() -> ! {
-    todo!("0x1aed0 -[DebugSettingsViewController displayTouchUp:]")
+pub fn stub_1aed0(controller: &DebugSettingsViewController) {
+    // IDA 0x1aed0: same tag lookup + animation dispatch as 0x1ac80
+    // (0x1aeec..0x1af86), without the picker store. Verified via IDA decompile.
+    controller.display_touch_up();
 }
 
 #[cfg(test)]
@@ -1160,5 +1439,127 @@ mod appirater_tests {
         stub_179e8();
         stub_179ec();
         stub_179f0();
+    }
+}
+
+#[cfg(test)]
+mod app_delegate_tests {
+    use super::*;
+    use crate::view_controllers::APP_PLACE_ID;
+    #[test]
+    fn app_delegate_lifecycle_chain() {
+        // `init` (0x19228) builds without ivar stores; accessors round-trip.
+        let delegate = stub_19228();
+        assert_eq!(stub_1a494(&delegate), 0);
+        stub_1a4a8(&delegate, 7);
+        assert_eq!(stub_1a494(&delegate), 7);
+        assert_eq!(stub_1a4c0(&delegate), None);
+        stub_1a4d0(&delegate, Some(9));
+        assert_eq!(stub_1a4c0(&delegate), Some(9));
+        stub_1a4d0(&delegate, None);
+        // `cxx_construct`/`cxx_destruct` (0x1a5bc/0x1a4f4) run clean.
+        stub_1a5bc(&delegate);
+        stub_1a4f4(&delegate);
+        // Launch blocks (0x194ec/0x19514) configure Flurry + Appirater.
+        stub_194ec();
+        stub_19514();
+        assert_eq!(Appirater::app_id(), "431946152");
+        // Full launch (0x192b4) returns YES; `main` (0x1a768) maps it to 0.
+        assert!(stub_192b4(&delegate));
+        assert_eq!(stub_1a768(&delegate, 1), 0);
+        // Lifecycle callbacks run clean.
+        stub_195a0(&delegate);
+        stub_196e4(&delegate);
+        stub_19a30(&delegate);
+        stub_19b60(&delegate);
+        stub_19cdc(&delegate);
+        stub_19f34();
+        stub_19f7c(&delegate);
+        // `openURL:` (0x1a174) rejects foreign schemes, stashes place ids.
+        assert!(!stub_1a174(&delegate, "https://x/y", "x", "/y", "", ""));
+        assert!(stub_1a174(
+            &delegate,
+            "robloxmobile://12345",
+            "12345",
+            "/",
+            "",
+            ""
+        ));
+        assert_eq!(
+            APP_PLACE_ID.load(std::sync::atomic::Ordering::SeqCst),
+            12345
+        );
+        APP_PLACE_ID.store(0, std::sync::atomic::Ordering::SeqCst);
+        // `TryLaunchPlace:` (0x1a234) dispatches on the top controller class.
+        assert_eq!(
+            stub_1a234(&delegate, 99, "RobloxNavBarViewController"),
+            LaunchAction::GameStarted
+        );
+        assert_eq!(
+            stub_1a234(&delegate, 99, "BogusController"),
+            LaunchAction::Unknown
+        );
+        // `dealloc` (0x19254) consumes.
+        stub_19254(stub_19228());
+        // Global ctors (0x1a5d0/0x1a7d4) run clean.
+        stub_1a5d0();
+        stub_1a7d4();
+    }
+    #[test]
+    fn top_most_controller_chain() {
+        // Presented chain 1 -> 2 -> 3 resolves to 3 (IDA 0x1a098).
+        let graph = ViewControllerGraph::new();
+        graph.present(1, 2);
+        graph.present(2, 3);
+        assert_eq!(stub_1a098(&graph, 1), Some(3));
+        // Bare root returns nil.
+        assert_eq!(stub_1a098(&graph, 7), None);
+        // Navigation controller resolves to its visible controller.
+        graph.mark_navigation_controller(10);
+        graph.set_visible_view_controller(10, 11);
+        graph.present(9, 10);
+        assert_eq!(stub_1a098(&graph, 9), Some(11));
+        // `topMostController()` (0x1a124) loops to the chain end.
+        assert_eq!(stub_1a124(&graph, 1), 3);
+        assert_eq!(stub_1a124(&graph, 7), 7);
+    }
+    #[test]
+    fn debug_settings_panel() {
+        // Nil super init stays nil (IDA 0x1a9a0..0x1ab1c).
+        assert!(stub_1a970(false, true, None).is_none());
+        // iPad fixed frame + six picker items (0x1aa1c..0x1ab12).
+        let pad = stub_1a970(true, true, None).expect("pad init");
+        assert_eq!(pad.window_frame(), (0.0, 0.0, 540.0, 508.0));
+        assert_eq!(pad.keyboard_offset(), 114);
+        assert_eq!(pad.display_picker_items.lock().len(), 6);
+        // Phone takes the main-screen bounds.
+        let phone = stub_1a970(true, false, Some((1.0, 2.0, 3.0, 4.0))).expect("phone init");
+        assert_eq!(phone.window_frame(), (1.0, 2.0, 3.0, 4.0));
+        // `viewDidLoad` (0x1ab70) runs `reloadOldData` (0x1ab6c, empty).
+        stub_1ab70(&pad);
+        assert_eq!(pad.view_did_load_count(), 1);
+        stub_1ab6c(&pad);
+        // `setDisplayUI` (0x1abb0) label switch incl. default.
+        assert_eq!(stub_1abb0(&pad), "None");
+        assert_eq!(stub_1ac80(&pad, 3), "Physics");
+        assert_eq!(stub_1abb0(&pad), "Physics");
+        // Negative row keeps the stored mode.
+        assert_eq!(stub_1ac80(&pad, -1), "Physics");
+        assert_eq!(stub_1ac80(&pad, 5), "Render");
+        // Animation block (0x1ad78) + touch-up (0x1aed0) record runs.
+        let runs = pad.animation_run_count();
+        stub_1ad78(&pad);
+        stub_1aed0(&pad);
+        assert_eq!(pad.animation_run_count(), runs + 2);
+        // Block copy/destroy helpers (0x1ae78/0x1aea8) retain/release slots.
+        let (mut a, mut b, mut c): (Option<ObjCId>, Option<ObjCId>, Option<ObjCId>) =
+            (None, None, None);
+        stub_1ae78(&mut a, &mut b, &mut c, Some(1), Some(2), Some(3));
+        assert_eq!((a, b, c), (Some(1), Some(2), Some(3)));
+        stub_1aea8(&mut a, &mut b, &mut c);
+        assert_eq!((a, b, c), (None, None, None));
+        // `dealloc` (0x1ab20) consumes.
+        stub_1ab20(phone);
+        stub_1ab20(pad);
     }
 }
