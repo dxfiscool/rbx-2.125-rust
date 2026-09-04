@@ -1642,6 +1642,30 @@ static VISUAL_TRUSS_STYLE_SINGLETON: OnceLock<EnumDesc> = OnceLock::new();
 /// `0x4c911c`); twin of `CONCURRENCY_MODEL_SINGLETON`.
 static LEGACY_PART_TYPE_SINGLETON: OnceLock<EnumDesc> = OnceLock::new();
 
+/// Name/value table behind the `LODType` desc suite (IDA `0x4cf7a0`-`0x4d0124`):
+/// `(2, High)`, `(1, Medium)`, `(0, Low)` per the grounded C2 (0x474ef0).
+const LOD_TYPE_ITEMS: [(i32, &str); 3] = [
+    (2, "High"), (1, "Medium"), (0, "Low"),
+];
+
+/// Process-wide singleton behind `Singleton<EnumDesc<LODType>>` (IDA
+/// `0x4cf7a0`); twin of `CONCURRENCY_MODEL_SINGLETON`.
+static LOD_TYPE_SINGLETON: OnceLock<EnumDesc> = OnceLock::new();
+
+/// Rust model of `RBX::VelocityMotor` (IDA `0x4e6e68`): the velocity-motor
+/// leaf; members land with the joint batch.
+#[derive(Default)]
+pub struct VelocityMotor {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::MotorFeature` (IDA `0x4e7e78`): the motor-feature leaf;
+/// members land with the joint batch.
+#[derive(Default)]
+pub struct MotorFeature {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::Texture` (IDA `0x491750`): the texture decal; members
 /// land with the GUI batch.
 #[derive(Default)]
@@ -31611,43 +31635,77 @@ pub fn stub_0x4c9b1c() -> ! {
 // 0x4cf7a0 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13DataModelMesh7LODTypeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType> const>::initSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType> const>::initSingleton(void)
-pub fn stub_0x4cf7a0() -> ! {
-    todo!("0x4cf7a0 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType> const>::initSingleton(void)")
+pub fn stub_0x4cf7a0() {
+    // IDA 0x4cf7a0: `Singleton<EnumDesc<LODType>>::initSingleton` — runs the
+    // `C2` table-build into static storage once. Same shape as 0x4c542c.
+    LOD_TYPE_SINGLETON.get_or_init(|| EnumDesc {
+        name: "DataModelMesh::LODType",
+        pairs: LOD_TYPE_ITEMS.to_vec(),
+    });
 }
 
 // 0x4cf7a4 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13DataModelMesh7LODTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType> const>::doGetSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType> const>::doGetSingleton(void)
-pub fn stub_0x4cf7a4() -> ! {
-    todo!("0x4cf7a4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType> const>::doGetSingleton(void)")
+pub fn stub_0x4cf7a4() -> &'static EnumDesc {
+    // IDA 0x4cf7a4: `Singleton<EnumDesc<LODType>>::doGetSingleton` — returns
+    // the static, initializing on first use. Same shape as 0x4c5430.
+    LOD_TYPE_SINGLETON.get_or_init(|| EnumDesc {
+        name: "DataModelMesh::LODType",
+        pairs: LOD_TYPE_ITEMS.to_vec(),
+    })
 }
 
 // 0x4cf894 — __ZN3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEED1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::~EnumDesc()
-pub fn stub_0x4cf894() -> ! {
-    todo!("0x4cf894 RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::~EnumDesc()")
+pub fn stub_0x4cf894(_desc: *mut EnumDesc) {
+    // IDA 0x4cf894: `EnumDesc<LODType>::D1` — table teardown; dropping the
+    // box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4cf898 — __ZN3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::~EnumDesc()
-pub fn stub_0x4cf898() -> ! {
-    todo!("0x4cf898 RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::~EnumDesc()")
+pub fn stub_0x4cf898(_desc: *mut EnumDesc) {
+    // IDA 0x4cf898: `EnumDesc<LODType>::D2` — memberwise teardown of the base
+    // subobject; no members carry state, so the body collapses.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4cfa6c — __ZN3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEED0Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::~EnumDesc()
-pub fn stub_0x4cfa6c() -> ! {
-    todo!("0x4cfa6c RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::~EnumDesc()")
+pub fn stub_0x4cfa6c(_desc: *mut EnumDesc) {
+    // IDA 0x4cfa6c: `EnumDesc<LODType>::D0` — vtable install plus table
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4cfb0c — __ZNK3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::lookup(char const*)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::lookup(char const*)const
-pub fn stub_0x4cfb0c() -> ! {
-    todo!("0x4cfb0c RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::lookup(char const*)const")
+pub fn stub_0x4cfb0c(name: &str) -> Option<(i32, &'static str)> {
+    // IDA 0x4cfb0c (`EnumDesc<LODType>::lookup(name)`): same
+    // lookup-then-`convertToValue`-then-`convertToItem` chain as 0x4c5798.
+    let value = LOD_TYPE_ITEMS
+        .iter()
+        .find(|(_, text)| *text == name)
+        .map(|(v, _)| *v)?;
+    LOD_TYPE_ITEMS
+        .iter()
+        .find(|(v, _)| *v == value)
+        .copied()
 }
 
 // 0x4cfb3c — __ZNK3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEE6lookupERKNS0_7VariantE
@@ -31674,8 +31732,14 @@ pub fn stub_0x4cfbb8() -> ! {
 // 0x4cfcfc — __ZNK3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::convertToString(RBX::DataModelMesh::LODType const&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::convertToString(RBX::DataModelMesh::LODType const&)const
-pub fn stub_0x4cfcfc() -> ! {
-    todo!("0x4cfcfc RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::convertToString(RBX::DataModelMesh::LODType const&)const")
+pub fn stub_0x4cfcfc(value: i32) -> Option<&'static str> {
+    // IDA 0x4cfcfc: `EnumDesc<LODType>::convertToString(value)` — the
+    // value-to-name search. Same shape as 0x4c5988.
+    debug_assert!([2, 1, 0].contains(&value), "0x4cfcfc: value in range");
+    LOD_TYPE_ITEMS
+        .iter()
+        .find(|(v, _)| *v == value)
+        .map(|(_, text)| *text)
 }
 
 // 0x4cfe9c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_13DataModelMesh7LODTypeEEERS3_RKT_
@@ -31709,8 +31773,13 @@ pub fn stub_0x4cff64() -> ! {
 // 0x4cff68 — __ZNK3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::convertToItem(RBX::DataModelMesh::LODType const&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::convertToItem(RBX::DataModelMesh::LODType const&)const
-pub fn stub_0x4cff68() -> ! {
-    todo!("0x4cff68 RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::convertToItem(RBX::DataModelMesh::LODType const&)const")
+pub fn stub_0x4cff68(value: i32) -> Option<(i32, &'static str)> {
+    // IDA 0x4cff68: `EnumDesc<LODType>::convertToItem(value)` — the
+    // value-to-item search. Same shape as 0x4c5bf4.
+    LOD_TYPE_ITEMS
+        .iter()
+        .find(|(v, _)| *v == value)
+        .copied()
 }
 
 // 0x4d0034 — __ZN3rbx8any_castIRKN3RBX13DataModelMesh7LODTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
@@ -31723,8 +31792,13 @@ pub fn stub_0x4d0034() -> ! {
 // 0x4d0124 — __ZNK3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::convertToValue(RBX::Name const&,RBX::DataModelMesh::LODType&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::convertToValue(RBX::Name const&,RBX::DataModelMesh::LODType&)const
-pub fn stub_0x4d0124() -> ! {
-    todo!("0x4d0124 RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::convertToValue(RBX::Name const&,RBX::DataModelMesh::LODType&)const")
+pub fn stub_0x4d0124(name: &str) -> Option<i32> {
+    // IDA 0x4d0124: `EnumDesc<LODType>::convertToValue(Name)` — the
+    // name-to-value search. Same shape as 0x4c5db0.
+    LOD_TYPE_ITEMS
+        .iter()
+        .find(|(_, text)| *text == name)
+        .map(|(v, _)| *v)
 }
 
 // 0x4d01a0 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13DataModelMesh7LODTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
@@ -31751,8 +31825,10 @@ pub fn stub_0x4e5b64() -> ! {
 // 0x4e6e68 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13VelocityMotorEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::VelocityMotor> RBX::Creatable<RBX::Instance>::create<RBX::VelocityMotor>(void)")]
 // was: boost::shared_ptr<RBX::VelocityMotor> RBX::Creatable<RBX::Instance>::create<RBX::VelocityMotor>(void)
-pub fn stub_0x4e6e68() -> ! {
-    todo!("0x4e6e68 boost::shared_ptr<RBX::VelocityMotor> RBX::Creatable<RBX::Instance>::create<RBX::VelocityMotor>(void)")
+pub fn stub_0x4e6e68() -> SharedPtr<VelocityMotor> {
+    // IDA 0x4e6e68: `Creatable::create<VelocityMotor>` — `operator new` +
+    // default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(VelocityMotor::default())
 }
 
 // 0x4e70c0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES6_EE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf0IvNS4_13VelocityMotorEEENSA_5list1INSA_5valueIPSE_EEEEEEEENS0_10connectionERKT_
@@ -31779,28 +31855,42 @@ pub fn stub_0x4e75d0() -> ! {
 // 0x4e75dc — __ZNK3RBX13VelocityMotor12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::VelocityMotor::askSetParent(RBX::Instance const*)const")]
 // was: RBX::VelocityMotor::askSetParent(RBX::Instance const*)const
-pub fn stub_0x4e75dc() -> ! {
-    todo!("0x4e75dc RBX::VelocityMotor::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x4e75dc(_parent: *const Instance) -> bool {
+    // IDA 0x4e75dc: `MOVS R0, #1; BX LR` (disasm 0x4e75dc-0x4e75de) — a
+    // velocity motor may parent anywhere.
+    // SAFETY: `_parent` must be null or point to a valid `Instance`.
+    true
 }
 // 0x4e7e78 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_12MotorFeatureEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::MotorFeature> RBX::Creatable<RBX::Instance>::create<RBX::MotorFeature>(void)")]
 // was: boost::shared_ptr<RBX::MotorFeature> RBX::Creatable<RBX::Instance>::create<RBX::MotorFeature>(void)
-pub fn stub_0x4e7e78() -> ! {
-    todo!("0x4e7e78 boost::shared_ptr<RBX::MotorFeature> RBX::Creatable<RBX::Instance>::create<RBX::MotorFeature>(void)")
+pub fn stub_0x4e7e78() -> SharedPtr<MotorFeature> {
+    // IDA 0x4e7e78: `Creatable::create<MotorFeature>` — `operator new` +
+    // default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(MotorFeature::default())
 }
 
 // 0x4e7f28 — __ZN5boost10shared_ptrIN3RBX12MotorFeatureEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::MotorFeature>::shared_ptr<RBX::MotorFeature,RBX::Creatable<RBX::Instance>::Deleter>(RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::MotorFeature>::shared_ptr<RBX::MotorFeature,RBX::Creatable<RBX::Instance>::Deleter>(RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x4e7f28() -> ! {
-    todo!("0x4e7f28 boost::shared_ptr<RBX::MotorFeature>::shared_ptr<RBX::MotorFeature,RBX::Creatable<RBX::Instance>::Deleter>(RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x4e7f28(ptr: *mut MotorFeature, _deleter: CreatableInstanceDeleter) -> SharedPtr<MotorFeature> {
+    // IDA 0x4e7f28: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(MotorFeature::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x4e80d8 — __ZN5boost6detail12shared_countC2IPN3RBX12MotorFeatureENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x4e80d8() -> ! {
-    todo!("0x4e80d8 boost::detail::shared_count::shared_count<RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x4e80d8(ptr: *mut MotorFeature, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<MotorFeature, CreatableInstanceDeleter> {
+    // IDA 0x4e80d8: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x4e81e0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MotorFeatureENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
@@ -31939,43 +32029,63 @@ pub fn stub_0x4e91b0() -> ! {
 // 0x4e9480 — __ZN5boost10shared_ptrIN3RBX13VelocityMotorEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::VelocityMotor>::shared_ptr<RBX::VelocityMotor,RBX::Creatable<RBX::Instance>::Deleter>(RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::VelocityMotor>::shared_ptr<RBX::VelocityMotor,RBX::Creatable<RBX::Instance>::Deleter>(RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x4e9480() -> ! {
-    todo!("0x4e9480 boost::shared_ptr<RBX::VelocityMotor>::shared_ptr<RBX::VelocityMotor,RBX::Creatable<RBX::Instance>::Deleter>(RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x4e9480(ptr: *mut VelocityMotor, _deleter: CreatableInstanceDeleter) -> SharedPtr<VelocityMotor> {
+    // IDA 0x4e9480: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(VelocityMotor::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x4e9630 — __ZN5boost6detail12shared_countC2IPN3RBX13VelocityMotorENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x4e9630() -> ! {
-    todo!("0x4e9630 boost::detail::shared_count::shared_count<RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x4e9630(ptr: *mut VelocityMotor, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<VelocityMotor, CreatableInstanceDeleter> {
+    // IDA 0x4e9630: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x4e9738 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13VelocityMotorENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x4e9738() -> ! {
-    todo!("0x4e9738 boost::detail::sp_counted_impl_pd<RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x4e9738(_block: *mut ControlBlockPd<VelocityMotor, CreatableInstanceDeleter>) {
+    // IDA 0x4e9738: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x4e973c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13VelocityMotorENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x4e973c() -> ! {
-    todo!("0x4e973c boost::detail::sp_counted_impl_pd<RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x4e973c(block: *mut ControlBlockPd<VelocityMotor, CreatableInstanceDeleter>) {
+    // IDA 0x4e973c: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x4e9740 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13VelocityMotorENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x4e9740() -> ! {
-    todo!("0x4e9740 boost::detail::sp_counted_impl_pd<RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x4e9740(_block: *mut ControlBlockPd<VelocityMotor, CreatableInstanceDeleter>) {
+    // IDA 0x4e9740: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x4e9760 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13VelocityMotorENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x4e9760() -> ! {
-    todo!("0x4e9760 boost::detail::sp_counted_impl_pd<RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x4e9760(block: *const ControlBlockPd<VelocityMotor, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x4e9760: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x4e9778 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13VelocityMotorENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
