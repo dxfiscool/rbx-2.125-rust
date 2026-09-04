@@ -6,174 +6,569 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports)]
 
 use rbx_core::SharedPtr;
+use std::collections::HashMap;
+
+// ── Hand-written script support (IDA batch 0x267ec..0x2607e0) ────────────────
+// Idiomatic Rust decompilation of the join-script launcher, the
+// execute*Script pipeline, and the HttpService/YieldFunction reflection
+// descriptors. `boost::shared_ptr` → [`SharedPtr`], `boost::function`/`bind`
+// → closures, `boost::unordered_map` → [`HashMap`], `boost::thread` →
+// [`std::thread`] (injected as callbacks so this crate stays dependency-free).
+
+/// Opaque `RBX::Game` token threaded through the join-script launch path.
+/// The engine retains ownership; scripts only pass the [`SharedPtr`] through.
+#[derive(Debug, Default)]
+pub struct GameHandle {
+    /// Base URL the game was constructed with (`GetBaseURL()`, IDA 0x29d88).
+    pub base_url: String,
+}
+
+/// Bound `joinGameWithJoinScript(script, game)` payload: the `boost::bind`
+/// target built by `-injectJoinScript:` (IDA 0x2687e) and
+/// `-startGameWithJoinScript:...` (IDA 0x29340).
+#[derive(Debug, Clone)]
+pub struct JoinScriptInvocation {
+    pub script: String,
+    pub game: SharedPtr<GameHandle>,
+}
+
+impl JoinScriptInvocation {
+    /// Detached launcher thread name (IDA 0x268a0 `"InjectStartScript"`).
+    pub const THREAD_NAME: &'static str = "InjectStartScript";
+    pub fn new(script: &str, game: SharedPtr<GameHandle>) -> Self {
+        Self { script: script.to_owned(), game }
+    }
+}
+
+/// Teleport triple launched on a worker thread (IDA 0x29ccc): place URL, auth
+/// ticket, and join script, resolved against the engine base URL.
+#[derive(Debug, Clone)]
+pub struct TeleportRequest {
+    pub place_url: String,
+    pub auth_ticket: String,
+    pub script: String,
+    pub base_url: String,
+}
+
+impl TeleportRequest {
+    /// Fade animation duration (`animateWithDuration:...`, IDA 0x29fca).
+    pub const FADE_DURATION: f64 = 0.5;
+    pub fn new(place_url: &str, auth_ticket: &str, script: &str, base_url: &str) -> Self {
+        Self {
+            place_url: place_url.to_owned(),
+            auth_ticket: auth_ticket.to_owned(),
+            script: script.to_owned(),
+            base_url: base_url.to_owned(),
+        }
+    }
+}
+
+/// View frame for the teleport fade animation block (IDA 0x2a8c8).
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct ViewFrame {
+    pub x: f32,
+    pub y: f32,
+    pub w: f32,
+    pub h: f32,
+}
+
+/// Impersonation level entered by `executeUrlScript` (IDA 0x2ba78).
+pub const JOIN_SCRIPT_IMPERSONATION_LEVEL: u8 = 7;
+/// Header field set on the join-script URL request (IDA 0x66b98).
+pub const JOIN_SCRIPT_USER_AGENT_HEADER: &str = "User-Agent";
+
+/// `RBX::HttpService::HttpContentType` as bound by the 3-arg yield descriptor
+/// (IDA 0x25a2f0 stores the content-type singleton at +56).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum HttpContentType {
+    TextPlain,
+    Html,
+    Xml,
+    Json,
+    UrlEncoded,
+}
+
+/// One `SignatureDescriptor::addArgument` entry (IDA 0x25a540/0x25acb8).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct YieldSignatureArg {
+    pub name: String,
+    pub type_name: &'static str,
+}
+
+/// Declared yield-function signature: `std::string` return type + ordered args.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct YieldFuncSignature {
+    pub return_type: &'static str,
+    pub args: Vec<YieldSignatureArg>,
+}
+
+impl YieldFuncSignature {
+    fn new(args: &[(&str, &'static str)]) -> Self {
+        Self {
+            return_type: "std::string",
+            args: args
+                .iter()
+                .map(|(name, type_name)| YieldSignatureArg { name: name.to_string(), type_name })
+                .collect(),
+        }
+    }
+}
+
+/// `BoundYieldFuncDesc<HttpService, string(string,string,HttpContentType), string, 3>`
+/// (IDA 0x25a2f0): bound member + two scoped-string params + content type.
+#[derive(Debug, Clone)]
+pub struct BoundHttpPostYield {
+    pub url_param: Option<String>,
+    pub body_param: Option<String>,
+    pub content_type: HttpContentType,
+}
+
+// IDA 0x2579c0 (D1): vtable reset → owned content-type box + scoped params →
+// signature list clear. Field order mirrors teardown order.
+impl Drop for BoundHttpPostYield {
+    fn drop(&mut self) {
+        self.url_param = None;
+        self.body_param = None;
+    }
+}
+
+/// `BoundYieldFuncDesc<HttpService, string(string), string, 1>` (IDA 0x25ab40).
+#[derive(Debug, Clone)]
+pub struct BoundHttpGetYield {
+    pub url_param: Option<String>,
+}
+
+// IDA 0x257980 (D1): vtable reset → scoped param → signature list clear.
+impl Drop for BoundHttpGetYield {
+    fn drop(&mut self) {
+        self.url_param = None;
+    }
+}
+
+/// `YieldFunctionDescriptor` (IDA 0x260394): `Descriptor` base + kind tag +
+/// name/owner links, then declared into the class container.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct YieldFunctionDescriptor {
+    pub name: String,
+    pub owner: String,
+}
+
+impl YieldFunctionDescriptor {
+    /// Kind tag passed to `Descriptor::Descriptor` (IDA 0x2603c4).
+    pub const KIND: &'static str = "YieldFunction";
+    pub fn new(name: &str, owner: &str) -> Self {
+        Self { name: name.to_owned(), owner: owner.to_owned() }
+    }
+}
+
+/// `MemberDescriptorContainer<YieldFunctionDescriptor>` (IDA 0x260638):
+/// name-sorted vector (`by_name` mirrors the unordered_map) plus an optional
+/// member-hiding hook. Re-declaring an identical descriptor is a no-op
+/// (IDA 0x260682); a name clash replaces the entry and fires the hook
+/// (IDA 0x2607aa..0x2607b4).
+#[derive(Debug, Default)]
+pub struct YieldFunctionRegistry {
+    pub ordered: Vec<YieldFunctionDescriptor>,
+    pub by_name: HashMap<String, usize>,
+    pub member_hiding_hook: Option<fn(new: &YieldFunctionDescriptor, old: &YieldFunctionDescriptor)>,
+}
+
+impl YieldFunctionRegistry {
+    /// Declare a descriptor; returns its index.
+    pub fn declare(&mut self, desc: YieldFunctionDescriptor) -> usize {
+        if let Some(&idx) = self.by_name.get(&desc.name) {
+            if self.ordered[idx] == desc {
+                return idx;
+            }
+            let old = self.ordered[idx].clone();
+            self.ordered[idx] = desc.clone();
+            if let Some(hook) = self.member_hiding_hook {
+                hook(&desc, &old);
+            }
+            return idx;
+        }
+        // IDA 0x260660..0x260676: lower-bound by name, then sorted insert.
+        let pos = self.ordered.partition_point(|d| d.name < desc.name);
+        self.ordered.insert(pos, desc.clone());
+        // Re-key the map suffix (IDA 0x2606be).
+        for (i, d) in self.ordered.iter().enumerate().skip(pos) {
+            self.by_name.insert(d.name.clone(), i);
+        }
+        pos
+    }
+}
+
+#[cfg(test)]
+mod join_script_tests {
+    use super::*;
+    use parking_lot::Mutex;
+    use std::cell::RefCell;
+    use std::sync::Arc;
+
+    #[test]
+    fn inject_names_thread_and_passes_script() {
+        let seen = Arc::new(Mutex::new((String::new(), String::new())));
+        let seen_clone = seen.clone();
+        let mut spawn = |name: &str, inv: JoinScriptInvocation| {
+            *seen_clone.lock() = (name.to_owned(), inv.script.clone());
+        };
+        stub_0x267ec("print(1)", SharedPtr::new(GameHandle::default()), &mut spawn);
+        assert_eq!(*seen.lock(), ("InjectStartScript".to_owned(), "print(1)".to_owned()));
+    }
+
+    #[test]
+    fn start_game_gates_on_launcher_and_preloaded() {
+        let mut calls = 0;
+        let mut start = |_: JoinScriptInvocation| {
+            calls += 1;
+            true
+        };
+        let game = SharedPtr::new(GameHandle::default());
+        assert!(!stub_0x29280(false, "s", game.clone(), true, &mut start));
+        assert!(!stub_0x29280(true, "s", game.clone(), false, &mut start));
+        assert!(stub_0x29280(true, "s", game, true, &mut start));
+        assert_eq!(calls, 1);
+    }
+
+    #[test]
+    fn url_script_only_runs_for_urls() {
+        let ran = RefCell::new(Vec::new());
+        let mut fetch = |url: &str| -> Option<String> { Some(format!("body-of-{url}")) };
+        let mut exec = |body: &str| ran.borrow_mut().push(body.to_owned());
+        stub_0x2ba54("x", false, &mut fetch, &mut exec);
+        assert!(ran.borrow().is_empty());
+        stub_0x2ba54("http://x/join.lua", true, &mut fetch, &mut exec);
+        assert_eq!(*ran.borrow(), ["body-of-http://x/join.lua"]);
+    }
+
+    #[test]
+    fn signed_script_verifies_before_executing() {
+        let log = RefCell::new(Vec::new());
+        let mut verify = |src: &str| {
+            log.borrow_mut().push(format!("verify:{src}"));
+            format!("verified:{src}")
+        };
+        let mut exec = |src: &str| log.borrow_mut().push(format!("exec:{src}"));
+        stub_0x2bdb0("src", &mut verify, &mut exec);
+        assert_eq!(*log.borrow(), ["verify:src", "exec:verified:src"]);
+    }
+
+    #[test]
+    fn execute_script_gates_on_enabled_flag() {
+        let mut ran = 0;
+        let mut run = |_: &str| ran += 1;
+        stub_0x2bf74("s", false, &mut run);
+        stub_0x2bf74("s", true, &mut run);
+        assert_eq!(ran, 1);
+    }
+
+    #[test]
+    fn fade_frame_centers_unit_view() {
+        let parent = Some(ViewFrame { x: 0.0, y: 0.0, w: 100.0, h: 50.0 });
+        assert_eq!(stub_0x2a8c8(parent), ViewFrame { x: 50.0, y: 25.0, w: 1.0, h: 1.0 });
+        assert_eq!(stub_0x2a8c8(None), ViewFrame { x: 0.0, y: 0.0, w: 1.0, h: 1.0 });
+    }
+
+    #[test]
+    fn script_context_class_name_is_declared() {
+        assert_eq!(stub_0x32768(true), "ScriptContext");
+    }
+
+    #[test]
+    #[should_panic(expected = "wasConstructed()")]
+    fn script_context_class_name_asserts_construction() {
+        let _ = stub_0x32768(false);
+    }
+
+    #[test]
+    fn yield_signatures_have_expected_arity() {
+        let post = stub_0x25a540("url", "body", "contentType");
+        assert_eq!(post.return_type, "std::string");
+        assert_eq!(post.args.len(), 3);
+        assert_eq!(post.args[2].type_name, "RBX::HttpService::HttpContentType");
+        let get = stub_0x25acb8("url");
+        assert_eq!(get.args.len(), 1);
+        assert!(stub_0x25f838());
+    }
+
+    #[test]
+    fn registry_keeps_sorted_unique_names() {
+        let mut reg = YieldFunctionRegistry::default();
+        stub_0x260394("WaitForChild", "Instance", &mut reg);
+        stub_0x260394("GetAsync", "HttpService", &mut reg);
+        stub_0x260394("Await", "Task", &mut reg);
+        let names: Vec<_> = reg.ordered.iter().map(|d| d.name.as_str()).collect();
+        assert_eq!(names, ["Await", "GetAsync", "WaitForChild"]);
+        let idx = stub_0x260394("Await", "Task", &mut reg);
+        assert_eq!((idx, reg.ordered.len()), (0, 3));
+    }
+
+    #[test]
+    fn run_join_script_sends_user_agent_then_injects() {
+        let log = RefCell::new(Vec::new());
+        let mut send = |url: &str, field: &str, value: &str| log.borrow_mut().push(format!("{url}|{field}|{value}"));
+        let mut inject = |url: &str| log.borrow_mut().push(format!("inject|{url}"));
+        stub_0x66b1c("http://x/join.lua", "Roblox/2.125", &mut send, &mut inject);
+        assert_eq!(*log.borrow(), ["http://x/join.lua|User-Agent|Roblox/2.125", "inject|http://x/join.lua"]);
+    }
+}
 // 0x267ec — -[PlaceLauncher injectJoinScript:]
 // type: void __cdecl(PlaceLauncher *self, SEL, id)
 #[doc(alias = "-[PlaceLauncher injectJoinScript:]")]
-pub fn stub_0x267ec() -> ! {
-    todo!("0x267ec -[PlaceLauncher injectJoinScript:]")
+pub fn stub_0x267ec(join_script: &str, game: SharedPtr<GameHandle>, spawn_thread: &mut dyn FnMut(&str, JoinScriptInvocation)) {
+    // IDA 0x267ec: UTF8String → bind(joinGameWithJoinScript, script, game) →
+    // thread_wrapper("InjectStartScript") → detached boost::thread.
+    spawn_thread(JoinScriptInvocation::THREAD_NAME, JoinScriptInvocation::new(join_script, game));
 }
 
 // 0x26990 — __ZL22joinGameWithJoinScriptRKSsN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "joinGameWithJoinScript(std::string const&,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_0x26990() -> ! {
-    todo!("0x26990 joinGameWithJoinScript(std::string const&,boost::shared_ptr<RBX::Game>)")
+pub fn stub_0x26990(script: &str, game: &SharedPtr<GameHandle>, execute_url_script: &mut dyn FnMut(&str, &SharedPtr<GameHandle>)) {
+    // IDA 0x26990: copies the script string, then executeUrlScript(game, script).
+    execute_url_script(script, game);
 }
 
 // 0x29280 — -[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, id, id, char)
 #[doc(alias = "-[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]")]
-pub fn stub_0x29280() -> ! {
-    todo!("0x29280 -[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]")
+pub fn stub_0x29280(launcher_present: bool, join_script: &str, game: SharedPtr<GameHandle>, preloaded_game: bool, start_game: &mut dyn FnMut(JoinScriptInvocation) -> bool) -> bool {
+    // IDA 0x29280: null self → 0 (0x293b8); null preloaded game → 0 (0x292fc);
+    // else bind joinGameWithJoinScript and return startGame:... result.
+    if !launcher_present || !preloaded_game {
+        return false;
+    }
+    start_game(JoinScriptInvocation::new(join_script, game))
 }
 
 // 0x29ccc — -[PlaceLauncher teleport:withAuthentication:withScript:]
 // type: void __cdecl(PlaceLauncher *self, SEL, id, id, id)
 #[doc(alias = "-[PlaceLauncher teleport:withAuthentication:withScript:]")]
-pub fn stub_0x29ccc() -> ! {
-    todo!("0x29ccc -[PlaceLauncher teleport:withAuthentication:withScript:]")
+pub fn stub_0x29ccc(place_url: &str, auth_ticket: &str, script: &str, base_url: &str, launch_teleport: &mut dyn FnMut(TeleportRequest, GameHandle), fade_out: &mut dyn FnMut(f64)) {
+    // IDA 0x29ccc: SecurePlayerGame(baseURL) → bind(joinGameTeleport, place,
+    // auth, script, controller, game) on a worker thread → deleteRobloxView →
+    // 0.5s fade animation (0x29fca) whose blocks are stub_0x2a8c8/0x2a99c.
+    let game = GameHandle { base_url: base_url.to_owned() };
+    launch_teleport(TeleportRequest::new(place_url, auth_ticket, script, base_url), game);
+    fade_out(TeleportRequest::FADE_DURATION);
 }
 
 // 0x2a8c8 — ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke
 #[doc(alias = "___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke")]
-pub fn stub_0x2a8c8() -> ! {
-    todo!("0x2a8c8 ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke")
+pub fn stub_0x2a8c8(parent: Option<ViewFrame>) -> ViewFrame {
+    // IDA 0x2a8c8: centers a 1x1 view at half the parent frame (0.5 * w/h
+    // offsets, 1.0 x 1.0 size, 0x2a908..0x2a984); null view → origin frame.
+    match parent {
+        Some(frame) => ViewFrame { x: 0.5 * frame.w, y: 0.5 * frame.h, w: 1.0, h: 1.0 },
+        None => ViewFrame { x: 0.0, y: 0.0, w: 1.0, h: 1.0 },
+    }
 }
 
 // 0x2a99c — ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke246
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke246")]
-pub fn stub_0x2a99c() -> ! {
-    todo!("0x2a99c ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke246")
+pub fn stub_0x2a99c(finish_game_setup: &mut dyn FnMut(), submit_finish_teleport: &mut dyn FnMut()) {
+    // IDA 0x2a99c: finishGameSetup:gameViewController: (0x2aa18), then
+    // DataModel::submitTask(finishTeleport) (0x2aaaa).
+    finish_game_setup();
+    submit_finish_teleport();
 }
 
 // 0x2ba54 — __ZL16executeUrlScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
 #[doc(alias = "executeUrlScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
-pub fn stub_0x2ba54() -> ! {
-    todo!("0x2ba54 executeUrlScript(boost::shared_ptr<RBX::DataModel>,std::string const&)")
+pub fn stub_0x2ba54(source: &str, is_url: bool, fetch_url: &mut dyn FnMut(&str) -> Option<String>, execute_signed_script: &mut dyn FnMut(&str)) {
+    // IDA 0x2ba54: Impersonator(7) (0x2ba78); non-URL → teardown only (0x2babe);
+    // URL → LegacyLock + ContentProvider::getContent → stream copy →
+    // executeSignedScript, then the Security context is reset (0x2bbc2).
+    let _impersonation = JOIN_SCRIPT_IMPERSONATION_LEVEL;
+    if !is_url {
+        return;
+    }
+    if let Some(body) = fetch_url(source) {
+        execute_signed_script(&body);
+    }
 }
 
 // 0x2bdb0 — __ZL19executeSignedScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
 #[doc(alias = "executeSignedScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
-pub fn stub_0x2bdb0() -> ! {
-    todo!("0x2bdb0 executeSignedScript(boost::shared_ptr<RBX::DataModel>,std::string const&)")
+pub fn stub_0x2bdb0(source: &str, verify_signature: &mut dyn FnMut(&str) -> String, execute_script: &mut dyn FnMut(&str)) {
+    // IDA 0x2bdb0: verifyScriptSignature (0x2be18) → assign → executeScript.
+    let verified = verify_signature(source);
+    execute_script(&verified);
 }
 
 // 0x2bf74 — __ZL13executeScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
 #[doc(alias = "executeScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
-pub fn stub_0x2bf74() -> ! {
-    todo!("0x2bf74 executeScript(boost::shared_ptr<RBX::DataModel>,std::string const&)")
+pub fn stub_0x2bf74(source: &str, scripts_enabled: bool, execute_in_new_thread: &mut dyn FnMut(&str)) {
+    // IDA 0x2bf74: under the DataModel LegacyLock, gated on the +3005
+    // scripts-enabled flag (0x2bff2); creates the ScriptContext and runs the
+    // trusted source in a new thread (0x2c000..0x2c022).
+    if scripts_enabled {
+        execute_in_new_thread(source);
+    }
 }
 
 // 0x32768 — __ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv
 // type: int(void)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv")]
-pub fn stub_0x32768() -> ! {
-    todo!("0x32768 __ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv")
+pub fn stub_0x32768(was_constructed: bool) -> &'static str {
+    // IDA 0x32768: ReleaseAssert(wasConstructed(), Object.h:236), then
+    // Name::declare<sScriptContext>() (0x327c8).
+    assert!(was_constructed, "wasConstructed() file: ../App/include/Util/Object.h line: 236");
+    "ScriptContext"
 }
 
 // 0x66b1c — -[AppController runJoinScriptWithUrl:]
 // type: void __cdecl(AppController *self, SEL, id)
 #[doc(alias = "-[AppController runJoinScriptWithUrl:]")]
-pub fn stub_0x66b1c() -> ! {
-    todo!("0x66b1c -[AppController runJoinScriptWithUrl:]")
+pub fn stub_0x66b1c(url: &str, user_agent: &str, send_request: &mut dyn FnMut(&str, &str, &str), inject_join_script: &mut dyn FnMut(&str)) {
+    // IDA 0x66b1c: NSURL → NSMutableURLRequest → set User-Agent (0x66b98) →
+    // [PlaceLauncher injectJoinScript:] (0x66bca).
+    send_request(url, JOIN_SCRIPT_USER_AGENT_HEADER, user_agent);
+    inject_join_script(url);
 }
 
 // 0x257980 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::~BoundYieldFuncDesc()")]
-pub fn stub_0x257980() -> ! {
-    todo!("0x257980 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::~BoundYieldFuncDesc()")
+pub fn stub_0x257980(desc: BoundHttpGetYield) {
+    // IDA 0x257980: D1 dtor — vtable reset, scoped param, signature list clear.
+    drop(desc);
 }
 
 // 0x2579c0 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::~BoundYieldFuncDesc()")]
-pub fn stub_0x2579c0() -> ! {
-    todo!("0x2579c0 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::~BoundYieldFuncDesc()")
+pub fn stub_0x2579c0(desc: BoundHttpPostYield) {
+    // IDA 0x2579c0: D1 dtor — vtable reset, owned content-type box + scoped
+    // params, signature list clear.
+    drop(desc);
 }
 
 // 0x25a2f0 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EEC2EMS2_FvSsSsS3_N5boost8functionIFvSsEEES9_EPKcSD_SD_SD_S3_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, unsigned int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,std::string,RBX::HttpService::HttpContentType,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,char const*,char const*,RBX::HttpService::HttpContentType,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x25a2f0() -> ! {
-    todo!("0x25a2f0 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,std::string,RBX::HttpService::HttpContentType,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,char const*,char const*,RBX::HttpService::HttpContentType,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x25a2f0(url_name: &str, body_name: &str, content_type_name: &str, content_type: HttpContentType) -> (BoundHttpPostYield, YieldFuncSignature) {
+    // IDA 0x25a2f0: base YieldFunctionDescriptor + member-pointer store (+40),
+    // content-type box (+56), then declareSignature (0x25a41c).
+    let desc = BoundHttpPostYield { url_param: Some(url_name.to_owned()), body_param: Some(body_name.to_owned()), content_type };
+    let signature = stub_0x25a540(url_name, body_name, content_type_name);
+    (desc, signature)
 }
 
 // 0x25a540 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EE16declareSignatureEPKcNS0_7VariantES7_S8_S7_S8_
 // type: int __fastcall(int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x25a540() -> ! {
-    todo!("0x25a540 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+pub fn stub_0x25a540(url_name: &str, body_name: &str, content_type_name: &str) -> YieldFuncSignature {
+    // IDA 0x25a540: return std::string + url/body (string) + contentType args.
+    YieldFuncSignature::new(&[
+        (url_name, "std::string"),
+        (body_name, "std::string"),
+        (content_type_name, "RBX::HttpService::HttpContentType"),
+    ])
 }
 
 // 0x25a5a8 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::~BoundYieldFuncDesc()")]
-pub fn stub_0x25a5a8() -> ! {
-    todo!("0x25a5a8 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::~BoundYieldFuncDesc()")
+pub fn stub_0x25a5a8(desc: BoundHttpPostYield) {
+    // IDA 0x25a5a8: D0 (deleting) dtor — D1 body plus operator delete
+    // (0x25a640); the owned value drop frees both here.
+    drop(desc);
 }
 
 // 0x25a68c — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSC_IFvSsEEE
 // type: void __fastcall(int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
-pub fn stub_0x25a68c() -> ! {
-    todo!("0x25a68c RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")
+pub fn stub_0x25a68c(
+    url: &str,
+    body: &str,
+    content_type: HttpContentType,
+    resume: Box<dyn FnOnce(String)>,
+    on_error: Box<dyn FnOnce(String)>,
+    invoke: &mut dyn FnMut(&str, &str, HttpContentType, Box<dyn FnOnce(String)>, Box<dyn FnOnce(String)>),
+) {
+    // IDA 0x25a68c: unwrap member (+40/+44 tagged union), getArg url/body/
+    // contentType (0x25a710..0x25a73a), resume_adapter<string> bind (0x25a75e),
+    // member invoke (0x25a794), functor clears (0x25a79c..0x25a7bc).
+    invoke(url, body, content_type, resume, on_error);
 }
 
 // 0x25ab40 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EEC2EMS2_FvSsN5boost8functionIFvSsEEES8_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, unsigned int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x25ab40() -> ! {
-    todo!("0x25ab40 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x25ab40(url_name: &str) -> (BoundHttpGetYield, YieldFuncSignature) {
+    // IDA 0x25ab40: base YieldFunctionDescriptor + member-pointer store (+40),
+    // then declareSignature (0x25ac02).
+    let desc = BoundHttpGetYield { url_param: Some(url_name.to_owned()) };
+    let signature = stub_0x25acb8(url_name);
+    (desc, signature)
 }
 
 // 0x25acb8 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EE16declareSignatureEPKcNS0_7VariantE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::declareSignature(char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x25acb8() -> ! {
-    todo!("0x25acb8 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x25acb8(url_name: &str) -> YieldFuncSignature {
+    // IDA 0x25acb8: return std::string + single url (string) arg.
+    YieldFuncSignature::new(&[(url_name, "std::string")])
 }
 
 // 0x25ace8 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::~BoundYieldFuncDesc()")]
-pub fn stub_0x25ace8() -> ! {
-    todo!("0x25ace8 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::~BoundYieldFuncDesc()")
+pub fn stub_0x25ace8(desc: BoundHttpGetYield) {
+    // IDA 0x25ace8: D0 (deleting) dtor — D1 body plus operator delete
+    // (0x25ad6a); the owned value drop frees both here.
+    drop(desc);
 }
 
 // 0x25adb4 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSB_IFvSsEEE
 // type: void __fastcall(int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
-pub fn stub_0x25adb4() -> ! {
-    todo!("0x25adb4 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")
+pub fn stub_0x25adb4(
+    url: &str,
+    resume: Box<dyn FnOnce(String)>,
+    on_error: Box<dyn FnOnce(String)>,
+    invoke: &mut dyn FnMut(&str, Box<dyn FnOnce(String)>, Box<dyn FnOnce(String)>),
+) {
+    // IDA 0x25adb4: unwrap member (+40/+44), getArg url (0x25ae3a),
+    // resume_adapter<string> bind (0x25ae60), member invoke (0x25ae8e),
+    // functor clears (0x25ae96..0x25aeb6).
+    invoke(url, resume, on_error);
 }
 
 // 0x25f838 — __ZNK3RBX10Reflection15EventDescriptor12isScriptableEv
 // type: int __fastcall(RBX::Reflection::EventDescriptor *this)
 #[doc(alias = "RBX::Reflection::EventDescriptor::isScriptable(void)const")]
-pub fn stub_0x25f838() -> ! {
-    todo!("0x25f838 RBX::Reflection::EventDescriptor::isScriptable(void)const")
+pub fn stub_0x25f838() -> bool {
+    // IDA 0x25f838: return 1 — events are always scriptable.
+    true
 }
 
 // 0x260394 — __ZN3RBX10Reflection23YieldFunctionDescriptorC2ERNS0_15ClassDescriptorEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::YieldFunctionDescriptor::YieldFunctionDescriptor(RBX::Reflection::ClassDescriptor &,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x260394() -> ! {
-    todo!("0x260394 RBX::Reflection::YieldFunctionDescriptor::YieldFunctionDescriptor(RBX::Reflection::ClassDescriptor &,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x260394(name: &str, owner: &str, registry: &mut YieldFunctionRegistry) -> usize {
+    // IDA 0x260394: Descriptor base + KIND tag + name/owner links, then
+    // MemberDescriptorContainer::declare (0x26044a).
+    stub_0x260638(registry, YieldFunctionDescriptor::new(name, owner))
 }
 
 // 0x260638 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE7declareEPS2_
 // type: int __fastcall(int **, int)
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::declare(RBX::Reflection::YieldFunctionDescriptor*)")]
-pub fn stub_0x260638() -> ! {
-    todo!("0x260638 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::declare(RBX::Reflection::YieldFunctionDescriptor*)")
+pub fn stub_0x260638(registry: &mut YieldFunctionRegistry, desc: YieldFunctionDescriptor) -> usize {
+    // IDA 0x260638: sorted declare into the container + name map + global
+    // registry; sub-containers fan out via declare_sub.
+    registry.declare(desc)
 }
 
 // 0x2607e0 — __ZN3RBX10Reflection23YieldFunctionDescriptorD1Ev
 // type: void __fastcall(RBX::Reflection::YieldFunctionDescriptor *__hidden this)
 #[doc(alias = "RBX::Reflection::YieldFunctionDescriptor::~YieldFunctionDescriptor()")]
-pub fn stub_0x2607e0() -> ! {
-    todo!("0x2607e0 RBX::Reflection::YieldFunctionDescriptor::~YieldFunctionDescriptor()")
+pub fn stub_0x2607e0(desc: YieldFunctionDescriptor) {
+    // IDA 0x2607e0: D1 — vtable reset + signature item list clear
+    // (0x2607f8..0x2607fc).
+    drop(desc);
 }
 
 // 0x260808 — __ZNSt6vectorIPN3RBX10Reflection23YieldFunctionDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
