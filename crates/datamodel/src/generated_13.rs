@@ -10,7 +10,7 @@ use rbx_core::SharedPtr;
 
 use parking_lot::Mutex;
 use rbx_core::signal::Signal;
-use crate::generated_05::{EventDescPayload, FunctorOp, GenericSlotWrapper, Instance, SignatureItem, Variant};
+use crate::generated_05::{ATTR_REFERENT, EventDescPayload, FunctorOp, GenericSlotWrapper, GuidData, GuidIter, GuidTree, Instance, ReferenceBinder, SignatureItem, Variant, XmlElement, instance_is_a};
 use crate::instance::Players;
 /// `RBX::Network::Players::PlayerChatType` (IDA `0xa4a600`): the tag word
 /// carried by `Variant::ChatType`; enumerant values are not yet resolved.
@@ -73,6 +73,25 @@ pub struct PlayersRefPropDesc {
     pub flags: i32,
     pub attributes: u32,
     pub permissions: u32,
+}
+/// Bound `Players` 1-arg member used by `BoundFuncDesc<Players,
+/// shared_ptr<Instance> (shared_ptr<Instance>), 1>` (IDA `0xa53b04`): the
+/// receiver plus the retained instance, returning a retained instance.
+pub type PlayersInstRetMethod = fn(&Players, &SharedPtr<Instance>) -> SharedPtr<Instance>;
+/// Rust model of that `BoundFuncDesc`: the member pointer plus the declared
+/// argument name and its reflected type.
+pub struct PlayersInstRetFuncDesc {
+    pub method: PlayersInstRetMethod,
+    pub arg_names: [String; 1],
+    pub signature: Vec<SignatureItem>,
+}
+/// Rust model of `RBX::Reflection::Type<RBX::Instance *>` (IDA `0xa50508`):
+/// the descriptor category and the declared tag. The `typeinfo` word and
+/// the `addToAllTypes` registry link are compiler/global state that
+/// collapses away here.
+pub struct InstancePtrType {
+    pub category: String,
+    pub tag: String,
 }
 /// Rust model of an `rbx::signals::signal<void ()(PlayerChatType,
 /// SharedPtr<Instance>, string, SharedPtr<Instance>)>::slot` link holding a
@@ -882,127 +901,247 @@ pub fn stub_a4f72c(desc: &PlayersRefPropDesc, players: &Players, out: &mut Varia
 
 // 0xa4fb04 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_a4fb04() -> ! {
-    todo!("0xa4fb04 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_a4fb04(desc: &PlayersRefPropDesc, players: &Players, variant: &Variant) {
+    // IDA 0xa4fb04: `Variant::get<shared_ptr<DescribedBase>>` any_cast, then
+    // the virtual `setRefValue` (slot `+64` → IDA 0xa5002c); the temp
+    // `shared_ptr` release is `Drop`-managed here.
+    match variant {
+        Variant::Instance(inst) => stub_a5002c(desc, players, inst),
+        _ => panic!("0xa4fb04: any_cast<shared_ptr<DescribedBase>> failed"),
+    }
 }
 
 // 0xa4fd20 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE9copyValueEPKNS0_13DescribedBaseEPS6_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_a4fd20() -> ! {
-    todo!("0xa4fd20 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_a4fd20(desc: &PlayersRefPropDesc, src: &Players, dst: &Players) {
+    // IDA 0xa4fd20: `getValue` (`**(desc + 44) + 8`, IDA 0xa50018) on `src`,
+    // then `setValue` (`**(desc + 44) + 12`, IDA 0xa500a8) on `dst` — which
+    // throws for the get-only impl, so the get runs and the set panics.
+    let value = stub_a50018(desc, src);
+    stub_a500a8(desc, dst, value.as_ref());
 }
 
 // 0xa4fd4c — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_a4fd4c() -> ! {
-    todo!("0xa4fd4c RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_a4fd4c(desc: &PlayersRefPropDesc, players: &Players, _element: *mut XmlElement) -> Option<SharedPtr<Instance>> {
+    // IDA 0xa4fd4c: `getRefValue` plus `InstanceHandle` construction, then
+    // `XmlNameValuePair::clearValue(element + 12)` and boxing of the handle
+    // into the value slot. The element value slot is unmodeled (`XmlElement`
+    // carries tag/attrs/children only), so the clear+install collapses into
+    // returning the retained handle for the caller to sink.
+    // SAFETY: `_element` must point to a valid `XmlElement` (sink documented, unmodeled).
+    let _ = _element;
+    stub_a50018(desc, players)
 }
 
 // 0xa4fff4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_a4fff4() -> ! {
-    todo!("0xa4fff4 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_a4fff4(desc: &PlayersRefPropDesc, players: &Players, element: &XmlElement, binder: &mut ReferenceBinder) {
+    // IDA 0xa4fff4: `element ? element + 12 : 0`, then the `IReferenceBinder`
+    // virtual (slot `+4`) with the value, the object, and `desc + 40`. The
+    // binder machinery is unmodeled, so the pending IDREF is recorded under
+    // its `referent` name with a null target for later resolution.
+    let _ = (desc, players);
+    if let Some(attr) = element.find_attribute(ATTR_REFERENT) {
+        binder.bind(attr.value.as_str(), std::ptr::null());
+    }
 }
 
 // 0xa50018 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE11getRefValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_a50018() -> ! {
-    todo!("0xa50018 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::getRefValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_a50018(desc: &PlayersRefPropDesc, players: &Players) -> Option<SharedPtr<Instance>> {
+    // IDA 0xa50018: `GetImpl::getValue` (IDA 0xa503c0) plus the `+36`
+    // DescribedBase→Instance adjust on non-null; null stays null. The
+    // adjust collapses; `None` is the null return.
+    (desc.getter)(players)
 }
 
 // 0xa5002c — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE11setRefValueEPNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
-pub fn stub_a5002c() -> ! {
-    todo!("0xa5002c RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_a5002c(desc: &PlayersRefPropDesc, players: &Players, value: &SharedPtr<Instance>) {
+    // IDA 0xa5002c: `__dynamic_cast<Instance*>` of the value (always
+    // succeeds for a `SharedPtr<Instance>`; a mismatch would throw
+    // `std::bad_cast`), then `GetImpl::setValue` (IDA 0xa503e4), which
+    // throws for the get-only impl.
+    let _ = (desc, players, value);
+    stub_a503e4()
 }
 
 // 0xa500a8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE17setRefValueUnsafeEPNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
-pub fn stub_a500a8() -> ! {
-    todo!("0xa500a8 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_a500a8(desc: &PlayersRefPropDesc, players: &Players, value: Option<&SharedPtr<Instance>>) {
+    // IDA 0xa500a8: the `setRefValueUnsafe` path — same `GetImpl::setValue`
+    // call as 0xa5002c without the `dynamic_cast` (null passes through to
+    // the same throw).
+    let _ = (desc, players, value);
+    stub_a503e4()
 }
 
 // 0xa500c8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_a500c8() -> ! {
-    todo!("0xa500c8 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_a500c8(desc: &PlayersRefPropDesc, players: &Players, handle: Option<&SharedPtr<Instance>>) {
+    // IDA 0xa500c8: retain the incoming handle, adjust to the
+    // `DescribedBase` subobject, call `GetImpl::setValue` (same throw as
+    // 0xa500a8), release on scope exit. The clone plus `Drop` is the
+    // retain/release pair.
+    let retained = handle.cloned();
+    stub_a500a8(desc, players, retained.as_ref());
 }
 
 // 0xa50340 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_a50340() -> ! {
-    todo!("0xa50340 non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_a50340(desc: &PlayersRefPropDesc, players: &Players, handle: Option<&SharedPtr<Instance>>) {
+    // IDA 0xa50340: non-virtual thunk — `this - 40` adjusts back to the
+    // `RefPropDescriptor` base, then tail-calls `assignIDREF` (IDA
+    // 0xa500c8). The adjustment is a vtable-layout detail that collapses
+    // away here.
+    stub_a500c8(desc, players, handle);
 }
 
 // 0xa503b8 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEPNS_8InstanceEE7GetImplIMS3_KFS5_vEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::isReadOnly(void)const")]
-pub fn stub_a503b8() -> ! {
-    todo!("0xa503b8 RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::isReadOnly(void)const")
+pub fn stub_a503b8() -> bool {
+    // IDA 0xa503b8: `GetImpl<Instance* (Players::*)() const>::isReadOnly` —
+    // `return 1`; the get-only impl has no setter.
+    true
 }
 
 // 0xa503bc — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEPNS_8InstanceEE7GetImplIMS3_KFS5_vEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::isWriteOnly(void)const")]
-pub fn stub_a503bc() -> ! {
-    todo!("0xa503bc RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_a503bc() -> bool {
+    // IDA 0xa503bc: `GetImpl<Instance* (Players::*)() const>::isWriteOnly` —
+    // `return 0`; the getter always yields a value.
+    false
 }
 
 // 0xa503c0 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEPNS_8InstanceEE7GetImplIMS3_KFS5_vEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_a503c0() -> ! {
-    todo!("0xa503c0 RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_a503c0(getter: PlayersRefGetter, players: &Players) -> Option<SharedPtr<Instance>> {
+    // IDA 0xa503c0: `DescribedBase - 36` select, member-pointer tag-bit
+    // adjust, then the `Instance* (Players::*)() const` call. Both adjusts
+    // collapse; `None` is the null return.
+    getter(players)
 }
 
 // 0xa503e4 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEPNS_8InstanceEE7GetImplIMS3_KFS5_vEE8setValueEPNS0_13DescribedBaseERKS5_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::Instance * const&)const")]
 pub fn stub_a503e4() -> ! {
-    todo!("0xa503e4 RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::Instance * const&)const")
+    // IDA 0xa503e4: throws `std::runtime_error("can't set value")` — the
+    // get-only impl has no setter. Every `setRefValue*`/`assignIDREF` path
+    // on this descriptor funnels here.
+    panic!("0xa503e4: can't set value")
 }
 
 // 0xa50508 — __ZN3RBX10Reflection4TypeC2IPNS_8InstanceEEEPKcS6_PT_
 #[doc(alias = "RBX::Reflection::Type::Type<RBX::Instance *>(char const*,char const*,RBX::Instance * *)")]
-pub fn stub_a50508() -> ! {
-    todo!("0xa50508 RBX::Reflection::Type::Type<RBX::Instance *>(char const*,char const*,RBX::Instance * *)")
+pub fn stub_a50508(this: *mut InstancePtrType, category: &str, tag: &str) {
+    // IDA 0xa50508: base `Descriptor::Descriptor` init, `typeinfo` install,
+    // `Name::declare` of the tag, `ReleaseAssert(!tag.empty())` (Type.h:77),
+    // then the `addToAllTypes` registry link. The typeinfo word and the
+    // global registry are unmodeled; the tag assert stays. The trailing
+    // `Instance **` tag-dispatch word collapses (overload resolution only).
+    // SAFETY: `this` must point to valid uninitialized `InstancePtrType` storage.
+    debug_assert!(!tag.is_empty(), "0xa50508: !this->tag.empty()");
+    unsafe {
+        core::ptr::write(this, InstancePtrType { category: category.to_string(), tag: tag.to_string() });
+    }
 }
 
 // 0xa51ee0 — __ZNSt8_Rb_treeIN3RBX4Guid4DataESt4pairIKS2_PNS0_8InstanceEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE16_M_insert_uniqueERKS7_
 #[doc(alias = "std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,RBX::Instance *>,std::_Select1st<std::pair<RBX::Guid::Data const,RBX::Instance *>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,RBX::Instance *>>>::_M_insert_unique(std::pair<RBX::Guid::Data const,RBX::Instance *> const&)")]
-pub fn stub_a51ee0() -> ! {
-    todo!("0xa51ee0 std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,RBX::Instance *>,std::_Select1st<std::pair<RBX::Guid::Data const,RBX::Instance *>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,RBX::Instance *>>>::_M_insert_unique(std::pair<RBX::Guid::Data const,RBX::Instance *> const&)")
+pub fn stub_a51ee0(tree: *mut GuidTree, key: &GuidData, value: *const Instance) -> (GuidIter, bool) {
+    // IDA 0xa51ee0: descending walk from the root via
+    // `Guid::Data::operator<` (see `guid_data_less`), `lower_bound` plus
+    // `_Rb_tree_decrement` duplicate check, then node `operator new` plus
+    // `_M_insert` rebalance on miss. The red-black words collapse into the
+    // `HashMap`; the result is (iterator to the key, whether inserted).
+    // SAFETY: `tree` must point to a valid `GuidTree`; `key` must be readable.
+    unsafe {
+        match (*tree).entry(*key) {
+            std::collections::hash_map::Entry::Vacant(slot) => {
+                slot.insert(value);
+                (Some(*key), true)
+            }
+            std::collections::hash_map::Entry::Occupied(_) => (Some(*key), false),
+        }
+    }
 }
 
 // 0xa53b04 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFN5boost10shared_ptrINS_8InstanceEEES7_ELi1EED2Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
-pub fn stub_a53b04() -> ! {
-    todo!("0xa53b04 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_a53b04(this: *mut PlayersInstRetFuncDesc) {
+    // IDA 0xa53b04: `BoundFuncDesc<Players, shared_ptr<Instance>
+    // (shared_ptr<Instance>), 1>` D2 — vtable resets (compiler-managed) plus
+    // member drops (arg-name release, signature-list `_M_clear`); storage
+    // kept. `drop_in_place` runs the same field drops without freeing.
+    // SAFETY: `this` must point to a valid `PlayersInstRetFuncDesc` that is not used again.
+    unsafe {
+        core::ptr::drop_in_place(this);
+    }
 }
 
 // 0xa53c54 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFvN5boost10shared_ptrINS_8InstanceEEESsSsELi3EED2Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,std::string),3>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>,std::string,std::string),3>::~BoundFuncDesc()
-pub fn stub_a53c54() -> ! {
-    todo!("0xa53c54 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,std::string),3>::~BoundFuncDesc()")
+pub fn stub_a53c54(this: *mut PlayersChatFuncDesc) {
+    // IDA 0xa53c54: `BoundFuncDesc<Players, void
+    // (shared_ptr<Instance>, string, string), 3>` D2 — same vtable-reset +
+    // member-drop sequence as 0xa53b04 on `PlayersChatFuncDesc`; storage kept.
+    // SAFETY: `this` must point to a valid `PlayersChatFuncDesc` that is not used again.
+    unsafe {
+        core::ptr::drop_in_place(this);
+    }
 }
 
 // 0xa53e38 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EED2Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()
-pub fn stub_a53e38() -> ! {
-    todo!("0xa53e38 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")
+pub fn stub_a53e38(this: *mut PlayersStrInstFuncDesc) {
+    // IDA 0xa53e38: `BoundFuncDesc<Players, void (string,
+    // shared_ptr<Instance>), 2>` D2 — same vtable-reset + member-drop
+    // sequence as 0xa53b04 on `PlayersStrInstFuncDesc`; storage kept.
+    // SAFETY: `this` must point to a valid `PlayersStrInstFuncDesc` that is not used again.
+    unsafe {
+        core::ptr::drop_in_place(this);
+    }
 }
 
 // 0xa80f18 — __ZN3RBX7Network6Player17requestFriendshipEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Network::Player::requestFriendship(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Network::Player::requestFriendship(boost::shared_ptr<RBX::Instance>)
-pub fn stub_a80f18() -> ! {
-    todo!("0xa80f18 RBX::Network::Player::requestFriendship(rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_a80f18(player: &SharedPtr<Instance>) {
+    // IDA 0xa80f18: `fastSharedDynamicCast<Player, Instance>` — a non-`Player`
+    // throws `runtime_error("RequestFriendship should be passed a Player")`;
+    // else `signal_with_args<2,bool,int>::operator()` fires `(true, userId)`
+    // (`+156`) and `RemoteEventDescImpl::replicateEvent` ships it. The cast
+    // collapses into `instance_is_a`; the retain/release pair into the
+    // clone/`Drop`. The signal fan-out and replication are unmodeled network
+    // routing.
+    // // BUG: the friendship request never reaches the server — the event
+    // // fire plus `replicateEvent` are no-ops until the remote-event port lands.
+    let raw: *const Instance = &**player;
+    if !instance_is_a(raw, "Player") {
+        panic!("0xa80f18: RequestFriendship should be passed a Player");
+    }
+    let _retained = player.clone();
 }
 
 // 0xa81364 — __ZN3RBX7Network6Player16revokeFriendshipEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Network::Player::revokeFriendship(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Network::Player::revokeFriendship(boost::shared_ptr<RBX::Instance>)
-pub fn stub_a81364() -> ! {
-    todo!("0xa81364 RBX::Network::Player::revokeFriendship(rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_a81364(player: &SharedPtr<Instance>) {
+    // IDA 0xa81364: same shape as 0xa80f18 (`fastSharedDynamicCast<Player>`,
+    // `(true, userId)` fire, `replicateEvent`) with
+    // `runtime_error("RevokeFriendship should be passed a Player")` on a
+    // non-`Player`.
+    // // BUG: the revocation never reaches the server — same unmodeled
+    // // fire/`replicateEvent` as 0xa80f18.
+    let raw: *const Instance = &**player;
+    if !instance_is_a(raw, "Player") {
+        panic!("0xa81364: RevokeFriendship should be passed a Player");
+    }
+    let _retained = player.clone();
 }
 
 // 0xa83044 — __ZN3RBX7Network6Player12saveInstanceESsN5boost10shared_ptrINS_8InstanceEEE
