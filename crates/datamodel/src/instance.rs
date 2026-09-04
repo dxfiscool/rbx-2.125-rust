@@ -11722,8 +11722,22 @@ pub fn stub_0x3c0f7c(this: *mut BBRefPropDescriptor) {
 // 0x3c2560 — __ZN3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::RefPropDescriptor<RBX::Instance* (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance*)>(char const*,char const*,RBX::Instance* (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::RefPropDescriptor<RBX::Instance* (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance*)>(char const*,char const*,RBX::Instance* (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x3c2560() -> ! {
-    todo!("0x3c2560 RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::RefPropDescriptor<RBX::Instance* (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance*)>(char const*,char const*,RBX::Instance* (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x3c2560(desc: *mut BBRefPropDescriptor, read_only: bool, write_only: bool) {
+    // IDA 0x3c2560: `classDescriptor<BillboardGui>` (0x3c2572) +
+    // `RefType<Instance *>::singleton` (0x3c2576) + `PropertyDescriptor` base C2
+    // (0x3c25b8) + vtable installs (0x3c25c8-0x3c25d0) + the `0x14` GetSetImpl
+    // payload `new` at `+0x2C` carrying the getter/setter member pair
+    // (0x3c25d2-0x3c25f6, vtable `off_12...GetSetImpl`). Singletons, base and
+    // member encodings collapse; the modeled half is the payload claim plus
+    // the attribute flags, which is what `isReadOnly`/`isWriteOnly`
+    // (0x3c2634/0x3c2644) report. The member pair is the adornee getter /
+    // `setAdornee` (0x3bfaf4).
+    // SAFETY: `desc` must point to a valid (possibly uninit) `BBRefPropDescriptor`.
+    unsafe {
+        (*desc).owned = Some(Box::new(PVRefExtra { words: [0; 8] }));
+        (*desc).read_only = read_only;
+        (*desc).write_only = write_only;
+    }
 }
 
 // 0x3c2604 — __ZN3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEED0Ev
@@ -11761,106 +11775,250 @@ pub fn stub_0x3c2644(this: *const BBRefPropDescriptor) -> bool {
 // 0x3c2654 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x3c2654() -> ! {
-    todo!("0x3c2654 RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x3c2654(
+    desc: *const BBRefPropDescriptor,
+    first: *const BillboardGui,
+    second: *const BillboardGui,
+) -> bool {
+    // IDA 0x3c2654: `getValue` on both sides through the `+0x2C` impl slot `+8`
+    // (0x3c265a-0x3c266e) with the compare at 0x3c2670-0x3c2678 — same shape as
+    // 0x395164. The impl fetch collapses to `stub_0x3c2978`.
+    // SAFETY: `desc` must point to a valid descriptor; `first`/`second` must
+    // point to valid `BillboardGui`s.
+    let _ = desc;
+    stub_0x3c2978(desc, first) == stub_0x3c2978(desc, second)
 }
 
 // 0x3c267c — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const
-pub fn stub_0x3c267c() -> ! {
-    todo!("0x3c267c RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x3c267c(desc: *const BBRefPropDescriptor, obj: *const BillboardGui) -> SharedPtr<Instance> {
+    // IDA 0x3c267c: `getValue` through the `+0x2C` slot `+8` (0x3c2698-0x3c26a0),
+    // `shared_from<Instance>` (0x3c26a8), `+36` (`+0x24`) DescribedBase adjust
+    // (0x3c26bc-0x3c26c2), then the Variant type-singleton + value store. The
+    // Variant store belongs to the reflection Variant domain; the modeled half
+    // is getter + retain, and the adjust collapses under the typed model. A
+    // null adornee has no owner to lock; the original faults in `shared_from`,
+    // mapped to the `bad_weak_ptr` panic like 0x39518c. Twin of 0x39518c.
+    // SAFETY: `desc`/`obj` must point to valid values; the adornee must be
+    // null or point into a live `SharedPtr<Instance>`.
+    let raw = stub_0x3c2978(desc, obj);
+    if raw.is_null() {
+        panic!("0x3c267c getVariant<BillboardGui>: bad_weak_ptr");
+    }
+    unsafe {
+        let owned = SharedPtr::from_raw(raw);
+        let out = owned.clone();
+        core::mem::forget(owned);
+        out
+    }
 }
 
 // 0x3c2794 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const
-pub fn stub_0x3c2794() -> ! {
-    todo!("0x3c2794 RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x3c2794(
+    desc: *const BBRefPropDescriptor,
+    obj: *mut BillboardGui,
+    value: Option<SharedPtr<Instance>>,
+) {
+    // IDA 0x3c2794: `Variant::get<shared_ptr<DescribedBase>>`
+    // (0x3c27b0-0x3c27b8) — which may yield a null handle — then vtable `+64`
+    // (`+0x40`) `setRefValue` (0x3c27f0-0x3c27f6). The unbox collapses into
+    // the typed arg; moving `value` in is the retain, drop at return the
+    // release. Twin of 0x3952a4.
+    let raw = value.as_ref().map_or(core::ptr::null(), SharedPtr::as_ptr);
+    stub_0x3c298c(desc, obj, raw);
 }
 
 // 0x3c285c — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const
-pub fn stub_0x3c285c() -> ! {
-    todo!("0x3c285c RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x3c285c(
+    desc: *const BBRefPropDescriptor,
+    src: *const BillboardGui,
+    dst: *mut BillboardGui,
+) {
+    // IDA 0x3c285c: `getValue` spill through the `+0x2C` slot `+8`
+    // (0x3c2866-0x3c286e) then `setValue` through slot `+12`
+    // (0x3c2870-0x3c287a); the spill retains across the call. Twin of
+    // 0x39536c.
+    // SAFETY: `desc` must point to a valid descriptor; `src`/`dst` must point
+    // to valid `BillboardGui`s.
+    let current = stub_0x3c2978(desc, src);
+    stub_0x3c298c(desc, dst, current);
 }
 
 // 0x3c2880 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const
-pub fn stub_0x3c2880() -> ! {
-    todo!("0x3c2880 RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x3c2880(
+    desc: *const BBRefPropDescriptor,
+    obj: *const BillboardGui,
+) -> Option<SharedPtr<Instance>> {
+    // IDA 0x3c2880: `getValue` through the `+0x2C` slot `+8` (0x3c289c-0x3c28a4)
+    // with an explicit null path (0x3c28a8-0x3c28ae), `+36` adjust,
+    // `InstanceHandle` from the retained lock (0x3c28b0-0x3c28b2),
+    // `XmlNameValuePair::setValue` at `a3 + 12` (0x3c28e4-0x3c28ea). The XML
+    // element store is out of domain; the modeled half is getter + lock,
+    // returned for the XML batch — `None` is the null-handle path. Twin of
+    // 0x395390.
+    // SAFETY: `desc`/`obj` must point to valid values; a non-null adornee must
+    // point into a live `SharedPtr<Instance>`.
+    let raw = stub_0x3c2978(desc, obj);
+    if raw.is_null() {
+        return None;
+    }
+    Some(stub_0x3c267c(desc, obj))
 }
 
 // 0x3c2954 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const
-pub fn stub_0x3c2954() -> ! {
-    todo!("0x3c2954 RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x3c2954(
+    desc: *const BBRefPropDescriptor,
+    obj: *mut BillboardGui,
+    resolved: Option<SharedPtr<Instance>>,
+) {
+    // IDA 0x3c2954: tail-jump (`BX R9`) into the `IReferenceBinder` vtable `+4`
+    // resolve slot (0x3c2956-0x3c2972) with the element `+0xC` adjust and the
+    // `desc + 0x28` member pointer. The binder domain is unmodeled; the
+    // modeled half is the resolved-handle store through the member setter —
+    // same collapse as the `PVAdornment` readValue (0x395464), which routes to
+    // the unsafe setter.
+    // SAFETY: `desc` must point to a valid descriptor; `obj` must point to a
+    // valid `BillboardGui`.
+    let raw = resolved.as_ref().map_or(core::ptr::null(), SharedPtr::as_ptr);
+    stub_0x3c2a08(desc, obj, raw);
 }
 
 // 0x3c2978 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11getRefValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::getRefValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x3c2978() -> ! {
-    todo!("0x3c2978 RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::getRefValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x3c2978(_desc: *const BBRefPropDescriptor, obj: *const BillboardGui) -> *const Instance {
+    // IDA 0x3c2978: `+0x2C` slot-`+8` dispatch (0x3c297a-0x3c2982), then
+    // null ? null : `+36` (`+0x24`) DescribedBase adjust (0x3c2984-0x3c2988
+    // `CMP`/`ADDNE`). The getter is the adornee field and the adjust collapses
+    // under the typed model. Twin of 0x395488.
+    // SAFETY: `obj` must point to a valid `BillboardGui`.
+    unsafe { (*obj).adornee }
 }
 
 // 0x3c298c — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11setRefValueEPNS0_13DescribedBaseES6_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const
-pub fn stub_0x3c298c() -> ! {
-    todo!("0x3c298c RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_0x3c298c(
+    _desc: *const BBRefPropDescriptor,
+    obj: *mut BillboardGui,
+    value: *const Instance,
+) {
+    // IDA 0x3c298c: null passes through (0x3c2996-0x3c2998); non-null goes
+    // through `__dynamic_cast` DescribedBase -> Instance (0x3c299a-0x3c29b6)
+    // with a `bad_cast` throw on failure (0x3c29d2-0x3c2a02), then the `+0x2C`
+    // slot-`+12` setter (0x3c29c0-0x3c29cc). Model space is already typed, so
+    // the cast cannot fail; the store is `setAdornee` (0x3bfaf4). Twin of
+    // 0x39549c.
+    // SAFETY: `obj` must point to a valid `BillboardGui`; `value` must be null
+    // or point to a valid `Instance`.
+    stub_0x3bfaf4(obj, value);
 }
 
 // 0x3c2a08 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const
-pub fn stub_0x3c2a08() -> ! {
-    todo!("0x3c2a08 RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_0x3c2a08(
+    _desc: *const BBRefPropDescriptor,
+    obj: *mut BillboardGui,
+    value: *const Instance,
+) {
+    // IDA 0x3c2a08: raw `-36` (`-0x24`) DescribedBase strip, no cast check
+    // (0x3c2a0e-0x3c2a18), then the same `+0x2C` slot-`+12` setter
+    // (0x3c2a1a-0x3c2a22). Checked vs unchecked collapses in typed model
+    // space; same `setAdornee` store with the same pointer contract as
+    // 0x3c298c. Twin of 0x395518.
+    // SAFETY: `obj` must point to a valid `BillboardGui`; `value` must be null
+    // or point to a valid `Instance`.
+    stub_0x3bfaf4(obj, value);
 }
 
 // 0x3c2a28 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
-pub fn stub_0x3c2a28() -> ! {
-    todo!("0x3c2a28 RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x3c2a28(
+    desc: *const BBRefPropDescriptor,
+    obj: *mut BillboardGui,
+    value: Option<SharedPtr<Instance>>,
+) {
+    // IDA 0x3c2a28: `shared_count` copy (0x3c2a4c-0x3c2a56), `-36` (`-0x24`)
+    // DescribedBase strip of the handle (0x3c2a8a-0x3c2a92), then the `+0x2C`
+    // slot-`+12` setter. Moving `value` in is the count copy; the strip
+    // collapses, and the no-cast shape routes to the unsafe setter. Twin of
+    // 0x395538.
+    // SAFETY: `desc` must point to a valid descriptor; `obj` must point to a
+    // valid `BillboardGui`.
+    let raw = value.as_ref().map_or(core::ptr::null(), SharedPtr::as_ptr);
+    stub_0x3c2a08(desc, obj, raw);
 }
 
 // 0x3c2b08 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 // was: non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
-pub fn stub_0x3c2b08() -> ! {
-    todo!("0x3c2b08 non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x3c2b08(
+    desc: *const BBRefPropDescriptor,
+    obj: *mut BillboardGui,
+    value: Option<SharedPtr<Instance>>,
+) {
+    // IDA 0x3c2b08: non-virtual thunk into `assignIDREF` (0x3c2a28); the
+    // `R0 - 0x28` receiver adjustment (0x3c2b08) collapses — same receiver,
+    // same handle. Cf. 0x2b5d68.
+    // SAFETY: `desc` must point to a valid descriptor; `obj` must point to a
+    // valid `BillboardGui`.
+    stub_0x3c2a28(desc, obj, value);
 }
 
 // 0x3c2b10 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::isReadOnly(void)const
-pub fn stub_0x3c2b10() -> ! {
-    todo!("0x3c2b10 RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::isReadOnly(void)const")
+pub fn stub_0x3c2b10() -> bool {
+    // IDA 0x3c2b10: `GetSetImpl::isReadOnly` returns `0` (`MOVS R0, #0`,
+    // 0x3c2b10) — twin of 0x395620.
+    false
 }
 
 // 0x3c2b14 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::isWriteOnly(void)const
-pub fn stub_0x3c2b14() -> ! {
-    todo!("0x3c2b14 RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::isWriteOnly(void)const")
+pub fn stub_0x3c2b14() -> bool {
+    // IDA 0x3c2b14: `GetSetImpl::isWriteOnly` returns `0` (`MOVS R0, #0`,
+    // 0x3c2b14) — twin of 0x395624.
+    false
 }
 
 // 0x3c2b18 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::getValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x3c2b18() -> ! {
-    todo!("0x3c2b18 RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x3c2b18(obj: *const BillboardGui) -> *const Instance {
+    // IDA 0x3c2b18: null stays `0`, else `-36` (`-0x24`) DescribedBase strip
+    // (0x3c2b18-0x3c2b1e), member-getter fetch at `+4`/`+8` with the virtual
+    // encoding (0x3c2b22-0x3c2b32), tail-call (0x3c2b34 `BX R1`). The member
+    // encoding and the strip collapse; the getter is the adornee field. Twin
+    // of 0x395628.
+    // SAFETY: `obj` must point to a valid `BillboardGui`.
+    unsafe { (*obj).adornee }
 }
 
 // 0x3c2b38 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::Instance * const&)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::Instance * const&)const
-pub fn stub_0x3c2b38() -> ! {
-    todo!("0x3c2b38 RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::Instance * const&)const")
+pub fn stub_0x3c2b38(obj: *mut BillboardGui, value: *const Instance) {
+    // IDA 0x3c2b38: null stays `0`, else `-36` (`-0x24`) strip
+    // (0x3c2b3c-0x3c2b40), member-setter fetch at `+0xC`/`+0x10`
+    // (0x3c2b44-0x3c2b4c) with the virtual encoding (0x3c2b50-0x3c2b54), value
+    // word load (0x3c2b56), tail-call (0x3c2b58 `BX R3`). The member is
+    // `setAdornee` (0x3bfaf4); encoding + strip collapse. Twin of 0x395648.
+    // SAFETY: `obj` must point to a valid `BillboardGui`; `value` must be null
+    // or point to a valid `Instance`.
+    stub_0x3bfaf4(obj, value);
 }
 
 // 0x3c39ac — __ZNK3RBX6Camera33getCameraSubjectInstanceDangerousEv
