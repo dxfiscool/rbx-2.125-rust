@@ -35,9 +35,7 @@ pub fn stub_f65df4() -> ! {
 
 // 0xf65e14 — j___ZN3RBX17WaterFaceRendererINS_19MegaClusterInstanceEE5applyERKNS_5Voxel6RegionINS1_9CellChunkEE8iteratorENS3_13FaceDirectionENS_16RenderPredStatusE
 #[doc(alias = "RBX::WaterFaceRenderer<RBX::MegaClusterInstance>::apply(RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk>::iterator const&,RBX::Voxel::FaceDirection,RBX::RenderPredStatus)")]
-pub fn stub_f65e14() -> ! {
-    todo!("0xf65e14 RBX::WaterFaceRenderer<RBX::MegaClusterInstance>::apply(RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk>::iterator const&,RBX::Voxel::FaceDirection,RBX::RenderPredStatus)")
-}
+pub use crate::generated_datamodel_delta_a::stub_0xf65e14 as stub_f65e14;
 
 // 0xf65e94 — j___ZN3RBX20SolidTerrainRendererINS_19MegaClusterInstanceEE12renderHelperENS_5Voxel4CellENS3_12CellMaterialERKN3G3D12Vector3int16EbRKNS6_7Vector3ENS3_13FaceDirectionEh
 #[doc(alias = "RBX::SolidTerrainRenderer<RBX::MegaClusterInstance>::renderHelper(RBX::Voxel::Cell,RBX::Voxel::CellMaterial,G3D::Vector3int16 const&,bool,G3D::Vector3 const&,RBX::Voxel::FaceDirection,unsigned char)")]
@@ -47,27 +45,19 @@ pub fn stub_f65e94() -> ! {
 
 // 0xf65ea4 — j___ZN3RBX20SolidTerrainRendererINS_19MegaClusterInstanceEE12wedgeUpEmptyERKNS_5Voxel6RegionINS1_9CellChunkEE8iteratorE
 #[doc(alias = "RBX::SolidTerrainRenderer<RBX::MegaClusterInstance>::wedgeUpEmpty(RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk>::iterator const&)")]
-pub fn stub_f65ea4() -> ! {
-    todo!("0xf65ea4 RBX::SolidTerrainRenderer<RBX::MegaClusterInstance>::wedgeUpEmpty(RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk>::iterator const&)")
-}
+pub use crate::generated_datamodel_delta_a::stub_0xf65ea4 as stub_f65ea4;
 
 // 0xf65eb4 — j___ZN3RBX20SolidTerrainRendererINS_19MegaClusterInstanceEE14detectOutlinesERKNS_5Voxel6RegionINS1_9CellChunkEE8iteratorENS3_13FaceDirectionENS_16RenderPredStatusE
 #[doc(alias = "RBX::SolidTerrainRenderer<RBX::MegaClusterInstance>::detectOutlines(RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk>::iterator const&,RBX::Voxel::FaceDirection,RBX::RenderPredStatus)")]
-pub fn stub_f65eb4() -> ! {
-    todo!("0xf65eb4 RBX::SolidTerrainRenderer<RBX::MegaClusterInstance>::detectOutlines(RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk>::iterator const&,RBX::Voxel::FaceDirection,RBX::RenderPredStatus)")
-}
+pub use crate::generated_datamodel_delta_a::stub_0xf65eb4 as stub_f65eb4;
 
 // 0xf65ec4 — j___ZN3RBX20SolidTerrainRendererINS_19MegaClusterInstanceEE19detectWedgeOutlinesERKNS_5Voxel6RegionINS1_9CellChunkEE8iteratorE
 #[doc(alias = "RBX::SolidTerrainRenderer<RBX::MegaClusterInstance>::detectWedgeOutlines(RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk>::iterator const&)")]
-pub fn stub_f65ec4() -> ! {
-    todo!("0xf65ec4 RBX::SolidTerrainRenderer<RBX::MegaClusterInstance>::detectWedgeOutlines(RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk>::iterator const&)")
-}
+pub use crate::generated_datamodel_delta_a::stub_0xf65ec4 as stub_f65ec4;
 
 // 0xf65ed4 — j___ZN3RBX20SolidTerrainRendererINS_19MegaClusterInstanceEE5applyERKNS_5Voxel6RegionINS1_9CellChunkEE8iteratorENS3_13FaceDirectionENS_16RenderPredStatusE
 #[doc(alias = "RBX::SolidTerrainRenderer<RBX::MegaClusterInstance>::apply(RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk>::iterator const&,RBX::Voxel::FaceDirection,RBX::RenderPredStatus)")]
-pub fn stub_f65ed4() -> ! {
-    todo!("0xf65ed4 RBX::SolidTerrainRenderer<RBX::MegaClusterInstance>::apply(RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk>::iterator const&,RBX::Voxel::FaceDirection,RBX::RenderPredStatus)")
-}
+pub use crate::generated_datamodel_delta_a::stub_0xf65ed4 as stub_f65ed4;
 
 // 0xf65ee4 — j___ZN3RBX20SolidTerrainRendererINS_19MegaClusterInstanceEE9wedgeFaceERKNS_5Voxel6RegionINS1_9CellChunkEE8iteratorE
 #[doc(alias = "RBX::SolidTerrainRenderer<RBX::MegaClusterInstance>::wedgeFace(RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk>::iterator const&)")]
@@ -77,15 +67,11 @@ pub fn stub_f65ee4() -> ! {
 
 // 0xf65fb4 — j___ZNK3RBX20WaterRenderPredicateINS_19MegaClusterInstanceEE8internalERKNS_5Voxel6RegionINS1_9CellChunkEE8iteratorENS3_13FaceDirectionE
 #[doc(alias = "RBX::WaterRenderPredicate<RBX::MegaClusterInstance>::internal(RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk>::iterator const&,RBX::Voxel::FaceDirection)const")]
-pub fn stub_f65fb4() -> ! {
-    todo!("0xf65fb4 RBX::WaterRenderPredicate<RBX::MegaClusterInstance>::internal(RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk>::iterator const&,RBX::Voxel::FaceDirection)const")
-}
+pub use crate::generated_datamodel_delta_a::stub_0xf65fb4 as stub_f65fb4;
 
 // 0xf66124 — j___ZN3RBX5Voxel6RegionINS_19MegaClusterInstance9CellChunkEE14xline_iteratorC2ERKS4_
 #[doc(alias = "RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk>::xline_iterator::xline_iterator(RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk> const&)")]
-pub fn stub_f66124() -> ! {
-    todo!("0xf66124 RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk>::xline_iterator::xline_iterator(RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk> const&)")
-}
+pub use crate::generated_datamodel_delta_a::stub_0xf66124 as stub_f66124;
 
 // 0xf661a4 — j___ZN3RBX9LightGrid20occupancyFillTerrainINS_19MegaClusterInstanceEEEvRNS_14LightGridChunkERT_RKNS_12Vector3int32ERKNS_7ExtentsE
 #[doc(alias = "void RBX::LightGrid::occupancyFillTerrain<RBX::MegaClusterInstance>(RBX::LightGridChunk &,RBX::MegaClusterInstance &,RBX::Vector3int32 const&,RBX::Extents const&)")]
