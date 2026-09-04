@@ -694,27 +694,19 @@ pub fn stub_0xb06d38() -> ! {
 // 0xb07458 — __ZN3RBX11shared_fromINS_7Network19InstancePacketCacheEEEN5boost10shared_ptrIT_EEPS5_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Network::InstancePacketCache> RBX::shared_from<RBX::Network::InstancePacketCache>(RBX::Network::InstancePacketCache*)")]
 // was: boost::shared_ptr<RBX::Network::InstancePacketCache> RBX::shared_from<RBX::Network::InstancePacketCache>(RBX::Network::InstancePacketCache*)
-pub fn stub_0xb07458() -> ! {
-    todo!("0xb07458 rbx_core::SharedPtr<RBX::Network::InstancePacketCache> RBX::shared_from<RBX::Network::InstancePacketCache>(RBX::Network::InstancePacketCache*)")
-}
+pub use crate::generated_110::stub_b07458 as stub_0xb07458;
 
 // 0xb0ac2c — __ZN3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11decodeCellsINS_34OneQuarterClusterChunkCellIteratorEN6RakNet9BitStreamENS_7Network16CellUpdateFilterEEEvPS2_RT0_RT1_
 #[doc(alias = "void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::decodeCells<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream,RBX::Network::CellUpdateFilter>(RBX::MegaClusterInstance*,RakNet::BitStream &,RBX::Network::CellUpdateFilter &)")]
-pub fn stub_0xb0ac2c() -> ! {
-    todo!("0xb0ac2c void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::decodeCells<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream,RBX::Network::CellUpdateFilter>(RBX::MegaClusterInstance*,RakNet::BitStream &,RBX::Network::CellUpdateFilter &)")
-}
+pub use crate::generated_110::stub_b0ac2c as stub_0xb0ac2c;
 
 // 0xb0b000 — __ZN3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11decodeCellsINS_19ClusterCellIteratorEN6RakNet9BitStreamENS_7Network16CellUpdateFilterEEEvPS2_RT0_RT1_
 #[doc(alias = "void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::decodeCells<RBX::ClusterCellIterator,RakNet::BitStream,RBX::Network::CellUpdateFilter>(RBX::MegaClusterInstance*,RakNet::BitStream &,RBX::Network::CellUpdateFilter &)")]
-pub fn stub_0xb0b000() -> ! {
-    todo!("0xb0b000 void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::decodeCells<RBX::ClusterCellIterator,RakNet::BitStream,RBX::Network::CellUpdateFilter>(RBX::MegaClusterInstance*,RakNet::BitStream &,RBX::Network::CellUpdateFilter &)")
-}
+pub use crate::generated_110::stub_b0b000 as stub_0xb0b000;
 
 // 0xb0cd60 — __ZN3RBX7Network10Replicator16requestInstancesEv
 #[doc(alias = "RBX::Network::Replicator::requestInstances(void)")]
-pub fn stub_0xb0cd60() -> ! {
-    todo!("0xb0cd60 RBX::Network::Replicator::requestInstances(void)")
-}
+pub use crate::generated_110::stub_b0cd60 as stub_0xb0cd60;
 
 // 0xb0df88 — __ZN3RBX14FactoryProductINS_8LightingENS_8InstanceELZNS_9sLightingEES2_E7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_8LightingENS_8InstanceELZNS_9sLightingEES2_E7CreatorD1Ev")]
