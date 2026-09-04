@@ -532,204 +532,371 @@ pub fn stub_0x241df4(data: SharedPtr<WorkerThreadData>, work: WorkFn) -> ThreadP
     }
 }
 
+/// Host model of the `bind_t<void,void(*)(const function0<void>&,std::string),list2<...>>`
+/// behind `thread_function` (IDA 0x2424c4/0x242818/0x24283c/0x242958/0x242be8/0x242e08/0x242fc0):
+/// the bound entry arg plus the bound thread name. Mirrors `ThreadProcSlot`.
+#[derive(Clone, Default)]
+pub struct ThreadEntrySlot {
+    pub func: Option<SharedPtr<VoidFn>>,
+    pub name: String,
+}
+
+/// Type name published by the thread-entry manager ops (IDA 0x242be8 strcmp literal).
+pub const THREAD_ENTRY_TYPE_NAME: &str = "N5boost3_bi6bind_tIvPFvRKNS_9function0IvEESsENS0_5list2INS0_5valueIS3_EENS9_ISsEEEEEE";
+
+/// was: `boost::thread_specific_ptr<std::string>::delete_data` — the heap cleanup
+/// functor stored in the TSS key (IDA 0x243270 deletes the per-thread string).
+#[derive(Debug, Default)]
+pub struct ThreadNameDeleteData;
+
+/// was: `boost::condition_variable_any` — mutex at +0, condvar at +44
+/// (IDA 0x243304 runs pthread_mutex_init then pthread_cond_init). Boost mapping:
+/// the pair becomes the parking_lot mutex+condvar.
+#[derive(Debug, Default)]
+pub struct CondAny {
+    pub mutex: parking_lot::Mutex<()>,
+    pub wake: parking_lot::Condvar,
+}
+
+/// was: `boost::thread_resource_error` — thrown when the pthread init fails
+/// (IDA 0x2433c2/0x243404 via throw_exception).
+#[derive(Debug, Clone, PartialEq, Eq, thiserror::Error)]
+#[error("boost::thread_resource_error: {0}")]
+pub struct ThreadResourceError(pub i32);
+
+/// was: `boost::throw_exception<boost::thread_resource_error>` — host panics with
+/// the value (panic_any is the host for __cxa_throw unwinding).
+pub fn throw_thread_resource_error(code: i32) -> ! {
+    std::panic::panic_any(ThreadResourceError(code))
+}
+
 // 0x241f98 — __ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX13worker_thread4dataEEEEENS2_INS_9function0INS5_11work_resultEEEEEEC2ES8_SC_
 // type: int __fastcall(int, int *, int *, int, int, int, int, struct _Unwind_Exception *lpuexcpt, boost::detail::sp_counted_base *, int, int, int, int, int)
 // was: int __fastcall(int, int *, int *, int, int, int, int, struct _Unwind_Exception *lpuexcpt, boost::detail::sp_counted_base *, int, int, int, int, int)
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::SharedPtr<RBX::worker_thread::data>>,boost::_bi::value<boost::function0<RBX::worker_thread::work_result>>>::storage2(boost::_bi::value<rbx_core::SharedPtr<RBX::worker_thread::data>>,boost::_bi::value<boost::function0<RBX::worker_thread::work_result>>)")]
-pub fn stub_0x241f98() -> ! {
-    todo!("0x241f98 __ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX13worker_thread4dataEEEEENS2_INS_9function0INS5_11work_resultEEEEEEC2ES8_SC_")
+// IDA 0x241f98: retain the shared data (spinlock inc 0x242030/0x242060, release
+// the temp 0x24207a), copy the work fn inline when small else via the vtable
+// clone (0x24209c..0x2420ca). Host: Arcs own the retains.
+pub fn stub_0x241f98(data: SharedPtr<WorkerThreadData>, work: WorkFn) -> ThreadProcSlot {
+    ThreadProcSlot {
+        data: Some(data),
+        work: Some(SharedPtr::new(work)),
+    }
 }
 
 // 0x242144 — __ZN5boost3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX13worker_thread4dataEEERKNS_9function0INS4_11work_resultEEEENS0_5list2INS0_5valueIS6_EENSF_IS9_EEEEEC2ESD_RKSI_
 // type: int __fastcall(int, int, int)
 // was: int __fastcall(int, int, int)
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result> const&),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::worker_thread::data>>,boost::_bi::value<boost::function0<RBX::worker_thread::work_result>>>>::bind_t(void (*)(rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result> const&),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::worker_thread::data>>,boost::_bi::value<boost::function0<RBX::worker_thread::work_result>>> const&)")]
-pub fn stub_0x242144() -> ! {
-    todo!("0x242144 __ZN5boost3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX13worker_thread4dataEEERKNS_9function0INS4_11work_resultEEEENS0_5list2INS0_5valueIS6_EENSF_IS9_EEEEEC2ESD_RKSI_")
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result> const&),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::worker_thread::data>>,boost::_bi::value<boost::function0<RBX::worker_thread::work_result>>>>::bind_t(void (*)(rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result> const&),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::worker_thread::data>>,boost::_bi::value<boost::function0<RBX::worker_thread::work_result>>> const&) [0x242144]")]
+// IDA 0x242144: store the threadProc target (0x242166), retain the shared data
+// (0x2421cc..0x2421e2), copy the work fn inline or via the vtable clone
+// (0x2421f2..0x242224). Host: bind_thread_proc captures the same pair.
+pub fn stub_0x242144(data: SharedPtr<WorkerThreadData>, work: WorkFn) -> VoidFn {
+    bind_thread_proc(data, work)
 }
 
 // 0x242284 — __ZN5boost6detail20sp_pointer_constructIN3RBX13worker_thread4dataES4_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, int, boost::detail::sp_counted_base **, int, void *, int)
 // was: void __fastcall(int, int, boost::detail::sp_counted_base **, int, void *, int)
 #[doc(alias = "void boost::detail::sp_pointer_construct<RBX::worker_thread::data,RBX::worker_thread::data>(rbx_core::SharedPtr<RBX::worker_thread::data> *,RBX::worker_thread::data *,boost::detail::shared_count &)")]
-pub fn stub_0x242284() -> ! {
-    todo!("0x242284 __ZN5boost6detail20sp_pointer_constructIN3RBX13worker_thread4dataES4_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::worker_thread::data,RBX::worker_thread::data>(rbx_core::SharedPtr<RBX::worker_thread::data> *,RBX::worker_thread::data *,boost::detail::shared_count &) [0x242284]")]
+// IDA 0x242284: operator new the counted_impl_p (use = 1, weak = 1, vtable, ptr
+// at 0x2422d4..0x2422f2), publish it and release the old count (0x2422f4..0x242302).
+// Host: the Arc clone is the retain + publish.
+pub fn stub_0x242284(data: &SharedPtr<WorkerThreadData>) -> SharedPtr<WorkerThreadData> {
+    data.clone()
 }
 
 // 0x2423c8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEED1Ev
 // type: void()
 // was: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::worker_thread::data>::~sp_counted_impl_p()")]
-pub fn stub_0x2423c8() -> ! {
-    todo!("0x2423c8 __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEED1Ev")
-}
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::worker_thread::data>::~sp_counted_impl_p() [0x2423c8]")]
+// IDA 0x2423c8: D1 body is empty (disasm BX LR); member teardown lives in
+// dispose (0x2423d8). Host Drop glue — no-op.
+pub fn stub_0x2423c8() {}
 
 // 0x2423cc — __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEED0Ev
 // type: void __fastcall(void *)
 // was: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::worker_thread::data>::~sp_counted_impl_p() [0x2423cc]")]
-pub fn stub_0x2423cc() -> ! {
-    todo!("0x2423cc __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEED0Ev")
+// IDA 0x2423cc: D0 runs D1 then operator delete (0x2423d0). Host: dropping the
+// box frees.
+pub fn stub_0x2423cc(slot: Box<WorkerThreadData>) {
+    std::mem::drop(slot);
 }
 
 // 0x2423d8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEE7disposeEv
 // type: void __fastcall(int)
 // was: void __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::worker_thread::data>::dispose(void)")]
-pub fn stub_0x2423d8() -> ! {
-    todo!("0x2423d8 __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEE7disposeEv")
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::worker_thread::data>::dispose(void) [0x2423d8]")]
+// IDA 0x2423d8: load the data ptr at +12 (0x2423fc..0x242402), null-check it
+// (0x242424), then pthread_mutex_destroy + pthread_cond_destroy + operator
+// delete (0x24242e..0x24244e). Host: dropping the value runs the same teardown.
+pub fn stub_0x2423d8(data: WorkerThreadData) {
+    std::mem::drop(data);
 }
 
 // 0x2424bc — __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEE11get_deleterERKSt9type_info
 // type: int()
 // was: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::worker_thread::data>::get_deleter(std::type_info const&)")]
-pub fn stub_0x2424bc() -> ! {
-    todo!("0x2424bc __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEE11get_deleterERKSt9type_info")
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::worker_thread::data>::get_deleter(std::type_info const&) [0x2424bc]")]
+// IDA 0x2424bc: MOVS R0,#0 (disasm 0x2424bc..0x2424be) — plain-pointer impl has
+// no deleter. Host: None.
+pub fn stub_0x2424bc() -> Option<&'static str> {
+    None
 }
 
 // 0x2424c0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEE19get_untyped_deleterEv
 // type: int()
 // was: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::worker_thread::data>::get_untyped_deleter(void)")]
-pub fn stub_0x2424c0() -> ! {
-    todo!("0x2424c0 __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEE19get_untyped_deleterEv")
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::worker_thread::data>::get_untyped_deleter(void) [0x2424c0]")]
+// IDA 0x2424c0: MOVS R0,#0 (disasm 0x2424c0..0x2424c2). Host: None.
+pub fn stub_0x2424c0() -> Option<&'static str> {
+    None
 }
 
 // 0x2424c4 — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvRKS1_SsENS3_5list2INS3_5valueIS1_EENSA_ISsEEEEEEEEvT_
 // type: void __fastcall(_DWORD *, double *)
 // was: void __fastcall(_DWORD *, double *)
 #[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>)")]
-pub fn stub_0x2424c4() -> ! {
-    todo!("0x2424c4 __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvRKS1_SsENS3_5list2INS3_5valueIS1_EENSA_ISsEEEEEEEEvT_")
+#[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>) [0x2424c4]")]
+// IDA 0x2424c4: copy the bound func via clone-or-vtable-call (0x242518..0x242546),
+// copy the name string (0x242558), re-assemble the bind (0x242562..0x2425b6),
+// basic_vtable::assign_to installs the stored vtable (0x2425c2), release the
+// temps including the op = 2 vtable destroy (0x2425d4..0x2426a4). Host: move the
+// captures into the slot.
+pub fn stub_0x2424c4(func: Option<SharedPtr<VoidFn>>, name: &str) -> ThreadEntrySlot {
+    ThreadEntrySlot {
+        func,
+        name: name.to_owned(),
+    }
 }
 
 // 0x242818 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRKNS_9function0IvEESsENS3_5list2INS3_5valueIS6_EENSC_ISsEEEEEEE6manageERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(int, int, int)
 // was: _UNKNOWN **__fastcall(int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_0x242818() -> ! {
-    todo!("0x242818 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRKNS_9function0IvEESsENS3_5list2INS3_5valueIS6_EENSC_ISsEEEEEEE6manageERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE")
+// IDA 0x242818: op == 4 publishes the bind_t typeinfo inline (0x242820..0x242832);
+// every other op delegates to manager<mpl::bool_<false>> (0x242834).
+// (Decompilation covers this dispatch stub; disasm confirms the branch.)
+pub fn stub_0x242818(
+    src: &mut ThreadEntrySlot,
+    dst: &mut ThreadEntrySlot,
+    op: i32,
+) -> FunctorResult {
+    if op == FunctorOp::GetTypeInfo as i32 {
+        FunctorResult::TypeName(THREAD_ENTRY_TYPE_NAME)
+    } else {
+        stub_0x242be8(src, dst, op)
+    }
 }
 
 // 0x24283c — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvRKNS_9function0IvEESsENS3_5list2INS3_5valueIS6_EENSC_ISsEEEEEEvE6invokeERNS1_15function_bufferE
 // type: void __fastcall(void (__fastcall ***)(_DWORD, int *))
 // was: void __fastcall(void (__fastcall ***)(_DWORD, int *))
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_0x24283c() -> ! {
-    todo!("0x24283c __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvRKNS_9function0IvEESsENS3_5list2INS3_5valueIS6_EENSC_ISsEEEEEEvE6invokeERNS1_15function_bufferE")
+// IDA 0x24283c: copy the name string (0x242864), call the entry with the bound
+// func + name (0x24289a), release the string (0x2428aa..0x2428f0). Host:
+// forward the slot's captures to the entry fn.
+pub fn stub_0x24283c(entry: ThreadEntryFn, slot: &ThreadEntrySlot) {
+    let func: Option<&VoidFn> = slot.func.as_ref().map(|f| &**f);
+    let name: String = slot.name.clone();
+    entry(func, &name);
 }
 
 // 0x242958 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvRKNS_9function0IvEESsENS5_5list2INS5_5valueIS8_EENSE_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, double *, void **)
 // was: int __fastcall(int, double *, void **)
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_0x242958() -> ! {
-    todo!("0x242958 __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvRKNS_9function0IvEESsENS5_5list2INS5_5valueIS8_EENSE_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+// IDA 0x242958: copy the bound func inline or via the vtable clone
+// (0x2429ac..0x2429da), copy the name string (0x2429ec), heap-alloc the 0x18
+// bind copy (0x242a02..0x242a66), release the temp (0x242a6c..0x242adc),
+// return 1 (0x242ab6). Host: move the captures into the slot; always fits.
+pub fn stub_0x242958(
+    dst: &mut ThreadEntrySlot,
+    func: Option<SharedPtr<VoidFn>>,
+    name: &str,
+) -> bool {
+    *dst = ThreadEntrySlot {
+        func,
+        name: name.to_owned(),
+    };
+    true
 }
 
 // 0x242be8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRKNS_9function0IvEESsENS3_5list2INS3_5valueIS6_EENSC_ISsEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(int *, int, int)
 // was: void __fastcall(int *, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_0x242be8() -> ! {
-    todo!("0x242be8 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRKNS_9function0IvEESsENS3_5list2INS3_5valueIS6_EENSC_ISsEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+// IDA 0x242be8: clone (new 0x18 + copies, 0x242c5a..0x242d48), move
+// (0x242c94..0x242c9a), destroy with string release + op = 2 vtable destroy +
+// delete (0x242c9e..0x242ce4), check type via strcmp (0x242d02..0x242d0c),
+// default publishes the bind_t typeinfo (0x242c46..0x242c4a). Host: Arc
+// clone/move/take/drop are the retain/move/release; the slot only ever holds
+// this bind_t, so the check always matches.
+pub fn stub_0x242be8(
+    src: &mut ThreadEntrySlot,
+    dst: &mut ThreadEntrySlot,
+    op: i32,
+) -> FunctorResult {
+    if op == FunctorOp::Clone as i32 {
+        *dst = src.clone();
+        FunctorResult::Done
+    } else if op == FunctorOp::Move as i32 {
+        *dst = std::mem::take(src);
+        FunctorResult::Done
+    } else if op == FunctorOp::Destroy as i32 {
+        *dst = ThreadEntrySlot::default();
+        FunctorResult::Done
+    } else if op == FunctorOp::CheckType as i32 {
+        FunctorResult::TypeMatches(true)
+    } else {
+        FunctorResult::TypeName(THREAD_ENTRY_TYPE_NAME)
+    }
 }
 
 // 0x242e08 — __ZN5boost3_bi5list2INS0_5valueINS_9function0IvEEEENS2_ISsEEEC2ES5_S6_
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int, int *, const std::string *)
 // was: void __fastcall __spoils<R1,R2,R3,R12,LR>(int, int *, const std::string *)
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>)")]
-pub fn stub_0x242e08() -> ! {
-    todo!("0x242e08 __ZN5boost3_bi5list2INS0_5valueINS_9function0IvEEEENS2_ISsEEEC2ES5_S6_")
+// IDA 0x242e08: copy the bound func inline or via the vtable clone
+// (0x242e3e..0x242e86), copy the name string (0x242e90), storage2 init
+// (0x242e9e), release the temps (0x242eb0..0x242edc). Host: assemble the slot;
+// Arcs own the retains.
+pub fn stub_0x242e08(func: Option<SharedPtr<VoidFn>>, name: &str) -> ThreadEntrySlot {
+    ThreadEntrySlot {
+        func,
+        name: name.to_owned(),
+    }
 }
 
 // 0x242fc0 — __ZN5boost3_bi8storage2INS0_5valueINS_9function0IvEEEENS2_ISsEEEC2ES5_S6_
 // type: _DWORD *__fastcall(_DWORD *, int *, const std::string *)
 // was: _DWORD *__fastcall(_DWORD *, int *, const std::string *)
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>)")]
-pub fn stub_0x242fc0() -> ! {
-    todo!("0x242fc0 __ZN5boost3_bi8storage2INS0_5valueINS_9function0IvEEEENS2_ISsEEEC2ES5_S6_")
+// IDA 0x242fc0: copy the bound func into the slot inline when small else via
+// the vtable clone (0x242ff6..0x242fb6), copy the name string (0x2430c2),
+// release the temp func via the op = 2 vtable destroy (0x243096..0x2430ae).
+// Host: assemble the slot.
+pub fn stub_0x242fc0(func: Option<SharedPtr<VoidFn>>, name: &str) -> ThreadEntrySlot {
+    ThreadEntrySlot {
+        func,
+        name: name.to_owned(),
+    }
 }
 
 // 0x24316c — __ZN5boost19thread_specific_ptrISsED2Ev
 // type: boost::_anonymous_namespace_ *__fastcall(boost::_anonymous_namespace_ *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 // was: boost::_anonymous_namespace_ *__fastcall(boost::_anonymous_namespace_ *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 #[doc(alias = "boost::thread_specific_ptr<std::string>::~thread_specific_ptr() [0x24316c]")]
-pub fn stub_0x24316c() -> ! {
-    todo!("0x24316c __ZN5boost19thread_specific_ptrISsED2Ev")
+// IDA 0x24316c: D2 clears the TSS slot via set_tss_data (0x2431ca), releases the
+// old counted base (0x2431d0..0x2431d6) and the key handle (0x2431dc..0x2431e6).
+// Host: clearing THREAD_NAME drops the per-thread value; the key handle is a
+// unit struct with no storage.
+pub fn stub_0x24316c() {
+    THREAD_NAME.with(|slot| *slot.borrow_mut() = None);
 }
 
 // 0x243260 — __ZN5boost19thread_specific_ptrISsE11delete_dataD1Ev
 // type: void()
 // was: void()
 #[doc(alias = "boost::thread_specific_ptr<std::string>::delete_data::~delete_data()")]
-pub fn stub_0x243260() -> ! {
-    todo!("0x243260 __ZN5boost19thread_specific_ptrISsE11delete_dataD1Ev")
-}
+// IDA 0x243260: D1 body is empty (disasm BX LR); the heap delete lives in D0.
+// Host Drop glue — no-op.
+pub fn stub_0x243260() {}
 
 // 0x243264 — __ZN5boost19thread_specific_ptrISsE11delete_dataD0Ev
 // type: void __fastcall(void *)
 // was: void __fastcall(void *)
 #[doc(alias = "boost::thread_specific_ptr<std::string>::delete_data::~delete_data() [0x243264]")]
-pub fn stub_0x243264() -> ! {
-    todo!("0x243264 __ZN5boost19thread_specific_ptrISsE11delete_dataD0Ev")
+// IDA 0x243264: D0 runs D1 then operator delete (0x243268). Host: dropping the
+// box frees.
+pub fn stub_0x243264(cleanup: Box<ThreadNameDeleteData>) {
+    std::mem::drop(cleanup);
 }
 
 // 0x243270 — __ZN5boost19thread_specific_ptrISsE11delete_dataclEPv
 // type: void __fastcall(int, int *)
 // was: void __fastcall(int, int *)
 #[doc(alias = "boost::thread_specific_ptr<std::string>::delete_data::operator()(void *)")]
-pub fn stub_0x243270() -> ! {
-    todo!("0x243270 __ZN5boost19thread_specific_ptrISsE11delete_dataclEPv")
+// IDA 0x243270: null-check (0x243278), release the string rep unless it is the
+// empty singleton (0x243282..0x2432bc), operator delete the heap string
+// (0x243292). Host: dropping the owned string runs the same teardown.
+pub fn stub_0x243270(name: Box<String>) {
+    std::mem::drop(name);
 }
 
 // 0x2432c4 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEED1Ev
 // type: void()
 // was: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<std::string>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<std::string>::delete_data>>::~sp_counted_impl_pd()")]
-pub fn stub_0x2432c4() -> ! {
-    todo!("0x2432c4 __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEED1Ev")
-}
+// IDA 0x2432c4: D1 body is empty (disasm BX LR); disposal lives in dispose
+// (0x2432d4). Host Drop glue — no-op.
+pub fn stub_0x2432c4() {}
 
 // 0x2432c8 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEED0Ev
 // type: void __fastcall(void *)
 // was: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<std::string>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<std::string>::delete_data>>::~sp_counted_impl_pd() [0x2432c8]")]
-pub fn stub_0x2432c8() -> ! {
-    todo!("0x2432c8 __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEED0Ev")
+// IDA 0x2432c8: D0 runs D1 then operator delete (0x2432cc). Host: dropping the
+// box frees.
+pub fn stub_0x2432c8(cleanup: Box<ThreadNameDeleteData>) {
+    std::mem::drop(cleanup);
 }
 
 // 0x2432d4 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEE7disposeEv
 // type: int __fastcall(int)
 // was: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<std::string>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<std::string>::delete_data>>::dispose(void)")]
-pub fn stub_0x2432d4() -> ! {
-    todo!("0x2432d4 __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEE7disposeEv")
+// IDA 0x2432d4: load the delete_data ptr at +12 (0x2432d6), null-check it
+// (0x2432dc), then run its virtual dtor via the vtable slot (0x2432e0..0x2432e4).
+// Host: dropping the cleanup value runs the same teardown.
+pub fn stub_0x2432d4(cleanup: Option<ThreadNameDeleteData>) {
+    std::mem::drop(cleanup);
 }
 
 // 0x2432e8 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 // was: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<std::string>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<std::string>::delete_data>>::get_deleter(std::type_info const&)")]
-pub fn stub_0x2432e8() -> ! {
-    todo!("0x2432e8 __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEE11get_deleterERKSt9type_info")
+// IDA 0x2432e8: return &deleter only when the queried typeinfo matches
+// "N5boost6detail14do_heap_deleteINS_19thread_specific_ptrISsE11delete_dataEEE"
+// (0x2432ec..0x2432fe), else null. Host: Some exactly for that name.
+pub fn stub_0x2432e8(type_name: &str) -> Option<&'static str> {
+    if type_name
+        == "N5boost6detail14do_heap_deleteINS_19thread_specific_ptrISsE11delete_dataEEE"
+    {
+        Some("N5boost6detail14do_heap_deleteINS_19thread_specific_ptrISsE11delete_dataEEE")
+    } else {
+        None
+    }
 }
 
 // 0x243300 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 // was: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<std::string>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<std::string>::delete_data>>::get_untyped_deleter(void)")]
-pub fn stub_0x243300() -> ! {
-    todo!("0x243300 __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEE19get_untyped_deleterEv")
+// IDA 0x243300: ADDS R0,#0x10 (disasm 0x243300..0x243302) — address the embedded
+// deleter. Host: the deleter marker for this impl.
+pub fn stub_0x243300() -> &'static str {
+    "N5boost6detail14do_heap_deleteINS_19thread_specific_ptrISsE11delete_dataEEE"
 }
 
 // 0x243304 — __ZN5boost22condition_variable_anyC2Ev
 // type: boost::condition_variable_any *__fastcall(boost::condition_variable_any *this)
 // was: boost::condition_variable_any *__fastcall(boost::condition_variable_any *this)
 #[doc(alias = "boost::condition_variable_any::condition_variable_any(void)")]
-pub fn stub_0x243304() -> ! {
-    todo!("0x243304 __ZN5boost22condition_variable_anyC2Ev")
+// IDA 0x243304: pthread_mutex_init at +0 (0x24332c); failure throws
+// thread_resource_error (0x243356..0x2433c2); pthread_cond_init at +44
+// (0x243364); failure destroys the mutex and throws (0x2433cc..0x243404).
+// Host: parking_lot init cannot fail, so construction always succeeds.
+pub fn stub_0x243304() -> CondAny {
+    CondAny::default()
 }
 
 // 0x2434dc — __GLOBAL__I_a_44
