@@ -155,211 +155,274 @@ pub fn stub_0x1d4fc() -> usize {
 // 0x1d50c — -[HomeViewController setCatalogLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setCatalogLabel:]")]
-pub fn stub_0x1d50c() -> ! {
-    todo!("0x1d50c -[HomeViewController setCatalogLabel:]")
+pub fn stub_0x1d50c(handle: usize) {
+    // IDA 0x1d50c: `setCatalogLabel:` retains via `objc_setProperty`
+    // (offset 248, 0x1d528). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("catalogLabel", handle);
 }
 
 // 0x1d530 — -[HomeViewController inventoryLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController inventoryLabel]")]
-pub fn stub_0x1d530() -> ! {
-    todo!("0x1d530 -[HomeViewController inventoryLabel]")
+pub fn stub_0x1d530() -> usize {
+    // IDA 0x1d530: `inventoryLabel` returns the `_inventoryLabel` ivar
+    // (0x1d53e). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("inventoryLabel")
 }
 
 // 0x1d540 — -[HomeViewController setInventoryLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setInventoryLabel:]")]
-pub fn stub_0x1d540() -> ! {
-    todo!("0x1d540 -[HomeViewController setInventoryLabel:]")
+pub fn stub_0x1d540(handle: usize) {
+    // IDA 0x1d540: `setInventoryLabel:` retains via `objc_setProperty`
+    // (offset 252, 0x1d55c). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("inventoryLabel", handle);
 }
 
 // 0x1d564 — -[HomeViewController buildersClubLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController buildersClubLabel]")]
-pub fn stub_0x1d564() -> ! {
-    todo!("0x1d564 -[HomeViewController buildersClubLabel]")
+pub fn stub_0x1d564() -> usize {
+    // IDA 0x1d564: `buildersClubLabel` returns the `_buildersClubLabel`
+    // ivar (0x1d572). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("buildersClubLabel")
 }
 
 // 0x1d574 — -[HomeViewController setBuildersClubLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBuildersClubLabel:]")]
-pub fn stub_0x1d574() -> ! {
-    todo!("0x1d574 -[HomeViewController setBuildersClubLabel:]")
+pub fn stub_0x1d574(handle: usize) {
+    // IDA 0x1d574: `setBuildersClubLabel:` retains via `objc_setProperty`
+    // (offset 256, 0x1d590). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("buildersClubLabel", handle);
 }
 
 // 0x1d598 — -[HomeViewController profileLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController profileLabel]")]
-pub fn stub_0x1d598() -> ! {
-    todo!("0x1d598 -[HomeViewController profileLabel]")
+pub fn stub_0x1d598() -> usize {
+    // IDA 0x1d598: `profileLabel` returns the `_profileLabel` ivar
+    // (0x1d5a6). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("profileLabel")
 }
 
 // 0x1d5a8 — -[HomeViewController setProfileLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setProfileLabel:]")]
-pub fn stub_0x1d5a8() -> ! {
-    todo!("0x1d5a8 -[HomeViewController setProfileLabel:]")
+pub fn stub_0x1d5a8(handle: usize) {
+    // IDA 0x1d5a8: `setProfileLabel:` retains via `objc_setProperty`
+    // (offset 260, 0x1d5c4). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("profileLabel", handle);
 }
 
 // 0x1d5cc — -[HomeViewController messagesLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController messagesLabel]")]
-pub fn stub_0x1d5cc() -> ! {
-    todo!("0x1d5cc -[HomeViewController messagesLabel]")
+pub fn stub_0x1d5cc() -> usize {
+    // IDA 0x1d5cc: `messagesLabel` returns the `_messagesLabel` ivar
+    // (0x1d5da). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("messagesLabel")
 }
 
 // 0x1d5dc — -[HomeViewController setMessagesLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setMessagesLabel:]")]
-pub fn stub_0x1d5dc() -> ! {
-    todo!("0x1d5dc -[HomeViewController setMessagesLabel:]")
+pub fn stub_0x1d5dc(handle: usize) {
+    // IDA 0x1d5dc: `setMessagesLabel:` retains via `objc_setProperty`
+    // (offset 264, 0x1d5f8). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("messagesLabel", handle);
 }
 
 // 0x1d600 — -[HomeViewController btnPlayDisabled]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController btnPlayDisabled]")]
-pub fn stub_0x1d600() -> ! {
-    todo!("0x1d600 -[HomeViewController btnPlayDisabled]")
+pub fn stub_0x1d600() -> usize {
+    // IDA 0x1d600: `btnPlayDisabled` returns the `_btnPlayDisabled` ivar
+    // (0x1d60e). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("btnPlayDisabled")
 }
 
 // 0x1d610 — -[HomeViewController setBtnPlayDisabled:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBtnPlayDisabled:]")]
-pub fn stub_0x1d610() -> ! {
-    todo!("0x1d610 -[HomeViewController setBtnPlayDisabled:]")
+pub fn stub_0x1d610(handle: usize) {
+    // IDA 0x1d610: `setBtnPlayDisabled:` retains via `objc_setProperty`
+    // (offset 268, 0x1d62c). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("btnPlayDisabled", handle);
 }
 
 // 0x1d634 — -[HomeViewController communityLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController communityLabel]")]
-pub fn stub_0x1d634() -> ! {
-    todo!("0x1d634 -[HomeViewController communityLabel]")
+pub fn stub_0x1d634() -> usize {
+    // IDA 0x1d634: `communityLabel` returns the `_communityLabel` ivar
+    // (0x1d642). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("communityLabel")
 }
 
 // 0x1d644 — -[HomeViewController setCommunityLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setCommunityLabel:]")]
-pub fn stub_0x1d644() -> ! {
-    todo!("0x1d644 -[HomeViewController setCommunityLabel:]")
+pub fn stub_0x1d644(handle: usize) {
+    // IDA 0x1d644: `setCommunityLabel:` retains via `objc_setProperty`
+    // (offset 272, 0x1d660). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("communityLabel", handle);
 }
 
 // 0x1d668 — -[HomeViewController communityButton]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController communityButton]")]
-pub fn stub_0x1d668() -> ! {
-    todo!("0x1d668 -[HomeViewController communityButton]")
+pub fn stub_0x1d668() -> usize {
+    // IDA 0x1d668: `communityButton` returns the `_communityButton` ivar
+    // (0x1d676). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("communityButton")
 }
 
 // 0x1d678 — -[HomeViewController setCommunityButton:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setCommunityButton:]")]
-pub fn stub_0x1d678() -> ! {
-    todo!("0x1d678 -[HomeViewController setCommunityButton:]")
+pub fn stub_0x1d678(handle: usize) {
+    // IDA 0x1d678: `setCommunityButton:` retains via `objc_setProperty`
+    // (offset 276, 0x1d694). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("communityButton", handle);
 }
 
 // 0x1d69c — -[HomeViewController buttonView]
 // type: UIView *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController buttonView]")]
-pub fn stub_0x1d69c() -> ! {
-    todo!("0x1d69c -[HomeViewController buttonView]")
+pub fn stub_0x1d69c() -> usize {
+    // IDA 0x1d69c: `buttonView` returns the `_buttonView` ivar (0x1d6aa).
+    // Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("buttonView")
 }
 
 // 0x1d6ac — -[HomeViewController setButtonView:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setButtonView:]")]
-pub fn stub_0x1d6ac() -> ! {
-    todo!("0x1d6ac -[HomeViewController setButtonView:]")
+pub fn stub_0x1d6ac(handle: usize) {
+    // IDA 0x1d6ac: `setButtonView:` retains via `objc_setProperty` (offset
+    // 280, 0x1d6c8). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("buttonView", handle);
 }
 
 // 0x1d6d0 — -[HomeViewController searchTextField]
 // type: UITextField *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController searchTextField]")]
-pub fn stub_0x1d6d0() -> ! {
-    todo!("0x1d6d0 -[HomeViewController searchTextField]")
+pub fn stub_0x1d6d0() -> usize {
+    // IDA 0x1d6d0: `searchTextField` returns the `_searchTextField` ivar
+    // (0x1d6de). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("searchTextField")
 }
 
 // 0x1d6e0 — -[HomeViewController setSearchTextField:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setSearchTextField:]")]
-pub fn stub_0x1d6e0() -> ! {
-    todo!("0x1d6e0 -[HomeViewController setSearchTextField:]")
+pub fn stub_0x1d6e0(handle: usize) {
+    // IDA 0x1d6e0: `setSearchTextField:` retains via `objc_setProperty`
+    // (offset 284, 0x1d6fc). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("searchTextField", handle);
 }
 
 // 0x1d704 — -[HomeViewController loggedInView]
 // type: UIView *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController loggedInView]")]
-pub fn stub_0x1d704() -> ! {
-    todo!("0x1d704 -[HomeViewController loggedInView]")
+pub fn stub_0x1d704() -> usize {
+    // IDA 0x1d704: `loggedInView` returns the `_loggedInView` ivar
+    // (0x1d712). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("loggedInView")
 }
 
 // 0x1d714 — -[HomeViewController setLoggedInView:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setLoggedInView:]")]
-pub fn stub_0x1d714() -> ! {
-    todo!("0x1d714 -[HomeViewController setLoggedInView:]")
+pub fn stub_0x1d714(handle: usize) {
+    // IDA 0x1d714: `setLoggedInView:` retains via `objc_setProperty`
+    // (offset 288, 0x1d730). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("loggedInView", handle);
 }
 
 // 0x1d738 — -[HomeViewController notLoggedInView]
 // type: UIView *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController notLoggedInView]")]
-pub fn stub_0x1d738() -> ! {
-    todo!("0x1d738 -[HomeViewController notLoggedInView]")
+pub fn stub_0x1d738() -> usize {
+    // IDA 0x1d738: `notLoggedInView` returns the `_notLoggedInView` ivar
+    // (0x1d746). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("notLoggedInView")
 }
 
 // 0x1d748 — -[HomeViewController setNotLoggedInView:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setNotLoggedInView:]")]
-pub fn stub_0x1d748() -> ! {
-    todo!("0x1d748 -[HomeViewController setNotLoggedInView:]")
+pub fn stub_0x1d748(handle: usize) {
+    // IDA 0x1d748: `setNotLoggedInView:` retains via `objc_setProperty`
+    // (offset 292, 0x1d764). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("notLoggedInView", handle);
 }
 
 // 0x1d76c — -[HomeViewController signUpButtonLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController signUpButtonLabel]")]
-pub fn stub_0x1d76c() -> ! {
-    todo!("0x1d76c -[HomeViewController signUpButtonLabel]")
+pub fn stub_0x1d76c() -> usize {
+    // IDA 0x1d76c: `signUpButtonLabel` returns the `_signUpButtonLabel`
+    // ivar (0x1d77a). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("signUpButtonLabel")
 }
 
 // 0x1d77c — -[HomeViewController setSignUpButtonLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setSignUpButtonLabel:]")]
-pub fn stub_0x1d77c() -> ! {
-    todo!("0x1d77c -[HomeViewController setSignUpButtonLabel:]")
+pub fn stub_0x1d77c(handle: usize) {
+    // IDA 0x1d77c: `setSignUpButtonLabel:` retains via `objc_setProperty`
+    // (offset 296, 0x1d798). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("signUpButtonLabel", handle);
 }
 
 // 0x1d7a0 — -[HomeViewController loginButtonLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController loginButtonLabel]")]
-pub fn stub_0x1d7a0() -> ! {
-    todo!("0x1d7a0 -[HomeViewController loginButtonLabel]")
+pub fn stub_0x1d7a0() -> usize {
+    // IDA 0x1d7a0: `loginButtonLabel` returns the `_loginButtonLabel` ivar
+    // (0x1d7ae). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("loginButtonLabel")
 }
 
 // 0x1d7b0 — -[HomeViewController setLoginButtonLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setLoginButtonLabel:]")]
-pub fn stub_0x1d7b0() -> ! {
-    todo!("0x1d7b0 -[HomeViewController setLoginButtonLabel:]")
+pub fn stub_0x1d7b0(handle: usize) {
+    // IDA 0x1d7b0: `setLoginButtonLabel:` retains via `objc_setProperty`
+    // (offset 300, 0x1d7cc). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("loginButtonLabel", handle);
 }
 
 // 0x1d7d4 — -[HomeViewController welcomeToRobloxTextView]
 // type: UITextView *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController welcomeToRobloxTextView]")]
-pub fn stub_0x1d7d4() -> ! {
-    todo!("0x1d7d4 -[HomeViewController welcomeToRobloxTextView]")
+pub fn stub_0x1d7d4() -> usize {
+    // IDA 0x1d7d4: `welcomeToRobloxTextView` returns the
+    // `_welcomeToRobloxTextView` ivar (0x1d7e2). Opaque `id` handle; 0 when
+    // unset.
+    crate::generated_bg_3::home_outlet("welcomeToRobloxTextView")
 }
 
 // 0x1d7e4 — -[HomeViewController setWelcomeToRobloxTextView:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setWelcomeToRobloxTextView:]")]
-pub fn stub_0x1d7e4() -> ! {
-    todo!("0x1d7e4 -[HomeViewController setWelcomeToRobloxTextView:]")
+pub fn stub_0x1d7e4(handle: usize) {
+    // IDA 0x1d7e4: `setWelcomeToRobloxTextView:` retains via
+    // `objc_setProperty` (offset 304, 0x1d800). Retain is drop glue; the
+    // handle records.
+    crate::generated_bg_3::set_home_outlet("welcomeToRobloxTextView", handle);
 }
 
 // 0x1d808 — -[HomeViewController youAreCurrentlyLoggedInAsTextView]
 // type: UITextView *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController youAreCurrentlyLoggedInAsTextView]")]
-pub fn stub_0x1d808() -> ! {
-    todo!("0x1d808 -[HomeViewController youAreCurrentlyLoggedInAsTextView]")
+pub fn stub_0x1d808() -> usize {
+    // IDA 0x1d808: `youAreCurrentlyLoggedInAsTextView` returns the
+    // `_youAreCurrentlyLoggedInAsTextView` ivar (0x1d816). Opaque `id`
+    // handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("youAreCurrentlyLoggedInAsTextView")
 }
 
 // 0x1d818 — -[HomeViewController setYouAreCurrentlyLoggedInAsTextView:]
