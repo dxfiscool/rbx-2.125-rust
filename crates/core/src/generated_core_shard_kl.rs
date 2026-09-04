@@ -7,41 +7,258 @@
 
 use crate::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+// Batch 3: 0x316414-0x31ae54 (22 fns) ported IDA-grounded — boost::bind/function
+// closure glue for the RBX::Http callback family + sp_counted_impl_p<dir_itr_imp>.
+// AGENTS.md section 4: bind/function/_bi::bind_t -> Box<dyn Fn>/closures,
+// shared_ptr -> rbx_core::SharedPtr.
 
+/// was: `boost::bind` / `boost::function<void(string*, exception*)>` closure
+/// machinery over the RBX::Http callback family (IDA 0x318118-0x31ae54).
+/// Each item notes the EA whose decompile/disasm grounds it.
+pub mod bind_http {
+    use crate::shared_ptr::{ControlBlockP, CreatableInstanceDeleter};
+    use crate::SharedPtr;
+
+    /// was: `boost::function<void(std::string*, std::exception*)>` — the
+    /// Http completion callback (IDA 0x318178 `assign_to_own`). `Arc` is
+    /// `Clone`, which the functor-manager clone op (IDA 0x31a608) requires.
+    pub type HttpDoneCallback =
+        SharedPtr<dyn Fn(Option<String>, Option<String>) + Send + Sync>;
+
+    /// was: `boost::shared_ptr<RBX::mutex>` — call-site token threaded through
+    /// `function1<void, shared_ptr<mutex>>::invoke` (IDA 0x319a10). Opaque here;
+    /// the bound-args-only call (IDA 0x31a3d8) never touches it.
+    #[derive(Debug, Default, Clone)]
+    pub struct MutexHandle;
+    pub type MutexSlot = SharedPtr<MutexHandle>;
+
+    /// was: `bind_t<..., list5<value<string>, value<shared_ptr<istream>>,
+    /// value<bool>, value<bool>, value<function<...>>>>` bound image 0x24 bytes
+    /// (IDA 0x31a294 `new 0x24`; fields at +0/+4/+8/+12/+16/+17/+20).
+    #[derive(Clone)]
+    pub struct PostStreamBindArgs {
+        pub url: String,
+        pub body: SharedPtr<Vec<u8>>,
+        pub flag_a: bool,
+        pub flag_b: bool,
+        pub done: HttpDoneCallback,
+    }
+    /// was: `void(*)(string, shared_ptr<istream>, bool, bool, function<...>)`
+    /// stored at image +0 (IDA 0x31a2a4 / 0x31893e).
+    pub type PostStreamTarget = fn(&PostStreamBindArgs);
+    #[derive(Clone)]
+    pub struct BindPostStream {
+        pub target: PostStreamTarget,
+        pub args: PostStreamBindArgs,
+    }
+
+    /// was: `bind_t<void, void(*)(string, bool, function<...>),
+    /// list_av_3<string, bool, function<...>>>` (IDA 0x318118).
+    #[derive(Clone)]
+    pub struct DoGetBindArgs {
+        pub url: String,
+        pub flag: bool,
+        pub done: HttpDoneCallback,
+    }
+    pub type DoGetTarget = fn(&DoGetBindArgs);
+    #[derive(Clone)]
+    pub struct BindDoGet {
+        pub target: DoGetTarget,
+        pub args: DoGetBindArgs,
+    }
+
+    /// was: `bind_t<void, void(*)(string, string, bool, bool, function<...>),
+    /// list_av_5<string, string, bool, bool, function<...>>>` (IDA 0x3183e0).
+    #[derive(Clone)]
+    pub struct DoPostBindArgs {
+        pub url: String,
+        pub path: String,
+        pub flag_a: bool,
+        pub flag_b: bool,
+        pub done: HttpDoneCallback,
+    }
+    pub type DoPostTarget = fn(&DoPostBindArgs);
+    #[derive(Clone)]
+    pub struct BindDoPost {
+        pub target: DoPostTarget,
+        pub args: DoPostBindArgs,
+    }
+
+    /// was: `storage2<value<string>, value<shared_ptr<istream>>>` — image +0/+4
+    /// (IDA 0x31aeb0 string copy, 0x31aed4/0x31aede shared_count addref).
+    pub struct Storage2 {
+        pub url: String,
+        pub body: SharedPtr<Vec<u8>>,
+    }
+    /// was: `storage3<..., value<bool>>` — storage2 plus byte at +12
+    /// (IDA 0x31ad82).
+    pub struct Storage3 {
+        pub base: Storage2,
+        pub flag_a: bool,
+    }
+    /// was: `storage4<..., value<bool>>` — storage3 plus byte at +13
+    /// (IDA 0x31ac0e).
+    pub struct Storage4 {
+        pub base: Storage3,
+        pub flag_b: bool,
+    }
+    /// was: `storage5<..., value<function<...>>>` — storage4 plus
+    /// `assign_to_own` at +16 (IDA 0x31aa4a/0x31aa52).
+    pub struct Storage5 {
+        pub base: Storage4,
+        pub done: HttpDoneCallback,
+    }
+
+    /// was: `boost::detail::function::functor_manager_operation_type`
+    /// (IDA 0x31a5f8 switch: 0 clone, 1 move, 2 destroy, 3 check-type,
+    /// default get-type; IDA 0x3199f6 treats 4 as get-type).
+    #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+    pub enum FunctorOp {
+        CloneBind = 0,
+        MoveBind = 1,
+        DestroyBind = 2,
+        CheckType = 3,
+        GetType = 4,
+    }
+
+    /// Type name compared by the check-type op (IDA 0x31a6e0 `strcmp`).
+    pub const BIND_POST_STREAM_TYPE_NAME: &str = "N5boost3_bi6bind_tIvPFvSsNS_10shared_ptrISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS0_5list5INS0_5valueISsEENSD_IS3_EENSD_IbEESG_NSD_IS9_EEEEEE";
+
+    /// was: `boost::function1<void, shared_ptr<mutex>>` holding the bind_t —
+    /// empty or one boxed bound call (IDA function_buffer small/heap split
+    /// collapses: the 0x24 image never fits the small buffer, always boxed).
+    #[derive(Default, Clone)]
+    pub enum FunctionSlot {
+        #[default]
+        Empty,
+        Bound(Box<BindPostStream>),
+    }
+
+    /// Observable outcome of one manager op (IDA 0x31a594 stores through the
+    /// out-buffer pointer; Rust returns the effect by value).
+    pub enum ManageEffect {
+        Cloned(Option<BindPostStream>),
+        Moved(Option<BindPostStream>),
+        Destroyed,
+        TypeMatch(bool),
+        TypeName(&'static str),
+    }
+
+    impl FunctionSlot {
+        /// IDA 0x319686/0x319ae2/0x31a32c: install the (copied) image.
+        pub fn assign_bind(&mut self, bind: BindPostStream) {
+            *self = FunctionSlot::Bound(Box::new(bind));
+        }
+        /// IDA 0x319a10 via 0x31a3d8: call target with bound args only.
+        pub fn invoke(&self, _mu: &MutexSlot) {
+            if let FunctionSlot::Bound(bind) = self {
+                (bind.target)(&bind.args);
+            }
+        }
+        /// IDA 0x31a594 manager switch over the op.
+        pub fn manage(&mut self, op: FunctorOp) -> ManageEffect {
+            match op {
+                // IDA 0x31a608-0x31a67e: new 0x24, field-by-field copy.
+                FunctorOp::CloneBind => match self {
+                    FunctionSlot::Bound(bind) => {
+                        ManageEffect::Cloned(Some((**bind).clone()))
+                    }
+                    FunctionSlot::Empty => ManageEffect::Cloned(None),
+                },
+                // IDA 0x31a684-0x31a688: move pointer, null the source.
+                FunctorOp::MoveBind => {
+                    let taken = std::mem::take(self);
+                    match taken {
+                        FunctionSlot::Bound(bind) => ManageEffect::Moved(Some(*bind)),
+                        FunctionSlot::Empty => ManageEffect::Moved(None),
+                    }
+                }
+                // IDA 0x31a68e-0x31a6c2: clear function, release
+                // shared_count, destroy string, operator delete.
+                FunctorOp::DestroyBind => {
+                    *self = FunctionSlot::Empty;
+                    ManageEffect::Destroyed
+                }
+                // IDA 0x31a6e0-0x31a6ea: strcmp stored type name against the
+                // bind_t name; match stores the pointer, else null. The slot
+                // is monomorphic, so the stored name always matches.
+                FunctorOp::CheckType => ManageEffect::TypeMatch(true),
+                // IDA 0x319a0a + default arm: out = typeid bind_t.
+                FunctorOp::GetType => {
+                    ManageEffect::TypeName(BIND_POST_STREAM_TYPE_NAME)
+                }
+            }
+        }
+    }
+
+    /// was: `boost::scoped_ptr<RBX::ThreadPool>` — single-owner box
+    /// (IDA 0x31810a-0x318112 loads px, null-checks, deleting-dtors it).
+    pub struct ScopedPtr<T>(pub Option<Box<T>>);
+
+    impl<T> ScopedPtr<T> {
+        /// IDA 0x318104: the virtual deleting-dtor call through the vtable
+        /// collapses to a static drop — same dtor-then-free order.
+        pub fn destroy(&mut self) {
+            drop(self.0.take());
+        }
+    }
+
+    /// was: `sp_counted_impl_p<dir_itr_imp>` block access shared with the
+    /// 0x316414-0x3164c4 stubs below (cf. `crate::shared_ptr::ControlBlockP`,
+    /// grounded in 0x4fe14c/0x463dc8/0x4fed34/0x463e70).
+    pub fn control_block_p<T>(px: Box<T>) -> ControlBlockP<T> {
+        ControlBlockP::new(px)
+    }
+
+    pub fn control_block_deleter_name() -> Option<CreatableInstanceDeleter> {
+        ControlBlockP::<u8>::new(Box::new(0)).get_deleter()
+    }
+} // mod bind_http
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::detail::dir_itr_imp>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEED1Ev")]
 // 0x316414 — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEED1Ev
-pub fn stub_0x316414() {
-    // IDA 0x316414: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x316414<T>(_block: &mut crate::shared_ptr::ControlBlockP<T>) {
+    // IDA 0x316414: D1 body is empty (`;`) — member dtors are trivial once
+    // dispose (0x31641c) released px; cf. ControlBlockP::dispose.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::detail::dir_itr_imp>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEED0Ev")]
 // 0x316418 — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEED0Ev
-pub fn stub_0x316418() {
-    // IDA 0x316418: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x316418<T>(block: Box<crate::shared_ptr::ControlBlockP<T>>) {
+    // IDA 0x316418 [thunk]: `return operator delete(a1)` — frees the block
+    // after D1 ran; cf. stub_4531f8 in boost_core_a.rs.
+    drop(block);
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::detail::dir_itr_imp>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEE7disposeEv")]
 // 0x31641c — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEE7disposeEv
-pub fn stub_0x31641c() {
-    // IDA 0x31641c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x31641c<T>(block: &mut crate::shared_ptr::ControlBlockP<T>) {
+    // IDA 0x31641c: `v1 = *(a1+12); if (v1) { dir_itr_imp::~dir_itr_imp(v1);
+    // operator delete(v1); }` — dtor-then-free under null check.
+    block.dispose();
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::detail::dir_itr_imp>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEE11get_deleterERKSt9type_info")]
 // 0x3164c0 — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEE11get_deleterERKSt9type_info
-pub fn stub_0x3164c0() {
-    // IDA 0x3164c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x3164c0<T>(
+    block: &crate::shared_ptr::ControlBlockP<T>,
+) -> Option<crate::shared_ptr::CreatableInstanceDeleter> {
+    // IDA 0x3164c0: `return 0` — a `_p` block never carries a deleter.
+    block.get_deleter()
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::detail::dir_itr_imp>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEE19get_untyped_deleterEv")]
 // 0x3164c4 — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEE19get_untyped_deleterEv
-pub fn stub_0x3164c4() {
-    // IDA 0x3164c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x3164c4<T>(
+    block: &crate::shared_ptr::ControlBlockP<T>,
+) -> Option<crate::shared_ptr::CreatableInstanceDeleter> {
+    // IDA 0x3164c4: `return 0`.
+    block.get_untyped_deleter()
 }
 
 #[doc(alias = "RBX::Http::get(boost::function<void ()(std::string *,std::exception *)>,bool)")]
@@ -93,24 +310,49 @@ pub fn stub_0x317a08() {
 #[doc(alias = "boost::scoped_ptr<RBX::ThreadPool>::~scoped_ptr()")]
 #[doc(alias = "__ZN5boost10scoped_ptrIN3RBX10ThreadPoolEED1Ev")]
 // 0x318104 — __ZN5boost10scoped_ptrIN3RBX10ThreadPoolEED1Ev
-pub fn stub_0x318104() {
-    // IDA 0x318104: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x318104<T>(slot: &mut bind_http::ScopedPtr<T>) {
+    // IDA 0x318104: `v2 = *a1; if (v2) vtable[v2][1](v2)` — null-checked
+    // deleting-dtor through the vtable; static drop is the same order.
+    slot.destroy();
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list_av_3<std::string,bool,boost::function<void ()(std::string *,std::exception *)>>::type> boost::bind<void,std::string,bool,boost::function<void ()(std::string *,std::exception *)>,std::string,bool,boost::function<void ()(std::string *,std::exception *)>>(void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),std::string,bool,boost::function<void ()(std::string *,std::exception *)>)")]
 #[doc(alias = "__ZN5boost4bindIvSsbNS_8functionIFvPSsPSt9exceptionEEESsbS6_EENS_3_bi6bind_tIT_PFS9_T0_T1_T2_ENS7_9list_av_3IT3_T4_T5_E4typeEEESE_SG_SH_SI_")]
 // 0x318118 — __ZN5boost4bindIvSsbNS_8functionIFvPSsPSt9exceptionEEESsbS6_EENS_3_bi6bind_tIT_PFS9_T0_T1_T2_ENS7_9list_av_3IT3_T4_T5_E4typeEEESE_SG_SH_SI_
 // type: int __fastcall(int, int, std::string *, int, int)
-pub fn stub_0x318118() {
-    // IDA 0x318118: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x318118(
+    target: bind_http::DoGetTarget,
+    url: String,
+    flag: bool,
+    done: bind_http::HttpDoneCallback,
+) -> bind_http::BindDoGet {
+    // IDA 0x318118: string copy (0x31813e), function assign_to_own
+    // (0x318178), list3 pack (0x318188), then bind_t image out: *a1 = f
+    // (0x318190), string at +4 (0x31819e), byte at +8 (0x3181aa),
+    // function at +12 (0x3181bc). The returned struct is that image.
+    bind_http::BindDoGet { target, args: bind_http::DoGetBindArgs { url, flag, done } }
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list_av_5<std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>>::type> boost::bind<void,std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>,std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>>(void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>)")]
 #[doc(alias = "__ZN5boost4bindIvSsSsbbNS_8functionIFvPSsPSt9exceptionEEESsSsbbS6_EENS_3_bi6bind_tIT_PFS9_T0_T1_T2_T3_T4_ENS7_9list_av_5IT5_T6_T7_T8_T9_E4typeEEESG_SI_SJ_SK_SL_SM_")]
 // 0x3183e0 — __ZN5boost4bindIvSsSsbbNS_8functionIFvPSsPSt9exceptionEEESsSsbbS6_EENS_3_bi6bind_tIT_PFS9_T0_T1_T2_T3_T4_ENS7_9list_av_5IT5_T6_T7_T8_T9_E4typeEEESG_SI_SJ_SK_SL_SM_
 // type: int __fastcall(int, int, std::string *, int, int, int, int)
-pub fn stub_0x3183e0() {
-    // IDA 0x3183e0: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x3183e0(
+    target: bind_http::DoPostTarget,
+    url: String,
+    path: String,
+    flag_a: bool,
+    flag_b: bool,
+    done: bind_http::HttpDoneCallback,
+) -> bind_http::BindDoPost {
+    // IDA 0x3183e0: two string copies (0x318418/0x318452), assign_to_own
+    // (0x318462), list5 pack (0x31847a), image out: f at +0 (0x318482),
+    // strings at +4/+8 (0x318490/0x3184a4), bytes at +12/+13
+    // (0x3184ae/0x3184b2), function at +16 (0x3184c4).
+    bind_http::BindDoPost {
+        target,
+        args: bind_http::DoPostBindArgs { url, path, flag_a, flag_b, done },
+    }
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list_av_5<std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>>::type> boost::bind<void,std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>,std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>>(void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>)")]
@@ -118,24 +360,51 @@ pub fn stub_0x3183e0() {
 // 0x31888c — __ZN5boost4bindIvSsNS_10shared_ptrISiEEbbNS_8functionIFvPSsPSt9exceptionEEESsS2_bbS8_EENS_3_bi6bind_tIT_PFSB_T0_T1_T2_T3_T4_ENS9_9list_av_5IT5_T6_T7_T8_T9_E4typeEEESI_SK_SL_SM_SN_SO_
 // type: int __fastcall(int, int, std::string *, int, int, int, int)
 // was: boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list_av_5<std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>>::type> boost::bind<void,std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>,std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>>(void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>)
-pub fn stub_0x31888c() {
-    // IDA 0x31888c: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
+pub fn stub_0x31888c(
+    target: bind_http::PostStreamTarget,
+    url: String,
+    body: crate::SharedPtr<Vec<u8>>,
+    flag_a: bool,
+    flag_b: bool,
+    done: bind_http::HttpDoneCallback,
+) -> bind_http::BindPostStream {
+    // IDA 0x31888c: string copy (0x3188c6), shared_count addref pair
+    // (0x318908/0x318912 — the by-value clone), assign_to_own (0x31891e),
+    // list5 pack (0x318936), image out: f at +0 (0x31893e), string at +4
+    // (0x31894c), shared px/count at +8/+12 (0x318954/0x318966), bytes at
+    // +16/+17, function at +20. By-value args are those copies.
+    bind_http::BindPostStream {
+        target,
+        args: bind_http::PostStreamBindArgs { url, body, flag_a, flag_b, done },
+    }
 }
 
 #[doc(alias = "void boost::function1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>)")]
 #[doc(alias = "__ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsNS1_ISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list5INS7_5valueISsEENSJ_IS9_EENSJ_IbEESM_NSJ_ISF_EEEEEEEEvT_")]
 // 0x3195c0 — __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsNS1_ISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list5INS7_5valueISsEENSJ_IS9_EENSJ_IbEESM_NSJ_ISF_EEEEEEEEvT_
 // was: void boost::function1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>)
-pub fn stub_0x3195c0() {
-    // IDA 0x3195c0: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
+pub fn stub_0x3195c0(slot: &mut bind_http::FunctionSlot, bind: bind_http::BindPostStream) {
+    // IDA 0x3195c0: deep-copies each image field (string 0x3195fe,
+    // shared_count 0x319640, function assign_to_own 0x319664) then routes to
+    // basic_vtable assign_to (0x319686). A by-value move is the same state.
+    slot.assign_bind(bind);
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsNS_10shared_ptrISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEENSG_IS6_EENSG_IbEESJ_NSG_ISC_EEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE")]
 // 0x3199f4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsNS_10shared_ptrISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEENSG_IS6_EENSG_IbEESJ_NSG_ISC_EEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x3199f4() {
-    // IDA 0x3199f4: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
+pub fn stub_0x3199f4(
+    slot: &mut bind_http::FunctionSlot,
+    op: bind_http::FunctorOp,
+) -> bind_http::ManageEffect {
+    // IDA 0x3199f4: `if (op != 4) return manager(...); store bind_t typeid;
+    // return typeid` — get-type is inline, the rest tail-call 0x31a594.
+    if op == bind_http::FunctorOp::GetType {
+        slot.manage(op)
+    } else {
+        stub_0x31a594(slot, op)
+    }
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,void,rbx_core::SharedPtr<RBX::mutex>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::mutex>)")]
@@ -143,16 +412,21 @@ pub fn stub_0x3199f4() {
 // 0x319a10 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvSsNS_10shared_ptrISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEENSG_IS6_EENSG_IbEESJ_NSG_ISC_EEEEEEvNS5_IN3RBX5mutexEEEE6invokeERNS1_15function_bufferESP_
 // type: int __fastcall(int)
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,void,rbx_core::SharedPtr<RBX::mutex>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::mutex>)
-pub fn stub_0x319a10() {
-    // IDA 0x319a10: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
+pub fn stub_0x319a10(slot: &bind_http::FunctionSlot, mu: &bind_http::MutexSlot) {
+    // IDA 0x319a10: single tail-call into list5::operator() (0x319a26) with
+    // the buffer; the mutex travels as the ignored call-site list.
+    slot.invoke(mu);
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsNS3_ISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list5INS9_5valueISsEENSL_ISB_EENSL_IbEESO_NSL_ISH_EEEEEEEEbT_RNS1_15function_bufferE")]
 // 0x319a28 — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsNS3_ISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list5INS9_5valueISsEENSL_ISB_EENSL_IbEESO_NSL_ISH_EEEEEEEEbT_RNS1_15function_bufferE
 // was: bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &)const
-pub fn stub_0x319a28() {
-    // IDA 0x319a28: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
+pub fn stub_0x319a28(slot: &mut bind_http::FunctionSlot, src: &bind_http::BindPostStream) {
+    // IDA 0x319a28: deep-copies the src image field-by-field (string
+    // 0x319a68, shared_count 0x319aaa, function 0x319ace) then vtable
+    // assign_to (0x319ae2). Clone-then-install is the same copy.
+    slot.assign_bind(src.clone());
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
@@ -160,8 +434,11 @@ pub fn stub_0x319a28() {
 // 0x319e4c — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsNS3_ISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list5INS9_5valueISsEENSL_ISB_EENSL_IbEESO_NSL_ISH_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int, int)
 // was: bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
-pub fn stub_0x319e4c() {
-    // IDA 0x319e4c: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
+pub fn stub_0x319e4c(slot: &mut bind_http::FunctionSlot, src: &bind_http::BindPostStream) {
+    // IDA 0x319e4c: same field copies as 0x319a28 (0x319e8a/0x319ecc/
+    // 0x319ef0) but routes with function_obj_tag to assign_functor
+    // (0x319f02 -> 0x31a26c).
+    stub_0x31a26c(slot, src.clone());
 }
 
 #[doc(alias = "void boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_functor<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
@@ -169,8 +446,11 @@ pub fn stub_0x319e4c() {
 // 0x31a26c — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE14assign_functorINS_3_bi6bind_tIvPFvSsNS3_ISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list5INS9_5valueISsEENSL_ISB_EENSL_IbEESO_NSL_ISH_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, std::string *, int, int, int, int, int)
 // was: void boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_functor<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
-pub fn stub_0x31a26c() {
-    // IDA 0x31a26c: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
+pub fn stub_0x31a26c(slot: &mut bind_http::FunctionSlot, src: bind_http::BindPostStream) {
+    // IDA 0x31a26c: `new 0x24` (0x31a294), field copies at +0/+4/+8/+12/
+    // +16/+17 (0x31a2a4-0x31a30a), function assign_to_own at +20
+    // (0x31a31c), store image pointer (0x31a32c). Box is the heap image.
+    slot.assign_bind(src);
 }
 
 #[doc(alias = "void boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::operator()<void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list1<rbx_core::SharedPtr<RBX::mutex> &>>(boost::_bi::type<void>,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::mutex> &> &,int)")]
@@ -178,8 +458,12 @@ pub fn stub_0x31a26c() {
 // 0x31a3d8 — __ZN5boost3_bi5list5INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEES7_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEclIPFvSsS5_bbSD_ENS0_5list1IRNS4_IN3RBX5mutexEEEEEEEvNS0_4typeIvEERT_RT0_i
 // type: int __fastcall(std::string *)
 // was: void boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::operator()<void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list1<rbx_core::SharedPtr<RBX::mutex> &>>(boost::_bi::type<void>,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::mutex> &> &,int)
-pub fn stub_0x31a3d8() {
-    // IDA 0x31a3d8: function::operator() invoked the erased target. Closure call at the live site — carrier no-op.
+pub fn stub_0x31a3d8(bind: &bind_http::BindPostStream, _mu: &bind_http::MutexSlot) {
+    // IDA 0x31a3d8: unpacks bound string/shared/function (0x31a400-0x31a45c),
+    // tail-calls F (0x31a480); the incoming mutex list1 is never read — all
+    // values, no placeholders. Shared/bytes temporaries release after
+    // (0x31a488-0x31a4f0); Rust drops do that.
+    (bind.target)(&bind.args);
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
@@ -187,48 +471,103 @@ pub fn stub_0x31a3d8() {
 // 0x31a594 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsNS_10shared_ptrISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEENSG_IS6_EENSG_IbEESJ_NSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, void *, std::string *, int, int, int, int)
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
-pub fn stub_0x31a594() {
-    // IDA 0x31a594: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
+pub fn stub_0x31a594(
+    slot: &mut bind_http::FunctionSlot,
+    op: bind_http::FunctorOp,
+) -> bind_http::ManageEffect {
+    // IDA 0x31a594: switch op { 0: clone image (0x31a608-0x31a67e),
+    // 1: move pointer + null src (0x31a684-0x31a688), 2: clear/release/
+    // destroy/delete (0x31a68e-0x31a6c2), 3: strcmp type name (0x31a6e0),
+    // default: typeid (truncated tail) }. Cf. FunctionSlot::manage.
+    slot.manage(op)
 }
 
 #[doc(alias = "boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::list5(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>)")]
 #[doc(alias = "__ZN5boost3_bi5list5INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEES7_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEC2ES3_S6_S7_S7_SE_")]
 // 0x31a7f0 — __ZN5boost3_bi5list5INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEES7_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEC2ES3_S6_S7_S7_SE_
 // was: boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::list5(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>)
-pub fn stub_0x31a7f0() {
-    // IDA 0x31a7f0: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
+pub fn stub_0x31a7f0(
+    url: String,
+    body: crate::SharedPtr<Vec<u8>>,
+    flag_a: bool,
+    flag_b: bool,
+    done: bind_http::HttpDoneCallback,
+) -> bind_http::PostStreamBindArgs {
+    // IDA 0x31a7f0: copies each arg to temporaries (string 0x31a816,
+    // shared_count 0x31a854, function 0x31a86a) then delegates to storage5
+    // (0x31a886); temporaries release after (0x31a890-0x31a8f8). Flattening
+    // the storage image back out is the same five values.
+    let stored = stub_0x31a99c(url, body, flag_a, flag_b, done);
+    bind_http::PostStreamBindArgs {
+        url: stored.base.base.base.url,
+        body: stored.base.base.base.body,
+        flag_a: stored.base.base.flag_a,
+        flag_b: stored.base.flag_b,
+        done: stored.done,
+    }
 }
 
 #[doc(alias = "boost::_bi::storage5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::storage5(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>)")]
 #[doc(alias = "__ZN5boost3_bi8storage5INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEES7_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEC2ES3_S6_S7_S7_SE_")]
 // 0x31a99c — __ZN5boost3_bi8storage5INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEES7_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEC2ES3_S6_S7_S7_SE_
 // was: boost::_bi::storage5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::storage5(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>)
-pub fn stub_0x31a99c() {
-    // IDA 0x31a99c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
+pub fn stub_0x31a99c(
+    url: String,
+    body: crate::SharedPtr<Vec<u8>>,
+    flag_a: bool,
+    flag_b: bool,
+    done: bind_http::HttpDoneCallback,
+) -> bind_http::Storage5 {
+    // IDA 0x31a99c: string/shared temporaries (0x31a9c2/0x31aa00), storage4
+    // into the image head (0x31aa1e), temporaries released (0x31aa24-0x31aa3c),
+    // then `*(+16) = 0` + assign_to_own of the function (0x31aa4a/0x31aa52).
+    // Moving `done` in is that ownership transfer.
+    bind_http::Storage5 { base: stub_0x31ab68(url, body, flag_a, flag_b), done }
 }
 
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>>::storage4(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>)")]
 #[doc(alias = "__ZN5boost3_bi8storage4INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEES7_EC2ES3_S6_S7_S7_")]
 // 0x31ab68 — __ZN5boost3_bi8storage4INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEES7_EC2ES3_S6_S7_S7_
 // was: boost::_bi::storage4<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>>::storage4(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>)
-pub fn stub_0x31ab68() {
-    // IDA 0x31ab68: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
+pub fn stub_0x31ab68(
+    url: String,
+    body: crate::SharedPtr<Vec<u8>>,
+    flag_a: bool,
+    flag_b: bool,
+) -> bind_http::Storage4 {
+    // IDA 0x31ab68: string/shared temporaries (0x31ab8e/0x31abcc), storage3
+    // into the head (0x31abe4), temporaries released (0x31abea-0x31ac02),
+    // then the bool at +13 (0x31ac0e).
+    bind_http::Storage4 { base: stub_0x31ace0(url, body, flag_a), flag_b }
 }
 
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>>::storage3(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>)")]
 #[doc(alias = "__ZN5boost3_bi8storage3INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEEEC2ES3_S6_S7_")]
 // 0x31ace0 — __ZN5boost3_bi8storage3INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEEEC2ES3_S6_S7_
 // was: boost::_bi::storage3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>>::storage3(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>)
-pub fn stub_0x31ace0() {
-    // IDA 0x31ace0: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
+pub fn stub_0x31ace0(
+    url: String,
+    body: crate::SharedPtr<Vec<u8>>,
+    flag_a: bool,
+) -> bind_http::Storage3 {
+    // IDA 0x31ace0: string/shared temporaries (0x31ad06/0x31ad44), storage2
+    // into the head (0x31ad58), temporaries released (0x31ad5e-0x31ad76),
+    // then the bool at +12 (0x31ad82).
+    bind_http::Storage3 { base: stub_0x31ae54(url, body), flag_a }
 }
 
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>>::storage2(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>)")]
 #[doc(alias = "__ZN5boost3_bi8storage2INS0_5valueISsEENS2_INS_10shared_ptrISiEEEEEC2ES3_S6_")]
 // 0x31ae54 — __ZN5boost3_bi8storage2INS0_5valueISsEENS2_INS_10shared_ptrISiEEEEEC2ES3_S6_
 // was: boost::_bi::storage2<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>>::storage2(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>)
-pub fn stub_0x31ae54() {
-    // IDA 0x31ae54: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
+pub fn stub_0x31ae54(
+    url: String,
+    body: crate::SharedPtr<Vec<u8>>,
+) -> bind_http::Storage2 {
+    // IDA 0x31ae54: string copy (0x31ae78/0x31aeb0, temp released
+    // 0x31aec4-0x31af2c) plus the shared_count addref pair writing px/pi
+    // (0x31aed4/0x31aede/0x31aee8). By-value params are those copies.
+    bind_http::Storage2 { url, body }
 }
 
 #[doc(alias = "void boost::function1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>)")]
@@ -789,4 +1128,82 @@ pub fn stub_0x3821f0() {
 // was: rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot> &)
 pub fn stub_0x382348() {
     // IDA 0x382348: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+}
+
+#[cfg(test)]
+mod bind_http_tests {
+    use super::bind_http::*;
+    use super::*;
+    use crate::shared_ptr::ControlBlockP;
+
+    fn done_cb() -> HttpDoneCallback {
+        crate::SharedPtr::new(|_: Option<String>, _: Option<String>| {})
+    }
+
+    fn sample_bind() -> BindPostStream {
+        stub_0x31888c(
+            |_: &PostStreamBindArgs| {},
+            String::from("http://x"),
+            crate::SharedPtr::new(Vec::new()),
+            true,
+            false,
+            done_cb(),
+        )
+    }
+
+    #[test]
+    fn storage_layers_flatten_to_list5_args() {
+        let args = stub_0x31a7f0(
+            String::from("http://x"),
+            crate::SharedPtr::new(vec![1u8]),
+            true,
+            false,
+            done_cb(),
+        );
+        assert_eq!(args.url, "http://x");
+        assert_eq!(*args.body, vec![1u8]);
+        assert!(args.flag_a);
+        assert!(!args.flag_b);
+    }
+
+    #[test]
+    fn manager_clone_move_destroy_cycle() {
+        let mut slot = FunctionSlot::Empty;
+        stub_0x3195c0(&mut slot, sample_bind());
+        // clone op duplicates the bound image (IDA 0x31a608).
+        match stub_0x31a594(&mut slot, FunctorOp::CloneBind) {
+            ManageEffect::Cloned(Some(clone)) => assert_eq!(clone.args.url, "http://x"),
+            _ => panic!("clone must duplicate the bound image"),
+        }
+        // type ops report the bind_t name (IDA 0x31a6e0 / 0x319a0a).
+        match stub_0x3199f4(&mut slot, FunctorOp::CheckType) {
+            ManageEffect::TypeMatch(true) => {}
+            _ => panic!("check-type must match the monomorphic slot"),
+        }
+        match stub_0x3199f4(&mut slot, FunctorOp::GetType) {
+            ManageEffect::TypeName(name) => assert_eq!(name, BIND_POST_STREAM_TYPE_NAME),
+            _ => panic!("get-type must return the bind_t name"),
+        }
+        // move op transfers and empties the source (IDA 0x31a684).
+        match stub_0x31a594(&mut slot, FunctorOp::MoveBind) {
+            ManageEffect::Moved(Some(moved)) => assert_eq!(moved.args.url, "http://x"),
+            _ => panic!("move must transfer the bound image"),
+        }
+        assert!(matches!(slot, FunctionSlot::Empty));
+        // destroy on empty stays empty (IDA 0x31a68e null check).
+        match stub_0x31a594(&mut slot, FunctorOp::DestroyBind) {
+            ManageEffect::Destroyed => {}
+            _ => panic!("destroy must report completion"),
+        }
+    }
+
+    #[test]
+    fn counted_impl_p_dispose_releases_and_never_deletes() {
+        let mut block = ControlBlockP::new(Box::new(7u32));
+        assert!(block.get().is_some());
+        stub_0x31641c(&mut block);
+        assert!(block.get().is_none());
+        assert!(stub_0x3164c0(&block).is_none());
+        assert!(stub_0x3164c4(&block).is_none());
+    }
 }
