@@ -1125,37 +1125,27 @@ pub fn stub_b0c50c() -> ! {
 // 0xb0ce88 — __ZN3RBX7Network10Replicator21isLegalDeleteInstanceEPNS_8InstanceE
 #[doc(alias = "RBX::Network::Replicator::isLegalDeleteInstance(RBX::Instance *)")]
 // was: RBX::Network::Replicator::isLegalDeleteInstance(RBX::Instance *)
-pub fn stub_b0ce88() -> ! {
-    todo!("0xb0ce88 RBX::Network::Replicator::isLegalDeleteInstance(RBX::Instance *)")
-}
+pub use crate::generated_datamodel_watchdog_W::stub_0xb0ce88 as stub_b0ce88;
 
 // 0xb0ce90 — __ZN3RBX7Network10Replicator22isLegalReceivePropertyEPNS_8InstanceERKNS_10Reflection18PropertyDescriptorE
 #[doc(alias = "RBX::Network::Replicator::isLegalReceiveProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")]
 // was: RBX::Network::Replicator::isLegalReceiveProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)
-pub fn stub_b0ce90() -> ! {
-    todo!("0xb0ce90 RBX::Network::Replicator::isLegalReceiveProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")
-}
+pub use crate::generated_datamodel_watchdog_W::stub_0xb0ce90 as stub_b0ce90;
 
 // 0xb0ce98 — __ZN3RBX7Network10Replicator24shouldDelayAddingToWorldEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Network::Replicator::shouldDelayAddingToWorld(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Network::Replicator::shouldDelayAddingToWorld(boost::shared_ptr<RBX::Instance>)
-pub fn stub_b0ce98() -> ! {
-    todo!("0xb0ce98 RBX::Network::Replicator::shouldDelayAddingToWorld(rbx_core::SharedPtr<RBX::Instance>)")
-}
+pub use crate::generated_datamodel_watchdog_W::stub_0xb0ce98 as stub_b0ce98;
 
 // 0xb0cea0 — __ZN3RBX7Network10Replicator29filterReceivedChangedPropertyEPNS_8InstanceERKNS_10Reflection18PropertyDescriptorE
 #[doc(alias = "RBX::Network::Replicator::filterReceivedChangedProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")]
 // was: RBX::Network::Replicator::filterReceivedChangedProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)
-pub fn stub_b0cea0() -> ! {
-    todo!("0xb0cea0 RBX::Network::Replicator::filterReceivedChangedProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")
-}
+pub use crate::generated_datamodel_watchdog_W::stub_0xb0cea0 as stub_b0cea0;
 
 // 0xb0cea4 — __ZN3RBX7Network10Replicator20filterReceivedParentEPNS_8InstanceES3_
 #[doc(alias = "RBX::Network::Replicator::filterReceivedParent(RBX::Instance *,RBX::Instance *)")]
 // was: RBX::Network::Replicator::filterReceivedParent(RBX::Instance *,RBX::Instance *)
-pub fn stub_b0cea4() -> ! {
-    todo!("0xb0cea4 RBX::Network::Replicator::filterReceivedParent(RBX::Instance *,RBX::Instance *)")
-}
+pub use crate::generated_datamodel_watchdog_W::stub_0xb0cea4 as stub_b0cea4;
 
 // 0xb0f028 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11ObjectValueENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ObjectValue *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
@@ -1174,16 +1164,12 @@ pub fn stub_b0f030() -> ! {
 // 0xb0f050 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11ObjectValueENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ObjectValue *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::ObjectValue *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_b0f050() -> ! {
-    todo!("0xb0f050 boost::detail::sp_counted_impl_pd<RBX::ObjectValue *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
-}
+pub use crate::generated_datamodel_watchdog_W::stub_0xb0f050 as stub_b0f050;
 
 // 0xb0f068 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11ObjectValueENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ObjectValue *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::ObjectValue *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_b0f068() -> ! {
-    todo!("0xb0f068 boost::detail::sp_counted_impl_pd<RBX::ObjectValue *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
-}
+pub use crate::generated_datamodel_watchdog_W::stub_0xb0f068 as stub_b0f068;
 
 // 0xb10638 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11StringValueENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StringValue *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
@@ -1195,16 +1181,12 @@ pub fn stub_b10638() -> ! {
 // 0xb10648 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11StringValueENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StringValue *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::StringValue *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_b10648() -> ! {
-    todo!("0xb10648 boost::detail::sp_counted_impl_pd<RBX::StringValue *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
-}
+pub use crate::generated_datamodel_watchdog_W::stub_0xb10648 as stub_b10648;
 
 // 0xb10660 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11StringValueENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StringValue *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::StringValue *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_b10660() -> ! {
-    todo!("0xb10660 boost::detail::sp_counted_impl_pd<RBX::StringValue *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
-}
+pub use crate::generated_datamodel_watchdog_W::stub_0xb10660 as stub_b10660;
 
 // 0xb10f88 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12CylinderMeshENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CylinderMesh *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
@@ -1244,16 +1226,12 @@ pub fn stub_b140e8() -> ! {
 // 0xb14104 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6MarkerENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Marker *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Network::Marker *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_b14104() -> ! {
-    todo!("0xb14104 boost::detail::sp_counted_impl_pd<RBX::Network::Marker *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
-}
+pub use crate::generated_datamodel_watchdog_W::stub_0xb14104 as stub_b14104;
 
 // 0xb1411c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6MarkerENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Marker *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Network::Marker *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_b1411c() -> ! {
-    todo!("0xb1411c boost::detail::sp_counted_impl_pd<RBX::Network::Marker *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
-}
+pub use crate::generated_datamodel_watchdog_W::stub_0xb1411c as stub_b1411c;
 
 // 0xb14580 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS1_8InstanceEEEENS6_5list1INS6_5valueINS8_INS1_7Network10ReplicatorEEEEEEEEEEEvT_
 #[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>>>)")]
@@ -1279,9 +1257,7 @@ pub fn stub_b14a14() -> ! {
 // 0xb14c68 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS3_8InstanceEEEENS8_5list1INS8_5valueINSA_INS3_7Network10ReplicatorEEEEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
-pub fn stub_b14c68() -> ! {
-    todo!("0xb14c68 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
-}
+pub use crate::generated_datamodel_watchdog_W::stub_0xb14c68 as stub_b14c68;
 
 // 0xb14f08 — __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueINS5_INS6_7Network10ReplicatorEEEEEEEEEE12manage_smallERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
@@ -1307,16 +1283,12 @@ pub fn stub_b15c80() -> ! {
 // 0xb15d20 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_N5boost10shared_ptrINS0_8InstanceEEEESt10_Select1stISA_ESt4lessIS3_ESaISA_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISA_ERKSA_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>,std::_Select1st<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>>,std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>,std::_Select1st<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>>,std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>> const&)
-pub fn stub_b15d20() -> ! {
-    todo!("0xb15d20 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>,std::_Select1st<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>>,std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>> const&)")
-}
+pub use crate::generated_datamodel_watchdog_W::stub_0xb15d20 as stub_b15d20;
 
 // 0xb15e98 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_N5boost10shared_ptrINS0_8InstanceEEEESt10_Select1stISA_ESt4lessIS3_ESaISA_EE16_M_insert_uniqueERKSA_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>,std::_Select1st<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>>>::_M_insert_unique(std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>,std::_Select1st<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>>>::_M_insert_unique(std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>> const&)
-pub fn stub_b15e98() -> ! {
-    todo!("0xb15e98 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>,std::_Select1st<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>>>::_M_insert_unique(std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>> const&)")
-}
+pub use crate::generated_datamodel_watchdog_W::stub_0xb15e98 as stub_b15e98;
 
 // 0xb1b20c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX7Network10ReplicatorENS_10shared_ptrINS7_8InstanceEEEEENS3_5list2INS3_5valueIPS9_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
@@ -1342,9 +1314,7 @@ pub fn stub_b1b4d4() -> ! {
 // 0xb1b74c — __ZN5boost9unordered6detail10table_implINS1_3setISaIPKN3RBX8InstanceEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE9erase_keyERKS7_
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Instance const*>,RBX::Instance const*,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::erase_key(RBX::Instance const* const&)")]
 // was: boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Instance const*>,RBX::Instance const*,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::erase_key(RBX::Instance const* const&)
-pub fn stub_b1b74c() -> ! {
-    todo!("0xb1b74c boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Instance const*>,RBX::Instance const*,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::erase_key(RBX::Instance const* const&)")
-}
+pub use crate::generated_datamodel_watchdog_W::stub_0xb1b74c as stub_b1b74c;
 
 // 0xb1b820 — __ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE6insertEPNS9_4slotE
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::insert(rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot *)")]
@@ -1356,9 +1326,7 @@ pub fn stub_b1b820() -> ! {
 // 0xb1bae0 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS5_19ICombinedSignalDataEEE4slotEEaSEPSC_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot*)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot*)
-pub fn stub_b1bae0() -> ! {
-    todo!("0xb1bae0 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot*)")
-}
+pub use crate::generated_datamodel_watchdog_W::stub_0xb1bae0 as stub_b1bae0;
 
 // 0xb1bb98 — __ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE13callable_slotIN5boost3_bi6bind_tIvPFvNSB_8weak_ptrINS2_7Network10ReplicatorEEEPNSG_15ReplicationDataES4_S7_ENSC_5list4INSC_5valueISH_EENSN_ISJ_EENSB_3argILi1EEENSQ_ILi2EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*),boost::_bi::list4<boost::_bi::value<rbx_core::Weak<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
@@ -1384,9 +1352,7 @@ pub fn stub_b1bc58() -> ! {
 // 0xb1bdd8 — __ZNK3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE4slot9connectedEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot::connected(void)const")]
 // was: rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot::connected(void)const
-pub fn stub_b1bdd8() -> ! {
-    todo!("0xb1bdd8 rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot::connected(void)const")
-}
+pub use crate::generated_datamodel_watchdog_W::stub_0xb1bdd8 as stub_b1bdd8;
 
 // 0xb1bde4 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS4_19ICombinedSignalDataEEE4slotEN5boost3_bi6bind_tIvPFvNSC_8weak_ptrINS3_7Network10ReplicatorEEEPNSH_15ReplicationDataES5_S8_ENSD_5list4INSD_5valueISI_EENSO_ISK_EENSC_3argILi1EEENSR_ILi2EEEEEEELi2ES9_E4callES5_S8_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot,boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*),boost::_bi::list4<boost::_bi::value<rbx_core::Weak<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>>,2,void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::call(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)")]
@@ -1461,9 +1427,7 @@ pub fn stub_b1c4c0() -> ! {
 // 0xb1ccb0 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE12emplace_implINS1_13emplace_args1ISD_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEbERS9_RKT_
 #[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>,RBX::Instance const*,RBX::Network::Replicator::ReplicationData,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>>(RBX::Instance const* const&,boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>> const&)")]
 // was: std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>,RBX::Instance const*,RBX::Network::Replicator::ReplicationData,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>>(RBX::Instance const* const&,boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>> const&)
-pub fn stub_b1ccb0() -> ! {
-    todo!("0xb1ccb0 std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>,RBX::Instance const*,RBX::Network::Replicator::ReplicationData,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>>(RBX::Instance const* const&,boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>> const&)")
-}
+pub use crate::generated_datamodel_watchdog_W::stub_0xb1ccb0 as stub_b1ccb0;
 
 // 0xb1cf3c — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEEEEE20construct_with_valueINS1_13emplace_args1ISD_EEEEvRKT_
 #[doc(alias = "void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>>>::construct_with_value<boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>>>(boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,RBX::Network::Replicator::ReplicationData>> const&)")]
@@ -1503,9 +1467,7 @@ pub fn stub_b1dbc0() -> ! {
 // 0xb1dda8 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIS4_EEENS8_5list1INS8_5valueISB_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
-pub fn stub_b1dda8() -> ! {
-    todo!("0xb1dda8 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
-}
+pub use crate::generated_datamodel_watchdog_W::stub_0xb1dda8 as stub_b1dda8;
 
 // 0xb1f2b0 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSIN5boost10shared_ptrINS1_8InstanceEEEEERS3_RKT_
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<rbx_core::SharedPtr<RBX::Instance>>(rbx_core::SharedPtr<RBX::Instance> const&)")]
