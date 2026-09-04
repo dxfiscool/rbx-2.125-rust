@@ -6,7 +6,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
-use crate::generated_138::EnumDescModel;
+use crate::generated_138::{EnumDescModel, RenderSettingsItem};
 
 /// Host stand-ins for the `rbx::implementation::typed_holder<T>` singletons
 /// behind `placement_any<Region3>` (IDA 0xe43c/0xe97c) — same shape as the
@@ -238,187 +238,213 @@ pub fn stub_ec30() {
     // IDA 0xec30: D2 — same EnumDesc D2 template as 0xccb0 (two _M_erase + base dtor); host tables drop with Rust ownership.
 }
 
+/// was: `RBX::Name` handle for `sRenderSettings` behind `Name::declare` /
+/// `doDeclare` / `callDoDeclare` (IDA 0xf1d8/0xf1dc) and
+/// `Creator::getClassName` (IDA 0xedfc). The index is assigned by the live
+/// name table; 0 is the null name (`[INFERENCE]` — the binary returns the
+/// table slot, same carrier shape as core's `StatsName`).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct RenderSettingsName {
+    pub index: u32,
+}
+
+static RENDER_SETTINGS_NAME_CELL: std::sync::LazyLock<RenderSettingsName> =
+    std::sync::LazyLock::new(|| RenderSettingsName { index: 1 });
+
 // 0xeccc — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD2Ev
 // type: int __fastcall(int)
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_eccc() -> ! {
-    todo!("0xeccc __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD2Ev")
-}
+pub fn stub_eccc() {
+    // IDA 0xeccc: Creator D2 — vtable reset to the Creator vtable (0xed1c), isConstructed assert shape, base dtors under SjLj guard; creator lifetime is engine-side, so the host keeps a faithful no-op shell.
+    }
 
 // 0xedfc — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv
 // type: int(void)
 #[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_edfc() -> ! {
-    todo!("0xedfc __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv")
-}
+pub fn stub_edfc() -> RenderSettingsName {
+    // IDA 0xedfc: getClassName — wasConstructed() assert (isConstructed == 0x29A, 0xee10..0xee5c), boost::call_once(declare flag, callDoDeclare<sRenderSettings>) (0xee60..0xee78), tail-call doDeclare (0xee80). Returns the interned class name.
+    stub_f1dc()}
 
 // 0xee84 — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv
 // type: int __fastcall(int *)
 #[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv")]
-pub fn stub_ee84() -> ! {
-    todo!("0xee84 __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv")
-}
+pub fn stub_ee84() -> SharedPtr<RenderSettingsItem> {
+    // IDA 0xee84: Creator::create — wasConstructed() assert (Object.h:231, 0xee98..0xeee2), Creatable::create (0xeeec), out = (px ? px + 32 : 0) with shared count (0xeef2..0xeefe); the +32 is the enable_shared_from_this owner offset, folded into Arc.
+    stub_ef04()}
 
 // 0xef04 — __ZN3RBX9CreatableINS_8InstanceEE6createI19CRenderSettingsItemEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
 #[doc(alias = "rbx_core::SharedPtr<CRenderSettingsItem> RBX::Creatable<RBX::Instance>::create<CRenderSettingsItem>(void)")]
-pub fn stub_ef04() -> ! {
-    todo!("0xef04 __ZN3RBX9CreatableINS_8InstanceEE6createI19CRenderSettingsItemEEN5boost10shared_ptrIT_EEv")
-}
+pub fn stub_ef04() -> SharedPtr<RenderSettingsItem> {
+    // IDA 0xef04: Creatable::create<CRenderSettingsItem> — operator new(0xC4) (0xef38), CRenderSettingsItem ctor (0xef5c), shared_ptr ctor with Creatable::Deleter (0xef6a). Arc::new is all three.
+        SharedPtr::new(RenderSettingsItem::default())}
 
 // 0xefb4 — __ZN5boost10shared_ptrI19CRenderSettingsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<CRenderSettingsItem>::shared_ptr<CRenderSettingsItem,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_efb4() -> ! {
-    todo!("0xefb4 __ZN5boost10shared_ptrI19CRenderSettingsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_")
-}
+pub fn stub_efb4(value: RenderSettingsItem) -> SharedPtr<RenderSettingsItem> {
+    // IDA 0xefb4: shared_ptr(px, deleter) — *a1 = px (0xefba), shared_count ctor (0xefc0), _internal_accept_owner when px != 0 (0xefd0); px is always non-null from 0xef04, so Arc::new covers all three arms.
+        SharedPtr::new(value)}
 
 // 0xefd8 — __ZNK5boost6detail15sp_counted_base9use_countEv
 // type: int __fastcall(boost::detail::sp_counted_base *this)
 #[doc(alias = "boost::detail::sp_counted_base::use_count(void)const")]
-pub fn stub_efd8() -> ! {
-    todo!("0xefd8 __ZNK5boost6detail15sp_counted_base9use_countEv")
-}
+pub fn stub_efd8(shared: &SharedPtr<RenderSettingsItem>) -> i32 {
+    // IDA 0xefd8: use_count — spinlock_pool<1> slot lock (0xf01a..0xf020), load use_count_ (0xf032), unlock (0xf058..0xf078). Arc strong_count is the same observable.
+        SharedPtr::strong_count(shared) as i32}
 
 // 0xf098 — __ZN5boost6detail12shared_countC2IP19CRenderSettingsItemN3RBX9CreatableINS5_8InstanceEE7DeleterEEET_T0_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_f098() -> ! {
-    todo!("0xf098 __ZN5boost6detail12shared_countC2IP19CRenderSettingsItemN3RBX9CreatableINS5_8InstanceEE7DeleterEEET_T0_")
-}
+pub fn stub_f098() {
+    // IDA 0xf098: shared_count(px, deleter) — *a1 = 0, operator new(0x14) counted block with use = weak = 1 (0xf0fa..0xf0fe), vtable + px install (0xf104..0xf10c). The Arc control block is built at SharedPtr::new, so the host keeps a no-op shell.
+    }
 
 // 0xf198 — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_f198() -> ! {
-    todo!("0xf198 __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED1Ev")
-}
+pub fn stub_f198() {
+    // IDA 0xf198: sp_counted_impl_pd D1 — empty body; drop covers it.
+    }
 
 // 0xf19c — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE7disposeEv
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_f19c() -> ! {
-    todo!("0xf19c __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE7disposeEv")
-}
+pub fn stub_f19c() {
+    // IDA 0xf19c: dispose — Instance::predelete(px) (0xf1a4), then the vtable+8 delete when px != 0 (0xf1aa..0xf1b8); disposal folds into Arc drop at the live owner.
+    }
 
 // 0xf1bc — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_f1bc() -> ! {
-    todo!("0xf1bc __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
-}
+pub fn stub_f1bc() -> bool {
+    // IDA 0xf1bc: get_deleter — typeinfo-name compare against "N3RBX9CreatableINS_8InstanceEE7DeleterE" (0xf1ce) gates the a1+16 slot return (0xf1c0..0xf1d2). This instantiation always carries the Creatable deleter, so the gate always passes; the host stores no tagged deleter.
+        true}
 
 // 0xf1d4 — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_f1d4() -> ! {
-    todo!("0xf1d4 __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE19get_untyped_deleterEv")
-}
+pub fn stub_f1d4() -> bool {
+    // IDA 0xf1d4: get_untyped_deleter — unconditional a1+16 slot return (0xf1d6); same always-present Creatable deleter as 0xf1bc.
+        true}
 
 // 0xf1d8 — __ZN3RBX4Name13callDoDeclareILZ15sRenderSettingsEEEvv
 // type: 
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZ15sRenderSettingsEEEvv")]
-pub fn stub_f1d8() -> ! {
-    todo!("0xf1d8 __ZN3RBX4Name13callDoDeclareILZ15sRenderSettingsEEEvv")
-}
+pub fn stub_f1d8() -> RenderSettingsName {
+    // IDA 0xf1d8: callDoDeclare<sRenderSettings> — thunk straight into doDeclare (decompile: single shim tail-call).
+    stub_f1dc()}
 
 // 0xf1dc — __ZN3RBX4Name9doDeclareILZ15sRenderSettingsEEERKS0_v
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZ15sRenderSettingsEEERKS0_v")]
-pub fn stub_f1dc() -> ! {
-    todo!("0xf1dc __ZN3RBX4Name9doDeclareILZ15sRenderSettingsEEERKS0_v")
-}
+pub fn stub_f1dc() -> RenderSettingsName {
+    // IDA 0xf1dc: doDeclare<sRenderSettings> — guarded once-init (__cxa_guard_acquire 0xf238, Name::declare(sRenderSettings) 0xf25e, release 0xf262), returns the static (0xf290). LazyLock is that guard.
+    *RENDER_SETTINGS_NAME_CELL}
+
+/// was: `FactoryProduct<CRenderSettingsItem,...>::creatorPrivate` — the
+/// Creator singleton returned by `static_getCreator` (IDA 0xf500/0xf572).
+/// Construction/registration (IDA 0xf2bc) lives engine-side; the host keeps
+/// only the identity handle.
+pub struct RenderSettingsCreator;
+
+static RENDER_SETTINGS_CREATOR_PRIVATE: RenderSettingsCreator = RenderSettingsCreator;
 
 // 0xf2bc — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev
 // type: pthread_mutex_t *__fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_f2bc() -> ! {
-    todo!("0xf2bc __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev")
-}
+pub fn stub_f2bc() {
+    // IDA 0xf2bc: Creator C2 — vtable install (0xf2f2), call_once Name declare (0xf2f4) + doDeclare (0xf30a), creators-map insert with find/dup asserts (Object.h:244/:245, 0xf316..0xf468), isConstructed = 666 (0xf422); the factory registry lives engine-side — faithful no-op shell.
+    }
 
 // 0xf500 — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv
 // type: void *()
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_f500() -> ! {
-    todo!("0xf500 __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv")
-}
+pub fn stub_f500() -> &'static RenderSettingsCreator {
+    // IDA 0xf500: static_getCreator — Creator::wasConstructed() assert (Object.h:282, 0xf510..0xf562); returns &creatorPrivate (0xf572).
+        &RENDER_SETTINGS_CREATOR_PRIVATE}
 
 // 0xf574 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4nextERN5boost13intrusive_ptrINS8_4slotEEE
 // type: int __fastcall(int, int *, int, int, char, int, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot> &)")]
-pub fn stub_f574() -> ! {
-    todo!("0xf574 __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4nextERN5boost13intrusive_ptrINS8_4slotEEE")
-}
+pub fn stub_f574() {
+    // IDA 0xf574: signal::next — slot addref (0xf5c4..0xf5ce), static-mutex lock (0xf5f8..0xf608), slot op= advance (0xf61c), unlock + release (0xf638..); the next-slot cursor is emit-loop state folded into Signal::fire (cf. stub_b76c / RenderSettingsItem::emit_prop_changed). was: boost::intrusive_ptr<slot> -> rbx_core::SharedPtr.
+    }
 
 // 0xf6dc — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE8on_errorERSt9exception
 // type: int *()
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::on_error(std::exception &)")]
-pub fn stub_f6dc() -> ! {
-    todo!("0xf6dc __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE8on_errorERSt9exception")
-}
+pub fn stub_f6dc() -> bool {
+    // IDA 0xf6dc: signal::on_error — &slot_exception_handler (0xf6f0); the nonnull gate (0xf6f6..0xf6fc) would invoke it (0xf6fe), else returns &handler (0xf702). The host installs no handler, so the gate never passes.
+        false}
 
 // 0xf704 — __ZNSt6vectorIN3G3D12Vector2int16ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_
 // type: int __fastcall(int, char *, _DWORD *)
 #[doc(alias = "std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::_M_insert_aux(__gnu_cxx::__normal_iterator<G3D::Vector2int16*,std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>>,G3D::Vector2int16 const&)")]
-pub fn stub_f704() -> ! {
-    todo!("0xf704 __ZNSt6vectorIN3G3D12Vector2int16ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_")
-}
+pub fn stub_f704(xs: &mut Vec<(u16, u16)>, index: usize, v: (u16, u16)) {
+    // IDA 0xf704: vector::insert_aux — finish bump (0xf72c), copy_backward shift (0xf734), value store (0xf738); Vec::insert covers both arms (the fast path is inlined at the caller, cf. 0xb740).
+        xs.insert(index, v);}
 
 // 0xf7e8 — __ZNSt12_Vector_baseIN3G3D12Vector2int16ESaIS1_EE11_M_allocateEm
 // type: int __fastcall(int, unsigned int)
 #[doc(alias = "std::_Vector_base<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::_M_allocate(unsigned long)")]
-pub fn stub_f7e8() -> ! {
-    todo!("0xf7e8 __ZNSt12_Vector_baseIN3G3D12Vector2int16ESaIS1_EE11_M_allocateEm")
-}
+pub fn stub_f7e8(n: usize) -> Vec<(u16, u16)> {
+    // IDA 0xf7e8: _Vector_base::_M_allocate — __throw_bad_alloc when n >= 0x40000000 (0xf7f0..0xf7f2), else operator new(4 * n); with_capacity is the uninit-storage carrier (__cxa_throw -> panic!).
+        if n >= 0x4000_0000 {
+        panic!("bad_alloc");
+    }
+    Vec::with_capacity(n)}
 
 // 0xf800 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3G3D12Vector2int16ES5_EET0_T_S7_S6_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "G3D::Vector2int16 * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<G3D::Vector2int16 *,G3D::Vector2int16 *>(G3D::Vector2int16 *,G3D::Vector2int16 *,G3D::Vector2int16 *)")]
-pub fn stub_f800() -> ! {
-    todo!("0xf800 __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3G3D12Vector2int16ES5_EET0_T_S7_S6_")
-}
+pub fn stub_f800(xs: &mut [(u16, u16)], first: usize, last: usize, result: usize) -> usize {
+    // IDA 0xf800: copy_backward word-at-a-time loop (0xf800..0xf832), returns the adjusted result end (0xf834..0xf83a); copy_within is the overlapping-backward carrier (pairs are 4-byte words, same unit).
+        let n = last - first;
+    xs.copy_within(first..last, result - n);
+    result - n}
 
 // 0xf83c — __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev")]
-pub fn stub_f83c() -> ! {
-    todo!("0xf83c __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev")
-}
+pub fn stub_f83c() {
+    // IDA 0xf83c: GlobalAdvancedSettingsItem D1 — four vtable installs (0xf85c..0xf86e), sing = 0 (0xf872), Instance dtor (0xf878); teardown folds into Rust drop.
+    }
 
 // 0xf87c — __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev")]
-pub fn stub_f87c() -> ! {
-    todo!("0xf87c __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev")
-}
+pub fn stub_f87c() {
+    // IDA 0xf87c: GlobalAdvancedSettingsItem D0 — inlined D1 body (disasm 0xf87c..0xf892: this-save, vtable + sing refs, same stores as 0xf83c) + operator delete; drops with Rust ownership.
+    }
 
 // 0xf8c8 — __ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev
 // type: void __fastcall(_QWORD *)
 #[doc(alias = "__ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev")]
-pub fn stub_f8c8() -> ! {
-    todo!("0xf8c8 __ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev")
-}
+pub fn stub_f8c8() {
+    // IDA 0xf8c8: Thn32 D1 — same teardown as 0xf83c with adjusted this (decompile 0xf8e8..0xf906: vtable stores at this-8/-5, Instance dtor at this-4, sing = 0 at 0xf900); drop covers it.
+    }
 
 // 0xf90c — __ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev
 // type: int __fastcall(_QWORD *)
 #[doc(alias = "__ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev")]
-pub fn stub_f90c() -> ! {
-    todo!("0xf90c __ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev")
-}
+pub fn stub_f90c() {
+    // IDA 0xf90c: Thn32 D0 — adjusted-this D1 body + operator delete (disasm 0xf90c..0xf922 head mirrors the D1 stores); drops with Rust ownership.
+    }
 
 // 0xf964 — __ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev")]
-pub fn stub_f964() -> ! {
-    todo!("0xf964 __ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev")
-}
+pub fn stub_f964() {
+    // IDA 0xf964: Thn36 D1 — same teardown stores with adjusted this (disasm 0xf964..0xf976: vtable + sing refs); drop covers it.
+    }
 
 // 0xf9a8 — __ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev")]
-pub fn stub_f9a8() -> ! {
-    todo!("0xf9a8 __ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev")
-}
+pub fn stub_f9a8() {
+    // IDA 0xf9a8: Thn36 D0 — adjusted-this D1 body + operator delete (disasm 0xf9a8..0xf9be head mirrors the D1 stores); drops with Rust ownership.
+    }
 
 // 0xfa00 — __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: void *__fastcall(int, int, int, int, int, __guard *, int, int, int)
