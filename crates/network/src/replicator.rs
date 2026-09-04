@@ -310,6 +310,51 @@ pub fn write_changed_ref_property(
     write_value(stream);
 }
 
+/// `ServerReplicator::onServiceProvider` (IDA 0x9e16cc): a live `StreamJob`
+/// is dropped via `TaskScheduler::remove` (0x9e16fc..0x9e1844); with a new
+/// provider a missing `Workspace` throws `runtime_error("ServerReplicator
+/// unable to find workspace.")` (0x9e1bd8..0x9e1c1c), while a streaming
+/// workspace starts the `StreamJob` on the scheduler
+/// (0x9e187c..0x9e1aec); then the base `Replicator::onServiceProvider`
+/// runs (0x9e1ba8). Scheduler/service wiring stays engine-side. Returns
+/// the streaming flag written to +3720.
+pub fn replicator_on_service_provider(
+    new_provider: bool,
+    workspace_present: bool,
+    workspace_streaming: bool,
+    parts_streaming_enabled: bool,
+) -> bool {
+    // IDA 0x9e1bd8..0x9e1c1c: the throw mirrors as a panic.
+    if new_provider && !workspace_present {
+        panic!("ServerReplicator unable to find workspace.");
+    }
+    // IDA 0x9e187c.
+    new_provider && workspace_streaming && parts_streaming_enabled
+}
+
+/// `NetworkFilter::filterIfAssociatedWithOtherPlayer<1>` (IDA 0x9e29d8):
+/// without `BasicNetworkCharacterFiltering` nothing filters
+/// (0x9e2a38..0x9e2a3e). Otherwise the instance's enclosing `Player` is
+/// found by parent walk (0x9e2a9e..0x9e2b18; none → pass); when the
+/// player has a character differing from the instance, the change is
+/// filtered and the out-param verdict set (0x9e2b2c..0x9e2b50).
+/// Parent/character lookup stays engine-side. Returns
+/// `(filter, verdict)`.
+pub fn filter_if_associated_with_other_player(
+    basic_filtering: bool,
+    player_present: bool,
+    character_present: bool,
+    is_own_character: bool,
+) -> (bool, bool) {
+    if !basic_filtering || !player_present {
+        return (false, false);
+    }
+    if character_present && !is_own_character {
+        return (true, true);
+    }
+    (false, false)
+}
+
 /// `ServerReplicator::serializePropertyValue` (IDA 0x9e0c14): the
 /// reflection type-switch over the value codec stays engine-side; this
 /// runs the caller-supplied writer (the +312 virtual's payload).
@@ -645,5 +690,31 @@ mod tests {
         // IDA 0x9dc8e4: the +157 flag gates loadCharacter.
         assert!(install_remote_player(true));
         assert!(!install_remote_player(false));
+    }
+
+    #[test]
+    fn provider_drives_streaming_flag() {
+        // IDA 0x9e16cc: no provider -> false; streaming workspace -> true.
+        assert!(!replicator_on_service_provider(false, false, false, false));
+        assert!(!replicator_on_service_provider(true, true, false, true));
+        assert!(!replicator_on_service_provider(true, true, true, false));
+        assert!(replicator_on_service_provider(true, true, true, true));
+    }
+
+    #[test]
+    #[should_panic(expected = "unable to find workspace")]
+    fn provider_without_workspace_throws() {
+        // IDA 0x9e1bd8: runtime_error mirrors as a panic.
+        let _ = replicator_on_service_provider(true, false, false, false);
+    }
+
+    #[test]
+    fn associated_filter_needs_other_character() {
+        // IDA 0x9e29d8: flag off / no player / own character pass; other's filters.
+        assert_eq!(filter_if_associated_with_other_player(false, true, true, false), (false, false));
+        assert_eq!(filter_if_associated_with_other_player(true, false, true, false), (false, false));
+        assert_eq!(filter_if_associated_with_other_player(true, true, false, false), (false, false));
+        assert_eq!(filter_if_associated_with_other_player(true, true, true, true), (false, false));
+        assert_eq!(filter_if_associated_with_other_player(true, true, true, false), (true, true));
     }
     }

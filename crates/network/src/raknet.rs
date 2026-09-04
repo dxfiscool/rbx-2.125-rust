@@ -12317,8 +12317,14 @@ pub fn stub_9e00b0() -> ! {
 #[doc(
     alias = "RBX::Network::ServerReplicator::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)"
 )]
-pub fn stub_9e16cc() -> ! {
-    todo!("0x9e16cc RBX::Network::ServerReplicator::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
+pub fn stub_9e16cc(
+    new_provider: bool,
+    workspace_present: bool,
+    workspace_streaming: bool,
+    parts_streaming_enabled: bool,
+) -> bool {
+    // IDA 0x9e16cc: StreamJob reset, workspace throw/gate, base provider call.
+    crate::replicator::replicator_on_service_provider(new_provider, workspace_present, workspace_streaming, parts_streaming_enabled)
 }
 
 // 0x9e2160 — __ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEE7addPairES3_PKc
@@ -12326,8 +12332,8 @@ pub fn stub_9e16cc() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::addPair(RBX::Network::FilterResult,char const*)"
 )]
-pub fn stub_9e2160() -> ! {
-    todo!("0x9e2160 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::addPair(RBX::Network::FilterResult,char const*)")
+pub fn stub_9e2160() {
+    // IDA 0x9e2160: `EnumDesc<FilterResult>::addPair`; the enum table stays engine-side.
 }
 
 // 0x9e2688 — __ZN3RBX10Reflection7Variant14genericConvertINS_7Network12FilterResultEEERT_v
@@ -12335,8 +12341,9 @@ pub fn stub_9e2160() -> ! {
 #[doc(
     alias = "RBX::Network::FilterResult & RBX::Reflection::Variant::genericConvert<RBX::Network::FilterResult>(void)"
 )]
-pub fn stub_9e2688() -> ! {
-    todo!("0x9e2688 RBX::Network::FilterResult & RBX::Reflection::Variant::genericConvert<RBX::Network::FilterResult>(void)")
+pub fn stub_9e2688(value: i32) -> i32 {
+    // IDA 0x9e2688: `Variant::genericConvert<FilterResult>`; the Variant codec stays engine-side.
+    value
 }
 
 // 0x9e29d8 — __ZN3RBX7Network13NetworkFilter33filterIfAssociatedWithOtherPlayerILNS0_12FilterResultE1EEEbPNS_8InstanceERS3_
@@ -12344,8 +12351,14 @@ pub fn stub_9e2688() -> ! {
 #[doc(
     alias = "bool RBX::Network::NetworkFilter::filterIfAssociatedWithOtherPlayer<(RBX::Network::FilterResult)1>(RBX::Instance *,RBX::Network::FilterResult&)"
 )]
-pub fn stub_9e29d8() -> ! {
-    todo!("0x9e29d8 bool RBX::Network::NetworkFilter::filterIfAssociatedWithOtherPlayer<(RBX::Network::FilterResult)1>(RBX::Instance *,RBX::Network::FilterResult&)")
+pub fn stub_9e29d8(
+    basic_filtering: bool,
+    player_present: bool,
+    character_present: bool,
+    is_own_character: bool,
+) -> (bool, bool) {
+    // IDA 0x9e29d8: other-player association filters.
+    crate::replicator::filter_if_associated_with_other_player(basic_filtering, player_present, character_present, is_own_character)
 }
 
 // 0x9e2b9c — __ZN3RBX10Reflection17BoundCallbackDescIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEES7_EED1Ev
@@ -12353,8 +12366,8 @@ pub fn stub_9e29d8() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~BoundCallbackDesc()"
 )]
-pub fn stub_9e2b9c() -> ! {
-    todo!("0x9e2b9c RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~BoundCallbackDesc()")
+pub fn stub_9e2b9c() {
+    // IDA 0x9e2b9c: `BoundCallbackDesc<FilterResult(...)>` D1; descriptor state stays engine-side.
 }
 
 // 0x9e2cdc — __ZN3RBX10Reflection17BoundCallbackDescIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEEEED1Ev
@@ -12362,29 +12375,29 @@ pub fn stub_9e2b9c() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)>::~BoundCallbackDesc()"
 )]
-pub fn stub_9e2cdc() -> ! {
-    todo!("0x9e2cdc RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)>::~BoundCallbackDesc()")
+pub fn stub_9e2cdc() {
+    // IDA 0x9e2cdc: `BoundCallbackDesc<FilterResult(...)>` D1; descriptor state stays engine-side.
 }
 
 // 0x9e2e1c — __ZN3RBX10Reflection17BoundCallbackDescIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEESsNS0_7VariantEEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant)>::~BoundCallbackDesc()")]
-pub fn stub_9e2e1c() -> ! {
-    todo!("0x9e2e1c RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::Reflection::Variant)>::~BoundCallbackDesc()")
+pub fn stub_9e2e1c() {
+    // IDA 0x9e2e1c: `BoundCallbackDesc<FilterResult(...)>` D1; descriptor state stays engine-side.
 }
 
 // 0x9e2f5c — __ZN3RBX10Reflection17BoundCallbackDescIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEESsEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,std::string)>::~BoundCallbackDesc()")]
-pub fn stub_9e2f5c() -> ! {
-    todo!("0x9e2f5c RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,std::string)>::~BoundCallbackDesc()")
+pub fn stub_9e2f5c() {
+    // IDA 0x9e2f5c: `BoundCallbackDesc<FilterResult(...)>` D1; descriptor state stays engine-side.
 }
 
 // 0x9e309c — __ZN3RBX10Reflection13BoundFuncDescINS_7Network16ServerReplicatorEFvbELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::ServerReplicator,void ()(bool),1>::~BoundFuncDesc()")]
-pub fn stub_9e309c() -> ! {
-    todo!("0x9e309c RBX::Reflection::BoundFuncDesc<RBX::Network::ServerReplicator,void ()(bool),1>::~BoundFuncDesc()")
+pub fn stub_9e309c() {
+    // IDA 0x9e309c: `BoundFuncDesc<ServerReplicator, void(bool)>` D1; descriptor state stays engine-side.
 }
 
 // 0x9e3104 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network16ServerReplicatorEFvvELi0EED1Ev
