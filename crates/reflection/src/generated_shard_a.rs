@@ -5293,8 +5293,17 @@ pub fn stub_0x66c668() {
 
 // 0x66c788 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::EnumPropDescriptor<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment)>(char const*,char const*,RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x66c788() -> ! {
-    todo!("0x66c788 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::EnumPropDescriptor<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment)>(char const*,char const*,RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x66c788(
+    name: &str,
+    category: &str,
+    initial: i32,
+    attributes: u32,
+    permissions: u32,
+) -> EnumProp {
+    // IDA 0x66c788: `EnumPropDescriptor<TextBox, YAlignment>` ctor: `new`
+    // the GetSetImpl, link the `EnumDesc<YAlignment>` singleton at +40/+48
+    // (0x4aad24, same shape as 0x5f9d30).
+    EnumProp::new(name, category, initial, crate::descriptor::stub_0x4aad24().clone(), attributes, permissions)
 }
 
 // 0x66c93c — __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEED0Ev
@@ -5317,26 +5326,36 @@ pub fn stub_0x66c978() {
 
 // 0x66c988 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE11equalValuesEPKNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x66c988() -> ! {
-    todo!("0x66c988 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x66c988(a: &EnumProp, b: &EnumProp) -> bool {
+    // IDA 0x66c988: `equalValues` for YAlignment.
+    a.value == b.value
 }
 
 // 0x66c9b0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x66c9b0() -> ! {
-    todo!("0x66c9b0 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x66c9b0(prop: &EnumProp) -> Value {
+    // IDA 0x66c9b0: `getVariant` for YAlignment.
+    Value::Int(prop.value)
 }
 
 // 0x66c9d4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x66c9d4() -> ! {
-    todo!("0x66c9d4 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x66c9d4(prop: &mut EnumProp, value: &Value) {
+    // IDA 0x66c9d4: `setVariant` for YAlignment.
+    prop.value = match value {
+        Value::Int(v) => *v,
+        Value::EnumValue(v) => *v,
+        Value::Float(v) => *v as i32,
+        Value::Bool(v) => *v as i32,
+        other => panic!("Variant::convert<int> on {other:?} (IDA 0x66c9d4)"),
+    };
 }
 
 // 0x66cb20 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE9copyValueEPKNS0_13DescribedBaseEPS6_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x66cb20() -> ! {
-    todo!("0x66cb20 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x66cb20(dst: &mut EnumProp, src: &EnumProp) {
+    // IDA 0x66cb20: `copyValue` for YAlignment.
+    dst.value = src.value;
 }
 
 // 0x66cb44 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE14hasStringValueEv
@@ -5348,62 +5367,104 @@ pub fn stub_0x66cb44() -> bool {
 
 // 0x66cb48 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x66cb48() -> ! {
-    todo!("0x66cb48 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x66cb48(prop: &EnumProp) -> String {
+    // IDA 0x66cb48: `getStringValue` for YAlignment.
+    prop.enum_desc.lookup_name(prop.value).unwrap_or_default().to_owned()
 }
 
 // 0x66cb6c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x66cb6c() -> ! {
-    todo!("0x66cb6c RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x66cb6c(prop: &mut EnumProp, name: &str) -> bool {
+    // IDA 0x66cb6c: `setStringValue` for YAlignment.
+    match prop.enum_desc.lookup_value(name) {
+        Some(v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x66cbac — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_0x66cbac() -> ! {
-    todo!("0x66cbac RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x66cbac(prop: &EnumProp) -> i32 {
+    // IDA 0x66cbac: `writeValue` for YAlignment.
+    prop.value
 }
 
 // 0x66cbcc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_0x66cbcc() -> ! {
-    todo!("0x66cbcc RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x66cbcc(prop: &mut EnumProp, text: &str) -> bool {
+    // IDA 0x66cbcc: `readValue` for YAlignment.
+    match prop.enum_desc.lookup_value(text) {
+        Some(v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x66ce0c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x66ce0c() -> ! {
-    todo!("0x66ce0c RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x66ce0c(prop: &EnumProp) -> i32 {
+    // IDA 0x66ce0c: `getIndexValue` for YAlignment.
+    prop.convert_to_index(prop.value)
 }
 
 // 0x66ce28 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_0x66ce28() -> ! {
-    todo!("0x66ce28 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x66ce28(prop: &mut EnumProp, index: usize) -> bool {
+    // IDA 0x66ce28: `setIndexValue` for YAlignment.
+    match prop.enum_desc.values.get(index) {
+        Some(&v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x66ce5c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x66ce5c() -> ! {
-    todo!("0x66ce5c RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x66ce5c(prop: &EnumProp) -> i32 {
+    // IDA 0x66ce5c: `getEnumValue` for YAlignment.
+    prop.value
 }
 
 // 0x66ce64 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x66ce64() -> ! {
-    todo!("0x66ce64 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x66ce64(prop: &mut EnumProp, value: i32) -> bool {
+    // IDA 0x66ce64: `setEnumValue` for YAlignment.
+    if prop.enum_desc.items.iter().any(|it| it.value == value) {
+        prop.value = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x66ceb0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x66ceb0() -> ! {
-    todo!("0x66ceb0 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x66ceb0(prop: &EnumProp) -> Option<crate::enum_desc::EnumItem> {
+    // IDA 0x66ceb0: `getEnumItem` for YAlignment.
+    usize::try_from(prop.value)
+        .ok()
+        .and_then(|slot| prop.enum_desc.items_by_value.get(slot).copied().flatten())
+        .and_then(|idx| prop.enum_desc.items.get(idx).cloned())
 }
 
 // 0x66ced0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_0x66ced0() -> ! {
-    todo!("0x66ced0 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x66ced0(prop: &mut EnumProp, name: &str) -> bool {
+    // IDA 0x66ced0: `setStringValue` (`Name` overload) for YAlignment.
+    match prop.enum_desc.lookup_value(name) {
+        Some(v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x66cf04 — __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToValueERKNS_4NameERS3_
@@ -5435,8 +5496,18 @@ pub fn stub_0x66d04c(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 
 // 0x66d0bc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x66d0bc() -> ! {
-    todo!("0x66d0bc RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x66d0bc(prop: &mut EnumProp, value: i32) -> bool {
+    // IDA 0x66d0bc: `setIntValue` for YAlignment (same shape as 0x4aa55c).
+    match usize::try_from(value)
+        .ok()
+        .and_then(|slot| prop.enum_desc.value_to_value.get(slot).copied())
+    {
+        Some(mapped) if mapped != -1 => {
+            prop.value = mapped;
+            true
+        }
+        _ => false,
+    }
 }
 
 // 0x66d0fc — __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE15convertToStringERKS3_
@@ -5464,14 +5535,16 @@ pub fn stub_0x66d2a0() -> bool {
 
 // 0x66d2a4 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x66d2a4() -> ! {
-    todo!("0x66d2a4 RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x66d2a4(prop: &EnumProp) -> i32 {
+    // IDA 0x66d2a4: `GetSetImpl<YAlignment>::getValue` (+44 member).
+    prop.value
 }
 
 // 0x66d2d0 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextService::YAlignment const&)const")]
-pub fn stub_0x66d2d0() -> ! {
-    todo!("0x66d2d0 RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextService::YAlignment const&)const")
+pub fn stub_0x66d2d0(prop: &mut EnumProp, value: i32) {
+    // IDA 0x66d2d0: `GetSetImpl<YAlignment>::setValue` (+44 member).
+    prop.value = value;
 }
 
 // 0x66d2f4 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10YAlignmentEEEE13initSingletonEv
@@ -5543,8 +5616,17 @@ pub fn stub_0x66d6e4(desc: &crate::enum_desc::EnumDesc, index: usize, out: &mut 
 
 // 0x66da0c — __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::EnumPropDescriptor<RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::XAlignment)>(char const*,char const*,RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::XAlignment),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x66da0c() -> ! {
-    todo!("0x66da0c RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::EnumPropDescriptor<RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::XAlignment)>(char const*,char const*,RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::XAlignment),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x66da0c(
+    name: &str,
+    category: &str,
+    initial: i32,
+    attributes: u32,
+    permissions: u32,
+) -> EnumProp {
+    // IDA 0x66da0c: `EnumPropDescriptor<TextBox, XAlignment>` ctor: `new`
+    // the GetSetImpl, link the `EnumDesc<XAlignment>` singleton at +40/+48
+    // (0x4aacf0, same shape as 0x5f9d30).
+    EnumProp::new(name, category, initial, crate::descriptor::stub_0x4aacf0().clone(), attributes, permissions)
 }
 
 // 0x66dbc0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEED0Ev
@@ -5567,26 +5649,36 @@ pub fn stub_0x66dbfc() {
 
 // 0x66dc0c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE11equalValuesEPKNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x66dc0c() -> ! {
-    todo!("0x66dc0c RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x66dc0c(a: &EnumProp, b: &EnumProp) -> bool {
+    // IDA 0x66dc0c: `equalValues` for XAlignment.
+    a.value == b.value
 }
 
 // 0x66dc34 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x66dc34() -> ! {
-    todo!("0x66dc34 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x66dc34(prop: &EnumProp) -> Value {
+    // IDA 0x66dc34: `getVariant` for XAlignment.
+    Value::Int(prop.value)
 }
 
 // 0x66dc58 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x66dc58() -> ! {
-    todo!("0x66dc58 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x66dc58(prop: &mut EnumProp, value: &Value) {
+    // IDA 0x66dc58: `setVariant` for XAlignment.
+    prop.value = match value {
+        Value::Int(v) => *v,
+        Value::EnumValue(v) => *v,
+        Value::Float(v) => *v as i32,
+        Value::Bool(v) => *v as i32,
+        other => panic!("Variant::convert<int> on {other:?} (IDA 0x66dc58)"),
+    };
 }
 
 // 0x66dda4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE9copyValueEPKNS0_13DescribedBaseEPS6_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x66dda4() -> ! {
-    todo!("0x66dda4 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x66dda4(dst: &mut EnumProp, src: &EnumProp) {
+    // IDA 0x66dda4: `copyValue` for XAlignment.
+    dst.value = src.value;
 }
 
 // 0x66ddc8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE14hasStringValueEv
@@ -5598,62 +5690,104 @@ pub fn stub_0x66ddc8() -> bool {
 
 // 0x66ddcc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x66ddcc() -> ! {
-    todo!("0x66ddcc RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x66ddcc(prop: &EnumProp) -> String {
+    // IDA 0x66ddcc: `getStringValue` for XAlignment.
+    prop.enum_desc.lookup_name(prop.value).unwrap_or_default().to_owned()
 }
 
 // 0x66ddf0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x66ddf0() -> ! {
-    todo!("0x66ddf0 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x66ddf0(prop: &mut EnumProp, name: &str) -> bool {
+    // IDA 0x66ddf0: `setStringValue` for XAlignment.
+    match prop.enum_desc.lookup_value(name) {
+        Some(v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x66de30 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_0x66de30() -> ! {
-    todo!("0x66de30 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x66de30(prop: &EnumProp) -> i32 {
+    // IDA 0x66de30: `writeValue` for XAlignment.
+    prop.value
 }
 
 // 0x66de50 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_0x66de50() -> ! {
-    todo!("0x66de50 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x66de50(prop: &mut EnumProp, text: &str) -> bool {
+    // IDA 0x66de50: `readValue` for XAlignment.
+    match prop.enum_desc.lookup_value(text) {
+        Some(v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x66e090 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x66e090() -> ! {
-    todo!("0x66e090 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x66e090(prop: &EnumProp) -> i32 {
+    // IDA 0x66e090: `getIndexValue` for XAlignment.
+    prop.convert_to_index(prop.value)
 }
 
 // 0x66e0ac — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_0x66e0ac() -> ! {
-    todo!("0x66e0ac RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x66e0ac(prop: &mut EnumProp, index: usize) -> bool {
+    // IDA 0x66e0ac: `setIndexValue` for XAlignment.
+    match prop.enum_desc.values.get(index) {
+        Some(&v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x66e0e0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x66e0e0() -> ! {
-    todo!("0x66e0e0 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x66e0e0(prop: &EnumProp) -> i32 {
+    // IDA 0x66e0e0: `getEnumValue` for XAlignment.
+    prop.value
 }
 
 // 0x66e0e8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x66e0e8() -> ! {
-    todo!("0x66e0e8 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x66e0e8(prop: &mut EnumProp, value: i32) -> bool {
+    // IDA 0x66e0e8: `setEnumValue` for XAlignment.
+    if prop.enum_desc.items.iter().any(|it| it.value == value) {
+        prop.value = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x66e134 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x66e134() -> ! {
-    todo!("0x66e134 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x66e134(prop: &EnumProp) -> Option<crate::enum_desc::EnumItem> {
+    // IDA 0x66e134: `getEnumItem` for XAlignment.
+    usize::try_from(prop.value)
+        .ok()
+        .and_then(|slot| prop.enum_desc.items_by_value.get(slot).copied().flatten())
+        .and_then(|idx| prop.enum_desc.items.get(idx).cloned())
 }
 
 // 0x66e154 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_0x66e154() -> ! {
-    todo!("0x66e154 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x66e154(prop: &mut EnumProp, name: &str) -> bool {
+    // IDA 0x66e154: `setStringValue` (`Name` overload) for XAlignment.
+    match prop.enum_desc.lookup_value(name) {
+        Some(v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x66e188 — __ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE14convertToValueERKNS_4NameERS3_
@@ -5685,8 +5819,18 @@ pub fn stub_0x66e2d0(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 
 // 0x66e340 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x66e340() -> ! {
-    todo!("0x66e340 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x66e340(prop: &mut EnumProp, value: i32) -> bool {
+    // IDA 0x66e340: `setIntValue` for XAlignment (same shape as 0x4aa55c).
+    match usize::try_from(value)
+        .ok()
+        .and_then(|slot| prop.enum_desc.value_to_value.get(slot).copied())
+    {
+        Some(mapped) if mapped != -1 => {
+            prop.value = mapped;
+            true
+        }
+        _ => false,
+    }
 }
 
 // 0x66e380 — __ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE15convertToStringERKS3_
@@ -5714,14 +5858,16 @@ pub fn stub_0x66e524() -> bool {
 
 // 0x66e528 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::GetSetImpl<RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::XAlignment)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x66e528() -> ! {
-    todo!("0x66e528 RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::GetSetImpl<RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::XAlignment)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x66e528(prop: &EnumProp) -> i32 {
+    // IDA 0x66e528: `GetSetImpl<XAlignment>::getValue` (+44 member).
+    prop.value
 }
 
 // 0x66e554 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::GetSetImpl<RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::XAlignment)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextService::XAlignment const&)const")]
-pub fn stub_0x66e554() -> ! {
-    todo!("0x66e554 RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::GetSetImpl<RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::XAlignment)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextService::XAlignment const&)const")
+pub fn stub_0x66e554(prop: &mut EnumProp, value: i32) {
+    // IDA 0x66e554: `GetSetImpl<XAlignment>::setValue` (+44 member).
+    prop.value = value;
 }
 
 // 0x66e578 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10XAlignmentEEEE13initSingletonEv
