@@ -262,9 +262,13 @@ impl Players {
     /// `Players::~Players` (IDA 0xa08270, D2): vtable resets, signal
     /// disconnects, chat-message teardown, endpoint strings, and the
     /// `Instance` base dtor (0xa0829e..0xa087c6). Crate-side this drops
-    /// every row, endpoint, and flag.
+    /// the membership rows, keys, and liveness (endpoint strings are
+    /// plain data and survive a teardown).
     pub fn tear_down(&mut self) {
-        *self = Self::default();
+        self.by_user.clear();
+        self.local_player = None;
+        self.leaderboard_keys.clear();
+        self.peer_connected = false;
     }
 }
 
