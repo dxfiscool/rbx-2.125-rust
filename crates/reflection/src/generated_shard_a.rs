@@ -1515,8 +1515,17 @@ pub fn stub_0x60effc() {
 
 // 0x60f9bc — __ZN3RBX10Reflection14PropDescriptorINS_11Scale9FrameESsEC2IMS2_KFSsvEMS2_FvSsEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scale9Frame,std::string>::PropDescriptor<std::string (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(std::string)>(char const*,char const*,std::string (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(std::string),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x60f9bc() -> ! {
-    todo!("0x60f9bc RBX::Reflection::PropDescriptor<RBX::Scale9Frame,std::string>::PropDescriptor<std::string (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(std::string)>(char const*,char const*,std::string (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(std::string),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x60f9bc(
+    name: &str,
+    category: &str,
+    initial: String,
+    attributes: u32,
+    permissions: u32,
+) -> Prop<String> {
+    // IDA 0x60f9bc: `PropDescriptor<Scale9Frame, string>` get/set ctor:
+    // `new` the GetSetImpl, forward into the `TypedPropertyDescriptor`
+    // ctor. Same shape as 0x5f0cec.
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x60fad0 — __ZN3RBX10Reflection14PropDescriptorINS_11Scale9FrameESsED0Ev
@@ -1541,20 +1550,33 @@ pub fn stub_0x60fb00() -> bool {
 
 // 0x60fb04 — __ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scale9Frame,std::string>::GetSetImpl<std::string (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(std::string)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x60fb04() -> ! {
-    todo!("0x60fb04 RBX::Reflection::PropDescriptor<RBX::Scale9Frame,std::string>::GetSetImpl<std::string (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(std::string)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x60fb04(prop: &Prop<String>) -> String {
+    // IDA 0x60fb04: `GetSetImpl<string>::getValue`: header strip, getter
+    // member-pointer decode, invoke.
+    prop.value.clone()
 }
 
 // 0x60fb2c — __ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE8setValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scale9Frame,std::string>::GetSetImpl<std::string (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(std::string)>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x60fb2c() -> ! {
-    todo!("0x60fb2c RBX::Reflection::PropDescriptor<RBX::Scale9Frame,std::string>::GetSetImpl<std::string (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(std::string)>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x60fb2c(prop: &mut Prop<String>, value: String) {
+    // IDA 0x60fb2c: `GetSetImpl<string>::setValue`: header strip, setter
+    // member-pointer decode, invoke with the new value.
+    prop.value = value;
 }
 
 // 0x60fc70 — __ZN3RBX10Reflection14PropDescriptorINS_11Scale9FrameEN3G3D12Vector2int16EEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scale9Frame,G3D::Vector2int16>::PropDescriptor<G3D::Vector2int16 (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(G3D::Vector2int16)>(char const*,char const*,G3D::Vector2int16 (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(G3D::Vector2int16),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x60fc70() -> ! {
-    todo!("0x60fc70 RBX::Reflection::PropDescriptor<RBX::Scale9Frame,G3D::Vector2int16>::PropDescriptor<G3D::Vector2int16 (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(G3D::Vector2int16)>(char const*,char const*,G3D::Vector2int16 (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(G3D::Vector2int16),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x60fc70(
+    name: &str,
+    category: &str,
+    initial: [i16; 2],
+    attributes: u32,
+    permissions: u32,
+) -> Prop<[i16; 2]> {
+    // IDA 0x60fc70: `PropDescriptor<Scale9Frame, Vector2int16>` get/set
+    // ctor: `new` the GetSetImpl, forward into the `TypedPropertyDescriptor`
+    // ctor. Same shape as 0x5f0cec.
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x60fd84 — __ZN3RBX10Reflection14PropDescriptorINS_11Scale9FrameEN3G3D12Vector2int16EED0Ev
@@ -1579,26 +1601,91 @@ pub fn stub_0x60fdb4() -> bool {
 
 // 0x60fdb8 — __ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameEN3G3D12Vector2int16EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scale9Frame,G3D::Vector2int16>::GetSetImpl<G3D::Vector2int16 (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(G3D::Vector2int16)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x60fdb8() -> ! {
-    todo!("0x60fdb8 RBX::Reflection::PropDescriptor<RBX::Scale9Frame,G3D::Vector2int16>::GetSetImpl<G3D::Vector2int16 (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(G3D::Vector2int16)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x60fdb8(prop: &Prop<[i16; 2]>) -> [i16; 2] {
+    // IDA 0x60fdb8: `GetSetImpl<Vector2int16>::getValue`: header strip,
+    // getter member-pointer decode, invoke.
+    prop.value
 }
 
 // 0x60fde0 — __ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameEN3G3D12Vector2int16EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scale9Frame,G3D::Vector2int16>::GetSetImpl<G3D::Vector2int16 (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(G3D::Vector2int16)>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector2int16 const&)const")]
-pub fn stub_0x60fde0() -> ! {
-    todo!("0x60fde0 RBX::Reflection::PropDescriptor<RBX::Scale9Frame,G3D::Vector2int16>::GetSetImpl<G3D::Vector2int16 (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(G3D::Vector2int16)>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector2int16 const&)const")
+pub fn stub_0x60fde0(prop: &mut Prop<[i16; 2]>, value: [i16; 2]) {
+    // IDA 0x60fde0: `GetSetImpl<Vector2int16>::setValue`: header strip,
+    // setter member-pointer decode, invoke.
+    prop.value = value;
+}
+
+use rbx_core::signal::Signal;
+
+/// Which `GuiBase2d` layout prop changed (IDA 0x61044c).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum ScreenGuiLayoutProp {
+    AbsoluteSize,
+    AbsolutePosition,
+    Other,
+}
+
+/// `RBX::GuiButton` modal state visible to ScreenGui (IDA 0x6106ee reads the
+/// modal flag at +782 to pick insert vs remove).
+#[derive(Debug, Clone, Default)]
+pub struct GuiButtonState {
+    pub id: u32,
+    pub modal: bool,
+}
+
+/// `rbx::signals::signal<void(const PropertyDescriptor*)>` for ScreenGui
+/// (IDA 0x610cd8): owns the connected slots; strong refs live in `holders`
+/// because `Signal::connect` keeps only weak refs (same shape as
+/// `EventSource` in descriptor.rs).
+#[derive(Default)]
+pub struct ScreenGuiPropSignal {
+    signal: Signal<String>,
+    holders: parking_lot::Mutex<Vec<SharedPtr<dyn Fn(String) + Send + Sync>>>,
+}
+
+impl ScreenGuiPropSignal {
+    pub fn fire(&self, prop: &str) {
+        self.signal.fire(prop.to_owned());
+    }
+
+    pub fn disconnect_all(&self) {
+        self.holders.lock().clear();
+        self.signal.disconnect_all();
+    }
 }
 
 // 0x61044c — __ZN3RBX9ScreenGui17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE
 #[doc(alias = "RBX::ScreenGui::onPropertyChanged(RBX::Reflection::PropertyDescriptor const&)")]
-pub fn stub_0x61044c() -> ! {
-    todo!("0x61044c RBX::ScreenGui::onPropertyChanged(RBX::Reflection::PropertyDescriptor const&)")
+pub fn stub_0x61044c(changed: ScreenGuiLayoutProp, raised: &mut Vec<String>) -> bool {
+    // IDA 0x61044c: `onPropertyChanged`: `AbsoluteSize` recomputes layout
+    // (vf+152 on +176, 0x6104a2) and raises `unk_1326300` (0x6104ae);
+    // `AbsolutePosition` recomputes (0x610482) and raises `unk_132632C`
+    // (0x61048e); anything else returns without raising (0x610470).
+    match changed {
+        ScreenGuiLayoutProp::AbsoluteSize => {
+            raised.push("AbsoluteSize".to_owned());
+            true
+        }
+        ScreenGuiLayoutProp::AbsolutePosition => {
+            raised.push("AbsolutePosition".to_owned());
+            true
+        }
+        ScreenGuiLayoutProp::Other => false,
+    }
 }
 
 // 0x6106ec — __ZN3RBX9ScreenGui20onModalButtonChangedEPKNS_10Reflection18PropertyDescriptorEPNS_9GuiButtonE
 #[doc(alias = "RBX::ScreenGui::onModalButtonChanged(RBX::Reflection::PropertyDescriptor const*,RBX::GuiButton *)")]
-pub fn stub_0x6106ec() -> ! {
-    todo!("0x6106ec RBX::ScreenGui::onModalButtonChanged(RBX::Reflection::PropertyDescriptor const*,RBX::GuiButton *)")
+pub fn stub_0x6106ec(buttons: &mut Vec<u32>, button: &GuiButtonState, _prop: &str) {
+    // IDA 0x6106ec: `onModalButtonChanged`: the modal flag at `button + 782`
+    // picks `insertModalButton` (0x6106fa) vs `removeModalButton` (0x6106f6).
+    if button.modal {
+        if !buttons.contains(&button.id) {
+            buttons.push(button.id);
+        }
+    } else {
+        buttons.retain(|&b| b != button.id);
+    }
 }
 
 // 0x610bec — __ZN3RBX10Reflection14PropDescriptorINS_9ScreenGuiEN3G3D12Vector2int16EED1Ev
@@ -1609,8 +1696,24 @@ pub fn stub_0x610bec() {
 
 // 0x610cd8 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE7connectIN5boost3_bi6bind_tIvNSA_4_mfi3mf2IvNS2_9ScreenGuiES6_PNS2_9GuiButtonEEENSB_5list3INSB_5valueIPSF_EENSA_3argILi1EEENSK_ISH_EEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScreenGui,RBX::Reflection::PropertyDescriptor const*,RBX::GuiButton *>,boost::_bi::list3<boost::_bi::value<RBX::ScreenGui*>,boost::arg<1>,boost::_bi::value<RBX::GuiButton *>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScreenGui,RBX::Reflection::PropertyDescriptor const*,RBX::GuiButton *>,boost::_bi::list3<boost::_bi::value<RBX::ScreenGui*>,boost::arg<1>,boost::_bi::value<RBX::GuiButton *>>> const&)")]
-pub fn stub_0x610cd8() -> ! {
-    todo!("0x610cd8 rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScreenGui,RBX::Reflection::PropertyDescriptor const*,RBX::GuiButton *>,boost::_bi::list3<boost::_bi::value<RBX::ScreenGui*>,boost::arg<1>,boost::_bi::value<RBX::GuiButton *>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScreenGui,RBX::Reflection::PropertyDescriptor const*,RBX::GuiButton *>,boost::_bi::list3<boost::_bi::value<RBX::ScreenGui*>,boost::arg<1>,boost::_bi::value<RBX::GuiButton *>>> const&)")
+pub fn stub_0x610cd8(
+    sig: &ScreenGuiPropSignal,
+    buttons: SharedPtr<parking_lot::Mutex<Vec<u32>>>,
+    button: SharedPtr<parking_lot::Mutex<GuiButtonState>>,
+) {
+    // IDA 0x610cd8: `signal::connect<bind_t<mf2<ScreenGui,
+    // onModalButtonChanged>>>`: `new` the islot holding the bound
+    // `(ScreenGui*, arg<1>, GuiButton*)` triple (0x610cf0-0x610d2e),
+    // `signal::insert`, hand out the connection (0x610d32-0x610d3c).
+    // Rust: `Signal::connect` (concrete closure type); the triple folds
+    // into the closure.
+    let (live_buttons, live_button) = (SharedPtr::clone(&buttons), SharedPtr::clone(&button));
+    let slot = SharedPtr::new(move |prop: String| {
+        let state = live_button.lock().clone();
+        stub_0x6106ec(&mut live_buttons.lock(), &state, &prop);
+    });
+    sig.signal.connect(SharedPtr::clone(&slot));
+    sig.holders.lock().push(slot);
 }
 
 // 0x6126a0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7GuiMainES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -1633,8 +1736,10 @@ pub fn stub_0x613cac() {
 
 // 0x613d80 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf2IvNS3_9ScreenGuiES7_PNS3_9GuiButtonEEENSC_5list3INSC_5valueIPSG_EENSB_3argILi1EEENSL_ISI_EEEEEELi1ES8_E4callES7_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScreenGui,RBX::Reflection::PropertyDescriptor const*,RBX::GuiButton *>,boost::_bi::list3<boost::_bi::value<RBX::ScreenGui*>,boost::arg<1>,boost::_bi::value<RBX::GuiButton *>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x613d80() -> ! {
-    todo!("0x613d80 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScreenGui,RBX::Reflection::PropertyDescriptor const*,RBX::GuiButton *>,boost::_bi::list3<boost::_bi::value<RBX::ScreenGui*>,boost::arg<1>,boost::_bi::value<RBX::GuiButton *>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x613d80(target: &dyn Fn(&str, &GuiButtonState), prop: &str, button: &GuiButtonState) {
+    // IDA 0x613d80: `callable::call`: pack the prop into the 1-arg list and
+    // tail-jump to `list3::operator()` (0x613d9e).
+    stub_0x613dc0(target, prop, button);
 }
 
 // 0x613da0 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf2IvNS3_9ScreenGuiES7_PNS3_9GuiButtonEEENSC_5list3INSC_5valueIPSG_EENSB_3argILi1EEENSL_ISI_EEEEEELi1ES8_E4callES7_
@@ -1645,8 +1750,12 @@ pub fn stub_0x613da0() {
 
 // 0x613dc0 — __ZN5boost3_bi5list3INS0_5valueIPN3RBX9ScreenGuiEEENS_3argILi1EEENS2_IPNS3_9GuiButtonEEEEclINS_4_mfi3mf2IvS4_PKNS3_10Reflection18PropertyDescriptorESA_EENS0_5list1IRSJ_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::ScreenGui *>,boost::arg<1>,boost::_bi::value<RBX::GuiButton *>>::operator()<boost::_mfi::mf2<void,RBX::ScreenGui,RBX::Reflection::PropertyDescriptor const*,RBX::GuiButton *>,boost::_bi::list1<RBX::Reflection::PropertyDescriptor const*&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ScreenGui,RBX::Reflection::PropertyDescriptor const*,RBX::GuiButton *> &,boost::_bi::list1<RBX::Reflection::PropertyDescriptor const*&> &,int)")]
-pub fn stub_0x613dc0() -> ! {
-    todo!("0x613dc0 void boost::_bi::list3<boost::_bi::value<RBX::ScreenGui *>,boost::arg<1>,boost::_bi::value<RBX::GuiButton *>>::operator()<boost::_mfi::mf2<void,RBX::ScreenGui,RBX::Reflection::PropertyDescriptor const*,RBX::GuiButton *>,boost::_bi::list1<RBX::Reflection::PropertyDescriptor const*&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ScreenGui,RBX::Reflection::PropertyDescriptor const*,RBX::GuiButton *> &,boost::_bi::list1<RBX::Reflection::PropertyDescriptor const*&> &,int)")
+pub fn stub_0x613dc0(target: &dyn Fn(&str, &GuiButtonState), prop: &str, button: &GuiButtonState) {
+    // IDA 0x613dc0: `list3::operator()`: decode the member pair
+    // (`offset >> 1`, virtual bit `& 1`), invoke
+    // `ScreenGui::onModalButtonChanged(screen, prop, button)`
+    // (0x613dd6-0x613de0).
+    target(prop, button);
 }
 
 // 0x613df0 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf2IvNS3_9ScreenGuiES7_PNS3_9GuiButtonEEENSC_5list3INSC_5valueIPSG_EENSB_3argILi1EEENSL_ISI_EEEEEELi1ES8_ED1Ev
@@ -1663,14 +1772,32 @@ pub fn stub_0x613e1c() {
 
 // 0x6141e4 — __ZN3RBX10Reflection14PropDescriptorINS_9ScreenGuiEN3G3D12Vector2int16EEC2IMNS_9GuiBase2dEKFRKNS3_7Vector2EvEMS2_FvS4_EEEPKcSG_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ScreenGui,G3D::Vector2int16>::PropDescriptor<G3D::Vector2 const& (RBX::GuiBase2d::*)(void)const,void (RBX::ScreenGui::*)(G3D::Vector2int16)>(char const*,char const*,G3D::Vector2 const& (RBX::GuiBase2d::*)(void)const,void (RBX::ScreenGui::*)(G3D::Vector2int16),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x6141e4() -> ! {
-    todo!("0x6141e4 RBX::Reflection::PropDescriptor<RBX::ScreenGui,G3D::Vector2int16>::PropDescriptor<G3D::Vector2 const& (RBX::GuiBase2d::*)(void)const,void (RBX::ScreenGui::*)(G3D::Vector2int16)>(char const*,char const*,G3D::Vector2 const& (RBX::GuiBase2d::*)(void)const,void (RBX::ScreenGui::*)(G3D::Vector2int16),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x6141e4(
+    name: &str,
+    category: &str,
+    initial: [i16; 2],
+    attributes: u32,
+    permissions: u32,
+) -> Prop<[i16; 2]> {
+    // IDA 0x6141e4: `PropDescriptor<ScreenGui, Vector2int16>` get/set ctor:
+    // `new` the GetSetImpl, forward into the `TypedPropertyDescriptor`
+    // ctor. Same shape as 0x5f0cec.
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x6142f8 — __ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D12Vector2int16EEC2ERNS0_15ClassDescriptorEPKcS8_St8auto_ptrINS4_6GetSetEENS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2int16>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2int16>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x6142f8() -> ! {
-    todo!("0x6142f8 RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2int16>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2int16>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x6142f8(
+    name: &str,
+    category: &str,
+    initial: [i16; 2],
+    attributes: u32,
+    permissions: u32,
+) -> Prop<[i16; 2]> {
+    // IDA 0x6142f8: `TypedPropertyDescriptor<Vector2int16>` ctor: type tag,
+    // base init, vtable, `auto_ptr` takeover, read/write attribute masking.
+    // Same shape as 0x5f0e00.
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x61441c — __ZN3RBX10Reflection14PropDescriptorINS_9ScreenGuiEN3G3D12Vector2int16EED0Ev
@@ -1693,26 +1820,34 @@ pub fn stub_0x614458() {
 
 // 0x614468 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D12Vector2int16EE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2int16>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x614468() -> ! {
-    todo!("0x614468 RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2int16>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x614468(a: &Prop<[i16; 2]>, b: &Prop<[i16; 2]>) -> bool {
+    // IDA 0x614468: `equalValues`: `getValue` both sides via slot 8,
+    // compare lane by lane.
+    a.value == b.value
 }
 
 // 0x61449c — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D12Vector2int16EE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2int16>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x61449c() -> ! {
-    todo!("0x61449c RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2int16>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x61449c(prop: &Prop<[i16; 2]>) -> Value {
+    // IDA 0x61449c: `getVariant`: `getValue` via slot 8, tag
+    // `Type::getSingleton<Vector2int16>`, pack with `placement_any`.
+    Value::Vector2i(prop.value)
 }
 
 // 0x6144c8 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D12Vector2int16EE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2int16>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x6144c8() -> ! {
-    todo!("0x6144c8 RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2int16>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x6144c8(prop: &mut Prop<[i16; 2]>, value: &Value) {
+    // IDA 0x6144c8: `setVariant`: `any_cast<Vector2int16>` on a matching
+    // payload, else `Variant::convert<Vector2int16>`, then `setValue`.
+    prop.value = value.as_vector2i();
 }
 
 // 0x614624 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D12Vector2int16EE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2int16>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x614624() -> ! {
-    todo!("0x614624 RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2int16>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x614624(dst: &mut Prop<[i16; 2]>, src: &Prop<[i16; 2]>) {
+    // IDA 0x614624: `copyValue`: 4-byte temp via slot 8, `setValue` into
+    // the destination via slot 12.
+    dst.value = src.value;
 }
 
 // 0x61464c — __ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D12Vector2int16EED1Ev
@@ -1743,14 +1878,18 @@ pub fn stub_0x6146a0() -> bool {
 
 // 0x6146a4 — __ZNK3RBX10Reflection14PropDescriptorINS_9ScreenGuiEN3G3D12Vector2int16EE10GetSetImplIMNS_9GuiBase2dEKFRKNS3_7Vector2EvEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ScreenGui,G3D::Vector2int16>::GetSetImpl<G3D::Vector2 const& (RBX::GuiBase2d::*)(void)const,void (RBX::ScreenGui::*)(G3D::Vector2int16)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x6146a4() -> ! {
-    todo!("0x6146a4 RBX::Reflection::PropDescriptor<RBX::ScreenGui,G3D::Vector2int16>::GetSetImpl<G3D::Vector2 const& (RBX::GuiBase2d::*)(void)const,void (RBX::ScreenGui::*)(G3D::Vector2int16)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x6146a4(prop: &Prop<[i16; 2]>) -> [i16; 2] {
+    // IDA 0x6146a4: `GetSetImpl<Vector2int16 const&>::getValue` for
+    // ScreenGui: header strip, getter member-pointer decode, invoke.
+    prop.value
 }
 
 // 0x6146d4 — __ZNK3RBX10Reflection14PropDescriptorINS_9ScreenGuiEN3G3D12Vector2int16EE10GetSetImplIMNS_9GuiBase2dEKFRKNS3_7Vector2EvEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ScreenGui,G3D::Vector2int16>::GetSetImpl<G3D::Vector2 const& (RBX::GuiBase2d::*)(void)const,void (RBX::ScreenGui::*)(G3D::Vector2int16)>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector2int16 const&)const")]
-pub fn stub_0x6146d4() -> ! {
-    todo!("0x6146d4 RBX::Reflection::PropDescriptor<RBX::ScreenGui,G3D::Vector2int16>::GetSetImpl<G3D::Vector2 const& (RBX::GuiBase2d::*)(void)const,void (RBX::ScreenGui::*)(G3D::Vector2int16)>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector2int16 const&)const")
+pub fn stub_0x6146d4(prop: &mut Prop<[i16; 2]>, value: [i16; 2]) {
+    // IDA 0x6146d4: `GetSetImpl<Vector2int16 const&>::setValue` for
+    // ScreenGui: header strip, setter member-pointer decode, invoke.
+    prop.value = value;
 }
 
 // 0x615c20 — __ZN3RBX10Reflection14PropDescriptorINS_4SeatEbED1Ev
@@ -1767,8 +1906,17 @@ pub fn stub_0x6178b4() {
 
 // 0x61877c — __ZN3RBX10Reflection14PropDescriptorINS_4SeatEbEC2IMNS_8SeatImplINS_17BasicPartInstanceEEEKFRKbvEMS7_FvS9_EEEPKcSF_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Seat,bool>::PropDescriptor<bool const& (RBX::SeatImpl<RBX::BasicPartInstance>::*)(void)const,void (RBX::SeatImpl<RBX::BasicPartInstance>::*)(bool const&)>(char const*,char const*,bool const& (RBX::SeatImpl<RBX::BasicPartInstance>::*)(void)const,void (RBX::SeatImpl<RBX::BasicPartInstance>::*)(bool const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x61877c() -> ! {
-    todo!("0x61877c RBX::Reflection::PropDescriptor<RBX::Seat,bool>::PropDescriptor<bool const& (RBX::SeatImpl<RBX::BasicPartInstance>::*)(void)const,void (RBX::SeatImpl<RBX::BasicPartInstance>::*)(bool const&)>(char const*,char const*,bool const& (RBX::SeatImpl<RBX::BasicPartInstance>::*)(void)const,void (RBX::SeatImpl<RBX::BasicPartInstance>::*)(bool const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x61877c(
+    name: &str,
+    category: &str,
+    initial: bool,
+    attributes: u32,
+    permissions: u32,
+) -> Prop<bool> {
+    // IDA 0x61877c: `PropDescriptor<Seat, bool>` get/set ctor (getter through
+    // `SeatImpl`, `bool const&`): `new` the GetSetImpl, forward into the
+    // `TypedPropertyDescriptor` ctor. Same shape as 0x5f0cec.
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x618890 — __ZN3RBX10Reflection14PropDescriptorINS_4SeatEbED0Ev
@@ -1793,14 +1941,18 @@ pub fn stub_0x6188c0() -> bool {
 
 // 0x6188c4 — __ZNK3RBX10Reflection14PropDescriptorINS_4SeatEbE10GetSetImplIMNS_8SeatImplINS_17BasicPartInstanceEEEKFRKbvEMS7_FvS9_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Seat,bool>::GetSetImpl<bool const& (RBX::SeatImpl<RBX::BasicPartInstance>::*)(void)const,void (RBX::SeatImpl<RBX::BasicPartInstance>::*)(bool const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x6188c4() -> ! {
-    todo!("0x6188c4 RBX::Reflection::PropDescriptor<RBX::Seat,bool>::GetSetImpl<bool const& (RBX::SeatImpl<RBX::BasicPartInstance>::*)(void)const,void (RBX::SeatImpl<RBX::BasicPartInstance>::*)(bool const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x6188c4(prop: &Prop<bool>) -> bool {
+    // IDA 0x6188c4: `GetSetImpl<bool const&>::getValue` for Seat: header
+    // strip, getter member-pointer decode, invoke.
+    prop.value
 }
 
 // 0x6188ec — __ZNK3RBX10Reflection14PropDescriptorINS_4SeatEbE10GetSetImplIMNS_8SeatImplINS_17BasicPartInstanceEEEKFRKbvEMS7_FvS9_EE8setValueEPNS0_13DescribedBaseES9_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Seat,bool>::GetSetImpl<bool const& (RBX::SeatImpl<RBX::BasicPartInstance>::*)(void)const,void (RBX::SeatImpl<RBX::BasicPartInstance>::*)(bool const&)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_0x6188ec() -> ! {
-    todo!("0x6188ec RBX::Reflection::PropDescriptor<RBX::Seat,bool>::GetSetImpl<bool const& (RBX::SeatImpl<RBX::BasicPartInstance>::*)(void)const,void (RBX::SeatImpl<RBX::BasicPartInstance>::*)(bool const&)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_0x6188ec(prop: &mut Prop<bool>, value: bool) {
+    // IDA 0x6188ec: `GetSetImpl<bool const&>::setValue` for Seat: header
+    // strip, setter member-pointer decode, invoke.
+    prop.value = value;
 }
 
 // 0x61a5fc — __ZN3RBX10Reflection13BoundFuncDescINS_9SelectionEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED1Ev
