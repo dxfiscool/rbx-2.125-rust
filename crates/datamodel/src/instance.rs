@@ -1321,6 +1321,13 @@ pub struct DataModelEventDesc {
     pub broadcast: bool,
 }
 
+/// Rust model of `RBX::Reflection::BoundCallbackDesc<bool(bool)>::Setter<DataModel>`
+/// (IDA `0x464788`): the callback setter link; the stored functor lands with
+/// the script bridge.
+pub struct BoundCallbackSetter {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::Reflection::RefType<Instance*>` (IDA `0x460ce0`): the
 /// reflection type tag for instance references; behavior lands with the
 /// reflection subsystem.
@@ -23348,26 +23355,42 @@ pub fn stub_0x461efc() -> ! {
 
 // 0x461f50 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFviNS2_11CreatorTypeEELi2EEC2EMS2_FviS3_EPKcS9_S9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,RBX::DataModel::CreatorType),2>::BoundFuncDesc(void (RBX::DataModel::*)(int,RBX::DataModel::CreatorType),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x461f50() -> ! {
-    todo!("0x461f50 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,RBX::DataModel::CreatorType),2>::BoundFuncDesc(void (RBX::DataModel::*)(int,RBX::DataModel::CreatorType),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x461f50() -> DataModelFuncDesc {
+    // IDA 0x461f50: `BoundFuncDesc<DataModel, void(int, CreatorType)>::C2` —
+    // binds the member into the class descriptor; the binding lands with
+    // reflection, so the model starts empty. Same shape as 0x45c664.
+    DataModelFuncDesc { _opaque: () }
 }
 
 // 0x462118 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFviNS2_11CreatorTypeEELi2EE16declareSignatureEPKcNS0_7VariantES7_S8_
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,RBX::DataModel::CreatorType),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x462118() -> ! {
-    todo!("0x462118 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,RBX::DataModel::CreatorType),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+pub fn stub_0x462118(_name: &str, _sig: &[Variant]) {
+    // IDA 0x462118: `BoundFuncDesc<DataModel, ...>::declareSignature` —
+    // same registration collapse as 0x3f0290.
 }
 
 // 0x462164 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFviNS2_11CreatorTypeEELi2EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,RBX::DataModel::CreatorType),2>::~BoundFuncDesc()")]
-pub fn stub_0x462164() -> ! {
-    todo!("0x462164 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,RBX::DataModel::CreatorType),2>::~BoundFuncDesc()")
+pub fn stub_0x462164(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x462164: `BoundFuncDesc<DataModel, ...>::D0` — vtable install plus
+    // memberwise teardown; dropping the box is the same release. Twin of
+    // 0x45c878.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x462244 — __ZNK3RBX10Reflection13BoundFuncDescINS_9DataModelEFviNS2_11CreatorTypeEELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,RBX::DataModel::CreatorType),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x462244() -> ! {
-    todo!("0x462244 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,RBX::DataModel::CreatorType),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x462244(model: &mut DataModel, id: i32, creator: i32) {
+    // IDA 0x462244 (`BoundFuncDesc<DataModel, void(int, CreatorType)>::execute`,
+    // same unmarshal-then-member shape as 0x45e474): unmarshals the pair and
+    // invokes the bound member. The only `void(int, CreatorType)` member in
+    // the model is `setCreatorID` (0x41d2d0), so the call collapses into it.
+    // NOTE: member identity by signature elimination — re-verify if another
+    // `void(int, CreatorType)` member is ever modeled.
+    stub_0x41d2d0(model, id, creator);
 }
 
 // 0x46229c — __ZN3RBX10Reflection9ArgHelper6getArgINS_9DataModel11CreatorTypeELi2EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
@@ -23386,44 +23409,71 @@ pub fn stub_0x462430() -> ! {
 
 // 0x462484 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvibELi2EEC2EMS2_FvibEPKcS8_S8_bNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,bool),2>::BoundFuncDesc(void (RBX::DataModel::*)(int,bool),char const*,char const*,char const*,bool,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x462484() -> ! {
-    todo!("0x462484 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,bool),2>::BoundFuncDesc(void (RBX::DataModel::*)(int,bool),char const*,char const*,char const*,bool,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x462484() -> DataModelFuncDesc {
+    // IDA 0x462484: `BoundFuncDesc<DataModel, void(int, bool)>::C2` — binds
+    // the member into the class descriptor; the binding lands with
+    // reflection, so the model starts empty. Same shape as 0x45c664.
+    DataModelFuncDesc { _opaque: () }
 }
 
 // 0x462680 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvibELi2EE16declareSignatureEPKcNS0_7VariantES6_S7_
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,bool),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x462680() -> ! {
-    todo!("0x462680 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,bool),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+pub fn stub_0x462680(_name: &str, _sig: &[Variant]) {
+    // IDA 0x462680: `BoundFuncDesc<DataModel, ...>::declareSignature` —
+    // same registration collapse as 0x3f0290.
 }
 
 // 0x4626cc — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvibELi2EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,bool),2>::~BoundFuncDesc()")]
-pub fn stub_0x4626cc() -> ! {
-    todo!("0x4626cc RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,bool),2>::~BoundFuncDesc()")
+pub fn stub_0x4626cc(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x4626cc: `BoundFuncDesc<DataModel, ...>::D0` — vtable install plus
+    // memberwise teardown; dropping the box is the same release. Twin of
+    // 0x45c878.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4627ac — __ZNK3RBX10Reflection13BoundFuncDescINS_9DataModelEFvibELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,bool),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x4627ac() -> ! {
-    todo!("0x4627ac RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,bool),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x4627ac(model: &mut DataModel, id: i32, flag: bool) {
+    // IDA 0x4627ac (`BoundFuncDesc<DataModel, void(int, bool)>::execute`,
+    // same unmarshal-then-member shape as 0x45e474): unmarshals the pair and
+    // invokes the bound member. The only `void(int, bool)` member in the
+    // model is `setPlaceID` (0x41d260), so the call collapses into it (the
+    // ScriptContext forward inside stays collapsed there too).
+    // NOTE: member identity by signature elimination — re-verify if another
+    // `void(int, bool)` member is ever modeled.
+    stub_0x41d260(model, id, flag);
 }
 
 // 0x4629a8 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvdELi1EEC2EMS2_FvdEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(double),1>::BoundFuncDesc(void (RBX::DataModel::*)(double),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x4629a8() -> ! {
-    todo!("0x4629a8 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(double),1>::BoundFuncDesc(void (RBX::DataModel::*)(double),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x4629a8() -> DataModelFuncDesc {
+    // IDA 0x4629a8: `BoundFuncDesc<DataModel, void(double)>::C2` — binds the
+    // member into the class descriptor; the binding lands with reflection, so
+    // the model starts empty. Same shape as 0x45c664.
+    DataModelFuncDesc { _opaque: () }
 }
 
 // 0x462b20 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvdELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(double),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x462b20() -> ! {
-    todo!("0x462b20 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(double),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x462b20(_name: &str, _sig: &[Variant]) {
+    // IDA 0x462b20: `BoundFuncDesc<DataModel, ...>::declareSignature` —
+    // same registration collapse as 0x3f0290.
 }
 
 // 0x462b50 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvdELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(double),1>::~BoundFuncDesc()")]
-pub fn stub_0x462b50() -> ! {
-    todo!("0x462b50 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(double),1>::~BoundFuncDesc()")
+pub fn stub_0x462b50(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x462b50: `BoundFuncDesc<DataModel, ...>::D0` — vtable install plus
+    // memberwise teardown; dropping the box is the same release. Twin of
+    // 0x45c878.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x462c24 — __ZNK3RBX10Reflection13BoundFuncDescINS_9DataModelEFvdELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -23434,20 +23484,30 @@ pub fn stub_0x462c24() -> ! {
 
 // 0x462c64 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFdSsdELi2EEC2EMS2_FdSsdEPKcS8_S8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,double ()(std::string,double),2>::BoundFuncDesc(double (RBX::DataModel::*)(std::string,double),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x462c64() -> ! {
-    todo!("0x462c64 RBX::Reflection::BoundFuncDesc<RBX::DataModel,double ()(std::string,double),2>::BoundFuncDesc(double (RBX::DataModel::*)(std::string,double),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x462c64() -> DataModelFuncDesc {
+    // IDA 0x462c64: `BoundFuncDesc<DataModel, double(string, double)>::C2` —
+    // binds the member into the class descriptor; the binding lands with
+    // reflection, so the model starts empty. Same shape as 0x45c664.
+    DataModelFuncDesc { _opaque: () }
 }
 
 // 0x462e2c — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFdSsdELi2EE16declareSignatureEPKcNS0_7VariantES6_S7_
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,double ()(std::string,double),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x462e2c() -> ! {
-    todo!("0x462e2c RBX::Reflection::BoundFuncDesc<RBX::DataModel,double ()(std::string,double),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+pub fn stub_0x462e2c(_name: &str, _sig: &[Variant]) {
+    // IDA 0x462e2c: `BoundFuncDesc<DataModel, ...>::declareSignature` —
+    // same registration collapse as 0x3f0290.
 }
 
 // 0x462e78 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFdSsdELi2EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,double ()(std::string,double),2>::~BoundFuncDesc()")]
-pub fn stub_0x462e78() -> ! {
-    todo!("0x462e78 RBX::Reflection::BoundFuncDesc<RBX::DataModel,double ()(std::string,double),2>::~BoundFuncDesc()")
+pub fn stub_0x462e78(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x462e78: `BoundFuncDesc<DataModel, ...>::D0` — vtable install plus
+    // memberwise teardown; dropping the box is the same release. Twin of
+    // 0x45c878.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x462f54 — __ZNK3RBX10Reflection13BoundFuncDescINS_9DataModelEFdSsdELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -23458,27 +23518,51 @@ pub fn stub_0x462f54() -> ! {
 
 // 0x4630b8 — __ZN3RBX10Reflection11Call2HelperINS_9DataModelEMS2_FdSsdESsddE4callEPS2_S4_RNS0_7VariantERKSsRKd
 #[doc(alias = "RBX::Reflection::Call2Helper<RBX::DataModel,double (RBX::DataModel::*)(std::string,double),std::string,double,double>::call(RBX::DataModel*,double (RBX::DataModel::*)(std::string,double),RBX::Reflection::Variant &,std::string const&,double const&)")]
-pub fn stub_0x4630b8() -> ! {
-    todo!("0x4630b8 RBX::Reflection::Call2Helper<RBX::DataModel,double (RBX::DataModel::*)(std::string,double),std::string,double,double>::call(RBX::DataModel*,double (RBX::DataModel::*)(std::string,double),RBX::Reflection::Variant &,std::string const&,double const&)")
+pub fn stub_0x4630b8(
+    model: &DataModel,
+    func: fn(&DataModel, &str, f64) -> f64,
+    name: &str,
+    value: f64,
+) -> f64 {
+    // IDA 0x4630b8 (`Call2Helper<DataModel, double(*)(string, double)>::call`,
+    // same explicit-member shape as 0x45e4b4): resolves the member and applies
+    // it to `(model, name, value)`; the marshalling collapses into the direct
+    // call.
+    func(model, name, value)
 }
 
 // 0x463220 — __ZN3RBX10Reflection17BoundCallbackDescIFbvEEC2INS_9DataModelEEEPKcMT_N5boost8functionIS2_EENS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundCallbackDesc<bool ()(void)>::BoundCallbackDesc<RBX::DataModel>(char const*,boost::function<bool ()(void)> RBX::DataModel::*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundCallbackDesc<bool ()(void)>::BoundCallbackDesc<RBX::DataModel>(char const*,boost::function<bool ()(void)> RBX::DataModel::*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x463220() -> ! {
-    todo!("0x463220 RBX::Reflection::BoundCallbackDesc<bool ()(void)>::BoundCallbackDesc<RBX::DataModel>(char const*,boost::function<bool ()(void)> RBX::DataModel::*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x463220() -> BoundCallbackSetter {
+    // IDA 0x463220: `BoundCallbackDesc<bool(bool)>::C2(DataModel, ...)` —
+    // binds the callback descriptor; the binding lands with reflection, so
+    // the model starts empty.
+    BoundCallbackSetter { _opaque: () }
 }
 
 // 0x464788 — __ZN3RBX10Reflection17BoundCallbackDescIFbvEE6SetterINS_9DataModelEED1Ev
 #[doc(alias = "RBX::Reflection::BoundCallbackDesc<bool ()(void)>::Setter<RBX::DataModel>::~Setter()")]
-pub fn stub_0x464788() -> ! {
-    todo!("0x464788 RBX::Reflection::BoundCallbackDesc<bool ()(void)>::Setter<RBX::DataModel>::~Setter()")
+pub fn stub_0x464788(_setter: *mut BoundCallbackSetter) {
+    // IDA 0x464788: `BoundCallbackDesc::Setter<DataModel>::D1` — memberwise
+    // teardown (including the stored functor); dropping the box is the same
+    // release.
+    // SAFETY: `_setter` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_setter));
+    }
 }
 
 // 0x46478c — __ZN3RBX10Reflection17BoundCallbackDescIFbvEE6SetterINS_9DataModelEED0Ev
 #[doc(alias = "RBX::Reflection::BoundCallbackDesc<bool ()(void)>::Setter<RBX::DataModel>::~Setter()")]
-pub fn stub_0x46478c() -> ! {
-    todo!("0x46478c RBX::Reflection::BoundCallbackDesc<bool ()(void)>::Setter<RBX::DataModel>::~Setter()")
+pub fn stub_0x46478c(_setter: *mut BoundCallbackSetter) {
+    // IDA 0x46478c: `BoundCallbackDesc::Setter<DataModel>::D0` — vtable
+    // install plus memberwise teardown; dropping the box is the same release.
+    // Twin of 0x464788.
+    // SAFETY: `_setter` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_setter));
+    }
 }
 
 // 0x464790 — __ZNK3RBX10Reflection17BoundCallbackDescIFbvEE6SetterINS_9DataModelEE11setCallbackEPNS0_13DescribedBaseERKN5boost8functionIS2_EE
@@ -23491,14 +23575,23 @@ pub fn stub_0x464790() -> ! {
 // 0x464cd0 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_9DataModelEFbvEbLi0EEC2EMS2_FvN5boost8functionIFvbEEENS6_IFvSsEEEEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,bool ()(void),bool,0>::BoundYieldFuncDesc(void (RBX::DataModel::*)(boost::function<void ()(bool)>,boost::function<void ()(std::string)>),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,bool ()(void),bool,0>::BoundYieldFuncDesc(void (RBX::DataModel::*)(boost::function<void ()(bool)>,boost::function<void ()(std::string)>),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x464cd0() -> ! {
-    todo!("0x464cd0 RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,bool ()(void),bool,0>::BoundYieldFuncDesc(void (RBX::DataModel::*)(boost::function<void ()(bool)>,boost::function<void ()(std::string)>),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x464cd0() -> DataModelYieldDesc {
+    // IDA 0x464cd0: `BoundYieldFuncDesc<DataModel, ...>::C2` — binds the
+    // descriptor; the binding lands with reflection, so the model starts
+    // empty. Same shape as 0x45c664.
+    DataModelYieldDesc { _opaque: () }
 }
 // 0x464dd4 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_9DataModelEFbvEbLi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,bool ()(void),bool,0>::~BoundYieldFuncDesc()")]
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,bool ()(void),bool,0>::~BoundYieldFuncDesc()
-pub fn stub_0x464dd4() -> ! {
-    todo!("0x464dd4 RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,bool ()(void),bool,0>::~BoundYieldFuncDesc()")
+pub fn stub_0x464dd4(_desc: *mut DataModelYieldDesc) {
+    // IDA 0x464dd4: `BoundYieldFuncDesc<DataModel, ...>::D0` — vtable install
+    // plus memberwise teardown; dropping the box is the same release. Twin of
+    // the D1 family.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x464e88 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_9DataModelEFbvEbLi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSB_IFvSsEEE
@@ -23511,8 +23604,12 @@ pub fn stub_0x464e88() -> ! {
 // 0x465474 — __ZN3RBX10Reflection14PropDescriptorINS_9DataModelEbEC2IMS2_KFbvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::PropDescriptor<bool (RBX::DataModel::*)(void)const,int>(char const*,char const*,bool (RBX::DataModel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::PropDescriptor<bool (RBX::DataModel::*)(void)const,int>(char const*,char const*,bool (RBX::DataModel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x465474() -> ! {
-    todo!("0x465474 RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::PropDescriptor<bool (RBX::DataModel::*)(void)const,int>(char const*,char const*,bool (RBX::DataModel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x465474() -> DataModelPropDesc {
+    // IDA 0x465474: `PropDescriptor<DataModel, bool>::C2` — binds the bool
+    // property into the class descriptor; the binding lands with reflection,
+    // so the model starts empty. Same family box as the string/int props (no
+    // behavioral divergence).
+    DataModelPropDesc { _opaque: () }
 }
 
 // 0x465584 — __ZN3RBX10Reflection14PropDescriptorINS_9DataModelEbED0Ev
@@ -23525,15 +23622,19 @@ pub fn stub_0x465584() -> ! {
 // 0x4655b4 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEbE7GetImplIMS2_KFbvEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::GetImpl<bool (RBX::DataModel::*)(void)const>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::GetImpl<bool (RBX::DataModel::*)(void)const>::isReadOnly(void)const
-pub fn stub_0x4655b4() -> ! {
-    todo!("0x4655b4 RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::GetImpl<bool (RBX::DataModel::*)(void)const>::isReadOnly(void)const")
+pub fn stub_0x4655b4() -> bool {
+    // IDA 0x4655b4: `MOVS R0, #1; BX LR` (disasm 0x4655b4-0x4655b6) — this
+    // bool property reads as read-only.
+    true
 }
 
 // 0x4655b8 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEbE7GetImplIMS2_KFbvEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::GetImpl<bool (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::GetImpl<bool (RBX::DataModel::*)(void)const>::isWriteOnly(void)const
-pub fn stub_0x4655b8() -> ! {
-    todo!("0x4655b8 RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::GetImpl<bool (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_0x4655b8() -> bool {
+    // IDA 0x4655b8: `MOVS R0, #0; BX LR` (disasm 0x4655b8-0x4655ba) — this
+    // bool property is never write-only.
+    false
 }
 
 // 0x4655bc — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEbE7GetImplIMS2_KFbvEE8getValueEPKNS0_13DescribedBaseE
