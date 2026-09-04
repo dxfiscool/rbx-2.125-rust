@@ -1124,64 +1124,79 @@ pub fn stub_0xd444b8(map: EmittedEmitterListMap) {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsSt6vectorIPN4Ogre15ParticleEmitterENS3_12STLAllocatorIS5_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISC_ESt4lessISsENS6_ISC_S9_EEE8_M_eraseEPSt13_Rb_tree_nodeISC_E")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>> *)
-// IDA 0xd445d0: 93 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd445d0() {
+// IDA 0xd445d0: `_M_erase(node)` over the vector map (93 insns, PUSH..BL); dropping the map runs every vector dtor in the same order.
+pub fn stub_0xd445d0(map: EmittedEmitterVecMap) {
+    drop(map);
 }
 
 // 0xd446d4 — __ZNSt4pairIKSsSt4listIPN4Ogre15ParticleEmitterENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEEEC2ISsSA_EERKS_IT_T0_E
 #[doc(alias = "std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::pair<std::string,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>(std::pair const&<std::string,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>)")]
 #[doc(alias = "__ZNSt4pairIKSsSt4listIPN4Ogre15ParticleEmitterENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEEEC2ISsSA_EERKS_IT_T0_E")]
 // was: std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::pair<std::string,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>(std::pair const&<std::string,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>)
-// IDA 0xd446d4: 133 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd446d4() {
+// IDA 0xd446d4: converting copy builds the `const string` key then element-wise `allocBytes`/`hook` list copy (133 insns); tuple clone is the same copy.
+pub fn stub_0xd446d4(src: &(String, LinkedList<usize>)) -> (String, LinkedList<usize>) {
+    src.clone()
 }
 
 // 0xd4483c — __ZNSt8_Rb_treeISsSt4pairIKSsSt4listIPN4Ogre15ParticleEmitterENS3_12STLAllocatorIS5_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISC_ESt4lessISsENS6_ISC_S9_EEE16_M_insert_uniqueERKSC_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsSt4listIPN4Ogre15ParticleEmitterENS3_12STLAllocatorIS5_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISC_ESt4lessISsENS6_ISC_S9_EEE16_M_insert_uniqueERKSC_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)
-// IDA 0xd4483c: 90 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd4483c() {
+// IDA 0xd4483c: decompile descends with `less<string>` then inserts-or-finds (90 insns); the `HashMap` entry API is the same unique-insert.
+pub fn stub_0xd4483c(map: &mut EmittedEmitterListMap, key: String, list: LinkedList<usize>) -> bool {
+    use std::collections::hash_map::Entry;
+    match map.entry(key) {
+        Entry::Vacant(slot) => {
+            slot.insert(list);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0xd44920 — __ZNSt8_Rb_treeISsSt4pairIKSsSt4listIPN4Ogre15ParticleEmitterENS3_12STLAllocatorIS5_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISC_ESt4lessISsENS6_ISC_S9_EEE9_M_insertEPSt18_Rb_tree_node_baseSK_RKSC_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsSt4listIPN4Ogre15ParticleEmitterENS3_12STLAllocatorIS5_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISC_ESt4lessISsENS6_ISC_S9_EEE9_M_insertEPSt18_Rb_tree_node_baseSK_RKSC_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)
-// IDA 0xd44920: 47 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd44920() {
+// IDA 0xd44920: `_M_insert` links the created node + rebalances (47 insns, PUSH..POP); with hashing the link collapses into `insert`.
+pub fn stub_0xd44920(map: &mut EmittedEmitterListMap, key: String, list: LinkedList<usize>) {
+    map.insert(key, list);
 }
 
 // 0xd44994 — __ZNSt8_Rb_treeISsSt4pairIKSsSt4listIPN4Ogre15ParticleEmitterENS3_12STLAllocatorIS5_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISC_ESt4lessISsENS6_ISC_S9_EEE14_M_create_nodeERKSC_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsSt4listIPN4Ogre15ParticleEmitterENS3_12STLAllocatorIS5_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISC_ESt4lessISsENS6_ISC_S9_EEE14_M_create_nodeERKSC_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)
-// IDA 0xd44994: 99 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd44994() {
+// IDA 0xd44994: `_M_create_node(pair)` `allocBytes` the node and copy-builds key + list (99 insns, PUSH..BLX); the owned tuple is that node.
+pub fn stub_0xd44994(key: &str, list: &LinkedList<usize>) -> (String, LinkedList<usize>) {
+    (key.to_owned(), list.clone())
 }
 
 // 0xd44b50 — __ZNSt10_List_baseIPN4Ogre15ParticleEmitterENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev
 #[doc(alias = "std::_List_base<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
 #[doc(alias = "__ZNSt10_List_baseIPN4Ogre15ParticleEmitterENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev")]
 // was: std::_List_base<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()
-// IDA 0xd44b50: 1 insn (BX) — branch/return thunk, no state change.
-pub fn stub_0xd44b50() {
+// IDA 0xd44b50: 1 insn (BX) — emitter-list impl holds only the sentinel node; drop frees every node via `deallocBytes`.
+pub fn stub_0xd44b50(list: LinkedList<usize>) {
+    drop(list);
 }
 
 // 0xd44b54 — __ZNSt10_List_baseIPN4Ogre15ParticleEmitterENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev
 #[doc(alias = "std::_List_base<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
 #[doc(alias = "__ZNSt10_List_baseIPN4Ogre15ParticleEmitterENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev")]
 // was: std::_List_base<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()
-// IDA 0xd44b54: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_0xd44b54() {
+// IDA 0xd44b54: D0 is D1 plus `operator delete`; `Box` drop runs D1 then frees.
+pub fn stub_0xd44b54(list: Box<LinkedList<usize>>) {
+    drop(list);
 }
 
 // 0xd44b60 — __ZNSt4pairISsSt4listIPN4Ogre15ParticleEmitterENS1_12STLAllocatorIS3_NS1_22CategorisedAllocPolicyILNS1_14MemoryCategoryE0EEEEEEEC2ERKSsRKS9_
 #[doc(alias = "std::pair<std::string,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::pair(std::string const&,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
 #[doc(alias = "__ZNSt4pairISsSt4listIPN4Ogre15ParticleEmitterENS1_12STLAllocatorIS3_NS1_22CategorisedAllocPolicyILNS1_14MemoryCategoryE0EEEEEEEC2ERKSsRKS9_")]
 // was: std::pair<std::string,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::pair(std::string const&,std::list<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
-// IDA 0xd44b60: 133 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd44b60() {
+// IDA 0xd44b60: decompile copies the string then `allocBytes` + `hook`s one node per source element; owned key + cloned list is the same copy.
+pub fn stub_0xd44b60(key: &str, list: &LinkedList<usize>) -> (String, LinkedList<usize>) {
+    (key.to_owned(), list.clone())
 }
 
 // 0xd44cc8 — __ZNSt8_Rb_treeISsSt4pairIKSsSt6vectorIPN4Ogre15ParticleEmitterENS3_12STLAllocatorIS5_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISC_ESt4lessISsENS6_ISC_S9_EEE16_M_insert_uniqueERKSC_
@@ -1189,8 +1204,16 @@ pub fn stub_0xd44b60() {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsSt6vectorIPN4Ogre15ParticleEmitterENS3_12STLAllocatorIS5_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISC_ESt4lessISsENS6_ISC_S9_EEE16_M_insert_uniqueERKSC_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)
-// IDA 0xd44cc8: 90 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd44cc8() {
+// IDA 0xd44cc8: `_M_insert_unique` over the vector map (90 insns, PUSH..POP); the `HashMap` entry API is the same unique-insert.
+pub fn stub_0xd44cc8(map: &mut EmittedEmitterVecMap, key: String, emitters: Vec<usize>) -> bool {
+    use std::collections::hash_map::Entry;
+    match map.entry(key) {
+        Entry::Vacant(slot) => {
+            slot.insert(emitters);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0xd44dac — __ZNSt8_Rb_treeISsSt4pairIKSsSt6vectorIPN4Ogre15ParticleEmitterENS3_12STLAllocatorIS5_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISC_ESt4lessISsENS6_ISC_S9_EEE9_M_insertEPSt18_Rb_tree_node_baseSK_RKSC_
@@ -1198,8 +1221,9 @@ pub fn stub_0xd44cc8() {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsSt6vectorIPN4Ogre15ParticleEmitterENS3_12STLAllocatorIS5_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISC_ESt4lessISsENS6_ISC_S9_EEE9_M_insertEPSt18_Rb_tree_node_baseSK_RKSC_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)
-// IDA 0xd44dac: 47 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd44dac() {
+// IDA 0xd44dac: `_M_insert` over the vector map (47 insns, PUSH..POP); the link collapses into `insert`.
+pub fn stub_0xd44dac(map: &mut EmittedEmitterVecMap, key: String, emitters: Vec<usize>) {
+    map.insert(key, emitters);
 }
 
 // 0xd44e20 — __ZNSt8_Rb_treeISsSt4pairIKSsSt6vectorIPN4Ogre15ParticleEmitterENS3_12STLAllocatorIS5_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISC_ESt4lessISsENS6_ISC_S9_EEE14_M_create_nodeERKSC_
@@ -1207,32 +1231,36 @@ pub fn stub_0xd44dac() {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsSt6vectorIPN4Ogre15ParticleEmitterENS3_12STLAllocatorIS5_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISC_ESt4lessISsENS6_ISC_S9_EEE14_M_create_nodeERKSC_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)
-// IDA 0xd44e20: 62 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd44e20() {
+// IDA 0xd44e20: `_M_create_node` over the vector map (62 insns, PUSH..BLX); the owned tuple is that node.
+pub fn stub_0xd44e20(key: &str, emitters: &[usize]) -> (String, Vec<usize>) {
+    (key.to_owned(), emitters.to_vec())
 }
 
 // 0xd44f60 — __ZNSt6vectorIPN4Ogre15ParticleEmitterENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEC2ERKS8_
 #[doc(alias = "std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::vector(std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
 #[doc(alias = "__ZNSt6vectorIPN4Ogre15ParticleEmitterENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEC2ERKS8_")]
 // was: std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::vector(std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
-// IDA 0xd44f60: 48 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd44f60() {
+// IDA 0xd44f60: decompile `allocBytes`s the `(end - begin)` words then copies each handle in a loop (48 insns, PUSH..POP); `to_vec` is that alloc + copy.
+pub fn stub_0xd44f60(src: &[usize]) -> Vec<usize> {
+    src.to_vec()
 }
 
 // 0xd44fd4 — __ZNSt12_Vector_baseIPN4Ogre15ParticleEmitterENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
 #[doc(alias = "std::_Vector_base<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIPN4Ogre15ParticleEmitterENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")]
 // was: std::_Vector_base<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
-// IDA 0xd44fd4: 1 insn (BX) — branch/return thunk, no state change.
-pub fn stub_0xd44fd4() {
+// IDA 0xd44fd4: 1 insn (BX) — emitter-handle vector impl holds only begin/end/capacity; drop `deallocBytes` the storage.
+pub fn stub_0xd44fd4(v: Vec<usize>) {
+    drop(v);
 }
 
 // 0xd44fd8 — __ZNSt12_Vector_baseIPN4Ogre15ParticleEmitterENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 #[doc(alias = "std::_Vector_base<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIPN4Ogre15ParticleEmitterENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
 // was: std::_Vector_base<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
-// IDA 0xd44fd8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_0xd44fd8() {
+// IDA 0xd44fd8: D0 is D1 plus `operator delete`; `Box` drop runs D1 then frees.
+pub fn stub_0xd44fd8(v: Box<Vec<usize>>) {
+    drop(v);
 }
 
 // 0xd44fe4 — __ZNSt4listIPN4Ogre8ParticleENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEaSERKS8_
@@ -1329,14 +1357,9 @@ pub fn stub_0xd457ec(v: Vec<u32>) {
 #[doc(alias = "std::vector<Ogre::ParticleAffector *,Ogre::STLAllocator<Ogre::ParticleAffector *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::ParticleAffector **,std::vector<Ogre::ParticleAffector *,Ogre::STLAllocator<Ogre::ParticleAffector *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::ParticleAffector * const&)")]
 #[doc(alias = "__ZNSt6vectorIPN4Ogre16ParticleAffectorENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_")]
 // was: std::vector<Ogre::ParticleAffector *,Ogre::STLAllocator<Ogre::ParticleAffector *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::ParticleAffector **,std::vector<Ogre::ParticleAffector *,Ogre::STLAllocator<Ogre::ParticleAffector *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::ParticleAffector * const&)
-// IDA 0xd457f0: vector::_M_insert_aux (shift tail or realloc); maps to Vec::insert.
-pub fn stub_0xd457f0() {
-    let mut v: Vec<u32> = Vec::new();
-    let pos: usize = 0;
-    if v.len() == v.capacity() {
-        v.reserve(1);
-    }
-    v.insert(pos.min(v.len()), 0);
+// IDA 0xd457f0: decompile grows (`allocBytes` ~2x, `throw_length_error` on overflow) or shifts the tail, then writes the handle; `Vec::insert` grows + shifts identically.
+pub fn stub_0xd457f0(v: &mut Vec<usize>, pos: usize, value: usize) {
+    v.insert(pos.min(v.len()), value);
 }
 
 // 0xd458e8 — __ZNSt6vectorIPN4Ogre15ParticleEmitterENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_
@@ -1344,14 +1367,9 @@ pub fn stub_0xd457f0() {
 #[doc(alias = "std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::ParticleEmitter **,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::ParticleEmitter * const&)")]
 #[doc(alias = "__ZNSt6vectorIPN4Ogre15ParticleEmitterENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_")]
 // was: std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::ParticleEmitter **,std::vector<Ogre::ParticleEmitter *,Ogre::STLAllocator<Ogre::ParticleEmitter *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::ParticleEmitter * const&)
-// IDA 0xd458e8: vector::_M_insert_aux (shift tail or realloc); maps to Vec::insert.
-pub fn stub_0xd458e8() {
-    let mut v: Vec<u32> = Vec::new();
-    let pos: usize = 0;
-    if v.len() == v.capacity() {
-        v.reserve(1);
-    }
-    v.insert(pos.min(v.len()), 0);
+// IDA 0xd458e8: decompile grows (`allocBytes` ~2x) or shifts the tail, then writes the handle; `Vec::insert` grows + shifts identically.
+pub fn stub_0xd458e8(v: &mut Vec<usize>, pos: usize, value: usize) {
+    v.insert(pos.min(v.len()), value);
 }
 
 // 0xd459e0 — __ZNSt12_Vector_baseIPN4Ogre8ParticleENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
@@ -1431,16 +1449,18 @@ pub fn stub_0xd45a14(v: Box<Vec<SortEntry>>) {
 #[doc(alias = "std::_Vector_base<Ogre::ParticleAffector *,Ogre::STLAllocator<Ogre::ParticleAffector *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIPN4Ogre16ParticleAffectorENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")]
 // was: std::_Vector_base<Ogre::ParticleAffector *,Ogre::STLAllocator<Ogre::ParticleAffector *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
-// IDA 0xd45a20: 1 insn (BX) — branch/return thunk, no state change.
-pub fn stub_0xd45a20() {
+// IDA 0xd45a20: 1 insn (BX) — affector-handle vector impl holds only begin/end/capacity; drop `deallocBytes` the storage.
+pub fn stub_0xd45a20(v: Vec<usize>) {
+    drop(v);
 }
 
 // 0xd45a24 — __ZNSt12_Vector_baseIPN4Ogre16ParticleAffectorENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 #[doc(alias = "std::_Vector_base<Ogre::ParticleAffector *,Ogre::STLAllocator<Ogre::ParticleAffector *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIPN4Ogre16ParticleAffectorENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
 // was: std::_Vector_base<Ogre::ParticleAffector *,Ogre::STLAllocator<Ogre::ParticleAffector *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
-// IDA 0xd45a24: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_0xd45a24() {
+// IDA 0xd45a24: D0 is D1 plus `operator delete`; `Box` drop runs D1 then frees.
+pub fn stub_0xd45a24(v: Box<Vec<usize>>) {
+    drop(v);
 }
 
 // 0xd45a30 — __ZN4Ogre25ParticleSystemUpdateValueD1Ev
