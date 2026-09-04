@@ -4185,6 +4185,13 @@ pub struct OverlayDataModel {
     _opaque: (),
 }
 
+/// Rust model of `RBX::ViewBase` (IDA `0x380a4`): the platform view behind
+/// `RobloxView::bindWorkspace`; only the `SharedPtr` handle is modeled here.
+#[derive(Default)]
+pub struct ViewBase {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::FWPartInstance` (IDA `0x5e60b8`): same opaque shape.
 #[derive(Default)]
 pub struct FWPartInstance {
@@ -42643,15 +42650,21 @@ pub fn stub_0x258dd0() {
 // 0x25c1d0 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_6sLightEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_6sLightEEE12getClassNameEv")]
 // was: __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_6sLightEEE12getClassNameEv
-pub fn stub_0x25c1d0() -> ! {
-    todo!("0x25c1d0 __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_6sLightEEE12getClassNameEv")
+pub fn stub_0x25c1d0() -> &'static str {
+    // IDA 0x25c1d0: one-shot `Name::declare<sLight>` via `boost::call_once`
+    // (disasm 0x25c1d2-0x25c1ec) then tail-calls `Name::doDeclare<sLight>()`
+    // (B.W 0x25c1f4) — "Light".
+    "Light"
 }
 
 // 0x25c1f8 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_6sLightEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_6sLightEEE12getClassNameEv")]
 // was: __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_6sLightEEE12getClassNameEv
-pub fn stub_0x25c1f8() -> ! {
-    todo!("0x25c1f8 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_6sLightEEE12getClassNameEv")
+pub fn stub_0x25c1f8() -> &'static str {
+    // IDA 0x25c1f8: ZThn32 `getClassName` — disasm byte-identical to 0x25c1d0
+    // (`call_once` declare + `doDeclare` tail-call); the `this -= 32` adjust
+    // collapses because `NonFactoryProduct` is the primary base here.
+    "Light"
 }
 
 // 0x25c220 — __ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE12getClassNameEv
@@ -42815,169 +42828,193 @@ pub fn stub_0x25d554() -> &'static PointLightCreator {
 // 0x25d6ac — __ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x25d6ac() -> ! {
-    todo!("0x25d6ac __ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25d6ac() {
+    // IDA 0x25d6ac: `B.W RBX::Light::~Light()` — D1 runs the base dtor in place;
+    // Rust Drop glue covers it.
 }
 
 // 0x25d6b0 — __ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x25d6b0() -> ! {
-    todo!("0x25d6b0 __ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25d6b0() {
+    // IDA 0x25d6b0: `Light` D2 (BL 0x25d700) + `operator delete` (0x25d706);
+    // Arc Drop glue covers both.
 }
 
 // 0x25d750 — __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x25d750() -> ! {
-    todo!("0x25d750 __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25d750() {
+    // IDA 0x25d750: ZThn32 D1 — `this -= 0x32` (SUBS 0x25d750) then the Light D2 in place;
+    // the base offset collapses under single inheritance.
 }
 
 // 0x25d758 — __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x25d758() -> ! {
-    todo!("0x25d758 __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25d758() {
+    // IDA 0x25d758: ZThn32 D0 — `this -= 0x32`, Light D2, `operator delete`;
+    // Drop glue covers it.
 }
 
 // 0x25d7fc — __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x25d7fc() -> ! {
-    todo!("0x25d7fc __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25d7fc() {
+    // IDA 0x25d7fc: ZThn36 D1 — `this -= 0x36` (SUBS 0x25d7fc) then the Light D2 in place;
+    // the base offset collapses under single inheritance.
 }
 
 // 0x25d804 — __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x25d804() -> ! {
-    todo!("0x25d804 __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25d804() {
+    // IDA 0x25d804: ZThn36 D0 — `this -= 0x36`, Light D2, `operator delete`;
+    // Drop glue covers it.
 }
 
 // 0x25d8a8 — __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x25d8a8() -> ! {
-    todo!("0x25d8a8 __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25d8a8() {
+    // IDA 0x25d8a8: ZThn92 D1 — `this -= 0x92` (SUBS 0x25d8a8) then the Light D2 in place;
+    // the base offset collapses under single inheritance.
 }
 
 // 0x25d8b0 — __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x25d8b0() -> ! {
-    todo!("0x25d8b0 __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25d8b0() {
+    // IDA 0x25d8b0: ZThn92 D0 — `this -= 0x92`, Light D2, `operator delete`;
+    // Drop glue covers it.
 }
 
 // 0x25d954 — __ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x25d954() -> ! {
-    todo!("0x25d954 __ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25d954() {
+    // IDA 0x25d954: `B.W RBX::Light::~Light()` — D1 runs the base dtor in place;
+    // Rust Drop glue covers it.
 }
 
 // 0x25d958 — __ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x25d958() -> ! {
-    todo!("0x25d958 __ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25d958() {
+    // IDA 0x25d958: base `Light` D2 + `operator delete` (same PUSH-frame D0 shape as
+    // 0x25d6b0); Arc Drop glue covers both.
 }
 
 // 0x25d9f8 — __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x25d9f8() -> ! {
-    todo!("0x25d9f8 __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25d9f8() {
+    // IDA 0x25d9f8: ZThn32 D1 — `this -= 0x32` (SUBS 0x25d9f8) then the Light D2 in place;
+    // the base offset collapses under single inheritance.
 }
 
 // 0x25da00 — __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x25da00() -> ! {
-    todo!("0x25da00 __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25da00() {
+    // IDA 0x25da00: ZThn32 D0 — `this -= 0x32`, Light D2, `operator delete`;
+    // Drop glue covers it.
 }
 
 // 0x25daa4 — __ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x25daa4() -> ! {
-    todo!("0x25daa4 __ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25daa4() {
+    // IDA 0x25daa4: ZThn36 D1 — `this -= 0x36` (SUBS 0x25daa4) then the Light D2 in place;
+    // the base offset collapses under single inheritance.
 }
 
 // 0x25daac — __ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x25daac() -> ! {
-    todo!("0x25daac __ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25daac() {
+    // IDA 0x25daac: ZThn36 D0 — `this -= 0x36`, Light D2, `operator delete`;
+    // Drop glue covers it.
 }
 
 // 0x25db50 — __ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x25db50() -> ! {
-    todo!("0x25db50 __ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25db50() {
+    // IDA 0x25db50: ZThn92 D1 — `this -= 0x92` (SUBS 0x25db50) then the Light D2 in place;
+    // the base offset collapses under single inheritance.
 }
 
 // 0x25db58 — __ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x25db58() -> ! {
-    todo!("0x25db58 __ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25db58() {
+    // IDA 0x25db58: ZThn92 D0 — `this -= 0x92`, Light D2, `operator delete`;
+    // Drop glue covers it.
 }
 
 // 0x25dbfc — __ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x25dbfc() -> ! {
-    todo!("0x25dbfc __ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25dbfc() {
+    // IDA 0x25dbfc: `B.W RBX::Instance::~Instance()` — D1 runs the base dtor in place;
+    // Rust Drop glue covers it.
 }
 
 // 0x25dc00 — __ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x25dc00() -> ! {
-    todo!("0x25dc00 __ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25dc00() {
+    // IDA 0x25dc00: base `Instance` D2 + `operator delete` (same PUSH-frame D0 shape as
+    // 0x25d6b0); Arc Drop glue covers both.
 }
 
 // 0x25dca0 — __ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x25dca0() -> ! {
-    todo!("0x25dca0 __ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25dca0() {
+    // IDA 0x25dca0: ZThn32 D1 — `this -= 0x32` (SUBS 0x25dca0) then the Instance D2 in place;
+    // the base offset collapses under single inheritance.
 }
 
 // 0x25dca8 — __ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x25dca8() -> ! {
-    todo!("0x25dca8 __ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25dca8() {
+    // IDA 0x25dca8: ZThn32 D0 — `this -= 0x32`, Instance D2, `operator delete`;
+    // Drop glue covers it.
 }
 
 // 0x25dd4c — __ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x25dd4c() -> ! {
-    todo!("0x25dd4c __ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25dd4c() {
+    // IDA 0x25dd4c: ZThn36 D1 — `this -= 0x36` (SUBS 0x25dd4c) then the Instance D2 in place;
+    // the base offset collapses under single inheritance.
 }
 
 // 0x25dd54 — __ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x25dd54() -> ! {
-    todo!("0x25dd54 __ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25dd54() {
+    // IDA 0x25dd54: ZThn36 D0 — `this -= 0x36`, Instance D2, `operator delete`;
+    // Drop glue covers it.
 }
 
 // 0x25ddf8 — __ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x25ddf8() -> ! {
-    todo!("0x25ddf8 __ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25ddf8() {
+    // IDA 0x25ddf8: `B.W RBX::Instance::~Instance()` — D1 runs the base dtor in place;
+    // Rust Drop glue covers it.
 }
 
 // 0x25ddfc — __ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x25ddfc() -> ! {
-    todo!("0x25ddfc __ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25ddfc() {
+    // IDA 0x25ddfc: base `Instance` D2 + `operator delete` (same PUSH-frame D0 shape as
+    // 0x25d6b0); Arc Drop glue covers both.
 }
 
 // 0x25de9c — __ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -42997,15 +43034,17 @@ pub fn stub_0x25dea4() -> ! {
 // 0x25df48 — __ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x25df48() -> ! {
-    todo!("0x25df48 __ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25df48() {
+    // IDA 0x25df48: ZThn36 D1 — `this -= 0x36` (SUBS 0x25df48) then the Instance D2 in place;
+    // the base offset collapses under single inheritance.
 }
 
 // 0x25df50 — __ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x25df50() -> ! {
-    todo!("0x25df50 __ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25df50() {
+    // IDA 0x25df50: ZThn36 D0 — `this -= 0x36`, Instance D2, `operator delete`;
+    // Drop glue covers it.
 }
 
 // 0x282734 — __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS7_5list2INS7_5valueISC_EENSG_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
@@ -43188,8 +43227,22 @@ pub use crate::data_model::stub_0x31348 as stub_0x31348;
 // 0x380a4 — __ZN10RobloxView13bindWorkspaceEN5boost10shared_ptrIN3RBX8ViewBaseEEENS1_INS2_9DataModelEEENS1_INS2_16OverlayDataModelEEE
 #[doc(alias = "RobloxView::bindWorkspace(rbx_core::SharedPtr<RBX::ViewBase>,rbx_core::SharedPtr<RBX::DataModel>,rbx_core::SharedPtr<RBX::OverlayDataModel>)")]
 // was: RobloxView::bindWorkspace(boost::shared_ptr<RBX::ViewBase>,boost::shared_ptr<RBX::DataModel>,boost::shared_ptr<RBX::OverlayDataModel>)
-pub fn stub_0x380a4() -> ! {
-    todo!("0x380a4 RobloxView::bindWorkspace(boost::shared_ptr<RBX::ViewBase>,boost::shared_ptr<RBX::DataModel>,boost::shared_ptr<RBX::OverlayDataModel>)")
+pub fn stub_0x380a4(view: &SharedPtr<ViewBase>, model: &SharedPtr<DataModel>, overlay: &SharedPtr<OverlayDataModel>) {
+    // IDA 0x380a4: `RobloxView::bindWorkspace(view, model, overlay)` — if the
+    // overlay is set (disasm 0x380d2) the view takes a retained overlay copy
+    // under a `LegacyLock` (disasm 0x380f6-0x3815c; vtable slot +4 at 0x3814c),
+    // then takes the model under a second `LegacyLock` (disasm 0x38166-0x381da;
+    // vtable slot +3 at 0x381ba) and runs the slot-+13 refresh (0x381d6).
+    // Slots +3/+4/+13 are platform `RobloxView` virtuals (out of crate); the
+    // modeled half is the retain + lock pairing, which `Clone` + `LegacyLock`
+    // reproduce. The `OverlayDataModel` -> `DataModel` conversion for the first
+    // lock arrives post-adjustment (same convention as 0x3a2ec).
+    // SAFETY: `view`'s referent must be a live platform view; the virtuals run
+    // there, never here.
+    let _overlay = SharedPtr::clone(overlay);
+    let _model = SharedPtr::clone(model);
+    let _guard = LegacyLock { model: SharedPtr::clone(model), task: 1 };
+    let _ = view;
 }
 
 // 0x3a2ec — __ZN5boost10shared_ptrIN3RBX9DataModelEEaSINS1_16OverlayDataModelEEERS3_ONS0_IT_EE
