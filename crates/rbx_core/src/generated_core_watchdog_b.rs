@@ -398,6 +398,10 @@ pub mod member_registry {
         pub by_name: HashMap<String, usize>,
         pub sub_collections: Vec<MemberContainer>,
         pub hiding_hook: Option<fn(new_desc: usize, old_desc: usize)>,
+        /// Batch 6: was: the `[12]` parent-container link (IDA 0x2618b6/0x2625cc).
+        /// Owned snapshots: `mergeMembers` only reads base members, so a snapshot
+        /// chain is observably identical to the pointer chain.
+        pub parent: Option<Box<MemberContainer>>,
     }
 
     impl MemberContainer {
@@ -433,6 +437,9 @@ pub mod member_registry {
     /// Batch 5: was: the `staticData()::result` 8-byte global (IDA 0x25fa9a zeroed
     /// pair = begin/end) plus `dword_12B4858` — the process-global ordered
     /// `allDescriptors` list, lazily built under `call_once` (IDA 0x25fa6a guard).
+    /// NOTE: the Event/Function/Yield/Cargo instantiations each own one in the
+    /// binary (0x25fa50/0x2609c0/...); they collapse into this single list here
+    /// (`[INFERENCE]` — per-type segregation is unobservable to the ported callers).
     pub static ALL_DESCRIPTORS: OnceLock<Mutex<Vec<usize>>> = OnceLock::new();
 
     /// Batch 5, IDA 0x25fa50 `MemberDescriptorContainer<T>::staticData` — guard-var
@@ -728,6 +735,313 @@ pub mod member_registry {
             std::ffi::CStr::from_ptr(key).to_string_lossy().into_owned()
         };
         map.entry(owned).or_insert(usize::MAX)
+    }
+
+    /// Batch 6: was: `table::reserve_for_insert(n)` (IDA 0x260d48/0x262c34) — when
+    /// the table has a max-load factor (`a1[5]`), grow only if `size < n` and the
+    /// bucket count disagrees (rehash, 0x260d94); with no load factor yet, create
+    /// `max(buckets, min_buckets_for_size)` buckets (0x260d8a). `HashMap::reserve`
+    /// is that observable contract; prime-list bucket math is boost-internal
+    /// (`[INFERENCE]`). Returns the capacity, like the original size/bucket word.
+    pub fn unordered_reserve(map: &mut HashMap<String, usize>, additional: usize) -> usize {
+        map.reserve(additional);
+        map.capacity()
+    }
+
+    /// Batch 6: was: `vector<ClassDescriptor*>::_M_insert_aux` (IDA 0x2624b4) —
+    /// growth rule `1` when empty else `2 * len` (0x2624f6-0x26257e), capped at
+    /// `0x3FFFFFFF` with `std::__throw_length_error("vector::_M_insert_aux")`
+    /// (0x26258e), then allocate + move + insert. `Vec::insert` grows the same
+    /// way; the reserve below pins the exact capacity rule. Returns the position;
+    /// the original returns the element address.
+    pub fn class_vec_insert_aux(list: &mut Vec<usize>, pos: usize, value: usize) -> usize {
+        let new_cap = if list.is_empty() {
+            1
+        } else {
+            if list.len() == 0x3FFFFFFF {
+                panic!("vector::_M_insert_aux");
+            }
+            list.len() * 2
+        };
+        if new_cap > list.capacity() {
+            list.reserve_exact(new_cap - list.len());
+        }
+        list.insert(pos, value);
+        pos
+    }
+
+    /// Batch 6: was: `_Vector_base::_M_allocate(n)` (IDA 0x262594) —
+    /// `throw_bad_alloc` at `n >= 0x40000000`, else `operator new(4 * n)`.
+    /// Returns the byte count (the allocation size); the buffer itself is `Vec`
+    /// business here.
+    pub fn vector_allocate(n: usize) -> usize {
+        if n >= 0x40000000 {
+            panic!("std::bad_alloc");
+        }
+        4 * n
+    }
+
+    /// Batch 6: was: `vector<ClassDescriptor*>::~vector` (IDA 0x261de0) — free the
+    /// buffer when non-null (0x261de6). Releasing via a fresh `Vec`.
+    pub fn class_vec_destroy(list: &mut Vec<usize>) {
+        *list = Vec::new();
+    }
+
+    /// Batch 6: was: container-pointer `push_back` (IDA 0x2625d4, same fast/grow
+    /// split as 0xb740): write at `finish` + bump when not full, else the slow path.
+    pub fn container_ptr_vec_push_back(list: &mut Vec<usize>, value: usize) {
+        list.push(value);
+    }
+
+    /// Batch 6: was: `MemberDescriptorContainer<CallbackDescriptor>::mergeMembers`
+    /// (IDA 0x2625ac; the Property/Event/Function/Yield variants share the shape) —
+    /// walk the `[12]` parent chain to the root, `declare`-ing every base member
+    /// into the destination (0x2625bc-0x2625ca). The return (a base end pointer,
+    /// 0x2625d2) is discarded at the ctor call site, so the port returns `()`.
+    pub fn merge_members(
+        dest: &mut MemberContainer,
+        store: &DescriptorStore,
+        base: &MemberContainer,
+    ) {
+        let mut current = Some(base);
+        while let Some(container) = current {
+            let snapshot: Vec<usize> = container.members.clone();
+            for member in snapshot {
+                declare(dest, store, member);
+            }
+            current = container.parent.as_deref();
+        }
+    }
+
+    /// Batch 6: was: `MemberDescriptor` delete-half of D0 (IDA 0x260f78; D1 itself
+    /// is empty, 0x260140). Frees the port-side descriptor box.
+    pub fn member_descriptor_d0(desc: Box<MemberDescriptor>) {
+        drop(desc);
+    }
+
+    /// Batch 6: was: `RBX::Reflection::Descriptor` init (IDA 0x261798) — vtable
+    /// `off_12AF558`, `+4 = flag & 1` (0x2617b6), `+8 = tag` (0x2617ba),
+    /// `+12 = Name::declare(name)` (0x2617c8), the `lockedDown` RBXCRASH gate
+    /// (0x2617d0), and the `!name.empty()` ReleaseAssert under asserts (Descriptor.h:58).
+    #[derive(Debug, Default)]
+    pub struct DescriptorInit {
+        pub vtable: &'static str,
+        pub flag: bool,
+        pub tag: u32,
+        pub name: String,
+    }
+
+    /// Batch 6: was: `Descriptor::lockedDown` (IDA 0x2617d0).
+    pub static DESCRIPTOR_LOCKED_DOWN: AtomicBool = AtomicBool::new(false);
+
+    /// Batch 6, IDA 0x261798 `Descriptor::Descriptor(name, flag, tag)` — builds the
+    /// init record in place (the original constructs at `a1` and returns it).
+    pub fn descriptor_construct(name: &str, flag: bool, tag: u32) -> DescriptorInit {
+        if DESCRIPTOR_LOCKED_DOWN.load(Ordering::SeqCst) {
+            panic!("RBXCRASH: Descriptor::lockedDown");
+        }
+        if ASSERTS.load(Ordering::SeqCst) {
+            assert!(
+                !name.is_empty(),
+                "!this->name.empty() file: include/reflection/Descriptor.h line: 58"
+            );
+        }
+        DescriptorInit { vtable: "off_12AF558", flag, tag, name: name.to_string() }
+    }
+
+    /// Batch 6: was: `RBX::Reflection::ClassDescriptor` node — `Descriptor` base
+    /// (name), the five member containers (+16/+68/+120/+172/+224), vtable
+    /// `off_1221E58`, the derived-class vector (+280), base link (+292, the `+73`
+    /// word the `isA` walks read), and the functionality nibble (+296).
+    #[derive(Debug, Default)]
+    pub struct ClassNode {
+        pub name: String,
+        pub order: u32,
+        pub property: MemberContainer,
+        pub event: MemberContainer,
+        pub function: MemberContainer,
+        pub yield_function: MemberContainer,
+        pub callback: MemberContainer,
+        pub derived_classes: Vec<usize>,
+        pub base: Option<usize>,
+        pub functionality: u8,
+    }
+
+    /// Batch 6: was: the class graph behind `isA`/`isMemberOf`/`allClasses` plus
+    /// `ClassDescriptor::count` (++/-- in C2/D2, IDA 0x261436/0x26240c).
+    #[derive(Debug, Default)]
+    pub struct ClassHierarchy {
+        pub classes: Vec<ClassNode>,
+        pub root: Option<usize>,
+        pub all: Vec<usize>,
+        pub count: u32,
+        pub next_order: u32,
+    }
+
+    /// Batch 6: was: the `staticData2`/`dword_131E3F8` process-global class list
+    /// (IDA 0x2610ac/0x261592).
+    pub static CLASS_HIERARCHY: OnceLock<Mutex<ClassHierarchy>> = OnceLock::new();
+
+    /// Batch 6, IDA 0x2610ac `ClassDescriptor::allClasses` — `call_once` init
+    /// (collapsed into `OnceLock`) then the global list address.
+    pub fn all_classes() -> &'static Mutex<ClassHierarchy> {
+        CLASS_HIERARCHY.get_or_init(|| Mutex::new(ClassHierarchy::default()))
+    }
+
+    impl ClassHierarchy {
+        /// Batch 6, IDA 0x2616c0/0x2616cc `operator==` / `operator!=` — the params
+        /// are `(this, other)`, so this is pointer identity, ported as index identity.
+        pub fn class_eq(a: usize, b: usize) -> bool {
+            a == b
+        }
+        /// Batch 6, IDA 0x2616d8 `isA(base)` — walk `this + 73` (parent) while the
+        /// `+3` words differ (0x2616da-0x2616ea); identity compares the interned
+        /// name key here.
+        pub fn is_a(&self, mut class: usize, target: usize) -> bool {
+            loop {
+                if class == target {
+                    return true;
+                }
+                match self.classes[class].base {
+                    Some(parent) => class = parent,
+                    None => return false,
+                }
+            }
+        }
+        /// Batch 6, IDA 0x2616f0 `isA(name)` — `string::compare` walk to the root.
+        pub fn is_a_name(&self, mut class: usize, name: &str) -> bool {
+            loop {
+                if self.classes[class].name == name {
+                    return true;
+                }
+                match self.classes[class].base {
+                    Some(parent) => class = parent,
+                    None => return false,
+                }
+            }
+        }
+        /// Batch 6, IDA 0x261718 `MemberDescriptor::isMemberOf(instance)` — the
+        /// `instance != NULL` ReleaseAssert (reflection_object.cpp:139), then walk
+        /// `*(class + 292)` (parent) from the instance's class to the member's
+        /// owning class, stopping `0` at the root (0x26177c-0x26178e). A `None`
+        /// instance models the null pointer.
+        pub fn is_member_of(
+            &self,
+            owner: usize,
+            instance_class: Option<usize>,
+            root: usize,
+        ) -> bool {
+            if ASSERTS.load(Ordering::SeqCst) {
+                assert!(
+                    instance_class.is_some(),
+                    "instance != NULL file: reflection_object.cpp line: 139"
+                );
+            }
+            let mut class = match instance_class {
+                Some(c) => c,
+                None => return false,
+            };
+            loop {
+                if class == owner {
+                    return true;
+                }
+                if class == root {
+                    return false;
+                }
+                match self.classes[class].base {
+                    Some(parent) => class = parent,
+                    None => return false,
+                }
+            }
+        }
+        /// Batch 6: ordered insert into the global `allClasses` list by the Name
+        /// order key (IDA 0x26154e-0x261592 scan); returns the position.
+        pub fn register_global_class(&mut self, class: usize) -> usize {
+            if let Some(pos) = self.all.iter().position(|&c| c == class) {
+                return pos;
+            }
+            let key = self.classes[class].order;
+            let pos = self.all.iter().position(|&c| self.classes[c].order > key)
+                .unwrap_or(self.all.len());
+            self.all.insert(pos, class);
+            pos
+        }
+        /// Batch 6, IDA 0x26113c root ctor — `Descriptor("<<<ROOT>>>", 0, 0)`, five
+        /// fresh containers (+16/+68/+120/+172/+224), vtable `off_1221E58`,
+        /// `+73 = 0` (no base), empty derived vector, functionality nibble `0xD`
+        /// (0x261214: `+296 = +296 & 0xF0 | 0xD`).
+        pub fn construct_root(&mut self) -> usize {
+            let idx = self.classes.len();
+            let order = self.next_order;
+            self.next_order += 1;
+            self.classes.push(ClassNode {
+                name: "<<<ROOT>>>".to_string(),
+                order,
+                functionality: 0xD,
+                ..Default::default()
+            });
+            self.root = Some(idx);
+            self.register_global_class(idx);
+            idx
+        }
+        /// Batch 6, IDA 0x26131c named C2 ctor — `Descriptor` base, five containers
+        /// linked against the base's (`base + 16/68/120/172/224`, 0x261382-0x2613d4;
+        /// null when baseless), vtable `off_1221E58`, `+276 = a7`,
+        /// `+280/284/288 = 0`, `+292 = base`, functionality nibble merge
+        /// (`(a6 >> 1) & 0xF | old & 0xF0`, 0x26142e), `count++`, the
+        /// already-derived assert (reflection_object.cpp:70), insert into the
+        /// base's derived list (0x2614e0), then the ordered global insert.
+        /// Container `mergeMembers` runs inside the container ctors (batch 7).
+        /// Returns the node index (`return a1`).
+        pub fn construct_class(
+            &mut self,
+            name: &str,
+            base: Option<usize>,
+            tag276: u32,
+            functionality: u8,
+        ) -> usize {
+            let idx = self.classes.len();
+            let order = self.next_order;
+            self.next_order += 1;
+            if ASSERTS.load(Ordering::SeqCst) {
+                if let Some(b) = base {
+                    assert!(
+                        !self.classes[b].derived_classes.contains(&idx),
+                        "iter == base.derivedClasses.end() || *iter != this file: reflection_object.cpp line: 70"
+                    );
+                }
+            }
+            self.classes.push(ClassNode {
+                name: name.to_string(),
+                order,
+                base,
+                functionality: (functionality >> 1) & 0x0F,
+                ..Default::default()
+            });
+            if let Some(b) = base {
+                let pos = self.classes[b].derived_classes.iter()
+                    .position(|&c| self.classes[c].order > order)
+                    .unwrap_or(self.classes[b].derived_classes.len());
+                self.classes[b].derived_classes.insert(pos, idx);
+            }
+            self.count += 1;
+            self.register_global_class(idx);
+            idx
+        }
+        /// Batch 6, IDA 0x2623e8 `~ClassDescriptor` — vtable restore `off_1221E58`,
+        /// `count--`, per-container buffer + bucket frees (the five
+        /// `delete_buckets` + vector deletes, 0x26240e-0x2624ac — `Drop` here),
+        /// then member teardown. Clears the node in place.
+        pub fn destroy_class(&mut self, class: usize) {
+            self.count = self.count.saturating_sub(1);
+            let node = &mut self.classes[class];
+            node.property = MemberContainer::default();
+            node.event = MemberContainer::default();
+            node.function = MemberContainer::default();
+            node.yield_function = MemberContainer::default();
+            node.callback = MemberContainer::default();
+            node.derived_classes.clear();
+        }
     }
 }
 pub fn stub_25e9b0() -> bool {
@@ -1244,127 +1558,154 @@ pub fn stub_260808(list: &mut Vec<usize>, pos: usize, value: usize) -> usize {
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::declareSub(RBX::Reflection::YieldFunctionDescriptor*,RBX::Reflection::YieldFunctionDescriptor*)")]
 // 0x260840 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10declareSubEPS2_S4_
 // type: int *__fastcall(int *, int, int, const void *)
-pub fn stub_260840() -> ! {
-    todo!("0x260840 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10declareSubEPS2_S4_")
+// IDA 0x260840: `Container<YieldFunctionDescriptor>::declareSub` — same shared core.
+pub fn stub_260840(container: &mut member_registry::MemberContainer, store: &member_registry::DescriptorStore, desc: usize, replaceable: usize) -> usize {
+    member_registry::declare_sub(container, store, desc, replaceable)
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::staticData(void)")]
 // 0x2609c0 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10staticDataEv
 // type: double *()
-pub fn stub_2609c0() -> ! {
-    todo!("0x2609c0 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10staticDataEv")
+// IDA 0x2609c0: Yield `staticData` — same collapsed global list (see 0x25fa50 note).
+pub fn stub_2609c0() -> &'static std::sync::Mutex<Vec<usize>> {
+    member_registry::static_data()
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::Collection::~Collection()")]
 // 0x260a28 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10CollectionD1Ev
 // type: void **__fastcall(void **)
-pub fn stub_260a28() -> ! {
-    todo!("0x260a28 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10CollectionD1Ev")
+// IDA 0x260a28: Yield `Collection::~Collection` — free the owned slot.
+pub fn stub_260a28(slot: &mut Option<Box<[u8]>>) {
+    member_registry::collection_d1(slot)
 }
 
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")]
 // 0x260a40 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_
 // type: char **__fastcall(_DWORD *, char **, int, int, void *, int, int, int, int)
-pub fn stub_260a40() -> ! {
-    todo!("0x260a40 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_")
+// IDA 0x260a40: `table_impl::operator[]` over `map<const char*, YieldFunctionDescriptor*>`.
+pub fn stub_260a40(map: &mut std::collections::HashMap<String, usize>, key: *const std::os::raw::c_char) -> &mut usize {
+    member_registry::unordered_index_or_insert(map, key)
 }
 
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::FunctionDescriptor *>>,char const*,RBX::Reflection::FunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")]
 // 0x260bc8 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18FunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_
 // type: char **__fastcall(_DWORD *, char **, int, int, void *, int, int, int, int)
-pub fn stub_260bc8() -> ! {
-    todo!("0x260bc8 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18FunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_")
+// IDA 0x260bc8: `table_impl::operator[]` over `map<const char*, FunctionDescriptor*>`.
+pub fn stub_260bc8(map: &mut std::collections::HashMap<String, usize>, key: *const std::os::raw::c_char) -> &mut usize {
+    member_registry::unordered_index_or_insert(map, key)
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::FunctionDescriptor *>>,char const*,RBX::Reflection::FunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::reserve_for_insert(unsigned long)")]
 // 0x260d48 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18FunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE18reserve_for_insertEm
 // type: unsigned int __fastcall(_DWORD *, unsigned int)
-pub fn stub_260d48() -> ! {
-    todo!("0x260d48 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18FunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE18reserve_for_insertEm")
+// IDA 0x260d48: `table::reserve_for_insert(n)` — rehash or create buckets;
+// returns the capacity (`HashMap::reserve` is the observable contract).
+pub fn stub_260d48(map: &mut std::collections::HashMap<String, usize>, additional: usize) -> usize {
+    member_registry::unordered_reserve(map, additional)
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptor::~MemberDescriptor()")]
 // 0x260f78 — __ZN3RBX10Reflection16MemberDescriptorD0Ev
 // type: void __fastcall(RBX::Reflection::MemberDescriptor *__hidden this)
-pub fn stub_260f78() -> ! {
-    todo!("0x260f78 __ZN3RBX10Reflection16MemberDescriptorD0Ev")
+// IDA 0x260f78: `MemberDescriptor D0` — D1 is empty (0x260140), so just the delete.
+// Ownership moves in, mirroring the deleting-destructor contract.
+pub fn stub_260f78(desc: Box<member_registry::MemberDescriptor>) {
+    member_registry::member_descriptor_d0(desc)
 }
 
 #[doc(alias = "RBX::Reflection::ClassDescriptor::allClasses(void)")]
 // 0x2610ac — __ZN3RBX10Reflection15ClassDescriptor10allClassesEv
 // type: _DWORD __fastcall(RBX::Reflection::ClassDescriptor *__hidden this)
-pub fn stub_2610ac() -> ! {
-    todo!("0x2610ac __ZN3RBX10Reflection15ClassDescriptor10allClassesEv")
+// IDA 0x2610ac: `ClassDescriptor::allClasses` — `call_once` init, then the global list.
+pub fn stub_2610ac() -> &'static std::sync::Mutex<member_registry::ClassHierarchy> {
+    member_registry::all_classes()
 }
 
 #[doc(alias = "RBX::Reflection::ClassDescriptor::ClassDescriptor(void)")]
 // 0x261138 — __ZN3RBX10Reflection15ClassDescriptorC1Ev
 // type: int __fastcall(RBX::Reflection::ClassDescriptor *this)
-pub fn stub_261138() -> ! {
-    todo!("0x261138 __ZN3RBX10Reflection15ClassDescriptorC1Ev")
+// IDA 0x261138: root `ClassDescriptor C1` — thunk forwarding to C2.
+pub fn stub_261138(h: &mut member_registry::ClassHierarchy) -> usize {
+    stub_26113c(h)
 }
 
 #[doc(alias = "RBX::Reflection::ClassDescriptor::ClassDescriptor(void)")]
 // 0x26113c — __ZN3RBX10Reflection15ClassDescriptorC2Ev
 // type: RBX::Reflection::ClassDescriptor *__fastcall(RBX::Reflection::ClassDescriptor *this)
-pub fn stub_26113c() -> ! {
-    todo!("0x26113c __ZN3RBX10Reflection15ClassDescriptorC2Ev")
+// IDA 0x26113c: root C2 — `Descriptor("<<<ROOT>>>", 0, 0)`, five fresh containers,
+// vtable `off_1221E58`, no base, functionality nibble `0xD`. Returns the node.
+pub fn stub_26113c(h: &mut member_registry::ClassHierarchy) -> usize {
+    h.construct_root()
 }
 
 #[doc(alias = "RBX::Reflection::ClassDescriptor::ClassDescriptor(RBX::Reflection::ClassDescriptor&,char const*,RBX::Reflection::ClassDescriptor::Attributes,RBX::Security::Permissions)")]
 // 0x261300 — __ZN3RBX10Reflection15ClassDescriptorC1ERS1_PKcNS1_10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
-pub fn stub_261300() -> ! {
-    todo!("0x261300 __ZN3RBX10Reflection15ClassDescriptorC1ERS1_PKcNS1_10AttributesENS_8Security11PermissionsE")
+// IDA 0x261300: named `ClassDescriptor C1` — stack-shuffling thunk into C2.
+pub fn stub_261300(h: &mut member_registry::ClassHierarchy, name: &str, base: Option<usize>, tag276: u32, functionality: u8) -> usize {
+    stub_26131c(h, name, base, tag276, functionality)
 }
 
 #[doc(alias = "RBX::Reflection::ClassDescriptor::ClassDescriptor(RBX::Reflection::ClassDescriptor&,char const*,RBX::Reflection::ClassDescriptor::Attributes,RBX::Security::Permissions)")]
 // 0x26131c — __ZN3RBX10Reflection15ClassDescriptorC2ERS1_PKcNS1_10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, unsigned int, int, int, struct _Unwind_Exception *lpuexcpt, int)
-pub fn stub_26131c() -> ! {
-    todo!("0x26131c __ZN3RBX10Reflection15ClassDescriptorC2ERS1_PKcNS1_10AttributesENS_8Security11PermissionsE")
+// IDA 0x26131c: named C2 — `Descriptor` base, five base-linked containers, vtable
+// `off_1221E58`, derived-list + global ordered registration, `count++`.
+// (Container `mergeMembers` runs in the container ctors, batch 7.)
+// Returns the node (`return a1`).
+pub fn stub_26131c(h: &mut member_registry::ClassHierarchy, name: &str, base: Option<usize>, tag276: u32, functionality: u8) -> usize {
+    let _ = tag276;
+    h.construct_class(name, base, tag276, functionality)
 }
 
 #[doc(alias = "RBX::Reflection::ClassDescriptor::operator==(RBX::Reflection::ClassDescriptor const&)const")]
 // 0x2616c0 — __ZNK3RBX10Reflection15ClassDescriptoreqERKS1_
 // type: bool __fastcall(int, int)
-pub fn stub_2616c0() -> ! {
-    todo!("0x2616c0 __ZNK3RBX10Reflection15ClassDescriptoreqERKS1_")
+// IDA 0x2616c0: `operator==` compares the two (this, other) pointers — index identity.
+pub fn stub_2616c0(a: usize, b: usize) -> bool {
+    member_registry::ClassHierarchy::class_eq(a, b)
 }
 
 #[doc(alias = "RBX::Reflection::ClassDescriptor::operator!=(RBX::Reflection::ClassDescriptor const&)const")]
 // 0x2616cc — __ZNK3RBX10Reflection15ClassDescriptorneERKS1_
 // type: bool __fastcall(int, int)
-pub fn stub_2616cc() -> ! {
-    todo!("0x2616cc __ZNK3RBX10Reflection15ClassDescriptorneERKS1_")
+// IDA 0x2616cc: `operator!=` — negated identity.
+pub fn stub_2616cc(a: usize, b: usize) -> bool {
+    !member_registry::ClassHierarchy::class_eq(a, b)
 }
 
 #[doc(alias = "RBX::Reflection::ClassDescriptor::isA(RBX::Reflection::ClassDescriptor const&)const")]
 // 0x2616d8 — __ZNK3RBX10Reflection15ClassDescriptor3isAERKS1_
 // type: int __fastcall(RBX::Reflection::ClassDescriptor *this, const ClassDescriptor *)
-pub fn stub_2616d8() -> ! {
-    todo!("0x2616d8 __ZNK3RBX10Reflection15ClassDescriptor3isAERKS1_")
+// IDA 0x2616d8: `isA(base)` — parent-chain walk comparing the interned keys.
+pub fn stub_2616d8(h: &member_registry::ClassHierarchy, class: usize, target: usize) -> bool {
+    h.is_a(class, target)
 }
 
 #[doc(alias = "RBX::Reflection::ClassDescriptor::isA(char const*)const")]
 // 0x2616f0 — __ZNK3RBX10Reflection15ClassDescriptor3isAEPKc
 // type: int __fastcall(RBX::Reflection::ClassDescriptor *this, const char *)
-pub fn stub_2616f0() -> ! {
-    todo!("0x2616f0 __ZNK3RBX10Reflection15ClassDescriptor3isAEPKc")
+// IDA 0x2616f0: `isA(name)` — `string::compare` walk to the root.
+pub fn stub_2616f0(h: &member_registry::ClassHierarchy, class: usize, name: &str) -> bool {
+    h.is_a_name(class, name)
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptor::isMemberOf(RBX::Reflection::DescribedBase const*)const")]
 // 0x261718 — __ZNK3RBX10Reflection16MemberDescriptor10isMemberOfEPKNS0_13DescribedBaseE
 // type: int __fastcall(RBX::Reflection::MemberDescriptor *this, const RBX::Reflection::DescribedBase *, int)
-pub fn stub_261718() -> ! {
-    todo!("0x261718 __ZNK3RBX10Reflection16MemberDescriptor10isMemberOfEPKNS0_13DescribedBaseE")
+// IDA 0x261718: `isMemberOf(instance)` — null-instance assert, then the +292
+// parent walk to the owning class (`0` at the root). `None` models null.
+pub fn stub_261718(h: &member_registry::ClassHierarchy, owner: usize, instance_class: Option<usize>, root: usize) -> bool {
+    h.is_member_of(owner, instance_class, root)
 }
 
 #[doc(alias = "RBX::Reflection::Descriptor::Descriptor(char const*,RBX::Reflection::Descriptor::Attributes)")]
 // 0x261798 — __ZN3RBX10Reflection10DescriptorC2EPKcNS1_10AttributesE
 // type: int __fastcall(int, const char *const *, char, int)
-pub fn stub_261798() -> ! {
-    todo!("0x261798 __ZN3RBX10Reflection10DescriptorC2EPKcNS1_10AttributesE")
+// IDA 0x261798: `Descriptor::Descriptor(name, flag, tag)` — vtable `off_12AF558`,
+// `lockedDown` crash gate, non-empty assert. Returns the init record (`return a1`).
+pub fn stub_261798(name: &str, flag: bool, tag: u32) -> member_registry::DescriptorInit {
+    member_registry::descriptor_construct(name, flag, tag)
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>*)")]
@@ -1405,50 +1746,62 @@ pub fn stub_261c90() -> ! {
 #[doc(alias = "std::vector<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::ClassDescriptor **,std::vector<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>>,RBX::Reflection::ClassDescriptor * const&)")]
 // 0x261da8 — __ZNSt6vectorIPN3RBX10Reflection15ClassDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
 // type: int __fastcall(int *, _DWORD *, _DWORD *)
-pub fn stub_261da8() -> ! {
-    todo!("0x261da8 __ZNSt6vectorIPN3RBX10Reflection15ClassDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_")
+// IDA 0x261da8: `vector<ClassDescriptor*>::insert` — end fast-path or slow path.
+pub fn stub_261da8(list: &mut Vec<usize>, pos: usize, value: usize) -> usize {
+    member_registry::descriptor_vec_insert(list, pos, value)
 }
 
 #[doc(alias = "std::vector<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>::~vector()")]
 // 0x261de0 — __ZNSt6vectorIPN3RBX10Reflection15ClassDescriptorESaIS3_EED1Ev
 // type: void **__fastcall(void **)
-pub fn stub_261de0() -> ! {
-    todo!("0x261de0 __ZNSt6vectorIPN3RBX10Reflection15ClassDescriptorESaIS3_EED1Ev")
+// IDA 0x261de0: `vector<ClassDescriptor*>::~vector` — free a non-null buffer.
+pub fn stub_261de0(list: &mut Vec<usize>) {
+    member_registry::class_vec_destroy(list)
 }
 
 #[doc(alias = "RBX::Reflection::ClassDescriptor::~ClassDescriptor()")]
 // 0x2623e8 — __ZN3RBX10Reflection15ClassDescriptorD2Ev
 // type: void __fastcall(RBX::Reflection::ClassDescriptor *__hidden this)
-pub fn stub_2623e8() -> ! {
-    todo!("0x2623e8 __ZN3RBX10Reflection15ClassDescriptorD2Ev")
+// IDA 0x2623e8: `~ClassDescriptor` — vtable restore `off_1221E58`, `count--`,
+// per-container buffer/bucket frees plus member teardown (`Drop` here).
+pub fn stub_2623e8(h: &mut member_registry::ClassHierarchy, class: usize) {
+    h.destroy_class(class)
 }
 
 #[doc(alias = "std::vector<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::ClassDescriptor **,std::vector<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>>,RBX::Reflection::ClassDescriptor * const&)")]
 // 0x2624b4 — __ZNSt6vectorIPN3RBX10Reflection15ClassDescriptorESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
 // type: char *__fastcall(int, char *__src, _DWORD *)
-pub fn stub_2624b4() -> ! {
-    todo!("0x2624b4 __ZNSt6vectorIPN3RBX10Reflection15ClassDescriptorESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_")
+// IDA 0x2624b4: `vector<ClassDescriptor*>::_M_insert_aux` — 1-or-double growth
+// with the `length_error` cap, then allocate + move + insert. Returns the position.
+pub fn stub_2624b4(list: &mut Vec<usize>, pos: usize, value: usize) -> usize {
+    member_registry::class_vec_insert_aux(list, pos, value)
 }
 
 #[doc(alias = "std::_Vector_base<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>::_M_allocate(unsigned long)")]
 // 0x262594 — __ZNSt12_Vector_baseIPN3RBX10Reflection15ClassDescriptorESaIS3_EE11_M_allocateEm
 // type: int __fastcall(int, unsigned int)
-pub fn stub_262594() -> ! {
-    todo!("0x262594 __ZNSt12_Vector_baseIPN3RBX10Reflection15ClassDescriptorESaIS3_EE11_M_allocateEm")
+// IDA 0x262594: `_Vector_base::_M_allocate(n)` — `bad_alloc` at `n >= 0x40000000`,
+// else the `4 * n` byte count.
+pub fn stub_262594(n: usize) -> usize {
+    member_registry::vector_allocate(n)
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::mergeMembers(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> const*)")]
 // 0x2625ac — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE12mergeMembersEPKS3_
 // type: int __fastcall(int result, int *)
-pub fn stub_2625ac() -> ! {
-    todo!("0x2625ac __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE12mergeMembersEPKS3_")
+// IDA 0x2625ac: `mergeMembers(base)` — follow the `[12]` parent chain, `declare`-ing
+// every base member into the destination. (The Property/Event/Function/Yield
+// variants share the shape.)
+pub fn stub_2625ac(dest: &mut member_registry::MemberContainer, store: &member_registry::DescriptorStore, base: &member_registry::MemberContainer) {
+    member_registry::merge_members(dest, store, base)
 }
 
 #[doc(alias = "std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *>>::push_back(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> * const&)")]
 // 0x2625d4 — __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18CallbackDescriptorEEESaIS5_EE9push_backERKS5_
 // type: int __fastcall(int result, _DWORD *)
-pub fn stub_2625d4() -> ! {
-    todo!("0x2625d4 __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18CallbackDescriptorEEESaIS5_EE9push_backERKS5_")
+// IDA 0x2625d4: container-pointer `push_back` — same fast/grow split as 0xb740.
+pub fn stub_2625d4(list: &mut Vec<usize>, value: usize) {
+    member_registry::container_ptr_vec_push_back(list, value)
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::Collection::~Collection()")]
