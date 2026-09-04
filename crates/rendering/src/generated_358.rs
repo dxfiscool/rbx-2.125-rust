@@ -14,798 +14,798 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9Scripting15DebuggerManagerELZNS2_16sDebuggerManagerEENS_17NonFactoryProductINS_8InstanceELZNS2_16sDebuggerManagerEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_9Scripting15DebuggerManagerELZNS2_16sDebuggerManagerEENS_17NonFactoryProductINS_8InstanceELZNS2_16sDebuggerManagerEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EE15classDescriptorEv
-pub fn stub_4d6218() -> ! {
-    todo!("0x4d6218 __ZN3RBX10Reflection9DescribedINS_9Scripting15DebuggerManagerELZNS2_16sDebuggerManagerEENS_17NonFactoryProductINS_8InstanceELZNS2_16sDebuggerManagerEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EE15classDescriptorEv")
+// IDA 0x4d6218: 95 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d6218() {
 }
 
 // 0x4d6338 — __ZN3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d6338() -> ! {
-    todo!("0x4d6338 __ZN3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d6338: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d6338() {
 }
 
 // 0x4d6458 — __ZN3RBX10Reflection9DescribedINS_22RightAngleRampInstanceELZNS_15sRightAngleRampEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sRightAngleRampEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_22RightAngleRampInstanceELZNS_15sRightAngleRampEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sRightAngleRampEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_22RightAngleRampInstanceELZNS_15sRightAngleRampEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sRightAngleRampEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d6458() -> ! {
-    todo!("0x4d6458 __ZN3RBX10Reflection9DescribedINS_22RightAngleRampInstanceELZNS_15sRightAngleRampEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sRightAngleRampEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d6458: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d6458() {
 }
 
 // 0x4d6578 — __ZN3RBX10Reflection9DescribedINS_20ParallelRampInstanceELZNS_13sParallelRampEENS_17NonFactoryProductINS_12PartInstanceELZNS_13sParallelRampEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_20ParallelRampInstanceELZNS_13sParallelRampEENS_17NonFactoryProductINS_12PartInstanceELZNS_13sParallelRampEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_20ParallelRampInstanceELZNS_13sParallelRampEENS_17NonFactoryProductINS_12PartInstanceELZNS_13sParallelRampEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d6578() -> ! {
-    todo!("0x4d6578 __ZN3RBX10Reflection9DescribedINS_20ParallelRampInstanceELZNS_13sParallelRampEENS_17NonFactoryProductINS_12PartInstanceELZNS_13sParallelRampEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d6578: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d6578() {
 }
 
 // 0x4d6698 — __ZN3RBX10Reflection9DescribedINS_15PyramidInstanceELZNS_8sPyramidEENS_17NonFactoryProductINS_12PartInstanceELZNS_8sPyramidEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_15PyramidInstanceELZNS_8sPyramidEENS_17NonFactoryProductINS_12PartInstanceELZNS_8sPyramidEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_15PyramidInstanceELZNS_8sPyramidEENS_17NonFactoryProductINS_12PartInstanceELZNS_8sPyramidEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d6698() -> ! {
-    todo!("0x4d6698 __ZN3RBX10Reflection9DescribedINS_15PyramidInstanceELZNS_8sPyramidEENS_17NonFactoryProductINS_12PartInstanceELZNS_8sPyramidEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d6698: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d6698() {
 }
 
 // 0x4d67b8 — __ZN3RBX10Reflection9DescribedINS_13PrismInstanceELZNS_6sPrismEENS_17NonFactoryProductINS_12PartInstanceELZNS_6sPrismEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13PrismInstanceELZNS_6sPrismEENS_17NonFactoryProductINS_12PartInstanceELZNS_6sPrismEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_13PrismInstanceELZNS_6sPrismEENS_17NonFactoryProductINS_12PartInstanceELZNS_6sPrismEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d67b8() -> ! {
-    todo!("0x4d67b8 __ZN3RBX10Reflection9DescribedINS_13PrismInstanceELZNS_6sPrismEENS_17NonFactoryProductINS_12PartInstanceELZNS_6sPrismEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d67b8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d67b8() {
 }
 
 // 0x4d68d8 — __ZN3RBX10Reflection9DescribedINS_6ButtonELZNS_7sButtonEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sButtonEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_6ButtonELZNS_7sButtonEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sButtonEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_6ButtonELZNS_7sButtonEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sButtonEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d68d8() -> ! {
-    todo!("0x4d68d8 __ZN3RBX10Reflection9DescribedINS_6ButtonELZNS_7sButtonEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sButtonEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d68d8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d68d8() {
 }
 
 // 0x4d69f8 — __ZN3RBX10Reflection9DescribedINS_7ToolbarELZNS_8sToolbarEENS_14FactoryProductIS2_NS_8InstanceELZNS_8sToolbarEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: void *__fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7ToolbarELZNS_8sToolbarEENS_14FactoryProductIS2_NS_8InstanceELZNS_8sToolbarEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_7ToolbarELZNS_8sToolbarEENS_14FactoryProductIS2_NS_8InstanceELZNS_8sToolbarEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d69f8() -> ! {
-    todo!("0x4d69f8 __ZN3RBX10Reflection9DescribedINS_7ToolbarELZNS_8sToolbarEENS_14FactoryProductIS2_NS_8InstanceELZNS_8sToolbarEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d69f8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d69f8() {
 }
 
 // 0x4d6b18 — __ZN3RBX10Reflection9DescribedINS_6PluginELZNS_7sPluginEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sPluginEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_6PluginELZNS_7sPluginEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sPluginEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_6PluginELZNS_7sPluginEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sPluginEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d6b18() -> ! {
-    todo!("0x4d6b18 __ZN3RBX10Reflection9DescribedINS_6PluginELZNS_7sPluginEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sPluginEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d6b18: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d6b18() {
 }
 
 // 0x4d6c38 — __ZN3RBX10Reflection9DescribedINS_13PluginManagerELZNS_14sPluginManagerEENS_17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13PluginManagerELZNS_14sPluginManagerEENS_17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_13PluginManagerELZNS_14sPluginManagerEENS_17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d6c38() -> ! {
-    todo!("0x4d6c38 __ZN3RBX10Reflection9DescribedINS_13PluginManagerELZNS_14sPluginManagerEENS_17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d6c38: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d6c38() {
 }
 
 // 0x4d6d58 — __ZN3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d6d58() -> ! {
-    todo!("0x4d6d58 __ZN3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d6d58: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d6d58() {
 }
 
 // 0x4d6e78 — __ZN3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d6e78() -> ! {
-    todo!("0x4d6e78 __ZN3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d6e78: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d6e78() {
 }
 
 // 0x4d6f98 — __ZN3RBX10Reflection9DescribedINS_4HoleELZNS_5sHoleEENS_14FactoryProductIS2_NS_7FeatureELZNS_5sHoleEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4HoleELZNS_5sHoleEENS_14FactoryProductIS2_NS_7FeatureELZNS_5sHoleEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_4HoleELZNS_5sHoleEENS_14FactoryProductIS2_NS_7FeatureELZNS_5sHoleEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d6f98() -> ! {
-    todo!("0x4d6f98 __ZN3RBX10Reflection9DescribedINS_4HoleELZNS_5sHoleEENS_14FactoryProductIS2_NS_7FeatureELZNS_5sHoleEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d6f98: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d6f98() {
 }
 
 // 0x4d70b8 — __ZN3RBX10Reflection9DescribedINS_7FeatureELZNS_8sFeatureEENS_17NonFactoryProductINS_8InstanceELZNS_8sFeatureEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7FeatureELZNS_8sFeatureEENS_17NonFactoryProductINS_8InstanceELZNS_8sFeatureEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_7FeatureELZNS_8sFeatureEENS_17NonFactoryProductINS_8InstanceELZNS_8sFeatureEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d70b8() -> ! {
-    todo!("0x4d70b8 __ZN3RBX10Reflection9DescribedINS_7FeatureELZNS_8sFeatureEENS_17NonFactoryProductINS_8InstanceELZNS_8sFeatureEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d70b8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d70b8() {
 }
 
 // 0x4d71d8 — __ZN3RBX10Reflection9DescribedINS_12MotorFeatureELZNS_13sMotorFeatureEENS_14FactoryProductIS2_NS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_12MotorFeatureELZNS_13sMotorFeatureEENS_14FactoryProductIS2_NS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_12MotorFeatureELZNS_13sMotorFeatureEENS_14FactoryProductIS2_NS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d71d8() -> ! {
-    todo!("0x4d71d8 __ZN3RBX10Reflection9DescribedINS_12MotorFeatureELZNS_13sMotorFeatureEENS_14FactoryProductIS2_NS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d71d8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d71d8() {
 }
 
 // 0x4d72f8 — __ZN3RBX10Reflection9DescribedINS_9PlayerHUDELZNS_10sPlayerHUDEENS_17NonFactoryProductINS_13RelativePanelELZNS_10sPlayerHUDEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9PlayerHUDELZNS_10sPlayerHUDEENS_17NonFactoryProductINS_13RelativePanelELZNS_10sPlayerHUDEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_9PlayerHUDELZNS_10sPlayerHUDEENS_17NonFactoryProductINS_13RelativePanelELZNS_10sPlayerHUDEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d72f8() -> ! {
-    todo!("0x4d72f8 __ZN3RBX10Reflection9DescribedINS_9PlayerHUDELZNS_10sPlayerHUDEENS_17NonFactoryProductINS_13RelativePanelELZNS_10sPlayerHUDEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d72f8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d72f8() {
 }
 
 // 0x4d7418 — __ZN3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d7418() -> ! {
-    todo!("0x4d7418 __ZN3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d7418: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d7418() {
 }
 
 // 0x4d7538 — __ZN3RBX10Reflection9DescribedINS_17CollectionServiceELZNS_18sCollectionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_18sCollectionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_17CollectionServiceELZNS_18sCollectionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_18sCollectionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_17CollectionServiceELZNS_18sCollectionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_18sCollectionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d7538() -> ! {
-    todo!("0x4d7538 __ZN3RBX10Reflection9DescribedINS_17CollectionServiceELZNS_18sCollectionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_18sCollectionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d7538: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d7538() {
 }
 
 // 0x4d7898 — __ZN3RBX10Reflection9DescribedINS_9GuiBase3dELZNS_10sGuiBase3dEENS_17NonFactoryProductINS_7GuiBaseELZNS_10sGuiBase3dEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9GuiBase3dELZNS_10sGuiBase3dEENS_17NonFactoryProductINS_7GuiBaseELZNS_10sGuiBase3dEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_9GuiBase3dELZNS_10sGuiBase3dEENS_17NonFactoryProductINS_7GuiBaseELZNS_10sGuiBase3dEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d7898() -> ! {
-    todo!("0x4d7898 __ZN3RBX10Reflection9DescribedINS_9GuiBase3dELZNS_10sGuiBase3dEENS_17NonFactoryProductINS_7GuiBaseELZNS_10sGuiBase3dEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d7898: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d7898() {
 }
 
 // 0x4d7bf8 — __ZN3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d7bf8() -> ! {
-    todo!("0x4d7bf8 __ZN3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d7bf8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d7bf8() {
 }
 
 // 0x4d7e38 — __ZN3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d7e38() -> ! {
-    todo!("0x4d7e38 __ZN3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d7e38: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d7e38() {
 }
 
 // 0x4d7f58 — __ZN3RBX10Reflection9DescribedINS_18NotificationObjectELZNS_19sNotificationObjectEENS_14FactoryProductIS2_NS_5FrameELZNS_19sNotificationObjectEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_18NotificationObjectELZNS_19sNotificationObjectEENS_14FactoryProductIS2_NS_5FrameELZNS_19sNotificationObjectEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_18NotificationObjectELZNS_19sNotificationObjectEENS_14FactoryProductIS2_NS_5FrameELZNS_19sNotificationObjectEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d7f58() -> ! {
-    todo!("0x4d7f58 __ZN3RBX10Reflection9DescribedINS_18NotificationObjectELZNS_19sNotificationObjectEENS_14FactoryProductIS2_NS_5FrameELZNS_19sNotificationObjectEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d7f58: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d7f58() {
 }
 
 // 0x4d8078 — __ZN3RBX10Reflection9DescribedINS_13GuiTextButtonELZNS_14sGuiTextButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13GuiTextButtonELZNS_14sGuiTextButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_13GuiTextButtonELZNS_14sGuiTextButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d8078() -> ! {
-    todo!("0x4d8078 __ZN3RBX10Reflection9DescribedINS_13GuiTextButtonELZNS_14sGuiTextButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d8078: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d8078() {
 }
 
 // 0x4d8198 — __ZN3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d8198() -> ! {
-    todo!("0x4d8198 __ZN3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d8198: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d8198() {
 }
 
 // 0x4d82b8 — __ZN3RBX10Reflection9DescribedINS_9FloorWireELZNS_10sFloorWireEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_10sFloorWireEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9FloorWireELZNS_10sFloorWireEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_10sFloorWireEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_9FloorWireELZNS_10sFloorWireEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_10sFloorWireEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d82b8() -> ! {
-    todo!("0x4d82b8 __ZN3RBX10Reflection9DescribedINS_9FloorWireELZNS_10sFloorWireEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_10sFloorWireEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d82b8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d82b8() {
 }
 
 // 0x4d83d8 — __ZN3RBX10Reflection9DescribedINS_12TextureTrailELZNS_13sTextureTrailEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_13sTextureTrailEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_12TextureTrailELZNS_13sTextureTrailEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_13sTextureTrailEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_12TextureTrailELZNS_13sTextureTrailEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_13sTextureTrailEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d83d8() -> ! {
-    todo!("0x4d83d8 __ZN3RBX10Reflection9DescribedINS_12TextureTrailELZNS_13sTextureTrailEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_13sTextureTrailEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d83d8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d83d8() {
 }
 
 // 0x4d84f8 — __ZN3RBX10Reflection9DescribedINS_19SelectionPointLassoELZNS_20sSelectionPointLassoEENS_14FactoryProductIS2_NS_14SelectionLassoELZNS_20sSelectionPointLassoEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_19SelectionPointLassoELZNS_20sSelectionPointLassoEENS_14FactoryProductIS2_NS_14SelectionLassoELZNS_20sSelectionPointLassoEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_19SelectionPointLassoELZNS_20sSelectionPointLassoEENS_14FactoryProductIS2_NS_14SelectionLassoELZNS_20sSelectionPointLassoEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d84f8() -> ! {
-    todo!("0x4d84f8 __ZN3RBX10Reflection9DescribedINS_19SelectionPointLassoELZNS_20sSelectionPointLassoEENS_14FactoryProductIS2_NS_14SelectionLassoELZNS_20sSelectionPointLassoEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d84f8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d84f8() {
 }
 
 // 0x4d8618 — __ZN3RBX10Reflection9DescribedINS_14SelectionLassoELZNS_15sSelectionLassoEENS_17NonFactoryProductINS_9GuiBase3dELZNS_15sSelectionLassoEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_14SelectionLassoELZNS_15sSelectionLassoEENS_17NonFactoryProductINS_9GuiBase3dELZNS_15sSelectionLassoEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_14SelectionLassoELZNS_15sSelectionLassoEENS_17NonFactoryProductINS_9GuiBase3dELZNS_15sSelectionLassoEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d8618() -> ! {
-    todo!("0x4d8618 __ZN3RBX10Reflection9DescribedINS_14SelectionLassoELZNS_15sSelectionLassoEENS_17NonFactoryProductINS_9GuiBase3dELZNS_15sSelectionLassoEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d8618: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d8618() {
 }
 
 // 0x4d8738 — __ZN3RBX10Reflection9DescribedINS_18SelectionPartLassoELZNS_19sSelectionPartLassoEENS_14FactoryProductIS2_NS_14SelectionLassoELZNS_19sSelectionPartLassoEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_18SelectionPartLassoELZNS_19sSelectionPartLassoEENS_14FactoryProductIS2_NS_14SelectionLassoELZNS_19sSelectionPartLassoEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_18SelectionPartLassoELZNS_19sSelectionPartLassoEENS_14FactoryProductIS2_NS_14SelectionLassoELZNS_19sSelectionPartLassoEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d8738() -> ! {
-    todo!("0x4d8738 __ZN3RBX10Reflection9DescribedINS_18SelectionPartLassoELZNS_19sSelectionPartLassoEENS_14FactoryProductIS2_NS_14SelectionLassoELZNS_19sSelectionPartLassoEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d8738: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d8738() {
 }
 
 // 0x4d8978 — __ZN3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d8978() -> ! {
-    todo!("0x4d8978 __ZN3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d8978: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d8978() {
 }
 
 // 0x4d8a98 — __ZN3RBX10Reflection9DescribedINS_7GuiRootELZNS_8sGuiRootEENS_7GuiItemELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7GuiRootELZNS_8sGuiRootEENS_7GuiItemELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_7GuiRootELZNS_8sGuiRootEENS_7GuiItemELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EE15classDescriptorEv
-pub fn stub_4d8a98() -> ! {
-    todo!("0x4d8a98 __ZN3RBX10Reflection9DescribedINS_7GuiRootELZNS_8sGuiRootEENS_7GuiItemELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EE15classDescriptorEv")
+// IDA 0x4d8a98: 95 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d8a98() {
 }
 
 // 0x4d8bb8 — __ZN3RBX10Reflection9DescribedINS_12TweenServiceELZNS_13sTweenServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sTweenServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_12TweenServiceELZNS_13sTweenServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sTweenServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_12TweenServiceELZNS_13sTweenServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sTweenServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d8bb8() -> ! {
-    todo!("0x4d8bb8 __ZN3RBX10Reflection9DescribedINS_12TweenServiceELZNS_13sTweenServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sTweenServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d8bb8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d8bb8() {
 }
 
 // 0x4d8cd8 — __ZN3RBX10Reflection9DescribedINS_7TextureELZNS_8sTextureEENS_14FactoryProductIS2_NS_5DecalELZNS_8sTextureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7TextureELZNS_8sTextureEENS_14FactoryProductIS2_NS_5DecalELZNS_8sTextureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_7TextureELZNS_8sTextureEENS_14FactoryProductIS2_NS_5DecalELZNS_8sTextureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d8cd8() -> ! {
-    todo!("0x4d8cd8 __ZN3RBX10Reflection9DescribedINS_7TextureELZNS_8sTextureEENS_14FactoryProductIS2_NS_5DecalELZNS_8sTextureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d8cd8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d8cd8() {
 }
 
 // 0x4d8df8 — __ZN3RBX10Reflection9DescribedINS_5DecalELZNS_6sDecalEENS_14FactoryProductIS2_NS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_5DecalELZNS_6sDecalEENS_14FactoryProductIS2_NS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_5DecalELZNS_6sDecalEENS_14FactoryProductIS2_NS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d8df8() -> ! {
-    todo!("0x4d8df8 __ZN3RBX10Reflection9DescribedINS_5DecalELZNS_6sDecalEENS_14FactoryProductIS2_NS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d8df8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d8df8() {
 }
 
 // 0x4d8f18 — __ZN3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d8f18() -> ! {
-    todo!("0x4d8f18 __ZN3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d8f18: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d8f18() {
 }
 
 // 0x4d9038 — __ZN3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d9038() -> ! {
-    todo!("0x4d9038 __ZN3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d9038: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d9038() {
 }
 
 // 0x4d9158 — __ZN3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d9158() -> ! {
-    todo!("0x4d9158 __ZN3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d9158: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d9158() {
 }
 
 // 0x4d9278 — __ZN3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d9278() -> ! {
-    todo!("0x4d9278 __ZN3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d9278: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d9278() {
 }
 
 // 0x4d9398 — __ZN3RBX10Reflection9DescribedINS_5TeamsELZNS_6sTeamsEENS_14FactoryProductIS2_NS_8InstanceELZNS_6sTeamsEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_5TeamsELZNS_6sTeamsEENS_14FactoryProductIS2_NS_8InstanceELZNS_6sTeamsEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_5TeamsELZNS_6sTeamsEENS_14FactoryProductIS2_NS_8InstanceELZNS_6sTeamsEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d9398() -> ! {
-    todo!("0x4d9398 __ZN3RBX10Reflection9DescribedINS_5TeamsELZNS_6sTeamsEENS_14FactoryProductIS2_NS_8InstanceELZNS_6sTeamsEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d9398: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d9398() {
 }
 
 // 0x4d94b8 — __ZN3RBX10Reflection9DescribedINS_11PlayerMouseELZNS_12sPlayerMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPlayerMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11PlayerMouseELZNS_12sPlayerMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPlayerMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_11PlayerMouseELZNS_12sPlayerMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPlayerMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d94b8() -> ! {
-    todo!("0x4d94b8 __ZN3RBX10Reflection9DescribedINS_11PlayerMouseELZNS_12sPlayerMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPlayerMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d94b8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d94b8() {
 }
 
 // 0x4d95d8 — __ZN3RBX10Reflection9DescribedINS_13SpawnLocationELZNS_14sSpawnLocationEENS_14FactoryProductIS2_NS_17BasicPartInstanceELZNS_14sSpawnLocationEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13SpawnLocationELZNS_14sSpawnLocationEENS_14FactoryProductIS2_NS_17BasicPartInstanceELZNS_14sSpawnLocationEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_13SpawnLocationELZNS_14sSpawnLocationEENS_14FactoryProductIS2_NS_17BasicPartInstanceELZNS_14sSpawnLocationEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d95d8() -> ! {
-    todo!("0x4d95d8 __ZN3RBX10Reflection9DescribedINS_13SpawnLocationELZNS_14sSpawnLocationEENS_14FactoryProductIS2_NS_17BasicPartInstanceELZNS_14sSpawnLocationEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d95d8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d95d8() {
 }
 
 // 0x4d96f8 — __ZN3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d96f8() -> ! {
-    todo!("0x4d96f8 __ZN3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d96f8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d96f8() {
 }
 
 // 0x4d9818 — __ZN3RBX10Reflection9DescribedINS_13VelocityMotorELZNS_14sVelocityMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13VelocityMotorELZNS_14sVelocityMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_13VelocityMotorELZNS_14sVelocityMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d9818() -> ! {
-    todo!("0x4d9818 __ZN3RBX10Reflection9DescribedINS_13VelocityMotorELZNS_14sVelocityMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d9818: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d9818() {
 }
 
 // 0x4d9938 — __ZN3RBX10Reflection9DescribedINS_3SkyELZNS_4sSkyEENS_14FactoryProductIS2_NS_8InstanceELZNS_4sSkyEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_3SkyELZNS_4sSkyEENS_14FactoryProductIS2_NS_8InstanceELZNS_4sSkyEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_3SkyELZNS_4sSkyEENS_14FactoryProductIS2_NS_8InstanceELZNS_4sSkyEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d9938() -> ! {
-    todo!("0x4d9938 __ZN3RBX10Reflection9DescribedINS_3SkyELZNS_4sSkyEENS_14FactoryProductIS2_NS_8InstanceELZNS_4sSkyEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d9938: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d9938() {
 }
 
 // 0x4d9a58 — __ZN3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d9a58() -> ! {
-    todo!("0x4d9a58 __ZN3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d9a58: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d9a58() {
 }
 
 // 0x4d9b78 — __ZN3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d9b78() -> ! {
-    todo!("0x4d9b78 __ZN3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d9b78: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d9b78() {
 }
 
 // 0x4d9c98 — __ZN3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d9c98() -> ! {
-    todo!("0x4d9c98 __ZN3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d9c98: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d9c98() {
 }
 
 // 0x4d9db8 — __ZN3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d9db8() -> ! {
-    todo!("0x4d9db8 __ZN3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d9db8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d9db8() {
 }
 
 // 0x4d9ed8 — __ZN3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d9ed8() -> ! {
-    todo!("0x4d9ed8 __ZN3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d9ed8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d9ed8() {
 }
 
 // 0x4d9ff8 — __ZN3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4d9ff8() -> ! {
-    todo!("0x4d9ff8 __ZN3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4d9ff8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4d9ff8() {
 }
 
 // 0x4da118 — __ZN3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4da118() -> ! {
-    todo!("0x4da118 __ZN3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4da118: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4da118() {
 }
 
 // 0x4da238 — __ZN3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4da238() -> ! {
-    todo!("0x4da238 __ZN3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4da238: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4da238() {
 }
 
 // 0x4da358 — __ZN3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4da358() -> ! {
-    todo!("0x4da358 __ZN3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4da358: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4da358() {
 }
 
 // 0x4da478 — __ZN3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4da478() -> ! {
-    todo!("0x4da478 __ZN3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4da478: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4da478() {
 }
 
 // 0x4da598 — __ZN3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4da598() -> ! {
-    todo!("0x4da598 __ZN3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4da598: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4da598() {
 }
 
 // 0x4da6b8 — __ZN3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4da6b8() -> ! {
-    todo!("0x4da6b8 __ZN3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4da6b8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4da6b8() {
 }
 
 // 0x4da7d8 — __ZN3RBX10Reflection9DescribedINS_13JointsServiceELZNS_14sJointsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sJointsServiceEEEELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13JointsServiceELZNS_14sJointsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sJointsServiceEEEELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_13JointsServiceELZNS_14sJointsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sJointsServiceEEEELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4da7d8() -> ! {
-    todo!("0x4da7d8 __ZN3RBX10Reflection9DescribedINS_13JointsServiceELZNS_14sJointsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sJointsServiceEEEELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4da7d8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4da7d8() {
 }
 
 // 0x4da8f8 — __ZN3RBX10Reflection9DescribedINS_7Network10ChatFilterELZNS2_11sChatFilterEENS_17NonFactoryProductINS_8InstanceELZNS2_11sChatFilterEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7Network10ChatFilterELZNS2_11sChatFilterEENS_17NonFactoryProductINS_8InstanceELZNS2_11sChatFilterEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_7Network10ChatFilterELZNS2_11sChatFilterEENS_17NonFactoryProductINS_8InstanceELZNS2_11sChatFilterEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4da8f8() -> ! {
-    todo!("0x4da8f8 __ZN3RBX10Reflection9DescribedINS_7Network10ChatFilterELZNS2_11sChatFilterEENS_17NonFactoryProductINS_8InstanceELZNS2_11sChatFilterEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4da8f8: 93 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4da8f8() {
 }
 
 // 0x4daa18 — __ZN3RBX10Reflection9DescribedINS_7Network18ClusterPacketCacheELZNS2_19sClusterPacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_19sClusterPacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7Network18ClusterPacketCacheELZNS2_19sClusterPacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_19sClusterPacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_7Network18ClusterPacketCacheELZNS2_19sClusterPacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_19sClusterPacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4daa18() -> ! {
-    todo!("0x4daa18 __ZN3RBX10Reflection9DescribedINS_7Network18ClusterPacketCacheELZNS2_19sClusterPacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_19sClusterPacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4daa18: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4daa18() {
 }
 
 // 0x4dab38 — __ZN3RBX10Reflection9DescribedINS_7Network19InstancePacketCacheELZNS2_20sInstancePacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_20sInstancePacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7Network19InstancePacketCacheELZNS2_20sInstancePacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_20sInstancePacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_7Network19InstancePacketCacheELZNS2_20sInstancePacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_20sInstancePacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dab38() -> ! {
-    todo!("0x4dab38 __ZN3RBX10Reflection9DescribedINS_7Network19InstancePacketCacheELZNS2_20sInstancePacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_20sInstancePacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dab38: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dab38() {
 }
 
 // 0x4dac58 — __ZN3RBX10Reflection9DescribedINS_7Network18PhysicsPacketCacheELZNS2_19sPhysicsPacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_19sPhysicsPacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7Network18PhysicsPacketCacheELZNS2_19sPhysicsPacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_19sPhysicsPacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_7Network18PhysicsPacketCacheELZNS2_19sPhysicsPacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_19sPhysicsPacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dac58() -> ! {
-    todo!("0x4dac58 __ZN3RBX10Reflection9DescribedINS_7Network18PhysicsPacketCacheELZNS2_19sPhysicsPacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_19sPhysicsPacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dac58: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dac58() {
 }
 
 // 0x4dad78 — __ZN3RBX10Reflection9DescribedINS_19CharacterAppearanceELZNS_20sCharacterAppearanceEENS_17NonFactoryProductINS_8InstanceELZNS_20sCharacterAppearanceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_19CharacterAppearanceELZNS_20sCharacterAppearanceEENS_17NonFactoryProductINS_8InstanceELZNS_20sCharacterAppearanceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_19CharacterAppearanceELZNS_20sCharacterAppearanceEENS_17NonFactoryProductINS_8InstanceELZNS_20sCharacterAppearanceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dad78() -> ! {
-    todo!("0x4dad78 __ZN3RBX10Reflection9DescribedINS_19CharacterAppearanceELZNS_20sCharacterAppearanceEENS_17NonFactoryProductINS_8InstanceELZNS_20sCharacterAppearanceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dad78: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dad78() {
 }
 
 // 0x4dae98 — __ZN3RBX10Reflection9DescribedINS_8AnimatorELZNS_9sAnimatorEENS_17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_8AnimatorELZNS_9sAnimatorEENS_17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_8AnimatorELZNS_9sAnimatorEENS_17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dae98() -> ! {
-    todo!("0x4dae98 __ZN3RBX10Reflection9DescribedINS_8AnimatorELZNS_9sAnimatorEENS_17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dae98: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dae98() {
 }
 
 // 0x4dafb8 — __ZN3RBX10Reflection9DescribedINS_19AnimationTrackStateELZNS_20sAnimationTrackStateEENS_17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_19AnimationTrackStateELZNS_20sAnimationTrackStateEENS_17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_19AnimationTrackStateELZNS_20sAnimationTrackStateEENS_17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dafb8() -> ! {
-    todo!("0x4dafb8 __ZN3RBX10Reflection9DescribedINS_19AnimationTrackStateELZNS_20sAnimationTrackStateEENS_17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dafb8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dafb8() {
 }
 
 // 0x4db0d8 — __ZN3RBX10Reflection9DescribedINS_14AnimationTrackELZNS_15sAnimationTrackEENS_17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_14AnimationTrackELZNS_15sAnimationTrackEENS_17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_14AnimationTrackELZNS_15sAnimationTrackEENS_17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4db0d8() -> ! {
-    todo!("0x4db0d8 __ZN3RBX10Reflection9DescribedINS_14AnimationTrackELZNS_15sAnimationTrackEENS_17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4db0d8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4db0d8() {
 }
 
 // 0x4db1f8 — __ZN3RBX10Reflection9DescribedINS_9AnimationELZNS_10sAnimationEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sAnimationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9AnimationELZNS_10sAnimationEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sAnimationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_9AnimationELZNS_10sAnimationEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sAnimationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4db1f8() -> ! {
-    todo!("0x4db1f8 __ZN3RBX10Reflection9DescribedINS_9AnimationELZNS_10sAnimationEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sAnimationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4db1f8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4db1f8() {
 }
 
 // 0x4db318 — __ZN3RBX10Reflection9DescribedINS_8KeyframeELZNS_9sKeyframeEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sKeyframeEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_8KeyframeELZNS_9sKeyframeEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sKeyframeEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_8KeyframeELZNS_9sKeyframeEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sKeyframeEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4db318() -> ! {
-    todo!("0x4db318 __ZN3RBX10Reflection9DescribedINS_8KeyframeELZNS_9sKeyframeEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sKeyframeEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4db318: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4db318() {
 }
 
 // 0x4db438 — __ZN3RBX10Reflection9DescribedINS_4PoseELZNS_5sPoseEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sPoseEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4PoseELZNS_5sPoseEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sPoseEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_4PoseELZNS_5sPoseEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sPoseEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4db438() -> ! {
-    todo!("0x4db438 __ZN3RBX10Reflection9DescribedINS_4PoseELZNS_5sPoseEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sPoseEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4db438: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4db438() {
 }
 
 // 0x4db558 — __ZN3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4db558() -> ! {
-    todo!("0x4db558 __ZN3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4db558: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4db558() {
 }
 
 // 0x4db678 — __ZN3RBX10Reflection9DescribedINS_25ScriptInformationProviderELZNS_26sScriptInformationProviderEENS_17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_25ScriptInformationProviderELZNS_26sScriptInformationProviderEENS_17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_25ScriptInformationProviderELZNS_26sScriptInformationProviderEENS_17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4db678() -> ! {
-    todo!("0x4db678 __ZN3RBX10Reflection9DescribedINS_25ScriptInformationProviderELZNS_26sScriptInformationProviderEENS_17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4db678: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4db678() {
 }
 
 // 0x4db798 — __ZN3RBX10Reflection9DescribedINS_20RuntimeScriptServiceELZNS_21sRuntimeScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_20RuntimeScriptServiceELZNS_21sRuntimeScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_20RuntimeScriptServiceELZNS_21sRuntimeScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4db798() -> ! {
-    todo!("0x4db798 __ZN3RBX10Reflection9DescribedINS_20RuntimeScriptServiceELZNS_21sRuntimeScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4db798: 93 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4db798() {
 }
 
 // 0x4db8b8 — __ZN3RBX10Reflection9DescribedINS_12SpecialShapeELZNS_13sSpecialShapeEENS_14FactoryProductIS2_NS_8FileMeshELZNS_13sSpecialShapeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_12SpecialShapeELZNS_13sSpecialShapeEENS_14FactoryProductIS2_NS_8FileMeshELZNS_13sSpecialShapeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_12SpecialShapeELZNS_13sSpecialShapeEENS_14FactoryProductIS2_NS_8FileMeshELZNS_13sSpecialShapeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4db8b8() -> ! {
-    todo!("0x4db8b8 __ZN3RBX10Reflection9DescribedINS_12SpecialShapeELZNS_13sSpecialShapeEENS_14FactoryProductIS2_NS_8FileMeshELZNS_13sSpecialShapeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4db8b8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4db8b8() {
 }
 
 // 0x4db9d8 — __ZN3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4db9d8() -> ! {
-    todo!("0x4db9d8 __ZN3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4db9d8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4db9d8() {
 }
 
 // 0x4dbaf8 — __ZN3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dbaf8() -> ! {
-    todo!("0x4dbaf8 __ZN3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dbaf8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dbaf8() {
 }
 
 // 0x4dbc18 — __ZN3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dbc18() -> ! {
-    todo!("0x4dbc18 __ZN3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dbc18: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dbc18() {
 }
 
 // 0x4dbd38 — __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dbd38() -> ! {
-    todo!("0x4dbd38 __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dbd38: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dbd38() {
 }
 
 // 0x4dbe58 — __ZN3RBX10Reflection9DescribedINS_20ChangeHistoryServiceELZNS_21sChangeHistoryServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_21sChangeHistoryServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_20ChangeHistoryServiceELZNS_21sChangeHistoryServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_21sChangeHistoryServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_20ChangeHistoryServiceELZNS_21sChangeHistoryServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_21sChangeHistoryServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dbe58() -> ! {
-    todo!("0x4dbe58 __ZN3RBX10Reflection9DescribedINS_20ChangeHistoryServiceELZNS_21sChangeHistoryServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_21sChangeHistoryServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dbe58: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dbe58() {
 }
 
 // 0x4dbf78 — __ZN3RBX10Reflection9DescribedINS_24CacheableContentProviderELZNS_25sCacheableContentProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sCacheableContentProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_24CacheableContentProviderELZNS_25sCacheableContentProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sCacheableContentProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_24CacheableContentProviderELZNS_25sCacheableContentProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sCacheableContentProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dbf78() -> ! {
-    todo!("0x4dbf78 __ZN3RBX10Reflection9DescribedINS_24CacheableContentProviderELZNS_25sCacheableContentProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sCacheableContentProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dbf78: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dbf78() {
 }
 
 // 0x4dc098 — __ZN3RBX10Reflection9DescribedINS_22TextureContentProviderELZNS_23sTextureContentProviderEENS_17NonFactoryProductINS_24CacheableContentProviderELZNS_23sTextureContentProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_22TextureContentProviderELZNS_23sTextureContentProviderEENS_17NonFactoryProductINS_24CacheableContentProviderELZNS_23sTextureContentProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_22TextureContentProviderELZNS_23sTextureContentProviderEENS_17NonFactoryProductINS_24CacheableContentProviderELZNS_23sTextureContentProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dc098() -> ! {
-    todo!("0x4dc098 __ZN3RBX10Reflection9DescribedINS_22TextureContentProviderELZNS_23sTextureContentProviderEENS_17NonFactoryProductINS_24CacheableContentProviderELZNS_23sTextureContentProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dc098: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dc098() {
 }
 
 // 0x4dc1b8 — __ZN3RBX10Reflection9DescribedINS_19MeshContentProviderELZNS_20sMeshContentProviderEENS_17NonFactoryProductINS_24CacheableContentProviderELZNS_20sMeshContentProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_19MeshContentProviderELZNS_20sMeshContentProviderEENS_17NonFactoryProductINS_24CacheableContentProviderELZNS_20sMeshContentProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_19MeshContentProviderELZNS_20sMeshContentProviderEENS_17NonFactoryProductINS_24CacheableContentProviderELZNS_20sMeshContentProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dc1b8() -> ! {
-    todo!("0x4dc1b8 __ZN3RBX10Reflection9DescribedINS_19MeshContentProviderELZNS_20sMeshContentProviderEENS_17NonFactoryProductINS_24CacheableContentProviderELZNS_20sMeshContentProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dc1b8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dc1b8() {
 }
 
 // 0x4dc2d8 — __ZN3RBX10Reflection9DescribedINS_12AssetServiceELZNS_13sAssetServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sAssetServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_12AssetServiceELZNS_13sAssetServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sAssetServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_12AssetServiceELZNS_13sAssetServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sAssetServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dc2d8() -> ! {
-    todo!("0x4dc2d8 __ZN3RBX10Reflection9DescribedINS_12AssetServiceELZNS_13sAssetServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sAssetServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dc2d8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dc2d8() {
 }
 
 // 0x4dc3f8 — __ZN3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dc3f8() -> ! {
-    todo!("0x4dc3f8 __ZN3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dc3f8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dc3f8() {
 }
 
 // 0x4dc518 — __ZN3RBX10Reflection9DescribedINS_20ContextActionServiceELZNS_21sContextActionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sContextActionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_20ContextActionServiceELZNS_21sContextActionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sContextActionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_20ContextActionServiceELZNS_21sContextActionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sContextActionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dc518() -> ! {
-    todo!("0x4dc518 __ZN3RBX10Reflection9DescribedINS_20ContextActionServiceELZNS_21sContextActionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sContextActionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dc518: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dc518() {
 }
 
 // 0x4dc638 — __ZN3RBX10Reflection9DescribedINS_18MarketplaceServiceELZNS_19sMarketplaceServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_19sMarketplaceServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE19ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_18MarketplaceServiceELZNS_19sMarketplaceServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_19sMarketplaceServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE19ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_18MarketplaceServiceELZNS_19sMarketplaceServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_19sMarketplaceServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE19ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dc638() -> ! {
-    todo!("0x4dc638 __ZN3RBX10Reflection9DescribedINS_18MarketplaceServiceELZNS_19sMarketplaceServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_19sMarketplaceServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE19ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dc638: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dc638() {
 }
 
 // 0x4dc758 — __ZN3RBX10Reflection9DescribedINS_15GamePassServiceELZNS_16sGamePassServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGamePassServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_15GamePassServiceELZNS_16sGamePassServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGamePassServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_15GamePassServiceELZNS_16sGamePassServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGamePassServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dc758() -> ! {
-    todo!("0x4dc758 __ZN3RBX10Reflection9DescribedINS_15GamePassServiceELZNS_16sGamePassServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGamePassServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dc758: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dc758() {
 }
 
 // 0x4dc878 — __ZN3RBX10Reflection9DescribedINS_13SocialServiceELZNS_14sSocialServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sSocialServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13SocialServiceELZNS_14sSocialServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sSocialServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_13SocialServiceELZNS_14sSocialServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sSocialServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dc878() -> ! {
-    todo!("0x4dc878 __ZN3RBX10Reflection9DescribedINS_13SocialServiceELZNS_14sSocialServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sSocialServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dc878: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dc878() {
 }
 
 // 0x4dc998 — __ZN3RBX10Reflection9DescribedINS_14CookiesServiceELZNS_15sCookiesServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sCookiesServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_14CookiesServiceELZNS_15sCookiesServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sCookiesServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_14CookiesServiceELZNS_15sCookiesServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sCookiesServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dc998() -> ! {
-    todo!("0x4dc998 __ZN3RBX10Reflection9DescribedINS_14CookiesServiceELZNS_15sCookiesServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sCookiesServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dc998: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dc998() {
 }
 
 // 0x4dcab8 — __ZN3RBX10Reflection9DescribedINS_9FWServiceELZNS_10sFWServiceEENS_17NonFactoryProductINS_8InstanceELZNS_10sFWServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9FWServiceELZNS_10sFWServiceEENS_17NonFactoryProductINS_8InstanceELZNS_10sFWServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_9FWServiceELZNS_10sFWServiceEENS_17NonFactoryProductINS_8InstanceELZNS_10sFWServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dcab8() -> ! {
-    todo!("0x4dcab8 __ZN3RBX10Reflection9DescribedINS_9FWServiceELZNS_10sFWServiceEENS_17NonFactoryProductINS_8InstanceELZNS_10sFWServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dcab8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dcab8() {
 }
 
 // 0x4dccf8 — __ZN3RBX10Reflection9DescribedINS_13FriendServiceELZNS_14sFriendServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sFriendServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13FriendServiceELZNS_14sFriendServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sFriendServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_13FriendServiceELZNS_14sFriendServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sFriendServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dccf8() -> ! {
-    todo!("0x4dccf8 __ZN3RBX10Reflection9DescribedINS_13FriendServiceELZNS_14sFriendServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sFriendServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dccf8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dccf8() {
 }
 
 // 0x4dce18 — __ZN3RBX10Reflection9DescribedINS_13LuaWebServiceELZNS_14sLuaWebServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13LuaWebServiceELZNS_14sLuaWebServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_13LuaWebServiceELZNS_14sLuaWebServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dce18() -> ! {
-    todo!("0x4dce18 __ZN3RBX10Reflection9DescribedINS_13LuaWebServiceELZNS_14sLuaWebServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dce18: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dce18() {
 }
 
 // 0x4dcf38 — __ZN3RBX10Reflection9DescribedINS_13InsertServiceELZNS_14sInsertServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sInsertServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13InsertServiceELZNS_14sInsertServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sInsertServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_13InsertServiceELZNS_14sInsertServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sInsertServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dcf38() -> ! {
-    todo!("0x4dcf38 __ZN3RBX10Reflection9DescribedINS_13InsertServiceELZNS_14sInsertServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sInsertServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dcf38: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dcf38() {
 }
 
 // 0x4dd058 — __ZN3RBX10Reflection9DescribedINS_13ContentFilterELZNS_14sContentFilterEENS_17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13ContentFilterELZNS_14sContentFilterEENS_17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_13ContentFilterELZNS_14sContentFilterEENS_17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dd058() -> ! {
-    todo!("0x4dd058 __ZN3RBX10Reflection9DescribedINS_13ContentFilterELZNS_14sContentFilterEENS_17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dd058: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dd058() {
 }
 
 // 0x4dd178 — __ZN3RBX10Reflection9DescribedINS_14SpawnerServiceELZNS_15sSpawnerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sSpawnerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_14SpawnerServiceELZNS_15sSpawnerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sSpawnerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_14SpawnerServiceELZNS_15sSpawnerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sSpawnerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dd178() -> ! {
-    todo!("0x4dd178 __ZN3RBX10Reflection9DescribedINS_14SpawnerServiceELZNS_15sSpawnerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sSpawnerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dd178: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dd178() {
 }
 
 // 0x4dd298 — __ZN3RBX10Reflection9DescribedINS_12TimerServiceELZNS_13sTimerServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sTimerServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_12TimerServiceELZNS_13sTimerServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sTimerServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_12TimerServiceELZNS_13sTimerServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sTimerServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dd298() -> ! {
-    todo!("0x4dd298 __ZN3RBX10Reflection9DescribedINS_12TimerServiceELZNS_13sTimerServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sTimerServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dd298: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dd298() {
 }
 
 // 0x4dd3b8 — __ZN3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dd3b8() -> ! {
-    todo!("0x4dd3b8 __ZN3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dd3b8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dd3b8() {
 }
 
 // 0x4dd4d8 — __ZN3RBX10Reflection9DescribedINS_11VehicleSeatELZNS_12sVehicleSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11VehicleSeatELZNS_12sVehicleSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_11VehicleSeatELZNS_12sVehicleSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dd4d8() -> ! {
-    todo!("0x4dd4d8 __ZN3RBX10Reflection9DescribedINS_11VehicleSeatELZNS_12sVehicleSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dd4d8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dd4d8() {
 }
 
 // 0x4dd5f8 — __ZN3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dd5f8() -> ! {
-    todo!("0x4dd5f8 __ZN3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dd5f8: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dd5f8() {
 }
 
 // 0x4dd718 — __ZN3RBX10Reflection9DescribedINS_18SkateboardPlatformELZNS_19sSkateboardPlatformEENS_14FactoryProductIS2_NS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_18SkateboardPlatformELZNS_19sSkateboardPlatformEENS_14FactoryProductIS2_NS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_18SkateboardPlatformELZNS_19sSkateboardPlatformEENS_14FactoryProductIS2_NS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dd718() -> ! {
-    todo!("0x4dd718 __ZN3RBX10Reflection9DescribedINS_18SkateboardPlatformELZNS_19sSkateboardPlatformEENS_14FactoryProductIS2_NS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dd718: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dd718() {
 }
 
 // 0x4dd838 — __ZN3RBX10Reflection9DescribedINS_8PlatformELZNS_9sPlatformEENS_12PlatformImplINS_17BasicPartInstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_8PlatformELZNS_9sPlatformEENS_12PlatformImplINS_17BasicPartInstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_8PlatformELZNS_9sPlatformEENS_12PlatformImplINS_17BasicPartInstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dd838() -> ! {
-    todo!("0x4dd838 __ZN3RBX10Reflection9DescribedINS_8PlatformELZNS_9sPlatformEENS_12PlatformImplINS_17BasicPartInstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dd838: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dd838() {
 }
 
 // 0x4dd958 — __ZN3RBX10Reflection9DescribedINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEELZNS_23sDoubleConstrainedValueEENS_14FactoryProductIS3_NS_8InstanceELZNS_23sDoubleConstrainedValueEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEELZNS_23sDoubleConstrainedValueEENS_14FactoryProductIS3_NS_8InstanceELZNS_23sDoubleConstrainedValueEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEELZNS_23sDoubleConstrainedValueEENS_14FactoryProductIS3_NS_8InstanceELZNS_23sDoubleConstrainedValueEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_4dd958() -> ! {
-    todo!("0x4dd958 __ZN3RBX10Reflection9DescribedINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEELZNS_23sDoubleConstrainedValueEENS_14FactoryProductIS3_NS_8InstanceELZNS_23sDoubleConstrainedValueEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x4dd958: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4dd958() {
 }

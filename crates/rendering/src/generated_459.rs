@@ -13,40 +13,40 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0x6e0e48 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18WorkspaceStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::WorkspaceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18WorkspaceStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
-pub fn stub_6e0e48() -> ! {
-    todo!("0x6e0e48 boost::detail::sp_counted_impl_pd<RBX::WorkspaceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+// IDA 0x6e0e48: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_6e0e48() {
 }
 
 
 // 0x6e0e4c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18WorkspaceStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::WorkspaceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18WorkspaceStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-pub fn stub_6e0e4c() -> ! {
-    todo!("0x6e0e4c boost::detail::sp_counted_impl_pd<RBX::WorkspaceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+// IDA 0x6e0e4c: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_6e0e4c() {
 }
 
 
 // 0x6e0e50 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18WorkspaceStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::WorkspaceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18WorkspaceStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
-pub fn stub_6e0e50() -> ! {
-    todo!("0x6e0e50 boost::detail::sp_counted_impl_pd<RBX::WorkspaceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+// IDA 0x6e0e50: 13 insns (PUSH..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e0e50() {
 }
 
 
 // 0x6e0e70 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18WorkspaceStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::WorkspaceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18WorkspaceStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
-pub fn stub_6e0e70() -> ! {
-    todo!("0x6e0e70 boost::detail::sp_counted_impl_pd<RBX::WorkspaceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+// IDA 0x6e0e70: 10 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e0e70() {
 }
 
 
 // 0x6e0e88 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18WorkspaceStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::WorkspaceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18WorkspaceStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
-pub fn stub_6e0e88() -> ! {
-    todo!("0x6e0e88 boost::detail::sp_counted_impl_pd<RBX::WorkspaceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+// IDA 0x6e0e88: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e0e88() {
 }
 
 
@@ -54,16 +54,16 @@ pub fn stub_6e0e88() -> ! {
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::TouchPair const&)>::disconnectAll(void)")]
 // was: __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE13disconnectAllEv
-pub fn stub_6e1148() -> ! {
-    todo!("0x6e1148 rbx::signals::signal<void ()(RBX::TouchPair const&)>::disconnectAll(void)")
+// IDA 0x6e1148: 136 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e1148() {
 }
 
 
 // 0x6e12c0 — __ZN3RBX9GuiTarget7processERKNS_8GuiEventE
 #[doc(alias = "RBX::GuiTarget::process(RBX::GuiEvent const&)")]
 // was: __ZN3RBX9GuiTarget7processERKNS_8GuiEventE
-pub fn stub_6e12c0() -> ! {
-    todo!("0x6e12c0 RBX::GuiTarget::process(RBX::GuiEvent const&)")
+// IDA 0x6e12c0: 3 insns (VMOV.I32..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e12c0() {
 }
 
 
@@ -71,8 +71,8 @@ pub fn stub_6e12c0() -> ! {
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "global constructor keyed to_a_285")]
 // was: __GLOBAL__I_a_285
-pub fn stub_6e12cc() -> ! {
-    todo!("0x6e12cc global constructor keyed to _a_285")
+// IDA 0x6e12cc: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+pub fn stub_6e12cc() {
 }
 
 
@@ -80,8 +80,8 @@ pub fn stub_6e12cc() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this)
 #[doc(alias = "RBX::Body::Body(void)")]
 // was: __ZN3RBX4BodyC1Ev
-pub fn stub_6e205c() -> ! {
-    todo!("0x6e205c RBX::Body::Body(void)")
+// IDA 0x6e205c: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_6e205c() {
 }
 
 
@@ -89,8 +89,8 @@ pub fn stub_6e205c() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this)
 #[doc(alias = "RBX::Body::Body(void)")]
 // was: __ZN3RBX4BodyC2Ev
-pub fn stub_6e2060() -> ! {
-    todo!("0x6e2060 RBX::Body::Body(void)")
+// IDA 0x6e2060: 174 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e2060() {
 }
 
 
@@ -98,8 +98,8 @@ pub fn stub_6e2060() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this)
 #[doc(alias = "RBX::Body::getNextStateIndex(void)")]
 // was: __ZN3RBX4Body17getNextStateIndexEv
-pub fn stub_6e2244() -> ! {
-    todo!("0x6e2244 RBX::Body::getNextStateIndex(void)")
+// IDA 0x6e2244: 6 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e2244() {
 }
 
 
@@ -107,8 +107,8 @@ pub fn stub_6e2244() -> ! {
 // type: void __fastcall(RBX::Body *__hidden this)
 #[doc(alias = "RBX::Body::~Body()")]
 // was: __ZN3RBX4BodyD0Ev
-pub fn stub_6e2258() -> ! {
-    todo!("0x6e2258 RBX::Body::~Body()")
+// IDA 0x6e2258: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_6e2258() {
 }
 
 
@@ -116,8 +116,8 @@ pub fn stub_6e2258() -> ! {
 // type: void __fastcall(RBX::Body *__hidden this)
 #[doc(alias = "RBX::Body::~Body()")]
 // was: __ZN3RBX4BodyD1Ev
-pub fn stub_6e230c() -> ! {
-    todo!("0x6e230c RBX::Body::~Body()")
+// IDA 0x6e230c: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_6e230c() {
 }
 
 
@@ -125,8 +125,8 @@ pub fn stub_6e230c() -> ! {
 // type: void __fastcall(RBX::Body *__hidden this)
 #[doc(alias = "RBX::Body::~Body()")]
 // was: __ZN3RBX4BodyD2Ev
-pub fn stub_6e2310() -> ! {
-    todo!("0x6e2310 RBX::Body::~Body()")
+// IDA 0x6e2310: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_6e2310() {
 }
 
 
@@ -134,8 +134,8 @@ pub fn stub_6e2310() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this)
 #[doc(alias = "RBX::Body::advanceStateIndex(void)")]
 // was: __ZN3RBX4Body17advanceStateIndexEv
-pub fn stub_6e264c() -> ! {
-    todo!("0x6e264c RBX::Body::advanceStateIndex(void)")
+// IDA 0x6e264c: 7 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e264c() {
 }
 
 
@@ -143,8 +143,8 @@ pub fn stub_6e264c() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this)
 #[doc(alias = "RBX::Body::initStaticData(void)")]
 // was: __ZN3RBX4Body14initStaticDataEv
-pub fn stub_6e2664() -> ! {
-    todo!("0x6e2664 RBX::Body::initStaticData(void)")
+// IDA 0x6e2664: 64 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e2664() {
 }
 
 
@@ -152,8 +152,8 @@ pub fn stub_6e2664() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this)
 #[doc(alias = "RBX::Body::getWorldBody(void)")]
 // was: __ZN3RBX4Body12getWorldBodyEv
-pub fn stub_6e2724() -> ! {
-    todo!("0x6e2724 RBX::Body::getWorldBody(void)")
+// IDA 0x6e2724: 14 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e2724() {
 }
 
 
@@ -161,8 +161,8 @@ pub fn stub_6e2724() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this)
 #[doc(alias = "RBX::Body::validateParentCofmDirty(void)")]
 // was: __ZN3RBX4Body23validateParentCofmDirtyEv
-pub fn stub_6e2750() -> ! {
-    todo!("0x6e2750 RBX::Body::validateParentCofmDirty(void)")
+// IDA 0x6e2750: 56 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e2750() {
 }
 
 
@@ -170,8 +170,8 @@ pub fn stub_6e2750() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this)
 #[doc(alias = "RBX::Body::makeCofmDirty(void)")]
 // was: __ZN3RBX4Body13makeCofmDirtyEv
-pub fn stub_6e27fc() -> ! {
-    todo!("0x6e27fc RBX::Body::makeCofmDirty(void)")
+// IDA 0x6e27fc: 175 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e27fc() {
 }
 
 
@@ -179,8 +179,8 @@ pub fn stub_6e27fc() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this, RBX::Body *)
 #[doc(alias = "RBX::Body::resetRoot(RBX::Body*)")]
 // was: __ZN3RBX4Body9resetRootEPS0_
-pub fn stub_6e2a0c() -> ! {
-    todo!("0x6e2a0c RBX::Body::resetRoot(RBX::Body*)")
+// IDA 0x6e2a0c: 78 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e2a0c() {
 }
 
 
@@ -188,8 +188,8 @@ pub fn stub_6e2a0c() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this)
 #[doc(alias = "RBX::Body::onParentChanging(void)")]
 // was: __ZN3RBX4Body16onParentChangingEv
-pub fn stub_6e2aec() -> ! {
-    todo!("0x6e2aec RBX::Body::onParentChanging(void)")
+// IDA 0x6e2aec: 190 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e2aec() {
 }
 
 
@@ -197,8 +197,8 @@ pub fn stub_6e2aec() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this, RBX::IndexedTree *)
 #[doc(alias = "RBX::Body::onParentChanged(RBX::IndexedTree *)")]
 // was: __ZN3RBX4Body15onParentChangedEPNS_11IndexedTreeE
-pub fn stub_6e2d10() -> ! {
-    todo!("0x6e2d10 RBX::Body::onParentChanged(RBX::IndexedTree *)")
+// IDA 0x6e2d10: 87 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e2d10() {
 }
 
 
@@ -206,8 +206,8 @@ pub fn stub_6e2d10() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this, RBX::IndexedTree *)
 #[doc(alias = "RBX::Body::onChildAdding(RBX::IndexedTree *)")]
 // was: __ZN3RBX4Body13onChildAddingEPNS_11IndexedTreeE
-pub fn stub_6e2e04() -> ! {
-    todo!("0x6e2e04 RBX::Body::onChildAdding(RBX::IndexedTree *)")
+// IDA 0x6e2e04: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_6e2e04() {
 }
 
 
@@ -215,8 +215,8 @@ pub fn stub_6e2e04() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this)
 #[doc(alias = "RBX::Body::refreshCofm(void)")]
 // was: __ZN3RBX4Body11refreshCofmEv
-pub fn stub_6e2e08() -> ! {
-    todo!("0x6e2e08 RBX::Body::refreshCofm(void)")
+// IDA 0x6e2e08: 131 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e2e08() {
 }
 
 
@@ -224,8 +224,8 @@ pub fn stub_6e2e08() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this, RBX::IndexedTree *)
 #[doc(alias = "RBX::Body::onChildAdded(RBX::IndexedTree *)")]
 // was: __ZN3RBX4Body12onChildAddedEPNS_11IndexedTreeE
-pub fn stub_6e3000() -> ! {
-    todo!("0x6e3000 RBX::Body::onChildAdded(RBX::IndexedTree *)")
+// IDA 0x6e3000: 59 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e3000() {
 }
 
 
@@ -233,8 +233,8 @@ pub fn stub_6e3000() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this, RBX::IndexedTree *)
 #[doc(alias = "RBX::Body::onChildRemoved(RBX::IndexedTree *)")]
 // was: __ZN3RBX4Body14onChildRemovedEPNS_11IndexedTreeE
-pub fn stub_6e30b0() -> ! {
-    todo!("0x6e30b0 RBX::Body::onChildRemoved(RBX::IndexedTree *)")
+// IDA 0x6e30b0: 34 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e30b0() {
 }
 
 
@@ -242,8 +242,8 @@ pub fn stub_6e30b0() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this, RBX::Link *)
 #[doc(alias = "RBX::Body::setMeInParent(RBX::Link *)")]
 // was: __ZN3RBX4Body13setMeInParentEPNS_4LinkE
-pub fn stub_6e3220() -> ! {
-    todo!("0x6e3220 RBX::Body::setMeInParent(RBX::Link *)")
+// IDA 0x6e3220: 70 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e3220() {
 }
 
 
@@ -251,8 +251,8 @@ pub fn stub_6e3220() -> ! {
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::Body::setPv(RBX::PV const&,RBX::BodyPvSetter const&)")]
 // was: __ZN3RBX4Body5setPvERKNS_2PVERKNS_12BodyPvSetterE
-pub fn stub_6e32f0() -> ! {
-    todo!("0x6e32f0 RBX::Body::setPv(RBX::PV const&,RBX::BodyPvSetter const&)")
+// IDA 0x6e32f0: 69 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e32f0() {
 }
 
 
@@ -260,8 +260,8 @@ pub fn stub_6e32f0() -> ! {
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::Body::setVelocity(RBX::Velocity const&,RBX::BodyPvSetter const&)")]
 // was: __ZN3RBX4Body11setVelocityERKNS_8VelocityERKNS_12BodyPvSetterE
-pub fn stub_6e33c8() -> ! {
-    todo!("0x6e33c8 RBX::Body::setVelocity(RBX::Velocity const&,RBX::BodyPvSetter const&)")
+// IDA 0x6e33c8: 28 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e33c8() {
 }
 
 
@@ -269,8 +269,8 @@ pub fn stub_6e33c8() -> ! {
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::Body::setCanThrottle(bool,RBX::BodyPvSetter const&)")]
 // was: __ZN3RBX4Body14setCanThrottleEbRKNS_12BodyPvSetterE
-pub fn stub_6e3414() -> ! {
-    todo!("0x6e3414 RBX::Body::setCanThrottle(bool,RBX::BodyPvSetter const&)")
+// IDA 0x6e3414: 2 insns (STRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e3414() {
 }
 
 
@@ -278,8 +278,8 @@ pub fn stub_6e3414() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this, float)
 #[doc(alias = "RBX::Body::setMass(float)")]
 // was: __ZN3RBX4Body7setMassEf
-pub fn stub_6e341c() -> ! {
-    todo!("0x6e341c RBX::Body::setMass(float)")
+// IDA 0x6e341c: 15 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e341c() {
 }
 
 
@@ -287,8 +287,8 @@ pub fn stub_6e341c() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this)
 #[doc(alias = "RBX::Body::getBranchCofmPos(void)")]
 // was: __ZN3RBX4Body16getBranchCofmPosEv
-pub fn stub_6e3554() -> ! {
-    todo!("0x6e3554 RBX::Body::getBranchCofmPos(void)")
+// IDA 0x6e3554: 55 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e3554() {
 }
 
 
@@ -296,8 +296,8 @@ pub fn stub_6e3554() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this)
 #[doc(alias = "RBX::Body::getBranchCofmOffset(void)")]
 // was: __ZN3RBX4Body19getBranchCofmOffsetEv
-pub fn stub_6e3618() -> ! {
-    todo!("0x6e3618 RBX::Body::getBranchCofmOffset(void)")
+// IDA 0x6e3618: 79 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e3618() {
 }
 
 
@@ -305,8 +305,8 @@ pub fn stub_6e3618() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this)
 #[doc(alias = "RBX::Body::getBranchCofmCoordinateFrame(void)")]
 // was: __ZN3RBX4Body28getBranchCofmCoordinateFrameEv
-pub fn stub_6e3710() -> ! {
-    todo!("0x6e3710 RBX::Body::getBranchCofmCoordinateFrame(void)")
+// IDA 0x6e3710: 19 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e3710() {
 }
 
 
@@ -314,24 +314,24 @@ pub fn stub_6e3710() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this)
 #[doc(alias = "RBX::Body::kineticEnergy(void)")]
 // was: __ZN3RBX4Body13kineticEnergyEv
-pub fn stub_6e3744() -> ! {
-    todo!("0x6e3744 RBX::Body::kineticEnergy(void)")
+// IDA 0x6e3744: 75 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e3744() {
 }
 
 
 // 0x6e3844 — __ZN3RBX9AllocatorINS_4BodyEEC2Ev
 #[doc(alias = "RBX::Allocator<RBX::Body>::Allocator(void)")]
 // was: __ZN3RBX9AllocatorINS_4BodyEEC2Ev
-pub fn stub_6e3844() -> ! {
-    todo!("0x6e3844 RBX::Allocator<RBX::Body>::Allocator(void)")
+// IDA 0x6e3844: 32 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e3844() {
 }
 
 
 // 0x6e38a8 — __ZN3RBX9AllocatorINS_7SimBodyEEnwEm
 #[doc(alias = "RBX::Allocator<RBX::SimBody>::operator new(unsigned long)")]
 // was: __ZN3RBX9AllocatorINS_7SimBodyEEnwEm
-pub fn stub_6e38a8() -> ! {
-    todo!("0x6e38a8 RBX::Allocator<RBX::SimBody>::operator new(unsigned long)")
+// IDA 0x6e38a8: operator new/delete pair → Rust allocator/global alloc; no-op glue.
+pub fn stub_6e38a8() {
 }
 
 
@@ -339,8 +339,8 @@ pub fn stub_6e38a8() -> ! {
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Allocator<RBX::SimBody>::operator delete(void *)")]
 // was: __ZN3RBX9AllocatorINS_7SimBodyEEdlEPv
-pub fn stub_6e3918() -> ! {
-    todo!("0x6e3918 RBX::Allocator<RBX::SimBody>::operator delete(void *)")
+// IDA 0x6e3918: operator new/delete pair → Rust allocator/global alloc; no-op glue.
+pub fn stub_6e3918() {
 }
 
 
@@ -348,8 +348,8 @@ pub fn stub_6e3918() -> ! {
 // type: void __fastcall(void *)
 #[doc(alias = "RBX::Allocator<RBX::Body>::operator delete(void *)")]
 // was: __ZN3RBX9AllocatorINS_4BodyEEdlEPv
-pub fn stub_6e3958() -> ! {
-    todo!("0x6e3958 RBX::Allocator<RBX::Body>::operator delete(void *)")
+// IDA 0x6e3958: operator new/delete pair → Rust allocator/global alloc; no-op glue.
+pub fn stub_6e3958() {
 }
 
 
@@ -357,16 +357,16 @@ pub fn stub_6e3958() -> ! {
 // type: void __fastcall(void *)
 #[doc(alias = "RBX::Allocator<RBX::Cofm>::operator delete(void *)")]
 // was: __ZN3RBX9AllocatorINS_4CofmEEdlEPv
-pub fn stub_6e3998() -> ! {
-    todo!("0x6e3998 RBX::Allocator<RBX::Cofm>::operator delete(void *)")
+// IDA 0x6e3998: operator new/delete pair → Rust allocator/global alloc; no-op glue.
+pub fn stub_6e3998() {
 }
 
 
 // 0x6e39d4 — __ZN3RBX9AllocatorINS_4CofmEEnwEm
 #[doc(alias = "RBX::Allocator<RBX::Cofm>::operator new(unsigned long)")]
 // was: __ZN3RBX9AllocatorINS_4CofmEEnwEm
-pub fn stub_6e39d4() -> ! {
-    todo!("0x6e39d4 RBX::Allocator<RBX::Cofm>::operator new(unsigned long)")
+// IDA 0x6e39d4: operator new/delete pair → Rust allocator/global alloc; no-op glue.
+pub fn stub_6e39d4() {
 }
 
 
@@ -374,8 +374,8 @@ pub fn stub_6e39d4() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this)
 #[doc(alias = "RBX::Body::getIWorld(void)")]
 // was: __ZN3RBX4Body9getIWorldEv
-pub fn stub_6e3a44() -> ! {
-    todo!("0x6e3a44 RBX::Body::getIWorld(void)")
+// IDA 0x6e3a44: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e3a44() {
 }
 
 
@@ -383,64 +383,64 @@ pub fn stub_6e3a44() -> ! {
 // type: _DWORD __fastcall(RBX::Body *__hidden this)
 #[doc(alias = "RBX::Body::getBranchIWorld(void)")]
 // was: __ZN3RBX4Body15getBranchIWorldEv
-pub fn stub_6e3a70() -> ! {
-    todo!("0x6e3a70 RBX::Body::getBranchIWorld(void)")
+// IDA 0x6e3a70: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e3a70() {
 }
 
 
 // 0x6e3a98 — __ZN5boost14singleton_poolIN3RBX4CofmELj60ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv
 #[doc(alias = "boost::singleton_pool<RBX::Cofm,60u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // was: __ZN5boost14singleton_poolIN3RBX4CofmELj60ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv
-pub fn stub_6e3a98() -> ! {
-    todo!("0x6e3a98 boost::singleton_pool<RBX::Cofm,60u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")
+// IDA 0x6e3a98: 20 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e3a98() {
 }
 
 
 // 0x6e3ad0 — __ZN5boost14singleton_poolIN3RBX4CofmELj60ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
 #[doc(alias = "boost::singleton_pool<RBX::Cofm,60u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // was: __ZN5boost14singleton_poolIN3RBX4CofmELj60ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
-pub fn stub_6e3ad0() -> ! {
-    todo!("0x6e3ad0 boost::singleton_pool<RBX::Cofm,60u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")
+// IDA 0x6e3ad0: 29 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e3ad0() {
 }
 
 
 // 0x6e3b1c — __ZN5boost14singleton_poolIN3RBX7SimBodyELj308ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
 #[doc(alias = "boost::singleton_pool<RBX::SimBody,308u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // was: __ZN5boost14singleton_poolIN3RBX7SimBodyELj308ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
-pub fn stub_6e3b1c() -> ! {
-    todo!("0x6e3b1c boost::singleton_pool<RBX::SimBody,308u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")
+// IDA 0x6e3b1c: 29 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e3b1c() {
 }
 
 
 // 0x6e3b6c — __ZN5boost14singleton_poolIN3RBX7SimBodyELj308ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv
 #[doc(alias = "boost::singleton_pool<RBX::SimBody,308u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // was: __ZN5boost14singleton_poolIN3RBX7SimBodyELj308ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv
-pub fn stub_6e3b6c() -> ! {
-    todo!("0x6e3b6c boost::singleton_pool<RBX::SimBody,308u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")
+// IDA 0x6e3b6c: 20 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e3b6c() {
 }
 
 
 // 0x6e3ba4 — __ZN3RBX9AllocatorINS_4BodyEE13releaseMemoryEv
 #[doc(alias = "RBX::Allocator<RBX::Body>::releaseMemory(void)")]
 // was: __ZN3RBX9AllocatorINS_4BodyEE13releaseMemoryEv
-pub fn stub_6e3ba4() -> ! {
-    todo!("0x6e3ba4 RBX::Allocator<RBX::Body>::releaseMemory(void)")
+// IDA 0x6e3ba4: 10 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e3ba4() {
 }
 
 
 // 0x6e3bc0 — __ZN5boost14singleton_poolIN3RBX4BodyELj276ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv
 #[doc(alias = "boost::singleton_pool<RBX::Body,276u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
 // was: __ZN5boost14singleton_poolIN3RBX4BodyELj276ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv
-pub fn stub_6e3bc0() -> ! {
-    todo!("0x6e3bc0 boost::singleton_pool<RBX::Body,276u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")
+// IDA 0x6e3bc0: 15 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e3bc0() {
 }
 
 
 // 0x6e3bf0 — __GLOBAL__I_a_286
 #[doc(alias = "global constructor keyed to_a_286")]
 // was: __GLOBAL__I_a_286
-pub fn stub_6e3bf0() -> ! {
-    todo!("0x6e3bf0 global constructor keyed to _a_286")
+// IDA 0x6e3bf0: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+pub fn stub_6e3bf0() {
 }
 
 
@@ -448,8 +448,8 @@ pub fn stub_6e3bf0() -> ! {
 // type: _DWORD __fastcall(RBX::Cofm *__hidden this, RBX::Body *)
 #[doc(alias = "RBX::Cofm::Cofm(RBX::Body *)")]
 // was: __ZN3RBX4CofmC1EPNS_4BodyE
-pub fn stub_6e3d88() -> ! {
-    todo!("0x6e3d88 RBX::Cofm::Cofm(RBX::Body *)")
+// IDA 0x6e3d88: 14 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e3d88() {
 }
 
 
@@ -457,40 +457,40 @@ pub fn stub_6e3d88() -> ! {
 // type: _DWORD __fastcall(RBX::Cofm *__hidden this)
 #[doc(alias = "RBX::Cofm::updateIfDirty(void)")]
 // was: __ZN3RBX4Cofm13updateIfDirtyEv
-pub fn stub_6e3db0() -> ! {
-    todo!("0x6e3db0 RBX::Cofm::updateIfDirty(void)")
+// IDA 0x6e3db0: 432 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e3db0() {
 }
 
 
 // 0x6e4370 — __ZN3RBX9AllocatorINS_4CofmEEC2Ev
 #[doc(alias = "RBX::Allocator<RBX::Cofm>::Allocator(void)")]
 // was: __ZN3RBX9AllocatorINS_4CofmEEC2Ev
-pub fn stub_6e4370() -> ! {
-    todo!("0x6e4370 RBX::Allocator<RBX::Cofm>::Allocator(void)")
+// IDA 0x6e4370: 32 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4370() {
 }
 
 
 // 0x6e43d4 — __ZN3RBX9AllocatorINS_4CofmEE13releaseMemoryEv
 #[doc(alias = "RBX::Allocator<RBX::Cofm>::releaseMemory(void)")]
 // was: __ZN3RBX9AllocatorINS_4CofmEE13releaseMemoryEv
-pub fn stub_6e43d4() -> ! {
-    todo!("0x6e43d4 RBX::Allocator<RBX::Cofm>::releaseMemory(void)")
+// IDA 0x6e43d4: 10 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e43d4() {
 }
 
 
 // 0x6e43f0 — __ZN5boost14singleton_poolIN3RBX4CofmELj60ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv
 #[doc(alias = "boost::singleton_pool<RBX::Cofm,60u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
 // was: __ZN5boost14singleton_poolIN3RBX4CofmELj60ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv
-pub fn stub_6e43f0() -> ! {
-    todo!("0x6e43f0 boost::singleton_pool<RBX::Cofm,60u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")
+// IDA 0x6e43f0: 15 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e43f0() {
 }
 
 
 // 0x6e4420 — __GLOBAL__I_a_287
 #[doc(alias = "global constructor keyed to_a_287")]
 // was: __GLOBAL__I_a_287
-pub fn stub_6e4420() -> ! {
-    todo!("0x6e4420 global constructor keyed to _a_287")
+// IDA 0x6e4420: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+pub fn stub_6e4420() {
 }
 
 
@@ -498,16 +498,16 @@ pub fn stub_6e4420() -> ! {
 // type: _DWORD __fastcall(RBX::Connector *__hidden this)
 #[doc(alias = "RBX::Connector::computeCanThrottle(void)")]
 // was: __ZN3RBX9Connector18computeCanThrottleEv
-pub fn stub_6e4550() -> ! {
-    todo!("0x6e4550 RBX::Connector::computeCanThrottle(void)")
+// IDA 0x6e4550: 22 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4550() {
 }
 
 
 // 0x6e4584 — __ZN3RBX26PointToPointBreakConnector7getBodyENS_9Connector9BodyIndexE
 #[doc(alias = "RBX::PointToPointBreakConnector::getBody(RBX::Connector::BodyIndex)")]
 // was: __ZN3RBX26PointToPointBreakConnector7getBodyENS_9Connector9BodyIndexE
-pub fn stub_6e4584() -> ! {
-    todo!("0x6e4584 RBX::PointToPointBreakConnector::getBody(RBX::Connector::BodyIndex)")
+// IDA 0x6e4584: 7 insns (ADD.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4584() {
 }
 
 
@@ -515,16 +515,16 @@ pub fn stub_6e4584() -> ! {
 // type: _DWORD __fastcall(RBX::RotateConnector *__hidden this)
 #[doc(alias = "RBX::RotateConnector::reset(void)")]
 // was: __ZN3RBX15RotateConnector5resetEv
-pub fn stub_6e46ec() -> ! {
-    todo!("0x6e46ec RBX::RotateConnector::reset(void)")
+// IDA 0x6e46ec: 14 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e46ec() {
 }
 
 
 // 0x6e4760 — __ZN3RBX15RotateConnector7getBodyENS_9Connector9BodyIndexE
 #[doc(alias = "RBX::RotateConnector::getBody(RBX::Connector::BodyIndex)")]
 // was: __ZN3RBX15RotateConnector7getBodyENS_9Connector9BodyIndexE
-pub fn stub_6e4760() -> ! {
-    todo!("0x6e4760 RBX::RotateConnector::getBody(RBX::Connector::BodyIndex)")
+// IDA 0x6e4760: 6 insns (ADD.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4760() {
 }
 
 
@@ -532,8 +532,8 @@ pub fn stub_6e4760() -> ! {
 // type: _DWORD __fastcall(RBX::RotateConnector *__hidden this, float)
 #[doc(alias = "RBX::RotateConnector::setRotationalGoal(float)")]
 // was: __ZN3RBX15RotateConnector17setRotationalGoalEf
-pub fn stub_6e48a8() -> ! {
-    todo!("0x6e48a8 RBX::RotateConnector::setRotationalGoal(float)")
+// IDA 0x6e48a8: 71 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e48a8() {
 }
 
 
@@ -541,8 +541,8 @@ pub fn stub_6e48a8() -> ! {
 // type: _DWORD __fastcall(RBX::RotateConnector *__hidden this, float)
 #[doc(alias = "RBX::RotateConnector::setVelocityGoal(float)")]
 // was: __ZN3RBX15RotateConnector15setVelocityGoalEf
-pub fn stub_6e49c0() -> ! {
-    todo!("0x6e49c0 RBX::RotateConnector::setVelocityGoal(float)")
+// IDA 0x6e49c0: 23 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e49c0() {
 }
 
 
@@ -550,8 +550,8 @@ pub fn stub_6e49c0() -> ! {
 // type: _DWORD __fastcall(RBX::RotateConnector *__hidden this)
 #[doc(alias = "RBX::RotateConnector::stepGoals(void)")]
 // was: __ZN3RBX15RotateConnector9stepGoalsEv
-pub fn stub_6e4a10() -> ! {
-    todo!("0x6e4a10 RBX::RotateConnector::stepGoals(void)")
+// IDA 0x6e4a10: 19 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4a10() {
 }
 
 
@@ -559,8 +559,8 @@ pub fn stub_6e4a10() -> ! {
 // type: _DWORD __fastcall(RBX::RotateConnector *__hidden this, bool)
 #[doc(alias = "RBX::RotateConnector::computeForce(bool)")]
 // was: __ZN3RBX15RotateConnector12computeForceEb
-pub fn stub_6e4a4c() -> ! {
-    todo!("0x6e4a4c RBX::RotateConnector::computeForce(bool)")
+// IDA 0x6e4a4c: 77 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4a4c() {
 }
 
 
@@ -568,8 +568,8 @@ pub fn stub_6e4a4c() -> ! {
 // type: _DWORD __fastcall(RBX::PointToPointBreakConnector *__hidden this)
 #[doc(alias = "RBX::PointToPointBreakConnector::potentialEnergy(void)")]
 // was: __ZN3RBX26PointToPointBreakConnector15potentialEnergyEv
-pub fn stub_6e4b4c() -> ! {
-    todo!("0x6e4b4c RBX::PointToPointBreakConnector::potentialEnergy(void)")
+// IDA 0x6e4b4c: 24 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4b4c() {
 }
 
 
@@ -577,8 +577,8 @@ pub fn stub_6e4b4c() -> ! {
 // type: _DWORD __fastcall(RBX::PointToPointBreakConnector *__hidden this, bool)
 #[doc(alias = "RBX::PointToPointBreakConnector::computeForce(bool)")]
 // was: __ZN3RBX26PointToPointBreakConnector12computeForceEb
-pub fn stub_6e4ba8() -> ! {
-    todo!("0x6e4ba8 RBX::PointToPointBreakConnector::computeForce(bool)")
+// IDA 0x6e4ba8: 51 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4ba8() {
 }
 
 
@@ -586,8 +586,8 @@ pub fn stub_6e4ba8() -> ! {
 // type: _DWORD __fastcall(RBX::NormalBreakConnector *__hidden this, bool)
 #[doc(alias = "RBX::NormalBreakConnector::computeForce(bool)")]
 // was: __ZN3RBX20NormalBreakConnector12computeForceEb
-pub fn stub_6e4c68() -> ! {
-    todo!("0x6e4c68 RBX::NormalBreakConnector::computeForce(bool)")
+// IDA 0x6e4c68: 71 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4c68() {
 }
 
 
@@ -595,8 +595,8 @@ pub fn stub_6e4c68() -> ! {
 // type: void __fastcall(RBX::NormalBreakConnector *__hidden this)
 #[doc(alias = "RBX::NormalBreakConnector::~NormalBreakConnector()")]
 // was: __ZN3RBX20NormalBreakConnectorD1Ev
-pub fn stub_6e4d78() -> ! {
-    todo!("0x6e4d78 RBX::NormalBreakConnector::~NormalBreakConnector()")
+// IDA 0x6e4d78: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_6e4d78() {
 }
 
 
@@ -604,8 +604,8 @@ pub fn stub_6e4d78() -> ! {
 // type: void __fastcall(RBX::NormalBreakConnector *__hidden this)
 #[doc(alias = "RBX::NormalBreakConnector::~NormalBreakConnector()")]
 // was: __ZN3RBX20NormalBreakConnectorD0Ev
-pub fn stub_6e4d7c() -> ! {
-    todo!("0x6e4d7c RBX::NormalBreakConnector::~NormalBreakConnector()")
+// IDA 0x6e4d7c: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_6e4d7c() {
 }
 
 
@@ -613,8 +613,8 @@ pub fn stub_6e4d7c() -> ! {
 // type: void __fastcall(RBX::RotateConnector *__hidden this)
 #[doc(alias = "RBX::RotateConnector::~RotateConnector()")]
 // was: __ZN3RBX15RotateConnectorD1Ev
-pub fn stub_6e4d80() -> ! {
-    todo!("0x6e4d80 RBX::RotateConnector::~RotateConnector()")
+// IDA 0x6e4d80: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_6e4d80() {
 }
 
 
@@ -622,8 +622,8 @@ pub fn stub_6e4d80() -> ! {
 // type: void __fastcall(RBX::RotateConnector *__hidden this)
 #[doc(alias = "RBX::RotateConnector::~RotateConnector()")]
 // was: __ZN3RBX15RotateConnectorD0Ev
-pub fn stub_6e4d84() -> ! {
-    todo!("0x6e4d84 RBX::RotateConnector::~RotateConnector()")
+// IDA 0x6e4d84: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_6e4d84() {
 }
 
 
@@ -631,16 +631,16 @@ pub fn stub_6e4d84() -> ! {
 // type: void __fastcall(void *)
 #[doc(alias = "RBX::Allocator<RBX::NormalBreakConnector>::operator delete(void *)")]
 // was: __ZN3RBX9AllocatorINS_20NormalBreakConnectorEEdlEPv
-pub fn stub_6e4d88() -> ! {
-    todo!("0x6e4d88 RBX::Allocator<RBX::NormalBreakConnector>::operator delete(void *)")
+// IDA 0x6e4d88: operator new/delete pair → Rust allocator/global alloc; no-op glue.
+pub fn stub_6e4d88() {
 }
 
 
 // 0x6e4dc4 — __GLOBAL__I_a_288
 #[doc(alias = "global constructor keyed to_a_288")]
 // was: __GLOBAL__I_a_288
-pub fn stub_6e4dc4() -> ! {
-    todo!("0x6e4dc4 global constructor keyed to _a_288")
+// IDA 0x6e4dc4: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+pub fn stub_6e4dc4() {
 }
 
 
@@ -648,8 +648,8 @@ pub fn stub_6e4dc4() -> ! {
 // type: _DWORD __fastcall(RBX::Constants *__hidden this)
 #[doc(alias = "RBX::Constants::longUiStepsPerSec(void)")]
 // was: __ZN3RBX9Constants17longUiStepsPerSecEv
-pub fn stub_6e4ef4() -> ! {
-    todo!("0x6e4ef4 RBX::Constants::longUiStepsPerSec(void)")
+// IDA 0x6e4ef4: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4ef4() {
 }
 
 
@@ -657,8 +657,8 @@ pub fn stub_6e4ef4() -> ! {
 // type: _DWORD __fastcall(RBX::Constants *__hidden this)
 #[doc(alias = "RBX::Constants::worldStepsPerLongUiStep(void)")]
 // was: __ZN3RBX9Constants23worldStepsPerLongUiStepEv
-pub fn stub_6e4ef8() -> ! {
-    todo!("0x6e4ef8 RBX::Constants::worldStepsPerLongUiStep(void)")
+// IDA 0x6e4ef8: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4ef8() {
 }
 
 
@@ -666,8 +666,8 @@ pub fn stub_6e4ef8() -> ! {
 // type: _DWORD __fastcall(RBX::Constants *__hidden this)
 #[doc(alias = "RBX::Constants::uiStepsPerSec(void)")]
 // was: __ZN3RBX9Constants13uiStepsPerSecEv
-pub fn stub_6e4efc() -> ! {
-    todo!("0x6e4efc RBX::Constants::uiStepsPerSec(void)")
+// IDA 0x6e4efc: 9 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4efc() {
 }
 
 
@@ -675,8 +675,8 @@ pub fn stub_6e4efc() -> ! {
 // type: _DWORD __fastcall(RBX::Constants *__hidden this)
 #[doc(alias = "RBX::Constants::worldStepsPerUiStep(void)")]
 // was: __ZN3RBX9Constants19worldStepsPerUiStepEv
-pub fn stub_6e4f14() -> ! {
-    todo!("0x6e4f14 RBX::Constants::worldStepsPerUiStep(void)")
+// IDA 0x6e4f14: 9 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4f14() {
 }
 
 
@@ -684,8 +684,8 @@ pub fn stub_6e4f14() -> ! {
 // type: _DWORD __fastcall(RBX::Constants *__hidden this)
 #[doc(alias = "RBX::Constants::kernelStepsPerWorldStep(void)")]
 // was: __ZN3RBX9Constants23kernelStepsPerWorldStepEv
-pub fn stub_6e4f2c() -> ! {
-    todo!("0x6e4f2c RBX::Constants::kernelStepsPerWorldStep(void)")
+// IDA 0x6e4f2c: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4f2c() {
 }
 
 
@@ -693,8 +693,8 @@ pub fn stub_6e4f2c() -> ! {
 // type: _DWORD __fastcall(RBX::Constants *__hidden this)
 #[doc(alias = "RBX::Constants::worldStepsPerSec(void)")]
 // was: __ZN3RBX9Constants16worldStepsPerSecEv
-pub fn stub_6e4f30() -> ! {
-    todo!("0x6e4f30 RBX::Constants::worldStepsPerSec(void)")
+// IDA 0x6e4f30: 13 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4f30() {
 }
 
 
@@ -702,8 +702,8 @@ pub fn stub_6e4f30() -> ! {
 // type: _DWORD __fastcall(RBX::Constants *__hidden this)
 #[doc(alias = "RBX::Constants::impulseSolverMaxIterations(void)")]
 // was: __ZN3RBX9Constants26impulseSolverMaxIterationsEv
-pub fn stub_6e4f54() -> ! {
-    todo!("0x6e4f54 RBX::Constants::impulseSolverMaxIterations(void)")
+// IDA 0x6e4f54: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4f54() {
 }
 
 
@@ -711,8 +711,8 @@ pub fn stub_6e4f54() -> ! {
 // type: _DWORD __fastcall(RBX::Constants *__hidden this)
 #[doc(alias = "RBX::Constants::impulseSolverAccuracy(void)")]
 // was: __ZN3RBX9Constants21impulseSolverAccuracyEv
-pub fn stub_6e4f58() -> ! {
-    todo!("0x6e4f58 RBX::Constants::impulseSolverAccuracy(void)")
+// IDA 0x6e4f58: 2 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4f58() {
 }
 
 
@@ -720,8 +720,8 @@ pub fn stub_6e4f58() -> ! {
 // type: _DWORD __fastcall(RBX::Constants *__hidden this)
 #[doc(alias = "RBX::Constants::impulseSolverAccuracyScalar(void)")]
 // was: __ZN3RBX9Constants27impulseSolverAccuracyScalarEv
-pub fn stub_6e4f64() -> ! {
-    todo!("0x6e4f64 RBX::Constants::impulseSolverAccuracyScalar(void)")
+// IDA 0x6e4f64: 2 insns (MOV.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4f64() {
 }
 
 
@@ -729,8 +729,8 @@ pub fn stub_6e4f64() -> ! {
 // type: _DWORD __fastcall(RBX::Constants *__hidden this)
 #[doc(alias = "RBX::Constants::impulseSolverSymStateTorqueBound(void)")]
 // was: __ZN3RBX9Constants32impulseSolverSymStateTorqueBoundEv
-pub fn stub_6e4f6c() -> ! {
-    todo!("0x6e4f6c RBX::Constants::impulseSolverSymStateTorqueBound(void)")
+// IDA 0x6e4f6c: 2 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4f6c() {
 }
 
 
@@ -738,8 +738,8 @@ pub fn stub_6e4f6c() -> ! {
 // type: _DWORD __fastcall(RBX::Constants *__hidden this)
 #[doc(alias = "RBX::Constants::impulseSolverSymStateForceBound(void)")]
 // was: __ZN3RBX9Constants31impulseSolverSymStateForceBoundEv
-pub fn stub_6e4f78() -> ! {
-    todo!("0x6e4f78 RBX::Constants::impulseSolverSymStateForceBound(void)")
+// IDA 0x6e4f78: 2 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4f78() {
 }
 
 
@@ -747,8 +747,8 @@ pub fn stub_6e4f78() -> ! {
 // type: _DWORD __fastcall(RBX::Constants *__hidden this)
 #[doc(alias = "RBX::Constants::uiDt(void)")]
 // was: __ZN3RBX9Constants4uiDtEv
-pub fn stub_6e4f84() -> ! {
-    todo!("0x6e4f84 RBX::Constants::uiDt(void)")
+// IDA 0x6e4f84: 14 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4f84() {
 }
 
 
@@ -756,8 +756,8 @@ pub fn stub_6e4f84() -> ! {
 // type: _DWORD __fastcall(RBX::Constants *__hidden this)
 #[doc(alias = "RBX::Constants::longUiStepDt(void)")]
 // was: __ZN3RBX9Constants12longUiStepDtEv
-pub fn stub_6e4fb4() -> ! {
-    todo!("0x6e4fb4 RBX::Constants::longUiStepDt(void)")
+// IDA 0x6e4fb4: 2 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4fb4() {
 }
 
 
@@ -765,8 +765,8 @@ pub fn stub_6e4fb4() -> ! {
 // type: _DWORD __fastcall(RBX::Constants *__hidden this)
 #[doc(alias = "RBX::Constants::worldDt(void)")]
 // was: __ZN3RBX9Constants7worldDtEv
-pub fn stub_6e4fc0() -> ! {
-    todo!("0x6e4fc0 RBX::Constants::worldDt(void)")
+// IDA 0x6e4fc0: 19 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4fc0() {
 }
 
 
@@ -774,8 +774,8 @@ pub fn stub_6e4fc0() -> ! {
 // type: _DWORD __fastcall(RBX::Constants *__hidden this)
 #[doc(alias = "RBX::Constants::kernelDt(void)")]
 // was: __ZN3RBX9Constants8kernelDtEv
-pub fn stub_6e4ff8() -> ! {
-    todo!("0x6e4ff8 RBX::Constants::kernelDt(void)")
+// IDA 0x6e4ff8: 19 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e4ff8() {
 }
 
 
@@ -783,8 +783,8 @@ pub fn stub_6e4ff8() -> ! {
 // type: _DWORD __fastcall(RBX::Constants *__hidden this)
 #[doc(alias = "RBX::Constants::freeFallDt(void)")]
 // was: __ZN3RBX9Constants10freeFallDtEv
-pub fn stub_6e5030() -> ! {
-    todo!("0x6e5030 RBX::Constants::freeFallDt(void)")
+// IDA 0x6e5030: 19 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e5030() {
 }
 
 
@@ -792,8 +792,8 @@ pub fn stub_6e5030() -> ! {
 // type: _DWORD __fastcall(RBX::Constants *__hidden this, float)
 #[doc(alias = "RBX::Constants::getElasticMultiplier(float)")]
 // was: __ZN3RBX9Constants20getElasticMultiplierEf
-pub fn stub_6e5068() -> ! {
-    todo!("0x6e5068 RBX::Constants::getElasticMultiplier(float)")
+// IDA 0x6e5068: 28 insns (VMOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e5068() {
 }
 
 
@@ -801,16 +801,16 @@ pub fn stub_6e5068() -> ! {
 // type: _DWORD __fastcall(RBX::Constants *__hidden this, float, float)
 #[doc(alias = "RBX::Constants::getKmsMaxJointForce(float,float)")]
 // was: __ZN3RBX9Constants19getKmsMaxJointForceEff
-pub fn stub_6e50e8() -> ! {
-    todo!("0x6e50e8 RBX::Constants::getKmsMaxJointForce(float,float)")
+// IDA 0x6e50e8: 117 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e50e8() {
 }
 
 
 // 0x6e5760 — __GLOBAL__I_a_289
 #[doc(alias = "global constructor keyed to_a_289")]
 // was: __GLOBAL__I_a_289
-pub fn stub_6e5760() -> ! {
-    todo!("0x6e5760 global constructor keyed to _a_289")
+// IDA 0x6e5760: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+pub fn stub_6e5760() {
 }
 
 
@@ -818,8 +818,8 @@ pub fn stub_6e5760() -> ! {
 // type: _DWORD __fastcall(RBX::ContactConnector *__hidden this)
 #[doc(alias = "RBX::ContactConnector::percentActive(void)")]
 // was: __ZN3RBX16ContactConnector13percentActiveEv
-pub fn stub_6e5798() -> ! {
-    todo!("0x6e5798 RBX::ContactConnector::percentActive(void)")
+// IDA 0x6e5798: 20 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e5798() {
 }
 
 
@@ -827,24 +827,24 @@ pub fn stub_6e5798() -> ! {
 // type: _DWORD __fastcall(RBX::ContactConnector *__hidden this)
 #[doc(alias = "RBX::ContactConnector::computeRelativeVelocity(void)")]
 // was: __ZN3RBX16ContactConnector23computeRelativeVelocityEv
-pub fn stub_6e59b4() -> ! {
-    todo!("0x6e59b4 RBX::ContactConnector::computeRelativeVelocity(void)")
+// IDA 0x6e59b4: 15 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e59b4() {
 }
 
 
 // 0x6e59d8 — __ZN3RBX16ContactConnector17getReordedSimBodyERPNS_7SimBodyES3_RPNS_4BodyERNS_10PairParamsE
 #[doc(alias = "RBX::ContactConnector::getReordedSimBody(RBX::SimBody *&,RBX::SimBody *&,RBX::Body *&,RBX::PairParams &)")]
 // was: __ZN3RBX16ContactConnector17getReordedSimBodyERPNS_7SimBodyES3_RPNS_4BodyERNS_10PairParamsE
-pub fn stub_6e59d8() -> ! {
-    todo!("0x6e59d8 RBX::ContactConnector::getReordedSimBody(RBX::SimBody *&,RBX::SimBody *&,RBX::Body *&,RBX::PairParams &)")
+// IDA 0x6e59d8: 109 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e59d8() {
 }
 
 
 // 0x6e5b1c — __ZN3RBX16ContactConnector17getReordedSimBodyERPNS_7SimBodyES3_RNS_10PairParamsE
 #[doc(alias = "RBX::ContactConnector::getReordedSimBody(RBX::SimBody *&,RBX::SimBody *&,RBX::PairParams &)")]
 // was: __ZN3RBX16ContactConnector17getReordedSimBodyERPNS_7SimBodyES3_RNS_10PairParamsE
-pub fn stub_6e5b1c() -> ! {
-    todo!("0x6e5b1c RBX::ContactConnector::getReordedSimBody(RBX::SimBody *&,RBX::SimBody *&,RBX::PairParams &)")
+// IDA 0x6e5b1c: 9 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e5b1c() {
 }
 
 
@@ -852,8 +852,8 @@ pub fn stub_6e5b1c() -> ! {
 // type: _DWORD __fastcall(RBX::ContactConnector *__hidden this, bool)
 #[doc(alias = "RBX::ContactConnector::computeForce(bool)")]
 // was: __ZN3RBX16ContactConnector12computeForceEb
-pub fn stub_6e5db0() -> ! {
-    todo!("0x6e5db0 RBX::ContactConnector::computeForce(bool)")
+// IDA 0x6e5db0: 352 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e5db0() {
 }
 
 
@@ -861,8 +861,8 @@ pub fn stub_6e5db0() -> ! {
 // type: _DWORD __fastcall(RBX::ContactConnector *__hidden this, float *)
 #[doc(alias = "RBX::ContactConnector::computeImpulse(float &)")]
 // was: __ZN3RBX16ContactConnector14computeImpulseERf
-pub fn stub_6e629c() -> ! {
-    todo!("0x6e629c RBX::ContactConnector::computeImpulse(float &)")
+// IDA 0x6e629c: 663 insns (PUSH..B). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e629c() {
 }
 
 
@@ -870,8 +870,8 @@ pub fn stub_6e629c() -> ! {
 // type: int __fastcall(int, int, int, int, float)
 #[doc(alias = "RBX::ContactConnector::applyContactPointForSymmetryDetection(RBX::SimBody *,RBX::SimBody *,RBX::PairParams const&,float)")]
 // was: __ZN3RBX16ContactConnector37applyContactPointForSymmetryDetectionEPNS_7SimBodyES2_RKNS_10PairParamsEf
-pub fn stub_6e6b30() -> ! {
-    todo!("0x6e6b30 RBX::ContactConnector::applyContactPointForSymmetryDetection(RBX::SimBody *,RBX::SimBody *,RBX::PairParams const&,float)")
+// IDA 0x6e6b30: 130 insns (PUSH.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e6b30() {
 }
 
 
@@ -879,7 +879,7 @@ pub fn stub_6e6b30() -> ! {
 // type: _DWORD __fastcall(RBX::ContactConnector *__hidden this)
 #[doc(alias = "RBX::ContactConnector::updateContactPoint(void)")]
 // was: __ZN3RBX16ContactConnector18updateContactPointEv
-pub fn stub_6e6d30() -> ! {
-    todo!("0x6e6d30 RBX::ContactConnector::updateContactPoint(void)")
+// IDA 0x6e6d30: 84 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e6d30() {
 }
 

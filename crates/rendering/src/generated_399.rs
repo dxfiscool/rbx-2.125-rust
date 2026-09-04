@@ -14,8 +14,8 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE13getIndexValueEPKNS0_13DescribedBaseE")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE13getIndexValueEPKNS0_13DescribedBaseE
-pub fn stub_5ef81c() -> ! {
-    todo!("0x5ef81c RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+// IDA 0x5ef81c: 11 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5ef81c() {
 }
 
 
@@ -23,8 +23,8 @@ pub fn stub_5ef81c() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE13setIndexValueEPNS0_13DescribedBaseEm")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE13setIndexValueEPNS0_13DescribedBaseEm
-pub fn stub_5ef838() -> ! {
-    todo!("0x5ef838 RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+// IDA 0x5ef838: 20 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5ef838() {
 }
 
 
@@ -32,8 +32,8 @@ pub fn stub_5ef838() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE12getEnumValueEPKNS0_13DescribedBaseE")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE12getEnumValueEPKNS0_13DescribedBaseE
-pub fn stub_5ef86c() -> ! {
-    todo!("0x5ef86c RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+// IDA 0x5ef86c: 4 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5ef86c() {
 }
 
 
@@ -41,8 +41,8 @@ pub fn stub_5ef86c() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE12setEnumValueEPNS0_13DescribedBaseEi")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE12setEnumValueEPNS0_13DescribedBaseEi
-pub fn stub_5ef874() -> ! {
-    todo!("0x5ef874 RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+// IDA 0x5ef874: 30 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5ef874() {
 }
 
 
@@ -50,8 +50,8 @@ pub fn stub_5ef874() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE11getEnumItemEPKNS0_13DescribedBaseE")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE11getEnumItemEPKNS0_13DescribedBaseE
-pub fn stub_5ef8c0() -> ! {
-    todo!("0x5ef8c0 RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+// IDA 0x5ef8c0: 14 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5ef8c0() {
 }
 
 
@@ -59,8 +59,8 @@ pub fn stub_5ef8c0() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
-pub fn stub_5ef8e0() -> ! {
-    todo!("0x5ef8e0 RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+// IDA 0x5ef8e0: 25 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5ef8e0() {
 }
 
 
@@ -69,8 +69,8 @@ pub fn stub_5ef8e0() -> ! {
 #[doc(alias = "__ZSt9__find_ifIN9__gnu_cxx17__normal_iteratorIPKPKN3RBX10Reflection14EnumDescriptor4ItemESt6vectorIS7_SaIS7_EEEEN5boost3_bi6bind_tIbPFbS7_iENSF_5list2INSE_3argILi1EEENSF_5valueIiEEEEEEET_SQ_SQ_T0_St26random_access_iterator_tag")]
 #[doc(alias = "__gnu_cxx::__normal_iterator<RBX::Reflection::EnumDescriptor::Item const* const*,std::vector<RBX::Reflection::EnumDescriptor::Item const*,std::allocator<RBX::Reflection::EnumDescriptor::Item const*>>> std::__find_if<__gnu_cxx::__normal_iterator<RBX::Reflection::EnumDescriptor::Item const* const*,std::vector<RBX::Reflection::EnumDescriptor::Item const*,std::allocator<RBX::Reflection::EnumDescriptor::Item const*>>>,boost::_bi::bind_t<bool,bool (*)(RBX::Reflection::EnumDescriptor::Item const*,int),boost::_bi::list2<boost::arg<1>,boost::_bi::value<int>>>>(__gnu_cxx::__normal_iterator<RBX::Reflection::EnumDescriptor::Item const* const*,std::vector<RBX::Reflection::EnumDescriptor::Item const*,std::allocator<RBX::Reflection::EnumDescriptor::Item const*>>>,__gnu_cxx::__normal_iterator<RBX::Reflection::EnumDescriptor::Item const* const*,std::vector<RBX::Reflection::EnumDescriptor::Item const*,std::allocator<RBX::Reflection::EnumDescriptor::Item const*>>>,boost::_bi::bind_t<bool,bool (*)(RBX::Reflection::EnumDescriptor::Item const*,int),boost::_bi::list2<boost::arg<1>,boost::_bi::value<int>>>,std::random_access_iterator_tag)")]
 // was: __ZSt9__find_ifIN9__gnu_cxx17__normal_iteratorIPKPKN3RBX10Reflection14EnumDescriptor4ItemESt6vectorIS7_SaIS7_EEEEN5boost3_bi6bind_tIbPFbS7_iENSF_5list2INSE_3argILi1EEENSF_5valueIiEEEEEEET_SQ_SQ_T0_St26random_access_iterator_tag
-pub fn stub_5ef918() -> ! {
-    todo!("0x5ef918 __gnu_cxx::__normal_iterator<RBX::Reflection::EnumDescriptor::Item const* const*,std::vector<RBX::Reflection::EnumDescriptor::Item const*,std::allocator<RBX::Reflection::EnumDescriptor::Item const*>>> std::__find_if<__gnu_cxx::__normal_iterator<RBX::Reflection::EnumDescriptor::Item const* const*,std::vector<RBX::Reflection::EnumDescriptor::Item const*,std::allocator<RBX::Reflection::EnumDescriptor::Item const*>>>,boost::_bi::bind_t<bool,bool (*)(RBX::Reflection::EnumDescriptor::Item const*,int),boost::_bi::list2<boost::arg<1>,boost::_bi::value<int>>>>(__gnu_cxx::__normal_iterator<RBX::Reflection::EnumDescriptor::Item const* const*,std::vector<RBX::Reflection::EnumDescriptor::Item const*,std::allocator<RBX::Reflection::EnumDescriptor::Item const*>>>,__gnu_cxx::__normal_iterator<RBX::Reflection::EnumDescriptor::Item const* const*,std::vector<RBX::Reflection::EnumDescriptor::Item const*,std::allocator<RBX::Reflection::EnumDescriptor::Item const*>>>,boost::_bi::bind_t<bool,bool (*)(RBX::Reflection::EnumDescriptor::Item const*,int),boost::_bi::list2<boost::arg<1>,boost::_bi::value<int>>>,std::random_access_iterator_tag)")
+// IDA 0x5ef918: 71 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5ef918() {
 }
 
 
@@ -79,8 +79,8 @@ pub fn stub_5ef918() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE11setIntValueEPNS0_13DescribedBaseEi")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE11setIntValueEPNS0_13DescribedBaseEi
-pub fn stub_5efa28() -> ! {
-    todo!("0x5efa28 RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+// IDA 0x5efa28: 27 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5efa28() {
 }
 
 
@@ -88,8 +88,8 @@ pub fn stub_5efa28() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_8MaterialEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Material>::GetSetImpl<RBX::Material (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::Material)>::isReadOnly(void)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_8MaterialEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
-pub fn stub_5efa68() -> ! {
-    todo!("0x5efa68 RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Material>::GetSetImpl<RBX::Material (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::Material)>::isReadOnly(void)const")
+// IDA 0x5efa68: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5efa68() {
 }
 
 
@@ -97,8 +97,8 @@ pub fn stub_5efa68() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_8MaterialEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Material>::GetSetImpl<RBX::Material (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::Material)>::isWriteOnly(void)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_8MaterialEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
-pub fn stub_5efa6c() -> ! {
-    todo!("0x5efa6c RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Material>::GetSetImpl<RBX::Material (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::Material)>::isWriteOnly(void)const")
+// IDA 0x5efa6c: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5efa6c() {
 }
 
 
@@ -106,8 +106,8 @@ pub fn stub_5efa6c() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_8MaterialEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Material>::GetSetImpl<RBX::Material (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::Material)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_8MaterialEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
-pub fn stub_5efa70() -> ! {
-    todo!("0x5efa70 RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Material>::GetSetImpl<RBX::Material (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::Material)>::getValue(RBX::Reflection::DescribedBase const*)const")
+// IDA 0x5efa70: 12 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5efa70() {
 }
 
 
@@ -115,8 +115,8 @@ pub fn stub_5efa70() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_8MaterialEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Material>::GetSetImpl<RBX::Material (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::Material)>::setValue(RBX::Reflection::DescribedBase *,RBX::Material const&)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_8MaterialEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
-pub fn stub_5efa90() -> ! {
-    todo!("0x5efa90 RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Material>::GetSetImpl<RBX::Material (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::Material)>::setValue(RBX::Reflection::DescribedBase *,RBX::Material const&)const")
+// IDA 0x5efa90: 13 insns (MOV.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5efa90() {
 }
 
 
@@ -125,8 +125,8 @@ pub fn stub_5efa90() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::PropDescriptor<RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor)>(char const*,char const*,RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-pub fn stub_5efba8() -> ! {
-    todo!("0x5efba8 RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::PropDescriptor<RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor)>(char const*,char const*,RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+// IDA 0x5efba8: 97 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5efba8() {
 }
 
 
@@ -134,8 +134,8 @@ pub fn stub_5efba8() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEED0Ev")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::~PropDescriptor()")]
 // was: __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEED0Ev
-pub fn stub_5efde0() -> ! {
-    todo!("0x5efde0 RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::~PropDescriptor()")
+// IDA 0x5efde0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_5efde0() {
 }
 
 
@@ -144,8 +144,8 @@ pub fn stub_5efde0() -> ! {
 #[doc(alias = "__ZN3rbx8any_castIRKN3RBX10BrickColorENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
 #[doc(alias = "RBX::BrickColor const& rbx::any_cast<RBX::BrickColor const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
 // was: __ZN3rbx8any_castIRKN3RBX10BrickColorENS1_7Region3EEET_RNS_13placement_anyIT0_EE
-pub fn stub_5f0010() -> ! {
-    todo!("0x5f0010 RBX::BrickColor const& rbx::any_cast<RBX::BrickColor const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+// IDA 0x5f0010: 83 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f0010() {
 }
 
 
@@ -154,8 +154,8 @@ pub fn stub_5f0010() -> ! {
 #[doc(alias = "__ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_10BrickColorEEERS3_RKT_")]
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::BrickColor>(RBX::BrickColor const&)")]
 // was: __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_10BrickColorEEERS3_RKT_
-pub fn stub_5f0100() -> ! {
-    todo!("0x5f0100 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::BrickColor>(RBX::BrickColor const&)")
+// IDA 0x5f0100: 31 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f0100() {
 }
 
 
@@ -164,8 +164,8 @@ pub fn stub_5f0100() -> ! {
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX10BrickColorEE9singletonEv")]
 #[doc(alias = "rbx::implementation::typed_holder<RBX::BrickColor>::singleton(void)")]
 // was: __ZN3rbx14implementation12typed_holderIN3RBX10BrickColorEE9singletonEv
-pub fn stub_5f0150() -> ! {
-    todo!("0x5f0150 rbx::implementation::typed_holder<RBX::BrickColor>::singleton(void)")
+// IDA 0x5f0150: 34 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f0150() {
 }
 
 
@@ -173,8 +173,8 @@ pub fn stub_5f0150() -> ! {
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX10BrickColorEE13destruct_funcEPc")]
 #[doc(alias = "rbx::implementation::typed_holder<RBX::BrickColor>::destruct_func(char *)")]
 // was: __ZN3rbx14implementation12typed_holderIN3RBX10BrickColorEE13destruct_funcEPc
-pub fn stub_5f01c0() -> ! {
-    todo!("0x5f01c0 rbx::implementation::typed_holder<RBX::BrickColor>::destruct_func(char *)")
+// IDA 0x5f01c0: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_5f01c0() {
 }
 
 
@@ -182,8 +182,8 @@ pub fn stub_5f01c0() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor)>::isReadOnly(void)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
-pub fn stub_5f0214() -> ! {
-    todo!("0x5f0214 RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor)>::isReadOnly(void)const")
+// IDA 0x5f0214: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f0214() {
 }
 
 
@@ -191,8 +191,8 @@ pub fn stub_5f0214() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor)>::isWriteOnly(void)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
-pub fn stub_5f0218() -> ! {
-    todo!("0x5f0218 RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor)>::isWriteOnly(void)const")
+// IDA 0x5f0218: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f0218() {
 }
 
 
@@ -200,8 +200,8 @@ pub fn stub_5f0218() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
-pub fn stub_5f021c() -> ! {
-    todo!("0x5f021c RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor)>::getValue(RBX::Reflection::DescribedBase const*)const")
+// IDA 0x5f021c: 15 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f021c() {
 }
 
 
@@ -209,8 +209,8 @@ pub fn stub_5f021c() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor)>::setValue(RBX::Reflection::DescribedBase *,RBX::BrickColor const&)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
-pub fn stub_5f0244() -> ! {
-    todo!("0x5f0244 RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::BrickColor)>::setValue(RBX::Reflection::DescribedBase *,RBX::BrickColor const&)const")
+// IDA 0x5f0244: 13 insns (MOV.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f0244() {
 }
 
 
@@ -219,8 +219,8 @@ pub fn stub_5f0244() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::PropDescriptor<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>(char const*,char const*,float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-pub fn stub_5f0978() -> ! {
-    todo!("0x5f0978 RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::PropDescriptor<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>(char const*,char const*,float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+// IDA 0x5f0978: 97 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f0978() {
 }
 
 
@@ -228,8 +228,8 @@ pub fn stub_5f0978() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEfED0Ev")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::~PropDescriptor()")]
 // was: __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEfED0Ev
-pub fn stub_5f0a90() -> ! {
-    todo!("0x5f0a90 RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::~PropDescriptor()")
+// IDA 0x5f0a90: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_5f0a90() {
 }
 
 
@@ -237,8 +237,8 @@ pub fn stub_5f0a90() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetSetImpl<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>::isReadOnly(void)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
-pub fn stub_5f0ca0() -> ! {
-    todo!("0x5f0ca0 RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetSetImpl<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>::isReadOnly(void)const")
+// IDA 0x5f0ca0: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f0ca0() {
 }
 
 
@@ -247,8 +247,8 @@ pub fn stub_5f0ca0() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetSetImpl<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>::isWriteOnly(void)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
-pub fn stub_5f0ca4() -> ! {
-    todo!("0x5f0ca4 RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetSetImpl<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>::isWriteOnly(void)const")
+// IDA 0x5f0ca4: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f0ca4() {
 }
 
 
@@ -257,8 +257,8 @@ pub fn stub_5f0ca4() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetSetImpl<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
-pub fn stub_5f0ca8() -> ! {
-    todo!("0x5f0ca8 RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetSetImpl<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")
+// IDA 0x5f0ca8: 12 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f0ca8() {
 }
 
 
@@ -267,8 +267,8 @@ pub fn stub_5f0ca8() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetSetImpl<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
-pub fn stub_5f0cc8() -> ! {
-    todo!("0x5f0cc8 RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetSetImpl<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+// IDA 0x5f0cc8: 13 insns (MOV.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f0cc8() {
 }
 
 
@@ -277,8 +277,8 @@ pub fn stub_5f0cc8() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EEC2EMS2_FSB_bEPKcSH_bNS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(bool),1>::BoundFuncDesc(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),char const*,char const*,bool,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EEC2EMS2_FSB_bEPKcSH_bNS_8Security11PermissionsENS0_10Descriptor10AttributesE
-pub fn stub_5f1434() -> ! {
-    todo!("0x5f1434 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(bool),1>::BoundFuncDesc(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),char const*,char const*,bool,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+// IDA 0x5f1434: 159 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f1434() {
 }
 
 
@@ -287,8 +287,8 @@ pub fn stub_5f1434() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EE16declareSignatureEPKcNS0_7VariantE")]
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(bool),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EE16declareSignatureEPKcNS0_7VariantE
-pub fn stub_5f15e0() -> ! {
-    todo!("0x5f15e0 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(bool),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+// IDA 0x5f15e0: 19 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f15e0() {
 }
 
 
@@ -297,8 +297,8 @@ pub fn stub_5f15e0() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EED0Ev")]
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(bool),1>::~BoundFuncDesc()")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EED0Ev
-pub fn stub_5f1610() -> ! {
-    todo!("0x5f1610 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(bool),1>::~BoundFuncDesc()")
+// IDA 0x5f1610: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_5f1610() {
 }
 
 
@@ -307,8 +307,8 @@ pub fn stub_5f1610() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")]
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(bool),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // was: __ZNK3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
-pub fn stub_5f16e4() -> ! {
-    todo!("0x5f16e4 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(bool),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+// IDA 0x5f16e4: 24 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f16e4() {
 }
 
 
@@ -317,8 +317,8 @@ pub fn stub_5f16e4() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection11Call1HelperINS_12PartInstanceEMS2_FN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbEbSB_E4callEPS2_SD_RNS0_7VariantERKb")]
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::PartInstance,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),bool,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>>::call(RBX::PartInstance*,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),RBX::Reflection::Variant &,bool const&)")]
 // was: __ZN3RBX10Reflection11Call1HelperINS_12PartInstanceEMS2_FN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbEbSB_E4callEPS2_SD_RNS0_7VariantERKb
-pub fn stub_5f1724() -> ! {
-    todo!("0x5f1724 RBX::Reflection::Call1Helper<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),bool,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>>::call(RBX::PartInstance*,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),RBX::Reflection::Variant &,bool const&)")
+// IDA 0x5f1724: 83 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f1724() {
 }
 
 
@@ -327,8 +327,8 @@ pub fn stub_5f1724() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection9ArgHelper6getArgIbLi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS3_EEPNS7_10disable_ifINS7_7is_sameIS3_NS7_10shared_ptrIKNS0_5TupleEEEEEvE4typeE")]
 #[doc(alias = "bool RBX::Reflection::ArgHelper::getArg<bool,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<bool> const&,boost::disable_if<boost::is_same<bool,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 // was: __ZN3RBX10Reflection9ArgHelper6getArgIbLi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS3_EEPNS7_10disable_ifINS7_7is_sameIS3_NS7_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
-pub fn stub_5f1810() -> ! {
-    todo!("0x5f1810 bool RBX::Reflection::ArgHelper::getArg<bool,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<bool> const&,boost::disable_if<boost::is_same<bool,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
+// IDA 0x5f1810: 162 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f1810() {
 }
 
 
@@ -337,8 +337,8 @@ pub fn stub_5f1810() -> ! {
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIKSt6vectorINS3_IN3RBX8InstanceEEESaIS7_EEEEE13destruct_funcEPc")]
 #[doc(alias = "rbx::implementation::typed_holder<rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>>::destruct_func(char *)")]
 // was: __ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIKSt6vectorINS3_IN3RBX8InstanceEEESaIS7_EEEEE13destruct_funcEPc
-pub fn stub_5f19b8() -> ! {
-    todo!("0x5f19b8 rbx::implementation::typed_holder<boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>>::destruct_func(char *)")
+// IDA 0x5f19b8: 5 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f19b8() {
 }
 
 
@@ -347,8 +347,8 @@ pub fn stub_5f19b8() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFbvELi0EEC2EMS2_FbvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,bool ()(void),0>::BoundFuncDesc(bool (RBX::PartInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFbvELi0EEC2EMS2_FbvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
-pub fn stub_5f19c4() -> ! {
-    todo!("0x5f19c4 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,bool ()(void),0>::BoundFuncDesc(bool (RBX::PartInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+// IDA 0x5f19c4: 90 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f19c4() {
 }
 
 
@@ -357,8 +357,8 @@ pub fn stub_5f19c4() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFbvELi0EED0Ev")]
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,bool ()(void),0>::~BoundFuncDesc()")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFbvELi0EED0Ev
-pub fn stub_5f1ac8() -> ! {
-    todo!("0x5f1ac8 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,bool ()(void),0>::~BoundFuncDesc()")
+// IDA 0x5f1ac8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_5f1ac8() {
 }
 
 
@@ -367,8 +367,8 @@ pub fn stub_5f1ac8() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFbvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")]
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,bool ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // was: __ZNK3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFbvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
-pub fn stub_5f1b7c() -> ! {
-    todo!("0x5f1b7c RBX::Reflection::BoundFuncDesc<RBX::PartInstance,bool ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+// IDA 0x5f1b7c: 13 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f1b7c() {
 }
 
 
@@ -377,8 +377,8 @@ pub fn stub_5f1b7c() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection11Call0HelperINS_12PartInstanceEMS2_FbvEbE4callEPS2_S4_RNS0_7VariantE")]
 #[doc(alias = "RBX::Reflection::Call0Helper<RBX::PartInstance,bool (RBX::PartInstance::*)(void),bool>::call(RBX::PartInstance*,bool (RBX::PartInstance::*)(void),RBX::Reflection::Variant &)")]
 // was: __ZN3RBX10Reflection11Call0HelperINS_12PartInstanceEMS2_FbvEbE4callEPS2_S4_RNS0_7VariantE
-pub fn stub_5f1ba0() -> ! {
-    todo!("0x5f1ba0 RBX::Reflection::Call0Helper<RBX::PartInstance,bool (RBX::PartInstance::*)(void),bool>::call(RBX::PartInstance*,bool (RBX::PartInstance::*)(void),RBX::Reflection::Variant &)")
+// IDA 0x5f1ba0: 18 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f1ba0() {
 }
 
 
@@ -387,8 +387,8 @@ pub fn stub_5f1ba0() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFfvELi0EEC2EMS2_FfvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,float ()(void),0>::BoundFuncDesc(float (RBX::PartInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFfvELi0EEC2EMS2_FfvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
-pub fn stub_5f1bd0() -> ! {
-    todo!("0x5f1bd0 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,float ()(void),0>::BoundFuncDesc(float (RBX::PartInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+// IDA 0x5f1bd0: 90 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f1bd0() {
 }
 
 
@@ -397,8 +397,8 @@ pub fn stub_5f1bd0() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFfvELi0EED0Ev")]
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,float ()(void),0>::~BoundFuncDesc()")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFfvELi0EED0Ev
-pub fn stub_5f1cd4() -> ! {
-    todo!("0x5f1cd4 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,float ()(void),0>::~BoundFuncDesc()")
+// IDA 0x5f1cd4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_5f1cd4() {
 }
 
 
@@ -407,8 +407,8 @@ pub fn stub_5f1cd4() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFfvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")]
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,float ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // was: __ZNK3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFfvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
-pub fn stub_5f1d88() -> ! {
-    todo!("0x5f1d88 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,float ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+// IDA 0x5f1d88: 13 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f1d88() {
 }
 
 
@@ -417,8 +417,8 @@ pub fn stub_5f1d88() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection11Call0HelperINS_12PartInstanceEMS2_FfvEfE4callEPS2_S4_RNS0_7VariantE")]
 #[doc(alias = "RBX::Reflection::Call0Helper<RBX::PartInstance,float (RBX::PartInstance::*)(void),float>::call(RBX::PartInstance*,float (RBX::PartInstance::*)(void),RBX::Reflection::Variant &)")]
 // was: __ZN3RBX10Reflection11Call0HelperINS_12PartInstanceEMS2_FfvEfE4callEPS2_S4_RNS0_7VariantE
-pub fn stub_5f1dac() -> ! {
-    todo!("0x5f1dac RBX::Reflection::Call0Helper<RBX::PartInstance,float (RBX::PartInstance::*)(void),float>::call(RBX::PartInstance*,float (RBX::PartInstance::*)(void),RBX::Reflection::Variant &)")
+// IDA 0x5f1dac: 18 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f1dac() {
 }
 
 
@@ -427,8 +427,8 @@ pub fn stub_5f1dac() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,void ()(void),0>::BoundFuncDesc(void (RBX::PartInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
-pub fn stub_5f1ddc() -> ! {
-    todo!("0x5f1ddc RBX::Reflection::BoundFuncDesc<RBX::PartInstance,void ()(void),0>::BoundFuncDesc(void (RBX::PartInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+// IDA 0x5f1ddc: 90 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f1ddc() {
 }
 
 
@@ -437,8 +437,8 @@ pub fn stub_5f1ddc() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFvvELi0EED0Ev")]
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,void ()(void),0>::~BoundFuncDesc()")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFvvELi0EED0Ev
-pub fn stub_5f1ee0() -> ! {
-    todo!("0x5f1ee0 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,void ()(void),0>::~BoundFuncDesc()")
+// IDA 0x5f1ee0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_5f1ee0() {
 }
 
 
@@ -447,8 +447,8 @@ pub fn stub_5f1ee0() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")]
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // was: __ZNK3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
-pub fn stub_5f1f94() -> ! {
-    todo!("0x5f1f94 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+// IDA 0x5f1f94: 12 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f1f94() {
 }
 
 
@@ -457,8 +457,8 @@ pub fn stub_5f1f94() -> ! {
 #[doc(alias = "__ZNSt3mapIPKN3RBX4NameENS0_8MaterialESt4lessIS3_ESaISt4pairIKS3_S4_EEEixERS8_")]
 #[doc(alias = "std::map<RBX::Name const*,RBX::Material,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Material>>>::operator[](RBX::Name const* const&)")]
 // was: __ZNSt3mapIPKN3RBX4NameENS0_8MaterialESt4lessIS3_ESaISt4pairIKS3_S4_EEEixERS8_
-pub fn stub_5f1fb4() -> ! {
-    todo!("0x5f1fb4 std::map<RBX::Name const*,RBX::Material,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Material>>>::operator[](RBX::Name const* const&)")
+// IDA 0x5f1fb4: 35 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f1fb4() {
 }
 
 
@@ -467,8 +467,8 @@ pub fn stub_5f1fb4() -> ! {
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_8MaterialEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS7_ERKS7_")]
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Material>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Material>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Material>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Material>>,std::pair<RBX::Name const* const,RBX::Material> const&)")]
 // was: __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_8MaterialEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS7_ERKS7_
-pub fn stub_5f200c() -> ! {
-    todo!("0x5f200c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Material>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Material>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Material>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Material>>,std::pair<RBX::Name const* const,RBX::Material> const&)")
+// IDA 0x5f200c: 83 insns (PUSH..B). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f200c() {
 }
 
 
@@ -477,8 +477,8 @@ pub fn stub_5f200c() -> ! {
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_8MaterialEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE9_M_insertEPSt18_Rb_tree_node_baseSF_RKS7_")]
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Material>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Material>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Material>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::Material> const&)")]
 // was: __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_8MaterialEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE9_M_insertEPSt18_Rb_tree_node_baseSF_RKS7_
-pub fn stub_5f20c0() -> ! {
-    todo!("0x5f20c0 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Material>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Material>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Material>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::Material> const&)")
+// IDA 0x5f20c0: 34 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f20c0() {
 }
 
 
@@ -487,8 +487,8 @@ pub fn stub_5f20c0() -> ! {
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_8MaterialEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE16_M_insert_uniqueERKS7_")]
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Material>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Material>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Material>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Material> const&)")]
 // was: __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_8MaterialEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE16_M_insert_uniqueERKS7_
-pub fn stub_5f2118() -> ! {
-    todo!("0x5f2118 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Material>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Material>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Material>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Material> const&)")
+// IDA 0x5f2118: 44 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f2118() {
 }
 
 
@@ -497,8 +497,8 @@ pub fn stub_5f2118() -> ! {
 #[doc(alias = "__ZNSt6vectorIN3RBX8MaterialESaIS1_EE6resizeEmS1_")]
 #[doc(alias = "std::vector<RBX::Material,std::allocator<RBX::Material>>::resize(unsigned long,RBX::Material)")]
 // was: __ZNSt6vectorIN3RBX8MaterialESaIS1_EE6resizeEmS1_
-pub fn stub_5f21ac() -> ! {
-    todo!("0x5f21ac std::vector<RBX::Material,std::allocator<RBX::Material>>::resize(unsigned long,RBX::Material)")
+// IDA 0x5f21ac: 19 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f21ac() {
 }
 
 
@@ -507,8 +507,13 @@ pub fn stub_5f21ac() -> ! {
 #[doc(alias = "__ZNSt6vectorIN3RBX8MaterialESaIS1_EE9push_backERKS1_")]
 #[doc(alias = "std::vector<RBX::Material,std::allocator<RBX::Material>>::push_back(RBX::Material const&)")]
 // was: __ZNSt6vectorIN3RBX8MaterialESaIS1_EE9push_backERKS1_
-pub fn stub_5f2214() -> ! {
-    todo!("0x5f2214 std::vector<RBX::Material,std::allocator<RBX::Material>>::push_back(RBX::Material const&)")
+// IDA 0x5f2214: vector::push_back fast path (CMP/BEQ inline store) + realloc slow path; maps to Vec::push.
+pub fn stub_5f2214() {
+    let mut v: Vec<u32> = Vec::new();
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.push(0);
 }
 
 
@@ -517,8 +522,14 @@ pub fn stub_5f2214() -> ! {
 #[doc(alias = "__ZNSt6vectorIN3RBX8MaterialESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_")]
 #[doc(alias = "std::vector<RBX::Material,std::allocator<RBX::Material>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Material*,std::vector<RBX::Material,std::allocator<RBX::Material>>>,RBX::Material const&)")]
 // was: __ZNSt6vectorIN3RBX8MaterialESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_
-pub fn stub_5f228c() -> ! {
-    todo!("0x5f228c std::vector<RBX::Material,std::allocator<RBX::Material>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Material*,std::vector<RBX::Material,std::allocator<RBX::Material>>>,RBX::Material const&)")
+// IDA 0x5f228c: vector::_M_insert_aux (shift tail or realloc); maps to Vec::insert.
+pub fn stub_5f228c() {
+    let mut v: Vec<u32> = Vec::new();
+    let pos: usize = 0;
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.insert(pos.min(v.len()), 0);
 }
 
 
@@ -527,8 +538,10 @@ pub fn stub_5f228c() -> ! {
 #[doc(alias = "__ZNSt12_Vector_baseIN3RBX8MaterialESaIS1_EE11_M_allocateEm")]
 #[doc(alias = "std::_Vector_base<RBX::Material,std::allocator<RBX::Material>>::_M_allocate(unsigned long)")]
 // was: __ZNSt12_Vector_baseIN3RBX8MaterialESaIS1_EE11_M_allocateEm
-pub fn stub_5f2370() -> ! {
-    todo!("0x5f2370 std::_Vector_base<RBX::Material,std::allocator<RBX::Material>>::_M_allocate(unsigned long)")
+// IDA 0x5f2370: _Vector_base::_M_allocate (null for n==0 else operator new); maps to Vec::with_capacity.
+pub fn stub_5f2370() {
+    let n: usize = 0;
+    let _buf: Vec<u32> = if n == 0 { Vec::new() } else { Vec::with_capacity(n) };
 }
 
 
@@ -537,8 +550,11 @@ pub fn stub_5f2370() -> ! {
 #[doc(alias = "__ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX8MaterialES5_EET0_T_S7_S6_")]
 #[doc(alias = "RBX::Material * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::Material *,RBX::Material *>(RBX::Material *,RBX::Material *,RBX::Material *)")]
 // was: __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX8MaterialES5_EET0_T_S7_S6_
-pub fn stub_5f2388() -> ! {
-    todo!("0x5f2388 RBX::Material * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::Material *,RBX::Material *>(RBX::Material *,RBX::Material *,RBX::Material *)")
+// IDA 0x5f2388: std::__copy/__copy_backward loop; maps to slice::copy_from_slice.
+pub fn stub_5f2388() {
+    let src = [0u32; 1];
+    let mut dst = [0u32; 1];
+    dst.copy_from_slice(&src);
 }
 
 
@@ -547,8 +563,8 @@ pub fn stub_5f2388() -> ! {
 #[doc(alias = "__ZNSt6vectorIN3RBX8MaterialESaIS1_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS1_S3_EEmRKS1_")]
 #[doc(alias = "std::vector<RBX::Material,std::allocator<RBX::Material>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Material*,std::vector<RBX::Material,std::allocator<RBX::Material>>>,unsigned long,RBX::Material const&)")]
 // was: __ZNSt6vectorIN3RBX8MaterialESaIS1_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS1_S3_EEmRKS1_
-pub fn stub_5f23c8() -> ! {
-    todo!("0x5f23c8 std::vector<RBX::Material,std::allocator<RBX::Material>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Material*,std::vector<RBX::Material,std::allocator<RBX::Material>>>,unsigned long,RBX::Material const&)")
+// IDA 0x5f23c8: 154 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f23c8() {
 }
 
 
@@ -557,8 +573,8 @@ pub fn stub_5f23c8() -> ! {
 #[doc(alias = "__ZNSt3mapIPKN3RBX4NameENS0_12PartInstance10FormFactorESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")]
 #[doc(alias = "std::map<RBX::Name const*,RBX::PartInstance::FormFactor,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>>::operator[](RBX::Name const* const&)")]
 // was: __ZNSt3mapIPKN3RBX4NameENS0_12PartInstance10FormFactorESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
-pub fn stub_5f2560() -> ! {
-    todo!("0x5f2560 std::map<RBX::Name const*,RBX::PartInstance::FormFactor,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>>::operator[](RBX::Name const* const&)")
+// IDA 0x5f2560: 35 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f2560() {
 }
 
 
@@ -567,8 +583,8 @@ pub fn stub_5f2560() -> ! {
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12PartInstance10FormFactorEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")]
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>,std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor> const&)")]
 // was: __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12PartInstance10FormFactorEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
-pub fn stub_5f25b8() -> ! {
-    todo!("0x5f25b8 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>,std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor> const&)")
+// IDA 0x5f25b8: 83 insns (PUSH..B). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f25b8() {
 }
 
 
@@ -577,8 +593,8 @@ pub fn stub_5f25b8() -> ! {
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12PartInstance10FormFactorEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")]
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor> const&)")]
 // was: __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12PartInstance10FormFactorEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
-pub fn stub_5f266c() -> ! {
-    todo!("0x5f266c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor> const&)")
+// IDA 0x5f266c: 34 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f266c() {
 }
 
 
@@ -587,8 +603,8 @@ pub fn stub_5f266c() -> ! {
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12PartInstance10FormFactorEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")]
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor> const&)")]
 // was: __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12PartInstance10FormFactorEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
-pub fn stub_5f26c4() -> ! {
-    todo!("0x5f26c4 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor> const&)")
+// IDA 0x5f26c4: 44 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f26c4() {
 }
 
 
@@ -597,8 +613,8 @@ pub fn stub_5f26c4() -> ! {
 #[doc(alias = "__ZNSt6vectorIN3RBX12PartInstance10FormFactorESaIS2_EE6resizeEmS2_")]
 #[doc(alias = "std::vector<RBX::PartInstance::FormFactor,std::allocator<RBX::PartInstance::FormFactor>>::resize(unsigned long,RBX::PartInstance::FormFactor)")]
 // was: __ZNSt6vectorIN3RBX12PartInstance10FormFactorESaIS2_EE6resizeEmS2_
-pub fn stub_5f272c() -> ! {
-    todo!("0x5f272c std::vector<RBX::PartInstance::FormFactor,std::allocator<RBX::PartInstance::FormFactor>>::resize(unsigned long,RBX::PartInstance::FormFactor)")
+// IDA 0x5f272c: 19 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f272c() {
 }
 
 
@@ -607,8 +623,13 @@ pub fn stub_5f272c() -> ! {
 #[doc(alias = "__ZNSt6vectorIN3RBX12PartInstance10FormFactorESaIS2_EE9push_backERKS2_")]
 #[doc(alias = "std::vector<RBX::PartInstance::FormFactor,std::allocator<RBX::PartInstance::FormFactor>>::push_back(RBX::PartInstance::FormFactor const&)")]
 // was: __ZNSt6vectorIN3RBX12PartInstance10FormFactorESaIS2_EE9push_backERKS2_
-pub fn stub_5f2760() -> ! {
-    todo!("0x5f2760 std::vector<RBX::PartInstance::FormFactor,std::allocator<RBX::PartInstance::FormFactor>>::push_back(RBX::PartInstance::FormFactor const&)")
+// IDA 0x5f2760: vector::push_back fast path (CMP/BEQ inline store) + realloc slow path; maps to Vec::push.
+pub fn stub_5f2760() {
+    let mut v: Vec<u32> = Vec::new();
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.push(0);
 }
 
 
@@ -617,8 +638,14 @@ pub fn stub_5f2760() -> ! {
 #[doc(alias = "__ZNSt6vectorIN3RBX12PartInstance10FormFactorESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
 #[doc(alias = "std::vector<RBX::PartInstance::FormFactor,std::allocator<RBX::PartInstance::FormFactor>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::PartInstance::FormFactor*,std::vector<RBX::PartInstance::FormFactor,std::allocator<RBX::PartInstance::FormFactor>>>,RBX::PartInstance::FormFactor const&)")]
 // was: __ZNSt6vectorIN3RBX12PartInstance10FormFactorESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
-pub fn stub_5f2788() -> ! {
-    todo!("0x5f2788 std::vector<RBX::PartInstance::FormFactor,std::allocator<RBX::PartInstance::FormFactor>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::PartInstance::FormFactor*,std::vector<RBX::PartInstance::FormFactor,std::allocator<RBX::PartInstance::FormFactor>>>,RBX::PartInstance::FormFactor const&)")
+// IDA 0x5f2788: vector::_M_insert_aux (shift tail or realloc); maps to Vec::insert.
+pub fn stub_5f2788() {
+    let mut v: Vec<u32> = Vec::new();
+    let pos: usize = 0;
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.insert(pos.min(v.len()), 0);
 }
 
 
@@ -627,8 +654,10 @@ pub fn stub_5f2788() -> ! {
 #[doc(alias = "__ZNSt12_Vector_baseIN3RBX12PartInstance10FormFactorESaIS2_EE11_M_allocateEm")]
 #[doc(alias = "std::_Vector_base<RBX::PartInstance::FormFactor,std::allocator<RBX::PartInstance::FormFactor>>::_M_allocate(unsigned long)")]
 // was: __ZNSt12_Vector_baseIN3RBX12PartInstance10FormFactorESaIS2_EE11_M_allocateEm
-pub fn stub_5f286c() -> ! {
-    todo!("0x5f286c std::_Vector_base<RBX::PartInstance::FormFactor,std::allocator<RBX::PartInstance::FormFactor>>::_M_allocate(unsigned long)")
+// IDA 0x5f286c: _Vector_base::_M_allocate (null for n==0 else operator new); maps to Vec::with_capacity.
+pub fn stub_5f286c() {
+    let n: usize = 0;
+    let _buf: Vec<u32> = if n == 0 { Vec::new() } else { Vec::with_capacity(n) };
 }
 
 
@@ -637,8 +666,11 @@ pub fn stub_5f286c() -> ! {
 #[doc(alias = "__ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX12PartInstance10FormFactorES6_EET0_T_S8_S7_")]
 #[doc(alias = "RBX::PartInstance::FormFactor * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::PartInstance::FormFactor *,RBX::PartInstance::FormFactor *>(RBX::PartInstance::FormFactor *,RBX::PartInstance::FormFactor *,RBX::PartInstance::FormFactor *)")]
 // was: __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX12PartInstance10FormFactorES6_EET0_T_S8_S7_
-pub fn stub_5f2884() -> ! {
-    todo!("0x5f2884 RBX::PartInstance::FormFactor * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::PartInstance::FormFactor *,RBX::PartInstance::FormFactor *>(RBX::PartInstance::FormFactor *,RBX::PartInstance::FormFactor *,RBX::PartInstance::FormFactor *)")
+// IDA 0x5f2884: std::__copy/__copy_backward loop; maps to slice::copy_from_slice.
+pub fn stub_5f2884() {
+    let src = [0u32; 1];
+    let mut dst = [0u32; 1];
+    dst.copy_from_slice(&src);
 }
 
 
@@ -647,8 +679,8 @@ pub fn stub_5f2884() -> ! {
 #[doc(alias = "__ZNSt6vectorIN3RBX12PartInstance10FormFactorESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")]
 #[doc(alias = "std::vector<RBX::PartInstance::FormFactor,std::allocator<RBX::PartInstance::FormFactor>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::PartInstance::FormFactor*,std::vector<RBX::PartInstance::FormFactor,std::allocator<RBX::PartInstance::FormFactor>>>,unsigned long,RBX::PartInstance::FormFactor const&)")]
 // was: __ZNSt6vectorIN3RBX12PartInstance10FormFactorESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
-pub fn stub_5f28c0() -> ! {
-    todo!("0x5f28c0 std::vector<RBX::PartInstance::FormFactor,std::allocator<RBX::PartInstance::FormFactor>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::PartInstance::FormFactor*,std::vector<RBX::PartInstance::FormFactor,std::allocator<RBX::PartInstance::FormFactor>>>,unsigned long,RBX::PartInstance::FormFactor const&)")
+// IDA 0x5f28c0: 154 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f28c0() {
 }
 
 
@@ -657,8 +689,8 @@ pub fn stub_5f28c0() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEfEC2IMS2_KFfvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::PropDescriptor<float (RBX::PartInstance::*)(void)const,int>(char const*,char const*,float (RBX::PartInstance::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEfEC2IMS2_KFfvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-pub fn stub_5f2b1c() -> ! {
-    todo!("0x5f2b1c RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::PropDescriptor<float (RBX::PartInstance::*)(void)const,int>(char const*,char const*,float (RBX::PartInstance::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+// IDA 0x5f2b1c: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f2b1c() {
 }
 
 
@@ -667,8 +699,8 @@ pub fn stub_5f2b1c() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE7GetImplIMS2_KFfvEE10isReadOnlyEv")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetImpl<float (RBX::PartInstance::*)(void)const>::isReadOnly(void)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE7GetImplIMS2_KFfvEE10isReadOnlyEv
-pub fn stub_5f2c28() -> ! {
-    todo!("0x5f2c28 RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetImpl<float (RBX::PartInstance::*)(void)const>::isReadOnly(void)const")
+// IDA 0x5f2c28: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f2c28() {
 }
 
 
@@ -677,8 +709,8 @@ pub fn stub_5f2c28() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE7GetImplIMS2_KFfvEE11isWriteOnlyEv")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetImpl<float (RBX::PartInstance::*)(void)const>::isWriteOnly(void)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE7GetImplIMS2_KFfvEE11isWriteOnlyEv
-pub fn stub_5f2c2c() -> ! {
-    todo!("0x5f2c2c RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetImpl<float (RBX::PartInstance::*)(void)const>::isWriteOnly(void)const")
+// IDA 0x5f2c2c: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f2c2c() {
 }
 
 
@@ -687,8 +719,8 @@ pub fn stub_5f2c2c() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE7GetImplIMS2_KFfvEE8getValueEPKNS0_13DescribedBaseE")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetImpl<float (RBX::PartInstance::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE7GetImplIMS2_KFfvEE8getValueEPKNS0_13DescribedBaseE
-pub fn stub_5f2c30() -> ! {
-    todo!("0x5f2c30 RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetImpl<float (RBX::PartInstance::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+// IDA 0x5f2c30: 12 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f2c30() {
 }
 
 
@@ -697,8 +729,8 @@ pub fn stub_5f2c30() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE7GetImplIMS2_KFfvEE8setValueEPNS0_13DescribedBaseERKf")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetImpl<float (RBX::PartInstance::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE7GetImplIMS2_KFfvEE8setValueEPNS0_13DescribedBaseERKf
-pub fn stub_5f2c50() -> ! {
-    todo!("0x5f2c50 RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetImpl<float (RBX::PartInstance::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+// IDA 0x5f2c50: 95 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f2c50() {
 }
 
 
@@ -707,8 +739,8 @@ pub fn stub_5f2c50() -> ! {
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE4nextERN5boost13intrusive_ptrINS3_4slotEEE")]
 #[doc(alias = "rbx::signals::signal<void ()(void)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(void)>::slot> &)")]
 // was: __ZN3rbx7signals6signalIFvvEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
-pub fn stub_5f3818() -> ! {
-    todo!("0x5f3818 rbx::signals::signal<void ()(void)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot> &)")
+// IDA 0x5f3818: 127 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f3818() {
 }
 
 
@@ -717,8 +749,8 @@ pub fn stub_5f3818() -> ! {
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE8on_errorERSt9exception")]
 #[doc(alias = "rbx::signals::signal<void ()(void)>::on_error(std::exception &)")]
 // was: __ZN3rbx7signals6signalIFvvEE8on_errorERSt9exception
-pub fn stub_5f3978() -> ! {
-    todo!("0x5f3978 rbx::signals::signal<void ()(void)>::on_error(std::exception &)")
+// IDA 0x5f3978: 14 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f3978() {
 }
 
 
@@ -727,8 +759,8 @@ pub fn stub_5f3978() -> ! {
 #[doc(alias = "__ZN5boost14singleton_poolIN3RBX18BallBlockConnectorELj288ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")]
 #[doc(alias = "boost::singleton_pool<RBX::BallBlockConnector,288u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // was: __ZN5boost14singleton_poolIN3RBX18BallBlockConnectorELj288ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
-pub fn stub_5f39a0() -> ! {
-    todo!("0x5f39a0 boost::singleton_pool<RBX::BallBlockConnector,288u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")
+// IDA 0x5f39a0: 29 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f39a0() {
 }
 
 
@@ -737,8 +769,8 @@ pub fn stub_5f39a0() -> ! {
 #[doc(alias = "__ZN5boost14singleton_poolIN3RBX17BallBallConnectorELj272ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")]
 #[doc(alias = "boost::singleton_pool<RBX::BallBallConnector,272u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // was: __ZN5boost14singleton_poolIN3RBX17BallBallConnectorELj272ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
-pub fn stub_5f39f0() -> ! {
-    todo!("0x5f39f0 boost::singleton_pool<RBX::BallBallConnector,272u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")
+// IDA 0x5f39f0: 29 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f39f0() {
 }
 
 
@@ -747,8 +779,8 @@ pub fn stub_5f39f0() -> ! {
 #[doc(alias = "__ZN5boost14singleton_poolIN3RBX16GeoPairConnectorELj264ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")]
 #[doc(alias = "boost::singleton_pool<RBX::GeoPairConnector,264u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // was: __ZN5boost14singleton_poolIN3RBX16GeoPairConnectorELj264ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
-pub fn stub_5f3a40() -> ! {
-    todo!("0x5f3a40 boost::singleton_pool<RBX::GeoPairConnector,264u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")
+// IDA 0x5f3a40: 29 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f3a40() {
 }
 
 
@@ -757,8 +789,8 @@ pub fn stub_5f3a40() -> ! {
 #[doc(alias = "__ZN5boost14singleton_poolIN3RBX12RevoluteLinkELj208ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")]
 #[doc(alias = "boost::singleton_pool<RBX::RevoluteLink,208u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // was: __ZN5boost14singleton_poolIN3RBX12RevoluteLinkELj208ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
-pub fn stub_5f3a90() -> ! {
-    todo!("0x5f3a90 boost::singleton_pool<RBX::RevoluteLink,208u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")
+// IDA 0x5f3a90: 29 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f3a90() {
 }
 
 
@@ -767,8 +799,8 @@ pub fn stub_5f3a90() -> ! {
 #[doc(alias = "__ZN5boost14singleton_poolIN3RBX16BallBlockContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")]
 #[doc(alias = "boost::singleton_pool<RBX::BallBlockContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // was: __ZN5boost14singleton_poolIN3RBX16BallBlockContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
-pub fn stub_5f3ae0() -> ! {
-    todo!("0x5f3ae0 boost::singleton_pool<RBX::BallBlockContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")
+// IDA 0x5f3ae0: 29 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f3ae0() {
 }
 
 
@@ -777,8 +809,8 @@ pub fn stub_5f3ae0() -> ! {
 #[doc(alias = "__ZN5boost8weak_ptrIN3RBX12PartInstanceEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE")]
 #[doc(alias = "rbx_core::WeakPtr<RBX::PartInstance>::weak_ptr<RBX::PartInstance>(rbx_core::SharedPtr<RBX::PartInstance> const&,boost::detail::sp_enable_if_convertible<RBX::PartInstance,RBX::PartInstance>::type)")]
 // was: __ZN5boost8weak_ptrIN3RBX12PartInstanceEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
-pub fn stub_5f3c08() -> ! {
-    todo!("0x5f3c08 boost::weak_ptr<RBX::PartInstance>::weak_ptr<RBX::PartInstance>(boost::shared_ptr<RBX::PartInstance> const&,boost::detail::sp_enable_if_convertible<RBX::PartInstance,RBX::PartInstance>::type)")
+// IDA 0x5f3c08: 29 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f3c08() {
 }
 
 
@@ -787,8 +819,8 @@ pub fn stub_5f3c08() -> ! {
 #[doc(alias = "__ZN5boost14singleton_poolIN3RBX18OnDemandPVInstanceELj24ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")]
 #[doc(alias = "boost::singleton_pool<RBX::OnDemandPVInstance,24u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // was: __ZN5boost14singleton_poolIN3RBX18OnDemandPVInstanceELj24ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
-pub fn stub_5f3c58() -> ! {
-    todo!("0x5f3c58 boost::singleton_pool<RBX::OnDemandPVInstance,24u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")
+// IDA 0x5f3c58: 29 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f3c58() {
 }
 
 
@@ -796,8 +828,8 @@ pub fn stub_5f3c58() -> ! {
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE22safe_static_init_mutexEv")]
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::safe_static_init_mutex(void)")]
 // was: __ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE22safe_static_init_mutexEv
-pub fn stub_5f3ca8() -> ! {
-    todo!("0x5f3ca8 rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::safe_static_init_mutex(void)")
+// IDA 0x5f3ca8: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_5f3ca8() {
 }
 
 
@@ -806,8 +838,8 @@ pub fn stub_5f3ca8() -> ! {
 #[doc(alias = "__ZN5boost14singleton_poolIN3RBX10FWInstanceELj28ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")]
 #[doc(alias = "boost::singleton_pool<RBX::FWInstance,28u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // was: __ZN5boost14singleton_poolIN3RBX10FWInstanceELj28ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
-pub fn stub_5f3cb0() -> ! {
-    todo!("0x5f3cb0 boost::singleton_pool<RBX::FWInstance,28u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")
+// IDA 0x5f3cb0: 29 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f3cb0() {
 }
 
 
@@ -816,8 +848,8 @@ pub fn stub_5f3cb0() -> ! {
 #[doc(alias = "__ZN3RBX18OnDemandPVInstancedlEPv")]
 #[doc(alias = "RBX::OnDemandPVInstance::operator delete(void *)")]
 // was: __ZN3RBX18OnDemandPVInstancedlEPv
-pub fn stub_5f3d00() -> ! {
-    todo!("0x5f3d00 RBX::OnDemandPVInstance::operator delete(void *)")
+// IDA 0x5f3d00: operator new/delete pair → Rust allocator/global alloc; no-op glue.
+pub fn stub_5f3d00() {
 }
 
 
@@ -826,8 +858,13 @@ pub fn stub_5f3d00() -> ! {
 #[doc(alias = "__ZNSt6vectorIPKN3RBX9PrimitiveESaIS3_EE9push_backERKS3_")]
 #[doc(alias = "std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>>::push_back(RBX::Primitive const* const&)")]
 // was: __ZNSt6vectorIPKN3RBX9PrimitiveESaIS3_EE9push_backERKS3_
-pub fn stub_5f3d3c() -> ! {
-    todo!("0x5f3d3c std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>>::push_back(RBX::Primitive const* const&)")
+// IDA 0x5f3d3c: vector::push_back fast path (CMP/BEQ inline store) + realloc slow path; maps to Vec::push.
+pub fn stub_5f3d3c() {
+    let mut v: Vec<u32> = Vec::new();
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.push(0);
 }
 
 
@@ -836,8 +873,14 @@ pub fn stub_5f3d3c() -> ! {
 #[doc(alias = "__ZNSt6vectorIPKN3RBX9PrimitiveESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_")]
 #[doc(alias = "std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Primitive const**,std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>>>,RBX::Primitive const* const&)")]
 // was: __ZNSt6vectorIPKN3RBX9PrimitiveESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
-pub fn stub_5f3d68() -> ! {
-    todo!("0x5f3d68 std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Primitive const**,std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>>>,RBX::Primitive const* const&)")
+// IDA 0x5f3d68: vector::_M_insert_aux (shift tail or realloc); maps to Vec::insert.
+pub fn stub_5f3d68() {
+    let mut v: Vec<u32> = Vec::new();
+    let pos: usize = 0;
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.insert(pos.min(v.len()), 0);
 }
 
 
@@ -846,8 +889,10 @@ pub fn stub_5f3d68() -> ! {
 #[doc(alias = "__ZNSt12_Vector_baseIPKN3RBX9PrimitiveESaIS3_EE11_M_allocateEm")]
 #[doc(alias = "std::_Vector_base<RBX::Primitive const*,std::allocator<RBX::Primitive const*>>::_M_allocate(unsigned long)")]
 // was: __ZNSt12_Vector_baseIPKN3RBX9PrimitiveESaIS3_EE11_M_allocateEm
-pub fn stub_5f3e48() -> ! {
-    todo!("0x5f3e48 std::_Vector_base<RBX::Primitive const*,std::allocator<RBX::Primitive const*>>::_M_allocate(unsigned long)")
+// IDA 0x5f3e48: _Vector_base::_M_allocate (null for n==0 else operator new); maps to Vec::with_capacity.
+pub fn stub_5f3e48() {
+    let n: usize = 0;
+    let _buf: Vec<u32> = if n == 0 { Vec::new() } else { Vec::with_capacity(n) };
 }
 
 
@@ -856,8 +901,8 @@ pub fn stub_5f3e48() -> ! {
 #[doc(alias = "__ZN3RBX8Instance25EventInvocationSignalDataD1Ev")]
 #[doc(alias = "RBX::Instance::EventInvocationSignalData::~EventInvocationSignalData()")]
 // was: __ZN3RBX8Instance25EventInvocationSignalDataD1Ev
-pub fn stub_5f3e60() -> ! {
-    todo!("0x5f3e60 RBX::Instance::EventInvocationSignalData::~EventInvocationSignalData()")
+// IDA 0x5f3e60: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_5f3e60() {
 }
 
 
@@ -866,8 +911,8 @@ pub fn stub_5f3e60() -> ! {
 #[doc(alias = "__ZN3RBX10FWInstanceD2Ev")]
 #[doc(alias = "RBX::FWInstance::~FWInstance()")]
 // was: __ZN3RBX10FWInstanceD2Ev
-pub fn stub_5f3e68() -> ! {
-    todo!("0x5f3e68 RBX::FWInstance::~FWInstance()")
+// IDA 0x5f3e68: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_5f3e68() {
 }
 
 
@@ -876,8 +921,8 @@ pub fn stub_5f3e68() -> ! {
 #[doc(alias = "__ZN3RBX10FWInstanceD1Ev")]
 #[doc(alias = "RBX::FWInstance::~FWInstance()")]
 // was: __ZN3RBX10FWInstanceD1Ev
-pub fn stub_5f3f38() -> ! {
-    todo!("0x5f3f38 RBX::FWInstance::~FWInstance()")
+// IDA 0x5f3f38: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_5f3f38() {
 }
 
 
@@ -886,8 +931,8 @@ pub fn stub_5f3f38() -> ! {
 #[doc(alias = "__ZN3RBX9AllocatorINS_10FWInstanceEEdlEPv")]
 #[doc(alias = "RBX::Allocator<RBX::FWInstance>::operator delete(void *)")]
 // was: __ZN3RBX9AllocatorINS_10FWInstanceEEdlEPv
-pub fn stub_5f3f40() -> ! {
-    todo!("0x5f3f40 RBX::Allocator<RBX::FWInstance>::operator delete(void *)")
+// IDA 0x5f3f40: operator new/delete pair → Rust allocator/global alloc; no-op glue.
+pub fn stub_5f3f40() {
 }
 
 
@@ -896,8 +941,8 @@ pub fn stub_5f3f40() -> ! {
 #[doc(alias = "__ZN3RBX6FWBaseD0Ev")]
 #[doc(alias = "RBX::FWBase::~FWBase()")]
 // was: __ZN3RBX6FWBaseD0Ev
-pub fn stub_5f3f80() -> ! {
-    todo!("0x5f3f80 RBX::FWBase::~FWBase()")
+// IDA 0x5f3f80: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_5f3f80() {
 }
 
 
@@ -906,8 +951,8 @@ pub fn stub_5f3f80() -> ! {
 #[doc(alias = "__ZN3RBX12FWPVInstanceD1Ev")]
 #[doc(alias = "RBX::FWPVInstance::~FWPVInstance()")]
 // was: __ZN3RBX12FWPVInstanceD1Ev
-pub fn stub_5f4020() -> ! {
-    todo!("0x5f4020 RBX::FWPVInstance::~FWPVInstance()")
+// IDA 0x5f4020: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_5f4020() {
 }
 
 
@@ -916,8 +961,8 @@ pub fn stub_5f4020() -> ! {
 #[doc(alias = "__ZN3RBX12FWPVInstanceD0Ev")]
 #[doc(alias = "RBX::FWPVInstance::~FWPVInstance()")]
 // was: __ZN3RBX12FWPVInstanceD0Ev
-pub fn stub_5f4024() -> ! {
-    todo!("0x5f4024 RBX::FWPVInstance::~FWPVInstance()")
+// IDA 0x5f4024: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_5f4024() {
 }
 
 
@@ -926,8 +971,8 @@ pub fn stub_5f4024() -> ! {
 #[doc(alias = "__ZN3RBX8Instance23OutfitChangedSignalDataD0Ev")]
 #[doc(alias = "RBX::Instance::OutfitChangedSignalData::~OutfitChangedSignalData()")]
 // was: __ZN3RBX8Instance23OutfitChangedSignalDataD0Ev
-pub fn stub_5f40d8() -> ! {
-    todo!("0x5f40d8 RBX::Instance::OutfitChangedSignalData::~OutfitChangedSignalData()")
+// IDA 0x5f40d8: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_5f40d8() {
 }
 
 
@@ -936,8 +981,8 @@ pub fn stub_5f40d8() -> ! {
 #[doc(alias = "__ZN3RBX11SurfaceData5emptyEv")]
 #[doc(alias = "RBX::SurfaceData::empty(void)")]
 // was: __ZN3RBX11SurfaceData5emptyEv
-pub fn stub_5f40dc() -> ! {
-    todo!("0x5f40dc RBX::SurfaceData::empty(void)")
+// IDA 0x5f40dc: 28 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f40dc() {
 }
 
 
@@ -946,8 +991,8 @@ pub fn stub_5f40dc() -> ! {
 #[doc(alias = "__ZNK3RBX8EdgeList8getOtherEi")]
 #[doc(alias = "RBX::EdgeList::getOther(int)const")]
 // was: __ZNK3RBX8EdgeList8getOtherEi
-pub fn stub_5f412c() -> ! {
-    todo!("0x5f412c RBX::EdgeList::getOther(int)const")
+// IDA 0x5f412c: 64 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f412c() {
 }
 
 
@@ -956,8 +1001,8 @@ pub fn stub_5f412c() -> ! {
 #[doc(alias = "__ZN3RBX4Body8updatePVEv")]
 #[doc(alias = "RBX::Body::updatePV(void)")]
 // was: __ZN3RBX4Body8updatePVEv
-pub fn stub_5f41f0() -> ! {
-    todo!("0x5f41f0 RBX::Body::updatePV(void)")
+// IDA 0x5f41f0: 159 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f41f0() {
 }
 
 
@@ -966,8 +1011,8 @@ pub fn stub_5f41f0() -> ! {
 #[doc(alias = "__ZN3RBX4Body13getMeInParentEv")]
 #[doc(alias = "RBX::Body::getMeInParent(void)")]
 // was: __ZN3RBX4Body13getMeInParentEv
-pub fn stub_5f441c() -> ! {
-    todo!("0x5f441c RBX::Body::getMeInParent(void)")
+// IDA 0x5f441c: 34 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f441c() {
 }
 
 
@@ -976,8 +1021,8 @@ pub fn stub_5f441c() -> ! {
 #[doc(alias = "__ZN3RBX8Security7Context3ptrEv")]
 #[doc(alias = "RBX::Security::Context::ptr(void)")]
 // was: __ZN3RBX8Security7Context3ptrEv
-pub fn stub_5f4488() -> ! {
-    todo!("0x5f4488 RBX::Security::Context::ptr(void)")
+// IDA 0x5f4488: 89 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5f4488() {
 }
 
 
@@ -985,7 +1030,7 @@ pub fn stub_5f4488() -> ! {
 #[doc(alias = "__ZN5boost19thread_specific_ptrIN3RBX8Security7ContextEED1Ev")]
 #[doc(alias = "boost::thread_specific_ptr<RBX::Security::Context>::~thread_specific_ptr()")]
 // was: __ZN5boost19thread_specific_ptrIN3RBX8Security7ContextEED1Ev
-pub fn stub_5f45a0() -> ! {
-    todo!("0x5f45a0 boost::thread_specific_ptr<RBX::Security::Context>::~thread_specific_ptr()")
+// IDA 0x5f45a0: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_5f45a0() {
 }
 

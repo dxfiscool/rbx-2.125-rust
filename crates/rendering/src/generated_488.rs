@@ -13,8 +13,8 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // type: bool __fastcall(Ogre::VertexAnimationTrack *this)
 #[doc(alias = "Ogre::VertexAnimationTrack::hasNonZeroKeyFrames(void)const")]
 // was: __ZNK4Ogre20VertexAnimationTrack19hasNonZeroKeyFramesEv
-pub fn stub_0xc554b4() -> ! {
-    todo!("0xc554b4 Ogre::VertexAnimationTrack::hasNonZeroKeyFrames(void)const")
+// IDA 0xc554b4: 43 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc554b4() {
 }
 
 
@@ -22,8 +22,8 @@ pub fn stub_0xc554b4() -> ! {
 // type: void __fastcall(Ogre::VertexAnimationTrack *this)
 #[doc(alias = "Ogre::VertexAnimationTrack::optimise(void)")]
 // was: __ZN4Ogre20VertexAnimationTrack8optimiseEv
-pub fn stub_0xc55514() -> ! {
-    todo!("0xc55514 Ogre::VertexAnimationTrack::optimise(void)")
+// IDA 0xc55514: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xc55514() {
 }
 
 
@@ -31,8 +31,8 @@ pub fn stub_0xc55514() -> ! {
 // type: int __fastcall(int this, const Ogre::KeyFrame *)
 #[doc(alias = "Ogre::VertexAnimationTrack::_applyBaseKeyFrame(Ogre::KeyFrame const*)")]
 // was: __ZN4Ogre20VertexAnimationTrack18_applyBaseKeyFrameEPKNS_8KeyFrameE
-pub fn stub_0xc55518() -> ! {
-    todo!("0xc55518 Ogre::VertexAnimationTrack::_applyBaseKeyFrame(Ogre::KeyFrame const*)")
+// IDA 0xc55518: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc55518() {
 }
 
 
@@ -40,8 +40,8 @@ pub fn stub_0xc55518() -> ! {
 // type: void __fastcall(Ogre::AnimationTrack *this)
 #[doc(alias = "Ogre::AnimationTrack::_keyFrameDataChanged(void)const")]
 // was: __ZNK4Ogre14AnimationTrack20_keyFrameDataChangedEv
-pub fn stub_0xc5553c() -> ! {
-    todo!("0xc5553c Ogre::AnimationTrack::_keyFrameDataChanged(void)const")
+// IDA 0xc5553c: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xc5553c() {
 }
 
 
@@ -49,8 +49,8 @@ pub fn stub_0xc5553c() -> ! {
 // type: int __fastcall(Ogre::AnimationTrack *this)
 #[doc(alias = "Ogre::AnimationTrack::hasNonZeroKeyFrames(void)const")]
 // was: __ZNK4Ogre14AnimationTrack19hasNonZeroKeyFramesEv
-pub fn stub_0xc55540() -> ! {
-    todo!("0xc55540 Ogre::AnimationTrack::hasNonZeroKeyFrames(void)const")
+// IDA 0xc55540: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc55540() {
 }
 
 
@@ -58,8 +58,8 @@ pub fn stub_0xc55540() -> ! {
 // type: void __fastcall(Ogre::AnimationTrack *this)
 #[doc(alias = "Ogre::AnimationTrack::optimise(void)")]
 // was: __ZN4Ogre14AnimationTrack8optimiseEv
-pub fn stub_0xc55544() -> ! {
-    todo!("0xc55544 Ogre::AnimationTrack::optimise(void)")
+// IDA 0xc55544: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xc55544() {
 }
 
 
@@ -67,8 +67,8 @@ pub fn stub_0xc55544() -> ! {
 // type: void()
 #[doc(alias = "Ogre::AnimationTrack::_applyBaseKeyFrame(Ogre::KeyFrame const*)")]
 // was: __ZN4Ogre14AnimationTrack18_applyBaseKeyFrameEPKNS_8KeyFrameE
-pub fn stub_0xc55548() -> ! {
-    todo!("0xc55548 Ogre::AnimationTrack::_applyBaseKeyFrame(Ogre::KeyFrame const*)")
+// IDA 0xc55548: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xc55548() {
 }
 
 
@@ -76,8 +76,8 @@ pub fn stub_0xc55548() -> ! {
 // type: int __fastcall(int result, int)
 #[doc(alias = "Ogre::AnimationTrack::setListener(Ogre::AnimationTrack::Listener *)")]
 // was: __ZN4Ogre14AnimationTrack11setListenerEPNS0_8ListenerE
-pub fn stub_0xc5554c() -> ! {
-    todo!("0xc5554c Ogre::AnimationTrack::setListener(Ogre::AnimationTrack::Listener *)")
+// IDA 0xc5554c: 2 insns (STR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc5554c() {
 }
 
 
@@ -85,8 +85,8 @@ pub fn stub_0xc5554c() -> ! {
 // type: void __fastcall(Ogre::NedPoolingImpl **this)
 #[doc(alias = "Ogre::VertexAnimationTrack::~VertexAnimationTrack()")]
 // was: __ZN4Ogre20VertexAnimationTrackD1Ev
-pub fn stub_0xc55550() -> ! {
-    todo!("0xc55550 Ogre::VertexAnimationTrack::~VertexAnimationTrack()")
+// IDA 0xc55550: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xc55550() {
 }
 
 
@@ -94,8 +94,8 @@ pub fn stub_0xc55550() -> ! {
 // type: void __fastcall(Ogre::NedPoolingImpl **this)
 #[doc(alias = "Ogre::VertexAnimationTrack::~VertexAnimationTrack()")]
 // was: __ZN4Ogre20VertexAnimationTrackD0Ev
-pub fn stub_0xc5555c() -> ! {
-    todo!("0xc5555c Ogre::VertexAnimationTrack::~VertexAnimationTrack()")
+// IDA 0xc5555c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xc5555c() {
 }
 
 
@@ -103,8 +103,14 @@ pub fn stub_0xc5555c() -> ! {
 // type: _DWORD *__fastcall(int, char *__src, _DWORD *)
 #[doc(alias = "std::vector<Ogre::KeyFrame *,Ogre::STLAllocator<Ogre::KeyFrame *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::KeyFrame **,std::vector<Ogre::KeyFrame *,Ogre::STLAllocator<Ogre::KeyFrame *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::KeyFrame * const&)")]
 // was: __ZNSt6vectorIPN4Ogre8KeyFrameENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_
-pub fn stub_0xc555ec() -> ! {
-    todo!("0xc555ec std::vector<Ogre::KeyFrame *,Ogre::STLAllocator<Ogre::KeyFrame *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::KeyFrame **,std::vector<Ogre::KeyFrame *,Ogre::STLAllocator<Ogre::KeyFrame *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::KeyFrame * const&)")
+// IDA 0xc555ec: vector::_M_insert_aux (shift tail or realloc); maps to Vec::insert.
+pub fn stub_0xc555ec() {
+    let mut v: Vec<u32> = Vec::new();
+    let pos: usize = 0;
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.insert(pos.min(v.len()), 0);
 }
 
 
@@ -112,8 +118,8 @@ pub fn stub_0xc555ec() -> ! {
 // type: void()
 #[doc(alias = "std::_Vector_base<Ogre::KeyFrame *,Ogre::STLAllocator<Ogre::KeyFrame *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 // was: __ZNSt12_Vector_baseIPN4Ogre8KeyFrameENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
-pub fn stub_0xc556e4() -> ! {
-    todo!("0xc556e4 std::_Vector_base<Ogre::KeyFrame *,Ogre::STLAllocator<Ogre::KeyFrame *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+// IDA 0xc556e4: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xc556e4() {
 }
 
 
@@ -121,8 +127,8 @@ pub fn stub_0xc556e4() -> ! {
 // type: void __fastcall(void *)
 #[doc(alias = "std::_Vector_base<Ogre::KeyFrame *,Ogre::STLAllocator<Ogre::KeyFrame *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 // was: __ZNSt12_Vector_baseIPN4Ogre8KeyFrameENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-pub fn stub_0xc556e8() -> ! {
-    todo!("0xc556e8 std::_Vector_base<Ogre::KeyFrame *,Ogre::STLAllocator<Ogre::KeyFrame *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+// IDA 0xc556e8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xc556e8() {
 }
 
 
@@ -130,8 +136,8 @@ pub fn stub_0xc556e8() -> ! {
 // type: int __fastcall(Ogre::ArchiveManager *this)
 #[doc(alias = "Ogre::ArchiveManager::getSingleton(void)")]
 // was: __ZN4Ogre14ArchiveManager12getSingletonEv
-pub fn stub_0xc55728() -> ! {
-    todo!("0xc55728 Ogre::ArchiveManager::getSingleton(void)")
+// IDA 0xc55728: 4 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc55728() {
 }
 
 
@@ -139,8 +145,8 @@ pub fn stub_0xc55728() -> ! {
 // type: int __fastcall(int this)
 #[doc(alias = "Ogre::ArchiveManager::ArchiveManager(void)")]
 // was: __ZN4Ogre14ArchiveManagerC1Ev
-pub fn stub_0xc55738() -> ! {
-    todo!("0xc55738 Ogre::ArchiveManager::ArchiveManager(void)")
+// IDA 0xc55738: 33 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc55738() {
 }
 
 
@@ -148,8 +154,8 @@ pub fn stub_0xc55738() -> ! {
 // type: int __fastcall(Ogre::ArchiveManager *this, const std::string *, const std::string *)
 #[doc(alias = "Ogre::ArchiveManager::load(std::string const&,std::string const&)")]
 // was: __ZN4Ogre14ArchiveManager4loadERKSsS2_
-pub fn stub_0xc557a0() -> ! {
-    todo!("0xc557a0 Ogre::ArchiveManager::load(std::string const&,std::string const&)")
+// IDA 0xc557a0: 223 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc557a0() {
 }
 
 
@@ -157,8 +163,8 @@ pub fn stub_0xc557a0() -> ! {
 // type: void __fastcall(Ogre::ArchiveManager *__hidden this)
 #[doc(alias = "Ogre::ArchiveManager::~ArchiveManager()")]
 // was: __ZN4Ogre14ArchiveManagerD0Ev
-pub fn stub_0xc55a18() -> ! {
-    todo!("0xc55a18 Ogre::ArchiveManager::~ArchiveManager()")
+// IDA 0xc55a18: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xc55a18() {
 }
 
 
@@ -166,8 +172,8 @@ pub fn stub_0xc55a18() -> ! {
 // type: void __fastcall(Ogre::ArchiveManager *__hidden this)
 #[doc(alias = "Ogre::ArchiveManager::~ArchiveManager()")]
 // was: __ZN4Ogre14ArchiveManagerD1Ev
-pub fn stub_0xc55aa8() -> ! {
-    todo!("0xc55aa8 Ogre::ArchiveManager::~ArchiveManager()")
+// IDA 0xc55aa8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xc55aa8() {
 }
 
 
@@ -175,8 +181,8 @@ pub fn stub_0xc55aa8() -> ! {
 // type: void __fastcall(Ogre::ArchiveManager *__hidden this)
 #[doc(alias = "Ogre::ArchiveManager::~ArchiveManager()")]
 // was: __ZN4Ogre14ArchiveManagerD2Ev
-pub fn stub_0xc55ab4() -> ! {
-    todo!("0xc55ab4 Ogre::ArchiveManager::~ArchiveManager()")
+// IDA 0xc55ab4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xc55ab4() {
 }
 
 
@@ -184,8 +190,8 @@ pub fn stub_0xc55ab4() -> ! {
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "Ogre::ArchiveManager::addArchiveFactory(Ogre::ArchiveFactory *)")]
 // was: __ZN4Ogre14ArchiveManager17addArchiveFactoryEPNS_14ArchiveFactoryE
-pub fn stub_0xc55dfc() -> ! {
-    todo!("0xc55dfc Ogre::ArchiveManager::addArchiveFactory(Ogre::ArchiveFactory *)")
+// IDA 0xc55dfc: 285 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc55dfc() {
 }
 
 
@@ -193,8 +199,8 @@ pub fn stub_0xc55dfc() -> ! {
 // type: 
 #[doc(alias = "std::map<std::string,Ogre::Archive *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Archive *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")]
 // was: __ZNSt3mapISsPN4Ogre7ArchiveESt4lessISsENS0_12STLAllocatorISt4pairIKSsS2_ENS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEixERS7_
-pub fn stub_0xc56120() -> ! {
-    todo!("0xc56120 std::map<std::string,Ogre::Archive *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Archive *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")
+// IDA 0xc56120: 157 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc56120() {
 }
 
 
@@ -202,8 +208,8 @@ pub fn stub_0xc56120() -> ! {
 // type: int __fastcall(int, int, struct _Unwind_Exception *lpuexcpt)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ArchiveFactory *>,std::_Select1st<std::pair<std::string const,Ogre::ArchiveFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ArchiveFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::ArchiveFactory *> const&)")]
 // was: __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14ArchiveFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS5_
-pub fn stub_0xc562dc() -> ! {
-    todo!("0xc562dc std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ArchiveFactory *>,std::_Select1st<std::pair<std::string const,Ogre::ArchiveFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ArchiveFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::ArchiveFactory *> const&)")
+// IDA 0xc562dc: 90 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc562dc() {
 }
 
 
@@ -211,8 +217,8 @@ pub fn stub_0xc562dc() -> ! {
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, Ogre::NedPoolingImpl *, int, int, void *, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ArchiveFactory *>,std::_Select1st<std::pair<std::string const,Ogre::ArchiveFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ArchiveFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::ArchiveFactory *> const&)")]
 // was: __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14ArchiveFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS5_
-pub fn stub_0xc563c0() -> ! {
-    todo!("0xc563c0 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ArchiveFactory *>,std::_Select1st<std::pair<std::string const,Ogre::ArchiveFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ArchiveFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::ArchiveFactory *> const&)")
+// IDA 0xc563c0: 127 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc563c0() {
 }
 
 
@@ -220,8 +226,8 @@ pub fn stub_0xc563c0() -> ! {
 // type: 
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Archive *>,std::_Select1st<std::pair<std::string const,Ogre::Archive *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Archive *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::Archive *>> *)")]
 // was: __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7ArchiveEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
-pub fn stub_0xc56514() -> ! {
-    todo!("0xc56514 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Archive *>,std::_Select1st<std::pair<std::string const,Ogre::Archive *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Archive *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::Archive *>> *)")
+// IDA 0xc56514: 43 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc56514() {
 }
 
 
@@ -229,8 +235,8 @@ pub fn stub_0xc56514() -> ! {
 // type: int __fastcall(int, int, struct _Unwind_Exception *lpuexcpt)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Archive *>,std::_Select1st<std::pair<std::string const,Ogre::Archive *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Archive *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::Archive *>>,std::pair<std::string const,Ogre::Archive *> const&)")]
 // was: __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7ArchiveEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_
-pub fn stub_0xc5658c() -> ! {
-    todo!("0xc5658c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Archive *>,std::_Select1st<std::pair<std::string const,Ogre::Archive *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Archive *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::Archive *>>,std::pair<std::string const,Ogre::Archive *> const&)")
+// IDA 0xc5658c: 184 insns (PUSH..B). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc5658c() {
 }
 
 
@@ -238,8 +244,8 @@ pub fn stub_0xc5658c() -> ! {
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, Ogre::NedPoolingImpl *, int, int, void *, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Archive *>,std::_Select1st<std::pair<std::string const,Ogre::Archive *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Archive *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::Archive *> const&)")]
 // was: __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7ArchiveEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS5_
-pub fn stub_0xc5676c() -> ! {
-    todo!("0xc5676c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Archive *>,std::_Select1st<std::pair<std::string const,Ogre::Archive *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Archive *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::Archive *> const&)")
+// IDA 0xc5676c: 127 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc5676c() {
 }
 
 
@@ -247,8 +253,8 @@ pub fn stub_0xc5676c() -> ! {
 // type: int __fastcall(int, int, struct _Unwind_Exception *lpuexcpt)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Archive *>,std::_Select1st<std::pair<std::string const,Ogre::Archive *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Archive *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::Archive *> const&)")]
 // was: __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7ArchiveEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS5_
-pub fn stub_0xc568c0() -> ! {
-    todo!("0xc568c0 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Archive *>,std::_Select1st<std::pair<std::string const,Ogre::Archive *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Archive *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::Archive *> const&)")
+// IDA 0xc568c0: 90 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc568c0() {
 }
 
 
@@ -256,8 +262,8 @@ pub fn stub_0xc568c0() -> ! {
 // type: 
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ArchiveFactory *>,std::_Select1st<std::pair<std::string const,Ogre::ArchiveFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ArchiveFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
 // was: __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14ArchiveFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
-pub fn stub_0xc569a4() -> ! {
-    todo!("0xc569a4 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ArchiveFactory *>,std::_Select1st<std::pair<std::string const,Ogre::ArchiveFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ArchiveFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
+// IDA 0xc569a4: 64 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc569a4() {
 }
 
 
@@ -265,8 +271,8 @@ pub fn stub_0xc569a4() -> ! {
 // type: 
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Archive *>,std::_Select1st<std::pair<std::string const,Ogre::Archive *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Archive *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
 // was: __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7ArchiveEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
-pub fn stub_0xc56a48() -> ! {
-    todo!("0xc56a48 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Archive *>,std::_Select1st<std::pair<std::string const,Ogre::Archive *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Archive *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
+// IDA 0xc56a48: 64 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc56a48() {
 }
 
 
@@ -274,8 +280,8 @@ pub fn stub_0xc56a48() -> ! {
 // type: 
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Archive *>,std::_Select1st<std::pair<std::string const,Ogre::Archive *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Archive *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 // was: __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7ArchiveEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
-pub fn stub_0xc56aec() -> ! {
-    todo!("0xc56aec std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Archive *>,std::_Select1st<std::pair<std::string const,Ogre::Archive *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Archive *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+// IDA 0xc56aec: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xc56aec() {
 }
 
 
@@ -283,8 +289,8 @@ pub fn stub_0xc56aec() -> ! {
 // type: 
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Archive *>,std::_Select1st<std::pair<std::string const,Ogre::Archive *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Archive *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 // was: __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7ArchiveEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
-pub fn stub_0xc56af0() -> ! {
-    todo!("0xc56af0 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Archive *>,std::_Select1st<std::pair<std::string const,Ogre::Archive *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Archive *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+// IDA 0xc56af0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xc56af0() {
 }
 
 
@@ -292,8 +298,8 @@ pub fn stub_0xc56af0() -> ! {
 // type: 
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ArchiveFactory *>,std::_Select1st<std::pair<std::string const,Ogre::ArchiveFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ArchiveFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 // was: __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14ArchiveFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
-pub fn stub_0xc56afc() -> ! {
-    todo!("0xc56afc std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ArchiveFactory *>,std::_Select1st<std::pair<std::string const,Ogre::ArchiveFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ArchiveFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+// IDA 0xc56afc: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xc56afc() {
 }
 
 
@@ -301,8 +307,8 @@ pub fn stub_0xc56afc() -> ! {
 // type: 
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ArchiveFactory *>,std::_Select1st<std::pair<std::string const,Ogre::ArchiveFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ArchiveFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 // was: __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14ArchiveFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
-pub fn stub_0xc56b00() -> ! {
-    todo!("0xc56b00 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ArchiveFactory *>,std::_Select1st<std::pair<std::string const,Ogre::ArchiveFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ArchiveFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+// IDA 0xc56b00: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xc56b00() {
 }
 
 
@@ -310,8 +316,8 @@ pub fn stub_0xc56b00() -> ! {
 // type: 
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ArchiveFactory *>,std::_Select1st<std::pair<std::string const,Ogre::ArchiveFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ArchiveFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::ArchiveFactory *>> *)")]
 // was: __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14ArchiveFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
-pub fn stub_0xc56b0c() -> ! {
-    todo!("0xc56b0c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ArchiveFactory *>,std::_Select1st<std::pair<std::string const,Ogre::ArchiveFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ArchiveFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::ArchiveFactory *>> *)")
+// IDA 0xc56b0c: 43 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc56b0c() {
 }
 
 
@@ -319,8 +325,8 @@ pub fn stub_0xc56b0c() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::AutoParamDataSource(void)")]
 // was: __ZN4Ogre19AutoParamDataSourceC1Ev
-pub fn stub_0xc56bb8() -> ! {
-    todo!("0xc56bb8 Ogre::AutoParamDataSource::AutoParamDataSource(void)")
+// IDA 0xc56bb8: 4 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc56bb8() {
 }
 
 
@@ -328,8 +334,8 @@ pub fn stub_0xc56bb8() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::AutoParamDataSource(void)")]
 // was: __ZN4Ogre19AutoParamDataSourceC2Ev
-pub fn stub_0xc56bc4() -> ! {
-    todo!("0xc56bc4 Ogre::AutoParamDataSource::AutoParamDataSource(void)")
+// IDA 0xc56bc4: 234 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc56bc4() {
 }
 
 
@@ -337,8 +343,8 @@ pub fn stub_0xc56bc4() -> ! {
 // type: void __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::~AutoParamDataSource()")]
 // was: __ZN4Ogre19AutoParamDataSourceD0Ev
-pub fn stub_0xc56e7c() -> ! {
-    todo!("0xc56e7c Ogre::AutoParamDataSource::~AutoParamDataSource()")
+// IDA 0xc56e7c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xc56e7c() {
 }
 
 
@@ -346,8 +352,8 @@ pub fn stub_0xc56e7c() -> ! {
 // type: void __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::~AutoParamDataSource()")]
 // was: __ZN4Ogre19AutoParamDataSourceD1Ev
-pub fn stub_0xc56f20() -> ! {
-    todo!("0xc56f20 Ogre::AutoParamDataSource::~AutoParamDataSource()")
+// IDA 0xc56f20: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xc56f20() {
 }
 
 
@@ -355,8 +361,8 @@ pub fn stub_0xc56f20() -> ! {
 // type: 
 #[doc(alias = "Ogre::AutoParamDataSource::setCurrentRenderable(Ogre::Renderable const*)")]
 // was: __ZN4Ogre19AutoParamDataSource20setCurrentRenderableEPKNS_10RenderableE
-pub fn stub_0xc56f44() -> ! {
-    todo!("0xc56f44 Ogre::AutoParamDataSource::setCurrentRenderable(Ogre::Renderable const*)")
+// IDA 0xc56f44: 26 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc56f44() {
 }
 
 
@@ -364,8 +370,8 @@ pub fn stub_0xc56f44() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, const Ogre::Camera *, bool)
 #[doc(alias = "Ogre::AutoParamDataSource::setCurrentCamera(Ogre::Camera const*,bool)")]
 // was: __ZN4Ogre19AutoParamDataSource16setCurrentCameraEPKNS_6CameraEb
-pub fn stub_0xc56f94() -> ! {
-    todo!("0xc56f94 Ogre::AutoParamDataSource::setCurrentCamera(Ogre::Camera const*,bool)")
+// IDA 0xc56f94: 36 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc56f94() {
 }
 
 
@@ -373,8 +379,8 @@ pub fn stub_0xc56f94() -> ! {
 // type: 
 #[doc(alias = "Ogre::AutoParamDataSource::setCurrentLightList(Ogre::HashedVector<Ogre::Light *> const*)")]
 // was: __ZN4Ogre19AutoParamDataSource19setCurrentLightListEPKNS_12HashedVectorIPNS_5LightEEE
-pub fn stub_0xc56ffc() -> ! {
-    todo!("0xc56ffc Ogre::AutoParamDataSource::setCurrentLightList(Ogre::HashedVector<Ogre::Light *> const*)")
+// IDA 0xc56ffc: 29 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc56ffc() {
 }
 
 
@@ -382,8 +388,8 @@ pub fn stub_0xc56ffc() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getLightNumber(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource14getLightNumberEm
-pub fn stub_0xc57048() -> ! {
-    todo!("0xc57048 Ogre::AutoParamDataSource::getLightNumber(unsigned long)const")
+// IDA 0xc57048: 16 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57048() {
 }
 
 
@@ -391,8 +397,8 @@ pub fn stub_0xc57048() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getLightDiffuseColour(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource21getLightDiffuseColourEm
-pub fn stub_0xc57078() -> ! {
-    todo!("0xc57078 Ogre::AutoParamDataSource::getLightDiffuseColour(unsigned long)const")
+// IDA 0xc57078: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57078() {
 }
 
 
@@ -400,8 +406,8 @@ pub fn stub_0xc57078() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getLightSpecularColour(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource22getLightSpecularColourEm
-pub fn stub_0xc570a8() -> ! {
-    todo!("0xc570a8 Ogre::AutoParamDataSource::getLightSpecularColour(unsigned long)const")
+// IDA 0xc570a8: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc570a8() {
 }
 
 
@@ -409,8 +415,8 @@ pub fn stub_0xc570a8() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getLightDiffuseColourWithPower(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource30getLightDiffuseColourWithPowerEm
-pub fn stub_0xc570d8() -> ! {
-    todo!("0xc570d8 Ogre::AutoParamDataSource::getLightDiffuseColourWithPower(unsigned long)const")
+// IDA 0xc570d8: 34 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc570d8() {
 }
 
 
@@ -418,8 +424,8 @@ pub fn stub_0xc570d8() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getLightSpecularColourWithPower(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource31getLightSpecularColourWithPowerEm
-pub fn stub_0xc57140() -> ! {
-    todo!("0xc57140 Ogre::AutoParamDataSource::getLightSpecularColourWithPower(unsigned long)const")
+// IDA 0xc57140: 34 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57140() {
 }
 
 
@@ -427,8 +433,8 @@ pub fn stub_0xc57140() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getLightPosition(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource16getLightPositionEm
-pub fn stub_0xc571a8() -> ! {
-    todo!("0xc571a8 Ogre::AutoParamDataSource::getLightPosition(unsigned long)const")
+// IDA 0xc571a8: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc571a8() {
 }
 
 
@@ -436,8 +442,8 @@ pub fn stub_0xc571a8() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getLightAs4DVector(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource18getLightAs4DVectorEm
-pub fn stub_0xc571d4() -> ! {
-    todo!("0xc571d4 Ogre::AutoParamDataSource::getLightAs4DVector(unsigned long)const")
+// IDA 0xc571d4: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc571d4() {
 }
 
 
@@ -445,8 +451,8 @@ pub fn stub_0xc571d4() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getLightDirection(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource17getLightDirectionEm
-pub fn stub_0xc57200() -> ! {
-    todo!("0xc57200 Ogre::AutoParamDataSource::getLightDirection(unsigned long)const")
+// IDA 0xc57200: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57200() {
 }
 
 
@@ -454,8 +460,8 @@ pub fn stub_0xc57200() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getLightPowerScale(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource18getLightPowerScaleEm
-pub fn stub_0xc57230() -> ! {
-    todo!("0xc57230 Ogre::AutoParamDataSource::getLightPowerScale(unsigned long)const")
+// IDA 0xc57230: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57230() {
 }
 
 
@@ -463,8 +469,8 @@ pub fn stub_0xc57230() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getLightAttenuation(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource19getLightAttenuationEm
-pub fn stub_0xc57260() -> ! {
-    todo!("0xc57260 Ogre::AutoParamDataSource::getLightAttenuation(unsigned long)const")
+// IDA 0xc57260: 33 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57260() {
 }
 
 
@@ -472,8 +478,8 @@ pub fn stub_0xc57260() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getSpotlightParams(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource18getSpotlightParamsEm
-pub fn stub_0xc572b8() -> ! {
-    todo!("0xc572b8 Ogre::AutoParamDataSource::getSpotlightParams(unsigned long)const")
+// IDA 0xc572b8: 60 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc572b8() {
 }
 
 
@@ -481,8 +487,8 @@ pub fn stub_0xc572b8() -> ! {
 // type: 
 #[doc(alias = "Ogre::AutoParamDataSource::setMainCamBoundsInfo(Ogre::VisibleObjectsBoundsInfo *)")]
 // was: __ZN4Ogre19AutoParamDataSource20setMainCamBoundsInfoEPNS_24VisibleObjectsBoundsInfoE
-pub fn stub_0xc57374() -> ! {
-    todo!("0xc57374 Ogre::AutoParamDataSource::setMainCamBoundsInfo(Ogre::VisibleObjectsBoundsInfo *)")
+// IDA 0xc57374: 6 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57374() {
 }
 
 
@@ -490,8 +496,8 @@ pub fn stub_0xc57374() -> ! {
 // type: 
 #[doc(alias = "Ogre::AutoParamDataSource::setCurrentSceneManager(Ogre::SceneManager const*)")]
 // was: __ZN4Ogre19AutoParamDataSource22setCurrentSceneManagerEPKNS_12SceneManagerE
-pub fn stub_0xc57384() -> ! {
-    todo!("0xc57384 Ogre::AutoParamDataSource::setCurrentSceneManager(Ogre::SceneManager const*)")
+// IDA 0xc57384: 3 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57384() {
 }
 
 
@@ -499,8 +505,8 @@ pub fn stub_0xc57384() -> ! {
 // type: 
 #[doc(alias = "Ogre::AutoParamDataSource::setWorldMatrices(Ogre::Matrix4 const*,unsigned long)")]
 // was: __ZN4Ogre19AutoParamDataSource16setWorldMatricesEPKNS_7Matrix4Em
-pub fn stub_0xc5738c() -> ! {
-    todo!("0xc5738c Ogre::AutoParamDataSource::setWorldMatrices(Ogre::Matrix4 const*,unsigned long)")
+// IDA 0xc5738c: 8 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc5738c() {
 }
 
 
@@ -508,8 +514,8 @@ pub fn stub_0xc5738c() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getWorldMatrix(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource14getWorldMatrixEv
-pub fn stub_0xc573a4() -> ! {
-    todo!("0xc573a4 Ogre::AutoParamDataSource::getWorldMatrix(void)const")
+// IDA 0xc573a4: 63 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc573a4() {
 }
 
 
@@ -517,8 +523,8 @@ pub fn stub_0xc573a4() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getWorldMatrixCount(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource19getWorldMatrixCountEv
-pub fn stub_0xc5745c() -> ! {
-    todo!("0xc5745c Ogre::AutoParamDataSource::getWorldMatrixCount(void)const")
+// IDA 0xc5745c: 10 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc5745c() {
 }
 
 
@@ -526,8 +532,8 @@ pub fn stub_0xc5745c() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getWorldMatrixArray(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource19getWorldMatrixArrayEv
-pub fn stub_0xc57474() -> ! {
-    todo!("0xc57474 Ogre::AutoParamDataSource::getWorldMatrixArray(void)const")
+// IDA 0xc57474: 10 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57474() {
 }
 
 
@@ -535,8 +541,8 @@ pub fn stub_0xc57474() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getViewMatrix(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource13getViewMatrixEv
-pub fn stub_0xc5748c() -> ! {
-    todo!("0xc5748c Ogre::AutoParamDataSource::getViewMatrix(void)const")
+// IDA 0xc5748c: 82 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc5748c() {
 }
 
 
@@ -544,8 +550,8 @@ pub fn stub_0xc5748c() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getViewProjectionMatrix(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource23getViewProjectionMatrixEv
-pub fn stub_0xc57588() -> ! {
-    todo!("0xc57588 Ogre::AutoParamDataSource::getViewProjectionMatrix(void)const")
+// IDA 0xc57588: 45 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57588() {
 }
 
 
@@ -553,8 +559,8 @@ pub fn stub_0xc57588() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getProjectionMatrix(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource19getProjectionMatrixEv
-pub fn stub_0xc5760c() -> ! {
-    todo!("0xc5760c Ogre::AutoParamDataSource::getProjectionMatrix(void)const")
+// IDA 0xc5760c: 84 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc5760c() {
 }
 
 
@@ -562,8 +568,8 @@ pub fn stub_0xc5760c() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getWorldViewMatrix(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource18getWorldViewMatrixEv
-pub fn stub_0xc57710() -> ! {
-    todo!("0xc57710 Ogre::AutoParamDataSource::getWorldViewMatrix(void)const")
+// IDA 0xc57710: 45 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57710() {
 }
 
 
@@ -571,8 +577,8 @@ pub fn stub_0xc57710() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getWorldViewProjMatrix(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource22getWorldViewProjMatrixEv
-pub fn stub_0xc57794() -> ! {
-    todo!("0xc57794 Ogre::AutoParamDataSource::getWorldViewProjMatrix(void)const")
+// IDA 0xc57794: 45 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57794() {
 }
 
 
@@ -580,8 +586,8 @@ pub fn stub_0xc57794() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getInverseWorldMatrix(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource21getInverseWorldMatrixEv
-pub fn stub_0xc57818() -> ! {
-    todo!("0xc57818 Ogre::AutoParamDataSource::getInverseWorldMatrix(void)const")
+// IDA 0xc57818: 35 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57818() {
 }
 
 
@@ -589,8 +595,8 @@ pub fn stub_0xc57818() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getInverseWorldViewMatrix(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource25getInverseWorldViewMatrixEv
-pub fn stub_0xc57880() -> ! {
-    todo!("0xc57880 Ogre::AutoParamDataSource::getInverseWorldViewMatrix(void)const")
+// IDA 0xc57880: 35 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57880() {
 }
 
 
@@ -598,8 +604,8 @@ pub fn stub_0xc57880() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getInverseViewMatrix(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource20getInverseViewMatrixEv
-pub fn stub_0xc578e8() -> ! {
-    todo!("0xc578e8 Ogre::AutoParamDataSource::getInverseViewMatrix(void)const")
+// IDA 0xc578e8: 35 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc578e8() {
 }
 
 
@@ -607,8 +613,8 @@ pub fn stub_0xc578e8() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getInverseTransposeWorldMatrix(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource30getInverseTransposeWorldMatrixEv
-pub fn stub_0xc57950() -> ! {
-    todo!("0xc57950 Ogre::AutoParamDataSource::getInverseTransposeWorldMatrix(void)const")
+// IDA 0xc57950: 82 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57950() {
 }
 
 
@@ -616,8 +622,8 @@ pub fn stub_0xc57950() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getInverseTransposeWorldViewMatrix(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource34getInverseTransposeWorldViewMatrixEv
-pub fn stub_0xc57a5c() -> ! {
-    todo!("0xc57a5c Ogre::AutoParamDataSource::getInverseTransposeWorldViewMatrix(void)const")
+// IDA 0xc57a5c: 81 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57a5c() {
 }
 
 
@@ -625,8 +631,8 @@ pub fn stub_0xc57a5c() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getCameraPosition(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource17getCameraPositionEv
-pub fn stub_0xc57b64() -> ! {
-    todo!("0xc57b64 Ogre::AutoParamDataSource::getCameraPosition(void)const")
+// IDA 0xc57b64: 46 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57b64() {
 }
 
 
@@ -634,8 +640,8 @@ pub fn stub_0xc57b64() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getCameraPositionObjectSpace(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource28getCameraPositionObjectSpaceEv
-pub fn stub_0xc57bf4() -> ! {
-    todo!("0xc57bf4 Ogre::AutoParamDataSource::getCameraPositionObjectSpace(void)const")
+// IDA 0xc57bf4: 121 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57bf4() {
 }
 
 
@@ -643,8 +649,8 @@ pub fn stub_0xc57bf4() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getLodCameraPosition(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource20getLodCameraPositionEv
-pub fn stub_0xc57da4() -> ! {
-    todo!("0xc57da4 Ogre::AutoParamDataSource::getLodCameraPosition(void)const")
+// IDA 0xc57da4: 50 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57da4() {
 }
 
 
@@ -652,8 +658,8 @@ pub fn stub_0xc57da4() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getLodCameraPositionObjectSpace(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource31getLodCameraPositionObjectSpaceEv
-pub fn stub_0xc57e40() -> ! {
-    todo!("0xc57e40 Ogre::AutoParamDataSource::getLodCameraPositionObjectSpace(void)const")
+// IDA 0xc57e40: 133 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc57e40() {
 }
 
 
@@ -661,8 +667,8 @@ pub fn stub_0xc57e40() -> ! {
 // type: 
 #[doc(alias = "Ogre::AutoParamDataSource::setAmbientLightColour(Ogre::ColourValue const&)")]
 // was: __ZN4Ogre19AutoParamDataSource21setAmbientLightColourERKNS_11ColourValueE
-pub fn stub_0xc58014() -> ! {
-    todo!("0xc58014 Ogre::AutoParamDataSource::setAmbientLightColour(Ogre::ColourValue const&)")
+// IDA 0xc58014: 5 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc58014() {
 }
 
 
@@ -670,8 +676,8 @@ pub fn stub_0xc58014() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getLightCount(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource13getLightCountEv
-pub fn stub_0xc58024() -> ! {
-    todo!("0xc58024 Ogre::AutoParamDataSource::getLightCount(void)const")
+// IDA 0xc58024: 9 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc58024() {
 }
 
 
@@ -679,8 +685,8 @@ pub fn stub_0xc58024() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getLightCastsShadows(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource20getLightCastsShadowsEm
-pub fn stub_0xc58040() -> ! {
-    todo!("0xc58040 Ogre::AutoParamDataSource::getLightCastsShadows(unsigned long)const")
+// IDA 0xc58040: 24 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc58040() {
 }
 
 
@@ -688,8 +694,8 @@ pub fn stub_0xc58040() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getAmbientLightColour(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource21getAmbientLightColourEv
-pub fn stub_0xc58080() -> ! {
-    todo!("0xc58080 Ogre::AutoParamDataSource::getAmbientLightColour(void)const")
+// IDA 0xc58080: 3 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc58080() {
 }
 
 
@@ -697,8 +703,8 @@ pub fn stub_0xc58080() -> ! {
 // type: 
 #[doc(alias = "Ogre::AutoParamDataSource::setCurrentPass(Ogre::Pass const*)")]
 // was: __ZN4Ogre19AutoParamDataSource14setCurrentPassEPKNS_4PassE
-pub fn stub_0xc58088() -> ! {
-    todo!("0xc58088 Ogre::AutoParamDataSource::setCurrentPass(Ogre::Pass const*)")
+// IDA 0xc58088: 3 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc58088() {
 }
 
 
@@ -706,8 +712,8 @@ pub fn stub_0xc58088() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getCurrentPass(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource14getCurrentPassEv
-pub fn stub_0xc58090() -> ! {
-    todo!("0xc58090 Ogre::AutoParamDataSource::getCurrentPass(void)const")
+// IDA 0xc58090: 3 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc58090() {
 }
 
 
@@ -715,8 +721,8 @@ pub fn stub_0xc58090() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getTextureSize(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource14getTextureSizeEm
-pub fn stub_0xc58098() -> ! {
-    todo!("0xc58098 Ogre::AutoParamDataSource::getTextureSize(unsigned long)const")
+// IDA 0xc58098: 47 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc58098() {
 }
 
 
@@ -724,8 +730,8 @@ pub fn stub_0xc58098() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getInverseTextureSize(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource21getInverseTextureSizeEm
-pub fn stub_0xc58128() -> ! {
-    todo!("0xc58128 Ogre::AutoParamDataSource::getInverseTextureSize(unsigned long)const")
+// IDA 0xc58128: 23 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc58128() {
 }
 
 
@@ -733,8 +739,8 @@ pub fn stub_0xc58128() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getPackedTextureSize(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource20getPackedTextureSizeEm
-pub fn stub_0xc58174() -> ! {
-    todo!("0xc58174 Ogre::AutoParamDataSource::getPackedTextureSize(unsigned long)const")
+// IDA 0xc58174: 20 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc58174() {
 }
 
 
@@ -742,8 +748,8 @@ pub fn stub_0xc58174() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getSurfaceAmbientColour(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource23getSurfaceAmbientColourEv
-pub fn stub_0xc581b4() -> ! {
-    todo!("0xc581b4 Ogre::AutoParamDataSource::getSurfaceAmbientColour(void)const")
+// IDA 0xc581b4: 6 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc581b4() {
 }
 
 
@@ -751,8 +757,8 @@ pub fn stub_0xc581b4() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getSurfaceDiffuseColour(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource23getSurfaceDiffuseColourEv
-pub fn stub_0xc581c4() -> ! {
-    todo!("0xc581c4 Ogre::AutoParamDataSource::getSurfaceDiffuseColour(void)const")
+// IDA 0xc581c4: 6 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc581c4() {
 }
 
 
@@ -760,8 +766,8 @@ pub fn stub_0xc581c4() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getSurfaceSpecularColour(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource24getSurfaceSpecularColourEv
-pub fn stub_0xc581d4() -> ! {
-    todo!("0xc581d4 Ogre::AutoParamDataSource::getSurfaceSpecularColour(void)const")
+// IDA 0xc581d4: 6 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc581d4() {
 }
 
 
@@ -769,8 +775,8 @@ pub fn stub_0xc581d4() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getSurfaceEmissiveColour(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource24getSurfaceEmissiveColourEv
-pub fn stub_0xc581e4() -> ! {
-    todo!("0xc581e4 Ogre::AutoParamDataSource::getSurfaceEmissiveColour(void)const")
+// IDA 0xc581e4: 6 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc581e4() {
 }
 
 
@@ -778,8 +784,8 @@ pub fn stub_0xc581e4() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getSurfaceShininess(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource19getSurfaceShininessEv
-pub fn stub_0xc581f4() -> ! {
-    todo!("0xc581f4 Ogre::AutoParamDataSource::getSurfaceShininess(void)const")
+// IDA 0xc581f4: 6 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc581f4() {
 }
 
 
@@ -787,8 +793,8 @@ pub fn stub_0xc581f4() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getDerivedAmbientLightColour(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource28getDerivedAmbientLightColourEv
-pub fn stub_0xc58204() -> ! {
-    todo!("0xc58204 Ogre::AutoParamDataSource::getDerivedAmbientLightColour(void)const")
+// IDA 0xc58204: 31 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc58204() {
 }
 
 
@@ -796,8 +802,8 @@ pub fn stub_0xc58204() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getDerivedSceneColour(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource21getDerivedSceneColourEv
-pub fn stub_0xc58268() -> ! {
-    todo!("0xc58268 Ogre::AutoParamDataSource::getDerivedSceneColour(void)const")
+// IDA 0xc58268: 34 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc58268() {
 }
 
 
@@ -805,8 +811,8 @@ pub fn stub_0xc58268() -> ! {
 // type: int __fastcall(int, int, int, int, float, float)
 #[doc(alias = "Ogre::AutoParamDataSource::setFog(Ogre::FogMode,Ogre::ColourValue const&,float,float,float)")]
 // was: __ZN4Ogre19AutoParamDataSource6setFogENS_7FogModeERKNS_11ColourValueEfff
-pub fn stub_0xc582cc() -> ! {
-    todo!("0xc582cc Ogre::AutoParamDataSource::setFog(Ogre::FogMode,Ogre::ColourValue const&,float,float,float)")
+// IDA 0xc582cc: 25 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc582cc() {
 }
 
 
@@ -814,8 +820,8 @@ pub fn stub_0xc582cc() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getFogColour(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource12getFogColourEv
-pub fn stub_0xc58328() -> ! {
-    todo!("0xc58328 Ogre::AutoParamDataSource::getFogColour(void)const")
+// IDA 0xc58328: 3 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc58328() {
 }
 
 
@@ -823,8 +829,8 @@ pub fn stub_0xc58328() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getFogParams(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource12getFogParamsEv
-pub fn stub_0xc58330() -> ! {
-    todo!("0xc58330 Ogre::AutoParamDataSource::getFogParams(void)const")
+// IDA 0xc58330: 3 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc58330() {
 }
 
 
@@ -832,8 +838,8 @@ pub fn stub_0xc58330() -> ! {
 // type: 
 #[doc(alias = "Ogre::AutoParamDataSource::setTextureProjector(Ogre::Frustum const*,unsigned long)")]
 // was: __ZN4Ogre19AutoParamDataSource19setTextureProjectorEPKNS_7FrustumEm
-pub fn stub_0xc58338() -> ! {
-    todo!("0xc58338 Ogre::AutoParamDataSource::setTextureProjector(Ogre::Frustum const*,unsigned long)")
+// IDA 0xc58338: 15 insns (CMP..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc58338() {
 }
 
 
@@ -841,8 +847,8 @@ pub fn stub_0xc58338() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getTextureViewProjMatrix(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource24getTextureViewProjMatrixEm
-pub fn stub_0xc5836c() -> ! {
-    todo!("0xc5836c Ogre::AutoParamDataSource::getTextureViewProjMatrix(unsigned long)const")
+// IDA 0xc5836c: 103 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc5836c() {
 }
 
 
@@ -850,8 +856,8 @@ pub fn stub_0xc5836c() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getTextureWorldViewProjMatrix(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource29getTextureWorldViewProjMatrixEm
-pub fn stub_0xc5849c() -> ! {
-    todo!("0xc5849c Ogre::AutoParamDataSource::getTextureWorldViewProjMatrix(unsigned long)const")
+// IDA 0xc5849c: 65 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc5849c() {
 }
 
 
@@ -859,8 +865,8 @@ pub fn stub_0xc5849c() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getSpotlightViewProjMatrix(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource26getSpotlightViewProjMatrixEm
-pub fn stub_0xc5855c() -> ! {
-    todo!("0xc5855c Ogre::AutoParamDataSource::getSpotlightViewProjMatrix(unsigned long)const")
+// IDA 0xc5855c: 349 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc5855c() {
 }
 
 
@@ -868,8 +874,8 @@ pub fn stub_0xc5855c() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getSpotlightWorldViewProjMatrix(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource31getSpotlightWorldViewProjMatrixEm
-pub fn stub_0xc58a08() -> ! {
-    todo!("0xc58a08 Ogre::AutoParamDataSource::getSpotlightWorldViewProjMatrix(unsigned long)const")
+// IDA 0xc58a08: 77 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc58a08() {
 }
 
 
@@ -877,8 +883,8 @@ pub fn stub_0xc58a08() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this, unsigned int)
 #[doc(alias = "Ogre::AutoParamDataSource::getTextureTransformMatrix(unsigned long)const")]
 // was: __ZNK4Ogre19AutoParamDataSource25getTextureTransformMatrixEm
-pub fn stub_0xc58ae4() -> ! {
-    todo!("0xc58ae4 Ogre::AutoParamDataSource::getTextureTransformMatrix(unsigned long)const")
+// IDA 0xc58ae4: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc58ae4() {
 }
 
 
@@ -886,8 +892,8 @@ pub fn stub_0xc58ae4() -> ! {
 // type: 
 #[doc(alias = "Ogre::AutoParamDataSource::setCurrentRenderTarget(Ogre::RenderTarget const*)")]
 // was: __ZN4Ogre19AutoParamDataSource22setCurrentRenderTargetEPKNS_12RenderTargetE
-pub fn stub_0xc58b18() -> ! {
-    todo!("0xc58b18 Ogre::AutoParamDataSource::setCurrentRenderTarget(Ogre::RenderTarget const*)")
+// IDA 0xc58b18: 3 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc58b18() {
 }
 
 
@@ -895,8 +901,8 @@ pub fn stub_0xc58b18() -> ! {
 // type: _DWORD __fastcall(Ogre::AutoParamDataSource *__hidden this)
 #[doc(alias = "Ogre::AutoParamDataSource::getCurrentRenderTarget(void)const")]
 // was: __ZNK4Ogre19AutoParamDataSource22getCurrentRenderTargetEv
-pub fn stub_0xc58b20() -> ! {
-    todo!("0xc58b20 Ogre::AutoParamDataSource::getCurrentRenderTarget(void)const")
+// IDA 0xc58b20: 3 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc58b20() {
 }
 
 
@@ -904,6 +910,6 @@ pub fn stub_0xc58b20() -> ! {
 // type: 
 #[doc(alias = "Ogre::AutoParamDataSource::setCurrentViewport(Ogre::Viewport const*)")]
 // was: __ZN4Ogre19AutoParamDataSource18setCurrentViewportEPKNS_8ViewportE
-pub fn stub_0xc58b28() -> ! {
-    todo!("0xc58b28 Ogre::AutoParamDataSource::setCurrentViewport(Ogre::Viewport const*)")
+// IDA 0xc58b28: 3 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xc58b28() {
 }

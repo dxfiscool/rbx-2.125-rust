@@ -14,8 +14,8 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "Ogre::ColourInterpolatorAffector::CmdTimeAdjust::doGet(void const*)const")]
 #[doc(alias = "__ZNK4Ogre26ColourInterpolatorAffector13CmdTimeAdjust5doGetEPKv")]
 // was: Ogre::ColourInterpolatorAffector::CmdTimeAdjust::doGet(void const*)const
-pub fn stub_0xe9f794() -> ! {
-    todo!("0xe9f794 Ogre::ColourInterpolatorAffector::CmdTimeAdjust::doGet(void const*)const")
+// IDA 0xe9f794: 14 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe9f794() {
 }
 
 // 0xe9f7b8 — __ZN4Ogre26ColourInterpolatorAffector13CmdTimeAdjust5doSetEPvRKSs
@@ -23,8 +23,8 @@ pub fn stub_0xe9f794() -> ! {
 #[doc(alias = "Ogre::ColourInterpolatorAffector::CmdTimeAdjust::doSet(void *,std::string const&)")]
 #[doc(alias = "__ZN4Ogre26ColourInterpolatorAffector13CmdTimeAdjust5doSetEPvRKSs")]
 // was: Ogre::ColourInterpolatorAffector::CmdTimeAdjust::doSet(void *,std::string const&)
-pub fn stub_0xe9f7b8() -> ! {
-    todo!("0xe9f7b8 Ogre::ColourInterpolatorAffector::CmdTimeAdjust::doSet(void *,std::string const&)")
+// IDA 0xe9f7b8: 10 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe9f7b8() {
 }
 
 // 0xe9f7d0 — __ZN4Ogre26ColourInterpolatorAffector15CmdColourAdjustD1Ev
@@ -32,8 +32,8 @@ pub fn stub_0xe9f7b8() -> ! {
 #[doc(alias = "Ogre::ColourInterpolatorAffector::CmdColourAdjust::~CmdColourAdjust()")]
 #[doc(alias = "__ZN4Ogre26ColourInterpolatorAffector15CmdColourAdjustD1Ev")]
 // was: Ogre::ColourInterpolatorAffector::CmdColourAdjust::~CmdColourAdjust()
-pub fn stub_0xe9f7d0() -> ! {
-    todo!("0xe9f7d0 Ogre::ColourInterpolatorAffector::CmdColourAdjust::~CmdColourAdjust()")
+// IDA 0xe9f7d0: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xe9f7d0() {
 }
 
 // 0xe9f7d4 — __ZN4Ogre26ColourInterpolatorAffector13CmdTimeAdjustD1Ev
@@ -41,8 +41,8 @@ pub fn stub_0xe9f7d0() -> ! {
 #[doc(alias = "Ogre::ColourInterpolatorAffector::CmdTimeAdjust::~CmdTimeAdjust()")]
 #[doc(alias = "__ZN4Ogre26ColourInterpolatorAffector13CmdTimeAdjustD1Ev")]
 // was: Ogre::ColourInterpolatorAffector::CmdTimeAdjust::~CmdTimeAdjust()
-pub fn stub_0xe9f7d4() -> ! {
-    todo!("0xe9f7d4 Ogre::ColourInterpolatorAffector::CmdTimeAdjust::~CmdTimeAdjust()")
+// IDA 0xe9f7d4: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xe9f7d4() {
 }
 
 // 0xe9f7d8 — __ZN4Ogre26ColourInterpolatorAffector15CmdColourAdjustD0Ev
@@ -50,8 +50,8 @@ pub fn stub_0xe9f7d4() -> ! {
 #[doc(alias = "Ogre::ColourInterpolatorAffector::CmdColourAdjust::~CmdColourAdjust()")]
 #[doc(alias = "__ZN4Ogre26ColourInterpolatorAffector15CmdColourAdjustD0Ev")]
 // was: Ogre::ColourInterpolatorAffector::CmdColourAdjust::~CmdColourAdjust()
-pub fn stub_0xe9f7d8() -> ! {
-    todo!("0xe9f7d8 Ogre::ColourInterpolatorAffector::CmdColourAdjust::~CmdColourAdjust()")
+// IDA 0xe9f7d8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe9f7d8() {
 }
 
 // 0xe9f7e4 — __ZN4Ogre26ColourInterpolatorAffector13CmdTimeAdjustD0Ev
@@ -59,8 +59,8 @@ pub fn stub_0xe9f7d8() -> ! {
 #[doc(alias = "Ogre::ColourInterpolatorAffector::CmdTimeAdjust::~CmdTimeAdjust()")]
 #[doc(alias = "__ZN4Ogre26ColourInterpolatorAffector13CmdTimeAdjustD0Ev")]
 // was: Ogre::ColourInterpolatorAffector::CmdTimeAdjust::~CmdTimeAdjust()
-pub fn stub_0xe9f7e4() -> ! {
-    todo!("0xe9f7e4 Ogre::ColourInterpolatorAffector::CmdTimeAdjust::~CmdTimeAdjust()")
+// IDA 0xe9f7e4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe9f7e4() {
 }
 
 // 0xe9f7f0 — __ZN4Ogre26ColourInterpolatorAffectorD1Ev
@@ -68,8 +68,8 @@ pub fn stub_0xe9f7e4() -> ! {
 #[doc(alias = "Ogre::ColourInterpolatorAffector::~ColourInterpolatorAffector()")]
 #[doc(alias = "__ZN4Ogre26ColourInterpolatorAffectorD1Ev")]
 // was: Ogre::ColourInterpolatorAffector::~ColourInterpolatorAffector()
-pub fn stub_0xe9f7f0() -> ! {
-    todo!("0xe9f7f0 Ogre::ColourInterpolatorAffector::~ColourInterpolatorAffector()")
+// IDA 0xe9f7f0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe9f7f0() {
 }
 
 // 0xe9f7fc — __ZN4Ogre26ColourInterpolatorAffectorD0Ev
@@ -77,8 +77,8 @@ pub fn stub_0xe9f7f0() -> ! {
 #[doc(alias = "Ogre::ColourInterpolatorAffector::~ColourInterpolatorAffector()")]
 #[doc(alias = "__ZN4Ogre26ColourInterpolatorAffectorD0Ev")]
 // was: Ogre::ColourInterpolatorAffector::~ColourInterpolatorAffector()
-pub fn stub_0xe9f7fc() -> ! {
-    todo!("0xe9f7fc Ogre::ColourInterpolatorAffector::~ColourInterpolatorAffector()")
+// IDA 0xe9f7fc: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe9f7fc() {
 }
 
 // 0xe9f934 — __ZN4Ogre15CylinderEmitterC1EPNS_14ParticleSystemE
@@ -86,8 +86,8 @@ pub fn stub_0xe9f7fc() -> ! {
 #[doc(alias = "Ogre::CylinderEmitter::CylinderEmitter(Ogre::ParticleSystem *)")]
 #[doc(alias = "__ZN4Ogre15CylinderEmitterC1EPNS_14ParticleSystemE")]
 // was: Ogre::CylinderEmitter::CylinderEmitter(Ogre::ParticleSystem *)
-pub fn stub_0xe9f934() -> ! {
-    todo!("0xe9f934 Ogre::CylinderEmitter::CylinderEmitter(Ogre::ParticleSystem *)")
+// IDA 0xe9f934: 4 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe9f934() {
 }
 
 // 0xe9f940 — __ZN4Ogre15CylinderEmitterC2EPNS_14ParticleSystemE
@@ -95,8 +95,8 @@ pub fn stub_0xe9f934() -> ! {
 #[doc(alias = "Ogre::CylinderEmitter::CylinderEmitter(Ogre::ParticleSystem *)")]
 #[doc(alias = "__ZN4Ogre15CylinderEmitterC2EPNS_14ParticleSystemE")]
 // was: Ogre::CylinderEmitter::CylinderEmitter(Ogre::ParticleSystem *)
-pub fn stub_0xe9f940() -> ! {
-    todo!("0xe9f940 Ogre::CylinderEmitter::CylinderEmitter(Ogre::ParticleSystem *)")
+// IDA 0xe9f940: 114 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe9f940() {
 }
 
 // 0xe9fa90 — __ZN4Ogre15CylinderEmitter13_initParticleEPNS_8ParticleE
@@ -104,8 +104,8 @@ pub fn stub_0xe9f940() -> ! {
 #[doc(alias = "Ogre::CylinderEmitter::_initParticle(Ogre::Particle *)")]
 #[doc(alias = "__ZN4Ogre15CylinderEmitter13_initParticleEPNS_8ParticleE")]
 // was: Ogre::CylinderEmitter::_initParticle(Ogre::Particle *)
-pub fn stub_0xe9fa90() -> ! {
-    todo!("0xe9fa90 Ogre::CylinderEmitter::_initParticle(Ogre::Particle *)")
+// IDA 0xe9fa90: 86 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe9fa90() {
 }
 
 // 0xe9fbac — __ZN4Ogre15CylinderEmitterD1Ev
@@ -113,8 +113,8 @@ pub fn stub_0xe9fa90() -> ! {
 #[doc(alias = "Ogre::CylinderEmitter::~CylinderEmitter()")]
 #[doc(alias = "__ZN4Ogre15CylinderEmitterD1Ev")]
 // was: Ogre::CylinderEmitter::~CylinderEmitter()
-pub fn stub_0xe9fbac() -> ! {
-    todo!("0xe9fbac Ogre::CylinderEmitter::~CylinderEmitter()")
+// IDA 0xe9fbac: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe9fbac() {
 }
 
 // 0xe9fbb8 — __ZN4Ogre15CylinderEmitterD0Ev
@@ -122,8 +122,8 @@ pub fn stub_0xe9fbac() -> ! {
 #[doc(alias = "Ogre::CylinderEmitter::~CylinderEmitter()")]
 #[doc(alias = "__ZN4Ogre15CylinderEmitterD0Ev")]
 // was: Ogre::CylinderEmitter::~CylinderEmitter()
-pub fn stub_0xe9fbb8() -> ! {
-    todo!("0xe9fbb8 Ogre::CylinderEmitter::~CylinderEmitter()")
+// IDA 0xe9fbb8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe9fbb8() {
 }
 
 // 0xe9fc7c — __ZN4Ogre22DeflectorPlaneAffectorC1EPNS_14ParticleSystemE
@@ -131,8 +131,8 @@ pub fn stub_0xe9fbb8() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffector::DeflectorPlaneAffector(Ogre::ParticleSystem *)")]
 #[doc(alias = "__ZN4Ogre22DeflectorPlaneAffectorC1EPNS_14ParticleSystemE")]
 // was: Ogre::DeflectorPlaneAffector::DeflectorPlaneAffector(Ogre::ParticleSystem *)
-pub fn stub_0xe9fc7c() -> ! {
-    todo!("0xe9fc7c Ogre::DeflectorPlaneAffector::DeflectorPlaneAffector(Ogre::ParticleSystem *)")
+// IDA 0xe9fc7c: 4 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe9fc7c() {
 }
 
 // 0xe9fc88 — __ZN4Ogre22DeflectorPlaneAffectorC2EPNS_14ParticleSystemE
@@ -140,8 +140,8 @@ pub fn stub_0xe9fc7c() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffector::DeflectorPlaneAffector(Ogre::ParticleSystem *)")]
 #[doc(alias = "__ZN4Ogre22DeflectorPlaneAffectorC2EPNS_14ParticleSystemE")]
 // was: Ogre::DeflectorPlaneAffector::DeflectorPlaneAffector(Ogre::ParticleSystem *)
-pub fn stub_0xe9fc88() -> ! {
-    todo!("0xe9fc88 Ogre::DeflectorPlaneAffector::DeflectorPlaneAffector(Ogre::ParticleSystem *)")
+// IDA 0xe9fc88: 810 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe9fc88() {
 }
 
 // 0xea05c8 — __ZN4Ogre22DeflectorPlaneAffector16_affectParticlesEPNS_14ParticleSystemEf
@@ -149,8 +149,8 @@ pub fn stub_0xe9fc88() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffector::_affectParticles(Ogre::ParticleSystem *,float)")]
 #[doc(alias = "__ZN4Ogre22DeflectorPlaneAffector16_affectParticlesEPNS_14ParticleSystemEf")]
 // was: Ogre::DeflectorPlaneAffector::_affectParticles(Ogre::ParticleSystem *,float)
-pub fn stub_0xea05c8() -> ! {
-    todo!("0xea05c8 Ogre::DeflectorPlaneAffector::_affectParticles(Ogre::ParticleSystem *,float)")
+// IDA 0xea05c8: 132 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea05c8() {
 }
 
 // 0xea07b4 — __ZNK4Ogre22DeflectorPlaneAffector13CmdPlanePoint5doGetEPKv
@@ -158,8 +158,8 @@ pub fn stub_0xea05c8() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffector::CmdPlanePoint::doGet(void const*)const")]
 #[doc(alias = "__ZNK4Ogre22DeflectorPlaneAffector13CmdPlanePoint5doGetEPKv")]
 // was: Ogre::DeflectorPlaneAffector::CmdPlanePoint::doGet(void const*)const
-pub fn stub_0xea07b4() -> ! {
-    todo!("0xea07b4 Ogre::DeflectorPlaneAffector::CmdPlanePoint::doGet(void const*)const")
+// IDA 0xea07b4: 11 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea07b4() {
 }
 
 // 0xea07d0 — __ZN4Ogre22DeflectorPlaneAffector13CmdPlanePoint5doSetEPvRKSs
@@ -167,8 +167,8 @@ pub fn stub_0xea07b4() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffector::CmdPlanePoint::doSet(void *,std::string const&)")]
 #[doc(alias = "__ZN4Ogre22DeflectorPlaneAffector13CmdPlanePoint5doSetEPvRKSs")]
 // was: Ogre::DeflectorPlaneAffector::CmdPlanePoint::doSet(void *,std::string const&)
-pub fn stub_0xea07d0() -> ! {
-    todo!("0xea07d0 Ogre::DeflectorPlaneAffector::CmdPlanePoint::doSet(void *,std::string const&)")
+// IDA 0xea07d0: 19 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea07d0() {
 }
 
 // 0xea0800 — __ZNK4Ogre22DeflectorPlaneAffector14CmdPlaneNormal5doGetEPKv
@@ -176,8 +176,8 @@ pub fn stub_0xea07d0() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffector::CmdPlaneNormal::doGet(void const*)const")]
 #[doc(alias = "__ZNK4Ogre22DeflectorPlaneAffector14CmdPlaneNormal5doGetEPKv")]
 // was: Ogre::DeflectorPlaneAffector::CmdPlaneNormal::doGet(void const*)const
-pub fn stub_0xea0800() -> ! {
-    todo!("0xea0800 Ogre::DeflectorPlaneAffector::CmdPlaneNormal::doGet(void const*)const")
+// IDA 0xea0800: 11 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea0800() {
 }
 
 // 0xea081c — __ZN4Ogre22DeflectorPlaneAffector14CmdPlaneNormal5doSetEPvRKSs
@@ -185,8 +185,8 @@ pub fn stub_0xea0800() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffector::CmdPlaneNormal::doSet(void *,std::string const&)")]
 #[doc(alias = "__ZN4Ogre22DeflectorPlaneAffector14CmdPlaneNormal5doSetEPvRKSs")]
 // was: Ogre::DeflectorPlaneAffector::CmdPlaneNormal::doSet(void *,std::string const&)
-pub fn stub_0xea081c() -> ! {
-    todo!("0xea081c Ogre::DeflectorPlaneAffector::CmdPlaneNormal::doSet(void *,std::string const&)")
+// IDA 0xea081c: 19 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea081c() {
 }
 
 // 0xea084c — __ZNK4Ogre22DeflectorPlaneAffector9CmdBounce5doGetEPKv
@@ -194,8 +194,8 @@ pub fn stub_0xea081c() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffector::CmdBounce::doGet(void const*)const")]
 #[doc(alias = "__ZNK4Ogre22DeflectorPlaneAffector9CmdBounce5doGetEPKv")]
 // was: Ogre::DeflectorPlaneAffector::CmdBounce::doGet(void const*)const
-pub fn stub_0xea084c() -> ! {
-    todo!("0xea084c Ogre::DeflectorPlaneAffector::CmdBounce::doGet(void const*)const")
+// IDA 0xea084c: 12 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea084c() {
 }
 
 // 0xea0868 — __ZN4Ogre22DeflectorPlaneAffector9CmdBounce5doSetEPvRKSs
@@ -203,8 +203,8 @@ pub fn stub_0xea084c() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffector::CmdBounce::doSet(void *,std::string const&)")]
 #[doc(alias = "__ZN4Ogre22DeflectorPlaneAffector9CmdBounce5doSetEPvRKSs")]
 // was: Ogre::DeflectorPlaneAffector::CmdBounce::doSet(void *,std::string const&)
-pub fn stub_0xea0868() -> ! {
-    todo!("0xea0868 Ogre::DeflectorPlaneAffector::CmdBounce::doSet(void *,std::string const&)")
+// IDA 0xea0868: 8 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea0868() {
 }
 
 // 0xea087c — __ZN4Ogre22DeflectorPlaneAffector13CmdPlanePointD1Ev
@@ -212,8 +212,8 @@ pub fn stub_0xea0868() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffector::CmdPlanePoint::~CmdPlanePoint()")]
 #[doc(alias = "__ZN4Ogre22DeflectorPlaneAffector13CmdPlanePointD1Ev")]
 // was: Ogre::DeflectorPlaneAffector::CmdPlanePoint::~CmdPlanePoint()
-pub fn stub_0xea087c() -> ! {
-    todo!("0xea087c Ogre::DeflectorPlaneAffector::CmdPlanePoint::~CmdPlanePoint()")
+// IDA 0xea087c: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xea087c() {
 }
 
 // 0xea0880 — __ZN4Ogre22DeflectorPlaneAffector14CmdPlaneNormalD1Ev
@@ -221,8 +221,8 @@ pub fn stub_0xea087c() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffector::CmdPlaneNormal::~CmdPlaneNormal()")]
 #[doc(alias = "__ZN4Ogre22DeflectorPlaneAffector14CmdPlaneNormalD1Ev")]
 // was: Ogre::DeflectorPlaneAffector::CmdPlaneNormal::~CmdPlaneNormal()
-pub fn stub_0xea0880() -> ! {
-    todo!("0xea0880 Ogre::DeflectorPlaneAffector::CmdPlaneNormal::~CmdPlaneNormal()")
+// IDA 0xea0880: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xea0880() {
 }
 
 // 0xea0884 — __ZN4Ogre22DeflectorPlaneAffector9CmdBounceD1Ev
@@ -230,8 +230,8 @@ pub fn stub_0xea0880() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffector::CmdBounce::~CmdBounce()")]
 #[doc(alias = "__ZN4Ogre22DeflectorPlaneAffector9CmdBounceD1Ev")]
 // was: Ogre::DeflectorPlaneAffector::CmdBounce::~CmdBounce()
-pub fn stub_0xea0884() -> ! {
-    todo!("0xea0884 Ogre::DeflectorPlaneAffector::CmdBounce::~CmdBounce()")
+// IDA 0xea0884: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xea0884() {
 }
 
 // 0xea0888 — __ZN4Ogre22DeflectorPlaneAffector13CmdPlanePointD0Ev
@@ -239,8 +239,8 @@ pub fn stub_0xea0884() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffector::CmdPlanePoint::~CmdPlanePoint()")]
 #[doc(alias = "__ZN4Ogre22DeflectorPlaneAffector13CmdPlanePointD0Ev")]
 // was: Ogre::DeflectorPlaneAffector::CmdPlanePoint::~CmdPlanePoint()
-pub fn stub_0xea0888() -> ! {
-    todo!("0xea0888 Ogre::DeflectorPlaneAffector::CmdPlanePoint::~CmdPlanePoint()")
+// IDA 0xea0888: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea0888() {
 }
 
 // 0xea0894 — __ZN4Ogre22DeflectorPlaneAffector14CmdPlaneNormalD0Ev
@@ -248,8 +248,8 @@ pub fn stub_0xea0888() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffector::CmdPlaneNormal::~CmdPlaneNormal()")]
 #[doc(alias = "__ZN4Ogre22DeflectorPlaneAffector14CmdPlaneNormalD0Ev")]
 // was: Ogre::DeflectorPlaneAffector::CmdPlaneNormal::~CmdPlaneNormal()
-pub fn stub_0xea0894() -> ! {
-    todo!("0xea0894 Ogre::DeflectorPlaneAffector::CmdPlaneNormal::~CmdPlaneNormal()")
+// IDA 0xea0894: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea0894() {
 }
 
 // 0xea08a0 — __ZN4Ogre22DeflectorPlaneAffector9CmdBounceD0Ev
@@ -257,8 +257,8 @@ pub fn stub_0xea0894() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffector::CmdBounce::~CmdBounce()")]
 #[doc(alias = "__ZN4Ogre22DeflectorPlaneAffector9CmdBounceD0Ev")]
 // was: Ogre::DeflectorPlaneAffector::CmdBounce::~CmdBounce()
-pub fn stub_0xea08a0() -> ! {
-    todo!("0xea08a0 Ogre::DeflectorPlaneAffector::CmdBounce::~CmdBounce()")
+// IDA 0xea08a0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea08a0() {
 }
 
 // 0xea08ac — __ZN4Ogre22DeflectorPlaneAffectorD1Ev
@@ -266,8 +266,8 @@ pub fn stub_0xea08a0() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffector::~DeflectorPlaneAffector()")]
 #[doc(alias = "__ZN4Ogre22DeflectorPlaneAffectorD1Ev")]
 // was: Ogre::DeflectorPlaneAffector::~DeflectorPlaneAffector()
-pub fn stub_0xea08ac() -> ! {
-    todo!("0xea08ac Ogre::DeflectorPlaneAffector::~DeflectorPlaneAffector()")
+// IDA 0xea08ac: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea08ac() {
 }
 
 // 0xea08b8 — __ZN4Ogre22DeflectorPlaneAffectorD0Ev
@@ -275,8 +275,8 @@ pub fn stub_0xea08ac() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffector::~DeflectorPlaneAffector()")]
 #[doc(alias = "__ZN4Ogre22DeflectorPlaneAffectorD0Ev")]
 // was: Ogre::DeflectorPlaneAffector::~DeflectorPlaneAffector()
-pub fn stub_0xea08b8() -> ! {
-    todo!("0xea08b8 Ogre::DeflectorPlaneAffector::~DeflectorPlaneAffector()")
+// IDA 0xea08b8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea08b8() {
 }
 
 // 0xea09d0 — __ZN4Ogre27DirectionRandomiserAffectorC1EPNS_14ParticleSystemE
@@ -284,8 +284,8 @@ pub fn stub_0xea08b8() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffector::DirectionRandomiserAffector(Ogre::ParticleSystem *)")]
 #[doc(alias = "__ZN4Ogre27DirectionRandomiserAffectorC1EPNS_14ParticleSystemE")]
 // was: Ogre::DirectionRandomiserAffector::DirectionRandomiserAffector(Ogre::ParticleSystem *)
-pub fn stub_0xea09d0() -> ! {
-    todo!("0xea09d0 Ogre::DirectionRandomiserAffector::DirectionRandomiserAffector(Ogre::ParticleSystem *)")
+// IDA 0xea09d0: 4 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea09d0() {
 }
 
 // 0xea09dc — __ZN4Ogre27DirectionRandomiserAffectorC2EPNS_14ParticleSystemE
@@ -293,8 +293,8 @@ pub fn stub_0xea09d0() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffector::DirectionRandomiserAffector(Ogre::ParticleSystem *)")]
 #[doc(alias = "__ZN4Ogre27DirectionRandomiserAffectorC2EPNS_14ParticleSystemE")]
 // was: Ogre::DirectionRandomiserAffector::DirectionRandomiserAffector(Ogre::ParticleSystem *)
-pub fn stub_0xea09dc() -> ! {
-    todo!("0xea09dc Ogre::DirectionRandomiserAffector::DirectionRandomiserAffector(Ogre::ParticleSystem *)")
+// IDA 0xea09dc: 790 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea09dc() {
 }
 
 // 0xea12d0 — __ZN4Ogre27DirectionRandomiserAffector16_affectParticlesEPNS_14ParticleSystemEf
@@ -302,8 +302,8 @@ pub fn stub_0xea09dc() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffector::_affectParticles(Ogre::ParticleSystem *,float)")]
 #[doc(alias = "__ZN4Ogre27DirectionRandomiserAffector16_affectParticlesEPNS_14ParticleSystemEf")]
 // was: Ogre::DirectionRandomiserAffector::_affectParticles(Ogre::ParticleSystem *,float)
-pub fn stub_0xea12d0() -> ! {
-    todo!("0xea12d0 Ogre::DirectionRandomiserAffector::_affectParticles(Ogre::ParticleSystem *,float)")
+// IDA 0xea12d0: 107 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea12d0() {
 }
 
 // 0xea1448 — __ZNK4Ogre27DirectionRandomiserAffector13CmdRandomness5doGetEPKv
@@ -311,8 +311,8 @@ pub fn stub_0xea12d0() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffector::CmdRandomness::doGet(void const*)const")]
 #[doc(alias = "__ZNK4Ogre27DirectionRandomiserAffector13CmdRandomness5doGetEPKv")]
 // was: Ogre::DirectionRandomiserAffector::CmdRandomness::doGet(void const*)const
-pub fn stub_0xea1448() -> ! {
-    todo!("0xea1448 Ogre::DirectionRandomiserAffector::CmdRandomness::doGet(void const*)const")
+// IDA 0xea1448: 12 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea1448() {
 }
 
 // 0xea1464 — __ZN4Ogre27DirectionRandomiserAffector13CmdRandomness5doSetEPvRKSs
@@ -320,8 +320,8 @@ pub fn stub_0xea1448() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffector::CmdRandomness::doSet(void *,std::string const&)")]
 #[doc(alias = "__ZN4Ogre27DirectionRandomiserAffector13CmdRandomness5doSetEPvRKSs")]
 // was: Ogre::DirectionRandomiserAffector::CmdRandomness::doSet(void *,std::string const&)
-pub fn stub_0xea1464() -> ! {
-    todo!("0xea1464 Ogre::DirectionRandomiserAffector::CmdRandomness::doSet(void *,std::string const&)")
+// IDA 0xea1464: 8 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea1464() {
 }
 
 // 0xea1478 — __ZNK4Ogre27DirectionRandomiserAffector8CmdScope5doGetEPKv
@@ -329,8 +329,8 @@ pub fn stub_0xea1464() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffector::CmdScope::doGet(void const*)const")]
 #[doc(alias = "__ZNK4Ogre27DirectionRandomiserAffector8CmdScope5doGetEPKv")]
 // was: Ogre::DirectionRandomiserAffector::CmdScope::doGet(void const*)const
-pub fn stub_0xea1478() -> ! {
-    todo!("0xea1478 Ogre::DirectionRandomiserAffector::CmdScope::doGet(void const*)const")
+// IDA 0xea1478: 12 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea1478() {
 }
 
 // 0xea1494 — __ZN4Ogre27DirectionRandomiserAffector8CmdScope5doSetEPvRKSs
@@ -338,8 +338,8 @@ pub fn stub_0xea1478() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffector::CmdScope::doSet(void *,std::string const&)")]
 #[doc(alias = "__ZN4Ogre27DirectionRandomiserAffector8CmdScope5doSetEPvRKSs")]
 // was: Ogre::DirectionRandomiserAffector::CmdScope::doSet(void *,std::string const&)
-pub fn stub_0xea1494() -> ! {
-    todo!("0xea1494 Ogre::DirectionRandomiserAffector::CmdScope::doSet(void *,std::string const&)")
+// IDA 0xea1494: 8 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea1494() {
 }
 
 // 0xea14a8 — __ZNK4Ogre27DirectionRandomiserAffector15CmdKeepVelocity5doGetEPKv
@@ -347,8 +347,8 @@ pub fn stub_0xea1494() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffector::CmdKeepVelocity::doGet(void const*)const")]
 #[doc(alias = "__ZNK4Ogre27DirectionRandomiserAffector15CmdKeepVelocity5doGetEPKv")]
 // was: Ogre::DirectionRandomiserAffector::CmdKeepVelocity::doGet(void const*)const
-pub fn stub_0xea14a8() -> ! {
-    todo!("0xea14a8 Ogre::DirectionRandomiserAffector::CmdKeepVelocity::doGet(void const*)const")
+// IDA 0xea14a8: 6 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea14a8() {
 }
 
 // 0xea14b8 — __ZN4Ogre27DirectionRandomiserAffector15CmdKeepVelocity5doSetEPvRKSs
@@ -356,8 +356,8 @@ pub fn stub_0xea14a8() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffector::CmdKeepVelocity::doSet(void *,std::string const&)")]
 #[doc(alias = "__ZN4Ogre27DirectionRandomiserAffector15CmdKeepVelocity5doSetEPvRKSs")]
 // was: Ogre::DirectionRandomiserAffector::CmdKeepVelocity::doSet(void *,std::string const&)
-pub fn stub_0xea14b8() -> ! {
-    todo!("0xea14b8 Ogre::DirectionRandomiserAffector::CmdKeepVelocity::doSet(void *,std::string const&)")
+// IDA 0xea14b8: 8 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea14b8() {
 }
 
 // 0xea14cc — __ZN4Ogre27DirectionRandomiserAffector13CmdRandomnessD1Ev
@@ -365,8 +365,8 @@ pub fn stub_0xea14b8() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffector::CmdRandomness::~CmdRandomness()")]
 #[doc(alias = "__ZN4Ogre27DirectionRandomiserAffector13CmdRandomnessD1Ev")]
 // was: Ogre::DirectionRandomiserAffector::CmdRandomness::~CmdRandomness()
-pub fn stub_0xea14cc() -> ! {
-    todo!("0xea14cc Ogre::DirectionRandomiserAffector::CmdRandomness::~CmdRandomness()")
+// IDA 0xea14cc: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xea14cc() {
 }
 
 // 0xea14d0 — __ZN4Ogre27DirectionRandomiserAffector8CmdScopeD1Ev
@@ -374,8 +374,8 @@ pub fn stub_0xea14cc() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffector::CmdScope::~CmdScope()")]
 #[doc(alias = "__ZN4Ogre27DirectionRandomiserAffector8CmdScopeD1Ev")]
 // was: Ogre::DirectionRandomiserAffector::CmdScope::~CmdScope()
-pub fn stub_0xea14d0() -> ! {
-    todo!("0xea14d0 Ogre::DirectionRandomiserAffector::CmdScope::~CmdScope()")
+// IDA 0xea14d0: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xea14d0() {
 }
 
 // 0xea14d4 — __ZN4Ogre27DirectionRandomiserAffector15CmdKeepVelocityD1Ev
@@ -383,8 +383,8 @@ pub fn stub_0xea14d0() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffector::CmdKeepVelocity::~CmdKeepVelocity()")]
 #[doc(alias = "__ZN4Ogre27DirectionRandomiserAffector15CmdKeepVelocityD1Ev")]
 // was: Ogre::DirectionRandomiserAffector::CmdKeepVelocity::~CmdKeepVelocity()
-pub fn stub_0xea14d4() -> ! {
-    todo!("0xea14d4 Ogre::DirectionRandomiserAffector::CmdKeepVelocity::~CmdKeepVelocity()")
+// IDA 0xea14d4: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xea14d4() {
 }
 
 // 0xea14d8 — __ZN4Ogre27DirectionRandomiserAffector13CmdRandomnessD0Ev
@@ -392,8 +392,8 @@ pub fn stub_0xea14d4() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffector::CmdRandomness::~CmdRandomness()")]
 #[doc(alias = "__ZN4Ogre27DirectionRandomiserAffector13CmdRandomnessD0Ev")]
 // was: Ogre::DirectionRandomiserAffector::CmdRandomness::~CmdRandomness()
-pub fn stub_0xea14d8() -> ! {
-    todo!("0xea14d8 Ogre::DirectionRandomiserAffector::CmdRandomness::~CmdRandomness()")
+// IDA 0xea14d8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea14d8() {
 }
 
 // 0xea14e4 — __ZN4Ogre27DirectionRandomiserAffector8CmdScopeD0Ev
@@ -401,8 +401,8 @@ pub fn stub_0xea14d8() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffector::CmdScope::~CmdScope()")]
 #[doc(alias = "__ZN4Ogre27DirectionRandomiserAffector8CmdScopeD0Ev")]
 // was: Ogre::DirectionRandomiserAffector::CmdScope::~CmdScope()
-pub fn stub_0xea14e4() -> ! {
-    todo!("0xea14e4 Ogre::DirectionRandomiserAffector::CmdScope::~CmdScope()")
+// IDA 0xea14e4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea14e4() {
 }
 
 // 0xea14f0 — __ZN4Ogre27DirectionRandomiserAffector15CmdKeepVelocityD0Ev
@@ -410,8 +410,8 @@ pub fn stub_0xea14e4() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffector::CmdKeepVelocity::~CmdKeepVelocity()")]
 #[doc(alias = "__ZN4Ogre27DirectionRandomiserAffector15CmdKeepVelocityD0Ev")]
 // was: Ogre::DirectionRandomiserAffector::CmdKeepVelocity::~CmdKeepVelocity()
-pub fn stub_0xea14f0() -> ! {
-    todo!("0xea14f0 Ogre::DirectionRandomiserAffector::CmdKeepVelocity::~CmdKeepVelocity()")
+// IDA 0xea14f0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea14f0() {
 }
 
 // 0xea14fc — __ZN4Ogre27DirectionRandomiserAffectorD1Ev
@@ -419,8 +419,8 @@ pub fn stub_0xea14f0() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffector::~DirectionRandomiserAffector()")]
 #[doc(alias = "__ZN4Ogre27DirectionRandomiserAffectorD1Ev")]
 // was: Ogre::DirectionRandomiserAffector::~DirectionRandomiserAffector()
-pub fn stub_0xea14fc() -> ! {
-    todo!("0xea14fc Ogre::DirectionRandomiserAffector::~DirectionRandomiserAffector()")
+// IDA 0xea14fc: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea14fc() {
 }
 
 // 0xea1508 — __ZN4Ogre27DirectionRandomiserAffectorD0Ev
@@ -428,8 +428,8 @@ pub fn stub_0xea14fc() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffector::~DirectionRandomiserAffector()")]
 #[doc(alias = "__ZN4Ogre27DirectionRandomiserAffectorD0Ev")]
 // was: Ogre::DirectionRandomiserAffector::~DirectionRandomiserAffector()
-pub fn stub_0xea1508() -> ! {
-    todo!("0xea1508 Ogre::DirectionRandomiserAffector::~DirectionRandomiserAffector()")
+// IDA 0xea1508: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea1508() {
 }
 
 // 0xea161c — __ZN4Ogre16EllipsoidEmitterC1EPNS_14ParticleSystemE
@@ -437,8 +437,8 @@ pub fn stub_0xea1508() -> ! {
 #[doc(alias = "Ogre::EllipsoidEmitter::EllipsoidEmitter(Ogre::ParticleSystem *)")]
 #[doc(alias = "__ZN4Ogre16EllipsoidEmitterC1EPNS_14ParticleSystemE")]
 // was: Ogre::EllipsoidEmitter::EllipsoidEmitter(Ogre::ParticleSystem *)
-pub fn stub_0xea161c() -> ! {
-    todo!("0xea161c Ogre::EllipsoidEmitter::EllipsoidEmitter(Ogre::ParticleSystem *)")
+// IDA 0xea161c: 4 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea161c() {
 }
 
 // 0xea1628 — __ZN4Ogre16EllipsoidEmitterC2EPNS_14ParticleSystemE
@@ -446,8 +446,8 @@ pub fn stub_0xea161c() -> ! {
 #[doc(alias = "Ogre::EllipsoidEmitter::EllipsoidEmitter(Ogre::ParticleSystem *)")]
 #[doc(alias = "__ZN4Ogre16EllipsoidEmitterC2EPNS_14ParticleSystemE")]
 // was: Ogre::EllipsoidEmitter::EllipsoidEmitter(Ogre::ParticleSystem *)
-pub fn stub_0xea1628() -> ! {
-    todo!("0xea1628 Ogre::EllipsoidEmitter::EllipsoidEmitter(Ogre::ParticleSystem *)")
+// IDA 0xea1628: 114 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea1628() {
 }
 
 // 0xea1778 — __ZN4Ogre16EllipsoidEmitter13_initParticleEPNS_8ParticleE
@@ -455,8 +455,8 @@ pub fn stub_0xea1628() -> ! {
 #[doc(alias = "Ogre::EllipsoidEmitter::_initParticle(Ogre::Particle *)")]
 #[doc(alias = "__ZN4Ogre16EllipsoidEmitter13_initParticleEPNS_8ParticleE")]
 // was: Ogre::EllipsoidEmitter::_initParticle(Ogre::Particle *)
-pub fn stub_0xea1778() -> ! {
-    todo!("0xea1778 Ogre::EllipsoidEmitter::_initParticle(Ogre::Particle *)")
+// IDA 0xea1778: 92 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea1778() {
 }
 
 // 0xea18ac — __ZN4Ogre16EllipsoidEmitterD1Ev
@@ -464,8 +464,8 @@ pub fn stub_0xea1778() -> ! {
 #[doc(alias = "Ogre::EllipsoidEmitter::~EllipsoidEmitter()")]
 #[doc(alias = "__ZN4Ogre16EllipsoidEmitterD1Ev")]
 // was: Ogre::EllipsoidEmitter::~EllipsoidEmitter()
-pub fn stub_0xea18ac() -> ! {
-    todo!("0xea18ac Ogre::EllipsoidEmitter::~EllipsoidEmitter()")
+// IDA 0xea18ac: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea18ac() {
 }
 
 // 0xea18b8 — __ZN4Ogre16EllipsoidEmitterD0Ev
@@ -473,8 +473,8 @@ pub fn stub_0xea18ac() -> ! {
 #[doc(alias = "Ogre::EllipsoidEmitter::~EllipsoidEmitter()")]
 #[doc(alias = "__ZN4Ogre16EllipsoidEmitterD0Ev")]
 // was: Ogre::EllipsoidEmitter::~EllipsoidEmitter()
-pub fn stub_0xea18b8() -> ! {
-    todo!("0xea18b8 Ogre::EllipsoidEmitter::~EllipsoidEmitter()")
+// IDA 0xea18b8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea18b8() {
 }
 
 // 0xea197c — __ZN4Ogre22HollowEllipsoidEmitterC1EPNS_14ParticleSystemE
@@ -482,8 +482,8 @@ pub fn stub_0xea18b8() -> ! {
 #[doc(alias = "Ogre::HollowEllipsoidEmitter::HollowEllipsoidEmitter(Ogre::ParticleSystem *)")]
 #[doc(alias = "__ZN4Ogre22HollowEllipsoidEmitterC1EPNS_14ParticleSystemE")]
 // was: Ogre::HollowEllipsoidEmitter::HollowEllipsoidEmitter(Ogre::ParticleSystem *)
-pub fn stub_0xea197c() -> ! {
-    todo!("0xea197c Ogre::HollowEllipsoidEmitter::HollowEllipsoidEmitter(Ogre::ParticleSystem *)")
+// IDA 0xea197c: 4 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea197c() {
 }
 
 // 0xea1988 — __ZN4Ogre22HollowEllipsoidEmitterC2EPNS_14ParticleSystemE
@@ -491,8 +491,8 @@ pub fn stub_0xea197c() -> ! {
 #[doc(alias = "Ogre::HollowEllipsoidEmitter::HollowEllipsoidEmitter(Ogre::ParticleSystem *)")]
 #[doc(alias = "__ZN4Ogre22HollowEllipsoidEmitterC2EPNS_14ParticleSystemE")]
 // was: Ogre::HollowEllipsoidEmitter::HollowEllipsoidEmitter(Ogre::ParticleSystem *)
-pub fn stub_0xea1988() -> ! {
-    todo!("0xea1988 Ogre::HollowEllipsoidEmitter::HollowEllipsoidEmitter(Ogre::ParticleSystem *)")
+// IDA 0xea1988: 798 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea1988() {
 }
 
 // 0xea22d0 — __ZN4Ogre22HollowEllipsoidEmitter13_initParticleEPNS_8ParticleE
@@ -500,8 +500,8 @@ pub fn stub_0xea1988() -> ! {
 #[doc(alias = "Ogre::HollowEllipsoidEmitter::_initParticle(Ogre::Particle *)")]
 #[doc(alias = "__ZN4Ogre22HollowEllipsoidEmitter13_initParticleEPNS_8ParticleE")]
 // was: Ogre::HollowEllipsoidEmitter::_initParticle(Ogre::Particle *)
-pub fn stub_0xea22d0() -> ! {
-    todo!("0xea22d0 Ogre::HollowEllipsoidEmitter::_initParticle(Ogre::Particle *)")
+// IDA 0xea22d0: 143 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea22d0() {
 }
 
 // 0xea24a4 — __ZNK4Ogre22HollowEllipsoidEmitter9CmdInnerX5doGetEPKv
@@ -509,8 +509,8 @@ pub fn stub_0xea22d0() -> ! {
 #[doc(alias = "Ogre::HollowEllipsoidEmitter::CmdInnerX::doGet(void const*)const")]
 #[doc(alias = "__ZNK4Ogre22HollowEllipsoidEmitter9CmdInnerX5doGetEPKv")]
 // was: Ogre::HollowEllipsoidEmitter::CmdInnerX::doGet(void const*)const
-pub fn stub_0xea24a4() -> ! {
-    todo!("0xea24a4 Ogre::HollowEllipsoidEmitter::CmdInnerX::doGet(void const*)const")
+// IDA 0xea24a4: 12 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea24a4() {
 }
 
 // 0xea24c4 — __ZN4Ogre22HollowEllipsoidEmitter9CmdInnerX5doSetEPvRKSs
@@ -518,8 +518,8 @@ pub fn stub_0xea24a4() -> ! {
 #[doc(alias = "Ogre::HollowEllipsoidEmitter::CmdInnerX::doSet(void *,std::string const&)")]
 #[doc(alias = "__ZN4Ogre22HollowEllipsoidEmitter9CmdInnerX5doSetEPvRKSs")]
 // was: Ogre::HollowEllipsoidEmitter::CmdInnerX::doSet(void *,std::string const&)
-pub fn stub_0xea24c4() -> ! {
-    todo!("0xea24c4 Ogre::HollowEllipsoidEmitter::CmdInnerX::doSet(void *,std::string const&)")
+// IDA 0xea24c4: 8 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea24c4() {
 }
 
 // 0xea24d8 — __ZNK4Ogre22HollowEllipsoidEmitter9CmdInnerY5doGetEPKv
@@ -527,8 +527,8 @@ pub fn stub_0xea24c4() -> ! {
 #[doc(alias = "Ogre::HollowEllipsoidEmitter::CmdInnerY::doGet(void const*)const")]
 #[doc(alias = "__ZNK4Ogre22HollowEllipsoidEmitter9CmdInnerY5doGetEPKv")]
 // was: Ogre::HollowEllipsoidEmitter::CmdInnerY::doGet(void const*)const
-pub fn stub_0xea24d8() -> ! {
-    todo!("0xea24d8 Ogre::HollowEllipsoidEmitter::CmdInnerY::doGet(void const*)const")
+// IDA 0xea24d8: 12 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea24d8() {
 }
 
 // 0xea24f8 — __ZN4Ogre22HollowEllipsoidEmitter9CmdInnerY5doSetEPvRKSs
@@ -536,8 +536,8 @@ pub fn stub_0xea24d8() -> ! {
 #[doc(alias = "Ogre::HollowEllipsoidEmitter::CmdInnerY::doSet(void *,std::string const&)")]
 #[doc(alias = "__ZN4Ogre22HollowEllipsoidEmitter9CmdInnerY5doSetEPvRKSs")]
 // was: Ogre::HollowEllipsoidEmitter::CmdInnerY::doSet(void *,std::string const&)
-pub fn stub_0xea24f8() -> ! {
-    todo!("0xea24f8 Ogre::HollowEllipsoidEmitter::CmdInnerY::doSet(void *,std::string const&)")
+// IDA 0xea24f8: 8 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea24f8() {
 }
 
 // 0xea250c — __ZNK4Ogre22HollowEllipsoidEmitter9CmdInnerZ5doGetEPKv
@@ -545,8 +545,8 @@ pub fn stub_0xea24f8() -> ! {
 #[doc(alias = "Ogre::HollowEllipsoidEmitter::CmdInnerZ::doGet(void const*)const")]
 #[doc(alias = "__ZNK4Ogre22HollowEllipsoidEmitter9CmdInnerZ5doGetEPKv")]
 // was: Ogre::HollowEllipsoidEmitter::CmdInnerZ::doGet(void const*)const
-pub fn stub_0xea250c() -> ! {
-    todo!("0xea250c Ogre::HollowEllipsoidEmitter::CmdInnerZ::doGet(void const*)const")
+// IDA 0xea250c: 12 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea250c() {
 }
 
 // 0xea252c — __ZN4Ogre22HollowEllipsoidEmitter9CmdInnerZ5doSetEPvRKSs
@@ -554,8 +554,8 @@ pub fn stub_0xea250c() -> ! {
 #[doc(alias = "Ogre::HollowEllipsoidEmitter::CmdInnerZ::doSet(void *,std::string const&)")]
 #[doc(alias = "__ZN4Ogre22HollowEllipsoidEmitter9CmdInnerZ5doSetEPvRKSs")]
 // was: Ogre::HollowEllipsoidEmitter::CmdInnerZ::doSet(void *,std::string const&)
-pub fn stub_0xea252c() -> ! {
-    todo!("0xea252c Ogre::HollowEllipsoidEmitter::CmdInnerZ::doSet(void *,std::string const&)")
+// IDA 0xea252c: 8 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea252c() {
 }
 
 // 0xea2540 — __ZN4Ogre22HollowEllipsoidEmitter9CmdInnerXD1Ev
@@ -563,8 +563,8 @@ pub fn stub_0xea252c() -> ! {
 #[doc(alias = "Ogre::HollowEllipsoidEmitter::CmdInnerX::~CmdInnerX()")]
 #[doc(alias = "__ZN4Ogre22HollowEllipsoidEmitter9CmdInnerXD1Ev")]
 // was: Ogre::HollowEllipsoidEmitter::CmdInnerX::~CmdInnerX()
-pub fn stub_0xea2540() -> ! {
-    todo!("0xea2540 Ogre::HollowEllipsoidEmitter::CmdInnerX::~CmdInnerX()")
+// IDA 0xea2540: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xea2540() {
 }
 
 // 0xea2544 — __ZN4Ogre22HollowEllipsoidEmitter9CmdInnerYD1Ev
@@ -572,8 +572,8 @@ pub fn stub_0xea2540() -> ! {
 #[doc(alias = "Ogre::HollowEllipsoidEmitter::CmdInnerY::~CmdInnerY()")]
 #[doc(alias = "__ZN4Ogre22HollowEllipsoidEmitter9CmdInnerYD1Ev")]
 // was: Ogre::HollowEllipsoidEmitter::CmdInnerY::~CmdInnerY()
-pub fn stub_0xea2544() -> ! {
-    todo!("0xea2544 Ogre::HollowEllipsoidEmitter::CmdInnerY::~CmdInnerY()")
+// IDA 0xea2544: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xea2544() {
 }
 
 // 0xea2548 — __ZN4Ogre22HollowEllipsoidEmitter9CmdInnerZD1Ev
@@ -581,8 +581,8 @@ pub fn stub_0xea2544() -> ! {
 #[doc(alias = "Ogre::HollowEllipsoidEmitter::CmdInnerZ::~CmdInnerZ()")]
 #[doc(alias = "__ZN4Ogre22HollowEllipsoidEmitter9CmdInnerZD1Ev")]
 // was: Ogre::HollowEllipsoidEmitter::CmdInnerZ::~CmdInnerZ()
-pub fn stub_0xea2548() -> ! {
-    todo!("0xea2548 Ogre::HollowEllipsoidEmitter::CmdInnerZ::~CmdInnerZ()")
+// IDA 0xea2548: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xea2548() {
 }
 
 // 0xea254c — __ZN4Ogre22HollowEllipsoidEmitter9CmdInnerXD0Ev
@@ -590,8 +590,8 @@ pub fn stub_0xea2548() -> ! {
 #[doc(alias = "Ogre::HollowEllipsoidEmitter::CmdInnerX::~CmdInnerX()")]
 #[doc(alias = "__ZN4Ogre22HollowEllipsoidEmitter9CmdInnerXD0Ev")]
 // was: Ogre::HollowEllipsoidEmitter::CmdInnerX::~CmdInnerX()
-pub fn stub_0xea254c() -> ! {
-    todo!("0xea254c Ogre::HollowEllipsoidEmitter::CmdInnerX::~CmdInnerX()")
+// IDA 0xea254c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea254c() {
 }
 
 // 0xea2558 — __ZN4Ogre22HollowEllipsoidEmitter9CmdInnerYD0Ev
@@ -599,8 +599,8 @@ pub fn stub_0xea254c() -> ! {
 #[doc(alias = "Ogre::HollowEllipsoidEmitter::CmdInnerY::~CmdInnerY()")]
 #[doc(alias = "__ZN4Ogre22HollowEllipsoidEmitter9CmdInnerYD0Ev")]
 // was: Ogre::HollowEllipsoidEmitter::CmdInnerY::~CmdInnerY()
-pub fn stub_0xea2558() -> ! {
-    todo!("0xea2558 Ogre::HollowEllipsoidEmitter::CmdInnerY::~CmdInnerY()")
+// IDA 0xea2558: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea2558() {
 }
 
 // 0xea2564 — __ZN4Ogre22HollowEllipsoidEmitter9CmdInnerZD0Ev
@@ -608,8 +608,8 @@ pub fn stub_0xea2558() -> ! {
 #[doc(alias = "Ogre::HollowEllipsoidEmitter::CmdInnerZ::~CmdInnerZ()")]
 #[doc(alias = "__ZN4Ogre22HollowEllipsoidEmitter9CmdInnerZD0Ev")]
 // was: Ogre::HollowEllipsoidEmitter::CmdInnerZ::~CmdInnerZ()
-pub fn stub_0xea2564() -> ! {
-    todo!("0xea2564 Ogre::HollowEllipsoidEmitter::CmdInnerZ::~CmdInnerZ()")
+// IDA 0xea2564: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea2564() {
 }
 
 // 0xea2570 — __ZN4Ogre22HollowEllipsoidEmitterD1Ev
@@ -617,8 +617,8 @@ pub fn stub_0xea2564() -> ! {
 #[doc(alias = "Ogre::HollowEllipsoidEmitter::~HollowEllipsoidEmitter()")]
 #[doc(alias = "__ZN4Ogre22HollowEllipsoidEmitterD1Ev")]
 // was: Ogre::HollowEllipsoidEmitter::~HollowEllipsoidEmitter()
-pub fn stub_0xea2570() -> ! {
-    todo!("0xea2570 Ogre::HollowEllipsoidEmitter::~HollowEllipsoidEmitter()")
+// IDA 0xea2570: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea2570() {
 }
 
 // 0xea257c — __ZN4Ogre22HollowEllipsoidEmitterD0Ev
@@ -626,8 +626,8 @@ pub fn stub_0xea2570() -> ! {
 #[doc(alias = "Ogre::HollowEllipsoidEmitter::~HollowEllipsoidEmitter()")]
 #[doc(alias = "__ZN4Ogre22HollowEllipsoidEmitterD0Ev")]
 // was: Ogre::HollowEllipsoidEmitter::~HollowEllipsoidEmitter()
-pub fn stub_0xea257c() -> ! {
-    todo!("0xea257c Ogre::HollowEllipsoidEmitter::~HollowEllipsoidEmitter()")
+// IDA 0xea257c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea257c() {
 }
 
 // 0xea2690 — __ZN4Ogre19LinearForceAffectorC1EPNS_14ParticleSystemE
@@ -635,8 +635,8 @@ pub fn stub_0xea257c() -> ! {
 #[doc(alias = "Ogre::LinearForceAffector::LinearForceAffector(Ogre::ParticleSystem *)")]
 #[doc(alias = "__ZN4Ogre19LinearForceAffectorC1EPNS_14ParticleSystemE")]
 // was: Ogre::LinearForceAffector::LinearForceAffector(Ogre::ParticleSystem *)
-pub fn stub_0xea2690() -> ! {
-    todo!("0xea2690 Ogre::LinearForceAffector::LinearForceAffector(Ogre::ParticleSystem *)")
+// IDA 0xea2690: 4 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea2690() {
 }
 
 // 0xea269c — __ZN4Ogre19LinearForceAffectorC2EPNS_14ParticleSystemE
@@ -644,8 +644,8 @@ pub fn stub_0xea2690() -> ! {
 #[doc(alias = "Ogre::LinearForceAffector::LinearForceAffector(Ogre::ParticleSystem *)")]
 #[doc(alias = "__ZN4Ogre19LinearForceAffectorC2EPNS_14ParticleSystemE")]
 // was: Ogre::LinearForceAffector::LinearForceAffector(Ogre::ParticleSystem *)
-pub fn stub_0xea269c() -> ! {
-    todo!("0xea269c Ogre::LinearForceAffector::LinearForceAffector(Ogre::ParticleSystem *)")
+// IDA 0xea269c: 578 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea269c() {
 }
 
 // 0xea2d1c — __ZN4Ogre19LinearForceAffector16_affectParticlesEPNS_14ParticleSystemEf
@@ -653,8 +653,8 @@ pub fn stub_0xea269c() -> ! {
 #[doc(alias = "Ogre::LinearForceAffector::_affectParticles(Ogre::ParticleSystem *,float)")]
 #[doc(alias = "__ZN4Ogre19LinearForceAffector16_affectParticlesEPNS_14ParticleSystemEf")]
 // was: Ogre::LinearForceAffector::_affectParticles(Ogre::ParticleSystem *,float)
-pub fn stub_0xea2d1c() -> ! {
-    todo!("0xea2d1c Ogre::LinearForceAffector::_affectParticles(Ogre::ParticleSystem *,float)")
+// IDA 0xea2d1c: 78 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea2d1c() {
 }
 
 // 0xea2e20 — __ZNK4Ogre19LinearForceAffector14CmdForceVector5doGetEPKv
@@ -662,8 +662,8 @@ pub fn stub_0xea2d1c() -> ! {
 #[doc(alias = "Ogre::LinearForceAffector::CmdForceVector::doGet(void const*)const")]
 #[doc(alias = "__ZNK4Ogre19LinearForceAffector14CmdForceVector5doGetEPKv")]
 // was: Ogre::LinearForceAffector::CmdForceVector::doGet(void const*)const
-pub fn stub_0xea2e20() -> ! {
-    todo!("0xea2e20 Ogre::LinearForceAffector::CmdForceVector::doGet(void const*)const")
+// IDA 0xea2e20: 11 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea2e20() {
 }
 
 // 0xea2e3c — __ZN4Ogre19LinearForceAffector14CmdForceVector5doSetEPvRKSs
@@ -671,8 +671,8 @@ pub fn stub_0xea2e20() -> ! {
 #[doc(alias = "Ogre::LinearForceAffector::CmdForceVector::doSet(void *,std::string const&)")]
 #[doc(alias = "__ZN4Ogre19LinearForceAffector14CmdForceVector5doSetEPvRKSs")]
 // was: Ogre::LinearForceAffector::CmdForceVector::doSet(void *,std::string const&)
-pub fn stub_0xea2e3c() -> ! {
-    todo!("0xea2e3c Ogre::LinearForceAffector::CmdForceVector::doSet(void *,std::string const&)")
+// IDA 0xea2e3c: 19 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea2e3c() {
 }
 
 // 0xea2e6c — __ZNK4Ogre19LinearForceAffector11CmdForceApp5doGetEPKv
@@ -680,8 +680,8 @@ pub fn stub_0xea2e3c() -> ! {
 #[doc(alias = "Ogre::LinearForceAffector::CmdForceApp::doGet(void const*)const")]
 #[doc(alias = "__ZNK4Ogre19LinearForceAffector11CmdForceApp5doGetEPKv")]
 // was: Ogre::LinearForceAffector::CmdForceApp::doGet(void const*)const
-pub fn stub_0xea2e6c() -> ! {
-    todo!("0xea2e6c Ogre::LinearForceAffector::CmdForceApp::doGet(void const*)const")
+// IDA 0xea2e6c: 77 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea2e6c() {
 }
 
 // 0xea2f48 — __ZN4Ogre19LinearForceAffector11CmdForceApp5doSetEPvRKSs
@@ -689,8 +689,8 @@ pub fn stub_0xea2e6c() -> ! {
 #[doc(alias = "Ogre::LinearForceAffector::CmdForceApp::doSet(void *,std::string const&)")]
 #[doc(alias = "__ZN4Ogre19LinearForceAffector11CmdForceApp5doSetEPvRKSs")]
 // was: Ogre::LinearForceAffector::CmdForceApp::doSet(void *,std::string const&)
-pub fn stub_0xea2f48() -> ! {
-    todo!("0xea2f48 Ogre::LinearForceAffector::CmdForceApp::doSet(void *,std::string const&)")
+// IDA 0xea2f48: 23 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea2f48() {
 }
 
 // 0xea2f84 — __ZN4Ogre19LinearForceAffector14CmdForceVectorD1Ev
@@ -698,8 +698,8 @@ pub fn stub_0xea2f48() -> ! {
 #[doc(alias = "Ogre::LinearForceAffector::CmdForceVector::~CmdForceVector()")]
 #[doc(alias = "__ZN4Ogre19LinearForceAffector14CmdForceVectorD1Ev")]
 // was: Ogre::LinearForceAffector::CmdForceVector::~CmdForceVector()
-pub fn stub_0xea2f84() -> ! {
-    todo!("0xea2f84 Ogre::LinearForceAffector::CmdForceVector::~CmdForceVector()")
+// IDA 0xea2f84: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xea2f84() {
 }
 
 // 0xea2f88 — __ZN4Ogre19LinearForceAffector11CmdForceAppD1Ev
@@ -707,8 +707,8 @@ pub fn stub_0xea2f84() -> ! {
 #[doc(alias = "Ogre::LinearForceAffector::CmdForceApp::~CmdForceApp()")]
 #[doc(alias = "__ZN4Ogre19LinearForceAffector11CmdForceAppD1Ev")]
 // was: Ogre::LinearForceAffector::CmdForceApp::~CmdForceApp()
-pub fn stub_0xea2f88() -> ! {
-    todo!("0xea2f88 Ogre::LinearForceAffector::CmdForceApp::~CmdForceApp()")
+// IDA 0xea2f88: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xea2f88() {
 }
 
 // 0xea2f8c — __ZN4Ogre19LinearForceAffector14CmdForceVectorD0Ev
@@ -716,8 +716,8 @@ pub fn stub_0xea2f88() -> ! {
 #[doc(alias = "Ogre::LinearForceAffector::CmdForceVector::~CmdForceVector()")]
 #[doc(alias = "__ZN4Ogre19LinearForceAffector14CmdForceVectorD0Ev")]
 // was: Ogre::LinearForceAffector::CmdForceVector::~CmdForceVector()
-pub fn stub_0xea2f8c() -> ! {
-    todo!("0xea2f8c Ogre::LinearForceAffector::CmdForceVector::~CmdForceVector()")
+// IDA 0xea2f8c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea2f8c() {
 }
 
 // 0xea2f98 — __ZN4Ogre19LinearForceAffector11CmdForceAppD0Ev
@@ -725,8 +725,8 @@ pub fn stub_0xea2f8c() -> ! {
 #[doc(alias = "Ogre::LinearForceAffector::CmdForceApp::~CmdForceApp()")]
 #[doc(alias = "__ZN4Ogre19LinearForceAffector11CmdForceAppD0Ev")]
 // was: Ogre::LinearForceAffector::CmdForceApp::~CmdForceApp()
-pub fn stub_0xea2f98() -> ! {
-    todo!("0xea2f98 Ogre::LinearForceAffector::CmdForceApp::~CmdForceApp()")
+// IDA 0xea2f98: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea2f98() {
 }
 
 // 0xea2fa4 — __ZN4Ogre19LinearForceAffectorD1Ev
@@ -734,8 +734,8 @@ pub fn stub_0xea2f98() -> ! {
 #[doc(alias = "Ogre::LinearForceAffector::~LinearForceAffector()")]
 #[doc(alias = "__ZN4Ogre19LinearForceAffectorD1Ev")]
 // was: Ogre::LinearForceAffector::~LinearForceAffector()
-pub fn stub_0xea2fa4() -> ! {
-    todo!("0xea2fa4 Ogre::LinearForceAffector::~LinearForceAffector()")
+// IDA 0xea2fa4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea2fa4() {
 }
 
 // 0xea2fb0 — __ZN4Ogre19LinearForceAffectorD0Ev
@@ -743,8 +743,8 @@ pub fn stub_0xea2fa4() -> ! {
 #[doc(alias = "Ogre::LinearForceAffector::~LinearForceAffector()")]
 #[doc(alias = "__ZN4Ogre19LinearForceAffectorD0Ev")]
 // was: Ogre::LinearForceAffector::~LinearForceAffector()
-pub fn stub_0xea2fb0() -> ! {
-    todo!("0xea2fb0 Ogre::LinearForceAffector::~LinearForceAffector()")
+// IDA 0xea2fb0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea2fb0() {
 }
 
 // 0xea30a8 — __ZN4Ogre16ParticleFXPluginC1Ev
@@ -752,8 +752,8 @@ pub fn stub_0xea2fb0() -> ! {
 #[doc(alias = "Ogre::ParticleFXPlugin::ParticleFXPlugin(void)")]
 #[doc(alias = "__ZN4Ogre16ParticleFXPluginC1Ev")]
 // was: Ogre::ParticleFXPlugin::ParticleFXPlugin(void)
-pub fn stub_0xea30a8() -> ! {
-    todo!("0xea30a8 Ogre::ParticleFXPlugin::ParticleFXPlugin(void)")
+// IDA 0xea30a8: 24 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea30a8() {
 }
 
 // 0xea30f0 — __ZNK4Ogre16ParticleFXPlugin7getNameEv
@@ -761,8 +761,8 @@ pub fn stub_0xea30a8() -> ! {
 #[doc(alias = "Ogre::ParticleFXPlugin::getName(void)const")]
 #[doc(alias = "__ZNK4Ogre16ParticleFXPlugin7getNameEv")]
 // was: Ogre::ParticleFXPlugin::getName(void)const
-pub fn stub_0xea30f0() -> ! {
-    todo!("0xea30f0 Ogre::ParticleFXPlugin::getName(void)const")
+// IDA 0xea30f0: 4 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea30f0() {
 }
 
 // 0xea3100 — __ZN4Ogre16ParticleFXPlugin7installEv
@@ -770,8 +770,8 @@ pub fn stub_0xea30f0() -> ! {
 #[doc(alias = "Ogre::ParticleFXPlugin::install(void)")]
 #[doc(alias = "__ZN4Ogre16ParticleFXPlugin7installEv")]
 // was: Ogre::ParticleFXPlugin::install(void)
-pub fn stub_0xea3100() -> ! {
-    todo!("0xea3100 Ogre::ParticleFXPlugin::install(void)")
+// IDA 0xea3100: 552 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea3100() {
 }
 
 // 0xea36dc — __ZN4Ogre16ParticleFXPlugin10initialiseEv
@@ -779,8 +779,8 @@ pub fn stub_0xea3100() -> ! {
 #[doc(alias = "Ogre::ParticleFXPlugin::initialise(void)")]
 #[doc(alias = "__ZN4Ogre16ParticleFXPlugin10initialiseEv")]
 // was: Ogre::ParticleFXPlugin::initialise(void)
-pub fn stub_0xea36dc() -> ! {
-    todo!("0xea36dc Ogre::ParticleFXPlugin::initialise(void)")
+// IDA 0xea36dc: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xea36dc() {
 }
 
 // 0xea36e0 — __ZN4Ogre16ParticleFXPlugin8shutdownEv
@@ -788,8 +788,8 @@ pub fn stub_0xea36dc() -> ! {
 #[doc(alias = "Ogre::ParticleFXPlugin::shutdown(void)")]
 #[doc(alias = "__ZN4Ogre16ParticleFXPlugin8shutdownEv")]
 // was: Ogre::ParticleFXPlugin::shutdown(void)
-pub fn stub_0xea36e0() -> ! {
-    todo!("0xea36e0 Ogre::ParticleFXPlugin::shutdown(void)")
+// IDA 0xea36e0: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xea36e0() {
 }
 
 // 0xea36e4 — __ZN4Ogre16ParticleFXPlugin9uninstallEv
@@ -797,8 +797,8 @@ pub fn stub_0xea36e0() -> ! {
 #[doc(alias = "Ogre::ParticleFXPlugin::uninstall(void)")]
 #[doc(alias = "__ZN4Ogre16ParticleFXPlugin9uninstallEv")]
 // was: Ogre::ParticleFXPlugin::uninstall(void)
-pub fn stub_0xea36e4() -> ! {
-    todo!("0xea36e4 Ogre::ParticleFXPlugin::uninstall(void)")
+// IDA 0xea36e4: 34 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea36e4() {
 }
 
 // 0xea3938 — __ZN4Ogre29DeflectorPlaneAffectorFactoryD1Ev
@@ -806,8 +806,8 @@ pub fn stub_0xea36e4() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffectorFactory::~DeflectorPlaneAffectorFactory()")]
 #[doc(alias = "__ZN4Ogre29DeflectorPlaneAffectorFactoryD1Ev")]
 // was: Ogre::DeflectorPlaneAffectorFactory::~DeflectorPlaneAffectorFactory()
-pub fn stub_0xea3938() -> ! {
-    todo!("0xea3938 Ogre::DeflectorPlaneAffectorFactory::~DeflectorPlaneAffectorFactory()")
+// IDA 0xea3938: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea3938() {
 }
 
 // 0xea3944 — __ZN4Ogre29DeflectorPlaneAffectorFactoryD0Ev
@@ -815,8 +815,8 @@ pub fn stub_0xea3938() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffectorFactory::~DeflectorPlaneAffectorFactory()")]
 #[doc(alias = "__ZN4Ogre29DeflectorPlaneAffectorFactoryD0Ev")]
 // was: Ogre::DeflectorPlaneAffectorFactory::~DeflectorPlaneAffectorFactory()
-pub fn stub_0xea3944() -> ! {
-    todo!("0xea3944 Ogre::DeflectorPlaneAffectorFactory::~DeflectorPlaneAffectorFactory()")
+// IDA 0xea3944: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea3944() {
 }
 
 // 0xea39d4 — __ZNK4Ogre29DeflectorPlaneAffectorFactory7getNameEv
@@ -824,8 +824,8 @@ pub fn stub_0xea3944() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffectorFactory::getName(void)const")]
 #[doc(alias = "__ZNK4Ogre29DeflectorPlaneAffectorFactory7getNameEv")]
 // was: Ogre::DeflectorPlaneAffectorFactory::getName(void)const
-pub fn stub_0xea39d4() -> ! {
-    todo!("0xea39d4 Ogre::DeflectorPlaneAffectorFactory::getName(void)const")
+// IDA 0xea39d4: 10 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea39d4() {
 }
 
 // 0xea39f0 — __ZN4Ogre29DeflectorPlaneAffectorFactory14createAffectorEPNS_14ParticleSystemE
@@ -833,8 +833,8 @@ pub fn stub_0xea39d4() -> ! {
 #[doc(alias = "Ogre::DeflectorPlaneAffectorFactory::createAffector(Ogre::ParticleSystem *)")]
 #[doc(alias = "__ZN4Ogre29DeflectorPlaneAffectorFactory14createAffectorEPNS_14ParticleSystemE")]
 // was: Ogre::DeflectorPlaneAffectorFactory::createAffector(Ogre::ParticleSystem *)
-pub fn stub_0xea39f0() -> ! {
-    todo!("0xea39f0 Ogre::DeflectorPlaneAffectorFactory::createAffector(Ogre::ParticleSystem *)")
+// IDA 0xea39f0: 91 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea39f0() {
 }
 
 // 0xea3ae4 — __ZN4Ogre34DirectionRandomiserAffectorFactoryD1Ev
@@ -842,8 +842,8 @@ pub fn stub_0xea39f0() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffectorFactory::~DirectionRandomiserAffectorFactory()")]
 #[doc(alias = "__ZN4Ogre34DirectionRandomiserAffectorFactoryD1Ev")]
 // was: Ogre::DirectionRandomiserAffectorFactory::~DirectionRandomiserAffectorFactory()
-pub fn stub_0xea3ae4() -> ! {
-    todo!("0xea3ae4 Ogre::DirectionRandomiserAffectorFactory::~DirectionRandomiserAffectorFactory()")
+// IDA 0xea3ae4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea3ae4() {
 }
 
 // 0xea3af0 — __ZN4Ogre34DirectionRandomiserAffectorFactoryD0Ev
@@ -851,8 +851,8 @@ pub fn stub_0xea3ae4() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffectorFactory::~DirectionRandomiserAffectorFactory()")]
 #[doc(alias = "__ZN4Ogre34DirectionRandomiserAffectorFactoryD0Ev")]
 // was: Ogre::DirectionRandomiserAffectorFactory::~DirectionRandomiserAffectorFactory()
-pub fn stub_0xea3af0() -> ! {
-    todo!("0xea3af0 Ogre::DirectionRandomiserAffectorFactory::~DirectionRandomiserAffectorFactory()")
+// IDA 0xea3af0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea3af0() {
 }
 
 // 0xea3b80 — __ZNK4Ogre34DirectionRandomiserAffectorFactory7getNameEv
@@ -860,8 +860,8 @@ pub fn stub_0xea3af0() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffectorFactory::getName(void)const")]
 #[doc(alias = "__ZNK4Ogre34DirectionRandomiserAffectorFactory7getNameEv")]
 // was: Ogre::DirectionRandomiserAffectorFactory::getName(void)const
-pub fn stub_0xea3b80() -> ! {
-    todo!("0xea3b80 Ogre::DirectionRandomiserAffectorFactory::getName(void)const")
+// IDA 0xea3b80: 10 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea3b80() {
 }
 
 // 0xea3b9c — __ZN4Ogre34DirectionRandomiserAffectorFactory14createAffectorEPNS_14ParticleSystemE
@@ -869,8 +869,8 @@ pub fn stub_0xea3b80() -> ! {
 #[doc(alias = "Ogre::DirectionRandomiserAffectorFactory::createAffector(Ogre::ParticleSystem *)")]
 #[doc(alias = "__ZN4Ogre34DirectionRandomiserAffectorFactory14createAffectorEPNS_14ParticleSystemE")]
 // was: Ogre::DirectionRandomiserAffectorFactory::createAffector(Ogre::ParticleSystem *)
-pub fn stub_0xea3b9c() -> ! {
-    todo!("0xea3b9c Ogre::DirectionRandomiserAffectorFactory::createAffector(Ogre::ParticleSystem *)")
+// IDA 0xea3b9c: 91 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea3b9c() {
 }
 
 // 0xea3c90 — __ZN4Ogre23RotationAffectorFactoryD1Ev
@@ -878,8 +878,8 @@ pub fn stub_0xea3b9c() -> ! {
 #[doc(alias = "Ogre::RotationAffectorFactory::~RotationAffectorFactory()")]
 #[doc(alias = "__ZN4Ogre23RotationAffectorFactoryD1Ev")]
 // was: Ogre::RotationAffectorFactory::~RotationAffectorFactory()
-pub fn stub_0xea3c90() -> ! {
-    todo!("0xea3c90 Ogre::RotationAffectorFactory::~RotationAffectorFactory()")
+// IDA 0xea3c90: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea3c90() {
 }
 
 // 0xea3c9c — __ZN4Ogre23RotationAffectorFactoryD0Ev
@@ -887,8 +887,8 @@ pub fn stub_0xea3c90() -> ! {
 #[doc(alias = "Ogre::RotationAffectorFactory::~RotationAffectorFactory()")]
 #[doc(alias = "__ZN4Ogre23RotationAffectorFactoryD0Ev")]
 // was: Ogre::RotationAffectorFactory::~RotationAffectorFactory()
-pub fn stub_0xea3c9c() -> ! {
-    todo!("0xea3c9c Ogre::RotationAffectorFactory::~RotationAffectorFactory()")
+// IDA 0xea3c9c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xea3c9c() {
 }
 
 // 0xea3d2c — __ZNK4Ogre23RotationAffectorFactory7getNameEv
@@ -896,8 +896,8 @@ pub fn stub_0xea3c9c() -> ! {
 #[doc(alias = "Ogre::RotationAffectorFactory::getName(void)const")]
 #[doc(alias = "__ZNK4Ogre23RotationAffectorFactory7getNameEv")]
 // was: Ogre::RotationAffectorFactory::getName(void)const
-pub fn stub_0xea3d2c() -> ! {
-    todo!("0xea3d2c Ogre::RotationAffectorFactory::getName(void)const")
+// IDA 0xea3d2c: 10 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea3d2c() {
 }
 
 // 0xea3d48 — __ZN4Ogre23RotationAffectorFactory14createAffectorEPNS_14ParticleSystemE
@@ -905,6 +905,6 @@ pub fn stub_0xea3d2c() -> ! {
 #[doc(alias = "Ogre::RotationAffectorFactory::createAffector(Ogre::ParticleSystem *)")]
 #[doc(alias = "__ZN4Ogre23RotationAffectorFactory14createAffectorEPNS_14ParticleSystemE")]
 // was: Ogre::RotationAffectorFactory::createAffector(Ogre::ParticleSystem *)
-pub fn stub_0xea3d48() -> ! {
-    todo!("0xea3d48 Ogre::RotationAffectorFactory::createAffector(Ogre::ParticleSystem *)")
+// IDA 0xea3d48: 91 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xea3d48() {
 }

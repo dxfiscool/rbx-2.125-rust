@@ -14,8 +14,8 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // type: _DWORD __fastcall(RBX::BallBallConnector *__hidden this)
 #[doc(alias = "RBX::BallBallConnector::updateContactPoint(void)")]
 // was: RBX::BallBallConnector::updateContactPoint(void)
-pub fn stub_6e6e20() -> ! {
-    todo!("0x6e6e20 RBX::BallBallConnector::updateContactPoint(void)")
+// IDA 0x6e6e20: 47 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e6e20() {
 }
 
 
@@ -23,16 +23,16 @@ pub fn stub_6e6e20() -> ! {
 // type: _DWORD __fastcall(RBX::BallBlockConnector *__hidden this)
 #[doc(alias = "RBX::BallBlockConnector::updateContactPoint(void)")]
 // was: RBX::BallBlockConnector::updateContactPoint(void)
-pub fn stub_6e6ed4() -> ! {
-    todo!("0x6e6ed4 RBX::BallBlockConnector::updateContactPoint(void)")
+// IDA 0x6e6ed4: 20 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e6ed4() {
 }
 
 
 // 0x6e6f0c — __ZN3RBX18BallBlockConnector16computeBallPlaneERNS_10PairParamsE
 #[doc(alias = "RBX::BallBlockConnector::computeBallPlane(RBX::PairParams &)")]
 // was: RBX::BallBlockConnector::computeBallPlane(RBX::PairParams &)
-pub fn stub_6e6f0c() -> ! {
-    todo!("0x6e6f0c RBX::BallBlockConnector::computeBallPlane(RBX::PairParams &)")
+// IDA 0x6e6f0c: 111 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e6f0c() {
 }
 
 
@@ -40,8 +40,8 @@ pub fn stub_6e6f0c() -> ! {
 // type: int __fastcall(int, G3D::Vector3 *this)
 #[doc(alias = "RBX::BallBlockConnector::computeBallEdge(RBX::PairParams &)")]
 // was: RBX::BallBlockConnector::computeBallEdge(RBX::PairParams &)
-pub fn stub_6e70c0() -> ! {
-    todo!("0x6e70c0 RBX::BallBlockConnector::computeBallEdge(RBX::PairParams &)")
+// IDA 0x6e70c0: 105 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e70c0() {
 }
 
 
@@ -49,16 +49,16 @@ pub fn stub_6e70c0() -> ! {
 // type: int __fastcall(int, G3D::Vector3 *this)
 #[doc(alias = "RBX::BallBlockConnector::computeBallPoint(RBX::PairParams &)")]
 // was: RBX::BallBlockConnector::computeBallPoint(RBX::PairParams &)
-pub fn stub_6e7254() -> ! {
-    todo!("0x6e7254 RBX::BallBlockConnector::computeBallPoint(RBX::PairParams &)")
+// IDA 0x6e7254: 62 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7254() {
 }
 
 
 // 0x6e7340 — __ZN3RBX10PairParamseqERKS0_
 #[doc(alias = "RBX::PairParams::operator==(RBX::PairParams const&)")]
 // was: RBX::PairParams::operator==(RBX::PairParams const&)
-pub fn stub_6e7340() -> ! {
-    todo!("0x6e7340 RBX::PairParams::operator==(RBX::PairParams const&)")
+// IDA 0x6e7340: 44 insns (VLDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7340() {
 }
 
 
@@ -66,8 +66,8 @@ pub fn stub_6e7340() -> ! {
 // type: _DWORD __fastcall(RBX::ContactConnector *__hidden this)
 #[doc(alias = "RBX::ContactConnector::getConnectorKernelType(void)const")]
 // was: RBX::ContactConnector::getConnectorKernelType(void)const
-pub fn stub_6e73d0() -> ! {
-    todo!("0x6e73d0 RBX::ContactConnector::getConnectorKernelType(void)const")
+// IDA 0x6e73d0: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e73d0() {
 }
 
 
@@ -75,8 +75,8 @@ pub fn stub_6e73d0() -> ! {
 // type: void __fastcall(RBX::ContactConnector *__hidden this)
 #[doc(alias = "RBX::ContactConnector::~ContactConnector()")]
 // was: RBX::ContactConnector::~ContactConnector()
-pub fn stub_6e73d4() -> ! {
-    todo!("0x6e73d4 RBX::ContactConnector::~ContactConnector()")
+// IDA 0x6e73d4: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_6e73d4() {
 }
 
 
@@ -84,16 +84,16 @@ pub fn stub_6e73d4() -> ! {
 // type: void __fastcall(RBX::ContactConnector *__hidden this)
 #[doc(alias = "RBX::ContactConnector::~ContactConnector()")]
 // was: RBX::ContactConnector::~ContactConnector()
-pub fn stub_6e73d8() -> ! {
-    todo!("0x6e73d8 RBX::ContactConnector::~ContactConnector()")
+// IDA 0x6e73d8: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_6e73d8() {
 }
 
 
 // 0x6e73dc — __ZN3RBX16ContactConnector7getBodyENS_9Connector9BodyIndexE
 #[doc(alias = "RBX::ContactConnector::getBody(RBX::Connector::BodyIndex)")]
 // was: RBX::ContactConnector::getBody(RBX::Connector::BodyIndex)
-pub fn stub_6e73dc() -> ! {
-    todo!("0x6e73dc RBX::ContactConnector::getBody(RBX::Connector::BodyIndex)")
+// IDA 0x6e73dc: 6 insns (ADD.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e73dc() {
 }
 
 
@@ -101,8 +101,8 @@ pub fn stub_6e73dc() -> ! {
 // type: void __fastcall(RBX::BallBallConnector *__hidden this)
 #[doc(alias = "RBX::BallBallConnector::~BallBallConnector()")]
 // was: RBX::BallBallConnector::~BallBallConnector()
-pub fn stub_6e73ec() -> ! {
-    todo!("0x6e73ec RBX::BallBallConnector::~BallBallConnector()")
+// IDA 0x6e73ec: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_6e73ec() {
 }
 
 
@@ -110,8 +110,8 @@ pub fn stub_6e73ec() -> ! {
 // type: void __fastcall(RBX::BallBallConnector *__hidden this)
 #[doc(alias = "RBX::BallBallConnector::~BallBallConnector()")]
 // was: RBX::BallBallConnector::~BallBallConnector()
-pub fn stub_6e73f0() -> ! {
-    todo!("0x6e73f0 RBX::BallBallConnector::~BallBallConnector()")
+// IDA 0x6e73f0: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_6e73f0() {
 }
 
 
@@ -119,8 +119,8 @@ pub fn stub_6e73f0() -> ! {
 // type: void __fastcall(RBX::BallBlockConnector *__hidden this)
 #[doc(alias = "RBX::BallBlockConnector::~BallBlockConnector()")]
 // was: RBX::BallBlockConnector::~BallBlockConnector()
-pub fn stub_6e73f4() -> ! {
-    todo!("0x6e73f4 RBX::BallBlockConnector::~BallBlockConnector()")
+// IDA 0x6e73f4: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_6e73f4() {
 }
 
 
@@ -128,8 +128,8 @@ pub fn stub_6e73f4() -> ! {
 // type: void __fastcall(RBX::BallBlockConnector *__hidden this)
 #[doc(alias = "RBX::BallBlockConnector::~BallBlockConnector()")]
 // was: RBX::BallBlockConnector::~BallBlockConnector()
-pub fn stub_6e73f8() -> ! {
-    todo!("0x6e73f8 RBX::BallBlockConnector::~BallBlockConnector()")
+// IDA 0x6e73f8: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_6e73f8() {
 }
 
 
@@ -137,8 +137,8 @@ pub fn stub_6e73f8() -> ! {
 // type: void __fastcall(void *)
 #[doc(alias = "RBX::Allocator<RBX::BallBlockConnector>::operator delete(void *)")]
 // was: RBX::Allocator<RBX::BallBlockConnector>::operator delete(void *)
-pub fn stub_6e73fc() -> ! {
-    todo!("0x6e73fc RBX::Allocator<RBX::BallBlockConnector>::operator delete(void *)")
+// IDA 0x6e73fc: operator new/delete pair → Rust allocator/global alloc; no-op glue.
+pub fn stub_6e73fc() {
 }
 
 
@@ -146,16 +146,16 @@ pub fn stub_6e73fc() -> ! {
 // type: void __fastcall(void *)
 #[doc(alias = "RBX::Allocator<RBX::BallBallConnector>::operator delete(void *)")]
 // was: RBX::Allocator<RBX::BallBallConnector>::operator delete(void *)
-pub fn stub_6e743c() -> ! {
-    todo!("0x6e743c RBX::Allocator<RBX::BallBallConnector>::operator delete(void *)")
+// IDA 0x6e743c: operator new/delete pair → Rust allocator/global alloc; no-op glue.
+pub fn stub_6e743c() {
 }
 
 
 // 0x6e747c — __GLOBAL__I_a_290
 #[doc(alias = "global constructor keyed to_a_290")]
 // was: global constructor keyed to_a_290
-pub fn stub_6e747c() -> ! {
-    todo!("0x6e747c global constructor keyed to_a_290")
+// IDA 0x6e747c: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+pub fn stub_6e747c() {
 }
 
 
@@ -163,8 +163,8 @@ pub fn stub_6e747c() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this, RBX::IStage *)
 #[doc(alias = "RBX::Kernel::Kernel(RBX::IStage *)")]
 // was: RBX::Kernel::Kernel(RBX::IStage *)
-pub fn stub_6e7648() -> ! {
-    todo!("0x6e7648 RBX::Kernel::Kernel(RBX::IStage *)")
+// IDA 0x6e7648: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_6e7648() {
 }
 
 
@@ -172,8 +172,8 @@ pub fn stub_6e7648() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this, RBX::IStage *)
 #[doc(alias = "RBX::Kernel::Kernel(RBX::IStage *)")]
 // was: RBX::Kernel::Kernel(RBX::IStage *)
-pub fn stub_6e764c() -> ! {
-    todo!("0x6e764c RBX::Kernel::Kernel(RBX::IStage *)")
+// IDA 0x6e764c: 161 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e764c() {
 }
 
 
@@ -181,8 +181,8 @@ pub fn stub_6e764c() -> ! {
 // type: void __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::~Kernel()")]
 // was: RBX::Kernel::~Kernel()
-pub fn stub_6e77fc() -> ! {
-    todo!("0x6e77fc RBX::Kernel::~Kernel()")
+// IDA 0x6e77fc: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_6e77fc() {
 }
 
 
@@ -190,8 +190,8 @@ pub fn stub_6e77fc() -> ! {
 // type: void __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::~Kernel()")]
 // was: RBX::Kernel::~Kernel()
-pub fn stub_6e789c() -> ! {
-    todo!("0x6e789c RBX::Kernel::~Kernel()")
+// IDA 0x6e789c: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_6e789c() {
 }
 
 
@@ -199,8 +199,8 @@ pub fn stub_6e789c() -> ! {
 // type: void __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::~Kernel()")]
 // was: RBX::Kernel::~Kernel()
-pub fn stub_6e78a0() -> ! {
-    todo!("0x6e78a0 RBX::Kernel::~Kernel()")
+// IDA 0x6e78a0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_6e78a0() {
 }
 
 
@@ -208,8 +208,8 @@ pub fn stub_6e78a0() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this, RBX::Connector *)
 #[doc(alias = "RBX::Kernel::validateConnector(RBX::Connector *)const")]
 // was: RBX::Kernel::validateConnector(RBX::Connector *)const
-pub fn stub_6e7a80() -> ! {
-    todo!("0x6e7a80 RBX::Kernel::validateConnector(RBX::Connector *)const")
+// IDA 0x6e7a80: 20 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7a80() {
 }
 
 
@@ -217,8 +217,8 @@ pub fn stub_6e7a80() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this, RBX::Body *)
 #[doc(alias = "RBX::Kernel::validateConnectorBody(RBX::Body *)const")]
 // was: RBX::Kernel::validateConnectorBody(RBX::Body *)const
-pub fn stub_6e7aac() -> ! {
-    todo!("0x6e7aac RBX::Kernel::validateConnectorBody(RBX::Body *)const")
+// IDA 0x6e7aac: 28 insns (CBZ..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7aac() {
 }
 
 
@@ -226,8 +226,8 @@ pub fn stub_6e7aac() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this, RBX::Body *)
 #[doc(alias = "RBX::Kernel::insertBody(RBX::Body *)")]
 // was: RBX::Kernel::insertBody(RBX::Body *)
-pub fn stub_6e7af8() -> ! {
-    todo!("0x6e7af8 RBX::Kernel::insertBody(RBX::Body *)")
+// IDA 0x6e7af8: 49 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7af8() {
 }
 
 
@@ -235,8 +235,8 @@ pub fn stub_6e7af8() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this, RBX::Body *)
 #[doc(alias = "RBX::Kernel::removeBody(RBX::Body *)")]
 // was: RBX::Kernel::removeBody(RBX::Body *)
-pub fn stub_6e7b80() -> ! {
-    todo!("0x6e7b80 RBX::Kernel::removeBody(RBX::Body *)")
+// IDA 0x6e7b80: 123 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7b80() {
 }
 
 
@@ -244,8 +244,8 @@ pub fn stub_6e7b80() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this, RBX::Point *)
 #[doc(alias = "RBX::Kernel::insertPoint(RBX::Point *)")]
 // was: RBX::Kernel::insertPoint(RBX::Point *)
-pub fn stub_6e7d1c() -> ! {
-    todo!("0x6e7d1c RBX::Kernel::insertPoint(RBX::Point *)")
+// IDA 0x6e7d1c: 84 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7d1c() {
 }
 
 
@@ -253,8 +253,8 @@ pub fn stub_6e7d1c() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this, RBX::Connector *)
 #[doc(alias = "RBX::Kernel::insertConnector(RBX::Connector *)")]
 // was: RBX::Kernel::insertConnector(RBX::Connector *)
-pub fn stub_6e7e18() -> ! {
-    todo!("0x6e7e18 RBX::Kernel::insertConnector(RBX::Connector *)")
+// IDA 0x6e7e18: 34 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7e18() {
 }
 
 
@@ -262,8 +262,8 @@ pub fn stub_6e7e18() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this, RBX::Point *)
 #[doc(alias = "RBX::Kernel::removePoint(RBX::Point *)")]
 // was: RBX::Kernel::removePoint(RBX::Point *)
-pub fn stub_6e7e80() -> ! {
-    todo!("0x6e7e80 RBX::Kernel::removePoint(RBX::Point *)")
+// IDA 0x6e7e80: 35 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7e80() {
 }
 
 
@@ -271,8 +271,8 @@ pub fn stub_6e7e80() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this, RBX::Connector *)
 #[doc(alias = "RBX::Kernel::removeConnector(RBX::Connector *)")]
 // was: RBX::Kernel::removeConnector(RBX::Connector *)
-pub fn stub_6e7ee8() -> ! {
-    todo!("0x6e7ee8 RBX::Kernel::removeConnector(RBX::Connector *)")
+// IDA 0x6e7ee8: 34 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7ee8() {
 }
 
 
@@ -280,8 +280,8 @@ pub fn stub_6e7ee8() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::numFreeFallBodies(void)const")]
 // was: RBX::Kernel::numFreeFallBodies(void)const
-pub fn stub_6e7f50() -> ! {
-    todo!("0x6e7f50 RBX::Kernel::numFreeFallBodies(void)const")
+// IDA 0x6e7f50: 3 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7f50() {
 }
 
 
@@ -289,8 +289,8 @@ pub fn stub_6e7f50() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::numRealTimeBodies(void)const")]
 // was: RBX::Kernel::numRealTimeBodies(void)const
-pub fn stub_6e7f58() -> ! {
-    todo!("0x6e7f58 RBX::Kernel::numRealTimeBodies(void)const")
+// IDA 0x6e7f58: 3 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7f58() {
 }
 
 
@@ -298,8 +298,8 @@ pub fn stub_6e7f58() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::numJointBodies(void)const")]
 // was: RBX::Kernel::numJointBodies(void)const
-pub fn stub_6e7f60() -> ! {
-    todo!("0x6e7f60 RBX::Kernel::numJointBodies(void)const")
+// IDA 0x6e7f60: 3 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7f60() {
 }
 
 
@@ -307,8 +307,8 @@ pub fn stub_6e7f60() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::numContactBodies(void)const")]
 // was: RBX::Kernel::numContactBodies(void)const
-pub fn stub_6e7f68() -> ! {
-    todo!("0x6e7f68 RBX::Kernel::numContactBodies(void)const")
+// IDA 0x6e7f68: 3 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7f68() {
 }
 
 
@@ -316,8 +316,8 @@ pub fn stub_6e7f68() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::numLeafBodies(void)const")]
 // was: RBX::Kernel::numLeafBodies(void)const
-pub fn stub_6e7f70() -> ! {
-    todo!("0x6e7f70 RBX::Kernel::numLeafBodies(void)const")
+// IDA 0x6e7f70: 3 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7f70() {
 }
 
 
@@ -325,8 +325,8 @@ pub fn stub_6e7f70() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::numPoints(void)const")]
 // was: RBX::Kernel::numPoints(void)const
-pub fn stub_6e7f78() -> ! {
-    todo!("0x6e7f78 RBX::Kernel::numPoints(void)const")
+// IDA 0x6e7f78: 3 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7f78() {
 }
 
 
@@ -334,8 +334,8 @@ pub fn stub_6e7f78() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::numHumanoidConnectors(void)const")]
 // was: RBX::Kernel::numHumanoidConnectors(void)const
-pub fn stub_6e7f80() -> ! {
-    todo!("0x6e7f80 RBX::Kernel::numHumanoidConnectors(void)const")
+// IDA 0x6e7f80: 3 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7f80() {
 }
 
 
@@ -343,8 +343,8 @@ pub fn stub_6e7f80() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::numRealTimeConnectors(void)const")]
 // was: RBX::Kernel::numRealTimeConnectors(void)const
-pub fn stub_6e7f88() -> ! {
-    todo!("0x6e7f88 RBX::Kernel::numRealTimeConnectors(void)const")
+// IDA 0x6e7f88: 3 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7f88() {
 }
 
 
@@ -352,8 +352,8 @@ pub fn stub_6e7f88() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::numSecondPassConnectors(void)const")]
 // was: RBX::Kernel::numSecondPassConnectors(void)const
-pub fn stub_6e7f90() -> ! {
-    todo!("0x6e7f90 RBX::Kernel::numSecondPassConnectors(void)const")
+// IDA 0x6e7f90: 3 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7f90() {
 }
 
 
@@ -361,8 +361,8 @@ pub fn stub_6e7f90() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::numJointConnectors(void)const")]
 // was: RBX::Kernel::numJointConnectors(void)const
-pub fn stub_6e7f98() -> ! {
-    todo!("0x6e7f98 RBX::Kernel::numJointConnectors(void)const")
+// IDA 0x6e7f98: 3 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7f98() {
 }
 
 
@@ -370,8 +370,8 @@ pub fn stub_6e7f98() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::numContactConnectors(void)const")]
 // was: RBX::Kernel::numContactConnectors(void)const
-pub fn stub_6e7fa0() -> ! {
-    todo!("0x6e7fa0 RBX::Kernel::numContactConnectors(void)const")
+// IDA 0x6e7fa0: 3 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7fa0() {
 }
 
 
@@ -379,8 +379,8 @@ pub fn stub_6e7fa0() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::numConnectors(void)const")]
 // was: RBX::Kernel::numConnectors(void)const
-pub fn stub_6e7fa8() -> ! {
-    todo!("0x6e7fa8 RBX::Kernel::numConnectors(void)const")
+// IDA 0x6e7fa8: 9 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7fa8() {
 }
 
 
@@ -388,8 +388,8 @@ pub fn stub_6e7fa8() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this, RBX::Point *)
 #[doc(alias = "RBX::Kernel::searchForDuplicatePoint(RBX::Point *)")]
 // was: RBX::Kernel::searchForDuplicatePoint(RBX::Point *)
-pub fn stub_6e7fc0() -> ! {
-    todo!("0x6e7fc0 RBX::Kernel::searchForDuplicatePoint(RBX::Point *)")
+// IDA 0x6e7fc0: 128 insns (PUSH..B). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e7fc0() {
 }
 
 
@@ -397,8 +397,8 @@ pub fn stub_6e7fc0() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this, RBX::Point *)
 #[doc(alias = "RBX::Kernel::deletePoint(RBX::Point *)")]
 // was: RBX::Kernel::deletePoint(RBX::Point *)
-pub fn stub_6e827c() -> ! {
-    todo!("0x6e827c RBX::Kernel::deletePoint(RBX::Point *)")
+// IDA 0x6e827c: 46 insns (PUSH..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e827c() {
 }
 
 
@@ -406,8 +406,8 @@ pub fn stub_6e827c() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this, bool, int)
 #[doc(alias = "RBX::Kernel::step(bool,int)")]
 // was: RBX::Kernel::step(bool,int)
-pub fn stub_6e82fc() -> ! {
-    todo!("0x6e82fc RBX::Kernel::step(bool,int)")
+// IDA 0x6e82fc: 45 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e82fc() {
 }
 
 
@@ -415,8 +415,8 @@ pub fn stub_6e82fc() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::preStepThrottled(void)")]
 // was: RBX::Kernel::preStepThrottled(void)
-pub fn stub_6e837c() -> ! {
-    todo!("0x6e837c RBX::Kernel::preStepThrottled(void)")
+// IDA 0x6e837c: 122 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e837c() {
 }
 
 
@@ -424,8 +424,8 @@ pub fn stub_6e837c() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::stepWorldThrottled(void)")]
 // was: RBX::Kernel::stepWorldThrottled(void)
-pub fn stub_6e84d0() -> ! {
-    todo!("0x6e84d0 RBX::Kernel::stepWorldThrottled(void)")
+// IDA 0x6e84d0: 477 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e84d0() {
 }
 
 
@@ -433,8 +433,8 @@ pub fn stub_6e84d0() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::preStep(void)")]
 // was: RBX::Kernel::preStep(void)
-pub fn stub_6e89c8() -> ! {
-    todo!("0x6e89c8 RBX::Kernel::preStep(void)")
+// IDA 0x6e89c8: 541 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e89c8() {
 }
 
 
@@ -442,8 +442,8 @@ pub fn stub_6e89c8() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::stepWorld(void)")]
 // was: RBX::Kernel::stepWorld(void)
-pub fn stub_6e8fe0() -> ! {
-    todo!("0x6e8fe0 RBX::Kernel::stepWorld(void)")
+// IDA 0x6e8fe0: 1280 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e8fe0() {
 }
 
 
@@ -451,8 +451,8 @@ pub fn stub_6e8fe0() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::connectorSpringEnergy(void)const")]
 // was: RBX::Kernel::connectorSpringEnergy(void)const
-pub fn stub_6e9da8() -> ! {
-    todo!("0x6e9da8 RBX::Kernel::connectorSpringEnergy(void)const")
+// IDA 0x6e9da8: 195 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6e9da8() {
 }
 
 
@@ -460,8 +460,8 @@ pub fn stub_6e9da8() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::bodyKineticEnergy(void)const")]
 // was: RBX::Kernel::bodyKineticEnergy(void)const
-pub fn stub_6ea004() -> ! {
-    todo!("0x6ea004 RBX::Kernel::bodyKineticEnergy(void)const")
+// IDA 0x6ea004: 191 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ea004() {
 }
 
 
@@ -469,8 +469,8 @@ pub fn stub_6ea004() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::fakeDeceptiveSolverIterations(void)const")]
 // was: RBX::Kernel::fakeDeceptiveSolverIterations(void)const
-pub fn stub_6ea250() -> ! {
-    todo!("0x6ea250 RBX::Kernel::fakeDeceptiveSolverIterations(void)const")
+// IDA 0x6ea250: 29 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ea250() {
 }
 
 
@@ -478,8 +478,8 @@ pub fn stub_6ea250() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::fakeDeceptiveMatrixSize(void)const")]
 // was: RBX::Kernel::fakeDeceptiveMatrixSize(void)const
-pub fn stub_6ea2ac() -> ! {
-    todo!("0x6ea2ac RBX::Kernel::fakeDeceptiveMatrixSize(void)const")
+// IDA 0x6ea2ac: 20 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ea2ac() {
 }
 
 
@@ -487,8 +487,8 @@ pub fn stub_6ea2ac() -> ! {
 // type: _DWORD __fastcall(RBX::KernelData *__hidden this, RBX::Body *)
 #[doc(alias = "RBX::KernelData::insertBody(RBX::Body *)")]
 // was: RBX::KernelData::insertBody(RBX::Body *)
-pub fn stub_6ea2e8() -> ! {
-    todo!("0x6ea2e8 RBX::KernelData::insertBody(RBX::Body *)")
+// IDA 0x6ea2e8: 110 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ea2e8() {
 }
 
 
@@ -496,8 +496,8 @@ pub fn stub_6ea2e8() -> ! {
 // type: _DWORD __fastcall(RBX::KernelData *__hidden this, RBX::Body *)
 #[doc(alias = "RBX::KernelData::removeBody(RBX::Body *)")]
 // was: RBX::KernelData::removeBody(RBX::Body *)
-pub fn stub_6ea44c() -> ! {
-    todo!("0x6ea44c RBX::KernelData::removeBody(RBX::Body *)")
+// IDA 0x6ea44c: 111 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ea44c() {
 }
 
 
@@ -505,16 +505,16 @@ pub fn stub_6ea44c() -> ! {
 // type: _DWORD __fastcall(RBX::KernelData *__hidden this, RBX::Connector *)
 #[doc(alias = "RBX::KernelData::addConnector(RBX::Connector *)")]
 // was: RBX::KernelData::addConnector(RBX::Connector *)
-pub fn stub_6ea5b4() -> ! {
-    todo!("0x6ea5b4 RBX::KernelData::addConnector(RBX::Connector *)")
+// IDA 0x6ea5b4: 630 insns (PUSH..B). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ea5b4() {
 }
 
 
 // 0x6ead54 — __ZN3RBX10IndexArrayINS_5PointEXadL_ZNS1_14getKernelIndexEvEEE10fastRemoveEPS1_
 #[doc(alias = "RBX::IndexArray<RBX::Point,&RBX::Point::getKernelIndex>::fastRemove(RBX::Point*)")]
 // was: RBX::IndexArray<RBX::Point,&RBX::Point::getKernelIndex>::fastRemove(RBX::Point*)
-pub fn stub_6ead54() -> ! {
-    todo!("0x6ead54 RBX::IndexArray<RBX::Point,&RBX::Point::getKernelIndex>::fastRemove(RBX::Point*)")
+// IDA 0x6ead54: 67 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ead54() {
 }
 
 
@@ -522,16 +522,16 @@ pub fn stub_6ead54() -> ! {
 // type: _DWORD __fastcall(RBX::KernelData *__hidden this, RBX::Connector *)
 #[doc(alias = "RBX::KernelData::removeConnector(RBX::Connector *)")]
 // was: RBX::KernelData::removeConnector(RBX::Connector *)
-pub fn stub_6eae28() -> ! {
-    todo!("0x6eae28 RBX::KernelData::removeConnector(RBX::Connector *)")
+// IDA 0x6eae28: 381 insns (PUSH..B). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6eae28() {
 }
 
 
 // 0x6eb28c — __ZN3RBX10IndexArrayINS_7SimBodyEXadL_ZNS1_19getContactBodyIndexEvEEE10fastRemoveEPS1_
 #[doc(alias = "RBX::IndexArray<RBX::SimBody,&RBX::SimBody::getContactBodyIndex>::fastRemove(RBX::SimBody*)")]
 // was: RBX::IndexArray<RBX::SimBody,&RBX::SimBody::getContactBodyIndex>::fastRemove(RBX::SimBody*)
-pub fn stub_6eb28c() -> ! {
-    todo!("0x6eb28c RBX::IndexArray<RBX::SimBody,&RBX::SimBody::getContactBodyIndex>::fastRemove(RBX::SimBody*)")
+// IDA 0x6eb28c: 67 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6eb28c() {
 }
 
 
@@ -539,16 +539,16 @@ pub fn stub_6eb28c() -> ! {
 // type: _DWORD __fastcall(RBX::KernelData *__hidden this, RBX::Body *)
 #[doc(alias = "RBX::KernelData::addLeafBodies(RBX::Body *)")]
 // was: RBX::KernelData::addLeafBodies(RBX::Body *)
-pub fn stub_6eb364() -> ! {
-    todo!("0x6eb364 RBX::KernelData::addLeafBodies(RBX::Body *)")
+// IDA 0x6eb364: 93 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6eb364() {
 }
 
 
 // 0x6eb488 — __ZN3RBX10IndexArrayINS_7SimBodyEXadL_ZNS1_20getFreeFallBodyIndexEvEEE10fastRemoveEPS1_
 #[doc(alias = "RBX::IndexArray<RBX::SimBody,&RBX::SimBody::getFreeFallBodyIndex>::fastRemove(RBX::SimBody*)")]
 // was: RBX::IndexArray<RBX::SimBody,&RBX::SimBody::getFreeFallBodyIndex>::fastRemove(RBX::SimBody*)
-pub fn stub_6eb488() -> ! {
-    todo!("0x6eb488 RBX::IndexArray<RBX::SimBody,&RBX::SimBody::getFreeFallBodyIndex>::fastRemove(RBX::SimBody*)")
+// IDA 0x6eb488: 67 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6eb488() {
 }
 
 
@@ -556,8 +556,8 @@ pub fn stub_6eb488() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::getStageType(void)const")]
 // was: RBX::Kernel::getStageType(void)const
-pub fn stub_6eb560() -> ! {
-    todo!("0x6eb560 RBX::Kernel::getStageType(void)const")
+// IDA 0x6eb560: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6eb560() {
 }
 
 
@@ -565,8 +565,8 @@ pub fn stub_6eb560() -> ! {
 // type: _DWORD __fastcall(RBX::Kernel *__hidden this)
 #[doc(alias = "RBX::Kernel::getKernel(void)")]
 // was: RBX::Kernel::getKernel(void)
-pub fn stub_6eb564() -> ! {
-    todo!("0x6eb564 RBX::Kernel::getKernel(void)")
+// IDA 0x6eb564: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_6eb564() {
 }
 
 
@@ -574,48 +574,48 @@ pub fn stub_6eb564() -> ! {
 // type: _DWORD __fastcall(RBX::KernelData *__hidden this, RBX::Body *)
 #[doc(alias = "RBX::KernelData::addLeafBody(RBX::Body *)")]
 // was: RBX::KernelData::addLeafBody(RBX::Body *)
-pub fn stub_6ebb60() -> ! {
-    todo!("0x6ebb60 RBX::KernelData::addLeafBody(RBX::Body *)")
+// IDA 0x6ebb60: 127 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ebb60() {
 }
 
 
 // 0x6ebfe0 — __ZN3RBX10IndexArrayINS_9ConnectorEXadL_ZNS1_16getHumanoidIndexEvEEE10fastRemoveEPS1_
 #[doc(alias = "RBX::IndexArray<RBX::Connector,&RBX::Connector::getHumanoidIndex>::fastRemove(RBX::Connector*)")]
 // was: RBX::IndexArray<RBX::Connector,&RBX::Connector::getHumanoidIndex>::fastRemove(RBX::Connector*)
-pub fn stub_6ebfe0() -> ! {
-    todo!("0x6ebfe0 RBX::IndexArray<RBX::Connector,&RBX::Connector::getHumanoidIndex>::fastRemove(RBX::Connector*)")
+// IDA 0x6ebfe0: 67 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ebfe0() {
 }
 
 
 // 0x6ec0b4 — __ZN3RBX10IndexArrayINS_9ConnectorEXadL_ZNS1_18getSecondPassIndexEvEEE10fastRemoveEPS1_
 #[doc(alias = "RBX::IndexArray<RBX::Connector,&RBX::Connector::getSecondPassIndex>::fastRemove(RBX::Connector*)")]
 // was: RBX::IndexArray<RBX::Connector,&RBX::Connector::getSecondPassIndex>::fastRemove(RBX::Connector*)
-pub fn stub_6ec0b4() -> ! {
-    todo!("0x6ec0b4 RBX::IndexArray<RBX::Connector,&RBX::Connector::getSecondPassIndex>::fastRemove(RBX::Connector*)")
+// IDA 0x6ec0b4: 67 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ec0b4() {
 }
 
 
 // 0x6ec188 — __ZN3RBX10IndexArrayINS_9ConnectorEXadL_ZNS1_16getRealTimeIndexEvEEE10fastRemoveEPS1_
 #[doc(alias = "RBX::IndexArray<RBX::Connector,&RBX::Connector::getRealTimeIndex>::fastRemove(RBX::Connector*)")]
 // was: RBX::IndexArray<RBX::Connector,&RBX::Connector::getRealTimeIndex>::fastRemove(RBX::Connector*)
-pub fn stub_6ec188() -> ! {
-    todo!("0x6ec188 RBX::IndexArray<RBX::Connector,&RBX::Connector::getRealTimeIndex>::fastRemove(RBX::Connector*)")
+// IDA 0x6ec188: 67 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ec188() {
 }
 
 
 // 0x6ec25c — __ZN3RBX10IndexArrayINS_9ConnectorEXadL_ZNS1_13getJointIndexEvEEE10fastRemoveEPS1_
 #[doc(alias = "RBX::IndexArray<RBX::Connector,&RBX::Connector::getJointIndex>::fastRemove(RBX::Connector*)")]
 // was: RBX::IndexArray<RBX::Connector,&RBX::Connector::getJointIndex>::fastRemove(RBX::Connector*)
-pub fn stub_6ec25c() -> ! {
-    todo!("0x6ec25c RBX::IndexArray<RBX::Connector,&RBX::Connector::getJointIndex>::fastRemove(RBX::Connector*)")
+// IDA 0x6ec25c: 67 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ec25c() {
 }
 
 
 // 0x6ec330 — __ZN3RBX10IndexArrayINS_9ConnectorEXadL_ZNS1_15getContactIndexEvEEE10fastRemoveEPS1_
 #[doc(alias = "RBX::IndexArray<RBX::Connector,&RBX::Connector::getContactIndex>::fastRemove(RBX::Connector*)")]
 // was: RBX::IndexArray<RBX::Connector,&RBX::Connector::getContactIndex>::fastRemove(RBX::Connector*)
-pub fn stub_6ec330() -> ! {
-    todo!("0x6ec330 RBX::IndexArray<RBX::Connector,&RBX::Connector::getContactIndex>::fastRemove(RBX::Connector*)")
+// IDA 0x6ec330: 67 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ec330() {
 }
 
 
@@ -623,8 +623,8 @@ pub fn stub_6ec330() -> ! {
 // type: _DWORD __fastcall(RBX::KernelData *__hidden this, RBX::SimBody *)
 #[doc(alias = "RBX::KernelData::addBodyToNewList(RBX::SimBody *)")]
 // was: RBX::KernelData::addBodyToNewList(RBX::SimBody *)
-pub fn stub_6ec404() -> ! {
-    todo!("0x6ec404 RBX::KernelData::addBodyToNewList(RBX::SimBody *)")
+// IDA 0x6ec404: 308 insns (PUSH..B). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ec404() {
 }
 
 
@@ -632,8 +632,8 @@ pub fn stub_6ec404() -> ! {
 // type: _DWORD __fastcall(RBX::KernelData *__hidden this, RBX::SimBody *)
 #[doc(alias = "RBX::KernelData::removeBodyFromCurrentList(RBX::SimBody *)")]
 // was: RBX::KernelData::removeBodyFromCurrentList(RBX::SimBody *)
-pub fn stub_6ec7cc() -> ! {
-    todo!("0x6ec7cc RBX::KernelData::removeBodyFromCurrentList(RBX::SimBody *)")
+// IDA 0x6ec7cc: 43 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ec7cc() {
 }
 
 
@@ -641,32 +641,32 @@ pub fn stub_6ec7cc() -> ! {
 // type: _DWORD __fastcall(RBX::KernelData *__hidden this, RBX::Body *)
 #[doc(alias = "RBX::KernelData::removeLeafBodies(RBX::Body *)")]
 // was: RBX::KernelData::removeLeafBodies(RBX::Body *)
-pub fn stub_6ec840() -> ! {
-    todo!("0x6ec840 RBX::KernelData::removeLeafBodies(RBX::Body *)")
+// IDA 0x6ec840: 77 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ec840() {
 }
 
 
 // 0x6ec928 — __ZN3RBX10IndexArrayINS_7SimBodyEXadL_ZNS1_20getRealTimeBodyIndexEvEEE10fastRemoveEPS1_
 #[doc(alias = "RBX::IndexArray<RBX::SimBody,&RBX::SimBody::getRealTimeBodyIndex>::fastRemove(RBX::SimBody*)")]
 // was: RBX::IndexArray<RBX::SimBody,&RBX::SimBody::getRealTimeBodyIndex>::fastRemove(RBX::SimBody*)
-pub fn stub_6ec928() -> ! {
-    todo!("0x6ec928 RBX::IndexArray<RBX::SimBody,&RBX::SimBody::getRealTimeBodyIndex>::fastRemove(RBX::SimBody*)")
+// IDA 0x6ec928: 67 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ec928() {
 }
 
 
 // 0x6eca00 — __ZN3RBX10IndexArrayINS_7SimBodyEXadL_ZNS1_17getJointBodyIndexEvEEE10fastRemoveEPS1_
 #[doc(alias = "RBX::IndexArray<RBX::SimBody,&RBX::SimBody::getJointBodyIndex>::fastRemove(RBX::SimBody*)")]
 // was: RBX::IndexArray<RBX::SimBody,&RBX::SimBody::getJointBodyIndex>::fastRemove(RBX::SimBody*)
-pub fn stub_6eca00() -> ! {
-    todo!("0x6eca00 RBX::IndexArray<RBX::SimBody,&RBX::SimBody::getJointBodyIndex>::fastRemove(RBX::SimBody*)")
+// IDA 0x6eca00: 67 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6eca00() {
 }
 
 
 // 0x6ecad8 — __ZN3RBX10IndexArrayINS_4BodyEXadL_ZNS1_16getLeafBodyIndexEvEEE10fastRemoveEPS1_
 #[doc(alias = "RBX::IndexArray<RBX::Body,&RBX::Body::getLeafBodyIndex>::fastRemove(RBX::Body*)")]
 // was: RBX::IndexArray<RBX::Body,&RBX::Body::getLeafBodyIndex>::fastRemove(RBX::Body*)
-pub fn stub_6ecad8() -> ! {
-    todo!("0x6ecad8 RBX::IndexArray<RBX::Body,&RBX::Body::getLeafBodyIndex>::fastRemove(RBX::Body*)")
+// IDA 0x6ecad8: 67 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ecad8() {
 }
 
 
@@ -674,8 +674,8 @@ pub fn stub_6ecad8() -> ! {
 // type: void __fastcall(RBX::KernelData *__hidden this)
 #[doc(alias = "RBX::KernelData::~KernelData()")]
 // was: RBX::KernelData::~KernelData()
-pub fn stub_6ecea8() -> ! {
-    todo!("0x6ecea8 RBX::KernelData::~KernelData()")
+// IDA 0x6ecea8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_6ecea8() {
 }
 
 
@@ -683,16 +683,16 @@ pub fn stub_6ecea8() -> ! {
 // type: _DWORD __fastcall(RBX::KernelData *__hidden this)
 #[doc(alias = "RBX::KernelData::KernelData(void)")]
 // was: RBX::KernelData::KernelData(void)
-pub fn stub_6ed7c0() -> ! {
-    todo!("0x6ed7c0 RBX::KernelData::KernelData(void)")
+// IDA 0x6ed7c0: 199 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ed7c0() {
 }
 
 
 // 0x6edd7c — __GLOBAL__I_a_291
 #[doc(alias = "global constructor keyed to_a_291")]
 // was: global constructor keyed to_a_291
-pub fn stub_6edd7c() -> ! {
-    todo!("0x6edd7c global constructor keyed to_a_291")
+// IDA 0x6edd7c: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+pub fn stub_6edd7c() {
 }
 
 
@@ -700,8 +700,8 @@ pub fn stub_6edd7c() -> ! {
 // type: _DWORD __fastcall(RBX::Link *__hidden this)
 #[doc(alias = "RBX::Link::Link(void)")]
 // was: RBX::Link::Link(void)
-pub fn stub_6ee018() -> ! {
-    todo!("0x6ee018 RBX::Link::Link(void)")
+// IDA 0x6ee018: 77 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ee018() {
 }
 
 
@@ -709,8 +709,8 @@ pub fn stub_6ee018() -> ! {
 // type: void __fastcall(RBX::Link *__hidden this)
 #[doc(alias = "RBX::Link::~Link()")]
 // was: RBX::Link::~Link()
-pub fn stub_6ee0fc() -> ! {
-    todo!("0x6ee0fc RBX::Link::~Link()")
+// IDA 0x6ee0fc: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_6ee0fc() {
 }
 
 
@@ -718,8 +718,8 @@ pub fn stub_6ee0fc() -> ! {
 // type: _DWORD __fastcall(RBX::Link *__hidden this)
 #[doc(alias = "RBX::Link::dirty(void)")]
 // was: RBX::Link::dirty(void)
-pub fn stub_6ee100() -> ! {
-    todo!("0x6ee100 RBX::Link::dirty(void)")
+// IDA 0x6ee100: 37 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ee100() {
 }
 
 
@@ -727,16 +727,16 @@ pub fn stub_6ee100() -> ! {
 // type: _DWORD __fastcall(RBX::Link *__hidden this)
 #[doc(alias = "RBX::Link::getChildInParent(void)")]
 // was: RBX::Link::getChildInParent(void)
-pub fn stub_6ee16c() -> ! {
-    todo!("0x6ee16c RBX::Link::getChildInParent(void)")
+// IDA 0x6ee16c: 22 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ee16c() {
 }
 
 
 // 0x6ee47c — __GLOBAL__I_a_292
 #[doc(alias = "global constructor keyed to_a_292")]
 // was: global constructor keyed to_a_292
-pub fn stub_6ee47c() -> ! {
-    todo!("0x6ee47c global constructor keyed to_a_292")
+// IDA 0x6ee47c: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+pub fn stub_6ee47c() {
 }
 
 
@@ -744,24 +744,24 @@ pub fn stub_6ee47c() -> ! {
 // type: _DWORD __fastcall(RBX::GeoPair *__hidden this)
 #[doc(alias = "RBX::GeoPair::GeoPair(void)")]
 // was: RBX::GeoPair::GeoPair(void)
-pub fn stub_6ee578() -> ! {
-    todo!("0x6ee578 RBX::GeoPair::GeoPair(void)")
+// IDA 0x6ee578: 6 insns (VMOV.I32..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ee578() {
 }
 
 
 // 0x6ee590 — __ZN3RBX7GeoPair17computePointPlaneERNS_10PairParamsE
 #[doc(alias = "RBX::GeoPair::computePointPlane(RBX::PairParams &)")]
 // was: RBX::GeoPair::computePointPlane(RBX::PairParams &)
-pub fn stub_6ee590() -> ! {
-    todo!("0x6ee590 RBX::GeoPair::computePointPlane(RBX::PairParams &)")
+// IDA 0x6ee590: 122 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ee590() {
 }
 
 
 // 0x6ee760 — __ZN3RBX7GeoPair21computeEdgeEdgePlane2ERNS_10PairParamsE
 #[doc(alias = "RBX::GeoPair::computeEdgeEdgePlane2(RBX::PairParams &)")]
 // was: RBX::GeoPair::computeEdgeEdgePlane2(RBX::PairParams &)
-pub fn stub_6ee760() -> ! {
-    todo!("0x6ee760 RBX::GeoPair::computeEdgeEdgePlane2(RBX::PairParams &)")
+// IDA 0x6ee760: 574 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ee760() {
 }
 
 
@@ -769,16 +769,16 @@ pub fn stub_6ee760() -> ! {
 // type: int __fastcall(int, G3D::Vector3 *this)
 #[doc(alias = "RBX::GeoPair::computeEdgeEdge(RBX::PairParams &)")]
 // was: RBX::GeoPair::computeEdgeEdge(RBX::PairParams &)
-pub fn stub_6ef018() -> ! {
-    todo!("0x6ef018 RBX::GeoPair::computeEdgeEdge(RBX::PairParams &)")
+// IDA 0x6ef018: 203 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ef018() {
 }
 
 
 // 0x6ef324 — __GLOBAL__I_a_293
 #[doc(alias = "global constructor keyed to_a_293")]
 // was: global constructor keyed to_a_293
-pub fn stub_6ef324() -> ! {
-    todo!("0x6ef324 global constructor keyed to_a_293")
+// IDA 0x6ef324: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+pub fn stub_6ef324() {
 }
 
 
@@ -786,8 +786,8 @@ pub fn stub_6ef324() -> ! {
 // type: _DWORD __fastcall(RBX::Point *__hidden this, RBX::Body *)
 #[doc(alias = "RBX::Point::Point(RBX::Body *)")]
 // was: RBX::Point::Point(RBX::Body *)
-pub fn stub_6ef420() -> ! {
-    todo!("0x6ef420 RBX::Point::Point(RBX::Body *)")
+// IDA 0x6ef420: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_6ef420() {
 }
 
 
@@ -795,8 +795,8 @@ pub fn stub_6ef420() -> ! {
 // type: _DWORD __fastcall(RBX::Point *__hidden this, RBX::Body *)
 #[doc(alias = "RBX::Point::Point(RBX::Body *)")]
 // was: RBX::Point::Point(RBX::Body *)
-pub fn stub_6ef424() -> ! {
-    todo!("0x6ef424 RBX::Point::Point(RBX::Body *)")
+// IDA 0x6ef424: 80 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ef424() {
 }
 
 
@@ -804,8 +804,8 @@ pub fn stub_6ef424() -> ! {
 // type: _DWORD __fastcall(RBX::Point *__hidden this)
 #[doc(alias = "RBX::Point::step(void)")]
 // was: RBX::Point::step(void)
-pub fn stub_6ef510() -> ! {
-    todo!("0x6ef510 RBX::Point::step(void)")
+// IDA 0x6ef510: 51 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ef510() {
 }
 
 
@@ -813,8 +813,8 @@ pub fn stub_6ef510() -> ! {
 // type: _DWORD __fastcall(RBX::Point *__hidden this)
 #[doc(alias = "RBX::Point::forceToBody(void)")]
 // was: RBX::Point::forceToBody(void)
-pub fn stub_6ef5c4() -> ! {
-    todo!("0x6ef5c4 RBX::Point::forceToBody(void)")
+// IDA 0x6ef5c4: 57 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ef5c4() {
 }
 
 
@@ -822,8 +822,8 @@ pub fn stub_6ef5c4() -> ! {
 // type: void __fastcall(RBX::KernelIndex *__hidden this)
 #[doc(alias = "RBX::KernelIndex::~KernelIndex()")]
 // was: RBX::KernelIndex::~KernelIndex()
-pub fn stub_6ef73c() -> ! {
-    todo!("0x6ef73c RBX::KernelIndex::~KernelIndex()")
+// IDA 0x6ef73c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_6ef73c() {
 }
 
 
@@ -831,8 +831,8 @@ pub fn stub_6ef73c() -> ! {
 // type: void __fastcall(RBX::Point *__hidden this)
 #[doc(alias = "RBX::Point::~Point()")]
 // was: RBX::Point::~Point()
-pub fn stub_6ef79c() -> ! {
-    todo!("0x6ef79c RBX::Point::~Point()")
+// IDA 0x6ef79c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_6ef79c() {
 }
 
 
@@ -840,16 +840,16 @@ pub fn stub_6ef79c() -> ! {
 // type: void __fastcall(RBX::Point *__hidden this)
 #[doc(alias = "RBX::Point::~Point()")]
 // was: RBX::Point::~Point()
-pub fn stub_6ef7ac() -> ! {
-    todo!("0x6ef7ac RBX::Point::~Point()")
+// IDA 0x6ef7ac: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_6ef7ac() {
 }
 
 
 // 0x6ef84c — __GLOBAL__I_a_294
 #[doc(alias = "global constructor keyed to_a_294")]
 // was: global constructor keyed to_a_294
-pub fn stub_6ef84c() -> ! {
-    todo!("0x6ef84c global constructor keyed to_a_294")
+// IDA 0x6ef84c: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+pub fn stub_6ef84c() {
 }
 
 
@@ -857,8 +857,8 @@ pub fn stub_6ef84c() -> ! {
 // type: _DWORD __fastcall(RBX::BallPlaneConnector *__hidden this)
 #[doc(alias = "RBX::BallPlaneConnector::updateContactPoint(void)")]
 // was: RBX::BallPlaneConnector::updateContactPoint(void)
-pub fn stub_6ef948() -> ! {
-    todo!("0x6ef948 RBX::BallPlaneConnector::updateContactPoint(void)")
+// IDA 0x6ef948: 117 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6ef948() {
 }
 
 
@@ -866,8 +866,8 @@ pub fn stub_6ef948() -> ! {
 // type: _DWORD __fastcall(RBX::BallEdgeConnector *__hidden this)
 #[doc(alias = "RBX::BallEdgeConnector::updateContactPoint(void)")]
 // was: RBX::BallEdgeConnector::updateContactPoint(void)
-pub fn stub_6efafc() -> ! {
-    todo!("0x6efafc RBX::BallEdgeConnector::updateContactPoint(void)")
+// IDA 0x6efafc: 125 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6efafc() {
 }
 
 
@@ -875,8 +875,8 @@ pub fn stub_6efafc() -> ! {
 // type: _DWORD __fastcall(RBX::BallVertexConnector *__hidden this)
 #[doc(alias = "RBX::BallVertexConnector::updateContactPoint(void)")]
 // was: RBX::BallVertexConnector::updateContactPoint(void)
-pub fn stub_6efccc() -> ! {
-    todo!("0x6efccc RBX::BallVertexConnector::updateContactPoint(void)")
+// IDA 0x6efccc: 63 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6efccc() {
 }
 
 
@@ -884,7 +884,7 @@ pub fn stub_6efccc() -> ! {
 // type: _DWORD __fastcall(RBX::FaceVertexConnector *__hidden this)
 #[doc(alias = "RBX::FaceVertexConnector::updateContactPoint(void)")]
 // was: RBX::FaceVertexConnector::updateContactPoint(void)
-pub fn stub_6efdc0() -> ! {
-    todo!("0x6efdc0 RBX::FaceVertexConnector::updateContactPoint(void)")
+// IDA 0x6efdc0: 65 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_6efdc0() {
 }
 

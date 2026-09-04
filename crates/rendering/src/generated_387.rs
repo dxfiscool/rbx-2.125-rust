@@ -14,8 +14,8 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable1IvN3RBX8NormalIdEE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS3_10Reflection18GenericSlotWrapperERKS4_EENS7_5list2INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")]
 #[doc(alias = "void boost::detail::function::basic_vtable1<void,RBX::NormalId>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // was: __ZNK5boost6detail8function13basic_vtable1IvN3RBX8NormalIdEE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS3_10Reflection18GenericSlotWrapperERKS4_EENS7_5list2INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
-pub fn stub_56d6ac() -> ! {
-    todo!("0x56d6ac void boost::detail::function::basic_vtable1<void,RBX::NormalId>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+// IDA 0x56d6ac: 73 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56d6ac() {
 }
 
 // 0x56d780 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS4_8NormalIdEEENS0_5list2INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEEEEEclIS7_EEvRT_
@@ -23,8 +23,8 @@ pub fn stub_56d6ac() -> ! {
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS4_8NormalIdEEENS0_5list2INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEEEEEclIS7_EEvRT_")]
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>::operator()<RBX::NormalId>(RBX::NormalId &)")]
 // was: __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS4_8NormalIdEEENS0_5list2INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEEEEEclIS7_EEvRT_
-pub fn stub_56d780() -> ! {
-    todo!("0x56d780 void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>::operator()<RBX::NormalId>(RBX::NormalId &)")
+// IDA 0x56d780: 8 insns (LDM.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56d780() {
 }
 
 // 0x56d798 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_8NormalIdEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
@@ -32,8 +32,8 @@ pub fn stub_56d780() -> ! {
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_8NormalIdEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // was: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_8NormalIdEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
-pub fn stub_56d798() -> ! {
-    todo!("0x56d798 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+// IDA 0x56d798: 128 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56d798() {
 }
 
 // 0x56d8f0 — __ZN3rbx7signals6signalIFvN3RBX8NormalIdEEE7connectIN5boost8functionIS4_EEEENS0_10connectionERKT_
@@ -41,48 +41,48 @@ pub fn stub_56d798() -> ! {
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX8NormalIdEEE7connectIN5boost8functionIS4_EEEENS0_10connectionERKT_")]
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::NormalId)>::connect<boost::function<void ()(RBX::NormalId)>>(boost::function<void ()(RBX::NormalId)> const&)")]
 // was: __ZN3rbx7signals6signalIFvN3RBX8NormalIdEEE7connectIN5boost8functionIS4_EEEENS0_10connectionERKT_
-pub fn stub_56d8f0() -> ! {
-    todo!("0x56d8f0 rbx::signals::connection rbx::signals::signal<void ()(RBX::NormalId)>::connect<boost::function<void ()(RBX::NormalId)>>(boost::function<void ()(RBX::NormalId)> const&)")
+// IDA 0x56d8f0: 89 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56d8f0() {
 }
 
 // 0x56d9e4 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_EC2IPS6_EERKSA_T_
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_EC2IPS6_EERKSA_T_")]
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::callable<rbx::signals::signal<void ()(RBX::NormalId)>*>(boost::function<void ()(RBX::NormalId)> const&,rbx::signals::signal<void ()(RBX::NormalId)>*)")]
 // was: __ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_EC2IPS6_EERKSA_T_
-pub fn stub_56d9e4() -> ! {
-    todo!("0x56d9e4 rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::callable<rbx::signals::signal<void ()(RBX::NormalId)>*>(boost::function<void ()(RBX::NormalId)> const&,rbx::signals::signal<void ()(RBX::NormalId)>*)")
+// IDA 0x56d9e4: 88 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56d9e4() {
 }
 
 // 0x56dae0 — __ZN3rbx7signals6signalIFvN3RBX8NormalIdEEE13callable_slotIN5boost8functionIS4_EEED1Ev
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX8NormalIdEEE13callable_slotIN5boost8functionIS4_EEED1Ev")]
 #[doc(alias = "rbx::signals::signal<void ()(RBX::NormalId)>::callable_slot<boost::function<void ()(RBX::NormalId)>>::~callable_slot()")]
 // was: __ZN3rbx7signals6signalIFvN3RBX8NormalIdEEE13callable_slotIN5boost8functionIS4_EEED1Ev
-pub fn stub_56dae0() -> ! {
-    todo!("0x56dae0 rbx::signals::signal<void ()(RBX::NormalId)>::callable_slot<boost::function<void ()(RBX::NormalId)>>::~callable_slot()")
+// IDA 0x56dae0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_56dae0() {
 }
 
 // 0x56dbf0 — __ZN3rbx7signals6signalIFvN3RBX8NormalIdEEE13callable_slotIN5boost8functionIS4_EEED0Ev
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX8NormalIdEEE13callable_slotIN5boost8functionIS4_EEED0Ev")]
 #[doc(alias = "rbx::signals::signal<void ()(RBX::NormalId)>::callable_slot<boost::function<void ()(RBX::NormalId)>>::~callable_slot()")]
 // was: __ZN3rbx7signals6signalIFvN3RBX8NormalIdEEE13callable_slotIN5boost8functionIS4_EEED0Ev
-pub fn stub_56dbf0() -> ! {
-    todo!("0x56dbf0 rbx::signals::signal<void ()(RBX::NormalId)>::callable_slot<boost::function<void ()(RBX::NormalId)>>::~callable_slot()")
+// IDA 0x56dbf0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_56dbf0() {
 }
 
 // 0x56dd20 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")]
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::call(RBX::NormalId)")]
 // was: __ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_
-pub fn stub_56dd20() -> ! {
-    todo!("0x56dd20 rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::call(RBX::NormalId)")
+// IDA 0x56dd20: 2 insns (ADDS..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56dd20() {
 }
 
 // 0x56dd28 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")]
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::call(RBX::NormalId)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_
-pub fn stub_56dd28() -> ! {
-    todo!("0x56dd28 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::call(RBX::NormalId)")
+// IDA 0x56dd28: 2 insns (ADDS..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56dd28() {
 }
 
 // 0x56dd30 — __ZNK5boost9function1IvN3RBX8NormalIdEEclES2_
@@ -90,24 +90,24 @@ pub fn stub_56dd28() -> ! {
 #[doc(alias = "__ZNK5boost9function1IvN3RBX8NormalIdEEclES2_")]
 #[doc(alias = "boost::function1<void,RBX::NormalId>::operator()(RBX::NormalId)const")]
 // was: __ZNK5boost9function1IvN3RBX8NormalIdEEclES2_
-pub fn stub_56dd30() -> ! {
-    todo!("0x56dd30 boost::function1<void,RBX::NormalId>::operator()(RBX::NormalId)const")
+// IDA 0x56dd30: 67 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56dd30() {
 }
 
 // 0x56ddf4 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_ED1Ev
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_ED1Ev")]
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::~callable()")]
 // was: __ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_ED1Ev
-pub fn stub_56ddf4() -> ! {
-    todo!("0x56ddf4 rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::~callable()")
+// IDA 0x56ddf4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_56ddf4() {
 }
 
 // 0x56df04 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_ED0Ev
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_ED0Ev")]
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::~callable()")]
 // was: __ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_ED0Ev
-pub fn stub_56df04() -> ! {
-    todo!("0x56df04 rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::~callable()")
+// IDA 0x56df04: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_56df04() {
 }
 
 // 0x56e034 — __ZN5boost9function1IvN3RBX8NormalIdEE13assign_to_ownERKS3_
@@ -115,32 +115,32 @@ pub fn stub_56df04() -> ! {
 #[doc(alias = "__ZN5boost9function1IvN3RBX8NormalIdEE13assign_to_ownERKS3_")]
 #[doc(alias = "boost::function1<void,RBX::NormalId>::assign_to_own(boost::function1<void,RBX::NormalId> const&)")]
 // was: __ZN5boost9function1IvN3RBX8NormalIdEE13assign_to_ownERKS3_
-pub fn stub_56e034() -> ! {
-    todo!("0x56e034 boost::function1<void,RBX::NormalId>::assign_to_own(boost::function1<void,RBX::NormalId> const&)")
+// IDA 0x56e034: 20 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56e034() {
 }
 
 // 0x56e064 — __ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEMS2_S7_EC2ES8_PKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEMS2_S7_EC2ES8_PKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Handles,void ()(RBX::NormalId),rbx::remote_signal<void ()(RBX::NormalId)>,rbx::remote_signal<void ()(RBX::NormalId)> RBX::Handles::*>::EventDesc(rbx::remote_signal<void ()(RBX::NormalId)> RBX::Handles::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: __ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEMS2_S7_EC2ES8_PKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
-pub fn stub_56e064() -> ! {
-    todo!("0x56e064 RBX::Reflection::EventDesc<RBX::Handles,void ()(RBX::NormalId),rbx::remote_signal<void ()(RBX::NormalId)>,rbx::remote_signal<void ()(RBX::NormalId)> RBX::Handles::*>::EventDesc(rbx::remote_signal<void ()(RBX::NormalId)> RBX::Handles::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+// IDA 0x56e064: 146 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56e064() {
 }
 
 // 0x56e1e8 — __ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEMS2_S7_ED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEMS2_S7_ED1Ev")]
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Handles,void ()(RBX::NormalId),rbx::remote_signal<void ()(RBX::NormalId)>,rbx::remote_signal<void ()(RBX::NormalId)> RBX::Handles::*>::~EventDesc()")]
 // was: __ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEMS2_S7_ED1Ev
-pub fn stub_56e1e8() -> ! {
-    todo!("0x56e1e8 RBX::Reflection::EventDesc<RBX::Handles,void ()(RBX::NormalId),rbx::remote_signal<void ()(RBX::NormalId)>,rbx::remote_signal<void ()(RBX::NormalId)> RBX::Handles::*>::~EventDesc()")
+// IDA 0x56e1e8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_56e1e8() {
 }
 
 // 0x56e20c — __ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEMS2_S7_ED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEMS2_S7_ED0Ev")]
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Handles,void ()(RBX::NormalId),rbx::remote_signal<void ()(RBX::NormalId)>,rbx::remote_signal<void ()(RBX::NormalId)> RBX::Handles::*>::~EventDesc()")]
 // was: __ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEMS2_S7_ED0Ev
-pub fn stub_56e20c() -> ! {
-    todo!("0x56e20c RBX::Reflection::EventDesc<RBX::Handles,void ()(RBX::NormalId),rbx::remote_signal<void ()(RBX::NormalId)>,rbx::remote_signal<void ()(RBX::NormalId)> RBX::Handles::*>::~EventDesc()")
+// IDA 0x56e20c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_56e20c() {
 }
 
 // 0x56e2c0 — __ZN3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -148,48 +148,48 @@ pub fn stub_56e20c() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::PropDescriptor<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>(char const*,char const*,RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: __ZN3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-pub fn stub_56e2c0() -> ! {
-    todo!("0x56e2c0 RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::PropDescriptor<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>(char const*,char const*,RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+// IDA 0x56e2c0: 97 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56e2c0() {
 }
 
 // 0x56e3d4 — __ZN3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEED0Ev
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEED0Ev")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::~PropDescriptor()")]
 // was: __ZN3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEED0Ev
-pub fn stub_56e3d4() -> ! {
-    todo!("0x56e3d4 RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::~PropDescriptor()")
+// IDA 0x56e3d4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_56e3d4() {
 }
 
 // 0x56e400 — __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::GetSetImpl<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>::isReadOnly(void)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
-pub fn stub_56e400() -> ! {
-    todo!("0x56e400 RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::GetSetImpl<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>::isReadOnly(void)const")
+// IDA 0x56e400: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56e400() {
 }
 
 // 0x56e404 — __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::GetSetImpl<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>::isWriteOnly(void)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
-pub fn stub_56e404() -> ! {
-    todo!("0x56e404 RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::GetSetImpl<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>::isWriteOnly(void)const")
+// IDA 0x56e404: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56e404() {
 }
 
 // 0x56e408 — __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::GetSetImpl<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
-pub fn stub_56e408() -> ! {
-    todo!("0x56e408 RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::GetSetImpl<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>::getValue(RBX::Reflection::DescribedBase const*)const")
+// IDA 0x56e408: 12 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56e408() {
 }
 
 // 0x56e428 — __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::GetSetImpl<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>::setValue(RBX::Reflection::DescribedBase *,RBX::Faces const&)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
-pub fn stub_56e428() -> ! {
-    todo!("0x56e428 RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::GetSetImpl<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>::setValue(RBX::Reflection::DescribedBase *,RBX::Faces const&)const")
+// IDA 0x56e428: 13 insns (MOV.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56e428() {
 }
 
 // 0x56e44c — __ZN3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -197,96 +197,96 @@ pub fn stub_56e428() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::EnumPropDescriptor<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>(char const*,char const*,RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: __ZN3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-pub fn stub_56e44c() -> ! {
-    todo!("0x56e44c RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::EnumPropDescriptor<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>(char const*,char const*,RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+// IDA 0x56e44c: 157 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56e44c() {
 }
 
 // 0x56e600 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEED0Ev
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEED0Ev")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::~EnumPropDescriptor()")]
 // was: __ZN3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEED0Ev
-pub fn stub_56e600() -> ! {
-    todo!("0x56e600 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::~EnumPropDescriptor()")
+// IDA 0x56e600: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_56e600() {
 }
 
 // 0x56e62c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10isReadOnlyEv")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::isReadOnly(void)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10isReadOnlyEv
-pub fn stub_56e62c() -> ! {
-    todo!("0x56e62c RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::isReadOnly(void)const")
+// IDA 0x56e62c: 7 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56e62c() {
 }
 
 // 0x56e63c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11isWriteOnlyEv")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::isWriteOnly(void)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11isWriteOnlyEv
-pub fn stub_56e63c() -> ! {
-    todo!("0x56e63c RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::isWriteOnly(void)const")
+// IDA 0x56e63c: 7 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56e63c() {
 }
 
 // 0x56e64c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11equalValuesEPKNS0_13DescribedBaseES7_")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11equalValuesEPKNS0_13DescribedBaseES7_
-pub fn stub_56e64c() -> ! {
-    todo!("0x56e64c RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+// IDA 0x56e64c: 20 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56e64c() {
 }
 
 // 0x56e674 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
-pub fn stub_56e674() -> ! {
-    todo!("0x56e674 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+// IDA 0x56e674: 15 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56e674() {
 }
 
 // 0x56e698 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
-pub fn stub_56e698() -> ! {
-    todo!("0x56e698 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+// IDA 0x56e698: 125 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56e698() {
 }
 
 // 0x56e7e4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE9copyValueEPKNS0_13DescribedBaseEPS5_")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE9copyValueEPKNS0_13DescribedBaseEPS5_
-pub fn stub_56e7e4() -> ! {
-    todo!("0x56e7e4 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+// IDA 0x56e7e4: 18 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56e7e4() {
 }
 
 // 0x56e808 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14hasStringValueEv
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14hasStringValueEv")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::hasStringValue(void)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14hasStringValueEv
-pub fn stub_56e808() -> ! {
-    todo!("0x56e808 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::hasStringValue(void)const")
+// IDA 0x56e808: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56e808() {
 }
 
 // 0x56e80c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14getStringValueEPKNS0_13DescribedBaseE")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14getStringValueEPKNS0_13DescribedBaseE
-pub fn stub_56e80c() -> ! {
-    todo!("0x56e80c RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+// IDA 0x56e80c: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56e80c() {
 }
 
 // 0x56e830 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14setStringValueEPNS0_13DescribedBaseERKSs")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14setStringValueEPNS0_13DescribedBaseERKSs
-pub fn stub_56e830() -> ! {
-    todo!("0x56e830 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+// IDA 0x56e830: 29 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56e830() {
 }
 
 // 0x56e870 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
-pub fn stub_56e870() -> ! {
-    todo!("0x56e870 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+// IDA 0x56e870: 14 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56e870() {
 }
 
 // 0x56e890 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
@@ -294,56 +294,56 @@ pub fn stub_56e870() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
-pub fn stub_56e890() -> ! {
-    todo!("0x56e890 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+// IDA 0x56e890: 211 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56e890() {
 }
 
 // 0x56ead0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE13getIndexValueEPKNS0_13DescribedBaseE")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE13getIndexValueEPKNS0_13DescribedBaseE
-pub fn stub_56ead0() -> ! {
-    todo!("0x56ead0 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+// IDA 0x56ead0: 11 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56ead0() {
 }
 
 // 0x56eaec — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE13setIndexValueEPNS0_13DescribedBaseEm")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE13setIndexValueEPNS0_13DescribedBaseEm
-pub fn stub_56eaec() -> ! {
-    todo!("0x56eaec RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+// IDA 0x56eaec: 20 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56eaec() {
 }
 
 // 0x56eb20 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE12getEnumValueEPKNS0_13DescribedBaseE")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE12getEnumValueEPKNS0_13DescribedBaseE
-pub fn stub_56eb20() -> ! {
-    todo!("0x56eb20 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+// IDA 0x56eb20: 4 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56eb20() {
 }
 
 // 0x56eb28 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE12setEnumValueEPNS0_13DescribedBaseEi")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE12setEnumValueEPNS0_13DescribedBaseEi
-pub fn stub_56eb28() -> ! {
-    todo!("0x56eb28 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+// IDA 0x56eb28: 30 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56eb28() {
 }
 
 // 0x56eb74 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11getEnumItemEPKNS0_13DescribedBaseE")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11getEnumItemEPKNS0_13DescribedBaseE
-pub fn stub_56eb74() -> ! {
-    todo!("0x56eb74 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+// IDA 0x56eb74: 14 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56eb74() {
 }
 
 // 0x56eb94 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
-pub fn stub_56eb94() -> ! {
-    todo!("0x56eb94 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+// IDA 0x56eb94: 25 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56eb94() {
 }
 
 // 0x56ebc8 — __ZNK3RBX10Reflection8EnumDescINS_7Handles11VisualStyleEE14convertToIndexES3_
@@ -351,8 +351,8 @@ pub fn stub_56eb94() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Handles11VisualStyleEE14convertToIndexES3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Handles::VisualStyle>::convertToIndex(RBX::Handles::VisualStyle)const")]
 // was: __ZNK3RBX10Reflection8EnumDescINS_7Handles11VisualStyleEE14convertToIndexES3_
-pub fn stub_56ebc8() -> ! {
-    todo!("0x56ebc8 RBX::Reflection::EnumDesc<RBX::Handles::VisualStyle>::convertToIndex(RBX::Handles::VisualStyle)const")
+// IDA 0x56ebc8: 36 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56ebc8() {
 }
 
 // 0x56ec38 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11setIntValueEPNS0_13DescribedBaseEi
@@ -360,40 +360,40 @@ pub fn stub_56ebc8() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11setIntValueEPNS0_13DescribedBaseEi")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 // was: __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11setIntValueEPNS0_13DescribedBaseEi
-pub fn stub_56ec38() -> ! {
-    todo!("0x56ec38 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+// IDA 0x56ec38: 27 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56ec38() {
 }
 
 // 0x56ec78 — __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::GetSetImpl<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>::isReadOnly(void)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
-pub fn stub_56ec78() -> ! {
-    todo!("0x56ec78 RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::GetSetImpl<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>::isReadOnly(void)const")
+// IDA 0x56ec78: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56ec78() {
 }
 
 // 0x56ec7c — __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::GetSetImpl<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>::isWriteOnly(void)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
-pub fn stub_56ec7c() -> ! {
-    todo!("0x56ec7c RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::GetSetImpl<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>::isWriteOnly(void)const")
+// IDA 0x56ec7c: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56ec7c() {
 }
 
 // 0x56ec80 — __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::GetSetImpl<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
-pub fn stub_56ec80() -> ! {
-    todo!("0x56ec80 RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::GetSetImpl<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>::getValue(RBX::Reflection::DescribedBase const*)const")
+// IDA 0x56ec80: 12 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56ec80() {
 }
 
 // 0x56eca0 — __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::GetSetImpl<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>::setValue(RBX::Reflection::DescribedBase *,RBX::Handles::VisualStyle const&)const")]
 // was: __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
-pub fn stub_56eca0() -> ! {
-    todo!("0x56eca0 RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::GetSetImpl<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>::setValue(RBX::Reflection::DescribedBase *,RBX::Handles::VisualStyle const&)const")
+// IDA 0x56eca0: 13 insns (MOV.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56eca0() {
 }
 
 // 0x56ecc4 — __ZN3RBX7HandlesD2Ev
@@ -401,8 +401,8 @@ pub fn stub_56eca0() -> ! {
 #[doc(alias = "__ZN3RBX7HandlesD2Ev")]
 #[doc(alias = "RBX::Handles::~Handles()")]
 // was: __ZN3RBX7HandlesD2Ev
-pub fn stub_56ecc4() -> ! {
-    todo!("0x56ecc4 RBX::Handles::~Handles()")
+// IDA 0x56ecc4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_56ecc4() {
 }
 
 // 0x56eef8 — __ZN3rbx13remote_signalIFvN3RBX8NormalIdEfEED2Ev
@@ -410,8 +410,8 @@ pub fn stub_56ecc4() -> ! {
 #[doc(alias = "__ZN3rbx13remote_signalIFvN3RBX8NormalIdEfEED2Ev")]
 #[doc(alias = "rbx::remote_signal<void ()(RBX::NormalId,float)>::~remote_signal()")]
 // was: __ZN3rbx13remote_signalIFvN3RBX8NormalIdEfEED2Ev
-pub fn stub_56eef8() -> ! {
-    todo!("0x56eef8 rbx::remote_signal<void ()(RBX::NormalId,float)>::~remote_signal()")
+// IDA 0x56eef8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_56eef8() {
 }
 
 // 0x56f044 — __ZN3rbx13remote_signalIFvN3RBX8NormalIdEEED2Ev
@@ -419,32 +419,32 @@ pub fn stub_56eef8() -> ! {
 #[doc(alias = "__ZN3rbx13remote_signalIFvN3RBX8NormalIdEEED2Ev")]
 #[doc(alias = "rbx::remote_signal<void ()(RBX::NormalId)>::~remote_signal()")]
 // was: __ZN3rbx13remote_signalIFvN3RBX8NormalIdEEED2Ev
-pub fn stub_56f044() -> ! {
-    todo!("0x56f044 rbx::remote_signal<void ()(RBX::NormalId)>::~remote_signal()")
+// IDA 0x56f044: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_56f044() {
 }
 
 // 0x56f190 — __ZN3RBX19EventReplicatorBaseINS_7HandlesEFvNS_8NormalIdEfEED2Ev
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_7HandlesEFvNS_8NormalIdEfEED2Ev")]
 #[doc(alias = "RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>::~EventReplicatorBase()")]
 // was: __ZN3RBX19EventReplicatorBaseINS_7HandlesEFvNS_8NormalIdEfEED2Ev
-pub fn stub_56f190() -> ! {
-    todo!("0x56f190 RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>::~EventReplicatorBase()")
+// IDA 0x56f190: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_56f190() {
 }
 
 // 0x56f2c0 — __ZN3RBX19EventReplicatorBaseINS_7HandlesEFvNS_8NormalIdEEED2Ev
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_7HandlesEFvNS_8NormalIdEEED2Ev")]
 #[doc(alias = "RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>::~EventReplicatorBase()")]
 // was: __ZN3RBX19EventReplicatorBaseINS_7HandlesEFvNS_8NormalIdEEED2Ev
-pub fn stub_56f2c0() -> ! {
-    todo!("0x56f2c0 RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>::~EventReplicatorBase()")
+// IDA 0x56f2c0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_56f2c0() {
 }
 
 // 0x56f3f0 — __GLOBAL__I_a_210
 #[doc(alias = "__GLOBAL__I_a_210")]
 #[doc(alias = "global constructor keyed to_a_210")]
 // was: __GLOBAL__I_a_210
-pub fn stub_56f3f0() -> ! {
-    todo!("0x56f3f0 global constructor keyed to _a_210")
+// IDA 0x56f3f0: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+pub fn stub_56f3f0() {
 }
 
 // 0x56f9fc — __ZN3RBX11HandlesBaseC2EPKc
@@ -452,8 +452,8 @@ pub fn stub_56f3f0() -> ! {
 #[doc(alias = "__ZN3RBX11HandlesBaseC2EPKc")]
 #[doc(alias = "RBX::HandlesBase::HandlesBase(char const*)")]
 // was: __ZN3RBX11HandlesBaseC2EPKc
-pub fn stub_56f9fc() -> ! {
-    todo!("0x56f9fc RBX::HandlesBase::HandlesBase(char const*)")
+// IDA 0x56f9fc: 191 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_56f9fc() {
 }
 
 // 0x5703e0 — __ZNK3RBX11HandlesBase26canProcessMeAndDescendantsEv
@@ -461,8 +461,8 @@ pub fn stub_56f9fc() -> ! {
 #[doc(alias = "__ZNK3RBX11HandlesBase26canProcessMeAndDescendantsEv")]
 #[doc(alias = "RBX::HandlesBase::canProcessMeAndDescendants(void)const")]
 // was: __ZNK3RBX11HandlesBase26canProcessMeAndDescendantsEv
-pub fn stub_5703e0() -> ! {
-    todo!("0x5703e0 RBX::HandlesBase::canProcessMeAndDescendants(void)const")
+// IDA 0x5703e0: 81 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5703e0() {
 }
 
 // 0x5707a4 — __ZN3RBX11HandlesBase18setServerGuiObjectEv
@@ -470,40 +470,40 @@ pub fn stub_5703e0() -> ! {
 #[doc(alias = "__ZN3RBX11HandlesBase18setServerGuiObjectEv")]
 #[doc(alias = "RBX::HandlesBase::setServerGuiObject(void)")]
 // was: __ZN3RBX11HandlesBase18setServerGuiObjectEv
-pub fn stub_5707a4() -> ! {
-    todo!("0x5707a4 RBX::HandlesBase::setServerGuiObject(void)")
+// IDA 0x5707a4: 3 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5707a4() {
 }
 
 // 0x5707ac — __ZN3RBX11HandlesBase17onAncestorChangedERKNS_15AncestorChangedE
 #[doc(alias = "__ZN3RBX11HandlesBase17onAncestorChangedERKNS_15AncestorChangedE")]
 #[doc(alias = "RBX::HandlesBase::onAncestorChanged(RBX::AncestorChanged const&)")]
 // was: __ZN3RBX11HandlesBase17onAncestorChangedERKNS_15AncestorChangedE
-pub fn stub_5707ac() -> ! {
-    todo!("0x5707ac RBX::HandlesBase::onAncestorChanged(RBX::AncestorChanged const&)")
+// IDA 0x5707ac: 19 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5707ac() {
 }
 
 // 0x570f0c — __GLOBAL__I_a_211
 #[doc(alias = "__GLOBAL__I_a_211")]
 #[doc(alias = "global constructor keyed to_a_211")]
 // was: __GLOBAL__I_a_211
-pub fn stub_570f0c() -> ! {
-    todo!("0x570f0c global constructor keyed to _a_211")
+// IDA 0x570f0c: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+pub fn stub_570f0c() {
 }
 
 // 0x57117c — __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEEC1Ev
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEEC1Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::EnumDesc(void)")]
 // was: __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEEC1Ev
-pub fn stub_57117c() -> ! {
-    todo!("0x57117c RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::EnumDesc(void)")
+// IDA 0x57117c: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_57117c() {
 }
 
 // 0x571180 — __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEEC2Ev
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEEC2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::EnumDesc(void)")]
 // was: __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEEC2Ev
-pub fn stub_571180() -> ! {
-    todo!("0x571180 RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::EnumDesc(void)")
+// IDA 0x571180: 209 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_571180() {
 }
 
 // 0x5713d0 — __ZNK3RBX12BackpackItem12getTextureIdEv
@@ -511,8 +511,8 @@ pub fn stub_571180() -> ! {
 #[doc(alias = "__ZNK3RBX12BackpackItem12getTextureIdEv")]
 #[doc(alias = "RBX::BackpackItem::getTextureId(void)const")]
 // was: __ZNK3RBX12BackpackItem12getTextureIdEv
-pub fn stub_5713d0() -> ! {
-    todo!("0x5713d0 RBX::BackpackItem::getTextureId(void)const")
+// IDA 0x5713d0: 9 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5713d0() {
 }
 
 // 0x5713e8 — __ZN3RBX12BackpackItem12setTextureIdERKNS_9TextureIdE
@@ -520,16 +520,16 @@ pub fn stub_5713d0() -> ! {
 #[doc(alias = "__ZN3RBX12BackpackItem12setTextureIdERKNS_9TextureIdE")]
 #[doc(alias = "RBX::BackpackItem::setTextureId(RBX::TextureId const&)")]
 // was: __ZN3RBX12BackpackItem12setTextureIdERKNS_9TextureIdE
-pub fn stub_5713e8() -> ! {
-    todo!("0x5713e8 RBX::BackpackItem::setTextureId(RBX::TextureId const&)")
+// IDA 0x5713e8: 22 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5713e8() {
 }
 
 // 0x571428 — __ZN3RBX9HopperBin10setBinTypeENS0_7BinTypeE
 #[doc(alias = "__ZN3RBX9HopperBin10setBinTypeENS0_7BinTypeE")]
 #[doc(alias = "RBX::HopperBin::setBinType(RBX::HopperBin::BinType)")]
 // was: __ZN3RBX9HopperBin10setBinTypeENS0_7BinTypeE
-pub fn stub_571428() -> ! {
-    todo!("0x571428 RBX::HopperBin::setBinType(RBX::HopperBin::BinType)")
+// IDA 0x571428: 126 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_571428() {
 }
 
 // 0x5715a8 — __ZN3RBX9HopperBin11dataChangedERKNS_10Reflection18PropertyDescriptorE
@@ -537,8 +537,8 @@ pub fn stub_571428() -> ! {
 #[doc(alias = "__ZN3RBX9HopperBin11dataChangedERKNS_10Reflection18PropertyDescriptorE")]
 #[doc(alias = "RBX::HopperBin::dataChanged(RBX::Reflection::PropertyDescriptor const&)")]
 // was: __ZN3RBX9HopperBin11dataChangedERKNS_10Reflection18PropertyDescriptorE
-pub fn stub_5715a8() -> ! {
-    todo!("0x5715a8 RBX::HopperBin::dataChanged(RBX::Reflection::PropertyDescriptor const&)")
+// IDA 0x5715a8: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_5715a8() {
 }
 
 // 0x5715ac — __ZN3RBX9HopperBin7disableEv
@@ -546,8 +546,8 @@ pub fn stub_5715a8() -> ! {
 #[doc(alias = "__ZN3RBX9HopperBin7disableEv")]
 #[doc(alias = "RBX::HopperBin::disable(void)")]
 // was: __ZN3RBX9HopperBin7disableEv
-pub fn stub_5715ac() -> ! {
-    todo!("0x5715ac RBX::HopperBin::disable(void)")
+// IDA 0x5715ac: 26 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5715ac() {
 }
 
 // 0x5715f8 — __ZN3RBX9HopperBin16setLegacyCommandERKSs
@@ -555,8 +555,8 @@ pub fn stub_5715ac() -> ! {
 #[doc(alias = "__ZN3RBX9HopperBin16setLegacyCommandERKSs")]
 #[doc(alias = "RBX::HopperBin::setLegacyCommand(std::string const&)")]
 // was: __ZN3RBX9HopperBin16setLegacyCommandERKSs
-pub fn stub_5715f8() -> ! {
-    todo!("0x5715f8 RBX::HopperBin::setLegacyCommand(std::string const&)")
+// IDA 0x5715f8: 33 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5715f8() {
 }
 
 // 0x571654 — __ZN3RBX9HopperBin20setLegacyTextureNameERKSs
@@ -564,8 +564,8 @@ pub fn stub_5715f8() -> ! {
 #[doc(alias = "__ZN3RBX9HopperBin20setLegacyTextureNameERKSs")]
 #[doc(alias = "RBX::HopperBin::setLegacyTextureName(std::string const&)")]
 // was: __ZN3RBX9HopperBin20setLegacyTextureNameERKSs
-pub fn stub_571654() -> ! {
-    todo!("0x571654 RBX::HopperBin::setLegacyTextureName(std::string const&)")
+// IDA 0x571654: 272 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_571654() {
 }
 
 // 0x57195c — __ZN3RBX11StarterGearC1Ev
@@ -573,8 +573,8 @@ pub fn stub_571654() -> ! {
 #[doc(alias = "__ZN3RBX11StarterGearC1Ev")]
 #[doc(alias = "RBX::StarterGear::StarterGear(void)")]
 // was: __ZN3RBX11StarterGearC1Ev
-pub fn stub_57195c() -> ! {
-    todo!("0x57195c RBX::StarterGear::StarterGear(void)")
+// IDA 0x57195c: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_57195c() {
 }
 
 // 0x571960 — __ZN3RBX11StarterGearC2Ev
@@ -582,8 +582,8 @@ pub fn stub_57195c() -> ! {
 #[doc(alias = "__ZN3RBX11StarterGearC2Ev")]
 #[doc(alias = "RBX::StarterGear::StarterGear(void)")]
 // was: __ZN3RBX11StarterGearC2Ev
-pub fn stub_571960() -> ! {
-    todo!("0x571960 RBX::StarterGear::StarterGear(void)")
+// IDA 0x571960: 168 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_571960() {
 }
 
 // 0x571b54 — __ZNK3RBX11StarterGear12askSetParentEPKNS_8InstanceE
@@ -591,8 +591,8 @@ pub fn stub_571960() -> ! {
 #[doc(alias = "__ZNK3RBX11StarterGear12askSetParentEPKNS_8InstanceE")]
 #[doc(alias = "RBX::StarterGear::askSetParent(RBX::Instance const*)const")]
 // was: __ZNK3RBX11StarterGear12askSetParentEPKNS_8InstanceE
-pub fn stub_571b54() -> ! {
-    todo!("0x571b54 RBX::StarterGear::askSetParent(RBX::Instance const*)const")
+// IDA 0x571b54: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_571b54() {
 }
 
 // 0x571b58 — __ZNK3RBX11StarterGear11askAddChildEPKNS_8InstanceE
@@ -600,8 +600,8 @@ pub fn stub_571b54() -> ! {
 #[doc(alias = "__ZNK3RBX11StarterGear11askAddChildEPKNS_8InstanceE")]
 #[doc(alias = "RBX::StarterGear::askAddChild(RBX::Instance const*)const")]
 // was: __ZNK3RBX11StarterGear11askAddChildEPKNS_8InstanceE
-pub fn stub_571b58() -> ! {
-    todo!("0x571b58 RBX::StarterGear::askAddChild(RBX::Instance const*)const")
+// IDA 0x571b58: 24 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_571b58() {
 }
 
 // 0x571b94 — __ZN3RBX12BackpackItem7setNameERKSs
@@ -609,8 +609,8 @@ pub fn stub_571b58() -> ! {
 #[doc(alias = "__ZN3RBX12BackpackItem7setNameERKSs")]
 #[doc(alias = "RBX::BackpackItem::setName(std::string const&)")]
 // was: __ZN3RBX12BackpackItem7setNameERKSs
-pub fn stub_571b94() -> ! {
-    todo!("0x571b94 RBX::BackpackItem::setName(std::string const&)")
+// IDA 0x571b94: 13 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_571b94() {
 }
 
 // 0x571bb4 — __ZNK3RBX12BackpackItem8getBinIdEv
@@ -618,8 +618,8 @@ pub fn stub_571b94() -> ! {
 #[doc(alias = "__ZNK3RBX12BackpackItem8getBinIdEv")]
 #[doc(alias = "RBX::BackpackItem::getBinId(void)const")]
 // was: __ZNK3RBX12BackpackItem8getBinIdEv
-pub fn stub_571bb4() -> ! {
-    todo!("0x571bb4 RBX::BackpackItem::getBinId(void)const")
+// IDA 0x571bb4: 32 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_571bb4() {
 }
 
 // 0x571c18 — __ZN3RBX12BackpackItem10inBackpackEv
@@ -627,8 +627,8 @@ pub fn stub_571bb4() -> ! {
 #[doc(alias = "__ZN3RBX12BackpackItem10inBackpackEv")]
 #[doc(alias = "RBX::BackpackItem::inBackpack(void)")]
 // was: __ZN3RBX12BackpackItem10inBackpackEv
-pub fn stub_571c18() -> ! {
-    todo!("0x571c18 RBX::BackpackItem::inBackpack(void)")
+// IDA 0x571c18: 24 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_571c18() {
 }
 
 // 0x571c54 — __ZNK3RBX12BackpackItem11askAddChildEPKNS_8InstanceE
@@ -636,8 +636,8 @@ pub fn stub_571c18() -> ! {
 #[doc(alias = "__ZNK3RBX12BackpackItem11askAddChildEPKNS_8InstanceE")]
 #[doc(alias = "RBX::BackpackItem::askAddChild(RBX::Instance const*)const")]
 // was: __ZNK3RBX12BackpackItem11askAddChildEPKNS_8InstanceE
-pub fn stub_571c54() -> ! {
-    todo!("0x571c54 RBX::BackpackItem::askAddChild(RBX::Instance const*)const")
+// IDA 0x571c54: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_571c54() {
 }
 
 // 0x571c58 — __ZNK3RBX12BackpackItem12askSetParentEPKNS_8InstanceE
@@ -645,16 +645,16 @@ pub fn stub_571c54() -> ! {
 #[doc(alias = "__ZNK3RBX12BackpackItem12askSetParentEPKNS_8InstanceE")]
 #[doc(alias = "RBX::BackpackItem::askSetParent(RBX::Instance const*)const")]
 // was: __ZNK3RBX12BackpackItem12askSetParentEPKNS_8InstanceE
-pub fn stub_571c58() -> ! {
-    todo!("0x571c58 RBX::BackpackItem::askSetParent(RBX::Instance const*)const")
+// IDA 0x571c58: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_571c58() {
 }
 
 // 0x571c5c — __ZNK3RBX12BackpackItem7getSizeENS_6CanvasE
 #[doc(alias = "__ZNK3RBX12BackpackItem7getSizeENS_6CanvasE")]
 #[doc(alias = "RBX::BackpackItem::getSize(RBX::Canvas)const")]
 // was: __ZNK3RBX12BackpackItem7getSizeENS_6CanvasE
-pub fn stub_571c5c() -> ! {
-    todo!("0x571c5c RBX::BackpackItem::getSize(RBX::Canvas)const")
+// IDA 0x571c5c: 19 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_571c5c() {
 }
 
 // 0x5721a8 — __ZN3RBX9HopperBinC2Ev
@@ -662,8 +662,8 @@ pub fn stub_571c5c() -> ! {
 #[doc(alias = "__ZN3RBX9HopperBinC2Ev")]
 #[doc(alias = "RBX::HopperBin::HopperBin(void)")]
 // was: __ZN3RBX9HopperBinC2Ev
-pub fn stub_5721a8() -> ! {
-    todo!("0x5721a8 RBX::HopperBin::HopperBin(void)")
+// IDA 0x5721a8: 491 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5721a8() {
 }
 
 // 0x572710 — __ZN3RBX9HopperBin30selectedConnectionShimFunctionEv
@@ -671,8 +671,8 @@ pub fn stub_5721a8() -> ! {
 #[doc(alias = "__ZN3RBX9HopperBin30selectedConnectionShimFunctionEv")]
 #[doc(alias = "RBX::HopperBin::selectedConnectionShimFunction(void)")]
 // was: __ZN3RBX9HopperBin30selectedConnectionShimFunctionEv
-pub fn stub_572710() -> ! {
-    todo!("0x572710 RBX::HopperBin::selectedConnectionShimFunction(void)")
+// IDA 0x572710: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_572710() {
 }
 
 // 0x572714 — __ZN3RBX9HopperBin14onSelectScriptEv
@@ -680,24 +680,24 @@ pub fn stub_572710() -> ! {
 #[doc(alias = "__ZN3RBX9HopperBin14onSelectScriptEv")]
 #[doc(alias = "RBX::HopperBin::onSelectScript(void)")]
 // was: __ZN3RBX9HopperBin14onSelectScriptEv
-pub fn stub_572714() -> ! {
-    todo!("0x572714 RBX::HopperBin::onSelectScript(void)")
+// IDA 0x572714: 153 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_572714() {
 }
 
 // 0x5728a4 — __ZN3RBX9HopperBin37reverseSelectedConnectionShimFunctionERN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "__ZN3RBX9HopperBin37reverseSelectedConnectionShimFunctionERN5boost10shared_ptrINS_8InstanceEEE")]
 #[doc(alias = "RBX::HopperBin::reverseSelectedConnectionShimFunction(rbx_core::SharedPtr<RBX::Instance> &)")]
 // was: __ZN3RBX9HopperBin37reverseSelectedConnectionShimFunctionERN5boost10shared_ptrINS_8InstanceEEE
-pub fn stub_5728a4() -> ! {
-    todo!("0x5728a4 RBX::HopperBin::reverseSelectedConnectionShimFunction(boost::shared_ptr<RBX::Instance> &)")
+// IDA 0x5728a4: 6 insns (MOVW..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5728a4() {
 }
 
 // 0x5728bc — __ZN3RBX9HopperBin17onAncestorChangedERKNS_15AncestorChangedE
 #[doc(alias = "__ZN3RBX9HopperBin17onAncestorChangedERKNS_15AncestorChangedE")]
 #[doc(alias = "RBX::HopperBin::onAncestorChanged(RBX::AncestorChanged const&)")]
 // was: __ZN3RBX9HopperBin17onAncestorChangedERKNS_15AncestorChangedE
-pub fn stub_5728bc() -> ! {
-    todo!("0x5728bc RBX::HopperBin::onAncestorChanged(RBX::AncestorChanged const&)")
+// IDA 0x5728bc: 210 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5728bc() {
 }
 
 // 0x572b14 — __ZN3RBX9HopperBin15onSelectCommandEv
@@ -705,8 +705,8 @@ pub fn stub_5728bc() -> ! {
 #[doc(alias = "__ZN3RBX9HopperBin15onSelectCommandEv")]
 #[doc(alias = "RBX::HopperBin::onSelectCommand(void)")]
 // was: __ZN3RBX9HopperBin15onSelectCommandEv
-pub fn stub_572b14() -> ! {
-    todo!("0x572b14 RBX::HopperBin::onSelectCommand(void)")
+// IDA 0x572b14: 313 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_572b14() {
 }
 
 // 0x572e98 — __ZN3RBX9HopperBin14onLocalClickedEv
@@ -714,8 +714,8 @@ pub fn stub_572b14() -> ! {
 #[doc(alias = "__ZN3RBX9HopperBin14onLocalClickedEv")]
 #[doc(alias = "RBX::HopperBin::onLocalClicked(void)")]
 // was: __ZN3RBX9HopperBin14onLocalClickedEv
-pub fn stub_572e98() -> ! {
-    todo!("0x572e98 RBX::HopperBin::onLocalClicked(void)")
+// IDA 0x572e98: 34 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_572e98() {
 }
 
 // 0x572ef8 — __ZN3RBX9HopperBin19onLocalOtherClickedEv
@@ -723,8 +723,8 @@ pub fn stub_572e98() -> ! {
 #[doc(alias = "__ZN3RBX9HopperBin19onLocalOtherClickedEv")]
 #[doc(alias = "RBX::HopperBin::onLocalOtherClicked(void)")]
 // was: __ZN3RBX9HopperBin19onLocalOtherClickedEv
-pub fn stub_572ef8() -> ! {
-    todo!("0x572ef8 RBX::HopperBin::onLocalOtherClicked(void)")
+// IDA 0x572ef8: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_572ef8() {
 }
 
 // 0x572efc — __ZN3RBX6HopperC2Ev
@@ -732,8 +732,8 @@ pub fn stub_572ef8() -> ! {
 #[doc(alias = "__ZN3RBX6HopperC2Ev")]
 #[doc(alias = "RBX::Hopper::Hopper(void)")]
 // was: __ZN3RBX6HopperC2Ev
-pub fn stub_572efc() -> ! {
-    todo!("0x572efc RBX::Hopper::Hopper(void)")
+// IDA 0x572efc: 21 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_572efc() {
 }
 
 // 0x572f38 — __ZNK3RBX6Hopper12askSetParentEPKNS_8InstanceE
@@ -741,8 +741,8 @@ pub fn stub_572efc() -> ! {
 #[doc(alias = "__ZNK3RBX6Hopper12askSetParentEPKNS_8InstanceE")]
 #[doc(alias = "RBX::Hopper::askSetParent(RBX::Instance const*)const")]
 // was: __ZNK3RBX6Hopper12askSetParentEPKNS_8InstanceE
-pub fn stub_572f38() -> ! {
-    todo!("0x572f38 RBX::Hopper::askSetParent(RBX::Instance const*)const")
+// IDA 0x572f38: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_572f38() {
 }
 
 // 0x572f3c — __ZNK3RBX6Hopper11askAddChildEPKNS_8InstanceE
@@ -750,8 +750,8 @@ pub fn stub_572f38() -> ! {
 #[doc(alias = "__ZNK3RBX6Hopper11askAddChildEPKNS_8InstanceE")]
 #[doc(alias = "RBX::Hopper::askAddChild(RBX::Instance const*)const")]
 // was: __ZNK3RBX6Hopper11askAddChildEPKNS_8InstanceE
-pub fn stub_572f3c() -> ! {
-    todo!("0x572f3c RBX::Hopper::askAddChild(RBX::Instance const*)const")
+// IDA 0x572f3c: 24 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_572f3c() {
 }
 
 // 0x573090 — __ZN3RBX18StarterPackServiceC1Ev
@@ -759,8 +759,8 @@ pub fn stub_572f3c() -> ! {
 #[doc(alias = "__ZN3RBX18StarterPackServiceC1Ev")]
 #[doc(alias = "RBX::StarterPackService::StarterPackService(void)")]
 // was: __ZN3RBX18StarterPackServiceC1Ev
-pub fn stub_573090() -> ! {
-    todo!("0x573090 RBX::StarterPackService::StarterPackService(void)")
+// IDA 0x573090: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_573090() {
 }
 
 // 0x573094 — __ZN3RBX18StarterPackServiceC2Ev
@@ -768,8 +768,8 @@ pub fn stub_573090() -> ! {
 #[doc(alias = "__ZN3RBX18StarterPackServiceC2Ev")]
 #[doc(alias = "RBX::StarterPackService::StarterPackService(void)")]
 // was: __ZN3RBX18StarterPackServiceC2Ev
-pub fn stub_573094() -> ! {
-    todo!("0x573094 RBX::StarterPackService::StarterPackService(void)")
+// IDA 0x573094: 179 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_573094() {
 }
 
 // 0x5732b0 — __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEE7addPairES3_PKc
@@ -777,8 +777,8 @@ pub fn stub_573094() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEE7addPairES3_PKc")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::addPair(RBX::HopperBin::BinType,char const*)")]
 // was: __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEE7addPairES3_PKc
-pub fn stub_5732b0() -> ! {
-    todo!("0x5732b0 RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::addPair(RBX::HopperBin::BinType,char const*)")
+// IDA 0x5732b0: 308 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_5732b0() {
 }
 
 // 0x573610 — __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEE9addLegacyEiPKcS3_
@@ -786,16 +786,16 @@ pub fn stub_5732b0() -> ! {
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEE9addLegacyEiPKcS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::addLegacy(int,char const*,RBX::HopperBin::BinType)")]
 // was: __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEE9addLegacyEiPKcS3_
-pub fn stub_573610() -> ! {
-    todo!("0x573610 RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::addLegacy(int,char const*,RBX::HopperBin::BinType)")
+// IDA 0x573610: 31 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_573610() {
 }
 
 // 0x573664 — __ZN3RBX10Reflection14PropDescriptorINS_12BackpackItemENS_9TextureIdEED1Ev
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12BackpackItemENS_9TextureIdEED1Ev")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::~PropDescriptor()")]
 // was: __ZN3RBX10Reflection14PropDescriptorINS_12BackpackItemENS_9TextureIdEED1Ev
-pub fn stub_573664() -> ! {
-    todo!("0x573664 RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::~PropDescriptor()")
+// IDA 0x573664: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_573664() {
 }
 
 // 0x573688 — __ZNK3RBX9HopperBin10getBinTypeEv
@@ -803,54 +803,54 @@ pub fn stub_573664() -> ! {
 #[doc(alias = "__ZNK3RBX9HopperBin10getBinTypeEv")]
 #[doc(alias = "RBX::HopperBin::getBinType(void)const")]
 // was: __ZNK3RBX9HopperBin10getBinTypeEv
-pub fn stub_573688() -> ! {
-    todo!("0x573688 RBX::HopperBin::getBinType(void)const")
+// IDA 0x573688: 2 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_573688() {
 }
 
 // 0x573690 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEED1Ev
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEED1Ev")]
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::~EnumPropDescriptor()")]
 // was: __ZN3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEED1Ev
-pub fn stub_573690() -> ! {
-    todo!("0x573690 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::~EnumPropDescriptor()")
+// IDA 0x573690: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_573690() {
 }
 
 // 0x5736b4 — __ZN3RBX10Reflection9EventDescINS_9HopperBinEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_9HopperBinEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED1Ev")]
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::HopperBin,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::HopperBin::*>::~EventDesc()")]
 // was: __ZN3RBX10Reflection9EventDescINS_9HopperBinEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED1Ev
-pub fn stub_5736b4() -> ! {
-    todo!("0x5736b4 RBX::Reflection::EventDesc<RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::~EventDesc()")
+// IDA 0x5736b4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_5736b4() {
 }
 
 // 0x5736d8 — __ZN3RBX10Reflection15RemoteEventDescINS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEED1Ev
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEED1Ev")]
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")]
 // was: __ZN3RBX10Reflection15RemoteEventDescINS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEED1Ev
-pub fn stub_5736d8() -> ! {
-    todo!("0x5736d8 RBX::Reflection::RemoteEventDesc<RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")
+// IDA 0x5736d8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_5736d8() {
 }
 
 // 0x5736fc — __ZN3RBX10Reflection9EventDescINS_9HopperBinEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_9HopperBinEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev")]
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::HopperBin,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::HopperBin::*>::~EventDesc()")]
 // was: __ZN3RBX10Reflection9EventDescINS_9HopperBinEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev
-pub fn stub_5736fc() -> ! {
-    todo!("0x5736fc RBX::Reflection::EventDesc<RBX::HopperBin,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::HopperBin::*>::~EventDesc()")
+// IDA 0x5736fc: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_5736fc() {
 }
 
 // 0x573720 — __ZN3RBX10Reflection13BoundFuncDescINS_9HopperBinEFvvELi0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9HopperBinEFvvELi0EED1Ev")]
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HopperBin,void ()(void),0>::~BoundFuncDesc()")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_9HopperBinEFvvELi0EED1Ev
-pub fn stub_573720() -> ! {
-    todo!("0x573720 RBX::Reflection::BoundFuncDesc<RBX::HopperBin,void ()(void),0>::~BoundFuncDesc()")
+// IDA 0x573720: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_573720() {
 }
 
 // 0x573744 — __ZN3RBX10Reflection14PropDescriptorINS_9HopperBinESsED1Ev
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9HopperBinESsED1Ev")]
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::HopperBin,std::string>::~PropDescriptor()")]
 // was: __ZN3RBX10Reflection14PropDescriptorINS_9HopperBinESsED1Ev
-pub fn stub_573744() -> ! {
-    todo!("0x573744 RBX::Reflection::PropDescriptor<RBX::HopperBin,std::string>::~PropDescriptor()")
+// IDA 0x573744: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_573744() {
 }

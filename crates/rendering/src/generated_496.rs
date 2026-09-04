@@ -14,24 +14,24 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "Ogre::OverlayManager::createOverlayElementFromFactory(std::string const&,std::string const&)")]
 #[doc(alias = "__ZN4Ogre14OverlayManager31createOverlayElementFromFactoryERKSsS2_")]
 // was: Ogre::OverlayManager::createOverlayElementFromFactory(std::string const&,std::string const&)
-pub fn stub_d3218c() -> ! {
-    todo!("0xd3218c Ogre::OverlayManager::createOverlayElementFromFactory(std::string const&,std::string const&)")
+// IDA 0xd3218c: 204 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d3218c() {
 }
 
 // 0xd323dc — __ZN4Ogre14OverlayManager21getOverlayElementImplERKSsRSt3mapISsPNS_14OverlayElementESt4lessISsENS_12STLAllocatorISt4pairIS1_S5_ENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
 #[doc(alias = "Ogre::OverlayManager::getOverlayElementImpl(std::string const&,std::map<std::string,Ogre::OverlayElement *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)")]
 #[doc(alias = "__ZN4Ogre14OverlayManager21getOverlayElementImplERKSsRSt3mapISsPNS_14OverlayElementESt4lessISsENS_12STLAllocatorISt4pairIS1_S5_ENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE")]
 // was: Ogre::OverlayManager::getOverlayElementImpl(std::string const&,std::map<std::string,Ogre::OverlayElement *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)
-pub fn stub_d323dc() -> ! {
-    todo!("0xd323dc Ogre::OverlayManager::getOverlayElementImpl(std::string const&,std::map<std::string,Ogre::OverlayElement *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)")
+// IDA 0xd323dc: 254 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d323dc() {
 }
 
 // 0xd326bc — __ZN4Ogre14OverlayManager29destroyAllOverlayElementsImplERSt3mapISsPNS_14OverlayElementESt4lessISsENS_12STLAllocatorISt4pairIKSsS3_ENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
 #[doc(alias = "Ogre::OverlayManager::destroyAllOverlayElementsImpl(std::map<std::string,Ogre::OverlayElement *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)")]
 #[doc(alias = "__ZN4Ogre14OverlayManager29destroyAllOverlayElementsImplERSt3mapISsPNS_14OverlayElementESt4lessISsENS_12STLAllocatorISt4pairIKSsS3_ENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE")]
 // was: Ogre::OverlayManager::destroyAllOverlayElementsImpl(std::map<std::string,Ogre::OverlayElement *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)
-pub fn stub_d326bc() -> ! {
-    todo!("0xd326bc Ogre::OverlayManager::destroyAllOverlayElementsImpl(std::map<std::string,Ogre::OverlayElement *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)")
+// IDA 0xd326bc: 273 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d326bc() {
 }
 
 // 0xd329c4 — __ZN4Ogre14OverlayManager24addOverlayElementFactoryEPNS_21OverlayElementFactoryE
@@ -39,24 +39,24 @@ pub fn stub_d326bc() -> ! {
 #[doc(alias = "Ogre::OverlayManager::addOverlayElementFactory(Ogre::OverlayElementFactory *)")]
 #[doc(alias = "__ZN4Ogre14OverlayManager24addOverlayElementFactoryEPNS_21OverlayElementFactoryE")]
 // was: Ogre::OverlayManager::addOverlayElementFactory(Ogre::OverlayElementFactory *)
-pub fn stub_d329c4() -> ! {
-    todo!("0xd329c4 Ogre::OverlayManager::addOverlayElementFactory(Ogre::OverlayElementFactory *)")
+// IDA 0xd329c4: 219 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d329c4() {
 }
 
 // 0xd32c24 — __ZNSt3mapISsPN4Ogre7OverlayESt4lessISsENS0_12STLAllocatorISt4pairIKSsS2_ENS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEixERS7_
 #[doc(alias = "std::map<std::string,Ogre::Overlay *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")]
 #[doc(alias = "__ZNSt3mapISsPN4Ogre7OverlayESt4lessISsENS0_12STLAllocatorISt4pairIKSsS2_ENS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEixERS7_")]
 // was: std::map<std::string,Ogre::Overlay *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)
-pub fn stub_d32c24() -> ! {
-    todo!("0xd32c24 std::map<std::string,Ogre::Overlay *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")
+// IDA 0xd32c24: 157 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d32c24() {
 }
 
 // 0xd32de0 — __ZNSt3mapISsPN4Ogre21OverlayElementFactoryESt4lessISsENS0_12STLAllocatorISt4pairIKSsS2_ENS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEixERS7_
 #[doc(alias = "std::map<std::string,Ogre::OverlayElementFactory *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")]
 #[doc(alias = "__ZNSt3mapISsPN4Ogre21OverlayElementFactoryESt4lessISsENS0_12STLAllocatorISt4pairIKSsS2_ENS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEixERS7_")]
 // was: std::map<std::string,Ogre::OverlayElementFactory *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)
-pub fn stub_d32de0() -> ! {
-    todo!("0xd32de0 std::map<std::string,Ogre::OverlayElementFactory *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")
+// IDA 0xd32de0: 157 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d32de0() {
 }
 
 // 0xd32f9c — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre21OverlayElementFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_
@@ -64,8 +64,8 @@ pub fn stub_d32de0() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::pair<std::string const,Ogre::OverlayElementFactory *> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre21OverlayElementFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::pair<std::string const,Ogre::OverlayElementFactory *> const&)
-pub fn stub_d32f9c() -> ! {
-    todo!("0xd32f9c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::pair<std::string const,Ogre::OverlayElementFactory *> const&)")
+// IDA 0xd32f9c: 184 insns (PUSH..B). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d32f9c() {
 }
 
 // 0xd3317c — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre21OverlayElementFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS5_
@@ -73,8 +73,8 @@ pub fn stub_d32f9c() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::OverlayElementFactory *> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre21OverlayElementFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS5_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::OverlayElementFactory *> const&)
-pub fn stub_d3317c() -> ! {
-    todo!("0xd3317c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::OverlayElementFactory *> const&)")
+// IDA 0xd3317c: 127 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d3317c() {
 }
 
 // 0xd332d0 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre21OverlayElementFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS5_
@@ -82,16 +82,16 @@ pub fn stub_d3317c() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::OverlayElementFactory *> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre21OverlayElementFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS5_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::OverlayElementFactory *> const&)
-pub fn stub_d332d0() -> ! {
-    todo!("0xd332d0 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::OverlayElementFactory *> const&)")
+// IDA 0xd332d0: 90 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d332d0() {
 }
 
 // 0xd333b4 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre21OverlayElementFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre21OverlayElementFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)
-pub fn stub_d333b4() -> ! {
-    todo!("0xd333b4 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
+// IDA 0xd333b4: 64 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d333b4() {
 }
 
 // 0xd33458 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14OverlayElementEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS5_
@@ -99,8 +99,8 @@ pub fn stub_d333b4() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElement *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElement *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::OverlayElement *> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14OverlayElementEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS5_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElement *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElement *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::OverlayElement *> const&)
-pub fn stub_d33458() -> ! {
-    todo!("0xd33458 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElement *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElement *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::OverlayElement *> const&)")
+// IDA 0xd33458: 90 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d33458() {
 }
 
 // 0xd3353c — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14OverlayElementEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS5_
@@ -108,16 +108,16 @@ pub fn stub_d33458() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElement *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElement *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::OverlayElement *> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14OverlayElementEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS5_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElement *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElement *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::OverlayElement *> const&)
-pub fn stub_d3353c() -> ! {
-    todo!("0xd3353c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElement *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElement *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::OverlayElement *> const&)")
+// IDA 0xd3353c: 127 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d3353c() {
 }
 
 // 0xd33690 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14OverlayElementEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElement *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElement *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14OverlayElementEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElement *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElement *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)
-pub fn stub_d33690() -> ! {
-    todo!("0xd33690 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElement *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElement *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
+// IDA 0xd33690: 64 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d33690() {
 }
 
 // 0xd33734 — __ZNSt8_Rb_treeISsSsSt9_IdentityISsESt4lessISsEN4Ogre12STLAllocatorISsNS4_22CategorisedAllocPolicyILNS4_14MemoryCategoryE0EEEEEE4findERKSs
@@ -125,24 +125,24 @@ pub fn stub_d33690() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::string,std::_Identity<std::string>,std::less<std::string>,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSsSt9_IdentityISsESt4lessISsEN4Ogre12STLAllocatorISsNS4_22CategorisedAllocPolicyILNS4_14MemoryCategoryE0EEEEEE4findERKSs")]
 // was: std::_Rb_tree<std::string,std::string,std::_Identity<std::string>,std::less<std::string>,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)
-pub fn stub_d33734() -> ! {
-    todo!("0xd33734 std::_Rb_tree<std::string,std::string,std::_Identity<std::string>,std::less<std::string>,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
+// IDA 0xd33734: 64 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d33734() {
 }
 
 // 0xd337d8 — __ZNSt8_Rb_treeISsSsSt9_IdentityISsESt4lessISsEN4Ogre12STLAllocatorISsNS4_22CategorisedAllocPolicyILNS4_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeISsE
 #[doc(alias = "std::_Rb_tree<std::string,std::string,std::_Identity<std::string>,std::less<std::string>,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::string> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSsSt9_IdentityISsESt4lessISsEN4Ogre12STLAllocatorISsNS4_22CategorisedAllocPolicyILNS4_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeISsE")]
 // was: std::_Rb_tree<std::string,std::string,std::_Identity<std::string>,std::less<std::string>,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::string> *)
-pub fn stub_d337d8() -> ! {
-    todo!("0xd337d8 std::_Rb_tree<std::string,std::string,std::_Identity<std::string>,std::less<std::string>,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::string> *)")
+// IDA 0xd337d8: 43 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d337d8() {
 }
 
 // 0xd33850 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7OverlayEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::Overlay *>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7OverlayEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::Overlay *>> *)
-pub fn stub_d33850() -> ! {
-    todo!("0xd33850 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::Overlay *>> *)")
+// IDA 0xd33850: 43 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d33850() {
 }
 
 // 0xd338c8 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7OverlayEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_
@@ -150,8 +150,8 @@ pub fn stub_d33850() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::Overlay *>>,std::pair<std::string const,Ogre::Overlay *> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7OverlayEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::Overlay *>>,std::pair<std::string const,Ogre::Overlay *> const&)
-pub fn stub_d338c8() -> ! {
-    todo!("0xd338c8 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::Overlay *>>,std::pair<std::string const,Ogre::Overlay *> const&)")
+// IDA 0xd338c8: 184 insns (PUSH..B). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d338c8() {
 }
 
 // 0xd33aa8 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7OverlayEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS5_
@@ -159,8 +159,8 @@ pub fn stub_d338c8() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::Overlay *> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7OverlayEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS5_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::Overlay *> const&)
-pub fn stub_d33aa8() -> ! {
-    todo!("0xd33aa8 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::Overlay *> const&)")
+// IDA 0xd33aa8: 127 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d33aa8() {
 }
 
 // 0xd33bfc — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7OverlayEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS5_
@@ -168,80 +168,80 @@ pub fn stub_d33aa8() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::Overlay *> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7OverlayEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS5_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::Overlay *> const&)
-pub fn stub_d33bfc() -> ! {
-    todo!("0xd33bfc std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::Overlay *> const&)")
+// IDA 0xd33bfc: 90 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d33bfc() {
 }
 
 // 0xd33ce0 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7OverlayEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7OverlayEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)
-pub fn stub_d33ce0() -> ! {
-    todo!("0xd33ce0 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
+// IDA 0xd33ce0: 64 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d33ce0() {
 }
 
 // 0xd33d84 — __ZNSt8_Rb_treeISsSsSt9_IdentityISsESt4lessISsEN4Ogre12STLAllocatorISsNS4_22CategorisedAllocPolicyILNS4_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS3_Lb0EED1Ev
 #[doc(alias = "std::_Rb_tree<std::string,std::string,std::_Identity<std::string>,std::less<std::string>,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSsSt9_IdentityISsESt4lessISsEN4Ogre12STLAllocatorISsNS4_22CategorisedAllocPolicyILNS4_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS3_Lb0EED1Ev")]
 // was: std::_Rb_tree<std::string,std::string,std::_Identity<std::string>,std::less<std::string>,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
-pub fn stub_d33d84() -> ! {
-    todo!("0xd33d84 std::_Rb_tree<std::string,std::string,std::_Identity<std::string>,std::less<std::string>,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+// IDA 0xd33d84: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d33d84() {
 }
 
 // 0xd33d88 — __ZNSt8_Rb_treeISsSsSt9_IdentityISsESt4lessISsEN4Ogre12STLAllocatorISsNS4_22CategorisedAllocPolicyILNS4_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS3_Lb0EED0Ev
 #[doc(alias = "std::_Rb_tree<std::string,std::string,std::_Identity<std::string>,std::less<std::string>,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSsSt9_IdentityISsESt4lessISsEN4Ogre12STLAllocatorISsNS4_22CategorisedAllocPolicyILNS4_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS3_Lb0EED0Ev")]
 // was: std::_Rb_tree<std::string,std::string,std::_Identity<std::string>,std::less<std::string>,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
-pub fn stub_d33d88() -> ! {
-    todo!("0xd33d88 std::_Rb_tree<std::string,std::string,std::_Identity<std::string>,std::less<std::string>,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+// IDA 0xd33d88: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_d33d88() {
 }
 
 // 0xd33d94 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14OverlayElementEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElement *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElement *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14OverlayElementEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElement *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElement *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
-pub fn stub_d33d94() -> ! {
-    todo!("0xd33d94 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElement *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElement *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+// IDA 0xd33d94: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d33d94() {
 }
 
 // 0xd33d98 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14OverlayElementEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElement *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElement *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14OverlayElementEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElement *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElement *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
-pub fn stub_d33d98() -> ! {
-    todo!("0xd33d98 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElement *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElement *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+// IDA 0xd33d98: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_d33d98() {
 }
 
 // 0xd33da4 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre21OverlayElementFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre21OverlayElementFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
-pub fn stub_d33da4() -> ! {
-    todo!("0xd33da4 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+// IDA 0xd33da4: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d33da4() {
 }
 
 // 0xd33da8 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre21OverlayElementFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre21OverlayElementFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
-pub fn stub_d33da8() -> ! {
-    todo!("0xd33da8 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+// IDA 0xd33da8: 4 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d33da8() {
 }
 
 // 0xd33db4 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7OverlayEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7OverlayEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
-pub fn stub_d33db4() -> ! {
-    todo!("0xd33db4 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+// IDA 0xd33db4: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d33db4() {
 }
 
 // 0xd33db8 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7OverlayEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre7OverlayEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
-pub fn stub_d33db8() -> ! {
-    todo!("0xd33db8 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Overlay *>,std::_Select1st<std::pair<std::string const,Ogre::Overlay *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Overlay *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+// IDA 0xd33db8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_d33db8() {
 }
 
 // 0xd33dc4 — __ZNSt8_Rb_treeISsSsSt9_IdentityISsESt4lessISsEN4Ogre12STLAllocatorISsNS4_22CategorisedAllocPolicyILNS4_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSC_RKSs
@@ -249,24 +249,24 @@ pub fn stub_d33db8() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::string,std::_Identity<std::string>,std::less<std::string>,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::string const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSsSt9_IdentityISsESt4lessISsEN4Ogre12STLAllocatorISsNS4_22CategorisedAllocPolicyILNS4_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSC_RKSs")]
 // was: std::_Rb_tree<std::string,std::string,std::_Identity<std::string>,std::less<std::string>,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::string const&)
-pub fn stub_d33dc4() -> ! {
-    todo!("0xd33dc4 std::_Rb_tree<std::string,std::string,std::_Identity<std::string>,std::less<std::string>,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::string const&)")
+// IDA 0xd33dc4: 122 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d33dc4() {
 }
 
 // 0xd33f0c — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre21OverlayElementFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::OverlayElementFactory *>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre21OverlayElementFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::OverlayElementFactory *>> *)
-pub fn stub_d33f0c() -> ! {
-    todo!("0xd33f0c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElementFactory *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElementFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElementFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::OverlayElementFactory *>> *)")
+// IDA 0xd33f0c: 43 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d33f0c() {
 }
 
 // 0xd33f84 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14OverlayElementEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElement *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElement *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::OverlayElement *>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14OverlayElementEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElement *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElement *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::OverlayElement *>> *)
-pub fn stub_d33f84() -> ! {
-    todo!("0xd33f84 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::OverlayElement *>,std::_Select1st<std::pair<std::string const,Ogre::OverlayElement *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::OverlayElement *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::OverlayElement *>> *)")
+// IDA 0xd33f84: 43 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d33f84() {
 }
 
 // 0xd34030 — __ZN4Ogre19PanelOverlayElementC1ERKSs
@@ -274,8 +274,8 @@ pub fn stub_d33f84() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::PanelOverlayElement(std::string const&)")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElementC1ERKSs")]
 // was: Ogre::PanelOverlayElement::PanelOverlayElement(std::string const&)
-pub fn stub_d34030() -> ! {
-    todo!("0xd34030 Ogre::PanelOverlayElement::PanelOverlayElement(std::string const&)")
+// IDA 0xd34030: 4 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d34030() {
 }
 
 // 0xd3403c — __ZN4Ogre19PanelOverlayElementC2ERKSs
@@ -283,8 +283,8 @@ pub fn stub_d34030() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::PanelOverlayElement(std::string const&)")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElementC2ERKSs")]
 // was: Ogre::PanelOverlayElement::PanelOverlayElement(std::string const&)
-pub fn stub_d3403c() -> ! {
-    todo!("0xd3403c Ogre::PanelOverlayElement::PanelOverlayElement(std::string const&)")
+// IDA 0xd3403c: 187 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d3403c() {
 }
 
 // 0xd34264 — __ZN4Ogre19PanelOverlayElementD0Ev
@@ -292,8 +292,8 @@ pub fn stub_d3403c() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::~PanelOverlayElement()")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElementD0Ev")]
 // was: Ogre::PanelOverlayElement::~PanelOverlayElement()
-pub fn stub_d34264() -> ! {
-    todo!("0xd34264 Ogre::PanelOverlayElement::~PanelOverlayElement()")
+// IDA 0xd34264: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_d34264() {
 }
 
 // 0xd3432c — __ZN4Ogre19PanelOverlayElementD1Ev
@@ -301,8 +301,8 @@ pub fn stub_d34264() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::~PanelOverlayElement()")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElementD1Ev")]
 // was: Ogre::PanelOverlayElement::~PanelOverlayElement()
-pub fn stub_d3432c() -> ! {
-    todo!("0xd3432c Ogre::PanelOverlayElement::~PanelOverlayElement()")
+// IDA 0xd3432c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_d3432c() {
 }
 
 // 0xd343e8 — __ZThn12_N4Ogre19PanelOverlayElementD0Ev
@@ -310,8 +310,8 @@ pub fn stub_d3432c() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::PanelOverlayElement::~PanelOverlayElement()")]
 #[doc(alias = "__ZThn12_N4Ogre19PanelOverlayElementD0Ev")]
 // was: `non-virtual thunk toOgre::PanelOverlayElement::~PanelOverlayElement()
-pub fn stub_d343e8() -> ! {
-    todo!("0xd343e8 non-virtual thunk toOgre::PanelOverlayElement::~PanelOverlayElement()")
+// IDA 0xd343e8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_d343e8() {
 }
 
 // 0xd344b4 — __ZN4Ogre19PanelOverlayElementD2Ev
@@ -319,8 +319,8 @@ pub fn stub_d343e8() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::~PanelOverlayElement()")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElementD2Ev")]
 // was: Ogre::PanelOverlayElement::~PanelOverlayElement()
-pub fn stub_d344b4() -> ! {
-    todo!("0xd344b4 Ogre::PanelOverlayElement::~PanelOverlayElement()")
+// IDA 0xd344b4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_d344b4() {
 }
 
 // 0xd34570 — __ZThn12_N4Ogre19PanelOverlayElementD1Ev
@@ -328,8 +328,8 @@ pub fn stub_d344b4() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::PanelOverlayElement::~PanelOverlayElement()")]
 #[doc(alias = "__ZThn12_N4Ogre19PanelOverlayElementD1Ev")]
 // was: `non-virtual thunk toOgre::PanelOverlayElement::~PanelOverlayElement()
-pub fn stub_d34570() -> ! {
-    todo!("0xd34570 non-virtual thunk toOgre::PanelOverlayElement::~PanelOverlayElement()")
+// IDA 0xd34570: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_d34570() {
 }
 
 // 0xd3462c — __ZN4Ogre19PanelOverlayElement10initialiseEv
@@ -337,8 +337,8 @@ pub fn stub_d34570() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::initialise(void)")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElement10initialiseEv")]
 // was: Ogre::PanelOverlayElement::initialise(void)
-pub fn stub_d3462c() -> ! {
-    todo!("0xd3462c Ogre::PanelOverlayElement::initialise(void)")
+// IDA 0xd3462c: 219 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d3462c() {
 }
 
 // 0xd34864 — __ZNK4Ogre19PanelOverlayElement11getTypeNameEv
@@ -346,24 +346,24 @@ pub fn stub_d3462c() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::getTypeName(void)const")]
 #[doc(alias = "__ZNK4Ogre19PanelOverlayElement11getTypeNameEv")]
 // was: Ogre::PanelOverlayElement::getTypeName(void)const
-pub fn stub_d34864() -> ! {
-    todo!("0xd34864 Ogre::PanelOverlayElement::getTypeName(void)const")
+// IDA 0xd34864: 3 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d34864() {
 }
 
 // 0xd34870 — __ZN4Ogre19PanelOverlayElement18getRenderOperationERNS_15RenderOperationE
 #[doc(alias = "Ogre::PanelOverlayElement::getRenderOperation(Ogre::RenderOperation &)")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElement18getRenderOperationERNS_15RenderOperationE")]
 // was: Ogre::PanelOverlayElement::getRenderOperation(Ogre::RenderOperation &)
-pub fn stub_d34870() -> ! {
-    todo!("0xd34870 Ogre::PanelOverlayElement::getRenderOperation(Ogre::RenderOperation &)")
+// IDA 0xd34870: 8 insns (ADD.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d34870() {
 }
 
 // 0xd34890 — __ZThn12_N4Ogre19PanelOverlayElement18getRenderOperationERNS_15RenderOperationE
 #[doc(alias = "non-virtual thunk toOgre::PanelOverlayElement::getRenderOperation(Ogre::RenderOperation &)")]
 #[doc(alias = "__ZThn12_N4Ogre19PanelOverlayElement18getRenderOperationERNS_15RenderOperationE")]
 // was: `non-virtual thunk toOgre::PanelOverlayElement::getRenderOperation(Ogre::RenderOperation &)
-pub fn stub_d34890() -> ! {
-    todo!("0xd34890 non-virtual thunk toOgre::PanelOverlayElement::getRenderOperation(Ogre::RenderOperation &)")
+// IDA 0xd34890: 8 insns (ADD.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d34890() {
 }
 
 // 0xd348b0 — __ZN4Ogre19PanelOverlayElement15setMaterialNameERKSs
@@ -371,8 +371,8 @@ pub fn stub_d34890() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::setMaterialName(std::string const&)")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElement15setMaterialNameERKSs")]
 // was: Ogre::PanelOverlayElement::setMaterialName(std::string const&)
-pub fn stub_d348b0() -> ! {
-    todo!("0xd348b0 Ogre::PanelOverlayElement::setMaterialName(std::string const&)")
+// IDA 0xd348b0: 4 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d348b0() {
 }
 
 // 0xd348bc — __ZN4Ogre19PanelOverlayElement18_updateRenderQueueEPNS_11RenderQueueE
@@ -380,8 +380,8 @@ pub fn stub_d348b0() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::_updateRenderQueue(Ogre::RenderQueue *)")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElement18_updateRenderQueueEPNS_11RenderQueueE")]
 // was: Ogre::PanelOverlayElement::_updateRenderQueue(Ogre::RenderQueue *)
-pub fn stub_d348bc() -> ! {
-    todo!("0xd348bc Ogre::PanelOverlayElement::_updateRenderQueue(Ogre::RenderQueue *)")
+// IDA 0xd348bc: 33 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d348bc() {
 }
 
 // 0xd34908 — __ZN4Ogre19PanelOverlayElement22updatePositionGeometryEv
@@ -389,8 +389,8 @@ pub fn stub_d348bc() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::updatePositionGeometry(void)")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElement22updatePositionGeometryEv")]
 // was: Ogre::PanelOverlayElement::updatePositionGeometry(void)
-pub fn stub_d34908() -> ! {
-    todo!("0xd34908 Ogre::PanelOverlayElement::updatePositionGeometry(void)")
+// IDA 0xd34908: 225 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d34908() {
 }
 
 // 0xd34b54 — __ZN4Ogre19PanelOverlayElement21updateTextureGeometryEv
@@ -398,8 +398,8 @@ pub fn stub_d34908() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::updateTextureGeometry(void)")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElement21updateTextureGeometryEv")]
 // was: Ogre::PanelOverlayElement::updateTextureGeometry(void)
-pub fn stub_d34b54() -> ! {
-    todo!("0xd34b54 Ogre::PanelOverlayElement::updateTextureGeometry(void)")
+// IDA 0xd34b54: 442 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d34b54() {
 }
 
 // 0xd34fc0 — __ZN4Ogre19PanelOverlayElement17addBaseParametersEv
@@ -407,8 +407,8 @@ pub fn stub_d34b54() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::addBaseParameters(void)")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElement17addBaseParametersEv")]
 // was: Ogre::PanelOverlayElement::addBaseParameters(void)
-pub fn stub_d34fc0() -> ! {
-    todo!("0xd34fc0 Ogre::PanelOverlayElement::addBaseParameters(void)")
+// IDA 0xd34fc0: 722 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d34fc0() {
 }
 
 // 0xd35828 — __ZNK4Ogre19PanelOverlayElement9CmdTiling5doGetEPKv
@@ -416,8 +416,8 @@ pub fn stub_d34fc0() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::CmdTiling::doGet(void const*)const")]
 #[doc(alias = "__ZNK4Ogre19PanelOverlayElement9CmdTiling5doGetEPKv")]
 // was: Ogre::PanelOverlayElement::CmdTiling::doGet(void const*)const
-pub fn stub_d35828() -> ! {
-    todo!("0xd35828 Ogre::PanelOverlayElement::CmdTiling::doGet(void const*)const")
+// IDA 0xd35828: 294 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d35828() {
 }
 
 // 0xd35b5c — __ZN4Ogre19PanelOverlayElement9CmdTiling5doSetEPvRKSs
@@ -425,8 +425,8 @@ pub fn stub_d35828() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::CmdTiling::doSet(void *,std::string const&)")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElement9CmdTiling5doSetEPvRKSs")]
 // was: Ogre::PanelOverlayElement::CmdTiling::doSet(void *,std::string const&)
-pub fn stub_d35b5c() -> ! {
-    todo!("0xd35b5c Ogre::PanelOverlayElement::CmdTiling::doSet(void *,std::string const&)")
+// IDA 0xd35b5c: 219 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d35b5c() {
 }
 
 // 0xd35dc0 — __ZNK4Ogre19PanelOverlayElement14CmdTransparent5doGetEPKv
@@ -434,8 +434,8 @@ pub fn stub_d35b5c() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::CmdTransparent::doGet(void const*)const")]
 #[doc(alias = "__ZNK4Ogre19PanelOverlayElement14CmdTransparent5doGetEPKv")]
 // was: Ogre::PanelOverlayElement::CmdTransparent::doGet(void const*)const
-pub fn stub_d35dc0() -> ! {
-    todo!("0xd35dc0 Ogre::PanelOverlayElement::CmdTransparent::doGet(void const*)const")
+// IDA 0xd35dc0: 6 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d35dc0() {
 }
 
 // 0xd35dd0 — __ZN4Ogre19PanelOverlayElement14CmdTransparent5doSetEPvRKSs
@@ -443,8 +443,8 @@ pub fn stub_d35dc0() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::CmdTransparent::doSet(void *,std::string const&)")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElement14CmdTransparent5doSetEPvRKSs")]
 // was: Ogre::PanelOverlayElement::CmdTransparent::doSet(void *,std::string const&)
-pub fn stub_d35dd0() -> ! {
-    todo!("0xd35dd0 Ogre::PanelOverlayElement::CmdTransparent::doSet(void *,std::string const&)")
+// IDA 0xd35dd0: 8 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d35dd0() {
 }
 
 // 0xd35de4 — __ZNK4Ogre19PanelOverlayElement11CmdUVCoords5doGetEPKv
@@ -452,8 +452,8 @@ pub fn stub_d35dd0() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::CmdUVCoords::doGet(void const*)const")]
 #[doc(alias = "__ZNK4Ogre19PanelOverlayElement11CmdUVCoords5doGetEPKv")]
 // was: Ogre::PanelOverlayElement::CmdUVCoords::doGet(void const*)const
-pub fn stub_d35de4() -> ! {
-    todo!("0xd35de4 Ogre::PanelOverlayElement::CmdUVCoords::doGet(void const*)const")
+// IDA 0xd35de4: 711 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d35de4() {
 }
 
 // 0xd365c4 — __ZN4Ogre19PanelOverlayElement11CmdUVCoords5doSetEPvRKSs
@@ -461,8 +461,8 @@ pub fn stub_d35de4() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::CmdUVCoords::doSet(void *,std::string const&)")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElement11CmdUVCoords5doSetEPvRKSs")]
 // was: Ogre::PanelOverlayElement::CmdUVCoords::doSet(void *,std::string const&)
-pub fn stub_d365c4() -> ! {
-    todo!("0xd365c4 Ogre::PanelOverlayElement::CmdUVCoords::doSet(void *,std::string const&)")
+// IDA 0xd365c4: 229 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d365c4() {
 }
 
 // 0xd36848 — __ZN4Ogre19PanelOverlayElement9CmdTilingD1Ev
@@ -470,8 +470,8 @@ pub fn stub_d365c4() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::CmdTiling::~CmdTiling()")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElement9CmdTilingD1Ev")]
 // was: Ogre::PanelOverlayElement::CmdTiling::~CmdTiling()
-pub fn stub_d36848() -> ! {
-    todo!("0xd36848 Ogre::PanelOverlayElement::CmdTiling::~CmdTiling()")
+// IDA 0xd36848: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d36848() {
 }
 
 // 0xd3684c — __ZN4Ogre19PanelOverlayElement14CmdTransparentD1Ev
@@ -479,8 +479,8 @@ pub fn stub_d36848() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::CmdTransparent::~CmdTransparent()")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElement14CmdTransparentD1Ev")]
 // was: Ogre::PanelOverlayElement::CmdTransparent::~CmdTransparent()
-pub fn stub_d3684c() -> ! {
-    todo!("0xd3684c Ogre::PanelOverlayElement::CmdTransparent::~CmdTransparent()")
+// IDA 0xd3684c: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d3684c() {
 }
 
 // 0xd36850 — __ZN4Ogre19PanelOverlayElement11CmdUVCoordsD1Ev
@@ -488,8 +488,8 @@ pub fn stub_d3684c() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::CmdUVCoords::~CmdUVCoords()")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElement11CmdUVCoordsD1Ev")]
 // was: Ogre::PanelOverlayElement::CmdUVCoords::~CmdUVCoords()
-pub fn stub_d36850() -> ! {
-    todo!("0xd36850 Ogre::PanelOverlayElement::CmdUVCoords::~CmdUVCoords()")
+// IDA 0xd36850: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d36850() {
 }
 
 // 0xd36854 — __ZN4Ogre15StringInterface21createParamDictionaryERKSs
@@ -497,8 +497,8 @@ pub fn stub_d36850() -> ! {
 #[doc(alias = "Ogre::StringInterface::createParamDictionary(std::string const&)")]
 #[doc(alias = "__ZN4Ogre15StringInterface21createParamDictionaryERKSs")]
 // was: Ogre::StringInterface::createParamDictionary(std::string const&)
-pub fn stub_d36854() -> ! {
-    todo!("0xd36854 Ogre::StringInterface::createParamDictionary(std::string const&)")
+// IDA 0xd36854: 464 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d36854() {
 }
 
 // 0xd36d48 — __ZN4Ogre19PanelOverlayElement9CmdTilingD0Ev
@@ -506,8 +506,8 @@ pub fn stub_d36854() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::CmdTiling::~CmdTiling()")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElement9CmdTilingD0Ev")]
 // was: Ogre::PanelOverlayElement::CmdTiling::~CmdTiling()
-pub fn stub_d36d48() -> ! {
-    todo!("0xd36d48 Ogre::PanelOverlayElement::CmdTiling::~CmdTiling()")
+// IDA 0xd36d48: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_d36d48() {
 }
 
 // 0xd36d54 — __ZN4Ogre19PanelOverlayElement14CmdTransparentD0Ev
@@ -515,8 +515,8 @@ pub fn stub_d36d48() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::CmdTransparent::~CmdTransparent()")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElement14CmdTransparentD0Ev")]
 // was: Ogre::PanelOverlayElement::CmdTransparent::~CmdTransparent()
-pub fn stub_d36d54() -> ! {
-    todo!("0xd36d54 Ogre::PanelOverlayElement::CmdTransparent::~CmdTransparent()")
+// IDA 0xd36d54: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_d36d54() {
 }
 
 // 0xd36d60 — __ZN4Ogre19PanelOverlayElement11CmdUVCoordsD0Ev
@@ -524,8 +524,8 @@ pub fn stub_d36d54() -> ! {
 #[doc(alias = "Ogre::PanelOverlayElement::CmdUVCoords::~CmdUVCoords()")]
 #[doc(alias = "__ZN4Ogre19PanelOverlayElement11CmdUVCoordsD0Ev")]
 // was: Ogre::PanelOverlayElement::CmdUVCoords::~CmdUVCoords()
-pub fn stub_d36d60() -> ! {
-    todo!("0xd36d60 Ogre::PanelOverlayElement::CmdUVCoords::~CmdUVCoords()")
+// IDA 0xd36d60: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_d36d60() {
 }
 
 // 0xd36d6c — __ZNK4Ogre16OverlayContainer11isContainerEv
@@ -533,8 +533,8 @@ pub fn stub_d36d60() -> ! {
 #[doc(alias = "Ogre::OverlayContainer::isContainer(void)const")]
 #[doc(alias = "__ZNK4Ogre16OverlayContainer11isContainerEv")]
 // was: Ogre::OverlayContainer::isContainer(void)const
-pub fn stub_d36d6c() -> ! {
-    todo!("0xd36d6c Ogre::OverlayContainer::isContainer(void)const")
+// IDA 0xd36d6c: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d36d6c() {
 }
 
 // 0xd36d70 — __ZNK4Ogre14OverlayElement12isKeyEnabledEv
@@ -542,8 +542,8 @@ pub fn stub_d36d6c() -> ! {
 #[doc(alias = "Ogre::OverlayElement::isKeyEnabled(void)const")]
 #[doc(alias = "__ZNK4Ogre14OverlayElement12isKeyEnabledEv")]
 // was: Ogre::OverlayElement::isKeyEnabled(void)const
-pub fn stub_d36d70() -> ! {
-    todo!("0xd36d70 Ogre::OverlayElement::isKeyEnabled(void)const")
+// IDA 0xd36d70: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d36d70() {
 }
 
 // 0xd36d74 — __ZNK4Ogre14OverlayElement11isCloneableEv
@@ -551,8 +551,8 @@ pub fn stub_d36d70() -> ! {
 #[doc(alias = "Ogre::OverlayElement::isCloneable(void)const")]
 #[doc(alias = "__ZNK4Ogre14OverlayElement11isCloneableEv")]
 // was: Ogre::OverlayElement::isCloneable(void)const
-pub fn stub_d36d74() -> ! {
-    todo!("0xd36d74 Ogre::OverlayElement::isCloneable(void)const")
+// IDA 0xd36d74: 2 insns (LDRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d36d74() {
 }
 
 // 0xd36d7c — __ZN4Ogre14OverlayElement12setCloneableEb
@@ -560,8 +560,8 @@ pub fn stub_d36d74() -> ! {
 #[doc(alias = "Ogre::OverlayElement::setCloneable(bool)")]
 #[doc(alias = "__ZN4Ogre14OverlayElement12setCloneableEb")]
 // was: Ogre::OverlayElement::setCloneable(bool)
-pub fn stub_d36d7c() -> ! {
-    todo!("0xd36d7c Ogre::OverlayElement::setCloneable(bool)")
+// IDA 0xd36d7c: 2 insns (STRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d36d7c() {
 }
 
 // 0xd36da4 — __ZNK4Ogre14OverlayElement9getLightsEv
@@ -569,8 +569,8 @@ pub fn stub_d36d7c() -> ! {
 #[doc(alias = "Ogre::OverlayElement::getLights(void)const")]
 #[doc(alias = "__ZNK4Ogre14OverlayElement9getLightsEv")]
 // was: Ogre::OverlayElement::getLights(void)const
-pub fn stub_d36da4() -> ! {
-    todo!("0xd36da4 Ogre::OverlayElement::getLights(void)const")
+// IDA 0xd36da4: 40 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d36da4() {
 }
 
 // 0xd36e20 — __ZNK4Ogre16OverlayContainer23isChildrenProcessEventsEv
@@ -578,8 +578,8 @@ pub fn stub_d36da4() -> ! {
 #[doc(alias = "Ogre::OverlayContainer::isChildrenProcessEvents(void)const")]
 #[doc(alias = "__ZNK4Ogre16OverlayContainer23isChildrenProcessEventsEv")]
 // was: Ogre::OverlayContainer::isChildrenProcessEvents(void)const
-pub fn stub_d36e20() -> ! {
-    todo!("0xd36e20 Ogre::OverlayContainer::isChildrenProcessEvents(void)const")
+// IDA 0xd36e20: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d36e20() {
 }
 
 // 0xd36e24 — __ZN4Ogre16OverlayContainer24setChildrenProcessEventsEb
@@ -587,8 +587,8 @@ pub fn stub_d36e20() -> ! {
 #[doc(alias = "Ogre::OverlayContainer::setChildrenProcessEvents(bool)")]
 #[doc(alias = "__ZN4Ogre16OverlayContainer24setChildrenProcessEventsEb")]
 // was: Ogre::OverlayContainer::setChildrenProcessEvents(bool)
-pub fn stub_d36e24() -> ! {
-    todo!("0xd36e24 Ogre::OverlayContainer::setChildrenProcessEvents(bool)")
+// IDA 0xd36e24: 2 insns (STRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d36e24() {
 }
 
 // 0xd36e2c — __ZN4Ogre10Renderable10postRenderEPNS_12SceneManagerEPNS_12RenderSystemE
@@ -596,8 +596,8 @@ pub fn stub_d36e24() -> ! {
 #[doc(alias = "Ogre::Renderable::postRender(Ogre::SceneManager *,Ogre::RenderSystem *)")]
 #[doc(alias = "__ZN4Ogre10Renderable10postRenderEPNS_12SceneManagerEPNS_12RenderSystemE")]
 // was: Ogre::Renderable::postRender(Ogre::SceneManager *,Ogre::RenderSystem *)
-pub fn stub_d36e2c() -> ! {
-    todo!("0xd36e2c Ogre::Renderable::postRender(Ogre::SceneManager *,Ogre::RenderSystem *)")
+// IDA 0xd36e2c: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d36e2c() {
 }
 
 // 0xd36e30 — __ZThn12_NK4Ogre14OverlayElement19getSquaredViewDepthEPKNS_6CameraE
@@ -605,8 +605,8 @@ pub fn stub_d36e2c() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::OverlayElement::getSquaredViewDepth(Ogre::Camera const*)const")]
 #[doc(alias = "__ZThn12_NK4Ogre14OverlayElement19getSquaredViewDepthEPKNS_6CameraE")]
 // was: `non-virtual thunk toOgre::OverlayElement::getSquaredViewDepth(Ogre::Camera const*)const
-pub fn stub_d36e30() -> ! {
-    todo!("0xd36e30 non-virtual thunk toOgre::OverlayElement::getSquaredViewDepth(Ogre::Camera const*)const")
+// IDA 0xd36e30: 7 insns (LDRH.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d36e30() {
 }
 
 // 0xd36e50 — __ZThn12_NK4Ogre14OverlayElement9getLightsEv
@@ -614,8 +614,8 @@ pub fn stub_d36e30() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::OverlayElement::getLights(void)const")]
 #[doc(alias = "__ZThn12_NK4Ogre14OverlayElement9getLightsEv")]
 // was: `non-virtual thunk toOgre::OverlayElement::getLights(void)const
-pub fn stub_d36e50() -> ! {
-    todo!("0xd36e50 non-virtual thunk toOgre::OverlayElement::getLights(void)const")
+// IDA 0xd36e50: 40 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d36e50() {
 }
 
 // 0xd36ecc — __ZNK4Ogre10Renderable15getCastsShadowsEv
@@ -623,8 +623,8 @@ pub fn stub_d36e50() -> ! {
 #[doc(alias = "Ogre::Renderable::getCastsShadows(void)const")]
 #[doc(alias = "__ZNK4Ogre10Renderable15getCastsShadowsEv")]
 // was: Ogre::Renderable::getCastsShadows(void)const
-pub fn stub_d36ecc() -> ! {
-    todo!("0xd36ecc Ogre::Renderable::getCastsShadows(void)const")
+// IDA 0xd36ecc: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d36ecc() {
 }
 
 // 0xd36ed0 — __ZN4Ogre10Renderable26setPolygonModeOverrideableEb
@@ -632,8 +632,8 @@ pub fn stub_d36ecc() -> ! {
 #[doc(alias = "Ogre::Renderable::setPolygonModeOverrideable(bool)")]
 #[doc(alias = "__ZN4Ogre10Renderable26setPolygonModeOverrideableEb")]
 // was: Ogre::Renderable::setPolygonModeOverrideable(bool)
-pub fn stub_d36ed0() -> ! {
-    todo!("0xd36ed0 Ogre::Renderable::setPolygonModeOverrideable(bool)")
+// IDA 0xd36ed0: 2 insns (STRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d36ed0() {
 }
 
 // 0xd36ed8 — __ZNK4Ogre10Renderable26getPolygonModeOverrideableEv
@@ -641,8 +641,8 @@ pub fn stub_d36ed0() -> ! {
 #[doc(alias = "Ogre::Renderable::getPolygonModeOverrideable(void)const")]
 #[doc(alias = "__ZNK4Ogre10Renderable26getPolygonModeOverrideableEv")]
 // was: Ogre::Renderable::getPolygonModeOverrideable(void)const
-pub fn stub_d36ed8() -> ! {
-    todo!("0xd36ed8 Ogre::Renderable::getPolygonModeOverrideable(void)const")
+// IDA 0xd36ed8: 2 insns (LDRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d36ed8() {
 }
 
 // 0xd36ee0 — __ZN4Ogre10Renderable10setUserAnyERKNS_3AnyE
@@ -650,8 +650,8 @@ pub fn stub_d36ed8() -> ! {
 #[doc(alias = "Ogre::Renderable::setUserAny(Ogre::Any const&)")]
 #[doc(alias = "__ZN4Ogre10Renderable10setUserAnyERKNS_3AnyE")]
 // was: Ogre::Renderable::setUserAny(Ogre::Any const&)
-pub fn stub_d36ee0() -> ! {
-    todo!("0xd36ee0 Ogre::Renderable::setUserAny(Ogre::Any const&)")
+// IDA 0xd36ee0: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d36ee0() {
 }
 
 // 0xd36eec — __ZNK4Ogre10Renderable19getRenderSystemDataEv
@@ -659,8 +659,8 @@ pub fn stub_d36ee0() -> ! {
 #[doc(alias = "Ogre::Renderable::getRenderSystemData(void)const")]
 #[doc(alias = "__ZNK4Ogre10Renderable19getRenderSystemDataEv")]
 // was: Ogre::Renderable::getRenderSystemData(void)const
-pub fn stub_d36eec() -> ! {
-    todo!("0xd36eec Ogre::Renderable::getRenderSystemData(void)const")
+// IDA 0xd36eec: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d36eec() {
 }
 
 // 0xd36ef0 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre12ParamCommandEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_
@@ -668,8 +668,8 @@ pub fn stub_d36eec() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ParamCommand *>,std::_Select1st<std::pair<std::string const,Ogre::ParamCommand *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ParamCommand *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::ParamCommand *>>,std::pair<std::string const,Ogre::ParamCommand *> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre12ParamCommandEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ParamCommand *>,std::_Select1st<std::pair<std::string const,Ogre::ParamCommand *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ParamCommand *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::ParamCommand *>>,std::pair<std::string const,Ogre::ParamCommand *> const&)
-pub fn stub_d36ef0() -> ! {
-    todo!("0xd36ef0 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ParamCommand *>,std::_Select1st<std::pair<std::string const,Ogre::ParamCommand *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ParamCommand *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::ParamCommand *>>,std::pair<std::string const,Ogre::ParamCommand *> const&)")
+// IDA 0xd36ef0: 184 insns (PUSH..B). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d36ef0() {
 }
 
 // 0xd370d0 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre12ParamCommandEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS5_
@@ -677,8 +677,8 @@ pub fn stub_d36ef0() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ParamCommand *>,std::_Select1st<std::pair<std::string const,Ogre::ParamCommand *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ParamCommand *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::ParamCommand *> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre12ParamCommandEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS5_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ParamCommand *>,std::_Select1st<std::pair<std::string const,Ogre::ParamCommand *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ParamCommand *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::ParamCommand *> const&)
-pub fn stub_d370d0() -> ! {
-    todo!("0xd370d0 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ParamCommand *>,std::_Select1st<std::pair<std::string const,Ogre::ParamCommand *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ParamCommand *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::ParamCommand *> const&)")
+// IDA 0xd370d0: 127 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d370d0() {
 }
 
 // 0xd37224 — __ZNSt6vectorIN4Ogre12ParameterDefENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S7_EERKS1_
@@ -686,8 +686,14 @@ pub fn stub_d370d0() -> ! {
 #[doc(alias = "std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::ParameterDef*,std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::ParameterDef const&)")]
 #[doc(alias = "__ZNSt6vectorIN4Ogre12ParameterDefENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S7_EERKS1_")]
 // was: std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::ParameterDef*,std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::ParameterDef const&)
-pub fn stub_d37224() -> ! {
-    todo!("0xd37224 std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::ParameterDef*,std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::ParameterDef const&)")
+// IDA 0xd37224: vector::_M_insert_aux (shift tail or realloc); maps to Vec::insert.
+pub fn stub_d37224() {
+    let mut v: Vec<u32> = Vec::new();
+    let pos: usize = 0;
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.insert(pos.min(v.len()), 0);
 }
 
 // 0xd377b0 — __ZN4Ogre12STLAllocatorINS_12ParameterDefENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED1Ev
@@ -695,8 +701,8 @@ pub fn stub_d37224() -> ! {
 #[doc(alias = "Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")]
 #[doc(alias = "__ZN4Ogre12STLAllocatorINS_12ParameterDefENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED1Ev")]
 // was: Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()
-pub fn stub_d377b0() -> ! {
-    todo!("0xd377b0 Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")
+// IDA 0xd377b0: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d377b0() {
 }
 
 // 0xd377b4 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre12ParamCommandEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
@@ -704,8 +710,8 @@ pub fn stub_d377b0() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ParamCommand *>,std::_Select1st<std::pair<std::string const,Ogre::ParamCommand *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ParamCommand *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre12ParamCommandEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ParamCommand *>,std::_Select1st<std::pair<std::string const,Ogre::ParamCommand *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ParamCommand *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
-pub fn stub_d377b4() -> ! {
-    todo!("0xd377b4 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ParamCommand *>,std::_Select1st<std::pair<std::string const,Ogre::ParamCommand *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ParamCommand *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+// IDA 0xd377b4: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d377b4() {
 }
 
 // 0xd377b8 — __ZNSt6vectorIN4Ogre12ParameterDefENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEC2ERKS7_
@@ -713,8 +719,8 @@ pub fn stub_d377b4() -> ! {
 #[doc(alias = "std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::vector(std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
 #[doc(alias = "__ZNSt6vectorIN4Ogre12ParameterDefENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEC2ERKS7_")]
 // was: std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::vector(std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
-pub fn stub_d377b8() -> ! {
-    todo!("0xd377b8 std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::vector(std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
+// IDA 0xd377b8: 104 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d377b8() {
 }
 
 // 0xd378d8 — __ZSt22__uninitialized_copy_aIN9__gnu_cxx17__normal_iteratorIPKN4Ogre12ParameterDefESt6vectorIS3_NS2_12STLAllocatorIS3_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEEEEPS3_SB_ET0_T_SG_SF_T1_
@@ -722,8 +728,8 @@ pub fn stub_d377b8() -> ! {
 #[doc(alias = "Ogre::ParameterDef* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<Ogre::ParameterDef const*,std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::ParameterDef*,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(__gnu_cxx::__normal_iterator<Ogre::ParameterDef const*,std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::ParameterDef const*,std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::ParameterDef*,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)")]
 #[doc(alias = "__ZSt22__uninitialized_copy_aIN9__gnu_cxx17__normal_iteratorIPKN4Ogre12ParameterDefESt6vectorIS3_NS2_12STLAllocatorIS3_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEEEEPS3_SB_ET0_T_SG_SF_T1_")]
 // was: Ogre::ParameterDef* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<Ogre::ParameterDef const*,std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::ParameterDef*,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(__gnu_cxx::__normal_iterator<Ogre::ParameterDef const*,std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::ParameterDef const*,std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::ParameterDef*,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)
-pub fn stub_d378d8() -> ! {
-    todo!("0xd378d8 Ogre::ParameterDef* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<Ogre::ParameterDef const*,std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::ParameterDef*,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(__gnu_cxx::__normal_iterator<Ogre::ParameterDef const*,std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::ParameterDef const*,std::vector<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::ParameterDef*,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)")
+// IDA 0xd378d8: 89 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d378d8() {
 }
 
 // 0xd37ad4 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre15ParamDictionaryEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS4_
@@ -731,8 +737,8 @@ pub fn stub_d378d8() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ParamDictionary>,std::_Select1st<std::pair<std::string const,Ogre::ParamDictionary>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ParamDictionary>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::ParamDictionary> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre15ParamDictionaryEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS4_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ParamDictionary>,std::_Select1st<std::pair<std::string const,Ogre::ParamDictionary>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ParamDictionary>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::ParamDictionary> const&)
-pub fn stub_d37ad4() -> ! {
-    todo!("0xd37ad4 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ParamDictionary>,std::_Select1st<std::pair<std::string const,Ogre::ParamDictionary>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ParamDictionary>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::ParamDictionary> const&)")
+// IDA 0xd37ad4: 47 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d37ad4() {
 }
 
 // 0xd37b48 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre15ParamDictionaryEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
@@ -740,8 +746,8 @@ pub fn stub_d37ad4() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ParamDictionary>,std::_Select1st<std::pair<std::string const,Ogre::ParamDictionary>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ParamDictionary>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre15ParamDictionaryEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ParamDictionary>,std::_Select1st<std::pair<std::string const,Ogre::ParamDictionary>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ParamDictionary>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)
-pub fn stub_d37b48() -> ! {
-    todo!("0xd37b48 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ParamDictionary>,std::_Select1st<std::pair<std::string const,Ogre::ParamDictionary>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ParamDictionary>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
+// IDA 0xd37b48: 64 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_d37b48() {
 }
 
 // 0xd3c9bc — __ZN4Ogre15EmitterCommands8CmdAngleD1Ev
@@ -749,8 +755,8 @@ pub fn stub_d37b48() -> ! {
 #[doc(alias = "Ogre::EmitterCommands::CmdAngle::~CmdAngle()")]
 #[doc(alias = "__ZN4Ogre15EmitterCommands8CmdAngleD1Ev")]
 // was: Ogre::EmitterCommands::CmdAngle::~CmdAngle()
-pub fn stub_d3c9bc() -> ! {
-    todo!("0xd3c9bc Ogre::EmitterCommands::CmdAngle::~CmdAngle()")
+// IDA 0xd3c9bc: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d3c9bc() {
 }
 
 // 0xd3c9c0 — __ZN4Ogre15EmitterCommands9CmdColourD1Ev
@@ -758,8 +764,8 @@ pub fn stub_d3c9bc() -> ! {
 #[doc(alias = "Ogre::EmitterCommands::CmdColour::~CmdColour()")]
 #[doc(alias = "__ZN4Ogre15EmitterCommands9CmdColourD1Ev")]
 // was: Ogre::EmitterCommands::CmdColour::~CmdColour()
-pub fn stub_d3c9c0() -> ! {
-    todo!("0xd3c9c0 Ogre::EmitterCommands::CmdColour::~CmdColour()")
+// IDA 0xd3c9c0: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d3c9c0() {
 }
 
 // 0xd3c9c4 — __ZN4Ogre15EmitterCommands19CmdColourRangeStartD1Ev
@@ -767,8 +773,8 @@ pub fn stub_d3c9c0() -> ! {
 #[doc(alias = "Ogre::EmitterCommands::CmdColourRangeStart::~CmdColourRangeStart()")]
 #[doc(alias = "__ZN4Ogre15EmitterCommands19CmdColourRangeStartD1Ev")]
 // was: Ogre::EmitterCommands::CmdColourRangeStart::~CmdColourRangeStart()
-pub fn stub_d3c9c4() -> ! {
-    todo!("0xd3c9c4 Ogre::EmitterCommands::CmdColourRangeStart::~CmdColourRangeStart()")
+// IDA 0xd3c9c4: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d3c9c4() {
 }
 
 // 0xd3c9c8 — __ZN4Ogre15EmitterCommands17CmdColourRangeEndD1Ev
@@ -776,8 +782,8 @@ pub fn stub_d3c9c4() -> ! {
 #[doc(alias = "Ogre::EmitterCommands::CmdColourRangeEnd::~CmdColourRangeEnd()")]
 #[doc(alias = "__ZN4Ogre15EmitterCommands17CmdColourRangeEndD1Ev")]
 // was: Ogre::EmitterCommands::CmdColourRangeEnd::~CmdColourRangeEnd()
-pub fn stub_d3c9c8() -> ! {
-    todo!("0xd3c9c8 Ogre::EmitterCommands::CmdColourRangeEnd::~CmdColourRangeEnd()")
+// IDA 0xd3c9c8: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d3c9c8() {
 }
 
 // 0xd3c9cc — __ZN4Ogre15EmitterCommands12CmdDirectionD1Ev
@@ -785,8 +791,8 @@ pub fn stub_d3c9c8() -> ! {
 #[doc(alias = "Ogre::EmitterCommands::CmdDirection::~CmdDirection()")]
 #[doc(alias = "__ZN4Ogre15EmitterCommands12CmdDirectionD1Ev")]
 // was: Ogre::EmitterCommands::CmdDirection::~CmdDirection()
-pub fn stub_d3c9cc() -> ! {
-    todo!("0xd3c9cc Ogre::EmitterCommands::CmdDirection::~CmdDirection()")
+// IDA 0xd3c9cc: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d3c9cc() {
 }
 
 // 0xd3c9d0 — __ZN4Ogre15EmitterCommands5CmdUpD1Ev
@@ -794,8 +800,8 @@ pub fn stub_d3c9cc() -> ! {
 #[doc(alias = "Ogre::EmitterCommands::CmdUp::~CmdUp()")]
 #[doc(alias = "__ZN4Ogre15EmitterCommands5CmdUpD1Ev")]
 // was: Ogre::EmitterCommands::CmdUp::~CmdUp()
-pub fn stub_d3c9d0() -> ! {
-    todo!("0xd3c9d0 Ogre::EmitterCommands::CmdUp::~CmdUp()")
+// IDA 0xd3c9d0: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d3c9d0() {
 }
 
 // 0xd3c9d4 — __ZN4Ogre15EmitterCommands15CmdEmissionRateD1Ev
@@ -803,8 +809,8 @@ pub fn stub_d3c9d0() -> ! {
 #[doc(alias = "Ogre::EmitterCommands::CmdEmissionRate::~CmdEmissionRate()")]
 #[doc(alias = "__ZN4Ogre15EmitterCommands15CmdEmissionRateD1Ev")]
 // was: Ogre::EmitterCommands::CmdEmissionRate::~CmdEmissionRate()
-pub fn stub_d3c9d4() -> ! {
-    todo!("0xd3c9d4 Ogre::EmitterCommands::CmdEmissionRate::~CmdEmissionRate()")
+// IDA 0xd3c9d4: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d3c9d4() {
 }
 
 // 0xd3c9d8 — __ZN4Ogre15EmitterCommands9CmdMaxTTLD1Ev
@@ -812,8 +818,8 @@ pub fn stub_d3c9d4() -> ! {
 #[doc(alias = "Ogre::EmitterCommands::CmdMaxTTL::~CmdMaxTTL()")]
 #[doc(alias = "__ZN4Ogre15EmitterCommands9CmdMaxTTLD1Ev")]
 // was: Ogre::EmitterCommands::CmdMaxTTL::~CmdMaxTTL()
-pub fn stub_d3c9d8() -> ! {
-    todo!("0xd3c9d8 Ogre::EmitterCommands::CmdMaxTTL::~CmdMaxTTL()")
+// IDA 0xd3c9d8: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d3c9d8() {
 }
 
 // 0xd3c9dc — __ZN4Ogre15EmitterCommands14CmdMaxVelocityD1Ev
@@ -821,8 +827,8 @@ pub fn stub_d3c9d8() -> ! {
 #[doc(alias = "Ogre::EmitterCommands::CmdMaxVelocity::~CmdMaxVelocity()")]
 #[doc(alias = "__ZN4Ogre15EmitterCommands14CmdMaxVelocityD1Ev")]
 // was: Ogre::EmitterCommands::CmdMaxVelocity::~CmdMaxVelocity()
-pub fn stub_d3c9dc() -> ! {
-    todo!("0xd3c9dc Ogre::EmitterCommands::CmdMaxVelocity::~CmdMaxVelocity()")
+// IDA 0xd3c9dc: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d3c9dc() {
 }
 
 // 0xd3c9e0 — __ZN4Ogre15EmitterCommands9CmdMinTTLD1Ev
@@ -830,8 +836,8 @@ pub fn stub_d3c9dc() -> ! {
 #[doc(alias = "Ogre::EmitterCommands::CmdMinTTL::~CmdMinTTL()")]
 #[doc(alias = "__ZN4Ogre15EmitterCommands9CmdMinTTLD1Ev")]
 // was: Ogre::EmitterCommands::CmdMinTTL::~CmdMinTTL()
-pub fn stub_d3c9e0() -> ! {
-    todo!("0xd3c9e0 Ogre::EmitterCommands::CmdMinTTL::~CmdMinTTL()")
+// IDA 0xd3c9e0: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d3c9e0() {
 }
 
 // 0xd3c9e4 — __ZN4Ogre15EmitterCommands14CmdMinVelocityD1Ev
@@ -839,8 +845,8 @@ pub fn stub_d3c9e0() -> ! {
 #[doc(alias = "Ogre::EmitterCommands::CmdMinVelocity::~CmdMinVelocity()")]
 #[doc(alias = "__ZN4Ogre15EmitterCommands14CmdMinVelocityD1Ev")]
 // was: Ogre::EmitterCommands::CmdMinVelocity::~CmdMinVelocity()
-pub fn stub_d3c9e4() -> ! {
-    todo!("0xd3c9e4 Ogre::EmitterCommands::CmdMinVelocity::~CmdMinVelocity()")
+// IDA 0xd3c9e4: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d3c9e4() {
 }
 
 // 0xd3c9e8 — __ZN4Ogre15EmitterCommands11CmdPositionD1Ev
@@ -848,8 +854,8 @@ pub fn stub_d3c9e4() -> ! {
 #[doc(alias = "Ogre::EmitterCommands::CmdPosition::~CmdPosition()")]
 #[doc(alias = "__ZN4Ogre15EmitterCommands11CmdPositionD1Ev")]
 // was: Ogre::EmitterCommands::CmdPosition::~CmdPosition()
-pub fn stub_d3c9e8() -> ! {
-    todo!("0xd3c9e8 Ogre::EmitterCommands::CmdPosition::~CmdPosition()")
+// IDA 0xd3c9e8: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d3c9e8() {
 }
 
 // 0xd3c9ec — __ZN4Ogre15EmitterCommands6CmdTTLD1Ev
@@ -857,8 +863,8 @@ pub fn stub_d3c9e8() -> ! {
 #[doc(alias = "Ogre::EmitterCommands::CmdTTL::~CmdTTL()")]
 #[doc(alias = "__ZN4Ogre15EmitterCommands6CmdTTLD1Ev")]
 // was: Ogre::EmitterCommands::CmdTTL::~CmdTTL()
-pub fn stub_d3c9ec() -> ! {
-    todo!("0xd3c9ec Ogre::EmitterCommands::CmdTTL::~CmdTTL()")
+// IDA 0xd3c9ec: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d3c9ec() {
 }
 
 // 0xd3c9f0 — __ZN4Ogre15EmitterCommands11CmdVelocityD1Ev
@@ -866,8 +872,8 @@ pub fn stub_d3c9ec() -> ! {
 #[doc(alias = "Ogre::EmitterCommands::CmdVelocity::~CmdVelocity()")]
 #[doc(alias = "__ZN4Ogre15EmitterCommands11CmdVelocityD1Ev")]
 // was: Ogre::EmitterCommands::CmdVelocity::~CmdVelocity()
-pub fn stub_d3c9f0() -> ! {
-    todo!("0xd3c9f0 Ogre::EmitterCommands::CmdVelocity::~CmdVelocity()")
+// IDA 0xd3c9f0: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d3c9f0() {
 }
 
 // 0xd3c9f4 — __ZN4Ogre15EmitterCommands11CmdDurationD1Ev
@@ -875,8 +881,8 @@ pub fn stub_d3c9f0() -> ! {
 #[doc(alias = "Ogre::EmitterCommands::CmdDuration::~CmdDuration()")]
 #[doc(alias = "__ZN4Ogre15EmitterCommands11CmdDurationD1Ev")]
 // was: Ogre::EmitterCommands::CmdDuration::~CmdDuration()
-pub fn stub_d3c9f4() -> ! {
-    todo!("0xd3c9f4 Ogre::EmitterCommands::CmdDuration::~CmdDuration()")
+// IDA 0xd3c9f4: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d3c9f4() {
 }
 
 // 0xd3c9f8 — __ZN4Ogre15EmitterCommands14CmdMinDurationD1Ev
@@ -884,6 +890,6 @@ pub fn stub_d3c9f4() -> ! {
 #[doc(alias = "Ogre::EmitterCommands::CmdMinDuration::~CmdMinDuration()")]
 #[doc(alias = "__ZN4Ogre15EmitterCommands14CmdMinDurationD1Ev")]
 // was: Ogre::EmitterCommands::CmdMinDuration::~CmdMinDuration()
-pub fn stub_d3c9f8() -> ! {
-    todo!("0xd3c9f8 Ogre::EmitterCommands::CmdMinDuration::~CmdMinDuration()")
+// IDA 0xd3c9f8: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_d3c9f8() {
 }

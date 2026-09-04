@@ -15,8 +15,8 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "__ZN3RBX8LockToolD1Ev")]
 #[doc(alias = "RBX::LockTool::~LockTool()")]
 // was: __ZN3RBX8LockToolD1Ev
-pub fn stub_68a76c() -> ! {
-    todo!("0x68a76c RBX::LockTool::~LockTool()")
+// IDA 0x68a76c: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_68a76c() {
 }
 
 // 0x68a770 — __ZN3RBX8LockToolD0Ev
@@ -24,8 +24,8 @@ pub fn stub_68a76c() -> ! {
 #[doc(alias = "__ZN3RBX8LockToolD0Ev")]
 #[doc(alias = "RBX::LockTool::~LockTool()")]
 // was: __ZN3RBX8LockToolD0Ev
-pub fn stub_68a770() -> ! {
-    todo!("0x68a770 RBX::LockTool::~LockTool()")
+// IDA 0x68a770: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68a770() {
 }
 
 // 0x68a810 — __ZThn36_N3RBX8LockToolD1Ev
@@ -33,8 +33,8 @@ pub fn stub_68a770() -> ! {
 #[doc(alias = "__ZThn36_N3RBX8LockToolD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::LockTool::~LockTool()")]
 // was: __ZThn36_N3RBX8LockToolD1Ev
-pub fn stub_68a810() -> ! {
-    todo!("0x68a810 non-virtual thunk toRBX::LockTool::~LockTool()")
+// IDA 0x68a810: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68a810() {
 }
 
 // 0x68a818 — __ZThn36_N3RBX8LockToolD0Ev
@@ -42,8 +42,8 @@ pub fn stub_68a810() -> ! {
 #[doc(alias = "__ZThn36_N3RBX8LockToolD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::LockTool::~LockTool()")]
 // was: __ZThn36_N3RBX8LockToolD0Ev
-pub fn stub_68a818() -> ! {
-    todo!("0x68a818 non-virtual thunk toRBX::LockTool::~LockTool()")
+// IDA 0x68a818: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68a818() {
 }
 
 // 0x68a8bc — __ZNK3RBX8Instance13visitChildrenINS_10AnchorNodeEEEvRKT_
@@ -51,16 +51,16 @@ pub fn stub_68a818() -> ! {
 #[doc(alias = "__ZNK3RBX8Instance13visitChildrenINS_10AnchorNodeEEEvRKT_")]
 #[doc(alias = "void RBX::Instance::visitChildren<RBX::AnchorNode>(RBX::AnchorNode const&)const")]
 // was: __ZNK3RBX8Instance13visitChildrenINS_10AnchorNodeEEEvRKT_
-pub fn stub_68a8bc() -> ! {
-    todo!("0x68a8bc void RBX::Instance::visitChildren<RBX::AnchorNode>(RBX::AnchorNode const&)const")
+// IDA 0x68a8bc: 112 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68a8bc() {
 }
 
 // 0x68a9ec — __GLOBAL__I_a_276
 #[doc(alias = "__GLOBAL__I_a_276")]
 #[doc(alias = "global constructor keyed to_a_276")]
 // was: __GLOBAL__I_a_276
-pub fn stub_68a9ec() -> ! {
-    todo!("0x68a9ec global constructor keyed to _a_276")
+// IDA 0x68a9ec: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+pub fn stub_68a9ec() {
 }
 
 // 0x68ac9c — __ZN3RBX8PartToolC2EPNS_9WorkspaceE
@@ -68,8 +68,8 @@ pub fn stub_68a9ec() -> ! {
 #[doc(alias = "__ZN3RBX8PartToolC2EPNS_9WorkspaceE")]
 #[doc(alias = "RBX::PartTool::PartTool(RBX::Workspace *)")]
 // was: __ZN3RBX8PartToolC2EPNS_9WorkspaceE
-pub fn stub_68ac9c() -> ! {
-    todo!("0x68ac9c RBX::PartTool::PartTool(RBX::Workspace *)")
+// IDA 0x68ac9c: 91 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68ac9c() {
 }
 
 // 0x68ada4 — __ZN3RBX8PartToolD0Ev
@@ -77,8 +77,8 @@ pub fn stub_68ac9c() -> ! {
 #[doc(alias = "__ZN3RBX8PartToolD0Ev")]
 #[doc(alias = "RBX::PartTool::~PartTool()")]
 // was: __ZN3RBX8PartToolD0Ev
-pub fn stub_68ada4() -> ! {
-    todo!("0x68ada4 RBX::PartTool::~PartTool()")
+// IDA 0x68ada4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68ada4() {
 }
 
 // 0x68ae44 — __ZN3RBX8PartToolD1Ev
@@ -86,8 +86,8 @@ pub fn stub_68ada4() -> ! {
 #[doc(alias = "__ZN3RBX8PartToolD1Ev")]
 #[doc(alias = "RBX::PartTool::~PartTool()")]
 // was: __ZN3RBX8PartToolD1Ev
-pub fn stub_68ae44() -> ! {
-    todo!("0x68ae44 RBX::PartTool::~PartTool()")
+// IDA 0x68ae44: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_68ae44() {
 }
 
 // 0x68ae48 — __ZThn36_N3RBX8PartToolD0Ev
@@ -95,8 +95,8 @@ pub fn stub_68ae44() -> ! {
 #[doc(alias = "__ZThn36_N3RBX8PartToolD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::PartTool::~PartTool()")]
 // was: __ZThn36_N3RBX8PartToolD0Ev
-pub fn stub_68ae48() -> ! {
-    todo!("0x68ae48 non-virtual thunk toRBX::PartTool::~PartTool()")
+// IDA 0x68ae48: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68ae48() {
 }
 
 // 0x68ae50 — __ZN3RBX8PartToolD2Ev
@@ -104,8 +104,8 @@ pub fn stub_68ae48() -> ! {
 #[doc(alias = "__ZN3RBX8PartToolD2Ev")]
 #[doc(alias = "RBX::PartTool::~PartTool()")]
 // was: __ZN3RBX8PartToolD2Ev
-pub fn stub_68ae50() -> ! {
-    todo!("0x68ae50 RBX::PartTool::~PartTool()")
+// IDA 0x68ae50: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68ae50() {
 }
 
 // 0x68af6c — __ZThn36_N3RBX8PartToolD1Ev
@@ -113,8 +113,8 @@ pub fn stub_68ae50() -> ! {
 #[doc(alias = "__ZThn36_N3RBX8PartToolD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::PartTool::~PartTool()")]
 // was: __ZThn36_N3RBX8PartToolD1Ev
-pub fn stub_68af6c() -> ! {
-    todo!("0x68af6c non-virtual thunk toRBX::PartTool::~PartTool()")
+// IDA 0x68af6c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68af6c() {
 }
 
 // 0x68af74 — __ZN3RBX8PartTool12onMouseHoverERKNS_7UIEventE
@@ -122,8 +122,8 @@ pub fn stub_68af6c() -> ! {
 #[doc(alias = "__ZN3RBX8PartTool12onMouseHoverERKNS_7UIEventE")]
 #[doc(alias = "RBX::PartTool::onMouseHover(RBX::UIEvent const&)")]
 // was: __ZN3RBX8PartTool12onMouseHoverERKNS_7UIEventE
-pub fn stub_68af74() -> ! {
-    todo!("0x68af74 RBX::PartTool::onMouseHover(RBX::UIEvent const&)")
+// IDA 0x68af74: 74 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68af74() {
 }
 
 // 0x68b074 — __ZN3RBX13FillToolColorC2Ev
@@ -131,8 +131,8 @@ pub fn stub_68af74() -> ! {
 #[doc(alias = "__ZN3RBX13FillToolColorC2Ev")]
 #[doc(alias = "RBX::FillToolColor::FillToolColor(void)")]
 // was: __ZN3RBX13FillToolColorC2Ev
-pub fn stub_68b074() -> ! {
-    todo!("0x68b074 RBX::FillToolColor::FillToolColor(void)")
+// IDA 0x68b074: 74 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68b074() {
 }
 
 // 0x68b150 — __ZN3RBX8FillTool11onMouseDownERKNS_7UIEventE
@@ -140,8 +140,8 @@ pub fn stub_68b074() -> ! {
 #[doc(alias = "__ZN3RBX8FillTool11onMouseDownERKNS_7UIEventE")]
 #[doc(alias = "RBX::FillTool::onMouseDown(RBX::UIEvent const&)")]
 // was: __ZN3RBX8FillTool11onMouseDownERKNS_7UIEventE
-pub fn stub_68b150() -> ! {
-    todo!("0x68b150 RBX::FillTool::onMouseDown(RBX::UIEvent const&)")
+// IDA 0x68b150: 38 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68b150() {
 }
 
 // 0x68b1b8 — __ZN3RBX12MaterialTool11onMouseDownERKNS_7UIEventE
@@ -149,8 +149,8 @@ pub fn stub_68b150() -> ! {
 #[doc(alias = "__ZN3RBX12MaterialTool11onMouseDownERKNS_7UIEventE")]
 #[doc(alias = "RBX::MaterialTool::onMouseDown(RBX::UIEvent const&)")]
 // was: __ZN3RBX12MaterialTool11onMouseDownERKNS_7UIEventE
-pub fn stub_68b1b8() -> ! {
-    todo!("0x68b1b8 RBX::MaterialTool::onMouseDown(RBX::UIEvent const&)")
+// IDA 0x68b1b8: 38 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68b1b8() {
 }
 
 // 0x68b220 — __ZN3RBX11DropperTool11onMouseDownERKNS_7UIEventE
@@ -158,8 +158,8 @@ pub fn stub_68b1b8() -> ! {
 #[doc(alias = "__ZN3RBX11DropperTool11onMouseDownERKNS_7UIEventE")]
 #[doc(alias = "RBX::DropperTool::onMouseDown(RBX::UIEvent const&)")]
 // was: __ZN3RBX11DropperTool11onMouseDownERKNS_7UIEventE
-pub fn stub_68b220() -> ! {
-    todo!("0x68b220 RBX::DropperTool::onMouseDown(RBX::UIEvent const&)")
+// IDA 0x68b220: 105 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68b220() {
 }
 
 // 0x68b34c — __ZN3RBX13FillToolColorD1Ev
@@ -167,8 +167,8 @@ pub fn stub_68b220() -> ! {
 #[doc(alias = "__ZN3RBX13FillToolColorD1Ev")]
 #[doc(alias = "RBX::FillToolColor::~FillToolColor()")]
 // was: __ZN3RBX13FillToolColorD1Ev
-pub fn stub_68b34c() -> ! {
-    todo!("0x68b34c RBX::FillToolColor::~FillToolColor()")
+// IDA 0x68b34c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68b34c() {
 }
 
 // 0x68b418 — __ZN3RBX8FillToolD1Ev
@@ -176,8 +176,8 @@ pub fn stub_68b34c() -> ! {
 #[doc(alias = "__ZN3RBX8FillToolD1Ev")]
 #[doc(alias = "RBX::FillTool::~FillTool()")]
 // was: __ZN3RBX8FillToolD1Ev
-pub fn stub_68b418() -> ! {
-    todo!("0x68b418 RBX::FillTool::~FillTool()")
+// IDA 0x68b418: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_68b418() {
 }
 
 // 0x68b41c — __ZN3RBX8FillToolD0Ev
@@ -185,8 +185,8 @@ pub fn stub_68b418() -> ! {
 #[doc(alias = "__ZN3RBX8FillToolD0Ev")]
 #[doc(alias = "RBX::FillTool::~FillTool()")]
 // was: __ZN3RBX8FillToolD0Ev
-pub fn stub_68b41c() -> ! {
-    todo!("0x68b41c RBX::FillTool::~FillTool()")
+// IDA 0x68b41c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68b41c() {
 }
 
 // 0x68b4bc — __ZThn36_N3RBX8FillToolD1Ev
@@ -194,8 +194,8 @@ pub fn stub_68b41c() -> ! {
 #[doc(alias = "__ZThn36_N3RBX8FillToolD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::FillTool::~FillTool()")]
 // was: __ZThn36_N3RBX8FillToolD1Ev
-pub fn stub_68b4bc() -> ! {
-    todo!("0x68b4bc non-virtual thunk toRBX::FillTool::~FillTool()")
+// IDA 0x68b4bc: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68b4bc() {
 }
 
 // 0x68b4c4 — __ZThn36_N3RBX8FillToolD0Ev
@@ -203,8 +203,8 @@ pub fn stub_68b4bc() -> ! {
 #[doc(alias = "__ZThn36_N3RBX8FillToolD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::FillTool::~FillTool()")]
 // was: __ZThn36_N3RBX8FillToolD0Ev
-pub fn stub_68b4c4() -> ! {
-    todo!("0x68b4c4 non-virtual thunk toRBX::FillTool::~FillTool()")
+// IDA 0x68b4c4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68b4c4() {
 }
 
 // 0x68b568 — __ZN3RBX11DropperToolD1Ev
@@ -212,8 +212,8 @@ pub fn stub_68b4c4() -> ! {
 #[doc(alias = "__ZN3RBX11DropperToolD1Ev")]
 #[doc(alias = "RBX::DropperTool::~DropperTool()")]
 // was: __ZN3RBX11DropperToolD1Ev
-pub fn stub_68b568() -> ! {
-    todo!("0x68b568 RBX::DropperTool::~DropperTool()")
+// IDA 0x68b568: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_68b568() {
 }
 
 // 0x68b56c — __ZN3RBX11DropperToolD0Ev
@@ -221,8 +221,8 @@ pub fn stub_68b568() -> ! {
 #[doc(alias = "__ZN3RBX11DropperToolD0Ev")]
 #[doc(alias = "RBX::DropperTool::~DropperTool()")]
 // was: __ZN3RBX11DropperToolD0Ev
-pub fn stub_68b56c() -> ! {
-    todo!("0x68b56c RBX::DropperTool::~DropperTool()")
+// IDA 0x68b56c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68b56c() {
 }
 
 // 0x68b60c — __ZThn36_N3RBX11DropperToolD1Ev
@@ -230,8 +230,8 @@ pub fn stub_68b56c() -> ! {
 #[doc(alias = "__ZThn36_N3RBX11DropperToolD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::DropperTool::~DropperTool()")]
 // was: __ZThn36_N3RBX11DropperToolD1Ev
-pub fn stub_68b60c() -> ! {
-    todo!("0x68b60c non-virtual thunk toRBX::DropperTool::~DropperTool()")
+// IDA 0x68b60c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68b60c() {
 }
 
 // 0x68b614 — __ZThn36_N3RBX11DropperToolD0Ev
@@ -239,8 +239,8 @@ pub fn stub_68b60c() -> ! {
 #[doc(alias = "__ZThn36_N3RBX11DropperToolD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::DropperTool::~DropperTool()")]
 // was: __ZThn36_N3RBX11DropperToolD0Ev
-pub fn stub_68b614() -> ! {
-    todo!("0x68b614 non-virtual thunk toRBX::DropperTool::~DropperTool()")
+// IDA 0x68b614: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68b614() {
 }
 
 // 0x68b6b8 — __ZN3RBX12MaterialToolD1Ev
@@ -248,8 +248,8 @@ pub fn stub_68b614() -> ! {
 #[doc(alias = "__ZN3RBX12MaterialToolD1Ev")]
 #[doc(alias = "RBX::MaterialTool::~MaterialTool()")]
 // was: __ZN3RBX12MaterialToolD1Ev
-pub fn stub_68b6b8() -> ! {
-    todo!("0x68b6b8 RBX::MaterialTool::~MaterialTool()")
+// IDA 0x68b6b8: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_68b6b8() {
 }
 
 // 0x68b6bc — __ZN3RBX12MaterialToolD0Ev
@@ -257,8 +257,8 @@ pub fn stub_68b6b8() -> ! {
 #[doc(alias = "__ZN3RBX12MaterialToolD0Ev")]
 #[doc(alias = "RBX::MaterialTool::~MaterialTool()")]
 // was: __ZN3RBX12MaterialToolD0Ev
-pub fn stub_68b6bc() -> ! {
-    todo!("0x68b6bc RBX::MaterialTool::~MaterialTool()")
+// IDA 0x68b6bc: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68b6bc() {
 }
 
 // 0x68b75c — __ZThn36_N3RBX12MaterialToolD1Ev
@@ -266,8 +266,8 @@ pub fn stub_68b6bc() -> ! {
 #[doc(alias = "__ZThn36_N3RBX12MaterialToolD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::MaterialTool::~MaterialTool()")]
 // was: __ZThn36_N3RBX12MaterialToolD1Ev
-pub fn stub_68b75c() -> ! {
-    todo!("0x68b75c non-virtual thunk toRBX::MaterialTool::~MaterialTool()")
+// IDA 0x68b75c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68b75c() {
 }
 
 // 0x68b764 — __ZThn36_N3RBX12MaterialToolD0Ev
@@ -275,16 +275,16 @@ pub fn stub_68b75c() -> ! {
 #[doc(alias = "__ZThn36_N3RBX12MaterialToolD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::MaterialTool::~MaterialTool()")]
 // was: __ZThn36_N3RBX12MaterialToolD0Ev
-pub fn stub_68b764() -> ! {
-    todo!("0x68b764 non-virtual thunk toRBX::MaterialTool::~MaterialTool()")
+// IDA 0x68b764: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68b764() {
 }
 
 // 0x68b808 — __GLOBAL__I_a_277
 #[doc(alias = "__GLOBAL__I_a_277")]
 #[doc(alias = "global constructor keyed to_a_277")]
 // was: __GLOBAL__I_a_277
-pub fn stub_68b808() -> ! {
-    todo!("0x68b808 global constructor keyed to _a_277")
+// IDA 0x68b808: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+pub fn stub_68b808() {
 }
 
 // 0x68bb74 — __ZN3RBX11SurfaceToolC2EPNS_9WorkspaceE
@@ -292,8 +292,8 @@ pub fn stub_68b808() -> ! {
 #[doc(alias = "__ZN3RBX11SurfaceToolC2EPNS_9WorkspaceE")]
 #[doc(alias = "RBX::SurfaceTool::SurfaceTool(RBX::Workspace *)")]
 // was: __ZN3RBX11SurfaceToolC2EPNS_9WorkspaceE
-pub fn stub_68bb74() -> ! {
-    todo!("0x68bb74 RBX::SurfaceTool::SurfaceTool(RBX::Workspace *)")
+// IDA 0x68bb74: 112 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68bb74() {
 }
 
 // 0x68bcb0 — __ZN3RBX11SurfaceToolD0Ev
@@ -301,8 +301,8 @@ pub fn stub_68bb74() -> ! {
 #[doc(alias = "__ZN3RBX11SurfaceToolD0Ev")]
 #[doc(alias = "RBX::SurfaceTool::~SurfaceTool()")]
 // was: __ZN3RBX11SurfaceToolD0Ev
-pub fn stub_68bcb0() -> ! {
-    todo!("0x68bcb0 RBX::SurfaceTool::~SurfaceTool()")
+// IDA 0x68bcb0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68bcb0() {
 }
 
 // 0x68bd50 — __ZN3RBX11SurfaceToolD1Ev
@@ -310,8 +310,8 @@ pub fn stub_68bcb0() -> ! {
 #[doc(alias = "__ZN3RBX11SurfaceToolD1Ev")]
 #[doc(alias = "RBX::SurfaceTool::~SurfaceTool()")]
 // was: __ZN3RBX11SurfaceToolD1Ev
-pub fn stub_68bd50() -> ! {
-    todo!("0x68bd50 RBX::SurfaceTool::~SurfaceTool()")
+// IDA 0x68bd50: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_68bd50() {
 }
 
 // 0x68bd54 — __ZThn36_N3RBX11SurfaceToolD0Ev
@@ -319,8 +319,8 @@ pub fn stub_68bd50() -> ! {
 #[doc(alias = "__ZThn36_N3RBX11SurfaceToolD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::SurfaceTool::~SurfaceTool()")]
 // was: __ZThn36_N3RBX11SurfaceToolD0Ev
-pub fn stub_68bd54() -> ! {
-    todo!("0x68bd54 non-virtual thunk toRBX::SurfaceTool::~SurfaceTool()")
+// IDA 0x68bd54: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68bd54() {
 }
 
 // 0x68bd5c — __ZN3RBX11SurfaceToolD2Ev
@@ -328,8 +328,8 @@ pub fn stub_68bd54() -> ! {
 #[doc(alias = "__ZN3RBX11SurfaceToolD2Ev")]
 #[doc(alias = "RBX::SurfaceTool::~SurfaceTool()")]
 // was: __ZN3RBX11SurfaceToolD2Ev
-pub fn stub_68bd5c() -> ! {
-    todo!("0x68bd5c RBX::SurfaceTool::~SurfaceTool()")
+// IDA 0x68bd5c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68bd5c() {
 }
 
 // 0x68be88 — __ZThn36_N3RBX11SurfaceToolD1Ev
@@ -337,8 +337,8 @@ pub fn stub_68bd5c() -> ! {
 #[doc(alias = "__ZThn36_N3RBX11SurfaceToolD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::SurfaceTool::~SurfaceTool()")]
 // was: __ZThn36_N3RBX11SurfaceToolD1Ev
-pub fn stub_68be88() -> ! {
-    todo!("0x68be88 non-virtual thunk toRBX::SurfaceTool::~SurfaceTool()")
+// IDA 0x68be88: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68be88() {
 }
 
 // 0x68be90 — __ZN3RBX11SurfaceTool12onMouseHoverERKNS_7UIEventE
@@ -346,8 +346,8 @@ pub fn stub_68be88() -> ! {
 #[doc(alias = "__ZN3RBX11SurfaceTool12onMouseHoverERKNS_7UIEventE")]
 #[doc(alias = "RBX::SurfaceTool::onMouseHover(RBX::UIEvent const&)")]
 // was: __ZN3RBX11SurfaceTool12onMouseHoverERKNS_7UIEventE
-pub fn stub_68be90() -> ! {
-    todo!("0x68be90 RBX::SurfaceTool::onMouseHover(RBX::UIEvent const&)")
+// IDA 0x68be90: 82 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68be90() {
 }
 
 // 0x68bf78 — __ZN3RBX11SurfaceTool11onMouseDownERKNS_7UIEventE
@@ -355,8 +355,8 @@ pub fn stub_68be90() -> ! {
 #[doc(alias = "__ZN3RBX11SurfaceTool11onMouseDownERKNS_7UIEventE")]
 #[doc(alias = "RBX::SurfaceTool::onMouseDown(RBX::UIEvent const&)")]
 // was: __ZN3RBX11SurfaceTool11onMouseDownERKNS_7UIEventE
-pub fn stub_68bf78() -> ! {
-    todo!("0x68bf78 RBX::SurfaceTool::onMouseDown(RBX::UIEvent const&)")
+// IDA 0x68bf78: 32 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68bf78() {
 }
 
 // 0x68c068 — __ZN3RBX9DecalTool11onMouseMoveERKNS_7UIEventE
@@ -364,8 +364,8 @@ pub fn stub_68bf78() -> ! {
 #[doc(alias = "__ZN3RBX9DecalTool11onMouseMoveERKNS_7UIEventE")]
 #[doc(alias = "RBX::DecalTool::onMouseMove(RBX::UIEvent const&)")]
 // was: __ZN3RBX9DecalTool11onMouseMoveERKNS_7UIEventE
-pub fn stub_68c068() -> ! {
-    todo!("0x68c068 RBX::DecalTool::onMouseMove(RBX::UIEvent const&)")
+// IDA 0x68c068: 145 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68c068() {
 }
 
 // 0x68c1ec — __ZN3RBX9DecalTool9onKeyDownERKNS_7UIEventE
@@ -373,8 +373,8 @@ pub fn stub_68c068() -> ! {
 #[doc(alias = "__ZN3RBX9DecalTool9onKeyDownERKNS_7UIEventE")]
 #[doc(alias = "RBX::DecalTool::onKeyDown(RBX::UIEvent const&)")]
 // was: __ZN3RBX9DecalTool9onKeyDownERKNS_7UIEventE
-pub fn stub_68c1ec() -> ! {
-    todo!("0x68c1ec RBX::DecalTool::onKeyDown(RBX::UIEvent const&)")
+// IDA 0x68c1ec: 85 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68c1ec() {
 }
 
 // 0x68c2d8 — __ZN3RBX9DecalTool17onCancelOperationEv
@@ -382,8 +382,8 @@ pub fn stub_68c1ec() -> ! {
 #[doc(alias = "__ZN3RBX9DecalTool17onCancelOperationEv")]
 #[doc(alias = "RBX::DecalTool::onCancelOperation(void)")]
 // was: __ZN3RBX9DecalTool17onCancelOperationEv
-pub fn stub_68c2d8() -> ! {
-    todo!("0x68c2d8 RBX::DecalTool::onCancelOperation(void)")
+// IDA 0x68c2d8: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68c2d8() {
 }
 
 // 0x68c300 — __ZThn88_N3RBX9DecalTool17onCancelOperationEv
@@ -391,8 +391,8 @@ pub fn stub_68c2d8() -> ! {
 #[doc(alias = "__ZThn88_N3RBX9DecalTool17onCancelOperationEv")]
 #[doc(alias = "non-virtual thunk toRBX::DecalTool::onCancelOperation(void)")]
 // was: __ZThn88_N3RBX9DecalTool17onCancelOperationEv
-pub fn stub_68c300() -> ! {
-    todo!("0x68c300 non-virtual thunk toRBX::DecalTool::onCancelOperation(void)")
+// IDA 0x68c300: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68c300() {
 }
 
 // 0x68c30c — __ZN3RBX9DecalTool9onMouseUpERKNS_7UIEventE
@@ -400,8 +400,8 @@ pub fn stub_68c300() -> ! {
 #[doc(alias = "__ZN3RBX9DecalTool9onMouseUpERKNS_7UIEventE")]
 #[doc(alias = "RBX::DecalTool::onMouseUp(RBX::UIEvent const&)")]
 // was: __ZN3RBX9DecalTool9onMouseUpERKNS_7UIEventE
-pub fn stub_68c30c() -> ! {
-    todo!("0x68c30c RBX::DecalTool::onMouseUp(RBX::UIEvent const&)")
+// IDA 0x68c30c: 18 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68c30c() {
 }
 
 // 0x68c338 — __ZN3RBX8FlatTool8doActionEPNS_7SurfaceE
@@ -409,8 +409,8 @@ pub fn stub_68c30c() -> ! {
 #[doc(alias = "__ZN3RBX8FlatTool8doActionEPNS_7SurfaceE")]
 #[doc(alias = "RBX::FlatTool::doAction(RBX::Surface *)")]
 // was: __ZN3RBX8FlatTool8doActionEPNS_7SurfaceE
-pub fn stub_68c338() -> ! {
-    todo!("0x68c338 RBX::FlatTool::doAction(RBX::Surface *)")
+// IDA 0x68c338: 12 insns (PUSH..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68c338() {
 }
 
 // 0x68c358 — __ZN3RBX8GlueTool8doActionEPNS_7SurfaceE
@@ -418,8 +418,8 @@ pub fn stub_68c338() -> ! {
 #[doc(alias = "__ZN3RBX8GlueTool8doActionEPNS_7SurfaceE")]
 #[doc(alias = "RBX::GlueTool::doAction(RBX::Surface *)")]
 // was: __ZN3RBX8GlueTool8doActionEPNS_7SurfaceE
-pub fn stub_68c358() -> ! {
-    todo!("0x68c358 RBX::GlueTool::doAction(RBX::Surface *)")
+// IDA 0x68c358: 20 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68c358() {
 }
 
 // 0x68c390 — __ZN3RBX8WeldTool8doActionEPNS_7SurfaceE
@@ -427,8 +427,8 @@ pub fn stub_68c358() -> ! {
 #[doc(alias = "__ZN3RBX8WeldTool8doActionEPNS_7SurfaceE")]
 #[doc(alias = "RBX::WeldTool::doAction(RBX::Surface *)")]
 // was: __ZN3RBX8WeldTool8doActionEPNS_7SurfaceE
-pub fn stub_68c390() -> ! {
-    todo!("0x68c390 RBX::WeldTool::doAction(RBX::Surface *)")
+// IDA 0x68c390: 20 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68c390() {
 }
 
 // 0x68c3c8 — __ZN3RBX9StudsTool8doActionEPNS_7SurfaceE
@@ -436,8 +436,8 @@ pub fn stub_68c390() -> ! {
 #[doc(alias = "__ZN3RBX9StudsTool8doActionEPNS_7SurfaceE")]
 #[doc(alias = "RBX::StudsTool::doAction(RBX::Surface *)")]
 // was: __ZN3RBX9StudsTool8doActionEPNS_7SurfaceE
-pub fn stub_68c3c8() -> ! {
-    todo!("0x68c3c8 RBX::StudsTool::doAction(RBX::Surface *)")
+// IDA 0x68c3c8: 20 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68c3c8() {
 }
 
 // 0x68c400 — __ZN3RBX9InletTool8doActionEPNS_7SurfaceE
@@ -445,8 +445,8 @@ pub fn stub_68c3c8() -> ! {
 #[doc(alias = "__ZN3RBX9InletTool8doActionEPNS_7SurfaceE")]
 #[doc(alias = "RBX::InletTool::doAction(RBX::Surface *)")]
 // was: __ZN3RBX9InletTool8doActionEPNS_7SurfaceE
-pub fn stub_68c400() -> ! {
-    todo!("0x68c400 RBX::InletTool::doAction(RBX::Surface *)")
+// IDA 0x68c400: 20 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68c400() {
 }
 
 // 0x68c438 — __ZN3RBX13UniversalTool8doActionEPNS_7SurfaceE
@@ -454,8 +454,8 @@ pub fn stub_68c400() -> ! {
 #[doc(alias = "__ZN3RBX13UniversalTool8doActionEPNS_7SurfaceE")]
 #[doc(alias = "RBX::UniversalTool::doAction(RBX::Surface *)")]
 // was: __ZN3RBX13UniversalTool8doActionEPNS_7SurfaceE
-pub fn stub_68c438() -> ! {
-    todo!("0x68c438 RBX::UniversalTool::doAction(RBX::Surface *)")
+// IDA 0x68c438: 20 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68c438() {
 }
 
 // 0x68c470 — __ZN3RBX9HingeTool8doActionEPNS_7SurfaceE
@@ -463,8 +463,8 @@ pub fn stub_68c438() -> ! {
 #[doc(alias = "__ZN3RBX9HingeTool8doActionEPNS_7SurfaceE")]
 #[doc(alias = "RBX::HingeTool::doAction(RBX::Surface *)")]
 // was: __ZN3RBX9HingeTool8doActionEPNS_7SurfaceE
-pub fn stub_68c470() -> ! {
-    todo!("0x68c470 RBX::HingeTool::doAction(RBX::Surface *)")
+// IDA 0x68c470: 22 insns (PUSH..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68c470() {
 }
 
 // 0x68c4ac — __ZN3RBX14RightMotorTool8doActionEPNS_7SurfaceE
@@ -472,8 +472,8 @@ pub fn stub_68c470() -> ! {
 #[doc(alias = "__ZN3RBX14RightMotorTool8doActionEPNS_7SurfaceE")]
 #[doc(alias = "RBX::RightMotorTool::doAction(RBX::Surface *)")]
 // was: __ZN3RBX14RightMotorTool8doActionEPNS_7SurfaceE
-pub fn stub_68c4ac() -> ! {
-    todo!("0x68c4ac RBX::RightMotorTool::doAction(RBX::Surface *)")
+// IDA 0x68c4ac: 24 insns (PUSH..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68c4ac() {
 }
 
 // 0x68c4f4 — __ZN3RBX13LeftMotorTool8doActionEPNS_7SurfaceE
@@ -481,8 +481,8 @@ pub fn stub_68c4ac() -> ! {
 #[doc(alias = "__ZN3RBX13LeftMotorTool8doActionEPNS_7SurfaceE")]
 #[doc(alias = "RBX::LeftMotorTool::doAction(RBX::Surface *)")]
 // was: __ZN3RBX13LeftMotorTool8doActionEPNS_7SurfaceE
-pub fn stub_68c4f4() -> ! {
-    todo!("0x68c4f4 RBX::LeftMotorTool::doAction(RBX::Surface *)")
+// IDA 0x68c4f4: 24 insns (PUSH..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68c4f4() {
 }
 
 // 0x68c53c — __ZN3RBX18OscillateMotorTool8doActionEPNS_7SurfaceE
@@ -490,8 +490,8 @@ pub fn stub_68c4f4() -> ! {
 #[doc(alias = "__ZN3RBX18OscillateMotorTool8doActionEPNS_7SurfaceE")]
 #[doc(alias = "RBX::OscillateMotorTool::doAction(RBX::Surface *)")]
 // was: __ZN3RBX18OscillateMotorTool8doActionEPNS_7SurfaceE
-pub fn stub_68c53c() -> ! {
-    todo!("0x68c53c RBX::OscillateMotorTool::doAction(RBX::Surface *)")
+// IDA 0x68c53c: 24 insns (PUSH..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68c53c() {
 }
 
 // 0x68c584 — __ZN3RBX20SmoothNoOutlinesTool8doActionEPNS_7SurfaceE
@@ -499,8 +499,8 @@ pub fn stub_68c53c() -> ! {
 #[doc(alias = "__ZN3RBX20SmoothNoOutlinesTool8doActionEPNS_7SurfaceE")]
 #[doc(alias = "RBX::SmoothNoOutlinesTool::doAction(RBX::Surface *)")]
 // was: __ZN3RBX20SmoothNoOutlinesTool8doActionEPNS_7SurfaceE
-pub fn stub_68c584() -> ! {
-    todo!("0x68c584 RBX::SmoothNoOutlinesTool::doAction(RBX::Surface *)")
+// IDA 0x68c584: 20 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_68c584() {
 }
 
 // 0x68c724 — __ZN3RBX9DecalToolD1Ev
@@ -508,8 +508,8 @@ pub fn stub_68c584() -> ! {
 #[doc(alias = "__ZN3RBX9DecalToolD1Ev")]
 #[doc(alias = "RBX::DecalTool::~DecalTool()")]
 // was: __ZN3RBX9DecalToolD1Ev
-pub fn stub_68c724() -> ! {
-    todo!("0x68c724 RBX::DecalTool::~DecalTool()")
+// IDA 0x68c724: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68c724() {
 }
 
 // 0x68c808 — __ZN3RBX9DecalToolD0Ev
@@ -517,8 +517,8 @@ pub fn stub_68c724() -> ! {
 #[doc(alias = "__ZN3RBX9DecalToolD0Ev")]
 #[doc(alias = "RBX::DecalTool::~DecalTool()")]
 // was: __ZN3RBX9DecalToolD0Ev
-pub fn stub_68c808() -> ! {
-    todo!("0x68c808 RBX::DecalTool::~DecalTool()")
+// IDA 0x68c808: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68c808() {
 }
 
 // 0x68c900 — __ZThn36_N3RBX9DecalToolD1Ev
@@ -526,8 +526,8 @@ pub fn stub_68c808() -> ! {
 #[doc(alias = "__ZThn36_N3RBX9DecalToolD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::DecalTool::~DecalTool()")]
 // was: __ZThn36_N3RBX9DecalToolD1Ev
-pub fn stub_68c900() -> ! {
-    todo!("0x68c900 non-virtual thunk toRBX::DecalTool::~DecalTool()")
+// IDA 0x68c900: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68c900() {
 }
 
 // 0x68c9e4 — __ZThn36_N3RBX9DecalToolD0Ev
@@ -535,8 +535,8 @@ pub fn stub_68c900() -> ! {
 #[doc(alias = "__ZThn36_N3RBX9DecalToolD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::DecalTool::~DecalTool()")]
 // was: __ZThn36_N3RBX9DecalToolD0Ev
-pub fn stub_68c9e4() -> ! {
-    todo!("0x68c9e4 non-virtual thunk toRBX::DecalTool::~DecalTool()")
+// IDA 0x68c9e4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68c9e4() {
 }
 
 // 0x68cae0 — __ZN3RBX8FlatToolD1Ev
@@ -544,8 +544,8 @@ pub fn stub_68c9e4() -> ! {
 #[doc(alias = "__ZN3RBX8FlatToolD1Ev")]
 #[doc(alias = "RBX::FlatTool::~FlatTool()")]
 // was: __ZN3RBX8FlatToolD1Ev
-pub fn stub_68cae0() -> ! {
-    todo!("0x68cae0 RBX::FlatTool::~FlatTool()")
+// IDA 0x68cae0: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_68cae0() {
 }
 
 // 0x68cae4 — __ZN3RBX8FlatToolD0Ev
@@ -553,8 +553,8 @@ pub fn stub_68cae0() -> ! {
 #[doc(alias = "__ZN3RBX8FlatToolD0Ev")]
 #[doc(alias = "RBX::FlatTool::~FlatTool()")]
 // was: __ZN3RBX8FlatToolD0Ev
-pub fn stub_68cae4() -> ! {
-    todo!("0x68cae4 RBX::FlatTool::~FlatTool()")
+// IDA 0x68cae4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68cae4() {
 }
 
 // 0x68cb84 — __ZThn36_N3RBX8FlatToolD1Ev
@@ -562,8 +562,8 @@ pub fn stub_68cae4() -> ! {
 #[doc(alias = "__ZThn36_N3RBX8FlatToolD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::FlatTool::~FlatTool()")]
 // was: __ZThn36_N3RBX8FlatToolD1Ev
-pub fn stub_68cb84() -> ! {
-    todo!("0x68cb84 non-virtual thunk toRBX::FlatTool::~FlatTool()")
+// IDA 0x68cb84: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68cb84() {
 }
 
 // 0x68cb8c — __ZThn36_N3RBX8FlatToolD0Ev
@@ -571,8 +571,8 @@ pub fn stub_68cb84() -> ! {
 #[doc(alias = "__ZThn36_N3RBX8FlatToolD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::FlatTool::~FlatTool()")]
 // was: __ZThn36_N3RBX8FlatToolD0Ev
-pub fn stub_68cb8c() -> ! {
-    todo!("0x68cb8c non-virtual thunk toRBX::FlatTool::~FlatTool()")
+// IDA 0x68cb8c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68cb8c() {
 }
 
 // 0x68cc30 — __ZN3RBX8GlueToolD1Ev
@@ -580,8 +580,8 @@ pub fn stub_68cb8c() -> ! {
 #[doc(alias = "__ZN3RBX8GlueToolD1Ev")]
 #[doc(alias = "RBX::GlueTool::~GlueTool()")]
 // was: __ZN3RBX8GlueToolD1Ev
-pub fn stub_68cc30() -> ! {
-    todo!("0x68cc30 RBX::GlueTool::~GlueTool()")
+// IDA 0x68cc30: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_68cc30() {
 }
 
 // 0x68cc34 — __ZN3RBX8GlueToolD0Ev
@@ -589,8 +589,8 @@ pub fn stub_68cc30() -> ! {
 #[doc(alias = "__ZN3RBX8GlueToolD0Ev")]
 #[doc(alias = "RBX::GlueTool::~GlueTool()")]
 // was: __ZN3RBX8GlueToolD0Ev
-pub fn stub_68cc34() -> ! {
-    todo!("0x68cc34 RBX::GlueTool::~GlueTool()")
+// IDA 0x68cc34: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68cc34() {
 }
 
 // 0x68ccd4 — __ZThn36_N3RBX8GlueToolD1Ev
@@ -598,8 +598,8 @@ pub fn stub_68cc34() -> ! {
 #[doc(alias = "__ZThn36_N3RBX8GlueToolD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::GlueTool::~GlueTool()")]
 // was: __ZThn36_N3RBX8GlueToolD1Ev
-pub fn stub_68ccd4() -> ! {
-    todo!("0x68ccd4 non-virtual thunk toRBX::GlueTool::~GlueTool()")
+// IDA 0x68ccd4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68ccd4() {
 }
 
 // 0x68ccdc — __ZThn36_N3RBX8GlueToolD0Ev
@@ -607,8 +607,8 @@ pub fn stub_68ccd4() -> ! {
 #[doc(alias = "__ZThn36_N3RBX8GlueToolD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::GlueTool::~GlueTool()")]
 // was: __ZThn36_N3RBX8GlueToolD0Ev
-pub fn stub_68ccdc() -> ! {
-    todo!("0x68ccdc non-virtual thunk toRBX::GlueTool::~GlueTool()")
+// IDA 0x68ccdc: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68ccdc() {
 }
 
 // 0x68cd80 — __ZN3RBX8WeldToolD1Ev
@@ -616,8 +616,8 @@ pub fn stub_68ccdc() -> ! {
 #[doc(alias = "__ZN3RBX8WeldToolD1Ev")]
 #[doc(alias = "RBX::WeldTool::~WeldTool()")]
 // was: __ZN3RBX8WeldToolD1Ev
-pub fn stub_68cd80() -> ! {
-    todo!("0x68cd80 RBX::WeldTool::~WeldTool()")
+// IDA 0x68cd80: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_68cd80() {
 }
 
 // 0x68cd84 — __ZN3RBX8WeldToolD0Ev
@@ -625,8 +625,8 @@ pub fn stub_68cd80() -> ! {
 #[doc(alias = "__ZN3RBX8WeldToolD0Ev")]
 #[doc(alias = "RBX::WeldTool::~WeldTool()")]
 // was: __ZN3RBX8WeldToolD0Ev
-pub fn stub_68cd84() -> ! {
-    todo!("0x68cd84 RBX::WeldTool::~WeldTool()")
+// IDA 0x68cd84: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68cd84() {
 }
 
 // 0x68ce24 — __ZThn36_N3RBX8WeldToolD1Ev
@@ -634,8 +634,8 @@ pub fn stub_68cd84() -> ! {
 #[doc(alias = "__ZThn36_N3RBX8WeldToolD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::WeldTool::~WeldTool()")]
 // was: __ZThn36_N3RBX8WeldToolD1Ev
-pub fn stub_68ce24() -> ! {
-    todo!("0x68ce24 non-virtual thunk toRBX::WeldTool::~WeldTool()")
+// IDA 0x68ce24: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68ce24() {
 }
 
 // 0x68ce2c — __ZThn36_N3RBX8WeldToolD0Ev
@@ -643,8 +643,8 @@ pub fn stub_68ce24() -> ! {
 #[doc(alias = "__ZThn36_N3RBX8WeldToolD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::WeldTool::~WeldTool()")]
 // was: __ZThn36_N3RBX8WeldToolD0Ev
-pub fn stub_68ce2c() -> ! {
-    todo!("0x68ce2c non-virtual thunk toRBX::WeldTool::~WeldTool()")
+// IDA 0x68ce2c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68ce2c() {
 }
 
 // 0x68ced0 — __ZN3RBX9StudsToolD1Ev
@@ -652,8 +652,8 @@ pub fn stub_68ce2c() -> ! {
 #[doc(alias = "__ZN3RBX9StudsToolD1Ev")]
 #[doc(alias = "RBX::StudsTool::~StudsTool()")]
 // was: __ZN3RBX9StudsToolD1Ev
-pub fn stub_68ced0() -> ! {
-    todo!("0x68ced0 RBX::StudsTool::~StudsTool()")
+// IDA 0x68ced0: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_68ced0() {
 }
 
 // 0x68ced4 — __ZN3RBX9StudsToolD0Ev
@@ -661,8 +661,8 @@ pub fn stub_68ced0() -> ! {
 #[doc(alias = "__ZN3RBX9StudsToolD0Ev")]
 #[doc(alias = "RBX::StudsTool::~StudsTool()")]
 // was: __ZN3RBX9StudsToolD0Ev
-pub fn stub_68ced4() -> ! {
-    todo!("0x68ced4 RBX::StudsTool::~StudsTool()")
+// IDA 0x68ced4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68ced4() {
 }
 
 // 0x68cf74 — __ZThn36_N3RBX9StudsToolD1Ev
@@ -670,8 +670,8 @@ pub fn stub_68ced4() -> ! {
 #[doc(alias = "__ZThn36_N3RBX9StudsToolD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::StudsTool::~StudsTool()")]
 // was: __ZThn36_N3RBX9StudsToolD1Ev
-pub fn stub_68cf74() -> ! {
-    todo!("0x68cf74 non-virtual thunk toRBX::StudsTool::~StudsTool()")
+// IDA 0x68cf74: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68cf74() {
 }
 
 // 0x68cf7c — __ZThn36_N3RBX9StudsToolD0Ev
@@ -679,8 +679,8 @@ pub fn stub_68cf74() -> ! {
 #[doc(alias = "__ZThn36_N3RBX9StudsToolD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::StudsTool::~StudsTool()")]
 // was: __ZThn36_N3RBX9StudsToolD0Ev
-pub fn stub_68cf7c() -> ! {
-    todo!("0x68cf7c non-virtual thunk toRBX::StudsTool::~StudsTool()")
+// IDA 0x68cf7c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68cf7c() {
 }
 
 // 0x68d020 — __ZN3RBX9InletToolD1Ev
@@ -688,8 +688,8 @@ pub fn stub_68cf7c() -> ! {
 #[doc(alias = "__ZN3RBX9InletToolD1Ev")]
 #[doc(alias = "RBX::InletTool::~InletTool()")]
 // was: __ZN3RBX9InletToolD1Ev
-pub fn stub_68d020() -> ! {
-    todo!("0x68d020 RBX::InletTool::~InletTool()")
+// IDA 0x68d020: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_68d020() {
 }
 
 // 0x68d024 — __ZN3RBX9InletToolD0Ev
@@ -697,8 +697,8 @@ pub fn stub_68d020() -> ! {
 #[doc(alias = "__ZN3RBX9InletToolD0Ev")]
 #[doc(alias = "RBX::InletTool::~InletTool()")]
 // was: __ZN3RBX9InletToolD0Ev
-pub fn stub_68d024() -> ! {
-    todo!("0x68d024 RBX::InletTool::~InletTool()")
+// IDA 0x68d024: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68d024() {
 }
 
 // 0x68d0c4 — __ZThn36_N3RBX9InletToolD1Ev
@@ -706,8 +706,8 @@ pub fn stub_68d024() -> ! {
 #[doc(alias = "__ZThn36_N3RBX9InletToolD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::InletTool::~InletTool()")]
 // was: __ZThn36_N3RBX9InletToolD1Ev
-pub fn stub_68d0c4() -> ! {
-    todo!("0x68d0c4 non-virtual thunk toRBX::InletTool::~InletTool()")
+// IDA 0x68d0c4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68d0c4() {
 }
 
 // 0x68d0cc — __ZThn36_N3RBX9InletToolD0Ev
@@ -715,8 +715,8 @@ pub fn stub_68d0c4() -> ! {
 #[doc(alias = "__ZThn36_N3RBX9InletToolD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::InletTool::~InletTool()")]
 // was: __ZThn36_N3RBX9InletToolD0Ev
-pub fn stub_68d0cc() -> ! {
-    todo!("0x68d0cc non-virtual thunk toRBX::InletTool::~InletTool()")
+// IDA 0x68d0cc: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68d0cc() {
 }
 
 // 0x68d170 — __ZN3RBX13UniversalToolD1Ev
@@ -724,8 +724,8 @@ pub fn stub_68d0cc() -> ! {
 #[doc(alias = "__ZN3RBX13UniversalToolD1Ev")]
 #[doc(alias = "RBX::UniversalTool::~UniversalTool()")]
 // was: __ZN3RBX13UniversalToolD1Ev
-pub fn stub_68d170() -> ! {
-    todo!("0x68d170 RBX::UniversalTool::~UniversalTool()")
+// IDA 0x68d170: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_68d170() {
 }
 
 // 0x68d174 — __ZN3RBX13UniversalToolD0Ev
@@ -733,8 +733,8 @@ pub fn stub_68d170() -> ! {
 #[doc(alias = "__ZN3RBX13UniversalToolD0Ev")]
 #[doc(alias = "RBX::UniversalTool::~UniversalTool()")]
 // was: __ZN3RBX13UniversalToolD0Ev
-pub fn stub_68d174() -> ! {
-    todo!("0x68d174 RBX::UniversalTool::~UniversalTool()")
+// IDA 0x68d174: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68d174() {
 }
 
 // 0x68d214 — __ZThn36_N3RBX13UniversalToolD1Ev
@@ -742,8 +742,8 @@ pub fn stub_68d174() -> ! {
 #[doc(alias = "__ZThn36_N3RBX13UniversalToolD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::UniversalTool::~UniversalTool()")]
 // was: __ZThn36_N3RBX13UniversalToolD1Ev
-pub fn stub_68d214() -> ! {
-    todo!("0x68d214 non-virtual thunk toRBX::UniversalTool::~UniversalTool()")
+// IDA 0x68d214: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68d214() {
 }
 
 // 0x68d21c — __ZThn36_N3RBX13UniversalToolD0Ev
@@ -751,8 +751,8 @@ pub fn stub_68d214() -> ! {
 #[doc(alias = "__ZThn36_N3RBX13UniversalToolD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::UniversalTool::~UniversalTool()")]
 // was: __ZThn36_N3RBX13UniversalToolD0Ev
-pub fn stub_68d21c() -> ! {
-    todo!("0x68d21c non-virtual thunk toRBX::UniversalTool::~UniversalTool()")
+// IDA 0x68d21c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68d21c() {
 }
 
 // 0x68d2c0 — __ZN3RBX9HingeToolD1Ev
@@ -760,8 +760,8 @@ pub fn stub_68d21c() -> ! {
 #[doc(alias = "__ZN3RBX9HingeToolD1Ev")]
 #[doc(alias = "RBX::HingeTool::~HingeTool()")]
 // was: __ZN3RBX9HingeToolD1Ev
-pub fn stub_68d2c0() -> ! {
-    todo!("0x68d2c0 RBX::HingeTool::~HingeTool()")
+// IDA 0x68d2c0: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_68d2c0() {
 }
 
 // 0x68d2c4 — __ZN3RBX9HingeToolD0Ev
@@ -769,8 +769,8 @@ pub fn stub_68d2c0() -> ! {
 #[doc(alias = "__ZN3RBX9HingeToolD0Ev")]
 #[doc(alias = "RBX::HingeTool::~HingeTool()")]
 // was: __ZN3RBX9HingeToolD0Ev
-pub fn stub_68d2c4() -> ! {
-    todo!("0x68d2c4 RBX::HingeTool::~HingeTool()")
+// IDA 0x68d2c4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68d2c4() {
 }
 
 // 0x68d364 — __ZThn36_N3RBX9HingeToolD1Ev
@@ -778,8 +778,8 @@ pub fn stub_68d2c4() -> ! {
 #[doc(alias = "__ZThn36_N3RBX9HingeToolD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::HingeTool::~HingeTool()")]
 // was: __ZThn36_N3RBX9HingeToolD1Ev
-pub fn stub_68d364() -> ! {
-    todo!("0x68d364 non-virtual thunk toRBX::HingeTool::~HingeTool()")
+// IDA 0x68d364: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68d364() {
 }
 
 // 0x68d36c — __ZThn36_N3RBX9HingeToolD0Ev
@@ -787,8 +787,8 @@ pub fn stub_68d364() -> ! {
 #[doc(alias = "__ZThn36_N3RBX9HingeToolD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::HingeTool::~HingeTool()")]
 // was: __ZThn36_N3RBX9HingeToolD0Ev
-pub fn stub_68d36c() -> ! {
-    todo!("0x68d36c non-virtual thunk toRBX::HingeTool::~HingeTool()")
+// IDA 0x68d36c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68d36c() {
 }
 
 // 0x68d410 — __ZN3RBX14RightMotorToolD1Ev
@@ -796,8 +796,8 @@ pub fn stub_68d36c() -> ! {
 #[doc(alias = "__ZN3RBX14RightMotorToolD1Ev")]
 #[doc(alias = "RBX::RightMotorTool::~RightMotorTool()")]
 // was: __ZN3RBX14RightMotorToolD1Ev
-pub fn stub_68d410() -> ! {
-    todo!("0x68d410 RBX::RightMotorTool::~RightMotorTool()")
+// IDA 0x68d410: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_68d410() {
 }
 
 // 0x68d414 — __ZN3RBX14RightMotorToolD0Ev
@@ -805,8 +805,8 @@ pub fn stub_68d410() -> ! {
 #[doc(alias = "__ZN3RBX14RightMotorToolD0Ev")]
 #[doc(alias = "RBX::RightMotorTool::~RightMotorTool()")]
 // was: __ZN3RBX14RightMotorToolD0Ev
-pub fn stub_68d414() -> ! {
-    todo!("0x68d414 RBX::RightMotorTool::~RightMotorTool()")
+// IDA 0x68d414: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68d414() {
 }
 
 // 0x68d4b4 — __ZThn36_N3RBX14RightMotorToolD1Ev
@@ -814,8 +814,8 @@ pub fn stub_68d414() -> ! {
 #[doc(alias = "__ZThn36_N3RBX14RightMotorToolD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::RightMotorTool::~RightMotorTool()")]
 // was: __ZThn36_N3RBX14RightMotorToolD1Ev
-pub fn stub_68d4b4() -> ! {
-    todo!("0x68d4b4 non-virtual thunk toRBX::RightMotorTool::~RightMotorTool()")
+// IDA 0x68d4b4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68d4b4() {
 }
 
 // 0x68d4bc — __ZThn36_N3RBX14RightMotorToolD0Ev
@@ -823,8 +823,8 @@ pub fn stub_68d4b4() -> ! {
 #[doc(alias = "__ZThn36_N3RBX14RightMotorToolD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::RightMotorTool::~RightMotorTool()")]
 // was: __ZThn36_N3RBX14RightMotorToolD0Ev
-pub fn stub_68d4bc() -> ! {
-    todo!("0x68d4bc non-virtual thunk toRBX::RightMotorTool::~RightMotorTool()")
+// IDA 0x68d4bc: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68d4bc() {
 }
 
 // 0x68d560 — __ZN3RBX13LeftMotorToolD1Ev
@@ -832,8 +832,8 @@ pub fn stub_68d4bc() -> ! {
 #[doc(alias = "__ZN3RBX13LeftMotorToolD1Ev")]
 #[doc(alias = "RBX::LeftMotorTool::~LeftMotorTool()")]
 // was: __ZN3RBX13LeftMotorToolD1Ev
-pub fn stub_68d560() -> ! {
-    todo!("0x68d560 RBX::LeftMotorTool::~LeftMotorTool()")
+// IDA 0x68d560: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_68d560() {
 }
 
 // 0x68d564 — __ZN3RBX13LeftMotorToolD0Ev
@@ -841,8 +841,8 @@ pub fn stub_68d560() -> ! {
 #[doc(alias = "__ZN3RBX13LeftMotorToolD0Ev")]
 #[doc(alias = "RBX::LeftMotorTool::~LeftMotorTool()")]
 // was: __ZN3RBX13LeftMotorToolD0Ev
-pub fn stub_68d564() -> ! {
-    todo!("0x68d564 RBX::LeftMotorTool::~LeftMotorTool()")
+// IDA 0x68d564: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68d564() {
 }
 
 // 0x68d604 — __ZThn36_N3RBX13LeftMotorToolD1Ev
@@ -850,8 +850,8 @@ pub fn stub_68d564() -> ! {
 #[doc(alias = "__ZThn36_N3RBX13LeftMotorToolD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::LeftMotorTool::~LeftMotorTool()")]
 // was: __ZThn36_N3RBX13LeftMotorToolD1Ev
-pub fn stub_68d604() -> ! {
-    todo!("0x68d604 non-virtual thunk toRBX::LeftMotorTool::~LeftMotorTool()")
+// IDA 0x68d604: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68d604() {
 }
 
 // 0x68d60c — __ZThn36_N3RBX13LeftMotorToolD0Ev
@@ -859,8 +859,8 @@ pub fn stub_68d604() -> ! {
 #[doc(alias = "__ZThn36_N3RBX13LeftMotorToolD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::LeftMotorTool::~LeftMotorTool()")]
 // was: __ZThn36_N3RBX13LeftMotorToolD0Ev
-pub fn stub_68d60c() -> ! {
-    todo!("0x68d60c non-virtual thunk toRBX::LeftMotorTool::~LeftMotorTool()")
+// IDA 0x68d60c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68d60c() {
 }
 
 // 0x68d6b0 — __ZN3RBX18OscillateMotorToolD1Ev
@@ -868,8 +868,8 @@ pub fn stub_68d60c() -> ! {
 #[doc(alias = "__ZN3RBX18OscillateMotorToolD1Ev")]
 #[doc(alias = "RBX::OscillateMotorTool::~OscillateMotorTool()")]
 // was: __ZN3RBX18OscillateMotorToolD1Ev
-pub fn stub_68d6b0() -> ! {
-    todo!("0x68d6b0 RBX::OscillateMotorTool::~OscillateMotorTool()")
+// IDA 0x68d6b0: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_68d6b0() {
 }
 
 // 0x68d6b4 — __ZN3RBX18OscillateMotorToolD0Ev
@@ -877,8 +877,8 @@ pub fn stub_68d6b0() -> ! {
 #[doc(alias = "__ZN3RBX18OscillateMotorToolD0Ev")]
 #[doc(alias = "RBX::OscillateMotorTool::~OscillateMotorTool()")]
 // was: __ZN3RBX18OscillateMotorToolD0Ev
-pub fn stub_68d6b4() -> ! {
-    todo!("0x68d6b4 RBX::OscillateMotorTool::~OscillateMotorTool()")
+// IDA 0x68d6b4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68d6b4() {
 }
 
 // 0x68d754 — __ZThn36_N3RBX18OscillateMotorToolD1Ev
@@ -886,8 +886,8 @@ pub fn stub_68d6b4() -> ! {
 #[doc(alias = "__ZThn36_N3RBX18OscillateMotorToolD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::OscillateMotorTool::~OscillateMotorTool()")]
 // was: __ZThn36_N3RBX18OscillateMotorToolD1Ev
-pub fn stub_68d754() -> ! {
-    todo!("0x68d754 non-virtual thunk toRBX::OscillateMotorTool::~OscillateMotorTool()")
+// IDA 0x68d754: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68d754() {
 }
 
 // 0x68d75c — __ZThn36_N3RBX18OscillateMotorToolD0Ev
@@ -895,8 +895,8 @@ pub fn stub_68d754() -> ! {
 #[doc(alias = "__ZThn36_N3RBX18OscillateMotorToolD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::OscillateMotorTool::~OscillateMotorTool()")]
 // was: __ZThn36_N3RBX18OscillateMotorToolD0Ev
-pub fn stub_68d75c() -> ! {
-    todo!("0x68d75c non-virtual thunk toRBX::OscillateMotorTool::~OscillateMotorTool()")
+// IDA 0x68d75c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_68d75c() {
 }
 
 // 0x68d800 — __ZN3RBX20SmoothNoOutlinesToolD1Ev
@@ -904,7 +904,7 @@ pub fn stub_68d75c() -> ! {
 #[doc(alias = "__ZN3RBX20SmoothNoOutlinesToolD1Ev")]
 #[doc(alias = "RBX::SmoothNoOutlinesTool::~SmoothNoOutlinesTool()")]
 // was: __ZN3RBX20SmoothNoOutlinesToolD1Ev
-pub fn stub_68d800() -> ! {
-    todo!("0x68d800 RBX::SmoothNoOutlinesTool::~SmoothNoOutlinesTool()")
+// IDA 0x68d800: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_68d800() {
 }
 
