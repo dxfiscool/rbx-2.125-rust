@@ -98,6 +98,137 @@ pub struct TiffPluginView {
 /// STR R1,[PC,R12] to `s_format_id_1`).
 static TIFF_S_FORMAT_ID: core::sync::atomic::AtomicI32 =
     core::sync::atomic::AtomicI32::new(0);
+/// `s_format_id` globals written by InitJPEG / InitPNG (IDA 0x111ef0 /
+/// 0x11434c: STR R1,[PC,R9] to `s_format_id` / `s_format_id_0`), mirroring
+/// the TIFF_S_FORMAT_ID above.
+static JPEG_S_FORMAT_ID: core::sync::atomic::AtomicI32 =
+    core::sync::atomic::AtomicI32::new(0);
+static PNG_S_FORMAT_ID: core::sync::atomic::AtomicI32 =
+    core::sync::atomic::AtomicI32::new(0);
+/// JPEG/PNG `Plugin` vtable filled by InitJPEG (IDA 0x111efc..0x111f80)
+/// and InitPNG (IDA 0x114358..0x1143dc): Format at +0x00, Description at
+/// +0x04, Extension at +0x08, RegExpr at +0x0C, four reserved zero slots at
+/// +0x10..+0x1C, then Load (+0x20), Save (+0x24), Validate (+0x28),
+/// MimeType (+0x2C), SupportsExportDepth (+0x30), SupportsExportType
+/// (+0x34), SupportsICCProfiles (+0x38).
+/// BUG: fields are pointer-sized, so on a 64-bit host this struct is wider
+/// than the 32-bit target's 60 bytes; the slot order — not the byte
+/// offsets — is what this port preserves (as with TiffPluginView above).
+#[repr(C)]
+pub struct JpegPluginView {
+    pub format: *const c_void,
+    pub description: *const c_void,
+    pub extension: *const c_void,
+    pub reg_expr: *const c_void,
+    pub reserved0: *const c_void,
+    pub reserved1: *const c_void,
+    pub reserved2: *const c_void,
+    pub reserved3: *const c_void,
+    pub load: *const c_void,
+    pub save: *const c_void,
+    pub validate: *const c_void,
+    pub mime_type: *const c_void,
+    pub supports_export_depth: *const c_void,
+    pub supports_export_type: *const c_void,
+    pub supports_icc_profiles: *const c_void,
+}
+/// libjpeg error-manager prefix (IDA 0x1122c4..0x1122d0,
+/// 0x112f6c..0x112f88): five AAPCS (`extern "C"`) slots, then the message
+/// code word at +20 (written by fill_input_buffer at 0x112120) and the
+/// following parameter word at +24 (compared against 13 by jpeg_error_exit
+/// at 0x112f80..0x112f88).
+#[repr(C)]
+pub struct JpegErrView {
+    pub error_exit: unsafe extern "C" fn(*mut c_void),
+    pub emit_message: unsafe extern "C" fn(*mut c_void, i32),
+    pub output_message: unsafe extern "C" fn(*mut c_void),
+    pub format_message: unsafe extern "C" fn(*mut c_void, *mut c_char),
+    pub reset_error_mgr: unsafe extern "C" fn(*mut c_void),
+    pub msg_code: i32,
+    pub msg_ext24: i32,
+}
+/// libjpeg source manager behind the FreeImage callbacks (IDA 0x1120a4,
+/// 0x112184): next/bytes at +0/+4, opaque handle at +28, FreeImageIO table
+/// at +32 (read_proc word at +0), bounce buffer at +36, start-of-file flag
+/// at +40.
+#[repr(C)]
+pub struct JpegSrcMgr {
+    pub next_input_byte: *const u8,
+    pub bytes_in_buffer: u32,
+    pub _pad8: [u8; 20],
+    pub handle: *mut c_void,
+    pub io: *const TiffIoHooks,
+    pub buffer: *mut u8,
+    pub start_of_file: u8,
+}
+/// libjpeg destination manager (IDA 0x1121c8, 0x112240): next/free at
+/// +0/+4, opaque handle at +20, FreeImageIO table at +24 (write_proc word
+/// at +4), bounce buffer at +28.
+#[repr(C)]
+pub struct JpegDstMgr {
+    pub next_output_byte: *mut u8,
+    pub free_in_buffer: u32,
+    pub _pad8: [u8; 12],
+    pub handle: *mut c_void,
+    pub io: *const TiffIoHooks,
+    pub buffer: *mut u8,
+}
+/// External FreeImage/libjpeg/libpng/libtiff entry points called by this
+/// batch. Declared, not defined: the host image libraries provide them,
+/// exactly as the original binary imports them (BL _FreeImage_Allocate at
+/// 0x116c8c, BL _TIFFReadDirectory at 0x116e40, BL _jpeg_destroy at
+/// 0x112f90, BL _png_get_io_ptr at 0x115268, ...).
+extern "C" {
+    fn FreeImage_OutputMessageProc(format_id: i32, msg: *const c_char) -> i32;
+    fn read_iptc_profile(dib: *mut c_void, data: *const u8, len: u32) -> i32;
+    fn png_get_io_ptr(png: *mut c_void) -> *mut c_void;
+    fn FreeImage_Allocate(
+        width: i32,
+        height: i32,
+        bpp: i32,
+        red_mask: u32,
+        green_mask: u32,
+        blue_mask: u32,
+    ) -> *mut c_void;
+    fn FreeImage_AllocateT(
+        image_type: i32,
+        width: i32,
+        height: i32,
+        bpp: i32,
+        red_mask: u32,
+        green_mask: u32,
+        blue_mask: u32,
+    ) -> *mut c_void;
+    fn TIFFGetField(tif: *mut c_void, tag: u32, ...) -> i32;
+    /// BUG: upstream FreeImage declares the SetDotsPerMeter pair as void;
+    /// the ports below return R0 residue 1:1 with the decompile tails
+    /// (`return FreeImage_SetDotsPerMeterY(...)` at 0x116df4/0x116df8).
+    fn FreeImage_SetDotsPerMeterX(dib: *mut c_void, res: u32) -> i32;
+    fn FreeImage_SetDotsPerMeterY(dib: *mut c_void, res: u32) -> i32;
+    fn TIFFReadDirectory(tif: *mut c_void) -> i32;
+    fn TIFFClose(tif: *mut c_void);
+    /// BUG: upstream libjpeg declares jpeg_destroy as void; the wrappers
+    /// below return R0 residue 1:1 with the decompile (`return
+    /// jpeg_destroy(a1)` at 0x123694), so the value is whatever the callee
+    /// left behind.
+    fn jpeg_destroy(cinfo: *mut c_void) -> i32;
+    /// BUG: same R0-residue note as jpeg_destroy: upstream
+    /// jinit_memory_mgr returns void.
+    fn jinit_memory_mgr(cinfo: *mut c_void) -> *mut c_void;
+    fn XTIFFInitialize();
+    fn TIFFClientOpen(
+        name: *const c_char,
+        mode: *const c_char,
+        clientdata: *mut c_void,
+        read_proc: *mut c_void,
+        write_proc: *mut c_void,
+        seek_proc: *mut c_void,
+        close_proc: *mut c_void,
+        size_proc: *mut c_void,
+        map_proc: *mut c_void,
+        unmap_proc: *mut c_void,
+    ) -> *mut c_void;
+}
 
 // 0x82b700 — __ZL9math_fmodP9lua_State
 #[doc(alias = "math_fmod(lua_State *)")]
@@ -268,14 +399,55 @@ pub fn stub_111edc() -> i32 {
 
 // 0x111ee4 — __Z8InitJPEGP6Plugini
 #[doc(alias = "InitJPEG(Plugin *,int)")]
-pub fn stub_111ee4() -> ! {
-    todo!("0x111ee4 InitJPEG(Plugin *,int)")
+pub fn stub_111ee4(plugin: *mut JpegPluginView, format_id: i32) -> *mut JpegPluginView {
+    // IDA 0x111ee4: s_format_id = a2 (0x111ef0); *result = Format (0x111efc);
+    // result[2] = Extension (0x111f10); result[1] = Description (0x111f20);
+    // result[8] = Load (0x111f24); result[4..7] = 0 (0x111f30..0x111f3c);
+    // result[3] = RegExpr (0x111f44); result[9] = Save (0x111f54);
+    // result[10] = Validate (0x111f58); result[11] = MimeType (0x111f60);
+    // result[12] = SupportsExportDepth (0x111f78);
+    // result[13] = SupportsExportType (0x111f7c);
+    // result[14] = SupportsICCProfiles (0x111f80); returns plugin (0x111f84).
+    // BUG: Format lives in generated_08 (0x111e68, still todo!) and
+    // Load/Save (0x112fd0/0x11240c below) still carry todo!() bodies, so
+    // invoking those wired slots panics until they land; only addresses are
+    // wired here, mirroring stub_116280.
+    // SAFETY: `plugin` is a writable Plugin per the caller.
+    JPEG_S_FORMAT_ID.store(format_id, core::sync::atomic::Ordering::Relaxed);
+    let p = unsafe { &mut *plugin };
+    p.format = super::generated_08::stub_111e68 as *const c_void;
+    p.description = stub_111e78 as *const c_void;
+    p.extension = stub_111e88 as *const c_void;
+    p.reg_expr = stub_111e98 as *const c_void;
+    p.reserved0 = core::ptr::null();
+    p.reserved1 = core::ptr::null();
+    p.reserved2 = core::ptr::null();
+    p.reserved3 = core::ptr::null();
+    p.load = stub_112fd0 as *const c_void;
+    p.save = stub_11240c as *const c_void;
+    p.validate = stub_111fb8 as *const c_void;
+    p.mime_type = stub_111ea8 as *const c_void;
+    p.supports_export_depth = stub_111eb8 as *const c_void;
+    p.supports_export_type = stub_111ecc as *const c_void;
+    p.supports_icc_profiles = stub_111edc as *const c_void;
+    plugin
 }
 
 // 0x111fb8 — __ZL8ValidateP11FreeImageIOPv
 #[doc(alias = "Validate(FreeImageIO *,void *)")]
-pub fn stub_111fb8() -> ! {
-    todo!("0x111fb8 Validate(FreeImageIO *,void *)")
+pub fn stub_111fb8(io: *const TiffIoHooks, handle: *mut c_void) -> bool {
+    // IDA 0x111fb8: __dst = C.191 (0xf759f1 = FF D8, via 0x111fdc), v5 =
+    // C.192 (00 00, via 0x111ff0); read_proc = io[+0] word, little-endian
+    // (0x111ff8..0x11200c); read_proc(v5, 1, 2, handle) (0x112020);
+    // return memcmp(__dst, v5, 2) == 0 (0x112040). The v5 init bytes are
+    // overwritten by the read, so only the FF D8 expectation is load-bearing.
+    // SAFETY: `io` readable; `handle` valid for the stored read_proc.
+    let mut sig = [0u8; 2];
+    unsafe {
+        let io = &*io;
+        (io.read_proc)(sig.as_mut_ptr() as *mut c_void, 1, 2, handle);
+    }
+    sig == [0xFF, 0xD8]
 }
 
 // 0x11204c — __ZL13marker_is_iccP18jpeg_marker_struct
@@ -291,32 +463,133 @@ pub fn stub_11204c(marker: *const JpegMarkerIccView) -> bool {
 
 // 0x11209c — __ZL17fill_input_bufferP22jpeg_decompress_struct
 #[doc(alias = "fill_input_buffer(jpeg_decompress_struct *)")]
-pub fn stub_11209c() -> ! {
-    todo!("0x11209c fill_input_buffer(jpeg_decompress_struct *)")
+pub fn stub_11209c(cinfo: *mut c_void) -> i32 {
+    // IDA 0x11209c: src = cinfo[6] (0x1120a4); n = read_proc(buf, 1, 4096,
+    // handle) via the LE io[+0] word (0x1120ac..0x1120dc); if n == 0 and
+    // start_of_file is still set: throw J_MESSAGE_CODE 43
+    // (0x1120ec..0x112114); else warn: err.msg_code = 123 (0x112120),
+    // emit_message(cinfo, -1) (0x112138), fake n = 2 with buffer = FF D9
+    // (0x112140..0x112150); bytes_in_buffer = n (0x112158),
+    // next_input_byte = buffer (0x112164), start_of_file = 0 (0x112168);
+    // return 1 (0x11216c). Throws cross the C API; panic! is the host
+    // mapping (as in stub_1152a4).
+    // SAFETY: `cinfo` is a readable/writable jpeg_decompress_struct whose
+    // src slot (+24) points at a JpegSrcMgr, per the caller.
+    unsafe {
+        let src = &mut *(*(cinfo as *mut *mut JpegSrcMgr).add(6));
+        let io = &*src.io;
+        let mut n = (io.read_proc)(src.buffer as *mut c_void, 1, 4096, src.handle);
+        if n == 0 {
+            if src.start_of_file != 0 {
+                panic!("0x11209c fill_input_buffer: J_MESSAGE_CODE 43");
+            }
+            let err = *(cinfo as *mut *mut JpegErrView);
+            (*err).msg_code = 123;
+            ((*err).emit_message)(cinfo, -1);
+            n = 2;
+            *src.buffer = 0xFF;
+            *src.buffer.add(1) = 0xD9;
+        }
+        src.bytes_in_buffer = n;
+        src.next_input_byte = src.buffer as *const u8;
+        src.start_of_file = 0;
+        1
+    }
 }
 
 // 0x112174 — __ZL15skip_input_dataP22jpeg_decompress_structl
 #[doc(alias = "skip_input_data(jpeg_decompress_struct *,long)")]
-pub fn stub_112174() -> ! {
-    todo!("0x112174 skip_input_data(jpeg_decompress_struct *,long)")
+pub fn stub_112174(cinfo: *mut c_void, mut skip: i32) -> *mut c_void {
+    // IDA 0x112174: skip <= 0 -> return cinfo (0x112188..0x11218c); else
+    // while skip > bytes_in_buffer: skip -= avail (0x112194),
+    // fill_input_buffer(cinfo) (0x112198); then next += skip, bytes -= skip
+    // (0x1121a8..0x1121b8); return the pre-advance next pointer
+    // (0x1121a8, via 0x11218c).
+    // SAFETY: as for stub_11209c.
+    if skip <= 0 {
+        return cinfo;
+    }
+    unsafe {
+        let src = *(cinfo as *mut *mut JpegSrcMgr).add(6);
+        loop {
+            let avail = (*src).bytes_in_buffer as i32;
+            if skip <= avail {
+                break;
+            }
+            skip -= avail;
+            stub_11209c(cinfo);
+        }
+        let next = (*src).next_input_byte as *mut u8;
+        (*src).bytes_in_buffer = ((*src).bytes_in_buffer as i32 - skip) as u32;
+        (*src).next_input_byte = next.add(skip as usize);
+        next as *mut c_void
+    }
 }
 
 // 0x1121c0 — __ZL16term_destinationP20jpeg_compress_struct
 #[doc(alias = "term_destination(jpeg_compress_struct *)")]
-pub fn stub_1121c0() -> ! {
-    todo!("0x1121c0 term_destination(jpeg_compress_struct *)")
+pub fn stub_1121c0(cinfo: *mut c_void) -> i32 {
+    // IDA 0x1121c0: dest = cinfo[6] (0x1121c8); free = dest.free (0x1121cc);
+    // pending = 4096 - free (0x1121d0); free == 4096 -> return cinfo
+    // (0x1121d4); else n = write_proc(buf, 1, pending, handle) via the LE
+    // io[+4] word (0x1121d8..0x112208); n != pending -> throw
+    // J_MESSAGE_CODE 38 (0x112210..0x112230); return n. The throw crosses
+    // the C API; panic! is the host mapping (as in stub_1152a4).
+    // BUG: the early return carries the pointer as i32 (32-bit target), so
+    // it truncates on a 64-bit host.
+    // SAFETY: `cinfo` holds a JpegDstMgr at its dest slot (+24).
+    unsafe {
+        let dest = &mut *(*(cinfo as *mut *mut JpegDstMgr).add(6));
+        let free = dest.free_in_buffer;
+        if free == 4096 {
+            return cinfo as u32 as i32;
+        }
+        let pending = 4096 - free;
+        let io = &*dest.io;
+        let n = (io.write_proc)(dest.buffer as *mut c_void, 1, pending, dest.handle);
+        if n != pending {
+            panic!("0x1121c0 term_destination: J_MESSAGE_CODE 38");
+        }
+        n as i32
+    }
 }
 
 // 0x112238 — __ZL19empty_output_bufferP20jpeg_compress_struct
 #[doc(alias = "empty_output_buffer(jpeg_compress_struct *)")]
-pub fn stub_112238() -> ! {
-    todo!("0x112238 empty_output_buffer(jpeg_compress_struct *)")
+pub fn stub_112238(cinfo: *mut c_void) -> i32 {
+    // IDA 0x112238: dest = cinfo[6] (0x112240); n = write_proc(buf, 1,
+    // 4096, handle) via the LE io[+4] word (0x112244..0x112274);
+    // n != 4096 -> throw J_MESSAGE_CODE 38 (0x112278..0x11229c);
+    // free = 4096 (0x1122a4), next = buffer (0x1122ac); return 1 (0x1122b0).
+    // SAFETY: as for stub_1121c0.
+    unsafe {
+        let dest = &mut *(*(cinfo as *mut *mut JpegDstMgr).add(6));
+        let io = &*dest.io;
+        let n = (io.write_proc)(dest.buffer as *mut c_void, 1, 4096, dest.handle);
+        if n != 4096 {
+            panic!("0x112238 empty_output_buffer: J_MESSAGE_CODE 38");
+        }
+        dest.free_in_buffer = 4096;
+        dest.next_output_byte = dest.buffer;
+        1
+    }
 }
 
 // 0x1122b8 — __ZL19jpeg_output_messageP18jpeg_common_struct
 #[doc(alias = "jpeg_output_message(jpeg_common_struct *)")]
-pub fn stub_1122b8() -> ! {
-    todo!("0x1122b8 jpeg_output_message(jpeg_common_struct *)")
+pub fn stub_1122b8(cinfo: *mut c_void) -> i32 {
+    // IDA 0x1122b8: err = *cinfo (0x1122c4); err.format_message(cinfo, buf)
+    // via the +12 slot (0x1122c8..0x1122d0) into a 200-byte stack buffer
+    // (0x1122c0); return FreeImage_OutputMessageProc(s_format_id, buf)
+    // (0x1122d4..0x1122e8).
+    // SAFETY: `cinfo` is a readable jpeg_common_struct with an err manager.
+    unsafe {
+        let err = *(cinfo as *mut *mut JpegErrView);
+        let mut buf = [0u8; 200];
+        ((*err).format_message)(cinfo, buf.as_mut_ptr() as *mut c_char);
+        let id = JPEG_S_FORMAT_ID.load(core::sync::atomic::Ordering::Relaxed);
+        FreeImage_OutputMessageProc(id, buf.as_ptr() as *const c_char)
+    }
 }
 
 // 0x1122f0 — __ZL22jpeg_write_icc_profileP20jpeg_compress_structP8FIBITMAP
@@ -333,14 +606,34 @@ pub fn stub_11240c() -> ! {
 
 // 0x112f64 — __ZL15jpeg_error_exitP18jpeg_common_struct
 #[doc(alias = "jpeg_error_exit(jpeg_common_struct *)")]
-pub fn stub_112f64() -> ! {
-    todo!("0x112f64 jpeg_error_exit(jpeg_common_struct *)")
+pub fn stub_112f64(cinfo: *mut c_void) -> *mut c_void {
+    // IDA 0x112f64: err = *cinfo (0x112f6c); err.output_message(cinfo) via
+    // the +8 slot (0x112f74..0x112f78); result = err (0x112f7c); if the +24
+    // word != 13 (0x112f80..0x112f88): jpeg_destroy(cinfo) (0x112f90),
+    // throw (int)s_format_id (0x112f98..0x112fb4). The int throw crosses
+    // the C API; panic! carrying the format id is the host mapping (as in
+    // stub_1152a4). Returns the err pointer, which IDA spells int (see the
+    // stub_1121c0 BUG note).
+    // SAFETY: as for stub_1122b8.
+    unsafe {
+        let err = *(cinfo as *mut *mut JpegErrView);
+        ((*err).output_message)(cinfo);
+        if (*err).msg_ext24 != 13 {
+            jpeg_destroy(cinfo);
+            let id = JPEG_S_FORMAT_ID.load(core::sync::atomic::Ordering::Relaxed);
+            panic!("0x112f64 jpeg_error_exit: {id}");
+        }
+        err as *mut c_void
+    }
 }
 
 // 0x112fc0 — __Z22jpeg_read_iptc_profileP8FIBITMAPPKhj
 #[doc(alias = "jpeg_read_iptc_profile(FIBITMAP *,unsigned char const*,unsigned int)")]
-pub fn stub_112fc0() -> ! {
-    todo!("0x112fc0 jpeg_read_iptc_profile(FIBITMAP *,unsigned char const*,unsigned int)")
+pub fn stub_112fc0(dib: *mut c_void, data: *const u8, len: u32) -> i32 {
+    // IDA 0x112fc0: tail call to read_iptc_profile (0x112fc8), whose return
+    // passes through (0x112fcc).
+    // SAFETY: `dib` writable, `data` readable for `len` bytes per caller.
+    unsafe { read_iptc_profile(dib, data, len) }
 }
 
 // 0x112fd0 — __ZL4LoadP11FreeImageIOPviiS1_
@@ -445,14 +738,53 @@ pub fn stub_114338() -> i32 {
 
 // 0x114340 — __Z7InitPNGP6Plugini
 #[doc(alias = "InitPNG(Plugin *,int)")]
-pub fn stub_114340() -> ! {
-    todo!("0x114340 InitPNG(Plugin *,int)")
+pub fn stub_114340(plugin: *mut JpegPluginView, format_id: i32) -> *mut JpegPluginView {
+    // IDA 0x114340: s_format_id_0 = a2 (0x11434c), then the same slot order
+    // as InitJPEG with the _0 twins: Format (0x114358), Extension
+    // (0x11436c), Description (0x11437c), Load (0x114380), zeros
+    // (0x11438c..0x114398), RegExpr (0x1143a0), Save (0x1143b0), Validate
+    // (0x1143b4), MimeType (0x1143bc), SupportsExportDepth (0x1143d4),
+    // SupportsExportType (0x1143d8), SupportsICCProfiles (0x1143dc);
+    // returns plugin (0x1143e0).
+    // BUG: Load/Save (0x11535c/0x1144a8 below) still carry todo!() bodies —
+    // only addresses wired, mirroring stub_116280.
+    // SAFETY: `plugin` is a writable Plugin per the caller.
+    PNG_S_FORMAT_ID.store(format_id, core::sync::atomic::Ordering::Relaxed);
+    let p = unsafe { &mut *plugin };
+    p.format = stub_114294 as *const c_void;
+    p.description = stub_1142a4 as *const c_void;
+    p.extension = stub_1142b4 as *const c_void;
+    p.reg_expr = stub_1142c4 as *const c_void;
+    p.reserved0 = core::ptr::null();
+    p.reserved1 = core::ptr::null();
+    p.reserved2 = core::ptr::null();
+    p.reserved3 = core::ptr::null();
+    p.load = stub_11535c as *const c_void;
+    p.save = stub_1144a8 as *const c_void;
+    p.validate = stub_114414 as *const c_void;
+    p.mime_type = stub_1142d4 as *const c_void;
+    p.supports_export_depth = stub_1142e4 as *const c_void;
+    p.supports_export_type = stub_114314 as *const c_void;
+    p.supports_icc_profiles = stub_114338 as *const c_void;
+    plugin
 }
 
 // 0x114414 — __ZL8ValidateP11FreeImageIOPv_0
 #[doc(alias = "__ZL8ValidateP11FreeImageIOPv_0")]
-pub fn stub_114414() -> ! {
-    todo!("0x114414 __ZL8ValidateP11FreeImageIOPv_0")
+pub fn stub_114414(io: *const TiffIoHooks, handle: *mut c_void) -> bool {
+    // IDA 0x114414: __dst = C.152 (0xf75a13 = 89 50 4E 47 0D 0A 1A 0A, via
+    // 0x114438), v5 = C.153 (zeros, via 0x11444c); read_proc = io[+0] word,
+    // little-endian (0x114450..0x114468); read_proc(v5, 1, 8, handle)
+    // (0x11447c); return memcmp(__dst, v5, 8) == 0 (0x11448c..0x11449c).
+    // The v5 init bytes are overwritten by the read, so only the PNG
+    // signature expectation is load-bearing.
+    // SAFETY: `io` readable; `handle` valid for the stored read_proc.
+    let mut sig = [0u8; 8];
+    unsafe {
+        let io = &*io;
+        (io.read_proc)(sig.as_mut_ptr() as *mut c_void, 1, 8, handle);
+    }
+    sig == [0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A]
 }
 
 // 0x1144a8 — __ZL4SaveP11FreeImageIOP8FIBITMAPPviiS3__0
@@ -463,8 +795,17 @@ pub fn stub_1144a8() -> ! {
 
 // 0x115258 — __ZL10_WriteProcP14png_struct_defPhm
 #[doc(alias = "_WriteProc(png_struct_def *,unsigned char *,unsigned long)")]
-pub fn stub_115258() -> ! {
-    todo!("0x115258 _WriteProc(png_struct_def *,unsigned char *,unsigned long)")
+pub fn stub_115258(png: *mut c_void, data: *mut c_void, len: u32) -> u32 {
+    // IDA 0x115258: pair = png_get_io_ptr(png) (0x115268); write_proc =
+    // pair.io[+4] word, little-endian (0x11526c..0x11528c); tail call
+    // write_proc(data, len, 1, pair.handle) (0x115290..0x1152a0).
+    // SAFETY: libpng guarantees a readable png_ptr; the stored pair holds
+    // a readable TiffIoHooks table and a handle valid for write_proc.
+    unsafe {
+        let pair = &*(png_get_io_ptr(png) as *const TiffHandlePair);
+        let io = &*pair.io;
+        (io.write_proc)(data, len, 1, pair.handle)
+    }
 }
 
 // 0x1152a4 — __ZL13error_handlerP14png_struct_defPKc
@@ -495,8 +836,28 @@ pub fn stub_1152a4(_png: *mut c_void, msg: *const c_char) -> ! {
 
 // 0x1152d0 — __ZL9_ReadProcP14png_struct_defPhm
 #[doc(alias = "_ReadProc(png_struct_def *,unsigned char *,unsigned long)")]
-pub fn stub_1152d0() -> ! {
-    todo!("0x1152d0 _ReadProc(png_struct_def *,unsigned char *,unsigned long)")
+pub fn stub_1152d0(png: *mut c_void, data: *mut c_void, len: u32) -> u32 {
+    // IDA 0x1152d0: pair = png_get_io_ptr(png) (0x1152e0); n =
+    // read_proc(data, len, 1, handle) via the LE io[+0] word
+    // (0x1152e4..0x115314); fail = (len != 0) (0x115318..0x11531c);
+    // n != 0 -> fail = false (0x115320..0x115324); fail -> throw "Read
+    // error: invalid or corrupted PNG file" as char * (0x115328..0x115350);
+    // return n (0x11532c). The char* throw crosses the C API; panic! is the
+    // host mapping (as in stub_1152a4).
+    // SAFETY: as for stub_115258, with `data` writable for `len` bytes.
+    unsafe {
+        let pair = &*(png_get_io_ptr(png) as *const TiffHandlePair);
+        let io = &*pair.io;
+        let n = (io.read_proc)(data, len, 1, pair.handle);
+        let mut fail = len != 0;
+        if n != 0 {
+            fail = false;
+        }
+        if fail {
+            panic!("0x1152d0 _ReadProc: Read error: invalid or corrupted PNG file");
+        }
+        n
+    }
 }
 
 // 0x11535c — __ZL4LoadP11FreeImageIOPviiS1__0
@@ -838,44 +1199,214 @@ pub fn stub_116490() -> ! {
 
 // 0x116ba4 — __ZL15CreateImageType15FREE_IMAGE_TYPEiitt
 #[doc(alias = "CreateImageType(FREE_IMAGE_TYPE,int,int,unsigned short,unsigned short)")]
-pub fn stub_116ba4() -> ! {
-    todo!("0x116ba4 CreateImageType(FREE_IMAGE_TYPE,int,int,unsigned short,unsigned short)")
+pub fn stub_116ba4(image_type: i32, width: i32, height: i32, bits: u16, channels: u16) -> *mut c_void {
+    // IDA 0x116ba4: depth = (u16)(bits * channels) (MUL + UXTH,
+    // 0x116bc0..0x116bc8). FIT_UINT16 (1) with 16 bits: 1 channel -> 8-bit
+    // with zero masks (0x116bd8..0x116c38), 3 channels -> 24-bit RGB
+    // (0x116be0..0x116c08, R=0xFF0000 G=0xFF00 B=0xFF), else NULL
+    // (0x116be4..0x116be8); depth 16 from other pairs: (8,2) -> 8-bit
+    // (0x116c10..0x116c38), else 16-bit 5-6-5 (0x116c3c..0x116c5c, R=0xF800
+    // G=0x7E0 B=0x1F); depth 24/32 -> RGB(A) (0x116c60..0x116c88, same RGB
+    // masks); other depths -> unpacked with zero masks (0x116c94..0x116cac);
+    // non-UINT16 types -> FreeImage_AllocateT(type, w, h, depth, 0, 0, 0)
+    // (0x116cb0..0x116cc4).
+    // SAFETY: the Allocate twins own their contract; only ints cross here.
+    unsafe {
+        let depth = bits.wrapping_mul(channels);
+        if image_type == 1 {
+            if bits == 16 {
+                if channels == 1 {
+                    return FreeImage_Allocate(width, height, 8, 0, 0, 0);
+                }
+                if channels != 3 {
+                    return core::ptr::null_mut();
+                }
+                return FreeImage_Allocate(width, height, 24, 0xFF00_00, 0xFF00, 0xFF);
+            }
+            if depth == 16 && !(channels == 2 && bits == 8) {
+                return FreeImage_Allocate(width, height, 16, 0xF800, 0x7E0, 0x1F);
+            }
+            if depth == 16 {
+                return FreeImage_Allocate(width, height, 8, 0, 0, 0);
+            }
+            if depth == 24 || depth == 32 {
+                return FreeImage_Allocate(width, height, depth as i32, 0xFF00_00, 0xFF00, 0xFF);
+            }
+            return FreeImage_Allocate(width, height, depth as i32, 0, 0, 0);
+        }
+        FreeImage_AllocateT(image_type, width, height, depth as i32, 0, 0, 0)
+    }
 }
 
 // 0x116cd0 — __ZL14ReadResolutionP4tiffP8FIBITMAP
 #[doc(alias = "ReadResolution(tiff *,FIBITMAP *)")]
-pub fn stub_116cd0() -> ! {
-    todo!("0x116cd0 ReadResolution(tiff *,FIBITMAP *)")
+pub fn stub_116cd0(tif: *mut c_void, dib: *mut c_void) -> i32 {
+    // IDA 0x116cd0: unit = 2, xres = yres = 300.0 (0x116cf4..0x116cfc);
+    // TIFFGetField(tif, 296, &unit) (0x116d00..0x116d04), (282, &xres)
+    // (0x116d08..0x116d14), (283, &yres) -> result (0x116d18..0x116d24);
+    // unit 1 (inch) with positive res falls into the unit 2 path as unit 2
+    // (0x116d34..0x116d58); unit 2: res / 0.0254 + 0.5 in f64 from f32
+    // (0x116d68..0x116dac); unit 3 (cm): res * 100.0 + 0.5 (0x116db8..0x116df4);
+    // other units, or inch with non-positive res, return result
+    // (0x116db0..0x116db4, 0x116d40..0x116dfc).
+    // SAFETY: `tif`/`dib` valid for the TIFF/FreeImage calls per caller.
+    unsafe {
+        let mut unit: u16 = 2;
+        let mut xres: f32 = 300.0;
+        let mut yres: f32 = 300.0;
+        TIFFGetField(tif, 296, &mut unit);
+        TIFFGetField(tif, 282, &mut xres);
+        let result = TIFFGetField(tif, 283, &mut yres);
+        if unit == 1 {
+            if xres > 0.0 && yres > 0.0 {
+                unit = 2;
+            } else {
+                return result;
+            }
+        }
+        if unit == 2 {
+            FreeImage_SetDotsPerMeterX(dib, (xres as f64 / 0.0254 + 0.5) as u32);
+            return FreeImage_SetDotsPerMeterY(dib, (yres as f64 / 0.0254 + 0.5) as u32);
+        }
+        if unit == 3 {
+            FreeImage_SetDotsPerMeterX(dib, (xres as f64 * 100.0 + 0.5) as u32);
+            return FreeImage_SetDotsPerMeterY(dib, (yres as f64 * 100.0 + 0.5) as u32);
+        }
+        result
+    }
 }
 
 // 0x116e20 — __ZL9PageCountP11FreeImageIOPvS1_
 #[doc(alias = "PageCount(FreeImageIO *,void *,void *)")]
-pub fn stub_116e20() -> ! {
-    todo!("0x116e20 PageCount(FreeImageIO *,void *,void *)")
+pub fn stub_116e20(_io: *const TiffIoHooks, _handle: *mut c_void, ctx: *mut c_void) -> i32 {
+    // IDA 0x116e20: ctx == NULL -> 0 (0x116e28..0x116e2c); tif = ctx[2]
+    // (0x116e34); do ++n while TIFFReadDirectory(tif) (0x116e38..0x116e4c) —
+    // the initial directory counts, so no iteration is special-cased.
+    // SAFETY: `ctx` (when non-null) holds a TIFF* at +8 per stub_116f34.
+    if ctx.is_null() {
+        return 0;
+    }
+    unsafe {
+        let tif = *(ctx as *mut *mut c_void).add(2);
+        let mut n = 0;
+        loop {
+            n += 1;
+            if TIFFReadDirectory(tif) == 0 {
+                break;
+            }
+        }
+        n
+    }
 }
 
 // 0x116e58 — __ZL5CloseP11FreeImageIOPvS1_
 #[doc(alias = "Close(FreeImageIO *,void *,void *)")]
-pub fn stub_116e58() -> ! {
-    todo!("0x116e58 Close(FreeImageIO *,void *,void *)")
+pub fn stub_116e58(_io: *const TiffIoHooks, _handle: *mut c_void, ctx: *mut c_void) {
+    // IDA 0x116e58: ctx == NULL -> return (0x116e60..0x116e64);
+    // TIFFClose(ctx[2]) (0x116e68..0x116e6c); free(ctx) (0x116e70..0x116e74).
+    // BUG: freed with stub_116460 (the prefixed-allocator host mapping),
+    // pairing stub_116f34's stub_116450 malloc below.
+    // SAFETY: `ctx` came from stub_116f34's 12-byte block when non-null.
+    if ctx.is_null() {
+        return;
+    }
+    unsafe {
+        TIFFClose(*(ctx as *mut *mut c_void).add(2));
+        stub_116460(ctx);
+    }
 }
 
 // 0x116e7c — __TIFFrealloc
 #[doc(alias = "__TIFFrealloc")]
-pub fn stub_116e7c() -> ! {
-    todo!("0x116e7c __TIFFrealloc")
+pub fn stub_116e7c(ptr: *mut c_void, size: usize) -> *mut c_void {
+    // IDA 0x116e7c: tail call to system realloc (0x116e84).
+    // BUG: hosted on the prefixed std::alloc pairing from stub_116450 (a
+    // 16-byte header holding the size): the old size is recovered from the
+    // header, the common prefix copied, and the old block released; a
+    // failed realloc keeps the old block live and returns NULL, as in C.
+    // SAFETY: `ptr` (when non-null) is a live stub_116450 block.
+    if ptr.is_null() {
+        return stub_116450(size);
+    }
+    unsafe {
+        let old = ((ptr as *const u8).sub(16) as *const usize).read();
+        let new = stub_116450(size);
+        if new.is_null() {
+            return core::ptr::null_mut();
+        }
+        core::ptr::copy_nonoverlapping(ptr as *const u8, new as *mut u8, old.min(size));
+        stub_116460(ptr);
+        new
+    }
 }
 
 // 0x116e8c — __Z10TIFFFdOpenPvPKcS1_
 #[doc(alias = "TIFFFdOpen(void *,char const*,char const*)")]
-pub fn stub_116e8c() -> ! {
-    todo!("0x116e8c TIFFFdOpen(void *,char const*,char const*)")
+pub fn stub_116e8c(ctx: *mut c_void, name: *const c_char, mode: *const c_char) -> *mut c_void {
+    // IDA 0x116e8c: XTIFFInitialize() (0x116ea4); tif = TIFFClientOpen(name,
+    // mode, ctx, read, write, seek, close, size, map, unmap) (0x116f04);
+    // if tif: tif.clientdata (+4) = ctx (0x116f0c); return tif (0x116f14).
+    // SAFETY: `name`/`mode` are readable NUL-terminated strings; the proc
+    // addresses are this file's _tiff*Proc ports, as in the original.
+    unsafe {
+        XTIFFInitialize();
+        let tif = TIFFClientOpen(
+            name,
+            mode,
+            ctx,
+            stub_11600c as *mut c_void,
+            stub_116054 as *mut c_void,
+            stub_11609c as *mut c_void,
+            stub_1160fc as *mut c_void,
+            stub_116104 as *mut c_void,
+            stub_1161d0 as *mut c_void,
+            stub_1161d8 as *mut c_void,
+        );
+        if !tif.is_null() {
+            *(tif as *mut *mut c_void).add(1) = ctx;
+        }
+        tif
+    }
 }
 
 // 0x116f34 — __ZL4OpenP11FreeImageIOPvi
 #[doc(alias = "Open(FreeImageIO *,void *,int)")]
-pub fn stub_116f34() -> ! {
-    todo!("0x116f34 Open(FreeImageIO *,void *,int)")
+pub fn stub_116f34(io: *const TiffIoHooks, handle: *mut c_void, read_flag: i32) -> *mut c_void {
+    // IDA 0x116f34: ctx = malloc(12) (0x116f44..0x116f50); NULL -> return
+    // NULL (0x116f54..0x116f58); ctx[0] = io, ctx[1] = handle (0x116f60);
+    // mode = read_flag ? "r" : "w" (0x116f5c..0x116f88, aR/aW); ctx[2] =
+    // TIFFFdOpen(ctx, "", mode) (0x116f8c..0x116f90); NULL tif -> free(ctx)
+    // (0x116fa0..0x116fa4), OutputMessageProc(s_format_id_1, "Error while
+    // opening TIFF: data is invalid") (0x116fa8..0x116fb8), return NULL
+    // (0x116fbc..0x116fc8); else return ctx (0x116fc4).
+    // BUG: malloc/free hosted on stub_116450/stub_116460 (see stub_116e58).
+    // SAFETY: the byte-string literals carry their NUL terminators.
+    unsafe {
+        let ctx = stub_116450(12) as *mut *mut c_void;
+        if ctx.is_null() {
+            return core::ptr::null_mut();
+        }
+        *ctx = io as *mut c_void;
+        *ctx.add(1) = handle;
+        let mode: &[u8] = if read_flag != 0 { b"r\0" } else { b"w\0" };
+        let tif = stub_116e8c(
+            ctx as *mut c_void,
+            b"\0".as_ptr() as *const c_char,
+            mode.as_ptr() as *const c_char,
+        );
+        *ctx.add(2) = tif;
+        if tif.is_null() {
+            stub_116460(ctx as *mut c_void);
+            let id = TIFF_S_FORMAT_ID.load(core::sync::atomic::Ordering::Relaxed);
+            FreeImage_OutputMessageProc(
+                id,
+                b"Error while opening TIFF: data is invalid\0".as_ptr() as *const c_char,
+            );
+            core::ptr::null_mut()
+        } else {
+            ctx as *mut c_void
+        }
+    }
 }
 
 // 0x116fe8 — __ZL4SaveP11FreeImageIOP8FIBITMAPPviiS3__1
@@ -970,8 +1501,27 @@ pub fn stub_122a58() -> ! {
 
 // 0x123284 — _jpeg_suppress_tables
 #[doc(alias = "_jpeg_suppress_tables")]
-pub fn stub_123284() -> ! {
-    todo!("0x123284 _jpeg_suppress_tables")
+pub fn stub_123284(cinfo: *mut *mut u8, value: u8) -> *mut u8 {
+    // IDA 0x123284: value truncated to a byte (UXTB, 0x123288); for table
+    // slots [21..24] (quant, +0x54..+0x60): if non-null, the byte at +128
+    // = value (0x123284..0x1232b4); for slots [29, 33, 30, 34, 31, 35, 32,
+    // 36] (huff, +0x74..+0x90, in that order): if non-null, the byte at
+    // +273 = value (0x1232b8..0x123314); return slot 36 (0x12330c..0x123318).
+    // SAFETY: `cinfo` points at 37 table-pointer words per the caller.
+    unsafe {
+        let tables = core::slice::from_raw_parts(cinfo as *const *mut u8, 37);
+        for &i in &[21usize, 22, 23, 24] {
+            if !tables[i].is_null() {
+                *tables[i].add(128) = value;
+            }
+        }
+        for &i in &[29usize, 33, 30, 34, 31, 35, 32, 36] {
+            if !tables[i].is_null() {
+                *tables[i].add(273) = value;
+            }
+        }
+        tables[36]
+    }
 }
 
 // 0x12331c — _jpeg_write_marker
@@ -994,14 +1544,78 @@ pub fn stub_123544() -> ! {
 
 // 0x123688 — _jpeg_destroy_compress
 #[doc(alias = "_jpeg_destroy_compress")]
-pub fn stub_123688() -> ! {
-    todo!("0x123688 _jpeg_destroy_compress")
+pub fn stub_123688(cinfo: *mut c_void) -> i32 {
+    // IDA 0x123688: tail call to jpeg_destroy (0x123690), whose R0 residue
+    // passes through (see the jpeg_destroy BUG note in the extern block).
+    // SAFETY: `cinfo` is a live jpeg_compress_struct per the caller.
+    unsafe { jpeg_destroy(cinfo) }
 }
 
 // 0x123698 — _jpeg_CreateCompress
 #[doc(alias = "_jpeg_CreateCompress")]
-pub fn stub_123698() -> ! {
-    todo!("0x123698 _jpeg_CreateCompress")
+pub fn stub_123698(cinfo: *mut u32, version: i32, struct_size: i32) -> *mut c_void {
+    // IDA 0x123698: cinfo[1] = 0 (0x1236b4); version != 70
+    // (JPEG_LIB_VERSION, CMP #0x46 at 0x1236a4): err.msg_code = 13,
+    // expected = 70, actual = version (0x1236c8..0x1236d8), then
+    // err.error_exit(cinfo) (0x1236e4); struct_size != 0x190 (CMP at
+    // 0x1236e8): code 22, expected 0x190, actual (0x1236fc..0x12370c), then
+    // error_exit (0x12371c); save err/client_data (0x123720..0x123724),
+    // memset(cinfo, 0, 0x190) (0x123734), restore both, is_decompressor
+    // byte (+16) = 0 (0x12373c..0x123744); result =
+    // jinit_memory_mgr(cinfo) (0x123748); defaults (0x123758..0x1237b0):
+    // progress/mem/quant slots zero, quality fields 100, scale 1.0
+    // (0x3FF00000 at +0x30).
+    // SAFETY: `cinfo` is a writable 0x190-byte jpeg_compress_struct.
+    unsafe {
+        *cinfo.add(1) = 0;
+        if version != 70 {
+            let err = *cinfo as *mut u32;
+            *err.add(5) = 13;
+            *err.add(6) = 70;
+            *err.add(7) = version as u32;
+            let exit = *(*err as *mut unsafe extern "C" fn(*mut c_void));
+            exit(cinfo as *mut c_void);
+        }
+        if struct_size != 0x190 {
+            let err = *cinfo as *mut u32;
+            *err.add(5) = 22;
+            *err.add(6) = 0x190;
+            *err.add(7) = struct_size as u32;
+            let exit = *(*err as *mut unsafe extern "C" fn(*mut c_void));
+            exit(cinfo as *mut c_void);
+        }
+        let err_saved = *cinfo;
+        let client_data = *cinfo.add(3);
+        core::ptr::write_bytes(cinfo as *mut u8, 0, 0x190);
+        *cinfo = err_saved;
+        *cinfo.add(3) = client_data;
+        *(cinfo as *mut u8).add(16) = 0;
+        let result = jinit_memory_mgr(cinfo as *mut c_void);
+        *cinfo.add(2) = 0;
+        *cinfo.add(6) = 0;
+        *cinfo.add(20) = 0;
+        *cinfo.add(21) = 0;
+        *cinfo.add(25) = 100;
+        *cinfo.add(22) = 0;
+        *cinfo.add(26) = 100;
+        *cinfo.add(23) = 0;
+        *cinfo.add(27) = 100;
+        *cinfo.add(24) = 0;
+        *cinfo.add(28) = 100;
+        *cinfo.add(29) = 0;
+        *cinfo.add(33) = 0;
+        *cinfo.add(30) = 0;
+        *cinfo.add(34) = 0;
+        *cinfo.add(31) = 0;
+        *cinfo.add(35) = 0;
+        *cinfo.add(32) = 0;
+        *cinfo.add(36) = 0;
+        *cinfo.add(98) = 0;
+        *cinfo.add(11) = 0;
+        *cinfo.add(12) = 0x3FF0_0000;
+        *cinfo.add(5) = 100;
+        result
+    }
 }
 
 // 0x1237c0 — _jpeg_write_scanlines
