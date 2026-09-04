@@ -120,3 +120,54 @@ fn batch2_login_singleton_and_global_ctor() {
     g::stub_0x1d870();
     g::stub_0x1d870();
 }
+
+#[test]
+fn batch3_single_copy_dispose_pairs() {
+    let src = vec![Some(SharedPtr::new(()))];
+    let mut dst: Vec<g::BlockSlot> = vec![None];
+    for (copy, dispose) in [
+        (g::stub_0x1f82c as fn(&mut [g::BlockSlot], &[g::BlockSlot]), g::stub_0x1f838 as fn(&mut [g::BlockSlot])),
+        (g::stub_0x1fa44, g::stub_0x1fa50),
+        (g::stub_0x1fc90, g::stub_0x1fc9c),
+        (g::stub_0x1fd24, g::stub_0x1fd30),
+        (g::stub_0x20f08, g::stub_0x20f14),
+        (g::stub_0x21adc, g::stub_0x21ae8),
+        (g::stub_0x21b10, g::stub_0x21b1c),
+        (g::stub_0x24a04, g::stub_0x24a10),
+        (g::stub_0x253cc, g::stub_0x253d8),
+    ] {
+        copy(&mut dst, &src);
+        assert!(dst[0].is_some());
+        dispose(&mut dst);
+        assert!(dst[0].is_none());
+    }
+}
+
+#[test]
+fn batch3_dual_copy_dispose_pairs() {
+    let src = vec![Some(SharedPtr::new(())), Some(SharedPtr::new(()))];
+    let mut dst: Vec<g::BlockSlot> = vec![None, None];
+    for (copy, dispose) in [
+        (g::stub_0x1fca4 as fn(&mut [g::BlockSlot], &[g::BlockSlot]), g::stub_0x1fcc8 as fn(&mut [g::BlockSlot])),
+        (g::stub_0x1fce4, g::stub_0x1fd08),
+        (g::stub_0x298a0, g::stub_0x298c4),
+    ] {
+        copy(&mut dst, &src);
+        assert!(dst.iter().all(|s| s.is_some()));
+        dispose(&mut dst);
+        assert!(dst.iter().all(|s| s.is_none()));
+    }
+}
+
+#[test]
+fn batch3_global_ctors_and_place_launcher() {
+    g::stub_0x202d0();
+    g::stub_0x21c18();
+    g::stub_0x24540();
+    g::stub_0x202d0();
+    let first: *const g::PlaceLauncher = g::stub_0x24974(0xabcd) as *const _;
+    let second = g::stub_0x24974(0x1234) as *const _;
+    assert_eq!(first, second);
+    assert_eq!(unsafe { &*first }.class_token, 0xabcd);
+    assert_eq!(g::stub_0x249d0(0x55).class_token, 0x55);
+}
