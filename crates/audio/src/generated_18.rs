@@ -993,28 +993,63 @@ pub fn stub_bb40() {
 // 0xbb54 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::lookup(char const*)const")]
-pub fn stub_bb54() -> ! {
-    todo!("0xbb54 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::lookup(char const*)const")
+pub fn stub_bb54(desc: &EnumDescModel, name: &str) -> i32 {
+    // IDA 0xbb54 (decompiled 0xbb54..0xbb80; disasm Name::lookup 0xbb60,
+    // convertToValue 0xbb6a..0xbb6e, convertToItem 0xbb7a): `Name::lookup`
+    // the string, then `convertToValue` and `convertToItem` on hit, else
+    // return 0. The returned `Item*` has no host model, so the looked-up
+    // value is returned; miss -> 0. Same shape as 0xb94c.
+    desc.lookup(name).unwrap_or(0)
 }
 
 // 0xbb84 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_bb84() -> ! {
-    todo!("0xbb84 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_bb84(desc: &EnumDescModel, value: i32) -> i32 {
+    // IDA 0xbb84 (decompiled 0xbb84..0xbba0; disasm any_cast 0xbb8e..0xbb96,
+    // convertToItem 0xbb9a..0xbba0): `any_cast<GraphicsMode const&>` the
+    // Variant payload, then `convertToItem`, which asserts `value >= 0` and
+    // `value < size` (enumconverter.h:273-274). Same shape as 0xb97c.
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!(
+        (value as usize) < desc.pairs.len(),
+        "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274"
+    );
+    desc.pairs[value as usize].0
 }
 
 // 0xbba4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_bba4() -> ! {
-    todo!("0xbba4 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_bba4(desc: &EnumDescModel, index: usize, out: &mut i32) -> bool {
+    // IDA 0xbba4 (disasm 0xbba4..0xbbfc; decompiler rejects this template
+    // shape, as at 0xbdac/0xbfb4): if `index < [this + 0x28]` (count,
+    // 0xbbac..0xbbb0), store `[[this + 0x90] + index * 4]` into the out-param
+    // and return 1 (0xbbb4..0xbbbe). Else the Singleton + `placement_any`
+    // fallback (0xbbc0..0xbbf4) resolves outside the pair tables; the host
+    // reports failure with `out` untouched. Same shape as 0xb99c.
+    if let Some((value, _)) = desc.pairs.get(index) {
+        *out = *value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0xbc00 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_bc00() -> ! {
-    todo!("0xbc00 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToString(unsigned long,std::string &)const")
+pub fn stub_bc00(desc: &EnumDescModel, index: usize, out: &mut String) -> bool {
+    // IDA 0xbc00 (decompiled 0xbc12..0xbcdc; disasm count check 0xbc52..0xbc54):
+    // if `[a1 + 40] > index`, take `[[a1 + 144] + index]` through the item
+    // `convertToString` (0xbc64..0xbc6e), `assign` into the out string
+    // (0xbc7a) and return 1; else return 0 with `out` untouched.
+    // Same shape as 0xb9f8.
+    if let Some((_, name)) = desc.pairs.get(index) {
+        *out = name.clone();
+        true
+    } else {
+        false
+    }
 }
 
 // 0xbd44 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED1Ev
@@ -1034,28 +1069,62 @@ pub fn stub_bd48() {
 // 0xbd5c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::lookup(char const*)const")]
-pub fn stub_bd5c() -> ! {
-    todo!("0xbd5c RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::lookup(char const*)const")
+pub fn stub_bd5c(desc: &EnumDescModel, name: &str) -> i32 {
+    // IDA 0xbd5c (decompiled 0xbd5c..0xbd88; disasm Name::lookup 0xbd68,
+    // convertToValue 0xbd72..0xbd76, convertToItem 0xbd82): `Name::lookup`
+    // the string, then `convertToValue` and `convertToItem` on hit, else
+    // return 0 (0xbd78..0xbd88). Same shape as 0xb94c/0xbb54.
+    desc.lookup(name).unwrap_or(0)
 }
 
 // 0xbd8c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_bd8c() -> ! {
-    todo!("0xbd8c RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_bd8c(desc: &EnumDescModel, value: i32) -> i32 {
+    // IDA 0xbd8c (decompiled 0xbd8c..0xbda8; disasm any_cast 0xbd96..0xbd9e,
+    // convertToItem 0xbda2..0xbda8): `any_cast<FrameRateManagerMode const&>`
+    // the Variant payload, then `convertToItem`, which asserts `value >= 0`
+    // and `value < size` (enumconverter.h:273-274). Same shape as 0xb97c.
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!(
+        (value as usize) < desc.pairs.len(),
+        "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274"
+    );
+    desc.pairs[value as usize].0
 }
 
 // 0xbdac — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_bdac() -> ! {
-    todo!("0xbdac RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_bdac(desc: &EnumDescModel, index: usize, out: &mut i32) -> bool {
+    // IDA 0xbdac (disasm 0xbdac..0xbe04; decompiler rejects this template
+    // shape, as at 0xbba4/0xbfb4): if `index < [this + 0x28]` (count,
+    // 0xbdb4..0xbdb8), store `[[this + 0x90] + index * 4]` into the out-param
+    // and return 1 (0xbdbc..0xbdc6). Else the Singleton + `placement_any`
+    // fallback (0xbdc8..0xbdfc) resolves outside the pair tables; the host
+    // reports failure with `out` untouched. Same shape as 0xb99c.
+    if let Some((value, _)) = desc.pairs.get(index) {
+        *out = *value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0xbe08 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_be08() -> ! {
-    todo!("0xbe08 RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToString(unsigned long,std::string &)const")
+pub fn stub_be08(desc: &EnumDescModel, index: usize, out: &mut String) -> bool {
+    // IDA 0xbe08 (decompiled 0xbe1a..0xbee4; disasm count check 0xbe5a..0xbe5c):
+    // if `[a1 + 40] > index`, take `[[a1 + 144] + index]` through the item
+    // `convertToString` (0xbe6c..0xbe76), `assign` into the out string
+    // (0xbe82) and return 1; else return 0 with `out` untouched.
+    // Same shape as 0xb9f8/0xbc00.
+    if let Some((_, name)) = desc.pairs.get(index) {
+        *out = name.clone();
+        true
+    } else {
+        false
+    }
 }
 
 // 0xbf4c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED1Ev
@@ -1075,28 +1144,62 @@ pub fn stub_bf50() {
 // 0xbf64 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::lookup(char const*)const")]
-pub fn stub_bf64() -> ! {
-    todo!("0xbf64 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::lookup(char const*)const")
+pub fn stub_bf64(desc: &EnumDescModel, name: &str) -> i32 {
+    // IDA 0xbf64 (decompiled 0xbf64..0xbf90; disasm Name::lookup 0xbf70,
+    // convertToValue 0xbf7a..0xbf7e, convertToItem 0xbf8a): `Name::lookup`
+    // the string, then `convertToValue` and `convertToItem` on hit, else
+    // return 0 (0xbf80..0xbf90). Same shape as 0xb94c/0xbb54.
+    desc.lookup(name).unwrap_or(0)
 }
 
 // 0xbf94 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_bf94() -> ! {
-    todo!("0xbf94 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_bf94(desc: &EnumDescModel, value: i32) -> i32 {
+    // IDA 0xbf94 (decompiled 0xbf94..0xbfb0; disasm any_cast 0xbf9e..0xbfa6,
+    // convertToItem 0xbfaa..0xbfb0): `any_cast<AntialiasingMode const&>` the
+    // Variant payload, then `convertToItem`, which asserts `value >= 0` and
+    // `value < size` (enumconverter.h:273-274). Same shape as 0xb97c.
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!(
+        (value as usize) < desc.pairs.len(),
+        "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274"
+    );
+    desc.pairs[value as usize].0
 }
 
 // 0xbfb4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_bfb4() -> ! {
-    todo!("0xbfb4 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_bfb4(desc: &EnumDescModel, index: usize, out: &mut i32) -> bool {
+    // IDA 0xbfb4 (disasm 0xbfb4..0xc00c; decompiler rejects this template
+    // shape, as at 0xbba4/0xbdac): if `index < [this + 0x28]` (count,
+    // 0xbfbc..0xbfc0), store `[[this + 0x90] + index * 4]` into the out-param
+    // and return 1 (0xbfc4..0xbfce). Else the Singleton + `placement_any`
+    // fallback (0xbfd0..0xc004) resolves outside the pair tables; the host
+    // reports failure with `out` untouched. Same shape as 0xb99c.
+    if let Some((value, _)) = desc.pairs.get(index) {
+        *out = *value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0xc010 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_c010() -> ! {
-    todo!("0xc010 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToString(unsigned long,std::string &)const")
+pub fn stub_c010(desc: &EnumDescModel, index: usize, out: &mut String) -> bool {
+    // IDA 0xc010 (decompiled 0xc022..0xc0ec; disasm count check 0xc062..0xc064):
+    // if `[a1 + 40] > index`, take `[[a1 + 144] + index]` through the item
+    // `convertToString` (0xc074..0xc07e), `assign` into the out string
+    // (0xc08a) and return 1; else return 0 with `out` untouched.
+    // Same shape as 0xb9f8/0xbc00.
+    if let Some((_, name)) = desc.pairs.get(index) {
+        *out = name.clone();
+        true
+    } else {
+        false
+    }
 }
 
 #[cfg(test)]
@@ -1163,6 +1266,36 @@ mod batch2_tests {
         assert!(stub_b9f8(&desc, 0, &mut name));
         assert_eq!(name, "Automatic");
         assert!(!stub_b9f8(&desc, 9, &mut name));
+    }
+
+    #[test]
+    fn enum_desc_graphics_frm_aa_lookup_convert_roundtrip() {
+        // IDA 0xbb54..0xc010: per-enum lookup/convertToValue/convertToString
+        // quartets for GraphicsMode, FrameRateManagerMode, AntialiasingMode —
+        // same shapes as the AASamples quartet (0xb94c/0xb97c/0xb99c/0xb9f8).
+        let mut desc = EnumDescModel::default();
+        desc.add_pair(0, "Automatic");
+        desc.add_pair(1, "Manual");
+        desc.add_pair(2, "High");
+        for lookup in [stub_bb54, stub_bd5c, stub_bf64] {
+            assert_eq!(lookup(&desc, "Manual"), 1);
+            assert_eq!(lookup(&desc, "Missing"), 0);
+        }
+        for vlookup in [stub_bb84, stub_bd8c, stub_bf94] {
+            assert_eq!(vlookup(&desc, 2), 2);
+        }
+        for convert in [stub_bba4, stub_bdac, stub_bfb4] {
+            let mut value = -1;
+            assert!(convert(&desc, 1, &mut value));
+            assert_eq!(value, 1);
+            assert!(!convert(&desc, 9, &mut value));
+        }
+        for stringify in [stub_bc00, stub_be08, stub_c010] {
+            let mut name = String::new();
+            assert!(stringify(&desc, 0, &mut name));
+            assert_eq!(name, "Automatic");
+            assert!(!stringify(&desc, 9, &mut name));
+        }
     }
 
     #[test]
