@@ -4,7 +4,10 @@
 //! Batch: 100 stubs | // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR mangled")
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
+use parking_lot::Mutex;
 use rbx_core::SharedPtr;
+use std::collections::HashMap;
+use std::sync::OnceLock;
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // IDA 0x6291a4..0x62a720 host-seam model types. Word offsets are raw `_DWORD`
 // indices from the disasm (e.g. `*(this + 136)` at 0x6295f8).
@@ -59,6 +62,38 @@ pub struct MoveSlot {
     pub live: bool,
     pub id: u32,
 }
+/// Live slot of the void() PlatformImpl done-standing signal (IDA 0x62b798).
+/// The bound (PlatformImpl*, mf0) pair behind the callable_slot rides in
+/// `target`; `live` is the +12 link word the call path gates on.
+pub struct PlatformDoneSlot {
+    pub live: bool,
+    pub target: u32,
+}
+/// RBX::SkateboardPlatform, 0x29C bytes (IDA 0x62b03a: `operator new(0x29C)`).
+/// Same word-block convention as `SkateboardControllerState` above.
+pub struct SkateboardPlatformState {
+    pub words: [u32; 167],
+}
+/// Host side of the SkateboardPlatform `Creator` singleton plus the
+/// `AbstractFactoryProduct::getCreators` map it registers into
+/// (IDA 0x62b498: `operator[]` at 0x62b5f8, `isConstructed = 666` at
+/// 0x62b5fe). `name` is the declared `RBX::Name` key (IDA 0x62b5dc).
+#[derive(Default)]
+pub struct SkateboardCreatorRegistry {
+    pub name: u32,
+    pub creator: u32,
+    pub creators: HashMap<u32, u32>,
+    pub constructed: bool,
+}
+/// Function-static mutex behind the MoveState signal's static lock
+/// (see `stub_062bdf4`; cf. `SLOT_STATIC_MUTEX` in datamodel).
+static MOVE_STATE_SIGNAL_MUTEX: Mutex<()> = Mutex::new(());
+/// Function-static mutex behind the void() PlatformImpl signal's static
+/// lock (see `stub_062b798`); distinct static, same convention.
+static PLATFORM_DONE_SIGNAL_MUTEX: Mutex<()> = Mutex::new(());
+/// Function-static `Name` behind `doDeclare` (see `stub_062b3b8`).
+/// Runtime input (the declare closure) required — OnceLock, not LazyLock.
+static SKATEBOARD_PLATFORM_NAME: OnceLock<u32> = OnceLock::new();
 
 // 0x06291a4 — __ZN3RBXL30gatherPrimitivesInSeatAssemblyEPNS_9PrimitiveERSt6vectorIPKS0_SaIS4_EE
 // demangled: RBX::gatherPrimitivesInSeatAssembly(RBX::Primitive *,std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)
@@ -638,16 +673,19 @@ pub fn stub_062a74c() {
 // demangled: RBX::PlatformImpl<RBX::BasicPartInstance>::onPlatformStandingChanged(bool,RBX::Humanoid *)
 #[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::onPlatformStandingChanged(bool,RBX::Humanoid *)")]
 #[doc(alias = "__ZN3RBX12PlatformImplINS_17BasicPartInstanceEE25onPlatformStandingChangedEbPNS_8HumanoidE")]
-pub fn stub_062a7fc() -> ! {
-    todo!("0x062a7fc RBX::PlatformImpl<RBX::BasicPartInstance>::onPlatformStandingChanged(bool,RBX::Humanoid *)")
+pub fn stub_062a7fc(_standing: bool, _humanoid: u32) {
+    // IDA 0x62a7fc: empty body — the PlatformImpl base default; the live
+    // behavior rides in SkateboardPlatform overrides (cf. 0x62b80c).
 }
 
 // 0x062a800 — __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE20applySpecificImpulseEN3G3D7Vector3ES4_
 // demangled: RBX::PlatformImpl<RBX::BasicPartInstance>::applySpecificImpulse(G3D::Vector3,G3D::Vector3)
 #[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::applySpecificImpulse(G3D::Vector3,G3D::Vector3)")]
 #[doc(alias = "__ZN3RBX12PlatformImplINS_17BasicPartInstanceEE20applySpecificImpulseEN3G3D7Vector3ES4_")]
-pub fn stub_062a800() -> ! {
-    todo!("0x062a800 RBX::PlatformImpl<RBX::BasicPartInstance>::applySpecificImpulse(G3D::Vector3,G3D::Vector3)")
+pub fn stub_062a800(_linear: [f32; 3], _angular: [f32; 3]) {
+    // IDA 0x62a800: empty body — the PlatformImpl base default; impulse
+    // accumulation rides in overrides (cf. Body::accumulateForceAtBranchCofm
+    // at 0x62a2f0).
 }
 
 // 0x062a804 — __ZThn132_N3RBX18DescribedCreatableINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -791,30 +829,61 @@ pub fn stub_062ad9c() {
 // 0x062ae38 — __ZNK3RBX14FactoryProductINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEE7Creator12getClassNameEv
 // type: int(void)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_062ae38() -> ! {
-    todo!("0x062ae38 __ZNK3RBX14FactoryProductINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_062ae38(is_constructed: bool, class_name: impl FnOnce() -> &'static str) -> &'static str {
+    // IDA 0x62ae38: ReleaseAssert wasConstructed() (0x62ae62-0x62ae98,
+    // isConstructed == 666); call_once Name::declare (0x62aeb4); tail-call
+    // doDeclare, whose Name return is the class name (0x62aebc).
+    // was: FactoryProduct<SkateboardPlatform,...>::Creator::getClassName.
+    debug_assert!(is_constructed, "wasConstructed() Object.h:231");
+    class_name()
 }
 
 // 0x062aec0 — __ZNK3RBX14FactoryProductINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEE7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEE7Creator6createEv")]
-pub fn stub_062aec0() -> ! {
-    todo!("0x062aec0 __ZNK3RBX14FactoryProductINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEE7Creator6createEv")
+pub fn stub_062aec0(
+    is_constructed: bool,
+    create: impl FnOnce() -> SharedPtr<SkateboardPlatformState>,
+) -> SharedPtr<SkateboardPlatformState> {
+    // IDA 0x62aec0: ReleaseAssert wasConstructed() (0x62af26-0x62af78);
+    // Creatable::create (0x62af78); store the +32-adjusted subobject pointer
+    // (0x62af86-0x62af8e, null stays null); shared_count copy (0x62af9a)
+    // with temp release (0x62afa0-0x62afa8). Arc construction adopts the
+    // count, and the temp clone drops — the same sequence.
+    // was: FactoryProduct<SkateboardPlatform,...>::Creator::create.
+    debug_assert!(is_constructed, "wasConstructed() Object.h:231");
+    create()
 }
 
 // 0x062b004 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_18SkateboardPlatformEEEN5boost10shared_ptrIT_EEv
 // demangled: boost::shared_ptr<RBX::SkateboardPlatform> RBX::Creatable<RBX::Instance>::create<RBX::SkateboardPlatform>(void)
 #[doc(alias = "rbx_core::SharedPtr<RBX::SkateboardPlatform> RBX::Creatable<RBX::Instance>::create<RBX::SkateboardPlatform>(void)")]
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_18SkateboardPlatformEEEN5boost10shared_ptrIT_EEv")]
-pub fn stub_062b004() -> ! {
-    todo!("0x062b004 boost::shared_ptr<RBX::SkateboardPlatform> RBX::Creatable<RBX::Instance>::create<RBX::SkateboardPlatform>(void)")
+pub fn stub_062b004() -> SharedPtr<SkateboardPlatformState> {
+    // IDA 0x62b004: operator new(0x29C) (0x62b03a), SkateboardPlatform ctor
+    // (0x62b05e), shared_ptr<T, Creatable::Deleter> (0x62b06c) — same shape
+    // as the SkateboardController twin at 0x629b2c.
+    // was: boost::shared_ptr<RBX::SkateboardPlatform> RBX::Creatable<RBX::Instance>::create<RBX::SkateboardPlatform>(void).
+    SharedPtr::new(SkateboardPlatformState { words: [0; 167] })
 }
 
 // 0x062b0b8 — __ZN5boost10shared_ptrIN3RBX18SkateboardPlatformEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // demangled: boost::shared_ptr<RBX::SkateboardPlatform>::shared_ptr<RBX::SkateboardPlatform,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SkateboardPlatform *,RBX::Creatable<RBX::Instance>::Deleter)
 #[doc(alias = "rbx_core::SharedPtr<RBX::SkateboardPlatform>::shared_ptr<RBX::SkateboardPlatform,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SkateboardPlatform *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX18SkateboardPlatformEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_062b0b8() -> ! {
-    todo!("0x062b0b8 boost::shared_ptr<RBX::SkateboardPlatform>::shared_ptr<RBX::SkateboardPlatform,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SkateboardPlatform *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_062b0b8(
+    boxed: Option<Box<SkateboardPlatformState>>,
+    accept_owner: impl FnOnce(&SharedPtr<SkateboardPlatformState>),
+) -> Option<SharedPtr<SkateboardPlatformState>> {
+    // IDA 0x62b0b8: store the raw pointer (0x62b0d8), shared_count adopt
+    // (0x62b0e0); non-null wires the weak owner via _internal_accept_owner
+    // (0x62b10e-0x62b11e). Arc::new adopts the allocation; None is the null
+    // path (cf. stub_0629eec).
+    // was: boost::shared_ptr<RBX::SkateboardPlatform>::shared_ptr<...>(RBX::SkateboardPlatform *,RBX::Creatable<RBX::Instance>::Deleter).
+    let shared = boxed.map(|b| SharedPtr::new(*b));
+    if let Some(s) = shared.as_ref() {
+        accept_owner(s);
+    }
+    shared
 }
 
 // 0x062b180 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18SkateboardPlatformES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -876,28 +945,58 @@ pub fn stub_062b3b0() {
 
 // 0x062b3b4 — __ZN3RBX4Name13callDoDeclareILZNS_19sSkateboardPlatformEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_19sSkateboardPlatformEEEEvv")]
-pub fn stub_062b3b4() -> ! {
-    todo!("0x062b3b4 __ZN3RBX4Name13callDoDeclareILZNS_19sSkateboardPlatformEEEEvv")
+pub fn stub_062b3b4(declare: impl FnOnce() -> u32) -> u32 {
+    // IDA 0x62b3b4: thunk (`B.W`) into doDeclare (0x62b3b8) — same shape as
+    // the canStepUi thunk at 0x62a734.
+    declare()
 }
 
 // 0x062b3b8 — __ZN3RBX4Name9doDeclareILZNS_19sSkateboardPlatformEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_19sSkateboardPlatformEEEERKS0_v")]
-pub fn stub_062b3b8() -> ! {
-    todo!("0x062b3b8 __ZN3RBX4Name9doDeclareILZNS_19sSkateboardPlatformEEEERKS0_v")
+pub fn stub_062b3b8(declare: impl FnOnce() -> u32) -> u32 {
+    // IDA 0x62b3b8: guarded once-init (`__cxa_guard_acquire` 0x62b414);
+    // Name::declare(&sSkateboardPlatform) (0x62b43a); guard release
+    // (0x62b43e); return the static (0x62b46c). OnceLock is the same once.
+    *SKATEBOARD_PLATFORM_NAME.get_or_init(declare)
 }
 
 // 0x062b498 — __ZN3RBX14FactoryProductINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEE7CreatorC2Ev
 // type: int __fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_062b498() -> ! {
-    todo!("0x062b498 __ZN3RBX14FactoryProductINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEE7CreatorC2Ev")
+pub fn stub_062b498(registry: &mut SkateboardCreatorRegistry, name: u32, creator: u32) {
+    // IDA 0x62b498 (Creator C2): install the Creator vtable (0x62b4ce),
+    // call_once Name::declare (0x62b4d0) + doDeclare (0x62b4e6);
+    // ReleaseAssert the name is not yet registered (find == end,
+    // Object.h:244, 0x62b4e8-0x62b574) and not already constructed
+    // (!wasConstructed(), Object.h:245, 0x62b576-0x62b5c8); insert
+    // creators[name] = this (0x62b5d8-0x62b5f8); isConstructed = 666
+    // (0x62b5fe); ReleaseAssert the insert landed (0x62b60a-0x62b644).
+    // was: FactoryProduct<SkateboardPlatform,...>::Creator::Creator.
+    debug_assert!(
+        !registry.creators.contains_key(&name),
+        "Class::getCreators().find(&name)==Class::getCreators().end() Object.h:244"
+    );
+    debug_assert!(!registry.constructed, "!wasConstructed() Object.h:245");
+    registry.name = name;
+    registry.creator = creator;
+    registry.creators.insert(name, creator);
+    registry.constructed = true;
+    debug_assert!(registry.creators.get(&name) == Some(&creator));
 }
 
 // 0x062b6dc — __ZN3RBX14FactoryProductINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEE17static_getCreatorEv
 // type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_062b6dc() -> ! {
-    todo!("0x062b6dc __ZN3RBX14FactoryProductINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEE17static_getCreatorEv")
+pub fn stub_062b6dc(registry: &SkateboardCreatorRegistry) -> u32 {
+    // IDA 0x62b6dc: ReleaseAssert Creator::wasConstructed()
+    // (isConstructed == 666, Object.h:282, 0x62b6ec-0x62b73e); return
+    // &creatorPrivate (0x62b73e/0x62b74e).
+    // was: FactoryProduct<SkateboardPlatform,...>::static_getCreator.
+    debug_assert!(
+        registry.constructed,
+        "Creator::wasConstructed() Object.h:282"
+    );
+    registry.creator
 }
 
 // 0x062b750 — __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE22isChildPlatformMotor6DEPNS_8InstanceE
@@ -905,8 +1004,23 @@ pub fn stub_062b6dc() -> ! {
 // type: int __fastcall(int, RBX::Instance *this)
 #[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::isChildPlatformMotor6D(RBX::Instance *)")]
 #[doc(alias = "__ZN3RBX12PlatformImplINS_17BasicPartInstanceEE22isChildPlatformMotor6DEPNS_8InstanceE")]
-pub fn stub_062b750() -> ! {
-    todo!("0x062b750 RBX::PlatformImpl<RBX::BasicPartInstance>::isChildPlatformMotor6D(RBX::Instance *)")
+pub fn stub_062b750(
+    child: u32,
+    full_name: impl FnOnce(u32) -> String,
+    is_motor6d: impl FnOnce(u32) -> bool,
+) -> u32 {
+    // IDA 0x62b750: name = Instance::fw(child) (0x62b758); compare
+    // name+0x18 against "PlatformMotor6D" (0x62b75c-0x62b76c, nonzero ->
+    // out 0 with 0x62b792); [child+0x30].isA(Motor6D descriptor)
+    // (0x62b76e-0x62b782, != 1 -> out 0 with 0x62b788); return child
+    // (0x62b78a-0x62b794; the null guard collapses — child is returned).
+    if full_name(child) != "PlatformMotor6D" {
+        return 0;
+    }
+    if !is_motor6d(child) {
+        return 0;
+    }
+    child
 }
 
 // 0x062b798 — __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX12PlatformImplINSA_17BasicPartInstanceEEEEENS6_5list1INS6_5valueIPSD_EEEEEEEENS0_10connectionERKT_
@@ -914,16 +1028,33 @@ pub fn stub_062b750() -> ! {
 // type: int(void)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>> const&)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX12PlatformImplINSA_17BasicPartInstanceEEEEENS6_5list1INS6_5valueIPSD_EEEEEEEENS0_10connectionERKT_")]
-pub fn stub_062b798() -> ! {
-    todo!("0x062b798 rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>> const&)")
+pub fn stub_062b798(slots: &mut Vec<PlatformDoneSlot>, target: u32) -> u32 {
+    // IDA 0x62b798 (signal<void()>::connect): operator new(28) the
+    // callable_slot (0x62b7b0), install the slot/callable/bind vtables plus
+    // the bound (PlatformImpl*, mf0) triple (0x62b7c8-0x62b7ee),
+    // signal::insert under the static lock (0x62b7f2), connection <= slot
+    // (0x62b7f8) with add_weak_ref (0x62b800). The Vec push links (= insert
+    // under the static lock); the connection handle is the slot index.
+    // was: rbx::signals::signal<void ()(void)>::connect<...>(...).
+    let _static = PLATFORM_DONE_SIGNAL_MUTEX.lock();
+    slots.push(PlatformDoneSlot { live: true, target });
+    (slots.len() - 1) as u32
 }
 
 // 0x062b80c — __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE36onEvent_humanoidDonePlatformStandingEv
 // demangled: RBX::PlatformImpl<RBX::BasicPartInstance>::onEvent_humanoidDonePlatformStanding(void)
 #[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::onEvent_humanoidDonePlatformStanding(void)")]
 #[doc(alias = "__ZN3RBX12PlatformImplINS_17BasicPartInstanceEE36onEvent_humanoidDonePlatformStandingEv")]
-pub fn stub_062b80c() -> ! {
-    todo!("0x062b80c RBX::PlatformImpl<RBX::BasicPartInstance>::onEvent_humanoidDonePlatformStanding(void)")
+pub fn stub_062b80c(find_motor: impl Fn() -> u32, unparent: impl Fn(u32)) {
+    // IDA 0x62b80c: loop { motor = findPlatformMotor6D (0x62b81e); !motor ->
+    // break (0x62b824); setParentInternal(motor, 0, 0) (0x62b818) }.
+    loop {
+        let motor = find_motor();
+        if motor == 0 {
+            break;
+        }
+        unparent(motor);
+    }
 }
 
 // 0x062b82c — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX12PlatformImplINSA_17BasicPartInstanceEEEEENS6_5list1INS6_5valueIPSD_EEEEEEED1Ev
@@ -946,8 +1077,11 @@ pub fn stub_062b858() {
 // demangled: rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX12PlatformImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv")]
-pub fn stub_062b92c() -> ! {
-    todo!("0x062b92c rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)")
+pub fn stub_062b92c(target: u32, invoke: impl FnOnce(u32) -> i32) -> i32 {
+    // IDA 0x62b92c (callable::call): tail-calls the bound
+    // bind_t::operator() (0x62b93c); the stored this rides as the argument.
+    // was: rbx::callable<...>::call(void).
+    invoke(target)
 }
 
 // 0x062b934 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX12PlatformImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv
@@ -963,8 +1097,21 @@ pub fn stub_062b934() {
 // type: int(void)
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>::operator()(void)")]
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX12PlatformImplINS4_17BasicPartInstanceEEEEENS0_5list1INS0_5valueIPS7_EEEEEclEv")]
-pub fn stub_062b93c() -> ! {
-    todo!("0x062b93c boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>::operator()(void)")
+pub fn stub_062b93c(
+    target: u32,
+    adjust: u32,
+    direct: impl FnOnce(u32) -> i32,
+    virtual_call: impl FnOnce(u32) -> i32,
+) -> i32 {
+    // IDA 0x62b93c (bind_t mf0 operator()): fetch the member pointer and
+    // this+adjust (0x62b93c-0x62b946); adjust odd -> resolve through the
+    // vtable (0x62b94a-0x62b94e); call (0x62b94e).
+    // was: boost::_bi::bind_t<...>::operator()(void).
+    if (adjust & 1) != 0 {
+        virtual_call(target)
+    } else {
+        direct(target)
+    }
 }
 
 // 0x062b954 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX12PlatformImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_ED1Ev
@@ -987,8 +1134,25 @@ pub fn stub_062b980() {
 // demangled: RBX::PlatformImpl<RBX::BasicPartInstance>::destroyOtherMotor6D(boost::shared_ptr<RBX::Instance>,RBX::Motor6D *)
 #[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::destroyOtherMotor6D(rbx_core::SharedPtr<RBX::Instance>,RBX::Motor6D *)")]
 #[doc(alias = "__ZN3RBX12PlatformImplINS_17BasicPartInstanceEE19destroyOtherMotor6DEN5boost10shared_ptrINS_8InstanceEEEPNS_7Motor6DE")]
-pub fn stub_062ba54() -> ! {
-    todo!("0x062ba54 RBX::PlatformImpl<RBX::BasicPartInstance>::destroyOtherMotor6D(boost::shared_ptr<RBX::Instance>,RBX::Motor6D *)")
+pub fn stub_062ba54(
+    this: u32,
+    other: u32,
+    motor: u32,
+    is_child: impl FnOnce(u32, u32) -> u32,
+    unparent: impl FnOnce(u32) -> u32,
+) -> u32 {
+    // IDA 0x62ba54: other = *shared (0x62ba5a); other == motor -> return
+    // this (0x62ba5e-0x62ba60); r = isChildPlatformMotor6D (0x62ba62);
+    // !r -> return r (0x62ba68); else setParentInternal(other, 0, 0)
+    // (0x62ba74).
+    if other == motor {
+        return this;
+    }
+    let r = is_child(this, other);
+    if r == 0 {
+        return r;
+    }
+    unparent(other)
 }
 
 // 0x062ba7c — __ZN5boost3_bi5list3INS0_5valueIPN3RBX12PlatformImplINS3_17BasicPartInstanceEEEEENS_3argILi1EEENS2_IPNS3_7Motor6DEEEEclINS_4_mfi3mf2IvS6_NS_10shared_ptrINS3_8InstanceEEESC_EENS0_5list1IRKSK_EEEEvNS0_4typeIvEERT_RT0_i
@@ -996,16 +1160,42 @@ pub fn stub_062ba54() -> ! {
 // type: void __fastcall(int *, int, int **)
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance> *>,boost::arg<1>,boost::_bi::value<RBX::Motor6D *>>::operator()<boost::_mfi::mf2<void,RBX::PlatformImpl<RBX::BasicPartInstance>,rbx_core::SharedPtr<RBX::Instance>,RBX::Motor6D *>,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::PlatformImpl<RBX::BasicPartInstance>,rbx_core::SharedPtr<RBX::Instance>,RBX::Motor6D *> &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")]
 #[doc(alias = "__ZN5boost3_bi5list3INS0_5valueIPN3RBX12PlatformImplINS3_17BasicPartInstanceEEEEENS_3argILi1EEENS2_IPNS3_7Motor6DEEEEclINS_4_mfi3mf2IvS6_NS_10shared_ptrINS3_8InstanceEEESC_EENS0_5list1IRKSK_EEEEvNS0_4typeIvEERT_RT0_i")]
-pub fn stub_062ba7c() -> ! {
-    todo!("0x062ba7c void boost::_bi::list3<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance> *>,boost::arg<1>,boost::_bi::value<RBX::Motor6D *>>::operator()<boost::_mfi::mf2<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>,RBX::Motor6D *>,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>,RBX::Motor6D *> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)")
+pub fn stub_062ba7c<T>(
+    obj: u32,
+    instance: &SharedPtr<T>,
+    motor: u32,
+    invoke: impl FnOnce(u32, &SharedPtr<T>, u32),
+) {
+    // IDA 0x62ba7c (list3 operator()): shared_count copy of the instance
+    // (0x62bab0); mf2::operator()(obj, shared, motor) (0x62baf0); release
+    // (0x62baf6-0x62bafe). Clone-then-drop is the same retain/release pair.
+    // was: boost::_bi::list3<...>::operator()<...>(...).
+    let owned = SharedPtr::clone(instance);
+    invoke(obj, &owned, motor);
 }
 
 // 0x062bb58 — __ZNK5boost4_mfi3mf2IvN3RBX12PlatformImplINS2_17BasicPartInstanceEEENS_10shared_ptrINS2_8InstanceEEEPNS2_7Motor6DEEclEPS5_S8_SA_
 // demangled: boost::_mfi::mf2<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>,RBX::Motor6D *>::operator()(RBX::PlatformImpl<RBX::BasicPartInstance>*,boost::shared_ptr<RBX::Instance>,RBX::Motor6D *)const
 #[doc(alias = "boost::_mfi::mf2<void,RBX::PlatformImpl<RBX::BasicPartInstance>,rbx_core::SharedPtr<RBX::Instance>,RBX::Motor6D *>::operator()(RBX::PlatformImpl<RBX::BasicPartInstance>*,rbx_core::SharedPtr<RBX::Instance>,RBX::Motor6D *)const")]
 #[doc(alias = "__ZNK5boost4_mfi3mf2IvN3RBX12PlatformImplINS2_17BasicPartInstanceEEENS_10shared_ptrINS2_8InstanceEEEPNS2_7Motor6DEEclEPS5_S8_SA_")]
-pub fn stub_062bb58() -> ! {
-    todo!("0x062bb58 boost::_mfi::mf2<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>,RBX::Motor6D *>::operator()(RBX::PlatformImpl<RBX::BasicPartInstance>*,boost::shared_ptr<RBX::Instance>,RBX::Motor6D *)const")
+pub fn stub_062bb58<T>(
+    target: u32,
+    adjust: u32,
+    instance: &SharedPtr<T>,
+    motor: u32,
+    direct: impl FnOnce(u32, &SharedPtr<T>, u32),
+    virtual_call: impl FnOnce(u32, &SharedPtr<T>, u32),
+) {
+    // IDA 0x62bb58 (mf2 operator()): resolve this+adjust with the odd-adjust
+    // vtable step (0x62bb84-0x62bbb8, cf. 0x62b93c); shared_count copy
+    // (0x62bbc8-0x62bbd0); invoke (0x62bbdc); release (0x62bbe0-0x62bbe8).
+    // was: boost::_mfi::mf2<...>::operator()(...).
+    let owned = SharedPtr::clone(instance);
+    if (adjust & 1) != 0 {
+        virtual_call(target, &owned, motor);
+    } else {
+        direct(target, &owned, motor);
+    }
 }
 
 // 0x062bc44 — __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4nextERN5boost13intrusive_ptrINS6_4slotEEE
@@ -1013,8 +1203,20 @@ pub fn stub_062bb58() -> ! {
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot> &)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4nextERN5boost13intrusive_ptrINS6_4slotEEE")]
-pub fn stub_062bc44() -> ! {
-    todo!("0x062bc44 rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot> &)")
+pub fn stub_062bc44(slots: &[MoveSlot], cursor: &mut usize, out: &mut u32) -> bool {
+    // IDA 0x62bc44 (signal::next): add_ref the in-param (0x62bc9e),
+    // call_once static-mutex init (0x62bcbe), lock (0x62bcd8), operator=
+    // the current slot (0x62bcec), unlock (0x62bd10), release the in-param
+    // (0x62bd20); 1 when the out slot is non-null (0x62bd30-0x62bd32).
+    // The live-gate (`*slot+12`, cf. stub_062a394) stays with the caller.
+    let _static = MOVE_STATE_SIGNAL_MUTEX.lock();
+    if *cursor < slots.len() {
+        *out = slots[*cursor].id;
+        *cursor += 1;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x062bda4 — __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE8on_errorERSt9exception
@@ -1022,8 +1224,15 @@ pub fn stub_062bc44() -> ! {
 // type: int(void)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::on_error(std::exception &)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE8on_errorERSt9exception")]
-pub fn stub_062bda4() -> ! {
-    todo!("0x062bda4 rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::on_error(std::exception &)")
+pub fn stub_062bda4(handle: Option<impl FnOnce() -> i32>) -> i32 {
+    // IDA 0x62bda4 (signal::on_error): no installed handler returns
+    // &slot_exception_handler (nonzero, 0x62bdca); an installed handler is
+    // invoked via function1::operator() and its result returned
+    // (0x62bdc0-0x62bdc6). 1 is the nonzero sentinel for the static address.
+    match handle {
+        Some(f) => f(),
+        None => 1,
+    }
 }
 
 // 0x062bdcc — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES6_EE4slotEEaSERKSA_
@@ -1031,16 +1240,22 @@ pub fn stub_062bda4() -> ! {
 // type: int(void)
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot> const&)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES6_EE4slotEEaSERKSA_")]
-pub fn stub_062bdcc() -> ! {
-    todo!("0x062bdcc boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot> const&)")
+pub fn stub_062bdcc<T>(dst: &mut SharedPtr<T>, src: &SharedPtr<T>) {
+    // IDA 0x62bdcc: intrusive_ptr::operator=(const&) — add_ref the new
+    // (0x62bdda), swap in (0x62bde0), release the old (0x62bde4-0x62bde6);
+    // same sequence as stub_0629af4.
+    // was: boost::intrusive_ptr<...MoveState...slot>::operator=(...).
+    stub_0629af4(dst, src);
 }
 
 // 0x062bdf0 — __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE22safe_static_init_mutexEv
 // demangled: rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::safe_static_init_mutex(void)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::safe_static_init_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE22safe_static_init_mutexEv")]
-pub fn stub_062bdf0() -> ! {
-    todo!("0x062bdf0 rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::safe_static_init_mutex(void)")
+pub fn stub_062bdf0() {
+    // IDA 0x62bdf0: single `B.W` to safe_static_do_get_mutex (0x62bdf4) —
+    // the one-time init trampoline; same shape as datamodel 0x4b4bc.
+    let _ = stub_062bdf4();
 }
 
 // 0x062bdf4 — __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE24safe_static_do_get_mutexEv
@@ -1048,8 +1263,11 @@ pub fn stub_062bdf0() -> ! {
 // type: int()
 #[doc(alias = "rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::safe_static_do_get_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE24safe_static_do_get_mutexEv")]
-pub fn stub_062bdf4() -> ! {
-    todo!("0x062bdf4 rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::safe_static_do_get_mutex(void)")
+pub fn stub_062bdf4() -> &'static Mutex<()> {
+    // IDA 0x62bdf4: returns the function-static signal mutex via the
+    // `__cxa_guard_acquire` dance (0x62be50-0x62beae); same shape as
+    // datamodel 0x4b4c0.
+    &MOVE_STATE_SIGNAL_MUTEX
 }
 
 // 0x062beec — __ZN3G3D5ArrayIN3RBX18SkateboardPlatform5WheelELi10ELm32EE6resizeEib
@@ -1057,8 +1275,22 @@ pub fn stub_062bdf4() -> ! {
 // type: int(void)
 #[doc(alias = "G3D::Array<RBX::SkateboardPlatform::Wheel,10,32ul>::resize(int,bool)")]
 #[doc(alias = "__ZN3G3D5ArrayIN3RBX18SkateboardPlatform5WheelELi10ELm32EE6resizeEib")]
-pub fn stub_062beec() -> ! {
-    todo!("0x062beec G3D::Array<RBX::SkateboardPlatform::Wheel,10,32ul>::resize(int,bool)")
+pub fn stub_062beec<T: Default>(arr: &mut Vec<T>, new_len: usize, shrink: bool) {
+    // IDA 0x62beec (G3D::Array<Wheel>::resize): equal length -> out
+    // (0x62bef6); capacity growth uses the 1.5x/min-10 computation
+    // (0x62bf04-0x62bf48, Vec owns growth on the host); realloc when
+    // growing or when capacity/3 >= new with shrink && new >= 11
+    // (0x62bf66-0x62bf78); zero-fill the new Wheel slots (8 bytes each,
+    // 0x62bf80-0x62bfa2). resize_with covers fill + truncate.
+    let grow = arr.capacity() < new_len;
+    let reclaim = !grow && arr.capacity() / 3 >= new_len && shrink && new_len >= 11;
+    if grow || reclaim {
+        let keep = new_len.min(arr.len());
+        let mut fresh = Vec::with_capacity(new_len);
+        fresh.extend(arr.drain(..keep));
+        *arr = fresh;
+    }
+    arr.resize_with(new_len, T::default);
 }
 
 // 0x062bfb0 — __ZN3G3D5ArrayIN3RBX18SkateboardPlatform5WheelELi10ELm32EE7reallocEi
@@ -1066,14 +1298,38 @@ pub fn stub_062beec() -> ! {
 // type: int(void)
 #[doc(alias = "G3D::Array<RBX::SkateboardPlatform::Wheel,10,32ul>::realloc(int)")]
 #[doc(alias = "__ZN3G3D5ArrayIN3RBX18SkateboardPlatform5WheelELi10ELm32EE7reallocEi")]
-pub fn stub_062bfb0() -> ! {
-    todo!("0x062bfb0 G3D::Array<RBX::SkateboardPlatform::Wheel,10,32ul>::realloc(int)")
+pub fn stub_062bfb0<T: Clone>(arr: &mut Vec<T>, new_len: usize) {
+    // IDA 0x62bfb0 (G3D::Array<Wheel>::realloc): manager alloc of 8*cap
+    // (0x62bfe2, NULL -> failureHook/exit at 0x62c014-0x62c138 — Vec
+    // allocation aborts the same way); blit min(old, new) wheels
+    // (0x62c09e-0x62c0c2); free the old block (0x62c0e0, the dropped Vec).
+    let mut fresh = Vec::with_capacity(new_len);
+    fresh.extend(arr.iter().take(new_len).cloned());
+    *arr = fresh;
 }
 
 // 0x062c19c — __ZN3RBX8Assembly19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_18SkateboardPlatformEPNS_9PrimitiveEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvT_S9_
 // demangled: void RBX::Assembly::visitPrimitivesImpl<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SkateboardPlatform,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::SkateboardPlatform*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SkateboardPlatform,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::SkateboardPlatform*>,boost::arg<1>>>,RBX::Primitive *)
 #[doc(alias = "void RBX::Assembly::visitPrimitivesImpl<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SkateboardPlatform,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::SkateboardPlatform*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SkateboardPlatform,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::SkateboardPlatform*>,boost::arg<1>>>,RBX::Primitive *)")]
 #[doc(alias = "__ZN3RBX8Assembly19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_18SkateboardPlatformEPNS_9PrimitiveEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvT_S9_")]
-pub fn stub_062c19c() -> ! {
-    todo!("0x062c19c void RBX::Assembly::visitPrimitivesImpl<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SkateboardPlatform,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::SkateboardPlatform*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SkateboardPlatform,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::SkateboardPlatform*>,boost::arg<1>>>,RBX::Primitive *)")
+pub fn stub_062c19c<V, C, R>(visit: V, prim: u32, children_of: C, is_assembly_root: R)
+where
+    V: Fn(u32) + Copy,
+    C: Fn(u32, usize) -> Option<u32> + Copy,
+    R: Fn(u32) -> bool + Copy,
+{
+    // IDA 0x62c19c (Assembly::visitPrimitivesImpl): resolve the bound
+    // functor — the virtual adjust (0x62c1b8-0x62c1c0) collapses since the
+    // caller binds platform*/prim — and invoke it (0x62c1c4); walk
+    // getTypedChild(i) with the count re-read per step (0x62c1c6-0x62c1f8,
+    // hence the Option-per-index seam), recursing into non-assembly-root
+    // children (0x62c1de-0x62c1f0).
+    visit(prim);
+    let mut i = 0;
+    while let Some(child) = children_of(prim, i) {
+        i += 1;
+        if !is_assembly_root(child) {
+            stub_062c19c(visit, child, children_of, is_assembly_root);
+        }
+    }
 }
