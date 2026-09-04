@@ -328,171 +328,235 @@ pub fn stub_26a060(this: usize, destroy_instance: &mut dyn FnMut(usize)) {
 // 0x26a064 — __ZN3RBX10CoreScriptD0Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "RBX::CoreScript::~CoreScript()")]
-pub fn stub_26a064() -> ! {
-    todo!("0x26a064 RBX::CoreScript::~CoreScript()")
+pub fn stub_26a064(this: usize, destroy_instance: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+    // IDA 0x26a064: base destroy then operator delete.
+    destroy_instance(this);
+    free(this);
 }
+
 
 // 0x26a104 — __ZNK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")]
-pub fn stub_26a104() -> ! {
-    todo!("0x26a104 __ZNK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")
+pub fn stub_26a104() -> &'static str {
+    // IDA 0x26a104: call_once declare + return the class name.
+    static CELL: OnceLock<&'static str> = OnceLock::new();
+    script_class_name(&CELL, "CoreScript")
 }
+
 
 // 0x26a12c — __ZThn32_N3RBX10CoreScriptD1Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript()")]
-pub fn stub_26a12c() -> ! {
-    todo!("0x26a12c non-virtual thunk toRBX::CoreScript::~CoreScript()")
+pub fn stub_26a12c(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26a12c: this-32 adjust then tail-call the primary dtor.
+    destroy_at(this - 32);
 }
+
 
 // 0x26a134 — __ZThn32_N3RBX10CoreScriptD0Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript()")]
-pub fn stub_26a134() -> ! {
-    todo!("0x26a134 non-virtual thunk toRBX::CoreScript::~CoreScript()")
+pub fn stub_26a134(this: usize, destroy_at: &mut dyn FnMut(usize), free_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26a134: this-32 adjust then tail-call the primary dtor + delete.
+    destroy_at(this - 32);
+    free_at(this - 32);
 }
+
 
 // 0x26a1d8 — __ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")]
-pub fn stub_26a1d8() -> ! {
-    todo!("0x26a1d8 __ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")
+pub fn stub_26a1d8() -> &'static str {
+    // IDA 0x26a1d8: Thn32 into the primary getClassName (0x26a104).
+    stub_26a104()
 }
+
 
 // 0x26a200 — __ZThn36_N3RBX10CoreScriptD1Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript()")]
-pub fn stub_26a200() -> ! {
-    todo!("0x26a200 non-virtual thunk toRBX::CoreScript::~CoreScript()")
+pub fn stub_26a200(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26a200: this-36 adjust then tail-call the primary dtor.
+    destroy_at(this - 36);
 }
+
 
 // 0x26a208 — __ZThn36_N3RBX10CoreScriptD0Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript()")]
-pub fn stub_26a208() -> ! {
-    todo!("0x26a208 non-virtual thunk toRBX::CoreScript::~CoreScript()")
+pub fn stub_26a208(this: usize, destroy_at: &mut dyn FnMut(usize), free_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26a208: this-36 adjust then tail-call the primary dtor + delete.
+    destroy_at(this - 36);
+    free_at(this - 36);
 }
+
 
 // 0x26a2ac — __ZN3RBX13StarterScriptD1Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "RBX::StarterScript::~StarterScript()")]
-pub fn stub_26a2ac() -> ! {
-    todo!("0x26a2ac RBX::StarterScript::~StarterScript()")
+pub fn stub_26a2ac(this: usize, destroy_instance: &mut dyn FnMut(usize)) {
+    // IDA 0x26a2ac: base destroy body.
+    destroy_instance(this);
 }
+
 
 // 0x26a2b0 — __ZN3RBX13StarterScriptD0Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "RBX::StarterScript::~StarterScript()")]
-pub fn stub_26a2b0() -> ! {
-    todo!("0x26a2b0 RBX::StarterScript::~StarterScript()")
+pub fn stub_26a2b0(this: usize, destroy_instance: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+    // IDA 0x26a2b0: base destroy then operator delete.
+    destroy_instance(this);
+    free(this);
 }
+
 
 // 0x26a350 — __ZNK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")]
-pub fn stub_26a350() -> ! {
-    todo!("0x26a350 __ZNK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")
+pub fn stub_26a350() -> &'static str {
+    // IDA 0x26a350: call_once declare + return the class name.
+    static CELL: OnceLock<&'static str> = OnceLock::new();
+    script_class_name(&CELL, "StarterScript")
 }
+
 
 // 0x26a378 — __ZThn32_N3RBX13StarterScriptD1Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript()")]
-pub fn stub_26a378() -> ! {
-    todo!("0x26a378 non-virtual thunk toRBX::StarterScript::~StarterScript()")
+pub fn stub_26a378(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26a378: this-32 adjust then tail-call the primary dtor.
+    destroy_at(this - 32);
 }
+
 
 // 0x26a380 — __ZThn32_N3RBX13StarterScriptD0Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript()")]
-pub fn stub_26a380() -> ! {
-    todo!("0x26a380 non-virtual thunk toRBX::StarterScript::~StarterScript()")
+pub fn stub_26a380(this: usize, destroy_at: &mut dyn FnMut(usize), free_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26a380: this-32 adjust then tail-call the primary dtor + delete.
+    destroy_at(this - 32);
+    free_at(this - 32);
 }
+
 
 // 0x26a424 — __ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")]
-pub fn stub_26a424() -> ! {
-    todo!("0x26a424 __ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")
+pub fn stub_26a424() -> &'static str {
+    // IDA 0x26a424: Thn32 into the primary getClassName (0x26a350).
+    stub_26a350()
 }
+
 
 // 0x26a44c — __ZThn36_N3RBX13StarterScriptD1Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript()")]
-pub fn stub_26a44c() -> ! {
-    todo!("0x26a44c non-virtual thunk toRBX::StarterScript::~StarterScript()")
+pub fn stub_26a44c(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26a44c: this-36 adjust then tail-call the primary dtor.
+    destroy_at(this - 36);
 }
+
 
 // 0x26a454 — __ZThn36_N3RBX13StarterScriptD0Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript()")]
-pub fn stub_26a454() -> ! {
-    todo!("0x26a454 non-virtual thunk toRBX::StarterScript::~StarterScript()")
+pub fn stub_26a454(this: usize, destroy_at: &mut dyn FnMut(usize), free_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26a454: this-36 adjust then tail-call the primary dtor + delete.
+    destroy_at(this - 36);
+    free_at(this - 36);
 }
+
 
 // 0x26a4f8 — __ZN3RBX4Name13callDoDeclareILZNS_14sStarterScriptEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sStarterScriptEEEEvv")]
-pub fn stub_26a4f8() -> ! {
-    todo!("0x26a4f8 __ZN3RBX4Name13callDoDeclareILZNS_14sStarterScriptEEEEvv")
+pub fn stub_26a4f8() -> &'static str {
+    // IDA 0x26a4f8: guard-checked declare of sStarterScript (cf. 0x26a558..0x26a582 shape).
+    static CELL: OnceLock<&'static str> = OnceLock::new();
+    script_class_name(&CELL, "StarterScript")
 }
+
 
 // 0x26a4fc — __ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v")]
-pub fn stub_26a4fc() -> ! {
-    todo!("0x26a4fc __ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v")
+pub fn stub_26a4fc() -> &'static str {
+    // IDA 0x26a4fc: guard-checked Name::declare + return (cf. 0x26a558..0x26a5b0).
+    static CELL: OnceLock<&'static str> = OnceLock::new();
+    script_class_name(&CELL, "StarterScript")
 }
+
 
 // 0x26a5dc — __ZN3RBX4Name13callDoDeclareILZNS_11sCoreScriptEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_11sCoreScriptEEEEvv")]
-pub fn stub_26a5dc() -> ! {
-    todo!("0x26a5dc __ZN3RBX4Name13callDoDeclareILZNS_11sCoreScriptEEEEvv")
+pub fn stub_26a5dc() -> &'static str {
+    // IDA 0x26a5dc: guard-checked declare of sCoreScript (cf. 0x26a558..0x26a582 shape).
+    static CELL: OnceLock<&'static str> = OnceLock::new();
+    script_class_name(&CELL, "CoreScript")
 }
+
 
 // 0x26a5e0 — __ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v")]
-pub fn stub_26a5e0() -> ! {
-    todo!("0x26a5e0 __ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v")
+pub fn stub_26a5e0() -> &'static str {
+    // IDA 0x26a5e0: guard-checked Name::declare + return (cf. 0x26a558..0x26a5b0).
+    static CELL: OnceLock<&'static str> = OnceLock::new();
+    script_class_name(&CELL, "CoreScript")
 }
+
 
 // 0x26a6c0 — __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EEC2INS_9ContentIdEEET_
 // type: RBX::BaseScript *__fastcall(RBX::BaseScript *, int *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EEC2INS_9ContentIdEEET_")]
-pub fn stub_26a6c0() -> ! {
-    todo!("0x26a6c0 __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EEC2INS_9ContentIdEEET_")
+pub fn stub_26a6c0(content: &str, init: &mut dyn FnMut(&str)) {
+    // IDA 0x26a6c0: described + content-id init chain.
+    init(content);
 }
+
 
 // 0x26a88c — __ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_26a88c() -> ! {
-    todo!("0x26a88c __ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_26a88c(this: usize, destroy: &mut dyn FnMut(usize)) {
+    // IDA 0x26a88c: base destroy body.
+    destroy(this);
 }
+
 
 // 0x26a890 — __ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_26a890() -> ! {
-    todo!("0x26a890 __ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_26a890(this: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+    // IDA 0x26a890: base destroy then operator delete.
+    destroy(this);
+    free(this);
 }
+
 
 // 0x26a930 — __ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_26a930() -> ! {
-    todo!("0x26a930 __ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_26a930(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26a930: this-32 adjust then tail-call the primary dtor.
+    destroy_at(this - 32);
 }
+
 
 // 0x26a938 — __ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_26a938() -> ! {
-    todo!("0x26a938 __ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_26a938(this: usize, destroy_at: &mut dyn FnMut(usize), free_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26a938: this-32 adjust then tail-call the primary dtor + delete.
+    destroy_at(this - 32);
+    free_at(this - 32);
 }
+
 
 // 0x26a9dc — __ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_26a9dc() -> ! {
-    todo!("0x26a9dc __ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_26a9dc(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26a9dc: this-36 adjust then tail-call the primary dtor.
+    destroy_at(this - 36);
 }
+
 
 // 0x26a9e4 — __ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
@@ -943,41 +1007,57 @@ pub fn stub_26c6dc() -> SharedPtr<Vec<usize>> {
 // 0x26c830 — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_26c830() -> ! {
-    todo!("0x26c830 bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+pub fn stub_26c830(args: &[LuaArg], index: usize) -> Option<SharedPtr<()>> {
+    // IDA 0x26c830: userdata metatable check then shared_ptr retain.
+    // was: boost::shared_ptr retained copy.
+    match args.get(index) {
+        Some(LuaArg::Object(o)) => Some(SharedPtr::clone(o)),
+        _ => None,
+    }
 }
+
 
 // 0x26c92c — __ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::CoordinateFrame,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_26c92c() -> ! {
-    todo!("0x26c92c bool RBX::Lua::Bridge<G3D::CoordinateFrame,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+pub fn stub_26c92c(args: &[LuaArg], index: usize) -> Option<LuaArg> {
+    // IDA 0x26c92c: metatable-checked userdata read, pushed as a Variant.
+    args.get(index).cloned()
 }
+
 
 // 0x26c9a8 — __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Region3,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_26c9a8() -> ! {
-    todo!("0x26c9a8 bool RBX::Lua::Bridge<RBX::Region3,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+pub fn stub_26c9a8(args: &[LuaArg], index: usize) -> Option<LuaArg> {
+    // IDA 0x26c9a8: metatable-checked userdata read, pushed as a Variant.
+    args.get(index).cloned()
 }
+
 
 // 0x26ca24 — __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Region3int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_26ca24() -> ! {
-    todo!("0x26ca24 bool RBX::Lua::Bridge<RBX::Region3int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+pub fn stub_26ca24(args: &[LuaArg], index: usize) -> Option<LuaArg> {
+    // IDA 0x26ca24: metatable-checked userdata read, pushed as a Variant.
+    args.get(index).cloned()
 }
+
 
 // 0x26caa0 — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector3int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_26caa0() -> ! {
-    todo!("0x26caa0 bool RBX::Lua::Bridge<G3D::Vector3int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+pub fn stub_26caa0(args: &[LuaArg], index: usize) -> Option<LuaArg> {
+    // IDA 0x26caa0: metatable-checked userdata read, pushed as a Variant.
+    args.get(index).cloned()
 }
+
 
 // 0x26cb1c — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector2int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_26cb1c() -> ! {
-    todo!("0x26cb1c bool RBX::Lua::Bridge<G3D::Vector2int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+pub fn stub_26cb1c(args: &[LuaArg], index: usize) -> Option<LuaArg> {
+    // IDA 0x26cb1c: metatable-checked userdata read, pushed as a Variant.
+    args.get(index).cloned()
 }
+
