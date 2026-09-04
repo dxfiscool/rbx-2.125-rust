@@ -7,6 +7,20 @@
 
 use rbx_core::SharedPtr;
 
+/// FreeImage format plugin node (IDA 0x111070: 0x24-byte node + 0x3C proc table).
+#[derive(Clone, Debug, Default)]
+pub struct PluginNode {
+    pub fif: i32,
+    pub format: String,
+    pub procs: [usize; 15],
+}
+
+/// FreeImage plugin registry: fif → node tree plus the node count (IDA 0x110f98).
+#[derive(Clone, Debug, Default)]
+pub struct PluginList {
+    pub nodes: std::collections::BTreeMap<i32, PluginNode>,
+}
+
 /// FreeImage file-IO proc table filled by `SetDefaultIO`/`SetMemoryIO` (IDA 0x11059c/0x110698).
 #[derive(Clone, Copy, Debug, Default)]
 pub struct FreeImageIO {
@@ -358,114 +372,245 @@ pub fn stub_1109e8(position: i64) -> i32 {
 // 0x1109f8 — __Z9_SeekProcPvli
 // type: _DWORD __fastcall(void *, int, int)
 #[doc(alias = "_SeekProc(void *,long,int)")]
-pub fn stub_1109f8() -> ! { todo!("0x1109f8 _SeekProc(void *,long,int)") }
+pub fn stub_1109f8(seek: &mut dyn FnMut(i32, i32) -> i32, offset: i32, origin: i32) -> i32 { // IDA 0x1109f8: return fseek(stream, offset, origin).
+    seek(offset, origin)
+}
 
 // 0x110a08 — __Z10_WriteProcPvjjS_
 // type: _DWORD __fastcall(void *, unsigned int, unsigned int, void *)
 #[doc(alias = "_WriteProc(void *,unsigned int,unsigned int,void *)")]
-pub fn stub_110a08() -> ! { todo!("0x110a08 _WriteProc(void *,unsigned int,unsigned int,void *)") }
+pub fn stub_110a08(data: &[u8], item_size: usize, count: usize, write: &mut dyn FnMut(&[u8]) -> usize) -> usize { // IDA 0x110a08: return fwrite(ptr, size, count, stream) in items.
+    write(&data[..item_size.saturating_mul(count).min(data.len())]) / item_size.max(1)
+}
 
 // 0x110a18 — __Z9_ReadProcPvjjS_
 // type: _DWORD __fastcall(void *, unsigned int, unsigned int, void *)
 #[doc(alias = "_ReadProc(void *,unsigned int,unsigned int,void *)")]
-pub fn stub_110a18() -> ! { todo!("0x110a18 _ReadProc(void *,unsigned int,unsigned int,void *)") }
+pub fn stub_110a18(dst: &mut [u8], item_size: usize, count: usize, read: &mut dyn FnMut(&mut [u8]) -> usize) -> usize { // IDA 0x110a18: return fread(ptr, size, count, stream) in items.
+    let take = item_size.saturating_mul(count).min(dst.len());
+    read(&mut dst[..take]) / item_size.max(1)
+}
 
 // 0x110a28 — _FreeImage_GetFileTypeFromHandle
 #[doc(alias = "_FreeImage_GetFileTypeFromHandle")]
-pub fn stub_110a28() -> ! { todo!("0x110a28 _FreeImage_GetFileTypeFromHandle") }
+pub fn stub_110a28(has_handle: bool, validate: &mut dyn FnMut(i32) -> bool, fif_count: usize, rewind: &mut dyn FnMut()) -> i32 { // IDA 0x110a28: null → -1; probe Validate(fif) in order (4-unrolled); first hit rewinds and returns its fif; none → -1.
+    if !has_handle {
+        return -1;
+    }
+    for fif in 0..fif_count as i32 {
+        if validate(fif) {
+            rewind();
+            return fif;
+        }
+    }
+    -1
+}
 
 // 0x110cb8 — _FreeImage_AcquireMemory
 #[doc(alias = "_FreeImage_AcquireMemory")]
-pub fn stub_110cb8() -> ! { todo!("0x110cb8 _FreeImage_AcquireMemory") }
+pub fn stub_110cb8(mem: Option<&MemFile>) -> (i32, usize, usize) { // IDA 0x110cb8: null → 0; else out data + length words; 1.
+    match mem {
+        Some(m) => (1, m.data.as_ptr() as usize, m.data.len()),
+        None => (0, 0, 0),
+    }
+}
 
 // 0x110cdc — _FreeImage_GetFileTypeFromMemory
 #[doc(alias = "_FreeImage_GetFileTypeFromMemory")]
-pub fn stub_110cdc() -> ! { todo!("0x110cdc _FreeImage_GetFileTypeFromMemory") }
+pub fn stub_110cdc(mem: Option<&MemFile>, fif_count: usize, validate: &mut dyn FnMut(i32) -> bool) -> i32 { // IDA 0x110cdc: memory IO installed; null → -1; else GetFileTypeFromHandle.
+    if mem.is_none() {
+        return -1;
+    }
+    stub_110a28(true, validate, fif_count, &mut || ())
+}
 
 // 0x110d1c — _FreeImage_SaveToMemory
 #[doc(alias = "_FreeImage_SaveToMemory")]
-pub fn stub_110d1c() -> ! { todo!("0x110d1c _FreeImage_SaveToMemory") }
+pub fn stub_110d1c(writable: bool, has_mem: bool, save: &mut dyn FnMut() -> i32, notify: &mut dyn FnMut(&str)) -> i32 { // IDA 0x110d1c: null mem → 0; read-only → OutputMessage("Memory buffer is read only") + 0; else SaveToHandle.
+    if !has_mem {
+        return 0;
+    }
+    if !writable {
+        notify("Memory buffer is read only");
+        return 0;
+    }
+    save()
+}
 
 // 0x110d9c — _FreeImage_LoadFromMemory
 #[doc(alias = "_FreeImage_LoadFromMemory")]
-pub fn stub_110d9c() -> ! { todo!("0x110d9c _FreeImage_LoadFromMemory") }
+pub fn stub_110d9c(data: Option<&[u8]>, load: &mut dyn FnMut(&[u8]) -> i32) -> i32 { // IDA 0x110d9c: null/empty → 0; else LoadFromHandle with memory IO.
+    match data {
+        Some(d) if !d.is_empty() => load(d),
+        _ => 0,
+    }
+}
 
 // 0x110df0 — _FreeImage_CloseMemory
 #[doc(alias = "_FreeImage_CloseMemory")]
-pub fn stub_110df0() -> ! { todo!("0x110df0 _FreeImage_CloseMemory") }
+pub fn stub_110df0(mem: MemFile) { // IDA 0x110df0: free the data block, the handle, and the parent.
+    drop(mem);
+}
 
 // 0x110e28 — _FreeImage_OpenMemory
 #[doc(alias = "_FreeImage_OpenMemory")]
-pub fn stub_110e28() -> ! { todo!("0x110e28 _FreeImage_OpenMemory") }
+pub fn stub_110e28(data: Option<Vec<u8>>) -> MemFile { // IDA 0x110e28: handle + 0x14 block (either null → null); empty → fresh writable; else wrap the buffer.
+    match data {
+        Some(d) if !d.is_empty() => MemFile { file_len: d.len() as i32, position: 0, data: d },
+        _ => MemFile::default(),
+    }
+}
 
 // 0x110ec8 — _FreeImage_GetBits
 #[doc(alias = "_FreeImage_GetBits")]
-pub fn stub_110ec8() -> ! { todo!("0x110ec8 _FreeImage_GetBits") }
+pub fn stub_110ec8(dib: Option<&crate::generated_net_08::FreeImageInfo>) -> Option<usize> { // IDA 0x110ec8: null → null; else info header + 40 + 4 * colors, 16-aligned (relative offset).
+    let dib = dib?;
+    let mut off = 40 + 4 * dib.colors_used as usize;
+    let pad = off & 0xF;
+    if pad != 0 {
+        off += 16 - pad;
+    }
+    Some(off)
+}
 
 // 0x110f08 — _FreeImage_GetScanLine
 #[doc(alias = "_FreeImage_GetScanLine")]
-pub fn stub_110f08() -> ! { todo!("0x110f08 _FreeImage_GetScanLine") }
+pub fn stub_110f08(dib: Option<&crate::generated_net_08::FreeImageInfo>, y: u32) -> Option<usize> { // IDA 0x110f08: null → null; else bits + y * pitch (relative offsets).
+    let dib = dib?;
+    Some(stub_110ec8(Some(dib)).unwrap_or(0) + y as usize * crate::generated_net_08::stub_107cd4(Some(dib)) as usize)
+}
 
 // 0x110f38 — _FreeImage_Open
 #[doc(alias = "_FreeImage_Open")]
-pub fn stub_110f38() -> ! { todo!("0x110f38 _FreeImage_Open") }
+pub fn stub_110f38(open: Option<&mut dyn FnMut(i32, i32, i32) -> i32>, a2: i32, a3: i32, a4: i32) -> i32 { // IDA 0x110f38: plugin open proc ? proc(a2, a3, a4) : 0.
+    open.map(|f| f(a2, a3, a4)).unwrap_or(0)
+}
 
 // 0x110f60 — _FreeImage_Close
 #[doc(alias = "_FreeImage_Close")]
-pub fn stub_110f60() -> ! { todo!("0x110f60 _FreeImage_Close") }
+pub fn stub_110f60(close: Option<&mut dyn FnMut(i32, i32, i32) -> i32>, a2: i32, a3: i32, a4: i32, fallback: i32) -> i32 { // IDA 0x110f60: close proc ? proc(a2, a3, a4) : the plugin word itself.
+    close.map(|f| f(a2, a3, a4)).unwrap_or(fallback)
+}
 
 // 0x110f80 — _FreeImage_GetFIFCount
 #[doc(alias = "_FreeImage_GetFIFCount")]
-pub fn stub_110f80() -> ! { todo!("0x110f80 _FreeImage_GetFIFCount") }
+pub fn stub_110f80(plugin_count: Option<usize>) -> usize { // IDA 0x110f80: s_plugins ? word+20 (count) : null.
+    plugin_count.unwrap_or(0)
+}
 
 // 0x110f98 — __ZN10PluginListC2Ev
 // type: PluginList *__fastcall(PluginList *__hidden this)
 #[doc(alias = "PluginList::PluginList(void)")]
-pub fn stub_110f98() -> ! { todo!("0x110f98 PluginList::PluginList(void)") }
+pub fn stub_110f98() -> PluginList { // IDA 0x110f98: empty node-tree header init; word+6 = 0.
+    PluginList::default()
+}
 
 // 0x110fc8 — __Z17FreeImage_stricmpPKcS0_
 // type: _DWORD __fastcall(const char *, const char *)
 #[doc(alias = "FreeImage_stricmp(char const*,char const*)")]
-pub fn stub_110fc8() -> ! { todo!("0x110fc8 FreeImage_stricmp(char const*,char const*)") }
+pub fn stub_110fc8(a: &[u8], b: &[u8]) -> i32 { // IDA 0x110fc8: lowercase compare to first difference or nul; return the difference.
+    let mut ai = a.iter().chain(std::iter::repeat(&0));
+    let mut bi = b.iter().chain(std::iter::repeat(&0));
+    loop {
+        let x = ai.next().unwrap().to_ascii_lowercase();
+        let y = bi.next().unwrap().to_ascii_lowercase();
+        if x != y || x == 0 {
+            return x as i32 - y as i32;
+        }
+    }
+}
 
 // 0x11100c — __ZN10PluginList18FindNodeFromFormatEPKc
 // type: _DWORD __fastcall(PluginList *__hidden this, const char *)
 #[doc(alias = "PluginList::FindNodeFromFormat(char const*)")]
-pub fn stub_11100c() -> ! { todo!("0x11100c PluginList::FindNodeFromFormat(char const*)") }
+pub fn stub_11100c<'a>(list: &'a PluginList, format: &str, describe: &mut dyn FnMut(&PluginNode) -> String) -> Option<&'a PluginNode> { // IDA 0x11100c: walk the node tree; format from the node or its describe proc; stricmp hit → node.
+    list.nodes.values().find(|n| {
+        let f = if n.format.is_empty() { describe(n) } else { n.format.clone() };
+        stub_110fc8(f.as_bytes(), format.as_bytes()) == 0
+    })
+}
 
 // 0x111070 — __ZN10PluginList7AddNodeEPFvP6PluginiEPvPKcS6_S6_S6_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "PluginList::AddNode(void (*)(Plugin *,int),void *,char const*,char const*,char const*,char const*)")]
-pub fn stub_111070() -> ! { todo!("0x111070 PluginList::AddNode(void (*)(Plugin *,int),void *,char const*,char const*,char const*,char const*)") }
+pub fn stub_111070(list: &mut PluginList, init: Option<&mut dyn FnMut(&mut [usize; 15], usize) -> i32>, fif: i32, format: Option<&str>, extra: usize, describe: &mut dyn FnMut(&[usize; 15]) -> String) -> i32 { // IDA 0x111070: null init → -1; alloc node + zeroed proc table; init(table, extra); format (explicit or via describe); duplicate → -1; insert; fif.
+    let init = match init {
+        Some(f) => f,
+        None => return -1,
+    };
+    let mut procs = [0usize; 15];
+    let _ = init(&mut procs, extra);
+    let fmt = match format {
+        Some(f) => f.to_owned(),
+        None => describe(&procs),
+    };
+    if list.nodes.values().any(|n| stub_110fc8(n.format.as_bytes(), fmt.as_bytes()) == 0) {
+        return -1;
+    }
+    list.nodes.insert(fif, PluginNode { fif, format: fmt, procs });
+    fif
+}
 
 // 0x111170 — _FreeImage_Initialise
 // type: PluginList *()
 #[doc(alias = "_FreeImage_Initialise")]
-pub fn stub_111170() -> ! { todo!("0x111170 _FreeImage_Initialise") }
+pub fn stub_111170(refcount: &mut u32, list: &mut Option<PluginList>, add_builtins: &mut dyn FnMut(&mut PluginList)) -> bool { // IDA 0x111170: refcount++; first init → new PluginList + JPEG/PNG/TARGA/TIFF nodes.
+    *refcount += 1;
+    if *refcount == 1 {
+        let mut l = stub_110f98();
+        add_builtins(&mut l);
+        *list = Some(l);
+        return true;
+    }
+    false
+}
 
 // 0x111270 — __ZN10PluginListD2Ev
 // type: void __fastcall(PluginList *__hidden this)
 #[doc(alias = "PluginList::~PluginList()")]
-pub fn stub_111270() -> ! { todo!("0x111270 PluginList::~PluginList()") }
+pub fn stub_111270(list: PluginList) { // IDA 0x111270: walk nodes deleting the proc tables + nodes, erase the tree (drop).
+    drop(list);
+}
 
 // 0x1113a8 — _FreeImage_DeInitialise
 #[doc(alias = "_FreeImage_DeInitialise")]
-pub fn stub_1113a8() -> ! { todo!("0x1113a8 _FreeImage_DeInitialise") }
+pub fn stub_1113a8(refcount: &mut u32, list: &mut Option<PluginList>) { // IDA 0x1113a8: --refcount (wrapping); zero → destroy the plugin list.
+    *refcount = refcount.wrapping_sub(1);
+    if *refcount == 0 {
+        *list = None;
+    }
+}
 
 // 0x1113f8 — __ZN10PluginList15FindNodeFromFIFEi
 // type: _DWORD __fastcall(PluginList *__hidden this, int)
 #[doc(alias = "PluginList::FindNodeFromFIF(int)")]
-pub fn stub_1113f8() -> ! { todo!("0x1113f8 PluginList::FindNodeFromFIF(int)") }
+pub fn stub_1113f8<'a>(list: &'a PluginList, fif: i32) -> Option<&'a PluginNode> { // IDA 0x1113f8: tree find by fif; end → null; else the node.
+    list.nodes.get(&fif)
+}
 
 // 0x111430 — _FreeImage_Validate
 // type: int __fastcall(int)
 #[doc(alias = "_FreeImage_Validate")]
-pub fn stub_111430() -> ! { todo!("0x111430 _FreeImage_Validate") }
+pub fn stub_111430(list: Option<&PluginList>, fif: i32, validate: &mut dyn FnMut(i32) -> bool, seek_to: &mut dyn FnMut()) -> bool { // IDA 0x111430: no plugins/node → false; run the validate proc; rewind the handle; result.
+    if list.is_none() {
+        return false;
+    }
+    let ok = validate(fif);
+    seek_to();
+    ok
+}
 
 // 0x111500 — _FreeImage_FIFSupportsExportType
 // type: int __fastcall(int)
 #[doc(alias = "_FreeImage_FIFSupportsExportType")]
-pub fn stub_111500() -> ! { todo!("0x111500 _FreeImage_FIFSupportsExportType") }
+pub fn stub_111500(has_plugins: bool, has_node: bool, supports: Option<&mut dyn FnMut(i32) -> i32>, export_type: i32) -> i32 { // IDA 0x111500: plugins && node && supports-proc → proc(type); else 0.
+    if has_plugins && has_node {
+        if let Some(f) = supports {
+            return f(export_type);
+        }
+    }
+    0
+}
 
 // 0x111558 — _FreeImage_FIFSupportsExportBPP
 // type: int __fastcall(int)
