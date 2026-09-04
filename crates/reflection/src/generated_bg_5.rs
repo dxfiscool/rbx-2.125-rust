@@ -448,239 +448,323 @@ pub fn stub_0x1fe70(place_id: i32) {
 // 0x1ff5c — -[LoginViewController username]
 // type: UITextField *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController username]")]
-pub fn stub_0x1ff5c() -> ! {
-    todo!("0x1ff5c -[LoginViewController username]")
+pub fn stub_0x1ff5c() -> usize {
+    // IDA 0x1ff5c: `username` returns the `username_` ivar
+    // (0x1ff5c-0x1ff68). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_4::login_outlet("username")
 }
 
 // 0x1ff6c — -[LoginViewController setUsername:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setUsername:]")]
-pub fn stub_0x1ff6c() -> ! {
-    todo!("0x1ff6c -[LoginViewController setUsername:]")
+pub fn stub_0x1ff6c(handle: usize) {
+    // IDA 0x1ff6c: `setUsername:` retains via `objc_setProperty`
+    // (0x1ff6c-0x1ff8a). Retain is drop glue; the handle records.
+    crate::generated_bg_4::set_login_outlet("username", handle);
 }
 
 // 0x1ff90 — -[LoginViewController password]
 // type: UITextField *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController password]")]
-pub fn stub_0x1ff90() -> ! {
-    todo!("0x1ff90 -[LoginViewController password]")
+pub fn stub_0x1ff90() -> usize {
+    // IDA 0x1ff90: `password` returns the `password_` ivar (same shape
+    // as stub_0x1ff5c). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_4::login_outlet("password")
 }
 
 // 0x1ffa0 — -[LoginViewController setPassword:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setPassword:]")]
-pub fn stub_0x1ffa0() -> ! {
-    todo!("0x1ffa0 -[LoginViewController setPassword:]")
+pub fn stub_0x1ffa0(handle: usize) {
+    // IDA 0x1ffa0: `setPassword:` retains via `objc_setProperty` (same
+    // shape as stub_0x1ff6c). Retain is drop glue; the handle records.
+    crate::generated_bg_4::set_login_outlet("password", handle);
 }
 
 // 0x1ffc4 — -[LoginViewController btnSkip]
 // type: UIButton *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController btnSkip]")]
-pub fn stub_0x1ffc4() -> ! {
-    todo!("0x1ffc4 -[LoginViewController btnSkip]")
+pub fn stub_0x1ffc4() -> usize {
+    // IDA 0x1ffc4: `btnSkip` returns the `_btnSkip` ivar (same shape as
+    // stub_0x1ff5c). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_4::login_outlet("btnSkip")
 }
 
 // 0x1ffd4 — -[LoginViewController setBtnSkip:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setBtnSkip:]")]
-pub fn stub_0x1ffd4() -> ! {
-    todo!("0x1ffd4 -[LoginViewController setBtnSkip:]")
+pub fn stub_0x1ffd4(handle: usize) {
+    // IDA 0x1ffd4: `setBtnSkip:` retains via `objc_setProperty` (same
+    // shape as stub_0x1ff6c). Retain is drop glue; the handle records.
+    crate::generated_bg_4::set_login_outlet("btnSkip", handle);
 }
 
 // 0x1fff8 — -[LoginViewController mainView]
 // type: UIView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController mainView]")]
-pub fn stub_0x1fff8() -> ! {
-    todo!("0x1fff8 -[LoginViewController mainView]")
+pub fn stub_0x1fff8() -> usize {
+    // IDA 0x1fff8: `mainView` returns the `_mainView` ivar (same shape
+    // as stub_0x1ff5c). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_4::login_outlet("mainView")
 }
 
 // 0x20008 — -[LoginViewController setMainView:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setMainView:]")]
-pub fn stub_0x20008() -> ! {
-    todo!("0x20008 -[LoginViewController setMainView:]")
+pub fn stub_0x20008(handle: usize) {
+    // IDA 0x20008: `setMainView:` retains via `objc_setProperty` (same
+    // shape as stub_0x1ff6c). Retain is drop glue; the handle records.
+    crate::generated_bg_4::set_login_outlet("mainView", handle);
 }
 
 // 0x2002c — -[LoginViewController EnvironmentPicker]
 // type: UIPickerView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController EnvironmentPicker]")]
-pub fn stub_0x2002c() -> ! {
-    todo!("0x2002c -[LoginViewController EnvironmentPicker]")
+pub fn stub_0x2002c() -> usize {
+    // IDA 0x2002c: `EnvironmentPicker` returns the `_EnvironmentPicker`
+    // ivar (same shape as stub_0x1ff5c). Opaque `id` handle; 0 when
+    // unset.
+    crate::generated_bg_4::login_outlet("EnvironmentPicker")
 }
 
 // 0x2003c — -[LoginViewController setEnvironmentPicker:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setEnvironmentPicker:]")]
-pub fn stub_0x2003c() -> ! {
-    todo!("0x2003c -[LoginViewController setEnvironmentPicker:]")
+pub fn stub_0x2003c(handle: usize) {
+    // IDA 0x2003c: `setEnvironmentPicker:` retains via `objc_setProperty`
+    // (same shape as stub_0x1ff6c). Retain is drop glue; the handle
+    // records.
+    crate::generated_bg_4::set_login_outlet("EnvironmentPicker", handle);
 }
 
 // 0x20060 — -[LoginViewController rememberPwLabel]
 // type: UILabel *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController rememberPwLabel]")]
-pub fn stub_0x20060() -> ! {
-    todo!("0x20060 -[LoginViewController rememberPwLabel]")
+pub fn stub_0x20060() -> usize {
+    // IDA 0x20060: `rememberPwLabel` returns the `_rememberPwLabel` ivar
+    // (same shape as stub_0x1ff5c). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_4::login_outlet("rememberPwLabel")
 }
 
 // 0x20070 — -[LoginViewController setRememberPwLabel:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setRememberPwLabel:]")]
-pub fn stub_0x20070() -> ! {
-    todo!("0x20070 -[LoginViewController setRememberPwLabel:]")
+pub fn stub_0x20070(handle: usize) {
+    // IDA 0x20070: `setRememberPwLabel:` retains via `objc_setProperty`
+    // (same shape as stub_0x1ff6c). Retain is drop glue; the handle
+    // records.
+    crate::generated_bg_4::set_login_outlet("rememberPwLabel", handle);
 }
 
 // 0x20094 — -[LoginViewController loginLabel]
 // type: UILabel *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController loginLabel]")]
-pub fn stub_0x20094() -> ! {
-    todo!("0x20094 -[LoginViewController loginLabel]")
+pub fn stub_0x20094() -> usize {
+    // IDA 0x20094: `loginLabel` returns the `_loginLabel` ivar (same
+    // shape as stub_0x1ff5c). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_4::login_outlet("loginLabel")
 }
 
 // 0x200a4 — -[LoginViewController setLoginLabel:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setLoginLabel:]")]
-pub fn stub_0x200a4() -> ! {
-    todo!("0x200a4 -[LoginViewController setLoginLabel:]")
+pub fn stub_0x200a4(handle: usize) {
+    // IDA 0x200a4: `setLoginLabel:` retains via `objc_setProperty` (same
+    // shape as stub_0x1ff6c). Retain is drop glue; the handle records.
+    crate::generated_bg_4::set_login_outlet("loginLabel", handle);
 }
 
 // 0x200c8 — -[LoginViewController signupLabel]
 // type: UILabel *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController signupLabel]")]
-pub fn stub_0x200c8() -> ! {
-    todo!("0x200c8 -[LoginViewController signupLabel]")
+pub fn stub_0x200c8() -> usize {
+    // IDA 0x200c8: `signupLabel` returns the `_signupLabel` ivar (same
+    // shape as stub_0x1ff5c). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_4::login_outlet("signupLabel")
 }
 
 // 0x200d8 — -[LoginViewController setSignupLabel:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setSignupLabel:]")]
-pub fn stub_0x200d8() -> ! {
-    todo!("0x200d8 -[LoginViewController setSignupLabel:]")
+pub fn stub_0x200d8(handle: usize) {
+    // IDA 0x200d8: `setSignupLabel:` retains via `objc_setProperty`
+    // (same shape as stub_0x1ff6c). Retain is drop glue; the handle
+    // records.
+    crate::generated_bg_4::set_login_outlet("signupLabel", handle);
 }
 
 // 0x200fc — -[LoginViewController swiRememberMyPassword]
 // type: UISwitch *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController swiRememberMyPassword]")]
-pub fn stub_0x200fc() -> ! {
-    todo!("0x200fc -[LoginViewController swiRememberMyPassword]")
+pub fn stub_0x200fc() -> usize {
+    // IDA 0x200fc: `swiRememberMyPassword` returns the
+    // `_swiRememberMyPassword` ivar (same shape as stub_0x1ff5c).
+    // Opaque `id` handle; 0 when unset.
+    crate::generated_bg_4::login_outlet("swiRememberMyPassword")
 }
 
 // 0x2010c — -[LoginViewController setSwiRememberMyPassword:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setSwiRememberMyPassword:]")]
-pub fn stub_0x2010c() -> ! {
-    todo!("0x2010c -[LoginViewController setSwiRememberMyPassword:]")
+pub fn stub_0x2010c(handle: usize) {
+    // IDA 0x2010c: `setSwiRememberMyPassword:` retains via
+    // `objc_setProperty` (same shape as stub_0x1ff6c). Retain is drop
+    // glue; the handle records.
+    crate::generated_bg_4::set_login_outlet("swiRememberMyPassword", handle);
 }
 
 // 0x20130 — -[LoginViewController scrollView]
 // type: UIScrollView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController scrollView]")]
-pub fn stub_0x20130() -> ! {
-    todo!("0x20130 -[LoginViewController scrollView]")
+pub fn stub_0x20130() -> usize {
+    // IDA 0x20130: `scrollView` returns the `_scrollView` ivar (same
+    // shape as stub_0x1ff5c). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_4::login_outlet("scrollView")
 }
 
 // 0x20140 — -[LoginViewController setScrollView:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setScrollView:]")]
-pub fn stub_0x20140() -> ! {
-    todo!("0x20140 -[LoginViewController setScrollView:]")
+pub fn stub_0x20140(handle: usize) {
+    // IDA 0x20140: `setScrollView:` retains via `objc_setProperty`
+    // (same shape as stub_0x1ff6c). Retain is drop glue; the handle
+    // records.
+    crate::generated_bg_4::set_login_outlet("scrollView", handle);
 }
 
 // 0x20164 — -[LoginViewController imgUsernamePasswordBackground]
 // type: UIImageView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController imgUsernamePasswordBackground]")]
-pub fn stub_0x20164() -> ! {
-    todo!("0x20164 -[LoginViewController imgUsernamePasswordBackground]")
+pub fn stub_0x20164() -> usize {
+    // IDA 0x20164: `imgUsernamePasswordBackground` returns the
+    // `_imgUsernamePasswordBackground` ivar (same shape as stub_0x1ff5c).
+    // Opaque `id` handle; 0 when unset.
+    crate::generated_bg_4::login_outlet("imgUsernamePasswordBackground")
 }
 
 // 0x20174 — -[LoginViewController setImgUsernamePasswordBackground:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setImgUsernamePasswordBackground:]")]
-pub fn stub_0x20174() -> ! {
-    todo!("0x20174 -[LoginViewController setImgUsernamePasswordBackground:]")
+pub fn stub_0x20174(handle: usize) {
+    // IDA 0x20174: `setImgUsernamePasswordBackground:` retains via
+    // `objc_setProperty` (same shape as stub_0x1ff6c). Retain is drop
+    // glue; the handle records.
+    crate::generated_bg_4::set_login_outlet("imgUsernamePasswordBackground", handle);
 }
 
 // 0x20198 — -[LoginViewController robloxLogo]
 // type: UIImageView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController robloxLogo]")]
-pub fn stub_0x20198() -> ! {
-    todo!("0x20198 -[LoginViewController robloxLogo]")
+pub fn stub_0x20198() -> usize {
+    // IDA 0x20198: `robloxLogo` returns the `_robloxLogo` ivar (same
+    // shape as stub_0x1ff5c). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_4::login_outlet("robloxLogo")
 }
 
 // 0x201a8 — -[LoginViewController setRobloxLogo:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setRobloxLogo:]")]
-pub fn stub_0x201a8() -> ! {
-    todo!("0x201a8 -[LoginViewController setRobloxLogo:]")
+pub fn stub_0x201a8(handle: usize) {
+    // IDA 0x201a8: `setRobloxLogo:` retains via `objc_setProperty`
+    // (same shape as stub_0x1ff6c). Retain is drop glue; the handle
+    // records.
+    crate::generated_bg_4::set_login_outlet("robloxLogo", handle);
 }
 
 // 0x201cc — -[LoginViewController loginFieldViews]
 // type: UIView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController loginFieldViews]")]
-pub fn stub_0x201cc() -> ! {
-    todo!("0x201cc -[LoginViewController loginFieldViews]")
+pub fn stub_0x201cc() -> usize {
+    // IDA 0x201cc: `loginFieldViews` returns the `_loginFieldViews`
+    // ivar (same shape as stub_0x1ff5c). Opaque `id` handle; 0 when
+    // unset.
+    crate::generated_bg_4::login_outlet("loginFieldViews")
 }
 
 // 0x201dc — -[LoginViewController setLoginFieldViews:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setLoginFieldViews:]")]
-pub fn stub_0x201dc() -> ! {
-    todo!("0x201dc -[LoginViewController setLoginFieldViews:]")
+pub fn stub_0x201dc(handle: usize) {
+    // IDA 0x201dc: `setLoginFieldViews:` retains via `objc_setProperty`
+    // (same shape as stub_0x1ff6c). Retain is drop glue; the handle
+    // records.
+    crate::generated_bg_4::set_login_outlet("loginFieldViews", handle);
 }
 
 // 0x20200 — -[LoginViewController loginActivityIndicator]
 // type: UIActivityIndicatorView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController loginActivityIndicator]")]
-pub fn stub_0x20200() -> ! {
-    todo!("0x20200 -[LoginViewController loginActivityIndicator]")
+pub fn stub_0x20200() -> usize {
+    // IDA 0x20200: `loginActivityIndicator` returns the
+    // `_loginActivityIndicator` ivar (same shape as stub_0x1ff5c).
+    // Opaque `id` handle; 0 when unset.
+    crate::generated_bg_4::login_outlet("loginActivityIndicator")
 }
 
 // 0x20210 — -[LoginViewController setLoginActivityIndicator:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setLoginActivityIndicator:]")]
-pub fn stub_0x20210() -> ! {
-    todo!("0x20210 -[LoginViewController setLoginActivityIndicator:]")
+pub fn stub_0x20210(handle: usize) {
+    // IDA 0x20210: `setLoginActivityIndicator:` retains via
+    // `objc_setProperty` (same shape as stub_0x1ff6c). Retain is drop
+    // glue; the handle records.
+    crate::generated_bg_4::set_login_outlet("loginActivityIndicator", handle);
 }
 
 // 0x20234 — -[LoginViewController aboutButton]
 // type: UIButton *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController aboutButton]")]
-pub fn stub_0x20234() -> ! {
-    todo!("0x20234 -[LoginViewController aboutButton]")
+pub fn stub_0x20234() -> usize {
+    // IDA 0x20234: `aboutButton` returns the `_aboutButton` ivar (same
+    // shape as stub_0x1ff5c). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_4::login_outlet("aboutButton")
 }
 
 // 0x20244 — -[LoginViewController setAboutButton:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setAboutButton:]")]
-pub fn stub_0x20244() -> ! {
-    todo!("0x20244 -[LoginViewController setAboutButton:]")
+pub fn stub_0x20244(handle: usize) {
+    // IDA 0x20244: `setAboutButton:` retains via `objc_setProperty`
+    // (same shape as stub_0x1ff6c). Retain is drop glue; the handle
+    // records.
+    crate::generated_bg_4::set_login_outlet("aboutButton", handle);
 }
 
 // 0x20268 — -[LoginViewController playNowLabel]
 // type: UILabel *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController playNowLabel]")]
-pub fn stub_0x20268() -> ! {
-    todo!("0x20268 -[LoginViewController playNowLabel]")
+pub fn stub_0x20268() -> usize {
+    // IDA 0x20268: `playNowLabel` returns the `_playNowLabel` ivar
+    // (0x20268-0x20274). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_4::login_outlet("playNowLabel")
 }
 
 // 0x20278 — -[LoginViewController setPlayNowLabel:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setPlayNowLabel:]")]
-pub fn stub_0x20278() -> ! {
-    todo!("0x20278 -[LoginViewController setPlayNowLabel:]")
+pub fn stub_0x20278(handle: usize) {
+    // IDA 0x20278: `setPlayNowLabel:` retains via `objc_setProperty`
+    // (0x20278-0x20292). Retain is drop glue; the handle records.
+    crate::generated_bg_4::set_login_outlet("playNowLabel", handle);
 }
 
 // 0x2029c — -[LoginViewController versionLabel]
 // type: UILabel *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController versionLabel]")]
-pub fn stub_0x2029c() -> ! {
-    todo!("0x2029c -[LoginViewController versionLabel]")
+pub fn stub_0x2029c() -> usize {
+    // IDA 0x2029c: `versionLabel` returns the `_versionLabel` ivar
+    // (same shape as stub_0x1ff5c). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_4::login_outlet("versionLabel")
 }
 
 // 0x202ac — -[LoginViewController setVersionLabel:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setVersionLabel:]")]
-pub fn stub_0x202ac() -> ! {
-    todo!("0x202ac -[LoginViewController setVersionLabel:]")
+pub fn stub_0x202ac(handle: usize) {
+    // IDA 0x202ac: `setVersionLabel:` retains via `objc_setProperty`
+    // (same shape as stub_0x1ff6c). Retain is drop glue; the handle
+    // records.
+    crate::generated_bg_4::set_login_outlet("versionLabel", handle);
 }
 
 // 0x202d0 — __GLOBAL__I_a_5
