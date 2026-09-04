@@ -520,6 +520,159 @@ pub fn report_abuse_lua(
     false
 }
 
+/// One `AbuseReport` (IDA 0xa0a15c): the reported user, the comment, and
+/// the tagged message texts.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct AbuseReport {
+    pub user_id: u32,
+    pub comment: String,
+    pub messages: Vec<ChatMessage>,
+}
+
+/// `AbuseReport::addMessage` (IDA 0xa0a15c): appends below the
+/// `GameSettings + 100` capacity (0xa0a188..0xa0a1c8) when the channel
+/// deems the message relevant — chat/game always, team/whisper on the
+/// same-user checks (0xa0a23a..0xa0a342, resolved engine-side into
+/// `relevant`).
+pub fn add_abuse_message(
+    report: &mut AbuseReport,
+    capacity: usize,
+    relevant: bool,
+    message: ChatMessage,
+) -> bool {
+    if report.messages.len() >= capacity || !relevant {
+        return false;
+    }
+    report.messages.push(message);
+    true
+}
+
+/// One `AbuseReporter` (IDA 0xa0a4ec): the endpoint plus the pending
+/// queue drained by the `rbx_abusereporter` worker (engine-side thread).
+#[derive(Clone, Debug, Default)]
+pub struct AbuseReporter {
+    pub url: String,
+    pub pending: Vec<AbuseReport>,
+}
+
+/// `AbuseReporter::AbuseReporter(url)` (IDA 0xa0a4ec): builds the queue
+/// and spawns the worker (engine-side).
+pub fn create_abuse_reporter(url: String) -> AbuseReporter {
+    AbuseReporter { url, pending: Vec::new() }
+}
+
+/// Renders one report message element (IDA 0xa0c044 `writeMessage`).
+pub fn write_abuse_message_xml(text: &str, user_id: u32, guid: &str) -> String {
+    format!("<message userID=\"{user_id}\" guid=\"{guid}\">{text}</message>")
+}
+
+/// `AbuseReporter::processRequests` (IDA 0xa0ac84): snapshots the pending
+/// queue; with nothing new returns false (0xa0ad1e..0xa0ad6a). Otherwise
+/// it serializes `<report userID><comment><messages>` via `writeMessage`
+/// per message, posts it with `Http::post`, and logs "Posted abuse
+/// report to %s" (0xa0ad76..0xa0b02e, engine-side XML/HTTP). Returns
+/// whether a report was posted.
+pub fn process_abuse_requests(
+    reporter: &mut AbuseReporter,
+    post: &mut dyn FnMut(&str, &str),
+) -> bool {
+    if reporter.pending.is_empty() {
+        return false;
+    }
+    for report in reporter.pending.drain(..) {
+        let mut messages = String::new();
+        for message in &report.messages {
+            messages.push_str(&write_abuse_message_xml(&message.text, report.user_id, ""));
+        }
+        let body = format!(
+            "<report userID=\"{}\"><comment>{}</comment><messages>{messages}</messages></report>",
+            report.user_id, report.comment,
+        );
+        post(&reporter.url, &body);
+    }
+    true
+}
+
+/// `Players::reportAbuse` route (IDA 0xa0c340): with a local reporter set
+/// the report files locally ("Submitting abuse report on %s"); otherwise
+/// a 137-byte packet (user id + text) goes to the game server at priority
+/// 1 ("Sending abuse report to game server via Raknet"), throwing
+/// "Can't report abuse: Not in a networked game" when disconnected
+/// (0xa0ca26..0xa0ca6c, mirrored as a panic).
+pub const ABUSE_BYTE: u8 = 137;
+
+/// Routes one abuse report; returns true when it went out on the wire.
+pub fn report_abuse(
+    use_local_reporter: bool,
+    connected: bool,
+    stream: &mut crate::bitstream::BitStream,
+    user_id: u32,
+    text: &str,
+    send: &mut dyn FnMut(&mut crate::bitstream::BitStream),
+    add: &mut dyn FnMut(),
+) -> bool {
+    // IDA 0xa0c358..0xa0c550: local-reporter path.
+    if use_local_reporter {
+        add();
+        return false;
+    }
+    // IDA 0xa0c6d6..0xa0ca6c: server path needs a connection.
+    if !connected {
+        panic!("Can't report abuse: Not in a networked game");
+    }
+    // IDA 0xa0c7e0..0xa0c802: 137 + user id + text.
+    stream.write_u8(ABUSE_BYTE);
+    stream.write_u32(user_id);
+    stream.write_string(text);
+    send(stream);
+    true
+}
+
+/// `Players::checkChat` (IDA 0xa0d110): without a local player throws
+/// "No local Player to chat from" (0xa0d160); without a network throws
+/// "No network to chat to" (0xa0d168); SuperSafe chat must start with
+/// "/sc " (0xa0d18a..0xad19e — `find` is falsy only at position 0),
+/// else "SuperSafe chat is on" throws. Throws mirror as panics.
+pub fn check_chat(local_present: bool, connected: bool, supersafe: bool, text: &str) {
+    if !local_present {
+        panic!("No local Player to chat from");
+    }
+    if !connected {
+        panic!("No network to chat to");
+    }
+    if supersafe && !text.starts_with("/sc ") {
+        panic!("SuperSafe chat is on");
+    }
+}
+
+/// `Players::addChatMessage` (IDA 0xa0ee1c): appends a copy of the
+/// message, trims the oldest past the `GameSettings + 96` capacity
+/// (0xa0eebc..0xa0eeb8), and raises the chat-message signal (0xa0eee0).
+pub fn add_chat_message(
+    log: &mut Vec<ChatMessage>,
+    message: ChatMessage,
+    capacity: usize,
+    raise: &mut dyn FnMut(&ChatMessage),
+) {
+    log.push(message.clone());
+    while log.len() > capacity {
+        log.remove(0);
+    }
+    raise(&message);
+}
+
+/// `Players::raiseChatMessageSignal` (IDA 0xa0d488): fires the chat
+/// signal with the message. The signal stays engine-side.
+pub fn raise_chat_message_signal(message: &ChatMessage, raise: &mut dyn FnMut(&ChatMessage)) {
+    raise(message);
+}
+
+/// `Players::raisePlayerChattedSignal` (IDA 0xa0ded8): fires the
+/// player-chatted signal with the message. The signal stays engine-side.
+pub fn raise_player_chatted_signal(message: &ChatMessage, raise: &mut dyn FnMut(&ChatMessage)) {
+    raise(message);
+}
+
 /// `Player::loadData` routing (IDA 0xa7fbf0): guests (`user_id <= -1`,
 /// `this + 39`) take the synchronous empty result; everyone else fetches
 /// over the web service. Panics mirror the `runtime_error` throws.
@@ -1107,5 +1260,80 @@ mod tests {
         let game = ChatMessage::new("x".to_owned(), 3, 3);
         assert_eq!(game.report_abuse_message(None), "[[game]]x");
         assert_eq!(msg.clone(), msg);
+    }
+
+    #[test]
+    fn abuse_report_appends_posts_and_checks() {
+        // IDA 0xa0a15c/0xa0ac84/0xa0c044/0xa0d110/0xa0ee1c.
+        let mut report = AbuseReport::default();
+        assert!(add_abuse_message(&mut report, 2, true, ChatMessage::new("a".to_owned(), 0, 1)));
+        assert!(add_abuse_message(&mut report, 2, true, ChatMessage::new("b".to_owned(), 0, 1)));
+        assert!(!add_abuse_message(&mut report, 2, true, ChatMessage::new("c".to_owned(), 0, 1)));
+        assert!(!add_abuse_message(&mut AbuseReport::default(), 2, false, ChatMessage::new("c".to_owned(), 0, 1)));
+        assert_eq!(
+            write_abuse_message_xml("hi", 7, "g"),
+            "<message userID=\"7\" guid=\"g\">hi</message>"
+        );
+        let mut reporter = create_abuse_reporter("http://x".to_owned());
+        assert!(!process_abuse_requests(&mut reporter, &mut |_, _| panic!("empty")));
+        reporter.pending.push(report);
+        let mut posted = Vec::new();
+        assert!(process_abuse_requests(&mut reporter, &mut |url, body| posted.push((url.to_owned(), body.to_owned()))));
+        assert!(reporter.pending.is_empty());
+        assert_eq!(posted[0].0, "http://x");
+        assert!(posted[0].1.contains("<report userID=\"0\">"));
+        assert!(posted[0].1.contains("<message userID=\"0\" guid=\"\">a</message>"));
+        check_chat(true, true, false, "hi");
+        check_chat(true, true, true, "/sc hi");
+        let mut log = Vec::new();
+        let mut raised = Vec::new();
+        add_chat_message(&mut log, ChatMessage::new("a".to_owned(), 0, 1), 1, &mut |m| raised.push(m.clone()));
+        add_chat_message(&mut log, ChatMessage::new("b".to_owned(), 0, 1), 1, &mut |m| raised.push(m.clone()));
+        assert_eq!(log.len(), 1);
+        assert_eq!(log[0].text, "b");
+        assert_eq!(raised.len(), 2);
+        raise_chat_message_signal(&log[0], &mut |_| {});
+        raise_player_chatted_signal(&log[0], &mut |_| {});
+    }
+
+    #[test]
+    #[should_panic(expected = "No local Player to chat from")]
+    fn chat_needs_local() {
+        check_chat(false, true, false, "hi");
+    }
+
+    #[test]
+    #[should_panic(expected = "No network to chat to")]
+    fn chat_needs_network() {
+        check_chat(true, false, false, "hi");
+    }
+
+    #[test]
+    #[should_panic(expected = "SuperSafe chat is on")]
+    fn chat_supersafe_prefix() {
+        check_chat(true, true, true, "hi");
+    }
+
+    #[test]
+    fn abuse_route_needs_connection() {
+        // IDA 0xa0c340: local reporter files, server path needs the wire.
+        use crate::bitstream::BitStream;
+        let mut s = BitStream::new();
+        assert!(!report_abuse(true, true, &mut s, 1, "x", &mut |_| panic!("no send"), &mut || {}));
+        let mut s = BitStream::new();
+        let mut sent = false;
+        assert!(report_abuse(false, true, &mut s, 9, "bad", &mut |_| sent = true, &mut || panic!("no local")));
+        assert!(sent);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        assert_eq!(r.read_u8(), Some(ABUSE_BYTE));
+        assert_eq!(r.read_u32(), Some(9));
+    }
+
+    #[test]
+    #[should_panic(expected = "Can't report abuse")]
+    fn abuse_route_throws_offline() {
+        use crate::bitstream::BitStream;
+        let mut s = BitStream::new();
+        let _ = report_abuse(false, false, &mut s, 1, "x", &mut |_| {}, &mut || {});
     }
 }

@@ -14193,22 +14193,25 @@ pub fn stub_a09dcc(message: &crate::player::ChatMessage, target_name: Option<&st
 // 0xa0a15c — __ZN3RBX7Network11AbuseReport10addMessageEN5boost10shared_ptrINS0_6PlayerEEERKNS0_11ChatMessageE
 // type: void __fastcall(int, int *, const std::string *, int)
 #[doc(alias = "RBX::Network::AbuseReport::addMessage(rbx_core::SharedPtr<RBX::Network::Player>,RBX::Network::ChatMessage const&)")]
-pub fn stub_a0a15c() -> ! {
-    todo!("0xa0a15c RBX::Network::AbuseReport::addMessage(boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&)")
+pub fn stub_a0a15c(report: &mut crate::player::AbuseReport, capacity: usize, relevant: bool, message: crate::player::ChatMessage) -> bool {
+    // IDA 0xa0a15c: capacity + relevance gates, then append.
+    crate::player::add_abuse_message(report, capacity, relevant, message)
 }
 
 // 0xa0a4ec — __ZN3RBX7Network13AbuseReporterC2ESs
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Network::AbuseReporter::AbuseReporter(std::string)")]
-pub fn stub_a0a4ec() -> ! {
-    todo!("0xa0a4ec RBX::Network::AbuseReporter::AbuseReporter(std::string)")
+pub fn stub_a0a4ec(url: String) -> crate::player::AbuseReporter {
+    // IDA 0xa0a4ec: builds the queue and spawns the `rbx_abusereporter` worker (engine-side).
+    crate::player::create_abuse_reporter(url)
 }
 
 // 0xa0ac84 — __ZN3RBX7Network13AbuseReporter15processRequestsEN5boost10shared_ptrINS1_4dataEEESs
 // type: int __fastcall(struct _Unwind_Exception **, std::string *)
 #[doc(alias = "RBX::Network::AbuseReporter::processRequests(rbx_core::SharedPtr<RBX::Network::AbuseReporter::data>,std::string)")]
-pub fn stub_a0ac84() -> ! {
-    todo!("0xa0ac84 RBX::Network::AbuseReporter::processRequests(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string)")
+pub fn stub_a0ac84(reporter: &mut crate::player::AbuseReporter, post: &mut dyn FnMut(&str, &str)) -> bool {
+    // IDA 0xa0ac84: snapshot the queue, serialize the report XML, post it.
+    crate::player::process_abuse_requests(reporter, post)
 }
 
 // 0xa0ba5c — __ZN3RBX7Network13AbuseReporter3addERNS0_11AbuseReportEN5boost10shared_ptrINS0_6PlayerEEERKSt4listINS0_11ChatMessageESaIS9_EE
@@ -14221,50 +14224,69 @@ pub fn stub_a0ba5c() -> ! {
 // 0xa0c044 — __ZL12writeMessageRKN3RBX7Network11AbuseReport7MessageEP10XmlElement
 // type: void __fastcall(int *, int)
 #[doc(alias = "writeMessage(RBX::Network::AbuseReport::Message const&,XmlElement *)")]
-pub fn stub_a0c044() -> ! {
-    todo!("0xa0c044 writeMessage(RBX::Network::AbuseReport::Message const&,XmlElement *)")
+pub fn stub_a0c044(text: &str, user_id: u32, guid: &str) -> String {
+    // IDA 0xa0c044: appends the `<message>` element with `userID`/`guid`.
+    crate::player::write_abuse_message_xml(text, user_id, guid)
 }
 
 // 0xa0c340 — __ZN3RBX7Network7Players11reportAbuseEPNS0_6PlayerERKSs
 // type: void __fastcall(RBX::Network::Players *this, RBX::Network::Player *, const std::string *)
 #[doc(alias = "RBX::Network::Players::reportAbuse(RBX::Network::Player *,std::string const&)")]
-pub fn stub_a0c340() -> ! {
-    todo!("0xa0c340 RBX::Network::Players::reportAbuse(RBX::Network::Player *,std::string const&)")
+pub fn stub_a0c340(
+    use_local_reporter: bool,
+    connected: bool,
+    stream: &mut crate::bitstream::BitStream,
+    user_id: u32,
+    text: &str,
+    send: &mut dyn FnMut(&mut crate::bitstream::BitStream),
+    add: &mut dyn FnMut(),
+) -> bool {
+    // IDA 0xa0c340: local file vs 137-byte server packet.
+    crate::player::report_abuse(use_local_reporter, connected, stream, user_id, text, send, add)
 }
 
 // 0xa0d110 — __ZN3RBX7Network7Players9checkChatERKSs
 // type: void __fastcall(RBX::Network::Players *this, const std::string *)
 #[doc(alias = "RBX::Network::Players::checkChat(std::string const&)")]
-pub fn stub_a0d110() -> ! {
-    todo!("0xa0d110 RBX::Network::Players::checkChat(std::string const&)")
+pub fn stub_a0d110(local_present: bool, connected: bool, supersafe: bool, text: &str) {
+    // IDA 0xa0d110: locality, network, and SuperSafe gates.
+    crate::player::check_chat(local_present, connected, supersafe, text);
 }
 
 // 0xa0d400 — __ZN3RBX7Network7Players15getGuidRegistryEv
 // type: _DWORD __fastcall(RBX::Network::Players *__hidden this)
 #[doc(alias = "RBX::Network::Players::getGuidRegistry(void)")]
-pub fn stub_a0d400() -> ! {
-    todo!("0xa0d400 RBX::Network::Players::getGuidRegistry(void)")
+pub fn stub_a0d400() {
+    // IDA 0xa0d400: `Players::getGuidRegistry`; the registry stays engine-side.
 }
 
 // 0xa0d488 — __ZN3RBX7Network7Players22raiseChatMessageSignalERKNS0_11ChatMessageE
 // type: void __fastcall(RBX::Network::Players *this, struct _Unwind_Exception *, int, int)
 #[doc(alias = "RBX::Network::Players::raiseChatMessageSignal(RBX::Network::ChatMessage const&)")]
-pub fn stub_a0d488() -> ! {
-    todo!("0xa0d488 RBX::Network::Players::raiseChatMessageSignal(RBX::Network::ChatMessage const&)")
+pub fn stub_a0d488(message: &crate::player::ChatMessage, raise: &mut dyn FnMut(&crate::player::ChatMessage)) {
+    // IDA 0xa0d488: fires the chat signal.
+    crate::player::raise_chat_message_signal(message, raise);
 }
 
 // 0xa0ded8 — __ZN3RBX7Network7Players24raisePlayerChattedSignalERKNS0_11ChatMessageE
 // type: void __fastcall(RBX::Network::Players *this, const RBX::Network::ChatMessage *)
 #[doc(alias = "RBX::Network::Players::raisePlayerChattedSignal(RBX::Network::ChatMessage const&)")]
-pub fn stub_a0ded8() -> ! {
-    todo!("0xa0ded8 RBX::Network::Players::raisePlayerChattedSignal(RBX::Network::ChatMessage const&)")
+pub fn stub_a0ded8(message: &crate::player::ChatMessage, raise: &mut dyn FnMut(&crate::player::ChatMessage)) {
+    // IDA 0xa0ded8: fires the player-chatted signal.
+    crate::player::raise_player_chatted_signal(message, raise);
 }
 
 // 0xa0ee1c — __ZN3RBX7Network7Players14addChatMessageERKNS0_11ChatMessageE
 // type: void __fastcall(std::_List_node_base **this, const RBX::Network::ChatMessage *)
 #[doc(alias = "RBX::Network::Players::addChatMessage(RBX::Network::ChatMessage const&)")]
-pub fn stub_a0ee1c() -> ! {
-    todo!("0xa0ee1c RBX::Network::Players::addChatMessage(RBX::Network::ChatMessage const&)")
+pub fn stub_a0ee1c(
+    log: &mut Vec<crate::player::ChatMessage>,
+    message: crate::player::ChatMessage,
+    capacity: usize,
+    raise: &mut dyn FnMut(&crate::player::ChatMessage),
+) {
+    // IDA 0xa0ee1c: append, trim past capacity, raise.
+    crate::player::add_chat_message(log, message, capacity, raise);
 }
 
 // 0xa12c94 — __ZNK3RBX7Network7Players17isMessageFilteredERKSsS3_
