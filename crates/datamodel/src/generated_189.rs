@@ -11,6 +11,7 @@ use rbx_core::SharedPtr;
 use rbx_core::signal::Signal;
 use std::collections::HashMap;
 use std::sync::atomic::{AtomicBool, AtomicI32, Ordering};
+use std::sync::LazyLock;
 
 /// `G3D::Vector2int16`: two packed `int16` lanes. IDA 0xb740 moves one
 /// element with a single 4-byte `LDR`/`STR`, so `sizeof == 4`.
@@ -136,6 +137,43 @@ impl RenderEnumDesc {
     pub fn lookup_name(&self, value: i32) -> Option<&str> {
         self.pairs.iter().find(|(v, _)| *v == value).map(|(_, n)| n.as_str())
     }
+}
+/// Rust model of `rbx::placement_any<RBX::Region3>` (IDA 0xc90c/0xceec family):
+/// a holder tag plus one enum payload word. The original stores the
+/// `typed_holder<T>::singleton()` address at +0 and the value at +4; the tag
+/// below stands in for that holder identity.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct PlacementAny {
+    pub holder: u32,
+    pub value: i32,
+}
+/// Holder identity for `typed_holder<ResolutionPreset>::singleton()` (IDA 0xc95c).
+pub const HOLDER_RESOLUTION_PRESET: u32 = 1;
+/// Holder identity for `typed_holder<QualityLevel>::singleton()` (IDA 0xcf3c).
+pub const HOLDER_QUALITY_LEVEL: u32 = 2;
+/// Rust model of `rbx::implementation::typed_holder<T>` (IDA 0xc95c/0xcf3c):
+/// the `{ typeinfo, destruct, construct }` triple. Destruct/construct are
+/// no-ops for these trivial enum payloads (IDA 0xc9d4/0xcfb4 and the
+/// 0xc9c8/0xcfa8 copy shape), so only the type identity is retained.
+#[derive(Debug, Clone, Copy)]
+pub struct TypedHolder {
+    pub type_name: &'static str,
+    pub token: u32,
+}
+/// IDA 0xc95c `singleton()::s` — `__cxa_guard` init becomes `LazyLock`.
+static RESOLUTION_PRESET_HOLDER: LazyLock<TypedHolder> = LazyLock::new(|| TypedHolder {
+    type_name: "N3RBX15CRenderSettings16ResolutionPresetE",
+    token: HOLDER_RESOLUTION_PRESET,
+});
+/// IDA 0xcf3c `singleton()::s`, homed here so `generated_190` shares one model.
+static QUALITY_LEVEL_HOLDER: LazyLock<TypedHolder> = LazyLock::new(|| TypedHolder {
+    type_name: "N3RBX15CRenderSettings12QualityLevelE",
+    token: HOLDER_QUALITY_LEVEL,
+});
+/// IDA 0xcf3c: `typed_holder<QualityLevel>::singleton()` (see `stub_0xc95c`
+/// for the init shape).
+pub fn quality_level_holder() -> &'static TypedHolder {
+    LazyLock::force(&QUALITY_LEVEL_HOLDER)
 }
 
 /// IDA 0xb33c..0xb4f8: `RBX::CRenderSettings` slots read by this file's getters.
@@ -1700,78 +1738,161 @@ pub fn stub_0xc76c(desc: &RenderEnumDesc, value: i32, out: &mut String) {
 // 0xc90c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings16ResolutionPresetEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::ResolutionPreset>(RBX::CRenderSettings::ResolutionPreset const&)")]
-pub fn stub_0xc90c() -> ! {
-    todo!("0xc90c rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::ResolutionPreset>(RBX::CRenderSettings::ResolutionPreset const&)")
+pub fn stub_0xc90c(slot: &mut PlacementAny, value: i32) -> &mut PlacementAny {
+    // IDA 0xc90c..0xc958 (decompiled): touch `singleton()` (0xc918); holder
+    // already ours → copy the payload word (0xc944); else run the old
+    // holder's destruct (a no-op for this trivial payload, 0xc938), clear
+    // (0xc93c), copy the payload (0xc94e) and install our holder (0xc950).
+    let _ = stub_0xc95c();
+    if slot.holder == HOLDER_RESOLUTION_PRESET {
+        slot.value = value;
+    } else {
+        slot.holder = 0;
+        slot.value = value;
+        slot.holder = HOLDER_RESOLUTION_PRESET;
+    }
+    slot
 }
 
 // 0xc95c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16ResolutionPresetEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::singleton(void)")]
-pub fn stub_0xc95c() -> ! {
-    todo!("0xc95c rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::singleton(void)")
+pub fn stub_0xc95c() -> &'static TypedHolder {
+    // IDA 0xc95c..0xc9c6 (decompiled): `__cxa_guard_acquire`-checked init —
+    // `s = { typeinfo, destruct_func, construct_func }` (0xc9ae..0xc9b2) —
+    // then return `&s` (0xc9c6). `LazyLock` is the `__cxa_guard` equivalent.
+    LazyLock::force(&RESOLUTION_PRESET_HOLDER)
 }
 
 // 0xc9c8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16ResolutionPresetEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::construct_func(char const*,char *)")]
-pub fn stub_0xc9c8() -> ! {
-    todo!("0xc9c8 rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::construct_func(char const*,char *)")
+pub fn stub_0xc9c8(src: *const i32, dst: *mut i32) -> i32 {
+    // IDA 0xc9c8..0xc9d0 (decompiled): `v = *src; if (dst) *dst = v; return
+    // v` — trivial copy-construct of one enum word.
+    // SAFETY: `src` must be readable; `dst` must be writable when non-null.
+    unsafe {
+        let value = *src;
+        if !dst.is_null() {
+            *dst = value;
+        }
+        value
+    }
 }
 
 // 0xc9d4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16ResolutionPresetEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::destruct_func(char *)")]
-pub fn stub_0xc9d4() -> ! {
-    todo!("0xc9d4 rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::destruct_func(char *)")
+pub fn stub_0xc9d4() {
+    // IDA 0xc9d4: empty body — trivial enum payload, nothing to destroy.
 }
 
 // 0xc9d8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToItem(RBX::CRenderSettings::ResolutionPreset const&)const")]
-pub fn stub_0xc9d8() -> ! {
-    todo!("0xc9d8 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToItem(RBX::CRenderSettings::ResolutionPreset const&)const")
+pub fn stub_0xc9d8(desc: &RenderEnumDesc, value: i32) -> i32 {
+    // IDA 0xc9d8..0xca9c (decompiled): `ReleaseAssert(value >= 0)` (:273)
+    // and `ReleaseAssert(value < enumToItem.size())` (:274) — both log and
+    // fall through — then `value < 0 ? 0 : value < size ? enumToItem[value]
+    // : 0` (0xca84..0xca9c). The table maps each value to itself here (cf.
+    // the 0xbd8c `lookup` tail-call, "identity into R0"), so a hit returns
+    // the value.
+    if value >= 0 && (value as usize) < desc.pairs.len() {
+        value
+    } else {
+        0
+    }
 }
 
 // 0xcaa4 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings16ResolutionPresetENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::ResolutionPreset const& rbx::any_cast<RBX::CRenderSettings::ResolutionPreset const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0xcaa4() -> ! {
-    todo!("0xcaa4 RBX::CRenderSettings::ResolutionPreset const& rbx::any_cast<RBX::CRenderSettings::ResolutionPreset const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_0xcaa4(slot: &PlacementAny) -> i32 {
+    // IDA 0xcaa4..0xcb4a (decompiled): holder check (0xcb10, typeinfo
+    // compare) with a name-string fallback (0xcb2c,
+    // "N3RBX15CRenderSettings16ResolutionPresetE"); mismatch throws
+    // `rbx::bad_placement_any_cast` (0xcb62) — a throw becomes a panic here
+    // (`boost::exception` maps to panics per docs/BOOST.md). Hit returns the
+    // payload word (`a1 + 1`, 0xcb4a); the original returns a pointer to it,
+    // copied out here.
+    if slot.holder != HOLDER_RESOLUTION_PRESET {
+        panic!("rbx::bad_placement_any_cast for N3RBX15CRenderSettings16ResolutionPresetE");
+    }
+    slot.value
 }
 
 // 0xcb94 — __ZN5boost16exception_detail12refcount_ptrINS0_20error_info_containerEED2Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "boost::exception_detail::refcount_ptr<boost::exception_detail::error_info_container>::~refcount_ptr()")]
-pub fn stub_0xcb94() -> ! {
-    todo!("0xcb94 boost::exception_detail::refcount_ptr<boost::exception_detail::error_info_container>::~refcount_ptr()")
+pub fn stub_0xcb94(slot: *mut *mut u8) -> *mut *mut u8 {
+    // IDA 0xcb94..0xcc14 (decompiled): `if (*a1 &&
+    // (*a1)->release() == 1) *a1 = 0; return a1` — `release()` lives behind
+    // the pointee vtable (+16) and is unmodelled, so its result is unknowable
+    // here and the slot is preserved [INFERENCE].
+    // SAFETY: `slot` must point to a valid slot.
+    slot
 }
 
 // 0xcc34 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToValue(RBX::Name const&,RBX::CRenderSettings::ResolutionPreset&)const")]
-pub fn stub_0xcc34() -> ! {
-    todo!("0xcc34 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToValue(RBX::Name const&,RBX::CRenderSettings::ResolutionPreset&)const")
+pub fn stub_0xcc34(desc: &RenderEnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0xcc34..0xccac (decompiled): two `std::map::lower_bound` walks
+    // (0xcc4a..0xcc58, then 0xcc7e..0xcc8a) with exact-match checks; hit
+    // writes `*a3 = value` (0xccaa) and returns 1 (0xccac), miss returns 0.
+    // Collapses into the table probe below.
+    if let Some(value) = desc.lookup_value(name) {
+        *out = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0xccb0 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED2Ev
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()")]
-pub fn stub_0xccb0() -> ! {
-    todo!("0xccb0 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()")
+pub fn stub_0xccb0(desc: &mut RenderEnumDesc) {
+    // IDA 0xccb0..0xcd48 (decompiled): D2 — item dtor loop (0xccdc..0xcce6),
+    // buffer `operator delete`s (0xccee..0xcd2a), map `_M_erase`s
+    // (0xcd34/0xcd3e), base `~EnumDescriptor` (0xcd48). Rust drops own the
+    // storage; the tables are released eagerly to model the frees.
+    desc.pairs.clear();
+    desc.aliases.clear();
+    desc.legacy_values.clear();
 }
 
 // 0xcd4c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToString(RBX::CRenderSettings::QualityLevel const&)const")]
-pub fn stub_0xcd4c() -> ! {
-    todo!("0xcd4c RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToString(RBX::CRenderSettings::QualityLevel const&)const")
+pub fn stub_0xcd4c(desc: &RenderEnumDesc, value: i32, out: &mut String) {
+    // IDA 0xcd4c..0xcea6 (decompiled): same `convertToString` body shape as
+    // 0xc76c — `ReleaseAssert`s (:262/:263) that fall through, then
+    // `*out = value < 0 || value >= table ? "" : table[value]`
+    // (0xce56..0xcea6).
+    match (value >= 0).then(|| desc.lookup_name(value)).flatten() {
+        Some(name) => *out = name.to_owned(),
+        None => out.clear(),
+    }
 }
 
 // 0xceec — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings12QualityLevelEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::QualityLevel>(RBX::CRenderSettings::QualityLevel const&)")]
-pub fn stub_0xceec() -> ! {
-    todo!("0xceec rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::QualityLevel>(RBX::CRenderSettings::QualityLevel const&)")
+pub fn stub_0xceec(slot: &mut PlacementAny, value: i32) -> &mut PlacementAny {
+    // IDA 0xceec..0xcf38 (decompiled): same `operator=` shape as 0xc90c for
+    // the QualityLevel holder (singleton touch 0xcef8, same-holder copy
+    // 0xcf24, else destruct 0xcf18 / clear 0xcf1c / copy 0xcf2e / install
+    // 0xcf30).
+    let _ = quality_level_holder();
+    if slot.holder == HOLDER_QUALITY_LEVEL {
+        slot.value = value;
+    } else {
+        slot.holder = 0;
+        slot.value = value;
+        slot.holder = HOLDER_QUALITY_LEVEL;
+    }
+    slot
 }
 
 #[cfg(test)]
@@ -1954,5 +2075,85 @@ mod batch3_tests {
         assert_eq!(out, 0);
         assert!(stub_0xbe08(&frm, 0, &mut s));
         assert_eq!(s, "Automatic");
+    }
+}
+
+#[cfg(test)]
+mod batch4_tests {
+    use super::*;
+    use crate::generated_190 as g190;
+    fn resolution_desc() -> RenderEnumDesc {
+        stub_0x9100()
+    }
+    #[test]
+    fn holder_singletons_carry_distinct_identities() {
+        let res = stub_0xc95c();
+        let qual = g190::stub_0xcf3c();
+        assert_eq!(res.token, HOLDER_RESOLUTION_PRESET);
+        assert_eq!(qual.token, HOLDER_QUALITY_LEVEL);
+        assert_ne!(res.token, qual.token);
+        assert!(res.type_name.contains("ResolutionPreset"));
+        assert!(qual.type_name.contains("QualityLevel"));
+        assert!(std::ptr::eq(res, stub_0xc95c()));
+    }
+    #[test]
+    fn placement_assign_installs_and_overwrites() {
+        let mut slot = PlacementAny::default();
+        stub_0xc90c(&mut slot, 3);
+        assert_eq!((slot.holder, slot.value), (HOLDER_RESOLUTION_PRESET, 3));
+        stub_0xc90c(&mut slot, 5);
+        assert_eq!((slot.holder, slot.value), (HOLDER_RESOLUTION_PRESET, 5));
+        stub_0xceec(&mut slot, 9);
+        assert_eq!((slot.holder, slot.value), (HOLDER_QUALITY_LEVEL, 9));
+        assert_eq!(stub_0xcaa4(&PlacementAny { holder: HOLDER_RESOLUTION_PRESET, value: 4 }), 4);
+        assert_eq!(g190::stub_0xd084(&slot), 9);
+    }
+    #[test]
+    #[should_panic(expected = "bad_placement_any_cast")]
+    fn any_cast_mismatched_holder_throws() {
+        stub_0xcaa4(&PlacementAny { holder: HOLDER_QUALITY_LEVEL, value: 1 });
+    }
+    #[test]
+    #[should_panic(expected = "bad_placement_any_cast")]
+    fn any_cast_quality_mismatched_holder_throws() {
+        g190::stub_0xd084(&PlacementAny::default());
+    }
+    #[test]
+    fn construct_copies_word_and_tolerates_null_dst() {
+        let src = 7i32;
+        let mut dst = 0i32;
+        assert_eq!(stub_0xc9c8(&src, &mut dst), 7);
+        assert_eq!(dst, 7);
+        assert_eq!(stub_0xc9c8(&src, core::ptr::null_mut()), 7);
+        assert_eq!(g190::stub_0xcfa8(&src, &mut dst), 7);
+        stub_0xc9d4();
+        g190::stub_0xcfb4();
+    }
+    #[test]
+    fn convert_round_trips_hit_and_miss() {
+        let desc = resolution_desc();
+        assert!(desc.pairs.len() > 2);
+        assert_eq!(stub_0xc9d8(&desc, 2), 2);
+        assert_eq!(stub_0xc9d8(&desc, -1), 0);
+        assert_eq!(stub_0xc9d8(&desc, desc.pairs.len() as i32), 0);
+        assert_eq!(g190::stub_0xcfb8(&desc, 1), 1);
+        let mut out = -1;
+        assert!(stub_0xcc34(&desc, "Automatic", &mut out));
+        assert_eq!(out, 0);
+        assert!(!g190::stub_0xd174(&desc, "nope", &mut out));
+        let mut s = String::from("stale");
+        stub_0xcd4c(&desc, 0, &mut s);
+        assert!(!s.is_empty());
+        stub_0xcd4c(&desc, -1, &mut s);
+        assert!(s.is_empty());
+    }
+    #[test]
+    fn dtors_release_the_tables() {
+        let mut desc = resolution_desc();
+        stub_0xccb0(&mut desc);
+        assert!(desc.pairs.is_empty() && desc.aliases.is_empty());
+        let mut desc = resolution_desc();
+        g190::stub_0xd1f0(&mut desc);
+        assert!(desc.pairs.is_empty() && desc.aliases.is_empty());
     }
 }

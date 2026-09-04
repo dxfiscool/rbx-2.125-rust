@@ -8,54 +8,99 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::generated_189::{HOLDER_QUALITY_LEVEL, PlacementAny, RenderEnumDesc, quality_level_holder};
 
 // 0xcf3c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12QualityLevelEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::singleton(void)")]
-pub fn stub_0xcf3c() -> ! {
-    todo!("0xcf3c rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::singleton(void)")
+pub fn stub_0xcf3c() -> &'static crate::generated_189::TypedHolder {
+    // IDA 0xcf3c..0xcfa6 (decompiled): same `singleton` shape as 0xc95c —
+    // `__cxa_guard_acquire`-checked init of `s = { typeinfo, destruct_func,
+    // construct_func }` (0xcf8e..0xcf92), then return `&s` (0xcfa6).
+    // Homed on the shared `LazyLock` model in `generated_189`.
+    quality_level_holder()
 }
 
 // 0xcfa8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12QualityLevelEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::construct_func(char const*,char *)")]
-pub fn stub_0xcfa8() -> ! {
-    todo!("0xcfa8 rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::construct_func(char const*,char *)")
+pub fn stub_0xcfa8(src: *const i32, dst: *mut i32) -> i32 {
+    // IDA 0xcfa8..0xcfb0 (decompiled): same `construct_func` shape as 0xc9c8 —
+    // `v = *src; if (dst) *dst = v; return v`.
+    // SAFETY: `src` must be readable; `dst` must be writable when non-null.
+    unsafe {
+        let value = *src;
+        if !dst.is_null() {
+            *dst = value;
+        }
+        value
+    }
 }
 
 // 0xcfb4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12QualityLevelEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::destruct_func(char *)")]
-pub fn stub_0xcfb4() -> ! {
-    todo!("0xcfb4 rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::destruct_func(char *)")
+pub fn stub_0xcfb4() {
+    // IDA 0xcfb4: empty body — trivial enum payload, nothing to destroy.
 }
 
 // 0xcfb8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToItem(RBX::CRenderSettings::QualityLevel const&)const")]
-pub fn stub_0xcfb8() -> ! {
-    todo!("0xcfb8 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToItem(RBX::CRenderSettings::QualityLevel const&)const")
+pub fn stub_0xcfb8(desc: &RenderEnumDesc, value: i32) -> i32 {
+    // IDA 0xcfb8..0xd07c (decompiled): same `convertToItem` shape as 0xc9d8 —
+    // `ReleaseAssert(value >= 0)` (:273) and
+    // `ReleaseAssert(value < enumToItem.size())` (:274) fall through, then
+    // `value < 0 ? 0 : value < size ? enumToItem[value] : 0`
+    // (0xd064..0xd07c); the table is identity here.
+    if value >= 0 && (value as usize) < desc.pairs.len() {
+        value
+    } else {
+        0
+    }
 }
 
 // 0xd084 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings12QualityLevelENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::QualityLevel const& rbx::any_cast<RBX::CRenderSettings::QualityLevel const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0xd084() -> ! {
-    todo!("0xd084 RBX::CRenderSettings::QualityLevel const& rbx::any_cast<RBX::CRenderSettings::QualityLevel const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_0xd084(slot: &PlacementAny) -> i32 {
+    // IDA 0xd084..0xd12a (decompiled): same `any_cast` shape as 0xcaa4 —
+    // holder check (0xd0f0) with the
+    // "N3RBX15CRenderSettings12QualityLevelE" name fallback (0xd10c);
+    // mismatch throws `rbx::bad_placement_any_cast` (0xd142), modelled as a
+    // panic; hit returns the payload word (0xd12a), copied out here.
+    if slot.holder != HOLDER_QUALITY_LEVEL {
+        panic!("rbx::bad_placement_any_cast for N3RBX15CRenderSettings12QualityLevelE");
+    }
+    slot.value
 }
 
 // 0xd174 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToValue(RBX::Name const&,RBX::CRenderSettings::QualityLevel&)const")]
-pub fn stub_0xd174() -> ! {
-    todo!("0xd174 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToValue(RBX::Name const&,RBX::CRenderSettings::QualityLevel&)const")
+pub fn stub_0xd174(desc: &RenderEnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0xd174..0xd1ec (decompiled): same `convertToValue` shape as 0xcc34 —
+    // two `std::map::lower_bound` walks (0xd18a..0xd198, 0xd1be..0xd1ca);
+    // hit writes `*a3` (0xd1ea) and returns 1 (0xd1ec), miss returns 0.
+    if let Some(value) = desc.lookup_value(name) {
+        *out = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0xd1f0 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED2Ev
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::~EnumDesc()")]
-pub fn stub_0xd1f0() -> ! {
-    todo!("0xd1f0 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::~EnumDesc()")
+pub fn stub_0xd1f0(desc: &mut RenderEnumDesc) {
+    // IDA 0xd1f0..0xd288 (decompiled): same D2 shape as 0xccb0 — item dtor
+    // loop (0xd21c..0xd226), buffer deletes (0xd22e..0xd26a), map `_M_erase`s
+    // (0xd274/0xd27e), base `~EnumDescriptor` (0xd288). Rust drops own the
+    // storage; the tables are released eagerly to model the frees.
+    desc.pairs.clear();
+    desc.aliases.clear();
+    desc.legacy_values.clear();
 }
 
 // 0xd28c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE15convertToStringERKS3_
