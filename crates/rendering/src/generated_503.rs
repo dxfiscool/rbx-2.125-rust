@@ -11,138 +11,336 @@
 )]
 
 use rbx_core::SharedPtr;
+use crate::generated_502::UnifiedHighLevelGpuProgram;
+
+/// was: `Ogre::Resource::LoadingState` — observed through the
+/// `UnifiedHighLevelGpuProgram::getLoadingState` forwarder (IDA `0xe4f7cc`:
+/// null delegate returns 0; `isLoading` compares against 1 at `0xe4f7ae`).
+#[doc(alias = "Ogre::Resource::LoadingState")]
+pub mod loading_state {
+    /// `LOADSTATE_UNLOADED` (IDA `0xe4f7e2`: null-delegate default).
+    pub const UNLOADED: u32 = 0;
+    /// `LOADSTATE_LOADING` (IDA `0xe4f7ae`/`0xe4f7bc`: `isLoading` vtable query).
+    pub const LOADING: u32 = 1;
+    /// `LOADSTATE_LOADED`.
+    pub const LOADED: u32 = 2;
+    /// `LOADSTATE_UNLOADING`.
+    pub const UNLOADING: u32 = 3;
+    /// `LOADSTATE_PREPARED`.
+    pub const PREPARED: u32 = 4;
+    /// `LOADSTATE_PREPARING`.
+    pub const PREPARING: u32 = 5;
+}
+
+/// was: `Ogre::UnifiedHighLevelGpuProgramFactory` (IDA `0xe50004`: stores the
+/// vtable at `off_1202478`, `0xe50010`). No data members; construction is the impl.
+#[doc(alias = "Ogre::UnifiedHighLevelGpuProgramFactory")]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct UnifiedHighLevelGpuProgramFactory;
+
+impl UnifiedHighLevelGpuProgramFactory {
+    /// IDA `0xe50004`: vtable store, return `this`.
+    pub fn new() -> Self {
+        Self
+    }
+}
+
+impl UnifiedHighLevelGpuProgram {
+    /// IDA `0xe4f70c`: bound delegate → `HighLevelGpuProgram::reload` (vtable +68);
+    /// null → `chooseDelegate` (`0xe4f71a`), retry, else return 0 (`0xe4f726`).
+    /// A reload re-establishes the loaded latch on the delegate.
+    pub fn reload(&mut self) {
+        // IDA 0xe4f712..0xe4f716: bound → delegate reload.
+        // IDA 0xe4f71a..0xe4f72c: choose, re-read +232, reload when bound now.
+        self.choose_delegate();
+        if let Some(delegate) = self.binding_delegate.as_mut() {
+            delegate.loaded = true;
+            delegate.loading_state = loading_state::LOADED;
+        }
+    }
+
+    /// IDA `0xe4f730`: forward `isReloadable` (vtable +72); null delegate → 1 (`0xe4f746`).
+    pub fn is_reloadable(&mut self) -> bool {
+        self.choose_delegate();
+        self.binding_delegate
+            .as_ref()
+            .map(|d| d.reloadable)
+            .unwrap_or(true)
+    }
+
+    /// IDA `0xe4f758`: bound delegate → `unload` (vtable +80);
+    /// null → `chooseDelegate` (`0xe4f766`), retry, else no-op (`0xe4f772`).
+    pub fn unload(&mut self) {
+        self.choose_delegate();
+        if let Some(delegate) = self.binding_delegate.as_mut() {
+            delegate.loaded = false;
+            delegate.loading_state = loading_state::UNLOADED;
+        }
+    }
+
+    /// IDA `0xe4f77c`: forward `isLoaded` (vtable +104); null delegate → 0 (`0xe4f792`).
+    pub fn resource_is_loaded(&mut self) -> bool {
+        self.choose_delegate();
+        self.binding_delegate
+            .as_ref()
+            .map(|d| d.loaded)
+            .unwrap_or(false)
+    }
+
+    /// IDA `0xe4f7a4`: forward `isLoading` (vtable +108); null delegate → 0 (`0xe4f7ba`).
+    pub fn resource_is_loading(&mut self) -> bool {
+        self.choose_delegate();
+        self.binding_delegate
+            .as_ref()
+            .map(|d| d.loading_state == loading_state::LOADING)
+            .unwrap_or(false)
+    }
+
+    /// IDA `0xe4f7cc`: forward `getLoadingState` (vtable +112); null delegate → 0 (`0xe4f7e2`).
+    pub fn loading_state(&mut self) -> u32 {
+        self.choose_delegate();
+        self.binding_delegate
+            .as_ref()
+            .map(|d| d.loading_state)
+            .unwrap_or(loading_state::UNLOADED)
+    }
+
+    /// IDA `0xe4f7f4`: forward `getSize` (vtable +84); null delegate → 0 (`0xe4f80a`).
+    pub fn resource_size(&mut self) -> usize {
+        self.choose_delegate();
+        self.binding_delegate
+            .as_ref()
+            .map(|d| d.resource_size)
+            .unwrap_or(0)
+    }
+
+    /// IDA `0xe4f840`: forward `isBackgroundLoaded` (vtable +116); null → 0 (`0xe4f856`).
+    pub fn is_background_loaded(&mut self) -> bool {
+        self.choose_delegate();
+        self.binding_delegate
+            .as_ref()
+            .map(|d| d.background_loaded)
+            .unwrap_or(false)
+    }
+
+    /// IDA `0xe4f868`: forward `setBackgroundLoaded` (vtable +120); null → no-op.
+    pub fn set_background_loaded(&mut self, loaded: bool) {
+        self.choose_delegate();
+        if let Some(delegate) = self.binding_delegate.as_mut() {
+            delegate.background_loaded = loaded;
+        }
+    }
+
+    /// IDA `0xe4f890`: forward `escalateLoading` (vtable +124); null → no-op.
+    /// `Resource::escalateLoading` finishes a background load synchronously.
+    pub fn escalate_loading(&mut self) {
+        self.choose_delegate();
+        if let Some(delegate) = self.binding_delegate.as_mut() {
+            if delegate.loading_state == loading_state::LOADING {
+                delegate.loaded = true;
+                delegate.loading_state = loading_state::LOADED;
+            }
+        }
+    }
+
+    /// IDA `0xe4f8b4`: forward `addListener` (vtable +128); null → `chooseDelegate`, no-op.
+    /// Listener pointers are opaque; the delegate tracks how many are attached.
+    pub fn add_listener(&mut self) {
+        self.choose_delegate();
+        if let Some(delegate) = self.binding_delegate.as_mut() {
+            delegate.listeners = delegate.listeners.saturating_add(1);
+        }
+    }
+
+    /// IDA `0xe4f8e0`: forward `removeListener` (vtable +132); null → `chooseDelegate`, no-op.
+    pub fn remove_listener(&mut self) {
+        self.choose_delegate();
+        if let Some(delegate) = self.binding_delegate.as_mut() {
+            delegate.listeners = delegate.listeners.saturating_sub(1);
+        }
+    }
+
+    /// IDA `0xe4f90c`: throws `Ogre::UnimplementedException` (code 9,
+    /// "This method should never get called!", `OgreUnifiedHighLevelGpuProgram.cpp:351`).
+    pub fn create_low_level_impl(&mut self) -> ! {
+        panic!(
+            "Ogre::UnimplementedException at 0xe4f90c: This method should never get called!"
+        );
+    }
+
+    /// IDA `0xe4fac0`: throws `Ogre::UnimplementedException` (code 9,
+    /// "This method should never get called!", `OgreUnifiedHighLevelGpuProgram.cpp:358`).
+    pub fn unload_high_level_impl(&mut self) -> ! {
+        panic!(
+            "Ogre::UnimplementedException at 0xe4fac0: This method should never get called!"
+        );
+    }
+
+    /// IDA `0xe4fc74`: throws `Ogre::UnimplementedException` (code 9,
+    /// "This method should never get called!", `OgreUnifiedHighLevelGpuProgram.cpp:365`).
+    pub fn build_constant_definitions(&mut self) -> ! {
+        panic!(
+            "Ogre::UnimplementedException at 0xe4fc74: This method should never get called!"
+        );
+    }
+
+    /// IDA `0xe4fe28`: throws `Ogre::UnimplementedException` (code 9,
+    /// "This method should never get called!", `OgreUnifiedHighLevelGpuProgram.cpp:372`).
+    pub fn load_from_source(&mut self) -> ! {
+        panic!(
+            "Ogre::UnimplementedException at 0xe4fe28: This method should never get called!"
+        );
+    }
+
+    /// IDA `0xe4ffdc`: returns `Ogre::StringUtil::BLANK` (`0xe4fff0`).
+    pub fn cmd_delegate_get() -> String {
+        String::new()
+    }
+
+    /// IDA `0xe4fff4`: tail-calls `addDelegateProgram(target, name)` (`0xe50000`).
+    pub fn cmd_delegate_set(&mut self, name: &str) {
+        self.add_delegate_program(name);
+    }
+}
 
 // 0xe4f70c — __ZN4Ogre26UnifiedHighLevelGpuProgram6reloadEv
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::reload(void)")]
 // was: Ogre::UnifiedHighLevelGpuProgram::reload(void)
-// IDA 0xe4f70c: 15 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_e4f70c() {
+// IDA 0xe4f70c: bound delegate reloads (vtable +68); null → chooseDelegate, retry, else 0.
+pub fn stub_e4f70c(program: &mut UnifiedHighLevelGpuProgram) {
+    program.reload()
 }
 
 // 0xe4f730 — __ZNK4Ogre26UnifiedHighLevelGpuProgram12isReloadableEv
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::isReloadable(void)const")]
 // was: Ogre::UnifiedHighLevelGpuProgram::isReloadable(void)const
-// IDA 0xe4f730: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_e4f730() {
+// IDA 0xe4f730: forward isReloadable (vtable +72); null delegate → true.
+pub fn stub_e4f730(program: &mut UnifiedHighLevelGpuProgram) -> bool {
+    program.is_reloadable()
 }
-
 // 0xe4f758 — __ZN4Ogre26UnifiedHighLevelGpuProgram6unloadEv
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::unload(void)")]
 // was: Ogre::UnifiedHighLevelGpuProgram::unload(void)
-// IDA 0xe4f758: 15 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_e4f758() {
+// IDA 0xe4f758: bound delegate unloads (vtable +80); null → chooseDelegate, retry, else no-op.
+pub fn stub_e4f758(program: &mut UnifiedHighLevelGpuProgram) {
+    program.unload()
 }
-
 // 0xe4f77c — __ZNK4Ogre26UnifiedHighLevelGpuProgram8isLoadedEv
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::isLoaded(void)const")]
 // was: Ogre::UnifiedHighLevelGpuProgram::isLoaded(void)const
-// IDA 0xe4f77c: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_e4f77c() {
+// IDA 0xe4f77c: forward isLoaded (vtable +104); null delegate → false.
+pub fn stub_e4f77c(program: &mut UnifiedHighLevelGpuProgram) -> bool {
+    program.resource_is_loaded()
 }
 
 // 0xe4f7a4 — __ZNK4Ogre26UnifiedHighLevelGpuProgram9isLoadingEv
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::isLoading(void)const")]
 // was: Ogre::UnifiedHighLevelGpuProgram::isLoading(void)const
-// IDA 0xe4f7a4: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_e4f7a4() {
+// IDA 0xe4f7a4: forward isLoading (vtable +108); null delegate → false.
+pub fn stub_e4f7a4(program: &mut UnifiedHighLevelGpuProgram) -> bool {
+    program.resource_is_loading()
 }
 
 // 0xe4f7cc — __ZNK4Ogre26UnifiedHighLevelGpuProgram15getLoadingStateEv
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::getLoadingState(void)const")]
 // was: Ogre::UnifiedHighLevelGpuProgram::getLoadingState(void)const
-// IDA 0xe4f7cc: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_e4f7cc() {
+// IDA 0xe4f7cc: forward getLoadingState (vtable +112); null delegate → UNLOADED (0).
+pub fn stub_e4f7cc(program: &mut UnifiedHighLevelGpuProgram) -> u32 {
+    program.loading_state()
 }
 
 // 0xe4f7f4 — __ZNK4Ogre26UnifiedHighLevelGpuProgram7getSizeEv
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::getSize(void)const")]
 // was: Ogre::UnifiedHighLevelGpuProgram::getSize(void)const
-// IDA 0xe4f7f4: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_e4f7f4() {
+// IDA 0xe4f7f4: forward getSize (vtable +84); null delegate → 0.
+pub fn stub_e4f7f4(program: &mut UnifiedHighLevelGpuProgram) -> usize {
+    program.resource_size()
 }
 
 // 0xe4f840 — __ZNK4Ogre26UnifiedHighLevelGpuProgram18isBackgroundLoadedEv
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::isBackgroundLoaded(void)const")]
 // was: Ogre::UnifiedHighLevelGpuProgram::isBackgroundLoaded(void)const
-// IDA 0xe4f840: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_e4f840() {
+// IDA 0xe4f840: forward isBackgroundLoaded (vtable +116); null delegate → false.
+pub fn stub_e4f840(program: &mut UnifiedHighLevelGpuProgram) -> bool {
+    program.is_background_loaded()
 }
 
 // 0xe4f868 — __ZN4Ogre26UnifiedHighLevelGpuProgram19setBackgroundLoadedEb
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::setBackgroundLoaded(bool)")]
 // was: Ogre::UnifiedHighLevelGpuProgram::setBackgroundLoaded(bool)
-// IDA 0xe4f868: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_e4f868() {
+// IDA 0xe4f868: forward setBackgroundLoaded (vtable +120); null delegate → no-op.
+pub fn stub_e4f868(program: &mut UnifiedHighLevelGpuProgram, loaded: bool) {
+    program.set_background_loaded(loaded)
 }
 
 // 0xe4f890 — __ZN4Ogre26UnifiedHighLevelGpuProgram15escalateLoadingEv
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::escalateLoading(void)")]
-// was: Ogre::UnifiedHighLevelGpuProgram::escalateLoading(void)
-// IDA 0xe4f890: 15 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_e4f890() {
+// IDA 0xe4f890: forward escalateLoading (vtable +124); null delegate → no-op.
+pub fn stub_e4f890(program: &mut UnifiedHighLevelGpuProgram) {
+    program.escalate_loading()
 }
 
 // 0xe4f8b4 — __ZN4Ogre26UnifiedHighLevelGpuProgram11addListenerEPNS_8Resource8ListenerE
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::addListener(Ogre::Resource::Listener *)")]
-// was: Ogre::UnifiedHighLevelGpuProgram::addListener(Ogre::Resource::Listener *)
-// IDA 0xe4f8b4: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_e4f8b4() {
+// IDA 0xe4f8b4: forward addListener (vtable +128); null → chooseDelegate, no-op.
+pub fn stub_e4f8b4(program: &mut UnifiedHighLevelGpuProgram) {
+    program.add_listener()
 }
 
 // 0xe4f8e0 — __ZN4Ogre26UnifiedHighLevelGpuProgram14removeListenerEPNS_8Resource8ListenerE
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::removeListener(Ogre::Resource::Listener *)")]
-// was: Ogre::UnifiedHighLevelGpuProgram::removeListener(Ogre::Resource::Listener *)
-// IDA 0xe4f8e0: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_e4f8e0() {
+// IDA 0xe4f8e0: forward removeListener (vtable +132); null → chooseDelegate, no-op.
+pub fn stub_e4f8e0(program: &mut UnifiedHighLevelGpuProgram) {
+    program.remove_listener()
 }
 
 // 0xe4f90c — __ZN4Ogre26UnifiedHighLevelGpuProgram18createLowLevelImplEv
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::createLowLevelImpl(void)")]
-// was: Ogre::UnifiedHighLevelGpuProgram::createLowLevelImpl(void)
-// IDA 0xe4f90c: 144 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_e4f90c() {
+// IDA 0xe4f90c: UnimplementedException("This method should never get called!", OgreUnifiedHighLevelGpuProgram.cpp:351).
+pub fn stub_e4f90c(program: &mut UnifiedHighLevelGpuProgram) {
+    program.create_low_level_impl()
 }
 
 // 0xe4fac0 — __ZN4Ogre26UnifiedHighLevelGpuProgram19unloadHighLevelImplEv
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::unloadHighLevelImpl(void)")]
-// was: Ogre::UnifiedHighLevelGpuProgram::unloadHighLevelImpl(void)
-// IDA 0xe4fac0: 144 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_e4fac0() {
+// IDA 0xe4fac0: UnimplementedException("This method should never get called!", OgreUnifiedHighLevelGpuProgram.cpp:358).
+pub fn stub_e4fac0(program: &mut UnifiedHighLevelGpuProgram) {
+    program.unload_high_level_impl()
 }
 
 // 0xe4fc74 — __ZNK4Ogre26UnifiedHighLevelGpuProgram24buildConstantDefinitionsEv
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::buildConstantDefinitions(void)const")]
-// was: Ogre::UnifiedHighLevelGpuProgram::buildConstantDefinitions(void)const
-// IDA 0xe4fc74: 144 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_e4fc74() {
+// IDA 0xe4fc74: UnimplementedException("This method should never get called!", OgreUnifiedHighLevelGpuProgram.cpp:365).
+pub fn stub_e4fc74(program: &mut UnifiedHighLevelGpuProgram) {
+    program.build_constant_definitions()
 }
 
 // 0xe4fe28 — __ZN4Ogre26UnifiedHighLevelGpuProgram14loadFromSourceEv
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::loadFromSource(void)")]
-// was: Ogre::UnifiedHighLevelGpuProgram::loadFromSource(void)
-// IDA 0xe4fe28: 144 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_e4fe28() {
+// IDA 0xe4fe28: UnimplementedException("This method should never get called!", OgreUnifiedHighLevelGpuProgram.cpp:372).
+pub fn stub_e4fe28(program: &mut UnifiedHighLevelGpuProgram) {
+    program.load_from_source()
 }
 
 // 0xe4ffdc — __ZNK4Ogre26UnifiedHighLevelGpuProgram11CmdDelegate5doGetEPKv
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::CmdDelegate::doGet(void const*)const")]
-// was: Ogre::UnifiedHighLevelGpuProgram::CmdDelegate::doGet(void const*)const
-// IDA 0xe4ffdc: 8 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_e4ffdc() {
+// IDA 0xe4ffdc: copies Ogre::StringUtil::BLANK (0xe4fff0).
+pub fn stub_e4ffdc() -> String {
+    UnifiedHighLevelGpuProgram::cmd_delegate_get()
 }
 
 // 0xe4fff4 — __ZN4Ogre26UnifiedHighLevelGpuProgram11CmdDelegate5doSetEPvRKSs
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::CmdDelegate::doSet(void *,std::string const&)")]
-// was: Ogre::UnifiedHighLevelGpuProgram::CmdDelegate::doSet(void *,std::string const&)
-// IDA 0xe4fff4: 6 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_e4fff4() {
+// IDA 0xe4fff4: tail-calls addDelegateProgram(target, name) (0xe50000).
+pub fn stub_e4fff4(program: &mut UnifiedHighLevelGpuProgram, name: &str) {
+    program.cmd_delegate_set(name)
 }
 
 // 0xe50004 — __ZN4Ogre33UnifiedHighLevelGpuProgramFactoryC1Ev
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgramFactory::UnifiedHighLevelGpuProgramFactory(void)")]
-// was: Ogre::UnifiedHighLevelGpuProgramFactory::UnifiedHighLevelGpuProgramFactory(void)
-// IDA 0xe50004: 5 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_e50004() {
+// IDA 0xe50004: vtable store at off_1202478 (0xe50010), return this.
+pub fn stub_e50004() -> UnifiedHighLevelGpuProgramFactory {
+    UnifiedHighLevelGpuProgramFactory::new()
 }
 
 // 0xe50014 — __ZN4Ogre33UnifiedHighLevelGpuProgramFactoryD0Ev
@@ -721,4 +919,117 @@ pub fn stub_e5e9cc() {
 // was: Ogre::Archive::remove(std::string const&)const
 // IDA 0xe5eb7c: 144 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_e5eb7c() {
+}
+
+#[cfg(test)]
+mod resource_lifecycle_tests {
+    use super::*;
+    use crate::generated_502::UnifiedHighLevelGpuProgram;
+
+    fn program_with_delegate() -> UnifiedHighLevelGpuProgram {
+        let mut program = UnifiedHighLevelGpuProgram::new();
+        program.add_delegate_program("cg");
+        program.choose_delegate();
+        program
+    }
+
+    #[test]
+    fn null_delegate_answers_match_ida_defaults() {
+        let mut program = UnifiedHighLevelGpuProgram::new();
+        // IDA 0xe4f746/0xe4f7e2/0xe4f80a/0xe4f792/0xe4f7ba/0xe4f856 null arms.
+        assert!(stub_e4f730(&mut program));
+        assert!(!stub_e4f77c(&mut program));
+        assert!(!stub_e4f7a4(&mut program));
+        assert_eq!(stub_e4f7cc(&mut program), loading_state::UNLOADED);
+        assert_eq!(stub_e4f7f4(&mut program), 0);
+        assert!(!stub_e4f840(&mut program));
+        // Null-delegate mutators are no-ops (IDA 0xe4f884/0xe4f8aa/0xe4f8d0/0xe4f8fc).
+        stub_e4f70c(&mut program);
+        stub_e4f758(&mut program);
+        stub_e4f868(&mut program, true);
+        stub_e4f890(&mut program);
+        stub_e4f8b4(&mut program);
+        stub_e4f8e0(&mut program);
+        assert!(!stub_e4f77c(&mut program));
+    }
+
+    #[test]
+    fn reload_unload_drive_delegate_latches() {
+        let mut program = program_with_delegate();
+        stub_e4f758(&mut program);
+        assert!(!stub_e4f77c(&mut program));
+        assert_eq!(stub_e4f7cc(&mut program), loading_state::UNLOADED);
+        stub_e4f70c(&mut program);
+        assert!(stub_e4f77c(&mut program));
+        assert_eq!(stub_e4f7cc(&mut program), loading_state::LOADED);
+        assert!(!stub_e4f7a4(&mut program));
+    }
+
+    #[test]
+    fn background_loaded_escalate_and_size_forward() {
+        let mut program = program_with_delegate();
+        assert!(!stub_e4f840(&mut program));
+        stub_e4f868(&mut program, true);
+        assert!(stub_e4f840(&mut program));
+        program.binding_delegate.as_mut().unwrap().resource_size = 4096;
+        assert_eq!(stub_e4f7f4(&mut program), 4096);
+        // Escalate a background load: LOADING → loaded + LOADED.
+        program.binding_delegate.as_mut().unwrap().loading_state = loading_state::LOADING;
+        program.binding_delegate.as_mut().unwrap().loaded = false;
+        assert!(stub_e4f7a4(&mut program));
+        stub_e4f890(&mut program);
+        assert!(stub_e4f77c(&mut program));
+        assert_eq!(stub_e4f7cc(&mut program), loading_state::LOADED);
+    }
+
+    #[test]
+    fn listeners_count_up_and_down() {
+        let mut program = program_with_delegate();
+        stub_e4f8b4(&mut program);
+        stub_e4f8b4(&mut program);
+        assert_eq!(program.binding_delegate.as_ref().unwrap().listeners, 2);
+        stub_e4f8e0(&mut program);
+        assert_eq!(program.binding_delegate.as_ref().unwrap().listeners, 1);
+        stub_e4f8e0(&mut program);
+        stub_e4f8e0(&mut program);
+        assert_eq!(program.binding_delegate.as_ref().unwrap().listeners, 0);
+    }
+
+    #[test]
+    fn cmd_delegate_round_trips_blank_and_name() {
+        assert_eq!(stub_e4ffdc(), "");
+        let mut program = UnifiedHighLevelGpuProgram::new();
+        stub_e4fff4(&mut program, "hlsl");
+        assert_eq!(program.delegate_names, vec!["hlsl".to_owned()]);
+    }
+
+    #[test]
+    fn factory_constructs() {
+        let factory = stub_e50004();
+        assert_eq!(factory, UnifiedHighLevelGpuProgramFactory::new());
+    }
+
+    #[test]
+    #[should_panic(expected = "This method should never get called!")]
+    fn create_low_level_impl_throws() {
+        stub_e4f90c(&mut UnifiedHighLevelGpuProgram::new());
+    }
+
+    #[test]
+    #[should_panic(expected = "This method should never get called!")]
+    fn unload_high_level_impl_throws() {
+        stub_e4fac0(&mut UnifiedHighLevelGpuProgram::new());
+    }
+
+    #[test]
+    #[should_panic(expected = "This method should never get called!")]
+    fn build_constant_definitions_throws() {
+        stub_e4fc74(&mut UnifiedHighLevelGpuProgram::new());
+    }
+
+    #[test]
+    #[should_panic(expected = "This method should never get called!")]
+    fn load_from_source_throws() {
+        stub_e4fe28(&mut UnifiedHighLevelGpuProgram::new());
+    }
 }

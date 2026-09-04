@@ -1062,22 +1062,7 @@ impl TextureUnitState {
         }
     }
 
-    /// Single-frame install shared by the `setTextureName` call sites
-    /// (IDA `0xe4d3a4`, `0xe4d39a` animated path excluded); the full
-    /// `0xe492bc` body lives in `generated_507`.
-    pub fn set_texture_name(&mut self, name: &str, texture_type: u32) {
-        self.content_type = ContentType::Named as u32;
-        self.load_failed = false;
-        self.frames.resize(1, String::new());
-        self.textures.resize(1, TextureSlot::default());
-        self.frames[0] = name.to_owned();
-        self.textures[0] = TextureSlot::default();
-        self.anim_duration = 0.0;
-        self.current_frame = 0;
-        self.flag_08 = 1;
-        self.texture_type = texture_type;
-        self.parent_dirty = true;
-    }
+    /// Full `setTextureName` (IDA `0xe492bc`) lives in `generated_507` (`set_texture_name`).
 
     /// IDA `0xe4d2f8`: `mName = name` (+340); a blank alias adopts the name (+344).
     pub fn set_name(&mut self, name: &str) {
@@ -2199,6 +2184,16 @@ pub struct GpuProgramDelegate {
     pub compile_error: bool,
     /// `Resource::load` latch.
     pub loaded: bool,
+    /// `Resource::isReloadable` answer (`Resource` ctor default is true).
+    pub reloadable: bool,
+    /// `Resource::getLoadingState` answer (`Resource::LoadingState`, default `UNLOADED` = 0).
+    pub loading_state: u32,
+    /// `Resource::getSize` answer (`mSize`, default 0).
+    pub resource_size: usize,
+    /// `Resource::isBackgroundLoaded` latch.
+    pub background_loaded: bool,
+    /// `Resource::Listener` count (`addListener`/`removeListener`; pointers opaque).
+    pub listeners: u32,
 }
 
 impl GpuProgramDelegate {
@@ -2206,6 +2201,9 @@ impl GpuProgramDelegate {
         Self {
             name: name.to_owned(),
             pass_fog_states: true,
+            // IDA `0xe4f746`: null-delegate `isReloadable` returns 1; `Resource`
+            // defaults reloadable, so bound delegates start reloadable too.
+            reloadable: true,
             ..Self::default()
         }
     }

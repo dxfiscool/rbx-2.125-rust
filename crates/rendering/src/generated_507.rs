@@ -8,14 +8,227 @@
 use rbx_core::SharedPtr;
 
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+use crate::generated_502::{TextureSlot, TextureUnitState};
+
+/// was: `Ogre::TextureManager` (OgreMain/src/OgreTextureManager.cpp, ogre-v1-6-4).
+/// Byte offsets are the IDA `(this + N)` accesses: preferred integer depth +152
+/// (`0xe486ec`), preferred float depth +154 (`0xe48768`), default mipmaps +156
+/// (`0xe487f0`/`0xe48840`), resources-loaded flag +40, resource map +52/+36.
+#[doc(alias = "Ogre::TextureManager")]
+#[derive(Clone, Debug, Default)]
+pub struct TextureManager {
+    /// +152 preferred integer bit depth (`mPreferredIntBitDepth`, IDA `0xe486ec`).
+    pub preferred_integer_bit_depth: u16,
+    /// +154 preferred float bit depth (`mPreferredFloatBitDepth`, IDA `0xe48768`).
+    pub preferred_float_bit_depth: u16,
+    /// +156 default mipmap count (`mDefaultNumMipmaps`, IDA `0xe487f0`).
+    pub default_num_mipmaps: u32,
+    /// +40 resources-created latch guarding the reload loops (IDA `0xe486fe`/`0xe48784`).
+    pub resources_loaded: bool,
+    /// Managed textures visited by the `setPreferred*BitDepth` reload loops.
+    pub textures: Vec<ManagedTexture>,
+    /// Test hook for the `getNativeFormat` virtual (IDA `0xe48812`/`0xe48822`);
+    /// `None` = native format equals the requested format.
+    pub native_format_override: Option<u32>,
+}
+
+/// was: a `Texture` in the manager map (`0xe4870a`/`0xe4878c` walk), modelled with
+/// the two virtual answers the reload loops query: `isLoaded` (+104) and
+/// `isReloadable` (+72).
+#[derive(Clone, Debug, Default)]
+pub struct ManagedTexture {
+    /// `isLoaded` answer.
+    pub loaded: bool,
+    /// `isReloadable` answer.
+    pub reloadable: bool,
+    /// Per-texture integer depth (`setPreferredBitDepths`, IDA `0xe487da`/`0xe4879e`).
+    pub integer_bit_depth: u16,
+    /// Per-texture float depth (`setPreferredFloatBitDepth`, IDA `0xe4874a`).
+    pub float_bit_depth: u16,
+    /// `load()` invocations (vtable +64, IDA `0xe48750`/`0xe487e4`).
+    pub load_calls: u32,
+}
+
+/// was: `Ogre::PixelFormat` element bit counts from `Ogre::PixelUtil::getNumElemBits`,
+/// used by `isEquivalentFormatSupported` (IDA `0xe48828`..`0xe4883a`).
+/// Only formats with unambiguous widths are listed; unknown formats count 0 so an
+/// identity native format still compares equivalent.
+pub fn pixel_elem_bits(format: u32) -> u32 {
+    match format {
+        1 => 8,   // PF_L8
+        2 => 16,  // PF_L16
+        3 => 8,   // PF_A8
+        4 => 8,   // PF_A4L4
+        5 => 16,  // PF_BYTE_LA
+        6 => 16,  // PF_R5G6B5
+        7 => 16,  // PF_B5G6R5
+        8 => 8,   // PF_R3G3B2
+        9 => 16,  // PF_A4R4G4B4
+        10 => 16, // PF_A1R5G5B5
+        11 => 32, // PF_A8R8G8B8
+        12 => 24, // PF_R8G8B8
+        13 => 32, // PF_X8R8G8B8
+        14 => 32, // PF_A2R10G10B10
+        15 => 32, // PF_A2B10G10R10
+        21 => 16, // PF_FLOAT16_R
+        22 => 48, // PF_FLOAT16_RGB
+        23 => 64, // PF_FLOAT16_RGBA
+        24 => 32, // PF_FLOAT16_GR
+        25 => 32, // PF_FLOAT32_R
+        26 => 96, // PF_FLOAT32_RGB
+        27 => 128, // PF_FLOAT32_RGBA
+        28 => 64, // PF_FLOAT32_GR
+        29 => 24, // PF_DEPTH
+        _ => 0,
+    }
+}
+
+impl TextureManager {
+    /// IDA `0xe486e8`: `return *(u16 *)(this + 152)` (`0xe486ec`).
+    pub fn preferred_integer_bit_depth(&self) -> u16 {
+        self.preferred_integer_bit_depth
+    }
+
+    /// IDA `0xe486f0`: store `a2` at +154 (`0xe486f6`); when `reload` and resources
+    /// exist (`0xe486fe`), walk the map (`0xe4870a`..`0xe4871c`): loaded + reloadable
+    /// textures unload (+80), take the depth (+320) and load (+64); the rest just
+    /// take the depth (`0xe4875a`).
+    pub fn set_preferred_float_bit_depth(&mut self, depth: u16, reload: bool) {
+        // IDA 0xe486f6: mPreferredFloatBitDepth = a2.
+        self.preferred_float_bit_depth = depth;
+        if reload && self.resources_loaded {
+            for texture in self.textures.iter_mut() {
+                if texture.loaded && texture.reloadable {
+                    // IDA 0xe4873e: unload; 0xe4874a: setPreferredFloatBitDepth; 0xe48750: load.
+                    texture.loaded = false;
+                    texture.float_bit_depth = depth;
+                    texture.loaded = true;
+                    texture.load_calls += 1;
+                } else {
+                    // IDA 0xe4875a: setPreferredFloatBitDepth only.
+                    texture.float_bit_depth = depth;
+                }
+            }
+        }
+    }
+
+    /// IDA `0xe48764`: `return *(u16 *)(this + 154)` (`0xe48768`).
+    pub fn preferred_float_bit_depth(&self) -> u16 {
+        self.preferred_float_bit_depth
+    }
+
+    /// IDA `0xe4876c`: store both depths (+152 at `0xe48778`, +154 at `0xe4877e`);
+    /// when `reload` and resources exist, walk the map: loaded + reloadable textures
+    /// unload (+80), take both depths (+328) and `load(false)` (+64); the rest just
+    /// take both depths (`0xe4879e`).
+    pub fn set_preferred_bit_depths(&mut self, integer: u16, float: u16, reload: bool) {
+        // IDA 0xe48778/0xe4877e.
+        self.preferred_integer_bit_depth = integer;
+        self.preferred_float_bit_depth = float;
+        if reload && self.resources_loaded {
+            for texture in self.textures.iter_mut() {
+                if texture.loaded && texture.reloadable {
+                    // IDA 0xe487cc: unload; 0xe487da: setPreferredBitDepths; 0xe487e4: load(0).
+                    texture.loaded = false;
+                    texture.integer_bit_depth = integer;
+                    texture.float_bit_depth = float;
+                    texture.loaded = true;
+                    texture.load_calls += 1;
+                } else {
+                    // IDA 0xe4879e: setPreferredBitDepths only.
+                    texture.integer_bit_depth = integer;
+                    texture.float_bit_depth = float;
+                }
+            }
+        }
+    }
+
+    /// IDA `0xe487f0`: `*(this + 156) = a2` (`0xe487f0`).
+    pub fn set_default_num_mipmaps(&mut self, count: u32) {
+        self.default_num_mipmaps = count;
+    }
+
+    /// IDA `0xe487f8`: `getNativeFormat(type, format, usage) == format` (`0xe48812`).
+    pub fn is_format_supported(&self, texture_type: u32, format: u32, usage: i32) -> bool {
+        self.native_format(texture_type, format, usage) == format
+    }
+
+    /// IDA `0xe48814`: `getNumElemBits(native) >= getNumElemBits(format)`
+    /// (`0xe48828`..`0xe4883a`).
+    pub fn is_equivalent_format_supported(&self, texture_type: u32, format: u32, usage: i32) -> bool {
+        let native = self.native_format(texture_type, format, usage);
+        pixel_elem_bits(native) >= pixel_elem_bits(format)
+    }
+
+    /// Models the `getNativeFormat` virtual (vtable +196, IDA `0xe48812`/`0xe48822`).
+    fn native_format(&self, _texture_type: u32, format: u32, _usage: i32) -> u32 {
+        self.native_format_override.unwrap_or(format)
+    }
+
+    /// IDA `0xe4883c`: `return *(this + 156)` (`0xe48840`).
+    pub fn default_num_mipmaps(&self) -> u32 {
+        self.default_num_mipmaps
+    }
+}
+
+/// was: `Ogre::TextureUnitState::TextureType` cubic dispatch value.
+/// IDA `0xe49316` routes `setTextureName` to `setCubicTextureName` when the type
+/// is 4; the same value is what `is3D` tests at `0xe4aca8` in this build.
+pub const TEXTURE_TYPE_CUBE_MAP: u32 = 4;
+
+impl TextureUnitState {
+    /// IDA `0xe492bc`: `setTextureName(name, texType)`.
+    /// `mContentType = CONTENT_NAMED` (+300 at `0xe492f2`), clear `mLoadFailed`
+    /// (+184 at `0xe492f6`); cube-map type delegates to `setCubicTextureName`
+    /// (`0xe49324`); otherwise `mFrames`/`mTextures` shrink to one slot
+    /// (`0xe4933e`..`0xe49418`), `mFrames[0] = name` (`0xe494d4`), the texture slot
+    /// is nulled (`0xe494dc`..`0xe494fe`), frame/flag/type update (`0xe49504`..`0xe4950a`),
+    /// and a non-empty name loads now when the parent pass is loaded plus dirties
+    /// the pass hash (`0xe4950e`..`0xe49552`).
+    pub fn set_texture_name(&mut self, name: &str, texture_type: u32) {
+        // IDA 0xe492f2/0xe492f6.
+        self.content_type = 0;
+        self.load_failed = false;
+        if texture_type == TEXTURE_TYPE_CUBE_MAP {
+            // IDA 0xe49316..0xe49324.
+            self.set_cubic_texture_name(&[name.to_owned()], true);
+            return;
+        }
+        // IDA 0xe4933e..0xe49418: mFrames.resize(1), mTextures.resize(1).
+        self.frames.resize(1, String::new());
+        self.textures.resize(1, TextureSlot::default());
+        // IDA 0xe494d4: mFrames[0] = name; 0xe494dc..0xe494fe: mTextures[0].setNull().
+        self.frames[0] = name.to_owned();
+        self.textures[0] = TextureSlot::default();
+        // IDA 0xe49504..0xe4950a: mCurrentFrame = 0; flag = 0; mTextureType = a3.
+        self.current_frame = 0;
+        self.flag_08 = 0;
+        self.texture_type = texture_type;
+        // IDA 0xe4950e: non-empty name…
+        if !name.is_empty() {
+            // IDA 0xe49524..0xe4952a: parent loaded → _load().
+            if self.parent_loaded {
+                self.load();
+            }
+            // IDA 0xe4953a..0xe49552: builtin hash → Pass::_dirtyHash(mParent).
+            self.parent_dirty = true;
+        }
+    }
+
+    /// IDA `0xe4964c`: `STR R1, [R0, #0x18]` — store the coordinate set index.
+    pub fn set_texture_coord_set(&mut self, set: u32) {
+        self.texture_coord_set = set;
+    }
+}
 
 // 0xe486e8 — __ZNK4Ogre14TextureManager27getPreferredIntegerBitDepthEv
 // type: _DWORD __fastcall(Ogre::TextureManager *__hidden this)
 #[doc(alias = "Ogre::TextureManager::getPreferredIntegerBitDepth(void)const")]
 #[doc(alias = "__ZNK4Ogre14TextureManager27getPreferredIntegerBitDepthEv")]
 // was: Ogre::TextureManager::getPreferredIntegerBitDepth(void)const
-// IDA 0xe486e8: 2 insns (LDRH.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe486e8() {
+// IDA 0xe486e8: LDRH.W R0, [R0, #152] (0xe486ec) — return mPreferredIntBitDepth.
+pub fn stub_0xe486e8(manager: &TextureManager) -> u16 {
+    manager.preferred_integer_bit_depth()
 }
 
 // 0xe486f0 — __ZN4Ogre14TextureManager25setPreferredFloatBitDepthEtb
@@ -23,60 +236,60 @@ pub fn stub_0xe486e8() {
 #[doc(alias = "Ogre::TextureManager::setPreferredFloatBitDepth(unsigned short,bool)")]
 #[doc(alias = "__ZN4Ogre14TextureManager25setPreferredFloatBitDepthEtb")]
 // was: Ogre::TextureManager::setPreferredFloatBitDepth(unsigned short,bool)
-// IDA 0xe486f0: 53 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe486f0() {
+// IDA 0xe486f0: store depth at +154, reload loop over textures (0xe486fe..0xe4871c).
+pub fn stub_0xe486f0(manager: &mut TextureManager, depth: u16, reload: bool) {
+    manager.set_preferred_float_bit_depth(depth, reload)
 }
-
 // 0xe48764 — __ZNK4Ogre14TextureManager25getPreferredFloatBitDepthEv
 // type: _DWORD __fastcall(Ogre::TextureManager *__hidden this)
 #[doc(alias = "Ogre::TextureManager::getPreferredFloatBitDepth(void)const")]
 #[doc(alias = "__ZNK4Ogre14TextureManager25getPreferredFloatBitDepthEv")]
 // was: Ogre::TextureManager::getPreferredFloatBitDepth(void)const
-// IDA 0xe48764: 2 insns (LDRH.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe48764() {
+// IDA 0xe48764: LDRH.W R0, [R0, #154] (0xe48768) — return mPreferredFloatBitDepth.
+pub fn stub_0xe48764(manager: &TextureManager) -> u16 {
+    manager.preferred_float_bit_depth()
 }
 
 // 0xe4876c — __ZN4Ogre14TextureManager21setPreferredBitDepthsEttb
 // type: _DWORD __fastcall(Ogre::TextureManager *__hidden this, unsigned __int16, unsigned __int16, bool)
 #[doc(alias = "Ogre::TextureManager::setPreferredBitDepths(unsigned short,unsigned short,bool)")]
 #[doc(alias = "__ZN4Ogre14TextureManager21setPreferredBitDepthsEttb")]
-// was: Ogre::TextureManager::setPreferredBitDepths(unsigned short,unsigned short,bool)
-// IDA 0xe4876c: 58 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4876c() {
+// IDA 0xe4876c: store both depths (+152/+154), reload loop over textures (0xe48784..0xe487aa).
+pub fn stub_0xe4876c(manager: &mut TextureManager, integer: u16, float: u16, reload: bool) {
+    manager.set_preferred_bit_depths(integer, float, reload)
 }
 
 // 0xe487f0 — __ZN4Ogre14TextureManager20setDefaultNumMipmapsEm
 // type: _DWORD __fastcall(Ogre::TextureManager *__hidden this, unsigned int)
 #[doc(alias = "Ogre::TextureManager::setDefaultNumMipmaps(unsigned long)")]
 #[doc(alias = "__ZN4Ogre14TextureManager20setDefaultNumMipmapsEm")]
-// was: Ogre::TextureManager::setDefaultNumMipmaps(unsigned long)
-// IDA 0xe487f0: 2 insns (STR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe487f0() {
+// IDA 0xe487f0: STR.W R1, [R0, #156] (0xe487f0) — store mDefaultNumMipmaps.
+pub fn stub_0xe487f0(manager: &mut TextureManager, count: u32) {
+    manager.set_default_num_mipmaps(count)
 }
 
 // 0xe487f8 — __ZN4Ogre14TextureManager17isFormatSupportedENS_11TextureTypeENS_11PixelFormatEi
 #[doc(alias = "Ogre::TextureManager::isFormatSupported(Ogre::TextureType,Ogre::PixelFormat,int)")]
 #[doc(alias = "__ZN4Ogre14TextureManager17isFormatSupportedENS_11TextureTypeENS_11PixelFormatEi")]
-// was: Ogre::TextureManager::isFormatSupported(Ogre::TextureType,Ogre::PixelFormat,int)
-// IDA 0xe487f8: 13 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe487f8() {
+// IDA 0xe487f8: getNativeFormat(type, format, usage) == format (0xe48812).
+pub fn stub_0xe487f8(manager: &TextureManager, texture_type: u32, format: u32, usage: i32) -> bool {
+    manager.is_format_supported(texture_type, format, usage)
 }
 
 // 0xe48814 — __ZN4Ogre14TextureManager27isEquivalentFormatSupportedENS_11TextureTypeENS_11PixelFormatEi
 #[doc(alias = "Ogre::TextureManager::isEquivalentFormatSupported(Ogre::TextureType,Ogre::PixelFormat,int)")]
 #[doc(alias = "__ZN4Ogre14TextureManager27isEquivalentFormatSupportedENS_11TextureTypeENS_11PixelFormatEi")]
-// was: Ogre::TextureManager::isEquivalentFormatSupported(Ogre::TextureType,Ogre::PixelFormat,int)
-// IDA 0xe48814: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe48814() {
+// IDA 0xe48814: getNumElemBits(native) >= getNumElemBits(format) (0xe48828..0xe4883a).
+pub fn stub_0xe48814(manager: &TextureManager, texture_type: u32, format: u32, usage: i32) -> bool {
+    manager.is_equivalent_format_supported(texture_type, format, usage)
 }
 
 // 0xe4883c — __ZN4Ogre14TextureManager20getDefaultNumMipmapsEv
 // type: _DWORD __fastcall(Ogre::TextureManager *__hidden this)
 #[doc(alias = "Ogre::TextureManager::getDefaultNumMipmaps(void)")]
-#[doc(alias = "__ZN4Ogre14TextureManager20getDefaultNumMipmapsEv")]
-// was: Ogre::TextureManager::getDefaultNumMipmaps(void)
-// IDA 0xe4883c: 2 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4883c() {
+// IDA 0xe4883c: LDR.W R0, [R0, #156] (0xe48840) — return mDefaultNumMipmaps.
+pub fn stub_0xe4883c(manager: &TextureManager) -> u32 {
+    manager.default_num_mipmaps()
 }
 
 // 0xe48878 — __ZN4Ogre16TextureUnitStateC1EPNS_4PassE
@@ -147,17 +360,18 @@ pub fn stub_0xe491a8() {
 #[doc(alias = "Ogre::TextureUnitState::setTextureName(std::string const&,Ogre::TextureType)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState14setTextureNameERKSsNS_11TextureTypeE")]
 // was: Ogre::TextureUnitState::setTextureName(std::string const&,Ogre::TextureType)
-// IDA 0xe492bc: 344 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe492bc() {
+// IDA 0xe492bc: named content, single frame slot, parent load + hash-dirty (see set_texture_name).
+pub fn stub_0xe492bc(state: &mut TextureUnitState, name: &str, texture_type: u32) {
+    state.set_texture_name(name, texture_type)
 }
 
 // 0xe4964c — __ZN4Ogre16TextureUnitState18setTextureCoordSetEj
 // type: _DWORD __fastcall(Ogre::TextureUnitState *__hidden this, unsigned int)
 #[doc(alias = "Ogre::TextureUnitState::setTextureCoordSet(unsigned int)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState18setTextureCoordSetEj")]
-// was: Ogre::TextureUnitState::setTextureCoordSet(unsigned int)
-// IDA 0xe4964c: 2 insns (STR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4964c() {
+// IDA 0xe4964c: STR R1, [R0, #0x18] — store mTextureCoordSetIndex.
+pub fn stub_0xe4964c(state: &mut TextureUnitState, set: u32) {
+    state.set_texture_coord_set(set)
 }
 
 // 0xe49650 — __ZN4Ogre16TextureUnitStateD1Ev
@@ -889,4 +1103,119 @@ pub fn stub_0xf67be4() {
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::LodStrategy *>,std::_Select1st<std::pair<std::string const,Ogre::LodStrategy *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::LodStrategy *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::LodStrategy *> const&)
 // IDA 0xf67bf4: 3 insns (LDR..LDR). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_0xf67bf4() {
+}
+
+#[cfg(test)]
+mod texture_manager_tests {
+    use super::*;
+    use crate::generated_502::TextureUnitState;
+
+    #[test]
+    fn preferred_depths_round_trip_per_ida_offsets() {
+        let mut manager = TextureManager::default();
+        // IDA 0xe486e8/0xe48764 read +152/+154; 0xe487f0/0xe4883c write/read +156.
+        stub_0xe486f0(&mut manager, 16, false);
+        assert_eq!(stub_0xe486e8(&manager), 0);
+        assert_eq!(stub_0xe48764(&manager), 16);
+        stub_0xe4876c(&mut manager, 32, 16, false);
+        assert_eq!(stub_0xe486e8(&manager), 32);
+        assert_eq!(stub_0xe48764(&manager), 16);
+        stub_0xe487f0(&mut manager, 5);
+        assert_eq!(stub_0xe4883c(&manager), 5);
+    }
+
+    #[test]
+    fn float_depth_reload_cycles_loaded_textures() {
+        let mut manager = TextureManager::default();
+        manager.resources_loaded = true;
+        manager.textures = vec![
+            ManagedTexture { loaded: true, reloadable: true, ..ManagedTexture::default() },
+            ManagedTexture { loaded: true, reloadable: false, ..ManagedTexture::default() },
+            ManagedTexture::default(),
+        ];
+        // IDA 0xe486f0: loaded + reloadable cycles unload/set/load; rest only take the depth.
+        stub_0xe486f0(&mut manager, 32, true);
+        assert_eq!(manager.textures[0].float_bit_depth, 32);
+        assert_eq!(manager.textures[0].load_calls, 1);
+        assert!(manager.textures[0].loaded);
+        assert_eq!(manager.textures[1].float_bit_depth, 32);
+        assert_eq!(manager.textures[1].load_calls, 0);
+        assert_eq!(manager.textures[2].float_bit_depth, 32);
+        // No reload requested → the per-texture loop is skipped (IDA 0xe48784 guard);
+        // only the manager defaults (checked above) store.
+        stub_0xe4876c(&mut manager, 8, 16, false);
+        assert_eq!(manager.textures[0].integer_bit_depth, 0);
+        assert_eq!(manager.textures[0].load_calls, 1);
+        // Reload with both depths cycles the loaded + reloadable entry with load(false).
+        stub_0xe4876c(&mut manager, 16, 32, true);
+        assert_eq!(manager.textures[0].integer_bit_depth, 16);
+        assert_eq!(manager.textures[0].float_bit_depth, 32);
+        assert_eq!(manager.textures[0].load_calls, 2);
+        assert_eq!(manager.textures[1].load_calls, 0);
+    }
+
+    #[test]
+    fn format_support_matches_ida_comparisons() {
+        let manager = TextureManager::default();
+        // IDA 0xe487f8: identity native format is supported.
+        assert!(stub_0xe487f8(&manager, 1, 11, 0));
+        // IDA 0xe48814: identity is always bit-equivalent.
+        assert!(stub_0xe48814(&manager, 1, 6, 0));
+        assert_eq!(pixel_elem_bits(11), 32);
+        assert_eq!(pixel_elem_bits(6), 16);
+        // Narrower native (R5G6B5 for an A8R8G8B8 request) is not equivalent.
+        let mut narrow = TextureManager::default();
+        narrow.native_format_override = Some(6);
+        assert!(!stub_0xe487f8(&narrow, 1, 11, 0));
+        assert!(!stub_0xe48814(&narrow, 1, 11, 0));
+        // Wider native stays equivalent but not identical.
+        narrow.native_format_override = Some(27);
+        assert!(!stub_0xe487f8(&narrow, 1, 11, 0));
+        assert!(stub_0xe48814(&narrow, 1, 11, 0));
+    }
+
+    #[test]
+    fn set_texture_name_installs_single_frame() {
+        let mut state = TextureUnitState::default();
+        // IDA 0xe492bc non-cube path: named content, one frame, flag/type update.
+        stub_0xe492bc(&mut state, "brick.png", 2);
+        assert_eq!(state.content_type, 0);
+        assert!(!state.load_failed);
+        assert_eq!(state.frames, vec!["brick.png".to_owned()]);
+        assert_eq!(state.textures.len(), 1);
+        assert_eq!(state.current_frame, 0);
+        assert_eq!(state.flag_08, 0);
+        assert_eq!(state.texture_type, 2);
+        // Non-empty name with unloaded parent: no load, but the pass hash dirties.
+        assert!(state.parent_dirty);
+        assert!(!state.textures[0].loaded);
+        // Loaded parent → _load marks the slot loaded (IDA 0xe49524..0xe4952a).
+        let mut loaded_parent = TextureUnitState::default();
+        loaded_parent.parent_loaded = true;
+        stub_0xe492bc(&mut loaded_parent, "brick.png", 2);
+        assert!(loaded_parent.textures[0].loaded);
+        // Empty name skips both the load and the hash-dirty (IDA 0xe4950e guard).
+        let mut empty = TextureUnitState::default();
+        empty.parent_loaded = true;
+        stub_0xe492bc(&mut empty, "", 2);
+        assert!(!empty.parent_dirty);
+    }
+
+    #[test]
+    fn set_texture_name_cube_dispatches() {
+        let mut state = TextureUnitState::default();
+        // IDA 0xe49316..0xe49324: type 4 → setCubicTextureName(name, true).
+        stub_0xe492bc(&mut state, "sky.png", TEXTURE_TYPE_CUBE_MAP);
+        assert_eq!(state.frames[0], "sky.png".to_owned());
+        assert_eq!(state.flag_08, 1);
+        assert!(state.parent_dirty);
+    }
+
+    #[test]
+    fn set_texture_coord_set_stores_index() {
+        let mut state = TextureUnitState::default();
+        // IDA 0xe4964c: STR R1, [R0, #0x18].
+        stub_0xe4964c(&mut state, 3);
+        assert_eq!(state.texture_coord_set, 3);
+    }
 }
