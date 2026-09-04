@@ -4498,8 +4498,17 @@ pub fn stub_661740() {
 
 // 0x662440 — __ZN3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::SurfaceSelection::*)(void)const,void (RBX::SurfaceSelection::*)(RBX::NormalId)>(char const*,char const*,RBX::NormalId (RBX::SurfaceSelection::*)(void)const,void (RBX::SurfaceSelection::*)(RBX::NormalId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_662440() -> ! {
-    todo!("0x662440 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::SurfaceSelection::*)(void)const,void (RBX::SurfaceSelection::*)(RBX::NormalId)>(char const*,char const*,RBX::NormalId (RBX::SurfaceSelection::*)(void)const,void (RBX::SurfaceSelection::*)(RBX::NormalId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_662440(
+    name: &str,
+    category: &str,
+    initial: i32,
+    attributes: u32,
+    permissions: u32,
+) -> EnumProp {
+    // IDA 0x662440: `EnumPropDescriptor<SurfaceSelection, NormalId>` ctor
+    // (same shape as 0x4a9de0/0x5f9d30). Links the grounded `NormalId`
+    // singleton (`normal_id_enum_desc`, pairs at 0x6f2a52+).
+    EnumProp::new(name, category, initial, crate::descriptor::normal_id_enum_desc().clone(), attributes, permissions)
 }
 
 // 0x6625f4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEED0Ev
@@ -4522,26 +4531,36 @@ pub fn stub_662630() {
 
 // 0x662640 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_662640() -> ! {
-    todo!("0x662640 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_662640(a: &EnumProp, b: &EnumProp) -> bool {
+    // IDA 0x662640: `equalValues` (same shape as 0x4a9fe0).
+    a.value == b.value
 }
 
 // 0x662668 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_662668() -> ! {
-    todo!("0x662668 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_662668(prop: &EnumProp) -> Value {
+    // IDA 0x662668: `getVariant` (same shape as 0x4aa008).
+    Value::Int(prop.value)
 }
 
 // 0x66268c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_66268c() -> ! {
-    todo!("0x66268c RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_66268c(prop: &mut EnumProp, value: &Value) {
+    // IDA 0x66268c: `setVariant` (same shape as 0x4aa02c).
+    prop.value = match value {
+        Value::Int(v) => *v,
+        Value::EnumValue(v) => *v,
+        Value::Float(v) => *v as i32,
+        Value::Bool(v) => *v as i32,
+        other => panic!("Variant::convert<int> on {other:?} (IDA 0x66268c)"),
+    };
 }
 
 // 0x6627d8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_6627d8() -> ! {
-    todo!("0x6627d8 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_6627d8(dst: &mut EnumProp, src: &EnumProp) {
+    // IDA 0x6627d8: `copyValue` (same shape as 0x4aa178).
+    dst.value = src.value;
 }
 
 // 0x6627fc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE14hasStringValueEv
@@ -4553,68 +4572,121 @@ pub fn stub_6627fc() -> bool {
 
 // 0x662800 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_662800() -> ! {
-    todo!("0x662800 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_662800(prop: &EnumProp) -> String {
+    // IDA 0x662800: `getStringValue` (same shape as 0x4aa1a0).
+    prop.enum_desc.lookup_name(prop.value).unwrap_or_default().to_owned()
 }
 
 // 0x662824 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_662824() -> ! {
-    todo!("0x662824 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_662824(prop: &mut EnumProp, name: &str) -> bool {
+    // IDA 0x662824: `setStringValue` (same shape as 0x4aa1c4).
+    match prop.enum_desc.lookup_value(name) {
+        Some(v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x662864 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_662864() -> ! {
-    todo!("0x662864 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_662864(prop: &EnumProp) -> i32 {
+    // IDA 0x662864: `writeValue` (same shape as 0x4aa204).
+    prop.value
 }
 
 // 0x662884 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_662884() -> ! {
-    todo!("0x662884 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_662884(prop: &mut EnumProp, text: &str) -> bool {
+    // IDA 0x662884: `readValue` (same shape as 0x4aa224).
+    match prop.enum_desc.lookup_value(text) {
+        Some(v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x662ac4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_662ac4() -> ! {
-    todo!("0x662ac4 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_662ac4(prop: &EnumProp) -> i32 {
+    // IDA 0x662ac4: `getIndexValue` (same shape as 0x4aa464).
+    prop.convert_to_index(prop.value)
 }
 
 // 0x662ae0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_662ae0() -> ! {
-    todo!("0x662ae0 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_662ae0(prop: &mut EnumProp, index: usize) -> bool {
+    // IDA 0x662ae0: `setIndexValue` (same shape as 0x4aa480).
+    match prop.enum_desc.values.get(index) {
+        Some(&v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x662b14 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_662b14() -> ! {
-    todo!("0x662b14 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_662b14(prop: &EnumProp) -> i32 {
+    // IDA 0x662b14: `getEnumValue` (same shape as 0x4aa4b4).
+    prop.value
 }
 
 // 0x662b1c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_662b1c() -> ! {
-    todo!("0x662b1c RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_662b1c(prop: &mut EnumProp, value: i32) -> bool {
+    // IDA 0x662b1c: `setEnumValue` (same shape as 0x4aa4bc).
+    if prop.enum_desc.items.iter().any(|it| it.value == value) {
+        prop.value = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x662b68 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_662b68() -> ! {
-    todo!("0x662b68 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_662b68(prop: &EnumProp) -> Option<crate::enum_desc::EnumItem> {
+    // IDA 0x662b68: `getEnumItem` (same shape as 0x4aa508).
+    usize::try_from(prop.value)
+        .ok()
+        .and_then(|slot| prop.enum_desc.items_by_value.get(slot).copied().flatten())
+        .and_then(|idx| prop.enum_desc.items.get(idx).cloned())
 }
 
 // 0x662b88 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_662b88() -> ! {
-    todo!("0x662b88 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_662b88(prop: &mut EnumProp, name: &str) -> bool {
+    // IDA 0x662b88: `setStringValue` (`Name` overload, same shape as
+    // 0x4aa528).
+    match prop.enum_desc.lookup_value(name) {
+        Some(v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x662bbc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_662bbc() -> ! {
-    todo!("0x662bbc RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_662bbc(prop: &mut EnumProp, value: i32) -> bool {
+    // IDA 0x662bbc: `setIntValue` (same shape as 0x4aa55c).
+    match usize::try_from(value)
+        .ok()
+        .and_then(|slot| prop.enum_desc.value_to_value.get(slot).copied())
+    {
+        Some(mapped) if mapped != -1 => {
+            prop.value = mapped;
+            true
+        }
+        _ => false,
+    }
 }
 
 // 0x662bfc — __ZNK3RBX10Reflection14PropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
@@ -4633,14 +4705,18 @@ pub fn stub_662c00() -> bool {
 
 // 0x662c04 — __ZNK3RBX10Reflection14PropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SurfaceSelection::*)(void)const,void (RBX::SurfaceSelection::*)(RBX::NormalId)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_662c04() -> ! {
-    todo!("0x662c04 RBX::Reflection::PropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SurfaceSelection::*)(void)const,void (RBX::SurfaceSelection::*)(RBX::NormalId)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_662c04(prop: &EnumProp) -> i32 {
+    // IDA 0x662c04: `GetSetImpl<NormalId>::getValue` for SurfaceSelection
+    // (same shape as 0x4aa5a4).
+    prop.value
 }
 
 // 0x662c24 — __ZNK3RBX10Reflection14PropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SurfaceSelection::*)(void)const,void (RBX::SurfaceSelection::*)(RBX::NormalId)>::setValue(RBX::Reflection::DescribedBase *,RBX::NormalId const&)const")]
-pub fn stub_662c24() -> ! {
-    todo!("0x662c24 RBX::Reflection::PropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SurfaceSelection::*)(void)const,void (RBX::SurfaceSelection::*)(RBX::NormalId)>::setValue(RBX::Reflection::DescribedBase *,RBX::NormalId const&)const")
+pub fn stub_662c24(prop: &mut EnumProp, value: i32) {
+    // IDA 0x662c24: `GetSetImpl<NormalId>::setValue` for SurfaceSelection
+    // (same shape as 0x4aa5c4).
+    prop.value = value;
 }
 
 // 0x6632e0 — __ZN3RBX10Reflection14PropDescriptorINS_4TeamEiED1Ev
