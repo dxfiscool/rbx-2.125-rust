@@ -157,6 +157,9 @@ const VTABLE_PROFILE_CPU: u32 = 0;
 const VTABLE_PROFILE_DSP: u32 = 0;
 const VTABLE_PROFILE_MODULE: u32 = 0;
 const VTABLE_PROFILE: u32 = 0;
+// IDA off_11CD520: FMOD::ChannelReal vtable installed by C2 (0x71860);
+// 0 here = unlinked host model, same convention as the profile vtables.
+const VTABLE_CHANNEL_REAL: u32 = 0;
 
 /// Intrusive doubly-linked node (two words, e.g. ProfileModule +4/+8).
 #[repr(C)]
@@ -4128,6 +4131,21 @@ pub struct ChannelRealBase {
     _pad1: [u8; 332],
 }
 
+impl ChannelRealBase {
+    /// Target word at index `i` (words are 4 bytes; word 9 is `flags`).
+    /// IDA cites word offsets throughout 0x71854..0x723d4.
+    /// SAFETY: `i` must be in range for the 372-byte prefix (93 words).
+    unsafe fn word(&self, i: usize) -> u32 {
+        // SAFETY: caller guarantees the index is in range.
+        unsafe { (self as *const Self as *const u32).add(i).read() }
+    }
+    /// SAFETY: same as [`ChannelRealBase::word`].
+    unsafe fn set_word(&mut self, i: usize, value: u32) {
+        // SAFETY: caller guarantees the index is in range.
+        unsafe { (self as *mut Self as *mut u32).add(i).write(value) }
+    }
+}
+
 impl Default for ChannelRealBase {
     fn default() -> Self {
         ChannelRealBase {
@@ -4350,98 +4368,199 @@ pub fn stub_7183c() {
 
 // 0x71854 — __ZN4FMOD11ChannelRealC2Ev
 #[doc(alias = "FMOD::ChannelReal::ChannelReal(void)")]
-pub fn stub_71854() -> ! {
-    todo!("0x71854 FMOD::ChannelReal::ChannelReal(void)")
+pub unsafe fn stub_71854(ch: *mut ChannelRealBase) -> *mut ChannelRealBase {
+    // IDA 0x71854: vtable off_11CD520 (0x71860, host: unlinked 0) + words
+    // 6/1/5/3 zeroed (0x71868-0x71874), word 13 = -1 (0x7187c), word 18 =
+    // 1120403456 (0x71884, 100.0f), word 17 = 1232348160 (0x7188c); returns this.
+    // SAFETY: `ch` must point to a valid ChannelRealBase.
+    unsafe {
+        (*ch).set_word(0, VTABLE_CHANNEL_REAL);
+        (*ch).set_word(6, 0);
+        (*ch).set_word(1, 0);
+        (*ch).set_word(5, 0);
+        (*ch).set_word(3, 0);
+        (*ch).set_word(13, u32::MAX);
+        (*ch).set_word(18, 1120403456);
+        (*ch).set_word(17, 1232348160);
+    }
+    ch
 }
 
 // 0x718a0 — __ZN4FMOD11ChannelReal4initEiPNS_7SystemIEPNS_6OutputEPNS_4DSPIE
 #[doc(alias = "FMOD::ChannelReal::init(int,FMOD::SystemI *,FMOD::Output *,FMOD::DSPI *)")]
-pub fn stub_718a0() -> ! {
-    todo!("0x718a0 FMOD::ChannelReal::init(int,FMOD::SystemI *,FMOD::Output *,FMOD::DSPI *)")
+pub unsafe fn stub_718a0(ch: *mut ChannelRealBase, index: i32, system: u32, output: u32) -> i32 {
+    // IDA 0x718a0: words 6/9/8/11/12 zeroed (0x718b0-0x718c0), word 13 = -1
+    // (0x718c4), word 5 = a4 output (0x718c8), word 1 = a3 system (0x718cc),
+    // word 10 = a2 index (0x718d0); returns 0 (0x718d8, FMOD_OK). The DSPI
+    // tail parameter has no image-side use in this body.
+    // SAFETY: `ch` must point to a valid ChannelRealBase.
+    unsafe {
+        (*ch).set_word(6, 0);
+        (*ch).set_word(9, 0);
+        (*ch).set_word(8, 0);
+        (*ch).set_word(11, 0);
+        (*ch).set_word(12, 0);
+        (*ch).set_word(13, u32::MAX);
+        (*ch).set_word(5, output);
+        (*ch).set_word(1, system);
+        (*ch).set_word(10, index as u32);
+    }
+    FMOD_OK
 }
 
 // 0x718dc — __ZN4FMOD11ChannelReal5closeEv
 #[doc(alias = "FMOD::ChannelReal::close(void)")]
-pub fn stub_718dc() -> ! {
-    todo!("0x718dc FMOD::ChannelReal::close(void)")
+pub unsafe fn stub_718dc(
+    ch: *mut ChannelRealBase,
+    close_virtual: impl FnOnce(*mut ChannelRealBase) -> i32,
+) -> i32 {
+    // IDA 0x718dc: tail-calls the vtable +48 virtual (the subclass close).
+    // The vtable dispatch collapses to the subclass hook (same seam shape as
+    // sound_service_update_3d_settings).
+    close_virtual(ch)
 }
 
 // 0x718e8 — __ZN4FMOD11ChannelReal5allocEv
 #[doc(alias = "FMOD::ChannelReal::alloc(void)")]
-pub fn stub_718e8() -> ! {
-    todo!("0x718e8 FMOD::ChannelReal::alloc(void)")
+pub unsafe fn stub_718e8(ch: *mut ChannelRealBase) -> i32 {
+    // IDA 0x718e8: word 11 = 0 (0x718f0); if the word-3 sound is set, bump its
+    // +8 refcount (0x718fc-0x71904); return 0.
+    // SAFETY: `ch` must point to a valid ChannelRealBase; a set word 3 must
+    // point to a sound block with a u32 refcount at +8.
+    unsafe {
+        (*ch).set_word(11, 0);
+        let sound = (*ch).word(3) as *mut u8;
+        if !sound.is_null() {
+            let count = sound.add(8) as *mut u32;
+            *count += 1;
+        }
+    }
+    FMOD_OK
 }
 
 // 0x7190c — __ZN4FMOD11ChannelReal5allocEPNS_4DSPIE
 #[doc(alias = "FMOD::ChannelReal::alloc(FMOD::DSPI *)")]
-pub fn stub_7190c() -> ! {
-    todo!("0x7190c FMOD::ChannelReal::alloc(FMOD::DSPI *)")
+pub unsafe fn stub_7190c(ch: *mut ChannelRealBase, _dsp: *mut u8) -> i32 {
+    // IDA 0x7190c: the DSPI parameter has no body use; word-3 sound refcount
+    // bump at +8 when set (0x7191c-0x71924), word 11 (+44) = 0 (0x71928);
+    // return 0. Same shape as 0x718e8.
+    // SAFETY: same as stub_718e8.
+    unsafe {
+        let sound = (*ch).word(3) as *mut u8;
+        if !sound.is_null() {
+            let count = sound.add(8) as *mut u32;
+            *count += 1;
+        }
+        (*ch).set_word(11, 0);
+    }
+    FMOD_OK
 }
 
 // 0x71930 — __ZN4FMOD11ChannelReal23set2DFreqVolumePanFor3DEv
 #[doc(alias = "FMOD::ChannelReal::set2DFreqVolumePanFor3D(void)")]
-pub fn stub_71930() -> ! {
-    todo!("0x71930 FMOD::ChannelReal::set2DFreqVolumePanFor3D(void)")
+pub fn stub_71930() -> i32 {
+    // IDA 0x71930: hardcoded return 0 (0x71934) — base ChannelReal has no
+    // 2D-from-3D mapping (the Manual3D twin at 0x72a88 carries the real body).
+    FMOD_OK
 }
 
 // 0x71938 — __ZN4FMOD11ChannelReal6updateEi
 #[doc(alias = "FMOD::ChannelReal::update(int)")]
-pub fn stub_71938() -> ! {
-    todo!("0x71938 FMOD::ChannelReal::update(int)")
+pub fn stub_71938(_ms: i32) -> i32 {
+    // IDA 0x71938: hardcoded return 0 (0x7193c) — base update is a no-op.
+    FMOD_OK
 }
 
 // 0x71940 — __ZN4FMOD11ChannelReal12updateStreamEv
 #[doc(alias = "FMOD::ChannelReal::updateStream(void)")]
-pub fn stub_71940() -> ! {
-    todo!("0x71940 FMOD::ChannelReal::updateStream(void)")
+pub fn stub_71940() -> i32 {
+    // IDA 0x71940: hardcoded return 0 (0x71944) — base updateStream is a no-op.
+    FMOD_OK
 }
 
 // 0x71948 — __ZN4FMOD11ChannelReal5startEv
 #[doc(alias = "FMOD::ChannelReal::start(void)")]
-pub fn stub_71948() -> ! {
-    todo!("0x71948 FMOD::ChannelReal::start(void)")
+pub fn stub_71948() -> i32 {
+    // IDA 0x71948: hardcoded return 0 (0x7194c) — base start is a no-op.
+    FMOD_OK
 }
 
 // 0x71950 — __ZN4FMOD11ChannelReal4stopEv
 #[doc(alias = "FMOD::ChannelReal::stop(void)")]
-pub fn stub_71950() -> ! {
-    todo!("0x71950 FMOD::ChannelReal::stop(void)")
+pub unsafe fn stub_71950(ch: *mut ChannelRealBase) -> i32 {
+    // IDA 0x71950: if the word-3 sound is set, drop its +8 refcount
+    // (0x71958-0x71960); word 9 = (word 9 & ~0xF0) | 0x80 (0x71970); return 0.
+    // SAFETY: `ch` must point to a valid ChannelRealBase; a set word 3 must
+    // point to a sound block with a u32 refcount at +8.
+    unsafe {
+        let sound = (*ch).word(3) as *mut u8;
+        if !sound.is_null() {
+            let count = sound.add(8) as *mut u32;
+            *count -= 1;
+        }
+        (*ch).flags = ((*ch).flags & !0xF0) | 0x80;
+    }
+    FMOD_OK
 }
 
 // 0x7197c — __ZN4FMOD11ChannelReal9setPausedEb
 #[doc(alias = "FMOD::ChannelReal::setPaused(bool)")]
-pub fn stub_7197c() -> ! {
-    todo!("0x7197c FMOD::ChannelReal::setPaused(bool)")
+pub unsafe fn stub_7197c(ch: *mut ChannelRealBase, paused: bool) -> i32 {
+    // IDA 0x7197c: word 9 bit 0x20 set when pausing (0x71988), cleared when
+    // resuming (0x7198c); return 0.
+    // SAFETY: `ch` must point to a valid ChannelRealBase.
+    unsafe {
+        if paused {
+            (*ch).flags |= 0x20;
+        } else {
+            (*ch).flags &= !0x20;
+        }
+    }
+    FMOD_OK
 }
 
 // 0x719a0 — __ZN4FMOD11ChannelReal9getPausedEPb
 #[doc(alias = "FMOD::ChannelReal::getPaused(bool *)")]
-pub fn stub_719a0() -> ! {
-    todo!("0x719a0 FMOD::ChannelReal::getPaused(bool *)")
+pub unsafe fn stub_719a0(ch: *const ChannelRealBase, out: *mut bool) -> i32 {
+    // IDA 0x719a0: null out -> 37 (0x719a8, FMOD_ERR_INVALID_PARAM); else
+    // *out = (word 9 & 0x20) != 0 (0x719b4), return 0.
+    // SAFETY: `ch` must point to a valid ChannelRealBase; `out` must be null
+    // or point to a writable bool.
+    if out.is_null() {
+        return FMOD_ERR_INVALID_PARAM;
+    }
+    unsafe {
+        *out = ((*ch).flags & 0x20) != 0;
+    }
+    FMOD_OK
 }
 
 // 0x719c0 — __ZN4FMOD11ChannelReal9setVolumeEf
 #[doc(alias = "FMOD::ChannelReal::setVolume(float)")]
-pub fn stub_719c0() -> ! {
-    todo!("0x719c0 FMOD::ChannelReal::setVolume(float)")
+pub fn stub_719c0(_volume: f32) -> i32 {
+    // IDA 0x719c0: hardcoded return 0 (0x719c4) — base setVolume is a no-op.
+    FMOD_OK
 }
 
 // 0x719c8 — __ZN4FMOD11ChannelReal12setFrequencyEf
 #[doc(alias = "FMOD::ChannelReal::setFrequency(float)")]
-pub fn stub_719c8() -> ! {
-    todo!("0x719c8 FMOD::ChannelReal::setFrequency(float)")
+pub fn stub_719c8(_frequency: f32) -> i32 {
+    // IDA 0x719c8: hardcoded return 0 (0x719cc) — base setFrequency is a no-op.
+    FMOD_OK
 }
 
 // 0x719d0 — __ZN4FMOD11ChannelReal6setPanEff
 #[doc(alias = "FMOD::ChannelReal::setPan(float,float)")]
-pub fn stub_719d0() -> ! {
-    todo!("0x719d0 FMOD::ChannelReal::setPan(float,float)")
+pub fn stub_719d0(_pan: f32, _volume: f32) -> i32 {
+    // IDA 0x719d0: hardcoded return 0 (0x719d4) — base setPan is a no-op.
+    FMOD_OK
 }
 
 // 0x719d8 — __ZN4FMOD11ChannelReal16setDSPClockDelayEv
 #[doc(alias = "FMOD::ChannelReal::setDSPClockDelay(void)")]
-pub fn stub_719d8() -> ! {
-    todo!("0x719d8 FMOD::ChannelReal::setDSPClockDelay(void)")
+pub fn stub_719d8() -> i32 {
+    // IDA 0x719d8: hardcoded return 0 (0x719dc) — base setDSPClockDelay is a no-op.
+    FMOD_OK
 }
 
 // 0x719e0 — __ZN4FMOD11ChannelReal13setSpeakerMixEffffffff
@@ -4514,8 +4633,18 @@ pub fn stub_72388() -> ! {
 
 // 0x723b0 — __ZN4FMOD11ChannelReal9isVirtualEPb
 #[doc(alias = "FMOD::ChannelReal::isVirtual(bool *)")]
-pub fn stub_723b0() -> ! {
-    todo!("0x723b0 FMOD::ChannelReal::isVirtual(bool *)")
+pub unsafe fn stub_723b0(_ch: *const ChannelRealBase, out: *mut bool) -> i32 {
+    // IDA 0x723b0: null out -> 37 (0x723b8, FMOD_ERR_INVALID_PARAM); else
+    // *out = 0 (0x723bc, real channels are never virtual), return 0 — the
+    // false twin of ChannelEmulated::isVirtual (0x71304, always true).
+    // SAFETY: `out` must be null or point to a writable bool.
+    if out.is_null() {
+        return FMOD_ERR_INVALID_PARAM;
+    }
+    unsafe {
+        *out = false;
+    }
+    FMOD_OK
 }
 
 // 0x723c4 — __ZN4FMOD11ChannelReal11getSpectrumEPfii19FMOD_DSP_FFT_WINDOW
@@ -4532,8 +4661,14 @@ pub fn stub_723cc() -> ! {
 
 // 0x723d4 — __ZN4FMOD11ChannelReal10getDSPHeadEPPNS_4DSPIE
 #[doc(alias = "FMOD::ChannelReal::getDSPHead(FMOD::DSPI **)")]
-pub fn stub_723d4() -> ! {
-    todo!("0x723d4 FMOD::ChannelReal::getDSPHead(FMOD::DSPI **)")
+pub unsafe fn stub_723d4(_ch: *const ChannelRealBase, out: *mut *mut u8) -> i32 {
+    // IDA 0x723d4: *out = 0 (0x723dc), return 51 (0x723e0) — the base channel
+    // exposes no DSP head (cf. the emulated twin 0x7131c, which reads +372).
+    // SAFETY: `out` must point to a writable pointer slot.
+    unsafe {
+        *out = core::ptr::null_mut();
+    }
+    51
 }
 
 // 0x723e4 — __ZN4FMOD11ChannelReal7setModeEj
