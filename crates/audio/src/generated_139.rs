@@ -775,6 +775,26 @@ pub struct AudioLoginViewController {
     stop_logging_in_dispatches: std::sync::atomic::AtomicU32,
     view_will_appears: std::sync::atomic::AtomicU32,
     password_text: parking_lot::Mutex<String>,
+    view_loaded: std::sync::atomic::AtomicBool,
+    custom_vars: parking_lot::Mutex<Vec<(String, String)>>,
+    localized_login_keys: parking_lot::Mutex<Vec<&'static str>>,
+    version_text: parking_lot::Mutex<String>,
+    user_agent: parking_lot::Mutex<String>,
+    username_text: parking_lot::Mutex<String>,
+    switch_on: std::sync::atomic::AtomicBool,
+    debug_views_hidden: std::sync::atomic::AtomicBool,
+    unloaded_outlets: std::sync::atomic::AtomicU32,
+    unloaded: std::sync::atomic::AtomicBool,
+    signup_applies: std::sync::atomic::AtomicU32,
+    last_failure_alert: parking_lot::Mutex<Option<String>>,
+    login_failures: std::sync::atomic::AtomicU32,
+    store_accesses: std::sync::atomic::AtomicU32,
+    login_transitions: std::sync::atomic::AtomicU32,
+    show_logging_ins: std::sync::atomic::AtomicU32,
+    about_hidden: std::sync::atomic::AtomicBool,
+    activity_shown: std::sync::atomic::AtomicBool,
+    animation_runs: std::sync::atomic::AtomicU32,
+    login_fields_alpha_steps: std::sync::atomic::AtomicU32,
 }
 
 impl AudioLoginViewController {
@@ -902,112 +922,337 @@ impl AudioLoginViewController {
         self.stop_logging_in_dispatches
             .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
     }
+
+    /// Login-screen `NSBundle` keys `viewDidLoad` stamps
+    /// (IDA 0x1e40a..0x1e5b6).
+    pub const LOCALIZED_LOGIN_KEYS: [&'static str; 6] = [
+        "UsernameWord",
+        "PasswordWord",
+        "RememberPassword",
+        "LoginWord",
+        "SignupWord",
+        "PlayNowButtonLabel",
+    ];
+
+    /// `-[LoginViewController viewDidLoad]` (IDA 0x1e2ec): super
+    /// `viewDidLoad`, claims the singleton slot, records the three
+    /// analytics custom vars (OS/app/device, out of slice, threaded in),
+    /// stamps the six localized placeholders/labels plus the bundle
+    /// version, registers the `UserAgent` default, hides the debug
+    /// leaves, prefills the username when known, mirrors the remembered
+    /// switch/password state, registers the two keyboard observers, and
+    /// dispatches the memory-bouncer block.
+    #[allow(clippy::too_many_arguments)]
+    pub fn view_did_load(
+        &self,
+        os_version: &str,
+        app_version: &str,
+        device_name: &str,
+        bundle_version: &str,
+        user_agent: &str,
+        current_username: &str,
+        remember_password: bool,
+        saved_password: &str,
+    ) {
+        use std::sync::atomic::Ordering::SeqCst;
+        *self.custom_vars.lock() = vec![
+            ("iOSVersion".to_owned(), os_version.to_owned()),
+            ("appVersion".to_owned(), app_version.to_owned()),
+            ("deviceType".to_owned(), device_name.to_owned()),
+        ];
+        *self.localized_login_keys.lock() = Self::LOCALIZED_LOGIN_KEYS.to_vec();
+        *self.version_text.lock() = bundle_version.to_owned();
+        *self.user_agent.lock() = user_agent.to_owned();
+        self.debug_views_hidden.store(true, SeqCst);
+        if !current_username.is_empty() {
+            *self.username_text.lock() = current_username.to_owned();
+        }
+        self.switch_on.store(remember_password, SeqCst);
+        if !saved_password.is_empty() && remember_password {
+            *self.password_text.lock() = saved_password.to_owned();
+        }
+        self.observers_registered.fetch_add(2, SeqCst);
+        self.picker_select_block();
+        self.view_loaded.store(true, SeqCst);
+    }
+
+    /// `-[LoginViewController viewDidUnload]` (IDA 0x1e8cc): nils the 10
+    /// outlet setters then super `viewDidUnload`, clearing the singleton
+    /// slot (Rust drops cover the stores).
+    pub fn view_did_unload(&self) {
+        use std::sync::atomic::Ordering::SeqCst;
+        self.unloaded_outlets.store(10, SeqCst);
+        self.unloaded.store(true, SeqCst);
+    }
+
+    /// `-[LoginViewController handleSignupNotification:]` (IDA 0x1e9d0):
+    /// retains the `username`/`password` pair from the notification and,
+    /// when both are present, dispatches the main-queue block stamping
+    /// the two text fields.
+    pub fn handle_signup_notification(
+        &self,
+        username: Option<&str>,
+        password: Option<&str>,
+    ) -> bool {
+        match (username, password) {
+            (Some(user), Some(pass)) => {
+                self.signup_apply_block(user, pass);
+                true
+            }
+            _ => false,
+        }
+    }
+
+    /// `__48-[LoginViewController handleSignupNotification:]_block_invoke`
+    /// (IDA 0x1eaa0): stamps the username/password fields, releasing the
+    /// retained pair (Rust drops cover the releases).
+    pub fn signup_apply_block(&self, username: &str, password: &str) {
+        *self.username_text.lock() = username.to_owned();
+        *self.password_text.lock() = password.to_owned();
+        self.signup_applies
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// `-[LoginViewController gotLoginFailedNotification:]` (IDA 0x1eb5c):
+    /// retains the `Error` string and dispatches the main-queue block.
+    pub fn got_login_failed_notification(&self, error: &str) {
+        self.login_failed_block(error);
+    }
+
+    /// `__50-[LoginViewController gotLoginFailedNotification:]_block_invoke`
+    /// (IDA 0x1ebdc): stops the logging-in UI, raises the error alert,
+    /// and clears the password field.
+    pub fn login_failed_block(&self, error: &str) {
+        use std::sync::atomic::Ordering::SeqCst;
+        self.stop_show_logging_in();
+        *self.last_failure_alert.lock() = Some(error.to_owned());
+        self.login_failures.fetch_add(1, SeqCst);
+        *self.password_text.lock() = String::new();
+    }
+
+    /// `-[LoginViewController gotLoginSuccessfulNotification:]`
+    /// (IDA 0x1ec84): warms the store manager, runs the login
+    /// transition, and dispatches the main-queue block clearing the
+    /// username field.
+    pub fn got_login_successful_notification(&self) {
+        use std::sync::atomic::Ordering::SeqCst;
+        self.store_accesses.fetch_add(1, SeqCst);
+        self.login_transitions.fetch_add(1, SeqCst);
+        self.login_successful_block();
+    }
+
+    /// `__54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke`
+    /// (IDA 0x1ed04): clears the username field.
+    pub fn login_successful_block(&self) {
+        *self.username_text.lock() = String::new();
+    }
+
+    /// `-[LoginViewController showLoggingIn]` (IDA 0x1ed44): hides the
+    /// about button and dispatches the main-queue animation block.
+    pub fn show_logging_in(&self) {
+        use std::sync::atomic::Ordering::SeqCst;
+        self.about_hidden.store(true, SeqCst);
+        self.show_logging_ins.fetch_add(1, SeqCst);
+        self.show_logging_in_block();
+    }
+
+    /// `__36-[LoginViewController showLoggingIn]_block_invoke`
+    /// (IDA 0x1edbc): shows the activity indicator and runs the 0.5s
+    /// fade, whose completion (`stub_1ee58`) zeroes the field alpha.
+    pub fn show_logging_in_block(&self) {
+        use std::sync::atomic::Ordering::SeqCst;
+        self.activity_shown.store(true, SeqCst);
+        self.animation_runs.fetch_add(1, SeqCst);
+        self.show_logging_in_fade_block();
+    }
+
+    /// `__36-[LoginViewController showLoggingIn]_block_invoke_2`
+    /// (IDA 0x1ee58): `loginFieldViews.alpha = 0`.
+    pub fn show_logging_in_fade_block(&self) {
+        self.login_fields_alpha_steps
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x1e2ec — -[LoginViewController viewDidLoad]
 #[doc(alias = "-[LoginViewController viewDidLoad]")]
-pub fn stub_1e2ec() -> ! {
-    todo!("0x1e2ec -[LoginViewController viewDidLoad]")
+#[allow(clippy::too_many_arguments)]
+pub fn stub_1e2ec(
+    controller: &AudioLoginViewController,
+    os_version: &str,
+    app_version: &str,
+    device_name: &str,
+    bundle_version: &str,
+    user_agent: &str,
+    current_username: &str,
+    remember_password: bool,
+    saved_password: &str,
+) {
+    // IDA 0x1e2ec (`-[LoginViewController viewDidLoad]`): analytics
+    // vars, localized stamps, user-agent default, debug hides, field
+    // prefills, keyboard observers, memory-bouncer kick.
+    controller.view_did_load(
+        os_version,
+        app_version,
+        device_name,
+        bundle_version,
+        user_agent,
+        current_username,
+        remember_password,
+        saved_password,
+    );
 }
 
 // 0x1e898 — ___34-[LoginViewController viewDidLoad]_block_invoke
 #[doc(alias = "___34-[LoginViewController viewDidLoad]_block_invoke")]
-pub fn stub_1e898() -> ! {
-    todo!("0x1e898 ___34-[LoginViewController viewDidLoad]_block_invoke")
+pub fn stub_1e898(controller: &AudioLoginViewController) {
+    // IDA 0x1e898 (`__34-[LoginViewController viewDidLoad]_block_invoke`):
+    // `startMemoryBouncer`.
+    controller.picker_select_block();
 }
 
 // 0x1e8cc — -[LoginViewController viewDidUnload]
 #[doc(alias = "-[LoginViewController viewDidUnload]")]
-pub fn stub_1e8cc() -> ! {
-    todo!("0x1e8cc -[LoginViewController viewDidUnload]")
+pub fn stub_1e8cc(controller: &AudioLoginViewController) {
+    // IDA 0x1e8cc (`-[LoginViewController viewDidUnload]`): nils the 10
+    // outlet setters then super `viewDidUnload`, clearing the singleton
+    // slot.
+    controller.view_did_unload();
 }
 
 // 0x1e9d0 — -[LoginViewController handleSignupNotification:]
 #[doc(alias = "-[LoginViewController handleSignupNotification:]")]
-pub fn stub_1e9d0() -> ! {
-    todo!("0x1e9d0 -[LoginViewController handleSignupNotification:]")
+pub fn stub_1e9d0(
+    controller: &AudioLoginViewController,
+    username: Option<&str>,
+    password: Option<&str>,
+) -> bool {
+    // IDA 0x1e9d0 (`-[LoginViewController handleSignupNotification:]`):
+    // retains the pair; dispatches the stamp block when both present.
+    controller.handle_signup_notification(username, password)
 }
 
 // 0x1eaa0 — ___48-[LoginViewController handleSignupNotification:]_block_invoke
 #[doc(alias = "___48-[LoginViewController handleSignupNotification:]_block_invoke")]
-pub fn stub_1eaa0() -> ! {
-    todo!("0x1eaa0 ___48-[LoginViewController handleSignupNotification:]_block_invoke")
+pub fn stub_1eaa0(controller: &AudioLoginViewController, username: &str, password: &str) {
+    // IDA 0x1eaa0 (signup stamp block): stamps the two fields, releasing
+    // the retained pair.
+    controller.signup_apply_block(username, password);
 }
 
 // 0x1eb08 — ___copy_helper_block_226
 #[doc(alias = "___copy_helper_block_226")]
-pub fn stub_1eb08() -> ! {
-    todo!("0x1eb08 ___copy_helper_block_226")
+pub fn stub_1eb08(
+    first_slot: &mut u64,
+    second_slot: &mut u64,
+    first_src: u64,
+    second_src: u64,
+) {
+    // IDA 0x1eb08 (disasm `__Block_object_assign` x2 at +0x14/+0x18):
+    // retain the two captures (self + username/password pair).
+    *first_slot = first_src;
+    *second_slot = second_src;
 }
 
 // 0x1eb38 — ___destroy_helper_block_227
 #[doc(alias = "___destroy_helper_block_227")]
-pub fn stub_1eb38() -> ! {
-    todo!("0x1eb38 ___destroy_helper_block_227")
+pub fn stub_1eb38(first_slot: &mut u64, second_slot: &mut u64) {
+    // IDA 0x1eb38 (disasm `__Block_object_dispose` x2 at +0x14/+0x18):
+    // release the two captures.
+    *first_slot = 0;
+    *second_slot = 0;
 }
 
 // 0x1eb5c — -[LoginViewController gotLoginFailedNotification:]
 #[doc(alias = "-[LoginViewController gotLoginFailedNotification:]")]
-pub fn stub_1eb5c() -> ! {
-    todo!("0x1eb5c -[LoginViewController gotLoginFailedNotification:]")
+pub fn stub_1eb5c(controller: &AudioLoginViewController, error: &str) {
+    // IDA 0x1eb5c (`-[LoginViewController gotLoginFailedNotification:]`):
+    // retains the `Error` string and dispatches the alert block.
+    controller.got_login_failed_notification(error);
 }
 
 // 0x1ebdc — ___50-[LoginViewController gotLoginFailedNotification:]_block_invoke
 #[doc(alias = "___50-[LoginViewController gotLoginFailedNotification:]_block_invoke")]
-pub fn stub_1ebdc() -> ! {
-    todo!("0x1ebdc ___50-[LoginViewController gotLoginFailedNotification:]_block_invoke")
+pub fn stub_1ebdc(controller: &AudioLoginViewController, error: &str) {
+    // IDA 0x1ebdc (login-failed block): stops the logging-in UI, raises
+    // the error alert, clears the password field.
+    controller.login_failed_block(error);
 }
 
 // 0x1ec44 — ___copy_helper_block_234
 #[doc(alias = "___copy_helper_block_234")]
-pub fn stub_1ec44() -> ! {
-    todo!("0x1ec44 ___copy_helper_block_234")
+pub fn stub_1ec44(
+    first_slot: &mut u64,
+    second_slot: &mut u64,
+    first_src: u64,
+    second_src: u64,
+) {
+    // IDA 0x1ec44 (disasm `__Block_object_assign` x2 at +0x14/+0x18):
+    // retain the two captures (self + error string).
+    *first_slot = first_src;
+    *second_slot = second_src;
 }
 
 // 0x1ec68 — ___destroy_helper_block_235
 #[doc(alias = "___destroy_helper_block_235")]
-pub fn stub_1ec68() -> ! {
-    todo!("0x1ec68 ___destroy_helper_block_235")
+pub fn stub_1ec68(first_slot: &mut u64, second_slot: &mut u64) {
+    // IDA 0x1ec68 (disasm `__Block_object_dispose` x2 at +0x14/+0x18):
+    // release the two captures.
+    *first_slot = 0;
+    *second_slot = 0;
 }
 
 // 0x1ec84 — -[LoginViewController gotLoginSuccessfulNotification:]
 #[doc(alias = "-[LoginViewController gotLoginSuccessfulNotification:]")]
-pub fn stub_1ec84() -> ! {
-    todo!("0x1ec84 -[LoginViewController gotLoginSuccessfulNotification:]")
+pub fn stub_1ec84(controller: &AudioLoginViewController) {
+    // IDA 0x1ec84 (`-[LoginViewController gotLoginSuccessfulNotification:]`):
+    // warms the store manager, runs the login transition, dispatches the
+    // field-clear block.
+    controller.got_login_successful_notification();
 }
 
 // 0x1ed04 — ___54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke
 #[doc(alias = "___54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke")]
-pub fn stub_1ed04() -> ! {
-    todo!("0x1ed04 ___54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke")
+pub fn stub_1ed04(controller: &AudioLoginViewController) {
+    // IDA 0x1ed04 (login-ok block): clears the username field.
+    controller.login_successful_block();
 }
 
 // 0x1ed30 — ___copy_helper_block_242
 #[doc(alias = "___copy_helper_block_242")]
-pub fn stub_1ed30() -> ! {
-    todo!("0x1ed30 ___copy_helper_block_242")
+pub fn stub_1ed30(slot: &mut u64, src: u64) {
+    // IDA 0x1ed30 (disasm one `__Block_object_assign` at +0x14): retain
+    // the capture.
+    *slot = src;
 }
 
 // 0x1ed3c — ___destroy_helper_block_243
 #[doc(alias = "___destroy_helper_block_243")]
-pub fn stub_1ed3c() -> ! {
-    todo!("0x1ed3c ___destroy_helper_block_243")
+pub fn stub_1ed3c(slot: &mut u64) {
+    // IDA 0x1ed3c (disasm one `__Block_object_dispose` at +0x14):
+    // release the capture.
+    *slot = 0;
 }
 
 // 0x1ed44 — -[LoginViewController showLoggingIn]
 #[doc(alias = "-[LoginViewController showLoggingIn]")]
-pub fn stub_1ed44() -> ! {
-    todo!("0x1ed44 -[LoginViewController showLoggingIn]")
+pub fn stub_1ed44(controller: &AudioLoginViewController) {
+    // IDA 0x1ed44 (`-[LoginViewController showLoggingIn]`): hides the
+    // about button and dispatches the animation block.
+    controller.show_logging_in();
 }
 
 // 0x1edbc — ___36-[LoginViewController showLoggingIn]_block_invoke
 #[doc(alias = "___36-[LoginViewController showLoggingIn]_block_invoke")]
-pub fn stub_1edbc() -> ! {
-    todo!("0x1edbc ___36-[LoginViewController showLoggingIn]_block_invoke")
+pub fn stub_1edbc(controller: &AudioLoginViewController) {
+    // IDA 0x1edbc (show-logging-in block): shows the activity indicator
+    // and runs the 0.5s fade.
+    controller.show_logging_in_block();
 }
 
 // 0x1ee58 — ___36-[LoginViewController showLoggingIn]_block_invoke_2
 #[doc(alias = "___36-[LoginViewController showLoggingIn]_block_invoke_2")]
-pub fn stub_1ee58() -> ! {
-    todo!("0x1ee58 ___36-[LoginViewController showLoggingIn]_block_invoke_2")
+pub fn stub_1ee58(controller: &AudioLoginViewController) {
+    // IDA 0x1ee58 (fade completion): `loginFieldViews.alpha = 0`.
+    controller.show_logging_in_fade_block();
 }
