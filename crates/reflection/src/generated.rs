@@ -3444,12 +3444,136 @@ pub fn stub_0x25e848(access: &SpotLightNormalAccess, obj: &mut SpotLightState, v
     (access.set)(obj, value);
 }
 
-// 0x25e86c — __ZN3RBX10Reflection14PropDescriptorINS_9SpotLightEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::PropDescriptor<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>(char const*,char const*,float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x25e86c() -> ! {
-    todo!("0x25e86c RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::PropDescriptor<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>(char const*,char const*,float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+/// Minimal `RBX::SpotLight` float state visible to its plain descriptor (IDA 0x25e86c).
+/// Same role as `SpotLightState` for the enum descriptor; kept separate because that
+/// struct derives `Eq`, which `f32` cannot satisfy.
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct SpotLightFloatState {
+    pub value: f32,
 }
 
+/// Get/set pair behind `PropDescriptor<SpotLight, float>` (IDA 0x25e86c).
+pub struct SpotLightFloatAccess {
+    pub get: Box<dyn Fn(&SpotLightFloatState) -> f32 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut SpotLightFloatState, f32) + Send + Sync>,
+}
+
+/// `RBX::Reflection::PropDescriptor<SpotLight, float>` (IDA 0x25e86c).
+pub struct SpotLightFloatPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: SpotLightFloatAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// Minimal `RBX::PointLight` float state (IDA 0x25e9f8). Same role as `SpotLightFloatState`.
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct PointLightFloatState {
+    pub value: f32,
+}
+
+/// Get/set pair behind `PropDescriptor<PointLight, float>` (IDA 0x25e9f8).
+pub struct PointLightFloatAccess {
+    pub get: Box<dyn Fn(&PointLightFloatState) -> f32 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut PointLightFloatState, f32) + Send + Sync>,
+}
+
+/// `RBX::Reflection::PropDescriptor<PointLight, float>` (IDA 0x25e9f8).
+pub struct PointLightFloatPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: PointLightFloatAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// Minimal `RBX::Light` float state (IDA 0x25eb84). Same role as `SpotLightFloatState`.
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct LightFloatState {
+    pub value: f32,
+}
+
+/// Get/set pair behind `PropDescriptor<Light, float>` (IDA 0x25eb84).
+pub struct LightFloatAccess {
+    pub get: Box<dyn Fn(&LightFloatState) -> f32 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut LightFloatState, f32) + Send + Sync>,
+}
+
+/// `RBX::Reflection::PropDescriptor<Light, float>` (IDA 0x25eb84).
+pub struct LightFloatPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: LightFloatAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// Minimal `RBX::Light` color state (IDA 0x25ed10). `G3D::Color3` is three floats;
+/// the setter copies exactly 12 bytes (disasm 0x25eea6-0x25eeb0).
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct LightColorState {
+    pub value: [f32; 3],
+}
+
+/// Get/set pair behind `PropDescriptor<Light, G3D::Color3>` (IDA 0x25ed10).
+pub struct LightColorAccess {
+    pub get: Box<dyn Fn(&LightColorState) -> [f32; 3] + Send + Sync>,
+    pub set: Box<dyn Fn(&mut LightColorState, [f32; 3]) + Send + Sync>,
+}
+
+/// `RBX::Reflection::PropDescriptor<Light, G3D::Color3>` (IDA 0x25ed10).
+pub struct LightColorPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: LightColorAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// Minimal `RBX::Light` bool state (IDA 0x25eebc). Same role as `SpotLightFloatState`.
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
+pub struct LightBoolState {
+    pub value: bool,
+}
+
+/// Get/set pair behind `PropDescriptor<Light, bool>` (IDA 0x25eebc).
+pub struct LightBoolAccess {
+    pub get: Box<dyn Fn(&LightBoolState) -> bool + Send + Sync>,
+    pub set: Box<dyn Fn(&mut LightBoolState, bool) + Send + Sync>,
+}
+
+/// `RBX::Reflection::PropDescriptor<Light, bool>` (IDA 0x25eebc).
+pub struct LightBoolPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: LightBoolAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+// 0x25e86c — __ZN3RBX10Reflection14PropDescriptorINS_9SpotLightEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::PropDescriptor<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>(char const*,char const*,float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x25e86c(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&SpotLightFloatState) -> f32 + Send + Sync>,
+    set: Box<dyn Fn(&mut SpotLightFloatState, f32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> SpotLightFloatPropDesc {
+    // IDA 0x25e86c: same PropDescriptor ctor shape as the `SpotLight`/enum twin at 0x25dff4
+    // (decompiled 0x25e86c: `Described<SpotLight>::classDescriptor`, `new(0x14)` member desc holding
+    // (getter, setter), `TypedPropertyDescriptor<float>`; all four ctors are size 0x10a).
+    // No enum-singleton link: a plain `PropDescriptor` stores no `EnumDesc`.
+    SpotLightFloatPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: SpotLightFloatAccess { get, set },
+        attributes,
+        permissions,
+    }
+}
 // 0x25e980 — __ZN3RBX10Reflection14PropDescriptorINS_9SpotLightEfED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::~PropDescriptor()")]
 pub fn stub_0x25e980() {
@@ -3472,22 +3596,41 @@ pub fn stub_0x25e9b0() -> bool {
 
 // 0x25e9b4 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x25e9b4() -> ! {
-    todo!("0x25e9b4 RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x25e9b4(access: &SpotLightFloatAccess, obj: &SpotLightFloatState) -> f32 {
+    // IDA 0x25e9b4: null→`obj-36` member adjust, member-pointer dispatch through the getter
+    // (disasm 0x25e9b4, byte-identical to the enum twin at 0x25e828).
+    (access.get)(obj)
 }
-
 // 0x25e9d4 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
-pub fn stub_0x25e9d4() -> ! {
-    todo!("0x25e9d4 RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+pub fn stub_0x25e9d4(access: &SpotLightFloatAccess, obj: &mut SpotLightFloatState, value: f32) {
+    // IDA 0x25e9d4: same member-pointer dispatch as stub_0x25e9b4 through the setter pair at
+    // +0xC/+0x10; the float arrives by value (`LDR R1, [R2]`). Byte-identical to the enum
+    // twin at 0x25e848.
+    (access.set)(obj, value);
 }
-
 // 0x25e9f8 — __ZN3RBX10Reflection14PropDescriptorINS_10PointLightEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::PropDescriptor<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>(char const*,char const*,float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x25e9f8() -> ! {
-    todo!("0x25e9f8 RBX::Reflection::PropDescriptor<RBX::PointLight,float>::PropDescriptor<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>(char const*,char const*,float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x25e9f8(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&PointLightFloatState) -> f32 + Send + Sync>,
+    set: Box<dyn Fn(&mut PointLightFloatState, f32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> PointLightFloatPropDesc {
+    // IDA 0x25e9f8: same PropDescriptor ctor shape as the `SpotLight`/enum twin at 0x25dff4
+    // (decompiled 0x25e9f8: `Described<PointLight>::classDescriptor`, `new(0x14)` member desc holding
+    // (getter, setter), `TypedPropertyDescriptor<float>`; all four ctors are size 0x10a).
+    // No enum-singleton link: a plain `PropDescriptor` stores no `EnumDesc`.
+    PointLightFloatPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: PointLightFloatAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
-
 // 0x25eb0c — __ZN3RBX10Reflection14PropDescriptorINS_10PointLightEfED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::~PropDescriptor()")]
 pub fn stub_0x25eb0c() {
@@ -3510,22 +3653,41 @@ pub fn stub_0x25eb3c() -> bool {
 
 // 0x25eb40 — __ZNK3RBX10Reflection14PropDescriptorINS_10PointLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x25eb40() -> ! {
-    todo!("0x25eb40 RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x25eb40(access: &PointLightFloatAccess, obj: &PointLightFloatState) -> f32 {
+    // IDA 0x25eb40: null→`obj-36` member adjust, member-pointer dispatch through the getter
+    // (disasm 0x25eb40, byte-identical to the enum twin at 0x25e828).
+    (access.get)(obj)
 }
-
 // 0x25eb60 — __ZNK3RBX10Reflection14PropDescriptorINS_10PointLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
-pub fn stub_0x25eb60() -> ! {
-    todo!("0x25eb60 RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+pub fn stub_0x25eb60(access: &PointLightFloatAccess, obj: &mut PointLightFloatState, value: f32) {
+    // IDA 0x25eb60: same member-pointer dispatch as stub_0x25eb40 through the setter pair at
+    // +0xC/+0x10; the float arrives by value (`LDR R1, [R2]`). Byte-identical to the enum
+    // twin at 0x25e848.
+    (access.set)(obj, value);
 }
-
 // 0x25eb84 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::PropDescriptor<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>(char const*,char const*,float (RBX::Light::*)(void)const,void (RBX::Light::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x25eb84() -> ! {
-    todo!("0x25eb84 RBX::Reflection::PropDescriptor<RBX::Light,float>::PropDescriptor<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>(char const*,char const*,float (RBX::Light::*)(void)const,void (RBX::Light::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x25eb84(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&LightFloatState) -> f32 + Send + Sync>,
+    set: Box<dyn Fn(&mut LightFloatState, f32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> LightFloatPropDesc {
+    // IDA 0x25eb84: same PropDescriptor ctor shape as the `SpotLight`/enum twin at 0x25dff4
+    // (decompiled 0x25eb84: `Described<Light>::classDescriptor`, `new(0x14)` member desc holding
+    // (getter, setter), `TypedPropertyDescriptor<float>`; all four ctors are size 0x10a).
+    // No enum-singleton link: a plain `PropDescriptor` stores no `EnumDesc`.
+    LightFloatPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: LightFloatAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
-
 // 0x25ec98 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEfED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::~PropDescriptor()")]
 pub fn stub_0x25ec98() {
@@ -3548,22 +3710,41 @@ pub fn stub_0x25ecc8() -> bool {
 
 // 0x25eccc — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x25eccc() -> ! {
-    todo!("0x25eccc RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x25eccc(access: &LightFloatAccess, obj: &LightFloatState) -> f32 {
+    // IDA 0x25eccc: null→`obj-36` member adjust, member-pointer dispatch through the getter
+    // (disasm 0x25eccc, byte-identical to the enum twin at 0x25e828).
+    (access.get)(obj)
 }
-
 // 0x25ecec — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
-pub fn stub_0x25ecec() -> ! {
-    todo!("0x25ecec RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+pub fn stub_0x25ecec(access: &LightFloatAccess, obj: &mut LightFloatState, value: f32) {
+    // IDA 0x25ecec: same member-pointer dispatch as stub_0x25eccc through the setter pair at
+    // +0xC/+0x10; the float arrives by value (`LDR R1, [R2]`). Byte-identical to the enum
+    // twin at 0x25e848.
+    (access.set)(obj, value);
 }
-
 // 0x25ed10 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>(char const*,char const*,G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x25ed10() -> ! {
-    todo!("0x25ed10 RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>(char const*,char const*,G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x25ed10(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&LightColorState) -> [f32; 3] + Send + Sync>,
+    set: Box<dyn Fn(&mut LightColorState, [f32; 3]) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> LightColorPropDesc {
+    // IDA 0x25ed10: same PropDescriptor ctor shape as the `SpotLight`/enum twin at 0x25dff4
+    // (decompiled 0x25ed10: `Described<Light>::classDescriptor`, `new(0x14)` member desc holding
+    // (getter, setter), `TypedPropertyDescriptor<G3D::Color3>`; all four ctors are size 0x10a).
+    // No enum-singleton link: a plain `PropDescriptor` stores no `EnumDesc`.
+    LightColorPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: LightColorAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
-
 // 0x25ee24 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::~PropDescriptor()")]
 pub fn stub_0x25ee24() {
@@ -3586,22 +3767,42 @@ pub fn stub_0x25ee54() -> bool {
 
 // 0x25ee58 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x25ee58() -> ! {
-    todo!("0x25ee58 RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x25ee58(access: &LightColorAccess, obj: &LightColorState) -> [f32; 3] {
+    // IDA 0x25ee58: same null→`obj-36` adjust + member-pointer dispatch as the float twin
+    // at 0x25e9b4, but the `Color3` return needs a caller frame, so it compiles to `BLX`
+    // under `PUSH {R7,LR}` (disasm 0x25ee58-0x25ee7c) instead of a tail `BX`.
+    (access.get)(obj)
 }
-
 // 0x25ee80 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")]
-pub fn stub_0x25ee80() -> ! {
-    todo!("0x25ee80 RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")
+pub fn stub_0x25ee80(access: &LightColorAccess, obj: &mut LightColorState, value: [f32; 3]) {
+    // IDA 0x25ee80: setter dispatch as at 0x25e9d4, but the `Color3` arrives as 12 bytes
+    // copied word-wise onto the stack (`LDR`/`STR` x3, 0x25eea6-0x25eeb0) and passed by
+    // address (`MOV R1, SP`, 0x25eeb2) before `BLX` (disasm 0x25ee80-0x25eeb8).
+    (access.set)(obj, value);
 }
-
 // 0x25eebc — __ZN3RBX10Reflection14PropDescriptorINS_5LightEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::PropDescriptor<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>(char const*,char const*,bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x25eebc() -> ! {
-    todo!("0x25eebc RBX::Reflection::PropDescriptor<RBX::Light,bool>::PropDescriptor<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>(char const*,char const*,bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x25eebc(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&LightBoolState) -> bool + Send + Sync>,
+    set: Box<dyn Fn(&mut LightBoolState, bool) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> LightBoolPropDesc {
+    // IDA 0x25eebc: same PropDescriptor ctor shape as the `SpotLight`/enum twin at 0x25dff4
+    // (decompiled 0x25eebc: `Described<Light>::classDescriptor`, `new(0x14)` member desc holding
+    // (getter, setter), `TypedPropertyDescriptor<bool>`; all four ctors are size 0x10a).
+    // No enum-singleton link: a plain `PropDescriptor` stores no `EnumDesc`.
+    LightBoolPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: LightBoolAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
-
 // 0x25efd0 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEbED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::~PropDescriptor()")]
 pub fn stub_0x25efd0() {
@@ -3624,16 +3825,18 @@ pub fn stub_0x25f000() -> bool {
 
 // 0x25f004 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x25f004() -> ! {
-    todo!("0x25f004 RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x25f004(access: &LightBoolAccess, obj: &LightBoolState) -> bool {
+    // IDA 0x25f004: getter dispatch as at 0x25e9b4, compiled with a `PUSH {R7,LR}` frame +
+    // `BLX` (disasm 0x25f004-0x25f026) like the `Color3` twin at 0x25ee58.
+    (access.get)(obj)
 }
-
 // 0x25f028 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_0x25f028() -> ! {
-    todo!("0x25f028 RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_0x25f028(access: &LightBoolAccess, obj: &mut LightBoolState, value: bool) {
+    // IDA 0x25f028: setter dispatch as at 0x25e9d4, except the payload is a single byte
+    // (`LDRB R1, [R2]`, 0x25f046) -- `bool`, not a word (disasm 0x25f028-0x25f048).
+    (access.set)(obj, value);
 }
-
 // 0x25f54c — __ZN3RBX10Reflection15EventDescriptorC2ERNS0_15ClassDescriptorEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDescriptor::EventDescriptor(RBX::Reflection::ClassDescriptor &,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 pub fn stub_0x25f54c() -> ! {
@@ -27714,82 +27917,160 @@ pub fn stub_0x4a14e0(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
 
 // 0x4ab26c — __ZN3RBX10Reflection4Type12getSingletonINS_4Time12SampleMethodEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Time::SampleMethod>(void)")]
-pub fn stub_0x4ab26c() -> ! {
-    todo!("0x4ab26c RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Time::SampleMethod>(void)")
+pub fn stub_0x4ab26c() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab26c: `Type::getSingleton<Time::SampleMethod>` -- guard-once thunk into
+    // `Singleton<EnumDesc<SampleMethod>>::singleton()` (`boost::call_once` flag+`initSingleton`, then
+    // `doGetSingleton`; disasm 0x4ab26c, 0x32 bytes, same shape as 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    // Pairs are populated by the C2 ctor; the item set lands with that EA.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("SampleMethod"));
+    &S
 }
-
 // 0x4ab2a0 — __ZN3RBX10Reflection4Type12getSingletonINS_10GuiService10SpecialKeyEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::GuiService::SpecialKey>(void)")]
-pub fn stub_0x4ab2a0() -> ! {
-    todo!("0x4ab2a0 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::GuiService::SpecialKey>(void)")
+pub fn stub_0x4ab2a0() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab2a0: `Type::getSingleton<GuiService::SpecialKey>` -- guard-once thunk into
+    // `Singleton<EnumDesc<SpecialKey>>::singleton()` (`boost::call_once` flag+`initSingleton`, then
+    // `doGetSingleton`; disasm 0x4ab2a0, 0x32 bytes, same shape as 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    // Pairs are populated by the C2 ctor; the item set lands with that EA.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("SpecialKey"));
+    &S
 }
-
 // 0x4ab2d4 — __ZN3RBX10Reflection4Type12getSingletonINS_10GuiService16CenterDialogTypeEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::GuiService::CenterDialogType>(void)")]
-pub fn stub_0x4ab2d4() -> ! {
-    todo!("0x4ab2d4 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::GuiService::CenterDialogType>(void)")
+pub fn stub_0x4ab2d4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab2d4: `Type::getSingleton<GuiService::CenterDialogType>` -- guard-once thunk into
+    // `Singleton<EnumDesc<CenterDialogType>>::singleton()` (`boost::call_once` flag+`initSingleton`, then
+    // `doGetSingleton`; disasm 0x4ab2d4, 0x32 bytes, same shape as 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    // Pairs are populated by the C2 ctor; the item set lands with that EA.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("CenterDialogType"));
+    &S
 }
-
 // 0x4ab308 — __ZN3RBX10Reflection4Type12getSingletonINS_11ChatService9ChatColorEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::ChatService::ChatColor>(void)")]
-pub fn stub_0x4ab308() -> ! {
-    todo!("0x4ab308 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::ChatService::ChatColor>(void)")
+pub fn stub_0x4ab308() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab308: `Type::getSingleton<ChatService::ChatColor>` -- guard-once thunk into
+    // `Singleton<EnumDesc<ChatColor>>::singleton()` (`boost::call_once` flag+`initSingleton`, then
+    // `doGetSingleton`; disasm 0x4ab308, 0x32 bytes, same shape as 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    // Pairs are populated by the C2 ctor; the item set lands with that EA.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("ChatColor"));
+    &S
 }
-
 // 0x4ab33c — __ZN3RBX10Reflection4Type12getSingletonINS_18MarketplaceService12CurrencyTypeEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::MarketplaceService::CurrencyType>(void)")]
-pub fn stub_0x4ab33c() -> ! {
-    todo!("0x4ab33c RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::MarketplaceService::CurrencyType>(void)")
+pub fn stub_0x4ab33c() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab33c: `Type::getSingleton<MarketplaceService::CurrencyType>` -- guard-once thunk into
+    // `Singleton<EnumDesc<CurrencyType>>::singleton()` (`boost::call_once` flag+`initSingleton`, then
+    // `doGetSingleton`; disasm 0x4ab33c, 0x32 bytes, same shape as 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    // Pairs are populated by the C2 ctor; the item set lands with that EA.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("CurrencyType"));
+    &S
 }
-
 // 0x4ab370 — __ZN3RBX10Reflection4Type12getSingletonINS_5Voxel12CellMaterialEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::CellMaterial>(void)")]
-pub fn stub_0x4ab370() -> ! {
-    todo!("0x4ab370 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::CellMaterial>(void)")
+pub fn stub_0x4ab370() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab370: `Type::getSingleton<Voxel::CellMaterial>` -- guard-once thunk into
+    // `Singleton<EnumDesc<CellMaterial>>::singleton()` (`boost::call_once` flag+`initSingleton`, then
+    // `doGetSingleton`; disasm 0x4ab370, 0x32 bytes, same shape as 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    // Pairs are populated by the C2 ctor; the item set lands with that EA.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("CellMaterial"));
+    &S
 }
-
 // 0x4ab3a4 — __ZN3RBX10Reflection4Type12getSingletonINS_5Voxel9CellBlockEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::CellBlock>(void)")]
-pub fn stub_0x4ab3a4() -> ! {
-    todo!("0x4ab3a4 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::CellBlock>(void)")
+pub fn stub_0x4ab3a4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab3a4: `Type::getSingleton<Voxel::CellBlock>` -- guard-once thunk into
+    // `Singleton<EnumDesc<CellBlock>>::singleton()` (`boost::call_once` flag+`initSingleton`, then
+    // `doGetSingleton`; disasm 0x4ab3a4, 0x32 bytes, same shape as 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    // Pairs are populated by the C2 ctor; the item set lands with that EA.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("CellBlock"));
+    &S
 }
-
 // 0x4ab3d8 — __ZN3RBX10Reflection4Type12getSingletonINS_5Voxel15CellOrientationEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::CellOrientation>(void)")]
-pub fn stub_0x4ab3d8() -> ! {
-    todo!("0x4ab3d8 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::CellOrientation>(void)")
+pub fn stub_0x4ab3d8() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab3d8: `Type::getSingleton<Voxel::CellOrientation>` -- guard-once thunk into
+    // `Singleton<EnumDesc<CellOrientation>>::singleton()` (`boost::call_once` flag+`initSingleton`, then
+    // `doGetSingleton`; disasm 0x4ab3d8, 0x32 bytes, same shape as 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    // Pairs are populated by the C2 ctor; the item set lands with that EA.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("CellOrientation"));
+    &S
 }
-
 // 0x4ab40c — __ZN3RBX10Reflection4Type12getSingletonINS_5Voxel14WaterCellForceEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::WaterCellForce>(void)")]
-pub fn stub_0x4ab40c() -> ! {
-    todo!("0x4ab40c RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::WaterCellForce>(void)")
+pub fn stub_0x4ab40c() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab40c: `Type::getSingleton<Voxel::WaterCellForce>` -- guard-once thunk into
+    // `Singleton<EnumDesc<WaterCellForce>>::singleton()` (`boost::call_once` flag+`initSingleton`, then
+    // `doGetSingleton`; disasm 0x4ab40c, 0x32 bytes, same shape as 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    // Pairs are populated by the C2 ctor; the item set lands with that EA.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("WaterCellForce"));
+    &S
 }
-
 // 0x4ab440 — __ZN3RBX10Reflection4Type12getSingletonINS_5Voxel18WaterCellDirectionEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::WaterCellDirection>(void)")]
-pub fn stub_0x4ab440() -> ! {
-    todo!("0x4ab440 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::WaterCellDirection>(void)")
+pub fn stub_0x4ab440() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab440: `Type::getSingleton<Voxel::WaterCellDirection>` -- guard-once thunk into
+    // `Singleton<EnumDesc<WaterCellDirection>>::singleton()` (`boost::call_once` flag+`initSingleton`, then
+    // `doGetSingleton`; disasm 0x4ab440, 0x32 bytes, same shape as 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    // Pairs are populated by the C2 ctor; the item set lands with that EA.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("WaterCellDirection"));
+    &S
 }
-
 // 0x4ab474 — __ZN3RBX10Reflection4Type12getSingletonINS_12AssetService10AccessTypeEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::AssetService::AccessType>(void)")]
-pub fn stub_0x4ab474() -> ! {
-    todo!("0x4ab474 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::AssetService::AccessType>(void)")
+pub fn stub_0x4ab474() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab474: `Type::getSingleton<AssetService::AccessType>` -- guard-once thunk into
+    // `Singleton<EnumDesc<AccessType>>::singleton()` (`boost::call_once` flag+`initSingleton`, then
+    // `doGetSingleton`; disasm 0x4ab474, 0x32 bytes, same shape as 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    // Pairs are populated by the C2 ctor; the item set lands with that EA.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("AccessType"));
+    &S
 }
-
 // 0x4ab4a8 — __ZN3RBX10Reflection4Type12getSingletonINS_11HttpService15HttpContentTypeEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::HttpService::HttpContentType>(void)")]
-pub fn stub_0x4ab4a8() -> ! {
-    todo!("0x4ab4a8 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::HttpService::HttpContentType>(void)")
+pub fn stub_0x4ab4a8() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab4a8: `Type::getSingleton<HttpService::HttpContentType>` -- guard-once thunk into
+    // `Singleton<EnumDesc<HttpContentType>>::singleton()` (`boost::call_once` flag+`initSingleton`, then
+    // `doGetSingleton`; disasm 0x4ab4a8, 0x32 bytes, same shape as 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    // Pairs are populated by the C2 ctor; the item set lands with that EA.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("HttpContentType"));
+    &S
 }
-
 // 0x4ab4dc — __ZN3RBX10Reflection4Type12getSingletonINS_17StarterGuiService11CoreGuiTypeEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::StarterGuiService::CoreGuiType>(void)")]
-pub fn stub_0x4ab4dc() -> ! {
-    todo!("0x4ab4dc RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::StarterGuiService::CoreGuiType>(void)")
+pub fn stub_0x4ab4dc() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab4dc: `Type::getSingleton<StarterGuiService::CoreGuiType>` -- guard-once thunk into
+    // `Singleton<EnumDesc<CoreGuiType>>::singleton()` (`boost::call_once` flag+`initSingleton`, then
+    // `doGetSingleton`; disasm 0x4ab4dc, 0x32 bytes, same shape as 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    // Pairs are populated by the C2 ctor; the item set lands with that EA.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("CoreGuiType"));
+    &S
 }
-
 // 0x4abb28 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::safe_static_init_mutex(void)")]
 pub fn stub_0x4abb28() -> ! {
