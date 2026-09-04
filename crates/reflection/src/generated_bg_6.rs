@@ -55,6 +55,72 @@ pub(crate) static PLACE_IS_PLAYING: std::sync::atomic::AtomicBool =
 pub(crate) static PLACE_LAST_ID: std::sync::atomic::AtomicI32 = std::sync::atomic::AtomicI32::new(0);
 pub(crate) static PLACE_FAILURE_FORWARDS: std::sync::atomic::AtomicU32 =
     std::sync::atomic::AtomicU32::new(0);
+/// Gap-filler PlaceLauncher game-lifecycle flags (IDA 0x24ab0-0x27268).
+/// `prepareGame`/setup/start/join/load flow records here; UIKit views,
+/// GCD queues, `boost::bind`/`thread` and `std::string` traffic is drop
+/// glue. `SharedPtr<RBX::Game>` presence collapses to `bool`.
+pub(crate) static PLACE_CURRENTLY_PLAYING: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static PLACE_ROBX_VIEW: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static PLACE_MEM_CHECKER: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static PLACE_MEM_WARNING: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static PLACE_IDLE_TIMER_DISABLED: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static PLACE_UNSECURED_GAME: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static PLACE_LAST_NON_GAME: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static PLACE_DEFERRED_FINISH: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static PLACE_LOGIN_CONNECTED: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static PLACE_CHILD_ADDED_CONNECTED: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static PLACE_LOCAL_PLAYER_CREATED: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static PLACE_CONTROL_FLAG: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static PLACE_PART_CHECK_QUEUED: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PLACE_PART_WARNINGS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PLACE_FINISHED_POSTS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PLACE_DATAMODEL_CONNS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PLACE_ANALYTICS_EVENTS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PLACE_GAME_VC_CREATED: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PLACE_CONTROL_TASKS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PLACE_CONTROL_EXECS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PLACE_PRESENT_QUEUED: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PLACE_JOIN_THREADS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PLACE_EXECUTED_SCRIPTS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+/// Last alert key (`ConnectionError`, `WiFiOnlyError`, `WarnTooManyParts`),
+/// join/load scripts, join URL/local endpoint, app file and analytics label.
+pub(crate) static PLACE_LAST_ALERT: std::sync::LazyLock<parking_lot::Mutex<String>> =
+    std::sync::LazyLock::new(|| parking_lot::Mutex::new(String::new()));
+pub(crate) static PLACE_LAST_JOIN_SCRIPT: std::sync::LazyLock<parking_lot::Mutex<String>> =
+    std::sync::LazyLock::new(|| parking_lot::Mutex::new(String::new()));
+pub(crate) static PLACE_LAST_JOIN_URL: std::sync::LazyLock<parking_lot::Mutex<String>> =
+    std::sync::LazyLock::new(|| parking_lot::Mutex::new(String::new()));
+pub(crate) static PLACE_LAST_APP_FILE: std::sync::LazyLock<parking_lot::Mutex<String>> =
+    std::sync::LazyLock::new(|| parking_lot::Mutex::new(String::new()));
+pub(crate) static PLACE_LAST_LOAD_SCRIPT: std::sync::LazyLock<parking_lot::Mutex<String>> =
+    std::sync::LazyLock::new(|| parking_lot::Mutex::new(String::new()));
+pub(crate) static PLACE_LAST_ANALYTICS_LABEL: std::sync::LazyLock<parking_lot::Mutex<String>> =
+    std::sync::LazyLock::new(|| parking_lot::Mutex::new(String::new()));
+pub(crate) static PLACE_LAST_JOIN_LOCAL: std::sync::LazyLock<parking_lot::Mutex<(i32, String)>> =
+    std::sync::LazyLock::new(|| parking_lot::Mutex::new((0, String::new())));
 
 // 0x239ec — __ZN18iOSSettingsService27ReadValueiPadMinimumVersionEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
@@ -736,174 +802,341 @@ pub fn stub_0x24a58(has_fallback_controller: bool) {
 // 0x24ab0 — -[PlaceLauncher prepareGame]
 // type: bool __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher prepareGame]")]
-pub fn stub_0x24ab0() -> ! {
-    todo!("0x24ab0 -[PlaceLauncher prepareGame]")
+pub fn stub_0x24ab0(reachability: u32, wifi_only: bool) -> bool {
+    // IDA 0x24ab0: `prepareGame` sets the `<resourcePath>/content` asset
+    // folder, `Game::globalInit`, the teleport base URL, then gates on
+    // reachability: none → `ConnectionError` alert, false; cellular (2)
+    // with the wifionly preference → `WiFiOnlyError` alert, false.
+    // Otherwise `DataModel::hash` becomes `"ios,ios"`, settings load, the
+    // scheduler thread count applies, and it returns true. UIKit and
+    // `std::string` traffic is drop glue.
+    if reachability == 0 {
+        *PLACE_LAST_ALERT.lock() = "ConnectionError".to_owned();
+        return false;
+    }
+    if reachability == 2 && wifi_only {
+        *PLACE_LAST_ALERT.lock() = "WiFiOnlyError".to_owned();
+        return false;
+    }
+    true
 }
 
 // 0x25080 — -[PlaceLauncher setLastPlaceId:]
 // type: void __cdecl(PlaceLauncher *self, SEL, int)
 #[doc(alias = "-[PlaceLauncher setLastPlaceId:]")]
-pub fn stub_0x25080() -> ! {
-    todo!("0x25080 -[PlaceLauncher setLastPlaceId:]")
+pub fn stub_0x25080(place_id: i32) {
+    // IDA 0x25080: `setLastPlaceId:` stores `self->lastPlaceId`.
+    PLACE_LAST_ID.store(place_id, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x25090 — -[PlaceLauncher checkPlacePartCount]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher checkPlacePartCount]")]
-pub fn stub_0x25090() -> ! {
-    todo!("0x25090 -[PlaceLauncher checkPlacePartCount]")
+pub fn stub_0x25090(warnings_enabled: bool) {
+    // IDA 0x25090: `checkPlacePartCount` reads the warnings preference;
+    // when set it `dispatch_async`s the 0x2512c block on a global queue.
+    // The GCD hop is drop glue; the block body lives in stub_0x2512c.
+    if warnings_enabled {
+        PLACE_PART_CHECK_QUEUED.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x2512c — ___36-[PlaceLauncher checkPlacePartCount]_block_invoke
 #[doc(alias = "___36-[PlaceLauncher checkPlacePartCount]_block_invoke")]
-pub fn stub_0x2512c() -> ! {
-    todo!("0x2512c ___36-[PlaceLauncher checkPlacePartCount]_block_invoke")
+pub fn stub_0x2512c(max_parts: i32, part_count: i32, place_id: i32) {
+    // IDA 0x2512c: block reads the max-parts setting; with a live game,
+    // workspace and part count above the max it shows the
+    // `WarnPlaceIsNotIdeal`/`WarnTooManyParts` text and files a
+    // `PlayErrors`/`TooManyParts` analytics event tagged with the place id.
+    if max_parts < 1 || part_count <= max_parts {
+        return;
+    }
+    PLACE_PART_WARNINGS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    PLACE_ANALYTICS_EVENTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    *PLACE_LAST_ALERT.lock() = "WarnTooManyParts".to_owned();
+    *PLACE_LAST_ANALYTICS_LABEL.lock() = place_id.to_string();
 }
 
 // 0x253cc — ___copy_helper_block_98
 #[doc(alias = "___copy_helper_block_98")]
-pub fn stub_0x253cc() -> ! {
-    todo!("0x253cc ___copy_helper_block_98")
+pub fn stub_0x253cc() {
+    // IDA 0x253cc: `__copy_helper_block_98` retains the captured object at
+    // +20 (`_Block_object_assign`, Block_byref). `Arc` clone glue covers
+    // it; no explicit body.
 }
 
 // 0x253d8 — ___destroy_helper_block_99
 #[doc(alias = "___destroy_helper_block_99")]
-pub fn stub_0x253d8() -> ! {
-    todo!("0x253d8 ___destroy_helper_block_99")
+pub fn stub_0x253d8() {
+    // IDA 0x253d8: `__destroy_helper_block_99` releases the captured object
+    // at +20 (`_Block_object_dispose`). `Arc` drop glue covers it; no
+    // explicit body.
 }
 
 // 0x253e0 — -[PlaceLauncher placeDidFinishLoading]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher placeDidFinishLoading]")]
-pub fn stub_0x253e0() -> ! {
-    todo!("0x253e0 -[PlaceLauncher placeDidFinishLoading]")
+pub fn stub_0x253e0(warnings_enabled: bool) {
+    // IDA 0x253e0: `placeDidFinishLoading` posts the
+    // `gameFinishedLoadingNotification` then runs `checkPlacePartCount`
+    // (0x25090).
+    PLACE_FINISHED_POSTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    stub_0x25090(warnings_enabled);
 }
 
 // 0x25440 — -[PlaceLauncher deleteRobloxView]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher deleteRobloxView]")]
-pub fn stub_0x25440() -> ! {
-    todo!("0x25440 -[PlaceLauncher deleteRobloxView]")
+pub fn stub_0x25440() {
+    // IDA 0x25440: `deleteRobloxView` destroys the `RobloxView`, clears the
+    // ivar and stops the free-memory checker when a view is attached.
+    if PLACE_ROBX_VIEW.swap(false, std::sync::atomic::Ordering::SeqCst) {
+        PLACE_MEM_CHECKER.store(false, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x25498 — -[PlaceLauncher finishGameSetup:gameViewController:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Game>, id)
 #[doc(alias = "-[PlaceLauncher finishGameSetup:gameViewController:]")]
-pub fn stub_0x25498() -> ! {
-    todo!("0x25498 -[PlaceLauncher finishGameSetup:gameViewController:]")
+pub fn stub_0x25498(datamodel_ready: bool, has_overlay: bool, warnings_enabled: bool) {
+    // IDA 0x25498: `finishGameSetup:gameViewController:` builds the
+    // `RobloxView` from the game + screen bounds (stringstream ids are
+    // drop glue). A ready datamodel fires `placeDidFinishLoading` directly
+    // (0x253e0), otherwise a deferred `placeDidFinishLoading` slot connects;
+    // then `setupDatamodelConnections:` runs for the datamodel (0x25e00)
+    // and again for the overlay game when present.
+    PLACE_ROBX_VIEW.store(true, std::sync::atomic::Ordering::SeqCst);
+    if datamodel_ready {
+        stub_0x253e0(warnings_enabled);
+    } else {
+        PLACE_DEFERRED_FINISH.store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+    stub_0x25e00(true, true);
+    if has_overlay {
+        stub_0x25e00(true, true);
+    }
 }
 
 // 0x25e00 — -[PlaceLauncher setupDatamodelConnections:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::DataModel>)
 #[doc(alias = "-[PlaceLauncher setupDatamodelConnections:]")]
-pub fn stub_0x25e00() -> ! {
-    todo!("0x25e00 -[PlaceLauncher setupDatamodelConnections:]")
+pub fn stub_0x25e00(has_gui_service: bool, has_login_service: bool) {
+    // IDA 0x25e00: `setupDatamodelConnections:` wires `GuiService`'s
+    // `openUrlWindow:` to the ogre controller, `Players` `childAdded:` to
+    // `childAdded:`, and `LoginService`'s prompt-login signal; a main-queue
+    // block also dispatches (drop glue, cf. 0x2613c). `boost::bind` slots
+    // collapse into flags.
+    PLACE_DATAMODEL_CONNS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    let _ = has_gui_service;
+    PLACE_CHILD_ADDED_CONNECTED.store(true, std::sync::atomic::Ordering::SeqCst);
+    if has_login_service {
+        PLACE_LOGIN_CONNECTED.store(true, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x2613c — ___43-[PlaceLauncher setupDatamodelConnections:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___43-[PlaceLauncher setupDatamodelConnections:]_block_invoke")]
-pub fn stub_0x2613c() -> ! {
-    todo!("0x2613c ___43-[PlaceLauncher setupDatamodelConnections:]_block_invoke")
+pub fn stub_0x2613c() {
+    // IDA 0x2613c: block starts the `RobloxMemoryManager` free-memory
+    // checker on the main queue.
+    PLACE_MEM_CHECKER.store(true, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x26170 — -[PlaceLauncher setLastNonGameController:]
 // type: void __cdecl(PlaceLauncher *self, SEL, id)
 #[doc(alias = "-[PlaceLauncher setLastNonGameController:]")]
-pub fn stub_0x26170() -> ! {
-    todo!("0x26170 -[PlaceLauncher setLastNonGameController:]")
+pub fn stub_0x26170(has_controller: bool, game_ready: bool) {
+    // IDA 0x26170: `setLastNonGameController:` forwards to
+    // `MainViewController`; with a controller attached a failed
+    // `prepareGame` falls into `handleStartGameFailure` (same shape as
+    // 0x24a58).
+    PLACE_LAST_NON_GAME.store(has_controller, std::sync::atomic::Ordering::SeqCst);
+    if has_controller && !game_ready {
+        PLACE_FAILURE_FORWARDS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        PLACE_IS_PLAYING.store(false, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x261d8 — -[PlaceLauncher createGame:presentGameAutomatically:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Game>, char)
 #[doc(alias = "-[PlaceLauncher createGame:presentGameAutomatically:]")]
-pub fn stub_0x261d8() -> ! {
-    todo!("0x261d8 -[PlaceLauncher createGame:presentGameAutomatically:]")
+pub fn stub_0x261d8(
+    has_last_non_game: bool,
+    datamodel_ready: bool,
+    has_overlay: bool,
+    warnings_enabled: bool,
+    present_automatically: bool,
+) {
+    // IDA 0x261d8: `createGame:presentGameAutomatically:` clears the memory
+    // warning, drops the old view (0x25440), and with a last-non-game
+    // controller allocates the `GameViewController`, finishes setup
+    // (0x25498) and submits `initControlView` (0x2643c) as a datamodel task.
+    PLACE_MEM_WARNING.store(false, std::sync::atomic::Ordering::SeqCst);
+    stub_0x25440();
+    if has_last_non_game {
+        PLACE_GAME_VC_CREATED.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        stub_0x25498(datamodel_ready, has_overlay, warnings_enabled);
+        PLACE_CONTROL_TASKS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    let _ = present_automatically;
 }
 
 // 0x2643c — __ZL15initControlViewP10RobloxViewaPN3RBX18FunctionMarshallerE
 // type: _DWORD __fastcall(RobloxView *, signed __int8, RBX::FunctionMarshaller *)
 #[doc(alias = "initControlView(RobloxView *,signed char,RBX::FunctionMarshaller *)")]
 #[doc(alias = "__ZL15initControlViewP10RobloxViewaPN3RBX18FunctionMarshallerE")]
-pub fn stub_0x2643c() -> ! {
-    todo!("0x2643c initControlView(RobloxView *,signed char,RBX::FunctionMarshaller *)")
+pub fn stub_0x2643c(flag: bool) {
+    // IDA 0x2643c: `initControlView` wraps `initControlViewHelper` in a
+    // `function0` and runs it through `FunctionMarshaller::Execute`.
+    // The marshaller hop is drop glue; the executed flag records.
+    PLACE_CONTROL_FLAG.store(flag, std::sync::atomic::Ordering::SeqCst);
+    PLACE_CONTROL_EXECS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x26520 — -[PlaceLauncher setupGame:isApp:]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, PlaceLauncher *self, SEL, id, char)
 #[doc(alias = "-[PlaceLauncher setupGame:isApp:]")]
-pub fn stub_0x26520() -> ! {
-    todo!("0x26520 -[PlaceLauncher setupGame:isApp:]")
+pub fn stub_0x26520(has_self: bool, is_app: bool) -> bool {
+    // IDA 0x26520: `setupGame:isApp:` forwards to
+    // `setupGame:unsecuredGame:isApp:` (0x26558) with `unsecuredGame` 0;
+    // a null launcher yields a null game.
+    if !has_self {
+        return false;
+    }
+    stub_0x26558(true, false, is_app)
 }
 
 // 0x26558 — -[PlaceLauncher setupGame:unsecuredGame:isApp:]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, PlaceLauncher *self, SEL, id, char, char)
 #[doc(alias = "-[PlaceLauncher setupGame:unsecuredGame:isApp:]")]
-pub fn stub_0x26558() -> ! {
-    todo!("0x26558 -[PlaceLauncher setupGame:unsecuredGame:isApp:]")
+pub fn stub_0x26558(has_self: bool, unsecured: bool, is_app: bool) -> bool {
+    // IDA 0x26558: `setupGame:unsecuredGame:isApp:` bails with a null game
+    // while one plays; otherwise it fetches client/iOS settings, disables
+    // the idle timer, records the non-game controller (cf. 0x26170) and
+    // builds a `SecurePlayerGame` or `UnsecuredStudioGame` off the base URL.
+    if !has_self {
+        return false;
+    }
+    if PLACE_CURRENTLY_PLAYING.swap(true, std::sync::atomic::Ordering::SeqCst) {
+        return false;
+    }
+    PLACE_IDLE_TIMER_DISABLED.store(true, std::sync::atomic::Ordering::SeqCst);
+    PLACE_LAST_NON_GAME.store(true, std::sync::atomic::Ordering::SeqCst);
+    PLACE_UNSECURED_GAME.store(unsecured, std::sync::atomic::Ordering::SeqCst);
+    let _ = is_app;
+    true
 }
 
 // 0x26768 — -[PlaceLauncher presentGameViewController]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher presentGameViewController]")]
-pub fn stub_0x26768() -> ! {
-    todo!("0x26768 -[PlaceLauncher presentGameViewController]")
+pub fn stub_0x26768() {
+    // IDA 0x26768: `presentGameViewController` hops to the main queue
+    // (`__block_literal_global505`, drop glue) to present the game view.
+    PLACE_PRESENT_QUEUED.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x26784 — -[PlaceLauncher setupPreloadedGameWithNonGameController:unsecuredGame:isApp:]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, PlaceLauncher *self, SEL, id, char, char)
 #[doc(alias = "-[PlaceLauncher setupPreloadedGameWithNonGameController:unsecuredGame:isApp:]")]
-pub fn stub_0x26784() -> ! {
-    todo!("0x26784 -[PlaceLauncher setupPreloadedGameWithNonGameController:unsecuredGame:isApp:]")
+pub fn stub_0x26784(has_self: bool, unsecured: bool, is_app: bool) -> bool {
+    // IDA 0x26784: `setupPreloadedGameWithNonGameController:unsecuredGame:`
+    // `isApp:` forwards to `setupGame:unsecuredGame:isApp:` (0x26558).
+    if !has_self {
+        return false;
+    }
+    stub_0x26558(true, unsecured, is_app)
 }
 
 // 0x267bc — -[PlaceLauncher setupPreloadedGameWithNonGameController:isApp:]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, PlaceLauncher *self, SEL, id, char)
 #[doc(alias = "-[PlaceLauncher setupPreloadedGameWithNonGameController:isApp:]")]
-pub fn stub_0x267bc() -> ! {
-    todo!("0x267bc -[PlaceLauncher setupPreloadedGameWithNonGameController:isApp:]")
+pub fn stub_0x267bc(has_self: bool, is_app: bool) -> bool {
+    // IDA 0x267bc: `setupPreloadedGameWithNonGameController:isApp:`
+    // forwards to `setupGame:isApp:` (0x26520).
+    if !has_self {
+        return false;
+    }
+    stub_0x26520(true, is_app)
 }
 
 // 0x267ec — -[PlaceLauncher injectJoinScript:]
 // type: void __cdecl(PlaceLauncher *self, SEL, id)
 #[doc(alias = "-[PlaceLauncher injectJoinScript:]")]
-pub fn stub_0x267ec() -> ! {
-    todo!("0x267ec -[PlaceLauncher injectJoinScript:]")
+pub fn stub_0x267ec(script: &str) {
+    // IDA 0x267ec: `injectJoinScript:` binds `joinGameWithJoinScript`
+    // (0x26990) over the script UTF-8 + game and runs it on a detached
+    // `boost::thread` named `InjectStartScript`. The bind/thread hop is
+    // drop glue; the script and spawn record.
+    *PLACE_LAST_JOIN_SCRIPT.lock() = script.to_owned();
+    PLACE_JOIN_THREADS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x26990 — __ZL22joinGameWithJoinScriptRKSsN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "joinGameWithJoinScript(std::string const&,rbx_core::SharedPtr<RBX::Game>)")]
 #[doc(alias = "__ZL22joinGameWithJoinScriptRKSsN5boost10shared_ptrIN3RBX4GameEEE")]
-pub fn stub_0x26990() -> ! {
-    todo!("0x26990 joinGameWithJoinScript(std::string const&,boost::shared_ptr<RBX::Game>)")
+pub fn stub_0x26990(script: &str) {
+    // IDA 0x26990: `joinGameWithJoinScript` copies the script string and
+    // runs `executeUrlScript` on the game (`std::string`/`SharedPtr`
+    // traffic is drop glue).
+    *PLACE_LAST_JOIN_SCRIPT.lock() = script.to_owned();
+    PLACE_EXECUTED_SCRIPTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x26bb8 — -[PlaceLauncher startGameLocal:ipAddress:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, int, id, id, char)
 #[doc(alias = "-[PlaceLauncher startGameLocal:ipAddress:controller:presentGameAutomatically:]")]
-pub fn stub_0x26bb8() -> ! {
-    todo!("0x26bb8 -[PlaceLauncher startGameLocal:ipAddress:controller:presentGameAutomatically:]")
+pub fn stub_0x26bb8(port: i32, ip: &str, present_automatically: bool) -> bool {
+    // IDA 0x26bb8: `startGameLocal:...` sets up the preloaded unsecured
+    // game (0x26784), binds `joinLocalGame` (0x26dd4) over port + ip, and
+    // starts it via `startGame:controller:preloadedGame:` (cf. 0x29490).
+    if !stub_0x26784(true, true, false) {
+        return false;
+    }
+    *PLACE_LAST_JOIN_LOCAL.lock() = (port, ip.to_owned());
+    let _ = present_automatically;
+    true
 }
 
 // 0x26dd4 — __ZL13joinLocalGameiRKSsN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "joinLocalGame(int,std::string const&,rbx_core::SharedPtr<RBX::Game>)")]
 #[doc(alias = "__ZL13joinLocalGameiRKSsN5boost10shared_ptrIN3RBX4GameEEE")]
-pub fn stub_0x26dd4() -> ! {
-    todo!("0x26dd4 joinLocalGame(int,std::string const&,boost::shared_ptr<RBX::Game>)")
+pub fn stub_0x26dd4(port: i32, server: &str) {
+    // IDA 0x26dd4: `joinLocalGame` formats
+    // `"%sGame/Join.ashx?userID=0&serverPort=%i&server=%s"` off the
+    // `RobloxInfo` base URL and runs `executeUrlScript` on the game.
+    // The base URL prefixes on device; the formatted tail records.
+    *PLACE_LAST_JOIN_URL.lock() =
+        format!("Game/Join.ashx?userID=0&serverPort={port}&server={server}");
+    PLACE_EXECUTED_SCRIPTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x27054 — -[PlaceLauncher startAppWithFile:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, id, id, char)
 #[doc(alias = "-[PlaceLauncher startAppWithFile:controller:presentGameAutomatically:]")]
-pub fn stub_0x27054() -> ! {
-    todo!("0x27054 -[PlaceLauncher startAppWithFile:controller:presentGameAutomatically:]")
+pub fn stub_0x27054(file: &str, present_automatically: bool) -> bool {
+    // IDA 0x27054: `startAppWithFile:...` sets up the preloaded unsecured
+    // game (0x26784), binds `loadLocalApp` (0x27268) over the file path,
+    // and starts it via `startGame:controller:preloadedGame:` (cf. 0x29490).
+    if !stub_0x26784(true, true, false) {
+        return false;
+    }
+    *PLACE_LAST_APP_FILE.lock() = file.to_owned();
+    let _ = present_automatically;
+    true
 }
 
 // 0x27268 — __ZL12loadLocalAppRKSsN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "loadLocalApp(std::string const&,rbx_core::SharedPtr<RBX::Game>)")]
 #[doc(alias = "__ZL12loadLocalAppRKSsN5boost10shared_ptrIN3RBX4GameEEE")]
-pub fn stub_0x27268() -> ! {
-    todo!("0x27268 loadLocalApp(std::string const&,boost::shared_ptr<RBX::Game>)")
+pub fn stub_0x27268(file: &str) {
+    // IDA 0x27268: `loadLocalApp` formats `Game:Load('rbxasset://%s')`,
+    // executes it on the game datamodel, then creates the `Players`
+    // service and the local player from the current user id.
+    *PLACE_LAST_LOAD_SCRIPT.lock() = format!("Game:Load('rbxasset://{file}')");
+    PLACE_EXECUTED_SCRIPTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    PLACE_LOCAL_PLAYER_CREATED.store(true, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x276b0 — -[PlaceLauncher startAppWithId:controller:presentGameAutomatically:]
