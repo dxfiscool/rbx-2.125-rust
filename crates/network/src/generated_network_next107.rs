@@ -87,11 +87,10 @@ pub fn stub_ae10a8(flag: u32) -> bool {
  crate::replicator::has_rak_net_stats(flag)
 }
 
-// 0xae10b8 — __ZN3RBX7Network10ReplicatorC2EN6RakNet13SystemAddressEN5boost10shared_ptrINS0_17ConcurrentRakPeerEEEPNS_15NetworkSettingsEb
-// type: RBX::Network::IdSerializer *__fastcall(RBX::Network::IdSerializer *, unsigned int, unsigned int, unsigned int, unsigned int, int, int *, int, char)
-#[doc(alias = "RBX::Network::Replicator::Replicator(RakNet::SystemAddress,boost::shared_ptr<RBX::Network::ConcurrentRakPeer>,RBX::NetworkSettings *,bool)")]
-pub fn stub_ae10b8() -> ! {
-    todo!("0xae10b8 RBX::Network::Replicator::Replicator(RakNet::SystemAddress,boost::shared_ptr<RBX::Network::ConcurrentRakPeer>,RBX::NetworkSettings *,bool)")
+pub fn stub_ae10b8(stats_hook: bool) -> crate::replicator::ReplicatorInit {
+ // IDA 0xae10b8: vtable/descriptorBucket/queue/rolling-window init above;
+ // mutex, pool, and DataModel wiring stay engine-side.
+ crate::replicator::replicator_init(stats_hook)
 }
 
 // 0xae1f8c — __ZN3RBX7Network10Replicator18pushIncomingPacketEPN6RakNet6PacketE
@@ -109,11 +108,22 @@ pub fn stub_ae1f8c(
     crate::replicator::push_incoming_packet(queue, time, packet, scheduler, rescheduler, reschedule);
 }
 
-// 0xaec7d4 — __ZN3RBX7Network10Replicator23sendFilteredChatMessageERKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_
-// type: void __fastcall(struct _Unwind_Exception *, int, int *, _DWORD *, int)
-#[doc(alias = "RBX::Network::Replicator::sendFilteredChatMessage(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)")]
-pub fn stub_aec7d4() -> ! {
-    todo!("0xaec7d4 RBX::Network::Replicator::sendFilteredChatMessage(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)")
+pub fn stub_aec7d4(
+    dest_is_self: bool,
+    has_player: bool,
+    filter_type: u32,
+    mapping_empty: bool,
+    text_empty: bool,
+) -> Option<crate::replicator::ChatFilterWrite> {
+    // IDA 0xaec7d4: self-address/filter drops, then original-vs-filtered
+    // pick; the bitstream copy and priority-1/rel-2 Send stay engine-side.
+    crate::replicator::send_filtered_chat_decision(
+        dest_is_self,
+        has_player,
+        filter_type,
+        mapping_empty,
+        text_empty,
+    )
 }
 
 // 0xaff534 — __ZN3RBX7Network10Replicator8readItemERN6RakNet9BitStreamENS0_4Item8ItemTypeE
@@ -124,18 +134,39 @@ pub fn stub_aff534(item_type: u32) -> crate::replicator::ReplicatorItemTarget {
     crate::replicator::replicator_read_item_target(item_type)
 }
 
-// 0xb002f0 — __ZN3RBX7Network10Replicator19readChangedPropertyERN6RakNet9BitStreamE
-// type: void __fastcall(RBX::Network::Replicator *this, RakNet::BitStream *)
-#[doc(alias = "RBX::Network::Replicator::readChangedProperty(RakNet::BitStream &)")]
-pub fn stub_b002f0() -> ! {
-    todo!("0xb002f0 RBX::Network::Replicator::readChangedProperty(RakNet::BitStream &)")
+pub fn stub_b002f0(
+    stream: &mut crate::bitstream::BitStream,
+    descriptor_bits: u8,
+    descriptor_count: usize,
+    instance_present: bool,
+    filtered: bool,
+    legal_prop: bool,
+) -> Option<usize> {
+    // IDA 0xb002f0: index bits + range check, legality gate clears the
+    // instance; deserializeInstanceRef/logging/deserializeProperty stay
+    // engine-side.
+    let index = crate::replicator::changed_property_index(stream, descriptor_bits, descriptor_count);
+    crate::replicator::changed_property_keep(instance_present, filtered, legal_prop).then_some(index)
 }
 
-// 0xb009cc — __ZN3RBX7Network10Replicator10readMarkerERN6RakNet9BitStreamE
-// type: void __fastcall(RBX::Network::Replicator *this, RakNet::BitStream *, int, int)
-#[doc(alias = "RBX::Network::Replicator::readMarker(RakNet::BitStream &)")]
-pub fn stub_b009cc() -> ! {
-    todo!("0xb009cc RBX::Network::Replicator::readMarker(RakNet::BitStream &)")
+pub fn stub_b009cc(
+    stream: &mut crate::bitstream::BitStream,
+    front: Option<i32>,
+    chunk_defer_voxel_updates: bool,
+    fire: &mut dyn FnMut(),
+    done_loading: &mut dyn FnMut(),
+) {
+    // IDA 0xb009cc: long id read, verbose + fast logs, front-id assert
+    // then fireReturned/pop; terrain tail gated on the chunk-defer flag.
+    let id = crate::replicator::read_marker_id(stream);
+    assert!(
+        crate::replicator::marker_front_matches(front, id),
+        "id==incomingMarkers.front()->id"
+    );
+    fire();
+    if crate::replicator::should_done_loading_terrain(chunk_defer_voxel_updates) {
+        done_loading();
+    }
 }
 
 // 0xb00e44 — __ZN3RBX7Network10Replicator12readDataPingERN6RakNet9BitStreamE
@@ -156,12 +187,21 @@ pub fn stub_b00e44(
     crate::replicator::stamp_data_ping(stamp, now_ms);
     action
 }
-
-// 0xb0107c — __ZN3RBX7Network10Replicator19readEventInvocationERN6RakNet9BitStreamE
 // type: void __fastcall(RBX::Network::Replicator *this, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::Replicator::readEventInvocation(RakNet::BitStream &)")]
-pub fn stub_b0107c() -> ! {
-    todo!("0xb0107c RBX::Network::Replicator::readEventInvocation(RakNet::BitStream &)")
+pub fn stub_b0107c(
+    stream: &mut crate::bitstream::BitStream,
+    event_bits: u8,
+    event_count: usize,
+    legal_receive: bool,
+    invoke: &mut dyn FnMut(usize),
+) {
+    // IDA 0xb0107c: event index bits + range check, +208 legality gate,
+    // then deserializeEventInvocation + fire engine-side.
+    let index = crate::replicator::read_event_index(stream, event_bits, event_count);
+    if crate::replicator::event_keep(legal_receive) {
+        invoke(index);
+    }
 }
 
 // 0xb01e04 — __ZN3RBX7Network10Replicator12readJoinDataERN6RakNet9BitStreamE
@@ -175,23 +215,50 @@ pub fn stub_b01e04(stream: &mut crate::bitstream::BitStream, packed: bool) -> u3
 // 0xb02984 — __ZN3RBX7Network10Replicator13processPacketEPN6RakNet6PacketE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Network::Replicator::processPacket(RakNet::Packet *)")]
-pub fn stub_b02984() -> ! {
-    todo!("0xb02984 RBX::Network::Replicator::processPacket(RakNet::Packet *)")
+pub fn stub_b02984(
+    first_byte: u8,
+    has_physics: bool,
+    inner_marker: u8,
+) -> crate::replicator::ProcessPacketKind {
+    // IDA 0xb02984: first-byte dispatch; the physics arm asserts the
+    // inner ID_PHYSICS byte, the BitStream wrap and per-arm readers stay
+    // engine-side.
+    let kind = crate::replicator::process_packet_kind(first_byte, has_physics);
+    if kind == crate::replicator::ProcessPacketKind::Physics {
+        assert!(
+            crate::replicator::physics_inner_valid(inner_marker),
+            "id==ID_PHYSICS"
+        );
+    }
+    kind
 }
-
 // 0xb02e30 — __ZN3RBX7Network10Replicator9OnReceiveEPN6RakNet6PacketE
 // type: int __fastcall(RBX::Network::Replicator *, RakNet::SystemAddress *)
 #[doc(alias = "RBX::Network::Replicator::OnReceive(RakNet::Packet *)")]
-pub fn stub_b02e30() -> ! {
-    todo!("0xb02e30 RBX::Network::Replicator::OnReceive(RakNet::Packet *)")
+pub fn stub_b02e30(
+    address_matches: bool,
+    first_byte: u8,
+    forwarded: Option<bool>,
+) -> u32 {
+    // IDA 0xb02e30: foreign addresses return 1; otherwise the first-byte
+    // arm runs (schema/chat/disconnect/physics engine-side) with the
+    // verdict above.
+    if !address_matches {
+        return 1;
+    }
+    let action = crate::replicator::on_receive_action(first_byte);
+    crate::replicator::on_receive_verdict(action, forwarded)
 }
-
 // 0xb04818 — __ZThn1180_N3RBX7Network10Replicator9OnReceiveEPN6RakNet6PacketE
 // type: int __fastcall(int, RakNet::SystemAddress *)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::OnReceive(RakNet::Packet *)")]
-pub fn stub_b04818() -> ! {
+pub fn stub_b04818(
+    address_matches: bool,
+    first_byte: u8,
+    forwarded: Option<bool>,
+) -> u32 {
     // IDA 0xb04818: __ZThn1180 — this -= 1180, tail-call Replicator::OnReceive (0xb02e30).
-    stub_b02e30()
+    stub_b02e30(address_matches, first_byte, forwarded)
 }
 
 // 0xb04828 — __ZN3RBX7Network10Replicator16OnInternalPacketEPN6RakNet14InternalPacketEjNS2_13SystemAddressEji
@@ -233,8 +300,12 @@ pub fn stub_b04a98(
 // 0xb07980 — __ZN5boost4bindIvN3RBX7Network10ReplicatorERKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_NS8_IS3_EENS_3argILi1EEENSG_ILi2EEENSG_ILi3EEENSG_ILi4EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf4ISN_T0_T1_T2_T3_T4_EENSL_9list_av_5IT5_T6_T7_T8_T9_E4typeEEEMSQ_FSN_SR_SS_ST_SU_ESX_SY_SZ_S10_S11_
 // type: void __fastcall(int, int, int, int *)
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list_av_5<boost::shared_ptr<RBX::Network::Replicator>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::type> boost::bind<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&,boost::shared_ptr<RBX::Network::Replicator>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>(void (RBX::Network::Replicator::*)(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&),boost::shared_ptr<RBX::Network::Replicator>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>)")]
-pub fn stub_b07980() -> ! {
-    todo!("0xb07980 boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list_av_5<boost::shared_ptr<RBX::Network::Replicator>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::type> boost::bind<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&,boost::shared_ptr<RBX::Network::Replicator>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>(void (RBX::Network::Replicator::*)(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&),boost::shared_ptr<RBX::Network::Replicator>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>)")
+pub fn stub_b07980(
+    target: SharedPtr<crate::replicator::Marker>,
+) -> crate::replicator::ChatFilterCall {
+    // IDA 0xb07980: bind(mf4 sendFilteredChatMessage, replicator, _1.._4);
+    // the list5 retain is the Arc clone, the call forwards four args.
+    crate::replicator::bind_chat_filter(target)
 }
 
 // 0xb08aa8 — __ZN3RBX7Network16SenderDictionaryINS_13SystemAddressEE4sendERN6RakNet9BitStreamERKS2_
@@ -370,134 +441,182 @@ pub fn stub_b13d44(
 // 0xb14fe0 — __ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEEEC2ES8_
 // type: _DWORD *__fastcall(_DWORD *, unsigned int *, int, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, pthread_mutex_t *, int, int, int, int)
 #[doc(alias = "boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>>::list1(boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>)")]
-pub fn stub_b14fe0() -> ! {
-    todo!("0xb14fe0 boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>>::list1(boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>)")
+pub fn stub_b14fe0(
+    target: &SharedPtr<crate::replicator::Marker>,
+) -> SharedPtr<crate::replicator::Marker> {
+    // IDA 0xb14fe0: copy the bound Replicator owner with net +1 retain.
+    crate::replicator::bind_list1_replicator(target)
 }
 
 // 0xb15f50 — __ZNK3RBX5Voxel10SerializerINS0_4GridEE11encodeCellsINS_34OneQuarterClusterChunkCellIteratorEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i
 // type: unsigned int __fastcall(int, const G3D::Vector3int16 *, int, RakNet::BitStream *, signed int)
 #[doc(alias = "void RBX::Voxel::Serializer<RBX::Voxel::Grid>::encodeCells<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream>(RBX::Voxel::Grid const*,RBX::OneQuarterClusterChunkCellIterator &,RakNet::BitStream *,int)const")]
-pub fn stub_b15f50() -> ! {
-    todo!("0xb15f50 void RBX::Voxel::Serializer<RBX::Voxel::Grid>::encodeCells<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream>(RBX::Voxel::Grid const*,RBX::OneQuarterClusterChunkCellIterator &,RakNet::BitStream *,int)const")
+pub fn stub_b15f50(
+    stream: &mut crate::bitstream::BitStream,
+    cells: &[(i32, i32, i32)],
+    budget: i32,
+    end_marker: u8,
+) {
+    // IDA 0xb15f50: OneQuarterClusterChunk iterator; per-cell 5/4/5 bits
+    // plus 4/2/4 region headers and the 2-bit end marker, budget-limited.
+    // Grid reads and encodeFromPosition stay engine-side.
+    crate::replicator::voxel_encode_cells(stream, cells, budget, end_marker);
 }
 
 // 0xb173b0 — __ZNK3RBX5Voxel10SerializerINS0_4GridEE11encodeCellsINS_7Network19ClusterUpdateBufferEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i
 // type: unsigned int __fastcall(int, const G3D::Vector3int16 *, RBX::Network::ClusterUpdateBuffer *, RakNet::BitStream *, signed int)
-#[doc(alias = "void RBX::Voxel::Serializer<RBX::Voxel::Grid>::encodeCells<RBX::Network::ClusterUpdateBuffer,RakNet::BitStream>(RBX::Voxel::Grid const*,RBX::Network::ClusterUpdateBuffer &,RakNet::BitStream *,int)const")]
-pub fn stub_b173b0() -> ! {
-    todo!("0xb173b0 void RBX::Voxel::Serializer<RBX::Voxel::Grid>::encodeCells<RBX::Network::ClusterUpdateBuffer,RakNet::BitStream>(RBX::Voxel::Grid const*,RBX::Network::ClusterUpdateBuffer &,RakNet::BitStream *,int)const")
+pub fn stub_b173b0(
+    stream: &mut crate::bitstream::BitStream,
+    cells: &[(i32, i32, i32)],
+    budget: i32,
+    end_marker: u8,
+) {
+    // IDA 0xb173b0: ClusterUpdateBuffer iterator; same 5/4/5 + 4/2/4 +
+    // end-marker framing as 0xb15f50, grid side engine-side.
+    crate::replicator::voxel_encode_cells(stream, cells, budget, end_marker);
 }
 
 // 0xb18564 — __ZNK3RBX5Voxel10SerializerINS0_4GridEE11encodeCellsINS_19ClusterCellIteratorEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i
 // type: unsigned int __fastcall(G3D::Vector3int16 *, const G3D::Vector3int16 *, int *, RakNet::BitStream *, signed int)
 #[doc(alias = "void RBX::Voxel::Serializer<RBX::Voxel::Grid>::encodeCells<RBX::ClusterCellIterator,RakNet::BitStream>(RBX::Voxel::Grid const*,RBX::ClusterCellIterator &,RakNet::BitStream *,int)const")]
-pub fn stub_b18564() -> ! {
-    todo!("0xb18564 void RBX::Voxel::Serializer<RBX::Voxel::Grid>::encodeCells<RBX::ClusterCellIterator,RakNet::BitStream>(RBX::Voxel::Grid const*,RBX::ClusterCellIterator &,RakNet::BitStream *,int)const")
+pub fn stub_b18564(
+    stream: &mut crate::bitstream::BitStream,
+    cells: &[(i32, i32, i32)],
+    budget: i32,
+    end_marker: u8,
+) {
+    // IDA 0xb18564: ClusterCellIterator; same framing as 0xb15f50, grid
+    // side engine-side.
+    crate::replicator::voxel_encode_cells(stream, cells, budget, end_marker);
 }
 
 // 0xb1c5cc — __ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEENS_3argILi1EEENSC_ILi2EEEEC2ES8_SB_SD_SE_
 // type: int __fastcall(int, int *, int)
 #[doc(alias = "boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>::list4(boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>)")]
-pub fn stub_b1c5cc() -> ! {
-    todo!("0xb1c5cc boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>::list4(boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>)")
+pub fn stub_b1c5cc(
+    target_alive: bool,
+    has_data: bool,
+) -> crate::replicator::ReplicationBind {
+    // IDA 0xb1c5cc: capture weak owner + raw data + arg<1> + arg<2>.
+    crate::replicator::replication_bind4(target_alive, has_data)
 }
 
 // 0xb1c790 — __ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEENS_3argILi1EEENSC_ILi2EEEEC2ES8_SB_SD_SE_
 // type: int __fastcall(int, int *, int)
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>::storage4(boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>)")]
-pub fn stub_b1c790() -> ! {
-    todo!("0xb1c790 boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>::storage4(boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>)")
+pub fn stub_b1c790(
+    bind: &crate::replicator::ReplicationBind,
+) -> crate::replicator::ReplicationBind {
+    // IDA 0xb1c790: store the full 4-tuple.
+    crate::replicator::replication_store4(bind)
 }
 
 // 0xb1c954 — __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEENS_3argILi1EEEEC2ES8_SB_SD_
 // type: int __fastcall(int, int *, int, int)
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>)")]
-pub fn stub_b1c954() -> ! {
-    todo!("0xb1c954 boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>)")
+pub fn stub_b1c954(
+    bind: &crate::replicator::ReplicationBind,
+) -> crate::replicator::ReplicationBind3 {
+    // IDA 0xb1c954: drop arg<2>, keep weak owner + data + arg<1>.
+    crate::replicator::replication_store3(bind)
 }
 
 // 0xb1cb18 — __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEEEC2ES8_SB_
 // type: _DWORD *__fastcall(_DWORD *, unsigned int *, int, int, int, pthread_mutex_t *, int, int, int, int)
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>)")]
-pub fn stub_b1cb18() -> ! {
-    todo!("0xb1cb18 boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>)")
+pub fn stub_b1cb18(
+    bind: &crate::replicator::ReplicationBind,
+) -> crate::replicator::ReplicationBind2 {
+    // IDA 0xb1cb18: keep only the weak owner and the raw data.
+    crate::replicator::replication_store2(bind)
 }
 
 // 0xb2058c — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network31SharedStringProtectedDictionaryES4_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, int, _DWORD **, int, void *, int)
 #[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::SharedStringProtectedDictionary,RBX::Network::SharedStringProtectedDictionary>(boost::shared_ptr<RBX::Network::SharedStringProtectedDictionary> *,RBX::Network::SharedStringProtectedDictionary *,boost::detail::shared_count &)")]
-pub fn stub_b2058c() -> ! {
-    todo!("0xb2058c void boost::detail::sp_pointer_construct<RBX::Network::SharedStringProtectedDictionary,RBX::Network::SharedStringProtectedDictionary>(boost::shared_ptr<RBX::Network::SharedStringProtectedDictionary> *,RBX::Network::SharedStringProtectedDictionary *,boost::detail::shared_count &)")
+pub fn stub_b2058c() -> SharedPtr<crate::replicator::SharedStringProtectedDictionary> {
+    // IDA 0xb2058c: publish the fresh protected-dictionary control block.
+    crate::replicator::protected_string_dict()
 }
 
 // 0xb20850 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network31SharedStringProtectedDictionaryEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::SharedStringProtectedDictionary>::~sp_counted_impl_p()")]
-pub fn stub_b20850() -> ! {
-    todo!("0xb20850 boost::detail::sp_counted_impl_p<RBX::Network::SharedStringProtectedDictionary>::~sp_counted_impl_p()")
+pub fn stub_b20850(dict: SharedPtr<crate::replicator::SharedStringProtectedDictionary>) {
+    // IDA 0xb20850: D1 — dispose; Rust drops.
+    crate::replicator::shared_dict_drop(dict);
 }
 
 // 0xb20854 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network31SharedStringProtectedDictionaryEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::SharedStringProtectedDictionary>::~sp_counted_impl_p()")]
-pub fn stub_b20854() -> ! {
-    todo!("0xb20854 boost::detail::sp_counted_impl_p<RBX::Network::SharedStringProtectedDictionary>::~sp_counted_impl_p()")
+pub fn stub_b20854(dict: SharedPtr<crate::replicator::SharedStringProtectedDictionary>) {
+    // IDA 0xb20854: D0 — dispose plus operator delete; Rust drops.
+    crate::replicator::shared_dict_drop(dict);
 }
 
 // 0xb20860 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network31SharedStringProtectedDictionaryEE7disposeEv
 // type: void __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::SharedStringProtectedDictionary>::dispose(void)")]
-pub fn stub_b20860() -> ! {
-    todo!("0xb20860 boost::detail::sp_counted_impl_p<RBX::Network::SharedStringProtectedDictionary>::dispose(void)")
+pub fn stub_b20860(dict: SharedPtr<crate::replicator::SharedStringProtectedDictionary>) {
+    // IDA 0xb20860: dispose runs the held destructor; Rust drops.
+    crate::replicator::shared_dict_drop(dict);
 }
 
 // 0xb209b0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network31SharedStringProtectedDictionaryEE11get_deleterERKSt9type_info
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::SharedStringProtectedDictionary>::get_deleter(std::type_info const&)")]
-pub fn stub_b209b0() -> ! {
-    todo!("0xb209b0 boost::detail::sp_counted_impl_p<RBX::Network::SharedStringProtectedDictionary>::get_deleter(std::type_info const&)")
+pub fn stub_b209b0() -> *const () {
+    // IDA 0xb209b0: no custom deleter installed — null.
+    crate::replicator::shared_null_deleter()
 }
 
 // 0xb209b4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network31SharedStringProtectedDictionaryEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::SharedStringProtectedDictionary>::get_untyped_deleter(void)")]
-pub fn stub_b209b4() -> ! {
-    todo!("0xb209b4 boost::detail::sp_counted_impl_p<RBX::Network::SharedStringProtectedDictionary>::get_untyped_deleter(void)")
+pub fn stub_b209b4() -> *const () {
+    // IDA 0xb209b4: no custom deleter installed — null.
+    crate::replicator::shared_null_deleter()
 }
 
 // 0xb20d10 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22SharedStringDictionaryEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::SharedStringDictionary>::~sp_counted_impl_p()")]
-pub fn stub_b20d10() -> ! {
-    todo!("0xb20d10 boost::detail::sp_counted_impl_p<RBX::Network::SharedStringDictionary>::~sp_counted_impl_p()")
+pub fn stub_b20d10(dict: SharedPtr<crate::string_dictionary::SharedStringDictionary>) {
+    // IDA 0xb20d10: D1 — dispose; Rust drops.
+    crate::replicator::shared_dict_drop(dict);
 }
 
 // 0xb20d14 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22SharedStringDictionaryEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::SharedStringDictionary>::~sp_counted_impl_p()")]
-pub fn stub_b20d14() -> ! {
-    todo!("0xb20d14 boost::detail::sp_counted_impl_p<RBX::Network::SharedStringDictionary>::~sp_counted_impl_p()")
+pub fn stub_b20d14(dict: SharedPtr<crate::string_dictionary::SharedStringDictionary>) {
+    // IDA 0xb20d14: D0 — dispose plus operator delete; Rust drops.
+    crate::replicator::shared_dict_drop(dict);
 }
 
 // 0xb20d20 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22SharedStringDictionaryEE7disposeEv
 // type: void __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::SharedStringDictionary>::dispose(void)")]
-pub fn stub_b20d20() -> ! {
-    todo!("0xb20d20 boost::detail::sp_counted_impl_p<RBX::Network::SharedStringDictionary>::dispose(void)")
+pub fn stub_b20d20(dict: SharedPtr<crate::string_dictionary::SharedStringDictionary>) {
+    // IDA 0xb20d20: dispose runs the held destructor; Rust drops.
+    crate::replicator::shared_dict_drop(dict);
 }
 
 // 0xb20e64 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22SharedStringDictionaryEE11get_deleterERKSt9type_info
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::SharedStringDictionary>::get_deleter(std::type_info const&)")]
-pub fn stub_b20e64() -> ! {
-    todo!("0xb20e64 boost::detail::sp_counted_impl_p<RBX::Network::SharedStringDictionary>::get_deleter(std::type_info const&)")
+pub fn stub_b20e64() -> *const () {
+    // IDA 0xb20e64: no custom deleter installed — null.
+    crate::replicator::shared_null_deleter()
 }
 
 // 0xb20e68 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22SharedStringDictionaryEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::SharedStringDictionary>::get_untyped_deleter(void)")]
-pub fn stub_b20e68() -> ! {
-    todo!("0xb20e68 boost::detail::sp_counted_impl_p<RBX::Network::SharedStringDictionary>::get_untyped_deleter(void)")
+pub fn stub_b20e68() -> *const () {
+    // IDA 0xb20e68: no custom deleter installed — null.
+    crate::replicator::shared_null_deleter()
 }
 
 // 0xb20e6c — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_23TopNErrorsPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE

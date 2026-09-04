@@ -2056,4 +2056,667 @@ mod next107_tests {
         marker_queue_push(&mut queue, rbx_core::SharedPtr::from(Box::new(Marker)));
         assert_eq!(queue.len(), 1);
     }
+
+    #[test]
+    fn replicator_init_defaults() {
+        // IDA 0xae10b8: prime-11 buckets, 23-deep queue, 128-id windows.
+        let init = replicator_init(true);
+        assert_eq!(init.descriptor_buckets, 11);
+        assert_eq!(init.incoming_capacity, 23);
+        assert_eq!(init.rolling_id_len, 128);
+        assert!(init.stats_hook);
+        assert_eq!(
+            replicator_created_log("127.0.0.1:53640"),
+            "Replicator created for player 127.0.0.1:53640"
+        );
+        assert_eq!(CHAT_SEND_PRIORITY, 1);
+        assert_eq!((CHAT_SEND_RELIABILITY, CHAT_SEND_ORDERING_CHANNEL), (2, 2));
+    }
+
+    #[test]
+    fn chat_filter_decisions() {
+        // IDA 0xaec7fc: self-address drops.
+        assert_eq!(send_filtered_chat_decision(true, true, 1, false, false), None);
+        // IDA 0xaec858: no filter and empty text drops.
+        assert_eq!(send_filtered_chat_decision(false, false, 0, true, true), None);
+        assert_eq!(send_filtered_chat_decision(false, true, 0, true, true), None);
+        // IDA 0xaecb32: mapped player with filter 1 takes the replacement.
+        assert_eq!(
+            send_filtered_chat_decision(false, true, 1, false, false),
+            Some(ChatFilterWrite::Filtered)
+        );
+        // IDA 0xaec904/0xaec912: filter 0 or unmapped resends the original.
+        assert_eq!(
+            send_filtered_chat_decision(false, true, 0, true, false),
+            Some(ChatFilterWrite::Original)
+        );
+        assert_eq!(
+            send_filtered_chat_decision(false, true, 1, true, false),
+            Some(ChatFilterWrite::Original)
+        );
+        assert_eq!(
+            send_filtered_chat_decision(false, false, 0, true, false),
+            Some(ChatFilterWrite::Original)
+        );
+    }
+
+    #[test]
+    fn changed_property_arms() {
+        // IDA 0xb00366: 2-bit index 2 of 3 descriptors.
+        let mut stream = BitStream::new();
+        stream.write_bits(2, 2);
+        let mut read = BitStream::from_bytes(&stream.into_bytes());
+        assert_eq!(changed_property_index(&mut read, 2, 3), 2);
+        // IDA 0xb0040a: cleared when filtered or illegal.
+        assert!(changed_property_keep(true, false, true));
+        assert!(!changed_property_keep(true, true, true));
+        assert!(!changed_property_keep(true, false, false));
+        assert!(!changed_property_keep(false, false, true));
+        assert_eq!(
+            replication_log_line(Some("Baseplate"), "abc", "Position", "127.0.0.1"),
+            "Replication: Baseplate-abc.Position << 127.0.0.1"
+        );
+        assert_eq!(
+            replication_log_line(None, "abc", "Position", "127.0.0.1"),
+            "Replication: ?-abc.Position << 127.0.0.1"
+        );
+    }
+
+    #[test]
+    fn marker_arms() {
+        // IDA 0xb009f2: long id round-trips.
+        let mut stream = BitStream::new();
+        stream.write_i32(77);
+        let mut read = BitStream::from_bytes(&stream.into_bytes());
+        assert_eq!(read_marker_id(&mut read), 77);
+        // IDA 0xb00a72/0xb00b5c: log lines.
+        assert_eq!(marker_log_line(77, "10.0.0.2"), "Received marker 77 from 10.0.0.2");
+        assert_eq!(marker_fast_log(77), "Replicator:ReadMarker id(77)");
+        // IDA 0xb00bf6: front must match before the pop.
+        assert!(marker_front_matches(Some(77), 77));
+        assert!(!marker_front_matches(Some(78), 77));
+        assert!(!marker_front_matches(None, 77));
+        // IDA 0xb00caa: terrain tail gated on the chunk-defer flag.
+        assert!(should_done_loading_terrain(false));
+        assert!(!should_done_loading_terrain(true));
+    }
+
+    #[test]
+    fn event_arms() {
+        let mut stream = BitStream::new();
+        stream.write_bits(1, 1);
+        let mut read = BitStream::from_bytes(&stream.into_bytes());
+        assert_eq!(read_event_index(&mut read, 1, 2), 1);
+        // IDA 0xb0127c: +208 == 1 keeps the instance.
+        assert!(event_keep(true));
+        assert!(!event_keep(false));
+    }
+
+    #[test]
+    fn packet_switches() {
+        // IDA 0xb02984: first-byte dispatch with the physics gate.
+        assert_eq!(process_packet_kind(27, true), ProcessPacketKind::Physics);
+        assert_eq!(process_packet_kind(27, false), ProcessPacketKind::Unknown);
+        assert_eq!(process_packet_kind(130, false), ProcessPacketKind::Schema);
+        assert_eq!(process_packet_kind(131, false), ProcessPacketKind::Data);
+        assert_eq!(process_packet_kind(134, true), ProcessPacketKind::Touches);
+        assert_eq!(process_packet_kind(134, false), ProcessPacketKind::Unknown);
+        assert_eq!(process_packet_kind(141, false), ProcessPacketKind::Instance96);
+        assert_eq!(process_packet_kind(0, true), ProcessPacketKind::Unknown);
+        // IDA 0xb02a4e: inner id must be ID_PHYSICS (133).
+        assert!(physics_inner_valid(133));
+        assert!(!physics_inner_valid(27));
+        // IDA 0xb02e30: OnReceive dispatch.
+        assert_eq!(on_receive_action(0x81), OnReceiveAction::PushIncoming);
+        assert_eq!(on_receive_action(0x8D), OnReceiveAction::PushIncoming);
+        assert_eq!(on_receive_action(0x84), OnReceiveAction::MarkerItem);
+        assert_eq!(on_receive_action(0x88), OnReceiveAction::Chat);
+        assert_eq!(on_receive_action(0x89), OnReceiveAction::ReportAbuse);
+        assert_eq!(on_receive_action(0x10), OnReceiveAction::SchemaTeach);
+        assert_eq!(on_receive_action(0x15), OnReceiveAction::Disconnect);
+        assert_eq!(on_receive_action(0x16), OnReceiveAction::ConnectionLost);
+        assert_eq!(on_receive_action(0x1B), OnReceiveAction::PhysicsPush);
+        assert_eq!(on_receive_action(0xFF), OnReceiveAction::Ignore);
+        // IDA 0xb02e30: verdicts — marker drops, chat forwards, rest handled.
+        assert_eq!(on_receive_verdict(OnReceiveAction::MarkerItem, None), 0);
+        assert_eq!(on_receive_verdict(OnReceiveAction::Chat, Some(true)), 2);
+        assert_eq!(on_receive_verdict(OnReceiveAction::Chat, None), 0);
+        assert_eq!(on_receive_verdict(OnReceiveAction::ReportAbuse, Some(false)), 0);
+        assert_eq!(on_receive_verdict(OnReceiveAction::PushIncoming, None), 1);
+        assert_eq!(on_receive_verdict(OnReceiveAction::Ignore, None), 1);
+        assert_eq!(on_receive_log("10.0.0.2", false), "Disconnect from 10.0.0.2");
+        assert_eq!(on_receive_log("10.0.0.2", true), "Lost connection to 10.0.0.2");
+    }
+
+    #[test]
+    fn chat_bind_roundtrip() {
+        // IDA 0xb07980/0xb14fe0: retain-then-forward bind of the filter.
+        let target = rbx_core::SharedPtr::from(Box::new(Marker));
+        let retained = bind_list1_replicator(&target);
+        assert!(rbx_core::SharedPtr::ptr_eq(&target, &retained));
+        let call = bind_chat_filter(target);
+        let mut seen = Vec::new();
+        let addr = crate::socket::SystemAddress::new();
+        call_chat_filter(&call, &addr, "hi", "hi*", &mut |_, _, text, filtered| {
+            seen.push((text.to_owned(), filtered.to_owned()));
+        });
+        assert_eq!(seen, vec![("hi".to_owned(), "hi*".to_owned())]);
+    }
+
+    #[test]
+    fn voxel_encode_shapes() {
+        // IDA 0xb15f50: widths, region keys, and budget breaks.
+        assert_eq!(VOXEL_CELL_BIT_WIDTHS, (5, 4, 5));
+        assert_eq!(VOXEL_REGION_BIT_WIDTHS, (4, 2, 4));
+        assert_eq!(VOXEL_END_MARKER_BIT_WIDTH, 2);
+        assert_eq!(voxel_region_of((63, 31, 63)), (1, 1, 1));
+        assert_eq!(voxel_region_of((32, 16, 32)), (1, 1, 1));
+        assert_eq!(voxel_region_of((0, 0, 0)), (0, 0, 0));
+        assert!(voxel_budget_hit(64, 64));
+        assert!(!voxel_budget_hit(63, 64));
+        assert!(!voxel_budget_hit(usize::MAX, -1));
+    }
+
+    #[test]
+    fn replication_bind_chain() {
+        // IDA 0xb1c5cc/0xb1c790/0xb1c954/0xb1cb18: 4 → 4 → 3 → 2 captures.
+        let bind = replication_bind4(true, true);
+        assert_eq!(replication_store4(&bind), bind);
+        let three = replication_store3(&bind);
+        assert_eq!((three.target_alive, three.has_data), (true, true));
+        let two = replication_store2(&bind);
+        assert_eq!((two.target_alive, two.has_data), (true, true));
+        let dead = replication_bind4(false, false);
+        assert_eq!(replication_store2(&dead), ReplicationBind2::default());
+    }
+
+    #[test]
+    fn voxel_encode_cells_bits() {
+        // IDA 0xb15f50: two same-region cells = 26 + 15 bits, tail = 4.
+        let mut stream = BitStream::new();
+        voxel_encode_cells(&mut stream, &[(1, 2, 3), (4, 5, 6)], -1, 2);
+        assert_eq!(stream.bits_written(), 45);
+        // IDA 0xb16018: a zero budget stops before the first cell.
+        let mut starved = BitStream::new();
+        voxel_encode_cells(&mut starved, &[(1, 2, 3)], 0, 2);
+        assert_eq!(starved.bits_written(), 4);
+    }
+    #[test]
+    fn shared_dict_ownership() {
+        // IDA 0xb2058c/0xb20850/0xb20854/0xb20860: construct then drop.
+        let dict = protected_string_dict();
+        assert!(dict.entries.is_empty());
+        shared_dict_drop(dict);
+        // IDA 0xb209b0/0xb209b4/0xb20e64/0xb20e68: null deleters.
+        assert!(shared_null_deleter().is_null());
+        let shared = crate::string_dictionary::SharedStringDictionary::new();
+        let owned: rbx_core::SharedPtr<crate::string_dictionary::SharedStringDictionary> =
+            rbx_core::SharedPtr::from(Box::new(shared));
+        shared_dict_drop(owned);
+    }
+}
+
+/// `Replicator::Replicator` init constants (IDA 0xae10b8): the property
+/// `unordered_map` at +1436 picks the first prime above 10 (11, IDA
+/// 0xae13d4..0xae1418), the incoming `safe_queue` at +3588 is bounded at
+/// 23 (IDA 0xae15e8), and the two rolling id windows (+3844..+4868 and
+/// +4872..+5896, 8-byte entries) each hold 128 ids pre-filled with -1
+/// (IDA 0xae16c4..0xae1706). Descriptor senders, signal slots, and stats
+/// start empty; the mutex/pool wiring stays engine-side.
+pub const REPLICATOR_DESCRIPTOR_BUCKETS: u32 = 11;
+pub const REPLICATOR_INCOMING_CAPACITY: usize = 23;
+pub const REPLICATOR_ROLLING_ID_LEN: usize = 128;
+
+/// `Replicator::Replicator` modeled init state (IDA 0xae10b8).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct ReplicatorInit {
+    pub descriptor_buckets: u32,
+    pub incoming_capacity: usize,
+    pub rolling_id_len: usize,
+    pub stats_hook: bool,
+}
+
+/// `Replicator::Replicator` defaults (IDA 0xae10b8): bucket/queue/window
+/// shapes above plus the +1512 stats flag (`a9`).
+#[must_use]
+pub fn replicator_init(stats_hook: bool) -> ReplicatorInit {
+    ReplicatorInit {
+        descriptor_buckets: REPLICATOR_DESCRIPTOR_BUCKETS,
+        incoming_capacity: REPLICATOR_INCOMING_CAPACITY,
+        rolling_id_len: REPLICATOR_ROLLING_ID_LEN,
+        stats_hook,
+    }
+}
+
+/// `Replicator::Replicator` creation log (IDA 0xae17da): `"Replicator
+/// created for player %s"`.
+#[must_use]
+pub fn replicator_created_log(address: &str) -> String {
+    format!("Replicator created for player {address}")
+}
+
+/// `ConcurrentRakPeer::Send` priority/reliability/ordering used by
+/// `sendFilteredChatMessage` (IDA 0xaec99e: `Send(..., 1, 2, 2, ...)`).
+pub const CHAT_SEND_PRIORITY: u8 = 1;
+pub const CHAT_SEND_RELIABILITY: u8 = 2;
+pub const CHAT_SEND_ORDERING_CHANNEL: u8 = 2;
+
+/// `sendFilteredChatMessage` payload choice (IDA 0xaec8ae..0xaec912):
+/// the original string or the filtered replacement.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ChatFilterWrite {
+    Original,
+    Filtered,
+}
+
+/// `Replicator::sendFilteredChatMessage` decision (IDA 0xaec7fc..0xaec912):
+/// `None` drops the message — the destination is self, or there is no
+/// player (or no chat filter) and the text is empty. A mapped player
+/// with filter type 1 takes the filtered replacement; everything else
+/// re-sends the original. The bitstream copy and `Send` stay
+/// engine-side.
+#[must_use]
+pub fn send_filtered_chat_decision(
+    dest_is_self: bool,
+    has_player: bool,
+    filter_type: u32,
+    mapping_empty: bool,
+    text_empty: bool,
+) -> Option<ChatFilterWrite> {
+    if dest_is_self {
+        // IDA 0xaec7fc: `operator==` on the +1208 address.
+        return None;
+    }
+    if (!has_player || filter_type == 0) && text_empty {
+        // IDA 0xaec858: no filter and an empty string sends nothing.
+        return None;
+    }
+    if has_player && !mapping_empty && filter_type == 1 {
+        // IDA 0xaecb32: filter type 1 writes the replacement (`a5`).
+        Some(ChatFilterWrite::Filtered)
+    } else {
+        Some(ChatFilterWrite::Original)
+    }
+}
+
+/// `readChangedProperty` descriptor index (IDA 0xb00366..0xb0038e):
+/// `ReadBits` with the width at +336, range-checked like
+/// `read_prop_acknowledgement` (`vector::_M_range_check`, IDA 0xb0074c).
+/// The `propertyDescriptor != NULL` assert (Replicator.cpp:2861) and the
+/// `deserializeInstanceRef` stay engine-side.
+pub fn changed_property_index(
+    stream: &mut BitStream,
+    descriptor_bits: u8,
+    descriptor_count: usize,
+) -> usize {
+    let index = stream.read_bits(descriptor_bits).expect("BitStream ReadBits failed") as usize;
+    if index >= descriptor_count {
+        panic!("vector::_M_range_check");
+    }
+    index
+}
+
+/// `readChangedProperty` instance gate (IDA 0xb0040a): the instance is
+/// cleared when the +244 hook fires or the +212 legality hook fails, so
+/// only an unfiltered, legal instance proceeds to `deserializeProperty`.
+#[must_use]
+pub fn changed_property_keep(instance_present: bool, filtered: bool, legal_prop: bool) -> bool {
+    instance_present && !filtered && legal_prop
+}
+
+/// `readChangedProperty` / `readEventInvocation` trace line (IDA
+/// 0xb00478/0xb0116a): `"Replication: %s-%s.%s << %s"`.
+#[must_use]
+pub fn replication_log_line(
+    instance_name: Option<&str>,
+    guid: &str,
+    member: &str,
+    addr: &str,
+) -> String {
+    format!("Replication: {}-{}.{} << {}", instance_name.unwrap_or("?"), guid, member, addr)
+}
+
+/// `readMarker` id read (IDA 0xb009f2): `operator>><long>`.
+pub fn read_marker_id(stream: &mut BitStream) -> i32 {
+    stream.read_i32().expect("BitStream >> long failed")
+}
+
+/// `readMarker` verbose line (IDA 0xb00a72): `"Received marker %d from
+/// %s"`.
+#[must_use]
+pub fn marker_log_line(id: i32, addr: &str) -> String {
+    format!("Received marker {id} from {addr}")
+}
+
+/// `readMarker` fast log (IDA 0xb00b5c): `"Replicator:ReadMarker id(%d)"`.
+#[must_use]
+pub fn marker_fast_log(id: i32) -> String {
+    format!("Replicator:ReadMarker id({id})")
+}
+
+/// `readMarker` front assert (IDA 0xb00bf6..0xb00c40,
+/// Replicator.cpp:2830): the deque must be non-empty and its front id
+/// must equal the wire id before `Marker::fireReturned` pops it.
+#[must_use]
+pub fn marker_front_matches(front: Option<i32>, id: i32) -> bool {
+    front == Some(id)
+}
+
+/// `readMarker` terrain tail (IDA 0xb00caa..0xb00cc2): `doneLoadingTerrain`
+/// runs unless `FFlag::ChunkAndDeferVoxelUpdates` is set.
+#[must_use]
+pub fn should_done_loading_terrain(chunk_defer_voxel_updates: bool) -> bool {
+    !chunk_defer_voxel_updates
+}
+
+/// `readEventInvocation` event index (IDA 0xb010b4..0xb01100): `ReadBits`
+/// with the width at +347, range-checked (`vector::_M_range_check`, IDA
+/// 0xb01720).
+pub fn read_event_index(
+    stream: &mut BitStream,
+    event_bits: u8,
+    event_count: usize,
+) -> usize {
+    let index = stream.read_bits(event_bits).expect("BitStream ReadBits failed") as usize;
+    if index >= event_count {
+        panic!("vector::_M_range_check");
+    }
+    index
+}
+
+/// `readEventInvocation` instance gate (IDA 0xb0127c): the +208 hook
+/// returning 1 keeps the instance, anything else clears it before
+/// `deserializeEventInvocation`.
+#[must_use]
+pub fn event_keep(legal_receive: bool) -> bool {
+    legal_receive
+}
+
+/// `Replicator::processPacket` dispatch (IDA 0xb02984..0xb02d6a): the
+/// first byte selects the reader; the stack `BitStream` wraps the raw
+/// packet (IDA 0xb029c0). Physics arms additionally require the
+/// `PhysicsReceiver` at +3732.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ProcessPacketKind {
+    Physics,
+    Schema,
+    Data,
+    Touches,
+    Instance96,
+    Unknown,
+}
+
+/// `processPacket` first-byte switch (IDA 0xb029d8..0xb02c58): 27 is the
+/// physics packet, 130 the descriptor schema, 131 the item stream, 134
+/// the touches, 141 the instance-96 ping; anything else is ignored.
+#[must_use]
+pub fn process_packet_kind(first_byte: u8, has_physics: bool) -> ProcessPacketKind {
+    match first_byte {
+        27 if has_physics => ProcessPacketKind::Physics,
+        130 => ProcessPacketKind::Schema,
+        131 => ProcessPacketKind::Data,
+        134 if has_physics => ProcessPacketKind::Touches,
+        141 => ProcessPacketKind::Instance96,
+        _ => ProcessPacketKind::Unknown,
+    }
+}
+
+/// `processPacket` physics inner id (IDA 0xb02a4e): the `u64`/`u8` header
+/// must carry `ID_PHYSICS` (133) or `ReleaseAssert` fires
+/// (Replicator.cpp:3123).
+pub const PHYSICS_INNER_ID: u8 = 133;
+
+/// `processPacket` inner-id assert (IDA 0xb02a44..0xb02a50).
+#[must_use]
+pub fn physics_inner_valid(marker: u8) -> bool {
+    marker == PHYSICS_INNER_ID
+}
+
+/// `Replicator::OnReceive` dispatch (IDA 0xb02e30..0xb047c6): packets
+/// from any other address than +1208 return 1 immediately (IDA
+/// 0xb02ebc); otherwise the first byte selects the arm.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum OnReceiveAction {
+    PushIncoming,
+    MarkerItem,
+    Chat,
+    ReportAbuse,
+    SchemaTeach,
+    Disconnect,
+    ConnectionLost,
+    PhysicsPush,
+    Ignore,
+}
+
+/// `OnReceive` first-byte switch (IDA 0xb02ec8..0xb03992): 0x81/82/83/86/8D
+/// queue via `pushIncomingPacket`, 0x84 appends a `MarkerItem`, 0x87/88/8B/8C
+/// go to `Players::OnReceiveChat`, 0x89 to `OnReceiveReportAbuse`,
+/// 0x10/0x13 teach the descriptor schema, 0x15/0x16 are disconnect/lost,
+/// 0x1B pushes a physics packet; anything else returns 1.
+#[must_use]
+pub fn on_receive_action(first_byte: u8) -> OnReceiveAction {
+    match first_byte {
+        0x81 | 0x82 | 0x83 | 0x86 | 0x8D => OnReceiveAction::PushIncoming,
+        0x84 => OnReceiveAction::MarkerItem,
+        0x87 | 0x88 | 0x8B | 0x8C => OnReceiveAction::Chat,
+        0x89 => OnReceiveAction::ReportAbuse,
+        0x10 | 0x13 => OnReceiveAction::SchemaTeach,
+        0x15 => OnReceiveAction::Disconnect,
+        0x16 => OnReceiveAction::ConnectionLost,
+        0x1B => OnReceiveAction::PhysicsPush,
+        _ => OnReceiveAction::Ignore,
+    }
+}
+
+/// `OnReceive` verdicts (IDA 0xb02e30): 1 is consumed-here, 2 is
+/// forwarded to `Players`, 0 is dropped. Chat/report-abuse arms return 2
+/// only when `Players` takes the packet; the `ReleaseAssert(false)`
+/// fallthrough (Replicator.cpp:3321/3333) drops with 0. The marker arm
+/// always drops with 0 after queueing (IDA 0xb03a62).
+#[must_use]
+pub fn on_receive_verdict(action: OnReceiveAction, forwarded: Option<bool>) -> u32 {
+    match action {
+        OnReceiveAction::MarkerItem => 0,
+        OnReceiveAction::Chat | OnReceiveAction::ReportAbuse => match forwarded {
+            Some(true) => 2,
+            Some(false) | None => 0,
+        },
+        _ => 1,
+    }
+}
+
+/// `OnReceive` disconnect line (IDA 0xb03144/0xb0353c): disconnect logs
+/// `"Disconnect from %s"`, lost-connection logs `"Lost connection to
+/// %s"`; the `disconnected` signal fires with `(address, lost)`.
+#[must_use]
+pub fn on_receive_log(addr: &str, lost: bool) -> String {
+    if lost {
+        format!("Lost connection to {addr}")
+    } else {
+        format!("Disconnect from {addr}")
+    }
+}
+
+/// `boost::bind(mf4 sendFilteredChatMessage, replicator, _1.._4)` target
+/// (IDA 0xb07980): the `list5` ctor retains the Replicator owner (the two
+/// `shared_count` bumps are `Arc` bookkeeping here); the call forwards
+/// the four trailing args to the method (AGENTS.md §4: `boost::bind` →
+/// closures).
+#[derive(Clone, Debug)]
+pub struct ChatFilterCall {
+    pub target: rbx_core::SharedPtr<Marker>,
+}
+
+/// `boost::bind` chat-filter ctor (IDA 0xb07980).
+#[must_use]
+pub fn bind_chat_filter(target: rbx_core::SharedPtr<Marker>) -> ChatFilterCall {
+    ChatFilterCall { target }
+}
+
+/// `bind_t::operator()` for the chat filter (IDA 0xb07980): invokes the
+/// bound method with the retained target plus the four call args.
+pub fn call_chat_filter(
+    call: &ChatFilterCall,
+    addr: &crate::socket::SystemAddress,
+    text: &str,
+    filtered: &str,
+    invoke: &mut dyn FnMut(&rbx_core::SharedPtr<Marker>, &crate::socket::SystemAddress, &str, &str),
+) {
+    invoke(&call.target, addr, text, filtered);
+}
+
+/// `boost::_bi::list1<value<shared_ptr<Replicator>>>::list1` (IDA
+/// 0xb14fe0): copies the bound value with net +1 retain (the double-inc
+/// plus single-dec on the two control words); `Arc::clone` is the
+/// retain here.
+#[must_use]
+pub fn bind_list1_replicator(
+    target: &rbx_core::SharedPtr<Marker>,
+) -> rbx_core::SharedPtr<Marker> {
+    rbx_core::SharedPtr::clone(target)
+}
+
+/// `Voxel::Serializer<Grid>::encodeCells` wire widths (IDA
+/// 0xb15f50/0xb173b0/0xb18564, Serializer.h): each cell writes 5 + 4 + 5
+/// bits, each new 32/16/32 region writes 1 + 1 + 4 + 2 + 4 header bits,
+/// and every chunk (plus the tail) terminates with the 2-bit
+/// `kEndSequenceMarker`.
+pub const VOXEL_CELL_BIT_WIDTHS: (u8, u8, u8) = (5, 4, 5);
+pub const VOXEL_REGION_BIT_WIDTHS: (u8, u8, u8) = (4, 2, 4);
+pub const VOXEL_END_MARKER_BIT_WIDTH: u8 = 2;
+
+/// `encodeCells` region key (IDA 0xb160c0..0xb160de): cells share a
+/// header while `(x >> 5, y >> 4, z >> 5)` matches the cached region.
+#[must_use]
+pub fn voxel_region_of(cell: (i32, i32, i32)) -> (i32, i32, i32) {
+    (cell.0 >> 5, cell.1 >> 4, cell.2 >> 5)
+}
+
+/// `encodeCells` budget break (IDA 0xb16018/0xb162f4): a non-negative
+/// `maxBytes` stops the chunk once the written bytes reach it.
+#[must_use]
+pub fn voxel_budget_hit(used_bytes: usize, budget: i32) -> bool {
+    budget != -1 && used_bytes >= budget as usize
+}
+
+/// `boost::_bi::list4/storage4<weak_ptr<Replicator>, ReplicationData *,
+/// arg<1>, arg<2>>` capture (IDA 0xb1c5cc/0xb1c790): the weak owner, the
+/// raw replication data, and the two call placeholders. The
+/// spinlock-pool retains are `Arc`/`Weak` bookkeeping here.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct ReplicationBind {
+    pub target_alive: bool,
+    pub has_data: bool,
+}
+
+/// `list4` ctor (IDA 0xb1c5cc).
+#[must_use]
+pub fn replication_bind4(target_alive: bool, has_data: bool) -> ReplicationBind {
+    ReplicationBind { target_alive, has_data }
+}
+
+/// `storage4` ctor (IDA 0xb1c790): stores the full 4-tuple.
+#[must_use]
+pub fn replication_store4(bind: &ReplicationBind) -> ReplicationBind {
+    *bind
+}
+
+/// `storage3` capture (IDA 0xb1c954): the tail placeholder (`arg<2>`)
+/// is dropped, keeping weak owner, data, and `arg<1>`.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct ReplicationBind3 {
+    pub target_alive: bool,
+    pub has_data: bool,
+}
+
+/// `storage3` ctor (IDA 0xb1c954).
+#[must_use]
+pub fn replication_store3(bind: &ReplicationBind) -> ReplicationBind3 {
+    ReplicationBind3 { target_alive: bind.target_alive, has_data: bind.has_data }
+}
+
+/// `storage2` capture (IDA 0xb1cb18): only the weak owner and the raw
+/// data are kept.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct ReplicationBind2 {
+    pub target_alive: bool,
+    pub has_data: bool,
+}
+
+/// `storage2` ctor (IDA 0xb1cb18).
+#[must_use]
+pub fn replication_store2(bind: &ReplicationBind) -> ReplicationBind2 {
+    ReplicationBind2 { target_alive: bind.target_alive, has_data: bind.has_data }
+}
+
+/// `RBX::Network::SharedStringProtectedDictionary` (IDA 0xb2058c): the
+/// per-property protected string table behind
+/// `getSharedPropertyProtectedDictionary`; the map stays engine-side,
+/// only the shared-ownership shape crosses here.
+#[derive(Clone, Debug, Default)]
+pub struct SharedStringProtectedDictionary {
+    pub entries: std::collections::HashMap<u32, String>,
+}
+
+/// `sp_pointer_construct<SharedStringProtectedDictionary>` (IDA
+/// 0xb2058c): publishes the fresh control block; `Arc::new` is the
+/// publish here.
+#[must_use]
+pub fn protected_string_dict() -> rbx_core::SharedPtr<SharedStringProtectedDictionary> {
+    rbx_core::SharedPtr::from(Box::new(SharedStringProtectedDictionary::default()))
+}
+
+/// `sp_counted_impl_p` D1/D0/dispose (IDA 0xb20850/0xb20854/0xb20860 and
+/// the 0xb20d10/0xb20d14/0xb20d20 twins): D1 runs the dispose, D0
+/// additionally frees (IDA `operator delete`); a Rust drop does both.
+pub fn shared_dict_drop<T>(_dict: rbx_core::SharedPtr<T>) {}
+
+/// `sp_counted_impl_p::get_deleter/get_untyped_deleter` (IDA
+/// 0xb209b0/0xb209b4 and the 0xb20e64/0xb20e68 twins): no custom
+/// deleter is ever installed, so both return null.
+#[must_use]
+pub fn shared_null_deleter() -> *const () {
+    std::ptr::null()
+}
+/// `Voxel::Serializer<Grid>::encodeCells` chunk writer (IDA
+/// 0xb15f50/0xb173b0/0xb18564, Serializer.h:145): per cell, a 1-bit
+/// same-region flag — or `1, 0` plus the 4/2/4 region words on a region
+/// change — then the 5/4/5 cell bits from `encodeFromPosition`; each
+/// chunk ends with the 2-bit `kEndSequenceMarker` (`end_marker` here,
+/// engine-side constant) and the tail writes a final 2-bit `1`s word
+/// (IDA 0xb163f6). Stops when the byte budget is hit (IDA
+/// 0xb16018/0xb162f4); the grid reads, cluster-chunk iteration, and the
+/// `unused == nextPos` assert stay engine-side.
+pub fn voxel_encode_cells(
+    stream: &mut BitStream,
+    cells: &[(i32, i32, i32)],
+    budget: i32,
+    end_marker: u8,
+) {
+    let mut region: Option<(i32, i32, i32)> = None;
+    for &(x, y, z) in cells {
+        // IDA 0xb16018: `(bitsUsed + 7) >> 3 >= maxBytes` breaks.
+        if voxel_budget_hit((stream.bits_written() + 7) >> 3, budget) {
+            break;
+        }
+        let key = voxel_region_of((x, y, z));
+        if region == Some(key) {
+            // IDA 0xb160e0: same region, single 0 bit.
+            stream.write_bits(0, 1);
+        } else {
+            // IDA 0xb1610a..0xb16162: `1, 0` + 4/2/4 region words.
+            region = Some(key);
+            stream.write_bits(1, 1);
+            stream.write_bits(0, 1);
+            stream.write_bits((key.0 & 0xF) as u32, VOXEL_REGION_BIT_WIDTHS.0);
+            stream.write_bits((key.1 & 0x3) as u32, VOXEL_REGION_BIT_WIDTHS.1);
+            stream.write_bits((key.2 & 0xF) as u32, VOXEL_REGION_BIT_WIDTHS.2);
+        }
+        // IDA 0xb161f8..0xb1622c: 5/4/5 cell bits.
+        stream.write_bits((x & 0x1F) as u32, VOXEL_CELL_BIT_WIDTHS.0);
+        stream.write_bits((y & 0x0F) as u32, VOXEL_CELL_BIT_WIDTHS.1);
+        stream.write_bits((z & 0x1F) as u32, VOXEL_CELL_BIT_WIDTHS.2);
+    }
+    stream.write_bits(u32::from(end_marker & 0x3), VOXEL_END_MARKER_BIT_WIDTH);
+    stream.write_bits(0x3, VOXEL_END_MARKER_BIT_WIDTH);
 }
