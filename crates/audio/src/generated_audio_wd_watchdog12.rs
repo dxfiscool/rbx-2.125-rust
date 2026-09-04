@@ -7,13 +7,139 @@
 use rbx_core::SharedPtr;
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
+/// `RBX::Smoke` cutover (IDA 0x637478): the `Color3` at +0x64..+0x6c,
+/// the size at +0x70, the opacity at +0x74 and the rise velocity at
+/// +0x78. The `Instance`/`Described`/`Effect` bases fold away.
+#[derive(Debug, Clone)]
+pub struct SmokeState {
+    pub color: [f32; 3],
+    pub size: f32,
+    pub opacity: f32,
+    pub rise_velocity: f32,
+}
+/// Float member selector for the `GetSetImpl<float getter, float
+/// setter>` pairs below (IDA 0x638818/0x638838): the getter/setter
+/// member pointers fold into the selector.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum SmokeFloatField {
+    Size,
+    Opacity,
+    RiseVelocity,
+}
+/// `RBX::Reflection::PropDescriptor<Smoke, float>` cutover
+/// (IDA 0x6386d0): name/category/attributes/permissions, the bound
+/// member selector and the live value.
+#[derive(Debug, Clone)]
+pub struct SmokeFloatProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+    pub field: SmokeFloatField,
+    pub value: f32,
+}
+impl SmokeFloatProp {
+    pub fn new(
+        name: &str,
+        category: &str,
+        field: SmokeFloatField,
+        initial: f32,
+        attributes: u32,
+        permissions: u32,
+    ) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+            field,
+            value: initial,
+        }
+    }
+}
+/// `RBX::Reflection::PropDescriptor<Smoke, G3D::Color3>` cutover
+/// (IDA 0x63885c): same shape with a `Color3` value.
+#[derive(Debug, Clone)]
+pub struct SmokeColorProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+    pub value: [f32; 3],
+}
+impl SmokeColorProp {
+    pub fn new(
+        name: &str,
+        category: &str,
+        initial: [f32; 3],
+        attributes: u32,
+        permissions: u32,
+    ) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+            value: initial,
+        }
+    }
+}
+/// `RBX::Reflection::BoundProp<bool>` cutover for `Smoke`
+/// (IDA 0x638a08): name/category plus the live value. The member cell
+/// folds into direct field access.
+#[derive(Debug, Clone)]
+pub struct SmokeBoolProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+    pub value: bool,
+}
+impl SmokeBoolProp {
+    pub fn new(
+        name: &str,
+        category: &str,
+        initial: bool,
+        attributes: u32,
+        permissions: u32,
+    ) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+            value: initial,
+        }
+    }
+}
+
 // 0x063736c — __ZN3RBX5Smoke17setRiseVelocityUiEf
 // demangled: RBX::Smoke::setRiseVelocityUi(float)
 // type: _DWORD __fastcall(RBX::Smoke *__hidden this, float)
 #[doc(alias = "RBX::Smoke::setRiseVelocityUi(float)")]
 #[doc(alias = "__ZN3RBX5Smoke17setRiseVelocityUiEf")]
-pub fn stub_063736c() -> ! {
-    todo!("0x063736c RBX::Smoke::setRiseVelocityUi(float)")
+pub fn stub_063736c(smoke: &mut SmokeState, value: f32) -> bool {
+    // IDA 0x63736c (`RBX::Smoke::setRiseVelocityUi`): clamps below-or-at
+    // -25.0 up to -25.0 and above 25.0 down via `VMIN` (0x63736c-
+    // 0x637382); when the clamped value differs from +0x78 it tail-calls
+    // `setRiseVelocity` (0x637386-0x637398, which stores and raises
+    // both props); when it differs from the raw input it tail-calls
+    // `raisePropertyChanged` for the Ui prop (0x63739c-0x6373b4). Both
+    // raises fold into the flag.
+    let clamped = if value > -25.0 {
+        value.min(25.0)
+    } else {
+        -25.0
+    };
+    let mut changed = false;
+    if clamped != smoke.rise_velocity {
+        smoke.rise_velocity = clamped;
+        changed = true;
+    }
+    if clamped != value {
+        changed = true;
+    }
+    changed
 }
 
 // 0x06373b8 — __ZN3RBX5Smoke7setSizeEf
@@ -21,8 +147,16 @@ pub fn stub_063736c() -> ! {
 // type: _DWORD __fastcall(RBX::Smoke *__hidden this, float)
 #[doc(alias = "RBX::Smoke::setSize(float)")]
 #[doc(alias = "__ZN3RBX5Smoke7setSizeEf")]
-pub fn stub_06373b8() -> ! {
-    todo!("0x06373b8 RBX::Smoke::setSize(float)")
+pub fn stub_06373b8(smoke: &mut SmokeState, value: f32) -> bool {
+    // IDA 0x6373b8 (`RBX::Smoke::setSize`): returns early when +0x70
+    // matches (0x6373c0-0x6373d0), else stores (0x6373dc) and raises
+    // the Size prop plus the SizeUi prop (0x6373e2-0x6373f4). Both
+    // raises fold into the flag.
+    if smoke.size == value {
+        return false;
+    }
+    smoke.size = value;
+    true
 }
 
 // 0x06373f8 — __ZN3RBX5Smoke10setOpacityEf
@@ -30,8 +164,15 @@ pub fn stub_06373b8() -> ! {
 // type: _DWORD __fastcall(RBX::Smoke *__hidden this, float)
 #[doc(alias = "RBX::Smoke::setOpacity(float)")]
 #[doc(alias = "__ZN3RBX5Smoke10setOpacityEf")]
-pub fn stub_06373f8() -> ! {
-    todo!("0x06373f8 RBX::Smoke::setOpacity(float)")
+pub fn stub_06373f8(smoke: &mut SmokeState, value: f32) -> bool {
+    // IDA 0x6373f8 (`RBX::Smoke::setOpacity`): same compare-store shape
+    // as `setSize` above over +0x74, raising the Opacity prop plus the
+    // OpacityUi prop (0x6373f8-0x637434).
+    if smoke.opacity == value {
+        return false;
+    }
+    smoke.opacity = value;
+    true
 }
 
 // 0x0637438 — __ZN3RBX5Smoke15setRiseVelocityEf
@@ -39,8 +180,15 @@ pub fn stub_06373f8() -> ! {
 // type: _DWORD __fastcall(RBX::Smoke *__hidden this, float)
 #[doc(alias = "RBX::Smoke::setRiseVelocity(float)")]
 #[doc(alias = "__ZN3RBX5Smoke15setRiseVelocityEf")]
-pub fn stub_0637438() -> ! {
-    todo!("0x0637438 RBX::Smoke::setRiseVelocity(float)")
+pub fn stub_0637438(smoke: &mut SmokeState, value: f32) -> bool {
+    // IDA 0x637438 (`RBX::Smoke::setRiseVelocity`): same
+    // compare-store shape over +0x78, raising the RiseVelocity prop
+    // plus the RiseVelocityUi prop (0x637438-0x637474).
+    if smoke.rise_velocity == value {
+        return false;
+    }
+    smoke.rise_velocity = value;
+    true
 }
 
 // 0x0637478 — __ZN3RBX5SmokeC2Ev
@@ -48,8 +196,19 @@ pub fn stub_0637438() -> ! {
 // type: _DWORD __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "RBX::Smoke::Smoke(void)")]
 #[doc(alias = "__ZN3RBX5SmokeC2Ev")]
-pub fn stub_0637478() -> ! {
-    todo!("0x0637478 RBX::Smoke::Smoke(void)")
+pub fn stub_0637478() -> SmokeState {
+    // IDA 0x637478 (`RBX::Smoke::Smoke`): `Instance::C2("Smoke")` +
+    // `Effect::C2` at +0x5C + vtable installs + class registration
+    // (0x637494-0x63756a); the +0x60 flag byte is set to 1 (0x63759e-
+    // 0x6375a2); the color at +0x64..+0x6c loads `G3D::Color3::white()`
+    // (0x6375a6-0x6375cc); +0x70 (size) = 1.0, +0x74 (opacity) = 0.5,
+    // +0x78 (rise velocity) = 1.0 (0x6375b2-0x6375de).
+    SmokeState {
+        color: [1.0, 1.0, 1.0],
+        size: 1.0,
+        opacity: 0.5,
+        rise_velocity: 1.0,
+    }
 }
 
 // 0x0637668 — __ZN3RBX5SmokeD0Ev
@@ -138,8 +297,15 @@ pub fn stub_06377f0() {
 // type: _DWORD __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "RBX::Smoke::getClampedSize(void)const")]
 #[doc(alias = "__ZNK3RBX5Smoke14getClampedSizeEv")]
-pub fn stub_06377f8() -> ! {
-    todo!("0x06377f8 RBX::Smoke::getClampedSize(void)const")
+pub fn stub_06377f8(smoke: &SmokeState) -> f32 {
+    // IDA 0x6377f8 (`RBX::Smoke::getClampedSize`): below-or-at 0.1
+    // reads 0.1, above clamps via `VMIN` to 100.0 (0x6377f8-0x63780e;
+    // 0.1 is `1036831949`, 100.0 is `1120403456`).
+    if smoke.size > 0.1 {
+        smoke.size.min(100.0)
+    } else {
+        0.1
+    }
 }
 
 // 0x0637820 — __ZNK3RBX5Smoke17getClampedOpacityEv
@@ -147,8 +313,14 @@ pub fn stub_06377f8() -> ! {
 // type: _DWORD __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "RBX::Smoke::getClampedOpacity(void)const")]
 #[doc(alias = "__ZNK3RBX5Smoke17getClampedOpacityEv")]
-pub fn stub_0637820() -> ! {
-    todo!("0x0637820 RBX::Smoke::getClampedOpacity(void)const")
+pub fn stub_0637820(smoke: &SmokeState) -> f32 {
+    // IDA 0x637820 (`RBX::Smoke::getClampedOpacity`): zero or below
+    // reads 0.0, above clamps via `VMIN` to 1.0 (0x637820-0x637836).
+    if smoke.opacity > 0.0 {
+        smoke.opacity.min(1.0)
+    } else {
+        0.0
+    }
 }
 
 // 0x0637840 — __ZNK3RBX5Smoke22getClampedRiseVelocityEv
@@ -156,8 +328,15 @@ pub fn stub_0637820() -> ! {
 // type: _DWORD __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "RBX::Smoke::getClampedRiseVelocity(void)const")]
 #[doc(alias = "__ZNK3RBX5Smoke22getClampedRiseVelocityEv")]
-pub fn stub_0637840() -> ! {
-    todo!("0x0637840 RBX::Smoke::getClampedRiseVelocity(void)const")
+pub fn stub_0637840(smoke: &SmokeState) -> f32 {
+    // IDA 0x637840 (`RBX::Smoke::getClampedRiseVelocity`): below-or-at
+    // -25.0 reads -25.0, above clamps via `VMIN` to 25.0 (0x637840-
+    // 0x637856).
+    if smoke.rise_velocity > -25.0 {
+        smoke.rise_velocity.min(25.0)
+    } else {
+        -25.0
+    }
 }
 
 // 0x0637860 — __ZNK3RBX5Smoke8getColorEv
@@ -165,8 +344,10 @@ pub fn stub_0637840() -> ! {
 // type: _DWORD __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "RBX::Smoke::getColor(void)const")]
 #[doc(alias = "__ZNK3RBX5Smoke8getColorEv")]
-pub fn stub_0637860() -> ! {
-    todo!("0x0637860 RBX::Smoke::getColor(void)const")
+pub fn stub_0637860(smoke: &SmokeState) -> [f32; 3] {
+    // IDA 0x637860 (`RBX::Smoke::getColor`): copies the three words at
+    // +0x64/+0x68/+0x6c to the result (0x637860-0x63786a).
+    smoke.color
 }
 
 // 0x0637870 — __ZN3RBX10Reflection14PropDescriptorINS_5SmokeEN3G3D6Color3EED1Ev
@@ -183,8 +364,11 @@ pub fn stub_0637870() {
 // type: _DWORD __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "RBX::Smoke::getSizeRaw(void)const")]
 #[doc(alias = "__ZNK3RBX5Smoke10getSizeRawEv")]
-pub fn stub_0637894() -> ! {
-    todo!("0x0637894 RBX::Smoke::getSizeRaw(void)const")
+pub fn stub_0637894(smoke: &SmokeState) -> f32 {
+    // IDA 0x637894 (`RBX::Smoke::getSizeRaw`): loads +0x70
+    // (0x637894-0x637896) — the raw value, unlike the clamped twin at
+    // 0x6377f8.
+    smoke.size
 }
 
 // 0x0637898 — __ZN3RBX10Reflection14PropDescriptorINS_5SmokeEfED1Ev
@@ -201,8 +385,10 @@ pub fn stub_0637898() {
 // type: _DWORD __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "RBX::Smoke::getOpacityRaw(void)const")]
 #[doc(alias = "__ZNK3RBX5Smoke13getOpacityRawEv")]
-pub fn stub_06378bc() -> ! {
-    todo!("0x06378bc RBX::Smoke::getOpacityRaw(void)const")
+pub fn stub_06378bc(smoke: &SmokeState) -> f32 {
+    // IDA 0x6378bc (`RBX::Smoke::getOpacityRaw`): loads +0x74
+    // (0x6378bc-0x6378be).
+    smoke.opacity
 }
 
 // 0x06378c0 — __ZNK3RBX5Smoke18getRiseVelocityRawEv
@@ -210,8 +396,10 @@ pub fn stub_06378bc() -> ! {
 // type: _DWORD __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "RBX::Smoke::getRiseVelocityRaw(void)const")]
 #[doc(alias = "__ZNK3RBX5Smoke18getRiseVelocityRawEv")]
-pub fn stub_06378c0() -> ! {
-    todo!("0x06378c0 RBX::Smoke::getRiseVelocityRaw(void)const")
+pub fn stub_06378c0(smoke: &SmokeState) -> f32 {
+    // IDA 0x6378c0 (`RBX::Smoke::getRiseVelocityRaw`): loads +0x78
+    // (0x6378c0-0x6378c2).
+    smoke.rise_velocity
 }
 
 // 0x06378c4 — __ZNK3RBX5Smoke11askAddChildEPKNS_8InstanceE
@@ -219,8 +407,10 @@ pub fn stub_06378c0() -> ! {
 // type: _DWORD __fastcall(RBX::Smoke *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::Smoke::askAddChild(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX5Smoke11askAddChildEPKNS_8InstanceE")]
-pub fn stub_06378c4() -> ! {
-    todo!("0x06378c4 RBX::Smoke::askAddChild(RBX::Instance const*)const")
+pub fn stub_06378c4() -> bool {
+    // IDA 0x6378c4 (`RBX::Smoke::askAddChild`): `MOVS R0, #1; BX LR`
+    // — any child is accepted.
+    true
 }
 
 // 0x06378c8 — __ZNK3RBX5Smoke12askSetParentEPKNS_8InstanceE
@@ -228,8 +418,13 @@ pub fn stub_06378c4() -> ! {
 // type: _DWORD __fastcall(RBX::Smoke *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::Smoke::askSetParent(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX5Smoke12askSetParentEPKNS_8InstanceE")]
-pub fn stub_06378c8() -> ! {
-    todo!("0x06378c8 RBX::Smoke::askSetParent(RBX::Instance const*)const")
+pub fn stub_06378c8(parent_is_part: Option<bool>) -> bool {
+    // IDA 0x6378c8 (`RBX::Smoke::askSetParent`): null parent returns 0
+    // (0x6378cc-0x6378d8); else the candidate's class descriptor must
+    // `isA` `Part` (0x6378da-0x6378f6), returning 0 on mismatch and 1
+    // otherwise (0x6378f8-0x637902). The hierarchy walk folds into the
+    // `isA` answer; null folds into `None`.
+    matches!(parent_is_part, Some(true))
 }
 
 // 0x0637b90 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_5SmokeEEEN5boost10shared_ptrIT_EEv
@@ -237,8 +432,13 @@ pub fn stub_06378c8() -> ! {
 // type: 
 #[doc(alias = "rbx_core::SharedPtr<RBX::Smoke> RBX::Creatable<RBX::Instance>::create<RBX::Smoke>(void)")]
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_5SmokeEEEN5boost10shared_ptrIT_EEv")]
-pub fn stub_0637b90() -> ! {
-    todo!("0x0637b90 rbx_core::SharedPtr<RBX::Smoke> RBX::Creatable<RBX::Instance>::create<RBX::Smoke>(void)")
+pub fn stub_0637b90() -> SharedPtr<SmokeState> {
+    // IDA 0x637b90 (`Creatable<Instance>::create<Smoke>`): `operator
+    // new(0x7c)` (0x637bae-0x637bb0), `Smoke::Smoke` (0x637be6-
+    // 0x637be8), then the `shared_ptr<Smoke>` ctor with the
+    // `Creatable::Deleter` (0x637bec-0x637bf6). Same shape as the `Sky`
+    // twin at 0x6360a4.
+    stub_0637c40(stub_0637478())
 }
 
 // 0x0637c40 — __ZN5boost10shared_ptrIN3RBX5SmokeEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -246,8 +446,13 @@ pub fn stub_0637b90() -> ! {
 // type: 
 #[doc(alias = "rbx_core::SharedPtr<RBX::Smoke>::shared_ptr<RBX::Smoke,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Smoke *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX5SmokeEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_0637c40() -> ! {
-    todo!("0x0637c40 rbx_core::SharedPtr<RBX::Smoke>::shared_ptr<RBX::Smoke,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Smoke *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0637c40(smoke: SmokeState) -> SharedPtr<SmokeState> {
+    // IDA 0x637c40 (`shared_ptr<Smoke>::shared_ptr<Smoke, Creatable
+    // Deleter>`): stores the pointer (0x637c5c-0x637c60), builds the
+    // `shared_count` control block (0x637c66-0x637c68) and, when
+    // non-null, wires the weak owner via `_internal_accept_owner`
+    // (0x637c96-0x637ca6). Same shape as the `Sky` twin at 0x636154.
+    SharedPtr::new(smoke)
 }
 
 // 0x0637d08 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5SmokeES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -318,8 +523,21 @@ pub fn stub_0637f38() {
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Smoke,float>::PropDescriptor<float (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(float)>(char const*,char const*,float (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_5SmokeEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_06386d0() -> ! {
-    todo!("0x06386d0 RBX::Reflection::PropDescriptor<RBX::Smoke,float>::PropDescriptor<float (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(float)>(char const*,char const*,float (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_06386d0(
+    name: &str,
+    category: &str,
+    field: SmokeFloatField,
+    initial: f32,
+    attributes: u32,
+    permissions: u32,
+) -> SmokeFloatProp {
+    // IDA 0x6386d0 (`PropDescriptor<Smoke, float>::C2`): allocates the
+    // `GetSetImpl` member triple (0x14 bytes, 0x6386fc-0x638738), runs
+    // `TypedPropertyDescriptor<float>::C2` (0x638750-0x638790) and
+    // installs the vtable (0x638792-0x6387a8) — same shape as the
+    // Skateboard twin at 0x633cb8. The member triple folds into the
+    // field selector.
+    SmokeFloatProp::new(name, category, field, initial, attributes, permissions)
 }
 
 // 0x06387e4 — __ZN3RBX10Reflection14PropDescriptorINS_5SmokeEfED0Ev
@@ -336,8 +554,10 @@ pub fn stub_06387e4() {
 // type: 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Smoke,float>::GetSetImpl<float (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(float)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5SmokeEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv")]
-pub fn stub_0638810() -> ! {
-    todo!("0x0638810 RBX::Reflection::PropDescriptor<RBX::Smoke,float>::GetSetImpl<float (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(float)>::isReadOnly(void)const")
+pub fn stub_0638810() -> bool {
+    // IDA 0x638810 (`GetSetImpl<float getter, float
+    // setter>::isReadOnly`): `MOVS R0, #0; BX LR` — always readable.
+    false
 }
 
 // 0x0638814 — __ZNK3RBX10Reflection14PropDescriptorINS_5SmokeEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
@@ -345,8 +565,10 @@ pub fn stub_0638810() -> ! {
 // type: 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Smoke,float>::GetSetImpl<float (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(float)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5SmokeEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv")]
-pub fn stub_0638814() -> ! {
-    todo!("0x0638814 RBX::Reflection::PropDescriptor<RBX::Smoke,float>::GetSetImpl<float (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(float)>::isWriteOnly(void)const")
+pub fn stub_0638814() -> bool {
+    // IDA 0x638814 (`GetSetImpl<float getter, float
+    // setter>::isWriteOnly`): `MOVS R0, #0; BX LR` — always writable.
+    false
 }
 
 // 0x0638818 — __ZNK3RBX10Reflection14PropDescriptorINS_5SmokeEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
@@ -354,8 +576,17 @@ pub fn stub_0638814() -> ! {
 // type: 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Smoke,float>::GetSetImpl<float (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5SmokeEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0638818() -> ! {
-    todo!("0x0638818 RBX::Reflection::PropDescriptor<RBX::Smoke,float>::GetSetImpl<float (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0638818(state: &SmokeState, field: SmokeFloatField) -> f32 {
+    // IDA 0x638818 (`GetSetImpl::getValue`): null described reads at
+    // offset 0, else `a2 - 36` (0x638818-0x63881e); resolves the getter
+    // member pointer (+4/+8, virtual when the low bit is set,
+    // 0x638822-0x638832) and tail-calls it (0x638834). The member
+    // pointer folds into the selector.
+    match field {
+        SmokeFloatField::Size => state.size,
+        SmokeFloatField::Opacity => state.opacity,
+        SmokeFloatField::RiseVelocity => state.rise_velocity,
+    }
 }
 
 // 0x0638838 — __ZNK3RBX10Reflection14PropDescriptorINS_5SmokeEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
@@ -363,8 +594,23 @@ pub fn stub_0638818() -> ! {
 // type: 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Smoke,float>::GetSetImpl<float (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5SmokeEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf")]
-pub fn stub_0638838() -> ! {
-    todo!("0x0638838 RBX::Reflection::PropDescriptor<RBX::Smoke,float>::GetSetImpl<float (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+pub fn stub_0638838(state: &mut SmokeState, field: SmokeFloatField, value: f32) -> bool {
+    // IDA 0x638838 (`GetSetImpl::setValue`): same member-pointer
+    // resolve as 0x638818 above over +12/+16 (0x638838-0x638854),
+    // tail-calling the setter with `*a3` (0x638856-0x638858). The
+    // setter is one of `setSize`/`setOpacity`/`setRiseVelocity`, each
+    // of which compares, stores and raises; the raises fold into the
+    // flag.
+    let slot = match field {
+        SmokeFloatField::Size => &mut state.size,
+        SmokeFloatField::Opacity => &mut state.opacity,
+        SmokeFloatField::RiseVelocity => &mut state.rise_velocity,
+    };
+    if *slot == value {
+        return false;
+    }
+    *slot = value;
+    true
 }
 
 // 0x063885c — __ZN3RBX10Reflection14PropDescriptorINS_5SmokeEN3G3D6Color3EEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -372,8 +618,17 @@ pub fn stub_0638838() -> ! {
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Smoke,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(G3D::Color3)>(char const*,char const*,G3D::Color3 (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(G3D::Color3),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_5SmokeEN3G3D6Color3EEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_063885c() -> ! {
-    todo!("0x063885c RBX::Reflection::PropDescriptor<RBX::Smoke,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(G3D::Color3)>(char const*,char const*,G3D::Color3 (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(G3D::Color3),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_063885c(
+    name: &str,
+    category: &str,
+    initial: [f32; 3],
+    attributes: u32,
+    permissions: u32,
+) -> SmokeColorProp {
+    // IDA 0x63885c (`PropDescriptor<Smoke, Color3>::C2`): same
+    // member-triple + `TypedPropertyDescriptor<Color3>::C2` + vtable
+    // shape as the float twin at 0x6386d0 (0x63885c-0x638940).
+    SmokeColorProp::new(name, category, initial, attributes, permissions)
 }
 
 // 0x0638970 — __ZN3RBX10Reflection14PropDescriptorINS_5SmokeEN3G3D6Color3EED0Ev
@@ -390,8 +645,10 @@ pub fn stub_0638970() {
 // type: 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Smoke,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(G3D::Color3)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5SmokeEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_063899c() -> ! {
-    todo!("0x063899c RBX::Reflection::PropDescriptor<RBX::Smoke,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(G3D::Color3)>::isReadOnly(void)const")
+pub fn stub_063899c() -> bool {
+    // IDA 0x63899c (`GetSetImpl<Color3 getter, Color3
+    // setter>::isReadOnly`): `MOVS R0, #0; BX LR` — always readable.
+    false
 }
 
 // 0x06389a0 — __ZNK3RBX10Reflection14PropDescriptorINS_5SmokeEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
@@ -399,8 +656,10 @@ pub fn stub_063899c() -> ! {
 // type: 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Smoke,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(G3D::Color3)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5SmokeEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_06389a0() -> ! {
-    todo!("0x06389a0 RBX::Reflection::PropDescriptor<RBX::Smoke,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(G3D::Color3)>::isWriteOnly(void)const")
+pub fn stub_06389a0() -> bool {
+    // IDA 0x6389a0 (`GetSetImpl<Color3 getter, Color3
+    // setter>::isWriteOnly`): `MOVS R0, #0; BX LR` — always writable.
+    false
 }
 
 // 0x06389a4 — __ZNK3RBX10Reflection14PropDescriptorINS_5SmokeEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -408,8 +667,12 @@ pub fn stub_06389a0() -> ! {
 // type: 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Smoke,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5SmokeEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_06389a4() -> ! {
-    todo!("0x06389a4 RBX::Reflection::PropDescriptor<RBX::Smoke,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_06389a4(state: &SmokeState) -> [f32; 3] {
+    // IDA 0x6389a4 (`GetSetImpl::getValue`): same member-pointer
+    // resolve as 0x638818 above (0x6389a4-0x6389c4), tail-calling the
+    // getter (0x6389c6-0x6389c8). The member is `getColor`
+    // (0x637860); the pointer folds into the field.
+    state.color
 }
 
 // 0x06389cc — __ZNK3RBX10Reflection14PropDescriptorINS_5SmokeEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
@@ -417,8 +680,17 @@ pub fn stub_06389a4() -> ! {
 // type: 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Smoke,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5SmokeEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")]
-pub fn stub_06389cc() -> ! {
-    todo!("0x06389cc RBX::Reflection::PropDescriptor<RBX::Smoke,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Smoke::*)(void)const,void (RBX::Smoke::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")
+pub fn stub_06389cc(state: &mut SmokeState, value: [f32; 3]) -> bool {
+    // IDA 0x6389cc (`GetSetImpl::setValue`): same member-pointer
+    // resolve over +12/+16 (0x6389cc-0x6389ee), copying the three
+    // input words to the stack frame (0x6389f2-0x6389fc) for the
+    // setter call. The member is `setColor` (0x637264, which compares,
+    // stores and raises); the pointer folds into it.
+    if state.color == value {
+        return false;
+    }
+    state.color = value;
+    true
 }
 
 // 0x0638a08 — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_5SmokeEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
