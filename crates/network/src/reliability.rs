@@ -112,6 +112,52 @@ impl ReliabilityLayer {
     /// IDA 0xa72d5c, which releases too). No-op Rust-side.
     pub fn reset_packets_and_datagrams(&mut self) {}
 }
+ /// `RakNet::ReliabilityLayer::HandleSocketReceiveFromConnectedPlayer`
+ /// datagram verdict (IDA 0xa72f5c..0xa740ea).
+ #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+ pub enum DatagramVerdict {
+ /// Short or empty datagram: error hooks run, returns 1.
+ Reject,
+ /// Bad datagram header: error hooks run, returns 1.
+ InvalidHeader,
+ /// ACK-range parse failed: error hooks run, returns 0.
+ RangeListFailed,
+ /// Preamble passed: the ACK sweep and packet pump run.
+ Accept,
+ }
+ /// `RakNet::ReliabilityLayer::HandleSocketReceiveFromConnectedPlayer`
+ /// preamble (IDA 0xa72ee0..0xa740ea): BPS accounting and the received
+ /// counters run first (engine-side); datagrams of length 2 or less or
+ /// with no buffer (0xa72f5c..0xa72fb4, `"length <= 2 || buffer == 0"`),
+ /// failed header parses (0xa72fec..0xa73382, `"dhf.isValid==false"`)
+ /// and failed ACK-range parses (0xa73040..0xa740ea,
+ /// `"incomingAcks.Deserialize failed"`) each run the per-plugin
+ /// `OnReliabilityLayerPacketError` hooks (vtable + 56) and stop. The
+ /// ACK sweep (`RemovePacketFromResendListAndDeleteOlderReliableSequenced`,
+ /// 0xa73084..), `CreateInternalPacketFromBitStream`,
+ /// `InsertIntoSplitPacketList` and `BuildPacketFromSplitPacketList`
+ /// stay engine-side.
+ pub fn datagram_preamble(len: u32, has_buffer: bool, header_valid: bool, range_list_ok: bool, plugin_count: usize, notify_error: &mut dyn FnMut(usize, &'static str)) -> DatagramVerdict {
+ if len <= 2 || !has_buffer {
+ for i in 0..plugin_count {
+ notify_error(i, "length <= 2 || buffer == 0");
+ }
+ return DatagramVerdict::Reject;
+ }
+ if !header_valid {
+ for i in 0..plugin_count {
+ notify_error(i, "dhf.isValid==false");
+ }
+ return DatagramVerdict::InvalidHeader;
+ }
+ if !range_list_ok {
+ for i in 0..plugin_count {
+ notify_error(i, "incomingAcks.Deserialize failed");
+ }
+ return DatagramVerdict::RangeListFailed;
+ }
+ DatagramVerdict::Accept
+ }
 
 /// `DatagramHeaderFormat::Deserialize` (IDA 0xa77058): sequential flag-bit
 /// reads into byte offsets +0x8..+0xe, an aligned `f32` at +4 on the ack arm,
@@ -1420,3 +1466,21 @@ mod tests {
         assert_eq!(plain.len(), 1);
     }
 }
+ #[cfg(test)]
+ mod batch3_tests {
+ use super::*;
+ #[test]
+ fn datagram_preamble_guards() {
+ // IDA 0xa72f5c..0xa740ea: each failing guard runs the error hooks and stops.
+ let mut notes = Vec::new();
+ assert_eq!(datagram_preamble(2, true, true, true, 2, &mut |i, m| notes.push((i, m))), DatagramVerdict::Reject);
+ assert_eq!(notes.len(), 2);
+ assert_eq!(notes[0].1, "length <= 2 || buffer == 0");
+ notes.clear();
+ assert_eq!(datagram_preamble(9, false, true, true, 1, &mut |i, m| notes.push((i, m))), DatagramVerdict::Reject);
+ assert_eq!(datagram_preamble(64, true, false, true, 1, &mut |i, m| notes.push((i, m))), DatagramVerdict::InvalidHeader);
+ assert_eq!(notes.last().unwrap().1, "dhf.isValid==false");
+ assert_eq!(datagram_preamble(64, true, true, false, 0, &mut |_, _| unreachable!()), DatagramVerdict::RangeListFailed);
+ assert_eq!(datagram_preamble(64, true, true, true, 0, &mut |_, _| unreachable!()), DatagramVerdict::Accept);
+ }
+ }

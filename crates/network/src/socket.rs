@@ -2550,7 +2550,130 @@ push(at_head);
  stream.write_u64(time_us);
  stream.into_bytes()
  }
+ /// `RakNet::RakPeer::ChangeSystemAddress` (IDA 0xa63fc8): queues a
+ /// kind-3 address-change command carrying the guid plus the new
+ /// address. The pool alloc and queue push stay engine-side.
+ pub fn change_address_command(guid: u64, addr: SystemAddress, enqueue: &mut dyn FnMut(BufferedCommand)) {
+ enqueue(BufferedCommand { kind: BufferedCommandKind::ChangeAddress, guid, addr, ..BufferedCommand::default() });
+ }
+ /// `RakNet::RakPeer::AssignSystemAddressToRemoteSystemList`
+ /// duplicate scan (IDA 0xa6563c..0xa656be): an active port-excluding
+ /// match whose last-action stamp is current (`hi == 0`, `lo <= now`,
+ /// `now - lo <= 99`) means the peer already connected.
+ pub fn assign_duplicate_scan(now_ms: u32, active_matches: &[(u32, u32)]) -> bool {
+ active_matches.iter().any(|(lo, hi)| *hi == 0 && *lo <= now_ms && now_ms.wrapping_sub(*lo) <= 99)
+ }
+ /// `RakNet::RakPeer::AssignSystemAddressToRemoteSystemList` slot
+ /// verdict (IDA 0xa654e0): a recent duplicate returns null with the
+ /// flag set (0xa656c4..0xa6593c); else the first free slot is
+ /// referenced (0xa65724), MTU-clamped (0xa65756..0xa6575c) and
+ /// reliability-reset (0xa6576e..0xa65792); no free slot returns null
+ /// clear (0xa656fe). Returns the slot plus the already-connected flag.
+ pub fn assign_system_address_slot(recent_duplicate: bool, free_index: Option<usize>, mtu: u32, min_mtu: u32, reference: &mut dyn FnMut(usize), reset: &mut dyn FnMut(usize, u32)) -> (Option<usize>, bool) {
+ if recent_duplicate {
+ return (None, true);
+ }
+ match free_index {
+ None => (None, false),
+ Some(i) => {
+ let clamped = mtu.max(min_mtu);
+ reference(i);
+ reset(i, clamped);
+ (Some(i), false)
+ }
+ }
+ }
+ /// `RakNet::ProcessOfflineNetworkPacket` magic pre-filter (IDA
+ /// 0xa65e44..0xa65ee4): ids 1-2 need length 25 with the magic at +9,
+ /// id 28 needs length 29+ with the magic at +17, masked ids
+ /// (`(1 << id) & 0x49601E0`: 5-8, 17, 18, 20, 23, 26) need length
+ /// 25+ with the magic at +1, id 13 needs length 25+ with the magic
+ /// at +9, id 25 needs exactly 26 with the magic at +2; anything else
+ /// rejects. `magic_at` checks the 16 offline-magic bytes at an offset.
+ pub fn offline_preamble(len: usize, first: u8, magic_at: &mut dyn FnMut(usize) -> bool) -> OfflineVerdict {
+ if len <= 2 {
+ return OfflineVerdict::Short;
+ }
+ let offset = if first.wrapping_sub(1) <= 1 && len == 25 {
+ Some(9)
+ } else if first == 28 && len >= 29 {
+ Some(17)
+ } else if first <= 0x1A && ((1u32 << first) & 0x49601E0) != 0 && len >= 0x19 {
+ Some(1)
+ } else if first == 13 && len >= 0x19 {
+ Some(9)
+ } else if first == 25 && len == 26 {
+ Some(2)
+ } else {
+ None
+ };
+ match offset {
+ Some(off) if magic_at(off) => OfflineVerdict::Dispatch,
+ _ => OfflineVerdict::Reject,
+ }
+ }
+ /// `RakNet::ProcessOfflineNetworkPacket` message switch (IDA
+ /// 0xa65f3e..): the handled offline ids — 28 plus 1-2, 5-8, 13, 17,
+ /// 18, 20, 23-26. Anything else falls to the connected-player path.
+ pub fn offline_message_handled(first: u8) -> bool {
+ first == 28 || (1..=2).contains(&first) || matches!(first, 5 | 6 | 7 | 8 | 13 | 17 | 18 | 20 | 23 | 24 | 25 | 26)
+ }
+ /// `RakNet::ProcessNetworkPacket` (IDA 0xa68ccc): the offline pass
+ /// runs first under an addref'd socket (0xa68d4e..0xa68d8a); when it
+ /// declines (0xa68dbc) and the sender resolves to an active remote
+ /// (0xa68dd8..0xa68ddc), unconsumed bytes go to the reliability layer
+ /// (0xa68de2..0xa68e2e). True when reliability handled the datagram.
+ pub fn process_network_packet(offline_handled: bool, remote: Option<usize>, drop_packet: bool, handle: &mut dyn FnMut(usize)) -> bool {
+ if offline_handled {
+ return false;
+ }
+ match remote {
+ Some(i) if !drop_packet => {
+ handle(i);
+ true
+ }
+ _ => false,
+ }
+ }
+ /// `RakNet::RakPeer::RunUpdateCycle` per-remote gate (IDA
+ /// 0xa6a1f6..0xa6a240): dead links drop; a head word of 1..=2 with
+ /// nothing waiting to go out drops (0xa6a202..0xa6a216); kind 3
+ /// survives while ACKs wait inside the timeout (0xa6a220..0xa6a240).
+ pub fn update_slot_action(dead: bool, head_word: u32, outgoing_waiting: bool, acks_waiting: bool, ack_timed_out: bool) -> UpdateSlotAction {
+ let notify = head_word <= 7 && ((1u32 << head_word) & 0x9A) != 0;
+ if dead {
+ return UpdateSlotAction::Drop { notify };
+ }
+ if head_word.wrapping_sub(1) <= 1 && !outgoing_waiting {
+ return UpdateSlotAction::Drop { notify };
+ }
+ if head_word == 3 && acks_waiting && !ack_timed_out {
+ return UpdateSlotAction::Keep;
+ }
+ UpdateSlotAction::Drop { notify }
+ }
 }
+ /// `RakNet::ProcessOfflineNetworkPacket` entry verdict (IDA
+ /// 0xa65e3a..0xa65ee4).
+ #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+ pub enum OfflineVerdict {
+ /// Length 2 or less: plugin hooks plus the message switch (LABEL_30).
+ Short,
+ /// Shape or magic mismatch: returns 0 with the flag clear.
+ Reject,
+ /// Magic matched: plugin hooks plus the message switch.
+ Dispatch,
+ }
+ /// `RakNet::RakPeer::RunUpdateCycle` per-remote post-`Update` action
+ /// (IDA 0xa6a1f6..0xa6a2b4).
+ #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+ pub enum UpdateSlotAction {
+ /// Keep the slot (kind 3 with ACKs waiting inside the timeout).
+ Keep,
+ /// Drop to the teardown path; `notify` selects the disconnect-packet
+ /// log for kinds 1, 3, 4, 7 (`(1 << kind) & 0x9A`, 0xa6a2a8).
+ Drop { notify: bool },
+ }
  /// `RakNet::RakPeer::BufferedCommandStruct` command word at +100
  /// (IDA 0xa61d98 close, 0xa63fc8 address-change, 0xa641cc
  /// socket-query): what the queued write asks the update loop for.
@@ -2829,3 +2952,68 @@ mod sender_dictionary_tests {
  assert_eq!(dict.next_id, 1);
  }
 }
+ #[cfg(test)]
+ mod batch3_tests {
+ use super::*;
+ fn addr(binary: u32, port: u16) -> SystemAddress {
+ SystemAddress { family: 2, port, binary, debug_port: port, system_index: 0 }
+ }
+ #[test]
+ fn change_address_queues_kind3() {
+ // IDA 0xa63fc8: kind-3 command carrying the guid plus the new address.
+ let mut queued = Vec::new();
+ RakPeer::change_address_command(0xAB, addr(1, 2), &mut |cmd| queued.push(cmd));
+ assert_eq!(queued.len(), 1);
+ assert_eq!(queued[0].kind, BufferedCommandKind::ChangeAddress);
+ assert_eq!((queued[0].guid, queued[0].addr.binary), (0xAB, 1));
+ }
+ #[test]
+ fn assign_slot_duplicate_then_allocate() {
+ // IDA 0xa6563c..0xa656be: a stamp within 99ms is a recent duplicate.
+ assert!(RakPeer::assign_duplicate_scan(1000, &[(950, 0)]));
+ assert!(!RakPeer::assign_duplicate_scan(1000, &[(800, 0)]));
+ assert!(!RakPeer::assign_duplicate_scan(1000, &[(950, 1)]));
+ assert!(!RakPeer::assign_duplicate_scan(900, &[(950, 0)]));
+ // IDA 0xa654e0: duplicate returns null flagged; else reference, clamp, reset.
+ let mut refs = Vec::new();
+ let mut resets = Vec::new();
+ assert_eq!(RakPeer::assign_system_address_slot(true, Some(3), 1400, 1500, &mut |i| refs.push(i), &mut |i, m| resets.push((i, m))), (None, true));
+ assert!(refs.is_empty() && resets.is_empty());
+ assert_eq!(RakPeer::assign_system_address_slot(false, None, 1400, 1500, &mut |i| refs.push(i), &mut |i, m| resets.push((i, m))), (None, false));
+ assert_eq!(RakPeer::assign_system_address_slot(false, Some(3), 1400, 1500, &mut |i| refs.push(i), &mut |i, m| resets.push((i, m))), (Some(3), false));
+ assert_eq!((refs, resets), (vec![3], vec![(3, 1500)]));
+ }
+ #[test]
+ fn offline_preamble_shapes() {
+ // IDA 0xa65e44..0xa65ee4: shape-gated magic offsets.
+ let mut ok = |off: usize| off == 9;
+ assert_eq!(RakPeer::offline_preamble(2, 5, &mut ok), OfflineVerdict::Short);
+ assert_eq!(RakPeer::offline_preamble(25, 1, &mut ok), OfflineVerdict::Dispatch);
+ assert_eq!(RakPeer::offline_preamble(24, 1, &mut ok), OfflineVerdict::Reject);
+ assert_eq!(RakPeer::offline_preamble(30, 28, &mut |_| true), OfflineVerdict::Dispatch);
+ assert_eq!(RakPeer::offline_preamble(25, 13, &mut ok), OfflineVerdict::Dispatch);
+ assert_eq!(RakPeer::offline_preamble(26, 25, &mut |off| off == 2), OfflineVerdict::Dispatch);
+ assert_eq!(RakPeer::offline_preamble(25, 25, &mut ok), OfflineVerdict::Reject);
+ assert_eq!(RakPeer::offline_preamble(25, 5, &mut |_| false), OfflineVerdict::Reject);
+ assert!(!RakPeer::offline_message_handled(4));
+ assert!(RakPeer::offline_message_handled(28) && RakPeer::offline_message_handled(7));
+ }
+ #[test]
+ fn network_packet_and_update_gate() {
+ // IDA 0xa68ccc: offline first, then the reliability fan-out.
+ let mut handled = Vec::new();
+ assert!(!RakPeer::process_network_packet(true, Some(0), false, &mut |i| handled.push(i)));
+ assert!(handled.is_empty());
+ assert!(!RakPeer::process_network_packet(false, None, false, &mut |i| handled.push(i)));
+ assert!(!RakPeer::process_network_packet(false, Some(1), true, &mut |i| handled.push(i)));
+ assert!(RakPeer::process_network_packet(false, Some(1), false, &mut |i| handled.push(i)));
+ assert_eq!(handled, vec![1]);
+ // IDA 0xa6a1f6..0xa6a240: dead, idle, ack-waiting, and notify-kind gates.
+ assert_eq!(RakPeer::update_slot_action(true, 3, true, true, false), UpdateSlotAction::Drop { notify: true });
+ assert_eq!(RakPeer::update_slot_action(false, 1, false, false, false), UpdateSlotAction::Drop { notify: true });
+ assert_eq!(RakPeer::update_slot_action(false, 0, false, false, false), UpdateSlotAction::Drop { notify: false });
+ assert_eq!(RakPeer::update_slot_action(false, 3, true, true, false), UpdateSlotAction::Keep);
+ assert_eq!(RakPeer::update_slot_action(false, 3, true, true, true), UpdateSlotAction::Drop { notify: true });
+ assert_eq!(RakPeer::update_slot_action(false, 5, true, false, false), UpdateSlotAction::Drop { notify: false });
+ }
+ }

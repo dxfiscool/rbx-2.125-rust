@@ -3137,17 +3137,24 @@ pub fn stub_a60f00(data: &[u8], bits_used: usize, peer_ready: bool, receipt_over
 #[doc(
     alias = "RakNet::RakPeer::SendList(char const**,int const*,int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,unsigned int)"
 )]
-pub fn stub_a610c4() -> ! {
-    todo!("0xa610c4 RakNet::RakPeer::SendList(char const**,int const*,int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,unsigned int)")
-}
+ pub fn stub_a610c4(parts: &[&[u8]], peer_ready: bool, target_valid: bool, receipt_override: Option<u32>, next_receipt: &mut dyn FnMut() -> u32, buffered_list: &mut dyn FnMut(&[&[u8]], u32)) -> u32 {
+ // IDA 0xa610c4: empty lists, a halted peer, or an unroutable target report 0
+ // (0xa610ea..0xa61136); else the parts go to SendBufferedList under the
+ // override receipt or the next one (0xa6113e..0xa6119c).
+ crate::socket::RakPeer::send_list(parts, peer_ready, target_valid, receipt_override, next_receipt, buffered_list)
+ }
 
 // 0xa611b8 — __ZN6RakNet7RakPeer16SendBufferedListEPPKcPKii14PacketPriority17PacketReliabilitycNS_13AddressOrGUIDEbNS0_18RemoteSystemStruct11ConnectModeEj
 #[doc(
     alias = "RakNet::RakPeer::SendBufferedList(char const**,int const*,int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,RakNet::RakPeer::RemoteSystemStruct::ConnectMode,unsigned int)"
 )]
-pub fn stub_a611b8() -> ! {
-    todo!("0xa611b8 RakNet::RakPeer::SendBufferedList(char const**,int const*,int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,RakNet::RakPeer::RemoteSystemStruct::ConnectMode,unsigned int)")
-}
+ pub fn stub_a611b8(parts: &[&[u8]], route: crate::socket::SendTarget, priority: u8, reliability: u8, channel: u8, guid: u64, addr: crate::socket::SystemAddress, broadcast: bool, mode: u32, receipt: u64, enqueue: &mut dyn FnMut(crate::socket::BufferedCommand), loopback: &mut dyn FnMut(Vec<u8>), signal: &mut dyn FnMut()) {
+ // IDA 0xa611b8: the positive lengths are summed (0xa611cc..0xa611e2), concatenated
+ // (0xa61214..0xa6123a), then queued as a send command — kicking the update event
+ // for priority 0 (0xa61300..0xa613b8) — unless the target is local, which goes
+ // through SendLoopback instead (0xa6128c..0xa612fc).
+ crate::socket::RakPeer::send_buffered_list(parts, route, priority, reliability, channel, guid, addr, broadcast, mode, receipt, enqueue, loopback, signal)
+ }
 
 // 0xa613c4 — __ZN6RakNet7RakPeer7ReceiveEv
 #[doc(alias = "RakNet::RakPeer::Receive(void)")]
@@ -3160,17 +3167,29 @@ pub fn stub_a613c4(next: Option<u32>) -> Option<u32> {
 #[doc(
     alias = "RakNet::RakPeer::ShiftIncomingTimestamp(unsigned char *,RakNet::SystemAddress const&)const"
 )]
-pub fn stub_a61520() -> ! {
-    todo!("0xa61520 RakNet::RakPeer::ShiftIncomingTimestamp(unsigned char *,RakNet::SystemAddress const&)const")
-}
+ pub fn stub_a61520(packet: &mut [u8], ping_samples: &[u16]) {
+ // IDA 0xa61520: reads the leading timestamp (0xa61590), re-bases it by the lowest
+ // live ping sample — slots reading 0xFFFF end the scan (0xa615c2..0xa615f0; an
+ // unknown remote subtracts 0) — and writes it back at offset 0 (0xa61606..0xa6161c).
+ if packet.len() < 8 {
+ return;
+ }
+ let mut raw = [0u8; 8];
+ raw.copy_from_slice(&packet[..8]);
+ let shifted = crate::socket::RakPeer::shift_incoming_timestamp(u64::from_be_bytes(raw), ping_samples);
+ packet[..8].copy_from_slice(&shifted.to_be_bytes());
+ }
 
 // 0xa61698 — __ZN6RakNet7RakPeer19CallPluginCallbacksERN14DataStructures4ListIPNS_16PluginInterface2EEEPNS_6PacketE
 #[doc(
     alias = "RakNet::RakPeer::CallPluginCallbacks(DataStructures::List<RakNet::PluginInterface2 *> &,RakNet::Packet *)"
 )]
-pub fn stub_a61698() -> ! {
-    todo!("0xa61698 RakNet::RakPeer::CallPluginCallbacks(DataStructures::List<RakNet::PluginInterface2 *> &,RakNet::Packet *)")
-}
+ pub fn stub_a61698(message_id: u8, plugin_count: usize, call: &mut dyn FnMut(usize, u32)) -> usize {
+ // IDA 0xa61698: per-plugin hook selected by the message id — disconnect family on
+ // +40, 0x10/0x13 on +36, 0x15/0x16 on +32 (0xa616c6..0xa617ae); anything else
+ // skips the plugins.
+ crate::socket::RakPeer::call_plugin_callbacks(message_id, plugin_count, call)
+ }
 
 // 0xa61810 — __ZN6RakNet7RakPeer16DeallocatePacketEPNS_6PacketE
 #[doc(alias = "RakNet::RakPeer::DeallocatePacket(RakNet::Packet *)")]
@@ -3190,17 +3209,23 @@ pub fn stub_a61888(peer: &crate::socket::RakPeer) -> u16 {
 #[doc(
     alias = "RakNet::RakPeer::CloseConnection(RakNet::AddressOrGUID,bool,unsigned char,PacketPriority)"
 )]
-pub fn stub_a6188c() -> ! {
-    todo!("0xa6188c RakNet::RakPeer::CloseConnection(RakNet::AddressOrGUID,bool,unsigned char,PacketPriority)")
-}
+ pub fn stub_a6188c(send_notification: bool, connected: bool, close_internal: &mut dyn FnMut(bool), push_packet: &mut dyn FnMut(u8)) {
+ // IDA 0xa6188c: closes first (0xa618ba); the local disconnect packet (byte 22) is
+ // queued only when no remote notify was asked for and the slot still reads
+ // connected (GetConnectionState == 2, 0xa618ca..0xa61a70).
+ crate::socket::RakPeer::close_connection(send_notification, connected, close_internal, push_packet)
+ }
 
 // 0xa61a8c — __ZN6RakNet7RakPeer23CloseConnectionInternalERKNS_13AddressOrGUIDEbbh14PacketPriority
 #[doc(
     alias = "RakNet::RakPeer::CloseConnectionInternal(RakNet::AddressOrGUID const&,bool,bool,unsigned char,PacketPriority)"
 )]
-pub fn stub_a61a8c() -> ! {
-    todo!("0xa61a8c RakNet::RakPeer::CloseConnectionInternal(RakNet::AddressOrGUID const&,bool,bool,unsigned char,PacketPriority)")
-}
+ pub fn stub_a61a8c(target_valid: bool, peer_ready: bool, notify: bool, immediate: bool, addr: crate::socket::SystemAddress, channel: u8, priority: u8, notify_now: &mut dyn FnMut(), drop_now: &mut dyn FnMut(), queue_close: &mut dyn FnMut(crate::socket::BufferedCommand)) {
+ // IDA 0xa61a8c: a bad target or a halted peer is a no-op (0xa61b2c); notify runs the
+ // immediate path (0xa61bc4..0xa61be6), an immediate close tears the slot down
+ // (0xa61bf2..0xa61d3a), else a kind-1 close command is queued (0xa61d48..0xa61dfa).
+ crate::socket::RakPeer::close_connection_internal(target_valid, peer_ready, notify, immediate, addr, channel, priority, notify_now, drop_now, queue_close)
+ }
 
 // 0xa61e58 — __ZN6RakNet7RakPeer23CancelConnectionAttemptENS_13SystemAddressE
 #[doc(alias = "RakNet::RakPeer::CancelConnectionAttempt(RakNet::SystemAddress)")]
@@ -3255,9 +3280,11 @@ pub fn stub_a62440(remotes: &[Option<crate::socket::RakNetGuid>], index: i32, un
 #[doc(
     alias = "RakNet::RakPeer::GetSystemList(DataStructures::List<RakNet::SystemAddress> &,DataStructures::List<RakNet::RakNetGUID> &)const"
 )]
-pub fn stub_a624a4() -> ! {
-    todo!("0xa624a4 RakNet::RakPeer::GetSystemList(DataStructures::List<RakNet::SystemAddress> &,DataStructures::List<RakNet::RakNetGUID> &)const")
-}
+ pub fn stub_a624a4(remotes: &[(crate::socket::SystemAddress, u64, bool, u32)]) -> (Vec<crate::socket::SystemAddress>, Vec<u64>) {
+ // IDA 0xa624a4: both lists are cleared, then the addresses and guids of active
+ // slots in state 7 are appended (0xa624f2..0xa6254e).
+ crate::socket::RakPeer::system_list(remotes)
+ }
 
 // 0xa62560 — __ZN6RakNet7RakPeer12AddToBanListEPKcj
 #[doc(alias = "RakNet::RakPeer::AddToBanList(char const*,unsigned int)")]
@@ -3375,9 +3402,12 @@ pub fn stub_a63034(addr: &crate::socket::SystemAddress, unassigned: &crate::sock
 #[doc(
     alias = "RakNet::RakPeer::GetRemoteSystemFromSystemAddress(RakNet::SystemAddress,bool,bool)const"
 )]
-pub fn stub_a63140() -> ! {
-    todo!("0xa63140 RakNet::RakPeer::GetRemoteSystemFromSystemAddress(RakNet::SystemAddress,bool,bool)const")
-}
+ pub fn stub_a63140(remotes: &[(crate::socket::SystemAddress, bool)], addr: &crate::socket::SystemAddress, unassigned: &crate::socket::SystemAddress, active_only: bool) -> Option<usize> {
+ // IDA 0xa63140: unassigned never matches (0xa63180..0xa63186); an active hit wins
+ // and the first inactive hit is the fallback unless only-active is set
+ // (0xa631b0..0xa63258). The hashed-vs-linear strategy split stays engine-side.
+ crate::socket::RakPeer::remote_system_from_address(remotes, addr, unassigned, active_only)
+ }
 
 // 0xa63278 — __ZNK6RakNet7RakPeer13GetExternalIDENS_13SystemAddressE
 #[doc(alias = "RakNet::RakPeer::GetExternalID(RakNet::SystemAddress)const")]
@@ -3425,9 +3455,10 @@ pub fn stub_a63620(guid: u64, unassigned_guid: u64, own_guid: u64, own_bound: cr
 #[doc(
     alias = "RakNet::RakPeer::GetClientPublicKeyFromSystemAddress(RakNet::SystemAddress,char *)const"
 )]
-pub fn stub_a63750() -> ! {
-    todo!("0xa63750 RakNet::RakPeer::GetClientPublicKeyFromSystemAddress(RakNet::SystemAddress,char *)const")
-}
+ pub fn stub_a63750() -> u32 {
+ // IDA 0xa63750: hardcoded 0, security is compiled out (MOVS R0, #0; BX LR).
+ crate::socket::RakPeer::client_public_key()
+ }
 
 // 0xa63754 — __ZN6RakNet7RakPeer14SetTimeoutTimeEjNS_13SystemAddressE
 #[doc(alias = "RakNet::RakPeer::SetTimeoutTime(unsigned int,RakNet::SystemAddress)")]
@@ -3482,9 +3513,11 @@ pub fn stub_a63aa8(peer: &mut crate::socket::RakPeer, allow: bool) {
 #[doc(
     alias = "RakNet::RakPeer::AdvertiseSystem(char const*,unsigned short,char const*,int,unsigned int)"
 )]
-pub fn stub_a63ab0() -> ! {
-    todo!("0xa63ab0 RakNet::RakPeer::AdvertiseSystem(char const*,unsigned short,char const*,int,unsigned int)")
-}
+ pub fn stub_a63ab0(data: &[u8]) -> Vec<u8> {
+ // IDA 0xa63ab0: the ID 29 byte (0xa63afc) plus the aligned payload (0xa63b38);
+ // the socket send itself (0xa63b5e) stays engine-side.
+ crate::socket::RakPeer::advertise_packet(data)
+ }
 
 // 0xa63bd8 — __ZN6RakNet7RakPeer31SetSplitMessageProgressIntervalEi
 #[doc(alias = "RakNet::RakPeer::SetSplitMessageProgressInterval(int)")]
@@ -3539,9 +3572,12 @@ pub fn stub_a63ed8(present: bool, at_head: bool, hooks: &mut dyn FnMut(), push: 
 #[doc(
     alias = "RakNet::RakPeer::ChangeSystemAddress(RakNet::RakNetGUID,RakNet::SystemAddress const&)"
 )]
-pub fn stub_a63fc8() -> ! {
-    todo!("0xa63fc8 RakNet::RakPeer::ChangeSystemAddress(RakNet::RakNetGUID,RakNet::SystemAddress const&)")
-}
+ pub fn stub_a63fc8(guid: u64, addr: crate::socket::SystemAddress, enqueue: &mut dyn FnMut(crate::socket::BufferedCommand)) {
+ // IDA 0xa63fc8: allocates the command (0xa63ffa), stores the guid plus the new
+ // address, tags it kind 3 (0xa6403e), and pushes it on the update queue
+ // (0xa64042..0xa6406a).
+ crate::socket::RakPeer::change_address_command(guid, addr, enqueue)
+ }
 
 // 0xa6406c — __ZN6RakNet7RakPeer14AllocatePacketEj
 #[doc(alias = "RakNet::RakPeer::AllocatePacket(unsigned int)")]
@@ -3550,27 +3586,32 @@ pub fn stub_a6406c(size: usize) -> crate::socket::Packet {
  crate::socket::RakPeer::allocate_packet(size)
 }
 
-// 0xa6410c — __ZN6RakNet7RakPeer9GetSocketENS_13SystemAddressE
-#[doc(alias = "RakNet::RakPeer::GetSocket(RakNet::SystemAddress)")]
-pub fn stub_a6410c() -> ! {
-    todo!("0xa6410c RakNet::RakPeer::GetSocket(RakNet::SystemAddress)")
-}
+ // 0xa6410c — __ZN6RakNet7RakPeer9GetSocketENS_13SystemAddressE
+ #[doc(alias = "RakNet::RakPeer::GetSocket(RakNet::SystemAddress)")]
+ pub fn stub_a6410c(addr: crate::socket::SystemAddress, enqueue: &mut dyn FnMut(crate::socket::BufferedCommand), now_ms: &mut dyn FnMut() -> u32, sleep: &mut dyn FnMut(), poll: &mut dyn FnMut() -> Option<u32>, halted: &mut dyn FnMut() -> bool) -> Option<u32> {
+ // IDA 0xa6410c: queues a kind-2 socket query, then spins up to +1000ms on the
+ // socket-query output for the first socket; a halted peer or a timeout reports none.
+ crate::socket::RakPeer::query_socket(addr, enqueue, now_ms, sleep, poll, halted)
+ }
 
 // 0xa643c8 — __ZN6RakNet7RakPeer10GetSocketsERN14DataStructures4ListINS_14RakNetSmartPtrINS_12RakNetSocketEEEEE
 #[doc(
     alias = "RakNet::RakPeer::GetSockets(DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>> &)"
 )]
-pub fn stub_a643c8() -> ! {
-    todo!("0xa643c8 RakNet::RakPeer::GetSockets(DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>> &)")
-}
+ pub fn stub_a643c8(queue_query: &mut dyn FnMut(), alive: &mut dyn FnMut() -> bool, sleep: &mut dyn FnMut(), poll: &mut dyn FnMut() -> Option<Vec<u32>>) -> Vec<u32> {
+ // IDA 0xa643c8: clears the out list (0xa643d6..0xa643f2), queues a kind-2 command,
+ // and takes the first socket-query output while the peer stays up.
+ crate::socket::RakPeer::get_sockets(queue_query, alive, sleep, poll)
+ }
 
 // 0xa64540 — __ZN6RakNet7RakPeer14ReleaseSocketsERN14DataStructures4ListINS_14RakNetSmartPtrINS_12RakNetSocketEEEEE
 #[doc(
     alias = "RakNet::RakPeer::ReleaseSockets(DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>> &)"
 )]
-pub fn stub_a64540() -> ! {
-    todo!("0xa64540 RakNet::RakPeer::ReleaseSockets(DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>> &)")
-}
+ pub fn stub_a64540(sockets: &mut Vec<u32>) {
+ // IDA 0xa64540: deletes the array and zeroes the list (0xa64546..0xa6455c).
+ crate::socket::RakPeer::release_socket_list(sockets)
+ }
 
 // 0xa64564 — __ZN6RakNet7RakPeer21ApplyNetworkSimulatorEftt
 #[doc(alias = "RakNet::RakPeer::ApplyNetworkSimulator(float,unsigned short,unsigned short)")]
@@ -3604,17 +3645,21 @@ pub fn stub_a64574(stream: &mut crate::bitstream::BitStream, guid: u64) {
 #[doc(
     alias = "RakNet::RakPeer::SetUserUpdateThread(void (*)(RakNet::RakPeerInterface *,void *),void *)"
 )]
-pub fn stub_a645b0() -> ! {
-    todo!("0xa645b0 RakNet::RakPeer::SetUserUpdateThread(void (*)(RakNet::RakPeerInterface *,void *),void *)")
-}
+ pub fn stub_a645b0(peer: &mut crate::socket::RakPeer, callback: u32, data: u32) {
+ // IDA 0xa645b0: stores the callback at +1616 and its data at +1620.
+ peer.set_user_update_thread(callback, data)
+ }
 
 // 0xa645bc — __ZN6RakNet7RakPeer13SendOutOfBandEPKctS2_jj
 #[doc(
     alias = "RakNet::RakPeer::SendOutOfBand(char const*,unsigned short,char const*,unsigned int,unsigned int)"
 )]
-pub fn stub_a645bc() -> ! {
-    todo!("0xa645bc RakNet::RakPeer::SendOutOfBand(char const*,unsigned short,char const*,unsigned int,unsigned int)")
-}
+ pub fn stub_a645bc(host: Option<&str>, peer_active: bool, socket_found: bool, header: &[u8], data: &[u8], notify_plugins: &mut dyn FnMut(), send_to: &mut dyn FnMut(&[u8])) -> u32 {
+ // IDA 0xa645bc: needs a host and an active peer (0xa645fe..0xa64536); the offline
+ // header (vtable+296) plus payload goes through the indexed socket (0xa64660..0xa6476c)
+ // after the direct-send plugin hooks (vtable+48, 0xa646ec..0xa64738); 1 on send.
+ crate::socket::RakPeer::send_out_of_band(host, peer_active, socket_found, header, data, notify_plugins, send_to)
+ }
 
 // 0xa647f4 — __ZN6RakNet7RakPeer13GetStatisticsENS_13SystemAddressEPNS_16RakNetStatisticsE
 #[doc(alias = "RakNet::RakPeer::GetStatistics(RakNet::SystemAddress,RakNet::RakNetStatistics *)")]
@@ -3641,33 +3686,53 @@ pub fn stub_a64bb4(head: u32, tail: u32, capacity: u32) -> u32 {
 #[doc(
     alias = "RakNet::RakPeer::ParseConnectionRequestPacket(RakNet::RakPeer::RemoteSystemStruct *,RakNet::SystemAddress const&,char const*,int)"
 )]
-pub fn stub_a64be8() -> ! {
-    todo!("0xa64be8 RakNet::RakPeer::ParseConnectionRequestPacket(RakNet::RakPeer::RemoteSystemStruct *,RakNet::SystemAddress const&,char const*,int)")
-}
+ pub fn stub_a64be8(packet: &[u8], incoming_password: &[u8], on_accept: &mut dyn FnMut(u64), on_refuse: &mut dyn FnMut()) -> u32 {
+ // IDA 0xa64be8: skips the message id and reads the guid, the receipt, and the
+ // password tail (0xa64c28..0xa64c9c); an exact password match accepts through
+ // OnConnectionRequest with mode 5 (0xa64da0..0xa64dac), else a byte-24 refusal
+ // goes out by SendImmediate with mode 2 (0xa64cc0..0xa64d8a).
+ crate::socket::RakPeer::parse_connection_request_packet(packet, incoming_password, on_accept, on_refuse)
+ }
 
 // 0xa64e48 — __ZN6RakNet7RakPeer13SendImmediateEPcj14PacketPriority17PacketReliabilitycNS_13AddressOrGUIDEbbyj
 #[doc(
     alias = "RakNet::RakPeer::SendImmediate(char *,unsigned int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,bool,unsigned long long,unsigned int)"
 )]
-pub fn stub_a64e48() -> ! {
-    todo!("0xa64e48 RakNet::RakPeer::SendImmediate(char *,unsigned int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,bool,unsigned long long,unsigned int)")
-}
+ pub fn stub_a64e48(broadcast: bool, target: Option<usize>, assigned: &[bool], slot_active: &[bool], slot_state: &[u32], reliability: u8, stamp_us: u64, send: &mut dyn FnMut(usize, bool, Option<u32>)) -> bool {
+ // IDA 0xa64e48: the slot resolves by address (0xa64eae) or guid (0xa64eda); a direct
+ // send needs it active in mode 1..=3 (0xa64f64/0xa64f7e) while a broadcast collects
+ // every other active assigned slot (0xa64eec..0xa64fc6); each target gets one
+ // reliability write with the receipt flag on the last and the timeout stamp on
+ // reliable flavors (0xa64fd8..0xa65024).
+ let targets = crate::socket::RakPeer::send_immediate_targets(broadcast, target, assigned, slot_active, slot_state);
+ crate::socket::RakPeer::send_immediate(&targets, reliability, stamp_us, send)
+ }
 
 // 0xa651fc — __ZN6RakNet7RakPeer19OnConnectionRequestEPNS0_18RemoteSystemStructEy
 #[doc(
     alias = "RakNet::RakPeer::OnConnectionRequest(RakNet::RakPeer::RemoteSystemStruct *,unsigned long long)"
 )]
-pub fn stub_a651fc() -> ! {
-    todo!("0xa651fc RakNet::RakPeer::OnConnectionRequest(RakNet::RakPeer::RemoteSystemStruct *,unsigned long long)")
-}
+ pub fn stub_a651fc(index: u16, remote: &crate::socket::SystemAddress, locals: &[crate::socket::SystemAddress], guid: u64, time_us: u64) -> Vec<u8> {
+ // IDA 0xa651fc: the ID_CONNECTION_REQUEST_ACCEPTED (16) packet — the remote entry
+ // (0xa6528a..0xa652f2), the slot index (0xa65326..0xa65332), the 10 local entries
+ // (0xa6533a..0xa653ba), the guid and the send time (0xa653c4..0xa653dc) — handed
+ // to SendImmediate (0xa6544e); the send itself stays engine-side.
+ crate::socket::RakPeer::connection_request_accepted_packet(index, remote, locals, guid, time_us)
+ }
 
 // 0xa654e0 — __ZN6RakNet7RakPeer37AssignSystemAddressToRemoteSystemListENS_13SystemAddressENS0_18RemoteSystemStruct11ConnectModeENS_14RakNetSmartPtrINS_12RakNetSocketEEEPbS1_iNS_10RakNetGUIDEb
 #[doc(
     alias = "RakNet::RakPeer::AssignSystemAddressToRemoteSystemList(RakNet::SystemAddress,RakNet::RakPeer::RemoteSystemStruct::ConnectMode,RakNet::RakNetSmartPtr<RakNet::RakNetSocket>,bool *,RakNet::SystemAddress,int,RakNet::RakNetGUID,bool)"
 )]
-pub fn stub_a654e0() -> ! {
-    todo!("0xa654e0 RakNet::RakPeer::AssignSystemAddressToRemoteSystemList(RakNet::SystemAddress,RakNet::RakPeer::RemoteSystemStruct::ConnectMode,RakNet::RakNetSmartPtr<RakNet::RakNetSocket>,bool *,RakNet::SystemAddress,int,RakNet::RakNetGUID,bool)")
-}
+ pub fn stub_a654e0(now_ms: u32, active_matches: &[(u32, u32)], free_index: Option<usize>, mtu: u32, min_mtu: u32, reference: &mut dyn FnMut(usize), reset: &mut dyn FnMut(usize, u32)) -> (Option<usize>, bool) {
+ // IDA 0xa654e0: loopback-shaped senders (own guid or a local bind, 0xa6558e..0xa65634)
+ // scan for a recent duplicate — an active port-excluding match stamped within
+ // 99ms returns null with the flag set (0xa6563c..0xa6593c); otherwise the first
+ // free slot is referenced (0xa65724), MTU-clamped (0xa65756..0xa6575c) and
+ // reliability-reset (0xa6576e..0xa65792), with ping/socket init at the send time.
+ let recent = crate::socket::RakPeer::assign_duplicate_scan(now_ms, active_matches);
+ crate::socket::RakPeer::assign_system_address_slot(recent, free_index, mtu, min_mtu, reference, reset)
+ }
 
 // 0xa65974 — __ZN6RakNet7RakPeer21ReferenceRemoteSystemERKNS_13SystemAddressEj
 #[doc(alias = "RakNet::RakPeer::ReferenceRemoteSystem(RakNet::SystemAddress const&,unsigned int)")]
@@ -3680,25 +3745,56 @@ pub fn stub_a65974(slots: &mut Vec<crate::socket::SystemAddress>, index: usize, 
 #[doc(
     alias = "RakNet::ProcessOfflineNetworkPacket(RakNet::SystemAddress,char const*,int,RakNet::RakPeer *,RakNet::RakNetSmartPtr<RakNet::RakNetSocket>,bool *,unsigned long long)"
 )]
-pub fn stub_a65bc8() -> ! {
-    todo!("0xa65bc8 RakNet::ProcessOfflineNetworkPacket(RakNet::SystemAddress,char const*,int,RakNet::RakPeer *,RakNet::RakNetSmartPtr<RakNet::RakNetSocket>,bool *,unsigned long long)")
-}
+ pub fn stub_a65bc8(banned: bool, data: &[u8], magic_at: &mut dyn FnMut(usize) -> bool, on_banned: &mut dyn FnMut(), hooks: &mut dyn FnMut(), dispatch: &mut dyn FnMut(u8)) -> bool {
+ // IDA 0xa65bc8: a ban hit answers ID 23 plus the offline magic and guid, then
+ // returns 1 (0xa65c34..0xa65e30); short packets set the flag and skip the magic
+ // check (0xa65e3a..0xa65e42); the shape/magic pre-filter rejects anything else
+ // (0xa65e44..0xa65ee4); survivors run the plugin receive hooks (0xa65ee8..0xa65f3c)
+ // and the message switch — ids 28, 1-2, 5-8, 13, 17, 18, 20, 23-26. The per-case
+ // replies (open-connection 6/25, ping/pong, advertise) stay engine-side.
+ if banned {
+ on_banned();
+ return true;
+ }
+ let first = data.first().copied().unwrap_or(0);
+ match crate::socket::RakPeer::offline_preamble(data.len(), first, magic_at) {
+ crate::socket::OfflineVerdict::Reject => false,
+ crate::socket::OfflineVerdict::Short => {
+ hooks();
+ true
+ }
+ crate::socket::OfflineVerdict::Dispatch => {
+ hooks();
+ dispatch(first);
+ true
+ }
+ }
+ }
 
 // 0xa68ccc — __ZN6RakNet20ProcessNetworkPacketENS_13SystemAddressEPKciPNS_7RakPeerENS_14RakNetSmartPtrINS_12RakNetSocketEEEyRNS_9BitStreamE
 #[doc(
     alias = "RakNet::ProcessNetworkPacket(RakNet::SystemAddress,char const*,int,RakNet::RakPeer *,RakNet::RakNetSmartPtr<RakNet::RakNetSocket>,unsigned long long,RakNet::BitStream &)"
 )]
-pub fn stub_a68ccc() -> ! {
-    todo!("0xa68ccc RakNet::ProcessNetworkPacket(RakNet::SystemAddress,char const*,int,RakNet::RakPeer *,RakNet::RakNetSmartPtr<RakNet::RakNetSocket>,unsigned long long,RakNet::BitStream &)")
-}
+ pub fn stub_a68ccc(offline_handled: bool, remote: Option<usize>, drop_packet: bool, handle: &mut dyn FnMut(usize)) -> bool {
+ // IDA 0xa68ccc: the offline pass runs first under an addref'd socket
+ // (0xa68d4e..0xa68d8a); when it declines (0xa68dbc) and the sender resolves to
+ // an active remote (0xa68dd8..0xa68ddc), unconsumed bytes go to the reliability
+ // layer (0xa68de2..0xa68e2e).
+ crate::socket::RakPeer::process_network_packet(offline_handled, remote, drop_packet, handle)
+ }
 
 // 0xa68ed4 — __ZN6RakNet7RakPeer14RunUpdateCycleEyyRNS_9BitStreamE
 #[doc(
     alias = "RakNet::RakPeer::RunUpdateCycle(unsigned long long,unsigned long long,RakNet::BitStream &)"
 )]
-pub fn stub_a68ed4() -> ! {
-    todo!("0xa68ed4 RakNet::RakPeer::RunUpdateCycle(unsigned long long,unsigned long long,RakNet::BitStream &)")
-}
+ pub fn stub_a68ed4(dead: bool, head_word: u32, outgoing_waiting: bool, acks_waiting: bool, ack_timed_out: bool) -> crate::socket::UpdateSlotAction {
+ // IDA 0xa68ed4 (per-remote post-Update gate, 0xa6a1f6..0xa6a2b4): dead links drop;
+ // a head word of 1..=2 with nothing waiting to go out drops (0xa6a202..0xa6a216);
+ // kind 3 survives while ACKs wait inside the timeout (0xa6a220..0xa6a240); kinds
+ // 1, 3, 4, 7 ((1 << kind) & 0x9A) take the disconnect-packet path (0xa6a2a8..).
+ // The Update call itself (0xa6a1dc), the teardown, and the resends stay engine-side.
+ crate::socket::RakPeer::update_slot_action(dead, head_word, outgoing_waiting, acks_waiting, ack_timed_out)
+ }
 
 // 0xa6b9f8 — __ZN14DataStructures4ListIN6RakNet9RakStringEE6InsertERKS2_PKcj
 #[doc(
@@ -4062,9 +4158,11 @@ pub fn stub_a702a4(rng: &mut crate::socket::RakNetRandom) -> u32 {
 #[doc(
     alias = "RakNet::SplitPacketChannelComp(unsigned short const&,RakNet::SplitPacketChannel * const&)"
 )]
-pub fn stub_a7090c() -> ! {
-    todo!("0xa7090c RakNet::SplitPacketChannelComp(unsigned short const&,RakNet::SplitPacketChannel * const&)")
-}
+ pub fn stub_a7090c(key: u16, channel_id: u16) -> i32 {
+ // IDA 0xa7090c: three-way compare of the search key against the channel split id
+ // (0xa70910..0xa70926) — -1 below, 0 equal, 1 above.
+ crate::reliability::split_packet_channel_comp(key, channel_id)
+ }
 
 // 0xa7092c — __ZN6RakNet16ReliabilityLayerC1Ev
 #[doc(alias = "RakNet::ReliabilityLayer::ReliabilityLayer(void)")]
@@ -4140,9 +4238,16 @@ pub fn stub_a72d5c(layer: &mut crate::reliability::ReliabilityLayer) {
 #[doc(
     alias = "RakNet::ReliabilityLayer::HandleSocketReceiveFromConnectedPlayer(char const*,unsigned int,RakNet::SystemAddress &,DataStructures::List<RakNet::PluginInterface2 *> &,int,int,RakNet::RakNetRandom *,unsigned short,unsigned int,unsigned long long,RakNet::BitStream &)"
 )]
-pub fn stub_a72e94() -> ! {
-    todo!("0xa72e94 RakNet::ReliabilityLayer::HandleSocketReceiveFromConnectedPlayer(char const*,unsigned int,RakNet::SystemAddress &,DataStructures::List<RakNet::PluginInterface2 *> &,int,int,RakNet::RakNetRandom *,unsigned short,unsigned int,unsigned long long,RakNet::BitStream &)")
-}
+ pub fn stub_a72e94(len: u32, has_buffer: bool, header_valid: bool, range_list_ok: bool, plugin_count: usize, notify_error: &mut dyn FnMut(usize, &'static str)) -> crate::reliability::DatagramVerdict {
+ // IDA 0xa72e94: BPS accounting and the received counters run first
+ // (0xa72ee0..0xa72f1a); short or empty datagrams (0xa72f5c..0xa72fb4), bad headers
+ // (0xa72fec..0xa73382) and failed ACK-range parses (0xa73040..0xa740ea) each run
+ // the per-plugin error hooks and stop. The ACK sweep via
+ // RemovePacketFromResendListAndDeleteOlderReliableSequenced, the congestion
+ // updates, CreateInternalPacketFromBitStream, InsertIntoSplitPacketList and
+ // BuildPacketFromSplitPacketList stay engine-side.
+ crate::reliability::datagram_preamble(len, has_buffer, header_valid, range_list_ok, plugin_count, notify_error)
+ }
 
 // 0xa74514 — __ZN6RakNet16ReliabilityLayer57RemovePacketFromResendListAndDeleteOlderReliableSequencedENS_8uint24_tEyRN14DataStructures4ListIPNS_16PluginInterface2EEERKNS_13SystemAddressE
 #[doc(
