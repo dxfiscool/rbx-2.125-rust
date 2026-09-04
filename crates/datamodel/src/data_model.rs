@@ -3,6 +3,15 @@
 // SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables)]
+use rbx_core::WeakPtr;
+/// Rust model of `RBX::DataModel` (IDA `0x28dcb8`): the game root. Only the
+/// `enable_shared_from_this` weak owner is modeled so far (same `+40`
+/// discipline as `Instance`, cf. `weak_from`); service tables, jobs, and
+/// workspace linkage land with the first methods that touch them.
+#[derive(Default)]
+pub struct DataModel {
+    pub weak_owner: WeakPtr<DataModel>,
+}
 
 // 46 stubs in this file | batch range 0xef04..0x28838c
 
