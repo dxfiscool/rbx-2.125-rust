@@ -199,6 +199,7 @@ pub struct RenderSettingsItem {
     pub quality_level: i32,           // +116 (0x74)
     pub resolution_preference: i32,   // +120 (0x78)
     pub auto_quality_level: i32,      // +124 (0x7C)
+    pub max_quality_level: i32,       // +128 (0x80)
     pub debug_show_bounding_boxes: bool, // +136 (0x88)
     pub enable_frm: bool,             // +137 (0x89)
     pub show_aggregation: bool,       // +154 (0x9A)
@@ -226,6 +227,7 @@ impl Default for RenderSettingsItem {
             quality_level: 0,
             resolution_preference: 0,
             auto_quality_level: 0,
+            max_quality_level: 0,
             debug_show_bounding_boxes: false,
             enable_frm: false,
             show_aggregation: false,
@@ -254,6 +256,7 @@ impl std::fmt::Debug for RenderSettingsItem {
             .field("frame_rate_manager_mode", &self.frame_rate_manager_mode)
             .field("quality_level", &self.quality_level)
             .field("resolution_preference", &self.resolution_preference)
+            .field("max_quality_level", &self.max_quality_level)
             .field("auto_quality_level", &self.auto_quality_level)
             .field("debug_show_bounding_boxes", &self.debug_show_bounding_boxes)
             .field("enable_frm", &self.enable_frm)
@@ -1125,338 +1128,563 @@ pub fn stub_b49c(item: &RenderSettingsItem) -> i32 {
 // mangled: __ZNK3RBX15CRenderSettings23getResolutionPreferenceEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getResolutionPreference(void)const")]
-pub fn stub_b4a4() -> ! {
-    todo!("0xb4a4 RBX::CRenderSettings::getResolutionPreference(void)const")
+pub fn stub_b4a4(item: &RenderSettingsItem) -> i32 {
+    // IDA 0xb4a4..0xb4a6: `return *((_DWORD *)this + 6)` — resolutionPreference
+    // cell (host `resolution_preference`, IDA `this + 120`).
+    item.resolution_preference
 }
 
 // 0xb4a8 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEED1Ev
 // mangled: __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::~EnumPropDescriptor()")]
-pub fn stub_b4a8() -> ! {
-    todo!("0xb4a8 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::~EnumPropDescriptor()")
+pub fn stub_b4a8(desc: *mut RenderPropDescriptor) -> *mut RenderPropDescriptor {
+    // IDA 0xb4b2..0xb4ca: `~EnumPropDescriptor<ResolutionPreset>`: vtable reset
+    // (host nop), `delete a1[11]` if non-null, return `a1`.
+    if !desc.is_null() {
+        unsafe { (*desc).extra.take(); }
+    }
+    desc
 }
 
 // 0xb4cc — __ZN3RBX15CRenderSettings18getMaxQualityLevelEv
 // mangled: __ZN3RBX15CRenderSettings18getMaxQualityLevelEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getMaxQualityLevel(void)")]
-pub fn stub_b4cc() -> ! {
-    todo!("0xb4cc RBX::CRenderSettings::getMaxQualityLevel(void)")
+pub fn stub_b4cc(item: &RenderSettingsItem) -> i32 {
+    // IDA 0xb4cc..0xb4ce: `return *((_DWORD *)this + 8)` — maxQualityLevel cell
+    // (host `max_quality_level`, IDA `this + 128`).
+    item.max_quality_level
 }
 
 // 0xb4d0 — __ZN3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EED1Ev
 // mangled: __ZN3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_b4d0() -> ! {
-    todo!("0xb4d0 RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int ()(void),0>::~BoundFuncDesc()")
+pub fn stub_b4d0() {
+    // IDA 0xb4d0..0xb4f2: `~BoundFuncDesc<CRenderSettingsItem,int ()(void),0>`:
+    // vtable reset + `std::list:: _M_clear(a1 + 8)` (signature items). Drop
+    // glue — no-op (audio `stub_559614` precedent).
 }
 
 // 0xb4f4 — __ZNK3RBX15CRenderSettings19getTextureCacheSizeEv
 // mangled: __ZNK3RBX15CRenderSettings19getTextureCacheSizeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getTextureCacheSize(void)const")]
-pub fn stub_b4f4() -> ! {
-    todo!("0xb4f4 RBX::CRenderSettings::getTextureCacheSize(void)const")
+pub fn stub_b4f4(item: &RenderSettingsItem) -> i32 {
+    // IDA 0xb4f4..0xb4f6: `return *((_DWORD *)this + 16)` — textureCacheSize
+    // cell (host `texture_cache_size`, IDA `this + 160`).
+    item.texture_cache_size as i32
 }
 
 // 0xb4f8 — __ZNK3RBX15CRenderSettings16getMeshCacheSizeEv
 // mangled: __ZNK3RBX15CRenderSettings16getMeshCacheSizeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getMeshCacheSize(void)const")]
-pub fn stub_b4f8() -> ! {
-    todo!("0xb4f8 RBX::CRenderSettings::getMeshCacheSize(void)const")
+pub fn stub_b4f8(item: &RenderSettingsItem) -> i32 {
+    // IDA 0xb4f8..0xb4fa: `return *((_DWORD *)this + 17)` — meshCacheSize cell
+    // (host `mesh_cache_size`, IDA `this + 164`).
+    item.mesh_cache_size as i32
 }
 
 // 0xb4fc — __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEEC2Ev
 // mangled: __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEEC2Ev
 // type: RBX::Instance *__fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEEC2Ev")]
-pub fn stub_b4fc() -> ! {
-    todo!("0xb4fc __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEEC2Ev")
+pub fn stub_b4fc(dx_video_memory_size: u32) -> RenderSettingsItem {
+    // IDA 0xb51e: `Instance::C2(nullptr)`; 0xb522..0xb5d4: vtable stores +
+    // classDescriptor/registrar (host nops); 0xb5d8..0xb5f8:
+    // `setName("RenderSettings")`; 0xb61c..0xb6b4: singleton `singE` check —
+    // `RBX::runtime_error("singleton %s already exists")` + throw if set.
+    // The body never calls `CRenderSettingsItem::C2`; the host folds the full
+    // item init (0x97d0) in and renames to the singleton name.
+    static SINGLETON_SET: AtomicBool = AtomicBool::new(false);
+    if SINGLETON_SET.swap(true, Ordering::SeqCst) {
+        panic!("singleton RenderSettings already exists");
+    }
+    let mut item = stub_97d0(dx_video_memory_size);
+    item.instance_name = "RenderSettings".to_string();
+    item
 }
 
 // 0xb740 — __ZNSt6vectorIN3G3D12Vector2int16ESaIS1_EE9push_backERKS1_
 // mangled: __ZNSt6vectorIN3G3D12Vector2int16ESaIS1_EE9push_backERKS1_
 // type: int __fastcall(int result, _DWORD *)
 #[doc(alias = "std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::push_back(G3D::Vector2int16 const&)")]
-pub fn stub_b740() -> ! {
-    todo!("0xb740 std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::push_back(G3D::Vector2int16 const&)")
+pub fn stub_b740(vec: &mut Vec<(u16, u16)>, value: (u16, u16)) {
+    // IDA 0xb742..0xb75c: `size == capacity` (0xb74c) routes to the
+    // `_M_insert_aux` realloc slow path (0xb766); else `*finish = *a2`
+    // (0xb756), `finish += 4` (0xb75c). Host `Vec::push` covers both paths.
+    vec.push(value);
 }
 
 // 0xb76c — __ZN3rbx7signals16signal_with_argsILi1EFvPKN3RBX10Reflection18PropertyDescriptorEEEclES6_
 // mangled: __ZN3rbx7signals16signal_with_argsILi1EFvPKN3RBX10Reflection18PropertyDescriptorEEEclES6_
 // type: void __fastcall(_DWORD *, int, int, const void *, int, int, int, int, void *, int)
 #[doc(alias = "rbx::signals::signal_with_args<1,void ()(RBX::Reflection::PropertyDescriptor const*)>::operator()(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_b76c() -> ! {
-    todo!("0xb76c rbx::signals::signal_with_args<1,void ()(RBX::Reflection::PropertyDescriptor const*)>::operator()(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_b76c(signal: &Signal<u32>, descriptor: u32) {
+    // IDA 0xb7ba: empty slot list returns; 0xb7c8..0xb7e0: `FLog::SignalPrints`
+    // "Signal with 1 arg executed" trace (host nop); 0xb7e6..0xb80a: per-slot
+    // vtable call with the descriptor; 0xb7fe..0xb812: `next()` + `on_error`.
+    // Host `Signal::fire` runs the slot loop.
+    signal.fire(descriptor);
 }
 
 // 0xb8b0 — __ZNK3RBX15CRenderSettings21getEagerBulkExecutionEv
 // mangled: __ZNK3RBX15CRenderSettings21getEagerBulkExecutionEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getEagerBulkExecution(void)const")]
-pub fn stub_b8b0() -> ! {
-    todo!("0xb8b0 RBX::CRenderSettings::getEagerBulkExecution(void)const")
+pub fn stub_b8b0(item: &RenderSettingsItem) -> i32 {
+    // IDA 0xb8b0..0xb8b4: `return *((unsigned __int8 *)this + 61)` —
+    // eagerBulkExecution flag (host `eager_bulk_execution`, IDA `this + 157`).
+    item.eager_bulk_execution as i32
 }
 
 // 0xb8b8 — __ZN19CRenderSettingsItemD1Ev
 // mangled: __ZN19CRenderSettingsItemD1Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 #[doc(alias = "CRenderSettingsItem::~CRenderSettingsItem()")]
-pub fn stub_b8b8() -> ! {
-    todo!("0xb8b8 CRenderSettingsItem::~CRenderSettingsItem()")
+pub fn stub_b8b8(_this: *mut RenderSettingsItem) {
+    // IDA 0xb8b8: thunk to `CRenderSettingsItem::D2` (non-deleting, complete
+    // object). Member drops belong to the host owner — no-op.
 }
 
 // 0xb8bc — __ZN19CRenderSettingsItemD0Ev
 // mangled: __ZN19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 #[doc(alias = "CRenderSettingsItem::~CRenderSettingsItem()")]
-pub fn stub_b8bc() -> ! {
-    todo!("0xb8bc CRenderSettingsItem::~CRenderSettingsItem()")
+pub fn stub_b8bc(this: *mut RenderSettingsItem) {
+    // IDA 0xb8bc..0xb8cc: `D2(this)` then `operator delete(this)` (D0 deleting
+    // dtor). Host: full drop + free; caller must have come from `Box::into_raw`
+    // (9b30 `out_of_range` D0 precedent).
+    if this.is_null() {
+        return;
+    }
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 
 // 0xb8d0 — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
 // mangled: __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")]
-pub fn stub_b8d0() -> ! {
-    todo!("0xb8d0 __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")
+pub fn stub_b8d0() -> &'static str {
+    // IDA 0xb8d0..0xb8d4: `static_getCreator()` then `Creator::getClassName`
+    // (0xedfc): `ReleaseAssert(wasConstructed())` (`../App/include/Util/Object.h`),
+    // `Name::declare<sRenderSettings>()`, tail-jump to
+    // `Name::doDeclare<sRenderSettings>()` returning the `RenderSettings` name.
+    "RenderSettings"
 }
 
 // 0xb8e0 — __ZThn32_N19CRenderSettingsItemD1Ev
 // mangled: __ZThn32_N19CRenderSettingsItemD1Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
-pub fn stub_b8e0() -> ! {
-    todo!("0xb8e0 non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
+pub fn stub_b8e0(this: *mut RenderSettingsItem) {
+    // IDA 0xb8e0..0xb8e2: non-virtual thunk, `this - 32`, tail-call D1 (0xb8b8).
+    unsafe { stub_b8b8(this.cast::<u8>().sub(32).cast()) }
 }
 
 // 0xb8e8 — __ZThn32_N19CRenderSettingsItemD0Ev
 // mangled: __ZThn32_N19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
-pub fn stub_b8e8() -> ! {
-    todo!("0xb8e8 non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
+pub fn stub_b8e8(this: *mut RenderSettingsItem) {
+    // IDA 0xb8e8..0xb8fc: non-virtual thunk, `this - 32`, D2 + `delete(v1)`
+    // (D0). Host: deleting dtor on the adjusted object.
+    unsafe { stub_b8bc(this.cast::<u8>().sub(32).cast()) }
 }
 
 // 0xb900 — __ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
 // mangled: __ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")]
-pub fn stub_b900() -> ! {
-    todo!("0xb900 __ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")
+pub fn stub_b900() -> &'static str {
+    // IDA 0xb900..0xb904: `__ZThn32_` non-virtual thunk (+32 `this`), same
+    // `static_getCreator` + `Creator::getClassName` sequence as 0xb8d0.
+    stub_b8d0()
 }
 
 // 0xb910 — __ZThn36_N19CRenderSettingsItemD1Ev
 // mangled: __ZThn36_N19CRenderSettingsItemD1Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
-pub fn stub_b910() -> ! {
-    todo!("0xb910 non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
+pub fn stub_b910(this: *mut RenderSettingsItem) {
+    // IDA 0xb910..0xb912: non-virtual thunk, `this - 36`, tail-call D1 (0xb8b8).
+    unsafe { stub_b8b8(this.cast::<u8>().sub(36).cast()) }
 }
 
 // 0xb918 — __ZThn36_N19CRenderSettingsItemD0Ev
 // mangled: __ZThn36_N19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
-pub fn stub_b918() -> ! {
-    todo!("0xb918 non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
+pub fn stub_b918(this: *mut RenderSettingsItem) {
+    // IDA 0xb918..0xb92c: non-virtual thunk, `this - 36`, D2 + `delete(v1)`
+    // (D0). Host: deleting dtor on the adjusted object.
+    unsafe { stub_b8bc(this.cast::<u8>().sub(36).cast()) }
 }
 
 // 0xb930 — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev
 // mangled: __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_b930() -> ! {
-    todo!("0xb930 __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_b930() {
+    // IDA 0xb930: thunk to `Creator::D2` (`FactoryProduct<...>::Creator`
+    // stateless) — drop glue, no-op (audio `stub_559614` precedent).
 }
 
 // 0xb934 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED1Ev
 // mangled: __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED1Ev
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::~EnumDesc()")]
-pub fn stub_b934() -> ! {
-    todo!("0xb934 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::~EnumDesc()")
+pub fn stub_b934(desc: *mut RenderEnumDesc) {
+    // IDA 0xb934: thunk to `EnumDesc<AASamples>::D2` (non-deleting). Member
+    // vectors drop in place; the host owner frees (9b2c `length_error` D1
+    // precedent: clear owned heap state, keep the object).
+    if !desc.is_null() {
+        unsafe {
+            (*desc).pairs.clear();
+            (*desc).legacy_aliases.clear();
+        }
+    }
 }
 
 // 0xb938 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED0Ev
 // mangled: __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::~EnumDesc()")]
-pub fn stub_b938() -> ! {
-    todo!("0xb938 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::~EnumDesc()")
+pub fn stub_b938(desc: *mut RenderEnumDesc) {
+    // IDA 0xb938..0xb948: `D2(a1)` then `operator delete(a1)` (D0 deleting
+    // dtor). Host: clear + full drop + free; caller must have come from
+    // `Box::into_raw` (9b30 `out_of_range` D0 precedent).
+    if desc.is_null() {
+        return;
+    }
+    unsafe {
+        (*desc).pairs.clear();
+        (*desc).legacy_aliases.clear();
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0xb94c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE6lookupEPKc
 // mangled: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::lookup(char const*)const")]
-pub fn stub_b94c() -> ! {
-    todo!("0xb94c RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::lookup(char const*)const")
+pub fn stub_b94c(desc: &RenderEnumDesc, name: &str) -> Option<i32> {
+    // IDA 0xb956..0xb972: `Name::lookup(name)` (0xb958), `convertToValue` hit
+    // (0xb966..0xb96c) returns `convertToItem` (0xb972), else null (0xb968).
+    // The name map holds primary + legacy names, so both tables are searched;
+    // the host returns the value where the original returns the item pointer.
+    desc.pairs.iter().find(|p| p.name == name).map(|p| p.value).or_else(|| {
+        desc.legacy_aliases.iter().find(|a| a.name == name).map(|a| a.maps_to)
+    })
 }
 
 // 0xb97c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE6lookupERKNS0_7VariantE
 // mangled: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_b97c() -> ! {
-    todo!("0xb97c RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_b97c(desc: &RenderEnumDesc, value: i32) -> Option<i32> {
+    // IDA 0xb98e..0xb998: `any_cast<AASamples const&>` on the variant payload
+    // (host: typed parameter, check is static), then `convertToItem` — the
+    // item for that value, null when absent. Host returns the value itself.
+    desc.pairs.iter().find(|p| p.value == value).map(|p| p.value)
 }
 
 // 0xb99c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToValueEmRNS0_7VariantE
 // mangled: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_b99c() -> ! {
-    todo!("0xb99c RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_b99c(desc: &RenderEnumDesc, value: u32, out: &mut i32) -> bool {
+    // IDA 0xb9a4..0xb9b6: `count = [R0,#0x28]`; `count > value` (unsigned HI)
+    // loads `item = table[value]` (`[R0,#0x90]` indexed `LSL#2`), stores to the
+    // out `Variant`, returns 1; else returns 0. Host searches the pair table.
+    match desc.pairs.iter().find(|p| p.value == value as i32) {
+        Some(p) => {
+            *out = p.value;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0xb9f8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE15convertToStringEmRSs
 // mangled: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_b9f8() -> ! {
-    todo!("0xb9f8 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToString(unsigned long,std::string &)const")
+pub fn stub_b9f8(desc: &RenderEnumDesc, value: u32, out: &mut String) -> bool {
+    // IDA 0xba4a..0xba4c: `count <= value` (BLS) skips to the epilogue with 0,
+    // leaving `out` untouched; else 0xba4e..0xba72: `item = table[value]`,
+    // `convertToString(item)` to a temp, `out->assign(temp)`, return 1.
+    match desc.pairs.iter().find(|p| p.value == value as i32) {
+        Some(p) => {
+            out.clear();
+            out.push_str(&p.name);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0xbb3c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED1Ev
 // mangled: __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED1Ev
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::~EnumDesc()")]
-pub fn stub_bb3c() -> ! {
-    todo!("0xbb3c RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::~EnumDesc()")
+pub fn stub_bb3c(desc: *mut RenderEnumDesc) {
+    // IDA 0xbb3c: thunk to `EnumDesc<GraphicsMode>::D2` (non-deleting). Same
+    // shape as the AASamples twin at 0xb934: clear member tables in place.
+    if !desc.is_null() {
+        unsafe {
+            (*desc).pairs.clear();
+            (*desc).legacy_aliases.clear();
+        }
+    }
 }
 
 // 0xbb40 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED0Ev
 // mangled: __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::~EnumDesc()")]
-pub fn stub_bb40() -> ! {
-    todo!("0xbb40 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::~EnumDesc()")
+pub fn stub_bb40(desc: *mut RenderEnumDesc) {
+    // IDA 0xbb40..0xbb52: `D2(a1)` (0xbb46) then `operator delete(a1)` (D0).
+    // Same shape as the AASamples twin at 0xb938.
+    if desc.is_null() {
+        return;
+    }
+    unsafe {
+        (*desc).pairs.clear();
+        (*desc).legacy_aliases.clear();
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0xbb54 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE6lookupEPKc
 // mangled: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::lookup(char const*)const")]
-pub fn stub_bb54() -> ! {
-    todo!("0xbb54 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::lookup(char const*)const")
+pub fn stub_bb54(desc: &RenderEnumDesc, name: &str) -> Option<i32> {
+    // IDA 0xbb5e..0xbb7a: `Name::lookup` (0xbb60), `convertToValue` (0xbb6e),
+    // hit returns `convertToItem` (0xbb7a), else null. Same as 0xb94c.
+    desc.pairs.iter().find(|p| p.name == name).map(|p| p.value).or_else(|| {
+        desc.legacy_aliases.iter().find(|a| a.name == name).map(|a| a.maps_to)
+    })
 }
 
 // 0xbb84 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE6lookupERKNS0_7VariantE
 // mangled: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_bb84() -> ! {
-    todo!("0xbb84 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_bb84(desc: &RenderEnumDesc, value: i32) -> Option<i32> {
+    // IDA 0xbb96..0xbba0: `any_cast<GraphicsMode const&>` (0xbb96) then
+    // `convertToItem` (0xbba0). Same shape as the AASamples twin at 0xb97c.
+    desc.pairs.iter().find(|p| p.value == value).map(|p| p.value)
 }
 
 // 0xbba4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToValueEmRNS0_7VariantE
 // mangled: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_bba4() -> ! {
-    todo!("0xbba4 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_bba4(desc: &RenderEnumDesc, value: u32, out: &mut i32) -> bool {
+    // IDA 0xbbac..0xbbbe: `count = [R0,#0x28]`, `count > value` loads
+    // `table[value]`, stores to the out `Variant` (0xbbbc), returns 1
+    // (0xbbbe); 0xbbc0..0xbbf4: singleton + `placement_any` publish; miss
+    // returns 0. Same shape as the AASamples twin at 0xb99c.
+    match desc.pairs.iter().find(|p| p.value == value as i32) {
+        Some(p) => {
+            *out = p.value;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0xbc00 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE15convertToStringEmRSs
 // mangled: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_bc00() -> ! {
-    todo!("0xbc00 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToString(unsigned long,std::string &)const")
+pub fn stub_bc00(desc: &RenderEnumDesc, value: u32, out: &mut String) -> bool {
+    // IDA 0xbc00: same body as the AASamples `convertToString` at 0xb9f8 —
+    // out-of-range returns 0 with `out` untouched, else `convertToString(item)`
+    // to a temp, `out->assign(temp)`, return 1.
+    match desc.pairs.iter().find(|p| p.value == value as i32) {
+        Some(p) => {
+            out.clear();
+            out.push_str(&p.name);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0xbd44 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED1Ev
 // mangled: __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED1Ev
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")]
-pub fn stub_bd44() -> ! {
-    todo!("0xbd44 RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")
+pub fn stub_bd44(desc: *mut RenderEnumDesc) {
+    // IDA 0xbd44: thunk to `EnumDesc<FrameRateManagerMode>::D2`
+    // (non-deleting). Same shape as the AASamples twin at 0xb934.
+    if !desc.is_null() {
+        unsafe {
+            (*desc).pairs.clear();
+            (*desc).legacy_aliases.clear();
+        }
+    }
 }
 
 // 0xbd48 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED0Ev
 // mangled: __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")]
-pub fn stub_bd48() -> ! {
-    todo!("0xbd48 RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")
+pub fn stub_bd48(desc: *mut RenderEnumDesc) {
+    // IDA 0xbd48..0xbd5a: `D2(a1)` (0xbd4e) then `operator delete(a1)` (D0).
+    // Same shape as the AASamples twin at 0xb938.
+    if desc.is_null() {
+        return;
+    }
+    unsafe {
+        (*desc).pairs.clear();
+        (*desc).legacy_aliases.clear();
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0xbd5c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE6lookupEPKc
 // mangled: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::lookup(char const*)const")]
-pub fn stub_bd5c() -> ! {
-    todo!("0xbd5c RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::lookup(char const*)const")
+pub fn stub_bd5c(desc: &RenderEnumDesc, name: &str) -> Option<i32> {
+    // IDA 0xbd66..0xbd82: `Name::lookup` (0xbd68), `convertToValue` (0xbd76),
+    // hit returns `convertToItem` (0xbd82), else null. Same as 0xb94c.
+    desc.pairs.iter().find(|p| p.name == name).map(|p| p.value).or_else(|| {
+        desc.legacy_aliases.iter().find(|a| a.name == name).map(|a| a.maps_to)
+    })
 }
 
 // 0xbd8c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE6lookupERKNS0_7VariantE
 // mangled: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_bd8c() -> ! {
-    todo!("0xbd8c RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_bd8c(desc: &RenderEnumDesc, value: i32) -> Option<i32> {
+    // IDA 0xbd9e..0xbda8: `any_cast<FrameRateManagerMode const&>` (0xbd9e)
+    // then `convertToItem` (0xbda8). Same shape as the twin at 0xb97c.
+    desc.pairs.iter().find(|p| p.value == value).map(|p| p.value)
 }
 
 // 0xbdac — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToValueEmRNS0_7VariantE
 // mangled: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_bdac() -> ! {
-    todo!("0xbdac RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_bdac(desc: &RenderEnumDesc, value: u32, out: &mut i32) -> bool {
+    // IDA 0xbdac: decompilation fails (like 0xb99c/0xbba4); disassembly shows
+    // the same `count`/`table[value]` hit-flag body. Same as 0xb99c.
+    match desc.pairs.iter().find(|p| p.value == value as i32) {
+        Some(p) => {
+            *out = p.value;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0xbe08 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE15convertToStringEmRSs
 // mangled: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_be08() -> ! {
-    todo!("0xbe08 RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToString(unsigned long,std::string &)const")
+pub fn stub_be08(desc: &RenderEnumDesc, value: u32, out: &mut String) -> bool {
+    // IDA 0xbe08: same body as the AASamples `convertToString` at 0xb9f8 —
+    // out-of-range returns 0 with `out` untouched, else assign + return 1.
+    match desc.pairs.iter().find(|p| p.value == value as i32) {
+        Some(p) => {
+            out.clear();
+            out.push_str(&p.name);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0xbf4c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED1Ev
 // mangled: __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED1Ev
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::~EnumDesc()")]
-pub fn stub_bf4c() -> ! {
-    todo!("0xbf4c RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::~EnumDesc()")
+pub fn stub_bf4c(desc: *mut RenderEnumDesc) {
+    // IDA 0xbf4c: thunk to `EnumDesc<AntialiasingMode>::D2` (non-deleting).
+    // Same shape as the AASamples twin at 0xb934.
+    if !desc.is_null() {
+        unsafe {
+            (*desc).pairs.clear();
+            (*desc).legacy_aliases.clear();
+        }
+    }
 }
 
 // 0xbf50 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED0Ev
 // mangled: __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::~EnumDesc()")]
-pub fn stub_bf50() -> ! {
-    todo!("0xbf50 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::~EnumDesc()")
+pub fn stub_bf50(desc: *mut RenderEnumDesc) {
+    // IDA 0xbf50..0xbf62: `D2(a1)` (0xbf56) then `operator delete(a1)` (D0).
+    // Same shape as the AASamples twin at 0xb938.
+    if desc.is_null() {
+        return;
+    }
+    unsafe {
+        (*desc).pairs.clear();
+        (*desc).legacy_aliases.clear();
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0xbf64 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE6lookupEPKc
 // mangled: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::lookup(char const*)const")]
-pub fn stub_bf64() -> ! {
-    todo!("0xbf64 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::lookup(char const*)const")
+pub fn stub_bf64(desc: &RenderEnumDesc, name: &str) -> Option<i32> {
+    // IDA 0xbf6e..0xbf8a: `Name::lookup` (0xbf70), `convertToValue` (0xbf7e),
+    // hit returns `convertToItem` (0xbf8a), else null. Same as 0xb94c.
+    desc.pairs.iter().find(|p| p.name == name).map(|p| p.value).or_else(|| {
+        desc.legacy_aliases.iter().find(|a| a.name == name).map(|a| a.maps_to)
+    })
 }
 
 // 0xbf94 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE6lookupERKNS0_7VariantE
 // mangled: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_bf94() -> ! {
-    todo!("0xbf94 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_bf94(desc: &RenderEnumDesc, value: i32) -> Option<i32> {
+    // IDA 0xbfa6..0xbfb0: `any_cast<AntialiasingMode const&>` (0xbfa6) then
+    // `convertToItem` (0xbfb0). Same shape as the twin at 0xb97c.
+    desc.pairs.iter().find(|p| p.value == value).map(|p| p.value)
 }
 
 // 0xbfb4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToValueEmRNS0_7VariantE
 // mangled: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_bfb4() -> ! {
-    todo!("0xbfb4 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_bfb4(desc: &RenderEnumDesc, value: u32, out: &mut i32) -> bool {
+    // IDA 0xbfb4..0xbfce: `count = [R0,#0x28]`, `count > value` loads
+    // `table[value]` (0xbfc4..0xbfc8), stores to out (0xbfcc), returns 1
+    // (0xbfce); miss returns 0. Same shape as 0xb99c.
+    match desc.pairs.iter().find(|p| p.value == value as i32) {
+        Some(p) => {
+            *out = p.value;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0xc010 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE15convertToStringEmRSs
 // mangled: __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_c010() -> ! {
-    todo!("0xc010 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToString(unsigned long,std::string &)const")
+pub fn stub_c010(desc: &RenderEnumDesc, value: u32, out: &mut String) -> bool {
+    // IDA 0xc010: same body as the AASamples `convertToString` at 0xb9f8 —
+    // out-of-range returns 0 with `out` untouched, else assign + return 1.
+    match desc.pairs.iter().find(|p| p.value == value as i32) {
+        Some(p) => {
+            out.clear();
+            out.push_str(&p.name);
+            true
+        }
+        None => false,
+    }
 }
