@@ -82,36 +82,57 @@ pub fn stub_0x23a04(map: &HashMap<String, SettingsHandler>, key: &str) -> Option
 // 0x24274 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS6_ERKS6_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,void (*)(char const*)>>,std::pair<std::string const,void (*)(char const*)> const&)")]
-pub fn stub_0x24274() -> ! {
-    todo!("0x24274 __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS6_ERKS6_")
+pub fn stub_0x24274(map: &mut HashMap<String, SettingsHandler>, key: &str, handler: SettingsHandler) -> bool {
+    // IDA 0x24274 hinted `_M_insert_unique`: hint-guided lower-bound
+    // probe, insert-or-existing (cf. 0x243b0). The tree hint folds;
+    // granularity collapses to the owning map entry.
+    use std::collections::hash_map::Entry;
+    match map.entry(key.to_string()) {
+        Entry::Occupied(_) => false,
+        Entry::Vacant(slot) => {
+            slot.insert(handler);
+            true
+        }
+    }
 }
 
 // 0x24360 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE9_M_insertEPSt18_Rb_tree_node_baseSE_RKS6_
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,void (*)(char const*)> const&)")]
-pub fn stub_0x24360() -> ! {
-    todo!("0x24360 __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE9_M_insertEPSt18_Rb_tree_node_baseSE_RKS6_")
+pub fn stub_0x24360(map: &mut HashMap<String, SettingsHandler>, key: &str, handler: SettingsHandler) {
+    // IDA 0x24360 `_M_insert`: node create + rebalance at the hinted
+    // position, size bump. Host has no nodes or balance state;
+    // granularity collapses to the owning map insert.
+    map.insert(key.to_string(), handler);
 }
 
 // 0x243b0 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE16_M_insert_uniqueERKS6_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert_unique(std::pair<std::string const,void (*)(char const*)> const&)")]
-pub fn stub_0x243b0() -> ! {
-    todo!("0x243b0 __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE16_M_insert_uniqueERKS6_")
+pub fn stub_0x243b0(map: &mut HashMap<String, SettingsHandler>, key: &str, handler: SettingsHandler) -> bool {
+    // IDA 0x243b0 `_M_insert_unique`: lower-bound walk, insert-or-find
+    // (`_M_insert` at 0x24360 on miss). Returns inserted/not-found.
+    stub_0x24274(map, key, handler)
 }
 
 // 0x24434 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE14_M_create_nodeERKS6_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_create_node(std::pair<std::string const,void (*)(char const*)> const&)")]
-pub fn stub_0x24434() -> ! {
-    todo!("0x24434 __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE14_M_create_nodeERKS6_")
+pub fn stub_0x24434(key: &str, handler: SettingsHandler) -> (String, SettingsHandler) {
+    // IDA 0x24434 `_M_create_node`: `operator new(0x18)` + pair copy
+    // (string + reader). Host has no nodes; the owned pair is the node.
+    (key.to_string(), handler)
 }
 
 // 0x24510 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE11lower_boundERS1_
 // type: int __fastcall(int, std::string *)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::lower_bound(std::string const&)")]
-pub fn stub_0x24510() -> ! {
-    todo!("0x24510 __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE11lower_boundERS1_")
+pub fn stub_0x24510(map: &HashMap<String, SettingsHandler>, key: &str) -> Option<SettingsHandler> {
+    // IDA 0x24510 `lower_bound`: first node not-less-than `key`. Host
+    // map is unordered, so only exact hits resolve; every in-tree
+    // caller (0x23a04/0x24274/0x243b0) treats a miss by inserting,
+    // which those host shims already perform themselves.
+    map.get(key).copied()
 }
 
 // 0x2f0f0 — __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIiEENSC_IS8_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE

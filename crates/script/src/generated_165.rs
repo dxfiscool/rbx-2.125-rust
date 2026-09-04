@@ -437,6 +437,26 @@ pub struct IosSettingsService {
     pub search_endpoint_ipad: String,
     /// `_thisPtr + 136` (IDA 0x24024).
     pub search_endpoint_iphone: String,
+    /// `_thisPtr + 140` (IDA 0x2415c).
+    pub cache_ui_web_views: bool,
+    /// `_thisPtr + 144` (IDA 0x24178).
+    pub thumbstick_control_style: i32,
+    /// `_thisPtr + 148` (IDA 0x24194).
+    pub free_memory_checker_active: bool,
+    /// `_thisPtr + 152` (IDA 0x241b0).
+    pub free_memory_checker_rate_ms: i32,
+    /// `_thisPtr + 156` (IDA 0x241cc).
+    pub free_memory_checker_threshold_kb: i32,
+    /// `_thisPtr + 160` (IDA 0x241e8).
+    pub memory_bouncer_active: bool,
+    /// `_thisPtr + 164` (IDA 0x24204).
+    pub memory_bouncer_enforce_rate_ms: i32,
+    /// `_thisPtr + 168` (IDA 0x24220).
+    pub memory_bouncer_threshold_kb: i32,
+    /// `_thisPtr + 172` (IDA 0x2423c).
+    pub memory_bouncer_limit_mb: i32,
+    /// `_thisPtr + 176` (IDA 0x24258).
+    pub memory_bouncer_limit_lowmem_mb: i32,
 }
 
 /// Reads a `"key": <string | null>` value from a flat JSON object
@@ -1981,7 +2001,7 @@ pub fn stub_0x21ce0(service: &mut IosSettingsService) {
 /// `atoi` host model for the `ReadValue*` family (IDA 0x239ec et al.):
 /// skips ASCII whitespace and one sign, accumulates decimal digits
 /// with wraparound; 0 when no digits follow.
-fn c_atoi(text: &str) -> i32 {
+pub(crate) fn c_atoi(text: &str) -> i32 {
     let bytes = text.as_bytes();
     let mut pos = 0;
     while pos < bytes.len() && matches!(bytes[pos], b' ' | b'\t' | b'\n' | 0x0b | 0x0c | b'\r') {
@@ -2303,41 +2323,59 @@ pub fn stub_0x24024(service: &mut IosSettingsService, value: &str) {
 // 0x2415c — __ZN18iOSSettingsService24ReadValueCacheUIWebViewsEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueCacheUIWebViews(char const*)")]
-pub fn stub_0x2415c() -> ! {
-    todo!("0x2415c __ZN18iOSSettingsService24ReadValueCacheUIWebViewsEPKc")
+pub fn stub_0x2415c(service: &mut IosSettingsService, value: &str) -> bool {
+    // IDA 0x2415c: `SimpleJSON::ParseBool(value)` into `_thisPtr + 140`.
+    let parsed = parse_bool_value(value);
+    service.cache_ui_web_views = parsed;
+    parsed
 }
 
 // 0x24178 — __ZN18iOSSettingsService31ReadValueThumbstickControlStyleEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueThumbstickControlStyle(char const*)")]
-pub fn stub_0x24178() -> ! {
-    todo!("0x24178 __ZN18iOSSettingsService31ReadValueThumbstickControlStyleEPKc")
+pub fn stub_0x24178(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x24178: `atoi(value)` into `_thisPtr + 144`.
+    let parsed = c_atoi(value);
+    service.thumbstick_control_style = parsed;
+    parsed
 }
 
 // 0x24194 — __ZN18iOSSettingsService32ReadValueFreeMemoryCheckerActiveEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueFreeMemoryCheckerActive(char const*)")]
-pub fn stub_0x24194() -> ! {
-    todo!("0x24194 __ZN18iOSSettingsService32ReadValueFreeMemoryCheckerActiveEPKc")
+pub fn stub_0x24194(service: &mut IosSettingsService, value: &str) -> bool {
+    // IDA 0x24194: `SimpleJSON::ParseBool(value)` into `_thisPtr + 148`.
+    let parsed = parse_bool_value(value);
+    service.free_memory_checker_active = parsed;
+    parsed
 }
 
 // 0x241b0 — __ZN18iOSSettingsService42ReadValueFreeMemoryCheckerRateMilliSecondsEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueFreeMemoryCheckerRateMilliSeconds(char const*)")]
-pub fn stub_0x241b0() -> ! {
-    todo!("0x241b0 __ZN18iOSSettingsService42ReadValueFreeMemoryCheckerRateMilliSecondsEPKc")
+pub fn stub_0x241b0(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x241b0: `atoi(value)` into `_thisPtr + 152`.
+    let parsed = c_atoi(value);
+    service.free_memory_checker_rate_ms = parsed;
+    parsed
 }
 
 // 0x241cc — __ZN18iOSSettingsService44ReadValueFreeMemoryCheckerThresholdKiloBytesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueFreeMemoryCheckerThresholdKiloBytes(char const*)")]
-pub fn stub_0x241cc() -> ! {
-    todo!("0x241cc __ZN18iOSSettingsService44ReadValueFreeMemoryCheckerThresholdKiloBytesEPKc")
+pub fn stub_0x241cc(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x241cc: `atoi(value)` into `_thisPtr + 156`.
+    let parsed = c_atoi(value);
+    service.free_memory_checker_threshold_kb = parsed;
+    parsed
 }
 
 // 0x241e8 — __ZN18iOSSettingsService28ReadValueMemoryBouncerActiveEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerActive(char const*)")]
-pub fn stub_0x241e8() -> ! {
-    todo!("0x241e8 __ZN18iOSSettingsService28ReadValueMemoryBouncerActiveEPKc")
+pub fn stub_0x241e8(service: &mut IosSettingsService, value: &str) -> bool {
+    // IDA 0x241e8: `SimpleJSON::ParseBool(value)` into `_thisPtr + 160`.
+    let parsed = parse_bool_value(value);
+    service.memory_bouncer_active = parsed;
+    parsed
 }

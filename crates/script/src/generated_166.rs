@@ -8,106 +8,220 @@
 
 use rbx_core::SharedPtr;
 
+use crate::generated_165::{BlockCapture, IosSettingsService};
+
+/// C++ static-init cell for `__GLOBAL__I_a_7` (IDA 0x24540): same
+/// static-init family as `__GLOBAL__I_a_6` (disasm `BL
+/// generic_category` head; `boost::system` statics,
+/// `std::ios_base::Init`, exception-guard chain).
+#[derive(Debug, Clone, Default)]
+pub struct CxxRuntimeA7 {
+    pub initialized: bool,
+}
+
+/// Host-side `Teleporter` (IDA 0x246d8): the C++ peer owned by the
+/// `PlaceLauncher` (`shared_ptr<Teleporter>`); vtable/offsets fold
+/// into host ownership.
+#[derive(Debug, Clone, Default)]
+pub struct TeleporterState {
+    /// `RBX::FunctionMarshaller::GetWindow` result captured at `init`.
+    pub window: Option<u32>,
+}
+
+/// Host-side `PlaceLauncher` state (PlaceLauncher.m, IDA 0x246d8..0x24a48).
+/// UIKit/RBX objects (`Teleporter`, `NSString`s) live on their
+/// respective sides; only the observable latches are modeled here.
+#[derive(Debug, Clone, Default)]
+pub struct PlaceLauncherState {
+    /// `init` ran (IDA 0x246d8).
+    pub initialized: bool,
+    /// `dealloc` ran (IDA 0x248dc).
+    pub released: bool,
+    /// `rbxView` (nil at `init`, IDA 0x246d8).
+    pub rbx_view: Option<u32>,
+    /// `hasReceivedMemoryWarning` (IDA 0x246d8).
+    pub memory_warning: bool,
+    /// `isCurrentlyPlayingGame` (IDA 0x246d8/0x24a18).
+    pub currently_playing: bool,
+    /// `lastPlaceId` (IDA 0x246d8).
+    pub last_place_id: i32,
+    /// `teleporter` shared_ptr (IDA 0x246d8/0x248dc).
+    pub teleporter: Option<TeleporterState>,
+    /// `RBX::TeleportService::SetCallback` live registration (IDA
+    /// 0x246d8 sets, 0x248dc clears).
+    pub teleport_callback_set: bool,
+    /// `RBXDidLeaveGameNotification` (IDA 0x246d8/0x24a28).
+    pub did_leave_game_notification: String,
+    /// `RBXStartLeaveGameNotification` (IDA 0x246d8/0x24a38).
+    pub start_leave_game_notification: String,
+    /// `RBXGameFinishedLoadingNotification` (IDA 0x246d8/0x24a48).
+    pub game_finished_loading_notification: String,
+}
+
+/// `+[PlaceLauncher sharedInstance]` singleton cell (IDA 0x24974):
+/// `dword_130C440` predicate + `dword_130C444` instance.
+#[derive(Debug, Clone, Default)]
+pub struct PlaceLauncherRegistry {
+    /// `dispatch_once` predicate (IDA 0x24974).
+    pub once_token: bool,
+    pub launcher: PlaceLauncherState,
+}
+
 // 0x24204 — __ZN18iOSSettingsService45ReadValueMemoryBouncerEnforceRateMilliSecondsEPKc
 // type: int __fastcall(iOSSettingsService *this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerEnforceRateMilliSeconds(char const*)")]
-pub fn stub_0x24204() -> ! {
-    todo!("0x24204 iOSSettingsService::ReadValueMemoryBouncerEnforceRateMilliSeconds(char const*)")
+pub fn stub_0x24204(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x24204: `atoi(value)` into `_thisPtr + 164`.
+    let parsed = crate::generated_165::c_atoi(value);
+    service.memory_bouncer_enforce_rate_ms = parsed;
+    parsed
 }
 
 // 0x24220 — __ZN18iOSSettingsService40ReadValueMemoryBouncerThresholdKiloBytesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerThresholdKiloBytes(char const*)")]
-pub fn stub_0x24220() -> ! {
-    todo!("0x24220 iOSSettingsService::ReadValueMemoryBouncerThresholdKiloBytes(char const*)")
+pub fn stub_0x24220(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x24220: `atoi(value)` into `_thisPtr + 168`.
+    let parsed = crate::generated_165::c_atoi(value);
+    service.memory_bouncer_threshold_kb = parsed;
+    parsed
 }
 
 // 0x2423c — __ZN18iOSSettingsService36ReadValueMemoryBouncerLimitMegaBytesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytes(char const*)")]
-pub fn stub_0x2423c() -> ! {
-    todo!("0x2423c iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytes(char const*)")
+pub fn stub_0x2423c(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x2423c: `atoi(value)` into `_thisPtr + 172`.
+    let parsed = crate::generated_165::c_atoi(value);
+    service.memory_bouncer_limit_mb = parsed;
+    parsed
 }
 
 // 0x24258 — __ZN18iOSSettingsService52ReadValueMemoryBouncerLimitMegaBytesForLowMemDevicesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytesForLowMemDevices(char const*)")]
-pub fn stub_0x24258() -> ! {
-    todo!("0x24258 iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytesForLowMemDevices(char const*)")
+pub fn stub_0x24258(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x24258: `atoi(value)` into `_thisPtr + 176`.
+    let parsed = crate::generated_165::c_atoi(value);
+    service.memory_bouncer_limit_lowmem_mb = parsed;
+    parsed
 }
 
 // 0x24540 — __GLOBAL__I_a_7
 #[doc(alias = "global constructor keyed to_a_7")]
-pub fn stub_0x24540() -> ! {
-    todo!("0x24540 global constructor keyed to_a_7")
+pub fn stub_0x24540(runtime: &mut CxxRuntimeA7) {
+    // IDA 0x24540 `__GLOBAL__I_a_7` (0x24540..0x246d6): C++ static init
+    // of the same family as `__GLOBAL__I_a_6` (cf. 0x21c18).
+    runtime.initialized = true;
 }
 
 // 0x246d8 — -[PlaceLauncher init]
 // type: PlaceLauncher *__cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher init]")]
-pub fn stub_0x246d8() -> ! {
-    todo!("0x246d8 -[PlaceLauncher init]")
+pub fn stub_0x246d8(state: &mut PlaceLauncherState, window: Option<u32>) {
+    // IDA 0x246d8 `-[PlaceLauncher init]`: super `init`, zeroed
+    // ivars, fresh `Teleporter(self, GetWindow())` into the
+    // shared_ptr (old value released; vtable/offsets fold into host
+    // ownership) + `TeleportService::SetCallback`, and the three
+    // `RBX*Notification` strings.
+    state.initialized = true;
+    state.released = false;
+    state.rbx_view = None;
+    state.memory_warning = false;
+    state.currently_playing = false;
+    state.last_place_id = 0;
+    state.teleporter = Some(TeleporterState { window });
+    state.teleport_callback_set = true;
+    state.did_leave_game_notification = "RBXDidLeaveGameNotification".to_string();
+    state.start_leave_game_notification = "RBXStartLeaveGameNotification".to_string();
+    state.game_finished_loading_notification = "RBXGameFinishedLoadingNotification".to_string();
 }
 
 // 0x248dc — -[PlaceLauncher dealloc]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher dealloc]")]
-pub fn stub_0x248dc() -> ! {
-    todo!("0x248dc -[PlaceLauncher dealloc]")
+pub fn stub_0x248dc(state: &mut PlaceLauncherState) {
+    // IDA 0x248dc `-[PlaceLauncher dealloc]`: `SetCallback(0)`,
+    // teleporter release, the three notification releases, super
+    // `dealloc` (releases fold into host ownership).
+    state.teleport_callback_set = false;
+    state.teleporter = None;
+    state.did_leave_game_notification.clear();
+    state.start_leave_game_notification.clear();
+    state.game_finished_loading_notification.clear();
+    state.released = true;
 }
 
 // 0x24974 — +[PlaceLauncher sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[PlaceLauncher sharedInstance]")]
-pub fn stub_0x24974() -> ! {
-    todo!("0x24974 +[PlaceLauncher sharedInstance]")
+pub fn stub_0x24974(reg: &mut PlaceLauncherRegistry) -> &mut PlaceLauncherState {
+    // IDA 0x24974 `+[PlaceLauncher sharedInstance]`: `dispatch_once`
+    // singleton (0x2498e..0x2499a -> 0x249d0); the predicate folds
+    // into `once_token` (cf. 0x20e78).
+    if !reg.once_token {
+        stub_0x249d0(reg);
+        reg.once_token = true;
+    }
+    &mut reg.launcher
 }
 
 // 0x249d0 — ___31+[PlaceLauncher sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___31+[PlaceLauncher sharedInstance]_block_invoke")]
-pub fn stub_0x249d0() -> ! {
-    todo!("0x249d0 ___31+[PlaceLauncher sharedInstance]_block_invoke")
+pub fn stub_0x249d0(reg: &mut PlaceLauncherRegistry) {
+    // IDA 0x249d0: `alloc` + `init` into `dword_130C444`
+    // (`GetWindow` resolves on the platform side; `None` here).
+    reg.launcher = PlaceLauncherState::default();
+    stub_0x246d8(&mut reg.launcher, None);
 }
 
 // 0x24a04 — ___copy_helper_block__4
 #[doc(alias = "___copy_helper_block__4")]
-pub fn stub_0x24a04() -> ! {
-    todo!("0x24a04 ___copy_helper_block__4")
+pub fn stub_0x24a04(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x24a04 `__copy_helper_block__4`: single
+    // `_Block_object_assign` retain (cf. 0x1f660).
+    *dst = src.clone();
 }
 
 // 0x24a10 — ___destroy_helper_block__4
 #[doc(alias = "___destroy_helper_block__4")]
-pub fn stub_0x24a10() -> ! {
-    todo!("0x24a10 ___destroy_helper_block__4")
+pub fn stub_0x24a10(slot: &mut BlockCapture) {
+    // IDA 0x24a10 `__destroy_helper_block__4`: single
+    // `_Block_object_dispose` release (cf. 0x1f4a0).
+    *slot = BlockCapture::default();
 }
 
 // 0x24a18 — -[PlaceLauncher getIsCurrentlyPlayingGame]
 // type: char __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher getIsCurrentlyPlayingGame]")]
-pub fn stub_0x24a18() -> ! {
-    todo!("0x24a18 -[PlaceLauncher getIsCurrentlyPlayingGame]")
+pub fn stub_0x24a18(state: &PlaceLauncherState) -> bool {
+    // IDA 0x24a18: `isCurrentlyPlayingGame` IVAR load.
+    state.currently_playing
 }
 
 // 0x24a28 — -[PlaceLauncher getDidLeaveGameNotification]
 // type: id __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher getDidLeaveGameNotification]")]
-pub fn stub_0x24a28() -> ! {
-    todo!("0x24a28 -[PlaceLauncher getDidLeaveGameNotification]")
+pub fn stub_0x24a28(state: &PlaceLauncherState) -> &str {
+    // IDA 0x24a28: `didLeaveGameNotification` IVAR load.
+    &state.did_leave_game_notification
 }
 
 // 0x24a38 — -[PlaceLauncher getStartLeaveGameNotification]
 // type: id __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher getStartLeaveGameNotification]")]
-pub fn stub_0x24a38() -> ! {
-    todo!("0x24a38 -[PlaceLauncher getStartLeaveGameNotification]")
+pub fn stub_0x24a38(state: &PlaceLauncherState) -> &str {
+    // IDA 0x24a38: `startLeaveGameNotification` IVAR load.
+    &state.start_leave_game_notification
 }
 
 // 0x24a48 — -[PlaceLauncher getGameFinishedLoadingNotification]
 // type: id __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher getGameFinishedLoadingNotification]")]
-pub fn stub_0x24a48() -> ! {
-    todo!("0x24a48 -[PlaceLauncher getGameFinishedLoadingNotification]")
+pub fn stub_0x24a48(state: &PlaceLauncherState) -> &str {
+    // IDA 0x24a48: `gameFinishedLoadingNotification` IVAR load.
+    &state.game_finished_loading_notification
 }
 
 // 0x24a58 — -[PlaceLauncher handleStartGameFailure]
