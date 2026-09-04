@@ -500,7 +500,8 @@ pub enum BridgeVal {
     Bool(bool),
     Str(Vec<u8>),
     Vec2(Vector2),
-    Vec2i16(Vector2int16),
+    Vec3(Vector3),
+    CFrame(CoordinateFrame),
     Color3(Color3),
     Brick(BrickColor),
     Closure(&'static str),
@@ -544,6 +545,12 @@ impl BridgeState {
     pub fn push_color3(&mut self, v: Color3) {
         self.stack.push(BridgeVal::Color3(v));
     }
+    pub fn push_vec3(&mut self, v: Vector3) {
+        self.stack.push(BridgeVal::Vec3(v));
+    }
+    pub fn push_cframe(&mut self, v: CoordinateFrame) {
+        self.stack.push(BridgeVal::CFrame(v));
+    }
     pub fn push_brick(&mut self, v: BrickColor) {
         self.stack.push(BridgeVal::Brick(v));
     }
@@ -559,10 +566,44 @@ impl BridgeState {
             _ => panic!("lua: Vector2 expected (bad argument)"),
         }
     }
+    pub fn check_vec3(&self, idx: i32) -> Vector3 {
+        match self.slot(idx) {
+            BridgeVal::Vec3(v) => *v,
+            _ => panic!("lua: Vector3 expected (bad argument)"),
+        }
+    }
+    pub fn check_cframe(&self, idx: i32) -> CoordinateFrame {
+        match self.slot(idx) {
+            BridgeVal::CFrame(v) => *v,
+            _ => panic!("lua: CoordinateFrame expected (bad argument)"),
+        }
+    }
     pub fn check_color3(&self, idx: i32) -> Color3 {
         match self.slot(idx) {
             BridgeVal::Color3(v) => *v,
             _ => panic!("lua: Color3 expected (bad argument)"),
+        }
+    }
+    // Bridge<CoordinateFrame>::getValue (BLX at 0x273e06): copies the
+    // userdata on match, else false without raising (callers fall back to
+    // the Vector3 path).
+    pub fn get_cframe(&self, idx: i32) -> Option<CoordinateFrame> {
+        match self.slot(idx) {
+            BridgeVal::CFrame(v) => Some(*v),
+            _ => None,
+        }
+    }
+    // IDA luaL_checknumber (BL at 0x2739f4, 0x273b58): double view of the
+    // slot with a lua_error raise for non-numbers. The raise is a panic
+    // here; numeric strings coerce via lua_tonumber, as with is_number.
+    pub fn check_number(&self, idx: i32) -> f32 {
+        match self.slot(idx) {
+            BridgeVal::Num(v) => *v as f32,
+            BridgeVal::Str(s) => match lua_strtod(s) {
+                Some(v) => v as f32,
+                None => panic!("lua: number expected (bad argument)"),
+            },
+            _ => panic!("lua: number expected (bad argument)"),
         }
     }
     // Bridge<T>::getValue(L, idx, out): copies the userdata when the slot
@@ -751,6 +792,307 @@ fn rgb_in_table(table: &[PaletteEntry], bc: BrickColor) -> [f32; 3] {
 
 pub fn brick_color_rgb(bc: BrickColor) -> [f32; 3] {
     rgb_in_table(BRICK_PALETTE, bc)
+}
+
+// ── IMPL batch 2 (13 stubs 0x273674..0x2746bc) ─────────────────────────────
+// The CoordinateFrame bridge: constructors (new/fromEulerAnglesXYZ/
+// fromAxisAngle), CFrame±Vector3, CFrame*CFrame/Vector3, inverse and the
+// toWorldSpace/toObjectSpace/pointTo*/vectorTo* variadics. Grounded from IDA
+// decompile + disasm over MCP, including the G3D callees: lookAt pair
+// (0xc3ccb8/0xc3ccdc, columns (Y, cross(Y,Z), -Z) decoded from disasm),
+// fromAxisAngle pair (0x27797c normalize + 0xc4015c Rodrigues — the decomp
+// drops x/z lanes, disasm shows standard Rodrigues), Matrix3(Quat)
+// (0xc3f348), fromEulerAnglesXYZ = Rx*Ry*Rz (0xc403a8, all 9 lanes verified
+// in disasm), CFrame::operator* (0x5e1350) + Matrix3::operator* (0xc3f5d4),
+// CFrame ctor = identity + zero (0xc3c1e4), identity static (0xc3eff8),
+// unitize (0xc41cc0).
+
+// ── G3D::CoordinateFrame model ─────────────────────────────────────────────
+// G3D::CoordinateFrame is a row-major 3x3 rotation (m[0..8], rows at +0 /
+// +12 / +24 — row-loop VLDR in on_mul, IDA 0x273e78..0x273ea8) plus a
+// translation Vector3 at +36..+47 (IDA 0x273eb2..0x273ec6, 0xc3cd46..0xc3cd5a).
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Vector3 {
+    pub x: f32,
+    pub y: f32,
+    pub z: f32,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Matrix3 {
+    /// Row-major: row r is m[3*r..3*r+3].
+    pub m: [f32; 9],
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct CoordinateFrame {
+    pub rotation: Matrix3,
+    pub translation: Vector3,
+}
+
+// G3D::Quat is four floats (x@0, y@4, z@8, w@12 — VLDR triple + w in
+// Matrix3::Matrix3(Quat), IDA 0xc3f352..0xc3f366).
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Quat {
+    pub x: f32,
+    pub y: f32,
+    pub z: f32,
+    pub w: f32,
+}
+
+pub const VECTOR3_CLASS: &str = "Vector3"; // IDA 0x273e4c "Vector3"
+pub const COORDFRAME_CLASS: &str = "CoordinateFrame"; // IDA 0x273dcc className ref
+
+// G3D::Matrix3::identity (IDA 0xc3eff8: static 1,0,0,0,1,0,0,0,1).
+pub fn matrix3_identity() -> Matrix3 {
+    Matrix3 { m: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0] }
+}
+
+// G3D::CoordinateFrame::CoordinateFrame() (IDA 0xc3c1e4): identity + zero.
+pub fn cframe_identity() -> CoordinateFrame {
+    CoordinateFrame {
+        rotation: matrix3_identity(),
+        translation: Vector3 { x: 0.0, y: 0.0, z: 0.0 },
+    }
+}
+
+// G3D::Matrix3::operator* (IDA 0xc3f5d4): standard row×col, summed as
+// ((a0*b0 + a1*b3) + a2*b6) per lane (VADD triple at 0xc3f614).
+pub fn matrix3_mul(a: &Matrix3, b: &Matrix3) -> Matrix3 {
+    let mut m = [0.0f32; 9];
+    for r in 0..3 {
+        for c in 0..3 {
+            m[3 * r + c] = (a.m[3 * r] * b.m[c] + a.m[3 * r + 1] * b.m[3 + c])
+                + a.m[3 * r + 2] * b.m[6 + c];
+        }
+    }
+    Matrix3 { m }
+}
+
+// G3D::CoordinateFrame::operator* (IDA 0x5e1350): R = R1*R2, T = R1*T2 + T1
+// with T lanes summed as T1 + ((R0*Tx + R1*Ty) + R2*Tz) (0x5e1440..0x5e1448).
+pub fn cframe_mul(a: &CoordinateFrame, b: &CoordinateFrame) -> CoordinateFrame {
+    let r = matrix3_mul(&a.rotation, &b.rotation);
+    let t = Vector3 {
+        x: a.translation.x
+            + ((a.rotation.m[0] * b.translation.x + a.rotation.m[1] * b.translation.y)
+                + a.rotation.m[2] * b.translation.z),
+        y: a.translation.y
+            + ((a.rotation.m[3] * b.translation.x + a.rotation.m[4] * b.translation.y)
+                + a.rotation.m[5] * b.translation.z),
+        z: a.translation.z
+            + ((a.rotation.m[6] * b.translation.x + a.rotation.m[7] * b.translation.y)
+                + a.rotation.m[8] * b.translation.z),
+    };
+    CoordinateFrame { rotation: r, translation: t }
+}
+
+// Row-dot helper: ((R0*x + R1*y) + R2*z) per row, as in the on_mul /
+// pointToWorldSpace lane triples (IDA 0x273e9c, 0x2744c6).
+fn mat_vec(m: &Matrix3, v: &Vector3) -> Vector3 {
+    Vector3 {
+        x: (m.m[0] * v.x + m.m[1] * v.y) + m.m[2] * v.z,
+        y: (m.m[3] * v.x + m.m[4] * v.y) + m.m[5] * v.z,
+        z: (m.m[6] * v.x + m.m[7] * v.y) + m.m[8] * v.z,
+    }
+}
+
+// Point transform R*v + T with T added outside the dots, as in
+// pointToWorldSpace (IDA 0x2744c6..0x274516: T.x + ((R0*x + R1*y) + R2*z)).
+fn cframe_point(cf: &CoordinateFrame, v: &Vector3) -> Vector3 {
+    let r = mat_vec(&cf.rotation, v);
+    Vector3 {
+        x: cf.translation.x + r.x,
+        y: cf.translation.y + r.y,
+        z: cf.translation.z + r.z,
+    }
+}
+
+// Transposed-matrix times vector, as in pointToObjectSpace (IDA
+// 0x274682..0x2746aa): x' = (R[0]*dx + R[3]*dy) + R[6]*dz, etc.
+fn matrix3_transpose_vec(m: &Matrix3, v: &Vector3) -> Vector3 {
+    Vector3 {
+        x: (m.m[0] * v.x + m.m[3] * v.y) + m.m[6] * v.z,
+        y: (m.m[1] * v.x + m.m[4] * v.y) + m.m[7] * v.z,
+        z: (m.m[2] * v.x + m.m[5] * v.y) + m.m[8] * v.z,
+    }
+}
+
+pub fn matrix3_transpose(a: &Matrix3) -> Matrix3 {
+    Matrix3 {
+        m: [
+            a.m[0], a.m[3], a.m[6],
+            a.m[1], a.m[4], a.m[7],
+            a.m[2], a.m[5], a.m[8],
+        ],
+    }
+}
+
+fn matrix3_neg(a: &Matrix3) -> Matrix3 {
+    let mut m = [0.0f32; 9];
+    for i in 0..9 {
+        m[i] = -a.m[i];
+    }
+    Matrix3 { m }
+}
+
+// Rigid inverse (on_inverse inline at IDA 0x273f6e..0x273fee, identical math
+// in on_toObjectSpace at 0x274298..0x274312): transpose() at 0x273f78,
+// unary minus at 0x273f9e, then -(Rᵀ)*T row dots. Negation distributes over
+// the dots bit-exactly, so negate-then-dot matches the original order.
+pub fn cframe_inverse(cf: &CoordinateFrame) -> CoordinateFrame {
+    let rt = matrix3_transpose(&cf.rotation);
+    let t = mat_vec(&matrix3_neg(&rt), &cf.translation);
+    CoordinateFrame { rotation: rt, translation: t }
+}
+
+fn vec3_add(a: &Vector3, b: &Vector3) -> Vector3 {
+    Vector3 { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z }
+}
+
+fn vec3_sub(a: &Vector3, b: &Vector3) -> Vector3 {
+    Vector3 { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z }
+}
+
+fn vec3_cross(a: &Vector3, b: &Vector3) -> Vector3 {
+    Vector3 {
+        x: a.y * b.z - a.z * b.y,
+        y: a.z * b.x - a.x * b.z,
+        z: a.x * b.y - a.y * b.x,
+    }
+}
+
+fn vec3_dot(a: &Vector3, b: &Vector3) -> f32 {
+    (a.x * b.x + a.y * b.y) + a.z * b.z
+}
+
+// G3D::Vector3::unitize(tolerance) (IDA 0xc41cc0): normalizes in place via
+// VDIV 1/len (0xc41cfa) when len > tol, returning len; otherwise leaves the
+// vector untouched and returns 0.
+pub fn vec3_unitize(v: &mut Vector3, tol: f32) -> f32 {
+    let len = (v.x * v.x + v.y * v.y + v.z * v.z).sqrt();
+    if len > tol {
+        let s = 1.0 / len;
+        v.x *= s;
+        v.y *= s;
+        v.z *= s;
+        len
+    } else {
+        0.0
+    }
+}
+
+// G3D::Matrix3::Matrix3(Quat) (IDA 0xc3f348): normalizes q (1/sqrt, no
+// guard), then the standard quat→matrix rows with x2 = x+x doubling
+// (VADD at 0xc3f39a/0xc3f39e).
+pub fn matrix3_from_quat(q: &Quat) -> Matrix3 {
+    let inv = 1.0 / (q.x * q.x + q.y * q.y + q.z * q.z + q.w * q.w).sqrt();
+    let (x, y, z, w) = (q.x * inv, q.y * inv, q.z * inv, q.w * inv);
+    let (x2, y2, z2) = (x + x, y + y, z + z);
+    Matrix3 {
+        m: [
+            1.0 - y * y2 - z * z2,
+            y * x2 - w * z2,
+            z * x2 + w * y2,
+            y * x2 + w * z2,
+            1.0 - x * x2 - z * z2,
+            z * y2 - w * x2,
+            z * x2 - w * y2,
+            z * y2 + w * x2,
+            1.0 - x * x2 - y * y2,
+        ],
+    }
+}
+
+// G3D::Matrix3::fromEulerAnglesXYZ(x, y, z) (IDA 0xc403a8): R = Rx*Ry*Rz
+// with float sinf/cosf per angle — all 9 lanes verified in disasm
+// (R00 = cy*cz at 0xc40418..0xc40466 through R22 = cx*cy at 0xc4050c).
+// BUG: host sinf/cosf may differ ~1ulp from the device libm; same formula.
+pub fn matrix3_from_euler_xyz(x: f32, y: f32, z: f32) -> Matrix3 {
+    let (sx, cx) = (x.sin(), x.cos());
+    let (sy, cy) = (y.sin(), y.cos());
+    let (sz, cz) = (z.sin(), z.cos());
+    Matrix3 {
+        m: [
+            cy * cz,
+            -cy * sz,
+            sy,
+            cx * sz + sx * sy * cz,
+            cx * cz - sx * sy * sz,
+            -sx * cy,
+            sx * sz - cx * sy * cz,
+            cx * sy * sz + sx * cz,
+            cx * cy,
+        ],
+    }
+}
+
+// G3D::Matrix3::fromAxisAngle(axis, angle) (IDA 0x27797c + 0xc4015c):
+// normalizes the axis (1/sqrt, no zero guard), then standard Rodrigues with
+// cos/sin evaluated in double and narrowed to float (VCVT.F32.F64 at
+// 0xc40196/0xc401a8 — the decompile drops x/z lanes, disasm shows standard
+// Rodrigues; BUG: host double cos/sin may differ ~1ulp from device libm).
+pub fn matrix3_from_axis_angle(axis: &Vector3, angle: f32) -> Matrix3 {
+    let inv = 1.0 / (axis.x * axis.x + axis.y * axis.y + axis.z * axis.z).sqrt();
+    let (x, y, z) = (axis.x * inv, axis.y * inv, axis.z * inv);
+    let c = (angle as f64).cos() as f32;
+    let s = (angle as f64).sin() as f32;
+    let t = 1.0 - c;
+    Matrix3 {
+        m: [
+            c + t * x * x,
+            t * x * y - s * z,
+            t * x * z + s * y,
+            t * x * y + s * z,
+            c + t * y * y,
+            t * y * z - s * x,
+            t * x * z - s * y,
+            t * y * z + s * x,
+            c + t * z * z,
+        ],
+    }
+}
+
+// G3D::CoordinateFrame::lookAt(target, up) rotation (IDA 0xc3ccdc, decoded
+// from disasm 0xc3cd1a..0xc3cf2e): up is normalized (VDIV, no guard), Z =
+// normalize(target - eye); |up·Z| > 0.99 falls back to unitX then unitY
+// (0xc3cdb6..0xc3cf8); X = unitize(up - Z*(up·Z), 1e-6); Y = unitize(Z×X,
+// 1e-6); columns become (Y, cross(Y,Z), -Z) via setColumn (0xc3cf1a..0xc3cf4a).
+// Translation is untouched (no stores to +36..+47 in the disasm).
+pub fn cframe_look_at_rotation(eye: &Vector3, target: &Vector3, up: &Vector3) -> Matrix3 {
+    let mut up = *up;
+    let inv = 1.0 / (up.x * up.x + up.y * up.y + up.z * up.z).sqrt();
+    up.x *= inv;
+    up.y *= inv;
+    up.z *= inv;
+    let mut z = vec3_sub(target, eye);
+    let zinv = 1.0 / (z.x * z.x + z.y * z.y + z.z * z.z).sqrt();
+    z.x *= zinv;
+    z.y *= zinv;
+    z.z *= zinv;
+    if vec3_dot(&up, &z).abs() > 0.99 {
+        up = Vector3 { x: 1.0, y: 0.0, z: 0.0 };
+        if vec3_dot(&up, &z).abs() > 0.99 {
+            up = Vector3 { x: 0.0, y: 1.0, z: 0.0 };
+        }
+    }
+    let d = vec3_dot(&up, &z);
+    let mut x = Vector3 { x: up.x - z.x * d, y: up.y - z.y * d, z: up.z - z.z * d };
+    vec3_unitize(&mut x, 1e-6);
+    let mut y = vec3_cross(&z, &x);
+    vec3_unitize(&mut y, 1e-6);
+    let x2 = vec3_cross(&y, &z);
+    Matrix3 {
+        m: [
+            y.x, x2.x, -z.x,
+            y.y, x2.y, -z.y,
+            y.z, x2.z, -z.z,
+        ],
+    }
 }
 
 // 0x272940 — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE11on_newindexERS3_PKcP9lua_State
@@ -1120,92 +1462,283 @@ pub fn stub_0x2735bc(_l: &mut BridgeState, key: &str) -> ! {
 // 0x273674 — __ZN3RBX3Lua21CoordinateFrameBridge18newCoordinateFrameEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::CoordinateFrameBridge::newCoordinateFrame(lua_State *)")]
-pub fn stub_0x273674() -> ! {
-    todo!("0x273674 RBX::Lua::CoordinateFrameBridge::newCoordinateFrame(lua_State *)")
+// IDA 0x273674: identity CFrame (0x273696), then a gettop switch (0x2736ce):
+// 0 args -> identity; 1 Vector3 arg -> translation (0x273708..0x273718);
+// 2 Vector3 args -> translation = arg 1, rotation = lookAt(arg 2) with
+// unitY up (0x27372e..0x273762); 3 floats -> translation (0x273766..0x27378a);
+// 7 floats -> translation + Matrix3(Quat(args 4-7)) (0x273790..0x27384a);
+// 12 floats -> translation + row-major rotation (0x27384e..0x2738c6);
+// else throws "Invalid number of arguments: %d" (0x27391a..0x27398c).
+// Pushes the frame; returns 1.
+pub fn stub_0x273674(l: &mut BridgeState) -> i32 {
+    let n = l.gettop();
+    let mut cf = cframe_identity();
+    match n {
+        0 => {}
+        1 => {
+            cf.translation = l.check_vec3(1);
+        }
+        2 => {
+            cf.translation = l.check_vec3(1);
+            let target = l.check_vec3(2);
+            cf.rotation = cframe_look_at_rotation(
+                &cf.translation,
+                &target,
+                &Vector3 { x: 0.0, y: 1.0, z: 0.0 },
+            );
+        }
+        3 => {
+            cf.translation =
+                Vector3 { x: l.to_float(1), y: l.to_float(2), z: l.to_float(3) };
+        }
+        7 => {
+            cf.translation =
+                Vector3 { x: l.to_float(1), y: l.to_float(2), z: l.to_float(3) };
+            let q = Quat {
+                x: l.to_float(4),
+                y: l.to_float(5),
+                z: l.to_float(6),
+                w: l.to_float(7),
+            };
+            cf.rotation = matrix3_from_quat(&q);
+        }
+        12 => {
+            cf.translation =
+                Vector3 { x: l.to_float(1), y: l.to_float(2), z: l.to_float(3) };
+            let mut m = [0.0f32; 9];
+            for i in 0..9 {
+                m[i] = l.to_float(4 + i as i32);
+            }
+            cf.rotation = Matrix3 { m };
+        }
+        _ => panic!("Invalid number of arguments: {n}"),
+    }
+    l.push_cframe(cf);
+    1
 }
 
 // 0x27399c — __ZN3RBX3Lua21CoordinateFrameBridge18fromEulerAnglesXYZEP9lua_State
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Lua::CoordinateFrameBridge::fromEulerAnglesXYZ(lua_State *)")]
-pub fn stub_0x27399c() -> ! {
-    todo!("0x27399c RBX::Lua::CoordinateFrameBridge::fromEulerAnglesXYZ(lua_State *)")
+// IDA 0x27399c: luaL_checknumber args 1-3 (0x2739f4..0x273a22),
+// Matrix3::fromEulerAnglesXYZ (0x273a4a), zero translation; returns 1.
+pub fn stub_0x27399c(l: &mut BridgeState) -> i32 {
+    let mut cf = cframe_identity();
+    cf.rotation = matrix3_from_euler_xyz(
+        l.check_number(1),
+        l.check_number(2),
+        l.check_number(3),
+    );
+    l.push_cframe(cf);
+    1
 }
 
 // 0x273ad8 — __ZN3RBX3Lua21CoordinateFrameBridge13fromAxisAngleEP9lua_State
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Lua::CoordinateFrameBridge::fromAxisAngle(lua_State *)")]
-pub fn stub_0x273ad8() -> ! {
-    todo!("0x273ad8 RBX::Lua::CoordinateFrameBridge::fromAxisAngle(lua_State *)")
+// IDA 0x273ad8: checkudata Vector3 arg 1 (0x273b42), luaL_checknumber arg 2
+// (0x273b58), Matrix3::fromAxisAngle (0x273b64), zero translation; returns 1.
+pub fn stub_0x273ad8(l: &mut BridgeState) -> i32 {
+    let axis = l.check_vec3(1);
+    let angle = l.check_number(2);
+    let mut cf = cframe_identity();
+    cf.rotation = matrix3_from_axis_angle(&axis, angle);
+    l.push_cframe(cf);
+    1
 }
 
 // 0x273bf0 — __ZN3RBX3Lua21CoordinateFrameBridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::CoordinateFrameBridge::registerClassLibrary(lua_State *)")]
-pub fn stub_0x273bf0() -> ! {
-    todo!("0x273bf0 RBX::Lua::CoordinateFrameBridge::registerClassLibrary(lua_State *)")
+// IDA 0x273bf0: luaL_register(L, "CoordinateFrame", classLibrary)
+// (0x273c0e), lua_setreadonly(L, -1, 1) (0x273c1a), tail settop(L, -2);
+// 0 results.
+pub fn stub_0x273bf0(l: &mut BridgeState) -> i32 {
+    l.register_class(COORDFRAME_CLASS);
+    0
 }
 
 // 0x273c2c — __ZN3RBX3Lua21CoordinateFrameBridge6on_addEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::CoordinateFrameBridge::on_add(lua_State *)")]
-pub fn stub_0x273c2c() -> ! {
-    todo!("0x273c2c RBX::Lua::CoordinateFrameBridge::on_add(lua_State *)")
+// IDA 0x273c2c: checkudata CFrame arg 1 (0x273c5a) + Vector3 arg 2
+// (0x273c6c); copies the rotation, adds the translation lanes (VADD at
+// 0x273ca4..0x273cac); returns 1.
+pub fn stub_0x273c2c(l: &mut BridgeState) -> i32 {
+    let a = l.check_cframe(1);
+    let b = l.check_vec3(2);
+    l.push_cframe(CoordinateFrame {
+        rotation: a.rotation,
+        translation: vec3_add(&a.translation, &b),
+    });
+    1
 }
 
 // 0x273ce0 — __ZN3RBX3Lua21CoordinateFrameBridge6on_subEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::CoordinateFrameBridge::on_sub(lua_State *)")]
-pub fn stub_0x273ce0() -> ! {
-    todo!("0x273ce0 RBX::Lua::CoordinateFrameBridge::on_sub(lua_State *)")
+// IDA 0x273ce0: same shape as on_add but T - v (VSUB at 0x273d58..0x273d60);
+// returns 1.
+pub fn stub_0x273ce0(l: &mut BridgeState) -> i32 {
+    let a = l.check_cframe(1);
+    let b = l.check_vec3(2);
+    l.push_cframe(CoordinateFrame {
+        rotation: a.rotation,
+        translation: vec3_sub(&a.translation, &b),
+    });
+    1
 }
 
 // 0x273d94 — __ZN3RBX3Lua21CoordinateFrameBridge6on_mulEP9lua_State
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Lua::CoordinateFrameBridge::on_mul(lua_State *)")]
-pub fn stub_0x273d94() -> ! {
-    todo!("0x273d94 RBX::Lua::CoordinateFrameBridge::on_mul(lua_State *)")
+// IDA 0x273d94: checkudata CFrame arg 1 (0x273dcc); CFrame arg 2 via
+// getValue composes with operator* (0x273e18); else checkudata Vector3 arg
+// 2 (0x273e56) point-transforms with w = 1: R*v + T (row dots at
+// 0x273e78..0x273ea8, translation added at 0x273eb2..0x273ece, Vector4 xyz
+// path at 0x273eec..0x273efa — verified in disasm, unlike the rotate-only
+// vectorToWorldSpace loop). Returns 1.
+pub fn stub_0x273d94(l: &mut BridgeState) -> i32 {
+    let a = l.check_cframe(1);
+    if let Some(b) = l.get_cframe(2) {
+        l.push_cframe(cframe_mul(&a, &b));
+    } else {
+        l.push_vec3(cframe_point(&a, &l.check_vec3(2)));
+    }
+    1
 }
 
 // 0x273f48 — __ZN3RBX3Lua21CoordinateFrameBridge10on_inverseEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::CoordinateFrameBridge::on_inverse(lua_State *)")]
-pub fn stub_0x273f48() -> ! {
-    todo!("0x273f48 RBX::Lua::CoordinateFrameBridge::on_inverse(lua_State *)")
+// IDA 0x273f48: checkudata CFrame arg 1 (0x273f6a); rigid inverse via
+// transpose (0x273f78) + unary minus (0x273f9e) + -(Rᵀ)*T dots
+// (0x273fbe..0x273fee); returns 1.
+pub fn stub_0x273f48(l: &mut BridgeState) -> i32 {
+    l.push_cframe(cframe_inverse(&l.check_cframe(1)));
+    1
 }
 
 // 0x274024 — __ZN3RBX3Lua21CoordinateFrameBridge15on_toWorldSpaceEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::CoordinateFrameBridge::on_toWorldSpace(lua_State *)")]
-pub fn stub_0x274024() -> ! {
-    todo!("0x274024 RBX::Lua::CoordinateFrameBridge::on_toWorldSpace(lua_State *)")
+// IDA 0x274024: checkudata CFrame arg 1 (0x274044); 1 arg -> pushes a copy
+// (0x2740c2..0x2740da), return 1; k >= 1 extra CFrame args -> pushes
+// self*arg per arg (operator* at 0x27408e), returns n-1; 0 args returns -1
+// (0x2740e2 quirk, no pushes).
+pub fn stub_0x274024(l: &mut BridgeState) -> i32 {
+    let a = l.check_cframe(1);
+    let n = l.gettop();
+    if n == 1 {
+        l.push_cframe(a);
+        1
+    } else if n - 1 >= 1 {
+        for i in 2..=n {
+            l.push_cframe(cframe_mul(&a, &l.check_cframe(i)));
+        }
+        n - 1
+    } else {
+        n - 1
+    }
 }
 
 // 0x2740e4 — __ZN3RBX3Lua21CoordinateFrameBridge16on_toObjectSpaceEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::CoordinateFrameBridge::on_toObjectSpace(lua_State *)")]
-pub fn stub_0x2740e4() -> ! {
-    todo!("0x2740e4 RBX::Lua::CoordinateFrameBridge::on_toObjectSpace(lua_State *)")
+// IDA 0x2740e4: toWorldSpace shape with inverse(self): 1 arg -> pushes the
+// rigid inverse (transpose + -(Rᵀ)*T inline at 0x274298..0x274312, same math
+// as on_inverse), return 1; extra CFrame args -> pushes inverse*arg per arg
+// (0x274238), returns n-1; 0 args returns -1 (0x274352 quirk).
+pub fn stub_0x2740e4(l: &mut BridgeState) -> i32 {
+    let inv = cframe_inverse(&l.check_cframe(1));
+    let n = l.gettop();
+    if n == 1 {
+        l.push_cframe(inv);
+        1
+    } else if n - 1 >= 1 {
+        for i in 2..=n {
+            l.push_cframe(cframe_mul(&inv, &l.check_cframe(i)));
+        }
+        n - 1
+    } else {
+        n - 1
+    }
 }
 
 // 0x274394 — __ZN3RBX3Lua21CoordinateFrameBridge20on_pointToWorldSpaceEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::CoordinateFrameBridge::on_pointToWorldSpace(lua_State *)")]
-pub fn stub_0x274394() -> ! {
-    todo!("0x274394 RBX::Lua::CoordinateFrameBridge::on_pointToWorldSpace(lua_State *)")
+// IDA 0x274394: checkudata CFrame arg 1 (0x2743b2); 1 arg -> transforms the
+// zero vector, i.e. pushes R*0+T (0x274480..0x27451a), return 1; extra
+// Vector3 args -> pushes R*v+T per arg (0x2743e0..0x274476), returns n-1;
+// 0 args returns -1 (0x274524 quirk).
+pub fn stub_0x274394(l: &mut BridgeState) -> i32 {
+    let a = l.check_cframe(1);
+    let n = l.gettop();
+    if n == 1 {
+        l.push_vec3(cframe_point(&a, &Vector3 { x: 0.0, y: 0.0, z: 0.0 }));
+        1
+    } else if n - 1 >= 1 {
+        for i in 2..=n {
+            l.push_vec3(cframe_point(&a, &l.check_vec3(i)));
+        }
+        n - 1
+    } else {
+        n - 1
+    }
 }
 
 // 0x274528 — __ZN3RBX3Lua21CoordinateFrameBridge21on_pointToObjectSpaceEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::CoordinateFrameBridge::on_pointToObjectSpace(lua_State *)")]
-pub fn stub_0x274528() -> ! {
-    todo!("0x274528 RBX::Lua::CoordinateFrameBridge::on_pointToObjectSpace(lua_State *)")
+// IDA 0x274528: pointToWorldSpace shape with Rᵀ*(v-T): d = v-T per lane
+// (VSUB at 0x274624..0x27463e), pushed lanes use the transposed rows
+// (0x274682..0x2746aa); single-arg path transforms zero, i.e. Rᵀ*(0-T)
+// with 0.0-T per lane (0x274618..0x2746aa); returns n-1 (-1 with 0 args).
+pub fn stub_0x274528(l: &mut BridgeState) -> i32 {
+    let a = l.check_cframe(1);
+    let n = l.gettop();
+    let unpoint = |v: &Vector3| {
+        let d = Vector3 {
+            x: v.x - a.translation.x,
+            y: v.y - a.translation.y,
+            z: v.z - a.translation.z,
+        };
+        matrix3_transpose_vec(&a.rotation, &d)
+    };
+    if n == 1 {
+        l.push_vec3(unpoint(&Vector3 { x: 0.0, y: 0.0, z: 0.0 }));
+        1
+    } else if n - 1 >= 1 {
+        for i in 2..=n {
+            l.push_vec3(unpoint(&l.check_vec3(i)));
+        }
+        n - 1
+    } else {
+        n - 1
+    }
 }
 
 // 0x2746bc — __ZN3RBX3Lua21CoordinateFrameBridge21on_vectorToWorldSpaceEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::CoordinateFrameBridge::on_vectorToWorldSpace(lua_State *)")]
-pub fn stub_0x2746bc() -> ! {
-    todo!("0x2746bc RBX::Lua::CoordinateFrameBridge::on_vectorToWorldSpace(lua_State *)")
+// IDA 0x2746bc: pointToWorldSpace shape WITHOUT the translation: pushes
+// R*v row dots per arg (0x27472e..0x27475e loop, no T add); single-arg path
+// pushes R*0 (0x274774..0x2747cc); returns n-1 (-1 with 0 args, 0x2747de).
+pub fn stub_0x2746bc(l: &mut BridgeState) -> i32 {
+    let a = l.check_cframe(1);
+    let n = l.gettop();
+    if n == 1 {
+        l.push_vec3(mat_vec(&a.rotation, &Vector3 { x: 0.0, y: 0.0, z: 0.0 }));
+        1
+    } else if n - 1 >= 1 {
+        for i in 2..=n {
+            l.push_vec3(mat_vec(&a.rotation, &l.check_vec3(i)));
+        }
+        n - 1
+    } else {
+        n - 1
+    }
 }
 
 #[cfg(test)]
@@ -1497,5 +2030,447 @@ mod vector2_brickcolor_bridge_tests {
         let l = state(vec![BridgeVal::Str(b"21".to_vec())]);
         assert!(l.is_number(1));
         assert_eq!(l.to_integer(1), 21);
+    }
+}
+
+#[cfg(test)]
+mod coordinate_frame_bridge_tests {
+    use super::*;
+
+    fn vec3(x: f32, y: f32, z: f32) -> BridgeVal {
+        BridgeVal::Vec3(Vector3 { x, y, z })
+    }
+    fn cf(rot: [f32; 9], t: (f32, f32, f32)) -> BridgeVal {
+        BridgeVal::CFrame(CoordinateFrame {
+            rotation: Matrix3 { m: rot },
+            translation: Vector3 { x: t.0, y: t.1, z: t.2 },
+        })
+    }
+    fn state(vals: Vec<BridgeVal>) -> BridgeState {
+        let mut l = BridgeState::new();
+        for v in vals {
+            l.stack.push(v);
+        }
+        l
+    }
+    fn identity() -> CoordinateFrame {
+        cframe_identity()
+    }
+
+    #[test]
+    fn new_without_args_is_identity() {
+        let mut l = state(vec![]);
+        assert_eq!(stub_0x273674(&mut l), 1);
+        assert_eq!(l.stack.last(), Some(&BridgeVal::CFrame(identity())));
+    }
+
+    #[test]
+    fn new_with_vector3_sets_translation_only() {
+        let mut l = state(vec![vec3(1.0, 2.0, 3.0)]);
+        assert_eq!(stub_0x273674(&mut l), 1);
+        let mut want = identity();
+        want.translation = Vector3 { x: 1.0, y: 2.0, z: 3.0 };
+        assert_eq!(l.stack.last(), Some(&BridgeVal::CFrame(want)));
+    }
+
+    #[test]
+    fn new_with_3_and_12_floats() {
+        let mut l = state(vec![
+            BridgeVal::Num(1.0),
+            BridgeVal::Num(2.0),
+            BridgeVal::Num(3.0),
+        ]);
+        assert_eq!(stub_0x273674(&mut l), 1);
+        let mut want = identity();
+        want.translation = Vector3 { x: 1.0, y: 2.0, z: 3.0 };
+        assert_eq!(l.stack.last(), Some(&BridgeVal::CFrame(want)));
+        // 12 floats: translation + row-major rotation passthrough.
+        let mut args = vec![BridgeVal::Num(5.0), BridgeVal::Num(6.0), BridgeVal::Num(7.0)];
+        for i in 0..9 {
+            args.push(BridgeVal::Num(i as f64));
+        }
+        let mut l = state(args);
+        assert_eq!(stub_0x273674(&mut l), 1);
+        assert_eq!(
+            l.stack.last(),
+            Some(&cf(
+                [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0],
+                (5.0, 6.0, 7.0)
+            ))
+        );
+    }
+
+    #[test]
+    fn new_with_quaternion_identity_stays_identity() {
+        // Identity quat (0,0,0,1) normalizes to itself; matrix is exact.
+        let mut l = state(vec![
+            BridgeVal::Num(9.0),
+            BridgeVal::Num(9.0),
+            BridgeVal::Num(9.0),
+            BridgeVal::Num(0.0),
+            BridgeVal::Num(0.0),
+            BridgeVal::Num(0.0),
+            BridgeVal::Num(1.0),
+        ]);
+        assert_eq!(stub_0x273674(&mut l), 1);
+        let mut want = identity();
+        want.translation = Vector3 { x: 9.0, y: 9.0, z: 9.0 };
+        assert_eq!(l.stack.last(), Some(&BridgeVal::CFrame(want)));
+    }
+
+    #[test]
+    fn new_with_eye_and_target_aims_columns_y_x2_neg_z() {
+        // eye = origin, target = +Z: z = (0,0,1); up = Y; dot = 0;
+        // x = Y; y = Z×X = (-1,0,0); x2 = Y×Z = (0,1,0);
+        // columns (Y, X2, -Z) -> rows [-1,0,0, 0,1,0, 0,0,-1].
+        let mut l = state(vec![vec3(0.0, 0.0, 0.0), vec3(0.0, 0.0, 1.0)]);
+        assert_eq!(stub_0x273674(&mut l), 1);
+        assert_eq!(
+            l.stack.last(),
+            Some(&cf(
+                [-1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, -1.0],
+                (0.0, 0.0, 0.0)
+            ))
+        );
+    }
+
+    #[test]
+    fn new_with_straight_up_target_takes_degenerate_up_path() {
+        // target = +Y (parallel to up): |dot| = 1 > 0.99 -> up falls back to
+        // X; z = (0,1,0); x = X; y = Z×X = (0,0,-1); x2 = Y×Z = (1,0,0);
+        // columns (Y, X2, -Z) -> rows [0,1,0, 0,0,-1, -1,0,0].
+        let mut l = state(vec![vec3(0.0, 0.0, 0.0), vec3(0.0, 1.0, 0.0)]);
+        assert_eq!(stub_0x273674(&mut l), 1);
+        assert_eq!(
+            l.stack.last(),
+            Some(&cf(
+                [0.0, 1.0, 0.0, 0.0, 0.0, -1.0, -1.0, 0.0, 0.0],
+                (0.0, 0.0, 0.0)
+            ))
+        );
+    }
+
+    #[test]
+    #[should_panic(expected = "Invalid number of arguments: 5")]
+    fn new_with_bad_count_throws_original_message() {
+        let mut l = state(vec![
+            BridgeVal::Num(1.0),
+            BridgeVal::Num(2.0),
+            BridgeVal::Num(3.0),
+            BridgeVal::Num(4.0),
+            BridgeVal::Num(5.0),
+        ]);
+        stub_0x273674(&mut l);
+    }
+
+    #[test]
+    fn euler_zero_is_identity_and_rejects_non_numbers() {
+        let mut l = state(vec![
+            BridgeVal::Num(0.0),
+            BridgeVal::Num(0.0),
+            BridgeVal::Num(0.0),
+        ]);
+        assert_eq!(stub_0x27399c(&mut l), 1);
+        assert_eq!(l.stack.last(), Some(&BridgeVal::CFrame(identity())));
+    }
+
+    #[test]
+    #[should_panic(expected = "number expected")]
+    fn euler_checknumber_throws_on_non_number() {
+        let mut l = state(vec![
+            BridgeVal::Vec3(Vector3 { x: 0.0, y: 0.0, z: 0.0 }),
+            BridgeVal::Num(0.0),
+            BridgeVal::Num(0.0),
+        ]);
+        stub_0x27399c(&mut l);
+    }
+
+    #[test]
+    fn axis_angle_zero_is_identity() {
+        // angle 0: c = 1, s = 0, t = 0 -> exact identity for any axis.
+        let mut l = state(vec![vec3(0.0, 1.0, 0.0), BridgeVal::Num(0.0)]);
+        assert_eq!(stub_0x273ad8(&mut l), 1);
+        assert_eq!(l.stack.last(), Some(&BridgeVal::CFrame(identity())));
+    }
+
+    #[test]
+    fn add_sub_keep_rotation_and_shift_translation() {
+        let a = cf(
+            [0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+            (1.0, 2.0, 3.0),
+        );
+        let mut l = state(vec![a.clone(), vec3(10.0, -20.0, 30.0)]);
+        assert_eq!(stub_0x273c2c(&mut l), 1);
+        assert_eq!(
+            l.stack.last(),
+            Some(&cf(
+                [0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+                (11.0, -18.0, 33.0)
+            ))
+        );
+        let mut l = state(vec![a, vec3(10.0, -20.0, 30.0)]);
+        assert_eq!(stub_0x273ce0(&mut l), 1);
+        assert_eq!(
+            l.stack.last(),
+            Some(&cf(
+                [0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+                (-9.0, 22.0, -27.0)
+            ))
+        );
+    }
+
+    #[test]
+    fn mul_composes_frames_and_point_transforms_with_translation() {
+        // B = translated identity; A has a 90°-about-Z rotation (exact ints).
+        let a = cf(
+            [0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+            (1.0, 2.0, 3.0),
+        );
+        let b = cf(
+            [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0],
+            (4.0, 5.0, 6.0),
+        );
+        let mut l = state(vec![a, b]);
+        assert_eq!(stub_0x273d94(&mut l), 1);
+        // R = A.R; T = A.R*B.T + A.T = (-5+1, 4+2, 6+3).
+        assert_eq!(
+            l.stack.last(),
+            Some(&cf(
+                [0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+                (-4.0, 6.0, 9.0)
+            ))
+        );
+        // CFrame * Vector3 includes the translation (w = 1 path, 0x273eb2).
+        let mut l = state(vec![
+            cf(
+                [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0],
+                (1.0, 2.0, 3.0),
+            ),
+            vec3(10.0, 20.0, 30.0),
+        ]);
+        assert_eq!(stub_0x273d94(&mut l), 1);
+        assert_eq!(
+            l.stack.last(),
+            Some(&BridgeVal::Vec3(Vector3 { x: 11.0, y: 22.0, z: 33.0 }))
+        );
+    }
+
+    #[test]
+    fn inverse_negates_translated_identity() {
+        let mut l = state(vec![cf(
+            [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0],
+            (1.0, 2.0, 3.0),
+        )]);
+        assert_eq!(stub_0x273f48(&mut l), 1);
+        assert_eq!(
+            l.stack.last(),
+            Some(&cf(
+                [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0],
+                (-1.0, -2.0, -3.0)
+            ))
+        );
+        // 180°-about-Z (exact ints) is its own inverse rotation.
+        let mut l = state(vec![cf(
+            [-1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 1.0],
+            (1.0, 0.0, 0.0),
+        )]);
+        assert_eq!(stub_0x273f48(&mut l), 1);
+        assert_eq!(
+            l.stack.last(),
+            Some(&cf(
+                [-1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 1.0],
+                (1.0, 0.0, 0.0)
+            ))
+        );
+    }
+
+    #[test]
+    fn to_world_copies_self_and_composes_args() {
+        let a = cf(
+            [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0],
+            (1.0, 0.0, 0.0),
+        );
+        let b = cf(
+            [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0],
+            (0.0, 2.0, 0.0),
+        );
+        let mut l = state(vec![a.clone()]);
+        assert_eq!(stub_0x274024(&mut l), 1);
+        assert_eq!(l.stack.last(), Some(&a));
+        let mut l = state(vec![a.clone(), b]);
+        assert_eq!(stub_0x274024(&mut l), 1);
+        assert_eq!(
+            l.stack.last(),
+            Some(&cf(
+                [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0],
+                (1.0, 2.0, 0.0)
+            ))
+        );
+        // Zero args: checkudata(1) raises before gettop is even read
+        // (0x274044 precedes 0x27404c), so the `return -1` tail (0x2740e2)
+        // is unreachable in practice; the model keeps the branch for shape
+        // fidelity.
+    }
+
+    #[test]
+    #[should_panic]
+    fn to_world_zero_args_raises_like_checkudata() {
+        stub_0x274024(&mut BridgeState::new());
+    }
+
+    #[test]
+    fn to_object_uses_inverse() {
+        let a = cf(
+            [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0],
+            (1.0, 0.0, 0.0),
+        );
+        let mut l = state(vec![a]);
+        assert_eq!(stub_0x2740e4(&mut l), 1);
+        assert_eq!(
+            l.stack.last(),
+            Some(&cf(
+                [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0],
+                (-1.0, -0.0, -0.0)
+            ))
+        );
+    }
+
+    #[test]
+    fn point_to_world_adds_translation() {
+        let a = cf(
+            [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0],
+            (5.0, 6.0, 7.0),
+        );
+        // Single-arg path transforms zero -> the translation.
+        let mut l = state(vec![a.clone()]);
+        assert_eq!(stub_0x274394(&mut l), 1);
+        assert_eq!(
+            l.stack.last(),
+            Some(&BridgeVal::Vec3(Vector3 { x: 5.0, y: 6.0, z: 7.0 }))
+        );
+        let mut l = state(vec![a, vec3(1.0, 2.0, 3.0)]);
+        assert_eq!(stub_0x274394(&mut l), 1);
+        assert_eq!(
+            l.stack.last(),
+            Some(&BridgeVal::Vec3(Vector3 { x: 6.0, y: 8.0, z: 10.0 }))
+        );
+    }
+
+    #[test]
+    fn point_to_object_subtracts_then_unrotates() {
+        let a = cf(
+            [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0],
+            (1.0, 2.0, 3.0),
+        );
+        let mut l = state(vec![a, vec3(4.0, 6.0, 8.0)]);
+        assert_eq!(stub_0x274528(&mut l), 1);
+        assert_eq!(
+            l.stack.last(),
+            Some(&BridgeVal::Vec3(Vector3 { x: 3.0, y: 4.0, z: 5.0 }))
+        );
+    }
+
+    #[test]
+    fn vector_to_world_ignores_translation() {
+        let a = cf(
+            [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0],
+            (1.0, 2.0, 3.0),
+        );
+        let mut l = state(vec![a.clone(), vec3(4.0, 6.0, 8.0)]);
+        assert_eq!(stub_0x2746bc(&mut l), 1);
+        assert_eq!(
+            l.stack.last(),
+            Some(&BridgeVal::Vec3(Vector3 { x: 4.0, y: 6.0, z: 8.0 }))
+        );
+        // Single-arg path rotates zero -> exact +0 lanes (no T added).
+        let mut l = state(vec![a]);
+        assert_eq!(stub_0x2746bc(&mut l), 1);
+        assert_eq!(
+            l.stack.last(),
+            Some(&BridgeVal::Vec3(Vector3 { x: 0.0, y: 0.0, z: 0.0 }))
+        );
+    }
+
+    #[test]
+    fn register_coordinate_frame_library() {
+        let mut l = BridgeState::new();
+        assert_eq!(stub_0x273bf0(&mut l), 0);
+        assert_eq!(l.registered_libs, vec!["CoordinateFrame"]);
+        assert_eq!(l.gettop(), 0);
+    }
+
+    #[test]
+    fn look_at_math_matches_disasm_columns() {
+        // Direct helper check: eye origin, target +Z, up +Y gives columns
+        // (Y, X2, -Z) = [(-1,0,0), (0,1,0), (0,0,-1)] row-major.
+        let r = cframe_look_at_rotation(
+            &Vector3 { x: 0.0, y: 0.0, z: 0.0 },
+            &Vector3 { x: 0.0, y: 0.0, z: 1.0 },
+            &Vector3 { x: 0.0, y: 1.0, z: 0.0 },
+        );
+        assert_eq!(
+            r.m,
+            [-1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, -1.0]
+        );
+        // unitize degenerate branch: zero vector stays, returns 0.
+        let mut z = Vector3 { x: 0.0, y: 0.0, z: 0.0 };
+        assert_eq!(vec3_unitize(&mut z, 1e-6), 0.0);
+        assert_eq!(z, Vector3 { x: 0.0, y: 0.0, z: 0.0 });
+    }
+
+    #[test]
+    fn euler_and_quat_helpers_follow_grounded_formulas() {
+        // Rx(90°)·Ry(0)·Rz(0): rows [1,0,0],[0,c,-s],[0,s,c] with f32 trig.
+        let r = matrix3_from_euler_xyz(std::f32::consts::FRAC_PI_2, 0.0, 0.0);
+        let (s, c) = (
+            std::f32::consts::FRAC_PI_2.sin(),
+            std::f32::consts::FRAC_PI_2.cos(),
+        );
+        assert_eq!(r.m, [1.0, 0.0, 0.0, 0.0, c, -s, 0.0, s, c]);
+        // 90° about +Z via axis-angle: rows [c,-s,0],[s,c,0],[0,0,1].
+        let q = matrix3_from_axis_angle(
+            &Vector3 { x: 0.0, y: 0.0, z: 1.0 },
+            std::f32::consts::FRAC_PI_2,
+        );
+        let c2 = (std::f32::consts::FRAC_PI_2 as f64).cos() as f32;
+        let s2 = (std::f32::consts::FRAC_PI_2 as f64).sin() as f32;
+        let t2 = 1.0 - c2;
+        assert_eq!(
+            q.m,
+            [
+                c2 + t2 * 0.0,
+                t2 * 0.0 - s2 * 1.0,
+                t2 * 0.0 + s2 * 0.0,
+                t2 * 0.0 + s2 * 1.0,
+                c2 + t2 * 0.0,
+                t2 * 0.0 - s2 * 0.0,
+                t2 * 0.0 - s2 * 0.0,
+                t2 * 0.0 + s2 * 0.0,
+                c2 + t2 * 1.0,
+            ]
+        );
+    }
+
+    #[test]
+    fn cframe_mul_matches_grounded_compose() {
+        let a = CoordinateFrame {
+            rotation: Matrix3 { m: [2.0, 0.0, 0.0, 0.0, 3.0, 0.0, 0.0, 0.0, 4.0] },
+            translation: Vector3 { x: 1.0, y: 1.0, z: 1.0 },
+        };
+        let b = CoordinateFrame {
+            rotation: Matrix3 { m: [5.0, 0.0, 0.0, 0.0, 6.0, 0.0, 0.0, 0.0, 7.0] },
+            translation: Vector3 { x: 1.0, y: 2.0, z: 3.0 },
+        };
+        // R = diag(10, 18, 28); T = R1*T2 + T1 = (2*1+1, 3*2+1, 4*3+1).
+        let c = cframe_mul(&a, &b);
+        assert_eq!(
+            c,
+            CoordinateFrame {
+                rotation: Matrix3 {
+                    m: [10.0, 0.0, 0.0, 0.0, 18.0, 0.0, 0.0, 0.0, 28.0]
+                },
+                translation: Vector3 { x: 3.0, y: 7.0, z: 13.0 },
+            }
+        );
     }
 }
