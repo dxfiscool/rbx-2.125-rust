@@ -3827,108 +3827,293 @@ pub fn stub_70f2c() -> ! {
     todo!("0x70f2c global constructor keyed toFMOD::AsyncThread::gAsyncHead")
 }
 
+/// FMOD_VECTOR (3 floats; pos/vel pair in set3DAttributes, IDA 0x710a0).
+#[repr(C)]
+#[derive(Clone, Copy, Default)]
+pub struct FmodVector {
+    pub x: f32,
+    pub y: f32,
+    pub z: f32,
+}
+
+/// FMOD::Channel callback (FMOD_RESULT (*)(FMOD_CHANNEL *,
+/// FMOD_CHANNEL_CALLBACKTYPE, void *, void *), IDA 0x710dc).
+pub type ChannelCallback = Option<unsafe extern "C" fn(*mut u8, u32, *mut u8, *mut u8) -> i32>;
+
+/// Host seam for the FMOD::ChannelI twin behind every FMOD::Channel handle
+/// (IDA 0x70f38..0x712d8). Each Channel method validates the public handle
+/// via ChannelI::validate (0x7c164) and forwards to the ChannelI twin; both
+/// the validator and the twins live outside this batch, so they arrive as a
+/// trait seam (same shape as AsyncOs).
+pub trait ChannelInner {
+    fn validate(channel: *const u8, out_inner: *mut *mut u8) -> i32;
+    fn get_user_data(inner: *mut u8, out: *mut *mut u8) -> i32;
+    fn set_user_data(inner: *mut u8, data: *mut u8) -> i32;
+    fn set_loop_count(inner: *mut u8, count: i32) -> i32;
+    fn get_mode(inner: *mut u8, out: *mut u32) -> i32;
+    fn set_mode(inner: *mut u8, mode: u32) -> i32;
+    fn is_playing(inner: *mut u8, out: *mut u8) -> i32;
+    fn set_3d_attributes(inner: *mut u8, pos: *const FmodVector, vel: *const FmodVector) -> i32;
+    fn set_callback(inner: *mut u8, cb: ChannelCallback) -> i32;
+    fn set_channel_group(inner: *mut u8, group: *mut u8) -> i32;
+    fn set_priority(inner: *mut u8, priority: i32) -> i32;
+    fn set_mute(inner: *mut u8, mute: bool) -> i32;
+    fn get_frequency(inner: *mut u8, out: *mut f32) -> i32;
+    fn set_frequency(inner: *mut u8, freq: f32) -> i32;
+    fn set_volume(inner: *mut u8, volume: f32, ramp: bool) -> i32;
+    fn get_paused(inner: *mut u8, out: *mut u8) -> i32;
+    fn set_paused(inner: *mut u8, paused: bool) -> i32;
+    fn stop(inner: *mut u8) -> i32;
+}
+
 // 0x70f38 — __ZN4FMOD7Channel11getUserDataEPPv
 #[doc(alias = "FMOD::Channel::getUserData(void **)")]
-pub fn stub_70f38() -> ! {
-    todo!("0x70f38 FMOD::Channel::getUserData(void **)")
+pub unsafe fn stub_70f38<I: ChannelInner>(ch: *const u8, out: *mut *mut u8) -> i32 {
+    // IDA 0x70f38: validate (0x70f4c); nonzero -> zero *out when non-null,
+    // return the code (0x70f58..0x70f64); else forward to
+    // ChannelI::getUserData (0x70f74).
+    let mut inner: *mut u8 = core::ptr::null_mut();
+    let rc = I::validate(ch, &mut inner);
+    if rc != 0 {
+        if !out.is_null() {
+            *out = core::ptr::null_mut();
+        }
+        return rc;
+    }
+    I::get_user_data(inner, out)
 }
 
 // 0x70f7c — __ZN4FMOD7Channel11setUserDataEPv
 #[doc(alias = "FMOD::Channel::setUserData(void *)")]
-pub fn stub_70f7c() -> ! {
-    todo!("0x70f7c FMOD::Channel::setUserData(void *)")
+pub unsafe fn stub_70f7c<I: ChannelInner>(ch: *const u8, data: *mut u8) -> i32 {
+    // IDA 0x70f7c: validate (0x70f90); nonzero -> return the code (0x70f98);
+    // else forward to ChannelI::setUserData (0x70fa4).
+    let mut inner: *mut u8 = core::ptr::null_mut();
+    let rc = I::validate(ch, &mut inner);
+    if rc != 0 {
+        return rc;
+    }
+    I::set_user_data(inner, data)
 }
 
 // 0x70fb0 — __ZN4FMOD7Channel12setLoopCountEi
 #[doc(alias = "FMOD::Channel::setLoopCount(int)")]
-pub fn stub_70fb0() -> ! {
-    todo!("0x70fb0 FMOD::Channel::setLoopCount(int)")
+pub unsafe fn stub_70fb0<I: ChannelInner>(ch: *const u8, count: i32) -> i32 {
+    // IDA 0x70fb0: validate (0x70fc4); nonzero -> return the code (0x70fcc);
+    // else forward to ChannelI::setLoopCount (0x70fd8).
+    let mut inner: *mut u8 = core::ptr::null_mut();
+    let rc = I::validate(ch, &mut inner);
+    if rc != 0 {
+        return rc;
+    }
+    I::set_loop_count(inner, count)
 }
 
 // 0x70fe4 — __ZN4FMOD7Channel7getModeEPj
 #[doc(alias = "FMOD::Channel::getMode(unsigned int *)")]
-pub fn stub_70fe4() -> ! {
-    todo!("0x70fe4 FMOD::Channel::getMode(unsigned int *)")
+pub unsafe fn stub_70fe4<I: ChannelInner>(ch: *const u8, out: *mut u32) -> i32 {
+    // IDA 0x70fe4: validate (0x70ff8); nonzero -> zero *out when non-null,
+    // return the code (0x71004..0x71010); else forward to
+    // ChannelI::getMode (0x71020).
+    let mut inner: *mut u8 = core::ptr::null_mut();
+    let rc = I::validate(ch, &mut inner);
+    if rc != 0 {
+        if !out.is_null() {
+            *out = 0;
+        }
+        return rc;
+    }
+    I::get_mode(inner, out)
 }
 
 // 0x71028 — __ZN4FMOD7Channel7setModeEj
 #[doc(alias = "FMOD::Channel::setMode(unsigned int)")]
-pub fn stub_71028() -> ! {
-    todo!("0x71028 FMOD::Channel::setMode(unsigned int)")
+pub unsafe fn stub_71028<I: ChannelInner>(ch: *const u8, mode: u32) -> i32 {
+    // IDA 0x71028: validate (0x7103c); nonzero -> return the code (0x71044);
+    // else forward to ChannelI::setMode (0x71050).
+    let mut inner: *mut u8 = core::ptr::null_mut();
+    let rc = I::validate(ch, &mut inner);
+    if rc != 0 {
+        return rc;
+    }
+    I::set_mode(inner, mode)
 }
 
 // 0x7105c — __ZN4FMOD7Channel9isPlayingEPb
 #[doc(alias = "FMOD::Channel::isPlaying(bool *)")]
-pub fn stub_7105c() -> ! {
-    todo!("0x7105c FMOD::Channel::isPlaying(bool *)")
+pub unsafe fn stub_7105c<I: ChannelInner>(ch: *const u8, out: *mut u8) -> i32 {
+    // IDA 0x7105c: validate (0x71070); nonzero -> zero the byte *out when
+    // non-null (STRBNE, 0x7107c..0x71084), return the code; else forward to
+    // ChannelI::isPlaying (0x71098).
+    let mut inner: *mut u8 = core::ptr::null_mut();
+    let rc = I::validate(ch, &mut inner);
+    if rc != 0 {
+        if !out.is_null() {
+            *out = 0;
+        }
+        return rc;
+    }
+    I::is_playing(inner, out)
 }
 
 // 0x710a0 — __ZN4FMOD7Channel15set3DAttributesEPK11FMOD_VECTORS3_
 #[doc(alias = "FMOD::Channel::set3DAttributes(FMOD_VECTOR const*,FMOD_VECTOR const*)")]
-pub fn stub_710a0() -> ! {
-    todo!("0x710a0 FMOD::Channel::set3DAttributes(FMOD_VECTOR const*,FMOD_VECTOR const*)")
+pub unsafe fn stub_710a0<I: ChannelInner>(
+    ch: *const u8,
+    pos: *const FmodVector,
+    vel: *const FmodVector,
+) -> i32 {
+    // IDA 0x710a0: validate (0x710b8); nonzero -> return the code (0x710c0);
+    // else forward pos/vel to ChannelI::set3DAttributes (0x710d0).
+    let mut inner: *mut u8 = core::ptr::null_mut();
+    let rc = I::validate(ch, &mut inner);
+    if rc != 0 {
+        return rc;
+    }
+    I::set_3d_attributes(inner, pos, vel)
 }
 
 // 0x710dc — __ZN4FMOD7Channel11setCallbackEPF11FMOD_RESULTP12FMOD_CHANNEL25FMOD_CHANNEL_CALLBACKTYPEPvS5_E
 #[doc(
     alias = "FMOD::Channel::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))"
 )]
-pub fn stub_710dc() -> ! {
-    todo!("0x710dc FMOD::Channel::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))")
+pub unsafe fn stub_710dc<I: ChannelInner>(ch: *const u8, cb: ChannelCallback) -> i32 {
+    // IDA 0x710dc: validate (0x710f0); nonzero -> return the code (0x710f8);
+    // else forward to ChannelI::setCallback (0x71104).
+    let mut inner: *mut u8 = core::ptr::null_mut();
+    let rc = I::validate(ch, &mut inner);
+    if rc != 0 {
+        return rc;
+    }
+    I::set_callback(inner, cb)
 }
 
 // 0x71110 — __ZN4FMOD7Channel15setChannelGroupEPNS_12ChannelGroupE
 #[doc(alias = "FMOD::Channel::setChannelGroup(FMOD::ChannelGroup *)")]
-pub fn stub_71110() -> ! {
-    todo!("0x71110 FMOD::Channel::setChannelGroup(FMOD::ChannelGroup *)")
+pub unsafe fn stub_71110<I: ChannelInner>(ch: *const u8, group: *mut u8) -> i32 {
+    // IDA 0x71110: validate (0x71124); nonzero -> return the code (0x7112c);
+    // else forward to ChannelI::setChannelGroup (0x71138; the group arrives
+    // as its ChannelGroupI twin).
+    let mut inner: *mut u8 = core::ptr::null_mut();
+    let rc = I::validate(ch, &mut inner);
+    if rc != 0 {
+        return rc;
+    }
+    I::set_channel_group(inner, group)
 }
 
 // 0x71144 — __ZN4FMOD7Channel11setPriorityEi
 #[doc(alias = "FMOD::Channel::setPriority(int)")]
-pub fn stub_71144() -> ! {
-    todo!("0x71144 FMOD::Channel::setPriority(int)")
+pub unsafe fn stub_71144<I: ChannelInner>(ch: *const u8, priority: i32) -> i32 {
+    // IDA 0x71144: validate (0x71158); nonzero -> return the code (0x71160);
+    // else forward to ChannelI::setPriority (0x7116c).
+    let mut inner: *mut u8 = core::ptr::null_mut();
+    let rc = I::validate(ch, &mut inner);
+    if rc != 0 {
+        return rc;
+    }
+    I::set_priority(inner, priority)
 }
 
 // 0x71178 — __ZN4FMOD7Channel7setMuteEb
 #[doc(alias = "FMOD::Channel::setMute(bool)")]
-pub fn stub_71178() -> ! {
-    todo!("0x71178 FMOD::Channel::setMute(bool)")
+pub unsafe fn stub_71178<I: ChannelInner>(ch: *const u8, mute: bool) -> i32 {
+    // IDA 0x71178: UXTB the bool (0x71184), validate (0x7118c); nonzero ->
+    // return the code (0x71194); else forward to ChannelI::setMute (0x711a0).
+    let mut inner: *mut u8 = core::ptr::null_mut();
+    let rc = I::validate(ch, &mut inner);
+    if rc != 0 {
+        return rc;
+    }
+    I::set_mute(inner, mute)
 }
 
 // 0x711ac — __ZN4FMOD7Channel12getFrequencyEPf
 #[doc(alias = "FMOD::Channel::getFrequency(float *)")]
-pub fn stub_711ac() -> ! {
-    todo!("0x711ac FMOD::Channel::getFrequency(float *)")
+pub unsafe fn stub_711ac<I: ChannelInner>(ch: *const u8, out: *mut f32) -> i32 {
+    // IDA 0x711ac: validate (0x711c0); nonzero -> zero *out when non-null,
+    // return the code (0x711cc..0x711d8); else forward to
+    // ChannelI::getFrequency (0x711e8).
+    let mut inner: *mut u8 = core::ptr::null_mut();
+    let rc = I::validate(ch, &mut inner);
+    if rc != 0 {
+        if !out.is_null() {
+            *out = 0.0;
+        }
+        return rc;
+    }
+    I::get_frequency(inner, out)
 }
 
 // 0x711f0 — __ZN4FMOD7Channel12setFrequencyEf
 #[doc(alias = "FMOD::Channel::setFrequency(float)")]
-pub fn stub_711f0() -> ! {
-    todo!("0x711f0 FMOD::Channel::setFrequency(float)")
+pub unsafe fn stub_711f0<I: ChannelInner>(ch: *const u8, freq: f32) -> i32 {
+    // IDA 0x711f0: validate (0x71204); nonzero -> return the code (0x7120c);
+    // else forward to ChannelI::setFrequency (0x71218).
+    let mut inner: *mut u8 = core::ptr::null_mut();
+    let rc = I::validate(ch, &mut inner);
+    if rc != 0 {
+        return rc;
+    }
+    I::set_frequency(inner, freq)
 }
 
 // 0x71224 — __ZN4FMOD7Channel9setVolumeEf
 #[doc(alias = "FMOD::Channel::setVolume(float)")]
-pub fn stub_71224() -> ! {
-    todo!("0x71224 FMOD::Channel::setVolume(float)")
+pub unsafe fn stub_71224<I: ChannelInner>(ch: *const u8, volume: f32) -> i32 {
+    // IDA 0x71224: validate (0x71238); R2 = validate code (SUBS, 0x7123c),
+    // nonzero -> return it (0x71240); else forward to
+    // ChannelI::setVolume(volume, R2) (0x7124c) — R2 is 0 on this path, so
+    // the trailing flag arrives as false — and return its result (0x71250).
+    let mut inner: *mut u8 = core::ptr::null_mut();
+    let rc = I::validate(ch, &mut inner);
+    if rc != 0 {
+        return rc;
+    }
+    I::set_volume(inner, volume, false)
 }
 
 // 0x71260 — __ZN4FMOD7Channel9getPausedEPb
 #[doc(alias = "FMOD::Channel::getPaused(bool *)")]
-pub fn stub_71260() -> ! {
-    todo!("0x71260 FMOD::Channel::getPaused(bool *)")
+pub unsafe fn stub_71260<I: ChannelInner>(ch: *const u8, out: *mut u8) -> i32 {
+    // IDA 0x71260: validate (0x71274); nonzero -> zero the byte *out when
+    // non-null (STRBNE, 0x71280..0x71288), return the code; else forward to
+    // ChannelI::getPaused (0x7129c).
+    let mut inner: *mut u8 = core::ptr::null_mut();
+    let rc = I::validate(ch, &mut inner);
+    if rc != 0 {
+        if !out.is_null() {
+            *out = 0;
+        }
+        return rc;
+    }
+    I::get_paused(inner, out)
 }
 
 // 0x712a4 — __ZN4FMOD7Channel9setPausedEb
 #[doc(alias = "FMOD::Channel::setPaused(bool)")]
-pub fn stub_712a4() -> ! {
-    todo!("0x712a4 FMOD::Channel::setPaused(bool)")
+pub unsafe fn stub_712a4<I: ChannelInner>(ch: *const u8, paused: bool) -> i32 {
+    // IDA 0x712a4: UXTB the bool (0x712b0), validate (0x712b8); nonzero ->
+    // return the code (0x712c0); else forward to ChannelI::setPaused (0x712cc).
+    let mut inner: *mut u8 = core::ptr::null_mut();
+    let rc = I::validate(ch, &mut inner);
+    if rc != 0 {
+        return rc;
+    }
+    I::set_paused(inner, paused)
 }
 
 // 0x712d8 — __ZN4FMOD7Channel4stopEv
 #[doc(alias = "FMOD::Channel::stop(void)")]
-pub fn stub_712d8() -> ! {
-    todo!("0x712d8 FMOD::Channel::stop(void)")
+pub unsafe fn stub_712d8<I: ChannelInner>(ch: *const u8) -> i32 {
+    // IDA 0x712d8: validate (0x712e8); nonzero -> return the code (0x712f0);
+    // else forward to ChannelI::stop (0x712f8).
+    let mut inner: *mut u8 = core::ptr::null_mut();
+    let rc = I::validate(ch, &mut inner);
+    if rc != 0 {
+        return rc;
+    }
+    I::stop(inner)
 }
 
 // 0x71304 — __ZN4FMOD15ChannelEmulated9isVirtualEPb
