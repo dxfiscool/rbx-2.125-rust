@@ -121,6 +121,36 @@ pub(crate) static PLACE_LAST_ANALYTICS_LABEL: std::sync::LazyLock<parking_lot::M
     std::sync::LazyLock::new(|| parking_lot::Mutex::new(String::new()));
 pub(crate) static PLACE_LAST_JOIN_LOCAL: std::sync::LazyLock<parking_lot::Mutex<(i32, String)>> =
     std::sync::LazyLock::new(|| parking_lot::Mutex::new((0, String::new())));
+/// Gap-filler PlaceLauncher join/leave/teleport state (IDA 0x276b0-0x2a99c).
+/// Join-request queue, session/page-view reports, leave/shutdown posts and
+/// the background-task + backgrounded-view flags record here.
+pub(crate) static PLACE_SIGNED_SCRIPTS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PLACE_SESSION_REPORTS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PLACE_PAGE_VIEWS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PLACE_LEAVE_POSTS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PLACE_TELEPORT_ANIMS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PLACE_START_SUCCESSES: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PLACE_IS_LEAVING: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static PLACE_BG_TASK: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static PLACE_VIEW_BACKGROUNDED: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static PLACE_LAST_SOLO_JOIN: std::sync::atomic::AtomicI32 =
+    std::sync::atomic::AtomicI32::new(0);
+pub(crate) static PLACE_LAST_JOIN_REQUEST: std::sync::LazyLock<parking_lot::Mutex<(i32, u32)>> =
+    std::sync::LazyLock::new(|| parking_lot::Mutex::new((0, 0)));
+pub(crate) static PLACE_LAST_TELEPORT: std::sync::LazyLock<
+    parking_lot::Mutex<(String, String, String)>,
+> = std::sync::LazyLock::new(|| {
+    parking_lot::Mutex::new((String::new(), String::new(), String::new()))
+});
 
 // 0x239ec — __ZN18iOSSettingsService27ReadValueiPadMinimumVersionEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
@@ -1090,13 +1120,12 @@ pub fn stub_0x26990(script: &str) {
 pub fn stub_0x26bb8(port: i32, ip: &str, present_automatically: bool) -> bool {
     // IDA 0x26bb8: `startGameLocal:...` sets up the preloaded unsecured
     // game (0x26784), binds `joinLocalGame` (0x26dd4) over port + ip, and
-    // starts it via `startGame:controller:preloadedGame:` (cf. 0x29490).
+    // starts it via `startGame:controller:preloadedGame:` (0x29490).
     if !stub_0x26784(true, true, false) {
         return false;
     }
     *PLACE_LAST_JOIN_LOCAL.lock() = (port, ip.to_owned());
-    let _ = present_automatically;
-    true
+    stub_0x29490(present_automatically)
 }
 
 // 0x26dd4 — __ZL13joinLocalGameiRKSsN5boost10shared_ptrIN3RBX4GameEEE
@@ -1118,13 +1147,12 @@ pub fn stub_0x26dd4(port: i32, server: &str) {
 pub fn stub_0x27054(file: &str, present_automatically: bool) -> bool {
     // IDA 0x27054: `startAppWithFile:...` sets up the preloaded unsecured
     // game (0x26784), binds `loadLocalApp` (0x27268) over the file path,
-    // and starts it via `startGame:controller:preloadedGame:` (cf. 0x29490).
+    // and starts it via `startGame:controller:preloadedGame:` (0x29490).
     if !stub_0x26784(true, true, false) {
         return false;
     }
     *PLACE_LAST_APP_FILE.lock() = file.to_owned();
-    let _ = present_automatically;
-    true
+    stub_0x29490(present_automatically)
 }
 
 // 0x27268 — __ZL12loadLocalAppRKSsN5boost10shared_ptrIN3RBX4GameEEE
@@ -1142,171 +1170,345 @@ pub fn stub_0x27268(file: &str) {
 // 0x276b0 — -[PlaceLauncher startAppWithId:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, int, id, char)
 #[doc(alias = "-[PlaceLauncher startAppWithId:controller:presentGameAutomatically:]")]
-pub fn stub_0x276b0() -> ! {
-    todo!("0x276b0 -[PlaceLauncher startAppWithId:controller:presentGameAutomatically:]")
+pub fn stub_0x276b0(place_id: i32, present_automatically: bool) -> bool {
+    // IDA 0x276b0: `startAppWithId:...` sets up the preloaded app game
+    // (0x267bc, `isApp` 1), binds `joinGamePlaceId` (0x278a8) over the
+    // place id + request 2, and starts it via
+    // `startGame:controller:preloadedGame:` (0x29490).
+    if !stub_0x267bc(true, true) {
+        return false;
+    }
+    *PLACE_LAST_JOIN_REQUEST.lock() = (place_id, 2);
+    stub_0x29490(present_automatically)
 }
 
 // 0x278a8 — __ZL15joinGamePlaceIdiN5boost10shared_ptrIN3RBX4GameEEE15JoinGameRequest
 #[doc(alias = "joinGamePlaceId(int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest)")]
 #[doc(alias = "__ZL15joinGamePlaceIdiN5boost10shared_ptrIN3RBX4GameEEE15JoinGameRequest")]
-pub fn stub_0x278a8() -> ! {
-    todo!("0x278a8 joinGamePlaceId(int,boost::shared_ptr<RBX::Game>,JoinGameRequest)")
+pub fn stub_0x278a8(place_id: i32, request: u32, join_response: &str) {
+    // IDA 0x278a8: `joinGamePlaceId` polls `Game/PlaceLauncher.ashx`
+    // (`request=RequestGame&placeId=` / `RequestFollowUser&userId=`, or the
+    // `Game/AppStart.ashx` overlay path for request 2) until `"status":2`
+    // (retry on 0/1, `usleep` backoff — poll loop is drop glue, the final
+    // response drives the outcome). Request 2 runs `executeSignedScript`;
+    // otherwise the `joinScriptUrl` value unescapes (`\/` → `/`) and runs
+    // `executeUrlScript`. Success records the place id (0x25080), a session
+    // report and a `Visit/Success/Join` page view; failure alerts
+    // (`ConnectionError`, `ConnectionErrorGameFull` on 6,
+    // `ConnectionErrorGameEnded` on 5) then `leaveGame` + failure forward.
+    if join_response.contains("\"status\":2") {
+        if request == 2 {
+            PLACE_SIGNED_SCRIPTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        } else {
+            let url = join_response.find("joinScriptUrl").map(|at| {
+                let tail = &join_response[at..];
+                let end = tail.find([',', '"', '}']).unwrap_or(tail.len());
+                tail[..end].replace("\\/", "/")
+            });
+            *PLACE_LAST_JOIN_SCRIPT.lock() = url.unwrap_or_else(|| join_response.to_owned());
+            PLACE_EXECUTED_SCRIPTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        }
+        stub_0x25080(place_id);
+        PLACE_SESSION_REPORTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        PLACE_PAGE_VIEWS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    } else {
+        let alert = if join_response.contains("\"status\":6") {
+            "ConnectionErrorGameFull"
+        } else if join_response.contains("\"status\":5") {
+            "ConnectionErrorGameEnded"
+        } else {
+            "ConnectionError"
+        };
+        *PLACE_LAST_ALERT.lock() = alert.to_owned();
+        stub_0x298e0(true, true);
+        PLACE_FAILURE_FORWARDS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        PLACE_IS_PLAYING.store(false, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x289a8 — -[PlaceLauncher startGame:controller:request:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, int, id, int, char)
 #[doc(alias = "-[PlaceLauncher startGame:controller:request:presentGameAutomatically:]")]
-pub fn stub_0x289a8() -> ! {
-    todo!("0x289a8 -[PlaceLauncher startGame:controller:request:presentGameAutomatically:]")
+pub fn stub_0x289a8(place_id: i32, request: u32, present_automatically: bool) -> bool {
+    // IDA 0x289a8: `startGame:controller:request:...` sets up the preloaded
+    // game (0x267bc, `isApp` = request 2), binds `joinGamePlaceId` (0x278a8)
+    // over place id + request, and starts it via
+    // `startGame:controller:preloadedGame:` (0x29490).
+    if !stub_0x267bc(true, request == 2) {
+        return false;
+    }
+    *PLACE_LAST_JOIN_REQUEST.lock() = (place_id, request);
+    stub_0x29490(present_automatically)
 }
 
 // 0x28ba8 — -[PlaceLauncher startGameSolo:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, int, id, char)
 #[doc(alias = "-[PlaceLauncher startGameSolo:controller:presentGameAutomatically:]")]
-pub fn stub_0x28ba8() -> ! {
-    todo!("0x28ba8 -[PlaceLauncher startGameSolo:controller:presentGameAutomatically:]")
+pub fn stub_0x28ba8(place_id: i32, present_automatically: bool) -> bool {
+    // IDA 0x28ba8: `startGameSolo:...` sets up the preloaded game
+    // (0x267bc), binds `joinGamePlaceIdSolo` (0x28d98) over the place id,
+    // and starts it via `startGame:controller:preloadedGame:` (0x29490).
+    if !stub_0x267bc(true, false) {
+        return false;
+    }
+    PLACE_LAST_SOLO_JOIN.store(place_id, std::sync::atomic::Ordering::SeqCst);
+    stub_0x29490(present_automatically)
 }
 
 // 0x28d98 — __ZL19joinGamePlaceIdSoloiN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "joinGamePlaceIdSolo(int,rbx_core::SharedPtr<RBX::Game>)")]
 #[doc(alias = "__ZL19joinGamePlaceIdSoloiN5boost10shared_ptrIN3RBX4GameEEE")]
-pub fn stub_0x28d98() -> ! {
-    todo!("0x28d98 joinGamePlaceIdSolo(int,boost::shared_ptr<RBX::Game>)")
+pub fn stub_0x28d98(place_id: i32) {
+    // IDA 0x28d98: `joinGamePlaceIdSolo` formats
+    // `loadfile('<base>game/visit.ashx?placeid=%d')()` (or the workshop
+    // start place for id < 1), executes it on the game, then records the
+    // place id (0x25080) and a `VisitSolo/Success/Join` page view. The
+    // `RobloxInfo` base URL prefixes on device; the formatted tail records.
+    let script = if place_id < 1 {
+        "game:Load('rbxasset://places/workshop/workshopStartPlace.rbxl') loadfile('game/visit.ashx')()"
+            .to_owned()
+    } else {
+        format!("loadfile('game/visit.ashx?placeid={place_id}')()")
+    };
+    *PLACE_LAST_LOAD_SCRIPT.lock() = script;
+    PLACE_EXECUTED_SCRIPTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    stub_0x25080(place_id);
+    PLACE_PAGE_VIEWS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x29280 — -[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, id, id, char)
 #[doc(alias = "-[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]")]
-pub fn stub_0x29280() -> ! {
-    todo!("0x29280 -[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]")
+pub fn stub_0x29280(script: &str, present_automatically: bool) -> bool {
+    // IDA 0x29280: `startGameWithJoinScript:...` sets up the preloaded game
+    // (0x267bc), binds `joinGameWithJoinScript` (0x26990) over the script,
+    // and starts it via `startGame:controller:preloadedGame:` (0x29490).
+    if !stub_0x267bc(true, false) {
+        return false;
+    }
+    *PLACE_LAST_JOIN_SCRIPT.lock() = script.to_owned();
+    stub_0x29490(present_automatically)
 }
 
 // 0x29490 — -[PlaceLauncher startGame:controller:preloadedGame:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, function0<void>, id, shared_ptr<RBX::Game>, char)
 #[doc(alias = "-[PlaceLauncher startGame:controller:preloadedGame:presentGameAutomatically:]")]
-pub fn stub_0x29490() -> ! {
-    todo!("0x29490 -[PlaceLauncher startGame:controller:preloadedGame:presentGameAutomatically:]")
+pub fn stub_0x29490(present_automatically: bool) -> bool {
+    // IDA 0x29490: `startGame:controller:preloadedGame:...` runs the bound
+    // join closure on a detached `GameStartScript` thread (`boost::thread`
+    // hop is drop glue), then `createGame:presentGameAutomatically:`
+    // (0x261d8), always reporting started.
+    PLACE_JOIN_THREADS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    stub_0x261d8(true, false, false, false, present_automatically);
+    true
 }
 
 // 0x295c0 — -[PlaceLauncher leaveGameShutdown]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher leaveGameShutdown]")]
-pub fn stub_0x295c0() -> ! {
-    todo!("0x295c0 -[PlaceLauncher leaveGameShutdown]")
+pub fn stub_0x295c0() {
+    // IDA 0x295c0: `leaveGameShutdown` posts the
+    // `startLeaveGameNotification`, dismisses the ogre view controller
+    // unanimated, and its completion block (0x29684) tears the game down.
+    PLACE_LEAVE_POSTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    stub_0x29684();
 }
 
 // 0x29684 — ___34-[PlaceLauncher leaveGameShutdown]_block_invoke
 #[doc(alias = "___34-[PlaceLauncher leaveGameShutdown]_block_invoke")]
-pub fn stub_0x29684() -> ! {
-    todo!("0x29684 ___34-[PlaceLauncher leaveGameShutdown]_block_invoke")
+pub fn stub_0x29684() {
+    // IDA 0x29684: `leaveGameShutdown` completion releases the ogre view
+    // controller/view/window, runs `deleteRobloxView` (0x25440), clears the
+    // playing/leaving flags, posts the leave notification, drops the
+    // `RobloxGameState` default and ends the background task (`NSLog`
+    // traffic is drop glue).
+    stub_0x25440();
+    PLACE_CURRENTLY_PLAYING.store(false, std::sync::atomic::Ordering::SeqCst);
+    PLACE_IS_LEAVING.store(false, std::sync::atomic::Ordering::SeqCst);
+    PLACE_BG_TASK.store(false, std::sync::atomic::Ordering::SeqCst);
+    PLACE_LEAVE_POSTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x298a0 — ___copy_helper_block_191
 #[doc(alias = "___copy_helper_block_191")]
-pub fn stub_0x298a0() -> ! {
-    todo!("0x298a0 ___copy_helper_block_191")
+pub fn stub_0x298a0() {
+    // IDA 0x298a0: `__copy_helper_block_191` retains the captured objects
+    // (`_Block_object_assign`). `Arc` clone glue covers it; no explicit body.
 }
 
 // 0x298c4 — ___destroy_helper_block_192
 #[doc(alias = "___destroy_helper_block_192")]
-pub fn stub_0x298c4() -> ! {
-    todo!("0x298c4 ___destroy_helper_block_192")
+pub fn stub_0x298c4() {
+    // IDA 0x298c4: `__destroy_helper_block_192` releases the captured
+    // objects (`_Block_object_dispose`). `Arc` drop glue covers it; no
+    // explicit body.
 }
 
 // 0x298e0 — -[PlaceLauncher leaveGame]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher leaveGame]")]
-pub fn stub_0x298e0() -> ! {
-    todo!("0x298e0 -[PlaceLauncher leaveGame]")
+pub fn stub_0x298e0(currently_playing: bool, has_ogre_view: bool) {
+    // IDA 0x298e0: `leaveGame` proceeds only while playing and not already
+    // leaving with an ogre view up: it re-enables the idle timer, records
+    // the `leaveGame` state, closes child connections (0x2b5e0), files a
+    // session report + `Visit/Success/LeaveGame` page view, opens a
+    // background task (expiration block 0x29bb4), and on iOS 6+ dispatches
+    // `leaveGameShutdown` (0x29c74 → 0x295c0) on the main queue, else shuts
+    // down inline. UIKit/GCD hops are drop glue.
+    if !currently_playing || PLACE_IS_LEAVING.swap(true, std::sync::atomic::Ordering::SeqCst) {
+        return;
+    }
+    if !has_ogre_view {
+        return;
+    }
+    PLACE_IDLE_TIMER_DISABLED.store(false, std::sync::atomic::Ordering::SeqCst);
+    PLACE_CHILD_ADDED_CONNECTED.store(false, std::sync::atomic::Ordering::SeqCst);
+    PLACE_SESSION_REPORTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    PLACE_PAGE_VIEWS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    PLACE_BG_TASK.store(true, std::sync::atomic::Ordering::SeqCst);
+    stub_0x29bb4();
+    stub_0x29c74();
 }
 
 // 0x29bb4 — ___26-[PlaceLauncher leaveGame]_block_invoke
 #[doc(alias = "___26-[PlaceLauncher leaveGame]_block_invoke")]
-pub fn stub_0x29bb4() -> ! {
-    todo!("0x29bb4 ___26-[PlaceLauncher leaveGame]_block_invoke")
+pub fn stub_0x29bb4() {
+    // IDA 0x29bb4: `leaveGame` expiration block ends the background task
+    // and invalidates the handle.
+    PLACE_BG_TASK.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x29c34 — ___copy_helper_block_217
 #[doc(alias = "___copy_helper_block_217")]
-pub fn stub_0x29c34() -> ! {
-    todo!("0x29c34 ___copy_helper_block_217")
+pub fn stub_0x29c34() {
+    // IDA 0x29c34: `__copy_helper_block_217` retains the captured objects
+    // (`_Block_object_assign`). `Arc` clone glue covers it; no explicit body.
 }
 
 // 0x29c58 — ___destroy_helper_block_218
 #[doc(alias = "___destroy_helper_block_218")]
-pub fn stub_0x29c58() -> ! {
-    todo!("0x29c58 ___destroy_helper_block_218")
+pub fn stub_0x29c58() {
+    // IDA 0x29c58: `__destroy_helper_block_218` releases the captured
+    // objects (`_Block_object_dispose`). `Arc` drop glue covers it; no
+    // explicit body.
 }
 
 // 0x29c74 — ___26-[PlaceLauncher leaveGame]_block_invoke231
 #[doc(alias = "___26-[PlaceLauncher leaveGame]_block_invoke231")]
-pub fn stub_0x29c74() -> ! {
-    todo!("0x29c74 ___26-[PlaceLauncher leaveGame]_block_invoke231")
+pub fn stub_0x29c74() {
+    // IDA 0x29c74: `leaveGame` main-queue block runs `leaveGameShutdown`
+    // (0x295c0) on iOS 6+; older releases shut down inline (same
+    // 0x295c0 path, cf. 0x298e0).
+    stub_0x295c0();
 }
 
 // 0x29c88 — ___copy_helper_block_232
 #[doc(alias = "___copy_helper_block_232")]
-pub fn stub_0x29c88() -> ! {
-    todo!("0x29c88 ___copy_helper_block_232")
+pub fn stub_0x29c88() {
+    // IDA 0x29c88: `__copy_helper_block_232` retains the captured objects
+    // (`_Block_object_assign`). `Arc` clone glue covers it; no explicit body.
 }
 
 // 0x29c94 — ___destroy_helper_block_233
 #[doc(alias = "___destroy_helper_block_233")]
-pub fn stub_0x29c94() -> ! {
-    todo!("0x29c94 ___destroy_helper_block_233")
+pub fn stub_0x29c94() {
+    // IDA 0x29c94: `__destroy_helper_block_233` releases the captured
+    // objects (`_Block_object_dispose`). `Arc` drop glue covers it; no
+    // explicit body.
 }
 
 // 0x29c9c — -[PlaceLauncher disableViewBecauseGoingToBackground]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher disableViewBecauseGoingToBackground]")]
-pub fn stub_0x29c9c() -> ! {
-    todo!("0x29c9c -[PlaceLauncher disableViewBecauseGoingToBackground]")
+pub fn stub_0x29c9c() {
+    // IDA 0x29c9c: `disableViewBecauseGoingToBackground` stops rendering
+    // on the attached `RobloxView`.
+    if PLACE_ROBX_VIEW.load(std::sync::atomic::Ordering::SeqCst) {
+        PLACE_VIEW_BACKGROUNDED.store(true, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x29cb4 — -[PlaceLauncher enableViewBecauseGoingToForeground]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher enableViewBecauseGoingToForeground]")]
-pub fn stub_0x29cb4() -> ! {
-    todo!("0x29cb4 -[PlaceLauncher enableViewBecauseGoingToForeground]")
+pub fn stub_0x29cb4() {
+    // IDA 0x29cb4: `enableViewBecauseGoingToForeground` resumes rendering
+    // on the attached `RobloxView` (cf. 0x29c9c).
+    if PLACE_ROBX_VIEW.load(std::sync::atomic::Ordering::SeqCst) {
+        PLACE_VIEW_BACKGROUNDED.store(false, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x29ccc — -[PlaceLauncher teleport:withAuthentication:withScript:]
 // type: void __cdecl(PlaceLauncher *self, SEL, id, id, id)
 #[doc(alias = "-[PlaceLauncher teleport:withAuthentication:withScript:]")]
-pub fn stub_0x29ccc() -> ! {
-    todo!("0x29ccc -[PlaceLauncher teleport:withAuthentication:withScript:]")
+pub fn stub_0x29ccc(place_url: &str, auth: &str, script: &str) {
+    // IDA 0x29ccc: `teleport:...` re-records the last-non-game controller,
+    // builds a fresh `SecurePlayerGame`, spawns the `joinGameTeleport`
+    // (0x2a350) thread over url/auth/script, drops the current view
+    // (0x25440), clips the ogre view and runs the 0.5s teleport animation
+    // (blocks 0x2a8c8/0x2a99c, drop glue).
+    PLACE_LAST_NON_GAME.store(true, std::sync::atomic::Ordering::SeqCst);
+    PLACE_UNSECURED_GAME.store(false, std::sync::atomic::Ordering::SeqCst);
+    *PLACE_LAST_TELEPORT.lock() = (place_url.to_owned(), auth.to_owned(), script.to_owned());
+    PLACE_JOIN_THREADS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    stub_0x25440();
+    PLACE_TELEPORT_ANIMS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x2a350 — __ZL16joinGameTeleportSsSsSsP8NSObjectN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "joinGameTeleport(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>)")]
 #[doc(alias = "__ZL16joinGameTeleportSsSsSsP8NSObjectN5boost10shared_ptrIN3RBX4GameEEE")]
-pub fn stub_0x2a350() -> ! {
-    todo!("0x2a350 joinGameTeleport(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>)")
+pub fn stub_0x2a350(place_url: &str, suggest: &str, script: &str, has_controller: bool) {
+    // IDA 0x2a350: `joinGameTeleport` appends `?suggest=` when non-empty,
+    // GETs the teleport URL, runs `executeUrlScript` on the game and pings
+    // `handleStartGameSuccess` on the controller when attached.
+    let full = if suggest.is_empty() {
+        place_url.to_owned()
+    } else {
+        format!("{place_url}?suggest={suggest}")
+    };
+    *PLACE_LAST_JOIN_URL.lock() = full;
+    *PLACE_LAST_JOIN_SCRIPT.lock() = script.to_owned();
+    PLACE_EXECUTED_SCRIPTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    if has_controller {
+        PLACE_START_SUCCESSES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x2a8c8 — ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke
 #[doc(alias = "___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke")]
-pub fn stub_0x2a8c8() -> ! {
-    todo!("0x2a8c8 ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke")
+pub fn stub_0x2a8c8(has_view: bool) {
+    // IDA 0x2a8c8: teleport animation block centers a 1x1 frame on the ogre
+    // view (pure UIKit geometry, drop glue); without a view it applies the
+    // fallback frame instead.
+    let _ = has_view;
 }
 
 // 0x2a988 — ___copy_helper_block_243
 #[doc(alias = "___copy_helper_block_243")]
-pub fn stub_0x2a988() -> ! {
-    todo!("0x2a988 ___copy_helper_block_243")
+pub fn stub_0x2a988() {
+    // IDA 0x2a988: `__copy_helper_block_243` retains the captured objects
+    // (`_Block_object_assign`). `Arc` clone glue covers it; no explicit body.
 }
 
 // 0x2a994 — ___destroy_helper_block_244
 #[doc(alias = "___destroy_helper_block_244")]
-pub fn stub_0x2a994() -> ! {
-    todo!("0x2a994 ___destroy_helper_block_244")
+pub fn stub_0x2a994() {
+    // IDA 0x2a994: `__destroy_helper_block_244` releases the captured
+    // objects (`_Block_object_dispose`). `Arc` drop glue covers it; no
+    // explicit body.
 }
 
 // 0x2a99c — ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke246
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke246")]
-pub fn stub_0x2a99c() -> ! {
-    todo!("0x2a99c ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke246")
+pub fn stub_0x2a99c(datamodel_ready: bool, has_overlay: bool, warnings_enabled: bool) {
+    // IDA 0x2a99c: teleport completion runs
+    // `finishGameSetup:gameViewController:` (0x25498), then submits the
+    // `finishTeleport` (0x2aba4) datamodel task (`boost::bind` is drop glue).
+    stub_0x25498(datamodel_ready, has_overlay, warnings_enabled);
+    PLACE_CONTROL_TASKS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x2aba4 — __ZL14finishTeleportP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEEPNS3_18FunctionMarshallerE
