@@ -1096,85 +1096,129 @@ pub fn stub_1c958() {
 // 0x1c95c — -[HomeViewController placeIdClicked:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController placeIdClicked:]")]
-pub fn stub_1c95c() -> ! {
-    todo!("0x1c95c -[HomeViewController placeIdClicked:]")
+pub fn stub_1c95c(place_text: &str, port_text: &str, ip_text: &str) {
+    // delegate of crate::roblox_view (IDA 0x1c95c)
+    HOME.place_id_clicked(place_text, port_text, ip_text);
 }
 
 // 0x1ca9c — -[HomeViewController searchEditingDidEnd:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController searchEditingDidEnd:]")]
-pub fn stub_1ca9c() -> ! {
-    todo!("0x1ca9c -[HomeViewController searchEditingDidEnd:]")
+pub fn stub_1ca9c() {
+    // delegate of crate::roblox_view (IDA 0x1ca9c)
+    HOME.search_editing_did_end();
 }
 
 // 0x1caa0 — -[HomeViewController searchDidEndOnExit:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController searchDidEndOnExit:]")]
-pub fn stub_1caa0() -> ! {
-    todo!("0x1caa0 -[HomeViewController searchDidEndOnExit:]")
+pub fn stub_1caa0() {
+    // delegate of crate::roblox_view (IDA 0x1caa0)
+    HOME.search_did_end_on_exit();
 }
 
 // 0x1cac8 — -[HomeViewController signUpButtonDidTouchUpInside:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController signUpButtonDidTouchUpInside:]")]
-pub fn stub_1cac8() -> ! {
-    todo!("0x1cac8 -[HomeViewController signUpButtonDidTouchUpInside:]")
+pub fn stub_1cac8() {
+    // delegate of crate::roblox_view (IDA 0x1cac8)
+    HOME.signup_button_did_touch_up_inside();
 }
 
 // 0x1cacc — -[HomeViewController logInButtonDidTouchUpInside:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController logInButtonDidTouchUpInside:]")]
-pub fn stub_1cacc() -> ! {
-    todo!("0x1cacc -[HomeViewController logInButtonDidTouchUpInside:]")
+pub fn stub_1cacc() {
+    // delegate of crate::roblox_view (IDA 0x1cacc)
+    HOME.login_button_did_touch_up_inside();
 }
 
 // 0x1cae0 — -[HomeViewController buttonForWebDidTouchUpInside:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController buttonForWebDidTouchUpInside:]")]
-pub fn stub_1cae0() -> ! {
-    todo!("0x1cae0 -[HomeViewController buttonForWebDidTouchUpInside:]")
+pub fn stub_1cae0(logged_in: bool) {
+    // delegate of crate::roblox_view (IDA 0x1cae0)
+    HOME.button_for_web_did_touch_up_inside(logged_in);
 }
 
 // 0x1cbac — -[HomeViewController btnTouchPlayButtonDisabled:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController btnTouchPlayButtonDisabled:]")]
-pub fn stub_1cbac() -> ! {
-    todo!("0x1cbac -[HomeViewController btnTouchPlayButtonDisabled:]")
+pub fn stub_1cbac() {
+    // delegate of crate::roblox_view (IDA 0x1cbac)
+    HOME.btn_touch_play_button_disabled();
 }
 
 // 0x1cc1c — +[HomeViewController getUrlForButtonTag:recordPageView:]
 // type: id __cdecl(id, SEL, int, char)
 #[doc(alias = "+[HomeViewController getUrlForButtonTag:recordPageView:]")]
-pub fn stub_1cc1c() -> ! {
-    todo!("0x1cc1c +[HomeViewController getUrlForButtonTag:recordPageView:]")
+pub fn stub_1cc1c(
+    base_url: &str,
+    search_url: &str,
+    tablet: bool,
+    tag: i32,
+    record_page_view: bool,
+) -> Option<String> {
+    // delegate of crate::roblox_view (IDA 0x1cc1c)
+    crate::roblox_view::HomeViewControllerState::url_for_button_tag_no_query(
+        base_url,
+        search_url,
+        tablet,
+        tag,
+        record_page_view,
+    )
 }
 
 // 0x1cc54 — +[HomeViewController getUrlForButtonTag:recordPageView:query:]
 // type: id __cdecl(id, SEL, int, char, id)
 #[doc(alias = "+[HomeViewController getUrlForButtonTag:recordPageView:query:]")]
-pub fn stub_1cc54() -> ! {
-    todo!("0x1cc54 +[HomeViewController getUrlForButtonTag:recordPageView:query:]")
+pub fn stub_1cc54(
+    base_url: &str,
+    search_url: &str,
+    tablet: bool,
+    tag: i32,
+    record_page_view: bool,
+    query: &str,
+) -> Option<String> {
+    // delegate of crate::roblox_view (IDA 0x1cc54)
+    crate::roblox_view::HomeViewControllerState::url_for_button_tag(
+        base_url,
+        search_url,
+        tablet,
+        tag,
+        record_page_view,
+        query,
+    )
 }
 
 // 0x1cfe8 — -[HomeViewController prepareForSegue:sender:]
 // type: void __cdecl(HomeViewController *self, SEL, id, id)
 #[doc(alias = "-[HomeViewController prepareForSegue:sender:]")]
-pub fn stub_1cfe8() -> ! {
-    todo!("0x1cfe8 -[HomeViewController prepareForSegue:sender:]")
+pub fn stub_1cfe8(
+    dest_is_nav_bar: bool,
+    sender: crate::roblox_view::HomeSegueSender,
+    base_url: &str,
+    search_url: &str,
+    tablet: bool,
+) -> Option<String> {
+    // delegate of crate::roblox_view (IDA 0x1cfe8)
+    HOME.prepare_for_segue(dest_is_nav_bar, sender, base_url, search_url, tablet)
 }
 
 // 0x1d238 — -[HomeViewController viewMustSegueAfterLoad]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController viewMustSegueAfterLoad]")]
-pub fn stub_1d238() -> ! {
-    todo!("0x1d238 -[HomeViewController viewMustSegueAfterLoad]")
+pub fn stub_1d238() {
+    // delegate of crate::roblox_view (IDA 0x1d238)
+    HOME.view_must_segue_after_load();
 }
 
 // 0x1d248 — -[HomeViewController setJumpToPlaceID:]
 // type: void __cdecl(HomeViewController *self, SEL, int)
 #[doc(alias = "-[HomeViewController setJumpToPlaceID:]")]
-pub fn stub_1d248() -> ! {
-    todo!("0x1d248 -[HomeViewController setJumpToPlaceID:]")
+pub fn stub_1d248(place_id: i32) {
+    // delegate of crate::roblox_view (IDA 0x1d248)
+    HOME.set_jump_to_place_id(place_id);
 }
 
 // 0x1d258 — -[HomeViewController blueFrame]
@@ -4586,106 +4630,121 @@ pub fn stub_36e04(tablet: bool, phone_url: &str, pad_url: &str) -> String {
 // 0x51dc4 — +[MainViewController sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[MainViewController sharedInstance]")]
-pub fn stub_51dc4() -> ! {
-    todo!("0x51dc4 +[MainViewController sharedInstance]")
+pub fn stub_51dc4() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x51dc4)
+    crate::roblox_view::MainViewState::shared_instance()
 }
 
 // 0x51e20 — ___36+[MainViewController sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___36+[MainViewController sharedInstance]_block_invoke")]
-pub fn stub_51e20() -> ! {
-    todo!("0x51e20 ___36+[MainViewController sharedInstance]_block_invoke")
+pub fn stub_51e20() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x51e20)
+    crate::roblox_view::MainViewState::shared_block()
 }
 
 // 0x51e68 — -[MainViewController switchView:]
 // type: void __cdecl(MainViewController *self, SEL, id)
 #[doc(alias = "-[MainViewController switchView:]")]
-pub fn stub_51e68() -> ! {
-    todo!("0x51e68 -[MainViewController switchView:]")
+pub fn stub_51e68(view: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x51e68)
+    crate::roblox_view::MainViewState::shared().switch_view(view);
 }
 
 // 0x51e78 — -[MainViewController addSubview:]
 // type: void __cdecl(MainViewController *self, SEL, id)
 #[doc(alias = "-[MainViewController addSubview:]")]
-pub fn stub_51e78() -> ! {
-    todo!("0x51e78 -[MainViewController addSubview:]")
+pub fn stub_51e78(view: crate::roblox_view::ObjCId) -> bool {
+    // delegate of crate::roblox_view (IDA 0x51e78)
+    crate::roblox_view::MainViewState::shared().add_subview(view)
 }
 
 // 0x51eb8 — -[MainViewController initWithNibName:bundle:]
 // type: MainViewController *__cdecl(MainViewController *self, SEL, id, id)
 #[doc(alias = "-[MainViewController initWithNibName:bundle:]")]
-pub fn stub_51eb8() -> ! {
-    todo!("0x51eb8 -[MainViewController initWithNibName:bundle:]")
+pub fn stub_51eb8() -> bool {
+    // delegate of crate::roblox_view (IDA 0x51eb8)
+    crate::roblox_view::MainViewState::shared().init_with_nib_name()
 }
 
 // 0x51ee8 — -[MainViewController viewDidLoad]
 // type: void __cdecl(MainViewController *self, SEL)
 #[doc(alias = "-[MainViewController viewDidLoad]")]
-pub fn stub_51ee8() -> ! {
-    todo!("0x51ee8 -[MainViewController viewDidLoad]")
+pub fn stub_51ee8() {
+    // delegate of crate::roblox_view (IDA 0x51ee8)
+    crate::roblox_view::MainViewState::shared().view_did_load();
 }
 
 // 0x51f14 — -[MainViewController viewDidUnload]
 // type: void __cdecl(MainViewController *self, SEL)
 #[doc(alias = "-[MainViewController viewDidUnload]")]
-pub fn stub_51f14() -> ! {
-    todo!("0x51f14 -[MainViewController viewDidUnload]")
+pub fn stub_51f14() {
+    // delegate of crate::roblox_view (IDA 0x51f14)
+    crate::roblox_view::MainViewState::shared().view_did_unload();
 }
 
 // 0x51f40 — -[MainViewController getOgreWindow]
 // type: id __cdecl(MainViewController *self, SEL)
 #[doc(alias = "-[MainViewController getOgreWindow]")]
-pub fn stub_51f40() -> ! {
-    todo!("0x51f40 -[MainViewController getOgreWindow]")
+pub fn stub_51f40() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x51f40)
+    crate::roblox_view::MainViewState::shared().ogre_window()
 }
 
 // 0x51f50 — -[MainViewController setOgreWindow:]
 // type: void __cdecl(MainViewController *self, SEL, id)
 #[doc(alias = "-[MainViewController setOgreWindow:]")]
-pub fn stub_51f50() -> ! {
-    todo!("0x51f50 -[MainViewController setOgreWindow:]")
+pub fn stub_51f50(window: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x51f50)
+    crate::roblox_view::MainViewState::shared().set_ogre_window(window);
 }
 
 // 0x51f60 — -[MainViewController getOgreView]
 // type: id __cdecl(MainViewController *self, SEL)
 #[doc(alias = "-[MainViewController getOgreView]")]
-pub fn stub_51f60() -> ! {
-    todo!("0x51f60 -[MainViewController getOgreView]")
+pub fn stub_51f60() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x51f60)
+    crate::roblox_view::MainViewState::shared().ogre_view()
 }
 
 // 0x51f70 — -[MainViewController setOgreView:]
 // type: void __cdecl(MainViewController *self, SEL, id)
 #[doc(alias = "-[MainViewController setOgreView:]")]
-pub fn stub_51f70() -> ! {
-    todo!("0x51f70 -[MainViewController setOgreView:]")
+pub fn stub_51f70(view: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x51f70)
+    crate::roblox_view::MainViewState::shared().set_ogre_view(view);
 }
 
 // 0x51fa0 — -[MainViewController getOgreViewController]
 // type: id __cdecl(MainViewController *self, SEL)
 #[doc(alias = "-[MainViewController getOgreViewController]")]
-pub fn stub_51fa0() -> ! {
-    todo!("0x51fa0 -[MainViewController getOgreViewController]")
+pub fn stub_51fa0() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x51fa0)
+    crate::roblox_view::MainViewState::shared().ogre_view_controller()
 }
 
 // 0x51fb0 — -[MainViewController setOgreViewController:]
 // type: void __cdecl(MainViewController *self, SEL, id)
 #[doc(alias = "-[MainViewController setOgreViewController:]")]
-pub fn stub_51fb0() -> ! {
-    todo!("0x51fb0 -[MainViewController setOgreViewController:]")
+pub fn stub_51fb0(controller: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x51fb0)
+    crate::roblox_view::MainViewState::shared().set_ogre_view_controller(controller);
 }
 
 // 0x51fc0 — -[MainViewController setLastNonGameController:]
 // type: void __cdecl(MainViewController *self, SEL, id)
 #[doc(alias = "-[MainViewController setLastNonGameController:]")]
-pub fn stub_51fc0() -> ! {
-    todo!("0x51fc0 -[MainViewController setLastNonGameController:]")
+pub fn stub_51fc0(controller: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x51fc0)
+    crate::roblox_view::MainViewState::shared().set_last_non_game_controller(controller);
 }
 
 // 0x51fd0 — -[MainViewController getLastNonGameController]
 // type: id __cdecl(MainViewController *self, SEL)
 #[doc(alias = "-[MainViewController getLastNonGameController]")]
-pub fn stub_51fd0() -> ! {
-    todo!("0x51fd0 -[MainViewController getLastNonGameController]")
+pub fn stub_51fd0() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x51fd0)
+    crate::roblox_view::MainViewState::shared().last_non_game_controller()
 }
 
 // 0x53b60 — -[RobloxNavBarViewController initWithCoder:]

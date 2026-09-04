@@ -5,7 +5,9 @@
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
-use std::sync::atomic::{AtomicBool, AtomicU32, Ordering};
+use std::sync::atomic::{AtomicBool, AtomicI32, AtomicU32, Ordering};
+
+use crate::view_controllers::GoogleAnalytics;
 
 pub use rbx_core::SharedPtr;
 
@@ -44,6 +46,17 @@ pub struct MainViewState {
     pub present: bool,
     pub ogre_subviews: parking_lot::Mutex<Vec<ObjCId>>,
     pub(crate) roblox_view: parking_lot::Mutex<Option<SharedPtr<RobloxView>>>,
+    ogre_window: parking_lot::Mutex<ObjCId>,
+    ogre_view: parking_lot::Mutex<ObjCId>,
+    ogre_view_controller: parking_lot::Mutex<ObjCId>,
+    last_non_game_controller: parking_lot::Mutex<ObjCId>,
+    current_view: parking_lot::Mutex<ObjCId>,
+    view_switches: AtomicU32,
+    subview_adds: AtomicU32,
+    nib_initialized: AtomicBool,
+    view_loaded: AtomicBool,
+    view_unloaded: AtomicBool,
+    shared_block_runs: AtomicU32,
 }
 
 impl MainViewState {
@@ -52,6 +65,17 @@ impl MainViewState {
             present,
             ogre_subviews: parking_lot::Mutex::new(ogre_subviews),
             roblox_view: parking_lot::Mutex::new(None),
+            ogre_window: parking_lot::Mutex::new(NIL_ID),
+            ogre_view: parking_lot::Mutex::new(NIL_ID),
+            ogre_view_controller: parking_lot::Mutex::new(NIL_ID),
+            last_non_game_controller: parking_lot::Mutex::new(NIL_ID),
+            current_view: parking_lot::Mutex::new(NIL_ID),
+            view_switches: AtomicU32::new(0),
+            subview_adds: AtomicU32::new(0),
+            nib_initialized: AtomicBool::new(false),
+            view_loaded: AtomicBool::new(false),
+            view_unloaded: AtomicBool::new(false),
+            shared_block_runs: AtomicU32::new(0),
         }
     }
 }
@@ -2050,6 +2074,190 @@ impl MainViewState {
     }
 }
 
+impl MainViewState {
+    /// Canonical `+[MainViewController sharedInstance]` target backing
+    /// `generated.rs` (IDA 0x51dc4): the live singleton always has a view,
+    /// so `addSubview:` reaches it.
+    pub fn shared() -> &'static Self {
+        static SHARED: std::sync::LazyLock<MainViewState> =
+            std::sync::LazyLock::new(|| MainViewState::new(true, Vec::new()));
+        &SHARED
+    }
+
+    /// Identity of the singleton for the `id`-typed generated delegates.
+    pub fn shared_id() -> ObjCId {
+        Self::shared() as *const Self as ObjCId
+    }
+
+    pub fn as_id(&self) -> ObjCId {
+        self as *const Self as ObjCId
+    }
+
+    // 0x51dc4 — +[MainViewController sharedInstance]
+    // type: id __cdecl(id, SEL)
+    // IDA 0x51dc4
+    #[doc(alias = "+[MainViewController sharedInstance]")]
+    #[doc = "+[MainViewController sharedInstance]"]
+    pub fn shared_instance() -> ObjCId {
+        // `dispatch_once(&dword_130C5C0, block)` then `return dword_130C5C4`
+        // (IDA 0x51e0c..0x51e12); the block is `shared_block` (IDA 0x51e20).
+        Self::shared_block();
+        Self::shared_id()
+    }
+
+    // 0x51e20 — ___36+[MainViewController sharedInstance]_block_invoke
+    // type: id __fastcall(int)
+    // IDA 0x51e20
+    #[doc(alias = "___36+[MainViewController sharedInstance]_block_invoke")]
+    #[doc = "___36+[MainViewController sharedInstance]_block_invoke"]
+    pub fn shared_block() -> ObjCId {
+        // `alloc` + `init` stored to `dword_130C5C4` (IDA 0x51e32..0x51e50);
+        // the process-wide singleton is the store.
+        let shared = Self::shared();
+        shared.shared_block_runs.fetch_add(1, Ordering::SeqCst);
+        shared.as_id()
+    }
+
+    // 0x51e68 — -[MainViewController switchView:]
+    // type: void __cdecl(MainViewController *self, SEL, id)
+    // IDA 0x51e68
+    #[doc(alias = "-[MainViewController switchView:]")]
+    #[doc = "-[MainViewController switchView:]"]
+    pub fn switch_view(&self, view: ObjCId) {
+        // `setView:` (IDA 0x51e74).
+        *self.current_view.lock() = view;
+        self.view_switches.fetch_add(1, Ordering::SeqCst);
+    }
+
+    // 0x51e78 — -[MainViewController addSubview:]
+    // type: void __cdecl(MainViewController *self, SEL, id)
+    // IDA 0x51e78
+    #[doc(alias = "-[MainViewController addSubview:]")]
+    #[doc = "-[MainViewController addSubview:]"]
+    pub fn add_subview(&self, view: ObjCId) -> bool {
+        // Only when `view` is non-nil (IDA 0x51e90) does the subview reach
+        // `addSubview:` (IDA 0x51eb4); presence proxies the nil-check.
+        if !self.present {
+            return false;
+        }
+        self.ogre_subviews.lock().push(view);
+        self.subview_adds.fetch_add(1, Ordering::SeqCst);
+        true
+    }
+
+    // 0x51eb8 — -[MainViewController initWithNibName:bundle:]
+    // type: MainViewController *__cdecl(MainViewController *self, SEL, id, id)
+    // IDA 0x51eb8
+    #[doc(alias = "-[MainViewController initWithNibName:bundle:]")]
+    #[doc = "-[MainViewController initWithNibName:bundle:]"]
+    pub fn init_with_nib_name(&self) -> bool {
+        // Super `initWithNibName:bundle:` passthrough (IDA 0x51ee4); the host
+        // always hands back non-nil here.
+        self.nib_initialized.store(true, Ordering::SeqCst);
+        true
+    }
+
+    // 0x51ee8 — -[MainViewController viewDidLoad]
+    // type: void __cdecl(MainViewController *self, SEL)
+    // IDA 0x51ee8
+    #[doc(alias = "-[MainViewController viewDidLoad]")]
+    #[doc = "-[MainViewController viewDidLoad]"]
+    pub fn view_did_load(&self) {
+        // Super `viewDidLoad` passthrough (IDA 0x51f0c).
+        self.view_loaded.store(true, Ordering::SeqCst);
+    }
+
+    // 0x51f14 — -[MainViewController viewDidUnload]
+    // type: void __cdecl(MainViewController *self, SEL)
+    // IDA 0x51f14
+    #[doc(alias = "-[MainViewController viewDidUnload]")]
+    #[doc = "-[MainViewController viewDidUnload]"]
+    pub fn view_did_unload(&self) {
+        // Super `viewDidUnload` passthrough (IDA 0x51f38).
+        self.view_unloaded.store(true, Ordering::SeqCst);
+    }
+
+    // 0x51f40 — -[MainViewController getOgreWindow]
+    // type: id __cdecl(MainViewController *self, SEL)
+    // IDA 0x51f40
+    #[doc(alias = "-[MainViewController getOgreWindow]")]
+    #[doc = "-[MainViewController getOgreWindow]"]
+    pub fn ogre_window(&self) -> ObjCId {
+        // `return self->ogreWindow` (IDA 0x51f4e).
+        *self.ogre_window.lock()
+    }
+
+    // 0x51f50 — -[MainViewController setOgreWindow:]
+    // type: void __cdecl(MainViewController *self, SEL, id)
+    // IDA 0x51f50
+    #[doc(alias = "-[MainViewController setOgreWindow:]")]
+    #[doc = "-[MainViewController setOgreWindow:]"]
+    pub fn set_ogre_window(&self, window: ObjCId) {
+        // `self->ogreWindow = a3` (IDA 0x51f5c).
+        *self.ogre_window.lock() = window;
+    }
+
+    // 0x51f60 — -[MainViewController getOgreView]
+    // type: id __cdecl(MainViewController *self, SEL)
+    // IDA 0x51f60
+    #[doc(alias = "-[MainViewController getOgreView]")]
+    #[doc = "-[MainViewController getOgreView]"]
+    pub fn ogre_view(&self) -> ObjCId {
+        // `return self->ogreView` (IDA 0x51f6e).
+        *self.ogre_view.lock()
+    }
+
+    // 0x51f70 — -[MainViewController setOgreView:]
+    // type: void __cdecl(MainViewController *self, SEL, id)
+    // IDA 0x51f70
+    #[doc(alias = "-[MainViewController setOgreView:]")]
+    #[doc = "-[MainViewController setOgreView:]"]
+    pub fn set_ogre_view(&self, view: ObjCId) {
+        // `self->ogreView = a3` (IDA 0x51f7c).
+        *self.ogre_view.lock() = view;
+    }
+
+    // 0x51fa0 — -[MainViewController getOgreViewController]
+    // type: id __cdecl(MainViewController *self, SEL)
+    // IDA 0x51fa0
+    #[doc(alias = "-[MainViewController getOgreViewController]")]
+    #[doc = "-[MainViewController getOgreViewController]"]
+    pub fn ogre_view_controller(&self) -> ObjCId {
+        // `return self->ogreViewController` (IDA 0x51fae).
+        *self.ogre_view_controller.lock()
+    }
+
+    // 0x51fb0 — -[MainViewController setOgreViewController:]
+    // type: void __cdecl(MainViewController *self, SEL, id)
+    // IDA 0x51fb0
+    #[doc(alias = "-[MainViewController setOgreViewController:]")]
+    #[doc = "-[MainViewController setOgreViewController:]"]
+    pub fn set_ogre_view_controller(&self, controller: ObjCId) {
+        // `self->ogreViewController = a3` (IDA 0x51fbc).
+        *self.ogre_view_controller.lock() = controller;
+    }
+
+    // 0x51fc0 — -[MainViewController setLastNonGameController:]
+    // type: void __cdecl(MainViewController *self, SEL, id)
+    // IDA 0x51fc0
+    #[doc(alias = "-[MainViewController setLastNonGameController:]")]
+    #[doc = "-[MainViewController setLastNonGameController:]"]
+    pub fn set_last_non_game_controller(&self, controller: ObjCId) {
+        // `self->lastNonGameController = a3` (IDA 0x51fcc).
+        *self.last_non_game_controller.lock() = controller;
+    }
+
+    // 0x51fd0 — -[MainViewController getLastNonGameController]
+    // type: id __cdecl(MainViewController *self, SEL)
+    // IDA 0x51fd0
+    #[doc(alias = "-[MainViewController getLastNonGameController]")]
+    #[doc = "-[MainViewController getLastNonGameController]"]
+    pub fn last_non_game_controller(&self) -> ObjCId {
+        // `return self->lastNonGameController` (IDA 0x51fde).
+        *self.last_non_game_controller.lock()
+    }
+}
+
 /// `bind(finishTeleportHelper, view, game)` argument pair.
 #[derive(Debug, Clone, Default)]
 pub struct FinishTeleportArgs {
@@ -2340,6 +2548,26 @@ pub struct HomeViewControllerState {
     last_failure_alert: parking_lot::Mutex<Option<&'static str>>,
     game_start_successes: AtomicU32,
     version_text: parking_lot::Mutex<String>,
+    place_clicks: AtomicU32,
+    debug_field_resigns: AtomicU32,
+    local_game_launches: AtomicU32,
+    last_local_launch: parking_lot::Mutex<Option<(i32, String)>>,
+    place_game_launches: AtomicU32,
+    last_place_launch: parking_lot::Mutex<Option<i32>>,
+    search_editing_ends: AtomicU32,
+    search_exit_segues: AtomicU32,
+    signup_taps: AtomicU32,
+    login_dismisses: AtomicU32,
+    web_button_segues: AtomicU32,
+    login_required_alerts: AtomicU32,
+    last_login_alert: parking_lot::Mutex<Option<&'static str>>,
+    unsupported_device_alerts: AtomicU32,
+    last_unsupported_alert: parking_lot::Mutex<Option<&'static str>>,
+    jump_to_place_id: AtomicI32,
+    prepared_segues: AtomicU32,
+    last_prepared_url: parking_lot::Mutex<Option<String>>,
+    last_prepared_kind: parking_lot::Mutex<Option<&'static str>>,
+    webview_attaches: AtomicU32,
 }
 
 impl HomeViewControllerState {
@@ -2702,6 +2930,294 @@ impl HomeViewControllerState {
     pub fn handle_start_game_success(&self) {
         // Empty body (IDA 0x1c958): no-op recorded for call tracking.
         self.game_start_successes.fetch_add(1, Ordering::SeqCst);
+    }
+}
+
+/// `-[HomeViewController prepareForSegue:sender:]` sender classes
+/// (IDA 0x1d0d8..0x1d1bc): `UIButton` carries its `tag`, `UITextField`
+/// contributes its text query, `HomeViewController` maps to tag 10.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum HomeSegueSender {
+    Button(i32),
+    SearchField(String),
+    Home,
+    Other,
+}
+
+/// `-[NSString intValue]` behind `placeIdClicked:` (IDA 0x1c99c/0x1c9bc):
+/// leading whitespace, optional sign, saturating digit prefix; empty or
+/// non-numeric → 0.
+fn ns_int_value(s: &str) -> i32 {
+    let t = s.trim_start();
+    let (neg, rest) = match t.strip_prefix('-') {
+        Some(r) => (true, r),
+        None => (false, t.strip_prefix('+').unwrap_or(t)),
+    };
+    let mut acc: i64 = 0;
+    let mut any = false;
+    for c in rest.chars() {
+        match c.to_digit(10) {
+            Some(d) => {
+                any = true;
+                acc = acc.saturating_mul(10).saturating_add(d as i64);
+            }
+            None => break,
+        }
+    }
+    if !any {
+        return 0;
+    }
+    let v = if neg { -acc } else { acc };
+    v.clamp(i32::MIN as i64, i32::MAX as i64) as i32
+}
+
+impl HomeViewControllerState {
+    // 0x1c95c — -[HomeViewController placeIdClicked:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1c95c
+    #[doc(alias = "-[HomeViewController placeIdClicked:]")]
+    #[doc = "-[HomeViewController placeIdClicked:]"]
+    pub fn place_id_clicked(&self, place_text: &str, port_text: &str, ip_text: &str) {
+        // `intValue` of `_placeId`/`_portId`, raw `_ipId` text
+        // (IDA 0x1c986..0x1c9d6), then `resignFirstResponder` on all three
+        // debug fields (IDA 0x1c9ea..0x1c9fe). A nonzero port plus a
+        // non-empty ip runs `startGameLocal:ipAddress:...` (IDA 0x1ca74..0x1ca90);
+        // otherwise `startGame:controller:request:...` with request 0
+        // (IDA 0x1ca3e..0x1ca5a). Both launches present automatically (1).
+        let place_id = ns_int_value(place_text);
+        let port = ns_int_value(port_text);
+        self.debug_field_resigns.fetch_add(3, Ordering::SeqCst);
+        self.place_clicks.fetch_add(1, Ordering::SeqCst);
+        if port != 0 && !ip_text.is_empty() {
+            *self.last_local_launch.lock() = Some((port, ip_text.to_owned()));
+            self.local_game_launches.fetch_add(1, Ordering::SeqCst);
+        } else {
+            *self.last_place_launch.lock() = Some(place_id);
+            self.place_game_launches.fetch_add(1, Ordering::SeqCst);
+        }
+    }
+
+    // 0x1ca9c — -[HomeViewController searchEditingDidEnd:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1ca9c
+    #[doc(alias = "-[HomeViewController searchEditingDidEnd:]")]
+    #[doc = "-[HomeViewController searchEditingDidEnd:]"]
+    pub fn search_editing_did_end(&self) {
+        // Empty body (IDA 0x1ca9c): no-op recorded for call tracking.
+        self.search_editing_ends.fetch_add(1, Ordering::SeqCst);
+    }
+
+    // 0x1caa0 — -[HomeViewController searchDidEndOnExit:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1caa0
+    #[doc(alias = "-[HomeViewController searchDidEndOnExit:]")]
+    #[doc = "-[HomeViewController searchDidEndOnExit:]"]
+    pub fn search_did_end_on_exit(&self) {
+        // `performSegueWithIdentifier:@"sequeToWeb"` sender `_searchTextField`
+        // (IDA 0x1cac4).
+        self.search_exit_segues.fetch_add(1, Ordering::SeqCst);
+    }
+
+    // 0x1cac8 — -[HomeViewController signUpButtonDidTouchUpInside:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1cac8
+    #[doc(alias = "-[HomeViewController signUpButtonDidTouchUpInside:]")]
+    #[doc = "-[HomeViewController signUpButtonDidTouchUpInside:]"]
+    pub fn signup_button_did_touch_up_inside(&self) {
+        // Empty body (IDA 0x1cac8): no-op recorded for call tracking.
+        self.signup_taps.fetch_add(1, Ordering::SeqCst);
+    }
+
+    // 0x1cacc — -[HomeViewController logInButtonDidTouchUpInside:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1cacc
+    #[doc(alias = "-[HomeViewController logInButtonDidTouchUpInside:]")]
+    #[doc = "-[HomeViewController logInButtonDidTouchUpInside:]"]
+    pub fn login_button_did_touch_up_inside(&self) {
+        // `dismissViewControllerAnimated:YES completion:nil` (IDA 0x1cadc).
+        self.login_dismisses.fetch_add(1, Ordering::SeqCst);
+    }
+
+    // 0x1cae0 — -[HomeViewController buttonForWebDidTouchUpInside:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1cae0
+    #[doc(alias = "-[HomeViewController buttonForWebDidTouchUpInside:]")]
+    #[doc = "-[HomeViewController buttonForWebDidTouchUpInside:]"]
+    pub fn button_for_web_did_touch_up_inside(&self, logged_in: bool) {
+        // `CurrentPlayer.userLoggedIn == 1` segues `sequeToWeb` with the
+        // button sender (IDA 0x1cb1a..0x1cba6); otherwise
+        // `RobloxAlertWithMessage:` with localized `YouMustLogin`
+        // (IDA 0x1cb64..0x1cb3c). The alert presentation lives out of slice.
+        if logged_in {
+            self.web_button_segues.fetch_add(1, Ordering::SeqCst);
+        } else {
+            *self.last_login_alert.lock() = Some("YouMustLogin");
+            self.login_required_alerts.fetch_add(1, Ordering::SeqCst);
+        }
+    }
+
+    // 0x1cbac — -[HomeViewController btnTouchPlayButtonDisabled:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1cbac
+    #[doc(alias = "-[HomeViewController btnTouchPlayButtonDisabled:]")]
+    #[doc = "-[HomeViewController btnTouchPlayButtonDisabled:]"]
+    pub fn btn_touch_play_button_disabled(&self) {
+        // `RobloxAlertWithMessage:` with localized `UnsupportedDevicePlayError`
+        // (IDA 0x1cbd6..0x1cc18); the alert presentation lives out of slice.
+        *self.last_unsupported_alert.lock() = Some("UnsupportedDevicePlayError");
+        self.unsupported_device_alerts.fetch_add(1, Ordering::SeqCst);
+    }
+
+    /// `+[HomeViewController getUrlForButtonTag:recordPageView:query:]`
+    /// URL + page table (IDA 0x1cc54..0x1cf3c): `base_url` is
+    /// `+[RobloxInfo getBaseUrl]`, `search_url` `+[RobloxInfo searchUrl]`,
+    /// `tablet` `+[RobloxInfo thisDeviceIsATablet]` — all out of slice, so
+    /// threaded in. Unknown tags return nil (the `switch` falls through,
+    /// IDA 0x1cf3c); the `StandardOut` log has no host counterpart here, so
+    /// stderr keeps the `URL being returned:` trace (IDA 0x1cf40..0x1cf64).
+    pub fn url_for_button_tag(
+        base_url: &str,
+        search_url: &str,
+        tablet: bool,
+        tag: i32,
+        record_page_view: bool,
+        query: &str,
+    ) -> Option<String> {
+        let (url, page): (Option<String>, Option<&str>) = match tag {
+            // IDA 0x1ccc8..0x1cd14: `games/list`, page `Games`.
+            10 => (Some(format!("{base_url}games/list")), Some("Games")),
+            // IDA 0x1cd2a..0x1cd68: `catalog/` phone, `Catalog/` tablet.
+            11 => (
+                Some(format!("{base_url}{}", if tablet { "Catalog/" } else { "catalog/" })),
+                Some("Catalog"),
+            ),
+            // IDA 0x1cd7e..0x1cdbc: `inventory` phone, `My/Character.aspx` tablet.
+            12 => (
+                Some(format!(
+                    "{base_url}{}",
+                    if tablet { "My/Character.aspx" } else { "inventory" }
+                )),
+                Some("Inventory"),
+            ),
+            // IDA 0x1cdd2..0x1cdfe: `mobile-app-upgrades/`, page `BuildersClub`.
+            13 => (Some(format!("{base_url}mobile-app-upgrades/")), Some("BuildersClub")),
+            // IDA 0x1ce14..0x1ce52: empty phone, `User.aspx` tablet, page `Profile`.
+            14 => (
+                Some(format!("{base_url}{}", if tablet { "User.aspx" } else { "" })),
+                Some("Profile"),
+            ),
+            // IDA 0x1ce68..0x1cea6: `inbox` phone, `My/Messages.aspx#Inbox` tablet.
+            15 => (
+                Some(format!(
+                    "{base_url}{}",
+                    if tablet { "My/Messages.aspx#Inbox" } else { "inbox" }
+                )),
+                Some("Messages"),
+            ),
+            // IDA 0x1ced2..0x1cf16: `base + search + query`, page `Search`.
+            16 => (Some(format!("{base_url}{search_url}{query}")), Some("Search")),
+            _ => (None, None),
+        };
+        if record_page_view {
+            if let Some(page) = page {
+                GoogleAnalytics::set_page_view_tracking(page); // IDA 0x1cf1c..0x1cf3c
+            }
+        }
+        eprintln!("URL being returned: {}", url.as_deref().unwrap_or("(null)"));
+        url
+    }
+
+    // 0x1cc1c — +[HomeViewController getUrlForButtonTag:recordPageView:]
+    // type: id __cdecl(id, SEL, int, char)
+    // IDA 0x1cc1c
+    #[doc(alias = "+[HomeViewController getUrlForButtonTag:recordPageView:]")]
+    #[doc = "+[HomeViewController getUrlForButtonTag:recordPageView:]"]
+    pub fn url_for_button_tag_no_query(
+        base_url: &str,
+        search_url: &str,
+        tablet: bool,
+        tag: i32,
+        record_page_view: bool,
+    ) -> Option<String> {
+        // Forwards with the empty string as `query` (IDA 0x1cc50).
+        Self::url_for_button_tag(base_url, search_url, tablet, tag, record_page_view, "")
+    }
+
+    // 0x1cfe8 — -[HomeViewController prepareForSegue:sender:]
+    // type: void __cdecl(HomeViewController *self, SEL, id, id)
+    // IDA 0x1cfe8
+    #[doc(alias = "-[HomeViewController prepareForSegue:sender:]")]
+    #[doc = "-[HomeViewController prepareForSegue:sender:]"]
+    pub fn prepare_for_segue(
+        &self,
+        dest_is_nav_bar: bool,
+        sender: HomeSegueSender,
+        base_url: &str,
+        search_url: &str,
+        tablet: bool,
+    ) -> Option<String> {
+        // Non-`RobloxNavBarViewController` destinations are a no-op
+        // (IDA 0x1d044). `jumpToPlaceID` wins: `----item?id=` URL plus
+        // `setJumpToPlacePageAndLaunchGameWithID:` and a reset to 0
+        // (IDA 0x1d060..0x1d0c0). Otherwise `UIButton` senders resolve
+        // through `getUrlForButtonTag:recordPageView:` with their tag,
+        // `UITextField` senders through `:query:` with tag 16 and the field
+        // text, and the home controller itself through tag 10
+        // (IDA 0x1d0d8..0x1d1bc). Every navbar path ends by attaching the
+        // `UIWebViewCacheManager` preloaded web view (LABEL_12,
+        // IDA 0x1d1d4..0x1d232); the cache lives out of slice.
+        if !dest_is_nav_bar {
+            return None;
+        }
+        let jump = self.jump_to_place_id.load(Ordering::SeqCst);
+        let (url, kind): (Option<String>, Option<&'static str>) = if jump != 0 {
+            let url = format!("http://www.roblox.com/----item?id={jump}");
+            self.jump_to_place_id.store(0, Ordering::SeqCst);
+            (Some(url), Some("jump"))
+        } else {
+            match sender {
+                HomeSegueSender::Button(tag) => (
+                    Self::url_for_button_tag_no_query(base_url, search_url, tablet, tag, true),
+                    Some("button"),
+                ),
+                HomeSegueSender::SearchField(text) => (
+                    Self::url_for_button_tag(base_url, search_url, tablet, 16, true, &text),
+                    Some("search"),
+                ),
+                HomeSegueSender::Home => (
+                    Self::url_for_button_tag_no_query(base_url, search_url, tablet, 10, true),
+                    Some("home"),
+                ),
+                HomeSegueSender::Other => (None, None),
+            }
+        };
+        *self.last_prepared_url.lock() = url.clone();
+        *self.last_prepared_kind.lock() = kind;
+        self.prepared_segues.fetch_add(1, Ordering::SeqCst);
+        self.webview_attaches.fetch_add(1, Ordering::SeqCst);
+        url
+    }
+
+    // 0x1d238 — -[HomeViewController viewMustSegueAfterLoad]
+    // type: void __cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d238
+    #[doc(alias = "-[HomeViewController viewMustSegueAfterLoad]")]
+    #[doc = "-[HomeViewController viewMustSegueAfterLoad]"]
+    pub fn view_must_segue_after_load(&self) {
+        // Sets the `viewMustSegueAfterLoad` global (IDA 0x1d244) that
+        // `viewDidAppear:` consumes for `sequeToWeb` (IDA 0x1c8c0..0x1c8e0).
+        self.segue_after_load_pending.store(true, Ordering::SeqCst);
+    }
+
+    // 0x1d248 — -[HomeViewController setJumpToPlaceID:]
+    // type: void __cdecl(HomeViewController *self, SEL, int)
+    // IDA 0x1d248
+    #[doc(alias = "-[HomeViewController setJumpToPlaceID:]")]
+    #[doc = "-[HomeViewController setJumpToPlaceID:]"]
+    pub fn set_jump_to_place_id(&self, place_id: i32) {
+        // Stores the `jumpToPlaceID` global (IDA 0x1d252) that
+        // `prepareForSegue:` consumes (IDA 0x1d060).
+        self.jump_to_place_id.store(place_id, Ordering::SeqCst);
     }
 }
 
