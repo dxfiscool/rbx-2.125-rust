@@ -11,239 +11,485 @@ use rbx_core::SharedPtr;
 const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
+use crate::generated_script_wd_watchdog19::{ScriptXmlElement, ScriptXmlNameValuePair};
+use crate::generated_wdog_script_B2_1788369654::{
+    CRenderSettingsQualityAccess, CRenderSettingsQualityProp,
+};
+use rbx_reflection::descriptor::Variant;
+use rbx_reflection::enum_desc::EnumDesc;
+use rbx_reflection::generated::{
+    CRenderSettingsItemState, frame_rate_manager_mode_enum_desc, quality_level_enum_desc,
+};
+
+/// Get/set pair behind `EnumPropDescriptor<CRenderSettingsItem,
+/// FrameRateManagerMode>` (IDA 0x131a8).
+pub struct CRenderSettingsFrmAccess {
+    pub get: Box<dyn Fn(&CRenderSettingsItemState) -> i32 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut CRenderSettingsItemState, i32) + Send + Sync>,
+}
+
+/// `RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,
+/// FrameRateManagerMode>` (IDA 0x131a8): same layout as the QualityLevel
+/// twin. The enum table reuses the reflection singleton; only the access
+/// pair is local (state types differ across crates).
+pub struct CRenderSettingsFrmProp {
+    pub name: String,
+    pub category: String,
+    pub access: CRenderSettingsFrmAccess,
+    pub enum_desc: &'static EnumDesc,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// IDA `setEnumValue` core: `std::find_if` with
+/// `EnumDescriptor::equalValue` over the descriptor items (e.g. 0x138b2).
+fn desc_has_value(desc: &EnumDesc, value: i32) -> bool {
+    desc.items.iter().any(|item| item.value == value)
+}
+
+/// IDA `getEnumItem` core: the mapped item payload, 0 on a miss (e.g.
+/// 0x138f2 `convertToItem`).
+fn desc_item_of(desc: &EnumDesc, value: i32) -> i32 {
+    if value >= 0 {
+        if let Some(&slot) = desc.value_to_value.get(value as usize) {
+            if slot != -1 {
+                return slot;
+            }
+        }
+    }
+    0
+}
+
+/// IDA `convertToIndex` core (enumconverter.h:350): ReleaseAssert(value >= 0)
+/// gated on `FLog::Asserts`, then the [desc+156] index table slot, -1 when
+/// out of range (e.g. 0x130b4..0x130ea, 0x1393c..0x13972). Host models that
+/// table with `value_ordinals`.
+fn desc_index_of(desc: &EnumDesc, value: i32) -> i32 {
+    assert!(
+        value >= 0,
+        "value>=0 file: ../App/include/reflection/enumconverter.h line: 350"
+    );
+    if value >= 0 {
+        if let Some(&slot) = desc.value_ordinals.get(value as usize) {
+            if slot != -1 {
+                return slot;
+            }
+        }
+    }
+    -1
+}
+
+/// IDA `getStringValue` core: the mapped item name, empty on a miss.
+fn desc_string_of(desc: &EnumDesc, value: i32, out: &mut String) {
+    out.clear();
+    if value >= 0 {
+        if let Some(name) = desc.lookup_name(value) {
+            out.push_str(name);
+        }
+    }
+}
 
 // 0x1304c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE11getEnumItemEPKNS0_13DescribedBaseE")]
-pub fn stub_0x1304c() -> ! {
-    todo!("0x1304c __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE11getEnumItemEPKNS0_13DescribedBaseE")
+pub fn stub_0x1304c(prop: &CRenderSettingsQualityProp, obj: &CRenderSettingsItemState) -> i32 {
+    // IDA 0x1304c `getEnumItem`: v = getValue(impl) (0x1305e), then
+    // `EnumDesc<QualityLevel>::convertToItem(desc, v)` (0x1306a).
+    let value = (prop.access.get)(obj);
+    desc_item_of(prop.enum_desc, value)
 }
 
 // 0x1306c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
-pub fn stub_0x1306c() -> ! {
-    todo!("0x1306c __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")
+pub fn stub_0x1306c(prop: &CRenderSettingsQualityProp, obj: &mut CRenderSettingsItemState, name: &str) -> bool {
+    // IDA 0x1306c `setStringValue` (Name overload): `convertToValue` on the
+    // interned name (0x13082); on a hit the +12 `setValue` slot runs
+    // (0x13098) and 1 returns, otherwise 0. Host keys names by string.
+    if let Some(value) = prop.enum_desc.lookup_value(name) {
+        (prop.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x130a0 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToIndexES3_
 // type: int(void)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToIndex(RBX::CRenderSettings::QualityLevel)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToIndexES3_")]
-pub fn stub_0x130a0() -> ! {
-    todo!("0x130a0 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToIndexES3_")
+pub fn stub_0x130a0(desc: &EnumDesc, value: i32) -> i32 {
+    // IDA 0x130a0 `convertToIndex`: QualityLevel instantiation
+    // (ReleaseAssert at 0x130b4..0x130ea, table load past 0x130ea);
+    // LABEL_7 core in `desc_index_of`.
+    desc_index_of(desc, value)
 }
 
 // 0x13110 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE11setIntValueEPNS0_13DescribedBaseEi
 // type: int(void)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0x13110() -> ! {
-    todo!("0x13110 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_0x13110(prop: &CRenderSettingsQualityProp, obj: &mut CRenderSettingsItemState, index: i32) -> bool {
+    // IDA 0x13110 `setIntValue`: negative indices fail (0x1311a); the
+    // [desc+132] ordinal table (0x1311e..0x1312c) yields the payload, -1
+    // entries fail (0x13138); otherwise the +12 `setValue` slot runs and 1
+    // returns. Host models that table with `values`.
+    if index >= 0 {
+        if let Some(&payload) = prop.enum_desc.values.get(index as usize) {
+            if payload != -1 {
+                (prop.access.set)(obj, payload);
+                return true;
+            }
+        }
+    }
+    false
 }
 
 // 0x13150 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_0x13150() -> ! {
-    todo!("0x13150 __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_0x13150() -> bool {
+    // IDA 0x13150 GetSetImpl `isReadOnly`: hardcoded `return 0` (0x13152).
+    false
 }
 
 // 0x13154 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_0x13154() -> ! {
-    todo!("0x13154 __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_0x13154() -> bool {
+    // IDA 0x13154 GetSetImpl `isWriteOnly`: hardcoded `return 0` (0x13156).
+    false
 }
 
 // 0x13158 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x13158() -> ! {
-    todo!("0x13158 __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x13158(access: &CRenderSettingsQualityAccess, obj: &CRenderSettingsItemState) -> i32 {
+    // IDA 0x13158 GetSetImpl `getValue`: member-pointer adjust
+    // (0x1315c..0x13174) then the getter call.
+    (access.get)(obj)
 }
 
 // 0x13184 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::QualityLevel const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")]
-pub fn stub_0x13184() -> ! {
-    todo!("0x13184 __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")
+pub fn stub_0x13184(access: &CRenderSettingsQualityAccess, obj: &mut CRenderSettingsItemState, value: i32) {
+    // IDA 0x13184 GetSetImpl `setValue`: member adjust (0x1318a..0x131a0)
+    // then the setter call.
+    (access.set)(obj, value)
 }
 
 // 0x131a8 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::EnumPropDescriptor<RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode)>(char const*,char const*,RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0x131a8() -> ! {
-    todo!("0x131a8 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0x131a8(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&CRenderSettingsItemState) -> i32 + Send + Sync>,
+    set: Box<dyn Fn(&mut CRenderSettingsItemState, i32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> CRenderSettingsFrmProp {
+    // IDA 0x131a8 `EnumPropDescriptor<FrameRateManagerMode>` ctor: same shape
+    // as the QualityLevel twin at 0x12920 (`classDescriptor` init,
+    // `EnumDesc` singleton `call_once` init, base init, singleton links at
+    // +40/+48, `new(0x14)` GetSet impl, attribute masks).
+    CRenderSettingsFrmProp {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: CRenderSettingsFrmAccess { get, set },
+        enum_desc: frame_rate_manager_mode_enum_desc(),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x1335c — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEED0Ev
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEED0Ev")]
-pub fn stub_0x1335c() -> ! {
-    todo!("0x1335c __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEED0Ev")
+pub fn stub_0x1335c() {
+    // IDA 0x1335c: D0 deleting destructor — vtable reset (0x13370), member
+    // delete (0x13372..0x13378), `operator delete`; Arc Drop glue covers it.
 }
 
 // 0x13388 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10isReadOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10isReadOnlyEv")]
-pub fn stub_0x13388() -> ! {
-    todo!("0x13388 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10isReadOnlyEv")
+pub fn stub_0x13388(prop: &CRenderSettingsFrmProp) -> bool {
+    // IDA 0x13388 `isReadOnly`: routes through the +44 GetSet impl (0x13394).
+    // Get/set-bound enum props are never read-only.
+    let _ = prop;
+    false
 }
 
 // 0x13398 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE11isWriteOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE11isWriteOnlyEv")]
-pub fn stub_0x13398() -> ! {
-    todo!("0x13398 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE11isWriteOnlyEv")
+pub fn stub_0x13398(prop: &CRenderSettingsFrmProp) -> bool {
+    // IDA 0x13398 `isWriteOnly`: routes through the +44 GetSet impl
+    // (0x133a4). Get/set-bound enum props are never write-only.
+    let _ = prop;
+    false
 }
 
 // 0x133a8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE11equalValuesEPKNS0_13DescribedBaseES8_
 // type: bool __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE11equalValuesEPKNS0_13DescribedBaseES8_")]
-pub fn stub_0x133a8() -> ! {
-    todo!("0x133a8 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE11equalValuesEPKNS0_13DescribedBaseES8_")
+pub fn stub_0x133a8(prop: &CRenderSettingsFrmProp, obj: &CRenderSettingsItemState, value: i32) -> bool {
+    // IDA 0x133a8 `equalValues`: v5 = getValue(impl) (0x133b8);
+    // return v5 == getValue(impl, a3) (0x133ce).
+    (prop.access.get)(obj) == value
 }
 
 // 0x133d0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_0x133d0() -> ! {
-    todo!("0x133d0 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
+pub fn stub_0x133d0(prop: &CRenderSettingsFrmProp, obj: &CRenderSettingsItemState) -> Variant {
+    // IDA 0x133d0 `getVariant`: v5 = getIntValue (0x133de),
+    // out = `Variant(int, v5)` via `Type::getSingleton<int>` +
+    // `operator=<int>` (0x133e4..0x133f2). `Variant::Int` is the out.
+    Variant::Int((prop.access.get)(obj))
 }
 
 // 0x133f4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_0x133f4() -> ! {
-    todo!("0x133f4 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")
+pub fn stub_0x133f4(prop: &CRenderSettingsFrmProp, obj: &mut CRenderSettingsItemState, variant: &Variant) {
+    // IDA 0x133f4 `setVariant`: int-typed variants read the `any_cast<int>`
+    // payload; anything else goes through the holder clone +
+    // `Variant::convert<int>`; then `setIntValue`. `convert_to_int` covers
+    // both int-source paths.
+    let value = variant.convert_to_int();
+    (prop.access.set)(obj, value);
 }
 
 // 0x13544 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE9copyValueEPKNS0_13DescribedBaseEPS6_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE9copyValueEPKNS0_13DescribedBaseEPS6_")]
-pub fn stub_0x13544() -> ! {
-    todo!("0x13544 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE9copyValueEPKNS0_13DescribedBaseEPS6_")
+pub fn stub_0x13544(
+    prop: &CRenderSettingsFrmProp,
+    src: &CRenderSettingsItemState,
+    dst: &mut CRenderSettingsItemState,
+) {
+    // IDA 0x13544 `copyValue`: v6 = getValue(src-impl) (0x13556), then
+    // setValue(dst-impl, &v6) (0x13566).
+    let value = (prop.access.get)(src);
+    (prop.access.set)(dst, value);
 }
 
 // 0x13568 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE14hasStringValueEv
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE14hasStringValueEv")]
-pub fn stub_0x13568() -> ! {
-    todo!("0x13568 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE14hasStringValueEv")
+pub fn stub_0x13568() -> bool {
+    // IDA 0x13568 `hasStringValue`: hardcoded `return 1` (0x1356a) — enum
+    // props always have a string form.
+    true
 }
 
 // 0x1356c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE14getStringValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE14getStringValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x1356c() -> ! {
-    todo!("0x1356c __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE14getStringValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x1356c(prop: &CRenderSettingsFrmProp, obj: &CRenderSettingsItemState, out: &mut String) {
+    // IDA 0x1356c `getStringValue`: v = getValue(impl) (0x1357e), then
+    // `EnumDesc<FrameRateManagerMode>::convertToString(desc, v, out)`.
+    let value = (prop.access.get)(obj);
+    desc_string_of(prop.enum_desc, value, out);
 }
 
 // 0x13590 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE14setStringValueEPNS0_13DescribedBaseERKSs
 // type: int __fastcall(int, const char *const *, int *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE14setStringValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_0x13590() -> ! {
-    todo!("0x13590 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE14setStringValueEPNS0_13DescribedBaseERKSs")
+pub fn stub_0x13590(prop: &CRenderSettingsFrmProp, obj: &mut CRenderSettingsItemState, name: &str) -> bool {
+    // IDA 0x13590 `setStringValue`: `Name::lookup(text)` (0x135a2),
+    // `EnumDesc::convertToValue` (0x135b0); on a hit `setValue` runs and 1
+    // returns, otherwise 0.
+    if let Some(value) = prop.enum_desc.lookup_value(name) {
+        (prop.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x135d0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
-pub fn stub_0x135d0() -> ! {
-    todo!("0x135d0 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")
+pub fn stub_0x135d0(
+    prop: &CRenderSettingsFrmProp,
+    obj: &CRenderSettingsItemState,
+    pair: &mut ScriptXmlNameValuePair,
+) -> u32 {
+    // IDA 0x135d0 `writeValue`: v = getValue (0x135de), `clearValue`
+    // (0x135e4), type tag 5 (0x135ea), payload v (0x135ec); returns 5.
+    let value = (prop.access.get)(obj);
+    *pair = ScriptXmlNameValuePair { int_value: Some(value), text: None };
+    5
 }
 
 // 0x135f0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 // type: void __fastcall(int, int, XmlElement *this)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_0x135f0() -> ! {
-    todo!("0x135f0 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
+pub fn stub_0x135f0(prop: &CRenderSettingsFrmProp, obj: &mut CRenderSettingsItemState, element: &ScriptXmlElement) {
+    // IDA 0x135f0 `readValue`: same shape as the earlier twins — xsi:nil
+    // returns; int payload runs `setIntValue`; string payload goes through
+    // `convertToValue` into `setValue`, empty string falls back to 0;
+    // anything else hits `ReleaseAssert(false)` (Reflection.h:359).
+    if element.is_xsi_nil {
+        return;
+    }
+    if let Some(value) = element.pair.int_value {
+        (prop.access.set)(obj, value);
+        return;
+    }
+    if let Some(text) = &element.pair.text {
+        if let Some(value) = prop.enum_desc.lookup_value(text) {
+            (prop.access.set)(obj, value);
+            return;
+        }
+        if text.is_empty() {
+            (prop.access.set)(obj, 0);
+            return;
+        }
+    }
+    panic!("false file: ../App/include/Reflection/Reflection.h line: 359");
 }
 
 // 0x13830 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE13getIndexValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE13getIndexValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x13830() -> ! {
-    todo!("0x13830 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE13getIndexValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x13830(prop: &CRenderSettingsFrmProp, obj: &CRenderSettingsItemState) -> i32 {
+    // IDA 0x13830 `getIndexValue`: v = getValue(impl) (0x13840), then
+    // `EnumDesc::convertToIndex(desc, v)` (0x13844 -> 0x13928).
+    let value = (prop.access.get)(obj);
+    desc_index_of(prop.enum_desc, value)
 }
 
 // 0x1384c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE13setIndexValueEPNS0_13DescribedBaseEm
 // type: int __fastcall(int, int, unsigned int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE13setIndexValueEPNS0_13DescribedBaseEm")]
-pub fn stub_0x1384c() -> ! {
-    todo!("0x1384c __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE13setIndexValueEPNS0_13DescribedBaseEm")
+pub fn stub_0x1384c(prop: &CRenderSettingsFrmProp, obj: &mut CRenderSettingsItemState, index: u32) -> bool {
+    // IDA 0x1384c `setIndexValue`: count = [desc+40] (0x1385e); idx < count
+    // loads the ordinal from [desc+144][idx] (0x13868), runs `setValue`
+    // (0x13872) and returns 1 (0x13874); otherwise 0.
+    if (index as usize) < prop.enum_desc.values.len() {
+        let ordinal = prop
+            .enum_desc
+            .value_ordinals
+            .get(index as usize)
+            .copied()
+            .unwrap_or(index as i32);
+        (prop.access.set)(obj, ordinal);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x13880 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE12getEnumValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE12getEnumValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x13880() -> ! {
-    todo!("0x13880 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE12getEnumValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x13880(prop: &CRenderSettingsFrmProp, obj: &CRenderSettingsItemState) -> i32 {
+    // IDA 0x13880 `getEnumValue`: `getValue(impl)` through the +44 GetSet
+    // impl (the +8 vtable slot).
+    (prop.access.get)(obj)
 }
 
 // 0x13888 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE12setEnumValueEPNS0_13DescribedBaseEi
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE12setEnumValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0x13888() -> ! {
-    todo!("0x13888 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE12setEnumValueEPNS0_13DescribedBaseEi")
+pub fn stub_0x13888(prop: &CRenderSettingsFrmProp, obj: &mut CRenderSettingsItemState, value: i32) -> bool {
+    // IDA 0x13888 `setEnumValue`: `std::find_if` with `equalValue` over the
+    // descriptor items (0x138b2); a hit runs the +12 `setValue` slot and
+    // returns 1, a miss returns 0.
+    if desc_has_value(prop.enum_desc, value) {
+        (prop.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x138d4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE11getEnumItemEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE11getEnumItemEPKNS0_13DescribedBaseE")]
-pub fn stub_0x138d4() -> ! {
-    todo!("0x138d4 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE11getEnumItemEPKNS0_13DescribedBaseE")
+pub fn stub_0x138d4(prop: &CRenderSettingsFrmProp, obj: &CRenderSettingsItemState) -> i32 {
+    // IDA 0x138d4 `getEnumItem`: v = getValue(impl) (0x138e6), then
+    // `EnumDesc<FrameRateManagerMode>::convertToItem(desc, v)` (0x138f2).
+    let value = (prop.access.get)(obj);
+    desc_item_of(prop.enum_desc, value)
 }
 
 // 0x138f4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
-pub fn stub_0x138f4() -> ! {
-    todo!("0x138f4 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")
+pub fn stub_0x138f4(prop: &CRenderSettingsFrmProp, obj: &mut CRenderSettingsItemState, name: &str) -> bool {
+    // IDA 0x138f4 `setStringValue` (Name overload): `convertToValue` on the
+    // interned name (0x1390a); on a hit the +12 `setValue` slot runs
+    // (0x13920) and 1 returns, otherwise 0. Host keys names by string.
+    if let Some(value) = prop.enum_desc.lookup_value(name) {
+        (prop.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x13928 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToIndexES3_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToIndex(RBX::CRenderSettings::FrameRateManagerMode)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToIndexES3_")]
-pub fn stub_0x13928() -> ! {
-    todo!("0x13928 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToIndexES3_")
+pub fn stub_0x13928(desc: &EnumDesc, value: i32) -> i32 {
+    // IDA 0x13928 `convertToIndex`: FrameRateManagerMode instantiation
+    // (ReleaseAssert at 0x1393c..0x13972); LABEL_7 core in `desc_index_of`.
+    desc_index_of(desc, value)
 }
 
 // 0x13998 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE11setIntValueEPNS0_13DescribedBaseEi
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0x13998() -> ! {
-    todo!("0x13998 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_0x13998(prop: &CRenderSettingsFrmProp, obj: &mut CRenderSettingsItemState, index: i32) -> bool {
+    // IDA 0x13998 `setIntValue`: negative indices fail (0x139a2); the
+    // [desc+132] ordinal table (0x139a6..0x139b4) yields the payload, -1
+    // entries fail (0x139c0); otherwise the +12 `setValue` slot runs and 1
+    // returns.
+    if index >= 0 {
+        if let Some(&payload) = prop.enum_desc.values.get(index as usize) {
+            if payload != -1 {
+                (prop.access.set)(obj, payload);
+                return true;
+            }
+        }
+    }
+    false
 }
 
 // 0x139d8 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::GetSetImpl<RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_0x139d8() -> ! {
-    todo!("0x139d8 __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_0x139d8() -> bool {
+    // IDA 0x139d8 GetSetImpl `isReadOnly`: hardcoded `return 0` (0x139da).
+    false
 }
 
 // 0x139dc — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
