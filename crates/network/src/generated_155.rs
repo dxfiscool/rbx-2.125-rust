@@ -687,7 +687,7 @@ pub struct LocalAppLoad {
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct PlaceIdJoin {
     pub place_id: i32,
-    pub request: i32,
+    pub request: JoinGameRequest,
 }
 
 // 0x27054 — -[PlaceLauncher startAppWithFile:controller:presentGameAutomatically:]
@@ -721,16 +721,130 @@ pub fn stub_276b0(has_launcher: bool, game_ready: bool, started: bool, place_id:
     if !has_launcher || !game_ready {
         None
     } else {
-        Some((PlaceIdJoin { place_id, request: 2 }, started))
+        Some((PlaceIdJoin { place_id, request: JoinGameRequest::AppStart }, started))
     }
+}
+
+/// `JoinGameRequest` selector of `joinGamePlaceId` (IDA 0x278a8, cf. 0x27a02..0x27a6e).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum JoinGameRequest {
+    Place = 0,
+    FollowUser = 1,
+    AppStart = 2,
+}
+
+/// Poll decision inside the PlaceLauncher.ashx retry loop (IDA 0x27c4a..0x27d32, 5 tries).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum LauncherPoll {
+    Success,
+    RetryCountdown,
+    RetryWait,
+}
+
+/// Failure alert of the exhausted join loop (IDA 0x28052..0x28158).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum JoinFailureAlert {
+    ConnectionError,
+    GameFull,
+    GameEnded,
+}
+
+/// Outcome of `joinGamePlaceId` (IDA 0x278a8); the success tail applies
+/// setLastPlaceId + SessionReporter(3, id) + Visit/Success/Join (0x27b64..0x27bd2),
+/// the failure tail runs leaveGame + handleStartGameFailure (0x2821c..0x2825a).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum PlaceJoinOutcome {
+    Joined { script_url: String },
+    Signed { body: String },
+    Failed { alert: JoinFailureAlert },
+}
+
+/// Request kind selector (IDA 0x27a02..0x27a6e): 1 follows a user, anything else joins a place.
+pub fn join_request_parts(request: JoinGameRequest) -> (&'static str, &'static str) {
+    match request {
+        JoinGameRequest::FollowUser => ("userId", "RequestFollowUser"),
+        _ => ("placeId", "RequestGame"),
+    }
+}
+
+/// PlaceLauncher.ashx join URL (IDA 0x27c42).
+pub fn join_launcher_url(base_url: &str, request: JoinGameRequest, id: i32) -> String {
+    let (param, name) = join_request_parts(request);
+    format!("{base_url}Game/PlaceLauncher.ashx?request={name}&{param}={id}&isPartyLeader=false&gender=&isTeleport=false")
+}
+
+/// AppStart URL for the overlay path (IDA 0x27a96).
+pub fn join_app_start_url(base_url: &str, id: i32) -> String {
+    format!("{base_url}Game/AppStart.ashx?appid={id}")
+}
+
+/// Retry-loop decision (IDA 0x27cca..0x27d32): "status":2 succeeds; "status":0/1
+/// retries with countdown; anything else retries without consuming a try.
+pub fn join_poll_decision(response: &str) -> LauncherPoll {
+    if response.contains("\"status\":2") {
+        LauncherPoll::Success
+    } else if response.contains("\"status\":0") || response.contains("\"status\":1") {
+        LauncherPoll::RetryCountdown
+    } else {
+        LauncherPoll::RetryWait
+    }
+}
+
+/// Failure alert for an exhausted loop (IDA 0x28052..0x280e4).
+pub fn join_failure_alert(response: &str) -> JoinFailureAlert {
+    if response.contains("\"status\":5") {
+        JoinFailureAlert::GameEnded
+    } else if response.contains("\"status\":6") {
+        JoinFailureAlert::GameFull
+    } else {
+        JoinFailureAlert::ConnectionError
+    }
+}
+
+/// joinScriptUrl value through the next comma with "\/" unescaped (IDA 0x27e24..0x27ef6); empty when absent.
+pub fn extract_join_script_url(response: &str) -> String {
+    let key = "joinScriptUrl";
+    let Some(pos) = response.find(key) else {
+        return String::new();
+    };
+    let rest = &response[pos + key.len()..];
+    let Some(start) = rest.find(|c: char| c != '"' && c != ':' && c != ' ' && c != '=') else {
+        return String::new();
+    };
+    let rest = &rest[start..];
+    let end = rest.find(',').unwrap_or(rest.len());
+    rest[..end].trim_matches('"').replace("\\/", "/")
 }
 
 // 0x278a8 — __ZL15joinGamePlaceIdiN5boost10shared_ptrIN3RBX4GameEEE15JoinGameRequest // was: boost::shared_ptr
 // demangled: joinGamePlaceId(int,boost::shared_ptr<RBX::Game>,JoinGameRequest)
 // type: 
 #[doc(alias = "joinGamePlaceId(int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest)")]
-pub fn stub_278a8() -> ! {
-    todo!("0x278a8 joinGamePlaceId(int,boost::shared_ptr<RBX::Game>,JoinGameRequest)")
+pub fn stub_278a8<F>(base_url: &str, place_id: i32, request: JoinGameRequest, overlay_app_start: bool, mut get: F) -> PlaceJoinOutcome
+where
+    F: FnMut(&str) -> String,
+{
+    // IDA 0x278a8: logs + UserAgent default (0x278fe..0x279e4); AppStart GET when overlay-enabled and request==2 (0x27a6e..0x27b2a, executeSignedScript); else the PlaceLauncher.ashx poll loop (0x27c42..0x27d32), joinScriptUrl extraction + executeUrlScript (0x27e24..0x27ef6), failure alerts + leaveGame/handleStartGameFailure (0x27dce..0x2825a); HTTP stays with the caller-provided fetch.
+    if overlay_app_start && request == JoinGameRequest::AppStart {
+        return PlaceJoinOutcome::Signed { body: get(&join_app_start_url(base_url, place_id)) };
+    }
+    let url = join_launcher_url(base_url, request, place_id);
+    let mut body = String::new();
+    let mut tries = 5;
+    loop {
+        body = get(&url);
+        match join_poll_decision(&body) {
+            LauncherPoll::Success => break,
+            LauncherPoll::RetryCountdown => {
+                tries -= 1;
+                if tries < 0 {
+                    return PlaceJoinOutcome::Failed { alert: join_failure_alert(&body) };
+                }
+            }
+            LauncherPoll::RetryWait => {}
+        }
+    }
+    PlaceJoinOutcome::Joined { script_url: extract_join_script_url(&body) }
 }
 
 // 0x289a8 — -[PlaceLauncher startGame:controller:request:presentGameAutomatically:]
