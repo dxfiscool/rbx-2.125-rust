@@ -942,12 +942,12 @@ pub fn stub_17c58() {
 }
 
 /// Audio-crate host for the `Appirater` ObjC class cluster (IDA
-/// 0x17df0..0x180a8): class-level config slots plus the `dispatch_once`
-/// shared instance. `NSUserDefaults` persistence and `UIAlertView` collapse
-/// to plain host state; `id` tokens are `u64` (`0` is `nil`). Mirrors the
-/// platform crate `Appirater` model (which owns the full state machine);
-/// audio cannot depend on platform (AGENTS.md DAG), so the slots these
-/// filler EAs touch live here.
+/// 0x17df0..0x18c98): class-level config slots, the `dispatch_once` shared
+/// instance, and the `kAppirater*` rating-prompt state. `NSUserDefaults`
+/// persistence and `UIAlertView` collapse to plain host state; `id` tokens
+/// are `u64` (`0` is `nil`). Mirrors the platform crate `Appirater` model
+/// (which owns the full state machine); audio cannot depend on platform
+/// (AGENTS.md DAG), so the slots these filler EAs touch live here.
 #[derive(Debug, Default)]
 pub struct AudioAppirater {
     app_id: parking_lot::Mutex<String>,
@@ -962,6 +962,13 @@ pub struct AudioAppirater {
     network_reachable: std::sync::atomic::AtomicBool,
     rating_alert_shows: std::sync::atomic::AtomicU32,
     rating_alert_visible: std::sync::atomic::AtomicBool,
+    use_count: std::sync::atomic::AtomicU32,
+    significant_event_count: std::sync::atomic::AtomicU32,
+    first_use_date_secs: parking_lot::Mutex<f64>,
+    reminder_request_date_secs: parking_lot::Mutex<f64>,
+    declined_to_rate: std::sync::atomic::AtomicBool,
+    rated_current_version: std::sync::atomic::AtomicBool,
+    current_version: parking_lot::Mutex<String>,
 }
 
 impl AudioAppirater {
@@ -978,6 +985,104 @@ impl AudioAppirater {
                 appirater
             });
         &APPIRATER
+    }
+
+    /// `-[Appirater ratingConditionsHaveBeenMet]` (IDA 0x183d8):
+    /// short-circuit chain over the `kAppirater*` slots. `debug` forces
+    /// true; time gates use `>=`, count gates use strict `>`. Mirrors the
+    /// platform crate twin.
+    pub fn rating_conditions_have_been_met(&self, now_secs: f64) -> bool {
+        use std::sync::atomic::Ordering::SeqCst;
+        if self.debug.load(SeqCst) {
+            return true;
+        }
+        if now_secs - *self.first_use_date_secs.lock() < *self.days_until_prompt.lock() * 86400.0 {
+            return false;
+        }
+        if self.use_count.load(SeqCst) <= self.uses_until_prompt.load(SeqCst) {
+            return false;
+        }
+        if self.significant_event_count.load(SeqCst)
+            <= self.significant_events_until_prompt.load(SeqCst)
+        {
+            return false;
+        }
+        if self.declined_to_rate.load(SeqCst) {
+            return false;
+        }
+        if self.rated_current_version.load(SeqCst) {
+            return false;
+        }
+        now_secs - *self.reminder_request_date_secs.lock()
+            >= *self.time_before_reminding.lock() * 86400.0
+    }
+
+    /// `-[Appirater incrementUseCount]` (IDA 0x185b0): `CFBundleVersion`
+    /// against `kAppiraterCurrentVersion`. Same version: seed
+    /// `kAppiraterFirstUseDate` once, bump `kAppiraterUseCount`. New
+    /// version: reset the whole `kAppirater*` group with `useCount = 1`.
+    /// `current_version` is the bundle version, `now_secs` is `+[NSDate
+    /// date]`. Mirrors the platform crate twin.
+    pub fn increment_use_count(&self, current_version: &str, now_secs: f64) {
+        use std::sync::atomic::Ordering::SeqCst;
+        let mut stored = self.current_version.lock();
+        if stored.is_empty() {
+            *stored = current_version.to_owned();
+        }
+        if *stored == current_version {
+            if *self.first_use_date_secs.lock() == 0.0 {
+                *self.first_use_date_secs.lock() = now_secs;
+            }
+            self.use_count.fetch_add(1, SeqCst);
+        } else {
+            *stored = current_version.to_owned();
+            *self.first_use_date_secs.lock() = now_secs;
+            self.use_count.store(1, SeqCst);
+            self.significant_event_count.store(0, SeqCst);
+            self.rated_current_version.store(false, SeqCst);
+            self.declined_to_rate.store(false, SeqCst);
+            *self.reminder_request_date_secs.lock() = 0.0;
+        }
+    }
+
+    /// `-[Appirater incrementSignificantEventCount]` (IDA 0x18878): twin of
+    /// `incrementUseCount` over `kAppiraterSignificantEventCount`; the
+    /// new-version reset carries `useCount = 0, significantEventCount = 1`.
+    /// Mirrors the platform crate twin.
+    pub fn increment_significant_event_count(&self, current_version: &str, now_secs: f64) {
+        use std::sync::atomic::Ordering::SeqCst;
+        let mut stored = self.current_version.lock();
+        if stored.is_empty() {
+            *stored = current_version.to_owned();
+        }
+        if *stored == current_version {
+            if *self.first_use_date_secs.lock() == 0.0 {
+                *self.first_use_date_secs.lock() = now_secs;
+            }
+            self.significant_event_count.fetch_add(1, SeqCst);
+        } else {
+            *stored = current_version.to_owned();
+            *self.first_use_date_secs.lock() = now_secs;
+            self.use_count.store(0, SeqCst);
+            self.significant_event_count.store(1, SeqCst);
+            self.rated_current_version.store(false, SeqCst);
+            self.declined_to_rate.store(false, SeqCst);
+            *self.reminder_request_date_secs.lock() = 0.0;
+        }
+    }
+
+    /// Shared `-[Appirater connectedToNetwork]` read for the rate gates.
+    pub fn connected_to_network(&self) -> bool {
+        self.network_reachable
+            .load(std::sync::atomic::Ordering::SeqCst)
+    }
+
+    /// Shared `-[Appirater showRatingAlert]` body for the rate blocks.
+    pub fn show_rating_alert(&self) {
+        self.rating_alert_shows
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.rating_alert_visible
+            .store(true, std::sync::atomic::Ordering::SeqCst);
     }
 }
 
@@ -1096,77 +1201,117 @@ pub fn stub_180a0() {
 pub fn stub_180a8() {
     // IDA 0x180a8 (`-[Appirater showRatingAlert]`: localized bundle strings
     // + `UIAlertView` presentation, delegate-gated): the alert view
-    // collapses to the visible flag + show count; the delegate gating and
-    // presentation live in the platform crate twin.
-    let inst = AudioAppirater::shared();
-    inst.rating_alert_shows
-        .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
-    inst.rating_alert_visible
-        .store(true, std::sync::atomic::Ordering::SeqCst);
+    // collapses to the visible flag + show count; see
+    // `AudioAppirater::show_rating_alert`.
+    AudioAppirater::shared().show_rating_alert();
 }
 
 // 0x183d8 — -[Appirater ratingConditionsHaveBeenMet]
 #[doc(alias = "-[Appirater ratingConditionsHaveBeenMet]")]
-pub fn stub_183d8() -> ! {
-    todo!("0x183d8 -[Appirater ratingConditionsHaveBeenMet]")
+pub fn stub_183d8(now_secs: f64) -> bool {
+    // IDA 0x183d8 (`-[Appirater ratingConditionsHaveBeenMet]`): the
+    // `kAppirater*` short-circuit chain; see
+    // `AudioAppirater::rating_conditions_have_been_met`.
+    AudioAppirater::shared().rating_conditions_have_been_met(now_secs)
 }
 
 // 0x185b0 — -[Appirater incrementUseCount]
 #[doc(alias = "-[Appirater incrementUseCount]")]
-pub fn stub_185b0() -> ! {
-    todo!("0x185b0 -[Appirater incrementUseCount]")
+pub fn stub_185b0(current_version: &str, now_secs: f64) {
+    // IDA 0x185b0 (`-[Appirater incrementUseCount]`): version-gated
+    // `kAppiraterUseCount` bump; see `AudioAppirater::increment_use_count`.
+    AudioAppirater::shared().increment_use_count(current_version, now_secs);
 }
 
 // 0x18878 — -[Appirater incrementSignificantEventCount]
 #[doc(alias = "-[Appirater incrementSignificantEventCount]")]
-pub fn stub_18878() -> ! {
-    todo!("0x18878 -[Appirater incrementSignificantEventCount]")
+pub fn stub_18878(current_version: &str, now_secs: f64) {
+    // IDA 0x18878 (`-[Appirater incrementSignificantEventCount]`): twin of
+    // 0x185b0 over `kAppiraterSignificantEventCount`.
+    AudioAppirater::shared().increment_significant_event_count(current_version, now_secs);
 }
 
 // 0x18b18 — -[Appirater incrementAndRate:]
 #[doc(alias = "-[Appirater incrementAndRate:]")]
-pub fn stub_18b18() -> ! {
-    todo!("0x18b18 -[Appirater incrementAndRate:]")
+pub fn stub_18b18(can_rate: bool, current_version: &str, now_secs: f64) {
+    // IDA 0x18b18 (`-[Appirater incrementAndRate:]`): `incrementUseCount`;
+    // when the flag and `ratingConditionsHaveBeenMet` and
+    // `connectedToNetwork`, `dispatch_async` to main of the
+    // `showRatingAlert` block. The queue hop collapses; the block is
+    // `stub_18bb4`. Same as the platform 0x18b18 anchor.
+    let inst = AudioAppirater::shared();
+    inst.increment_use_count(current_version, now_secs);
+    if can_rate
+        && inst.rating_conditions_have_been_met(now_secs)
+        && inst.connected_to_network()
+    {
+        stub_18bb4();
+    }
 }
 
 // 0x18bb4 — ___30-[Appirater incrementAndRate:]_block_invoke
 #[doc(alias = "___30-[Appirater incrementAndRate:]_block_invoke")]
-pub fn stub_18bb4() -> ! {
-    todo!("0x18bb4 ___30-[Appirater incrementAndRate:]_block_invoke")
+pub fn stub_18bb4() {
+    // IDA 0x18bb4 (`__30-[Appirater incrementAndRate:]_block_invoke`):
+    // single `showRatingAlert` send to the captured `self` (the shared
+    // instance here).
+    AudioAppirater::shared().show_rating_alert();
 }
 
 // 0x18bc8 — ___copy_helper_block_125
 #[doc(alias = "___copy_helper_block_125")]
-pub fn stub_18bc8() -> ! {
-    todo!("0x18bc8 ___copy_helper_block_125")
+pub fn stub_18bc8(slot: &mut u64, src: u64) {
+    // IDA 0x18bc8 (`__copy_helper_block_125`): `_Block_object_assign`
+    // retaining the capture. Same as the 0x18094 anchor.
+    *slot = src;
 }
 
 // 0x18bd4 — ___destroy_helper_block_126
 #[doc(alias = "___destroy_helper_block_126")]
-pub fn stub_18bd4() -> ! {
-    todo!("0x18bd4 ___destroy_helper_block_126")
+pub fn stub_18bd4(slot: &mut u64) {
+    // IDA 0x18bd4 (`__destroy_helper_block_126`): `_Block_object_dispose`
+    // releasing the capture. Same as the 0x180a0 anchor; `0` is `nil`.
+    *slot = 0;
 }
 
 // 0x18bdc — -[Appirater incrementSignificantEventAndRate:]
 #[doc(alias = "-[Appirater incrementSignificantEventAndRate:]")]
-pub fn stub_18bdc() -> ! {
-    todo!("0x18bdc -[Appirater incrementSignificantEventAndRate:]")
+pub fn stub_18bdc(can_rate: bool, current_version: &str, now_secs: f64) {
+    // IDA 0x18bdc (`-[Appirater incrementSignificantEventAndRate:]`): twin
+    // of 0x18b18 over `incrementSignificantEventCount`, with the
+    // `showRatingAlert` block `stub_18c78`. Same as the platform 0x18bdc
+    // anchor.
+    let inst = AudioAppirater::shared();
+    inst.increment_significant_event_count(current_version, now_secs);
+    if can_rate
+        && inst.rating_conditions_have_been_met(now_secs)
+        && inst.connected_to_network()
+    {
+        stub_18c78();
+    }
 }
 
 // 0x18c78 — ___46-[Appirater incrementSignificantEventAndRate:]_block_invoke
 #[doc(alias = "___46-[Appirater incrementSignificantEventAndRate:]_block_invoke")]
-pub fn stub_18c78() -> ! {
-    todo!("0x18c78 ___46-[Appirater incrementSignificantEventAndRate:]_block_invoke")
+pub fn stub_18c78() {
+    // IDA 0x18c78 (`__46-[Appirater incrementSignificantEventAndRate:]_
+    // block_invoke`): `showRatingAlert` to the captured `self`. Same as the
+    // 0x18bb4 anchor.
+    AudioAppirater::shared().show_rating_alert();
 }
 
 // 0x18c8c — ___copy_helper_block_130
 #[doc(alias = "___copy_helper_block_130")]
-pub fn stub_18c8c() -> ! {
-    todo!("0x18c8c ___copy_helper_block_130")
+pub fn stub_18c8c(slot: &mut u64, src: u64) {
+    // IDA 0x18c8c (`__copy_helper_block_130`): retain the capture. Same as
+    // the 0x18094 anchor.
+    *slot = src;
 }
 
 // 0x18c98 — ___destroy_helper_block_131
 #[doc(alias = "___destroy_helper_block_131")]
-pub fn stub_18c98() -> ! {
-    todo!("0x18c98 ___destroy_helper_block_131")
+pub fn stub_18c98(slot: &mut u64) {
+    // IDA 0x18c98 (`__destroy_helper_block_131`): release the capture.
+    // Same as the 0x180a0 anchor; `0` is `nil`.
+    *slot = 0;
 }
