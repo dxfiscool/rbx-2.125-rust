@@ -1946,8 +1946,9 @@ pub fn stub_0xe4e2b8() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::UnifiedHighLevelGpuProgram(Ogre::ResourceManager *,std::string const&,unsigned long long,std::string const&,bool,Ogre::ManualResourceLoader *)")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgramC2EPNS_15ResourceManagerERKSsyS4_bPNS_20ManualResourceLoaderE")]
 // was: Ogre::UnifiedHighLevelGpuProgram::UnifiedHighLevelGpuProgram(Ogre::ResourceManager *,std::string const&,unsigned long long,std::string const&,bool,Ogre::ManualResourceLoader *)
-// IDA 0xe4e2f8: 477 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4e2f8() {
+// IDA 0xe4e2f8: base init + empty delegate list and null binding delegate (see `UnifiedHighLevelGpuProgram::new`).
+pub fn stub_0xe4e2f8() -> UnifiedHighLevelGpuProgram {
+    UnifiedHighLevelGpuProgram::new()
 }
 
 // 0xe4e84c — __ZN4Ogre26UnifiedHighLevelGpuProgramD0Ev
@@ -1955,8 +1956,9 @@ pub fn stub_0xe4e2f8() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::~UnifiedHighLevelGpuProgram()")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgramD0Ev")]
 // was: Ogre::UnifiedHighLevelGpuProgram::~UnifiedHighLevelGpuProgram()
-// IDA 0xe4e84c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_0xe4e84c() {
+// IDA 0xe4e84c: D0 destructor — delegate release + name-vector teardown (see `destroy`).
+pub fn stub_0xe4e84c(program: &mut UnifiedHighLevelGpuProgram) {
+    program.destroy()
 }
 
 // 0xe4e8dc — __ZN4Ogre26UnifiedHighLevelGpuProgramD1Ev
@@ -1964,8 +1966,9 @@ pub fn stub_0xe4e84c() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::~UnifiedHighLevelGpuProgram()")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgramD1Ev")]
 // was: Ogre::UnifiedHighLevelGpuProgram::~UnifiedHighLevelGpuProgram()
-// IDA 0xe4e8dc: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_0xe4e8dc() {
+// IDA 0xe4e8dc: D1 destructor (see `destroy`).
+pub fn stub_0xe4e8dc(program: &mut UnifiedHighLevelGpuProgram) {
+    program.destroy()
 }
 
 // 0xe4e8e8 — __ZN4Ogre26UnifiedHighLevelGpuProgramD2Ev
@@ -1973,8 +1976,9 @@ pub fn stub_0xe4e8dc() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::~UnifiedHighLevelGpuProgram()")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgramD2Ev")]
 // was: Ogre::UnifiedHighLevelGpuProgram::~UnifiedHighLevelGpuProgram()
-// IDA 0xe4e8e8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_0xe4e8e8() {
+// IDA 0xe4e8e8: D2 destructor (see `destroy`).
+pub fn stub_0xe4e8e8(program: &mut UnifiedHighLevelGpuProgram) {
+    program.destroy()
 }
 
 // 0xe4ea78 — __ZNK4Ogre26UnifiedHighLevelGpuProgram14chooseDelegateEv
@@ -1982,8 +1986,9 @@ pub fn stub_0xe4e8e8() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::chooseDelegate(void)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram14chooseDelegateEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::chooseDelegate(void)const
-// IDA 0xe4ea78: 806 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4ea78() {
+// IDA 0xe4ea78: bind the first supported delegate name (see `choose_delegate`).
+pub fn stub_0xe4ea78(program: &mut UnifiedHighLevelGpuProgram) {
+    program.choose_delegate()
 }
 
 // 0xe4f338 — __ZN4Ogre26UnifiedHighLevelGpuProgram18addDelegateProgramERKSs
@@ -1991,8 +1996,9 @@ pub fn stub_0xe4ea78() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::addDelegateProgram(std::string const&)")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgram18addDelegateProgramERKSs")]
 // was: Ogre::UnifiedHighLevelGpuProgram::addDelegateProgram(std::string const&)
-// IDA 0xe4f338: 37 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4f338() {
+// IDA 0xe4f338: push the delegate name, drop the binding (see `add_delegate_program`).
+pub fn stub_0xe4f338(program: &mut UnifiedHighLevelGpuProgram, name: &str) {
+    program.add_delegate_program(name)
 }
 
 // 0xe4f3a0 — __ZNK4Ogre26UnifiedHighLevelGpuProgram11getLanguageEv
@@ -2000,8 +2006,9 @@ pub fn stub_0xe4f338() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::getLanguage(void)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram11getLanguageEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::getLanguage(void)const
-// IDA 0xe4f3a0: 4 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4f3a0() {
+// IDA 0xe4f3a0: static language string at 0x13890FC (see `language`).
+pub fn stub_0xe4f3a0() -> &'static str {
+    UnifiedHighLevelGpuProgram::language()
 }
 
 // 0xe4f3b0 — __ZN4Ogre26UnifiedHighLevelGpuProgram16createParametersEv
@@ -2009,8 +2016,9 @@ pub fn stub_0xe4f3a0() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::createParameters(void)")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgram16createParametersEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::createParameters(void)
-// IDA 0xe4f3b0: 100 insns (PUSH..TBB.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4f3b0() {
+// IDA 0xe4f3b0: delegate-built vs default parameter block (see `create_parameters`).
+pub fn stub_0xe4f3b0(program: &mut UnifiedHighLevelGpuProgram) -> GpuProgramParameters {
+    program.create_parameters()
 }
 
 // 0xe4f4c8 — __ZN4Ogre26UnifiedHighLevelGpuProgram19_getBindingDelegateEv
@@ -2018,8 +2026,9 @@ pub fn stub_0xe4f3b0() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::_getBindingDelegate(void)")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgram19_getBindingDelegateEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::_getBindingDelegate(void)
-// IDA 0xe4f4c8: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4f4c8() {
+// IDA 0xe4f4c8: binding delegate after choosing (see `binding_delegate_name`).
+pub fn stub_0xe4f4c8(program: &mut UnifiedHighLevelGpuProgram) -> Option<&str> {
+    program.binding_delegate_name()
 }
 
 // 0xe4f4f0 — __ZNK4Ogre26UnifiedHighLevelGpuProgram11isSupportedEv
@@ -2027,8 +2036,9 @@ pub fn stub_0xe4f4c8() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::isSupported(void)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram11isSupportedEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::isSupported(void)const
-// IDA 0xe4f4f0: 12 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4f4f0() {
+// IDA 0xe4f4f0: supported ⟺ binding delegate exists (see `is_supported`).
+pub fn stub_0xe4f4f0(program: &mut UnifiedHighLevelGpuProgram) -> bool {
+    program.is_supported()
 }
 
 // 0xe4f510 — __ZNK4Ogre26UnifiedHighLevelGpuProgram27isSkeletalAnimationIncludedEv
@@ -2036,8 +2046,9 @@ pub fn stub_0xe4f4f0() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::isSkeletalAnimationIncluded(void)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram27isSkeletalAnimationIncludedEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::isSkeletalAnimationIncluded(void)const
-// IDA 0xe4f510: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4f510() {
+// IDA 0xe4f510: forward +224, default false (see `skeletal_animation_included`).
+pub fn stub_0xe4f510(program: &mut UnifiedHighLevelGpuProgram) -> bool {
+    program.skeletal_animation_included()
 }
 
 // 0xe4f538 — __ZNK4Ogre26UnifiedHighLevelGpuProgram24isMorphAnimationIncludedEv
@@ -2045,8 +2056,9 @@ pub fn stub_0xe4f510() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::isMorphAnimationIncluded(void)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram24isMorphAnimationIncludedEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::isMorphAnimationIncluded(void)const
-// IDA 0xe4f538: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4f538() {
+// IDA 0xe4f538: forward +236, default false (see `morph_animation_included`).
+pub fn stub_0xe4f538(program: &mut UnifiedHighLevelGpuProgram) -> bool {
+    program.morph_animation_included()
 }
 
 // 0xe4f560 — __ZNK4Ogre26UnifiedHighLevelGpuProgram23isPoseAnimationIncludedEv
@@ -2054,8 +2066,9 @@ pub fn stub_0xe4f538() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::isPoseAnimationIncluded(void)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram23isPoseAnimationIncludedEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::isPoseAnimationIncluded(void)const
-// IDA 0xe4f560: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4f560() {
+// IDA 0xe4f560: forward +240, default false (see `pose_animation_included`).
+pub fn stub_0xe4f560(program: &mut UnifiedHighLevelGpuProgram) -> bool {
+    program.pose_animation_included()
 }
 
 // 0xe4f588 — __ZNK4Ogre26UnifiedHighLevelGpuProgram28isVertexTextureFetchRequiredEv
@@ -2063,8 +2076,9 @@ pub fn stub_0xe4f560() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::isVertexTextureFetchRequired(void)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram28isVertexTextureFetchRequiredEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::isVertexTextureFetchRequired(void)const
-// IDA 0xe4f588: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4f588() {
+// IDA 0xe4f588: forward +252, default false (see `vertex_texture_fetch_required`).
+pub fn stub_0xe4f588(program: &mut UnifiedHighLevelGpuProgram) -> bool {
+    program.vertex_texture_fetch_required()
 }
 
 // 0xe4f5b0 — __ZN4Ogre26UnifiedHighLevelGpuProgram20getDefaultParametersEv
@@ -2072,8 +2086,9 @@ pub fn stub_0xe4f588() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::getDefaultParameters(void)")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgram20getDefaultParametersEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::getDefaultParameters(void)
-// IDA 0xe4f5b0: 25 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4f5b0() {
+// IDA 0xe4f5b0: delegate vs blank parameter block (see `default_parameters`).
+pub fn stub_0xe4f5b0(program: &mut UnifiedHighLevelGpuProgram) -> GpuProgramParameters {
+    program.default_parameters()
 }
 
 // 0xe4f5f4 — __ZNK4Ogre26UnifiedHighLevelGpuProgram20hasDefaultParametersEv
@@ -2081,8 +2096,9 @@ pub fn stub_0xe4f5b0() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::hasDefaultParameters(void)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram20hasDefaultParametersEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::hasDefaultParameters(void)const
-// IDA 0xe4f5f4: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4f5f4() {
+// IDA 0xe4f5f4: forward +268, default false (see `has_default_parameters`).
+pub fn stub_0xe4f5f4(program: &mut UnifiedHighLevelGpuProgram) -> bool {
+    program.has_default_parameters()
 }
 
 // 0xe4f61c — __ZNK4Ogre26UnifiedHighLevelGpuProgram28getPassSurfaceAndLightStatesEv
@@ -2090,8 +2106,9 @@ pub fn stub_0xe4f5f4() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::getPassSurfaceAndLightStates(void)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram28getPassSurfaceAndLightStatesEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::getPassSurfaceAndLightStates(void)const
-// IDA 0xe4f61c: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4f61c() {
+// IDA 0xe4f61c: forward +272, default false (see `pass_surface_and_light_states`).
+pub fn stub_0xe4f61c(program: &mut UnifiedHighLevelGpuProgram) -> bool {
+    program.pass_surface_and_light_states()
 }
 
 // 0xe4f644 — __ZNK4Ogre26UnifiedHighLevelGpuProgram16getPassFogStatesEv
@@ -2099,8 +2116,9 @@ pub fn stub_0xe4f61c() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::getPassFogStates(void)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram16getPassFogStatesEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::getPassFogStates(void)const
-// IDA 0xe4f644: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4f644() {
+// IDA 0xe4f644: forward +276, no-delegate default true (see `pass_fog_states`).
+pub fn stub_0xe4f644(program: &mut UnifiedHighLevelGpuProgram) -> bool {
+    program.pass_fog_states()
 }
 
 // 0xe4f66c — __ZNK4Ogre26UnifiedHighLevelGpuProgram22getPassTransformStatesEv
@@ -2108,8 +2126,9 @@ pub fn stub_0xe4f644() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::getPassTransformStates(void)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram22getPassTransformStatesEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::getPassTransformStates(void)const
-// IDA 0xe4f66c: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4f66c() {
+// IDA 0xe4f66c: forward +280, default false (see `pass_transform_states`).
+pub fn stub_0xe4f66c(program: &mut UnifiedHighLevelGpuProgram) -> bool {
+    program.pass_transform_states()
 }
 
 // 0xe4f694 — __ZNK4Ogre26UnifiedHighLevelGpuProgram15hasCompileErrorEv
@@ -2117,8 +2136,9 @@ pub fn stub_0xe4f66c() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::hasCompileError(void)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram15hasCompileErrorEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::hasCompileError(void)const
-// IDA 0xe4f694: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4f694() {
+// IDA 0xe4f694: forward +288, default false (see `has_compile_error`).
+pub fn stub_0xe4f694(program: &mut UnifiedHighLevelGpuProgram) -> bool {
+    program.has_compile_error()
 }
 
 // 0xe4f6bc — __ZN4Ogre26UnifiedHighLevelGpuProgram17resetCompileErrorEv
@@ -2126,8 +2146,9 @@ pub fn stub_0xe4f694() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::resetCompileError(void)")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgram17resetCompileErrorEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::resetCompileError(void)
-// IDA 0xe4f6bc: 15 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4f6bc() {
+// IDA 0xe4f6bc: forward +292, null delegate → no-op (see `reset_compile_error`).
+pub fn stub_0xe4f6bc(program: &mut UnifiedHighLevelGpuProgram) {
+    program.reset_compile_error()
 }
 
 // 0xe4f6e4 — __ZN4Ogre26UnifiedHighLevelGpuProgram4loadEb
@@ -2135,8 +2156,254 @@ pub fn stub_0xe4f6bc() {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::load(bool)")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgram4loadEb")]
 // was: Ogre::UnifiedHighLevelGpuProgram::load(bool)
-// IDA 0xe4f6e4: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4f6e4() {
+// IDA 0xe4f6e4: forward `Resource::load(background)` +64 (see `load`).
+pub fn stub_0xe4f6e4(program: &mut UnifiedHighLevelGpuProgram, background: bool) {
+    program.load(background)
+}
+
+/// was: `Ogre::GpuProgramParameters` — opaque parameter block handed out by
+/// `createParameters`/`getDefaultParameters` (IDA `0xe4f3b0`/`0xe4f5b0`).
+/// Only the delegate-built latch is modelled; named constants live in the GPU backend.
+#[doc(alias = "Ogre::GpuProgramParameters")]
+#[derive(Clone, Debug, Default)]
+pub struct GpuProgramParameters {
+    /// True when built from the binding delegate (IDA `0xe4f42e` path).
+    pub from_delegate: bool,
+}
+
+/// was: `Ogre::HighLevelGpuProgram` delegate behind
+/// `UnifiedHighLevelGpuProgram::mBindingDelegate` (+228, `SharedPtr`, IDA `0xe4f372`..`0xe4f394`).
+/// Carries the observable delegate answers the `0xe4f510`..`0xe4f6e4` forwarders return.
+#[doc(alias = "Ogre::HighLevelGpuProgram")]
+#[derive(Clone, Debug, Default, PartialEq)]
+pub struct GpuProgramDelegate {
+    /// Delegate program name (one of `mDelegateNames`).
+    pub name: String,
+    /// `isSkeletalAnimationIncluded` answer.
+    pub skeletal_animation_included: bool,
+    /// `isMorphAnimationIncluded` answer.
+    pub morph_animation_included: bool,
+    /// `isPoseAnimationIncluded` answer.
+    pub pose_animation_included: bool,
+    /// `isVertexTextureFetchRequired` answer.
+    pub vertex_texture_fetch_required: bool,
+    /// `hasDefaultParameters` answer.
+    pub has_default_parameters: bool,
+    /// `getPassSurfaceAndLightStates` answer.
+    pub pass_surface_and_light_states: bool,
+    /// `getPassFogStates` answer (`GpuProgram` ctor default is true).
+    pub pass_fog_states: bool,
+    /// `getPassTransformStates` answer.
+    pub pass_transform_states: bool,
+    /// `hasCompileError` latch.
+    pub compile_error: bool,
+    /// `Resource::load` latch.
+    pub loaded: bool,
+}
+
+impl GpuProgramDelegate {
+    fn for_name(name: &str) -> Self {
+        Self {
+            name: name.to_owned(),
+            pass_fog_states: true,
+            ..Self::default()
+        }
+    }
+}
+
+/// was: `Ogre::UnifiedHighLevelGpuProgram` (OgreMain/src/OgreUnifiedHighLevelGpuProgram.cpp).
+/// Picks one delegate from `mDelegateNames` (+212) into `mBindingDelegate` (+228)
+/// and forwards every query there (IDA `0xe4ea78` chooser, `0xe4f4c8`..`0xe4f6e4` forwarders).
+#[doc(alias = "Ogre::UnifiedHighLevelGpuProgram")]
+#[derive(Clone, Debug, Default)]
+pub struct UnifiedHighLevelGpuProgram {
+    /// +212 delegate program names (`vector<string>`, IDA `0xe4f344`..`0xe4f36e`).
+    pub delegate_names: Vec<String>,
+    /// +228 binding delegate (`SharedPtr<HighLevelGpuProgram>`, IDA `0xe4f4f6`); None = none chosen.
+    pub binding_delegate: Option<GpuProgramDelegate>,
+}
+
+impl UnifiedHighLevelGpuProgram {
+    /// IDA `0xe4e2f8`: base `HighLevelGpuProgram` init, empty delegate list (+212),
+    /// null binding delegate (+228, words +53..+60 zeroed at `0xe4e34e`..`0xe4e390`).
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    /// Shared tail of the D0/D1/D2 destructors (`0xe4e84c`/`0xe4e8dc`/`0xe4e8e8`):
+    /// release the binding delegate, destroy the delegate-name vector.
+    pub fn destroy(&mut self) {
+        // IDA 0xe4e936..: SharedPtr release of +228, vector teardown at +212.
+        self.binding_delegate = None;
+        self.delegate_names.clear();
+    }
+
+    /// IDA `0xe4ea78`: walk `mDelegateNames` via `HighLevelGpuProgramManager`
+    /// (`0xe4eb4a`) and bind the first supported one; log and stay null when none matches.
+    /// // BUG: the manager support check at 0xe4eb4a..0xe4ec12 is not modelled —
+    /// // the first listed name binds unconditionally.
+    pub fn choose_delegate(&mut self) {
+        // IDA 0xe4f4da..0xe4f4e0 / 0xe4f502: already bound → keep it.
+        if self.binding_delegate.is_some() {
+            return;
+        }
+        // IDA 0xe4eac4..0xe4edb4: iterate names, bind first supported.
+        if let Some(first) = self.delegate_names.first().cloned() {
+            self.binding_delegate = Some(GpuProgramDelegate::for_name(&first));
+        }
+        // IDA 0xe4ec34..0xe4ed62: no match → LogManager warning, stays null.
+    }
+
+    /// IDA `0xe4f338`: push the name (+212, `0xe4f344`..`0xe4f36e`) and drop the
+    /// binding delegate (`SharedPtr` release at `0xe4f372`..`0xe4f394`).
+    pub fn add_delegate_program(&mut self, name: &str) {
+        self.delegate_names.push(name.to_owned());
+        self.binding_delegate = None;
+    }
+
+    /// IDA `0xe4f3a0`: returns the static language string at `0x13890FC` (`0xe4f3ac`).
+    /// The rodata bytes read back as `0xff` fill in this DB snapshot, so the value
+    /// is taken from `OgreUnifiedHighLevelGpuProgram.cpp` (`sLanguageName = "unified"`).
+    pub fn language() -> &'static str {
+        "unified"
+    }
+
+    /// IDA `0xe4f3b0`: `createParameters` — delegate path builds from the binding
+    /// (`0xe4f40a`..`0xe4f42e`), otherwise a default block (`0xe4f440`..`0xe4f46c`).
+    pub fn create_parameters(&mut self) -> GpuProgramParameters {
+        self.choose_delegate();
+        GpuProgramParameters {
+            from_delegate: self.binding_delegate.is_some(),
+        }
+    }
+
+    /// IDA `0xe4f4c8`: return the binding delegate, choosing one first when null.
+    pub fn binding_delegate_name(&mut self) -> Option<&str> {
+        // IDA 0xe4f4ce..0xe4f4d2: bound → return it.
+        if self.binding_delegate.is_none() {
+            // IDA 0xe4f4d6: chooseDelegate, then re-read +232.
+            self.choose_delegate();
+        }
+        self.binding_delegate.as_ref().map(|d| d.name.as_str())
+    }
+
+    /// IDA `0xe4f4f0`: supported ⟺ a binding delegate exists after choosing.
+    pub fn is_supported(&mut self) -> bool {
+        // IDA 0xe4f4f6..0xe4f502: null → chooseDelegate → re-read +232.
+        if self.binding_delegate.is_none() {
+            self.choose_delegate();
+        }
+        // IDA 0xe4f50c: return v2 != 0.
+        self.binding_delegate.is_some()
+    }
+
+    /// IDA `0xe4f510`: forward `isSkeletalAnimationIncluded` (+224), default false.
+    pub fn skeletal_animation_included(&mut self) -> bool {
+        self.choose_delegate();
+        self.binding_delegate
+            .as_ref()
+            .map(|d| d.skeletal_animation_included)
+            .unwrap_or(false)
+    }
+
+    /// IDA `0xe4f538`: forward `isMorphAnimationIncluded` (+236), default false.
+    pub fn morph_animation_included(&mut self) -> bool {
+        self.choose_delegate();
+        self.binding_delegate
+            .as_ref()
+            .map(|d| d.morph_animation_included)
+            .unwrap_or(false)
+    }
+
+    /// IDA `0xe4f560`: forward `isPoseAnimationIncluded` (+240), default false.
+    pub fn pose_animation_included(&mut self) -> bool {
+        self.choose_delegate();
+        self.binding_delegate
+            .as_ref()
+            .map(|d| d.pose_animation_included)
+            .unwrap_or(false)
+    }
+
+    /// IDA `0xe4f588`: forward `isVertexTextureFetchRequired` (+252), default false.
+    pub fn vertex_texture_fetch_required(&mut self) -> bool {
+        self.choose_delegate();
+        self.binding_delegate
+            .as_ref()
+            .map(|d| d.vertex_texture_fetch_required)
+            .unwrap_or(false)
+    }
+
+    /// IDA `0xe4f5b0`: delegate `getDefaultParameters` (+264), else a blank block
+    /// (`0xe4f5e8`..`0xe4f5ee` zeroes the out-param words).
+    pub fn default_parameters(&mut self) -> GpuProgramParameters {
+        self.choose_delegate();
+        GpuProgramParameters {
+            from_delegate: self.binding_delegate.is_some(),
+        }
+    }
+
+    /// IDA `0xe4f5f4`: forward `hasDefaultParameters` (+268), default false.
+    pub fn has_default_parameters(&mut self) -> bool {
+        self.choose_delegate();
+        self.binding_delegate
+            .as_ref()
+            .map(|d| d.has_default_parameters)
+            .unwrap_or(false)
+    }
+
+    /// IDA `0xe4f61c`: forward `getPassSurfaceAndLightStates` (+272), default false.
+    pub fn pass_surface_and_light_states(&mut self) -> bool {
+        self.choose_delegate();
+        self.binding_delegate
+            .as_ref()
+            .map(|d| d.pass_surface_and_light_states)
+            .unwrap_or(false)
+    }
+
+    /// IDA `0xe4f644`: forward `getPassFogStates` (+276); no delegate → true (`0xe4f65a`).
+    pub fn pass_fog_states(&mut self) -> bool {
+        self.choose_delegate();
+        self.binding_delegate
+            .as_ref()
+            .map(|d| d.pass_fog_states)
+            .unwrap_or(true)
+    }
+
+    /// IDA `0xe4f66c`: forward `getPassTransformStates` (+280), default false.
+    pub fn pass_transform_states(&mut self) -> bool {
+        self.choose_delegate();
+        self.binding_delegate
+            .as_ref()
+            .map(|d| d.pass_transform_states)
+            .unwrap_or(false)
+    }
+
+    /// IDA `0xe4f694`: forward `hasCompileError` (+288), default false.
+    pub fn has_compile_error(&mut self) -> bool {
+        self.choose_delegate();
+        self.binding_delegate
+            .as_ref()
+            .map(|d| d.compile_error)
+            .unwrap_or(false)
+    }
+
+    /// IDA `0xe4f6bc`: forward `resetCompileError` (+292); null delegate → no-op.
+    pub fn reset_compile_error(&mut self) {
+        // IDA 0xe4f6c2..0xe4f6c6: bound → delegate call; 0xe4f6ca..0xe4f6d6: choose then maybe null → return.
+        self.choose_delegate();
+        if let Some(delegate) = self.binding_delegate.as_mut() {
+            delegate.compile_error = false;
+        }
+    }
+
+    /// IDA `0xe4f6e4`: forward `Resource::load(background)` (+64) to the delegate.
+    pub fn load(&mut self, _background: bool) {
+        // IDA 0xe4f6ea..0xe4f6f0: bound → delegate load; 0xe4f6f4..0xe4f700: choose then maybe null → return.
+        self.choose_delegate();
+        if let Some(delegate) = self.binding_delegate.as_mut() {
+            delegate.loaded = true;
+        }
+    }
 }
 
 #[cfg(test)]
@@ -2513,5 +2780,94 @@ mod texture_unit_state_tests {
         assert_eq!(state.compositor_name, "comp");
         assert_eq!(state.compositor_texture, "tex");
         assert_eq!(state.compositor_mrt_index, 2);
+    }
+}
+
+#[cfg(test)]
+mod unified_gpu_program_tests {
+    use super::*;
+
+    #[test]
+    fn empty_program_has_no_delegate_and_fog_defaults_true() {
+        let mut program = stub_0xe4e2f8();
+        assert!(!stub_0xe4f4f0(&mut program));
+        assert_eq!(stub_0xe4f4c8(&mut program), None);
+        // All forwarders take the null arm: false except fog (IDA 0xe4f65a v3 = 1).
+        assert!(!stub_0xe4f510(&mut program));
+        assert!(!stub_0xe4f538(&mut program));
+        assert!(!stub_0xe4f560(&mut program));
+        assert!(!stub_0xe4f588(&mut program));
+        assert!(!stub_0xe4f5f4(&mut program));
+        assert!(!stub_0xe4f61c(&mut program));
+        assert!(stub_0xe4f644(&mut program));
+        assert!(!stub_0xe4f66c(&mut program));
+        assert!(!stub_0xe4f694(&mut program));
+        // Null-delegate reset/load are no-ops (IDA 0xe4f6ca..0xe4f6d6 / 0xe4f6f4..0xe4f700).
+        stub_0xe4f6bc(&mut program);
+        stub_0xe4f6e4(&mut program, true);
+        assert!(!stub_0xe4f4f0(&mut program));
+    }
+
+    #[test]
+    fn language_is_unified_and_params_track_delegate() {
+        assert_eq!(stub_0xe4f3a0(), "unified");
+        let mut program = stub_0xe4e2f8();
+        assert!(!stub_0xe4f3b0(&mut program).from_delegate);
+        assert!(!stub_0xe4f5b0(&mut program).from_delegate);
+        stub_0xe4f338(&mut program, "cg");
+        assert!(stub_0xe4f3b0(&mut program).from_delegate);
+        assert!(stub_0xe4f5b0(&mut program).from_delegate);
+    }
+
+    #[test]
+    fn add_chooses_first_delegate_and_resets_binding() {
+        let mut program = stub_0xe4e2f8();
+        stub_0xe4f338(&mut program, "cg");
+        stub_0xe4f338(&mut program, "glsl");
+        // IDA 0xe4ea78: first supported name binds.
+        stub_0xe4ea78(&mut program);
+        assert_eq!(stub_0xe4f4c8(&mut program), Some("cg"));
+        assert!(stub_0xe4f4f0(&mut program));
+        // Adding again drops the binding (IDA 0xe4f372..0xe4f394); next query re-chooses.
+        stub_0xe4f338(&mut program, "hlsl");
+        assert_eq!(program.binding_delegate, None);
+        assert_eq!(stub_0xe4f4c8(&mut program), Some("cg"));
+    }
+
+    #[test]
+    fn forwarder_answers_come_from_the_bound_delegate() {
+        let mut program = stub_0xe4e2f8();
+        stub_0xe4f338(&mut program, "cg");
+        program
+            .binding_delegate
+            .get_or_insert_with(|| GpuProgramDelegate::for_name("cg"));
+        let delegate = program.binding_delegate.as_mut().unwrap();
+        delegate.skeletal_animation_included = true;
+        delegate.pass_fog_states = false;
+        delegate.compile_error = true;
+        assert!(stub_0xe4f510(&mut program));
+        assert!(!stub_0xe4f538(&mut program));
+        assert!(!stub_0xe4f644(&mut program));
+        assert!(stub_0xe4f694(&mut program));
+        stub_0xe4f6bc(&mut program);
+        assert!(!stub_0xe4f694(&mut program));
+        stub_0xe4f6e4(&mut program, false);
+        assert!(program.binding_delegate.as_ref().unwrap().loaded);
+    }
+
+    #[test]
+    fn destroy_clears_names_and_binding() {
+        let mut program = stub_0xe4e2f8();
+        stub_0xe4f338(&mut program, "cg");
+        assert!(stub_0xe4f4f0(&mut program));
+        stub_0xe4e84c(&mut program);
+        assert!(program.delegate_names.is_empty());
+        assert!(!stub_0xe4f4f0(&mut program));
+        stub_0xe4f338(&mut program, "glsl");
+        stub_0xe4e8dc(&mut program);
+        assert!(!stub_0xe4f4f0(&mut program));
+        stub_0xe4f338(&mut program, "hlsl");
+        stub_0xe4e8e8(&mut program);
+        assert!(!stub_0xe4f4f0(&mut program));
     }
 }
