@@ -899,204 +899,458 @@ pub fn stub_0x243304() -> CondAny {
     CondAny::default()
 }
 
+// ---- RBX::CEvent + RBX::Limits::Counter/Countable cluster (IDA 0x2434dc..0x244bc0) ----
+// Ground truth per stub: `decompile(ea)` + `disasm(ea)` via IDA MCP.
+// Boost mapping (AGENTS.md section 4): boost::shared_ptr -> rbx_core::SharedPtr
+// (Arc); boost::mutex/pthread_mutex -> parking_lot::Mutex; pthread cond waits ->
+// parking_lot::Condvar; boost::thread_specific_ptr -> thread_local! slot;
+// boost exceptions -> thiserror errors + panic_any (host for __cxa_throw).
+// Unmodeled throughout: pthread cancellation/interrupt state, absolute
+// timespec plumbing (deadlines become std::time::Instant), and C++ RTTI/vtable
+// offices.
+
+/// was: `__GLOBAL__I_a_44` / `__GLOBAL__I_a_45` TU statics — two
+/// `boost::system::generic_category` slots plus one `system_category` slot
+/// (disasm 0x2434dc..0x2434fc and 0x243dd0..0x243dee: generic, generic,
+/// system). The trailing `__cxa_atexit` registrations have no host.
+#[derive(Debug, Default)]
+pub struct ErrorCategorySlots {
+    pub generic_a: parking_lot::Mutex<bool>,
+    pub generic_b: parking_lot::Mutex<bool>,
+    pub system: parking_lot::Mutex<bool>,
+}
+
+/// Win32 wait codes returned by `CEvent::WaitForSingleObject`.
+pub const WAIT_OBJECT_0: i32 = 0;
+pub const WAIT_TIMEOUT: i32 = 258;
+
+/// was: `RBX::CEvent` — manual-reset flag at +0 (disasm 0x243966 STRB),
+/// signaled byte at +1 (disasm 0x24361c `LDRB [R6,#1]`), boost
+/// `condition_variable` at +4 (mutex at +4, cond at +48: dtor destroys both
+/// at 0x2438ac/0x2438c0; `Set` signals the cond at +0x30 in 0x243ad2), and
+/// the guard mutex at +76 (disasm 0x243a56/0x243604 `ADD #0x4C`).
+/// Boost mapping: both mutexes and the cond become one parking_lot pair.
+#[derive(Debug)]
+pub struct CEvent {
+    /// Manual-reset flag at +0 (ctor arg, IDA 0x243966).
+    pub manual_reset: bool,
+    /// Signaled byte at +1 (IDA 0x24361c), guarded by the mutex at +76.
+    pub state: parking_lot::Mutex<bool>,
+    /// Cond at +48 (IDA 0x243ad2 `pthread_cond_signal`).
+    pub wake: parking_lot::Condvar,
+}
+
+impl CEvent {
+    /// was: `RBX::CEvent::CEvent(bool)` (IDA 0x243944).
+    pub fn new(manual_reset: bool) -> CEvent {
+        CEvent {
+            manual_reset,
+            state: parking_lot::Mutex::new(false),
+            wake: parking_lot::Condvar::new(),
+        }
+    }
+
+    /// Shared wait behind every `Wait*` entry: negative `timeout_ms` waits
+    /// forever (IDA 0x2435b0 passes -1 `INFINITE`), otherwise an
+    /// absolute-timeout cond wait computed like the microsec_clock/gmtime
+    /// sequence at 0x243660..0x24367e. Returns WAIT_OBJECT_0 when signaled.
+    /// BUG(host): only the 0/nonzero split is grounded (`Wait(int)` checks
+    /// `== 0`, IDA 0x24382e); the 258 timeout word is the Win32-contract value.
+    pub fn wait_for_single_object(&self, timeout_ms: i32) -> i32 {
+        let mut guard = self.state.lock();
+        if timeout_ms < 0 {
+            while !*guard {
+                self.wake.wait(&mut guard);
+            }
+        } else {
+            let deadline =
+                std::time::Instant::now() + std::time::Duration::from_millis(timeout_ms as u64);
+            while !*guard {
+                if self.wake.wait_until(&mut guard, deadline).timed_out() {
+                    return WAIT_TIMEOUT;
+                }
+            }
+        }
+        // BUG(host): the auto-reset clear-on-consume is inferred from the
+        // manual_reset flag at +0; the observed disasm only grounds the
+        // signaled test at 0x24361c.
+        if !self.manual_reset {
+            *guard = false;
+        }
+        WAIT_OBJECT_0
+    }
+}
+
+/// was: `RBX::Limits::Counter::countLimit` — process-wide enforced limit;
+/// values < 1 mean "no limit" (IDA 0x244368 `CMP #1` / `BLT 0x244380`).
+pub static COUNT_LIMIT: std::sync::atomic::AtomicI32 =
+    std::sync::atomic::AtomicI32::new(0);
+
+/// was: `RBX::Limits::Counter` — live registration count sampled via the
+/// thread-local `current` (disasm 0x2442e0..0x2442f8: call_once,
+/// do_get_current, get_tss_data).
+#[derive(Debug, Default)]
+pub struct LimitsCounter {
+    /// Live countable registrations.
+    pub count: std::sync::atomic::AtomicI32,
+}
+/// was: `RBX::Limits::Countable` — intrusive refcount at +0 (disasm
+/// 0x243f60..0x243f76 spinlock-guarded `*ptr += 1`; D2 decrements at
+/// 0x24422e..0x244254) plus the owning-counter link at +4 (D2 releases it
+/// at 0x24425a..0x244264).
+#[derive(Debug, Default)]
+pub struct LimitsCountable {
+    /// Intrusive refcount at +0.
+    pub refs: std::sync::atomic::AtomicI32,
+    /// Owning-counter link at +4 (boost::shared_ptr -> SharedPtr).
+    pub counter: parking_lot::Mutex<Option<SharedPtr<LimitsCounter>>>,
+}
+/// Process-wide default behind `safe_static_do_get_current` (IDA 0x244934:
+/// guarded one-time `operator new` of the value at 0x2449b4..0x244a0e).
+static LIMITS_DEFAULT: std::sync::LazyLock<SharedPtr<LimitsCounter>> =
+    std::sync::LazyLock::new(|| SharedPtr::new(LimitsCounter::default()));
+pub fn limits_default_counter() -> SharedPtr<LimitsCounter> {
+    LIMITS_DEFAULT.clone()
+}
+
+/// was: `RBX::Limits::Counter::globallyEnforcedLimitExceeded` — thrown by
+/// `Counter::add` when the enforced limit is exceeded (disasm 0x24411c
+/// references the exception object on the add-failure path).
+#[derive(Debug, Clone, PartialEq, Eq, thiserror::Error)]
+#[error("RBX::Limits::Counter::globallyEnforcedLimitExceeded")]
+pub struct GloballyEnforcedLimitExceeded;
+
+/// Host for the 0x24411c throw site (panic_any is the host for __cxa_throw).
+pub fn throw_globally_enforced_limit_exceeded() -> ! {
+    std::panic::panic_any(GloballyEnforcedLimitExceeded)
+}
+
+thread_local! {
+    /// Host for `Counter::current`'s
+    /// `thread_specific_ptr<shared_ptr<Counter>>` (disasm 0x2442f4
+    /// get_tss_data; reset at 0x24480c; the Activator swaps it).
+    static LIMITS_CURRENT: std::cell::RefCell<Option<SharedPtr<LimitsCounter>>> =
+        std::cell::RefCell::new(None);
+}
+
+/// was: `RBX::Limits::Counter::current()` — the calling thread's active
+/// counter, falling back to the process-wide default (IDA 0x244934).
+pub fn limits_current() -> SharedPtr<LimitsCounter> {
+    LIMITS_CURRENT.with(|slot| slot.borrow().clone().unwrap_or_else(limits_default_counter))
+}
+
+/// Current-thread registered count — what `getCurrentCount` returns
+/// (IDA 0x2442e0..0x2442f8).
+pub fn limits_current_count() -> i32 {
+    limits_current()
+        .count
+        .load(std::sync::atomic::Ordering::Relaxed)
+}
+
+/// was: `RBX::Limits::Counter::Activator` — RAII swap of the thread-local
+/// `current` (C2 installs the new counter, D2 restores the previous).
+#[derive(Debug)]
+pub struct LimitsActivator {
+    prev: Option<SharedPtr<LimitsCounter>>,
+}
+
+/// was: `boost::thread_specific_ptr<shared_ptr<Counter>>` — the target keeps
+/// one process-wide key; the per-thread value lives in LIMITS_CURRENT above.
+#[derive(Debug, Default)]
+pub struct CounterTlsSlot;
+
+/// Host stand-in for the `delete_data` cleanup functor: dropping the value
+/// runs the same teardown.
+#[derive(Debug, Default)]
+pub struct CounterDeleteData;
+
 // 0x2434dc — __GLOBAL__I_a_44
 #[doc(alias = "global constructor keyed to_a_44")]
-pub fn stub_0x2434dc() -> ! {
-    todo!("0x2434dc __GLOBAL__I_a_44")
+// IDA 0x2434dc: generic_category -> slot, generic_category -> slot,
+// system_category -> slot (0x2434e0..0x2434fa); __cxa_atexit unmodeled.
+pub fn stub_0x2434dc(slots: &ErrorCategorySlots) {
+    *slots.generic_a.lock() = true;
+    *slots.generic_b.lock() = true;
+    *slots.system.lock() = true;
 }
 
 // 0x2435a4 — __ZN3RBX6CEvent4WaitEv
 // type: int __fastcall(RBX::CEvent *this, int, int)
 // was: int __fastcall(RBX::CEvent *this, int, int)
 #[doc(alias = "RBX::CEvent::Wait(void)")]
-pub fn stub_0x2435a4() -> ! {
-    todo!("0x2435a4 __ZN3RBX6CEvent4WaitEv")
+// IDA 0x2435a4: forwards to WaitForSingleObject(this, -1 /*INFINITE*/) (0x2435b0).
+pub fn stub_0x2435a4(event: &CEvent) -> i32 {
+    stub_0x2435b4(event, -1)
 }
 
 // 0x2435b4 — __ZN3RBX6CEvent19WaitForSingleObjectERS0_i
 // type: int __fastcall(RBX::CEvent *this, int, int)
 // was: int __fastcall(RBX::CEvent *this, int, int)
 #[doc(alias = "RBX::CEvent::WaitForSingleObject(RBX::CEvent&,int)")]
-pub fn stub_0x2435b4() -> ! {
-    todo!("0x2435b4 __ZN3RBX6CEvent19WaitForSingleObjectERS0_i")
+// IDA 0x2435b4: static member (CEvent&, int) — locks the guard mutex at +76
+// (0x243604), tests the signaled byte at +1 (0x24361c), then an
+// absolute-timeout cond wait built from microsec_clock/gmtime (0x243660..0x24367e).
+pub fn stub_0x2435b4(event: &CEvent, timeout_ms: i32) -> i32 {
+    event.wait_for_single_object(timeout_ms)
 }
 
 // 0x24381c — __ZN3RBX6CEvent4WaitEi
 // type: bool __fastcall(RBX::CEvent *this, int, int)
 // was: bool __fastcall(RBX::CEvent *this, int, int)
 #[doc(alias = "RBX::CEvent::Wait(int)")]
-pub fn stub_0x24381c() -> ! {
-    todo!("0x24381c __ZN3RBX6CEvent4WaitEi")
+// IDA 0x24381c: returns WaitForSingleObject(this, ms) == 0 (0x24382e).
+pub fn stub_0x24381c(event: &CEvent, timeout_ms: i32) -> bool {
+    stub_0x2435b4(event, timeout_ms) == WAIT_OBJECT_0
 }
 
 // 0x243830 — __ZN3RBX6CEventD1Ev
 // type: void __fastcall(RBX::CEvent *__hidden this)
 // was: void __fastcall(RBX::CEvent *__hidden this)
 #[doc(alias = "RBX::CEvent::~CEvent()")]
-pub fn stub_0x243830() -> ! {
-    todo!("0x243830 __ZN3RBX6CEventD1Ev")
+// IDA 0x243830: tail-calls D2 (disasm 0x243830..0x243834: BL to D2).
+pub fn stub_0x243830(event: CEvent) {
+    stub_0x24383c(event);
 }
 
 // 0x24383c — __ZN3RBX6CEventD2Ev
 // type: void __fastcall(RBX::CEvent *__hidden this)
 // was: void __fastcall(RBX::CEvent *__hidden this)
 #[doc(alias = "RBX::CEvent::~CEvent() [0x24383c]")]
-pub fn stub_0x24383c() -> ! {
-    todo!("0x24383c __ZN3RBX6CEventD2Ev")
+// IDA 0x24383c: destroys the mutex at +76 (0x243898), the mutex at +4
+// (0x2438ac), and the cond at +48 (0x2438c0), each retried on EBUSY.
+// Host: dropping the value frees the same three primitives.
+// BUG(host): the EBUSY spin is unmodeled — parking_lot teardown cannot fail.
+pub fn stub_0x24383c(event: CEvent) {
+    std::mem::drop(event);
 }
 
 // 0x243944 — __ZN3RBX6CEventC1Eb
 // type: RBX::CEvent *__fastcall(RBX::CEvent *this, bool)
 // was: RBX::CEvent *__fastcall(RBX::CEvent *this, bool)
 #[doc(alias = "RBX::CEvent::CEvent(bool)")]
-pub fn stub_0x243944() -> ! {
-    todo!("0x243944 __ZN3RBX6CEventC1Eb")
+// IDA 0x243944: manual flag at +0 (0x243966), signaled = 0 at +1 (0x243974),
+// condition_variable at +4 (0x2439a4), mutex at +76 (0x2439b0).
+pub fn stub_0x243944(manual_reset: bool) -> CEvent {
+    CEvent::new(manual_reset)
 }
 
 // 0x243a30 — __ZN3RBX6CEvent3SetEv
 // type: void __fastcall(RBX::CEvent *this)
 // was: void __fastcall(RBX::CEvent *this)
 #[doc(alias = "RBX::CEvent::Set(void)")]
-pub fn stub_0x243a30() -> ! {
-    todo!("0x243a30 __ZN3RBX6CEvent3SetEv")
+// IDA 0x243a30: locks the mutex at +76 (0x243a56), sets the signaled byte,
+// pthread_cond_signal on the cond at +48 (0x243ad2), unlock (0x243abc).
+pub fn stub_0x243a30(event: &CEvent) {
+    *event.state.lock() = true;
+    event.wake.notify_one();
 }
 
 // 0x243b84 — __ZN5boost18condition_variable13do_wait_untilERNS_11unique_lockINS_5mutexEEERK8timespec
 // type: int __fastcall(int, int, const timespec *)
 // was: int __fastcall(int, int, const timespec *)
 #[doc(alias = "boost::condition_variable::do_wait_until(boost::unique_lock<boost::mutex> &,timespec const&)")]
-pub fn stub_0x243b84() -> ! {
-    todo!("0x243b84 __ZN5boost18condition_variable13do_wait_untilERNS_11unique_lockINS_5mutexEEERK8timespec")
+// IDA 0x243b84: pthread_cond_timedwait against the absolute timespec.
+// Host: parking_lot wait_until against the equivalent deadline.
+// BUG(host): only the wake/timeout split is modeled; the exact status word
+// follows the CEvent WAIT_OBJECT_0/WAIT_TIMEOUT convention.
+pub fn stub_0x243b84(cond: &CondAny, deadline: std::time::Instant) -> i32 {
+    let mut guard = cond.mutex.lock();
+    if cond.wake.wait_until(&mut guard, deadline).timed_out() {
+        WAIT_TIMEOUT
+    } else {
+        WAIT_OBJECT_0
+    }
 }
 
 // 0x243dd0 — __GLOBAL__I_a_45
 #[doc(alias = "global constructor keyed to_a_45")]
-pub fn stub_0x243dd0() -> ! {
-    todo!("0x243dd0 __GLOBAL__I_a_45")
+// IDA 0x243dd0: generic_category -> slot, generic_category -> slot,
+// system_category -> slot (0x243dd4..0x243dee); __cxa_atexit unmodeled.
+pub fn stub_0x243dd0(slots: &ErrorCategorySlots) {
+    *slots.generic_a.lock() = true;
+    *slots.generic_b.lock() = true;
+    *slots.system.lock() = true;
 }
 
 // 0x243e98 — __ZN3RBX6Limits9CountableC2Ev
 // type: RBX::Limits::Countable *__fastcall(RBX::Limits::Countable *this, int, int, int)
-// was: RBX::Limits::Countable *__fastcall(RBX::Limits::Countable *this, int, int, int)
-#[doc(alias = "RBX::Limits::Countable::Countable(void)")]
-pub fn stub_0x243e98() -> ! {
-    todo!("0x243e98 __ZN3RBX6Limits9CountableC2Ev")
+// IDA 0x243e98: refcount at +0 = 0 (0x243ec4), link the thread-local current
+// counter at +4 (0x243ec6..0x243ed0), spinlock-guarded registration increment
+// (0x243f60..0x243f7e).
+pub fn stub_0x243e98() -> LimitsCountable {
+    let current = limits_current();
+    current
+        .count
+        .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    LimitsCountable {
+        refs: std::sync::atomic::AtomicI32::new(0),
+        counter: parking_lot::Mutex::new(Some(current)),
+    }
 }
 
 // 0x244088 — __ZN3RBX6Limits7Counter3addEPNS0_9CountableE
 // type: void __fastcall(int32_t *, volatile int *)
-// was: void __fastcall(int32_t *, volatile int *)
-#[doc(alias = "RBX::Limits::Counter::add(RBX::Limits::Countable *)")]
-pub fn stub_0x244088() -> ! {
-    todo!("0x244088 __ZN3RBX6Limits7Counter3addEPNS0_9CountableE")
+// IDA 0x244088: limit check against countLimit, throw
+// globallyEnforcedLimitExceeded on the failure path (0x24411c), else the
+// interlocked increment plus the +4 counter link.
+pub fn stub_0x244088(counter: &SharedPtr<LimitsCounter>, item: &LimitsCountable) {
+    if !stub_0x244358(counter, 1) {
+        throw_globally_enforced_limit_exceeded();
+    }
+    counter
+        .count
+        .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    *item.counter.lock() = Some(counter.clone());
 }
 
 // 0x244200 — __ZN3RBX6Limits9CountableD2Ev
 // type: void __fastcall(int32_t **this, volatile int *)
-// was: void __fastcall(int32_t **this, volatile int *)
-#[doc(alias = "RBX::Limits::Countable::~Countable()")]
-pub fn stub_0x244200() -> ! {
-    todo!("0x244200 __ZN3RBX6Limits9CountableD2Ev")
+// IDA 0x244200: RbxInterlockedDecrement the refcount at +0 when nonzero
+// (0x24422e..0x244254), then release the +4 counter shared count
+// (0x24425a..0x244264). Host: dropping the value releases the Arc the same way.
+pub fn stub_0x244200(item: LimitsCountable) {
+    if item.refs.load(std::sync::atomic::Ordering::Acquire) != 0 {
+        item.refs.fetch_sub(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    std::mem::drop(item);
 }
 
 // 0x2442c4 — __ZN3RBX6Limits7Counter15getCurrentCountEv
 // type: _DWORD __fastcall(RBX::Limits::Counter *__hidden this)
-// was: _DWORD __fastcall(RBX::Limits::Counter *__hidden this)
-#[doc(alias = "RBX::Limits::Counter::getCurrentCount(void)")]
-pub fn stub_0x2442c4() -> ! {
-    todo!("0x2442c4 __ZN3RBX6Limits7Counter15getCurrentCountEv")
+// IDA 0x2442c4: call_once the current init (0x2442e0), do_get_current
+// (0x2442e4), get_tss_data (0x2442f4) — the returned count is the
+// thread-local current counter's, not `this`'s own field.
+// BUG(host): `this` is expected to be that current counter; it is only kept
+// as the fallback when no thread-local current is installed.
+pub fn stub_0x2442c4(counter: &LimitsCounter) -> i32 {
+    LIMITS_CURRENT.with(|slot| {
+        slot.borrow()
+            .as_ref()
+            .map(|current| current.count.load(std::sync::atomic::Ordering::Relaxed))
+            .unwrap_or_else(|| counter.count.load(std::sync::atomic::Ordering::Relaxed))
+    })
 }
 
 // 0x244358 — __ZN3RBX6Limits7Counter6canAddEi
 // type: bool __fastcall(RBX::Limits::Counter *this, int)
-// was: bool __fastcall(RBX::Limits::Counter *this, int)
-#[doc(alias = "RBX::Limits::Counter::canAdd(int)")]
-pub fn stub_0x244358() -> ! {
-    todo!("0x244358 __ZN3RBX6Limits7Counter6canAddEi")
+// IDA 0x244358: countLimit < 1 -> true (0x244368 BLT 0x244380), else
+// current-count + arg <= countLimit (0x24436e..0x24437c).
+pub fn stub_0x244358(_counter: &LimitsCounter, add: i32) -> bool {
+    let limit = COUNT_LIMIT.load(std::sync::atomic::Ordering::Relaxed);
+    limit < 1 || limits_current_count().saturating_add(add) <= limit
 }
 
 // 0x244384 — __ZN3RBX6Limits7Counter9ActivatorC1EN5boost10shared_ptrIS1_EE
 #[doc(alias = "RBX::Limits::Counter::Activator::Activator(rbx_core::SharedPtr<RBX::Limits::Counter>)")]
-pub fn stub_0x244384() -> ! {
-    todo!("0x244384 __ZN3RBX6Limits7Counter9ActivatorC1EN5boost10shared_ptrIS1_EE")
+// IDA 0x244384: tail-calls C2 (disasm 0x244384..0x24438c: BL to C2).
+pub fn stub_0x244384(counter: SharedPtr<LimitsCounter>) -> LimitsActivator {
+    stub_0x244390(counter)
 }
 
 // 0x244390 — __ZN3RBX6Limits7Counter9ActivatorC2EN5boost10shared_ptrIS1_EE
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, void *, int, int, int, int)
-// was: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, void *, int, int, int, int)
-#[doc(alias = "RBX::Limits::Counter::Activator::Activator(rbx_core::SharedPtr<RBX::Limits::Counter>) [0x244390]")]
-pub fn stub_0x244390() -> ! {
-    todo!("0x244390 __ZN3RBX6Limits7Counter9ActivatorC2EN5boost10shared_ptrIS1_EE")
+// IDA 0x244390: call_once the current init, retain the incoming shared
+// words (0x24441a..0x244422), install it as the thread-local current.
+pub fn stub_0x244390(counter: SharedPtr<LimitsCounter>) -> LimitsActivator {
+    let prev = LIMITS_CURRENT.with(|slot| slot.borrow().clone());
+    LIMITS_CURRENT.with(|slot| *slot.borrow_mut() = Some(counter));
+    LimitsActivator { prev }
 }
 
 // 0x2445fc — __ZN3RBX6Limits7Counter9ActivatorD1Ev
 // type: void __fastcall(RBX::Limits::Counter::Activator *__hidden this)
-// was: void __fastcall(RBX::Limits::Counter::Activator *__hidden this)
-#[doc(alias = "RBX::Limits::Counter::Activator::~Activator()")]
-pub fn stub_0x2445fc() -> ! {
-    todo!("0x2445fc __ZN3RBX6Limits7Counter9ActivatorD1Ev")
+// IDA 0x2445fc: tail-calls D2 (disasm 0x2445fc..0x244600: BL to D2).
+pub fn stub_0x2445fc(activator: LimitsActivator) {
+    stub_0x244608(activator);
 }
 
 // 0x244608 — __ZN3RBX6Limits7Counter9ActivatorD2Ev
 // type: void __fastcall(RBX::Limits::Counter::Activator *this, int, int, int)
-// was: void __fastcall(RBX::Limits::Counter::Activator *this, int, int, int)
-#[doc(alias = "RBX::Limits::Counter::Activator::~Activator() [0x244608]")]
-pub fn stub_0x244608() -> ! {
-    todo!("0x244608 __ZN3RBX6Limits7Counter9ActivatorD2Ev")
+// IDA 0x244608: call_once the current init (0x24466c), do_get_current
+// (0x244674), restore the previous thread-local current and release the
+// held shared count. Host: swapping back the saved Arc does both.
+pub fn stub_0x244608(activator: LimitsActivator) {
+    LIMITS_CURRENT.with(|slot| *slot.borrow_mut() = activator.prev);
 }
 
 // 0x24480c — __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE5resetEPS5_
 // type: void __fastcall(int *, const void *)
 // was: void __fastcall(int *, const void *)
 #[doc(alias = "boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::reset(rbx_core::SharedPtr<RBX::Limits::Counter>*)")]
-pub fn stub_0x24480c() -> ! {
-    todo!("0x24480c __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE5resetEPS5_")
+// IDA 0x24480c: get_tss_data (0x24482c), then replace the thread-local value
+// only when it differs (retain new, set_tss_data, release old) — same shape
+// as stub_0x2403d8.
+pub fn stub_0x24480c(
+    _slot: &CounterTlsSlot,
+    counter: Option<SharedPtr<LimitsCounter>>,
+) {
+    LIMITS_CURRENT.with(|slot| {
+        let differs = match (&*slot.borrow(), &counter) {
+            (Some(old), Some(new)) => !SharedPtr::ptr_eq(old, new),
+            (None, None) => false,
+            _ => true,
+        };
+        if differs {
+            *slot.borrow_mut() = counter;
+        }
+    });
 }
 
 // 0x244928 — __ZN3RBX6Limits7Counter24safe_static_init_currentEv
 // type: int __fastcall(RBX::Limits::Counter *this)
 // was: int __fastcall(RBX::Limits::Counter *this)
 #[doc(alias = "RBX::Limits::Counter::safe_static_init_current(void)")]
-pub fn stub_0x244928() -> ! {
-    todo!("0x244928 __ZN3RBX6Limits7Counter24safe_static_init_currentEv")
+// IDA 0x244928: tail-calls safe_static_do_get_current (0x24492c BLX).
+pub fn stub_0x244928() -> SharedPtr<LimitsCounter> {
+    stub_0x244934()
 }
 
 // 0x244934 — __ZN3RBX6Limits7Counter26safe_static_do_get_currentEv
 // type: int *__fastcall(RBX::Limits::Counter *this)
 // was: int *__fastcall(RBX::Limits::Counter *this)
 #[doc(alias = "RBX::Limits::Counter::safe_static_do_get_current(void)")]
-pub fn stub_0x244934() -> ! {
-    todo!("0x244934 __ZN3RBX6Limits7Counter26safe_static_do_get_currentEv")
+// IDA 0x244934: __cxa_guard_acquire the function-local (0x244990), one-time
+// operator new of the value (0x2449b4..0x2449cc) and its counter
+// (0x2449d6..0x244a0e). Host: the LIMITS_DEFAULT LazyLock.
+pub fn stub_0x244934() -> SharedPtr<LimitsCounter> {
+    limits_default_counter()
 }
 
 // 0x244ab8 — __ZN3rbx26thread_specific_shared_ptrIN3RBX6Limits7CounterEED1Ev
 #[doc(alias = "rbx::thread_specific_shared_ptr<RBX::Limits::Counter>::~thread_specific_shared_ptr()")]
-pub fn stub_0x244ab8() -> ! {
-    todo!("0x244ab8 __ZN3rbx26thread_specific_shared_ptrIN3RBX6Limits7CounterEED1Ev")
+// IDA 0x244ab8: forwards to the thread_specific_ptr D2 (0x244abe BLX).
+pub fn stub_0x244ab8(slot: CounterTlsSlot) {
+    stub_0x244ac8(slot);
 }
 
 // 0x244ac8 — __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEED2Ev
 // type: boost::_anonymous_namespace_ *__fastcall(boost::_anonymous_namespace_ *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 // was: boost::_anonymous_namespace_ *__fastcall(boost::_anonymous_namespace_ *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 #[doc(alias = "boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::~thread_specific_ptr()")]
-pub fn stub_0x244ac8() -> ! {
-    todo!("0x244ac8 __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEED2Ev")
+// IDA 0x244ac8: destroys the thread-specific key handle.
+// Host: dropping the handle releases it; per-thread values drain at thread
+// exit (unmodeled).
+pub fn stub_0x244ac8(slot: CounterTlsSlot) {
+    std::mem::drop(slot);
 }
 
 // 0x244bbc — __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataD1Ev
 // type: void()
 // was: void()
 #[doc(alias = "boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data::~delete_data()")]
-pub fn stub_0x244bbc() -> ! {
-    todo!("0x244bbc __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataD1Ev")
+// IDA 0x244bbc: empty body — the cleanup functor's D1 frees nothing itself.
+pub fn stub_0x244bbc(cleanup: CounterDeleteData) {
+    std::mem::drop(cleanup);
 }
 
 // 0x244bc0 — __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataD0Ev
 // type: void __fastcall(void *)
 // was: void __fastcall(void *)
 #[doc(alias = "boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data::~delete_data() [0x244bc0]")]
-pub fn stub_0x244bc0() -> ! {
-    todo!("0x244bc0 __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataD0Ev")
+// IDA 0x244bc0: D1 body then operator delete (0x244bc4).
+// Host: dropping the Box frees the value and the allocation.
+pub fn stub_0x244bc0(cleanup: Box<CounterDeleteData>) {
+    std::mem::drop(cleanup);
 }
 
 // 0x244bcc — __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataclEPv

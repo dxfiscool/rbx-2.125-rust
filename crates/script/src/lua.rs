@@ -1193,172 +1193,365 @@ mod yield_container_tests {
     }
 }
 
+// ── StarterScript/CoreScript teardown (IDA 0x26a88c..0x26b0a4) ───────────────
+// Every D1/D0 below collapses to `RBX::BaseScript::~BaseScript`: D1 is a
+// single `B.W` tail branch (IDA 0x26a88c, 0x26aba4, 0x26ada0, 0x26aff8),
+// D0 is `BL dtor` + `BLX operator delete` (IDA 0x26a890→0x26a8e0/0x26a8e6,
+// 0x26aba8→0x26abf8/0x26abfe, 0x26affc→0x26b04c/0x26b052), and the `Thn32`
+// (`SUBS R0, #0x20`) / `Thn36` (`SUBS R0, #0x24`) variants adjust `this`
+// back to the `BaseScript` subobject first. No layer adds members with a
+// non-trivial destructor, so the host models the shared member state once
+// and each stub keeps its EA/alias while forwarding with its adjustment.
+
+/// Host view of the `RBX::BaseScript` member state torn down by every
+/// destructor below (source string + service binding, cf. `CoreScript`).
+#[derive(Debug, Default)]
+pub struct BaseScriptState {
+    pub source: String,
+    pub service_bound: bool,
+}
+
+/// Adjusted `this` for the `Thn32`/`Thn36` thunks: the secondary-base view
+/// plus its byte delta back to the `BaseScript` subobject (32/36, IDA
+/// `SUBS R0, #0x20` / `#0x24`).
+#[derive(Debug, Default)]
+pub struct AdjustedScriptHandle {
+    pub state: BaseScriptState,
+    pub base_delta: usize,
+}
+
+/// IDA D1 bodies: destroy members, release no storage (caller owns it).
+fn destroy_base_script(state: &mut BaseScriptState) {
+    state.source.clear();
+    state.service_bound = false;
+}
+
+/// IDA D0 bodies: `BL dtor` then `BLX operator delete`; dropping the `Box`
+/// runs the destructor and frees the storage together.
+fn delete_base_script(state: Box<BaseScriptState>) {
+    drop(state);
+}
+
+/// Host `RBX::Reflection::ClassDescriptor` row for the script classes below:
+/// class name plus parent descriptor name (IDA
+/// `ClassDescriptor::ClassDescriptor(parent, name, attrs, perms)`).
+#[derive(Debug)]
+pub struct ScriptClassDescriptor {
+    pub name: &'static str,
+    pub parent: &'static str,
+}
+
+/// IDA 0x26aa88 static: `StarterScript` descriptor over the `CoreScript` one.
+static STARTER_SCRIPT_DESCRIPTOR: LazyLock<ScriptClassDescriptor> =
+    LazyLock::new(|| ScriptClassDescriptor { name: "StarterScript", parent: "CoreScript" });
+
 // 0x26a88c — __ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x26a88c() -> ! {
-    todo!("0x26a88c __ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x26a88c(state: &mut BaseScriptState) {
+    // IDA 0x26a88c: `B.W RBX::BaseScript::~BaseScript` — D1 destroys the
+    // members and releases no storage.
+    destroy_base_script(state);
 }
 
 // 0x26a890 — __ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x26a890() -> ! {
-    todo!("0x26a890 __ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x26a890(state: Box<BaseScriptState>) {
+    // IDA 0x26a890: `BL dtor` (0x26a8e0) then `BLX operator delete`
+    // (0x26a8e6); dropping the Box does both.
+    delete_base_script(state);
 }
 
 // 0x26a930 — __ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x26a930() -> ! {
-    todo!("0x26a930 __ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x26a930(handle: &mut AdjustedScriptHandle) {
+    // IDA 0x26a930: `SUBS R0, #0x20` then `B.W
+    // RBX::BaseScript::~BaseScript` — Thn32 adjustor destroys the
+    // `BaseScript` subobject 32 bytes back.
+    debug_assert_eq!(handle.base_delta, 32);
+    destroy_base_script(&mut handle.state);
 }
 
 // 0x26a938 — __ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x26a938() -> ! {
-    todo!("0x26a938 __ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x26a938(handle: Box<AdjustedScriptHandle>) {
+    // IDA 0x26a938: `SUBS R0, #0x20`, `BL dtor` (0x26a98a), `BLX operator
+    // delete` (0x26a990).
+    debug_assert_eq!(handle.base_delta, 32);
+    let AdjustedScriptHandle { mut state, .. } = *handle;
+    destroy_base_script(&mut state);
 }
 
 // 0x26a9dc — __ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x26a9dc() -> ! {
-    todo!("0x26a9dc __ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x26a9dc(handle: &mut AdjustedScriptHandle) {
+    // IDA 0x26a9dc: `SUBS R0, #0x24` then `B.W
+    // RBX::BaseScript::~BaseScript` — Thn36 adjustor, 36 bytes back.
+    debug_assert_eq!(handle.base_delta, 36);
+    destroy_base_script(&mut handle.state);
 }
 
 // 0x26a9e4 — __ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x26a9e4() -> ! {
-    todo!("0x26a9e4 __ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x26a9e4(handle: Box<AdjustedScriptHandle>) {
+    // IDA 0x26a9e4: `SUBS R0, #0x24`, `BL dtor` (0x26aa36), `BLX operator
+    // delete` (0x26aa3c).
+    debug_assert_eq!(handle.base_delta, 36);
+    let AdjustedScriptHandle { mut state, .. } = *handle;
+    destroy_base_script(&mut state);
 }
 
 // 0x26aa88 — __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: void *__fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_0x26aa88() -> ! {
-    todo!("0x26aa88 __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+pub fn stub_0x26aa88() -> &'static ScriptClassDescriptor {
+    // IDA 0x26aa88: guard-once (`__cxa_guard_acquire`, 0x26aae4) init of the
+    // function-local `describedClassDescriptor` from the parent CoreScript
+    // descriptor (0x26aaf0) + "StarterScript" (0x26ab10), `__cxa_atexit`'d
+    // (0x26ab46), then returns its address (0x26ab76). LazyLock models the
+    // guarded one-time init; the host descriptor lives for the process.
+    LazyLock::force(&STARTER_SCRIPT_DESCRIPTOR)
 }
 
 // 0x26aba4 — __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x26aba4() -> ! {
-    todo!("0x26aba4 __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x26aba4(state: &mut BaseScriptState) {
+    // IDA 0x26aba4: `B.W RBX::BaseScript::~BaseScript` — D1 of
+    // `Described<StarterScript, NonFactoryProduct<CoreScript>>`.
+    destroy_base_script(state);
 }
 
 // 0x26aba8 — __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x26aba8() -> ! {
-    todo!("0x26aba8 __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x26aba8(state: Box<BaseScriptState>) {
+    // IDA 0x26aba8: `BL dtor` (0x26abf8) then `BLX operator delete`
+    // (0x26abfe).
+    delete_base_script(state);
 }
 
 // 0x26ac48 — __ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x26ac48() -> ! {
-    todo!("0x26ac48 __ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x26ac48(handle: &mut AdjustedScriptHandle) {
+    // IDA 0x26ac48: `SUBS R0, #0x20` then `B.W
+    // RBX::BaseScript::~BaseScript` (0x26ac4a).
+    debug_assert_eq!(handle.base_delta, 32);
+    destroy_base_script(&mut handle.state);
 }
 
 // 0x26ac50 — __ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x26ac50() -> ! {
-    todo!("0x26ac50 __ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x26ac50(handle: Box<AdjustedScriptHandle>) {
+    // IDA 0x26ac50: `SUBS R0, #0x20`, `BL dtor` (0x26aca2), `BLX operator
+    // delete` (0x26aca8).
+    debug_assert_eq!(handle.base_delta, 32);
+    let AdjustedScriptHandle { mut state, .. } = *handle;
+    destroy_base_script(&mut state);
 }
 
 // 0x26acf4 — __ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x26acf4() -> ! {
-    todo!("0x26acf4 __ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x26acf4(handle: &mut AdjustedScriptHandle) {
+    // IDA 0x26acf4: `SUBS R0, #0x24` then `B.W
+    // RBX::BaseScript::~BaseScript` (0x26acf6).
+    debug_assert_eq!(handle.base_delta, 36);
+    destroy_base_script(&mut handle.state);
 }
 
 // 0x26acfc — __ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x26acfc() -> ! {
-    todo!("0x26acfc __ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x26acfc(handle: Box<AdjustedScriptHandle>) {
+    // IDA 0x26acfc: `SUBS R0, #0x24`, `BL dtor` (0x26ad4e), `BLX operator
+    // delete` (0x26ad54).
+    debug_assert_eq!(handle.base_delta, 36);
+    let AdjustedScriptHandle { mut state, .. } = *handle;
+    destroy_base_script(&mut state);
 }
 
 // 0x26ada0 — __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
-pub fn stub_0x26ada0() -> ! {
-    todo!("0x26ada0 __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")
+pub fn stub_0x26ada0(state: &mut BaseScriptState) {
+    // IDA 0x26ada0: `B.W RBX::BaseScript::~BaseScript` — D1 of
+    // `NonFactoryProduct<CoreScript, sStarterScript>`.
+    destroy_base_script(state);
 }
 
 // 0x26ada4 — __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
-pub fn stub_0x26ada4() -> ! {
-    todo!("0x26ada4 __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")
+pub fn stub_0x26ada4(state: Box<BaseScriptState>) {
+    // IDA 0x26ada4: `BL dtor` (0x26adf4) then `BLX operator delete`
+    // (0x26adfa).
+    delete_base_script(state);
 }
 
 // 0x26ae44 — __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
-pub fn stub_0x26ae44() -> ! {
-    todo!("0x26ae44 __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")
+pub fn stub_0x26ae44(handle: &mut AdjustedScriptHandle) {
+    // IDA 0x26ae44: `SUBS R0, #0x20` then `B.W
+    // RBX::BaseScript::~BaseScript` (0x26ae46).
+    debug_assert_eq!(handle.base_delta, 32);
+    destroy_base_script(&mut handle.state);
 }
 
 // 0x26ae4c — __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
-pub fn stub_0x26ae4c() -> ! {
-    todo!("0x26ae4c __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")
+pub fn stub_0x26ae4c(handle: Box<AdjustedScriptHandle>) {
+    // IDA 0x26ae4c: `SUBS R0, #0x20`, `BL dtor` (0x26ae9e), `BLX operator
+    // delete` (0x26aea4).
+    debug_assert_eq!(handle.base_delta, 32);
+    let AdjustedScriptHandle { mut state, .. } = *handle;
+    destroy_base_script(&mut state);
 }
 
 // 0x26aef0 — __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
-pub fn stub_0x26aef0() -> ! {
-    todo!("0x26aef0 __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")
+pub fn stub_0x26aef0(handle: &mut AdjustedScriptHandle) {
+    // IDA 0x26aef0: `SUBS R0, #0x24` then `B.W
+    // RBX::BaseScript::~BaseScript` (0x26aef2).
+    debug_assert_eq!(handle.base_delta, 36);
+    destroy_base_script(&mut handle.state);
 }
 
 // 0x26aef8 — __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
-pub fn stub_0x26aef8() -> ! {
-    todo!("0x26aef8 __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")
+pub fn stub_0x26aef8(handle: Box<AdjustedScriptHandle>) {
+    // IDA 0x26aef8: `SUBS R0, #0x24`, `BL dtor` (0x26af4a), `BLX operator
+    // delete` (0x26af50).
+    debug_assert_eq!(handle.base_delta, 36);
+    let AdjustedScriptHandle { mut state, .. } = *handle;
+    destroy_base_script(&mut state);
 }
 
 // 0x26aff4 — __ZN3RBX10BaseScript19extraErrorReportingEP9lua_State
 // type: void()
 #[doc(alias = "RBX::BaseScript::extraErrorReporting(lua_State *)")]
-pub fn stub_0x26aff4() -> ! {
-    todo!("0x26aff4 RBX::BaseScript::extraErrorReporting(lua_State *)")
+pub fn stub_0x26aff4() {
+    // IDA 0x26aff4: `BX LR` — empty `BaseScript::extraErrorReporting`
+    // override; the `lua_State *` argument is ignored entirely.
 }
 
 // 0x26aff8 — __ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x26aff8() -> ! {
-    todo!("0x26aff8 __ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x26aff8(state: &mut BaseScriptState) {
+    // IDA 0x26aff8: `B.W RBX::BaseScript::~BaseScript` — D1 of
+    // `Described<CoreScript, NonFactoryProduct<BaseScript>>`.
+    destroy_base_script(state);
 }
 
 // 0x26affc — __ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x26affc() -> ! {
-    todo!("0x26affc __ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x26affc(state: Box<BaseScriptState>) {
+    // IDA 0x26affc: `BL dtor` (0x26b04c) then `BLX operator delete`
+    // (0x26b052).
+    delete_base_script(state);
 }
 
 // 0x26b09c — __ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x26b09c() -> ! {
-    todo!("0x26b09c __ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x26b09c(handle: &mut AdjustedScriptHandle) {
+    // IDA 0x26b09c: `SUBS R0, #0x20` then `B.W
+    // RBX::BaseScript::~BaseScript` (0x26b09e).
+    debug_assert_eq!(handle.base_delta, 32);
+    destroy_base_script(&mut handle.state);
 }
 
 // 0x26b0a4 — __ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x26b0a4() -> ! {
-    todo!("0x26b0a4 __ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x26b0a4(handle: Box<AdjustedScriptHandle>) {
+    // IDA 0x26b0a4: `SUBS R0, #0x20`, `BL dtor` (0x26b0f6), `BLX operator
+    // delete` (0x26b0fc).
+    debug_assert_eq!(handle.base_delta, 32);
+    let AdjustedScriptHandle { mut state, .. } = *handle;
+    destroy_base_script(&mut state);
+}
+
+#[cfg(test)]
+mod script_teardown_tests {
+    use super::*;
+
+    fn live_state() -> BaseScriptState {
+        BaseScriptState { source: "print(1)".to_owned(), service_bound: true }
+    }
+
+    fn live_handle(delta: usize) -> AdjustedScriptHandle {
+        AdjustedScriptHandle { state: live_state(), base_delta: delta }
+    }
+
+    #[test]
+    fn d1_layers_clear_members_without_freeing() {
+        let mut state = live_state();
+        stub_0x26a88c(&mut state);
+        assert!(state.source.is_empty() && !state.service_bound);
+        for destroy in [stub_0x26aba4, stub_0x26ada0, stub_0x26aff8] {
+            let mut other = live_state();
+            destroy(&mut other);
+            assert!(other.source.is_empty() && !other.service_bound);
+        }
+    }
+
+    #[test]
+    fn d0_layers_run_dtor_and_free() {
+        stub_0x26a890(Box::new(live_state()));
+        stub_0x26aba8(Box::new(live_state()));
+        stub_0x26ada4(Box::new(live_state()));
+        stub_0x26affc(Box::new(live_state()));
+    }
+
+    #[test]
+    fn thn32_adjusts_by_32_then_destroys() {
+        for destroy in [stub_0x26a930, stub_0x26ac48, stub_0x26ae44, stub_0x26b09c] {
+            let mut handle = live_handle(32);
+            destroy(&mut handle);
+            assert!(handle.state.source.is_empty() && !handle.state.service_bound);
+        }
+        for delete in [stub_0x26a938, stub_0x26ac50, stub_0x26ae4c, stub_0x26b0a4] {
+            delete(Box::new(live_handle(32)));
+        }
+    }
+
+    #[test]
+    fn thn36_adjusts_by_36_then_destroys() {
+        for destroy in [stub_0x26a9dc, stub_0x26acf4, stub_0x26aef0] {
+            let mut handle = live_handle(36);
+            destroy(&mut handle);
+            assert!(handle.state.source.is_empty() && !handle.state.service_bound);
+        }
+        for delete in [stub_0x26a9e4, stub_0x26acfc, stub_0x26aef8] {
+            delete(Box::new(live_handle(36)));
+        }
+    }
+
+    #[test]
+    fn starter_descriptor_names_class_and_parent() {
+        let desc = stub_0x26aa88();
+        assert_eq!((desc.name, desc.parent), ("StarterScript", "CoreScript"));
+        assert!(std::ptr::eq(desc, stub_0x26aa88()));
+    }
+
+    #[test]
+    fn extra_error_reporting_is_noop() {
+        stub_0x26aff4();
+    }
 }
 
 // 0x26b148 — __ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
