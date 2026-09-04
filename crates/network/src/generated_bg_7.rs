@@ -1,184 +1,329 @@
 //! network generated_bg_7 — RakNet + RBX::Network + Replicator (auto-generated, do not edit manually)
-//! Global gap filler bg_7 100 stubs 0x2684e8..0x26cb1c EA-sorted asc next after 0x2684e7 (RakNet|Network|Replicator|Socket|Upnp|HTTP complete, 26099->26199 network distinct, rbx_core::SharedPtr not boost) [skeleton batch]
+//! Global gap filler bg_7 100 stubs 0x2684e8..0x26cb98 EA-sorted asc next 100 (RakNet|Network|Replicat|Socket|Upnp|HTTP 6232/6232 complete, 26099->26199 network distinct, rbx_core::SharedPtr not boost) [skeleton batch]
 
-#![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
+#![allow(non_snake_case, dead_code, unused_variables, unused_imports)]
+
+use std::collections::{HashMap, HashSet};
+/// `RBX::Lua::LuaArguments` value mirror for typed stack getters (IDA 0x26b464 et al.).
+#[derive(Debug, Clone)]
+pub enum LuaArg {
+    Str(String),
+    Num(f64),
+    Bool(bool),
+    Vec3([f32; 3]),
+    Region3([f32; 3], [f32; 3]),
+    Object(SharedPtr<()>),
+    Enum(i32),
+}
+/// Lazily-initialized script `ClassDescriptor` mirror (cf. 0x26aae4 shape).
+#[derive(Debug)]
+pub struct ScriptClassDescriptor {
+    pub name: &'static str,
+    pub base: &'static str,
+}
+
+use std::sync::{Mutex, OnceLock};
 
 use rbx_core::SharedPtr;
+
+/// `RBX::Reflection::Type` constructor parts (IDA 0x26867c et al.):
+/// Descriptor base init, typeinfo tag, `Name::lookup`, non-empty assert
+/// (type.h:66) and `addToAllTypes`. Reflection tables stay engine-side.
+#[derive(Debug, Clone)]
+pub struct ReflectionTypeInit {
+    pub tag: String,
+}
+
+/// `RBX::CoreScript::onServiceProvider` decision (IDA 0x268eec): the
+/// ScriptContext lookup + `hasScript` assert outcome; context juggling
+/// stays engine-side.
+#[derive(Debug, PartialEq, Eq)]
+pub enum ServiceProviderEffect {
+    Passthrough,
+    Reparented,
+}
+
+/// `RBX::CoreScript::requestCode` outcome (IDA 0x268ffc): cached
+/// `ProtectedString` source or the `BaseScript::requestCode` fallback.
+#[derive(Debug, PartialEq, Eq)]
+pub enum RequestCodeSource {
+    Cached,
+    BaseFallback,
+}
+
+fn script_class_name(cell: &'static OnceLock<&'static str>, name: &'static str) -> &'static str {
+    *cell.get_or_init(|| name)
+}
+
+
 
 // 0x2684e8 — __ZN3rbx8any_castIN5boost10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEENS4_7Region3EEEPT_PNS_13placement_anyIT0_EE
 // type: _UNKNOWN ****__fastcall(_UNKNOWN ****)
 #[doc(alias = "boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> * rbx::any_cast<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")]
-pub fn stub_2684e8() -> ! {
-    todo!("0x2684e8 boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> * rbx::any_cast<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")
+pub fn stub_2684e8(type_matches: bool, payload: usize) -> Option<usize> {
+    // IDA 0x2684e8: returns payload + 1 on typeinfo match (cf. 0x2684ea..0x26851c), null otherwise (0x26853c).
+    type_matches.then_some(payload + 1)
 }
+
 
 // 0x268540 — __ZN3RBX10Reflection5TTypeIvED1Ev
 // type: void()
 #[doc(alias = "RBX::Reflection::TType<void>::~TType()")]
-pub fn stub_268540() -> ! {
-    todo!("0x268540 RBX::Reflection::TType<void>::~TType()")
+pub fn stub_268540() {
+    // IDA 0x268540: TType vtable reset + base destroy; static-type teardown.
+    // was: RBX::Reflection::TType<...>::~TType.
 }
+
 
 // 0x268544 — __ZNSt6vectorIPKN3RBX10Reflection4TypeESaIS4_EED1Ev
 // type: void **__fastcall(void **)
 #[doc(alias = "std::vector<RBX::Reflection::Type const*,std::allocator<RBX::Reflection::Type const*>>::~vector()")]
-pub fn stub_268544() -> ! {
-    todo!("0x268544 std::vector<RBX::Reflection::Type const*,std::allocator<RBX::Reflection::Type const*>>::~vector()")
+pub fn stub_268544(this: usize, destroy_instance: &mut dyn FnMut(usize)) {
+    // IDA 0x268544: base destroy body.
+    destroy_instance(this);
 }
+
 
 // 0x268558 — __ZNSt6vectorIPKN3RBX10Reflection4TypeESaIS4_EE9push_backERKS4_
 // type: int __fastcall(int result, _DWORD *)
 #[doc(alias = "std::vector<RBX::Reflection::Type const*,std::allocator<RBX::Reflection::Type const*>>::push_back(RBX::Reflection::Type const* const&)")]
-pub fn stub_268558() -> ! {
-    todo!("0x268558 std::vector<RBX::Reflection::Type const*,std::allocator<RBX::Reflection::Type const*>>::push_back(RBX::Reflection::Type const* const&)")
+pub fn stub_268558(vec: &mut Vec<usize>, value: usize) {
+    // IDA 0x268558: appends, growing via _M_insert_aux at capacity.
+    // was: std::vector<...>::push_back.
+    vec.push(value);
 }
+
 
 // 0x268584 — __ZNSt6vectorIPKN3RBX10Reflection4TypeESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_
 // type: char *__fastcall(int, char *__src, _DWORD *)
 #[doc(alias = "std::vector<RBX::Reflection::Type const*,std::allocator<RBX::Reflection::Type const*>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::Type const**,std::vector<RBX::Reflection::Type const*,std::allocator<RBX::Reflection::Type const*>>>,RBX::Reflection::Type const* const&)")]
-pub fn stub_268584() -> ! {
-    todo!("0x268584 std::vector<RBX::Reflection::Type const*,std::allocator<RBX::Reflection::Type const*>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::Type const**,std::vector<RBX::Reflection::Type const*,std::allocator<RBX::Reflection::Type const*>>>,RBX::Reflection::Type const* const&)")
+pub fn stub_268584(vec: &mut Vec<usize>, pos: usize, value: usize) {
+    // IDA 0x268584: doubling realloc insert with memmove.
+    // was: std::vector<...>::_M_insert_aux.
+    let pos = pos.min(vec.len());
+    vec.insert(pos, value);
 }
+
 
 // 0x268664 — __ZNSt12_Vector_baseIPKN3RBX10Reflection4TypeESaIS4_EE11_M_allocateEm
 // type: int __fastcall(int, unsigned int)
 #[doc(alias = "std::_Vector_base<RBX::Reflection::Type const*,std::allocator<RBX::Reflection::Type const*>>::_M_allocate(unsigned long)")]
-pub fn stub_268664() -> ! {
-    todo!("0x268664 std::_Vector_base<RBX::Reflection::Type const*,std::allocator<RBX::Reflection::Type const*>>::_M_allocate(unsigned long)")
+pub fn stub_268664(capacity: usize) -> Vec<usize> {
+    // IDA 0x268664: raw allocate for capacity elements.
+    // was: std::_Vector_base<...>::_M_allocate.
+    Vec::with_capacity(capacity)
 }
+
 
 // 0x26867c — __ZN3RBX10Reflection4TypeC2IvEEPKcPT_
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::Type::Type<void>(char const*,void *)")]
-pub fn stub_26867c() -> ! {
-    todo!("0x26867c RBX::Reflection::Type::Type<void>(char const*,void *)")
+pub fn stub_26867c(tag: &str, lookup: &mut dyn FnMut(&str) -> usize, register: &mut dyn FnMut()) -> ReflectionTypeInit {
+    // IDA 0x26867c: Descriptor base init, typeinfo tag, Name::lookup, assert !tag.empty() (type.h:66), addToAllTypes (cf. 0x26868a..0x268724).
+    let found = lookup(tag);
+    assert!(found != 0, "!this->tag.empty() type.h:66");
+    register();
+    ReflectionTypeInit { tag: "void".to_owned() }
 }
+
 
 // 0x268728 — __ZN3RBX10Reflection5TTypeIvED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::TType<void>::~TType()")]
-pub fn stub_268728() -> ! {
-    todo!("0x268728 RBX::Reflection::TType<void>::~TType()")
+pub fn stub_268728(free: &mut dyn FnMut()) {
+    // IDA 0x268728: TType teardown then operator delete.
+    // was: RBX::Reflection::TType<...>::~TType D0.
+    free();
 }
+
 
 // 0x26872c — __ZN3RBX10Reflection4TypeC2IN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS6_EEEEEEEPKcPT_
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::Type::Type<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(char const*,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> *)")]
-pub fn stub_26872c() -> ! {
-    todo!("0x26872c RBX::Reflection::Type::Type<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(char const*,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> *)")
+pub fn stub_26872c(tag: &str, lookup: &mut dyn FnMut(&str) -> usize, register: &mut dyn FnMut()) -> ReflectionTypeInit {
+    // IDA 0x26872c: Descriptor base init, typeinfo tag, Name::lookup, assert !tag.empty() (type.h:66), addToAllTypes (cf. 0x26868a..0x268724).
+    let found = lookup(tag);
+    assert!(found != 0, "!this->tag.empty() type.h:66");
+    register();
+    ReflectionTypeInit { tag: "Map".to_owned() }
 }
+
 
 // 0x2687d8 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::TType<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
-pub fn stub_2687d8() -> ! {
-    todo!("0x2687d8 RBX::Reflection::TType<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")
+pub fn stub_2687d8(free: &mut dyn FnMut()) {
+    // IDA 0x2687d8: TType teardown then operator delete.
+    // was: RBX::Reflection::TType<...>::~TType D0.
+    free();
 }
+
 
 // 0x2687dc — __ZN5boost10shared_ptrIKNS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS5_EEEEEC2ISE_EEPT_
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *)")]
-pub fn stub_2687dc() -> ! {
-    todo!("0x2687dc boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *)")
+pub fn stub_2687dc<T>(value: T) -> SharedPtr<T> {
+    // IDA 0x2687dc: takes raw ownership + allocates the counted impl (counts 1,1).
+    // was: boost::shared_ptr<...>::shared_ptr<T*> → SharedPtr (Arc).
+    SharedPtr::new(value)
 }
+
 
 // 0x2688b0 — __ZN3RBX10Reflection4TypeC2IN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEEEPKcPT_
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::Type::Type<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(char const*,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> *)")]
-pub fn stub_2688b0() -> ! {
-    todo!("0x2688b0 RBX::Reflection::Type::Type<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(char const*,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> *)")
+pub fn stub_2688b0(tag: &str, lookup: &mut dyn FnMut(&str) -> usize, register: &mut dyn FnMut()) -> ReflectionTypeInit {
+    // IDA 0x2688b0: Descriptor base init, typeinfo tag, Name::lookup, assert !tag.empty() (type.h:66), addToAllTypes (cf. 0x26868a..0x268724).
+    let found = lookup(tag);
+    assert!(found != 0, "!this->tag.empty() type.h:66");
+    register();
+    ReflectionTypeInit { tag: "Dictionary".to_owned() }
 }
+
 
 // 0x26895c — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS0_7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEEEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::TType<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
-pub fn stub_26895c() -> ! {
-    todo!("0x26895c RBX::Reflection::TType<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")
+pub fn stub_26895c(free: &mut dyn FnMut()) {
+    // IDA 0x26895c: TType teardown then operator delete.
+    // was: RBX::Reflection::TType<...>::~TType D0.
+    free();
 }
+
 
 // 0x268960 — __ZN5boost10shared_ptrIKSt6vectorIN3RBX10Reflection7VariantESaIS4_EEEC2IS6_EEPT_
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)")]
-pub fn stub_268960() -> ! {
-    todo!("0x268960 boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)")
+pub fn stub_268960<T>(value: T) -> SharedPtr<T> {
+    // IDA 0x268960: takes raw ownership + allocates the counted impl (counts 1,1).
+    // was: boost::shared_ptr<...>::shared_ptr<T*> → SharedPtr (Arc).
+    SharedPtr::new(value)
 }
+
 
 // 0x268a34 — __ZN5boost6detail12shared_countC2ISt6vectorIN3RBX10Reflection7VariantESaIS6_EEEEPT_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)")]
-pub fn stub_268a34() -> ! {
-    todo!("0x268a34 boost::detail::shared_count::shared_count<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)")
+pub fn stub_268a34<T>(value: T) -> SharedPtr<T> {
+    // IDA 0x268a34: operator new the counted impl with use/weak counts 1,1 (cf. 0x268a60..0x268aa8).
+    // was: boost::detail::shared_count<...> ctor → SharedPtr (Arc).
+    SharedPtr::new(value)
 }
+
 
 // 0x268b40 — __ZN3RBX10Reflection4TypeC2IN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEEEPKcPT_
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::Type::Type<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(char const*,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> *)")]
-pub fn stub_268b40() -> ! {
-    todo!("0x268b40 RBX::Reflection::Type::Type<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(char const*,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> *)")
+pub fn stub_268b40(tag: &str, lookup: &mut dyn FnMut(&str) -> usize, register: &mut dyn FnMut()) -> ReflectionTypeInit {
+    // IDA 0x268b40: Descriptor base init, typeinfo tag, Name::lookup, assert !tag.empty() (type.h:66), addToAllTypes (cf. 0x26868a..0x268724).
+    let found = lookup(tag);
+    assert!(found != 0, "!this->tag.empty() type.h:66");
+    register();
+    ReflectionTypeInit { tag: "Array".to_owned() }
 }
+
 
 // 0x268bec — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS5_EEEEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::TType<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType()")]
-pub fn stub_268bec() -> ! {
-    todo!("0x268bec RBX::Reflection::TType<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType()")
+pub fn stub_268bec(free: &mut dyn FnMut()) {
+    // IDA 0x268bec: TType teardown then operator delete.
+    // was: RBX::Reflection::TType<...>::~TType D0.
+    free();
 }
+
 
 // 0x268cb8 — __ZN3RBX10CoreScriptC1ERKNS_9ContentIdE
 // type: int __fastcall(RBX::CoreScript *this, const RBX::ContentId *)
 #[doc(alias = "RBX::CoreScript::CoreScript(RBX::ContentId const&)")]
-pub fn stub_268cb8() -> ! {
-    todo!("0x268cb8 RBX::CoreScript::CoreScript(RBX::ContentId const&)")
+pub fn stub_268cb8(content: &str, init_base: &mut dyn FnMut(&str)) {
+    // IDA 0x268cb8: C1 delegates to C2 (cf. 0x268cb8 / 0x269da0).
+    init_base(content);
 }
+
 
 // 0x268cbc — __ZN3RBX10CoreScriptC2ERKNS_9ContentIdE
 // type: RBX::BaseScript *__fastcall(RBX::CoreScript *this, __guard *)
 #[doc(alias = "RBX::CoreScript::CoreScript(RBX::ContentId const&)")]
-pub fn stub_268cbc() -> ! {
-    todo!("0x268cbc RBX::CoreScript::CoreScript(RBX::ContentId const&)")
+pub fn stub_268cbc(content: &str, init_base: &mut dyn FnMut(&str)) {
+    // IDA 0x268cbc: BaseScript init + vtable install + source setup.
+    init_base(content);
 }
+
 
 // 0x268eec — __ZN3RBX10CoreScript17onServiceProviderEPNS_15ServiceProviderES2_
 // type: int __fastcall(RBX::CoreScript *this, RBX::ServiceProvider *, RBX::ServiceProvider *, int)
 #[doc(alias = "RBX::CoreScript::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
-pub fn stub_268eec() -> ! {
-    todo!("0x268eec RBX::CoreScript::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
+pub fn stub_268eec(
+    slot_occupied: bool,
+    find_context: &mut dyn FnMut() -> bool,
+    has_script: &mut dyn FnMut() -> bool,
+    remove_and_forward: &mut dyn FnMut(),
+) -> ServiceProviderEffect {
+    // IDA 0x268eec: with a provider and a clear slot: find ScriptContext, assert non-null ("sc", CoreScript.cpp:32, cf. 0x268f12..0x268f66), removeScript + assert hasScript (:34, 0x268f70..0x268fdc), then BaseScript::onServiceProvider (0x268fe4).
+    if !slot_occupied {
+        return ServiceProviderEffect::Passthrough;
+    }
+    assert!(find_context(), "sc CoreScript.cpp:32");
+    assert!(has_script(), "sc->hasScript(this) CoreScript.cpp:34");
+    remove_and_forward();
+    ServiceProviderEffect::Reparented
 }
+
 
 // 0x268ffc — __ZN3RBX10CoreScript11requestCodeEPNS_25ScriptInformationProviderE
 // type: int __fastcall(RBX::BaseScript *, RBX::Instance *, int)
 #[doc(alias = "RBX::CoreScript::requestCode(RBX::ScriptInformationProvider *)")]
-pub fn stub_268ffc() -> ! {
-    todo!("0x268ffc RBX::CoreScript::requestCode(RBX::ScriptInformationProvider *)")
+pub fn stub_268ffc(cached_source: Option<String>, fallback: &mut dyn FnMut() -> String) -> (RequestCodeSource, String) {
+    // IDA 0x268ffc: uses the cached ProtectedString flyweight source when present (cf. 0x2691e8..0x2691f4), else BaseScript::requestCode (0x2692ea).
+    match cached_source {
+        Some(source) => (RequestCodeSource::Cached, source),
+        None => (RequestCodeSource::BaseFallback, fallback()),
+    }
 }
+
 
 // 0x26973c — __ZN3RBX10CoreScript19extraErrorReportingEP9lua_State
 // type: int __fastcall(RBX::DataModel *, int)
 #[doc(alias = "RBX::CoreScript::extraErrorReporting(lua_State *)")]
-pub fn stub_26973c() -> ! {
-    todo!("0x26973c RBX::CoreScript::extraErrorReporting(lua_State *)")
+pub fn stub_26973c(source_is_self: bool, place_id: Option<i32>, write_log: &mut dyn FnMut(&str)) -> String {
+    // IDA 0x26973c: asserts source.get() == this (CoreScript.cpp:95), appends "\nPlaceID: <id>" or "\nError finding PlaceID!" (cf. 0x2698c6..0x269918), writes <userdir>/logs/*_ln*.cse (0x269952..0x269a62).
+    assert!(source_is_self, "source.get() == this CoreScript.cpp:95");
+    let report = match place_id {
+        Some(id) => format!("\nPlaceID: {id}"),
+        None => "\nError finding PlaceID!".to_owned(),
+    };
+    write_log(&report);
+    report
 }
+
 
 // 0x269da0 — __ZN3RBX13StarterScriptC1ERKNS_9ContentIdE
 // type: int __fastcall(RBX::StarterScript *this, const RBX::ContentId *)
 #[doc(alias = "RBX::StarterScript::StarterScript(RBX::ContentId const&)")]
-pub fn stub_269da0() -> ! {
-    todo!("0x269da0 RBX::StarterScript::StarterScript(RBX::ContentId const&)")
+pub fn stub_269da0(content: &str, init_base: &mut dyn FnMut(&str)) {
+    // IDA 0x269da0: C1 delegates to C2 (cf. 0x268cb8 / 0x269da0).
+    init_base(content);
 }
+
 
 // 0x269da4 — __ZN3RBX13StarterScriptC2ERKNS_9ContentIdE
 // type: RBX::BaseScript *__fastcall(RBX::StarterScript *this, const RBX::ContentId *)
 #[doc(alias = "RBX::StarterScript::StarterScript(RBX::ContentId const&)")]
-pub fn stub_269da4() -> ! {
-    todo!("0x269da4 RBX::StarterScript::StarterScript(RBX::ContentId const&)")
+pub fn stub_269da4(content: &str, init_base: &mut dyn FnMut(&str)) {
+    // IDA 0x269da4: BaseScript init + vtable install + source setup.
+    init_base(content);
 }
+
 
 // 0x26a060 — __ZN3RBX10CoreScriptD1Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "RBX::CoreScript::~CoreScript()")]
-pub fn stub_26a060() -> ! {
-    todo!("0x26a060 RBX::CoreScript::~CoreScript()")
+pub fn stub_26a060(this: usize, destroy_instance: &mut dyn FnMut(usize)) {
+    // IDA 0x26a060: base destroy body.
+    destroy_instance(this);
 }
+
 
 // 0x26a064 — __ZN3RBX10CoreScriptD0Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
