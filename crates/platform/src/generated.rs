@@ -33,6 +33,10 @@ static HOME: std::sync::LazyLock<crate::roblox_view::HomeViewControllerState> =
     std::sync::LazyLock::new(crate::roblox_view::HomeViewControllerState::new);
 static TELEPORTER: std::sync::LazyLock<crate::roblox_view::Teleporter> =
     std::sync::LazyLock::new(crate::roblox_view::Teleporter::new);
+static GVC: std::sync::LazyLock<crate::view_controllers::GameViewController> =
+    std::sync::LazyLock::new(crate::view_controllers::GameViewController::default);
+static DELEGATE: std::sync::LazyLock<crate::view_controllers::AppDelegate> =
+    std::sync::LazyLock::new(crate::view_controllers::AppDelegate::default);
 use std::sync::atomic::{AtomicBool, AtomicI32, AtomicU32, Ordering};
 
 /// ControlView / ControlComponent harness backing the `stub_0x471c0..0x49e18`
@@ -2927,126 +2931,144 @@ pub fn stub_49e18() {
 // 0x4db9c — -[GameViewController webView:shouldStartLoadWithRequest:navigationType:]
 // type: char __cdecl(GameViewController *self, SEL, id, id, int)
 #[doc(alias = "-[GameViewController webView:shouldStartLoadWithRequest:navigationType:]")]
-pub fn stub_4db9c() -> ! {
-    todo!("0x4db9c -[GameViewController webView:shouldStartLoadWithRequest:navigationType:]")
+pub fn stub_4db9c(request: crate::view_controllers::ObjCId, navigation_type: i32) -> bool {
+    // delegate of crate::view_controllers::GameViewController (IDA 0x4db9c)
+    GVC.web_view_should_start_load_with_request(request, navigation_type)
 }
 
 // 0x4dbe8 — -[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]
 // type: void __cdecl(GameViewController *self, SEL, DataModel *)
 #[doc(alias = "-[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]")]
-pub fn stub_4dbe8() -> ! {
-    todo!("0x4dbe8 -[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]")
+pub fn stub_4dbe8(data_model: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers::GameViewController (IDA 0x4dbe8)
+    GVC.signal_gui_service_url_window_closed_on_data_model(data_model);
 }
 
 // 0x4dc08 — -[GameViewController closeUrlWindow:]
 // type: void __cdecl(GameViewController *self, SEL, id)
 #[doc(alias = "-[GameViewController closeUrlWindow:]")]
-pub fn stub_4dc08() -> ! {
-    todo!("0x4dc08 -[GameViewController closeUrlWindow:]")
+pub fn stub_4dc08(sender: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers::GameViewController (IDA 0x4dc08)
+    GVC.close_url_window(sender);
 }
 
 // 0x4de58 — ___37-[GameViewController closeUrlWindow:]_block_invoke
 // type: id __fastcall(_DWORD *)
 #[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke")]
-pub fn stub_4de58() -> ! {
-    todo!("0x4de58 ___37-[GameViewController closeUrlWindow:]_block_invoke")
+pub fn stub_4de58() -> f32 {
+    // delegate of crate::view_controllers::GameViewController (IDA 0x4de58)
+    GVC.animate_close_url_window()
 }
 
 // 0x4df1c — ___37-[GameViewController closeUrlWindow:]_block_invoke_2
 // type: id __fastcall(int)
 #[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke_2")]
-pub fn stub_4df1c() -> ! {
-    todo!("0x4df1c ___37-[GameViewController closeUrlWindow:]_block_invoke_2")
+pub fn stub_4df1c(frame: (f64, f64, f64, f64)) {
+    // delegate of crate::view_controllers::GameViewController (IDA 0x4df1c)
+    GVC.close_url_window_animation_frame(frame);
 }
 
 // 0x4dfec — ___37-[GameViewController closeUrlWindow:]_block_invoke93
 // type: id __fastcall(int)
 #[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke93")]
-pub fn stub_4dfec() -> ! {
-    todo!("0x4dfec ___37-[GameViewController closeUrlWindow:]_block_invoke93")
+pub fn stub_4dfec() {
+    // delegate of crate::view_controllers::GameViewController (IDA 0x4dfec)
+    GVC.close_url_window_animation_done();
 }
 
 // 0x4e070 — -[GameViewController closeUrlWindow]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController closeUrlWindow]")]
-pub fn stub_4e070() -> ! {
-    todo!("0x4e070 -[GameViewController closeUrlWindow]")
+pub fn stub_4e070() {
+    // delegate of crate::view_controllers::GameViewController (IDA 0x4e070)
+    GVC.close_url_window_now();
 }
 
 // 0x4e084 — -[GameViewController openUrlWindow:]
 // type: void __cdecl(GameViewController *self, SEL, basic_string<char, std::char_traits<char>, std::allocator<char> >)
 #[doc(alias = "-[GameViewController openUrlWindow:]")]
-pub fn stub_4e084() -> ! {
-    todo!("0x4e084 -[GameViewController openUrlWindow:]")
+pub fn stub_4e084(url: &str) {
+    // delegate of crate::view_controllers::GameViewController (IDA 0x4e084)
+    GVC.open_url_window(url);
 }
 
 // 0x4e2ac — ___36-[GameViewController openUrlWindow:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke")]
-pub fn stub_4e2ac() -> ! {
-    todo!("0x4e2ac ___36-[GameViewController openUrlWindow:]_block_invoke")
+pub fn stub_4e2ac(frame: (f64, f64, f64, f64)) {
+    // delegate of crate::view_controllers::GameViewController (IDA 0x4e2ac)
+    GVC.open_url_window_build_webview(frame);
 }
 
 // 0x4e4dc — ___36-[GameViewController openUrlWindow:]_block_invoke136
 // type: id __fastcall(int)
 #[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke136")]
-pub fn stub_4e4dc() -> ! {
-    todo!("0x4e4dc ___36-[GameViewController openUrlWindow:]_block_invoke136")
+pub fn stub_4e4dc(url: &str) {
+    // delegate of crate::view_controllers::GameViewController (IDA 0x4e4dc)
+    GVC.open_url_window_load(url);
 }
 
 // 0x4e5fc — ___36-[GameViewController openUrlWindow:]_block_invoke_2
 // type: id __fastcall(_DWORD *)
 #[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke_2")]
-pub fn stub_4e5fc() -> ! {
-    todo!("0x4e5fc ___36-[GameViewController openUrlWindow:]_block_invoke_2")
+pub fn stub_4e5fc(frame: (f64, f64, f64, f64)) {
+    // delegate of crate::view_controllers::GameViewController (IDA 0x4e5fc)
+    GVC.open_url_window_layout(frame);
 }
 
 // 0x4e730 — -[GameViewController handlePromptLoginSignal]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController handlePromptLoginSignal]")]
-pub fn stub_4e730() -> ! {
-    todo!("0x4e730 -[GameViewController handlePromptLoginSignal]")
+pub fn stub_4e730() {
+    // delegate of crate::view_controllers::GameViewController (IDA 0x4e730)
+    GVC.handle_prompt_login_signal();
 }
 
 // 0x4e780 — ___45-[GameViewController handlePromptLoginSignal]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___45-[GameViewController handlePromptLoginSignal]_block_invoke")]
-pub fn stub_4e780() -> ! {
-    todo!("0x4e780 ___45-[GameViewController handlePromptLoginSignal]_block_invoke")
+pub fn stub_4e780() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers::GameViewController (IDA 0x4e780)
+    GVC.present_login_view_controller()
 }
 // 0x4e868 — -[GameViewController handlePromptSignupSignal]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController handlePromptSignupSignal]")]
-pub fn stub_4e868() -> ! {
-    todo!("0x4e868 -[GameViewController handlePromptSignupSignal]")
+pub fn stub_4e868() {
+    // delegate of crate::view_controllers::GameViewController (IDA 0x4e868)
+    GVC.handle_prompt_signup_signal();
 }
 
 // 0x4e8b8 — ___46-[GameViewController handlePromptSignupSignal]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___46-[GameViewController handlePromptSignupSignal]_block_invoke")]
-pub fn stub_4e8b8() -> ! {
-    todo!("0x4e8b8 ___46-[GameViewController handlePromptSignupSignal]_block_invoke")
+pub fn stub_4e8b8() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers::GameViewController (IDA 0x4e8b8)
+    GVC.present_signup_view_controller()
 }
 
 // 0x4e9a0 — -[GameViewController handleSignupNotification:]
 // type: void __cdecl(GameViewController *self, SEL, id)
 #[doc(alias = "-[GameViewController handleSignupNotification:]")]
-pub fn stub_4e9a0() -> ! {
-    todo!("0x4e9a0 -[GameViewController handleSignupNotification:]")
+pub fn stub_4e9a0(username: &str, password: &str) {
+    // delegate of crate::view_controllers::GameViewController (IDA 0x4e9a0)
+    GVC.handle_signup_notification(username, password);
 }
 
 // 0x4ea30 — -[GameViewController handleLoginNotification:]
 // type: void __cdecl(GameViewController *self, SEL, id)
 #[doc(alias = "-[GameViewController handleLoginNotification:]")]
-pub fn stub_4ea30() -> ! {
-    todo!("0x4ea30 -[GameViewController handleLoginNotification:]")
+pub fn stub_4ea30(success: bool) {
+    // delegate of crate::view_controllers::GameViewController (IDA 0x4ea30)
+    GVC.handle_login_notification(success);
 }
 
 // 0x4eac8 — ___46-[GameViewController handleLoginNotification:]_block_invoke
 // type: void __fastcall(id *)
 #[doc(alias = "___46-[GameViewController handleLoginNotification:]_block_invoke")]
-pub fn stub_4eac8() -> ! {
-    todo!("0x4eac8 ___46-[GameViewController handleLoginNotification:]_block_invoke")
+pub fn stub_4eac8(success: bool, username: &str, error: &str) {
+    // delegate of crate::view_controllers::GameViewController (IDA 0x4eac8)
+    GVC.apply_login_notification(success, username, error);
 }
 
 // 0x51f80 — -[MainViewController setRobloxView:]
@@ -3762,57 +3784,65 @@ pub fn stub_f27314() -> ! {
 // 0x19228 — -[AppDelegate init]
 // type: AppDelegate *__cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate init]")]
-pub fn stub_19228() -> ! {
-    todo!("0x19228 -[AppDelegate init]")
+pub fn stub_19228() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x19228)
+    &*DELEGATE as *const crate::view_controllers::AppDelegate as crate::view_controllers::ObjCId
 }
 
 // 0x19254 — -[AppDelegate dealloc]
 // type: void __cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate dealloc]")]
-pub fn stub_19254() -> ! {
-    todo!("0x19254 -[AppDelegate dealloc]")
+pub fn stub_19254() {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x19254)
+    crate::view_controllers::AppDelegate::init().dealloc();
 }
 
 // 0x192b4 — -[AppDelegate application:didFinishLaunchingWithOptions:]
 // type: char __cdecl(AppDelegate *self, SEL, id, id)
 #[doc(alias = "-[AppDelegate application:didFinishLaunchingWithOptions:]")]
-pub fn stub_192b4() -> ! {
-    todo!("0x192b4 -[AppDelegate application:didFinishLaunchingWithOptions:]")
+pub fn stub_192b4() -> bool {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x192b4)
+    DELEGATE.application_did_finish_launching()
 }
 
 // 0x194ec — ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke")]
-pub fn stub_194ec() -> ! {
-    todo!("0x194ec ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke")
+pub fn stub_194ec() {
+    // delegate of crate::view_controllers (IDA 0x194ec)
+    crate::view_controllers::did_finish_launching_flurry_block();
 }
 
 // 0x19514 — ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2
 // type: void __cdecl(id)
 #[doc(alias = "___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2")]
-pub fn stub_19514() -> ! {
-    todo!("0x19514 ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2")
+pub fn stub_19514() {
+    // delegate of crate::view_controllers (IDA 0x19514)
+    crate::view_controllers::did_finish_launching_appirater_block();
 }
 
 // 0x195a0 — -[AppDelegate applicationWillResignActive:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationWillResignActive:]")]
-pub fn stub_195a0() -> ! {
-    todo!("0x195a0 -[AppDelegate applicationWillResignActive:]")
+pub fn stub_195a0() {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x195a0)
+    DELEGATE.application_will_resign_active();
 }
 
 // 0x196e4 — -[AppDelegate applicationDidEnterBackground:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationDidEnterBackground:]")]
-pub fn stub_196e4() -> ! {
-    todo!("0x196e4 -[AppDelegate applicationDidEnterBackground:]")
+pub fn stub_196e4() {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x196e4)
+    DELEGATE.application_did_enter_background();
 }
 
 // 0x19a30 — -[AppDelegate applicationDidReceiveMemoryWarning:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationDidReceiveMemoryWarning:]")]
-pub fn stub_19a30() -> ! {
-    todo!("0x19a30 -[AppDelegate applicationDidReceiveMemoryWarning:]")
+pub fn stub_19a30() {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x19a30)
+    DELEGATE.application_did_receive_memory_warning();
 }
 
 // 0x19b60 — -[AppDelegate applicationWillEnterForeground:]
