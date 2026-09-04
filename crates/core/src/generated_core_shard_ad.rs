@@ -35,6 +35,13 @@
 /// construct_funcs, typed_holder<CellID>::singleton). Untouched carriers keep
 /// stub bodies; ports live in `boost_exception` under idiomatic names, wired
 /// via `stub_0x*`.
+/// Batch 5: 19 IDA-grounded ports 0x26f718-0x286170 — typed_holder
+/// destruct/singleton tails (CellID, UDim, RbxRay, Region3int16),
+/// placement_any<Region3>::operator=(Region3int16), __GLOBAL__I_a_63-67,
+/// vector<BrickColor>::at, RbxRay/CellID operator==, vector<pool*>
+/// push_back/_M_insert_aux, pool::purge_memory, OnDemandPVInstance pool.
+/// Untouched carriers keep stub bodies; ports live in `boost_exception`
+/// under idiomatic names, wired via `stub_0x*`.
 pub mod boost_exception {
     use std::collections::HashMap;
     use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
@@ -453,6 +460,21 @@ pub mod boost_exception {
             free.clear();
             released
         }
+        /// was: `boost::pool<default_user_allocator_new_delete>::purge_memory`
+        /// (IDA 0x28612c) — walk the block list (`a1+4` head, `a1+8` stride),
+        /// `operator delete[]` every block (0x286142-0x28614c), zero the
+        /// list words (0x28615e), reset the free-size word from the sys word
+        /// (0x286164 `*(a1+16) = *(a1+20)`), return whether any block was
+        /// freed (0x28615c/0x28616c). Unlike `release_memory` (fully-unused
+        /// blocks only) this frees everything — but the store here holds
+        /// whole cached chunks only (partially-used blocks are untracked),
+        /// so both collapse into the same clear-and-report.
+        pub fn purge_memory(&self) -> bool {
+            let mut free = self.free_chunks.lock();
+            let purged = !free.is_empty();
+            free.clear();
+            purged
+        }
     }
 
     /// was: `RBX::Allocator<XmlAttribute>::initialized` (IDA 0x2666d6/0x26671a).
@@ -539,6 +561,21 @@ pub mod boost_exception {
     pub fn on_demand_instance_pool() -> &'static SingletonPool {
         &ON_DEMAND_INSTANCE_POOL
     }
+    /// was: `singleton_pool<RBX::OnDemandPVInstance, 24, ...>` storage —
+    /// created by `__GLOBAL__I_a_67` (IDA 0x285ad0 guard + `get_pool`).
+    /// `NextSize = StartSize = 32` per the shared `,32u,0u>` template tail
+    /// (`[INFERENCE]` — the disassembly only shows the init call).
+    static ON_DEMAND_PV_INSTANCE_POOL: LazyLock<SingletonPool> = LazyLock::new(|| SingletonPool {
+        requested_size: 24,
+        next_size: 32,
+        start_size: 32,
+        free_chunks: parking_lot::Mutex::new(Vec::new()),
+    });
+
+    pub fn on_demand_pv_instance_pool() -> &'static SingletonPool {
+        &ON_DEMAND_PV_INSTANCE_POOL
+    }
+
 
     /// IDA 0x2674b0 `__GLOBAL__I_a_60`: categories, `ios_base::Init`, both
     /// static eps, plus `get_pool` for the XmlAttribute AND XmlElement pools
@@ -568,6 +605,53 @@ pub mod boost_exception {
         let _ = on_demand_instance_pool();
         let _ = protected_string_flyweight();
     }
+    /// IDA 0x270078 `__GLOBAL__I_a_63`: categories, `ios_base::Init`, both
+    /// static eps (via 0x2700e0/0x27011e + `atexit`), both Xml pool
+    /// `get_pool`s (0x270166/0x27019a), FWInstance (28) + OnDemandInstance
+    /// (20) pool creation (0x2701ce/0x270204) — the a_62 set minus the
+    /// flyweight/factory tail. Idempotent via `LazyLock`.
+    pub fn ensure_init_a63() {
+        ensure_init_a60();
+        let _ = fw_instance_pool();
+        let _ = on_demand_instance_pool();
+    }
+
+    /// IDA 0x278164 `__GLOBAL__I_a_64`: the a_63 set plus one
+    /// `FLog::RegisterFlag` (0x2781ca) — the flag table is owned by the
+    /// fast-log facility, so only the core effects are kept here.
+    pub fn ensure_init_a64() {
+        ensure_init_a63();
+    }
+
+    /// IDA 0x27b50c `__GLOBAL__I_a_65`: categories, `ios_base::Init`, both
+    /// static eps (0x27b574/0x27b5b2), both Xml pools (0x27b5fa/0x27b62e),
+    /// FWInstance + OnDemandInstance pools (0x27b662/0x27b698) — same
+    /// core-owned set as a_63 (own TU merged globals, shared statics here).
+    pub fn ensure_init_a65() {
+        ensure_init_a63();
+    }
+
+    /// IDA 0x27bef0 `__GLOBAL__I_a_66`: categories, `ios_base::Init`, both
+    /// static eps (0x27bf58/0x27bf98) and nothing else — same core-owned set
+    /// as a_61.
+    pub fn ensure_init_a66() {
+        ensure_init_a61();
+    }
+
+    /// IDA 0x2858c0 `__GLOBAL__I_a_67`: categories, `ios_base::Init`, two
+    /// `FLog::RegisterFlag`s (0x28591e/0x285948, fast-log owned), both
+    /// static eps (0x28597a/0x2859b8), XmlAttribute + XmlElement +
+    /// FWInstance + OnDemandInstance + OnDemandPVInstance (24) pools
+    /// (0x285a00/0x285a34/0x285a68/0x285a9c/0x285ad0), the ProtectedString
+    /// flyweight `get` (0x285afc), then `FactoryProduct` creators — Camera
+    /// (0x285b56) and `Scripting::DebuggerWatch` (0x285c12) — owned by the
+    /// datamodel/script crates (same split as a_56/a_62).
+    pub fn ensure_init_a67() {
+        ensure_init_a63();
+        let _ = on_demand_pv_instance_pool();
+        let _ = protected_string_flyweight();
+    }
+
 
     /// was: `std::vector<bool(*)()>::_M_insert_aux` (IDA 0x266748) — insert
     /// into `poolReleaseMemoryFuncList`. Fast path (`finish != end_of_storage`,
@@ -700,6 +784,7 @@ pub mod boost_exception {
 
     static HOLDER_CONTENT_ID: TypedHolder = TypedHolder { name: "N3RBX9ContentIdE" };
     static HOLDER_CELL_ID: TypedHolder = TypedHolder { name: "N3RBX6CellIDE" };
+    static HOLDER_RBXRAY: TypedHolder = TypedHolder { name: "N3RBX6RbxRayE" };
     static HOLDER_AXES: TypedHolder = TypedHolder { name: "N3RBX4AxesE" };
     static HOLDER_UDIM: TypedHolder = TypedHolder { name: "N3RBX4UDimE" };
     static HOLDER_REGION3INT16: TypedHolder = TypedHolder { name: "N3RBX12Region3int16E" };
@@ -734,6 +819,9 @@ pub mod boost_exception {
     }
     pub fn long_holder() -> &'static TypedHolder {
         &HOLDER_LONG
+    }
+    pub fn rbx_ray_holder() -> &'static TypedHolder {
+        &HOLDER_RBXRAY
     }
     pub fn input_object_holder() -> &'static TypedHolder {
         &HOLDER_INPUT_OBJECT
@@ -853,6 +941,136 @@ pub mod boost_exception {
             d.instance_addr = src.instance_addr;
         }
     }
+    /// was: `typed_holder<CellID>::destruct_func` (IDA 0x26f718 — a
+    /// `thunk`-attributed tail-call into `RBX::CellID::~CellID`). The dtor
+    /// releases the `shared_ptr<Instance>` word, which is exactly what
+    /// by-value drop of `CellIdPayload` does (`SharedCount` release).
+    pub fn cell_id_destruct(cell: CellIdPayload) {
+        drop(cell);
+    }
+
+    /// was: `typed_holder<UDim>::construct_func` (IDA 0x26f720) — when `dst`
+    /// (`a2`) is non-null copy the two payload words (`*a2 = *src`,
+    /// `a2[1] = src[1]` at 0x26f728); null `dst` stores nothing (0x26f722
+    /// guard). `UDim` is 8 bytes (scale + offset), POD — no dtor.
+    /// (Decompiler return is leftover `r0`.)
+    pub fn udim_construct(src: &[u8; 8], dst: Option<&mut [u8; 8]>) {
+        if let Some(d) = dst {
+            d.copy_from_slice(src);
+        }
+    }
+
+    /// was: `typed_holder<RbxRay>::singleton` (IDA 0x26f738) — guarded
+    /// once-init installing the `typeinfo`, `destruct_func` and
+    /// `construct_func` words (0x26f78a/0x26f78e). `LazyLock` statics are
+    /// the guard + `atexit` equivalent.
+    pub fn ensure_rbx_ray_holder() -> &'static TypedHolder {
+        rbx_ray_holder()
+    }
+
+    /// was: `typed_holder<UDim>::singleton` — same guarded once-init shape
+    /// as the CellID/RbxRay/Region3int16 singletons (only reached via the
+    /// `operator=` holder installs, e.g. IDA 0x26f9ac for Region3int16).
+    pub fn ensure_udim_holder() -> &'static TypedHolder {
+        udim_holder()
+    }
+
+    /// was: `typed_holder<Region3int16>::singleton` (IDA 0x26fa00) —
+    /// guarded once-init installing the `typeinfo`, `destruct_func`
+    /// (0x26fa52) and `construct_func` (0x26fa56) words.
+    pub fn ensure_region3int16_holder() -> &'static TypedHolder {
+        region3int16_holder()
+    }
+
+    /// was: `rbx::placement_any<Region3>::operator=<Region3int16>` (IDA
+    /// 0x26f9a0). Same holder (fast `typeinfo*` compare at 0x26f9b8/0x26f9c2
+    /// against the 0x26f9ac singleton): in-place 12-byte copy — qword at
+    /// `a1+4` (0x26f9e0), dword at `a1+12` (0x26f9dc). Otherwise: run the
+    /// old `destruct_func` + null the holder (0x26f9c6-0x26f9d2), copy the
+    /// 12 payload bytes (0x26f9e8-0x26f9ee), install the holder (0x26f9f2).
+    /// `Region3int16` rides `Opaque` (casts only compare the holder).
+    pub fn assign_region3int16(slot: &mut PlacementAny, src: &[u8; 12]) {
+        let holder = region3int16_holder(); // IDA 0x26f9ac
+        if matches!(slot.holder, Some(h) if std::ptr::eq(h, holder)) {
+            if let PlacementValue::Opaque(dst) = &mut slot.value {
+                if dst.len() == 12 {
+                    dst.copy_from_slice(src);
+                    return;
+                }
+            }
+        }
+        slot.value = PlacementValue::Opaque(src.to_vec());
+        slot.holder = Some(holder);
+    }
+
+    /// was: `std::vector<RBX::BrickColor>::at` (IDA 0x277870) — `size() =
+    /// (finish - start) >> 2` (0x27787e, 4-byte elements); `index >= size`
+    /// runs `std::__throw_out_of_range("vector::_M_range_check")`
+    /// (0x277890), else returns `start + 4*index` (0x277884).
+    pub fn brick_color_at(colors: &[u32], index: usize) -> u32 {
+        if index >= colors.len() {
+            // IDA 0x277890
+            panic!("vector::_M_range_check");
+        }
+        colors[index] // IDA 0x277884
+    }
+
+    /// was: `RBX::RbxRay::operator==` (IDA 0x27b438) — word 0 is the vtable
+    /// (skipped); words 1..=6 (origin + direction, 0x27b44a-0x27b4ae chain)
+    /// must all compare equal, `false` (`v2 = 0`) on the first mismatch.
+    pub fn rbx_ray_eq(a: &[f32; 6], b: &[f32; 6]) -> bool {
+        a == b
+    }
+
+    /// was: `RBX::CellID::operator==` (IDA 0x27b4b4) — tag byte at +0
+    /// (0x27b4be), three words at +4/+8/+12 (0x27b4d2/0x27b4e6/0x27b4fa),
+    /// dword at +16 (0x27b504, the `shared_ptr<Instance>` word); `false` on
+    /// the first mismatch. The words read as `float`s in the decompiler;
+    /// compared bitwise here (ARM `VCMP` on the raw words — NaN != NaN on
+    /// both, `-0.0 == 0.0` on both).
+    pub fn cell_id_eq(a: &CellIdPayload, b: &CellIdPayload) -> bool {
+        if a.head[0] != b.head[0] {
+            // IDA 0x27b4be
+            return false;
+        }
+        for i in [4, 8, 12] {
+            // IDA 0x27b4d2/0x27b4e6/0x27b4fa
+            if a.head[i..i + 4] != b.head[i..i + 4] {
+                return false;
+            }
+        }
+        // IDA 0x27b504: the instance word. The binary compares the low 4
+        // bytes only (32-bit target); the full cookie is compared here.
+        a.instance_addr == b.instance_addr
+    }
+
+    /// was: `std::vector<pool*>::push_back` (IDA 0x286100) — fast path
+    /// (`finish != end_of_storage`, 0x28610c): store + bump `finish`
+    /// (0x286116-0x28611c); full storage delegates to `_M_insert_aux`
+    /// (0x286126). `Vec::push` is both paths (growth included).
+    pub fn pool_vec_push_back(vec: &mut Vec<usize>, val: usize) {
+        vec.push(val);
+    }
+
+    /// was: `std::vector<pool*>::_M_insert_aux` (IDA 0x286170) — positional
+    /// insert into the pool-pointer vector: grow (`1` when empty, else
+    /// `2*size`; `length_error("vector::_M_insert_aux")` at the max size),
+    /// shift, store. Same two paths as `release_fn_vector_insert_aux`
+    /// (IDA 0x266748) for 4-byte elements. `Vec::insert` covers both once
+    /// capacity is ensured (`[INFERENCE]`: `pos` out of range panics; the
+    /// binary trusts the iterator).
+    pub fn pool_vec_insert_aux(vec: &mut Vec<usize>, pos: usize, val: usize) {
+        if vec.len() == vec.capacity() {
+            let size = vec.len();
+            if size == 0x3FFF_FFFF {
+                panic!("vector::_M_insert_aux");
+            }
+            let grown = if size == 0 { 1 } else { size * 2 };
+            vec.reserve_exact(grown - size);
+        }
+        vec.insert(pos, val);
+    }
+
 }
 
 #[doc(alias = "__ZNK3RBX5Light8getColorEv")]
@@ -1496,116 +1714,122 @@ pub fn stub_0x26f6ec(src: &boost_exception::CellIdPayload, dst: Option<&mut boos
 
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX6CellIDEE13destruct_funcEPc")]
 // 0x26f718 — __ZN3rbx14implementation12typed_holderIN3RBX6CellIDEE13destruct_funcEPc
-pub fn stub_0x26f718() {
-    // IDA 0x26f718: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
+pub fn stub_0x26f718(cell: boost_exception::CellIdPayload) {
+    // IDA 0x26f718: typed_holder<CellID>::destruct_func — thunk tail-call into ~CellID; by-value drop releases the Instance handle.
+    boost_exception::cell_id_destruct(cell);
 }
 
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX4UDimEE14construct_funcEPKcPc")]
 // 0x26f720 — __ZN3rbx14implementation12typed_holderIN3RBX4UDimEE14construct_funcEPKcPc
-pub fn stub_0x26f720() {
-    // IDA 0x26f720: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
+pub fn stub_0x26f720(src: &[u8; 8], dst: Option<&mut [u8; 8]>) {
+    // IDA 0x26f720: typed_holder<UDim>::construct_func — two-word copy when dst is non-null.
+    boost_exception::udim_construct(src, dst);
 }
 
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX4UDimEE13destruct_funcEPc")]
 // 0x26f730 — __ZN3rbx14implementation12typed_holderIN3RBX4UDimEE13destruct_funcEPc
 pub fn stub_0x26f730() {
-    // IDA 0x26f730: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
+    // IDA 0x26f730: typed_holder<UDim>::destruct_func — verified empty body; UDim is POD, nothing to emit.
 }
 
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX6RbxRayEE9singletonEv")]
 // 0x26f738 — __ZN3rbx14implementation12typed_holderIN3RBX6RbxRayEE9singletonEv
-pub fn stub_0x26f738() {
-    // IDA 0x26f738: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
+pub fn stub_0x26f738() -> &'static boost_exception::TypedHolder {
+    // IDA 0x26f738: typed_holder<RbxRay>::singleton — guarded once-init of the holder identity.
+    boost_exception::ensure_rbx_ray_holder()
 }
 
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX6RbxRayEE13destruct_funcEPc")]
 // 0x26f7a8 — __ZN3rbx14implementation12typed_holderIN3RBX6RbxRayEE13destruct_funcEPc
 pub fn stub_0x26f7a8() {
-    // IDA 0x26f7a8: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
+    // IDA 0x26f7a8: typed_holder<RbxRay>::destruct_func — tail-calls the virtual dtor (`(**a1)(a1)`); RbxRay payload is POD words, Rust drop glue covers it. (Decompiler int return is leftover `r0`.)
 }
 
 #[doc(alias = "__ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_12Region3int16EEERS3_RKT_")]
 // 0x26f9a0 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_12Region3int16EEERS3_RKT_
-pub fn stub_0x26f9a0() {
-    // IDA 0x26f9a0: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
+pub fn stub_0x26f9a0(slot: &mut boost_exception::PlacementAny, src: &[u8; 12]) {
+    // IDA 0x26f9a0: placement_any<Region3>::operator=<Region3int16> — same-holder 12-byte copy, else destroy + copy + install.
+    boost_exception::assign_region3int16(slot, src);
 }
 
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX12Region3int16EE9singletonEv")]
 // 0x26fa00 — __ZN3rbx14implementation12typed_holderIN3RBX12Region3int16EE9singletonEv
-pub fn stub_0x26fa00() {
-    // IDA 0x26fa00: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
+pub fn stub_0x26fa00() -> &'static boost_exception::TypedHolder {
+    // IDA 0x26fa00: typed_holder<Region3int16>::singleton — guarded once-init of the holder identity.
+    boost_exception::ensure_region3int16_holder()
 }
 
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX12Region3int16EE13destruct_funcEPc")]
 // 0x26fa70 — __ZN3rbx14implementation12typed_holderIN3RBX12Region3int16EE13destruct_funcEPc
 pub fn stub_0x26fa70() {
-    // IDA 0x26fa70: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
+    // IDA 0x26fa70: typed_holder<Region3int16>::destruct_func — verified empty body; Region3int16 is POD, nothing to emit.
 }
 
 #[doc(alias = "__GLOBAL__I_a_63")]
 // 0x270078 — __GLOBAL__I_a_63
 pub fn stub_0x270078() {
-    // IDA 0x270078: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
+    // IDA 0x270078: __GLOBAL__I_a_63 — categories, ios init, both static eps, both Xml pools, FWInstance + OnDemandInstance pools.
+    boost_exception::ensure_init_a63();
 }
 
 #[doc(alias = "__ZNKSt6vectorIN3RBX10BrickColorESaIS1_EE2atEm")]
-// 0x277870 — __ZNKSt6vectorIN3RBX10BrickColorESaIS1_EE2atEm
-pub fn stub_0x277870() {
-    // IDA 0x277870: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x277870(colors: &[u32], index: usize) -> u32 {
+    // IDA 0x277870: vector<BrickColor>::at — range-checked element address.
+    boost_exception::brick_color_at(colors, index)
 }
 
 #[doc(alias = "__GLOBAL__I_a_64")]
-// 0x278164 — __GLOBAL__I_a_64
 pub fn stub_0x278164() {
-    // IDA 0x278164: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+    // IDA 0x278164: __GLOBAL__I_a_64 — the a_63 set plus one FLog::RegisterFlag (fast-log owned).
+    boost_exception::ensure_init_a64();
 }
 
 #[doc(alias = "__ZNK3RBX6RbxRayeqERKS0_")]
-// 0x27b438 — __ZNK3RBX6RbxRayeqERKS0_
-pub fn stub_0x27b438() {
-    // IDA 0x27b438: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x27b438(a: &[f32; 6], b: &[f32; 6]) -> bool {
+    // IDA 0x27b438: RbxRay::operator== — all six payload words equal (word 0 is the vtable, skipped).
+    boost_exception::rbx_ray_eq(a, b)
 }
 
 #[doc(alias = "__ZNK3RBX6CellIDeqERKS0_")]
-// 0x27b4b4 — __ZNK3RBX6CellIDeqERKS0_
-pub fn stub_0x27b4b4() {
-    // IDA 0x27b4b4: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x27b4b4(a: &boost_exception::CellIdPayload, b: &boost_exception::CellIdPayload) -> bool {
+    // IDA 0x27b4b4: CellID::operator== — tag byte, three words, instance word.
+    boost_exception::cell_id_eq(a, b)
 }
 
 #[doc(alias = "__GLOBAL__I_a_65")]
-// 0x27b50c — __GLOBAL__I_a_65
 pub fn stub_0x27b50c() {
-    // IDA 0x27b50c: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+    // IDA 0x27b50c: __GLOBAL__I_a_65 — same core-owned set as a_63.
+    boost_exception::ensure_init_a65();
 }
 
 #[doc(alias = "__GLOBAL__I_a_66")]
-// 0x27bef0 — __GLOBAL__I_a_66
 pub fn stub_0x27bef0() {
-    // IDA 0x27bef0: global static ctor/dtor key. Static init — carrier no-op.
+    // IDA 0x27bef0: __GLOBAL__I_a_66 — categories, ios init, both static eps; no pool creation (a_61 shape).
+    boost_exception::ensure_init_a66();
 }
 
 #[doc(alias = "__GLOBAL__I_a_67")]
-// 0x2858c0 — __GLOBAL__I_a_67
 pub fn stub_0x2858c0() {
-    // IDA 0x2858c0: global static ctor/dtor key. Static init — carrier no-op.
+    // IDA 0x2858c0: __GLOBAL__I_a_67 — a_63 set + OnDemandPVInstance pool + flyweight; FLog flags and Camera/DebuggerWatch FactoryProducts owned elsewhere.
+    boost_exception::ensure_init_a67();
 }
 
 #[doc(alias = "__ZNSt6vectorIPN5boost4poolINS0_33default_user_allocator_new_deleteEEESaIS4_EE9push_backERKS4_")]
-// 0x286100 — __ZNSt6vectorIPN5boost4poolINS0_33default_user_allocator_new_deleteEEESaIS4_EE9push_backERKS4_
-pub fn stub_0x286100() {
-    // IDA 0x286100: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x286100(vec: &mut Vec<usize>, val: usize) {
+    // IDA 0x286100: vector<pool*>::push_back — store + bump finish, _M_insert_aux when full.
+    boost_exception::pool_vec_push_back(vec, val);
 }
 
 #[doc(alias = "__ZN5boost4poolINS_33default_user_allocator_new_deleteEE12purge_memoryEv")]
-// 0x28612c — __ZN5boost4poolINS_33default_user_allocator_new_deleteEE12purge_memoryEv
-pub fn stub_0x28612c() {
-    // IDA 0x28612c: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x28612c(pool: &boost_exception::SingletonPool) -> bool {
+    // IDA 0x28612c: pool::purge_memory — free every block, report whether any was freed.
+    pool.purge_memory()
 }
 
 #[doc(alias = "__ZNSt6vectorIPN5boost4poolINS0_33default_user_allocator_new_deleteEEESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_")]
-// 0x286170 — __ZNSt6vectorIPN5boost4poolINS0_33default_user_allocator_new_deleteEEESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_
-pub fn stub_0x286170() {
-    // IDA 0x286170: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x286170(vec: &mut Vec<usize>, pos: usize, val: usize) {
+    // IDA 0x286170: vector<pool*>::_M_insert_aux — grow-or-shift positional insert.
+    boost_exception::pool_vec_insert_aux(vec, pos, val);
 }
 
 
@@ -1831,7 +2055,10 @@ mod batch_ad_tests {
         stub_0x2666c0();
         stub_0x2666c0();
         assert!(XML_ATTRIBUTE_ALLOCATOR_INITIALIZED.load(std::sync::atomic::Ordering::Acquire));
-        assert!(xml_attribute_release_memory());
+        // IDA 0x26694c/0x266958: release_memory returns whether any block was
+        // freed (`v2 & 1`, `v2 = 0` when the list is empty) — nothing is
+        // cached here yet (no `free` port), so an empty pool releases nothing.
+        assert!(!xml_attribute_release_memory());
     }
 
     #[test]
@@ -1839,5 +2066,94 @@ mod batch_ad_tests {
         stub_0x2657a4();
         stub_0x2657a4();
         assert_eq!(*error_categories(), ("generic", "generic", "system"));
+    }
+    #[test]
+    fn typed_holder_singletons_are_stable_identities() {
+        assert!(std::ptr::eq(stub_0x26f738(), rbx_ray_holder()));
+        assert!(std::ptr::eq(stub_0x26fa00(), region3int16_holder()));
+        assert!(std::ptr::eq(stub_0x26f738(), ensure_rbx_ray_holder()));
+        assert!(std::ptr::eq(ensure_udim_holder(), udim_holder()));
+        assert!(std::ptr::eq(ensure_region3int16_holder(), region3int16_holder()));
+        stub_0x26f730();
+        stub_0x26f7a8();
+        stub_0x26fa70();
+    }
+
+    #[test]
+    fn cell_id_destruct_drops_by_value() {
+        let cell = CellIdPayload { head: [7u8; 16], instance_addr: 0x1234, instance_count: SharedCount::default() };
+        stub_0x26f718(cell);
+    }
+
+    #[test]
+    fn udim_construct_copies_two_words_when_dst_present() {
+        let src = [1u8, 2, 3, 4, 5, 6, 7, 8];
+        let mut dst = [0u8; 8];
+        stub_0x26f720(&src, Some(&mut dst));
+        assert_eq!(dst, src);
+        stub_0x26f720(&src, None);
+    }
+
+    #[test]
+    fn region3int16_assign_installs_holder_and_copies() {
+        let mut slot = PlacementAny::default();
+        let src = [9u8; 12];
+        stub_0x26f9a0(&mut slot, &src);
+        assert!(std::ptr::eq(slot.holder.unwrap(), region3int16_holder()));
+        let second = [3u8; 12];
+        stub_0x26f9a0(&mut slot, &second);
+        assert!(matches!(&slot.value, PlacementValue::Opaque(v) if v.as_slice() == second));
+    }
+
+    #[test]
+    fn global_a63_to_a67_inits_are_idempotent() {
+        stub_0x270078();
+        stub_0x278164();
+        stub_0x27b50c();
+        stub_0x27bef0();
+        stub_0x2858c0();
+        stub_0x270078();
+        assert_eq!(*error_categories(), ("generic", "generic", "system"));
+        assert_eq!(on_demand_pv_instance_pool().requested_size, 24);
+        assert!(protected_string_flyweight().lock().is_empty());
+    }
+
+    #[test]
+    fn brick_color_at_returns_element() {
+        let colors = [10u32, 20, 30];
+        assert_eq!(stub_0x277870(&colors, 1), 20);
+    }
+
+    #[test]
+    #[should_panic(expected = "vector::_M_range_check")]
+    fn brick_color_at_out_of_range_panics() {
+        stub_0x277870(&[1u32, 2], 2);
+    }
+
+    #[test]
+    fn ray_and_cell_id_equality_match_ida_chains() {
+        let a = [1.0f32, 2.0, 3.0, 4.0, 5.0, 6.0];
+        assert!(stub_0x27b438(&a, &a));
+        let mut b = a;
+        b[5] = 7.0;
+        assert!(!stub_0x27b438(&a, &b));
+        let x = CellIdPayload { head: [1u8; 16], instance_addr: 42, instance_count: SharedCount::default() };
+        let mut y = x.clone();
+        y.head[0] = 2;
+        assert!(!stub_0x27b4b4(&x, &y));
+        y = x.clone();
+        y.instance_addr = 43;
+        assert!(!stub_0x27b4b4(&x, &y));
+    }
+
+    #[test]
+    fn pool_vector_push_and_insert_aux_grow() {
+        let mut v: Vec<usize> = Vec::new();
+        stub_0x286100(&mut v, 0xaaa);
+        stub_0x286100(&mut v, 0xbbb);
+        assert_eq!(v, vec![0xaaa, 0xbbb]);
+        stub_0x286170(&mut v, 1, 0xccc);
+        assert_eq!(v, vec![0xaaa, 0xccc, 0xbbb]);
+        assert!(!stub_0x28612c(xml_attribute_pool()));
     }
 }
