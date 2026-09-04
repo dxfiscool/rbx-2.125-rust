@@ -450,6 +450,86 @@ pub struct SnapSelectionVerb {
     pub data_model: *const DataModel,
 }
 
+/// Rust model of `RBX::UngroupSelectionVerb` (IDA `0x3f9d94`): the studio
+/// ungroup verb plus the owning data model.
+pub struct UngroupSelectionVerb {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::SelectChildrenVerb` (IDA `0x3fa22c`): the studio
+/// select-children verb plus the owning data model.
+pub struct SelectChildrenVerb {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::DeleteBase` (IDA `0x3fa6c0`): the studio delete base
+/// with its confirmation flag plus the owning data model.
+pub struct DeleteBase {
+    pub data_model: *const DataModel,
+    pub name: String,
+    pub confirm: bool,
+}
+
+/// Rust model of `RBX::RotateSelectionVerb` (IDA `0x3fabb8`): the studio
+/// rotate verb plus the owning data model.
+pub struct RotateSelectionVerb {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::TiltSelectionVerb` (IDA `0x3fada4`): the studio tilt
+/// verb plus the owning data model.
+pub struct TiltSelectionVerb {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::MoveDownSelectionVerb` (IDA `0x3fb09c`): the studio
+/// move-down verb plus the owning data model.
+pub struct MoveDownSelectionVerb {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::CameraZoomExtentsCommand` (IDA `0x3fb594`): the studio
+/// zoom-extents command plus the owning workspace.
+pub struct CameraZoomExtentsCommand {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TurnOnManualJointCreation` (IDA `0x3fbd8c`): the studio
+/// manual-joint toggle plus the owning data model.
+pub struct TurnOnManualJointCreation {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::SetGridToOne` (IDA `0x3fbf3c`): the studio grid-size
+/// command plus the owning data model.
+pub struct SetGridToOne {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::SetGridToOneFifth` (IDA `0x3fc098`): the studio
+/// grid-size command plus the owning data model.
+pub struct SetGridToOneFifth {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::SetGridToOff` (IDA `0x3fc1f4`): the studio grid-size
+/// command plus the owning data model.
+pub struct SetGridToOff {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::SetManualJointToWeak` (IDA `0x3fc350`): the studio
+/// joint-strength command plus the owning data model.
+pub struct SetManualJointToWeak {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::SetManualJointToStrong` (IDA `0x3fc4ac`): the studio
+/// joint-strength command plus the owning data model.
+pub struct SetManualJointToStrong {
+    pub data_model: *const DataModel,
+}
+
 /// Rust model of `RBX::ChatService::ChatColor` (IDA `0x3eb850`): the bubble
 /// color tag on a chat message; enumerators unmodeled.
 #[derive(Clone, Copy, Default, PartialEq, Eq)]
@@ -11944,36 +12024,42 @@ pub fn stub_0x3f9ce0() -> ! {
 // 0x3f9d94 — __ZN3RBX20UngroupSelectionVerbC1EPNS_9DataModelE
 #[doc(alias = "RBX::UngroupSelectionVerb::UngroupSelectionVerb(RBX::DataModel *)")]
 // was: RBX::UngroupSelectionVerb::UngroupSelectionVerb(RBX::DataModel *)
-pub fn stub_0x3f9d94() -> ! {
-    todo!("0x3f9d94 RBX::UngroupSelectionVerb::UngroupSelectionVerb(RBX::DataModel *)")
+pub fn stub_0x3f9d94(data_model: *const DataModel) -> UngroupSelectionVerb {
+    // IDA 0x3f9d94: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3f9d98(data_model)
 }
 
 // 0x3f9d98 — __ZN3RBX20UngroupSelectionVerbC2EPNS_9DataModelE
 #[doc(alias = "RBX::UngroupSelectionVerb::UngroupSelectionVerb(RBX::DataModel *)")]
 // was: RBX::UngroupSelectionVerb::UngroupSelectionVerb(RBX::DataModel *)
-pub fn stub_0x3f9d98() -> ! {
-    todo!("0x3f9d98 RBX::UngroupSelectionVerb::UngroupSelectionVerb(RBX::DataModel *)")
+pub fn stub_0x3f9d98(data_model: *const DataModel) -> UngroupSelectionVerb {
+    // IDA 0x3f9d98: `UngroupSelectionVerb::C2(DataModel*)` — links the model.
+    UngroupSelectionVerb { data_model }
 }
 
 // 0x3fa22c — __ZN3RBX18SelectChildrenVerbC1EPNS_9DataModelE
 #[doc(alias = "RBX::SelectChildrenVerb::SelectChildrenVerb(RBX::DataModel *)")]
 // was: RBX::SelectChildrenVerb::SelectChildrenVerb(RBX::DataModel *)
-pub fn stub_0x3fa22c() -> ! {
-    todo!("0x3fa22c RBX::SelectChildrenVerb::SelectChildrenVerb(RBX::DataModel *)")
+pub fn stub_0x3fa22c(data_model: *const DataModel) -> SelectChildrenVerb {
+    // IDA 0x3fa22c: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3fa230(data_model)
 }
 
 // 0x3fa230 — __ZN3RBX18SelectChildrenVerbC2EPNS_9DataModelE
 #[doc(alias = "RBX::SelectChildrenVerb::SelectChildrenVerb(RBX::DataModel *)")]
 // was: RBX::SelectChildrenVerb::SelectChildrenVerb(RBX::DataModel *)
-pub fn stub_0x3fa230() -> ! {
-    todo!("0x3fa230 RBX::SelectChildrenVerb::SelectChildrenVerb(RBX::DataModel *)")
+pub fn stub_0x3fa230(data_model: *const DataModel) -> SelectChildrenVerb {
+    // IDA 0x3fa230: `SelectChildrenVerb::C2(DataModel*)` — links the model.
+    SelectChildrenVerb { data_model }
 }
 
 // 0x3fa6c0 — __ZN3RBX10DeleteBaseC2EPNS_9DataModelESsb
 #[doc(alias = "RBX::DeleteBase::DeleteBase(RBX::DataModel *,std::string,bool)")]
 // was: RBX::DeleteBase::DeleteBase(RBX::DataModel *,std::string,bool)
-pub fn stub_0x3fa6c0() -> ! {
-    todo!("0x3fa6c0 RBX::DeleteBase::DeleteBase(RBX::DataModel *,std::string,bool)")
+pub fn stub_0x3fa6c0(data_model: *const DataModel, name: String, confirm: bool) -> DeleteBase {
+    // IDA 0x3fa6c0: `DeleteBase::C2(DataModel*, string, bool)` — links the
+    // model, moves the name, keeps the confirmation flag.
+    DeleteBase { data_model, name, confirm }
 }
 
 // 0x3faac8 — __ZN3RBX17RotateAxisCommand15rotateAboutAxisERKN3G3D7Matrix3ERKSt6vectorIPNS_10PVInstanceESaIS7_EE
@@ -11986,134 +12072,156 @@ pub fn stub_0x3faac8() -> ! {
 // 0x3fabb8 — __ZN3RBX19RotateSelectionVerbC1EPNS_9DataModelE
 #[doc(alias = "RBX::RotateSelectionVerb::RotateSelectionVerb(RBX::DataModel *)")]
 // was: RBX::RotateSelectionVerb::RotateSelectionVerb(RBX::DataModel *)
-pub fn stub_0x3fabb8() -> ! {
-    todo!("0x3fabb8 RBX::RotateSelectionVerb::RotateSelectionVerb(RBX::DataModel *)")
+pub fn stub_0x3fabb8(data_model: *const DataModel) -> RotateSelectionVerb {
+    // IDA 0x3fabb8: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3fabbc(data_model)
 }
 
 // 0x3fabbc — __ZN3RBX19RotateSelectionVerbC2EPNS_9DataModelE
 #[doc(alias = "RBX::RotateSelectionVerb::RotateSelectionVerb(RBX::DataModel *)")]
 // was: RBX::RotateSelectionVerb::RotateSelectionVerb(RBX::DataModel *)
-pub fn stub_0x3fabbc() -> ! {
-    todo!("0x3fabbc RBX::RotateSelectionVerb::RotateSelectionVerb(RBX::DataModel *)")
+pub fn stub_0x3fabbc(data_model: *const DataModel) -> RotateSelectionVerb {
+    // IDA 0x3fabbc: `RotateSelectionVerb::C2(DataModel*)` — links the model.
+    RotateSelectionVerb { data_model }
 }
 
 // 0x3fada4 — __ZN3RBX17TiltSelectionVerbC1EPNS_9DataModelE
 #[doc(alias = "RBX::TiltSelectionVerb::TiltSelectionVerb(RBX::DataModel *)")]
 // was: RBX::TiltSelectionVerb::TiltSelectionVerb(RBX::DataModel *)
-pub fn stub_0x3fada4() -> ! {
-    todo!("0x3fada4 RBX::TiltSelectionVerb::TiltSelectionVerb(RBX::DataModel *)")
+pub fn stub_0x3fada4(data_model: *const DataModel) -> TiltSelectionVerb {
+    // IDA 0x3fada4: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3fada8(data_model)
 }
 
 // 0x3fada8 — __ZN3RBX17TiltSelectionVerbC2EPNS_9DataModelE
 #[doc(alias = "RBX::TiltSelectionVerb::TiltSelectionVerb(RBX::DataModel *)")]
 // was: RBX::TiltSelectionVerb::TiltSelectionVerb(RBX::DataModel *)
-pub fn stub_0x3fada8() -> ! {
-    todo!("0x3fada8 RBX::TiltSelectionVerb::TiltSelectionVerb(RBX::DataModel *)")
+pub fn stub_0x3fada8(data_model: *const DataModel) -> TiltSelectionVerb {
+    // IDA 0x3fada8: `TiltSelectionVerb::C2(DataModel*)` — links the model.
+    TiltSelectionVerb { data_model }
 }
 
 // 0x3fb09c — __ZN3RBX21MoveDownSelectionVerbC1EPNS_9DataModelE
 #[doc(alias = "RBX::MoveDownSelectionVerb::MoveDownSelectionVerb(RBX::DataModel *)")]
 // was: RBX::MoveDownSelectionVerb::MoveDownSelectionVerb(RBX::DataModel *)
-pub fn stub_0x3fb09c() -> ! {
-    todo!("0x3fb09c RBX::MoveDownSelectionVerb::MoveDownSelectionVerb(RBX::DataModel *)")
+pub fn stub_0x3fb09c(data_model: *const DataModel) -> MoveDownSelectionVerb {
+    // IDA 0x3fb09c: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3fb0a0(data_model)
 }
 
 // 0x3fb0a0 — __ZN3RBX21MoveDownSelectionVerbC2EPNS_9DataModelE
 #[doc(alias = "RBX::MoveDownSelectionVerb::MoveDownSelectionVerb(RBX::DataModel *)")]
 // was: RBX::MoveDownSelectionVerb::MoveDownSelectionVerb(RBX::DataModel *)
-pub fn stub_0x3fb0a0() -> ! {
-    todo!("0x3fb0a0 RBX::MoveDownSelectionVerb::MoveDownSelectionVerb(RBX::DataModel *)")
+pub fn stub_0x3fb0a0(data_model: *const DataModel) -> MoveDownSelectionVerb {
+    // IDA 0x3fb0a0: `MoveDownSelectionVerb::C2(DataModel*)` — links the model.
+    MoveDownSelectionVerb { data_model }
 }
 
 // 0x3fb594 — __ZN3RBX24CameraZoomExtentsCommandC1EPNS_9WorkspaceE
 #[doc(alias = "RBX::CameraZoomExtentsCommand::CameraZoomExtentsCommand(RBX::Workspace *)")]
 // was: RBX::CameraZoomExtentsCommand::CameraZoomExtentsCommand(RBX::Workspace *)
-pub fn stub_0x3fb594() -> ! {
-    todo!("0x3fb594 RBX::CameraZoomExtentsCommand::CameraZoomExtentsCommand(RBX::Workspace *)")
+pub fn stub_0x3fb594(workspace: *const crate::workspace::Workspace) -> CameraZoomExtentsCommand {
+    // IDA 0x3fb594: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3fb598(workspace)
 }
 
 // 0x3fb598 — __ZN3RBX24CameraZoomExtentsCommandC2EPNS_9WorkspaceE
 #[doc(alias = "RBX::CameraZoomExtentsCommand::CameraZoomExtentsCommand(RBX::Workspace *)")]
 // was: RBX::CameraZoomExtentsCommand::CameraZoomExtentsCommand(RBX::Workspace *)
-pub fn stub_0x3fb598() -> ! {
-    todo!("0x3fb598 RBX::CameraZoomExtentsCommand::CameraZoomExtentsCommand(RBX::Workspace *)")
+pub fn stub_0x3fb598(workspace: *const crate::workspace::Workspace) -> CameraZoomExtentsCommand {
+    // IDA 0x3fb598: `CameraZoomExtentsCommand::C2(Workspace*)` — links the
+    // workspace.
+    CameraZoomExtentsCommand { workspace }
 }
 
 // 0x3fbd8c — __ZN3RBX25TurnOnManualJointCreationC1EPNS_9DataModelE
 #[doc(alias = "RBX::TurnOnManualJointCreation::TurnOnManualJointCreation(RBX::DataModel *)")]
 // was: RBX::TurnOnManualJointCreation::TurnOnManualJointCreation(RBX::DataModel *)
-pub fn stub_0x3fbd8c() -> ! {
-    todo!("0x3fbd8c RBX::TurnOnManualJointCreation::TurnOnManualJointCreation(RBX::DataModel *)")
+pub fn stub_0x3fbd8c(data_model: *const DataModel) -> TurnOnManualJointCreation {
+    // IDA 0x3fbd8c: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3fbd90(data_model)
 }
 
 // 0x3fbd90 — __ZN3RBX25TurnOnManualJointCreationC2EPNS_9DataModelE
 #[doc(alias = "RBX::TurnOnManualJointCreation::TurnOnManualJointCreation(RBX::DataModel *)")]
 // was: RBX::TurnOnManualJointCreation::TurnOnManualJointCreation(RBX::DataModel *)
-pub fn stub_0x3fbd90() -> ! {
-    todo!("0x3fbd90 RBX::TurnOnManualJointCreation::TurnOnManualJointCreation(RBX::DataModel *)")
+pub fn stub_0x3fbd90(data_model: *const DataModel) -> TurnOnManualJointCreation {
+    // IDA 0x3fbd90: `TurnOnManualJointCreation::C2(DataModel*)` — links the
+    // model.
+    TurnOnManualJointCreation { data_model }
 }
 
 // 0x3fbf3c — __ZN3RBX12SetGridToOneC1EPNS_9DataModelE
 #[doc(alias = "RBX::SetGridToOne::SetGridToOne(RBX::DataModel *)")]
 // was: RBX::SetGridToOne::SetGridToOne(RBX::DataModel *)
-pub fn stub_0x3fbf3c() -> ! {
-    todo!("0x3fbf3c RBX::SetGridToOne::SetGridToOne(RBX::DataModel *)")
+pub fn stub_0x3fbf3c(data_model: *const DataModel) -> SetGridToOne {
+    // IDA 0x3fbf3c: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3fbf40(data_model)
 }
 
 // 0x3fbf40 — __ZN3RBX12SetGridToOneC2EPNS_9DataModelE
 #[doc(alias = "RBX::SetGridToOne::SetGridToOne(RBX::DataModel *)")]
 // was: RBX::SetGridToOne::SetGridToOne(RBX::DataModel *)
-pub fn stub_0x3fbf40() -> ! {
-    todo!("0x3fbf40 RBX::SetGridToOne::SetGridToOne(RBX::DataModel *)")
+pub fn stub_0x3fbf40(data_model: *const DataModel) -> SetGridToOne {
+    // IDA 0x3fbf40: `SetGridToOne::C2(DataModel*)` — links the model.
+    SetGridToOne { data_model }
 }
 
 // 0x3fc098 — __ZN3RBX17SetGridToOneFifthC1EPNS_9DataModelE
 #[doc(alias = "RBX::SetGridToOneFifth::SetGridToOneFifth(RBX::DataModel *)")]
 // was: RBX::SetGridToOneFifth::SetGridToOneFifth(RBX::DataModel *)
-pub fn stub_0x3fc098() -> ! {
-    todo!("0x3fc098 RBX::SetGridToOneFifth::SetGridToOneFifth(RBX::DataModel *)")
+pub fn stub_0x3fc098(data_model: *const DataModel) -> SetGridToOneFifth {
+    // IDA 0x3fc098: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3fc09c(data_model)
 }
 
 // 0x3fc09c — __ZN3RBX17SetGridToOneFifthC2EPNS_9DataModelE
 #[doc(alias = "RBX::SetGridToOneFifth::SetGridToOneFifth(RBX::DataModel *)")]
 // was: RBX::SetGridToOneFifth::SetGridToOneFifth(RBX::DataModel *)
-pub fn stub_0x3fc09c() -> ! {
-    todo!("0x3fc09c RBX::SetGridToOneFifth::SetGridToOneFifth(RBX::DataModel *)")
+pub fn stub_0x3fc09c(data_model: *const DataModel) -> SetGridToOneFifth {
+    // IDA 0x3fc09c: `SetGridToOneFifth::C2(DataModel*)` — links the model.
+    SetGridToOneFifth { data_model }
 }
 
 // 0x3fc1f4 — __ZN3RBX12SetGridToOffC1EPNS_9DataModelE
 #[doc(alias = "RBX::SetGridToOff::SetGridToOff(RBX::DataModel *)")]
 // was: RBX::SetGridToOff::SetGridToOff(RBX::DataModel *)
-pub fn stub_0x3fc1f4() -> ! {
-    todo!("0x3fc1f4 RBX::SetGridToOff::SetGridToOff(RBX::DataModel *)")
+pub fn stub_0x3fc1f4(data_model: *const DataModel) -> SetGridToOff {
+    // IDA 0x3fc1f4: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3fc1f8(data_model)
 }
 
 // 0x3fc1f8 — __ZN3RBX12SetGridToOffC2EPNS_9DataModelE
 #[doc(alias = "RBX::SetGridToOff::SetGridToOff(RBX::DataModel *)")]
 // was: RBX::SetGridToOff::SetGridToOff(RBX::DataModel *)
-pub fn stub_0x3fc1f8() -> ! {
-    todo!("0x3fc1f8 RBX::SetGridToOff::SetGridToOff(RBX::DataModel *)")
+pub fn stub_0x3fc1f8(data_model: *const DataModel) -> SetGridToOff {
+    // IDA 0x3fc1f8: `SetGridToOff::C2(DataModel*)` — links the model.
+    SetGridToOff { data_model }
 }
 
 // 0x3fc350 — __ZN3RBX20SetManualJointToWeakC1EPNS_9DataModelE
 #[doc(alias = "RBX::SetManualJointToWeak::SetManualJointToWeak(RBX::DataModel *)")]
 // was: RBX::SetManualJointToWeak::SetManualJointToWeak(RBX::DataModel *)
-pub fn stub_0x3fc350() -> ! {
-    todo!("0x3fc350 RBX::SetManualJointToWeak::SetManualJointToWeak(RBX::DataModel *)")
+pub fn stub_0x3fc350(data_model: *const DataModel) -> SetManualJointToWeak {
+    // IDA 0x3fc350: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3fc354(data_model)
 }
 
 // 0x3fc354 — __ZN3RBX20SetManualJointToWeakC2EPNS_9DataModelE
 #[doc(alias = "RBX::SetManualJointToWeak::SetManualJointToWeak(RBX::DataModel *)")]
 // was: RBX::SetManualJointToWeak::SetManualJointToWeak(RBX::DataModel *)
-pub fn stub_0x3fc354() -> ! {
-    todo!("0x3fc354 RBX::SetManualJointToWeak::SetManualJointToWeak(RBX::DataModel *)")
+pub fn stub_0x3fc354(data_model: *const DataModel) -> SetManualJointToWeak {
+    // IDA 0x3fc354: `SetManualJointToWeak::C2(DataModel*)` — links the model.
+    SetManualJointToWeak { data_model }
 }
 
 // 0x3fc4ac — __ZN3RBX22SetManualJointToStrongC1EPNS_9DataModelE
 #[doc(alias = "RBX::SetManualJointToStrong::SetManualJointToStrong(RBX::DataModel *)")]
 // was: RBX::SetManualJointToStrong::SetManualJointToStrong(RBX::DataModel *)
-pub fn stub_0x3fc4ac() -> ! {
-    todo!("0x3fc4ac RBX::SetManualJointToStrong::SetManualJointToStrong(RBX::DataModel *)")
+pub fn stub_0x3fc4ac(data_model: *const DataModel) -> SetManualJointToStrong {
+    // IDA 0x3fc4ac: C1 is `B.W C2` (same shape as 0x3f6054); inlined here
+    // since the C2 EA sorts into the next file run.
+    SetManualJointToStrong { data_model }
 }
 
 // 0x3fc4b0 — __ZN3RBX22SetManualJointToStrongC2EPNS_9DataModelE
