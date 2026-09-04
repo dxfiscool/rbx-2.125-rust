@@ -1297,7 +1297,7 @@ mod tests {
         init_client_replicator();
         // IDA 0x97be3c: mismatch only from the server with kind 142.
         let order = core::cell::RefCell::new(Vec::new());
-        let mut recv = |server: bool, kind: u8| {
+        let recv = |server: bool, kind: u8| {
             client_replicator_on_receive(
                 server,
                 kind,
@@ -1359,7 +1359,7 @@ mod tests {
         assert_eq!(names[24], "packetlossTotal");
         // IDA 0x987044: ack-gated CFrame write, always 1.
         let order = core::cell::RefCell::new(Vec::new());
-        let mut acked = |accepted: bool| {
+        let acked = |accepted: bool| {
             write_prop_acknowledgement(
                 accepted,
                 &mut || order.borrow_mut().push("w"),
@@ -1722,5 +1722,338 @@ mod property_writer_tests {
         write_property_internal(false, true, false, &mut |b| bits.push(b), &mut || changed += 1);
         assert_eq!(bits, vec![false, true, false]);
         assert_eq!(changed, 3);
+    }
+}
+
+/// `Replicator::readItem` dispatch (IDA 0xaff534): 1 deletes an instance,
+/// 2 reads a new instance, 3 reads a changed property, 4 reads a marker,
+/// 5/6 read a data ping, 7 reads an event invocation, and 0xB reads join
+/// data. The `FLog::NetworkReadItem` trace and the per-arm readers stay
+/// engine-side; only the switch is modeled here.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ReplicatorItemTarget {
+    InstanceDelete,
+    InstanceNew,
+    ChangedProperty,
+    Marker,
+    DataPing,
+    EventInvocation,
+    JoinData,
+}
+
+/// `Replicator::readItem` switch (IDA 0xaff534).
+pub fn replicator_read_item_target(item_type: u32) -> ReplicatorItemTarget {
+    match item_type {
+        1 => ReplicatorItemTarget::InstanceDelete,
+        2 => ReplicatorItemTarget::InstanceNew,
+        3 => ReplicatorItemTarget::ChangedProperty,
+        4 => ReplicatorItemTarget::Marker,
+        // IDA 0xaff5d0: cases 5 and 6 share `readDataPing`.
+        5 | 6 => ReplicatorItemTarget::DataPing,
+        7 => ReplicatorItemTarget::EventInvocation,
+        0xB => ReplicatorItemTarget::JoinData,
+        // IDA 0xaff65e..0xaff774: `ReleaseAssert(false @ Replicator.cpp:2769)`
+        // then `throw std::runtime_error("")`.
+        _ => panic!("Replicator::readItem: bad item type"),
+    }
+}
+
+/// One `Replicator::readDataPing` packet (IDA 0xb00e44): the respond flag,
+/// the ping timestamp, and the ping id. The virtual at +308 and the
+/// running-average pool stay engine-side.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct DataPing {
+    pub respond: bool,
+    pub sent_ms: u64,
+    pub ping_id: u32,
+}
+
+/// `Replicator::readDataPing` wire reads (IDA 0xb00e68..0xb00e78):
+/// `operator>><bool>`, `operator>><unsigned long long>`,
+/// `operator>><unsigned int>`.
+pub fn read_data_ping(stream: &mut BitStream) -> DataPing {
+    let respond = stream.read_bool().expect("BitStream >> bool failed");
+    let sent_ms = stream.read_u64().expect("BitStream >> unsigned long long failed");
+    let ping_id = stream.read_u32().expect("BitStream >> unsigned int failed");
+    DataPing { respond, sent_ms, ping_id }
+}
+
+/// `readDataPing` follow-up branch (IDA 0xb00eb6..0xb00f78).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum DataPingAction {
+    /// Flag set: `RunningAverage::sample(now - sent)` (IDA 0xb00eca).
+    SampleRtt { rtt_ms: u32 },
+    /// Flag clear: pool-allocate a `PingBackItem(this, sent)` and push it
+    /// to the `ItemQueue` at +1592 (IDA 0xb00f3c..0xb00f78), engine-side.
+    QueuePingBack,
+}
+
+/// `readDataPing` follow-up (IDA 0xb00eb6..0xb00f78).
+pub fn data_ping_action(ping: &DataPing, now_ms: u32) -> DataPingAction {
+    if ping.respond {
+        DataPingAction::SampleRtt { rtt_ms: now_ms.wrapping_sub(ping.sent_ms as u32) }
+    } else {
+        DataPingAction::QueuePingBack
+    }
+}
+
+/// `readDataPing` stamp write (IDA 0xb00f7c..0xb00f8c): `this[889]` takes
+/// the current time and `this[890]` is cleared. The `ReplicatorStats`
+/// increment behind the +929 flag stays engine-side.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct PingStamp {
+    pub last_ms: u32,
+    pub pending: u32,
+}
+
+/// `readDataPing` stamp write (IDA 0xb00f7c..0xb00f8c).
+pub fn stamp_data_ping(stamp: &mut PingStamp, now_ms: u32) {
+    stamp.last_ms = now_ms;
+    stamp.pending = 0;
+}
+
+/// `Replicator::readJoinData` instance count (IDA 0xb01e04). The
+/// `Compressor::readCompressed` refill and the `readInstanceNew` loop
+/// stay engine-side; only the count decode is modeled here.
+pub fn join_data_instance_count(stream: &mut BitStream, packed: bool) -> u32 {
+    if packed {
+        // IDA 0xb01e48..0xb01ea8: the +3720 flag selects the packed form —
+        // 5-bit groups, low 4 bits of payload, bit 4 continues.
+        let mut count = 0u32;
+        let mut shift = 0u32;
+        loop {
+            let bits = stream.read_bits(5).expect("BitStream ReadBits(5) failed");
+            count |= (bits & 0xF) << shift;
+            shift += 4;
+            if bits & 0x10 == 0 {
+                break;
+            }
+        }
+        count
+    } else {
+        // IDA 0xb01f4c: plain `operator>><unsigned int>`.
+        stream.read_u32().expect("BitStream >> unsigned int failed")
+    }
+}
+
+/// `Replicator::OnInternalPacket` counters (IDA 0xb04828): `this[689]`
+/// counts whole packets, `this[690]` counts split packets.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct SplitCounts {
+    pub whole: u32,
+    pub split: u32,
+}
+
+/// `Replicator::OnInternalPacket` (IDA 0xb04876..0xb0498a): nothing
+/// unless the per-packet count flag is set; a nonzero split count bumps
+/// the split counter (logging `"split message, id %u, size %d, split
+/// count %d"` first when the log flag is set and the fragment id field
+/// is 0), otherwise the whole counter bumps. The `shared_ptr` release
+/// in the log arm is `Arc` bookkeeping here.
+pub fn on_internal_packet(
+    counts: &mut SplitCounts,
+    count: bool,
+    split_count: u32,
+    log_split: bool,
+    first_fragment: bool,
+    msg_id: u8,
+    size_bytes: u32,
+    log: &mut dyn FnMut(u8, u32, u32),
+) {
+    if !count {
+        return;
+    }
+    if split_count != 0 {
+        if log_split && first_fragment {
+            log(msg_id, size_bytes, split_count);
+        }
+        counts.split += 1;
+    } else {
+        counts.whole += 1;
+    }
+}
+
+/// `Replicator::pushIncomingPacket` queue item (IDA 0xae1f8c): the
+/// `timestamped_safe_queue_item<RakNet::Packet *>` timestamp plus the
+/// packet. Packets stay engine-side as opaque tokens.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct TimestampedPacket {
+    pub time: f64,
+    pub packet: u32,
+}
+
+/// `Replicator::pushIncomingPacket` (IDA 0xae1fba..0xae2118): timestamp
+/// under the +3628 mutex (locking stays engine-side) and push to the
+/// deque at +3588 (`_M_reallocate_map` growth is `VecDeque` growth
+/// here); matching schedulers reschedule the job at +1568.
+pub fn push_incoming_packet(
+    queue: &mut std::collections::VecDeque<TimestampedPacket>,
+    time: f64,
+    packet: u32,
+    scheduler: u32,
+    rescheduler: u32,
+    reschedule: &mut dyn FnMut(),
+) {
+    queue.push_back(TimestampedPacket { time, packet });
+    if scheduler == rescheduler {
+        reschedule();
+    }
+}
+
+/// Base `Replicator::serializeSFFlags` / `deserializeSFFlags` (IDA
+/// 0xb0ceb4/0xb0ceb8): both empty — the `ServerReplicator` override
+/// ([`serialize_sf_flags`], IDA 0x9e2024) does the real work.
+pub fn replicator_sf_flags_noop() {}
+
+/// `Replicator::SendClusterJob` (IDA 0xb0db10/0xb0dbdc): the vtable
+/// reset, the shared Replicator ref at +484, and the base `Job`
+/// teardown stay engine-side; Rust drops the shared owner. D0
+/// additionally frees the allocation (IDA 0xb0dc50), which a Rust drop
+/// does.
+#[derive(Clone, Debug)]
+pub struct SendClusterJob {
+    /// Shared Replicator owner at +484 (`boost::detail::shared_count`).
+    pub owner: rbx_core::SharedPtr<()>,
+}
+
+/// `Replicator::SendClusterJob::sleepTime` (IDA 0xb0dcbc): forwards the
+/// stats float at +488 (packed into the sleep double) to
+/// `computeStandardSleepTime`.
+pub fn send_cluster_job_sleep_time(
+    elapsed: f64,
+    rate_hz: f32,
+    ctx: &crate::physics::SleepContext,
+) -> f64 {
+    crate::physics::standard_sleep_time(elapsed, rate_hz, ctx)
+}
+
+/// `RBX::Network::ReplicatorJob` (IDA 0xb0dfd8): same teardown shape as
+/// `SendClusterJob` (vtable `off_12BCCD8`, shared ref at +484, base
+/// `Job` with -1).
+#[derive(Clone, Debug)]
+pub struct ReplicatorJob {
+    /// Shared Replicator owner at +484 (`boost::detail::shared_count`).
+    pub owner: rbx_core::SharedPtr<()>,
+}
+
+/// `RBX::Network::Marker` (IDA 0xb139fc): engine-side marker node; only
+/// the shared-ownership shape crosses into the deque seams below.
+#[derive(Clone, Debug, Default)]
+pub struct Marker;
+
+/// `std::deque<shared_ptr<Marker>>::_M_push_back_aux` (IDA 0xb139fc):
+/// refcounted push; the spinlock-pool refcounting is `Arc`
+/// bookkeeping here.
+pub fn marker_queue_push(
+    queue: &mut std::collections::VecDeque<rbx_core::SharedPtr<Marker>>,
+    marker: rbx_core::SharedPtr<Marker>,
+) {
+    queue.push_back(marker);
+}
+
+/// `std::deque<shared_ptr<Marker>>::_M_reallocate_map` (IDA 0xb13d44):
+/// recenter-or-grow the chunk map; `reserve` keeps the growth edge
+/// (recentering is a `VecDeque` no-op).
+pub fn marker_queue_reserve(
+    queue: &mut std::collections::VecDeque<rbx_core::SharedPtr<Marker>>,
+    extra: usize,
+) {
+    queue.reserve(extra);
+}
+
+#[cfg(test)]
+mod next107_tests {
+    use super::*;
+
+    #[test]
+    fn read_item_switch() {
+        assert_eq!(replicator_read_item_target(1), ReplicatorItemTarget::InstanceDelete);
+        assert_eq!(replicator_read_item_target(2), ReplicatorItemTarget::InstanceNew);
+        assert_eq!(replicator_read_item_target(3), ReplicatorItemTarget::ChangedProperty);
+        assert_eq!(replicator_read_item_target(4), ReplicatorItemTarget::Marker);
+        assert_eq!(replicator_read_item_target(5), ReplicatorItemTarget::DataPing);
+        assert_eq!(replicator_read_item_target(6), ReplicatorItemTarget::DataPing);
+        assert_eq!(replicator_read_item_target(7), ReplicatorItemTarget::EventInvocation);
+        assert_eq!(replicator_read_item_target(0xB), ReplicatorItemTarget::JoinData);
+    }
+
+    #[test]
+    #[should_panic(expected = "bad item type")]
+    fn read_item_default_throws() {
+        let _ = replicator_read_item_target(0);
+    }
+
+    #[test]
+    fn data_ping_roundtrip() {
+        let mut stream = BitStream::new();
+        stream.write_bool(true);
+        stream.write_u64(1_000);
+        stream.write_u32(9);
+        let mut read = BitStream::from_bytes(&stream.into_bytes());
+        let ping = read_data_ping(&mut read);
+        assert_eq!(ping, DataPing { respond: true, sent_ms: 1_000, ping_id: 9 });
+        assert_eq!(data_ping_action(&ping, 1_060), DataPingAction::SampleRtt { rtt_ms: 60 });
+        let queued = DataPing { respond: false, sent_ms: 1_000, ping_id: 9 };
+        assert_eq!(data_ping_action(&queued, 1_060), DataPingAction::QueuePingBack);
+        let mut stamp = PingStamp::default();
+        stamp_data_ping(&mut stamp, 1_060);
+        assert_eq!(stamp, PingStamp { last_ms: 1_060, pending: 0 });
+    }
+
+    #[test]
+    fn join_data_counts() {
+        // IDA 0xb01e48: 0x1A3 arrives as nibbles 3, A, 1 with continue bits.
+        let mut packed = BitStream::new();
+        packed.write_bits(0x13, 5);
+        packed.write_bits(0x1A, 5);
+        packed.write_bits(0x01, 5);
+        let mut read = BitStream::from_bytes(&packed.into_bytes());
+        assert_eq!(join_data_instance_count(&mut read, true), 0x1A3);
+        let mut plain = BitStream::new();
+        plain.write_u32(7);
+        let mut read = BitStream::from_bytes(&plain.into_bytes());
+        assert_eq!(join_data_instance_count(&mut read, false), 7);
+    }
+
+    #[test]
+    fn internal_packet_counters() {
+        let mut counts = SplitCounts::default();
+        let mut logged = Vec::new();
+        let mut log = |id: u8, size: u32, splits: u32| logged.push((id, size, splits));
+        on_internal_packet(&mut counts, false, 3, true, true, 0x81, 100, &mut log);
+        assert_eq!((counts.whole, counts.split), (0, 0));
+        on_internal_packet(&mut counts, true, 0, true, true, 0x81, 100, &mut log);
+        assert_eq!((counts.whole, counts.split), (1, 0));
+        on_internal_packet(&mut counts, true, 3, true, true, 0x81, 100, &mut log);
+        on_internal_packet(&mut counts, true, 3, true, false, 0x81, 100, &mut log);
+        assert_eq!((counts.whole, counts.split), (1, 2));
+        drop(log);
+        assert_eq!(logged, vec![(0x81, 100, 3)]);
+    }
+
+    #[test]
+    fn incoming_packet_reschedules_on_match() {
+        let mut queue = std::collections::VecDeque::new();
+        let mut rescheduled = 0;
+        push_incoming_packet(&mut queue, 1.5, 42, 7, 7, &mut || rescheduled += 1);
+        push_incoming_packet(&mut queue, 2.5, 43, 7, 8, &mut || rescheduled += 1);
+        assert_eq!(queue.len(), 2);
+        assert_eq!(queue[0], TimestampedPacket { time: 1.5, packet: 42 });
+        assert_eq!(rescheduled, 1);
+    }
+
+    #[test]
+    fn cluster_job_sleep_forwards() {
+        let ctx = crate::physics::SleepContext::default();
+        assert_eq!(send_cluster_job_sleep_time(0.0, 20.0, &ctx), 0.05);
+        replicator_sf_flags_noop();
+    }
+
+    #[test]
+    fn marker_queue_edges() {
+        let mut queue = std::collections::VecDeque::new();
+        marker_queue_reserve(&mut queue, 4);
+        marker_queue_push(&mut queue, rbx_core::SharedPtr::from(Box::new(Marker)));
+        assert_eq!(queue.len(), 1);
     }
 }

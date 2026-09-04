@@ -97,8 +97,16 @@ pub fn stub_ae10b8() -> ! {
 // 0xae1f8c — __ZN3RBX7Network10Replicator18pushIncomingPacketEPN6RakNet6PacketE
 // type: void __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, pthread_mutex_t *, int, int, int, int)
 #[doc(alias = "RBX::Network::Replicator::pushIncomingPacket(RakNet::Packet *)")]
-pub fn stub_ae1f8c() -> ! {
-    todo!("0xae1f8c RBX::Network::Replicator::pushIncomingPacket(RakNet::Packet *)")
+pub fn stub_ae1f8c(
+    queue: &mut std::collections::VecDeque<crate::replicator::TimestampedPacket>,
+    time: f64,
+    packet: u32,
+    scheduler: u32,
+    rescheduler: u32,
+    reschedule: &mut dyn FnMut(),
+) {
+    // IDA 0xae1f8c: timestamp + push under the +3628 mutex, reschedule the +1568 job on match.
+    crate::replicator::push_incoming_packet(queue, time, packet, scheduler, rescheduler, reschedule);
 }
 
 // 0xaec7d4 — __ZN3RBX7Network10Replicator23sendFilteredChatMessageERKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_
@@ -111,8 +119,9 @@ pub fn stub_aec7d4() -> ! {
 // 0xaff534 — __ZN3RBX7Network10Replicator8readItemERN6RakNet9BitStreamENS0_4Item8ItemTypeE
 // type: void __fastcall(RBX::Network::Replicator *, const void **, const char *)
 #[doc(alias = "RBX::Network::Replicator::readItem(RakNet::BitStream &,RBX::Network::Item::ItemType)")]
-pub fn stub_aff534() -> ! {
-    todo!("0xaff534 RBX::Network::Replicator::readItem(RakNet::BitStream &,RBX::Network::Item::ItemType)")
+pub fn stub_aff534(item_type: u32) -> crate::replicator::ReplicatorItemTarget {
+    // IDA 0xaff534: switch on the ItemType; the FLog trace and per-arm readers stay engine-side.
+    crate::replicator::replicator_read_item_target(item_type)
 }
 
 // 0xb002f0 — __ZN3RBX7Network10Replicator19readChangedPropertyERN6RakNet9BitStreamE
@@ -132,8 +141,20 @@ pub fn stub_b009cc() -> ! {
 // 0xb00e44 — __ZN3RBX7Network10Replicator12readDataPingERN6RakNet9BitStreamE
 // type: void __fastcall(RBX::Network::Replicator *this, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::Replicator::readDataPing(RakNet::BitStream &)")]
-pub fn stub_b00e44() -> ! {
-    todo!("0xb00e44 RBX::Network::Replicator::readDataPing(RakNet::BitStream &)")
+pub fn stub_b00e44(
+    stream: &mut crate::bitstream::BitStream,
+    now_ms: u32,
+    stamp: &mut crate::replicator::PingStamp,
+    ping_back: &mut dyn FnMut(crate::replicator::DataPing),
+) -> crate::replicator::DataPingAction {
+    // IDA 0xb00e44: bool/u64/u32 wire reads, virtual +308, sample-or-queue, stamp + stats.
+    let ping = crate::replicator::read_data_ping(stream);
+    let action = crate::replicator::data_ping_action(&ping, now_ms);
+    if action == crate::replicator::DataPingAction::QueuePingBack {
+        ping_back(ping);
+    }
+    crate::replicator::stamp_data_ping(stamp, now_ms);
+    action
 }
 
 // 0xb0107c — __ZN3RBX7Network10Replicator19readEventInvocationERN6RakNet9BitStreamE
@@ -146,8 +167,9 @@ pub fn stub_b0107c() -> ! {
 // 0xb01e04 — __ZN3RBX7Network10Replicator12readJoinDataERN6RakNet9BitStreamE
 // type: unsigned int __fastcall(RBX::Network::Replicator *this, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::Replicator::readJoinData(RakNet::BitStream &)")]
-pub fn stub_b01e04() -> ! {
-    todo!("0xb01e04 RBX::Network::Replicator::readJoinData(RakNet::BitStream &)")
+pub fn stub_b01e04(stream: &mut crate::bitstream::BitStream, packed: bool) -> u32 {
+    // IDA 0xb01e04: packed 5-bit groups (+3720 flag) or a plain u32; decompress + readInstanceNew loop engine-side.
+    crate::replicator::join_data_instance_count(stream, packed)
 }
 
 // 0xb02984 — __ZN3RBX7Network10Replicator13processPacketEPN6RakNet6PacketE
@@ -168,21 +190,44 @@ pub fn stub_b02e30() -> ! {
 // type: int __fastcall(int, RakNet::SystemAddress *)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::OnReceive(RakNet::Packet *)")]
 pub fn stub_b04818() -> ! {
-    todo!("0xb04818 non-virtual thunk toRBX::Network::Replicator::OnReceive(RakNet::Packet *)")
+    // IDA 0xb04818: __ZThn1180 — this -= 1180, tail-call Replicator::OnReceive (0xb02e30).
+    stub_b02e30()
 }
 
 // 0xb04828 — __ZN3RBX7Network10Replicator16OnInternalPacketEPN6RakNet14InternalPacketEjNS2_13SystemAddressEji
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::Replicator::OnInternalPacket(RakNet::InternalPacket *,unsigned int,RakNet::SystemAddress,unsigned int,int)")]
-pub fn stub_b04828() -> ! {
-    todo!("0xb04828 RBX::Network::Replicator::OnInternalPacket(RakNet::InternalPacket *,unsigned int,RakNet::SystemAddress,unsigned int,int)")
+pub fn stub_b04828(
+    counts: &mut crate::replicator::SplitCounts,
+    count: bool,
+    split_count: u32,
+    log_split: bool,
+    first_fragment: bool,
+    msg_id: u8,
+    size_bytes: u32,
+    log: &mut dyn FnMut(u8, u32, u32),
+) {
+    // IDA 0xb04828: split/whole counters at this[690]/this[689] plus the conditional split log.
+    crate::replicator::on_internal_packet(
+        counts, count, split_count, log_split, first_fragment, msg_id, size_bytes, log,
+    );
 }
 
 // 0xb04a98 — __ZThn1180_N3RBX7Network10Replicator16OnInternalPacketEPN6RakNet14InternalPacketEjNS2_13SystemAddressEji
 // type: void __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::OnInternalPacket(RakNet::InternalPacket *,unsigned int,RakNet::SystemAddress,unsigned int,int)")]
-pub fn stub_b04a98() -> ! {
-    todo!("0xb04a98 non-virtual thunk toRBX::Network::Replicator::OnInternalPacket(RakNet::InternalPacket *,unsigned int,RakNet::SystemAddress,unsigned int,int)")
+pub fn stub_b04a98(
+    counts: &mut crate::replicator::SplitCounts,
+    count: bool,
+    split_count: u32,
+    log_split: bool,
+    first_fragment: bool,
+    msg_id: u8,
+    size_bytes: u32,
+    log: &mut dyn FnMut(u8, u32, u32),
+) {
+    // IDA 0xb04a98: __ZThn1180 — this -= 1180, tail-call Replicator::OnInternalPacket (0xb04828).
+    stub_b04828(counts, count, split_count, log_split, first_fragment, msg_id, size_bytes, log);
 }
 
 // 0xb07980 — __ZN5boost4bindIvN3RBX7Network10ReplicatorERKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_NS8_IS3_EENS_3argILi1EEENSG_ILi2EEENSG_ILi3EEENSG_ILi4EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf4ISN_T0_T1_T2_T3_T4_EENSL_9list_av_5IT5_T6_T7_T8_T9_E4typeEEEMSQ_FSN_SR_SS_ST_SU_ESX_SY_SZ_S10_S11_
@@ -195,106 +240,131 @@ pub fn stub_b07980() -> ! {
 // 0xb08aa8 — __ZN3RBX7Network16SenderDictionaryINS_13SystemAddressEE4sendERN6RakNet9BitStreamERKS2_
 // type: unsigned int __fastcall(int, RakNet::BitStream *this, int *)
 #[doc(alias = "RBX::Network::SenderDictionary<RBX::SystemAddress>::send(RakNet::BitStream &,RBX::SystemAddress const&)")]
-pub fn stub_b08aa8() -> ! {
-    todo!("0xb08aa8 RBX::Network::SenderDictionary<RBX::SystemAddress>::send(RakNet::BitStream &,RBX::SystemAddress const&)")
+pub fn stub_b08aa8(
+    dict: &mut crate::socket::SenderDictionary,
+    stream: &mut crate::bitstream::BitStream,
+    address: &crate::socket::SystemAddress,
+) -> u32 {
+    // IDA 0xb08aa8: broadcast/known/new arms over the +0 map and the +1048 counter.
+    dict.send(stream, address)
 }
 
 // 0xb0ceb4 — __ZN3RBX7Network10Replicator16serializeSFFlagsERN6RakNet9BitStreamE
 // type: void __fastcall(RBX::Network::Replicator *this, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::Replicator::serializeSFFlags(RakNet::BitStream &)")]
-pub fn stub_b0ceb4() -> ! {
-    todo!("0xb0ceb4 RBX::Network::Replicator::serializeSFFlags(RakNet::BitStream &)")
+pub fn stub_b0ceb4() {
+    // IDA 0xb0ceb4: base Replicator::serializeSFFlags is empty (ServerReplicator overrides).
+    crate::replicator::replicator_sf_flags_noop();
 }
 
 // 0xb0ceb8 — __ZN3RBX7Network10Replicator18deserializeSFFlagsERN6RakNet9BitStreamE
 // type: void __fastcall(RBX::Network::Replicator *this, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::Replicator::deserializeSFFlags(RakNet::BitStream &)")]
-pub fn stub_b0ceb8() -> ! {
-    todo!("0xb0ceb8 RBX::Network::Replicator::deserializeSFFlags(RakNet::BitStream &)")
+pub fn stub_b0ceb8() {
+    // IDA 0xb0ceb8: base Replicator::deserializeSFFlags is empty (ServerReplicator overrides).
+    crate::replicator::replicator_sf_flags_noop();
 }
 
 // 0xb0ced0 — __ZN6RakNet16PluginInterface28OnAttachEv
 // type: void __fastcall(RakNet::PluginInterface2 *this)
 #[doc(alias = "RakNet::PluginInterface2::OnAttach(void)")]
-pub fn stub_b0ced0() -> ! {
-    todo!("0xb0ced0 RakNet::PluginInterface2::OnAttach(void)")
+pub fn stub_b0ced0(plugin: &crate::socket::PluginInterface2) {
+    // IDA 0xb0ced0: default hook is empty.
+    plugin.on_attach();
 }
 
 // 0xb0ced8 — __ZN6RakNet16PluginInterface26UpdateEv
 // type: void __fastcall(RakNet::PluginInterface2 *this)
 #[doc(alias = "RakNet::PluginInterface2::Update(void)")]
-pub fn stub_b0ced8() -> ! {
-    todo!("0xb0ced8 RakNet::PluginInterface2::Update(void)")
+pub fn stub_b0ced8(plugin: &crate::socket::PluginInterface2) {
+    // IDA 0xb0ced8: default hook is empty.
+    plugin.update();
 }
 
 // 0xb0cee0 — __ZN6RakNet16PluginInterface217OnRakPeerShutdownEv
 // type: void __fastcall(RakNet::PluginInterface2 *this)
 #[doc(alias = "RakNet::PluginInterface2::OnRakPeerShutdown(void)")]
-pub fn stub_b0cee0() -> ! {
-    todo!("0xb0cee0 RakNet::PluginInterface2::OnRakPeerShutdown(void)")
+pub fn stub_b0cee0(plugin: &crate::socket::PluginInterface2) {
+    // IDA 0xb0cee0: default hook is empty.
+    plugin.on_rak_peer_shutdown();
 }
 
 // 0xb0cee8 — __ZN6RakNet16PluginInterface215OnNewConnectionERKNS_13SystemAddressENS_10RakNetGUIDEb
 // type: void()
 #[doc(alias = "RakNet::PluginInterface2::OnNewConnection(RakNet::SystemAddress const&,RakNet::RakNetGUID,bool)")]
-pub fn stub_b0cee8() -> ! {
-    todo!("0xb0cee8 RakNet::PluginInterface2::OnNewConnection(RakNet::SystemAddress const&,RakNet::RakNetGUID,bool)")
+pub fn stub_b0cee8(plugin: &crate::socket::PluginInterface2) {
+    // IDA 0xb0cee8: default hook is empty.
+    plugin.on_new_connection();
 }
 
 // 0xb0cef8 — __ZN6RakNet16PluginInterface221OnDirectSocketReceiveEPKcjNS_13SystemAddressE
 // type: void()
 #[doc(alias = "RakNet::PluginInterface2::OnDirectSocketReceive(char const*,unsigned int,RakNet::SystemAddress)")]
-pub fn stub_b0cef8() -> ! {
-    todo!("0xb0cef8 RakNet::PluginInterface2::OnDirectSocketReceive(char const*,unsigned int,RakNet::SystemAddress)")
+pub fn stub_b0cef8(plugin: &crate::socket::PluginInterface2) {
+    // IDA 0xb0cef8: default hook is empty.
+    plugin.on_direct_socket_receive();
 }
 
 // 0xb0cf00 — __ZN6RakNet16PluginInterface25OnAckEjNS_13SystemAddressEj
 // type: void()
 #[doc(alias = "RakNet::PluginInterface2::OnAck(unsigned int,RakNet::SystemAddress,unsigned int)")]
-pub fn stub_b0cf00() -> ! {
-    todo!("0xb0cf00 RakNet::PluginInterface2::OnAck(unsigned int,RakNet::SystemAddress,unsigned int)")
+pub fn stub_b0cf00(plugin: &crate::socket::PluginInterface2) {
+    // IDA 0xb0cf00: default hook is empty.
+    plugin.on_ack();
 }
 
 // 0xb0db10 — __ZN3RBX7Network10Replicator14SendClusterJobD1Ev
 // type: void __fastcall(RBX::Network::Replicator::SendClusterJob *__hidden this)
 #[doc(alias = "RBX::Network::Replicator::SendClusterJob::~SendClusterJob()")]
-pub fn stub_b0db10() -> ! {
-    todo!("0xb0db10 RBX::Network::Replicator::SendClusterJob::~SendClusterJob()")
+pub fn stub_b0db10(job: crate::replicator::SendClusterJob) {
+    // IDA 0xb0db10: D1 — vtable reset, +484 shared-count drop, base Job(this, -1); Rust drops.
+    drop(job);
 }
 
 // 0xb0dbdc — __ZN3RBX7Network10Replicator14SendClusterJobD0Ev
 // type: void __fastcall(RBX::Network::Replicator::SendClusterJob *__hidden this)
 #[doc(alias = "RBX::Network::Replicator::SendClusterJob::~SendClusterJob()")]
-pub fn stub_b0dbdc() -> ! {
-    todo!("0xb0dbdc RBX::Network::Replicator::SendClusterJob::~SendClusterJob()")
+pub fn stub_b0dbdc(job: crate::replicator::SendClusterJob) {
+    // IDA 0xb0dbdc: D0 — same teardown as D1 plus operator delete (IDA 0xb0dc50); Rust drops.
+    drop(job);
 }
 
 // 0xb0dcbc — __ZN3RBX7Network10Replicator14SendClusterJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE
 // type: void __fastcall(RBX::Network::Replicator::SendClusterJob *this, const RBX::TaskScheduler::Job::Stats *, double)
 #[doc(alias = "RBX::Network::Replicator::SendClusterJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_b0dcbc() -> ! {
-    todo!("0xb0dcbc RBX::Network::Replicator::SendClusterJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_b0dcbc(elapsed: f64, rate_hz: f32, ctx: &crate::physics::SleepContext) -> f64 {
+    // IDA 0xb0dcbc: stats float at +488 packed into the sleep double, into computeStandardSleepTime.
+    crate::replicator::send_cluster_job_sleep_time(elapsed, rate_hz, ctx)
 }
 
 // 0xb0dfd8 — __ZN3RBX7Network13ReplicatorJobD1Ev
 // type: void __fastcall(RBX::Network::ReplicatorJob *__hidden this)
 #[doc(alias = "RBX::Network::ReplicatorJob::~ReplicatorJob()")]
-pub fn stub_b0dfd8() -> ! {
-    todo!("0xb0dfd8 RBX::Network::ReplicatorJob::~ReplicatorJob()")
+pub fn stub_b0dfd8(job: crate::replicator::ReplicatorJob) {
+    // IDA 0xb0dfd8: D1 — vtable reset, +484 shared-count drop, base Job(this, -1); Rust drops.
+    drop(job);
 }
 
 // 0xb139fc — __ZNSt5dequeIN5boost10shared_ptrIN3RBX7Network6MarkerEEESaIS5_EE16_M_push_back_auxERKS5_
 // type: void __fastcall(_DWORD *, int *, int, int, int, int, int, int, void *, int)
 #[doc(alias = "std::deque<boost::shared_ptr<RBX::Network::Marker>,std::allocator<boost::shared_ptr<RBX::Network::Marker>>>::_M_push_back_aux(boost::shared_ptr<RBX::Network::Marker> const&)")]
-pub fn stub_b139fc() -> ! {
-    todo!("0xb139fc std::deque<boost::shared_ptr<RBX::Network::Marker>,std::allocator<boost::shared_ptr<RBX::Network::Marker>>>::_M_push_back_aux(boost::shared_ptr<RBX::Network::Marker> const&)")
+pub fn stub_b139fc(
+    queue: &mut std::collections::VecDeque<SharedPtr<crate::replicator::Marker>>,
+    marker: SharedPtr<crate::replicator::Marker>,
+) {
+    // IDA 0xb139fc: refcounted push; spinlock-pool counting is Arc bookkeeping.
+    crate::replicator::marker_queue_push(queue, marker);
 }
 
 // 0xb13d44 — __ZNSt5dequeIN5boost10shared_ptrIN3RBX7Network6MarkerEEESaIS5_EE17_M_reallocate_mapEmb
 // type: char *__fastcall(void **, unsigned int, int)
 #[doc(alias = "std::deque<boost::shared_ptr<RBX::Network::Marker>,std::allocator<boost::shared_ptr<RBX::Network::Marker>>>::_M_reallocate_map(unsigned long,bool)")]
-pub fn stub_b13d44() -> ! {
-    todo!("0xb13d44 std::deque<boost::shared_ptr<RBX::Network::Marker>,std::allocator<boost::shared_ptr<RBX::Network::Marker>>>::_M_reallocate_map(unsigned long,bool)")
+pub fn stub_b13d44(
+    queue: &mut std::collections::VecDeque<SharedPtr<crate::replicator::Marker>>,
+    extra: usize,
+) {
+    // IDA 0xb13d44: recenter-or-grow the chunk map; reserve keeps the growth edge.
+    crate::replicator::marker_queue_reserve(queue, extra);
 }
 
 // 0xb14fe0 — __ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEEEC2ES8_

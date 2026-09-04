@@ -46,6 +46,18 @@ impl PluginInterface2 {
     pub fn on_reliability_layer_packet_error(&self) {}
     /// `OnInternalPacket` (IDA 0xad5324): default hook is a bare `BX LR`.
     pub fn on_internal_packet(&self) {}
+    /// `OnAttach` (IDA 0xb0ced0): default hook is empty.
+    pub fn on_attach(&self) {}
+    /// `Update` (IDA 0xb0ced8): default hook is empty.
+    pub fn update(&self) {}
+    /// `OnRakPeerShutdown` (IDA 0xb0cee0): default hook is empty.
+    pub fn on_rak_peer_shutdown(&self) {}
+    /// `OnNewConnection` (IDA 0xb0cee8): default hook is empty.
+    pub fn on_new_connection(&self) {}
+    /// `OnDirectSocketReceive` (IDA 0xb0cef8): default hook is empty.
+    pub fn on_direct_socket_receive(&self) {}
+    /// `OnAck` (IDA 0xb0cf00): default hook is empty.
+    pub fn on_ack(&self) {}
 }
 
 /// `RakNet::_RakMalloc_Ex` (IDA 0xa5a900): zeroed bytes; the file/line
@@ -653,6 +665,13 @@ impl SystemAddress {
  pub fn not_equals(&self, other: &Self) -> bool {
  !self.equals(other)
  }
+ /// Broadcast test used by `SenderDictionary::send` (IDA 0xb08ac8):
+ /// first dword all-ones with the +4 word `0xFFFF`
+ /// (255.255.255.255:65535).
+ #[must_use]
+ pub fn is_broadcast(&self) -> bool {
+ self.binary == u32::MAX && self.port == 0xFFFF
+ }
 
  /// `SystemAddress::EqualsExcludingPort` (IDA 0xa5c0d8).
  #[must_use]
@@ -835,6 +854,47 @@ impl SystemAddress {
  if self.family != 2 && other.family == 2 {
  self.set_to_loopback(true);
  }
+ }
+}
+
+/// `RBX::Network::SenderDictionary<RBX::SystemAddress>` (IDA 0xb08aa8):
+/// maps each sender to a 1-byte id so repeat packets cost one byte. The
+/// `std::map` at +0 and the slot array at +24 are a `HashMap` here; the
+/// next-id counter at +1048 cycles 1..=127.
+#[derive(Clone, Debug, Default)]
+pub struct SenderDictionary {
+ pub next_id: u8,
+ pub ids: std::collections::HashMap<SystemAddress, u8>,
+}
+
+impl SenderDictionary {
+ /// Fresh dictionary (IDA 0xb08aa8): the counter starts at 1, the first
+ /// assignable id (`% 127 + 1` never yields 0).
+ #[must_use]
+ pub fn new() -> Self {
+ Self { next_id: 1, ids: std::collections::HashMap::default() }
+ }
+ /// `SenderDictionary::send` (IDA 0xb08aa8..0xb08b7e): broadcast
+ /// (all-ones address) writes a single 0 byte; a known address writes
+ /// its id byte; a new address is filed, writes `id | 0x80` plus the
+ /// full address (`RBX::operator<<`), and advances the counter. Only
+ /// the new-address arm returns the fresh counter — the other arms
+ /// tail-call the void `WriteBits`, so they return 0 here.
+ pub fn send(&mut self, stream: &mut BitStream, address: &SystemAddress) -> u32 {
+ if address.is_broadcast() {
+ stream.write_bits(0, 8);
+ return 0;
+ }
+ if let Some(&id) = self.ids.get(address) {
+ stream.write_u8(id);
+ return 0;
+ }
+ let id = self.next_id;
+ self.ids.insert(*address, id);
+ stream.write_u8(id | 0x80);
+ crate::custom_serializer::write_system_address(stream, address.binary, address.port);
+ self.next_id = self.next_id % 127 + 1;
+ u32::from(self.next_id)
  }
 }
 
@@ -2632,4 +2692,52 @@ pub fn get_my_ip() -> Option<std::net::IpAddr> {
 #[must_use]
 pub fn get_system_address(socket: &std::net::UdpSocket) -> Option<std::net::SocketAddr> {
     socket.local_addr().ok()
+}
+
+#[cfg(test)]
+mod sender_dictionary_tests {
+ use super::*;
+
+ fn addr(binary: u32, port: u16) -> SystemAddress {
+ SystemAddress { family: 2, port, binary, debug_port: port, system_index: 0 }
+ }
+
+ #[test]
+ fn broadcast_writes_zero_byte() {
+ // IDA 0xb08ac8..0xb08b7e: all-ones address writes one 0 byte.
+ let mut dict = SenderDictionary::new();
+ let mut stream = BitStream::new();
+ assert_eq!(dict.send(&mut stream, &addr(u32::MAX, 0xFFFF)), 0);
+ let mut read = BitStream::from_bytes(&stream.into_bytes());
+ assert_eq!(read.read_u8(), Some(0));
+ assert_eq!(dict.ids.len(), 0);
+ }
+
+ #[test]
+ fn new_then_known_address() {
+ // IDA 0xb08afa..0xb08b62: new address writes id|0x80 plus the full
+ // address and returns the advanced counter; repeats write the id.
+ let mut dict = SenderDictionary::new();
+ let a = addr(0x01020304, 1234);
+ let mut first = BitStream::new();
+ assert_eq!(dict.send(&mut first, &a), 2);
+ let mut read = BitStream::from_bytes(&first.into_bytes());
+ assert_eq!(read.read_u8(), Some(0x81));
+ assert_eq!(read.read_u32(), Some(0x01020304));
+ assert_eq!(read.read_u16(), Some(1234));
+ let mut second = BitStream::new();
+ assert_eq!(dict.send(&mut second, &a), 0);
+ let mut read = BitStream::from_bytes(&second.into_bytes());
+ assert_eq!(read.read_u8(), Some(1));
+ }
+
+ #[test]
+ fn counter_wraps_at_127() {
+ // IDA 0xb08b5c: `counter % 127 + 1` keeps ids in 1..=127.
+ let mut dict = SenderDictionary::new();
+ dict.next_id = 127;
+ let mut stream = BitStream::new();
+ assert_eq!(dict.send(&mut stream, &addr(1, 1)), 1);
+ assert_eq!(dict.next_id, 1);
+ }
 }
