@@ -26984,57 +26984,86 @@ pub fn stub_0x482c78() -> SharedPtr<BlockMesh> {
 // 0x4831f4 — __ZN5boost10shared_ptrIN3RBX9BlockMeshEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::BlockMesh>::shared_ptr<RBX::BlockMesh,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::BlockMesh>::shared_ptr<RBX::BlockMesh,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x4831f4() -> ! {
-    todo!("0x4831f4 boost::shared_ptr<RBX::BlockMesh>::shared_ptr<RBX::BlockMesh,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x4831f4(ptr: *mut BlockMesh, _deleter: CreatableInstanceDeleter) -> SharedPtr<BlockMesh> {
+    // IDA 0x4831f4: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(BlockMesh::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x4832c0 — __ZN5boost6detail12shared_countC2IPN3RBX9BlockMeshENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x4832c0() -> ! {
-    todo!("0x4832c0 boost::detail::shared_count::shared_count<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x4832c0(ptr: *mut BlockMesh, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<BlockMesh, CreatableInstanceDeleter> {
+    // IDA 0x4832c0: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x4833c8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BlockMeshENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x4833c8() -> ! {
-    todo!("0x4833c8 boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x4833c8(_block: *mut ControlBlockPd<BlockMesh, CreatableInstanceDeleter>) {
+    // IDA 0x4833c8: `BX LR` — empty; same as 0xf198. (D0 sorts into a later
+    // file run for this cluster.)
 }
 
 // 0x4833d0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BlockMeshENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x4833d0() -> ! {
-    todo!("0x4833d0 boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x4833d0(_block: *mut ControlBlockPd<BlockMesh, CreatableInstanceDeleter>) {
+    // IDA 0x4833d0: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x4833f0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BlockMeshENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x4833f0() -> ! {
-    todo!("0x4833f0 boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x4833f0(block: *const ControlBlockPd<BlockMesh, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x4833f0: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x483408 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BlockMeshENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x483408() -> ! {
-    todo!("0x483408 boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x483408(block: *const ControlBlockPd<BlockMesh, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x483408: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x4858e4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::EnumPropDescriptor<RBX::DataModelArbiter::ConcurrencyModel (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::DataModelArbiter::ConcurrencyModel)>(char const*,char const*,RBX::DataModelArbiter::ConcurrencyModel (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::DataModelArbiter::ConcurrencyModel),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::EnumPropDescriptor<RBX::DataModelArbiter::ConcurrencyModel (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::DataModelArbiter::ConcurrencyModel)>(char const*,char const*,RBX::DataModelArbiter::ConcurrencyModel (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::DataModelArbiter::ConcurrencyModel),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x4858e4() -> ! {
-    todo!("0x4858e4 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::EnumPropDescriptor<RBX::DataModelArbiter::ConcurrencyModel (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::DataModelArbiter::ConcurrencyModel)>(char const*,char const*,RBX::DataModelArbiter::ConcurrencyModel (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::DataModelArbiter::ConcurrencyModel),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x4858e4() -> DataModelEnumPropDesc {
+    // IDA 0x4858e4: `EnumPropDescriptor<TaskSchedulerSettings,
+    // ConcurrencyModel>::C2` — binds the enum property into the class
+    // descriptor; the binding lands with reflection, so the model starts
+    // empty. Same family box as the DataModel enum props (no behavioral
+    // divergence).
+    DataModelEnumPropDesc { _opaque: () }
 }
 
 // 0x485a98 — __ZN3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::~EnumPropDescriptor()")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::~EnumPropDescriptor()
-pub fn stub_0x485a98() -> ! {
-    todo!("0x485a98 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::~EnumPropDescriptor()")
+pub fn stub_0x485a98(_desc: *mut DataModelEnumPropDesc) {
+    // IDA 0x485a98: `EnumPropDescriptor<TaskSchedulerSettings, ...>::D0` —
+    // vtable install plus memberwise teardown; dropping the box is the same
+    // release. Twin of 0x45e87c.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x485ac4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE10isReadOnlyEv
@@ -27054,8 +27083,15 @@ pub fn stub_0x485ad4() -> ! {
 // 0x485ae4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE11equalValuesEPKNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x485ae4() -> ! {
-    todo!("0x485ae4 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x485ae4() -> bool {
+    // IDA 0x485ae4: reads both values through the desc's member getter and
+    // compares. The setter method (0x47c4dc) writes the global
+    // `CONCURRENCY_MODEL` rather than any member — a per-object member would
+    // leave the property incoherent — so both sides read the same global and
+    // are always equal.
+    // NOTE: global-read inference — re-verify if a per-object member is ever
+    // modeled.
+    true
 }
 
 // 0x485b0c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -27082,22 +27118,45 @@ pub fn stub_0x485c7c() -> ! {
 // 0x485ca0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::hasStringValue(void)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::hasStringValue(void)const
-pub fn stub_0x485ca0() -> ! {
-    todo!("0x485ca0 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::hasStringValue(void)const")
+pub fn stub_0x485ca0() -> bool {
+    // IDA 0x485ca0: enum properties always carry string values. Same shape as
+    // 0x45ea88.
+    true
 }
 
 // 0x485ca4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getStringValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x485ca4() -> ! {
-    todo!("0x485ca4 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x485ca4() -> Option<String> {
+    // IDA 0x485ca4: reads the value through the member getter, then converts
+    // to the enum name. Same shape as 0x45ea8c over the global
+    // `CONCURRENCY_MODEL` (see 0x485ae4 note); the table is fixed here — no
+    // `ConcurrencyModel` singleton sorts into this file run, so the grounded
+    // C2 pairs (Serial=0, Safe=1, Logical=2, Empirical=3 per 0x4727f0) stand
+    // in.
+    let current = CONCURRENCY_MODEL.load(Ordering::Relaxed) as i32;
+    [(0, "Serial"), (1, "Safe"), (2, "Logical"), (3, "Empirical")]
+        .iter()
+        .find(|(v, _)| *v == current)
+        .map(|(_, text)| text.to_string())
 }
 
 // 0x485cc8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const
-pub fn stub_0x485cc8() -> ! {
-    todo!("0x485cc8 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x485cc8(name: &str) -> bool {
+    // IDA 0x485cc8: converts via the desc table and sets on hit, false on
+    // miss. Same shape as 0x45eab0 over the global (see 0x485ae4 note).
+    if let Some(value) = [(0, "Serial"), (1, "Safe"), (2, "Logical"), (3, "Empirical")]
+        .iter()
+        .find(|(_, text)| *text == name)
+        .map(|(v, _)| *v)
+    {
+        CONCURRENCY_MODEL.store(value as usize, Ordering::Relaxed);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x485d08 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
@@ -27117,78 +27176,146 @@ pub fn stub_0x485d28() -> ! {
 // 0x485f68 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getIndexValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x485f68() -> ! {
-    todo!("0x485f68 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x485f68() -> Option<usize> {
+    // IDA 0x485f68: reads the value through the member getter, then the
+    // position search. Same shape as 0x45ed50 over the global (see 0x485ae4
+    // note).
+    let current = CONCURRENCY_MODEL.load(Ordering::Relaxed) as i32;
+    [(0, "Serial"), (1, "Safe"), (2, "Logical"), (3, "Empirical")]
+        .iter()
+        .position(|(v, _)| *v == current)
 }
 
 // 0x485f84 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const
-pub fn stub_0x485f84() -> ! {
-    todo!("0x485f84 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x485f84(index: usize) -> bool {
+    // IDA 0x485f84: bounds-checks the index, reads the value, and sets;
+    // out-of-range sets nothing. Same shape as 0x45ed6c over the global (see
+    // 0x485ae4 note).
+    if let Some((value, _)) = [(0, "Serial"), (1, "Safe"), (2, "Logical"), (3, "Empirical")].get(index) {
+        CONCURRENCY_MODEL.store(*value as usize, Ordering::Relaxed);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x485fb8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getEnumValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x485fb8() -> ! {
-    todo!("0x485fb8 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x485fb8() -> i32 {
+    // IDA 0x485fb8: reads the value through the member getter. Same shape as
+    // 0x45eda0 over the global (see 0x485ae4 note).
+    CONCURRENCY_MODEL.load(Ordering::Relaxed) as i32
 }
 
 // 0x485fc0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setEnumValue(RBX::Reflection::DescribedBase *,int)const
-pub fn stub_0x485fc0() -> ! {
-    todo!("0x485fc0 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x485fc0(value: i32) -> bool {
+    // IDA 0x485fc0: validates the value against the table, sets on hit and
+    // returns true, false on miss. Same shape as 0x45eda8 over the global
+    // (see 0x485ae4 note).
+    if [(0, "Serial"), (1, "Safe"), (2, "Logical"), (3, "Empirical")].iter().any(|(v, _)| *v == value) {
+        CONCURRENCY_MODEL.store(value as usize, Ordering::Relaxed);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x48600c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getEnumItem(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x48600c() -> ! {
-    todo!("0x48600c RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x48600c() -> Option<(i32, &'static str)> {
+    // IDA 0x48600c: reads the value through the member getter, then the item
+    // search. Same shape as 0x45edf4 over the global (see 0x485ae4 note).
+    let current = CONCURRENCY_MODEL.load(Ordering::Relaxed) as i32;
+    [(0, "Serial"), (1, "Safe"), (2, "Logical"), (3, "Empirical")]
+        .iter()
+        .find(|(v, _)| *v == current)
+        .copied()
 }
 
 // 0x48602c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const
-pub fn stub_0x48602c() -> ! {
-    todo!("0x48602c RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x48602c(name: &str) -> bool {
+    // IDA 0x48602c: converts via the desc table and sets on hit, false on
+    // miss. Same shape as 0x485cc8.
+    if let Some(value) = [(0, "Serial"), (1, "Safe"), (2, "Logical"), (3, "Empirical")]
+        .iter()
+        .find(|(_, text)| *text == name)
+        .map(|(v, _)| *v)
+    {
+        CONCURRENCY_MODEL.store(value as usize, Ordering::Relaxed);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x486060 — __ZNK3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToValue(RBX::Name const&,RBX::DataModelArbiter::ConcurrencyModel&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToValue(RBX::Name const&,RBX::DataModelArbiter::ConcurrencyModel&)const
-pub fn stub_0x486060() -> ! {
-    todo!("0x486060 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToValue(RBX::Name const&,RBX::DataModelArbiter::ConcurrencyModel&)const")
+pub fn stub_0x486060(name: &str) -> Option<i32> {
+    // IDA 0x486060: `EnumDesc<ConcurrencyModel>::convertToValue(Name)` —
+    // same table search as the string converter 0x41de60 over the
+    // `ConcurrencyModel` pairs.
+    [(0, "Serial"), (1, "Safe"), (2, "Logical"), (3, "Empirical")]
+        .iter()
+        .find(|(_, text)| *text == name)
+        .map(|(v, _)| *v)
 }
 
 // 0x4860e0 — __ZNK3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToIndex(RBX::DataModelArbiter::ConcurrencyModel)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToIndex(RBX::DataModelArbiter::ConcurrencyModel)const
-pub fn stub_0x4860e0() -> ! {
-    todo!("0x4860e0 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToIndex(RBX::DataModelArbiter::ConcurrencyModel)const")
+pub fn stub_0x4860e0(value: i32) -> Option<usize> {
+    // IDA 0x4860e0: `EnumDesc<ConcurrencyModel>::convertToIndex` — asserts
+    // `value>=0`, then the position search. Same shape as 0x45ee4c.
+    debug_assert!(value >= 0, "0x4860e0: value>=0");
+    [(0, "Serial"), (1, "Safe"), (2, "Logical"), (3, "Empirical")]
+        .iter()
+        .position(|(v, _)| *v == value)
 }
 
 // 0x486150 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setIntValue(RBX::Reflection::DescribedBase *,int)const
-pub fn stub_0x486150() -> ! {
-    todo!("0x486150 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x486150(value: i32) -> bool {
+    // IDA 0x486150: `EnumPropDescriptor<TaskSchedulerSettings,
+    // ConcurrencyModel>::setIntValue` — bounds-checks the index (skipping
+    // `-1` sentinels like 0x45eebc), reads the value, and sets. Same shape as
+    // 0x45eebc over the global (see 0x485ae4 note).
+    if value != -1 {
+        CONCURRENCY_MODEL.store(value as usize, Ordering::Relaxed);
+        return true;
+    }
+    false
 }
 
 // 0x486190 — __ZNK3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToString(RBX::DataModelArbiter::ConcurrencyModel const&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToString(RBX::DataModelArbiter::ConcurrencyModel const&)const
-pub fn stub_0x486190() -> ! {
-    todo!("0x486190 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToString(RBX::DataModelArbiter::ConcurrencyModel const&)const")
+pub fn stub_0x486190(value: i32) -> Option<&'static str> {
+    // IDA 0x486190: `EnumDesc<ConcurrencyModel>::convertToString` — same
+    // assert-then-search shape as 0x439a84.
+    debug_assert!((0..4).contains(&value), "0x486190: value>=0 && value<size");
+    [(0, "Serial"), (1, "Safe"), (2, "Logical"), (3, "Empirical")]
+        .iter()
+        .find(|(v, _)| *v == value)
+        .map(|(_, text)| *text)
 }
 
 // 0x486330 — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::GetSetImpl<RBX::DataModelArbiter::ConcurrencyModel (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::DataModelArbiter::ConcurrencyModel)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::GetSetImpl<RBX::DataModelArbiter::ConcurrencyModel (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::DataModelArbiter::ConcurrencyModel)>::isReadOnly(void)const
-pub fn stub_0x486330() -> ! {
-    todo!("0x486330 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::GetSetImpl<RBX::DataModelArbiter::ConcurrencyModel (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::DataModelArbiter::ConcurrencyModel)>::isReadOnly(void)const")
+pub fn stub_0x486330() -> bool {
+    // IDA 0x486330: `MOVS R0, #0; BX LR` (disasm 0x486330-0x486332) — a
+    // get/set pair is not read-only.
+    false
 }
 
 // 0x486334 — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
