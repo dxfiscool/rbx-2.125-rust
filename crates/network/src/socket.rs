@@ -1122,6 +1122,9 @@ pub struct RakPeer {
  pub per_connection_bandwidth_limit: u32,
  /// Active flag backing `IsActive` (IDA 0xa6c4ec reads byte +4 == 0).
  pub active: bool,
+ /// User update-thread callback words at +1616/+1620 (IDA 0xa645b0).
+ pub user_update_thread: u32,
+ pub user_update_thread_data: u32,
 }
 
 impl RakPeer {
@@ -1935,7 +1938,441 @@ push(at_head);
  /// `RakPeer::RemoteSystemStruct::RemoteSystemStruct` (IDA 0xa6d194):
  /// member init stays engine-side.
  pub fn init_remote_system() {}
+ /// `RakPeer::SetUserUpdateThread` (IDA 0xa645b0): stores the two
+ /// callback words.
+ pub fn set_user_update_thread(&mut self, callback: u32, data: u32) {
+ self.user_update_thread = callback;
+ self.user_update_thread_data = data;
+ }
+ /// `RakNet::RakPeer::Connect` result codes (IDA 0xa5f3d8): started,
+ /// bad parameter, unresolvable host, already connected, or a queued
+ /// duplicate.
+ pub const CONNECT_STARTED: u32 = 0;
+ pub const CONNECT_INVALID_PARAMETER: u32 = 1;
+ pub const CONNECT_CANNOT_RESOLVE: u32 = 2;
+ pub const CONNECT_ALREADY_CONNECTED: u32 = 3;
+ pub const CONNECT_ALREADY_IN_PROGRESS: u32 = 4;
+ /// `RakPeer::Connect` (IDA 0xa5f3d8): a missing host, a halted peer
+ /// (+4), or a socket index past the socket count reports 1; the
+ /// 0xa5f404 socket-index scan falls through either way, so the valid
+ /// case forwards to `send_request` and returns its code.
+ pub fn connect(host: Option<&str>, halted: bool, socket_count: usize, socket_index: usize, send_request: &mut dyn FnMut() -> u32) -> u32 {
+ if host.is_none() || halted || socket_index >= socket_count {
+ return Self::CONNECT_INVALID_PARAMETER;
+ }
+ send_request()
+ }
+ /// Password byte cap shared by the connect paths (IDA 0xa5f7c6): at
+ /// most 255 bytes, and none without data.
+ pub fn capped_password_len(password: Option<&[u8]>) -> usize {
+ password.map_or(0, |p| p.len().min(255))
+ }
+ /// `RakNet::RakPeer::SendConnectionRequest` queue gate (IDA
+ /// 0xa5f460/0xa5f8cc): an unresolvable host reports 2, an active
+ /// remote match reports 3, a queued duplicate reports 4, else the
+ /// request is enqueued and 0 reports started.
+ pub fn queue_connection_request(addr: Option<SystemAddress>, connected_active: bool, queued: &[SystemAddress], mut request: RequestedConnection, enqueue: &mut dyn FnMut(RequestedConnection)) -> u32 {
+ let Some(addr) = addr else { return Self::CONNECT_CANNOT_RESOLVE; };
+ request.addr = addr;
+ if connected_active {
+ return Self::CONNECT_ALREADY_CONNECTED;
+ }
+ if queued.iter().any(|q| *q == addr) {
+ return Self::CONNECT_ALREADY_IN_PROGRESS;
+ }
+ enqueue(request);
+ Self::CONNECT_STARTED
+ }
+ /// `RakNet::RakPeer::ConnectWithSocket` (IDA 0xa5f754): a missing
+ /// host, a halted peer, or no socket reports 1; else the capped
+ /// password goes out with the send and the socket ref is released.
+ pub fn connect_with_socket(host: Option<&str>, halted: bool, has_socket: bool, password: Option<&[u8]>, request: RequestedConnection, queued: &[SystemAddress], connected_active: bool, resolve: &mut dyn FnMut(&str) -> Option<SystemAddress>, enqueue: &mut dyn FnMut(RequestedConnection), release_socket: &mut dyn FnMut()) -> u32 {
+ if host.is_none() || halted || !has_socket {
+ return Self::CONNECT_INVALID_PARAMETER;
+ }
+ let mut request = request;
+ request.password_len = Self::capped_password_len(password);
+ let rc = Self::queue_connection_request(host.and_then(|h| resolve(h)), connected_active, queued, request, enqueue);
+ release_socket();
+ rc
+ }
+ /// `RakNet::RakPeer::NotifyAndFlagForShutdown` (IDA 0xa60494): an
+ /// ID_DISCONNECTION_NOTIFICATION (21) byte goes out immediate (plus
+ /// the remote-slot flag) or buffered.
+ pub fn notify_and_flag_for_shutdown(immediate: bool, send: &mut dyn FnMut(u8, bool), flag_remote: &mut dyn FnMut()) {
+ if immediate {
+ send(21, true);
+ flag_remote();
+ } else {
+ send(21, false);
+ }
+ }
+ /// `RakNet::RakPeer::Send` routing (IDA 0xa60af8/0xa60f00):
+ /// broadcasts and foreign targets buffer, the peer's own addresses loop
+ /// back locally, and an unroutable (unassigned) target drops to none.
+ pub fn send_route(broadcast: bool, guid: Option<u64>, own_guid: u64, addr: &SystemAddress, unassigned: &SystemAddress, locals: &[SystemAddress], bound: &SystemAddress) -> Option<SendTarget> {
+ if broadcast {
+ return Some(SendTarget::Broadcast);
+ }
+ if let Some(g) = guid {
+ if g != own_guid {
+ return Some(SendTarget::Remote);
+ }
+ } else {
+ if addr == unassigned {
+ return None;
+ }
+ if locals.iter().any(|l| l == addr) {
+ return Some(SendTarget::Loopback);
+ }
+ if addr != bound {
+ return Some(SendTarget::Remote);
+ }
+ }
+ Some(SendTarget::Loopback)
+ }
+ /// overload (IDA 0xa60f00): missing data, a halted peer, or an
+ /// unroutable target reports 0; else the routed write goes out under
+ /// the override receipt (or the next one) with a receipt echo on
+ /// loopback sends of priority >= 5.
+ pub fn send_packet(data: Option<&[u8]>, peer_ready: bool, receipt_override: Option<u32>, next_receipt: &mut dyn FnMut() -> u32, route: Option<SendTarget>, priority: u8, dispatch: &mut dyn FnMut(SendTarget, &[u8], u32, Option<u32>)) -> u32 {
+ let Some(data) = data else { return 0; };
+ let Some(route) = route else { return 0; };
+ if !peer_ready {
+ return 0;
+ }
+ let receipt = receipt_override.unwrap_or_else(|| next_receipt());
+ let echo = (route == SendTarget::Loopback && priority >= 5).then_some(receipt);
+ dispatch(route, data, receipt, echo);
+ receipt
+ }
+ /// `RakNet::RakPeer::SendBuffered` (IDA 0xa60cac): pool-allocates a
+ /// send command, copies `(bits + 7) / 8` bytes, queues it, and kicks
+ /// the update event for priority 0.
+ pub fn send_buffered(data: &[u8], bit_len: u32, priority: u8, reliability: u8, channel: u8, guid: u64, addr: SystemAddress, broadcast: bool, mode: u32, receipt: u64, enqueue: &mut dyn FnMut(BufferedCommand), signal: &mut dyn FnMut()) {
+ let bytes = ((bit_len as usize) + 7) / 8;
+ let mut buf = vec![0u8; bytes];
+ let n = bytes.min(data.len());
+ buf[..n].copy_from_slice(&data[..n]);
+ enqueue(BufferedCommand { kind: BufferedCommandKind::Send, bit_len, priority, reliability, channel, broadcast, receipt, guid, addr, data: buf, mode });
+ if priority == 0 {
+ signal();
+ }
+ }
+ /// `RakNet::RakPeer::SendList` (IDA 0xa610c4): an empty list, a
+ /// halted peer, or an unroutable target reports 0; else the parts go
+ /// to `SendBufferedList` under the override receipt (or the next one).
+ pub fn send_list(parts: &[&[u8]], peer_ready: bool, target_valid: bool, receipt_override: Option<u32>, next_receipt: &mut dyn FnMut() -> u32, buffered_list: &mut dyn FnMut(&[&[u8]], u32)) -> u32 {
+ if parts.is_empty() || !peer_ready || !target_valid {
+ return 0;
+ }
+ let receipt = receipt_override.unwrap_or_else(|| next_receipt());
+ buffered_list(parts, receipt);
+ receipt
+ }
+ /// `RakNet::RakPeer::SendBufferedList` (IDA 0xa611b8): concatenates
+ /// the parts (an empty total is dropped); loopback targets bypass the
+ /// queue while the rest queue a send command, kicking the update
+ /// event for priority 0.
+ pub fn send_buffered_list(parts: &[&[u8]], route: SendTarget, priority: u8, reliability: u8, channel: u8, guid: u64, addr: SystemAddress, broadcast: bool, mode: u32, receipt: u64, enqueue: &mut dyn FnMut(BufferedCommand), loopback: &mut dyn FnMut(Vec<u8>), signal: &mut dyn FnMut()) {
+ let total: usize = parts.iter().map(|p| p.len()).sum();
+ if parts.is_empty() || total == 0 {
+ return;
+ }
+ let mut buf = Vec::with_capacity(total);
+ for p in parts {
+ buf.extend_from_slice(p);
+ }
+ if route == SendTarget::Loopback {
+ loopback(buf);
+ return;
+ }
+ enqueue(BufferedCommand { kind: BufferedCommandKind::Send, bit_len: (total * 8) as u32, priority, reliability, channel, broadcast, receipt, guid, addr, data: buf, mode });
+ if priority == 0 {
+ signal();
+ }
+ }
+ /// `RakNet::RakPeer::ShiftIncomingTimestamp` (IDA 0xa61520): reads
+ /// the leading timestamp and re-bases it by the lowest live ping
+ /// sample (slots read `0xFFFF` are skipped); an unknown remote leaves
+ /// the stamp alone.
+ pub fn shift_incoming_timestamp(stamp: u64, ping_samples: &[u16]) -> u64 {
+ let floor = ping_samples.iter().take(5).filter(|s| **s != 0xFFFF).min().copied().unwrap_or(0);
+ stamp.wrapping_sub(u64::from(floor))
+ }
+ /// `RakNet::RakPeer::CallPluginCallbacks` slot select (IDA 0xa61698):
+ /// disconnect-family ids run the +40 hook, 0x10/0x13 the +36 hook,
+ /// 0x15/0x16 the +32 hook; anything else skips the plugins.
+ pub fn plugin_callback_slot(message_id: u8) -> Option<u32> {
+ match message_id {
+ 0x0A | 0x0B | 0x0C | 0x11 | 0x12 | 0x14 | 0x17 | 0x18 | 0x19 | 0x1A => Some(40),
+ 0x10 | 0x13 => Some(36),
+ 0x15 | 0x16 => Some(32),
+ _ => None,
+ }
+ }
+ /// `RakNet::RakPeer::CallPluginCallbacks` (IDA 0xa61698): invokes
+ /// `call` per plugin with the slot for the message id.
+ pub fn call_plugin_callbacks(message_id: u8, plugin_count: usize, call: &mut dyn FnMut(usize, u32)) -> usize {
+ let Some(slot) = Self::plugin_callback_slot(message_id) else { return plugin_count; };
+ for i in 0..plugin_count {
+ call(i, slot);
+ }
+ plugin_count
+ }
+ /// `RakNet::RakPeer::CloseConnection` (IDA 0xa6188c): closes first;
+ /// the local disconnect packet (byte 22) is queued only when no
+ /// remote notify was asked for and the slot still reads connected.
+ pub fn close_connection(send_notification: bool, remote_connected: bool, close_internal: &mut dyn FnMut(bool), push_packet: &mut dyn FnMut(u8)) {
+ close_internal(send_notification);
+ if !send_notification && remote_connected {
+ push_packet(22);
+ }
+ }
+ /// `RakNet::RakPeer::CloseConnectionInternal` (IDA 0xa61a8c): a bad
+ /// target or a halted peer is a no-op; notify runs the immediate
+ /// path, an immediate close tears the slot down, else a close
+ /// command is queued.
+ pub fn close_connection_internal(target_valid: bool, peer_ready: bool, notify: bool, immediate: bool, addr: SystemAddress, channel: u8, priority: u8, notify_now: &mut dyn FnMut(), drop_now: &mut dyn FnMut(), queue_close: &mut dyn FnMut(BufferedCommand)) {
+ if !target_valid || !peer_ready {
+ return;
+ }
+ if notify {
+ notify_now();
+ } else if immediate {
+ drop_now();
+ } else {
+ queue_close(BufferedCommand { kind: BufferedCommandKind::Close, addr, channel, priority, ..BufferedCommand::default() });
+ }
+ }
+ /// `RakNet::RakPeer::GetSystemList` (IDA 0xa624a4): the addresses
+ /// and guids of active slots in state 7.
+ pub fn system_list(remotes: &[(SystemAddress, u64, bool, u32)]) -> (Vec<SystemAddress>, Vec<u64>) {
+ let mut addrs = Vec::new();
+ let mut guids = Vec::new();
+ for (addr, guid, active, state) in remotes {
+ if *active && *state == 7 {
+ addrs.push(*addr);
+ guids.push(*guid);
+ }
+ }
+ (addrs, guids)
+ }
+ /// `RakNet::RakPeer::GetRemoteSystemFromSystemAddress` (IDA 0xa63140):
+ /// unassigned never matches; an active hit wins, else the first
+ /// inactive hit unless `active_only`. The hashed-vs-linear strategy
+ /// split stays engine-side.
+ pub fn remote_system_from_address(remotes: &[(SystemAddress, bool)], addr: &SystemAddress, unassigned: &SystemAddress, active_only: bool) -> Option<usize> {
+ if addr == unassigned {
+ return None;
+ }
+ let mut inactive = None;
+ for (i, (a, active)) in remotes.iter().enumerate() {
+ if a == addr {
+ if *active {
+ return Some(i);
+ }
+ if inactive.is_none() {
+ inactive = Some(i);
+ }
+ }
+ }
+ if active_only { None } else { inactive }
+ }
+ /// `RakNet::RakPeer::GetClientPublicKeyFromSystemAddress` (IDA
+ /// 0xa63750): hardcoded 0, security is compiled out.
+ pub fn client_public_key() -> u32 {
+ 0
+ }
+ /// `RakNet::RakPeer::AdvertiseSystem` packet (IDA 0xa63ab0): the ID
+ /// 29 byte plus the aligned payload; the send itself stays
+ /// engine-side behind `send`.
+ pub fn advertise_packet(data: &[u8]) -> Vec<u8> {
+ let mut out = Vec::with_capacity(1 + data.len());
+ out.push(29);
+ out.extend_from_slice(data);
+ out
+ }
+ /// `RakNet::RakPeer::GetSocket` query (IDA 0xa6410c): queues a
+ /// kind-2 command, then spins up to +1000ms on the socket-query
+ /// output for the first socket; a halted peer or a timeout reports
+ /// none.
+ pub fn query_socket(addr: SystemAddress, enqueue: &mut dyn FnMut(BufferedCommand), now_ms: &mut dyn FnMut() -> u32, sleep: &mut dyn FnMut(), poll: &mut dyn FnMut() -> Option<u32>, halted: &mut dyn FnMut() -> bool) -> Option<u32> {
+ enqueue(BufferedCommand { kind: BufferedCommandKind::QuerySocket, addr, ..BufferedCommand::default() });
+ let deadline = now_ms().wrapping_add(1000);
+ loop {
+ if now_ms() >= deadline || halted() {
+ return None;
+ }
+ sleep();
+ if let Some(sock) = poll() {
+ return Some(sock);
+ }
+ }
+ }
+ /// `RakNet::RakPeer::GetSockets` (IDA 0xa643c8): clears the out
+ /// list, queues a kind-2 command, and takes the first socket-query
+ /// output while the peer stays up.
+ pub fn get_sockets(queue_query: &mut dyn FnMut(), alive: &mut dyn FnMut() -> bool, sleep: &mut dyn FnMut(), poll: &mut dyn FnMut() -> Option<Vec<u32>>) -> Vec<u32> {
+ queue_query();
+ while alive() {
+ sleep();
+ if let Some(sockets) = poll() {
+ return sockets;
+ }
+ }
+ Vec::new()
+ }
+ /// `RakNet::RakPeer::ReleaseSockets` (IDA 0xa64540): deletes the
+ /// array and zeroes the list.
+ pub fn release_socket_list(sockets: &mut Vec<u32>) {
+ *sockets = Vec::new();
+ }
+ /// `RakNet::RakPeer::SendOutOfBand` (IDA 0xa645bc): the offline
+ /// header plus payload goes through the indexed socket after the
+ /// direct-send plugin hooks; 1 on send.
+ pub fn send_out_of_band(host: Option<&str>, peer_active: bool, socket_found: bool, header: &[u8], data: &[u8], notify_plugins: &mut dyn FnMut(), send_to: &mut dyn FnMut(&[u8])) -> u32 {
+ let Some(host) = host else { return 0; };
+ if host.is_empty() || !peer_active || !socket_found {
+ return 0;
+ }
+ notify_plugins();
+ let mut packet = Vec::with_capacity(header.len() + data.len());
+ packet.extend_from_slice(header);
+ packet.extend_from_slice(data);
+ send_to(&packet);
+ 1
+ }
+ /// `RakNet::RakPeer::ParseConnectionRequestPacket` (IDA 0xa64be8):
+ /// skips the message id, reads the guid plus receipt plus the
+ /// password tail; an exact password match accepts (state 5) through
+ /// `OnConnectionRequest`, else a refusal goes out (state 2). The
+ /// parsed guid is unused downstream.
+ pub fn parse_connection_request_packet(packet: &[u8], incoming_password: &[u8], on_accept: &mut dyn FnMut(u64), on_refuse: &mut dyn FnMut()) -> u32 {
+ let mut ok = false;
+ let mut receipt = 0u64;
+ if packet.len() >= 18 {
+ let len = packet[17] as usize;
+ if packet.len() >= 18 + len {
+ let mut bytes = [0u8; 8];
+ bytes.copy_from_slice(&packet[9..17]);
+ receipt = u64::from_be_bytes(bytes);
+ ok = incoming_password == &packet[18..18 + len];
+ }
+ }
+ if ok {
+ on_accept(receipt);
+ 5
+ } else {
+ on_refuse();
+ 2
+ }
+ }
+ /// `RakNet::RakPeer::SendImmediate` target select (IDA 0xa64e48): a
+ /// direct send needs the resolved slot active and in state 1..=3; a
+ /// broadcast collects every other active assigned slot (every slot
+ /// when nothing resolves).
+ pub fn send_immediate_targets(broadcast: bool, target: Option<usize>, assigned: &[bool], slot_active: &[bool], slot_state: &[u32]) -> Vec<usize> {
+ if !broadcast {
+ return match target {
+ Some(i) if slot_active.get(i) == Some(&true) && slot_state.get(i).map_or(false, |s| (1..=3).contains(s)) => vec![i],
+ _ => Vec::new(),
+ };
+ }
+ assigned.iter().enumerate().filter(|(i, a)| **a && slot_active.get(*i) == Some(&true) && Some(*i) != target).map(|(i, _)| i).collect()
+ }
+ /// `RakNet::ReliabilityLayer` timeout-stamp predicate (IDA 0xa64fd8):
+ /// the reliable/sequenced/ack flavors stamp the slot send time.
+ pub fn send_immediate_resets_timeout(reliability: u8) -> bool {
+ reliability == 6 || (2..=4).contains(&reliability) || reliability == 7
+ }
+ /// `RakNet::RakPeer::SendImmediate` fan-out (IDA 0xa64e48): one
+ /// reliability write per target with the receipt flag on the final
+ /// write and the timeout stamp on reliable flavors; true when
+ /// anything went out.
+ pub fn send_immediate(targets: &[usize], reliability: u8, stamp_us: u64, send: &mut dyn FnMut(usize, bool, Option<u32>)) -> bool {
+ if targets.is_empty() {
+ return false;
+ }
+ let stamp = Self::send_immediate_resets_timeout(reliability).then_some((stamp_us / 1000) as u32);
+ let last = targets.len() - 1;
+ for (n, t) in targets.iter().enumerate() {
+ send(*t, n == last, stamp);
+ }
+ true
+ }
+ /// `RakNet::RakPeer::OnConnectionRequest` reply (IDA 0xa651fc): the
+ /// ID_CONNECTION_REQUEST_ACCEPTED (16) packet — version plus the
+ /// complemented address and network-order port per IPv4 entry, the
+ /// slot index, our guid, and the send time — for `SendImmediate`.
+ pub fn connection_request_accepted_packet(index: u16, remote: &SystemAddress, locals: &[SystemAddress], guid: u64, time_us: u64) -> Vec<u8> {
+ fn write_entry(stream: &mut crate::bitstream::BitStream, addr: &SystemAddress) {
+ stream.write_u8(addr.ip_version() as u8);
+ if addr.ip_version() == 4 {
+ stream.write_u32(!addr.binary_address());
+ stream.write_u16(addr.port_network_order());
+ }
+ }
+ let mut stream = crate::bitstream::BitStream::new();
+ stream.write_u8(16);
+ write_entry(&mut stream, remote);
+ stream.write_u16(index);
+ for i in 0..10 {
+ write_entry(&mut stream, locals.get(i).copied().as_ref().unwrap_or(remote));
+ }
+ stream.write_u64(guid);
+ stream.write_u64(time_us);
+ stream.into_bytes()
+ }
 }
+ /// `RakNet::RakPeer::BufferedCommandStruct` command word at +100
+ /// (IDA 0xa61d98 close, 0xa63fc8 address-change, 0xa641cc
+ /// socket-query): what the queued write asks the update loop for.
+ #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+ pub enum BufferedCommandKind {
+ #[default]
+ Send,
+ Close,
+ QuerySocket,
+ ChangeAddress,
+ }
+ /// `RakNet::RakPeer::BufferedCommandStruct` (IDA 0xa60cac): a queued
+ /// peer write with its reliability framing and target.
+ #[derive(Clone, Debug, Default)]
+ pub struct BufferedCommand {
+ pub kind: BufferedCommandKind,
+ pub bit_len: u32,
+ pub priority: u8,
+ pub reliability: u8,
+ pub channel: u8,
+ pub broadcast: bool,
+ pub receipt: u64,
+ pub guid: u64,
+ pub addr: SystemAddress,
+ pub data: Vec<u8>,
+ pub mode: u32,
+ }
+ /// `RakNet::RakPeer::RequestedConnectionStruct` (IDA 0xa5f460): a
+ /// queued connection attempt; the password is capped at 255 bytes
+ /// (IDA 0xa5f7c6).
+ #[derive(Clone, Debug, Default)]
+ pub struct RequestedConnection {
+ pub addr: SystemAddress,
+ pub password_len: usize,
+ pub socket_index: u32,
+ pub send_count: u32,
+ pub timeout_ms: u32,
+ pub extra_timeout_ms: u32,
+ pub use_socket: bool,
+ }
+ /// `RakNet::RakPeer::Send` routing verdict (IDA 0xa60af8/0xa60f00).
+ #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+ pub enum SendTarget {
+ #[default]
+ Remote,
+ Broadcast,
+ Loopback,
+ }
 
 /// `RakNet::RakString::IPAddressMatch` (IDA 0xa6f1ac): walks both
 /// strings while equal; a `*` in the pattern at the first difference

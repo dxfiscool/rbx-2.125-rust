@@ -489,3 +489,4 @@ pub mod functor;
 pub mod signal;
 pub mod player;
 pub mod replicator;
+pub mod http;

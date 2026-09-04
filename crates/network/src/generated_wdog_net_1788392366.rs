@@ -15,8 +15,9 @@ const _: () = {
 // type: void __fastcall(RBX::Http *__hidden this)
 #[doc(alias = "RBX::Http::~Http()")]
 #[doc(alias = "__ZN3RBX4HttpD2Ev")]
-pub fn stub_a51fe4() -> ! {
-    todo!("0xa51fe4 RBX::Http::~Http()")
+pub fn stub_a51fe4(http: crate::http::Http) {
+ // IDA 0xa51fe4: header map erased, three strings released.
+ http.destroy();
 }
 
 // 0xa5c12c — __ZNK6RakNet13SystemAddressneERKS0_
@@ -302,32 +303,41 @@ pub fn stub_a5f3a4(peer: &crate::socket::RakPeer, out: Option<&mut Vec<u8>>, len
 // type: int __fastcall(int, int, int, int, int, int, unsigned int)
 #[doc(alias = "RakNet::RakPeer::Connect(char const*,unsigned short,char const*,int,RakNet::PublicKey *,unsigned int,unsigned int,unsigned int,unsigned int)")]
 #[doc(alias = "__ZN6RakNet7RakPeer7ConnectEPKctS2_iPNS_9PublicKeyEjjjj")]
-pub fn stub_a5f3d8() -> ! {
-    todo!("0xa5f3d8 RakNet::RakPeer::Connect(char const*,unsigned short,char const*,int,RakNet::PublicKey *,unsigned int,unsigned int,unsigned int,unsigned int)")
+pub fn stub_a5f3d8(host: Option<&str>, halted: bool, socket_count: usize, socket_index: usize, send_request: &mut dyn FnMut() -> u32) -> u32 {
+ // IDA 0xa5f3d8: gate, then forward to SendConnectionRequest.
+ crate::socket::RakPeer::connect(host, halted, socket_count, socket_index, send_request)
 }
 
 // 0xa5f460 — __ZN6RakNet7RakPeer21SendConnectionRequestEPKctS2_iPNS_9PublicKeyEjjjjj
 // type: int __fastcall(int, const char *, unsigned int, const void *, size_t, int, int, int, int, int, int)
 #[doc(alias = "RakNet::RakPeer::SendConnectionRequest(char const*,unsigned short,char const*,int,RakNet::PublicKey *,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int)")]
 #[doc(alias = "__ZN6RakNet7RakPeer21SendConnectionRequestEPKctS2_iPNS_9PublicKeyEjjjjj")]
-pub fn stub_a5f460() -> ! {
-    todo!("0xa5f460 RakNet::RakPeer::SendConnectionRequest(char const*,unsigned short,char const*,int,RakNet::PublicKey *,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int)")
+pub fn stub_a5f460(host: &str, ip_version: u32, password: Option<&[u8]>, socket_index: u32, send_count: u32, timeout_ms: u32, extra_timeout_ms: u32, resolve: &mut dyn FnMut(&str, u32) -> Option<crate::socket::SystemAddress>, connected_active: bool, queued: &[crate::socket::SystemAddress], enqueue: &mut dyn FnMut(crate::socket::RequestedConnection)) -> u32 {
+ // IDA 0xa5f460: resolve with the socket's IP version, then queue unless
+ // already connected or already queued.
+ let addr = resolve(host, ip_version);
+ crate::socket::RakPeer::queue_connection_request(addr, connected_active, queued, crate::socket::RequestedConnection { password_len: crate::socket::RakPeer::capped_password_len(password), socket_index, send_count, timeout_ms, extra_timeout_ms, use_socket: false, ..crate::socket::RequestedConnection::default() }, enqueue)
 }
 
 // 0xa5f754 — __ZN6RakNet7RakPeer17ConnectWithSocketEPKctS2_iNS_14RakNetSmartPtrINS_12RakNetSocketEEEPNS_9PublicKeyEjjj
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, void *, void *, RakNet::RakNetSocket *, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RakNet::RakPeer::ConnectWithSocket(char const*,unsigned short,char const*,int,RakNet::RakNetSmartPtr<RakNet::RakNetSocket>,RakNet::PublicKey *,unsigned int,unsigned int,unsigned int)")]
 #[doc(alias = "__ZN6RakNet7RakPeer17ConnectWithSocketEPKctS2_iNS_14RakNetSmartPtrINS_12RakNetSocketEEEPNS_9PublicKeyEjjj")]
-pub fn stub_a5f754() -> ! {
-    todo!("0xa5f754 RakNet::RakPeer::ConnectWithSocket(char const*,unsigned short,char const*,int,RakNet::RakNetSmartPtr<RakNet::RakNetSocket>,RakNet::PublicKey *,unsigned int,unsigned int,unsigned int)")
+pub fn stub_a5f754(host: Option<&str>, halted: bool, password: Option<&[u8]>, socket: Option<u32>, socket_index: u32, send_count: u32, timeout_ms: u32, extra_timeout_ms: u32, resolve: &mut dyn FnMut(&str) -> Option<crate::socket::SystemAddress>, connected_active: bool, queued: &[crate::socket::SystemAddress], enqueue: &mut dyn FnMut(crate::socket::RequestedConnection), release_socket: &mut dyn FnMut()) -> u32 {
+ // IDA 0xa5f754: missing host/halt/socket reports 1; the capped password
+ // goes out with the bound socket and the socket ref is released.
+ crate::socket::RakPeer::connect_with_socket(host, halted, socket.is_some(), password, crate::socket::RequestedConnection { socket_index, send_count, timeout_ms, extra_timeout_ms, use_socket: true, ..crate::socket::RequestedConnection::default() }, queued, connected_active, resolve, enqueue, release_socket)
 }
 
 // 0xa5f8cc — __ZN6RakNet7RakPeer21SendConnectionRequestEPKctS2_iPNS_9PublicKeyEjjjjjNS_14RakNetSmartPtrINS_12RakNetSocketEEE
 // type: int __fastcall(int, const char *, unsigned int, const void *, size_t, int, int, int, int, int, int, _DWORD *)
 #[doc(alias = "RakNet::RakPeer::SendConnectionRequest(char const*,unsigned short,char const*,int,RakNet::PublicKey *,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,RakNet::RakNetSmartPtr<RakNet::RakNetSocket>)")]
 #[doc(alias = "__ZN6RakNet7RakPeer21SendConnectionRequestEPKctS2_iPNS_9PublicKeyEjjjjjNS_14RakNetSmartPtrINS_12RakNetSocketEEE")]
-pub fn stub_a5f8cc() -> ! {
-    todo!("0xa5f8cc RakNet::RakPeer::SendConnectionRequest(char const*,unsigned short,char const*,int,RakNet::PublicKey *,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,RakNet::RakNetSmartPtr<RakNet::RakNetSocket>)")
+pub fn stub_a5f8cc(host: &str, password: Option<&[u8]>, socket: Option<u32>, socket_index: u32, send_count: u32, timeout_ms: u32, extra_timeout_ms: u32, resolve: &mut dyn FnMut(&str) -> Option<crate::socket::SystemAddress>, connected_active: bool, queued: &[crate::socket::SystemAddress], enqueue: &mut dyn FnMut(crate::socket::RequestedConnection)) -> u32 {
+ // IDA 0xa5f8cc: version-0 resolve with the bound socket attached, then
+ // the shared queue gate (dupes report 4).
+ let addr = resolve(host);
+ crate::socket::RakPeer::queue_connection_request(addr, connected_active, queued, crate::socket::RequestedConnection { password_len: crate::socket::RakPeer::capped_password_len(password), socket_index, send_count, timeout_ms, extra_timeout_ms, use_socket: socket.is_some(), ..crate::socket::RequestedConnection::default() }, enqueue)
 }
 
 // 0xa5fc00 — __ZN6RakNet7RakPeer8ShutdownEjh14PacketPriority
@@ -343,8 +353,9 @@ pub fn stub_a5fc00(peer: &mut crate::socket::RakPeer, block_ms: u32, notify: &mu
 // type: int __fastcall(int, int, int, int, int, int, int, char, int)
 #[doc(alias = "RakNet::RakPeer::NotifyAndFlagForShutdown(RakNet::SystemAddress,bool,unsigned char,PacketPriority)")]
 #[doc(alias = "__ZN6RakNet7RakPeer24NotifyAndFlagForShutdownENS_13SystemAddressEbh14PacketPriority")]
-pub fn stub_a60494() -> ! {
-    todo!("0xa60494 RakNet::RakPeer::NotifyAndFlagForShutdown(RakNet::SystemAddress,bool,unsigned char,PacketPriority)")
+pub fn stub_a60494(immediate: bool, send: &mut dyn FnMut(u8, bool), flag_remote: &mut dyn FnMut()) {
+ // IDA 0xa60494: ID 21 goes immediate (+flag) or buffered.
+ crate::socket::RakPeer::notify_and_flag_for_shutdown(immediate, send, flag_remote)
 }
 
 // 0xa606a0 — __ZN6RakNet7RakPeer28ClearRequestedConnectionListEv
@@ -396,16 +407,20 @@ pub fn stub_a60ad0(peer: &mut crate::socket::RakPeer) -> u32 {
 // type: int __fastcall(int, int, int, int, int, int, __int64 *, int, int)
 #[doc(alias = "RakNet::RakPeer::Send(char const*,int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,unsigned int)")]
 #[doc(alias = "__ZN6RakNet7RakPeer4SendEPKci14PacketPriority17PacketReliabilitycNS_13AddressOrGUIDEbj")]
-pub fn stub_a60af8() -> ! {
-    todo!("0xa60af8 RakNet::RakPeer::Send(char const*,int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,unsigned int)")
+pub fn stub_a60af8(data: Option<&[u8]>, peer_ready: bool, receipt_override: Option<u32>, next_receipt: &mut dyn FnMut() -> u32, broadcast: bool, guid: Option<u64>, own_guid: u64, addr: &crate::socket::SystemAddress, unassigned: &crate::socket::SystemAddress, locals: &[crate::socket::SystemAddress], bound: &crate::socket::SystemAddress, priority: u8, dispatch: &mut dyn FnMut(crate::socket::SendTarget, &[u8], u32, Option<u32>)) -> u32 {
+ // IDA 0xa60af8: route (broadcast/foreign => buffered, own => loopback)
+ // under the override receipt or the next one.
+ let route = crate::socket::RakPeer::send_route(broadcast, guid, own_guid, addr, unassigned, locals, bound);
+ crate::socket::RakPeer::send_packet(data, peer_ready, receipt_override, next_receipt, route, priority, dispatch)
 }
 
 // 0xa60cac — __ZN6RakNet7RakPeer12SendBufferedEPKcj14PacketPriority17PacketReliabilitycNS_13AddressOrGUIDEbNS0_18RemoteSystemStruct11ConnectModeEj
 // type: int __fastcall(int, const void *, int, int, int, char, int, char, int, unsigned int)
 #[doc(alias = "RakNet::RakPeer::SendBuffered(char const*,unsigned int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,RakNet::RakPeer::RemoteSystemStruct::ConnectMode,unsigned int)")]
 #[doc(alias = "__ZN6RakNet7RakPeer12SendBufferedEPKcj14PacketPriority17PacketReliabilitycNS_13AddressOrGUIDEbNS0_18RemoteSystemStruct11ConnectModeEj")]
-pub fn stub_a60cac() -> ! {
-    todo!("0xa60cac RakNet::RakPeer::SendBuffered(char const*,unsigned int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,RakNet::RakPeer::RemoteSystemStruct::ConnectMode,unsigned int)")
+pub fn stub_a60cac(data: &[u8], bit_len: u32, priority: u8, reliability: u8, channel: u8, guid: u64, addr: crate::socket::SystemAddress, broadcast: bool, mode: u32, receipt: u64, enqueue: &mut dyn FnMut(crate::socket::BufferedCommand), signal: &mut dyn FnMut()) {
+ // IDA 0xa60cac: command alloc, copy, queue; priority 0 kicks the event.
+ crate::socket::RakPeer::send_buffered(data, bit_len, priority, reliability, channel, guid, addr, broadcast, mode, receipt, enqueue, signal)
 }
 
 // 0xa60dec — __ZN6RakNet7RakPeer12SendLoopbackEPKci
@@ -421,24 +436,33 @@ pub fn stub_a60dec(data: Option<&[u8]>, push: &mut dyn FnMut(&[u8])) {
 // type: unsigned int __fastcall(int, int *, int, int, char, int, int, int)
 #[doc(alias = "RakNet::RakPeer::Send(RakNet::BitStream const*,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,unsigned int)")]
 #[doc(alias = "__ZN6RakNet7RakPeer4SendEPKNS_9BitStreamE14PacketPriority17PacketReliabilitycNS_13AddressOrGUIDEbj")]
-pub fn stub_a60f00() -> ! {
-    todo!("0xa60f00 RakNet::RakPeer::Send(RakNet::BitStream const*,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,unsigned int)")
+pub fn stub_a60f00(data: &[u8], bits_used: usize, peer_ready: bool, receipt_override: Option<u32>, next_receipt: &mut dyn FnMut() -> u32, broadcast: bool, guid: Option<u64>, own_guid: u64, addr: &crate::socket::SystemAddress, unassigned: &crate::socket::SystemAddress, locals: &[crate::socket::SystemAddress], bound: &crate::socket::SystemAddress, priority: u8, dispatch: &mut dyn FnMut(crate::socket::SendTarget, &[u8], u32, Option<u32>)) -> u32 {
+ // IDA 0xa60f00: an empty stream sends nothing; else the shared Send routing.
+ if bits_used == 0 {
+ return 0;
+ }
+ let route = crate::socket::RakPeer::send_route(broadcast, guid, own_guid, addr, unassigned, locals, bound);
+ crate::socket::RakPeer::send_packet(Some(data), peer_ready, receipt_override, next_receipt, route, priority, dispatch)
 }
 
 // 0xa610c4 — __ZN6RakNet7RakPeer8SendListEPPKcPKii14PacketPriority17PacketReliabilitycNS_13AddressOrGUIDEbj
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RakNet::RakPeer::SendList(char const**,int const*,int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,unsigned int)")]
 #[doc(alias = "__ZN6RakNet7RakPeer8SendListEPPKcPKii14PacketPriority17PacketReliabilitycNS_13AddressOrGUIDEbj")]
-pub fn stub_a610c4() -> ! {
-    todo!("0xa610c4 RakNet::RakPeer::SendList(char const**,int const*,int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,unsigned int)")
+pub fn stub_a610c4(parts: &[&[u8]], peer_ready: bool, target_valid: bool, receipt_override: Option<u32>, next_receipt: &mut dyn FnMut() -> u32, buffered_list: &mut dyn FnMut(&[&[u8]], u32)) -> u32 {
+ // IDA 0xa610c4: empty lists and halted peers report 0; else forward to
+ // SendBufferedList under the receipt.
+ crate::socket::RakPeer::send_list(parts, peer_ready, target_valid, receipt_override, next_receipt, buffered_list)
 }
 
 // 0xa611b8 — __ZN6RakNet7RakPeer16SendBufferedListEPPKcPKii14PacketPriority17PacketReliabilitycNS_13AddressOrGUIDEbNS0_18RemoteSystemStruct11ConnectModeEj
 // type: void __fastcall(__int64 *, const void **, size_t *, int, int, int, char, int, int, int, int)
 #[doc(alias = "RakNet::RakPeer::SendBufferedList(char const**,int const*,int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,RakNet::RakPeer::RemoteSystemStruct::ConnectMode,unsigned int)")]
 #[doc(alias = "__ZN6RakNet7RakPeer16SendBufferedListEPPKcPKii14PacketPriority17PacketReliabilitycNS_13AddressOrGUIDEbNS0_18RemoteSystemStruct11ConnectModeEj")]
-pub fn stub_a611b8() -> ! {
-    todo!("0xa611b8 RakNet::RakPeer::SendBufferedList(char const**,int const*,int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,RakNet::RakPeer::RemoteSystemStruct::ConnectMode,unsigned int)")
+pub fn stub_a611b8(parts: &[&[u8]], route: crate::socket::SendTarget, priority: u8, reliability: u8, channel: u8, guid: u64, addr: crate::socket::SystemAddress, broadcast: bool, mode: u32, receipt: u64, enqueue: &mut dyn FnMut(crate::socket::BufferedCommand), loopback: &mut dyn FnMut(Vec<u8>), signal: &mut dyn FnMut()) {
+ // IDA 0xa611b8: concat the parts (empty totals drop); loopback targets
+ // bypass the queue, the rest queue a send command.
+ crate::socket::RakPeer::send_buffered_list(parts, route, priority, reliability, channel, guid, addr, broadcast, mode, receipt, enqueue, loopback, signal)
 }
 
 // 0xa613c4 — __ZN6RakNet7RakPeer7ReceiveEv
@@ -454,16 +478,22 @@ pub fn stub_a613c4(next: Option<u32>) -> Option<u32> {
 // type: int __fastcall(RakNet::RakPeer *this, unsigned __int8 *, const RakNet::SystemAddress *)
 #[doc(alias = "RakNet::RakPeer::ShiftIncomingTimestamp(unsigned char *,RakNet::SystemAddress const&)const")]
 #[doc(alias = "__ZNK6RakNet7RakPeer22ShiftIncomingTimestampEPhRKNS_13SystemAddressE")]
-pub fn stub_a61520() -> ! {
-    todo!("0xa61520 RakNet::RakPeer::ShiftIncomingTimestamp(unsigned char *,RakNet::SystemAddress const&)const")
+pub fn stub_a61520(stamp: u64, remote_known: bool, ping_samples: &[u16]) -> u64 {
+ // IDA 0xa61520: unknown remotes leave the stamp; else re-base by the
+ // lowest live sample.
+ if !remote_known {
+ return stamp;
+ }
+ crate::socket::RakPeer::shift_incoming_timestamp(stamp, ping_samples)
 }
 
 // 0xa61698 — __ZN6RakNet7RakPeer19CallPluginCallbacksERN14DataStructures4ListIPNS_16PluginInterface2EEEPNS_6PacketE
 // type: unsigned int __fastcall(int, _DWORD *, int)
 #[doc(alias = "RakNet::RakPeer::CallPluginCallbacks(DataStructures::List<RakNet::PluginInterface2 *> &,RakNet::Packet *)")]
 #[doc(alias = "__ZN6RakNet7RakPeer19CallPluginCallbacksERN14DataStructures4ListIPNS_16PluginInterface2EEEPNS_6PacketE")]
-pub fn stub_a61698() -> ! {
-    todo!("0xa61698 RakNet::RakPeer::CallPluginCallbacks(DataStructures::List<RakNet::PluginInterface2 *> &,RakNet::Packet *)")
+pub fn stub_a61698(message_id: u8, plugin_count: usize, call: &mut dyn FnMut(usize, u32)) -> usize {
+ // IDA 0xa61698: per-plugin slot dispatch by message id.
+ crate::socket::RakPeer::call_plugin_callbacks(message_id, plugin_count, call)
 }
 
 // 0xa61810 — __ZN6RakNet7RakPeer16DeallocatePacketEPNS_6PacketE
@@ -488,16 +518,20 @@ pub fn stub_a61888(peer: &crate::socket::RakPeer) -> u16 {
 // type: int __fastcall(int, _DWORD *, int, int, int)
 #[doc(alias = "RakNet::RakPeer::CloseConnection(RakNet::AddressOrGUID,bool,unsigned char,PacketPriority)")]
 #[doc(alias = "__ZN6RakNet7RakPeer15CloseConnectionENS_13AddressOrGUIDEbh14PacketPriority")]
-pub fn stub_a6188c() -> ! {
-    todo!("0xa6188c RakNet::RakPeer::CloseConnection(RakNet::AddressOrGUID,bool,unsigned char,PacketPriority)")
+pub fn stub_a6188c(send_notification: bool, remote_connected: bool, close_internal: &mut dyn FnMut(bool), push_packet: &mut dyn FnMut(u8)) {
+ // IDA 0xa6188c: internal close first; the local byte-22 packet only when
+ // no remote notify was asked for and the slot reads connected.
+ crate::socket::RakPeer::close_connection(send_notification, remote_connected, close_internal, push_packet)
 }
 
 // 0xa61a8c — __ZN6RakNet7RakPeer23CloseConnectionInternalERKNS_13AddressOrGUIDEbbh14PacketPriority
 // type: int __fastcall(int, __int64 *, int, int, char, int)
 #[doc(alias = "RakNet::RakPeer::CloseConnectionInternal(RakNet::AddressOrGUID const&,bool,bool,unsigned char,PacketPriority)")]
 #[doc(alias = "__ZN6RakNet7RakPeer23CloseConnectionInternalERKNS_13AddressOrGUIDEbbh14PacketPriority")]
-pub fn stub_a61a8c() -> ! {
-    todo!("0xa61a8c RakNet::RakPeer::CloseConnectionInternal(RakNet::AddressOrGUID const&,bool,bool,unsigned char,PacketPriority)")
+pub fn stub_a61a8c(target_valid: bool, peer_ready: bool, notify: bool, immediate: bool, addr: crate::socket::SystemAddress, channel: u8, priority: u8, notify_now: &mut dyn FnMut(), drop_now: &mut dyn FnMut(), queue_close: &mut dyn FnMut(crate::socket::BufferedCommand)) {
+ // IDA 0xa61a8c: bad targets and halted peers no-op; notify runs now,
+ // immediate tears the slot down, else a close command queues.
+ crate::socket::RakPeer::close_connection_internal(target_valid, peer_ready, notify, immediate, addr, channel, priority, notify_now, drop_now, queue_close)
 }
 
 // 0xa61e58 — __ZN6RakNet7RakPeer23CancelConnectionAttemptENS_13SystemAddressE
@@ -567,8 +601,13 @@ pub fn stub_a62440(remotes: &[Option<crate::socket::RakNetGuid>], index: i32, un
 // type: unsigned int __fastcall(int, int, int)
 #[doc(alias = "RakNet::RakPeer::GetSystemList(DataStructures::List<RakNet::SystemAddress> &,DataStructures::List<RakNet::RakNetGUID> &)const")]
 #[doc(alias = "__ZNK6RakNet7RakPeer13GetSystemListERN14DataStructures4ListINS_13SystemAddressEEERNS2_INS_10RakNetGUIDEEE")]
-pub fn stub_a624a4() -> ! {
-    todo!("0xa624a4 RakNet::RakPeer::GetSystemList(DataStructures::List<RakNet::SystemAddress> &,DataStructures::List<RakNet::RakNetGUID> &)const")
+pub fn stub_a624a4(peer_ready: bool, remotes: &[(crate::socket::SystemAddress, u64, bool, u32)]) -> (Vec<crate::socket::SystemAddress>, Vec<u64>) {
+ // IDA 0xa624a4: refill both lists from active state-7 slots; a halted
+ // peer leaves them empty.
+ if !peer_ready {
+ return (Vec::new(), Vec::new());
+ }
+ crate::socket::RakPeer::system_list(remotes)
 }
 
 // 0xa62560 — __ZN6RakNet7RakPeer12AddToBanListEPKcj
@@ -719,8 +758,10 @@ pub fn stub_a63034(addr: &crate::socket::SystemAddress, unassigned: &crate::sock
 // type: int __fastcall(int, int, int, int, int, int, int, int)
 #[doc(alias = "RakNet::RakPeer::GetRemoteSystemFromSystemAddress(RakNet::SystemAddress,bool,bool)const")]
 #[doc(alias = "__ZNK6RakNet7RakPeer32GetRemoteSystemFromSystemAddressENS_13SystemAddressEbb")]
-pub fn stub_a63140() -> ! {
-    todo!("0xa63140 RakNet::RakPeer::GetRemoteSystemFromSystemAddress(RakNet::SystemAddress,bool,bool)const")
+pub fn stub_a63140(remotes: &[(crate::socket::SystemAddress, bool)], addr: &crate::socket::SystemAddress, unassigned: &crate::socket::SystemAddress, active_only: bool) -> Option<usize> {
+ // IDA 0xa63140: hashed or linear lookup; an active hit wins, else the
+ // first inactive hit unless active-only.
+ crate::socket::RakPeer::remote_system_from_address(remotes, addr, unassigned, active_only)
 }
 
 // 0xa63278 — __ZNK6RakNet7RakPeer13GetExternalIDENS_13SystemAddressE
@@ -781,8 +822,9 @@ pub fn stub_a63620(guid: u64, unassigned_guid: u64, own_guid: u64, own_bound: cr
 // type: int()
 #[doc(alias = "RakNet::RakPeer::GetClientPublicKeyFromSystemAddress(RakNet::SystemAddress,char *)const")]
 #[doc(alias = "__ZNK6RakNet7RakPeer35GetClientPublicKeyFromSystemAddressENS_13SystemAddressEPc")]
-pub fn stub_a63750() -> ! {
-    todo!("0xa63750 RakNet::RakPeer::GetClientPublicKeyFromSystemAddress(RakNet::SystemAddress,char *)const")
+pub fn stub_a63750() -> u32 {
+ // IDA 0xa63750: hardcoded 0, security compiled out.
+ crate::socket::RakPeer::client_public_key()
 }
 
 // 0xa63754 — __ZN6RakNet7RakPeer14SetTimeoutTimeEjNS_13SystemAddressE
@@ -852,8 +894,9 @@ pub fn stub_a63aa8(peer: &mut crate::socket::RakPeer, allow: bool) {
 // type: int __fastcall(RakNet::RakPeer *this, const char *, int, const char *, size_t, unsigned int)
 #[doc(alias = "RakNet::RakPeer::AdvertiseSystem(char const*,unsigned short,char const*,int,unsigned int)")]
 #[doc(alias = "__ZN6RakNet7RakPeer15AdvertiseSystemEPKctS2_ij")]
-pub fn stub_a63ab0() -> ! {
-    todo!("0xa63ab0 RakNet::RakPeer::AdvertiseSystem(char const*,unsigned short,char const*,int,unsigned int)")
+pub fn stub_a63ab0(data: &[u8], send: &mut dyn FnMut(Vec<u8>) -> u32) -> u32 {
+ // IDA 0xa63ab0: ID-29 advertisement out via SendOutOfBand.
+ send(crate::socket::RakPeer::advertise_packet(data))
 }
 
 // 0xa63bd8 — __ZN6RakNet7RakPeer31SetSplitMessageProgressIntervalEi
@@ -923,8 +966,9 @@ pub fn stub_a63ed8(present: bool, at_head: bool, hooks: &mut dyn FnMut(), push: 
 // type: int __fastcall(int, int, int, __int16, int)
 #[doc(alias = "RakNet::RakPeer::ChangeSystemAddress(RakNet::RakNetGUID,RakNet::SystemAddress const&)")]
 #[doc(alias = "__ZN6RakNet7RakPeer19ChangeSystemAddressENS_10RakNetGUIDERKNS_13SystemAddressE")]
-pub fn stub_a63fc8() -> ! {
-    todo!("0xa63fc8 RakNet::RakPeer::ChangeSystemAddress(RakNet::RakNetGUID,RakNet::SystemAddress const&)")
+pub fn stub_a63fc8(guid: u64, addr: crate::socket::SystemAddress, enqueue: &mut dyn FnMut(crate::socket::BufferedCommand)) {
+ // IDA 0xa63fc8: queue an address-change command (kind 3).
+ enqueue(crate::socket::BufferedCommand { kind: crate::socket::BufferedCommandKind::ChangeAddress, guid, addr, ..crate::socket::BufferedCommand::default() });
 }
 
 // 0xa6406c — __ZN6RakNet7RakPeer14AllocatePacketEj
@@ -940,22 +984,25 @@ pub fn stub_a6406c(size: usize) -> crate::socket::Packet {
 // type: int __fastcall(_DWORD *, int, int, int, int, int, int)
 #[doc(alias = "RakNet::RakPeer::GetSocket(RakNet::SystemAddress)")]
 #[doc(alias = "__ZN6RakNet7RakPeer9GetSocketENS_13SystemAddressE")]
-pub fn stub_a6410c() -> ! {
-    todo!("0xa6410c RakNet::RakPeer::GetSocket(RakNet::SystemAddress)")
+pub fn stub_a6410c(addr: crate::socket::SystemAddress, enqueue: &mut dyn FnMut(crate::socket::BufferedCommand), now_ms: &mut dyn FnMut() -> u32, sleep: &mut dyn FnMut(), poll: &mut dyn FnMut() -> Option<u32>, halted: &mut dyn FnMut() -> bool) -> Option<u32> {
+ // IDA 0xa6410c: kind-2 query, up to +1000ms for the first socket.
+ crate::socket::RakPeer::query_socket(addr, enqueue, now_ms, sleep, poll, halted)
 }
 
 // 0xa643c8 — __ZN6RakNet7RakPeer10GetSocketsERN14DataStructures4ListINS_14RakNetSmartPtrINS_12RakNetSocketEEEEE
 #[doc(alias = "RakNet::RakPeer::GetSockets(DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>> &)")]
 #[doc(alias = "__ZN6RakNet7RakPeer10GetSocketsERN14DataStructures4ListINS_14RakNetSmartPtrINS_12RakNetSocketEEEEE")]
-pub fn stub_a643c8() -> ! {
-    todo!("0xa643c8 RakNet::RakPeer::GetSockets(DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>> &)")
+pub fn stub_a643c8(queue_query: &mut dyn FnMut(), alive: &mut dyn FnMut() -> bool, sleep: &mut dyn FnMut(), poll: &mut dyn FnMut() -> Option<Vec<u32>>) -> Vec<u32> {
+ // IDA 0xa643c8: clear, kind-2 query, first output while up.
+ crate::socket::RakPeer::get_sockets(queue_query, alive, sleep, poll)
 }
 
 // 0xa64540 — __ZN6RakNet7RakPeer14ReleaseSocketsERN14DataStructures4ListINS_14RakNetSmartPtrINS_12RakNetSocketEEEEE
 #[doc(alias = "RakNet::RakPeer::ReleaseSockets(DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>> &)")]
 #[doc(alias = "__ZN6RakNet7RakPeer14ReleaseSocketsERN14DataStructures4ListINS_14RakNetSmartPtrINS_12RakNetSocketEEEEE")]
-pub fn stub_a64540() -> ! {
-    todo!("0xa64540 RakNet::RakPeer::ReleaseSockets(DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>> &)")
+pub fn stub_a64540(sockets: &mut Vec<u32>) {
+ // IDA 0xa64540: delete the array, zero the list.
+ crate::socket::RakPeer::release_socket_list(sockets)
 }
 
 // 0xa64564 — __ZN6RakNet7RakPeer21ApplyNetworkSimulatorEftt
@@ -998,16 +1045,20 @@ pub fn stub_a64574(stream: &mut crate::bitstream::BitStream, guid: u64) {
 // type: int __fastcall(int result, int, int)
 #[doc(alias = "RakNet::RakPeer::SetUserUpdateThread(void (*)(RakNet::RakPeerInterface *,void *),void *)")]
 #[doc(alias = "__ZN6RakNet7RakPeer19SetUserUpdateThreadEPFvPNS_16RakPeerInterfaceEPvES3_")]
-pub fn stub_a645b0() -> ! {
-    todo!("0xa645b0 RakNet::RakPeer::SetUserUpdateThread(void (*)(RakNet::RakPeerInterface *,void *),void *)")
+pub fn stub_a645b0(peer: &mut crate::socket::RakPeer, callback: u32, data: u32) {
+ // IDA 0xa645b0: store the callback words.
+ peer.set_user_update_thread(callback, data)
 }
 
 // 0xa645bc — __ZN6RakNet7RakPeer13SendOutOfBandEPKctS2_jj
 // type: int __fastcall(RakNet::RakPeer *this, const char *, unsigned int, const char *, size_t __n, unsigned int)
 #[doc(alias = "RakNet::RakPeer::SendOutOfBand(char const*,unsigned short,char const*,unsigned int,unsigned int)")]
 #[doc(alias = "__ZN6RakNet7RakPeer13SendOutOfBandEPKctS2_jj")]
-pub fn stub_a645bc() -> ! {
-    todo!("0xa645bc RakNet::RakPeer::SendOutOfBand(char const*,unsigned short,char const*,unsigned int,unsigned int)")
+pub fn stub_a645bc(host: Option<&str>, peer_active: bool, socket_found: bool, guid: u64, data: &[u8], notify_plugins: &mut dyn FnMut(), send_to: &mut dyn FnMut(&[u8])) -> u32 {
+ // IDA 0xa645bc: offline header + payload through the indexed socket.
+ let mut header = crate::bitstream::BitStream::new();
+ crate::socket::RakPeer::write_out_of_band_header(&mut header, guid);
+ crate::socket::RakPeer::send_out_of_band(host, peer_active, socket_found, &header.into_bytes(), data, notify_plugins, send_to)
 }
 
 // 0xa647f4 — __ZN6RakNet7RakPeer13GetStatisticsENS_13SystemAddressEPNS_16RakNetStatisticsE
@@ -1041,22 +1092,27 @@ pub fn stub_a64bb4(head: u32, tail: u32, capacity: u32) -> u32 {
 // type: int __fastcall(RakNet::RakPeer *this, RakNet::RakPeer::RemoteSystemStruct *, const RakNet::SystemAddress *, char *__src, RakNet *)
 #[doc(alias = "RakNet::RakPeer::ParseConnectionRequestPacket(RakNet::RakPeer::RemoteSystemStruct *,RakNet::SystemAddress const&,char const*,int)")]
 #[doc(alias = "__ZN6RakNet7RakPeer28ParseConnectionRequestPacketEPNS0_18RemoteSystemStructERKNS_13SystemAddressEPKci")]
-pub fn stub_a64be8() -> ! {
-    todo!("0xa64be8 RakNet::RakPeer::ParseConnectionRequestPacket(RakNet::RakPeer::RemoteSystemStruct *,RakNet::SystemAddress const&,char const*,int)")
+pub fn stub_a64be8(packet: &[u8], incoming_password: &[u8], on_accept: &mut dyn FnMut(u64), on_refuse: &mut dyn FnMut()) -> u32 {
+ // IDA 0xa64be8: exact password match accepts (5), else refuse (2).
+ crate::socket::RakPeer::parse_connection_request_packet(packet, incoming_password, on_accept, on_refuse)
 }
 
 // 0xa64e48 — __ZN6RakNet7RakPeer13SendImmediateEPcj14PacketPriority17PacketReliabilitycNS_13AddressOrGUIDEbbyj
 // type: int __fastcall(int, int, int, int, int, unsigned __int8, int, int, int, unsigned __int64, int)
 #[doc(alias = "RakNet::RakPeer::SendImmediate(char *,unsigned int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,bool,unsigned long long,unsigned int)")]
 #[doc(alias = "__ZN6RakNet7RakPeer13SendImmediateEPcj14PacketPriority17PacketReliabilitycNS_13AddressOrGUIDEbbyj")]
-pub fn stub_a64e48() -> ! {
-    todo!("0xa64e48 RakNet::RakPeer::SendImmediate(char *,unsigned int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,bool,unsigned long long,unsigned int)")
+pub fn stub_a64e48(data: &[u8], broadcast: bool, target: Option<usize>, assigned: &[bool], slot_active: &[bool], slot_state: &[u32], reliability: u8, stamp_us: u64, send: &mut dyn FnMut(usize, bool, Option<u32>)) -> bool {
+ // IDA 0xa64e48: resolve targets, one reliability write each.
+ let targets = crate::socket::RakPeer::send_immediate_targets(broadcast, target, assigned, slot_active, slot_state);
+ let _ = data.len();
+ crate::socket::RakPeer::send_immediate(&targets, reliability, stamp_us, send)
 }
 
 // 0xa651fc — __ZN6RakNet7RakPeer19OnConnectionRequestEPNS0_18RemoteSystemStructEy
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "RakNet::RakPeer::OnConnectionRequest(RakNet::RakPeer::RemoteSystemStruct *,unsigned long long)")]
 #[doc(alias = "__ZN6RakNet7RakPeer19OnConnectionRequestEPNS0_18RemoteSystemStructEy")]
-pub fn stub_a651fc() -> ! {
-    todo!("0xa651fc RakNet::RakPeer::OnConnectionRequest(RakNet::RakPeer::RemoteSystemStruct *,unsigned long long)")
+pub fn stub_a651fc(index: u16, remote: &crate::socket::SystemAddress, locals: &[crate::socket::SystemAddress], guid: u64, time_us: u64, send: &mut dyn FnMut(Vec<u8>)) {
+ // IDA 0xa651fc: ID-16 accept reply out via SendImmediate.
+ send(crate::socket::RakPeer::connection_request_accepted_packet(index, remote, locals, guid, time_us));
 }
