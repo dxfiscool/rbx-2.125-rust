@@ -947,6 +947,38 @@ pub struct UnlockAllVerb {
     pub data_model: *const DataModel,
 }
 
+/// Rust model of `RBX::SelectAllCommand` (IDA `0x415bc4`): the studio
+/// select-all command plus the owning data model.
+pub struct SelectAllCommand {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::DeleteSelectionVerb` (IDA `0x415d0c`): the studio
+/// delete-selection verb plus the owning data model.
+pub struct DeleteSelectionVerb {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::PlayDeleteSelectionVerb` (IDA `0x415ef8`): the studio
+/// play-mode delete verb plus the owning data model.
+pub struct PlayDeleteSelectionVerb {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::Configuration` (IDA `0x416e00`): the configuration
+/// node; members land with the configuration batch.
+#[derive(Default)]
+pub struct Configuration {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::CornerWedgeInstance` (IDA `0x417a70`): the corner-wedge
+/// part; members land with the part batch.
+#[derive(Default)]
+pub struct CornerWedgeInstance {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::SetManualJointToInfinite` (IDA `0x3fc608`): the studio
 /// joint-strength command plus the owning data model.
 pub struct SetManualJointToInfinite {
@@ -14581,22 +14613,26 @@ pub fn stub_0x415a7c(data_model: *const DataModel) -> UnlockAllVerb {
 // 0x415bc4 — __ZN3RBX16SelectAllCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::SelectAllCommand::SelectAllCommand(RBX::DataModel *)")]
 // was: RBX::SelectAllCommand::SelectAllCommand(RBX::DataModel *)
-pub fn stub_0x415bc4() -> ! {
-    todo!("0x415bc4 RBX::SelectAllCommand::SelectAllCommand(RBX::DataModel *)")
+pub fn stub_0x415bc4(data_model: *const DataModel) -> SelectAllCommand {
+    // IDA 0x415bc4: `SelectAllCommand::C2(DataModel*)` — links the model.
+    SelectAllCommand { data_model }
 }
 
 // 0x415d0c — __ZN3RBX19DeleteSelectionVerbC2EPNS_9DataModelE
 #[doc(alias = "RBX::DeleteSelectionVerb::DeleteSelectionVerb(RBX::DataModel *)")]
 // was: RBX::DeleteSelectionVerb::DeleteSelectionVerb(RBX::DataModel *)
-pub fn stub_0x415d0c() -> ! {
-    todo!("0x415d0c RBX::DeleteSelectionVerb::DeleteSelectionVerb(RBX::DataModel *)")
+pub fn stub_0x415d0c(data_model: *const DataModel) -> DeleteSelectionVerb {
+    // IDA 0x415d0c: `DeleteSelectionVerb::C2(DataModel*)` — links the model.
+    DeleteSelectionVerb { data_model }
 }
 
 // 0x415ef8 — __ZN3RBX23PlayDeleteSelectionVerbC2EPNS_9DataModelE
 #[doc(alias = "RBX::PlayDeleteSelectionVerb::PlayDeleteSelectionVerb(RBX::DataModel *)")]
 // was: RBX::PlayDeleteSelectionVerb::PlayDeleteSelectionVerb(RBX::DataModel *)
-pub fn stub_0x415ef8() -> ! {
-    todo!("0x415ef8 RBX::PlayDeleteSelectionVerb::PlayDeleteSelectionVerb(RBX::DataModel *)")
+pub fn stub_0x415ef8(data_model: *const DataModel) -> PlayDeleteSelectionVerb {
+    // IDA 0x415ef8: `PlayDeleteSelectionVerb::C2(DataModel*)` — links the
+    // model.
+    PlayDeleteSelectionVerb { data_model }
 }
 
 // 0x41657c — __ZNK3RBX13Configuration14askForbidChildEPKNS_8InstanceE
@@ -14609,137 +14645,240 @@ pub fn stub_0x41657c() -> ! {
 // 0x4165b8 — __ZNK3RBX13Configuration12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::Configuration::askSetParent(RBX::Instance const*)const")]
 // was: RBX::Configuration::askSetParent(RBX::Instance const*)const
-pub fn stub_0x4165b8() -> ! {
-    todo!("0x4165b8 RBX::Configuration::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x4165b8(parent: *const Instance) -> bool {
+    // IDA 0x4165b8: null parent falls into the ModelInstance read (disasm
+    // 0x4165ca-0x4165f0); otherwise the parent's class is checked against
+    // `PartInstance` via `isA` (disasm 0x4165cc-0x4165ee, EOR-folded jump to
+    // the allow path) and then against `ModelInstance` via `operator==`
+    // (disasm 0x4165f0-0x416608) — either class reaches the allow path at
+    // 0x41660E, anything else returns 0 at 0x41666E.
+    // BUG: original at 0x41660E also requires the word at `parent + 0x38` to
+    // be non-null (disasm 0x41660E-0x416616); the field is unmapped, so this
+    // model over-allows parents with a null `+0x38` word.
+    // SAFETY: `parent` must be null or point to a valid `Instance`.
+    if parent.is_null() {
+        return false;
+    }
+    instance_is_a(parent, "PartInstance") || instance_is_a(parent, "ModelInstance")
 }
 
 // 0x416e00 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13ConfigurationEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::Configuration> RBX::Creatable<RBX::Instance>::create<RBX::Configuration>(void)")]
 // was: boost::shared_ptr<RBX::Configuration> RBX::Creatable<RBX::Instance>::create<RBX::Configuration>(void)
-pub fn stub_0x416e00() -> ! {
-    todo!("0x416e00 boost::shared_ptr<RBX::Configuration> RBX::Creatable<RBX::Instance>::create<RBX::Configuration>(void)")
+pub fn stub_0x416e00() -> SharedPtr<Configuration> {
+    // IDA 0x416e00: `Creatable::create<Configuration>` — `operator new` +
+    // default ctor + adoption with the `Creatable` deleter; same collapse as
+    // 0xef04.
+    SharedPtr::new(Configuration::default())
 }
 
 // 0x416eb0 — __ZN5boost10shared_ptrIN3RBX13ConfigurationEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Configuration>::shared_ptr<RBX::Configuration,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::Configuration>::shared_ptr<RBX::Configuration,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x416eb0() -> ! {
-    todo!("0x416eb0 boost::shared_ptr<RBX::Configuration>::shared_ptr<RBX::Configuration,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x416eb0(ptr: *mut Configuration, _deleter: CreatableInstanceDeleter) -> SharedPtr<Configuration> {
+    // IDA 0x416eb0: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(Configuration::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x417060 — __ZN5boost6detail12shared_countC2IPN3RBX13ConfigurationENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x417060() -> ! {
-    todo!("0x417060 boost::detail::shared_count::shared_count<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x417060(ptr: *mut Configuration, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<Configuration, CreatableInstanceDeleter> {
+    // IDA 0x417060: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x417168 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ConfigurationENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x417168() -> ! {
-    todo!("0x417168 boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x417168(_block: *mut ControlBlockPd<Configuration, CreatableInstanceDeleter>) {
+    // IDA 0x417168: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x41716c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ConfigurationENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x41716c() -> ! {
-    todo!("0x41716c boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x41716c(block: *mut ControlBlockPd<Configuration, CreatableInstanceDeleter>) {
+    // IDA 0x41716c: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x417170 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ConfigurationENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x417170() -> ! {
-    todo!("0x417170 boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x417170(_block: *mut ControlBlockPd<Configuration, CreatableInstanceDeleter>) {
+    // IDA 0x417170: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x417190 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ConfigurationENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x417190() -> ! {
-    todo!("0x417190 boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x417190(block: *const ControlBlockPd<Configuration, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x417190: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 // 0x4171a8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ConfigurationENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x4171a8() -> ! {
-    todo!("0x4171a8 boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x4171a8(block: *const ControlBlockPd<Configuration, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x4171a8: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x417a70 — __ZN3RBX19CornerWedgeInstanceC1Ev
 #[doc(alias = "RBX::CornerWedgeInstance::CornerWedgeInstance(void)")]
-pub fn stub_0x417a70() -> ! {
-    todo!("0x417a70 RBX::CornerWedgeInstance::CornerWedgeInstance(void)")
+pub fn stub_0x417a70() -> CornerWedgeInstance {
+    // IDA 0x417a70: `CornerWedgeInstance::C1` — full member init (vtables
+    // incl. `IHasLocation`, disasm 0x417a8c); the layout lands with the part
+    // batch, so construction collapses to defaults.
+    CornerWedgeInstance::default()
 }
 
 // 0x417d78 — __ZN3RBX19CornerWedgeInstanceD0Ev
 #[doc(alias = "RBX::CornerWedgeInstance::~CornerWedgeInstance()")]
-pub fn stub_0x417d78() -> ! {
-    todo!("0x417d78 RBX::CornerWedgeInstance::~CornerWedgeInstance()")
+pub fn stub_0x417d78(_part: *mut CornerWedgeInstance) {
+    // IDA 0x417d78: `CornerWedgeInstance::D0` — vtable install plus
+    // memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_part` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_part));
+    }
 }
 
 // 0x417e28 — __ZN3RBX19CornerWedgeInstanceD1Ev
 #[doc(alias = "RBX::CornerWedgeInstance::~CornerWedgeInstance()")]
-pub fn stub_0x417e28() -> ! {
-    todo!("0x417e28 RBX::CornerWedgeInstance::~CornerWedgeInstance()")
+pub fn stub_0x417e28(_part: *mut CornerWedgeInstance) {
+    // IDA 0x417e28: `CornerWedgeInstance::D1` — memberwise teardown; dropping
+    // the box is the same release. Twin of 0x417d78.
+    // SAFETY: `_part` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_part));
+    }
 }
 
 // 0x417e38 — __ZThn32_N3RBX19CornerWedgeInstanceD0Ev
 #[doc(alias = "non-virtual thunk to RBX::CornerWedgeInstance::~CornerWedgeInstance()")]
-pub fn stub_0x417e38() -> ! {
-    todo!("0x417e38 non-virtual thunk to RBX::CornerWedgeInstance::~CornerWedgeInstance()")
+pub fn stub_0x417e38(part: *const CornerWedgeInstance, _this: *mut CornerWedgeInstance) {
+    // IDA 0x417e38: `__ZThn32_` thunk to the D0 — the `this - 32` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D0 of
+    // 0x417d78.
+    // SAFETY: `part` must be a live box pointer never used again.
+    let _ = part;
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x417e40 — __ZThn36_N3RBX19CornerWedgeInstanceD0Ev
 #[doc(alias = "non-virtual thunk to RBX::CornerWedgeInstance::~CornerWedgeInstance()")]
-pub fn stub_0x417e40() -> ! {
-    todo!("0x417e40 non-virtual thunk to RBX::CornerWedgeInstance::~CornerWedgeInstance()")
+pub fn stub_0x417e40(part: *const CornerWedgeInstance) {
+    // IDA 0x417e40: `__ZThn36_` thunk to the D0 — the `this - 36` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D0 of
+    // 0x417d78.
+    // SAFETY: `part` must be a live box pointer never used again.
+    unsafe {
+        let _ = Box::from_raw(part as *mut CornerWedgeInstance);
+    }
 }
 
 // 0x417e48 — __ZThn132_N3RBX19CornerWedgeInstanceD0Ev
 #[doc(alias = "non-virtual thunk to RBX::CornerWedgeInstance::~CornerWedgeInstance()")]
-pub fn stub_0x417e48() -> ! {
-    todo!("0x417e48 non-virtual thunk to RBX::CornerWedgeInstance::~CornerWedgeInstance()")
+pub fn stub_0x417e48(part: *const CornerWedgeInstance, _this: *mut CornerWedgeInstance) {
+    // IDA 0x417e48: `__ZThn132_` thunk to the D0 — the `this - 132`
+    // adjustment is a layout artifact, so the thunk collapses into the direct
+    // D0 of 0x417d78.
+    // SAFETY: `part` must be a live box pointer never used again.
+    let _ = part;
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x417e50 — __ZThn32_N3RBX19CornerWedgeInstanceD1Ev
 #[doc(alias = "non-virtual thunk to RBX::CornerWedgeInstance::~CornerWedgeInstance()")]
-pub fn stub_0x417e50() -> ! {
-    todo!("0x417e50 non-virtual thunk to RBX::CornerWedgeInstance::~CornerWedgeInstance()")
+pub fn stub_0x417e50(part: *const CornerWedgeInstance, _this: *mut CornerWedgeInstance) {
+    // IDA 0x417e50: `__ZThn32_` thunk to the D1 — the `this - 32` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D1 of
+    // 0x417e28.
+    // SAFETY: `part` must be a live box pointer never used again.
+    let _ = part;
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x417e64 — __ZThn36_N3RBX19CornerWedgeInstanceD1Ev
 #[doc(alias = "non-virtual thunk to RBX::CornerWedgeInstance::~CornerWedgeInstance()")]
-pub fn stub_0x417e64() -> ! {
-    todo!("0x417e64 non-virtual thunk to RBX::CornerWedgeInstance::~CornerWedgeInstance()")
+pub fn stub_0x417e64(part: *const CornerWedgeInstance, _this: *mut CornerWedgeInstance) {
+    // IDA 0x417e64: `__ZThn36_` thunk to the D1 — the `this - 36` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D1 of
+    // 0x417e28.
+    // SAFETY: `part` must be a live box pointer never used again.
+    let _ = part;
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x417e78 — __ZThn132_N3RBX19CornerWedgeInstanceD1Ev
 #[doc(alias = "non-virtual thunk to RBX::CornerWedgeInstance::~CornerWedgeInstance()")]
-pub fn stub_0x417e78() -> ! {
-    todo!("0x417e78 non-virtual thunk to RBX::CornerWedgeInstance::~CornerWedgeInstance()")
+pub fn stub_0x417e78(part: *const CornerWedgeInstance, _this: *mut CornerWedgeInstance) {
+    // IDA 0x417e78: `__ZThn132_` thunk to the D1 — the `this - 132`
+    // adjustment is a layout artifact, so the thunk collapses into the direct
+    // D1 of 0x417e28.
+    // SAFETY: `part` must be a live box pointer never used again.
+    let _ = part;
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x417e9c — __ZNK3RBX19CornerWedgeInstance11getPartTypeEv
 #[doc(alias = "RBX::CornerWedgeInstance::getPartType(void)const")]
-pub fn stub_0x417e9c() -> ! {
-    todo!("0x417e9c RBX::CornerWedgeInstance::getPartType(void)const")
+pub fn stub_0x417e9c() -> u32 {
+    // IDA 0x417e9c: `MOVS R0, #9; BX LR` — the CornerWedge part-type tag is
+    // the constant 9 (the `PartType` enum lands with the part batch).
+    9
 }
 
 // 0x418514 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_19CornerWedgeInstanceEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::CornerWedgeInstance> RBX::Creatable<RBX::Instance>::create<RBX::CornerWedgeInstance>(void)")]
 // was: boost::shared_ptr<RBX::CornerWedgeInstance> RBX::Creatable<RBX::Instance>::create<RBX::CornerWedgeInstance>(void)
-pub fn stub_0x418514() -> ! {
-    todo!("0x418514 boost::shared_ptr<RBX::CornerWedgeInstance> RBX::Creatable<RBX::Instance>::create<RBX::CornerWedgeInstance>(void)")
+pub fn stub_0x418514() -> SharedPtr<CornerWedgeInstance> {
+    // IDA 0x418514: `Creatable::create<CornerWedgeInstance>` — `operator new`
+    // + default ctor + adoption with the `Creatable` deleter; same collapse
+    // as 0xef04.
+    SharedPtr::new(CornerWedgeInstance::default())
 }
 
 // 0x4185c8 — __ZN5boost10shared_ptrIN3RBX19CornerWedgeInstanceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::CornerWedgeInstance>::shared_ptr<RBX::CornerWedgeInstance,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::CornerWedgeInstance>::shared_ptr<RBX::CornerWedgeInstance,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x4185c8() -> ! {
-    todo!("0x4185c8 boost::shared_ptr<RBX::CornerWedgeInstance>::shared_ptr<RBX::CornerWedgeInstance,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x4185c8(ptr: *mut CornerWedgeInstance, _deleter: CreatableInstanceDeleter) -> SharedPtr<CornerWedgeInstance> {
+    // IDA 0x4185c8: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(CornerWedgeInstance::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x418690 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19CornerWedgeInstanceES6_EEvPKNS_10shared_ptrIT_EEPT0_
