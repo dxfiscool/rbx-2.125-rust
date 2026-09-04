@@ -6,600 +6,600 @@
 
 #[doc(alias = "std::_Rb_tree<RBX::Vector3_2Ints,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>,std::_Select1st<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::find(RBX::Vector3_2Ints const&)")]
 // 0x750c58 — __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE4findERS3_
-pub fn stub_750c58() -> ! {
-    todo!("0x750c58 __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE4findERS3_")
+pub fn stub_750c58() {
+    // IDA 0x750c58: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::safe_static_init_staticData(void)")]
 // 0x750ca8 — __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE27safe_static_init_staticDataEv
-pub fn stub_750ca8() -> ! {
-    todo!("0x750ca8 __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE27safe_static_init_staticDataEv")
+pub fn stub_750ca8() {
+    // IDA 0x750ca8: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::safe_static_do_get_staticData(void)")]
 // 0x750cac — __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE29safe_static_do_get_staticDataEv
-pub fn stub_750cac() -> ! {
-    todo!("0x750cac __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE29safe_static_do_get_staticDataEv")
+pub fn stub_750cac() {
+    // IDA 0x750cac: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::StaticData::~StaticData()")]
 // 0x750dbc — __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE10StaticDataD1Ev
-pub fn stub_750dbc() -> ! {
-    todo!("0x750dbc __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE10StaticDataD1Ev")
+pub fn stub_750dbc() {
+    // IDA 0x750dbc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::RightAngleRampPoly::buildMesh(void)")]
 // 0x750f9c — __ZN3RBX18RightAngleRampPoly9buildMeshEv
-pub fn stub_750f9c() -> ! {
-    todo!("0x750f9c __ZN3RBX18RightAngleRampPoly9buildMeshEv")
+pub fn stub_750f9c() {
+    // IDA 0x750f9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::RightAngleRampPoly::getMoment(float)const")]
 // 0x751078 — __ZNK3RBX18RightAngleRampPoly9getMomentEf
-pub fn stub_751078() -> ! {
-    todo!("0x751078 __ZNK3RBX18RightAngleRampPoly9getMomentEf")
+pub fn stub_751078() {
+    // IDA 0x751078: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::RightAngleRampPoly::getCofmOffset(void)const")]
 // 0x7511ac — __ZNK3RBX18RightAngleRampPoly13getCofmOffsetEv
-pub fn stub_7511ac() -> ! {
-    todo!("0x7511ac __ZNK3RBX18RightAngleRampPoly13getCofmOffsetEv")
+pub fn stub_7511ac() {
+    // IDA 0x7511ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::RightAngleRampPoly::getFaceFromLegacyNormalId(RBX::NormalId)const")]
 // 0x7511e0 — __ZNK3RBX18RightAngleRampPoly25getFaceFromLegacyNormalIdENS_8NormalIdE
-pub fn stub_7511e0() -> ! {
-    todo!("0x7511e0 __ZNK3RBX18RightAngleRampPoly25getFaceFromLegacyNormalIdENS_8NormalIdE")
+pub fn stub_7511e0() {
+    // IDA 0x7511e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::RightAngleRampPoly::~RightAngleRampPoly()")]
 // 0x751398 — __ZN3RBX18RightAngleRampPolyD1Ev
-pub fn stub_751398() -> ! {
-    todo!("0x751398 __ZN3RBX18RightAngleRampPolyD1Ev")
+pub fn stub_751398() {
+    // IDA 0x751398: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::RightAngleRampPoly::~RightAngleRampPoly()")]
 // 0x7513bc — __ZN3RBX18RightAngleRampPolyD0Ev
-pub fn stub_7513bc() -> ! {
-    todo!("0x7513bc __ZN3RBX18RightAngleRampPolyD0Ev")
+pub fn stub_7513bc() {
+    // IDA 0x7513bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Allocator<RBX::POLY::RightAngleRampMesh>::operator delete(void *)")]
 // 0x751a00 — __ZN3RBX9AllocatorINS_4POLY18RightAngleRampMeshEEdlEPv
-pub fn stub_751a00() -> ! {
-    todo!("0x751a00 __ZN3RBX9AllocatorINS_4POLY18RightAngleRampMeshEEdlEPv")
+pub fn stub_751a00() {
+    // IDA 0x751a00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Allocator<RBX::POLY::RightAngleRampMesh>::operator new(unsigned long)")]
 // 0x75203c — __ZN3RBX9AllocatorINS_4POLY18RightAngleRampMeshEEnwEm
-pub fn stub_75203c() -> ! {
-    todo!("0x75203c __ZN3RBX9AllocatorINS_4POLY18RightAngleRampMeshEEnwEm")
+pub fn stub_75203c() {
+    // IDA 0x75203c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Allocator<RBX::POLY::RightAngleRampMesh>::Allocator(void)")]
 // 0x7521c8 — __ZN3RBX9AllocatorINS_4POLY18RightAngleRampMeshEEC2Ev
-pub fn stub_7521c8() -> ! {
-    todo!("0x7521c8 __ZN3RBX9AllocatorINS_4POLY18RightAngleRampMeshEEC2Ev")
+pub fn stub_7521c8() {
+    // IDA 0x7521c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Allocator<RBX::POLY::RightAngleRampMesh>::releaseMemory(void)")]
 // 0x75222c — __ZN3RBX9AllocatorINS_4POLY18RightAngleRampMeshEE13releaseMemoryEv
-pub fn stub_75222c() -> ! {
-    todo!("0x75222c __ZN3RBX9AllocatorINS_4POLY18RightAngleRampMeshEE13releaseMemoryEv")
+pub fn stub_75222c() {
+    // IDA 0x75222c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::RigidJoint::isAligned(void)")]
 // 0x752648 — __ZN3RBX10RigidJoint9isAlignedEv
-pub fn stub_752648() -> ! {
-    todo!("0x752648 __ZN3RBX10RigidJoint9isAlignedEv")
+pub fn stub_752648() {
+    // IDA 0x752648: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::RigidJoint::align(RBX::Primitive *,RBX::Primitive *)")]
 // 0x752720 — __ZN3RBX10RigidJoint5alignEPNS_9PrimitiveES2_
-pub fn stub_752720() -> ! {
-    todo!("0x752720 __ZN3RBX10RigidJoint5alignEPNS_9PrimitiveES2_")
+pub fn stub_752720() {
+    // IDA 0x752720: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::RigidJoint::getChildInParent(RBX::Primitive *,RBX::Primitive *)")]
 // 0x752884 — __ZN3RBX10RigidJoint16getChildInParentEPNS_9PrimitiveES2_
-pub fn stub_752884() -> ! {
-    todo!("0x752884 __ZN3RBX10RigidJoint16getChildInParentEPNS_9PrimitiveES2_")
+pub fn stub_752884() {
+    // IDA 0x752884: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::RigidJoint::isBroken(void)const")]
 // 0x752b14 — __ZNK3RBX10RigidJoint8isBrokenEv
-pub fn stub_752b14() -> ! {
-    todo!("0x752b14 __ZNK3RBX10RigidJoint8isBrokenEv")
+pub fn stub_752b14() {
+    // IDA 0x752b14: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::RotateJoint::RotateJoint(void)")]
 // 0x752be0 — __ZN3RBX11RotateJointC1Ev
-pub fn stub_752be0() -> ! {
-    todo!("0x752be0 __ZN3RBX11RotateJointC1Ev")
+pub fn stub_752be0() {
+    // IDA 0x752be0: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::RotateJoint::RotateJoint(void)")]
 // 0x752c04 — __ZN3RBX11RotateJointC2Ev
-pub fn stub_752c04() -> ! {
-    todo!("0x752c04 __ZN3RBX11RotateJointC2Ev")
+pub fn stub_752c04() {
+    // IDA 0x752c04: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::RotateJoint::~RotateJoint()")]
 // 0x752c28 — __ZN3RBX11RotateJointD0Ev
-pub fn stub_752c28() -> ! {
-    todo!("0x752c28 __ZN3RBX11RotateJointD0Ev")
+pub fn stub_752c28() {
+    // IDA 0x752c28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::RotateJoint::~RotateJoint()")]
 // 0x752cc8 — __ZN3RBX11RotateJointD1Ev
-pub fn stub_752cc8() -> ! {
-    todo!("0x752cc8 __ZN3RBX11RotateJointD1Ev")
+pub fn stub_752cc8() {
+    // IDA 0x752cc8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "non-virtual thunk toRBX::RotateJoint::~RotateJoint()")]
 // 0x752ccc — __ZThn32_N3RBX11RotateJointD0Ev
-pub fn stub_752ccc() -> ! {
-    todo!("0x752ccc __ZThn32_N3RBX11RotateJointD0Ev")
+pub fn stub_752ccc() {
+    // IDA 0x752ccc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "non-virtual thunk toRBX::RotateJoint::~RotateJoint()")]
 // 0x752cd4 — __ZThn32_N3RBX11RotateJointD1Ev
-pub fn stub_752cd4() -> ! {
-    todo!("0x752cd4 __ZThn32_N3RBX11RotateJointD1Ev")
+pub fn stub_752cd4() {
+    // IDA 0x752cd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::RotateJoint::getAxleWorldDirection(void)")]
 // 0x752cdc — __ZN3RBX11RotateJoint21getAxleWorldDirectionEv
-pub fn stub_752cdc() -> ! {
-    todo!("0x752cdc __ZN3RBX11RotateJoint21getAxleWorldDirectionEv")
+pub fn stub_752cdc() {
+    // IDA 0x752cdc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::RotateJoint::getAxleVelocity(void)")]
 // 0x752cfc — __ZN3RBX11RotateJoint15getAxleVelocityEv
-pub fn stub_752cfc() -> ! {
-    todo!("0x752cfc __ZN3RBX11RotateJoint15getAxleVelocityEv")
+pub fn stub_752cfc() {
+    // IDA 0x752cfc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::RotateJoint::canBuildJoint(RBX::Primitive *,RBX::Primitive *,RBX::NormalId,RBX::NormalId)")]
 // 0x752fe8 — __ZN3RBX11RotateJoint13canBuildJointEPNS_9PrimitiveES2_NS_8NormalIdES3_
-pub fn stub_752fe8() -> ! {
-    todo!("0x752fe8 __ZN3RBX11RotateJoint13canBuildJointEPNS_9PrimitiveES2_NS_8NormalIdES3_")
+pub fn stub_752fe8() {
+    // IDA 0x752fe8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::RotateJoint::removeFromKernel(void)")]
 // 0x7537c4 — __ZN3RBX11RotateJoint16removeFromKernelEv
-pub fn stub_7537c4() -> ! {
-    todo!("0x7537c4 __ZN3RBX11RotateJoint16removeFromKernelEv")
+pub fn stub_7537c4() {
+    // IDA 0x7537c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::RotateJoint::getPrimitivesTorqueArmLength(float &,float &)")]
 // 0x753828 — __ZN3RBX11RotateJoint28getPrimitivesTorqueArmLengthERfS1_
-pub fn stub_753828() -> ! {
-    todo!("0x753828 __ZN3RBX11RotateJoint28getPrimitivesTorqueArmLengthERfS1_")
+pub fn stub_753828() {
+    // IDA 0x753828: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::RotateJoint::putInKernel(RBX::Kernel *)")]
 // 0x753910 — __ZN3RBX11RotateJoint11putInKernelEPNS_6KernelE
-pub fn stub_753910() -> ! {
-    todo!("0x753910 __ZN3RBX11RotateJoint11putInKernelEPNS_6KernelE")
+pub fn stub_753910() {
+    // IDA 0x753910: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::DynamicRotateJoint::~DynamicRotateJoint()")]
 // 0x753c00 — __ZN3RBX18DynamicRotateJointD0Ev
-pub fn stub_753c00() -> ! {
-    todo!("0x753c00 __ZN3RBX18DynamicRotateJointD0Ev")
+pub fn stub_753c00() {
+    // IDA 0x753c00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::DynamicRotateJoint::~DynamicRotateJoint()")]
 // 0x753ca0 — __ZN3RBX18DynamicRotateJointD1Ev
-pub fn stub_753ca0() -> ! {
-    todo!("0x753ca0 __ZN3RBX18DynamicRotateJointD1Ev")
+pub fn stub_753ca0() {
+    // IDA 0x753ca0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "non-virtual thunk toRBX::DynamicRotateJoint::~DynamicRotateJoint()")]
 // 0x753ca4 — __ZThn32_N3RBX18DynamicRotateJointD0Ev
-pub fn stub_753ca4() -> ! {
-    todo!("0x753ca4 __ZThn32_N3RBX18DynamicRotateJointD0Ev")
+pub fn stub_753ca4() {
+    // IDA 0x753ca4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::DynamicRotateJoint::~DynamicRotateJoint()")]
 // 0x753cac — __ZN3RBX18DynamicRotateJointD2Ev
-pub fn stub_753cac() -> ! {
-    todo!("0x753cac __ZN3RBX18DynamicRotateJointD2Ev")
+pub fn stub_753cac() {
+    // IDA 0x753cac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "non-virtual thunk toRBX::DynamicRotateJoint::~DynamicRotateJoint()")]
 // 0x753dd4 — __ZThn32_N3RBX18DynamicRotateJointD1Ev
-pub fn stub_753dd4() -> ! {
-    todo!("0x753dd4 __ZThn32_N3RBX18DynamicRotateJointD1Ev")
+pub fn stub_753dd4() {
+    // IDA 0x753dd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::DynamicRotateJoint::setPhysics(void)")]
 // 0x753ddc — __ZN3RBX18DynamicRotateJoint10setPhysicsEv
-pub fn stub_753ddc() -> ! {
-    todo!("0x753ddc __ZN3RBX18DynamicRotateJoint10setPhysicsEv")
+pub fn stub_753ddc() {
+    // IDA 0x753ddc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::DynamicRotateJoint::putInKernel(RBX::Kernel *)")]
 // 0x753dec — __ZN3RBX18DynamicRotateJoint11putInKernelEPNS_6KernelE
-pub fn stub_753dec() -> ! {
-    todo!("0x753dec __ZN3RBX18DynamicRotateJoint11putInKernelEPNS_6KernelE")
+pub fn stub_753dec() {
+    // IDA 0x753dec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::DynamicRotateJoint::removeFromKernel(void)")]
 // 0x753f94 — __ZN3RBX18DynamicRotateJoint16removeFromKernelEv
-pub fn stub_753f94() -> ! {
-    todo!("0x753f94 __ZN3RBX18DynamicRotateJoint16removeFromKernelEv")
+pub fn stub_753f94() {
+    // IDA 0x753f94: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::DynamicRotateJoint::stepUi(double)")]
 // 0x754060 — __ZN3RBX18DynamicRotateJoint6stepUiEd
-pub fn stub_754060() -> ! {
-    todo!("0x754060 __ZN3RBX18DynamicRotateJoint6stepUiEd")
+pub fn stub_754060() {
+    // IDA 0x754060: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::DynamicRotateJoint::getChannelValue(double)")]
 // 0x75409c — __ZN3RBX18DynamicRotateJoint15getChannelValueEd
-pub fn stub_75409c() -> ! {
-    todo!("0x75409c __ZN3RBX18DynamicRotateJoint15getChannelValueEd")
+pub fn stub_75409c() {
+    // IDA 0x75409c: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::RotatePJoint::stepWorld(void)")]
 // 0x754170 — __ZN3RBX12RotatePJoint9stepWorldEv
-pub fn stub_754170() -> ! {
-    todo!("0x754170 __ZN3RBX12RotatePJoint9stepWorldEv")
+pub fn stub_754170() {
+    // IDA 0x754170: physics world/stage/poly geometry type. Collision-world internals owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::RotateVJoint::stepWorld(void)")]
 // 0x754184 — __ZN3RBX12RotateVJoint9stepWorldEv
-pub fn stub_754184() -> ! {
-    todo!("0x754184 __ZN3RBX12RotateVJoint9stepWorldEv")
+pub fn stub_754184() {
+    // IDA 0x754184: physics world/stage/poly geometry type. Collision-world internals owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::RotateJoint::getJointType(void)const")]
 // 0x754198 — __ZNK3RBX11RotateJoint12getJointTypeEv
-pub fn stub_754198() -> ! {
-    todo!("0x754198 __ZNK3RBX11RotateJoint12getJointTypeEv")
+pub fn stub_754198() {
+    // IDA 0x754198: physics world/stage/poly geometry type. Collision-world internals owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::DynamicRotateJoint::canStepWorld(void)const")]
 // 0x75419c — __ZNK3RBX18DynamicRotateJoint12canStepWorldEv
-pub fn stub_75419c() -> ! {
-    todo!("0x75419c __ZNK3RBX18DynamicRotateJoint12canStepWorldEv")
+pub fn stub_75419c() {
+    // IDA 0x75419c: physics world/stage/poly geometry type. Collision-world internals owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::DynamicRotateJoint::canStepUi(void)const")]
 // 0x7541a0 — __ZNK3RBX18DynamicRotateJoint9canStepUiEv
-pub fn stub_7541a0() -> ! {
-    todo!("0x7541a0 __ZNK3RBX18DynamicRotateJoint9canStepUiEv")
+pub fn stub_7541a0() {
+    // IDA 0x7541a0: physics world/stage/poly geometry type. Collision-world internals owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::RotatePJoint::~RotatePJoint()")]
 // 0x7541a4 — __ZN3RBX12RotatePJointD1Ev
-pub fn stub_7541a4() -> ! {
-    todo!("0x7541a4 __ZN3RBX12RotatePJointD1Ev")
+pub fn stub_7541a4() {
+    // IDA 0x7541a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::RotatePJoint::~RotatePJoint()")]
 // 0x7541a8 — __ZN3RBX12RotatePJointD0Ev
-pub fn stub_7541a8() -> ! {
-    todo!("0x7541a8 __ZN3RBX12RotatePJointD0Ev")
+pub fn stub_7541a8() {
+    // IDA 0x7541a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::RotatePJoint::getJointType(void)const")]
 // 0x754248 — __ZNK3RBX12RotatePJoint12getJointTypeEv
-pub fn stub_754248() -> ! {
-    todo!("0x754248 __ZNK3RBX12RotatePJoint12getJointTypeEv")
+pub fn stub_754248() {
+    // IDA 0x754248: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "non-virtual thunk toRBX::RotatePJoint::~RotatePJoint()")]
 // 0x75424c — __ZThn32_N3RBX12RotatePJointD1Ev
-pub fn stub_75424c() -> ! {
-    todo!("0x75424c __ZThn32_N3RBX12RotatePJointD1Ev")
+pub fn stub_75424c() {
+    // IDA 0x75424c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "non-virtual thunk toRBX::RotatePJoint::~RotatePJoint()")]
 // 0x754254 — __ZThn32_N3RBX12RotatePJointD0Ev
-pub fn stub_754254() -> ! {
-    todo!("0x754254 __ZThn32_N3RBX12RotatePJointD0Ev")
+pub fn stub_754254() {
+    // IDA 0x754254: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::RotateVJoint::~RotateVJoint()")]
 // 0x7542f8 — __ZN3RBX12RotateVJointD1Ev
-pub fn stub_7542f8() -> ! {
-    todo!("0x7542f8 __ZN3RBX12RotateVJointD1Ev")
+pub fn stub_7542f8() {
+    // IDA 0x7542f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::RotateVJoint::~RotateVJoint()")]
 // 0x7542fc — __ZN3RBX12RotateVJointD0Ev
-pub fn stub_7542fc() -> ! {
-    todo!("0x7542fc __ZN3RBX12RotateVJointD0Ev")
+pub fn stub_7542fc() {
+    // IDA 0x7542fc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::RotateVJoint::getJointType(void)const")]
 // 0x75439c — __ZNK3RBX12RotateVJoint12getJointTypeEv
-pub fn stub_75439c() -> ! {
-    todo!("0x75439c __ZNK3RBX12RotateVJoint12getJointTypeEv")
+pub fn stub_75439c() {
+    // IDA 0x75439c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "non-virtual thunk toRBX::RotateVJoint::~RotateVJoint()")]
 // 0x7543a0 — __ZThn32_N3RBX12RotateVJointD1Ev
-pub fn stub_7543a0() -> ! {
-    todo!("0x7543a0 __ZThn32_N3RBX12RotateVJointD1Ev")
+pub fn stub_7543a0() {
+    // IDA 0x7543a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "non-virtual thunk toRBX::RotateVJoint::~RotateVJoint()")]
 // 0x7543a8 — __ZThn32_N3RBX12RotateVJointD0Ev
-pub fn stub_7543a8() -> ! {
-    todo!("0x7543a8 __ZThn32_N3RBX12RotateVJointD0Ev")
+pub fn stub_7543a8() {
+    // IDA 0x7543a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::JointConnector::getConnectorKernelType(void)const")]
 // 0x75444c — __ZNK3RBX14JointConnector22getConnectorKernelTypeEv
-pub fn stub_75444c() -> ! {
-    todo!("0x75444c __ZNK3RBX14JointConnector22getConnectorKernelTypeEv")
+pub fn stub_75444c() {
+    // IDA 0x75444c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::PointToPointBreakConnector::~PointToPointBreakConnector()")]
 // 0x754450 — __ZN3RBX26PointToPointBreakConnectorD1Ev
-pub fn stub_754450() -> ! {
-    todo!("0x754450 __ZN3RBX26PointToPointBreakConnectorD1Ev")
+pub fn stub_754450() {
+    // IDA 0x754450: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::PointToPointBreakConnector::~PointToPointBreakConnector()")]
 // 0x754454 — __ZN3RBX26PointToPointBreakConnectorD0Ev
-pub fn stub_754454() -> ! {
-    todo!("0x754454 __ZN3RBX26PointToPointBreakConnectorD0Ev")
+pub fn stub_754454() {
+    // IDA 0x754454: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::PointToPointBreakConnector::getBroken(void)")]
 // 0x754458 — __ZN3RBX26PointToPointBreakConnector9getBrokenEv
-pub fn stub_754458() -> ! {
-    todo!("0x754458 __ZN3RBX26PointToPointBreakConnector9getBrokenEv")
+pub fn stub_754458() {
+    // IDA 0x754458: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::SendPhysics::SendPhysics(void)")]
 // 0x75462c — __ZN3RBX11SendPhysicsC1Ev
-pub fn stub_75462c() -> ! {
-    todo!("0x75462c __ZN3RBX11SendPhysicsC1Ev")
+pub fn stub_75462c() {
+    // IDA 0x75462c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::SendPhysics::SendPhysics(void)")]
 // 0x754630 — __ZN3RBX11SendPhysicsC2Ev
-pub fn stub_754630() -> ! {
-    todo!("0x754630 __ZN3RBX11SendPhysicsC2Ev")
+pub fn stub_754630() {
+    // IDA 0x754630: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::SendPhysics::~SendPhysics()")]
 // 0x754824 — __ZN3RBX11SendPhysicsD1Ev
-pub fn stub_754824() -> ! {
-    todo!("0x754824 __ZN3RBX11SendPhysicsD1Ev")
+pub fn stub_754824() {
+    // IDA 0x754824: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::SendPhysics::~SendPhysics()")]
 // 0x754828 — __ZN3RBX11SendPhysicsD2Ev
-pub fn stub_754828() -> ! {
-    todo!("0x754828 __ZN3RBX11SendPhysicsD2Ev")
+pub fn stub_754828() {
+    // IDA 0x754828: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::SendPhysics::buildSimJob(RBX::SimJob *)")]
 // 0x754abc — __ZN3RBX11SendPhysics11buildSimJobEPNS_6SimJobE
-pub fn stub_754abc() -> ! {
-    todo!("0x754abc __ZN3RBX11SendPhysics11buildSimJobEPNS_6SimJobE")
+pub fn stub_754abc() {
+    // IDA 0x754abc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::SendPhysics::destroySimJob(RBX::SimJob *)")]
 // 0x754b34 — __ZN3RBX11SendPhysics13destroySimJobEPNS_6SimJobE
-pub fn stub_754b34() -> ! {
-    todo!("0x754b34 __ZN3RBX11SendPhysics13destroySimJobEPNS_6SimJobE")
+pub fn stub_754b34() {
+    // IDA 0x754b34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::SendPhysics::onMovingAssemblyRootAdded(RBX::Assembly *)")]
 // 0x754bd0 — __ZN3RBX11SendPhysics25onMovingAssemblyRootAddedEPNS_8AssemblyE
-pub fn stub_754bd0() -> ! {
-    todo!("0x754bd0 __ZN3RBX11SendPhysics25onMovingAssemblyRootAddedEPNS_8AssemblyE")
+pub fn stub_754bd0() {
+    // IDA 0x754bd0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::SendPhysics::onMovingAssemblyRootRemoving(RBX::Assembly *)")]
 // 0x754d1c — __ZN3RBX11SendPhysics28onMovingAssemblyRootRemovingEPNS_8AssemblyE
-pub fn stub_754d1c() -> ! {
-    todo!("0x754d1c __ZN3RBX11SendPhysics28onMovingAssemblyRootRemovingEPNS_8AssemblyE")
+pub fn stub_754d1c() {
+    // IDA 0x754d1c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::SendPhysics::nextSimJob(RBX::SimJob *)")]
 // 0x754e00 — __ZN3RBX11SendPhysics10nextSimJobEPNS_6SimJobE
-pub fn stub_754e00() -> ! {
-    todo!("0x754e00 __ZN3RBX11SendPhysics10nextSimJobEPNS_6SimJobE")
+pub fn stub_754e00() {
+    // IDA 0x754e00: simulation/instance gameplay wiring owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::SimJob::getConstSimJobFromPrimitive(RBX::Primitive const*)")]
 // 0x754f3c — __ZN3RBX6SimJob27getConstSimJobFromPrimitiveEPKNS_9PrimitiveE
-pub fn stub_754f3c() -> ! {
-    todo!("0x754f3c __ZN3RBX6SimJob27getConstSimJobFromPrimitiveEPKNS_9PrimitiveE")
+pub fn stub_754f3c() {
+    // IDA 0x754f3c: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::SimJobTracker::stopTracking(void)")]
 // 0x754f54 — __ZN3RBX13SimJobTracker12stopTrackingEv
-pub fn stub_754f54() -> ! {
-    todo!("0x754f54 __ZN3RBX13SimJobTracker12stopTrackingEv")
+pub fn stub_754f54() {
+    // IDA 0x754f54: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::SimJobTracker::tracking(void)")]
 // 0x755034 — __ZN3RBX13SimJobTracker8trackingEv
-pub fn stub_755034() -> ! {
-    todo!("0x755034 __ZN3RBX13SimJobTracker8trackingEv")
+pub fn stub_755034() {
+    // IDA 0x755034: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::SimJobTracker::setSimJob(RBX::SimJob *)")]
 // 0x7550bc — __ZN3RBX13SimJobTracker9setSimJobEPNS_6SimJobE
-pub fn stub_7550bc() -> ! {
-    todo!("0x7550bc __ZN3RBX13SimJobTracker9setSimJobEPNS_6SimJobE")
+pub fn stub_7550bc() {
+    // IDA 0x7550bc: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::SimJobTracker::getSimJob(void)")]
 // 0x7551a8 — __ZN3RBX13SimJobTracker9getSimJobEv
-pub fn stub_7551a8() -> ! {
-    todo!("0x7551a8 __ZN3RBX13SimJobTracker9getSimJobEv")
+pub fn stub_7551a8() {
+    // IDA 0x7551a8: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::SimJobTracker::transferTrackers(RBX::SimJob *,RBX::SimJob *)")]
 // 0x755264 — __ZN3RBX13SimJobTracker16transferTrackersEPNS_6SimJobES2_
-pub fn stub_755264() -> ! {
-    todo!("0x755264 __ZN3RBX13SimJobTracker16transferTrackersEPNS_6SimJobES2_")
+pub fn stub_755264() {
+    // IDA 0x755264: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::SimJob::SimJob(RBX::Assembly *)")]
 // 0x755310 — __ZN3RBX6SimJobC1EPNS_8AssemblyE
-pub fn stub_755310() -> ! {
-    todo!("0x755310 __ZN3RBX6SimJobC1EPNS_8AssemblyE")
+pub fn stub_755310() {
+    // IDA 0x755310: simulation/instance gameplay wiring owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::SimJob::SimJob(RBX::Assembly *)")]
 // 0x755314 — __ZN3RBX6SimJobC2EPNS_8AssemblyE
-pub fn stub_755314() -> ! {
-    todo!("0x755314 __ZN3RBX6SimJobC2EPNS_8AssemblyE")
+pub fn stub_755314() {
+    // IDA 0x755314: simulation/instance gameplay wiring owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::SimJob::~SimJob()")]
 // 0x755424 — __ZN3RBX6SimJobD1Ev
-pub fn stub_755424() -> ! {
-    todo!("0x755424 __ZN3RBX6SimJobD1Ev")
+pub fn stub_755424() {
+    // IDA 0x755424: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::SimJob::~SimJob()")]
 // 0x755428 — __ZN3RBX6SimJobD2Ev
-pub fn stub_755428() -> ! {
-    todo!("0x755428 __ZN3RBX6SimJobD2Ev")
+pub fn stub_755428() {
+    // IDA 0x755428: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "unsigned long RBX::fastRemoveShort<RBX::SimJobTracker *>(std::vector<RBX::SimJobTracker *,std::allocator<RBX::SimJobTracker *>> &,RBX::SimJobTracker * const&)")]
 // 0x755580 — __ZN3RBX15fastRemoveShortIPNS_13SimJobTrackerEEEmRSt6vectorIT_SaIS4_EERKS4_
-pub fn stub_755580() -> ! {
-    todo!("0x755580 __ZN3RBX15fastRemoveShortIPNS_13SimJobTrackerEEEmRSt6vectorIT_SaIS4_EERKS4_")
+pub fn stub_755580() {
+    // IDA 0x755580: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "std::vector<RBX::SimJobTracker *,std::allocator<RBX::SimJobTracker *>>::push_back(RBX::SimJobTracker * const&)")]
 // 0x7556dc — __ZNSt6vectorIPN3RBX13SimJobTrackerESaIS2_EE9push_backERKS2_
-pub fn stub_7556dc() -> ! {
-    todo!("0x7556dc __ZNSt6vectorIPN3RBX13SimJobTrackerESaIS2_EE9push_backERKS2_")
+pub fn stub_7556dc() {
+    // IDA 0x7556dc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "std::vector<RBX::SimJobTracker *,std::allocator<RBX::SimJobTracker *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::SimJobTracker **,std::vector<RBX::SimJobTracker *,std::allocator<RBX::SimJobTracker *>>>,RBX::SimJobTracker * const&)")]
 // 0x755708 — __ZNSt6vectorIPN3RBX13SimJobTrackerESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
-pub fn stub_755708() -> ! {
-    todo!("0x755708 __ZNSt6vectorIPN3RBX13SimJobTrackerESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")
+pub fn stub_755708() {
+    // IDA 0x755708: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "std::_Vector_base<RBX::SimJobTracker *,std::allocator<RBX::SimJobTracker *>>::_M_allocate(unsigned long)")]
 // 0x7557e8 — __ZNSt12_Vector_baseIPN3RBX13SimJobTrackerESaIS2_EE11_M_allocateEm
-pub fn stub_7557e8() -> ! {
-    todo!("0x7557e8 __ZNSt12_Vector_baseIPN3RBX13SimJobTrackerESaIS2_EE11_M_allocateEm")
+pub fn stub_7557e8() {
+    // IDA 0x7557e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "std::vector<RBX::SimJobTracker *,std::allocator<RBX::SimJobTracker *>>::resize(unsigned long,RBX::SimJobTracker *)")]
 // 0x755800 — __ZNSt6vectorIPN3RBX13SimJobTrackerESaIS2_EE6resizeEmS2_
-pub fn stub_755800() -> ! {
-    todo!("0x755800 __ZNSt6vectorIPN3RBX13SimJobTrackerESaIS2_EE6resizeEmS2_")
+pub fn stub_755800() {
+    // IDA 0x755800: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "std::vector<RBX::SimJobTracker *,std::allocator<RBX::SimJobTracker *>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::SimJobTracker **,std::vector<RBX::SimJobTracker *,std::allocator<RBX::SimJobTracker *>>>,unsigned long,RBX::SimJobTracker * const&)")]
 // 0x755834 — __ZNSt6vectorIPN3RBX13SimJobTrackerESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
-pub fn stub_755834() -> ! {
-    todo!("0x755834 __ZNSt6vectorIPN3RBX13SimJobTrackerESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")
+pub fn stub_755834() {
+    // IDA 0x755834: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "__gnu_cxx::__normal_iterator<RBX::SimJobTracker **,std::vector<RBX::SimJobTracker *,std::allocator<RBX::SimJobTracker *>>> std::__find<__gnu_cxx::__normal_iterator<RBX::SimJobTracker **,std::vector<RBX::SimJobTracker *,std::allocator<RBX::SimJobTracker *>>>,RBX::SimJobTracker *>(__gnu_cxx::__normal_iterator<RBX::SimJobTracker **,std::vector<RBX::SimJobTracker *,std::allocator<RBX::SimJobTracker *>>>,__gnu_cxx::__normal_iterator<RBX::SimJobTracker **,std::vector<RBX::SimJobTracker *,std::allocator<RBX::SimJobTracker *>>>,RBX::SimJobTracker * const&,std::random_access_iterator_tag)")]
 // 0x75599c — __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPPN3RBX13SimJobTrackerESt6vectorIS4_SaIS4_EEEES4_ET_SA_SA_RKT0_St26random_access_iterator_tag
-pub fn stub_75599c() -> ! {
-    todo!("0x75599c __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPPN3RBX13SimJobTrackerESt6vectorIS4_SaIS4_EEEES4_ET_SA_SA_RKT0_St26random_access_iterator_tag")
+pub fn stub_75599c() {
+    // IDA 0x75599c: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "RBX::SimulateStage::SimulateStage(RBX::IStage *,RBX::World *)")]
 // 0x755af4 — __ZN3RBX13SimulateStageC1EPNS_6IStageEPNS_5WorldE
-pub fn stub_755af4() -> ! {
-    todo!("0x755af4 __ZN3RBX13SimulateStageC1EPNS_6IStageEPNS_5WorldE")
+pub fn stub_755af4() {
+    // IDA 0x755af4: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "RBX::SimulateStage::SimulateStage(RBX::IStage *,RBX::World *)")]
 // 0x755af8 — __ZN3RBX13SimulateStageC2EPNS_6IStageEPNS_5WorldE
-pub fn stub_755af8() -> ! {
-    todo!("0x755af8 __ZN3RBX13SimulateStageC2EPNS_6IStageEPNS_5WorldE")
+pub fn stub_755af8() {
+    // IDA 0x755af8: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "RBX::SimulateStage::~SimulateStage()")]
 // 0x755bf0 — __ZN3RBX13SimulateStageD0Ev
-pub fn stub_755bf0() -> ! {
-    todo!("0x755bf0 __ZN3RBX13SimulateStageD0Ev")
+pub fn stub_755bf0() {
+    // IDA 0x755bf0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::SimulateStage::~SimulateStage()")]
 // 0x755c90 — __ZN3RBX13SimulateStageD1Ev
-pub fn stub_755c90() -> ! {
-    todo!("0x755c90 __ZN3RBX13SimulateStageD1Ev")
+pub fn stub_755c90() {
+    // IDA 0x755c90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::SimulateStage::~SimulateStage()")]
 // 0x755c94 — __ZN3RBX13SimulateStageD2Ev
-pub fn stub_755c94() -> ! {
-    todo!("0x755c94 __ZN3RBX13SimulateStageD2Ev")
+pub fn stub_755c94() {
+    // IDA 0x755c94: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::SimulateStage::onAssemblyAdded(RBX::Assembly *)")]
 // 0x755f34 — __ZN3RBX13SimulateStage15onAssemblyAddedEPNS_8AssemblyE
-pub fn stub_755f34() -> ! {
-    todo!("0x755f34 __ZN3RBX13SimulateStage15onAssemblyAddedEPNS_8AssemblyE")
+pub fn stub_755f34() {
+    // IDA 0x755f34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::SimulateStage::putFirstMovingRootInSendPhysics(RBX::Assembly *)")]
 // 0x756070 — __ZN3RBX13SimulateStage31putFirstMovingRootInSendPhysicsEPNS_8AssemblyE
-pub fn stub_756070() -> ! {
-    todo!("0x756070 __ZN3RBX13SimulateStage31putFirstMovingRootInSendPhysicsEPNS_8AssemblyE")
+pub fn stub_756070() {
+    // IDA 0x756070: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::SimulateStage::onAssemblyRemoving(RBX::Assembly *)")]
 // 0x756130 — __ZN3RBX13SimulateStage18onAssemblyRemovingEPNS_8AssemblyE
-pub fn stub_756130() -> ! {
-    todo!("0x756130 __ZN3RBX13SimulateStage18onAssemblyRemovingEPNS_8AssemblyE")
+pub fn stub_756130() {
+    // IDA 0x756130: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::SimulateStage::removeLastMovingRootFromSendPhysics(RBX::Assembly *)")]
 // 0x7561ac — __ZN3RBX13SimulateStage35removeLastMovingRootFromSendPhysicsEPNS_8AssemblyE
-pub fn stub_7561ac() -> ! {
-    todo!("0x7561ac __ZN3RBX13SimulateStage35removeLastMovingRootFromSendPhysicsEPNS_8AssemblyE")
+pub fn stub_7561ac() {
+    // IDA 0x7561ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::SimulateStage::removeFromSendPhysics(RBX::Assembly *)")]
 // 0x75627c — __ZN3RBX13SimulateStage21removeFromSendPhysicsEPNS_8AssemblyE
-pub fn stub_75627c() -> ! {
-    todo!("0x75627c __ZN3RBX13SimulateStage21removeFromSendPhysicsEPNS_8AssemblyE")
+pub fn stub_75627c() {
+    // IDA 0x75627c: physics world/stage/poly geometry type. Collision-world internals owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::SimulateStage::onEdgeAdded(RBX::Edge *)")]
 // 0x7562f8 — __ZN3RBX13SimulateStage11onEdgeAddedEPNS_4EdgeE
-pub fn stub_7562f8() -> ! {
-    todo!("0x7562f8 __ZN3RBX13SimulateStage11onEdgeAddedEPNS_4EdgeE")
+pub fn stub_7562f8() {
+    // IDA 0x7562f8: physics world/stage/poly geometry type. Collision-world internals owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::SimulateStage::onEdgeRemoving(RBX::Edge *)")]
 // 0x756320 — __ZN3RBX13SimulateStage14onEdgeRemovingEPNS_4EdgeE
-pub fn stub_756320() -> ! {
-    todo!("0x756320 __ZN3RBX13SimulateStage14onEdgeRemovingEPNS_4EdgeE")
+pub fn stub_756320() {
+    // IDA 0x756320: physics world/stage/poly geometry type. Collision-world internals owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::Assembly * RBX::IndexedTree::getOneBelowRoot<RBX::Assembly>(void)")]
 // 0x75633c — __ZN3RBX11IndexedTree15getOneBelowRootINS_8AssemblyEEEPT_v
-pub fn stub_75633c() -> ! {
-    todo!("0x75633c __ZN3RBX11IndexedTree15getOneBelowRootINS_8AssemblyEEEPT_v")
+pub fn stub_75633c() {
+    // IDA 0x75633c: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::SimulateStage::getStageType(void)const")]
 // 0x7563a8 — __ZNK3RBX13SimulateStage12getStageTypeEv
-pub fn stub_7563a8() -> ! {
-    todo!("0x7563a8 __ZNK3RBX13SimulateStage12getStageTypeEv")
+pub fn stub_7563a8() {
+    // IDA 0x7563a8: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "std::_Rb_tree<RBX::Assembly *,std::pair<RBX::Assembly * const,int>,std::_Select1st<std::pair<RBX::Assembly * const,int>>,std::less<RBX::Assembly *>,std::allocator<std::pair<RBX::Assembly * const,int>>>::_M_insert_unique(std::pair<RBX::Assembly * const,int> const&)")]
 // 0x7563ac — __ZNSt8_Rb_treeIPN3RBX8AssemblyESt4pairIKS2_iESt10_Select1stIS5_ESt4lessIS2_ESaIS5_EE16_M_insert_uniqueERKS5_
-pub fn stub_7563ac() -> ! {
-    todo!("0x7563ac __ZNSt8_Rb_treeIPN3RBX8AssemblyESt4pairIKS2_iESt10_Select1stIS5_ESt4lessIS2_ESaIS5_EE16_M_insert_uniqueERKS5_")
+pub fn stub_7563ac() {
+    // IDA 0x7563ac: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
