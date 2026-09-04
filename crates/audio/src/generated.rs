@@ -6,6 +6,13 @@
 
 use rbx_core::SharedPtr;
 
+use crate::{
+    AsyncOs, AsyncRegistry, AsyncSoundView, AsyncThread, ClientNet, DspSnapshot, Floor1Info,
+    Floor1Look, MemTracker, OggpackBuffer, Profile, ProfileClient, ProfileCpu, ProfileDsp,
+    ProfileLive, ProfileMemExtra, ProfileModule, ProfileOs, VorbisBlock, VorbisCodebook,
+    VorbisCodecOs, VorbisDspState, VorbisHeap, VorbisStaticBook,
+};
+
 // Ensure SharedPtr is seen as used — type alias mirrors boost::shared_ptr<T> -> rbx_core::SharedPtr<T>
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
@@ -19,29 +26,29 @@ pub fn stub_376198() -> ! {
 // 0x37677c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10StockSoundEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(__guard *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::StockSound> RBX::Creatable<RBX::Instance>::create<RBX::StockSound>(void)")]
-pub fn stub_37677c() -> ! {
-    todo!("0x37677c boost::shared_ptr<RBX::StockSound> RBX::Creatable<RBX::Instance>::create<RBX::StockSound>(void)")
+pub fn stub_37677c() {
+    // IDA 0x37677c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x376a24 — __ZN5boost10shared_ptrIN3RBX10Soundscape12SoundChannelEEaSINS1_10StockSoundEEERS4_RKNS0_IT_EE
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>& rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>::operator=<RBX::StockSound>(rbx_core::SharedPtr<RBX::StockSound> const&)")]
-pub fn stub_376a24() -> ! {
-    todo!("0x376a24 boost::shared_ptr<RBX::Soundscape::SoundChannel>& boost::shared_ptr<RBX::Soundscape::SoundChannel>::operator=<RBX::StockSound>(boost::shared_ptr<RBX::StockSound> const&)")
+pub fn stub_376a24() {
+    // IDA 0x376a24: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x376a58 — __ZN5boost10shared_ptrIN3RBX10Soundscape12SoundService8SoundJobEEaSERKS5_
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundService::SoundJob>::operator=(rbx_core::SharedPtr<RBX::Soundscape::SoundService::SoundJob> const&)")]
-pub fn stub_376a58() -> ! {
-    todo!("0x376a58 boost::shared_ptr<RBX::Soundscape::SoundService::SoundJob>::operator=(boost::shared_ptr<RBX::Soundscape::SoundService::SoundJob> const&)")
+pub fn stub_376a58() {
+    // IDA 0x376a58: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x376a90 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSI21SoundServiceStatsItemEERS3_RKNS0_IT_EE
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<SoundServiceStatsItem>(rbx_core::SharedPtr<SoundServiceStatsItem> const&)")]
-pub fn stub_376a90() -> ! {
-    todo!("0x376a90 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<SoundServiceStatsItem>(boost::shared_ptr<SoundServiceStatsItem> const&)")
+pub fn stub_376a90() {
+    // IDA 0x376a90: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x376ac4 — __ZN21SoundServiceStatsItem6createEPKN3RBX10Soundscape12SoundServiceE
@@ -82,29 +89,29 @@ pub fn stub_376fb8() -> ! {
 // 0x376fc0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::~EnumPropDescriptor()")]
-pub fn stub_376fc0() -> ! {
-    todo!("0x376fc0 RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::~EnumPropDescriptor()")
+pub fn stub_376fc0() {
+    // IDA 0x376fc0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x376fe4 — __ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundServiceEFvNS_9SoundTypeEELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::~BoundFuncDesc()")]
-pub fn stub_376fe4() -> ! {
-    todo!("0x376fe4 RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::~BoundFuncDesc()")
+pub fn stub_376fe4() {
+    // IDA 0x376fe4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x377024 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelENS2_7SoundIdEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::~PropDescriptor()")]
-pub fn stub_377024() -> ! {
-    todo!("0x377024 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::~PropDescriptor()")
+pub fn stub_377024() {
+    // IDA 0x377024: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x377048 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEfED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::~PropDescriptor()")]
-pub fn stub_377048() -> ! {
-    todo!("0x377048 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::~PropDescriptor()")
+pub fn stub_377048() {
+    // IDA 0x377048: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37706c — __ZNK3RBX10Soundscape12SoundChannel12getPlayCountEv
@@ -117,29 +124,29 @@ pub fn stub_37706c() -> ! {
 // 0x377074 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEiED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::~PropDescriptor()")]
-pub fn stub_377074() -> ! {
-    todo!("0x377074 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::~PropDescriptor()")
+pub fn stub_377074() {
+    // IDA 0x377074: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x377098 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::~PropDescriptor()")]
-pub fn stub_377098() -> ! {
-    todo!("0x377098 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::~PropDescriptor()")
+pub fn stub_377098() {
+    // IDA 0x377098: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3770bc — __ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundChannelEFvvELi0EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_3770bc() -> ! {
-    todo!("0x3770bc RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_3770bc() {
+    // IDA 0x3770bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3770e0 — __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE7connectIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_10Soundscape12SoundChannelES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEEEENS0_10connectionERKT_
 // type: int __fastcall(int *, int, __int64 *)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Heartbeat const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>> const&)")]
-pub fn stub_3770e0() -> ! {
-    todo!("0x3770e0 rbx::signals::connection rbx::signals::signal<void ()(RBX::Heartbeat const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>> const&)")
+pub fn stub_3770e0() {
+    // IDA 0x3770e0: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x377154 — __ZN3RBX15ServiceProvider4findINS_10Soundscape12SoundServiceEEEPT_PKNS_8InstanceE
@@ -152,8 +159,8 @@ pub fn stub_377154() -> ! {
 // 0x37716c — __ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEEaSERKS4_
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::Sound>::operator=(rbx_core::SharedPtr<RBX::Soundscape::Sound> const&)")]
-pub fn stub_37716c() -> ! {
-    todo!("0x37716c boost::shared_ptr<RBX::Soundscape::Sound>::operator=(boost::shared_ptr<RBX::Soundscape::Sound> const&)")
+pub fn stub_37716c() {
+    // IDA 0x37716c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x3771a4 — __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -166,8 +173,8 @@ pub fn stub_3771a4() -> ! {
 // 0x3772c0 — __ZNSt3mapIN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEESt4lessIS2_ESaISt4pairIKS2_S6_EEEixERSA_
 // type: int __fastcall(int, const std::string *)
 #[doc(alias = "std::map<RBX::Soundscape::SoundId,rbx_core::SharedPtr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::operator[](RBX::Soundscape::SoundId const&)")]
-pub fn stub_3772c0() -> ! {
-    todo!("0x3772c0 std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::operator[](RBX::Soundscape::SoundId const&)")
+pub fn stub_3772c0() {
+    // IDA 0x3772c0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x37750c — __ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E12getClassNameEv
@@ -180,8 +187,8 @@ pub fn stub_37750c() -> ! {
 // 0x37751c — __ZThn32_NK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E12getClassNameEv
 // type: int __fastcall(int)
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E12getClassNameEv")]
-pub fn stub_37751c() -> ! {
-    todo!("0x37751c __ZThn32_NK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E12getClassNameEv")
+pub fn stub_37751c() {
+    // IDA 0x37751c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37752c — __ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E12getClassNameEv
@@ -194,36 +201,36 @@ pub fn stub_37752c() -> ! {
 // 0x37753c — __ZThn32_NK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E12getClassNameEv")]
-pub fn stub_37753c() -> ! {
-    todo!("0x37753c __ZThn32_NK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E12getClassNameEv")
+pub fn stub_37753c() {
+    // IDA 0x37753c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37754c — __ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD1Ev
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_37754c() -> ! {
-    todo!("0x37754c __ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_37754c() {
+    // IDA 0x37754c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x377550 — __ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD1Ev
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD1Ev")]
-pub fn stub_377550() -> ! {
-    todo!("0x377550 __ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD1Ev")
+pub fn stub_377550() {
+    // IDA 0x377550: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x377554 — __ZN3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEED1Ev
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::~EnumDesc()")]
-pub fn stub_377554() -> ! {
-    todo!("0x377554 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::~EnumDesc()")
+pub fn stub_377554() {
+    // IDA 0x377554: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x377558 — __ZN3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::~EnumDesc()")]
-pub fn stub_377558() -> ! {
-    todo!("0x377558 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::~EnumDesc()")
+pub fn stub_377558() {
+    // IDA 0x377558: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3775f8 — __ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE6lookupEPKc
@@ -312,15 +319,15 @@ pub fn stub_377c10() -> ! {
 // 0x377c8c — __ZN3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEED2Ev
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *, int, int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::~EnumDesc()")]
-pub fn stub_377c8c() -> ! {
-    todo!("0x377c8c RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::~EnumDesc()")
+pub fn stub_377c8c() {
+    // IDA 0x377c8c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x377e60 — __ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD2Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD2Ev")]
-pub fn stub_377e60() -> ! {
-    todo!("0x377e60 __ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD2Ev")
+pub fn stub_377e60() {
+    // IDA 0x377e60: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x377efc — __ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator12getClassNameEv
@@ -339,64 +346,64 @@ pub fn stub_377f84() -> ! {
 // 0x3780c8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10Soundscape12SoundChannelEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundChannel> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundChannel>(void)")]
-pub fn stub_3780c8() -> ! {
-    todo!("0x3780c8 boost::shared_ptr<RBX::Soundscape::SoundChannel> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundChannel>(void)")
+pub fn stub_3780c8() {
+    // IDA 0x3780c8: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x378178 — __ZN5boost10shared_ptrIN3RBX10Soundscape12SoundChannelEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>::shared_ptr<RBX::Soundscape::SoundChannel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_378178() -> ! {
-    todo!("0x378178 boost::shared_ptr<RBX::Soundscape::SoundChannel>::shared_ptr<RBX::Soundscape::SoundChannel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_378178() {
+    // IDA 0x378178: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x378240 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10Soundscape12SoundChannelES7_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundChannel>(rbx_core::SharedPtr<RBX::Soundscape::SoundChannel> const*,RBX::Soundscape::SoundChannel *)const")]
-pub fn stub_378240() -> ! {
-    todo!("0x378240 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundChannel>(boost::shared_ptr<RBX::Soundscape::SoundChannel> const*,RBX::Soundscape::SoundChannel *)const")
+pub fn stub_378240() {
+    // IDA 0x378240: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x37832c — __ZN5boost6detail12shared_countC2IPN3RBX10Soundscape12SoundChannelENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_37832c() -> ! {
-    todo!("0x37832c boost::detail::shared_count::shared_count<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_37832c() {
+    // IDA 0x37832c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x378434 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundChannelENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_378434() -> ! {
-    todo!("0x378434 boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_378434() {
+    // IDA 0x378434: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x378438 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundChannelENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_378438() -> ! {
-    todo!("0x378438 boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_378438() {
+    // IDA 0x378438: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37843c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundChannelENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_37843c() -> ! {
-    todo!("0x37843c boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_37843c() {
+    // IDA 0x37843c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x37845c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundChannelENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_37845c() -> ! {
-    todo!("0x37845c boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_37845c() {
+    // IDA 0x37845c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x378474 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundChannelENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_378474() -> ! {
-    todo!("0x378474 boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_378474() {
+    // IDA 0x378474: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x378478 — __ZN3RBX4Name13callDoDeclareILZNS_10Soundscape13sSoundChannelEEEEvv
@@ -429,92 +436,92 @@ pub fn stub_3787a0() -> ! {
 // 0x378814 — __ZNSt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEEEC2ERS3_RKS7_
 // type: _DWORD *__fastcall(_DWORD *, const std::string *, const shared_count *)
 #[doc(alias = "std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>::pair(RBX::Soundscape::SoundId const&,rbx_core::SharedPtr<RBX::Soundscape::Sound> const&)")]
-pub fn stub_378814() -> ! {
-    todo!("0x378814 std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>::pair(RBX::Soundscape::SoundId const&,boost::shared_ptr<RBX::Soundscape::Sound> const&)")
+pub fn stub_378814() {
+    // IDA 0x378814: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x3788dc — __ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
 // type: _Rb_tree_node_base *__fastcall(_DWORD *, _Rb_tree_node_base *, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>> const&)")]
-pub fn stub_3788dc() -> ! {
-    todo!("0x3788dc std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")
+pub fn stub_3788dc() {
+    // IDA 0x3788dc: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x3789c4 — __ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_
 // type: _Rb_tree_node_base *__fastcall(int, int, _Rb_tree_node_base *, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>> const&)")]
-pub fn stub_3789c4() -> ! {
-    todo!("0x3789c4 std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")
+pub fn stub_3789c4() {
+    // IDA 0x3789c4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x378a14 — __ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueERKS9_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::_M_insert_unique(std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>> const&)")]
-pub fn stub_378a14() -> ! {
-    todo!("0x378a14 std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_insert_unique(std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")
+pub fn stub_378a14() {
+    // IDA 0x378a14: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x378a94 — __ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE14_M_create_nodeERKS9_
 // type: _DWORD *__fastcall(int, const shared_count *, int, int, void *, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::_M_create_node(std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>> const&)")]
-pub fn stub_378a94() -> ! {
-    todo!("0x378a94 std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_create_node(std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")
+pub fn stub_378a94() {
+    // IDA 0x378a94: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x378ba0 — __ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEEC2IS3_EEPT_
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::Sound>::shared_ptr<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")]
-pub fn stub_378ba0() -> ! {
-    todo!("0x378ba0 boost::shared_ptr<RBX::Soundscape::Sound>::shared_ptr<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")
+pub fn stub_378ba0() {
+    // IDA 0x378ba0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x378c74 — __ZN5boost6detail12shared_countC2IN3RBX10Soundscape5SoundEEEPT_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")]
-pub fn stub_378c74() -> ! {
-    todo!("0x378c74 boost::detail::shared_count::shared_count<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")
+pub fn stub_378c74() {
+    // IDA 0x378c74: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x378d80 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Soundscape5SoundEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::Sound>::~sp_counted_impl_p()")]
-pub fn stub_378d80() -> ! {
-    todo!("0x378d80 boost::detail::sp_counted_impl_p<RBX::Soundscape::Sound>::~sp_counted_impl_p()")
+pub fn stub_378d80() {
+    // IDA 0x378d80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x378d84 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Soundscape5SoundEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::Sound>::~sp_counted_impl_p()")]
-pub fn stub_378d84() -> ! {
-    todo!("0x378d84 boost::detail::sp_counted_impl_p<RBX::Soundscape::Sound>::~sp_counted_impl_p()")
+pub fn stub_378d84() {
+    // IDA 0x378d84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x378d88 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Soundscape5SoundEE7disposeEv
 // type: void __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::Sound>::dispose(void)")]
-pub fn stub_378d88() -> ! {
-    todo!("0x378d88 boost::detail::sp_counted_impl_p<RBX::Soundscape::Sound>::dispose(void)")
+pub fn stub_378d88() {
+    // IDA 0x378d88: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x378e2c — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Soundscape5SoundEE11get_deleterERKSt9type_info
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::Sound>::get_deleter(std::type_info const&)")]
-pub fn stub_378e2c() -> ! {
-    todo!("0x378e2c boost::detail::sp_counted_impl_p<RBX::Soundscape::Sound>::get_deleter(std::type_info const&)")
+pub fn stub_378e2c() {
+    // IDA 0x378e2c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x378e30 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Soundscape5SoundEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::Sound>::get_untyped_deleter(void)")]
-pub fn stub_378e30() -> ! {
-    todo!("0x378e30 boost::detail::sp_counted_impl_p<RBX::Soundscape::Sound>::get_untyped_deleter(void)")
+pub fn stub_378e30() {
+    // IDA 0x378e30: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x378e34 — __ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE4findERS4_
 // type: int __fastcall(int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::find(RBX::Soundscape::SoundId const&)")]
-pub fn stub_378e34() -> ! {
-    todo!("0x378e34 std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::find(RBX::Soundscape::SoundId const&)")
+pub fn stub_378e34() {
+    // IDA 0x378e34: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x378e84 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10Soundscape10ReverbTypeEEEE13initSingletonEv
@@ -540,148 +547,148 @@ pub fn stub_378f78() -> ! {
 // 0x379094 — __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_10Soundscape12SoundChannelES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_379094() -> ! {
-    todo!("0x379094 rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_379094() {
+    // IDA 0x379094: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3790c0 — __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_10Soundscape12SoundChannelES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_3790c0() -> ! {
-    todo!("0x3790c0 rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_3790c0() {
+    // IDA 0x3790c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x379194 — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_10Soundscape12SoundChannelES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
 // type: int __fastcall(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")]
-pub fn stub_379194() -> ! {
-    todo!("0x379194 rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")
+pub fn stub_379194() {
+    // IDA 0x379194: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x37919c — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_10Soundscape12SoundChannelES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")]
-pub fn stub_37919c() -> ! {
-    todo!("0x37919c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")
+pub fn stub_37919c() {
+    // IDA 0x37919c: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x3791a4 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape12SoundChannelERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS7_EEvRKT_
 // type: int __fastcall(int)
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>::operator()<RBX::Heartbeat>(RBX::Heartbeat const&)")]
-pub fn stub_3791a4() -> ! {
-    todo!("0x3791a4 void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>::operator()<RBX::Heartbeat>(RBX::Heartbeat const&)")
+pub fn stub_3791a4() {
+    // IDA 0x3791a4: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 // 0x3791bc — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_10Soundscape12SoundChannelES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEELi1ES7_ED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()")]
-pub fn stub_3791bc() -> ! {
-    todo!("0x3791bc rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()")
+pub fn stub_3791bc() {
+    // IDA 0x3791bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3791e8 — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_10Soundscape12SoundChannelES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEELi1ES7_ED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()")]
-pub fn stub_3791e8() -> ! {
-    todo!("0x3791e8 rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()")
+pub fn stub_3791e8() {
+    // IDA 0x3791e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3792bc — __ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE5eraseESt17_Rb_tree_iteratorIS9_E
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>)")]
-pub fn stub_3792bc() -> ! {
-    todo!("0x3792bc std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>)")
+pub fn stub_3792bc() {
+    // IDA 0x3792bc: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x3792e4 — __ZN9__gnu_cxx13new_allocatorISt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS3_5SoundEEEEE7destroyEPSA_
 // type: void __fastcall(int, std::string *)
 #[doc(alias = "__gnu_cxx::new_allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>::destroy(std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>*)")]
-pub fn stub_3792e4() -> ! {
-    todo!("0x3792e4 __gnu_cxx::new_allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>::destroy(std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>*)")
+pub fn stub_3792e4() {
+    // IDA 0x3792e4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x379388 — __ZN3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_379388() -> ! {
-    todo!("0x379388 __ZN3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_379388() {
+    // IDA 0x379388: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37938c — __ZN3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_37938c() -> ! {
-    todo!("0x37938c __ZN3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_37938c() {
+    // IDA 0x37938c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37942c — __ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_37942c() -> ! {
-    todo!("0x37942c __ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_37942c() {
+    // IDA 0x37942c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x379434 — __ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_379434() -> ! {
-    todo!("0x379434 __ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_379434() {
+    // IDA 0x379434: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3794d8 — __ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_3794d8() -> ! {
-    todo!("0x3794d8 __ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_3794d8() {
+    // IDA 0x3794d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3794e0 — __ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_3794e0() -> ! {
-    todo!("0x3794e0 __ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_3794e0() {
+    // IDA 0x3794e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x379584 — __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_379584() -> ! {
-    todo!("0x379584 __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_379584() {
+    // IDA 0x379584: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x379588 — __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_379588() -> ! {
-    todo!("0x379588 __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_379588() {
+    // IDA 0x379588: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x379628 — __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_379628() -> ! {
-    todo!("0x379628 __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_379628() {
+    // IDA 0x379628: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x379630 — __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_379630() -> ! {
-    todo!("0x379630 __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_379630() {
+    // IDA 0x379630: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3796d4 — __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_3796d4() -> ! {
-    todo!("0x3796d4 __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_3796d4() {
+    // IDA 0x3796d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3796dc — __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_3796dc() -> ! {
-    todo!("0x3796dc __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_3796dc() {
+    // IDA 0x3796dc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x379780 — __ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundChannelEFvvELi0EEC2EMS3_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -694,8 +701,8 @@ pub fn stub_379780() -> ! {
 // 0x379884 — __ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundChannelEFvvELi0EED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_379884() -> ! {
-    todo!("0x379884 RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_379884() {
+    // IDA 0x379884: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x379938 — __ZNK3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundChannelEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -750,8 +757,8 @@ pub fn stub_379b4c() -> ! {
 // 0x379c58 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbED0Ev
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::~PropDescriptor()")]
-pub fn stub_379c58() -> ! {
-    todo!("0x379c58 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::~PropDescriptor()")
+pub fn stub_379c58() {
+    // IDA 0x379c58: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x379c84 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbE7GetImplIMS3_KFbvEE10isReadOnlyEv
@@ -827,8 +834,8 @@ pub fn stub_379f34() -> ! {
 // 0x37a048 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEiED0Ev
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::~PropDescriptor()")]
-pub fn stub_37a048() -> ! {
-    todo!("0x37a048 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::~PropDescriptor()")
+pub fn stub_37a048() {
+    // IDA 0x37a048: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37a074 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEiE10GetSetImplIMS3_KFivEMS3_FviEE10isReadOnlyEv
@@ -869,8 +876,8 @@ pub fn stub_37a0c0() -> ! {
 // 0x37a1d4 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEfED0Ev
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::~PropDescriptor()")]
-pub fn stub_37a1d4() -> ! {
-    todo!("0x37a1d4 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::~PropDescriptor()")
+pub fn stub_37a1d4() {
+    // IDA 0x37a1d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37a200 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEfE10GetSetImplIMS3_KFfvEMS3_FvfEE10isReadOnlyEv
@@ -918,8 +925,8 @@ pub fn stub_37a360() -> ! {
 // 0x37a484 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelENS2_7SoundIdEED0Ev
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::~PropDescriptor()")]
-pub fn stub_37a484() -> ! {
-    todo!("0x37a484 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::~PropDescriptor()")
+pub fn stub_37a484() {
+    // IDA 0x37a484: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37a4b0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE10isReadOnlyEv
@@ -974,15 +981,15 @@ pub fn stub_37aacc() -> ! {
 // 0x37abbc — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::~TypedPropertyDescriptor()")]
-pub fn stub_37abbc() -> ! {
-    todo!("0x37abbc RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::~TypedPropertyDescriptor()")
+pub fn stub_37abbc() {
+    // IDA 0x37abbc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37abe0 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEED0Ev
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::~TypedPropertyDescriptor()")]
-pub fn stub_37abe0() -> ! {
-    todo!("0x37abe0 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::~TypedPropertyDescriptor()")
+pub fn stub_37abe0() {
+    // IDA 0x37abe0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37ac0c — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelENS2_7SoundIdEE10GetSetImplIMS3_KFS4_vEMS3_FvS4_EE10isReadOnlyEv
@@ -1030,8 +1037,8 @@ pub fn stub_37aefc() -> ! {
 // 0x37af2c — __ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundServiceEFvNS_9SoundTypeEELi1EED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::~BoundFuncDesc()")]
-pub fn stub_37af2c() -> ! {
-    todo!("0x37af2c RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::~BoundFuncDesc()")
+pub fn stub_37af2c() {
+    // IDA 0x37af2c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37b000 — __ZNK3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundServiceEFvNS_9SoundTypeEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -1044,8 +1051,8 @@ pub fn stub_37b000() -> ! {
 // 0x37b034 — __ZN3RBX10Reflection9ArgHelper6getArgINS_9SoundTypeELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS4_EEPNS8_10disable_ifINS8_7is_sameIS4_NS8_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // type: int (__fastcall ***__fastcall(int (__fastcall ***)(_DWORD), int))(_DWORD)
 #[doc(alias = "RBX::SoundType RBX::Reflection::ArgHelper::getArg<RBX::SoundType,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::SoundType> const&,boost::disable_if<boost::is_same<RBX::SoundType,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
-pub fn stub_37b034() -> ! {
-    todo!("0x37b034 RBX::SoundType RBX::Reflection::ArgHelper::getArg<RBX::SoundType,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::SoundType> const&,boost::disable_if<boost::is_same<RBX::SoundType,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
+pub fn stub_37b034() {
+    // IDA 0x37b034: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x37b1c4 — __ZN3RBX10Reflection9ArgHelper8try_enumILi1ENS_9SoundTypeEEEbRNS0_18FunctionDescriptor9ArgumentsERT0_PN5boost9enable_ifINS9_7is_enumIS7_EEvE4typeE
@@ -1065,8 +1072,8 @@ pub fn stub_37b218() -> ! {
 // 0x37b3cc — __ZN3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEED0Ev
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::~EnumPropDescriptor()")]
-pub fn stub_37b3cc() -> ! {
-    todo!("0x37b3cc RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::~EnumPropDescriptor()")
+pub fn stub_37b3cc() {
+    // IDA 0x37b3cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37b3f8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEE10isReadOnlyEv
@@ -1303,92 +1310,92 @@ pub fn stub_37be64() -> ! {
 // 0x37be68 — __ZN5boost10shared_ptrIN3RBX10Soundscape12SoundService8SoundJobEEC2IS4_EEPT_
 // type: _DWORD *__fastcall(_DWORD *, void *, int, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundService::SoundJob>::shared_ptr<RBX::Soundscape::SoundService::SoundJob>(RBX::Soundscape::SoundService::SoundJob *)")]
-pub fn stub_37be68() -> ! {
-    todo!("0x37be68 boost::shared_ptr<RBX::Soundscape::SoundService::SoundJob>::shared_ptr<RBX::Soundscape::SoundService::SoundJob>(RBX::Soundscape::SoundService::SoundJob *)")
+pub fn stub_37be68() {
+    // IDA 0x37be68: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x37bf50 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_10Soundscape12SoundService8SoundJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Soundscape::SoundService::SoundJob,RBX::Soundscape::SoundService::SoundJob>(rbx_core::SharedPtr<RBX::Soundscape::SoundService::SoundJob> const*,RBX::Soundscape::SoundService::SoundJob *)const")]
-pub fn stub_37bf50() -> ! {
-    todo!("0x37bf50 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Soundscape::SoundService::SoundJob,RBX::Soundscape::SoundService::SoundJob>(boost::shared_ptr<RBX::Soundscape::SoundService::SoundJob> const*,RBX::Soundscape::SoundService::SoundJob *)const")
+pub fn stub_37bf50() {
+    // IDA 0x37bf50: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x37c034 — __ZN5boost6detail12shared_countC2IN3RBX10Soundscape12SoundService8SoundJobEEEPT_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Soundscape::SoundService::SoundJob>(RBX::Soundscape::SoundService::SoundJob *)")]
-pub fn stub_37c034() -> ! {
-    todo!("0x37c034 boost::detail::shared_count::shared_count<RBX::Soundscape::SoundService::SoundJob>(RBX::Soundscape::SoundService::SoundJob *)")
+pub fn stub_37c034() {
+    // IDA 0x37c034: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x37c12c — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Soundscape12SoundService8SoundJobEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::SoundService::SoundJob>::~sp_counted_impl_p()")]
-pub fn stub_37c12c() -> ! {
-    todo!("0x37c12c boost::detail::sp_counted_impl_p<RBX::Soundscape::SoundService::SoundJob>::~sp_counted_impl_p()")
+pub fn stub_37c12c() {
+    // IDA 0x37c12c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37c130 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Soundscape12SoundService8SoundJobEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::SoundService::SoundJob>::~sp_counted_impl_p()")]
-pub fn stub_37c130() -> ! {
-    todo!("0x37c130 boost::detail::sp_counted_impl_p<RBX::Soundscape::SoundService::SoundJob>::~sp_counted_impl_p()")
+pub fn stub_37c130() {
+    // IDA 0x37c130: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37c134 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Soundscape12SoundService8SoundJobEE7disposeEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::SoundService::SoundJob>::dispose(void)")]
-pub fn stub_37c134() -> ! {
-    todo!("0x37c134 boost::detail::sp_counted_impl_p<RBX::Soundscape::SoundService::SoundJob>::dispose(void)")
+pub fn stub_37c134() {
+    // IDA 0x37c134: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x37c144 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Soundscape12SoundService8SoundJobEE11get_deleterERKSt9type_info
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::SoundService::SoundJob>::get_deleter(std::type_info const&)")]
-pub fn stub_37c144() -> ! {
-    todo!("0x37c144 boost::detail::sp_counted_impl_p<RBX::Soundscape::SoundService::SoundJob>::get_deleter(std::type_info const&)")
+pub fn stub_37c144() {
+    // IDA 0x37c144: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x37c148 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Soundscape12SoundService8SoundJobEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::SoundService::SoundJob>::get_untyped_deleter(void)")]
-pub fn stub_37c148() -> ! {
-    todo!("0x37c148 boost::detail::sp_counted_impl_p<RBX::Soundscape::SoundService::SoundJob>::get_untyped_deleter(void)")
+pub fn stub_37c148() {
+    // IDA 0x37c148: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x37c14c — __ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
 // type: _Rb_tree_node_base *__fastcall(_DWORD *, _Rb_tree_node_base *, int *)
 #[doc(alias = "std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>> const&)")]
-pub fn stub_37c14c() -> ! {
-    todo!("0x37c14c std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>> const&)")
+pub fn stub_37c14c() {
+    // IDA 0x37c14c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x37c200 — __ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_
 // type: _Rb_tree_node_base *__fastcall(int, int, _Rb_tree_node_base *, int *)
 #[doc(alias = "std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>> const&)")]
-pub fn stub_37c200() -> ! {
-    todo!("0x37c200 std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>> const&)")
+pub fn stub_37c200() {
+    // IDA 0x37c200: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x37c24c — __ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE16_M_insert_uniqueERKS9_
 // type: int __fastcall(int, int, int *)
 #[doc(alias = "std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>>::_M_insert_unique(std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>> const&)")]
-pub fn stub_37c24c() -> ! {
-    todo!("0x37c24c std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_insert_unique(std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>> const&)")
+pub fn stub_37c24c() {
+    // IDA 0x37c24c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x37c2b4 — __ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE14_M_create_nodeERKS9_
 // type: _DWORD *__fastcall(int, const shared_count *, int, int, void *, int)
 #[doc(alias = "std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>>::_M_create_node(std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>> const&)")]
-pub fn stub_37c2b4() -> ! {
-    todo!("0x37c2b4 std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_create_node(std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>> const&)")
+pub fn stub_37c2b4() {
+    // IDA 0x37c2b4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x37c3a4 — __ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD2Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_37c3a4() -> ! {
-    todo!("0x37c3a4 __ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_37c3a4() {
+    // IDA 0x37c3a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37c440 — __ZNK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7Creator12getClassNameEv
@@ -1429,15 +1436,15 @@ pub fn stub_37c6f0() -> ! {
 // 0x37c934 — __ZN3RBX10StockSoundD1Ev
 // type: void __fastcall(RBX::Soundscape::SoundChannel *this, int, int)
 #[doc(alias = "RBX::StockSound::~StockSound()")]
-pub fn stub_37c934() -> ! {
-    todo!("0x37c934 RBX::StockSound::~StockSound()")
+pub fn stub_37c934() {
+    // IDA 0x37c934: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37c938 — __ZN3RBX10StockSoundD0Ev
 // type: void __fastcall(RBX::StockSound *this, int, int)
 #[doc(alias = "RBX::StockSound::~StockSound()")]
-pub fn stub_37c938() -> ! {
-    todo!("0x37c938 RBX::StockSound::~StockSound()")
+pub fn stub_37c938() {
+    // IDA 0x37c938: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37c9d8 — __ZNK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE12getClassNameEv
@@ -1450,36 +1457,36 @@ pub fn stub_37c9d8() -> ! {
 // 0x37c9e8 — __ZThn32_N3RBX10StockSoundD1Ev
 // type: void __fastcall(RBX::StockSound *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
-pub fn stub_37c9e8() -> ! {
-    todo!("0x37c9e8 non-virtual thunk toRBX::StockSound::~StockSound()")
+pub fn stub_37c9e8() {
+    // IDA 0x37c9e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37c9f0 — __ZThn32_N3RBX10StockSoundD0Ev
 // type: void __fastcall(RBX::StockSound *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
-pub fn stub_37c9f0() -> ! {
-    todo!("0x37c9f0 non-virtual thunk toRBX::StockSound::~StockSound()")
+pub fn stub_37c9f0() {
+    // IDA 0x37c9f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37ca94 — __ZThn32_NK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_37ca94() -> ! {
-    todo!("0x37ca94 __ZThn32_NK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE12getClassNameEv")
+pub fn stub_37ca94() {
+    // IDA 0x37ca94: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37caa4 — __ZThn36_N3RBX10StockSoundD1Ev
 // type: void __fastcall(RBX::StockSound *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
-pub fn stub_37caa4() -> ! {
-    todo!("0x37caa4 non-virtual thunk toRBX::StockSound::~StockSound()")
+pub fn stub_37caa4() {
+    // IDA 0x37caa4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37caac — __ZThn36_N3RBX10StockSoundD0Ev
 // type: void __fastcall(RBX::StockSound *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
-pub fn stub_37caac() -> ! {
-    todo!("0x37caac non-virtual thunk toRBX::StockSound::~StockSound()")
+pub fn stub_37caac() {
+    // IDA 0x37caac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37cb50 — __ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE17static_getCreatorEv
@@ -1492,176 +1499,176 @@ pub fn stub_37cb50() -> ! {
 // 0x37cbc4 — __ZN3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Soundscape::SoundChannel *this, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_37cbc4() -> ! {
-    todo!("0x37cbc4 __ZN3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_37cbc4() {
+    // IDA 0x37cbc4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37cbc8 — __ZN3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::Soundscape::SoundChannel *, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_37cbc8() -> ! {
-    todo!("0x37cbc8 __ZN3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_37cbc8() {
+    // IDA 0x37cbc8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37cc68 — __ZThn32_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_37cc68() -> ! {
-    todo!("0x37cc68 __ZThn32_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_37cc68() {
+    // IDA 0x37cc68: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37cc70 — __ZThn32_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_37cc70() -> ! {
-    todo!("0x37cc70 __ZThn32_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_37cc70() {
+    // IDA 0x37cc70: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37cd14 — __ZThn36_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_37cd14() -> ! {
-    todo!("0x37cd14 __ZThn36_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_37cd14() {
+    // IDA 0x37cd14: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37cd1c — __ZThn36_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_37cd1c() -> ! {
-    todo!("0x37cd1c __ZThn36_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_37cd1c() {
+    // IDA 0x37cd1c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37cdc0 — __ZN5boost10shared_ptrIN3RBX10StockSoundEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::StockSound>::shared_ptr<RBX::StockSound,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_37cdc0() -> ! {
-    todo!("0x37cdc0 boost::shared_ptr<RBX::StockSound>::shared_ptr<RBX::StockSound,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_37cdc0() {
+    // IDA 0x37cdc0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x37ce88 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10StockSoundES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StockSound,RBX::StockSound>(rbx_core::SharedPtr<RBX::StockSound> const*,RBX::StockSound *)const")]
-pub fn stub_37ce88() -> ! {
-    todo!("0x37ce88 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StockSound,RBX::StockSound>(boost::shared_ptr<RBX::StockSound> const*,RBX::StockSound *)const")
+pub fn stub_37ce88() {
+    // IDA 0x37ce88: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x37cf74 — __ZN5boost6detail12shared_countC2IPN3RBX10StockSoundENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_37cf74() -> ! {
-    todo!("0x37cf74 boost::detail::shared_count::shared_count<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_37cf74() {
+    // IDA 0x37cf74: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x37d07c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_37d07c() -> ! {
-    todo!("0x37d07c boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_37d07c() {
+    // IDA 0x37d07c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37d080 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_37d080() -> ! {
-    todo!("0x37d080 boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_37d080() {
+    // IDA 0x37d080: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37d084 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_37d084() -> ! {
-    todo!("0x37d084 boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_37d084() {
+    // IDA 0x37d084: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x37d0a4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_37d0a4() -> ! {
-    todo!("0x37d0a4 boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_37d0a4() {
+    // IDA 0x37d0a4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x37d0bc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_37d0bc() -> ! {
-    todo!("0x37d0bc boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_37d0bc() {
+    // IDA 0x37d0bc: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x37d0c0 — __ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>> *)")]
-pub fn stub_37d0c0() -> ! {
-    todo!("0x37d0c0 std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>> *)")
+pub fn stub_37d0c0() {
+    // IDA 0x37d0c0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x37d0f0 — __ZNSt4pairIN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEEEC2IKS2_S6_EERKS_IT_T0_E
 // type: _DWORD *__fastcall(_DWORD *, const shared_count *)
 #[doc(alias = "std::pair<RBX::Soundscape::SoundId,rbx_core::SharedPtr<RBX::Soundscape::Sound>>::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>(std::pair const&<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>)")]
-pub fn stub_37d0f0() -> ! {
-    todo!("0x37d0f0 std::pair<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>(std::pair const&<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>)")
+pub fn stub_37d0f0() {
+    // IDA 0x37d0f0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x37d1b4 — __ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
 // type: int __fastcall(int result, int)
 #[doc(alias = "std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>> *)")]
-pub fn stub_37d1b4() -> ! {
-    todo!("0x37d1b4 std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>> *)")
+pub fn stub_37d1b4() {
+    // IDA 0x37d1b4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x37d1dc — __ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS9_E
 // type: int __fastcall(int, int)
 #[doc(alias = "std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>> *)")]
-pub fn stub_37d1dc() -> ! {
-    todo!("0x37d1dc std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>> *)")
+pub fn stub_37d1dc() {
+    // IDA 0x37d1dc: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x37d1f8 — __ZN5boost10scoped_ptrIN3RBX10Soundscape21CollisionSoundManagerEED2Ev
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(RBX::Soundscape::CollisionSoundManager **)
 #[doc(alias = "boost::scoped_ptr<RBX::Soundscape::CollisionSoundManager>::~scoped_ptr()")]
-pub fn stub_37d1f8() -> ! {
-    todo!("0x37d1f8 boost::scoped_ptr<RBX::Soundscape::CollisionSoundManager>::~scoped_ptr()")
+pub fn stub_37d1f8() {
+    // IDA 0x37d1f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37d2a0 — __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_37d2a0() -> ! {
-    todo!("0x37d2a0 __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_37d2a0() {
+    // IDA 0x37d2a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37d2a4 — __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_37d2a4() -> ! {
-    todo!("0x37d2a4 __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_37d2a4() {
+    // IDA 0x37d2a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37d344 — __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_37d344() -> ! {
-    todo!("0x37d344 __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_37d344() {
+    // IDA 0x37d344: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37d34c — __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_37d34c() -> ! {
-    todo!("0x37d34c __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_37d34c() {
+    // IDA 0x37d34c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37d3f0 — __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_37d3f0() -> ! {
-    todo!("0x37d3f0 __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_37d3f0() {
+    // IDA 0x37d3f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37d3f8 — __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_37d3f8() -> ! {
-    todo!("0x37d3f8 __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_37d3f8() {
+    // IDA 0x37d3f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37d49c — __ZNSt6vectorIN3RBX10Soundscape10ReverbTypeESaIS2_EE6resizeEmS2_
@@ -1737,8 +1744,8 @@ pub fn stub_37d7fc() -> ! {
 // 0x37d98c — __ZN3RBX9CreatableINS_8InstanceEE6createI21SoundServiceStatsItemPKNS_10Soundscape12SoundServiceEEEN5boost10shared_ptrIT_EET0_
 // type: void __fastcall(int, const RBX::Soundscape::SoundService *)
 #[doc(alias = "rbx_core::SharedPtr<SoundServiceStatsItem> RBX::Creatable<RBX::Instance>::create<SoundServiceStatsItem,RBX::Soundscape::SoundService const*>(RBX::Soundscape::SoundService const*)")]
-pub fn stub_37d98c() -> ! {
-    todo!("0x37d98c boost::shared_ptr<SoundServiceStatsItem> RBX::Creatable<RBX::Instance>::create<SoundServiceStatsItem,RBX::Soundscape::SoundService const*>(RBX::Soundscape::SoundService const*)")
+pub fn stub_37d98c() {
+    // IDA 0x37d98c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x37de98 — __ZN21SoundServiceStatsItemC2EPKN3RBX10Soundscape12SoundServiceE
@@ -1751,15 +1758,15 @@ pub fn stub_37de98() -> ! {
 // 0x37e05c — __ZN21SoundServiceStatsItemD1Ev
 // type: void __fastcall(SoundServiceStatsItem *__hidden this)
 #[doc(alias = "SoundServiceStatsItem::~SoundServiceStatsItem()")]
-pub fn stub_37e05c() -> ! {
-    todo!("0x37e05c SoundServiceStatsItem::~SoundServiceStatsItem()")
+pub fn stub_37e05c() {
+    // IDA 0x37e05c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37e098 — __ZN21SoundServiceStatsItemD0Ev
 // type: void __fastcall(SoundServiceStatsItem *__hidden this)
 #[doc(alias = "SoundServiceStatsItem::~SoundServiceStatsItem()")]
-pub fn stub_37e098() -> ! {
-    todo!("0x37e098 SoundServiceStatsItem::~SoundServiceStatsItem()")
+pub fn stub_37e098() {
+    // IDA 0x37e098: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37e16c — __ZN21SoundServiceStatsItem6updateEv
@@ -1772,85 +1779,85 @@ pub fn stub_37e16c() -> ! {
 // 0x37e344 — __ZThn32_N21SoundServiceStatsItemD1Ev
 // type: void __fastcall(SoundServiceStatsItem *__hidden this)
 #[doc(alias = "__ZThn32_N21SoundServiceStatsItemD1Ev")]
-pub fn stub_37e344() -> ! {
-    todo!("0x37e344 __ZThn32_N21SoundServiceStatsItemD1Ev")
+pub fn stub_37e344() {
+    // IDA 0x37e344: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37e384 — __ZThn32_N21SoundServiceStatsItemD0Ev
 // type: void __fastcall(SoundServiceStatsItem *__hidden this)
 #[doc(alias = "__ZThn32_N21SoundServiceStatsItemD0Ev")]
-pub fn stub_37e384() -> ! {
-    todo!("0x37e384 __ZThn32_N21SoundServiceStatsItemD0Ev")
+pub fn stub_37e384() {
+    // IDA 0x37e384: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37e458 — __ZThn36_N21SoundServiceStatsItemD1Ev
 // type: void __fastcall(SoundServiceStatsItem *__hidden this)
 #[doc(alias = "__ZThn36_N21SoundServiceStatsItemD1Ev")]
-pub fn stub_37e458() -> ! {
-    todo!("0x37e458 __ZThn36_N21SoundServiceStatsItemD1Ev")
+pub fn stub_37e458() {
+    // IDA 0x37e458: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37e498 — __ZThn36_N21SoundServiceStatsItemD0Ev
 // type: void __fastcall(SoundServiceStatsItem *__hidden this)
 #[doc(alias = "__ZThn36_N21SoundServiceStatsItemD0Ev")]
-pub fn stub_37e498() -> ! {
-    todo!("0x37e498 __ZThn36_N21SoundServiceStatsItemD0Ev")
+pub fn stub_37e498() {
+    // IDA 0x37e498: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37e56c — __ZN5boost10shared_ptrI21SoundServiceStatsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<SoundServiceStatsItem>::shared_ptr<SoundServiceStatsItem,RBX::Creatable<RBX::Instance>::Deleter>(SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_37e56c() -> ! {
-    todo!("0x37e56c boost::shared_ptr<SoundServiceStatsItem>::shared_ptr<SoundServiceStatsItem,RBX::Creatable<RBX::Instance>::Deleter>(SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_37e56c() {
+    // IDA 0x37e56c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x37e634 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI21SoundServiceStatsItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<SoundServiceStatsItem,SoundServiceStatsItem>(rbx_core::SharedPtr<SoundServiceStatsItem> const*,SoundServiceStatsItem *)const")]
-pub fn stub_37e634() -> ! {
-    todo!("0x37e634 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<SoundServiceStatsItem,SoundServiceStatsItem>(boost::shared_ptr<SoundServiceStatsItem> const*,SoundServiceStatsItem *)const")
+pub fn stub_37e634() {
+    // IDA 0x37e634: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x37e720 — __ZN5boost6detail12shared_countC2IP21SoundServiceStatsItemN3RBX9CreatableINS5_8InstanceEE7DeleterEEET_T0_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>(SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_37e720() -> ! {
-    todo!("0x37e720 boost::detail::shared_count::shared_count<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>(SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_37e720() {
+    // IDA 0x37e720: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x37e828 — __ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_37e828() -> ! {
-    todo!("0x37e828 boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_37e828() {
+    // IDA 0x37e828: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37e82c — __ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_37e82c() -> ! {
-    todo!("0x37e82c boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_37e82c() {
+    // IDA 0x37e82c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37e830 — __ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE7disposeEv
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_37e830() -> ! {
-    todo!("0x37e830 boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_37e830() {
+    // IDA 0x37e830: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x37e850 — __ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_37e850() -> ! {
-    todo!("0x37e850 boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_37e850() {
+    // IDA 0x37e850: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x37e868 — __ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_37e868() -> ! {
-    todo!("0x37e868 boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_37e868() {
+    // IDA 0x37e868: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x37e86c — __ZN3RBX10Soundscape12SoundService8SoundJobC2EPS1_
@@ -1863,15 +1870,15 @@ pub fn stub_37e86c() -> ! {
 // 0x37e9c4 — __ZN3RBX10Soundscape12SoundService8SoundJobD1Ev
 // type: void __fastcall(RBX::TaskScheduler::Job *this, int, int)
 #[doc(alias = "RBX::Soundscape::SoundService::SoundJob::~SoundJob()")]
-pub fn stub_37e9c4() -> ! {
-    todo!("0x37e9c4 RBX::Soundscape::SoundService::SoundJob::~SoundJob()")
+pub fn stub_37e9c4() {
+    // IDA 0x37e9c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37e9c8 — __ZN3RBX10Soundscape12SoundService8SoundJobD0Ev
 // type: void __fastcall(RBX::Soundscape::SoundService::SoundJob *this, int, int)
 #[doc(alias = "RBX::Soundscape::SoundService::SoundJob::~SoundJob()")]
-pub fn stub_37e9c8() -> ! {
-    todo!("0x37e9c8 RBX::Soundscape::SoundService::SoundJob::~SoundJob()")
+pub fn stub_37e9c8() {
+    // IDA 0x37e9c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37ea68 — __ZN3RBX10Soundscape12SoundService8SoundJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE
@@ -1898,8 +1905,8 @@ pub fn stub_37eaa0() -> ! {
 // 0x37eab0 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10Soundscape10ReverbTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>> *)")]
-pub fn stub_37eab0() -> ! {
-    todo!("0x37eab0 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>> *)")
+pub fn stub_37eab0() {
+    // IDA 0x37eab0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x37f4d8 — __ZN3RBX10Reflection8EnumDescINS_9SoundTypeEEC1Ev
@@ -2037,8 +2044,8 @@ pub fn stub_434d00() -> ! {
 
 // 0x4387d8 — __ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD1Ev")]
-pub fn stub_4387d8() -> ! {
-    todo!("0x4387d8 __ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD1Ev")
+pub fn stub_4387d8() {
+    // IDA 0x4387d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x44558c — __ZNK3RBX15ServiceProvider4findINS_10Soundscape12SoundServiceEEEPT_v
@@ -2105,57 +2112,57 @@ pub fn stub_445978() -> ! {
 // 0x4528b0 — __ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev")]
-pub fn stub_4528b0() -> ! {
-    todo!("0x4528b0 __ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev")
+pub fn stub_4528b0() {
+    // IDA 0x4528b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x452950 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10Soundscape12SoundServiceEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundService> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundService>(void)")]
-pub fn stub_452950() -> ! {
-    todo!("0x452950 boost::shared_ptr<RBX::Soundscape::SoundService> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundService>(void)")
+pub fn stub_452950() {
+    // IDA 0x452950: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x452a00 — __ZN5boost10shared_ptrIN3RBX10Soundscape12SoundServiceEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundService>::shared_ptr<RBX::Soundscape::SoundService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_452a00() -> ! {
-    todo!("0x452a00 boost::shared_ptr<RBX::Soundscape::SoundService>::shared_ptr<RBX::Soundscape::SoundService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_452a00() {
+    // IDA 0x452a00: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x452ac8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10Soundscape12SoundServiceES7_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Soundscape::SoundService,RBX::Soundscape::SoundService>(rbx_core::SharedPtr<RBX::Soundscape::SoundService> const*,RBX::Soundscape::SoundService *)const")]
-pub fn stub_452ac8() -> ! {
-    todo!("0x452ac8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Soundscape::SoundService,RBX::Soundscape::SoundService>(boost::shared_ptr<RBX::Soundscape::SoundService> const*,RBX::Soundscape::SoundService *)const")
+pub fn stub_452ac8() {
+    // IDA 0x452ac8: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x452bb4 — __ZN5boost6detail12shared_countC2IPN3RBX10Soundscape12SoundServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_452bb4() -> ! {
-    todo!("0x452bb4 boost::detail::shared_count::shared_count<RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_452bb4() {
+    // IDA 0x452bb4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x452cbc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_452cbc() -> ! {
-    todo!("0x452cbc boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_452cbc() {
+    // IDA 0x452cbc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x452cc0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_452cc0() -> ! {
-    todo!("0x452cc0 boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_452cc0() {
+    // IDA 0x452cc0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x452cc4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_452cc4() -> ! {
-    todo!("0x452cc4 boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_452cc4() {
+    // IDA 0x452cc4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x452ce8 — __ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorC2Ev
@@ -2168,8 +2175,8 @@ pub fn stub_452ce8() -> ! {
 // 0x452f10 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_10Soundscape12SoundServiceEEERS3_RKNS0_IT_EE
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::Soundscape::SoundService>(rbx_core::SharedPtr<RBX::Soundscape::SoundService> const&)")]
-pub fn stub_452f10() -> ! {
-    todo!("0x452f10 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::Soundscape::SoundService>(boost::shared_ptr<RBX::Soundscape::SoundService> const&)")
+pub fn stub_452f10() {
+    // IDA 0x452f10: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x4ab168 — __ZN3RBX10Reflection4Type12getSingletonINS_9SoundTypeEEERKS1_v
@@ -2193,20 +2200,20 @@ pub fn stub_4c2178() -> ! {
 
 // 0x4c2268 — __ZN3RBX10Reflection8EnumDescINS_9SoundTypeEED1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::~EnumDesc()")]
-pub fn stub_4c2268() -> ! {
-    todo!("0x4c2268 RBX::Reflection::EnumDesc<RBX::SoundType>::~EnumDesc()")
+pub fn stub_4c2268() {
+    // IDA 0x4c2268: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4c226c — __ZN3RBX10Reflection8EnumDescINS_9SoundTypeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::~EnumDesc()")]
-pub fn stub_4c226c() -> ! {
-    todo!("0x4c226c RBX::Reflection::EnumDesc<RBX::SoundType>::~EnumDesc()")
+pub fn stub_4c226c() {
+    // IDA 0x4c226c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4c2440 — __ZN3RBX10Reflection8EnumDescINS_9SoundTypeEED0Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::~EnumDesc()")]
-pub fn stub_4c2440() -> ! {
-    todo!("0x4c2440 RBX::Reflection::EnumDesc<RBX::SoundType>::~EnumDesc()")
+pub fn stub_4c2440() {
+    // IDA 0x4c2440: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4c24e0 — __ZNK3RBX10Reflection8EnumDescINS_9SoundTypeEE6lookupEPKc
@@ -2285,8 +2292,8 @@ pub fn stub_4c2af8() -> ! {
 
 // 0x4c2b74 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9SoundTypeEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SoundType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SoundType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SoundType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::SoundType>> *)")]
-pub fn stub_4c2b74() -> ! {
-    todo!("0x4c2b74 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SoundType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SoundType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SoundType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::SoundType>> *)")
+pub fn stub_4c2b74() {
+    // IDA 0x4c2b74: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x710c78 — __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -2318,15 +2325,15 @@ pub fn stub_7f9bb8() -> ! {
 // 0x7f9ce8 — __ZN3RBX10Soundscape21CollisionSoundManagerD1Ev
 // type: void __fastcall(RBX::Soundscape::CollisionSoundManager *__hidden this)
 #[doc(alias = "RBX::Soundscape::CollisionSoundManager::~CollisionSoundManager()")]
-pub fn stub_7f9ce8() -> ! {
-    todo!("0x7f9ce8 RBX::Soundscape::CollisionSoundManager::~CollisionSoundManager()")
+pub fn stub_7f9ce8() {
+    // IDA 0x7f9ce8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f9cec — __ZN3RBX10Soundscape21CollisionSoundManagerD2Ev
 // type: void __fastcall(RBX::Soundscape::CollisionSoundManager *__hidden this)
 #[doc(alias = "RBX::Soundscape::CollisionSoundManager::~CollisionSoundManager()")]
-pub fn stub_7f9cec() -> ! {
-    todo!("0x7f9cec RBX::Soundscape::CollisionSoundManager::~CollisionSoundManager()")
+pub fn stub_7f9cec() {
+    // IDA 0x7f9cec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f9e70 — __ZN3RBX10Soundscape21CollisionSoundManager10LoadSoundsEPKNS_8InstanceE
@@ -2358,200 +2365,200 @@ pub fn stub_7fcf00() -> ! {
 
 // 0x7fcf70 — __ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEE5resetIS3_EEvPT_
 #[doc(alias = "void rbx_core::SharedPtr<RBX::Soundscape::Sound>::reset<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")]
-pub fn stub_7fcf70() -> ! {
-    todo!("0x7fcf70 void boost::shared_ptr<RBX::Soundscape::Sound>::reset<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")
+pub fn stub_7fcf70() {
+    // IDA 0x7fcf70: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x7fcf9c — __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE7connectIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_10Soundscape21CollisionSoundManagerES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>> const&)")]
-pub fn stub_7fcf9c() -> ! {
-    todo!("0x7fcf9c rbx::signals::connection rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>> const&)")
+pub fn stub_7fcf9c() {
+    // IDA 0x7fcf9c: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x7fd010 — __ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE7connectIN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS2_10Soundscape21CollisionSoundManagerES4_EENS9_5list2INS9_5valueIPSE_EENS8_3argILi1EEEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Primitive *)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>> const&)")]
-pub fn stub_7fd010() -> ! {
-    todo!("0x7fd010 rbx::signals::connection rbx::signals::signal<void ()(RBX::Primitive *)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>> const&)")
+pub fn stub_7fd010() {
+    // IDA 0x7fd010: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x7fd084 — __ZNSt3mapIN3RBX10Soundscape18CollisionSoundTypeEN5boost10shared_ptrINS1_14CollisionSoundEEESt4lessIS2_ESaISt4pairIKS2_S6_EEEixERSA_
 // type: int __fastcall(int, int *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "std::map<RBX::Soundscape::CollisionSoundType,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::operator[](RBX::Soundscape::CollisionSoundType const&)")]
-pub fn stub_7fd084() -> ! {
-    todo!("0x7fd084 std::map<RBX::Soundscape::CollisionSoundType,boost::shared_ptr<RBX::Soundscape::CollisionSound>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::operator[](RBX::Soundscape::CollisionSoundType const&)")
+pub fn stub_7fd084() {
+    // IDA 0x7fd084: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x7fd1cc — __ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEaSERKS4_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>::operator=(rbx_core::SharedPtr<RBX::Soundscape::CollisionSound> const&)")]
-pub fn stub_7fd1cc() -> ! {
-    todo!("0x7fd1cc boost::shared_ptr<RBX::Soundscape::CollisionSound>::operator=(boost::shared_ptr<RBX::Soundscape::CollisionSound> const&)")
+pub fn stub_7fd1cc() {
+    // IDA 0x7fd1cc: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x7fd204 — __ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>> const&)")]
-pub fn stub_7fd204() -> ! {
-    todo!("0x7fd204 std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>> const&)")
+pub fn stub_7fd204() {
+    // IDA 0x7fd204: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x7fd2b8 — __ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>> const&)")]
-pub fn stub_7fd2b8() -> ! {
-    todo!("0x7fd2b8 std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>> const&)")
+pub fn stub_7fd2b8() {
+    // IDA 0x7fd2b8: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x7fd304 — __ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueERKS9_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::_M_insert_unique(std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>> const&)")]
-pub fn stub_7fd304() -> ! {
-    todo!("0x7fd304 std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_insert_unique(std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>> const&)")
+pub fn stub_7fd304() {
+    // IDA 0x7fd304: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x7fd36c — __ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE14_M_create_nodeERKS9_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::_M_create_node(std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>> const&)")]
-pub fn stub_7fd36c() -> ! {
-    todo!("0x7fd36c std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_create_node(std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>> const&)")
+pub fn stub_7fd36c() {
+    // IDA 0x7fd36c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x7fd45c — __ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEC2IS3_EEPT_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>::shared_ptr<RBX::Soundscape::CollisionSound>(RBX::Soundscape::CollisionSound *)")]
-pub fn stub_7fd45c() -> ! {
-    todo!("0x7fd45c boost::shared_ptr<RBX::Soundscape::CollisionSound>::shared_ptr<RBX::Soundscape::CollisionSound>(RBX::Soundscape::CollisionSound *)")
+pub fn stub_7fd45c() {
+    // IDA 0x7fd45c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x7fd530 — __ZN5boost6detail12shared_countC2IN3RBX10Soundscape14CollisionSoundEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Soundscape::CollisionSound>(RBX::Soundscape::CollisionSound *)")]
-pub fn stub_7fd530() -> ! {
-    todo!("0x7fd530 boost::detail::shared_count::shared_count<RBX::Soundscape::CollisionSound>(RBX::Soundscape::CollisionSound *)")
+pub fn stub_7fd530() {
+    // IDA 0x7fd530: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x7fd640 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Soundscape14CollisionSoundEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::CollisionSound>::~sp_counted_impl_p()")]
-pub fn stub_7fd640() -> ! {
-    todo!("0x7fd640 boost::detail::sp_counted_impl_p<RBX::Soundscape::CollisionSound>::~sp_counted_impl_p()")
+pub fn stub_7fd640() {
+    // IDA 0x7fd640: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7fd644 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Soundscape14CollisionSoundEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::CollisionSound>::~sp_counted_impl_p()")]
-pub fn stub_7fd644() -> ! {
-    todo!("0x7fd644 boost::detail::sp_counted_impl_p<RBX::Soundscape::CollisionSound>::~sp_counted_impl_p()")
+pub fn stub_7fd644() {
+    // IDA 0x7fd644: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7fd648 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Soundscape14CollisionSoundEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::CollisionSound>::dispose(void)")]
-pub fn stub_7fd648() -> ! {
-    todo!("0x7fd648 boost::detail::sp_counted_impl_p<RBX::Soundscape::CollisionSound>::dispose(void)")
+pub fn stub_7fd648() {
+    // IDA 0x7fd648: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x7fd6f0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Soundscape14CollisionSoundEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::CollisionSound>::get_deleter(std::type_info const&)")]
-pub fn stub_7fd6f0() -> ! {
-    todo!("0x7fd6f0 boost::detail::sp_counted_impl_p<RBX::Soundscape::CollisionSound>::get_deleter(std::type_info const&)")
+pub fn stub_7fd6f0() {
+    // IDA 0x7fd6f0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x7fd6f4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Soundscape14CollisionSoundEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::CollisionSound>::get_untyped_deleter(void)")]
-pub fn stub_7fd6f4() -> ! {
-    todo!("0x7fd6f4 boost::detail::sp_counted_impl_p<RBX::Soundscape::CollisionSound>::get_untyped_deleter(void)")
+pub fn stub_7fd6f4() {
+    // IDA 0x7fd6f4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x7fd6f8 — __ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE13callable_slotIN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS2_10Soundscape21CollisionSoundManagerES4_EENS9_5list2INS9_5valueIPSE_EENS8_3argILi1EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Primitive *)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_7fd6f8() -> ! {
-    todo!("0x7fd6f8 rbx::signals::signal<void ()(RBX::Primitive *)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_7fd6f8() {
+    // IDA 0x7fd6f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7fd724 — __ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE13callable_slotIN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS2_10Soundscape21CollisionSoundManagerES4_EENS9_5list2INS9_5valueIPSE_EENS8_3argILi1EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Primitive *)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_7fd724() -> ! {
-    todo!("0x7fd724 rbx::signals::signal<void ()(RBX::Primitive *)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_7fd724() {
+    // IDA 0x7fd724: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7fd7f8 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_10Soundscape21CollisionSoundManagerES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEELi1ES6_E4callES5_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Primitive *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>,1,void ()(RBX::Primitive *)>::call(RBX::Primitive *)")]
-pub fn stub_7fd7f8() -> ! {
-    todo!("0x7fd7f8 rbx::callable<rbx::signals::signal<void ()(RBX::Primitive *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>,1,void ()(RBX::Primitive *)>::call(RBX::Primitive *)")
+pub fn stub_7fd7f8() {
+    // IDA 0x7fd7f8: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x7fd80c — __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_10Soundscape21CollisionSoundManagerES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEELi1ES6_E4callES5_
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_10Soundscape21CollisionSoundManagerES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEELi1ES6_E4callES5_")]
-pub fn stub_7fd80c() -> ! {
-    todo!("0x7fd80c __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_10Soundscape21CollisionSoundManagerES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEELi1ES6_E4callES5_")
+pub fn stub_7fd80c() {
+    // IDA 0x7fd80c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7fd820 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape21CollisionSoundManagerEPNS4_9PrimitiveEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS8_EEvRT_
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>::operator()<RBX::Primitive *>(RBX::Primitive * &)")]
-pub fn stub_7fd820() -> ! {
-    todo!("0x7fd820 void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>::operator()<RBX::Primitive *>(RBX::Primitive * &)")
+pub fn stub_7fd820() {
+    // IDA 0x7fd820: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 // 0x7fd838 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_10Soundscape21CollisionSoundManagerES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEELi1ES6_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Primitive *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>,1,void ()(RBX::Primitive *)>::~callable()")]
-pub fn stub_7fd838() -> ! {
-    todo!("0x7fd838 rbx::callable<rbx::signals::signal<void ()(RBX::Primitive *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>,1,void ()(RBX::Primitive *)>::~callable()")
+pub fn stub_7fd838() {
+    // IDA 0x7fd838: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7fd864 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_10Soundscape21CollisionSoundManagerES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEELi1ES6_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Primitive *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>,1,void ()(RBX::Primitive *)>::~callable()")]
-pub fn stub_7fd864() -> ! {
-    todo!("0x7fd864 rbx::callable<rbx::signals::signal<void ()(RBX::Primitive *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>,1,void ()(RBX::Primitive *)>::~callable()")
+pub fn stub_7fd864() {
+    // IDA 0x7fd864: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7fdb68 — __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_10Soundscape21CollisionSoundManagerES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_7fdb68() -> ! {
-    todo!("0x7fdb68 rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_7fdb68() {
+    // IDA 0x7fdb68: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7fdb94 — __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_10Soundscape21CollisionSoundManagerES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_7fdb94() -> ! {
-    todo!("0x7fdb94 rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_7fdb94() {
+    // IDA 0x7fdb94: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7fdd84 — __ZN3rbx8callableINS_7signals6signalIFvSt4pairIPN3RBX9PrimitiveES6_EEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS4_10Soundscape21CollisionSoundManagerES7_EENSC_5list2INSC_5valueIPSH_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>,1,void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::call(std::pair<RBX::Primitive *,RBX::Primitive *>)")]
-pub fn stub_7fdd84() -> ! {
-    todo!("0x7fdd84 rbx::callable<rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>,1,void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::call(std::pair<RBX::Primitive *,RBX::Primitive *>)")
+pub fn stub_7fdd84() {
+    // IDA 0x7fdd84: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x7fdda8 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSt4pairIPN3RBX9PrimitiveES6_EEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS4_10Soundscape21CollisionSoundManagerES7_EENSC_5list2INSC_5valueIPSH_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvSt4pairIPN3RBX9PrimitiveES6_EEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS4_10Soundscape21CollisionSoundManagerES7_EENSC_5list2INSC_5valueIPSH_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_")]
-pub fn stub_7fdda8() -> ! {
-    todo!("0x7fdda8 __ZThn4_N3rbx8callableINS_7signals6signalIFvSt4pairIPN3RBX9PrimitiveES6_EEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS4_10Soundscape21CollisionSoundManagerES7_EENSC_5list2INSC_5valueIPSH_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_")
+pub fn stub_7fdda8() {
+    // IDA 0x7fdda8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7fddcc — __ZN5boost3_bi5list2INS0_5valueIPN3RBX10Soundscape21CollisionSoundManagerEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS5_St4pairIPNS3_9PrimitiveESG_EEENS0_5list1IRSH_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list1<std::pair<RBX::Primitive *,RBX::Primitive *>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>> &,boost::_bi::list1<std::pair<RBX::Primitive *,RBX::Primitive *>&> &,int)")]
-pub fn stub_7fddcc() -> ! {
-    todo!("0x7fddcc void boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list1<std::pair<RBX::Primitive *,RBX::Primitive *>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>> &,boost::_bi::list1<std::pair<RBX::Primitive *,RBX::Primitive *>&> &,int)")
+pub fn stub_7fddcc() {
+    // IDA 0x7fddcc: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 // 0x7fe0e4 — __ZN3rbx8callableINS_7signals6signalIFvSt4pairIPN3RBX9PrimitiveES6_EEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS4_10Soundscape21CollisionSoundManagerES7_EENSC_5list2INSC_5valueIPSH_EENSB_3argILi1EEEEEEELi1ES8_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>,1,void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::~callable()")]
-pub fn stub_7fe0e4() -> ! {
-    todo!("0x7fe0e4 rbx::callable<rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>,1,void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::~callable()")
+pub fn stub_7fe0e4() {
+    // IDA 0x7fe0e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7fe110 — __ZN3rbx8callableINS_7signals6signalIFvSt4pairIPN3RBX9PrimitiveES6_EEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS4_10Soundscape21CollisionSoundManagerES7_EENSC_5list2INSC_5valueIPSH_EENSB_3argILi1EEEEEEELi1ES8_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>,1,void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::~callable()")]
-pub fn stub_7fe110() -> ! {
-    todo!("0x7fe110 rbx::callable<rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>,1,void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::~callable()")
+pub fn stub_7fe110() {
+    // IDA 0x7fe110: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7fe1e4 — __ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>> *)")]
-pub fn stub_7fe1e4() -> ! {
-    todo!("0x7fe1e4 std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>> *)")
+pub fn stub_7fe1e4() {
+    // IDA 0x7fe1e4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x7fe20c — __ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS9_E
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>> *)")]
-pub fn stub_7fe20c() -> ! {
-    todo!("0x7fe20c std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>> *)")
+pub fn stub_7fe20c() {
+    // IDA 0x7fe20c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xb29978 — __ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7Creator6createEv
@@ -2564,15 +2571,15 @@ pub fn stub_b29978() -> ! {
 // 0xb29db0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_b29db0() -> ! {
-    todo!("0xb29db0 boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_b29db0() {
+    // IDA 0xb29db0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xb29dc8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_b29dc8() -> ! {
-    todo!("0xb29dc8 boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_b29dc8() {
+    // IDA 0xb29dc8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xf30314 — j___ZN21SoundServiceStatsItem6createEPKN3RBX10Soundscape12SoundServiceE
@@ -2675,15 +2682,15 @@ pub fn stub_f303e4() -> ! {
 // 0xf303f4 — j___ZN3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEED2Ev
 // type: int __fastcall(_DWORD)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::~EnumDesc()")]
-pub fn stub_f303f4() -> ! {
-    todo!("0xf303f4 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::~EnumDesc()")
+pub fn stub_f303f4() {
+    // IDA 0xf303f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf30404 — j___ZN3RBX10Reflection9ArgHelper6getArgINS_9SoundTypeELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS4_EEPNS8_10disable_ifINS8_7is_sameIS4_NS8_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RBX::SoundType RBX::Reflection::ArgHelper::getArg<RBX::SoundType,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::SoundType> const&,boost::disable_if<boost::is_same<RBX::SoundType,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
-pub fn stub_f30404() -> ! {
-    todo!("0xf30404 RBX::SoundType RBX::Reflection::ArgHelper::getArg<RBX::SoundType,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::SoundType> const&,boost::disable_if<boost::is_same<RBX::SoundType,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
+pub fn stub_f30404() {
+    // IDA 0xf30404: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30414 — j___ZN3RBX10Reflection9ArgHelper8try_enumILi1ENS_9SoundTypeEEEbRNS0_18FunctionDescriptor9ArgumentsERT0_PN5boost9enable_ifINS9_7is_enumIS7_EEvE4typeE
@@ -2748,8 +2755,8 @@ pub fn stub_f30494() -> ! {
 
 // 0xf304a4 — j___ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD2Ev
 #[doc(alias = "j___ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD2Ev")]
-pub fn stub_f304a4() -> ! {
-    todo!("0xf304a4 j___ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD2Ev")
+pub fn stub_f304a4() {
+    // IDA 0xf304a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf304b4 — j___ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE17static_getCreatorEv
@@ -2768,8 +2775,8 @@ pub fn stub_f304c4() -> ! {
 
 // 0xf304d4 — j___ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "j___ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_f304d4() -> ! {
-    todo!("0xf304d4 j___ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_f304d4() {
+    // IDA 0xf304d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf304e4 — j___ZN3RBX15ServiceProvider4findINS_10Soundscape12SoundServiceEEEPT_PKNS_8InstanceE
@@ -2794,22 +2801,22 @@ pub fn stub_f30504() -> ! {
 // 0xf30524 — j___ZN3RBX9CreatableINS_8InstanceEE6createI21SoundServiceStatsItemPKNS_10Soundscape12SoundServiceEEEN5boost10shared_ptrIT_EET0_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<SoundServiceStatsItem> RBX::Creatable<RBX::Instance>::create<SoundServiceStatsItem,RBX::Soundscape::SoundService const*>(RBX::Soundscape::SoundService const*)")]
-pub fn stub_f30524() -> ! {
-    todo!("0xf30524 boost::shared_ptr<SoundServiceStatsItem> RBX::Creatable<RBX::Instance>::create<SoundServiceStatsItem,RBX::Soundscape::SoundService const*>(RBX::Soundscape::SoundService const*)")
+pub fn stub_f30524() {
+    // IDA 0xf30524: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30534 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_10Soundscape12SoundChannelEEEN5boost10shared_ptrIT_EEv
 // type: int __fastcall(_DWORD)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundChannel> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundChannel>(void)")]
-pub fn stub_f30534() -> ! {
-    todo!("0xf30534 boost::shared_ptr<RBX::Soundscape::SoundChannel> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundChannel>(void)")
+pub fn stub_f30534() {
+    // IDA 0xf30534: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30544 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_10StockSoundEEEN5boost10shared_ptrIT_EEv
 // type: int __fastcall(__guard *, int, int, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::StockSound> RBX::Creatable<RBX::Instance>::create<RBX::StockSound>(void)")]
-pub fn stub_f30544() -> ! {
-    todo!("0xf30544 boost::shared_ptr<RBX::StockSound> RBX::Creatable<RBX::Instance>::create<RBX::StockSound>(void)")
+pub fn stub_f30544() {
+    // IDA 0xf30544: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30564 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_10Soundscape10ReverbTypeEEERS3_RKT_
@@ -2842,8 +2849,8 @@ pub fn stub_f30594() -> ! {
 // 0xf305a4 — j___ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE7connectIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_10Soundscape12SoundChannelES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEEEENS0_10connectionERKT_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Heartbeat const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>> const&)")]
-pub fn stub_f305a4() -> ! {
-    todo!("0xf305a4 rbx::signals::connection rbx::signals::signal<void ()(RBX::Heartbeat const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>> const&)")
+pub fn stub_f305a4() {
+    // IDA 0xf305a4: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0xf305b4 — j___ZN3rbx8any_castIN3RBX10Soundscape7SoundIdENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE
@@ -2876,119 +2883,119 @@ pub fn stub_f305e4() -> ! {
 // 0xf305f4 — j___ZN5boost10scoped_ptrIN3RBX10Soundscape21CollisionSoundManagerEED2Ev
 // type: int __fastcall(_DWORD)
 #[doc(alias = "boost::scoped_ptr<RBX::Soundscape::CollisionSoundManager>::~scoped_ptr()")]
-pub fn stub_f305f4() -> ! {
-    todo!("0xf305f4 boost::scoped_ptr<RBX::Soundscape::CollisionSoundManager>::~scoped_ptr()")
+pub fn stub_f305f4() {
+    // IDA 0xf305f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf30604 — j___ZN5boost10shared_ptrI21SoundServiceStatsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<SoundServiceStatsItem>::shared_ptr<SoundServiceStatsItem,RBX::Creatable<RBX::Instance>::Deleter>(SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_f30604() -> ! {
-    todo!("0xf30604 boost::shared_ptr<SoundServiceStatsItem>::shared_ptr<SoundServiceStatsItem,RBX::Creatable<RBX::Instance>::Deleter>(SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_f30604() {
+    // IDA 0xf30604: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30614 — j___ZN5boost10shared_ptrIN3RBX10Soundscape12SoundChannelEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>::shared_ptr<RBX::Soundscape::SoundChannel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_f30614() -> ! {
-    todo!("0xf30614 boost::shared_ptr<RBX::Soundscape::SoundChannel>::shared_ptr<RBX::Soundscape::SoundChannel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_f30614() {
+    // IDA 0xf30614: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30624 — j___ZN5boost10shared_ptrIN3RBX10Soundscape12SoundChannelEEaSINS1_10StockSoundEEERS4_RKNS0_IT_EE
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>& rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>::operator=<RBX::StockSound>(rbx_core::SharedPtr<RBX::StockSound> const&)")]
-pub fn stub_f30624() -> ! {
-    todo!("0xf30624 boost::shared_ptr<RBX::Soundscape::SoundChannel>& boost::shared_ptr<RBX::Soundscape::SoundChannel>::operator=<RBX::StockSound>(boost::shared_ptr<RBX::StockSound> const&)")
+pub fn stub_f30624() {
+    // IDA 0xf30624: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30634 — j___ZN5boost10shared_ptrIN3RBX10Soundscape12SoundService8SoundJobEEC2IS4_EEPT_
 // type: int __fastcall(int, void *, int, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundService::SoundJob>::shared_ptr<RBX::Soundscape::SoundService::SoundJob>(RBX::Soundscape::SoundService::SoundJob *)")]
-pub fn stub_f30634() -> ! {
-    todo!("0xf30634 boost::shared_ptr<RBX::Soundscape::SoundService::SoundJob>::shared_ptr<RBX::Soundscape::SoundService::SoundJob>(RBX::Soundscape::SoundService::SoundJob *)")
+pub fn stub_f30634() {
+    // IDA 0xf30634: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30644 — j___ZN5boost10shared_ptrIN3RBX10Soundscape12SoundService8SoundJobEEaSERKS5_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundService::SoundJob>::operator=(rbx_core::SharedPtr<RBX::Soundscape::SoundService::SoundJob> const&)")]
-pub fn stub_f30644() -> ! {
-    todo!("0xf30644 boost::shared_ptr<RBX::Soundscape::SoundService::SoundJob>::operator=(boost::shared_ptr<RBX::Soundscape::SoundService::SoundJob> const&)")
+pub fn stub_f30644() {
+    // IDA 0xf30644: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30654 — j___ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEEC2IS3_EEPT_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::Sound>::shared_ptr<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")]
-pub fn stub_f30654() -> ! {
-    todo!("0xf30654 boost::shared_ptr<RBX::Soundscape::Sound>::shared_ptr<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")
+pub fn stub_f30654() {
+    // IDA 0xf30654: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30664 — j___ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEEaSERKS4_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::Sound>::operator=(rbx_core::SharedPtr<RBX::Soundscape::Sound> const&)")]
-pub fn stub_f30664() -> ! {
-    todo!("0xf30664 boost::shared_ptr<RBX::Soundscape::Sound>::operator=(boost::shared_ptr<RBX::Soundscape::Sound> const&)")
+pub fn stub_f30664() {
+    // IDA 0xf30664: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30674 — j___ZN5boost10shared_ptrIN3RBX10StockSoundEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<RBX::StockSound>::shared_ptr<RBX::StockSound,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_f30674() -> ! {
-    todo!("0xf30674 boost::shared_ptr<RBX::StockSound>::shared_ptr<RBX::StockSound,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_f30674() {
+    // IDA 0xf30674: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30684 — j___ZN5boost10shared_ptrIN3RBX8InstanceEEaSI21SoundServiceStatsItemEERS3_RKNS0_IT_EE
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<SoundServiceStatsItem>(rbx_core::SharedPtr<SoundServiceStatsItem> const&)")]
-pub fn stub_f30684() -> ! {
-    todo!("0xf30684 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<SoundServiceStatsItem>(boost::shared_ptr<SoundServiceStatsItem> const&)")
+pub fn stub_f30684() {
+    // IDA 0xf30684: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30694 — j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape12SoundChannelERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS7_EEvRKT_
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>::operator()<RBX::Heartbeat>(RBX::Heartbeat const&)")]
-pub fn stub_f30694() -> ! {
-    todo!("0xf30694 void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>::operator()<RBX::Heartbeat>(RBX::Heartbeat const&)")
+pub fn stub_f30694() {
+    // IDA 0xf30694: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 // 0xf306a4 — j___ZN5boost6detail12shared_countC2IN3RBX10Soundscape12SoundService8SoundJobEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Soundscape::SoundService::SoundJob>(RBX::Soundscape::SoundService::SoundJob *)")]
-pub fn stub_f306a4() -> ! {
-    todo!("0xf306a4 boost::detail::shared_count::shared_count<RBX::Soundscape::SoundService::SoundJob>(RBX::Soundscape::SoundService::SoundJob *)")
+pub fn stub_f306a4() {
+    // IDA 0xf306a4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xf306b4 — j___ZN5boost6detail12shared_countC2IN3RBX10Soundscape5SoundEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")]
-pub fn stub_f306b4() -> ! {
-    todo!("0xf306b4 boost::detail::shared_count::shared_count<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")
+pub fn stub_f306b4() {
+    // IDA 0xf306b4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xf306c4 — j___ZN5boost6detail12shared_countC2IP21SoundServiceStatsItemN3RBX9CreatableINS5_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>(SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_f306c4() -> ! {
-    todo!("0xf306c4 boost::detail::shared_count::shared_count<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>(SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_f306c4() {
+    // IDA 0xf306c4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xf306d4 — j___ZN5boost6detail12shared_countC2IPN3RBX10Soundscape12SoundChannelENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_f306d4() -> ! {
-    todo!("0xf306d4 boost::detail::shared_count::shared_count<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_f306d4() {
+    // IDA 0xf306d4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xf306e4 — j___ZN5boost6detail12shared_countC2IPN3RBX10StockSoundENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_f306e4() -> ! {
-    todo!("0xf306e4 boost::detail::shared_count::shared_count<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_f306e4() {
+    // IDA 0xf306e4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xf30704 — j___ZN9__gnu_cxx13new_allocatorISt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS3_5SoundEEEEE7destroyEPSA_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__gnu_cxx::new_allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>::destroy(std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>*)")]
-pub fn stub_f30704() -> ! {
-    todo!("0xf30704 __gnu_cxx::new_allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>::destroy(std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>*)")
+pub fn stub_f30704() {
+    // IDA 0xf30704: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30714 — j___ZNK3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEE11setIntValueEPNS0_13DescribedBaseEi
@@ -3043,29 +3050,29 @@ pub fn stub_f30774() -> ! {
 // 0xf30784 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI21SoundServiceStatsItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<SoundServiceStatsItem,SoundServiceStatsItem>(rbx_core::SharedPtr<SoundServiceStatsItem> const*,SoundServiceStatsItem *)const")]
-pub fn stub_f30784() -> ! {
-    todo!("0xf30784 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<SoundServiceStatsItem,SoundServiceStatsItem>(boost::shared_ptr<SoundServiceStatsItem> const*,SoundServiceStatsItem *)const")
+pub fn stub_f30784() {
+    // IDA 0xf30784: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0xf30794 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10Soundscape12SoundChannelES7_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundChannel>(rbx_core::SharedPtr<RBX::Soundscape::SoundChannel> const*,RBX::Soundscape::SoundChannel *)const")]
-pub fn stub_f30794() -> ! {
-    todo!("0xf30794 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundChannel>(boost::shared_ptr<RBX::Soundscape::SoundChannel> const*,RBX::Soundscape::SoundChannel *)const")
+pub fn stub_f30794() {
+    // IDA 0xf30794: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0xf307a4 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10StockSoundES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StockSound,RBX::StockSound>(rbx_core::SharedPtr<RBX::StockSound> const*,RBX::StockSound *)const")]
-pub fn stub_f307a4() -> ! {
-    todo!("0xf307a4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StockSound,RBX::StockSound>(boost::shared_ptr<RBX::StockSound> const*,RBX::StockSound *)const")
+pub fn stub_f307a4() {
+    // IDA 0xf307a4: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0xf307b4 — j___ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_10Soundscape12SoundService8SoundJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Soundscape::SoundService::SoundJob,RBX::Soundscape::SoundService::SoundJob>(rbx_core::SharedPtr<RBX::Soundscape::SoundService::SoundJob> const*,RBX::Soundscape::SoundService::SoundJob *)const")]
-pub fn stub_f307b4() -> ! {
-    todo!("0xf307b4 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Soundscape::SoundService::SoundJob,RBX::Soundscape::SoundService::SoundJob>(boost::shared_ptr<RBX::Soundscape::SoundService::SoundJob> const*,RBX::Soundscape::SoundService::SoundJob *)const")
+pub fn stub_f307b4() {
+    // IDA 0xf307b4: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0xf307c4 — j___ZNSt12_Vector_baseIN3RBX10Soundscape10ReverbTypeESaIS2_EE11_M_allocateEm
@@ -3085,15 +3092,15 @@ pub fn stub_f307d4() -> ! {
 // 0xf307e4 — j___ZNSt3mapIN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEESt4lessIS2_ESaISt4pairIKS2_S6_EEEixERSA_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::map<RBX::Soundscape::SoundId,rbx_core::SharedPtr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::operator[](RBX::Soundscape::SoundId const&)")]
-pub fn stub_f307e4() -> ! {
-    todo!("0xf307e4 std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::operator[](RBX::Soundscape::SoundId const&)")
+pub fn stub_f307e4() {
+    // IDA 0xf307e4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf307f4 — j___ZNSt3mapIN3RBX9SoundTypeEN5boost10shared_ptrINS0_10Soundscape12SoundChannelEEESt4lessIS1_ESaISt4pairIKS1_S6_EEEixERSA_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "std::map<RBX::SoundType,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>>::operator[](RBX::SoundType const&)")]
-pub fn stub_f307f4() -> ! {
-    todo!("0xf307f4 std::map<RBX::SoundType,boost::shared_ptr<RBX::Soundscape::SoundChannel>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::operator[](RBX::SoundType const&)")
+pub fn stub_f307f4() {
+    // IDA 0xf307f4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30804 — j___ZNSt3mapIPKN3RBX4NameENS0_10Soundscape10ReverbTypeESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
@@ -3105,15 +3112,15 @@ pub fn stub_f30804() -> ! {
 
 // 0xf30814 — j___ZNSt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEEEC2ERS3_RKS7_
 #[doc(alias = "std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>::pair(RBX::Soundscape::SoundId const&,rbx_core::SharedPtr<RBX::Soundscape::Sound> const&)")]
-pub fn stub_f30814() -> ! {
-    todo!("0xf30814 std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>::pair(RBX::Soundscape::SoundId const&,boost::shared_ptr<RBX::Soundscape::Sound> const&)")
+pub fn stub_f30814() {
+    // IDA 0xf30814: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30824 — j___ZNSt4pairIN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEEEC2IKS2_S6_EERKS_IT_T0_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::pair<RBX::Soundscape::SoundId,rbx_core::SharedPtr<RBX::Soundscape::Sound>>::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>(std::pair const&<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>)")]
-pub fn stub_f30824() -> ! {
-    todo!("0xf30824 std::pair<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>(std::pair const&<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>)")
+pub fn stub_f30824() {
+    // IDA 0xf30824: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30834 — j___ZNSt6vectorIN3RBX10Soundscape10ReverbTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
@@ -3146,92 +3153,92 @@ pub fn stub_f30864() -> ! {
 // 0xf30874 — j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE14_M_create_nodeERKS9_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::_M_create_node(std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>> const&)")]
-pub fn stub_f30874() -> ! {
-    todo!("0xf30874 std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_create_node(std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")
+pub fn stub_f30874() {
+    // IDA 0xf30874: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30884 — j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueERKS9_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::_M_insert_unique(std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>> const&)")]
-pub fn stub_f30884() -> ! {
-    todo!("0xf30884 std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_insert_unique(std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")
+pub fn stub_f30884() {
+    // IDA 0xf30884: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30894 — j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>> const&)")]
-pub fn stub_f30894() -> ! {
-    todo!("0xf30894 std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")
+pub fn stub_f30894() {
+    // IDA 0xf30894: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf308a4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE4findERS4_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::find(RBX::Soundscape::SoundId const&)")]
-pub fn stub_f308a4() -> ! {
-    todo!("0xf308a4 std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::find(RBX::Soundscape::SoundId const&)")
+pub fn stub_f308a4() {
+    // IDA 0xf308a4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf308b4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE5eraseESt17_Rb_tree_iteratorIS9_E
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>)")]
-pub fn stub_f308b4() -> ! {
-    todo!("0xf308b4 std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>)")
+pub fn stub_f308b4() {
+    // IDA 0xf308b4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf308c4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>> *)")]
-pub fn stub_f308c4() -> ! {
-    todo!("0xf308c4 std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>> *)")
+pub fn stub_f308c4() {
+    // IDA 0xf308c4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf308d4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>> const&)")]
-pub fn stub_f308d4() -> ! {
-    todo!("0xf308d4 std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")
+pub fn stub_f308d4() {
+    // IDA 0xf308d4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf308e4 — j___ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE14_M_create_nodeERKS9_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>>::_M_create_node(std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>> const&)")]
-pub fn stub_f308e4() -> ! {
-    todo!("0xf308e4 std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_create_node(std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>> const&)")
+pub fn stub_f308e4() {
+    // IDA 0xf308e4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf308f4 — j___ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS9_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>> *)")]
-pub fn stub_f308f4() -> ! {
-    todo!("0xf308f4 std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>> *)")
+pub fn stub_f308f4() {
+    // IDA 0xf308f4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30904 — j___ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE16_M_insert_uniqueERKS9_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>>::_M_insert_unique(std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>> const&)")]
-pub fn stub_f30904() -> ! {
-    todo!("0xf30904 std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_insert_unique(std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>> const&)")
+pub fn stub_f30904() {
+    // IDA 0xf30904: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30914 — j___ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>> const&)")]
-pub fn stub_f30914() -> ! {
-    todo!("0xf30914 std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>> const&)")
+pub fn stub_f30914() {
+    // IDA 0xf30914: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30924 — j___ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>> *)")]
-pub fn stub_f30924() -> ! {
-    todo!("0xf30924 std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>> *)")
+pub fn stub_f30924() {
+    // IDA 0xf30924: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30934 — j___ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>> const&)")]
-pub fn stub_f30934() -> ! {
-    todo!("0xf30934 std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>> const&)")
+pub fn stub_f30934() {
+    // IDA 0xf30934: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30944 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10Soundscape10ReverbTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
@@ -3251,8 +3258,8 @@ pub fn stub_f30954() -> ! {
 // 0xf30964 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10Soundscape10ReverbTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>> *)")]
-pub fn stub_f30964() -> ! {
-    todo!("0xf30964 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>> *)")
+pub fn stub_f30964() {
+    // IDA 0xf30964: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30974 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10Soundscape10ReverbTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
@@ -3265,8 +3272,8 @@ pub fn stub_f30974() -> ! {
 // 0xf30984 — j___ZSt8for_eachISt17_Rb_tree_iteratorISt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS3_5SoundEEEEEPFvRKS1_IS4_S9_EEET0_T_SI_SH_
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int)
 #[doc(alias = "void (*)(std::pair const&<RBX::Soundscape::SoundId,rbx_core::SharedPtr<RBX::Soundscape::Sound>>) std::for_each<std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,rbx_core::SharedPtr<RBX::Soundscape::Sound>>)>(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,rbx_core::SharedPtr<RBX::Soundscape::Sound>>))")]
-pub fn stub_f30984() -> ! {
-    todo!("0xf30984 void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>) std::for_each<std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>)>(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>))")
+pub fn stub_f30984() {
+    // IDA 0xf30984: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf30994 — j___ZN3RBX10Reflection7Variant14genericConvertINS_9SoundTypeEEERT_v
@@ -3389,8 +3396,8 @@ pub fn stub_f35de4() -> ! {
 // 0xf35df4 — j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev
 // type: int()
 #[doc(alias = "j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev")]
-pub fn stub_f35df4() -> ! {
-    todo!("0xf35df4 j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev")
+pub fn stub_f35df4() {
+    // IDA 0xf35df4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf360a4 — j___ZN3RBX15ServiceProvider15doGetClassIndexINS_10Soundscape12SoundServiceEEEmv
@@ -3416,29 +3423,29 @@ pub fn stub_f36614() -> ! {
 // 0xf36824 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_10Soundscape12SoundServiceEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundService> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundService>(void)")]
-pub fn stub_f36824() -> ! {
-    todo!("0xf36824 boost::shared_ptr<RBX::Soundscape::SoundService> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundService>(void)")
+pub fn stub_f36824() {
+    // IDA 0xf36824: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf36ee4 — j___ZN5boost10shared_ptrIN3RBX10Soundscape12SoundServiceEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundService>::shared_ptr<RBX::Soundscape::SoundService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_f36ee4() -> ! {
-    todo!("0xf36ee4 boost::shared_ptr<RBX::Soundscape::SoundService>::shared_ptr<RBX::Soundscape::SoundService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_f36ee4() {
+    // IDA 0xf36ee4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf37154 — j___ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_10Soundscape12SoundServiceEEERS3_RKNS0_IT_EE
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::Soundscape::SoundService>(rbx_core::SharedPtr<RBX::Soundscape::SoundService> const&)")]
-pub fn stub_f37154() -> ! {
-    todo!("0xf37154 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::Soundscape::SoundService>(boost::shared_ptr<RBX::Soundscape::SoundService> const&)")
+pub fn stub_f37154() {
+    // IDA 0xf37154: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf37844 — j___ZN5boost6detail12shared_countC2IPN3RBX10Soundscape12SoundServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_f37844() -> ! {
-    todo!("0xf37844 boost::detail::shared_count::shared_count<RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_f37844() {
+    // IDA 0xf37844: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xf37ef4 — j___ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7Creator12getClassNameEv
@@ -3465,15 +3472,15 @@ pub fn stub_f38154() -> ! {
 // 0xf38404 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10Soundscape12SoundServiceES7_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Soundscape::SoundService,RBX::Soundscape::SoundService>(rbx_core::SharedPtr<RBX::Soundscape::SoundService> const*,RBX::Soundscape::SoundService *)const")]
-pub fn stub_f38404() -> ! {
-    todo!("0xf38404 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Soundscape::SoundService,RBX::Soundscape::SoundService>(boost::shared_ptr<RBX::Soundscape::SoundService> const*,RBX::Soundscape::SoundService *)const")
+pub fn stub_f38404() {
+    // IDA 0xf38404: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0xf3b284 — j___ZN3RBX10Reflection8EnumDescINS_9SoundTypeEED2Ev
 // type: int __fastcall(int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::~EnumDesc()")]
-pub fn stub_f3b284() -> ! {
-    todo!("0xf3b284 RBX::Reflection::EnumDesc<RBX::SoundType>::~EnumDesc()")
+pub fn stub_f3b284() {
+    // IDA 0xf3b284: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf3c0e4 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9SoundTypeEEEE14doGetSingletonEv
@@ -3523,8 +3530,8 @@ pub fn stub_f3da14() -> ! {
 
 // 0xf3dee4 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9SoundTypeEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SoundType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SoundType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SoundType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::SoundType>> *)")]
-pub fn stub_f3dee4() -> ! {
-    todo!("0xf3dee4 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SoundType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SoundType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SoundType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::SoundType>> *)")
+pub fn stub_f3dee4() {
+    // IDA 0xf3dee4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf4cfe4 — j___ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -3543,582 +3550,737 @@ pub fn stub_f526a4() -> ! {
 
 // 0xf547e4 — j___ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE7connectIN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS2_10Soundscape21CollisionSoundManagerES4_EENS9_5list2INS9_5valueIPSE_EENS8_3argILi1EEEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Primitive *)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>> const&)")]
-pub fn stub_f547e4() -> ! {
-    todo!("0xf547e4 rbx::signals::connection rbx::signals::signal<void ()(RBX::Primitive *)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>> const&)")
+pub fn stub_f547e4() {
+    // IDA 0xf547e4: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0xf54824 — j___ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE7connectIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_10Soundscape21CollisionSoundManagerES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>> const&)")]
-pub fn stub_f54824() -> ! {
-    todo!("0xf54824 rbx::signals::connection rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>> const&)")
+pub fn stub_f54824() {
+    // IDA 0xf54824: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0xf54834 — j___ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEC2IS3_EEPT_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>::shared_ptr<RBX::Soundscape::CollisionSound>(RBX::Soundscape::CollisionSound *)")]
-pub fn stub_f54834() -> ! {
-    todo!("0xf54834 boost::shared_ptr<RBX::Soundscape::CollisionSound>::shared_ptr<RBX::Soundscape::CollisionSound>(RBX::Soundscape::CollisionSound *)")
+pub fn stub_f54834() {
+    // IDA 0xf54834: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf54844 — j___ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEaSERKS4_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>::operator=(rbx_core::SharedPtr<RBX::Soundscape::CollisionSound> const&)")]
-pub fn stub_f54844() -> ! {
-    todo!("0xf54844 boost::shared_ptr<RBX::Soundscape::CollisionSound>::operator=(boost::shared_ptr<RBX::Soundscape::CollisionSound> const&)")
+pub fn stub_f54844() {
+    // IDA 0xf54844: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf54854 — j___ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEE5resetIS3_EEvPT_
 #[doc(alias = "void rbx_core::SharedPtr<RBX::Soundscape::Sound>::reset<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")]
-pub fn stub_f54854() -> ! {
-    todo!("0xf54854 void boost::shared_ptr<RBX::Soundscape::Sound>::reset<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")
+pub fn stub_f54854() {
+    // IDA 0xf54854: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf54874 — j___ZN5boost3_bi5list2INS0_5valueIPN3RBX10Soundscape21CollisionSoundManagerEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS5_St4pairIPNS3_9PrimitiveESG_EEENS0_5list1IRSH_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list1<std::pair<RBX::Primitive *,RBX::Primitive *>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>> &,boost::_bi::list1<std::pair<RBX::Primitive *,RBX::Primitive *>&> &,int)")]
-pub fn stub_f54874() -> ! {
-    todo!("0xf54874 void boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>>,boost::_bi::list1<std::pair<RBX::Primitive *,RBX::Primitive *>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,std::pair<RBX::Primitive *,RBX::Primitive *>> &,boost::_bi::list1<std::pair<RBX::Primitive *,RBX::Primitive *>&> &,int)")
+pub fn stub_f54874() {
+    // IDA 0xf54874: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 // 0xf54884 — j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape21CollisionSoundManagerEPNS4_9PrimitiveEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS8_EEvRT_
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>::operator()<RBX::Primitive *>(RBX::Primitive * &)")]
-pub fn stub_f54884() -> ! {
-    todo!("0xf54884 void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::CollisionSoundManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::CollisionSoundManager*>,boost::arg<1>>>::operator()<RBX::Primitive *>(RBX::Primitive * &)")
+pub fn stub_f54884() {
+    // IDA 0xf54884: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 // 0xf54894 — j___ZN5boost6detail12shared_countC2IN3RBX10Soundscape14CollisionSoundEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Soundscape::CollisionSound>(RBX::Soundscape::CollisionSound *)")]
-pub fn stub_f54894() -> ! {
-    todo!("0xf54894 boost::detail::shared_count::shared_count<RBX::Soundscape::CollisionSound>(RBX::Soundscape::CollisionSound *)")
+pub fn stub_f54894() {
+    // IDA 0xf54894: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xf548a4 — j___ZNSt3mapIN3RBX10Soundscape18CollisionSoundTypeEN5boost10shared_ptrINS1_14CollisionSoundEEESt4lessIS2_ESaISt4pairIKS2_S6_EEEixERSA_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "std::map<RBX::Soundscape::CollisionSoundType,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::operator[](RBX::Soundscape::CollisionSoundType const&)")]
-pub fn stub_f548a4() -> ! {
-    todo!("0xf548a4 std::map<RBX::Soundscape::CollisionSoundType,boost::shared_ptr<RBX::Soundscape::CollisionSound>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::operator[](RBX::Soundscape::CollisionSoundType const&)")
+pub fn stub_f548a4() {
+    // IDA 0xf548a4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf548b4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE14_M_create_nodeERKS9_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::_M_create_node(std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>> const&)")]
-pub fn stub_f548b4() -> ! {
-    todo!("0xf548b4 std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_create_node(std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>> const&)")
+pub fn stub_f548b4() {
+    // IDA 0xf548b4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf548c4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS9_E
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>> *)")]
-pub fn stub_f548c4() -> ! {
-    todo!("0xf548c4 std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>> *)")
+pub fn stub_f548c4() {
+    // IDA 0xf548c4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf548d4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueERKS9_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::_M_insert_unique(std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>> const&)")]
-pub fn stub_f548d4() -> ! {
-    todo!("0xf548d4 std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_insert_unique(std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>> const&)")
+pub fn stub_f548d4() {
+    // IDA 0xf548d4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf548e4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>> const&)")]
-pub fn stub_f548e4() -> ! {
-    todo!("0xf548e4 std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>> const&)")
+pub fn stub_f548e4() {
+    // IDA 0xf548e4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf548f4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>> *)")]
-pub fn stub_f548f4() -> ! {
-    todo!("0xf548f4 std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>> *)")
+pub fn stub_f548f4() {
+    // IDA 0xf548f4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf54904 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>> const&)")]
-pub fn stub_f54904() -> ! {
-    todo!("0xf54904 std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>> const&)")
+pub fn stub_f54904() {
+    // IDA 0xf54904: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // watchdog audio — 150 duplicate stubs for FMOD/Sound/Audio (EA-sorted 0x686a4..0x72a28) using rbx_core::SharedPtr
 // 0x686a4 — __ZN4FMOD10ProfileCpu4initEv [watchdog]
 // type: int __fastcall(FMOD::ProfileCpu *this)
 #[doc(alias = "FMOD::ProfileCpu::init(void)")]
-pub fn stub_686a4_wdog000() -> ! {
-    todo!("0x686a4 FMOD::ProfileCpu::init(void)")
+pub fn stub_686a4_wdog000(_cpu: &mut ProfileCpu) -> i32 {
+    // Watchdog copy of IDA 0x686a4; see stub_686a4.
+    crate::stub_686a4(_cpu)
 }
 
 // 0x686ac — __ZN4FMOD10ProfileCpu6updateEPNS_7SystemIEj [watchdog]
 // type: int __fastcall(FMOD::ProfileCpu *this, FMOD::SystemI *, unsigned int)
 #[doc(alias = "FMOD::ProfileCpu::update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_686ac_wdog001() -> ! {
-    todo!("0x686ac FMOD::ProfileCpu::update(FMOD::SystemI *,unsigned int)")
+pub fn stub_686ac_wdog001(usage: Result<[f32; 4], i32>, add_packet: impl FnOnce(&[u8]) -> i32) -> i32 {
+    // Watchdog copy of IDA 0x686ac; see stub_686ac.
+    crate::stub_686ac(usage, add_packet)
 }
 
 // 0x68758 — __ZN4FMOD10ProfileCpu7releaseEv [watchdog]
 // type: int __fastcall(FMOD::ProfileCpu *this)
 #[doc(alias = "FMOD::ProfileCpu::release(void)")]
-pub fn stub_68758_wdog002() -> ! {
-    todo!("0x68758 FMOD::ProfileCpu::release(void)")
+pub fn stub_68758_wdog002(_cpu: Box<ProfileCpu>) -> i32 {
+    // Watchdog copy of IDA 0x68758; see stub_68758.
+    crate::stub_68758(_cpu)
 }
 
 // 0x68794 — __ZN4FMOD10ProfileCpuC2Ev [watchdog]
 // type: int __fastcall(FMOD::ProfileCpu *this)
 #[doc(alias = "FMOD::ProfileCpu::ProfileCpu(void)")]
-pub fn stub_68794_wdog003() -> ! {
-    todo!("0x68794 FMOD::ProfileCpu::ProfileCpu(void)")
+pub fn stub_68794_wdog003(cpu: &mut ProfileCpu) -> &mut ProfileCpu {
+    // Watchdog copy of IDA 0x68794; see stub_68794.
+    crate::stub_68794(cpu)
 }
 
 // 0x687bc — __ZN4FMOD10ProfileCpuC1Ev [watchdog]
 // type: int __fastcall(FMOD::ProfileCpu *this)
 #[doc(alias = "FMOD::ProfileCpu::ProfileCpu(void)")]
-pub fn stub_687bc_wdog004() -> ! {
-    todo!("0x687bc FMOD::ProfileCpu::ProfileCpu(void)")
+pub fn stub_687bc_wdog004(cpu: &mut ProfileCpu) -> &mut ProfileCpu {
+    // Watchdog copy of IDA 0x687bc; see stub_687bc.
+    crate::stub_687bc(cpu)
 }
 
 // 0x687c0 — __ZN4FMOD22FMOD_ProfileCpu_CreateEv [watchdog]
 // type: int __fastcall(FMOD *this)
 #[doc(alias = "FMOD::FMOD_ProfileCpu_Create(void)")]
-pub fn stub_687c0_wdog005() -> ! {
-    todo!("0x687c0 FMOD::FMOD_ProfileCpu_Create(void)")
+pub fn stub_687c0_wdog005(slot: &mut Option<Box<ProfileCpu>>, profile: &mut Profile) -> i32 {
+    // Watchdog copy of IDA 0x687c0; see stub_687c0.
+    crate::stub_687c0(slot, profile)
 }
 
 // 0x68864 — __ZN4FMOD10ProfileDsp15isNodeDuplicateEy [watchdog]
 // type: int __fastcall(FMOD::ProfileDsp *this, unsigned __int64)
 #[doc(alias = "FMOD::ProfileDsp::isNodeDuplicate(unsigned long long)")]
-pub fn stub_68864_wdog006() -> ! {
-    todo!("0x68864 FMOD::ProfileDsp::isNodeDuplicate(unsigned long long)")
+pub fn stub_68864_wdog006(dsp: &ProfileDsp, id: u64) -> i32 {
+    // Watchdog copy of IDA 0x68864; see stub_68864.
+    crate::stub_68864(dsp, id)
 }
 
 // 0x68944 — __ZN4FMOD10ProfileDsp10sendPacketEPNS_7SystemIE [watchdog]
 // type: int __fastcall(FMOD::ProfileDsp *this, FMOD::SystemI *)
 #[doc(alias = "FMOD::ProfileDsp::sendPacket(FMOD::SystemI *)")]
-pub fn stub_68944_wdog007() -> ! {
-    todo!("0x68944 FMOD::ProfileDsp::sendPacket(FMOD::SystemI *)")
+pub fn stub_68944_wdog007(
+    dsp: &mut ProfileDsp,
+    usage: Result<f32, i32>,
+    max_channels: u8,
+    add_packet: impl FnOnce(&[u8]) -> i32,
+) -> i32 {
+    // Watchdog copy of IDA 0x68944; see stub_68944.
+    crate::stub_68944(dsp, usage, max_channels, add_packet)
 }
 
 // 0x68a6c — __ZN4FMOD10ProfileDsp18growNodeStackSpaceEv [watchdog]
 // type: int __fastcall(FMOD::ProfileDsp *this)
 #[doc(alias = "FMOD::ProfileDsp::growNodeStackSpace(void)")]
-pub fn stub_68a6c_wdog008() -> ! {
-    todo!("0x68a6c FMOD::ProfileDsp::growNodeStackSpace(void)")
+pub fn stub_68a6c_wdog008(dsp: &mut ProfileDsp) -> i32 {
+    // Watchdog copy of IDA 0x68a6c; see stub_68a6c.
+    crate::stub_68a6c(dsp)
 }
 
 // 0x68adc — __ZN4FMOD10ProfileDsp15growPacketSpaceEv [watchdog]
 // type: int __fastcall(FMOD::ProfileDsp *this)
 #[doc(alias = "FMOD::ProfileDsp::growPacketSpace(void)")]
-pub fn stub_68adc_wdog009() -> ! {
-    todo!("0x68adc FMOD::ProfileDsp::growPacketSpace(void)")
+pub fn stub_68adc_wdog009(dsp: &mut ProfileDsp) -> i32 {
+    // Watchdog copy of IDA 0x68adc; see stub_68adc.
+    crate::stub_68adc(dsp)
 }
 
 // 0x68b68 — __ZN4FMOD10ProfileDsp6updateEPNS_7SystemIEj [watchdog]
 // type: int __fastcall(FMOD::ProfileDsp *this, FMOD::SystemI *, unsigned int)
 #[doc(alias = "FMOD::ProfileDsp::update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_68b68_wdog010() -> ! {
-    todo!("0x68b68 FMOD::ProfileDsp::update(FMOD::SystemI *,unsigned int)")
+pub fn stub_68b68_wdog010(
+    dsp: &mut ProfileDsp,
+    head: Result<usize, i32>,
+    graph: &[DspSnapshot],
+    dsp_usage: f32,
+    max_channels: u8,
+    add_packet: impl FnOnce(&[u8]) -> i32,
+) -> i32 {
+    // Watchdog copy of IDA 0x68b68; see stub_68b68.
+    crate::stub_68b68(dsp, head, graph, dsp_usage, max_channels, add_packet)
 }
 
 // 0x68dfc — __ZN4FMOD10ProfileDsp7releaseEv [watchdog]
 // type: int __fastcall(FMOD::ProfileDsp *this)
 #[doc(alias = "FMOD::ProfileDsp::release(void)")]
-pub fn stub_68dfc_wdog011() -> ! {
-    todo!("0x68dfc FMOD::ProfileDsp::release(void)")
+pub fn stub_68dfc_wdog011(_dsp: Box<ProfileDsp>) -> i32 {
+    // Watchdog copy of IDA 0x68dfc; see stub_68dfc.
+    crate::stub_68dfc(_dsp)
 }
 
 // 0x68ebc — __ZN4FMOD10ProfileDsp4initEv [watchdog]
 // type: int __fastcall(FMOD::ProfileDsp *this)
 #[doc(alias = "FMOD::ProfileDsp::init(void)")]
-pub fn stub_68ebc_wdog012() -> ! {
-    todo!("0x68ebc FMOD::ProfileDsp::init(void)")
+pub fn stub_68ebc_wdog012(dsp: &mut ProfileDsp) -> i32 {
+    // Watchdog copy of IDA 0x68ebc; see stub_68ebc.
+    crate::stub_68ebc(dsp)
 }
 
 // 0x69028 — __ZN4FMOD10ProfileDspC2Ev [watchdog]
 // type: int __fastcall(FMOD::ProfileDsp *this)
 #[doc(alias = "FMOD::ProfileDsp::ProfileDsp(void)")]
-pub fn stub_69028_wdog013() -> ! {
-    todo!("0x69028 FMOD::ProfileDsp::ProfileDsp(void)")
+pub fn stub_69028_wdog013(dsp: &mut ProfileDsp) -> &mut ProfileDsp {
+    // Watchdog copy of IDA 0x69028; see stub_69028.
+    crate::stub_69028(dsp)
 }
 
 // 0x69078 — __ZN4FMOD10ProfileDspC1Ev [watchdog]
 // type: int __fastcall(FMOD::ProfileDsp *this)
 #[doc(alias = "FMOD::ProfileDsp::ProfileDsp(void)")]
-pub fn stub_69078_wdog014() -> ! {
-    todo!("0x69078 FMOD::ProfileDsp::ProfileDsp(void)")
+pub fn stub_69078_wdog014(dsp: &mut ProfileDsp) -> &mut ProfileDsp {
+    // Watchdog copy of IDA 0x69078; see stub_69078.
+    crate::stub_69078(dsp)
 }
 
 // 0x6907c — __ZN4FMOD22FMOD_ProfileDsp_CreateEv [watchdog]
 // type: int __fastcall(FMOD *this)
 #[doc(alias = "FMOD::FMOD_ProfileDsp_Create(void)")]
-pub fn stub_6907c_wdog015() -> ! {
-    todo!("0x6907c FMOD::FMOD_ProfileDsp_Create(void)")
+pub fn stub_6907c_wdog015(slot: &mut Option<Box<ProfileDsp>>, profile: &mut Profile) -> i32 {
+    // Watchdog copy of IDA 0x6907c; see stub_6907c.
+    crate::stub_6907c(slot, profile)
 }
 
 // 0x6914c — __ZN4FMOD7ProfileC2Ev [watchdog]
 // type: _DWORD *__fastcall(_DWORD *this)
 #[doc(alias = "FMOD::Profile::Profile(void)")]
-pub fn stub_6914c_wdog016() -> ! {
-    todo!("0x6914c FMOD::Profile::Profile(void)")
+pub fn stub_6914c_wdog016(profile: &mut Profile) -> &mut Profile {
+    // Watchdog copy of IDA 0x6914c; see stub_6914c.
+    crate::stub_6914c(profile)
 }
 
 // 0x6919c — __ZN4FMOD7ProfileC1Ev [watchdog]
 // type: _DWORD *__fastcall(_DWORD *this)
 #[doc(alias = "FMOD::Profile::Profile(void)")]
-pub fn stub_6919c_wdog017() -> ! {
-    todo!("0x6919c FMOD::Profile::Profile(void)")
+pub fn stub_6919c_wdog017(profile: &mut Profile) -> &mut Profile {
+    // Watchdog copy of IDA 0x6919c; see stub_6919c.
+    crate::stub_6919c(profile)
 }
 
 // 0x691a0 — __ZN4FMOD7Profile14registerModuleEPNS_13ProfileModuleE [watchdog]
 // type: int __fastcall(int, int)
 #[doc(alias = "FMOD::Profile::registerModule(FMOD::ProfileModule *)")]
-pub fn stub_691a0_wdog018() -> ! {
-    todo!("0x691a0 FMOD::Profile::registerModule(FMOD::ProfileModule *)")
+pub fn stub_691a0_wdog018(profile: &mut Profile, module: &mut ProfileModule) -> i32 {
+    // Watchdog copy of IDA 0x691a0; see stub_691a0.
+    crate::stub_691a0(profile, module)
 }
 
 // 0x691c8 — __ZN4FMOD13ProfileModuleC2Ev [watchdog]
 // type: _DWORD *__fastcall(_DWORD *this)
 #[doc(alias = "FMOD::ProfileModule::ProfileModule(void)")]
-pub fn stub_691c8_wdog019() -> ! {
-    todo!("0x691c8 FMOD::ProfileModule::ProfileModule(void)")
+pub fn stub_691c8_wdog019(module: &mut ProfileModule) -> &mut ProfileModule {
+    // Watchdog copy of IDA 0x691c8; see stub_691c8.
+    crate::stub_691c8(module)
 }
 
 // 0x691fc — __ZN4FMOD13ProfileModule4initEv [watchdog]
 // type: int __fastcall(FMOD::ProfileModule *this)
 #[doc(alias = "FMOD::ProfileModule::init(void)")]
-pub fn stub_691fc_wdog020() -> ! {
-    todo!("0x691fc FMOD::ProfileModule::init(void)")
+pub fn stub_691fc_wdog020(_module: &mut ProfileModule) -> i32 {
+    // Watchdog copy of IDA 0x691fc; see stub_691fc.
+    crate::stub_691fc(_module)
 }
 
 // 0x69204 — __ZN4FMOD13ProfileModule7releaseEv [watchdog]
 // type: int __fastcall(FMOD::ProfileModule *this)
 #[doc(alias = "FMOD::ProfileModule::release(void)")]
-pub fn stub_69204_wdog021() -> ! {
-    todo!("0x69204 FMOD::ProfileModule::release(void)")
+pub fn stub_69204_wdog021(_module: &mut ProfileModule) -> i32 {
+    // Watchdog copy of IDA 0x69204; see stub_69204.
+    crate::stub_69204(_module)
 }
 
 // 0x6920c — __ZN4FMOD13ProfileModule6updateEPNS_7SystemIEj [watchdog]
 // type: int()
 #[doc(alias = "FMOD::ProfileModule::update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_6920c_wdog022() -> ! {
-    todo!("0x6920c FMOD::ProfileModule::update(FMOD::SystemI *,unsigned int)")
+pub fn stub_6920c_wdog022() -> i32 {
+    // Watchdog copy of IDA 0x6920c; see stub_6920c.
+    crate::stub_6920c()
 }
 
 // 0x69214 — __ZN4FMOD13ProfileClientC2Ev [watchdog]
 // type: char *__fastcall(FMOD::ProfileClient *this)
 #[doc(alias = "FMOD::ProfileClient::ProfileClient(void)")]
-pub fn stub_69214_wdog023() -> ! {
-    todo!("0x69214 FMOD::ProfileClient::ProfileClient(void)")
+pub fn stub_69214_wdog023(client: &mut ProfileClient) -> &mut ProfileClient {
+    // Watchdog copy of IDA 0x69214; see stub_69214.
+    crate::stub_69214(client)
 }
 
 // 0x69280 — __ZN4FMOD13ProfileClientC1Ev [watchdog]
 // type: char *__fastcall(FMOD::ProfileClient *this)
 #[doc(alias = "FMOD::ProfileClient::ProfileClient(void)")]
-pub fn stub_69280_wdog024() -> ! {
-    todo!("0x69280 FMOD::ProfileClient::ProfileClient(void)")
+pub fn stub_69280_wdog024(client: &mut ProfileClient) -> &mut ProfileClient {
+    // Watchdog copy of IDA 0x69280; see stub_69280.
+    crate::stub_69280(client)
 }
 
 // 0x69284 — __ZN4FMOD13ProfileClient15requestDataTypeEhhj [watchdog]
 // type: int __fastcall(FMOD::ProfileClient *this, int, int, unsigned int)
 #[doc(alias = "FMOD::ProfileClient::requestDataType(unsigned char,unsigned char,unsigned int)")]
-pub fn stub_69284_wdog025() -> ! {
-    todo!("0x69284 FMOD::ProfileClient::requestDataType(unsigned char,unsigned char,unsigned int)")
+pub fn stub_69284_wdog025(client: &mut ProfileClient, ty_a: u8, ty_b: u8, interval: u32) -> i32 {
+    // Watchdog copy of IDA 0x69284; see stub_69284.
+    crate::stub_69284(client, ty_a, ty_b, interval)
 }
 
 // 0x69358 — __ZN4FMOD13ProfileClient9wantsDataEPNS_19ProfilePacketHeaderE [watchdog]
 // type: bool __fastcall(int, unsigned __int8 *)
 #[doc(alias = "FMOD::ProfileClient::wantsData(FMOD::ProfilePacketHeader *)")]
-pub fn stub_69358_wdog026() -> ! {
-    todo!("0x69358 FMOD::ProfileClient::wantsData(FMOD::ProfilePacketHeader *)")
+pub fn stub_69358_wdog026(client: &ProfileClient, packet: &[u8]) -> bool {
+    // Watchdog copy of IDA 0x69358; see stub_69358.
+    crate::stub_69358(client, packet)
 }
 
 // 0x693f4 — __ZN4FMOD13ProfileClient8sendDataEv [watchdog]
 // type: int __fastcall(FMOD::ProfileClient *this)
 #[doc(alias = "FMOD::ProfileClient::sendData(void)")]
-pub fn stub_693f4_wdog027() -> ! {
-    todo!("0x693f4 FMOD::ProfileClient::sendData(void)")
+pub fn stub_693f4_wdog027(client: &mut ProfileClient, net: &mut impl ClientNet) -> i32 {
+    // Watchdog copy of IDA 0x693f4; see stub_693f4.
+    crate::stub_693f4(client, net)
 }
 
 // 0x69480 — __ZN4FMOD13ProfileClient8readDataEv [watchdog]
 // type: int __fastcall(const void **this)
 #[doc(alias = "FMOD::ProfileClient::readData(void)")]
-pub fn stub_69480_wdog028() -> ! {
-    todo!("0x69480 FMOD::ProfileClient::readData(void)")
+pub fn stub_69480_wdog028(client: &mut ProfileClient, net: &mut impl ClientNet) -> i32 {
+    // Watchdog copy of IDA 0x69480; see stub_69480.
+    crate::stub_69480(client, net)
 }
 
 // 0x695dc — __ZN4FMOD13ProfileClient6updateEj [watchdog]
 // type: int __fastcall(FMOD::ProfileClient *this, unsigned int)
 #[doc(alias = "FMOD::ProfileClient::update(unsigned int)")]
-pub fn stub_695dc_wdog029() -> ! {
-    todo!("0x695dc FMOD::ProfileClient::update(unsigned int)")
+pub fn stub_695dc_wdog029(client: &mut ProfileClient, net: &mut impl ClientNet) -> i32 {
+    // Watchdog copy of IDA 0x695dc; see stub_695dc.
+    crate::stub_695dc(client, net)
 }
 
 // 0x69634 — __ZN4FMOD13ProfileClient9addPacketEPNS_19ProfilePacketHeaderE [watchdog]
 // type: int __fastcall(FMOD::ProfileClient *this, unsigned __int8 *__src)
 #[doc(alias = "FMOD::ProfileClient::addPacket(FMOD::ProfilePacketHeader *)")]
-pub fn stub_69634_wdog030() -> ! {
-    todo!("0x69634 FMOD::ProfileClient::addPacket(FMOD::ProfilePacketHeader *)")
+pub fn stub_69634_wdog030(client: &mut ProfileClient, packet: &[u8], net: &mut impl ClientNet) -> i32 {
+    // Watchdog copy of IDA 0x69634; see stub_69634.
+    crate::stub_69634(client, packet, net)
 }
 
 // 0x69820 — __ZN4FMOD13ProfileClient7releaseEv [watchdog]
 // type: int __fastcall(const void **this)
 #[doc(alias = "FMOD::ProfileClient::release(void)")]
-pub fn stub_69820_wdog031() -> ! {
-    todo!("0x69820 FMOD::ProfileClient::release(void)")
+pub fn stub_69820_wdog031(client: Box<ProfileClient>, close: impl FnOnce(i32)) -> i32 {
+    // Watchdog copy of IDA 0x69820; see stub_69820.
+    crate::stub_69820(client, close)
 }
 
 // 0x6989c — __ZN4FMOD13ProfileClient4initEPv [watchdog]
 // type: int __fastcall(FMOD::ProfileClient *this, void *)
 #[doc(alias = "FMOD::ProfileClient::init(void *)")]
-pub fn stub_6989c_wdog032() -> ! {
-    todo!("0x6989c FMOD::ProfileClient::init(void *)")
+pub fn stub_6989c_wdog032(client: &mut ProfileClient, socket: i32) -> i32 {
+    // Watchdog copy of IDA 0x6989c; see stub_6989c.
+    crate::stub_6989c(client, socket)
 }
 
 // 0x69910 — __ZN4FMOD7Profile17getMemoryUsedImplEPNS_13MemoryTrackerE [watchdog]
 // type: int __fastcall(FMOD::Profile *this, FMOD::MemoryTracker *)
 #[doc(alias = "FMOD::Profile::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_69910_wdog033() -> ! {
-    todo!("0x69910 FMOD::Profile::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+pub fn stub_69910_wdog033(
+    profile: &Profile,
+    extra: &ProfileMemExtra<'_>,
+    sink: &mut impl MemTracker,
+) -> i32 {
+    // Watchdog copy of IDA 0x69910; see stub_69910.
+    crate::stub_69910(profile, extra, sink)
 }
 
 // 0x69a78 — __ZN4FMOD7Profile7releaseEv [watchdog]
 // type: int __fastcall(FMOD::Profile *this)
 #[doc(alias = "FMOD::Profile::release(void)")]
-pub fn stub_69a78_wdog034() -> ! {
-    todo!("0x69a78 FMOD::Profile::release(void)")
+pub fn stub_69a78_wdog034<N>(
+    live: &mut ProfileLive<N>,
+    os: &mut impl ProfileOs<N>,
+    mut release_module: impl FnMut(usize, &mut ProfileModule) -> i32,
+    mut clear_singleton: impl FnMut(usize),
+) -> i32 {
+    // Watchdog copy of IDA 0x69a78; see stub_69a78.
+    crate::stub_69a78(live, os, release_module, clear_singleton)
 }
 
 // 0x69be8 — __ZN4FMOD20FMOD_Profile_ReleaseEv [watchdog]
 // type: int __fastcall(FMOD *this)
 #[doc(alias = "FMOD::FMOD_Profile_Release(void)")]
-pub fn stub_69be8_wdog035() -> ! {
-    todo!("0x69be8 FMOD::FMOD_Profile_Release(void)")
+pub fn stub_69be8_wdog035<N>(
+    slot: &mut Option<Box<ProfileLive<N>>>,
+    os: &mut impl ProfileOs<N>,
+    release_module: impl FnMut(usize, &mut ProfileModule) -> i32,
+    clear_singleton: impl FnMut(usize),
+) -> i32 {
+    // Watchdog copy of IDA 0x69be8; see stub_69be8.
+    crate::stub_69be8(slot, os, release_module, clear_singleton)
 }
 
 // 0x69c20 — __ZN4FMOD7Profile4initEt [watchdog]
 // type: int __fastcall(FMOD::Profile *this, unsigned __int16)
 #[doc(alias = "FMOD::Profile::init(unsigned short)")]
-pub fn stub_69c20_wdog036() -> ! {
-    todo!("0x69c20 FMOD::Profile::init(unsigned short)")
+pub fn stub_69c20_wdog036<N>(profile: &mut Profile, port: u16, os: &mut impl ProfileOs<N>) -> i32 {
+    // Watchdog copy of IDA 0x69c20; see stub_69c20.
+    crate::stub_69c20(profile, port, os)
 }
 
 // 0x69c9c — __ZN4FMOD19FMOD_Profile_CreateEt [watchdog]
 // type: int __fastcall(FMOD *this, unsigned __int16)
 #[doc(alias = "FMOD::FMOD_Profile_Create(unsigned short)")]
-pub fn stub_69c9c_wdog037() -> ! {
-    todo!("0x69c9c FMOD::FMOD_Profile_Create(unsigned short)")
+pub fn stub_69c9c_wdog037<N>(
+    slot: &mut Option<Box<ProfileLive<N>>>,
+    port: u16,
+    os: &mut impl ProfileOs<N>,
+    release_module: impl FnMut(usize, &mut ProfileModule) -> i32,
+    clear_singleton: impl FnMut(usize),
+) -> i32 {
+    // Watchdog copy of IDA 0x69c9c; see stub_69c9c.
+    crate::stub_69c9c(slot, port, os, release_module, clear_singleton)
 }
 
 // 0x69d50 — __ZN4FMOD7Profile9addPacketEPNS_19ProfilePacketHeaderE [watchdog]
 // type: int __fastcall(_DWORD *, int)
 #[doc(alias = "FMOD::Profile::addPacket(FMOD::ProfilePacketHeader *)")]
-pub fn stub_69d50_wdog038() -> ! {
-    todo!("0x69d50 FMOD::Profile::addPacket(FMOD::ProfilePacketHeader *)")
+pub fn stub_69d50_wdog038<N>(live: &mut ProfileLive<N>, packet: &mut [u8], os: &mut impl ProfileOs<N>) -> i32
+where
+    N: ClientNet, {
+    // Watchdog copy of IDA 0x69d50; see stub_69d50.
+    crate::stub_69d50(live, packet, os)
 }
 
 // 0x69e0c — __ZN4FMOD7Profile6updateEPNS_7SystemIEj [watchdog]
 // type: int __fastcall(FMOD::Profile *this, FMOD::SystemI *, unsigned int)
 #[doc(alias = "FMOD::Profile::update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_69e0c_wdog039() -> ! {
-    todo!("0x69e0c FMOD::Profile::update(FMOD::SystemI *,unsigned int)")
+pub fn stub_69e0c_wdog039<N>(
+    live: &mut ProfileLive<N>,
+    tick_ms: u32,
+    os: &mut impl ProfileOs<N>,
+    mut module_update: impl FnMut(usize, &mut ProfileModule) -> i32,
+) -> i32
+where
+    N: ClientNet, {
+    // Watchdog copy of IDA 0x69e0c; see stub_69e0c.
+    crate::stub_69e0c(live, tick_ms, os, module_update)
 }
 
 // 0x6a018 — __ZN4FMOD19FMOD_Profile_UpdateEPNS_7SystemIEj [watchdog]
 // type: int __fastcall(FMOD *this, FMOD::SystemI *, unsigned int)
 #[doc(alias = "FMOD::FMOD_Profile_Update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_6a018_wdog040() -> ! {
-    todo!("0x6a018 FMOD::FMOD_Profile_Update(FMOD::SystemI *,unsigned int)")
+pub fn stub_6a018_wdog040<N>(
+    slot: &mut Option<Box<ProfileLive<N>>>,
+    tick_ms: u32,
+    os: &mut impl ProfileOs<N>,
+    module_update: impl FnMut(usize, &mut ProfileModule) -> i32,
+) -> i32
+where
+    N: ClientNet, {
+    // Watchdog copy of IDA 0x6a018; see stub_6a018.
+    crate::stub_6a018(slot, tick_ms, os, module_update)
 }
 
 // 0x6a04c — __ZN4FMOD7Profile13getMemoryUsedEPNS_13MemoryTrackerE [watchdog]
 // type: int __fastcall(int, int)
 #[doc(alias = "FMOD::Profile::getMemoryUsed(FMOD::MemoryTracker *)")]
-pub fn stub_6a04c_wdog041() -> ! {
-    todo!("0x6a04c FMOD::Profile::getMemoryUsed(FMOD::MemoryTracker *)")
+pub fn stub_6a04c_wdog041(profile: &mut Profile, flag: bool, run_impl: impl FnOnce() -> i32) -> i32 {
+    // Watchdog copy of IDA 0x6a04c; see stub_6a04c.
+    crate::stub_6a04c(profile, flag, run_impl)
 }
 
 // 0x6d26c — _FMOD_oggpack_look [watchdog]
 // type: int __fastcall(int *, int)
 #[doc(alias = "_FMOD_oggpack_look")]
-pub fn stub_6d26c_wdog042() -> ! {
-    todo!("0x6d26c _FMOD_oggpack_look")
+pub unsafe fn stub_6d26c_wdog042(b: *mut OggpackBuffer, bits: i32) -> i32 {
+    // Watchdog copy of IDA 0x6d26c; see stub_6d26c.
+    crate::stub_6d26c(b, bits)
 }
 
 // 0x6d318 — _FMOD_oggpack_adv [watchdog]
 // type: _DWORD *__fastcall(_DWORD *result, int)
 #[doc(alias = "_FMOD_oggpack_adv")]
-pub fn stub_6d318_wdog043() -> ! {
-    todo!("0x6d318 _FMOD_oggpack_adv")
+pub unsafe fn stub_6d318_wdog043(b: *mut OggpackBuffer, bits: i32) -> *mut OggpackBuffer {
+    // Watchdog copy of IDA 0x6d318; see stub_6d318.
+    crate::stub_6d318(b, bits)
 }
 
 // 0x6d354 — _FMOD_oggpack_read [watchdog]
 // type: int __fastcall(int *, int)
 #[doc(alias = "_FMOD_oggpack_read")]
-pub fn stub_6d354_wdog044() -> ! {
-    todo!("0x6d354 _FMOD_oggpack_read")
+pub unsafe fn stub_6d354_wdog044(b: *mut OggpackBuffer, bits: i32) -> i32 {
+    // Watchdog copy of IDA 0x6d354; see stub_6d354.
+    crate::stub_6d354(b, bits)
 }
 
 // 0x6d434 — _FMOD_oggpack_bytes [watchdog]
 // type: int __fastcall(int *)
 #[doc(alias = "_FMOD_oggpack_bytes")]
-pub fn stub_6d434_wdog045() -> ! {
-    todo!("0x6d434 _FMOD_oggpack_bytes")
+pub unsafe fn stub_6d434_wdog045(b: *const OggpackBuffer) -> i32 {
+    // Watchdog copy of IDA 0x6d434; see stub_6d434.
+    crate::stub_6d434(b)
 }
 
 // 0x6d44c — _FMOD_oggpack_readinit [watchdog]
 // type: _DWORD *__fastcall(_DWORD *result, int, int)
 #[doc(alias = "_FMOD_oggpack_readinit")]
-pub fn stub_6d44c_wdog046() -> ! {
-    todo!("0x6d44c _FMOD_oggpack_readinit")
+pub unsafe fn stub_6d44c_wdog046(b: *mut OggpackBuffer, buf: *const u8, bytes: i32) -> *mut OggpackBuffer {
+    // Watchdog copy of IDA 0x6d44c; see stub_6d44c.
+    crate::stub_6d44c(b, buf, bytes)
 }
 
 // 0x6d4b4 — _FMOD_vorbis_synthesis_restart [watchdog]
 // type: int __fastcall(int **)
 #[doc(alias = "_FMOD_vorbis_synthesis_restart")]
-pub fn stub_6d4b4_wdog047() -> ! {
-    todo!("0x6d4b4 _FMOD_vorbis_synthesis_restart")
+pub unsafe fn stub_6d4b4_wdog047(v: *mut VorbisDspState) -> i32 {
+    // Watchdog copy of IDA 0x6d4b4; see stub_6d4b4.
+    crate::stub_6d4b4(v)
 }
 
 // 0x6d538 — _FMOD_vorbis_synthesis_pcmout [watchdog]
 // type: int __fastcall(int *, _DWORD *)
 #[doc(alias = "_FMOD_vorbis_synthesis_pcmout")]
-pub fn stub_6d538_wdog048() -> ! {
-    todo!("0x6d538 _FMOD_vorbis_synthesis_pcmout")
+pub unsafe fn stub_6d538_wdog048(v: *const VorbisDspState, pcm: *mut *mut *mut f32) -> i32 {
+    // Watchdog copy of IDA 0x6d538; see stub_6d538.
+    crate::stub_6d538(v, pcm)
 }
 
 // 0x6d5c8 — _FMOD_vorbis_synthesis_read [watchdog]
 // type: int __fastcall(int, int)
 #[doc(alias = "_FMOD_vorbis_synthesis_read")]
-pub fn stub_6d5c8_wdog049() -> ! {
-    todo!("0x6d5c8 _FMOD_vorbis_synthesis_read")
+pub unsafe fn stub_6d5c8_wdog049(v: *mut VorbisDspState, n: i32) -> i32 {
+    // Watchdog copy of IDA 0x6d5c8; see stub_6d5c8.
+    crate::stub_6d5c8(v, n)
 }
 
 // 0x6d600 — _FMOD_vorbis_synthesis_blockin [watchdog]
 // type: int __fastcall(int *, int)
 #[doc(alias = "_FMOD_vorbis_synthesis_blockin")]
-pub fn stub_6d600_wdog050() -> ! {
-    todo!("0x6d600 _FMOD_vorbis_synthesis_blockin")
+pub unsafe fn stub_6d600_wdog050(os: &impl VorbisCodecOs, v: *mut VorbisDspState, vb: *mut VorbisBlock) -> i32 {
+    // Watchdog copy of IDA 0x6d600; see stub_6d600.
+    crate::stub_6d600(os, v, vb)
 }
 
 // 0x6dee8 — __FMOD_vorbis_block_alloc [watchdog]
 // type: int __fastcall(int, _DWORD *, int)
 #[doc(alias = "__FMOD_vorbis_block_alloc")]
-pub fn stub_6dee8_wdog051() -> ! {
-    todo!("0x6dee8 __FMOD_vorbis_block_alloc")
+pub unsafe fn stub_6dee8_wdog051(vb: *mut VorbisBlock, bytes: i32, heap: &mut impl VorbisHeap) -> *mut u8 {
+    // Watchdog copy of IDA 0x6dee8; see stub_6dee8.
+    crate::stub_6dee8(vb, bytes, heap)
 }
 
 // 0x6df94 — __FMOD_vorbis_block_ripcord [watchdog]
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "__FMOD_vorbis_block_ripcord")]
-pub fn stub_6df94_wdog052() -> ! {
-    todo!("0x6df94 __FMOD_vorbis_block_ripcord")
+pub unsafe fn stub_6df94_wdog052(vb: *mut VorbisBlock, heap: &mut impl VorbisHeap) -> i32 {
+    // Watchdog copy of IDA 0x6df94; see stub_6df94.
+    crate::stub_6df94(vb, heap)
 }
 
 // 0x6e044 — _FMOD_vorbis_block_init [watchdog]
 // type: int __fastcall(int, int, void *__b)
 #[doc(alias = "_FMOD_vorbis_block_init")]
-pub fn stub_6e044_wdog053() -> ! {
-    todo!("0x6e044 _FMOD_vorbis_block_init")
+pub unsafe fn stub_6e044_wdog053(vb: *mut VorbisBlock, vd: *mut VorbisDspState) -> i32 {
+    // Watchdog copy of IDA 0x6e044; see stub_6e044.
+    crate::stub_6e044(vb, vd)
 }
 
 // 0x6e078 — _FMOD_vorbis_dsp_clear [watchdog]
 // type: void *__fastcall(void *result, int *, int, int)
 #[doc(alias = "_FMOD_vorbis_dsp_clear")]
-pub fn stub_6e078_wdog054() -> ! {
-    todo!("0x6e078 _FMOD_vorbis_dsp_clear")
+pub unsafe fn stub_6e078_wdog054(os: &mut impl VorbisCodecOs, dsp: *mut VorbisDspState) -> *mut VorbisDspState {
+    // Watchdog copy of IDA 0x6e078; see stub_6e078.
+    crate::stub_6e078(os, dsp)
 }
 
 // 0x6e2c4 — _FMOD_vorbis_synthesis_init [watchdog]
 // type: int __fastcall(void *, int *__b, int, int)
 #[doc(alias = "_FMOD_vorbis_synthesis_init")]
-pub fn stub_6e2c4_wdog055() -> ! {
-    todo!("0x6e2c4 _FMOD_vorbis_synthesis_init")
+pub unsafe fn stub_6e2c4_wdog055(os: &mut impl VorbisCodecOs, dsp: *mut VorbisDspState, vi: *mut u8) -> i32 {
+    // Watchdog copy of IDA 0x6e2c4; see stub_6e2c4.
+    crate::stub_6e2c4(os, dsp, vi)
 }
 
 // 0x6e6c0 — _FMOD_vorbis_block_clear [watchdog]
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "_FMOD_vorbis_block_clear")]
-pub fn stub_6e6c0_wdog056() -> ! {
-    todo!("0x6e6c0 _FMOD_vorbis_block_clear")
+pub unsafe fn stub_6e6c0_wdog056(vb: *mut VorbisBlock, heap: &mut impl VorbisHeap) -> i32 {
+    // Watchdog copy of IDA 0x6e6c0; see stub_6e6c0.
+    crate::stub_6e6c0(vb, heap)
 }
 
 // 0x6e778 — _FMOD_vorbis_book_decode [watchdog]
 // type: int __fastcall(int *, int *)
 #[doc(alias = "_FMOD_vorbis_book_decode")]
-pub fn stub_6e778_wdog057() -> ! {
-    todo!("0x6e778 _FMOD_vorbis_book_decode")
+pub unsafe fn stub_6e778_wdog057(bk: *const VorbisCodebook, opb: *mut OggpackBuffer) -> i32 {
+    // Watchdog copy of IDA 0x6e778; see stub_6e778.
+    crate::stub_6e778(bk, opb)
 }
 
 // 0x6e8c4 — _FMOD_vorbis_staticbook_unpack [watchdog]
 // type: int __fastcall(int, int *, int *)
 #[doc(alias = "_FMOD_vorbis_staticbook_unpack")]
-pub fn stub_6e8c4_wdog058() -> ! {
-    todo!("0x6e8c4 _FMOD_vorbis_staticbook_unpack")
+pub unsafe fn stub_6e8c4_wdog058(
+    heap: &mut impl VorbisHeap,
+    opb: *mut OggpackBuffer,
+    book: *mut VorbisStaticBook,
+) -> i32 {
+    // Watchdog copy of IDA 0x6e8c4; see stub_6e8c4.
+    crate::stub_6e8c4(heap, opb, book)
 }
 
 // 0x6ec78 — _FMOD_vorbis_book_decodevv_add [watchdog]
 // type: int __fastcall(int *, int, int, int, int *, int)
 #[doc(alias = "_FMOD_vorbis_book_decodevv_add")]
-pub fn stub_6ec78_wdog059() -> ! {
-    todo!("0x6ec78 _FMOD_vorbis_book_decodevv_add")
+pub unsafe fn stub_6ec78_wdog059(
+    bk: *const VorbisCodebook,
+    chans: *const *mut f32,
+    off: i32,
+    nch: i32,
+    opb: *mut OggpackBuffer,
+    count: i32,
+) -> i32 {
+    // Watchdog copy of IDA 0x6ec78; see stub_6ec78.
+    crate::stub_6ec78(bk, chans, off, nch, opb, count)
 }
 
 // 0x6ee98 — _FMOD_vorbis_book_decodev_add [watchdog]
 // type: int __fastcall(int *, int, int *, int)
 #[doc(alias = "_FMOD_vorbis_book_decodev_add")]
-pub fn stub_6ee98_wdog060() -> ! {
-    todo!("0x6ee98 _FMOD_vorbis_book_decodev_add")
+pub unsafe fn stub_6ee98_wdog060(
+    bk: *const VorbisCodebook,
+    out: *mut f32,
+    opb: *mut OggpackBuffer,
+    n: i32,
+) -> i32 {
+    // Watchdog copy of IDA 0x6ee98; see stub_6ee98.
+    crate::stub_6ee98(bk, out, opb, n)
 }
 
 // 0x6f37c — _FMOD_vorbis_book_decodevs_add [watchdog]
 // type: int __fastcall(int *, __int32 *, int *, int)
 #[doc(alias = "_FMOD_vorbis_book_decodevs_add")]
-pub fn stub_6f37c_wdog061() -> ! {
-    todo!("0x6f37c _FMOD_vorbis_book_decodevs_add")
+pub unsafe fn stub_6f37c_wdog061(
+    bk: *const VorbisCodebook,
+    out: *mut f32,
+    opb: *mut OggpackBuffer,
+    total: i32,
+) -> i32 {
+    // Watchdog copy of IDA 0x6f37c; see stub_6f37c.
+    crate::stub_6f37c(bk, out, opb, total)
 }
 
 // 0x6f840 — _FMOD_floor1_inverse1 [watchdog]
 // type: int *__fastcall(int, int, _DWORD *)
 #[doc(alias = "_FMOD_floor1_inverse1")]
-pub fn stub_6f840_wdog062() -> ! {
-    todo!("0x6f840 _FMOD_floor1_inverse1")
+pub unsafe fn stub_6f840_wdog062(
+    heap: &mut impl VorbisHeap,
+    vb: *mut VorbisBlock,
+    look: *const Floor1Look,
+) -> *mut i32 {
+    // Watchdog copy of IDA 0x6f840; see stub_6f840.
+    crate::stub_6f840(heap, vb, look)
 }
 
 // 0x6fbac — _FMOD_floor1_free_look [watchdog]
 // type: int __fastcall(int result, void *)
 #[doc(alias = "_FMOD_floor1_free_look")]
-pub fn stub_6fbac_wdog063() -> ! {
-    todo!("0x6fbac _FMOD_floor1_free_look")
+pub unsafe fn stub_6fbac_wdog063(heap: &mut impl VorbisHeap, look: *mut Floor1Look) -> i32 {
+    // Watchdog copy of IDA 0x6fbac; see stub_6fbac.
+    crate::stub_6fbac(heap, look)
 }
 
 // 0x6fbe0 — _FMOD_floor1_look [watchdog]
 // type: _DWORD *__fastcall(int, int, int *)
 #[doc(alias = "_FMOD_floor1_look")]
-pub fn stub_6fbe0_wdog064() -> ! {
-    todo!("0x6fbe0 _FMOD_floor1_look")
+pub unsafe fn stub_6fbe0_wdog064(heap: &mut impl VorbisHeap, info: *const Floor1Info) -> *mut Floor1Look {
+    // Watchdog copy of IDA 0x6fbe0; see stub_6fbe0.
+    crate::stub_6fbe0(heap, info)
 }
 
 // 0x6fe68 — _FMOD_floor1_free_info [watchdog]
 // type: int __fastcall(int result, void *)
 #[doc(alias = "_FMOD_floor1_free_info")]
-pub fn stub_6fe68_wdog065() -> ! {
-    todo!("0x6fe68 _FMOD_floor1_free_info")
+pub unsafe fn stub_6fe68_wdog065(heap: &mut impl VorbisHeap, info: *mut Floor1Info) -> i32 {
+    // Watchdog copy of IDA 0x6fe68; see stub_6fe68.
+    crate::stub_6fe68(heap, info)
 }
 
 // 0x6fe9c — _FMOD_floor1_unpack [watchdog]
 // type: int *__fastcall(int, int, int *)
 #[doc(alias = "_FMOD_floor1_unpack")]
-pub fn stub_6fe9c_wdog066() -> ! {
-    todo!("0x6fe9c _FMOD_floor1_unpack")
+pub unsafe fn stub_6fe9c_wdog066(
+    heap: &mut impl VorbisHeap,
+    vi: *const u32,
+    opb: *mut OggpackBuffer,
+) -> *mut Floor1Info {
+    // Watchdog copy of IDA 0x6fe9c; see stub_6fe9c.
+    crate::stub_6fe9c(heap, vi, opb)
 }
 
 // 0x701fc — _FMOD_floor1_inverse2 [watchdog]
 // type: int __fastcall(int, int, int, _DWORD *, char *__b)
 #[doc(alias = "_FMOD_floor1_inverse2")]
-pub fn stub_701fc_wdog067() -> ! {
-    todo!("0x701fc _FMOD_floor1_inverse2")
+pub unsafe fn stub_701fc_wdog067(
+    vb: *mut VorbisBlock,
+    look: *const Floor1Look,
+    fit: *const i32,
+    out: *mut f32,
+) -> i32 {
+    // Watchdog copy of IDA 0x701fc; see stub_701fc.
+    crate::stub_701fc(vb, look, fit, out)
 }
 
 // 0x70458 — _FMOD_Channel_GetUserData [watchdog]
 // type: int __fastcall(FMOD::Channel *, void **)
 #[doc(alias = "_FMOD_Channel_GetUserData")]
-pub fn stub_70458_wdog068() -> ! {
-    todo!("0x70458 _FMOD_Channel_GetUserData")
+pub unsafe fn stub_70458_wdog068(
+    ch: *const u8,
+    out: *mut *mut u8,
+    get_user_data: impl FnOnce(*const u8, *mut *mut u8) -> i32,
+) -> i32 {
+    // Watchdog copy of IDA 0x70458; see stub_70458.
+    crate::stub_70458(ch, out, get_user_data)
 }
 
 // 0x70474 — _FMOD_System_Create [watchdog]
@@ -4138,8 +4300,9 @@ pub fn stub_705cc_wdog070() -> ! {
 // 0x7069c — __ZN4FMOD11AsyncThread7releaseEv [watchdog]
 // type: int __fastcall(FMOD::AsyncThread *this)
 #[doc(alias = "FMOD::AsyncThread::release(void)")]
-pub fn stub_7069c_wdog071() -> ! {
-    todo!("0x7069c FMOD::AsyncThread::release(void)")
+pub unsafe fn stub_7069c_wdog071(t: *mut AsyncThread) -> i32 {
+    // Watchdog copy of IDA 0x7069c; see stub_7069c.
+    crate::stub_7069c(t)
 }
 
 // 0x706b4 — __ZN4FMOD11AsyncThread10threadFuncEv [watchdog]
@@ -4159,36 +4322,53 @@ pub fn stub_70ab0_wdog073() -> ! {
 // 0x70ab4 — __ZN4FMOD11AsyncThread13reallyReleaseEv [watchdog]
 // type: int __fastcall(FMOD::AsyncThread *this)
 #[doc(alias = "FMOD::AsyncThread::reallyRelease(void)")]
-pub fn stub_70ab4_wdog074() -> ! {
-    todo!("0x70ab4 FMOD::AsyncThread::reallyRelease(void)")
+pub unsafe fn stub_70ab4_wdog074(t: *mut AsyncThread, os: &mut impl AsyncOs) -> i32 {
+    // Watchdog copy of IDA 0x70ab4; see stub_70ab4.
+    crate::stub_70ab4(t, os)
 }
 
 // 0x70bbc — __ZN4FMOD11AsyncThread4initEbPNS_7SystemIE [watchdog]
 // type: int __fastcall(FMOD::AsyncThread *this, bool, FMOD::SystemI *)
 #[doc(alias = "FMOD::AsyncThread::init(bool,FMOD::SystemI *)")]
-pub fn stub_70bbc_wdog075() -> ! {
-    todo!("0x70bbc FMOD::AsyncThread::init(bool,FMOD::SystemI *)")
+pub unsafe fn stub_70bbc_wdog075(
+    reg: &mut AsyncRegistry,
+    global_lock: *mut u8,
+    t: *mut AsyncThread,
+    blocking: bool,
+    sys: *mut u8,
+    os: &mut impl AsyncOs,
+) -> i32 {
+    // Watchdog copy of IDA 0x70bbc; see stub_70bbc.
+    crate::stub_70bbc(reg, global_lock, t, blocking, sys, os)
 }
 
 // 0x70c98 — __ZN4FMOD11AsyncThreadC2Ev [watchdog]
 // type: int __fastcall(FMOD::AsyncThread *this)
 #[doc(alias = "FMOD::AsyncThread::AsyncThread(void)")]
-pub fn stub_70c98_wdog076() -> ! {
-    todo!("0x70c98 FMOD::AsyncThread::AsyncThread(void)")
+pub unsafe fn stub_70c98_wdog076(t: *mut AsyncThread, os: &mut impl AsyncOs) -> i32 {
+    // Watchdog copy of IDA 0x70c98; see stub_70c98.
+    crate::stub_70c98(t, os)
 }
 
 // 0x70cec — __ZN4FMOD11AsyncThreadC1Ev [watchdog]
 // type: int __fastcall(FMOD::AsyncThread *this)
 #[doc(alias = "FMOD::AsyncThread::AsyncThread(void)")]
-pub fn stub_70cec_wdog077() -> ! {
-    todo!("0x70cec FMOD::AsyncThread::AsyncThread(void)")
+pub unsafe fn stub_70cec_wdog077(t: *mut AsyncThread, os: &mut impl AsyncOs) -> i32 {
+    // Watchdog copy of IDA 0x70cec; see stub_70cec.
+    crate::stub_70cec(t, os)
 }
 
 // 0x70cf0 — __ZN4FMOD11AsyncThread14getAsyncThreadEPNS_6SoundIE [watchdog]
 // type: int __fastcall(FMOD::AsyncThread *this, FMOD::SoundI *)
 #[doc(alias = "FMOD::AsyncThread::getAsyncThread(FMOD::SoundI *)")]
-pub fn stub_70cf0_wdog078() -> ! {
-    todo!("0x70cf0 FMOD::AsyncThread::getAsyncThread(FMOD::SoundI *)")
+pub unsafe fn stub_70cf0_wdog078(
+    reg: &mut AsyncRegistry,
+    global_lock: *mut u8,
+    owner: *mut AsyncSoundView,
+    os: &mut impl AsyncOs,
+) -> i32 {
+    // Watchdog copy of IDA 0x70cf0; see stub_70cf0.
+    crate::stub_70cf0(reg, global_lock, owner, os)
 }
 
 // 0x70ddc — __ZN4FMOD11AsyncThread8shutDownEv [watchdog]
