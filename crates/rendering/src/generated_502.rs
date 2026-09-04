@@ -3,19 +3,344 @@
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 //! Uses rbx_core::SharedPtr (not boost::shared_ptr). Sanitized: single quotes removed, boost::shared_ptr -> rbx_core::SharedPtr.
 
-#![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
-
 use rbx_core::SharedPtr;
+use crate::ogre::{ColourValue, SceneBlendFactor};
 
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+
+/// was: `Ogre::TextureUnitState::ContentType` — named texture vs shadow content.
+#[doc(alias = "Ogre::TextureUnitState::ContentType")]
+#[repr(u32)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum ContentType {
+    #[default]
+    Named = 0,
+    Shadow = 1,
+    Unknown = 0xffff_ffff,
+}
+
+impl ContentType {
+    pub fn from_raw(v: u32) -> Self {
+        match v {
+            0 => ContentType::Named,
+            1 => ContentType::Shadow,
+            _ => ContentType::Unknown,
+        }
+    }
+}
+
+/// was: `Ogre::TextureUnitState::BindingType` — fragment vs vertex texture unit.
+#[doc(alias = "Ogre::TextureUnitState::BindingType")]
+#[repr(u32)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum BindingType {
+    #[default]
+    Fragment = 0,
+    Vertex = 1,
+}
+
+/// was: `Ogre::TextureUnitState::mTextureType` dimensionality.
+/// Values observed in IDA: 2 = 2D (`0xe4ab3e`), 4 = 3D (`0xe4ab3c`, `0xe4aca8`).
+pub const TEXTURE_TYPE_2D: u32 = 2;
+/// was: `Ogre::TextureUnitState::mTextureType` 3D value (`0xe4aca8`: `is3D = (type == 4)`).
+pub const TEXTURE_TYPE_3D: u32 = 4;
+
+/// was: `Ogre::TextureUnitState::TextureEffect` (value of the `mEffects` map).
+#[doc(alias = "Ogre::TextureUnitState::TextureEffect")]
+#[derive(Clone, Debug, Default)]
+pub struct TextureEffect {
+    pub effect_type: u32,
+    pub arg1: f32,
+    pub arg2: f32,
+    /// ControllerManager handle from `createEffectController`; None = destroyed.
+    pub controller: Option<u32>,
+}
+
+/// was: `Ogre::TexturePtr` (`boost::shared_ptr<Ogre::Texture>`, 16 bytes each in `mTextures`).
+/// Only the loaded flag is modelled; the GPU resource itself is opaque.
+/// `boost::shared_ptr` maps to `rbx_core::SharedPtr` per AGENTS.md §4.
+#[derive(Clone, Debug, Default)]
+pub struct TextureSlot {
+    pub loaded: bool,
+}
+
+/// was: `Ogre::TextureUnitState` (OgreMain/src/OgreTextureUnitState.cpp, ogre-v1-6-4).
+/// Byte offsets are the IDA `(this + N)` word offsets mapped to bytes.
+#[doc(alias = "Ogre::TextureUnitState")]
+#[derive(Clone, Debug, Default)]
+pub struct TextureUnitState {
+    /// +0 current frame index (`mCurrentFrame`, IDA `0xe4bb9a`).
+    pub current_frame: u32,
+    /// +4 animation duration, 0 = not animated (`mAnimDuration`, IDA `0xe49b06`).
+    pub anim_duration: f32,
+    /// +8 set to 1 by `setCubicTextureName`, 0 by `setAnimatedTextureName` (IDA `0xe4ab34`/`0xe4af9e`).
+    pub flag_08: u8,
+    /// +12 texture dimensionality (`mTextureType`, IDA `0xe4acb6`).
+    pub texture_type: u32,
+    /// +16 desired pixel format (`mDesiredFormat`, raw `Ogre::PixelFormat`, IDA `0xe4bba8`).
+    pub desired_format: u32,
+    /// +20 mipmap count (`mNumMipmaps`, IDA `0xe4bbac`).
+    pub num_mipmaps: i32,
+    /// +24 texture coordinate set (`mTextureCoordSetIndex`, IDA `0xe4bbc2`).
+    pub texture_coord_set: u32,
+    /// +60/+64/+68 colour blend op + sources (IDA `0xe4bbc8`..`0xe4bbd0`).
+    pub colour_op_ex: u32,
+    pub colour_src1: u32,
+    pub colour_src2: u32,
+    /// +72/+88 blend colour/alpha args (IDA `0xe4bbda`/`0xe4bbea`).
+    pub colour_arg1: ColourValue,
+    pub colour_arg2: ColourValue,
+    /// +112 manual blend factor (IDA `0xe4bbee`).
+    pub colour_blend_factor: f32,
+    /// +116 multipass fallback src/dst (IDA `0xe4bbfc`).
+    pub colour_fallback_src: SceneBlendFactor,
+    pub colour_fallback_dst: SceneBlendFactor,
+    /// +184 load-failed latch, cleared by the name setters (IDA `0xe4a96c`).
+    pub load_failed: bool,
+    /// +185 texture has alpha (`mIsAlpha`, IDA `0xe4bbb0`).
+    pub is_alpha: bool,
+    /// +186 hardware gamma (`mHwGammaEnabled`, IDA `0xe4bbb8`).
+    pub hw_gamma_enabled: bool,
+    /// +296 binding type (`mBindingType`, IDA `0xe4a90c`/`0xe4a918`).
+    pub binding_type: BindingType,
+    /// +300 content type (`mContentType`, IDA `0xe49ba8`/`0xe4a920`).
+    pub content_type: u32,
+    /// +312 frame texture names (`mFrames`, `vector<string>`).
+    pub frames: Vec<String>,
+    /// +328 loaded textures (`mTextures`, `vector<TexturePtr>`, 16 bytes each).
+    pub textures: Vec<TextureSlot>,
+    /// +356 effect list (original is a keyed `std::map`; insertion order kept).
+    pub effects: Vec<TextureEffect>,
+    /// +384 parent pass loaded latch (models `Pass::isLoaded(mParent)`, IDA `0xe49ad0`).
+    pub parent_loaded: bool,
+    /// +388 animation controller handle (`mAnimController`, IDA `0xe49a4a`).
+    pub anim_controller: Option<u32>,
+    /// Parent needs recompile/hash-dirty (`Pass::_notifyNeedsRecompile`/`_dirtyHash`, IDA `0xe4abb0`/`0xe4b1cc`).
+    pub parent_dirty: bool,
+    /// Local allocator for controller handles (no original address; glue only).
+    next_handle: u32,
+}
+
+impl TextureUnitState {
+    fn alloc_handle(&mut self) -> u32 {
+        let h = self.next_handle.max(1);
+        self.next_handle = h.wrapping_add(1).max(1);
+        h
+    }
+
+    /// IDA `0xe49a3c`: destroy the anim controller, every effect controller,
+    /// then release all texture references.
+    pub fn unload(&mut self) {
+        // IDA 0xe49a50..0xe49a5e: ControllerManager::destroyController(mAnimController); mAnimController = 0
+        self.anim_controller = None;
+        // IDA 0xe49a62..0xe49a8a: walk the mEffects rb-tree destroying each effect controller
+        for effect in self.effects.iter_mut() {
+            effect.controller = None;
+        }
+        // IDA 0xe49a92..0xe49ab0: reset every TexturePtr in mTextures (shared_ptr release)
+        for slot in self.textures.iter_mut() {
+            slot.loaded = false;
+        }
+    }
+
+    /// IDA `0xe49ac4`: `return Ogre::Pass::isLoaded(mParent)`.
+    pub fn is_loaded(&self) -> bool {
+        self.parent_loaded
+    }
+
+    /// IDA `0xe49ad4`: ensure every frame loaded; rebuild the animator when
+    /// animated; create one controller per effect.
+    pub fn load(&mut self) {
+        // IDA 0xe49ada..0xe49af8: for each frame index: ensureLoaded(i)
+        for i in 0..self.frames.len() as u32 {
+            self.ensure_loaded(i);
+        }
+        // IDA 0xe49b06..0xe49b2c: mAnimDuration != 0 → destroy old controller, createTextureAnimator
+        if self.anim_duration != 0.0 {
+            self.anim_controller = None;
+            let h = self.alloc_handle();
+            self.anim_controller = Some(h);
+        }
+        // IDA 0xe49b30..0xe49b46: for each effect: createEffectController
+        for i in 0..self.effects.len() {
+            let h = self.alloc_handle();
+            self.effects[i].controller = Some(h);
+        }
+    }
+
+    /// Models `TextureUnitState::ensureLoaded` (called at IDA `0xe49ae8`, `0xe4b97c`).
+    pub fn ensure_loaded(&mut self, index: u32) {
+        if let Some(slot) = self.textures.get_mut(index as usize) {
+            slot.loaded = true;
+        }
+    }
+
+    /// IDA `0xe49b54`: an out-of-range current frame yields `StringUtil::BLANK`.
+    pub fn texture_name(&self) -> &str {
+        self.frames
+            .get(self.current_frame as usize)
+            .map(String::as_str)
+            .unwrap_or("")
+    }
+
+    /// IDA `0xe49b7c`: store the content type; shadow-family values drop every frame name.
+    pub fn set_content_type(&mut self, content: u32) {
+        // IDA 0xe49ba8: mContentType = a2
+        self.content_type = content;
+        // IDA 0xe49bce: `(a2 - 1) <= 1` unsigned → shadow content destroys the mFrames strings
+        if content.wrapping_sub(1) <= 1 {
+            self.frames.clear();
+            self.textures.clear();
+        }
+    }
+
+    /// IDA `0xe49dec` prefix: split `name` at the last `.` and build the six cube
+    /// faces in binary order `_fr _bk _lf _rt _up _dn` (rodata refs at IDA `0xe49e6e`..`0xe49f0c`,
+    /// `.` literal at `0xe49f44`, substr throw sites at `0xe4a41a`).
+    pub fn cubic_face_names(name: &str) -> [String; 6] {
+        let (stem, ext) = match name.rfind('.') {
+            Some(pos) => name.split_at(pos),
+            None => (name, ""),
+        };
+        ["_fr", "_bk", "_lf", "_rt", "_up", "_dn"].map(|s| format!("{stem}{s}{ext}"))
+    }
+
+    /// IDA `0xe4a924`: install cube names; `for_uvw` selects the single 3D-volume slot.
+    pub fn set_cubic_texture_name(&mut self, names: &[String], for_uvw: bool) {
+        // IDA 0xe4a966: mContentType = CONTENT_NAMED
+        self.content_type = ContentType::Named as u32;
+        // IDA 0xe4a96c: clear the load-failed latch
+        self.load_failed = false;
+        // IDA 0xe4a99a..0xe4a9a0 + fill_insert: 6 face slots, or 1 volume slot for UVW
+        let want = if for_uvw { 1 } else { 6 };
+        self.frames.resize(want, String::new());
+        self.textures.resize(want, TextureSlot::default());
+        // IDA 0xe4ab2a..0xe4ab3e: mAnimDuration = 0; mCurrentFrame = 0; flag = 1; type = forUVW ? 3D : 2D
+        self.anim_duration = 0.0;
+        self.current_frame = 0;
+        self.flag_08 = 1;
+        self.texture_type = if for_uvw { TEXTURE_TYPE_3D } else { TEXTURE_TYPE_2D };
+        // IDA 0xe4ab5e..0xe4aba4: assign names over mFrames, releasing replaced TexturePtrs
+        for (i, name) in names.iter().enumerate().take(want) {
+            self.frames[i] = name.clone();
+            self.textures[i] = TextureSlot::default();
+        }
+        // IDA 0xe4abb0: Pass::_notifyNeedsRecompile(mParent)
+        self.parent_dirty = true;
+    }
+
+    /// IDA `0xe4acb8` prefix: frame name is `stem + "_" + i + ext` with a 0-based
+    /// counter (init 0 at `0xe4b004`, streamed at `0xe4b092`, `"_"` literal at `0xe4b07a`).
+    pub fn animated_frame_names(name: &str, num_frames: u32) -> Vec<String> {
+        // IDA 0xe4ad48: find_last_of("."); substr stem/ext
+        let (stem, ext) = match name.rfind('.') {
+            Some(pos) => name.split_at(pos),
+            None => (name, ""),
+        };
+        (0..num_frames).map(|i| format!("{stem}_{i}{ext}")).collect()
+    }
+
+    /// Shared tail of `0xe4b538`/`0xe4acb8`: install animated names plus duration.
+    pub fn set_animated_texture_names(&mut self, names: &[String], num_frames: u32, duration: f32) {
+        // IDA 0xe4b57c/0xe4acf4: mContentType = CONTENT_NAMED
+        self.content_type = ContentType::Named as u32;
+        // IDA 0xe4b582/0xe4acfc: clear the load-failed latch
+        self.load_failed = false;
+        // IDA fill_insert at 0xe4ae2c/0xe4b69e: grow both vectors to numFrames (default tail)
+        let n = num_frames as usize;
+        self.frames.resize(n, String::new());
+        self.textures.resize(n, TextureSlot::default());
+        // IDA 0xe4b736..0xe4b73e / 0xe4af98..0xe4af9e: duration, current frame 0, flag 0
+        self.anim_duration = duration;
+        self.current_frame = 0;
+        self.flag_08 = 0;
+        for (i, name) in names.iter().enumerate().take(n) {
+            self.frames[i] = name.clone();
+            self.textures[i] = TextureSlot::default();
+        }
+        // IDA 0xe4b196..0xe4b1cc: reload now when the parent pass is already loaded, then dirty the pass hash
+        if self.parent_loaded {
+            self.load();
+        }
+        self.parent_dirty = true;
+    }
+
+    /// IDA `0xe4b8f0`: content textures index directly; named frames lazy-load;
+    /// anything else yields the guard-initialised static blank TexturePtr (None here).
+    pub fn texture_ptr(&mut self, index: u32) -> Option<&TextureSlot> {
+        // IDA 0xe4b8f6..0xe4b8fe: non-named content → mTextures[index]
+        if self.content_type != ContentType::Named as u32 {
+            return self.textures.get(index as usize);
+        }
+        // IDA 0xe4b912..0xe4b988: in-range, never-failed frame → ensureLoaded(i), then mTextures[i]
+        if (index as usize) < self.frames.len() && !self.load_failed {
+            self.ensure_loaded(index);
+            return self.textures.get(index as usize);
+        }
+        // IDA 0xe4b928..0xe4b976: static blank TexturePtr
+        None
+    }
+
+    /// IDA `0xe4b98c`: out-of-range throws `InvalidParametersException`; Rust panics with its text.
+    pub fn set_current_frame(&mut self, frame: u32) {
+        // IDA 0xe4b9e6..0xe4ba92: frameNumber >= numFrames → Ogre::Exception(InvalidParametersException,
+        // "frameNumber parameter value exceeds number of stored frames.", "TextureUnitState::setCurrentFrame")
+        if (frame as usize) >= self.frames.len() {
+            panic!(
+                "Ogre::InvalidParametersException at 0xe4b98c: frameNumber parameter value exceeds number of stored frames."
+            );
+        }
+        self.current_frame = frame;
+    }
+
+    /// IDA `0xe4bb98`: `return mCurrentFrame`.
+    pub fn get_current_frame(&self) -> u32 {
+        self.current_frame
+    }
+
+    /// IDA `0xe4bba4`: `(end - begin) >> 2` = frame count.
+    pub fn num_frames(&self) -> u32 {
+        self.frames.len() as u32
+    }
+
+    /// IDA `0xe4aca8`: `return mTextureType == 4`.
+    pub fn is_3d(&self) -> bool {
+        self.texture_type == TEXTURE_TYPE_3D
+    }
+
+    /// IDA `0xe4bbc4`: store colour blend op/sources/args/factor (+60..+112).
+    pub fn set_colour_operation_ex(
+        &mut self,
+        op: u32,
+        src1: u32,
+        src2: u32,
+        arg1: ColourValue,
+        arg2: ColourValue,
+        factor: f32,
+    ) {
+        self.colour_op_ex = op;
+        self.colour_src1 = src1;
+        self.colour_src2 = src2;
+        self.colour_arg1 = arg1;
+        self.colour_arg2 = arg2;
+        self.colour_blend_factor = factor;
+    }
+
+    /// IDA `0xe4bbfc`: store the multipass fallback pair (+116).
+    pub fn set_colour_op_multipass_fallback(&mut self, src: SceneBlendFactor, dst: SceneBlendFactor) {
+        self.colour_fallback_src = src;
+        self.colour_fallback_dst = dst;
+    }
+}
 
 // 0xe49a3c — __ZN4Ogre16TextureUnitState7_unloadEv
 // type: _DWORD __fastcall(Ogre::TextureUnitState *__hidden this)
 #[doc(alias = "Ogre::TextureUnitState::_unload(void)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState7_unloadEv")]
 // was: Ogre::TextureUnitState::_unload(void)
-// IDA 0xe49a3c: 51 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe49a3c() {
+// IDA 0xe49a3c: destroys anim + effect controllers, releases texture refs (see TextureUnitState::unload).
+pub fn stub_0xe49a3c(state: &mut TextureUnitState) {
+    state.unload()
 }
 
 // 0xe49ac4 — __ZNK4Ogre16TextureUnitState8isLoadedEv
@@ -23,8 +348,9 @@ pub fn stub_0xe49a3c() {
 #[doc(alias = "Ogre::TextureUnitState::isLoaded(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState8isLoadedEv")]
 // was: Ogre::TextureUnitState::isLoaded(void)const
-// IDA 0xe49ac4: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe49ac4() {
+// IDA 0xe49ac4: Pass::isLoaded(mParent) (see TextureUnitState::is_loaded).
+pub fn stub_0xe49ac4(state: &TextureUnitState) -> bool {
+    state.is_loaded()
 }
 
 // 0xe49ad4 — __ZN4Ogre16TextureUnitState5_loadEv
@@ -32,8 +358,9 @@ pub fn stub_0xe49ac4() {
 #[doc(alias = "Ogre::TextureUnitState::_load(void)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState5_loadEv")]
 // was: Ogre::TextureUnitState::_load(void)
-// IDA 0xe49ad4: 43 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe49ad4() {
+// IDA 0xe49ad4: ensure-loads every frame, rebuilds the animator when animated (see TextureUnitState::load).
+pub fn stub_0xe49ad4(state: &mut TextureUnitState) {
+    state.load()
 }
 
 // 0xe49b54 — __ZNK4Ogre16TextureUnitState14getTextureNameEv
@@ -41,16 +368,18 @@ pub fn stub_0xe49ad4() {
 #[doc(alias = "Ogre::TextureUnitState::getTextureName(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState14getTextureNameEv")]
 // was: Ogre::TextureUnitState::getTextureName(void)const
-// IDA 0xe49b54: 12 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe49b54() {
+// IDA 0xe49b54: out-of-range frame yields StringUtil::BLANK (see TextureUnitState::texture_name).
+pub fn stub_0xe49b54(state: &TextureUnitState) -> &str {
+    state.texture_name()
 }
 
 // 0xe49b7c — __ZN4Ogre16TextureUnitState14setContentTypeENS0_11ContentTypeE
 #[doc(alias = "Ogre::TextureUnitState::setContentType(Ogre::TextureUnitState::ContentType)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState14setContentTypeENS0_11ContentTypeE")]
 // was: Ogre::TextureUnitState::setContentType(Ogre::TextureUnitState::ContentType)
-// IDA 0xe49b7c: 236 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe49b7c() {
+// IDA 0xe49b7c: stores content type; shadow values clear mFrames (see TextureUnitState::set_content_type).
+pub fn stub_0xe49b7c(state: &mut TextureUnitState, content: ContentType) {
+    state.set_content_type(content as u32)
 }
 
 // 0xe49dec — __ZN4Ogre16TextureUnitState19setCubicTextureNameERKSsb
@@ -58,16 +387,19 @@ pub fn stub_0xe49b7c() {
 #[doc(alias = "Ogre::TextureUnitState::setCubicTextureName(std::string const&,bool)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState19setCubicTextureNameERKSsb")]
 // was: Ogre::TextureUnitState::setCubicTextureName(std::string const&,bool)
-// IDA 0xe49dec: 570 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe49dec() {
+// IDA 0xe49dec: builds the six face names then delegates to setCubicTextureName(ptr) at 0xe49e5e/0xe4a0a4.
+pub fn stub_0xe49dec(state: &mut TextureUnitState, name: &str, for_uvw: bool) {
+    let faces = TextureUnitState::cubic_face_names(name);
+    state.set_cubic_texture_name(&faces, for_uvw)
 }
 
 // 0xe4a90c — __ZN4Ogre16TextureUnitState14setBindingTypeENS0_11BindingTypeE
 #[doc(alias = "Ogre::TextureUnitState::setBindingType(Ogre::TextureUnitState::BindingType)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState14setBindingTypeENS0_11BindingTypeE")]
 // was: Ogre::TextureUnitState::setBindingType(Ogre::TextureUnitState::BindingType)
-// IDA 0xe4a90c: 2 insns (STR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4a90c() {
+// IDA 0xe4a90c: STR R1,[R0,#296] (mBindingType).
+pub fn stub_0xe4a90c(state: &mut TextureUnitState, binding: BindingType) {
+    state.binding_type = binding
 }
 
 // 0xe4a914 — __ZNK4Ogre16TextureUnitState14getBindingTypeEv
@@ -75,8 +407,9 @@ pub fn stub_0xe4a90c() {
 #[doc(alias = "Ogre::TextureUnitState::getBindingType(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState14getBindingTypeEv")]
 // was: Ogre::TextureUnitState::getBindingType(void)const
-// IDA 0xe4a914: 2 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4a914() {
+// IDA 0xe4a918: LDR R0,[R0,#296] (mBindingType).
+pub fn stub_0xe4a914(state: &TextureUnitState) -> BindingType {
+    state.binding_type
 }
 
 // 0xe4a91c — __ZNK4Ogre16TextureUnitState14getContentTypeEv
@@ -84,8 +417,9 @@ pub fn stub_0xe4a914() {
 #[doc(alias = "Ogre::TextureUnitState::getContentType(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState14getContentTypeEv")]
 // was: Ogre::TextureUnitState::getContentType(void)const
-// IDA 0xe4a91c: 2 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4a91c() {
+// IDA 0xe4a920: LDR R0,[R0,#300] (mContentType).
+pub fn stub_0xe4a91c(state: &TextureUnitState) -> ContentType {
+    ContentType::from_raw(state.content_type)
 }
 
 // 0xe4a924 — __ZN4Ogre16TextureUnitState19setCubicTextureNameEPKSsb
@@ -93,8 +427,9 @@ pub fn stub_0xe4a91c() {
 #[doc(alias = "Ogre::TextureUnitState::setCubicTextureName(std::string const*,bool)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState19setCubicTextureNameEPKSsb")]
 // was: Ogre::TextureUnitState::setCubicTextureName(std::string const*,bool)
-// IDA 0xe4a924: 346 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4a924() {
+// IDA 0xe4a924: installs cube names, type = forUVW ? 3D : 2D, notifies parent (see set_cubic_texture_name).
+pub fn stub_0xe4a924(state: &mut TextureUnitState, names: &[String], for_uvw: bool) {
+    state.set_cubic_texture_name(names, for_uvw)
 }
 
 // 0xe4aca8 — __ZNK4Ogre16TextureUnitState4is3DEv
@@ -102,8 +437,9 @@ pub fn stub_0xe4a924() {
 #[doc(alias = "Ogre::TextureUnitState::is3D(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState4is3DEv")]
 // was: Ogre::TextureUnitState::is3D(void)const
-// IDA 0xe4aca8: 6 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4aca8() {
+// IDA 0xe4acb2: return mTextureType == 4.
+pub fn stub_0xe4aca8(state: &TextureUnitState) -> bool {
+    state.is_3d()
 }
 
 // 0xe4acb4 — __ZNK4Ogre16TextureUnitState14getTextureTypeEv
@@ -111,8 +447,9 @@ pub fn stub_0xe4aca8() {
 #[doc(alias = "Ogre::TextureUnitState::getTextureType(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState14getTextureTypeEv")]
 // was: Ogre::TextureUnitState::getTextureType(void)const
-// IDA 0xe4acb4: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4acb4() {
+// IDA 0xe4acb6: LDR R0,[R0,#12] (mTextureType).
+pub fn stub_0xe4acb4(state: &TextureUnitState) -> u32 {
+    state.texture_type
 }
 
 // 0xe4acb8 — __ZN4Ogre16TextureUnitState22setAnimatedTextureNameERKSsjf
@@ -120,8 +457,10 @@ pub fn stub_0xe4acb4() {
 #[doc(alias = "Ogre::TextureUnitState::setAnimatedTextureName(std::string const&,unsigned int,float)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState22setAnimatedTextureNameERKSsjf")]
 // was: Ogre::TextureUnitState::setAnimatedTextureName(std::string const&,unsigned int,float)
-// IDA 0xe4acb8: 542 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4acb8() {
+// IDA 0xe4acb8: builds stem_N names via stringstream, installs them, reloads when loaded (see animated_frame_names).
+pub fn stub_0xe4acb8(state: &mut TextureUnitState, name: &str, num_frames: u32, duration: f32) {
+    let names = TextureUnitState::animated_frame_names(name, num_frames);
+    state.set_animated_texture_names(&names, num_frames, duration)
 }
 
 // 0xe4b538 — __ZN4Ogre16TextureUnitState22setAnimatedTextureNameEPKSsjf
@@ -129,8 +468,9 @@ pub fn stub_0xe4acb8() {
 #[doc(alias = "Ogre::TextureUnitState::setAnimatedTextureName(std::string const*,unsigned int,float)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState22setAnimatedTextureNameEPKSsjf")]
 // was: Ogre::TextureUnitState::setAnimatedTextureName(std::string const*,unsigned int,float)
-// IDA 0xe4b538: 355 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4b538() {
+// IDA 0xe4b538: installs animated names plus duration (see set_animated_texture_names).
+pub fn stub_0xe4b538(state: &mut TextureUnitState, names: &[String], num_frames: u32, duration: f32) {
+    state.set_animated_texture_names(names, num_frames, duration)
 }
 
 // 0xe4b8f0 — __ZNK4Ogre16TextureUnitState14_getTexturePtrEm
@@ -138,8 +478,9 @@ pub fn stub_0xe4b538() {
 #[doc(alias = "Ogre::TextureUnitState::_getTexturePtr(unsigned long)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState14_getTexturePtrEm")]
 // was: Ogre::TextureUnitState::_getTexturePtr(unsigned long)const
-// IDA 0xe4b8f0: 54 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4b8f0() {
+// IDA 0xe4b8f0: direct index for content textures, lazy ensureLoaded for frames, blank ptr else (see texture_ptr).
+pub fn stub_0xe4b8f0(state: &mut TextureUnitState, index: u32) -> Option<&TextureSlot> {
+    state.texture_ptr(index)
 }
 
 // 0xe4b98c — __ZN4Ogre16TextureUnitState15setCurrentFrameEj
@@ -147,8 +488,9 @@ pub fn stub_0xe4b8f0() {
 #[doc(alias = "Ogre::TextureUnitState::setCurrentFrame(unsigned int)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState15setCurrentFrameEj")]
 // was: Ogre::TextureUnitState::setCurrentFrame(unsigned int)
-// IDA 0xe4b98c: 173 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4b98c() {
+// IDA 0xe4b98c: out-of-range throws InvalidParametersException (see set_current_frame).
+pub fn stub_0xe4b98c(state: &mut TextureUnitState, frame: u32) {
+    state.set_current_frame(frame)
 }
 
 // 0xe4bb98 — __ZNK4Ogre16TextureUnitState15getCurrentFrameEv
@@ -156,8 +498,9 @@ pub fn stub_0xe4b98c() {
 #[doc(alias = "Ogre::TextureUnitState::getCurrentFrame(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState15getCurrentFrameEv")]
 // was: Ogre::TextureUnitState::getCurrentFrame(void)const
-// IDA 0xe4bb98: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bb98() {
+// IDA 0xe4bb9a: LDR R0,[R0] (mCurrentFrame).
+pub fn stub_0xe4bb98(state: &TextureUnitState) -> u32 {
+    state.get_current_frame()
 }
 
 // 0xe4bb9c — __ZNK4Ogre16TextureUnitState12getNumFramesEv
@@ -165,16 +508,18 @@ pub fn stub_0xe4bb98() {
 #[doc(alias = "Ogre::TextureUnitState::getNumFrames(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState12getNumFramesEv")]
 // was: Ogre::TextureUnitState::getNumFrames(void)const
-// IDA 0xe4bb9c: 4 insns (LDRD.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bb9c() {
+// IDA 0xe4bba4: (end - begin) >> 2 = frame count.
+pub fn stub_0xe4bb9c(state: &TextureUnitState) -> u32 {
+    state.num_frames()
 }
 
 // 0xe4bba8 — __ZN4Ogre16TextureUnitState16setDesiredFormatENS_11PixelFormatE
 #[doc(alias = "Ogre::TextureUnitState::setDesiredFormat(Ogre::PixelFormat)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState16setDesiredFormatENS_11PixelFormatE")]
 // was: Ogre::TextureUnitState::setDesiredFormat(Ogre::PixelFormat)
-// IDA 0xe4bba8: 2 insns (STR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bba8() {
+// IDA 0xe4bba8: STR R1,[R0,#16] (mDesiredFormat).
+pub fn stub_0xe4bba8(state: &mut TextureUnitState, format: u32) {
+    state.desired_format = format
 }
 
 // 0xe4bbac — __ZN4Ogre16TextureUnitState13setNumMipmapsEi
@@ -182,8 +527,9 @@ pub fn stub_0xe4bba8() {
 #[doc(alias = "Ogre::TextureUnitState::setNumMipmaps(int)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState13setNumMipmapsEi")]
 // was: Ogre::TextureUnitState::setNumMipmaps(int)
-// IDA 0xe4bbac: 2 insns (STR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bbac() {
+// IDA 0xe4bbac: STR R1,[R0,#20] (mNumMipmaps).
+pub fn stub_0xe4bbac(state: &mut TextureUnitState, count: i32) {
+    state.num_mipmaps = count
 }
 
 // 0xe4bbb0 — __ZN4Ogre16TextureUnitState10setIsAlphaEb
@@ -191,8 +537,9 @@ pub fn stub_0xe4bbac() {
 #[doc(alias = "Ogre::TextureUnitState::setIsAlpha(bool)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState10setIsAlphaEb")]
 // was: Ogre::TextureUnitState::setIsAlpha(bool)
-// IDA 0xe4bbb0: 2 insns (STRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bbb0() {
+// IDA 0xe4bbb0: STRB R1,[R0,#185] (mIsAlpha).
+pub fn stub_0xe4bbb0(state: &mut TextureUnitState, is_alpha: bool) {
+    state.is_alpha = is_alpha
 }
 
 // 0xe4bbb8 — __ZN4Ogre16TextureUnitState23setHardwareGammaEnabledEb
@@ -200,8 +547,9 @@ pub fn stub_0xe4bbb0() {
 #[doc(alias = "Ogre::TextureUnitState::setHardwareGammaEnabled(bool)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState23setHardwareGammaEnabledEb")]
 // was: Ogre::TextureUnitState::setHardwareGammaEnabled(bool)
-// IDA 0xe4bbb8: 2 insns (STRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bbb8() {
+// IDA 0xe4bbb8: STRB R1,[R0,#186] (mHwGammaEnabled).
+pub fn stub_0xe4bbb8(state: &mut TextureUnitState, enabled: bool) {
+    state.hw_gamma_enabled = enabled
 }
 
 // 0xe4bbc0 — __ZNK4Ogre16TextureUnitState18getTextureCoordSetEv
@@ -209,8 +557,9 @@ pub fn stub_0xe4bbb8() {
 #[doc(alias = "Ogre::TextureUnitState::getTextureCoordSet(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState18getTextureCoordSetEv")]
 // was: Ogre::TextureUnitState::getTextureCoordSet(void)const
-// IDA 0xe4bbc0: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bbc0() {
+// IDA 0xe4bbc2: LDR R0,[R0,#24] (mTextureCoordSetIndex).
+pub fn stub_0xe4bbc0(state: &TextureUnitState) -> u32 {
+    state.texture_coord_set
 }
 
 // 0xe4bbc4 — __ZN4Ogre16TextureUnitState20setColourOperationExENS_21LayerBlendOperationExENS_16LayerBlendSourceES2_RKNS_11ColourValueES5_f
@@ -218,16 +567,26 @@ pub fn stub_0xe4bbc0() {
 #[doc(alias = "Ogre::TextureUnitState::setColourOperationEx(Ogre::LayerBlendOperationEx,Ogre::LayerBlendSource,Ogre::LayerBlendSource,Ogre::ColourValue const&,Ogre::ColourValue const&,float)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState20setColourOperationExENS_21LayerBlendOperationExENS_16LayerBlendSourceES2_RKNS_11ColourValueES5_f")]
 // was: Ogre::TextureUnitState::setColourOperationEx(Ogre::LayerBlendOperationEx,Ogre::LayerBlendSource,Ogre::LayerBlendSource,Ogre::ColourValue const&,Ogre::ColourValue const&,float)
-// IDA 0xe4bbc4: 15 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bbc4() {
+// IDA 0xe4bbc4: stores op/sources/args/factor at +60..+112 (see set_colour_operation_ex).
+pub fn stub_0xe4bbc4(
+    state: &mut TextureUnitState,
+    op: u32,
+    src1: u32,
+    src2: u32,
+    arg1: ColourValue,
+    arg2: ColourValue,
+    factor: f32,
+) {
+    state.set_colour_operation_ex(op, src1, src2, arg1, arg2, factor)
 }
 
 // 0xe4bbf8 — __ZN4Ogre16TextureUnitState28setColourOpMultipassFallbackENS_16SceneBlendFactorES1_
 #[doc(alias = "Ogre::TextureUnitState::setColourOpMultipassFallback(Ogre::SceneBlendFactor,Ogre::SceneBlendFactor)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState28setColourOpMultipassFallbackENS_16SceneBlendFactorES1_")]
 // was: Ogre::TextureUnitState::setColourOpMultipassFallback(Ogre::SceneBlendFactor,Ogre::SceneBlendFactor)
-// IDA 0xe4bbf8: 4 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bbf8() {
+// IDA 0xe4bbfc: STRD R1,R2,[R0,#116] (mColourBlendFallbackSrc/Dest).
+pub fn stub_0xe4bbf8(state: &mut TextureUnitState, src: SceneBlendFactor, dst: SceneBlendFactor) {
+    state.set_colour_op_multipass_fallback(src, dst)
 }
 
 // 0xe4bc04 — __ZN4Ogre16TextureUnitState17setAlphaOperationENS_21LayerBlendOperationExENS_16LayerBlendSourceES2_fff
@@ -891,4 +1250,73 @@ pub fn stub_0xe4f6bc() {
 // was: Ogre::UnifiedHighLevelGpuProgram::load(bool)
 // IDA 0xe4f6e4: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_0xe4f6e4() {
+}
+
+#[cfg(test)]
+mod texture_unit_state_tests {
+    use super::*;
+
+    #[test]
+    fn cubic_faces_split_extension_in_binary_order() {
+        assert_eq!(
+            TextureUnitState::cubic_face_names("brick.png"),
+            [
+                "brick_fr.png",
+                "brick_bk.png",
+                "brick_lf.png",
+                "brick_rt.png",
+                "brick_up.png",
+                "brick_dn.png"
+            ]
+            .map(String::from)
+        );
+    }
+
+    #[test]
+    fn animated_names_are_zero_based_stem_index_ext() {
+        assert_eq!(
+            TextureUnitState::animated_frame_names("flame.tga", 3),
+            vec!["flame_0.tga", "flame_1.tga", "flame_2.tga"]
+        );
+    }
+
+    #[test]
+    fn shadow_content_clears_frames_but_named_keeps() {
+        let mut named = TextureUnitState::default();
+        stub_0xe4acb8(&mut named, "flame.tga", 2, 1.5);
+        assert_eq!(stub_0xe4bb9c(&named), 2);
+        assert_eq!(stub_0xe49b54(&named), "flame_0.tga");
+        stub_0xe49b7c(&mut named, ContentType::Shadow);
+        assert_eq!(stub_0xe4bb9c(&named), 0);
+        assert_eq!(stub_0xe49b54(&named), "");
+    }
+
+    #[test]
+    fn cubic_uvw_selects_single_3d_slot() {
+        let mut state = TextureUnitState::default();
+        stub_0xe49dec(&mut state, "env.png", true);
+        assert_eq!(stub_0xe4bb9c(&state), 1);
+        assert!(stub_0xe4aca8(&state));
+        stub_0xe49dec(&mut state, "env.png", false);
+        assert_eq!(stub_0xe4bb9c(&state), 6);
+        assert!(!stub_0xe4aca8(&state));
+    }
+
+    #[test]
+    #[should_panic(expected = "frameNumber parameter value exceeds")]
+    fn current_frame_out_of_range_panics_like_ogre() {
+        let mut state = TextureUnitState::default();
+        stub_0xe4acb8(&mut state, "flame.tga", 2, 1.0);
+        stub_0xe4b98c(&mut state, 0);
+        assert_eq!(stub_0xe4bb98(&state), 0);
+        stub_0xe4b98c(&mut state, 2);
+    }
+
+    #[test]
+    fn texture_ptr_lazy_loads_named_frames() {
+        let mut state = TextureUnitState::default();
+        stub_0xe4acb8(&mut state, "flame.tga", 2, 0.0);
+        assert!(stub_0xe4b8f0(&mut state, 1).is_some());
+        assert!(stub_0xe4b8f0(&mut state, 7).is_none());
+    }
 }
