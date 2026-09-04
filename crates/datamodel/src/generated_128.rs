@@ -250,9 +250,7 @@ pub fn stub_0x2f15e4() -> ! {
 // 0x2f15ec — __ZN3RBX11shared_fromINS_12PartDragToolEEEN5boost10shared_ptrIT_EEPS4_
 #[doc(alias = "rbx_core::SharedPtr<RBX::PartDragTool> RBX::shared_from<RBX::PartDragTool>(RBX::PartDragTool*)")]
 // was: boost::shared_ptr<RBX::PartDragTool> RBX::shared_from<RBX::PartDragTool>(RBX::PartDragTool*)
-pub fn stub_0x2f15ec() -> ! {
-    todo!("0x2f15ec rbx_core::SharedPtr<RBX::PartDragTool> RBX::shared_from<RBX::PartDragTool>(RBX::PartDragTool*)")
-}
+pub use crate::model::stub_0x2f15ec as stub_0x2f15ec;
 
 // 0x2f1754 — __ZN3RBX11MegaDragger12getMousePartEv
 #[doc(alias = "RBX::MegaDragger::getMousePart(void)")]
@@ -262,15 +260,11 @@ pub fn stub_0x2f1754() -> ! {
 
 // 0x2f1830 — __ZNK3RBX12PartDragTool14drawConnectorsEv
 #[doc(alias = "RBX::PartDragTool::drawConnectors(void)const")]
-pub fn stub_0x2f1830() -> ! {
-    todo!("0x2f1830 RBX::PartDragTool::drawConnectors(void)const")
-}
+pub use crate::model::stub_0x2f1830 as stub_0x2f1830;
 
 // 0x2f1834 — __ZNK3RBX12PartDragTool13getCursorNameEv
 #[doc(alias = "RBX::PartDragTool::getCursorName(void)const")]
-pub fn stub_0x2f1834() -> ! {
-    todo!("0x2f1834 RBX::PartDragTool::getCursorName(void)const")
-}
+pub use crate::model::stub_0x2f1834 as stub_0x2f1834;
 
 // 0x2f26a8 — __ZN3RBX10RunDragger20snapInfoFromSnapPartEv
 #[doc(alias = "RBX::RunDragger::snapInfoFromSnapPart(void)")]
@@ -340,9 +334,7 @@ pub fn stub_0x393c44() -> ! {
 
 // 0x39406c — __ZNK3RBX13PartAdornment19getAdorneeDangerousEv
 #[doc(alias = "RBX::PartAdornment::getAdorneeDangerous(void)const")]
-pub fn stub_0x39406c() -> ! {
-    todo!("0x39406c RBX::PartAdornment::getAdorneeDangerous(void)const")
-}
+pub use crate::model::stub_0x39406c as stub_0x39406c;
 
 // 0x396564 — __ZN3RBX19AnimatableRootJoint11getPartNameEv
 #[doc(alias = "RBX::AnimatableRootJoint::getPartName(void)")]
