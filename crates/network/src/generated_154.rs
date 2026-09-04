@@ -1007,6 +1007,7 @@ pub fn ios_parse_bool(value: &str) -> bool {
 pub struct IosSettingsValues {
     pub ints: HashMap<IosSettingKey, i64>,
     pub bools: HashMap<IosSettingKey, bool>,
+    pub strings: HashMap<IosSettingKey, String>,
 }
 
 impl IosSettingsValues {
@@ -1017,7 +1018,7 @@ impl IosSettingsValues {
                 ints.insert(key, v);
             }
         }
-        Self { ints, bools: HashMap::new() }
+        Self { ints, bools: HashMap::new(), strings: HashMap::new() }
     }
 }
 

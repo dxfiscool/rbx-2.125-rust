@@ -6,188 +6,255 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::generated_154::{IosSettingKey, IosSettingsValues, ios_atoi, ios_parse_bool};
+use std::collections::HashMap;
 // 0x23d50 — __ZN18iOSSettingsService27ReadValueBugSensePercentageEPKc
 // demangled: iOSSettingsService::ReadValueBugSensePercentage(char const*)
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueBugSensePercentage(char const*)")]
-pub fn stub_23d50() -> ! {
-    todo!("0x23d50 iOSSettingsService::ReadValueBugSensePercentage(char const*)")
+pub fn stub_23d50(state: &mut IosSettingsValues, value: &str) -> i32 {
+    // IDA 0x23d50: atoi(value) stored to _thisPtr+120 (0x23d54..0x23d64).
+    let parsed = ios_atoi(value);
+    state.ints.insert(IosSettingKey::BugSensePercentage, parsed as i64);
+    parsed
 }
 
 // 0x23d68 — __ZN18iOSSettingsService25ReadValueBugSenseLogLinesEPKc
 // demangled: iOSSettingsService::ReadValueBugSenseLogLines(char const*)
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueBugSenseLogLines(char const*)")]
-pub fn stub_23d68() -> ! {
-    todo!("0x23d68 iOSSettingsService::ReadValueBugSenseLogLines(char const*)")
+pub fn stub_23d68(state: &mut IosSettingsValues, value: &str) -> i32 {
+    // IDA 0x23d68: atoi(value) stored to _thisPtr+124 (0x23d6c..0x23d7c).
+    let parsed = ios_atoi(value);
+    state.ints.insert(IosSettingKey::BugSenseLogLines, parsed as i64);
+    parsed
 }
 
 // 0x23d80 — __ZN18iOSSettingsService25ReadValueBugSenseLogLevelEPKc
 // demangled: iOSSettingsService::ReadValueBugSenseLogLevel(char const*)
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueBugSenseLogLevel(char const*)")]
-pub fn stub_23d80() -> ! {
-    todo!("0x23d80 iOSSettingsService::ReadValueBugSenseLogLevel(char const*)")
+pub fn stub_23d80(state: &mut IosSettingsValues, value: &str) -> i32 {
+    // IDA 0x23d80: atoi(value) stored to _thisPtr+128 (0x23d84..0x23d94).
+    let parsed = ios_atoi(value);
+    state.ints.insert(IosSettingKey::BugSenseLogLevel, parsed as i64);
+    parsed
 }
 
 // 0x23d9c — __ZN18iOSSettingsService35ReadValueiOSGoogleAnalyticsAccount2EPKc
 // demangled: iOSSettingsService::ReadValueiOSGoogleAnalyticsAccount2(char const*)
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiOSGoogleAnalyticsAccount2(char const*)")]
-pub fn stub_23d9c() -> ! {
-    todo!("0x23d9c iOSSettingsService::ReadValueiOSGoogleAnalyticsAccount2(char const*)")
+pub fn stub_23d9c(state: &mut IosSettingsValues, value: &str) {
+    // IDA 0x23d9c: std::string assign of value to _thisPtr+88 (0x23dfc..0x23e0a).
+    state.strings.insert(IosSettingKey::IosGoogleAnalyticsAccount2, value.to_owned());
 }
 
 // 0x23ed4 — __ZN18iOSSettingsService37ReadValueiOSGoogleAnalyticsSampleRateEPKc
 // demangled: iOSSettingsService::ReadValueiOSGoogleAnalyticsSampleRate(char const*)
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiOSGoogleAnalyticsSampleRate(char const*)")]
-pub fn stub_23ed4() -> ! {
-    todo!("0x23ed4 iOSSettingsService::ReadValueiOSGoogleAnalyticsSampleRate(char const*)")
+pub fn stub_23ed4(state: &mut IosSettingsValues, value: &str) -> i32 {
+    // IDA 0x23ed4: atoi(value) stored to _thisPtr+92 (0x23ed8..0x23ee8).
+    let parsed = ios_atoi(value);
+    state.ints.insert(IosSettingKey::IosGoogleAnalyticsSampleRate, parsed as i64);
+    parsed
 }
 
 // 0x23eec — __ZN18iOSSettingsService27ReadValueSearchEndpointIPadEPKc
 // demangled: iOSSettingsService::ReadValueSearchEndpointIPad(char const*)
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueSearchEndpointIPad(char const*)")]
-pub fn stub_23eec() -> ! {
-    todo!("0x23eec iOSSettingsService::ReadValueSearchEndpointIPad(char const*)")
+pub fn stub_23eec(state: &mut IosSettingsValues, value: &str) {
+    // IDA 0x23eec: std::string assign of value to _thisPtr+132 (0x23f5a).
+    state.strings.insert(IosSettingKey::SearchEndpointIpad, value.to_owned());
 }
 
 // 0x24024 — __ZN18iOSSettingsService29ReadValueSearchEndpointIPhoneEPKc
 // demangled: iOSSettingsService::ReadValueSearchEndpointIPhone(char const*)
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueSearchEndpointIPhone(char const*)")]
-pub fn stub_24024() -> ! {
-    todo!("0x24024 iOSSettingsService::ReadValueSearchEndpointIPhone(char const*)")
+pub fn stub_24024(state: &mut IosSettingsValues, value: &str) {
+    // IDA 0x24024: std::string assign of value to _thisPtr+136 (0x24092).
+    state.strings.insert(IosSettingKey::SearchEndpointIphone, value.to_owned());
 }
 
 // 0x2415c — __ZN18iOSSettingsService24ReadValueCacheUIWebViewsEPKc
 // demangled: iOSSettingsService::ReadValueCacheUIWebViews(char const*)
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueCacheUIWebViews(char const*)")]
-pub fn stub_2415c() -> ! {
-    todo!("0x2415c iOSSettingsService::ReadValueCacheUIWebViews(char const*)")
+pub fn stub_2415c(state: &mut IosSettingsValues, value: &str) -> bool {
+    // IDA 0x2415c: SimpleJSON::ParseBool(value) ("true"/"True" only, 0x24160) stored to _thisPtr+140 (0x24170).
+    let parsed = ios_parse_bool(value);
+    state.bools.insert(IosSettingKey::CacheUiWebViews, parsed);
+    parsed
 }
 
 // 0x24178 — __ZN18iOSSettingsService31ReadValueThumbstickControlStyleEPKc
 // demangled: iOSSettingsService::ReadValueThumbstickControlStyle(char const*)
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueThumbstickControlStyle(char const*)")]
-pub fn stub_24178() -> ! {
-    todo!("0x24178 iOSSettingsService::ReadValueThumbstickControlStyle(char const*)")
+pub fn stub_24178(state: &mut IosSettingsValues, value: &str) -> i32 {
+    // IDA 0x24178: atoi(value) stored to _thisPtr+144 (0x2417c..0x2418c).
+    let parsed = ios_atoi(value);
+    state.ints.insert(IosSettingKey::ThumbstickControlStyle, parsed as i64);
+    parsed
 }
 
 // 0x24194 — __ZN18iOSSettingsService32ReadValueFreeMemoryCheckerActiveEPKc
 // demangled: iOSSettingsService::ReadValueFreeMemoryCheckerActive(char const*)
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueFreeMemoryCheckerActive(char const*)")]
-pub fn stub_24194() -> ! {
-    todo!("0x24194 iOSSettingsService::ReadValueFreeMemoryCheckerActive(char const*)")
+pub fn stub_24194(state: &mut IosSettingsValues, value: &str) -> bool {
+    // IDA 0x24194: SimpleJSON::ParseBool(value) ("true"/"True" only, 0x24198) stored to _thisPtr+148 (0x241a8).
+    let parsed = ios_parse_bool(value);
+    state.bools.insert(IosSettingKey::FreeMemoryCheckerActive, parsed);
+    parsed
 }
 
 // 0x241b0 — __ZN18iOSSettingsService42ReadValueFreeMemoryCheckerRateMilliSecondsEPKc
 // demangled: iOSSettingsService::ReadValueFreeMemoryCheckerRateMilliSeconds(char const*)
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueFreeMemoryCheckerRateMilliSeconds(char const*)")]
-pub fn stub_241b0() -> ! {
-    todo!("0x241b0 iOSSettingsService::ReadValueFreeMemoryCheckerRateMilliSeconds(char const*)")
+pub fn stub_241b0(state: &mut IosSettingsValues, value: &str) -> i32 {
+    // IDA 0x241b0: atoi(value) stored to _thisPtr+152 (0x241b4..0x241c4).
+    let parsed = ios_atoi(value);
+    state.ints.insert(IosSettingKey::FreeMemoryCheckerRateMilliSeconds, parsed as i64);
+    parsed
 }
 
 // 0x241cc — __ZN18iOSSettingsService44ReadValueFreeMemoryCheckerThresholdKiloBytesEPKc
 // demangled: iOSSettingsService::ReadValueFreeMemoryCheckerThresholdKiloBytes(char const*)
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueFreeMemoryCheckerThresholdKiloBytes(char const*)")]
-pub fn stub_241cc() -> ! {
-    todo!("0x241cc iOSSettingsService::ReadValueFreeMemoryCheckerThresholdKiloBytes(char const*)")
+pub fn stub_241cc(state: &mut IosSettingsValues, value: &str) -> i32 {
+    // IDA 0x241cc: atoi(value) stored to _thisPtr+156 (0x241d0..0x241e0).
+    let parsed = ios_atoi(value);
+    state.ints.insert(IosSettingKey::FreeMemoryCheckerThresholdKiloBytes, parsed as i64);
+    parsed
 }
 
 // 0x241e8 — __ZN18iOSSettingsService28ReadValueMemoryBouncerActiveEPKc
 // demangled: iOSSettingsService::ReadValueMemoryBouncerActive(char const*)
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerActive(char const*)")]
-pub fn stub_241e8() -> ! {
-    todo!("0x241e8 iOSSettingsService::ReadValueMemoryBouncerActive(char const*)")
+pub fn stub_241e8(state: &mut IosSettingsValues, value: &str) -> bool {
+    // IDA 0x241e8: SimpleJSON::ParseBool(value) ("true"/"True" only, 0x241ec) stored to _thisPtr+160 (0x241fc).
+    let parsed = ios_parse_bool(value);
+    state.bools.insert(IosSettingKey::MemoryBouncerActive, parsed);
+    parsed
 }
 
 // 0x24204 — __ZN18iOSSettingsService45ReadValueMemoryBouncerEnforceRateMilliSecondsEPKc
 // demangled: iOSSettingsService::ReadValueMemoryBouncerEnforceRateMilliSeconds(char const*)
 // type: int __fastcall(iOSSettingsService *this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerEnforceRateMilliSeconds(char const*)")]
-pub fn stub_24204() -> ! {
-    todo!("0x24204 iOSSettingsService::ReadValueMemoryBouncerEnforceRateMilliSeconds(char const*)")
+pub fn stub_24204(state: &mut IosSettingsValues, value: &str) -> i32 {
+    // IDA 0x24204: atoi(value) stored to _thisPtr+164 (0x24208..0x24218).
+    let parsed = ios_atoi(value);
+    state.ints.insert(IosSettingKey::MemoryBouncerEnforceRateMilliSeconds, parsed as i64);
+    parsed
 }
 
 // 0x24220 — __ZN18iOSSettingsService40ReadValueMemoryBouncerThresholdKiloBytesEPKc
 // demangled: iOSSettingsService::ReadValueMemoryBouncerThresholdKiloBytes(char const*)
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerThresholdKiloBytes(char const*)")]
-pub fn stub_24220() -> ! {
-    todo!("0x24220 iOSSettingsService::ReadValueMemoryBouncerThresholdKiloBytes(char const*)")
+pub fn stub_24220(state: &mut IosSettingsValues, value: &str) -> i32 {
+    // IDA 0x24220: atoi(value) stored to _thisPtr+168 (0x24224..0x24234).
+    let parsed = ios_atoi(value);
+    state.ints.insert(IosSettingKey::MemoryBouncerThresholdKiloBytes, parsed as i64);
+    parsed
 }
 
 // 0x2423c — __ZN18iOSSettingsService36ReadValueMemoryBouncerLimitMegaBytesEPKc
 // demangled: iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytes(char const*)
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytes(char const*)")]
-pub fn stub_2423c() -> ! {
-    todo!("0x2423c iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytes(char const*)")
+pub fn stub_2423c(state: &mut IosSettingsValues, value: &str) -> i32 {
+    // IDA 0x2423c: atoi(value) stored to _thisPtr+172 (0x24240..0x24250).
+    let parsed = ios_atoi(value);
+    state.ints.insert(IosSettingKey::MemoryBouncerLimitMegaBytes, parsed as i64);
+    parsed
 }
 
 // 0x24258 — __ZN18iOSSettingsService52ReadValueMemoryBouncerLimitMegaBytesForLowMemDevicesEPKc
 // demangled: iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytesForLowMemDevices(char const*)
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytesForLowMemDevices(char const*)")]
-pub fn stub_24258() -> ! {
-    todo!("0x24258 iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytesForLowMemDevices(char const*)")
+pub fn stub_24258(state: &mut IosSettingsValues, value: &str) -> i32 {
+    // IDA 0x24258: atoi(value) stored to _thisPtr+176 (0x2425c..0x2426c).
+    let parsed = ios_atoi(value);
+    state.ints.insert(IosSettingKey::MemoryBouncerLimitMegaBytesForLowMemDevices, parsed as i64);
+    parsed
 }
 
 // 0x24274 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS6_ERKS6_
 // demangled: std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,void (*)(char const*)>>,std::pair<std::string const,void (*)(char const*)> const&)
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,void (*)(char const*)>>,std::pair<std::string const,void (*)(char const*)> const&)")]
-pub fn stub_24274() -> ! {
-    todo!("0x24274 std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,void (*)(char const*)>>,std::pair<std::string const,void (*)(char const*)> const&)")
+pub fn stub_24274(map: &mut HashMap<String, IosSettingKey>, key: &str, value: IosSettingKey) -> bool {
+    // IDA 0x24274: _Rb_tree _M_insert_unique (position-hint overload) on the string->ReadValue map; host unique-insert — true when the key was inserted.
+    if map.contains_key(key) {
+        false
+    } else {
+        map.insert(key.to_owned(), value);
+        true
+    }
 }
 
 // 0x24360 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE9_M_insertEPSt18_Rb_tree_node_baseSE_RKS6_
 // demangled: std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,void (*)(char const*)> const&)
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,void (*)(char const*)> const&)")]
-pub fn stub_24360() -> ! {
-    todo!("0x24360 std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,void (*)(char const*)> const&)")
+pub fn stub_24360(map: &mut HashMap<String, IosSettingKey>, key: &str, value: IosSettingKey) -> bool {
+    // IDA 0x24360: _Rb_tree _M_insert (hinted) on the string->ReadValue map; host unique-insert — true when the key was inserted.
+    if map.contains_key(key) {
+        false
+    } else {
+        map.insert(key.to_owned(), value);
+        true
+    }
 }
 
 // 0x243b0 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE16_M_insert_uniqueERKS6_
 // demangled: std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert_unique(std::pair<std::string const,void (*)(char const*)> const&)
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert_unique(std::pair<std::string const,void (*)(char const*)> const&)")]
-pub fn stub_243b0() -> ! {
-    todo!("0x243b0 std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert_unique(std::pair<std::string const,void (*)(char const*)> const&)")
+pub fn stub_243b0(map: &mut HashMap<String, IosSettingKey>, key: &str, value: IosSettingKey) -> bool {
+    // IDA 0x243b0: _Rb_tree _M_insert_unique (reference overload) on the string->ReadValue map; host unique-insert — true when the key was inserted.
+    if map.contains_key(key) {
+        false
+    } else {
+        map.insert(key.to_owned(), value);
+        true
+    }
 }
 
 // 0x24434 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE14_M_create_nodeERKS6_
 // demangled: std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_create_node(std::pair<std::string const,void (*)(char const*)> const&)
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_create_node(std::pair<std::string const,void (*)(char const*)> const&)")]
-pub fn stub_24434() -> ! {
-    todo!("0x24434 std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_create_node(std::pair<std::string const,void (*)(char const*)> const&)")
+pub fn stub_24434(handle: u32) {
+    // IDA 0x24434: _Rb_tree _M_create_node — node copy-alloc engine-side; no host carrier.
+    let _ = handle;
 }
 
 // 0x24510 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE11lower_boundERS1_
 // demangled: std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::lower_bound(std::string const&)
 // type: int __fastcall(int, std::string *)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::lower_bound(std::string const&)")]
-pub fn stub_24510() -> ! {
-    todo!("0x24510 std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::lower_bound(std::string const&)")
+pub fn stub_24510<'a>(map: &'a HashMap<String, IosSettingKey>, key: &str) -> Option<&'a IosSettingKey> {
+    // IDA 0x24510: _Rb_tree lower_bound on the reader map; host folds to an exact lookup (tree ordering has no HashMap carrier) — None covers the miss path whose slot operator[] would then default-insert.
+    map.get(key)
 }
 
 // 0x24540 — __GLOBAL__I_a_7
 // demangled: global constructor keyed to_a_7
 // type: 
 #[doc(alias = "global constructor keyed to_a_7")]
-pub fn stub_24540() -> ! {
-    todo!("0x24540 global constructor keyed to_a_7")
+pub fn stub_24540() {
+    // IDA 0x24540: __GLOBAL__I_a_7 — static init storing boost::system generic_category + system_category into merged globals (was: boost::system::error_category singletons; host maps to std::io error kinds — faithful no-op shell).
 }
 
 // 0x246d8 — -[PlaceLauncher init]
