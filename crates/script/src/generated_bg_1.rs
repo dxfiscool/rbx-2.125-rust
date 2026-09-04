@@ -7,110 +7,155 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::generated_165::HomeViewState;
 
 // 0x1d3f8 — -[HomeViewController btnDebugSettings]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController btnDebugSettings]")]
-pub fn stub_0x1d3f8() -> ! {
-    todo!("0x1d3f8 -[HomeViewController btnDebugSettings]")
+pub fn stub_0x1d3f8(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d3f8 `-[HomeViewController btnDebugSettings]`: ivar load
+    // (disasm `_btnDebugSettings` LDR); opaque platform handle on the host
+    // (cf. 0x1d390).
+    state.outlet("btnDebugSettings")
 }
 
 // 0x1d408 — -[HomeViewController setBtnDebugSettings:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBtnDebugSettings:]")]
-pub fn stub_0x1d408() -> ! {
-    todo!("0x1d408 -[HomeViewController setBtnDebugSettings:]")
+pub fn stub_0x1d408(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d408 `-[HomeViewController setBtnDebugSettings:]`:
+    // `objc_setProperty` retain/setter (disasm prologue); host ownership
+    // is the outlet slot (cf. 0x1d3a0).
+    state.set_outlet("btnDebugSettings", view);
 }
 
 // 0x1d42c — -[HomeViewController lblRobux]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController lblRobux]")]
-pub fn stub_0x1d42c() -> ! {
-    todo!("0x1d42c -[HomeViewController lblRobux]")
+pub fn stub_0x1d42c(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d42c `-[HomeViewController lblRobux]`: ivar load (disasm
+    // `_lblRobux` LDR); the handle — the text lives in
+    // [`crate::generated_165::UserDisplay::robux_text`] (cf. 0x1bf0c).
+    state.outlet("lblRobux")
 }
 
 // 0x1d43c — -[HomeViewController setLblRobux:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setLblRobux:]")]
-pub fn stub_0x1d43c() -> ! {
-    todo!("0x1d43c -[HomeViewController setLblRobux:]")
+pub fn stub_0x1d43c(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d43c `-[HomeViewController setLblRobux:]`:
+    // `objc_setProperty` retain/setter (disasm prologue); host ownership
+    // is the outlet slot.
+    state.set_outlet("lblRobux", view);
 }
 
 // 0x1d460 — -[HomeViewController lblTix]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController lblTix]")]
-pub fn stub_0x1d460() -> ! {
-    todo!("0x1d460 -[HomeViewController lblTix]")
+pub fn stub_0x1d460(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d460 `-[HomeViewController lblTix]`: ivar load (disasm
+    // `_lblTix` LDR); the handle — the text lives in
+    // [`crate::generated_165::UserDisplay::tix_text`] (cf. 0x1bf0c).
+    state.outlet("lblTix")
 }
 
 // 0x1d470 — -[HomeViewController setLblTix:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setLblTix:]")]
-pub fn stub_0x1d470() -> ! {
-    todo!("0x1d470 -[HomeViewController setLblTix:]")
+pub fn stub_0x1d470(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d470 `-[HomeViewController setLblTix:]`:
+    // `objc_setProperty` retain/setter (disasm prologue); host ownership
+    // is the outlet slot.
+    state.set_outlet("lblTix", view);
 }
 
 // 0x1d494 — -[HomeViewController btnMessages]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController btnMessages]")]
-pub fn stub_0x1d494() -> ! {
-    todo!("0x1d494 -[HomeViewController btnMessages]")
+pub fn stub_0x1d494(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d494 `-[HomeViewController btnMessages]`: ivar load (disasm
+    // `_btnMessages` LDR); opaque platform handle on the host.
+    state.outlet("btnMessages")
 }
 
 // 0x1d4a4 — -[HomeViewController setBtnMessages:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBtnMessages:]")]
-pub fn stub_0x1d4a4() -> ! {
-    todo!("0x1d4a4 -[HomeViewController setBtnMessages:]")
+pub fn stub_0x1d4a4(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d4a4 `-[HomeViewController setBtnMessages:]`:
+    // `objc_setProperty` retain/setter (disasm prologue); host ownership
+    // is the outlet slot.
+    state.set_outlet("btnMessages", view);
 }
 
 // 0x1d4c8 — -[HomeViewController gameLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController gameLabel]")]
-pub fn stub_0x1d4c8() -> ! {
-    todo!("0x1d4c8 -[HomeViewController gameLabel]")
+pub fn stub_0x1d4c8(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d4c8 `-[HomeViewController gameLabel]`: ivar load (disasm
+    // `_gameLabel` LDR); the handle — the text lives in the `labels`
+    // table (cf. 0x1bc10).
+    state.outlet("gameLabel")
 }
 
 // 0x1d4d8 — -[HomeViewController setGameLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setGameLabel:]")]
-pub fn stub_0x1d4d8() -> ! {
-    todo!("0x1d4d8 -[HomeViewController setGameLabel:]")
+pub fn stub_0x1d4d8(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d4d8 `-[HomeViewController setGameLabel:]`:
+    // `objc_setProperty` retain/setter (disasm prologue); host ownership
+    // is the outlet slot.
+    state.set_outlet("gameLabel", view);
 }
 
 // 0x1d4fc — -[HomeViewController catalogLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController catalogLabel]")]
-pub fn stub_0x1d4fc() -> ! {
-    todo!("0x1d4fc -[HomeViewController catalogLabel]")
+pub fn stub_0x1d4fc(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d4fc `-[HomeViewController catalogLabel]`: ivar load (disasm
+    // `_catalogLabel` LDR); the handle — the text lives in the `labels`
+    // table (cf. 0x1bc10).
+    state.outlet("catalogLabel")
 }
 
 // 0x1d50c — -[HomeViewController setCatalogLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setCatalogLabel:]")]
-pub fn stub_0x1d50c() -> ! {
-    todo!("0x1d50c -[HomeViewController setCatalogLabel:]")
+pub fn stub_0x1d50c(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d50c `-[HomeViewController setCatalogLabel:]`:
+    // `objc_setProperty` retain/setter (disasm prologue); host ownership
+    // is the outlet slot.
+    state.set_outlet("catalogLabel", view);
 }
 
 // 0x1d530 — -[HomeViewController inventoryLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController inventoryLabel]")]
-pub fn stub_0x1d530() -> ! {
-    todo!("0x1d530 -[HomeViewController inventoryLabel]")
+pub fn stub_0x1d530(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d530 `-[HomeViewController inventoryLabel]`: ivar load
+    // (disasm `_inventoryLabel` LDR); the handle — the text lives in the
+    // `labels` table (cf. 0x1bc10).
+    state.outlet("inventoryLabel")
 }
 
 // 0x1d540 — -[HomeViewController setInventoryLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setInventoryLabel:]")]
-pub fn stub_0x1d540() -> ! {
-    todo!("0x1d540 -[HomeViewController setInventoryLabel:]")
+pub fn stub_0x1d540(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d540 `-[HomeViewController setInventoryLabel:]`:
+    // `objc_setProperty` retain/setter (disasm prologue); host ownership
+    // is the outlet slot.
+    state.set_outlet("inventoryLabel", view);
 }
 
 // 0x1d564 — -[HomeViewController buildersClubLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController buildersClubLabel]")]
-pub fn stub_0x1d564() -> ! {
-    todo!("0x1d564 -[HomeViewController buildersClubLabel]")
+pub fn stub_0x1d564(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d564 `-[HomeViewController buildersClubLabel]`: ivar load
+    // (disasm `_buildersClubLabel` LDR); the handle — the text lives in
+    // the `labels` table (cf. 0x1bc10).
+    state.outlet("buildersClubLabel")
 }
 
 // 0x1d574 — -[HomeViewController setBuildersClubLabel:]

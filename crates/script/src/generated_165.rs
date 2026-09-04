@@ -195,6 +195,23 @@ pub struct HomeViewState {
     pub blue_frame: Option<u32>,
     pub avatar_view: Option<u32>,
     pub player_label: Option<u32>,
+    /// Remaining outlet handles by ivar name (`btnGames`, `lblRobux`, ...;
+    /// IDA 0x1d390+). Getters return the handle, setters retain via the
+    /// `Option` (cf. `objc_setProperty` slots).
+    pub outlets: HashMap<String, Option<u32>>,
+}
+
+impl HomeViewState {
+    /// Outlet getter backing the `-[HomeViewController <name>]` family
+    /// (IDA 0x1d390..0x1f494): ivar load (disasm `LDR [R0, ivar]`).
+    pub fn outlet(&self, name: &str) -> Option<u32> {
+        self.outlets.get(name).copied().flatten()
+    }
+    /// Outlet setter backing the `-[HomeViewController set<Name>:]` family:
+    /// `objc_setProperty` retain/setter (disasm `PUSH/MOV R9, R2` prologue).
+    pub fn set_outlet(&mut self, name: &str, view: Option<u32>) {
+        self.outlets.insert(name.to_string(), view);
+    }
 }
 
 /// `placeIdClicked:` launch dispatch (IDA 0x1c95c..0x1ca90).
@@ -1343,8 +1360,11 @@ pub fn stub_0x1d28c(state: &HomeViewState) -> Option<u32> {
 // 0x1d29c — -[HomeViewController setImgAvatar:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setImgAvatar:]")]
-pub fn stub_0x1d29c() -> ! {
-    todo!("0x1d29c -[HomeViewController setImgAvatar:]")
+pub fn stub_0x1d29c(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d29c `-[HomeViewController setImgAvatar:]`:
+    // `objc_setProperty` retain/setter (disasm prologue); host ownership
+    // is the `Option` (cf. 0x1d268).
+    state.avatar_view = view;
 }
 
 // 0x1d2c0 — -[HomeViewController lblPlayerName]
@@ -1359,8 +1379,11 @@ pub fn stub_0x1d2c0(state: &HomeViewState) -> Option<u32> {
 // 0x1d2d0 — -[HomeViewController setLblPlayerName:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setLblPlayerName:]")]
-pub fn stub_0x1d2d0() -> ! {
-    todo!("0x1d2d0 -[HomeViewController setLblPlayerName:]")
+pub fn stub_0x1d2d0(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d2d0 `-[HomeViewController setLblPlayerName:]`:
+    // `objc_setProperty` retain/setter (disasm prologue); host ownership
+    // is the `Option` (cf. 0x1d29c).
+    state.player_label = view;
 }
 
 // 0x1d2f4 — -[HomeViewController placeId]
@@ -1385,57 +1408,79 @@ pub fn stub_0x1d304(state: &mut HomeViewState, text: &str) {
 // 0x1d328 — -[HomeViewController portId]
 // type: UITextField *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController portId]")]
-pub fn stub_0x1d328() -> ! {
-    todo!("0x1d328 -[HomeViewController portId]")
+pub fn stub_0x1d328(state: &HomeViewState) -> String {
+    // IDA 0x1d328 `-[HomeViewController portId]`: ivar load (disasm
+    // `_portId` LDR); the host models the debug field by its text content
+    // (cf. 0x1d2f4).
+    state.port_id_text.clone()
 }
 
 // 0x1d338 — -[HomeViewController setPortId:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setPortId:]")]
-pub fn stub_0x1d338() -> ! {
-    todo!("0x1d338 -[HomeViewController setPortId:]")
+pub fn stub_0x1d338(state: &mut HomeViewState, text: &str) {
+    // IDA 0x1d338 `-[HomeViewController setPortId:]`:
+    // `objc_setProperty` retain/setter (disasm prologue); the host models
+    // the debug field by its text content (cf. 0x1d304).
+    state.port_id_text = text.to_string();
 }
 
 // 0x1d35c — -[HomeViewController ipId]
 // type: UITextField *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController ipId]")]
-pub fn stub_0x1d35c() -> ! {
-    todo!("0x1d35c -[HomeViewController ipId]")
+pub fn stub_0x1d35c(state: &HomeViewState) -> String {
+    // IDA 0x1d35c `-[HomeViewController ipId]`: ivar load (disasm `_ipId`
+    // LDR); the host models the debug field by its text content (cf.
+    // 0x1d328).
+    state.ip_id_text.clone()
 }
 
 // 0x1d36c — -[HomeViewController setIpId:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setIpId:]")]
-pub fn stub_0x1d36c() -> ! {
-    todo!("0x1d36c -[HomeViewController setIpId:]")
+pub fn stub_0x1d36c(state: &mut HomeViewState, text: &str) {
+    // IDA 0x1d36c `-[HomeViewController setIpId:]`:
+    // `objc_setProperty` retain/setter (disasm prologue); the host models
+    // the debug field by its text content (cf. 0x1d338).
+    state.ip_id_text = text.to_string();
 }
 
 // 0x1d390 — -[HomeViewController btnPlaceLauncher]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController btnPlaceLauncher]")]
-pub fn stub_0x1d390() -> ! {
-    todo!("0x1d390 -[HomeViewController btnPlaceLauncher]")
+pub fn stub_0x1d390(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d390 `-[HomeViewController btnPlaceLauncher]`: ivar load
+    // (disasm `_btnPlaceLauncher` LDR); opaque platform handle on the host.
+    state.outlet("btnPlaceLauncher")
 }
 
 // 0x1d3a0 — -[HomeViewController setBtnPlaceLauncher:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBtnPlaceLauncher:]")]
-pub fn stub_0x1d3a0() -> ! {
-    todo!("0x1d3a0 -[HomeViewController setBtnPlaceLauncher:]")
+pub fn stub_0x1d3a0(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d3a0 `-[HomeViewController setBtnPlaceLauncher:]`:
+    // `objc_setProperty` retain/setter (disasm prologue); host ownership
+    // is the outlet slot.
+    state.set_outlet("btnPlaceLauncher", view);
 }
 
 // 0x1d3c4 — -[HomeViewController btnGames]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController btnGames]")]
-pub fn stub_0x1d3c4() -> ! {
-    todo!("0x1d3c4 -[HomeViewController btnGames]")
+pub fn stub_0x1d3c4(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d3c4 `-[HomeViewController btnGames]`: ivar load (disasm
+    // `_btnGames` LDR); opaque platform handle on the host.
+    state.outlet("btnGames")
 }
 
 // 0x1d3d4 — -[HomeViewController setBtnGames:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBtnGames:]")]
-pub fn stub_0x1d3d4() -> ! {
-    todo!("0x1d3d4 -[HomeViewController setBtnGames:]")
+pub fn stub_0x1d3d4(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d3d4 `-[HomeViewController setBtnGames:]`:
+    // `objc_setProperty` retain/setter (disasm prologue); host ownership
+    // is the outlet slot.
+    state.set_outlet("btnGames", view);
 }
 
 // 0x2111c — -[UpgradeCheckHelper getAlertViewButton:]
