@@ -7,193 +7,283 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::data_model::{
+    ContentId, DataModel, DataModelCallback, ExecuteError, UploadErrorCallback,
+    UploadSuccessCallback, ViewFlagMarshallerBind, ViewGameFn, ViewGameMarshallerBind,
+};
+use crate::generated_05::{Instance, SaveFilter};
+use crate::instance::{CRenderSettingsItem, LoginService};
+use rbx_core::shared_ptr::{ControlBlockPd, CreatableInstanceDeleter};
 
 // 0xef04 — __ZN3RBX9CreatableINS_8InstanceEE6createI19CRenderSettingsItemEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<CRenderSettingsItem> RBX::Creatable<RBX::Instance>::create<CRenderSettingsItem>(void)")]
 // was: boost::shared_ptr<CRenderSettingsItem> RBX::Creatable<RBX::Instance>::create<CRenderSettingsItem>(void)
-pub fn stub_ef04() -> ! {
-    todo!("0xef04 rbx_core::SharedPtr<CRenderSettingsItem> RBX::Creatable<RBX::Instance>::create<CRenderSettingsItem>(void)")
+pub fn stub_ef04() -> SharedPtr<CRenderSettingsItem> {
+    // IDA 0xef04: default-construct + single-owner adoption. Canonical body
+    // lives at `crate::instance::stub_0xef04` (same bytes); delegate so the
+    // two shards cannot drift.
+    crate::instance::stub_0xef04()
 }
 
 // 0xefb4 — __ZN5boost10shared_ptrI19CRenderSettingsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<CRenderSettingsItem>::shared_ptr<CRenderSettingsItem,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<CRenderSettingsItem>::shared_ptr<CRenderSettingsItem,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_efb4() -> ! {
-    todo!("0xefb4 rbx_core::SharedPtr<CRenderSettingsItem>::shared_ptr<CRenderSettingsItem,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_efb4(ptr: *mut CRenderSettingsItem, deleter: CreatableInstanceDeleter) -> SharedPtr<CRenderSettingsItem> {
+    // IDA 0xefb4: store px + `shared_count` ctor + null-px `accept_owner`
+    // skip. See `crate::instance::stub_0xefb4`.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    crate::instance::stub_0xefb4(ptr, deleter)
 }
 
 // 0xf098 — __ZN5boost6detail12shared_countC2IP19CRenderSettingsItemN3RBX9CreatableINS5_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_f098() -> ! {
-    todo!("0xf098 boost::detail::shared_count::shared_count<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_f098(ptr: *mut CRenderSettingsItem, deleter: CreatableInstanceDeleter) -> ControlBlockPd<CRenderSettingsItem, CreatableInstanceDeleter> {
+    // IDA 0xf098: `new sp_counted_impl_pd` with use/weak counts at 1.
+    // See `crate::instance::stub_0xf098`.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    crate::instance::stub_0xf098(ptr, deleter)
 }
 
 // 0xf198 — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_f198() -> ! {
-    todo!("0xf198 boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_f198(block: *mut ControlBlockPd<CRenderSettingsItem, CreatableInstanceDeleter>) {
+    // IDA 0xf198: `BX LR` — empty. See `crate::instance::stub_0xf198`.
+    crate::instance::stub_0xf198(block)
 }
 
 // 0xf19c — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_f19c() -> ! {
-    todo!("0xf19c boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_f19c(block: *mut ControlBlockPd<CRenderSettingsItem, CreatableInstanceDeleter>) {
+    // IDA 0xf19c: `predelete` + null-px early-out + deleter delete.
+    // See `crate::instance::stub_0xf19c`.
+    // SAFETY: `block` must point to a valid block.
+    crate::instance::stub_0xf19c(block)
 }
 
 // 0xf1bc — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_f1bc() -> ! {
-    todo!("0xf1bc boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_f1bc(block: *const ControlBlockPd<CRenderSettingsItem, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0xf1bc: deleter-name `strcmp`, `this + 0x10` on hit.
+    // See `crate::instance::stub_0xf1bc`.
+    // SAFETY: `block` must point to a valid block.
+    crate::instance::stub_0xf1bc(block, type_name)
 }
 
 // 0xf1d4 — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_f1d4() -> ! {
-    todo!("0xf1d4 boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_f1d4(block: *const ControlBlockPd<CRenderSettingsItem, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0xf1d4: unconditional `this + 0x10`.
+    // See `crate::instance::stub_0xf1d4`.
+    // SAFETY: `block` must point to a valid block.
+    crate::instance::stub_0xf1d4(block)
 }
 
 // 0x179e8 — __ZN3RBX9DataModel10serverSaveEv
 #[doc(alias = "RBX::DataModel::serverSave(void)")]
-pub fn stub_179e8() -> ! {
-    todo!("0x179e8 RBX::DataModel::serverSave(void)")
+pub fn stub_179e8(model: &DataModel) {
+    // IDA 0x179e8: single `BX LR` — the mobile build's body is empty.
+    // Canonical body lives at `crate::data_model::stub_0x179e8`.
+    crate::data_model::stub_0x179e8(model)
 }
 
 // 0x179ec — __ZN3RBX9DataModel17internalSaveAsyncENS_9ContentIdEN5boost8functionIFvbEEE
 #[doc(alias = "RBX::DataModel::internalSaveAsync(RBX::ContentId,boost::function<void ()(bool)>)")]
-pub fn stub_179ec() -> ! {
-    todo!("0x179ec RBX::DataModel::internalSaveAsync(RBX::ContentId,boost::function<void ()(bool)>)")
+pub fn stub_179ec(model: &DataModel, id: ContentId, done: Box<dyn FnOnce(bool) + Send>) {
+    // IDA 0x179ec: single `BX LR` — async save is stripped; the completion
+    // is never invoked. See `crate::data_model::stub_0x179ec`.
+    crate::data_model::stub_0x179ec(model, id, done)
 }
 
 // 0x179f0 — __ZN3RBX9DataModel12internalSaveENS_9ContentIdE
 #[doc(alias = "RBX::DataModel::internalSave(RBX::ContentId)")]
-pub fn stub_179f0() -> ! {
-    todo!("0x179f0 RBX::DataModel::internalSave(RBX::ContentId)")
+pub fn stub_179f0(model: &DataModel, id: ContentId) {
+    // IDA 0x179f0: single `BX LR`. See `crate::data_model::stub_0x179f0`.
+    crate::data_model::stub_0x179f0(model, id)
 }
 
 // 0x179f4 — __ZN3RBX9DataModel11uploadPlaceERKSsNS_8Instance10SaveFilterEN5boost8functionIFvNS5_10shared_ptrIKNS_10Reflection5TupleEEEEEENS6_IFvSsEEE
 #[doc(alias = "RBX::DataModel::uploadPlace(std::string const&,RBX::Instance::SaveFilter,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)")]
 // was: RBX::DataModel::uploadPlace(std::string const&,RBX::Instance::SaveFilter,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)
-pub fn stub_179f4() -> ! {
-    todo!("0x179f4 RBX::DataModel::uploadPlace(std::string const&,RBX::Instance::SaveFilter,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)")
+pub fn stub_179f4(
+    model: &DataModel,
+    url: &str,
+    filter: SaveFilter,
+    on_success: UploadSuccessCallback,
+    on_error: UploadErrorCallback,
+) {
+    // IDA 0x179f4: hollowed mobile build — empty-result build + drop,
+    // neither callback fires. See `crate::data_model::stub_0x179f4`.
+    crate::data_model::stub_0x179f4(model, url, filter, on_success, on_error)
 }
 
 // 0x2ba54 — __ZL16executeUrlScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
 #[doc(alias = "executeUrlScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
 // was: executeUrlScript(boost::shared_ptr<RBX::DataModel>,std::string const&)
-pub fn stub_2ba54() -> ! {
-    todo!("0x2ba54 executeUrlScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")
+pub fn stub_2ba54(model: &SharedPtr<DataModel>, url: &str) -> Result<(), ExecuteError> {
+    // IDA 0x2ba54: `Impersonator(7)` + non-URL early-out + `LegacyLock` +
+    // `ContentProvider::getContent` + `executeSignedScript`. See
+    // `crate::data_model::stub_0x2ba54`.
+    crate::data_model::stub_0x2ba54(model, url)
 }
 
 // 0x2bdb0 — __ZL19executeSignedScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
 #[doc(alias = "executeSignedScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
 // was: executeSignedScript(boost::shared_ptr<RBX::DataModel>,std::string const&)
-pub fn stub_2bdb0() -> ! {
-    todo!("0x2bdb0 executeSignedScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")
+pub fn stub_2bdb0(model: &SharedPtr<DataModel>, script: &str) -> Result<(), ExecuteError> {
+    // IDA 0x2bdb0: `verifyScriptSignature` + `executeScript`. See
+    // `crate::data_model::stub_0x2bdb0`.
+    crate::data_model::stub_0x2bdb0(model, script)
 }
 
 // 0x2bf74 — __ZL13executeScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
 #[doc(alias = "executeScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
 // was: executeScript(boost::shared_ptr<RBX::DataModel>,std::string const&)
-pub fn stub_2bf74() -> ! {
-    todo!("0x2bf74 executeScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")
+pub fn stub_2bf74(model: &SharedPtr<DataModel>, script: &str) -> Result<(), ExecuteError> {
+    // IDA 0x2bf74: `LegacyLock(dm, 1)` + `create<ScriptContext>` +
+    // `fromTrustedSource` + `executeInNewThread(7, "Start Script")`. See
+    // `crate::data_model::stub_0x2bf74`.
+    crate::data_model::stub_0x2bf74(model, script)
 }
 
 // 0x2d544 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEEEEEvT_
 #[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>)")]
 // was: void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>)
-pub fn stub_2d544() -> ! {
-    todo!("0x2d544 void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>)")
+pub fn stub_2d544(slot: &mut DataModelCallback, bind: ViewGameMarshallerBind, invoke: ViewGameFn) {
+    // IDA 0x2d544: retain bound game + install vtable + release old buffer.
+    // See `crate::data_model::stub_0x2d544`.
+    crate::data_model::stub_0x2d544(slot, bind, invoke)
 }
 
 // 0x2d660 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEvPNS8_9DataModelEE6invokeERNS1_15function_bufferESN_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")]
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)
-pub fn stub_2d660() -> ! {
-    todo!("0x2d660 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")
+pub fn stub_2d660(slot: &DataModelCallback, dm: *mut DataModel) {
+    // IDA 0x2d660: stored-vtable `invoke` tail-calling `list3::operator()`.
+    // See `crate::data_model::stub_0x2d660`.
+    // SAFETY: `dm` must point to a valid `DataModel`.
+    crate::data_model::stub_0x2d660(slot, dm)
 }
 
 // 0x2d67c — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS3_4GameEEEPNS3_18FunctionMarshallerEENS8_5list3INS8_5valueISB_EENSK_ISE_EENSK_ISG_EEEEEEEEbT_RNS1_15function_bufferE
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,boost::detail::function::function_buffer &)const")]
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,boost::detail::function::function_buffer &)const
-pub fn stub_2d67c() -> ! {
-    todo!("0x2d67c bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_2d67c(slot: &mut DataModelCallback, bind: ViewGameMarshallerBind, invoke: ViewGameFn) -> bool {
+    // IDA 0x2d67c: `basic_vtable::assign_to` — same copy as 0x2d544, always
+    // reports success. See `crate::data_model::stub_0x2d67c`.
+    crate::data_model::stub_0x2d67c(slot, bind, invoke)
 }
 
 // 0x2d768 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS3_4GameEEEPNS3_18FunctionMarshallerEENS8_5list3INS8_5valueISB_EENSK_ISE_EENSK_ISG_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
-pub fn stub_2d768() -> ! {
-    todo!("0x2d768 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_2d768(slot: &mut DataModelCallback, bind: ViewGameMarshallerBind, invoke: ViewGameFn) -> bool {
+    // IDA 0x2d768: the `function_obj_tag` overload of 0x2d67c — identical
+    // body. See `crate::data_model::stub_0x2d768`.
+    crate::data_model::stub_0x2d768(slot, bind, invoke)
 }
 
 // 0x2d884 — __ZN5boost3_bi5list3INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_IPNS7_18FunctionMarshallerEEEEclIPFvS4_S9_SC_ENS0_5list1IRPNS7_9DataModelEEEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::operator()<void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *) &,boost::_bi::list1<RBX::DataModel *&> &,int)")]
 // was: void boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::operator()<void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *) &,boost::_bi::list1<RBX::DataModel *&> &,int)
-pub fn stub_2d884() -> ! {
-    todo!("0x2d884 void boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::operator()<void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *) &,boost::_bi::list1<RBX::DataModel *&> &,int)")
+pub fn stub_2d884(bind: &ViewGameMarshallerBind, dm: *mut DataModel, invoke: ViewGameFn) {
+    // IDA 0x2d884: retain game + `fn(view, game, marshaller, dm)` + release.
+    // See `crate::data_model::stub_0x2d884`.
+    // SAFETY: `dm` must point to a valid `DataModel`.
+    crate::data_model::stub_0x2d884(bind, dm, invoke)
 }
 
 // 0x31348 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP10RobloxViewaPN3RBX18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSD_IaEENSD_IS9_EEEEEEvPNS7_9DataModelEE6invokeERNS1_15function_bufferESK_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>,boost::_bi::value<RBX::FunctionMarshaller *>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")]
-pub fn stub_31348() -> ! {
-    todo!("0x31348 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>,boost::_bi::value<RBX::FunctionMarshaller *>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")
+pub fn stub_31348(bind: &ViewFlagMarshallerBind, invoke: fn(view: *const (), flag: i8, marshaller: *const ())) {
+    // IDA 0x31348: buffer loads + tail-call, incoming `DataModel*`
+    // discarded. See `crate::data_model::stub_0x31348`.
+    crate::data_model::stub_0x31348(bind, invoke)
 }
 
 // 0x31678 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_12LoginServiceEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::LoginService> RBX::Creatable<RBX::Instance>::create<RBX::LoginService>(void)")]
 // was: boost::shared_ptr<RBX::LoginService> RBX::Creatable<RBX::Instance>::create<RBX::LoginService>(void)
-pub fn stub_31678() -> ! {
-    todo!("0x31678 rbx_core::SharedPtr<RBX::LoginService> RBX::Creatable<RBX::Instance>::create<RBX::LoginService>(void)")
+pub fn stub_31678() -> SharedPtr<LoginService> {
+    // IDA 0x31678: `operator new(0x70)` + `LoginService()` default ctor +
+    // adoption. See `crate::instance::stub_0x31678`.
+    crate::instance::stub_0x31678()
 }
 
 // 0x31728 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_12LoginServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::LoginService>(rbx_core::SharedPtr<RBX::LoginService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::LoginService>(boost::shared_ptr<RBX::LoginService> const&)
-pub fn stub_31728() -> ! {
-    todo!("0x31728 rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::LoginService>(rbx_core::SharedPtr<RBX::LoginService> const&)")
+pub fn stub_31728(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x31728 (decompiled): `shared_ptr<Instance>::operator=` from
+    // `shared_ptr<LoginService>` — `shared_count` copy addrefs the source
+    // (0x31782), the adjusted px is stored (0x3178e), the old pi is
+    // released (0x31790-0x317a0). The `LoginService*` → `Instance*`
+    // adjustment is unmodeled (no hierarchy yet), so the source arrives
+    // post-adjustment — the same convention as
+    // `data_model::stub_0x3a2ec`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x319ec — __ZN5boost10shared_ptrIN3RBX12LoginServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::LoginService>::shared_ptr<RBX::LoginService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::LoginService>::shared_ptr<RBX::LoginService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_319ec() -> ! {
-    todo!("0x319ec rbx_core::SharedPtr<RBX::LoginService>::shared_ptr<RBX::LoginService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_319ec(ptr: *mut LoginService, deleter: CreatableInstanceDeleter) -> SharedPtr<LoginService> {
+    // IDA 0x319ec: store px + `shared_count` ctor + null-px skip. See
+    // `crate::instance::stub_0x319ec`.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    crate::instance::stub_0x319ec(ptr, deleter)
 }
 
 // 0x31aec — __ZN5boost6detail12shared_countC2IPN3RBX12LoginServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_31aec() -> ! {
-    todo!("0x31aec boost::detail::shared_count::shared_count<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_31aec(ptr: *mut LoginService, deleter: CreatableInstanceDeleter) -> ControlBlockPd<LoginService, CreatableInstanceDeleter> {
+    // IDA 0x31aec: `new sp_counted_impl_pd` with counts at 1. See
+    // `crate::instance::stub_0x31aec`.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    crate::instance::stub_0x31aec(ptr, deleter)
 }
 
 // 0x31bec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_31bec() -> ! {
-    todo!("0x31bec boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_31bec(block: *mut ControlBlockPd<LoginService, CreatableInstanceDeleter>) {
+    // IDA 0x31bec: `BX LR` — empty. See `crate::instance::stub_0x31bec`.
+    crate::instance::stub_0x31bec(block)
 }
 
 // 0x31bf0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_31bf0() -> ! {
-    todo!("0x31bf0 boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_31bf0(block: *mut ControlBlockPd<LoginService, CreatableInstanceDeleter>) {
+    // IDA 0x31bf0: D0 storage release. See `crate::instance::stub_0x31bf0`.
+    // SAFETY: `block` must be a live box pointer never used again.
+    crate::instance::stub_0x31bf0(block)
 }
 
 // 0x31bf4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_31bf4() -> ! {
-    todo!("0x31bf4 boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_31bf4(block: *mut ControlBlockPd<LoginService, CreatableInstanceDeleter>) {
+    // IDA 0x31bf4: `dispose` runs deleter + owned delete. See
+    // `crate::instance::stub_0x31bf4`.
+    // SAFETY: `block` must point to a valid block.
+    crate::instance::stub_0x31bf4(block)
 }
 
 // 0x31c14 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_31c14() -> ! {
-    todo!("0x31c14 boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_31c14(block: *const ControlBlockPd<LoginService, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x31c14: deleter-name `strcmp`, `this + 0x10` on hit. See
+    // `crate::instance::stub_0x31c14`.
+    // SAFETY: `block` must point to a valid block.
+    crate::instance::stub_0x31c14(block, type_name)
 }
 
 // 0x31c2c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_31c2c() -> ! {
-    todo!("0x31c2c boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_31c2c(block: *const ControlBlockPd<LoginService, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x31c2c: unconditional `this + 0x10`. See
+    // `crate::instance::stub_0x31c2c`.
+    // SAFETY: `block` must point to a valid block.
+    crate::instance::stub_0x31c2c(block)
 }
 
 // 0x31cd0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorNS_10shared_ptrIN3RBX8InstanceEEEENS3_5list3INS3_5valueIS6_EENSF_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
