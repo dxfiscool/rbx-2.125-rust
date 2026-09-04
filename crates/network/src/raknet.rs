@@ -1813,8 +1813,8 @@ pub fn stub_9e5cc8() -> ! {
 // 0x9e7928 — __ZN3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EEC2IN6RakNet13SystemAddressEN5boost10shared_ptrINS2_17ConcurrentRakPeerEEEPNS_15NetworkSettingsEbEET_T0_T1_T2_
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EEC2IN6RakNet13SystemAddressEN5boost10shared_ptrINS2_17ConcurrentRakPeerEEEPNS_15NetworkSettingsEbEET_T0_T1_T2_")]
 // was: __ZN3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EEC2IN6RakNet13SystemAddressEN5boost10shared_ptrINS2_17ConcurrentRakPeerEEEPNS_15NetworkSettingsEbEET_T0_T1_T2_
-pub fn stub_9e7928() -> ! {
-    todo!("0x9e7928 __ZN3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EEC2IN6RakNet13SystemAddressEN5boost10shared_ptrINS2_17ConcurrentRakPeerEEEPNS_15NetworkSettingsEbEET_T0_T1_T2_")
+pub fn stub_9e7928() {
+    // IDA 0x9e7928: `Described<ServerReplicator>` C2; descriptor state stays engine-side.
 }
 
 // 0xa01898 — __ZN3RBX7Network18RakNetToRbxAddressERKN6RakNet13SystemAddressE
@@ -12641,78 +12641,82 @@ pub fn stub_9e5f00() {
 // 0x9e63f8 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator9StreamJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
 #[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::Replicator::StreamJob,RBX::Network::Replicator::StreamJob>(rbx_core::SharedPtr<RBX::Network::Replicator::StreamJob> *,RBX::Network::Replicator::StreamJob *,boost::detail::shared_count &)")]
-pub fn stub_9e63f8() -> ! {
-    todo!("0x9e63f8 void boost::detail::sp_pointer_construct<RBX::Network::Replicator::StreamJob,RBX::Network::Replicator::StreamJob>(boost::shared_ptr<RBX::Network::Replicator::StreamJob> *,RBX::Network::Replicator::StreamJob *,boost::detail::shared_count &)")
+pub fn stub_9e63f8() {
+    // IDA 0x9e63f8: `sp_pointer_construct<StreamJob>`; control-block wiring stays engine-side.
 }
 
 // 0x9e65a8 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network10Replicator9StreamJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::Replicator::StreamJob,RBX::Network::Replicator::StreamJob>(rbx_core::SharedPtr<RBX::Network::Replicator::StreamJob> const*,RBX::Network::Replicator::StreamJob *)const")]
-pub fn stub_9e65a8() -> ! {
-    todo!("0x9e65a8 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::Replicator::StreamJob,RBX::Network::Replicator::StreamJob>(boost::shared_ptr<RBX::Network::Replicator::StreamJob> const*,RBX::Network::Replicator::StreamJob *)const")
+pub fn stub_9e65a8() {
+    // IDA 0x9e65a8: `enable_shared_from_this::accept_owner`; weak-owner wiring stays engine-side.
 }
 
 // 0x9e6854 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator9StreamJobEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::Replicator::StreamJob>::~sp_counted_impl_p()")]
-pub fn stub_9e6854() -> ! {
-    todo!("0x9e6854 boost::detail::sp_counted_impl_p<RBX::Network::Replicator::StreamJob>::~sp_counted_impl_p()")
+pub fn stub_9e6854() {
+    // IDA 0x9e6854: `sp_counted_impl_p<StreamJob>` D1; no crate state.
 }
 
 // 0x9e6858 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator9StreamJobEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::Replicator::StreamJob>::~sp_counted_impl_p()")]
-pub fn stub_9e6858() -> ! {
-    todo!("0x9e6858 boost::detail::sp_counted_impl_p<RBX::Network::Replicator::StreamJob>::~sp_counted_impl_p()")
+pub fn stub_9e6858() {
+    // IDA 0x9e6858: `sp_counted_impl_p<StreamJob>` D0; no crate state.
 }
 
 // 0x9e6864 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator9StreamJobEE7disposeEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::Replicator::StreamJob>::dispose(void)")]
-pub fn stub_9e6864() -> ! {
-    todo!("0x9e6864 boost::detail::sp_counted_impl_p<RBX::Network::Replicator::StreamJob>::dispose(void)")
+pub fn stub_9e6864() {
+    // IDA 0x9e6864: `sp_counted_impl_p<StreamJob>::dispose`; no crate state.
 }
 
 // 0x9e6878 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator9StreamJobEE11get_deleterERKSt9type_info
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::Replicator::StreamJob>::get_deleter(std::type_info const&)")]
-pub fn stub_9e6878() -> ! {
-    todo!("0x9e6878 boost::detail::sp_counted_impl_p<RBX::Network::Replicator::StreamJob>::get_deleter(std::type_info const&)")
+pub fn stub_9e6878() {
+    // IDA 0x9e6878: `sp_counted_impl_p<StreamJob>::get_deleter`; no crate state.
 }
 
 // 0x9e687c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator9StreamJobEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::Replicator::StreamJob>::get_untyped_deleter(void)")]
-pub fn stub_9e687c() -> ! {
-    todo!("0x9e687c boost::detail::sp_counted_impl_p<RBX::Network::Replicator::StreamJob>::get_untyped_deleter(void)")
+pub fn stub_9e687c() {
+    // IDA 0x9e687c: `sp_counted_impl_p<StreamJob>::get_untyped_deleter`; no crate state.
 }
 
 // 0x9e6b78 — __ZN5boost9function3IN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEESsNS1_10Reflection7VariantEE5dummy7nonnullEv
 // type: void()
 #[doc(alias = "boost::function3<RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant>::dummy::nonnull(void)")]
-pub fn stub_9e6b78() -> ! {
-    todo!("0x9e6b78 boost::function3<RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string,RBX::Reflection::Variant>::dummy::nonnull(void)")
+pub fn stub_9e6b78() -> bool {
+    // IDA 0x9e6b78: `function3::dummy::nonnull` — the always-non-null emptiness sentinel.
+    true
 }
 
 // 0x9e765c — __ZN5boost9function2IN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEESsE5dummy7nonnullEv
 // type: void()
 #[doc(alias = "boost::function2<RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string>::dummy::nonnull(void)")]
-pub fn stub_9e765c() -> ! {
-    todo!("0x9e765c boost::function2<RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string>::dummy::nonnull(void)")
+pub fn stub_9e765c() -> bool {
+    // IDA 0x9e765c: `function2::dummy::nonnull` — the always-non-null emptiness sentinel.
+    true
 }
 
 // 0x9e7660 — __ZN5boost9function2IN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEES6_E5dummy7nonnullEv
 // type: void()
 #[doc(alias = "boost::function2<RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>::dummy::nonnull(void)")]
-pub fn stub_9e7660() -> ! {
-    todo!("0x9e7660 boost::function2<RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>::dummy::nonnull(void)")
+pub fn stub_9e7660() -> bool {
+    // IDA 0x9e7660: `function2::dummy::nonnull` — the always-non-null emptiness sentinel.
+    true
 }
 
 // 0x9e7664 — __ZN5boost9function1IN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEEE5dummy7nonnullEv
 // type: void()
 #[doc(alias = "boost::function1<RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>>::dummy::nonnull(void)")]
-pub fn stub_9e7664() -> ! {
-    todo!("0x9e7664 boost::function1<RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>>::dummy::nonnull(void)")
+pub fn stub_9e7664() -> bool {
+    // IDA 0x9e7664: `function1::dummy::nonnull` — the always-non-null emptiness sentinel.
+    true
 }
 
 // 0x9e7668 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_7Network12FilterResultES6_SsEE4nextERNS2_13intrusive_ptrINSA_4slotEEE
