@@ -39,71 +39,81 @@ pub fn stub_9d744c(table: &mut crate::player::ReplicatorTable) -> u32 {
 // 0x9d7e54 — __ZN3RBX7Network16ServerReplicatorD0Ev
 // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
 #[doc(alias = "RBX::Network::ServerReplicator::~ServerReplicator()")]
-pub fn stub_9d7e54() -> ! {
-    todo!("0x9d7e54 __ZN3RBX7Network16ServerReplicatorD0Ev")
+pub fn stub_9d7e54(table: &mut crate::player::ReplicatorTable, handle: u32) {
+    // IDA 0x9d7e54 (D0): D2 then `operator delete`; the crate drops the handle.
+    table.remove(handle);
 }
 
 // 0x9d7ef4 — __ZN3RBX7Network16ServerReplicatorD1Ev
 // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
 #[doc(alias = "RBX::Network::ServerReplicator::~ServerReplicator()")]
-pub fn stub_9d7ef4() -> ! {
-    todo!("0x9d7ef4 __ZN3RBX7Network16ServerReplicatorD1Ev")
+pub fn stub_9d7ef4(table: &mut crate::player::ReplicatorTable, handle: u32) {
+    // IDA 0x9d7ef4 (D1): full teardown in place; the crate drops the handle.
+    table.remove(handle);
 }
 
 // 0x9d7f00 — __ZThn32_N3RBX7Network16ServerReplicatorD0Ev
 // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
-pub fn stub_9d7f00() -> ! {
-    todo!("0x9d7f00 __ZThn32_N3RBX7Network16ServerReplicatorD0Ev")
+pub fn stub_9d7f00(table: &mut crate::player::ReplicatorTable, handle: u32) {
+    // IDA 0x9d7f00 (ZThn32 D0): adjusts `this`, then D0.
+    table.remove(handle);
 }
 
 // 0x9d7fa4 — __ZThn36_N3RBX7Network16ServerReplicatorD0Ev
 // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
-pub fn stub_9d7fa4() -> ! {
-    todo!("0x9d7fa4 __ZThn36_N3RBX7Network16ServerReplicatorD0Ev")
+pub fn stub_9d7fa4(table: &mut crate::player::ReplicatorTable, handle: u32) {
+    // IDA 0x9d7fa4 (ZThn36 D0): adjusts `this`, then D0.
+    table.remove(handle);
 }
 
 // 0x9d8048 — __ZThn1180_N3RBX7Network16ServerReplicatorD0Ev
 // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
-pub fn stub_9d8048() -> ! {
-    todo!("0x9d8048 __ZThn1180_N3RBX7Network16ServerReplicatorD0Ev")
+pub fn stub_9d8048(table: &mut crate::player::ReplicatorTable, handle: u32) {
+    // IDA 0x9d8048 (ZThn1180 D0): adjusts `this`, then D0.
+    table.remove(handle);
 }
 
 // 0x9d80ec — __ZThn1192_N3RBX7Network16ServerReplicatorD0Ev
 // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
-pub fn stub_9d80ec() -> ! {
-    todo!("0x9d80ec __ZThn1192_N3RBX7Network16ServerReplicatorD0Ev")
+pub fn stub_9d80ec(table: &mut crate::player::ReplicatorTable, handle: u32) {
+    // IDA 0x9d80ec (ZThn1192 D0): adjusts `this`, then D0.
+    table.remove(handle);
 }
 
 // 0x9d8190 — __ZN3RBX7Network16ServerReplicatorD2Ev
 // type: void __fastcall(struct _Unwind_Exception *this)
 #[doc(alias = "RBX::Network::ServerReplicator::~ServerReplicator()")]
-pub fn stub_9d8190() -> ! {
-    todo!("0x9d8190 __ZN3RBX7Network16ServerReplicatorD2Ev")
+pub fn stub_9d8190(table: &mut crate::player::ReplicatorTable, handle: u32) {
+    // IDA 0x9d8190 (D2): full teardown in place; the crate drops the handle.
+    table.remove(handle);
 }
 
 // 0x9d86b4 — __ZThn32_N3RBX7Network16ServerReplicatorD1Ev
 // type: void __fastcall(struct _Unwind_Exception *this)
 #[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
-pub fn stub_9d86b4() -> ! {
-    todo!("0x9d86b4 __ZThn32_N3RBX7Network16ServerReplicatorD1Ev")
+pub fn stub_9d86b4(table: &mut crate::player::ReplicatorTable, handle: u32) {
+    // IDA 0x9d86b4 (ZThn32 D1): adjusts `this`, then D1.
+    table.remove(handle);
 }
 
 // 0x9d86c0 — __ZThn36_N3RBX7Network16ServerReplicatorD1Ev
 // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
-pub fn stub_9d86c0() -> ! {
-    todo!("0x9d86c0 __ZThn36_N3RBX7Network16ServerReplicatorD1Ev")
+pub fn stub_9d86c0(table: &mut crate::player::ReplicatorTable, handle: u32) {
+    // IDA 0x9d86c0 (ZThn36 D1): adjusts `this`, then D1.
+    table.remove(handle);
 }
 
 // 0x9d86cc — __ZThn1180_N3RBX7Network16ServerReplicatorD1Ev
 // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
-pub fn stub_9d86cc() -> ! {
-    todo!("0x9d86cc __ZThn1180_N3RBX7Network16ServerReplicatorD1Ev")
+pub fn stub_9d86cc(table: &mut crate::player::ReplicatorTable, handle: u32) {
+    // IDA 0x9d86cc (ZThn1180 D1): adjusts `this`, then D1.
+    table.remove(handle);
 }
 
 // 0x9d86dc — __ZThn1192_N3RBX7Network16ServerReplicatorD1Ev
@@ -239,8 +249,9 @@ pub fn stub_9dbe34(
 // 0x9dc8e4 — __ZN3RBX7Network16ServerReplicator19installRemotePlayerESs
 // type: void __fastcall(RBX::Instance **, const std::string *)
 #[doc(alias = "RBX::Network::ServerReplicator::installRemotePlayer(std::string)")]
-pub fn stub_9dc8e4() -> ! {
-    todo!("0x9dc8e4 __ZN3RBX7Network16ServerReplicator19installRemotePlayerESs")
+pub fn stub_9dc8e4(load_character: bool) -> bool {
+    // IDA 0x9dc8e4: address stamp + Players parent; the +157 flag gates loadCharacter.
+    crate::replicator::install_remote_player(load_character)
 }
 
 // 0x9dca6c — __ZN3RBX7Network16ServerReplicator9OnReceiveEPN6RakNet6PacketE
@@ -262,8 +273,14 @@ pub fn stub_9dcbc8(address_matches: bool, first_byte: Option<u8>) -> crate::repl
 // 0x9dcbd8 — __ZN3RBX7Network16ServerReplicator15sendItemsPacketEv
 // type: int __fastcall(RBX::Network::ServerReplicator *this)
 #[doc(alias = "RBX::Network::ServerReplicator::sendItemsPacket(void)")]
-pub fn stub_9dcbd8() -> ! {
-    todo!("0x9dcbd8 __ZN3RBX7Network16ServerReplicator15sendItemsPacketEv")
+pub fn stub_9dcbd8(
+    base: &mut dyn FnMut() -> bool,
+    unbuffered: bool,
+    extra_rounds: bool,
+    extra_count: u8,
+) -> bool {
+    // IDA 0x9dcbd8: base items packet plus bounded extras.
+    crate::replicator::send_items_packet(base, unbuffered, extra_rounds, extra_count)
 }
 
 // 0x9dcc34 — __ZN3RBX7Network16ServerReplicator8readItemERN6RakNet9BitStreamENS0_4Item8ItemTypeE

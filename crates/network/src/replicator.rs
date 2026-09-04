@@ -203,6 +203,45 @@ pub fn filter_received_parent(filter: Option<bool>) -> bool {
     filter.unwrap_or(true)
 }
 
+/// `ServerReplicator::sendItemsPacket` (IDA 0x9dcbd8): the base
+/// `Replicator::sendItemsPacket` runs first; on success with the
+/// unbuffered path and the +6072 flag, up to `JoinSendExtraItemCount`
+/// extra rounds run while the base keeps producing (0x9dcbf8..0x9dcc2e).
+/// The queue and flags stay engine-side behind `base`.
+pub fn send_items_packet(
+    base: &mut dyn FnMut() -> bool,
+    unbuffered: bool,
+    extra_rounds: bool,
+    extra_count: u8,
+) -> bool {
+    // IDA 0x9dcbe2..0x9dcbe8.
+    if !base() {
+        return false;
+    }
+    // IDA 0x9dcbf8..0x9dcc2e.
+    if !(unbuffered && extra_rounds) {
+        return true;
+    }
+    let mut sent = 0;
+    while sent < extra_count {
+        if !base() {
+            return false;
+        }
+        sent += 1;
+    }
+    true
+}
+
+/// `ServerReplicator::installRemotePlayer` (IDA 0x9dc8e4): stamps the
+/// remote player's network address, parents it under `Players`, logs
+/// "ServerReplicator:InstallRemotePlayer - LoadCharacter", and — when
+/// the +157 appearance flag is set — runs `Player::loadCharacter` with
+/// the appearance name (0x9dc986..0x9dca02). Address/instance wiring
+/// stays engine-side. Returns whether the character load ran.
+pub fn install_remote_player(load_character: bool) -> bool {
+    load_character
+}
+
 /// `writeChangedProperty` item type (IDA 0x9e013c:
 /// `Item::writeItemType(stream, 3)`).
 pub const CHANGED_PROPERTY_ITEM_TYPE: u8 = 3;
@@ -586,5 +625,25 @@ mod tests {
         s.write_bits(0, 2);
         let mut r = BitStream::from_bytes(&s.into_bytes());
         assert!(!read_prop_acknowledgement(&mut r, 2, 4, false, true, &mut |_| panic!("no forward on miss")));
+    }
+
+    #[test]
+    fn items_packet_extras_need_base() {
+        // IDA 0x9dcbd8: base miss -> false; extras stop at the first base miss.
+        assert!(!send_items_packet(&mut || false, true, true, 3));
+        assert!(send_items_packet(&mut || true, false, false, 0));
+        let mut calls = 0;
+        assert!(!send_items_packet(&mut || { calls += 1; calls < 3 }, true, true, 5));
+        assert_eq!(calls, 3);
+        let mut calls = 0;
+        assert!(send_items_packet(&mut || { calls += 1; true }, true, true, 2));
+        assert_eq!(calls, 3);
+    }
+
+    #[test]
+    fn remote_install_reports_character_load() {
+        // IDA 0x9dc8e4: the +157 flag gates loadCharacter.
+        assert!(install_remote_player(true));
+        assert!(!install_remote_player(false));
     }
     }

@@ -945,25 +945,26 @@ pub fn stub_9d744c(table: &mut crate::player::ReplicatorTable) -> u32 {
 
 // 0x9d7e54 — __ZN3RBX7Network16ServerReplicatorD0Ev
 // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
-#[doc(alias = "RBX::Network::ServerReplicator::~ServerReplicator()")]
-#[doc(alias = "__ZN3RBX7Network16ServerReplicatorD0Ev")]
-pub fn stub_9d7e54() -> ! {
-    todo!("0x9d7e54 __ZN3RBX7Network16ServerReplicatorD0Ev")
+pub fn stub_9d7e54(table: &mut crate::player::ReplicatorTable, handle: u32) {
+    // IDA 0x9d7e54 (D0): D2 then `operator delete`; the crate drops the handle.
+    table.remove(handle);
 }
 
 // 0x9d7ef4 — __ZN3RBX7Network16ServerReplicatorD1Ev
 // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
 #[doc(alias = "RBX::Network::ServerReplicator::~ServerReplicator()")]
 #[doc(alias = "__ZN3RBX7Network16ServerReplicatorD1Ev")]
-pub fn stub_9d7ef4() -> ! {
-    todo!("0x9d7ef4 __ZN3RBX7Network16ServerReplicatorD1Ev")
+pub fn stub_9d7ef4(table: &mut crate::player::ReplicatorTable, handle: u32) {
+    // IDA 0x9d7ef4 (D1): full teardown in place; the crate drops the handle.
+    table.remove(handle);
 }
 
 // 0x9d7f00 — __ZThn32_N3RBX7Network16ServerReplicatorD0Ev
 // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
 #[doc(alias = "__ZThn32_N3RBX7Network16ServerReplicatorD0Ev")]
-pub fn stub_9d7f00() -> ! {
-    todo!("0x9d7f00 __ZThn32_N3RBX7Network16ServerReplicatorD0Ev")
+pub fn stub_9d7f00(table: &mut crate::player::ReplicatorTable, handle: u32) {
+    // IDA 0x9d7f00 (ZThn32 D0): adjusts `this`, then D0.
+    table.remove(handle);
 }
 

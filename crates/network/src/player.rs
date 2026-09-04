@@ -101,6 +101,13 @@ impl ReplicatorTable {
     pub fn contains(&self, id: u32) -> bool {
         self.live.contains(&id)
     }
+
+    /// `ServerReplicator` D0/D2 (IDA 0x9d7e54): the replicator and its
+    /// control block free; the crate drops the handle. Returns whether it
+    /// was live.
+    pub fn remove(&mut self, id: u32) -> bool {
+        self.live.remove(&id)
+    }
 }
 
 /// `Players` membership reduced to user-id rows for
