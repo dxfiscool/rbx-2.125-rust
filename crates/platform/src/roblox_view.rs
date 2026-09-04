@@ -2291,10 +2291,55 @@ pub enum ChildAddedOutcome {
 }
 
 /// Minimal `HomeViewController` counterpart: the `_btnPlaceLauncher` ivar
-/// (offset 220) behind the accessor pair.
+/// (offset 220) behind the accessor pair plus the 0x1b3d0..0x1c958 lifecycle
+/// state (init/dealloc, viewDidLoad chain, keyboard, signup/login, logout
+/// alert, appear/segue, game-start leaves). UIKit objects live out of slice;
+/// flags/counters record the observable flow so the `generated.rs` delegates
+/// stay IDA-grounded without a host runtime.
 #[derive(Debug, Default)]
 pub struct HomeViewControllerState {
     btn_place_launcher: parking_lot::Mutex<ObjCId>,
+    initialized: AtomicBool,
+    webviews_preloaded: AtomicBool,
+    signup_observer_registered: AtomicBool,
+    deallocated: AtomicBool,
+    released_ivar_count: AtomicU32,
+    view_loaded: AtomicBool,
+    debug_views_hidden: AtomicBool,
+    tap_recognizer_installed: AtomicBool,
+    tap_recognizer_enabled: AtomicBool,
+    keyboard_observers_registered: AtomicU32,
+    search_resigns: AtomicU32,
+    labels_localized: AtomicU32,
+    localized_keys: parking_lot::Mutex<Vec<&'static str>>,
+    user_info_updates: AtomicU32,
+    last_update_refresh: AtomicBool,
+    avatar_highlighted: AtomicBool,
+    unloaded: AtomicBool,
+    unloaded_outlets: AtomicU32,
+    signup_logins: AtomicU32,
+    last_signup_credentials: parking_lot::Mutex<Option<(String, String)>>,
+    logout_alerts_shown: AtomicU32,
+    last_logout_alert: parking_lot::Mutex<Vec<&'static str>>,
+    logouts: AtomicU32,
+    logout_page_views: AtomicU32,
+    button_view_alpha_steps: AtomicU32,
+    foreground_captures: AtomicU32,
+    presented_dismisses: AtomicU32,
+    last_foreground_x: parking_lot::Mutex<f32>,
+    last_background_x: parking_lot::Mutex<f32>,
+    view_will_appears: AtomicU32,
+    logged_in_state_shows: AtomicU32,
+    logged_in_view_hidden: AtomicBool,
+    not_logged_in_view_hidden: AtomicBool,
+    logged_in_refresh_dispatches: AtomicU32,
+    view_did_appears: AtomicU32,
+    segue_after_load_pending: AtomicBool,
+    segue_after_load_fired: AtomicU32,
+    game_start_failures: AtomicU32,
+    last_failure_alert: parking_lot::Mutex<Option<&'static str>>,
+    game_start_successes: AtomicU32,
+    version_text: parking_lot::Mutex<String>,
 }
 
 impl HomeViewControllerState {
@@ -2321,6 +2366,342 @@ impl HomeViewControllerState {
         // `objc_setProperty(self, a2, 220, a3, 0, 0)` (IDA 0x1d3a0..0x1d3bc):
         // retained ivar store at offset 220.
         *self.btn_place_launcher.lock() = btn;
+    }
+
+    // 0x1b3d0 — -[HomeViewController initWithCoder:]
+    // type: HomeViewController *__cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1b3d0
+    #[doc(alias = "-[HomeViewController initWithCoder:]")]
+    #[doc = "-[HomeViewController initWithCoder:]"]
+    pub fn init_with_coder(&self) -> bool {
+        // Super `initWithCoder:` first (IDA 0x1b3f8); on nil self the body is
+        // skipped (IDA 0x1b3fc) — the host always hands back non-nil here.
+        // `preloadDesignatedWebViews`, else `designatedWebviewsToHomePages`
+        // (IDA 0x1b41a..0x1b442); then registers `handleSignupNotification:`
+        // for `getSignupFinishedNotification` (IDA 0x1b462..0x1b4a4).
+        self.webviews_preloaded.store(true, Ordering::SeqCst);
+        self.signup_observer_registered.store(true, Ordering::SeqCst);
+        self.initialized.store(true, Ordering::SeqCst);
+        true
+    }
+
+    // 0x1b4b0 — -[HomeViewController dealloc]
+    // type: void __cdecl(HomeViewController *self, SEL)
+    // IDA 0x1b4b0
+    #[doc(alias = "-[HomeViewController dealloc]")]
+    #[doc = "-[HomeViewController dealloc]"]
+    pub fn dealloc(&self) {
+        // Releases the 30 retained outlets/ivars (`tapRecognizer` through
+        // `_versionLabel`, IDA 0x1b4d4..0x1b730; Rust drops cover the stores)
+        // then super `dealloc` (IDA 0x1b752).
+        self.released_ivar_count.store(30, Ordering::SeqCst);
+        self.deallocated.store(true, Ordering::SeqCst);
+    }
+
+    // 0x1b75c — -[HomeViewController viewDidLoad]
+    // type: void __cdecl(HomeViewController *self, SEL)
+    // IDA 0x1b75c
+    #[doc(alias = "-[HomeViewController viewDidLoad]")]
+    #[doc = "-[HomeViewController viewDidLoad]"]
+    pub fn view_did_load(&self, bundle_version: &str) {
+        // Super `viewDidLoad` (IDA 0x1b786); hides the debug leaves
+        // (`_placeId`/`_portId`/`_ipId`/`_btnPlaceLauncher`/`_btnDebugSettings`,
+        // IDA 0x1b7a8..0x1b800) and swaps the 568h blue frame on iPhone
+        // (IDA 0x1b854..0x1b8ec, image load out of slice). Installs the
+        // `dismissKeyboard` tap recognizer disabled (IDA 0x1b914..0x1b956),
+        // localizes labels (IDA 0x1b98e), refreshes user info without a
+        // player-info update (IDA 0x1b9a2), dispatches the search-url prefetch
+        // off-main (IDA 0x1b9ac..0x1b9e4), registers the keyboard show/hide
+        // observers (IDA 0x1ba04..0x1ba6a), and stamps `CFBundleVersion` onto
+        // `_versionLabel` (IDA 0x1ba92..0x1bad2).
+        self.debug_views_hidden.store(true, Ordering::SeqCst);
+        self.tap_recognizer_installed.store(true, Ordering::SeqCst);
+        self.tap_recognizer_enabled.store(false, Ordering::SeqCst);
+        self.localize_and_style_labels();
+        self.update_user_info_display(false);
+        self.keyboard_observers_registered.store(2, Ordering::SeqCst);
+        *self.version_text.lock() = bundle_version.to_owned();
+        self.view_loaded.store(true, Ordering::SeqCst);
+    }
+
+    // 0x1bae4 — ___33-[HomeViewController viewDidLoad]_block_invoke
+    // IDA 0x1bae4
+    #[doc(alias = "___33-[HomeViewController viewDidLoad]_block_invoke")]
+    #[doc = "___33-[HomeViewController viewDidLoad]_block_invoke"]
+    pub fn view_did_load_search_block(&self, search_url_len: usize) -> bool {
+        // Background prefetch: only when `searchUrl.length > 0`
+        // (IDA 0x1bb04..0x1bb14) does it hop back to the main queue for
+        // `block_invoke_2` (IDA 0x1bb42..0x1bb5c).
+        search_url_len > 0
+    }
+
+    // 0x1bb64 — ___33-[HomeViewController viewDidLoad]_block_invoke_2
+    // type: id __fastcall(int)
+    // IDA 0x1bb64
+    #[doc(alias = "___33-[HomeViewController viewDidLoad]_block_invoke_2")]
+    #[doc = "___33-[HomeViewController viewDidLoad]_block_invoke_2"]
+    pub fn view_did_load_search_apply(&self) {
+        // `setHidden:NO` on the search field (ivar+284, IDA 0x1bb64..0x1bb76).
+        self.debug_views_hidden.store(false, Ordering::SeqCst);
+    }
+
+    // 0x1bbb0 — -[HomeViewController keyboardDidShow:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1bbb0
+    #[doc(alias = "-[HomeViewController keyboardDidShow:]")]
+    #[doc = "-[HomeViewController keyboardDidShow:]"]
+    pub fn keyboard_did_show(&self) {
+        // `tapRecognizer.enabled = YES` (IDA 0x1bbcc).
+        self.tap_recognizer_enabled.store(true, Ordering::SeqCst);
+    }
+
+    // 0x1bbd0 — -[HomeViewController keyboardDidHide:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1bbd0
+    #[doc(alias = "-[HomeViewController keyboardDidHide:]")]
+    #[doc = "-[HomeViewController keyboardDidHide:]"]
+    pub fn keyboard_did_hide(&self) {
+        // `tapRecognizer.enabled = NO` (IDA 0x1bbec).
+        self.tap_recognizer_enabled.store(false, Ordering::SeqCst);
+    }
+
+    // 0x1bbf0 — -[HomeViewController dismissKeyboard]
+    // type: void __cdecl(HomeViewController *self, SEL)
+    // IDA 0x1bbf0
+    #[doc(alias = "-[HomeViewController dismissKeyboard]")]
+    #[doc = "-[HomeViewController dismissKeyboard]"]
+    pub fn dismiss_keyboard(&self) {
+        // `[_searchTextField resignFirstResponder]` (IDA 0x1bc0a).
+        self.search_resigns.fetch_add(1, Ordering::SeqCst);
+    }
+
+    /// `NSBundle` keys `localizeAndStyleLabels` stamps (IDA 0x1bc48..0x1bf08).
+    pub const LOCALIZED_LABEL_KEYS: [&'static str; 11] = [
+        "GameWord",
+        "CatalogWord",
+        "InventoryWord",
+        "BuildersClubWord",
+        "ProfileWord",
+        "MessagesWord",
+        "CommunityWord",
+        "WelcomeToRoblox",
+        "YouAreCurrentlyLoggedInAs",
+        "SignupButton",
+        "LoginButton",
+    ];
+
+    // 0x1bc10 — -[HomeViewController localizeAndStyleLabels]
+    // type: void __cdecl(HomeViewController *self, SEL)
+    // IDA 0x1bc10
+    #[doc(alias = "-[HomeViewController localizeAndStyleLabels]")]
+    #[doc = "-[HomeViewController localizeAndStyleLabels]"]
+    pub fn localize_and_style_labels(&self) {
+        // Eleven `localizedStringForKey:value:table:` stamps onto the game /
+        // catalog / inventory / builders-club / profile / messages /
+        // community labels, the two text views, and the signup/login button
+        // labels (IDA 0x1bc48..0x1bf08); the bundle lookup lives out of slice.
+        *self.localized_keys.lock() = Self::LOCALIZED_LABEL_KEYS.to_vec();
+        self.labels_localized.store(Self::LOCALIZED_LABEL_KEYS.len() as u32, Ordering::SeqCst);
+    }
+
+    // 0x1bf0c — -[HomeViewController updateUserInfoDisplay:]
+    // type: void __cdecl(HomeViewController *self, SEL, bool)
+    // IDA 0x1bf0c
+    #[doc(alias = "-[HomeViewController updateUserInfoDisplay:]")]
+    #[doc = "-[HomeViewController updateUserInfoDisplay:]"]
+    pub fn update_user_info_display(&self, refresh: bool) {
+        // With `a3` set, `UpdatePlayerInfo` on `CurrentPlayer` first
+        // (IDA 0x1bf18..0x1bf42). Then `": " + Robux` / `": " + Tix` onto the
+        // labels (IDA 0x1bf70..0x1c000), the username when non-nil
+        // (IDA 0x1c008..0x1c044), and the thumbnail URL synchronously into
+        // `_imgAvatar` (IDA 0x1c04c..0x1c0f2); `highlighted` is the inverse of
+        // having a thumbnail (IDA 0x1c0fa..0x1c130). The web fetch lives out
+        // of slice, so the avatar-present branch is recorded.
+        self.last_update_refresh.store(refresh, Ordering::SeqCst);
+        self.avatar_highlighted.store(false, Ordering::SeqCst);
+        self.user_info_updates.fetch_add(1, Ordering::SeqCst);
+    }
+
+    // 0x1c134 — -[HomeViewController viewDidUnload]
+    // type: void __cdecl(HomeViewController *self, SEL)
+    // IDA 0x1c134
+    #[doc(alias = "-[HomeViewController viewDidUnload]")]
+    #[doc = "-[HomeViewController viewDidUnload]"]
+    pub fn view_did_unload(&self) {
+        // Nils the 18 outlet setters (`setPlaceId:` through `setVersionLabel:`,
+        // IDA 0x1c14c..0x1c290; signup/login labels are nilled twice,
+        // IDA 0x1c22a..0x1c27c) then super `viewDidUnload` (IDA 0x1c2b2).
+        // Rust drops cover the stores.
+        self.unloaded_outlets.store(18, Ordering::SeqCst);
+        self.unloaded.store(true, Ordering::SeqCst);
+    }
+
+    // 0x1c2bc — -[HomeViewController handleSignupNotification:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1c2bc
+    #[doc(alias = "-[HomeViewController handleSignupNotification:]")]
+    #[doc = "-[HomeViewController handleSignupNotification:]"]
+    pub fn handle_signup_notification(&self, username: &str, password: &str) {
+        // Retains the `username`/`password` pair from the notification
+        // `userInfo` (IDA 0x1c2d8..0x1c32c), drives
+        // `doLoginWithUsername:password:` (IDA 0x1c348..0x1c35c), then
+        // `showCorrectLoggedInState` (IDA 0x1c376).
+        *self.last_signup_credentials.lock() =
+            Some((username.to_owned(), password.to_owned()));
+        self.signup_logins.fetch_add(1, Ordering::SeqCst);
+        self.logged_in_state_shows.fetch_add(1, Ordering::SeqCst);
+    }
+
+    /// Alert titles `logoutTouchUp:` builds (IDA 0x1c3c2..0x1c458).
+    pub const LOGOUT_ALERT_KEYS: [&'static str; 4] = [
+        "RobloxWord",
+        "LogoutConfirmation",
+        "CancelWord",
+        "LogoutWord",
+    ];
+
+    // 0x1c37c — -[HomeViewController logoutTouchUp:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1c37c
+    #[doc(alias = "-[HomeViewController logoutTouchUp:]")]
+    #[doc = "-[HomeViewController logoutTouchUp:]"]
+    pub fn logout_touch_up(&self) {
+        // `UIAlertView` with title `RobloxWord`, message
+        // `LogoutConfirmation`, cancel `CancelWord`, other `LogoutWord`,
+        // delegate self (IDA 0x1c3a4..0x1c47e); `show` then `release`
+        // (IDA 0x1c48e..0x1c4aa).
+        *self.last_logout_alert.lock() = Self::LOGOUT_ALERT_KEYS.to_vec();
+        self.logout_alerts_shown.fetch_add(1, Ordering::SeqCst);
+    }
+
+    // 0x1c4b0 — -[HomeViewController alertView:didDismissWithButtonIndex:]
+    // type: void __cdecl(HomeViewController *self, SEL, id, int)
+    // IDA 0x1c4b0
+    #[doc(alias = "-[HomeViewController alertView:didDismissWithButtonIndex:]")]
+    #[doc = "-[HomeViewController alertView:didDismissWithButtonIndex:]"]
+    pub fn alert_view_did_dismiss(&self, button_index: i32) -> bool {
+        // Only button 1 (Logout) acts (IDA 0x1c4be): `doLogout` +
+        // `+[UserInfo logout]` (IDA 0x1c4d8..0x1c504), the 0.3s
+        // `animateWithDuration:animations:completion:` pair
+        // (IDA 0x1c546..0x1c58e), and the `Logout/Success` page track
+        // (IDA 0x1c5b4). Cancel (0) is a no-op.
+        if button_index != 1 {
+            return false;
+        }
+        self.logouts.fetch_add(1, Ordering::SeqCst);
+        self.button_view_alpha_steps.fetch_add(1, Ordering::SeqCst);
+        self.logout_page_views.fetch_add(1, Ordering::SeqCst);
+        true
+    }
+
+    // 0x1c5c8 — ___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke
+    // IDA 0x1c5c8
+    #[doc(alias = "___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke")]
+    #[doc = "___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke"]
+    pub fn alert_animation_step(&self) {
+        // `buttonView.alpha = 0` (IDA 0x1c5da).
+        self.button_view_alpha_steps.fetch_add(1, Ordering::SeqCst);
+    }
+
+    // 0x1c608 — ___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke227
+    // IDA 0x1c608
+    #[doc(alias = "___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke227")]
+    #[doc = "___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke227"]
+    pub fn alert_completion(&self, presented: bool, animating: bool, foreground_x: f32, background_x: f32) {
+        // With a presenting controller and a live (`!v3[169]`) page animator
+        // (IDA 0x1c626..0x1c63e), snapshots the foreground/background
+        // presentation-layer X into the presenter (IDA 0x1c650..0x1c712;
+        // zeroed when no presentation layer, IDA 0x1c69e/0x1c6fc), then
+        // `dismissViewControllerAnimated:NO` (IDA 0x1c732).
+        if presented && !animating {
+            *self.last_foreground_x.lock() = foreground_x;
+            *self.last_background_x.lock() = background_x;
+            self.foreground_captures.fetch_add(1, Ordering::SeqCst);
+        }
+        self.presented_dismisses.fetch_add(1, Ordering::SeqCst);
+    }
+
+    // 0x1c748 — -[HomeViewController viewWillAppear:]
+    // type: void __cdecl(HomeViewController *self, SEL, char)
+    // IDA 0x1c748
+    #[doc(alias = "-[HomeViewController viewWillAppear:]")]
+    #[doc = "-[HomeViewController viewWillAppear:]"]
+    pub fn view_will_appear(&self, animated: bool) {
+        // Super `viewWillAppear:` (IDA 0x1c76e) then
+        // `showCorrectLoggedInState` (IDA 0x1c780); `animated` only reaches
+        // the super call.
+        let _ = animated;
+        self.view_will_appears.fetch_add(1, Ordering::SeqCst);
+        self.logged_in_state_shows.fetch_add(1, Ordering::SeqCst);
+    }
+
+    // 0x1c788 — -[HomeViewController showCorrectLoggedInState]
+    // type: void __cdecl(HomeViewController *self, SEL)
+    // IDA 0x1c788
+    #[doc(alias = "-[HomeViewController showCorrectLoggedInState]")]
+    #[doc = "-[HomeViewController showCorrectLoggedInState]"]
+    pub fn show_correct_logged_in_state(&self, logged_in: bool) {
+        // `userLoggedIn == 1` shows the logged-in view and hides the logged-out
+        // one (IDA 0x1c7d2..0x1c7f8), else the reverse (IDA 0x1c7fe..0x1c814);
+        // either way `updateUserInfoDisplay:YES` is dispatched off-main
+        // (IDA 0x1c820..0x1c858).
+        self.not_logged_in_view_hidden.store(logged_in, Ordering::SeqCst);
+        self.logged_in_view_hidden.store(!logged_in, Ordering::SeqCst);
+        self.logged_in_state_shows.fetch_add(1, Ordering::SeqCst);
+        self.logged_in_refresh_dispatches.fetch_add(1, Ordering::SeqCst);
+    }
+
+    // 0x1c860 — ___46-[HomeViewController showCorrectLoggedInState]_block_invoke
+    // type: id __fastcall(int)
+    // IDA 0x1c860
+    #[doc(alias = "___46-[HomeViewController showCorrectLoggedInState]_block_invoke")]
+    #[doc = "___46-[HomeViewController showCorrectLoggedInState]_block_invoke"]
+    pub fn logged_in_state_refresh_block(&self) {
+        // `updateUserInfoDisplay:YES` (IDA 0x1c860..0x1c870).
+        self.update_user_info_display(true);
+    }
+
+    // 0x1c888 — -[HomeViewController viewDidAppear:]
+    // type: void __cdecl(HomeViewController *self, SEL, char)
+    // IDA 0x1c888
+    #[doc(alias = "-[HomeViewController viewDidAppear:]")]
+    #[doc = "-[HomeViewController viewDidAppear:]"]
+    pub fn view_did_appear(&self, animated: bool) {
+        // Super `viewDidAppear:` (IDA 0x1c8ae); when the
+        // `viewMustSegueAfterLoad` flag is set (IDA 0x1c8c0), clears it
+        // (IDA 0x1c8cc) and performs `sequeToWeb:` (IDA 0x1c8e0).
+        let _ = animated;
+        self.view_did_appears.fetch_add(1, Ordering::SeqCst);
+        if self.segue_after_load_pending.swap(false, Ordering::SeqCst) {
+            self.segue_after_load_fired.fetch_add(1, Ordering::SeqCst);
+        }
+    }
+
+    /// Stages the `viewMustSegueAfterLoad` flag `viewDidAppear:` consumes.
+    pub fn set_segue_after_load_pending(&self, pending: bool) {
+        self.segue_after_load_pending.store(pending, Ordering::SeqCst);
+    }
+
+    // 0x1c8e8 — -[HomeViewController handleStartGameFailure]
+    // type: void __cdecl(HomeViewController *self, SEL)
+    // IDA 0x1c8e8
+    #[doc(alias = "-[HomeViewController handleStartGameFailure]")]
+    #[doc = "-[HomeViewController handleStartGameFailure]"]
+    pub fn handle_start_game_failure(&self) {
+        // `RobloxAlertWithMessage:` with `GeneralGameStartError`
+        // (IDA 0x1c912..0x1c954); the alert presentation lives out of slice.
+        *self.last_failure_alert.lock() = Some("GeneralGameStartError");
+        self.game_start_failures.fetch_add(1, Ordering::SeqCst);
+    }
+
+    // 0x1c958 — -[HomeViewController handleStartGameSuccess]
+    // type: void __cdecl(HomeViewController *self, SEL)
+    // IDA 0x1c958
+    #[doc(alias = "-[HomeViewController handleStartGameSuccess]")]
+    #[doc = "-[HomeViewController handleStartGameSuccess]"]
+    pub fn handle_start_game_success(&self) {
+        // Empty body (IDA 0x1c958): no-op recorded for call tracking.
+        self.game_start_successes.fetch_add(1, Ordering::SeqCst);
     }
 }
 

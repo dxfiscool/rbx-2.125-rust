@@ -1190,13 +1190,28 @@ impl LoginManager {
 }
 
 /// Minimal `LoginViewController` counterpart: `+sharedInstance` plus the place-id
-/// sinks `TryLaunchPlace:` drives (IDA 0x1a364..0x1a47a).
+/// sinks `TryLaunchPlace:` drives (IDA 0x1a364..0x1a47a) and the
+/// `segueToHomeViewController:` animation chain (IDA 0x1f840..0x201a8).
+/// UIKit objects (storyboard, logo, button views) live out of slice;
+/// flags/counters record the observable flow.
 #[derive(Debug, Default)]
 pub struct LoginViewController {
     login_place_id: std::sync::atomic::AtomicI32,
     jump_to_place_id: std::sync::atomic::AtomicI32,
     jump_to_place_id_game_in_progress: std::sync::atomic::AtomicI32,
     web_button_taps: std::sync::atomic::AtomicU32,
+    home_segues: std::sync::atomic::AtomicU32,
+    home_segue_dispatches: std::sync::atomic::AtomicU32,
+    last_segue_after_load: std::sync::atomic::AtomicBool,
+    home_instantiations: std::sync::atomic::AtomicU32,
+    home_after_load_marks: std::sync::atomic::AtomicU32,
+    logo_fades: std::sync::atomic::AtomicU32,
+    background_pan_stops: std::sync::atomic::AtomicU32,
+    foreground_captures: std::sync::atomic::AtomicU32,
+    home_presentations: std::sync::atomic::AtomicU32,
+    logging_in_stops: std::sync::atomic::AtomicU32,
+    button_restores: std::sync::atomic::AtomicU32,
+    roblox_logo: parking_lot::Mutex<ObjCId>,
 }
 
 impl LoginViewController {
@@ -1236,6 +1251,107 @@ impl LoginViewController {
     }
     pub fn jump_to_place_id_game_in_progress(&self) -> i32 {
         self.jump_to_place_id_game_in_progress.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x1f840 — -[LoginViewController externalSegueToHomeViewController:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x1f840
+    #[doc(alias = "-[LoginViewController externalSegueToHomeViewController:]")]
+    #[doc = "-[LoginViewController externalSegueToHomeViewController:]"]
+    pub fn external_segue_to_home_view_controller(&self) {
+        // Forwards to `segueToHomeViewController:NO` (IDA 0x1f84e).
+        self.segue_to_home_view_controller(false);
+    }
+    // 0x1f854 — -[LoginViewController segueToHomeViewController:]
+    // type: void __cdecl(LoginViewController *self, SEL, char)
+    // IDA 0x1f854
+    #[doc(alias = "-[LoginViewController segueToHomeViewController:]")]
+    #[doc = "-[LoginViewController segueToHomeViewController:]"]
+    pub fn segue_to_home_view_controller(&self, after_load: bool) {
+        // Captures `a3` into the stack block and hops to the main queue for
+        // `block_invoke` (IDA 0x1f888..0x1f8a4); the queue hop lives out of
+        // slice, so the dispatch is recorded with its flag.
+        self.last_segue_after_load.store(after_load, std::sync::atomic::Ordering::SeqCst);
+        self.home_segue_dispatches.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.home_segues.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    // 0x1f8b0 — ___49-[LoginViewController segueToHomeViewController:]_block_invoke
+    // IDA 0x1f8b0
+    #[doc(alias = "___49-[LoginViewController segueToHomeViewController:]_block_invoke")]
+    #[doc = "___49-[LoginViewController segueToHomeViewController:]_block_invoke"]
+    pub fn segue_animation_setup(&self, after_load: bool) -> bool {
+        // Instantiates `HomeViewController` from `UIMainStoryboardFile`
+        // (IDA 0x1f8e6..0x1f94c); when the captured flag is set, marks
+        // `viewMustSegueAfterLoad` on it (IDA 0x1f958..0x1f96c), then runs the
+        // 0.3s fade `animateWithDuration:animations:completion:` pair
+        // (IDA 0x1f9b4..0x1fa0e). The storyboard/animator live out of slice.
+        self.home_instantiations.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        if after_load {
+            self.home_after_load_marks.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        }
+        after_load
+    }
+    // 0x1fa18 — ___49-[LoginViewController segueToHomeViewController:]_block_invoke_2
+    // type: id __fastcall(int)
+    // IDA 0x1fa18
+    #[doc(alias = "___49-[LoginViewController segueToHomeViewController:]_block_invoke_2")]
+    #[doc = "___49-[LoginViewController segueToHomeViewController:]_block_invoke_2"]
+    pub fn segue_logo_fade(&self) {
+        // `robloxLogo.alpha = 0` (IDA 0x1fa2a).
+        self.logo_fades.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    // 0x1fa58 — ___49-[LoginViewController segueToHomeViewController:]_block_invoke342
+    // IDA 0x1fa58
+    #[doc(alias = "___49-[LoginViewController segueToHomeViewController:]_block_invoke342")]
+    #[doc = "___49-[LoginViewController segueToHomeViewController:]_block_invoke342"]
+    pub fn segue_completion(&self, after_load: bool, presented: bool, animating: bool) -> bool {
+        // `stopBackgroundPan` (IDA 0x1fa72); with a live page animator
+        // (`!v2[169]`, IDA 0x1fa84..0x1fa86) snapshots the foreground /
+        // background presentation-layer X into the home controller
+        // (IDA 0x1fa94..0x1fb62, zeroed without a layer); when the captured
+        // flag is set, marks `viewMustSegueAfterLoad` (IDA 0x1fb6a..0x1fb7a),
+        // then `presentViewController:animated:NO` with the 2353 completion
+        // (IDA 0x1fb98..0x1fbd6).
+        self.background_pan_stops.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        if presented && !animating {
+            self.foreground_captures.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        }
+        if after_load {
+            self.home_after_load_marks.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        }
+        self.home_presentations.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        true
+    }
+    // 0x1fbd8 — ___49-[LoginViewController segueToHomeViewController:]_block_invoke_2353
+    // IDA 0x1fbd8
+    #[doc(alias = "___49-[LoginViewController segueToHomeViewController:]_block_invoke_2353")]
+    #[doc = "___49-[LoginViewController segueToHomeViewController:]_block_invoke_2353"]
+    pub fn segue_present_completion(&self) {
+        // `stopShowLoggingIn` (IDA 0x1fbee) then restores `buttonView.alpha`
+        // via the 0.3s animation block (IDA 0x1fc2a..0x1fc56).
+        self.logging_in_stops.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.segue_button_restore();
+    }
+    // 0x1fc60 — ___49-[LoginViewController segueToHomeViewController:]_block_invoke_3
+    // type: id __fastcall(int)
+    // IDA 0x1fc60
+    #[doc(alias = "___49-[LoginViewController segueToHomeViewController:]_block_invoke_3")]
+    #[doc = "___49-[LoginViewController segueToHomeViewController:]_block_invoke_3"]
+    pub fn segue_button_restore(&self) {
+        // `buttonView.alpha = 1.0` (IDA 0x1fc72, 1065353216 = 1.0f).
+        self.button_restores.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    // 0x201a8 — -[LoginViewController setRobloxLogo:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x201a8
+    #[doc(alias = "-[LoginViewController setRobloxLogo:]")]
+    #[doc = "-[LoginViewController setRobloxLogo:]"]
+    pub fn set_roblox_logo(&self, logo: ObjCId) {
+        // `objc_setProperty(self, a2, 244, a3, 0, 0)` (IDA 0x201c4):
+        // retained ivar store at offset 244.
+        *self.roblox_logo.lock() = logo;
+    }
+    pub fn roblox_logo(&self) -> ObjCId {
+        *self.roblox_logo.lock()
     }
 }
 

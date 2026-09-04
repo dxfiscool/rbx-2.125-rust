@@ -923,152 +923,174 @@ pub fn stub_39d7c() {
 // 0x1b3d0 — -[HomeViewController initWithCoder:]
 // type: HomeViewController *__cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController initWithCoder:]")]
-pub fn stub_1b3d0() -> ! {
-    todo!("0x1b3d0 -[HomeViewController initWithCoder:]")
+pub fn stub_1b3d0() -> bool {
+    // delegate of crate::roblox_view (IDA 0x1b3d0)
+    HOME.init_with_coder()
 }
 
 // 0x1b4b0 — -[HomeViewController dealloc]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController dealloc]")]
-pub fn stub_1b4b0() -> ! {
-    todo!("0x1b4b0 -[HomeViewController dealloc]")
+pub fn stub_1b4b0() {
+    // delegate of crate::roblox_view (IDA 0x1b4b0)
+    HOME.dealloc();
 }
 
 // 0x1b75c — -[HomeViewController viewDidLoad]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController viewDidLoad]")]
-pub fn stub_1b75c() -> ! {
-    todo!("0x1b75c -[HomeViewController viewDidLoad]")
+pub fn stub_1b75c(bundle_version: &str) {
+    // delegate of crate::roblox_view (IDA 0x1b75c)
+    HOME.view_did_load(bundle_version);
 }
 
 // 0x1bae4 — ___33-[HomeViewController viewDidLoad]_block_invoke
 #[doc(alias = "___33-[HomeViewController viewDidLoad]_block_invoke")]
-pub fn stub_1bae4() -> ! {
-    todo!("0x1bae4 ___33-[HomeViewController viewDidLoad]_block_invoke")
+pub fn stub_1bae4(search_url_len: usize) -> bool {
+    // delegate of crate::roblox_view (IDA 0x1bae4)
+    HOME.view_did_load_search_block(search_url_len)
 }
 
 // 0x1bb64 — ___33-[HomeViewController viewDidLoad]_block_invoke_2
 // type: id __fastcall(int)
 #[doc(alias = "___33-[HomeViewController viewDidLoad]_block_invoke_2")]
-pub fn stub_1bb64() -> ! {
-    todo!("0x1bb64 ___33-[HomeViewController viewDidLoad]_block_invoke_2")
+pub fn stub_1bb64() {
+    // delegate of crate::roblox_view (IDA 0x1bb64)
+    HOME.view_did_load_search_apply();
 }
 
 // 0x1bbb0 — -[HomeViewController keyboardDidShow:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController keyboardDidShow:]")]
-pub fn stub_1bbb0() -> ! {
-    todo!("0x1bbb0 -[HomeViewController keyboardDidShow:]")
+pub fn stub_1bbb0() {
+    // delegate of crate::roblox_view (IDA 0x1bbb0)
+    HOME.keyboard_did_show();
 }
 
 // 0x1bbd0 — -[HomeViewController keyboardDidHide:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController keyboardDidHide:]")]
-pub fn stub_1bbd0() -> ! {
-    todo!("0x1bbd0 -[HomeViewController keyboardDidHide:]")
+pub fn stub_1bbd0() {
+    // delegate of crate::roblox_view (IDA 0x1bbd0)
+    HOME.keyboard_did_hide();
 }
 
 // 0x1bbf0 — -[HomeViewController dismissKeyboard]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController dismissKeyboard]")]
-pub fn stub_1bbf0() -> ! {
-    todo!("0x1bbf0 -[HomeViewController dismissKeyboard]")
+pub fn stub_1bbf0() {
+    // delegate of crate::roblox_view (IDA 0x1bbf0)
+    HOME.dismiss_keyboard();
 }
 
 // 0x1bc10 — -[HomeViewController localizeAndStyleLabels]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController localizeAndStyleLabels]")]
-pub fn stub_1bc10() -> ! {
-    todo!("0x1bc10 -[HomeViewController localizeAndStyleLabels]")
+pub fn stub_1bc10() {
+    // delegate of crate::roblox_view (IDA 0x1bc10)
+    HOME.localize_and_style_labels();
 }
 
 // 0x1bf0c — -[HomeViewController updateUserInfoDisplay:]
 // type: void __cdecl(HomeViewController *self, SEL, bool)
 #[doc(alias = "-[HomeViewController updateUserInfoDisplay:]")]
-pub fn stub_1bf0c() -> ! {
-    todo!("0x1bf0c -[HomeViewController updateUserInfoDisplay:]")
+pub fn stub_1bf0c(refresh: bool) {
+    // delegate of crate::roblox_view (IDA 0x1bf0c)
+    HOME.update_user_info_display(refresh);
 }
 
 // 0x1c134 — -[HomeViewController viewDidUnload]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController viewDidUnload]")]
-pub fn stub_1c134() -> ! {
-    todo!("0x1c134 -[HomeViewController viewDidUnload]")
+pub fn stub_1c134() {
+    // delegate of crate::roblox_view (IDA 0x1c134)
+    HOME.view_did_unload();
 }
 
 // 0x1c2bc — -[HomeViewController handleSignupNotification:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController handleSignupNotification:]")]
-pub fn stub_1c2bc() -> ! {
-    todo!("0x1c2bc -[HomeViewController handleSignupNotification:]")
+pub fn stub_1c2bc(username: &str, password: &str) {
+    // delegate of crate::roblox_view (IDA 0x1c2bc)
+    HOME.handle_signup_notification(username, password);
 }
 
 // 0x1c37c — -[HomeViewController logoutTouchUp:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController logoutTouchUp:]")]
-pub fn stub_1c37c() -> ! {
-    todo!("0x1c37c -[HomeViewController logoutTouchUp:]")
+pub fn stub_1c37c() {
+    // delegate of crate::roblox_view (IDA 0x1c37c)
+    HOME.logout_touch_up();
 }
 
 // 0x1c4b0 — -[HomeViewController alertView:didDismissWithButtonIndex:]
 // type: void __cdecl(HomeViewController *self, SEL, id, int)
 #[doc(alias = "-[HomeViewController alertView:didDismissWithButtonIndex:]")]
-pub fn stub_1c4b0() -> ! {
-    todo!("0x1c4b0 -[HomeViewController alertView:didDismissWithButtonIndex:]")
+pub fn stub_1c4b0(button_index: i32) -> bool {
+    // delegate of crate::roblox_view (IDA 0x1c4b0)
+    HOME.alert_view_did_dismiss(button_index)
 }
 
 // 0x1c5c8 — ___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke
 #[doc(alias = "___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke")]
-pub fn stub_1c5c8() -> ! {
-    todo!("0x1c5c8 ___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke")
+pub fn stub_1c5c8() {
+    // delegate of crate::roblox_view (IDA 0x1c5c8)
+    HOME.alert_animation_step();
 }
 
 // 0x1c608 — ___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke227
 #[doc(alias = "___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke227")]
-pub fn stub_1c608() -> ! {
-    todo!("0x1c608 ___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke227")
+pub fn stub_1c608(presented: bool, animating: bool, foreground_x: f32, background_x: f32) {
+    // delegate of crate::roblox_view (IDA 0x1c608)
+    HOME.alert_completion(presented, animating, foreground_x, background_x);
 }
 
 // 0x1c748 — -[HomeViewController viewWillAppear:]
 // type: void __cdecl(HomeViewController *self, SEL, char)
 #[doc(alias = "-[HomeViewController viewWillAppear:]")]
-pub fn stub_1c748() -> ! {
-    todo!("0x1c748 -[HomeViewController viewWillAppear:]")
+pub fn stub_1c748(animated: bool) {
+    // delegate of crate::roblox_view (IDA 0x1c748)
+    HOME.view_will_appear(animated);
 }
 
 // 0x1c788 — -[HomeViewController showCorrectLoggedInState]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController showCorrectLoggedInState]")]
-pub fn stub_1c788() -> ! {
-    todo!("0x1c788 -[HomeViewController showCorrectLoggedInState]")
+pub fn stub_1c788(logged_in: bool) {
+    // delegate of crate::roblox_view (IDA 0x1c788)
+    HOME.show_correct_logged_in_state(logged_in);
 }
 
 // 0x1c860 — ___46-[HomeViewController showCorrectLoggedInState]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___46-[HomeViewController showCorrectLoggedInState]_block_invoke")]
-pub fn stub_1c860() -> ! {
-    todo!("0x1c860 ___46-[HomeViewController showCorrectLoggedInState]_block_invoke")
+pub fn stub_1c860() {
+    // delegate of crate::roblox_view (IDA 0x1c860)
+    HOME.logged_in_state_refresh_block();
 }
 
 // 0x1c888 — -[HomeViewController viewDidAppear:]
 // type: void __cdecl(HomeViewController *self, SEL, char)
 #[doc(alias = "-[HomeViewController viewDidAppear:]")]
-pub fn stub_1c888() -> ! {
-    todo!("0x1c888 -[HomeViewController viewDidAppear:]")
+pub fn stub_1c888(animated: bool) {
+    // delegate of crate::roblox_view (IDA 0x1c888)
+    HOME.view_did_appear(animated);
 }
 
 // 0x1c8e8 — -[HomeViewController handleStartGameFailure]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController handleStartGameFailure]")]
-pub fn stub_1c8e8() -> ! {
-    todo!("0x1c8e8 -[HomeViewController handleStartGameFailure]")
+pub fn stub_1c8e8() {
+    // delegate of crate::roblox_view (IDA 0x1c8e8)
+    HOME.handle_start_game_failure();
 }
 
 // 0x1c958 — -[HomeViewController handleStartGameSuccess]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController handleStartGameSuccess]")]
-pub fn stub_1c958() -> ! {
-    todo!("0x1c958 -[HomeViewController handleStartGameSuccess]")
+pub fn stub_1c958() {
+    // delegate of crate::roblox_view (IDA 0x1c958)
+    HOME.handle_start_game_success();
 }
 
 // 0x1c95c — -[HomeViewController placeIdClicked:]
@@ -1564,52 +1586,65 @@ pub fn stub_1d84c() -> ! {
 // 0x1f840 — -[LoginViewController externalSegueToHomeViewController:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController externalSegueToHomeViewController:]")]
-pub fn stub_1f840() -> ! {
-    todo!("0x1f840 -[LoginViewController externalSegueToHomeViewController:]")
+pub fn stub_1f840() {
+    // delegate of crate::view_controllers (IDA 0x1f840)
+    crate::view_controllers::LoginViewController::shared_instance()
+        .external_segue_to_home_view_controller();
 }
 
 // 0x1f854 — -[LoginViewController segueToHomeViewController:]
 // type: void __cdecl(LoginViewController *self, SEL, char)
 #[doc(alias = "-[LoginViewController segueToHomeViewController:]")]
-pub fn stub_1f854() -> ! {
-    todo!("0x1f854 -[LoginViewController segueToHomeViewController:]")
+pub fn stub_1f854(after_load: bool) {
+    // delegate of crate::view_controllers (IDA 0x1f854)
+    crate::view_controllers::LoginViewController::shared_instance()
+        .segue_to_home_view_controller(after_load);
 }
 
 // 0x1f8b0 — ___49-[LoginViewController segueToHomeViewController:]_block_invoke
 #[doc(alias = "___49-[LoginViewController segueToHomeViewController:]_block_invoke")]
-pub fn stub_1f8b0() -> ! {
-    todo!("0x1f8b0 ___49-[LoginViewController segueToHomeViewController:]_block_invoke")
+pub fn stub_1f8b0(after_load: bool) -> bool {
+    // delegate of crate::view_controllers (IDA 0x1f8b0)
+    crate::view_controllers::LoginViewController::shared_instance()
+        .segue_animation_setup(after_load)
 }
 
 // 0x1fa18 — ___49-[LoginViewController segueToHomeViewController:]_block_invoke_2
 #[doc(alias = "___49-[LoginViewController segueToHomeViewController:]_block_invoke_2")]
-pub fn stub_1fa18() -> ! {
-    todo!("0x1fa18 ___49-[LoginViewController segueToHomeViewController:]_block_invoke_2")
+pub fn stub_1fa18() {
+    // delegate of crate::view_controllers (IDA 0x1fa18)
+    crate::view_controllers::LoginViewController::shared_instance().segue_logo_fade();
 }
 
 // 0x1fa58 — ___49-[LoginViewController segueToHomeViewController:]_block_invoke342
 #[doc(alias = "___49-[LoginViewController segueToHomeViewController:]_block_invoke342")]
-pub fn stub_1fa58() -> ! {
-    todo!("0x1fa58 ___49-[LoginViewController segueToHomeViewController:]_block_invoke342")
+pub fn stub_1fa58(after_load: bool, presented: bool, animating: bool) -> bool {
+    // delegate of crate::view_controllers (IDA 0x1fa58)
+    crate::view_controllers::LoginViewController::shared_instance()
+        .segue_completion(after_load, presented, animating)
 }
 
 // 0x1fbd8 — ___49-[LoginViewController segueToHomeViewController:]_block_invoke_2353
 #[doc(alias = "___49-[LoginViewController segueToHomeViewController:]_block_invoke_2353")]
-pub fn stub_1fbd8() -> ! {
-    todo!("0x1fbd8 ___49-[LoginViewController segueToHomeViewController:]_block_invoke_2353")
+pub fn stub_1fbd8() {
+    // delegate of crate::view_controllers (IDA 0x1fbd8)
+    crate::view_controllers::LoginViewController::shared_instance()
+        .segue_present_completion();
 }
 
 // 0x1fc60 — ___49-[LoginViewController segueToHomeViewController:]_block_invoke_3
 #[doc(alias = "___49-[LoginViewController segueToHomeViewController:]_block_invoke_3")]
-pub fn stub_1fc60() -> ! {
-    todo!("0x1fc60 ___49-[LoginViewController segueToHomeViewController:]_block_invoke_3")
+pub fn stub_1fc60() {
+    // delegate of crate::view_controllers (IDA 0x1fc60)
+    crate::view_controllers::LoginViewController::shared_instance().segue_button_restore();
 }
 
 // 0x201a8 — -[LoginViewController setRobloxLogo:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setRobloxLogo:]")]
-pub fn stub_201a8() -> ! {
-    todo!("0x201a8 -[LoginViewController setRobloxLogo:]")
+pub fn stub_201a8(logo: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x201a8)
+    crate::view_controllers::LoginViewController::shared_instance().set_roblox_logo(logo);
 }
 
 // 0x33548 — __ZN10TeleporterD1Ev
