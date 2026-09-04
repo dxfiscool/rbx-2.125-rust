@@ -590,60 +590,91 @@ pub fn stub_26558(already_playing: bool, unsecured: bool, is_app: bool) -> Optio
     }
 }
 
+/// Host spawn request of `-[PlaceLauncher injectJoinScript:]` (IDA 0x267ec).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct JoinScriptSpawn {
+    pub script: String,
+    pub thread_name: &'static str,
+}
+
+/// Host forward of `-[PlaceLauncher setupPreloadedGameWithNonGameController:unsecuredGame:isApp:]` (IDA 0x26784).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct PreloadedGameRequest {
+    pub unsecured: bool,
+    pub is_app: bool,
+}
+
+/// Host join captured by `-[PlaceLauncher startGameLocal:...]` (IDA 0x26bb8).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct LocalGameJoin {
+    pub port: i32,
+    pub ip: String,
+}
+
 // 0x26768 — -[PlaceLauncher presentGameViewController]
 // demangled: -[PlaceLauncher presentGameViewController]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher presentGameViewController]")]
-pub fn stub_26768() -> ! {
-    todo!("0x26768 -[PlaceLauncher presentGameViewController]")
+pub fn stub_26768() {
+    // IDA 0x26768: dispatch_async of the presentation block on the main queue (0x2677e); dispatch engine-side, faithful no-op shell.
 }
 
 // 0x26784 — -[PlaceLauncher setupPreloadedGameWithNonGameController:unsecuredGame:isApp:]
 // demangled: -[PlaceLauncher setupPreloadedGameWithNonGameController:unsecuredGame:isApp:]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, PlaceLauncher *self, SEL, id, char, char)
 #[doc(alias = "-[PlaceLauncher setupPreloadedGameWithNonGameController:unsecuredGame:isApp:]")]
-pub fn stub_26784() -> ! {
-    todo!("0x26784 -[PlaceLauncher setupPreloadedGameWithNonGameController:unsecuredGame:isApp:]")
+pub fn stub_26784(has_launcher: bool, unsecured: bool, is_app: bool) -> Option<PreloadedGameRequest> {
+    // IDA 0x26784: forwards to setupGame:unsecuredGame:isApp: (0x267a8); nil self yields a nil game (0x267b0) — caller feeds the request into stub_26558.
+    has_launcher.then_some(PreloadedGameRequest { unsecured, is_app })
 }
 
 // 0x267bc — -[PlaceLauncher setupPreloadedGameWithNonGameController:isApp:]
 // demangled: -[PlaceLauncher setupPreloadedGameWithNonGameController:isApp:]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, PlaceLauncher *self, SEL, id, char)
 #[doc(alias = "-[PlaceLauncher setupPreloadedGameWithNonGameController:isApp:]")]
-pub fn stub_267bc() -> ! {
-    todo!("0x267bc -[PlaceLauncher setupPreloadedGameWithNonGameController:isApp:]")
+pub fn stub_267bc(has_launcher: bool, is_app: bool) -> Option<bool> {
+    // IDA 0x267bc: forwards to setupGame:isApp: (0x267d8); nil self yields a nil game (0x267e2) — returns the isApp flag to forward.
+    has_launcher.then_some(is_app)
 }
 
 // 0x267ec — -[PlaceLauncher injectJoinScript:]
 // demangled: -[PlaceLauncher injectJoinScript:]
 // type: void __cdecl(PlaceLauncher *self, SEL, id)
 #[doc(alias = "-[PlaceLauncher injectJoinScript:]")]
-pub fn stub_267ec() -> ! {
-    todo!("0x267ec -[PlaceLauncher injectJoinScript:]")
+pub fn stub_267ec(script: &str) -> JoinScriptSpawn {
+    // IDA 0x267ec: UTF8String of the join script (0x2681c) bound with the game into joinGameWithJoinScript and run on a detached "InjectStartScript" thread (0x2687e..0x268b2).
+    JoinScriptSpawn { script: script.to_owned(), thread_name: "InjectStartScript" }
 }
 
 // 0x26990 — __ZL22joinGameWithJoinScriptRKSsN5boost10shared_ptrIN3RBX4GameEEE // was: boost::shared_ptr
 // demangled: joinGameWithJoinScript(std::string const&,boost::shared_ptr<RBX::Game>)
 // type: 
 #[doc(alias = "joinGameWithJoinScript(std::string const&,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_26990() -> ! {
-    todo!("0x26990 joinGameWithJoinScript(std::string const&,boost::shared_ptr<RBX::Game>)")
+pub fn stub_26990(script: &str) -> &str {
+    // IDA 0x26990: joinGameWithJoinScript runs executeUrlScript(game, script) (0x269fa..0x26a06) — returns the script the engine executes.
+    script
 }
 
 // 0x26bb8 — -[PlaceLauncher startGameLocal:ipAddress:controller:presentGameAutomatically:]
 // demangled: -[PlaceLauncher startGameLocal:ipAddress:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, int, id, id, char)
 #[doc(alias = "-[PlaceLauncher startGameLocal:ipAddress:controller:presentGameAutomatically:]")]
-pub fn stub_26bb8() -> ! {
-    todo!("0x26bb8 -[PlaceLauncher startGameLocal:ipAddress:controller:presentGameAutomatically:]")
+pub fn stub_26bb8(has_launcher: bool, game_ready: bool, started: bool, port: i32, ip: &str) -> Option<(LocalGameJoin, bool)> {
+    // IDA 0x26bb8: nil self yields false (0x26cfc..0x26d02); preloaded unsecured game setup (0x26c34) gates binding joinLocalGame(port, ip) (0x26c84) and startGame:controller:preloadedGame:presentGameAutomatically: whose result returns (0x26cc8..0x26d2c).
+    if !has_launcher || !game_ready {
+        None
+    } else {
+        Some((LocalGameJoin { port, ip: ip.to_owned() }, started))
+    }
 }
 
 // 0x26dd4 — __ZL13joinLocalGameiRKSsN5boost10shared_ptrIN3RBX4GameEEE // was: boost::shared_ptr
 // demangled: joinLocalGame(int,std::string const&,boost::shared_ptr<RBX::Game>)
 // type: 
 #[doc(alias = "joinLocalGame(int,std::string const&,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_26dd4() -> ! {
-    todo!("0x26dd4 joinLocalGame(int,std::string const&,boost::shared_ptr<RBX::Game>)")
+pub fn stub_26dd4(base_url: &str, port: i32, server: &str) -> String {
+    // IDA 0x26dd4: RBX::format "%sGame/Join.ashx?userID=0&serverPort=%i&server=%s" (0x26e76), executeUrlScript engine-side (0x26e98) — returns the join URL.
+    format!("{base_url}Game/Join.ashx?userID=0&serverPort={port}&server={server}")
 }
 
 // 0x27054 — -[PlaceLauncher startAppWithFile:controller:presentGameAutomatically:]
