@@ -136,6 +136,45 @@ impl RenderSettingsItem {
         self.changed.fire(desc);
     }
 }
+/// Host model of `RBX::CRenderSettings` (the global settings object the
+/// `get*` leaves at 0xb33c..0xb8b0 read — distinct from the
+/// `CRenderSettingsItem` Instance above). Only IDA-observed slots are
+/// modelled, in image offset order; `aaSamples` is the `AA_SAMPLES` global,
+/// not a field (IDA 0xb3e8 double-indirects it and ignores `this`).
+/// was: boost::shared_ptr / boost::signals -> SharedPtr / Signal.
+#[derive(Default)]
+pub struct CRenderSettings {
+    /// +4 dword. IDA 0xb33c `LDR R0,[R0,#4]`.
+    pub graphics_mode: i32,
+    /// +8 dword. IDA 0xb444 `LDR R0,[R0,#8]`.
+    pub antialiasing_mode: i32,
+    /// +0xC dword. IDA 0xb41c `LDR R0,[R0,#0xC]`.
+    pub shadow_mode: i32,
+    /// +0x10 dword. IDA 0xb364 `LDR R0,[R0,#0x10]`.
+    pub frame_rate_manager_mode: i32,
+    /// +0x14 dword. IDA 0xb38c `LDR R0,[R0,#0x14]`.
+    pub quality_level: i32,
+    /// +0x18 dword. IDA 0xb4a4 `LDR R0,[R0,#0x18]`.
+    pub resolution_preference: i32,
+    /// +0x1C dword. IDA 0xb474 `LDR R0,[R0,#0x1C]`.
+    pub auto_quality_level: i32,
+    /// +0x20 dword. IDA 0xb4cc `LDR R0,[R0,#0x20]`.
+    pub max_quality_level: i32,
+    /// +0x28 byte, zero-extended. IDA 0xb46c `LDRB.W R0,[R0,#0x28]`.
+    pub debug_show_bounding_boxes: bool,
+    /// +0x29 byte, zero-extended. IDA 0xb49c `LDRB.W R0,[R0,#0x29]`.
+    pub enable_frm: bool,
+    /// +0x3A byte, zero-extended. IDA 0xb3e0 `LDRB.W R0,[R0,#0x3A]`.
+    pub show_aggregation: bool,
+    /// +0x3B byte, zero-extended. IDA 0xb3b4 `LDRB.W R0,[R0,#0x3B]`.
+    pub always_draw_connectors: bool,
+    /// +0x3D byte, zero-extended. IDA 0xb8b0 `LDRB.W R0,[R0,#0x3D]`.
+    pub eager_bulk_execution: bool,
+    /// +0x40 dword. IDA 0xb4f4 `LDR R0,[R0,#0x40]`.
+    pub texture_cache_size: u32,
+    /// +0x44 dword. IDA 0xb4f8 `LDR R0,[R0,#0x44]`.
+    pub mesh_cache_size: u32,
+}
 
 /// IDA 0x9922 `GetDXVideoMemorySize()` — OS query with no image-side body;
 /// the host has no DX device, so report 0 and keep the 800x600 budget.
@@ -538,38 +577,35 @@ pub fn stub_a25c(desc: &mut EnumDescModel, value: i32, name: &str) {
 }
 
 // 0xa5bc — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE7addPairES3_PKc
-// type: void __fastcall(_DWORD *, int, const char *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::addPair(RBX::CRenderSettings::AntialiasingMode,char const*)")]
-pub fn stub_a5bc() -> ! {
-    todo!("0xa5bc RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::addPair(RBX::CRenderSettings::AntialiasingMode,char const*)")
+pub fn stub_a5bc(desc: &mut EnumDescModel, value: i32, name: &str) {
+    // IDA 0xa5bc: same addPair shape as 0x9b48 for the AntialiasingMode tables.
+    desc.add_pair(value, name);
 }
 
 // 0xa91c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE7addPairES3_PKc
-// type: void __fastcall(_DWORD *, int, const char *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::addPair(RBX::CRenderSettings::ShadowMode,char const*)")]
-pub fn stub_a91c() -> ! {
-    todo!("0xa91c RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::addPair(RBX::CRenderSettings::ShadowMode,char const*)")
+pub fn stub_a91c(desc: &mut EnumDescModel, value: i32, name: &str) {
+    // IDA 0xa91c: same addPair shape as 0x9b48 for the ShadowMode tables.
+    desc.add_pair(value, name);
 }
 
 // 0xac7c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE7addPairES3_PKc
-// type: void __fastcall(_DWORD *, int, const char *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::addPair(RBX::CRenderSettings::QualityLevel,char const*)")]
-pub fn stub_ac7c() -> ! {
-    todo!("0xac7c RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::addPair(RBX::CRenderSettings::QualityLevel,char const*)")
+pub fn stub_ac7c(desc: &mut EnumDescModel, value: i32, name: &str) {
+    // IDA 0xac7c: same addPair shape as 0x9b48 for the QualityLevel tables.
+    desc.add_pair(value, name);
 }
 
 // 0xafdc — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE7addPairES3_PKc
-// type: void __fastcall(_DWORD *, int, const char *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::addPair(RBX::CRenderSettings::ResolutionPreset,char const*)")]
-pub fn stub_afdc() -> ! {
-    todo!("0xafdc RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::addPair(RBX::CRenderSettings::ResolutionPreset,char const*)")
+pub fn stub_afdc(desc: &mut EnumDescModel, value: i32, name: &str) {
+    // IDA 0xafdc: same addPair shape as 0x9b48 for the ResolutionPreset tables.
+    desc.add_pair(value, name);
 }
 
 // 0xb33c — __ZNK3RBX15CRenderSettings15getGraphicsModeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getGraphicsMode(void)const")]
-pub fn stub_b33c() -> ! {
-    todo!("0xb33c RBX::CRenderSettings::getGraphicsMode(void)const")
+pub fn stub_b33c(settings: &CRenderSettings) -> i32 {
+    // IDA 0xb33c `LDR R0,[R0,#4]` (disasm 0xb33c..0xb33e): plain +4 field load.
+    settings.graphics_mode
 }
 
 // 0xb340 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEED1Ev
@@ -582,8 +618,9 @@ pub fn stub_b340() {
 // 0xb364 — __ZNK3RBX15CRenderSettings23getFrameRateManagerModeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getFrameRateManagerMode(void)const")]
-pub fn stub_b364() -> ! {
-    todo!("0xb364 RBX::CRenderSettings::getFrameRateManagerMode(void)const")
+pub fn stub_b364(settings: &CRenderSettings) -> i32 {
+    // IDA 0xb364 `LDR R0,[R0,#0x10]` (disasm 0xb364..0xb366): plain +0x10 field load.
+    settings.frame_rate_manager_mode
 }
 
 // 0xb368 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEED1Ev
@@ -596,8 +633,9 @@ pub fn stub_b368() {
 // 0xb38c — __ZNK3RBX15CRenderSettings15getQualityLevelEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getQualityLevel(void)const")]
-pub fn stub_b38c() -> ! {
-    todo!("0xb38c RBX::CRenderSettings::getQualityLevel(void)const")
+pub fn stub_b38c(settings: &CRenderSettings) -> i32 {
+    // IDA 0xb38c `LDR R0,[R0,#0x14]` (disasm 0xb38c..0xb38e): plain +0x14 field load.
+    settings.quality_level
 }
 
 // 0xb390 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEED1Ev
@@ -610,8 +648,9 @@ pub fn stub_b390() {
 // 0xb3b4 — __ZNK3RBX15CRenderSettings23getAlwaysDrawConnectorsEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getAlwaysDrawConnectors(void)const")]
-pub fn stub_b3b4() -> ! {
-    todo!("0xb3b4 RBX::CRenderSettings::getAlwaysDrawConnectors(void)const")
+pub fn stub_b3b4(settings: &CRenderSettings) -> i32 {
+    // IDA 0xb3b4 `LDRB.W R0,[R0,#0x3B]` (disasm 0xb3b4..0xb3b8): byte load, zero-extended.
+    i32::from(settings.always_draw_connectors)
 }
 
 // 0xb3bc — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItembED1Ev
@@ -624,15 +663,18 @@ pub fn stub_b3bc() {
 // 0xb3e0 — __ZNK3RBX15CRenderSettings18getShowAggregationEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getShowAggregation(void)const")]
-pub fn stub_b3e0() -> ! {
-    todo!("0xb3e0 RBX::CRenderSettings::getShowAggregation(void)const")
+pub fn stub_b3e0(settings: &CRenderSettings) -> i32 {
+    // IDA 0xb3e0 `LDRB.W R0,[R0,#0x3A]` (disasm 0xb3e0..0xb3e4): byte load, zero-extended.
+    i32::from(settings.show_aggregation)
 }
 
 // 0xb3e8 — __ZNK3RBX15CRenderSettings12getAASamplesEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getAASamples(void)const")]
-pub fn stub_b3e8() -> ! {
-    todo!("0xb3e8 RBX::CRenderSettings::getAASamples(void)const")
+pub fn stub_b3e8(_settings: &CRenderSettings) -> i32 {
+    // IDA 0xb3e8 double-indirects the `aaSamples` global via its `_ptr` slot
+    // (disasm 0xb3e8..0xb3f6); `this` is unused. Modelled by `AA_SAMPLES`.
+    AA_SAMPLES.load(Ordering::SeqCst)
 }
 
 // 0xb3f8 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEED1Ev
@@ -645,8 +687,9 @@ pub fn stub_b3f8() {
 // 0xb41c — __ZNK3RBX15CRenderSettings13getShadowModeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getShadowMode(void)const")]
-pub fn stub_b41c() -> ! {
-    todo!("0xb41c RBX::CRenderSettings::getShadowMode(void)const")
+pub fn stub_b41c(settings: &CRenderSettings) -> i32 {
+    // IDA 0xb41c `LDR R0,[R0,#0xC]` (disasm 0xb41c..0xb41e): plain +0xC field load.
+    settings.shadow_mode
 }
 
 // 0xb420 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEED1Ev
@@ -659,8 +702,9 @@ pub fn stub_b420() {
 // 0xb444 — __ZNK3RBX15CRenderSettings19getAntialiasingModeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getAntialiasingMode(void)const")]
-pub fn stub_b444() -> ! {
-    todo!("0xb444 RBX::CRenderSettings::getAntialiasingMode(void)const")
+pub fn stub_b444(settings: &CRenderSettings) -> i32 {
+    // IDA 0xb444 `LDR R0,[R0,#8]` (disasm 0xb444..0xb446): plain +8 field load.
+    settings.antialiasing_mode
 }
 
 // 0xb448 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEED1Ev
@@ -673,15 +717,17 @@ pub fn stub_b448() {
 // 0xb46c — __ZNK3RBX15CRenderSettings25getDebugShowBoundingBoxesEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getDebugShowBoundingBoxes(void)const")]
-pub fn stub_b46c() -> ! {
-    todo!("0xb46c RBX::CRenderSettings::getDebugShowBoundingBoxes(void)const")
+pub fn stub_b46c(settings: &CRenderSettings) -> i32 {
+    // IDA 0xb46c `LDRB.W R0,[R0,#0x28]` (disasm 0xb46c..0xb470): byte load, zero-extended.
+    i32::from(settings.debug_show_bounding_boxes)
 }
 
 // 0xb474 — __ZNK3RBX15CRenderSettings19getAutoQualityLevelEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getAutoQualityLevel(void)const")]
-pub fn stub_b474() -> ! {
-    todo!("0xb474 RBX::CRenderSettings::getAutoQualityLevel(void)const")
+pub fn stub_b474(settings: &CRenderSettings) -> i32 {
+    // IDA 0xb474 `LDR R0,[R0,#0x1C]` (disasm 0xb474..0xb476): plain +0x1C field load.
+    settings.auto_quality_level
 }
 
 // 0xb478 — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiED1Ev
@@ -694,15 +740,17 @@ pub fn stub_b478() {
 // 0xb49c — __ZNK3RBX15CRenderSettings12getEnableFRMEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getEnableFRM(void)const")]
-pub fn stub_b49c() -> ! {
-    todo!("0xb49c RBX::CRenderSettings::getEnableFRM(void)const")
+pub fn stub_b49c(settings: &CRenderSettings) -> i32 {
+    // IDA 0xb49c `LDRB.W R0,[R0,#0x29]` (disasm 0xb49c..0xb4a0): byte load, zero-extended.
+    i32::from(settings.enable_frm)
 }
 
 // 0xb4a4 — __ZNK3RBX15CRenderSettings23getResolutionPreferenceEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getResolutionPreference(void)const")]
-pub fn stub_b4a4() -> ! {
-    todo!("0xb4a4 RBX::CRenderSettings::getResolutionPreference(void)const")
+pub fn stub_b4a4(settings: &CRenderSettings) -> i32 {
+    // IDA 0xb4a4 `LDR R0,[R0,#0x18]` (disasm 0xb4a4..0xb4a6): plain +0x18 field load.
+    settings.resolution_preference
 }
 
 // 0xb4a8 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEED1Ev
@@ -715,8 +763,9 @@ pub fn stub_b4a8() {
 // 0xb4cc — __ZN3RBX15CRenderSettings18getMaxQualityLevelEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getMaxQualityLevel(void)")]
-pub fn stub_b4cc() -> ! {
-    todo!("0xb4cc RBX::CRenderSettings::getMaxQualityLevel(void)")
+pub fn stub_b4cc(settings: &CRenderSettings) -> i32 {
+    // IDA 0xb4cc `LDR R0,[R0,#0x20]` (disasm 0xb4cc..0xb4ce): plain +0x20 field load.
+    settings.max_quality_level
 }
 
 // 0xb4d0 — __ZN3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EED1Ev
@@ -729,43 +778,63 @@ pub fn stub_b4d0() {
 // 0xb4f4 — __ZNK3RBX15CRenderSettings19getTextureCacheSizeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getTextureCacheSize(void)const")]
-pub fn stub_b4f4() -> ! {
-    todo!("0xb4f4 RBX::CRenderSettings::getTextureCacheSize(void)const")
+pub fn stub_b4f4(settings: &CRenderSettings) -> i32 {
+    // IDA 0xb4f4 `LDR R0,[R0,#0x40]` (disasm 0xb4f4..0xb4f6): plain +0x40 field load.
+    settings.texture_cache_size as i32
 }
 
 // 0xb4f8 — __ZNK3RBX15CRenderSettings16getMeshCacheSizeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getMeshCacheSize(void)const")]
-pub fn stub_b4f8() -> ! {
-    todo!("0xb4f8 RBX::CRenderSettings::getMeshCacheSize(void)const")
+pub fn stub_b4f8(settings: &CRenderSettings) -> i32 {
+    // IDA 0xb4f8 `LDR R0,[R0,#0x44]` (disasm 0xb4f8..0xb4fa): plain +0x44 field load.
+    settings.mesh_cache_size as i32
 }
 
 // 0xb4fc — __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEEC2Ev
 // type: RBX::Instance *__fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEEC2Ev")]
-pub fn stub_b4fc() -> ! {
-    todo!("0xb4fc __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEEC2Ev")
+pub fn stub_b4fc() {
+    // IDA 0xb4fc (`GlobalAdvancedSettingsItem` C2, decompiled 0xb4fc..0xb6b4):
+    // 0xb51e `Instance::Instance(this, 0)`, vtable installs (0xb54e..0xb5e2),
+    // `classDescriptor` + `registrar++` (0xb584..0xb5ba), byte +92 = 1
+    // (0xb5ba), `std::string("RenderSettings")` + `setName` (0xb5ec..0xb5f8).
+    // Every effect lands on the `Instance` base / vtables / registrar, none
+    // of which exist in this crate's `RenderSettingsItem` model (the derived
+    // 0x97d0 ctor owns member init), so the host cutover is drop glue.
 }
 
 // 0xb740 — __ZNSt6vectorIN3G3D12Vector2int16ESaIS1_EE9push_backERKS1_
 // type: int __fastcall(int result, _DWORD *)
 #[doc(alias = "std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::push_back(G3D::Vector2int16 const&)")]
-pub fn stub_b740() -> ! {
-    todo!("0xb740 std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::push_back(G3D::Vector2int16 const&)")
+pub fn stub_b740<'a>(vec: &'a mut Vec<(u16, u16)>, value: &(u16, u16)) -> &'a mut Vec<(u16, u16)> {
+    // IDA 0xb740..0xb75e: `finish = *(result + 4)` (0xb742); unless `finish`
+    // reached `end_of_storage` (0xb74c), 4-byte copy the element and bump
+    // `finish` (0xb756..0xb75c); full case delegates to `_M_insert_aux`
+    // (0xb766). `Vec::push` is both paths (grow + move); the element is one
+    // 4-byte `G3D::Vector2int16` lane pair, modelled as `(u16, u16)`.
+    vec.push(*value);
+    vec
 }
 
 // 0xb76c — __ZN3rbx7signals16signal_with_argsILi1EFvPKN3RBX10Reflection18PropertyDescriptorEEEclES6_
 // type: void __fastcall(_DWORD *, int, int, const void *, int, int, int, int, void *, int)
 #[doc(alias = "rbx::signals::signal_with_args<1,void ()(RBX::Reflection::PropertyDescriptor const*)>::operator()(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_b76c() -> ! {
-    todo!("0xb76c rbx::signals::signal_with_args<1,void ()(RBX::Reflection::PropertyDescriptor const*)>::operator()(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_b76c(item: &mut RenderSettingsItem, desc: u32) {
+    // IDA 0xb76c (`signal_with_args<1, void(const PropertyDescriptor *)>`
+    // `operator()`, decompiled 0xb76c..): fan out to every connected slot
+    // with the descriptor. was: boost::signals -> rbx_core::Signal; the host
+    // `changed` signal already models the slot list, so firing it with the
+    // descriptor id is the call itself.
+    item.emit_prop_changed(desc);
 }
 
 // 0xb8b0 — __ZNK3RBX15CRenderSettings21getEagerBulkExecutionEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getEagerBulkExecution(void)const")]
-pub fn stub_b8b0() -> ! {
-    todo!("0xb8b0 RBX::CRenderSettings::getEagerBulkExecution(void)const")
+pub fn stub_b8b0(settings: &CRenderSettings) -> i32 {
+    // IDA 0xb8b0 `LDRB.W R0,[R0,#0x3D]` (disasm 0xb8b0..0xb8b4): byte load, zero-extended.
+    i32::from(settings.eager_bulk_execution)
 }
 
 // 0xb8b8 — __ZN19CRenderSettingsItemD1Ev
@@ -785,8 +854,11 @@ pub fn stub_b8bc() {
 // 0xb8d0 — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")]
-pub fn stub_b8d0() -> ! {
-    todo!("0xb8d0 __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")
+pub fn stub_b8d0() -> &'static str {
+    // IDA 0xb8d0..0xb8dc: `Creator = static_getCreator()`, then tail-calls
+    // `Creator::getClassName` on it — the declared `sRenderSettings` name,
+    // `"RenderSettings"` (cf. IDA 0xedfc/0xf1d8 Name::declare path).
+    "RenderSettings"
 }
 
 // 0xb8e0 — __ZThn32_N19CRenderSettingsItemD1Ev
@@ -848,28 +920,60 @@ pub fn stub_b938() {
 // 0xb94c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::lookup(char const*)const")]
-pub fn stub_b94c() -> ! {
-    todo!("0xb94c RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::lookup(char const*)const")
+pub fn stub_b94c(desc: &EnumDescModel, name: &str) -> i32 {
+    // IDA 0xb94c (decompiled): `Name::lookup` the string (0xb958), then
+    // `convertToValue` (0xb966) and `convertToItem` on hit (0xb972), else
+    // return 0 (0xb968..0xb978). The returned `Item*` has no host model, so
+    // the looked-up value is returned; miss -> 0.
+    desc.lookup(name).unwrap_or(0)
 }
 
 // 0xb97c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_b97c() -> ! {
-    todo!("0xb97c RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_b97c(desc: &EnumDescModel, value: i32) -> i32 {
+    // IDA 0xb97c (decompiled 0xb97c..0xb998): `any_cast<T>` the Variant
+    // payload (0xb986), then `convertToItem` (0xb992), which asserts
+    // `value >= 0` and `value < size` (enumconverter.h:273-274). The caller
+    // passes the already-cast value; the table hit is returned.
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!(
+        (value as usize) < desc.pairs.len(),
+        "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274"
+    );
+    desc.pairs[value as usize].0
 }
 
 // 0xb99c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_b99c() -> ! {
-    todo!("0xb99c RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_b99c(desc: &EnumDescModel, index: usize, out: &mut i32) -> bool {
+    // IDA 0xb99c (disasm 0xb99c..0xb9f4): if `index < [this + 0x28]` (count,
+    // 0xb9a4..0xb9a8), store `[[this + 0x90] + index * 4]` into the out-param
+    // and return 1 (0xb9ac..0xb9b6). Else the Singleton + `placement_any`
+    // fallback (0xb9c0..0xb9ec) resolves outside the pair tables; the host
+    // reports failure with `out` untouched.
+    if let Some((value, _)) = desc.pairs.get(index) {
+        *out = *value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0xb9f8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_b9f8() -> ! {
-    todo!("0xb9f8 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToString(unsigned long,std::string &)const")
+pub fn stub_b9f8(desc: &EnumDescModel, index: usize, out: &mut String) -> bool {
+    // IDA 0xb9f8 (decompiled 0xba4c..0xbaaa): if `[a1 + 40] > index`, take
+    // `[[a1 + 144] + index]` through the item `convertToString` (0xba5c..0xba66),
+    // `assign` into the out string (0xba72) and return 1; else return 0 with
+    // `out` untouched.
+    if let Some((_, name)) = desc.pairs.get(index) {
+        *out = name.clone();
+        true
+    } else {
+        false
+    }
 }
 
 // 0xbb3c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED1Ev
@@ -993,4 +1097,83 @@ pub fn stub_bfb4() -> ! {
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToString(unsigned long,std::string &)const")]
 pub fn stub_c010() -> ! {
     todo!("0xc010 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToString(unsigned long,std::string &)const")
+}
+
+#[cfg(test)]
+mod batch2_tests {
+    use super::*;
+
+    #[test]
+    fn render_settings_getters_read_image_slots() {
+        // IDA slot map: +4/+8/+0xC/+0x10/+0x14/+0x18/+0x1C/+0x20 dwords,
+        // +0x28/+0x29/+0x3A/+0x3B/+0x3D zero-extended bytes, +0x40/+0x44 dwords.
+        let settings = CRenderSettings {
+            graphics_mode: 1,
+            antialiasing_mode: 2,
+            shadow_mode: 3,
+            frame_rate_manager_mode: 4,
+            quality_level: 5,
+            resolution_preference: 6,
+            auto_quality_level: 7,
+            max_quality_level: 8,
+            debug_show_bounding_boxes: true,
+            enable_frm: true,
+            show_aggregation: false,
+            always_draw_connectors: true,
+            eager_bulk_execution: true,
+            texture_cache_size: 512,
+            mesh_cache_size: 256,
+        };
+        assert_eq!(stub_b33c(&settings), 1);
+        assert_eq!(stub_b444(&settings), 2);
+        assert_eq!(stub_b41c(&settings), 3);
+        assert_eq!(stub_b364(&settings), 4);
+        assert_eq!(stub_b38c(&settings), 5);
+        assert_eq!(stub_b4a4(&settings), 6);
+        assert_eq!(stub_b474(&settings), 7);
+        assert_eq!(stub_b4cc(&settings), 8);
+        assert_eq!(stub_b46c(&settings), 1);
+        assert_eq!(stub_b49c(&settings), 1);
+        assert_eq!(stub_b3e0(&settings), 0);
+        assert_eq!(stub_b3b4(&settings), 1);
+        assert_eq!(stub_b8b0(&settings), 1);
+        assert_eq!(stub_b4f4(&settings), 512);
+        assert_eq!(stub_b4f8(&settings), 256);
+        // IDA 0xb3e8 reads the `aaSamples` global and ignores `this`.
+        AA_SAMPLES.store(9, Ordering::SeqCst);
+        assert_eq!(stub_b3e8(&settings), 9);
+        AA_SAMPLES.store(0, Ordering::SeqCst);
+    }
+
+    #[test]
+    fn enum_desc_addpair_lookup_convert_roundtrip() {
+        let mut desc = EnumDescModel::default();
+        stub_a5bc(&mut desc, 0, "Automatic");
+        stub_a91c(&mut desc, 1, "Low");
+        stub_ac7c(&mut desc, 2, "High");
+        stub_afdc(&mut desc, 3, "Ultra");
+        assert_eq!(stub_b94c(&desc, "High"), 2);
+        assert_eq!(stub_b94c(&desc, "Missing"), 0);
+        assert_eq!(stub_b97c(&desc, 3), 3);
+        let mut value = -1;
+        assert!(stub_b99c(&desc, 1, &mut value));
+        assert_eq!(value, 1);
+        assert!(!stub_b99c(&desc, 9, &mut value));
+        let mut name = String::new();
+        assert!(stub_b9f8(&desc, 0, &mut name));
+        assert_eq!(name, "Automatic");
+        assert!(!stub_b9f8(&desc, 9, &mut name));
+    }
+
+    #[test]
+    fn pushback_signal_classname() {
+        let mut item = RenderSettingsItem::default();
+        stub_b740(&mut item.resolutions, &(800, 600));
+        stub_b740(&mut item.resolutions, &(1024, 768));
+        assert_eq!(item.resolutions, vec![(800, 600), (1024, 768)]);
+        stub_b4fc();
+        stub_b76c(&mut item, PROP_GRAPHICS_MODE);
+        assert_eq!(item.fired, vec![PROP_GRAPHICS_MODE]);
+        assert_eq!(stub_b8d0(), "RenderSettings");
+    }
 }
