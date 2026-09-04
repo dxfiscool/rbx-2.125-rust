@@ -15,16 +15,18 @@ const _: () = {
 // type: _DWORD *__fastcall(int, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>,RakNet::SystemAddress,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::SystemAddressHasher,std::equal_to<RakNet::SystemAddress>>>::reserve_for_insert(unsigned long)")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN6RakNet13SystemAddressEN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob15ConnectionStatsEEES6_SC_NSB_19SystemAddressHasherESt8equal_toIS6_EEEE18reserve_for_insertEm")]
-pub fn stub_99c890() -> ! {
-    todo!("0x99c890 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN6RakNet13SystemAddressEN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob15ConnectionStatsEEES6_SC_NSB_19SystemAddressHasherESt8equal_toIS6_EEEE18reserve_for_insertEm")
+pub fn stub_99c890(stats: &mut std::collections::HashMap<(u32, u16), crate::peer::ConnectionStats>, additional: usize) {
+ // IDA 0x99c890: size ahead of insertion.
+ crate::peer::stats_reserve_table(stats, additional)
 }
 
 // 0x99ca38 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN6RakNet13SystemAddressEN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob15ConnectionStatsEEES6_SC_NSB_19SystemAddressHasherESt8equal_toIS6_EEEE14create_bucketsEm
 // type: unsigned int __fastcall(int, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>,RakNet::SystemAddress,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::SystemAddressHasher,std::equal_to<RakNet::SystemAddress>>>::create_buckets(unsigned long)")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN6RakNet13SystemAddressEN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob15ConnectionStatsEEES6_SC_NSB_19SystemAddressHasherESt8equal_toIS6_EEEE14create_bucketsEm")]
-pub fn stub_99ca38() -> ! {
-    todo!("0x99ca38 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN6RakNet13SystemAddressEN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob15ConnectionStatsEEES6_SC_NSB_19SystemAddressHasherESt8equal_toIS6_EEEE14create_bucketsEm")
+pub fn stub_99ca38(stats: &mut std::collections::HashMap<(u32, u16), crate::peer::ConnectionStats>, additional: usize) {
+ // IDA 0x99ca38: bucket sizing stays engine-side.
+ crate::peer::stats_reserve_table(stats, additional)
 }
 
 // 0x99da54 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN6RakNet13SystemAddressENS_8functionIFvRKN3RBX7Network22ConcurrentRakPeerStatsEEEEEES6_SF_NS_4hashIS6_EESt8equal_toIS6_EEEE9erase_keyERS7_

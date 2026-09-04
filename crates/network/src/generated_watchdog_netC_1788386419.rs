@@ -955,8 +955,9 @@ pub fn stub_999f78(erase: &mut dyn FnMut() -> u32) -> u32 {
 // type: int __fastcall(int, int *, int, int, char, int, int, int, int, int, char)
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::Send(rbx_core::SharedPtr<RakNet::BitStream const>,PacketPriority,PacketReliability,char,RakNet::SystemAddress,bool)")]
 #[doc(alias = "__ZN3RBX7Network17ConcurrentRakPeer4SendEN5boost10shared_ptrIKN6RakNet9BitStreamEEE14PacketPriority17PacketReliabilitycNS4_13SystemAddressEb")]
-pub fn stub_99b398() -> ! {
-    todo!("0x99b398 RBX::Network::ConcurrentRakPeer::Send(rbx_core::SharedPtr<RakNet::BitStream const>,PacketPriority,PacketReliability,char,RakNet::SystemAddress,bool)")
+pub fn stub_99b398(enqueue: &mut dyn FnMut(), reschedule: &mut dyn FnMut()) {
+ // IDA 0x99b398: queue the send job, reschedule.
+ crate::peer::concurrent_send(enqueue, reschedule)
 }
 
 // 0x99b884 — __ZN3RBX7Network17ConcurrentRakPeer20GetBandwidthExceededEN6RakNet13SystemAddressE
@@ -981,40 +982,45 @@ pub fn stub_99b990(present: bool, exceeded: bool) -> bool {
 // type: void __fastcall(int, int, int, int, int, pthread_mutex_t *, int, int, int, pthread_mutex_t *, int, int, int, int)
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::StatsUpdateJob::updateStats(std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats> &)")]
 #[doc(alias = "__ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob11updateStatsERSt4pairIKN6RakNet13SystemAddressENS2_15ConnectionStatsEE")]
-pub fn stub_99bb00() -> ! {
-    todo!("0x99bb00 RBX::Network::ConcurrentRakPeer::StatsUpdateJob::updateStats(std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats> &)")
+pub fn stub_99bb00(job_active: bool, nested: bool, update: &mut dyn FnMut()) {
+ // IDA 0x99bb00: nested update while live and flagged.
+ crate::peer::update_stats(job_active, nested, update)
 }
 
 // 0x99c480 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN6RakNet13SystemAddressEN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob15ConnectionStatsEEES6_SC_NSB_19SystemAddressHasherESt8equal_toIS6_EEEEixERS7_
 // type: int __fastcall(_DWORD *, RakNet::SystemAddress *this)
 #[doc(alias = "unordered::detail::table_impl<unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>,RakNet::SystemAddress,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::SystemAddressHasher,std::equal_to<RakNet::SystemAddress>>>::operator[](RakNet::SystemAddress const&)")]
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN6RakNet13SystemAddressEN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob15ConnectionStatsEEES6_SC_NSB_19SystemAddressHasherESt8equal_toIS6_EEEEixERS7_")]
-pub fn stub_99c480() -> ! {
-    todo!("0x99c480 unordered::detail::table_impl<unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>,RakNet::SystemAddress,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::SystemAddressHasher,std::equal_to<RakNet::SystemAddress>>>::operator[](RakNet::SystemAddress const&)")
+pub fn stub_99c480(stats: &mut std::collections::HashMap<(u32, u16), crate::peer::ConnectionStats>, addr: (u32, u16)) -> &mut crate::peer::ConnectionStats {
+ // IDA 0x99c480: find-or-insert the address entry.
+ crate::peer::stats_entry(stats, addr)
 }
 
 // 0x99c6dc — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKN6RakNet13SystemAddressEN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob15ConnectionStatsEEEEEE20construct_with_valueINS1_13emplace_args3INS0_21piecewise_construct_tENS_6tuples5tupleIS6_NSK_9null_typeESM_SM_SM_SM_SM_SM_SM_SM_EENSL_ISM_SM_SM_SM_SM_SM_SM_SM_SM_SM_EEEEEEvRKT_
 // type: int __fastcall(int, int)
 #[doc(alias = "void unordered::detail::node_constructor<std::allocator<unordered::detail::ptr_node<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>>>::construct_with_value<unordered::detail::emplace_args3<unordered::piecewise_construct_t,tuples::tuple<RakNet::SystemAddress,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type>,tuples::tuple<tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type>>>(unordered::detail::emplace_args3<unordered::piecewise_construct_t,tuples::tuple<RakNet::SystemAddress,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type>,tuples::tuple<tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type>> const&)")]
 #[doc(alias = "__ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKN6RakNet13SystemAddressEN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob15ConnectionStatsEEEEEE20construct_with_valueINS1_13emplace_args3INS0_21piecewise_construct_tENS_6tuples5tupleIS6_NSK_9null_typeESM_SM_SM_SM_SM_SM_SM_SM_EENSL_ISM_SM_SM_SM_SM_SM_SM_SM_SM_SM_EEEEEEvRKT_")]
-pub fn stub_99c6dc() -> ! {
-    todo!("0x99c6dc void unordered::detail::node_constructor<std::allocator<unordered::detail::ptr_node<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>>>::construct_with_value<unordered::detail::emplace_args3<unordered::piecewise_construct_t,tuples::tuple<RakNet::SystemAddress,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type>,tuples::tuple<tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type>>>(unordered::detail::emplace_args3<unordered::piecewise_construct_t,tuples::tuple<RakNet::SystemAddress,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type>,tuples::tuple<tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type,tuples::null_type>> const&)")
+pub fn stub_99c6dc() {
+ // IDA 0x99c6dc: node placement stays engine-side.
+ crate::peer::stats_node_construct()
 }
 
 // 0x99c890 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN6RakNet13SystemAddressEN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob15ConnectionStatsEEES6_SC_NSB_19SystemAddressHasherESt8equal_toIS6_EEEE18reserve_for_insertEm
 // type: _DWORD *__fastcall(int, unsigned int)
 #[doc(alias = "unordered::detail::table<unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>,RakNet::SystemAddress,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::SystemAddressHasher,std::equal_to<RakNet::SystemAddress>>>::reserve_for_insert(unsigned long)")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN6RakNet13SystemAddressEN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob15ConnectionStatsEEES6_SC_NSB_19SystemAddressHasherESt8equal_toIS6_EEEE18reserve_for_insertEm")]
-pub fn stub_99c890() -> ! {
-    todo!("0x99c890 unordered::detail::table<unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>,RakNet::SystemAddress,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::SystemAddressHasher,std::equal_to<RakNet::SystemAddress>>>::reserve_for_insert(unsigned long)")
+pub fn stub_99c890(stats: &mut std::collections::HashMap<(u32, u16), crate::peer::ConnectionStats>, additional: usize) {
+ // IDA 0x99c890: size ahead of insertion.
+ crate::peer::stats_reserve_table(stats, additional)
 }
 
 // 0x99ca38 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN6RakNet13SystemAddressEN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob15ConnectionStatsEEES6_SC_NSB_19SystemAddressHasherESt8equal_toIS6_EEEE14create_bucketsEm
 // type: unsigned int __fastcall(int, unsigned int)
 #[doc(alias = "unordered::detail::table<unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>,RakNet::SystemAddress,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::SystemAddressHasher,std::equal_to<RakNet::SystemAddress>>>::create_buckets(unsigned long)")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN6RakNet13SystemAddressEN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob15ConnectionStatsEEES6_SC_NSB_19SystemAddressHasherESt8equal_toIS6_EEEE14create_bucketsEm")]
-pub fn stub_99ca38() -> ! {
-    todo!("0x99ca38 unordered::detail::table<unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>,RakNet::SystemAddress,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::SystemAddressHasher,std::equal_to<RakNet::SystemAddress>>>::create_buckets(unsigned long)")
+pub fn stub_99ca38(stats: &mut std::collections::HashMap<(u32, u16), crate::peer::ConnectionStats>, additional: usize) {
+ // IDA 0x99ca38: bucket sizing stays engine-side.
+ crate::peer::stats_reserve_table(stats, additional)
 }
 
 // 0x99da54 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN6RakNet13SystemAddressENS_8functionIFvRKN3RBX7Network22ConcurrentRakPeerStatsEEEEEES6_SF_NS_4hashIS6_EESt8equal_toIS6_EEEE9erase_keyERS7_

@@ -866,8 +866,9 @@ pub fn stub_99b990(present: bool, exceeded: bool) -> bool {
 // type: void __fastcall(int, int, int, int, int, pthread_mutex_t *, int, int, int, pthread_mutex_t *, int, int, int, int)
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::StatsUpdateJob::updateStats(std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats> &)")]
 #[doc(alias = "__ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob11updateStatsERSt4pairIKN6RakNet13SystemAddressENS2_15ConnectionStatsEE")]
-pub fn stub_99bb00() -> ! {
-    todo!("0x99bb00 __ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob11updateStatsERSt4pairIKN6RakNet13SystemAddressENS2_15ConnectionStatsEE")
+pub fn stub_99bb00(job_active: bool, nested: bool, update: &mut dyn FnMut()) {
+ // IDA 0x99bb00: nested update while live and flagged.
+ crate::peer::update_stats(job_active, nested, update)
 }
 
 // 0x99c480 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN6RakNet13SystemAddressEN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob15ConnectionStatsEEES6_SC_NSB_19SystemAddressHasherESt8equal_toIS6_EEEEixERS7_
