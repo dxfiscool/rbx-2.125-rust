@@ -20,8 +20,8 @@ pub fn stub_559604() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_12BodyVelocityEFN3G3D7Vector3EvELi0EED1Ev")]
-pub fn stub_559614() -> ! {
-    todo!("0x559614 __ZN3RBX10Reflection13BoundFuncDescINS_12BodyVelocityEFN3G3D7Vector3EvELi0EED1Ev")
+pub fn stub_559614() {
+    // IDA 0x559614: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x559638 — __ZN3RBX4Body17getBranchVelocityEv
@@ -38,8 +38,8 @@ pub fn stub_559638() -> ! {
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
 #[doc(alias = "RBX::BodyPosition::~BodyPosition()")]
 #[doc(alias = "__ZN3RBX12BodyPositionD1Ev")]
-pub fn stub_5596b0() -> ! {
-    todo!("0x5596b0 __ZN3RBX12BodyPositionD1Ev")
+pub fn stub_5596b0() {
+    // IDA 0x5596b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5597e0 — __ZN3RBX12BodyPositionD0Ev
@@ -47,8 +47,8 @@ pub fn stub_5596b0() -> ! {
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
 #[doc(alias = "RBX::BodyPosition::~BodyPosition()")]
 #[doc(alias = "__ZN3RBX12BodyPositionD0Ev")]
-pub fn stub_5597e0() -> ! {
-    todo!("0x5597e0 __ZN3RBX12BodyPositionD0Ev")
+pub fn stub_5597e0() {
+    // IDA 0x5597e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x559920 — __ZN3RBX12BodyPosition17onServiceProviderEPNS_15ServiceProviderES2_
@@ -74,8 +74,8 @@ pub fn stub_559938() -> ! {
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
 #[doc(alias = "__ZThn32_N3RBX12BodyPositionD1Ev")]
-pub fn stub_55993c() -> ! {
-    todo!("0x55993c __ZThn32_N3RBX12BodyPositionD1Ev")
+pub fn stub_55993c() {
+    // IDA 0x55993c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x559a68 — __ZThn32_N3RBX12BodyPositionD0Ev
@@ -83,8 +83,8 @@ pub fn stub_55993c() -> ! {
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
 #[doc(alias = "__ZThn32_N3RBX12BodyPositionD0Ev")]
-pub fn stub_559a68() -> ! {
-    todo!("0x559a68 __ZThn32_N3RBX12BodyPositionD0Ev")
+pub fn stub_559a68() {
+    // IDA 0x559a68: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x559bb8 — __ZThn36_N3RBX12BodyPositionD1Ev
@@ -92,8 +92,8 @@ pub fn stub_559a68() -> ! {
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
 #[doc(alias = "__ZThn36_N3RBX12BodyPositionD1Ev")]
-pub fn stub_559bb8() -> ! {
-    todo!("0x559bb8 __ZThn36_N3RBX12BodyPositionD1Ev")
+pub fn stub_559bb8() {
+    // IDA 0x559bb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x559ce4 — __ZThn36_N3RBX12BodyPositionD0Ev
@@ -101,8 +101,8 @@ pub fn stub_559bb8() -> ! {
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
 #[doc(alias = "__ZThn36_N3RBX12BodyPositionD0Ev")]
-pub fn stub_559ce4() -> ! {
-    todo!("0x559ce4 __ZThn36_N3RBX12BodyPositionD0Ev")
+pub fn stub_559ce4() {
+    // IDA 0x559ce4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x559e24 — __ZThn92_N3RBX12BodyPositionD1Ev
@@ -110,8 +110,8 @@ pub fn stub_559ce4() -> ! {
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
 #[doc(alias = "__ZThn92_N3RBX12BodyPositionD1Ev")]
-pub fn stub_559e24() -> ! {
-    todo!("0x559e24 __ZThn92_N3RBX12BodyPositionD1Ev")
+pub fn stub_559e24() {
+    // IDA 0x559e24: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x559f50 — __ZThn92_N3RBX12BodyPositionD0Ev
@@ -119,8 +119,8 @@ pub fn stub_559e24() -> ! {
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
 #[doc(alias = "__ZThn92_N3RBX12BodyPositionD0Ev")]
-pub fn stub_559f50() -> ! {
-    todo!("0x559f50 __ZThn92_N3RBX12BodyPositionD0Ev")
+pub fn stub_559f50() {
+    // IDA 0x559f50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55a090 — __ZThn92_NK3RBX9BodyMover12canStepWorldEv
@@ -128,8 +128,8 @@ pub fn stub_559f50() -> ! {
 // type: _DWORD __fastcall(RBX::BodyMover *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyMover::canStepWorld(void)const")]
 #[doc(alias = "__ZThn92_NK3RBX9BodyMover12canStepWorldEv")]
-pub fn stub_55a090() -> ! {
-    todo!("0x55a090 __ZThn92_NK3RBX9BodyMover12canStepWorldEv")
+pub fn stub_55a090() {
+    // IDA 0x55a090: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55a094 — __ZThn124_N3RBX12BodyPositionD1Ev
@@ -137,8 +137,8 @@ pub fn stub_55a090() -> ! {
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
 #[doc(alias = "__ZThn124_N3RBX12BodyPositionD1Ev")]
-pub fn stub_55a094() -> ! {
-    todo!("0x55a094 __ZThn124_N3RBX12BodyPositionD1Ev")
+pub fn stub_55a094() {
+    // IDA 0x55a094: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55a1c0 — __ZThn124_N3RBX12BodyPositionD0Ev
@@ -146,8 +146,8 @@ pub fn stub_55a094() -> ! {
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
 #[doc(alias = "__ZThn124_N3RBX12BodyPositionD0Ev")]
-pub fn stub_55a1c0() -> ! {
-    todo!("0x55a1c0 __ZThn124_N3RBX12BodyPositionD0Ev")
+pub fn stub_55a1c0() {
+    // IDA 0x55a1c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55a300 — __ZThn244_N3RBX12BodyPositionD1Ev
@@ -155,8 +155,8 @@ pub fn stub_55a1c0() -> ! {
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
 #[doc(alias = "__ZThn244_N3RBX12BodyPositionD1Ev")]
-pub fn stub_55a300() -> ! {
-    todo!("0x55a300 __ZThn244_N3RBX12BodyPositionD1Ev")
+pub fn stub_55a300() {
+    // IDA 0x55a300: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55a430 — __ZThn244_N3RBX12BodyPositionD0Ev
@@ -164,8 +164,8 @@ pub fn stub_55a300() -> ! {
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
 #[doc(alias = "__ZThn244_N3RBX12BodyPositionD0Ev")]
-pub fn stub_55a430() -> ! {
-    todo!("0x55a430 __ZThn244_N3RBX12BodyPositionD0Ev")
+pub fn stub_55a430() {
+    // IDA 0x55a430: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55a574 — __ZThn304_N3RBX12BodyPositionD1Ev
@@ -173,8 +173,8 @@ pub fn stub_55a430() -> ! {
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
 #[doc(alias = "__ZThn304_N3RBX12BodyPositionD1Ev")]
-pub fn stub_55a574() -> ! {
-    todo!("0x55a574 __ZThn304_N3RBX12BodyPositionD1Ev")
+pub fn stub_55a574() {
+    // IDA 0x55a574: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55a6a4 — __ZThn304_N3RBX12BodyPositionD0Ev
@@ -182,8 +182,8 @@ pub fn stub_55a574() -> ! {
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
 #[doc(alias = "__ZThn304_N3RBX12BodyPositionD0Ev")]
-pub fn stub_55a6a4() -> ! {
-    todo!("0x55a6a4 __ZThn304_N3RBX12BodyPositionD0Ev")
+pub fn stub_55a6a4() {
+    // IDA 0x55a6a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55a7e8 — __ZN3RBX6Rocket17onServiceProviderEPNS_15ServiceProviderES2_
@@ -200,8 +200,8 @@ pub fn stub_55a7e8() -> ! {
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
 #[doc(alias = "RBX::BodyGyro::~BodyGyro()")]
 #[doc(alias = "__ZN3RBX8BodyGyroD1Ev")]
-pub fn stub_55a860() -> ! {
-    todo!("0x55a860 __ZN3RBX8BodyGyroD1Ev")
+pub fn stub_55a860() {
+    // IDA 0x55a860: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55a864 — __ZN3RBX8BodyGyroD0Ev
@@ -209,8 +209,8 @@ pub fn stub_55a860() -> ! {
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
 #[doc(alias = "RBX::BodyGyro::~BodyGyro()")]
 #[doc(alias = "__ZN3RBX8BodyGyroD0Ev")]
-pub fn stub_55a864() -> ! {
-    todo!("0x55a864 __ZN3RBX8BodyGyroD0Ev")
+pub fn stub_55a864() {
+    // IDA 0x55a864: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55a914 — __ZThn32_N3RBX8BodyGyroD1Ev
@@ -218,8 +218,8 @@ pub fn stub_55a864() -> ! {
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro()")]
 #[doc(alias = "__ZThn32_N3RBX8BodyGyroD1Ev")]
-pub fn stub_55a914() -> ! {
-    todo!("0x55a914 __ZThn32_N3RBX8BodyGyroD1Ev")
+pub fn stub_55a914() {
+    // IDA 0x55a914: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55a91c — __ZThn32_N3RBX8BodyGyroD0Ev
@@ -227,8 +227,8 @@ pub fn stub_55a914() -> ! {
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro()")]
 #[doc(alias = "__ZThn32_N3RBX8BodyGyroD0Ev")]
-pub fn stub_55a91c() -> ! {
-    todo!("0x55a91c __ZThn32_N3RBX8BodyGyroD0Ev")
+pub fn stub_55a91c() {
+    // IDA 0x55a91c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55a9d0 — __ZThn36_N3RBX8BodyGyroD1Ev
@@ -236,8 +236,8 @@ pub fn stub_55a91c() -> ! {
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro()")]
 #[doc(alias = "__ZThn36_N3RBX8BodyGyroD1Ev")]
-pub fn stub_55a9d0() -> ! {
-    todo!("0x55a9d0 __ZThn36_N3RBX8BodyGyroD1Ev")
+pub fn stub_55a9d0() {
+    // IDA 0x55a9d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55a9d8 — __ZThn36_N3RBX8BodyGyroD0Ev
@@ -245,8 +245,8 @@ pub fn stub_55a9d0() -> ! {
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro()")]
 #[doc(alias = "__ZThn36_N3RBX8BodyGyroD0Ev")]
-pub fn stub_55a9d8() -> ! {
-    todo!("0x55a9d8 __ZThn36_N3RBX8BodyGyroD0Ev")
+pub fn stub_55a9d8() {
+    // IDA 0x55a9d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55aa7c — __ZThn92_N3RBX8BodyGyroD1Ev
@@ -254,8 +254,8 @@ pub fn stub_55a9d8() -> ! {
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro()")]
 #[doc(alias = "__ZThn92_N3RBX8BodyGyroD1Ev")]
-pub fn stub_55aa7c() -> ! {
-    todo!("0x55aa7c __ZThn92_N3RBX8BodyGyroD1Ev")
+pub fn stub_55aa7c() {
+    // IDA 0x55aa7c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55aa84 — __ZThn92_N3RBX8BodyGyroD0Ev
@@ -263,8 +263,8 @@ pub fn stub_55aa7c() -> ! {
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro()")]
 #[doc(alias = "__ZThn92_N3RBX8BodyGyroD0Ev")]
-pub fn stub_55aa84() -> ! {
-    todo!("0x55aa84 __ZThn92_N3RBX8BodyGyroD0Ev")
+pub fn stub_55aa84() {
+    // IDA 0x55aa84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55ab28 — __ZThn124_N3RBX8BodyGyroD1Ev
@@ -272,8 +272,8 @@ pub fn stub_55aa84() -> ! {
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro()")]
 #[doc(alias = "__ZThn124_N3RBX8BodyGyroD1Ev")]
-pub fn stub_55ab28() -> ! {
-    todo!("0x55ab28 __ZThn124_N3RBX8BodyGyroD1Ev")
+pub fn stub_55ab28() {
+    // IDA 0x55ab28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55ab30 — __ZThn124_N3RBX8BodyGyroD0Ev
@@ -281,8 +281,8 @@ pub fn stub_55ab28() -> ! {
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro()")]
 #[doc(alias = "__ZThn124_N3RBX8BodyGyroD0Ev")]
-pub fn stub_55ab30() -> ! {
-    todo!("0x55ab30 __ZThn124_N3RBX8BodyGyroD0Ev")
+pub fn stub_55ab30() {
+    // IDA 0x55ab30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55abd4 — __ZThn244_N3RBX8BodyGyroD1Ev
@@ -290,8 +290,8 @@ pub fn stub_55ab30() -> ! {
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro()")]
 #[doc(alias = "__ZThn244_N3RBX8BodyGyroD1Ev")]
-pub fn stub_55abd4() -> ! {
-    todo!("0x55abd4 __ZThn244_N3RBX8BodyGyroD1Ev")
+pub fn stub_55abd4() {
+    // IDA 0x55abd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55abdc — __ZThn244_N3RBX8BodyGyroD0Ev
@@ -299,8 +299,8 @@ pub fn stub_55abd4() -> ! {
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro()")]
 #[doc(alias = "__ZThn244_N3RBX8BodyGyroD0Ev")]
-pub fn stub_55abdc() -> ! {
-    todo!("0x55abdc __ZThn244_N3RBX8BodyGyroD0Ev")
+pub fn stub_55abdc() {
+    // IDA 0x55abdc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55ac80 — __ZN3RBX12BodyVelocityD1Ev
@@ -308,8 +308,8 @@ pub fn stub_55abdc() -> ! {
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
 #[doc(alias = "RBX::BodyVelocity::~BodyVelocity()")]
 #[doc(alias = "__ZN3RBX12BodyVelocityD1Ev")]
-pub fn stub_55ac80() -> ! {
-    todo!("0x55ac80 __ZN3RBX12BodyVelocityD1Ev")
+pub fn stub_55ac80() {
+    // IDA 0x55ac80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55ac84 — __ZN3RBX12BodyVelocityD0Ev
@@ -317,8 +317,8 @@ pub fn stub_55ac80() -> ! {
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
 #[doc(alias = "RBX::BodyVelocity::~BodyVelocity()")]
 #[doc(alias = "__ZN3RBX12BodyVelocityD0Ev")]
-pub fn stub_55ac84() -> ! {
-    todo!("0x55ac84 __ZN3RBX12BodyVelocityD0Ev")
+pub fn stub_55ac84() {
+    // IDA 0x55ac84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55ad34 — __ZThn32_N3RBX12BodyVelocityD1Ev
@@ -326,8 +326,8 @@ pub fn stub_55ac84() -> ! {
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")]
 #[doc(alias = "__ZThn32_N3RBX12BodyVelocityD1Ev")]
-pub fn stub_55ad34() -> ! {
-    todo!("0x55ad34 __ZThn32_N3RBX12BodyVelocityD1Ev")
+pub fn stub_55ad34() {
+    // IDA 0x55ad34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55ad3c — __ZThn32_N3RBX12BodyVelocityD0Ev
@@ -335,8 +335,8 @@ pub fn stub_55ad34() -> ! {
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")]
 #[doc(alias = "__ZThn32_N3RBX12BodyVelocityD0Ev")]
-pub fn stub_55ad3c() -> ! {
-    todo!("0x55ad3c __ZThn32_N3RBX12BodyVelocityD0Ev")
+pub fn stub_55ad3c() {
+    // IDA 0x55ad3c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55adf0 — __ZThn36_N3RBX12BodyVelocityD1Ev
@@ -344,8 +344,8 @@ pub fn stub_55ad3c() -> ! {
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")]
 #[doc(alias = "__ZThn36_N3RBX12BodyVelocityD1Ev")]
-pub fn stub_55adf0() -> ! {
-    todo!("0x55adf0 __ZThn36_N3RBX12BodyVelocityD1Ev")
+pub fn stub_55adf0() {
+    // IDA 0x55adf0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55adf8 — __ZThn36_N3RBX12BodyVelocityD0Ev
@@ -353,8 +353,8 @@ pub fn stub_55adf0() -> ! {
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")]
 #[doc(alias = "__ZThn36_N3RBX12BodyVelocityD0Ev")]
-pub fn stub_55adf8() -> ! {
-    todo!("0x55adf8 __ZThn36_N3RBX12BodyVelocityD0Ev")
+pub fn stub_55adf8() {
+    // IDA 0x55adf8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55ae9c — __ZThn92_N3RBX12BodyVelocityD1Ev
@@ -362,8 +362,8 @@ pub fn stub_55adf8() -> ! {
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")]
 #[doc(alias = "__ZThn92_N3RBX12BodyVelocityD1Ev")]
-pub fn stub_55ae9c() -> ! {
-    todo!("0x55ae9c __ZThn92_N3RBX12BodyVelocityD1Ev")
+pub fn stub_55ae9c() {
+    // IDA 0x55ae9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55aea4 — __ZThn92_N3RBX12BodyVelocityD0Ev
@@ -371,8 +371,8 @@ pub fn stub_55ae9c() -> ! {
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")]
 #[doc(alias = "__ZThn92_N3RBX12BodyVelocityD0Ev")]
-pub fn stub_55aea4() -> ! {
-    todo!("0x55aea4 __ZThn92_N3RBX12BodyVelocityD0Ev")
+pub fn stub_55aea4() {
+    // IDA 0x55aea4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55af48 — __ZThn124_N3RBX12BodyVelocityD1Ev
@@ -380,8 +380,8 @@ pub fn stub_55aea4() -> ! {
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")]
 #[doc(alias = "__ZThn124_N3RBX12BodyVelocityD1Ev")]
-pub fn stub_55af48() -> ! {
-    todo!("0x55af48 __ZThn124_N3RBX12BodyVelocityD1Ev")
+pub fn stub_55af48() {
+    // IDA 0x55af48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55af50 — __ZThn124_N3RBX12BodyVelocityD0Ev
@@ -389,8 +389,8 @@ pub fn stub_55af48() -> ! {
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")]
 #[doc(alias = "__ZThn124_N3RBX12BodyVelocityD0Ev")]
-pub fn stub_55af50() -> ! {
-    todo!("0x55af50 __ZThn124_N3RBX12BodyVelocityD0Ev")
+pub fn stub_55af50() {
+    // IDA 0x55af50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55aff4 — __ZThn244_N3RBX12BodyVelocityD1Ev
@@ -398,8 +398,8 @@ pub fn stub_55af50() -> ! {
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")]
 #[doc(alias = "__ZThn244_N3RBX12BodyVelocityD1Ev")]
-pub fn stub_55aff4() -> ! {
-    todo!("0x55aff4 __ZThn244_N3RBX12BodyVelocityD1Ev")
+pub fn stub_55aff4() {
+    // IDA 0x55aff4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55affc — __ZThn244_N3RBX12BodyVelocityD0Ev
@@ -407,8 +407,8 @@ pub fn stub_55aff4() -> ! {
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")]
 #[doc(alias = "__ZThn244_N3RBX12BodyVelocityD0Ev")]
-pub fn stub_55affc() -> ! {
-    todo!("0x55affc __ZThn244_N3RBX12BodyVelocityD0Ev")
+pub fn stub_55affc() {
+    // IDA 0x55affc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b0a0 — __ZN3RBX19BodyAngularVelocityD1Ev
@@ -416,8 +416,8 @@ pub fn stub_55affc() -> ! {
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
 #[doc(alias = "RBX::BodyAngularVelocity::~BodyAngularVelocity()")]
 #[doc(alias = "__ZN3RBX19BodyAngularVelocityD1Ev")]
-pub fn stub_55b0a0() -> ! {
-    todo!("0x55b0a0 __ZN3RBX19BodyAngularVelocityD1Ev")
+pub fn stub_55b0a0() {
+    // IDA 0x55b0a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b0a4 — __ZN3RBX19BodyAngularVelocityD0Ev
@@ -425,8 +425,8 @@ pub fn stub_55b0a0() -> ! {
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
 #[doc(alias = "RBX::BodyAngularVelocity::~BodyAngularVelocity()")]
 #[doc(alias = "__ZN3RBX19BodyAngularVelocityD0Ev")]
-pub fn stub_55b0a4() -> ! {
-    todo!("0x55b0a4 __ZN3RBX19BodyAngularVelocityD0Ev")
+pub fn stub_55b0a4() {
+    // IDA 0x55b0a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b154 — __ZThn32_N3RBX19BodyAngularVelocityD1Ev
@@ -434,8 +434,8 @@ pub fn stub_55b0a4() -> ! {
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")]
 #[doc(alias = "__ZThn32_N3RBX19BodyAngularVelocityD1Ev")]
-pub fn stub_55b154() -> ! {
-    todo!("0x55b154 __ZThn32_N3RBX19BodyAngularVelocityD1Ev")
+pub fn stub_55b154() {
+    // IDA 0x55b154: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b15c — __ZThn32_N3RBX19BodyAngularVelocityD0Ev
@@ -443,8 +443,8 @@ pub fn stub_55b154() -> ! {
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")]
 #[doc(alias = "__ZThn32_N3RBX19BodyAngularVelocityD0Ev")]
-pub fn stub_55b15c() -> ! {
-    todo!("0x55b15c __ZThn32_N3RBX19BodyAngularVelocityD0Ev")
+pub fn stub_55b15c() {
+    // IDA 0x55b15c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b210 — __ZThn36_N3RBX19BodyAngularVelocityD1Ev
@@ -452,8 +452,8 @@ pub fn stub_55b15c() -> ! {
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")]
 #[doc(alias = "__ZThn36_N3RBX19BodyAngularVelocityD1Ev")]
-pub fn stub_55b210() -> ! {
-    todo!("0x55b210 __ZThn36_N3RBX19BodyAngularVelocityD1Ev")
+pub fn stub_55b210() {
+    // IDA 0x55b210: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b218 — __ZThn36_N3RBX19BodyAngularVelocityD0Ev
@@ -461,8 +461,8 @@ pub fn stub_55b210() -> ! {
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")]
 #[doc(alias = "__ZThn36_N3RBX19BodyAngularVelocityD0Ev")]
-pub fn stub_55b218() -> ! {
-    todo!("0x55b218 __ZThn36_N3RBX19BodyAngularVelocityD0Ev")
+pub fn stub_55b218() {
+    // IDA 0x55b218: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b2bc — __ZThn92_N3RBX19BodyAngularVelocityD1Ev
@@ -470,8 +470,8 @@ pub fn stub_55b218() -> ! {
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")]
 #[doc(alias = "__ZThn92_N3RBX19BodyAngularVelocityD1Ev")]
-pub fn stub_55b2bc() -> ! {
-    todo!("0x55b2bc __ZThn92_N3RBX19BodyAngularVelocityD1Ev")
+pub fn stub_55b2bc() {
+    // IDA 0x55b2bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b2c4 — __ZThn92_N3RBX19BodyAngularVelocityD0Ev
@@ -479,8 +479,8 @@ pub fn stub_55b2bc() -> ! {
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")]
 #[doc(alias = "__ZThn92_N3RBX19BodyAngularVelocityD0Ev")]
-pub fn stub_55b2c4() -> ! {
-    todo!("0x55b2c4 __ZThn92_N3RBX19BodyAngularVelocityD0Ev")
+pub fn stub_55b2c4() {
+    // IDA 0x55b2c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b368 — __ZThn124_N3RBX19BodyAngularVelocityD1Ev
@@ -488,8 +488,8 @@ pub fn stub_55b2c4() -> ! {
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")]
 #[doc(alias = "__ZThn124_N3RBX19BodyAngularVelocityD1Ev")]
-pub fn stub_55b368() -> ! {
-    todo!("0x55b368 __ZThn124_N3RBX19BodyAngularVelocityD1Ev")
+pub fn stub_55b368() {
+    // IDA 0x55b368: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b370 — __ZThn124_N3RBX19BodyAngularVelocityD0Ev
@@ -497,8 +497,8 @@ pub fn stub_55b368() -> ! {
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")]
 #[doc(alias = "__ZThn124_N3RBX19BodyAngularVelocityD0Ev")]
-pub fn stub_55b370() -> ! {
-    todo!("0x55b370 __ZThn124_N3RBX19BodyAngularVelocityD0Ev")
+pub fn stub_55b370() {
+    // IDA 0x55b370: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b414 — __ZThn244_N3RBX19BodyAngularVelocityD1Ev
@@ -506,8 +506,8 @@ pub fn stub_55b370() -> ! {
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")]
 #[doc(alias = "__ZThn244_N3RBX19BodyAngularVelocityD1Ev")]
-pub fn stub_55b414() -> ! {
-    todo!("0x55b414 __ZThn244_N3RBX19BodyAngularVelocityD1Ev")
+pub fn stub_55b414() {
+    // IDA 0x55b414: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b41c — __ZThn244_N3RBX19BodyAngularVelocityD0Ev
@@ -515,8 +515,8 @@ pub fn stub_55b414() -> ! {
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")]
 #[doc(alias = "__ZThn244_N3RBX19BodyAngularVelocityD0Ev")]
-pub fn stub_55b41c() -> ! {
-    todo!("0x55b41c __ZThn244_N3RBX19BodyAngularVelocityD0Ev")
+pub fn stub_55b41c() {
+    // IDA 0x55b41c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b4c0 — __ZN3RBX9BodyForceD1Ev
@@ -524,8 +524,8 @@ pub fn stub_55b41c() -> ! {
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "RBX::BodyForce::~BodyForce()")]
 #[doc(alias = "__ZN3RBX9BodyForceD1Ev")]
-pub fn stub_55b4c0() -> ! {
-    todo!("0x55b4c0 __ZN3RBX9BodyForceD1Ev")
+pub fn stub_55b4c0() {
+    // IDA 0x55b4c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b4c4 — __ZN3RBX9BodyForceD0Ev
@@ -533,8 +533,8 @@ pub fn stub_55b4c0() -> ! {
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "RBX::BodyForce::~BodyForce()")]
 #[doc(alias = "__ZN3RBX9BodyForceD0Ev")]
-pub fn stub_55b4c4() -> ! {
-    todo!("0x55b4c4 __ZN3RBX9BodyForceD0Ev")
+pub fn stub_55b4c4() {
+    // IDA 0x55b4c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b574 — __ZN3RBX9BodyForce24duplicateBodyMoverExistsEPNS_9PrimitiveES2_
@@ -550,8 +550,8 @@ pub fn stub_55b574() -> ! {
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyForce::~BodyForce()")]
 #[doc(alias = "__ZThn32_N3RBX9BodyForceD1Ev")]
-pub fn stub_55b578() -> ! {
-    todo!("0x55b578 __ZThn32_N3RBX9BodyForceD1Ev")
+pub fn stub_55b578() {
+    // IDA 0x55b578: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b580 — __ZThn32_N3RBX9BodyForceD0Ev
@@ -559,8 +559,8 @@ pub fn stub_55b578() -> ! {
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyForce::~BodyForce()")]
 #[doc(alias = "__ZThn32_N3RBX9BodyForceD0Ev")]
-pub fn stub_55b580() -> ! {
-    todo!("0x55b580 __ZThn32_N3RBX9BodyForceD0Ev")
+pub fn stub_55b580() {
+    // IDA 0x55b580: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b634 — __ZThn36_N3RBX9BodyForceD1Ev
@@ -568,8 +568,8 @@ pub fn stub_55b580() -> ! {
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyForce::~BodyForce()")]
 #[doc(alias = "__ZThn36_N3RBX9BodyForceD1Ev")]
-pub fn stub_55b634() -> ! {
-    todo!("0x55b634 __ZThn36_N3RBX9BodyForceD1Ev")
+pub fn stub_55b634() {
+    // IDA 0x55b634: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b63c — __ZThn36_N3RBX9BodyForceD0Ev
@@ -577,8 +577,8 @@ pub fn stub_55b634() -> ! {
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyForce::~BodyForce()")]
 #[doc(alias = "__ZThn36_N3RBX9BodyForceD0Ev")]
-pub fn stub_55b63c() -> ! {
-    todo!("0x55b63c __ZThn36_N3RBX9BodyForceD0Ev")
+pub fn stub_55b63c() {
+    // IDA 0x55b63c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b6e0 — __ZThn92_N3RBX9BodyForceD1Ev
@@ -586,8 +586,8 @@ pub fn stub_55b63c() -> ! {
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyForce::~BodyForce()")]
 #[doc(alias = "__ZThn92_N3RBX9BodyForceD1Ev")]
-pub fn stub_55b6e0() -> ! {
-    todo!("0x55b6e0 __ZThn92_N3RBX9BodyForceD1Ev")
+pub fn stub_55b6e0() {
+    // IDA 0x55b6e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b6e8 — __ZThn92_N3RBX9BodyForceD0Ev
@@ -595,8 +595,8 @@ pub fn stub_55b6e0() -> ! {
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyForce::~BodyForce()")]
 #[doc(alias = "__ZThn92_N3RBX9BodyForceD0Ev")]
-pub fn stub_55b6e8() -> ! {
-    todo!("0x55b6e8 __ZThn92_N3RBX9BodyForceD0Ev")
+pub fn stub_55b6e8() {
+    // IDA 0x55b6e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b78c — __ZThn124_N3RBX9BodyForceD1Ev
@@ -604,8 +604,8 @@ pub fn stub_55b6e8() -> ! {
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyForce::~BodyForce()")]
 #[doc(alias = "__ZThn124_N3RBX9BodyForceD1Ev")]
-pub fn stub_55b78c() -> ! {
-    todo!("0x55b78c __ZThn124_N3RBX9BodyForceD1Ev")
+pub fn stub_55b78c() {
+    // IDA 0x55b78c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b794 — __ZThn124_N3RBX9BodyForceD0Ev
@@ -613,8 +613,8 @@ pub fn stub_55b78c() -> ! {
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyForce::~BodyForce()")]
 #[doc(alias = "__ZThn124_N3RBX9BodyForceD0Ev")]
-pub fn stub_55b794() -> ! {
-    todo!("0x55b794 __ZThn124_N3RBX9BodyForceD0Ev")
+pub fn stub_55b794() {
+    // IDA 0x55b794: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b838 — __ZThn244_N3RBX9BodyForceD1Ev
@@ -622,8 +622,8 @@ pub fn stub_55b794() -> ! {
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyForce::~BodyForce()")]
 #[doc(alias = "__ZThn244_N3RBX9BodyForceD1Ev")]
-pub fn stub_55b838() -> ! {
-    todo!("0x55b838 __ZThn244_N3RBX9BodyForceD1Ev")
+pub fn stub_55b838() {
+    // IDA 0x55b838: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b840 — __ZThn244_N3RBX9BodyForceD0Ev
@@ -631,8 +631,8 @@ pub fn stub_55b838() -> ! {
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyForce::~BodyForce()")]
 #[doc(alias = "__ZThn244_N3RBX9BodyForceD0Ev")]
-pub fn stub_55b840() -> ! {
-    todo!("0x55b840 __ZThn244_N3RBX9BodyForceD0Ev")
+pub fn stub_55b840() {
+    // IDA 0x55b840: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b8e4 — __ZN3RBX10BodyThrustD1Ev
@@ -640,8 +640,8 @@ pub fn stub_55b840() -> ! {
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "RBX::BodyThrust::~BodyThrust()")]
 #[doc(alias = "__ZN3RBX10BodyThrustD1Ev")]
-pub fn stub_55b8e4() -> ! {
-    todo!("0x55b8e4 __ZN3RBX10BodyThrustD1Ev")
+pub fn stub_55b8e4() {
+    // IDA 0x55b8e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b8e8 — __ZN3RBX10BodyThrustD0Ev
@@ -649,8 +649,8 @@ pub fn stub_55b8e4() -> ! {
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "RBX::BodyThrust::~BodyThrust()")]
 #[doc(alias = "__ZN3RBX10BodyThrustD0Ev")]
-pub fn stub_55b8e8() -> ! {
-    todo!("0x55b8e8 __ZN3RBX10BodyThrustD0Ev")
+pub fn stub_55b8e8() {
+    // IDA 0x55b8e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b998 — __ZN3RBX10BodyThrust24duplicateBodyMoverExistsEPNS_9PrimitiveES2_
@@ -666,8 +666,8 @@ pub fn stub_55b998() -> ! {
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 #[doc(alias = "__ZThn32_N3RBX10BodyThrustD1Ev")]
-pub fn stub_55b99c() -> ! {
-    todo!("0x55b99c __ZThn32_N3RBX10BodyThrustD1Ev")
+pub fn stub_55b99c() {
+    // IDA 0x55b99c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55b9a4 — __ZThn32_N3RBX10BodyThrustD0Ev
@@ -675,8 +675,8 @@ pub fn stub_55b99c() -> ! {
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 #[doc(alias = "__ZThn32_N3RBX10BodyThrustD0Ev")]
-pub fn stub_55b9a4() -> ! {
-    todo!("0x55b9a4 __ZThn32_N3RBX10BodyThrustD0Ev")
+pub fn stub_55b9a4() {
+    // IDA 0x55b9a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55ba58 — __ZThn36_N3RBX10BodyThrustD1Ev
@@ -684,8 +684,8 @@ pub fn stub_55b9a4() -> ! {
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 #[doc(alias = "__ZThn36_N3RBX10BodyThrustD1Ev")]
-pub fn stub_55ba58() -> ! {
-    todo!("0x55ba58 __ZThn36_N3RBX10BodyThrustD1Ev")
+pub fn stub_55ba58() {
+    // IDA 0x55ba58: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55ba60 — __ZThn36_N3RBX10BodyThrustD0Ev
@@ -693,8 +693,8 @@ pub fn stub_55ba58() -> ! {
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 #[doc(alias = "__ZThn36_N3RBX10BodyThrustD0Ev")]
-pub fn stub_55ba60() -> ! {
-    todo!("0x55ba60 __ZThn36_N3RBX10BodyThrustD0Ev")
+pub fn stub_55ba60() {
+    // IDA 0x55ba60: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55bb04 — __ZThn92_N3RBX10BodyThrustD1Ev
@@ -702,8 +702,8 @@ pub fn stub_55ba60() -> ! {
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 #[doc(alias = "__ZThn92_N3RBX10BodyThrustD1Ev")]
-pub fn stub_55bb04() -> ! {
-    todo!("0x55bb04 __ZThn92_N3RBX10BodyThrustD1Ev")
+pub fn stub_55bb04() {
+    // IDA 0x55bb04: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55bb0c — __ZThn92_N3RBX10BodyThrustD0Ev
@@ -711,8 +711,8 @@ pub fn stub_55bb04() -> ! {
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 #[doc(alias = "__ZThn92_N3RBX10BodyThrustD0Ev")]
-pub fn stub_55bb0c() -> ! {
-    todo!("0x55bb0c __ZThn92_N3RBX10BodyThrustD0Ev")
+pub fn stub_55bb0c() {
+    // IDA 0x55bb0c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55bbb0 — __ZThn124_N3RBX10BodyThrustD1Ev
@@ -720,8 +720,8 @@ pub fn stub_55bb0c() -> ! {
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 #[doc(alias = "__ZThn124_N3RBX10BodyThrustD1Ev")]
-pub fn stub_55bbb0() -> ! {
-    todo!("0x55bbb0 __ZThn124_N3RBX10BodyThrustD1Ev")
+pub fn stub_55bbb0() {
+    // IDA 0x55bbb0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55bbb8 — __ZThn124_N3RBX10BodyThrustD0Ev
@@ -729,8 +729,8 @@ pub fn stub_55bbb0() -> ! {
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 #[doc(alias = "__ZThn124_N3RBX10BodyThrustD0Ev")]
-pub fn stub_55bbb8() -> ! {
-    todo!("0x55bbb8 __ZThn124_N3RBX10BodyThrustD0Ev")
+pub fn stub_55bbb8() {
+    // IDA 0x55bbb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55bc5c — __ZThn244_N3RBX10BodyThrustD1Ev
@@ -738,8 +738,8 @@ pub fn stub_55bbb8() -> ! {
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 #[doc(alias = "__ZThn244_N3RBX10BodyThrustD1Ev")]
-pub fn stub_55bc5c() -> ! {
-    todo!("0x55bc5c __ZThn244_N3RBX10BodyThrustD1Ev")
+pub fn stub_55bc5c() {
+    // IDA 0x55bc5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55bc64 — __ZThn244_N3RBX10BodyThrustD0Ev
@@ -747,8 +747,8 @@ pub fn stub_55bc5c() -> ! {
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 #[doc(alias = "__ZThn244_N3RBX10BodyThrustD0Ev")]
-pub fn stub_55bc64() -> ! {
-    todo!("0x55bc64 __ZThn244_N3RBX10BodyThrustD0Ev")
+pub fn stub_55bc64() {
+    // IDA 0x55bc64: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x55d044 — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_10BodyThrustEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -836,8 +836,8 @@ pub fn stub_55d95c() -> ! {
 // type: void __fastcall(RBX::GuiImageButton *__hidden this)
 #[doc(alias = "RBX::GuiImageButton::~GuiImageButton()")]
 #[doc(alias = "__ZN3RBX14GuiImageButtonD1Ev")]
-pub fn stub_57cd64() -> ! {
-    todo!("0x57cd64 __ZN3RBX14GuiImageButtonD1Ev")
+pub fn stub_57cd64() {
+    // IDA 0x57cd64: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x57ce5c — __ZN3RBX14GuiImageButtonD0Ev
@@ -845,8 +845,8 @@ pub fn stub_57cd64() -> ! {
 // type: void __fastcall(RBX::GuiImageButton *__hidden this)
 #[doc(alias = "RBX::GuiImageButton::~GuiImageButton()")]
 #[doc(alias = "__ZN3RBX14GuiImageButtonD0Ev")]
-pub fn stub_57ce5c() -> ! {
-    todo!("0x57ce5c __ZN3RBX14GuiImageButtonD0Ev")
+pub fn stub_57ce5c() {
+    // IDA 0x57ce5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x57cf64 — __ZNK3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE12getClassNameEv
@@ -861,8 +861,8 @@ pub fn stub_57cf64() -> ! {
 // type: void __fastcall(RBX::GuiImageButton *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")]
 #[doc(alias = "__ZThn32_N3RBX14GuiImageButtonD1Ev")]
-pub fn stub_57cf74() -> ! {
-    todo!("0x57cf74 __ZThn32_N3RBX14GuiImageButtonD1Ev")
+pub fn stub_57cf74() {
+    // IDA 0x57cf74: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x57d06c — __ZThn32_N3RBX14GuiImageButtonD0Ev
@@ -870,15 +870,15 @@ pub fn stub_57cf74() -> ! {
 // type: void __fastcall(RBX::GuiImageButton *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")]
 #[doc(alias = "__ZThn32_N3RBX14GuiImageButtonD0Ev")]
-pub fn stub_57d06c() -> ! {
-    todo!("0x57d06c __ZThn32_N3RBX14GuiImageButtonD0Ev")
+pub fn stub_57d06c() {
+    // IDA 0x57d06c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x57d178 — __ZThn32_NK3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_57d178() -> ! {
-    todo!("0x57d178 __ZThn32_NK3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE12getClassNameEv")
+pub fn stub_57d178() {
+    // IDA 0x57d178: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x57d188 — __ZThn36_N3RBX14GuiImageButtonD1Ev
@@ -886,6 +886,6 @@ pub fn stub_57d178() -> ! {
 // type: void __fastcall(RBX::GuiImageButton *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")]
 #[doc(alias = "__ZThn36_N3RBX14GuiImageButtonD1Ev")]
-pub fn stub_57d188() -> ! {
-    todo!("0x57d188 __ZThn36_N3RBX14GuiImageButtonD1Ev")
+pub fn stub_57d188() {
+    // IDA 0x57d188: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

@@ -91,43 +91,43 @@ pub fn stub_f2fe44() -> ! {
 // 0xf2fea4 — j___ZN3RBX9weak_fromINS_25ScriptInformationProviderEEEN5boost8weak_ptrIT_EEPS4_
 #[doc(alias = "boost::weak_ptr<RBX::ScriptInformationProvider> RBX::weak_from<RBX::ScriptInformationProvider>(RBX::ScriptInformationProvider*)")]
 #[doc(alias = "j___ZN3RBX9weak_fromINS_25ScriptInformationProviderEEEN5boost8weak_ptrIT_EEPS4_")]
-pub fn stub_f2fea4() -> ! {
-    todo!("0xf2fea4 j___ZN3RBX9weak_fromINS_25ScriptInformationProviderEEEN5boost8weak_ptrIT_EEPS4_")
+pub fn stub_f2fea4() {
+    // IDA 0xf2fea4 (jump thunk to _ZN3RBX9weak_fromINS_25ScriptInformationProviderEEEN5boost8weak_ptrIT_EEPS4_): weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 // 0xf2fed4 — j___ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEC2ES7_S9_SA_SF_
 #[doc(alias = "boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>::list4(boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>)")]
 #[doc(alias = "j___ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEC2ES7_S9_SA_SF_")]
-pub fn stub_f2fed4() -> ! {
-    todo!("0xf2fed4 j___ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEC2ES7_S9_SA_SF_")
+pub fn stub_f2fed4() {
+    // IDA 0xf2fed4 (jump thunk to _ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEC2ES7_S9_SA_SF_): weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 // 0xf2fef4 — j___ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEEEC2ES7_S9_
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>)")]
 #[doc(alias = "j___ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEEEC2ES7_S9_")]
-pub fn stub_f2fef4() -> ! {
-    todo!("0xf2fef4 j___ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEEEC2ES7_S9_")
+pub fn stub_f2fef4() {
+    // IDA 0xf2fef4 (jump thunk to _ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEEEC2ES7_S9_): weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 // 0xf2ff04 — j___ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEEEC2ES7_S9_SA_
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>)")]
 #[doc(alias = "j___ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEEEC2ES7_S9_SA_")]
-pub fn stub_f2ff04() -> ! {
-    todo!("0xf2ff04 j___ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEEEC2ES7_S9_SA_")
+pub fn stub_f2ff04() {
+    // IDA 0xf2ff04 (jump thunk to _ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEEEC2ES7_S9_SA_): weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 // 0xf2ff14 — j___ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEC2ERKSG_
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>::storage4(boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>> const&)")]
 #[doc(alias = "j___ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEC2ERKSG_")]
-pub fn stub_f2ff14() -> ! {
-    todo!("0xf2ff14 j___ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEC2ERKSG_")
+pub fn stub_f2ff14() {
+    // IDA 0xf2ff14 (jump thunk to _ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEC2ERKSG_): weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 // 0xf2ff24 — j___ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEC2ES7_S9_SA_SF_
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>::storage4(boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>)")]
 #[doc(alias = "j___ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEC2ES7_S9_SA_SF_")]
-pub fn stub_f2ff24() -> ! {
-    todo!("0xf2ff24 j___ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEC2ES7_S9_SA_SF_")
+pub fn stub_f2ff24() {
+    // IDA 0xf2ff24 (jump thunk to _ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEC2ES7_S9_SA_SF_): weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 // 0xf30554 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_5Stats14TypedStatsItemIiEEPKiEEN5boost10shared_ptrIT_EET0_
@@ -182,36 +182,36 @@ pub fn stub_f311c4() -> ! {
 // 0xf311d4 — j___ZN5boost10shared_ptrIN3RBX12AccoutrementEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "boost::shared_ptr<RBX::Accoutrement>::shared_ptr<RBX::Accoutrement,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Accoutrement *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "j___ZN5boost10shared_ptrIN3RBX12AccoutrementEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_f311d4() -> ! {
-    todo!("0xf311d4 j___ZN5boost10shared_ptrIN3RBX12AccoutrementEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+pub fn stub_f311d4() {
+    // IDA 0xf311d4 (jump thunk to __ZN5boost10shared_ptrIN3RBX12AccoutrementEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf311e4 — j___ZN5boost10shared_ptrIN3RBX3HatEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "boost::shared_ptr<RBX::Hat>::shared_ptr<RBX::Hat,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Hat *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "j___ZN5boost10shared_ptrIN3RBX3HatEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_f311e4() -> ! {
-    todo!("0xf311e4 j___ZN5boost10shared_ptrIN3RBX3HatEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+pub fn stub_f311e4() {
+    // IDA 0xf311e4 (jump thunk to __ZN5boost10shared_ptrIN3RBX3HatEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf311f4 — j___ZN5boost3_bi5list2INS0_5valueIPN3RBX12AccoutrementEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<RBX::Accoutrement *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&> &,int)")]
 #[doc(alias = "j___ZN5boost3_bi5list2INS0_5valueIPN3RBX12AccoutrementEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i")]
-pub fn stub_f311f4() -> ! {
-    todo!("0xf311f4 j___ZN5boost3_bi5list2INS0_5valueIPN3RBX12AccoutrementEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i")
+pub fn stub_f311f4() {
+    // IDA 0xf311f4 (jump thunk to __ZN5boost3_bi5list2INS0_5valueIPN3RBX12AccoutrementEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i): bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 // 0xf31204 — j___ZN5boost6detail12shared_countC2IPN3RBX12AccoutrementENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Accoutrement *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Accoutrement *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX12AccoutrementENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_f31204() -> ! {
-    todo!("0xf31204 j___ZN5boost6detail12shared_countC2IPN3RBX12AccoutrementENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_f31204() {
+    // IDA 0xf31204 (jump thunk to __ZN5boost6detail12shared_countC2IPN3RBX12AccoutrementENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_): control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xf31214 — j___ZN5boost6detail12shared_countC2IPN3RBX3HatENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Hat *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Hat *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX3HatENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_f31214() -> ! {
-    todo!("0xf31214 j___ZN5boost6detail12shared_countC2IPN3RBX3HatENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_f31214() {
+    // IDA 0xf31214 (jump thunk to __ZN5boost6detail12shared_countC2IPN3RBX3HatENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_): control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xf31244 — j___ZNK3RBX8Instance25findConstFirstChildOfTypeINS_12AccoutrementEEEPKT_v
@@ -224,8 +224,8 @@ pub fn stub_f31244() -> ! {
 // 0xf31274 — j___ZNK5boost4_mfi3mf1IvN3RBX12AccoutrementENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_
 #[doc(alias = "boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Accoutrement*,boost::shared_ptr<RBX::Instance>)const")]
 #[doc(alias = "j___ZNK5boost4_mfi3mf1IvN3RBX12AccoutrementENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_")]
-pub fn stub_f31274() -> ! {
-    todo!("0xf31274 j___ZNK5boost4_mfi3mf1IvN3RBX12AccoutrementENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_")
+pub fn stub_f31274() {
+    // IDA 0xf31274 (jump thunk to __ZNK5boost4_mfi3mf1IvN3RBX12AccoutrementENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_): function::operator() invoked the erased target. Closure call at the live site — carrier no-op.
 }
 
 // 0xf31364 — j___ZN3RBX15ServiceProvider6createINS_24KeyframeSequenceProviderEEEPT_PKNS_8InstanceE
@@ -238,85 +238,85 @@ pub fn stub_f31364() -> ! {
 // 0xf31944 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_14AnimationTrackEN5boost10shared_ptrINS_19AnimationTrackStateEEENS6_INS_8AnimatorEEEEENS6_IT_EET0_T1_
 #[doc(alias = "boost::shared_ptr<RBX::AnimationTrack> RBX::Creatable<RBX::Instance>::create<RBX::AnimationTrack,boost::shared_ptr<RBX::AnimationTrackState>,boost::shared_ptr<RBX::Animator>>(boost::shared_ptr<RBX::AnimationTrackState>,boost::shared_ptr<RBX::Animator>)")]
 #[doc(alias = "j___ZN3RBX9CreatableINS_8InstanceEE6createINS_14AnimationTrackEN5boost10shared_ptrINS_19AnimationTrackStateEEENS6_INS_8AnimatorEEEEENS6_IT_EET0_T1_")]
-pub fn stub_f31944() -> ! {
-    todo!("0xf31944 j___ZN3RBX9CreatableINS_8InstanceEE6createINS_14AnimationTrackEN5boost10shared_ptrINS_19AnimationTrackStateEEENS6_INS_8AnimatorEEEEENS6_IT_EET0_T1_")
+pub fn stub_f31944() {
+    // IDA 0xf31944 (jump thunk to __ZN3RBX9CreatableINS_8InstanceEE6createINS_14AnimationTrackEN5boost10shared_ptrINS_19AnimationTrackStateEEENS6_INS_8AnimatorEEEEENS6_IT_EET0_T1_): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf31954 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_19AnimationTrackStateEN5boost10shared_ptrIKNS_16KeyframeSequenceEEENS6_INS_8AnimatorEEEEENS6_IT_EET0_T1_
 #[doc(alias = "boost::shared_ptr<RBX::AnimationTrackState> RBX::Creatable<RBX::Instance>::create<RBX::AnimationTrackState,boost::shared_ptr<RBX::KeyframeSequence const>,boost::shared_ptr<RBX::Animator>>(boost::shared_ptr<RBX::KeyframeSequence const>,boost::shared_ptr<RBX::Animator>)")]
 #[doc(alias = "j___ZN3RBX9CreatableINS_8InstanceEE6createINS_19AnimationTrackStateEN5boost10shared_ptrIKNS_16KeyframeSequenceEEENS6_INS_8AnimatorEEEEENS6_IT_EET0_T1_")]
-pub fn stub_f31954() -> ! {
-    todo!("0xf31954 j___ZN3RBX9CreatableINS_8InstanceEE6createINS_19AnimationTrackStateEN5boost10shared_ptrIKNS_16KeyframeSequenceEEENS6_INS_8AnimatorEEEEENS6_IT_EET0_T1_")
+pub fn stub_f31954() {
+    // IDA 0xf31954 (jump thunk to __ZN3RBX9CreatableINS_8InstanceEE6createINS_19AnimationTrackStateEN5boost10shared_ptrIKNS_16KeyframeSequenceEEENS6_INS_8AnimatorEEEEENS6_IT_EET0_T1_): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf31984 — j___ZN5boost10shared_ptrIN3RBX14AnimationTrackEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "boost::shared_ptr<RBX::AnimationTrack>::shared_ptr<RBX::AnimationTrack,RBX::Creatable<RBX::Instance>::Deleter>(RBX::AnimationTrack *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "j___ZN5boost10shared_ptrIN3RBX14AnimationTrackEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_f31984() -> ! {
-    todo!("0xf31984 j___ZN5boost10shared_ptrIN3RBX14AnimationTrackEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+pub fn stub_f31984() {
+    // IDA 0xf31984 (jump thunk to __ZN5boost10shared_ptrIN3RBX14AnimationTrackEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf31994 — j___ZN5boost10shared_ptrIN3RBX19AnimationTrackStateEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "boost::shared_ptr<RBX::AnimationTrackState>::shared_ptr<RBX::AnimationTrackState,RBX::Creatable<RBX::Instance>::Deleter>(RBX::AnimationTrackState *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "j___ZN5boost10shared_ptrIN3RBX19AnimationTrackStateEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_f31994() -> ! {
-    todo!("0xf31994 j___ZN5boost10shared_ptrIN3RBX19AnimationTrackStateEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+pub fn stub_f31994() {
+    // IDA 0xf31994 (jump thunk to __ZN5boost10shared_ptrIN3RBX19AnimationTrackStateEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf319a4 — j___ZN5boost3_bi5list2INS0_5valueIPN3RBX8AnimatorEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRKSF_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<RBX::Animator *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::Animator,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::Animator,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)")]
 #[doc(alias = "j___ZN5boost3_bi5list2INS0_5valueIPN3RBX8AnimatorEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRKSF_EEEEvNS0_4typeIvEERT_RT0_i")]
-pub fn stub_f319a4() -> ! {
-    todo!("0xf319a4 j___ZN5boost3_bi5list2INS0_5valueIPN3RBX8AnimatorEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRKSF_EEEEvNS0_4typeIvEERT_RT0_i")
+pub fn stub_f319a4() {
+    // IDA 0xf319a4 (jump thunk to __ZN5boost3_bi5list2INS0_5valueIPN3RBX8AnimatorEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRKSF_EEEEvNS0_4typeIvEERT_RT0_i): bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 // 0xf319d4 — j___ZN5boost6detail12shared_countC2IPN3RBX14AnimationTrackENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::AnimationTrack *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::AnimationTrack *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX14AnimationTrackENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_f319d4() -> ! {
-    todo!("0xf319d4 j___ZN5boost6detail12shared_countC2IPN3RBX14AnimationTrackENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_f319d4() {
+    // IDA 0xf319d4 (jump thunk to __ZN5boost6detail12shared_countC2IPN3RBX14AnimationTrackENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_): control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xf319e4 — j___ZN5boost6detail12shared_countC2IPN3RBX19AnimationTrackStateENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::AnimationTrackState *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::AnimationTrackState *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX19AnimationTrackStateENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_f319e4() -> ! {
-    todo!("0xf319e4 j___ZN5boost6detail12shared_countC2IPN3RBX19AnimationTrackStateENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_f319e4() {
+    // IDA 0xf319e4 (jump thunk to __ZN5boost6detail12shared_countC2IPN3RBX19AnimationTrackStateENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_): control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xf319f4 — j___ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_8AnimatorENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvRKT_
 #[doc(alias = "void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Animator,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Animator*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Animator,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Animator*>,boost::arg<1>>> const&)const")]
 #[doc(alias = "j___ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_8AnimatorENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvRKT_")]
-pub fn stub_f319f4() -> ! {
-    todo!("0xf319f4 j___ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_8AnimatorENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvRKT_")
+pub fn stub_f319f4() {
+    // IDA 0xf319f4 (jump thunk to __ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_8AnimatorENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvRKT_): boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0xf31a34 — j___ZNK5boost4_mfi3mf1IvN3RBX8AnimatorENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_
 #[doc(alias = "boost::_mfi::mf1<void,RBX::Animator,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Animator*,boost::shared_ptr<RBX::Instance>)const")]
 #[doc(alias = "j___ZNK5boost4_mfi3mf1IvN3RBX8AnimatorENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_")]
-pub fn stub_f31a34() -> ! {
-    todo!("0xf31a34 j___ZNK5boost4_mfi3mf1IvN3RBX8AnimatorENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_")
+pub fn stub_f31a34() {
+    // IDA 0xf31a34 (jump thunk to __ZNK5boost4_mfi3mf1IvN3RBX8AnimatorENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_): function::operator() invoked the erased target. Closure call at the live site — carrier no-op.
 }
 
 // 0xf31d04 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_10ArcHandlesEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "boost::shared_ptr<RBX::ArcHandles> RBX::Creatable<RBX::Instance>::create<RBX::ArcHandles>(void)")]
 #[doc(alias = "j___ZN3RBX9CreatableINS_8InstanceEE6createINS_10ArcHandlesEEEN5boost10shared_ptrIT_EEv")]
-pub fn stub_f31d04() -> ! {
-    todo!("0xf31d04 j___ZN3RBX9CreatableINS_8InstanceEE6createINS_10ArcHandlesEEEN5boost10shared_ptrIT_EEv")
+pub fn stub_f31d04() {
+    // IDA 0xf31d04 (jump thunk to __ZN3RBX9CreatableINS_8InstanceEE6createINS_10ArcHandlesEEEN5boost10shared_ptrIT_EEv): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf31ed4 — j___ZN5boost10shared_ptrIN3RBX10ArcHandlesEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "boost::shared_ptr<RBX::ArcHandles>::shared_ptr<RBX::ArcHandles,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "j___ZN5boost10shared_ptrIN3RBX10ArcHandlesEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_f31ed4() -> ! {
-    todo!("0xf31ed4 j___ZN5boost10shared_ptrIN3RBX10ArcHandlesEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+pub fn stub_f31ed4() {
+    // IDA 0xf31ed4 (jump thunk to __ZN5boost10shared_ptrIN3RBX10ArcHandlesEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf31fd4 — j___ZN5boost6detail12shared_countC2IPN3RBX10ArcHandlesENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX10ArcHandlesENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_f31fd4() -> ! {
-    todo!("0xf31fd4 j___ZN5boost6detail12shared_countC2IPN3RBX10ArcHandlesENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_f31fd4() {
+    // IDA 0xf31fd4 (jump thunk to __ZN5boost6detail12shared_countC2IPN3RBX10ArcHandlesENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_): control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xf32a94 — j___ZN3RBX15ServiceProvider6createINS_17ControllerServiceEEEPT_PKNS_8InstanceE
@@ -406,8 +406,8 @@ pub fn stub_f33294() -> ! {
 // 0xf332c4 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEEEE4slotEEaSEPSA_
 #[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot>::operator=(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot*)")]
 #[doc(alias = "j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEEEE4slotEEaSEPSA_")]
-pub fn stub_f332c4() -> ! {
-    todo!("0xf332c4 j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEEEE4slotEEaSEPSA_")
+pub fn stub_f332c4() {
+    // IDA 0xf332c4 (jump thunk to __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEEEE4slotEEaSEPSA_): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf33324 — j___ZN5boost3_bi5list2INS0_5valueIPN3RBX20ChangeHistoryServiceEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRKSF_EEEEvNS0_4typeIvEERT_RT0_i
@@ -420,8 +420,8 @@ pub fn stub_f33324() -> ! {
 // 0xf33334 — j___ZN5boost3_bi5list2INS0_5valueIPN3RBX20ChangeHistoryServiceEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&> &,int)")]
 #[doc(alias = "j___ZN5boost3_bi5list2INS0_5valueIPN3RBX20ChangeHistoryServiceEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i")]
-pub fn stub_f33334() -> ! {
-    todo!("0xf33334 j___ZN5boost3_bi5list2INS0_5valueIPN3RBX20ChangeHistoryServiceEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i")
+pub fn stub_f33334() {
+    // IDA 0xf33334 (jump thunk to __ZN5boost3_bi5list2INS0_5valueIPN3RBX20ChangeHistoryServiceEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i): bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 // 0xf33374 — j___ZN5boost6detail12shared_countC2IP22ChangeHistoryStatsItemN3RBX9CreatableINS5_8InstanceEE7DeleterEEET_T0_
@@ -434,22 +434,22 @@ pub fn stub_f33374() -> ! {
 // 0xf333a4 — j___ZN5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE11rehash_implEm
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::rehash_impl(unsigned long)")]
 #[doc(alias = "j___ZN5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE11rehash_implEm")]
-pub fn stub_f333a4() -> ! {
-    todo!("0xf333a4 j___ZN5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE11rehash_implEm")
+pub fn stub_f333a4() {
+    // IDA 0xf333a4 (jump thunk to __ZN5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE11rehash_implEm): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf333b4 — j___ZN5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE12emplace_implINS1_13emplace_args1IS7_EEEESt4pairINS0_15iterator_detail8iteratorINS1_8ptr_nodeIS7_EEEEbERKS7_RKT_
 #[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<boost::shared_ptr<RBX::Instance>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::emplace_impl<boost::unordered::detail::emplace_args1<boost::shared_ptr<RBX::Instance>>>(boost::shared_ptr<RBX::Instance> const&,boost::unordered::detail::emplace_args1<boost::shared_ptr<RBX::Instance>> const&)")]
 #[doc(alias = "j___ZN5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE12emplace_implINS1_13emplace_args1IS7_EEEESt4pairINS0_15iterator_detail8iteratorINS1_8ptr_nodeIS7_EEEEbERKS7_RKT_")]
-pub fn stub_f333b4() -> ! {
-    todo!("0xf333b4 j___ZN5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE12emplace_implINS1_13emplace_args1IS7_EEEESt4pairINS0_15iterator_detail8iteratorINS1_8ptr_nodeIS7_EEEEbERKS7_RKT_")
+pub fn stub_f333b4() {
+    // IDA 0xf333b4 (jump thunk to __ZN5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE12emplace_implINS1_13emplace_args1IS7_EEEESt4pairINS0_15iterator_detail8iteratorINS1_8ptr_nodeIS7_EEEEbERKS7_RKT_): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf333c4 — j___ZN5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE15place_in_bucketERNS1_5tableISD_EEPNS1_10ptr_bucketE
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>> &,boost::unordered::detail::ptr_bucket *)")]
 #[doc(alias = "j___ZN5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE15place_in_bucketERNS1_5tableISD_EEPNS1_10ptr_bucketE")]
-pub fn stub_f333c4() -> ! {
-    todo!("0xf333c4 j___ZN5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE15place_in_bucketERNS1_5tableISD_EEPNS1_10ptr_bucketE")
+pub fn stub_f333c4() {
+    // IDA 0xf333c4 (jump thunk to __ZN5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE15place_in_bucketERNS1_5tableISD_EEPNS1_10ptr_bucketE): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf333d4 — j___ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE11rehash_implEm
@@ -469,92 +469,92 @@ pub fn stub_f333e4() -> ! {
 // 0xf333f4 — j___ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE15place_in_bucketERNS1_5tableISC_EEPNS1_10ptr_bucketE
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>> &,boost::unordered::detail::ptr_bucket *)")]
 #[doc(alias = "j___ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE15place_in_bucketERNS1_5tableISC_EEPNS1_10ptr_bucketE")]
-pub fn stub_f333f4() -> ! {
-    todo!("0xf333f4 j___ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE15place_in_bucketERNS1_5tableISC_EEPNS1_10ptr_bucketE")
+pub fn stub_f333f4() {
+    // IDA 0xf333f4 (jump thunk to _ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE15place_in_bucketERNS1_5tableISC_EEPNS1_10ptr_bucketE): unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0xf33404 — j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeINS_10shared_ptrIN3RBX8InstanceEEEEEEE20construct_with_valueINS1_13emplace_args1IS7_EEEEvRKT_
 #[doc(alias = "void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<boost::shared_ptr<RBX::Instance>>>>::construct_with_value<boost::unordered::detail::emplace_args1<boost::shared_ptr<RBX::Instance>>>(boost::unordered::detail::emplace_args1<boost::shared_ptr<RBX::Instance>> const&)")]
 #[doc(alias = "j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeINS_10shared_ptrIN3RBX8InstanceEEEEEEE20construct_with_valueINS1_13emplace_args1IS7_EEEEvRKT_")]
-pub fn stub_f33404() -> ! {
-    todo!("0xf33404 j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeINS_10shared_ptrIN3RBX8InstanceEEEEEEE20construct_with_valueINS1_13emplace_args1IS7_EEEEvRKT_")
+pub fn stub_f33404() {
+    // IDA 0xf33404 (jump thunk to __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeINS_10shared_ptrIN3RBX8InstanceEEEEEEE20construct_with_valueINS1_13emplace_args1IS7_EEEEvRKT_): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf33414 — j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeINS_10shared_ptrIN3RBX8InstanceEEEEEEE9constructEv
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<boost::shared_ptr<RBX::Instance>>>>::construct(void)")]
 #[doc(alias = "j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeINS_10shared_ptrIN3RBX8InstanceEEEEEEE9constructEv")]
-pub fn stub_f33414() -> ! {
-    todo!("0xf33414 j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeINS_10shared_ptrIN3RBX8InstanceEEEEEEE9constructEv")
+pub fn stub_f33414() {
+    // IDA 0xf33414 (jump thunk to __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeINS_10shared_ptrIN3RBX8InstanceEEEEEEE9constructEv): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf33424 — j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeINS_10shared_ptrIN3RBX8InstanceEEEEEEED2Ev
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<boost::shared_ptr<RBX::Instance>>>>::~node_constructor()")]
 #[doc(alias = "j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeINS_10shared_ptrIN3RBX8InstanceEEEEEEED2Ev")]
-pub fn stub_f33424() -> ! {
-    todo!("0xf33424 j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeINS_10shared_ptrIN3RBX8InstanceEEEEEEED2Ev")
+pub fn stub_f33424() {
+    // IDA 0xf33424 (jump thunk to __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeINS_10shared_ptrIN3RBX8InstanceEEEEEEED2Ev): C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf33434 — j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeIPN3RBX8InstanceEEEEE9constructEv
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<RBX::Instance *>>>::construct(void)")]
 #[doc(alias = "j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeIPN3RBX8InstanceEEEEE9constructEv")]
-pub fn stub_f33434() -> ! {
-    todo!("0xf33434 j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeIPN3RBX8InstanceEEEEE9constructEv")
+pub fn stub_f33434() {
+    // IDA 0xf33434 (jump thunk to _ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeIPN3RBX8InstanceEEEEE9constructEv): unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0xf33444 — j___ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE11delete_nodeEPNS1_10ptr_bucketE
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::delete_node(boost::unordered::detail::ptr_bucket *)")]
 #[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE11delete_nodeEPNS1_10ptr_bucketE")]
-pub fn stub_f33444() -> ! {
-    todo!("0xf33444 j___ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE11delete_nodeEPNS1_10ptr_bucketE")
+pub fn stub_f33444() {
+    // IDA 0xf33444 (jump thunk to __ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE11delete_nodeEPNS1_10ptr_bucketE): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf33454 — j___ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::create_buckets(unsigned long)")]
 #[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm")]
-pub fn stub_f33454() -> ! {
-    todo!("0xf33454 j___ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm")
+pub fn stub_f33454() {
+    // IDA 0xf33454 (jump thunk to __ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf33464 — j___ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14delete_bucketsEv
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::delete_buckets(void)")]
 #[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14delete_bucketsEv")]
-pub fn stub_f33464() -> ! {
-    todo!("0xf33464 j___ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14delete_bucketsEv")
+pub fn stub_f33464() {
+    // IDA 0xf33464 (jump thunk to __ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14delete_bucketsEv): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf33474 — j___ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE18reserve_for_insertEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::reserve_for_insert(unsigned long)")]
 #[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE18reserve_for_insertEm")]
-pub fn stub_f33474() -> ! {
-    todo!("0xf33474 j___ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE18reserve_for_insertEm")
+pub fn stub_f33474() {
+    // IDA 0xf33474 (jump thunk to __ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE18reserve_for_insertEm): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf33484 — j___ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEEC2EmRKSA_RKSC_RKSaINS1_8ptr_nodeIS7_EEE
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::table(unsigned long,boost::hash<boost::shared_ptr<RBX::Instance>> const&,std::equal_to<boost::shared_ptr<RBX::Instance>> const&,std::allocator<boost::unordered::detail::ptr_node<boost::shared_ptr<RBX::Instance>>> const&)")]
 #[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEEC2EmRKSA_RKSC_RKSaINS1_8ptr_nodeIS7_EEE")]
-pub fn stub_f33484() -> ! {
-    todo!("0xf33484 j___ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEEC2EmRKSA_RKSC_RKSaINS1_8ptr_nodeIS7_EEE")
+pub fn stub_f33484() {
+    // IDA 0xf33484 (jump thunk to __ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEEC2EmRKSA_RKSC_RKSaINS1_8ptr_nodeIS7_EEE): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf33494 — j___ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14create_bucketsEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::create_buckets(unsigned long)")]
 #[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14create_bucketsEm")]
-pub fn stub_f33494() -> ! {
-    todo!("0xf33494 j___ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14create_bucketsEm")
+pub fn stub_f33494() {
+    // IDA 0xf33494 (jump thunk to _ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14create_bucketsEm): unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0xf334a4 — j___ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14delete_bucketsEv
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::delete_buckets(void)")]
 #[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14delete_bucketsEv")]
-pub fn stub_f334a4() -> ! {
-    todo!("0xf334a4 j___ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14delete_bucketsEv")
+pub fn stub_f334a4() {
+    // IDA 0xf334a4 (jump thunk to _ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14delete_bucketsEv): unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0xf334b4 — j___ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE18reserve_for_insertEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::reserve_for_insert(unsigned long)")]
 #[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE18reserve_for_insertEm")]
-pub fn stub_f334b4() -> ! {
-    todo!("0xf334b4 j___ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE18reserve_for_insertEm")
+pub fn stub_f334b4() {
+    // IDA 0xf334b4 (jump thunk to _ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE18reserve_for_insertEm): unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0xf334c4 — j___ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEEC2EmRKS9_RKSB_RKSaINS1_8ptr_nodeIS6_EEE
@@ -574,15 +574,15 @@ pub fn stub_f33524() -> ! {
 // 0xf33544 — j___ZNK5boost4_mfi3mf1IvN3RBX20ChangeHistoryServiceENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_
 #[doc(alias = "boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>::operator()(RBX::ChangeHistoryService*,boost::shared_ptr<RBX::Instance>)const")]
 #[doc(alias = "j___ZNK5boost4_mfi3mf1IvN3RBX20ChangeHistoryServiceENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_")]
-pub fn stub_f33544() -> ! {
-    todo!("0xf33544 j___ZNK5boost4_mfi3mf1IvN3RBX20ChangeHistoryServiceENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_")
+pub fn stub_f33544() {
+    // IDA 0xf33544 (jump thunk to __ZNK5boost4_mfi3mf1IvN3RBX20ChangeHistoryServiceENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_): function::operator() invoked the erased target. Closure call at the live site — carrier no-op.
 }
 
 // 0xf33574 — j___ZNK5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14find_node_implIS7_SC_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS7_EEEEmRKT_RKT0_
 #[doc(alias = "boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<boost::shared_ptr<RBX::Instance>>> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::find_node_impl<boost::shared_ptr<RBX::Instance>,std::equal_to<boost::shared_ptr<RBX::Instance>>>(unsigned long,boost::shared_ptr<RBX::Instance> const&,std::equal_to<boost::shared_ptr<RBX::Instance>> const&)const")]
 #[doc(alias = "j___ZNK5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14find_node_implIS7_SC_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS7_EEEEmRKT_RKT0_")]
-pub fn stub_f33574() -> ! {
-    todo!("0xf33574 j___ZNK5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14find_node_implIS7_SC_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS7_EEEEmRKT_RKT0_")
+pub fn stub_f33574() {
+    // IDA 0xf33574 (jump thunk to __ZNK5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14find_node_implIS7_SC_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS7_EEEEmRKT_RKT0_): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf33584 — j___ZNK5boost9unordered6detail10table_implINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14find_node_implIS6_SB_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS6_EEEEmRKT_RKT0_
@@ -595,15 +595,15 @@ pub fn stub_f33584() -> ! {
 // 0xf33594 — j___ZNK5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE20min_buckets_for_sizeEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::min_buckets_for_size(unsigned long)const")]
 #[doc(alias = "j___ZNK5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE20min_buckets_for_sizeEm")]
-pub fn stub_f33594() -> ! {
-    todo!("0xf33594 j___ZNK5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE20min_buckets_for_sizeEm")
+pub fn stub_f33594() {
+    // IDA 0xf33594 (jump thunk to __ZNK5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE20min_buckets_for_sizeEm): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf335a4 — j___ZNK5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE20min_buckets_for_sizeEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Instance *>,RBX::Instance *,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::min_buckets_for_size(unsigned long)const")]
 #[doc(alias = "j___ZNK5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE20min_buckets_for_sizeEm")]
-pub fn stub_f335a4() -> ! {
-    todo!("0xf335a4 j___ZNK5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE20min_buckets_for_sizeEm")
+pub fn stub_f335a4() {
+    // IDA 0xf335a4 (jump thunk to _ZNK5boost9unordered6detail5tableINS1_3setISaIPN3RBX8InstanceEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE20min_buckets_for_sizeEm): unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0xf335c4 — j___ZNSt10_List_baseIN5boost10shared_ptrIN3RBX8InstanceEEESaIS4_EE8_M_clearEv
@@ -623,8 +623,8 @@ pub fn stub_f33674() -> ! {
 // 0xf336b4 — j___ZNSt4listIN5boost10shared_ptrIN3RBX8InstanceEEESaIS4_EE14_M_create_nodeERKS4_
 #[doc(alias = "std::list<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_create_node(boost::shared_ptr<RBX::Instance> const&)")]
 #[doc(alias = "j___ZNSt4listIN5boost10shared_ptrIN3RBX8InstanceEEESaIS4_EE14_M_create_nodeERKS4_")]
-pub fn stub_f336b4() -> ! {
-    todo!("0xf336b4 j___ZNSt4listIN5boost10shared_ptrIN3RBX8InstanceEEESaIS4_EE14_M_create_nodeERKS4_")
+pub fn stub_f336b4() {
+    // IDA 0xf336b4 (jump thunk to __ZNSt4listIN5boost10shared_ptrIN3RBX8InstanceEEESaIS4_EE14_M_create_nodeERKS4_): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf33884 — j___ZNSt8_Rb_treeIPN3RBX8InstanceESt4pairIKS2_jESt10_Select1stIS5_ESt4lessIS2_ESaIS5_EE16_M_insert_uniqueERKS5_
@@ -819,8 +819,8 @@ pub fn stub_f33f94() -> ! {
 // 0xf33fa4 — j___ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE7connectINS2_8functionIS9_EEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::connect<boost::function<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> const&)")]
 #[doc(alias = "j___ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE7connectINS2_8functionIS9_EEEENS0_10connectionERKT_")]
-pub fn stub_f33fa4() -> ! {
-    todo!("0xf33fa4 j___ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE7connectINS2_8functionIS9_EEEENS0_10connectionERKT_")
+pub fn stub_f33fa4() {
+    // IDA 0xf33fa4 (jump thunk to __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE7connectINS2_8functionIS9_EEEENS0_10connectionERKT_): shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf6fb5c — __synthetic_watchdog_audio_w2_pad_0
