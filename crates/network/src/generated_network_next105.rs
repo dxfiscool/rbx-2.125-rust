@@ -555,64 +555,73 @@ pub fn stub_a628e4(active: bool, broadcast: bool, send: &mut dyn FnMut(bool)) {
 // 0xa62af0 — __ZN6RakNet7RakPeer4PingEPKctbj
 // type: int __fastcall(RakNet::RakPeer *this, const char *, unsigned int, int, unsigned int)
 #[doc(alias = "RakNet::RakPeer::Ping(char const*,unsigned short,bool,unsigned int)")]
-pub fn stub_a62af0() -> ! {
-    todo!("0xa62af0 RakNet::RakPeer::Ping(char const*,unsigned short,bool,unsigned int)")
+pub fn stub_a62af0(host: Option<&str>, send: &mut dyn FnMut()) -> u32 {
+ // IDA 0xa62af0: resolve and ping, 1 on send.
+ crate::socket::RakPeer::ping_host(host, send)
 }
 
 // 0xa62d48 — __ZN6RakNet7RakPeer14GetAveragePingENS_13AddressOrGUIDE
 // type: int __fastcall(int, __int64 *)
 #[doc(alias = "RakNet::RakPeer::GetAveragePing(RakNet::AddressOrGUID)")]
-pub fn stub_a62d48() -> ! {
-    todo!("0xa62d48 RakNet::RakPeer::GetAveragePing(RakNet::AddressOrGUID)")
+pub fn stub_a62d48(found: bool, samples: &[u16]) -> i32 {
+ // IDA 0xa62d48: mean of up to five samples.
+ crate::socket::RakPeer::average_ping(found, samples)
 }
 
 // 0xa62dec — __ZNK6RakNet7RakPeer15GetRemoteSystemENS_13AddressOrGUIDEbb
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "RakNet::RakPeer::GetRemoteSystem(RakNet::AddressOrGUID,bool,bool)const")]
-pub fn stub_a62dec() -> ! {
-    todo!("0xa62dec RakNet::RakPeer::GetRemoteSystem(RakNet::AddressOrGUID,bool,bool)const")
+pub fn stub_a62dec(guid_assigned: bool, by_address: &mut dyn FnMut() -> Option<u32>, remotes: &[(u64, bool)], guid: u64, inactive_only: bool) -> Option<u32> {
+ // IDA 0xa62dec: address or guid table lookup.
+ crate::socket::RakPeer::remote_system_index(guid_assigned, by_address, remotes, guid, inactive_only)
 }
 
 // 0xa62ea0 — __ZNK6RakNet7RakPeer11GetLastPingENS_13AddressOrGUIDE
 // type: int __fastcall(int, __int64 *)
 #[doc(alias = "RakNet::RakPeer::GetLastPing(RakNet::AddressOrGUID)const")]
-pub fn stub_a62ea0() -> ! {
-    todo!("0xa62ea0 RakNet::RakPeer::GetLastPing(RakNet::AddressOrGUID)const")
+pub fn stub_a62ea0(found: bool, newest: u16) -> i32 {
+ // IDA 0xa62ea0: newest sample or -1.
+ crate::socket::RakPeer::last_ping(found, newest)
 }
 
 // 0xa62f3c — __ZNK6RakNet7RakPeer13GetLowestPingENS_13AddressOrGUIDE
 // type: int __fastcall(int, __int64 *)
 #[doc(alias = "RakNet::RakPeer::GetLowestPing(RakNet::AddressOrGUID)const")]
-pub fn stub_a62f3c() -> ! {
-    todo!("0xa62f3c RakNet::RakPeer::GetLowestPing(RakNet::AddressOrGUID)const")
+pub fn stub_a62f3c(found: bool, minimum: u16) -> i32 {
+ // IDA 0xa62f3c: minimum sample or -1.
+ crate::socket::RakPeer::lowest_ping(found, minimum)
 }
 
 // 0xa62fbc — __ZN6RakNet7RakPeer17SetOccasionalPingEb
 // type: int __fastcall(int this, bool)
 #[doc(alias = "RakNet::RakPeer::SetOccasionalPing(bool)")]
-pub fn stub_a62fbc() -> ! {
-    todo!("0xa62fbc RakNet::RakPeer::SetOccasionalPing(bool)")
+pub fn stub_a62fbc(peer: &mut crate::socket::RakPeer, occasional: bool) {
+ // IDA 0xa62fbc: store the flag.
+ peer.set_occasional_ping(occasional)
 }
 
 // 0xa62fc0 — __ZN6RakNet7RakPeer22SetOfflinePingResponseEPKcj
 // type: int __fastcall(RakNet::RakPeer *this, const char *, size_t)
 #[doc(alias = "RakNet::RakPeer::SetOfflinePingResponse(char const*,unsigned int)")]
-pub fn stub_a62fc0() -> ! {
-    todo!("0xa62fc0 RakNet::RakPeer::SetOfflinePingResponse(char const*,unsigned int)")
+pub fn stub_a62fc0(peer: &mut crate::socket::RakPeer, data: Option<&[u8]>) {
+ // IDA 0xa62fc0: reset plus store.
+ peer.set_offline_ping_response(data)
 }
 
 // 0xa63000 — __ZN6RakNet7RakPeer22GetOfflinePingResponseEPPcPj
 // type: int __fastcall(RakNet::RakPeer *this, char **, unsigned int *)
 #[doc(alias = "RakNet::RakPeer::GetOfflinePingResponse(char **,unsigned int *)")]
-pub fn stub_a63000() -> ! {
-    todo!("0xa63000 RakNet::RakPeer::GetOfflinePingResponse(char **,unsigned int *)")
+pub fn stub_a63000(peer: &crate::socket::RakPeer) -> Vec<u8> {
+ // IDA 0xa63000: stored response bytes.
+ peer.offline_ping_response().to_vec()
 }
 
 // 0xa63034 — __ZNK6RakNet7RakPeer13GetInternalIDENS_13SystemAddressEi
 // type: int __fastcall(int, int, int, int, int, int, int, int)
 #[doc(alias = "RakNet::RakPeer::GetInternalID(RakNet::SystemAddress,int)const")]
-pub fn stub_a63034() -> ! {
-    todo!("0xa63034 RakNet::RakPeer::GetInternalID(RakNet::SystemAddress,int)const")
+pub fn stub_a63034(addr: &crate::socket::SystemAddress, unassigned: &crate::socket::SystemAddress, local: &[crate::socket::SystemAddress], local_index: usize, remote: Option<crate::socket::SystemAddress>) -> crate::socket::SystemAddress {
+ // IDA 0xa63034: local list or remote match.
+ crate::socket::RakPeer::internal_id(addr, unassigned, local, local_index, remote)
 }
 
 // 0xa63140 — __ZNK6RakNet7RakPeer32GetRemoteSystemFromSystemAddressENS_13SystemAddressEbb
@@ -625,15 +634,17 @@ pub fn stub_a63140() -> ! {
 // 0xa63278 — __ZNK6RakNet7RakPeer13GetExternalIDENS_13SystemAddressE
 // type: int __fastcall(int, int, int, int, int, int, int)
 #[doc(alias = "RakNet::RakPeer::GetExternalID(RakNet::SystemAddress)const")]
-pub fn stub_a63278() -> ! {
-    todo!("0xa63278 RakNet::RakPeer::GetExternalID(RakNet::SystemAddress)const")
+pub fn stub_a63278(addr: &crate::socket::SystemAddress, unassigned: &crate::socket::SystemAddress, own_external: crate::socket::SystemAddress, remotes: &[(crate::socket::SystemAddress, crate::socket::SystemAddress, bool)]) -> crate::socket::SystemAddress {
+ // IDA 0xa63278: active match, inactive fallback, unassigned.
+ crate::socket::RakPeer::external_id(addr, unassigned, own_external, remotes)
 }
 
 // 0xa63378 — __ZNK6RakNet7RakPeer9GetMyGUIDEv
 // type: int __fastcall(int this, int)
 #[doc(alias = "RakNet::RakPeer::GetMyGUID(void)const")]
-pub fn stub_a63378() -> ! {
-    todo!("0xa63378 RakNet::RakPeer::GetMyGUID(void)const")
+pub fn stub_a63378(peer: &crate::socket::RakPeer) -> u64 {
+ // IDA 0xa63378: load the guid.
+ peer.my_guid()
 }
 
 // 0xa6338c — __ZN6RakNet7RakPeer17GetMyBoundAddressEi

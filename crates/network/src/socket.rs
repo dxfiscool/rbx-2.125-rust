@@ -344,6 +344,49 @@ mod tests {
         RakPeer::send_ping(true, false, &mut |b| sent.push(b));
         assert_eq!(sent, [false]);
     }
+    #[test]
+    fn ping_remote_id_gates() {
+        // IDA 0xa62af0: host presence gates the send.
+        let mut n = 0;
+        assert_eq!(RakPeer::ping_host(None, &mut || n += 1), 0);
+        assert_eq!(RakPeer::ping_host(Some("h"), &mut || n += 1), 1);
+        assert_eq!(n, 1);
+        // IDA 0xa62d48/0xa62ea0/0xa62f3c: sample reductions.
+        assert_eq!(RakPeer::average_ping(false, &[10, 20]), -1);
+        assert_eq!(RakPeer::average_ping(true, &[]), -1);
+        assert_eq!(RakPeer::average_ping(true, &[0xFFFF, 5]), -1);
+        assert_eq!(RakPeer::average_ping(true, &[10, 20, 30, 40, 50, 60]), 30);
+        assert_eq!(RakPeer::last_ping(false, 9), -1);
+        assert_eq!(RakPeer::last_ping(true, 9), 9);
+        assert_eq!(RakPeer::lowest_ping(false, 9), -1);
+        assert_eq!(RakPeer::lowest_ping(true, 9), 9);
+        // IDA 0xa62dec: guid/address resolution paths.
+        let remotes = vec![(7u64, true)];
+        assert_eq!(RakPeer::remote_system_index(true, &mut || None, &remotes, 7, false), Some(0));
+        assert_eq!(RakPeer::remote_system_index(true, &mut || None, &remotes, 7, true), None);
+        assert_eq!(RakPeer::remote_system_index(false, &mut || Some(3), &remotes, 0, false), Some(3));
+        // IDA 0xa62fbc/0xa62fc0/0xa63000: occasional flag and response bytes.
+        let mut peer = RakPeer::new();
+        peer.set_occasional_ping(true);
+        assert!(peer.occasional_ping);
+        peer.set_offline_ping_response(Some(b"hi"));
+        assert_eq!(peer.offline_ping_response(), b"hi");
+        peer.set_offline_ping_response(None);
+        assert!(peer.offline_ping_response().is_empty());
+        // IDA 0xa63034/0xa63278/0xa63378: internal/external/guid reads.
+        let un = SystemAddress::new();
+        let a = SystemAddress { family: 2, port: 1, binary: 1, debug_port: 1, system_index: 0 };
+        let local = vec![a];
+        assert_eq!(RakPeer::internal_id(&un, &un, &local, 0, None), a);
+        assert_eq!(RakPeer::internal_id(&a, &un, &local, 9, None), un);
+        assert_eq!(RakPeer::internal_id(&a, &un, &local, 9, Some(a)), a);
+        let remotes = vec![(a, a, false)];
+        assert_eq!(RakPeer::external_id(&un, &un, a, &remotes), a);
+        assert_eq!(RakPeer::external_id(&a, &un, a, &remotes), a);
+        assert_eq!(RakPeer::external_id(&a, &un, a, &[]), un);
+        peer.my_guid = 0x1234;
+        assert_eq!(peer.my_guid(), 0x1234);
+    }
 }
 
 /// `RakNet::UNASSIGNED_RAKNET_GUID` (IDA 0xa5c018).
@@ -703,6 +746,12 @@ pub struct RakPeer {
  pub ban_list: Vec<(String, u32)>,
  /// IP connection-frequency limiter flag (IDA 0xa627c8).
  pub limit_ip_connection_frequency: bool,
+ /// Offline ping response bytes (IDA 0xa62fc0).
+ pub offline_ping_response: Vec<u8>,
+ /// Occasional-ping flag (IDA 0xa62fbc).
+ pub occasional_ping: bool,
+ /// Own guid (IDA 0xa63378).
+ pub my_guid: u64,
 }
 
 impl RakPeer {
@@ -1079,6 +1128,140 @@ impl RakPeer {
  if active {
  send(broadcast);
  }
+ }
+
+ /// `RakPeer::Ping(host, port)` (IDA 0xa62af0): resolves and pings
+ /// when a host is given; returns 1 on send, 0 otherwise.
+ pub fn ping_host(host: Option<&str>, send: &mut dyn FnMut()) -> u32 {
+ if host.is_some() {
+ send();
+ 1
+ } else {
+ 0
+ }
+ }
+
+ /// `RakPeer::GetAveragePing` (IDA 0xa62d48): the mean of up to five
+ /// samples, stopping at the `0xFFFF` sentinel; -1 without a system
+ /// or without samples.
+ #[must_use]
+ pub fn average_ping(found: bool, samples: &[u16]) -> i32 {
+ if !found {
+ return -1;
+ }
+ let vals: Vec<u32> = samples.iter().take(5).take_while(|&&s| s != 0xFFFF).map(|&s| s as u32).collect();
+ if vals.is_empty() {
+ return -1;
+ }
+ (vals.iter().sum::<u32>() / vals.len() as u32) as i32
+ }
+
+ /// `RakPeer::GetRemoteSystem` (IDA 0xa62dec): an unassigned guid
+ /// resolves by address engine-side; otherwise the guid scans the
+ /// table, optionally restricted to inactive slots.
+ #[must_use]
+ pub fn remote_system_index(
+ guid_assigned: bool,
+ by_address: &mut dyn FnMut() -> Option<u32>,
+ remotes: &[(u64, bool)],
+ guid: u64,
+ inactive_only: bool,
+ ) -> Option<u32> {
+ if !guid_assigned {
+ return by_address();
+ }
+ remotes.iter().position(|(g, active)| *g == guid && (!inactive_only || !active)).map(|i| i as u32)
+ }
+
+ /// `RakPeer::GetLastPing` (IDA 0xa62ea0): the newest sample, or -1
+ /// without a system.
+ #[must_use]
+ pub fn last_ping(found: bool, newest: u16) -> i32 {
+ if !found {
+ return -1;
+ }
+ newest as i32
+ }
+
+ /// `RakPeer::GetLowestPing` (IDA 0xa62f3c): the minimum sample, or
+ /// -1 without a system.
+ #[must_use]
+ pub fn lowest_ping(found: bool, minimum: u16) -> i32 {
+ if !found {
+ return -1;
+ }
+ minimum as i32
+ }
+
+ /// `RakPeer::SetOccasionalPing` (IDA 0xa62fbc).
+ pub fn set_occasional_ping(&mut self, occasional: bool) {
+ self.occasional_ping = occasional;
+ }
+
+ /// `RakPeer::SetOfflinePingResponse` (IDA 0xa62fc0): resets the
+ /// stream, then stores the bytes when both are present.
+ pub fn set_offline_ping_response(&mut self, data: Option<&[u8]>) {
+ self.offline_ping_response.clear();
+ if let Some(d) = data {
+ self.offline_ping_response.extend_from_slice(d);
+ }
+ }
+
+ /// `RakPeer::GetOfflinePingResponse` (IDA 0xa63000): the stored
+ /// response bytes.
+ #[must_use]
+ pub fn offline_ping_response(&self) -> &[u8] {
+ &self.offline_ping_response
+ }
+
+ /// `RakPeer::GetInternalID` (IDA 0xa63034): unassigned addresses read
+ /// the local bound list; otherwise the first active remote match
+ /// wins, else unassigned.
+ #[must_use]
+ pub fn internal_id(
+ addr: &SystemAddress,
+ unassigned: &SystemAddress,
+ local: &[SystemAddress],
+ local_index: usize,
+ remote: Option<SystemAddress>,
+ ) -> SystemAddress {
+ if addr.equals(unassigned) {
+ return local.get(local_index).copied().unwrap_or(*unassigned);
+ }
+ remote.unwrap_or(*unassigned)
+ }
+
+ /// `RakPeer::GetExternalID` (IDA 0xa63278): unassigned addresses read
+ /// the local external id; otherwise the first active remote match
+ /// wins, else the last inactive match, else unassigned.
+ #[must_use]
+ pub fn external_id(
+ addr: &SystemAddress,
+ unassigned: &SystemAddress,
+ own_external: SystemAddress,
+ remotes: &[(SystemAddress, SystemAddress, bool)],
+ ) -> SystemAddress {
+ if addr.equals(unassigned) {
+ return own_external;
+ }
+ let mut fallback = *unassigned;
+ for (sys, ext, active) in remotes {
+ if sys.equals(addr) {
+ if *active {
+ return *ext;
+ }
+ if !sys.equals(unassigned) {
+ fallback = *sys;
+ }
+ }
+ }
+ fallback
+ }
+
+ /// `RakPeer::GetMyGUID` (IDA 0xa63378).
+ #[must_use]
+ pub fn my_guid(&self) -> u64 {
+ self.my_guid
  }
 }
 
