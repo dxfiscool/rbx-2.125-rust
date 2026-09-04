@@ -941,10 +941,115 @@ pub fn stub_0x4a7f5c() {
     // IDA 0x4a7f5c: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
+/// Minimal `RBX::ExtrudedPartInstance` state visible to its enum descriptor (IDA 0x4a88f0).
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
+pub struct ExtrudedPartState {
+    pub visual_truss_style: i32,
+}
+
+/// Get/set pair behind `EnumPropDescriptor<ExtrudedPartInstance, VisualTrussStyle>`.
+pub struct TrussStyleAccess {
+    pub get: Box<dyn Fn(&ExtrudedPartState) -> i32 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut ExtrudedPartState, i32) + Send + Sync>,
+}
+
+/// `RBX::Reflection::EnumPropDescriptor<ExtrudedPartInstance, VisualTrussStyle>` (IDA 0x4a88f0).
+pub struct TrussStylePropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: TrussStyleAccess,
+    /// Singleton link stored at +40/+48 (same layout as the Explosion twin at 0x4a5834).
+    pub enum_desc: &'static crate::enum_desc::EnumDesc,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `Singleton<EnumDesc<VisualTrussStyle>>::doGetSingleton`: pairs grounded in disasm 0x49b7f4
+/// (`MOVS R1, #0` + "AlternatingSupports"), 0x49b80a (`#1` + "BridgeStyleSupports"), 0x49b820
+/// (`#2` + "NoSupports"); legacy display names mapped at 0x49b838-0x49b89c.
+static TRUSS_STYLE_DESC: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+    std::sync::LazyLock::new(|| {
+        let mut d = crate::enum_desc::EnumDesc::new("Style");
+        d.add_pair(0, "AlternatingSupports");
+        d.add_pair(1, "BridgeStyleSupports");
+        d.add_pair(2, "NoSupports");
+        d.add_legacy(0, "Alternating Supports", 0);
+        d.add_legacy(1, "Bridge Style Supports", 1);
+        d.add_legacy(2, "No Supports", 2);
+        d
+    });
+
+pub fn truss_style_enum_desc() -> &'static crate::enum_desc::EnumDesc {
+    &TRUSS_STYLE_DESC
+}
+
+/// Minimal `RBX::FaceInstance` state visible to its enum descriptor (IDA 0x4a9de0).
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
+pub struct FaceInstanceState {
+    pub normal_id: i32,
+}
+
+/// Get/set pair behind `EnumPropDescriptor<FaceInstance, NormalId>`.
+pub struct FaceNormalAccess {
+    pub get: Box<dyn Fn(&FaceInstanceState) -> i32 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut FaceInstanceState, i32) + Send + Sync>,
+}
+
+/// `RBX::Reflection::EnumPropDescriptor<FaceInstance, NormalId>` (IDA 0x4a9de0).
+pub struct FaceNormalPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: FaceNormalAccess,
+    /// Singleton link stored at +40/+48 (same layout as the Explosion twin at 0x4a5834).
+    pub enum_desc: &'static crate::enum_desc::EnumDesc,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `Singleton<EnumDesc<NormalId>>::doGetSingleton`: pairs grounded in disasm 0x6f2a52
+/// (`MOVS R1, #1` + "Top"), 0x6f2a68 (`#4` + "Bottom"), 0x6f2a7e (`#2` + "Back"), 0x6f2a94
+/// (`#5` + "Front"), 0x6f2aaa (`#0` + "Right"), 0x6f2ac0 (`#3` + "Left").
+static NORMAL_ID_DESC: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+    std::sync::LazyLock::new(|| {
+        let mut d = crate::enum_desc::EnumDesc::new("NormalId");
+        d.add_pair(1, "Top");
+        d.add_pair(4, "Bottom");
+        d.add_pair(2, "Back");
+        d.add_pair(5, "Front");
+        d.add_pair(0, "Right");
+        d.add_pair(3, "Left");
+        d
+    });
+
+pub fn normal_id_enum_desc() -> &'static crate::enum_desc::EnumDesc {
+    &NORMAL_ID_DESC
+}
+
 // 0x4a88f0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::EnumPropDescriptor<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>(char const*,char const*,RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x4a88f0() -> ! {
-    todo!("0x4a88f0 __ZN3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0x4a88f0(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&ExtrudedPartState) -> i32 + Send + Sync>,
+    set: Box<dyn Fn(&mut ExtrudedPartState, i32) + Send + Sync>,
+    mut attributes: u32,
+    permissions: u32,
+) -> TrussStylePropDesc {
+    // IDA 0x4a88f0: same ctor shape as the Explosion twin at 0x4a5834 — singleton link at
+    // +40/+48, `new(0x14)` member desc at +44 holding (getter, setter), then the
+    // read-only/write-only attribute masks, which query the GetSetImpl member desc that
+    // hardcodes 0 (see stub_0x4a911c/stub_0x4a9120), so the masks never fire.
+    if stub_0x4a911c() {
+        attributes &= !0x14;
+    }
+    TrussStylePropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: TrussStyleAccess { get, set },
+        enum_desc: truss_style_enum_desc(),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x4a8aa4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEED0Ev
@@ -967,26 +1072,38 @@ pub fn stub_0x4a8ae0() {
 
 // 0x4a8af0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4a8af0() -> ! {
-    todo!("0x4a8af0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE11equalValuesEPKNS0_13DescribedBaseES7_")
+pub fn stub_0x4a8af0(desc: &TrussStylePropDesc, a: &ExtrudedPartState, b: &ExtrudedPartState) -> bool {
+    // IDA 0x4a8af0: `v = member(+44)->get(a)` (vf+8, 0x4a8b00), `return v == member->get(b)`
+    // (0x4a8b16). Same shape as the Explosion twin at 0x4a5a34.
+    (desc.access.get)(a) == (desc.access.get)(b)
 }
 
 // 0x4a8b18 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x4a8b18() -> ! {
-    todo!("0x4a8b18 __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
+pub fn stub_0x4a8b18(desc: &TrussStylePropDesc, obj: &ExtrudedPartState) -> Variant {
+    // IDA 0x4a8b18: `v = getEnumValue(obj)` (vf+68, 0x4a8b26); out = `Variant(int, v)` via the
+    // int singleton + placement copy (0x4a8b2c-0x4a8b3a). Same shape as 0x4a5a5c.
+    Variant::Int((desc.access.get)(obj))
 }
 
 // 0x4a8b3c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x4a8b3c() -> ! {
-    todo!("0x4a8b3c __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")
+pub fn stub_0x4a8b3c(desc: &TrussStylePropDesc, obj: &mut ExtrudedPartState, value: &Variant) {
+    // IDA 0x4a8b3c: same shape as the Explosion twin at 0x4a5a80 — int payloads via
+    // `any_cast<int>`, anything else through `Variant::convert<int>`, then setEnumValue.
+    let v = match value {
+        Variant::Int(v) => *v,
+        other => other.convert_to_int(),
+    };
+    (desc.access.set)(obj, v);
 }
 
 // 0x4a8c88 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x4a8c88() -> ! {
-    todo!("0x4a8c88 __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE9copyValueEPKNS0_13DescribedBaseEPS5_")
+pub fn stub_0x4a8c88(desc: &TrussStylePropDesc, src: &ExtrudedPartState, dst: &mut ExtrudedPartState) {
+    // IDA 0x4a8c88: `v = member(+44)->get(src)`, then `member->set(dst, v)`. Same as 0x4a5bcc.
+    let v = (desc.access.get)(src);
+    (desc.access.set)(dst, v);
 }
 
 // 0x4a8cac — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE14hasStringValueEv
@@ -998,62 +1115,113 @@ pub fn stub_0x4a8cac() -> bool {
 
 // 0x4a8cb0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4a8cb0() -> ! {
-    todo!("0x4a8cb0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE14getStringValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x4a8cb0(desc: &TrussStylePropDesc, obj: &ExtrudedPartState) -> String {
+    // IDA 0x4a8cb0: `v = member(+44)->get(obj)`, then `EnumDesc<VisualTrussStyle>::convertToString`.
+    // Same shape as the Explosion twin at 0x4a5bf8.
+    desc.enum_desc.lookup_name((desc.access.get)(obj)).unwrap_or_default().to_owned()
 }
 
 // 0x4a8cd4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x4a8cd4() -> ! {
-    todo!("0x4a8cd4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE14setStringValueEPNS0_13DescribedBaseERKSs")
+pub fn stub_0x4a8cd4(desc: &TrussStylePropDesc, obj: &mut ExtrudedPartState, name: &str) -> bool {
+    // IDA 0x4a8cd4: `Name::lookup`, `convertToValue(enumdesc@+48, ...)`; on 1 set + return 1,
+    // else 0. Same shape as the Explosion twin at 0x4a5c1c.
+    match desc.enum_desc.lookup_value(name) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x4a8d14 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_0x4a8d14() -> ! {
-    todo!("0x4a8d14 __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")
+pub fn stub_0x4a8d14(desc: &TrussStylePropDesc, obj: &ExtrudedPartState) -> i32 {
+    // IDA 0x4a8d14: `v = member(+44)->get(obj)` (vf+8, 0x4a8d22), `clearValue(pair)`, store int
+    // tag 5 + value (0x4a8d28-0x4a8d30), return 5. Same shape as 0x4a5c5c.
+    (desc.access.get)(obj)
 }
 
 // 0x4a8d34 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_0x4a8d34() -> ! {
-    todo!("0x4a8d34 __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
+pub fn stub_0x4a8d34(desc: &TrussStylePropDesc, obj: &mut ExtrudedPartState, text: &str) -> bool {
+    // IDA 0x4a8d34: element-text extract, `Name::lookup`, `convertToValue`; on success set.
+    // Same shape as the Explosion twin at 0x4a5c7c.
+    match desc.enum_desc.lookup_value(text) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x4a8f74 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4a8f74() -> ! {
-    todo!("0x4a8f74 __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE13getIndexValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x4a8f74(desc: &TrussStylePropDesc, obj: &ExtrudedPartState) -> i32 {
+    // IDA 0x4a8f74: `v = member(+44)->get(obj)`, return `convertToIndex(enumdesc@+48, v)`.
+    // Same shape as the Explosion twin at 0x4a5ebc.
+    stub_0x4a906c(desc.enum_desc, (desc.access.get)(obj))
 }
 
 // 0x4a8f90 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_0x4a8f90() -> ! {
-    todo!("0x4a8f90 __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE13setIndexValueEPNS0_13DescribedBaseEm")
+pub fn stub_0x4a8f90(desc: &TrussStylePropDesc, obj: &mut ExtrudedPartState, index: usize) -> bool {
+    // IDA 0x4a8f90: bounds-check against the enum count, load `values[index]`, set, return 1;
+    // else 0. Same shape as the Explosion twin at 0x4a5ed8.
+    match desc.enum_desc.values.get(index) {
+        Some(&v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x4a8fc4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4a8fc4() -> ! {
-    todo!("0x4a8fc4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE12getEnumValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x4a8fc4(desc: &TrussStylePropDesc, obj: &ExtrudedPartState) -> i32 {
+    // IDA 0x4a8fc4: tail-jump to `member(+44)->get(obj)` (vf+8). Same as 0x4a5f0c.
+    (desc.access.get)(obj)
 }
 
 // 0x4a8fcc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x4a8fcc() -> ! {
-    todo!("0x4a8fcc __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE12setEnumValueEPNS0_13DescribedBaseEi")
+pub fn stub_0x4a8fcc(desc: &TrussStylePropDesc, obj: &mut ExtrudedPartState, value: i32) -> bool {
+    // IDA 0x4a8fcc: `find_if(items, bind(equalValue, _1, value))`; hit sets + returns 1, miss 0.
+    // Same shape as the Explosion twin at 0x4a5f14.
+    if desc.enum_desc.items.iter().any(|it| it.value == value) {
+        (desc.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x4a9018 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4a9018() -> ! {
-    todo!("0x4a9018 __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE11getEnumItemEPKNS0_13DescribedBaseE")
+pub fn stub_0x4a9018(desc: &TrussStylePropDesc, obj: &ExtrudedPartState) -> Option<crate::enum_desc::EnumItem> {
+    // IDA 0x4a9018: `v = member(+44)->get(obj)`, return `convertToItem(enumdesc@+48, &v)`.
+    // Same shape as the Explosion twin at 0x4a5f60.
+    let v = (desc.access.get)(obj);
+    usize::try_from(v)
+        .ok()
+        .and_then(|slot| desc.enum_desc.items_by_value.get(slot).copied().flatten())
+        .and_then(|idx| desc.enum_desc.items.get(idx).cloned())
 }
 
 // 0x4a9038 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_0x4a9038() -> ! {
-    todo!("0x4a9038 __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")
+pub fn stub_0x4a9038(desc: &TrussStylePropDesc, obj: &mut ExtrudedPartState, name: &str) -> bool {
+    // IDA 0x4a9038 (`Name` overload): `convertToValue` then conditional set. Same as 0x4a5f80.
+    match desc.enum_desc.lookup_value(name) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x4a906c — __ZNK3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEE14convertToIndexES3_
@@ -1066,8 +1234,19 @@ pub fn stub_0x4a906c(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 
 // 0x4a90dc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x4a90dc() -> ! {
-    todo!("0x4a90dc __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_0x4a90dc(desc: &TrussStylePropDesc, obj: &mut ExtrudedPartState, value: i32) -> bool {
+    // IDA 0x4a90dc: `value >= 0` + bounds check, `mapped = value_to_value[value]`; `-1`
+    // returns 0, else set + return 1. Same shape as the Explosion twin at 0x4a6028.
+    match usize::try_from(value)
+        .ok()
+        .and_then(|slot| desc.enum_desc.value_to_value.get(slot).copied())
+    {
+        Some(mapped) if mapped != -1 => {
+            (desc.access.set)(obj, mapped);
+            true
+        }
+        _ => false,
+    }
 }
 
 // 0x4a911c — __ZNK3RBX10Reflection14PropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
@@ -1086,14 +1265,18 @@ pub fn stub_0x4a9120() -> bool {
 
 // 0x4a9124 — __ZNK3RBX10Reflection14PropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4a9124() -> ! {
-    todo!("0x4a9124 __ZNK3RBX10Reflection14PropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x4a9124(access: &TrussStyleAccess, obj: &ExtrudedPartState) -> i32 {
+    // IDA 0x4a9124: null→`obj-36` member adjust + member-pointer dispatch through the getter.
+    // Same shape as the Explosion twin at 0x4a6074.
+    (access.get)(obj)
 }
 
 // 0x4a9144 — __ZNK3RBX10Reflection14PropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::setValue(RBX::Reflection::DescribedBase *,RBX::ExtrudedPartInstance::VisualTrussStyle const&)const")]
-pub fn stub_0x4a9144() -> ! {
-    todo!("0x4a9144 __ZNK3RBX10Reflection14PropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")
+pub fn stub_0x4a9144(access: &TrussStyleAccess, obj: &mut ExtrudedPartState, value: i32) {
+    // IDA 0x4a9144: same member-pointer dispatch as stub_0x4a9124 through the setter.
+    // Same shape as the Explosion twin at 0x4a6094.
+    (access.set)(obj, value);
 }
 
 // 0x4a9728 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEED1Ev
@@ -1104,8 +1287,26 @@ pub fn stub_0x4a9728() {
 
 // 0x4a9de0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId)>(char const*,char const*,RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x4a9de0() -> ! {
-    todo!("0x4a9de0 __ZN3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0x4a9de0(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&FaceInstanceState) -> i32 + Send + Sync>,
+    set: Box<dyn Fn(&mut FaceInstanceState, i32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> FaceNormalPropDesc {
+    // IDA 0x4a9de0: same EnumPropDescriptor ctor shape as 0x4a5834/0x4a88f0 — singleton link
+    // at +40/+48, `new(0x14)` member desc at +44 holding (getter, setter); the
+    // read-only/write-only attribute masks query a GetSetImpl that hardcodes 0, so they
+    // never fire and the model keeps `attributes` as passed.
+    FaceNormalPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: FaceNormalAccess { get, set },
+        enum_desc: normal_id_enum_desc(),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x4a9f94 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEED0Ev
@@ -1128,8 +1329,10 @@ pub fn stub_0x4a9fd0() {
 
 // 0x4a9fe0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4a9fe0() -> ! {
-    todo!("0x4a9fe0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE11equalValuesEPKNS0_13DescribedBaseES7_")
+pub fn stub_0x4a9fe0(desc: &FaceNormalPropDesc, a: &FaceInstanceState, b: &FaceInstanceState) -> bool {
+    // IDA 0x4a9fe0: `v = member(+44)->get(a)`, `return v == member->get(b)`. Same shape as
+    // the Explosion twin at 0x4a5a34 and the truss twin at 0x4a8af0.
+    (desc.access.get)(a) == (desc.access.get)(b)
 }
 
 // 0x4aa008 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
