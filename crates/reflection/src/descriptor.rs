@@ -17,6 +17,8 @@ pub struct InstanceHandle {
 pub enum Variant {
     Int(i32),
     Float(f32),
+    Bool(bool),
+    Text(String),
     Instance(SharedPtr<InstanceHandle>),
 }
 
@@ -27,6 +29,8 @@ impl Variant {
         match self {
             Variant::Int(v) => *v,
             Variant::Float(v) => *v as i32,
+            Variant::Bool(_) => panic!("Variant::convert<int> on bool payload (IDA 0x4a5a80)"),
+            Variant::Text(_) => panic!("Variant::convert<int> on string payload (IDA 0x4a5a80)"),
             Variant::Instance(_) => panic!("Variant::convert<int> on non-numeric payload (IDA 0x4a5a80)"),
         }
     }

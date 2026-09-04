@@ -6,6 +6,152 @@
 #![allow(non_snake_case)]
 #![allow(clippy::all)]
 use rbx_core::SharedPtr;
+use crate::descriptor::GenericSlotWrapper;
+use crate::descriptor::InstanceHandle;
+use crate::descriptor::Variant;
+
+/// Minimal `RBX::Reflection::ClassDescriptor` link: the guarded-once singleton each
+/// `Described<T>::classDescriptor()` builds from its parent descriptor plus the
+/// class name (IDA 0x3ff478: `__cxa_guard_acquire`, parent init, `ClassDescriptor`
+/// ctor, `__cxa_atexit`, `__cxa_guard_release`). Rust: `LazyLock`; the atexit
+/// destructor runs at process exit.
+#[derive(Debug)]
+pub struct ClassDesc {
+    pub name: &'static str,
+    pub base: &'static str,
+}
+
+/// `boost::_bi::bind_t<mf3<GenericSlotWrapper,(Instance,string,ChatColor)>>`
+/// (IDA 0x3eec08/0x3eecec): stores the bound wrapper; the member function is fixed
+/// (`execute3`), so the triple folds into the target.
+#[derive(Clone)]
+pub struct BoundChatSlot {
+    pub target: SharedPtr<GenericSlotWrapper>,
+}
+
+impl BoundChatSlot {
+    pub fn call(&self, instance: &SharedPtr<InstanceHandle>, text: &str, color: i32) {
+        // IDA mf3 operator(): pack `(Instance, string, ChatColor)` into Variants and
+        // dispatch through the wrapped slot (cf. execute2 at 0x4a40c8).
+        (self.target.invoke)(&[
+            Variant::Instance(SharedPtr::clone(instance)),
+            Variant::Text(text.to_owned()),
+            Variant::Int(color),
+        ]);
+    }
+}
+
+/// `boost::function3<void, SharedPtr<Instance>, string, ChatColor>` holding one bound
+/// chat slot (IDA 0x3eecec/0x3eec08).
+#[derive(Default, Clone)]
+pub struct ChatSlotFunction {
+    bound: Option<BoundChatSlot>,
+}
+
+impl ChatSlotFunction {
+    pub fn is_empty(&self) -> bool {
+        self.bound.is_none()
+    }
+
+    pub fn invoke(&self, instance: &SharedPtr<InstanceHandle>, text: &str, color: i32) {
+        if let Some(bound) = &self.bound {
+            bound.call(instance, text, color);
+        }
+    }
+}
+
+/// `boost::_bi::bind_t<mf1<GenericSlotWrapper, const PropertyDescriptor*>>`
+/// (IDA 0x706d04/0x706de8): stores the bound wrapper. The descriptor pointer payload
+/// has no `Variant` representation, so only the stored target is modeled; invocation
+/// runs through the functor manager/invoker (unmodeled).
+#[derive(Clone)]
+pub struct BoundPropDescSlot {
+    pub target: SharedPtr<GenericSlotWrapper>,
+}
+
+/// `boost::function1<void, const PropertyDescriptor*>` holding one bound slot
+/// (IDA 0x706de8/0x706d04).
+#[derive(Default, Clone)]
+pub struct PropDescSlotFunction {
+    bound: Option<BoundPropDescSlot>,
+}
+
+impl PropDescSlotFunction {
+    pub fn is_empty(&self) -> bool {
+        self.bound.is_none()
+    }
+}
+
+/// `boost::_bi::bind_t<mf2<GenericSlotWrapper,(Instance,Instance)>>`
+/// (IDA 0x70850c/0x7085f0): stores the bound wrapper; the member function is fixed
+/// (`execute2`), so the triple folds into the target.
+#[derive(Clone)]
+pub struct BoundInstancePairSlot {
+    pub target: SharedPtr<GenericSlotWrapper>,
+}
+
+impl BoundInstancePairSlot {
+    pub fn call(&self, first: &SharedPtr<InstanceHandle>, second: &SharedPtr<InstanceHandle>) {
+        // IDA mf2 operator(): pack the two instances and dispatch (cf. 0x4a40c8).
+        (self.target.invoke)(&[
+            Variant::Instance(SharedPtr::clone(first)),
+            Variant::Instance(SharedPtr::clone(second)),
+        ]);
+    }
+}
+
+/// `boost::function2<void, SharedPtr<Instance>, SharedPtr<Instance>>` holding one
+/// bound slot (IDA 0x7085f0/0x70850c).
+#[derive(Default, Clone)]
+pub struct InstancePairSlotFunction {
+    bound: Option<BoundInstancePairSlot>,
+}
+
+impl InstancePairSlotFunction {
+    pub fn is_empty(&self) -> bool {
+        self.bound.is_none()
+    }
+
+    pub fn invoke(&self, first: &SharedPtr<InstanceHandle>, second: &SharedPtr<InstanceHandle>) {
+        if let Some(bound) = &self.bound {
+            bound.call(first, second);
+        }
+    }
+}
+
+/// `boost::_bi::bind_t<void(*)(function<void(Variant)>, SharedPtr<Instance>)>`
+/// (IDA 0x70b534/0x70b608): stores the bound `function<void(Variant)>` continuation;
+/// the free function is `resume_adapter<SharedPtr<Instance>>` (0x702f60), so invoking
+/// forwards `(resume, instance)` there.
+#[derive(Clone)]
+pub struct BoundInstanceResumeSlot {
+    pub resume: SharedPtr<dyn Fn(Variant) + Send + Sync>,
+}
+
+impl BoundInstanceResumeSlot {
+    pub fn call(&self, instance: &SharedPtr<InstanceHandle>) {
+        stub_702f60(&*self.resume, instance);
+    }
+}
+
+/// `boost::function1<void, SharedPtr<Instance>>` holding one bound resume slot
+/// (IDA 0x70b608/0x70b534).
+#[derive(Default, Clone)]
+pub struct InstanceResumeSlotFunction {
+    bound: Option<BoundInstanceResumeSlot>,
+}
+
+impl InstanceResumeSlotFunction {
+    pub fn is_empty(&self) -> bool {
+        self.bound.is_none()
+    }
+
+    pub fn invoke(&self, instance: &SharedPtr<InstanceHandle>) {
+        if let Some(bound) = &self.bound {
+            bound.call(instance);
+        }
+    }
+}
 
 // 0x3e6f0c — __ZThn92_N3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
@@ -231,14 +377,23 @@ pub fn stub_3eddf4() {
 
 // 0x3eec08 — __ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEESsNS2_11ChatService9ChatColorEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKS4_RKSsRKS6_EENSA_5list4INSA_5valueINS1_ISF_EEEENS_3argILi1EEENSR_ILi2EEENSR_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISX_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "__ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEESsNS2_11ChatService9ChatColorEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKS4_RKSsRKS6_EENSA_5list4INSA_5valueINS1_ISF_EEEENS_3argILi1EEENSR_ILi2EEENSR_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISX_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_3eec08() -> ! {
-    todo!("0x3eec08 __ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEESsNS2_11ChatService9ChatColorEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKS4_RKSsRKS6_EENSA_5list4INSA_5valueINS1_ISF_EEEENS_3argILi1EEENSR_ILi2EEENSR_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISX_EE5valueEEE5valueEiE4typeE")
+pub fn stub_3eec08(target: SharedPtr<GenericSlotWrapper>) -> ChatSlotFunction {
+    // IDA 0x3eec08: `function` ctor copies the bind_t temp (shared-count bump,
+    // 0x3eec2c-0x3eec40), forwards to the `function3` ctor (0x3eec82), then releases
+    // the temp (0x3eec88-0x3eec90). Rust: the forward carries the target; the temp
+    // drop is `Arc` glue.
+    stub_3eecec(target)
 }
 
 // 0x3eecec — __ZN5boost9function3IvNS_10shared_ptrIN3RBX8InstanceEEESsNS2_11ChatService9ChatColorEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKS4_RKSsRKS6_EENS9_5list4INS9_5valueINS1_ISE_EEEENS_3argILi1EEENSQ_ILi2EEENSQ_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISW_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "__ZN5boost9function3IvNS_10shared_ptrIN3RBX8InstanceEEESsNS2_11ChatService9ChatColorEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKS4_RKSsRKS6_EENS9_5list4INS9_5valueINS1_ISE_EEEENS_3argILi1EEENSQ_ILi2EEENSQ_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISW_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_3eecec() -> ! {
-    todo!("0x3eecec __ZN5boost9function3IvNS_10shared_ptrIN3RBX8InstanceEEESsNS2_11ChatService9ChatColorEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKS4_RKSsRKS6_EENS9_5list4INS9_5valueINS1_ISE_EEEENS_3argILi1EEENSQ_ILi2EEENSQ_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISW_EE5valueEEE5valueEiE4typeE")
+pub fn stub_3eecec(target: SharedPtr<GenericSlotWrapper>) -> ChatSlotFunction {
+    // IDA 0x3eecec: `function3` ctor clears the object (`*a1 = 0`, 0x3eed0e), copies
+    // the bind_t temp (0x3eed14-0x3eed28), `assign_to` stores the bound slot
+    // (0x3eed6a), then releases the temp (0x3eed70-0x3eed78).
+    ChatSlotFunction {
+        bound: Some(BoundChatSlot { target }),
+    }
 }
 
 // 0x3f1f34 — __ZN3RBX10Reflection9DescribedINS_13ClickDetectorELZNS_14sClickDetectorEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sClickDetectorEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -315,8 +470,14 @@ pub fn stub_3f44d4() {
 
 // 0x3ff478 — __ZN3RBX10Reflection9DescribedINS_7Network7PlayersELZNS2_8sPlayersEENS_17NonFactoryProductINS_8InstanceELZNS2_8sPlayersEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7Network7PlayersELZNS2_8sPlayersEENS_17NonFactoryProductINS_8InstanceELZNS2_8sPlayersEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_3ff478() -> ! {
-    todo!("0x3ff478 __ZN3RBX10Reflection9DescribedINS_7Network7PlayersELZNS2_8sPlayersEENS_17NonFactoryProductINS_8InstanceELZNS2_8sPlayersEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+static PLAYERS_DESC: std::sync::LazyLock<ClassDesc> =
+    std::sync::LazyLock::new(|| ClassDesc { name: "Players", base: "Instance" });
+pub fn stub_3ff478() -> &'static ClassDesc {
+    // IDA 0x3ff478: guarded-once (`__cxa_guard_acquire`, 0x3ff4d4) init of
+    // `describedClassDescriptor` from the `Instance` parent descriptor (0x3ff4e0)
+    // plus `RBX::Network::sPlayers` (0x3ff51c), registered with `__cxa_atexit`
+    // (0x3ff53a); returns the singleton (0x3ff56a).
+    &PLAYERS_DESC
 }
 
 // 0x417548 — __ZN3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -453,14 +614,23 @@ pub fn stub_418f70() {
 
 // 0x430e54 — __ZN3RBX10ReflectionL14resume_adapterIbEEvN5boost8functionIFvNS0_7VariantEEEET__0
 #[doc(alias = "__ZN3RBX10ReflectionL14resume_adapterIbEEvN5boost8functionIFvNS0_7VariantEEEET__0")]
-pub fn stub_430e54() -> ! {
-    todo!("0x430e54 __ZN3RBX10ReflectionL14resume_adapterIbEEvN5boost8functionIFvNS0_7VariantEEEET__0")
+pub fn stub_430e54(callback: &dyn Fn(Variant), value: bool) {
+    // IDA 0x430e54: `resume_adapter<bool>`: fetch `Type::getSingleton<bool>`
+    // (0x430e8a), wrap the bool in a `Variant` through `typed_holder<bool>`
+    // (0x430e94-0x430eee), invoke `function1<void,Variant>` (0x430efc), then tear
+    // down both holders (0x430f02-0x430f1e). Rust: the holder dance folds into the
+    // `Variant::Bool` payload; the callback is the `boost::function` target.
+    callback(Variant::Bool(value));
 }
 
 // 0x430fa8 — __ZN3RBX10ReflectionL14resume_adapterISsEEvN5boost8functionIFvNS0_7VariantEEEET__0
 #[doc(alias = "__ZN3RBX10ReflectionL14resume_adapterISsEEvN5boost8functionIFvNS0_7VariantEEEET__0")]
-pub fn stub_430fa8() -> ! {
-    todo!("0x430fa8 __ZN3RBX10ReflectionL14resume_adapterISsEEvN5boost8functionIFvNS0_7VariantEEEET__0")
+pub fn stub_430fa8(callback: &dyn Fn(Variant), value: &str) {
+    // IDA 0x430fa8: `resume_adapter<string>`: same shape as the bool twin at
+    // 0x430e54 — `getSingleton<string>` (0x430fde), copy the string into the
+    // holder (0x430fea-0x430fee), wrap, invoke (0x431054), teardown
+    // (0x43105a-0x431076).
+    callback(Variant::Text(value.to_owned()));
 }
 
 // 0x6ddf38 — __ZThn36_N3RBX18DescribedCreatableINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
@@ -507,8 +677,13 @@ pub fn stub_6de188() {
 
 // 0x702f60 — __ZN3RBX10ReflectionL14resume_adapterIN5boost10shared_ptrINS_8InstanceEEEEEvNS2_8functionIFvNS0_7VariantEEEET__0
 #[doc(alias = "__ZN3RBX10ReflectionL14resume_adapterIN5boost10shared_ptrINS_8InstanceEEEEEvNS2_8functionIFvNS0_7VariantEEEET__0")]
-pub fn stub_702f60() -> ! {
-    todo!("0x702f60 __ZN3RBX10ReflectionL14resume_adapterIN5boost10shared_ptrINS_8InstanceEEEEEvNS2_8functionIFvNS0_7VariantEEEET__0")
+pub fn stub_702f60(callback: &dyn Fn(Variant), instance: &SharedPtr<InstanceHandle>) {
+    // IDA 0x702f60: `resume_adapter<SharedPtr<Instance>>`: `getSingleton` for the
+    // instance-held type (0x702f96), copy the shared count into the holder
+    // (0x702fae-0x702fb6), wrap into a `Variant` (0x70300c), invoke
+    // `function1<void,Variant>` (0x70301a), teardown (0x703020-0x70303c). Rust: the
+    // copy/wrap folds into the `Variant::Instance` payload.
+    callback(Variant::Instance(SharedPtr::clone(instance)));
 }
 
 // 0x705288 — __ZN3RBX10Reflection9DescribedINS_8InstanceELZNS_9sInstanceEENS0_13DescribedBaseELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -525,84 +700,151 @@ pub fn stub_70529c() {
 
 // 0x706d04 — __ZN5boost8functionIFvPKN3RBX10Reflection18PropertyDescriptorEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_18GenericSlotWrapperERKS5_EENS9_5list2INS9_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "__ZN5boost8functionIFvPKN3RBX10Reflection18PropertyDescriptorEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_18GenericSlotWrapperERKS5_EENS9_5list2INS9_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_706d04() -> ! {
-    todo!("0x706d04 __ZN5boost8functionIFvPKN3RBX10Reflection18PropertyDescriptorEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_18GenericSlotWrapperERKS5_EENS9_5list2INS9_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE")
+pub fn stub_706d04(target: SharedPtr<GenericSlotWrapper>) -> PropDescSlotFunction {
+    // IDA 0x706d04: `function` ctor copies the bind_t temp (shared-count bump,
+    // 0x706d28-0x706d3c), forwards to the `function1` ctor (0x706d7e), then releases
+    // the temp (0x706d84-0x706d8c). Same shape as the chat twin at 0x3eec08.
+    stub_706de8(target)
 }
 
 // 0x706de8 — __ZN5boost9function1IvPKN3RBX10Reflection18PropertyDescriptorEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_18GenericSlotWrapperERKS5_EENS8_5list2INS8_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "__ZN5boost9function1IvPKN3RBX10Reflection18PropertyDescriptorEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_18GenericSlotWrapperERKS5_EENS8_5list2INS8_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_706de8() -> ! {
-    todo!("0x706de8 __ZN5boost9function1IvPKN3RBX10Reflection18PropertyDescriptorEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_18GenericSlotWrapperERKS5_EENS8_5list2INS8_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")
+pub fn stub_706de8(target: SharedPtr<GenericSlotWrapper>) -> PropDescSlotFunction {
+    // IDA 0x706de8: `function1` ctor clears the object (`*a1 = 0`, 0x706e0a), copies
+    // the bind_t temp (0x706e10-0x706e24), `assign_to` stores the bound slot
+    // (0x706e66), then releases the temp (0x706e6c-0x706e74). Same shape as the
+    // chat twin at 0x3eecec.
+    PropDescSlotFunction {
+        bound: Some(BoundPropDescSlot { target }),
+    }
 }
 
 // 0x70850c — __ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEES4_EEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS2_10Reflection18GenericSlotWrapperERKS4_SF_EENS8_5list3INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSL_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "__ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEES4_EEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS2_10Reflection18GenericSlotWrapperERKS4_SF_EENS8_5list3INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSL_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_70850c() -> ! {
-    todo!("0x70850c __ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEES4_EEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS2_10Reflection18GenericSlotWrapperERKS4_SF_EENS8_5list3INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSL_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE")
+pub fn stub_70850c(target: SharedPtr<GenericSlotWrapper>) -> InstancePairSlotFunction {
+    // IDA 0x70850c: `function` ctor copies the bind_t temp (shared-count bump,
+    // 0x708530-0x708544), forwards to the `function2` ctor (0x708586), then releases
+    // the temp (0x70858c-0x708594). Same shape as the chat twin at 0x3eec08.
+    stub_7085f0(target)
 }
 
 // 0x7085f0 — __ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEES4_EC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS2_10Reflection18GenericSlotWrapperERKS4_SE_EENS7_5list3INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "__ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEES4_EC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS2_10Reflection18GenericSlotWrapperERKS4_SE_EENS7_5list3INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_7085f0() -> ! {
-    todo!("0x7085f0 __ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEES4_EC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS2_10Reflection18GenericSlotWrapperERKS4_SE_EENS7_5list3INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")
+pub fn stub_7085f0(target: SharedPtr<GenericSlotWrapper>) -> InstancePairSlotFunction {
+    // IDA 0x7085f0: `function2` ctor clears the object (`*a1 = 0`, 0x708612), copies
+    // the bind_t temp (0x708618-0x70862c), `assign_to` stores the bound slot
+    // (0x70866e), then releases the temp (0x708674-0x70867c). Same shape as the
+    // chat twin at 0x3eecec.
+    InstancePairSlotFunction {
+        bound: Some(BoundInstancePairSlot { target }),
+    }
 }
 
 // 0x70b534 — __ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEEEEC2INS_3_bi6bind_tIvPFvNS0_IFvNS2_10Reflection7VariantEEEES4_ENS8_5list2INS8_5valueISD_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "__ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEEEEC2INS_3_bi6bind_tIvPFvNS0_IFvNS2_10Reflection7VariantEEEES4_ENS8_5list2INS8_5valueISD_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_70b534() -> ! {
-    todo!("0x70b534 __ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEEEEC2INS_3_bi6bind_tIvPFvNS0_IFvNS2_10Reflection7VariantEEEES4_ENS8_5list2INS8_5valueISD_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")
+pub fn stub_70b534(resume: SharedPtr<dyn Fn(Variant) + Send + Sync>) -> InstanceResumeSlotFunction {
+    // IDA 0x70b534: `function` ctor clones the bound `function<void(Variant)>` into a
+    // temp (`assign_to_own`, 0x70b566), forwards to the `function1` ctor (0x70b5a0),
+    // then clears the temp (0x70b5ac). Rust: the forward carries the continuation.
+    stub_70b608(resume)
 }
 
 // 0x70b608 — __ZN5boost9function1IvNS_10shared_ptrIN3RBX8InstanceEEEEC2INS_3_bi6bind_tIvPFvNS_8functionIFvNS2_10Reflection7VariantEEEES4_ENS7_5list2INS7_5valueISD_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "__ZN5boost9function1IvNS_10shared_ptrIN3RBX8InstanceEEEEC2INS_3_bi6bind_tIvPFvNS_8functionIFvNS2_10Reflection7VariantEEEES4_ENS7_5list2INS7_5valueISD_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_70b608() -> ! {
-    todo!("0x70b608 __ZN5boost9function1IvNS_10shared_ptrIN3RBX8InstanceEEEEC2INS_3_bi6bind_tIvPFvNS_8functionIFvNS2_10Reflection7VariantEEEES4_ENS7_5list2INS7_5valueISD_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")
+pub fn stub_70b608(resume: SharedPtr<dyn Fn(Variant) + Send + Sync>) -> InstanceResumeSlotFunction {
+    // IDA 0x70b608: `function1` ctor clears the object (`*a1 = 0`, 0x70b628), clones
+    // the bound continuation into a temp (`assign_to_own`, 0x70b63c), `assign_to`
+    // stores the bound resume slot (0x70b676), then clears the temp (0x70b682).
+    InstanceResumeSlotFunction {
+        bound: Some(BoundInstanceResumeSlot { resume }),
+    }
 }
 
 // 0x7105b8 — __ZN3RBX10Reflection9DescribedINS_19ServerScriptServiceELZNS_20sServerScriptServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sServerScriptServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_19ServerScriptServiceELZNS_20sServerScriptServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sServerScriptServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_7105b8() -> ! {
-    todo!("0x7105b8 __ZN3RBX10Reflection9DescribedINS_19ServerScriptServiceELZNS_20sServerScriptServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sServerScriptServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+static SERVER_SCRIPT_SERVICE_DESC: std::sync::LazyLock<ClassDesc> =
+    std::sync::LazyLock::new(|| ClassDesc { name: "ServerScriptService", base: "Instance" });
+pub fn stub_7105b8() -> &'static ClassDesc {
+    // IDA 0x7105b8: guarded-once init from the `Instance` parent descriptor
+    // (0x710620) plus `RBX::sServerScriptService` (0x71065c), `__cxa_atexit`
+    // (0x71067a); returns the singleton. Same shape as 0x3ff478.
+    &SERVER_SCRIPT_SERVICE_DESC
 }
 
 // 0x7106d8 — __ZN3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_7106d8() -> ! {
-    todo!("0x7106d8 __ZN3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+static STARTER_PACK_SERVICE_DESC: std::sync::LazyLock<ClassDesc> =
+    std::sync::LazyLock::new(|| ClassDesc { name: "StarterPackService", base: "GuiItem" });
+pub fn stub_7106d8() -> &'static ClassDesc {
+    // IDA 0x7106d8: guarded-once init from the `GuiItem` parent descriptor
+    // (0x710740) plus `RBX::sStarterPackService` (0x71077c), `__cxa_atexit`
+    // (0x71079a); returns the singleton. Same shape as 0x3ff478. Note the parent
+    // call resolves to `GuiItem` even though the mangled template names `Hopper`.
+    &STARTER_PACK_SERVICE_DESC
 }
 
 // 0x7107f8 — __ZN3RBX10Reflection9DescribedINS_7GuiItemELZNS_8sGuiItemEENS_17NonFactoryProductINS_8InstanceELZNS_8sGuiItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7GuiItemELZNS_8sGuiItemEENS_17NonFactoryProductINS_8InstanceELZNS_8sGuiItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_7107f8() -> ! {
-    todo!("0x7107f8 __ZN3RBX10Reflection9DescribedINS_7GuiItemELZNS_8sGuiItemEENS_17NonFactoryProductINS_8InstanceELZNS_8sGuiItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+static GUI_ITEM_DESC: std::sync::LazyLock<ClassDesc> =
+    std::sync::LazyLock::new(|| ClassDesc { name: "GuiItem", base: "Instance" });
+pub fn stub_7107f8() -> &'static ClassDesc {
+    // IDA 0x7107f8: guarded-once init from the `Instance` parent descriptor
+    // (0x710860) plus `RBX::sGuiItem` (0x71089c), `__cxa_atexit` (0x7108ba);
+    // returns the singleton (0x7108ea). Same shape as 0x3ff478.
+    &GUI_ITEM_DESC
 }
 
 // 0x710918 — __ZN3RBX10Reflection9DescribedINS_17StarterGuiServiceELZNS_18sStarterGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_18sStarterGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_17StarterGuiServiceELZNS_18sStarterGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_18sStarterGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_710918() -> ! {
-    todo!("0x710918 __ZN3RBX10Reflection9DescribedINS_17StarterGuiServiceELZNS_18sStarterGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_18sStarterGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+static STARTER_GUI_SERVICE_DESC: std::sync::LazyLock<ClassDesc> =
+    std::sync::LazyLock::new(|| ClassDesc { name: "StarterGuiService", base: "BasePlayerGui" });
+pub fn stub_710918() -> &'static ClassDesc {
+    // IDA 0x710918: guarded-once init from the `BasePlayerGui` parent descriptor
+    // (0x710980) plus `RBX::sStarterGuiService` (0x7109bc), `__cxa_atexit`
+    // (0x7109da); returns the singleton. Same shape as 0x3ff478.
+    &STARTER_GUI_SERVICE_DESC
 }
 
 // 0x710a38 — __ZN3RBX10Reflection9DescribedINS_17ReplicatedStorageELZNS_18sReplicatedStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_18sReplicatedStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_17ReplicatedStorageELZNS_18sReplicatedStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_18sReplicatedStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_710a38() -> ! {
-    todo!("0x710a38 __ZN3RBX10Reflection9DescribedINS_17ReplicatedStorageELZNS_18sReplicatedStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_18sReplicatedStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+static REPLICATED_STORAGE_DESC: std::sync::LazyLock<ClassDesc> =
+    std::sync::LazyLock::new(|| ClassDesc { name: "ReplicatedStorage", base: "Instance" });
+pub fn stub_710a38() -> &'static ClassDesc {
+    // IDA 0x710a38: guarded-once init from the `Instance` parent descriptor
+    // (0x710aa0) plus `RBX::sReplicatedStorage` (0x710adc), `__cxa_atexit`
+    // (0x710afa); returns the singleton. Same shape as 0x3ff478.
+    &REPLICATED_STORAGE_DESC
 }
 
 // 0x710b58 — __ZN3RBX10Reflection9DescribedINS_13ServerStorageELZNS_14sServerStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sServerStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EE15classDescriptorEv
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13ServerStorageELZNS_14sServerStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sServerStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_710b58() -> ! {
-    todo!("0x710b58 __ZN3RBX10Reflection9DescribedINS_13ServerStorageELZNS_14sServerStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sServerStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+static SERVER_STORAGE_DESC: std::sync::LazyLock<ClassDesc> =
+    std::sync::LazyLock::new(|| ClassDesc { name: "ServerStorage", base: "Instance" });
+pub fn stub_710b58() -> &'static ClassDesc {
+    // IDA 0x710b58: guarded-once init from the `Instance` parent descriptor
+    // (0x710bc0) plus `RBX::sServerStorage` (0x710bfc), `__cxa_atexit` (0x710c1a);
+    // returns the singleton. Same shape as 0x3ff478.
+    &SERVER_STORAGE_DESC
 }
 
 // 0x710c78 — __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_710c78() -> ! {
-    todo!("0x710c78 __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+static SOUND_SERVICE_DESC: std::sync::LazyLock<ClassDesc> =
+    std::sync::LazyLock::new(|| ClassDesc { name: "SoundService", base: "Instance" });
+pub fn stub_710c78() -> &'static ClassDesc {
+    // IDA 0x710c78: guarded-once init from the `Instance` parent descriptor
+    // (0x710ce0) plus `RBX::Soundscape::sSoundService` (0x710d1c), `__cxa_atexit`
+    // (0x710d3a); returns the singleton. Same shape as 0x3ff478.
+    &SOUND_SERVICE_DESC
 }
 
 // 0x710d98 — __ZN3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_710d98() -> ! {
-    todo!("0x710d98 __ZN3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+static LIGHTING_DESC: std::sync::LazyLock<ClassDesc> =
+    std::sync::LazyLock::new(|| ClassDesc { name: "Lighting", base: "Instance" });
+pub fn stub_710d98() -> &'static ClassDesc {
+    // IDA 0x710d98: guarded-once init from the `Instance` parent descriptor
+    // (0x710e00) plus `RBX::sLighting` (0x710e3c), `__cxa_atexit` (0x710e5a);
+    // returns the singleton (0x710e8a). Same shape as 0x3ff478.
+    &LIGHTING_DESC
 }
