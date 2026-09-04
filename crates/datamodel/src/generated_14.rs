@@ -12,7 +12,7 @@ use parking_lot::Mutex;
 use rbx_core::signal::Signal;
 use crate::data_model::DataModel;
 use crate::generated_05::{EventDescPayload, FunctorOp, GenericSlotWrapper, Instance, SignatureItem, SingleFunction, Variant, instance_is_a};
-use crate::generated_13::{FriendStatus, HttpRequestResult, ModelLoadBind, Player, PlayerAppearanceBind, PlayerDataModelBind, PlayerInstMethod, PlayerMouse, stub_a8d6b4, stub_a90080, stub_a91498};
+use crate::generated_13::{FriendStatus, HttpRequestResult, ModelLoadBind, Player, PlayerAppearanceBind, PlayerDataModelBind, PlayerInstFuncDesc, PlayerInstMethod, PlayerInstStatusFuncDesc, PlayerInstStatusMethod, PlayerMouse, PlayerStrInstFuncDesc, PlayerStrInstMethod, PlayerStrRetFuncDesc, PlayerStrRetMethod, PlayerVoidRetFuncDesc, PlayerVoidRetMethod, stub_a8d6b4, stub_a90080, stub_a91498, stub_a946c0, stub_a957f0};
 use crate::instance::{Backpack, ModelInstance};
 
 /// Rust model of an `rbx::signals::signal<void ()(SharedPtr<Instance>,
@@ -87,6 +87,83 @@ pub const FRIEND_BIND_TYPE_NAME: &str =
 pub struct FriendFuncSlotNode {
     pub next: Option<SharedPtr<FriendFuncSlotNode>>,
     pub func: FriendWrapperFunction,
+}
+/// Rust model of `boost::function2<void, string, SharedPtr<Instance>>`
+/// holding a wrapper bind (IDA `0xabaf94`): nullability of the retained
+/// wrapper is the vtable word. `(string, Instance)` twin of
+/// `FriendWrapperFunction`.
+#[derive(Clone, Default)]
+pub struct StrInstFunction {
+    pub target: Option<SharedPtr<GenericSlotWrapper>>,
+}
+/// Rust model of `boost::_bi::bind_t<void, void (*)(string, weak<Player>,
+/// weak<DataModel>), list3<value<string>, weak<Player>, weak<DataModel>>>`
+/// (IDA `0xaca39c`): the retained string plus the two retained weaks; the
+/// `DataModel*` invocation arg is dropped.
+#[derive(Clone)]
+pub struct StrPlayerDataBind {
+    pub text: String,
+    pub player: WeakPtr<Player>,
+    pub data_model: WeakPtr<DataModel>,
+}
+/// Rust model of `boost::function1<void, DataModel*>` holding that bind
+/// (IDA `0xacdbac`): nullability of the retained bind is the vtable word.
+#[derive(Clone, Default)]
+pub struct StrPlayerDataFunction {
+    pub target: Option<StrPlayerDataBind>,
+}
+/// Mangled type name `strcmp`ed by the `functor_manager::manager`
+/// check-type path (`__ZTS` symbol at IDA `0x1024080`).
+pub const STR_PLAYER_DATA_BIND_TYPE_NAME: &str =
+    "N5boost3_bi6bind_tIvPFvSsNS_8weak_ptrIN3RBX7Network6PlayerEEENS2_INS3_9DataModelEEEENS0_5list3INS0_5valueISsEENSC_IS6_EENSC_IS8_EEEEEE";
+/// Rust model of `boost::_bi::bind_t<void, void (*)(weak<Player>,
+/// RequestResult, vector, string, bool, double), list6<value<weak<Player>>,
+/// arg<1>, arg<2>, value<string>, value<bool>, value<double>>>` (IDA
+/// `0xacaa30`): the retained player weak plus the name/flag/timeout values;
+/// result and vector stay late-bound.
+#[derive(Clone)]
+pub struct PlayerLoadBind {
+    pub player: WeakPtr<Player>,
+    pub name: String,
+    pub flag: bool,
+    pub timeout: f64,
+}
+/// Rust model of `boost::function2<void, RequestResult,
+/// SharedPtr<vector<SharedPtr<Instance>>>>` holding that bind (IDA
+/// `0xacbfd8`): nullability of the retained bind is the vtable word. Twin
+/// of `ModelLoadFunction`.
+#[derive(Clone, Default)]
+pub struct PlayerLoadFunction {
+    pub target: Option<PlayerLoadBind>,
+}
+/// Mangled type name `strcmp`ed by the `functor_manager::manager`
+/// check-type path (`__ZTS` symbol at IDA `0x1023f90`).
+pub const PLAYER_LOAD_BIND_TYPE_NAME: &str =
+    "N5boost3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX7Network6PlayerEEENS3_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINS9_INS3_8InstanceEEESaISC_EEEESsbdENS0_5list6INS0_5valueIS6_EENS_3argILi1EEENSL_ILi2EEENSJ_ISsEENSJ_IbEENSJ_IdEEEEEE";
+/// Getter behind `RefPropDescriptor<Player, ModelInstance>` (IDA `0xac0518`
+/// `assignIDREF`): the raw `ModelInstance*` return collapses into an
+/// optional retained model.
+pub type PlayerModelGetter = fn(&Player) -> Option<SharedPtr<ModelInstance>>;
+/// Setter behind that descriptor: stores the retained model as the player's
+/// character.
+pub type PlayerModelSetter = fn(&Player, &SharedPtr<ModelInstance>);
+/// Rust model of `RBX::Reflection::RefPropDescriptor<RBX::Network::Player,
+/// RBX::ModelInstance>`: the name/category words, the getter/setter pair,
+/// the trailing int word, and the attributes/permissions words. Twin of
+/// `PlayersRefPropDesc` with a setter.
+pub struct PlayerModelRefProp {
+    pub name: String,
+    pub category: String,
+    pub getter: PlayerModelGetter,
+    pub setter: PlayerModelSetter,
+    pub flags: i32,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+/// Rust model of `RBX::Network::PeerStatsItem` (IDA `0xad6034`): the
+/// inferred-stats leaf; members land with a later batch.
+pub struct PeerStatsItem {
+    _opaque: (),
 }
 
 // 0xaa1e2c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11PlayerMouseENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
@@ -1151,335 +1228,702 @@ pub fn stub_aba210(this: *mut EventDescPayload, name: &str, permissions: u32, at
 // 0xaba5ac — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::~EventDesc()")]
 // was: RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::~EventDesc()
-pub fn stub_aba5ac() -> ! {
-    todo!("0xaba5ac RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::~EventDesc()")
+pub fn stub_aba5ac(this: *mut EventDescPayload) {
+    // IDA 0xaba5ac: D0 — vtable reset plus signature-list `_M_clear` plus
+    // `operator delete`; the box reclaim runs the field drops and frees
+    // together. Same shape as 0xa4a0a0.
+    // SAFETY: `this` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 
 // 0xaba688 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E14connectGenericEPNS0_11EventSourceENS5_INS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: RBX::Reflection::EventDescImpl<2,RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
-pub fn stub_aba688() -> ! {
-    todo!("0xaba688 RBX::Reflection::EventDescImpl<2,RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_aba688(desc: *const EventDescPayload, slot: &SharedPtr<GenericSlotWrapper>) {
+    // IDA 0xaba688: retain the wrapper, `bind(execute2-style, wrapper, _1,
+    // _2)`, wrap in `function2`, `EventDescBase::connect`, then the mirrored
+    // releases. Collapses to a retained clone + push onto the payload-side
+    // list. `(string, Instance)` twin of 0xab56c4.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    unsafe {
+        (*desc).connections.lock().push(slot.clone());
+    }
 }
 
 // 0xabab0c — __ZNK3RBX10Reflection13EventDescImplILi2ENS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISH_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 // was: RBX::Reflection::EventDescImpl<2,RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const
-pub fn stub_abab0c() -> ! {
-    todo!("0xabab0c RBX::Reflection::EventDescImpl<2,RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_abab0c(desc: *const EventDescPayload, args: &[Variant]) {
+    // IDA 0xabab0c: `ReleaseAssert(args.size() == 2)`, two `any_cast`s —
+    // `string` and `shared_ptr<Instance>` — then
+    // `signal_with_args<2>::operator()` fans out to each connected slot's
+    // `callable::call`. `(string, Instance)` twin of 0xab5b48.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    assert!(args.len() == 2, "0xabab0c: args.size() == 2");
+    let (text, inst) = match (&args[0], &args[1]) {
+        (Variant::Text(a), Variant::Instance(b)) => (a, b),
+        _ => panic!("0xabab0c: any_cast<(string, Instance)> failed"),
+    };
+    unsafe {
+        let slots = (*desc).connections.lock().clone();
+        for slot in slots.iter() {
+            if let Some(cb) = slot.on_str_inst {
+                cb(text, inst);
+            }
+        }
+    }
 }
 
 // 0xabaf7c — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
 // was: RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::disconnectAll(RBX::Reflection::EventSource *)const
-pub fn stub_abaf7c() -> ! {
-    todo!("0xabaf7c RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_abaf7c(desc: *const EventDescPayload) {
+    // IDA 0xabaf7c: `source ? source - 36 : 0` selects the member signal,
+    // then `signal::disconnectAll`; the addressing collapses into the
+    // payload-side list, so this clears the connections. Twin of 0xab5f20.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    unsafe {
+        (*desc).connections.lock().clear();
+    }
 }
 
 // 0xabaf94 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E7connectEPNS0_11EventSourceERKNS4_8functionIS8_EE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> const&)const")]
 // was: RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,boost::shared_ptr<RBX::Instance>)> const&)const
-pub fn stub_abaf94() -> ! {
-    todo!("0xabaf94 RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Player::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> const&)const")
+pub fn stub_abaf94(desc: *const EventDescPayload, func: &StrInstFunction) -> Option<SharedPtr<GenericSlotWrapper>> {
+    // IDA 0xabaf94: null function returns a null connection; else `malloc`
+    // the `callable` slot, copy the functor into it, `signal::insert` into
+    // the member signal, publish the connection. Collapses to retaining the
+    // bound wrapper and pushing it onto the payload-side list; the returned
+    // clone is the connection keep-alive. `(string, Instance)` twin of
+    // 0xab60e4.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    let target = func.target.clone()?;
+    unsafe {
+        (*desc).connections.lock().push(target.clone());
+    }
+    Some(target)
 }
 
 // 0xabe964 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFNS_13FriendService12FriendStatusEN5boost10shared_ptrINS_8InstanceEEEELi1EEC2EMS3_FS5_S9_EPKcSF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(rbx_core::SharedPtr<RBX::Instance>),1>::BoundFuncDesc(RBX::FriendService::FriendStatus (RBX::Network::Player::*)(rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(boost::shared_ptr<RBX::Instance>),1>::BoundFuncDesc(RBX::FriendService::FriendStatus (RBX::Network::Player::*)(boost::shared_ptr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_abe964() -> ! {
-    todo!("0xabe964 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(rbx_core::SharedPtr<RBX::Instance>),1>::BoundFuncDesc(RBX::FriendService::FriendStatus (RBX::Network::Player::*)(rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_abe964(this: *mut PlayerInstStatusFuncDesc, method: PlayerInstStatusMethod, first: &str) {
+    // IDA 0xabe964: `Player::classDescriptor` once-init, base
+    // `FunctionDescriptor` init, member-pointer words, then one
+    // `addArgument` call for the `shared_ptr<Instance>` arg. Twin of
+    // 0xa4eedc with an Instance arg and a `FriendStatus` return.
+    // SAFETY: `this` must point to valid uninitialized `PlayerInstStatusFuncDesc` storage.
+    unsafe {
+        core::ptr::write(
+            this,
+            PlayerInstStatusFuncDesc {
+                method,
+                arg_names: [first.to_string()],
+                signature: vec![SignatureItem { type_name: "SharedPtr<Instance>" }],
+            },
+        );
+    }
 }
 
 // 0xabebf4 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFNS_13FriendService12FriendStatusEN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
-pub fn stub_abebf4() -> ! {
-    todo!("0xabebf4 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_abebf4(this: *mut PlayerInstStatusFuncDesc) {
+    // IDA 0xabebf4: D0 — D1 body plus `operator delete`; the box reclaim
+    // runs the field drops and frees together. Same shape as 0xa4f148.
+    // SAFETY: `this` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 
 // 0xabec94 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFNS_13FriendService12FriendStatusEN5boost10shared_ptrINS_8InstanceEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(rbx_core::SharedPtr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(boost::shared_ptr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
-pub fn stub_abec94() -> ! {
-    todo!("0xabec94 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(rbx_core::SharedPtr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_abec94(desc: &PlayerInstStatusFuncDesc, player: &Player, args: &[Variant]) -> FriendStatus {
+    // IDA 0xabec94: `source ? source - 36 : 0` member-signal select, one
+    // `ArgHelper::getArg<shared_ptr<Instance>>` extract, then
+    // `Call1Helper::call`; the returned `FriendStatus` lands in the
+    // `Arguments` return slot. Twin of 0xa4f244 with an Instance arg.
+    assert!(args.len() == 1, "0xabec94: Arguments must hold 1 value");
+    let inst = match &args[0] {
+        Variant::Instance(i) => i,
+        _ => panic!("0xabec94: any_cast<SharedPtr<Instance>> failed"),
+    };
+    stub_abeecc(player, desc.method, inst)
 }
 
 // 0xabeecc — __ZN3RBX10Reflection11Call1HelperINS_7Network6PlayerEMS3_FNS_13FriendService12FriendStatusEN5boost10shared_ptrINS_8InstanceEEEES9_S5_E4callEPS3_SB_RNS0_7VariantERKS9_
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::Network::Player,RBX::FriendService::FriendStatus (RBX::Network::Player::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus>::call(RBX::Network::Player*,RBX::FriendService::FriendStatus (RBX::Network::Player::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: RBX::Reflection::Call1Helper<RBX::Network::Player,RBX::FriendService::FriendStatus (RBX::Network::Player::*)(boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus>::call(RBX::Network::Player*,RBX::FriendService::FriendStatus (RBX::Network::Player::*)(boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_abeecc() -> ! {
-    todo!("0xabeecc RBX::Reflection::Call1Helper<RBX::Network::Player,RBX::FriendService::FriendStatus (RBX::Network::Player::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus>::call(RBX::Network::Player*,RBX::FriendService::FriendStatus (RBX::Network::Player::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")
+pub fn stub_abeecc(player: &Player, method: PlayerInstStatusMethod, inst: &SharedPtr<Instance>) -> FriendStatus {
+    // IDA 0xabeecc: member-pointer adjust, retained `shared_ptr` copy of the
+    // instance arg, the member call returning the friendship tag, then the
+    // mirrored release. Clone plus the call plus `Drop` is the same
+    // sequence. 1-arg twin of 0xa47d30.
+    let inst = inst.clone();
+    method(player, &inst)
 }
 
 // 0xac0518 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network6PlayerENS_13ModelInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Player,RBX::ModelInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::Network::Player,RBX::ModelInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
-pub fn stub_ac0518() -> ! {
-    todo!("0xac0518 RBX::Reflection::RefPropDescriptor<RBX::Network::Player,RBX::ModelInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_ac0518(prop: &PlayerModelRefProp, player: &Player, model: &SharedPtr<ModelInstance>) {
+    // IDA 0xac0518: retain the handle's `shared_ptr` word (spinlock-guarded
+    // `shared_count` bump, decompile 0xac054e-0xac05ae), then the virtual
+    // setter at `*(desc + 44) + 12` (decompile 0xac05d2), then the mirrored
+    // release pair (decompile 0xac05d8-0xac0680). The `InstanceHandle`
+    // resolves to the model here; clone plus the setter dispatch plus
+    // `Drop` is the same sequence.
+    let model = model.clone();
+    (prop.setter)(player, &model);
 }
 
 // 0xac0790 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_7Network6PlayerENS_13ModelInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::Network::Player,RBX::ModelInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 // was: non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::Network::Player,RBX::ModelInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
-pub fn stub_ac0790() -> ! {
-    todo!("0xac0790 non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::Network::Player,RBX::ModelInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_ac0790(prop: &PlayerModelRefProp, player: &Player, model: &SharedPtr<ModelInstance>) {
+    // IDA 0xac0790: non-virtual thunk (`_Thn40_`) — adjusts the descriptor
+    // subobject back to the `RefPropDescriptor` base, then tail-calls
+    // `assignIDREF`. The adjustment is a vtable-layout detail that
+    // collapses away here.
+    stub_ac0518(prop, player, model);
 }
 
 // 0xac1a6c — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EEC2EMS3_FvSsS7_EPKcSD_SD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::BoundFuncDesc(void (RBX::Network::Player::*)(std::string,rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::BoundFuncDesc(void (RBX::Network::Player::*)(std::string,boost::shared_ptr<RBX::Instance>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_ac1a6c() -> ! {
-    todo!("0xac1a6c RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::BoundFuncDesc(void (RBX::Network::Player::*)(std::string,rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_ac1a6c(this: *mut PlayerStrInstFuncDesc, method: PlayerStrInstMethod, first: &str, second: &str) {
+    // IDA 0xac1a6c: `Player::classDescriptor` once-init, base
+    // `FunctionDescriptor` init, member-pointer words, then two
+    // `addArgument` calls for the `std::string` and
+    // `shared_ptr<Instance>` args. Twin of 0xa4dcc0 on `Player`.
+    // SAFETY: `this` must point to valid uninitialized `PlayerStrInstFuncDesc` storage.
+    unsafe {
+        core::ptr::write(
+            this,
+            PlayerStrInstFuncDesc {
+                method,
+                arg_names: [first.to_string(), second.to_string()],
+                signature: vec![
+                    SignatureItem { type_name: "string" },
+                    SignatureItem { type_name: "SharedPtr<Instance>" },
+                ],
+            },
+        );
+    }
 }
 
 // 0xac1dac — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()
-pub fn stub_ac1dac() -> ! {
-    todo!("0xac1dac RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")
+pub fn stub_ac1dac(this: *mut PlayerStrInstFuncDesc) {
+    // IDA 0xac1dac: D0 — D1 body plus `operator delete`; the box reclaim
+    // runs the field drops and frees together. Same shape as 0xa4e000.
+    // SAFETY: `this` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 
 // 0xac1e4c — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
-pub fn stub_ac1e4c() -> ! {
-    todo!("0xac1e4c RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_ac1e4c(desc: &PlayerStrInstFuncDesc, player: &Player, args: &[Variant]) {
+    // IDA 0xac1e4c: `source ? source - 36 : 0` member-signal select, two
+    // `ArgHelper::getArg` extracts (`std::string` then
+    // `shared_ptr<Instance>`), then `Call2Helper::call`. Twin of 0xa4e0a0
+    // on `Player`.
+    assert!(args.len() == 2, "0xac1e4c: Arguments must hold 2 values");
+    let message = match &args[0] {
+        Variant::Text(s) => s,
+        _ => panic!("0xac1e4c: any_cast<string> failed"),
+    };
+    let inst = match &args[1] {
+        Variant::Instance(i) => i,
+        _ => panic!("0xac1e4c: any_cast<SharedPtr<Instance>> failed"),
+    };
+    stub_ac2134(player, desc.method, message, inst);
 }
 
 // 0xac2134 — __ZN3RBX10Reflection11Call2HelperINS_7Network6PlayerEMS3_FvSsN5boost10shared_ptrINS_8InstanceEEEESsS7_vE4callEPS3_S9_RNS0_7VariantERKSsRKS7_
 #[doc(alias = "RBX::Reflection::Call2Helper<RBX::Network::Player,void (RBX::Network::Player::*)(std::string,rbx_core::SharedPtr<RBX::Instance>),std::string,rbx_core::SharedPtr<RBX::Instance>,void>::call(RBX::Network::Player*,void (RBX::Network::Player::*)(std::string,rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: RBX::Reflection::Call2Helper<RBX::Network::Player,void (RBX::Network::Player::*)(std::string,boost::shared_ptr<RBX::Instance>),std::string,boost::shared_ptr<RBX::Instance>,void>::call(RBX::Network::Player*,void (RBX::Network::Player::*)(std::string,boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,std::string const&,boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_ac2134() -> ! {
-    todo!("0xac2134 RBX::Reflection::Call2Helper<RBX::Network::Player,void (RBX::Network::Player::*)(std::string,rbx_core::SharedPtr<RBX::Instance>),std::string,rbx_core::SharedPtr<RBX::Instance>,void>::call(RBX::Network::Player*,void (RBX::Network::Player::*)(std::string,rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&)")
+pub fn stub_ac2134(player: &Player, method: PlayerStrInstMethod, message: &str, inst: &SharedPtr<Instance>) {
+    // IDA 0xac2134: member-pointer adjust, local `string` copy of the
+    // message arg, retained `shared_ptr` copy of the instance arg, the
+    // member call, then the mirrored releases. Twin of 0xa4e388 on
+    // `Player`.
+    let message = message.to_string();
+    let inst = inst.clone();
+    method(player, &message, &inst);
 }
 
 // 0xac245c — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFN5boost10shared_ptrINS_8InstanceEEESsELi1EEC2EMS3_FS7_SsEPKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance> ()(std::string),1>::BoundFuncDesc(rbx_core::SharedPtr<RBX::Instance> (RBX::Network::Player::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,boost::shared_ptr<RBX::Instance> ()(std::string),1>::BoundFuncDesc(boost::shared_ptr<RBX::Instance> (RBX::Network::Player::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_ac245c() -> ! {
-    todo!("0xac245c RBX::Reflection::BoundFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance> ()(std::string),1>::BoundFuncDesc(rbx_core::SharedPtr<RBX::Instance> (RBX::Network::Player::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_ac245c(this: *mut PlayerStrRetFuncDesc, method: PlayerStrRetMethod, first: &str) {
+    // IDA 0xac245c: `Player::classDescriptor` once-init, base
+    // `FunctionDescriptor` init, member-pointer words, then one
+    // `addArgument` call for the `std::string` arg. Twin of 0xa4eedc with
+    // a string arg and a `SharedPtr<Instance>` return.
+    // SAFETY: `this` must point to valid uninitialized `PlayerStrRetFuncDesc` storage.
+    unsafe {
+        core::ptr::write(
+            this,
+            PlayerStrRetFuncDesc {
+                method,
+                arg_names: [first.to_string()],
+                signature: vec![SignatureItem { type_name: "string" }],
+            },
+        );
+    }
 }
 
 // 0xac2704 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFN5boost10shared_ptrINS_8InstanceEEESsELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance> ()(std::string),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,boost::shared_ptr<RBX::Instance> ()(std::string),1>::~BoundFuncDesc()
-pub fn stub_ac2704() -> ! {
-    todo!("0xac2704 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance> ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_ac2704(this: *mut PlayerStrRetFuncDesc) {
+    // IDA 0xac2704: D0 — D1 body plus `operator delete`; the box reclaim
+    // runs the field drops and frees together.
+    // SAFETY: `this` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 
 // 0xac283c — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFN5boost10shared_ptrINS_8InstanceEEESsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance> ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,boost::shared_ptr<RBX::Instance> ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
-pub fn stub_ac283c() -> ! {
-    todo!("0xac283c RBX::Reflection::BoundFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance> ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_ac283c(desc: &PlayerStrRetFuncDesc, player: &Player, args: &[Variant]) -> SharedPtr<Instance> {
+    // IDA 0xac283c: `source ? source - 36 : 0` member-signal select, one
+    // `ArgHelper::getArg<string>` extract, then `Call1Helper::call`; the
+    // returned `shared_ptr<Instance>` lands in the `Arguments` return slot.
+    // Twin of 0xa4f244 with a string arg.
+    assert!(args.len() == 1, "0xac283c: Arguments must hold 1 value");
+    let key = match &args[0] {
+        Variant::Text(s) => s,
+        _ => panic!("0xac283c: any_cast<string> failed"),
+    };
+    stub_ac297c(player, desc.method, key)
 }
 
 // 0xac297c — __ZN3RBX10Reflection11Call1HelperINS_7Network6PlayerEMS3_FN5boost10shared_ptrINS_8InstanceEEESsESsS7_E4callEPS3_S9_RNS0_7VariantERKSs
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance> (RBX::Network::Player::*)(std::string),std::string,rbx_core::SharedPtr<RBX::Instance>>::call(RBX::Network::Player*,rbx_core::SharedPtr<RBX::Instance> (RBX::Network::Player::*)(std::string),RBX::Reflection::Variant &,std::string const&)")]
 // was: RBX::Reflection::Call1Helper<RBX::Network::Player,boost::shared_ptr<RBX::Instance> (RBX::Network::Player::*)(std::string),std::string,boost::shared_ptr<RBX::Instance>>::call(RBX::Network::Player*,boost::shared_ptr<RBX::Instance> (RBX::Network::Player::*)(std::string),RBX::Reflection::Variant &,std::string const&)
-pub fn stub_ac297c() -> ! {
-    todo!("0xac297c RBX::Reflection::Call1Helper<RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance> (RBX::Network::Player::*)(std::string),std::string,rbx_core::SharedPtr<RBX::Instance>>::call(RBX::Network::Player*,rbx_core::SharedPtr<RBX::Instance> (RBX::Network::Player::*)(std::string),RBX::Reflection::Variant &,std::string const&)")
+pub fn stub_ac297c(player: &Player, method: PlayerStrRetMethod, key: &str) -> SharedPtr<Instance> {
+    // IDA 0xac297c: member-pointer adjust, local `string` copy of the key
+    // arg, the member call returning the retained instance, then the
+    // mirrored release. 1-arg twin of 0xa47d30.
+    let key = key.to_string();
+    method(player, &key)
 }
 
 // 0xac5604 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFN5boost10shared_ptrINS_8InstanceEEEvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance> ()(void),0>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,boost::shared_ptr<RBX::Instance> ()(void),0>::~BoundFuncDesc()
-pub fn stub_ac5604() -> ! {
-    todo!("0xac5604 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance> ()(void),0>::~BoundFuncDesc()")
+pub fn stub_ac5604(this: *mut PlayerVoidRetFuncDesc) {
+    // IDA 0xac5604: D0 — D1 body plus `operator delete`; the box reclaim
+    // runs the field drops and frees together. Same shape as the other
+    // `Player*FuncDesc` D0s.
+    // SAFETY: `this` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 
 // 0xac56e0 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFN5boost10shared_ptrINS_8InstanceEEEvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance> ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,boost::shared_ptr<RBX::Instance> ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
-pub fn stub_ac56e0() -> ! {
-    todo!("0xac56e0 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance> ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_ac56e0(desc: &PlayerVoidRetFuncDesc, player: &Player, args: &[Variant]) -> SharedPtr<Instance> {
+    // IDA 0xac56e0: `source ? source - 36 : 0` member-signal select, no
+    // `ArgHelper` extracts (0 args), then the member call; the returned
+    // `shared_ptr<Instance>` lands in the `Arguments` return slot. 0-arg
+    // twin of 0xa4f244.
+    assert!(args.is_empty(), "0xac56e0: Arguments must hold 0 values");
+    (desc.method)(player)
 }
 
 // 0xac8194 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEELi1EEC2EMS3_FvS7_EPKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::Network::Player::*)(rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::Network::Player::*)(boost::shared_ptr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_ac8194() -> ! {
-    todo!("0xac8194 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::Network::Player::*)(rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_ac8194(this: *mut PlayerInstFuncDesc, method: PlayerInstMethod, first: &str) {
+    // IDA 0xac8194: `Player::classDescriptor` once-init, base
+    // `FunctionDescriptor` init, member-pointer words, then one
+    // `addArgument` call for the `shared_ptr<Instance>` arg. Twin of
+    // 0xa4eedc with an Instance arg and no return.
+    // SAFETY: `this` must point to valid uninitialized `PlayerInstFuncDesc` storage.
+    unsafe {
+        core::ptr::write(
+            this,
+            PlayerInstFuncDesc {
+                method,
+                arg_names: [first.to_string()],
+                signature: vec![SignatureItem { type_name: "SharedPtr<Instance>" }],
+            },
+        );
+    }
 }
 
 // 0xac8424 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
-pub fn stub_ac8424() -> ! {
-    todo!("0xac8424 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_ac8424(this: *mut PlayerInstFuncDesc) {
+    // IDA 0xac8424: D0 — D1 body plus `operator delete`; the box reclaim
+    // runs the field drops and frees together.
+    // SAFETY: `this` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 
 // 0xac84c4 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
-pub fn stub_ac84c4() -> ! {
-    todo!("0xac84c4 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_ac84c4(desc: &PlayerInstFuncDesc, player: &Player, args: &[Variant]) {
+    // IDA 0xac84c4: `source ? source - 36 : 0` member-signal select, one
+    // `ArgHelper::getArg<shared_ptr<Instance>>` extract, then
+    // `Call1Helper::call`. 1-arg twin of 0xa4e0a0.
+    assert!(args.len() == 1, "0xac84c4: Arguments must hold 1 value");
+    let inst = match &args[0] {
+        Variant::Instance(i) => i,
+        _ => panic!("0xac84c4: any_cast<SharedPtr<Instance>> failed"),
+    };
+    stub_ac86f8(player, desc.method, inst);
 }
 
 // 0xac86f8 — __ZN3RBX10Reflection11Call1HelperINS_7Network6PlayerEMS3_FvN5boost10shared_ptrINS_8InstanceEEEES7_vE4callEPS3_S9_RNS0_7VariantERKS7_
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::Network::Player,void (RBX::Network::Player::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,void>::call(RBX::Network::Player*,void (RBX::Network::Player::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: RBX::Reflection::Call1Helper<RBX::Network::Player,void (RBX::Network::Player::*)(boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,void>::call(RBX::Network::Player*,void (RBX::Network::Player::*)(boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_ac86f8() -> ! {
-    todo!("0xac86f8 RBX::Reflection::Call1Helper<RBX::Network::Player,void (RBX::Network::Player::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,void>::call(RBX::Network::Player*,void (RBX::Network::Player::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")
+pub fn stub_ac86f8(player: &Player, method: PlayerInstMethod, inst: &SharedPtr<Instance>) {
+    // IDA 0xac86f8: member-pointer adjust, retained `shared_ptr` copy of the
+    // instance arg, the member call, then the mirrored release. 1-arg twin
+    // of 0xa47d30.
+    let inst = inst.clone();
+    method(player, &inst);
 }
 
 // 0xaca39c — __ZN5boost4bindIvSsNS_8weak_ptrIN3RBX7Network6PlayerEEENS1_INS2_9DataModelEEESsS5_S7_EENS_3_bi6bind_tIT_PFSA_T0_T1_T2_ENS8_9list_av_3IT3_T4_T5_E4typeEEESF_SH_SI_SJ_
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list_av_3<std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>>::type> boost::bind<void,std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>,std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>>(void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>),std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>)")]
 // was: boost::_bi::bind_t<void,void (*)(std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),boost::_bi::list_av_3<std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>>::type> boost::bind<void,std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>,std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>>(void (*)(std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>)
-pub fn stub_aca39c() -> ! {
-    todo!("0xaca39c boost::_bi::bind_t<void,void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list_av_3<std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>>::type> boost::bind<void,std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>,std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>>(void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>),std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>)")
+pub fn stub_aca39c<'a>(out: &'a mut StrPlayerDataBind, text: &str, player: &WeakPtr<Player>, data_model: &WeakPtr<DataModel>) -> &'a mut StrPlayerDataBind {
+    // IDA 0xaca39c: `boost::bind(f, string, playerWeak, dmWeak)` — the
+    // string is copied into the `value` word while both weaks are retained
+    // (the `weak_count` copies); no arg is late-bound. Twin of 0xa99284
+    // with a leading string value.
+    // SAFETY: `out` must point to valid uninitialized `StrPlayerDataBind` storage.
+    unsafe {
+        core::ptr::write(
+            out,
+            StrPlayerDataBind { text: text.to_string(), player: player.clone(), data_model: data_model.clone() },
+        );
+    }
+    out
 }
 
 // 0xaca760 — __ZN5boost3_bi5list3INS0_5valueISsEENS2_INS_8weak_ptrIN3RBX7Network6PlayerEEEEENS2_INS4_INS5_9DataModelEEEEEED1Ev
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>::~list3()")]
 // was: boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>::~list3()
-pub fn stub_aca760() -> ! {
-    todo!("0xaca760 boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>::~list3()")
+pub fn stub_aca760(bind: *mut StrPlayerDataBind) {
+    // IDA 0xaca760: `list3<value<string>, weak, weak>` D1 — runs the string
+    // disposer plus both weak releases; storage kept. `drop_in_place` runs
+    // the same field drops without freeing.
+    // SAFETY: `bind` must point to a valid `StrPlayerDataBind` that is not used again.
+    unsafe {
+        core::ptr::drop_in_place(bind);
+    }
 }
 
 // 0xacaa30 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX7Network6PlayerEEENS2_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINS8_INS2_8InstanceEEESaISB_EEEESsbdS5_NS_3argILi1EEENSF_ILi2EEESsbdEENS_3_bi6bind_tIT_PFSK_T0_T1_T2_T3_T4_T5_ENSI_9list_av_6IT6_T7_T8_T9_T10_T11_E4typeEEESS_SU_SV_SW_SX_SY_SZ_
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list_av_6<rbx_core::WeakPtr<RBX::Network::Player>,boost::arg<1>,boost::arg<2>,std::string,bool,double>::type> boost::bind<void,rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double,rbx_core::WeakPtr<RBX::Network::Player>,boost::arg<1>,boost::arg<2>,std::string,bool,double>(void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),rbx_core::WeakPtr<RBX::Network::Player>,boost::arg<1>,boost::arg<2>,std::string,bool,double)")]
 // was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list_av_6<boost::weak_ptr<RBX::Network::Player>,boost::arg<1>,boost::arg<2>,std::string,bool,double>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,std::string,bool,double,boost::weak_ptr<RBX::Network::Player>,boost::arg<1>,boost::arg<2>,std::string,bool,double>(void (*)(boost::weak_ptr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,std::string,bool,double),boost::weak_ptr<RBX::Network::Player>,boost::arg<1>,boost::arg<2>,std::string,bool,double)
-pub fn stub_acaa30() -> ! {
-    todo!("0xacaa30 boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list_av_6<rbx_core::WeakPtr<RBX::Network::Player>,boost::arg<1>,boost::arg<2>,std::string,bool,double>::type> boost::bind<void,rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double,rbx_core::WeakPtr<RBX::Network::Player>,boost::arg<1>,boost::arg<2>,std::string,bool,double>(void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),rbx_core::WeakPtr<RBX::Network::Player>,boost::arg<1>,boost::arg<2>,std::string,bool,double)")
+pub fn stub_acaa30<'a>(out: &'a mut PlayerLoadBind, player: &WeakPtr<Player>, name: &str, flag: bool, timeout: f64) -> &'a mut PlayerLoadBind {
+    // IDA 0xacaa30: `boost::bind(f, playerWeak, _1, _2, name, flag,
+    // timeout)` — the player weak is retained (the `weak_count` copy),
+    // the name/flag/timeout are copied into the `value` words, and the
+    // result/vector stay late-bound. Twin of 0xa9a314 with three value
+    // words.
+    // SAFETY: `out` must point to valid uninitialized `PlayerLoadBind` storage.
+    unsafe {
+        core::ptr::write(
+            out,
+            PlayerLoadBind { player: player.clone(), name: name.to_string(), flag, timeout },
+        );
+    }
+    out
 }
 
 // 0xacb914 — __ZN5boost3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX7Network6PlayerEEENS3_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINS9_INS3_8InstanceEEESaISC_EEEESsbdENS0_5list6INS0_5valueIS6_EENS_3argILi1EEENSL_ILi2EEENSJ_ISsEENSJ_IbEENSJ_IdEEEEEC2ESH_RKSR_
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>>::bind_t(void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>> const&)")]
 // was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>>::bind_t(void (*)(boost::weak_ptr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>> const&)
-pub fn stub_acb914() -> ! {
-    todo!("0xacb914 boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>>::bind_t(void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>> const&)")
+pub fn stub_acb914(bind: &PlayerLoadBind, result: HttpRequestResult, instances: &SharedPtr<Vec<SharedPtr<Instance>>>) {
+    // IDA 0xacb914: `bind_t` call with late-bound result/vector — retained
+    // player weak plus the name/flag/timeout values forwarded with the
+    // late args to the bound free function (IDA 0xa957f0). Same collapse
+    // as the `list6::operator()` below (IDA 0xacc8c8).
+    let instances = instances.clone();
+    stub_acc8c8(bind, result, &instances);
 }
 
 // 0xacbfd8 — __ZN5boost9function2IvN3RBX14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINS4_INS1_8InstanceEEESaIS7_EEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_7Network6PlayerEEES3_SA_SsbdENSD_5list6INSD_5valueISI_EENS_3argILi1EEENSO_ILi2EEENSM_ISsEENSM_IbEENSM_IdEEEEEEEEvT_
 #[doc(alias = "void boost::function2<void,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>>)")]
 // was: void boost::function2<void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>>)
-pub fn stub_acbfd8() -> ! {
-    todo!("0xacbfd8 void boost::function2<void,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>>)")
+pub fn stub_acbfd8(dst: &mut PlayerLoadFunction, src: &PlayerLoadBind) {
+    // IDA 0xacbfd8: `function2::assign_to<bind_t>` spills the bind functor
+    // and heap-installs it through `basic_vtable2::assign_to`; the retained
+    // weak/value clones are that same copy. Twin of 0xaa38cc.
+    dst.target = Some(src.clone());
 }
 
 // 0xacc888 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX7Network6PlayerEEENS6_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINSC_INS6_8InstanceEEESaISF_EEEESsbdENS3_5list6INS3_5valueIS9_EENS_3argILi1EEENSO_ILi2EEENSM_ISsEENSM_IbEENSM_IdEEEEEEE6manageERKNS1_15function_bufferERSX_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_acc888() -> ! {
-    todo!("0xacc888 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_acc888(src: &PlayerLoadBind, dst: &mut PlayerLoadBind, op: FunctorOp) -> bool {
+    // IDA 0xacc888: `functor_manager::manage` dispatches on `op`;
+    // discriminants mirror the `0x705780` family. Twin of 0xaa3d3c.
+    match op {
+        FunctorOp::Clone | FunctorOp::Move => {
+            *dst = src.clone();
+            true
+        }
+        FunctorOp::Destroy => false,
+        FunctorOp::CheckType => {
+            *dst = src.clone();
+            true
+        }
+        FunctorOp::GetType => true,
+    }
 }
 
 // 0xacc8ac — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX7Network6PlayerEEENS6_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINSC_INS6_8InstanceEEESaISF_EEEESsbdENS3_5list6INS3_5valueIS9_EENS_3argILi1EEENSO_ILi2EEENSM_ISsEENSM_IbEENSM_IdEEEEEEvSB_SI_E6invokeERNS1_15function_bufferESB_SI_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>>,void,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::invoke(boost::detail::function::function_buffer &,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>)")]
 // was: boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>>,void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::invoke(boost::detail::function::function_buffer &,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>)
-pub fn stub_acc8ac() -> ! {
-    todo!("0xacc8ac boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>>,void,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::invoke(boost::detail::function::function_buffer &,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>)")
+pub fn stub_acc8ac(bind: &PlayerLoadBind, result: HttpRequestResult, instances: &SharedPtr<Vec<SharedPtr<Instance>>>) {
+    // IDA 0xacc8ac: unwrap the buffer to the `bind_t` and tail-call the
+    // `list6::operator()` (IDA 0xacc8c8) with the late-bound result and
+    // vector. Twin of 0xaa3d60.
+    let instances = instances.clone();
+    stub_acc8c8(bind, result, &instances);
 }
 
 // 0xacc8c8 — __ZN5boost3_bi5list6INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS9_ILi2EEENS2_ISsEENS2_IbEENS2_IdEEEclIPFvS7_NS4_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINSJ_INS4_8InstanceEEESaISM_EEEESsbdENS0_5list2IRSI_RSP_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>::operator()<void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>&>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double) &,boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>&> &,int)")]
 // was: void boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>::operator()<void (*)(boost::weak_ptr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,std::string,bool,double) &,boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>&> &,int)
-pub fn stub_acc8c8() -> ! {
-    todo!("0xacc8c8 void boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>::operator()<void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>&>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double) &,boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>&> &,int)")
+pub fn stub_acc8c8(bind: &PlayerLoadBind, result: HttpRequestResult, instances: &SharedPtr<Vec<SharedPtr<Instance>>>) {
+    // IDA 0xacc8c8: `list6::operator()` — the retained player weak and the
+    // name/flag/timeout values (the `value` words) plus the late-bound
+    // result/vector forwarded to the bound free function (IDA 0xa957f0).
+    // Clones plus the call plus `Drop` mirror the arg-forwarding releases.
+    stub_a957f0(&bind.player, result, instances, &bind.name, bind.flag, bind.timeout);
 }
 
 // 0xaccd24 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX7Network6PlayerEEENS6_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINSC_INS6_8InstanceEEESaISF_EEEESsbdENS3_5list6INS3_5valueIS9_EENS_3argILi1EEENSO_ILi2EEENSM_ISsEENSM_IbEENSM_IdEEEEEEE7managerERKNS1_15function_bufferERSX_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
-pub fn stub_accd24() -> ! {
-    todo!("0xaccd24 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_accd24(src: &PlayerLoadBind, dst: &mut PlayerLoadFunction, op: FunctorOp, type_name: &str) -> bool {
+    // IDA 0xaccd24: `functor_manager::manager` switch on `op`: 0 heap-clone
+    // the bind plus retains, 1 move the words and clear the source,
+    // 2 destroy the count and free, 3 conditional copy on `strcmp` against
+    // the bind `__ZTS` name (`__ZTS` symbol at IDA `0x1023f90`). The heap
+    // words collapse into the retained clone; `CheckType` reports the
+    // match. Twin of 0xaa6970.
+    match op {
+        FunctorOp::Clone | FunctorOp::Move => {
+            dst.target = Some(src.clone());
+            true
+        }
+        FunctorOp::Destroy => {
+            dst.target = None;
+            false
+        }
+        FunctorOp::CheckType => type_name == PLAYER_LOAD_BIND_TYPE_NAME,
+        FunctorOp::GetType => true,
+    }
 }
 
 // 0xaccffc — __ZN5boost3_bi5list3INS0_5valueISsEENS2_INS_8weak_ptrIN3RBX7Network6PlayerEEEEENS2_INS4_INS5_9DataModelEEEEEEC2ES3_S9_SC_
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>::list3(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>)")]
 // was: boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>::list3(boost::_bi::value<std::string>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>)
-pub fn stub_accffc() -> ! {
-    todo!("0xaccffc boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>::list3(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>)")
+pub fn stub_accffc<'a>(out: &'a mut StrPlayerDataBind, text: &str, player: &WeakPtr<Player>, data_model: &WeakPtr<DataModel>) -> &'a mut StrPlayerDataBind {
+    // IDA 0xaccffc: `list3` C2 — copy the string into the `value` word and
+    // retain both weaks. Same collapse as the `bind` C2 (IDA 0xaca39c).
+    // SAFETY: `out` must point to valid uninitialized `StrPlayerDataBind` storage.
+    stub_aca39c(out, text, player, data_model)
 }
 
 // 0xacd390 — __ZN5boost3_bi8storage3INS0_5valueISsEENS2_INS_8weak_ptrIN3RBX7Network6PlayerEEEEENS2_INS4_INS5_9DataModelEEEEEEC2ES3_S9_SC_
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>::storage3(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>)")]
 // was: boost::_bi::storage3<boost::_bi::value<std::string>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>::storage3(boost::_bi::value<std::string>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>)
-pub fn stub_acd390() -> ! {
-    todo!("0xacd390 boost::_bi::storage3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>::storage3(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>)")
+pub fn stub_acd390<'a>(out: &'a mut StrPlayerDataBind, text: &str, player: &WeakPtr<Player>, data_model: &WeakPtr<DataModel>) -> &'a mut StrPlayerDataBind {
+    // IDA 0xacd390: `storage3` 3-arg C2 — same string copy and weak retains
+    // as the `list3` C2 (IDA 0xaccffc), one storage layer down. Same
+    // collapse.
+    // SAFETY: `out` must point to valid uninitialized `StrPlayerDataBind` storage.
+    stub_aca39c(out, text, player, data_model)
 }
 
 // 0xacd910 — __ZN5boost3_bi8storage3INS0_5valueISsEENS2_INS_8weak_ptrIN3RBX7Network6PlayerEEEEENS2_INS4_INS5_9DataModelEEEEEEC2ERKSD_
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>::storage3(boost::_bi::storage3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>> const&)")]
 // was: boost::_bi::storage3<boost::_bi::value<std::string>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>::storage3(boost::_bi::storage3<boost::_bi::value<std::string>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>> const&)
-pub fn stub_acd910() -> ! {
-    todo!("0xacd910 boost::_bi::storage3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>::storage3(boost::_bi::storage3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>> const&)")
+pub fn stub_acd910<'a>(out: &'a mut StrPlayerDataBind, src: &StrPlayerDataBind) -> &'a mut StrPlayerDataBind {
+    // IDA 0xacd910: `storage3` copy-ctor — string copy plus the two
+    // spinlock-guarded `weak_count` bumps. The retained clones are those
+    // same copies. Twin of 0xaa60bc.
+    *out = src.clone();
+    out
 }
 
 // 0xacdbac — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvSsNS_8weak_ptrINS1_7Network6PlayerEEENS8_IS2_EEENS6_5list3INS6_5valueISsEENSG_ISB_EENSG_ISC_EEEEEEEEvT_
 #[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>>(boost::_bi::bind_t<void,void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>)")]
 // was: void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>(boost::_bi::bind_t<void,void (*)(std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>)
-pub fn stub_acdbac() -> ! {
-    todo!("0xacdbac void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>>(boost::_bi::bind_t<void,void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>)")
+pub fn stub_acdbac(dst: &mut StrPlayerDataFunction, src: &StrPlayerDataBind) {
+    // IDA 0xacdbac: `function1<DataModel*>::assign_to<bind_t>` spills the
+    // bind functor and heap-installs it through the basic vtable; the
+    // retained string/weak clones are that same copy. Twin of 0xaa38cc.
+    dst.target = Some(src.clone());
 }
 
 // 0xacdd2c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsNS_8weak_ptrIN3RBX7Network6PlayerEEENS5_INS6_9DataModelEEEENS3_5list3INS3_5valueISsEENSF_IS9_EENSF_ISB_EEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_acdd2c() -> ! {
-    todo!("0xacdd2c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_acdd2c(src: &StrPlayerDataBind, dst: &mut StrPlayerDataBind, op: FunctorOp) -> bool {
+    // IDA 0xacdd2c: `functor_manager::manage` dispatches on `op`;
+    // discriminants mirror the `0x705780` family. Twin of 0xaa3d3c.
+    match op {
+        FunctorOp::Clone | FunctorOp::Move => {
+            *dst = src.clone();
+            true
+        }
+        FunctorOp::Destroy => false,
+        FunctorOp::CheckType => {
+            *dst = src.clone();
+            true
+        }
+        FunctorOp::GetType => true,
+    }
 }
 
 // 0xacdd50 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvSsNS_8weak_ptrIN3RBX7Network6PlayerEEENS5_INS6_9DataModelEEEENS3_5list3INS3_5valueISsEENSF_IS9_EENSF_ISB_EEEEEEvPSA_E6invokeERNS1_15function_bufferESL_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")]
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)
-pub fn stub_acdd50() -> ! {
-    todo!("0xacdd50 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")
+pub fn stub_acdd50(bind: &StrPlayerDataBind, _data_model: *const DataModel) {
+    // IDA 0xacdd50: `void_function_obj_invoker1` unwraps the buffer to the
+    // `bind_t` and tail-calls the `list3::operator()` (IDA 0xacdd6c). The
+    // `DataModel*` invocation arg is dropped — the bind holds no
+    // placeholders. Twin of 0xaa3d60 with a dropped arg.
+    // SAFETY: `_data_model` must be null or point to a valid `DataModel` (unchecked, as in C++).
+    stub_acdd6c(bind);
 }
 
 // 0xacdd6c — __ZN5boost3_bi5list3INS0_5valueISsEENS2_INS_8weak_ptrIN3RBX7Network6PlayerEEEEENS2_INS4_INS5_9DataModelEEEEEEclIPFvSsS8_SB_ENS0_5list1IRPSA_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>::operator()<void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>) &,boost::_bi::list1<RBX::DataModel*&> &,int)")]
 // was: void boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>::operator()<void (*)(std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>) &,boost::_bi::list1<RBX::DataModel*&> &,int)
-pub fn stub_acdd6c() -> ! {
-    todo!("0xacdd6c void boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>::operator()<void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>) &,boost::_bi::list1<RBX::DataModel*&> &,int)")
+pub fn stub_acdd6c(bind: &StrPlayerDataBind) {
+    // IDA 0xacdd6c: `list3::operator()` — the retained string and both
+    // weaks forwarded to the bound free function (IDA 0xa946c0); the
+    // `DataModel*&` late arg is dropped (decompile shows only the three
+    // value words crossing). Clones plus the call plus `Drop` mirror the
+    // arg-forwarding releases.
+    stub_a946c0(&bind.text, &bind.player, &bind.data_model);
 }
 
 // 0xace0fc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsNS_8weak_ptrIN3RBX7Network6PlayerEEENS5_INS6_9DataModelEEEENS3_5list3INS3_5valueISsEENSF_IS9_EENSF_ISB_EEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
-pub fn stub_ace0fc() -> ! {
-    todo!("0xace0fc boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_ace0fc(src: &StrPlayerDataBind, dst: &mut StrPlayerDataFunction, op: FunctorOp, type_name: &str) -> bool {
+    // IDA 0xace0fc: `functor_manager::manager` switch on `op`: 0 heap-clone
+    // the bind plus retains, 1 move the words and clear the source,
+    // 2 destroy the count and free, 3 conditional copy on `strcmp` against
+    // the bind `__ZTS` name (`__ZTS` symbol at IDA `0x1024080`). Twin of
+    // 0xaa6970.
+    match op {
+        FunctorOp::Clone | FunctorOp::Move => {
+            dst.target = Some(src.clone());
+            true
+        }
+        FunctorOp::Destroy => {
+            dst.target = None;
+            false
+        }
+        FunctorOp::CheckType => type_name == STR_PLAYER_DATA_BIND_TYPE_NAME,
+        FunctorOp::GetType => true,
+    }
 }
 
 // 0xace240 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFNS_13FriendService12FriendStatusEN5boost10shared_ptrINS_8InstanceEEEELi1EED2Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
-pub fn stub_ace240() -> ! {
-    todo!("0xace240 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_ace240(this: *mut PlayerInstStatusFuncDesc) {
+    // IDA 0xace240: `BoundFuncDesc<Player, FriendStatus
+    // (shared_ptr<Instance>), 1>` D2 — vtable resets plus member drops;
+    // storage kept. Twin of 0xa96cc4.
+    // SAFETY: `this` must point to a valid `PlayerInstStatusFuncDesc` that is not used again.
+    unsafe {
+        core::ptr::drop_in_place(this);
+    }
 }
 
 // 0xace390 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EED2Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()
-pub fn stub_ace390() -> ! {
-    todo!("0xace390 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")
+pub fn stub_ace390(this: *mut PlayerStrInstFuncDesc) {
+    // IDA 0xace390: `BoundFuncDesc<Player, void (string,
+    // shared_ptr<Instance>), 2>` D2 — same vtable-reset + member-drop
+    // sequence; storage kept.
+    // SAFETY: `this` must point to a valid `PlayerStrInstFuncDesc` that is not used again.
+    unsafe {
+        core::ptr::drop_in_place(this);
+    }
 }
 
 // 0xace664 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED2Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
-pub fn stub_ace664() -> ! {
-    todo!("0xace664 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_ace664(this: *mut PlayerInstFuncDesc) {
+    // IDA 0xace664: `BoundFuncDesc<Player, void (shared_ptr<Instance>),
+    // 1>` D2 — same vtable-reset + member-drop sequence; storage kept.
+    // SAFETY: `this` must point to a valid `PlayerInstFuncDesc` that is not used again.
+    unsafe {
+        core::ptr::drop_in_place(this);
+    }
 }
 
 // 0xad3838 — __ZNK3RBX7Network4Peer11askAddChildEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::Peer::askAddChild(RBX::Instance const*)const")]
 // was: RBX::Network::Peer::askAddChild(RBX::Instance const*)const
-pub fn stub_ad3838() -> ! {
-    todo!("0xad3838 RBX::Network::Peer::askAddChild(RBX::Instance const*)const")
+pub fn stub_ad3838(_peer: *const Instance, child: *const Instance) -> bool {
+    // IDA 0xad3838: null child returns false (decompile 0xad3884);
+    // otherwise the `Replicator` `classDescriptor` once-init (decompile
+    // 0xad38a4-0xad3912) plus `isA` — a Replicator child returns true
+    // (decompile 0xad3934-0xad393a), anything else false (decompile
+    // 0xad3958). Twin of 0xa9be60 with a type gate.
+    // SAFETY: `_peer` must be null or point to a valid peer instance;
+    // `child` must be null or point to a valid `Instance`.
+    if child.is_null() {
+        return false;
+    }
+    unsafe { instance_is_a(child, "Replicator") }
 }
 
 // 0xad6034 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network13PeerStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_ad6034() -> ! {
-    todo!("0xad6034 boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_ad6034(_block: *mut ControlBlockPd<PeerStatsItem, CreatableInstanceDeleter>) {
+    // IDA 0xad6034: D1 — empty; the vtable reset is compiler-managed and
+    // storage is released by the D0/owner path. Same shape as 0xf198.
 }
 
 // 0xad6038 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network13PeerStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_ad6038() -> ! {
-    todo!("0xad6038 boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_ad6038(block: *mut ControlBlockPd<PeerStatsItem, CreatableInstanceDeleter>) {
+    // IDA 0xad6038: D0 — `operator delete`; the box reclaim runs the field
+    // drops and frees together. Twin of 0xaa1e2c.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }

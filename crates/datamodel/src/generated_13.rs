@@ -112,6 +112,10 @@ pub type HttpRequestResult = i32;
 pub struct Player {
     pub friend_status_changed: Signal<(SharedPtr<Instance>, FriendStatus)>,
     pub data_loaded: bool,
+    /// Character model behind `RefPropDescriptor<Player, ModelInstance>`
+    /// (IDA `0xac0518` `assignIDREF`): the retained character; `None` is the
+    /// null ref.
+    pub character: Mutex<Option<SharedPtr<ModelInstance>>>,
 }
 /// Bound `Player` 1-arg member used by `BoundFuncDesc<Player, void
 /// (shared_ptr<Instance>), 1>` (IDA `0xa965a8`): the receiver plus the

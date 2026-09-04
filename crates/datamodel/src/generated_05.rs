@@ -463,6 +463,10 @@ pub struct GenericSlotWrapper {
     /// crosses as the raw tag word (`FriendStatus.0`); native stand-in for
     /// the Lua frame until the script bridge exists.
     pub on_friend: Option<fn(&SharedPtr<Instance>, u32)>,
+    /// `Player` 2-arg `(string, Instance)` handler behind that event's
+    /// `fireEvent` fan-out (IDA `0xabab0c`). Native stand-in for the Lua
+    /// frame until the script bridge exists.
+    pub on_str_inst: Option<fn(&str, &SharedPtr<Instance>)>,
 }
 /// Rust model of `RBX::Reflection::PropertyDescriptor` (IDA `0x706742`): only
 /// pointer identity / name cross the `fireEvent` boundary here.
