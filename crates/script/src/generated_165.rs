@@ -369,7 +369,8 @@ pub enum SettingsHandler {
 
 /// Host-side `iOSSettingsService` (IDA 0x21ce0..): `var1` is the
 /// name -> reader map, `var3` the init flag, `+44` a trailing word
-/// zeroed by `Init`.
+/// zeroed by `Init`. Value fields mirror the `_thisPtr` layout the
+/// `ReadValue*` family writes through (IDA 0x239ec..0x24024).
 #[derive(Debug, Clone, Default)]
 pub struct IosSettingsService {
     /// `this->var3 = 1` (IDA 0x21ce0).
@@ -378,6 +379,64 @@ pub struct IosSettingsService {
     pub handlers: HashMap<String, SettingsHandler>,
     /// `*(this + 44) = 0` (IDA 0x21ce0).
     pub reserved_44: u32,
+    /// `_thisPtr + 28` (IDA 0x239ec).
+    pub ipad_minimum_version: i32,
+    /// `_thisPtr + 32` (IDA 0x23b50).
+    pub ipad_maximum_version: i32,
+    /// `_thisPtr + 36` (IDA 0x23b68).
+    pub iphone_minimum_version: i32,
+    /// `_thisPtr + 40` (IDA 0x23b80).
+    pub iphone_maximum_version: i32,
+    /// `_thisPtr + 44` (IDA 0x23b98).
+    pub ipod_minimum_version: i32,
+    /// `_thisPtr + 48` (IDA 0x23bb0).
+    pub ipod_maximum_version: i32,
+    /// `_thisPtr + 52` (IDA 0x23bc8).
+    pub disable_play_button_for_all: bool,
+    /// `_thisPtr + 53` (IDA 0x23be4).
+    pub disable_play_button_for_non_bc: bool,
+    /// `_thisPtr + 56` (IDA 0x23c00).
+    pub ipad1_maximum_ideal_parts: i32,
+    /// `_thisPtr + 60` (IDA 0x23c18).
+    pub ipad2_maximum_ideal_parts: i32,
+    /// `_thisPtr + 64` (IDA 0x23c30).
+    pub ipad3_maximum_ideal_parts: i32,
+    /// `_thisPtr + 68` (IDA 0x23c48).
+    pub ipad4_maximum_ideal_parts: i32,
+    /// `_thisPtr + 72` (IDA 0x23c60).
+    pub ipod4_maximum_ideal_parts: i32,
+    /// `_thisPtr + 76` (IDA 0x23c78).
+    pub ipod5_maximum_ideal_parts: i32,
+    /// `_thisPtr + 80` (IDA 0x23c90).
+    pub iphone4s_maximum_ideal_parts: i32,
+    /// `_thisPtr + 84` (IDA 0x23ca8).
+    pub iphone5_maximum_ideal_parts: i32,
+    /// `_thisPtr + 88` (IDA 0x23d9c).
+    pub google_analytics_account2: String,
+    /// `_thisPtr + 92` (IDA 0x23ed4).
+    pub google_analytics_sample_rate: i32,
+    /// `_thisPtr + 96` (IDA 0x23cc0).
+    pub interval_robux_purchase_minutes: i32,
+    /// `_thisPtr + 100` (IDA 0x23cd8).
+    pub interval_bc_purchase_minutes: i32,
+    /// `_thisPtr + 104` (IDA 0x23cf0).
+    pub interval_catalog_purchase_minutes: i32,
+    /// `_thisPtr + 108` (IDA 0x23d08).
+    pub billing_retry_limit: i32,
+    /// `_thisPtr + 112` (IDA 0x23d20).
+    pub testflight_logging_level: i32,
+    /// `_thisPtr + 116` (IDA 0x23d38).
+    pub testflight_percentage: i32,
+    /// `_thisPtr + 120` (IDA 0x23d50).
+    pub bugsense_percentage: i32,
+    /// `_thisPtr + 124` (IDA 0x23d68).
+    pub bugsense_log_lines: i32,
+    /// `_thisPtr + 128` (IDA 0x23d80).
+    pub bugsense_log_level: i32,
+    /// `_thisPtr + 132` (IDA 0x23eec).
+    pub search_endpoint_ipad: String,
+    /// `_thisPtr + 136` (IDA 0x24024).
+    pub search_endpoint_iphone: String,
 }
 
 /// Reads a `"key": <string | null>` value from a flat JSON object
@@ -1919,207 +1978,326 @@ pub fn stub_0x21ce0(service: &mut IosSettingsService) {
     service.reserved_44 = 0;
 }
 
+/// `atoi` host model for the `ReadValue*` family (IDA 0x239ec et al.):
+/// skips ASCII whitespace and one sign, accumulates decimal digits
+/// with wraparound; 0 when no digits follow.
+fn c_atoi(text: &str) -> i32 {
+    let bytes = text.as_bytes();
+    let mut pos = 0;
+    while pos < bytes.len() && matches!(bytes[pos], b' ' | b'\t' | b'\n' | 0x0b | 0x0c | b'\r') {
+        pos += 1;
+    }
+    let mut negative = false;
+    if pos < bytes.len() && (bytes[pos] == b'+' || bytes[pos] == b'-') {
+        negative = bytes[pos] == b'-';
+        pos += 1;
+    }
+    let mut value: i32 = 0;
+    let mut any = false;
+    while pos < bytes.len() && bytes[pos].is_ascii_digit() {
+        any = true;
+        value = value.wrapping_mul(10).wrapping_add((bytes[pos] - b'0') as i32);
+        pos += 1;
+    }
+    if !any {
+        0
+    } else if negative {
+        value.wrapping_neg()
+    } else {
+        value
+    }
+}
+
+/// `SimpleJSON::ParseBool` host model for the bool readers (IDA
+/// 0x23bc8/0x23be4; cf. 0x255c8c): true only for `"true"`/`"True"`.
+fn parse_bool_value(text: &str) -> bool {
+    text == "true" || text == "True"
+}
+
 // 0x239ec — __ZN18iOSSettingsService27ReadValueiPadMinimumVersionEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPadMinimumVersion(char const*)")]
-pub fn stub_0x239ec() -> ! {
-    todo!("0x239ec __ZN18iOSSettingsService27ReadValueiPadMinimumVersionEPKc")
+pub fn stub_0x239ec(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x239ec: `atoi(value)` into `_thisPtr + 28` (the `this`
+    // register carries the value string; `a2` is the key, unused).
+    let parsed = c_atoi(value);
+    service.ipad_minimum_version = parsed;
+    parsed
 }
 
 // 0x23b50 — __ZN18iOSSettingsService27ReadValueiPadMaximumVersionEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPadMaximumVersion(char const*)")]
-pub fn stub_0x23b50() -> ! {
-    todo!("0x23b50 __ZN18iOSSettingsService27ReadValueiPadMaximumVersionEPKc")
+pub fn stub_0x23b50(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23b50: `atoi(value)` into `_thisPtr + 32`.
+    let parsed = c_atoi(value);
+    service.ipad_maximum_version = parsed;
+    parsed
 }
 
 // 0x23b68 — __ZN18iOSSettingsService29ReadValueiPhoneMinimumVersionEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPhoneMinimumVersion(char const*)")]
-pub fn stub_0x23b68() -> ! {
-    todo!("0x23b68 __ZN18iOSSettingsService29ReadValueiPhoneMinimumVersionEPKc")
+pub fn stub_0x23b68(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23b68: `atoi(value)` into `_thisPtr + 36`.
+    let parsed = c_atoi(value);
+    service.iphone_minimum_version = parsed;
+    parsed
 }
 
 // 0x23b80 — __ZN18iOSSettingsService29ReadValueiPhoneMaximumVersionEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPhoneMaximumVersion(char const*)")]
-pub fn stub_0x23b80() -> ! {
-    todo!("0x23b80 __ZN18iOSSettingsService29ReadValueiPhoneMaximumVersionEPKc")
+pub fn stub_0x23b80(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23b80: `atoi(value)` into `_thisPtr + 40`.
+    let parsed = c_atoi(value);
+    service.iphone_maximum_version = parsed;
+    parsed
 }
 
 // 0x23b98 — __ZN18iOSSettingsService27ReadValueiPodMinimumVersionEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPodMinimumVersion(char const*)")]
-pub fn stub_0x23b98() -> ! {
-    todo!("0x23b98 __ZN18iOSSettingsService27ReadValueiPodMinimumVersionEPKc")
+pub fn stub_0x23b98(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23b98: `atoi(value)` into `_thisPtr + 44`.
+    let parsed = c_atoi(value);
+    service.ipod_minimum_version = parsed;
+    parsed
 }
 
 // 0x23bb0 — __ZN18iOSSettingsService27ReadValueiPodMaximumVersionEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPodMaximumVersion(char const*)")]
-pub fn stub_0x23bb0() -> ! {
-    todo!("0x23bb0 __ZN18iOSSettingsService27ReadValueiPodMaximumVersionEPKc")
+pub fn stub_0x23bb0(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23bb0: `atoi(value)` into `_thisPtr + 48`.
+    let parsed = c_atoi(value);
+    service.ipod_maximum_version = parsed;
+    parsed
 }
 
 // 0x23bc8 — __ZN18iOSSettingsService32ReadValueDisablePlayButtonForAllEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueDisablePlayButtonForAll(char const*)")]
-pub fn stub_0x23bc8() -> ! {
-    todo!("0x23bc8 __ZN18iOSSettingsService32ReadValueDisablePlayButtonForAllEPKc")
+pub fn stub_0x23bc8(service: &mut IosSettingsService, value: &str) -> bool {
+    // IDA 0x23bc8: `SimpleJSON::ParseBool(value)` into `_thisPtr + 52`.
+    let parsed = parse_bool_value(value);
+    service.disable_play_button_for_all = parsed;
+    parsed
 }
 
 // 0x23be4 — __ZN18iOSSettingsService34ReadValueDisablePlayButtonForNonBCEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueDisablePlayButtonForNonBC(char const*)")]
-pub fn stub_0x23be4() -> ! {
-    todo!("0x23be4 __ZN18iOSSettingsService34ReadValueDisablePlayButtonForNonBCEPKc")
+pub fn stub_0x23be4(service: &mut IosSettingsService, value: &str) -> bool {
+    // IDA 0x23be4: `SimpleJSON::ParseBool(value)` into `_thisPtr + 53`.
+    let parsed = parse_bool_value(value);
+    service.disable_play_button_for_non_bc = parsed;
+    parsed
 }
 
 // 0x23c00 — __ZN18iOSSettingsService32ReadValueiPad1_MaximumIdealPartsEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPad1_MaximumIdealParts(char const*)")]
-pub fn stub_0x23c00() -> ! {
-    todo!("0x23c00 __ZN18iOSSettingsService32ReadValueiPad1_MaximumIdealPartsEPKc")
+pub fn stub_0x23c00(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23c00: `atoi(value)` into `_thisPtr + 56`.
+    let parsed = c_atoi(value);
+    service.ipad1_maximum_ideal_parts = parsed;
+    parsed
 }
 
 // 0x23c18 — __ZN18iOSSettingsService32ReadValueiPad2_MaximumIdealPartsEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPad2_MaximumIdealParts(char const*)")]
-pub fn stub_0x23c18() -> ! {
-    todo!("0x23c18 __ZN18iOSSettingsService32ReadValueiPad2_MaximumIdealPartsEPKc")
+pub fn stub_0x23c18(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23c18: `atoi(value)` into `_thisPtr + 60`.
+    let parsed = c_atoi(value);
+    service.ipad2_maximum_ideal_parts = parsed;
+    parsed
 }
 
 // 0x23c30 — __ZN18iOSSettingsService32ReadValueiPad3_MaximumIdealPartsEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPad3_MaximumIdealParts(char const*)")]
-pub fn stub_0x23c30() -> ! {
-    todo!("0x23c30 __ZN18iOSSettingsService32ReadValueiPad3_MaximumIdealPartsEPKc")
+pub fn stub_0x23c30(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23c30: `atoi(value)` into `_thisPtr + 64`.
+    let parsed = c_atoi(value);
+    service.ipad3_maximum_ideal_parts = parsed;
+    parsed
 }
 
 // 0x23c48 — __ZN18iOSSettingsService32ReadValueiPad4_MaximumIdealPartsEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPad4_MaximumIdealParts(char const*)")]
-pub fn stub_0x23c48() -> ! {
-    todo!("0x23c48 __ZN18iOSSettingsService32ReadValueiPad4_MaximumIdealPartsEPKc")
+pub fn stub_0x23c48(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23c48: `atoi(value)` into `_thisPtr + 68`.
+    let parsed = c_atoi(value);
+    service.ipad4_maximum_ideal_parts = parsed;
+    parsed
 }
 
 // 0x23c60 — __ZN18iOSSettingsService32ReadValueiPod4_MaximumIdealPartsEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPod4_MaximumIdealParts(char const*)")]
-pub fn stub_0x23c60() -> ! {
-    todo!("0x23c60 __ZN18iOSSettingsService32ReadValueiPod4_MaximumIdealPartsEPKc")
+pub fn stub_0x23c60(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23c60: `atoi(value)` into `_thisPtr + 72`.
+    let parsed = c_atoi(value);
+    service.ipod4_maximum_ideal_parts = parsed;
+    parsed
 }
 
 // 0x23c78 — __ZN18iOSSettingsService32ReadValueiPod5_MaximumIdealPartsEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPod5_MaximumIdealParts(char const*)")]
-pub fn stub_0x23c78() -> ! {
-    todo!("0x23c78 __ZN18iOSSettingsService32ReadValueiPod5_MaximumIdealPartsEPKc")
+pub fn stub_0x23c78(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23c78: `atoi(value)` into `_thisPtr + 76`.
+    let parsed = c_atoi(value);
+    service.ipod5_maximum_ideal_parts = parsed;
+    parsed
 }
 
 // 0x23c90 — __ZN18iOSSettingsService35ReadValueiPhone4s_MaximumIdealPartsEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPhone4s_MaximumIdealParts(char const*)")]
-pub fn stub_0x23c90() -> ! {
-    todo!("0x23c90 __ZN18iOSSettingsService35ReadValueiPhone4s_MaximumIdealPartsEPKc")
+pub fn stub_0x23c90(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23c90: `atoi(value)` into `_thisPtr + 80`.
+    let parsed = c_atoi(value);
+    service.iphone4s_maximum_ideal_parts = parsed;
+    parsed
 }
 
 // 0x23ca8 — __ZN18iOSSettingsService34ReadValueiPhone5_MaximumIdealPartsEPKc
 // type: int __fastcall(iOSSettingsService *this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiPhone5_MaximumIdealParts(char const*)")]
-pub fn stub_0x23ca8() -> ! {
-    todo!("0x23ca8 __ZN18iOSSettingsService34ReadValueiPhone5_MaximumIdealPartsEPKc")
+pub fn stub_0x23ca8(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23ca8: `atoi(value)` into `_thisPtr + 84`.
+    let parsed = c_atoi(value);
+    service.iphone5_maximum_ideal_parts = parsed;
+    parsed
 }
 
 // 0x23cc0 — __ZN18iOSSettingsService50ReadValueTimeIntervalBetweenRobuxPurchaseInMinutesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueTimeIntervalBetweenRobuxPurchaseInMinutes(char const*)")]
-pub fn stub_0x23cc0() -> ! {
-    todo!("0x23cc0 __ZN18iOSSettingsService50ReadValueTimeIntervalBetweenRobuxPurchaseInMinutesEPKc")
+pub fn stub_0x23cc0(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23cc0: `atoi(value)` into `_thisPtr + 96`.
+    let parsed = c_atoi(value);
+    service.interval_robux_purchase_minutes = parsed;
+    parsed
 }
 
 // 0x23cd8 — __ZN18iOSSettingsService47ReadValueTimeIntervalBetweenBCPurchaseInMinutesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueTimeIntervalBetweenBCPurchaseInMinutes(char const*)")]
-pub fn stub_0x23cd8() -> ! {
-    todo!("0x23cd8 __ZN18iOSSettingsService47ReadValueTimeIntervalBetweenBCPurchaseInMinutesEPKc")
+pub fn stub_0x23cd8(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23cd8: `atoi(value)` into `_thisPtr + 100`.
+    let parsed = c_atoi(value);
+    service.interval_bc_purchase_minutes = parsed;
+    parsed
 }
 
 // 0x23cf0 — __ZN18iOSSettingsService52ReadValueTimeIntervalBetweenCatalogPurchaseInMinutesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueTimeIntervalBetweenCatalogPurchaseInMinutes(char const*)")]
-pub fn stub_0x23cf0() -> ! {
-    todo!("0x23cf0 __ZN18iOSSettingsService52ReadValueTimeIntervalBetweenCatalogPurchaseInMinutesEPKc")
+pub fn stub_0x23cf0(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23cf0: `atoi(value)` into `_thisPtr + 104`.
+    let parsed = c_atoi(value);
+    service.interval_catalog_purchase_minutes = parsed;
+    parsed
 }
 
 // 0x23d08 — __ZN18iOSSettingsService56ReadValueTimeLimitForBillingServiceRetriesBeforeGivingUpEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueTimeLimitForBillingServiceRetriesBeforeGivingUp(char const*)")]
-pub fn stub_0x23d08() -> ! {
-    todo!("0x23d08 __ZN18iOSSettingsService56ReadValueTimeLimitForBillingServiceRetriesBeforeGivingUpEPKc")
+pub fn stub_0x23d08(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23d08: `atoi(value)` into `_thisPtr + 108`.
+    let parsed = c_atoi(value);
+    service.billing_retry_limit = parsed;
+    parsed
 }
 
 // 0x23d20 — __ZN18iOSSettingsService31ReadValueTestFlightLoggingLevelEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueTestFlightLoggingLevel(char const*)")]
-pub fn stub_0x23d20() -> ! {
-    todo!("0x23d20 __ZN18iOSSettingsService31ReadValueTestFlightLoggingLevelEPKc")
+pub fn stub_0x23d20(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23d20: `atoi(value)` into `_thisPtr + 112`.
+    let parsed = c_atoi(value);
+    service.testflight_logging_level = parsed;
+    parsed
 }
 
 // 0x23d38 — __ZN18iOSSettingsService29ReadValueTestFlightPercentageEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueTestFlightPercentage(char const*)")]
-pub fn stub_0x23d38() -> ! {
-    todo!("0x23d38 __ZN18iOSSettingsService29ReadValueTestFlightPercentageEPKc")
+pub fn stub_0x23d38(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23d38: `atoi(value)` into `_thisPtr + 116`.
+    let parsed = c_atoi(value);
+    service.testflight_percentage = parsed;
+    parsed
 }
 
 // 0x23d50 — __ZN18iOSSettingsService27ReadValueBugSensePercentageEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueBugSensePercentage(char const*)")]
-pub fn stub_0x23d50() -> ! {
-    todo!("0x23d50 __ZN18iOSSettingsService27ReadValueBugSensePercentageEPKc")
+pub fn stub_0x23d50(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23d50: `atoi(value)` into `_thisPtr + 120`.
+    let parsed = c_atoi(value);
+    service.bugsense_percentage = parsed;
+    parsed
 }
 
 // 0x23d68 — __ZN18iOSSettingsService25ReadValueBugSenseLogLinesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueBugSenseLogLines(char const*)")]
-pub fn stub_0x23d68() -> ! {
-    todo!("0x23d68 __ZN18iOSSettingsService25ReadValueBugSenseLogLinesEPKc")
+pub fn stub_0x23d68(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23d68: `atoi(value)` into `_thisPtr + 124`.
+    let parsed = c_atoi(value);
+    service.bugsense_log_lines = parsed;
+    parsed
 }
 
 // 0x23d80 — __ZN18iOSSettingsService25ReadValueBugSenseLogLevelEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueBugSenseLogLevel(char const*)")]
-pub fn stub_0x23d80() -> ! {
-    todo!("0x23d80 __ZN18iOSSettingsService25ReadValueBugSenseLogLevelEPKc")
+pub fn stub_0x23d80(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23d80: `atoi(value)` into `_thisPtr + 128`.
+    let parsed = c_atoi(value);
+    service.bugsense_log_level = parsed;
+    parsed
 }
 
 // 0x23d9c — __ZN18iOSSettingsService35ReadValueiOSGoogleAnalyticsAccount2EPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiOSGoogleAnalyticsAccount2(char const*)")]
-pub fn stub_0x23d9c() -> ! {
-    todo!("0x23d9c __ZN18iOSSettingsService35ReadValueiOSGoogleAnalyticsAccount2EPKc")
+pub fn stub_0x23d9c(service: &mut IosSettingsService, value: &str) {
+    // IDA 0x23d9c: `std::string::assign(_thisPtr + 88, value)`
+    // (temporary destroyed after; refcount folds into host ownership).
+    service.google_analytics_account2 = value.to_string();
 }
 
 // 0x23ed4 — __ZN18iOSSettingsService37ReadValueiOSGoogleAnalyticsSampleRateEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiOSGoogleAnalyticsSampleRate(char const*)")]
-pub fn stub_0x23ed4() -> ! {
-    todo!("0x23ed4 __ZN18iOSSettingsService37ReadValueiOSGoogleAnalyticsSampleRateEPKc")
+pub fn stub_0x23ed4(service: &mut IosSettingsService, value: &str) -> i32 {
+    // IDA 0x23ed4: `atoi(value)` into `_thisPtr + 92`.
+    let parsed = c_atoi(value);
+    service.google_analytics_sample_rate = parsed;
+    parsed
 }
 
 // 0x23eec — __ZN18iOSSettingsService27ReadValueSearchEndpointIPadEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueSearchEndpointIPad(char const*)")]
-pub fn stub_0x23eec() -> ! {
-    todo!("0x23eec __ZN18iOSSettingsService27ReadValueSearchEndpointIPadEPKc")
+pub fn stub_0x23eec(service: &mut IosSettingsService, value: &str) {
+    // IDA 0x23eec: `std::string::assign(_thisPtr + 132, value)`.
+    service.search_endpoint_ipad = value.to_string();
 }
 
 // 0x24024 — __ZN18iOSSettingsService29ReadValueSearchEndpointIPhoneEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueSearchEndpointIPhone(char const*)")]
-pub fn stub_0x24024() -> ! {
-    todo!("0x24024 __ZN18iOSSettingsService29ReadValueSearchEndpointIPhoneEPKc")
+pub fn stub_0x24024(service: &mut IosSettingsService, value: &str) {
+    // IDA 0x24024: `std::string::assign(_thisPtr + 136, value)`.
+    service.search_endpoint_iphone = value.to_string();
 }
 
 // 0x2415c — __ZN18iOSSettingsService24ReadValueCacheUIWebViewsEPKc

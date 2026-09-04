@@ -7,7 +7,8 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
-use std::collections::BTreeMap;
+use crate::generated_165::SettingsHandler;
+use std::collections::{BTreeMap, HashMap};
 
 // 0x16d84 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings10ShadowModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: int __fastcall(_DWORD, _DWORD)
@@ -67,8 +68,15 @@ pub fn stub_0x16e24(map: &mut BTreeMap<u32, i32>) {
 // 0x23a04 — __ZNSt3mapISsPFvPKcESt4lessISsESaISt4pairIKSsS3_EEEixERS7_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::map<std::string,void (*)(char const*),std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::operator[](std::string const&)")]
-pub fn stub_0x23a04() -> ! {
-    todo!("0x23a04 __ZNSt3mapISsPFvPKcESt4lessISsESaISt4pairIKSsS3_EEEixERS7_")
+pub fn stub_0x23a04(map: &HashMap<String, SettingsHandler>, key: &str) -> Option<SettingsHandler> {
+    // IDA 0x23a04 `std::map<string, void (*)(char const*)>::operator[]`:
+    // lower-bound + insert-default (null reader) when absent, returns
+    // the mapped slot (cf. 0x16d84: granularity collapses to the owning
+    // map). Host has no null reader, so a miss reports `None` without
+    // inserting; every in-tree caller assigns through the slot
+    // immediately (IDA 0x21ce0), which `stub_0x21ce0` performs via
+    // `HashMap::insert`.
+    map.get(key).copied()
 }
 
 // 0x24274 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS6_ERKS6_
