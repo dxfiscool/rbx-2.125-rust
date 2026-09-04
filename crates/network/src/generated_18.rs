@@ -10,9 +10,9 @@ use rbx_core::SharedPtr;
 // 0x17e68 — -[Appirater connectedToNetwork]
 // type: char __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater connectedToNetwork]")]
-pub fn stub_17e68() -> ! {
-    todo!("0x17e68 -[Appirater connectedToNetwork]")
-}
+pub fn stub_17e68(reachable: bool, connection_opened: bool) -> bool {
+    // IDA 0x17e68: -[Appirater connectedToNetwork] — zero-address SCNetworkReachability flags (0x17ea8..0x17ece) plus an apple.com probe connection (0x17ede..0x17f3a); reachable (flags&6==2 || flags&1, 0x17f4a) reports the connection (0x17f52), no-flags logs + 0 (0x17f60..0x17f64). System reachability folds; the decision stays 1:1.
+        reachable && connection_opened}
 
 // 0x35c6c — -[Reachability networkStatusForFlags:]
 // type: int __cdecl(Reachability *self, SEL, unsigned int)

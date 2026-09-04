@@ -6,54 +6,64 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::generated_149::AppiraterState;
+
+/// Host shell for the iOS `AppDelegate` (IDA 0x19228..): init/dealloc and the
+/// window/bg-task accessors below; UIKit objects fold, handles stay.
+#[derive(Debug, Default)]
+pub struct AppDelegateState {
+    pub window_present: bool,
+    pub window: Option<String>,
+    pub bg_task: u32,
+}
 
 // 0x191d4 — -[Appirater ratingAlert]
 // demangled: -[Appirater ratingAlert]
 // type: UIAlertView *__cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater ratingAlert]")]
-pub fn stub_191d4() -> ! {
-    todo!("0x191d4 -[Appirater ratingAlert]")
-}
+pub fn stub_191d4(state: &AppiraterState) -> bool {
+    // IDA 0x191d4: -[Appirater ratingAlert] — returns the ratingAlert ivar (0x191e2); the host carries visibility (cf. showRatingAlert/hideRatingAlert).
+        state.alert_visible}
 
 // 0x191e4 — -[Appirater setRatingAlert:]
 // demangled: -[Appirater setRatingAlert:]
 // type: void __cdecl(Appirater *self, SEL, id)
 #[doc(alias = "-[Appirater setRatingAlert:]")]
-pub fn stub_191e4() -> ! {
-    todo!("0x191e4 -[Appirater setRatingAlert:]")
-}
+pub fn stub_191e4(state: &mut AppiraterState, visible: bool) {
+    // IDA 0x191e4: -[Appirater setRatingAlert:] — objc_setProperty retain into the ivar (0x19200); the host stores visibility.
+        state.alert_visible = visible;}
 
 // 0x19208 — -[Appirater delegate]
 // demangled: -[Appirater delegate]
 // type: AppiraterDelegate *__cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater delegate]")]
-pub fn stub_19208() -> ! {
-    todo!("0x19208 -[Appirater delegate]")
-}
+pub fn stub_19208(state: &AppiraterState) -> bool {
+    // IDA 0x19208: -[Appirater delegate] — returns the _delegate ivar (0x19216); the host keeps presence.
+        state.has_delegate}
 
 // 0x19218 — -[Appirater setDelegate:]
 // demangled: -[Appirater setDelegate:]
 // type: void __cdecl(Appirater *self, SEL, id)
 #[doc(alias = "-[Appirater setDelegate:]")]
-pub fn stub_19218() -> ! {
-    todo!("0x19218 -[Appirater setDelegate:]")
-}
+pub fn stub_19218(state: &mut AppiraterState, has_delegate: bool) {
+    // IDA 0x19218: -[Appirater setDelegate:] — ivar store (0x19224); distinct from the +[Appirater setDelegate:] global at 0x17e58.
+        state.has_delegate = has_delegate;}
 
 // 0x19228 — -[AppDelegate init]
 // demangled: -[AppDelegate init]
 // type: AppDelegate *__cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate init]")]
-pub fn stub_19228() -> ! {
-    todo!("0x19228 -[AppDelegate init]")
-}
+pub fn stub_19228() -> AppDelegateState {
+    // IDA 0x19228: -[AppDelegate init] — super init only (0x19242..0x19252); the host returns default shell state.
+        AppDelegateState::default()}
 
 // 0x19254 — -[AppDelegate dealloc]
 // demangled: -[AppDelegate dealloc]
 // type: void __cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate dealloc]")]
-pub fn stub_19254() -> ! {
-    todo!("0x19254 -[AppDelegate dealloc]")
-}
+pub fn stub_19254(state: AppDelegateState) {
+    // IDA 0x19254: -[AppDelegate dealloc] — analytics release (0x19276), window release (0x1928a), super dealloc (0x192ac); drops fold into Rust ownership (window handle below).
+        drop(state.window); }
 
 // 0x192b4 — -[AppDelegate application:didFinishLaunchingWithOptions:]
 // demangled: -[AppDelegate application:didFinishLaunchingWithOptions:]
