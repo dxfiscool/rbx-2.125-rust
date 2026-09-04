@@ -84,40 +84,55 @@ pub fn stub_a133ac(players: &crate::player::Players, key: &str) -> bool {
 // demangled: RBX::Network::Players::beginLeaderboardKey(void)const
 // type: int __fastcall(RBX::Network::Players *this)
 #[doc(alias = "RBX::Network::Players::beginLeaderboardKey(void)const")]
-pub fn stub_a13478() -> ! {
-    todo!("0xa13478 RBX::Network::Players::beginLeaderboardKey(void)const")
+pub fn stub_a13478() -> usize {
+    // IDA 0xa13478: the key-list begin.
+    crate::player::leaderboard_begin()
 }
 
 // 0xa13498 — __ZNK3RBX7Network7Players17endLeaderboardKeyEv
 // demangled: RBX::Network::Players::endLeaderboardKey(void)const
 // type: int __fastcall(RBX::Network::Players *this)
 #[doc(alias = "RBX::Network::Players::endLeaderboardKey(void)const")]
-pub fn stub_a13498() -> ! {
-    todo!("0xa13498 RBX::Network::Players::endLeaderboardKey(void)const")
+pub fn stub_a13498(keys: &[String]) -> usize {
+    // IDA 0xa13498: the key-list end.
+    crate::player::leaderboard_end(keys)
 }
 
 // 0xa1349c — __ZN3RBX7Network7Players16friendEventFiredEiiNS_13FriendService15FriendEventTypeE
 // demangled: RBX::Network::Players::friendEventFired(int,int,RBX::FriendService::FriendEventType)
 // type: void __fastcall(int, int, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::Players::friendEventFired(int,int,RBX::FriendService::FriendEventType)")]
-pub fn stub_a1349c() -> ! {
-    todo!("0xa1349c RBX::Network::Players::friendEventFired(int,int,RBX::FriendService::FriendEventType)")
+pub fn stub_a1349c(
+    first: Option<u32>,
+    second: Option<u32>,
+    event: u8,
+    fire: &mut dyn FnMut(u32, Option<u32>, u8),
+) {
+    // IDA 0xa1349c: resolve both players, fire the friend-event signal when the first resolves.
+    crate::player::friend_event_fired(first, second, event, fire);
 }
 
 // 0xa13c7c — __ZN3RBX7Network7Players13getPlayerByIDEi
 // demangled: RBX::Network::Players::getPlayerByID(int)
 // type: void __fastcall(RBX::Network::Players *this, int, int)
 #[doc(alias = "RBX::Network::Players::getPlayerByID(int)")]
-pub fn stub_a13c7c() -> ! {
-    todo!("0xa13c7c RBX::Network::Players::getPlayerByID(int)")
+pub fn stub_a13c7c(players: &crate::player::Players, user_id: i32) -> Option<u32> {
+    // IDA 0xa13c7c: walk the list matching the +156 user id; miss yields null.
+    players.player_instance_by_id(user_id)
 }
 
 // 0xa14074 — __ZN3RBX7Network7Players19friendStatusChangedEiiNS_13FriendService12FriendStatusE
 // demangled: RBX::Network::Players::friendStatusChanged(int,int,RBX::FriendService::FriendStatus)
 // type: void __fastcall(int, int, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::Players::friendStatusChanged(int,int,RBX::FriendService::FriendStatus)")]
-pub fn stub_a14074() -> ! {
-    todo!("0xa14074 RBX::Network::Players::friendStatusChanged(int,int,RBX::FriendService::FriendStatus)")
+pub fn stub_a14074(
+    first: Option<u32>,
+    second: Option<u32>,
+    status: u8,
+    notify: &mut dyn FnMut(u32, u32, u8),
+) {
+    // IDA 0xa14074: both players resolve into onFriendStatusChanged.
+    crate::player::friend_status_changed(first, second, status, notify);
 }
 
 // 0xa14640 — __ZN3RBX7Network7Players20friendServiceRequestEbN5boost8weak_ptrINS0_6PlayerEEEi
@@ -125,48 +140,79 @@ pub fn stub_a14074() -> ! {
 // type: void __fastcall(RBX::ServiceProvider *, int, int *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Network::Players::friendServiceRequest(bool,rbx_core::WeakPtr<RBX::Network::Player>,int)")]
-pub fn stub_a14640() -> ! {
-    todo!("0xa14640 RBX::Network::Players::friendServiceRequest(bool,boost::weak_ptr<RBX::Network::Player>,int)")
+pub fn stub_a14640(
+    player: Option<u32>,
+    provider_present: bool,
+    service_present: bool,
+    accept: bool,
+    issue: &mut dyn FnMut(u32),
+    reject: &mut dyn FnMut(u32),
+) {
+    // IDA 0xa14640: issue or break the friendship behind provider/service lookups.
+    crate::player::friend_service_request(player, provider_present, service_present, accept, issue, reject);
 }
 
 // 0xa14aa0 — __ZNK3RBX7Network7Players11askAddChildEPKNS_8InstanceE
 // demangled: RBX::Network::Players::askAddChild(RBX::Instance const*)const
 // type: bool __fastcall(RBX::Network::Players *this, const RBX::Instance *)
 #[doc(alias = "RBX::Network::Players::askAddChild(RBX::Instance const*)const")]
-pub fn stub_a14aa0() -> ! {
-    todo!("0xa14aa0 RBX::Network::Players::askAddChild(RBX::Instance const*)const")
+pub fn stub_a14aa0(child_present: bool, is_player: bool) -> bool {
+    // IDA 0xa14aa0: null refused, `Player` accepted.
+    crate::player::players_ask_add_child(child_present, is_player)
 }
 
 // 0xa14bec — __ZN3RBX7Network7Players18findLocalCharacterEPNS_8InstanceE
 // demangled: RBX::Network::Players::findLocalCharacter(RBX::Instance *)
 // type: _DWORD __fastcall(RBX::Network::Players *__hidden this, RBX::Instance *)
 #[doc(alias = "RBX::Network::Players::findLocalCharacter(RBX::Instance *)")]
-pub fn stub_a14bec() -> ! {
-    todo!("0xa14bec RBX::Network::Players::findLocalCharacter(RBX::Instance *)")
+pub fn stub_a14bec(
+    provider_present: bool,
+    players_present: bool,
+    local: Option<u32>,
+    character: Option<u32>,
+) -> Option<u32> {
+    // IDA 0xa14bec: provider, Players, local player, then its character (disasm).
+    crate::player::find_local_character(provider_present, players_present, local, character)
 }
 
 // 0xa14c18 — __ZN3RBX7Network7Players15findLocalPlayerEPNS_8InstanceE
 // demangled: RBX::Network::Players::findLocalPlayer(RBX::Instance *)
 // type: _DWORD __fastcall(RBX::Network::Players *__hidden this, RBX::Instance *)
 #[doc(alias = "RBX::Network::Players::findLocalPlayer(RBX::Instance *)")]
-pub fn stub_a14c18() -> ! {
-    todo!("0xa14c18 RBX::Network::Players::findLocalPlayer(RBX::Instance *)")
+pub fn stub_a14c18(
+    provider_present: bool,
+    players_present: bool,
+    local: Option<u32>,
+) -> Option<u32> {
+    // IDA 0xa14c18: provider, Players, then the local player (disasm).
+    crate::player::find_local_player(provider_present, players_present, local)
 }
 
 // 0xa14c40 — __ZN3RBX7Network7Players23findConstLocalCharacterEPKNS_8InstanceE
 // demangled: RBX::Network::Players::findConstLocalCharacter(RBX::Instance const*)
 // type: _DWORD __fastcall(RBX::Network::Players *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::Network::Players::findConstLocalCharacter(RBX::Instance const*)")]
-pub fn stub_a14c40() -> ! {
-    todo!("0xa14c40 RBX::Network::Players::findConstLocalCharacter(RBX::Instance const*)")
+pub fn stub_a14c40(
+    provider_present: bool,
+    players_present: bool,
+    local: Option<u32>,
+    character: Option<u32>,
+) -> Option<u32> {
+    // IDA 0xa14c40: const twin of findLocalCharacter (identical disasm).
+    crate::player::find_local_character(provider_present, players_present, local, character)
 }
 
 // 0xa14c6c — __ZN3RBX7Network7Players20findConstLocalPlayerEPKNS_8InstanceE
 // demangled: RBX::Network::Players::findConstLocalPlayer(RBX::Instance const*)
 // type: _DWORD __fastcall(RBX::Network::Players *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::Network::Players::findConstLocalPlayer(RBX::Instance const*)")]
-pub fn stub_a14c6c() -> ! {
-    todo!("0xa14c6c RBX::Network::Players::findConstLocalPlayer(RBX::Instance const*)")
+pub fn stub_a14c6c(
+    provider_present: bool,
+    players_present: bool,
+    local: Option<u32>,
+) -> Option<u32> {
+    // IDA 0xa14c6c: const twin of findLocalPlayer (identical disasm).
+    crate::player::find_local_player(provider_present, players_present, local)
 }
 
 // 0xa14c94 — __ZN3RBX7Network7Players18findAncestorPlayerEPKNS_8InstanceE

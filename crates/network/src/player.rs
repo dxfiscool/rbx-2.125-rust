@@ -705,6 +705,113 @@ pub fn reporter_add(
     wake();
 }
 
+/// `Players::beginLeaderboardKey` (IDA 0xa13478) / `endLeaderboardKey`
+/// (IDA 0xa13498): the key-list bounds.
+pub fn leaderboard_begin() -> usize {
+    0
+}
+
+/// `Players::endLeaderboardKey` (IDA 0xa13498).
+pub fn leaderboard_end(keys: &[String]) -> usize {
+    keys.len()
+}
+
+/// `Players::friendEventFired` (IDA 0xa1349c): resolves both players by
+/// id and, when the first resolves, fires the +224 friend-event signal
+/// with both plus the event type (0xa134c6..0xa135d4). Lookups and the
+/// signal stay engine-side.
+pub fn friend_event_fired(
+    first: Option<u32>,
+    second: Option<u32>,
+    event: u8,
+    fire: &mut dyn FnMut(u32, Option<u32>, u8),
+) {
+    if let Some(first) = first {
+        fire(first, second, event);
+    }
+}
+
+/// `Players::friendStatusChanged` (IDA 0xa14074): resolves both players
+/// by id; when both resolve, the first player's
+/// `onFriendStatusChanged` runs (0xa1409c..0xa1414c, engine-side).
+pub fn friend_status_changed(
+    first: Option<u32>,
+    second: Option<u32>,
+    status: u8,
+    notify: &mut dyn FnMut(u32, u32, u8),
+) {
+    if let (Some(first), Some(second)) = (first, second) {
+        notify(first, second, status);
+    }
+}
+
+/// `Players::friendServiceRequest` (IDA 0xa14640): resolves the player;
+/// with a provider and a `FriendService` present, an accepted request
+/// issues friendship and a rejected one breaks it
+/// (`issueFriendRequestOrMakeFriendship` /
+/// `rejectFriendRequestOrBreakFriendship`, 0xa14706..0xa14752,
+/// engine-side).
+pub fn friend_service_request(
+    player: Option<u32>,
+    provider_present: bool,
+    service_present: bool,
+    accept: bool,
+    issue: &mut dyn FnMut(u32),
+    reject: &mut dyn FnMut(u32),
+) {
+    let Some(player) = player else {
+        return;
+    };
+    if !(provider_present && service_present) {
+        return;
+    }
+    if accept {
+        issue(player);
+    } else {
+        reject(player);
+    }
+}
+
+/// `Players::askAddChild` (IDA 0xa14aa0): null children are refused
+/// (0xa14aec); a `Player` child is accepted (0xa14b9c..0xa14ba2).
+pub fn players_ask_add_child(child_present: bool, is_player: bool) -> bool {
+    if !child_present {
+        return false;
+    }
+    is_player
+}
+
+/// `Players::findLocalCharacter` (IDA 0xa14bec) and
+/// `findConstLocalCharacter` (IDA 0xa14c40, identical disasm): provider,
+/// then `Players`, then the local player (+0xBC), then its character
+/// (+0x5C); any miss yields null.
+pub fn find_local_character(
+    provider_present: bool,
+    players_present: bool,
+    local: Option<u32>,
+    character: Option<u32>,
+) -> Option<u32> {
+    if !(provider_present && players_present) {
+        return None;
+    }
+    local?;
+    character
+}
+
+/// `Players::findLocalPlayer` (IDA 0xa14c18) and `findConstLocalPlayer`
+/// (IDA 0xa14c6c, identical disasm): provider, then `Players`, then the
+/// local player (+0xBC); any miss yields null.
+pub fn find_local_player(
+    provider_present: bool,
+    players_present: bool,
+    local: Option<u32>,
+) -> Option<u32> {
+    if !(provider_present && players_present) {
+        return None;
+    }
+    local
+}
+
 /// `Players::raiseChatMessageSignal` (IDA 0xa0d488): fires the chat
 /// signal with the message. The signal stays engine-side.
 pub fn raise_chat_message_signal(message: &ChatMessage, raise: &mut dyn FnMut(&ChatMessage)) {
@@ -1409,5 +1516,42 @@ mod tests {
         assert!(!players.has_leaderboard_key("k"));
         players.add_leaderboard_key("k".to_owned());
         assert!(players.has_leaderboard_key("k"));
+    }
+
+    #[test]
+    fn friend_and_find_gates() {
+        // IDA 0xa13478/0xa13498/0xa1349c/0xa13c7c/0xa14074/0xa14640/0xa14aa0/0xa14bec/0xa14c18.
+        let keys = vec!["a".to_owned(), "b".to_owned()];
+        assert_eq!((leaderboard_begin(), leaderboard_end(&keys)), (0, 2));
+        let mut fired = Vec::new();
+        friend_event_fired(None, Some(2), 1, &mut |a, b, e| fired.push((a, b, e)));
+        assert!(fired.is_empty());
+        friend_event_fired(Some(1), Some(2), 1, &mut |a, b, e| fired.push((a, b, e)));
+        assert_eq!(fired, vec![(1, Some(2), 1)]);
+        let players = Players::new();
+        assert_eq!(players.player_instance_by_id(7), None);
+        let mut notified = Vec::new();
+        friend_status_changed(Some(1), None, 2, &mut |a, b, s| notified.push((a, b, s)));
+        assert!(notified.is_empty());
+        friend_status_changed(Some(1), Some(2), 2, &mut |a, b, s| notified.push((a, b, s)));
+        assert_eq!(notified, vec![(1, 2, 2)]);
+        let mut issued = Vec::new();
+        let mut rejected = Vec::new();
+        friend_service_request(None, true, true, true, &mut |p| issued.push(p), &mut |p| rejected.push(p));
+        friend_service_request(Some(1), false, true, true, &mut |p| issued.push(p), &mut |p| rejected.push(p));
+        assert!(issued.is_empty() && rejected.is_empty());
+        friend_service_request(Some(1), true, true, true, &mut |p| issued.push(p), &mut |p| rejected.push(p));
+        friend_service_request(Some(2), true, true, false, &mut |p| issued.push(p), &mut |p| rejected.push(p));
+        assert_eq!((issued, rejected), (vec![1], vec![2]));
+        assert!(!players_ask_add_child(false, true));
+        assert!(!players_ask_add_child(true, false));
+        assert!(players_ask_add_child(true, true));
+        assert_eq!(find_local_character(false, true, Some(1), Some(9)), None);
+        assert_eq!(find_local_character(true, true, None, Some(9)), None);
+        assert_eq!(find_local_character(true, true, Some(1), Some(9)), Some(9));
+        assert_eq!(find_local_character(true, true, Some(1), None), None);
+        assert_eq!(find_local_player(false, true, Some(1)), None);
+        assert_eq!(find_local_player(true, true, Some(1)), Some(1));
+        assert_eq!(find_local_player(true, true, None), None);
     }
 }
