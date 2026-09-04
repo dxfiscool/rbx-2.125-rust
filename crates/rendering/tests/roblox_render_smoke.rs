@@ -618,11 +618,12 @@ fn technique_lifecycle_and_support() {
     let ti = g::stub_c71694(&mut technique);
     assert_eq!(ti, 0);
     assert_eq!(technique.target_passes.len(), 1);
-    // Output pass (type 3, no material) fails; flip it non-material.
     let support = tech_support(1, 4, &[7]);
-    assert!(!g::stub_c7178c(&technique, false, &support));
-    technique.output_target_pass.pass_type = 1;
+    // Empty passes support vacuously (IDA 0xc70f38 break on empty).
+    assert!(g::stub_c7178c(&technique, false, &support));
+    // A type-3 pass with no material fails; a non-material type passes.
     technique.target_passes[0].passes.push(generated_141::CompositionPass::new(0));
+    assert!(!g::stub_c7178c(&technique, false, &support));
     technique.target_passes[0].passes[0].pass_type = 2;
     assert!(g::stub_c7178c(&technique, false, &support));
     // Format overflow fails even with valid passes.

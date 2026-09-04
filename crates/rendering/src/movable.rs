@@ -674,7 +674,7 @@ impl Renderable {
 /// Ogre::Exception — source string at `+0x14`, line at `+0x04`.
 /// Full construction is `(number, description, source, type, file, line)`
 /// (IDA `0xc6ea4a`).
-#[derive(Clone, Debug, Default)]
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
 pub struct OgreException {
     pub line: i32,
     pub source: String,
