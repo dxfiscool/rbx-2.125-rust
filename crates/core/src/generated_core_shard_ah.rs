@@ -4,6 +4,315 @@
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
 
+/// Batch 9: 11 IDA-grounded ports 0x3043fc-0x30e5c0 — the `BrickColor`
+/// palette family (`parse`, `random`, the `int` ctors, `color4uint8`,
+/// `color3uint8`, `name`, `color4`, `color3`, `hash_value`) over the
+/// `BrickMap` table built by the ctor at 0x304f34, plus
+/// `Color::colorFromInt` over the `getColorByIndex` table (IDA 0x30e3b8).
+/// Ports live in `core_brick` under idiomatic names, wired via `stub_0x*`.
+/// Conventions: palette indices are the `Number` (== colors-vector index);
+/// `ReleaseAssert` checks are kept as `expect`/`assert!` with the original
+/// `BrickColor.cpp` messages; `G3D::iRandom` selection lives outside core.
+/// `[INFERENCE]` marks what the binary does not pin down.
+pub mod core_brick {
+    /// (number, name, r, g, b) palette from the `BrickMap` ctor (IDA
+    /// 0x304f34): every `insert(map, number, r, g, b, name)` call in address
+    /// order (number-ascending, matching the colors-vector order the
+    /// `parse` walk relies on).
+    const PALETTE: &[(u32, &str, u8, u8, u8)] = &[
+        (1, "White", 242, 243, 243),
+        (2, "Grey", 161, 165, 162),
+        (3, "Light yellow", 249, 233, 153),
+        (5, "Brick yellow", 215, 197, 154),
+        (6, "Light green (Mint)", 194, 218, 184),
+        (9, "Light reddish violet", 232, 186, 200),
+        (11, "Pastel Blue", 128, 187, 219),
+        (12, "Light orange brown", 203, 132, 66),
+        (18, "Nougat", 204, 142, 105),
+        (21, "Bright red", 196, 40, 28),
+        (22, "Med. reddish violet", 196, 112, 160),
+        (23, "Bright blue", 13, 105, 172),
+        (24, "Bright yellow", 245, 205, 48),
+        (25, "Earth orange", 98, 71, 50),
+        (26, "Black", 27, 42, 53),
+        (27, "Dark grey", 109, 110, 108),
+        (28, "Dark green", 40, 127, 71),
+        (29, "Medium green", 161, 196, 140),
+        (36, "Lig. Yellowich orange", 243, 207, 155),
+        (37, "Bright green", 75, 151, 75),
+        (38, "Dark orange", 160, 95, 53),
+        (39, "Light bluish violet", 193, 202, 222),
+        (40, "Transparent", 236, 236, 236),
+        (41, "Tr. Red", 205, 84, 75),
+        (42, "Tr. Lg blue", 193, 223, 240),
+        (43, "Tr. Blue", 123, 182, 232),
+        (44, "Tr. Yellow", 247, 241, 141),
+        (45, "Light blue", 180, 210, 228),
+        (47, "Tr. Flu. Reddish orange", 217, 133, 108),
+        (48, "Tr. Green", 132, 182, 141),
+        (49, "Tr. Flu. Green", 248, 241, 132),
+        (50, "Phosph. White", 236, 232, 222),
+        (100, "Light red", 238, 196, 182),
+        (101, "Medium red", 218, 134, 122),
+        (102, "Medium blue", 110, 153, 202),
+        (103, "Light grey", 199, 193, 183),
+        (104, "Bright violet", 107, 50, 124),
+        (105, "Br. yellowish orange", 226, 155, 64),
+        (106, "Bright orange", 218, 133, 65),
+        (107, "Bright bluish green", 0, 143, 156),
+        (108, "Earth yellow", 104, 92, 67),
+        (110, "Bright bluish violet", 67, 84, 147),
+        (111, "Tr. Brown", 191, 183, 177),
+        (112, "Medium bluish violet", 104, 116, 172),
+        (113, "Tr. Medi. reddish violet", 228, 173, 200),
+        (115, "Med. yellowish green", 199, 210, 60),
+        (116, "Med. bluish green", 85, 165, 175),
+        (118, "Light bluish green", 183, 215, 213),
+        (119, "Br. yellowish green", 164, 189, 71),
+        (120, "Lig. yellowish green", 217, 228, 167),
+        (121, "Med. yellowish orange", 231, 172, 88),
+        (123, "Br. reddish orange", 211, 111, 76),
+        (124, "Bright reddish violet", 146, 57, 120),
+        (125, "Light orange", 234, 184, 146),
+        (126, "Tr. Bright bluish violet", 165, 165, 203),
+        (127, "Gold", 220, 188, 129),
+        (128, "Dark nougat", 174, 122, 89),
+        (131, "Silver", 156, 163, 168),
+        (133, "Neon orange", 213, 115, 61),
+        (134, "Neon green", 216, 221, 86),
+        (135, "Sand blue", 116, 134, 157),
+        (136, "Sand violet", 135, 124, 144),
+        (137, "Medium orange", 224, 152, 100),
+        (138, "Sand yellow", 149, 138, 115),
+        (140, "Earth blue", 32, 58, 86),
+        (141, "Earth green", 39, 70, 45),
+        (143, "Tr. Flu. Blue", 207, 226, 247),
+        (145, "Sand blue metallic", 121, 136, 161),
+        (146, "Sand violet metallic", 149, 142, 163),
+        (147, "Sand yellow metallic", 147, 135, 103),
+        (148, "Dark grey metallic", 87, 88, 87),
+        (149, "Black metallic", 22, 29, 50),
+        (150, "Light grey metallic", 171, 173, 172),
+        (151, "Sand green", 120, 144, 130),
+        (153, "Sand red", 149, 121, 119),
+        (154, "Dark red", 123, 46, 47),
+        (157, "Tr. Flu. Yellow", 255, 246, 123),
+        (158, "Tr. Flu. Red", 225, 164, 194),
+        (168, "Gun metallic", 117, 108, 98),
+        (176, "Red flip/flop", 151, 105, 91),
+        (178, "Yellow flip/flop", 180, 132, 85),
+        (179, "Silver flip/flop", 137, 135, 136),
+        (180, "Curry", 215, 169, 75),
+        (190, "Fire Yellow", 249, 214, 46),
+        (191, "Flame yellowish orange", 232, 171, 45),
+        (192, "Reddish brown", 105, 64, 40),
+        (193, "Flame reddish orange", 207, 96, 36),
+        (194, "Medium stone grey", 163, 162, 165),
+        (195, "Royal blue", 70, 103, 164),
+        (196, "Dark Royal blue", 35, 71, 139),
+        (198, "Bright reddish lilac", 142, 66, 133),
+        (199, "Dark stone grey", 99, 95, 98),
+        (200, "Lemon metalic", 130, 138, 93),
+        (208, "Light stone grey", 229, 228, 223),
+        (209, "Dark Curry", 176, 142, 68),
+        (210, "Faded green", 112, 149, 120),
+        (211, "Turquoise", 121, 181, 181),
+        (212, "Light Royal blue", 159, 195, 233),
+        (213, "Medium Royal blue", 108, 129, 183),
+        (216, "Rust", 143, 76, 42),
+        (217, "Brown", 124, 92, 70),
+        (218, "Reddish lilac", 150, 112, 159),
+        (219, "Lilac", 107, 98, 155),
+        (220, "Light lilac", 167, 169, 206),
+        (221, "Bright purple", 205, 98, 152),
+        (222, "Light purple", 228, 173, 200),
+        (223, "Light pink", 220, 144, 149),
+        (224, "Light brick yellow", 240, 213, 160),
+        (225, "Warm yellowish orange", 235, 184, 127),
+        (226, "Cool yellow", 253, 234, 141),
+        (232, "Dove blue", 125, 187, 221),
+        (268, "Medium lilac", 52, 43, 117),
+        (1001, "Institutional white", 248, 248, 248),
+        (1002, "Mid gray", 205, 205, 205),
+        (1003, "Really black", 17, 17, 17),
+        (1004, "Really red", 255, 0, 0),
+        (1005, "Deep orange", 255, 175, 0),
+        (1006, "Alder", 180, 128, 255),
+        (1007, "Dusty Rose", 163, 75, 75),
+        (1008, "Olive", 193, 190, 66),
+        (1009, "New Yeller", 255, 255, 0),
+        (1010, "Really blue", 0, 0, 255),
+        (1011, "Navy blue", 0, 32, 96),
+        (1012, "Deep blue", 33, 84, 185),
+        (1013, "Cyan", 4, 175, 236),
+        (1014, "CGA brown", 170, 85, 0),
+        (1015, "Magenta", 170, 0, 170),
+        (1016, "Pink", 255, 102, 204),
+        (1017, "Deep orange", 255, 175, 0),
+        (1018, "Teal", 18, 238, 212),
+        (1019, "Toothpaste", 0, 255, 255),
+        (1020, "Lime green", 0, 255, 0),
+        (1021, "Camo", 58, 125, 21),
+        (1022, "Grime", 127, 142, 100),
+        (1023, "Lavender", 140, 91, 159),
+        (1024, "Pastel light blue", 175, 221, 255),
+        (1025, "Pastel orange", 255, 201, 201),
+        (1026, "Pastel violet", 177, 167, 255),
+        (1027, "Pastel blue-green", 159, 243, 233),
+        (1028, "Pastel green", 204, 255, 204),
+        (1029, "Pastel yellow", 255, 255, 204),
+        (1030, "Pastel brown", 255, 204, 153),
+        (1031, "Royal purple", 98, 37, 209),
+        (1032, "Hot pink", 255, 0, 191),
+    ];
+
+    /// Random pool from the ctor tail (IDA 0x307660-0x307d14): the 64 numbers
+    /// pushed into the numbers vector; `random` indexes it with
+    /// `G3D::iRandom(0, count - 1)` (IDA 0x304490).
+    const RANDOM_NUMBERS: &[u32] = &[
+        119, 24, 106, 21, 104, 23, 107, 37, 1001, 1, 208, 1002, 194, 199, 26,
+        1003, 1022, 105, 125, 153, 1023, 135, 102, 151, 5, 226, 133, 101, 9,
+        11, 1018, 29, 1030, 1029, 1025, 1016, 1026, 1024, 1027, 1028, 1008,
+        1009, 1017, 1004, 1032, 1010, 1019, 1020, 217, 18, 38, 1031, 1006,
+        1013, 45, 1021, 192, 1014, 1007, 1015, 1012, 1011, 28, 141,
+    ];
+
+    /// `Color::getColorByIndex` table (IDA 0x30e3b8): 16 rows of 3 floats at
+    /// `_MergedGlobals_140 + 8`, stride 12, written once by the guarded init
+    /// (0x30e3f2-0x30e562). The values below are the init immediates as
+    /// `f32` bits; a `const` table is the once-init.
+    const COLOR_INDEX_TABLE: [[f32; 3]; 16] = [
+        [0.0, 0.0, 0.0],
+        [0.3411765, 0.3411765, 0.3411765],
+        [0.6784314, 0.1372549, 0.1372549],
+        [0.1647059, 0.2941177, 0.8431373],
+        [0.1137255, 0.4117647, 0.07843138],
+        [0.5058824, 0.2901961, 0.09803922],
+        [0.5058824, 0.1490196, 0.7529412],
+        [0.627451, 0.627451, 0.627451],
+        [0.5058824, 0.772549, 0.08627451],
+        [0.6156863, 0.6862745, 1.0],
+        [0.1607843, 0.8156863, 0.8156863],
+        [1.0, 0.572549, 0.2],
+        [1.0, 0.9333333, 0.2],
+        [0.9137255, 0.8705882, 0.7333333],
+        [1.0, 0.8039216, 0.9529412],
+        [1.0, 1.0, 1.0],
+    ];
+
+    fn entry(number: u32) -> Option<&'static (u32, &'static str, u8, u8, u8)> {
+        PALETTE.iter().find(|&&(n, _, _, _, _)| n == number)
+    }
+
+    /// IDA 0x30456c `BrickColor(int)` (0x304568 is the C1 thunk into it):
+    /// numbers with a valid entry stick (0x30459c-0x3045a4), anything else
+    /// becomes 194 — Medium stone grey (0x3045aa).
+    pub fn brick_color_from_number(number: u32) -> u32 {
+        if entry(number).is_some() {
+            number
+        } else {
+            194
+        }
+    }
+
+    /// IDA 0x3043fc `parse`: linear `string::compare` over the entries
+    /// (0x304426-0x304454); a miss stores 194 (0x304456-0x30445c, the same
+    /// default as the ctor). Palette order is number order, so the first
+    /// match is the binary's match (e.g. "Deep orange" hits 1005).
+    pub fn brick_color_parse(name: &str) -> u32 {
+        for &(n, text, _, _, _) in PALETTE {
+            if text == name {
+                return n;
+            }
+        }
+        194
+    }
+
+    /// IDA 0x304468 `random`: `numbers[G3D::iRandom(0, count - 1)]`
+    /// (0x304490-0x30449c). The RNG lives outside core; the caller passes the
+    /// pick, wrapped like the inclusive range.
+    pub fn brick_color_random(pick: usize) -> u32 {
+        RANDOM_NUMBERS[pick % RANDOM_NUMBERS.len()]
+    }
+
+    /// IDA 0x3045b0 `color4uint8`: `ReleaseAssert(number < size &&
+    /// colors[number].valid)` (`BrickColor.cpp:559`, 0x3045c8-0x304630,
+    /// fast-log gated — fast-log owned, noted), then the packed word at `+1`
+    /// (0x304634-0x304650) laid down by `insert` as `r | g<<8 | b<<16 |
+    /// 0xFF000000` (0x30ccd4).
+    pub fn brick_color_packed(number: u32) -> u32 {
+        let &(_, _, r, g, b) = entry(number).expect("colors[number].valid (BrickColor.cpp:559)");
+        u32::from_le_bytes([r, g, b, 0xFF])
+    }
+
+    /// IDA 0x304654 `color3uint8`: `color4uint8` (0x30465e) split LE into the
+    /// r/g/b bytes (0x304662-0x30466c).
+    pub fn brick_color_rgb8(number: u32) -> [u8; 3] {
+        let packed = brick_color_packed(number);
+        [
+            (packed & 0xFF) as u8,
+            ((packed >> 8) & 0xFF) as u8,
+            ((packed >> 16) & 0xFF) as u8,
+        ]
+    }
+
+    /// IDA 0x304674 `name`: same ReleaseAssert (`BrickColor.cpp:570`,
+    /// 0x30468a-0x3046f2), then the name at `+24` (0x30470e).
+    pub fn brick_color_name(number: u32) -> &'static str {
+        entry(number).expect("colors[number].valid (BrickColor.cpp:570)").1
+    }
+
+    /// IDA 0x304710 `color4`: same ReleaseAssert (`BrickColor.cpp:576`,
+    /// 0x304728-0x304790), then the four floats at `+8..+20`
+    /// (0x304794-0x3047bc) laid down by `insert` via `G3D::Color4(uint8)`
+    /// (0x30ccdc-0x30ccf0) — each channel / 255 with opaque alpha
+    /// (`[INFERENCE]` — the G3D ctor is not in this batch, but /255 + alpha
+    /// 1.0 is its documented shape and reproduces every entry).
+    pub fn brick_color_float4(number: u32) -> [f32; 4] {
+        let &(_, _, r, g, b) = entry(number).expect("colors[number].valid (BrickColor.cpp:576)");
+        [
+            f32::from(r) / 255.0,
+            f32::from(g) / 255.0,
+            f32::from(b) / 255.0,
+            1.0,
+        ]
+    }
+
+    /// IDA 0x3047c4 `color3`: `color4` (0x3047ce) narrowed to the first three
+    /// channels (0x3047d6-0x3047de).
+    pub fn brick_color_float3(number: u32) -> [f32; 3] {
+        let c4 = brick_color_float4(number);
+        [c4[0], c4[1], c4[2]]
+    }
+
+    /// IDA 0x3047ec `hash_value`: the number itself (0x3047ee).
+    pub fn brick_color_hash(number: u32) -> u32 {
+        number
+    }
+
+    /// IDA 0x30e3b8 `getColorByIndex(int)`: guarded once-init
+    /// (0x30e3d4-0x30e3de) of the table above, then row `this % 16` at
+    /// `base + 12*(this % 16) + 8` (0x30e566-0x30e57a, signed `%` like
+    /// Rust's). `rem_euclid` agrees for every non-negative input, which
+    /// covers all live call sites.
+    pub fn color_index_row(index: i32) -> [f32; 3] {
+        COLOR_INDEX_TABLE[index.rem_euclid(16) as usize]
+    }
+
+    /// IDA 0x30e5c0 `colorFromInt(unsigned)`: row `i % 15` (0x30e5f0 — the
+    /// co-computed `16*(i/15)` second tuple element is dead: the callee only
+    /// reads R0) mixed halfway toward row `i % 13 + 3` (0x30e616-0x30e656):
+    /// `out = c1 + 0.5 * (c2 - c1)` per channel.
+    pub fn color_from_int(i: u32) -> [f32; 3] {
+        let c1 = color_index_row((i % 15) as i32);
+        let c2 = color_index_row((i % 13 + 3) as i32);
+        [
+            c1[0] + 0.5 * (c2[0] - c1[0]),
+            c1[1] + 0.5 * (c2[1] - c1[1]),
+            c1[2] + 0.5 * (c2[2] - c1[2]),
+        ]
+    }
+}
 #[doc(alias = "RBX::AsyncHttpQueue::setThreadPool(int)")]
 // 0x2fad24 — __ZN3RBX14AsyncHttpQueue13setThreadPoolEi
 pub fn stub_0x2fad24() {
@@ -324,62 +633,72 @@ pub fn stub_0x3043dc() {
 
 #[doc(alias = "RBX::BrickColor::parse(char const*)")]
 // 0x3043fc — __ZN3RBX10BrickColor5parseEPKc
-pub fn stub_0x3043fc() {
-    // IDA 0x3043fc: global static ctor/dtor key. Static init — carrier no-op.
+pub fn stub_0x3043fc(name: &str) -> u32 {
+    // IDA 0x3043fc: BrickColor::parse — linear string::compare over the BrickMap entries (0x304426-0x304454); miss stores 194 (0x304456-0x30445c).
+    core_brick::brick_color_parse(name)
 }
 
 #[doc(alias = "RBX::BrickColor::random(void)")]
 // 0x304468 — __ZN3RBX10BrickColor6randomEv
-pub fn stub_0x304468() {
-    // IDA 0x304468: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
+pub fn stub_0x304468(pick: usize) -> u32 {
+    // IDA 0x304468: BrickColor::random — numbers[G3D::iRandom(0, count-1)] (0x304490-0x30449c); the RNG lives outside core, the caller passes the pick.
+    core_brick::brick_color_random(pick)
 }
 
 #[doc(alias = "RBX::BrickColor::BrickColor(int)")]
 // 0x304568 — __ZN3RBX10BrickColorC1Ei
-pub fn stub_0x304568() {
-    // IDA 0x304568: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
+pub fn stub_0x304568(number: u32) -> u32 {
+    // IDA 0x304568: BrickColor C1 — thunk into the C2 below.
+    core_brick::brick_color_from_number(number)
 }
 
 #[doc(alias = "RBX::BrickColor::BrickColor(int)")]
 // 0x30456c — __ZN3RBX10BrickColorC2Ei
-pub fn stub_0x30456c() {
-    // IDA 0x30456c: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
+pub fn stub_0x30456c(number: u32) -> u32 {
+    // IDA 0x30456c: BrickColor C2 — valid numbers stick (0x30459c-0x3045a4), anything else becomes 194 (0x3045aa).
+    core_brick::brick_color_from_number(number)
 }
 
 #[doc(alias = "RBX::BrickColor::color4uint8(void)const")]
 // 0x3045b0 — __ZNK3RBX10BrickColor11color4uint8Ev
-pub fn stub_0x3045b0() {
-    // IDA 0x3045b0: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
+pub fn stub_0x3045b0(number: u32) -> u32 {
+    // IDA 0x3045b0: BrickColor::color4uint8 — ReleaseAssert(valid) (BrickColor.cpp:559, 0x3045c8-0x304630), packed word at +1 (0x304634-0x304650).
+    core_brick::brick_color_packed(number)
 }
 
 #[doc(alias = "RBX::BrickColor::color3uint8(void)const")]
 // 0x304654 — __ZNK3RBX10BrickColor11color3uint8Ev
-pub fn stub_0x304654() {
-    // IDA 0x304654: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
+pub fn stub_0x304654(number: u32) -> [u8; 3] {
+    // IDA 0x304654: BrickColor::color3uint8 — color4uint8 (0x30465e) split LE into r/g/b (0x304662-0x30466c).
+    core_brick::brick_color_rgb8(number)
 }
 
 #[doc(alias = "RBX::BrickColor::name(void)const")]
 // 0x304674 — __ZNK3RBX10BrickColor4nameEv
-pub fn stub_0x304674() {
-    // IDA 0x304674: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
+pub fn stub_0x304674(number: u32) -> &'static str {
+    // IDA 0x304674: BrickColor::name — ReleaseAssert(valid) (BrickColor.cpp:570, 0x30468a-0x3046f2), name at +24 (0x30470e).
+    core_brick::brick_color_name(number)
 }
 
 #[doc(alias = "RBX::BrickColor::color4(void)const")]
 // 0x304710 — __ZNK3RBX10BrickColor6color4Ev
-pub fn stub_0x304710() {
-    // IDA 0x304710: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
+pub fn stub_0x304710(number: u32) -> [f32; 4] {
+    // IDA 0x304710: BrickColor::color4 — ReleaseAssert(valid) (BrickColor.cpp:576, 0x304728-0x304790), floats at +8..+20 via G3D::Color4(uint8) (0x304794-0x3047bc).
+    core_brick::brick_color_float4(number)
 }
 
 #[doc(alias = "RBX::BrickColor::color3(void)const")]
 // 0x3047c4 — __ZNK3RBX10BrickColor6color3Ev
-pub fn stub_0x3047c4() {
-    // IDA 0x3047c4: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
+pub fn stub_0x3047c4(number: u32) -> [f32; 3] {
+    // IDA 0x3047c4: BrickColor::color3 — color4 (0x3047ce) narrowed to three channels (0x3047d6-0x3047de).
+    core_brick::brick_color_float3(number)
 }
 
 #[doc(alias = "RBX::hash_value(RBX::BrickColor const&)")]
 // 0x3047ec — __ZN3RBX10hash_valueERKNS_10BrickColorE
-pub fn stub_0x3047ec() {
-    // IDA 0x3047ec: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
+pub fn stub_0x3047ec(number: u32) -> u32 {
+    // IDA 0x3047ec: hash_value(BrickColor) — the number itself (0x3047ee).
+    core_brick::brick_color_hash(number)
 }
 
 #[doc(alias = "RBX::BrickColor::BrickMap::~BrickMap()")]
@@ -570,8 +889,9 @@ pub fn stub_0x30e580() {
 
 #[doc(alias = "RBX::Color::colorFromInt(unsigned int)")]
 // 0x30e5c0 — __ZN3RBX5Color12colorFromIntEj
-pub fn stub_0x30e5c0() {
-    // IDA 0x30e5c0: global static ctor/dtor key. Static init — carrier no-op.
+pub fn stub_0x30e5c0(i: u32) -> [f32; 3] {
+    // IDA 0x30e5c0: Color::colorFromInt — row (i%15) mixed halfway toward row (i%13+3) (0x30e5f0-0x30e656); the co-computed 16*(i/15) arg is dead in the callee.
+    core_brick::color_from_int(i)
 }
 
 #[doc(alias = "RBX::Color::colorFromPointer(void *)")]

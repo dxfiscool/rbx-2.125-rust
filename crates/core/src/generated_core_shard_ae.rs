@@ -209,6 +209,13 @@ pub mod core_signals {
         pub next: parking_lot::Mutex<Option<crate::SharedPtr<Slot>>>,
         pub owner: parking_lot::Mutex<Option<Weak<RawSignal>>>,
         pub callback: parking_lot::Mutex<Option<Box<dyn Fn() + Send + Sync>>>,
+        /// Second functor channel for 1-arg signal instantiations
+        /// (`signal_with_args<1, void(lua_State*)>`, IDA 0x2a74b4): the slot
+        /// functor for that instantiation takes the emitted pointer argument.
+        /// `usize` carries the opaque pointer (`[INFERENCE]` — the binary
+        /// slot holds one type-erased functor per instantiation; the two
+        /// channels are never live on one slot at once).
+        pub callback1: parking_lot::Mutex<Option<Box<dyn Fn(usize) + Send + Sync>>>,
     }
 
     impl Slot {
@@ -217,6 +224,7 @@ pub mod core_signals {
                 next: parking_lot::Mutex::new(None),
                 owner: parking_lot::Mutex::new(None),
                 callback: parking_lot::Mutex::new(None),
+                callback1: parking_lot::Mutex::new(None),
             }
         }
 
@@ -338,6 +346,27 @@ pub mod core_signals {
                 }
             }
         }
+        /// IDA 0x2a74b4 `signal_with_args<1, void(lua_State*)>::operator()` —
+        /// no-op when the head is null (0x2a74e4); else the `SignalPrints`
+        /// trace (`"Signal with 1 arg executed"`, fast-log owned, noted) and
+        /// the `next()` walk calling each still-connected slot functor with
+        /// the emitted argument (`(**(v22+4))(v22+4, v24)` at 0x2a753e,
+        /// guarded by `*(v22+12)` at 0x2a752e), releasing the iterator ref at
+        /// the end (Arc drops here). Same walk as `emit_void0`.
+        pub fn emit_lua1(&self, arg: usize) {
+            let mut cur: Option<crate::SharedPtr<Slot>> = self.head.lock().clone();
+            if cur.is_none() {
+                return;
+            }
+            while let Some(node) = cur {
+                cur = node.next.lock().clone();
+                if node.is_connected() {
+                    if let Some(cb) = node.callback1.lock().as_ref() {
+                        cb(arg);
+                    }
+                }
+            }
+        }
     }
 
     /// was: `boost::intrusive_ptr<slot>` word — nullable owning handle with
@@ -407,6 +436,498 @@ pub mod core_signals {
             be::throw_thread_resource_error(be::ThreadResourceError {
                 detail: "boost thread: trying joining itself",
             });
+        }
+    }
+}
+/// Batch 8: 22 IDA-grounded ports 0x2981dc-0x2a9450 — the Lua TU helpers
+/// (`panic`, `load`, `pushNoArguments`, `cleanTimeout`, the `illegal`
+/// metatable guard), `Security::Context::current` + the `Impersonator` RAII
+/// guard, `shared_ptr<Job>`/`shared_ptr<RunService>` assign, the
+/// `bind<void(lua_State*,int,string)>` closure spec, the six
+/// `boost::function::operator()` invokes, `shared_from<StatsService>`, the
+/// `RunningAverage` EWMA pair, string `operator+`, the 1-arg
+/// `signal_with_args` emit, and the `function2<void(lua_State*,lua_Debug*)>`
+/// clear. Ports live in `core_function` under idiomatic names, wired via
+/// `stub_0x*`; untouched carriers keep stub bodies.
+/// Conventions: `boost::function` -> `BoostFunction` (`Option<SharedPtr<dyn
+/// Fn>>`; empty is the null vtable word, clone is the manager-vtable clone);
+/// `boost::shared_ptr` -> `crate::SharedPtr` (Arc); `__cxa_throw` ->
+/// `panic!`; `lua_State*` stays opaque. `[INFERENCE]` marks what the binary
+/// does not pin down.
+pub mod core_function {
+    /// was: `lua_State*` — the live script crate owns the real type; shared
+    /// with the `core_af` Lua functor ports (same underlying pointer).
+    pub type LuaStatePtr = crate::generated_core_shard_af::core_af::LuaStatePtr;
+    /// was: `lua_Debug*` — same split as `LuaStatePtr`.
+    pub type LuaDebugPtr = *mut std::os::raw::c_void;
+
+    /// was: `boost::function<R(A...)>` storage — the vtable word (`*a1`) plus
+    /// the 12-byte inline functor buffer. Empty is the null word; small
+    /// functors sit inline (tag bit0 set), heap functors clone through the
+    /// manager vtable. Every ported operation (empty test, copy, move, clear,
+    /// swap, invoke) behaves identically for both, so one
+    /// `Option<SharedPtr<...>>` covers all instantiations; `SharedPtr` clone
+    /// is the manager clone and drop is the manager destroy (`[INFERENCE]`
+    /// on inline-vs-heap storage only — observable behavior is identical).
+    pub struct BoostFunction<A, R> {
+        target: Option<crate::SharedPtr<dyn Fn(A) -> R + Send + Sync>>,
+    }
+
+    fn same_fn<A, R>(a: &BoostFunction<A, R>, b: &BoostFunction<A, R>) -> bool {
+        std::ptr::eq(a, b)
+    }
+
+    impl<A, R> BoostFunction<A, R> {
+        pub fn empty() -> Self {
+            Self { target: None }
+        }
+
+        pub fn of(f: impl Fn(A) -> R + Send + Sync + 'static) -> Self {
+            Self {
+                target: Some(crate::SharedPtr::new(f)),
+            }
+        }
+
+        /// Emptiness read (`*a1 == 0`) behind every `dummy::nonnull` guard.
+        pub fn is_empty(&self) -> bool {
+            self.target.is_none()
+        }
+
+        /// `clear` (IDA 0x2acdc4/0x2b1c4c/0x2b3fb4/0x2b4010/0x2a9450): no-op
+        /// on the null word (0x2acdd0); else the manager destroy op 2 for
+        /// heap targets (0x2acde0-0x2acde8, skipped for inline bit0), then
+        /// word := 0. Drop-then-`None` is that path.
+        pub fn clear(&mut self) {
+            self.target = None;
+        }
+
+        /// `move_assign` (IDA 0x2acdf0/0x2b1b48): self-move is a no-op
+        /// (0x2ace3e); empty src clears dst (0x2ace64); small src copies the
+        /// 12 bytes inline (0x2ace50-0x2ace58), heap src clones through the
+        /// manager (0x2ace7e); src word := 0 either way (0x2ace84). Take +
+        /// clear-empty is that path.
+        pub fn move_assign(&mut self, src: &mut Self) {
+            if same_fn(&*self, &*src) {
+                return;
+            }
+            match src.target.take() {
+                Some(t) => self.target = Some(t),
+                None => self.target = None,
+            }
+        }
+
+        /// `assign_to_own` (IDA 0x2acef4/0x2b3f84/0x2b3fe0): empty src leaves
+        /// dst untouched (0x2acefa fallthrough); small src copies inline
+        /// (0x2acf04-0x2acf0c), heap src clones via manager op 0 (0x2acf22).
+        /// Clone-when-present is that path.
+        pub fn assign(&mut self, src: &Self) {
+            if let Some(t) = &src.target {
+                self.target = Some(t.clone());
+            }
+        }
+
+        /// `swap` (IDA 0x2acce8/0x2b1a6c): self-swap is a no-op (0x2acd36);
+        /// else the temp triple-`move_assign` + `clear` (0x2acd3a-0x2acd6a).
+        pub fn swap_with(&mut self, other: &mut Self) {
+            if same_fn(&*self, &*other) {
+                return;
+            }
+            let mut tmp = Self::empty();
+            tmp.move_assign(&mut *self);
+            self.move_assign(other);
+            other.move_assign(&mut tmp);
+            tmp.clear();
+        }
+
+        /// `operator=` (IDA 0x2acc24): temp/assign/swap/clear
+        /// (0x2acc48-0x2acc8e), returning `*this` at the live site.
+        pub fn assign_from(&mut self, src: &Self) {
+            let mut tmp = Self::empty();
+            tmp.assign(src);
+            self.swap_with(&mut tmp);
+            tmp.clear();
+        }
+
+        /// `operator()` (IDA 0x2a59f4/0x2a5abc/0x2a5da0/0x2a7220/0x2a73ec):
+        /// `bad_function_call` when the word is null (0x2a5a42-0x2a5a8a);
+        /// else the vtable tail-call through `(*a1 & ~1) + 4` (0x2a5a74).
+        /// `panic!` is the throw.
+        pub fn invoke(&self, arg: A) -> R {
+            match &self.target {
+                Some(f) => f(arg),
+                None => panic!("boost::bad_function_call"),
+            }
+        }
+    }
+
+    /// was: `boost::function1<unsigned long,lua_State*>` (IDA 0x2a59f4) and
+    /// its `assign_to_own`/`clear` monomorphs (IDA 0x2b3fe0/0x2b4010).
+    pub type LuaUlongFn = BoostFunction<LuaStatePtr, u64>;
+    /// was: `boost::function2<void,lua_State*,unsigned long>` (IDA 0x2a5abc).
+    pub type LuaVoidFn2 = BoostFunction<(LuaStatePtr, u64), ()>;
+    /// was: `boost::function1<void,bool>` (IDA 0x2a5da0).
+    pub type BoolVoidFn = BoostFunction<bool, ()>;
+    /// was: `boost::function1<void,lua_State*>` (IDA 0x2a7220).
+    pub type LuaVoidFn1 = BoostFunction<LuaStatePtr, ()>;
+    /// was: `boost::function1<std::string,std::string const&>` (IDA 0x2a73ec).
+    pub type StringMapFn = BoostFunction<String, String>;
+    /// was: `boost::function2<void,lua_State*,lua_Debug*>` (IDA 0x2a9450).
+    pub type LuaDbgFn2 = BoostFunction<(LuaStatePtr, LuaDebugPtr), ()>;
+
+    /// was: `boost::shared_ptr<T>::operator=(const&)` (IDA 0x2a4a7c Job,
+    /// 0x2a65c8 RunService): `shared_count` tmp from src (addref new,
+    /// 0x2a4a90), store `pi_` (0x2a4a9a), swap in, release old (0x2a4aa8).
+    /// Clone-then-store is that order.
+    pub fn shared_ptr_assign<T>(
+        dst: &mut Option<crate::SharedPtr<T>>,
+        src: &Option<crate::SharedPtr<T>>,
+    ) {
+        *dst = src.clone();
+    }
+
+    /// Token for `RBX::TaskScheduler::Job` — the live site owns the real
+    /// type; only the `shared_ptr` identity matters here.
+    pub struct TaskSchedulerJob;
+    /// Token for `RBX::RunService` — same split as `TaskSchedulerJob`.
+    pub struct RunServiceToken;
+
+    /// was: `RBX::RunningAverage<double,double>` (IDA 0x2a60b0: `+0`
+    /// circular-buffer word, `+8` weight, `+16` last sample, `+24` average,
+    /// `+32` variance, `+40` first-sample flag).
+    pub struct RunningAverage {
+        pub alpha: f64,
+        pub last: f64,
+        pub average: f64,
+        pub variance: f64,
+        pub first: bool,
+        pub history: Option<Vec<f64>>,
+    }
+
+    impl RunningAverage {
+        pub fn new(alpha: f64) -> Self {
+            Self {
+                alpha,
+                last: 0.0,
+                average: 0.0,
+                variance: 0.0,
+                // `+40` nonzero at construction: the first sample is taken
+                // raw (`[INFERENCE]` — the ctor is not in this batch, but
+                // 0x2a60e6 only blends when the flag is clear).
+                first: true,
+                history: None,
+            }
+        }
+
+        /// IDA 0x2a60b0 `sample(double)`: the `fabs(v) != INFINITY` gate
+        /// (0x2a60e0) — NaN passes it exactly like the binary, since
+        /// `fabs(NaN) != INFINITY`; blend `alpha*v + (1-alpha)*avg` past the
+        /// first sample (0x2a60e6-0x2a6106), store average/last, clear the
+        /// flag (0x2a610c-0x2a6114), fold the variance
+        /// `(1-alpha)*var + alpha*(v-avg)^2` with the *updated* average
+        /// (0x2a6140), and `push_back` when the buffer word is present
+        /// (0x2a6144-0x2a614c).
+        pub fn sample(&mut self, v: f64) {
+            if v.abs() != f64::INFINITY {
+                let blended = if self.first {
+                    v
+                } else {
+                    self.alpha * v + (1.0 - self.alpha) * self.average
+                };
+                self.average = blended;
+                self.last = v;
+                self.first = false;
+                self.variance = (1.0 - self.alpha) * self.variance
+                    + self.alpha * (v - blended) * (v - blended);
+                if let Some(history) = self.history.as_mut() {
+                    history.push(v);
+                }
+            }
+        }
+    }
+
+    /// was: `RBX::RunningAverageTimeInterval<SampleMethod 1>` (IDA 0x2a6058:
+    /// `+0` last stamp, `+8` armed flag, `+12` the `RunningAverage` above).
+    pub struct RunningAverageTimeInterval {
+        pub last: f64,
+        pub armed: bool,
+        pub average: RunningAverage,
+    }
+
+    impl RunningAverageTimeInterval {
+        pub fn new(alpha: f64) -> Self {
+            Self {
+                last: 0.0,
+                armed: true,
+                average: RunningAverage::new(alpha),
+            }
+        }
+
+        /// IDA 0x2a6058 `sample()`: `now` is `Time::now<1>` (0x2a6068),
+        /// passed in because the clock lives outside core. The armed call
+        /// (0x2a6062-0x2a6080) only records the baseline stamp and disarms,
+        /// returning 0; later calls sample the stamp delta (0x2a6086-0x2a60a8).
+        pub fn sample(&mut self, now: f64) {
+            let dt = now - self.last;
+            self.last = now;
+            if self.armed {
+                self.armed = false;
+            } else {
+                self.average.sample(dt);
+            }
+        }
+    }
+
+    /// IDA 0x29f0fc `cleanTimeout(double&)`: `*t` against the LuaSettings
+    /// singleton word at `+0x68` (0x29f10a-0x29f116). Below the setting
+    /// (0x29f11a), or NaN/Inf through the float `isNanInf` check
+    /// (0x29f11c-0x29f12e), stores the setting (0x29f130-0x29f138).
+    pub fn clean_timeout(value: &mut f64, setting: f64) {
+        if *value < setting || (*value as f32).is_nan() || (*value as f32).is_infinite() {
+            *value = setting;
+        }
+    }
+
+    /// IDA 0x29cad4 `pushNoArguments(lua_State*)`: pushes nothing, returns 0
+    /// (0x29cad6) — the lua result count.
+    pub fn push_no_arguments() -> i32 {
+        0
+    }
+
+    /// IDA 0x2981dc `panic(lua_State*)`: `StandardOut::singleton`
+    /// (0x2981fc), `lua_tolstring(L, -1)` (0x29823a), `printf` of
+    /// `"Unprotected error in call to Lua API (%s)\n"` (0x298252), release
+    /// the singleton count (0x298258-0x298260), then `RBXCRASH` (0x29826a).
+    /// eprint + `panic!` is that path; the message arrives as `&str` because
+    /// the Lua stack lives at the live site.
+    pub fn lua_panic_hook(message: &str) -> ! {
+        eprintln!("Unprotected error in call to Lua API ({message})");
+        panic!("RBXCRASH");
+    }
+    /// IDA 0x2a36f8 `illegal(lua_State*)` (`__noreturn`): builds
+    /// `std::runtime_error("can't modify this library")` (0x2a3724-0x2a37e0)
+    /// and `__cxa_throw`s it (0x2a3808). `panic!` is the throw.
+    pub fn illegal_library_access() -> ! {
+        panic!("can't modify this library");
+    }
+
+    /// was: `bind_t<void(*)(lua_State*,int,string), list3<arg<1>,arg<2>,
+    /// value<string>>>` (IDA 0x2a5778/0x2b268c/0x2b27b8): the target word at
+    /// `+0` (0x2a57dc, 0x2b26b8) plus the `list3` at `+4` holding the fixed
+    /// `value<string>` (0x2b27e4, copied at 0x2b2d44-0x2b2d7a). `arg<1>` and
+    /// `arg<2>` are placeholder tag types with no data, so only the target
+    /// and the string are stored.
+    #[derive(Debug, Clone)]
+    pub struct BoundLuaCall {
+        pub func: usize,
+        pub text: String,
+    }
+
+    /// IDA 0x2a5778.
+    pub fn bind_lua_call(func: usize, text: &str) -> BoundLuaCall {
+        BoundLuaCall {
+            func,
+            text: text.to_owned(),
+        }
+    }
+
+    impl BoundLuaCall {
+        /// Call semantics of the bound target (the `list3::operator()` at
+        /// 0x2b2bfc through the `void_function_obj_invoker2::invoke` at
+        /// 0x2b2974): `arg<1>` takes the emitted state, `arg<2>` takes the
+        /// emitted ulong narrowed to int, `value<string>` is fixed. The
+        /// target word stays opaque; the live site supplies the callable.
+        pub fn invoke_with(
+            &self,
+            target: &dyn Fn(LuaStatePtr, i32, &str),
+            l: LuaStatePtr,
+            extra: u64,
+        ) {
+            // `ulong -> int` narrows like the binary's implicit conversion
+            // (`extra as i32` wraps, matching ARM).
+            target(l, extra as i32, &self.text);
+        }
+    }
+
+    /// was: `list3<arg<1>,arg<2>,value<string>>` (IDA 0x2b2d20) — the bound
+    /// argument pack; only the string carries data (copied at
+    /// 0x2b2d44-0x2b2d7a, temp released at 0x2b2d8c-0x2b2dd4 as Drop glue).
+    #[derive(Debug, Clone)]
+    pub struct BoundArgList {
+        pub text: String,
+    }
+
+    /// IDA 0x2b2d20.
+    pub fn bind_arg_list(text: &str) -> BoundArgList {
+        BoundArgList {
+            text: text.to_owned(),
+        }
+    }
+
+    /// IDA 0x2b268c `function2` ctor from `bind_t`: zero the word (0x2b26ac),
+    /// split the functor (0x2b26b8-0x2b26ce), `assign_to` the stored vtable
+    /// (0x2b26f6). Storing the spec-backed closure is that path; the temp
+    /// string release (0x2b2708-0x2b2750) is Drop glue.
+    pub fn bind_to_function2(
+        spec: BoundLuaCall,
+        target: crate::SharedPtr<dyn Fn(LuaStatePtr, i32, &str) + Send + Sync>,
+    ) -> LuaVoidFn2 {
+        LuaVoidFn2::of(move |(l, extra)| spec.invoke_with(&*target, l, extra))
+    }
+
+    /// IDA 0x2ac838/0x2ad520/0x2b2688 `dummy::nonnull`: empty bodies — the
+    /// address-taken marker for the safe-bool idiom, never called.
+    pub fn dummy_nonnull() {}
+
+    /// IDA 0x2ac368 `signal<void(RunTransition)>::slot::safe_static_do_get_mutex`:
+    /// guarded in-place `mutex::mutex` (0x2ac3de) + `__cxa_atexit(~mutex)`
+    /// (0x2ac3fc-0x2ac402), returning the static (0x2ac42c) — the in-place
+    /// shape of 0x2b00b0, not the `operator new` shape of 0x2a94a0. `LazyLock`
+    /// is the guard.
+    static SLOT_RT_MUTEX: std::sync::LazyLock<parking_lot::Mutex<()>> =
+        std::sync::LazyLock::new(|| parking_lot::Mutex::new(()));
+
+    pub fn slot_rt_static_mutex() -> &'static parking_lot::Mutex<()> {
+        &SLOT_RT_MUTEX
+    }
+
+    /// was: `RBX::Name` handle for `Stats::sStats` behind
+    /// `Name::declare`/`doDeclare` (IDA 0x2adfd8/0x2ae020). The index is
+    /// assigned by the name table at the live site; 0 is the null name
+    /// (`[INFERENCE]` — the binary returns the table slot).
+    #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+    pub struct StatsName {
+        pub index: u32,
+    }
+
+    static STATS_NAME_CELL: std::sync::LazyLock<StatsName> =
+        std::sync::LazyLock::new(|| StatsName { index: 2 });
+
+    /// IDA 0x2ae020 `doDeclare`: guarded once-init (`__cxa_guard_acquire` at
+    /// 0x2ae07c, init at 0x2ae0a4, release at 0x2ae0a8) returning the static
+    /// (0x2ae0d6). `LazyLock` is that guard.
+    pub fn do_declare_stats_name() -> StatsName {
+        *STATS_NAME_CELL
+    }
+
+    /// IDA 0x2adfd8 `declare`: null `sStats` text bails to `getNullName`
+    /// (0x2adfea-0x2ae016); else `call_once` the declarer (0x2adfee-0x2ae006)
+    /// and tail-calls `doDeclare` (0x2ae00e) — same shape as the
+    /// `declare<StatsItem>` port at 0x2c1e00.
+    pub fn declare_stats_name(text: Option<&str>) -> StatsName {
+        match text {
+            None => StatsName {
+                index: crate::generated_core_shard_af::core_af::null_name(),
+            },
+            Some(_) => do_declare_stats_name(),
+        }
+    }
+
+    /// was: `RBX::Name` handle for `sDebugSettings` (IDA 0x2ae77c/0x2ae7c4) —
+    /// same shape as `StatsName` with its own once cell.
+    #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+    pub struct DebugSettingsName {
+        pub index: u32,
+    }
+
+    static DEBUG_SETTINGS_NAME_CELL: std::sync::LazyLock<DebugSettingsName> =
+        std::sync::LazyLock::new(|| DebugSettingsName { index: 3 });
+
+    /// IDA 0x2ae7c4 `doDeclare` (guard at 0x2ae820, init at 0x2ae848,
+    /// release at 0x2ae84c, return at 0x2ae87a).
+    pub fn do_declare_debug_settings_name() -> DebugSettingsName {
+        *DEBUG_SETTINGS_NAME_CELL
+    }
+
+    /// IDA 0x2ae7c0 `callDoDeclare` — thunk straight into `doDeclare`.
+    pub fn call_do_declare_debug_settings() -> DebugSettingsName {
+        do_declare_debug_settings_name()
+    }
+
+    /// IDA 0x2ae77c `declare`: null `sDebugSettings` text bails to
+    /// `getNullName` (0x2ae78e-0x2ae7ba); else `call_once` + `doDeclare`
+    /// (0x2ae792-0x2ae7b2).
+    pub fn declare_debug_settings_name(text: Option<&str>) -> DebugSettingsName {
+        match text {
+            None => DebugSettingsName {
+                index: crate::generated_core_shard_af::core_af::null_name(),
+            },
+            Some(_) => do_declare_debug_settings_name(),
+        }
+    }
+
+    /// was: `ServiceProvider::doGetClassIndex<StatsService>` result (IDA
+    /// 0x2ae108) — the process-wide class-index counter behind
+    /// `newIndex` (0x2ae180), guarded once (0x2ae164-0x2ae184). One
+    /// `AtomicUsize` preserves cross-instantiation uniqueness
+    /// (`[INFERENCE]` on the counter start only).
+    static CLASS_INDEX_COUNTER: std::sync::atomic::AtomicUsize =
+        std::sync::atomic::AtomicUsize::new(1);
+    static STATS_SERVICE_CLASS_INDEX: std::sync::LazyLock<usize> =
+        std::sync::LazyLock::new(|| {
+            CLASS_INDEX_COUNTER.fetch_add(1, std::sync::atomic::Ordering::SeqCst)
+        });
+
+    /// IDA 0x2ae108.
+    pub fn stats_service_class_index() -> usize {
+        *STATS_SERVICE_CLASS_INDEX
+    }
+
+    /// IDA 0x2a5e64 `shared_from<StatsService>(shared_ptr*)`: null source
+    /// zeroes the out word (0x2a5ef2); else `enable_shared_from_this` from
+    /// the `DescribedBase` subobject at `+40` (0x2a5ebe) with the `-36`
+    /// derived adjust (0x2a5eca) and the count adopt (0x2a5eda-0x2a5ee8).
+    /// The layout adjusts are Drop-glue-free here: clone-or-empty.
+    pub fn shared_from_opt<T>(this: Option<&crate::SharedPtr<T>>) -> Option<crate::SharedPtr<T>> {
+        this.cloned()
+    }
+
+    /// IDA 0x2a7348 `std::operator+<char>`: copy-construct from the left
+    /// operand (0x2a736a), then `append` the right (0x2a73a2).
+    pub fn string_concat(left: &str, right: &str) -> String {
+        let mut out = left.to_owned();
+        out.push_str(right);
+        out
+    }
+
+    /// was: `RBX::Security::Context` behind the thread-local slot — reuses
+    /// the `core_af` token/slot so impersonation and `current` share one
+    /// thread-local with the `thread_specific_ptr<Context>` ports.
+    pub type SecurityContext = crate::generated_core_shard_af::core_af::SecurityContext;
+
+    /// IDA 0x2a3ca8 `Context::current()`: `get_tss_data` (0x2a3cc2); a null
+    /// slot allocates a zero `Context` (0x2a3ccc-0x2a3cd0) and `reset`s it in
+    /// (0x2a3cd2-0x2a3cda); returns the slot (0x2a3ce0).
+    pub fn security_context_current() -> crate::SharedPtr<SecurityContext> {
+        use crate::generated_core_shard_af::core_af as af;
+        if let Some(ctx) = af::security_context_get() {
+            ctx
+        } else {
+            let ctx = crate::SharedPtr::new(SecurityContext { token: 0 });
+            af::security_context_reset(Some(ctx.clone()));
+            ctx
+        }
+    }
+
+    /// was: `RBX::Security::Impersonator` — the previous `Context` stashed in
+    /// the guard (IDA 0x2a7148 `*a1 = old`), restored on drop.
+    pub struct Impersonator {
+        prev: Option<crate::SharedPtr<SecurityContext>>,
+    }
+
+    /// IDA 0x2a7120 `Impersonator(Identities)`: news a `Context{id}`
+    /// (0x2a712e-0x2a7130), installs it via the thread-local `reset`
+    /// (0x2a7132-0x2a7152), keeping the released old pointer.
+    pub fn impersonate(identity: u32) -> Impersonator {
+        use crate::generated_core_shard_af::core_af as af;
+        let prev = af::security_context_get();
+        af::security_context_reset(Some(crate::SharedPtr::new(SecurityContext { token: identity })));
+        Impersonator { prev }
+    }
+
+    impl Drop for Impersonator {
+        fn drop(&mut self) {
+            use crate::generated_core_shard_af::core_af as af;
+            af::security_context_reset(self.prev.take());
         }
     }
 }
@@ -485,92 +1006,110 @@ pub fn stub_0x294e3c() {
 
 #[doc(alias = "__ZL5panicP9lua_State")]
 // 0x2981dc — __ZL5panicP9lua_State
-pub fn stub_0x2981dc() {
-    // IDA 0x2981dc: flyweight interned-value holder. Arc<str>-style interning at the live site — carrier no-op.
+pub fn stub_0x2981dc(message: &str) -> ! {
+    // IDA 0x2981dc: lua_State* panic hook — StandardOut print of the lua_tolstring(L,-1) text (0x2981fc-0x298252), count release (0x298258-0x298260), RBXCRASH (0x29826a). Message arrives as &str; the Lua stack lives at the live site.
+    core_function::lua_panic_hook(message)
 }
 
 #[doc(alias = "__ZL4loadP9lua_StatePKcPFiS0_E")]
 // 0x2982c8 — __ZL4loadP9lua_StatePKcPFiS0_E
 pub fn stub_0x2982c8() {
-    // IDA 0x2982c8: flyweight interned-value holder. Arc<str>-style interning at the live site — carrier no-op.
+    // IDA 0x2982c8: load(L, name, reader) — reader chunk (0x2982d2), locked-metatable guard (0x2982e0-0x29830c), stack trim (0x298314), fresh userdata + table with __index/__newindex/__metatable wired to `illegal` (0x29831c-0x2983a0), setfield into the registry (0x2983b4). Lua-registry owned (script crate) — carrier no-op in core.
 }
 
 #[doc(alias = "__ZL15pushNoArgumentsP9lua_State")]
 // 0x29cad4 — __ZL15pushNoArgumentsP9lua_State
-pub fn stub_0x29cad4() {
-    // IDA 0x29cad4: global static ctor/dtor key. Static init — carrier no-op.
+pub fn stub_0x29cad4() -> i32 {
+    // IDA 0x29cad4: pushNoArguments — pushes nothing, returns 0 (0x29cad6), the lua result count.
+    core_function::push_no_arguments()
 }
 
 #[doc(alias = "__ZL12cleanTimeoutRd")]
 // 0x29f0fc — __ZL12cleanTimeoutRd
-pub fn stub_0x29f0fc() {
-    // IDA 0x29f0fc: global static ctor/dtor key. Static init — carrier no-op.
+pub fn stub_0x29f0fc(value: &mut f64, setting: f64) {
+    // IDA 0x29f0fc: cleanTimeout — *timeout vs the LuaSettings singleton +0x68 Floor (0x29f10a-0x29f116); below-setting (0x29f11a) or NaN/Inf via float isNanInf (0x29f11c-0x29f12e) stores the setting (0x29f130-0x29f138).
+    core_function::clean_timeout(value, setting);
 }
 
 #[doc(alias = "__ZL7illegalP9lua_State")]
 // 0x2a36f8 — __ZL7illegalP9lua_State
-pub fn stub_0x2a36f8() {
-    // IDA 0x2a36f8: script/reflection wiring owned by the script/datamodel crates — carrier no-op in core.
+pub fn stub_0x2a36f8() -> ! {
+    // IDA 0x2a36f8: illegal — __cxa_allocate_exception + runtime_error("can't modify this library") (0x2a3724-0x2a37e0) + __cxa_throw (0x2a3808). panic! is the throw.
+    core_function::illegal_library_access()
 }
 
 #[doc(alias = "__ZN3RBX8Security7Context7currentEv")]
 // 0x2a3ca8 — __ZN3RBX8Security7Context7currentEv
-pub fn stub_0x2a3ca8() {
-    // IDA 0x2a3ca8: script/reflection wiring owned by the script/datamodel crates — carrier no-op in core.
+pub fn stub_0x2a3ca8() -> crate::SharedPtr<core_function::SecurityContext> {
+    // IDA 0x2a3ca8: Security::Context::current — get_tss_data (0x2a3cc2); null slot news a zero Context (0x2a3ccc-0x2a3cd0) and resets it in (0x2a3cd2-0x2a3cda).
+    core_function::security_context_current()
 }
 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEaSERKS4_")]
 // 0x2a4a7c — __ZN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEaSERKS4_
-pub fn stub_0x2a4a7c() {
-    // IDA 0x2a4a7c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_0x2a4a7c(
+    dst: &mut Option<crate::SharedPtr<core_function::TaskSchedulerJob>>,
+    src: &Option<crate::SharedPtr<core_function::TaskSchedulerJob>>,
+) {
+    // IDA 0x2a4a7c: shared_ptr<TaskScheduler::Job>::operator= — shared_count tmp from src (0x2a4a90), store pi_ (0x2a4a9a), release old (0x2a4aa8).
+    core_function::shared_ptr_assign(dst, src);
 }
 
 #[doc(alias = "__ZN16RobloxExtraSpace21eraseRefsFromAllNodesEv")]
 // 0x2a4c6c — __ZN16RobloxExtraSpace21eraseRefsFromAllNodesEv
 pub fn stub_0x2a4c6c() {
-    // IDA 0x2a4c6c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x2a4c6c: RobloxExtraSpace::eraseRefsFromAllNodes — intrusive-set iterator from the head link (0x2a4c78), per node WeakThreadRef::Node::eraseAllRefs (*(it+20), 0x2a4c8c) + operator++ (0x2a4c92). Lua-thread-set owned (script crate) — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN5boost4bindIvP9lua_StateiSsNS_3argILi1EEENS3_ILi2EEESsEENS_3_bi6bind_tIT_PFS8_T0_T1_T2_ENS6_9list_av_3IT3_T4_T5_E4typeEEESD_SF_SG_SH_")]
 // 0x2a5778 — __ZN5boost4bindIvP9lua_StateiSsNS_3argILi1EEENS3_ILi2EEESsEENS_3_bi6bind_tIT_PFS8_T0_T1_T2_ENS6_9list_av_3IT3_T4_T5_E4typeEEESD_SF_SG_SH_
-pub fn stub_0x2a5778() {
-    // IDA 0x2a5778: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
+pub fn stub_0x2a5778(func: usize, text: &str) -> core_function::BoundLuaCall {
+    // IDA 0x2a5778: bind<void(lua_State*,int,string)> — bind_t capturing the target word +0 (0x2a57dc) and the list3 string +4 (0x2a57e6); COW releases (0x2a57f8-0x2a5870) are Drop glue. arg<1>/arg<2> carry no data.
+    core_function::bind_lua_call(func, text)
 }
 
 #[doc(alias = "__ZNK5boost9function1ImP9lua_StateEclES2_")]
 // 0x2a59f4 — __ZNK5boost9function1ImP9lua_StateEclES2_
-pub fn stub_0x2a59f4() {
-    // IDA 0x2a59f4: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
+pub fn stub_0x2a59f4(f: &core_function::LuaUlongFn, l: core_function::LuaStatePtr) -> u64 {
+    // IDA 0x2a59f4: function1<ulong(lua_State*)>::operator() — bad_function_call on null (0x2a5a42-0x2a5a8a), else vtable tail-call (0x2a5a74).
+    f.invoke(l)
 }
 
 #[doc(alias = "__ZNK5boost9function2IvP9lua_StatemEclES2_m")]
 // 0x2a5abc — __ZNK5boost9function2IvP9lua_StatemEclES2_m
-pub fn stub_0x2a5abc() {
-    // IDA 0x2a5abc: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
+pub fn stub_0x2a5abc(f: &core_function::LuaVoidFn2, l: core_function::LuaStatePtr, extra: u64) {
+    // IDA 0x2a5abc: function2<void(lua_State*,ulong)>::operator() — bad_function_call on null (0x2a5b0c-0x2a5b52), else vtable tail-call (0x2a5b20).
+    f.invoke((l, extra));
 }
 
 #[doc(alias = "__ZNK5boost9function1IvbEclEb")]
 // 0x2a5da0 — __ZNK5boost9function1IvbEclEb
-pub fn stub_0x2a5da0() {
-    // IDA 0x2a5da0: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
+pub fn stub_0x2a5da0(f: &core_function::BoolVoidFn, v: bool) {
+    // IDA 0x2a5da0: function1<void(bool)>::operator() — bad_function_call on null (0x2a5dee-0x2a5e32), else vtable tail-call (0x2a5e00).
+    f.invoke(v);
 }
 
 #[doc(alias = "__ZN3RBX11shared_fromINS_5Stats12StatsServiceEEEN5boost10shared_ptrIT_EEPS5_")]
 // 0x2a5e64 — __ZN3RBX11shared_fromINS_5Stats12StatsServiceEEEN5boost10shared_ptrIT_EEPS5_
-pub fn stub_0x2a5e64() {
-    // IDA 0x2a5e64: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
+pub fn stub_0x2a5e64(
+    this: Option<&crate::SharedPtr<core_function::RunServiceToken>>,
+) -> Option<crate::SharedPtr<core_function::RunServiceToken>> {
+    // IDA 0x2a5e64: shared_from<StatsService> — null source zeroes the out word (0x2a5ef2); else enable_shared_from_this from DescribedBase+40 (0x2a5ebe) with the -36 adjust (0x2a5eca) + count adopt (0x2a5eda-0x2a5ee8). Clone-or-empty is that path.
+    core_function::shared_from_opt(this)
 }
 
 #[doc(alias = "__ZN3RBX26RunningAverageTimeIntervalILNS_4Time12SampleMethodE1EE6sampleEv")]
 // 0x2a6058 — __ZN3RBX26RunningAverageTimeIntervalILNS_4Time12SampleMethodE1EE6sampleEv
-pub fn stub_0x2a6058() {
-    // IDA 0x2a6058: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_0x2a6058(m: &mut core_function::RunningAverageTimeInterval, now: f64) {
+    // IDA 0x2a6058: RunningAverageTimeInterval<1>::sample — armed call records the baseline stamp + disarms (0x2a6062-0x2a6080); later calls sample the stamp delta via RunningAverage::sample (0x2a6086-0x2a60a8). now is Time::now<1>, owned outside core.
+    m.sample(now);
 }
 
 #[doc(alias = "__ZN3RBX14RunningAverageIddE6sampleEd")]
 // 0x2a60b0 — __ZN3RBX14RunningAverageIddE6sampleEd
-pub fn stub_0x2a60b0() {
-    // IDA 0x2a60b0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_0x2a60b0(m: &mut core_function::RunningAverage, v: f64) {
+    // IDA 0x2a60b0: RunningAverage<double,double>::sample — fabs gate (0x2a60e0), EWMA blend past the first sample (0x2a60e6-0x2a6106), average/last/flag store (0x2a610c-0x2a6114), variance fold (0x2a6140), buffer push when present (0x2a6144-0x2a614c).
+    m.sample(v);
 }
 
 #[doc(alias = "__ZN5boost6thread4joinEv")]
@@ -585,8 +1124,12 @@ pub fn stub_0x2a6368(is_self: bool, handle: Option<std::thread::JoinHandle<()>>)
 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX10RunServiceEEaSERKS3_")]
 // 0x2a65c8 — __ZN5boost10shared_ptrIN3RBX10RunServiceEEaSERKS3_
-pub fn stub_0x2a65c8() {
-    // IDA 0x2a65c8: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_0x2a65c8(
+    dst: &mut Option<crate::SharedPtr<core_function::RunServiceToken>>,
+    src: &Option<crate::SharedPtr<core_function::RunServiceToken>>,
+) {
+    // IDA 0x2a65c8: shared_ptr<RunService>::operator= — shared_count tmp from src (0x2a65dc), store pi_ (0x2a65e6), release old (0x2a65f4).
+    core_function::shared_ptr_assign(dst, src);
 }
 
 #[doc(alias = "__ZN3rbx7signals16signal_with_argsILi0EFvvEEclEv")]
@@ -598,38 +1141,44 @@ pub fn stub_0x2a6cc0(sig: &core_signals::RawSignal) {
 
 #[doc(alias = "__ZN3RBX8Security12ImpersonatorC2ENS0_10IdentitiesE")]
 // 0x2a7120 — __ZN3RBX8Security12ImpersonatorC2ENS0_10IdentitiesE
-pub fn stub_0x2a7120() {
-    // IDA 0x2a7120: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_0x2a7120(identity: u32) -> core_function::Impersonator {
+    // IDA 0x2a7120: Security::Impersonator ctor — new Context{identity} (0x2a712e-0x2a7130), install via thread-local reset keeping the old pointer (0x2a7132-0x2a7152). Drop restores.
+    core_function::impersonate(identity)
 }
 
 #[doc(alias = "__ZNK5boost9function1IvP9lua_StateEclES2_")]
 // 0x2a7220 — __ZNK5boost9function1IvP9lua_StateEclES2_
-pub fn stub_0x2a7220() {
-    // IDA 0x2a7220: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_0x2a7220(f: &core_function::LuaVoidFn1, l: core_function::LuaStatePtr) {
+    // IDA 0x2a7220: function1<void(lua_State*)>::operator() — bad_function_call on null (0x2a726e-0x2a72b2), else vtable tail-call (0x2a7280).
+    f.invoke(l);
 }
 
 #[doc(alias = "__ZStplIcSt11char_traitsIcESaIcEESbIT_T0_T1_ERKS6_S8_")]
 // 0x2a7348 — __ZStplIcSt11char_traitsIcESaIcEESbIT_T0_T1_ERKS6_S8_
-pub fn stub_0x2a7348() {
-    // IDA 0x2a7348: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_0x2a7348(left: &str, right: &str) -> String {
+    // IDA 0x2a7348: string operator+ — copy-construct from the left operand (0x2a736a), append the right (0x2a73a2).
+    core_function::string_concat(left, right)
 }
 
 #[doc(alias = "__ZNK5boost9function1ISsRKSsEclES2_")]
 // 0x2a73ec — __ZNK5boost9function1ISsRKSsEclES2_
-pub fn stub_0x2a73ec() {
-    // IDA 0x2a73ec: FreeType font-raster helper owned by the rendering crate — carrier no-op in core.
+pub fn stub_0x2a73ec(f: &core_function::StringMapFn, arg: &str) -> String {
+    // IDA 0x2a73ec: function1<string(const string&)>::operator() — same null-guard + vtable tail-call shape as 0x2a59f4.
+    f.invoke(arg.to_owned())
 }
 
 #[doc(alias = "__ZN3rbx7signals16signal_with_argsILi1EFvP9lua_StateEEclES3_")]
 // 0x2a74b4 — __ZN3rbx7signals16signal_with_argsILi1EFvP9lua_StateEEclES3_
-pub fn stub_0x2a74b4() {
-    // IDA 0x2a74b4: FreeType font-raster helper owned by the rendering crate — carrier no-op in core.
+pub fn stub_0x2a74b4(sig: &core_signals::RawSignal, arg: core_function::LuaStatePtr) {
+    // IDA 0x2a74b4: signal_with_args<1,void(lua_State*)>::operator() — null head returns (0x2a74e4); SignalPrints trace (0x2a7528, fast-log owned); next() walk calling live slots with the arg (0x2a752e/0x2a753e); final release (0x2a7554-0x2a755c) is Arc drops.
+    sig.emit_lua1(arg as usize);
 }
 
 #[doc(alias = "__ZN5boost9function2IvP9lua_StateP9lua_DebugE5clearEv")]
 // 0x2a9450 — __ZN5boost9function2IvP9lua_StateP9lua_DebugE5clearEv
-pub fn stub_0x2a9450() {
-    // IDA 0x2a9450: FreeType font-raster helper owned by the rendering crate — carrier no-op in core.
+pub fn stub_0x2a9450(f: &mut core_function::LuaDbgFn2) {
+    // IDA 0x2a9450: function2<void(lua_State*,lua_Debug*)>::clear — same null-guard + manager-destroy-op-2 + word-zero shape as 0x2acdc4.
+    f.clear();
 }
 
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviEE4slotEEaSERKS7_")]
@@ -677,14 +1226,19 @@ pub fn stub_0x2a9738() -> &'static parking_lot::Mutex<()> {
 
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX13RunTransitionEEE4slotEEaSEPS8_")]
 // 0x2ac1c0 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX13RunTransitionEEE4slotEEaSEPS8_
-pub fn stub_0x2ac1c0() {
-    // IDA 0x2ac1c0: intrusive refcount op. Arc/Weak — carrier no-op.
+pub fn stub_0x2ac1c0(
+    dst: &mut core_signals::IntrusiveSlotPtr,
+    src: Option<core_signals::SlotHandle>,
+) {
+    // IDA 0x2ac1c0: intrusive_ptr<signal<void(RunTransition)>::slot>::operator=(slot*) — if (new) add_ref (0x2ac1ca); old = *dst, *dst = new (0x2ac1d2-0x2ac1d4); if (old) release (0x2ac1d8-0x2ac1da). Same shape as 0x2afc34.
+    core_signals::intrusive_slot_assign(dst, src.as_ref());
 }
 
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE4slot24safe_static_do_get_mutexEv")]
 // 0x2ac368 — __ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE4slot24safe_static_do_get_mutexEv
-pub fn stub_0x2ac368() {
-    // IDA 0x2ac368: intrusive refcount op. Arc/Weak — carrier no-op.
+pub fn stub_0x2ac368() -> &'static parking_lot::Mutex<()> {
+    // IDA 0x2ac368: signal<void(RunTransition)>::slot::safe_static_do_get_mutex — in-place mutex + __cxa_atexit(~mutex) (0x2ac3de-0x2ac402). LazyLock static is the guarded word.
+    core_function::slot_rt_static_mutex()
 }
 
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE4slotD1Ev")]
@@ -720,79 +1274,92 @@ pub fn stub_0x2ac740() {
 #[doc(alias = "__ZN5boost9function1ISsRKSsE5dummy7nonnullEv")]
 // 0x2ac838 — __ZN5boost9function1ISsRKSsE5dummy7nonnullEv
 pub fn stub_0x2ac838() {
-    // IDA 0x2ac838: function null-target guard. Option<Box<dyn Fn>>::is_some — carrier no-op.
+    // IDA 0x2ac838: function1<string(const string&)>::dummy::nonnull — empty safe-bool marker body.
+    core_function::dummy_nonnull();
 }
 
 #[doc(alias = "__ZN5boost8functionIFSsRKSsEEaSERKS4_")]
 // 0x2acc24 — __ZN5boost8functionIFSsRKSsEEaSERKS4_
-pub fn stub_0x2acc24() {
-    // IDA 0x2acc24: function null-target guard. Option<Box<dyn Fn>>::is_some — carrier no-op.
+pub fn stub_0x2acc24(dst: &mut core_function::StringMapFn, src: &core_function::StringMapFn) {
+    // IDA 0x2acc24: function<string(const string&)>::operator= — temp/assign_to_own/swap/clear (0x2acc48-0x2acc8e).
+    dst.assign_from(src);
 }
 
 #[doc(alias = "__ZN5boost9function1ISsRKSsE4swapERS3_")]
 // 0x2acce8 — __ZN5boost9function1ISsRKSsE4swapERS3_
-pub fn stub_0x2acce8() {
-    // IDA 0x2acce8: function swap/move_assign exchanges the erased target. Box<dyn Fn> swap — carrier no-op.
+pub fn stub_0x2acce8(a: &mut core_function::StringMapFn, b: &mut core_function::StringMapFn) {
+    // IDA 0x2acce8: function1<string(const string&)>::swap — self-swap no-op (0x2acd36), else temp triple-move_assign + clear (0x2acd3a-0x2acd6a).
+    a.swap_with(b);
 }
 
 #[doc(alias = "__ZN5boost9function1ISsRKSsE5clearEv")]
 // 0x2acdc4 — __ZN5boost9function1ISsRKSsE5clearEv
-pub fn stub_0x2acdc4() {
-    // IDA 0x2acdc4: function swap/move_assign exchanges the erased target. Box<dyn Fn> swap — carrier no-op.
+pub fn stub_0x2acdc4(f: &mut core_function::StringMapFn) {
+    // IDA 0x2acdc4: function1<string(const string&)>::clear — null word no-op (0x2acdca-0x2acdce); heap target destroyed via manager op 2 unless inline bit0 (0x2acdce-0x2acdec); word := 0.
+    f.clear();
 }
 
 #[doc(alias = "__ZN5boost9function1ISsRKSsE11move_assignERS3_")]
 // 0x2acdf0 — __ZN5boost9function1ISsRKSsE11move_assignERS3_
-pub fn stub_0x2acdf0() {
-    // IDA 0x2acdf0: function swap/move_assign exchanges the erased target. Box<dyn Fn> swap — carrier no-op.
+pub fn stub_0x2acdf0(dst: &mut core_function::StringMapFn, src: &mut core_function::StringMapFn) {
+    // IDA 0x2acdf0: function1<string(const string&)>::move_assign — self-move no-op (0x2ace3e); empty src clears dst (0x2ace64); inline copy vs manager clone (0x2ace4a-0x2ace7e); src := 0 (0x2ace84).
+    dst.move_assign(src);
 }
 
 #[doc(alias = "__ZN5boost9function1ISsRKSsE13assign_to_ownERKS3_")]
 // 0x2acef4 — __ZN5boost9function1ISsRKSsE13assign_to_ownERKS3_
-pub fn stub_0x2acef4() {
-    // IDA 0x2acef4: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
+pub fn stub_0x2acef4(dst: &mut core_function::StringMapFn, src: &core_function::StringMapFn) {
+    // IDA 0x2acef4: function1<string(const string&)>::assign_to_own — empty src leaves dst (0x2acefa); inline copy (0x2acefc-0x2acf0c) vs manager clone op 0 (0x2acf22).
+    dst.assign(src);
 }
 
 #[doc(alias = "__ZN5boost9function1IvP9lua_StateE5dummy7nonnullEv")]
 // 0x2ad520 — __ZN5boost9function1IvP9lua_StateE5dummy7nonnullEv
 pub fn stub_0x2ad520() {
-    // IDA 0x2ad520: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
+    // IDA 0x2ad520: function1<void(lua_State*)>::dummy::nonnull — empty safe-bool marker body.
+    core_function::dummy_nonnull();
 }
 
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_5Stats6sStatsEEEERKS0_v")]
 // 0x2adfd8 — __ZN3RBX4Name7declareILZNS_5Stats6sStatsEEEERKS0_v
-pub fn stub_0x2adfd8() {
-    // IDA 0x2adfd8: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
+pub fn stub_0x2adfd8(text: Option<&str>) -> core_function::StatsName {
+    // IDA 0x2adfd8: Name::declare<sStats> — null text bails to getNullName (0x2adfea-0x2ae016); else call_once(callDoDeclare) (0x2adfee-0x2ae006) + doDeclare tail-call (0x2ae00e).
+    core_function::declare_stats_name(text)
 }
 
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_5Stats6sStatsEEEERKS0_v")]
 // 0x2ae020 — __ZN3RBX4Name9doDeclareILZNS_5Stats6sStatsEEEERKS0_v
-pub fn stub_0x2ae020() {
-    // IDA 0x2ae020: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
+pub fn stub_0x2ae020() -> core_function::StatsName {
+    // IDA 0x2ae020: Name::doDeclare<sStats> — guarded once-init (0x2ae07c-0x2ae0a8) returning the static (0x2ae0d6).
+    core_function::do_declare_stats_name()
 }
 
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_5Stats12StatsServiceEEEmv")]
 // 0x2ae108 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_5Stats12StatsServiceEEEmv
-pub fn stub_0x2ae108() {
-    // IDA 0x2ae108: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
+pub fn stub_0x2ae108() -> usize {
+    // IDA 0x2ae108: ServiceProvider::doGetClassIndex<StatsService> — guarded once-init (0x2ae164-0x2ae184) of newIndex (0x2ae180).
+    core_function::stats_service_class_index()
 }
 
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_14sDebugSettingsEEEERKS0_v")]
 // 0x2ae77c — __ZN3RBX4Name7declareILZNS_14sDebugSettingsEEEERKS0_v
-pub fn stub_0x2ae77c() {
-    // IDA 0x2ae77c: function null-target guard. Option<Box<dyn Fn>>::is_some — carrier no-op.
+pub fn stub_0x2ae77c(text: Option<&str>) -> core_function::DebugSettingsName {
+    // IDA 0x2ae77c: Name::declare<sDebugSettings> — null text bails to getNullName (0x2ae78e-0x2ae7ba); else call_once(callDoDeclare) (0x2ae792-0x2ae7a8) + doDeclare tail-call (0x2ae7b2).
+    core_function::declare_debug_settings_name(text)
 }
 
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sDebugSettingsEEEEvv")]
 // 0x2ae7c0 — __ZN3RBX4Name13callDoDeclareILZNS_14sDebugSettingsEEEEvv
-pub fn stub_0x2ae7c0() {
-    // IDA 0x2ae7c0: Name interning declare shim (static Name registry key). &'static str registry — carrier no-op.
+pub fn stub_0x2ae7c0() -> core_function::DebugSettingsName {
+    // IDA 0x2ae7c0: Name::callDoDeclare<sDebugSettings> — thunk into doDeclare.
+    core_function::call_do_declare_debug_settings()
 }
 
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sDebugSettingsEEEERKS0_v")]
 // 0x2ae7c4 — __ZN3RBX4Name9doDeclareILZNS_14sDebugSettingsEEEERKS0_v
-pub fn stub_0x2ae7c4() {
-    // IDA 0x2ae7c4: Name interning declare shim (static Name registry key). &'static str registry — carrier no-op.
+pub fn stub_0x2ae7c4() -> core_function::DebugSettingsName {
+    // IDA 0x2ae7c4: Name::doDeclare<sDebugSettings> — guarded once-init (0x2ae820-0x2ae84c) returning the static (0x2ae87a).
+    core_function::do_declare_debug_settings_name()
 }
 
 #[doc(alias = "__ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE6insertEPNS7_4slotE")]
@@ -932,38 +1499,51 @@ pub fn stub_0x2b1918() {
 
 #[doc(alias = "__ZN5boost9function1IvP9lua_StateE4swapERS3_")]
 // 0x2b1a6c — __ZN5boost9function1IvP9lua_StateE4swapERS3_
-pub fn stub_0x2b1a6c() {
-    // IDA 0x2b1a6c: function swap/move_assign exchanges the erased target. Box<dyn Fn> swap — carrier no-op.
+pub fn stub_0x2b1a6c(a: &mut core_function::LuaVoidFn1, b: &mut core_function::LuaVoidFn1) {
+    // IDA 0x2b1a6c: function1<void(lua_State*)>::swap — self-swap no-op (0x2b1aba), else temp triple-move_assign + clear (0x2b1abe-0x2b1aee).
+    a.swap_with(b);
 }
 
 #[doc(alias = "__ZN5boost9function1IvP9lua_StateE11move_assignERS3_")]
 // 0x2b1b48 — __ZN5boost9function1IvP9lua_StateE11move_assignERS3_
-pub fn stub_0x2b1b48() {
-    // IDA 0x2b1b48: function swap/move_assign exchanges the erased target. Box<dyn Fn> swap — carrier no-op.
+pub fn stub_0x2b1b48(dst: &mut core_function::LuaVoidFn1, src: &mut core_function::LuaVoidFn1) {
+    // IDA 0x2b1b48: function1<void(lua_State*)>::move_assign — self-move no-op (0x2b1b96); empty src clears dst (0x2b1bbc); inline copy vs manager clone (0x2b1ba2-0x2b1bd6); src := 0 (0x2b1bdc).
+    dst.move_assign(src);
 }
 
 #[doc(alias = "__ZN5boost9function1IvP9lua_StateE5clearEv")]
 // 0x2b1c4c — __ZN5boost9function1IvP9lua_StateE5clearEv
-pub fn stub_0x2b1c4c() {
-    // IDA 0x2b1c4c: function swap/move_assign exchanges the erased target. Box<dyn Fn> swap — carrier no-op.
+pub fn stub_0x2b1c4c(f: &mut core_function::LuaVoidFn1) {
+    // IDA 0x2b1c4c: function1<void(lua_State*)>::clear — null word no-op (0x2b1c52-0x2b1c56); heap destroy op 2 unless inline bit0 (0x2b1c5e-0x2b1c70); word := 0.
+    f.clear();
 }
 
 #[doc(alias = "__ZN5boost9function2IvP9lua_StatemE5dummy7nonnullEv")]
 // 0x2b2688 — __ZN5boost9function2IvP9lua_StatemE5dummy7nonnullEv
 pub fn stub_0x2b2688() {
-    // IDA 0x2b2688: function swap/move_assign exchanges the erased target. Box<dyn Fn> swap — carrier no-op.
+    // IDA 0x2b2688: function2<void(lua_State*,ulong)>::dummy::nonnull — empty safe-bool marker body.
+    core_function::dummy_nonnull();
 }
 
 #[doc(alias = "__ZN5boost9function2IvP9lua_StatemEC2INS_3_bi6bind_tIvPFvS2_iSsENS5_5list3INS_3argILi1EEENSA_ILi2EEENS5_5valueISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE")]
 // 0x2b268c — __ZN5boost9function2IvP9lua_StatemEC2INS_3_bi6bind_tIvPFvS2_iSsENS5_5list3INS_3argILi1EEENSA_ILi2EEENS5_5valueISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE
-pub fn stub_0x2b268c() {
-    // IDA 0x2b268c: function swap/move_assign exchanges the erased target. Box<dyn Fn> swap — carrier no-op.
+pub fn stub_0x2b268c(
+    spec: core_function::BoundLuaCall,
+    target: crate::SharedPtr<dyn Fn(core_function::LuaStatePtr, i32, &str) + Send + Sync>,
+) -> core_function::LuaVoidFn2 {
+    // IDA 0x2b268c: function2<void(lua_State*,ulong)> ctor from bind_t — zero word (0x2b26ac), functor split (0x2b26b8-0x2b26ce), assign_to stored vtable (0x2b26f6); temp release (0x2b2708-0x2b2750) is Drop glue. Target word stays opaque; the live site supplies the callable.
+    core_function::bind_to_function2(spec, target)
 }
 
 #[doc(alias = "__ZN5boost9function2IvP9lua_StatemE9assign_toINS_3_bi6bind_tIvPFvS2_iSsENS5_5list3INS_3argILi1EEENSA_ILi2EEENS5_5valueISsEEEEEEEEvT_")]
 // 0x2b27b8 — __ZN5boost9function2IvP9lua_StatemE9assign_toINS_3_bi6bind_tIvPFvS2_iSsENS5_5list3INS_3argILi1EEENSA_ILi2EEENS5_5valueISsEEEEEEEEvT_
-pub fn stub_0x2b27b8() {
-    // IDA 0x2b27b8: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
+pub fn stub_0x2b27b8(
+    f: &mut core_function::LuaVoidFn2,
+    spec: core_function::BoundLuaCall,
+    target: crate::SharedPtr<dyn Fn(core_function::LuaStatePtr, i32, &str) + Send + Sync>,
+) {
+    // IDA 0x2b27b8: function2::assign_to<bind_t> — stored-vtable install (0x2b284a) + functor copy (0x2b282c) into the caller's (known-empty, cf. 0x2b268c) word; temp release (0x2b283e-0x2b288a) is Drop glue.
+    *f = core_function::bind_to_function2(spec, target);
 }
 
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP9lua_StateiSsENS3_5list3INS_3argILi1EEENSA_ILi2EEENS3_5valueISsEEEEEEE6manageERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE")]
@@ -998,32 +1578,37 @@ pub fn stub_0x2b2bfc() {
 
 #[doc(alias = "__ZN5boost3_bi5list3INS_3argILi1EEENS2_ILi2EEENS0_5valueISsEEEC2ES3_S4_S6_")]
 // 0x2b2d20 — __ZN5boost3_bi5list3INS_3argILi1EEENS2_ILi2EEENS0_5valueISsEEEC2ES3_S4_S6_
-pub fn stub_0x2b2d20() {
-    // IDA 0x2b2d20: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
+pub fn stub_0x2b2d20(text: &str) -> core_function::BoundArgList {
+    // IDA 0x2b2d20: list3<arg<1>,arg<2>,value<string>> ctor — string copy into the pack (0x2b2d44-0x2b2d7a); temp release (0x2b2d8c-0x2b2dd4) is Drop glue.
+    core_function::bind_arg_list(text)
 }
 
 #[doc(alias = "__ZN5boost9function2IvP9lua_StatemE13assign_to_ownERKS3_")]
 // 0x2b3f84 — __ZN5boost9function2IvP9lua_StatemE13assign_to_ownERKS3_
-pub fn stub_0x2b3f84() {
-    // IDA 0x2b3f84: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
+pub fn stub_0x2b3f84(dst: &mut core_function::LuaVoidFn2, src: &core_function::LuaVoidFn2) {
+    // IDA 0x2b3f84: function2<void(lua_State*,ulong)>::assign_to_own — empty src leaves dst (0x2b3f8a); inline copy (0x2b3f8c-0x2b3f9c) vs manager clone op 0 (0x2b3fb2).
+    dst.assign(src);
 }
 
 #[doc(alias = "__ZN5boost9function2IvP9lua_StatemE5clearEv")]
 // 0x2b3fb4 — __ZN5boost9function2IvP9lua_StatemE5clearEv
-pub fn stub_0x2b3fb4() {
-    // IDA 0x2b3fb4: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
+pub fn stub_0x2b3fb4(f: &mut core_function::LuaVoidFn2) {
+    // IDA 0x2b3fb4: function2<void(lua_State*,ulong)>::clear — null word no-op (0x2b3fba-0x2b3fbe); heap destroy op 2 unless inline bit0 (0x2b3fc6-0x2b3fd8); word := 0.
+    f.clear();
 }
 
 #[doc(alias = "__ZN5boost9function1ImP9lua_StateE13assign_to_ownERKS3_")]
 // 0x2b3fe0 — __ZN5boost9function1ImP9lua_StateE13assign_to_ownERKS3_
-pub fn stub_0x2b3fe0() {
-    // IDA 0x2b3fe0: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
+pub fn stub_0x2b3fe0(dst: &mut core_function::LuaUlongFn, src: &core_function::LuaUlongFn) {
+    // IDA 0x2b3fe0: function1<ulong(lua_State*)>::assign_to_own — empty src leaves dst (0x2b3fe6); inline copy (0x2b3f8e-0x2b3ff8) vs manager clone op 0 (0x2b400e).
+    dst.assign(src);
 }
 
 #[doc(alias = "__ZN5boost9function1ImP9lua_StateE5clearEv")]
 // 0x2b4010 — __ZN5boost9function1ImP9lua_StateE5clearEv
-pub fn stub_0x2b4010() {
-    // IDA 0x2b4010: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
+pub fn stub_0x2b4010(f: &mut core_function::LuaUlongFn) {
+    // IDA 0x2b4010: function1<ulong(lua_State*)>::clear — null word no-op (0x2b4016-0x2b401a); heap destroy op 2 unless inline bit0 (0x2b4022-0x2b4034); word := 0.
+    f.clear();
 }
 
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tImPFmP9lua_StateENS3_5list1INS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSF_NS1_30functor_manager_operation_typeE")]

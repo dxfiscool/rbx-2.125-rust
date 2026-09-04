@@ -624,6 +624,155 @@ pub mod core_af {
     pub fn gc_job_sleep_time(job: &mut GcJob, stats: &GcJobStatsView, s: &SleepInputs) {
         job.sleep_time = standard_sleep_time(stats.window as f64, s);
     }
+    /// Token for `RBX::ActivityMeter<2>` — the live site owns the real type;
+    /// only the `shared_ptr` identity matters here.
+    pub struct ActivityMeter2;
+    /// Token for `RBX::AdvRunDragger` behind `std::auto_ptr` — same split.
+    pub struct AdvRunDraggerToken;
+
+    /// was: `boost::shared_ptr<T>::operator=(const&)` (IDA 0x2c7348
+    /// ActivityMeter, 0x2c7380 InvocationMeter): addref-new/release-old, the
+    /// same clone-then-store shape as the ae `shared_ptr_assign` ports.
+    pub fn shared_ptr_assign<T>(
+        dst: &mut Option<crate::SharedPtr<T>>,
+        src: &Option<crate::SharedPtr<T>>,
+    ) {
+        *dst = src.clone();
+    }
+
+    /// IDA 0x2c8894 `shared_ptr<InvocationMeter<2>>::shared_ptr(Y*)`: stores
+    /// the pointer (0x2c88c2), nulls the count word (0x2c88ca), adopts the
+    /// fresh count (0x2c88f0-0x2c88fc). Wrapping a fresh meter is that path.
+    pub fn invocation_meter_shared() -> Option<crate::SharedPtr<InvocationMeter2>> {
+        Some(crate::SharedPtr::new(InvocationMeter2::new()))
+    }
+
+    /// was: `boost::unordered::detail::prime_list_template<unsigned long>`
+    /// (IDA 0xfa7760, 38 entries) behind `min_buckets_for_size`.
+    const UINT_PRIME_LIST: &[u32] = &[
+        17, 29, 37, 53, 67, 79, 97, 131, 193, 257, 389, 521, 769, 1031, 1543,
+        2053, 3079, 6151, 12289, 24593, 49157, 98317, 196613, 393241, 786433,
+        1572869, 3145739, 6291469, 12582917, 25165843, 50331653, 100663319,
+        201326611, 402653189, 805306457, 1610612741, 3221225473, 4294967291,
+    ];
+
+    /// IDA 0x2c2b58 `table<set<uint>>::min_buckets_for_size(max_load, size)`:
+    /// `floor(size / max_load)` (0x2c2b7c); 0 when `>= 4294967300.0`, else
+    /// the truncated value `+ 1` (0x2c2b80-0x2c2b96); then the first prime at
+    /// or above the target (0x2c2b9e-0x2c2bc6 binary search), clamping a
+    /// past-the-end result back to the last prime (0x2c2bd2-0x2c2bd8).
+    /// `partition_point` is that binary search.
+    pub fn uint_set_min_buckets_for_size(max_load: f32, size: usize) -> usize {
+        let need = (size as f64 / f64::from(max_load)).floor();
+        let target: u64 = if need < 4294967300.0 {
+            need as u64 + 1
+        } else {
+            0
+        };
+        let at = UINT_PRIME_LIST.partition_point(|&p| u64::from(p) < target);
+        UINT_PRIME_LIST.get(at).copied().unwrap_or(*UINT_PRIME_LIST.last().unwrap()) as usize
+    }
+
+    /// IDA 0x2c2be8 `table_impl<set<uint>>::rehash_impl`: `create_buckets`
+    /// (0x2c2bee), then the reinsert walk over the old bucket chain
+    /// (0x2c2bf2-0x2c2c0c). `reserve` is that pair for `HashSet` — bucket
+    /// internals are unobservable, capacity is.
+    pub fn uint_set_rehash(set: &mut std::collections::HashSet<u32>, buckets: usize) {
+        set.reserve(buckets);
+    }
+
+    /// IDA 0x2ce130 `Security::Context::isInRole(Identities, Permissions)`:
+    /// a null permission always passes (0x2ce134); identities 0/2 never do;
+    /// 1/5/6 need permission 1-2 (0x2ce1b4); 3 needs exactly 1 (0x2ce1c0);
+    /// 4 needs 1-2 or 4 (0x2ce1e0); 7/8 always pass (0x2ce1ba); 9 needs 1, 3
+    /// or 4 (`(a2 & ~2) == 1`, 0x2ce1e4-0x2ce1f8); anything else hits
+    /// `ReleaseAssert(false)` (`SecurityContext.cpp:33`, 0x2ce14c-0x2ce198,
+    /// fast-log gated — fast-log owned, noted) and fails. `assert!` keeps
+    /// the check with the original message.
+    pub fn security_context_is_in_role(identity: u32, permission: u32) -> bool {
+        if permission == 0 {
+            return true;
+        }
+        match identity {
+            0 | 2 => false,
+            1 | 5 | 6 => permission.wrapping_sub(1) < 2,
+            3 => permission == 1,
+            4 => permission.wrapping_sub(1) < 2 || permission == 4,
+            7 | 8 => true,
+            9 => permission == 4 || (permission & 0xFFFF_FFFD) == 1,
+            _ => {
+                assert!(false, "SecurityContext.cpp:33");
+                false
+            }
+        }
+    }
+
+    /// IDA 0x2d072c `auto_ptr<AdvRunDragger>::reset(p)`: self-reset is a
+    /// no-op (0x2d0780); else the held object is destroyed (`~AdvRunDragger`
+    /// + `operator delete`, 0x2d0784-0x2d0792) and the new pointer stored
+    /// (0x2d079a). Drop-then-store with the same-pointer guard is that path.
+    pub fn auto_ptr_reset<T>(slot: &mut Option<Box<T>>, next: Option<Box<T>>) {
+        let same = match (&*slot, &next) {
+            (Some(a), Some(b)) => std::ptr::eq(&**a, &**b),
+            (None, None) => true,
+            _ => false,
+        };
+        if !same {
+            *slot = next;
+        }
+    }
+
+    /// IDA 0x2cde88 `__GLOBAL__I_a_75`: the a_68 core set (categories,
+    /// `ios_base::Init` + `atexit`, guarded bad_alloc/bad_exception eps)
+    /// plus the `XmlAttribute` (20), `XmlElement` (36), `FWInstance` (28)
+    /// and `OnDemandInstance` (20) pool `get_pool`s (0x2cdfc0-0x2ce08e) and
+    /// the ProtectedString flyweight static-holder init (0x2ce090-0x2ce0ea).
+    /// The `AllowYieldInHooks` flag + `ThreadRefCounts` log group are
+    /// fast-log owned, the `WeakThreadRef::sync` mutex (0x2cdf1c-0x2cdf40)
+    /// is lua-owned, and the `LocalScript` `FactoryProduct` creator
+    /// (0x2ce0ec-0x2ce12a) is script owned (same split as a_69/a_70) — only
+    /// the core effects are kept here.
+    pub fn ensure_init_a75() {
+        use crate::generated_core_shard_ad::boost_exception as be;
+        let _ = be::error_categories();
+        let _ = be::static_bad_alloc();
+        let _ = be::static_bad_exception();
+        let _ = be::xml_attribute_pool();
+        let _ = be::xml_element_pool();
+        let _ = be::fw_instance_pool();
+        let _ = be::on_demand_instance_pool();
+        let _ = be::protected_string_flyweight();
+    }
+
+    /// IDA 0x2ce1fc `__GLOBAL__I_a_76`: the a_68 core set and nothing else
+    /// (categories, `ios_base::Init` + `atexit`, both static eps,
+    /// 0x2ce200-0x2ce2be) — same shape as a_61.
+    pub fn ensure_init_a76() {
+        use crate::generated_core_shard_ad::boost_exception as be;
+        let _ = be::error_categories();
+        let _ = be::static_bad_alloc();
+        let _ = be::static_bad_exception();
+    }
+
+    /// IDA 0x2ceadc `__GLOBAL__I_a_77`: the a_68 core set plus the
+    /// `XmlAttribute`, `XmlElement`, `FWInstance`, `OnDemandInstance`,
+    /// `OnDemandPVInstance` (24), `FWPartInstance` (56) and
+    /// `OnDemandPartInstance` (200) pool `get_pool`s (0x2ceb9e-0x2ced08).
+    /// The `Camera` `FactoryProduct` creator (0x2ced0a-0x2ced42) is
+    /// datamodel owned — only the core effects are kept here.
+    pub fn ensure_init_a77() {
+        use crate::generated_core_shard_ad::boost_exception as be;
+        let _ = be::error_categories();
+        let _ = be::static_bad_alloc();
+        let _ = be::static_bad_exception();
+        let _ = be::xml_attribute_pool();
+        let _ = be::xml_element_pool();
+        let _ = be::fw_instance_pool();
+        let _ = be::on_demand_instance_pool();
+        let _ = be::on_demand_pv_instance_pool();
+        let _ = be::fw_part_instance_pool();
+        let _ = be::on_demand_part_instance_pool();
+    }
 }
 
 
@@ -1043,14 +1192,16 @@ pub fn stub_0x2c2a30() {
 
 #[doc(alias = "__ZNK5boost9unordered6detail5tableINS1_3setISaIjEjNS_4hashIjEESt8equal_toIjEEEE20min_buckets_for_sizeEm")]
 // 0x2c2b58 — __ZNK5boost9unordered6detail5tableINS1_3setISaIjEjNS_4hashIjEESt8equal_toIjEEEE20min_buckets_for_sizeEm
-pub fn stub_0x2c2b58() {
-    // IDA 0x2c2b58: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
+pub fn stub_0x2c2b58(max_load: f32, size: usize) -> usize {
+    // IDA 0x2c2b58: table<set<uint>>::min_buckets_for_size — floor(size/max_load) (0x2c2b7c), 0-or-+1 saturation (0x2c2b80-0x2c2b96), first prime >= target with past-end clamp to 4294967291 (0x2c2b9e-0x2c2bd8).
+    core_af::uint_set_min_buckets_for_size(max_load, size)
 }
 
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3setISaIjEjNS_4hashIjEESt8equal_toIjEEEE11rehash_implEm")]
 // 0x2c2be8 — __ZN5boost9unordered6detail10table_implINS1_3setISaIjEjNS_4hashIjEESt8equal_toIjEEEE11rehash_implEm
-pub fn stub_0x2c2be8() {
-    // IDA 0x2c2be8: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
+pub fn stub_0x2c2be8(set: &mut std::collections::HashSet<u32>, buckets: usize) {
+    // IDA 0x2c2be8: table_impl<set<uint>>::rehash_impl — create_buckets (0x2c2bee) + reinsert walk (0x2c2bf2-0x2c2c0c). reserve is that pair.
+    core_af::uint_set_rehash(set, buckets);
 }
 
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3setISaIjEjNS_4hashIjEESt8equal_toIjEEEE15place_in_bucketERNS1_5tableIS9_EEPNS1_10ptr_bucketE")]
@@ -1129,20 +1280,28 @@ pub fn stub_0x2c68dc() {
 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX13ActivityMeterILi2EEEEaSERKS4_")]
 // 0x2c7348 — __ZN5boost10shared_ptrIN3RBX13ActivityMeterILi2EEEEaSERKS4_
-pub fn stub_0x2c7348() {
-    // IDA 0x2c7348: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_0x2c7348(
+    dst: &mut Option<crate::SharedPtr<core_af::ActivityMeter2>>,
+    src: &Option<crate::SharedPtr<core_af::ActivityMeter2>>,
+) {
+    // IDA 0x2c7348: shared_ptr<ActivityMeter<2>>::operator= — shared_count tmp from src (0x2c735c), store pi_ (0x2c7366), release old (0x2c7374).
+    core_af::shared_ptr_assign(dst, src);
 }
 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX15InvocationMeterILi2EEEEaSERKS4_")]
 // 0x2c7380 — __ZN5boost10shared_ptrIN3RBX15InvocationMeterILi2EEEEaSERKS4_
-pub fn stub_0x2c7380() {
-    // IDA 0x2c7380: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_0x2c7380(
+    dst: &mut Option<crate::SharedPtr<core_af::InvocationMeter2>>,
+    src: &Option<crate::SharedPtr<core_af::InvocationMeter2>>,
+) {
+    // IDA 0x2c7380: shared_ptr<InvocationMeter<2>>::operator= — shared_count tmp from src (0x2c7394), store pi_ (0x2c739e), release old (0x2c73aa).
+    core_af::shared_ptr_assign(dst, src);
 }
 
 #[doc(alias = "__ZN3RBX5Stats4Item20createBoundChildItemIbEEPS1_PKcRKT_")]
 // 0x2c73b8 — __ZN3RBX5Stats4Item20createBoundChildItemIbEEPS1_PKcRKT_
 pub fn stub_0x2c73b8() {
-    // IDA 0x2c73b8: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x2c73b8: Stats::Item::createBoundChildItem<bool> — Creatable create of TypedStatsItem<bool> (0x2c73de), shared-count adopt (0x2c741a-0x2c7428), setName virtual@+28 with a temp string (0x2c7434-0x2c74c6), setParentInternal (0x2c74d2). Instance/datamodel owned (script crate wires parents) — carrier no-op in core.
 }
 
 #[doc(alias = "__ZThn32_N3RBX5Stats4ItemD1Ev")]
@@ -1213,8 +1372,9 @@ pub fn stub_0x2c8560() {
 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX15InvocationMeterILi2EEEEC2IS3_EEPT_")]
 // 0x2c8894 — __ZN5boost10shared_ptrIN3RBX15InvocationMeterILi2EEEEC2IS3_EEPT_
-pub fn stub_0x2c8894() {
-    // IDA 0x2c8894: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_0x2c8894() -> Option<crate::SharedPtr<core_af::InvocationMeter2>> {
+    // IDA 0x2c8894: shared_ptr<InvocationMeter<2>> ctor from raw — store ptr (0x2c88c2), null count word (0x2c88ca), adopt fresh count (0x2c88f0-0x2c88fc).
+    core_af::invocation_meter_shared()
 }
 
 #[doc(alias = "__ZN5boost6detail12shared_countC2IN3RBX15InvocationMeterILi2EEEEEPT_")]
@@ -1352,29 +1512,37 @@ pub fn stub_0x2cbc40() {
 #[doc(alias = "__GLOBAL__I_a_75")]
 // 0x2cde88 — __GLOBAL__I_a_75
 pub fn stub_0x2cde88() {
-    // IDA 0x2cde88: global static ctor/dtor key. Static init — carrier no-op.
+    // IDA 0x2cde88: __GLOBAL__I_a_75 — a_68 core set + XmlAttribute/XmlElement/FWInstance/OnDemandInstance pools + ProtectedString flyweight holder; AllowYieldInHooks/ThreadRefCounts (fast-log), WeakThreadRef::sync mutex (lua) and LocalScript Creator (script) owned elsewhere.
+    core_af::ensure_init_a75();
 }
 
 #[doc(alias = "__ZN3RBX8Security7Context8isInRoleENS0_10IdentitiesENS0_11PermissionsE")]
 // 0x2ce130 — __ZN3RBX8Security7Context8isInRoleENS0_10IdentitiesENS0_11PermissionsE
-pub fn stub_0x2ce130() {
-    // IDA 0x2ce130: global static ctor/dtor key. Static init — carrier no-op.
+pub fn stub_0x2ce130(identity: u32, permission: u32) -> bool {
+    // IDA 0x2ce130: Security::Context::isInRole — null permission passes (0x2ce134); identity/permission matrix (0x2ce19c-0x2ce1f8); unknown identity hits ReleaseAssert(false) (SecurityContext.cpp:33).
+    core_af::security_context_is_in_role(identity, permission)
 }
 
 #[doc(alias = "__GLOBAL__I_a_76")]
 // 0x2ce1fc — __GLOBAL__I_a_76
 pub fn stub_0x2ce1fc() {
-    // IDA 0x2ce1fc: global static ctor/dtor key. Static init — carrier no-op.
+    // IDA 0x2ce1fc: __GLOBAL__I_a_76 — the a_68 core set (categories, ios_base::Init + atexit, both static eps) and nothing else.
+    core_af::ensure_init_a76();
 }
 
 #[doc(alias = "__GLOBAL__I_a_77")]
 // 0x2ceadc — __GLOBAL__I_a_77
 pub fn stub_0x2ceadc() {
-    // IDA 0x2ceadc: global static ctor/dtor key. Static init — carrier no-op.
+    // IDA 0x2ceadc: __GLOBAL__I_a_77 — a_68 core set + XmlAttribute/XmlElement/FWInstance/OnDemandInstance/OnDemandPVInstance/FWPartInstance/OnDemandPartInstance pools; Camera Creator (datamodel) owned elsewhere.
+    core_af::ensure_init_a77();
 }
 
 #[doc(alias = "__ZNSt8auto_ptrIN3RBX13AdvRunDraggerEE5resetEPS1_")]
 // 0x2d072c — __ZNSt8auto_ptrIN3RBX13AdvRunDraggerEE5resetEPS1_
-pub fn stub_0x2d072c() {
-    // IDA 0x2d072c: global static ctor/dtor key. Static init — carrier no-op.
+pub fn stub_0x2d072c(
+    slot: &mut Option<Box<core_af::AdvRunDraggerToken>>,
+    next: Option<Box<core_af::AdvRunDraggerToken>>,
+) {
+    // IDA 0x2d072c: auto_ptr<AdvRunDragger>::reset — self-reset no-op (0x2d0780); else destroy held (0x2d0784-0x2d0792) + store new (0x2d079a).
+    core_af::auto_ptr_reset(slot, next);
 }

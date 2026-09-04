@@ -575,6 +575,34 @@ pub mod boost_exception {
     pub fn on_demand_pv_instance_pool() -> &'static SingletonPool {
         &ON_DEMAND_PV_INSTANCE_POOL
     }
+    /// was: `singleton_pool<RBX::FWPartInstance, 56, ...>` storage — created
+    /// by `__GLOBAL__I_a_77` (IDA 0x2cec9e guard + `get_pool`).
+    /// `NextSize = StartSize = 32` per the shared `,32u,0u>` template tail
+    /// (`[INFERENCE]` — the disassembly only shows the init call).
+    static FW_PART_INSTANCE_POOL: LazyLock<SingletonPool> = LazyLock::new(|| SingletonPool {
+        requested_size: 56,
+        next_size: 32,
+        start_size: 32,
+        free_chunks: parking_lot::Mutex::new(Vec::new()),
+    });
+
+    pub fn fw_part_instance_pool() -> &'static SingletonPool {
+        &FW_PART_INSTANCE_POOL
+    }
+
+    /// was: `singleton_pool<RBX::PartInstance::OnDemandPartInstance, 200, ...>`
+    /// storage — created by `__GLOBAL__I_a_77` (IDA 0x2cecd2 guard +
+    /// `get_pool`). Same tail-shape note as above.
+    static ON_DEMAND_PART_INSTANCE_POOL: LazyLock<SingletonPool> = LazyLock::new(|| SingletonPool {
+        requested_size: 200,
+        next_size: 32,
+        start_size: 32,
+        free_chunks: parking_lot::Mutex::new(Vec::new()),
+    });
+
+    pub fn on_demand_part_instance_pool() -> &'static SingletonPool {
+        &ON_DEMAND_PART_INSTANCE_POOL
+    }
 
 
     /// IDA 0x2674b0 `__GLOBAL__I_a_60`: categories, `ios_base::Init`, both
