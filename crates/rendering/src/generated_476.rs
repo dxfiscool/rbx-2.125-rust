@@ -119,6 +119,22 @@ pub struct ToolbarMapEntry {
     pub toolbar: Option<SharedPtr<Toolbar>>,
 }
 
+/// Rust model of `RBX::PluginManager::StateDataEntry` (IDA `0x88a150`): the
+/// value half of the `map<DataModel *, StateDataEntry>` node — a
+/// `map<string, shared_ptr<Toolbar>>` (`a2[7]`, erased at `0x88a1b8`) plus a
+/// `list<shared_ptr<Plugin>>` (`a2 + 11`, cleared at `0x88a1aa`).
+pub struct PluginManagerStateEntry {
+    pub toolbars: HashMap<String, SharedPtr<Toolbar>>,
+    pub plugins: Vec<SharedPtr<Plugin>>,
+}
+
+/// Rust model of the `map<DataModel *, StateDataEntry>` node destroyed at
+/// IDA `0x88a150` (key + entry, freed at `0x88a1be`).
+pub struct DataModelStateNode {
+    pub data_model: usize,
+    pub entry: PluginManagerStateEntry,
+}
+
 // 0x888478 — __ZNSt8_Rb_treeIPvSt4pairIKS0_N5boost10shared_ptrIN3RBX6ButtonEEEESt10_Select1stIS8_ESt4lessIS0_ESaIS8_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS8_E
 
 #[doc(alias = "std::_Rb_tree<void *,std::pair<void * const,boost::shared_ptr<RBX::Button>>,std::_Select1st<std::pair<void * const,boost::shared_ptr<RBX::Button>>>,std::less<void *>,std::allocator<std::pair<void * const,boost::shared_ptr<RBX::Button>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<void * const,boost::shared_ptr<RBX::Button>>> *)")]
@@ -484,79 +500,129 @@ pub fn stub_889828(toolbars: &Mutex<HashMap<String, SharedPtr<Toolbar>>>) {
 
 #[doc(alias = "std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>::pair(std::string const&,boost::shared_ptr<RBX::Toolbar> const&)")]
 #[doc(alias = "__ZNSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEEC2ERS0_RKS5_")]
-// IDA 0x889858: 66 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_889858() {
+// IDA 0x889858: `std::string::string(a1, a2)` (`0x88987c`) copies the key;
+// `a1[1] = a3->pi_` (`0x889894`, `0x8898c8`) plus
+// `shared_count::shared_count(a1 + 2, a3 + 1)` (`0x8898be`) copies the shared
+// control block (use count +1).
+// was: string copy + shared pi_/count copy → owned entry holding a cloned `Arc`.
+pub fn stub_889858(name: &str, toolbar: &SharedPtr<Toolbar>) -> ToolbarMapEntry {
+    ToolbarMapEntry { name: name.to_owned(), toolbar: Some(SharedPtr::clone(toolbar)) }
 }
 
 // 0x889914 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS7_ERKS7_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>,std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS7_ERKS7_")]
-// IDA 0x889914: 94 insns (PUSH..B). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_889914() {
+// IDA 0x889914: hinted `_M_insert_unique` (94 insns): hint == end → compare
+// against the back (`0x88998a`); otherwise compare down from the hint
+// (`0x88993a`), `_Rb_tree_decrement` + re-compare (`0x8899a6`..`0x8899b6`),
+// then tail-call the unhinted `_M_insert_unique` (`0x889992`/`0x8899be`).
+// was: hinted ordered insert → delegate to the unhinted insert; the hint
+// position is unobservable through the map API.
+pub fn stub_889914(toolbars: &Mutex<HashMap<String, SharedPtr<Toolbar>>>, name: &str, toolbar: SharedPtr<Toolbar>) -> bool {
+    stub_889a50(toolbars, name, toolbar)
 }
 
 // 0x889a00 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE9_M_insertEPSt18_Rb_tree_node_baseSF_RKS7_
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE9_M_insertEPSt18_Rb_tree_node_baseSF_RKS7_")]
-// IDA 0x889a00: 31 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_889a00() {
+// IDA 0x889a00: insert direction from null-hint/key compare (`0x889a1c`,
+// `0x889a28`), `_M_create_node` (`0x889a34`),
+// `_Rb_tree_insert_and_rebalance` (`0x889a3e`), `++node_count` (`0x889a46`).
+// was: node alloc + rebalance + count → `HashMap` insert (rebalance and the
+// count are `HashMap` internals).
+pub fn stub_889a00(toolbars: &Mutex<HashMap<String, SharedPtr<Toolbar>>>, name: &str, toolbar: SharedPtr<Toolbar>) {
+    toolbars.lock().insert(name.to_owned(), toolbar);
 }
 
 // 0x889a50 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE16_M_insert_uniqueERKS7_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>>::_M_insert_unique(std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE16_M_insert_uniqueERKS7_")]
-// IDA 0x889a50: 47 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_889a50() {
+// IDA 0x889a50: unhinted `_M_insert_unique` (47 insns): walk from the root
+// comparing keys (`0x889a68`..`0x889a84`); fresh-leftmost or
+// `_Rb_tree_decrement` (`0x889a94`/`0x889a9c`); duplicate check
+// (`0x889aac` → found, `inserted = 0`); else `_M_insert` (`0x889ab6`) with
+// `inserted = 1` (`0x889ac6`..`0x889ac8`).
+// was: ordered walk + absence proof → `HashMap` insert reporting absence.
+// // BUG: Rb-tree ordering is unobservable here; duplicates overwrite the
+// slot instead of keeping the old node.
+pub fn stub_889a50(toolbars: &Mutex<HashMap<String, SharedPtr<Toolbar>>>, name: &str, toolbar: SharedPtr<Toolbar>) -> bool {
+    toolbars.lock().insert(name.to_owned(), toolbar).is_none()
 }
 
 // 0x889ad4 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE14_M_create_nodeERKS7_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>>::_M_create_node(std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE14_M_create_nodeERKS7_")]
-// IDA 0x889ad4: 96 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_889ad4() {
+// IDA 0x889ad4: `operator new(0x1c)` (`0x889b02`), key copy (`0x889b36`),
+// `v9[5] = pi_` (`0x889b40`, `0x889b5a`) + `shared_count` copy (`0x889b4e`).
+// was: node alloc + pair copy → same owned entry as the pair copy ctor.
+pub fn stub_889ad4(name: &str, toolbar: &SharedPtr<Toolbar>) -> ToolbarMapEntry {
+    stub_889858(name, toolbar)
 }
 
 // 0x889bdc — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE11lower_boundERS1_
 // type: int __fastcall(int, std::string *)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>>::lower_bound(std::string const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE11lower_boundERS1_")]
-// IDA 0x889bdc: 19 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_889bdc() {
+// IDA 0x889bdc: `lower_bound` walk (19 insns): descend from the root
+// (`0x889bf0`), `string::compare` (`0x889bfa`), go right (`0x889bfe`) or
+// record-candidate + go left (`0x889bea`..`0x889bee`).
+// was: ordered lower bound → exact `HashMap` lookup.
+// // BUG: `lower_bound` returns the first not-less element (possibly
+// greater); the `HashMap` model only resolves exact hits.
+pub fn stub_889bdc(toolbars: &Mutex<HashMap<String, SharedPtr<Toolbar>>>, name: &str) -> Option<SharedPtr<Toolbar>> {
+    toolbars.lock().get(name).cloned()
 }
 
 // 0x889c0c — __ZN5boost10shared_ptrIN3RBX7ToolbarEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 
 #[doc(alias = "boost::shared_ptr<RBX::Toolbar>::shared_ptr<RBX::Toolbar,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Toolbar *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX7ToolbarEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-// IDA 0x889c0c: 70 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_889c0c() {
+// IDA 0x889c0c: `*a1 = a2` (`0x889c2c`); `shared_count` C2 allocating the
+// control block (`0x889c34`, i.e. `0x889dbc`); `_internal_accept_owner` when
+// non-null (`0x889c62`..`0x889c72`).
+// was: raw-ptr takeover + control-block alloc + weak wiring → fresh `Arc`.
+// // BUG: the raw-pointer ownership transfer is unobservable — the `Arc`
+// starts at count 1; the `off_12ACDA8` vtable folds into `Arc` drop glue.
+pub fn stub_889c0c(toolbar: Toolbar) -> SharedPtr<Toolbar> {
+    SharedPtr::new(toolbar)
 }
 
 // 0x889cd4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7ToolbarES6_EEvPKNS_10shared_ptrIT_EEPT0_
 
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Toolbar,RBX::Toolbar>(boost::shared_ptr<RBX::Toolbar> const*,RBX::Toolbar *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7ToolbarES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-// IDA 0x889cd4: 83 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_889cd4() {
+// IDA 0x889cd4: `weak_ptr::expired` gate (`0x889d28`); `+36` owner adjust
+// (`0x889d2e`); `shared_count` copy (`0x889d42`) assigned into the weak slot
+// (`0x889d48`..`0x889d54`); temp release (`0x889d5a`..`0x889d62`).
+// was: weak-slot init from the owner → `Arc::downgrade` (same observable:
+// a weak handle tied to the owner's count).
+pub fn stub_889cd4(owner: &SharedPtr<Toolbar>) -> std::sync::Weak<Toolbar> {
+    SharedPtr::downgrade(owner)
 }
 
 // 0x889dbc — __ZN5boost6detail12shared_countC2IPN3RBX7ToolbarENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Toolbar *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Toolbar *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX7ToolbarENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-// IDA 0x889dbc: 58 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_889dbc() {
+// IDA 0x889dbc: `*a1 = 0` (`0x889de8`); `operator new(0x14)` (`0x889e10`);
+// use/weak counts `= 1` (`0x889e1e`/`0x889e22`); vtable `off_12ACDA8`
+// (`0x889e28`); ptr store (`0x889e2e`..`0x889e30`).
+// was: control-block alloc with counts (1, 1) → fresh `Arc` (counts implicit).
+pub fn stub_889dbc(toolbar: Toolbar) -> SharedPtr<Toolbar> {
+    stub_889c0c(toolbar)
 }
 
 // 0x889ec4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7ToolbarENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Toolbar *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX7ToolbarENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-// IDA 0x889ec4: 1 insn (BX) — branch/return thunk, no state change.
+// IDA 0x889ec4: D1 body is empty (`;`) — pure vtable teardown glue for
+// `sp_counted_impl_pd<Toolbar *, Creatable<Instance>::Deleter>`; the release
+// runs through `sp_counted_base` → `Arc` drop glue. No manual state.
 pub fn stub_889ec4() {
 }
 
@@ -564,7 +630,9 @@ pub fn stub_889ec4() {
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Toolbar *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX7ToolbarENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-// IDA 0x889ec8: 1 insn (B.W) — branch/return thunk, no state change.
+// IDA 0x889ec8: D0 thunk (`attributes: thunk`): `return operator delete(a1)`
+// — deleting-destructor free after the D1 teardown; control-block free folds
+// into `Arc` dealloc. No manual state.
 pub fn stub_889ec8() {
 }
 
@@ -572,112 +640,183 @@ pub fn stub_889ec8() {
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Toolbar *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX7ToolbarENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-// IDA 0x889ecc: 13 insns (PUSH..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_889ecc() {
+// IDA 0x889ecc: `v2 = *(a1 + 12)` (`0x889ece`); `Instance::predelete(v2)`
+// (`0x889ed4`); virtual D8 `(*(v2->vtable + 8))(v2)` (`0x889eda`..`0x889ee8`)
+// when non-null, else return.
+// was: predelete hook + virtual delete → drop the owned value.
+// // BUG: the `predelete` hook and virtual-dispatch deletion are
+// unobservable here → plain drop.
+pub fn stub_889ecc(toolbar: Toolbar) {
+    drop(toolbar);
 }
 
 // 0x889eec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7ToolbarENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Toolbar *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX7ToolbarENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-// IDA 0x889eec: 10 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_889eec() {
+// IDA 0x889eec: `result = a1 + 16` (`0x889ef0`); type-info name compare
+// against `"N3RBX9CreatableINS_8InstanceEE7DeleterE"` (`0x889efe`) → null
+// (`0x889f00`) or the deleter slot (`0x889f02`).
+// was: RTTI-gated deleter query → whether the stored deleter is the
+// `Creatable<Instance>` one (always true in this model).
+pub fn stub_889eec(type_name: &str) -> bool {
+    type_name == "N3RBX9CreatableINS_8InstanceEE7DeleterE"
 }
 
 // 0x889f04 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7ToolbarENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Toolbar *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX7ToolbarENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-// IDA 0x889f04: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_889f04() {
+// IDA 0x889f04: `return a1 + 16` (`0x889f06`, ADDS..BX) — the untyped
+// deleter slot is unconditionally present for
+// `sp_counted_impl_pd<Toolbar *, Creatable<Instance>::Deleter>`.
+pub fn stub_889f04() -> bool {
+    true
 }
 
 // 0x889f08 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE4findERS1_
 // type: int __fastcall(int, std::string *this)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>>::find(std::string const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE4findERS1_")]
-// IDA 0x889f08: 30 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_889f08() {
+// IDA 0x889f08: `find` (30 insns): `lower_bound` walk (`0x889f24`..`0x889f38`)
+// then the equality re-check `compare(key, candidate) >= 0` (`0x889f4c`)
+// returning the node (`0x889f4e`) or end (`0x889f56`).
+// was: lower bound + equality check → exact `HashMap` lookup.
+pub fn stub_889f08(toolbars: &Mutex<HashMap<String, SharedPtr<Toolbar>>>, name: &str) -> Option<SharedPtr<Toolbar>> {
+    toolbars.lock().get(name).cloned()
 }
 
 // 0x889f58 — __ZNSt4listIN5boost10shared_ptrIN3RBX6PluginEEESaIS4_EEC2ERKS6_
 
 #[doc(alias = "std::list<boost::shared_ptr<RBX::Plugin>,std::allocator<boost::shared_ptr<RBX::Plugin>>>::list(std::list<boost::shared_ptr<RBX::Plugin>,std::allocator<boost::shared_ptr<RBX::Plugin>>> const&)")]
 #[doc(alias = "__ZNSt4listIN5boost10shared_ptrIN3RBX6PluginEEESaIS4_EEC2ERKS6_")]
-// IDA 0x889f58: 72 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_889f58() {
+// IDA 0x889f58: range-list C2 (72 insns): header self-links (`*a1 = a1`,
+// `a1[1] = a1` at `0x889f84`/`0x889f92`) then `_M_initialize_dispatch`
+// copying each source element (`0x889fc2`).
+// was: sentinel init + per-element shared copies → cloned `Vec`.
+pub fn stub_889f58(plugins: &[SharedPtr<Plugin>]) -> Vec<SharedPtr<Plugin>> {
+    plugins.to_vec()
 }
 
 // 0x88a020 — __ZNSt4listIN5boost10shared_ptrIN3RBX6PluginEEESaIS4_EE22_M_initialize_dispatchISt20_List_const_iteratorIS4_EEEvT_SA_St12__false_type
 // type: int __fastcall(int)
 #[doc(alias = "void std::list<boost::shared_ptr<RBX::Plugin>,std::allocator<boost::shared_ptr<RBX::Plugin>>>::_M_initialize_dispatch<std::_List_const_iterator<boost::shared_ptr<RBX::Plugin>>>(std::_List_const_iterator<boost::shared_ptr<RBX::Plugin>>,std::_List_const_iterator<boost::shared_ptr<RBX::Plugin>>,std::__false_type)")]
 #[doc(alias = "__ZNSt4listIN5boost10shared_ptrIN3RBX6PluginEEESaIS4_EE22_M_initialize_dispatchISt20_List_const_iteratorIS4_EEEvT_SA_St12__false_type")]
-// IDA 0x88a020: 15 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88a020() {
+// IDA 0x88a020: `_M_initialize_dispatch` (15 insns): loop while
+// `first != last` (`0x88a040`); `_M_create_node` (`0x88a032`), `hook`
+// (`0x88a038`), advance (`0x88a03c`).
+// was: per-element node alloc + hook → extend with cloned `Arc`s.
+pub fn stub_88a020(dst: &mut Vec<SharedPtr<Plugin>>, src: &[SharedPtr<Plugin>]) {
+    dst.extend(src.iter().cloned());
 }
 
 // 0x88a044 — __ZNSt10_List_baseIN5boost10shared_ptrIN3RBX6PluginEEESaIS4_EE8_M_clearEv
 
 #[doc(alias = "std::_List_base<boost::shared_ptr<RBX::Plugin>,std::allocator<boost::shared_ptr<RBX::Plugin>>>::_M_clear(void)")]
 #[doc(alias = "__ZNSt10_List_baseIN5boost10shared_ptrIN3RBX6PluginEEESaIS4_EE8_M_clearEv")]
-// IDA 0x88a044: 18 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88a044() {
+// IDA 0x88a044: `_M_clear` (18 insns): walk while `node != header`
+// (`0x88a04e`..`0x88a068`); `sp_counted_base::release(pi_)` (`0x88a052`..`0x88a05a`);
+// `operator delete(node)` (`0x88a060`).
+// was: per-node shared release + free → `Vec::clear` (each `Arc<Plugin>`
+// drops, same release count).
+pub fn stub_88a044(plugins: &mut Vec<SharedPtr<Plugin>>) {
+    plugins.clear();
 }
 
 // 0x88a06c — __ZNSt4listIN5boost10shared_ptrIN3RBX6PluginEEESaIS4_EE14_M_create_nodeERKS4_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::list<boost::shared_ptr<RBX::Plugin>,std::allocator<boost::shared_ptr<RBX::Plugin>>>::_M_create_node(boost::shared_ptr<RBX::Plugin> const&)")]
 #[doc(alias = "__ZNSt4listIN5boost10shared_ptrIN3RBX6PluginEEESaIS4_EE14_M_create_nodeERKS4_")]
-// IDA 0x88a06c: 81 insns (PUSH..UND). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88a06c() {
+// IDA 0x88a06c: `operator new(0x10)` (`0x88a09c`); `pi_` copies
+// (`0x88a0aa`, `0x88a0de`) + `shared_count` copy (`0x88a0d2`).
+// was: list-node alloc + shared copy → cloned `Arc` (the node shell folds
+// into the `Vec` slot).
+pub fn stub_88a06c(plugin: &SharedPtr<Plugin>) -> SharedPtr<Plugin> {
+    SharedPtr::clone(plugin)
 }
 
 // 0x88a150 — __ZNSt8_Rb_treeIPN3RBX9DataModelESt4pairIKS2_NS0_13PluginManager14StateDataEntryEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS7_E
 
 #[doc(alias = "std::_Rb_tree<RBX::DataModel *,std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>,std::_Select1st<std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>>,std::less<RBX::DataModel *>,std::allocator<std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPN3RBX9DataModelESt4pairIKS2_NS0_13PluginManager14StateDataEntryEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS7_E")]
-// IDA 0x88a150: 76 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88a150() {
+// IDA 0x88a150: `v3 = a2 + 5` (`0x88a184`); plugin-list `_M_clear(a2 + 11)`
+// (`0x88a1aa`); toolbar-map `_M_erase(a2[7])` (`0x88a1b8`, i.e. `0x889828`);
+// `operator delete(a2)` (`0x88a1be`).
+// was: clear plugin list + erase toolbar subtree + free → drop the node;
+// both members' `Arc`s drop with it.
+pub fn stub_88a150(node: DataModelStateNode) {
+    drop(node);
 }
 
 // 0x88a228 — __ZNSt8_Rb_treeIPN3RBX9DataModelESt4pairIKS2_NS0_13PluginManager14StateDataEntryEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
 
 #[doc(alias = "std::_Rb_tree<RBX::DataModel *,std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>,std::_Select1st<std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>>,std::less<RBX::DataModel *>,std::allocator<std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPN3RBX9DataModelESt4pairIKS2_NS0_13PluginManager14StateDataEntryEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E")]
-// IDA 0x88a228: 18 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88a228() {
+// IDA 0x88a228: null check (`0x88a232`); recurse into left child `v2[3]`
+// (`0x88a23a`); `_M_destroy_node(v2)` (`0x88a244`, i.e. `0x88a150`); step to
+// right sibling `v2[2]` until exhausted (`0x88a248`..`0x88a24c`).
+// was: post-order node recursion → `HashMap::clear` (per-entry drops run
+// the `0x88a150` member drops, same release counts).
+pub fn stub_88a228(states: &Mutex<HashMap<usize, PluginManagerStateEntry>>) {
+    states.lock().clear();
 }
 
 // 0x88a250 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EEC2ERKSD_
 
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>>::_Rb_tree(std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EEC2ERKSD_")]
-// IDA 0x88a250: 31 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88a250() {
+// IDA 0x88a250: `_Rb_tree` copy C2 — decompile failed; 31-insn disasm
+// (PUSH..POP): header init + `_M_copy` of the source root (same shape as
+// `0x88a294` below).
+// was: tree copy → cloned map.
+// // BUG: Rb-tree ordering is unobservable through the map API.
+pub fn stub_88a250(src: &HashMap<String, SharedPtr<Toolbar>>) -> HashMap<String, SharedPtr<Toolbar>> {
+    src.clone()
 }
 
 // 0x88a294 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE7_M_copyEPKSt13_Rb_tree_nodeIS7_EPSF_
 // type: int __fastcall(int, int, int, int, int, int, int, int, void *, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>>::_M_copy(std::_Rb_tree_node<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>> const*,std::_Rb_tree_node<std::pair<std::string const,boost::shared_ptr<RBX::Toolbar>>>*)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE7_M_copyEPKSt13_Rb_tree_nodeIS7_EPSF_")]
-// IDA 0x88a294: 102 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88a294() {
+// IDA 0x88a294: `_M_copy` (102 insns): `_M_create_node(src + 4)`
+// (`0x88a2c2`); copy color/links (`*node = *src`, `node[2..3] = 0`,
+// `node[1] = parent` at `0x88a2c8`..`0x88a2e4`); recurse into the right
+// child (`0x88a316`) and likewise the left.
+// was: recursive node clone → cloned map (shared `Arc`s, counts +1 each).
+pub fn stub_88a294(src: &HashMap<String, SharedPtr<Toolbar>>) -> HashMap<String, SharedPtr<Toolbar>> {
+    src.clone()
 }
 
 // 0x88a3e8 — __ZNSt8_Rb_treeIPN3RBX9DataModelESt4pairIKS2_NS0_13PluginManager14StateDataEntryEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE16_M_insert_uniqueERKS7_
 
 #[doc(alias = "std::_Rb_tree<RBX::DataModel *,std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>,std::_Select1st<std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>>,std::less<RBX::DataModel *>,std::allocator<std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>>>::_M_insert_unique(std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPN3RBX9DataModelESt4pairIKS2_NS0_13PluginManager14StateDataEntryEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE16_M_insert_uniqueERKS7_")]
-// IDA 0x88a3e8: 44 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88a3e8() {
+// IDA 0x88a3e8: pointer-keyed `_M_insert_unique` (44 insns): walk from the
+// root comparing `DataModel *` (`0x88a3fc`..`0x88a414`); fresh-leftmost or
+// `_Rb_tree_decrement` (`0x88a420`/`0x88a424`); duplicate → position + 0
+// (`0x88a430`..`0x88a446`); else `_M_insert` (`0x88a432`) with `1`
+// (`0x88a440`..`0x88a448`).
+// was: ordered walk + absence proof → `HashMap` insert reporting absence.
+pub fn stub_88a3e8(states: &Mutex<HashMap<usize, PluginManagerStateEntry>>, data_model: usize, entry: PluginManagerStateEntry) -> bool {
+    let mut states = states.lock();
+    if states.contains_key(&data_model) {
+        false
+    } else {
+        states.insert(data_model, entry);
+        true
+    }
 }
 
 // 0x88a450 — __ZNSt8_Rb_treeIPN3RBX9DataModelESt4pairIKS2_NS0_13PluginManager14StateDataEntryEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE9_M_insertEPSt18_Rb_tree_node_baseSF_RKS7_
 
 #[doc(alias = "std::_Rb_tree<RBX::DataModel *,std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>,std::_Select1st<std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>>,std::less<RBX::DataModel *>,std::allocator<std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPN3RBX9DataModelESt4pairIKS2_NS0_13PluginManager14StateDataEntryEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE9_M_insertEPSt18_Rb_tree_node_baseSF_RKS7_")]
-// IDA 0x88a450: 32 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88a450() {
+// IDA 0x88a450: `_M_insert` (32 insns): insert direction from null-hint/ptr
+// compare (`0x88a468`, `0x88a476`); `_M_create_node` (`0x88a480`);
+// `_Rb_tree_insert_and_rebalance` (`0x88a48a`); `++node_count` (`0x88a492`).
+// was: node alloc + rebalance + count → `HashMap` insert.
+pub fn stub_88a450(states: &Mutex<HashMap<usize, PluginManagerStateEntry>>, data_model: usize, entry: PluginManagerStateEntry) {
+    states.lock().insert(data_model, entry);
 }
 
 // 0x88a49c — __ZNSt8_Rb_treeIPN3RBX9DataModelESt4pairIKS2_NS0_13PluginManager14StateDataEntryEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE14_M_create_nodeERKS7_
