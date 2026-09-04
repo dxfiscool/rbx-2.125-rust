@@ -87,8 +87,13 @@ pub fn stub_0x25f838() -> bool {
 // 0x26a6c0 — __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EEC2INS_9ContentIdEEET_
 // type: RBX::BaseScript *__fastcall(RBX::BaseScript *, int *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EEC2INS_9ContentIdEEET_")]
-pub fn stub_0x26a6c0() -> ! {
-    todo!("0x26a6c0 __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EEC2INS_9ContentIdEEET_")
+// IDA 0x26a6c0: copies the ContentId (std::string::string at 0x26a6e4),
+// CoreScript::CoreScript(base, id) (0x26a720), vtbl slot installs
+// (0x26a736..0x26a756, then 0x26a776..0x26a78c), classDescriptor() +
+// ClassRegistrar bump (0x26a792..0x26a7b6). MODEL: base fields, vtables and
+// the registrar are unmodeled — construction is a marker.
+pub fn stub_0x26a6c0(_source: &[u8]) -> StarterScriptCore {
+    StarterScriptCore
 }
 
 // 0x26a88c — __ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
@@ -135,10 +140,13 @@ pub fn stub_0x26a9e4(_obj: Box<StarterScriptCore>) {}
 // 0x26aa88 — __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: void *__fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_0x26aa88() -> ! {
-    todo!("0x26aa88 __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+// IDA 0x26aa88: guard-once init (0x26aae4); parent = CoreScript
+// classDescriptor (0x26aaf0); ClassDescriptor::ClassDescriptor(&static,
+// &parent, "StarterScript") (0x26ab28); returns the function-local static
+// (0x26ab76). MODEL: STARTER_SCRIPT_DESC; guard/atexit unmodeled.
+pub fn stub_0x26aa88() -> &'static ClassDesc {
+    &STARTER_SCRIPT_DESC
 }
-
 // 0x26aba4 — __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
@@ -170,99 +178,295 @@ pub fn stub_0x26ac50(_obj: Box<StarterScriptCore>) {}
 // 0x26acf4 — __ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x26acf4() -> ! {
-    todo!("0x26acf4 __ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
-}
+// IDA 0x26acf4: +36 this-adjust then the D1 dtor above, same Thn36 pattern as
+// 0x26a9dc. Same no-op marker.
+pub fn stub_0x26acf4(_obj: &mut StarterScriptCore) {}
 
 // 0x26acfc — __ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x26acfc() -> ! {
-    todo!("0x26acfc __ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
-}
+// IDA 0x26acfc: +36 this-adjust then the D0 dtor+delete above. MODEL: same
+// consuming-Box shape as 0x26a9e4.
+pub fn stub_0x26acfc(_obj: Box<StarterScriptCore>) {}
 
 // 0x26aff8 — __ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x26aff8() -> ! {
-    todo!("0x26aff8 __ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
-}
+// IDA 0x26aff8 (thunk, verified in decompile): tail-calls
+// RBX::BaseScript::~BaseScript. MODEL: no modeled fields, no-op drop marker.
+pub fn stub_0x26aff8(_obj: &mut CoreScriptCore) {}
 
 // 0x26affc — __ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x26affc() -> ! {
-    todo!("0x26affc __ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
-}
+// IDA 0x26affc: D0 dtor + operator delete, same shape as 0x26a890. MODEL:
+// consuming Box drops and frees.
+pub fn stub_0x26affc(_obj: Box<CoreScriptCore>) {}
 
 // 0x26b09c — __ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x26b09c() -> ! {
-    todo!("0x26b09c __ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
-}
+// IDA 0x26b09c: +32 this-adjust then the D1 dtor above. Same no-op marker.
+pub fn stub_0x26b09c(_obj: &mut CoreScriptCore) {}
 
 // 0x26b0a4 — __ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x26b0a4() -> ! {
-    todo!("0x26b0a4 __ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
-}
+// IDA 0x26b0a4: +32 this-adjust then the D0 dtor+delete above. MODEL: same
+// consuming-Box shape as 0x26a938.
+pub fn stub_0x26b0a4(_obj: Box<CoreScriptCore>) {}
 
 // 0x26b148 — __ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x26b148() -> ! {
-    todo!("0x26b148 __ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
-}
+// IDA 0x26b148: +36 this-adjust then the D1 dtor above. Same no-op marker.
+pub fn stub_0x26b148(_obj: &mut CoreScriptCore) {}
 
 // 0x26b150 — __ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x26b150() -> ! {
-    todo!("0x26b150 __ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
-}
+// IDA 0x26b150: +36 this-adjust then the D0 dtor+delete above. MODEL: same
+// consuming-Box shape as 0x26a9e4.
+pub fn stub_0x26b150(_obj: Box<CoreScriptCore>) {}
 
 // 0x26b55c — __ZNK3RBX3Lua12LuaArguments9getObjectEiRN5boost10shared_ptrINS_10Reflection13DescribedBaseEEE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Lua::LuaArguments::getObject(int,rbx_core::SharedPtr<RBX::Reflection::DescribedBase> &)const")]
-pub fn stub_0x26b55c() -> ! {
-    todo!("0x26b55c RBX::Lua::LuaArguments::getObject(int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)const")
+// IDA 0x26b55c (verified in decompile): absolute index is base + n
+// (0x26b5b6); past gettop (0x26b5ba) fails. Userdata slots (lua_type 7 at
+// 0x26b5cc) delegate to SharedPtrBridge<Instance>::getPtr<DescribedBase>
+// (0x26b5da); nil writes null and succeeds (0x26b5e0..0x26b604); anything else
+// fails. MODEL: Option<u64> for the out shared_ptr (None = null).
+pub fn stub_0x26b55c(args: &LuaArguments, n: i32, out: &mut Option<u64>) -> bool {
+    let mut idx = args.abs(n);
+    if idx <= 0 {
+        idx = args.gettop() + idx + 1;
+    }
+    if idx <= 0 || idx > args.gettop() {
+        return false;
+    }
+    if args.l.lua_type_tag(idx) == 7 {
+        return stub_0x26c38c(&args.l, idx, out);
+    }
+    if args.l.lua_type_tag(idx) == 0 {
+        *out = None;
+        return true;
+    }
+    false
 }
 
 // 0x26b6e4 — __ZNK3RBX3Lua12LuaArguments7getEnumEiRKNS_10Reflection14EnumDescriptorERi
 // type: bool __fastcall(RBX::Lua::LuaArguments *this, int, const RBX::Reflection::EnumDescriptor *, int *)
 #[doc(alias = "RBX::Lua::LuaArguments::getEnum(int,RBX::Reflection::EnumDescriptor const&,int &)const")]
-pub fn stub_0x26b6e4() -> ! {
-    todo!("0x26b6e4 RBX::Lua::LuaArguments::getEnum(int,RBX::Reflection::EnumDescriptor const&,int &)const")
+// IDA 0x26b6e4 (verified in decompile): absolute index is base + n
+// (0x26b6fa); past gettop (0x26b704) fails. Number slots truncate toward zero
+// ((int)lua_tonumber at 0x26b734) and succeed iff an equalValue item exists
+// (std::__find_if at 0x26b74e); enum-userdata slots go through
+// Bridge<EnumItem>::getValue (0x26b764) and additionally require the item's
+// Type to equal the descriptor (operator!= at 0x26b76c) before copying the
+// value (0x26b778). MODEL: (int) cast via to_integer (same saturating-BUG
+// note); EnumDesc carries the item values + type tag.
+pub fn stub_0x26b6e4(args: &LuaArguments, n: i32, desc: &EnumDesc, out: &mut i32) -> bool {
+    let mut idx = args.abs(n);
+    if idx <= 0 {
+        idx = args.gettop() + idx + 1;
+    }
+    if idx <= 0 || idx > args.gettop() {
+        return false;
+    }
+    if args.l.lua_type_tag(idx) == 3 {
+        let v = args.l.to_integer(idx);
+        *out = v;
+        return desc.values.iter().any(|w| *w == v);
+    }
+    if args.l.lua_type_tag(idx) == 7 {
+        if let Some(it) = args.l.get_enum_item(idx) {
+            if it.type_tag != desc.type_tag {
+                return false;
+            }
+            *out = it.value;
+            return true;
+        }
+    }
+    false
 }
 
 // 0x26b788 — __ZN3RBX3Lua12LuaArguments3getEP9lua_StateiRNS_10Reflection7VariantEb
 // type: int __fastcall(struct _Unwind_Exception *, int, int, int)
 #[doc(alias = "RBX::Lua::LuaArguments::get(lua_State *,int,RBX::Reflection::Variant &,bool)")]
-pub fn stub_0x26b788() -> ! {
-    todo!("0x26b788 RBX::Lua::LuaArguments::get(lua_State *,int,RBX::Reflection::Variant &,bool)")
+// IDA 0x26b788 (verified in decompile): out-of-range index (lua_gettop at
+// 0x26b800) fails with 0 and leaves out untouched. Otherwise dispatches on
+// lua_type (0x26b814): nil writes void only when allow_nil (0x26b828..0x26b85a,
+// else 0); boolean (0x26b8e6..0x26b8fe); number → double (0x26b90e..0x26b926);
+// string bytes (0x26b93c..0x26b98e); table → array of per-index recursive gets
+// when objlen >= 1 (0x26b99e..0x26ba4a), else the lua_next string-keyed loop
+// into an unordered map — "keys must be strings" throw at 0x26be84 — with an
+// empty table falling back to an empty vector (0x26be48); function →
+// WeakFunctionRef via lua_tofunction (0x26ba70..0x26ba9a); userdata tries
+// Enums::getValue, SharedPtrBridge<Instance> and each value Bridge in order
+// (0x26baa8..0x26bc3e), unknown userdata becoming void; anything else writes
+// void (0x26b870..0x26b89a). Always 1 once inside the top range.
+// MODEL: slots already hold variants so element reads recurse over values;
+// keys are byte strings in-model (throw unreachable); the lua_next negative-
+// index adjustment (0x26bc94..0x26bcac) is unneeded — indices stay absolute.
+pub fn stub_0x26b788(l: &BridgeState, idx: i32, out: &mut BridgeVal, allow_nil: bool) -> bool {
+    if idx <= 0 || idx > l.gettop() {
+        return false;
+    }
+    match l.lua_type_tag(idx) {
+        0 => {
+            if !allow_nil {
+                return false;
+            }
+            *out = BridgeVal::Void;
+            true
+        }
+        1 => {
+            *out = BridgeVal::Bool(l.to_boolean(idx));
+            true
+        }
+        3 => {
+            *out = BridgeVal::Num(l.to_number_f64(idx));
+            true
+        }
+        4 => {
+            *out = BridgeVal::Str(l.to_bytes(idx));
+            true
+        }
+        5 => {
+            *out = variant_of(l.slot(idx));
+            true
+        }
+        6 => {
+            let id = match l.slot(idx) {
+                BridgeVal::WeakFunc(id) | BridgeVal::YieldFunc(id) | BridgeVal::AsyncFunc(id) => {
+                    *id
+                }
+                BridgeVal::Closure(name) => func_name_id(name),
+                _ => 0,
+            };
+            *out = BridgeVal::WeakFunc(id);
+            true
+        }
+        _ => {
+            // MODEL: enum userdata already carries its item (Enums::getValue).
+            if let BridgeVal::EnumItem(it) = l.slot(idx) {
+                *out = BridgeVal::EnumItem(*it);
+                return true;
+            }
+            // The 0x26babe..0x26bc3e bridge chain, in original order: each
+            // copies on metatable-tag match, else falls through silently.
+            let mut tmp = BridgeVal::Nil;
+            if stub_0x26c830(l, idx, &mut tmp) {
+                *out = tmp;
+                return true;
+            }
+            if stub_0x26c92c(l, idx, &mut tmp) {
+                *out = tmp;
+                return true;
+            }
+            if stub_0x26c9a8(l, idx, &mut tmp) {
+                *out = tmp;
+                return true;
+            }
+            if stub_0x26ca24(l, idx, &mut tmp) {
+                *out = tmp;
+                return true;
+            }
+            if stub_0x26caa0(l, idx, &mut tmp) {
+                *out = tmp;
+                return true;
+            }
+            if stub_0x26cb1c(l, idx, &mut tmp) {
+                *out = tmp;
+                return true;
+            }
+            if stub_0x26cb98(l, idx, &mut tmp) {
+                *out = tmp;
+                return true;
+            }
+            if stub_0x26cc14(l, idx, &mut tmp) {
+                *out = tmp;
+                return true;
+            }
+            if stub_0x26cc90(l, idx, &mut tmp) {
+                *out = tmp;
+                return true;
+            }
+            if stub_0x26cd0c(l, idx, &mut tmp) {
+                *out = tmp;
+                return true;
+            }
+            if stub_0x26cd88(l, idx, &mut tmp) {
+                *out = tmp;
+                return true;
+            }
+            if stub_0x26ce04(l, idx, &mut tmp) {
+                *out = tmp;
+                return true;
+            }
+            if stub_0x26ce80(l, idx, &mut tmp) {
+                *out = tmp;
+                return true;
+            }
+            if stub_0x26cefc(l, idx, &mut tmp) {
+                *out = tmp;
+                return true;
+            }
+            if stub_0x26cf78(l, idx, &mut tmp) {
+                *out = tmp;
+                return true;
+            }
+            if stub_0x26cff4(l, idx, &mut tmp) {
+                *out = tmp;
+                return true;
+            }
+            if stub_0x26d070(l, idx, &mut tmp) {
+                *out = tmp;
+                return true;
+            }
+            *out = BridgeVal::Void;
+            true
+        }
+    }
 }
 
 // 0x26c138 — __ZN3RBX3Lua12LuaArguments4pushERKNS_10Reflection7VariantEP9lua_State
 // type: int()
 #[doc(alias = "RBX::Lua::LuaArguments::push(RBX::Reflection::Variant const&,lua_State *)")]
-pub fn stub_0x26c138() -> ! {
-    todo!("0x26c138 RBX::Lua::LuaArguments::push(RBX::Reflection::Variant const&,lua_State *)")
+// IDA 0x26c138 (thunk, verified in decompile): tail-calls
+// RBX::withVariantValue<int,RBX::Lua::ArgumentPusher>.
+pub fn stub_0x26c138(variant: &BridgeVal, l: &mut BridgeState) -> i32 {
+    stub_0x26d0ec(variant, l)
 }
 
 // 0x26c38c — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrIN5boost10shared_ptrINS_10Reflection13DescribedBaseEEEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<rbx_core::SharedPtr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,rbx_core::SharedPtr<RBX::Reflection::DescribedBase> &)")]
-pub fn stub_0x26c38c() -> ! {
-    todo!("0x26c38c bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<boost::shared_ptr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)")
+// IDA 0x26c38c: non-nil slot (lua_type at 0x26c3ae) delegates to
+// Bridge<Instance>::getValue<DescribedBase> (0x26c3f2); nil writes null
+// (0x26c3f8..0x26c404) and returns 1. MODEL: Option<u64> for the out
+// shared_ptr (None = null).
+pub fn stub_0x26c38c(l: &BridgeState, idx: i32, out: &mut Option<u64>) -> bool {
+    if l.lua_type_tag(idx) != 0 {
+        return stub_0x26ff94(l, idx, out);
+    }
+    *out = None;
+    true
 }
 
 // 0x26c830 — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26c830() -> ! {
-    todo!("0x26c830 bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+// IDA 0x26c830: non-nil slot (lua_type at 0x26c852) delegates to
+// Bridge<Instance>::getValue<Variant> (0x26c898); nil writes the Instance
+// singleton + null shared_ptr (0x26c8a0..0x26c8ba) and returns 1.
+pub fn stub_0x26c830(l: &BridgeState, idx: i32, out: &mut BridgeVal) -> bool {
+    if l.lua_type_tag(idx) != 0 {
+        return stub_0x26fa78(l, idx, out);
+    }
+    *out = BridgeVal::Instance(0);
+    true
 }
 
 // 0x26c92c — __ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
@@ -510,92 +714,303 @@ pub fn stub_0x26d070(l: &BridgeState, idx: i32, out: &mut BridgeVal) -> bool {
 // 0x26d0ec — __ZN3RBX16withVariantValueIiNS_3Lua14ArgumentPusherEEET_RKNS_10Reflection7VariantET0_
 // type: int __fastcall(char ****, int)
 #[doc(alias = "int RBX::withVariantValue<int,RBX::Lua::ArgumentPusher>(RBX::Reflection::Variant const&,RBX::Lua::ArgumentPusher)")]
-pub fn stub_0x26d0ec() -> ! {
-    todo!("0x26d0ec int RBX::withVariantValue<int,RBX::Lua::ArgumentPusher>(RBX::Reflection::Variant const&,RBX::Lua::ArgumentPusher)")
+// IDA 0x26d0ec (verified in decompile): the Variant→Lua push dispatch, arms
+// in original order. void → 0 (0x26d152); bool → pushboolean (0x26d180..);
+// int/long/float/double → pushnumber (0x26d1ac..0x26d25a); string,
+// ProtectedString (via getStringForImmediateUse, 0x26d2ba), ContentId and the
+// PropertyDescriptor name (0x26dba2) → pushlstring (0x26dba4); Instance via
+// ArgumentPusher (0x26d2ea..0x26d2fa); registered enums via lookupDescriptor
+// + SingletonBridge push, throwing runtime_error "Invalid value for enum %s"
+// on mismatch (0x26d304..0x26d3de); WeakFunctionRef → lua_pushfunction
+// (0x26d3ea..0x26d3fa); vector/map/unordered-map/vector<Instance>/Tuple/
+// yield-fn/async-fn via their ArgumentPushers (0x26d368..0x26d616); the value
+// types via pushNewObject each (0x26d644..0x26db68); anything else hits the
+// "0" ReleaseAssert (LuaArguments.h:114, 0x26dbba..0x26dc18) and returns 0.
+// MODEL: int/long/float/double are all Num(f64) here; string-likes are all
+// Str bytes; only EnumItem has enum type so the invalid-enum throw is
+// unreachable; null-ness inside shared containers is unobservable (null and
+// empty both push empty tables / push nothing); the terminal assert is
+// debug-only. Returns the pushed count (tuple arity, else 1, void 0).
+pub fn stub_0x26d0ec(variant: &BridgeVal, l: &mut BridgeState) -> i32 {
+    match variant {
+        BridgeVal::Nil | BridgeVal::Void => 0,
+        BridgeVal::Bool(b) => {
+            l.push_boolean(*b);
+            1
+        }
+        BridgeVal::Num(v) => {
+            l.push_number(*v);
+            1
+        }
+        BridgeVal::Str(s) => {
+            l.push_str(s);
+            1
+        }
+        BridgeVal::Instance(h) => {
+            l.push_instance(*h);
+            1
+        }
+        BridgeVal::EnumItem(it) => {
+            l.push_enum_item(*it);
+            1
+        }
+        BridgeVal::WeakFunc(id) => {
+            l.push_weak_func(*id);
+            1
+        }
+        BridgeVal::Array(elems) => stub_0x26ddb4(l, Some(elems)),
+        BridgeVal::Dict(pairs) => stub_0x26dddc(l, Some(pairs)),
+        BridgeVal::Tuple(elems) => stub_0x26df2c(l, Some(elems)),
+        BridgeVal::YieldFunc(id) => stub_0x26df60(l, *id),
+        BridgeVal::AsyncFunc(id) => stub_0x26e030(l, *id),
+        BridgeVal::Vec3i16(v) => {
+            l.push_vec3i16(*v);
+            1
+        }
+        BridgeVal::Vec2i16(v) => {
+            l.push_vec2i16(*v);
+            1
+        }
+        BridgeVal::Vec3(v) => {
+            l.push_vec3(*v);
+            1
+        }
+        BridgeVal::Vec2(v) => {
+            l.push_vec2(*v);
+            1
+        }
+        BridgeVal::Ray(v) => {
+            l.push_ray(*v);
+            1
+        }
+        BridgeVal::CFrame(v) => {
+            l.push_cframe(*v);
+            1
+        }
+        BridgeVal::Color3(v) => {
+            l.push_color3(*v);
+            1
+        }
+        BridgeVal::Brick(v) => {
+            l.push_brick(*v);
+            1
+        }
+        BridgeVal::Region3(v) => {
+            l.push_region3(*v);
+            1
+        }
+        BridgeVal::Region3i16(v) => {
+            l.push_region3i16(*v);
+            1
+        }
+        BridgeVal::UDim(v) => {
+            l.push_udim(*v);
+            1
+        }
+        BridgeVal::UDim2(v) => {
+            l.push_udim2(*v);
+            1
+        }
+        BridgeVal::Faces(v) => {
+            l.push_faces(*v);
+            1
+        }
+        BridgeVal::Axes(v) => {
+            l.push_axes(*v);
+            1
+        }
+        BridgeVal::Cell(v) => {
+            stub_0x26e100(l, v)
+        }
+        BridgeVal::Input(v) => {
+            l.push_input(*v);
+            1
+        }
+        // Closure/Table have no withVariantValue arm: the original falls
+        // through to the terminal assert and returns 0.
+        BridgeVal::Closure(_) | BridgeVal::Table(_) => {
+            debug_assert!(false, "0 LuaArguments.h:114");
+            0
+        }
+    }
 }
 
 // 0x26dc38 — __ZNK3RBX3Lua12LuaArguments10getVariantEiRNS_10Reflection7VariantE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Lua::LuaArguments::getVariant(int,RBX::Reflection::Variant &)const")]
-pub fn stub_0x26dc38() -> ! {
-    todo!("0x26dc38 RBX::Lua::LuaArguments::getVariant(int,RBX::Reflection::Variant &)const")
+// IDA 0x26dc38 (verified in decompile): asserts base + n > 0
+// ("luaIndex>0", LuaArguments.h:178, 0x26dc54..0x26dc92), then
+// get(L, base + n, out, true) (0x26dca6). MODEL: debug_assert for the gated
+// ReleaseAssert; execution always continues into get.
+pub fn stub_0x26dc38(args: &LuaArguments, n: i32, out: &mut BridgeVal) -> bool {
+    let idx = args.abs(n);
+    debug_assert!(idx > 0, "luaIndex>0");
+    stub_0x26b788(&args.l, idx, out, true)
 }
 
 // 0x26ddb4 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEE
 // type: int __fastcall(_DWORD *, _DWORD *)
 #[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)")]
-pub fn stub_0x26ddb4() -> ! {
-    todo!("0x26ddb4 RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)")
+// IDA 0x26ddb4 (verified in decompile): null → lua_createtable(L, 0, 0)
+// (0x26ddd2); else pushArray over the vector (0x26ddc6). Returns 1.
+// MODEL: slice for the vector; None = null.
+pub fn stub_0x26ddb4(l: &mut BridgeState, elems: Option<&[BridgeVal]>) -> i32 {
+    match elems {
+        Some(e) => stub_0x26f1d4(l, e),
+        None => {
+            l.push_table(LuaTable::default());
+            1
+        }
+    }
 }
 
 // 0x26dddc — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt3mapISsNS_10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEE
 // type: int __fastcall(int *, int *)
 #[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")]
-pub fn stub_0x26dddc() -> ! {
-    todo!("0x26dddc RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")
+// IDA 0x26dddc (verified in decompile): null → createtable(0, 0) (0x26de92);
+// else createtable(0, size) (0x26ddf4) and the ordered walk pushing key +
+// withVariantValue + settable per entry (0x26de5e..0x26de88), asserting
+// non-empty keys (LuaArguments.cpp:436, 0x26de24..0x26de5a). Returns 1.
+// MODEL: shares push_string_map with 0x26dea0; None = null.
+pub fn stub_0x26dddc(l: &mut BridgeState, entries: Option<&[(Vec<u8>, BridgeVal)]>) -> i32 {
+    match entries {
+        Some(p) => push_string_map(l, p),
+        None => {
+            l.push_table(LuaTable::default());
+            1
+        }
+    }
 }
 
 // 0x26dea0 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS_10Reflection7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEE
 // type: int __fastcall(int *, _DWORD *)
 #[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")]
-pub fn stub_0x26dea0() -> ! {
-    todo!("0x26dea0 RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")
+// IDA 0x26dea0 (verified in decompile): null → createtable(0, 0) (0x26df00);
+// else createtable(0, size) (0x26dec8) and the bucket walk pushing key +
+// withVariantValue + settable per entry (0x26ded6..0x26def6). Returns 1.
+// MODEL: shares push_string_map with 0x26dddc; None = null.
+pub fn stub_0x26dea0(l: &mut BridgeState, entries: Option<&[(Vec<u8>, BridgeVal)]>) -> i32 {
+    match entries {
+        Some(p) => push_string_map(l, p),
+        None => {
+            l.push_table(LuaTable::default());
+            1
+        }
+    }
 }
 
 // 0x26df2c — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKNS_10Reflection5TupleEEE
 // type: int __fastcall(int *, char ******)
 #[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")]
-pub fn stub_0x26df2c() -> ! {
-    todo!("0x26df2c RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<RBX::Reflection::Tuple const>)")
+// IDA 0x26df2c (verified in decompile): null tuple pushes nothing and returns
+// 0; else each element goes through withVariantValue with counts summed
+// (0x26df3c..0x26df56). MODEL: slice for the Tuple's vector; None = null.
+pub fn stub_0x26df2c(l: &mut BridgeState, elems: Option<&[BridgeVal]>) -> i32 {
+    match elems {
+        Some(e) => push_tuple_elems(l, e),
+        None => 0,
+    }
 }
 
 // 0x26df60 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEE
 // type: int __fastcall(int *, const shared_count *)
 #[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>)")]
-pub fn stub_0x26df60() -> ! {
-    todo!("0x26df60 RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>)")
+// IDA 0x26df60 (verified in decompile): retains the shared yield fn and
+// lua_pushfunction(L, fn) (0x26df86..0x26dfc4); returns 1. Same MODEL as
+// 0x26e030, yield flavor.
+pub fn stub_0x26df60(l: &mut BridgeState, f: u64) -> i32 {
+    l.push_yield_func(f);
+    1
 }
 
 // 0x26e030 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEE
 // type: int __fastcall(int *, const shared_count *)
 #[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>)")]
-pub fn stub_0x26e030() -> ! {
-    todo!("0x26e030 RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>)")
+// IDA 0x26e030 (verified in decompile): retains the shared async fn and
+// lua_pushfunction(L, fn) (0x26e056..0x26e094); returns 1. MODEL: the handle
+// is the referent identity; refcounting is Arc-side.
+pub fn stub_0x26e030(l: &mut BridgeState, f: u64) -> i32 {
+    l.push_async_func(f);
+    1
 }
 
 // 0x26e100 — __ZN3RBX3Lua14ArgumentPusherclINS_6CellIDEEEiRKT_PN5boost10disable_ifINS7_13is_arithmeticIS4_EEvE4typeE
 // type: int __fastcall(int *, int)
 #[doc(alias = "int RBX::Lua::ArgumentPusher::operator()<RBX::CellID>(RBX::CellID const&,boost::disable_if<boost::is_arithmetic<RBX::CellID>,void>::type *)")]
-pub fn stub_0x26e100() -> ! {
-    todo!("0x26e100 int RBX::Lua::ArgumentPusher::operator()<RBX::CellID>(RBX::CellID const&,boost::disable_if<boost::is_arithmetic<RBX::CellID>,void>::type *)")
+// IDA 0x26e100 (verified in decompile): copies the 16-byte payload + shared
+// ref (0x26e12a..0x26e148), Bridge<CellID,true>::pushNewObject (0x26e170),
+// destroys the temp (0x26e17c); returns 1. MODEL: the push.
+pub fn stub_0x26e100(l: &mut BridgeState, cell: &CellID) -> i32 {
+    l.push_cell(*cell);
+    1
 }
 
 // 0x26eb44 — __ZN3rbx8any_castIRKN5boost10shared_ptrINS1_8functionIFvNS2_IKN3RBX10Reflection5TupleEEENS3_IFvPNS4_3Lua12IAsyncResultEEEEEEEEENS4_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "rbx_core::SharedPtr<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>> const& rbx::any_cast<rbx_core::SharedPtr<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0x26eb44() -> ! {
-    todo!("0x26eb44 boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>> const& rbx::any_cast<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+// IDA 0x26eb44 (verified in decompile): compares the any's typeinfo against
+// the async-fn shared_ptr (0x26eb6e..0x26ebb0, name check at 0x26ebcc);
+// mismatch throws rbx::bad_placement_any_cast (0x26ebfa..0x26ec02); match
+// returns the payload past the header (a1+1 at 0x26ebea). MODEL: only the
+// AsyncFunc payload carries that type — anything else panics (the throw).
+pub fn stub_0x26eb44(variant: &BridgeVal) -> u64 {
+    match variant {
+        BridgeVal::AsyncFunc(id) => *id,
+        _ => panic!("rbx::bad_placement_any_cast"),
+    }
 }
 
 // 0x26f1d4 — __ZN3RBX3Lua12LuaArguments9pushArrayIN9__gnu_cxx17__normal_iteratorIPKNS_10Reflection7VariantESt6vectorIS6_SaIS6_EEEEEEiT_SD_P9lua_State
 // type: int __fastcall(char ****, char ****, int)
 #[doc(alias = "int RBX::Lua::LuaArguments::pushArray<__gnu_cxx::__normal_iterator<RBX::Reflection::Variant const*,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>(__gnu_cxx::__normal_iterator<RBX::Reflection::Variant const*,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>,__gnu_cxx::__normal_iterator<RBX::Reflection::Variant const*,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>,lua_State *)")]
-pub fn stub_0x26f1d4() -> ! {
-    todo!("0x26f1d4 int RBX::Lua::LuaArguments::pushArray<__gnu_cxx::__normal_iterator<RBX::Reflection::Variant const*,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>(__gnu_cxx::__normal_iterator<RBX::Reflection::Variant const*,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>,__gnu_cxx::__normal_iterator<RBX::Reflection::Variant const*,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>,lua_State *)")
+// IDA 0x26f1d4 (verified in decompile): lua_createtable(L, end-begin, 0)
+// (0x26f1f6); per element withVariantValue (0x26f224) with a count == 1 assert
+// (LuaArguments.h:213, 0x26f226..0x26f260) then rawseti(L, -2, i) (0x26f264);
+// returns 1. MODEL: slice for the iterator pair; the pushed value is moved
+// into the table array (rawseti pops); the assert is debug-only.
+pub fn stub_0x26f1d4(l: &mut BridgeState, elems: &[BridgeVal]) -> i32 {
+    let mut t = LuaTable::default();
+    for e in elems {
+        let n = stub_0x26d0ec(e, l);
+        debug_assert!(n == 1, "count == 1");
+        let v = l.stack.pop().expect("pusher left one value");
+        t.array.push(v);
+    }
+    l.push_table(t);
+    1
 }
 
 // 0x26fa78 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26fa78() -> ! {
-    todo!("0x26fa78 bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+// IDA 0x26fa78 (verified in decompile): same metatable-check shape as
+// 0x26ff94 (0x26fa8a..0x26fad4) with the Variant out: writes the Instance
+// singleton + placement copy (0x26fae0..0x26fae8), returns 1; else 0.
+pub fn stub_0x26fa78(l: &BridgeState, idx: i32, out: &mut BridgeVal) -> bool {
+    match l.get_instance(idx) {
+        Some(h) => {
+            *out = BridgeVal::Instance(h);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x26ff94 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueINS3_INS_10Reflection13DescribedBaseEEEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "bool RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::getValue<rbx_core::SharedPtr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,rbx_core::SharedPtr<RBX::Reflection::DescribedBase> &)")]
-pub fn stub_0x26ff94() -> ! {
-    todo!("0x26ff94 bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<boost::shared_ptr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)")
+// IDA 0x26ff94 (verified in decompile): lua_touserdata (0x26ffa6); when
+// non-null and the slot metatable rawequals Bridge::className (0x26ffb4..
+// 0x26ffec), copies the shared Instance into the DescribedBase out
+// (0x26fff8) and returns 1; else 0. MODEL: typed slot = tag match.
+pub fn stub_0x26ff94(l: &BridgeState, idx: i32, out: &mut Option<u64>) -> bool {
+    match l.get_instance(idx) {
+        Some(h) => {
+            *out = Some(h);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x270008 — __ZN3RBX3Lua6BridgeIPKNS_10Reflection14EnumDescriptor4ItemELb1EE8getValueIS6_EEbP9lua_StatejRT_
@@ -725,14 +1140,82 @@ pub struct CellID {
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct InputObject(pub u64);
 // MODEL: the enum-item bridge copies the Item const* word (IDA 0x27006c
-// `*a3 = *v6`); only the pointer identity is modeled.
+// `*a3 = *v6`); the address word is the identity. The value/type_tag lanes
+// below back LuaArguments::getEnum (IDA 0x26b6e4: `*(v11+20)` value,
+// Type::operator!= type check at 0x26b76c) — Enums::getValue fills them when
+// it materializes the userdata.
 #[repr(C)]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub struct EnumItemPtr(pub u32);
+pub struct EnumItemPtr {
+    pub addr: u32,
+    pub value: i32,
+    pub type_tag: u32,
+}
+impl EnumItemPtr {
+    pub const fn new(addr: u32, value: i32, type_tag: u32) -> Self {
+        EnumItemPtr { addr, value, type_tag }
+    }
+}
 // Marker for DescribedNonCreatable<StarterScript,...> destruction (IDA
 // 0x26a88c..0x26ac50): no fields modeled, drop glue only.
 #[derive(Debug, Default)]
 pub struct StarterScriptCore;
+// Marker for Described<CoreScript,...> destruction (IDA 0x26aff8: thunk into
+// RBX::BaseScript::~BaseScript, verified in decompile): same drop-glue shape
+// as StarterScriptCore.
+#[derive(Debug, Default)]
+pub struct CoreScriptCore;
+// RBX::Reflection::ClassDescriptor::ClassDescriptor(parent, name) as built by
+// classDescriptor() (IDA 0x26ab28: parent = CoreScript descriptor,
+// name = "StarterScript").
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct ClassDesc {
+    pub name: &'static str,
+    pub parent: &'static str,
+}
+// Function-local `describedClassDescriptor` static returned by 0x26aa88 (IDA
+// 0x26ab76). MODEL: plain static; the __cxa_guard once-init (0x26aae4) and
+// __cxa_atexit dtor (0x26ab46) are unmodeled.
+pub static STARTER_SCRIPT_DESC: ClassDesc =
+    ClassDesc { name: "StarterScript", parent: "CoreScript" };
+// Lua table with array + string-keyed parts (lua_createtable(narray, nrec),
+// lua_rawgeti/rawseti, lua_next/pushlstring/settable). Keys are byte strings
+// in-model, so the "keys must be strings" runtime_error (IDA 0x26be84) is
+// unreachable.
+#[derive(Clone, Debug, Default, PartialEq)]
+pub struct LuaTable {
+    pub array: Vec<BridgeVal>,
+    pub map: Vec<(Vec<u8>, BridgeVal)>,
+    pub readonly: bool,
+}
+// RBX::Reflection::EnumDescriptor model for getEnum (IDA 0x26b6e4): type
+// identity for the operator!= check plus the item values for the equalValue
+// linear find (0x26b74e).
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct EnumDesc {
+    pub type_tag: u32,
+    pub values: Vec<i32>,
+}
+// RBX::Lua::LuaArguments model: base arg offset (this+72) over the Lua stack
+// (this+76). getObject/getEnum/getVariant add the base (IDA
+// 0x26b5b6/0x26b6fa/0x26dc52); get/push take the state directly.
+#[derive(Clone, Debug, Default)]
+pub struct LuaArguments {
+    pub base: i32,
+    pub l: BridgeState,
+}
+impl LuaArguments {
+    pub fn new(base: i32) -> Self {
+        LuaArguments { base, l: BridgeState::new() }
+    }
+    // Absolute stack index for arg n (IDA 0x26b5b6 `*(_DWORD *)(a1+72) + a2`).
+    pub fn abs(&self, n: i32) -> i32 {
+        self.base + n
+    }
+    pub fn gettop(&self) -> i32 {
+        self.l.gettop()
+    }
+}
 // Minimal PlaceLauncher: the join/teleport script plus dispatch flags. UIKit
 // (NSString, objc_msgSend, view controllers) and the worker thread behind
 // thread_wrapper are not modeled (MODEL).
@@ -782,7 +1265,22 @@ pub enum BridgeVal {
     Input(InputObject),
     EnumItem(EnumItemPtr),
     Closure(&'static str),
-    Table { readonly: bool },
+    Table(LuaTable),
+    // ── Variant-only payloads (IDA LuaArguments::get/push) ──────────────
+    // Never raw stack slots: get() writes them to out-params, pushers convert
+    // them (Array/Dict/Tuple) into pushed Tables/values. Void is the
+    // type-void variant (IDA 0x26b842/0x26bc5c); Instance(0) is a null
+    // shared_ptr<Instance> (IDA 0x26c8a0..0x26c8ba); the func trio mirrors
+    // WeakFunctionRef (lua_tofunction, 0x26ba70) vs the two shared_ptr fn
+    // types pushed by lua_pushfunction (0x26df60/0x26e030).
+    Void,
+    Instance(u64),
+    Array(Vec<BridgeVal>),
+    Dict(Vec<(Vec<u8>, BridgeVal)>),
+    Tuple(Vec<BridgeVal>),
+    YieldFunc(u64),
+    AsyncFunc(u64),
+    WeakFunc(u64),
 }
 
 #[derive(Clone, Debug, Default)]
@@ -1037,13 +1535,202 @@ impl BridgeState {
     // classLibrary static only contributes entry addresses, so registration
     // records the class name; the pushed table is popped by the settop.
     pub fn register_class(&mut self, name: &'static str) {
-        self.stack.push(BridgeVal::Table { readonly: false });
-        if let Some(BridgeVal::Table { readonly }) = self.stack.last_mut() {
-            *readonly = true;
+        self.stack.push(BridgeVal::Table(LuaTable::default()));
+        if let Some(BridgeVal::Table(t)) = self.stack.last_mut() {
+            t.readonly = true;
         }
         self.stack.pop();
         self.registered_libs.push(name);
     }
+    // ── LuaArguments-era stack queries (IDA 0x26b55c..0x26c830) ─────────────
+    // lua_type tags (lua.h: NIL 0, BOOLEAN 1, NUMBER 3, STRING 4, TABLE 5,
+    // FUNCTION 6, USERDATA 7). Void reads as nil (it prints as none); the
+    // variant-only Array/Dict/Tuple read as tables — pushers always
+    // materialize them into Tables before they could sit on the stack.
+    pub fn lua_type_tag(&self, idx: i32) -> i32 {
+        match self.slot(idx) {
+            BridgeVal::Nil | BridgeVal::Void => 0,
+            BridgeVal::Bool(_) => 1,
+            BridgeVal::Num(_) => 3,
+            BridgeVal::Str(_) => 4,
+            BridgeVal::Table(_)
+            | BridgeVal::Array(_)
+            | BridgeVal::Dict(_)
+            | BridgeVal::Tuple(_) => 5,
+            BridgeVal::Closure(_)
+            | BridgeVal::WeakFunc(_)
+            | BridgeVal::YieldFunc(_)
+            | BridgeVal::AsyncFunc(_) => 6,
+            _ => 7,
+        }
+    }
+    // IDA lua_toboolean (0x26b8e6): everything except nil and false is true.
+    pub fn to_boolean(&self, idx: i32) -> bool {
+        match self.slot(idx) {
+            BridgeVal::Nil | BridgeVal::Void => false,
+            BridgeVal::Bool(b) => *b,
+            _ => true,
+        }
+    }
+    // IDA lua_tonumber full-double view (0x26b718, 0x26b90e): numbers pass
+    // through (no f32 narrowing — lua_Number is double); strings coerce via
+    // lua_strtod, anything else reads 0.0.
+    pub fn to_number_f64(&self, idx: i32) -> f64 {
+        match self.slot(idx) {
+            BridgeVal::Num(v) => *v,
+            BridgeVal::Str(s) => lua_strtod(s).unwrap_or(0.0),
+            _ => 0.0,
+        }
+    }
+    // IDA lua_objlen (0x26b99e): array length for tables, byte length for
+    // strings (lua_tolstring path shares the slot).
+    pub fn objlen(&self, idx: i32) -> i32 {
+        match self.slot(idx) {
+            BridgeVal::Table(t) => t.array.len() as i32,
+            BridgeVal::Array(a) | BridgeVal::Tuple(a) => a.len() as i32,
+            BridgeVal::Str(s) => s.len() as i32,
+            _ => 0,
+        }
+    }
+    // IDA lua_pushboolean (0x26d186) / lua_pushnil (0x26bcb6).
+    pub fn push_boolean(&mut self, v: bool) {
+        self.stack.push(BridgeVal::Bool(v));
+    }
+    pub fn push_nil(&mut self) {
+        self.stack.push(BridgeVal::Nil);
+    }
+    // SharedPtrBridge<Instance> userdata (IDA 0x26d2ea, 0x26fae8): only the
+    // handle identity is modeled, not the referent.
+    pub fn push_instance(&mut self, h: u64) {
+        self.stack.push(BridgeVal::Instance(h));
+    }
+    pub fn get_instance(&self, idx: i32) -> Option<u64> {
+        match self.slot(idx) {
+            BridgeVal::Instance(h) => Some(*h),
+            _ => None,
+        }
+    }
+    // Value-userdata pushes (Bridge<T,true>::pushNewObject at IDA
+    // 0x26d644..0x26db68; CellID via ArgumentPusher at 0x26e170 — same
+    // observable push).
+    pub fn push_region3(&mut self, v: Region3) {
+        self.stack.push(BridgeVal::Region3(v));
+    }
+    pub fn push_region3i16(&mut self, v: Region3int16) {
+        self.stack.push(BridgeVal::Region3i16(v));
+    }
+    pub fn push_vec3i16(&mut self, v: Vector3int16) {
+        self.stack.push(BridgeVal::Vec3i16(v));
+    }
+    pub fn push_vec2i16(&mut self, v: Vector2int16) {
+        self.stack.push(BridgeVal::Vec2i16(v));
+    }
+    pub fn push_ray(&mut self, v: RbxRay) {
+        self.stack.push(BridgeVal::Ray(v));
+    }
+    pub fn push_udim(&mut self, v: UDim) {
+        self.stack.push(BridgeVal::UDim(v));
+    }
+    pub fn push_udim2(&mut self, v: UDim2) {
+        self.stack.push(BridgeVal::UDim2(v));
+    }
+    pub fn push_faces(&mut self, v: Faces) {
+        self.stack.push(BridgeVal::Faces(v));
+    }
+    pub fn push_axes(&mut self, v: Axes) {
+        self.stack.push(BridgeVal::Axes(v));
+    }
+    pub fn push_cell(&mut self, v: CellID) {
+        self.stack.push(BridgeVal::Cell(v));
+    }
+    pub fn push_input(&mut self, v: InputObject) {
+        self.stack.push(BridgeVal::Input(v));
+    }
+    // SingletonBridge enum-item push (IDA 0x26d326).
+    pub fn push_enum_item(&mut self, it: EnumItemPtr) {
+        self.stack.push(BridgeVal::EnumItem(it));
+    }
+    // lua_pushfunction over a (weak) function ref (IDA 0x26d3f4, 0x26dfc4,
+    // 0x26e094): pushes a function slot closing over the handle.
+    pub fn push_weak_func(&mut self, id: u64) {
+        self.stack.push(BridgeVal::WeakFunc(id));
+    }
+    pub fn push_yield_func(&mut self, id: u64) {
+        self.stack.push(BridgeVal::YieldFunc(id));
+    }
+    pub fn push_async_func(&mut self, id: u64) {
+        self.stack.push(BridgeVal::AsyncFunc(id));
+    }
+    // lua_createtable + rawseti/settable materialization (IDA 0x26f1f6,
+    // 0x26ddf4, 0x26dec8).
+    pub fn push_table(&mut self, t: LuaTable) {
+        self.stack.push(BridgeVal::Table(t));
+    }
+}
+// Deterministic handle for a named Lua closure (BridgeVal::Closure carries
+// only the name; lua_tofunction must mint a WeakFunctionRef id). MODEL:
+// FNV-1a over the name bytes.
+fn func_name_id(name: &str) -> u64 {
+    let mut h: u64 = 0xcbf29ce484222325;
+    for b in name.bytes() {
+        h = (h ^ b as u64).wrapping_mul(0x100000001b3);
+    }
+    h
+}
+// LuaArguments::get table case (IDA 0x26b99e..0x26be72) as a pure value
+// conversion: slots already hold variants, so rawgeti/lua_next element reads
+// are the identity modulo recursion. objlen >= 1 takes the array path
+// (0x26b9a2); an empty array with pairs takes the dict path (lua_next loop at
+// 0x26bcee); a fully empty table becomes an empty vector (0x26be48).
+fn table_variant(t: &LuaTable) -> BridgeVal {
+    if !t.array.is_empty() {
+        BridgeVal::Array(t.array.iter().map(variant_of).collect())
+    } else if t.map.is_empty() {
+        BridgeVal::Array(Vec::new())
+    } else {
+        BridgeVal::Dict(t.map.iter().map(|(k, v)| (k.clone(), variant_of(v))).collect())
+    }
+}
+fn variant_of(v: &BridgeVal) -> BridgeVal {
+    match v {
+        // Nested nil under allow_nil=false stays void-typed (IDA 0x26b9e8
+        // passes 0; the pre-sized vector element keeps its void type).
+        BridgeVal::Nil | BridgeVal::Void => BridgeVal::Void,
+        BridgeVal::Table(t) => table_variant(t),
+        BridgeVal::Array(a) => BridgeVal::Array(a.iter().map(variant_of).collect()),
+        BridgeVal::Dict(m) => {
+            BridgeVal::Dict(m.iter().map(|(k, x)| (k.clone(), variant_of(x))).collect())
+        }
+        BridgeVal::Tuple(t) => BridgeVal::Array(t.iter().map(variant_of).collect()),
+        other => other.clone(),
+    }
+}
+// ArgumentPusher Tuple walk shared by withVariantValue (IDA 0x26d548) and the
+// Tuple pusher itself (IDA 0x26df2c): per-element withVariantValue, counts
+// summed (0x26df4c..0x26df56).
+fn push_tuple_elems(l: &mut BridgeState, elems: &[BridgeVal]) -> i32 {
+    let mut n = 0;
+    for e in elems {
+        n += stub_0x26d0ec(e, l);
+    }
+    n
+}
+// Ordered/unordered string-map pusher shared by 0x26dddc (rb_tree walk, IDA
+// 0x26ddf4..0x26de88) and 0x26dea0 (bucket walk, 0x26dec8..0x26def6):
+// createtable(0, size), then per entry pushlstring + withVariantValue +
+// settable (0x26de5e..0x26de7a). MODEL: one walk over the pair list; in-model
+// keys are always byte strings so the empty-key assert is debug-only.
+fn push_string_map(l: &mut BridgeState, pairs: &[(Vec<u8>, BridgeVal)]) -> i32 {
+    let mut t = LuaTable::default();
+    for (k, v) in pairs {
+        debug_assert!(!k.is_empty(), "!_First->first.empty()");
+        stub_0x26d0ec(v, l);
+        // settable pops the pushed value; mirror it off the model stack.
+        let pv = l.stack.pop().expect("pusher left one value");
+        t.map.push((k.clone(), pv));
+    }
+    l.push_table(t);
+    1
 }
 
 // Lua 5.1 string→number coercion (lua_tonumber → strtod with a full-string
@@ -2970,13 +3657,360 @@ mod launcher_getvalue_batch_tests {
     }
     #[test]
     fn enum_item_getvalue_copies_the_item_word() {
-        let l = state(vec![BridgeVal::EnumItem(EnumItemPtr(0x1a2b3c))]);
-        let mut o = EnumItemPtr(0);
+        let item = EnumItemPtr::new(0x1a2b3c, 7, 0x51);
+        let l = state(vec![BridgeVal::EnumItem(item)]);
+        let mut o = EnumItemPtr::new(0, 0, 0);
         assert!(stub_0x270008(&l, 1, &mut o));
-        assert_eq!(o, EnumItemPtr(0x1a2b3c));
+        assert_eq!(o, item);
         let other = state(vec![BridgeVal::Num(2.0)]);
-        let mut o = EnumItemPtr(0);
+        let mut o = EnumItemPtr::new(0, 0, 0);
         assert!(!stub_0x270008(&other, 1, &mut o));
-        assert_eq!(o, EnumItemPtr(0));
+        assert_eq!(o, EnumItemPtr::new(0, 0, 0));
+    }
+}
+
+#[cfg(test)]
+mod lua_arguments_bridge_tests {
+    use super::*;
+    fn state(vals: Vec<BridgeVal>) -> BridgeState {
+        let mut l = BridgeState::new();
+        for v in vals {
+            l.stack.push(v);
+        }
+        l
+    }
+    fn args(base: i32, vals: Vec<BridgeVal>) -> LuaArguments {
+        LuaArguments { base, l: state(vals) }
+    }
+    // ── Described<StarterScript> / Described<CoreScript> ────────────────────
+    #[test]
+    fn starter_script_ctor_is_a_marker() {
+        let s = stub_0x26a6c0(b"rbxasset://script.lua");
+        let _ = format!("{s:?}");
+    }
+    #[test]
+    fn starter_script_class_descriptor_names_parent() {
+        let d = stub_0x26aa88();
+        assert_eq!((d.name, d.parent), ("StarterScript", "CoreScript"));
+        assert!(std::ptr::eq(d, stub_0x26aa88()));
+    }
+    #[test]
+    fn starter_script_thn36_pair_are_drop_markers() {
+        stub_0x26acf4(&mut StarterScriptCore);
+        stub_0x26acfc(Box::new(StarterScriptCore));
+    }
+    #[test]
+    fn core_script_dtors_are_drop_markers() {
+        stub_0x26aff8(&mut CoreScriptCore);
+        stub_0x26b09c(&mut CoreScriptCore);
+        stub_0x26b148(&mut CoreScriptCore);
+        stub_0x26affc(Box::new(CoreScriptCore));
+        stub_0x26b0a4(Box::new(CoreScriptCore));
+        stub_0x26b150(Box::new(CoreScriptCore));
+    }
+    // ── getObject ──────────────────────────────────────────────────────────
+    #[test]
+    fn get_object_reads_instance_nil_and_miss() {
+        let a = args(0, vec![BridgeVal::Instance(9)]);
+        let mut o = None;
+        assert!(stub_0x26b55c(&a, 1, &mut o));
+        assert_eq!(o, Some(9));
+        let a = args(0, vec![BridgeVal::Nil]);
+        let mut o = Some(1);
+        assert!(stub_0x26b55c(&a, 1, &mut o));
+        assert_eq!(o, None);
+        let a = args(0, vec![BridgeVal::Num(1.0)]);
+        let mut o = None;
+        assert!(!stub_0x26b55c(&a, 1, &mut o));
+        assert_eq!(o, None);
+        // Past gettop fails without touching out.
+        let a = args(0, vec![BridgeVal::Instance(9)]);
+        let mut o = Some(3);
+        assert!(!stub_0x26b55c(&a, 2, &mut o));
+        assert_eq!(o, Some(3));
+        // Base offset applies.
+        let a = args(1, vec![BridgeVal::Nil, BridgeVal::Instance(5)]);
+        let mut o = None;
+        assert!(stub_0x26b55c(&a, 1, &mut o));
+        assert_eq!(o, Some(5));
+    }
+    // ── getEnum ────────────────────────────────────────────────────────────
+    #[test]
+    fn get_enum_number_hits_and_misses() {
+        let desc = EnumDesc { type_tag: 0x51, values: vec![0, 1, 2] };
+        let a = args(0, vec![BridgeVal::Num(1.7)]);
+        let mut o = -1;
+        assert!(stub_0x26b6e4(&a, 1, &desc, &mut o));
+        assert_eq!(o, 1);
+        let a = args(0, vec![BridgeVal::Num(9.0)]);
+        let mut o = -1;
+        assert!(!stub_0x26b6e4(&a, 1, &desc, &mut o));
+        assert_eq!(o, 9);
+    }
+    #[test]
+    fn get_enum_item_checks_type_then_copies_value() {
+        let desc = EnumDesc { type_tag: 0x51, values: vec![7] };
+        let a = args(0, vec![BridgeVal::EnumItem(EnumItemPtr::new(0xaaa, 7, 0x51))]);
+        let mut o = -1;
+        assert!(stub_0x26b6e4(&a, 1, &desc, &mut o));
+        assert_eq!(o, 7);
+        let other = EnumDesc { type_tag: 0x52, values: vec![7] };
+        let mut o = -1;
+        assert!(!stub_0x26b6e4(&a, 1, &other, &mut o));
+        assert_eq!(o, -1);
+        let a = args(0, vec![BridgeVal::Str(b"x".to_vec())]);
+        let mut o = -1;
+        assert!(!stub_0x26b6e4(&a, 1, &desc, &mut o));
+    }
+    // ── get ────────────────────────────────────────────────────────────────
+    #[test]
+    fn get_scalars_and_strict_nil() {
+        let l = state(vec![
+            BridgeVal::Nil,
+            BridgeVal::Bool(true),
+            BridgeVal::Num(2.5),
+            BridgeVal::Str(b"hi".to_vec()),
+        ]);
+        let mut o = BridgeVal::Nil;
+        assert!(!stub_0x26b788(&l, 1, &mut o, false));
+        assert_eq!(o, BridgeVal::Nil);
+        assert!(stub_0x26b788(&l, 1, &mut o, true));
+        assert_eq!(o, BridgeVal::Void);
+        assert!(stub_0x26b788(&l, 2, &mut o, false));
+        assert_eq!(o, BridgeVal::Bool(true));
+        assert!(stub_0x26b788(&l, 3, &mut o, false));
+        assert_eq!(o, BridgeVal::Num(2.5));
+        assert!(stub_0x26b788(&l, 4, &mut o, false));
+        assert_eq!(o, BridgeVal::Str(b"hi".to_vec()));
+        // Out of range fails without touching out.
+        assert!(!stub_0x26b788(&l, 5, &mut o, true));
+        assert_eq!(o, BridgeVal::Str(b"hi".to_vec()));
+    }
+    #[test]
+    fn get_tables_become_array_dict_or_empty_vector() {
+        let arr = LuaTable { array: vec![BridgeVal::Num(1.0), BridgeVal::Bool(false)], ..Default::default() };
+        let l = state(vec![BridgeVal::Table(arr)]);
+        let mut o = BridgeVal::Nil;
+        assert!(stub_0x26b788(&l, 1, &mut o, false));
+        assert_eq!(o, BridgeVal::Array(vec![BridgeVal::Num(1.0), BridgeVal::Bool(false)]));
+        // Nested nil becomes void (recursive allow_nil=false).
+        let arr = LuaTable { array: vec![BridgeVal::Nil], ..Default::default() };
+        let l = state(vec![BridgeVal::Table(arr)]);
+        assert!(stub_0x26b788(&l, 1, &mut o, false));
+        assert_eq!(o, BridgeVal::Array(vec![BridgeVal::Void]));
+        let dict = LuaTable {
+            map: vec![(b"k".to_vec(), BridgeVal::Num(3.0))],
+            ..Default::default()
+        };
+        let l = state(vec![BridgeVal::Table(dict)]);
+        assert!(stub_0x26b788(&l, 1, &mut o, false));
+        assert_eq!(
+            o,
+            BridgeVal::Dict(vec![(b"k".to_vec(), BridgeVal::Num(3.0))])
+        );
+        let l = state(vec![BridgeVal::Table(LuaTable::default())]);
+        assert!(stub_0x26b788(&l, 1, &mut o, false));
+        assert_eq!(o, BridgeVal::Array(Vec::new()));
+    }
+    #[test]
+    fn get_functions_become_weak_refs() {
+        let l = state(vec![BridgeVal::YieldFunc(11), BridgeVal::Closure("lerpVector2")]);
+        let mut o = BridgeVal::Nil;
+        assert!(stub_0x26b788(&l, 1, &mut o, false));
+        assert_eq!(o, BridgeVal::WeakFunc(11));
+        assert!(stub_0x26b788(&l, 2, &mut o, false));
+        match o {
+            BridgeVal::WeakFunc(_) => {}
+            ref v => panic!("expected WeakFunc, got {v:?}"),
+        }
+    }
+    #[test]
+    fn get_userdata_walks_the_bridge_chain() {
+        let v3 = Vector3 { x: 1.0, y: 2.0, z: 3.0 };
+        let item = EnumItemPtr::new(0xbbb, 4, 0x51);
+        let l = state(vec![
+            BridgeVal::Vec3(v3),
+            BridgeVal::Instance(6),
+            BridgeVal::EnumItem(item),
+            BridgeVal::Brick(BrickColor(21)),
+        ]);
+        let mut o = BridgeVal::Nil;
+        assert!(stub_0x26b788(&l, 1, &mut o, false));
+        assert_eq!(o, BridgeVal::Vec3(v3));
+        assert!(stub_0x26b788(&l, 2, &mut o, false));
+        assert_eq!(o, BridgeVal::Instance(6));
+        assert!(stub_0x26b788(&l, 3, &mut o, false));
+        assert_eq!(o, BridgeVal::EnumItem(item));
+        assert!(stub_0x26b788(&l, 4, &mut o, false));
+        assert_eq!(o, BridgeVal::Brick(BrickColor(21)));
+    }
+    #[test]
+    fn get_variant_adds_base_and_allows_nil() {
+        let a = args(1, vec![BridgeVal::Nil, BridgeVal::Num(1.0)]);
+        let mut o = BridgeVal::Bool(false);
+        assert!(stub_0x26dc38(&a, 1, &mut o));
+        assert_eq!(o, BridgeVal::Num(1.0));
+        let a = args(0, vec![BridgeVal::Nil]);
+        assert!(stub_0x26dc38(&a, 1, &mut o));
+        assert_eq!(o, BridgeVal::Void);
+    }
+    // ── SharedPtrBridge getPtr ─────────────────────────────────────────────
+    #[test]
+    fn shared_ptr_bridge_nil_and_tag_paths() {
+        let l = state(vec![BridgeVal::Nil, BridgeVal::Instance(4), BridgeVal::Num(1.0)]);
+        let mut o = Some(8);
+        assert!(stub_0x26c38c(&l, 1, &mut o));
+        assert_eq!(o, None);
+        assert!(stub_0x26c38c(&l, 2, &mut o));
+        assert_eq!(o, Some(4));
+        assert!(!stub_0x26c38c(&l, 3, &mut o));
+        let mut v = BridgeVal::Nil;
+        assert!(stub_0x26c830(&l, 1, &mut v));
+        assert_eq!(v, BridgeVal::Instance(0));
+        assert!(stub_0x26c830(&l, 2, &mut v));
+        assert_eq!(v, BridgeVal::Instance(4));
+        assert!(!stub_0x26c830(&l, 3, &mut v));
+    }
+    // ── Bridge<Instance> getValue ──────────────────────────────────────────
+    #[test]
+    fn instance_getvalue_copies_on_match() {
+        let l = state(vec![BridgeVal::Instance(12)]);
+        let mut v = BridgeVal::Nil;
+        assert!(stub_0x26fa78(&l, 1, &mut v));
+        assert_eq!(v, BridgeVal::Instance(12));
+        let mut o = None;
+        assert!(stub_0x26ff94(&l, 1, &mut o));
+        assert_eq!(o, Some(12));
+        let other = state(vec![BridgeVal::Num(0.0)]);
+        let mut v = BridgeVal::Nil;
+        assert!(!stub_0x26fa78(&other, 1, &mut v));
+        let mut o = Some(1);
+        assert!(!stub_0x26ff94(&other, 1, &mut o));
+        assert_eq!(o, Some(1));
+    }
+    // ── withVariantValue / push ────────────────────────────────────────────
+    #[test]
+    fn push_round_trips_scalars_and_values() {
+        let cases = vec![
+            BridgeVal::Bool(true),
+            BridgeVal::Num(-3.25),
+            BridgeVal::Str(b"ab".to_vec()),
+            BridgeVal::Instance(2),
+            BridgeVal::EnumItem(EnumItemPtr::new(1, 2, 3)),
+            BridgeVal::WeakFunc(5),
+            BridgeVal::YieldFunc(6),
+            BridgeVal::AsyncFunc(7),
+            BridgeVal::Vec3(Vector3 { x: 1.0, y: 0.0, z: 0.0 }),
+            BridgeVal::Vec2(Vector2 { x: 1.0, y: 2.0 }),
+            BridgeVal::Brick(BrickColor(21)),
+            BridgeVal::Faces(Faces(7)),
+            BridgeVal::Cell(CellID { x: 1, y: 2, z: 3, w: 4 }),
+            BridgeVal::Input(InputObject(9)),
+        ];
+        for v in cases {
+            let mut l = BridgeState::new();
+            assert_eq!(stub_0x26c138(&v, &mut l), 1);
+            assert_eq!(l.stack.len(), 1);
+            // get() reads the pushed slot back. Function slots come back as
+            // WeakFunc: lua_pushfunction results are re-read via
+            // lua_tofunction (IDA 0x26ba70), which mints a WeakFunctionRef.
+            let want = match v {
+                BridgeVal::YieldFunc(id) | BridgeVal::AsyncFunc(id) | BridgeVal::WeakFunc(id) => {
+                    BridgeVal::WeakFunc(id)
+                }
+                v => v,
+            };
+            let mut o = BridgeVal::Nil;
+            assert!(stub_0x26b788(&l, 1, &mut o, true));
+            assert_eq!(o, want);
+        }
+        let mut l = BridgeState::new();
+        assert_eq!(stub_0x26c138(&BridgeVal::Void, &mut l), 0);
+        // Closure/Table have no withVariantValue arm: the original hits the
+        // terminal ReleaseAssert there, so in-model they debug-panic rather
+        // than returning 0 (covered by inspection, not runnable here).
+    }
+    #[test]
+    fn push_containers_build_tables() {
+        let mut l = BridgeState::new();
+        let elems = vec![BridgeVal::Num(1.0), BridgeVal::Num(2.0)];
+        assert_eq!(stub_0x26ddb4(&mut l, Some(&elems)), 1);
+        assert_eq!(
+            l.stack[0],
+            BridgeVal::Table(LuaTable {
+                array: vec![BridgeVal::Num(1.0), BridgeVal::Num(2.0)],
+                ..Default::default()
+            })
+        );
+        let mut l = BridgeState::new();
+        assert_eq!(stub_0x26ddb4(&mut l, None), 1);
+        assert_eq!(l.stack[0], BridgeVal::Table(LuaTable::default()));
+        let pairs = vec![(b"a".to_vec(), BridgeVal::Bool(true))];
+        let mut l = BridgeState::new();
+        assert_eq!(stub_0x26dddc(&mut l, Some(&pairs)), 1);
+        assert_eq!(
+            l.stack[0],
+            BridgeVal::Table(LuaTable { map: pairs.clone(), ..Default::default() })
+        );
+        let mut l = BridgeState::new();
+        assert_eq!(stub_0x26dea0(&mut l, Some(&pairs)), 1);
+        assert_eq!(
+            l.stack[0],
+            BridgeVal::Table(LuaTable { map: pairs, ..Default::default() })
+        );
+        let mut l = BridgeState::new();
+        assert_eq!(stub_0x26dddc(&mut l, None), 1);
+        assert_eq!(l.stack[0], BridgeVal::Table(LuaTable::default()));
+    }
+    #[test]
+    fn tuple_pusher_counts_pushes() {
+        let mut l = BridgeState::new();
+        let elems = vec![BridgeVal::Num(1.0), BridgeVal::Bool(true)];
+        assert_eq!(stub_0x26df2c(&mut l, Some(&elems)), 2);
+        assert_eq!(l.stack, vec![BridgeVal::Num(1.0), BridgeVal::Bool(true)]);
+        let mut l = BridgeState::new();
+        assert_eq!(stub_0x26df2c(&mut l, None), 0);
+        assert!(l.stack.is_empty());
+        // withVariantValue over a Tuple flattens with the same count.
+        let mut l = BridgeState::new();
+        assert_eq!(stub_0x26d0ec(&BridgeVal::Tuple(elems), &mut l), 2);
+        assert_eq!(l.stack.len(), 2);
+    }
+    #[test]
+    fn function_and_cell_pushers() {
+        let mut l = BridgeState::new();
+        assert_eq!(stub_0x26df60(&mut l, 3), 1);
+        assert_eq!(l.stack[0], BridgeVal::YieldFunc(3));
+        assert_eq!(stub_0x26e030(&mut l, 4), 1);
+        assert_eq!(l.stack[1], BridgeVal::AsyncFunc(4));
+        let cell = CellID { x: 1, y: 2, z: 3, w: 4 };
+        assert_eq!(stub_0x26e100(&mut l, &cell), 1);
+        assert_eq!(l.stack[2], BridgeVal::Cell(cell));
+    }
+    #[test]
+    fn any_cast_accepts_only_async() {
+        assert_eq!(stub_0x26eb44(&BridgeVal::AsyncFunc(13)), 13);
+    }
+    #[test]
+    #[should_panic(expected = "bad_placement_any_cast")]
+    fn any_cast_rejects_other_payloads() {
+        let _ = stub_0x26eb44(&BridgeVal::YieldFunc(13));
+    }
+    #[test]
+    fn push_array_materializes_indexed_table() {
+        let mut l = BridgeState::new();
+        let elems = vec![BridgeVal::Str(b"x".to_vec())];
+        assert_eq!(stub_0x26f1d4(&mut l, &elems), 1);
+        assert_eq!(
+            l.stack[0],
+            BridgeVal::Table(LuaTable {
+                array: vec![BridgeVal::Str(b"x".to_vec())],
+                ..Default::default()
+            })
+        );
+        // Array round-trips through get back to an Array variant.
+        let mut o = BridgeVal::Nil;
+        assert!(stub_0x26b788(&l, 1, &mut o, false));
+        assert_eq!(o, BridgeVal::Array(elems));
     }
 }
