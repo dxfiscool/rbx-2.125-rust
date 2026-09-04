@@ -3,21 +3,90 @@
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 120 stubs | range 0x70086c..0xa2fd44 | total filtered 10215, remaining 7755 after batch
 // SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias
+// Batch 2 (0x70086c..0x7029f4): 24 ports grounded on IDA decompile+disasm.
+// 0x700acc/0x700bf8 (ancestor-chain signallers), 0x701470 (luaClone),
+// 0x701600/0x701a24 (ctors) remain stubs: bodies unrecovered.
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::generated_05::{
+    ATTR_CLASS, TAG_ITEM, CombinedEvent, CreatorRole, Instance, InstanceHooks, InstanceName,
+    InstanceWrite, PropertyDescriptor, XmlAttr, XmlElement, borrow_shared, stub_0x704228,
+};
+use crate::generated_86::stub_6ffc98;
+
+/// Rust model of `RBX::AncestorChanged` (IDA `0x700d28`): the decompile
+/// retains `*a2` as the child (`shared_from`, `0x700dd6`) and `a2[2]` as the
+/// other end (`0x700de2`).
+/// // BUG: member roles beyond "child + scope pair" are inferred; the
+/// // original layout is wider than these two words.
+pub struct AncestorChanged {
+    pub child: Option<SharedPtr<Instance>>,
+    pub scope: Option<SharedPtr<Instance>>,
+}
+/// Combined-signal kind for property changes (IDA `0x7029cc` passes `2`).
+pub const COMBINED_PROPERTY_CHANGED: u32 = 2;
+/// Combined-signal kind for ancestry changes (IDA `0x700e18` passes `5`).
+pub const COMBINED_ANCESTRY_CHANGED: u32 = 5;
+/// `RBX::Instance::propArchivable` descriptor identity (IDA `0x702a20`).
+pub static PROP_ARCHIVABLE: PropertyDescriptor = PropertyDescriptor { name: "Archivable" };
+/// `RBX::Instance::desc_Name` descriptor identity (IDA `0x70286a`).
+pub static PROP_NAME: PropertyDescriptor = PropertyDescriptor { name: "Name" };
+/// `FFlag::NoThrowOnReparenting` (IDA `0x702614` reads it in
+/// `setAndLockParent`): default `false`, so failures throw.
+/// Mirrors the private `NO_THROW_ON_REPARENTING` in `generated_86`.
+const NO_THROW_ON_REPARENTING: bool = false;
+/// `FFlag::FastClone` (IDA `0x70129e` in `clone`): unmodeled here, so `clone`
+/// always takes the deep-copy (`Cloner`-equivalent) path.
+/// // BUG: when the flag is set the original runs `RBX::Cloner`, whose
+/// // referent/property fixups are not reproduced.
+const FAST_CLONE: bool = false;
+/// Name-length gate in `setName` (IDA `0x7027de` compares the rep length
+/// against `0x65`, truncating via `substr` above it).
+/// // BUG: the exact truncation bound is unconfirmed from the recovered
+/// // body; over-long names are cut to 100 chars here.
+const MAX_NAME_LEN: usize = 100;
 
 // 0x70086c — __ZNK3RBX8Instance11getFullNameEv
 #[doc(alias = "RBX::Instance::getFullName(void)const")]
-pub fn stub_70086c() -> ! {
-    todo!("0x70086c RBX::Instance::getFullName(void)const")
+pub fn stub_0x70086c(this: *const Instance) -> String {
+    // IDA 0x70086c: when the instance is rooted under a `ServiceProvider`
+    // (class-descriptor `isA` gate, 0x7008e0-0x700908), the result is
+    // `parent.getFullName() + "." + name` (0x70090a-0x700940); otherwise it
+    // is just `name` (0x7008f4, `*(a2 + 68) + 24` is the name string).
+    // The `ServiceProvider` class-descriptor check collapses into
+    // parent-presence: a detached instance has no dotted prefix.
+    // // BUG: recursion depth equals ancestry depth; the original builds the
+    // // string iteratively.
+    // SAFETY: `this` must point to a valid `Instance` whose ancestry
+    // outlives the call.
+    unsafe {
+        let parent = (*this).parent;
+        if parent.is_null() {
+            (*this).name.text.clone()
+        } else {
+            format!("{}.{}", stub_0x70086c(parent), (*this).name.text)
+        }
+    }
 }
 
 // 0x700ab8 — __ZNK3RBX8Instance8containsEPKS0_
 #[doc(alias = "RBX::Instance::contains(RBX::Instance const*)const")]
-pub fn stub_700ab8() -> ! {
-    todo!("0x700ab8 RBX::Instance::contains(RBX::Instance const*)const")
+pub fn stub_0x700ab8(this: *const Instance, other: *const Instance) -> bool {
+    // IDA 0x700ab8, disasm `LDR R1,[R1,#0x34]` (0x700aba): walk `other`'s
+    // parent chain (`+13` words); true iff `this` is met, false on null.
+    // SAFETY: both must be null or point into valid `Instance` trees.
+    unsafe {
+        let mut cursor = other;
+        while !cursor.is_null() {
+            if cursor == this {
+                return true;
+            }
+            cursor = (*cursor).parent;
+        }
+        false
+    }
 }
 
 // 0x700acc — __ZN3RBX8Instance24signalDescendantRemovingERKN5boost10shared_ptrIS0_EEPS0_S6_
@@ -35,58 +104,219 @@ pub fn stub_700bf8() -> ! {
 
 // 0x700d28 — __ZN3RBX8Instance17onAncestorChangedERKNS_15AncestorChangedE
 #[doc(alias = "RBX::Instance::onAncestorChanged(RBX::AncestorChanged const&)")]
-pub fn stub_700d28() -> ! {
-    todo!("0x700d28 RBX::Instance::onAncestorChanged(RBX::AncestorChanged const&)")
+pub fn stub_0x700d28(this: *mut Instance, ev: *const AncestorChanged) {
+    // IDA 0x700d28: observer vector at `+56` (word `+14`, vtable slot `+88`
+    // per entry, 0x700d8c-0x700dae) is unmodeled (see BUG below). When the
+    // combined signal at `+80` (word `+20`) is live, retain `*a2` (child,
+    // 0x700dd6) and `a2[2]` (scope, 0x700de2) and fire kind `5` (0x700e18);
+    // when the 2-arg signal at `+84` (word `+21`) is live, fire it with the
+    // same pair (0x700e74). Empty `Signal`s are no-ops, so liveness checks
+    // collapse into `fire`; retains are clones.
+    // // BUG: the `+56` observer-vector walk has no model and is skipped.
+    // SAFETY: `this` must point to a valid `Instance`; `ev` must be null or
+    // point to a valid `AncestorChanged` whose members stay alive.
+    unsafe {
+        if ev.is_null() {
+            return;
+        }
+        let (Some(child), Some(scope)) = ((*ev).child.clone(), (*ev).scope.clone()) else {
+            return;
+        };
+        (*this).combined.slots.fire(CombinedEvent {
+            kind: COMBINED_ANCESTRY_CHANGED,
+            child: child.clone(),
+        });
+        (*this).ancestry_changed.fire((child, scope));
+    }
 }
 
 // 0x700fcc — __ZN3RBX8Instance17onDescendantAddedEPS0_
 #[doc(alias = "RBX::Instance::onDescendantAdded(RBX::Instance*)")]
-pub fn stub_700fcc() -> ! {
-    todo!("0x700fcc RBX::Instance::onDescendantAdded(RBX::Instance*)")
+pub fn stub_0x700fcc(this: *mut Instance, child: *const Instance) {
+    // IDA 0x700fcc: if the on-demand block exists (`*(this + 19)`, 0x700ff8),
+    // fire `onDemandWrite(this) + 12` (descendant-added) with
+    // `shared_from(child)` (0x701030-0x70103e); the retain/release pair is a
+    // clone/drop via `borrow_shared`.
+    // SAFETY: `this` must point to a valid `Instance`; `child` must be null
+    // or point to a shared `Instance` that outlives the fire.
+    unsafe {
+        if (*this).write.is_some() && !child.is_null() {
+            let block = stub_0x7010ac(this);
+            (*block).descendant_added.fire(borrow_shared(child));
+        }
+    }
 }
 
 // 0x7010a8 — __ZNK3RBX8Instance12onDemandReadEv
 #[doc(alias = "RBX::Instance::onDemandRead(void)const")]
-pub fn stub_7010a8() -> ! {
-    todo!("0x7010a8 RBX::Instance::onDemandRead(void)const")
+pub fn stub_0x7010a8(this: *const Instance) -> *const InstanceWrite {
+    // IDA 0x7010a8, disasm `LDR R0,[R0,#0x4C]; BX LR`: return the on-demand
+    // block word (`+19`); null when never allocated.
+    // SAFETY: `this` must point to a valid `Instance` outliving the result.
+    unsafe {
+        match (*this).write.as_deref() {
+            Some(block) => block as *const InstanceWrite,
+            None => core::ptr::null(),
+        }
+    }
 }
 
 // 0x7010ac — __ZN3RBX8Instance13onDemandWriteEv
 #[doc(alias = "RBX::Instance::onDemandWrite(void)")]
-pub fn stub_7010ac() -> ! {
-    todo!("0x7010ac RBX::Instance::onDemandWrite(void)")
+pub fn stub_0x7010ac(this: *mut Instance) -> *mut InstanceWrite {
+    // IDA 0x7010ac: return `*(this + 19)` (0x7010b2); when null, build it
+    // through vtable slot `+12` (0x7010b8-0x7010be), store it (0x7010c2),
+    // delete the loser on a race (0x7010c4-0x7010ce), then `ReleaseAssert`
+    // non-null via `FLog::Asserts` (0x7010dc). The vtable factory
+    // collapses into default allocation (which cannot fail, so the assert
+    // path is unreachable); single-threaded use collapses the race delete.
+    // SAFETY: `this` must point to a valid `Instance` outliving the result.
+    unsafe {
+        let inst = &mut *this;
+        if inst.write.is_none() {
+            inst.write = Some(Box::default());
+        }
+        inst.write.as_deref_mut().unwrap() as *mut InstanceWrite
+    }
 }
 
 // 0x70112c — __ZN3RBX8Instance20onDescendantRemovingERKN5boost10shared_ptrIS0_EE
 #[doc(alias = "RBX::Instance::onDescendantRemoving(rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: RBX::Instance::onDescendantRemoving(boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_70112c() -> ! {
-    todo!("0x70112c RBX::Instance::onDescendantRemoving(rbx_core::SharedPtr<RBX::Instance> const&)")
+pub fn stub_0x70112c(this: *mut Instance, child: &SharedPtr<Instance>) {
+    // IDA 0x70112c, disasm `B.W descendantRemovingSignal$shim`: thunk to
+    // `descendantRemovingSignal` — if `*(this + 19)` is set, fire
+    // `onDemandWrite(this) + 16` with a clone (see `stub_0x704228`).
+    // SAFETY: `this` must point to a valid `Instance`.
+    unsafe {
+        stub_0x704228(this, child);
+    }
 }
 
 // 0x701130 — __ZN3RBX8Instance12toNewXmlRootEPS0_NS_11CreatorRoleE
 #[doc(alias = "RBX::Instance::toNewXmlRoot(RBX::Instance*,RBX::CreatorRole)")]
-pub fn stub_701130() -> ! {
-    todo!("0x701130 RBX::Instance::toNewXmlRoot(RBX::Instance*,RBX::CreatorRole)")
+pub fn stub_0x701130(this: *const Instance, _role: CreatorRole) -> XmlElement {
+    // IDA 0x701130: build a `bool(Instance*)` filter binding `isInScope`
+    // (0x701180-0x701186) and call the `SerializerV2` virtual at slot `+48`
+    // (0x70116c-0x7011b0), returning the written root element.
+    // `SerializerV2` is unmodeled here, so the virtual dispatch collapses
+    // into the root `Item` element; `isInScope` (0x701228) stays the
+    // documented filter predicate for the future serializer port.
+    // // BUG: subtree serialization is missing — children do not become
+    // // nested `Item` elements yet.
+    // SAFETY: `this` must point to a valid `Instance`.
+    unsafe {
+        XmlElement {
+            tag: TAG_ITEM.to_string(),
+            attrs: vec![
+                XmlAttr { name: ATTR_CLASS.to_string(), value: (*this).class_name.to_string() },
+                XmlAttr { name: PROP_NAME.name.to_string(), value: (*this).name.text.clone() },
+            ],
+            children: Vec::new(),
+        }
+    }
 }
 
 // 0x701228 — __ZN3RBXL9isInScopeEPNS_8InstanceES1_
 #[doc(alias = "RBX::isInScope(RBX::Instance *,RBX::Instance *)")]
-pub fn stub_701228() -> ! {
-    todo!("0x701228 RBX::isInScope(RBX::Instance *,RBX::Instance *)")
+pub fn stub_0x701228(scope: *const Instance, node: *const Instance) -> bool {
+    // IDA 0x701228, disasm: `R2 = 1`; if `scope == node` done (0x70122a);
+    // else walk `node`'s parents (`[R1,#0x34]`, 0x701234) for `scope`,
+    // hitting null fails (0x70122e-0x70123a).
+    // SAFETY: both must be null or point into valid `Instance` trees.
+    unsafe {
+        if scope == node {
+            return true;
+        }
+        let mut cursor = node;
+        while !cursor.is_null() {
+            cursor = (*cursor).parent;
+            if cursor == scope {
+                return true;
+            }
+        }
+        false
+    }
 }
 
 // 0x701240 — __ZN3RBX8Instance5cloneENS_11CreatorRoleE
 #[doc(alias = "RBX::Instance::clone(RBX::CreatorRole)")]
-pub fn stub_701240() -> ! {
-    todo!("0x701240 RBX::Instance::clone(RBX::CreatorRole)")
+pub fn stub_0x701240(this: *const Instance, _role: CreatorRole) -> Option<SharedPtr<Instance>> {
+    // IDA 0x701240: under `FFlag::FastClone` (0x70129e) run `RBX::Cloner`
+    // (0x7012aa); otherwise `toNewXmlRoot` + `loadInstancesFromMemory`
+    // (0x7012f2-0x70130c) and return the first loaded instance, or null
+    // when the loaded vector is empty (0x701318-0x701338). `FAST_CLONE` is
+    // false here, and the XML round trip collapses into a direct deep copy:
+    // name, class, flags, hooks plus recursively cloned children; the copy
+    // is detached (null parent), like a freshly deserialized root.
+    // // BUG: `Cloner` referent fixups and per-property serialization are
+    // // not reproduced; property values beyond name/class/flags are lost.
+    // SAFETY: `this` must point to a valid `Instance` subtree outliving
+    // the call.
+    unsafe {
+        if this.is_null() || FAST_CLONE {
+            return None;
+        }
+        let src = &*this;
+        let mut children = Vec::with_capacity(src.children.len());
+        for child in src.children.iter() {
+            if let Some(copy) = stub_0x701240(SharedPtr::as_ptr(child), _role) {
+                children.push(copy);
+            }
+        }
+        // `InstanceHooks` is not `Clone`, but every slot is a `Copy` fn
+        // pointer, so the override table copies memberwise (a `Cloner`
+        // keeps the class behavior; signals and the on-demand block start
+        // empty, like freshly deserialized instances).
+        let h = &src.hooks;
+        let hooks = InstanceHooks {
+            changing: h.changing,
+            ancestry_changing: h.ancestry_changing,
+            child_added: h.child_added,
+            descendant_added: h.descendant_added,
+            added: h.added,
+            removing: h.removing,
+            child_removed: h.child_removed,
+            ancestry_changed: h.ancestry_changed,
+            property_changed: h.property_changed,
+            on_property_changed: h.on_property_changed,
+            on_child_changed: h.on_child_changed,
+            data_cost: h.data_cost,
+            read_node: h.read_node,
+            primitive_filter: h.primitive_filter,
+        };
+        Some(SharedPtr::new(Instance {
+            parent: core::ptr::null(),
+            name: InstanceName { text: src.name.text.clone() },
+            roblox_locked: src.roblox_locked,
+            parent_locked: src.parent_locked,
+            class_name: src.class_name,
+            children,
+            in_set_parent: false,
+            combined: Default::default(),
+            hooks,
+            write: None,
+            weak_owner: std::sync::Weak::new(),
+            archivable: src.archivable,
+            fw_cookie: src.fw_cookie,
+            ancestry_changed: Default::default(),
+            property_changed: Default::default(),
+            notify_child_changed: src.notify_child_changed,
+        }))
+    }
 }
 
 // 0x701468 — __ZN3RBX14countInstancesEN5boost10shared_ptrINS_8InstanceEEEPi
 #[doc(alias = "RBX::countInstances(rbx_core::SharedPtr<RBX::Instance>,int *)")]
 // was: RBX::countInstances(boost::shared_ptr<RBX::Instance>,int *)
-pub fn stub_701468() -> ! {
-    todo!("0x701468 RBX::countInstances(rbx_core::SharedPtr<RBX::Instance>,int *)")
+pub fn stub_0x701468(_inst: &SharedPtr<Instance>, counter: *mut i32) -> i32 {
+    // IDA 0x701468, disasm `LDR R0,[R1]; ADDS R0,#1; STR R0,[R1]; BX LR`:
+    // pre-increment `*counter` (the `visitDescendants` visitor) and return it.
+    // SAFETY: `counter` must point to a writable `i32` outliving the call.
+    unsafe {
+        *counter += 1;
+        *counter
+    }
 }
 
 // 0x701470 — __ZN3RBX8Instance8luaCloneEv
@@ -109,84 +339,241 @@ pub fn stub_701a24() -> ! {
 
 // 0x701ef4 — __ZNK3RBX8Instance2fwEv
 #[doc(alias = "RBX::Instance::fw(void)const")]
-pub fn stub_701ef4() -> ! {
-    todo!("0x701ef4 RBX::Instance::fw(void)const")
+pub fn stub_0x701ef4(this: *const Instance) -> *const () {
+    // IDA 0x701ef4, disasm `LDR R0,[R0,#0x44]; BX LR`: return the
+    // name-store holder word (`*(this + 17)`), whose `+21`/`+23`/`+24`
+    // members (locks, name) are modelled inline; the cookie's address is
+    // its stable identity. See `Instance::fw_cookie`.
+    // SAFETY: `this` must point to a valid `Instance` outliving the result.
+    unsafe { &(*this).fw_cookie as *const u32 as *const () }
 }
 
 // 0x701ef8 — __ZN3RBX8InstanceD0Ev
 #[doc(alias = "RBX::Instance::~Instance()")]
-pub fn stub_701ef8() -> ! {
-    todo!("0x701ef8 RBX::Instance::~Instance()")
+pub fn stub_0x701ef8(this: *mut Instance) {
+    // IDA 0x701ef8: `~Instance()` (0x701f48, i.e. D2) then `operator
+    // delete(this)` (0x701f4e). Dropping the box runs the field drops and
+    // frees the storage.
+    // SAFETY: `this` must come from a live `Box<Instance>` and never be
+    // used again.
+    unsafe {
+        stub_0x701fac(this);
+        drop(Box::from_raw(this));
+    }
 }
 
 // 0x701f98 — __ZN3RBX8InstanceD1Ev
 #[doc(alias = "RBX::Instance::~Instance()")]
-pub fn stub_701f98() -> ! {
-    todo!("0x701f98 RBX::Instance::~Instance()")
+pub fn stub_0x701f98(this: *mut Instance) {
+    // IDA 0x701f98, disasm `B.W __ZN3RBX8InstanceD2Ev`: D1 tail-jumps to D2
+    // (the `operator delete` lives only in D0).
+    // SAFETY: `this` must point to a valid `Instance`.
+    unsafe {
+        stub_0x701fac(this);
+    }
 }
 
 // 0x701f9c — __ZThn32_N3RBX8InstanceD0Ev
 #[doc(alias = "non-virtual thunk to RBX::Instance::~Instance()")]
 // was: non-virtual thunk to RBX::Instance::~Instance()
-pub fn stub_701f9c() -> ! {
-    todo!("0x701f9c non-virtual thunk to RBX::Instance::~Instance()")
+pub fn stub_0x701f9c(this: *mut Instance) {
+    // IDA 0x701f9c, disasm `SUBS R0,#0x20; B.W D0`: adjust `this - 32`
+    // (secondary-base to `Instance` base) then deleting destructor.
+    // SAFETY: `this` must point 32 bytes into a live `Box<Instance>`.
+    unsafe {
+        stub_0x701ef8((this as *mut u8).offset(-32) as *mut Instance);
+    }
 }
 
 // 0x701fa4 — __ZThn36_N3RBX8InstanceD0Ev
 #[doc(alias = "non-virtual thunk to RBX::Instance::~Instance()")]
 // was: non-virtual thunk to RBX::Instance::~Instance()
-pub fn stub_701fa4() -> ! {
-    todo!("0x701fa4 non-virtual thunk to RBX::Instance::~Instance()")
+pub fn stub_0x701fa4(this: *mut Instance) {
+    // IDA 0x701fa4, disasm `SUBS R0,#0x24; B.W D0`: adjust `this - 36`
+    // then deleting destructor.
+    // SAFETY: `this` must point 36 bytes into a live `Box<Instance>`.
+    unsafe {
+        stub_0x701ef8((this as *mut u8).offset(-36) as *mut Instance);
+    }
 }
 
 // 0x701fac — __ZN3RBX8InstanceD2Ev
 #[doc(alias = "RBX::Instance::~Instance()")]
-pub fn stub_701fac() -> ! {
-    todo!("0x701fac RBX::Instance::~Instance()")
+pub fn stub_0x701fac(this: *mut Instance) {
+    // IDA 0x701fac (D2): vtable resets (0x701fda-0x70200a,
+    // compiler-managed) and `ReleaseAssert(parent == NULL)`
+    // (Instance.cpp:846, 0x702014-0x702066); `FWLifetime` log (0x70208e);
+    // `disconnectAll` on the property (`+88`), 2-arg ancestry (`+84`) and
+    // combined (`+80`) signals (0x7020aa-0x7020fa); delete the on-demand
+    // block (`+19`, 0x702100); release the shared counts (`+18`, `+15`,
+    // 0x702110-0x702126) and the weak owner (`+11`, 0x70212c); `GuidItem`,
+    // `Diagnostics::Countable` and `Limits::Countable` teardown
+    // (0x702140-0x702162). Member drops (children vector, signals) and the
+    // `Arc`/`Weak` releases collapse into field drops at box free; the
+    // guid/diagnostics counters are unmodeled.
+    // // BUG: `GuidItem` registry unlink and the diagnostics/countable
+    // // counters have no model.
+    // SAFETY: `this` must point to a valid `Instance` with no parent.
+    unsafe {
+        debug_assert!(
+            (*this).parent.is_null(),
+            "0x701fac: parent == NULL (Instance.cpp:846)"
+        );
+        (*this).property_changed.disconnect_all();
+        (*this).ancestry_changed.disconnect_all();
+        (*this).combined.slots.disconnect_all();
+        drop((*this).write.take());
+        (*this).children.clear();
+    }
 }
 
 // 0x7023a8 — __ZThn32_N3RBX8InstanceD1Ev
 #[doc(alias = "non-virtual thunk to RBX::Instance::~Instance()")]
 // was: non-virtual thunk to RBX::Instance::~Instance()
-pub fn stub_7023a8() -> ! {
-    todo!("0x7023a8 non-virtual thunk to RBX::Instance::~Instance()")
+pub fn stub_0x7023a8(this: *mut Instance) {
+    // IDA 0x7023a8, disasm `SUBS R0,#0x20; B.W D2`: adjust `this - 32`
+    // then complete destructor.
+    // SAFETY: `this` must point 32 bytes into a valid `Instance`.
+    unsafe {
+        stub_0x701fac((this as *mut u8).offset(-32) as *mut Instance);
+    }
 }
 
 // 0x7023b0 — __ZThn36_N3RBX8InstanceD1Ev
 #[doc(alias = "non-virtual thunk to RBX::Instance::~Instance()")]
 // was: non-virtual thunk to RBX::Instance::~Instance()
-pub fn stub_7023b0() -> ! {
-    todo!("0x7023b0 non-virtual thunk to RBX::Instance::~Instance()")
+pub fn stub_0x7023b0(this: *mut Instance) {
+    // IDA 0x7023b0, disasm `SUBS R0,#0x24; B.W D2`: adjust `this - 36`
+    // then complete destructor.
+    // SAFETY: `this` must point 36 bytes into a valid `Instance`.
+    unsafe {
+        stub_0x701fac((this as *mut u8).offset(-36) as *mut Instance);
+    }
 }
 
 // 0x7023b8 — __ZN3RBX8Instance7destroyEv
 #[doc(alias = "RBX::Instance::destroy(void)")]
-pub fn stub_7023b8() -> ! {
-    todo!("0x7023b8 RBX::Instance::destroy(void)")
+pub fn stub_0x7023b8(this: *mut Instance) {
+    // IDA 0x7023b8: when the `Parent` property is locked (holder `+ 21`,
+    // 0x7023e8) while parented (`+13`, 0x70240a), throw `runtime_error`
+    // ("The Parent property of %s is locked", 0x702414-0x7025ae) —
+    // a panic here. Otherwise retain self via `shared_from` (0x702478,
+    // collapses into caller-held ownership), `setAndLockParent(this, 0)`
+    // (0x702492), `destroy()` over every child (bound `mf0` for_each,
+    // 0x70249a-0x7024aa), and an `EventDescriptor` event-source sweep
+    // (0x7024b8-0x7024c4, unmodeled, see BUG).
+    // // BUG: the `EventDescriptor`/`EventSource` sweep has no model.
+    // SAFETY: `this` must point to a valid, parent-locked-consistent
+    // `Instance` whose subtree outlives the call with caller-held
+    // ownership.
+    unsafe {
+        if (*this).parent_locked && !(*this).parent.is_null() {
+            panic!(
+                "The Parent property of {} is locked",
+                stub_0x70086c(this)
+            );
+        }
+        stub_0x7025bc(this, core::ptr::null());
+        for child in (*this).children.clone() {
+            stub_0x7023b8(SharedPtr::as_ptr(&child) as *mut Instance);
+        }
+    }
 }
 
 // 0x7025bc — __ZN3RBX8Instance16setAndLockParentEPS0_
 #[doc(alias = "RBX::Instance::setAndLockParent(RBX::Instance*)")]
-pub fn stub_7025bc() -> ! {
-    todo!("0x7025bc RBX::Instance::setAndLockParent(RBX::Instance*)")
+pub fn stub_0x7025bc(this: *mut Instance, new_parent: *const Instance) {
+    // IDA 0x7025bc: set the holder `+ 21` lock via `FWValue<bool>::set`
+    // (0x70261a-0x702638, inlined into `parent_locked`), then
+    // `setParentInternal(this, a2, 1)` (0x702644). Under
+    // `FFlag::NoThrowOnReparenting` (0x702614) a `false` return resets the
+    // lock (0x702654-0x70266c); otherwise failures throw out of
+    // `setParentInternal` itself.
+    // SAFETY: `this` must point to a valid `Instance`; both trees must
+    // outlive the call; `new_parent` must be null or valid.
+    unsafe {
+        (*this).parent_locked = true;
+        let ok = stub_6ffc98(this, new_parent, true);
+        if NO_THROW_ON_REPARENTING && !ok {
+            (*this).parent_locked = false;
+        }
+    }
 }
 
 // 0x702778 — __ZN3RBX8Instance7setNameERKSs
 #[doc(alias = "RBX::Instance::setName(std::string const&)")]
-pub fn stub_702778() -> ! {
-    todo!("0x702778 RBX::Instance::setName(std::string const&)")
+pub fn stub_0x702778(this: *mut Instance, new_name: &str) {
+    // IDA 0x702778: compare against the holder `+ 24` string (0x70279a);
+    // when different, `FWValue<string>::set` it (0x702854, truncating long
+    // inputs via `substr`, 0x7027de-0x7027f0) and
+    // `raisePropertyChanged(desc_Name)` (0x70286a).
+    // SAFETY: `this` must point to a valid `Instance` outliving the call.
+    unsafe {
+        if (*this).name.text != new_name {
+            let mut text = new_name.to_string();
+            if text.len() > MAX_NAME_LEN {
+                text.truncate(MAX_NAME_LEN);
+            }
+            (*this).name.text = text;
+            stub_0x7028ec(this, core::ptr::addr_of!(PROP_NAME));
+        }
+    }
 }
 
 // 0x7028ec — __ZN3RBX8Instance20raisePropertyChangedERKNS_10Reflection18PropertyDescriptorE
 #[doc(alias = "RBX::Instance::raisePropertyChanged(RBX::Reflection::PropertyDescriptor const&)")]
-pub fn stub_7028ec() -> ! {
-    todo!("0x7028ec RBX::Instance::raisePropertyChanged(RBX::Reflection::PropertyDescriptor const&)")
+pub fn stub_0x7028ec(this: *mut Instance, desc: *const PropertyDescriptor) -> i32 {
+    // IDA 0x7028ec: `ReleaseAssert(isMemberOf(desc, this + 36))` under
+    // `FLog::Asserts` (0x702900-0x702978, unmodeled — see BUG); the vtable
+    // `+116` override (0x7029b0, `hooks.on_property_changed`); the combined
+    // emit at `+80` with kind `2` (0x7029c4-0x7029cc); the descriptor emit
+    // on the `+88` signal (0x7029d6); then the parent's vtable `+112`
+    // `onChildChanged(child, &PropertyChanged{desc})` (0x7029da-0x7029e8),
+    // whose value is returned (`0` with no parent).
+    // // BUG: the `isMemberOf` assert and the `PropertyChanged` event
+    // // wrapper have no model; the kind-`2` combined payload carries the
+    // // instance (retained) where the original carries the descriptor, and
+    // // `on_property_changed` does not receive `desc` (arity of the
+    // // existing hook).
+    // SAFETY: `this` must point to a valid `Instance`; `desc` must point
+    // to a valid `PropertyDescriptor` outliving the fires.
+    unsafe {
+        if let Some(hook) = (*this).hooks.on_property_changed {
+            hook(this);
+        }
+        (*this).combined.slots.fire(CombinedEvent {
+            kind: COMBINED_PROPERTY_CHANGED,
+            child: borrow_shared(this),
+        });
+        (*this).property_changed.fire(desc);
+        let parent = (*this).parent as *mut Instance;
+        if parent.is_null() {
+            0
+        } else if let Some(notify) = (*parent).notify_child_changed {
+            notify(parent, this, desc)
+        } else {
+            0
+        }
+    }
 }
 
 // 0x7029f4 — __ZN3RBX8Instance15setIsArchivableEb
 #[doc(alias = "RBX::Instance::setIsArchivable(bool)")]
-pub fn stub_7029f4() -> ! {
-    todo!("0x7029f4 RBX::Instance::setIsArchivable(bool)")
+pub fn stub_0x7029f4(this: *mut Instance, archivable: bool) -> i32 {
+    // IDA 0x7029f4: when the holder `+ 23` byte differs (`LDRB [R0,#0x17]`,
+    // 0x702a02-0x702a06), `FWValue<bool>::set(holder + 23, val, this + 68)`
+    // (0x702a08-0x702a10, inlined into `archivable`) and
+    // `raisePropertyChanged(propArchivable)` (0x702a14-0x702a20), whose
+    // value is returned; otherwise unchanged (`0` here — the original
+    // returns the holder word, meaningless in the model).
+    // SAFETY: `this` must point to a valid `Instance` outliving the call.
+    unsafe {
+        if (*this).archivable == archivable {
+            return 0;
+        }
+        (*this).archivable = archivable;
+        stub_0x7028ec(this, core::ptr::addr_of!(PROP_ARCHIVABLE))
+    }
 }
 
 // 0x9fb45c — __ZN3RBX10Reflection17BoundCallbackDescIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEES7_EED0Ev

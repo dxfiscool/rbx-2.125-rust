@@ -50,6 +50,28 @@ pub struct Instance {
     /// Embedded `boost::enable_shared_from_this` weak owner at `this + 40`
     /// (IDA `0x7039e4` reads px at `+40`, pi at `+44`).
     pub weak_owner: WeakPtr<Instance>,
+    /// Archivable flag byte at name-store holder `+ 23` (byte `0x17`;
+    /// IDA `0x7029f4` `setIsArchivable` compares it before
+    /// `FWValue<bool>::set` + `raisePropertyChanged(propArchivable)`).
+    /// Distinct from `roblox_locked` (`+ 22`) and `parent_locked` (`+ 21`).
+    pub archivable: bool,
+    /// Stable identity standing in for the name-store holder pointer at
+    /// `*(this + 17)` (byte `0x44`); `fw()` (IDA `0x701ef4`) returns that
+    /// word, whose `+21`/`+23`/`+24` members are modelled inline above.
+    pub fw_cookie: u32,
+    /// Two-arg ancestry-changed signal at `+84` (word `+21`; IDA `0x700d28`
+    /// fires it with the retained child + scope pair).
+    pub ancestry_changed: Signal<(SharedPtr<Instance>, SharedPtr<Instance>)>,
+    /// Property-changed signal at `+88` (word `+22`; IDA `0x7028ec` fires it
+    /// with the descriptor after the `+116` virtual and the `+80` combined
+    /// emit with kind `2`).
+    pub property_changed: Signal<*const PropertyDescriptor>,
+    /// `onChildChanged` propagation virtual (vtable slot `+112`;
+    /// IDA `0x7028ec` calls it on the parent as
+    /// `onChildChanged(child, &PropertyChanged{desc})` and returns its
+    /// value, or `0` with no parent). Base-class default is `None`.
+    pub notify_child_changed:
+        Option<fn(*mut Instance, *const Instance, *const PropertyDescriptor) -> i32>,
 }
 /// Two-pointer virtual hook (`RBX::Instance` vtable slots `+56`, `+64`,
 /// `+100`, `+104`, `+108` in `setParentInternal`, IDA `0x6ffc98`).
