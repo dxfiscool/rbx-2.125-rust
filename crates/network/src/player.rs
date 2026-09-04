@@ -1679,6 +1679,32 @@ mod tests {
         init_descriptor();
         bind_abuse_report();
     }
+    #[test]
+    fn glue_cast_emit_gates() {
+        // IDA 0xa1bc50: per-message visit.
+        let mut seen = Vec::new();
+        for_each_chat(2, &mut |i| seen.push(i));
+        assert_eq!(seen, [0, 1]);
+        // IDA 0xa1bf30/0xa1e020: binder no-ops.
+        bind_abuse_add();
+        bind_chat_handler();
+        // IDA 0xa1c8e8/0xa1dd8c/0xa1f558: Player-only casts.
+        assert_eq!(cast_to_player(Some(4), true), Some(4));
+        assert_eq!(cast_to_player(Some(4), false), None);
+        assert_eq!(cast_to_player(None, true), None);
+        // IDA 0xa1daf8/0xa1e654: shared pass-through.
+        assert_eq!(shared_handle(Some(4)), Some(4));
+        assert_eq!(shared_handle(None), None);
+        // IDA 0xa1ced4/0xa1d83c/0xa1eab0: slot invocation via the shared
+        // signal/functor helpers (mirrors raknet.rs).
+        let mut n = 0;
+        crate::functor::invoke1(&mut |v: u32| n += v, 3);
+        assert_eq!(n, 3);
+        // IDA 0xa1ff60/0xa20280: binder no-op + weak pass-through.
+        bind_remote_insert();
+        assert_eq!(weak_handle(Some(9)), Some(9));
+        assert_eq!(weak_handle(None), None);
+    }
 }
 
 /// `Players::findAncestorPlayer` (IDA 0xa14c94): the nearest Player
@@ -1947,4 +1973,45 @@ pub fn bind_abuse_report() {}
 #[must_use]
 pub fn players_snapshot(list: &[u32]) -> Vec<u32> {
  list.to_vec()
+}
+
+/// `std::for_each` over chat messages (IDA 0xa1bc50): applies the bound
+/// `AbuseReport` add to each queued message.
+pub fn for_each_chat(count: usize, visit: &mut dyn FnMut(usize)) {
+ for i in 0..count {
+ visit(i);
+ }
+}
+
+/// `boost::bind` chat-report binder (IDA 0xa1bf30) and chat-handler binder
+/// (IDA 0xa1e020): binder construction stays engine-side.
+pub fn bind_abuse_add() {}
+pub fn bind_chat_handler() {}
+
+/// `DescribedBase::fastSharedDynamicCast<Player>` (IDA 0xa1c8e8),
+/// `shared_from_polymorphic_downcast<Player>` (IDA 0xa1dd8c), and
+/// `fastDynamicCast<Player>` (IDA 0xa1f558): the handle survives only
+/// when the instance is a Player.
+#[must_use]
+pub fn cast_to_player(handle: Option<u32>, is_player: bool) -> Option<u32> {
+ handle.filter(|_| is_player)
+}
+
+/// `shared_from<Player>` (IDA 0xa1daf8) and `shared_from<Players>`
+/// (IDA 0xa1e654): the shared handle passes through; the non-null
+/// assert stays engine-side.
+#[must_use]
+pub fn shared_handle(handle: Option<u32>) -> Option<u32> {
+ handle
+}
+
+/// `boost::bind` remote-insert binder (IDA 0xa1ff60): binder construction
+/// stays engine-side; the weak-handle gate is [`remote_insert_result_helper`].
+pub fn bind_remote_insert() {}
+
+/// `weak_from<Players>` (IDA 0xa20280): the weak handle passes through;
+/// expiry is observed engine-side.
+#[must_use]
+pub fn weak_handle(handle: Option<u32>) -> Option<u32> {
+ handle
 }
