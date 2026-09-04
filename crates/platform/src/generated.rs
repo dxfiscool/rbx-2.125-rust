@@ -4437,132 +4437,150 @@ pub fn stub_2e284(
 // 0x35d3c — +[RobloxAlert RobloxAlertWithMessage:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxAlert RobloxAlertWithMessage:]")]
-pub fn stub_35d3c() -> ! {
-    todo!("0x35d3c +[RobloxAlert RobloxAlertWithMessage:]")
+pub fn stub_35d3c(message: &str) {
+    // delegate of crate::view_controllers (IDA 0x35d3c)
+    crate::view_controllers::RobloxAlert::alert_with_message(message);
 }
 
 // 0x35d8c — ___38+[RobloxAlert RobloxAlertWithMessage:]_block_invoke
 #[doc(alias = "___38+[RobloxAlert RobloxAlertWithMessage:]_block_invoke")]
-pub fn stub_35d8c() -> ! {
-    todo!("0x35d8c ___38+[RobloxAlert RobloxAlertWithMessage:]_block_invoke")
+pub fn stub_35d8c(message: &str) {
+    // delegate of crate::view_controllers (IDA 0x35d8c)
+    crate::view_controllers::RobloxAlert::alert_with_message_block(message);
 }
 
 // 0x35e90 — +[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]
 // type: void __cdecl(id, SEL, id, id)
 #[doc(alias = "+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]")]
-pub fn stub_35e90() -> ! {
-    todo!("0x35e90 +[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]")
+pub fn stub_35e90(message: &str, delegate: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x35e90)
+    crate::view_controllers::RobloxAlert::alert_with_message_and_delegate(message, delegate);
 }
 
 // 0x35ee4 — ___58+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]_block_invoke
 #[doc(alias = "___58+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]_block_invoke")]
-pub fn stub_35ee4() -> ! {
-    todo!("0x35ee4 ___58+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]_block_invoke")
+pub fn stub_35ee4(message: &str, delegate: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x35ee4)
+    crate::view_controllers::RobloxAlert::alert_with_message_and_delegate_block(message, delegate);
 }
-
 // 0x36058 — +[RobloxInfo getDeviceType]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getDeviceType]")]
-pub fn stub_36058() -> ! {
-    todo!("0x36058 +[RobloxInfo getDeviceType]")
+pub fn stub_36058(device_type: Option<&str>) -> &'static str {
+    // delegate of crate::view_controllers (IDA 0x36058)
+    crate::view_controllers::RobloxInfo::device_class(device_type)
 }
 
 // 0x36114 — +[RobloxInfo getDeviceModelNumber]
 // type: int __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getDeviceModelNumber]")]
-pub fn stub_36114() -> ! {
-    todo!("0x36114 +[RobloxInfo getDeviceModelNumber]")
+pub fn stub_36114(device_type: Option<&str>, tablet: bool) -> i32 {
+    // delegate of crate::view_controllers (IDA 0x36114)
+    crate::view_controllers::RobloxInfo::device_model_number(device_type, tablet)
 }
 
 // 0x3622c — +[RobloxInfo thisDeviceIsATablet]
 // type: char __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo thisDeviceIsATablet]")]
-pub fn stub_3622c() -> ! {
-    todo!("0x3622c +[RobloxInfo thisDeviceIsATablet]")
+pub fn stub_3622c(supports_idiom: bool, idiom: i32) -> bool {
+    // delegate of crate::view_controllers (IDA 0x3622c)
+    crate::view_controllers::RobloxInfo::this_device_is_a_tablet(supports_idiom, idiom)
 }
 
 // 0x36290 — +[RobloxInfo deviceType]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo deviceType]")]
-pub fn stub_36290() -> ! {
-    todo!("0x36290 +[RobloxInfo deviceType]")
+pub fn stub_36290(machine: &str) -> String {
+    // delegate of crate::view_controllers (IDA 0x36290)
+    crate::view_controllers::RobloxInfo::device_type(machine)
 }
 
 // 0x362fc — +[RobloxInfo deviceOSVersion]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo deviceOSVersion]")]
-pub fn stub_362fc() -> ! {
-    todo!("0x362fc +[RobloxInfo deviceOSVersion]")
+pub fn stub_362fc(version: &str) -> String {
+    // delegate of crate::view_controllers (IDA 0x362fc)
+    crate::view_controllers::RobloxInfo::device_os_version(version)
 }
 
 // 0x36330 — +[RobloxInfo appVersion]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo appVersion]")]
-pub fn stub_36330() -> ! {
-    todo!("0x36330 +[RobloxInfo appVersion]")
+pub fn stub_36330(version: &str) -> String {
+    // delegate of crate::view_controllers (IDA 0x36330)
+    crate::view_controllers::RobloxInfo::app_version(version)
 }
 
 // 0x36370 — +[RobloxInfo friendlyDeviceName]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo friendlyDeviceName]")]
-pub fn stub_36370() -> ! {
-    todo!("0x36370 +[RobloxInfo friendlyDeviceName]")
+pub fn stub_36370(machine: &str) -> &'static str {
+    // delegate of crate::view_controllers (IDA 0x36370)
+    crate::view_controllers::RobloxInfo::friendly_device_name(machine)
 }
 
 // 0x3683c — +[RobloxInfo getUserAgentString]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getUserAgentString]")]
-pub fn stub_3683c() -> ! {
-    todo!("0x3683c +[RobloxInfo getUserAgentString]")
+pub fn stub_3683c(model: &str, device_type: &str, os_version: &str, app_version: &str) -> String {
+    // delegate of crate::view_controllers (IDA 0x3683c)
+    crate::view_controllers::RobloxInfo::build_user_agent_string(model, device_type, os_version, app_version)
 }
 
 // 0x36918 — +[RobloxInfo getBaseUrl]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getBaseUrl]")]
-pub fn stub_36918() -> ! {
-    todo!("0x36918 +[RobloxInfo getBaseUrl]")
+pub fn stub_36918(tablet: bool, plist_url: &str) -> String {
+    // delegate of crate::view_controllers (IDA 0x36918)
+    crate::view_controllers::RobloxInfo::get_base_url(tablet, plist_url)
 }
 
 // 0x369c0 — +[RobloxInfo getApiBaseUrl]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getApiBaseUrl]")]
-pub fn stub_369c0() -> ! {
-    todo!("0x369c0 +[RobloxInfo getApiBaseUrl]")
+pub fn stub_369c0(base: &str) -> Option<String> {
+    // delegate of crate::view_controllers (IDA 0x369c0)
+    crate::view_controllers::RobloxInfo::get_api_base_url(base)
 }
 
 // 0x36ab0 — +[RobloxInfo getDomainString]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getDomainString]")]
-pub fn stub_36ab0() -> ! {
-    todo!("0x36ab0 +[RobloxInfo getDomainString]")
+pub fn stub_36ab0(base: &str) -> Option<String> {
+    // delegate of crate::view_controllers (IDA 0x36ab0)
+    crate::view_controllers::RobloxInfo::get_domain_string(base)
 }
 
 // 0x36bc8 — +[RobloxInfo getBaseUrlChangedNotification]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getBaseUrlChangedNotification]")]
-pub fn stub_36bc8() -> ! {
-    todo!("0x36bc8 +[RobloxInfo getBaseUrlChangedNotification]")
+pub fn stub_36bc8() -> &'static str {
+    // delegate of crate::view_controllers (IDA 0x36bc8)
+    crate::view_controllers::RobloxInfo::base_url_changed_notification()
 }
 
 // 0x36bd4 — +[RobloxInfo setBaseUrl:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxInfo setBaseUrl:]")]
-pub fn stub_36bd4() -> ! {
-    todo!("0x36bd4 +[RobloxInfo setBaseUrl:]")
+pub fn stub_36bd4(url: &str) -> String {
+    // delegate of crate::view_controllers (IDA 0x36bd4)
+    crate::view_controllers::RobloxInfo::set_base_url(url)
 }
 
 // 0x36de4 — ___25+[RobloxInfo setBaseUrl:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___25+[RobloxInfo setBaseUrl:]_block_invoke")]
-pub fn stub_36de4() -> ! {
-    todo!("0x36de4 ___25+[RobloxInfo setBaseUrl:]_block_invoke")
+pub fn stub_36de4() {
+    // delegate of crate::view_controllers (IDA 0x36de4)
+    crate::view_controllers::RobloxInfo::set_base_url_block();
 }
 
 // 0x36e04 — +[RobloxInfo searchUrl]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo searchUrl]")]
-pub fn stub_36e04() -> ! {
-    todo!("0x36e04 +[RobloxInfo searchUrl]")
+pub fn stub_36e04(tablet: bool, phone_url: &str, pad_url: &str) -> String {
+    // delegate of crate::view_controllers (IDA 0x36e04)
+    crate::view_controllers::RobloxInfo::search_url(tablet, phone_url, pad_url)
 }
 
 // 0x51dc4 — +[MainViewController sharedInstance]

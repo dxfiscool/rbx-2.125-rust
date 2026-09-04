@@ -670,10 +670,20 @@ pub fn set_open_native_browser_window_from_lua(enabled: bool) {
 }
 
 /// Minimal `RobloxInfo` counterpart behind `+[RobloxInfo getUserAgentString]`
-/// (IDA 0x4da4c): the UA string registered into `NSUserDefaults`.
+/// (IDA 0x4da4c): the UA string registered into `NSUserDefaults`; extended
+/// with the device/URL classifier cluster (IDA 0x36058..0x36e04). `sysctl`,
+/// `UIDevice`, and `NSBundle` reads live out of slice: pure classifiers take
+/// those values as parameters, while the `dword_130C460/464/468` caches are
+/// mutex-guarded slots.
 #[derive(Debug, Default)]
 pub struct RobloxInfo {
     user_agent: parking_lot::Mutex<String>,
+    base_url: parking_lot::Mutex<Option<String>>,
+    api_base_url: parking_lot::Mutex<Option<String>>,
+    domain: parking_lot::Mutex<Option<String>>,
+    base_url_sets: std::sync::atomic::AtomicU32,
+    base_url_posts: std::sync::atomic::AtomicU32,
+    settings_refresh_dispatches: std::sync::atomic::AtomicU32,
 }
 
 impl RobloxInfo {
@@ -687,6 +697,275 @@ impl RobloxInfo {
     }
     pub fn set_user_agent(&self, agent: &str) {
         *self.user_agent.lock() = agent.to_owned();
+    }
+    // 0x36058 — +[RobloxInfo getDeviceType]
+    // type: id __cdecl(id, SEL)
+    // IDA 0x36058
+    #[doc(alias = "+[RobloxInfo getDeviceType]")]
+    #[doc = "+[RobloxInfo getDeviceType]"]
+    pub fn device_class(device_type: Option<&str>) -> &'static str {
+        // `rangeOfString:` probes for iPad, then iPhone, then iPod
+        // (IDA 0x36098..0x360f6), else `Unknown`.
+        // BUG: original at 0x36104..0x36108 returns `iPad` when `deviceType`
+        // is nil.
+        match device_type {
+            None => "iPad",
+            Some(t) if t.contains("iPad") => "iPad",
+            Some(t) if t.contains("iPhone") => "iPhone",
+            Some(t) if t.contains("iPod") => "iPod",
+            _ => "Unknown",
+        }
+    }
+    /// Digit right after `token` in `haystack` (`characterAtIndex:loc+len`
+    /// + `atoi`; non-digit reads as 0, IDA 0x361fa..0x36228).
+    fn digit_after(haystack: &str, token: &str) -> i32 {
+        let pos = match haystack.find(token) {
+            Some(pos) => pos + token.len(),
+            None => return 0,
+        };
+        haystack[pos..].chars().next().and_then(|c| c.to_digit(10)).unwrap_or(0) as i32
+    }
+    // 0x36114 — +[RobloxInfo getDeviceModelNumber]
+    // type: int __cdecl(id, SEL)
+    // IDA 0x36114
+    #[doc(alias = "+[RobloxInfo getDeviceModelNumber]")]
+    #[doc = "+[RobloxInfo getDeviceModelNumber]"]
+    pub fn device_model_number(device_type: Option<&str>, tablet: bool) -> i32 {
+        // Tablet: `atoi` past `iPad` (IDA 0x3615e..0x36180, -1 without it);
+        // phone: `iPod` first (IDA 0x36198..0x361a4), else past `iPhone`
+        // (IDA 0x361b6..0x361c2, -1 without it). A nil `deviceType` reads 0
+        // through the nil receiver (IDA 0x361e0..0x361e4, 0x36202..0x36208).
+        let Some(device) = device_type else {
+            return 0;
+        };
+        if tablet {
+            if !device.contains("iPad") {
+                return -1;
+            }
+            return Self::digit_after(device, "iPad");
+        }
+        if device.contains("iPod") {
+            return Self::digit_after(device, "iPod");
+        }
+        if !device.contains("iPhone") {
+            return -1;
+        }
+        Self::digit_after(device, "iPhone")
+    }
+    // 0x3622c — +[RobloxInfo thisDeviceIsATablet]
+    // type: char __cdecl(id, SEL)
+    // IDA 0x3622c
+    #[doc(alias = "+[RobloxInfo thisDeviceIsATablet]")]
+    #[doc = "+[RobloxInfo thisDeviceIsATablet]"]
+    pub fn this_device_is_a_tablet(supports_idiom: bool, idiom: i32) -> bool {
+        // `respondsToSelector:userInterfaceIdiom` gate (IDA 0x3626c..0x36274);
+        // the Pad idiom (1) survives the `!= 1 → 0` fold (IDA 0x36282..0x3628a).
+        supports_idiom && idiom == 1
+    }
+    // 0x36290 — +[RobloxInfo deviceType]
+    // type: id __cdecl(id, SEL)
+    // IDA 0x36290
+    #[doc(alias = "+[RobloxInfo deviceType]")]
+    #[doc = "+[RobloxInfo deviceType]"]
+    pub fn device_type(machine: &str) -> String {
+        // `sysctlbyname("hw.machine")` → `stringWithUTF8String:`
+        // (IDA 0x362b2..0x362fa); the sysctl itself lives out of slice.
+        machine.to_owned()
+    }
+    // 0x362fc — +[RobloxInfo deviceOSVersion]
+    // type: id __cdecl(id, SEL)
+    // IDA 0x362fc
+    #[doc(alias = "+[RobloxInfo deviceOSVersion]")]
+    #[doc = "+[RobloxInfo deviceOSVersion]"]
+    pub fn device_os_version(version: &str) -> String {
+        // `UIDevice.systemVersion` (IDA 0x36318..0x36322).
+        version.to_owned()
+    }
+    // 0x36330 — +[RobloxInfo appVersion]
+    // type: id __cdecl(id, SEL)
+    // IDA 0x36330
+    #[doc(alias = "+[RobloxInfo appVersion]")]
+    #[doc = "+[RobloxInfo appVersion]"]
+    pub fn app_version(version: &str) -> String {
+        // `objectForInfoDictionaryKey:CFBundleShortVersionString`
+        // (IDA 0x3634c..0x36356).
+        version.to_owned()
+    }
+    // 0x36370 — +[RobloxInfo friendlyDeviceName]
+    // type: id __cdecl(id, SEL)
+    // IDA 0x36370
+    #[doc(alias = "+[RobloxInfo friendlyDeviceName]")]
+    #[doc = "+[RobloxInfo friendlyDeviceName]"]
+    pub fn friendly_device_name(machine: &str) -> &'static str {
+        // `isEqualToString:` ladder over `hw.machine` (IDA 0x36390..0x36836).
+        match machine {
+            "iPhone1,1" => "iPhone 2G",
+            "iPhone1,2" => "iPhone 3G",
+            "iPhone2,1" => "iPhone 3GS",
+            "iPhone3,1" | "iPhone3,2" => "iPhone 4",
+            "iPhone3,3" => "iPhone 4 (CDMA)",
+            "iPhone4,1" => "iPhone 4S",
+            "iPhone5,1" => "iPhone 5",
+            "iPhone5,2" => "iPhone 5 (GSM+CDMA)",
+            "iPod1,1" => "iPod Touch (1 Gen)",
+            "iPod2,1" => "iPod Touch (2 Gen)",
+            "iPod3,1" => "iPod Touch (3 Gen)",
+            "iPod4,1" => "iPod Touch (4 Gen)",
+            "iPod5,1" => "iPod Touch (5 Gen)",
+            "iPad1,1" => "iPad",
+            "iPad1,2" => "iPad 3G",
+            "iPad2,1" => "iPad 2 (WiFi)",
+            "iPad2,2" | "iPad2,4" => "iPad 2",
+            "iPad2,3" => "iPad 2 (CDMA)",
+            "iPad2,5" => "iPad Mini (WiFi)",
+            "iPad2,6" => "iPad Mini",
+            "iPad2,7" => "iPad Mini (GSM+CDMA)",
+            "iPad3,1" => "iPad 3 (WiFi)",
+            "iPad3,2" => "iPad 3 (GSM+CDMA)",
+            "iPad3,3" => "iPad 3",
+            "iPad3,4" => "iPad 4 (WiFi)",
+            "iPad3,5" => "iPad 4",
+            "iPad3,6" => "iPad 4 (GSM+CDMA)",
+            "i386" => "Simulator 32 bit intel",
+            "x86_64" => "Simulator 64 bit intel",
+            _ => "Unknown",
+        }
+    }
+    // 0x3683c — +[RobloxInfo getUserAgentString]
+    // type: id __cdecl(id, SEL)
+    // IDA 0x3683c
+    #[doc(alias = "+[RobloxInfo getUserAgentString]")]
+    #[doc = "+[RobloxInfo getUserAgentString]"]
+    pub fn build_user_agent_string(model: &str, device_type: &str, os_version: &str, app_version: &str) -> String {
+        // `model`, `deviceType`, `systemVersion`, `CFBundleShortVersionString`
+        // into the Mozilla/5.0 template (IDA 0x36870..0x36914).
+        format!(
+            "Mozilla/5.0 ({model}; {device_type}; CPU iPhone OS {os_version} like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Mobile/9B176 ROBLOX iOS App {app_version}"
+        )
+    }
+    // 0x36918 — +[RobloxInfo getBaseUrl]
+    // type: id __cdecl(id, SEL)
+    // IDA 0x36918
+    #[doc(alias = "+[RobloxInfo getBaseUrl]")]
+    #[doc = "+[RobloxInfo getBaseUrl]"]
+    pub fn get_base_url(tablet: bool, plist_url: &str) -> String {
+        // Cached in `dword_130C460` (IDA 0x36926..0x3692c); on miss reads
+        // `RbxBaseUrl` (tablet, IDA 0x36988..0x36994) or `RbxBaseMobileUrl`
+        // (IDA 0x36994..0x369a0), stores, then re-enters `setBaseUrl:`
+        // (IDA 0x369ae..0x369b6).
+        // BUG: original at 0x369b6 re-enters `setBaseUrl:` with no URL
+        // argument; the plist value is threaded through here instead.
+        if let Some(cached) = Self::shared().base_url.lock().clone() {
+            return cached;
+        }
+        let _ = tablet;
+        Self::set_base_url(plist_url)
+    }
+    /// `https://api` + first-dot suffix of `base` (IDA 0x36a18..0x36a9e);
+    /// empty base stays nil (IDA 0x36a10).
+    pub fn api_base_url_for(base: &str) -> Option<String> {
+        if base.is_empty() {
+            return None;
+        }
+        let trimmed = base.trim_end_matches('/');
+        let dot = trimmed.find('.')?;
+        Some(format!("https://api{}", &trimmed[dot..]))
+    }
+    // 0x369c0 — +[RobloxInfo getApiBaseUrl]
+    // type: id __cdecl(id, SEL)
+    // IDA 0x369c0
+    #[doc(alias = "+[RobloxInfo getApiBaseUrl]")]
+    #[doc = "+[RobloxInfo getApiBaseUrl]"]
+    pub fn get_api_base_url(base: &str) -> Option<String> {
+        // Cached in `dword_130C464` (IDA 0x369d4..0x36aac).
+        if let Some(cached) = Self::shared().api_base_url.lock().clone() {
+            return Some(cached);
+        }
+        let url = Self::api_base_url_for(base)?;
+        *Self::shared().api_base_url.lock() = Some(url.clone());
+        Some(url)
+    }
+    /// First-dot suffix of `base` minus scheme and `/`
+    /// (IDA 0x36b30..0x36bb0); empty base stays nil (IDA 0x36b06).
+    pub fn domain_string_for(base: &str) -> Option<String> {
+        if base.is_empty() {
+            return None;
+        }
+        let no_scheme = base.strip_prefix("http://").unwrap_or(base);
+        let dot = no_scheme.find('.')?;
+        Some(no_scheme[dot..].replace('/', ""))
+    }
+    // 0x36ab0 — +[RobloxInfo getDomainString]
+    // type: id __cdecl(id, SEL)
+    // IDA 0x36ab0
+    #[doc(alias = "+[RobloxInfo getDomainString]")]
+    #[doc = "+[RobloxInfo getDomainString]"]
+    pub fn get_domain_string(base: &str) -> Option<String> {
+        // Cached in `dword_130C468` (IDA 0x36aca..0x36bc6).
+        if let Some(cached) = Self::shared().domain.lock().clone() {
+            return Some(cached);
+        }
+        let domain = Self::domain_string_for(base)?;
+        *Self::shared().domain.lock() = Some(domain.clone());
+        Some(domain)
+    }
+    // 0x36bc8 — +[RobloxInfo getBaseUrlChangedNotification]
+    // type: id __cdecl(id, SEL)
+    // IDA 0x36bc8
+    #[doc(alias = "+[RobloxInfo getBaseUrlChangedNotification]")]
+    #[doc = "+[RobloxInfo getBaseUrlChangedNotification]"]
+    pub fn base_url_changed_notification() -> &'static str {
+        // `RBXBaseUrlChangedNotifier` (IDA 0x36bd2).
+        "RBXBaseUrlChangedNotifier"
+    }
+    // 0x36bd4 — +[RobloxInfo setBaseUrl:]
+    // type: void __cdecl(id, SEL, id)
+    // IDA 0x36bd4
+    #[doc(alias = "+[RobloxInfo setBaseUrl:]")]
+    #[doc = "+[RobloxInfo setBaseUrl:]"]
+    pub fn set_base_url(url: &str) -> String {
+        // Stores `dword_130C460` (IDA 0x36c08), appends `/` unless suffixed
+        // (IDA 0x36c48..0x36c70), pushes the UTF-8 bytes through `SetBaseURL`
+        // (IDA 0x36c86..0x36c9e; the `std::string` rep dance is a Rust drop),
+        // dispatches the settings refresh to main (IDA 0x36cce), posts
+        // `RBXBaseUrlChangedNotifier` (IDA 0x36cf0..0x36d12), and initializes
+        // analytics (IDA 0x36d30).
+        let normalized = if url.ends_with('/') {
+            url.to_owned()
+        } else {
+            format!("{url}/")
+        };
+        *Self::shared().base_url.lock() = Some(normalized.clone());
+        Self::shared().base_url_sets.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        Self::set_base_url_block();
+        Self::shared().base_url_posts.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        normalized
+    }
+    // 0x36de4 — ___25+[RobloxInfo setBaseUrl:]_block_invoke
+    // type: void __cdecl(id)
+    // IDA 0x36de4
+    #[doc(alias = "___25+[RobloxInfo setBaseUrl:]_block_invoke")]
+    #[doc = "___25+[RobloxInfo setBaseUrl:]_block_invoke"]
+    pub fn set_base_url_block() {
+        // `getiOSSettingsServiceWithForcedReadFromWeb:NO` (IDA 0x36dfe).
+        Self::shared().settings_refresh_dispatches.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        WebUtility::get_ios_settings_service_with_forced_read_from_web(false);
+    }
+    // 0x36e04 — +[RobloxInfo searchUrl]
+    // type: id __cdecl(id, SEL)
+    // IDA 0x36e04
+    #[doc(alias = "+[RobloxInfo searchUrl]")]
+    #[doc = "+[RobloxInfo searchUrl]"]
+    pub fn search_url(tablet: bool, phone_url: &str, pad_url: &str) -> String {
+        // Settings service with no forced web read (IDA 0x36e2a..0x36e58);
+        // the tablet flag picks `var30` (pad, IDA 0x36e68..0x36e6a) over
+        // `var31` (phone).
+        WebUtility::get_ios_settings_service_with_forced_read_from_web(false);
+        if tablet {
+            pad_url.to_owned()
+        } else {
+            phone_url.to_owned()
+        }
     }
 }
 
@@ -1352,6 +1631,94 @@ impl LoginViewController {
     }
     pub fn roblox_logo(&self) -> ObjCId {
         *self.roblox_logo.lock()
+    }
+}
+
+/// Minimal `RobloxAlert` counterpart: the `UIAlertView` rows behind
+/// `+RobloxAlertWithMessage:[...]` (IDA 0x35d3c..0x35fdc). Presentation lives
+/// out of slice; requests are recorded with their localized keys.
+#[derive(Debug, Clone, PartialEq, Eq, Default)]
+pub struct AlertRequest {
+    pub title_key: &'static str,
+    pub message: String,
+    pub delegate: ObjCId,
+    pub cancel_key: &'static str,
+    pub other_key: Option<&'static str>,
+}
+
+#[derive(Debug, Default)]
+pub struct RobloxAlert {
+    alerts: parking_lot::Mutex<Vec<AlertRequest>>,
+    main_dispatches: std::sync::atomic::AtomicU32,
+}
+
+impl RobloxAlert {
+    fn shared() -> &'static Self {
+        static ALERTS: std::sync::LazyLock<RobloxAlert> =
+            std::sync::LazyLock::new(RobloxAlert::default);
+        &ALERTS
+    }
+    // 0x35d3c — +[RobloxAlert RobloxAlertWithMessage:]
+    // type: void __cdecl(id, SEL, id)
+    // IDA 0x35d3c
+    #[doc(alias = "+[RobloxAlert RobloxAlertWithMessage:]")]
+    #[doc = "+[RobloxAlert RobloxAlertWithMessage:]"]
+    pub fn alert_with_message(message: &str) {
+        // Captures `a3` into the stack block and hops to the main queue for
+        // `block_invoke` (IDA 0x35d70..0x35d82); the queue hop lives out of
+        // slice, so the dispatch is recorded and the block runs inline.
+        Self::shared().main_dispatches.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        Self::alert_with_message_block(message);
+    }
+    // 0x35d8c — ___38+[RobloxAlert RobloxAlertWithMessage:]_block_invoke
+    // IDA 0x35d8c
+    #[doc(alias = "___38+[RobloxAlert RobloxAlertWithMessage:]_block_invoke")]
+    #[doc = "___38+[RobloxAlert RobloxAlertWithMessage:]_block_invoke"]
+    pub fn alert_with_message_block(message: &str) {
+        // Title `RobloxWord` (the key pointer at IDA 0x35de8..0x35e06 resolves
+        // to the `RobloxWord` CFString), message = captured `a3`
+        // (IDA 0x35e0e), delegate nil, cancel `OkWord` (IDA 0x35e12..0x35e4c);
+        // `show` then `release` (IDA 0x35e5c).
+        Self::shared().alerts.lock().push(AlertRequest {
+            title_key: "RobloxWord",
+            message: message.to_owned(),
+            delegate: NIL_ID,
+            cancel_key: "OkWord",
+            other_key: None,
+        });
+    }
+    // 0x35e90 — +[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]
+    // type: void __cdecl(id, SEL, id, id)
+    // IDA 0x35e90
+    #[doc(alias = "+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]")]
+    #[doc = "+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]"]
+    pub fn alert_with_message_and_delegate(message: &str, delegate: ObjCId) {
+        // Captures `(a3, a4)` into the block and hops to the main queue
+        // (IDA 0x35ec4..0x35edc); runs inline here.
+        Self::shared().main_dispatches.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        Self::alert_with_message_and_delegate_block(message, delegate);
+    }
+    // 0x35ee4 — ___58+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]_block_invoke
+    // IDA 0x35ee4
+    #[doc(alias = "___58+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]_block_invoke")]
+    #[doc = "___58+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]_block_invoke"]
+    pub fn alert_with_message_and_delegate_block(message: &str, delegate: ObjCId) {
+        // Title `RobloxWord`, cancel `CancelWord`, other `OkWord`, delegate =
+        // captured `a4` (IDA 0x35f2a..0x35fcc); `show` then `release`
+        // (IDA 0x35fdc).
+        Self::shared().alerts.lock().push(AlertRequest {
+            title_key: "RobloxWord",
+            message: message.to_owned(),
+            delegate,
+            cancel_key: "CancelWord",
+            other_key: Some("OkWord"),
+        });
+    }
+    pub fn alert_count() -> u32 {
+        Self::shared().alerts.lock().len() as u32
+    }
+    pub fn last_alert() -> Option<AlertRequest> {
+        Self::shared().alerts.lock().last().cloned()
     }
 }
 
