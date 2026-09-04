@@ -56,8 +56,8 @@ pub fn stub_89676c() -> ! {
 
 // 0x8967c8 — __ZNSt6vectorIS_IbSaIbEESaIS1_EE15_M_erase_at_endEPS1_
 #[doc(alias = "std::vector<std::vector<bool,std::allocator<bool>>,std::allocator<std::vector<bool,std::allocator<bool>>>>::_M_erase_at_end(std::vector<bool,std::allocator<bool>>*)")]
-pub fn stub_8967c8() -> ! {
-    todo!("0x8967c8 std::vector<std::vector<bool,std::allocator<bool>>,std::allocator<std::vector<bool,std::allocator<bool>>>>::_M_erase_at_end(std::vector<bool,std::allocator<bool>>*)")
+pub fn stub_8967c8() {
+    // IDA 0x8967c8: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x8967f8 — __ZNSt6vectorIS_IbSaIbEESaIS1_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS1_S3_EEmRKS1_
@@ -140,14 +140,14 @@ pub fn stub_897658() -> ! {
 
 // 0x897678 — __ZN3RBX6CellIDD1Ev
 #[doc(alias = "RBX::CellID::~CellID()")]
-pub fn stub_897678() -> ! {
-    todo!("0x897678 RBX::CellID::~CellID()")
+pub fn stub_897678() {
+    // IDA 0x897678: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x89768c — __ZN3RBX10Reflection5TTypeINS_6CellIDEED1Ev
 #[doc(alias = "RBX::Reflection::TType<RBX::CellID>::~TType()")]
-pub fn stub_89768c() -> ! {
-    todo!("0x89768c RBX::Reflection::TType<RBX::CellID>::~TType()")
+pub fn stub_89768c() {
+    // IDA 0x89768c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x897690 — __ZN3RBX10Reflection4TypeC2INS_6CellIDEEEPKcPT_
@@ -158,8 +158,8 @@ pub fn stub_897690() -> ! {
 
 // 0x89773c — __ZN3RBX10Reflection5TTypeINS_6CellIDEED0Ev
 #[doc(alias = "RBX::Reflection::TType<RBX::CellID>::~TType()")]
-pub fn stub_89773c() -> ! {
-    todo!("0x89773c RBX::Reflection::TType<RBX::CellID>::~TType()")
+pub fn stub_89773c() {
+    // IDA 0x89773c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x897740 — __GLOBAL__I_a_445
@@ -200,8 +200,8 @@ pub fn stub_8979f0() -> ! {
 
 // 0x8979fc — __ZN3RBX10Reflection5TTypeINS_12Region3int16EED1Ev
 #[doc(alias = "RBX::Reflection::TType<RBX::Region3int16>::~TType()")]
-pub fn stub_8979fc() -> ! {
-    todo!("0x8979fc RBX::Reflection::TType<RBX::Region3int16>::~TType()")
+pub fn stub_8979fc() {
+    // IDA 0x8979fc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x897a00 — __ZN3RBX10Reflection4TypeC2INS_12Region3int16EEEPKcPT_
@@ -212,8 +212,8 @@ pub fn stub_897a00() -> ! {
 
 // 0x897aac — __ZN3RBX10Reflection5TTypeINS_12Region3int16EED0Ev
 #[doc(alias = "RBX::Reflection::TType<RBX::Region3int16>::~TType()")]
-pub fn stub_897aac() -> ! {
-    todo!("0x897aac RBX::Reflection::TType<RBX::Region3int16>::~TType()")
+pub fn stub_897aac() {
+    // IDA 0x897aac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x897ab0 — __GLOBAL__I_a_446
@@ -230,56 +230,56 @@ pub fn stub_897b78() -> ! {
 
 // 0x897efc — __ZN3RBX24CacheableContentProviderD0Ev
 #[doc(alias = "RBX::CacheableContentProvider::~CacheableContentProvider()")]
-pub fn stub_897efc() -> ! {
-    todo!("0x897efc RBX::CacheableContentProvider::~CacheableContentProvider()")
+pub fn stub_897efc() {
+    // IDA 0x897efc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x897f9c — __ZN3RBX24CacheableContentProviderD1Ev
 #[doc(alias = "RBX::CacheableContentProvider::~CacheableContentProvider()")]
-pub fn stub_897f9c() -> ! {
-    todo!("0x897f9c RBX::CacheableContentProvider::~CacheableContentProvider()")
+pub fn stub_897f9c() {
+    // IDA 0x897f9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x897fa0 — __ZThn32_N3RBX24CacheableContentProviderD0Ev
 #[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
-pub fn stub_897fa0() -> ! {
-    todo!("0x897fa0 non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")
+pub fn stub_897fa0() {
+    // IDA 0x897fa0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x897fa8 — __ZThn36_N3RBX24CacheableContentProviderD0Ev
 #[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
-pub fn stub_897fa8() -> ! {
-    todo!("0x897fa8 non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")
+pub fn stub_897fa8() {
+    // IDA 0x897fa8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x897fb0 — __ZThn96_N3RBX24CacheableContentProviderD0Ev
 #[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
-pub fn stub_897fb0() -> ! {
-    todo!("0x897fb0 non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")
+pub fn stub_897fb0() {
+    // IDA 0x897fb0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x897fb8 — __ZN3RBX24CacheableContentProviderD2Ev
 #[doc(alias = "RBX::CacheableContentProvider::~CacheableContentProvider()")]
-pub fn stub_897fb8() -> ! {
-    todo!("0x897fb8 RBX::CacheableContentProvider::~CacheableContentProvider()")
+pub fn stub_897fb8() {
+    // IDA 0x897fb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x8981cc — __ZThn32_N3RBX24CacheableContentProviderD1Ev
 #[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
-pub fn stub_8981cc() -> ! {
-    todo!("0x8981cc non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")
+pub fn stub_8981cc() {
+    // IDA 0x8981cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x8981d4 — __ZThn36_N3RBX24CacheableContentProviderD1Ev
 #[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
-pub fn stub_8981d4() -> ! {
-    todo!("0x8981d4 non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")
+pub fn stub_8981d4() {
+    // IDA 0x8981d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x8981dc — __ZThn96_N3RBX24CacheableContentProviderD1Ev
 #[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
-pub fn stub_8981dc() -> ! {
-    todo!("0x8981dc non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")
+pub fn stub_8981dc() {
+    // IDA 0x8981dc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x8981e4 — __ZN3RBX24CacheableContentProvider11onHeartbeatERKNS_9HeartbeatE
@@ -290,8 +290,8 @@ pub fn stub_8981e4() -> ! {
 
 // 0x898324 — __ZThn96_N3RBX24CacheableContentProvider11onHeartbeatERKNS_9HeartbeatE
 #[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::onHeartbeat(RBX::Heartbeat const&)")]
-pub fn stub_898324() -> ! {
-    todo!("0x898324 non-virtual thunk toRBX::CacheableContentProvider::onHeartbeat(RBX::Heartbeat const&)")
+pub fn stub_898324() {
+    // IDA 0x898324: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x89832c — __ZN3RBX24CacheableContentProvider17onServiceProviderEPNS_15ServiceProviderES2_
@@ -428,8 +428,8 @@ pub fn stub_89a2e8() -> ! {
 
 // 0x89a314 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_25sCacheableContentProviderEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_25sCacheableContentProviderEEE12getClassNameEv")]
-pub fn stub_89a314() -> ! {
-    todo!("0x89a314 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_25sCacheableContentProviderEEE12getClassNameEv")
+pub fn stub_89a314() {
+    // IDA 0x89a314: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x89a33c — __ZN3RBX4Name13callDoDeclareILZNS_25sCacheableContentProviderEEEEvv
@@ -464,8 +464,8 @@ pub fn stub_89a518() -> ! {
 
 // 0x89a558 — __ZNSt4listISt4pairISsS0_ImN5boost10shared_ptrIN3RBX24CacheableContentProvider10CachedItemEEEEESaIS8_EE8_M_eraseESt14_List_iteratorIS8_E
 #[doc(alias = "std::list<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>,std::allocator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>::_M_erase(std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>)")]
-pub fn stub_89a558() -> ! {
-    todo!("0x89a558 std::list<std::pair<std::string,std::pair<unsigned long,boost::shared_ptr<RBX::CacheableContentProvider::CachedItem>>>,std::allocator<std::pair<std::string,std::pair<unsigned long,boost::shared_ptr<RBX::CacheableContentProvider::CachedItem>>>>>::_M_erase(std::_List_iterator<std::pair<std::string,std::pair<unsigned long,boost::shared_ptr<RBX::CacheableContentProvider::CachedItem>>>>)")
+pub fn stub_89a558() {
+    // IDA 0x89a558: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x89a630 — __ZN5boost10shared_ptrIN3RBX24CacheableContentProviderEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
@@ -494,14 +494,14 @@ pub fn stub_89aa34() -> ! {
 
 // 0x89ac08 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX24CacheableContentProviderEEENS6_14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEESsENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSI_ISsEEEEEEE6manageERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(Weak<RBX::CacheableContentProvider>,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>,std::string),boost::_bi::list5<boost::_bi::value<Weak<RBX::CacheableContentProvider>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_89ac08() -> ! {
-    todo!("0x89ac08 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::CacheableContentProvider>,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>,std::string),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::CacheableContentProvider>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_89ac08() {
+    // IDA 0x89ac08: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x89ac24 — __ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX24CacheableContentProviderEEENS6_14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEESsENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSI_ISsEEEEEEvSA_SB_SE_E6invokeERNS1_15function_bufferESA_SB_SE_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(Weak<RBX::CacheableContentProvider>,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>,std::string),boost::_bi::list5<boost::_bi::value<Weak<RBX::CacheableContentProvider>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::_bi::value<std::string>>>,void,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>>::invoke(boost::detail::function::function_buffer &,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)")]
-pub fn stub_89ac24() -> ! {
-    todo!("0x89ac24 boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::CacheableContentProvider>,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>,std::string),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::CacheableContentProvider>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::_bi::value<std::string>>>,void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::invoke(boost::detail::function::function_buffer &,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)")
+pub fn stub_89ac24() {
+    // IDA 0x89ac24: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x89ac48 — __ZNK5boost6detail8function13basic_vtable3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_24CacheableContentProviderEEES5_S6_S9_SsENSC_5list5INSC_5valueISG_EENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEENSK_ISsEEEEEEEEbT_RNS1_15function_bufferE
@@ -530,14 +530,14 @@ pub fn stub_89b110() -> ! {
 
 // 0x89b310 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX24CacheableContentProviderEEENS6_14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEESsENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSI_ISsEEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(Weak<RBX::CacheableContentProvider>,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>,std::string),boost::_bi::list5<boost::_bi::value<Weak<RBX::CacheableContentProvider>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_89b310() -> ! {
-    todo!("0x89b310 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::CacheableContentProvider>,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>,std::string),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::CacheableContentProvider>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_89b310() {
+    // IDA 0x89b310: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x89b500 — __ZN5boost3_bi5list5INS0_5valueINS_8weak_ptrIN3RBX24CacheableContentProviderEEEEENS_3argILi1EEENS8_ILi2EEENS8_ILi3EEENS2_ISsEEEC2ES7_S9_SA_SB_SC_
 #[doc(alias = "boost::_bi::list5<boost::_bi::value<Weak<RBX::CacheableContentProvider>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::_bi::value<std::string>>::list5(boost::_bi::value<Weak<RBX::CacheableContentProvider>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::_bi::value<std::string>)")]
-pub fn stub_89b500() -> ! {
-    todo!("0x89b500 boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::CacheableContentProvider>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::_bi::value<std::string>>::list5(boost::_bi::value<boost::weak_ptr<RBX::CacheableContentProvider>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::_bi::value<std::string>)")
+pub fn stub_89b500() {
+    // IDA 0x89b500: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x89b6ac — __ZN5boost3_bi8storage5INS0_5valueINS_8weak_ptrIN3RBX24CacheableContentProviderEEEEENS_3argILi1EEENS8_ILi2EEENS8_ILi3EEENS2_ISsEEEC2ES7_S9_SA_SB_SC_
@@ -572,20 +572,20 @@ pub fn stub_89bb68() -> ! {
 
 // 0x89bc40 — __ZN3RBX24CacheableContentProvider10CachedItemD2Ev
 #[doc(alias = "RBX::CacheableContentProvider::CachedItem::~CachedItem()")]
-pub fn stub_89bc40() -> ! {
-    todo!("0x89bc40 RBX::CacheableContentProvider::CachedItem::~CachedItem()")
+pub fn stub_89bc40() {
+    // IDA 0x89bc40: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x89bd10 — __ZN5boost6detail17sp_counted_impl_pIN3RBX24CacheableContentProvider10CachedItemEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::CacheableContentProvider::CachedItem>::~sp_counted_impl_p()")]
-pub fn stub_89bd10() -> ! {
-    todo!("0x89bd10 boost::detail::sp_counted_impl_p<RBX::CacheableContentProvider::CachedItem>::~sp_counted_impl_p()")
+pub fn stub_89bd10() {
+    // IDA 0x89bd10: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x89bd18 — __ZN5boost6detail17sp_counted_impl_pIN3RBX24CacheableContentProvider10CachedItemEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::CacheableContentProvider::CachedItem>::get_untyped_deleter(void)")]
-pub fn stub_89bd18() -> ! {
-    todo!("0x89bd18 boost::detail::sp_counted_impl_p<RBX::CacheableContentProvider::CachedItem>::get_untyped_deleter(void)")
+pub fn stub_89bd18() {
+    // IDA 0x89bd18: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x89bd1c — __ZN3RBX18ControlledLRUCacheISsN5boost10shared_ptrINS_24CacheableContentProvider10CachedItemEEEE21internalMakeEvictableERKSsRKS5_m

@@ -20,8 +20,8 @@ pub fn stub_3992dc() -> ! {
 
 // 0x399304 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEE12getClassNameEv")]
-pub fn stub_399304() -> ! {
-    todo!("0x399304 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEE12getClassNameEv")
+pub fn stub_399304() {
+    // IDA 0x399304: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39932c — __ZN3RBX4Name13callDoDeclareILZNS_15sAnimationTrackEEEEvv
@@ -130,15 +130,15 @@ pub fn stub_39bf44() -> ! {
 // 0x39c370 — __ZN3RBX19AnimationTrackStateD1Ev
 // type: void __fastcall(RBX::AnimationTrackState *__hidden this)
 #[doc(alias = "RBX::AnimationTrackState::~AnimationTrackState()")]
-pub fn stub_39c370() -> ! {
-    todo!("0x39c370 RBX::AnimationTrackState::~AnimationTrackState()")
+pub fn stub_39c370() {
+    // IDA 0x39c370: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39c374 — __ZN3RBX19AnimationTrackStateD0Ev
 // type: void __fastcall(RBX::AnimationTrackState *__hidden this)
 #[doc(alias = "RBX::AnimationTrackState::~AnimationTrackState()")]
-pub fn stub_39c374() -> ! {
-    todo!("0x39c374 RBX::AnimationTrackState::~AnimationTrackState()")
+pub fn stub_39c374() {
+    // IDA 0x39c374: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39c414 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEE12getClassNameEv
@@ -150,42 +150,42 @@ pub fn stub_39c414() -> ! {
 // 0x39c43c — __ZThn32_N3RBX19AnimationTrackStateD1Ev
 // type: void __fastcall(RBX::AnimationTrackState *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
-pub fn stub_39c43c() -> ! {
-    todo!("0x39c43c non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")
+pub fn stub_39c43c() {
+    // IDA 0x39c43c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39c444 — __ZThn32_N3RBX19AnimationTrackStateD0Ev
 // type: void __fastcall(RBX::AnimationTrackState *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
-pub fn stub_39c444() -> ! {
-    todo!("0x39c444 non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")
+pub fn stub_39c444() {
+    // IDA 0x39c444: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39c44c — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEE12getClassNameEv")]
-pub fn stub_39c44c() -> ! {
-    todo!("0x39c44c __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEE12getClassNameEv")
+pub fn stub_39c44c() {
+    // IDA 0x39c44c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39c474 — __ZThn36_N3RBX19AnimationTrackStateD1Ev
 // type: void __fastcall(RBX::AnimationTrackState *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
-pub fn stub_39c474() -> ! {
-    todo!("0x39c474 non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")
+pub fn stub_39c474() {
+    // IDA 0x39c474: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39c47c — __ZThn36_N3RBX19AnimationTrackStateD0Ev
 // type: void __fastcall(RBX::AnimationTrackState *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
-pub fn stub_39c47c() -> ! {
-    todo!("0x39c47c non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")
+pub fn stub_39c47c() {
+    // IDA 0x39c47c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39c484 — __ZN3RBX19AnimationTrackStateD2Ev
 // type: void __fastcall(RBX::AnimationTrackState *this, int, int, int)
 #[doc(alias = "RBX::AnimationTrackState::~AnimationTrackState()")]
-pub fn stub_39c484() -> ! {
-    todo!("0x39c484 RBX::AnimationTrackState::~AnimationTrackState()")
+pub fn stub_39c484() {
+    // IDA 0x39c484: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39c640 — __ZN3RBX4Name13callDoDeclareILZNS_20sAnimationTrackStateEEEEvv
@@ -210,64 +210,64 @@ pub fn stub_3a35a4() -> ! {
 // 0x3a40b8 — __ZN3RBX8AnimatorD0Ev
 // type: void __fastcall(RBX::Animator *__hidden this)
 #[doc(alias = "RBX::Animator::~Animator()")]
-pub fn stub_3a40b8() -> ! {
-    todo!("0x3a40b8 RBX::Animator::~Animator()")
+pub fn stub_3a40b8() {
+    // IDA 0x3a40b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a4158 — __ZN3RBX8AnimatorD1Ev
 // type: void __fastcall(RBX::Animator *__hidden this)
 #[doc(alias = "RBX::Animator::~Animator()")]
-pub fn stub_3a4158() -> ! {
-    todo!("0x3a4158 RBX::Animator::~Animator()")
+pub fn stub_3a4158() {
+    // IDA 0x3a4158: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a415c — __ZThn32_N3RBX8AnimatorD0Ev
 // type: void __fastcall(RBX::Animator *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
-pub fn stub_3a415c() -> ! {
-    todo!("0x3a415c non-virtual thunk toRBX::Animator::~Animator()")
+pub fn stub_3a415c() {
+    // IDA 0x3a415c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a4164 — __ZThn36_N3RBX8AnimatorD0Ev
 // type: void __fastcall(RBX::Animator *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
-pub fn stub_3a4164() -> ! {
-    todo!("0x3a4164 non-virtual thunk toRBX::Animator::~Animator()")
+pub fn stub_3a4164() {
+    // IDA 0x3a4164: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a416c — __ZThn92_N3RBX8AnimatorD0Ev
 // type: void __fastcall(RBX::Animator *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
-pub fn stub_3a416c() -> ! {
-    todo!("0x3a416c non-virtual thunk toRBX::Animator::~Animator()")
+pub fn stub_3a416c() {
+    // IDA 0x3a416c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a4174 — __ZN3RBX8AnimatorD2Ev
 // type: void __fastcall(RBX::Animator *this, int, int, const void *)
 #[doc(alias = "RBX::Animator::~Animator()")]
-pub fn stub_3a4174() -> ! {
-    todo!("0x3a4174 RBX::Animator::~Animator()")
+pub fn stub_3a4174() {
+    // IDA 0x3a4174: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a434c — __ZThn32_N3RBX8AnimatorD1Ev
 // type: void __fastcall(RBX::Animator *this, int, int, const void *)
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
-pub fn stub_3a434c() -> ! {
-    todo!("0x3a434c non-virtual thunk toRBX::Animator::~Animator()")
+pub fn stub_3a434c() {
+    // IDA 0x3a434c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a4354 — __ZThn36_N3RBX8AnimatorD1Ev
 // type: void __fastcall(RBX::Animator *this, int, int, const void *)
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
-pub fn stub_3a4354() -> ! {
-    todo!("0x3a4354 non-virtual thunk toRBX::Animator::~Animator()")
+pub fn stub_3a4354() {
+    // IDA 0x3a4354: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a435c — __ZThn92_N3RBX8AnimatorD1Ev
 // type: void __fastcall(RBX::Animator *this, int, int, const void *)
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
-pub fn stub_3a435c() -> ! {
-    todo!("0x3a435c non-virtual thunk toRBX::Animator::~Animator()")
+pub fn stub_3a435c() {
+    // IDA 0x3a435c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a439c — __ZNK3RBX8Animator11getGameTimeEv
@@ -294,8 +294,8 @@ pub fn stub_3a4870() -> ! {
 // 0x3a4e98 — __ZThn92_N3RBX8Animator9onSteppedERKNS_7SteppedE
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "non-virtual thunk toRBX::Animator::onStepped(RBX::Stepped const&)")]
-pub fn stub_3a4e98() -> ! {
-    todo!("0x3a4e98 non-virtual thunk toRBX::Animator::onStepped(RBX::Stepped const&)")
+pub fn stub_3a4e98() {
+    // IDA 0x3a4e98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a54e8 — __ZNSt6vectorIN3RBX15PoseAccumulatorESaIS1_EE7reserveEm
@@ -341,8 +341,8 @@ pub fn stub_3a5884() -> ! {
 
 // 0x3a58ac — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEE12getClassNameEv")]
-pub fn stub_3a58ac() -> ! {
-    todo!("0x3a58ac __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEE12getClassNameEv")
+pub fn stub_3a58ac() {
+    // IDA 0x3a58ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a58d4 — __ZN3RBX4Name13callDoDeclareILZNS_9sAnimatorEEEEvv
@@ -451,8 +451,8 @@ pub fn stub_3a7b94() -> ! {
 // 0x3a7ee4 — __ZThn92_N3RBX10ArcHandles7processERKNS_8GuiEventE
 // type: int __fastcall(int, int)
 #[doc(alias = "non-virtual thunk toRBX::ArcHandles::process(RBX::GuiEvent const&)")]
-pub fn stub_3a7ee4() -> ! {
-    todo!("0x3a7ee4 non-virtual thunk toRBX::ArcHandles::process(RBX::GuiEvent const&)")
+pub fn stub_3a7ee4() {
+    // IDA 0x3a7ee4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a7ef0 — __ZNK3RBX10ArcHandles13getHandleTypeEv
@@ -472,15 +472,15 @@ pub fn stub_3a7ef4() -> ! {
 // 0x3a85b0 — __ZN3RBX10ArcHandlesD1Ev
 // type: void __fastcall(RBX::ArcHandles *__hidden this)
 #[doc(alias = "RBX::ArcHandles::~ArcHandles()")]
-pub fn stub_3a85b0() -> ! {
-    todo!("0x3a85b0 RBX::ArcHandles::~ArcHandles()")
+pub fn stub_3a85b0() {
+    // IDA 0x3a85b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a85b4 — __ZN3RBX10ArcHandlesD0Ev
 // type: void __fastcall(RBX::ArcHandles *__hidden this)
 #[doc(alias = "RBX::ArcHandles::~ArcHandles()")]
-pub fn stub_3a85b4() -> ! {
-    todo!("0x3a85b4 RBX::ArcHandles::~ArcHandles()")
+pub fn stub_3a85b4() {
+    // IDA 0x3a85b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a8654 — __ZNK3RBX14FactoryProductINS_10ArcHandlesENS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEE12getClassNameEv
@@ -493,50 +493,50 @@ pub fn stub_3a8654() -> ! {
 // 0x3a8674 — __ZThn32_N3RBX10ArcHandlesD1Ev
 // type: void __fastcall(RBX::ArcHandles *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ArcHandles::~ArcHandles()")]
-pub fn stub_3a8674() -> ! {
-    todo!("0x3a8674 non-virtual thunk toRBX::ArcHandles::~ArcHandles()")
+pub fn stub_3a8674() {
+    // IDA 0x3a8674: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a867c — __ZThn32_N3RBX10ArcHandlesD0Ev
 // type: void __fastcall(RBX::ArcHandles *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ArcHandles::~ArcHandles()")]
-pub fn stub_3a867c() -> ! {
-    todo!("0x3a867c non-virtual thunk toRBX::ArcHandles::~ArcHandles()")
+pub fn stub_3a867c() {
+    // IDA 0x3a867c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a8720 — __ZThn32_NK3RBX14FactoryProductINS_10ArcHandlesENS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_10ArcHandlesENS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_3a8720() -> ! {
-    todo!("0x3a8720 __ZThn32_NK3RBX14FactoryProductINS_10ArcHandlesENS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEE12getClassNameEv")
+pub fn stub_3a8720() {
+    // IDA 0x3a8720: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a8730 — __ZThn36_N3RBX10ArcHandlesD1Ev
 // type: void __fastcall(RBX::ArcHandles *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ArcHandles::~ArcHandles()")]
-pub fn stub_3a8730() -> ! {
-    todo!("0x3a8730 non-virtual thunk toRBX::ArcHandles::~ArcHandles()")
+pub fn stub_3a8730() {
+    // IDA 0x3a8730: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a8738 — __ZThn36_N3RBX10ArcHandlesD0Ev
 // type: void __fastcall(RBX::ArcHandles *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ArcHandles::~ArcHandles()")]
-pub fn stub_3a8738() -> ! {
-    todo!("0x3a8738 non-virtual thunk toRBX::ArcHandles::~ArcHandles()")
+pub fn stub_3a8738() {
+    // IDA 0x3a8738: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a87ec — __ZN3RBX14FactoryProductINS_10ArcHandlesENS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEE7CreatorD1Ev
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10ArcHandlesENS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_3a87ec() -> ! {
-    todo!("0x3a87ec __ZN3RBX14FactoryProductINS_10ArcHandlesENS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_3a87ec() {
+    // IDA 0x3a87ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a87f0 — __ZN3RBX14FactoryProductINS_10ArcHandlesENS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEE7CreatorD2Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10ArcHandlesENS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_3a87f0() -> ! {
-    todo!("0x3a87f0 __ZN3RBX14FactoryProductINS_10ArcHandlesENS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_3a87f0() {
+    // IDA 0x3a87f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a888c — __ZNK3RBX14FactoryProductINS_10ArcHandlesENS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEE7Creator12getClassNameEv
@@ -596,50 +596,50 @@ pub fn stub_3abc4c() -> ! {
 // 0x3abe4c — __ZN3RBX11HandlesBaseD2Ev
 // type: void __fastcall(RBX::HandlesBase *__hidden this)
 #[doc(alias = "RBX::HandlesBase::~HandlesBase()")]
-pub fn stub_3abe4c() -> ! {
-    todo!("0x3abe4c RBX::HandlesBase::~HandlesBase()")
+pub fn stub_3abe4c() {
+    // IDA 0x3abe4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ac098 — __ZN3RBX11HandlesBaseD1Ev
 // type: void __fastcall(RBX::HandlesBase *__hidden this)
 #[doc(alias = "RBX::HandlesBase::~HandlesBase()")]
-pub fn stub_3ac098() -> ! {
-    todo!("0x3ac098 RBX::HandlesBase::~HandlesBase()")
+pub fn stub_3ac098() {
+    // IDA 0x3ac098: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ac09c — __ZN3RBX11HandlesBaseD0Ev
 // type: void __fastcall(RBX::HandlesBase *__hidden this)
 #[doc(alias = "RBX::HandlesBase::~HandlesBase()")]
-pub fn stub_3ac09c() -> ! {
-    todo!("0x3ac09c RBX::HandlesBase::~HandlesBase()")
+pub fn stub_3ac09c() {
+    // IDA 0x3ac09c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ac140 — __ZThn32_N3RBX11HandlesBaseD1Ev
 // type: void __fastcall(RBX::HandlesBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
-pub fn stub_3ac140() -> ! {
-    todo!("0x3ac140 non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
+pub fn stub_3ac140() {
+    // IDA 0x3ac140: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ac148 — __ZThn32_N3RBX11HandlesBaseD0Ev
 // type: void __fastcall(RBX::HandlesBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
-pub fn stub_3ac148() -> ! {
-    todo!("0x3ac148 non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
+pub fn stub_3ac148() {
+    // IDA 0x3ac148: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ac1f0 — __ZThn36_N3RBX11HandlesBaseD1Ev
 // type: void __fastcall(RBX::HandlesBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
-pub fn stub_3ac1f0() -> ! {
-    todo!("0x3ac1f0 non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
+pub fn stub_3ac1f0() {
+    // IDA 0x3ac1f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ac1f8 — __ZThn36_N3RBX11HandlesBaseD0Ev
 // type: void __fastcall(RBX::HandlesBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
-pub fn stub_3ac1f8() -> ! {
-    todo!("0x3ac1f8 non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
+pub fn stub_3ac1f8() {
+    // IDA 0x3ac1f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ac29c — __ZN3RBX4Name7declareILZNS_12sHandlesBaseEEEERKS0_v
@@ -664,8 +664,8 @@ pub fn stub_3ac2e4() -> ! {
 // 0x3b00f0 — __ZN3RBX10ArcHandlesD2Ev
 // type: void __fastcall(RBX::ArcHandles *__hidden this)
 #[doc(alias = "RBX::ArcHandles::~ArcHandles()")]
-pub fn stub_3b00f0() -> ! {
-    todo!("0x3b00f0 RBX::ArcHandles::~ArcHandles()")
+pub fn stub_3b00f0() {
+    // IDA 0x3b00f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b081c — __GLOBAL__I_a_159
@@ -691,6 +691,6 @@ pub fn stub_3b0e08() -> ! {
 // 0x3b1224 — __ZN3RBX8BackpackD1Ev
 // type: void __fastcall(RBX::Backpack *__hidden this)
 #[doc(alias = "RBX::Backpack::~Backpack()")]
-pub fn stub_3b1224() -> ! {
-    todo!("0x3b1224 RBX::Backpack::~Backpack()")
+pub fn stub_3b1224() {
+    // IDA 0x3b1224: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

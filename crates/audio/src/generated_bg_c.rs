@@ -31,8 +31,8 @@ pub fn stub_25a540() -> ! {
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EED0Ev")]
-pub fn stub_25a5a8() -> ! {
-    todo!("0x25a5a8 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::~BoundYieldFuncDesc()")
+pub fn stub_25a5a8() {
+    // IDA 0x25a5a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25a68c — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSC_IFvSsEEE
@@ -79,8 +79,8 @@ pub fn stub_25acb8() -> ! {
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EED0Ev")]
-pub fn stub_25ace8() -> ! {
-    todo!("0x25ace8 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::~BoundYieldFuncDesc()")
+pub fn stub_25ace8() {
+    // IDA 0x25ace8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25adb4 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSB_IFvSsEEE
@@ -183,72 +183,72 @@ pub fn stub_25b8c8() -> ! {
 // type: void __fastcall(RBX::Light *__hidden this)
 #[doc(alias = "RBX::Light::~Light()")]
 #[doc(alias = "__ZN3RBX5LightD0Ev")]
-pub fn stub_25baa8() -> ! {
-    todo!("0x25baa8 RBX::Light::~Light()")
+pub fn stub_25baa8() {
+    // IDA 0x25baa8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25bb48 — __ZN3RBX5LightD1Ev
 // type: void __fastcall(RBX::Light *__hidden this)
 #[doc(alias = "RBX::Light::~Light()")]
 #[doc(alias = "__ZN3RBX5LightD1Ev")]
-pub fn stub_25bb48() -> ! {
-    todo!("0x25bb48 RBX::Light::~Light()")
+pub fn stub_25bb48() {
+    // IDA 0x25bb48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25bb4c — __ZThn32_N3RBX5LightD0Ev
 // type: void __fastcall(RBX::Light *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
 #[doc(alias = "__ZThn32_N3RBX5LightD0Ev")]
-pub fn stub_25bb4c() -> ! {
-    todo!("0x25bb4c non-virtual thunk toRBX::Light::~Light()")
+pub fn stub_25bb4c() {
+    // IDA 0x25bb4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25bb54 — __ZThn36_N3RBX5LightD0Ev
 // type: void __fastcall(RBX::Light *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
 #[doc(alias = "__ZThn36_N3RBX5LightD0Ev")]
-pub fn stub_25bb54() -> ! {
-    todo!("0x25bb54 non-virtual thunk toRBX::Light::~Light()")
+pub fn stub_25bb54() {
+    // IDA 0x25bb54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25bb5c — __ZThn92_N3RBX5LightD0Ev
 // type: void __fastcall(RBX::Light *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
 #[doc(alias = "__ZThn92_N3RBX5LightD0Ev")]
-pub fn stub_25bb5c() -> ! {
-    todo!("0x25bb5c non-virtual thunk toRBX::Light::~Light()")
+pub fn stub_25bb5c() {
+    // IDA 0x25bb5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25bb64 — __ZN3RBX5LightD2Ev
 // type: void __fastcall(RBX::Light *__hidden this)
 #[doc(alias = "RBX::Light::~Light()")]
 #[doc(alias = "__ZN3RBX5LightD2Ev")]
-pub fn stub_25bb64() -> ! {
-    todo!("0x25bb64 RBX::Light::~Light()")
+pub fn stub_25bb64() {
+    // IDA 0x25bb64: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25bc20 — __ZThn32_N3RBX5LightD1Ev
 // type: void __fastcall(RBX::Light *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
 #[doc(alias = "__ZThn32_N3RBX5LightD1Ev")]
-pub fn stub_25bc20() -> ! {
-    todo!("0x25bc20 non-virtual thunk toRBX::Light::~Light()")
+pub fn stub_25bc20() {
+    // IDA 0x25bc20: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25bc28 — __ZThn36_N3RBX5LightD1Ev
 // type: void __fastcall(RBX::Light *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
 #[doc(alias = "__ZThn36_N3RBX5LightD1Ev")]
-pub fn stub_25bc28() -> ! {
-    todo!("0x25bc28 non-virtual thunk toRBX::Light::~Light()")
+pub fn stub_25bc28() {
+    // IDA 0x25bc28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25bc30 — __ZThn92_N3RBX5LightD1Ev
 // type: void __fastcall(RBX::Light *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
 #[doc(alias = "__ZThn92_N3RBX5LightD1Ev")]
-pub fn stub_25bc30() -> ! {
-    todo!("0x25bc30 non-virtual thunk toRBX::Light::~Light()")
+pub fn stub_25bc30() {
+    // IDA 0x25bc30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25bc38 — __ZNK3RBX5Light12askSetParentEPKNS_8InstanceE
@@ -279,64 +279,64 @@ pub fn stub_25bc64() -> ! {
 // type: void __fastcall(RBX::PointLight *__hidden this)
 #[doc(alias = "RBX::PointLight::~PointLight()")]
 #[doc(alias = "__ZN3RBX10PointLightD0Ev")]
-pub fn stub_25bdb8() -> ! {
-    todo!("0x25bdb8 RBX::PointLight::~PointLight()")
+pub fn stub_25bdb8() {
+    // IDA 0x25bdb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25be58 — __ZN3RBX10PointLightD1Ev
 // type: void __fastcall(RBX::PointLight *__hidden this)
 #[doc(alias = "RBX::PointLight::~PointLight()")]
 #[doc(alias = "__ZN3RBX10PointLightD1Ev")]
-pub fn stub_25be58() -> ! {
-    todo!("0x25be58 RBX::PointLight::~PointLight()")
+pub fn stub_25be58() {
+    // IDA 0x25be58: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25be5c — __ZThn32_N3RBX10PointLightD0Ev
 // type: void __fastcall(RBX::PointLight *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
 #[doc(alias = "__ZThn32_N3RBX10PointLightD0Ev")]
-pub fn stub_25be5c() -> ! {
-    todo!("0x25be5c non-virtual thunk toRBX::PointLight::~PointLight()")
+pub fn stub_25be5c() {
+    // IDA 0x25be5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25be64 — __ZThn36_N3RBX10PointLightD0Ev
 // type: void __fastcall(RBX::PointLight *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
 #[doc(alias = "__ZThn36_N3RBX10PointLightD0Ev")]
-pub fn stub_25be64() -> ! {
-    todo!("0x25be64 non-virtual thunk toRBX::PointLight::~PointLight()")
+pub fn stub_25be64() {
+    // IDA 0x25be64: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25be6c — __ZThn92_N3RBX10PointLightD0Ev
 // type: void __fastcall(RBX::PointLight *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
 #[doc(alias = "__ZThn92_N3RBX10PointLightD0Ev")]
-pub fn stub_25be6c() -> ! {
-    todo!("0x25be6c non-virtual thunk toRBX::PointLight::~PointLight()")
+pub fn stub_25be6c() {
+    // IDA 0x25be6c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25be74 — __ZThn32_N3RBX10PointLightD1Ev
 // type: void __fastcall(RBX::PointLight *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
 #[doc(alias = "__ZThn32_N3RBX10PointLightD1Ev")]
-pub fn stub_25be74() -> ! {
-    todo!("0x25be74 non-virtual thunk toRBX::PointLight::~PointLight()")
+pub fn stub_25be74() {
+    // IDA 0x25be74: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25be7c — __ZThn36_N3RBX10PointLightD1Ev
 // type: void __fastcall(RBX::PointLight *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
 #[doc(alias = "__ZThn36_N3RBX10PointLightD1Ev")]
-pub fn stub_25be7c() -> ! {
-    todo!("0x25be7c non-virtual thunk toRBX::PointLight::~PointLight()")
+pub fn stub_25be7c() {
+    // IDA 0x25be7c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25be84 — __ZThn92_N3RBX10PointLightD1Ev
 // type: void __fastcall(RBX::PointLight *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
 #[doc(alias = "__ZThn92_N3RBX10PointLightD1Ev")]
-pub fn stub_25be84() -> ! {
-    todo!("0x25be84 non-virtual thunk toRBX::PointLight::~PointLight()")
+pub fn stub_25be84() {
+    // IDA 0x25be84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25be8c — __ZN3RBX9SpotLightC2Ev
@@ -351,64 +351,64 @@ pub fn stub_25be8c() -> ! {
 // type: void __fastcall(RBX::SpotLight *__hidden this)
 #[doc(alias = "RBX::SpotLight::~SpotLight()")]
 #[doc(alias = "__ZN3RBX9SpotLightD0Ev")]
-pub fn stub_25bff0() -> ! {
-    todo!("0x25bff0 RBX::SpotLight::~SpotLight()")
+pub fn stub_25bff0() {
+    // IDA 0x25bff0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25c090 — __ZN3RBX9SpotLightD1Ev
 // type: void __fastcall(RBX::SpotLight *__hidden this)
 #[doc(alias = "RBX::SpotLight::~SpotLight()")]
 #[doc(alias = "__ZN3RBX9SpotLightD1Ev")]
-pub fn stub_25c090() -> ! {
-    todo!("0x25c090 RBX::SpotLight::~SpotLight()")
+pub fn stub_25c090() {
+    // IDA 0x25c090: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25c094 — __ZThn32_N3RBX9SpotLightD0Ev
 // type: void __fastcall(RBX::SpotLight *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
 #[doc(alias = "__ZThn32_N3RBX9SpotLightD0Ev")]
-pub fn stub_25c094() -> ! {
-    todo!("0x25c094 non-virtual thunk toRBX::SpotLight::~SpotLight()")
+pub fn stub_25c094() {
+    // IDA 0x25c094: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25c09c — __ZThn36_N3RBX9SpotLightD0Ev
 // type: void __fastcall(RBX::SpotLight *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
 #[doc(alias = "__ZThn36_N3RBX9SpotLightD0Ev")]
-pub fn stub_25c09c() -> ! {
-    todo!("0x25c09c non-virtual thunk toRBX::SpotLight::~SpotLight()")
+pub fn stub_25c09c() {
+    // IDA 0x25c09c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25c0a4 — __ZThn92_N3RBX9SpotLightD0Ev
 // type: void __fastcall(RBX::SpotLight *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
 #[doc(alias = "__ZThn92_N3RBX9SpotLightD0Ev")]
-pub fn stub_25c0a4() -> ! {
-    todo!("0x25c0a4 non-virtual thunk toRBX::SpotLight::~SpotLight()")
+pub fn stub_25c0a4() {
+    // IDA 0x25c0a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25c0ac — __ZThn32_N3RBX9SpotLightD1Ev
 // type: void __fastcall(RBX::SpotLight *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
 #[doc(alias = "__ZThn32_N3RBX9SpotLightD1Ev")]
-pub fn stub_25c0ac() -> ! {
-    todo!("0x25c0ac non-virtual thunk toRBX::SpotLight::~SpotLight()")
+pub fn stub_25c0ac() {
+    // IDA 0x25c0ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25c0b4 — __ZThn36_N3RBX9SpotLightD1Ev
 // type: void __fastcall(RBX::SpotLight *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
 #[doc(alias = "__ZThn36_N3RBX9SpotLightD1Ev")]
-pub fn stub_25c0b4() -> ! {
-    todo!("0x25c0b4 non-virtual thunk toRBX::SpotLight::~SpotLight()")
+pub fn stub_25c0b4() {
+    // IDA 0x25c0b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25c0bc — __ZThn92_N3RBX9SpotLightD1Ev
 // type: void __fastcall(RBX::SpotLight *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
 #[doc(alias = "__ZThn92_N3RBX9SpotLightD1Ev")]
-pub fn stub_25c0bc() -> ! {
-    todo!("0x25c0bc non-virtual thunk toRBX::SpotLight::~SpotLight()")
+pub fn stub_25c0bc() {
+    // IDA 0x25c0bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25c0c4 — __ZNK3RBX5Light10getEnabledEv
@@ -423,8 +423,8 @@ pub fn stub_25c0c4() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_5LightEbED1Ev")]
-pub fn stub_25c0cc() -> ! {
-    todo!("0x25c0cc RBX::Reflection::PropDescriptor<RBX::Light,bool>::~PropDescriptor()")
+pub fn stub_25c0cc() {
+    // IDA 0x25c0cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25c0f0 — __ZNK3RBX5Light8getColorEv
@@ -439,8 +439,8 @@ pub fn stub_25c0f0() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EED1Ev")]
-pub fn stub_25c100() -> ! {
-    todo!("0x25c100 RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::~PropDescriptor()")
+pub fn stub_25c100() {
+    // IDA 0x25c100: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25c124 — __ZNK3RBX5Light13getBrightnessEv
@@ -455,8 +455,8 @@ pub fn stub_25c124() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_5LightEfED1Ev")]
-pub fn stub_25c128() -> ! {
-    todo!("0x25c128 RBX::Reflection::PropDescriptor<RBX::Light,float>::~PropDescriptor()")
+pub fn stub_25c128() {
+    // IDA 0x25c128: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25c14c — __ZNK3RBX10PointLight8getRangeEv
@@ -471,8 +471,8 @@ pub fn stub_25c14c() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_10PointLightEfED1Ev")]
-pub fn stub_25c150() -> ! {
-    todo!("0x25c150 RBX::Reflection::PropDescriptor<RBX::PointLight,float>::~PropDescriptor()")
+pub fn stub_25c150() {
+    // IDA 0x25c150: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25c174 — __ZNK3RBX9SpotLight8getRangeEv
@@ -487,8 +487,8 @@ pub fn stub_25c174() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9SpotLightEfED1Ev")]
-pub fn stub_25c178() -> ! {
-    todo!("0x25c178 RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::~PropDescriptor()")
+pub fn stub_25c178() {
+    // IDA 0x25c178: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25c19c — __ZNK3RBX9SpotLight8getAngleEv
@@ -519,8 +519,8 @@ pub fn stub_25c1a8() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEED1Ev")]
-pub fn stub_25c1ac() -> ! {
-    todo!("0x25c1ac RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::~EnumPropDescriptor()")
+pub fn stub_25c1ac() {
+    // IDA 0x25c1ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25c4d0 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9SpotLightEEEN5boost10shared_ptrIT_EEv
@@ -543,56 +543,56 @@ pub fn stub_25c580() -> ! {
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpotLight,RBX::SpotLight>(rbx_core::SharedPtr<RBX::SpotLight> const*,RBX::SpotLight *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9SpotLightES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_25c648() -> ! {
-    todo!("0x25c648 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpotLight,RBX::SpotLight>(boost::shared_ptr<RBX::SpotLight> const*,RBX::SpotLight *)const")
+pub fn stub_25c648() {
+    // IDA 0x25c648: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x25c730 — __ZN5boost6detail12shared_countC2IPN3RBX9SpotLightENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX9SpotLightENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_25c730() -> ! {
-    todo!("0x25c730 boost::detail::shared_count::shared_count<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_25c730() {
+    // IDA 0x25c730: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x25c838 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SpotLightENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SpotLightENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_25c838() -> ! {
-    todo!("0x25c838 boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_25c838() {
+    // IDA 0x25c838: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25c83c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SpotLightENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SpotLightENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_25c83c() -> ! {
-    todo!("0x25c83c boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_25c83c() {
+    // IDA 0x25c83c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25c840 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SpotLightENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SpotLightENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_25c840() -> ! {
-    todo!("0x25c840 boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_25c840() {
+    // IDA 0x25c840: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x25c860 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SpotLightENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SpotLightENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_25c860() -> ! {
-    todo!("0x25c860 boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_25c860() {
+    // IDA 0x25c860: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x25c878 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SpotLightENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SpotLightENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_25c878() -> ! {
-    todo!("0x25c878 boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_25c878() {
+    // IDA 0x25c878: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x25c87c — __ZN3RBX4Name13callDoDeclareILZNS_10sSpotLightEEEEvv
@@ -629,56 +629,56 @@ pub fn stub_25cf30() -> ! {
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PointLight,RBX::PointLight>(rbx_core::SharedPtr<RBX::PointLight> const*,RBX::PointLight *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10PointLightES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_25cff8() -> ! {
-    todo!("0x25cff8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PointLight,RBX::PointLight>(boost::shared_ptr<RBX::PointLight> const*,RBX::PointLight *)const")
+pub fn stub_25cff8() {
+    // IDA 0x25cff8: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x25d0e0 — __ZN5boost6detail12shared_countC2IPN3RBX10PointLightENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX10PointLightENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_25d0e0() -> ! {
-    todo!("0x25d0e0 boost::detail::shared_count::shared_count<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_25d0e0() {
+    // IDA 0x25d0e0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x25d1e8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10PointLightENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10PointLightENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_25d1e8() -> ! {
-    todo!("0x25d1e8 boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_25d1e8() {
+    // IDA 0x25d1e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25d1ec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10PointLightENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10PointLightENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_25d1ec() -> ! {
-    todo!("0x25d1ec boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_25d1ec() {
+    // IDA 0x25d1ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25d1f0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10PointLightENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10PointLightENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_25d1f0() -> ! {
-    todo!("0x25d1f0 boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_25d1f0() {
+    // IDA 0x25d1f0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x25d210 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10PointLightENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10PointLightENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_25d210() -> ! {
-    todo!("0x25d210 boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_25d210() {
+    // IDA 0x25d210: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x25d228 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10PointLightENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10PointLightENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_25d228() -> ! {
-    todo!("0x25d228 boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_25d228() {
+    // IDA 0x25d228: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x25d22c — __ZN3RBX4Name13callDoDeclareILZNS_11sPointLightEEEEvv
@@ -712,83 +712,83 @@ pub fn stub_25d5cc() -> ! {
 // 0x25d6ac — __ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Light *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_25d6ac() -> ! {
-    todo!("0x25d6ac __ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_25d6ac() {
+    // IDA 0x25d6ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25d6b0 — __ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::Light *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_25d6b0() -> ! {
-    todo!("0x25d6b0 __ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_25d6b0() {
+    // IDA 0x25d6b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25d750 — __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_25d750() -> ! {
-    todo!("0x25d750 __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_25d750() {
+    // IDA 0x25d750: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25d758 — __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_25d758() -> ! {
-    todo!("0x25d758 __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_25d758() {
+    // IDA 0x25d758: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25d7fc — __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_25d7fc() -> ! {
-    todo!("0x25d7fc __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_25d7fc() {
+    // IDA 0x25d7fc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25d804 — __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_25d804() -> ! {
-    todo!("0x25d804 __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_25d804() {
+    // IDA 0x25d804: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25d8a8 — __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_25d8a8() -> ! {
-    todo!("0x25d8a8 __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_25d8a8() {
+    // IDA 0x25d8a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25d8b0 — __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_25d8b0() -> ! {
-    todo!("0x25d8b0 __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_25d8b0() {
+    // IDA 0x25d8b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25d954 — __ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Light *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_25d954() -> ! {
-    todo!("0x25d954 __ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_25d954() {
+    // IDA 0x25d954: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25d958 — __ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::Light *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_25d958() -> ! {
-    todo!("0x25d958 __ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_25d958() {
+    // IDA 0x25d958: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25d9f8 — __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_25d9f8() -> ! {
-    todo!("0x25d9f8 __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_25d9f8() {
+    // IDA 0x25d9f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x25da00 — __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_25da00() -> ! {
-    todo!("0x25da00 __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_25da00() {
+    // IDA 0x25da00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

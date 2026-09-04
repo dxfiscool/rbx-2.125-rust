@@ -42,8 +42,8 @@ pub fn stub_0x676cc4() -> ! {
 // 0x676e78 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEED0Ev")]
-pub fn stub_0x676e78() -> ! {
-    todo!("0x676e78 __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEED0Ev")
+pub fn stub_0x676e78() {
+    // IDA 0x676e78: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x676ea4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10isReadOnlyEv
@@ -210,8 +210,8 @@ pub fn stub_0x6774d8() -> ! {
 // 0x6775ec — __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsED0Ev")]
-pub fn stub_0x6775ec() -> ! {
-    todo!("0x6775ec __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsED0Ev")
+pub fn stub_0x6775ec() {
+    // IDA 0x6775ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x677618 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE10isReadOnlyEv
@@ -385,8 +385,8 @@ pub fn stub_0x678e98() -> ! {
 // 0x678ea4 — __ZThn96_N3RBX9TextLabel8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::TextLabel::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX9TextLabel8render2dEPNS_5AdornE")]
-pub fn stub_0x678ea4() -> ! {
-    todo!("0x678ea4 __ZThn96_N3RBX9TextLabel8render2dEPNS_5AdornE")
+pub fn stub_0x678ea4() {
+    // IDA 0x678ea4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x678eb0 — __ZN3RBX9TextLabel15render2dContextEPNS_5AdornEPKNS_8InstanceE
@@ -399,120 +399,120 @@ pub fn stub_0x678eb0() -> ! {
 // 0x67912c — __ZThn96_N3RBX9TextLabel15render2dContextEPNS_5AdornEPKNS_8InstanceE
 #[doc(alias = "non-virtual thunk toRBX::TextLabel::render2dContext(RBX::Adorn *,RBX::Instance const*)")]
 #[doc(alias = "__ZThn96_N3RBX9TextLabel15render2dContextEPNS_5AdornEPKNS_8InstanceE")]
-pub fn stub_0x67912c() -> ! {
-    todo!("0x67912c __ZThn96_N3RBX9TextLabel15render2dContextEPNS_5AdornEPKNS_8InstanceE")
+pub fn stub_0x67912c() {
+    // IDA 0x67912c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x679134 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelESsED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9TextLabelESsED1Ev")]
-pub fn stub_0x679134() -> ! {
-    todo!("0x679134 __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelESsED1Ev")
+pub fn stub_0x679134() {
+    // IDA 0x679134: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x679158 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEED1Ev")]
-pub fn stub_0x679158() -> ! {
-    todo!("0x679158 __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEED1Ev")
+pub fn stub_0x679158() {
+    // IDA 0x679158: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x67917c — __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEED1Ev")]
-pub fn stub_0x67917c() -> ! {
-    todo!("0x67917c __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEED1Ev")
+pub fn stub_0x67917c() {
+    // IDA 0x67917c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6791a0 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::BrickColor>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEED1Ev")]
-pub fn stub_0x6791a0() -> ! {
-    todo!("0x6791a0 __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEED1Ev")
+pub fn stub_0x6791a0() {
+    // IDA 0x6791a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6791c4 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D6Color3EED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Color3>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D6Color3EED1Ev")]
-pub fn stub_0x6791c4() -> ! {
-    todo!("0x6791c4 __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D6Color3EED1Ev")
+pub fn stub_0x6791c4() {
+    // IDA 0x6791c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6791e8 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEfED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEfED1Ev")]
-pub fn stub_0x6791e8() -> ! {
-    todo!("0x6791e8 __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEfED1Ev")
+pub fn stub_0x6791e8() {
+    // IDA 0x6791e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x67920c — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEbED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEbED1Ev")]
-pub fn stub_0x67920c() -> ! {
-    todo!("0x67920c __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEbED1Ev")
+pub fn stub_0x67920c() {
+    // IDA 0x67920c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x679230 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEED1Ev")]
-pub fn stub_0x679230() -> ! {
-    todo!("0x679230 __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEED1Ev")
+pub fn stub_0x679230() {
+    // IDA 0x679230: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x679254 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEED1Ev")]
-pub fn stub_0x679254() -> ! {
-    todo!("0x679254 __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEED1Ev")
+pub fn stub_0x679254() {
+    // IDA 0x679254: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x679278 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Vector2>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EED1Ev")]
-pub fn stub_0x679278() -> ! {
-    todo!("0x679278 __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EED1Ev")
+pub fn stub_0x679278() {
+    // IDA 0x679278: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x67929c — __ZN3RBX9TextLabelD1Ev
 #[doc(alias = "RBX::TextLabel::~TextLabel()")]
 #[doc(alias = "__ZN3RBX9TextLabelD1Ev")]
-pub fn stub_0x67929c() -> ! {
-    todo!("0x67929c __ZN3RBX9TextLabelD1Ev")
+pub fn stub_0x67929c() {
+    // IDA 0x67929c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6792b4 — __ZN3RBX9TextLabelD0Ev
 #[doc(alias = "RBX::TextLabel::~TextLabel()")]
 #[doc(alias = "__ZN3RBX9TextLabelD0Ev")]
-pub fn stub_0x6792b4() -> ! {
-    todo!("0x6792b4 __ZN3RBX9TextLabelD0Ev")
+pub fn stub_0x6792b4() {
+    // IDA 0x6792b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x679370 — __ZThn32_N3RBX9TextLabelD1Ev
 #[doc(alias = "non-virtual thunk toRBX::TextLabel::~TextLabel()")]
 #[doc(alias = "__ZThn32_N3RBX9TextLabelD1Ev")]
-pub fn stub_0x679370() -> ! {
-    todo!("0x679370 __ZThn32_N3RBX9TextLabelD1Ev")
+pub fn stub_0x679370() {
+    // IDA 0x679370: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x67938c — __ZThn32_N3RBX9TextLabelD0Ev
 #[doc(alias = "non-virtual thunk toRBX::TextLabel::~TextLabel()")]
 #[doc(alias = "__ZThn32_N3RBX9TextLabelD0Ev")]
-pub fn stub_0x67938c() -> ! {
-    todo!("0x67938c __ZThn32_N3RBX9TextLabelD0Ev")
+pub fn stub_0x67938c() {
+    // IDA 0x67938c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x679448 — __ZThn36_N3RBX9TextLabelD1Ev
 #[doc(alias = "non-virtual thunk toRBX::TextLabel::~TextLabel()")]
 #[doc(alias = "__ZThn36_N3RBX9TextLabelD1Ev")]
-pub fn stub_0x679448() -> ! {
-    todo!("0x679448 __ZThn36_N3RBX9TextLabelD1Ev")
+pub fn stub_0x679448() {
+    // IDA 0x679448: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x679464 — __ZThn36_N3RBX9TextLabelD0Ev
 #[doc(alias = "non-virtual thunk toRBX::TextLabel::~TextLabel()")]
 #[doc(alias = "__ZThn36_N3RBX9TextLabelD0Ev")]
-pub fn stub_0x679464() -> ! {
-    todo!("0x679464 __ZThn36_N3RBX9TextLabelD0Ev")
+pub fn stub_0x679464() {
+    // IDA 0x679464: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x679b18 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEbEC2IMS2_KFbvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -525,8 +525,8 @@ pub fn stub_0x679b18() -> ! {
 // 0x679c24 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEbED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEbED0Ev")]
-pub fn stub_0x679c24() -> ! {
-    todo!("0x679c24 __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEbED0Ev")
+pub fn stub_0x679c24() {
+    // IDA 0x679c24: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x679c50 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE7GetImplIMS2_KFbvEE10isReadOnlyEv
@@ -567,8 +567,8 @@ pub fn stub_0x679d9c() -> ! {
 // 0x679ea8 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Vector2>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EED0Ev")]
-pub fn stub_0x679ea8() -> ! {
-    todo!("0x679ea8 __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EED0Ev")
+pub fn stub_0x679ea8() {
+    // IDA 0x679ea8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x679ed4 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
@@ -609,8 +609,8 @@ pub fn stub_0x67a024() -> ! {
 // 0x67a1d8 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEED0Ev")]
-pub fn stub_0x67a1d8() -> ! {
-    todo!("0x67a1d8 __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEED0Ev")
+pub fn stub_0x67a1d8() {
+    // IDA 0x67a1d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x67a204 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE10isReadOnlyEv
@@ -777,8 +777,8 @@ pub fn stub_0x67a838() -> ! {
 // 0x67a9ec — __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEED0Ev")]
-pub fn stub_0x67a9ec() -> ! {
-    todo!("0x67a9ec __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEED0Ev")
+pub fn stub_0x67a9ec() {
+    // IDA 0x67a9ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x67aa18 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE10isReadOnlyEv

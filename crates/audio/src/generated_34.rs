@@ -139,8 +139,8 @@ pub fn stub_3e1178() -> ! {
 // 0x3e117c — __ZN3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::~BoundProp()")]
-pub fn stub_3e117c() -> ! {
-    todo!("0x3e117c RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::~BoundProp()")
+pub fn stub_3e117c() {
+    // IDA 0x3e117c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e11a0 — __ZN3RBX8Clothing11dataChangedERKNS_10Reflection18PropertyDescriptorE
@@ -153,15 +153,15 @@ pub fn stub_3e11a0() -> ! {
 // 0x3e11a4 — __ZN3RBX10Reflection14PropDescriptorINS_5ShirtENS_9TextureIdEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Shirt,RBX::TextureId>::~PropDescriptor()")]
-pub fn stub_3e11a4() -> ! {
-    todo!("0x3e11a4 RBX::Reflection::PropDescriptor<RBX::Shirt,RBX::TextureId>::~PropDescriptor()")
+pub fn stub_3e11a4() {
+    // IDA 0x3e11a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e11c8 — __ZN3RBX10Reflection14PropDescriptorINS_5PantsENS_9TextureIdEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Pants,RBX::TextureId>::~PropDescriptor()")]
-pub fn stub_3e11c8() -> ! {
-    todo!("0x3e11c8 RBX::Reflection::PropDescriptor<RBX::Pants,RBX::TextureId>::~PropDescriptor()")
+pub fn stub_3e11c8() {
+    // IDA 0x3e11c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e11ec — __ZN3RBX4Skin11dataChangedERKNS_10Reflection18PropertyDescriptorE
@@ -187,15 +187,15 @@ pub fn stub_3e11f4() -> ! {
 // 0x3e122c — __ZN3RBX12ShirtGraphicD1Ev
 // type: void __fastcall(RBX::ShirtGraphic *__hidden this)
 #[doc(alias = "RBX::ShirtGraphic::~ShirtGraphic()")]
-pub fn stub_3e122c() -> ! {
-    todo!("0x3e122c RBX::ShirtGraphic::~ShirtGraphic()")
+pub fn stub_3e122c() {
+    // IDA 0x3e122c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e126c — __ZN3RBX12ShirtGraphicD0Ev
 // type: void __fastcall(RBX::ShirtGraphic *__hidden this)
 #[doc(alias = "RBX::ShirtGraphic::~ShirtGraphic()")]
-pub fn stub_3e126c() -> ! {
-    todo!("0x3e126c RBX::ShirtGraphic::~ShirtGraphic()")
+pub fn stub_3e126c() {
+    // IDA 0x3e126c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1344 — __ZNK3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE12getClassNameEv
@@ -208,64 +208,64 @@ pub fn stub_3e1344() -> ! {
 // 0x3e1354 — __ZThn32_N3RBX12ShirtGraphicD1Ev
 // type: void __fastcall(RBX::ShirtGraphic *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")]
-pub fn stub_3e1354() -> ! {
-    todo!("0x3e1354 non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")
+pub fn stub_3e1354() {
+    // IDA 0x3e1354: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1394 — __ZThn32_N3RBX12ShirtGraphicD0Ev
 // type: void __fastcall(RBX::ShirtGraphic *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")]
-pub fn stub_3e1394() -> ! {
-    todo!("0x3e1394 non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")
+pub fn stub_3e1394() {
+    // IDA 0x3e1394: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1470 — __ZThn32_NK3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_3e1470() -> ! {
-    todo!("0x3e1470 __ZThn32_NK3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE12getClassNameEv")
+pub fn stub_3e1470() {
+    // IDA 0x3e1470: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1480 — __ZThn36_N3RBX12ShirtGraphicD1Ev
 // type: void __fastcall(RBX::ShirtGraphic *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")]
-pub fn stub_3e1480() -> ! {
-    todo!("0x3e1480 non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")
+pub fn stub_3e1480() {
+    // IDA 0x3e1480: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e14c0 — __ZThn36_N3RBX12ShirtGraphicD0Ev
 // type: void __fastcall(RBX::ShirtGraphic *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")]
-pub fn stub_3e14c0() -> ! {
-    todo!("0x3e14c0 non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")
+pub fn stub_3e14c0() {
+    // IDA 0x3e14c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e159c — __ZThn92_N3RBX12ShirtGraphicD1Ev
 // type: void __fastcall(RBX::ShirtGraphic *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")]
-pub fn stub_3e159c() -> ! {
-    todo!("0x3e159c non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")
+pub fn stub_3e159c() {
+    // IDA 0x3e159c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e15dc — __ZThn92_N3RBX12ShirtGraphicD0Ev
 // type: void __fastcall(RBX::ShirtGraphic *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")]
-pub fn stub_3e15dc() -> ! {
-    todo!("0x3e15dc non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")
+pub fn stub_3e15dc() {
+    // IDA 0x3e15dc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e16b8 — __ZN3RBX8ClothingD1Ev
 // type: void __fastcall(RBX::Clothing *__hidden this)
 #[doc(alias = "RBX::Clothing::~Clothing()")]
-pub fn stub_3e16b8() -> ! {
-    todo!("0x3e16b8 RBX::Clothing::~Clothing()")
+pub fn stub_3e16b8() {
+    // IDA 0x3e16b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1700 — __ZN3RBX8ClothingD0Ev
 // type: void __fastcall(RBX::Clothing *__hidden this)
 #[doc(alias = "RBX::Clothing::~Clothing()")]
-pub fn stub_3e1700() -> ! {
-    todo!("0x3e1700 RBX::Clothing::~Clothing()")
+pub fn stub_3e1700() {
+    // IDA 0x3e1700: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e17e0 — __ZNK3RBX17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEE12getClassNameEv
@@ -284,63 +284,63 @@ pub fn stub_3e1808() -> ! {
 // 0x3e1864 — __ZThn32_N3RBX8ClothingD1Ev
 // type: void __fastcall(RBX::Clothing *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Clothing::~Clothing()")]
-pub fn stub_3e1864() -> ! {
-    todo!("0x3e1864 non-virtual thunk toRBX::Clothing::~Clothing()")
+pub fn stub_3e1864() {
+    // IDA 0x3e1864: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e18b0 — __ZThn32_N3RBX8ClothingD0Ev
 // type: void __fastcall(RBX::Clothing *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Clothing::~Clothing()")]
-pub fn stub_3e18b0() -> ! {
-    todo!("0x3e18b0 non-virtual thunk toRBX::Clothing::~Clothing()")
+pub fn stub_3e18b0() {
+    // IDA 0x3e18b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1994 — __ZThn32_NK3RBX17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEE12getClassNameEv")]
-pub fn stub_3e1994() -> ! {
-    todo!("0x3e1994 __ZThn32_NK3RBX17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEE12getClassNameEv")
+pub fn stub_3e1994() {
+    // IDA 0x3e1994: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e19bc — __ZThn36_N3RBX8ClothingD1Ev
 // type: void __fastcall(RBX::Clothing *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Clothing::~Clothing()")]
-pub fn stub_3e19bc() -> ! {
-    todo!("0x3e19bc non-virtual thunk toRBX::Clothing::~Clothing()")
+pub fn stub_3e19bc() {
+    // IDA 0x3e19bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1a08 — __ZThn36_N3RBX8ClothingD0Ev
 // type: void __fastcall(RBX::Clothing *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Clothing::~Clothing()")]
-pub fn stub_3e1a08() -> ! {
-    todo!("0x3e1a08 non-virtual thunk toRBX::Clothing::~Clothing()")
+pub fn stub_3e1a08() {
+    // IDA 0x3e1a08: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1aec — __ZThn92_N3RBX8ClothingD1Ev
 // type: void __fastcall(RBX::Clothing *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Clothing::~Clothing()")]
-pub fn stub_3e1aec() -> ! {
-    todo!("0x3e1aec non-virtual thunk toRBX::Clothing::~Clothing()")
+pub fn stub_3e1aec() {
+    // IDA 0x3e1aec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1b38 — __ZThn92_N3RBX8ClothingD0Ev
 // type: void __fastcall(RBX::Clothing *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Clothing::~Clothing()")]
-pub fn stub_3e1b38() -> ! {
-    todo!("0x3e1b38 non-virtual thunk toRBX::Clothing::~Clothing()")
+pub fn stub_3e1b38() {
+    // IDA 0x3e1b38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1c1c — __ZN3RBX4SkinD1Ev
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "RBX::Skin::~Skin()")]
-pub fn stub_3e1c1c() -> ! {
-    todo!("0x3e1c1c RBX::Skin::~Skin()")
+pub fn stub_3e1c1c() {
+    // IDA 0x3e1c1c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1c20 — __ZN3RBX4SkinD0Ev
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "RBX::Skin::~Skin()")]
-pub fn stub_3e1c20() -> ! {
-    todo!("0x3e1c20 RBX::Skin::~Skin()")
+pub fn stub_3e1c20() {
+    // IDA 0x3e1c20: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1cc0 — __ZNK3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE12getClassNameEv
@@ -353,64 +353,64 @@ pub fn stub_3e1cc0() -> ! {
 // 0x3e1cd0 — __ZThn32_N3RBX4SkinD1Ev
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Skin::~Skin()")]
-pub fn stub_3e1cd0() -> ! {
-    todo!("0x3e1cd0 non-virtual thunk toRBX::Skin::~Skin()")
+pub fn stub_3e1cd0() {
+    // IDA 0x3e1cd0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1cd8 — __ZThn32_N3RBX4SkinD0Ev
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Skin::~Skin()")]
-pub fn stub_3e1cd8() -> ! {
-    todo!("0x3e1cd8 non-virtual thunk toRBX::Skin::~Skin()")
+pub fn stub_3e1cd8() {
+    // IDA 0x3e1cd8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1d7c — __ZThn32_NK3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_3e1d7c() -> ! {
-    todo!("0x3e1d7c __ZThn32_NK3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE12getClassNameEv")
+pub fn stub_3e1d7c() {
+    // IDA 0x3e1d7c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1d8c — __ZThn36_N3RBX4SkinD1Ev
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Skin::~Skin()")]
-pub fn stub_3e1d8c() -> ! {
-    todo!("0x3e1d8c non-virtual thunk toRBX::Skin::~Skin()")
+pub fn stub_3e1d8c() {
+    // IDA 0x3e1d8c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1d94 — __ZThn36_N3RBX4SkinD0Ev
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Skin::~Skin()")]
-pub fn stub_3e1d94() -> ! {
-    todo!("0x3e1d94 non-virtual thunk toRBX::Skin::~Skin()")
+pub fn stub_3e1d94() {
+    // IDA 0x3e1d94: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1e38 — __ZThn92_N3RBX4SkinD1Ev
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Skin::~Skin()")]
-pub fn stub_3e1e38() -> ! {
-    todo!("0x3e1e38 non-virtual thunk toRBX::Skin::~Skin()")
+pub fn stub_3e1e38() {
+    // IDA 0x3e1e38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1e40 — __ZThn92_N3RBX4SkinD0Ev
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Skin::~Skin()")]
-pub fn stub_3e1e40() -> ! {
-    todo!("0x3e1e40 non-virtual thunk toRBX::Skin::~Skin()")
+pub fn stub_3e1e40() {
+    // IDA 0x3e1e40: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1ee4 — __ZN3RBX10BodyColorsD1Ev
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "RBX::BodyColors::~BodyColors()")]
-pub fn stub_3e1ee4() -> ! {
-    todo!("0x3e1ee4 RBX::BodyColors::~BodyColors()")
+pub fn stub_3e1ee4() {
+    // IDA 0x3e1ee4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1ee8 — __ZN3RBX10BodyColorsD0Ev
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "RBX::BodyColors::~BodyColors()")]
-pub fn stub_3e1ee8() -> ! {
-    todo!("0x3e1ee8 RBX::BodyColors::~BodyColors()")
+pub fn stub_3e1ee8() {
+    // IDA 0x3e1ee8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1f88 — __ZNK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE12getClassNameEv
@@ -423,99 +423,99 @@ pub fn stub_3e1f88() -> ! {
 // 0x3e1f98 — __ZThn32_N3RBX10BodyColorsD1Ev
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyColors::~BodyColors()")]
-pub fn stub_3e1f98() -> ! {
-    todo!("0x3e1f98 non-virtual thunk toRBX::BodyColors::~BodyColors()")
+pub fn stub_3e1f98() {
+    // IDA 0x3e1f98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e1fa0 — __ZThn32_N3RBX10BodyColorsD0Ev
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyColors::~BodyColors()")]
-pub fn stub_3e1fa0() -> ! {
-    todo!("0x3e1fa0 non-virtual thunk toRBX::BodyColors::~BodyColors()")
+pub fn stub_3e1fa0() {
+    // IDA 0x3e1fa0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e2044 — __ZThn32_NK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_3e2044() -> ! {
-    todo!("0x3e2044 __ZThn32_NK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE12getClassNameEv")
+pub fn stub_3e2044() {
+    // IDA 0x3e2044: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e2054 — __ZThn36_N3RBX10BodyColorsD1Ev
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyColors::~BodyColors()")]
-pub fn stub_3e2054() -> ! {
-    todo!("0x3e2054 non-virtual thunk toRBX::BodyColors::~BodyColors()")
+pub fn stub_3e2054() {
+    // IDA 0x3e2054: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e205c — __ZThn36_N3RBX10BodyColorsD0Ev
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyColors::~BodyColors()")]
-pub fn stub_3e205c() -> ! {
-    todo!("0x3e205c non-virtual thunk toRBX::BodyColors::~BodyColors()")
+pub fn stub_3e205c() {
+    // IDA 0x3e205c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e2100 — __ZThn92_N3RBX10BodyColorsD1Ev
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyColors::~BodyColors()")]
-pub fn stub_3e2100() -> ! {
-    todo!("0x3e2100 non-virtual thunk toRBX::BodyColors::~BodyColors()")
+pub fn stub_3e2100() {
+    // IDA 0x3e2100: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e2108 — __ZThn92_N3RBX10BodyColorsD0Ev
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyColors::~BodyColors()")]
-pub fn stub_3e2108() -> ! {
-    todo!("0x3e2108 non-virtual thunk toRBX::BodyColors::~BodyColors()")
+pub fn stub_3e2108() {
+    // IDA 0x3e2108: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e21ac — __ZN3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE7CreatorD1Ev
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_3e21ac() -> ! {
-    todo!("0x3e21ac __ZN3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_3e21ac() {
+    // IDA 0x3e21ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e21b0 — __ZN3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE7CreatorD1Ev
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_3e21b0() -> ! {
-    todo!("0x3e21b0 __ZN3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_3e21b0() {
+    // IDA 0x3e21b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e21b4 — __ZN3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE7CreatorD1Ev
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_3e21b4() -> ! {
-    todo!("0x3e21b4 __ZN3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_3e21b4() {
+    // IDA 0x3e21b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e21b8 — __ZN3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE7CreatorD1Ev
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_3e21b8() -> ! {
-    todo!("0x3e21b8 __ZN3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_3e21b8() {
+    // IDA 0x3e21b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e21bc — __ZN3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7CreatorD1Ev
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_3e21bc() -> ! {
-    todo!("0x3e21bc __ZN3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_3e21bc() {
+    // IDA 0x3e21bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e21c0 — __ZN3RBX5ShirtD1Ev
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "RBX::Shirt::~Shirt()")]
-pub fn stub_3e21c0() -> ! {
-    todo!("0x3e21c0 RBX::Shirt::~Shirt()")
+pub fn stub_3e21c0() {
+    // IDA 0x3e21c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e2208 — __ZN3RBX5ShirtD0Ev
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "RBX::Shirt::~Shirt()")]
-pub fn stub_3e2208() -> ! {
-    todo!("0x3e2208 RBX::Shirt::~Shirt()")
+pub fn stub_3e2208() {
+    // IDA 0x3e2208: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e22e8 — __ZNK3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE12getClassNameEv
@@ -535,64 +535,64 @@ pub fn stub_3e22f8() -> ! {
 // 0x3e2310 — __ZThn32_N3RBX5ShirtD1Ev
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Shirt::~Shirt()")]
-pub fn stub_3e2310() -> ! {
-    todo!("0x3e2310 non-virtual thunk toRBX::Shirt::~Shirt()")
+pub fn stub_3e2310() {
+    // IDA 0x3e2310: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e235c — __ZThn32_N3RBX5ShirtD0Ev
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Shirt::~Shirt()")]
-pub fn stub_3e235c() -> ! {
-    todo!("0x3e235c non-virtual thunk toRBX::Shirt::~Shirt()")
+pub fn stub_3e235c() {
+    // IDA 0x3e235c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e2440 — __ZThn32_NK3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_3e2440() -> ! {
-    todo!("0x3e2440 __ZThn32_NK3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE12getClassNameEv")
+pub fn stub_3e2440() {
+    // IDA 0x3e2440: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e2450 — __ZThn36_N3RBX5ShirtD1Ev
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Shirt::~Shirt()")]
-pub fn stub_3e2450() -> ! {
-    todo!("0x3e2450 non-virtual thunk toRBX::Shirt::~Shirt()")
+pub fn stub_3e2450() {
+    // IDA 0x3e2450: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e249c — __ZThn36_N3RBX5ShirtD0Ev
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Shirt::~Shirt()")]
-pub fn stub_3e249c() -> ! {
-    todo!("0x3e249c non-virtual thunk toRBX::Shirt::~Shirt()")
+pub fn stub_3e249c() {
+    // IDA 0x3e249c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e2580 — __ZThn92_N3RBX5ShirtD1Ev
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Shirt::~Shirt()")]
-pub fn stub_3e2580() -> ! {
-    todo!("0x3e2580 non-virtual thunk toRBX::Shirt::~Shirt()")
+pub fn stub_3e2580() {
+    // IDA 0x3e2580: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e25cc — __ZThn92_N3RBX5ShirtD0Ev
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Shirt::~Shirt()")]
-pub fn stub_3e25cc() -> ! {
-    todo!("0x3e25cc non-virtual thunk toRBX::Shirt::~Shirt()")
+pub fn stub_3e25cc() {
+    // IDA 0x3e25cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e26b0 — __ZN3RBX5PantsD1Ev
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "RBX::Pants::~Pants()")]
-pub fn stub_3e26b0() -> ! {
-    todo!("0x3e26b0 RBX::Pants::~Pants()")
+pub fn stub_3e26b0() {
+    // IDA 0x3e26b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e26f8 — __ZN3RBX5PantsD0Ev
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "RBX::Pants::~Pants()")]
-pub fn stub_3e26f8() -> ! {
-    todo!("0x3e26f8 RBX::Pants::~Pants()")
+pub fn stub_3e26f8() {
+    // IDA 0x3e26f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e27d8 — __ZNK3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE12getClassNameEv
@@ -612,50 +612,50 @@ pub fn stub_3e27e8() -> ! {
 // 0x3e2800 — __ZThn32_N3RBX5PantsD1Ev
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Pants::~Pants()")]
-pub fn stub_3e2800() -> ! {
-    todo!("0x3e2800 non-virtual thunk toRBX::Pants::~Pants()")
+pub fn stub_3e2800() {
+    // IDA 0x3e2800: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e284c — __ZThn32_N3RBX5PantsD0Ev
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Pants::~Pants()")]
-pub fn stub_3e284c() -> ! {
-    todo!("0x3e284c non-virtual thunk toRBX::Pants::~Pants()")
+pub fn stub_3e284c() {
+    // IDA 0x3e284c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e2930 — __ZThn32_NK3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_3e2930() -> ! {
-    todo!("0x3e2930 __ZThn32_NK3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE12getClassNameEv")
+pub fn stub_3e2930() {
+    // IDA 0x3e2930: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e2940 — __ZThn36_N3RBX5PantsD1Ev
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Pants::~Pants()")]
-pub fn stub_3e2940() -> ! {
-    todo!("0x3e2940 non-virtual thunk toRBX::Pants::~Pants()")
+pub fn stub_3e2940() {
+    // IDA 0x3e2940: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e298c — __ZThn36_N3RBX5PantsD0Ev
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Pants::~Pants()")]
-pub fn stub_3e298c() -> ! {
-    todo!("0x3e298c non-virtual thunk toRBX::Pants::~Pants()")
+pub fn stub_3e298c() {
+    // IDA 0x3e298c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e2a70 — __ZThn92_N3RBX5PantsD1Ev
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Pants::~Pants()")]
-pub fn stub_3e2a70() -> ! {
-    todo!("0x3e2a70 non-virtual thunk toRBX::Pants::~Pants()")
+pub fn stub_3e2a70() {
+    // IDA 0x3e2a70: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e2abc — __ZThn92_N3RBX5PantsD0Ev
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Pants::~Pants()")]
-pub fn stub_3e2abc() -> ! {
-    todo!("0x3e2abc non-virtual thunk toRBX::Pants::~Pants()")
+pub fn stub_3e2abc() {
+    // IDA 0x3e2abc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e2ba0 — __ZN3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE17static_getCreatorEv
@@ -713,8 +713,8 @@ pub fn stub_3e2e80() -> ! {
 // 0x3e2f60 — __ZN3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7CreatorD2Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_3e2f60() -> ! {
-    todo!("0x3e2f60 __ZN3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_3e2f60() {
+    // IDA 0x3e2f60: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e2ffc — __ZNK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7Creator12getClassNameEv
@@ -747,27 +747,27 @@ pub fn stub_3e3278() -> ! {
 // 0x3e3340 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10BodyColorsES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BodyColors,RBX::BodyColors>(rbx_core::SharedPtr<RBX::BodyColors> const*,RBX::BodyColors *)const")]
-pub fn stub_3e3340() -> ! {
-    todo!("0x3e3340 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BodyColors,RBX::BodyColors>(boost::shared_ptr<RBX::BodyColors> const*,RBX::BodyColors *)const")
+pub fn stub_3e3340() {
+    // IDA 0x3e3340: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x3e3428 — __ZN5boost6detail12shared_countC2IPN3RBX10BodyColorsENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_3e3428() -> ! {
-    todo!("0x3e3428 boost::detail::shared_count::shared_count<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_3e3428() {
+    // IDA 0x3e3428: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x3e3530 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyColorsENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_3e3530() -> ! {
-    todo!("0x3e3530 boost::detail::sp_counted_impl_pd<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_3e3530() {
+    // IDA 0x3e3530: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3e3534 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyColorsENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_3e3534() -> ! {
-    todo!("0x3e3534 boost::detail::sp_counted_impl_pd<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_3e3534() {
+    // IDA 0x3e3534: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

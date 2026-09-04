@@ -38,8 +38,8 @@ pub fn stub_4eae60() -> ! {
 
 // 0x4eb014 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::~EnumPropDescriptor()")]
-pub fn stub_4eb014() -> ! {
-    todo!("0x4eb014 __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEED0Ev")
+pub fn stub_4eb014() {
+    // IDA 0x4eb014: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4eb040 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE10isReadOnlyEv
@@ -190,8 +190,8 @@ pub fn stub_4eb6d8() -> ! {
 
 // 0x4eb88c — __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::~EnumPropDescriptor()")]
-pub fn stub_4eb88c() -> ! {
-    todo!("0x4eb88c __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEED0Ev")
+pub fn stub_4eb88c() {
+    // IDA 0x4eb88c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4eb8b8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE10isReadOnlyEv
@@ -520,8 +520,8 @@ pub fn stub_4ecdb0() -> ! {
 
 // 0x4ecec4 — __ZN3RBX10Reflection14PropDescriptorINS_13VelocityMotorEfED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VelocityMotor,float>::~PropDescriptor()")]
-pub fn stub_4ecec4() -> ! {
-    todo!("0x4ecec4 __ZN3RBX10Reflection14PropDescriptorINS_13VelocityMotorEfED0Ev")
+pub fn stub_4ecec4() {
+    // IDA 0x4ecec4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4ecef0 — __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
@@ -562,8 +562,8 @@ pub fn stub_4ecfe0() -> ! {
 
 // 0x4ed0d8 — __ZN3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEED0Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::~RefPropDescriptor()")]
-pub fn stub_4ed0d8() -> ! {
-    todo!("0x4ed0d8 __ZN3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEED0Ev")
+pub fn stub_4ed0d8() {
+    // IDA 0x4ed0d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4ed108 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE10isReadOnlyEv

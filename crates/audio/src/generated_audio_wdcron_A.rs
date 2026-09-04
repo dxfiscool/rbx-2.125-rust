@@ -40,8 +40,8 @@ pub fn stub_674b94() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,G3D::Vector2>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D7Vector2EED0Ev")]
-pub fn stub_674ca0() -> ! {
-    todo!("0x674ca0 __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D7Vector2EED0Ev")
+pub fn stub_674ca0() {
+    // IDA 0x674ca0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x674ccc — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
@@ -94,8 +94,8 @@ pub fn stub_674e1c() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEED0Ev")]
-pub fn stub_674fd0() -> ! {
-    todo!("0x674fd0 __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEED0Ev")
+pub fn stub_674fd0() {
+    // IDA 0x674fd0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x674ffc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE10isReadOnlyEv
@@ -310,8 +310,8 @@ pub fn stub_675630() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::XAlignment>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEED0Ev")]
-pub fn stub_6757e4() -> ! {
-    todo!("0x6757e4 __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEED0Ev")
+pub fn stub_6757e4() {
+    // IDA 0x6757e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x675810 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE10isReadOnlyEv
@@ -571,8 +571,8 @@ pub fn stub_675fb8() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEfED0Ev")]
-pub fn stub_6760cc() -> ! {
-    todo!("0x6760cc __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEfED0Ev")
+pub fn stub_6760cc() {
+    // IDA 0x6760cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6760f8 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE10isReadOnlyEv
@@ -625,8 +625,8 @@ pub fn stub_676150() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,G3D::Color3>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D6Color3EED0Ev")]
-pub fn stub_676264() -> ! {
-    todo!("0x676264 __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D6Color3EED0Ev")
+pub fn stub_676264() {
+    // IDA 0x676264: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x676290 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -679,8 +679,8 @@ pub fn stub_67630c() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::BrickColor>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEED0Ev")]
-pub fn stub_676420() -> ! {
-    todo!("0x676420 __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEED0Ev")
+pub fn stub_676420() {
+    // IDA 0x676420: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x67644c — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE10isReadOnlyEv
@@ -733,8 +733,8 @@ pub fn stub_6764b0() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEED0Ev")]
-pub fn stub_676664() -> ! {
-    todo!("0x676664 __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEED0Ev")
+pub fn stub_676664() {
+    // IDA 0x676664: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x676690 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10isReadOnlyEv

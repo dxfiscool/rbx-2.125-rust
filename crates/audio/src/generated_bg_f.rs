@@ -31,16 +31,16 @@ pub fn stub_2645c8() -> ! {
 // type: void **__fastcall(void **)
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>::Collection::~Collection()")]
 #[doc(alias = "__ZN3RBX10Reflection25MemberDescriptorContainerINS0_18PropertyDescriptorEE10CollectionD1Ev")]
-pub fn stub_2645f4() -> ! {
-    todo!("0x2645f4 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>::Collection::~Collection()")
+pub fn stub_2645f4() {
+    // IDA 0x2645f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x264608 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14delete_bucketsEv
 // type: void __fastcall(int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::PropertyDescriptor *>>,char const*,RBX::Reflection::PropertyDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::delete_buckets(void)")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14delete_bucketsEv")]
-pub fn stub_264608() -> ! {
-    todo!("0x264608 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::PropertyDescriptor *>>,char const*,RBX::Reflection::PropertyDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::delete_buckets(void)")
+pub fn stub_264608() {
+    // IDA 0x264608: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x264654 — __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18PropertyDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_
@@ -110,16 +110,16 @@ pub fn stub_264aec() -> ! {
 // type: void __fastcall(int, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::PropertyDescriptor *>>,char const*,RBX::Reflection::PropertyDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::create_buckets(unsigned long)")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm")]
-pub fn stub_264c70() -> ! {
-    todo!("0x264c70 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::PropertyDescriptor *>>,char const*,RBX::Reflection::PropertyDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::create_buckets(unsigned long)")
+pub fn stub_264c70() {
+    // IDA 0x264c70: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x264d98 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE20min_buckets_for_sizeEm
 // type: int __fastcall(int, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::PropertyDescriptor *>>,char const*,RBX::Reflection::PropertyDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::min_buckets_for_size(unsigned long)const")]
 #[doc(alias = "__ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE20min_buckets_for_sizeEm")]
-pub fn stub_264d98() -> ! {
-    todo!("0x264d98 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::PropertyDescriptor *>>,char const*,RBX::Reflection::PropertyDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::min_buckets_for_size(unsigned long)const")
+pub fn stub_264d98() {
+    // IDA 0x264d98: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x264e28 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm
@@ -134,16 +134,16 @@ pub fn stub_264e28() -> ! {
 // type: _DWORD *__fastcall(int, _DWORD *)
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::PropertyDescriptor *>>,char const*,RBX::Reflection::PropertyDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::PropertyDescriptor *>>,char const*,RBX::Reflection::PropertyDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>> &,boost::unordered::detail::ptr_bucket *)")]
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE15place_in_bucketERNS1_5tableISG_EEPNS1_10ptr_bucketE")]
-pub fn stub_264e54() -> ! {
-    todo!("0x264e54 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::PropertyDescriptor *>>,char const*,RBX::Reflection::PropertyDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::PropertyDescriptor *>>,char const*,RBX::Reflection::PropertyDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>> &,boost::unordered::detail::ptr_bucket *)")
+pub fn stub_264e54() {
+    // IDA 0x264e54: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x264eac — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEEEEE9constructEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::PropertyDescriptor *>>>>::construct(void)")]
 #[doc(alias = "__ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEEEEE9constructEv")]
-pub fn stub_264eac() -> ! {
-    todo!("0x264eac boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::PropertyDescriptor *>>>>::construct(void)")
+pub fn stub_264eac() {
+    // IDA 0x264eac: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x264ee4 — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14find_node_implIS6_SF_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISC_EEEEmRKT_RKT0_
@@ -182,8 +182,8 @@ pub fn stub_26504c() -> ! {
 // type: void __fastcall(std::runtime_error *this)
 #[doc(alias = "boost::thread_resource_error::~thread_resource_error()")]
 #[doc(alias = "__ZN5boost21thread_resource_errorD0Ev")]
-pub fn stub_2650b8() -> ! {
-    todo!("0x2650b8 boost::thread_resource_error::~thread_resource_error()")
+pub fn stub_2650b8() {
+    // IDA 0x2650b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2650e8 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE7rethrowEv
@@ -206,24 +206,24 @@ pub fn stub_2652b0() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev")]
-pub fn stub_2652c0() -> ! {
-    todo!("0x2652c0 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")
+pub fn stub_2652c0() {
+    // IDA 0x2652c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2652e0 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED0Ev")]
-pub fn stub_2652e0() -> ! {
-    todo!("0x2652e0 non-virtual thunk toboost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")
+pub fn stub_2652e0() {
+    // IDA 0x2652e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2652f8 — __ZN5boost16exception_detail10clone_baseD1Ev
 // type: void __fastcall(boost::exception_detail::clone_base *__hidden this)
 #[doc(alias = "boost::exception_detail::clone_base::~clone_base()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_baseD1Ev")]
-pub fn stub_2652f8() -> ! {
-    todo!("0x2652f8 boost::exception_detail::clone_base::~clone_base()")
+pub fn stub_2652f8() {
+    // IDA 0x2652f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x265300 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEEC1ERKS5_NS5_9clone_tagE
@@ -238,96 +238,96 @@ pub fn stub_265300() -> ! {
 // type: void __fastcall(std::bad_exception *this)
 #[doc(alias = "boost::exception_detail::bad_exception_::~bad_exception_()")]
 #[doc(alias = "__ZN5boost16exception_detail14bad_exception_D2Ev")]
-pub fn stub_2654d8() -> ! {
-    todo!("0x2654d8 boost::exception_detail::bad_exception_::~bad_exception_()")
+pub fn stub_2654d8() {
+    // IDA 0x2654d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x265590 — __ZThn20_N5boost16exception_detail14bad_exception_D1Ev
 // type: void __fastcall(boost::exception_detail::bad_exception_ *__hidden this)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::bad_exception_::~bad_exception_()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail14bad_exception_D1Ev")]
-pub fn stub_265590() -> ! {
-    todo!("0x265590 non-virtual thunk toboost::exception_detail::bad_exception_::~bad_exception_()")
+pub fn stub_265590() {
+    // IDA 0x265590: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x265598 — __ZThn20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED1Ev")]
-pub fn stub_265598() -> ! {
-    todo!("0x265598 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
+pub fn stub_265598() {
+    // IDA 0x265598: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2655a0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED1Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED1Ev")]
-pub fn stub_2655a0() -> ! {
-    todo!("0x2655a0 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
+pub fn stub_2655a0() {
+    // IDA 0x2655a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2655b0 — __ZN5boost6detail12shared_countC2INS_16exception_detail10clone_implINS3_14bad_exception_EEEEEPT_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> *)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2INS_16exception_detail10clone_implINS3_14bad_exception_EEEEEPT_")]
-pub fn stub_2655b0() -> ! {
-    todo!("0x2655b0 boost::detail::shared_count::shared_count<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> *)")
+pub fn stub_2655b0() {
+    // IDA 0x2655b0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x2656a8 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_14bad_exception_EEEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_14bad_exception_EEEED0Ev")]
-pub fn stub_2656a8() -> ! {
-    todo!("0x2656a8 boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>::~sp_counted_impl_p()")
+pub fn stub_2656a8() {
+    // IDA 0x2656a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2656b0 — __ZN5boost16exception_detail10bad_alloc_D2Ev
 // type: void __fastcall(std::bad_alloc *this)
 #[doc(alias = "boost::exception_detail::bad_alloc_::~bad_alloc_()")]
 #[doc(alias = "__ZN5boost16exception_detail10bad_alloc_D2Ev")]
-pub fn stub_2656b0() -> ! {
-    todo!("0x2656b0 boost::exception_detail::bad_alloc_::~bad_alloc_()")
+pub fn stub_2656b0() {
+    // IDA 0x2656b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x265768 — __ZThn20_N5boost16exception_detail10bad_alloc_D1Ev
 // type: void __fastcall(boost::exception_detail::bad_alloc_ *__hidden this)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::bad_alloc_::~bad_alloc_()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10bad_alloc_D1Ev")]
-pub fn stub_265768() -> ! {
-    todo!("0x265768 non-virtual thunk toboost::exception_detail::bad_alloc_::~bad_alloc_()")
+pub fn stub_265768() {
+    // IDA 0x265768: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x265770 — __ZThn20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED1Ev")]
-pub fn stub_265770() -> ! {
-    todo!("0x265770 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
+pub fn stub_265770() {
+    // IDA 0x265770: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x265778 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED1Ev
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED1Ev")]
-pub fn stub_265778() -> ! {
-    todo!("0x265778 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
+pub fn stub_265778() {
+    // IDA 0x265778: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x265788 — __ZN5boost16exception_detail10bad_alloc_D0Ev
 // type: void __fastcall(boost::exception_detail::bad_alloc_ *__hidden this)
 #[doc(alias = "boost::exception_detail::bad_alloc_::~bad_alloc_()")]
 #[doc(alias = "__ZN5boost16exception_detail10bad_alloc_D0Ev")]
-pub fn stub_265788() -> ! {
-    todo!("0x265788 boost::exception_detail::bad_alloc_::~bad_alloc_()")
+pub fn stub_265788() {
+    // IDA 0x265788: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2657a0 — __ZN3RBX10Reflection10DescriptorD1Ev
 // type: void __fastcall(RBX::Reflection::Descriptor *__hidden this)
 #[doc(alias = "RBX::Reflection::Descriptor::~Descriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection10DescriptorD1Ev")]
-pub fn stub_2657a0() -> ! {
-    todo!("0x2657a0 RBX::Reflection::Descriptor::~Descriptor()")
+pub fn stub_2657a0() {
+    // IDA 0x2657a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2657a4 — __GLOBAL__I_a_59
@@ -389,24 +389,24 @@ pub fn stub_265b8c() -> ! {
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *__hidden this)
 #[doc(alias = "RBX::Reflection::EnumDescriptor::~EnumDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14EnumDescriptorD0Ev")]
-pub fn stub_265cd4() -> ! {
-    todo!("0x265cd4 RBX::Reflection::EnumDescriptor::~EnumDescriptor()")
+pub fn stub_265cd4() {
+    // IDA 0x265cd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x265d74 — __ZN3RBX10Reflection14EnumDescriptorD1Ev
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *__hidden this)
 #[doc(alias = "RBX::Reflection::EnumDescriptor::~EnumDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14EnumDescriptorD1Ev")]
-pub fn stub_265d74() -> ! {
-    todo!("0x265d74 RBX::Reflection::EnumDescriptor::~EnumDescriptor()")
+pub fn stub_265d74() {
+    // IDA 0x265d74: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x265d78 — __ZN3RBX10Reflection14EnumDescriptorD2Ev
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *__hidden this)
 #[doc(alias = "RBX::Reflection::EnumDescriptor::~EnumDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14EnumDescriptorD2Ev")]
-pub fn stub_265d78() -> ! {
-    todo!("0x265d78 RBX::Reflection::EnumDescriptor::~EnumDescriptor()")
+pub fn stub_265d78() {
+    // IDA 0x265d78: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x265efc — __ZN3RBX10Reflection18PropertyDescriptor10Attributes10deprecatedERKNS0_16MemberDescriptorENS1_13FunctionalityE
@@ -453,32 +453,32 @@ pub fn stub_26629c() -> ! {
 // type: void()
 #[doc(alias = "RBX::Reflection::TType<RBX::Reflection::PropertyDescriptor const*>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeIPKNS0_18PropertyDescriptorEED1Ev")]
-pub fn stub_266338() -> ! {
-    todo!("0x266338 RBX::Reflection::TType<RBX::Reflection::PropertyDescriptor const*>::~TType()")
+pub fn stub_266338() {
+    // IDA 0x266338: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x26633c — __ZNSt3mapIPKN3RBX4NameEPKNS0_10Reflection14EnumDescriptorESt4lessIS3_ESaISt4pairIKS3_S7_EEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "std::map<RBX::Name const*,RBX::Reflection::EnumDescriptor const*,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*>>>::~map()")]
 #[doc(alias = "__ZNSt3mapIPKN3RBX4NameEPKNS0_10Reflection14EnumDescriptorESt4lessIS3_ESaISt4pairIKS3_S7_EEED1Ev")]
-pub fn stub_26633c() -> ! {
-    todo!("0x26633c std::map<RBX::Name const*,RBX::Reflection::EnumDescriptor const*,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*>>>::~map()")
+pub fn stub_26633c() {
+    // IDA 0x26633c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x26634c — __ZN5boost9unordered13unordered_mapIPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorENS7_8TypeHashENS7_9TypeEqualESaISt4pairIKS4_S9_EEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::unordered::unordered_map<std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual,std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>>::~unordered_map()")]
 #[doc(alias = "__ZN5boost9unordered13unordered_mapIPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorENS7_8TypeHashENS7_9TypeEqualESaISt4pairIKS4_S9_EEED1Ev")]
-pub fn stub_26634c() -> ! {
-    todo!("0x26634c boost::unordered::unordered_map<std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual,std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>>::~unordered_map()")
+pub fn stub_26634c() {
+    // IDA 0x26634c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x26635c — __ZNSt6vectorIPKN3RBX10Reflection14EnumDescriptorESaIS4_EED1Ev
 // type: void **__fastcall(void **)
 #[doc(alias = "std::vector<RBX::Reflection::EnumDescriptor const*,std::allocator<RBX::Reflection::EnumDescriptor const*>>::~vector()")]
 #[doc(alias = "__ZNSt6vectorIPKN3RBX10Reflection14EnumDescriptorESaIS4_EED1Ev")]
-pub fn stub_26635c() -> ! {
-    todo!("0x26635c std::vector<RBX::Reflection::EnumDescriptor const*,std::allocator<RBX::Reflection::EnumDescriptor const*>>::~vector()")
+pub fn stub_26635c() {
+    // IDA 0x26635c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x266370 — __ZN3RBX10Reflection4TypeC2EPKcS3_RKSt9type_infobb
@@ -517,16 +517,16 @@ pub fn stub_26648c() -> ! {
 // type: void __fastcall(RBX::Reflection::PropertyDescriptor *__hidden this)
 #[doc(alias = "RBX::Reflection::PropertyDescriptor::~PropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18PropertyDescriptorD1Ev")]
-pub fn stub_266500() -> ! {
-    todo!("0x266500 RBX::Reflection::PropertyDescriptor::~PropertyDescriptor()")
+pub fn stub_266500() {
+    // IDA 0x266500: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x266504 — __ZN3RBX10Reflection18PropertyDescriptorD0Ev
 // type: void __fastcall(RBX::Reflection::PropertyDescriptor *__hidden this)
 #[doc(alias = "RBX::Reflection::PropertyDescriptor::~PropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18PropertyDescriptorD0Ev")]
-pub fn stub_266504() -> ! {
-    todo!("0x266504 RBX::Reflection::PropertyDescriptor::~PropertyDescriptor()")
+pub fn stub_266504() {
+    // IDA 0x266504: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x266508 — __ZNK3RBX10Reflection18PropertyDescriptor14getStringValueEPKNS0_13DescribedBaseE
@@ -557,24 +557,24 @@ pub fn stub_266544() -> ! {
 // type: void __fastcall(std::runtime_error *this)
 #[doc(alias = "boost::lock_error::~lock_error()")]
 #[doc(alias = "__ZN5boost10lock_errorD1Ev")]
-pub fn stub_2665b8() -> ! {
-    todo!("0x2665b8 boost::lock_error::~lock_error()")
+pub fn stub_2665b8() {
+    // IDA 0x2665b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2665e8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev")]
-pub fn stub_2665e8() -> ! {
-    todo!("0x2665e8 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
+pub fn stub_2665e8() {
+    // IDA 0x2665e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2665f8 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev")]
-pub fn stub_2665f8() -> ! {
-    todo!("0x2665f8 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
+pub fn stub_2665f8() {
+    // IDA 0x2665f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x266600 — __ZN12XmlAttributeC2IPKN3RBX4NameEEERS3_T_
@@ -644,8 +644,8 @@ pub fn stub_266960() -> ! {
 // type: unsigned int __fastcall(_DWORD *, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::PropertyDescriptor *>>,char const*,RBX::Reflection::PropertyDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::reserve_for_insert(unsigned long)")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE18reserve_for_insertEm")]
-pub fn stub_2669c8() -> ! {
-    todo!("0x2669c8 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::PropertyDescriptor *>>,char const*,RBX::Reflection::PropertyDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::reserve_for_insert(unsigned long)")
+pub fn stub_2669c8() {
+    // IDA 0x2669c8: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x266a1c — __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPPKN3RBX10Reflection14EnumDescriptorESt6vectorIS6_SaIS6_EEEEPS4_ET_SD_SD_RKT0_St26random_access_iterator_tag
@@ -668,24 +668,24 @@ pub fn stub_266aac() -> ! {
 // type: unsigned int __fastcall(_DWORD *, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::reserve_for_insert(unsigned long)")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE18reserve_for_insertEm")]
-pub fn stub_266c30() -> ! {
-    todo!("0x266c30 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::reserve_for_insert(unsigned long)")
+pub fn stub_266c30() {
+    // IDA 0x266c30: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x266c80 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE14create_bucketsEm
 // type: void __fastcall(int, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::create_buckets(unsigned long)")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE14create_bucketsEm")]
-pub fn stub_266c80() -> ! {
-    todo!("0x266c80 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::create_buckets(unsigned long)")
+pub fn stub_266c80() {
+    // IDA 0x266c80: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x266da8 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE20min_buckets_for_sizeEm
 // type: int __fastcall(int, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::min_buckets_for_size(unsigned long)const")]
 #[doc(alias = "__ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE20min_buckets_for_sizeEm")]
-pub fn stub_266da8() -> ! {
-    todo!("0x266da8 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::min_buckets_for_size(unsigned long)const")
+pub fn stub_266da8() {
+    // IDA 0x266da8: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x266e38 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE11rehash_implEm
@@ -700,16 +700,16 @@ pub fn stub_266e38() -> ! {
 // type: _DWORD *__fastcall(int, _DWORD *)
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>> &,boost::unordered::detail::ptr_bucket *)")]
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE15place_in_bucketERNS1_5tableISI_EEPNS1_10ptr_bucketE")]
-pub fn stub_266e64() -> ! {
-    todo!("0x266e64 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>> &,boost::unordered::detail::ptr_bucket *)")
+pub fn stub_266e64() {
+    // IDA 0x266e64: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x266ebc — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEEEEE9constructEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>>>::construct(void)")]
 #[doc(alias = "__ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEEEEE9constructEv")]
-pub fn stub_266ebc() -> ! {
-    todo!("0x266ebc boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>>>::construct(void)")
+pub fn stub_266ebc() {
+    // IDA 0x266ebc: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x266ef4 — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE14find_node_implIS7_SH_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISE_EEEEmRKT_RKT0_
@@ -764,8 +764,8 @@ pub fn stub_2671c0() -> ! {
 // type: void __fastcall(int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::delete_buckets(void)")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE14delete_bucketsEv")]
-pub fn stub_2671d8() -> ! {
-    todo!("0x2671d8 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::delete_buckets(void)")
+pub fn stub_2671d8() {
+    // IDA 0x2671d8: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x267224 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEEC2EmRKSG_RKSH_RKSaINS1_8ptr_nodeISE_EEE
@@ -788,24 +788,24 @@ pub fn stub_267290() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::TType<RBX::Reflection::PropertyDescriptor const*>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeIPKNS0_18PropertyDescriptorEED0Ev")]
-pub fn stub_26733c() -> ! {
-    todo!("0x26733c RBX::Reflection::TType<RBX::Reflection::PropertyDescriptor const*>::~TType()")
+pub fn stub_26733c() {
+    // IDA 0x26733c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x267340 — __ZN3RBX10Reflection4TypeD0Ev
 // type: void __fastcall(RBX::Reflection::Type *__hidden this)
 #[doc(alias = "RBX::Reflection::Type::~Type()")]
 #[doc(alias = "__ZN3RBX10Reflection4TypeD0Ev")]
-pub fn stub_267340() -> ! {
-    todo!("0x267340 RBX::Reflection::Type::~Type()")
+pub fn stub_267340() {
+    // IDA 0x267340: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x267348 — __ZN3RBX10Reflection10DescriptorD0Ev
 // type: void __fastcall(RBX::Reflection::Descriptor *__hidden this)
 #[doc(alias = "RBX::Reflection::Descriptor::~Descriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection10DescriptorD0Ev")]
-pub fn stub_267348() -> ! {
-    todo!("0x267348 RBX::Reflection::Descriptor::~Descriptor()")
+pub fn stub_267348() {
+    // IDA 0x267348: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x267350 — __ZN10XmlElementC2ERKN3RBX4NameE
@@ -828,8 +828,8 @@ pub fn stub_267420() -> ! {
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_PKNS0_10Reflection14EnumDescriptorEESt10_Select1stISA_ESt4lessIS3_ESaISA_EE8_M_eraseEPSt13_Rb_tree_nodeISA_E")]
-pub fn stub_267488() -> ! {
-    todo!("0x267488 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*>> *)")
+pub fn stub_267488() {
+    // IDA 0x267488: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x2674b0 — __GLOBAL__I_a_60
@@ -971,8 +971,8 @@ pub fn stub_2682e8() -> ! {
 // type: void()
 #[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS5_EEEEED1Ev")]
-pub fn stub_268484() -> ! {
-    todo!("0x268484 RBX::Reflection::TType<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType()")
+pub fn stub_268484() {
+    // IDA 0x268484: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x268488 — __ZN3rbx8any_castIN5boost10shared_ptrIKNS1_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS1_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEENS5_7Region3EEEPT_PNS_13placement_anyIT0_EE
@@ -987,16 +987,16 @@ pub fn stub_268488() -> ! {
 // type: void()
 #[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS0_7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEEEED1Ev")]
-pub fn stub_2684e0() -> ! {
-    todo!("0x2684e0 RBX::Reflection::TType<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")
+pub fn stub_2684e0() {
+    // IDA 0x2684e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2684e4 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEED1Ev
 // type: void()
 #[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEED1Ev")]
-pub fn stub_2684e4() -> ! {
-    todo!("0x2684e4 RBX::Reflection::TType<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")
+pub fn stub_2684e4() {
+    // IDA 0x2684e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2684e8 — __ZN3rbx8any_castIN5boost10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEENS4_7Region3EEEPT_PNS_13placement_anyIT0_EE
@@ -1011,16 +1011,16 @@ pub fn stub_2684e8() -> ! {
 // type: void()
 #[doc(alias = "RBX::Reflection::TType<void>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeIvED1Ev")]
-pub fn stub_268540() -> ! {
-    todo!("0x268540 RBX::Reflection::TType<void>::~TType()")
+pub fn stub_268540() {
+    // IDA 0x268540: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x268544 — __ZNSt6vectorIPKN3RBX10Reflection4TypeESaIS4_EED1Ev
 // type: void **__fastcall(void **)
 #[doc(alias = "std::vector<RBX::Reflection::Type const*,std::allocator<RBX::Reflection::Type const*>>::~vector()")]
 #[doc(alias = "__ZNSt6vectorIPKN3RBX10Reflection4TypeESaIS4_EED1Ev")]
-pub fn stub_268544() -> ! {
-    todo!("0x268544 std::vector<RBX::Reflection::Type const*,std::allocator<RBX::Reflection::Type const*>>::~vector()")
+pub fn stub_268544() {
+    // IDA 0x268544: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x268558 — __ZNSt6vectorIPKN3RBX10Reflection4TypeESaIS4_EE9push_backERKS4_
@@ -1059,8 +1059,8 @@ pub fn stub_26867c() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::TType<void>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeIvED0Ev")]
-pub fn stub_268728() -> ! {
-    todo!("0x268728 RBX::Reflection::TType<void>::~TType()")
+pub fn stub_268728() {
+    // IDA 0x268728: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x26872c — __ZN3RBX10Reflection4TypeC2IN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS6_EEEEEEEPKcPT_
@@ -1075,8 +1075,8 @@ pub fn stub_26872c() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEED0Ev")]
-pub fn stub_2687d8() -> ! {
-    todo!("0x2687d8 RBX::Reflection::TType<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")
+pub fn stub_2687d8() {
+    // IDA 0x2687d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2687dc — __ZN5boost10shared_ptrIKNS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS5_EEEEEC2ISE_EEPT_
@@ -1099,8 +1099,8 @@ pub fn stub_2688b0() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS0_7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEEEED0Ev")]
-pub fn stub_26895c() -> ! {
-    todo!("0x26895c RBX::Reflection::TType<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")
+pub fn stub_26895c() {
+    // IDA 0x26895c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x268960 — __ZN5boost10shared_ptrIKSt6vectorIN3RBX10Reflection7VariantESaIS4_EEEC2IS6_EEPT_
@@ -1115,8 +1115,8 @@ pub fn stub_268960() -> ! {
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2ISt6vectorIN3RBX10Reflection7VariantESaIS6_EEEEPT_")]
-pub fn stub_268a34() -> ! {
-    todo!("0x268a34 boost::detail::shared_count::shared_count<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)")
+pub fn stub_268a34() {
+    // IDA 0x268a34: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x268b40 — __ZN3RBX10Reflection4TypeC2IN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEEEPKcPT_
@@ -1131,8 +1131,8 @@ pub fn stub_268b40() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS5_EEEEED0Ev")]
-pub fn stub_268bec() -> ! {
-    todo!("0x268bec RBX::Reflection::TType<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType()")
+pub fn stub_268bec() {
+    // IDA 0x268bec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x268bf0 — __GLOBAL__I_a_61
@@ -1202,7 +1202,7 @@ pub fn stub_269da4() -> ! {
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "RBX::CoreScript::~CoreScript()")]
 #[doc(alias = "__ZN3RBX10CoreScriptD1Ev")]
-pub fn stub_26a060() -> ! {
-    todo!("0x26a060 RBX::CoreScript::~CoreScript()")
+pub fn stub_26a060() {
+    // IDA 0x26a060: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 

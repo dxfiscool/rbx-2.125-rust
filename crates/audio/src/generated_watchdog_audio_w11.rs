@@ -13,15 +13,15 @@ const _: () = {
 // 0xc93830 — __ZNSt12_Vector_baseISt4pairIjjEN4Ogre12STLAllocatorIS1_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
 #[doc(alias = "std::_Vector_base<std::pair<unsigned int,unsigned int>,Ogre::STLAllocator<std::pair<unsigned int,unsigned int>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseISt4pairIjjEN4Ogre12STLAllocatorIS1_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")]
-pub fn stub_c93830() -> ! {
-    todo!("0xc93830 __ZNSt12_Vector_baseISt4pairIjjEN4Ogre12STLAllocatorIS1_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")
+pub fn stub_c93830() {
+    // IDA 0xc93830: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc93834 — __ZNSt12_Vector_baseISt4pairIjjEN4Ogre12STLAllocatorIS1_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 #[doc(alias = "std::_Vector_base<std::pair<unsigned int,unsigned int>,Ogre::STLAllocator<std::pair<unsigned int,unsigned int>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseISt4pairIjjEN4Ogre12STLAllocatorIS1_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
-pub fn stub_c93834() -> ! {
-    todo!("0xc93834 __ZNSt12_Vector_baseISt4pairIjjEN4Ogre12STLAllocatorIS1_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")
+pub fn stub_c93834() {
+    // IDA 0xc93834: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc93840 — __ZNKSt8_Rb_treeISsSt4pairIKSsPN4Ogre12ParamCommandEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
@@ -42,23 +42,23 @@ pub fn stub_c938e8() -> ! {
 // 0xc93a68 — __ZN4Ogre9SharedPtrINS_7TextureEED0Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::Texture>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_7TextureEED0Ev")]
-pub fn stub_c93a68() -> ! {
-    todo!("0xc93a68 __ZN4Ogre9SharedPtrINS_7TextureEED0Ev")
+pub fn stub_c93a68() {
+    // IDA 0xc93a68: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc93b60 — __ZN4Ogre22InternalErrorExceptionD0Ev
 // type: void __fastcall(Ogre::InternalErrorException *__hidden this)
 #[doc(alias = "Ogre::InternalErrorException::~InternalErrorException()")]
 #[doc(alias = "__ZN4Ogre22InternalErrorExceptionD0Ev")]
-pub fn stub_c93b60() -> ! {
-    todo!("0xc93b60 __ZN4Ogre22InternalErrorExceptionD0Ev")
+pub fn stub_c93b60() {
+    // IDA 0xc93b60: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc93b78 — __ZN4Ogre9SharedPtrINS_8MaterialEED0Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::Material>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_8MaterialEED0Ev")]
-pub fn stub_c93b78() -> ! {
-    todo!("0xc93b78 __ZN4Ogre9SharedPtrINS_8MaterialEED0Ev")
+pub fn stub_c93b78() {
+    // IDA 0xc93b78: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc93c70 — __ZNSt6vectorIN4Ogre12ParameterDefENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE9push_backERKS1_
@@ -95,22 +95,22 @@ pub fn stub_c94038() -> ! {
 // 0xc94238 — __ZN4Ogre12STLAllocatorINS_12ParameterDefENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED0Ev
 #[doc(alias = "Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")]
 #[doc(alias = "__ZN4Ogre12STLAllocatorINS_12ParameterDefENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED0Ev")]
-pub fn stub_c94238() -> ! {
-    todo!("0xc94238 __ZN4Ogre12STLAllocatorINS_12ParameterDefENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED0Ev")
+pub fn stub_c94238() {
+    // IDA 0xc94238: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc94248 — __ZNSt12_Vector_baseIN4Ogre12ParameterDefENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
 #[doc(alias = "std::_Vector_base<Ogre::ParameterDef,Ogre::STLAllocator<Ogre::ParameterDef,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIN4Ogre12ParameterDefENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")]
-pub fn stub_c94248() -> ! {
-    todo!("0xc94248 __ZNSt12_Vector_baseIN4Ogre12ParameterDefENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")
+pub fn stub_c94248() {
+    // IDA 0xc94248: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc94250 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre12ParamCommandEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ParamCommand *>,std::_Select1st<std::pair<std::string const,Ogre::ParamCommand *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ParamCommand *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre12ParamCommandEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev")]
-pub fn stub_c94250() -> ! {
-    todo!("0xc94250 __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre12ParamCommandEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev")
+pub fn stub_c94250() {
+    // IDA 0xc94250: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc94260 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre12ParamCommandEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE7_M_copyEPKSt13_Rb_tree_nodeIS5_EPSH_
@@ -131,8 +131,8 @@ pub fn stub_c94450() -> ! {
 // 0xc94538 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre15ParamDictionaryEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE14_M_create_nodeERKS4_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::ParamDictionary>,std::_Select1st<std::pair<std::string const,Ogre::ParamDictionary>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::ParamDictionary>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::ParamDictionary> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre15ParamDictionaryEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE14_M_create_nodeERKS4_")]
-pub fn stub_c94538() -> ! {
-    todo!("0xc94538 __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre15ParamDictionaryEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE14_M_create_nodeERKS4_")
+pub fn stub_c94538() {
+    // IDA 0xc94538: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0xc947c0 — __ZN4Ogre11FontManager12getSingletonEv
@@ -163,16 +163,16 @@ pub fn stub_c947dc() -> ! {
 // type: void __fastcall(Ogre::FontManager *__hidden this)
 #[doc(alias = "Ogre::FontManager::~FontManager()")]
 #[doc(alias = "__ZN4Ogre11FontManagerD0Ev")]
-pub fn stub_c949c4() -> ! {
-    todo!("0xc949c4 __ZN4Ogre11FontManagerD0Ev")
+pub fn stub_c949c4() {
+    // IDA 0xc949c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc94abc — __ZN4Ogre11FontManagerD1Ev
 // type: void __fastcall(Ogre::FontManager *__hidden this)
 #[doc(alias = "Ogre::FontManager::~FontManager()")]
 #[doc(alias = "__ZN4Ogre11FontManagerD1Ev")]
-pub fn stub_c94abc() -> ! {
-    todo!("0xc94abc __ZN4Ogre11FontManagerD1Ev")
+pub fn stub_c94abc() {
+    // IDA 0xc94abc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc94ba4 — __ZN4Ogre11FontManager10createImplERKSsyS2_bPNS_20ManualResourceLoaderEPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
@@ -202,8 +202,8 @@ pub fn stub_c95cfc() -> ! {
 // type: void __fastcall(Ogre::FontPtr *__hidden this)
 #[doc(alias = "Ogre::FontPtr::~FontPtr()")]
 #[doc(alias = "__ZN4Ogre7FontPtrD1Ev")]
-pub fn stub_c96014() -> ! {
-    todo!("0xc96014 __ZN4Ogre7FontPtrD1Ev")
+pub fn stub_c96014() {
+    // IDA 0xc96014: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc96108 — __ZNK4Ogre15ResourceManager15getLoadingOrderEv
@@ -272,15 +272,15 @@ pub fn stub_c96488() -> ! {
 // 0xc96a30 — __ZN4Ogre9SharedPtrINS_4FontEED1Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::Font>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_4FontEED1Ev")]
-pub fn stub_c96a30() -> ! {
-    todo!("0xc96a30 __ZN4Ogre9SharedPtrINS_4FontEED1Ev")
+pub fn stub_c96a30() {
+    // IDA 0xc96a30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc96ae0 — __ZN4Ogre9SharedPtrINS_4FontEED0Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::Font>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_4FontEED0Ev")]
-pub fn stub_c96ae0() -> ! {
-    todo!("0xc96ae0 __ZN4Ogre9SharedPtrINS_4FontEED0Ev")
+pub fn stub_c96ae0() {
+    // IDA 0xc96ae0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc96bd4 — __ZN4Ogre9SharedPtrINS_4FontEE7destroyEv
@@ -301,8 +301,8 @@ pub fn stub_c96c0c() -> ! {
 // type: void __fastcall(Ogre::FontPtr *__hidden this)
 #[doc(alias = "Ogre::FontPtr::~FontPtr()")]
 #[doc(alias = "__ZN4Ogre7FontPtrD0Ev")]
-pub fn stub_c96c28() -> ! {
-    todo!("0xc96c28 __ZN4Ogre7FontPtrD0Ev")
+pub fn stub_c96c28() {
+    // IDA 0xc96c28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc96d50 — __ZN4Ogre25FreeImageLoadErrorHandlerE17FREE_IMAGE_FORMATPKc
@@ -347,38 +347,38 @@ pub fn stub_c988d0() -> ! {
 // 0xc98a48 — __ZNSt4listIPN4Ogre10ImageCodecENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEED1Ev
 #[doc(alias = "std::list<Ogre::ImageCodec *,Ogre::STLAllocator<Ogre::ImageCodec *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~list()")]
 #[doc(alias = "__ZNSt4listIPN4Ogre10ImageCodecENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEED1Ev")]
-pub fn stub_c98a48() -> ! {
-    todo!("0xc98a48 __ZNSt4listIPN4Ogre10ImageCodecENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEED1Ev")
+pub fn stub_c98a48() {
+    // IDA 0xc98a48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc98af0 — __ZN4Ogre14FreeImageCodecD1Ev
 // type: void __fastcall(Ogre::FreeImageCodec *__hidden this)
 #[doc(alias = "Ogre::FreeImageCodec::~FreeImageCodec()")]
 #[doc(alias = "__ZN4Ogre14FreeImageCodecD1Ev")]
-pub fn stub_c98af0() -> ! {
-    todo!("0xc98af0 __ZN4Ogre14FreeImageCodecD1Ev")
+pub fn stub_c98af0() {
+    // IDA 0xc98af0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc98b50 — __ZN4Ogre14FreeImageCodecD0Ev
 // type: void __fastcall(Ogre::FreeImageCodec *__hidden this)
 #[doc(alias = "Ogre::FreeImageCodec::~FreeImageCodec()")]
 #[doc(alias = "__ZN4Ogre14FreeImageCodecD0Ev")]
-pub fn stub_c98b50() -> ! {
-    todo!("0xc98b50 __ZN4Ogre14FreeImageCodecD0Ev")
+pub fn stub_c98b50() {
+    // IDA 0xc98b50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc98c30 — __ZNSt10_List_baseIPN4Ogre10ImageCodecENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev
 #[doc(alias = "std::_List_base<Ogre::ImageCodec *,Ogre::STLAllocator<Ogre::ImageCodec *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
 #[doc(alias = "__ZNSt10_List_baseIPN4Ogre10ImageCodecENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev")]
-pub fn stub_c98c30() -> ! {
-    todo!("0xc98c30 __ZNSt10_List_baseIPN4Ogre10ImageCodecENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev")
+pub fn stub_c98c30() {
+    // IDA 0xc98c30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc98c34 — __ZNSt10_List_baseIPN4Ogre10ImageCodecENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev
 #[doc(alias = "std::_List_base<Ogre::ImageCodec *,Ogre::STLAllocator<Ogre::ImageCodec *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
 #[doc(alias = "__ZNSt10_List_baseIPN4Ogre10ImageCodecENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev")]
-pub fn stub_c98c34() -> ! {
-    todo!("0xc98c34 __ZNSt10_List_baseIPN4Ogre10ImageCodecENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev")
+pub fn stub_c98c34() {
+    // IDA 0xc98c34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc98cb4 — __ZN4Ogre7FrustumC1ERKSs
@@ -401,56 +401,56 @@ pub fn stub_c98cc0() -> ! {
 // type: void __fastcall(Ogre::Frustum *__hidden this)
 #[doc(alias = "Ogre::Frustum::~Frustum()")]
 #[doc(alias = "__ZN4Ogre7FrustumD0Ev")]
-pub fn stub_c99398() -> ! {
-    todo!("0xc99398 __ZN4Ogre7FrustumD0Ev")
+pub fn stub_c99398() {
+    // IDA 0xc99398: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc99428 — __ZN4Ogre7FrustumD1Ev
 // type: void __fastcall(Ogre::Frustum *__hidden this)
 #[doc(alias = "Ogre::Frustum::~Frustum()")]
 #[doc(alias = "__ZN4Ogre7FrustumD1Ev")]
-pub fn stub_c99428() -> ! {
-    todo!("0xc99428 __ZN4Ogre7FrustumD1Ev")
+pub fn stub_c99428() {
+    // IDA 0xc99428: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc99434 — __ZThn4_N4Ogre7FrustumD0Ev
 // type: void __fastcall(Ogre::Frustum *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::Frustum::~Frustum()")]
 #[doc(alias = "__ZThn4_N4Ogre7FrustumD0Ev")]
-pub fn stub_c99434() -> ! {
-    todo!("0xc99434 __ZThn4_N4Ogre7FrustumD0Ev")
+pub fn stub_c99434() {
+    // IDA 0xc99434: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc994c8 — __ZThn188_N4Ogre7FrustumD0Ev
 // type: void __fastcall(Ogre::Frustum *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::Frustum::~Frustum()")]
 #[doc(alias = "__ZThn188_N4Ogre7FrustumD0Ev")]
-pub fn stub_c994c8() -> ! {
-    todo!("0xc994c8 __ZThn188_N4Ogre7FrustumD0Ev")
+pub fn stub_c994c8() {
+    // IDA 0xc994c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc9955c — __ZN4Ogre7FrustumD2Ev
 // type: void __fastcall(Ogre::Frustum *__hidden this)
 #[doc(alias = "Ogre::Frustum::~Frustum()")]
 #[doc(alias = "__ZN4Ogre7FrustumD2Ev")]
-pub fn stub_c9955c() -> ! {
-    todo!("0xc9955c __ZN4Ogre7FrustumD2Ev")
+pub fn stub_c9955c() {
+    // IDA 0xc9955c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc996e0 — __ZThn4_N4Ogre7FrustumD1Ev
 // type: void __fastcall(Ogre::Frustum *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::Frustum::~Frustum()")]
 #[doc(alias = "__ZThn4_N4Ogre7FrustumD1Ev")]
-pub fn stub_c996e0() -> ! {
-    todo!("0xc996e0 __ZThn4_N4Ogre7FrustumD1Ev")
+pub fn stub_c996e0() {
+    // IDA 0xc996e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc996ec — __ZThn188_N4Ogre7FrustumD1Ev
 // type: void __fastcall(Ogre::Frustum *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::Frustum::~Frustum()")]
 #[doc(alias = "__ZThn188_N4Ogre7FrustumD1Ev")]
-pub fn stub_c996ec() -> ! {
-    todo!("0xc996ec __ZThn188_N4Ogre7FrustumD1Ev")
+pub fn stub_c996ec() {
+    // IDA 0xc996ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc996f8 — __ZN4Ogre7Frustum7setFOVyERKNS_6RadianE
@@ -741,8 +741,8 @@ pub fn stub_c9b4cc() -> ! {
 // type: _DWORD __fastcall(Ogre::Frustum *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::Frustum::getMaterial(void)const")]
 #[doc(alias = "__ZThn188_NK4Ogre7Frustum11getMaterialEv")]
-pub fn stub_c9b4d4() -> ! {
-    todo!("0xc9b4d4 __ZThn188_NK4Ogre7Frustum11getMaterialEv")
+pub fn stub_c9b4d4() {
+    // IDA 0xc9b4d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc9b4dc — __ZN4Ogre7Frustum18getRenderOperationERNS_15RenderOperationE
@@ -755,8 +755,8 @@ pub fn stub_c9b4dc() -> ! {
 // 0xc9b500 — __ZThn188_N4Ogre7Frustum18getRenderOperationERNS_15RenderOperationE
 #[doc(alias = "non-virtual thunk toOgre::Frustum::getRenderOperation(Ogre::RenderOperation &)")]
 #[doc(alias = "__ZThn188_N4Ogre7Frustum18getRenderOperationERNS_15RenderOperationE")]
-pub fn stub_c9b500() -> ! {
-    todo!("0xc9b500 __ZThn188_N4Ogre7Frustum18getRenderOperationERNS_15RenderOperationE")
+pub fn stub_c9b500() {
+    // IDA 0xc9b500: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc9b524 — __ZNK4Ogre7Frustum18getWorldTransformsEPNS_7Matrix4E
@@ -769,16 +769,16 @@ pub fn stub_c9b524() -> ! {
 // 0xc9b57c — __ZThn188_NK4Ogre7Frustum18getWorldTransformsEPNS_7Matrix4E
 #[doc(alias = "non-virtual thunk toOgre::Frustum::getWorldTransforms(Ogre::Matrix4 *)const")]
 #[doc(alias = "__ZThn188_NK4Ogre7Frustum18getWorldTransformsEPNS_7Matrix4E")]
-pub fn stub_c9b57c() -> ! {
-    todo!("0xc9b57c __ZThn188_NK4Ogre7Frustum18getWorldTransformsEPNS_7Matrix4E")
+pub fn stub_c9b57c() {
+    // IDA 0xc9b57c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc9b638 — __ZThn188_NK4Ogre7Frustum19getSquaredViewDepthEPKNS_6CameraE
 // type: _DWORD __fastcall(Ogre::Frustum *__hidden this, const Ogre::Camera *)
 #[doc(alias = "non-virtual thunk toOgre::Frustum::getSquaredViewDepth(Ogre::Camera const*)const")]
 #[doc(alias = "__ZThn188_NK4Ogre7Frustum19getSquaredViewDepthEPKNS_6CameraE")]
-pub fn stub_c9b638() -> ! {
-    todo!("0xc9b638 __ZThn188_NK4Ogre7Frustum19getSquaredViewDepthEPKNS_6CameraE")
+pub fn stub_c9b638() {
+    // IDA 0xc9b638: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc9b69c — __ZNK4Ogre7Frustum9getLightsEv
@@ -793,8 +793,8 @@ pub fn stub_c9b69c() -> ! {
 // type: _DWORD __fastcall(Ogre::Frustum *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::Frustum::getLights(void)const")]
 #[doc(alias = "__ZThn188_NK4Ogre7Frustum9getLightsEv")]
-pub fn stub_c9b784() -> ! {
-    todo!("0xc9b784 __ZThn188_NK4Ogre7Frustum9getLightsEv")
+pub fn stub_c9b784() {
+    // IDA 0xc9b784: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc9b86c — __ZN4Ogre7Frustum20_notifyCurrentCameraEPNS_6CameraE

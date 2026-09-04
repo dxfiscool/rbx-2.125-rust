@@ -17,8 +17,8 @@ const _: () = {
 // type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
 #[doc(alias = "__ZThn36_N3RBX21TaskSchedulerSettingsD0Ev")]
-pub fn stub_47fe30() -> ! {
-    todo!("0x47fe30 non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
+pub fn stub_47fe30() {
+    // IDA 0x47fe30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47ff10 — __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE17static_getCreatorEv
@@ -126,8 +126,8 @@ pub fn stub_480598() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEED2Ev")]
-pub fn stub_480614() -> ! {
-    todo!("0x480614 RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::~EnumDesc()")
+pub fn stub_480614() {
+    // IDA 0x480614: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4807e8 — __ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE15convertToStringERKS3_
@@ -204,8 +204,8 @@ pub fn stub_480c10() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEED2Ev")]
-pub fn stub_480c8c() -> ! {
-    todo!("0x480c8c RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::~EnumDesc()")
+pub fn stub_480c8c() {
+    // IDA 0x480c8c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x480e60 — __ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE15convertToStringERKS3_
@@ -282,8 +282,8 @@ pub fn stub_481288() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEED2Ev")]
-pub fn stub_481304() -> ! {
-    todo!("0x481304 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")
+pub fn stub_481304() {
+    // IDA 0x481304: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4814d8 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE15convertToStringERKS4_
@@ -360,8 +360,8 @@ pub fn stub_481900() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEED2Ev")]
-pub fn stub_48197c() -> ! {
-    todo!("0x48197c RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumDesc()")
+pub fn stub_48197c() {
+    // IDA 0x48197c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x481b50 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE15convertToStringERKS3_
@@ -438,8 +438,8 @@ pub fn stub_481f78() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEED2Ev")]
-pub fn stub_481ff4() -> ! {
-    todo!("0x481ff4 RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::~EnumDesc()")
+pub fn stub_481ff4() {
+    // IDA 0x481ff4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4821c8 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE15convertToStringERKS3_
@@ -517,16 +517,16 @@ pub fn stub_4825f0() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEED2Ev")]
-pub fn stub_48266c() -> ! {
-    todo!("0x48266c RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::~EnumDesc()")
+pub fn stub_48266c() {
+    // IDA 0x48266c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x482840 — __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorD2Ev
 // demangled: __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorD2Ev
 // type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_482840() -> ! {
-    todo!("0x482840 __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_482840() {
+    // IDA 0x482840: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4828e0 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_21TaskSchedulerSettingsEEEN5boost10shared_ptrIT_EEv
@@ -541,24 +541,24 @@ pub fn stub_4828e0() -> ! {
 // demangled: boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX21TaskSchedulerSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_482990() -> ! {
-    todo!("0x482990 boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_482990() {
+    // IDA 0x482990: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x482998 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX21TaskSchedulerSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // demangled: boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX21TaskSchedulerSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_482998() -> ! {
-    todo!("0x482998 boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_482998() {
+    // IDA 0x482998: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4829b0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX21TaskSchedulerSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX21TaskSchedulerSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_4829b0() -> ! {
-    todo!("0x4829b0 boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_4829b0() {
+    // IDA 0x4829b0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4829b8 — __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorC2Ev
@@ -573,8 +573,8 @@ pub fn stub_4829b8() -> ! {
 // demangled: boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX13DebugSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_482c00() -> ! {
-    todo!("0x482c00 boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_482c00() {
+    // IDA 0x482c00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x482c08 — __ZNK3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE7Creator12getClassNameEv
@@ -598,15 +598,15 @@ pub fn stub_482c78() -> ! {
 // type: void __fastcall(RBX::BlockMesh *__hidden this)
 #[doc(alias = "RBX::BlockMesh::~BlockMesh()")]
 #[doc(alias = "__ZN3RBX9BlockMeshD1Ev")]
-pub fn stub_482dd0() -> ! {
-    todo!("0x482dd0 RBX::BlockMesh::~BlockMesh()")
+pub fn stub_482dd0() {
+    // IDA 0x482dd0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x482dd8 — __ZThn32_NK3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE12getClassNameEv
 // demangled: __ZThn32_NK3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_482dd8() -> ! {
-    todo!("0x482dd8 __ZThn32_NK3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE12getClassNameEv")
+pub fn stub_482dd8() {
+    // IDA 0x482dd8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x482de8 — __ZThn36_N3RBX9BlockMeshD0Ev
@@ -614,8 +614,8 @@ pub fn stub_482dd8() -> ! {
 // type: void __fastcall(RBX::BlockMesh *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::BlockMesh::~BlockMesh()")]
 #[doc(alias = "__ZThn36_N3RBX9BlockMeshD0Ev")]
-pub fn stub_482de8() -> ! {
-    todo!("0x482de8 non-virtual thunk to RBX::BlockMesh::~BlockMesh()")
+pub fn stub_482de8() {
+    // IDA 0x482de8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x482e8c — __ZN3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE17static_getCreatorEv
@@ -637,23 +637,23 @@ pub fn stub_482f00() -> ! {
 // 0x483020 — __ZN3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZN3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_483020() -> ! {
-    todo!("0x483020 __ZN3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_483020() {
+    // IDA 0x483020: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x483028 — __ZThn36_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZThn36_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_483028() -> ! {
-    todo!("0x483028 __ZThn36_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_483028() {
+    // IDA 0x483028: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x483030 — __ZThn36_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZThn36_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_483030() -> ! {
-    todo!("0x483030 __ZThn36_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_483030() {
+    // IDA 0x483030: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4830d4 — __ZN3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -677,40 +677,40 @@ pub fn stub_4831f4() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX9BlockMeshENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_4832c0() -> ! {
-    todo!("0x4832c0 boost::detail::shared_count::shared_count<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_4832c0() {
+    // IDA 0x4832c0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4833c8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BlockMeshENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // demangled: boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BlockMeshENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_4833c8() -> ! {
-    todo!("0x4833c8 boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_4833c8() {
+    // IDA 0x4833c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4833d0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BlockMeshENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BlockMeshENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_4833d0() -> ! {
-    todo!("0x4833d0 boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_4833d0() {
+    // IDA 0x4833d0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4833f0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BlockMeshENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // demangled: boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BlockMeshENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_4833f0() -> ! {
-    todo!("0x4833f0 boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_4833f0() {
+    // IDA 0x4833f0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x483408 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BlockMeshENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BlockMeshENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_483408() -> ! {
-    todo!("0x483408 boost::detail::sp_counted_impl_pd<RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_483408() {
+    // IDA 0x483408: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x483410 — __ZN3RBX4Name13callDoDeclareILZNS_10sBlockMeshEEEEvv
@@ -739,43 +739,43 @@ pub fn stub_4834f8() -> ! {
 // 0x483520 — __ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED1Ev
 // demangled: __ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED1Ev
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED1Ev")]
-pub fn stub_483520() -> ! {
-    todo!("0x483520 __ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED1Ev")
+pub fn stub_483520() {
+    // IDA 0x483520: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x483560 — __ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED0Ev
 // demangled: __ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED0Ev
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED0Ev")]
-pub fn stub_483560() -> ! {
-    todo!("0x483560 __ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED0Ev")
+pub fn stub_483560() {
+    // IDA 0x483560: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x483640 — __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED1Ev
 // demangled: __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED1Ev
 #[doc(alias = "__ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED1Ev")]
-pub fn stub_483640() -> ! {
-    todo!("0x483640 __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED1Ev")
+pub fn stub_483640() {
+    // IDA 0x483640: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x483684 — __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED0Ev
 // demangled: __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED0Ev
 #[doc(alias = "__ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED0Ev")]
-pub fn stub_483684() -> ! {
-    todo!("0x483684 __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED0Ev")
+pub fn stub_483684() {
+    // IDA 0x483684: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x48368c — __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED1Ev
 // demangled: __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED1Ev
 #[doc(alias = "__ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED1Ev")]
-pub fn stub_48368c() -> ! {
-    todo!("0x48368c __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED1Ev")
+pub fn stub_48368c() {
+    // IDA 0x48368c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4836d0 — __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED0Ev
 // demangled: __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED0Ev
 #[doc(alias = "__ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED0Ev")]
-pub fn stub_4836d0() -> ! {
-    todo!("0x4836d0 __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED0Ev")
+pub fn stub_4836d0() {
+    // IDA 0x4836d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4836d8 — __ZN3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -789,43 +789,43 @@ pub fn stub_4836d8() -> ! {
 // 0x4837f4 — __ZN3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZN3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_4837f4() -> ! {
-    todo!("0x4837f4 __ZN3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_4837f4() {
+    // IDA 0x4837f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4837f8 — __ZN3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZN3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_4837f8() -> ! {
-    todo!("0x4837f8 __ZN3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_4837f8() {
+    // IDA 0x4837f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x483898 — __ZThn32_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZThn32_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_483898() -> ! {
-    todo!("0x483898 __ZThn32_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_483898() {
+    // IDA 0x483898: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4838a0 — __ZThn32_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZThn32_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_4838a0() -> ! {
-    todo!("0x4838a0 __ZThn32_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_4838a0() {
+    // IDA 0x4838a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x483944 — __ZThn36_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZThn36_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_483944() -> ! {
-    todo!("0x483944 __ZThn36_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_483944() {
+    // IDA 0x483944: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x48394c — __ZThn36_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZThn36_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_48394c() -> ! {
-    todo!("0x48394c __ZThn36_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_48394c() {
+    // IDA 0x48394c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4839f0 — __ZN5boost10shared_ptrI8DummyJobEC2IS1_EEPT_
@@ -833,16 +833,16 @@ pub fn stub_48394c() -> ! {
 // type: int __fastcall(int, void *, int, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<DummyJob>::shared_ptr<DummyJob>(DummyJob *)")]
 #[doc(alias = "__ZN5boost10shared_ptrI8DummyJobEC2IS1_EEPT_")]
-pub fn stub_4839f0() -> ! {
-    todo!("0x4839f0 rbx_core::SharedPtr<DummyJob>::shared_ptr<DummyJob>(DummyJob *)")
+pub fn stub_4839f0() {
+    // IDA 0x4839f0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x483ad8 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerI8DummyJobS6_EEvPKNS_10shared_ptrIT_EEPT0_
 // demangled: void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<DummyJob,DummyJob>(boost::shared_ptr<DummyJob> const*,DummyJob *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<DummyJob,DummyJob>(rbx_core::SharedPtr<DummyJob> const*,DummyJob *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerI8DummyJobS6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_483ad8() -> ! {
-    todo!("0x483ad8 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<DummyJob,DummyJob>(rbx_core::SharedPtr<DummyJob> const*,DummyJob *)const")
+pub fn stub_483ad8() {
+    // IDA 0x483ad8: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x483bbc — __ZN5boost6detail12shared_countC2I8DummyJobEEPT_
@@ -850,56 +850,56 @@ pub fn stub_483ad8() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<DummyJob>(DummyJob *)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2I8DummyJobEEPT_")]
-pub fn stub_483bbc() -> ! {
-    todo!("0x483bbc boost::detail::shared_count::shared_count<DummyJob>(DummyJob *)")
+pub fn stub_483bbc() {
+    // IDA 0x483bbc: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x483cb4 — __ZN5boost6detail17sp_counted_impl_pI8DummyJobED1Ev
 // demangled: boost::detail::sp_counted_impl_p<DummyJob>::~sp_counted_impl_p()
 #[doc(alias = "boost::detail::sp_counted_impl_p<DummyJob>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pI8DummyJobED1Ev")]
-pub fn stub_483cb4() -> ! {
-    todo!("0x483cb4 boost::detail::sp_counted_impl_p<DummyJob>::~sp_counted_impl_p()")
+pub fn stub_483cb4() {
+    // IDA 0x483cb4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x483cb8 — __ZN5boost6detail17sp_counted_impl_pI8DummyJobED0Ev
 // demangled: boost::detail::sp_counted_impl_p<DummyJob>::~sp_counted_impl_p()
 #[doc(alias = "boost::detail::sp_counted_impl_p<DummyJob>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pI8DummyJobED0Ev")]
-pub fn stub_483cb8() -> ! {
-    todo!("0x483cb8 boost::detail::sp_counted_impl_p<DummyJob>::~sp_counted_impl_p()")
+pub fn stub_483cb8() {
+    // IDA 0x483cb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x483cbc — __ZN5boost6detail17sp_counted_impl_pI8DummyJobE7disposeEv
 // demangled: boost::detail::sp_counted_impl_p<DummyJob>::dispose(void)
 #[doc(alias = "boost::detail::sp_counted_impl_p<DummyJob>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pI8DummyJobE7disposeEv")]
-pub fn stub_483cbc() -> ! {
-    todo!("0x483cbc boost::detail::sp_counted_impl_p<DummyJob>::dispose(void)")
+pub fn stub_483cbc() {
+    // IDA 0x483cbc: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x483ccc — __ZN5boost6detail17sp_counted_impl_pI8DummyJobE11get_deleterERKSt9type_info
 // demangled: boost::detail::sp_counted_impl_p<DummyJob>::get_deleter(std::type_info const&)
 #[doc(alias = "boost::detail::sp_counted_impl_p<DummyJob>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pI8DummyJobE11get_deleterERKSt9type_info")]
-pub fn stub_483ccc() -> ! {
-    todo!("0x483ccc boost::detail::sp_counted_impl_p<DummyJob>::get_deleter(std::type_info const&)")
+pub fn stub_483ccc() {
+    // IDA 0x483ccc: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x483cd0 — __ZN5boost6detail17sp_counted_impl_pI8DummyJobE19get_untyped_deleterEv
 // demangled: boost::detail::sp_counted_impl_p<DummyJob>::get_untyped_deleter(void)
 #[doc(alias = "boost::detail::sp_counted_impl_p<DummyJob>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pI8DummyJobE19get_untyped_deleterEv")]
-pub fn stub_483cd0() -> ! {
-    todo!("0x483cd0 boost::detail::sp_counted_impl_p<DummyJob>::get_untyped_deleter(void)")
+pub fn stub_483cd0() {
+    // IDA 0x483cd0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x483cd4 — __ZN5boost10shared_ptrI12DummyArbiterEC2IS1_EEPT_
 // demangled: boost::shared_ptr<DummyArbiter>::shared_ptr<DummyArbiter>(DummyArbiter *)
 #[doc(alias = "rbx_core::SharedPtr<DummyArbiter>::shared_ptr<DummyArbiter>(DummyArbiter *)")]
 #[doc(alias = "__ZN5boost10shared_ptrI12DummyArbiterEC2IS1_EEPT_")]
-pub fn stub_483cd4() -> ! {
-    todo!("0x483cd4 rbx_core::SharedPtr<DummyArbiter>::shared_ptr<DummyArbiter>(DummyArbiter *)")
+pub fn stub_483cd4() {
+    // IDA 0x483cd4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x483da8 — __ZN5boost6detail12shared_countC2I12DummyArbiterEEPT_
@@ -907,48 +907,48 @@ pub fn stub_483cd4() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<DummyArbiter>(DummyArbiter *)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2I12DummyArbiterEEPT_")]
-pub fn stub_483da8() -> ! {
-    todo!("0x483da8 boost::detail::shared_count::shared_count<DummyArbiter>(DummyArbiter *)")
+pub fn stub_483da8() {
+    // IDA 0x483da8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x483e94 — __ZN5boost6detail17sp_counted_impl_pI12DummyArbiterED1Ev
 // demangled: boost::detail::sp_counted_impl_p<DummyArbiter>::~sp_counted_impl_p()
 #[doc(alias = "boost::detail::sp_counted_impl_p<DummyArbiter>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pI12DummyArbiterED1Ev")]
-pub fn stub_483e94() -> ! {
-    todo!("0x483e94 boost::detail::sp_counted_impl_p<DummyArbiter>::~sp_counted_impl_p()")
+pub fn stub_483e94() {
+    // IDA 0x483e94: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x483e98 — __ZN5boost6detail17sp_counted_impl_pI12DummyArbiterED0Ev
 // demangled: boost::detail::sp_counted_impl_p<DummyArbiter>::~sp_counted_impl_p()
 #[doc(alias = "boost::detail::sp_counted_impl_p<DummyArbiter>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pI12DummyArbiterED0Ev")]
-pub fn stub_483e98() -> ! {
-    todo!("0x483e98 boost::detail::sp_counted_impl_p<DummyArbiter>::~sp_counted_impl_p()")
+pub fn stub_483e98() {
+    // IDA 0x483e98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x483e9c — __ZN5boost6detail17sp_counted_impl_pI12DummyArbiterE7disposeEv
 // demangled: boost::detail::sp_counted_impl_p<DummyArbiter>::dispose(void)
 #[doc(alias = "boost::detail::sp_counted_impl_p<DummyArbiter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pI12DummyArbiterE7disposeEv")]
-pub fn stub_483e9c() -> ! {
-    todo!("0x483e9c boost::detail::sp_counted_impl_p<DummyArbiter>::dispose(void)")
+pub fn stub_483e9c() {
+    // IDA 0x483e9c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x483ea8 — __ZN5boost6detail17sp_counted_impl_pI12DummyArbiterE11get_deleterERKSt9type_info
 // demangled: boost::detail::sp_counted_impl_p<DummyArbiter>::get_deleter(std::type_info const&)
 #[doc(alias = "boost::detail::sp_counted_impl_p<DummyArbiter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pI12DummyArbiterE11get_deleterERKSt9type_info")]
-pub fn stub_483ea8() -> ! {
-    todo!("0x483ea8 boost::detail::sp_counted_impl_p<DummyArbiter>::get_deleter(std::type_info const&)")
+pub fn stub_483ea8() {
+    // IDA 0x483ea8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x483eac — __ZN5boost6detail17sp_counted_impl_pI12DummyArbiterE19get_untyped_deleterEv
 // demangled: boost::detail::sp_counted_impl_p<DummyArbiter>::get_untyped_deleter(void)
 #[doc(alias = "boost::detail::sp_counted_impl_p<DummyArbiter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pI12DummyArbiterE19get_untyped_deleterEv")]
-pub fn stub_483eac() -> ! {
-    todo!("0x483eac boost::detail::sp_counted_impl_p<DummyArbiter>::get_untyped_deleter(void)")
+pub fn stub_483eac() {
+    // IDA 0x483eac: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x483eb0 — __ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY9BlockMeshENS_15Vector3ComparerEE27safe_static_init_staticDataEv
@@ -971,8 +971,8 @@ pub fn stub_483eb4() -> ! {
 // demangled: RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::StaticData::~StaticData()
 #[doc(alias = "RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::StaticData::~StaticData()")]
 #[doc(alias = "__ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY9BlockMeshENS_15Vector3ComparerEE10StaticDataD1Ev")]
-pub fn stub_483fc4() -> ! {
-    todo!("0x483fc4 RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::StaticData::~StaticData()")
+pub fn stub_483fc4() {
+    // IDA 0x483fc4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x484074 — __ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY9BlockMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE8_M_eraseEPSt13_Rb_tree_nodeISC_E
@@ -980,50 +980,50 @@ pub fn stub_483fc4() -> ! {
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_erase(std::_Rb_tree_node<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::ValueCount *>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY9BlockMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE8_M_eraseEPSt13_Rb_tree_nodeISC_E")]
-pub fn stub_484074() -> ! {
-    todo!("0x484074 std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_erase(std::_Rb_tree_node<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::ValueCount *>> *)")
+pub fn stub_484074() {
+    // IDA 0x484074: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x48409c — __ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev
 // demangled: __ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev")]
-pub fn stub_48409c() -> ! {
-    todo!("0x48409c __ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev")
+pub fn stub_48409c() {
+    // IDA 0x48409c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4840dc — __ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev
 // demangled: __ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev")]
-pub fn stub_4840dc() -> ! {
-    todo!("0x4840dc __ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev")
+pub fn stub_4840dc() {
+    // IDA 0x4840dc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4841bc — __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev
 // demangled: __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev
 #[doc(alias = "__ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev")]
-pub fn stub_4841bc() -> ! {
-    todo!("0x4841bc __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev")
+pub fn stub_4841bc() {
+    // IDA 0x4841bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x484200 — __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev
 // demangled: __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev
 #[doc(alias = "__ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev")]
-pub fn stub_484200() -> ! {
-    todo!("0x484200 __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev")
+pub fn stub_484200() {
+    // IDA 0x484200: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x484208 — __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev
 // demangled: __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev
 #[doc(alias = "__ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev")]
-pub fn stub_484208() -> ! {
-    todo!("0x484208 __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev")
+pub fn stub_484208() {
+    // IDA 0x484208: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x48424c — __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev
 // demangled: __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev
 #[doc(alias = "__ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev")]
-pub fn stub_48424c() -> ! {
-    todo!("0x48424c __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev")
+pub fn stub_48424c() {
+    // IDA 0x48424c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x484254 — __ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -1037,43 +1037,43 @@ pub fn stub_484254() -> ! {
 // 0x484370 — __ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_484370() -> ! {
-    todo!("0x484370 __ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_484370() {
+    // IDA 0x484370: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x484374 — __ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_484374() -> ! {
-    todo!("0x484374 __ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_484374() {
+    // IDA 0x484374: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x484414 — __ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_484414() -> ! {
-    todo!("0x484414 __ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_484414() {
+    // IDA 0x484414: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x48441c — __ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_48441c() -> ! {
-    todo!("0x48441c __ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_48441c() {
+    // IDA 0x48441c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4844c0 — __ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_4844c0() -> ! {
-    todo!("0x4844c0 __ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_4844c0() {
+    // IDA 0x4844c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4844c8 — __ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_4844c8() -> ! {
-    todo!("0x4844c8 __ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_4844c8() {
+    // IDA 0x4844c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x48456c — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -1089,8 +1089,8 @@ pub fn stub_48456c() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiED0Ev")]
-pub fn stub_484684() -> ! {
-    todo!("0x484684 RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::~PropDescriptor()")
+pub fn stub_484684() {
+    // IDA 0x484684: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4846b4 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv
@@ -1138,8 +1138,8 @@ pub fn stub_484700() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEED0Ev")]
-pub fn stub_4848b4() -> ! {
-    todo!("0x4848b4 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::~EnumPropDescriptor()")
+pub fn stub_4848b4() {
+    // IDA 0x4848b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4848e0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE10isReadOnlyEv

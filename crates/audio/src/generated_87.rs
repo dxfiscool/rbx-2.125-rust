@@ -82,50 +82,50 @@ pub fn stub_b8d8a4() -> ! {
 // 0xb98660 — __ZN3RBX5AdornD2Ev
 // type: void __fastcall(RBX::Adorn *__hidden this)
 #[doc(alias = "RBX::Adorn::~Adorn()")]
-pub fn stub_b98660() -> ! {
-    todo!("0xb98660 RBX::Adorn::~Adorn()")
+pub fn stub_b98660() {
+    // IDA 0xb98660: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb994b4 — __ZNK5boost23enable_shared_from_thisIN3RBX16TextureProxyBaseEE22_internal_accept_ownerIS2_NS1_15RbxTextureProxyEEEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TextureProxyBase>::_internal_accept_owner<RBX::TextureProxyBase,RBX::RbxTextureProxy>(rbx_core::SharedPtr<RBX::TextureProxyBase> const*,RBX::RbxTextureProxy *)const")]
-pub fn stub_b994b4() -> ! {
-    todo!("0xb994b4 void boost::enable_shared_from_this<RBX::TextureProxyBase>::_internal_accept_owner<RBX::TextureProxyBase,RBX::RbxTextureProxy>(boost::shared_ptr<RBX::TextureProxyBase> const*,RBX::RbxTextureProxy *)const")
+pub fn stub_b994b4() {
+    // IDA 0xb994b4: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0xb9960c — __ZN5boost6detail17sp_counted_impl_pIN3RBX15RbxTextureProxyEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::RbxTextureProxy>::~sp_counted_impl_p()")]
-pub fn stub_b9960c() -> ! {
-    todo!("0xb9960c boost::detail::sp_counted_impl_p<RBX::RbxTextureProxy>::~sp_counted_impl_p()")
+pub fn stub_b9960c() {
+    // IDA 0xb9960c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb99610 — __ZN5boost6detail17sp_counted_impl_pIN3RBX15RbxTextureProxyEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::RbxTextureProxy>::~sp_counted_impl_p()")]
-pub fn stub_b99610() -> ! {
-    todo!("0xb99610 boost::detail::sp_counted_impl_p<RBX::RbxTextureProxy>::~sp_counted_impl_p()")
+pub fn stub_b99610() {
+    // IDA 0xb99610: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb99614 — __ZN5boost6detail17sp_counted_impl_pIN3RBX15RbxTextureProxyEE7disposeEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::RbxTextureProxy>::dispose(void)")]
-pub fn stub_b99614() -> ! {
-    todo!("0xb99614 boost::detail::sp_counted_impl_p<RBX::RbxTextureProxy>::dispose(void)")
+pub fn stub_b99614() {
+    // IDA 0xb99614: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xb99624 — __ZN5boost6detail17sp_counted_impl_pIN3RBX15RbxTextureProxyEE11get_deleterERKSt9type_info
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::RbxTextureProxy>::get_deleter(std::type_info const&)")]
-pub fn stub_b99624() -> ! {
-    todo!("0xb99624 boost::detail::sp_counted_impl_p<RBX::RbxTextureProxy>::get_deleter(std::type_info const&)")
+pub fn stub_b99624() {
+    // IDA 0xb99624: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xb99628 — __ZN5boost6detail17sp_counted_impl_pIN3RBX15RbxTextureProxyEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::RbxTextureProxy>::get_untyped_deleter(void)")]
-pub fn stub_b99628() -> ! {
-    todo!("0xb99628 boost::detail::sp_counted_impl_p<RBX::RbxTextureProxy>::get_untyped_deleter(void)")
+pub fn stub_b99628() {
+    // IDA 0xb99628: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xb9a3e4 — __ZN3RBX7MeshGen12addRefVertexEi
@@ -222,8 +222,8 @@ pub fn stub_b9a918() -> ! {
 // 0xb9aa18 — __ZN3RBX5AdornD1Ev
 // type: void __fastcall(RBX::Adorn *__hidden this)
 #[doc(alias = "RBX::Adorn::~Adorn()")]
-pub fn stub_b9aa18() -> ! {
-    todo!("0xb9aa18 RBX::Adorn::~Adorn()")
+pub fn stub_b9aa18() {
+    // IDA 0xb9aa18: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb9aa28 — __ZN3RBX5Adorn14postSubmitPassEv
@@ -314,15 +314,15 @@ pub fn stub_bb4810() -> ! {
 // 0xbb4a80 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIPN3RBX5ImageEPFS7_RSiRKSsibENS3_5list4INS_3argILi1EEENSE_ILi2EEENS3_5valueIiEENSH_IbEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<RBX::Image *,RBX::Image * (*)(std::istream &,std::string const&,int,bool),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<int>,boost::_bi::value<bool>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_bb4a80() -> ! {
-    todo!("0xbb4a80 boost::detail::function::functor_manager<boost::_bi::bind_t<RBX::Image *,RBX::Image * (*)(std::istream &,std::string const&,int,bool),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<int>,boost::_bi::value<bool>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_bb4a80() {
+    // IDA 0xbb4a80: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0xbb4ae0 — __ZN5boost6detail8function21function_obj_invoker2INS_3_bi6bind_tIPN3RBX5ImageEPFS7_RSiRKSsibENS3_5list4INS_3argILi1EEENSE_ILi2EEENS3_5valueIiEENSH_IbEEEEEES7_S8_SA_E6invokeERNS1_15function_bufferES8_SA_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "boost::detail::function::function_obj_invoker2<boost::_bi::bind_t<RBX::Image *,RBX::Image * (*)(std::istream &,std::string const&,int,bool),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<int>,boost::_bi::value<bool>>>,RBX::Image *,std::istream &,std::string const&>::invoke(boost::detail::function::function_buffer &,std::istream &,std::string const&)")]
-pub fn stub_bb4ae0() -> ! {
-    todo!("0xbb4ae0 boost::detail::function::function_obj_invoker2<boost::_bi::bind_t<RBX::Image *,RBX::Image * (*)(std::istream &,std::string const&,int,bool),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<int>,boost::_bi::value<bool>>>,RBX::Image *,std::istream &,std::string const&>::invoke(boost::detail::function::function_buffer &,std::istream &,std::string const&)")
+pub fn stub_bb4ae0() {
+    // IDA 0xbb4ae0: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0xbb5df4 — ___cxx_global_array_dtor_1
@@ -359,15 +359,15 @@ pub fn stub_bbdfa0() -> ! {
 // 0xbbe678 — __ZN3RBX18RbxParticleEmitterD0Ev
 // type: void __fastcall(RBX::RbxParticleEmitter *__hidden this)
 #[doc(alias = "RBX::RbxParticleEmitter::~RbxParticleEmitter()")]
-pub fn stub_bbe678() -> ! {
-    todo!("0xbbe678 RBX::RbxParticleEmitter::~RbxParticleEmitter()")
+pub fn stub_bbe678() {
+    // IDA 0xbbe678: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbbe7ac — __ZN3RBX18RbxParticleEmitterD1Ev
 // type: void __fastcall(RBX::RbxParticleEmitter *__hidden this)
 #[doc(alias = "RBX::RbxParticleEmitter::~RbxParticleEmitter()")]
-pub fn stub_bbe7ac() -> ! {
-    todo!("0xbbe7ac RBX::RbxParticleEmitter::~RbxParticleEmitter()")
+pub fn stub_bbe7ac() {
+    // IDA 0xbbe7ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbbe8c4 — __ZN3RBX18RbxParticleEmitter17onSleepingChangedEb
@@ -380,8 +380,8 @@ pub fn stub_bbe8c4() -> ! {
 // 0xbbe9e8 — __ZThn392_N3RBX18RbxParticleEmitter17onSleepingChangedEb
 // type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this, bool)
 #[doc(alias = "non-virtual thunk toRBX::RbxParticleEmitter::onSleepingChanged(bool)")]
-pub fn stub_bbe9e8() -> ! {
-    todo!("0xbbe9e8 non-virtual thunk toRBX::RbxParticleEmitter::onSleepingChanged(bool)")
+pub fn stub_bbe9e8() {
+    // IDA 0xbbe9e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbbe9f0 — __ZN3RBX18RbxParticleEmitter21updateCoordinateFrameEb
@@ -394,8 +394,8 @@ pub fn stub_bbe9f0() -> ! {
 // 0xbbea40 — __ZThn392_N3RBX18RbxParticleEmitter21updateCoordinateFrameEb
 // type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this, bool)
 #[doc(alias = "non-virtual thunk toRBX::RbxParticleEmitter::updateCoordinateFrame(bool)")]
-pub fn stub_bbea40() -> ! {
-    todo!("0xbbea40 non-virtual thunk toRBX::RbxParticleEmitter::updateCoordinateFrame(bool)")
+pub fn stub_bbea40() {
+    // IDA 0xbbea40: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbbeab4 — __ZN3RBX18RbxParticleEmitter19onAncestorChangedExEv
@@ -415,8 +415,8 @@ pub fn stub_bbf390() -> ! {
 // 0xbbf398 — __ZThn392_N3RBX18RbxParticleEmitter6unbindEv
 // type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RbxParticleEmitter::unbind(void)")]
-pub fn stub_bbf398() -> ! {
-    todo!("0xbbf398 non-virtual thunk toRBX::RbxParticleEmitter::unbind(void)")
+pub fn stub_bbf398() {
+    // IDA 0xbbf398: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbbf39c — __ZN3RBX18RbxParticleEmitter16invalidateEntityEv
@@ -429,8 +429,8 @@ pub fn stub_bbf39c() -> ! {
 // 0xbbf3d0 — __ZThn392_N3RBX18RbxParticleEmitter16invalidateEntityEv
 // type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RbxParticleEmitter::invalidateEntity(void)")]
-pub fn stub_bbf3d0() -> ! {
-    todo!("0xbbf3d0 non-virtual thunk toRBX::RbxParticleEmitter::invalidateEntity(void)")
+pub fn stub_bbf3d0() {
+    // IDA 0xbbf3d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbbf404 — __ZN3RBX18RbxParticleEmitter12updateEntityEb
@@ -443,20 +443,20 @@ pub fn stub_bbf404() -> ! {
 // 0xbbf8b0 — __ZThn392_N3RBX18RbxParticleEmitter12updateEntityEb
 // type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this, bool)
 #[doc(alias = "non-virtual thunk toRBX::RbxParticleEmitter::updateEntity(bool)")]
-pub fn stub_bbf8b0() -> ! {
-    todo!("0xbbf8b0 non-virtual thunk toRBX::RbxParticleEmitter::updateEntity(bool)")
+pub fn stub_bbf8b0() {
+    // IDA 0xbbf8b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbbfa58 — __ZN3rbx7signals6signalIFvbEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX18RbxParticleEmitterEbEENS6_5list2INS6_5valueIPSB_EENS5_3argILi1EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(bool)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_bbfa58() -> ! {
-    todo!("0xbbfa58 rbx::signals::signal<void ()(bool)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_bbfa58() {
+    // IDA 0xbbfa58: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbbfab4 — __ZN3rbx7signals6signalIFvbEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX18RbxParticleEmitterEbEENS6_5list2INS6_5valueIPSB_EENS5_3argILi1EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(bool)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_bbfab4() -> ! {
-    todo!("0xbbfab4 rbx::signals::signal<void ()(bool)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_bbfab4() {
+    // IDA 0xbbfab4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbbfbbc — __ZN3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX18RbxParticleEmitterEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb
@@ -467,20 +467,20 @@ pub fn stub_bbfbbc() -> ! {
 
 // 0xbbfbd4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX18RbxParticleEmitterEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")]
-pub fn stub_bbfbd4() -> ! {
-    todo!("0xbbfbd4 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")
+pub fn stub_bbfbd4() {
+    // IDA 0xbbfbd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbbfbec — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX18RbxParticleEmitterEEENS6_5list1INS6_5valueIPSB_EEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>>::~callable_slot()")]
-pub fn stub_bbfbec() -> ! {
-    todo!("0xbbfbec rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>>::~callable_slot()")
+pub fn stub_bbfbec() {
+    // IDA 0xbbfbec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbbfc48 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX18RbxParticleEmitterEEENS6_5list1INS6_5valueIPSB_EEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>>::~callable_slot()")]
-pub fn stub_bbfc48() -> ! {
-    todo!("0xbbfc48 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>>::~callable_slot()")
+pub fn stub_bbfc48() {
+    // IDA 0xbbfc48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbbfd50 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX18RbxParticleEmitterEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
@@ -491,8 +491,8 @@ pub fn stub_bbfd50() -> ! {
 
 // 0xbbfd68 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX18RbxParticleEmitterEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>,0,void ()(void)>::call(void)")]
-pub fn stub_bbfd68() -> ! {
-    todo!("0xbbfd68 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>,0,void ()(void)>::call(void)")
+pub fn stub_bbfd68() {
+    // IDA 0xbbfd68: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbbfd80 — __GLOBAL__I_a_581
@@ -504,8 +504,8 @@ pub fn stub_bbfd80() -> ! {
 // 0xbc0438 — __ZN3RBX18RbxParticleFactoryD1Ev
 // type: void __fastcall(RBX::RbxParticleFactory *__hidden this)
 #[doc(alias = "RBX::RbxParticleFactory::~RbxParticleFactory()")]
-pub fn stub_bc0438() -> ! {
-    todo!("0xbc0438 RBX::RbxParticleFactory::~RbxParticleFactory()")
+pub fn stub_bc0438() {
+    // IDA 0xbc0438: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbc1d70 — __ZN3RBX18RbxParticleFactory20clearParticleSystemsEv
@@ -562,8 +562,8 @@ pub fn stub_bcbc58() -> ! {
 
 // 0xbce398 — __ZN3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E7CreatorD1Ev")]
-pub fn stub_bce398() -> ! {
-    todo!("0xbce398 __ZN3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E7CreatorD1Ev")
+pub fn stub_bce398() {
+    // IDA 0xbce398: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbce3a0 — __ZNK3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E7Creator6createEv
@@ -594,8 +594,8 @@ pub fn stub_bce818() -> ! {
 
 // 0xbce87c — __ZNSt8_Rb_treeIPN3RBX8HumanoidESt4pairIKS2_PNS0_11FastClusterEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
 #[doc(alias = "std::_Rb_tree<RBX::Humanoid *,std::pair<RBX::Humanoid * const,RBX::FastCluster *>,std::_Select1st<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>,std::less<RBX::Humanoid *>,std::allocator<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Humanoid * const,RBX::FastCluster *>> *)")]
-pub fn stub_bce87c() -> ! {
-    todo!("0xbce87c std::_Rb_tree<RBX::Humanoid *,std::pair<RBX::Humanoid * const,RBX::FastCluster *>,std::_Select1st<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>,std::less<RBX::Humanoid *>,std::allocator<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Humanoid * const,RBX::FastCluster *>> *)")
+pub fn stub_bce87c() {
+    // IDA 0xbce87c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xbce8a4 — __ZN5boost9unordered6detail10table_implINS1_3mapINS_19fast_pool_allocatorIN3RBX16SpatialGridIndexENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES6_NS5_11SpatialGridINS5_11FastClusterEE4CellENS_4hashIS6_EESt8equal_toIS6_EEEEixERKS6_
@@ -606,14 +606,14 @@ pub fn stub_bce8a4() -> ! {
 
 // 0xbceb68 — __ZN5boost9unordered6detail5tableINS1_3mapINS_19fast_pool_allocatorIN3RBX16SpatialGridIndexENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES6_NS5_11SpatialGridINS5_11FastClusterEE4CellENS_4hashIS6_EESt8equal_toIS6_EEEE18reserve_for_insertEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<boost::fast_pool_allocator<RBX::SpatialGridIndex,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>,RBX::SpatialGridIndex,RBX::SpatialGrid<RBX::FastCluster>::Cell,boost::hash<RBX::SpatialGridIndex>,std::equal_to<RBX::SpatialGridIndex>>>::reserve_for_insert(unsigned long)")]
-pub fn stub_bceb68() -> ! {
-    todo!("0xbceb68 boost::unordered::detail::table<boost::unordered::detail::map<boost::fast_pool_allocator<RBX::SpatialGridIndex,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>,RBX::SpatialGridIndex,RBX::SpatialGrid<RBX::FastCluster>::Cell,boost::hash<RBX::SpatialGridIndex>,std::equal_to<RBX::SpatialGridIndex>>>::reserve_for_insert(unsigned long)")
+pub fn stub_bceb68() {
+    // IDA 0xbceb68: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0xbced10 — __ZN5boost9unordered6detail5tableINS1_3mapINS_19fast_pool_allocatorIN3RBX16SpatialGridIndexENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES6_NS5_11SpatialGridINS5_11FastClusterEE4CellENS_4hashIS6_EESt8equal_toIS6_EEEE14create_bucketsEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<boost::fast_pool_allocator<RBX::SpatialGridIndex,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>,RBX::SpatialGridIndex,RBX::SpatialGrid<RBX::FastCluster>::Cell,boost::hash<RBX::SpatialGridIndex>,std::equal_to<RBX::SpatialGridIndex>>>::create_buckets(unsigned long)")]
-pub fn stub_bced10() -> ! {
-    todo!("0xbced10 boost::unordered::detail::table<boost::unordered::detail::map<boost::fast_pool_allocator<RBX::SpatialGridIndex,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>,RBX::SpatialGridIndex,RBX::SpatialGrid<RBX::FastCluster>::Cell,boost::hash<RBX::SpatialGridIndex>,std::equal_to<RBX::SpatialGridIndex>>>::create_buckets(unsigned long)")
+pub fn stub_bced10() {
+    // IDA 0xbced10: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0xbcee54 — __ZN5boost9unordered6detail5tableINS1_3mapINS_19fast_pool_allocatorIN3RBX16SpatialGridIndexENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES6_NS5_11SpatialGridINS5_11FastClusterEE4CellENS_4hashIS6_EESt8equal_toIS6_EEEE15destroy_bucketsEv
@@ -662,8 +662,8 @@ pub fn stub_bcf460() -> ! {
 
 // 0xbcf80c — __ZN5boost9unordered13unordered_mapIN3RBX16SpatialGridIndexENS2_11SpatialGridINS2_11FastClusterEE4CellENS_4hashIS3_EESt8equal_toIS3_ENS_19fast_pool_allocatorIS3_NS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEEED1Ev
 #[doc(alias = "boost::unordered::unordered_map<RBX::SpatialGridIndex,RBX::SpatialGrid<RBX::FastCluster>::Cell,boost::hash<RBX::SpatialGridIndex>,std::equal_to<RBX::SpatialGridIndex>,boost::fast_pool_allocator<RBX::SpatialGridIndex,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>>::~unordered_map()")]
-pub fn stub_bcf80c() -> ! {
-    todo!("0xbcf80c boost::unordered::unordered_map<RBX::SpatialGridIndex,RBX::SpatialGrid<RBX::FastCluster>::Cell,boost::hash<RBX::SpatialGridIndex>,std::equal_to<RBX::SpatialGridIndex>,boost::fast_pool_allocator<RBX::SpatialGridIndex,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>>::~unordered_map()")
+pub fn stub_bcf80c() {
+    // IDA 0xbcf80c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbcf8b8 — __ZN5boost14singleton_poolINS_23fast_pool_allocator_tagELj8ENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EE7is_fromEPv

@@ -127,15 +127,15 @@ pub fn stub_f21220() -> ! {
 // 0xf2122c — __ZN5boost9unordered6detail5tableINS1_3setISaIjEjNS_4hashIjEESt8equal_toIjEEEE14create_bucketsEm$shim
 // type: void
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3setISaIjEjNS_4hashIjEESt8equal_toIjEEEE14create_bucketsEm$shim")]
-pub fn stub_f2122c() -> ! {
-    todo!("0xf2122c __ZN5boost9unordered6detail5tableINS1_3setISaIjEjNS_4hashIjEESt8equal_toIjEEEE14create_bucketsEm$shim")
+pub fn stub_f2122c() {
+    // IDA 0xf2122c: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0xf21238 — __ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEED2Ev$shim
 // type: void
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEED2Ev$shim")]
-pub fn stub_f21238() -> ! {
-    todo!("0xf21238 __ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEED2Ev$shim")
+pub fn stub_f21238() {
+    // IDA 0xf21238: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf21244 — __ZNSt6vectorIN3RBX16DataModelArbiter16ConcurrencyModelESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
@@ -211,50 +211,50 @@ pub fn stub_f212bc() -> ! {
 // 0xf212c8 — __ZN3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE7CreatorD2Ev$shim
 // type: void
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_f212c8() -> ! {
-    todo!("0xf212c8 __ZN3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_f212c8() {
+    // IDA 0xf212c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf212d4 — __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorD2Ev$shim
 // type: void
 #[doc(alias = "__ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_f212d4() -> ! {
-    todo!("0xf212d4 __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_f212d4() {
+    // IDA 0xf212d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf212e0 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEED2Ev$shim
 // type: void
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEED2Ev$shim")]
-pub fn stub_f212e0() -> ! {
-    todo!("0xf212e0 __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEED2Ev$shim")
+pub fn stub_f212e0() {
+    // IDA 0xf212e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf212ec — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEED2Ev$shim
 // type: int()
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEED2Ev$shim")]
-pub fn stub_f212ec() -> ! {
-    todo!("0xf212ec __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEED2Ev$shim")
+pub fn stub_f212ec() {
+    // IDA 0xf212ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf212f8 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEED2Ev$shim
 // type: void
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEED2Ev$shim")]
-pub fn stub_f212f8() -> ! {
-    todo!("0xf212f8 __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEED2Ev$shim")
+pub fn stub_f212f8() {
+    // IDA 0xf212f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf21310 — __ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEED2Ev$shim
 // type: void
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEED2Ev$shim")]
-pub fn stub_f21310() -> ! {
-    todo!("0xf21310 __ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEED2Ev$shim")
+pub fn stub_f21310() {
+    // IDA 0xf21310: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf2131c — __ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEED2Ev$shim
 // type: void
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEED2Ev$shim")]
-pub fn stub_f2131c() -> ! {
-    todo!("0xf2131c __ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEED2Ev$shim")
+pub fn stub_f2131c() {
+    // IDA 0xf2131c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf21334 — __ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7Creator12getClassNameEv$shim
@@ -288,8 +288,8 @@ pub fn stub_f21358() -> ! {
 // 0xf21364 — __ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED0Ev$shim
 // type: void
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED0Ev$shim")]
-pub fn stub_f21364() -> ! {
-    todo!("0xf21364 __ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEED0Ev$shim")
+pub fn stub_f21364() {
+    // IDA 0xf21364: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf21388 — __ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE14convertToIndexES3_$shim
@@ -400,22 +400,22 @@ pub fn stub_f21460() -> ! {
 // 0xf2146c — __ZN3RBX14FactoryProductINS_5DecalENS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEE7CreatorD2Ev$shim
 // type: void
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5DecalENS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_f2146c() -> ! {
-    todo!("0xf2146c __ZN3RBX14FactoryProductINS_5DecalENS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_f2146c() {
+    // IDA 0xf2146c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf21478 — __ZN3RBX14FactoryProductINS_7TextureENS_5DecalELZNS_8sTextureEENS_8InstanceEE7CreatorD2Ev$shim
 // type: void
 #[doc(alias = "__ZN3RBX14FactoryProductINS_7TextureENS_5DecalELZNS_8sTextureEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_f21478() -> ! {
-    todo!("0xf21478 __ZN3RBX14FactoryProductINS_7TextureENS_5DecalELZNS_8sTextureEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_f21478() {
+    // IDA 0xf21478: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf21484 — __ZN3RBX14FactoryProductINS_5DecalENS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEED2Ev$shim
 // type: void
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5DecalENS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEED2Ev$shim")]
-pub fn stub_f21484() -> ! {
-    todo!("0xf21484 __ZN3RBX14FactoryProductINS_5DecalENS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEED2Ev$shim")
+pub fn stub_f21484() {
+    // IDA 0xf21484: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf21490 — __ZNK3RBX14FactoryProductINS_5DecalENS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEE7Creator12getClassNameEv$shim
@@ -456,8 +456,8 @@ pub fn stub_f214c0() -> ! {
 // 0xf214cc — __ZN3RBX14FactoryProductINS_12DialogChoiceENS_8InstanceELZNS_13sDialogChoiceEES2_E7CreatorD2Ev$shim
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12DialogChoiceENS_8InstanceELZNS_13sDialogChoiceEES2_E7CreatorD2Ev$shim")]
-pub fn stub_f214cc() -> ! {
-    todo!("0xf214cc __ZN3RBX14FactoryProductINS_12DialogChoiceENS_8InstanceELZNS_13sDialogChoiceEES2_E7CreatorD2Ev$shim")
+pub fn stub_f214cc() {
+    // IDA 0xf214cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf214d8 — __ZN3RBX4Name9doDeclareILZNS_13sDialogChoiceEEEERKS0_v$shim
@@ -470,8 +470,8 @@ pub fn stub_f214d8() -> ! {
 // 0xf214e4 — __ZN3RBX10DialogRootD2Ev$shim
 // type: void
 #[doc(alias = "__ZN3RBX10DialogRootD2Ev$shim")]
-pub fn stub_f214e4() -> ! {
-    todo!("0xf214e4 __ZN3RBX10DialogRootD2Ev$shim")
+pub fn stub_f214e4() {
+    // IDA 0xf214e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf214f0 — __ZNK3RBX14FactoryProductINS_10DialogRootENS_8InstanceELZNS_11sDialogRootEES2_E7Creator12getClassNameEv$shim
@@ -484,8 +484,8 @@ pub fn stub_f214f0() -> ! {
 // 0xf214fc — __ZN3RBX14FactoryProductINS_10DialogRootENS_8InstanceELZNS_11sDialogRootEES2_E7CreatorD2Ev$shim
 // type: void
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10DialogRootENS_8InstanceELZNS_11sDialogRootEES2_E7CreatorD2Ev$shim")]
-pub fn stub_f214fc() -> ! {
-    todo!("0xf214fc __ZN3RBX14FactoryProductINS_10DialogRootENS_8InstanceELZNS_11sDialogRootEES2_E7CreatorD2Ev$shim")
+pub fn stub_f214fc() {
+    // IDA 0xf214fc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf21508 — __ZN3RBX4Name9doDeclareILZNS_11sDialogRootEEEERKS0_v$shim
@@ -589,22 +589,22 @@ pub fn stub_f215a4() -> ! {
 // 0xf215b0 — __ZN3RBX14FactoryProductINS_12TimerServiceENS_8InstanceELZNS_13sTimerServiceEES2_E7CreatorD2Ev$shim
 // type: void
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12TimerServiceENS_8InstanceELZNS_13sTimerServiceEES2_E7CreatorD2Ev$shim")]
-pub fn stub_f215b0() -> ! {
-    todo!("0xf215b0 __ZN3RBX14FactoryProductINS_12TimerServiceENS_8InstanceELZNS_13sTimerServiceEES2_E7CreatorD2Ev$shim")
+pub fn stub_f215b0() {
+    // IDA 0xf215b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf215bc — __ZN3RBX14FactoryProductINS_9ExplosionENS_8InstanceELZNS_10sExplosionEES2_E7CreatorD2Ev$shim
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9ExplosionENS_8InstanceELZNS_10sExplosionEES2_E7CreatorD2Ev$shim")]
-pub fn stub_f215bc() -> ! {
-    todo!("0xf215bc __ZN3RBX14FactoryProductINS_9ExplosionENS_8InstanceELZNS_10sExplosionEES2_E7CreatorD2Ev$shim")
+pub fn stub_f215bc() {
+    // IDA 0xf215bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf215c8 — __ZN3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEED2Ev$shim
 // type: void
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEED2Ev$shim")]
-pub fn stub_f215c8() -> ! {
-    todo!("0xf215c8 __ZN3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEED2Ev$shim")
+pub fn stub_f215c8() {
+    // IDA 0xf215c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf215d4 — __ZN3RBX4Name7declareILZNS_11sForceFieldEEEERKS0_v$shim

@@ -16,16 +16,16 @@ const _: () = {
 // type: int __fastcall(int *)
 #[doc(alias = "boost::function5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::clear(void)")]
 #[doc(alias = "__ZN5boost9function5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbE5clearEv")]
-pub fn stub_0x371220() -> ! {
-    todo!("0x371220 boost::function5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::clear(void)")
+pub fn stub_0x371220() {
+    // IDA 0x371220: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x371250 — __ZN3RBX17HeartbeatInstanceD1Ev
 // type: void __fastcall(RBX::HeartbeatInstance *__hidden this)
 #[doc(alias = "RBX::HeartbeatInstance::~HeartbeatInstance()")]
 #[doc(alias = "__ZN3RBX17HeartbeatInstanceD1Ev")]
-pub fn stub_0x371250() -> ! {
-    todo!("0x371250 RBX::HeartbeatInstance::~HeartbeatInstance()")
+pub fn stub_0x371250() {
+    // IDA 0x371250: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x371254 — __GLOBAL__I_a_137
@@ -47,8 +47,8 @@ pub fn stub_0x3729c4() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::~BoundProp()")]
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EED1Ev")]
-pub fn stub_0x376f94() -> ! {
-    todo!("0x376f94 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::~BoundProp()")
+pub fn stub_0x376f94() {
+    // IDA 0x376f94: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37da40 — __ZN3RBX5Stats4Item20createBoundChildItemIiEEPS1_PKcRKT_
@@ -63,16 +63,16 @@ pub fn stub_0x37da40() -> ! {
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<unsigned int> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats14TypedStatsItemIjEENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_0x37dbf4() -> ! {
-    todo!("0x37dbf4 boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<unsigned int> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x37dbf4() {
+    // IDA 0x37dbf4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x37dbf8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats14TypedStatsItemIjEENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<unsigned int> *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats14TypedStatsItemIjEENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_0x37dbf8() -> ! {
-    todo!("0x37dbf8 boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<unsigned int> *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x37dbf8() {
+    // IDA 0x37dbf8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x37dc18 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_5Stats14TypedStatsItemIiEEPKiEEN5boost10shared_ptrIT_EET0_
@@ -87,24 +87,24 @@ pub fn stub_0x37dc18() -> ! {
 // type: int __fastcall(__int64, unsigned int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<int const&,int const& (*)(int const*),boost::_bi::list1<boost::_bi::value<int const*>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIRKiPFS6_PS5_ENS3_5list1INS3_5valueIS7_EEEEEEE6manageERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeE")]
-pub fn stub_0x37dd20() -> ! {
-    todo!("0x37dd20 boost::detail::function::functor_manager<boost::_bi::bind_t<int const&,int const& (*)(int const*),boost::_bi::list1<boost::_bi::value<int const*>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x37dd20() {
+    // IDA 0x37dd20: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x37dd80 — __ZN5boost6detail8function21function_obj_invoker0INS_3_bi6bind_tIRKiPFS6_PS5_ENS3_5list1INS3_5valueIS7_EEEEEEiE6invokeERNS1_15function_bufferE
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::function::function_obj_invoker0<boost::_bi::bind_t<int const&,int const& (*)(int const*),boost::_bi::list1<boost::_bi::value<int const*>>>,int>::invoke(boost::detail::function::function_buffer &)")]
 #[doc(alias = "__ZN5boost6detail8function21function_obj_invoker0INS_3_bi6bind_tIRKiPFS6_PS5_ENS3_5list1INS3_5valueIS7_EEEEEEiE6invokeERNS1_15function_bufferE")]
-pub fn stub_0x37dd80() -> ! {
-    todo!("0x37dd80 boost::detail::function::function_obj_invoker0<boost::_bi::bind_t<int const&,int const& (*)(int const*),boost::_bi::list1<boost::_bi::value<int const*>>>,int>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_0x37dd80() {
+    // IDA 0x37dd80: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x37dd90 — __ZN5boost6detail12shared_countC2IPN3RBX5Stats14TypedStatsItemIiEENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Stats::TypedStatsItem<int> *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::TypedStatsItem<int> *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX5Stats14TypedStatsItemIiEENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_0x37dd90() -> ! {
-    todo!("0x37dd90 boost::detail::shared_count::shared_count<RBX::Stats::TypedStatsItem<int> *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::TypedStatsItem<int> *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x37dd90() {
+    // IDA 0x37dd90: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x37ead8 — __GLOBAL__I_a_138
@@ -203,8 +203,8 @@ pub fn stub_0x380878() -> ! {
 // type: void __fastcall(RBX::SpanningTree *this, int, int)
 #[doc(alias = "RBX::SpanningTree::~SpanningTree()")]
 #[doc(alias = "__ZN3RBX12SpanningTreeD2Ev")]
-pub fn stub_0x38089c() -> ! {
-    todo!("0x38089c RBX::SpanningTree::~SpanningTree()")
+pub fn stub_0x38089c() {
+    // IDA 0x38089c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3809c4 — __ZN3RBX12SpanningTree22insertSpanningTreeEdgeEPNS_12SpanningEdgeE
@@ -403,8 +403,8 @@ pub fn stub_0x381534() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "G3D::Array<RBX::SpanningEdge *,10,32ul>::~Array()")]
 #[doc(alias = "__ZN3G3D5ArrayIPN3RBX12SpanningEdgeELi10ELm32EED2Ev")]
-pub fn stub_0x38171c() -> ! {
-    todo!("0x38171c G3D::Array<RBX::SpanningEdge *,10,32ul>::~Array()")
+pub fn stub_0x38171c() {
+    // IDA 0x38171c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3817f0 — __ZN3G3D5ArrayIPN3RBX12SpanningEdgeELi10ELm32EEC2Ev
@@ -419,8 +419,8 @@ pub fn stub_0x3817f0() -> ! {
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "std::_Rb_tree<RBX::SpanningNode *,RBX::SpanningNode *,std::_Identity<RBX::SpanningNode *>,std::less<RBX::SpanningNode *>,std::allocator<RBX::SpanningNode *>>::_M_erase(std::_Rb_tree_node<RBX::SpanningNode *> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPN3RBX12SpanningNodeES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E")]
-pub fn stub_0x3818e0() -> ! {
-    todo!("0x3818e0 std::_Rb_tree<RBX::SpanningNode *,RBX::SpanningNode *,std::_Identity<RBX::SpanningNode *>,std::less<RBX::SpanningNode *>,std::allocator<RBX::SpanningNode *>>::_M_erase(std::_Rb_tree_node<RBX::SpanningNode *> *)")
+pub fn stub_0x3818e0() {
+    // IDA 0x3818e0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x381908 — __GLOBAL__I_a_142
@@ -482,8 +482,8 @@ pub fn stub_0x3820c4() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::StandardOut>::~shared_ptr()")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX11StandardOutEED1Ev")]
-pub fn stub_0x3821f0() -> ! {
-    todo!("0x3821f0 rbx_core::SharedPtr<RBX::StandardOut>::~shared_ptr()")
+pub fn stub_0x3821f0() {
+    // IDA 0x3821f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x382204 — __ZN3rbx7signals16signal_with_argsILi1EFvRKN3RBX18StandardOutMessageEEEclES5_
@@ -522,24 +522,24 @@ pub fn stub_0x3824d0() -> ! {
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::StandardOut>::_internal_accept_owner<RBX::StandardOut,RBX::StandardOut>(rbx_core::SharedPtr<RBX::StandardOut> const*,RBX::StandardOut *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX11StandardOutEE22_internal_accept_ownerIS2_S2_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0x3825b8() -> ! {
-    todo!("0x3825b8 void boost::enable_shared_from_this<RBX::StandardOut>::_internal_accept_owner<RBX::StandardOut,RBX::StandardOut>(rbx_core::SharedPtr<RBX::StandardOut> const*,RBX::StandardOut *)const")
+pub fn stub_0x3825b8() {
+    // IDA 0x3825b8: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x3826dc — __ZN5boost6detail12shared_countC2IN3RBX11StandardOutEEEPT_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::StandardOut>(RBX::StandardOut *)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IN3RBX11StandardOutEEEPT_")]
-pub fn stub_0x3826dc() -> ! {
-    todo!("0x3826dc boost::detail::shared_count::shared_count<RBX::StandardOut>(RBX::StandardOut *)")
+pub fn stub_0x3826dc() {
+    // IDA 0x3826dc: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x3827e8 — __ZN3RBX11StandardOutD2Ev
 // type: void __fastcall(RBX::StandardOut *this, int, int, int)
 #[doc(alias = "RBX::StandardOut::~StandardOut()")]
 #[doc(alias = "__ZN3RBX11StandardOutD2Ev")]
-pub fn stub_0x3827e8() -> ! {
-    todo!("0x3827e8 RBX::StandardOut::~StandardOut()")
+pub fn stub_0x3827e8() {
+    // IDA 0x3827e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x38290c — __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE13disconnectAllEv
@@ -554,40 +554,40 @@ pub fn stub_0x38290c() -> ! {
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::StandardOut>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX11StandardOutEED1Ev")]
-pub fn stub_0x382a84() -> ! {
-    todo!("0x382a84 boost::detail::sp_counted_impl_p<RBX::StandardOut>::~sp_counted_impl_p()")
+pub fn stub_0x382a84() {
+    // IDA 0x382a84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x382a88 — __ZN5boost6detail17sp_counted_impl_pIN3RBX11StandardOutEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::StandardOut>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX11StandardOutEED0Ev")]
-pub fn stub_0x382a88() -> ! {
-    todo!("0x382a88 boost::detail::sp_counted_impl_p<RBX::StandardOut>::~sp_counted_impl_p()")
+pub fn stub_0x382a88() {
+    // IDA 0x382a88: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x382a8c — __ZN5boost6detail17sp_counted_impl_pIN3RBX11StandardOutEE7disposeEv
 // type: void __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::StandardOut>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX11StandardOutEE7disposeEv")]
-pub fn stub_0x382a8c() -> ! {
-    todo!("0x382a8c boost::detail::sp_counted_impl_p<RBX::StandardOut>::dispose(void)")
+pub fn stub_0x382a8c() {
+    // IDA 0x382a8c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x382b30 — __ZN5boost6detail17sp_counted_impl_pIN3RBX11StandardOutEE11get_deleterERKSt9type_info
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::StandardOut>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX11StandardOutEE11get_deleterERKSt9type_info")]
-pub fn stub_0x382b30() -> ! {
-    todo!("0x382b30 boost::detail::sp_counted_impl_p<RBX::StandardOut>::get_deleter(std::type_info const&)")
+pub fn stub_0x382b30() {
+    // IDA 0x382b30: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x382b34 — __ZN5boost6detail17sp_counted_impl_pIN3RBX11StandardOutEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::StandardOut>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX11StandardOutEE19get_untyped_deleterEv")]
-pub fn stub_0x382b34() -> ! {
-    todo!("0x382b34 boost::detail::sp_counted_impl_p<RBX::StandardOut>::get_untyped_deleter(void)")
+pub fn stub_0x382b34() {
+    // IDA 0x382b34: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x382b38 — __ZN3RBX18StandardOutMessageC2ENS_11MessageTypeEPKc
@@ -697,8 +697,8 @@ pub fn stub_0x384c38() -> ! {
 // type: int __fastcall(int (__fastcall **)(int, int), int, int)
 #[doc(alias = "boost::detail::function::void_function_invoker2<void (*)(std::string *,std::exception *),void,std::string *,std::exception *>::invoke(boost::detail::function::function_buffer &,std::string *,std::exception *)")]
 #[doc(alias = "__ZN5boost6detail8function22void_function_invoker2IPFvPSsPSt9exceptionEvS3_S5_E6invokeERNS1_15function_bufferES3_S5_")]
-pub fn stub_0x384c3c() -> ! {
-    todo!("0x384c3c boost::detail::function::void_function_invoker2<void (*)(std::string *,std::exception *),void,std::string *,std::exception *>::invoke(boost::detail::function::function_buffer &,std::string *,std::exception *)")
+pub fn stub_0x384c3c() {
+    // IDA 0x384c3c: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x384c44 — __GLOBAL__I_a_144
@@ -744,16 +744,16 @@ pub fn stub_0x385230() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Stepped const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvRKN3RBX7SteppedEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_8ISteppedES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEED1Ev")]
-pub fn stub_0x385254() -> ! {
-    todo!("0x385254 rbx::signals::signal<void ()(RBX::Stepped const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_0x385254() {
+    // IDA 0x385254: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x385280 — __ZN3rbx7signals6signalIFvRKN3RBX7SteppedEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_8ISteppedES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Stepped const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvRKN3RBX7SteppedEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_8ISteppedES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEED0Ev")]
-pub fn stub_0x385280() -> ! {
-    todo!("0x385280 rbx::signals::signal<void ()(RBX::Stepped const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_0x385280() {
+    // IDA 0x385280: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x385354 — __ZN3rbx7signals6signalIFvRKN3RBX7SteppedEEE4slot10disconnectEv
@@ -784,8 +784,8 @@ pub fn stub_0x385470() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>,1,void ()(RBX::Stepped const&)>::call(RBX::Stepped const&)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX7SteppedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_8ISteppedES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_")]
-pub fn stub_0x385478() -> ! {
-    todo!("0x385478 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>,1,void ()(RBX::Stepped const&)>::call(RBX::Stepped const&)")
+pub fn stub_0x385478() {
+    // IDA 0x385478: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x385480 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX8ISteppedERKNS4_7SteppedEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_

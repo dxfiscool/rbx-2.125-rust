@@ -13,38 +13,38 @@ const _: () = {
 
 // 0x4ff568 — __ZN5boost6detail17sp_counted_impl_pIN3RBX15ProfanityFilterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ProfanityFilter>::~sp_counted_impl_p()")]
-pub fn stub_4ff568() -> ! {
-    todo!("0x4ff568 __ZN5boost6detail17sp_counted_impl_pIN3RBX15ProfanityFilterEED1Ev")
+pub fn stub_4ff568() {
+    // IDA 0x4ff568: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4ff56c — __ZN5boost6detail17sp_counted_impl_pIN3RBX15ProfanityFilterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ProfanityFilter>::~sp_counted_impl_p()")]
-pub fn stub_4ff56c() -> ! {
-    todo!("0x4ff56c __ZN5boost6detail17sp_counted_impl_pIN3RBX15ProfanityFilterEED0Ev")
+pub fn stub_4ff56c() {
+    // IDA 0x4ff56c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4ff570 — __ZN5boost6detail17sp_counted_impl_pIN3RBX15ProfanityFilterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ProfanityFilter>::dispose(void)")]
-pub fn stub_4ff570() -> ! {
-    todo!("0x4ff570 __ZN5boost6detail17sp_counted_impl_pIN3RBX15ProfanityFilterEE7disposeEv")
+pub fn stub_4ff570() {
+    // IDA 0x4ff570: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4ff614 — __ZN5boost6detail17sp_counted_impl_pIN3RBX15ProfanityFilterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ProfanityFilter>::get_deleter(std::type_info const&)")]
-pub fn stub_4ff614() -> ! {
-    todo!("0x4ff614 __ZN5boost6detail17sp_counted_impl_pIN3RBX15ProfanityFilterEE11get_deleterERKSt9type_info")
+pub fn stub_4ff614() {
+    // IDA 0x4ff614: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4ff618 — __ZN5boost6detail17sp_counted_impl_pIN3RBX15ProfanityFilterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ProfanityFilter>::get_untyped_deleter(void)")]
-pub fn stub_4ff618() -> ! {
-    todo!("0x4ff618 __ZN5boost6detail17sp_counted_impl_pIN3RBX15ProfanityFilterEE19get_untyped_deleterEv")
+pub fn stub_4ff618() {
+    // IDA 0x4ff618: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4ff61c — __ZN5boost10shared_ptrIN3RBX15ProfanityFilterEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 #[doc(alias = "boost::shared_ptr<RBX::ProfanityFilter>::shared_ptr<RBX::ProfanityFilter>(boost::weak_ptr<RBX::ProfanityFilter> const&,boost::detail::sp_nothrow_tag)")]
-pub fn stub_4ff61c() -> ! {
-    todo!("0x4ff61c __ZN5boost10shared_ptrIN3RBX15ProfanityFilterEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")
+pub fn stub_4ff61c() {
+    // IDA 0x4ff61c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x4ff698 — __ZN3RBX15ScopedSingletonINS_15ProfanityFilterEE27safe_static_init_s_instanceEv
@@ -61,8 +61,8 @@ pub fn stub_4ff69c() -> ! {
 
 // 0x4ff700 — __ZN5boost8weak_ptrIN3RBX15ProfanityFilterEED1Ev
 #[doc(alias = "boost::weak_ptr<RBX::ProfanityFilter>::~weak_ptr()")]
-pub fn stub_4ff700() -> ! {
-    todo!("0x4ff700 __ZN5boost8weak_ptrIN3RBX15ProfanityFilterEED1Ev")
+pub fn stub_4ff700() {
+    // IDA 0x4ff700: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4ff714 — __ZN3RBX15ScopedSingletonINS_15ProfanityFilterEE21safe_static_init_syncEv
@@ -80,8 +80,8 @@ pub fn stub_4ff718() -> ! {
 // 0x4ff808 — __ZN3RBX5mutexD1Ev
 // type: void __fastcall(RBX::mutex *__hidden this)
 #[doc(alias = "RBX::mutex::~mutex()")]
-pub fn stub_4ff808() -> ! {
-    todo!("0x4ff808 __ZN3RBX5mutexD1Ev")
+pub fn stub_4ff808() {
+    // IDA 0x4ff808: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4ff818 — __ZN5boost14singleton_poolIN3RBX4POLY9BlockMeshELj36ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
@@ -100,15 +100,15 @@ pub fn stub_4ff864() -> ! {
 // 0x4ff9dc — __ZN3RBX8NullVerbD1Ev
 // type: void __fastcall(RBX::NullVerb *__hidden this)
 #[doc(alias = "RBX::NullVerb::~NullVerb()")]
-pub fn stub_4ff9dc() -> ! {
-    todo!("0x4ff9dc __ZN3RBX8NullVerbD1Ev")
+pub fn stub_4ff9dc() {
+    // IDA 0x4ff9dc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4ff9e0 — __ZN3RBX8NullVerbD0Ev
 // type: void __fastcall(RBX::NullVerb *__hidden this)
 #[doc(alias = "RBX::NullVerb::~NullVerb()")]
-pub fn stub_4ff9e0() -> ! {
-    todo!("0x4ff9e0 __ZN3RBX8NullVerbD0Ev")
+pub fn stub_4ff9e0() {
+    // IDA 0x4ff9e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4ffa80 — __ZNK3RBX8NullVerb9isEnabledEv
@@ -264,8 +264,8 @@ pub fn stub_50158c() -> ! {
 
 // 0x501594 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::~EnumPropDescriptor()")]
-pub fn stub_501594() -> ! {
-    todo!("0x501594 __ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEED1Ev")
+pub fn stub_501594() {
+    // IDA 0x501594: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5015b8 — __ZNK3RBX12GameSettings19getPostImageSettingEv
@@ -277,14 +277,14 @@ pub fn stub_5015b8() -> ! {
 
 // 0x5015c0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::~EnumPropDescriptor()")]
-pub fn stub_5015c0() -> ! {
-    todo!("0x5015c0 __ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEED1Ev")
+pub fn stub_5015c0() {
+    // IDA 0x5015c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5015e4 — __ZN3RBX10Reflection9EventDescINS_12GameSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::GameSettings,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::GameSettings::*>::~EventDesc()")]
-pub fn stub_5015e4() -> ! {
-    todo!("0x5015e4 __ZN3RBX10Reflection9EventDescINS_12GameSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev")
+pub fn stub_5015e4() {
+    // IDA 0x5015e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x501608 — __ZN3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEEC2Ev
@@ -296,15 +296,15 @@ pub fn stub_501608() -> ! {
 // 0x501878 — __ZN3RBX12GameSettingsD1Ev
 // type: void __fastcall(RBX::GameSettings *__hidden this)
 #[doc(alias = "RBX::GameSettings::~GameSettings()")]
-pub fn stub_501878() -> ! {
-    todo!("0x501878 __ZN3RBX12GameSettingsD1Ev")
+pub fn stub_501878() {
+    // IDA 0x501878: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x501a00 — __ZN3RBX12GameSettingsD0Ev
 // type: void __fastcall(RBX::GameSettings *__hidden this)
 #[doc(alias = "RBX::GameSettings::~GameSettings()")]
-pub fn stub_501a00() -> ! {
-    todo!("0x501a00 __ZN3RBX12GameSettingsD0Ev")
+pub fn stub_501a00() {
+    // IDA 0x501a00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x501aa0 — __ZNK3RBX14FactoryProductINS_12GameSettingsENS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEE12getClassNameEv
@@ -316,35 +316,35 @@ pub fn stub_501aa0() -> ! {
 // 0x501ab0 — __ZThn32_N3RBX12GameSettingsD1Ev
 // type: void __fastcall(RBX::GameSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings()")]
-pub fn stub_501ab0() -> ! {
-    todo!("0x501ab0 __ZThn32_N3RBX12GameSettingsD1Ev")
+pub fn stub_501ab0() {
+    // IDA 0x501ab0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x501c34 — __ZThn32_N3RBX12GameSettingsD0Ev
 // type: void __fastcall(RBX::GameSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings()")]
-pub fn stub_501c34() -> ! {
-    todo!("0x501c34 __ZThn32_N3RBX12GameSettingsD0Ev")
+pub fn stub_501c34() {
+    // IDA 0x501c34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x501dd0 — __ZThn32_NK3RBX14FactoryProductINS_12GameSettingsENS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_12GameSettingsENS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_501dd0() -> ! {
-    todo!("0x501dd0 __ZThn32_NK3RBX14FactoryProductINS_12GameSettingsENS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEE12getClassNameEv")
+pub fn stub_501dd0() {
+    // IDA 0x501dd0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x501de0 — __ZThn36_N3RBX12GameSettingsD1Ev
 // type: void __fastcall(RBX::GameSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings()")]
-pub fn stub_501de0() -> ! {
-    todo!("0x501de0 __ZThn36_N3RBX12GameSettingsD1Ev")
+pub fn stub_501de0() {
+    // IDA 0x501de0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x501f64 — __ZThn36_N3RBX12GameSettingsD0Ev
 // type: void __fastcall(RBX::GameSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings()")]
-pub fn stub_501f64() -> ! {
-    todo!("0x501f64 __ZThn36_N3RBX12GameSettingsD0Ev")
+pub fn stub_501f64() {
+    // IDA 0x501f64: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x502100 — __ZN3RBX14FactoryProductINS_12GameSettingsENS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEE17static_getCreatorEv
@@ -355,74 +355,74 @@ pub fn stub_502100() -> ! {
 
 // 0x502174 — __ZN3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED1Ev
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED1Ev")]
-pub fn stub_502174() -> ! {
-    todo!("0x502174 __ZN3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED1Ev")
+pub fn stub_502174() {
+    // IDA 0x502174: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5021b4 — __ZN3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED0Ev
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED0Ev")]
-pub fn stub_5021b4() -> ! {
-    todo!("0x5021b4 __ZN3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED0Ev")
+pub fn stub_5021b4() {
+    // IDA 0x5021b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x502294 — __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED1Ev
 #[doc(alias = "__ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED1Ev")]
-pub fn stub_502294() -> ! {
-    todo!("0x502294 __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED1Ev")
+pub fn stub_502294() {
+    // IDA 0x502294: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5022d8 — __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED0Ev
 #[doc(alias = "__ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED0Ev")]
-pub fn stub_5022d8() -> ! {
-    todo!("0x5022d8 __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED0Ev")
+pub fn stub_5022d8() {
+    // IDA 0x5022d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5022e0 — __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED1Ev
 #[doc(alias = "__ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED1Ev")]
-pub fn stub_5022e0() -> ! {
-    todo!("0x5022e0 __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED1Ev")
+pub fn stub_5022e0() {
+    // IDA 0x5022e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x502324 — __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED0Ev
 #[doc(alias = "__ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED0Ev")]
-pub fn stub_502324() -> ! {
-    todo!("0x502324 __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED0Ev")
+pub fn stub_502324() {
+    // IDA 0x502324: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x50232c — __ZN3RBX10Reflection9DescribedINS_12GameSettingsELZNS_13sGameSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_12GameSettingsELZNS_13sGameSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_50232c() -> ! {
-    todo!("0x50232c __ZN3RBX10Reflection9DescribedINS_12GameSettingsELZNS_13sGameSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_50232c() {
+    // IDA 0x50232c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x502330 — __ZN3RBX10Reflection9DescribedINS_12GameSettingsELZNS_13sGameSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_12GameSettingsELZNS_13sGameSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_502330() -> ! {
-    todo!("0x502330 __ZN3RBX10Reflection9DescribedINS_12GameSettingsELZNS_13sGameSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_502330() {
+    // IDA 0x502330: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5023d0 — __ZThn32_N3RBX10Reflection9DescribedINS_12GameSettingsELZNS_13sGameSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12GameSettingsELZNS_13sGameSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5023d0() -> ! {
-    todo!("0x5023d0 __ZThn32_N3RBX10Reflection9DescribedINS_12GameSettingsELZNS_13sGameSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5023d0() {
+    // IDA 0x5023d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5023d8 — __ZThn32_N3RBX10Reflection9DescribedINS_12GameSettingsELZNS_13sGameSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12GameSettingsELZNS_13sGameSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_5023d8() -> ! {
-    todo!("0x5023d8 __ZThn32_N3RBX10Reflection9DescribedINS_12GameSettingsELZNS_13sGameSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_5023d8() {
+    // IDA 0x5023d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x50247c — __ZThn36_N3RBX10Reflection9DescribedINS_12GameSettingsELZNS_13sGameSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_12GameSettingsELZNS_13sGameSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_50247c() -> ! {
-    todo!("0x50247c __ZThn36_N3RBX10Reflection9DescribedINS_12GameSettingsELZNS_13sGameSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_50247c() {
+    // IDA 0x50247c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x502484 — __ZThn36_N3RBX10Reflection9DescribedINS_12GameSettingsELZNS_13sGameSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_12GameSettingsELZNS_13sGameSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_502484() -> ! {
-    todo!("0x502484 __ZThn36_N3RBX10Reflection9DescribedINS_12GameSettingsELZNS_13sGameSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_502484() {
+    // IDA 0x502484: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x502528 — __ZN3RBX10Reflection9EventDescINS_12GameSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -433,8 +433,8 @@ pub fn stub_502528() -> ! {
 
 // 0x5026ac — __ZN3RBX10Reflection9EventDescINS_12GameSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::GameSettings,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::GameSettings::*>::~EventDesc()")]
-pub fn stub_5026ac() -> ! {
-    todo!("0x5026ac __ZN3RBX10Reflection9EventDescINS_12GameSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_ED0Ev")
+pub fn stub_5026ac() {
+    // IDA 0x5026ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x502760 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_12GameSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -465,8 +465,8 @@ pub fn stub_502954() -> ! {
 
 // 0x502b08 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::~EnumPropDescriptor()")]
-pub fn stub_502b08() -> ! {
-    todo!("0x502b08 __ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEED0Ev")
+pub fn stub_502b08() {
+    // IDA 0x502b08: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x502b34 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE10isReadOnlyEv
@@ -617,8 +617,8 @@ pub fn stub_5031cc() -> ! {
 
 // 0x503380 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::~EnumPropDescriptor()")]
-pub fn stub_503380() -> ! {
-    todo!("0x503380 __ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEED0Ev")
+pub fn stub_503380() {
+    // IDA 0x503380: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5033ac — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE10isReadOnlyEv

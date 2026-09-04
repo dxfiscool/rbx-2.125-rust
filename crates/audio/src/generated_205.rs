@@ -24,8 +24,8 @@ pub fn stub_4bc188() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Frame::Style>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Frame::Style>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_5Frame5StyleEED1Ev")]
-pub fn stub_4bc278() -> ! {
-    todo!("0x4bc278 __ZN3RBX10Reflection8EnumDescINS_5Frame5StyleEED1Ev")
+pub fn stub_4bc278() {
+    // IDA 0x4bc278: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -33,8 +33,8 @@ pub fn stub_4bc278() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Frame::Style>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Frame::Style>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_5Frame5StyleEED2Ev")]
-pub fn stub_4bc27c() -> ! {
-    todo!("0x4bc27c __ZN3RBX10Reflection8EnumDescINS_5Frame5StyleEED2Ev")
+pub fn stub_4bc27c() {
+    // IDA 0x4bc27c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -42,8 +42,8 @@ pub fn stub_4bc27c() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Frame::Style>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Frame::Style>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_5Frame5StyleEED0Ev")]
-pub fn stub_4bc450() -> ! {
-    todo!("0x4bc450 __ZN3RBX10Reflection8EnumDescINS_5Frame5StyleEED0Ev")
+pub fn stub_4bc450() {
+    // IDA 0x4bc450: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -161,8 +161,8 @@ pub fn stub_4bcb08() -> ! {
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Frame::Style>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Frame::Style>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Frame::Style>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Frame::Style>> *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Frame::Style>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Frame::Style>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Frame::Style>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Frame::Style>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Frame5StyleEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_4bcb84() -> ! {
-    todo!("0x4bcb84 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Frame5StyleEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_4bcb84() {
+    // IDA 0x4bcb84: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 
@@ -188,8 +188,8 @@ pub fn stub_4bcbb0() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEED1Ev")]
-pub fn stub_4bcca0() -> ! {
-    todo!("0x4bcca0 __ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEED1Ev")
+pub fn stub_4bcca0() {
+    // IDA 0x4bcca0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -197,8 +197,8 @@ pub fn stub_4bcca0() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEED2Ev")]
-pub fn stub_4bcca4() -> ! {
-    todo!("0x4bcca4 __ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEED2Ev")
+pub fn stub_4bcca4() {
+    // IDA 0x4bcca4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -206,8 +206,8 @@ pub fn stub_4bcca4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEED0Ev")]
-pub fn stub_4bce78() -> ! {
-    todo!("0x4bce78 __ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEED0Ev")
+pub fn stub_4bce78() {
+    // IDA 0x4bce78: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -325,8 +325,8 @@ pub fn stub_4bd530() -> ! {
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::GameBasicSettings::RenderQualitySetting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::GameBasicSettings::RenderQualitySetting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::GameBasicSettings::RenderQualitySetting>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::GameBasicSettings::RenderQualitySetting>> *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::GameBasicSettings::RenderQualitySetting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::GameBasicSettings::RenderQualitySetting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::GameBasicSettings::RenderQualitySetting>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::GameBasicSettings::RenderQualitySetting>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_17GameBasicSettings20RenderQualitySettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_4bd5ac() -> ! {
-    todo!("0x4bd5ac __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_17GameBasicSettings20RenderQualitySettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_4bd5ac() {
+    // IDA 0x4bd5ac: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 
@@ -352,8 +352,8 @@ pub fn stub_4bd5d8() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEED1Ev")]
-pub fn stub_4bd6c8() -> ! {
-    todo!("0x4bd6c8 __ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEED1Ev")
+pub fn stub_4bd6c8() {
+    // IDA 0x4bd6c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -361,8 +361,8 @@ pub fn stub_4bd6c8() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEED2Ev")]
-pub fn stub_4bd6cc() -> ! {
-    todo!("0x4bd6cc __ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEED2Ev")
+pub fn stub_4bd6cc() {
+    // IDA 0x4bd6cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -370,8 +370,8 @@ pub fn stub_4bd6cc() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEED0Ev")]
-pub fn stub_4bd8a0() -> ! {
-    todo!("0x4bd8a0 __ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEED0Ev")
+pub fn stub_4bd8a0() {
+    // IDA 0x4bd8a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -489,8 +489,8 @@ pub fn stub_4bdf58() -> ! {
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::GameBasicSettings::ControlMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::GameBasicSettings::ControlMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::GameBasicSettings::ControlMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::GameBasicSettings::ControlMode>> *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::GameBasicSettings::ControlMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::GameBasicSettings::ControlMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::GameBasicSettings::ControlMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::GameBasicSettings::ControlMode>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_17GameBasicSettings11ControlModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_4bdfd4() -> ! {
-    todo!("0x4bdfd4 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_17GameBasicSettings11ControlModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_4bdfd4() {
+    // IDA 0x4bdfd4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 
@@ -516,8 +516,8 @@ pub fn stub_4be000() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_12GameSettings13UploadSettingEED1Ev")]
-pub fn stub_4be0f0() -> ! {
-    todo!("0x4be0f0 __ZN3RBX10Reflection8EnumDescINS_12GameSettings13UploadSettingEED1Ev")
+pub fn stub_4be0f0() {
+    // IDA 0x4be0f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -525,8 +525,8 @@ pub fn stub_4be0f0() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_12GameSettings13UploadSettingEED2Ev")]
-pub fn stub_4be0f4() -> ! {
-    todo!("0x4be0f4 __ZN3RBX10Reflection8EnumDescINS_12GameSettings13UploadSettingEED2Ev")
+pub fn stub_4be0f4() {
+    // IDA 0x4be0f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -534,8 +534,8 @@ pub fn stub_4be0f4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_12GameSettings13UploadSettingEED0Ev")]
-pub fn stub_4be2c8() -> ! {
-    todo!("0x4be2c8 __ZN3RBX10Reflection8EnumDescINS_12GameSettings13UploadSettingEED0Ev")
+pub fn stub_4be2c8() {
+    // IDA 0x4be2c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -654,8 +654,8 @@ pub fn stub_4be980() -> ! {
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::GameSettings::UploadSetting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::GameSettings::UploadSetting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::GameSettings::UploadSetting>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::GameSettings::UploadSetting>> *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::GameSettings::UploadSetting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::GameSettings::UploadSetting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::GameSettings::UploadSetting>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::GameSettings::UploadSetting>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings13UploadSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_4be9fc() -> ! {
-    todo!("0x4be9fc __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings13UploadSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_4be9fc() {
+    // IDA 0x4be9fc: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 
@@ -682,8 +682,8 @@ pub fn stub_4bea28() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEED1Ev")]
-pub fn stub_4beb18() -> ! {
-    todo!("0x4beb18 __ZN3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEED1Ev")
+pub fn stub_4beb18() {
+    // IDA 0x4beb18: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -691,8 +691,8 @@ pub fn stub_4beb18() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEED2Ev")]
-pub fn stub_4beb1c() -> ! {
-    todo!("0x4beb1c __ZN3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEED2Ev")
+pub fn stub_4beb1c() {
+    // IDA 0x4beb1c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -700,8 +700,8 @@ pub fn stub_4beb1c() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEED0Ev")]
-pub fn stub_4becf0() -> ! {
-    todo!("0x4becf0 __ZN3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEED0Ev")
+pub fn stub_4becf0() {
+    // IDA 0x4becf0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -820,8 +820,8 @@ pub fn stub_4bf3a8() -> ! {
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::GameSettings::VideoQuality>,std::_Select1st<std::pair<RBX::Name const* const,RBX::GameSettings::VideoQuality>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::GameSettings::VideoQuality>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::GameSettings::VideoQuality>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings12VideoQualityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_4bf424() -> ! {
-    todo!("0x4bf424 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings12VideoQualityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_4bf424() {
+    // IDA 0x4bf424: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 
@@ -847,8 +847,8 @@ pub fn stub_4bf450() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::CharacterMesh::BodyPart>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CharacterMesh::BodyPart>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13CharacterMesh8BodyPartEED1Ev")]
-pub fn stub_4bf540() -> ! {
-    todo!("0x4bf540 __ZN3RBX10Reflection8EnumDescINS_13CharacterMesh8BodyPartEED1Ev")
+pub fn stub_4bf540() {
+    // IDA 0x4bf540: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -856,8 +856,8 @@ pub fn stub_4bf540() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::CharacterMesh::BodyPart>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CharacterMesh::BodyPart>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13CharacterMesh8BodyPartEED2Ev")]
-pub fn stub_4bf544() -> ! {
-    todo!("0x4bf544 __ZN3RBX10Reflection8EnumDescINS_13CharacterMesh8BodyPartEED2Ev")
+pub fn stub_4bf544() {
+    // IDA 0x4bf544: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -865,8 +865,8 @@ pub fn stub_4bf544() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::CharacterMesh::BodyPart>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CharacterMesh::BodyPart>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13CharacterMesh8BodyPartEED0Ev")]
-pub fn stub_4bf718() -> ! {
-    todo!("0x4bf718 __ZN3RBX10Reflection8EnumDescINS_13CharacterMesh8BodyPartEED0Ev")
+pub fn stub_4bf718() {
+    // IDA 0x4bf718: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 

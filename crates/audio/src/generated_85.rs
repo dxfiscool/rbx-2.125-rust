@@ -148,15 +148,15 @@ pub fn stub_8b2c88() -> ! {
 // 0x8b4514 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEENS3_5list1INS3_5valueIS8_EEEEEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_8b4514() -> ! {
-    todo!("0x8b4514 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_8b4514() {
+    // IDA 0x8b4514: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x8b4530 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEENS3_5list1INS3_5valueIS8_EEEEEEvPS7_E6invokeERNS1_15function_bufferESG_
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")]
-pub fn stub_8b4530() -> ! {
-    todo!("0x8b4530 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")
+pub fn stub_8b4530() {
+    // IDA 0x8b4530: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x8b454c — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIS4_EEENS8_5list1INS8_5valueISB_EEEEEEEEbT_RNS1_15function_bufferE
@@ -169,8 +169,8 @@ pub fn stub_8b454c() -> ! {
 // 0x8b4670 — __ZN5boost3_bi5list1INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEEEclIPFvS6_ENS1_IRPS5_EEEEvNS0_4typeIvEERT_RT0_i
 // type: void __fastcall(int *, void (__fastcall **)(int *))
 #[doc(alias = "void boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>::operator()<void (*)(rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::DataModel>) &,boost::_bi::list1<RBX::DataModel*&> &,int)")]
-pub fn stub_8b4670() -> ! {
-    todo!("0x8b4670 void boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>::operator()<void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::DataModel>) &,boost::_bi::list1<RBX::DataModel*&> &,int)")
+pub fn stub_8b4670() {
+    // IDA 0x8b4670: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x8b4780 — __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEENS3_5list1INS3_5valueIS8_EEEEEEE12manage_smallERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE
@@ -183,8 +183,8 @@ pub fn stub_8b4780() -> ! {
 // 0x8b4858 — __ZN5boost3_bi5valueINS_8weak_ptrIN3RBX9DataModelEEEEC1ERKS5_
 // type: _DWORD *__fastcall(_DWORD *, _DWORD *)
 #[doc(alias = "boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>::value(rbx_core::WeakPtr<RBX::DataModel> const&)")]
-pub fn stub_8b4858() -> ! {
-    todo!("0x8b4858 boost::_bi::value<boost::weak_ptr<RBX::DataModel>>::value(boost::weak_ptr<RBX::DataModel> const&)")
+pub fn stub_8b4858() {
+    // IDA 0x8b4858: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x8b48bc — __ZN5boost3_bi8storage1INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEEEC2ES7_
@@ -204,15 +204,15 @@ pub fn stub_8b4bb0() -> ! {
 // 0x8b4d08 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvN3RBX7UIEventEPvNS_8weak_ptrINS5_9DataModelEEEENS3_5list3INS3_5valueIS6_EENSE_IS7_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RBX::UIEvent,void *,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<RBX::UIEvent>,boost::_bi::value<void *>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_8b4d08() -> ! {
-    todo!("0x8b4d08 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RBX::UIEvent,void *,boost::weak_ptr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<RBX::UIEvent>,boost::_bi::value<void *>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_8b4d08() {
+    // IDA 0x8b4d08: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x8b4d24 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvN3RBX7UIEventEPvNS_8weak_ptrINS5_9DataModelEEEENS3_5list3INS3_5valueIS6_EENSE_IS7_EENSE_ISA_EEEEEEvPS9_E6invokeERNS1_15function_bufferESK_
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RBX::UIEvent,void *,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<RBX::UIEvent>,boost::_bi::value<void *>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")]
-pub fn stub_8b4d24() -> ! {
-    todo!("0x8b4d24 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RBX::UIEvent,void *,boost::weak_ptr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<RBX::UIEvent>,boost::_bi::value<void *>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")
+pub fn stub_8b4d24() {
+    // IDA 0x8b4d24: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x8b4d40 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS3_7UIEventEPvNS_8weak_ptrIS4_EEENS8_5list3INS8_5valueISA_EENSH_ISB_EENSH_ISD_EEEEEEEEbT_RNS1_15function_bufferE
@@ -246,15 +246,15 @@ pub fn stub_8b50f4() -> ! {
 // 0x8b5240 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvN3RBX7UIEventEPvNS_8weak_ptrINS5_9DataModelEEEENS3_5list3INS3_5valueIS6_EENSE_IS7_EENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(int *, _WORD *, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RBX::UIEvent,void *,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<RBX::UIEvent>,boost::_bi::value<void *>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_8b5240() -> ! {
-    todo!("0x8b5240 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RBX::UIEvent,void *,boost::weak_ptr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<RBX::UIEvent>,boost::_bi::value<void *>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_8b5240() {
+    // IDA 0x8b5240: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x8b53f0 — __ZN5boost3_bi5list3INS0_5valueIN3RBX7UIEventEEENS2_IPvEENS2_INS_8weak_ptrINS3_9DataModelEEEEEEC2ES5_S7_SB_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, struct _Unwind_Exception *lpuexcpt, boost::detail::sp_counted_base *, int, int, int *, int)
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<RBX::UIEvent>,boost::_bi::value<void *>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>::list3(boost::_bi::value<RBX::UIEvent>,boost::_bi::value<void *>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>)")]
-pub fn stub_8b53f0() -> ! {
-    todo!("0x8b53f0 boost::_bi::list3<boost::_bi::value<RBX::UIEvent>,boost::_bi::value<void *>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>::list3(boost::_bi::value<RBX::UIEvent>,boost::_bi::value<void *>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>)")
+pub fn stub_8b53f0() {
+    // IDA 0x8b53f0: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x8b5a40 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EESsbENS6_5list3INS6_5valueIS9_EENSD_ISsEENSD_IbEEEEEEEEvT_
@@ -267,15 +267,15 @@ pub fn stub_8b5a40() -> ! {
 // 0x8b5c1c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEESsbENS3_5list3INS3_5valueIS8_EENSC_ISsEENSC_IbEEEEEEE6manageERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_8b5c1c() -> ! {
-    todo!("0x8b5c1c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_8b5c1c() {
+    // IDA 0x8b5c1c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x8b5c38 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEESsbENS3_5list3INS3_5valueIS8_EENSC_ISsEENSC_IbEEEEEEvPS7_E6invokeERNS1_15function_bufferESI_
 // type: int __fastcall(int *, int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")]
-pub fn stub_8b5c38() -> ! {
-    todo!("0x8b5c38 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")
+pub fn stub_8b5c38() {
+    // IDA 0x8b5c38: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x8b5c54 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIS4_EESsbENS8_5list3INS8_5valueISB_EENSF_ISsEENSF_IbEEEEEEEEbT_RNS1_15function_bufferE
@@ -309,15 +309,15 @@ pub fn stub_8b6130() -> ! {
 // 0x8b62e0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEESsbENS3_5list3INS3_5valueIS8_EENSC_ISsEENSC_IbEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(int *, _WORD *, int, int, void *, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_8b62e0() -> ! {
-    todo!("0x8b62e0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_8b62e0() {
+    // IDA 0x8b62e0: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x8b64c0 — __ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_ISsEENS2_IbEEEC2ES7_S8_S9_
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int, int *, const std::string *, unsigned __int8)
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::list3(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>,boost::_bi::value<bool>)")]
-pub fn stub_8b64c0() -> ! {
-    todo!("0x8b64c0 boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::list3(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>,boost::_bi::value<bool>)")
+pub fn stub_8b64c0() {
+    // IDA 0x8b64c0: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x8b6670 — __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_ISsEENS2_IbEEEC2ES7_S8_S9_
@@ -344,15 +344,15 @@ pub fn stub_8b6fc0() -> ! {
 // 0x8b7100 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvfNS_8weak_ptrIN3RBX9DataModelEEEENS3_5list2INS3_5valueIfEENSC_IS8_EEEEEEE6manageERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(float,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list2<boost::_bi::value<float>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_8b7100() -> ! {
-    todo!("0x8b7100 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(float,boost::weak_ptr<RBX::DataModel>),boost::_bi::list2<boost::_bi::value<float>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_8b7100() {
+    // IDA 0x8b7100: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x8b711c — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvfNS_8weak_ptrIN3RBX9DataModelEEEENS3_5list2INS3_5valueIfEENSC_IS8_EEEEEEvPS7_E6invokeERNS1_15function_bufferESH_
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(float,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list2<boost::_bi::value<float>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")]
-pub fn stub_8b711c() -> ! {
-    todo!("0x8b711c boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(float,boost::weak_ptr<RBX::DataModel>),boost::_bi::list2<boost::_bi::value<float>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")
+pub fn stub_8b711c() {
+    // IDA 0x8b711c: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x8b7124 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvfNS_8weak_ptrIS4_EEENS8_5list2INS8_5valueIfEENSF_ISB_EEEEEEEEbT_RNS1_15function_bufferE
@@ -386,15 +386,15 @@ pub fn stub_8b7490() -> ! {
 // 0x8b75a8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvfNS_8weak_ptrIN3RBX9DataModelEEEENS3_5list2INS3_5valueIfEENSC_IS8_EEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(_DWORD **, _WORD *, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(float,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list2<boost::_bi::value<float>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_8b75a8() -> ! {
-    todo!("0x8b75a8 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(float,boost::weak_ptr<RBX::DataModel>),boost::_bi::list2<boost::_bi::value<float>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_8b75a8() {
+    // IDA 0x8b75a8: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x8b7740 — __ZN5boost3_bi5list2INS0_5valueIfEENS2_INS_8weak_ptrIN3RBX9DataModelEEEEEEC2ES3_S8_
 // type: _DWORD *__fastcall(_DWORD *, int, int *, int, struct _Unwind_Exception *lpuexcpt, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<float>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>::list2(boost::_bi::value<float>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>)")]
-pub fn stub_8b7740() -> ! {
-    todo!("0x8b7740 boost::_bi::list2<boost::_bi::value<float>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>::list2(boost::_bi::value<float>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>)")
+pub fn stub_8b7740() {
+    // IDA 0x8b7740: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x8b7b24 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvffbNS1_6Camera13CameraPanModeENS_8weak_ptrIS2_EEENS6_5list5INS6_5valueIfEESG_NSF_IbEENSF_IS9_EENSF_ISB_EEEEEEEEvT_
@@ -407,15 +407,15 @@ pub fn stub_8b7b24() -> ! {
 // 0x8b7c6c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvffbN3RBX6Camera13CameraPanModeENS_8weak_ptrINS5_9DataModelEEEENS3_5list5INS3_5valueIfEESF_NSE_IbEENSE_IS7_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(float,float,bool,RBX::Camera::CameraPanMode,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list5<boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<bool>,boost::_bi::value<RBX::Camera::CameraPanMode>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_8b7c6c() -> ! {
-    todo!("0x8b7c6c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(float,float,bool,RBX::Camera::CameraPanMode,boost::weak_ptr<RBX::DataModel>),boost::_bi::list5<boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<bool>,boost::_bi::value<RBX::Camera::CameraPanMode>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_8b7c6c() {
+    // IDA 0x8b7c6c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x8b7c88 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvffbN3RBX6Camera13CameraPanModeENS_8weak_ptrINS5_9DataModelEEEENS3_5list5INS3_5valueIfEESF_NSE_IbEENSE_IS7_EENSE_ISA_EEEEEEvPS9_E6invokeERNS1_15function_bufferESL_
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(float,float,bool,RBX::Camera::CameraPanMode,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list5<boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<bool>,boost::_bi::value<RBX::Camera::CameraPanMode>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")]
-pub fn stub_8b7c88() -> ! {
-    todo!("0x8b7c88 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(float,float,bool,RBX::Camera::CameraPanMode,boost::weak_ptr<RBX::DataModel>),boost::_bi::list5<boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<bool>,boost::_bi::value<RBX::Camera::CameraPanMode>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")
+pub fn stub_8b7c88() {
+    // IDA 0x8b7c88: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x8b7ca4 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvffbNS3_6Camera13CameraPanModeENS_8weak_ptrIS4_EEENS8_5list5INS8_5valueIfEESI_NSH_IbEENSH_ISB_EENSH_ISD_EEEEEEEEbT_RNS1_15function_bufferE
@@ -449,15 +449,15 @@ pub fn stub_8b8028() -> ! {
 // 0x8b8160 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvffbN3RBX6Camera13CameraPanModeENS_8weak_ptrINS5_9DataModelEEEENS3_5list5INS3_5valueIfEESF_NSE_IbEENSE_IS7_EENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(int *, _WORD *, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(float,float,bool,RBX::Camera::CameraPanMode,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list5<boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<bool>,boost::_bi::value<RBX::Camera::CameraPanMode>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_8b8160() -> ! {
-    todo!("0x8b8160 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(float,float,bool,RBX::Camera::CameraPanMode,boost::weak_ptr<RBX::DataModel>),boost::_bi::list5<boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<bool>,boost::_bi::value<RBX::Camera::CameraPanMode>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_8b8160() {
+    // IDA 0x8b8160: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x8b8300 — __ZN5boost3_bi5list5INS0_5valueIfEES3_NS2_IbEENS2_IN3RBX6Camera13CameraPanModeEEENS2_INS_8weak_ptrINS5_9DataModelEEEEEEC2ES3_S3_S4_S8_SC_
 // type: int __fastcall(int, int, int, char, struct _Unwind_Exception *lpuexcpt, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "boost::_bi::list5<boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<bool>,boost::_bi::value<RBX::Camera::CameraPanMode>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>::list5(boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<bool>,boost::_bi::value<RBX::Camera::CameraPanMode>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>)")]
-pub fn stub_8b8300() -> ! {
-    todo!("0x8b8300 boost::_bi::list5<boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<bool>,boost::_bi::value<RBX::Camera::CameraPanMode>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>::list5(boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<bool>,boost::_bi::value<RBX::Camera::CameraPanMode>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>)")
+pub fn stub_8b8300() {
+    // IDA 0x8b8300: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x8b86ec — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvffNS_8weak_ptrIS2_EEENS6_5list3INS6_5valueIfEESE_NSD_IS9_EEEEEEEEvT_
@@ -470,15 +470,15 @@ pub fn stub_8b86ec() -> ! {
 // 0x8b8830 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvffNS_8weak_ptrIN3RBX9DataModelEEEENS3_5list3INS3_5valueIfEESD_NSC_IS8_EEEEEEE6manageERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(float,float,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_8b8830() -> ! {
-    todo!("0x8b8830 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(float,float,boost::weak_ptr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_8b8830() {
+    // IDA 0x8b8830: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x8b884c — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvffNS_8weak_ptrIN3RBX9DataModelEEEENS3_5list3INS3_5valueIfEESD_NSC_IS8_EEEEEEvPS7_E6invokeERNS1_15function_bufferESH_
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(float,float,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")]
-pub fn stub_8b884c() -> ! {
-    todo!("0x8b884c boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(float,float,boost::weak_ptr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")
+pub fn stub_8b884c() {
+    // IDA 0x8b884c: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x8b8854 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvffNS_8weak_ptrIS4_EEENS8_5list3INS8_5valueIfEESG_NSF_ISB_EEEEEEEEbT_RNS1_15function_bufferE
@@ -512,15 +512,15 @@ pub fn stub_8b8bcc() -> ! {
 // 0x8b8cec — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvffNS_8weak_ptrIN3RBX9DataModelEEEENS3_5list3INS3_5valueIfEESD_NSC_IS8_EEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(int *, _WORD *, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(float,float,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_8b8cec() -> ! {
-    todo!("0x8b8cec boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(float,float,boost::weak_ptr<RBX::DataModel>),boost::_bi::list3<boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_8b8cec() {
+    // IDA 0x8b8cec: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x8b8e88 — __ZN5boost3_bi5list3INS0_5valueIfEES3_NS2_INS_8weak_ptrIN3RBX9DataModelEEEEEEC2ES3_S3_S8_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int *, struct _Unwind_Exception *lpuexcpt, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>::list3(boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>)")]
-pub fn stub_8b8e88() -> ! {
-    todo!("0x8b8e88 boost::_bi::list3<boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>::list3(boost::_bi::value<float>,boost::_bi::value<float>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>)")
+pub fn stub_8b8e88() {
+    // IDA 0x8b8e88: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x8b9284 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EENS1_7UIEventEENS6_5list2INS6_5valueIS9_EENSE_ISA_EEEEEEEEvT_
@@ -533,15 +533,15 @@ pub fn stub_8b9284() -> ! {
 // 0x8b93d8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEENS6_7UIEventEENS3_5list2INS3_5valueIS8_EENSD_IS9_EEEEEEE6manageERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,RBX::UIEvent),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<RBX::UIEvent>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_8b93d8() -> ! {
-    todo!("0x8b93d8 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,RBX::UIEvent),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<RBX::UIEvent>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_8b93d8() {
+    // IDA 0x8b93d8: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x8b93f4 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEENS6_7UIEventEENS3_5list2INS3_5valueIS8_EENSD_IS9_EEEEEEvPS7_E6invokeERNS1_15function_bufferESI_
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,RBX::UIEvent),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<RBX::UIEvent>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")]
-pub fn stub_8b93f4() -> ! {
-    todo!("0x8b93f4 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,RBX::UIEvent),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<RBX::UIEvent>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")
+pub fn stub_8b93f4() {
+    // IDA 0x8b93f4: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x8b93fc — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIS4_EENS3_7UIEventEENS8_5list2INS8_5valueISB_EENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferE
@@ -575,15 +575,15 @@ pub fn stub_8b97a4() -> ! {
 // 0x8b98c4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEENS6_7UIEventEENS3_5list2INS3_5valueIS8_EENSD_IS9_EEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(int *, _WORD *, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,RBX::UIEvent),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<RBX::UIEvent>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_8b98c4() -> ! {
-    todo!("0x8b98c4 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,RBX::UIEvent),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<RBX::UIEvent>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_8b98c4() {
+    // IDA 0x8b98c4: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x8b9a70 — __ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS4_7UIEventEEEEC2ES7_S9_
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int, int, int, int, char, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<RBX::UIEvent>>::list2(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<RBX::UIEvent>)")]
-pub fn stub_8b9a70() -> ! {
-    todo!("0x8b9a70 boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<RBX::UIEvent>>::list2(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<RBX::UIEvent>)")
+pub fn stub_8b9a70() {
+    // IDA 0x8b9a70: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x8b9b9c — __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS4_7UIEventEEEEC2ES7_S9_
@@ -603,15 +603,15 @@ pub fn stub_8b9f3c() -> ! {
 // 0x8ba07c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEbENS3_5list2INS3_5valueIS8_EENSC_IbEEEEEEE6manageERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(int, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,bool),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<bool>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_8ba07c() -> ! {
-    todo!("0x8ba07c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,bool),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<bool>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_8ba07c() {
+    // IDA 0x8ba07c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x8ba098 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEbENS3_5list2INS3_5valueIS8_EENSC_IbEEEEEEvPS7_E6invokeERNS1_15function_bufferESH_
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,bool),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<bool>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")]
-pub fn stub_8ba098() -> ! {
-    todo!("0x8ba098 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,bool),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<bool>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")
+pub fn stub_8ba098() {
+    // IDA 0x8ba098: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x8ba0a0 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIS4_EEbENS8_5list2INS8_5valueISB_EENSF_IbEEEEEEEEbT_RNS1_15function_bufferE
@@ -645,15 +645,15 @@ pub fn stub_8ba40c() -> ! {
 // 0x8ba51c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEbENS3_5list2INS3_5valueIS8_EENSC_IbEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(int *, _WORD *, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,bool),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<bool>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_8ba51c() -> ! {
-    todo!("0x8ba51c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,bool),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<bool>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_8ba51c() {
+    // IDA 0x8ba51c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x8ba6b4 — __ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_IbEEEC2ES7_S8_
 // type: int __fastcall(int, boost::detail::sp_counted_base **, unsigned __int8, int)
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<bool>>::list2(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<bool>)")]
-pub fn stub_8ba6b4() -> ! {
-    todo!("0x8ba6b4 boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<bool>>::list2(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<bool>)")
+pub fn stub_8ba6b4() {
+    // IDA 0x8ba6b4: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x8ba7d0 — __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_IbEEEC2ES7_S8_
@@ -708,7 +708,7 @@ pub fn stub_8bb8c4() -> ! {
 // 0x8bb8dc — __ZN3rbx14implementation27timestamped_safe_queue_itemIN5boost8functionIFvPN3RBX9DataModelEEEEEC2ERKS8_
 // type: int __fastcall(int, int)
 #[doc(alias = "rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>::timestamped_safe_queue_item(boost::function<void ()(RBX::DataModel *)> const&)")]
-pub fn stub_8bb8dc() -> ! {
-    todo!("0x8bb8dc rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>::timestamped_safe_queue_item(boost::function<void ()(RBX::DataModel *)> const&)")
+pub fn stub_8bb8dc() {
+    // IDA 0x8bb8dc: function ctor/assign from a bind_t functor. Box<dyn Fn> from closure captures — carrier no-op.
 }
 

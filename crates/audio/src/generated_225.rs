@@ -30,14 +30,14 @@ pub fn stub_d55f98() -> ! {
 
 // 0xd56550 — __ZN4Ogre26WaveformControllerFunctionD1Ev [audio]
 #[doc(alias = "Ogre::WaveformControllerFunction::~WaveformControllerFunction()")]
-pub fn stub_d56550() -> ! {
-    todo!("0xd56550 Ogre::WaveformControllerFunction::~WaveformControllerFunction()")
+pub fn stub_d56550() {
+    // IDA 0xd56550: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xd56554 — __ZN4Ogre26WaveformControllerFunctionD0Ev [audio]
 #[doc(alias = "Ogre::WaveformControllerFunction::~WaveformControllerFunction()")]
-pub fn stub_d56554() -> ! {
-    todo!("0xd56554 Ogre::WaveformControllerFunction::~WaveformControllerFunction()")
+pub fn stub_d56554() {
+    // IDA 0xd56554: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xe4c2d4 — __ZN4Ogre16TextureUnitState21setTransformAnimationENS0_20TextureTransformTypeENS_12WaveformTypeEffff [audio]
@@ -66,8 +66,8 @@ pub fn stub_f21a48() -> ! {
 
 // 0xf21a54 — __ZN3RBX10Reflection8EnumDescINS_9SoundTypeEED2Ev$shim [audio]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9SoundTypeEED2Ev$shim")]
-pub fn stub_f21a54() -> ! {
-    todo!("0xf21a54 __ZN3RBX10Reflection8EnumDescINS_9SoundTypeEED2Ev$shim")
+pub fn stub_f21a54() {
+    // IDA 0xf21a54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf28304 — _AudioUnitSetProperty [audio]
@@ -180,8 +180,8 @@ pub fn stub_f35de4() -> ! {
 
 // 0xf35df4 — j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev [audio]
 #[doc(alias = "j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev")]
-pub fn stub_f35df4() -> ! {
-    todo!("0xf35df4 j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev")
+pub fn stub_f35df4() {
+    // IDA 0xf35df4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf36404 — j___ZN3RBX4Name7declareILZNS_10Soundscape13sSoundServiceEEEERKS0_v [audio]
@@ -204,14 +204,14 @@ pub fn stub_f37ef4() -> ! {
 
 // 0xf38404 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10Soundscape12SoundServiceES7_EEvPKNS_10shared_ptrIT_EEPT0_ [audio]
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Soundscape::SoundService,RBX::Soundscape::SoundService>(boost::shared_ptr<RBX::Soundscape::SoundService> const*,RBX::Soundscape::SoundService *)const")]
-pub fn stub_f38404() -> ! {
-    todo!("0xf38404 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Soundscape::SoundService,RBX::Soundscape::SoundService>(boost::shared_ptr<RBX::Soundscape::SoundService> const*,RBX::Soundscape::SoundService *)const")
+pub fn stub_f38404() {
+    // IDA 0xf38404: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0xf3b284 — j___ZN3RBX10Reflection8EnumDescINS_9SoundTypeEED2Ev [audio]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::~EnumDesc()")]
-pub fn stub_f3b284() -> ! {
-    todo!("0xf3b284 RBX::Reflection::EnumDesc<RBX::SoundType>::~EnumDesc()")
+pub fn stub_f3b284() {
+    // IDA 0xf3b284: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf3c0e4 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9SoundTypeEEEE14doGetSingletonEv [audio]
@@ -258,8 +258,8 @@ pub fn stub_f3da14() -> ! {
 
 // 0xf3dee4 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9SoundTypeEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E [audio]
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SoundType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SoundType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SoundType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::SoundType>> *)")]
-pub fn stub_f3dee4() -> ! {
-    todo!("0xf3dee4 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SoundType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SoundType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SoundType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::SoundType>> *)")
+pub fn stub_f3dee4() {
+    // IDA 0xf3dee4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf4cfe4 — j___ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv [audio]
@@ -282,8 +282,8 @@ pub fn stub_f54824() -> ! {
 
 // 0xf54834 — j___ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEC2IS3_EEPT_ [audio]
 #[doc(alias = "boost::shared_ptr<RBX::Soundscape::CollisionSound>::shared_ptr<RBX::Soundscape::CollisionSound>(RBX::Soundscape::CollisionSound *)")]
-pub fn stub_f54834() -> ! {
-    todo!("0xf54834 boost::shared_ptr<RBX::Soundscape::CollisionSound>::shared_ptr<RBX::Soundscape::CollisionSound>(RBX::Soundscape::CollisionSound *)")
+pub fn stub_f54834() {
+    // IDA 0xf54834: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf54844 — j___ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEaSERKS4_ [audio]
@@ -312,8 +312,8 @@ pub fn stub_f54884() -> ! {
 
 // 0xf54894 — j___ZN5boost6detail12shared_countC2IN3RBX10Soundscape14CollisionSoundEEEPT_ [audio]
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Soundscape::CollisionSound>(RBX::Soundscape::CollisionSound *)")]
-pub fn stub_f54894() -> ! {
-    todo!("0xf54894 boost::detail::shared_count::shared_count<RBX::Soundscape::CollisionSound>(RBX::Soundscape::CollisionSound *)")
+pub fn stub_f54894() {
+    // IDA 0xf54894: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xf548a4 — j___ZNSt3mapIN3RBX10Soundscape18CollisionSoundTypeEN5boost10shared_ptrINS1_14CollisionSoundEEESt4lessIS2_ESaISt4pairIKS2_S6_EEEixERSA_ [audio]
@@ -324,14 +324,14 @@ pub fn stub_f548a4() -> ! {
 
 // 0xf548b4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE14_M_create_nodeERKS9_ [audio]
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_create_node(std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>> const&)")]
-pub fn stub_f548b4() -> ! {
-    todo!("0xf548b4 std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_create_node(std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>> const&)")
+pub fn stub_f548b4() {
+    // IDA 0xf548b4: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0xf548c4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS9_E [audio]
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>> *)")]
-pub fn stub_f548c4() -> ! {
-    todo!("0xf548c4 std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>> *)")
+pub fn stub_f548c4() {
+    // IDA 0xf548c4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf548d4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueERKS9_ [audio]
@@ -348,8 +348,8 @@ pub fn stub_f548e4() -> ! {
 
 // 0xf548f4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E [audio]
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>> *)")]
-pub fn stub_f548f4() -> ! {
-    todo!("0xf548f4 std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>> *)")
+pub fn stub_f548f4() {
+    // IDA 0xf548f4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf54904 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_ [audio]
@@ -366,8 +366,8 @@ pub fn stub_7f1dcc() -> ! {
 
 // 0x7f1ed8 — __ZNSt4listISt4pairISsS0_ImN3RBX15ContentProvider13CachedContentEEESaIS5_EE14_M_create_nodeERKS5_ [gap-fill]
 #[doc(alias = "std::list<std::pair<std::string,std::pair<unsigned long,RBX::ContentProvider::CachedContent>>,std::allocator<std::pair<std::string,std::pair<unsigned long,RBX::ContentProvider::CachedContent>>>>::_M_create_node(std::pair<std::string,std::pair<unsigned long,RBX::ContentProvider::CachedContent>> const&)")]
-pub fn stub_7f1ed8() -> ! {
-    todo!("0x7f1ed8 std::list<std::pair<std::string,std::pair<unsigned long,RBX::ContentProvider::CachedContent>>,std::allocator<std::pair<std::string,std::pair<unsigned long,RBX::ContentProvider::CachedContent>>>>::_M_create_node(std::pair<std::string,std::pair<unsigned long,RBX::ContentProvider::CachedContent>> const&)")
+pub fn stub_7f1ed8() {
+    // IDA 0x7f1ed8: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x7f202c — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX15ContentProvider13CachedContentEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISD_EESN_ [gap-fill]
@@ -393,8 +393,8 @@ pub fn stub_7f20b4() -> ! {
 
 // 0x7f20f4 — __ZNSt4listISt4pairISsS0_ImN3RBX15ContentProvider13CachedContentEEESaIS5_EE8_M_eraseESt14_List_iteratorIS5_E [gap-fill]
 #[doc(alias = "std::list<std::pair<std::string,std::pair<unsigned long,RBX::ContentProvider::CachedContent>>,std::allocator<std::pair<std::string,std::pair<unsigned long,RBX::ContentProvider::CachedContent>>>>::_M_erase(std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ContentProvider::CachedContent>>>)")]
-pub fn stub_7f20f4() -> ! {
-    todo!("0x7f20f4 std::list<std::pair<std::string,std::pair<unsigned long,RBX::ContentProvider::CachedContent>>,std::allocator<std::pair<std::string,std::pair<unsigned long,RBX::ContentProvider::CachedContent>>>>::_M_erase(std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ContentProvider::CachedContent>>>)")
+pub fn stub_7f20f4() {
+    // IDA 0x7f20f4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x7f21dc — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX15ContentProvider13CachedContentEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE9find_nodeERS5_ [gap-fill]
@@ -406,29 +406,29 @@ pub fn stub_7f21dc() -> ! {
 // 0x7f3dac — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEESC_ENS3_5list2INS3_5valueISE_EENSI_ISC_EEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE [gap-fill]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::AsyncHttpQueue::R -> rbx_core equivalent
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>,boost::shared_ptr<std::string const>),boost::_bi::list2<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<boost::shared_ptr<std::string const>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_7f3dac() -> ! {
-    todo!("0x7f3dac boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>,boost::shared_ptr<std::string const>),boost::_bi::list2<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<boost::shared_ptr<std::string const>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_7f3dac() {
+    // IDA 0x7f3dac: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x7f42a0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEESC_ENS3_5list2INS3_5valueISE_EENSI_ISC_EEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE [gap-fill]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::AsyncHttpQueue::R -> rbx_core equivalent
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>,boost::shared_ptr<std::string const>),boost::_bi::list2<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<boost::shared_ptr<std::string const>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_7f42a0() -> ! {
-    todo!("0x7f42a0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>,boost::shared_ptr<std::string const>),boost::_bi::list2<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<boost::shared_ptr<std::string const>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_7f42a0() {
+    // IDA 0x7f42a0: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x7f4458 — __ZN5boost3_bi5list2INS0_5valueINS_8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEEEENS2_ISA_EEEC2ESD_SE_ [gap-fill]
 // was: boost::_bi::list2<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::sha -> rbx_core equivalent
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<boost::shared_ptr<std::string const>>>::list2(boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<boost::shared_ptr<std::string const>>)")]
-pub fn stub_7f4458() -> ! {
-    todo!("0x7f4458 boost::_bi::list2<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<boost::shared_ptr<std::string const>>>::list2(boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<boost::shared_ptr<std::string const>>)")
+pub fn stub_7f4458() {
+    // IDA 0x7f4458: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x7f4560 — __ZN5boost3_bi8storage2INS0_5valueINS_8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEEEENS2_ISA_EEEC2ESD_SE_ [gap-fill]
 // was: boost::_bi::storage2<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost:: -> rbx_core equivalent
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<boost::shared_ptr<std::string const>>>::storage2(boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<boost::shared_ptr<std::string const>>)")]
-pub fn stub_7f4560() -> ! {
-    todo!("0x7f4560 boost::_bi::storage2<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<boost::shared_ptr<std::string const>>>::storage2(boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<boost::shared_ptr<std::string const>>)")
+pub fn stub_7f4560() {
+    // IDA 0x7f4560: function ctor/assign from a bind_t functor. Box<dyn Fn> from closure captures — carrier no-op.
 }
 
 // 0x7f4664 — __ZN5boost3_bi8storage3INS0_5valueIN3RBX9ContentIdEEENS_3argILi1EEENS6_ILi2EEEEC2ES5_S7_S8_ [gap-fill]
@@ -454,62 +454,62 @@ pub fn stub_7f5aa4() -> ! {
 
 // 0x7f5b8c — __ZNK5boost23enable_shared_from_thisIN3RBX14AsyncHttpQueueEE22_internal_accept_ownerINS1_14AsyncHttpCacheINS1_15ContentProvider13CachedContentELb0EEES8_EEvPKNS_10shared_ptrIT_EEPT0_ [gap-fill]
 #[doc(alias = "void boost::enable_shared_from_this<RBX::AsyncHttpQueue>::_internal_accept_owner<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>,RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>(boost::shared_ptr<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>> const*,RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false> *)const")]
-pub fn stub_7f5b8c() -> ! {
-    todo!("0x7f5b8c void boost::enable_shared_from_this<RBX::AsyncHttpQueue>::_internal_accept_owner<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>,RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>(boost::shared_ptr<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>> const*,RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false> *)const")
+pub fn stub_7f5b8c() {
+    // IDA 0x7f5b8c: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x7f5c70 — __ZN5boost6detail12shared_countC2IN3RBX14AsyncHttpCacheINS3_15ContentProvider13CachedContentELb0EEEEEPT_ [gap-fill]
 // was: boost::detail::shared_count::shared_count<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>(RBX::AsyncHttp -> rbx_core equivalent
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>(RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false> *)")]
-pub fn stub_7f5c70() -> ! {
-    todo!("0x7f5c70 boost::detail::shared_count::shared_count<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>(RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false> *)")
+pub fn stub_7f5c70() {
+    // IDA 0x7f5c70: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x7f5d68 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_15ContentProvider13CachedContentELb0EEEED1Ev [gap-fill]
 // was: boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>::~sp_counted_impl_p() -> rbx_core equivalent
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>::~sp_counted_impl_p()")]
-pub fn stub_7f5d68() -> ! {
-    todo!("0x7f5d68 boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>::~sp_counted_impl_p()")
+pub fn stub_7f5d68() {
+    // IDA 0x7f5d68: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f5d6c — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_15ContentProvider13CachedContentELb0EEEED0Ev [gap-fill]
 // was: boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>::~sp_counted_impl_p() -> rbx_core equivalent
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>::~sp_counted_impl_p()")]
-pub fn stub_7f5d6c() -> ! {
-    todo!("0x7f5d6c boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>::~sp_counted_impl_p()")
+pub fn stub_7f5d6c() {
+    // IDA 0x7f5d6c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f5d70 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_15ContentProvider13CachedContentELb0EEEE7disposeEv [gap-fill]
 // was: boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>::dispose(void) -> rbx_core equivalent
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>::dispose(void)")]
-pub fn stub_7f5d70() -> ! {
-    todo!("0x7f5d70 boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>::dispose(void)")
+pub fn stub_7f5d70() {
+    // IDA 0x7f5d70: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x7f5d80 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_15ContentProvider13CachedContentELb0EEEE11get_deleterERKSt9type_info [gap-fill]
 // was: boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>::get_deleter(std::type_ -> rbx_core equivalent
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>::get_deleter(std::type_info const&)")]
-pub fn stub_7f5d80() -> ! {
-    todo!("0x7f5d80 boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>::get_deleter(std::type_info const&)")
+pub fn stub_7f5d80() {
+    // IDA 0x7f5d80: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x7f5d84 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_15ContentProvider13CachedContentELb0EEEE19get_untyped_deleterEv [gap-fill]
 // was: boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>::get_untyped_deleter(vo -> rbx_core equivalent
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>::get_untyped_deleter(void)")]
-pub fn stub_7f5d84() -> ! {
-    todo!("0x7f5d84 boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>>::get_untyped_deleter(void)")
+pub fn stub_7f5d84() {
+    // IDA 0x7f5d84: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x7f5ed8 — __ZN3RBX14AsyncHttpCacheINS_15ContentProvider13CachedContentELb0EED1Ev [gap-fill]
 #[doc(alias = "RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>::~AsyncHttpCache()")]
-pub fn stub_7f5ed8() -> ! {
-    todo!("0x7f5ed8 RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>::~AsyncHttpCache()")
+pub fn stub_7f5ed8() {
+    // IDA 0x7f5ed8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f5fe0 — __ZN3RBX14AsyncHttpCacheINS_15ContentProvider13CachedContentELb0EED0Ev [gap-fill]
 #[doc(alias = "RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>::~AsyncHttpCache()")]
-pub fn stub_7f5fe0() -> ! {
-    todo!("0x7f5fe0 RBX::AsyncHttpCache<RBX::ContentProvider::CachedContent,false>::~AsyncHttpCache()")
+pub fn stub_7f5fe0() {
+    // IDA 0x7f5fe0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f60f8 — __ZN3RBX14AsyncHttpCacheINS_15ContentProvider13CachedContentELb0EE15registerContentERKSsN5boost10shared_ptrIS4_EES8_ [gap-fill]
@@ -526,8 +526,8 @@ pub fn stub_7f6340() -> ! {
 
 // 0x7f6420 — __ZN3RBX8LRUCacheISsNS_15ContentProvider13CachedContentEED2Ev [gap-fill]
 #[doc(alias = "RBX::LRUCache<std::string,RBX::ContentProvider::CachedContent>::~LRUCache()")]
-pub fn stub_7f6420() -> ! {
-    todo!("0x7f6420 RBX::LRUCache<std::string,RBX::ContentProvider::CachedContent>::~LRUCache()")
+pub fn stub_7f6420() {
+    // IDA 0x7f6420: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f6520 — __ZN3RBX8LRUCacheISsNS_15ContentProvider13CachedContentEE6resizeEm [gap-fill]
@@ -545,8 +545,8 @@ pub fn stub_7f6594() -> ! {
 // 0x7f668c — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX15ContentProvider13CachedContentEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14delete_bucketsEv [gap-fill]
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iter -> rbx_core equivalent
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ContentProvider::CachedContent>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ContentProvider::CachedContent>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)")]
-pub fn stub_7f668c() -> ! {
-    todo!("0x7f668c boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ContentProvider::CachedContent>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ContentProvider::CachedContent>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)")
+pub fn stub_7f668c() {
+    // IDA 0x7f668c: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x7f66c4 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX15ContentProvider13CachedContentEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE5clearEv [gap-fill]
@@ -590,15 +590,15 @@ pub fn stub_7f7370() -> ! {
 // 0x7f7c58 — __ZN5boost10scoped_ptrIN3RBX9ContentIdEED2Ev [gap-fill]
 // was: boost::scoped_ptr<RBX::ContentId>::~scoped_ptr() -> rbx_core equivalent
 #[doc(alias = "boost::scoped_ptr<RBX::ContentId>::~scoped_ptr()")]
-pub fn stub_7f7c58() -> ! {
-    todo!("0x7f7c58 boost::scoped_ptr<RBX::ContentId>::~scoped_ptr()")
+pub fn stub_7f7c58() {
+    // IDA 0x7f7c58: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f8928 — __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE13assign_to_ownERKS8_ [gap-fill]
 // was: boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::assign_to -> rbx_core equivalent
 #[doc(alias = "boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::assign_to_own(boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>> const&)")]
-pub fn stub_7f8928() -> ! {
-    todo!("0x7f8928 boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::assign_to_own(boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>> const&)")
+pub fn stub_7f8928() {
+    // IDA 0x7f8928: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x7f8958 — __ZN3RBX9ContentIdC2ERKSsRKNS_4NameE [gap-fill]

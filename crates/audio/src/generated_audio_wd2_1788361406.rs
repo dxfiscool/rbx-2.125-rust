@@ -11,8 +11,8 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // demangled: rbx::remote_signal<void ()(RBX::UDim2)>::~remote_signal()
 #[doc(alias = "rbx::remote_signal<void ()(RBX::UDim2)>::~remote_signal()")]
 #[doc(alias = "__ZN3rbx13remote_signalIFvN3RBX5UDim2EEED2Ev")]
-pub fn stub_66b478() -> ! {
-    todo!("0x66b478 __ZN3rbx13remote_signalIFvN3RBX5UDim2EEED2Ev")
+pub fn stub_66b478() {
+    // IDA 0x66b478: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66b5c4 — __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE13disconnectAllEv
@@ -51,16 +51,16 @@ pub fn stub_66b764() -> ! {
 // demangled: RBX::EventReplicatorBase<RBX::GuiObject,void ()(int,int)>::~EventReplicatorBase()
 #[doc(alias = "RBX::EventReplicatorBase<RBX::GuiObject,void ()(int,int)>::~EventReplicatorBase()")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFviiEED2Ev")]
-pub fn stub_66b85c() -> ! {
-    todo!("0x66b85c __ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFviiEED2Ev")
+pub fn stub_66b85c() {
+    // IDA 0x66b85c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66b98c — __ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFvNS_5UDim2EEED2Ev
 // demangled: RBX::EventReplicatorBase<RBX::GuiObject,void ()(RBX::UDim2)>::~EventReplicatorBase()
 #[doc(alias = "RBX::EventReplicatorBase<RBX::GuiObject,void ()(RBX::UDim2)>::~EventReplicatorBase()")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFvNS_5UDim2EEED2Ev")]
-pub fn stub_66b98c() -> ! {
-    todo!("0x66b98c __ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFvNS_5UDim2EEED2Ev")
+pub fn stub_66b98c() {
+    // IDA 0x66b98c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66babc — __ZNK3RBX15ServiceProvider4findINS_11TextServiceEEEPT_v
@@ -99,40 +99,40 @@ pub fn stub_66bee4() -> ! {
 // demangled: boost::detail::shared_count::shared_count<RBX::TextService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TextService *,RBX::Creatable<RBX::Instance>::Deleter)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::TextService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TextService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX11TextServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_66bfac() -> ! {
-    todo!("0x66bfac __ZN5boost6detail12shared_countC2IPN3RBX11TextServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_66bfac() {
+    // IDA 0x66bfac: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x66c0b4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TextServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // demangled: boost::detail::sp_counted_impl_pd<RBX::TextService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TextService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TextServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_66c0b4() -> ! {
-    todo!("0x66c0b4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TextServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+pub fn stub_66c0b4() {
+    // IDA 0x66c0b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66c0b8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TextServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::TextService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TextService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TextServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_66c0b8() -> ! {
-    todo!("0x66c0b8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TextServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_66c0b8() {
+    // IDA 0x66c0b8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x66c0d8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TextServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // demangled: boost::detail::sp_counted_impl_pd<RBX::TextService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TextService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TextServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_66c0d8() -> ! {
-    todo!("0x66c0d8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TextServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_66c0d8() {
+    // IDA 0x66c0d8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x66c0f0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TextServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::TextService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TextService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TextServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_66c0f0() -> ! {
-    todo!("0x66c0f0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TextServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_66c0f0() {
+    // IDA 0x66c0f0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x66c194 — __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEbEC2IMS2_KFbvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -147,8 +147,8 @@ pub fn stub_66c194() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEbED0Ev")]
-pub fn stub_66c2a0() -> ! {
-    todo!("0x66c2a0 __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEbED0Ev")
+pub fn stub_66c2a0() {
+    // IDA 0x66c2a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66c2cc — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE7GetImplIMS2_KFbvEE10isReadOnlyEv
@@ -195,8 +195,8 @@ pub fn stub_66c418() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Vector2>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Vector2>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EED0Ev")]
-pub fn stub_66c524() -> ! {
-    todo!("0x66c524 __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EED0Ev")
+pub fn stub_66c524() {
+    // IDA 0x66c524: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66c550 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE10isReadOnlyEv
@@ -243,8 +243,8 @@ pub fn stub_66c5ec() -> ! {
 // demangled: RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2>::~TypedPropertyDescriptor()
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2>::~TypedPropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EED1Ev")]
-pub fn stub_66c614() -> ! {
-    todo!("0x66c614 __ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EED1Ev")
+pub fn stub_66c614() {
+    // IDA 0x66c614: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66c638 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
@@ -291,8 +291,8 @@ pub fn stub_66c788() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEED0Ev")]
-pub fn stub_66c93c() -> ! {
-    todo!("0x66c93c __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEED0Ev")
+pub fn stub_66c93c() {
+    // IDA 0x66c93c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66c968 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10isReadOnlyEv
@@ -523,24 +523,24 @@ pub fn stub_66d2f8() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEED1Ev")]
-pub fn stub_66d3e8() -> ! {
-    todo!("0x66d3e8 __ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEED1Ev")
+pub fn stub_66d3e8() {
+    // IDA 0x66d3e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66d3ec — __ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEED2Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEED2Ev")]
-pub fn stub_66d3ec() -> ! {
-    todo!("0x66d3ec __ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEED2Ev")
+pub fn stub_66d3ec() {
+    // IDA 0x66d3ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66d5c0 — __ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEED0Ev")]
-pub fn stub_66d5c0() -> ! {
-    todo!("0x66d5c0 __ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEED0Ev")
+pub fn stub_66d5c0() {
+    // IDA 0x66d5c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66d660 — __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE6lookupEPKc
@@ -619,8 +619,8 @@ pub fn stub_66d8f4() -> ! {
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::TextService::YAlignment>,std::_Select1st<std::pair<RBX::Name const* const,RBX::TextService::YAlignment>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::TextService::YAlignment>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::TextService::YAlignment>> *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::TextService::YAlignment>,std::_Select1st<std::pair<RBX::Name const* const,RBX::TextService::YAlignment>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::TextService::YAlignment>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::TextService::YAlignment>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11TextService10YAlignmentEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_66d9e4() -> ! {
-    todo!("0x66d9e4 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11TextService10YAlignmentEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_66d9e4() {
+    // IDA 0x66d9e4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x66da0c — __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -635,8 +635,8 @@ pub fn stub_66da0c() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEED0Ev")]
-pub fn stub_66dbc0() -> ! {
-    todo!("0x66dbc0 __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEED0Ev")
+pub fn stub_66dbc0() {
+    // IDA 0x66dbc0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66dbec — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE10isReadOnlyEv

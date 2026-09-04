@@ -92,8 +92,8 @@ pub fn stub_1c48c4() -> ! {
 // 0x1c49e4 — __ZN6TagLibD2Ev
 // type: void __fastcall(TagLib *__hidden this)
 #[doc(alias = "TagLib::~TagLib()")]
-pub fn stub_1c49e4() -> ! {
-    todo!("0x1c49e4 TagLib::~TagLib()")
+pub fn stub_1c49e4() {
+    // IDA 0x1c49e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x1c4b38 — ___tcf_0_0
@@ -265,8 +265,8 @@ pub fn stub_1c7658() -> ! {
 // 0x1c7724 — __ZN10FIRationalD1Ev
 // type: void __fastcall(FIRational *__hidden this)
 #[doc(alias = "FIRational::~FIRational()")]
-pub fn stub_1c7724() -> ! {
-    todo!("0x1c7724 FIRational::~FIRational()")
+pub fn stub_1c7724() {
+    // IDA 0x1c7724: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x1c7728 — __ZN10FIRational12getNumeratorEv

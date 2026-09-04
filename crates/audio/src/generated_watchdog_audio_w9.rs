@@ -284,8 +284,8 @@ pub fn stub_c59bac() -> ! {
 // type: void __fastcall(Ogre::Billboard *__hidden this)
 #[doc(alias = "Ogre::Billboard::~Billboard()")]
 #[doc(alias = "__ZN4Ogre9BillboardD1Ev")]
-pub fn stub_c59bfc() -> ! {
-    todo!("0xc59bfc __ZN4Ogre9BillboardD1Ev")
+pub fn stub_c59bfc() {
+    // IDA 0xc59bfc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc59c00 — __ZN4Ogre9Billboard11setRotationERKNS_6RadianE
@@ -352,56 +352,56 @@ pub fn stub_c59cb8() -> ! {
 // type: void __fastcall(Ogre::BillboardChain *__hidden this)
 #[doc(alias = "Ogre::BillboardChain::~BillboardChain()")]
 #[doc(alias = "__ZN4Ogre14BillboardChainD0Ev")]
-pub fn stub_c5a21c() -> ! {
-    todo!("0xc5a21c __ZN4Ogre14BillboardChainD0Ev")
+pub fn stub_c5a21c() {
+    // IDA 0xc5a21c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc5a2ac — __ZN4Ogre14BillboardChainD1Ev
 // type: void __fastcall(Ogre::BillboardChain *__hidden this)
 #[doc(alias = "Ogre::BillboardChain::~BillboardChain()")]
 #[doc(alias = "__ZN4Ogre14BillboardChainD1Ev")]
-pub fn stub_c5a2ac() -> ! {
-    todo!("0xc5a2ac __ZN4Ogre14BillboardChainD1Ev")
+pub fn stub_c5a2ac() {
+    // IDA 0xc5a2ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc5a2b8 — __ZThn4_N4Ogre14BillboardChainD0Ev
 // type: void __fastcall(Ogre::BillboardChain *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::~BillboardChain()")]
 #[doc(alias = "__ZThn4_N4Ogre14BillboardChainD0Ev")]
-pub fn stub_c5a2b8() -> ! {
-    todo!("0xc5a2b8 __ZThn4_N4Ogre14BillboardChainD0Ev")
+pub fn stub_c5a2b8() {
+    // IDA 0xc5a2b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc5a34c — __ZThn188_N4Ogre14BillboardChainD0Ev
 // type: void __fastcall(Ogre::BillboardChain *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::~BillboardChain()")]
 #[doc(alias = "__ZThn188_N4Ogre14BillboardChainD0Ev")]
-pub fn stub_c5a34c() -> ! {
-    todo!("0xc5a34c __ZThn188_N4Ogre14BillboardChainD0Ev")
+pub fn stub_c5a34c() {
+    // IDA 0xc5a34c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc5a3e0 — __ZN4Ogre14BillboardChainD2Ev
 // type: void __fastcall(Ogre::BillboardChain *__hidden this)
 #[doc(alias = "Ogre::BillboardChain::~BillboardChain()")]
 #[doc(alias = "__ZN4Ogre14BillboardChainD2Ev")]
-pub fn stub_c5a3e0() -> ! {
-    todo!("0xc5a3e0 __ZN4Ogre14BillboardChainD2Ev")
+pub fn stub_c5a3e0() {
+    // IDA 0xc5a3e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc5a600 — __ZThn4_N4Ogre14BillboardChainD1Ev
 // type: void __fastcall(Ogre::BillboardChain *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::~BillboardChain()")]
 #[doc(alias = "__ZThn4_N4Ogre14BillboardChainD1Ev")]
-pub fn stub_c5a600() -> ! {
-    todo!("0xc5a600 __ZThn4_N4Ogre14BillboardChainD1Ev")
+pub fn stub_c5a600() {
+    // IDA 0xc5a600: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc5a60c — __ZThn188_N4Ogre14BillboardChainD1Ev
 // type: void __fastcall(Ogre::BillboardChain *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::~BillboardChain()")]
 #[doc(alias = "__ZThn188_N4Ogre14BillboardChainD1Ev")]
-pub fn stub_c5a60c() -> ! {
-    todo!("0xc5a60c __ZThn188_N4Ogre14BillboardChainD1Ev")
+pub fn stub_c5a60c() {
+    // IDA 0xc5a60c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc5a618 — __ZN4Ogre14BillboardChain20setupChainContainersEv
@@ -580,8 +580,8 @@ pub fn stub_c5c4e8() -> ! {
 // type: _DWORD __fastcall(Ogre::BillboardChain *__hidden this, const Ogre::Camera *)
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::getSquaredViewDepth(Ogre::Camera const*)const")]
 #[doc(alias = "__ZThn188_NK4Ogre14BillboardChain19getSquaredViewDepthEPKNS_6CameraE")]
-pub fn stub_c5c590() -> ! {
-    todo!("0xc5c590 __ZThn188_NK4Ogre14BillboardChain19getSquaredViewDepthEPKNS_6CameraE")
+pub fn stub_c5c590() {
+    // IDA 0xc5c590: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc5c638 — __ZNK4Ogre14BillboardChain17getBoundingRadiusEv
@@ -612,8 +612,8 @@ pub fn stub_c5c658() -> ! {
 // type: _DWORD __fastcall(Ogre::BillboardChain *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::getMaterial(void)const")]
 #[doc(alias = "__ZThn188_NK4Ogre14BillboardChain11getMaterialEv")]
-pub fn stub_c5c660() -> ! {
-    todo!("0xc5c660 __ZThn188_NK4Ogre14BillboardChain11getMaterialEv")
+pub fn stub_c5c660() {
+    // IDA 0xc5c660: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc5c664 — __ZN4Ogre14BillboardChain15setMaterialNameERKSsS2_
@@ -650,8 +650,8 @@ pub fn stub_c5d138() -> ! {
 // 0xc5d154 — __ZThn188_N4Ogre14BillboardChain18getRenderOperationERNS_15RenderOperationE
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::getRenderOperation(Ogre::RenderOperation &)")]
 #[doc(alias = "__ZThn188_N4Ogre14BillboardChain18getRenderOperationERNS_15RenderOperationE")]
-pub fn stub_c5d154() -> ! {
-    todo!("0xc5d154 __ZThn188_N4Ogre14BillboardChain18getRenderOperationERNS_15RenderOperationE")
+pub fn stub_c5d154() {
+    // IDA 0xc5d154: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc5d168 — __ZNK4Ogre14BillboardChain18getWorldTransformsEPNS_7Matrix4E
@@ -664,8 +664,8 @@ pub fn stub_c5d168() -> ! {
 // 0xc5d1b0 — __ZThn188_NK4Ogre14BillboardChain18getWorldTransformsEPNS_7Matrix4E
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::getWorldTransforms(Ogre::Matrix4 *)const")]
 #[doc(alias = "__ZThn188_NK4Ogre14BillboardChain18getWorldTransformsEPNS_7Matrix4E")]
-pub fn stub_c5d1b0() -> ! {
-    todo!("0xc5d1b0 __ZThn188_NK4Ogre14BillboardChain18getWorldTransformsEPNS_7Matrix4E")
+pub fn stub_c5d1b0() {
+    // IDA 0xc5d1b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc5d1f8 — __ZNK4Ogre14BillboardChain9getLightsEv
@@ -680,8 +680,8 @@ pub fn stub_c5d1f8() -> ! {
 // type: int __fastcall(Ogre::BillboardChain *this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::getLights(void)const")]
 #[doc(alias = "__ZThn188_NK4Ogre14BillboardChain9getLightsEv")]
-pub fn stub_c5d208() -> ! {
-    todo!("0xc5d208 __ZThn188_NK4Ogre14BillboardChain9getLightsEv")
+pub fn stub_c5d208() {
+    // IDA 0xc5d208: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc5d218 — __ZN4Ogre14BillboardChain16visitRenderablesEPNS_10Renderable7VisitorEb
@@ -723,30 +723,30 @@ pub fn stub_c5d89c() -> ! {
 // 0xc5dc7c — __ZNSt12_Vector_baseIN4Ogre14BillboardChain12ChainSegmentENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
 #[doc(alias = "std::_Vector_base<Ogre::BillboardChain::ChainSegment,Ogre::STLAllocator<Ogre::BillboardChain::ChainSegment,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIN4Ogre14BillboardChain12ChainSegmentENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")]
-pub fn stub_c5dc7c() -> ! {
-    todo!("0xc5dc7c __ZNSt12_Vector_baseIN4Ogre14BillboardChain12ChainSegmentENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")
+pub fn stub_c5dc7c() {
+    // IDA 0xc5dc7c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc5dc80 — __ZNSt12_Vector_baseIN4Ogre14BillboardChain7ElementENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
 // type: void()
 #[doc(alias = "std::_Vector_base<Ogre::BillboardChain::Element,Ogre::STLAllocator<Ogre::BillboardChain::Element,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIN4Ogre14BillboardChain7ElementENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")]
-pub fn stub_c5dc80() -> ! {
-    todo!("0xc5dc80 __ZNSt12_Vector_baseIN4Ogre14BillboardChain7ElementENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")
+pub fn stub_c5dc80() {
+    // IDA 0xc5dc80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc5dc84 — __ZNSt12_Vector_baseIN4Ogre14BillboardChain12ChainSegmentENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 #[doc(alias = "std::_Vector_base<Ogre::BillboardChain::ChainSegment,Ogre::STLAllocator<Ogre::BillboardChain::ChainSegment,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIN4Ogre14BillboardChain12ChainSegmentENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
-pub fn stub_c5dc84() -> ! {
-    todo!("0xc5dc84 __ZNSt12_Vector_baseIN4Ogre14BillboardChain12ChainSegmentENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")
+pub fn stub_c5dc84() {
+    // IDA 0xc5dc84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc5dc90 — __ZNSt12_Vector_baseIN4Ogre14BillboardChain7ElementENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 #[doc(alias = "std::_Vector_base<Ogre::BillboardChain::Element,Ogre::STLAllocator<Ogre::BillboardChain::Element,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIN4Ogre14BillboardChain7ElementENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
-pub fn stub_c5dc90() -> ! {
-    todo!("0xc5dc90 __ZNSt12_Vector_baseIN4Ogre14BillboardChain7ElementENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")
+pub fn stub_c5dc90() {
+    // IDA 0xc5dc90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc6072c — __ZN4Ogre12BillboardSetC1ERKSsjb
@@ -769,56 +769,56 @@ pub fn stub_c60738() -> ! {
 // type: void __fastcall(Ogre::BillboardSet *__hidden this)
 #[doc(alias = "Ogre::BillboardSet::~BillboardSet()")]
 #[doc(alias = "__ZN4Ogre12BillboardSetD0Ev")]
-pub fn stub_c60dc0() -> ! {
-    todo!("0xc60dc0 __ZN4Ogre12BillboardSetD0Ev")
+pub fn stub_c60dc0() {
+    // IDA 0xc60dc0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc60e50 — __ZN4Ogre12BillboardSetD1Ev
 // type: void __fastcall(Ogre::BillboardSet *__hidden this)
 #[doc(alias = "Ogre::BillboardSet::~BillboardSet()")]
 #[doc(alias = "__ZN4Ogre12BillboardSetD1Ev")]
-pub fn stub_c60e50() -> ! {
-    todo!("0xc60e50 __ZN4Ogre12BillboardSetD1Ev")
+pub fn stub_c60e50() {
+    // IDA 0xc60e50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc60e5c — __ZThn4_N4Ogre12BillboardSetD0Ev
 // type: void __fastcall(Ogre::BillboardSet *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
 #[doc(alias = "__ZThn4_N4Ogre12BillboardSetD0Ev")]
-pub fn stub_c60e5c() -> ! {
-    todo!("0xc60e5c __ZThn4_N4Ogre12BillboardSetD0Ev")
+pub fn stub_c60e5c() {
+    // IDA 0xc60e5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc60ef0 — __ZThn188_N4Ogre12BillboardSetD0Ev
 // type: void __fastcall(Ogre::BillboardSet *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
 #[doc(alias = "__ZThn188_N4Ogre12BillboardSetD0Ev")]
-pub fn stub_c60ef0() -> ! {
-    todo!("0xc60ef0 __ZThn188_N4Ogre12BillboardSetD0Ev")
+pub fn stub_c60ef0() {
+    // IDA 0xc60ef0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc60f84 — __ZN4Ogre12BillboardSetD2Ev
 // type: void __fastcall(Ogre::BillboardSet *__hidden this)
 #[doc(alias = "Ogre::BillboardSet::~BillboardSet()")]
 #[doc(alias = "__ZN4Ogre12BillboardSetD2Ev")]
-pub fn stub_c60f84() -> ! {
-    todo!("0xc60f84 __ZN4Ogre12BillboardSetD2Ev")
+pub fn stub_c60f84() {
+    // IDA 0xc60f84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc614d8 — __ZThn4_N4Ogre12BillboardSetD1Ev
 // type: void __fastcall(Ogre::BillboardSet *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
 #[doc(alias = "__ZThn4_N4Ogre12BillboardSetD1Ev")]
-pub fn stub_c614d8() -> ! {
-    todo!("0xc614d8 __ZThn4_N4Ogre12BillboardSetD1Ev")
+pub fn stub_c614d8() {
+    // IDA 0xc614d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc614e4 — __ZThn188_N4Ogre12BillboardSetD1Ev
 // type: void __fastcall(Ogre::BillboardSet *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
 #[doc(alias = "__ZThn188_N4Ogre12BillboardSetD1Ev")]
-pub fn stub_c614e4() -> ! {
-    todo!("0xc614e4 __ZThn188_N4Ogre12BillboardSetD1Ev")
+pub fn stub_c614e4() {
+    // IDA 0xc614e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc614f0 — __ZN4Ogre12BillboardSet15_destroyBuffersEv

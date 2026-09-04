@@ -632,8 +632,8 @@ pub fn stub_111170() -> ! {
 
 // 0x111270 — __ZN10PluginListD2Ev
 #[doc(alias = "PluginList::~PluginList()")]
-pub fn stub_111270() -> ! {
-    todo!("0x111270 PluginList::~PluginList()")
+pub fn stub_111270() {
+    // IDA 0x111270: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x1113a8 — _FreeImage_DeInitialise

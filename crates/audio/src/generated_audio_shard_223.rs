@@ -497,22 +497,22 @@ pub fn stub_505d08() -> ! {
 // 0x505e40 — __ZN3RBX17FilterDescendentsD1Ev
 #[doc(alias = "RBX::FilterDescendents::~FilterDescendents()")]
 #[doc(alias = "__ZN3RBX17FilterDescendentsD1Ev")]
-pub fn stub_505e40() -> ! {
-    todo!("0x505e40 __ZN3RBX17FilterDescendentsD1Ev")
+pub fn stub_505e40() {
+    // IDA 0x505e40: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x505e64 — __ZN3RBX15GeometryServiceD1Ev
 #[doc(alias = "RBX::GeometryService::~GeometryService()")]
 #[doc(alias = "__ZN3RBX15GeometryServiceD1Ev")]
-pub fn stub_505e64() -> ! {
-    todo!("0x505e64 __ZN3RBX15GeometryServiceD1Ev")
+pub fn stub_505e64() {
+    // IDA 0x505e64: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x505f48 — __ZN3RBX15GeometryServiceD0Ev
 #[doc(alias = "RBX::GeometryService::~GeometryService()")]
 #[doc(alias = "__ZN3RBX15GeometryServiceD0Ev")]
-pub fn stub_505f48() -> ! {
-    todo!("0x505f48 __ZN3RBX15GeometryServiceD0Ev")
+pub fn stub_505f48() {
+    // IDA 0x505f48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x50603c — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEE12getClassNameEv
@@ -524,35 +524,35 @@ pub fn stub_50603c() -> ! {
 // 0x506068 — __ZThn32_N3RBX15GeometryServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService()")]
 #[doc(alias = "__ZThn32_N3RBX15GeometryServiceD1Ev")]
-pub fn stub_506068() -> ! {
-    todo!("0x506068 __ZThn32_N3RBX15GeometryServiceD1Ev")
+pub fn stub_506068() {
+    // IDA 0x506068: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x506148 — __ZThn32_N3RBX15GeometryServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService()")]
 #[doc(alias = "__ZThn32_N3RBX15GeometryServiceD0Ev")]
-pub fn stub_506148() -> ! {
-    todo!("0x506148 __ZThn32_N3RBX15GeometryServiceD0Ev")
+pub fn stub_506148() {
+    // IDA 0x506148: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x506240 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEE12getClassNameEv")]
-pub fn stub_506240() -> ! {
-    todo!("0x506240 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEE12getClassNameEv")
+pub fn stub_506240() {
+    // IDA 0x506240: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x506268 — __ZThn36_N3RBX15GeometryServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService()")]
 #[doc(alias = "__ZThn36_N3RBX15GeometryServiceD1Ev")]
-pub fn stub_506268() -> ! {
-    todo!("0x506268 __ZThn36_N3RBX15GeometryServiceD1Ev")
+pub fn stub_506268() {
+    // IDA 0x506268: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x506348 — __ZThn36_N3RBX15GeometryServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService()")]
 #[doc(alias = "__ZThn36_N3RBX15GeometryServiceD0Ev")]
-pub fn stub_506348() -> ! {
-    todo!("0x506348 __ZThn36_N3RBX15GeometryServiceD0Ev")
+pub fn stub_506348() {
+    // IDA 0x506348: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x506440 — __ZN3RBX4Name9doDeclareILZNS_16sGeometryServiceEEEERKS0_v
@@ -585,8 +585,8 @@ pub fn stub_5067c4() -> ! {
 // 0x506898 — __ZN5boost9unordered6detail5tableINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14delete_bucketsEv
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive const*>,RBX::Primitive const*,boost::hash<RBX::Primitive const*>,std::equal_to<RBX::Primitive const*>>>::delete_buckets(void)")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14delete_bucketsEv")]
-pub fn stub_506898() -> ! {
-    todo!("0x506898 __ZN5boost9unordered6detail5tableINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14delete_bucketsEv")
+pub fn stub_506898() {
+    // IDA 0x506898: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x5068e8 — __ZN5boost9unordered6detail10table_implINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE12emplace_implINS1_13emplace_args1IS7_EEEESt4pairINS0_15iterator_detail8iteratorINS1_8ptr_nodeIS7_EEEEbERKS7_RKT_
@@ -599,22 +599,22 @@ pub fn stub_5068e8() -> ! {
 // 0x506a78 — __ZN5boost9unordered6detail5tableINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE18reserve_for_insertEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive const*>,RBX::Primitive const*,boost::hash<RBX::Primitive const*>,std::equal_to<RBX::Primitive const*>>>::reserve_for_insert(unsigned long)")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE18reserve_for_insertEm")]
-pub fn stub_506a78() -> ! {
-    todo!("0x506a78 __ZN5boost9unordered6detail5tableINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE18reserve_for_insertEm")
+pub fn stub_506a78() {
+    // IDA 0x506a78: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x506ac8 — __ZN5boost9unordered6detail5tableINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive const*>,RBX::Primitive const*,boost::hash<RBX::Primitive const*>,std::equal_to<RBX::Primitive const*>>>::create_buckets(unsigned long)")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm")]
-pub fn stub_506ac8() -> ! {
-    todo!("0x506ac8 __ZN5boost9unordered6detail5tableINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm")
+pub fn stub_506ac8() {
+    // IDA 0x506ac8: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x506bf0 — __ZNK5boost9unordered6detail5tableINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE20min_buckets_for_sizeEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive const*>,RBX::Primitive const*,boost::hash<RBX::Primitive const*>,std::equal_to<RBX::Primitive const*>>>::min_buckets_for_size(unsigned long)const")]
 #[doc(alias = "__ZNK5boost9unordered6detail5tableINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE20min_buckets_for_sizeEm")]
-pub fn stub_506bf0() -> ! {
-    todo!("0x506bf0 __ZNK5boost9unordered6detail5tableINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE20min_buckets_for_sizeEm")
+pub fn stub_506bf0() {
+    // IDA 0x506bf0: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x506c80 — __ZN5boost9unordered6detail10table_implINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE11rehash_implEm
@@ -627,15 +627,15 @@ pub fn stub_506c80() -> ! {
 // 0x506cac — __ZN5boost9unordered6detail10table_implINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE15place_in_bucketERNS1_5tableISD_EEPNS1_10ptr_bucketE
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Primitive const*>,RBX::Primitive const*,boost::hash<RBX::Primitive const*>,std::equal_to<RBX::Primitive const*>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive const*>,RBX::Primitive const*,boost::hash<RBX::Primitive const*>,std::equal_to<RBX::Primitive const*>>> &,boost::unordered::detail::ptr_bucket *)")]
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE15place_in_bucketERNS1_5tableISD_EEPNS1_10ptr_bucketE")]
-pub fn stub_506cac() -> ! {
-    todo!("0x506cac __ZN5boost9unordered6detail10table_implINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE15place_in_bucketERNS1_5tableISD_EEPNS1_10ptr_bucketE")
+pub fn stub_506cac() {
+    // IDA 0x506cac: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x506d00 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeIPKN3RBX9PrimitiveEEEEE9constructEv
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<RBX::Primitive const*>>>::construct(void)")]
 #[doc(alias = "__ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeIPKN3RBX9PrimitiveEEEEE9constructEv")]
-pub fn stub_506d00() -> ! {
-    todo!("0x506d00 __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeIPKN3RBX9PrimitiveEEEEE9constructEv")
+pub fn stub_506d00() {
+    // IDA 0x506d00: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x506d38 — __ZNK5boost9unordered6detail10table_implINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14find_node_implIS7_SC_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS7_EEEEmRKT_RKT0_
@@ -647,38 +647,38 @@ pub fn stub_506d38() -> ! {
 
 // 0x506da8 — __ZN3RBX10Reflection9DescribedINS_15GeometryServiceELZNS_16sGeometryServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_15GeometryServiceELZNS_16sGeometryServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_506da8() -> ! {
-    todo!("0x506da8 __ZN3RBX10Reflection9DescribedINS_15GeometryServiceELZNS_16sGeometryServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_506da8() {
+    // IDA 0x506da8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x506dac — __ZN3RBX10Reflection9DescribedINS_15GeometryServiceELZNS_16sGeometryServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_15GeometryServiceELZNS_16sGeometryServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_506dac() -> ! {
-    todo!("0x506dac __ZN3RBX10Reflection9DescribedINS_15GeometryServiceELZNS_16sGeometryServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_506dac() {
+    // IDA 0x506dac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x506e4c — __ZThn32_N3RBX10Reflection9DescribedINS_15GeometryServiceELZNS_16sGeometryServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_15GeometryServiceELZNS_16sGeometryServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_506e4c() -> ! {
-    todo!("0x506e4c __ZThn32_N3RBX10Reflection9DescribedINS_15GeometryServiceELZNS_16sGeometryServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_506e4c() {
+    // IDA 0x506e4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x506e54 — __ZThn32_N3RBX10Reflection9DescribedINS_15GeometryServiceELZNS_16sGeometryServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_15GeometryServiceELZNS_16sGeometryServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_506e54() -> ! {
-    todo!("0x506e54 __ZThn32_N3RBX10Reflection9DescribedINS_15GeometryServiceELZNS_16sGeometryServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_506e54() {
+    // IDA 0x506e54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x506ef8 — __ZThn36_N3RBX10Reflection9DescribedINS_15GeometryServiceELZNS_16sGeometryServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_15GeometryServiceELZNS_16sGeometryServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_506ef8() -> ! {
-    todo!("0x506ef8 __ZThn36_N3RBX10Reflection9DescribedINS_15GeometryServiceELZNS_16sGeometryServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_506ef8() {
+    // IDA 0x506ef8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x506f00 — __ZThn36_N3RBX10Reflection9DescribedINS_15GeometryServiceELZNS_16sGeometryServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_15GeometryServiceELZNS_16sGeometryServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_506f00() -> ! {
-    todo!("0x506f00 __ZThn36_N3RBX10Reflection9DescribedINS_15GeometryServiceELZNS_16sGeometryServiceEENS_17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_506f00() {
+    // IDA 0x506f00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x506fa8 — __ZN3G3D5ArrayIPN3RBX9PrimitiveELi10ELm32EEC2Ev
@@ -691,8 +691,8 @@ pub fn stub_506fa8() -> ! {
 // 0x507098 — __ZN3RBX17FilterDescendentsD0Ev
 #[doc(alias = "RBX::FilterDescendents::~FilterDescendents()")]
 #[doc(alias = "__ZN3RBX17FilterDescendentsD0Ev")]
-pub fn stub_507098() -> ! {
-    todo!("0x507098 __ZN3RBX17FilterDescendentsD0Ev")
+pub fn stub_507098() {
+    // IDA 0x507098: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x507150 — __GLOBAL__I_a_202

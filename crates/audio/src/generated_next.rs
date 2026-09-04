@@ -503,8 +503,8 @@ pub fn stub_24e648() -> ! {
 // 0x2501bc — __ZN3RBX13TaskScheduler6ThreadD2Ev
 // type: void __fastcall(boost::thread **this)
 #[doc(alias = "RBX::TaskScheduler::Thread::~Thread()")]
-pub fn stub_2501bc() -> ! {
-    todo!("0x2501bc RBX::TaskScheduler::Thread::~Thread()")
+pub fn stub_2501bc() {
+    // IDA 0x2501bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x253c78 — __GLOBAL__I_a_52

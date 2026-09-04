@@ -31,8 +31,8 @@ pub fn stub_f1fc3c() -> ! {
 
 // 0xf1fc48 — __ZN3RBX4Http10MutexGuardD2Ev$shim
 #[doc(alias = "__ZN3RBX4Http10MutexGuardD2Ev$shim")]
-pub fn stub_f1fc48() -> ! {
-    todo!("0xf1fc48 __ZN3RBX4Http10MutexGuardD2Ev$shim")
+pub fn stub_f1fc48() {
+    // IDA 0xf1fc48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf1fc54 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsNS_10shared_ptrISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEENSG_IS6_EENSG_IbEESJ_NSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
@@ -184,8 +184,8 @@ pub fn stub_f1fd68() -> ! {
 
 // 0xf1fd74 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")]
-pub fn stub_f1fd74() -> ! {
-    todo!("0xf1fd74 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")
+pub fn stub_f1fd74() {
+    // IDA 0xf1fd74: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0xf1fd80 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISD_EESN_$shim
@@ -202,8 +202,8 @@ pub fn stub_f1fd8c() -> ! {
 
 // 0xf1fd98 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")]
-pub fn stub_f1fd98() -> ! {
-    todo!("0xf1fd98 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")
+pub fn stub_f1fd98() {
+    // IDA 0xf1fd98: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0xf1fda4 — _acosf$shim
@@ -240,8 +240,8 @@ pub fn stub_f1fdd4() -> ! {
 
 // 0xf1fde0 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")]
-pub fn stub_f1fde0() -> ! {
-    todo!("0xf1fde0 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")
+pub fn stub_f1fde0() {
+    // IDA 0xf1fde0: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0xf1fdec — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSE_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS9_EEEEmRKT_RKT0_$shim
@@ -278,8 +278,8 @@ pub fn stub_f1fe1c() -> ! {
 
 // 0xf1fe28 — __ZN5boost16exception_detail19error_info_injectorINS_17bad_function_callEED2Ev$shim
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_17bad_function_callEED2Ev$shim")]
-pub fn stub_f1fe28() -> ! {
-    todo!("0xf1fe28 __ZN5boost16exception_detail19error_info_injectorINS_17bad_function_callEED2Ev$shim")
+pub fn stub_f1fe28() {
+    // IDA 0xf1fe28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf1fe34 — __ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE24safe_static_do_get_mutexEv$shim
@@ -337,14 +337,14 @@ pub fn stub_f1fe88() -> ! {
 // 0xf1fe94 — __ZNSt8bad_castD2Ev$shim
 // type: void __cdecl(std::bad_cast *__hidden this)
 #[doc(alias = "__ZNSt8bad_castD2Ev$shim")]
-pub fn stub_f1fe94() -> ! {
-    todo!("0xf1fe94 __ZNSt8bad_castD2Ev$shim")
+pub fn stub_f1fe94() {
+    // IDA 0xf1fe94: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf1fea0 — __ZN5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED2Ev$shim
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED2Ev$shim")]
-pub fn stub_f1fea0() -> ! {
-    todo!("0xf1fea0 __ZN5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED2Ev$shim")
+pub fn stub_f1fea0() {
+    // IDA 0xf1fea0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf1feac — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
@@ -393,8 +393,8 @@ pub fn stub_f1fef4() -> ! {
 // 0xf1ff00 — __ZN3RBX25ScriptInformationProviderD2Ev$shim
 // type: void __fastcall(RBX::ScriptInformationProvider *__hidden this)
 #[doc(alias = "__ZN3RBX25ScriptInformationProviderD2Ev$shim")]
-pub fn stub_f1ff00() -> ! {
-    todo!("0xf1ff00 __ZN3RBX25ScriptInformationProviderD2Ev$shim")
+pub fn stub_f1ff00() {
+    // IDA 0xf1ff00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf1ff0c — __ZN3RBX4Name9doDeclareILZNS_26sScriptInformationProviderEEEERKS0_v$shim
@@ -442,8 +442,8 @@ pub fn stub_f1ff48() -> ! {
 // 0xf1ff54 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")]
-pub fn stub_f1ff54() -> ! {
-    todo!("0xf1ff54 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")
+pub fn stub_f1ff54() {
+    // IDA 0xf1ff54: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0xf1ff60 — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSI_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEmRKT_RKT0_$shim
@@ -477,15 +477,15 @@ pub fn stub_f1ff84() -> ! {
 // 0xf1ff90 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")]
-pub fn stub_f1ff90() -> ! {
-    todo!("0xf1ff90 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")
+pub fn stub_f1ff90() {
+    // IDA 0xf1ff90: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0xf1ff9c — __ZN3RBX17HeartbeatInstanceD2Ev$shim
 // type: void __fastcall(RBX::HeartbeatInstance *__hidden this)
 #[doc(alias = "__ZN3RBX17HeartbeatInstanceD2Ev$shim")]
-pub fn stub_f1ff9c() -> ! {
-    todo!("0xf1ff9c __ZN3RBX17HeartbeatInstanceD2Ev$shim")
+pub fn stub_f1ff9c() {
+    // IDA 0xf1ff9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf20074 — __ZN3G3D5ArrayIPN3RBX12SpanningEdgeELi10ELm32EE7reallocEi$shim
@@ -568,8 +568,8 @@ pub fn stub_f200ec() -> ! {
 // 0xf200f8 — __ZN3RBX14BaseThreadPool8PoolDataD2Ev$shim
 // type: void __fastcall(RBX::BaseThreadPool::PoolData *__hidden this)
 #[doc(alias = "__ZN3RBX14BaseThreadPool8PoolDataD2Ev$shim")]
-pub fn stub_f200f8() -> ! {
-    todo!("0xf200f8 __ZN3RBX14BaseThreadPool8PoolDataD2Ev$shim")
+pub fn stub_f200f8() {
+    // IDA 0xf200f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf20104 — __ZNK3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E7Creator12getClassNameEv$shim
@@ -582,15 +582,15 @@ pub fn stub_f20104() -> ! {
 // 0xf20110 — __ZN3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E7CreatorD2Ev$shim
 // type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E7CreatorD2Ev$shim")]
-pub fn stub_f20110() -> ! {
-    todo!("0xf20110 __ZN3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E7CreatorD2Ev$shim")
+pub fn stub_f20110() {
+    // IDA 0xf20110: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf2011c — __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7CreatorD2Ev$shim
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_f2011c() -> ! {
-    todo!("0xf2011c __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_f2011c() {
+    // IDA 0xf2011c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf20128 — __ZNK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7Creator12getClassNameEv$shim
@@ -603,8 +603,8 @@ pub fn stub_f20128() -> ! {
 // 0xf20134 — __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev$shim
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev$shim")]
-pub fn stub_f20134() -> ! {
-    todo!("0xf20134 __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev$shim")
+pub fn stub_f20134() {
+    // IDA 0xf20134: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf20140 — __ZN3RBX4Name9doDeclareILZNS_4sHatEEEERKS0_v$shim

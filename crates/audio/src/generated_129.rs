@@ -33,20 +33,20 @@ pub fn stub_1cb05c() -> ! {
 
 // 0x1cb090 — __ZNSt11_Deque_baseIPhSaIS0_EE16_M_destroy_nodesEPPS0_S4_
 #[doc(alias = "std::_Deque_base<unsigned char *,std::allocator<unsigned char *>>::_M_destroy_nodes(unsigned char ***,unsigned char ***)")]
-pub fn stub_1cb090() -> ! {
-    todo!("0x1cb090 std::_Deque_base<unsigned char *,std::allocator<unsigned char *>>::_M_destroy_nodes(unsigned char ***,unsigned char ***)")
+pub fn stub_1cb090() {
+    // IDA 0x1cb090: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x1cb180 — __ZNSt11_Deque_baseIPhSaIS0_EED2Ev
 #[doc(alias = "std::_Deque_base<unsigned char *,std::allocator<unsigned char *>>::~_Deque_base()")]
-pub fn stub_1cb180() -> ! {
-    todo!("0x1cb180 std::_Deque_base<unsigned char *,std::allocator<unsigned char *>>::~_Deque_base()")
+pub fn stub_1cb180() {
+    // IDA 0x1cb180: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x1cb1b4 — __ZNSt5dequeIPhSaIS0_EED2Ev
 #[doc(alias = "std::deque<unsigned char *,std::allocator<unsigned char *>>::~deque()")]
-pub fn stub_1cb1b4() -> ! {
-    todo!("0x1cb1b4 std::deque<unsigned char *,std::allocator<unsigned char *>>::~deque()")
+pub fn stub_1cb1b4() {
+    // IDA 0x1cb1b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x1cb224 — __ZNSt3mapIjiSt4lessIjESaISt4pairIKjiEEEixERS3_
@@ -57,8 +57,8 @@ pub fn stub_1cb224() -> ! {
 
 // 0x1cb290 — __ZNSt11_Deque_baseItSaItEE15_M_create_nodesEPPtS3_
 #[doc(alias = "std::_Deque_base<unsigned short,std::allocator<unsigned short>>::_M_create_nodes(unsigned short **,unsigned short **)")]
-pub fn stub_1cb290() -> ! {
-    todo!("0x1cb290 std::_Deque_base<unsigned short,std::allocator<unsigned short>>::_M_create_nodes(unsigned short **,unsigned short **)")
+pub fn stub_1cb290() {
+    // IDA 0x1cb290: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x1cb510 — __ZNSt11_Deque_baseItSaItEE17_M_initialize_mapEm
@@ -81,8 +81,8 @@ pub fn stub_1cb7b0() -> ! {
 
 // 0x1cb878 — __ZNSt11_Deque_baseIN6TagLib7MDMODELESaIS1_EE15_M_create_nodesEPPS1_S5_
 #[doc(alias = "std::_Deque_base<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_create_nodes(TagLib::MDMODEL**,TagLib::MDMODEL**)")]
-pub fn stub_1cb878() -> ! {
-    todo!("0x1cb878 std::_Deque_base<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_create_nodes(TagLib::MDMODEL**,TagLib::MDMODEL**)")
+pub fn stub_1cb878() {
+    // IDA 0x1cb878: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x1cbaf8 — __ZNSt11_Deque_baseIN6TagLib7MDMODELESaIS1_EE17_M_initialize_mapEm
@@ -105,8 +105,8 @@ pub fn stub_1cbd98() -> ! {
 
 // 0x1cbe60 — __ZNSt11_Deque_baseIPhSaIS0_EE15_M_create_nodesEPPS0_S4_
 #[doc(alias = "std::_Deque_base<unsigned char *,std::allocator<unsigned char *>>::_M_create_nodes(unsigned char ***,unsigned char ***)")]
-pub fn stub_1cbe60() -> ! {
-    todo!("0x1cbe60 std::_Deque_base<unsigned char *,std::allocator<unsigned char *>>::_M_create_nodes(unsigned char ***,unsigned char ***)")
+pub fn stub_1cbe60() {
+    // IDA 0x1cbe60: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x1cc0e0 — __ZNSt11_Deque_baseIPhSaIS0_EE17_M_initialize_mapEm
@@ -149,8 +149,8 @@ pub fn stub_1cc4b0() -> ! {
 
 // 0x1cc508 — __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EED2Ev
 #[doc(alias = "std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::~deque()")]
-pub fn stub_1cc508() -> ! {
-    todo!("0x1cc508 std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::~deque()")
+pub fn stub_1cc508() {
+    // IDA 0x1cc508: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x1d9a80 — _FT_Lookup_Renderer

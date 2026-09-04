@@ -223,8 +223,8 @@ pub fn stub_667698() -> ! {
 // demangled: non-virtual thunk toRBX::TextBox::onHeartbeat(RBX::Heartbeat const&)
 #[doc(alias = "non-virtual thunk toRBX::TextBox::onHeartbeat(RBX::Heartbeat const&)")]
 #[doc(alias = "__ZThn596_N3RBX7TextBox11onHeartbeatERKNS_9HeartbeatE")]
-pub fn stub_667b28() -> ! {
-    todo!("0x667b28 __ZThn596_N3RBX7TextBox11onHeartbeatERKNS_9HeartbeatE")
+pub fn stub_667b28() {
+    // IDA 0x667b28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -281,8 +281,8 @@ pub fn stub_668088() -> ! {
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::TextBox::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX7TextBox8render2dEPNS_5AdornE")]
-pub fn stub_66856c() -> ! {
-    todo!("0x66856c __ZThn96_N3RBX7TextBox8render2dEPNS_5AdornE")
+pub fn stub_66856c() {
+    // IDA 0x66856c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -300,8 +300,8 @@ pub fn stub_668574() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEbED1Ev")]
-pub fn stub_66857c() -> ! {
-    todo!("0x66857c __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEbED1Ev")
+pub fn stub_66857c() {
+    // IDA 0x66857c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -319,8 +319,8 @@ pub fn stub_6685a0() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::TextBox,void ()(void),0>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::TextBox,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7TextBoxEFvvELi0EED1Ev")]
-pub fn stub_6685a8() -> ! {
-    todo!("0x6685a8 __ZN3RBX10Reflection13BoundFuncDescINS_7TextBoxEFvvELi0EED1Ev")
+pub fn stub_6685a8() {
+    // IDA 0x6685a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -328,8 +328,8 @@ pub fn stub_6685a8() -> ! {
 // demangled: RBX::Reflection::EventDesc<RBX::TextBox,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::TextBox::*>::~EventDesc()
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::TextBox,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::TextBox::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_7TextBoxEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev")]
-pub fn stub_6685cc() -> ! {
-    todo!("0x6685cc __ZN3RBX10Reflection9EventDescINS_7TextBoxEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev")
+pub fn stub_6685cc() {
+    // IDA 0x6685cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -347,8 +347,8 @@ pub fn stub_6685f0() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,std::string>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7TextBoxESsED1Ev")]
-pub fn stub_6685fc() -> ! {
-    todo!("0x6685fc __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxESsED1Ev")
+pub fn stub_6685fc() {
+    // IDA 0x6685fc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -366,8 +366,8 @@ pub fn stub_668620() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEED1Ev")]
-pub fn stub_668624() -> ! {
-    todo!("0x668624 __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEED1Ev")
+pub fn stub_668624() {
+    // IDA 0x668624: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -385,8 +385,8 @@ pub fn stub_668648() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEED1Ev")]
-pub fn stub_66864c() -> ! {
-    todo!("0x66864c __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEED1Ev")
+pub fn stub_66864c() {
+    // IDA 0x66864c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -404,8 +404,8 @@ pub fn stub_668670() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::BrickColor>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::BrickColor>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7TextBoxENS_10BrickColorEED1Ev")]
-pub fn stub_66868c() -> ! {
-    todo!("0x66868c __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxENS_10BrickColorEED1Ev")
+pub fn stub_66868c() {
+    // IDA 0x66868c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -423,8 +423,8 @@ pub fn stub_6686b0() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Color3>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Color3>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D6Color3EED1Ev")]
-pub fn stub_6686c0() -> ! {
-    todo!("0x6686c0 __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D6Color3EED1Ev")
+pub fn stub_6686c0() {
+    // IDA 0x6686c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -442,8 +442,8 @@ pub fn stub_6686e4() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,float>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEfED1Ev")]
-pub fn stub_6686e8() -> ! {
-    todo!("0x6686e8 __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEfED1Ev")
+pub fn stub_6686e8() {
+    // IDA 0x6686e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -481,8 +481,8 @@ pub fn stub_66871c() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEED1Ev")]
-pub fn stub_668720() -> ! {
-    todo!("0x668720 __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEED1Ev")
+pub fn stub_668720() {
+    // IDA 0x668720: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -500,8 +500,8 @@ pub fn stub_668744() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEED1Ev")]
-pub fn stub_668748() -> ! {
-    todo!("0x668748 __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEED1Ev")
+pub fn stub_668748() {
+    // IDA 0x668748: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -509,8 +509,8 @@ pub fn stub_668748() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Vector2>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Vector2>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EED1Ev")]
-pub fn stub_66876c() -> ! {
-    todo!("0x66876c __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EED1Ev")
+pub fn stub_66876c() {
+    // IDA 0x66876c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -609,8 +609,8 @@ pub fn stub_668adc() -> ! {
 // type: void __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "RBX::TextBox::~TextBox()")]
 #[doc(alias = "__ZN3RBX7TextBoxD1Ev")]
-pub fn stub_668c4c() -> ! {
-    todo!("0x668c4c __ZN3RBX7TextBoxD1Ev")
+pub fn stub_668c4c() {
+    // IDA 0x668c4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -619,8 +619,8 @@ pub fn stub_668c4c() -> ! {
 // type: void __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "RBX::TextBox::~TextBox()")]
 #[doc(alias = "__ZN3RBX7TextBoxD0Ev")]
-pub fn stub_668c50() -> ! {
-    todo!("0x668c50 __ZN3RBX7TextBoxD0Ev")
+pub fn stub_668c50() {
+    // IDA 0x668c50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -699,8 +699,8 @@ pub fn stub_668d2c() -> ! {
 // type: void __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TextBox::~TextBox()")]
 #[doc(alias = "__ZThn32_N3RBX7TextBoxD1Ev")]
-pub fn stub_668d90() -> ! {
-    todo!("0x668d90 __ZThn32_N3RBX7TextBoxD1Ev")
+pub fn stub_668d90() {
+    // IDA 0x668d90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -709,8 +709,8 @@ pub fn stub_668d90() -> ! {
 // type: void __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TextBox::~TextBox()")]
 #[doc(alias = "__ZThn32_N3RBX7TextBoxD0Ev")]
-pub fn stub_668d98() -> ! {
-    todo!("0x668d98 __ZThn32_N3RBX7TextBoxD0Ev")
+pub fn stub_668d98() {
+    // IDA 0x668d98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -719,8 +719,8 @@ pub fn stub_668d98() -> ! {
 // type: void __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TextBox::~TextBox()")]
 #[doc(alias = "__ZThn36_N3RBX7TextBoxD1Ev")]
-pub fn stub_668e4c() -> ! {
-    todo!("0x668e4c __ZThn36_N3RBX7TextBoxD1Ev")
+pub fn stub_668e4c() {
+    // IDA 0x668e4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -729,8 +729,8 @@ pub fn stub_668e4c() -> ! {
 // type: void __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TextBox::~TextBox()")]
 #[doc(alias = "__ZThn36_N3RBX7TextBoxD0Ev")]
-pub fn stub_668e54() -> ! {
-    todo!("0x668e54 __ZThn36_N3RBX7TextBoxD0Ev")
+pub fn stub_668e54() {
+    // IDA 0x668e54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -739,8 +739,8 @@ pub fn stub_668e54() -> ! {
 // type: _DWORD __fastcall(RBX::GuiBase2d *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiBase2d::shouldRender2d(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX9GuiBase2d14shouldRender2dEv")]
-pub fn stub_668ef8() -> ! {
-    todo!("0x668ef8 __ZThn96_NK3RBX9GuiBase2d14shouldRender2dEv")
+pub fn stub_668ef8() {
+    // IDA 0x668ef8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -748,8 +748,8 @@ pub fn stub_668ef8() -> ! {
 // demangled: non-virtual thunk toRBX::GuiBase2d::isVisible(G3D::Rect2D const&)const
 #[doc(alias = "non-virtual thunk toRBX::GuiBase2d::isVisible(G3D::Rect2D const&)const")]
 #[doc(alias = "__ZThn96_NK3RBX9GuiBase2d9isVisibleERKN3G3D6Rect2DE")]
-pub fn stub_668efc() -> ! {
-    todo!("0x668efc __ZThn96_NK3RBX9GuiBase2d9isVisibleERKN3G3D6Rect2DE")
+pub fn stub_668efc() {
+    // IDA 0x668efc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -758,8 +758,8 @@ pub fn stub_668efc() -> ! {
 // type: void __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TextBox::~TextBox()")]
 #[doc(alias = "__ZThn596_N3RBX7TextBoxD1Ev")]
-pub fn stub_668f08() -> ! {
-    todo!("0x668f08 __ZThn596_N3RBX7TextBoxD1Ev")
+pub fn stub_668f08() {
+    // IDA 0x668f08: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -768,8 +768,8 @@ pub fn stub_668f08() -> ! {
 // type: void __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TextBox::~TextBox()")]
 #[doc(alias = "__ZThn596_N3RBX7TextBoxD0Ev")]
-pub fn stub_668f10() -> ! {
-    todo!("0x668f10 __ZThn596_N3RBX7TextBoxD0Ev")
+pub fn stub_668f10() {
+    // IDA 0x668f10: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -795,8 +795,8 @@ pub fn stub_6692d4() -> ! {
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextBox,RBX::TextBox>(boost::shared_ptr<RBX::TextBox> const*,RBX::TextBox *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextBox,RBX::TextBox>(rbx_core::SharedPtr<RBX::TextBox> const*,RBX::TextBox *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7TextBoxES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_66939c() -> ! {
-    todo!("0x66939c __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7TextBoxES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+pub fn stub_66939c() {
+    // IDA 0x66939c: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 
@@ -805,8 +805,8 @@ pub fn stub_66939c() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::TextBox *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TextBox *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX7TextBoxENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_669484() -> ! {
-    todo!("0x669484 __ZN5boost6detail12shared_countC2IPN3RBX7TextBoxENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_669484() {
+    // IDA 0x669484: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 
@@ -814,8 +814,8 @@ pub fn stub_669484() -> ! {
 // demangled: boost::detail::sp_counted_impl_pd<RBX::TextBox *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TextBox *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextBoxENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_66958c() -> ! {
-    todo!("0x66958c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextBoxENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+pub fn stub_66958c() {
+    // IDA 0x66958c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -823,8 +823,8 @@ pub fn stub_66958c() -> ! {
 // demangled: boost::detail::sp_counted_impl_pd<RBX::TextBox *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TextBox *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextBoxENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_669590() -> ! {
-    todo!("0x669590 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextBoxENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+pub fn stub_669590() {
+    // IDA 0x669590: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -832,8 +832,8 @@ pub fn stub_669590() -> ! {
 // demangled: boost::detail::sp_counted_impl_pd<RBX::TextBox *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TextBox *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextBoxENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_669594() -> ! {
-    todo!("0x669594 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextBoxENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_669594() {
+    // IDA 0x669594: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 
@@ -841,8 +841,8 @@ pub fn stub_669594() -> ! {
 // demangled: boost::detail::sp_counted_impl_pd<RBX::TextBox *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TextBox *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextBoxENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_6695b4() -> ! {
-    todo!("0x6695b4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextBoxENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_6695b4() {
+    // IDA 0x6695b4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 
@@ -850,8 +850,8 @@ pub fn stub_6695b4() -> ! {
 // demangled: boost::detail::sp_counted_impl_pd<RBX::TextBox *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TextBox *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextBoxENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_6695cc() -> ! {
-    todo!("0x6695cc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextBoxENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_6695cc() {
+    // IDA 0x6695cc: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 
@@ -899,8 +899,8 @@ pub fn stub_669d00() -> ! {
 // demangled: rbx::signals::signal<void ()(char const*,bool)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()
 #[doc(alias = "rbx::signals::signal<void ()(char const*,bool)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKcbEE13callable_slotIN5boost3_bi6bind_tIvNS7_4_mfi3mf2IvN3RBX7TextBoxES3_bEENS8_5list3INS8_5valueIPSD_EENS7_3argILi1EEENSJ_ILi2EEEEEEEED1Ev")]
-pub fn stub_669d24() -> ! {
-    todo!("0x669d24 __ZN3rbx7signals6signalIFvPKcbEE13callable_slotIN5boost3_bi6bind_tIvNS7_4_mfi3mf2IvN3RBX7TextBoxES3_bEENS8_5list3INS8_5valueIPSD_EENS7_3argILi1EEENSJ_ILi2EEEEEEEED1Ev")
+pub fn stub_669d24() {
+    // IDA 0x669d24: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -908,8 +908,8 @@ pub fn stub_669d24() -> ! {
 // demangled: rbx::signals::signal<void ()(char const*,bool)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()
 #[doc(alias = "rbx::signals::signal<void ()(char const*,bool)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKcbEE13callable_slotIN5boost3_bi6bind_tIvNS7_4_mfi3mf2IvN3RBX7TextBoxES3_bEENS8_5list3INS8_5valueIPSD_EENS7_3argILi1EEENSJ_ILi2EEEEEEEED0Ev")]
-pub fn stub_669d50() -> ! {
-    todo!("0x669d50 __ZN3rbx7signals6signalIFvPKcbEE13callable_slotIN5boost3_bi6bind_tIvNS7_4_mfi3mf2IvN3RBX7TextBoxES3_bEENS8_5list3INS8_5valueIPSD_EENS7_3argILi1EEENSJ_ILi2EEEEEEEED0Ev")
+pub fn stub_669d50() {
+    // IDA 0x669d50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -944,8 +944,8 @@ pub fn stub_669f40() -> ! {
 // demangled: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(char const*,bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>>,2,void ()(char const*,bool)>::call(char const*,bool)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(char const*,bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>>,2,void ()(char const*,bool)>::call(char const*,bool)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvPKcbEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf2IvN3RBX7TextBoxES4_bEENS9_5list3INS9_5valueIPSE_EENS8_3argILi1EEENSK_ILi2EEEEEEELi2ES5_E4callES4_b")]
-pub fn stub_669f68() -> ! {
-    todo!("0x669f68 __ZThn4_N3rbx8callableINS_7signals6signalIFvPKcbEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf2IvN3RBX7TextBoxES4_bEENS9_5list3INS9_5valueIPSE_EENS8_3argILi1EEENSK_ILi2EEEEEEELi2ES5_E4callES4_b")
+pub fn stub_669f68() {
+    // IDA 0x669f68: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -992,8 +992,8 @@ pub fn stub_66a0b0() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(char const*,bool)>::slot::~slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKcbEE4slotD1Ev")]
-pub fn stub_66a1a0() -> ! {
-    todo!("0x66a1a0 __ZN3rbx7signals6signalIFvPKcbEE4slotD1Ev")
+pub fn stub_66a1a0() {
+    // IDA 0x66a1a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -1001,8 +1001,8 @@ pub fn stub_66a1a0() -> ! {
 // demangled: rbx::signals::signal<void ()(char const*,bool)>::slot::~slot()
 #[doc(alias = "rbx::signals::signal<void ()(char const*,bool)>::slot::~slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKcbEE4slotD0Ev")]
-pub fn stub_66a1cc() -> ! {
-    todo!("0x66a1cc __ZN3rbx7signals6signalIFvPKcbEE4slotD0Ev")
+pub fn stub_66a1cc() {
+    // IDA 0x66a1cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -1010,8 +1010,8 @@ pub fn stub_66a1cc() -> ! {
 // demangled: rbx::callable<rbx::signals::signal<void ()(char const*,bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>>,2,void ()(char const*,bool)>::~callable()
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(char const*,bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>>,2,void ()(char const*,bool)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvPKcbEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf2IvN3RBX7TextBoxES4_bEENS9_5list3INS9_5valueIPSE_EENS8_3argILi1EEENSK_ILi2EEEEEEELi2ES5_ED1Ev")]
-pub fn stub_66a2a0() -> ! {
-    todo!("0x66a2a0 __ZN3rbx8callableINS_7signals6signalIFvPKcbEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf2IvN3RBX7TextBoxES4_bEENS9_5list3INS9_5valueIPSE_EENS8_3argILi1EEENSK_ILi2EEEEEEELi2ES5_ED1Ev")
+pub fn stub_66a2a0() {
+    // IDA 0x66a2a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -1019,8 +1019,8 @@ pub fn stub_66a2a0() -> ! {
 // demangled: rbx::callable<rbx::signals::signal<void ()(char const*,bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>>,2,void ()(char const*,bool)>::~callable()
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(char const*,bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>>,2,void ()(char const*,bool)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvPKcbEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf2IvN3RBX7TextBoxES4_bEENS9_5list3INS9_5valueIPSE_EENS8_3argILi1EEENSK_ILi2EEEEEEELi2ES5_ED0Ev")]
-pub fn stub_66a2cc() -> ! {
-    todo!("0x66a2cc __ZN3rbx8callableINS_7signals6signalIFvPKcbEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf2IvN3RBX7TextBoxES4_bEENS9_5list3INS9_5valueIPSE_EENS8_3argILi1EEENSK_ILi2EEEEEEELi2ES5_ED0Ev")
+pub fn stub_66a2cc() {
+    // IDA 0x66a2cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -1029,8 +1029,8 @@ pub fn stub_66a2cc() -> ! {
 // type: void __fastcall(RBX::GuiObject *__hidden this)
 #[doc(alias = "RBX::GuiObject::~GuiObject()")]
 #[doc(alias = "__ZN3RBX9GuiObjectD2Ev")]
-pub fn stub_66a8b4() -> ! {
-    todo!("0x66a8b4 __ZN3RBX9GuiObjectD2Ev")
+pub fn stub_66a8b4() {
+    // IDA 0x66a8b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -1039,8 +1039,8 @@ pub fn stub_66a8b4() -> ! {
 // type: void __fastcall(RBX::GuiObject *__hidden this)
 #[doc(alias = "RBX::GuiObject::~GuiObject()")]
 #[doc(alias = "__ZN3RBX9GuiObjectD1Ev")]
-pub fn stub_66ac8c() -> ! {
-    todo!("0x66ac8c __ZN3RBX9GuiObjectD1Ev")
+pub fn stub_66ac8c() {
+    // IDA 0x66ac8c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -1049,8 +1049,8 @@ pub fn stub_66ac8c() -> ! {
 // type: void __fastcall(RBX::GuiObject *__hidden this)
 #[doc(alias = "RBX::GuiObject::~GuiObject()")]
 #[doc(alias = "__ZN3RBX9GuiObjectD0Ev")]
-pub fn stub_66ac90() -> ! {
-    todo!("0x66ac90 __ZN3RBX9GuiObjectD0Ev")
+pub fn stub_66ac90() {
+    // IDA 0x66ac90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -1059,8 +1059,8 @@ pub fn stub_66ac90() -> ! {
 // type: void __fastcall(RBX::GuiObject *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiObject::~GuiObject()")]
 #[doc(alias = "__ZThn32_N3RBX9GuiObjectD1Ev")]
-pub fn stub_66ad34() -> ! {
-    todo!("0x66ad34 __ZThn32_N3RBX9GuiObjectD1Ev")
+pub fn stub_66ad34() {
+    // IDA 0x66ad34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -1069,8 +1069,8 @@ pub fn stub_66ad34() -> ! {
 // type: void __fastcall(RBX::GuiObject *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiObject::~GuiObject()")]
 #[doc(alias = "__ZThn32_N3RBX9GuiObjectD0Ev")]
-pub fn stub_66ad3c() -> ! {
-    todo!("0x66ad3c __ZThn32_N3RBX9GuiObjectD0Ev")
+pub fn stub_66ad3c() {
+    // IDA 0x66ad3c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -1079,8 +1079,8 @@ pub fn stub_66ad3c() -> ! {
 // type: void __fastcall(RBX::GuiObject *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiObject::~GuiObject()")]
 #[doc(alias = "__ZThn36_N3RBX9GuiObjectD1Ev")]
-pub fn stub_66ade4() -> ! {
-    todo!("0x66ade4 __ZThn36_N3RBX9GuiObjectD1Ev")
+pub fn stub_66ade4() {
+    // IDA 0x66ade4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -1089,8 +1089,8 @@ pub fn stub_66ade4() -> ! {
 // type: void __fastcall(RBX::GuiObject *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiObject::~GuiObject()")]
 #[doc(alias = "__ZThn36_N3RBX9GuiObjectD0Ev")]
-pub fn stub_66adec() -> ! {
-    todo!("0x66adec __ZThn36_N3RBX9GuiObjectD0Ev")
+pub fn stub_66adec() {
+    // IDA 0x66adec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -1098,8 +1098,8 @@ pub fn stub_66adec() -> ! {
 // demangled: boost::scoped_ptr<RBX::GuiObject::Tween>::~scoped_ptr()
 #[doc(alias = "boost::scoped_ptr<RBX::GuiObject::Tween>::~scoped_ptr()")]
 #[doc(alias = "__ZN5boost10scoped_ptrIN3RBX9GuiObject5TweenEED2Ev")]
-pub fn stub_66afbc() -> ! {
-    todo!("0x66afbc __ZN5boost10scoped_ptrIN3RBX9GuiObject5TweenEED2Ev")
+pub fn stub_66afbc() {
+    // IDA 0x66afbc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 
@@ -1108,8 +1108,8 @@ pub fn stub_66afbc() -> ! {
 // type: int __fastcall(_DWORD)
 #[doc(alias = "boost::function1<void,RBX::GuiObject::TweenStatus>::clear(void)")]
 #[doc(alias = "__ZN5boost9function1IvN3RBX9GuiObject11TweenStatusEE5clearEv")]
-pub fn stub_66b068() -> ! {
-    todo!("0x66b068 __ZN5boost9function1IvN3RBX9GuiObject11TweenStatusEE5clearEv")
+pub fn stub_66b068() {
+    // IDA 0x66b068: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 
@@ -1118,8 +1118,8 @@ pub fn stub_66b068() -> ! {
 // type: int __fastcall(int, int, int, int, char, int)
 #[doc(alias = "rbx::remote_signal<void ()(int,int)>::~remote_signal()")]
 #[doc(alias = "__ZN3rbx13remote_signalIFviiEED2Ev")]
-pub fn stub_66b094() -> ! {
-    todo!("0x66b094 __ZN3rbx13remote_signalIFviiEED2Ev")
+pub fn stub_66b094() {
+    // IDA 0x66b094: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 

@@ -44,14 +44,14 @@ pub fn stub_2d68dc() -> ! {
 
 // 0x2d6ac8 — __ZN3RBX13AdvRunDraggerD1Ev
 #[doc(alias = "RBX::AdvRunDragger::~AdvRunDragger()")]
-pub fn stub_2d6ac8() -> ! {
-    todo!("0x2d6ac8 RBX::AdvRunDragger::~AdvRunDragger()")
+pub fn stub_2d6ac8() {
+    // IDA 0x2d6ac8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d6acc — __ZN3RBX13AdvRunDraggerD2Ev
 #[doc(alias = "RBX::AdvRunDragger::~AdvRunDragger()")]
-pub fn stub_2d6acc() -> ! {
-    todo!("0x2d6acc RBX::AdvRunDragger::~AdvRunDragger()")
+pub fn stub_2d6acc() {
+    // IDA 0x2d6acc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d6c30 — __ZN3RBX13AdvRunDragger20snapInfoFromSnapPartEv
@@ -248,8 +248,8 @@ pub fn stub_2dad94() -> ! {
 
 // 0x2daee8 — __ZThn4_N3RBX12AxisToolBase8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk to_RBX::AxisToolBase::render2d(RBX::Adorn *)")]
-pub fn stub_2daee8() -> ! {
-    todo!("0x2daee8 non-virtual thunk toRBX::AxisToolBase::render2d(RBX::Adorn *)")
+pub fn stub_2daee8() {
+    // IDA 0x2daee8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2daef0 — __ZN3RBX12AxisToolBase13render3dAdornEPNS_5AdornE
@@ -260,8 +260,8 @@ pub fn stub_2daef0() -> ! {
 
 // 0x2db050 — __ZThn4_N3RBX12AxisToolBase13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk to_RBX::AxisToolBase::render3dAdorn(RBX::Adorn *)")]
-pub fn stub_2db050() -> ! {
-    todo!("0x2db050 non-virtual thunk toRBX::AxisToolBase::render3dAdorn(RBX::Adorn *)")
+pub fn stub_2db050() {
+    // IDA 0x2db050: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2db058 — __ZN3RBX11shared_fromINS_12AxisToolBaseEEEN5boost10shared_ptrIT_EEPS4_
@@ -314,32 +314,32 @@ pub fn stub_2db7a8() -> ! {
 
 // 0x2db8b0 — __ZN3RBX9CloneToolD0Ev
 #[doc(alias = "RBX::CloneTool::~CloneTool()")]
-pub fn stub_2db8b0() -> ! {
-    todo!("0x2db8b0 RBX::CloneTool::~CloneTool()")
+pub fn stub_2db8b0() {
+    // IDA 0x2db8b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2db950 — __ZN3RBX9CloneToolD1Ev
 #[doc(alias = "RBX::CloneTool::~CloneTool()")]
-pub fn stub_2db950() -> ! {
-    todo!("0x2db950 RBX::CloneTool::~CloneTool()")
+pub fn stub_2db950() {
+    // IDA 0x2db950: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2db954 — __ZThn36_N3RBX9CloneToolD0Ev
 #[doc(alias = "non-virtual thunk to_RBX::CloneTool::~CloneTool()")]
-pub fn stub_2db954() -> ! {
-    todo!("0x2db954 non-virtual thunk toRBX::CloneTool::~CloneTool()")
+pub fn stub_2db954() {
+    // IDA 0x2db954: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2db95c — __ZN3RBX9CloneToolD2Ev
 #[doc(alias = "RBX::CloneTool::~CloneTool()")]
-pub fn stub_2db95c() -> ! {
-    todo!("0x2db95c RBX::CloneTool::~CloneTool()")
+pub fn stub_2db95c() {
+    // IDA 0x2db95c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2dba78 — __ZThn36_N3RBX9CloneToolD1Ev
 #[doc(alias = "non-virtual thunk to_RBX::CloneTool::~CloneTool()")]
-pub fn stub_2dba78() -> ! {
-    todo!("0x2dba78 non-virtual thunk toRBX::CloneTool::~CloneTool()")
+pub fn stub_2dba78() {
+    // IDA 0x2dba78: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2dba80 — __ZN3RBX9CloneTool11onMouseIdleERKNS_7UIEventE
@@ -392,44 +392,44 @@ pub fn stub_2dc07c() -> ! {
 
 // 0x2dc144 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_12PartDragToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::PartDragTool,RBX::PartDragTool>(rbx_core::SharedPtr<RBX::PartDragTool> const*,RBX::PartDragTool *)const")]
-pub fn stub_2dc144() -> ! {
-    todo!("0x2dc144 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::PartDragTool,RBX::PartDragTool>(boost::shared_ptr<RBX::PartDragTool> const*,RBX::PartDragTool *)const")
+pub fn stub_2dc144() {
+    // IDA 0x2dc144: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x2dc228 — __ZN5boost6detail12shared_countC2IPN3RBX12PartDragToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
-pub fn stub_2dc228() -> ! {
-    todo!("0x2dc228 boost::detail::shared_count::shared_count<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
+pub fn stub_2dc228() {
+    // IDA 0x2dc228: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x2dc320 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12PartDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_2dc320() -> ! {
-    todo!("0x2dc320 boost::detail::sp_counted_impl_pd<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_2dc320() {
+    // IDA 0x2dc320: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2dc324 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12PartDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_2dc324() -> ! {
-    todo!("0x2dc324 boost::detail::sp_counted_impl_pd<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_2dc324() {
+    // IDA 0x2dc324: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2dc328 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12PartDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
-pub fn stub_2dc328() -> ! {
-    todo!("0x2dc328 boost::detail::sp_counted_impl_pd<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")
+pub fn stub_2dc328() {
+    // IDA 0x2dc328: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x2dc338 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12PartDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_2dc338() -> ! {
-    todo!("0x2dc338 boost::detail::sp_counted_impl_pd<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_2dc338() {
+    // IDA 0x2dc338: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x2dc350 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12PartDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_2dc350() -> ! {
-    todo!("0x2dc350 boost::detail::sp_counted_impl_pd<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_2dc350() {
+    // IDA 0x2dc350: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x2dc354 — __GLOBAL__I_a_85

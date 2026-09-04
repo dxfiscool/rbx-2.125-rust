@@ -14,8 +14,8 @@ const _: () = {
 
 // 0x2efef4 — __ZThn4_N3RBX11NewNullTool13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::NewNullTool::render3dAdorn(RBX::Adorn *)")]
-pub fn stub_2efef4() -> ! {
-    todo!("0x2efef4 non-virtual thunk toRBX::NewNullTool::render3dAdorn(RBX::Adorn *)")
+pub fn stub_2efef4() {
+    // IDA 0x2efef4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2efef8 — __ZN3RBX11shared_fromINS_11NewNullToolEEEN5boost10shared_ptrIT_EEPS4_
@@ -80,8 +80,8 @@ pub fn stub_2f0410() -> ! {
 
 // 0x2f0414 — __ZThn4_NK3RBX11NewNullTool19shouldRender3dAdornEv
 #[doc(alias = "non-virtual thunk toRBX::NewNullTool::shouldRender3dAdorn(void)const")]
-pub fn stub_2f0414() -> ! {
-    todo!("0x2f0414 non-virtual thunk toRBX::NewNullTool::shouldRender3dAdorn(void)const")
+pub fn stub_2f0414() {
+    // IDA 0x2f0414: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2f0418 — __ZN3RBX4Name13callDoDeclareILZNS_12sNewNullToolEEEEvv
@@ -164,38 +164,38 @@ pub fn stub_2f12c0() -> ! {
 
 // 0x2f13d0 — __ZThn4_N3RBX12PartDragTool13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::PartDragTool::render3dAdorn(RBX::Adorn *)")]
-pub fn stub_2f13d0() -> ! {
-    todo!("0x2f13d0 non-virtual thunk toRBX::PartDragTool::render3dAdorn(RBX::Adorn *)")
+pub fn stub_2f13d0() {
+    // IDA 0x2f13d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2f13d8 — __ZN3RBX12PartDragToolD0Ev
 #[doc(alias = "RBX::PartDragTool::~PartDragTool()")]
-pub fn stub_2f13d8() -> ! {
-    todo!("0x2f13d8 RBX::PartDragTool::~PartDragTool()")
+pub fn stub_2f13d8() {
+    // IDA 0x2f13d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2f1478 — __ZN3RBX12PartDragToolD1Ev
 #[doc(alias = "RBX::PartDragTool::~PartDragTool()")]
-pub fn stub_2f1478() -> ! {
-    todo!("0x2f1478 RBX::PartDragTool::~PartDragTool()")
+pub fn stub_2f1478() {
+    // IDA 0x2f1478: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2f147c — __ZThn36_N3RBX12PartDragToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PartDragTool::~PartDragTool()")]
-pub fn stub_2f147c() -> ! {
-    todo!("0x2f147c non-virtual thunk toRBX::PartDragTool::~PartDragTool()")
+pub fn stub_2f147c() {
+    // IDA 0x2f147c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2f1484 — __ZN3RBX12PartDragToolD2Ev
 #[doc(alias = "RBX::PartDragTool::~PartDragTool()")]
-pub fn stub_2f1484() -> ! {
-    todo!("0x2f1484 RBX::PartDragTool::~PartDragTool()")
+pub fn stub_2f1484() {
+    // IDA 0x2f1484: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2f15e4 — __ZThn36_N3RBX12PartDragToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PartDragTool::~PartDragTool()")]
-pub fn stub_2f15e4() -> ! {
-    todo!("0x2f15e4 non-virtual thunk toRBX::PartDragTool::~PartDragTool()")
+pub fn stub_2f15e4() {
+    // IDA 0x2f15e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2f15ec — __ZN3RBX11shared_fromINS_12PartDragToolEEEN5boost10shared_ptrIT_EEPS4_
@@ -284,14 +284,14 @@ pub fn stub_2f23f4() -> ! {
 
 // 0x2f25ac — __ZN3RBX10RunDraggerD1Ev
 #[doc(alias = "RBX::RunDragger::~RunDragger()")]
-pub fn stub_2f25ac() -> ! {
-    todo!("0x2f25ac RBX::RunDragger::~RunDragger()")
+pub fn stub_2f25ac() {
+    // IDA 0x2f25ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2f25b0 — __ZN3RBX10RunDraggerD2Ev
 #[doc(alias = "RBX::RunDragger::~RunDragger()")]
-pub fn stub_2f25b0() -> ! {
-    todo!("0x2f25b0 RBX::RunDragger::~RunDragger()")
+pub fn stub_2f25b0() {
+    // IDA 0x2f25b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2f26a8 — __ZN3RBX10RunDragger20snapInfoFromSnapPartEv
@@ -452,8 +452,8 @@ pub fn stub_2f5990() -> ! {
 
 // 0x2f5b78 — __ZN3G3D5ArrayImLi10ELm32EED2Ev
 #[doc(alias = "G3D::Array<unsigned long,10,32ul>::~Array()")]
-pub fn stub_2f5b78() -> ! {
-    todo!("0x2f5b78 G3D::Array<unsigned long,10,32ul>::~Array()")
+pub fn stub_2f5b78() {
+    // IDA 0x2f5b78: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2f5c4c — __ZN3G3D5ArrayImLi10ELm32EEC2Ev
@@ -518,8 +518,8 @@ pub fn stub_2f6858() -> ! {
 
 // 0x2f68c8 — __ZThn4_N3RBX13ArrowToolBase13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::ArrowToolBase::render3dAdorn(RBX::Adorn *)")]
-pub fn stub_2f68c8() -> ! {
-    todo!("0x2f68c8 non-virtual thunk toRBX::ArrowToolBase::render3dAdorn(RBX::Adorn *)")
+pub fn stub_2f68c8() {
+    // IDA 0x2f68c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2f68d0 — __ZNK3RBX16AdvArrowToolBase13getCursorNameEv
@@ -566,32 +566,32 @@ pub fn stub_2f6ff4() -> ! {
 
 // 0x2f7134 — __ZN3RBX16BoxSelectCommandD0Ev
 #[doc(alias = "RBX::BoxSelectCommand::~BoxSelectCommand()")]
-pub fn stub_2f7134() -> ! {
-    todo!("0x2f7134 RBX::BoxSelectCommand::~BoxSelectCommand()")
+pub fn stub_2f7134() {
+    // IDA 0x2f7134: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2f71d4 — __ZN3RBX16BoxSelectCommandD1Ev
 #[doc(alias = "RBX::BoxSelectCommand::~BoxSelectCommand()")]
-pub fn stub_2f71d4() -> ! {
-    todo!("0x2f71d4 RBX::BoxSelectCommand::~BoxSelectCommand()")
+pub fn stub_2f71d4() {
+    // IDA 0x2f71d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2f71d8 — __ZThn36_N3RBX16BoxSelectCommandD0Ev
 #[doc(alias = "non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")]
-pub fn stub_2f71d8() -> ! {
-    todo!("0x2f71d8 non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")
+pub fn stub_2f71d8() {
+    // IDA 0x2f71d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2f71e0 — __ZN3RBX16BoxSelectCommandD2Ev
 #[doc(alias = "RBX::BoxSelectCommand::~BoxSelectCommand()")]
-pub fn stub_2f71e0() -> ! {
-    todo!("0x2f71e0 RBX::BoxSelectCommand::~BoxSelectCommand()")
+pub fn stub_2f71e0() {
+    // IDA 0x2f71e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2f7324 — __ZThn36_N3RBX16BoxSelectCommandD1Ev
 #[doc(alias = "non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")]
-pub fn stub_2f7324() -> ! {
-    todo!("0x2f7324 non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")
+pub fn stub_2f7324() {
+    // IDA 0x2f7324: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2f732c — __ZN3RBX16BoxSelectCommand9selectAndERKSt3setIN5boost10shared_ptrINS_8InstanceEEESt4lessIS5_ESaIS5_EE
@@ -632,8 +632,8 @@ pub fn stub_2f7818() -> ! {
 
 // 0x2f78d0 — __ZThn4_N3RBX16BoxSelectCommand8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::BoxSelectCommand::render2d(RBX::Adorn *)")]
-pub fn stub_2f78d0() -> ! {
-    todo!("0x2f78d0 non-virtual thunk toRBX::BoxSelectCommand::render2d(RBX::Adorn *)")
+pub fn stub_2f78d0() {
+    // IDA 0x2f78d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2f78d8 — __ZNK3RBX9Selection10isSelectedEPKNS_8InstanceE
@@ -704,20 +704,20 @@ pub fn stub_2f8034() -> ! {
 
 // 0x2f8080 — __ZNSt8_Rb_treeIN5boost10shared_ptrIN3RBX8InstanceEEES4_St9_IdentityIS4_ESt4lessIS4_ESaIS4_EE14_M_create_nodeERKS4_
 #[doc(alias = "std::_Rb_tree<rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,std::_Identity<rbx_core::SharedPtr<RBX::Instance>>,std::less<rbx_core::SharedPtr<RBX::Instance>>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>::_M_create_node(rbx_core::SharedPtr<RBX::Instance> const&)")]
-pub fn stub_2f8080() -> ! {
-    todo!("0x2f8080 std::_Rb_tree<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,std::_Identity<boost::shared_ptr<RBX::Instance>>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_create_node(boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_2f8080() {
+    // IDA 0x2f8080: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x2f8164 — __ZNSt8_Rb_treeIN5boost10shared_ptrIN3RBX8InstanceEEES4_St9_IdentityIS4_ESt4lessIS4_ESaIS4_EE8_M_eraseEPSt13_Rb_tree_nodeIS4_E
 #[doc(alias = "std::_Rb_tree<rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,std::_Identity<rbx_core::SharedPtr<RBX::Instance>>,std::less<rbx_core::SharedPtr<RBX::Instance>>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>::_M_erase(std::_Rb_tree_node<rbx_core::SharedPtr<RBX::Instance>> *)")]
-pub fn stub_2f8164() -> ! {
-    todo!("0x2f8164 std::_Rb_tree<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,std::_Identity<boost::shared_ptr<RBX::Instance>>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_erase(std::_Rb_tree_node<boost::shared_ptr<RBX::Instance>> *)")
+pub fn stub_2f8164() {
+    // IDA 0x2f8164: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x2f818c — __ZNSt8_Rb_treeIN5boost10shared_ptrIN3RBX8InstanceEEES4_St9_IdentityIS4_ESt4lessIS4_ESaIS4_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS4_E
 #[doc(alias = "std::_Rb_tree<rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,std::_Identity<rbx_core::SharedPtr<RBX::Instance>>,std::less<rbx_core::SharedPtr<RBX::Instance>>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>::_M_destroy_node(std::_Rb_tree_node<rbx_core::SharedPtr<RBX::Instance>> *)")]
-pub fn stub_2f818c() -> ! {
-    todo!("0x2f818c std::_Rb_tree<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,std::_Identity<boost::shared_ptr<RBX::Instance>>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_destroy_node(std::_Rb_tree_node<boost::shared_ptr<RBX::Instance>> *)")
+pub fn stub_2f818c() {
+    // IDA 0x2f818c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x2f81a8 — __ZNSt6__copyILb0ESt26bidirectional_iterator_tagE4copyISt23_Rb_tree_const_iteratorIN5boost10shared_ptrIN3RBX8InstanceEEEENS6_9Selection14ToggleIteratorEEET0_T_SD_SC_

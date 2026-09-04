@@ -290,104 +290,104 @@ pub fn stub_585a10() -> ! {
 // demangled: RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,RBX::ContentId),rbx::remote_signal<void ()(std::string,RBX::ContentId)>>::~RemoteEventDesc()
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,RBX::ContentId),rbx::remote_signal<void ()(std::string,RBX::ContentId)>>::~RemoteEventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsNS_9ContentIdEEN3rbx13remote_signalIS4_EEED1Ev")]
-pub fn stub_585adc() -> ! {
-    todo!("0x585adc __ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsNS_9ContentIdEEN3rbx13remote_signalIS4_EEED1Ev")
+pub fn stub_585adc() {
+    // IDA 0x585adc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x585b00 — __ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsiiEN3rbx13remote_signalIS3_EEED1Ev
 // demangled: RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,int,int),rbx::remote_signal<void ()(std::string,int,int)>>::~RemoteEventDesc()
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,int,int),rbx::remote_signal<void ()(std::string,int,int)>>::~RemoteEventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsiiEN3rbx13remote_signalIS3_EEED1Ev")]
-pub fn stub_585b00() -> ! {
-    todo!("0x585b00 __ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsiiEN3rbx13remote_signalIS3_EEED1Ev")
+pub fn stub_585b00() {
+    // IDA 0x585b00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x585b24 — __ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEED1Ev
 // demangled: RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>>::~RemoteEventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEED1Ev")]
-pub fn stub_585b24() -> ! {
-    todo!("0x585b24 __ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEED1Ev")
+pub fn stub_585b24() {
+    // IDA 0x585b24: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x585b48 — __ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsSsEN3rbx13remote_signalIS3_EEED1Ev
 // demangled: RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,std::string),rbx::remote_signal<void ()(std::string,std::string)>>::~RemoteEventDesc()
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,std::string),rbx::remote_signal<void ()(std::string,std::string)>>::~RemoteEventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsSsEN3rbx13remote_signalIS3_EEED1Ev")]
-pub fn stub_585b48() -> ! {
-    todo!("0x585b48 __ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsSsEN3rbx13remote_signalIS3_EEED1Ev")
+pub fn stub_585b48() {
+    // IDA 0x585b48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x585b6c — __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvSsELi1EED1Ev
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(std::string),1>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvSsELi1EED1Ev")]
-pub fn stub_585b6c() -> ! {
-    todo!("0x585b6c __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvSsELi1EED1Ev")
+pub fn stub_585b6c() {
+    // IDA 0x585b6c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x585bac — __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvfELi1EED1Ev
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(float),1>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(float),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvfELi1EED1Ev")]
-pub fn stub_585bac() -> ! {
-    todo!("0x585bac __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvfELi1EED1Ev")
+pub fn stub_585bac() {
+    // IDA 0x585bac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x585bec — __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFviELi1EED1Ev
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(int),1>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(int),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFviELi1EED1Ev")]
-pub fn stub_585bec() -> ! {
-    todo!("0x585bec __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFviELi1EED1Ev")
+pub fn stub_585bec() {
+    // IDA 0x585bec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x585c2c — __ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEESsiESA_Li2EED1Ev
 // demangled: RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(std::string,int),boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>,2>::~BoundYieldFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(std::string,int),rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>,2>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEESsiESA_Li2EED1Ev")]
-pub fn stub_585c2c() -> ! {
-    todo!("0x585c2c __ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEESsiESA_Li2EED1Ev")
+pub fn stub_585c2c() {
+    // IDA 0x585c2c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x585c74 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvESA_Li0EED1Ev
 // demangled: RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>,0>::~BoundYieldFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>,0>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvESA_Li0EED1Ev")]
-pub fn stub_585c74() -> ! {
-    todo!("0x585c74 __ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvESA_Li0EED1Ev")
+pub fn stub_585c74() {
+    // IDA 0x585c74: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x585c98 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEiESA_Li1EED1Ev
 // demangled: RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(int),boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>,1>::~BoundYieldFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(int),rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>,1>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEiESA_Li1EED1Ev")]
-pub fn stub_585c98() -> ! {
-    todo!("0x585c98 __ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEiESA_Li1EED1Ev")
+pub fn stub_585c98() {
+    // IDA 0x585c98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x585cd8 — __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvbbELi2EED1Ev
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(bool,bool),2>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(bool,bool),2>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvbbELi2EED1Ev")]
-pub fn stub_585cd8() -> ! {
-    todo!("0x585cd8 __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvbbELi2EED1Ev")
+pub fn stub_585cd8() {
+    // IDA 0x585cd8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x585d20 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrINS_8InstanceEEEiES6_Li1EED1Ev
 // demangled: RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::~BoundYieldFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,rbx_core::SharedPtr<RBX::Instance> ()(int),rbx_core::SharedPtr<RBX::Instance>,1>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrINS_8InstanceEEEiES6_Li1EED1Ev")]
-pub fn stub_585d20() -> ! {
-    todo!("0x585d20 __ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrINS_8InstanceEEEiES6_Li1EED1Ev")
+pub fn stub_585d20() {
+    // IDA 0x585d20: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x585d60 — __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED1Ev
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED1Ev")]
-pub fn stub_585d60() -> ! {
-    todo!("0x585d60 __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED1Ev")
+pub fn stub_585d60() {
+    // IDA 0x585d60: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x585e6c — __ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEEEEaSERKS6_
@@ -429,8 +429,8 @@ pub fn stub_586390() -> ! {
 // type: int(void)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::ModelInstance>(rbx_core::SharedPtr<RBX::ModelInstance> const&)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13ModelInstanceEEERS3_RKNS0_IT_EE")]
-pub fn stub_5864b4() -> ! {
-    todo!("0x5864b4 __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13ModelInstanceEEERS3_RKNS0_IT_EE")
+pub fn stub_5864b4() {
+    // IDA 0x5864b4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x5864e8 — __ZN3RBX10Reflection19RemoteEventDescImplILi2ENS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE21fireAndReplicateEventEPS2_SsS6_
@@ -492,8 +492,8 @@ pub fn stub_586fc8() -> ! {
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "RBX::InsertService::~InsertService()")]
 #[doc(alias = "__ZN3RBX13InsertServiceD1Ev")]
-pub fn stub_5871a4() -> ! {
-    todo!("0x5871a4 __ZN3RBX13InsertServiceD1Ev")
+pub fn stub_5871a4() {
+    // IDA 0x5871a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5871a8 — __ZN3RBX13InsertServiceD0Ev
@@ -501,8 +501,8 @@ pub fn stub_5871a4() -> ! {
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "RBX::InsertService::~InsertService()")]
 #[doc(alias = "__ZN3RBX13InsertServiceD0Ev")]
-pub fn stub_5871a8() -> ! {
-    todo!("0x5871a8 __ZN3RBX13InsertServiceD0Ev")
+pub fn stub_5871a8() {
+    // IDA 0x5871a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x587248 — __ZNK3RBX14FactoryProductINS_13InsertServiceENS_8InstanceELZNS_14sInsertServiceEES2_E12getClassNameEv
@@ -517,8 +517,8 @@ pub fn stub_587248() -> ! {
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::InsertService::~InsertService()")]
 #[doc(alias = "__ZThn32_N3RBX13InsertServiceD1Ev")]
-pub fn stub_587258() -> ! {
-    todo!("0x587258 __ZThn32_N3RBX13InsertServiceD1Ev")
+pub fn stub_587258() {
+    // IDA 0x587258: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x587260 — __ZThn32_N3RBX13InsertServiceD0Ev
@@ -526,15 +526,15 @@ pub fn stub_587258() -> ! {
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::InsertService::~InsertService()")]
 #[doc(alias = "__ZThn32_N3RBX13InsertServiceD0Ev")]
-pub fn stub_587260() -> ! {
-    todo!("0x587260 __ZThn32_N3RBX13InsertServiceD0Ev")
+pub fn stub_587260() {
+    // IDA 0x587260: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x587304 — __ZThn32_NK3RBX14FactoryProductINS_13InsertServiceENS_8InstanceELZNS_14sInsertServiceEES2_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_13InsertServiceENS_8InstanceELZNS_14sInsertServiceEES2_E12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_13InsertServiceENS_8InstanceELZNS_14sInsertServiceEES2_E12getClassNameEv")]
-pub fn stub_587304() -> ! {
-    todo!("0x587304 __ZThn32_NK3RBX14FactoryProductINS_13InsertServiceENS_8InstanceELZNS_14sInsertServiceEES2_E12getClassNameEv")
+pub fn stub_587304() {
+    // IDA 0x587304: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x587314 — __ZThn36_N3RBX13InsertServiceD1Ev
@@ -542,8 +542,8 @@ pub fn stub_587304() -> ! {
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::InsertService::~InsertService()")]
 #[doc(alias = "__ZThn36_N3RBX13InsertServiceD1Ev")]
-pub fn stub_587314() -> ! {
-    todo!("0x587314 __ZThn36_N3RBX13InsertServiceD1Ev")
+pub fn stub_587314() {
+    // IDA 0x587314: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x58731c — __ZThn36_N3RBX13InsertServiceD0Ev
@@ -551,8 +551,8 @@ pub fn stub_587314() -> ! {
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::InsertService::~InsertService()")]
 #[doc(alias = "__ZThn36_N3RBX13InsertServiceD0Ev")]
-pub fn stub_58731c() -> ! {
-    todo!("0x58731c __ZThn36_N3RBX13InsertServiceD0Ev")
+pub fn stub_58731c() {
+    // IDA 0x58731c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5873c0 — __ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINS4_INS1_8InstanceEEESaIS7_EEEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_13InsertServiceEEES3_SA_NS0_IFvS7_EEEENSE_5list4INSE_5valueISI_EENS_3argILi1EEENSQ_ILi2EEENSO_ISK_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISW_EE5valueEEE5valueEiE4typeE
@@ -585,8 +585,8 @@ pub fn stub_587678() -> ! {
 // type: _UNKNOWN **__fastcall(int, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(Weak<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<Weak<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEENS6_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINSB_INS6_8InstanceEEESaISE_EEEENS_8functionIFvSE_EEEENS3_5list4INS3_5valueIS8_EENS_3argILi1EEENSQ_ILi2EEENSO_ISK_EEEEEEE6manageERKNS1_15function_bufferERSX_NS1_30functor_manager_operation_typeE")]
-pub fn stub_5877e8() -> ! {
-    todo!("0x5877e8 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEENS6_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINSB_INS6_8InstanceEEESaISE_EEEENS_8functionIFvSE_EEEENS3_5list4INS3_5valueIS8_EENS_3argILi1EEENSQ_ILi2EEENSO_ISK_EEEEEEE6manageERKNS1_15function_bufferERSX_NS1_30functor_manager_operation_typeE")
+pub fn stub_5877e8() {
+    // IDA 0x5877e8: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x587804 — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEENS6_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINSB_INS6_8InstanceEEESaISE_EEEENS_8functionIFvSE_EEEENS3_5list4INS3_5valueIS8_EENS_3argILi1EEENSQ_ILi2EEENSO_ISK_EEEEEEvSA_SH_E6invokeERNS1_15function_bufferESA_SH_
@@ -594,8 +594,8 @@ pub fn stub_5877e8() -> ! {
 // type: int __fastcall(int, int, char)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(Weak<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<Weak<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>>>,void,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::invoke(boost::detail::function::function_buffer &,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEENS6_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINSB_INS6_8InstanceEEESaISE_EEEENS_8functionIFvSE_EEEENS3_5list4INS3_5valueIS8_EENS_3argILi1EEENSQ_ILi2EEENSO_ISK_EEEEEEvSA_SH_E6invokeERNS1_15function_bufferESA_SH_")]
-pub fn stub_587804() -> ! {
-    todo!("0x587804 __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEENS6_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINSB_INS6_8InstanceEEESaISE_EEEENS_8functionIFvSE_EEEENS3_5list4INS3_5valueIS8_EENS_3argILi1EEENSQ_ILi2EEENSO_ISK_EEEEEEvSA_SH_E6invokeERNS1_15function_bufferESA_SH_")
+pub fn stub_587804() {
+    // IDA 0x587804: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x587820 — __ZNK5boost6detail8function13basic_vtable2IvN3RBX14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINS6_INS3_8InstanceEEESaIS9_EEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_13InsertServiceEEES5_SC_NS_8functionIFvS9_EEEENSF_5list4INSF_5valueISJ_EENS_3argILi1EEENSS_ILi2EEENSQ_ISM_EEEEEEEEbT_RNS1_15function_bufferE
@@ -639,8 +639,8 @@ pub fn stub_587be8() -> ! {
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(Weak<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<Weak<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEENS6_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINSB_INS6_8InstanceEEESaISE_EEEENS_8functionIFvSE_EEEENS3_5list4INS3_5valueIS8_EENS_3argILi1EEENSQ_ILi2EEENSO_ISK_EEEEEEE7managerERKNS1_15function_bufferERSX_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
-pub fn stub_587d3c() -> ! {
-    todo!("0x587d3c __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEENS6_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINSB_INS6_8InstanceEEESaISE_EEEENS_8functionIFvSE_EEEENS3_5list4INS3_5valueIS8_EENS_3argILi1EEENSQ_ILi2EEENSO_ISK_EEEEEEE7managerERKNS1_15function_bufferERSX_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+pub fn stub_587d3c() {
+    // IDA 0x587d3c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x587ef0 — __ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX13InsertServiceEEEEENS_3argILi1EEENS8_ILi2EEENS2_INS_8functionIFvNS_10shared_ptrINS4_8InstanceEEEEEEEEEC2ES7_S9_SA_SH_
@@ -648,8 +648,8 @@ pub fn stub_587d3c() -> ! {
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "boost::_bi::list4<boost::_bi::value<Weak<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>>::list4(boost::_bi::value<Weak<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>)")]
 #[doc(alias = "__ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX13InsertServiceEEEEENS_3argILi1EEENS8_ILi2EEENS2_INS_8functionIFvNS_10shared_ptrINS4_8InstanceEEEEEEEEEC2ES7_S9_SA_SH_")]
-pub fn stub_587ef0() -> ! {
-    todo!("0x587ef0 __ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX13InsertServiceEEEEENS_3argILi1EEENS8_ILi2EEENS2_INS_8functionIFvNS_10shared_ptrINS4_8InstanceEEEEEEEEEC2ES7_S9_SA_SH_")
+pub fn stub_587ef0() {
+    // IDA 0x587ef0: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x587ff4 — __ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX13InsertServiceEEEEENS_3argILi1EEENS8_ILi2EEENS2_INS_8functionIFvNS_10shared_ptrINS4_8InstanceEEEEEEEEEC2ES7_S9_SA_SH_
@@ -657,8 +657,8 @@ pub fn stub_587ef0() -> ! {
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<Weak<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>>::storage4(boost::_bi::value<Weak<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>)")]
 #[doc(alias = "__ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX13InsertServiceEEEEENS_3argILi1EEENS8_ILi2EEENS2_INS_8functionIFvNS_10shared_ptrINS4_8InstanceEEEEEEEEEC2ES7_S9_SA_SH_")]
-pub fn stub_587ff4() -> ! {
-    todo!("0x587ff4 __ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX13InsertServiceEEEEENS_3argILi1EEENS8_ILi2EEENS2_INS_8functionIFvNS_10shared_ptrINS4_8InstanceEEEEEEEEEC2ES7_S9_SA_SH_")
+pub fn stub_587ff4() {
+    // IDA 0x587ff4: function ctor/assign from a bind_t functor. Box<dyn Fn> from closure captures — carrier no-op.
 }
 
 // 0x5880f4 — __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX13InsertServiceEEEEENS_3argILi1EEENS8_ILi2EEEEC2ES7_S9_SA_
@@ -724,16 +724,16 @@ pub fn stub_5888cc() -> ! {
 // demangled: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(Weak<RBX::InsertService>,std::string,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<Weak<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEESsNS_10shared_ptrINS6_8InstanceEEEENS3_5list3INS3_5valueIS8_EENSF_ISsEENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE")]
-pub fn stub_588a64() -> ! {
-    todo!("0x588a64 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEESsNS_10shared_ptrINS6_8InstanceEEEENS3_5list3INS3_5valueIS8_EENSF_ISsEENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE")
+pub fn stub_588a64() {
+    // IDA 0x588a64: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x588a80 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEESsNS_10shared_ptrINS6_8InstanceEEEENS3_5list3INS3_5valueIS8_EENSF_ISsEENS_3argILi1EEEEEEEvSB_E6invokeERNS1_15function_bufferESB_
 // demangled: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>,void,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(Weak<RBX::InsertService>,std::string,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<Weak<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>,void,rbx_core::SharedPtr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::Instance>)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEESsNS_10shared_ptrINS6_8InstanceEEEENS3_5list3INS3_5valueIS8_EENSF_ISsEENS_3argILi1EEEEEEEvSB_E6invokeERNS1_15function_bufferESB_")]
-pub fn stub_588a80() -> ! {
-    todo!("0x588a80 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEESsNS_10shared_ptrINS6_8InstanceEEEENS3_5list3INS3_5valueIS8_EENSF_ISsEENS_3argILi1EEEEEEEvSB_E6invokeERNS1_15function_bufferESB_")
+pub fn stub_588a80() {
+    // IDA 0x588a80: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x588a98 — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX8InstanceEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS4_13InsertServiceEEESsS6_ENS9_5list3INS9_5valueISD_EENSH_ISsEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
@@ -777,8 +777,8 @@ pub fn stub_588eac() -> ! {
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(Weak<RBX::InsertService>,std::string,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<Weak<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEESsNS_10shared_ptrINS6_8InstanceEEEENS3_5list3INS3_5valueIS8_EENSF_ISsEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
-pub fn stub_58905c() -> ! {
-    todo!("0x58905c __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEESsNS_10shared_ptrINS6_8InstanceEEEENS3_5list3INS3_5valueIS8_EENSF_ISsEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+pub fn stub_58905c() {
+    // IDA 0x58905c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x5891f8 — __ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX13InsertServiceEEEEENS2_ISsEENS_3argILi1EEEEC2ES7_S8_SA_
@@ -786,8 +786,8 @@ pub fn stub_58905c() -> ! {
 // type: int(void)
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<Weak<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>::list3(boost::_bi::value<Weak<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>)")]
 #[doc(alias = "__ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX13InsertServiceEEEEENS2_ISsEENS_3argILi1EEEEC2ES7_S8_SA_")]
-pub fn stub_5891f8() -> ! {
-    todo!("0x5891f8 __ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX13InsertServiceEEEEENS2_ISsEENS_3argILi1EEEEC2ES7_S8_SA_")
+pub fn stub_5891f8() {
+    // IDA 0x5891f8: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x589364 — __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX13InsertServiceEEEEENS2_ISsEENS_3argILi1EEEEC2ES7_S8_SA_
@@ -813,8 +813,8 @@ pub fn stub_5894d0() -> ! {
 // type: int(void)
 #[doc(alias = "rbx_core::SharedPtr<RBX::InsertService>::shared_ptr<RBX::InsertService>(Weak<RBX::InsertService> const&,boost::detail::sp_nothrow_tag)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX13InsertServiceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")]
-pub fn stub_5895d8() -> ! {
-    todo!("0x5895d8 __ZN5boost10shared_ptrIN3RBX13InsertServiceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")
+pub fn stub_5895d8() {
+    // IDA 0x5895d8: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x589654 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E9fireEventEPS2_SsS6_

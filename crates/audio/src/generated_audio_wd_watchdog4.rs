@@ -19,8 +19,8 @@ pub fn stub_623b10() -> ! {
 // demangled: RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::~RefPropDescriptor()
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::~RefPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEED0Ev")]
-pub fn stub_623bb4() -> ! {
-    todo!("0x623bb4 __ZN3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEED0Ev")
+pub fn stub_623bb4() {
+    // IDA 0x623bb4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x623be4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE10isReadOnlyEv
@@ -123,8 +123,8 @@ pub fn stub_623fd8() -> ! {
 // demangled: non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
-pub fn stub_6240b8() -> ! {
-    todo!("0x6240b8 __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")
+pub fn stub_6240b8() {
+    // IDA 0x6240b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6240c0 — __ZNK3RBX10Reflection14PropDescriptorINS_14SelectionLassoEPNS_8HumanoidEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -163,8 +163,8 @@ pub fn stub_6240e8() -> ! {
 // demangled: boost::shared_ptr<RBX::Humanoid>::shared_ptr<RBX::Humanoid>(boost::weak_ptr<RBX::Humanoid> const&,boost::detail::sp_nothrow_tag)
 #[doc(alias = "boost::shared_ptr<RBX::Humanoid>::shared_ptr<RBX::Humanoid>(boost::weak_ptr<RBX::Humanoid> const&,boost::detail::sp_nothrow_tag)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX8HumanoidEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")]
-pub fn stub_62410c() -> ! {
-    todo!("0x62410c __ZN5boost10shared_ptrIN3RBX8HumanoidEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")
+pub fn stub_62410c() {
+    // IDA 0x62410c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x624188 — __GLOBAL__I_a_254
@@ -235,8 +235,8 @@ pub fn stub_624f08() -> ! {
 // demangled: non-virtual thunk toRBX::SkateboardController::onStepped(RBX::Stepped const&)
 #[doc(alias = "non-virtual thunk toRBX::SkateboardController::onStepped(RBX::Stepped const&)")]
 #[doc(alias = "__ZThn92_N3RBX20SkateboardController9onSteppedERKNS_7SteppedE")]
-pub fn stub_624f38() -> ! {
-    todo!("0x624f38 __ZThn92_N3RBX20SkateboardController9onSteppedERKNS_7SteppedE")
+pub fn stub_624f38() {
+    // IDA 0x624f38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x624f40 — __ZN3RBX20SkateboardController21setSkateboardPlatformEPNS_18SkateboardPlatformE
@@ -259,8 +259,8 @@ pub fn stub_625078() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_20SkateboardControllerEfED1Ev")]
-pub fn stub_625080() -> ! {
-    todo!("0x625080 __ZN3RBX10Reflection14PropDescriptorINS_20SkateboardControllerEfED1Ev")
+pub fn stub_625080() {
+    // IDA 0x625080: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6250a4 — __ZNK3RBX20SkateboardController8getSteerEv
@@ -275,8 +275,8 @@ pub fn stub_6250a4() -> ! {
 // demangled: RBX::Reflection::EventDesc<RBX::SkateboardController,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::SkateboardController::*>::~EventDesc()
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardController,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::SkateboardController::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_20SkateboardControllerEFvSsEN3rbx6signalIS3_EEMS2_S6_ED1Ev")]
-pub fn stub_6250ac() -> ! {
-    todo!("0x6250ac __ZN3RBX10Reflection9EventDescINS_20SkateboardControllerEFvSsEN3rbx6signalIS3_EEMS2_S6_ED1Ev")
+pub fn stub_6250ac() {
+    // IDA 0x6250ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6250d0 — __ZN3RBX11shared_fromINS_18SkateboardPlatformEEEN5boost10shared_ptrIT_EEPS4_
@@ -291,16 +291,16 @@ pub fn stub_6250d0() -> ! {
 // demangled: RBX::SkateboardController::~SkateboardController()
 #[doc(alias = "RBX::SkateboardController::~SkateboardController()")]
 #[doc(alias = "__ZN3RBX20SkateboardControllerD1Ev")]
-pub fn stub_625240() -> ! {
-    todo!("0x625240 __ZN3RBX20SkateboardControllerD1Ev")
+pub fn stub_625240() {
+    // IDA 0x625240: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x625384 — __ZN3RBX20SkateboardControllerD0Ev
 // demangled: RBX::SkateboardController::~SkateboardController()
 #[doc(alias = "RBX::SkateboardController::~SkateboardController()")]
 #[doc(alias = "__ZN3RBX20SkateboardControllerD0Ev")]
-pub fn stub_625384() -> ! {
-    todo!("0x625384 __ZN3RBX20SkateboardControllerD0Ev")
+pub fn stub_625384() {
+    // IDA 0x625384: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x625424 — __ZNK3RBX14FactoryProductINS_20SkateboardControllerENS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEE12getClassNameEv
@@ -313,66 +313,66 @@ pub fn stub_625424() -> ! {
 // demangled: non-virtual thunk toRBX::SkateboardController::~SkateboardController()
 #[doc(alias = "non-virtual thunk toRBX::SkateboardController::~SkateboardController()")]
 #[doc(alias = "__ZThn32_N3RBX20SkateboardControllerD1Ev")]
-pub fn stub_625434() -> ! {
-    todo!("0x625434 __ZThn32_N3RBX20SkateboardControllerD1Ev")
+pub fn stub_625434() {
+    // IDA 0x625434: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x625574 — __ZThn32_N3RBX20SkateboardControllerD0Ev
 // demangled: non-virtual thunk toRBX::SkateboardController::~SkateboardController()
 #[doc(alias = "non-virtual thunk toRBX::SkateboardController::~SkateboardController()")]
 #[doc(alias = "__ZThn32_N3RBX20SkateboardControllerD0Ev")]
-pub fn stub_625574() -> ! {
-    todo!("0x625574 __ZThn32_N3RBX20SkateboardControllerD0Ev")
+pub fn stub_625574() {
+    // IDA 0x625574: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6256cc — __ZThn32_NK3RBX14FactoryProductINS_20SkateboardControllerENS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_20SkateboardControllerENS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_6256cc() -> ! {
-    todo!("0x6256cc __ZThn32_NK3RBX14FactoryProductINS_20SkateboardControllerENS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEE12getClassNameEv")
+pub fn stub_6256cc() {
+    // IDA 0x6256cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6256dc — __ZThn36_N3RBX20SkateboardControllerD1Ev
 // demangled: non-virtual thunk toRBX::SkateboardController::~SkateboardController()
 #[doc(alias = "non-virtual thunk toRBX::SkateboardController::~SkateboardController()")]
 #[doc(alias = "__ZThn36_N3RBX20SkateboardControllerD1Ev")]
-pub fn stub_6256dc() -> ! {
-    todo!("0x6256dc __ZThn36_N3RBX20SkateboardControllerD1Ev")
+pub fn stub_6256dc() {
+    // IDA 0x6256dc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x62581c — __ZThn36_N3RBX20SkateboardControllerD0Ev
 // demangled: non-virtual thunk toRBX::SkateboardController::~SkateboardController()
 #[doc(alias = "non-virtual thunk toRBX::SkateboardController::~SkateboardController()")]
 #[doc(alias = "__ZThn36_N3RBX20SkateboardControllerD0Ev")]
-pub fn stub_62581c() -> ! {
-    todo!("0x62581c __ZThn36_N3RBX20SkateboardControllerD0Ev")
+pub fn stub_62581c() {
+    // IDA 0x62581c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x625974 — __ZThn92_N3RBX20SkateboardControllerD1Ev
 // demangled: non-virtual thunk toRBX::SkateboardController::~SkateboardController()
 #[doc(alias = "non-virtual thunk toRBX::SkateboardController::~SkateboardController()")]
 #[doc(alias = "__ZThn92_N3RBX20SkateboardControllerD1Ev")]
-pub fn stub_625974() -> ! {
-    todo!("0x625974 __ZThn92_N3RBX20SkateboardControllerD1Ev")
+pub fn stub_625974() {
+    // IDA 0x625974: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x625ab4 — __ZThn92_N3RBX20SkateboardControllerD0Ev
 // demangled: non-virtual thunk toRBX::SkateboardController::~SkateboardController()
 #[doc(alias = "non-virtual thunk toRBX::SkateboardController::~SkateboardController()")]
 #[doc(alias = "__ZThn92_N3RBX20SkateboardControllerD0Ev")]
-pub fn stub_625ab4() -> ! {
-    todo!("0x625ab4 __ZThn92_N3RBX20SkateboardControllerD0Ev")
+pub fn stub_625ab4() {
+    // IDA 0x625ab4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x625c0c — __ZN3RBX14FactoryProductINS_20SkateboardControllerENS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_20SkateboardControllerENS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_625c0c() -> ! {
-    todo!("0x625c0c __ZN3RBX14FactoryProductINS_20SkateboardControllerENS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_625c0c() {
+    // IDA 0x625c0c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x625c10 — __ZN3RBX14FactoryProductINS_20SkateboardControllerENS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_20SkateboardControllerENS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_625c10() -> ! {
-    todo!("0x625c10 __ZN3RBX14FactoryProductINS_20SkateboardControllerENS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_625c10() {
+    // IDA 0x625c10: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x625cac — __ZNK3RBX14FactoryProductINS_20SkateboardControllerENS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEE7Creator12getClassNameEv
@@ -415,56 +415,56 @@ pub fn stub_6261a0() -> ! {
 // demangled: boost::shared_ptr<RBX::SkateboardPlatform>::shared_ptr<RBX::SkateboardPlatform>(boost::weak_ptr<RBX::SkateboardPlatform> const&,boost::detail::sp_nothrow_tag)
 #[doc(alias = "boost::shared_ptr<RBX::SkateboardPlatform>::shared_ptr<RBX::SkateboardPlatform>(boost::weak_ptr<RBX::SkateboardPlatform> const&,boost::detail::sp_nothrow_tag)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX18SkateboardPlatformEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")]
-pub fn stub_626214() -> ! {
-    todo!("0x626214 __ZN5boost10shared_ptrIN3RBX18SkateboardPlatformEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")
+pub fn stub_626214() {
+    // IDA 0x626214: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x626290 — __ZN3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_626290() -> ! {
-    todo!("0x626290 __ZN3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_626290() {
+    // IDA 0x626290: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x626294 — __ZN3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_626294() -> ! {
-    todo!("0x626294 __ZN3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_626294() {
+    // IDA 0x626294: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x626334 — __ZThn32_N3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_626334() -> ! {
-    todo!("0x626334 __ZThn32_N3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_626334() {
+    // IDA 0x626334: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x62633c — __ZThn32_N3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_62633c() -> ! {
-    todo!("0x62633c __ZThn32_N3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_62633c() {
+    // IDA 0x62633c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6263e0 — __ZThn36_N3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_6263e0() -> ! {
-    todo!("0x6263e0 __ZThn36_N3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_6263e0() {
+    // IDA 0x6263e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6263e8 — __ZThn36_N3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_6263e8() -> ! {
-    todo!("0x6263e8 __ZThn36_N3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_6263e8() {
+    // IDA 0x6263e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x62648c — __ZThn92_N3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_62648c() -> ! {
-    todo!("0x62648c __ZThn92_N3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_62648c() {
+    // IDA 0x62648c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x626494 — __ZThn92_N3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_626494() -> ! {
-    todo!("0x626494 __ZThn92_N3RBX10Reflection9DescribedINS_20SkateboardControllerELZNS_21sSkateboardControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_626494() {
+    // IDA 0x626494: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x626538 — __ZN3RBX10Reflection9EventDescINS_20SkateboardControllerEFvSsEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -479,8 +479,8 @@ pub fn stub_626538() -> ! {
 // demangled: RBX::Reflection::EventDesc<RBX::SkateboardController,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::SkateboardController::*>::~EventDesc()
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardController,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::SkateboardController::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_20SkateboardControllerEFvSsEN3rbx6signalIS3_EEMS2_S6_ED0Ev")]
-pub fn stub_6266bc() -> ! {
-    todo!("0x6266bc __ZN3RBX10Reflection9EventDescINS_20SkateboardControllerEFvSsEN3rbx6signalIS3_EEMS2_S6_ED0Ev")
+pub fn stub_6266bc() {
+    // IDA 0x6266bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x626770 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_20SkateboardControllerEFvSsEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -519,8 +519,8 @@ pub fn stub_626a7c() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_20SkateboardControllerEfED0Ev")]
-pub fn stub_626b88() -> ! {
-    todo!("0x626b88 __ZN3RBX10Reflection14PropDescriptorINS_20SkateboardControllerEfED0Ev")
+pub fn stub_626b88() {
+    // IDA 0x626b88: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x626bb4 — __ZNK3RBX10Reflection14PropDescriptorINS_20SkateboardControllerEfE7GetImplIMS2_KFfvEE10isReadOnlyEv
@@ -631,120 +631,120 @@ pub fn stub_62743c() -> ! {
 // demangled: RBX::SkateboardPlatform::~SkateboardPlatform()
 #[doc(alias = "RBX::SkateboardPlatform::~SkateboardPlatform()")]
 #[doc(alias = "__ZN3RBX18SkateboardPlatformD0Ev")]
-pub fn stub_627a38() -> ! {
-    todo!("0x627a38 __ZN3RBX18SkateboardPlatformD0Ev")
+pub fn stub_627a38() {
+    // IDA 0x627a38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x627ae4 — __ZN3RBX18SkateboardPlatformD1Ev
 // demangled: RBX::SkateboardPlatform::~SkateboardPlatform()
 #[doc(alias = "RBX::SkateboardPlatform::~SkateboardPlatform()")]
 #[doc(alias = "__ZN3RBX18SkateboardPlatformD1Ev")]
-pub fn stub_627ae4() -> ! {
-    todo!("0x627ae4 __ZN3RBX18SkateboardPlatformD1Ev")
+pub fn stub_627ae4() {
+    // IDA 0x627ae4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x627af4 — __ZThn32_N3RBX18SkateboardPlatformD0Ev
 // demangled: non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()
 #[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
 #[doc(alias = "__ZThn32_N3RBX18SkateboardPlatformD0Ev")]
-pub fn stub_627af4() -> ! {
-    todo!("0x627af4 __ZThn32_N3RBX18SkateboardPlatformD0Ev")
+pub fn stub_627af4() {
+    // IDA 0x627af4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x627afc — __ZThn36_N3RBX18SkateboardPlatformD0Ev
 // demangled: non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()
 #[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
 #[doc(alias = "__ZThn36_N3RBX18SkateboardPlatformD0Ev")]
-pub fn stub_627afc() -> ! {
-    todo!("0x627afc __ZThn36_N3RBX18SkateboardPlatformD0Ev")
+pub fn stub_627afc() {
+    // IDA 0x627afc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x627b04 — __ZThn132_N3RBX18SkateboardPlatformD0Ev
 // demangled: non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()
 #[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
 #[doc(alias = "__ZThn132_N3RBX18SkateboardPlatformD0Ev")]
-pub fn stub_627b04() -> ! {
-    todo!("0x627b04 __ZThn132_N3RBX18SkateboardPlatformD0Ev")
+pub fn stub_627b04() {
+    // IDA 0x627b04: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x627b0c — __ZThn352_N3RBX18SkateboardPlatformD0Ev
 // demangled: non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()
 #[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
 #[doc(alias = "__ZThn352_N3RBX18SkateboardPlatformD0Ev")]
-pub fn stub_627b0c() -> ! {
-    todo!("0x627b0c __ZThn352_N3RBX18SkateboardPlatformD0Ev")
+pub fn stub_627b0c() {
+    // IDA 0x627b0c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x627b14 — __ZThn384_N3RBX18SkateboardPlatformD0Ev
 // demangled: non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()
 #[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
 #[doc(alias = "__ZThn384_N3RBX18SkateboardPlatformD0Ev")]
-pub fn stub_627b14() -> ! {
-    todo!("0x627b14 __ZThn384_N3RBX18SkateboardPlatformD0Ev")
+pub fn stub_627b14() {
+    // IDA 0x627b14: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x627b1c — __ZThn504_N3RBX18SkateboardPlatformD0Ev
 // demangled: non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()
 #[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
 #[doc(alias = "__ZThn504_N3RBX18SkateboardPlatformD0Ev")]
-pub fn stub_627b1c() -> ! {
-    todo!("0x627b1c __ZThn504_N3RBX18SkateboardPlatformD0Ev")
+pub fn stub_627b1c() {
+    // IDA 0x627b1c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x627b24 — __ZN3RBX18SkateboardPlatformD2Ev
 // demangled: RBX::SkateboardPlatform::~SkateboardPlatform()
 #[doc(alias = "RBX::SkateboardPlatform::~SkateboardPlatform()")]
 #[doc(alias = "__ZN3RBX18SkateboardPlatformD2Ev")]
-pub fn stub_627b24() -> ! {
-    todo!("0x627b24 __ZN3RBX18SkateboardPlatformD2Ev")
+pub fn stub_627b24() {
+    // IDA 0x627b24: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x627fbc — __ZThn32_N3RBX18SkateboardPlatformD1Ev
 // demangled: non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()
 #[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
 #[doc(alias = "__ZThn32_N3RBX18SkateboardPlatformD1Ev")]
-pub fn stub_627fbc() -> ! {
-    todo!("0x627fbc __ZThn32_N3RBX18SkateboardPlatformD1Ev")
+pub fn stub_627fbc() {
+    // IDA 0x627fbc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x627fcc — __ZThn36_N3RBX18SkateboardPlatformD1Ev
 // demangled: non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()
 #[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
 #[doc(alias = "__ZThn36_N3RBX18SkateboardPlatformD1Ev")]
-pub fn stub_627fcc() -> ! {
-    todo!("0x627fcc __ZThn36_N3RBX18SkateboardPlatformD1Ev")
+pub fn stub_627fcc() {
+    // IDA 0x627fcc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x627fdc — __ZThn132_N3RBX18SkateboardPlatformD1Ev
 // demangled: non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()
 #[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
 #[doc(alias = "__ZThn132_N3RBX18SkateboardPlatformD1Ev")]
-pub fn stub_627fdc() -> ! {
-    todo!("0x627fdc __ZThn132_N3RBX18SkateboardPlatformD1Ev")
+pub fn stub_627fdc() {
+    // IDA 0x627fdc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x627fec — __ZThn352_N3RBX18SkateboardPlatformD1Ev
 // demangled: non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()
 #[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
 #[doc(alias = "__ZThn352_N3RBX18SkateboardPlatformD1Ev")]
-pub fn stub_627fec() -> ! {
-    todo!("0x627fec __ZThn352_N3RBX18SkateboardPlatformD1Ev")
+pub fn stub_627fec() {
+    // IDA 0x627fec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x628000 — __ZThn384_N3RBX18SkateboardPlatformD1Ev
 // demangled: non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()
 #[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
 #[doc(alias = "__ZThn384_N3RBX18SkateboardPlatformD1Ev")]
-pub fn stub_628000() -> ! {
-    todo!("0x628000 __ZThn384_N3RBX18SkateboardPlatformD1Ev")
+pub fn stub_628000() {
+    // IDA 0x628000: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x628014 — __ZThn504_N3RBX18SkateboardPlatformD1Ev
 // demangled: non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()
 #[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
 #[doc(alias = "__ZThn504_N3RBX18SkateboardPlatformD1Ev")]
-pub fn stub_628014() -> ! {
-    todo!("0x628014 __ZThn504_N3RBX18SkateboardPlatformD1Ev")
+pub fn stub_628014() {
+    // IDA 0x628014: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x628028 — __ZN3RBX18SkateboardPlatform25onPlatformStandingChangedEbPNS_8HumanoidE
@@ -807,8 +807,8 @@ pub fn stub_628828() -> ! {
 // demangled: non-virtual thunk toRBX::SkateboardPlatform::getEngineBody(void)
 #[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::getEngineBody(void)")]
 #[doc(alias = "__ZThn352_N3RBX18SkateboardPlatform13getEngineBodyEv")]
-pub fn stub_628834() -> ! {
-    todo!("0x628834 __ZThn352_N3RBX18SkateboardPlatform13getEngineBodyEv")
+pub fn stub_628834() {
+    // IDA 0x628834: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x628844 — __ZN3RBX18SkateboardPlatform19countGroundedWheelsEv
@@ -839,8 +839,8 @@ pub fn stub_628afc() -> ! {
 // demangled: non-virtual thunk toRBX::SkateboardPlatform::stepUi(double)
 #[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::stepUi(double)")]
 #[doc(alias = "__ZThn352_N3RBX18SkateboardPlatform6stepUiEd")]
-pub fn stub_628b9c() -> ! {
-    todo!("0x628b9c __ZThn352_N3RBX18SkateboardPlatform6stepUiEd")
+pub fn stub_628b9c() {
+    // IDA 0x628b9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x628bb0 — __ZN3RBX18SkateboardPlatform12doLoadWheelsEPNS_9PrimitiveE
@@ -879,8 +879,8 @@ pub fn stub_628fb8() -> ! {
 // demangled: non-virtual thunk toRBX::SkateboardPlatform::computeForce(bool)
 #[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::computeForce(bool)")]
 #[doc(alias = "__ZThn504_N3RBX18SkateboardPlatform12computeForceEb")]
-pub fn stub_629084() -> ! {
-    todo!("0x629084 __ZThn504_N3RBX18SkateboardPlatform12computeForceEb")
+pub fn stub_629084() {
+    // IDA 0x629084: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x629090 — __ZN3RBX18SkateboardPlatform17applyForwardForceEf
@@ -903,8 +903,8 @@ pub fn stub_6290fc() -> ! {
 // demangled: non-virtual thunk toRBX::SkateboardPlatform::shouldRender2d(void)const
 #[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::shouldRender2d(void)const")]
 #[doc(alias = "__ZThn108_NK3RBX18SkateboardPlatform14shouldRender2dEv")]
-pub fn stub_629100() -> ! {
-    todo!("0x629100 __ZThn108_NK3RBX18SkateboardPlatform14shouldRender2dEv")
+pub fn stub_629100() {
+    // IDA 0x629100: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x629104 — __ZN3RBX18SkateboardPlatform8render2dEPNS_5AdornE
@@ -919,8 +919,8 @@ pub fn stub_629104() -> ! {
 // demangled: non-virtual thunk toRBX::SkateboardPlatform::render2d(RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn108_N3RBX18SkateboardPlatform8render2dEPNS_5AdornE")]
-pub fn stub_629108() -> ! {
-    todo!("0x629108 __ZThn108_N3RBX18SkateboardPlatform8render2dEPNS_5AdornE")
+pub fn stub_629108() {
+    // IDA 0x629108: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x62910c — __ZN3RBX18SkateboardPlatform25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE

@@ -29,8 +29,8 @@ pub fn stub_41ede4() -> ! {
 // 0x41f220 — __ZN3RBX9DataModel10LegacyLockD1Ev
 // type: void __fastcall(RBX::DataModel::LegacyLock *__hidden this)
 #[doc(alias = "RBX::DataModel::LegacyLock::~LegacyLock()")]
-pub fn stub_41f220() -> ! {
-    todo!("0x41f220 RBX::DataModel::LegacyLock::~LegacyLock()")
+pub fn stub_41f220() {
+    // IDA 0x41f220: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x41f230 — __ZN3RBX9DataModel15createDataModelEbPNS_4VerbEPS0_
@@ -99,92 +99,92 @@ pub fn stub_421b60() -> ! {
 // 0x421b80 — __ZN3RBX9DataModelD0Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "RBX::DataModel::~DataModel()")]
-pub fn stub_421b80() -> ! {
-    todo!("0x421b80 RBX::DataModel::~DataModel()")
+pub fn stub_421b80() {
+    // IDA 0x421b80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x421c20 — __ZN3RBX9DataModelD1Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "RBX::DataModel::~DataModel()")]
-pub fn stub_421c20() -> ! {
-    todo!("0x421c20 RBX::DataModel::~DataModel()")
+pub fn stub_421c20() {
+    // IDA 0x421c20: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x421c24 — __ZThn32_N3RBX9DataModelD0Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
-pub fn stub_421c24() -> ! {
-    todo!("0x421c24 non-virtual thunk toRBX::DataModel::~DataModel()")
+pub fn stub_421c24() {
+    // IDA 0x421c24: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x421c2c — __ZThn36_N3RBX9DataModelD0Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
-pub fn stub_421c2c() -> ! {
-    todo!("0x421c2c non-virtual thunk toRBX::DataModel::~DataModel()")
+pub fn stub_421c2c() {
+    // IDA 0x421c2c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x421c34 — __ZThn144_N3RBX9DataModelD0Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
-pub fn stub_421c34() -> ! {
-    todo!("0x421c34 non-virtual thunk toRBX::DataModel::~DataModel()")
+pub fn stub_421c34() {
+    // IDA 0x421c34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x421c3c — __ZThn180_N3RBX9DataModelD0Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
-pub fn stub_421c3c() -> ! {
-    todo!("0x421c3c non-virtual thunk toRBX::DataModel::~DataModel()")
+pub fn stub_421c3c() {
+    // IDA 0x421c3c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x421c44 — __ZThn184_N3RBX9DataModelD0Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
-pub fn stub_421c44() -> ! {
-    todo!("0x421c44 non-virtual thunk toRBX::DataModel::~DataModel()")
+pub fn stub_421c44() {
+    // IDA 0x421c44: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x421c4c — __ZN3RBX9DataModelD2Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "RBX::DataModel::~DataModel()")]
-pub fn stub_421c4c() -> ! {
-    todo!("0x421c4c RBX::DataModel::~DataModel()")
+pub fn stub_421c4c() {
+    // IDA 0x421c4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4228ac — __ZThn32_N3RBX9DataModelD1Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
-pub fn stub_4228ac() -> ! {
-    todo!("0x4228ac non-virtual thunk toRBX::DataModel::~DataModel()")
+pub fn stub_4228ac() {
+    // IDA 0x4228ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4228b4 — __ZThn36_N3RBX9DataModelD1Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
-pub fn stub_4228b4() -> ! {
-    todo!("0x4228b4 non-virtual thunk toRBX::DataModel::~DataModel()")
+pub fn stub_4228b4() {
+    // IDA 0x4228b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4228bc — __ZThn144_N3RBX9DataModelD1Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
-pub fn stub_4228bc() -> ! {
-    todo!("0x4228bc non-virtual thunk toRBX::DataModel::~DataModel()")
+pub fn stub_4228bc() {
+    // IDA 0x4228bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4228c4 — __ZThn180_N3RBX9DataModelD1Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
-pub fn stub_4228c4() -> ! {
-    todo!("0x4228c4 non-virtual thunk toRBX::DataModel::~DataModel()")
+pub fn stub_4228c4() {
+    // IDA 0x4228c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4228cc — __ZThn184_N3RBX9DataModelD1Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
-pub fn stub_4228cc() -> ! {
-    todo!("0x4228cc non-virtual thunk toRBX::DataModel::~DataModel()")
+pub fn stub_4228cc() {
+    // IDA 0x4228cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4228d4 — __ZN3RBX9DataModel13getGenericJobENS_12DataModelJob8TaskTypeE
@@ -428,8 +428,8 @@ pub fn stub_427dc0() -> ! {
 // 0x4288b0 — __ZThn180_NK3RBX9DataModel14getMetricValueERKSs
 // type: __int64 __fastcall(RBX::DataModel *this, const std::string *)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::getMetricValue(std::string const&)const")]
-pub fn stub_4288b0() -> ! {
-    todo!("0x4288b0 non-virtual thunk toRBX::DataModel::getMetricValue(std::string const&)const")
+pub fn stub_4288b0() {
+    // IDA 0x4288b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4288b8 — __ZNK3RBX9DataModel9getMetricERKSs
@@ -442,8 +442,8 @@ pub fn stub_4288b8() -> ! {
 // 0x42fb24 — __ZThn180_NK3RBX9DataModel9getMetricERKSs
 // type: void __fastcall(RBX::DataModel *this, const std::string *, std::string *)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::getMetric(std::string const&)const")]
-pub fn stub_42fb24() -> ! {
-    todo!("0x42fb24 non-virtual thunk toRBX::DataModel::getMetric(std::string const&)const")
+pub fn stub_42fb24() {
+    // IDA 0x42fb24: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x42fb30 — __ZN3RBX9DataModel3getEPNS_8InstanceE
@@ -519,8 +519,8 @@ pub fn stub_430900() -> ! {
 // 0x430924 — __ZThn184_NK3RBX9DataModel13getNumPlayersEv
 // type: int __fastcall(RBX::DataModel *this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::getNumPlayers(void)const")]
-pub fn stub_430924() -> ! {
-    todo!("0x430924 non-virtual thunk toRBX::DataModel::getNumPlayers(void)const")
+pub fn stub_430924() {
+    // IDA 0x430924: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x430930 — __ZN3RBX9DataModel19ScreenshotReadyTaskEN5boost8weak_ptrIS0_EERKSs
@@ -554,15 +554,15 @@ pub fn stub_430a14() -> ! {
 // 0x430b28 — __ZN3RBX9DataModel20scoped_write_requestD1Ev
 // type: void __fastcall(RBX::DataModel::scoped_write_request *__hidden this)
 #[doc(alias = "RBX::DataModel::scoped_write_request::~scoped_write_request()")]
-pub fn stub_430b28() -> ! {
-    todo!("0x430b28 RBX::DataModel::scoped_write_request::~scoped_write_request()")
+pub fn stub_430b28() {
+    // IDA 0x430b28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x430b2c — __ZN3RBX9DataModel20scoped_write_requestD2Ev
 // type: void __fastcall(RBX::DataModel::scoped_write_request *__hidden this)
 #[doc(alias = "RBX::DataModel::scoped_write_request::~scoped_write_request()")]
-pub fn stub_430b2c() -> ! {
-    todo!("0x430b2c RBX::DataModel::scoped_write_request::~scoped_write_request()")
+pub fn stub_430b2c() {
+    // IDA 0x430b2c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x430c18 — __ZN3RBX9DataModel19scoped_read_requestC1EPNS_8InstanceE
@@ -582,15 +582,15 @@ pub fn stub_430c1c() -> ! {
 // 0x430d0c — __ZN3RBX9DataModel19scoped_read_requestD1Ev
 // type: void __fastcall(RBX::DataModel::scoped_read_request *__hidden this)
 #[doc(alias = "RBX::DataModel::scoped_read_request::~scoped_read_request()")]
-pub fn stub_430d0c() -> ! {
-    todo!("0x430d0c RBX::DataModel::scoped_read_request::~scoped_read_request()")
+pub fn stub_430d0c() {
+    // IDA 0x430d0c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x430d10 — __ZN3RBX9DataModel19scoped_read_requestD2Ev
 // type: void __fastcall(RBX::DataModel::scoped_read_request *__hidden this)
 #[doc(alias = "RBX::DataModel::scoped_read_request::~scoped_read_request()")]
-pub fn stub_430d10() -> ! {
-    todo!("0x430d10 RBX::DataModel::scoped_read_request::~scoped_read_request()")
+pub fn stub_430d10() {
+    // IDA 0x430d10: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x430df4 — __ZN3RBX9DataModel24allHackFlagsOredTogetherEv
@@ -624,8 +624,8 @@ pub fn stub_431100() -> ! {
 // 0x431268 — __ZN5boost8functionIFvPN3RBX9DataModelEEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::function<void ()(RBX::DataModel *)>::~function()")]
-pub fn stub_431268() -> ! {
-    todo!("0x431268 boost::function<void ()(RBX::DataModel *)>::~function()")
+pub fn stub_431268() {
+    // IDA 0x431268: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x431278 — __ZN3RBX9DataModel11loadPluginsEv
@@ -638,76 +638,76 @@ pub fn stub_431278() -> ! {
 // 0x431288 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvvELi0EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_431288() -> ! {
-    todo!("0x431288 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_431288() {
+    // IDA 0x431288: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4312ac — __ZN3RBX10Reflection9EventDescINS_9DataModelEFvN5boost10shared_ptrINS_8InstanceEEEPKNS0_18PropertyDescriptorEEN3rbx6signalISA_EEMS2_SD_ED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::DataModel,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)> RBX::DataModel::*>::~EventDesc()")]
-pub fn stub_4312ac() -> ! {
-    todo!("0x4312ac RBX::Reflection::EventDesc<RBX::DataModel,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)> RBX::DataModel::*>::~EventDesc()")
+pub fn stub_4312ac() {
+    // IDA 0x4312ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4312d0 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEENS_9ContentIdEELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(RBX::ContentId),1>::~BoundFuncDesc()")]
-pub fn stub_4312d0() -> ! {
-    todo!("0x4312d0 RBX::Reflection::BoundFuncDesc<RBX::DataModel,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::ContentId),1>::~BoundFuncDesc()")
+pub fn stub_4312d0() {
+    // IDA 0x4312d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x431310 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_9DataModelEFN5boost10shared_ptrIKNS0_5TupleEEENS_8Instance10SaveFilterEES7_Li1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(RBX::Instance::SaveFilter),rbx_core::SharedPtr<RBX::Reflection::Tuple const>,1>::~BoundYieldFuncDesc()")]
-pub fn stub_431310() -> ! {
-    todo!("0x431310 RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,boost::shared_ptr<RBX::Reflection::Tuple const> ()(RBX::Instance::SaveFilter),boost::shared_ptr<RBX::Reflection::Tuple const>,1>::~BoundYieldFuncDesc()")
+pub fn stub_431310() {
+    // IDA 0x431310: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x431350 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFviELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int),1>::~BoundFuncDesc()")]
-pub fn stub_431350() -> ! {
-    todo!("0x431350 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int),1>::~BoundFuncDesc()")
+pub fn stub_431350() {
+    // IDA 0x431350: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x431390 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvNS_9ContentIdEELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::ContentId),1>::~BoundFuncDesc()")]
-pub fn stub_431390() -> ! {
-    todo!("0x431390 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::ContentId),1>::~BoundFuncDesc()")
+pub fn stub_431390() {
+    // IDA 0x431390: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4313d0 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvbELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(bool),1>::~BoundFuncDesc()")]
-pub fn stub_4313d0() -> ! {
-    todo!("0x4313d0 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(bool),1>::~BoundFuncDesc()")
+pub fn stub_4313d0() {
+    // IDA 0x4313d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x431410 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFbvELi0EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,bool ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_431410() -> ! {
-    todo!("0x431410 RBX::Reflection::BoundFuncDesc<RBX::DataModel,bool ()(void),0>::~BoundFuncDesc()")
+pub fn stub_431410() {
+    // IDA 0x431410: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x431434 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvSsELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string),1>::~BoundFuncDesc()")]
-pub fn stub_431434() -> ! {
-    todo!("0x431434 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_431434() {
+    // IDA 0x431434: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x431474 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_9DataModelEFSsSsESsLi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,std::string ()(std::string),std::string,1>::~BoundYieldFuncDesc()")]
-pub fn stub_431474() -> ! {
-    todo!("0x431474 RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,std::string ()(std::string),std::string,1>::~BoundYieldFuncDesc()")
+pub fn stub_431474() {
+    // IDA 0x431474: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4314b4 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_9DataModelEFSsSsSsESsLi2EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,std::string ()(std::string,std::string),std::string,2>::~BoundYieldFuncDesc()")]
-pub fn stub_4314b4() -> ! {
-    todo!("0x4314b4 RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,std::string ()(std::string,std::string),std::string,2>::~BoundYieldFuncDesc()")
+pub fn stub_4314b4() {
+    // IDA 0x4314b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

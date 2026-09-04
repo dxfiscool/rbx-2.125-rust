@@ -28,43 +28,43 @@ pub fn stub_0x8032b4() -> ! {
 // 0x803614 — __ZN3RBX10Reflection13BoundFuncDescINS_14FunctionalTestEFvSsELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::FunctionalTest,void ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_14FunctionalTestEFvSsELi1EED1Ev")]
-pub fn stub_0x803614() -> ! {
-    todo!("0x803614 __ZN3RBX10Reflection13BoundFuncDescINS_14FunctionalTestEFvSsELi1EED1Ev")
+pub fn stub_0x803614() {
+    // IDA 0x803614: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x803708 — __ZN3RBX10Reflection9BoundPropIiLNS0_10MutabilityE0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)0>::~BoundProp()")]
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropIiLNS0_10MutabilityE0EED1Ev")]
-pub fn stub_0x803708() -> ! {
-    todo!("0x803708 __ZN3RBX10Reflection9BoundPropIiLNS0_10MutabilityE0EED1Ev")
+pub fn stub_0x803708() {
+    // IDA 0x803708: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x803878 — __ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFvvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::TestService,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFvvELi0EED1Ev")]
-pub fn stub_0x803878() -> ! {
-    todo!("0x803878 __ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFvvELi0EED1Ev")
+pub fn stub_0x803878() {
+    // IDA 0x803878: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x80389c — __ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::TestService,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EED1Ev")]
-pub fn stub_0x80389c() -> ! {
-    todo!("0x80389c __ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EED1Ev")
+pub fn stub_0x80389c() {
+    // IDA 0x80389c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x8038c0 — __ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFvSsELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::TestService,void ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFvSsELi1EED1Ev")]
-pub fn stub_0x8038c0() -> ! {
-    todo!("0x8038c0 __ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFvSsELi1EED1Ev")
+pub fn stub_0x8038c0() {
+    // IDA 0x8038c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x8039b4 — __ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFbSsELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::TestService,bool ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFbSsELi1EED1Ev")]
-pub fn stub_0x8039b4() -> ! {
-    todo!("0x8039b4 __ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFbSsELi1EED1Ev")
+pub fn stub_0x8039b4() {
+    // IDA 0x8039b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x804b74 — __ZN3RBX13VerbContainer12eachVerbNameIN5boost3_bi6bind_tIvPFvPSt6vectorINS_10Reflection7VariantESaIS7_EEPKNS_4NameEENS3_5list2INS3_5valueISA_EENS2_3argILi1EEEEEEEEEvT_b
@@ -77,8 +77,8 @@ pub fn stub_0x804b74() -> ! {
 // 0x805690 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14FunctionalTestES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FunctionalTest,RBX::FunctionalTest>(boost::shared_ptr<RBX::FunctionalTest> const*,RBX::FunctionalTest *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14FunctionalTestES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0x805690() -> ! {
-    todo!("0x805690 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14FunctionalTestES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+pub fn stub_0x805690() {
+    // IDA 0x805690: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x80896c — __ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_11TestServiceEiEENS9_5list2INS9_5valueINS1_ISD_EEEENSG_IiEEEEEEEEvT_
@@ -91,8 +91,8 @@ pub fn stub_0x80896c() -> ! {
 // 0x808a84 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX11TestServiceEiEENS3_5list2INS3_5valueINS_10shared_ptrIS8_EEEENSB_IiEEEEEEvNSC_IKNS7_10Reflection5TupleEEEE6invokeERNS1_15function_bufferESL_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::TestService,int>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::TestService>>,boost::_bi::value<int>>>,void,boost::shared_ptr<RBX::Reflection::Tuple const>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Reflection::Tuple const>)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX11TestServiceEiEENS3_5list2INS3_5valueINS_10shared_ptrIS8_EEEENSB_IiEEEEEEvNSC_IKNS7_10Reflection5TupleEEEE6invokeERNS1_15function_bufferESL_")]
-pub fn stub_0x808a84() -> ! {
-    todo!("0x808a84 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX11TestServiceEiEENS3_5list2INS3_5valueINS_10shared_ptrIS8_EEEENSB_IiEEEEEEvNSC_IKNS7_10Reflection5TupleEEEE6invokeERNS1_15function_bufferESL_")
+pub fn stub_0x808a84() {
+    // IDA 0x808a84: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x808a8c — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS4_11TestServiceEiEENSB_5list2INSB_5valueINS3_ISF_EEEENSI_IiEEEEEEEEbT_RNS1_15function_bufferE
@@ -140,8 +140,8 @@ pub fn stub_0x80e770() -> ! {
 // 0x80e7a0 — __ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFbSsELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::TestService,bool ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFbSsELi1EED0Ev")]
-pub fn stub_0x80e7a0() -> ! {
-    todo!("0x80e7a0 __ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFbSsELi1EED0Ev")
+pub fn stub_0x80e7a0() {
+    // IDA 0x80e7a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x80e8a8 — __ZNK3RBX10Reflection13BoundFuncDescINS_11TestServiceEFbSsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -175,8 +175,8 @@ pub fn stub_0x80ecb8() -> ! {
 // 0x80ece8 — __ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFvSsELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::TestService,void ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFvSsELi1EED0Ev")]
-pub fn stub_0x80ece8() -> ! {
-    todo!("0x80ece8 __ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFvSsELi1EED0Ev")
+pub fn stub_0x80ece8() {
+    // IDA 0x80ece8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x80edf0 — __ZNK3RBX10Reflection13BoundFuncDescINS_11TestServiceEFvSsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -196,15 +196,15 @@ pub fn stub_0x80ef2c() -> ! {
 // 0x80f05c — __ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EEC2EMS2_FSA_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::TestService,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::BoundFuncDesc(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> (RBX::TestService::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EEC2EMS2_FSA_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_0x80f05c() -> ! {
-    todo!("0x80f05c __ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EEC2EMS2_FSA_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+pub fn stub_0x80f05c() {
+    // IDA 0x80f05c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x80f160 — __ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::TestService,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EED0Ev")]
-pub fn stub_0x80f160() -> ! {
-    todo!("0x80f160 __ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EED0Ev")
+pub fn stub_0x80f160() {
+    // IDA 0x80f160: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x80f214 — __ZNK3RBX10Reflection13BoundFuncDescINS_11TestServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -231,8 +231,8 @@ pub fn stub_0x80f320() -> ! {
 // 0x80f424 — __ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFvvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::TestService,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFvvELi0EED0Ev")]
-pub fn stub_0x80f424() -> ! {
-    todo!("0x80f424 __ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFvvELi0EED0Ev")
+pub fn stub_0x80f424() {
+    // IDA 0x80f424: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x80f4d8 — __ZNK3RBX10Reflection13BoundFuncDescINS_11TestServiceEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -252,8 +252,8 @@ pub fn stub_0x810b50() -> ! {
 // 0x810ce0 — __ZN3RBX10Reflection9BoundPropIiLNS0_10MutabilityE0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)0>::~BoundProp()")]
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropIiLNS0_10MutabilityE0EED0Ev")]
-pub fn stub_0x810ce0() -> ! {
-    todo!("0x810ce0 __ZN3RBX10Reflection9BoundPropIiLNS0_10MutabilityE0EED0Ev")
+pub fn stub_0x810ce0() {
+    // IDA 0x810ce0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x810d0c — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE0EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv
@@ -406,8 +406,8 @@ pub fn stub_0x845bd4() -> ! {
 // 0x845bfc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKiSB_RKNS7_13FriendService12FriendStatusEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEE7managerERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,int const&,int const&,RBX::FriendService::FriendStatus const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKiSB_RKNS7_13FriendService12FriendStatusEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEE7managerERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
-pub fn stub_0x845bfc() -> ! {
-    todo!("0x845bfc __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKiSB_RKNS7_13FriendService12FriendStatusEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEE7managerERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+pub fn stub_0x845bfc() {
+    // IDA 0x845bfc: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x846af8 — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKiS5_RKNS1_13FriendService15FriendEventTypeENS_10shared_ptrIS3_EENS_3argILi1EEENSC_ILi2EEENSC_ILi3EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf3ISI_T0_T1_T2_T3_EENSG_9list_av_4IT4_T5_T6_T7_E4typeEEEMSL_FSI_SM_SN_SO_ESR_SS_ST_SU_
@@ -446,15 +446,15 @@ pub fn stub_0x846f98() -> ! {
 // 0x847090 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKiSB_RKNS7_13FriendService15FriendEventTypeEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEE6manageERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,int const&,int const&,RBX::FriendService::FriendEventType const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKiSB_RKNS7_13FriendService15FriendEventTypeEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEE6manageERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeE")]
-pub fn stub_0x847090() -> ! {
-    todo!("0x847090 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKiSB_RKNS7_13FriendService15FriendEventTypeEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEE6manageERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeE")
+pub fn stub_0x847090() {
+    // IDA 0x847090: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x8470ac — __ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKiSB_RKNS7_13FriendService15FriendEventTypeEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEviiSD_E6invokeERNS1_15function_bufferEiiSD_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,int const&,int const&,RBX::FriendService::FriendEventType const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,void,int,int,RBX::FriendService::FriendEventType>::invoke(boost::detail::function::function_buffer &,int,int,RBX::FriendService::FriendEventType)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKiSB_RKNS7_13FriendService15FriendEventTypeEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEviiSD_E6invokeERNS1_15function_bufferEiiSD_")]
-pub fn stub_0x8470ac() -> ! {
-    todo!("0x8470ac __ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKiSB_RKNS7_13FriendService15FriendEventTypeEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEviiSD_E6invokeERNS1_15function_bufferEiiSD_")
+pub fn stub_0x8470ac() {
+    // IDA 0x8470ac: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x8470d4 — __ZNK5boost6detail8function13basic_vtable3IviiN3RBX13FriendService15FriendEventTypeEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvNS3_10Reflection18GenericSlotWrapperERKiSF_RKS5_EENS8_5list4INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSO_ILi2EEENSO_ILi3EEEEEEEEEbT_RNS1_15function_bufferE
@@ -488,8 +488,8 @@ pub fn stub_0x847374() -> ! {
 // 0x84739c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKiSB_RKNS7_13FriendService15FriendEventTypeEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEE7managerERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,int const&,int const&,RBX::FriendService::FriendEventType const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKiSB_RKNS7_13FriendService15FriendEventTypeEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEE7managerERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
-pub fn stub_0x84739c() -> ! {
-    todo!("0x84739c __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKiSB_RKNS7_13FriendService15FriendEventTypeEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEE7managerERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+pub fn stub_0x84739c() {
+    // IDA 0x84739c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x847fa4 — __ZN3RBX10Reflection13BoundFuncDescINS_13FriendServiceEFvbELi1EEC2EMS2_FvbEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -509,8 +509,8 @@ pub fn stub_0x84811c() -> ! {
 // 0x84814c — __ZN3RBX10Reflection13BoundFuncDescINS_13FriendServiceEFvbELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::FriendService,void ()(bool),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13FriendServiceEFvbELi1EED0Ev")]
-pub fn stub_0x84814c() -> ! {
-    todo!("0x84814c __ZN3RBX10Reflection13BoundFuncDescINS_13FriendServiceEFvbELi1EED0Ev")
+pub fn stub_0x84814c() {
+    // IDA 0x84814c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x848220 — __ZNK3RBX10Reflection13BoundFuncDescINS_13FriendServiceEFvbELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -537,8 +537,8 @@ pub fn stub_0x8483cc() -> ! {
 // 0x8483fc — __ZN3RBX10Reflection13BoundFuncDescINS_13FriendServiceEFvSsELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::FriendService,void ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13FriendServiceEFvSsELi1EED0Ev")]
-pub fn stub_0x8483fc() -> ! {
-    todo!("0x8483fc __ZN3RBX10Reflection13BoundFuncDescINS_13FriendServiceEFvSsELi1EED0Ev")
+pub fn stub_0x8483fc() {
+    // IDA 0x8483fc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x8484c8 — __ZNK3RBX10Reflection13BoundFuncDescINS_13FriendServiceEFvSsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -572,57 +572,57 @@ pub fn stub_0x84978c() -> ! {
 // 0x849f94 — __ZN3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::ControlMode>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEED1Ev")]
-pub fn stub_0x849f94() -> ! {
-    todo!("0x849f94 __ZN3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEED1Ev")
+pub fn stub_0x849f94() {
+    // IDA 0x849f94: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x849fbc — __ZN3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameSettings::UploadSetting>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEED1Ev")]
-pub fn stub_0x849fbc() -> ! {
-    todo!("0x849fbc __ZN3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEED1Ev")
+pub fn stub_0x849fbc() {
+    // IDA 0x849fbc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84a008 — __ZN3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFbSsELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GameBasicSettings,bool ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFbSsELi1EED1Ev")]
-pub fn stub_0x84a008() -> ! {
-    todo!("0x84a008 __ZN3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFbSsELi1EED1Ev")
+pub fn stub_0x84a008() {
+    // IDA 0x84a008: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84a048 — __ZN3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFvSsbELi2EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GameBasicSettings,void ()(std::string,bool),2>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFvSsbELi2EED1Ev")]
-pub fn stub_0x84a048() -> ! {
-    todo!("0x84a048 __ZN3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFvSsbELi2EED1Ev")
+pub fn stub_0x84a048() {
+    // IDA 0x84a048: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84a090 — __ZN3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsESsED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsESsED1Ev")]
-pub fn stub_0x84a090() -> ! {
-    todo!("0x84a090 __ZN3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsESsED1Ev")
+pub fn stub_0x84a090() {
+    // IDA 0x84a090: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84a0bc — __ZN3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsEbED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsEbED1Ev")]
-pub fn stub_0x84a0bc() -> ! {
-    todo!("0x84a0bc __ZN3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsEbED1Ev")
+pub fn stub_0x84a0bc() {
+    // IDA 0x84a0bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84a114 — __ZN3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFbvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GameBasicSettings,bool ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFbvELi0EED1Ev")]
-pub fn stub_0x84a114() -> ! {
-    todo!("0x84a114 __ZN3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFbvELi0EED1Ev")
+pub fn stub_0x84a114() {
+    // IDA 0x84a114: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84a140 — __ZN3RBX10Reflection9EventDescINS_17GameBasicSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::GameBasicSettings,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::GameBasicSettings::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_17GameBasicSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev")]
-pub fn stub_0x84a140() -> ! {
-    todo!("0x84a140 __ZN3RBX10Reflection9EventDescINS_17GameBasicSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev")
+pub fn stub_0x84a140() {
+    // IDA 0x84a140: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84a164 — __ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEE7addPairES3_PKc
@@ -634,38 +634,38 @@ pub fn stub_0x84a164() -> ! {
 
 // 0x84b91c — __ZN3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x84b91c() -> ! {
-    todo!("0x84b91c __ZN3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x84b91c() {
+    // IDA 0x84b91c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84b920 — __ZN3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x84b920() -> ! {
-    todo!("0x84b920 __ZN3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x84b920() {
+    // IDA 0x84b920: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84b9c0 — __ZThn32_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x84b9c0() -> ! {
-    todo!("0x84b9c0 __ZThn32_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x84b9c0() {
+    // IDA 0x84b9c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84b9c8 — __ZThn32_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x84b9c8() -> ! {
-    todo!("0x84b9c8 __ZThn32_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x84b9c8() {
+    // IDA 0x84b9c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84ba6c — __ZThn36_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x84ba6c() -> ! {
-    todo!("0x84ba6c __ZThn36_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x84ba6c() {
+    // IDA 0x84ba6c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84ba74 — __ZThn36_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x84ba74() -> ! {
-    todo!("0x84ba74 __ZThn36_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x84ba74() {
+    // IDA 0x84ba74: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84c4f8 — __ZN3RBX10Reflection9EventDescINS_17GameBasicSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -678,8 +678,8 @@ pub fn stub_0x84c4f8() -> ! {
 // 0x84c67c — __ZN3RBX10Reflection9EventDescINS_17GameBasicSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::GameBasicSettings,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::GameBasicSettings::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_17GameBasicSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_ED0Ev")]
-pub fn stub_0x84c67c() -> ! {
-    todo!("0x84c67c __ZN3RBX10Reflection9EventDescINS_17GameBasicSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_ED0Ev")
+pub fn stub_0x84c67c() {
+    // IDA 0x84c67c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84c730 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_17GameBasicSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE

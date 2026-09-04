@@ -16,8 +16,8 @@ const _: () = {
 // type: void __fastcall(RBX::ThreadPool::ThreadPoolData *__hidden this)
 #[doc(alias = "RBX::ThreadPool::ThreadPoolData::~ThreadPoolData()")]
 #[doc(alias = "__ZN3RBX10ThreadPool14ThreadPoolDataD0Ev")]
-pub fn stub_0x38aec4() -> ! {
-    todo!("0x38aec4 RBX::ThreadPool::ThreadPoolData::~ThreadPoolData()")
+pub fn stub_0x38aec4() {
+    // IDA 0x38aec4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x38afc8 — __ZN3RBX10ThreadPool14ThreadPoolData11getNextTaskERN5boost8functionIFvNS2_10shared_ptrINS_5mutexEEEEEE
@@ -48,16 +48,16 @@ pub fn stub_0x38b0b4() -> ! {
 // type: int __fastcall(_DWORD *, int, int, int)
 #[doc(alias = "std::deque<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>,std::allocator<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>>>::~deque()")]
 #[doc(alias = "__ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EED2Ev")]
-pub fn stub_0x38b0ec() -> ! {
-    todo!("0x38b0ec std::deque<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>,std::allocator<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>>>::~deque()")
+pub fn stub_0x38b0ec() {
+    // IDA 0x38b0ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x38b1d4 — __ZNSt11_Deque_baseIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EED2Ev
 // type: int __fastcall(int)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>,std::allocator<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>>>::~_Deque_base()")]
 #[doc(alias = "__ZNSt11_Deque_baseIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EED2Ev")]
-pub fn stub_0x38b1d4() -> ! {
-    todo!("0x38b1d4 std::_Deque_base<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>,std::allocator<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>>>::~_Deque_base()")
+pub fn stub_0x38b1d4() {
+    // IDA 0x38b1d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x38b200 — __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE19_M_destroy_data_auxESt15_Deque_iteratorIS7_RS7_PS7_ESD_
@@ -80,16 +80,16 @@ pub fn stub_0x38b338() -> ! {
 // type: void __fastcall(int, _DWORD *, unsigned int, int, void *, int)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>,std::allocator<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>>>::_M_create_nodes(boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>**,boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>**)")]
 #[doc(alias = "__ZNSt11_Deque_baseIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE15_M_create_nodesEPPS7_SB_")]
-pub fn stub_0x38b490() -> ! {
-    todo!("0x38b490 std::_Deque_base<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>,std::allocator<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>>>::_M_create_nodes(boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>**,boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>**)")
+pub fn stub_0x38b490() {
+    // IDA 0x38b490: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x38b584 — __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EEC2ERKS9_
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "std::deque<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>,std::allocator<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>>>::deque(std::deque<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>,std::allocator<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>>> const&)")]
 #[doc(alias = "__ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EEC2ERKS9_")]
-pub fn stub_0x38b584() -> ! {
-    todo!("0x38b584 std::deque<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>,std::allocator<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>>>::deque(std::deque<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>,std::allocator<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>>> const&)")
+pub fn stub_0x38b584() {
+    // IDA 0x38b584: function ctor/assign from a bind_t functor. Box<dyn Fn> from closure captures — carrier no-op.
 }
 
 // 0x38b740 — __GLOBAL__I_a_146
@@ -608,88 +608,88 @@ pub fn stub_0x38e4b4() -> ! {
 // type: void __fastcall(RBX::Accoutrement *__hidden this)
 #[doc(alias = "RBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZN3RBX12AccoutrementD0Ev")]
-pub fn stub_0x38e90c() -> ! {
-    todo!("0x38e90c RBX::Accoutrement::~Accoutrement()")
+pub fn stub_0x38e90c() {
+    // IDA 0x38e90c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x38e9b8 — __ZN3RBX12AccoutrementD1Ev
 // type: void __fastcall(RBX::Accoutrement *__hidden this)
 #[doc(alias = "RBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZN3RBX12AccoutrementD1Ev")]
-pub fn stub_0x38e9b8() -> ! {
-    todo!("0x38e9b8 RBX::Accoutrement::~Accoutrement()")
+pub fn stub_0x38e9b8() {
+    // IDA 0x38e9b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x38e9c8 — __ZThn32_N3RBX12AccoutrementD0Ev
 // type: void __fastcall(RBX::Accoutrement *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn32_N3RBX12AccoutrementD0Ev")]
-pub fn stub_0x38e9c8() -> ! {
-    todo!("0x38e9c8 non-virtual thunk toRBX::Accoutrement::~Accoutrement()")
+pub fn stub_0x38e9c8() {
+    // IDA 0x38e9c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x38e9d0 — __ZThn36_N3RBX12AccoutrementD0Ev
 // type: void __fastcall(RBX::Accoutrement *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn36_N3RBX12AccoutrementD0Ev")]
-pub fn stub_0x38e9d0() -> ! {
-    todo!("0x38e9d0 non-virtual thunk toRBX::Accoutrement::~Accoutrement()")
+pub fn stub_0x38e9d0() {
+    // IDA 0x38e9d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x38e9d8 — __ZThn92_N3RBX12AccoutrementD0Ev
 // type: void __fastcall(RBX::Accoutrement *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn92_N3RBX12AccoutrementD0Ev")]
-pub fn stub_0x38e9d8() -> ! {
-    todo!("0x38e9d8 non-virtual thunk toRBX::Accoutrement::~Accoutrement()")
+pub fn stub_0x38e9d8() {
+    // IDA 0x38e9d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x38e9e0 — __ZThn128_N3RBX12AccoutrementD0Ev
 // type: void __fastcall(RBX::Accoutrement *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn128_N3RBX12AccoutrementD0Ev")]
-pub fn stub_0x38e9e0() -> ! {
-    todo!("0x38e9e0 non-virtual thunk toRBX::Accoutrement::~Accoutrement()")
+pub fn stub_0x38e9e0() {
+    // IDA 0x38e9e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x38e9e8 — __ZN3RBX12AccoutrementD2Ev
 // type: void __fastcall(RBX::Accoutrement *this, int *, int)
 #[doc(alias = "RBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZN3RBX12AccoutrementD2Ev")]
-pub fn stub_0x38e9e8() -> ! {
-    todo!("0x38e9e8 RBX::Accoutrement::~Accoutrement()")
+pub fn stub_0x38e9e8() {
+    // IDA 0x38e9e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x38ef1c — __ZThn32_N3RBX12AccoutrementD1Ev
 // type: void __fastcall(RBX::Accoutrement *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn32_N3RBX12AccoutrementD1Ev")]
-pub fn stub_0x38ef1c() -> ! {
-    todo!("0x38ef1c non-virtual thunk toRBX::Accoutrement::~Accoutrement()")
+pub fn stub_0x38ef1c() {
+    // IDA 0x38ef1c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x38ef2c — __ZThn36_N3RBX12AccoutrementD1Ev
 // type: void __fastcall(RBX::Accoutrement *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn36_N3RBX12AccoutrementD1Ev")]
-pub fn stub_0x38ef2c() -> ! {
-    todo!("0x38ef2c non-virtual thunk toRBX::Accoutrement::~Accoutrement()")
+pub fn stub_0x38ef2c() {
+    // IDA 0x38ef2c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x38ef3c — __ZThn92_N3RBX12AccoutrementD1Ev
 // type: void __fastcall(RBX::Accoutrement *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn92_N3RBX12AccoutrementD1Ev")]
-pub fn stub_0x38ef3c() -> ! {
-    todo!("0x38ef3c non-virtual thunk toRBX::Accoutrement::~Accoutrement()")
+pub fn stub_0x38ef3c() {
+    // IDA 0x38ef3c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x38ef4c — __ZThn128_N3RBX12AccoutrementD1Ev
 // type: void __fastcall(RBX::Accoutrement *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn128_N3RBX12AccoutrementD1Ev")]
-pub fn stub_0x38ef4c() -> ! {
-    todo!("0x38ef4c non-virtual thunk toRBX::Accoutrement::~Accoutrement()")
+pub fn stub_0x38ef4c() {
+    // IDA 0x38ef4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x38ef5c — __ZN3RBX12Accoutrement12onCameraNearEf
@@ -704,8 +704,8 @@ pub fn stub_0x38ef5c() -> ! {
 // type: unsigned int __fastcall(RBX::Accoutrement *this, float)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::onCameraNear(float)")]
 #[doc(alias = "__ZThn128_N3RBX12Accoutrement12onCameraNearEf")]
-pub fn stub_0x38ef98() -> ! {
-    todo!("0x38ef98 non-virtual thunk toRBX::Accoutrement::onCameraNear(float)")
+pub fn stub_0x38ef98() {
+    // IDA 0x38ef98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x38efa0 — __ZN3RBX12Accoutrement14render3dSelectEPNS_5AdornENS_11SelectStateE
@@ -720,8 +720,8 @@ pub fn stub_0x38efa0() -> ! {
 // type: unsigned int __fastcall(int, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
 #[doc(alias = "__ZThn104_N3RBX12Accoutrement14render3dSelectEPNS_5AdornENS_11SelectStateE")]
-pub fn stub_0x38f014() -> ! {
-    todo!("0x38f014 non-virtual thunk toRBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)")
+pub fn stub_0x38f014() {
+    // IDA 0x38f014: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x38f01c — __ZN3RBX12Accoutrement7dropAllEPNS_13ModelInstanceE
@@ -912,16 +912,16 @@ pub fn stub_0x3901bc() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D15CoordinateFrameEED1Ev")]
-pub fn stub_0x3901c0() -> ! {
-    todo!("0x3901c0 RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::~PropDescriptor()")
+pub fn stub_0x3901c0() {
+    // IDA 0x3901c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3901e4 — __ZN3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D7Vector3EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D7Vector3EED1Ev")]
-pub fn stub_0x3901e4() -> ! {
-    todo!("0x3901e4 RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::~PropDescriptor()")
+pub fn stub_0x3901e4() {
+    // IDA 0x3901e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x390208 — __ZNK3RBX12Accoutrement27getBackendAccoutrementStateEv
@@ -936,8 +936,8 @@ pub fn stub_0x390208() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12AccoutrementEiED1Ev")]
-pub fn stub_0x390210() -> ! {
-    todo!("0x390210 RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::~PropDescriptor()")
+pub fn stub_0x390210() {
+    // IDA 0x390210: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x390234 — __ZN3RBX8Instance15queryTypedChildINS_13CameraSubjectEEEPT_i

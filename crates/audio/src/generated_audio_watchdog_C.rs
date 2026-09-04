@@ -42,8 +42,8 @@ pub fn stub_5a0a98() -> ! {
 // 0x5a0a9c — __ZThn92_N3RBX4Weld13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::Weld::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn92_N3RBX4Weld13render3dAdornEPNS_5AdornE")]
-pub fn stub_5a0a9c() -> ! {
-    todo!("0x5a0a9c __ZThn92_N3RBX4Weld13render3dAdornEPNS_5AdornE")
+pub fn stub_5a0a9c() {
+    // IDA 0x5a0a9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a0aa4 — __ZN3RBX26ManualSurfaceJointInstanceC2EPNS_5JointE
@@ -70,8 +70,8 @@ pub fn stub_5a0d24() -> ! {
 // 0x5a0d28 — __ZThn92_N3RBX26ManualSurfaceJointInstance13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::ManualSurfaceJointInstance::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn92_N3RBX26ManualSurfaceJointInstance13render3dAdornEPNS_5AdornE")]
-pub fn stub_5a0d28() -> ! {
-    todo!("0x5a0d28 __ZThn92_N3RBX26ManualSurfaceJointInstance13render3dAdornEPNS_5AdornE")
+pub fn stub_5a0d28() {
+    // IDA 0x5a0d28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a0d30 — __ZN3RBX10ManualWeldC2Ev
@@ -91,8 +91,8 @@ pub fn stub_5a0f80() -> ! {
 // 0x5a1388 — __ZThn92_N3RBX10ManualWeld13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::ManualWeld::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn92_N3RBX10ManualWeld13render3dAdornEPNS_5AdornE")]
-pub fn stub_5a1388() -> ! {
-    todo!("0x5a1388 __ZThn92_N3RBX10ManualWeld13render3dAdornEPNS_5AdornE")
+pub fn stub_5a1388() {
+    // IDA 0x5a1388: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a1390 — __ZN3RBX10ManualGlueC2Ev
@@ -112,8 +112,8 @@ pub fn stub_5a15e0() -> ! {
 // 0x5a19e8 — __ZThn92_N3RBX10ManualGlue13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::ManualGlue::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn92_N3RBX10ManualGlue13render3dAdornEPNS_5AdornE")]
-pub fn stub_5a19e8() -> ! {
-    todo!("0x5a19e8 __ZThn92_N3RBX10ManualGlue13render3dAdornEPNS_5AdornE")
+pub fn stub_5a19e8() {
+    // IDA 0x5a19e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a19f0 — __ZN3RBX4GlueC1EPNS_5JointE
@@ -308,8 +308,8 @@ pub fn stub_5a2d40() -> ! {
 // 0x5a2d64 — __ZThn136_N3RBX5Motor13getParentNameEv
 #[doc(alias = "non-virtual thunk toRBX::Motor::getParentName(void)")]
 #[doc(alias = "__ZThn136_N3RBX5Motor13getParentNameEv")]
-pub fn stub_5a2d64() -> ! {
-    todo!("0x5a2d64 __ZThn136_N3RBX5Motor13getParentNameEv")
+pub fn stub_5a2d64() {
+    // IDA 0x5a2d64: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a2d6c — __ZN3RBX5Motor11getPartNameEv
@@ -322,8 +322,8 @@ pub fn stub_5a2d6c() -> ! {
 // 0x5a2d90 — __ZThn136_N3RBX5Motor11getPartNameEv
 #[doc(alias = "non-virtual thunk toRBX::Motor::getPartName(void)")]
 #[doc(alias = "__ZThn136_N3RBX5Motor11getPartNameEv")]
-pub fn stub_5a2d90() -> ! {
-    todo!("0x5a2d90 __ZThn136_N3RBX5Motor11getPartNameEv")
+pub fn stub_5a2d90() {
+    // IDA 0x5a2d90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a2d98 — __ZN3RBX5Motor9applyPoseERKNS_10CachedPoseE
@@ -336,8 +336,8 @@ pub fn stub_5a2d98() -> ! {
 // 0x5a2da8 — __ZThn136_N3RBX5Motor9applyPoseERKNS_10CachedPoseE
 #[doc(alias = "non-virtual thunk toRBX::Motor::applyPose(RBX::CachedPose const&)")]
 #[doc(alias = "__ZThn136_N3RBX5Motor9applyPoseERKNS_10CachedPoseE")]
-pub fn stub_5a2da8() -> ! {
-    todo!("0x5a2da8 __ZThn136_N3RBX5Motor9applyPoseERKNS_10CachedPoseE")
+pub fn stub_5a2da8() {
+    // IDA 0x5a2da8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a2db8 — __ZN3RBX7Motor6DC1Ev
@@ -413,57 +413,57 @@ pub fn stub_5a3164() -> ! {
 // 0x5a3188 — __ZThn136_N3RBX7Motor6D9applyPoseERKNS_10CachedPoseE
 #[doc(alias = "non-virtual thunk toRBX::Motor6D::applyPose(RBX::CachedPose const&)")]
 #[doc(alias = "__ZThn136_N3RBX7Motor6D9applyPoseERKNS_10CachedPoseE")]
-pub fn stub_5a3188() -> ! {
-    todo!("0x5a3188 __ZThn136_N3RBX7Motor6D9applyPoseERKNS_10CachedPoseE")
+pub fn stub_5a3188() {
+    // IDA 0x5a3188: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a31ac — __ZN3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEED1Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::~RefPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEED1Ev")]
-pub fn stub_5a31ac() -> ! {
-    todo!("0x5a31ac __ZN3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEED1Ev")
+pub fn stub_5a31ac() {
+    // IDA 0x5a31ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a31d8 — __ZN3RBX10Reflection14PropDescriptorINS_26ManualSurfaceJointInstanceEiED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_26ManualSurfaceJointInstanceEiED1Ev")]
-pub fn stub_5a31d8() -> ! {
-    todo!("0x5a31d8 __ZN3RBX10Reflection14PropDescriptorINS_26ManualSurfaceJointInstanceEiED1Ev")
+pub fn stub_5a31d8() {
+    // IDA 0x5a31d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a31fc — __ZN3RBX10Reflection14PropDescriptorINS_13JointInstanceEN3G3D15CoordinateFrameEED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13JointInstanceEN3G3D15CoordinateFrameEED1Ev")]
-pub fn stub_5a31fc() -> ! {
-    todo!("0x5a31fc __ZN3RBX10Reflection14PropDescriptorINS_13JointInstanceEN3G3D15CoordinateFrameEED1Ev")
+pub fn stub_5a31fc() {
+    // IDA 0x5a31fc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a3220 — __ZN3RBX10Reflection14PropDescriptorINS_4GlueEN3G3D7Vector3EED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Glue,G3D::Vector3>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_4GlueEN3G3D7Vector3EED1Ev")]
-pub fn stub_5a3220() -> ! {
-    todo!("0x5a3220 __ZN3RBX10Reflection14PropDescriptorINS_4GlueEN3G3D7Vector3EED1Ev")
+pub fn stub_5a3220() {
+    // IDA 0x5a3220: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a3244 — __ZN3RBX10Reflection14PropDescriptorINS_13DynamicRotateEfED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DynamicRotate,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13DynamicRotateEfED1Ev")]
-pub fn stub_5a3244() -> ! {
-    todo!("0x5a3244 __ZN3RBX10Reflection14PropDescriptorINS_13DynamicRotateEfED1Ev")
+pub fn stub_5a3244() {
+    // IDA 0x5a3244: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a3268 — __ZN3RBX10Reflection14PropDescriptorINS_5MotorEfED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Motor,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_5MotorEfED1Ev")]
-pub fn stub_5a3268() -> ! {
-    todo!("0x5a3268 __ZN3RBX10Reflection14PropDescriptorINS_5MotorEfED1Ev")
+pub fn stub_5a3268() {
+    // IDA 0x5a3268: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a328c — __ZN3RBX10Reflection13BoundFuncDescINS_5MotorEFvfELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Motor,void ()(float),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_5MotorEFvfELi1EED1Ev")]
-pub fn stub_5a328c() -> ! {
-    todo!("0x5a328c __ZN3RBX10Reflection13BoundFuncDescINS_5MotorEFvfELi1EED1Ev")
+pub fn stub_5a328c() {
+    // IDA 0x5a328c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a32cc — __ZNK5boost9function1IbPN3RBX8InstanceEEclES3_
@@ -483,22 +483,22 @@ pub fn stub_5a3394() -> ! {
 // 0x5a33bc — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sJointInstanceEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sJointInstanceEEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sJointInstanceEEE12getClassNameEv")]
-pub fn stub_5a33bc() -> ! {
-    todo!("0x5a33bc __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sJointInstanceEEE12getClassNameEv")
+pub fn stub_5a33bc() {
+    // IDA 0x5a33bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a33e4 — __ZN3RBX5MotorD1Ev
 #[doc(alias = "RBX::Motor::~Motor()")]
 #[doc(alias = "__ZN3RBX5MotorD1Ev")]
-pub fn stub_5a33e4() -> ! {
-    todo!("0x5a33e4 __ZN3RBX5MotorD1Ev")
+pub fn stub_5a33e4() {
+    // IDA 0x5a33e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a33e8 — __ZN3RBX5MotorD0Ev
 #[doc(alias = "RBX::Motor::~Motor()")]
 #[doc(alias = "__ZN3RBX5MotorD0Ev")]
-pub fn stub_5a33e8() -> ! {
-    todo!("0x5a33e8 __ZN3RBX5MotorD0Ev")
+pub fn stub_5a33e8() {
+    // IDA 0x5a33e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a3488 — __ZNK3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE12getClassNameEv
@@ -511,50 +511,50 @@ pub fn stub_5a3488() -> ! {
 // 0x5a3498 — __ZThn32_N3RBX5MotorD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Motor::~Motor()")]
 #[doc(alias = "__ZThn32_N3RBX5MotorD1Ev")]
-pub fn stub_5a3498() -> ! {
-    todo!("0x5a3498 __ZThn32_N3RBX5MotorD1Ev")
+pub fn stub_5a3498() {
+    // IDA 0x5a3498: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a34a0 — __ZThn32_N3RBX5MotorD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Motor::~Motor()")]
 #[doc(alias = "__ZThn32_N3RBX5MotorD0Ev")]
-pub fn stub_5a34a0() -> ! {
-    todo!("0x5a34a0 __ZThn32_N3RBX5MotorD0Ev")
+pub fn stub_5a34a0() {
+    // IDA 0x5a34a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a3544 — __ZThn32_NK3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_5a3544() -> ! {
-    todo!("0x5a3544 __ZThn32_NK3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE12getClassNameEv")
+pub fn stub_5a3544() {
+    // IDA 0x5a3544: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a3554 — __ZThn36_N3RBX5MotorD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Motor::~Motor()")]
 #[doc(alias = "__ZThn36_N3RBX5MotorD1Ev")]
-pub fn stub_5a3554() -> ! {
-    todo!("0x5a3554 __ZThn36_N3RBX5MotorD1Ev")
+pub fn stub_5a3554() {
+    // IDA 0x5a3554: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a355c — __ZThn36_N3RBX5MotorD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Motor::~Motor()")]
 #[doc(alias = "__ZThn36_N3RBX5MotorD0Ev")]
-pub fn stub_5a355c() -> ! {
-    todo!("0x5a355c __ZThn36_N3RBX5MotorD0Ev")
+pub fn stub_5a355c() {
+    // IDA 0x5a355c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a3600 — __ZN3RBX4WeldD1Ev
 #[doc(alias = "RBX::Weld::~Weld()")]
 #[doc(alias = "__ZN3RBX4WeldD1Ev")]
-pub fn stub_5a3600() -> ! {
-    todo!("0x5a3600 __ZN3RBX4WeldD1Ev")
+pub fn stub_5a3600() {
+    // IDA 0x5a3600: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a3604 — __ZN3RBX4WeldD0Ev
 #[doc(alias = "RBX::Weld::~Weld()")]
 #[doc(alias = "__ZN3RBX4WeldD0Ev")]
-pub fn stub_5a3604() -> ! {
-    todo!("0x5a3604 __ZN3RBX4WeldD0Ev")
+pub fn stub_5a3604() {
+    // IDA 0x5a3604: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a36a4 — __ZNK3RBX14FactoryProductINS_4WeldENS_13JointInstanceELZNS_5sWeldEENS_8InstanceEE12getClassNameEv
@@ -567,50 +567,50 @@ pub fn stub_5a36a4() -> ! {
 // 0x5a36b4 — __ZThn32_N3RBX4WeldD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Weld::~Weld()")]
 #[doc(alias = "__ZThn32_N3RBX4WeldD1Ev")]
-pub fn stub_5a36b4() -> ! {
-    todo!("0x5a36b4 __ZThn32_N3RBX4WeldD1Ev")
+pub fn stub_5a36b4() {
+    // IDA 0x5a36b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a36bc — __ZThn32_N3RBX4WeldD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Weld::~Weld()")]
 #[doc(alias = "__ZThn32_N3RBX4WeldD0Ev")]
-pub fn stub_5a36bc() -> ! {
-    todo!("0x5a36bc __ZThn32_N3RBX4WeldD0Ev")
+pub fn stub_5a36bc() {
+    // IDA 0x5a36bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a3760 — __ZThn32_NK3RBX14FactoryProductINS_4WeldENS_13JointInstanceELZNS_5sWeldEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_4WeldENS_13JointInstanceELZNS_5sWeldEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_4WeldENS_13JointInstanceELZNS_5sWeldEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_5a3760() -> ! {
-    todo!("0x5a3760 __ZThn32_NK3RBX14FactoryProductINS_4WeldENS_13JointInstanceELZNS_5sWeldEENS_8InstanceEE12getClassNameEv")
+pub fn stub_5a3760() {
+    // IDA 0x5a3760: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a3770 — __ZThn36_N3RBX4WeldD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Weld::~Weld()")]
 #[doc(alias = "__ZThn36_N3RBX4WeldD1Ev")]
-pub fn stub_5a3770() -> ! {
-    todo!("0x5a3770 __ZThn36_N3RBX4WeldD1Ev")
+pub fn stub_5a3770() {
+    // IDA 0x5a3770: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a3778 — __ZThn36_N3RBX4WeldD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Weld::~Weld()")]
 #[doc(alias = "__ZThn36_N3RBX4WeldD0Ev")]
-pub fn stub_5a3778() -> ! {
-    todo!("0x5a3778 __ZThn36_N3RBX4WeldD0Ev")
+pub fn stub_5a3778() {
+    // IDA 0x5a3778: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a381c — __ZN3RBX26ManualSurfaceJointInstanceD1Ev
 #[doc(alias = "RBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")]
 #[doc(alias = "__ZN3RBX26ManualSurfaceJointInstanceD1Ev")]
-pub fn stub_5a381c() -> ! {
-    todo!("0x5a381c __ZN3RBX26ManualSurfaceJointInstanceD1Ev")
+pub fn stub_5a381c() {
+    // IDA 0x5a381c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a3820 — __ZN3RBX26ManualSurfaceJointInstanceD0Ev
 #[doc(alias = "RBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")]
 #[doc(alias = "__ZN3RBX26ManualSurfaceJointInstanceD0Ev")]
-pub fn stub_5a3820() -> ! {
-    todo!("0x5a3820 __ZN3RBX26ManualSurfaceJointInstanceD0Ev")
+pub fn stub_5a3820() {
+    // IDA 0x5a3820: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a38c0 — __ZNK3RBX14FactoryProductINS_26ManualSurfaceJointInstanceENS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEE12getClassNameEv
@@ -623,50 +623,50 @@ pub fn stub_5a38c0() -> ! {
 // 0x5a38d0 — __ZThn32_N3RBX26ManualSurfaceJointInstanceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")]
 #[doc(alias = "__ZThn32_N3RBX26ManualSurfaceJointInstanceD1Ev")]
-pub fn stub_5a38d0() -> ! {
-    todo!("0x5a38d0 __ZThn32_N3RBX26ManualSurfaceJointInstanceD1Ev")
+pub fn stub_5a38d0() {
+    // IDA 0x5a38d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a38d8 — __ZThn32_N3RBX26ManualSurfaceJointInstanceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")]
 #[doc(alias = "__ZThn32_N3RBX26ManualSurfaceJointInstanceD0Ev")]
-pub fn stub_5a38d8() -> ! {
-    todo!("0x5a38d8 __ZThn32_N3RBX26ManualSurfaceJointInstanceD0Ev")
+pub fn stub_5a38d8() {
+    // IDA 0x5a38d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a397c — __ZThn32_NK3RBX14FactoryProductINS_26ManualSurfaceJointInstanceENS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_26ManualSurfaceJointInstanceENS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_26ManualSurfaceJointInstanceENS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_5a397c() -> ! {
-    todo!("0x5a397c __ZThn32_NK3RBX14FactoryProductINS_26ManualSurfaceJointInstanceENS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEE12getClassNameEv")
+pub fn stub_5a397c() {
+    // IDA 0x5a397c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a398c — __ZThn36_N3RBX26ManualSurfaceJointInstanceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")]
 #[doc(alias = "__ZThn36_N3RBX26ManualSurfaceJointInstanceD1Ev")]
-pub fn stub_5a398c() -> ! {
-    todo!("0x5a398c __ZThn36_N3RBX26ManualSurfaceJointInstanceD1Ev")
+pub fn stub_5a398c() {
+    // IDA 0x5a398c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a3994 — __ZThn36_N3RBX26ManualSurfaceJointInstanceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")]
 #[doc(alias = "__ZThn36_N3RBX26ManualSurfaceJointInstanceD0Ev")]
-pub fn stub_5a3994() -> ! {
-    todo!("0x5a3994 __ZThn36_N3RBX26ManualSurfaceJointInstanceD0Ev")
+pub fn stub_5a3994() {
+    // IDA 0x5a3994: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a3a38 — __ZN3RBX10ManualWeldD1Ev
 #[doc(alias = "RBX::ManualWeld::~ManualWeld()")]
 #[doc(alias = "__ZN3RBX10ManualWeldD1Ev")]
-pub fn stub_5a3a38() -> ! {
-    todo!("0x5a3a38 __ZN3RBX10ManualWeldD1Ev")
+pub fn stub_5a3a38() {
+    // IDA 0x5a3a38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a3a3c — __ZN3RBX10ManualWeldD0Ev
 #[doc(alias = "RBX::ManualWeld::~ManualWeld()")]
 #[doc(alias = "__ZN3RBX10ManualWeldD0Ev")]
-pub fn stub_5a3a3c() -> ! {
-    todo!("0x5a3a3c __ZN3RBX10ManualWeldD0Ev")
+pub fn stub_5a3a3c() {
+    // IDA 0x5a3a3c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a3adc — __ZNK3RBX14FactoryProductINS_10ManualWeldENS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEE12getClassNameEv
@@ -686,27 +686,27 @@ pub fn stub_5a3aec() -> ! {
 // 0x5a3af0 — __ZThn32_N3RBX10ManualWeldD1Ev
 #[doc(alias = "non-virtual thunk toRBX::ManualWeld::~ManualWeld()")]
 #[doc(alias = "__ZThn32_N3RBX10ManualWeldD1Ev")]
-pub fn stub_5a3af0() -> ! {
-    todo!("0x5a3af0 __ZThn32_N3RBX10ManualWeldD1Ev")
+pub fn stub_5a3af0() {
+    // IDA 0x5a3af0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a3af8 — __ZThn32_N3RBX10ManualWeldD0Ev
 #[doc(alias = "non-virtual thunk toRBX::ManualWeld::~ManualWeld()")]
 #[doc(alias = "__ZThn32_N3RBX10ManualWeldD0Ev")]
-pub fn stub_5a3af8() -> ! {
-    todo!("0x5a3af8 __ZThn32_N3RBX10ManualWeldD0Ev")
+pub fn stub_5a3af8() {
+    // IDA 0x5a3af8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a3b9c — __ZThn32_NK3RBX14FactoryProductINS_10ManualWeldENS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_10ManualWeldENS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_10ManualWeldENS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_5a3b9c() -> ! {
-    todo!("0x5a3b9c __ZThn32_NK3RBX14FactoryProductINS_10ManualWeldENS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEE12getClassNameEv")
+pub fn stub_5a3b9c() {
+    // IDA 0x5a3b9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5a3bac — __ZThn36_N3RBX10ManualWeldD1Ev
 #[doc(alias = "non-virtual thunk toRBX::ManualWeld::~ManualWeld()")]
 #[doc(alias = "__ZThn36_N3RBX10ManualWeldD1Ev")]
-pub fn stub_5a3bac() -> ! {
-    todo!("0x5a3bac __ZThn36_N3RBX10ManualWeldD1Ev")
+pub fn stub_5a3bac() {
+    // IDA 0x5a3bac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

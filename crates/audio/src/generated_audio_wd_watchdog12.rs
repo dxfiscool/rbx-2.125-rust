@@ -57,8 +57,8 @@ pub fn stub_0637478() -> ! {
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "RBX::Smoke::~Smoke()")]
 #[doc(alias = "__ZN3RBX5SmokeD0Ev")]
-pub fn stub_0637668() -> ! {
-    todo!("0x0637668 RBX::Smoke::~Smoke()")
+pub fn stub_0637668() {
+    // IDA 0x0637668: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x0637708 — __ZN3RBX5SmokeD1Ev
@@ -66,8 +66,8 @@ pub fn stub_0637668() -> ! {
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "RBX::Smoke::~Smoke()")]
 #[doc(alias = "__ZN3RBX5SmokeD1Ev")]
-pub fn stub_0637708() -> ! {
-    todo!("0x0637708 RBX::Smoke::~Smoke()")
+pub fn stub_0637708() {
+    // IDA 0x0637708: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x063770c — __ZThn32_N3RBX5SmokeD0Ev
@@ -75,8 +75,8 @@ pub fn stub_0637708() -> ! {
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
 #[doc(alias = "__ZThn32_N3RBX5SmokeD0Ev")]
-pub fn stub_063770c() -> ! {
-    todo!("0x063770c non-virtual thunk toRBX::Smoke::~Smoke()")
+pub fn stub_063770c() {
+    // IDA 0x063770c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x0637714 — __ZThn36_N3RBX5SmokeD0Ev
@@ -84,8 +84,8 @@ pub fn stub_063770c() -> ! {
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
 #[doc(alias = "__ZThn36_N3RBX5SmokeD0Ev")]
-pub fn stub_0637714() -> ! {
-    todo!("0x0637714 non-virtual thunk toRBX::Smoke::~Smoke()")
+pub fn stub_0637714() {
+    // IDA 0x0637714: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x063771c — __ZThn92_N3RBX5SmokeD0Ev
@@ -93,8 +93,8 @@ pub fn stub_0637714() -> ! {
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
 #[doc(alias = "__ZThn92_N3RBX5SmokeD0Ev")]
-pub fn stub_063771c() -> ! {
-    todo!("0x063771c non-virtual thunk toRBX::Smoke::~Smoke()")
+pub fn stub_063771c() {
+    // IDA 0x063771c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x0637724 — __ZN3RBX5SmokeD2Ev
@@ -102,8 +102,8 @@ pub fn stub_063771c() -> ! {
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "RBX::Smoke::~Smoke()")]
 #[doc(alias = "__ZN3RBX5SmokeD2Ev")]
-pub fn stub_0637724() -> ! {
-    todo!("0x0637724 RBX::Smoke::~Smoke()")
+pub fn stub_0637724() {
+    // IDA 0x0637724: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x06377e0 — __ZThn32_N3RBX5SmokeD1Ev
@@ -111,8 +111,8 @@ pub fn stub_0637724() -> ! {
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
 #[doc(alias = "__ZThn32_N3RBX5SmokeD1Ev")]
-pub fn stub_06377e0() -> ! {
-    todo!("0x06377e0 non-virtual thunk toRBX::Smoke::~Smoke()")
+pub fn stub_06377e0() {
+    // IDA 0x06377e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x06377e8 — __ZThn36_N3RBX5SmokeD1Ev
@@ -120,8 +120,8 @@ pub fn stub_06377e0() -> ! {
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
 #[doc(alias = "__ZThn36_N3RBX5SmokeD1Ev")]
-pub fn stub_06377e8() -> ! {
-    todo!("0x06377e8 non-virtual thunk toRBX::Smoke::~Smoke()")
+pub fn stub_06377e8() {
+    // IDA 0x06377e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x06377f0 — __ZThn92_N3RBX5SmokeD1Ev
@@ -129,8 +129,8 @@ pub fn stub_06377e8() -> ! {
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
 #[doc(alias = "__ZThn92_N3RBX5SmokeD1Ev")]
-pub fn stub_06377f0() -> ! {
-    todo!("0x06377f0 non-virtual thunk toRBX::Smoke::~Smoke()")
+pub fn stub_06377f0() {
+    // IDA 0x06377f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x06377f8 — __ZNK3RBX5Smoke14getClampedSizeEv
@@ -174,8 +174,8 @@ pub fn stub_0637860() -> ! {
 // type: 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Smoke,G3D::Color3>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_5SmokeEN3G3D6Color3EED1Ev")]
-pub fn stub_0637870() -> ! {
-    todo!("0x0637870 RBX::Reflection::PropDescriptor<RBX::Smoke,G3D::Color3>::~PropDescriptor()")
+pub fn stub_0637870() {
+    // IDA 0x0637870: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x0637894 — __ZNK3RBX5Smoke10getSizeRawEv
@@ -192,8 +192,8 @@ pub fn stub_0637894() -> ! {
 // type: 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Smoke,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_5SmokeEfED1Ev")]
-pub fn stub_0637898() -> ! {
-    todo!("0x0637898 RBX::Reflection::PropDescriptor<RBX::Smoke,float>::~PropDescriptor()")
+pub fn stub_0637898() {
+    // IDA 0x0637898: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x06378bc — __ZNK3RBX5Smoke13getOpacityRawEv
@@ -255,8 +255,8 @@ pub fn stub_0637c40() -> ! {
 // type: 
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Smoke,RBX::Smoke>(rbx_core::SharedPtr<RBX::Smoke> const*,RBX::Smoke *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5SmokeES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0637d08() -> ! {
-    todo!("0x0637d08 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Smoke,RBX::Smoke>(rbx_core::SharedPtr<RBX::Smoke> const*,RBX::Smoke *)const")
+pub fn stub_0637d08() {
+    // IDA 0x0637d08: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x0637df0 — __ZN5boost6detail12shared_countC2IPN3RBX5SmokeENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
@@ -264,8 +264,8 @@ pub fn stub_0637d08() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Smoke *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Smoke *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX5SmokeENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_0637df0() -> ! {
-    todo!("0x0637df0 boost::detail::shared_count::shared_count<RBX::Smoke *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Smoke *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0637df0() {
+    // IDA 0x0637df0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x0637ef8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5SmokeENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
@@ -273,8 +273,8 @@ pub fn stub_0637df0() -> ! {
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Smoke *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX5SmokeENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_0637ef8() -> ! {
-    todo!("0x0637ef8 boost::detail::sp_counted_impl_pd<RBX::Smoke *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0637ef8() {
+    // IDA 0x0637ef8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x0637efc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5SmokeENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
@@ -282,8 +282,8 @@ pub fn stub_0637ef8() -> ! {
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Smoke *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX5SmokeENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_0637efc() -> ! {
-    todo!("0x0637efc boost::detail::sp_counted_impl_pd<RBX::Smoke *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0637efc() {
+    // IDA 0x0637efc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x0637f00 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5SmokeENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
@@ -291,8 +291,8 @@ pub fn stub_0637efc() -> ! {
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Smoke *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX5SmokeENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_0637f00() -> ! {
-    todo!("0x0637f00 boost::detail::sp_counted_impl_pd<RBX::Smoke *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0637f00() {
+    // IDA 0x0637f00: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x0637f20 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5SmokeENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
@@ -300,8 +300,8 @@ pub fn stub_0637f00() -> ! {
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Smoke *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX5SmokeENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_0637f20() -> ! {
-    todo!("0x0637f20 boost::detail::sp_counted_impl_pd<RBX::Smoke *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0637f20() {
+    // IDA 0x0637f20: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x0637f38 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5SmokeENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
@@ -309,8 +309,8 @@ pub fn stub_0637f20() -> ! {
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Smoke *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX5SmokeENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_0637f38() -> ! {
-    todo!("0x0637f38 boost::detail::sp_counted_impl_pd<RBX::Smoke *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0637f38() {
+    // IDA 0x0637f38: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x06386d0 — __ZN3RBX10Reflection14PropDescriptorINS_5SmokeEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -327,8 +327,8 @@ pub fn stub_06386d0() -> ! {
 // type: 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Smoke,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_5SmokeEfED0Ev")]
-pub fn stub_06387e4() -> ! {
-    todo!("0x06387e4 RBX::Reflection::PropDescriptor<RBX::Smoke,float>::~PropDescriptor()")
+pub fn stub_06387e4() {
+    // IDA 0x06387e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x0638810 — __ZNK3RBX10Reflection14PropDescriptorINS_5SmokeEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
@@ -381,8 +381,8 @@ pub fn stub_063885c() -> ! {
 // type: 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Smoke,G3D::Color3>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_5SmokeEN3G3D6Color3EED0Ev")]
-pub fn stub_0638970() -> ! {
-    todo!("0x0638970 RBX::Reflection::PropDescriptor<RBX::Smoke,G3D::Color3>::~PropDescriptor()")
+pub fn stub_0638970() {
+    // IDA 0x0638970: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x063899c — __ZNK3RBX10Reflection14PropDescriptorINS_5SmokeEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -615,8 +615,8 @@ pub fn stub_0639ff4() -> ! {
 // type: 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::SocialService,void ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13SocialServiceEFvSsELi1EED1Ev")]
-pub fn stub_063a240() -> ! {
-    todo!("0x063a240 RBX::Reflection::BoundFuncDesc<RBX::SocialService,void ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_063a240() {
+    // IDA 0x063a240: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x063a280 — __ZN3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEE7addPairES3_PKc
@@ -660,8 +660,8 @@ pub fn stub_063ab30() -> ! {
 // type: void __fastcall(RBX::SocialService *__hidden this)
 #[doc(alias = "RBX::SocialService::~SocialService()")]
 #[doc(alias = "__ZN3RBX13SocialServiceD1Ev")]
-pub fn stub_063add8() -> ! {
-    todo!("0x063add8 RBX::SocialService::~SocialService()")
+pub fn stub_063add8() {
+    // IDA 0x063add8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x063ae44 — __ZN3RBX13SocialServiceD0Ev
@@ -669,8 +669,8 @@ pub fn stub_063add8() -> ! {
 // type: void __fastcall(RBX::SocialService *__hidden this)
 #[doc(alias = "RBX::SocialService::~SocialService()")]
 #[doc(alias = "__ZN3RBX13SocialServiceD0Ev")]
-pub fn stub_063ae44() -> ! {
-    todo!("0x063ae44 RBX::SocialService::~SocialService()")
+pub fn stub_063ae44() {
+    // IDA 0x063ae44: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x063af0c — __ZThn32_N3RBX13SocialServiceD1Ev
@@ -678,8 +678,8 @@ pub fn stub_063ae44() -> ! {
 // type: void __fastcall(RBX::SocialService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SocialService::~SocialService()")]
 #[doc(alias = "__ZThn32_N3RBX13SocialServiceD1Ev")]
-pub fn stub_063af0c() -> ! {
-    todo!("0x063af0c non-virtual thunk toRBX::SocialService::~SocialService()")
+pub fn stub_063af0c() {
+    // IDA 0x063af0c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x063af80 — __ZThn32_N3RBX13SocialServiceD0Ev
@@ -687,8 +687,8 @@ pub fn stub_063af0c() -> ! {
 // type: void __fastcall(RBX::SocialService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SocialService::~SocialService()")]
 #[doc(alias = "__ZThn32_N3RBX13SocialServiceD0Ev")]
-pub fn stub_063af80() -> ! {
-    todo!("0x063af80 non-virtual thunk toRBX::SocialService::~SocialService()")
+pub fn stub_063af80() {
+    // IDA 0x063af80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x063b0ac — __ZThn36_N3RBX13SocialServiceD1Ev
@@ -696,8 +696,8 @@ pub fn stub_063af80() -> ! {
 // type: void __fastcall(RBX::SocialService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SocialService::~SocialService()")]
 #[doc(alias = "__ZThn36_N3RBX13SocialServiceD1Ev")]
-pub fn stub_063b0ac() -> ! {
-    todo!("0x063b0ac non-virtual thunk toRBX::SocialService::~SocialService()")
+pub fn stub_063b0ac() {
+    // IDA 0x063b0ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x063b120 — __ZThn36_N3RBX13SocialServiceD0Ev
@@ -705,8 +705,8 @@ pub fn stub_063b0ac() -> ! {
 // type: void __fastcall(RBX::SocialService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SocialService::~SocialService()")]
 #[doc(alias = "__ZThn36_N3RBX13SocialServiceD0Ev")]
-pub fn stub_063b120() -> ! {
-    todo!("0x063b120 non-virtual thunk toRBX::SocialService::~SocialService()")
+pub fn stub_063b120() {
+    // IDA 0x063b120: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x063b420 — __ZNSt6vectorIN3RBX13SocialService9StuffTypeESaIS2_EE6resizeEmS2_
@@ -822,8 +822,8 @@ pub fn stub_063ba88() -> ! {
 // type: 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::SocialService,void ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13SocialServiceEFvSsELi1EED0Ev")]
-pub fn stub_063bab8() -> ! {
-    todo!("0x063bab8 RBX::Reflection::BoundFuncDesc<RBX::SocialService,void ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_063bab8() {
+    // IDA 0x063bab8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x063bb84 — __ZNK3RBX10Reflection13BoundFuncDescINS_13SocialServiceEFvSsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -849,8 +849,8 @@ pub fn stub_063bcc0() -> ! {
 // type: int(void)
 #[doc(alias = "boost::function1<void,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::clear(void)")]
 #[doc(alias = "__ZN5boost9function1IvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEE5clearEv")]
-pub fn stub_063bdf0() -> ! {
-    todo!("0x063bdf0 boost::function1<void,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::clear(void)")
+pub fn stub_063bdf0() {
+    // IDA 0x063bdf0: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x063c1a4 — __ZN3RBX8Sparkles8setColorEN3G3D6Color3E

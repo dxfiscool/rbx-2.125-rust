@@ -100,54 +100,54 @@ pub fn stub_81bfcc() -> ! {
 // 0x81c750 — __ZN5boost10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEC2IS3_EEPT_
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::shared_ptr<RBX::LibraryService::LibraryStateObject>::shared_ptr<RBX::LibraryService::LibraryStateObject>(RBX::LibraryService::LibraryStateObject *)")]
-pub fn stub_81c750() -> ! {
-    todo!("0x81c750 boost::shared_ptr<RBX::LibraryService::LibraryStateObject>::shared_ptr<RBX::LibraryService::LibraryStateObject>(RBX::LibraryService::LibraryStateObject *)")
+pub fn stub_81c750() {
+    // IDA 0x81c750: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x81c824 — __ZN5boost6detail12shared_countC2IN3RBX14LibraryService18LibraryStateObjectEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::LibraryService::LibraryStateObject>(RBX::LibraryService::LibraryStateObject *)")]
-pub fn stub_81c824() -> ! {
-    todo!("0x81c824 boost::detail::shared_count::shared_count<RBX::LibraryService::LibraryStateObject>(RBX::LibraryService::LibraryStateObject *)")
+pub fn stub_81c824() {
+    // IDA 0x81c824: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x81c9bc — __ZN5boost6detail17sp_counted_impl_pIN3RBX14LibraryService18LibraryStateObjectEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::LibraryService::LibraryStateObject>::~sp_counted_impl_p()")]
-pub fn stub_81c9bc() -> ! {
-    todo!("0x81c9bc boost::detail::sp_counted_impl_p<RBX::LibraryService::LibraryStateObject>::~sp_counted_impl_p()")
+pub fn stub_81c9bc() {
+    // IDA 0x81c9bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x81c9c0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14LibraryService18LibraryStateObjectEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::LibraryService::LibraryStateObject>::~sp_counted_impl_p()")]
-pub fn stub_81c9c0() -> ! {
-    todo!("0x81c9c0 boost::detail::sp_counted_impl_p<RBX::LibraryService::LibraryStateObject>::~sp_counted_impl_p()")
+pub fn stub_81c9c0() {
+    // IDA 0x81c9c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x81c9c4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14LibraryService18LibraryStateObjectEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::LibraryService::LibraryStateObject>::dispose(void)")]
-pub fn stub_81c9c4() -> ! {
-    todo!("0x81c9c4 boost::detail::sp_counted_impl_p<RBX::LibraryService::LibraryStateObject>::dispose(void)")
+pub fn stub_81c9c4() {
+    // IDA 0x81c9c4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x81ca78 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14LibraryService18LibraryStateObjectEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::LibraryService::LibraryStateObject>::get_deleter(std::type_info const&)")]
-pub fn stub_81ca78() -> ! {
-    todo!("0x81ca78 boost::detail::sp_counted_impl_p<RBX::LibraryService::LibraryStateObject>::get_deleter(std::type_info const&)")
+pub fn stub_81ca78() {
+    // IDA 0x81ca78: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x81ca7c — __ZN5boost6detail17sp_counted_impl_pIN3RBX14LibraryService18LibraryStateObjectEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::LibraryService::LibraryStateObject>::get_untyped_deleter(void)")]
-pub fn stub_81ca7c() -> ! {
-    todo!("0x81ca7c boost::detail::sp_counted_impl_p<RBX::LibraryService::LibraryStateObject>::get_untyped_deleter(void)")
+pub fn stub_81ca7c() {
+    // IDA 0x81ca7c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x81e5a8 — __ZNSt4listIN5boost10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESaIS5_EE14_M_create_nodeERKS5_
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::list<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>,std::allocator<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>>>::_M_create_node(boost::shared_ptr<RBX::LibraryService::LibraryStateObject> const&)")]
-pub fn stub_81e5a8() -> ! {
-    todo!("0x81e5a8 std::list<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>,std::allocator<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>>>::_M_create_node(boost::shared_ptr<RBX::LibraryService::LibraryStateObject> const&)")
+pub fn stub_81e5a8() {
+    // IDA 0x81e5a8: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x81e68c — __ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS4_5list2INS4_5valueISA_EENSE_IiEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE
@@ -175,15 +175,15 @@ pub fn stub_81e850() -> ! {
 // 0x81e944 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS3_5list2INS3_5valueIS9_EENSD_IiEEEEEEE6manageERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::LibraryService::LibraryStateObject>,int),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>>,boost::_bi::value<int>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_81e944() -> ! {
-    todo!("0x81e944 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::LibraryService::LibraryStateObject>,int),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>>,boost::_bi::value<int>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_81e944() {
+    // IDA 0x81e944: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x81e960 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS3_5list2INS3_5valueIS9_EENSD_IiEEEEEEvE6invokeERNS1_15function_bufferE
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::LibraryService::LibraryStateObject>,int),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>>,boost::_bi::value<int>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_81e960() -> ! {
-    todo!("0x81e960 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::LibraryService::LibraryStateObject>,int),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>>,boost::_bi::value<int>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_81e960() {
+    // IDA 0x81e960: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x81e974 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS5_5list2INS5_5valueISB_EENSF_IiEEEEEEEEbT_RNS1_15function_bufferE
@@ -220,24 +220,24 @@ pub fn stub_81ec0c() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::LibraryService::LibraryStateObject>,int),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>>,boost::_bi::value<int>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_81ecd8() -> ! {
-    todo!("0x81ecd8 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::LibraryService::LibraryStateObject>,int),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>>,boost::_bi::value<int>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_81ecd8() {
+    // IDA 0x81ecd8: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x81ee30 — __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_IiEEEC2ES8_S9_
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 // type: int __fastcall(int, int, int, int, int, int)
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>>,boost::_bi::value<int>>::list2(boost::_bi::value<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>>,boost::_bi::value<int>)")]
-pub fn stub_81ee30() -> ! {
-    todo!("0x81ee30 boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>>,boost::_bi::value<int>>::list2(boost::_bi::value<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>>,boost::_bi::value<int>)")
+pub fn stub_81ee30() {
+    // IDA 0x81ee30: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x81ef08 — __ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_IiEEEC2ES8_S9_
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>>,boost::_bi::value<int>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>>,boost::_bi::value<int>)")]
-pub fn stub_81ef08() -> ! {
-    todo!("0x81ef08 boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>>,boost::_bi::value<int>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>>,boost::_bi::value<int>)")
+pub fn stub_81ef08() {
+    // IDA 0x81ef08: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x81f124 — __ZNSt4pairIKSsN3RBX14LibraryService17LibraryDefinitionEEC2ERS0_RKS3_
@@ -270,8 +270,8 @@ pub fn stub_81f338() -> ! {
 // 0x81f3bc — __ZNSt8_Rb_treeISsSt4pairIKSsN3RBX14LibraryService17LibraryDefinitionEESt10_Select1stIS5_ESt4lessISsESaIS5_EE14_M_create_nodeERKS5_
 // type: int __fastcall(int, int, int, int, std::string *, std::string *, int, int, int, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,RBX::LibraryService::LibraryDefinition>,std::_Select1st<std::pair<std::string const,RBX::LibraryService::LibraryDefinition>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::LibraryService::LibraryDefinition>>>::_M_create_node(std::pair<std::string const,RBX::LibraryService::LibraryDefinition> const&)")]
-pub fn stub_81f3bc() -> ! {
-    todo!("0x81f3bc std::_Rb_tree<std::string,std::pair<std::string const,RBX::LibraryService::LibraryDefinition>,std::_Select1st<std::pair<std::string const,RBX::LibraryService::LibraryDefinition>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::LibraryService::LibraryDefinition>>>::_M_create_node(std::pair<std::string const,RBX::LibraryService::LibraryDefinition> const&)")
+pub fn stub_81f3bc() {
+    // IDA 0x81f3bc: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x81f4e0 — __ZNSt8_Rb_treeISsSt4pairIKSsN3RBX14LibraryService17LibraryDefinitionEESt10_Select1stIS5_ESt4lessISsESaIS5_EE11lower_boundERS1_

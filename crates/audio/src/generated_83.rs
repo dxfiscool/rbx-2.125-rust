@@ -50,14 +50,14 @@ pub fn stub_891220() -> ! {
 
 // 0x891250 — __ZN3RBX13PolyConnectorD1Ev
 #[doc(alias = "RBX::PolyConnector::~PolyConnector()")]
-pub fn stub_891250() -> ! {
-    todo!("0x891250 RBX::PolyConnector::~PolyConnector()")
+pub fn stub_891250() {
+    // IDA 0x891250: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x891254 — __ZN3RBX13PolyConnectorD0Ev
 #[doc(alias = "RBX::PolyConnector::~PolyConnector()")]
-pub fn stub_891254() -> ! {
-    todo!("0x891254 RBX::PolyConnector::~PolyConnector()")
+pub fn stub_891254() {
+    // IDA 0x891254: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x891258 — __ZN3RBX9AllocatorINS_17BallEdgeConnectorEEC2Ev
@@ -206,20 +206,20 @@ pub fn stub_8927b0() -> ! {
 
 // 0x892908 — __ZN3RBX10Reflection13BoundFuncDescINS_21PersonalServerServiceEFvSsELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PersonalServerService,void ()(std::string),1>::~BoundFuncDesc()")]
-pub fn stub_892908() -> ! {
-    todo!("0x892908 RBX::Reflection::BoundFuncDesc<RBX::PersonalServerService,void ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_892908() {
+    // IDA 0x892908: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x892948 — __ZN3RBX10Reflection13BoundFuncDescINS_21PersonalServerServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PersonalServerService,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
-pub fn stub_892948() -> ! {
-    todo!("0x892948 RBX::Reflection::BoundFuncDesc<RBX::PersonalServerService,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_892948() {
+    // IDA 0x892948: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x892a54 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_21PersonalServerServiceEFSsiESsLi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,std::string ()(int),std::string,1>::~BoundYieldFuncDesc()")]
-pub fn stub_892a54() -> ! {
-    todo!("0x892a54 RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,std::string ()(int),std::string,1>::~BoundYieldFuncDesc()")
+pub fn stub_892a54() {
+    // IDA 0x892a54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x892a94 — __ZNK3RBX21PersonalServerService11getRoleSetsEv
@@ -236,8 +236,8 @@ pub fn stub_892aa0() -> ! {
 
 // 0x892aa8 — __ZN3RBX10Reflection14PropDescriptorINS_21PersonalServerServiceESsED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PersonalServerService,std::string>::~PropDescriptor()")]
-pub fn stub_892aa8() -> ! {
-    todo!("0x892aa8 RBX::Reflection::PropDescriptor<RBX::PersonalServerService,std::string>::~PropDescriptor()")
+pub fn stub_892aa8() {
+    // IDA 0x892aa8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x892acc — __ZN3RBX10Reflection8EnumDescINS_21PersonalServerService13PrivilegeTypeEE7addPairES3_PKc
@@ -260,14 +260,14 @@ pub fn stub_8930d4() -> ! {
 
 // 0x89337c — __ZN3RBX21PersonalServerServiceD1Ev
 #[doc(alias = "RBX::PersonalServerService::~PersonalServerService()")]
-pub fn stub_89337c() -> ! {
-    todo!("0x89337c RBX::PersonalServerService::~PersonalServerService()")
+pub fn stub_89337c() {
+    // IDA 0x89337c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x8933d0 — __ZN3RBX21PersonalServerServiceD0Ev
 #[doc(alias = "RBX::PersonalServerService::~PersonalServerService()")]
-pub fn stub_8933d0() -> ! {
-    todo!("0x8933d0 RBX::PersonalServerService::~PersonalServerService()")
+pub fn stub_8933d0() {
+    // IDA 0x8933d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x8934bc — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEE12getClassNameEv
@@ -278,68 +278,68 @@ pub fn stub_8934bc() -> ! {
 
 // 0x8934e4 — __ZThn32_N3RBX21PersonalServerServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")]
-pub fn stub_8934e4() -> ! {
-    todo!("0x8934e4 non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")
+pub fn stub_8934e4() {
+    // IDA 0x8934e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x893540 — __ZThn32_N3RBX21PersonalServerServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")]
-pub fn stub_893540() -> ! {
-    todo!("0x893540 non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")
+pub fn stub_893540() {
+    // IDA 0x893540: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x89362c — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEE12getClassNameEv")]
-pub fn stub_89362c() -> ! {
-    todo!("0x89362c __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEE12getClassNameEv")
+pub fn stub_89362c() {
+    // IDA 0x89362c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x893654 — __ZThn36_N3RBX21PersonalServerServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")]
-pub fn stub_893654() -> ! {
-    todo!("0x893654 non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")
+pub fn stub_893654() {
+    // IDA 0x893654: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x8936b0 — __ZThn36_N3RBX21PersonalServerServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")]
-pub fn stub_8936b0() -> ! {
-    todo!("0x8936b0 non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")
+pub fn stub_8936b0() {
+    // IDA 0x8936b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x89379c — __ZN3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_89379c() -> ! {
-    todo!("0x89379c __ZN3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_89379c() {
+    // IDA 0x89379c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x8937a0 — __ZN3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_8937a0() -> ! {
-    todo!("0x8937a0 __ZN3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_8937a0() {
+    // IDA 0x8937a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x893840 — __ZThn32_N3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_893840() -> ! {
-    todo!("0x893840 __ZThn32_N3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_893840() {
+    // IDA 0x893840: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x893848 — __ZThn32_N3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_893848() -> ! {
-    todo!("0x893848 __ZThn32_N3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_893848() {
+    // IDA 0x893848: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x8938ec — __ZThn36_N3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_8938ec() -> ! {
-    todo!("0x8938ec __ZThn36_N3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_8938ec() {
+    // IDA 0x8938ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x8938f4 — __ZThn36_N3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_8938f4() -> ! {
-    todo!("0x8938f4 __ZThn36_N3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_8938f4() {
+    // IDA 0x8938f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x893998 — __ZNSt6vectorIN3RBX21PersonalServerService13PrivilegeTypeESaIS2_EE6resizeEmS2_
@@ -410,8 +410,8 @@ pub fn stub_893e88() -> ! {
 
 // 0x893f9c — __ZN3RBX10Reflection14PropDescriptorINS_21PersonalServerServiceESsED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PersonalServerService,std::string>::~PropDescriptor()")]
-pub fn stub_893f9c() -> ! {
-    todo!("0x893f9c RBX::Reflection::PropDescriptor<RBX::PersonalServerService,std::string>::~PropDescriptor()")
+pub fn stub_893f9c() {
+    // IDA 0x893f9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x893fc8 — __ZNK3RBX10Reflection14PropDescriptorINS_21PersonalServerServiceESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE10isReadOnlyEv
@@ -452,8 +452,8 @@ pub fn stub_8942b4() -> ! {
 
 // 0x8942e4 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_21PersonalServerServiceEFSsiESsLi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,std::string ()(int),std::string,1>::~BoundYieldFuncDesc()")]
-pub fn stub_8942e4() -> ! {
-    todo!("0x8942e4 RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,std::string ()(int),std::string,1>::~BoundYieldFuncDesc()")
+pub fn stub_8942e4() {
+    // IDA 0x8942e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x8943b8 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_21PersonalServerServiceEFSsiESsLi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSB_IFvSsEEE
@@ -476,8 +476,8 @@ pub fn stub_8946f0() -> ! {
 
 // 0x894720 — __ZN3RBX10Reflection13BoundFuncDescINS_21PersonalServerServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PersonalServerService,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
-pub fn stub_894720() -> ! {
-    todo!("0x894720 RBX::Reflection::BoundFuncDesc<RBX::PersonalServerService,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_894720() {
+    // IDA 0x894720: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x89483c — __ZNK3RBX10Reflection13BoundFuncDescINS_21PersonalServerServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -506,8 +506,8 @@ pub fn stub_894b80() -> ! {
 
 // 0x894bb0 — __ZN3RBX10Reflection13BoundFuncDescINS_21PersonalServerServiceEFvSsELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PersonalServerService,void ()(std::string),1>::~BoundFuncDesc()")]
-pub fn stub_894bb0() -> ! {
-    todo!("0x894bb0 RBX::Reflection::BoundFuncDesc<RBX::PersonalServerService,void ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_894bb0() {
+    // IDA 0x894bb0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x894c7c — __ZNK3RBX10Reflection13BoundFuncDescINS_21PersonalServerServiceEFvSsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE

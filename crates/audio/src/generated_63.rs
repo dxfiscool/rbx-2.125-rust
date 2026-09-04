@@ -344,50 +344,50 @@ pub fn stub_64baa0() -> ! {
 
 // 0x64bbc0 — __ZN3RBX5Stats4ItemD1Ev
 #[doc(alias = "RBX::Stats::Item::~Item()")]
-pub fn stub_64bbc0() -> ! {
-    todo!("0x64bbc0 RBX::Stats::Item::~Item()")
+pub fn stub_64bbc0() {
+    // IDA 0x64bbc0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64bc00 — __ZThn32_N3RBX5Stats4ItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::Item::~Item()")]
-pub fn stub_64bc00() -> ! {
-    todo!("0x64bc00 non-virtual thunk toRBX::Stats::Item::~Item()")
+pub fn stub_64bc00() {
+    // IDA 0x64bc00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64bcd8 — __ZN3RBX5Stats12StatsServiceD1Ev
 #[doc(alias = "RBX::Stats::StatsService::~StatsService()")]
-pub fn stub_64bcd8() -> ! {
-    todo!("0x64bcd8 RBX::Stats::StatsService::~StatsService()")
+pub fn stub_64bcd8() {
+    // IDA 0x64bcd8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64bcdc — __ZN3RBX5Stats12StatsServiceD0Ev
 #[doc(alias = "RBX::Stats::StatsService::~StatsService()")]
-pub fn stub_64bcdc() -> ! {
-    todo!("0x64bcdc RBX::Stats::StatsService::~StatsService()")
+pub fn stub_64bcdc() {
+    // IDA 0x64bcdc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64bd80 — __ZThn32_N3RBX5Stats12StatsServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::StatsService::~StatsService()")]
-pub fn stub_64bd80() -> ! {
-    todo!("0x64bd80 non-virtual thunk toRBX::Stats::StatsService::~StatsService()")
+pub fn stub_64bd80() {
+    // IDA 0x64bd80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64bd88 — __ZThn32_N3RBX5Stats12StatsServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::StatsService::~StatsService()")]
-pub fn stub_64bd88() -> ! {
-    todo!("0x64bd88 non-virtual thunk toRBX::Stats::StatsService::~StatsService()")
+pub fn stub_64bd88() {
+    // IDA 0x64bd88: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64be2c — __ZThn36_N3RBX5Stats12StatsServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::StatsService::~StatsService()")]
-pub fn stub_64be2c() -> ! {
-    todo!("0x64be2c non-virtual thunk toRBX::Stats::StatsService::~StatsService()")
+pub fn stub_64be2c() {
+    // IDA 0x64be2c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64be34 — __ZThn36_N3RBX5Stats12StatsServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::StatsService::~StatsService()")]
-pub fn stub_64be34() -> ! {
-    todo!("0x64be34 non-virtual thunk toRBX::Stats::StatsService::~StatsService()")
+pub fn stub_64be34() {
+    // IDA 0x64be34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64bed8 — __ZN3RBX4Name13callDoDeclareILZNS_5Stats10sStatsItemEEEEvv
@@ -422,14 +422,14 @@ pub fn stub_64c234() -> ! {
 
 // 0x64c350 — __ZN3RBX5Stats16TypedPercentItemD1Ev
 #[doc(alias = "RBX::Stats::TypedPercentItem::~TypedPercentItem()")]
-pub fn stub_64c350() -> ! {
-    todo!("0x64c350 RBX::Stats::TypedPercentItem::~TypedPercentItem()")
+pub fn stub_64c350() {
+    // IDA 0x64c350: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64c494 — __ZN3RBX5Stats16TypedPercentItemD0Ev
 #[doc(alias = "RBX::Stats::TypedPercentItem::~TypedPercentItem()")]
-pub fn stub_64c494() -> ! {
-    todo!("0x64c494 RBX::Stats::TypedPercentItem::~TypedPercentItem()")
+pub fn stub_64c494() {
+    // IDA 0x64c494: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64c5f0 — __ZN3RBX5Stats16TypedPercentItem6updateEv
@@ -440,44 +440,44 @@ pub fn stub_64c5f0() -> ! {
 
 // 0x64c638 — __ZThn32_N3RBX5Stats16TypedPercentItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
-pub fn stub_64c638() -> ! {
-    todo!("0x64c638 non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")
+pub fn stub_64c638() {
+    // IDA 0x64c638: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64c77c — __ZThn32_N3RBX5Stats16TypedPercentItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
-pub fn stub_64c77c() -> ! {
-    todo!("0x64c77c non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")
+pub fn stub_64c77c() {
+    // IDA 0x64c77c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64c8d4 — __ZThn36_N3RBX5Stats16TypedPercentItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
-pub fn stub_64c8d4() -> ! {
-    todo!("0x64c8d4 non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")
+pub fn stub_64c8d4() {
+    // IDA 0x64c8d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64ca18 — __ZThn36_N3RBX5Stats16TypedPercentItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
-pub fn stub_64ca18() -> ! {
-    todo!("0x64ca18 non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")
+pub fn stub_64ca18() {
+    // IDA 0x64ca18: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64cb70 — __ZN3RBX5Stats14TypedStatsItemIfED1Ev
 #[doc(alias = "RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
-pub fn stub_64cb70() -> ! {
-    todo!("0x64cb70 RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")
+pub fn stub_64cb70() {
+    // IDA 0x64cb70: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64ccb8 — __ZThn32_N3RBX5Stats14TypedStatsItemIfED1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
-pub fn stub_64ccb8() -> ! {
-    todo!("0x64ccb8 non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")
+pub fn stub_64ccb8() {
+    // IDA 0x64ccb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64ce00 — __ZThn36_N3RBX5Stats14TypedStatsItemIfED0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
-pub fn stub_64ce00() -> ! {
-    todo!("0x64ce00 non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")
+pub fn stub_64ce00() {
+    // IDA 0x64ce00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64cf58 — __ZNK5boost9function0IfEclEv
@@ -488,8 +488,8 @@ pub fn stub_64cf58() -> ! {
 
 // 0x64d020 — __ZN5boost9function0IfE5clearEv
 #[doc(alias = "boost::function0<float>::clear(void)")]
-pub fn stub_64d020() -> ! {
-    todo!("0x64d020 boost::function0<float>::clear(void)")
+pub fn stub_64d020() {
+    // IDA 0x64d020: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x64d050 — __ZN3RBX5Stats14TypedStatsItemIfE5derefEPKf
@@ -506,50 +506,50 @@ pub fn stub_64d058() -> ! {
 
 // 0x64d20c — __ZN5boost6detail12shared_countC2IPN3RBX5Stats16TypedPercentItemENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_64d20c() -> ! {
-    todo!("0x64d20c boost::detail::shared_count::shared_count<RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_64d20c() {
+    // IDA 0x64d20c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x64d314 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats16TypedPercentItemENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_64d314() -> ! {
-    todo!("0x64d314 boost::detail::sp_counted_impl_pd<RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_64d314() {
+    // IDA 0x64d314: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64d318 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats16TypedPercentItemENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_64d318() -> ! {
-    todo!("0x64d318 boost::detail::sp_counted_impl_pd<RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_64d318() {
+    // IDA 0x64d318: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64d31c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats16TypedPercentItemENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_64d31c() -> ! {
-    todo!("0x64d31c boost::detail::sp_counted_impl_pd<RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_64d31c() {
+    // IDA 0x64d31c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x64d340 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats16TypedPercentItemENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_64d340() -> ! {
-    todo!("0x64d340 boost::detail::sp_counted_impl_pd<RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_64d340() {
+    // IDA 0x64d340: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x64d358 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats16TypedPercentItemENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_64d358() -> ! {
-    todo!("0x64d358 boost::detail::sp_counted_impl_pd<RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_64d358() {
+    // IDA 0x64d358: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x64d35c — __ZN3RBX5Stats12TypedMemItemD1Ev
 #[doc(alias = "RBX::Stats::TypedMemItem::~TypedMemItem()")]
-pub fn stub_64d35c() -> ! {
-    todo!("0x64d35c RBX::Stats::TypedMemItem::~TypedMemItem()")
+pub fn stub_64d35c() {
+    // IDA 0x64d35c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64d4a0 — __ZN3RBX5Stats12TypedMemItemD0Ev
 #[doc(alias = "RBX::Stats::TypedMemItem::~TypedMemItem()")]
-pub fn stub_64d4a0() -> ! {
-    todo!("0x64d4a0 RBX::Stats::TypedMemItem::~TypedMemItem()")
+pub fn stub_64d4a0() {
+    // IDA 0x64d4a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64d5f8 — __ZN3RBX5Stats12TypedMemItem6updateEv
@@ -560,38 +560,38 @@ pub fn stub_64d5f8() -> ! {
 
 // 0x64d614 — __ZThn32_N3RBX5Stats12TypedMemItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
-pub fn stub_64d614() -> ! {
-    todo!("0x64d614 non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")
+pub fn stub_64d614() {
+    // IDA 0x64d614: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64d758 — __ZThn32_N3RBX5Stats12TypedMemItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
-pub fn stub_64d758() -> ! {
-    todo!("0x64d758 non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")
+pub fn stub_64d758() {
+    // IDA 0x64d758: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64d8b0 — __ZThn36_N3RBX5Stats12TypedMemItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
-pub fn stub_64d8b0() -> ! {
-    todo!("0x64d8b0 non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")
+pub fn stub_64d8b0() {
+    // IDA 0x64d8b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64d9f4 — __ZThn36_N3RBX5Stats12TypedMemItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
-pub fn stub_64d9f4() -> ! {
-    todo!("0x64d9f4 non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")
+pub fn stub_64d9f4() {
+    // IDA 0x64d9f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64db4c — __ZN3RBX5Stats14TypedStatsItemImED1Ev
 #[doc(alias = "RBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
-pub fn stub_64db4c() -> ! {
-    todo!("0x64db4c RBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")
+pub fn stub_64db4c() {
+    // IDA 0x64db4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64dc90 — __ZN3RBX5Stats14TypedStatsItemImED0Ev
 #[doc(alias = "RBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
-pub fn stub_64dc90() -> ! {
-    todo!("0x64dc90 RBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")
+pub fn stub_64dc90() {
+    // IDA 0x64dc90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64dde8 — __ZN3RBX5Stats14TypedStatsItemImE6updateEv
@@ -602,12 +602,12 @@ pub fn stub_64dde8() -> ! {
 
 // 0x64de1c — __ZThn32_N3RBX5Stats14TypedStatsItemImED1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
-pub fn stub_64de1c() -> ! {
-    todo!("0x64de1c non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")
+pub fn stub_64de1c() {
+    // IDA 0x64de1c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64df60 — __ZThn32_N3RBX5Stats14TypedStatsItemImED0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
-pub fn stub_64df60() -> ! {
-    todo!("0x64df60 non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")
+pub fn stub_64df60() {
+    // IDA 0x64df60: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

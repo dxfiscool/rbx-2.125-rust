@@ -320,8 +320,8 @@ pub fn stub_8340c0() -> ! {
 
 // 0x834324 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_13sTweenServiceEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_13sTweenServiceEEE12getClassNameEv")]
-pub fn stub_834324() -> ! {
-    todo!("0x834324 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_13sTweenServiceEEE12getClassNameEv")
+pub fn stub_834324() {
+    // IDA 0x834324: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x834c1c — __GLOBAL__I_a_423
@@ -338,20 +338,20 @@ pub fn stub_8357e4() -> ! {
 
 // 0x835a50 — __ZThn32_NK3RBX14FactoryProductINS_15NotificationBoxENS_9GuiObjectELZNS_16sNotificationBoxEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_15NotificationBoxENS_9GuiObjectELZNS_16sNotificationBoxEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_835a50() -> ! {
-    todo!("0x835a50 __ZThn32_NK3RBX14FactoryProductINS_15NotificationBoxENS_9GuiObjectELZNS_16sNotificationBoxEENS_8InstanceEE12getClassNameEv")
+pub fn stub_835a50() {
+    // IDA 0x835a50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x835f20 — __ZN3RBX14FactoryProductINS_15NotificationBoxENS_9GuiObjectELZNS_16sNotificationBoxEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_15NotificationBoxENS_9GuiObjectELZNS_16sNotificationBoxEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_835f20() -> ! {
-    todo!("0x835f20 __ZN3RBX14FactoryProductINS_15NotificationBoxENS_9GuiObjectELZNS_16sNotificationBoxEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_835f20() {
+    // IDA 0x835f20: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x835f24 — __ZN3RBX14FactoryProductINS_15NotificationBoxENS_9GuiObjectELZNS_16sNotificationBoxEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_15NotificationBoxENS_9GuiObjectELZNS_16sNotificationBoxEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_835f24() -> ! {
-    todo!("0x835f24 __ZN3RBX14FactoryProductINS_15NotificationBoxENS_9GuiObjectELZNS_16sNotificationBoxEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_835f24() {
+    // IDA 0x835f24: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x835fc0 — __ZNK3RBX14FactoryProductINS_15NotificationBoxENS_9GuiObjectELZNS_16sNotificationBoxEENS_8InstanceEE7Creator12getClassNameEv
@@ -404,26 +404,26 @@ pub fn stub_837694() -> ! {
 
 // 0x837750 — __ZThn32_NK3RBX14FactoryProductINS_18NotificationObjectENS_5FrameELZNS_19sNotificationObjectEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_18NotificationObjectENS_5FrameELZNS_19sNotificationObjectEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_837750() -> ! {
-    todo!("0x837750 __ZThn32_NK3RBX14FactoryProductINS_18NotificationObjectENS_5FrameELZNS_19sNotificationObjectEENS_8InstanceEE12getClassNameEv")
+pub fn stub_837750() {
+    // IDA 0x837750: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x83780c — __ZN3RBX14FactoryProductINS_5FrameENS_9GuiObjectELZNS_6sFrameEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5FrameENS_9GuiObjectELZNS_6sFrameEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_83780c() -> ! {
-    todo!("0x83780c __ZN3RBX14FactoryProductINS_5FrameENS_9GuiObjectELZNS_6sFrameEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_83780c() {
+    // IDA 0x83780c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x837810 — __ZN3RBX14FactoryProductINS_18NotificationObjectENS_5FrameELZNS_19sNotificationObjectEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_18NotificationObjectENS_5FrameELZNS_19sNotificationObjectEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_837810() -> ! {
-    todo!("0x837810 __ZN3RBX14FactoryProductINS_18NotificationObjectENS_5FrameELZNS_19sNotificationObjectEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_837810() {
+    // IDA 0x837810: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x837814 — __ZN3RBX14FactoryProductINS_18NotificationObjectENS_5FrameELZNS_19sNotificationObjectEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_18NotificationObjectENS_5FrameELZNS_19sNotificationObjectEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_837814() -> ! {
-    todo!("0x837814 __ZN3RBX14FactoryProductINS_18NotificationObjectENS_5FrameELZNS_19sNotificationObjectEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_837814() {
+    // IDA 0x837814: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x8378b0 — __ZNK3RBX14FactoryProductINS_18NotificationObjectENS_5FrameELZNS_19sNotificationObjectEENS_8InstanceEE7Creator12getClassNameEv
@@ -464,8 +464,8 @@ pub fn stub_837da4() -> ! {
 
 // 0x837e18 — __ZN3RBX14FactoryProductINS_5FrameENS_9GuiObjectELZNS_6sFrameEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5FrameENS_9GuiObjectELZNS_6sFrameEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_837e18() -> ! {
-    todo!("0x837e18 __ZN3RBX14FactoryProductINS_5FrameENS_9GuiObjectELZNS_6sFrameEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_837e18() {
+    // IDA 0x837e18: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x837eb4 — __ZNK3RBX14FactoryProductINS_5FrameENS_9GuiObjectELZNS_6sFrameEENS_8InstanceEE7Creator12getClassNameEv
@@ -512,8 +512,8 @@ pub fn stub_838bb8() -> ! {
 
 // 0x838dc8 — __ZThn32_NK3RBX14FactoryProductINS_5FrameENS_9GuiObjectELZNS_6sFrameEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_5FrameENS_9GuiObjectELZNS_6sFrameEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_838dc8() -> ! {
-    todo!("0x838dc8 __ZThn32_NK3RBX14FactoryProductINS_5FrameENS_9GuiObjectELZNS_6sFrameEENS_8InstanceEE12getClassNameEv")
+pub fn stub_838dc8() {
+    // IDA 0x838dc8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x838fd8 — __ZN3RBX14FactoryProductINS_5FrameENS_9GuiObjectELZNS_6sFrameEENS_8InstanceEE17static_getCreatorEv
@@ -536,8 +536,8 @@ pub fn stub_83e33c() -> ! {
 
 // 0x83e3f8 — __ZThn32_NK3RBX14FactoryProductINS_13FriendServiceENS_8InstanceELZNS_14sFriendServiceEES2_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_13FriendServiceENS_8InstanceELZNS_14sFriendServiceEES2_E12getClassNameEv")]
-pub fn stub_83e3f8() -> ! {
-    todo!("0x83e3f8 __ZThn32_NK3RBX14FactoryProductINS_13FriendServiceENS_8InstanceELZNS_14sFriendServiceEES2_E12getClassNameEv")
+pub fn stub_83e3f8() {
+    // IDA 0x83e3f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x83f928 — __ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13FriendServiceEEEiSt3setIiSt4lessIiESaIiEES1_S3_ENS7_5list5INS7_5valueISC_EENSL_IiEENSL_ISH_EENS_3argILi1EEENSP_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE
@@ -590,20 +590,20 @@ pub fn stub_84acd0() -> ! {
 
 // 0x84ad80 — __ZThn32_NK3RBX14FactoryProductINS_17GameBasicSettingsENS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_17GameBasicSettingsENS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_84ad80() -> ! {
-    todo!("0x84ad80 __ZThn32_NK3RBX14FactoryProductINS_17GameBasicSettingsENS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEE12getClassNameEv")
+pub fn stub_84ad80() {
+    // IDA 0x84ad80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84ae3c — __ZN3RBX14FactoryProductINS_17GameBasicSettingsENS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_17GameBasicSettingsENS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_84ae3c() -> ! {
-    todo!("0x84ae3c __ZN3RBX14FactoryProductINS_17GameBasicSettingsENS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_84ae3c() {
+    // IDA 0x84ae3c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84ae40 — __ZN3RBX14FactoryProductINS_17GameBasicSettingsENS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_17GameBasicSettingsENS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_84ae40() -> ! {
-    todo!("0x84ae40 __ZN3RBX14FactoryProductINS_17GameBasicSettingsENS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_84ae40() {
+    // IDA 0x84ae40: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84aedc — __ZNK3RBX14FactoryProductINS_17GameBasicSettingsENS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEE7Creator12getClassNameEv

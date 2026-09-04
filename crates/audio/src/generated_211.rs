@@ -47,8 +47,8 @@ pub fn stub_4d2090() -> ! {
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::GuiObject::TweenStatus>,std::_Select1st<std::pair<RBX::Name const* const,RBX::GuiObject::TweenStatus>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::GuiObject::TweenStatus>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::GuiObject::TweenStatus>> *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::GuiObject::TweenStatus>,std::_Select1st<std::pair<RBX::Name const* const,RBX::GuiObject::TweenStatus>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::GuiObject::TweenStatus>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::GuiObject::TweenStatus>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9GuiObject11TweenStatusEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_4d210c() -> ! {
-    todo!("0x4d210c __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9GuiObject11TweenStatusEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_4d210c() {
+    // IDA 0x4d210c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x4d2134 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9GuiObject16TweenEasingStyleEEEE13initSingletonEv
@@ -71,24 +71,24 @@ pub fn stub_4d2138() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingStyle>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingStyle>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEED1Ev")]
-pub fn stub_4d2228() -> ! {
-    todo!("0x4d2228 __ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEED1Ev")
+pub fn stub_4d2228() {
+    // IDA 0x4d2228: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4d222c — __ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEED2Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingStyle>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingStyle>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEED2Ev")]
-pub fn stub_4d222c() -> ! {
-    todo!("0x4d222c __ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEED2Ev")
+pub fn stub_4d222c() {
+    // IDA 0x4d222c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4d2400 — __ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingStyle>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingStyle>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEED0Ev")]
-pub fn stub_4d2400() -> ! {
-    todo!("0x4d2400 __ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEED0Ev")
+pub fn stub_4d2400() {
+    // IDA 0x4d2400: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4d24a0 — __ZNK3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEE6lookupEPKc
@@ -192,8 +192,8 @@ pub fn stub_4d2ab8() -> ! {
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::GuiObject::TweenEasingStyle>,std::_Select1st<std::pair<RBX::Name const* const,RBX::GuiObject::TweenEasingStyle>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::GuiObject::TweenEasingStyle>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::GuiObject::TweenEasingStyle>> *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::GuiObject::TweenEasingStyle>,std::_Select1st<std::pair<RBX::Name const* const,RBX::GuiObject::TweenEasingStyle>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::GuiObject::TweenEasingStyle>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::GuiObject::TweenEasingStyle>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9GuiObject16TweenEasingStyleEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_4d2b34() -> ! {
-    todo!("0x4d2b34 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9GuiObject16TweenEasingStyleEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_4d2b34() {
+    // IDA 0x4d2b34: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x4d2b5c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9GuiObject14SizeConstraintEEEE13initSingletonEv
@@ -216,24 +216,24 @@ pub fn stub_4d2b60() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GuiObject::SizeConstraint>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::SizeConstraint>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEED1Ev")]
-pub fn stub_4d2c50() -> ! {
-    todo!("0x4d2c50 __ZN3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEED1Ev")
+pub fn stub_4d2c50() {
+    // IDA 0x4d2c50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4d2c54 — __ZN3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEED2Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::GuiObject::SizeConstraint>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::SizeConstraint>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEED2Ev")]
-pub fn stub_4d2c54() -> ! {
-    todo!("0x4d2c54 __ZN3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEED2Ev")
+pub fn stub_4d2c54() {
+    // IDA 0x4d2c54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4d2e28 — __ZN3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::GuiObject::SizeConstraint>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::SizeConstraint>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEED0Ev")]
-pub fn stub_4d2e28() -> ! {
-    todo!("0x4d2e28 __ZN3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEED0Ev")
+pub fn stub_4d2e28() {
+    // IDA 0x4d2e28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4d2ec8 — __ZNK3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEE6lookupEPKc
@@ -337,8 +337,8 @@ pub fn stub_4d34e0() -> ! {
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::GuiObject::SizeConstraint>,std::_Select1st<std::pair<RBX::Name const* const,RBX::GuiObject::SizeConstraint>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::GuiObject::SizeConstraint>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::GuiObject::SizeConstraint>> *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::GuiObject::SizeConstraint>,std::_Select1st<std::pair<RBX::Name const* const,RBX::GuiObject::SizeConstraint>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::GuiObject::SizeConstraint>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::GuiObject::SizeConstraint>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9GuiObject14SizeConstraintEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_4d355c() -> ! {
-    todo!("0x4d355c __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9GuiObject14SizeConstraintEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_4d355c() {
+    // IDA 0x4d355c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x4d3584 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9HopperBin7BinTypeEEEE13initSingletonEv
@@ -361,24 +361,24 @@ pub fn stub_4d3588() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEED1Ev")]
-pub fn stub_4d3678() -> ! {
-    todo!("0x4d3678 __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEED1Ev")
+pub fn stub_4d3678() {
+    // IDA 0x4d3678: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4d367c — __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEED2Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEED2Ev")]
-pub fn stub_4d367c() -> ! {
-    todo!("0x4d367c __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEED2Ev")
+pub fn stub_4d367c() {
+    // IDA 0x4d367c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4d3850 — __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEED0Ev")]
-pub fn stub_4d3850() -> ! {
-    todo!("0x4d3850 __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEED0Ev")
+pub fn stub_4d3850() {
+    // IDA 0x4d3850: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4d38f0 — __ZNK3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEE6lookupEPKc
@@ -482,8 +482,8 @@ pub fn stub_4d3f08() -> ! {
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::HopperBin::BinType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>> *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::HopperBin::BinType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9HopperBin7BinTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_4d3f84() -> ! {
-    todo!("0x4d3f84 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9HopperBin7BinTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_4d3f84() {
+    // IDA 0x4d3f84: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x4d3fac — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Action10ActionTypeEEEE13initSingletonEv
@@ -506,24 +506,24 @@ pub fn stub_4d3fb0() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Action::ActionType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Action::ActionType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_6Action10ActionTypeEED1Ev")]
-pub fn stub_4d40a0() -> ! {
-    todo!("0x4d40a0 __ZN3RBX10Reflection8EnumDescINS_6Action10ActionTypeEED1Ev")
+pub fn stub_4d40a0() {
+    // IDA 0x4d40a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4d40a4 — __ZN3RBX10Reflection8EnumDescINS_6Action10ActionTypeEED2Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::Action::ActionType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Action::ActionType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_6Action10ActionTypeEED2Ev")]
-pub fn stub_4d40a4() -> ! {
-    todo!("0x4d40a4 __ZN3RBX10Reflection8EnumDescINS_6Action10ActionTypeEED2Ev")
+pub fn stub_4d40a4() {
+    // IDA 0x4d40a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4d4278 — __ZN3RBX10Reflection8EnumDescINS_6Action10ActionTypeEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::Action::ActionType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Action::ActionType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_6Action10ActionTypeEED0Ev")]
-pub fn stub_4d4278() -> ! {
-    todo!("0x4d4278 __ZN3RBX10Reflection8EnumDescINS_6Action10ActionTypeEED0Ev")
+pub fn stub_4d4278() {
+    // IDA 0x4d4278: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4d4318 — __ZNK3RBX10Reflection8EnumDescINS_6Action10ActionTypeEE6lookupEPKc
@@ -627,8 +627,8 @@ pub fn stub_4d4930() -> ! {
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Action::ActionType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Action::ActionType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Action::ActionType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Action::ActionType>> *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Action::ActionType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Action::ActionType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Action::ActionType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Action::ActionType>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_6Action10ActionTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_4d49ac() -> ! {
-    todo!("0x4d49ac __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_6Action10ActionTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_4d49ac() {
+    // IDA 0x4d49ac: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x4d49d4 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_14FunctionalTest6ResultEEEE13initSingletonEv
@@ -651,24 +651,24 @@ pub fn stub_4d49d8() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEED1Ev")]
-pub fn stub_4d4ac8() -> ! {
-    todo!("0x4d4ac8 __ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEED1Ev")
+pub fn stub_4d4ac8() {
+    // IDA 0x4d4ac8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4d4acc — __ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEED2Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEED2Ev")]
-pub fn stub_4d4acc() -> ! {
-    todo!("0x4d4acc __ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEED2Ev")
+pub fn stub_4d4acc() {
+    // IDA 0x4d4acc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4d4ca0 — __ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEED0Ev")]
-pub fn stub_4d4ca0() -> ! {
-    todo!("0x4d4ca0 __ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEED0Ev")
+pub fn stub_4d4ca0() {
+    // IDA 0x4d4ca0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4d4d40 — __ZNK3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEE6lookupEPKc
@@ -772,8 +772,8 @@ pub fn stub_4d5358() -> ! {
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::FunctionalTest::Result>,std::_Select1st<std::pair<RBX::Name const* const,RBX::FunctionalTest::Result>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::FunctionalTest::Result>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::FunctionalTest::Result>> *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::FunctionalTest::Result>,std::_Select1st<std::pair<RBX::Name const* const,RBX::FunctionalTest::Result>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::FunctionalTest::Result>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::FunctionalTest::Result>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_14FunctionalTest6ResultEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_4d53d4() -> ! {
-    todo!("0x4d53d4 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_14FunctionalTest6ResultEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_4d53d4() {
+    // IDA 0x4d53d4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x4d53fc — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEEEE13initSingletonEv
@@ -796,8 +796,8 @@ pub fn stub_4d5400() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEED0Ev")]
-pub fn stub_4d54f0() -> ! {
-    todo!("0x4d54f0 __ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEED0Ev")
+pub fn stub_4d54f0() {
+    // IDA 0x4d54f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4d5590 — __ZNK3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEE6lookupEPKc

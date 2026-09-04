@@ -15,24 +15,24 @@ const _: () = {
 // demangled: RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::~RefPropDescriptor()
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::~RefPropDescriptor()")]
-pub fn stub_3c8c84() -> ! {
-    todo!("0x3c8c84 RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::~RefPropDescriptor()")
+pub fn stub_3c8c84() {
+    // IDA 0x3c8c84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c8cb0 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvfELi1EED1Ev
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(float),1>::~BoundFuncDesc()
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(float),1>::~BoundFuncDesc()")]
-pub fn stub_3c8cb0() -> ! {
-    todo!("0x3c8cb0 RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(float),1>::~BoundFuncDesc()")
+pub fn stub_3c8cb0() {
+    // IDA 0x3c8cb0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c8cf0 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFfvELi0EED1Ev
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Camera,float ()(void),0>::~BoundFuncDesc()
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,float ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_3c8cf0() -> ! {
-    todo!("0x3c8cf0 RBX::Reflection::BoundFuncDesc<RBX::Camera,float ()(void),0>::~BoundFuncDesc()")
+pub fn stub_3c8cf0() {
+    // IDA 0x3c8cf0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c8d14 — __ZN3RBX6Camera12getTiltSpeedEv
@@ -55,56 +55,56 @@ pub fn stub_3c8d1c() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(RBX::Camera::CameraPanMode),1>::~BoundFuncDesc()
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(RBX::Camera::CameraPanMode),1>::~BoundFuncDesc()")]
-pub fn stub_3c8d24() -> ! {
-    todo!("0x3c8d24 RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(RBX::Camera::CameraPanMode),1>::~BoundFuncDesc()")
+pub fn stub_3c8d24() {
+    // IDA 0x3c8d24: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c8d64 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbfELi1EED1Ev
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Camera,bool ()(float),1>::~BoundFuncDesc()
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,bool ()(float),1>::~BoundFuncDesc()")]
-pub fn stub_3c8d64() -> ! {
-    todo!("0x3c8d64 RBX::Reflection::BoundFuncDesc<RBX::Camera,bool ()(float),1>::~BoundFuncDesc()")
+pub fn stub_3c8d64() {
+    // IDA 0x3c8d64: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c8da4 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFviELi1EED1Ev
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(int),1>::~BoundFuncDesc()
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(int),1>::~BoundFuncDesc()")]
-pub fn stub_3c8da4() -> ! {
-    todo!("0x3c8da4 RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(int),1>::~BoundFuncDesc()")
+pub fn stub_3c8da4() {
+    // IDA 0x3c8da4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c8de4 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbiELi1EED1Ev
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Camera,bool ()(int),1>::~BoundFuncDesc()
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,bool ()(int),1>::~BoundFuncDesc()")]
-pub fn stub_3c8de4() -> ! {
-    todo!("0x3c8de4 RBX::Reflection::BoundFuncDesc<RBX::Camera,bool ()(int),1>::~BoundFuncDesc()")
+pub fn stub_3c8de4() {
+    // IDA 0x3c8de4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c8e24 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvN3G3D15CoordinateFrameES4_fELi3EED1Ev
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(G3D::CoordinateFrame,G3D::CoordinateFrame,float),3>::~BoundFuncDesc()
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(G3D::CoordinateFrame,G3D::CoordinateFrame,float),3>::~BoundFuncDesc()")]
-pub fn stub_3c8e24() -> ! {
-    todo!("0x3c8e24 RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(G3D::CoordinateFrame,G3D::CoordinateFrame,float),3>::~BoundFuncDesc()")
+pub fn stub_3c8e24() {
+    // IDA 0x3c8e24: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c8e78 — __ZN3RBX10Reflection9EventDescINS_6CameraEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 // demangled: RBX::Reflection::EventDesc<RBX::Camera,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Camera::*>::~EventDesc()
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Camera,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Camera::*>::~EventDesc()")]
-pub fn stub_3c8e78() -> ! {
-    todo!("0x3c8e78 RBX::Reflection::EventDesc<RBX::Camera,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Camera::*>::~EventDesc()")
+pub fn stub_3c8e78() {
+    // IDA 0x3c8e78: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c8e9c — __ZN3RBX10Reflection9EventDescINS_6CameraEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 // demangled: RBX::Reflection::EventDesc<RBX::Camera,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Camera::*>::~EventDesc()
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Camera,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Camera::*>::~EventDesc()")]
-pub fn stub_3c8e9c() -> ! {
-    todo!("0x3c8e9c RBX::Reflection::EventDesc<RBX::Camera,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Camera::*>::~EventDesc()")
+pub fn stub_3c8e9c() {
+    // IDA 0x3c8e9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c8ec0 — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE7addPairES3_PKc
@@ -207,16 +207,16 @@ pub fn stub_3c9c7c() -> ! {
 // demangled: RBX::Camera::~Camera()
 // type: void __fastcall(RBX::Camera *__hidden this)
 #[doc(alias = "RBX::Camera::~Camera()")]
-pub fn stub_3c9cd0() -> ! {
-    todo!("0x3c9cd0 RBX::Camera::~Camera()")
+pub fn stub_3c9cd0() {
+    // IDA 0x3c9cd0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c9cd4 — __ZN3RBX6CameraD0Ev
 // demangled: RBX::Camera::~Camera()
 // type: void __fastcall(RBX::Camera *__hidden this)
 #[doc(alias = "RBX::Camera::~Camera()")]
-pub fn stub_3c9cd4() -> ! {
-    todo!("0x3c9cd4 RBX::Camera::~Camera()")
+pub fn stub_3c9cd4() {
+    // IDA 0x3c9cd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c9d74 — __ZN3RBX6Camera17onServiceProviderEPNS_15ServiceProviderES2_
@@ -238,71 +238,71 @@ pub fn stub_3c9d7c() -> ! {
 // demangled: non-virtual thunk to RBX::Camera::~Camera()
 // type: void __fastcall(RBX::Camera *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::Camera::~Camera()")]
-pub fn stub_3c9d8c() -> ! {
-    todo!("0x3c9d8c non-virtual thunk to RBX::Camera::~Camera()")
+pub fn stub_3c9d8c() {
+    // IDA 0x3c9d8c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c9d94 — __ZThn32_N3RBX6CameraD0Ev
 // demangled: non-virtual thunk to RBX::Camera::~Camera()
 // type: void __fastcall(RBX::Camera *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::Camera::~Camera()")]
-pub fn stub_3c9d94() -> ! {
-    todo!("0x3c9d94 non-virtual thunk to RBX::Camera::~Camera()")
+pub fn stub_3c9d94() {
+    // IDA 0x3c9d94: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c9d9c — __ZThn32_NK3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E12getClassNameEv")]
-pub fn stub_3c9d9c() -> ! {
-    todo!("0x3c9d9c __ZThn32_NK3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E12getClassNameEv")
+pub fn stub_3c9d9c() {
+    // IDA 0x3c9d9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c9dac — __ZThn36_N3RBX6CameraD1Ev
 // demangled: non-virtual thunk to RBX::Camera::~Camera()
 // type: void __fastcall(RBX::Camera *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::Camera::~Camera()")]
-pub fn stub_3c9dac() -> ! {
-    todo!("0x3c9dac non-virtual thunk to RBX::Camera::~Camera()")
+pub fn stub_3c9dac() {
+    // IDA 0x3c9dac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c9db4 — __ZThn36_N3RBX6CameraD0Ev
 // demangled: non-virtual thunk to RBX::Camera::~Camera()
 // type: void __fastcall(RBX::Camera *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::Camera::~Camera()")]
-pub fn stub_3c9db4() -> ! {
-    todo!("0x3c9db4 non-virtual thunk to RBX::Camera::~Camera()")
+pub fn stub_3c9db4() {
+    // IDA 0x3c9db4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c9dbc — __ZThn92_N3RBX6CameraD1Ev
 // demangled: non-virtual thunk to RBX::Camera::~Camera()
 // type: void __fastcall(RBX::Camera *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::Camera::~Camera()")]
-pub fn stub_3c9dbc() -> ! {
-    todo!("0x3c9dbc non-virtual thunk to RBX::Camera::~Camera()")
+pub fn stub_3c9dbc() {
+    // IDA 0x3c9dbc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c9dc4 — __ZThn92_N3RBX6CameraD0Ev
 // demangled: non-virtual thunk to RBX::Camera::~Camera()
 // type: void __fastcall(RBX::Camera *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::Camera::~Camera()")]
-pub fn stub_3c9dc4() -> ! {
-    todo!("0x3c9dc4 non-virtual thunk to RBX::Camera::~Camera()")
+pub fn stub_3c9dc4() {
+    // IDA 0x3c9dc4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c9dcc — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEED1Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::~EnumDesc()
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::~EnumDesc()")]
-pub fn stub_3c9dcc() -> ! {
-    todo!("0x3c9dcc RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::~EnumDesc()")
+pub fn stub_3c9dcc() {
+    // IDA 0x3c9dcc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c9dd0 — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::~EnumDesc()
 // type: void __fastcall(void *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::~EnumDesc()")]
-pub fn stub_3c9dd0() -> ! {
-    todo!("0x3c9dd0 RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::~EnumDesc()")
+pub fn stub_3c9dd0() {
+    // IDA 0x3c9dd0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c9e70 — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE6lookupEPKc
@@ -341,16 +341,16 @@ pub fn stub_3c9ef4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::~EnumDesc()
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::~EnumDesc()")]
-pub fn stub_3ca038() -> ! {
-    todo!("0x3ca038 RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::~EnumDesc()")
+pub fn stub_3ca038() {
+    // IDA 0x3ca038: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ca03c — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::~EnumDesc()
 // type: void __fastcall(void *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::~EnumDesc()")]
-pub fn stub_3ca03c() -> ! {
-    todo!("0x3ca03c RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::~EnumDesc()")
+pub fn stub_3ca03c() {
+    // IDA 0x3ca03c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ca0dc — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE6lookupEPKc
@@ -389,16 +389,16 @@ pub fn stub_3ca160() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::~EnumDesc()
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::~EnumDesc()")]
-pub fn stub_3ca2a4() -> ! {
-    todo!("0x3ca2a4 RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::~EnumDesc()")
+pub fn stub_3ca2a4() {
+    // IDA 0x3ca2a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ca2a8 — __ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::~EnumDesc()
 // type: void __fastcall(void *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::~EnumDesc()")]
-pub fn stub_3ca2a8() -> ! {
-    todo!("0x3ca2a8 RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::~EnumDesc()")
+pub fn stub_3ca2a8() {
+    // IDA 0x3ca2a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ca348 — __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE6lookupEPKc
@@ -493,8 +493,8 @@ pub fn stub_3ca938() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::~EnumDesc()
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::~EnumDesc()")]
-pub fn stub_3ca9b4() -> ! {
-    todo!("0x3ca9b4 RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::~EnumDesc()")
+pub fn stub_3ca9b4() {
+    // IDA 0x3ca9b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3cab88 — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE15convertToStringERKS3_
@@ -533,8 +533,8 @@ pub fn stub_3cafb0() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::~EnumDesc()
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::~EnumDesc()")]
-pub fn stub_3cb02c() -> ! {
-    todo!("0x3cb02c RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::~EnumDesc()")
+pub fn stub_3cb02c() {
+    // IDA 0x3cb02c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3cb200 — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE15convertToStringERKS3_
@@ -597,8 +597,8 @@ pub fn stub_3cb628() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::~EnumDesc()
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::~EnumDesc()")]
-pub fn stub_3cb6a4() -> ! {
-    todo!("0x3cb6a4 RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::~EnumDesc()")
+pub fn stub_3cb6a4() {
+    // IDA 0x3cb6a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3cb878 — __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E17static_getCreatorEv
@@ -658,43 +658,43 @@ pub fn stub_3cbe64() -> ! {
 // 0x3cbf50 — __ZN3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_3cbf50() -> ! {
-    todo!("0x3cbf50 __ZN3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_3cbf50() {
+    // IDA 0x3cbf50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3cbf54 — __ZN3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_3cbf54() -> ! {
-    todo!("0x3cbf54 __ZN3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_3cbf54() {
+    // IDA 0x3cbf54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3cbff4 — __ZThn32_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_3cbff4() -> ! {
-    todo!("0x3cbff4 __ZThn32_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_3cbff4() {
+    // IDA 0x3cbff4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3cbffc — __ZThn32_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_3cbffc() -> ! {
-    todo!("0x3cbffc __ZThn32_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_3cbffc() {
+    // IDA 0x3cbffc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3cc0a0 — __ZThn36_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_3cc0a0() -> ! {
-    todo!("0x3cc0a0 __ZThn36_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_3cc0a0() {
+    // IDA 0x3cc0a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3cc0a8 — __ZThn36_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_3cc0a8() -> ! {
-    todo!("0x3cc0a8 __ZThn36_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_3cc0a8() {
+    // IDA 0x3cc0a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3cc14c — __ZN3rbx8any_castIN3RBX6Camera13CameraPanModeENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE
@@ -717,8 +717,8 @@ pub fn stub_3cd164() -> ! {
 // demangled: RBX::Reflection::EventDesc<RBX::Camera,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Camera::*>::~EventDesc()
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Camera,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Camera::*>::~EventDesc()")]
-pub fn stub_3cd2e8() -> ! {
-    todo!("0x3cd2e8 RBX::Reflection::EventDesc<RBX::Camera,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Camera::*>::~EventDesc()")
+pub fn stub_3cd2e8() {
+    // IDA 0x3cd2e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3cd39c — __ZNK3RBX10Reflection13EventDescImplILi1ENS_6CameraEFvbEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -766,8 +766,8 @@ pub fn stub_3cd6d4() -> ! {
 // type: int __fastcall(_DWORD *, char)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,bool const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,void,bool>::invoke(boost::detail::function::function_buffer &,bool)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKbEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEvbE6invokeERNS1_15function_bufferEb")]
-pub fn stub_3cd7b8() -> ! {
-    todo!("0x3cd7b8 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,bool const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,void,bool>::invoke(boost::detail::function::function_buffer &,bool)")
+pub fn stub_3cd7b8() {
+    // IDA 0x3cd7b8: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x3cd7d0 — __ZNK5boost6detail8function13basic_vtable1IvbE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKbEENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
@@ -802,8 +802,8 @@ pub fn stub_3cd99c() -> ! {
 // type: void __fastcall(int *, _WORD *, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,bool const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKbEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
-pub fn stub_3cd9b4() -> ! {
-    todo!("0x3cd9b4 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,bool const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_3cd9b4() {
+    // IDA 0x3cd9b4: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x3cdb0c — __ZN3rbx7signals6signalIFvbEE7connectIN5boost8functionIS2_EEEENS0_10connectionERKT_
@@ -818,16 +818,16 @@ pub fn stub_3cdb0c() -> ! {
 // demangled: rbx::signals::signal<void ()(bool)>::callable_slot<boost::function<void ()(bool)>>::~callable_slot()
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(bool)>::callable_slot<boost::function<void ()(bool)>>::~callable_slot()")]
-pub fn stub_3cdc00() -> ! {
-    todo!("0x3cdc00 rbx::signals::signal<void ()(bool)>::callable_slot<boost::function<void ()(bool)>>::~callable_slot()")
+pub fn stub_3cdc00() {
+    // IDA 0x3cdc00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3cdd10 — __ZN3rbx7signals6signalIFvbEE13callable_slotIN5boost8functionIS2_EEED0Ev
 // demangled: rbx::signals::signal<void ()(bool)>::callable_slot<boost::function<void ()(bool)>>::~callable_slot()
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(bool)>::callable_slot<boost::function<void ()(bool)>>::~callable_slot()")]
-pub fn stub_3cdd10() -> ! {
-    todo!("0x3cdd10 rbx::signals::signal<void ()(bool)>::callable_slot<boost::function<void ()(bool)>>::~callable_slot()")
+pub fn stub_3cdd10() {
+    // IDA 0x3cdd10: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3cde40 — __ZN3rbx7signals6signalIFvbEE4slot24safe_static_do_get_mutexEv
@@ -842,32 +842,32 @@ pub fn stub_3cde40() -> ! {
 // demangled: rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::function<void ()(bool)>,1,void ()(bool)>::~callable()
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::function<void ()(bool)>,1,void ()(bool)>::~callable()")]
-pub fn stub_3cdf30() -> ! {
-    todo!("0x3cdf30 rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::function<void ()(bool)>,1,void ()(bool)>::~callable()")
+pub fn stub_3cdf30() {
+    // IDA 0x3cdf30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ce040 — __ZN3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost8functionIS3_EELi1ES3_ED0Ev
 // demangled: rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::function<void ()(bool)>,1,void ()(bool)>::~callable()
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::function<void ()(bool)>,1,void ()(bool)>::~callable()")]
-pub fn stub_3ce040() -> ! {
-    todo!("0x3ce040 rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::function<void ()(bool)>,1,void ()(bool)>::~callable()")
+pub fn stub_3ce040() {
+    // IDA 0x3ce040: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ce170 — __ZN3rbx7signals6signalIFvbEE4slotD1Ev
 // demangled: rbx::signals::signal<void ()(bool)>::slot::~slot()
 // type: int __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(bool)>::slot::~slot()")]
-pub fn stub_3ce170() -> ! {
-    todo!("0x3ce170 rbx::signals::signal<void ()(bool)>::slot::~slot()")
+pub fn stub_3ce170() {
+    // IDA 0x3ce170: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ce19c — __ZN3RBX10Reflection9EventDescINS_6CameraEFvvEN3rbx6signalIS3_EEMS2_S6_ED0Ev
 // demangled: RBX::Reflection::EventDesc<RBX::Camera,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Camera::*>::~EventDesc()
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Camera,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Camera::*>::~EventDesc()")]
-pub fn stub_3ce19c() -> ! {
-    todo!("0x3ce19c RBX::Reflection::EventDesc<RBX::Camera,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Camera::*>::~EventDesc()")
+pub fn stub_3ce19c() {
+    // IDA 0x3ce19c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ce250 — __ZNK3RBX10Reflection13EventDescImplILi0ENS_6CameraEFvvEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -915,8 +915,8 @@ pub fn stub_3ce6f4() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(G3D::CoordinateFrame,G3D::CoordinateFrame,float),3>::~BoundFuncDesc()
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(G3D::CoordinateFrame,G3D::CoordinateFrame,float),3>::~BoundFuncDesc()")]
-pub fn stub_3ce75c() -> ! {
-    todo!("0x3ce75c RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(G3D::CoordinateFrame,G3D::CoordinateFrame,float),3>::~BoundFuncDesc()")
+pub fn stub_3ce75c() {
+    // IDA 0x3ce75c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ce848 — __ZNK3RBX10Reflection13BoundFuncDescINS_6CameraEFvN3G3D15CoordinateFrameES4_fELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE

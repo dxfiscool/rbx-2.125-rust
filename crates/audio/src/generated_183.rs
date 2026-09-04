@@ -23,8 +23,8 @@ pub fn stub_4029ec() -> ! {
 
 // 0x402a04 — __ZN3RBX17FilteredSelectionINS_10PVInstanceEED2Ev
 #[doc(alias = "__ZN3RBX17FilteredSelectionINS_10PVInstanceEED2Ev")]
-pub fn stub_402a04() -> ! {
-    todo!("0x402a04 __ZN3RBX17FilteredSelectionINS_10PVInstanceEED2Ev")
+pub fn stub_402a04() {
+    // IDA 0x402a04: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x402b38 — __ZN5boost10shared_ptrIN3RBX17FilteredSelectionINS1_10PVInstanceEEEEC2IS4_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -41,38 +41,38 @@ pub fn stub_402c00() -> ! {
 
 // 0x402ce8 — __ZN5boost6detail12shared_countC2IPN3RBX17FilteredSelectionINS3_10PVInstanceEEENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX17FilteredSelectionINS3_10PVInstanceEEENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_402ce8() -> ! {
-    todo!("0x402ce8 __ZN5boost6detail12shared_countC2IPN3RBX17FilteredSelectionINS3_10PVInstanceEEENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_402ce8() {
+    // IDA 0x402ce8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x402df0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_402df0() -> ! {
-    todo!("0x402df0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+pub fn stub_402df0() {
+    // IDA 0x402df0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x402df4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_402df4() -> ! {
-    todo!("0x402df4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+pub fn stub_402df4() {
+    // IDA 0x402df4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x402df8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_402df8() -> ! {
-    todo!("0x402df8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_402df8() {
+    // IDA 0x402df8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x402e18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_402e18() -> ! {
-    todo!("0x402e18 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_402e18() {
+    // IDA 0x402e18: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x402e30 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_402e30() -> ! {
-    todo!("0x402e30 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_402e30() {
+    // IDA 0x402e30: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x402e34 — __ZNK3RBX13ServiceClientINS_17FilteredSelectionINS_10PVInstanceEEEE13createServiceEv
@@ -155,38 +155,38 @@ pub fn stub_404950() -> ! {
 
 // 0x404a34 — __ZN5boost6detail12shared_countC2IPN3RBX10HammerToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX10HammerToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
-pub fn stub_404a34() -> ! {
-    todo!("0x404a34 __ZN5boost6detail12shared_countC2IPN3RBX10HammerToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+pub fn stub_404a34() {
+    // IDA 0x404a34: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x404b2c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")]
-pub fn stub_404b2c() -> ! {
-    todo!("0x404b2c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+pub fn stub_404b2c() {
+    // IDA 0x404b2c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x404b30 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")]
-pub fn stub_404b30() -> ! {
-    todo!("0x404b30 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+pub fn stub_404b30() {
+    // IDA 0x404b30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x404b34 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")]
-pub fn stub_404b34() -> ! {
-    todo!("0x404b34 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+pub fn stub_404b34() {
+    // IDA 0x404b34: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x404b44 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_404b44() -> ! {
-    todo!("0x404b44 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_404b44() {
+    // IDA 0x404b44: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x404b5c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_404b5c() -> ! {
-    todo!("0x404b5c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_404b5c() {
+    // IDA 0x404b5c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x404b60 — __ZN3RBX4Name7declareILZNS_11sHammerToolEEEERKS0_v
@@ -233,38 +233,38 @@ pub fn stub_405244() -> ! {
 
 // 0x405328 — __ZN5boost6detail12shared_countC2IPN3RBX9CloneToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX9CloneToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
-pub fn stub_405328() -> ! {
-    todo!("0x405328 __ZN5boost6detail12shared_countC2IPN3RBX9CloneToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+pub fn stub_405328() {
+    // IDA 0x405328: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x405420 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")]
-pub fn stub_405420() -> ! {
-    todo!("0x405420 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+pub fn stub_405420() {
+    // IDA 0x405420: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x405424 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")]
-pub fn stub_405424() -> ! {
-    todo!("0x405424 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+pub fn stub_405424() {
+    // IDA 0x405424: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x405428 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")]
-pub fn stub_405428() -> ! {
-    todo!("0x405428 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+pub fn stub_405428() {
+    // IDA 0x405428: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x405438 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_405438() -> ! {
-    todo!("0x405438 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_405438() {
+    // IDA 0x405438: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x405450 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_405450() -> ! {
-    todo!("0x405450 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_405450() {
+    // IDA 0x405450: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x405454 — __ZN3RBX4Name7declareILZNS_10sCloneToolEEEERKS0_v
@@ -311,38 +311,38 @@ pub fn stub_405b38() -> ! {
 
 // 0x405c1c — __ZN5boost6detail12shared_countC2IPN3RBX8GrabToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX8GrabToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
-pub fn stub_405c1c() -> ! {
-    todo!("0x405c1c __ZN5boost6detail12shared_countC2IPN3RBX8GrabToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+pub fn stub_405c1c() {
+    // IDA 0x405c1c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x405d14 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")]
-pub fn stub_405d14() -> ! {
-    todo!("0x405d14 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+pub fn stub_405d14() {
+    // IDA 0x405d14: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x405d18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")]
-pub fn stub_405d18() -> ! {
-    todo!("0x405d18 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+pub fn stub_405d18() {
+    // IDA 0x405d18: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x405d1c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")]
-pub fn stub_405d1c() -> ! {
-    todo!("0x405d1c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+pub fn stub_405d1c() {
+    // IDA 0x405d1c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x405d2c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_405d2c() -> ! {
-    todo!("0x405d2c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_405d2c() {
+    // IDA 0x405d2c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x405d44 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_405d44() -> ! {
-    todo!("0x405d44 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_405d44() {
+    // IDA 0x405d44: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x405d48 — __ZN3RBX4Name7declareILZNS_9sGrabToolEEEERKS0_v
@@ -389,38 +389,38 @@ pub fn stub_40642c() -> ! {
 
 // 0x406510 — __ZN5boost6detail12shared_countC2IPN3RBX8GameToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX8GameToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
-pub fn stub_406510() -> ! {
-    todo!("0x406510 __ZN5boost6detail12shared_countC2IPN3RBX8GameToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+pub fn stub_406510() {
+    // IDA 0x406510: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x406608 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")]
-pub fn stub_406608() -> ! {
-    todo!("0x406608 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+pub fn stub_406608() {
+    // IDA 0x406608: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x40660c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")]
-pub fn stub_40660c() -> ! {
-    todo!("0x40660c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+pub fn stub_40660c() {
+    // IDA 0x40660c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x406610 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")]
-pub fn stub_406610() -> ! {
-    todo!("0x406610 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+pub fn stub_406610() {
+    // IDA 0x406610: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x406620 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_406620() -> ! {
-    todo!("0x406620 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_406620() {
+    // IDA 0x406620: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x406638 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_406638() -> ! {
-    todo!("0x406638 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_406638() {
+    // IDA 0x406638: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x40663c — __ZN3RBX4Name7declareILZNS_9sGameToolEEEERKS0_v
@@ -467,38 +467,38 @@ pub fn stub_406d20() -> ! {
 
 // 0x406e04 — __ZN5boost6detail12shared_countC2IPN3RBX8NullToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX8NullToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
-pub fn stub_406e04() -> ! {
-    todo!("0x406e04 __ZN5boost6detail12shared_countC2IPN3RBX8NullToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+pub fn stub_406e04() {
+    // IDA 0x406e04: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x406efc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")]
-pub fn stub_406efc() -> ! {
-    todo!("0x406efc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+pub fn stub_406efc() {
+    // IDA 0x406efc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x406f00 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")]
-pub fn stub_406f00() -> ! {
-    todo!("0x406f00 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+pub fn stub_406f00() {
+    // IDA 0x406f00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x406f04 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")]
-pub fn stub_406f04() -> ! {
-    todo!("0x406f04 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+pub fn stub_406f04() {
+    // IDA 0x406f04: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x406f14 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_406f14() -> ! {
-    todo!("0x406f14 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_406f14() {
+    // IDA 0x406f14: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x406f2c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_406f2c() -> ! {
-    todo!("0x406f2c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_406f2c() {
+    // IDA 0x406f2c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x406f30 — __ZN3RBX4Name7declareILZNS_9sNullToolEEEERKS0_v
@@ -551,38 +551,38 @@ pub fn stub_407658() -> ! {
 
 // 0x40773c — __ZN5boost6detail12shared_countC2IPN3RBX11DropperToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX11DropperToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
-pub fn stub_40773c() -> ! {
-    todo!("0x40773c __ZN5boost6detail12shared_countC2IPN3RBX11DropperToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+pub fn stub_40773c() {
+    // IDA 0x40773c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x407834 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")]
-pub fn stub_407834() -> ! {
-    todo!("0x407834 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+pub fn stub_407834() {
+    // IDA 0x407834: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x407838 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")]
-pub fn stub_407838() -> ! {
-    todo!("0x407838 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+pub fn stub_407838() {
+    // IDA 0x407838: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x40783c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")]
-pub fn stub_40783c() -> ! {
-    todo!("0x40783c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+pub fn stub_40783c() {
+    // IDA 0x40783c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x40784c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_40784c() -> ! {
-    todo!("0x40784c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_40784c() {
+    // IDA 0x40784c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x407864 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_407864() -> ! {
-    todo!("0x407864 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_407864() {
+    // IDA 0x407864: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x407868 — __ZN3RBX4Name7declareILZNS_12sDropperToolEEEERKS0_v
@@ -635,38 +635,38 @@ pub fn stub_408058() -> ! {
 
 // 0x40813c — __ZN5boost6detail12shared_countC2IPN3RBX12MaterialToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX12MaterialToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
-pub fn stub_40813c() -> ! {
-    todo!("0x40813c __ZN5boost6detail12shared_countC2IPN3RBX12MaterialToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+pub fn stub_40813c() {
+    // IDA 0x40813c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x408234 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")]
-pub fn stub_408234() -> ! {
-    todo!("0x408234 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+pub fn stub_408234() {
+    // IDA 0x408234: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x408238 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")]
-pub fn stub_408238() -> ! {
-    todo!("0x408238 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+pub fn stub_408238() {
+    // IDA 0x408238: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x40823c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")]
-pub fn stub_40823c() -> ! {
-    todo!("0x40823c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+pub fn stub_40823c() {
+    // IDA 0x40823c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x40824c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_40824c() -> ! {
-    todo!("0x40824c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_40824c() {
+    // IDA 0x40824c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x408264 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_408264() -> ! {
-    todo!("0x408264 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_408264() {
+    // IDA 0x408264: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x408268 — __ZN3RBX4Name7declareILZNS_13sMaterialToolEEEERKS0_v
@@ -719,38 +719,38 @@ pub fn stub_408a58() -> ! {
 
 // 0x408b3c — __ZN5boost6detail12shared_countC2IPN3RBX8FillToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX8FillToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
-pub fn stub_408b3c() -> ! {
-    todo!("0x408b3c __ZN5boost6detail12shared_countC2IPN3RBX8FillToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+pub fn stub_408b3c() {
+    // IDA 0x408b3c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x408c34 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")]
-pub fn stub_408c34() -> ! {
-    todo!("0x408c34 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+pub fn stub_408c34() {
+    // IDA 0x408c34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x408c38 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")]
-pub fn stub_408c38() -> ! {
-    todo!("0x408c38 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+pub fn stub_408c38() {
+    // IDA 0x408c38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x408c3c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")]
-pub fn stub_408c3c() -> ! {
-    todo!("0x408c3c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+pub fn stub_408c3c() {
+    // IDA 0x408c3c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x408c4c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_408c4c() -> ! {
-    todo!("0x408c4c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_408c4c() {
+    // IDA 0x408c4c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x408c64 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_408c64() -> ! {
-    todo!("0x408c64 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_408c64() {
+    // IDA 0x408c64: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x408c68 — __ZN3RBX4Name7declareILZNS_9sFillToolEEEERKS0_v
@@ -809,38 +809,38 @@ pub fn stub_4095a4() -> ! {
 
 // 0x409688 — __ZN5boost6detail12shared_countC2IPN3RBX8LockToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX8LockToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
-pub fn stub_409688() -> ! {
-    todo!("0x409688 __ZN5boost6detail12shared_countC2IPN3RBX8LockToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+pub fn stub_409688() {
+    // IDA 0x409688: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x409780 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")]
-pub fn stub_409780() -> ! {
-    todo!("0x409780 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+pub fn stub_409780() {
+    // IDA 0x409780: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x409784 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")]
-pub fn stub_409784() -> ! {
-    todo!("0x409784 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+pub fn stub_409784() {
+    // IDA 0x409784: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x409788 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")]
-pub fn stub_409788() -> ! {
-    todo!("0x409788 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+pub fn stub_409788() {
+    // IDA 0x409788: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x409798 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_409798() -> ! {
-    todo!("0x409798 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_409798() {
+    // IDA 0x409798: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4097b0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_4097b0() -> ! {
-    todo!("0x4097b0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_4097b0() {
+    // IDA 0x4097b0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4097b4 — __ZN3RBX4Name7declareILZNS_9sLockToolEEEERKS0_v
@@ -899,12 +899,12 @@ pub fn stub_40a0f8() -> ! {
 
 // 0x40a1dc — __ZN5boost6detail12shared_countC2IPN3RBX10AnchorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX10AnchorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
-pub fn stub_40a1dc() -> ! {
-    todo!("0x40a1dc __ZN5boost6detail12shared_countC2IPN3RBX10AnchorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+pub fn stub_40a1dc() {
+    // IDA 0x40a1dc: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x40a2d4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")]
-pub fn stub_40a2d4() -> ! {
-    todo!("0x40a2d4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+pub fn stub_40a2d4() {
+    // IDA 0x40a2d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

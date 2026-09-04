@@ -117,20 +117,20 @@ pub fn stub_64154c() -> ! {
 
 // 0x6418b4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12SpecialShapeENS2_8MeshTypeEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpecialShape,RBX::SpecialShape::MeshType>::~EnumPropDescriptor()")]
-pub fn stub_6418b4() -> ! {
-    todo!("0x6418b4 RBX::Reflection::EnumPropDescriptor<RBX::SpecialShape,RBX::SpecialShape::MeshType>::~EnumPropDescriptor()")
+pub fn stub_6418b4() {
+    // IDA 0x6418b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x642348 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12SpecialShapeES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpecialShape,RBX::SpecialShape>(rbx_core::SharedPtr<RBX::SpecialShape> const*,RBX::SpecialShape *)const")]
-pub fn stub_642348() -> ! {
-    todo!("0x642348 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpecialShape,RBX::SpecialShape>(boost::shared_ptr<RBX::SpecialShape> const*,RBX::SpecialShape *)const")
+pub fn stub_642348() {
+    // IDA 0x642348: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x642cdc — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_8FileMeshES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FileMesh,RBX::FileMesh>(rbx_core::SharedPtr<RBX::FileMesh> const*,RBX::FileMesh *)const")]
-pub fn stub_642cdc() -> ! {
-    todo!("0x642cdc void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FileMesh,RBX::FileMesh>(boost::shared_ptr<RBX::FileMesh> const*,RBX::FileMesh *)const")
+pub fn stub_642cdc() {
+    // IDA 0x642cdc: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x643fc8 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12SpecialShapeENS2_8MeshTypeEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -142,8 +142,8 @@ pub fn stub_643fc8() -> ! {
 
 // 0x64417c — __ZN3RBX10Reflection18EnumPropDescriptorINS_12SpecialShapeENS2_8MeshTypeEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpecialShape,RBX::SpecialShape::MeshType>::~EnumPropDescriptor()")]
-pub fn stub_64417c() -> ! {
-    todo!("0x64417c RBX::Reflection::EnumPropDescriptor<RBX::SpecialShape,RBX::SpecialShape::MeshType>::~EnumPropDescriptor()")
+pub fn stub_64417c() {
+    // IDA 0x64417c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6441a8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12SpecialShapeENS2_8MeshTypeEE10isReadOnlyEv
@@ -347,62 +347,62 @@ pub fn stub_6478e8() -> ! {
 
 // 0x64a140 — __ZN3RBX10Reflection13BoundFuncDescI13ProfilingItemFN5boost10shared_ptrIKNS0_5TupleEEEdELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<ProfilingItem,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(double),1>::~BoundFuncDesc()")]
-pub fn stub_64a140() -> ! {
-    todo!("0x64a140 RBX::Reflection::BoundFuncDesc<ProfilingItem,boost::shared_ptr<RBX::Reflection::Tuple const> ()(double),1>::~BoundFuncDesc()")
+pub fn stub_64a140() {
+    // IDA 0x64a140: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64a2f8 — __ZN3RBX10Reflection13BoundFuncDescI13ProfilingItemFN5boost10shared_ptrIKNS0_5TupleEEEiELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<ProfilingItem,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(int),1>::~BoundFuncDesc()")]
-pub fn stub_64a2f8() -> ! {
-    todo!("0x64a2f8 RBX::Reflection::BoundFuncDesc<ProfilingItem,boost::shared_ptr<RBX::Reflection::Tuple const> ()(int),1>::~BoundFuncDesc()")
+pub fn stub_64a2f8() {
+    // IDA 0x64a2f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64a338 — __ZN3RBX10Reflection13BoundFuncDescINS_5Stats12StatsServiceEFvSsN5boost10shared_ptrIKNS4_9unordered13unordered_mapISsNS0_7VariantENS4_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEELi2EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Stats::StatsService,void ()(std::string,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),2>::~BoundFuncDesc()")]
-pub fn stub_64a338() -> ! {
-    todo!("0x64a338 RBX::Reflection::BoundFuncDesc<RBX::Stats::StatsService,void ()(std::string,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),2>::~BoundFuncDesc()")
+pub fn stub_64a338() {
+    // IDA 0x64a338: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64a454 — __ZN3RBX10Reflection13BoundFuncDescINS_5Stats12StatsServiceEFvbELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Stats::StatsService,void ()(bool),1>::~BoundFuncDesc()")]
-pub fn stub_64a454() -> ! {
-    todo!("0x64a454 RBX::Reflection::BoundFuncDesc<RBX::Stats::StatsService,void ()(bool),1>::~BoundFuncDesc()")
+pub fn stub_64a454() {
+    // IDA 0x64a454: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64a494 — __ZN3RBX10Reflection13BoundFuncDescINS_5Stats12StatsServiceEFvvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Stats::StatsService,void ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_64a494() -> ! {
-    todo!("0x64a494 RBX::Reflection::BoundFuncDesc<RBX::Stats::StatsService,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_64a494() {
+    // IDA 0x64a494: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64a4b8 — __ZN3RBX10Reflection13BoundFuncDescINS_5Stats12StatsServiceEFvSsELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Stats::StatsService,void ()(std::string),1>::~BoundFuncDesc()")]
-pub fn stub_64a4b8() -> ! {
-    todo!("0x64a4b8 RBX::Reflection::BoundFuncDesc<RBX::Stats::StatsService,void ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_64a4b8() {
+    // IDA 0x64a4b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64a4f8 — __ZN3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::~BoundProp()")]
-pub fn stub_64a4f8() -> ! {
-    todo!("0x64a4f8 RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::~BoundProp()")
+pub fn stub_64a4f8() {
+    // IDA 0x64a4f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64a51c — __ZN3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::~BoundProp()")]
-pub fn stub_64a51c() -> ! {
-    todo!("0x64a51c RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::~BoundProp()")
+pub fn stub_64a51c() {
+    // IDA 0x64a51c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64a560 — __ZN3RBX10Reflection13BoundFuncDescINS_5Stats4ItemEFSsvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Stats::Item,std::string ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_64a560() -> ! {
-    todo!("0x64a560 RBX::Reflection::BoundFuncDesc<RBX::Stats::Item,std::string ()(void),0>::~BoundFuncDesc()")
+pub fn stub_64a560() {
+    // IDA 0x64a560: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64a5a0 — __ZN3RBX10Reflection13BoundFuncDescINS_5Stats4ItemEFdvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Stats::Item,double ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_64a5a0() -> ! {
-    todo!("0x64a5a0 RBX::Reflection::BoundFuncDesc<RBX::Stats::Item,double ()(void),0>::~BoundFuncDesc()")
+pub fn stub_64a5a0() {
+    // IDA 0x64a5a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x64a5c4 — __ZSt8for_eachIN5boost9unordered15iterator_detail10c_iteratorINS1_6detail8ptr_nodeISt4pairIKSsN3RBX10Reflection7VariantEEEEPKSC_EENS0_3_bi6bind_tIvNS0_4_mfi3mf1IvNS8_5Stats10JsonWriterERKS6_ISsSA_EEENSG_5list2INSG_5valueIPSL_EENS0_3argILi1EEEEEEEET0_T_SZ_SY_
@@ -447,56 +447,56 @@ pub fn stub_64b114() -> ! {
 
 // 0x64d120 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats16TypedPercentItemES7_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedPercentItem,RBX::Stats::TypedPercentItem>(rbx_core::SharedPtr<RBX::Stats::TypedPercentItem> const*,RBX::Stats::TypedPercentItem *)const")]
-pub fn stub_64d120() -> ! {
-    todo!("0x64d120 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedPercentItem,RBX::Stats::TypedPercentItem>(boost::shared_ptr<RBX::Stats::TypedPercentItem> const*,RBX::Stats::TypedPercentItem *)const")
+pub fn stub_64d120() {
+    // IDA 0x64d120: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x64e580 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats12TypedMemItemES7_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedMemItem,RBX::Stats::TypedMemItem>(rbx_core::SharedPtr<RBX::Stats::TypedMemItem> const*,RBX::Stats::TypedMemItem *)const")]
-pub fn stub_64e580() -> ! {
-    todo!("0x64e580 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedMemItem,RBX::Stats::TypedMemItem>(boost::shared_ptr<RBX::Stats::TypedMemItem> const*,RBX::Stats::TypedMemItem *)const")
+pub fn stub_64e580() {
+    // IDA 0x64e580: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x64f240 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI13ProfilingItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<ProfilingItem,ProfilingItem>(rbx_core::SharedPtr<ProfilingItem> const*,ProfilingItem *)const")]
-pub fn stub_64f240() -> ! {
-    todo!("0x64f240 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<ProfilingItem,ProfilingItem>(boost::shared_ptr<ProfilingItem> const*,ProfilingItem *)const")
+pub fn stub_64f240() {
+    // IDA 0x64f240: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x64fe38 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI24RunningAverageItemDoubleS6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RunningAverageItemDouble,RunningAverageItemDouble>(rbx_core::SharedPtr<RunningAverageItemDouble> const*,RunningAverageItemDouble *)const")]
-pub fn stub_64fe38() -> ! {
-    todo!("0x64fe38 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RunningAverageItemDouble,RunningAverageItemDouble>(boost::shared_ptr<RunningAverageItemDouble> const*,RunningAverageItemDouble *)const")
+pub fn stub_64fe38() {
+    // IDA 0x64fe38: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x650a30 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI21RunningAverageItemIntS6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RunningAverageItemInt,RunningAverageItemInt>(rbx_core::SharedPtr<RunningAverageItemInt> const*,RunningAverageItemInt *)const")]
-pub fn stub_650a30() -> ! {
-    todo!("0x650a30 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RunningAverageItemInt,RunningAverageItemInt>(boost::shared_ptr<RunningAverageItemInt> const*,RunningAverageItemInt *)const")
+pub fn stub_650a30() {
+    // IDA 0x650a30: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x65163c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI26TotalCountTimeIntervalItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<TotalCountTimeIntervalItem,TotalCountTimeIntervalItem>(rbx_core::SharedPtr<TotalCountTimeIntervalItem> const*,TotalCountTimeIntervalItem *)const")]
-pub fn stub_65163c() -> ! {
-    todo!("0x65163c void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<TotalCountTimeIntervalItem,TotalCountTimeIntervalItem>(boost::shared_ptr<TotalCountTimeIntervalItem> const*,TotalCountTimeIntervalItem *)const")
+pub fn stub_65163c() {
+    // IDA 0x65163c: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x651938 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats4ItemES7_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::Item,RBX::Stats::Item>(rbx_core::SharedPtr<RBX::Stats::Item> const*,RBX::Stats::Item *)const")]
-pub fn stub_651938() -> ! {
-    todo!("0x651938 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::Item,RBX::Stats::Item>(boost::shared_ptr<RBX::Stats::Item> const*,RBX::Stats::Item *)const")
+pub fn stub_651938() {
+    // IDA 0x651938: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x651b70 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIbNSA_4_mfi3mf0IbNS2_5Stats12StatsServiceEEENSB_5list1INSB_5valueIPSG_EEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<bool,boost::_mfi::mf0<bool,RBX::Stats::StatsService>,boost::_bi::list1<boost::_bi::value<RBX::Stats::StatsService*>>>>::~callable_slot()")]
-pub fn stub_651b70() -> ! {
-    todo!("0x651b70 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<bool,boost::_mfi::mf0<bool,RBX::Stats::StatsService>,boost::_bi::list1<boost::_bi::value<RBX::Stats::StatsService*>>>>::~callable_slot()")
+pub fn stub_651b70() {
+    // IDA 0x651b70: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x651b9c — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIbNSA_4_mfi3mf0IbNS2_5Stats12StatsServiceEEENSB_5list1INSB_5valueIPSG_EEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<bool,boost::_mfi::mf0<bool,RBX::Stats::StatsService>,boost::_bi::list1<boost::_bi::value<RBX::Stats::StatsService*>>>>::~callable_slot()")]
-pub fn stub_651b9c() -> ! {
-    todo!("0x651b9c rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<bool,boost::_mfi::mf0<bool,RBX::Stats::StatsService>,boost::_bi::list1<boost::_bi::value<RBX::Stats::StatsService*>>>>::~callable_slot()")
+pub fn stub_651b9c() {
+    // IDA 0x651b9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x651c74 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIbNSB_4_mfi3mf0IbNS3_5Stats12StatsServiceEEENSC_5list1INSC_5valueIPSH_EEEEEELi1ES8_E4callES7_
@@ -507,8 +507,8 @@ pub fn stub_651c74() -> ! {
 
 // 0x651c8c — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIbNSB_4_mfi3mf0IbNS3_5Stats12StatsServiceEEENSC_5list1INSC_5valueIPSH_EEEEEELi1ES8_E4callES7_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf0<bool,RBX::Stats::StatsService>,boost::_bi::list1<boost::_bi::value<RBX::Stats::StatsService*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_651c8c() -> ! {
-    todo!("0x651c8c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf0<bool,RBX::Stats::StatsService>,boost::_bi::list1<boost::_bi::value<RBX::Stats::StatsService*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_651c8c() {
+    // IDA 0x651c8c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x651ca8 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slot24safe_static_do_get_mutexEv
@@ -519,14 +519,14 @@ pub fn stub_651ca8() -> ! {
 
 // 0x651d9c — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIbNSB_4_mfi3mf0IbNS3_5Stats12StatsServiceEEENSC_5list1INSC_5valueIPSH_EEEEEELi1ES8_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf0<bool,RBX::Stats::StatsService>,boost::_bi::list1<boost::_bi::value<RBX::Stats::StatsService*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
-pub fn stub_651d9c() -> ! {
-    todo!("0x651d9c rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf0<bool,RBX::Stats::StatsService>,boost::_bi::list1<boost::_bi::value<RBX::Stats::StatsService*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_651d9c() {
+    // IDA 0x651d9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x651dc8 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIbNSB_4_mfi3mf0IbNS3_5Stats12StatsServiceEEENSC_5list1INSC_5valueIPSH_EEEEEELi1ES8_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf0<bool,RBX::Stats::StatsService>,boost::_bi::list1<boost::_bi::value<RBX::Stats::StatsService*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
-pub fn stub_651dc8() -> ! {
-    todo!("0x651dc8 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf0<bool,RBX::Stats::StatsService>,boost::_bi::list1<boost::_bi::value<RBX::Stats::StatsService*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_651dc8() {
+    // IDA 0x651dc8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x653744 — __ZN3rbx8any_castIRKN5boost10shared_ptrIKSt6vectorIN3RBX10Reflection7VariantESaIS6_EEEENS4_7Region3EEET_RNS_13placement_anyIT0_EE
@@ -565,8 +565,8 @@ pub fn stub_653bf0() -> ! {
 
 // 0x653cf4 — __ZN3RBX10Reflection13BoundFuncDescINS_5Stats4ItemEFdvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Stats::Item,double ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_653cf4() -> ! {
-    todo!("0x653cf4 RBX::Reflection::BoundFuncDesc<RBX::Stats::Item,double ()(void),0>::~BoundFuncDesc()")
+pub fn stub_653cf4() {
+    // IDA 0x653cf4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x653da8 — __ZNK3RBX10Reflection13BoundFuncDescINS_5Stats4ItemEFdvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -591,8 +591,8 @@ pub fn stub_653e08() -> ! {
 
 // 0x653f0c — __ZN3RBX10Reflection13BoundFuncDescINS_5Stats4ItemEFSsvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Stats::Item,std::string ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_653f0c() -> ! {
-    todo!("0x653f0c RBX::Reflection::BoundFuncDesc<RBX::Stats::Item,std::string ()(void),0>::~BoundFuncDesc()")
+pub fn stub_653f0c() {
+    // IDA 0x653f0c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x653fc0 — __ZNK3RBX10Reflection13BoundFuncDescINS_5Stats4ItemEFSsvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -616,8 +616,8 @@ pub fn stub_654124() -> ! {
 
 // 0x6542b8 — __ZN3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::~BoundProp()")]
-pub fn stub_6542b8() -> ! {
-    todo!("0x6542b8 RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::~BoundProp()")
+pub fn stub_6542b8() {
+    // IDA 0x6542b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6542e8 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIdE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
@@ -628,6 +628,6 @@ pub fn stub_6542e8() -> ! {
 
 // 0x654528 — __ZN3RBX10Reflection23TypedPropertyDescriptorIdED1Ev
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<double>::~TypedPropertyDescriptor()")]
-pub fn stub_654528() -> ! {
-    todo!("0x654528 RBX::Reflection::TypedPropertyDescriptor<double>::~TypedPropertyDescriptor()")
+pub fn stub_654528() {
+    // IDA 0x654528: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

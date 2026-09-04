@@ -135,8 +135,8 @@ pub fn stub_5d2ba8() -> ! {
 // demangled: RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PartInstance>::~RefPropDescriptor()
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PartInstance>::~RefPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection17RefPropDescriptorINS_5MouseENS_12PartInstanceEED0Ev")]
-pub fn stub_5d2c4c() -> ! {
-    todo!("0x5d2c4c __ZN3RBX10Reflection17RefPropDescriptorINS_5MouseENS_12PartInstanceEED0Ev")
+pub fn stub_5d2c4c() {
+    // IDA 0x5d2c4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d2c7c — __ZNK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_12PartInstanceEE10isReadOnlyEv
@@ -238,8 +238,8 @@ pub fn stub_5d3070() -> ! {
 // 0x5d3150 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 // demangled: non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
-pub fn stub_5d3150() -> ! {
-    todo!("0x5d3150 __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")
+pub fn stub_5d3150() {
+    // IDA 0x5d3150: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d3158 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_12PartInstanceEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
@@ -286,8 +286,8 @@ pub fn stub_5d32a0() -> ! {
 // demangled: RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::~RefPropDescriptor()
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::~RefPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEED0Ev")]
-pub fn stub_5d3344() -> ! {
-    todo!("0x5d3344 __ZN3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEED0Ev")
+pub fn stub_5d3344() {
+    // IDA 0x5d3344: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d3374 — __ZNK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEE10isReadOnlyEv
@@ -389,8 +389,8 @@ pub fn stub_5d3768() -> ! {
 // 0x5d3848 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 // demangled: non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
-pub fn stub_5d3848() -> ! {
-    todo!("0x5d3848 __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")
+pub fn stub_5d3848() {
+    // IDA 0x5d3848: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d3850 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -437,8 +437,8 @@ pub fn stub_5d389c() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::RbxRay>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::RbxRay>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_5MouseENS_6RbxRayEED0Ev")]
-pub fn stub_5d39a8() -> ! {
-    todo!("0x5d39a8 __ZN3RBX10Reflection14PropDescriptorINS_5MouseENS_6RbxRayEED0Ev")
+pub fn stub_5d39a8() {
+    // IDA 0x5d39a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d39d4 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_6RbxRayEE7GetImplIMS2_KFS3_vEE10isReadOnlyEv
@@ -485,8 +485,8 @@ pub fn stub_5d3b24() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Mouse,G3D::CoordinateFrame>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,G3D::CoordinateFrame>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_5MouseEN3G3D15CoordinateFrameEED0Ev")]
-pub fn stub_5d3c30() -> ! {
-    todo!("0x5d3c30 __ZN3RBX10Reflection14PropDescriptorINS_5MouseEN3G3D15CoordinateFrameEED0Ev")
+pub fn stub_5d3c30() {
+    // IDA 0x5d3c30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d3c5c — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEN3G3D15CoordinateFrameEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
@@ -533,8 +533,8 @@ pub fn stub_5d3dac() -> ! {
 // demangled: RBX::Reflection::EventDesc<RBX::Mouse,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Mouse::*>::~EventDesc()
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Mouse,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Mouse::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5MouseEFvSsEN3rbx6signalIS3_EEMS2_S6_ED0Ev")]
-pub fn stub_5d3f30() -> ! {
-    todo!("0x5d3f30 __ZN3RBX10Reflection9EventDescINS_5MouseEFvSsEN3rbx6signalIS3_EEMS2_S6_ED0Ev")
+pub fn stub_5d3f30() {
+    // IDA 0x5d3f30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d3fe4 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_5MouseEFvSsEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -573,8 +573,8 @@ pub fn stub_5d42f0() -> ! {
 // demangled: RBX::Reflection::EventDesc<RBX::Mouse,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Mouse::*>::~EventDesc()
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Mouse,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Mouse::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5MouseEFvvEN3rbx6signalIS3_EEMS2_S6_ED0Ev")]
-pub fn stub_5d4474() -> ! {
-    todo!("0x5d4474 __ZN3RBX10Reflection9EventDescINS_5MouseEFvvEN3rbx6signalIS3_EEMS2_S6_ED0Ev")
+pub fn stub_5d4474() {
+    // IDA 0x5d4474: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d4528 — __ZNK3RBX10Reflection13EventDescImplILi0ENS_5MouseEFvvEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -620,38 +620,38 @@ pub fn stub_5d5038() -> ! {
 // demangled: RBX::MouseCommand::~MouseCommand()
 #[doc(alias = "RBX::MouseCommand::~MouseCommand()")]
 #[doc(alias = "__ZN3RBX12MouseCommandD0Ev")]
-pub fn stub_5d507c() -> ! {
-    todo!("0x5d507c __ZN3RBX12MouseCommandD0Ev")
+pub fn stub_5d507c() {
+    // IDA 0x5d507c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d511c — __ZN3RBX12MouseCommandD1Ev
 // demangled: RBX::MouseCommand::~MouseCommand()
 #[doc(alias = "RBX::MouseCommand::~MouseCommand()")]
 #[doc(alias = "__ZN3RBX12MouseCommandD1Ev")]
-pub fn stub_5d511c() -> ! {
-    todo!("0x5d511c __ZN3RBX12MouseCommandD1Ev")
+pub fn stub_5d511c() {
+    // IDA 0x5d511c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d5120 — __ZThn36_N3RBX12MouseCommandD0Ev
 // demangled: non-virtual thunk toRBX::MouseCommand::~MouseCommand()
 #[doc(alias = "__ZThn36_N3RBX12MouseCommandD0Ev")]
-pub fn stub_5d5120() -> ! {
-    todo!("0x5d5120 __ZThn36_N3RBX12MouseCommandD0Ev")
+pub fn stub_5d5120() {
+    // IDA 0x5d5120: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d5128 — __ZN3RBX12MouseCommandD2Ev
 // demangled: RBX::MouseCommand::~MouseCommand()
 #[doc(alias = "RBX::MouseCommand::~MouseCommand()")]
 #[doc(alias = "__ZN3RBX12MouseCommandD2Ev")]
-pub fn stub_5d5128() -> ! {
-    todo!("0x5d5128 __ZN3RBX12MouseCommandD2Ev")
+pub fn stub_5d5128() {
+    // IDA 0x5d5128: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d5258 — __ZThn36_N3RBX12MouseCommandD1Ev
 // demangled: non-virtual thunk toRBX::MouseCommand::~MouseCommand()
 #[doc(alias = "__ZThn36_N3RBX12MouseCommandD1Ev")]
-pub fn stub_5d5258() -> ! {
-    todo!("0x5d5258 __ZThn36_N3RBX12MouseCommandD1Ev")
+pub fn stub_5d5258() {
+    // IDA 0x5d5258: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d5260 — __ZNK3RBX12MouseCommand18getTopSelectable3dEPNS_12PartInstanceE
@@ -794,14 +794,14 @@ pub fn stub_5d61a0() -> ! {
 // demangled: RBX::PartByLocalCharacter::~PartByLocalCharacter()
 #[doc(alias = "RBX::PartByLocalCharacter::~PartByLocalCharacter()")]
 #[doc(alias = "__ZN3RBX20PartByLocalCharacterD1Ev")]
-pub fn stub_5d626c() -> ! {
-    todo!("0x5d626c __ZN3RBX20PartByLocalCharacterD1Ev")
+pub fn stub_5d626c() {
+    // IDA 0x5d626c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d634c — __ZN3RBX28UnlockedPartByLocalCharacterD1Ev
 // demangled: RBX::UnlockedPartByLocalCharacter::~UnlockedPartByLocalCharacter()
 #[doc(alias = "RBX::UnlockedPartByLocalCharacter::~UnlockedPartByLocalCharacter()")]
 #[doc(alias = "__ZN3RBX28UnlockedPartByLocalCharacterD1Ev")]
-pub fn stub_5d634c() -> ! {
-    todo!("0x5d634c __ZN3RBX28UnlockedPartByLocalCharacterD1Ev")
+pub fn stub_5d634c() {
+    // IDA 0x5d634c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

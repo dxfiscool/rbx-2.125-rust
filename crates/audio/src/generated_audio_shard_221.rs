@@ -26,8 +26,8 @@ pub fn stub_4fa3f8() -> ! {
 
 // 0x4fa5ac — __ZN3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::~EnumPropDescriptor()")]
-pub fn stub_4fa5ac() -> ! {
-    todo!("0x4fa5ac __ZN3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEED0Ev")
+pub fn stub_4fa5ac() {
+    // IDA 0x4fa5ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4fa5d8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE10isReadOnlyEv
@@ -199,8 +199,8 @@ pub fn stub_4fafc4() -> ! {
 // 0x4fb85c — __ZN3RBX4GameD2Ev
 // type: void __fastcall(RBX::Game *__hidden this)
 #[doc(alias = "RBX::Game::~Game()")]
-pub fn stub_4fb85c() -> ! {
-    todo!("0x4fb85c __ZN3RBX4GameD2Ev")
+pub fn stub_4fb85c() {
+    // IDA 0x4fb85c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4fba28 — __ZN3RBX19UnsecuredStudioGameC1EPNS_4VerbEPKcb
@@ -241,15 +241,15 @@ pub fn stub_4fc0c8() -> ! {
 // 0x4fc348 — __ZN3RBX4GameD0Ev
 // type: void __fastcall(RBX::Game *__hidden this)
 #[doc(alias = "RBX::Game::~Game()")]
-pub fn stub_4fc348() -> ! {
-    todo!("0x4fc348 __ZN3RBX4GameD0Ev")
+pub fn stub_4fc348() {
+    // IDA 0x4fc348: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4fc3e8 — __ZN3RBX4GameD1Ev
 // type: void __fastcall(RBX::Game *__hidden this)
 #[doc(alias = "RBX::Game::~Game()")]
-pub fn stub_4fc3e8() -> ! {
-    todo!("0x4fc3e8 __ZN3RBX4GameD1Ev")
+pub fn stub_4fc3e8() {
+    // IDA 0x4fc3e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4fc3ec — __ZN3RBX4Game8shutdownEv
@@ -289,8 +289,8 @@ pub fn stub_4fc750() -> ! {
 
 // 0x4fc774 — __ZN5boost10shared_ptrIN3RBX15ProfanityFilterEED1Ev
 #[doc(alias = "boost::shared_ptr<RBX::ProfanityFilter>::~shared_ptr()")]
-pub fn stub_4fc774() -> ! {
-    todo!("0x4fc774 __ZN5boost10shared_ptrIN3RBX15ProfanityFilterEED1Ev")
+pub fn stub_4fc774() {
+    // IDA 0x4fc774: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4fc788 — __ZN5boost10shared_ptrIN3RBX15ProfanityFilterEEaSERKS3_
@@ -347,8 +347,8 @@ pub fn stub_4fcd94() -> ! {
 // 0x4fcdcc — __ZN5boost4bindIvN3RBX4GameERKSsPS2_SsEENS_3_bi6bind_tIT_NS_4_mfi3mf1IS8_T0_T1_EENS6_9list_av_2IT2_T3_E4typeEEEMSB_FS8_SC_ESF_SG_
 // type: int __fastcall(int, int, int, int, std::string *)
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Game,std::string const&>,boost::_bi::list_av_2<RBX::Game*,std::string>::type> boost::bind<void,RBX::Game,std::string const&,RBX::Game*,std::string>(void (RBX::Game::*)(std::string const&),RBX::Game*,std::string)")]
-pub fn stub_4fcdcc() -> ! {
-    todo!("0x4fcdcc __ZN5boost4bindIvN3RBX4GameERKSsPS2_SsEENS_3_bi6bind_tIT_NS_4_mfi3mf1IS8_T0_T1_EENS6_9list_av_2IT2_T3_E4typeEEEMSB_FS8_SC_ESF_SG_")
+pub fn stub_4fcdcc() {
+    // IDA 0x4fcdcc: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x4fcf84 — __ZN3rbx7signals16signal_with_argsILi1EFvPN3RBX9DataModelEEEclES4_
@@ -374,36 +374,36 @@ pub fn stub_4fd1e8() -> ! {
 
 // 0x4fd300 — __ZN3RBX14FactoryProductINS_12GameSettingsENS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12GameSettingsENS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_4fd300() -> ! {
-    todo!("0x4fd300 __ZN3RBX14FactoryProductINS_12GameSettingsENS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_4fd300() {
+    // IDA 0x4fd300: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4fd304 — __ZN3RBX16SecurePlayerGameD1Ev
 // type: void __fastcall(RBX::SecurePlayerGame *__hidden this)
 #[doc(alias = "RBX::SecurePlayerGame::~SecurePlayerGame()")]
-pub fn stub_4fd304() -> ! {
-    todo!("0x4fd304 __ZN3RBX16SecurePlayerGameD1Ev")
+pub fn stub_4fd304() {
+    // IDA 0x4fd304: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4fd308 — __ZN3RBX16SecurePlayerGameD0Ev
 // type: void __fastcall(RBX::SecurePlayerGame *__hidden this)
 #[doc(alias = "RBX::SecurePlayerGame::~SecurePlayerGame()")]
-pub fn stub_4fd308() -> ! {
-    todo!("0x4fd308 __ZN3RBX16SecurePlayerGameD0Ev")
+pub fn stub_4fd308() {
+    // IDA 0x4fd308: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4fd3a8 — __ZN3RBX19UnsecuredStudioGameD1Ev
 // type: void __fastcall(RBX::UnsecuredStudioGame *__hidden this)
 #[doc(alias = "RBX::UnsecuredStudioGame::~UnsecuredStudioGame()")]
-pub fn stub_4fd3a8() -> ! {
-    todo!("0x4fd3a8 __ZN3RBX19UnsecuredStudioGameD1Ev")
+pub fn stub_4fd3a8() {
+    // IDA 0x4fd3a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4fd3ac — __ZN3RBX19UnsecuredStudioGameD0Ev
 // type: void __fastcall(RBX::UnsecuredStudioGame *__hidden this)
 #[doc(alias = "RBX::UnsecuredStudioGame::~UnsecuredStudioGame()")]
-pub fn stub_4fd3ac() -> ! {
-    todo!("0x4fd3ac __ZN3RBX19UnsecuredStudioGameD0Ev")
+pub fn stub_4fd3ac() {
+    // IDA 0x4fd3ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4fd44c — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4nextERN5boost13intrusive_ptrINS6_4slotEEE
@@ -439,14 +439,14 @@ pub fn stub_4fd848() -> ! {
 
 // 0x4fd994 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4GameERKSsEENS3_5list2INS3_5valueIPS8_EENSD_ISsEEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Game,std::string const&>,boost::_bi::list2<boost::_bi::value<RBX::Game*>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_4fd994() -> ! {
-    todo!("0x4fd994 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4GameERKSsEENS3_5list2INS3_5valueIPS8_EENSD_ISsEEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE")
+pub fn stub_4fd994() {
+    // IDA 0x4fd994: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x4fd9b0 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4GameERKSsEENS3_5list2INS3_5valueIPS8_EENSD_ISsEEEEEEvPNS7_9DataModelEE6invokeERNS1_15function_bufferESK_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Game,std::string const&>,boost::_bi::list2<boost::_bi::value<RBX::Game*>,boost::_bi::value<std::string>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")]
-pub fn stub_4fd9b0() -> ! {
-    todo!("0x4fd9b0 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4GameERKSsEENS3_5list2INS3_5valueIPS8_EENSD_ISsEEEEEEvPNS7_9DataModelEE6invokeERNS1_15function_bufferESK_")
+pub fn stub_4fd9b0() {
+    // IDA 0x4fd9b0: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x4fd9c4 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS3_4GameERKSsEENS8_5list2INS8_5valueIPSC_EENSH_ISsEEEEEEEEbT_RNS1_15function_bufferE
@@ -475,15 +475,15 @@ pub fn stub_4fdd08() -> ! {
 
 // 0x4fdd20 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4GameERKSsEENS3_5list2INS3_5valueIPS8_EENSD_ISsEEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Game,std::string const&>,boost::_bi::list2<boost::_bi::value<RBX::Game*>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_4fdd20() -> ! {
-    todo!("0x4fdd20 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4GameERKSsEENS3_5list2INS3_5valueIPS8_EENSD_ISsEEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+pub fn stub_4fdd20() {
+    // IDA 0x4fdd20: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x4fde5c — __ZN5boost3_bi5list2INS0_5valueIPN3RBX4GameEEENS2_ISsEEEC2ES6_S7_
 // type: int __fastcall(int, int, std::string *)
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<RBX::Game *>,boost::_bi::value<std::string>>::list2(boost::_bi::value<RBX::Game *>,boost::_bi::value<std::string>)")]
-pub fn stub_4fde5c() -> ! {
-    todo!("0x4fde5c __ZN5boost3_bi5list2INS0_5valueIPN3RBX4GameEEENS2_ISsEEEC2ES6_S7_")
+pub fn stub_4fde5c() {
+    // IDA 0x4fde5c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x4fdf80 — __ZNSt6vectorIPN3RBX4VerbESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
@@ -501,52 +501,52 @@ pub fn stub_4fe060() -> ! {
 
 // 0x4fe078 — __ZN5boost10shared_ptrIN3RBX11CommonVerbsEEC2IS2_EEPT_
 #[doc(alias = "boost::shared_ptr<RBX::CommonVerbs>::shared_ptr<RBX::CommonVerbs>(RBX::CommonVerbs *)")]
-pub fn stub_4fe078() -> ! {
-    todo!("0x4fe078 __ZN5boost10shared_ptrIN3RBX11CommonVerbsEEC2IS2_EEPT_")
+pub fn stub_4fe078() {
+    // IDA 0x4fe078: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x4fe14c — __ZN5boost6detail12shared_countC2IN3RBX11CommonVerbsEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::CommonVerbs>(RBX::CommonVerbs *)")]
-pub fn stub_4fe14c() -> ! {
-    todo!("0x4fe14c __ZN5boost6detail12shared_countC2IN3RBX11CommonVerbsEEEPT_")
+pub fn stub_4fe14c() {
+    // IDA 0x4fe14c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4fe258 — __ZN3RBX11CommonVerbsD2Ev
 // type: void __fastcall(RBX::CommonVerbs *__hidden this)
 #[doc(alias = "RBX::CommonVerbs::~CommonVerbs()")]
-pub fn stub_4fe258() -> ! {
-    todo!("0x4fe258 __ZN3RBX11CommonVerbsD2Ev")
+pub fn stub_4fe258() {
+    // IDA 0x4fe258: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4fec88 — __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::CommonVerbs>::~sp_counted_impl_p()")]
-pub fn stub_4fec88() -> ! {
-    todo!("0x4fec88 __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEED1Ev")
+pub fn stub_4fec88() {
+    // IDA 0x4fec88: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4fec8c — __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::CommonVerbs>::~sp_counted_impl_p()")]
-pub fn stub_4fec8c() -> ! {
-    todo!("0x4fec8c __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEED0Ev")
+pub fn stub_4fec8c() {
+    // IDA 0x4fec8c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4fec90 — __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::CommonVerbs>::dispose(void)")]
-pub fn stub_4fec90() -> ! {
-    todo!("0x4fec90 __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEE7disposeEv")
+pub fn stub_4fec90() {
+    // IDA 0x4fec90: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4fed34 — __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::CommonVerbs>::get_deleter(std::type_info const&)")]
-pub fn stub_4fed34() -> ! {
-    todo!("0x4fed34 __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEE11get_deleterERKSt9type_info")
+pub fn stub_4fed34() {
+    // IDA 0x4fed34: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4fed38 — __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::CommonVerbs>::get_untyped_deleter(void)")]
-pub fn stub_4fed38() -> ! {
-    todo!("0x4fed38 __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEE19get_untyped_deleterEv")
+pub fn stub_4fed38() {
+    // IDA 0x4fed38: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4fed3c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_25ScriptInformationProviderEEEN5boost10shared_ptrIT_EEv
@@ -557,27 +557,27 @@ pub fn stub_4fed3c() -> ! {
 
 // 0x4fedec — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_25ScriptInformationProviderEEERS3_RKNS0_IT_EE
 #[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ScriptInformationProvider>(boost::shared_ptr<RBX::ScriptInformationProvider> const&)")]
-pub fn stub_4fedec() -> ! {
-    todo!("0x4fedec __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_25ScriptInformationProviderEEERS3_RKNS0_IT_EE")
+pub fn stub_4fedec() {
+    // IDA 0x4fedec: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x4fee20 — __ZN5boost6detail12shared_countC2IPN3RBX25ScriptInformationProviderENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::ScriptInformationProvider *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ScriptInformationProvider *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_4fee20() -> ! {
-    todo!("0x4fee20 __ZN5boost6detail12shared_countC2IPN3RBX25ScriptInformationProviderENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_4fee20() {
+    // IDA 0x4fee20: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4fef28 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX25ScriptInformationProviderENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ScriptInformationProvider *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_4fef28() -> ! {
-    todo!("0x4fef28 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX25ScriptInformationProviderENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+pub fn stub_4fef28() {
+    // IDA 0x4fef28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4fef2c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX25ScriptInformationProviderENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ScriptInformationProvider *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_4fef2c() -> ! {
-    todo!("0x4fef2c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX25ScriptInformationProviderENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_4fef2c() {
+    // IDA 0x4fef2c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4fef4c — __ZNK3RBX14FactoryProductINS_12GameSettingsENS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEE7Creator12getClassNameEv
@@ -601,20 +601,20 @@ pub fn stub_4ff068() -> ! {
 // 0x4ff130 — __ZN5boost6detail12shared_countC2IPN3RBX12GameSettingsENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::GameSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GameSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_4ff130() -> ! {
-    todo!("0x4ff130 __ZN5boost6detail12shared_countC2IPN3RBX12GameSettingsENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_4ff130() {
+    // IDA 0x4ff130: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4ff238 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12GameSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GameSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_4ff238() -> ! {
-    todo!("0x4ff238 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12GameSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+pub fn stub_4ff238() {
+    // IDA 0x4ff238: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4ff23c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12GameSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GameSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_4ff23c() -> ! {
-    todo!("0x4ff23c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12GameSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_4ff23c() {
+    // IDA 0x4ff23c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4ff25c — __ZN3RBX4Name7declareILZNS_13sGameSettingsEEEERKS0_v
@@ -637,13 +637,13 @@ pub fn stub_4ff2a4() -> ! {
 
 // 0x4ff388 — __ZN5boost10shared_ptrIN3RBX15ProfanityFilterEEC2IS2_EEPT_
 #[doc(alias = "boost::shared_ptr<RBX::ProfanityFilter>::shared_ptr<RBX::ProfanityFilter>(RBX::ProfanityFilter *)")]
-pub fn stub_4ff388() -> ! {
-    todo!("0x4ff388 __ZN5boost10shared_ptrIN3RBX15ProfanityFilterEEC2IS2_EEPT_")
+pub fn stub_4ff388() {
+    // IDA 0x4ff388: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x4ff45c — __ZN5boost6detail12shared_countC2IN3RBX15ProfanityFilterEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::ProfanityFilter>(RBX::ProfanityFilter *)")]
-pub fn stub_4ff45c() -> ! {
-    todo!("0x4ff45c __ZN5boost6detail12shared_countC2IN3RBX15ProfanityFilterEEEPT_")
+pub fn stub_4ff45c() {
+    // IDA 0x4ff45c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }

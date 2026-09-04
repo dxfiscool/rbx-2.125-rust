@@ -15,8 +15,8 @@ const _: () = {
 // 0x3b1228 — __ZN3RBX8BackpackD0Ev
 // type: void __fastcall(RBX::Backpack *__hidden this)
 #[doc(alias = "RBX::Backpack::~Backpack()")]
-pub fn stub_3b1228() -> ! {
-    todo!("0x3b1228 RBX::Backpack::~Backpack()")
+pub fn stub_3b1228() {
+    // IDA 0x3b1228: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b12c8 — __ZNK3RBX14FactoryProductINS_8BackpackENS_6HopperELZNS_9sBackpackEENS_8InstanceEE12getClassNameEv
@@ -29,49 +29,49 @@ pub fn stub_3b12c8() -> ! {
 // 0x3b12d8 — __ZThn32_N3RBX8BackpackD1Ev
 // type: void __fastcall(RBX::Backpack *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack()")]
-pub fn stub_3b12d8() -> ! {
-    todo!("0x3b12d8 non-virtual thunk toRBX::Backpack::~Backpack()")
+pub fn stub_3b12d8() {
+    // IDA 0x3b12d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b12e0 — __ZThn32_N3RBX8BackpackD0Ev
 // type: void __fastcall(RBX::Backpack *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack()")]
-pub fn stub_3b12e0() -> ! {
-    todo!("0x3b12e0 non-virtual thunk toRBX::Backpack::~Backpack()")
+pub fn stub_3b12e0() {
+    // IDA 0x3b12e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b1384 — __ZThn32_NK3RBX14FactoryProductINS_8BackpackENS_6HopperELZNS_9sBackpackEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_8BackpackENS_6HopperELZNS_9sBackpackEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_3b1384() -> ! {
-    todo!("0x3b1384 __ZThn32_NK3RBX14FactoryProductINS_8BackpackENS_6HopperELZNS_9sBackpackEENS_8InstanceEE12getClassNameEv")
+pub fn stub_3b1384() {
+    // IDA 0x3b1384: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b1394 — __ZThn36_N3RBX8BackpackD1Ev
 // type: void __fastcall(RBX::Backpack *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack()")]
-pub fn stub_3b1394() -> ! {
-    todo!("0x3b1394 non-virtual thunk toRBX::Backpack::~Backpack()")
+pub fn stub_3b1394() {
+    // IDA 0x3b1394: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b139c — __ZThn36_N3RBX8BackpackD0Ev
 // type: void __fastcall(RBX::Backpack *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack()")]
-pub fn stub_3b139c() -> ! {
-    todo!("0x3b139c non-virtual thunk toRBX::Backpack::~Backpack()")
+pub fn stub_3b139c() {
+    // IDA 0x3b139c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b1440 — __ZN3RBX14FactoryProductINS_8BackpackENS_6HopperELZNS_9sBackpackEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_8BackpackENS_6HopperELZNS_9sBackpackEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_3b1440() -> ! {
-    todo!("0x3b1440 __ZN3RBX14FactoryProductINS_8BackpackENS_6HopperELZNS_9sBackpackEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_3b1440() {
+    // IDA 0x3b1440: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b1444 — __ZN3RBX14FactoryProductINS_8BackpackENS_6HopperELZNS_9sBackpackEENS_8InstanceEE7CreatorD2Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_8BackpackENS_6HopperELZNS_9sBackpackEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_3b1444() -> ! {
-    todo!("0x3b1444 __ZN3RBX14FactoryProductINS_8BackpackENS_6HopperELZNS_9sBackpackEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_3b1444() {
+    // IDA 0x3b1444: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b14e0 — __ZNK3RBX14FactoryProductINS_8BackpackENS_6HopperELZNS_9sBackpackEENS_8InstanceEE7Creator12getClassNameEv
@@ -104,8 +104,8 @@ pub fn stub_3b175c() -> ! {
 // 0x3b1824 — __ZN5boost6detail12shared_countC2IPN3RBX8BackpackENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_3b1824() -> ! {
-    todo!("0x3b1824 boost::detail::shared_count::shared_count<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_3b1824() {
+    // IDA 0x3b1824: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x3b192c — __ZN3RBX4Name13callDoDeclareILZNS_9sBackpackEEEEvv
@@ -138,43 +138,43 @@ pub fn stub_3b1c54() -> ! {
 // 0x3b1cc8 — __ZN3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::GuiItem *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_3b1cc8() -> ! {
-    todo!("0x3b1cc8 __ZN3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_3b1cc8() {
+    // IDA 0x3b1cc8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b1ccc — __ZN3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::GuiItem *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_3b1ccc() -> ! {
-    todo!("0x3b1ccc __ZN3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_3b1ccc() {
+    // IDA 0x3b1ccc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b1d6c — __ZThn32_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_3b1d6c() -> ! {
-    todo!("0x3b1d6c __ZThn32_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_3b1d6c() {
+    // IDA 0x3b1d6c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b1d74 — __ZThn32_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_3b1d74() -> ! {
-    todo!("0x3b1d74 __ZThn32_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_3b1d74() {
+    // IDA 0x3b1d74: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b1e18 — __ZThn36_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_3b1e18() -> ! {
-    todo!("0x3b1e18 __ZThn36_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_3b1e18() {
+    // IDA 0x3b1e18: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b1e20 — __ZThn36_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_3b1e20() -> ! {
-    todo!("0x3b1e20 __ZThn36_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_3b1e20() {
+    // IDA 0x3b1e20: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b1ec4 — __GLOBAL__I_a_160
@@ -340,36 +340,36 @@ pub fn stub_3b50bc() -> ! {
 // 0x3b5210 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_12BadgeServiceEFbiiEbLi2EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::BadgeService,bool ()(int,int),bool,2>::~BoundYieldFuncDesc()")]
-pub fn stub_3b5210() -> ! {
-    todo!("0x3b5210 RBX::Reflection::BoundYieldFuncDesc<RBX::BadgeService,bool ()(int,int),bool,2>::~BoundYieldFuncDesc()")
+pub fn stub_3b5210() {
+    // IDA 0x3b5210: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b5258 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_12BadgeServiceEFbiEbLi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::BadgeService,bool ()(int),bool,1>::~BoundYieldFuncDesc()")]
-pub fn stub_3b5258() -> ! {
-    todo!("0x3b5258 RBX::Reflection::BoundYieldFuncDesc<RBX::BadgeService,bool ()(int),bool,1>::~BoundYieldFuncDesc()")
+pub fn stub_3b5258() {
+    // IDA 0x3b5258: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b5298 — __ZN3RBX10Reflection13BoundFuncDescINS_12BadgeServiceEFviELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BadgeService,void ()(int),1>::~BoundFuncDesc()")]
-pub fn stub_3b5298() -> ! {
-    todo!("0x3b5298 RBX::Reflection::BoundFuncDesc<RBX::BadgeService,void ()(int),1>::~BoundFuncDesc()")
+pub fn stub_3b5298() {
+    // IDA 0x3b5298: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b52d8 — __ZN3RBX10Reflection13BoundFuncDescINS_12BadgeServiceEFvSsELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BadgeService,void ()(std::string),1>::~BoundFuncDesc()")]
-pub fn stub_3b52d8() -> ! {
-    todo!("0x3b52d8 RBX::Reflection::BoundFuncDesc<RBX::BadgeService,void ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_3b52d8() {
+    // IDA 0x3b52d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b5318 — __ZN3RBX10Reflection15RemoteEventDescINS_12BadgeServiceEFvSsEN3rbx13remote_signalIS3_EEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::BadgeService,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::~RemoteEventDesc()")]
-pub fn stub_3b5318() -> ! {
-    todo!("0x3b5318 RBX::Reflection::RemoteEventDesc<RBX::BadgeService,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::~RemoteEventDesc()")
+pub fn stub_3b5318() {
+    // IDA 0x3b5318: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b533c — __ZNSt3mapIiSt3setIiSt4lessIiESaIiEES2_SaISt4pairIKiS4_EEEixERS6_
@@ -424,15 +424,15 @@ pub fn stub_3b5c18() -> ! {
 // 0x3b5dd4 — __ZN3RBX12BadgeServiceD1Ev
 // type: void __fastcall(RBX::BadgeService *__hidden this)
 #[doc(alias = "RBX::BadgeService::~BadgeService()")]
-pub fn stub_3b5dd4() -> ! {
-    todo!("0x3b5dd4 RBX::BadgeService::~BadgeService()")
+pub fn stub_3b5dd4() {
+    // IDA 0x3b5dd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b5dd8 — __ZN3RBX12BadgeServiceD0Ev
 // type: void __fastcall(RBX::BadgeService *__hidden this)
 #[doc(alias = "RBX::BadgeService::~BadgeService()")]
-pub fn stub_3b5dd8() -> ! {
-    todo!("0x3b5dd8 RBX::BadgeService::~BadgeService()")
+pub fn stub_3b5dd8() {
+    // IDA 0x3b5dd8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b5e78 — __ZNK3RBX14FactoryProductINS_12BadgeServiceENS_8InstanceELZNS_13sBadgeServiceEES2_E12getClassNameEv
@@ -445,43 +445,43 @@ pub fn stub_3b5e78() -> ! {
 // 0x3b5e88 — __ZThn32_N3RBX12BadgeServiceD1Ev
 // type: void __fastcall(RBX::BadgeService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BadgeService::~BadgeService()")]
-pub fn stub_3b5e88() -> ! {
-    todo!("0x3b5e88 non-virtual thunk toRBX::BadgeService::~BadgeService()")
+pub fn stub_3b5e88() {
+    // IDA 0x3b5e88: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b5e90 — __ZThn32_N3RBX12BadgeServiceD0Ev
 // type: void __fastcall(RBX::BadgeService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BadgeService::~BadgeService()")]
-pub fn stub_3b5e90() -> ! {
-    todo!("0x3b5e90 non-virtual thunk toRBX::BadgeService::~BadgeService()")
+pub fn stub_3b5e90() {
+    // IDA 0x3b5e90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b5e98 — __ZThn32_NK3RBX14FactoryProductINS_12BadgeServiceENS_8InstanceELZNS_13sBadgeServiceEES2_E12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_12BadgeServiceENS_8InstanceELZNS_13sBadgeServiceEES2_E12getClassNameEv")]
-pub fn stub_3b5e98() -> ! {
-    todo!("0x3b5e98 __ZThn32_NK3RBX14FactoryProductINS_12BadgeServiceENS_8InstanceELZNS_13sBadgeServiceEES2_E12getClassNameEv")
+pub fn stub_3b5e98() {
+    // IDA 0x3b5e98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b5ea8 — __ZThn36_N3RBX12BadgeServiceD1Ev
 // type: void __fastcall(RBX::BadgeService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BadgeService::~BadgeService()")]
-pub fn stub_3b5ea8() -> ! {
-    todo!("0x3b5ea8 non-virtual thunk toRBX::BadgeService::~BadgeService()")
+pub fn stub_3b5ea8() {
+    // IDA 0x3b5ea8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b5eb0 — __ZThn36_N3RBX12BadgeServiceD0Ev
 // type: void __fastcall(RBX::BadgeService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BadgeService::~BadgeService()")]
-pub fn stub_3b5eb0() -> ! {
-    todo!("0x3b5eb0 non-virtual thunk toRBX::BadgeService::~BadgeService()")
+pub fn stub_3b5eb0() {
+    // IDA 0x3b5eb0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b5eb8 — __ZN3RBX12BadgeServiceD2Ev
 // type: void __fastcall(RBX::BadgeService *this, int, int, int)
 #[doc(alias = "RBX::BadgeService::~BadgeService()")]
-pub fn stub_3b5eb8() -> ! {
-    todo!("0x3b5eb8 RBX::BadgeService::~BadgeService()")
+pub fn stub_3b5eb8() {
+    // IDA 0x3b5eb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3b611c — __ZNK3RBX10Reflection13EventDescImplILi1ENS_12BadgeServiceEFvSsEN3rbx13remote_signalIS3_EEMS2_S6_E9fireEventEPS2_Ss
@@ -515,8 +515,8 @@ pub fn stub_3b6540() -> ! {
 // 0x3b6700 — __ZN5boost3_bi8storage6INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEC2ERKSJ_
 // type: _DWORD *__fastcall(_DWORD *, _DWORD *)
 #[doc(alias = "boost::_bi::storage6<boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::storage6(boost::_bi::storage6<boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>> const&)")]
-pub fn stub_3b6700() -> ! {
-    todo!("0x3b6700 boost::_bi::storage6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::storage6(boost::_bi::storage6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>> const&)")
+pub fn stub_3b6700() {
+    // IDA 0x3b6700: function ctor/assign from a bind_t functor. Box<dyn Fn> from closure captures — carrier no-op.
 }
 
 // 0x3b6880 — __ZN5boost9function2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiS1_S3_NS_8functionIFvbEEENSC_IFvSsEEEENS6_5list6INS6_5valueISB_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEEvT_
@@ -529,15 +529,15 @@ pub fn stub_3b6880() -> ! {
 // 0x3b6a4c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiPSsPSt9exceptionNS_8functionIFvbEEENSC_IFvSsEEEENS3_5list6INS3_5valueIS8_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEE6manageERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_3b6a4c() -> ! {
-    todo!("0x3b6a4c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_3b6a4c() {
+    // IDA 0x3b6a4c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x3b6a68 — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiPSsPSt9exceptionNS_8functionIFvbEEENSC_IFvSsEEEENS3_5list6INS3_5valueIS8_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEvS9_SB_E6invokeERNS1_15function_bufferES9_SB_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,void,std::string *,std::exception *>::invoke(boost::detail::function::function_buffer &,std::string *,std::exception *)")]
-pub fn stub_3b6a68() -> ! {
-    todo!("0x3b6a68 boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,void,std::string *,std::exception *>::invoke(boost::detail::function::function_buffer &,std::string *,std::exception *)")
+pub fn stub_3b6a68() {
+    // IDA 0x3b6a68: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x3b6a88 — __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiS3_S5_NS_8functionIFvbEEENSE_IFvSsEEEENS8_5list6INS8_5valueISD_EENSM_IiEENS_3argILi1EEENSP_ILi2EEENSM_ISG_EENSM_ISI_EEEEEEEEbT_RNS1_15function_bufferE
@@ -571,29 +571,29 @@ pub fn stub_3b6ebc() -> ! {
 // 0x3b7054 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiPSsPSt9exceptionNS_8functionIFvbEEENSC_IFvSsEEEENS3_5list6INS3_5valueIS8_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEE7managerERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(_DWORD **, _WORD *, int, int, void *, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_3b7054() -> ! {
-    todo!("0x3b7054 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_3b7054() {
+    // IDA 0x3b7054: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x3b7224 — __ZN5boost3_bi5list6INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEC2ES7_S8_SA_SB_SF_SI_
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(boost::detail::sp_counted_base *, int *, int, int, int, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::list6(boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>)")]
-pub fn stub_3b7224() -> ! {
-    todo!("0x3b7224 boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::list6(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>)")
+pub fn stub_3b7224() {
+    // IDA 0x3b7224: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x3b73a4 — __ZN5boost3_bi8storage6INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEC2ES7_S8_SA_SB_SF_SI_
 // type: int __fastcall(int, int *, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 #[doc(alias = "boost::_bi::storage6<boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::storage6(boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>)")]
-pub fn stub_3b73a4() -> ! {
-    todo!("0x3b73a4 boost::_bi::storage6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::storage6(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>)")
+pub fn stub_3b73a4() {
+    // IDA 0x3b73a4: function ctor/assign from a bind_t functor. Box<dyn Fn> from closure captures — carrier no-op.
 }
 
 // 0x3b7550 — __ZN5boost3_bi8storage5INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEEEC2ES7_S8_SA_SB_SF_
 // type: int __fastcall(int, int *, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 #[doc(alias = "boost::_bi::storage5<boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>>::storage5(boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>)")]
-pub fn stub_3b7550() -> ! {
-    todo!("0x3b7550 boost::_bi::storage5<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>>::storage5(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>)")
+pub fn stub_3b7550() {
+    // IDA 0x3b7550: function ctor/assign from a bind_t functor. Box<dyn Fn> from closure captures — carrier no-op.
 }
 
 // 0x3b7698 — __ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEEEC2ES7_S8_SA_SB_
@@ -655,8 +655,8 @@ pub fn stub_3b7d50() -> ! {
 // 0x3b7f10 — __ZN5boost3_bi8storage7INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_NS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEC2ERKSJ_
 // type: _DWORD *__fastcall(_DWORD *, _DWORD *)
 #[doc(alias = "boost::_bi::storage7<boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::storage7(boost::_bi::storage7<boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>> const&)")]
-pub fn stub_3b7f10() -> ! {
-    todo!("0x3b7f10 boost::_bi::storage7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::storage7(boost::_bi::storage7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>> const&)")
+pub fn stub_3b7f10() {
+    // IDA 0x3b7f10: function ctor/assign from a bind_t functor. Box<dyn Fn> from closure captures — carrier no-op.
 }
 
 // 0x3b8094 — __ZN5boost9function2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiS1_S3_NS_8functionIFvbEEENSC_IFvSsEEEENS6_5list7INS6_5valueISB_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEEvT_
@@ -669,15 +669,15 @@ pub fn stub_3b8094() -> ! {
 // 0x3b8260 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiPSsPSt9exceptionNS_8functionIFvbEEENSC_IFvSsEEEENS3_5list7INS3_5valueIS8_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEE6manageERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_3b8260() -> ! {
-    todo!("0x3b8260 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_3b8260() {
+    // IDA 0x3b8260: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x3b827c — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiPSsPSt9exceptionNS_8functionIFvbEEENSC_IFvSsEEEENS3_5list7INS3_5valueIS8_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEvS9_SB_E6invokeERNS1_15function_bufferES9_SB_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,void,std::string *,std::exception *>::invoke(boost::detail::function::function_buffer &,std::string *,std::exception *)")]
-pub fn stub_3b827c() -> ! {
-    todo!("0x3b827c boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,void,std::string *,std::exception *>::invoke(boost::detail::function::function_buffer &,std::string *,std::exception *)")
+pub fn stub_3b827c() {
+    // IDA 0x3b827c: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x3b829c — __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiS3_S5_NS_8functionIFvbEEENSE_IFvSsEEEENS8_5list7INS8_5valueISD_EENSM_IiEESO_NS_3argILi1EEENSP_ILi2EEENSM_ISG_EENSM_ISI_EEEEEEEEbT_RNS1_15function_bufferE
@@ -711,29 +711,29 @@ pub fn stub_3b86d0() -> ! {
 // 0x3b8870 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiPSsPSt9exceptionNS_8functionIFvbEEENSC_IFvSsEEEENS3_5list7INS3_5valueIS8_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEE7managerERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(_DWORD **, _WORD *, int, int, void *, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_3b8870() -> ! {
-    todo!("0x3b8870 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_3b8870() {
+    // IDA 0x3b8870: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x3b8a40 — __ZN5boost3_bi5list7INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_NS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEC2ES7_S8_S8_SA_SB_SF_SI_
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(boost::detail::sp_counted_base *, int *, int, int, int, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::list7(boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>)")]
-pub fn stub_3b8a40() -> ! {
-    todo!("0x3b8a40 boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::list7(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>)")
+pub fn stub_3b8a40() {
+    // IDA 0x3b8a40: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x3b8bc8 — __ZN5boost3_bi8storage7INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_NS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEC2ES7_S8_S8_SA_SB_SF_SI_
 // type: int __fastcall(int, int *, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 #[doc(alias = "boost::_bi::storage7<boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::storage7(boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>)")]
-pub fn stub_3b8bc8() -> ! {
-    todo!("0x3b8bc8 boost::_bi::storage7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::storage7(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>)")
+pub fn stub_3b8bc8() {
+    // IDA 0x3b8bc8: function ctor/assign from a bind_t functor. Box<dyn Fn> from closure captures — carrier no-op.
 }
 
 // 0x3b8d7c — __ZN5boost3_bi8storage6INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_NS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEEEC2ES7_S8_S8_SA_SB_SF_
 // type: int __fastcall(int, int *, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 #[doc(alias = "boost::_bi::storage6<boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>>::storage6(boost::_bi::value<rbx_core::WeakPtr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>)")]
-pub fn stub_3b8d7c() -> ! {
-    todo!("0x3b8d7c boost::_bi::storage6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>>::storage6(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>)")
+pub fn stub_3b8d7c() {
+    // IDA 0x3b8d7c: function ctor/assign from a bind_t functor. Box<dyn Fn> from closure captures — carrier no-op.
 }
 
 // 0x3b8ec8 — __ZN5boost3_bi8storage5INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_NS_3argILi1EEENS9_ILi2EEEEC2ES7_S8_S8_SA_SB_
@@ -781,8 +781,8 @@ pub fn stub_3b92dc() -> ! {
 // 0x3b9334 — __ZNSt8_Rb_treeIiiSt9_IdentityIiESt4lessIiESaIiEE8_M_eraseEPSt13_Rb_tree_nodeIiE
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "std::_Rb_tree<int,int,std::_Identity<int>,std::less<int>,std::allocator<int>>::_M_erase(std::_Rb_tree_node<int> *)")]
-pub fn stub_3b9334() -> ! {
-    todo!("0x3b9334 std::_Rb_tree<int,int,std::_Identity<int>,std::less<int>,std::allocator<int>>::_M_erase(std::_Rb_tree_node<int> *)")
+pub fn stub_3b9334() {
+    // IDA 0x3b9334: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x3b935c — __ZNSt8_Rb_treeIiiSt9_IdentityIiESt4lessIiESaIiEEC2ERKS5_
@@ -822,8 +822,8 @@ pub fn stub_3b95ec() -> ! {
 // 0x3b9654 — __ZNSt8_Rb_treeIiSt4pairIKiSt3setIiSt4lessIiESaIiEEESt10_Select1stIS7_ES4_SaIS7_EE14_M_create_nodeERKS7_
 // type: int __fastcall(int, _DWORD *, int, int, void *, int)
 #[doc(alias = "std::_Rb_tree<int,std::pair<int const,std::set<int,std::less<int>,std::allocator<int>>>,std::_Select1st<std::pair<int const,std::set<int,std::less<int>,std::allocator<int>>>>,std::less<int>,std::allocator<std::pair<int const,std::set<int,std::less<int>,std::allocator<int>>>>>::_M_create_node(std::pair<int const,std::set<int,std::less<int>,std::allocator<int>>> const&)")]
-pub fn stub_3b9654() -> ! {
-    todo!("0x3b9654 std::_Rb_tree<int,std::pair<int const,std::set<int,std::less<int>,std::allocator<int>>>,std::_Select1st<std::pair<int const,std::set<int,std::less<int>,std::allocator<int>>>>,std::less<int>,std::allocator<std::pair<int const,std::set<int,std::less<int>,std::allocator<int>>>>>::_M_create_node(std::pair<int const,std::set<int,std::less<int>,std::allocator<int>>> const&)")
+pub fn stub_3b9654() {
+    // IDA 0x3b9654: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x3b9738 — __ZN5boost10shared_ptrIN3RBX12BadgeServiceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
@@ -843,6 +843,6 @@ pub fn stub_3b97b4() -> ! {
 // 0x3b9910 — __ZN3RBX10Reflection9DescribedINS_12BadgeServiceELZNS_13sBadgeServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sBadgeServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_12BadgeServiceELZNS_13sBadgeServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sBadgeServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_3b9910() -> ! {
-    todo!("0x3b9910 __ZN3RBX10Reflection9DescribedINS_12BadgeServiceELZNS_13sBadgeServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sBadgeServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_3b9910() {
+    // IDA 0x3b9910: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

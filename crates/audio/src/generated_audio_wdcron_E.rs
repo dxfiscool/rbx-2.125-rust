@@ -119,8 +119,8 @@ pub fn stub_689260() -> ! {
 // type: void __fastcall(RBX::ToolMouseCommand *__hidden this)
 #[doc(alias = "RBX::ToolMouseCommand::~ToolMouseCommand()")]
 #[doc(alias = "__ZN3RBX16ToolMouseCommandD1Ev")]
-pub fn stub_689288() -> ! {
-    todo!("0x689288 __ZN3RBX16ToolMouseCommandD1Ev")
+pub fn stub_689288() {
+    // IDA 0x689288: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68928c — __ZN3RBX16ToolMouseCommandD0Ev
@@ -128,8 +128,8 @@ pub fn stub_689288() -> ! {
 // type: void __fastcall(RBX::ToolMouseCommand *__hidden this)
 #[doc(alias = "RBX::ToolMouseCommand::~ToolMouseCommand()")]
 #[doc(alias = "__ZN3RBX16ToolMouseCommandD0Ev")]
-pub fn stub_68928c() -> ! {
-    todo!("0x68928c __ZN3RBX16ToolMouseCommandD0Ev")
+pub fn stub_68928c() {
+    // IDA 0x68928c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68932c — __ZThn36_N3RBX16ToolMouseCommandD1Ev
@@ -137,8 +137,8 @@ pub fn stub_68928c() -> ! {
 // type: void __fastcall(RBX::ToolMouseCommand *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ToolMouseCommand::~ToolMouseCommand()")]
 #[doc(alias = "__ZThn36_N3RBX16ToolMouseCommandD1Ev")]
-pub fn stub_68932c() -> ! {
-    todo!("0x68932c __ZThn36_N3RBX16ToolMouseCommandD1Ev")
+pub fn stub_68932c() {
+    // IDA 0x68932c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x689334 — __ZThn36_N3RBX16ToolMouseCommandD0Ev
@@ -146,16 +146,16 @@ pub fn stub_68932c() -> ! {
 // type: void __fastcall(RBX::ToolMouseCommand *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ToolMouseCommand::~ToolMouseCommand()")]
 #[doc(alias = "__ZThn36_N3RBX16ToolMouseCommandD0Ev")]
-pub fn stub_689334() -> ! {
-    todo!("0x689334 __ZThn36_N3RBX16ToolMouseCommandD0Ev")
+pub fn stub_689334() {
+    // IDA 0x689334: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x689420 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS6_5list1INS6_5valueIPSB_EEEEEEED1Ev
 // demangled: rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ToolMouseCommand>,boost::_bi::list1<boost::_bi::value<RBX::ToolMouseCommand*>>>>::~callable_slot()
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ToolMouseCommand>,boost::_bi::list1<boost::_bi::value<RBX::ToolMouseCommand*>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS6_5list1INS6_5valueIPSB_EEEEEEED1Ev")]
-pub fn stub_689420() -> ! {
-    todo!("0x689420 __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS6_5list1INS6_5valueIPSB_EEEEEEED1Ev")
+pub fn stub_689420() {
+    // IDA 0x689420: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68944c — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS6_5list1INS6_5valueIPSB_EEEEEEED0Ev
@@ -163,8 +163,8 @@ pub fn stub_689420() -> ! {
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ToolMouseCommand>,boost::_bi::list1<boost::_bi::value<RBX::ToolMouseCommand*>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS6_5list1INS6_5valueIPSB_EEEEEEED0Ev")]
-pub fn stub_68944c() -> ! {
-    todo!("0x68944c __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS6_5list1INS6_5valueIPSB_EEEEEEED0Ev")
+pub fn stub_68944c() {
+    // IDA 0x68944c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x689520 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
@@ -180,8 +180,8 @@ pub fn stub_689520() -> ! {
 // demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ToolMouseCommand>,boost::_bi::list1<boost::_bi::value<RBX::ToolMouseCommand*>>>,0,void ()(void)>::call(void)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ToolMouseCommand>,boost::_bi::list1<boost::_bi::value<RBX::ToolMouseCommand*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")]
-pub fn stub_689528() -> ! {
-    todo!("0x689528 __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")
+pub fn stub_689528() {
+    // IDA 0x689528: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x689530 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS0_5list1INS0_5valueIPS5_EEEEEclEv
@@ -196,16 +196,16 @@ pub fn stub_689530() -> ! {
 // demangled: rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ToolMouseCommand>,boost::_bi::list1<boost::_bi::value<RBX::ToolMouseCommand*>>>,0,void ()(void)>::~callable()
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ToolMouseCommand>,boost::_bi::list1<boost::_bi::value<RBX::ToolMouseCommand*>>>,0,void ()(void)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_ED1Ev")]
-pub fn stub_689548() -> ! {
-    todo!("0x689548 __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_ED1Ev")
+pub fn stub_689548() {
+    // IDA 0x689548: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x689574 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_ED0Ev
 // demangled: rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ToolMouseCommand>,boost::_bi::list1<boost::_bi::value<RBX::ToolMouseCommand*>>>,0,void ()(void)>::~callable()
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ToolMouseCommand>,boost::_bi::list1<boost::_bi::value<RBX::ToolMouseCommand*>>>,0,void ()(void)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_ED0Ev")]
-pub fn stub_689574() -> ! {
-    todo!("0x689574 __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_ED0Ev")
+pub fn stub_689574() {
+    // IDA 0x689574: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x689648 — __ZN3RBX16ToolMouseCommandD2Ev
@@ -213,8 +213,8 @@ pub fn stub_689574() -> ! {
 // type: void __fastcall(RBX::ToolMouseCommand *__hidden this)
 #[doc(alias = "RBX::ToolMouseCommand::~ToolMouseCommand()")]
 #[doc(alias = "__ZN3RBX16ToolMouseCommandD2Ev")]
-pub fn stub_689648() -> ! {
-    todo!("0x689648 __ZN3RBX16ToolMouseCommandD2Ev")
+pub fn stub_689648() {
+    // IDA 0x689648: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x689a5c — __ZN3RBX9ModelToolC2EPNS_9WorkspaceE
@@ -231,8 +231,8 @@ pub fn stub_689a5c() -> ! {
 // type: void __fastcall(RBX::ModelTool *__hidden this)
 #[doc(alias = "RBX::ModelTool::~ModelTool()")]
 #[doc(alias = "__ZN3RBX9ModelToolD0Ev")]
-pub fn stub_689b64() -> ! {
-    todo!("0x689b64 __ZN3RBX9ModelToolD0Ev")
+pub fn stub_689b64() {
+    // IDA 0x689b64: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x689c04 — __ZN3RBX9ModelToolD1Ev
@@ -240,8 +240,8 @@ pub fn stub_689b64() -> ! {
 // type: void __fastcall(RBX::ModelTool *__hidden this)
 #[doc(alias = "RBX::ModelTool::~ModelTool()")]
 #[doc(alias = "__ZN3RBX9ModelToolD1Ev")]
-pub fn stub_689c04() -> ! {
-    todo!("0x689c04 __ZN3RBX9ModelToolD1Ev")
+pub fn stub_689c04() {
+    // IDA 0x689c04: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x689c08 — __ZThn36_N3RBX9ModelToolD0Ev
@@ -249,8 +249,8 @@ pub fn stub_689c04() -> ! {
 // type: void __fastcall(RBX::ModelTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ModelTool::~ModelTool()")]
 #[doc(alias = "__ZThn36_N3RBX9ModelToolD0Ev")]
-pub fn stub_689c08() -> ! {
-    todo!("0x689c08 __ZThn36_N3RBX9ModelToolD0Ev")
+pub fn stub_689c08() {
+    // IDA 0x689c08: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x689c10 — __ZN3RBX9ModelToolD2Ev
@@ -258,8 +258,8 @@ pub fn stub_689c08() -> ! {
 // type: void __fastcall(RBX::ModelTool *__hidden this)
 #[doc(alias = "RBX::ModelTool::~ModelTool()")]
 #[doc(alias = "__ZN3RBX9ModelToolD2Ev")]
-pub fn stub_689c10() -> ! {
-    todo!("0x689c10 __ZN3RBX9ModelToolD2Ev")
+pub fn stub_689c10() {
+    // IDA 0x689c10: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x689d2c — __ZThn36_N3RBX9ModelToolD1Ev
@@ -267,8 +267,8 @@ pub fn stub_689c10() -> ! {
 // type: void __fastcall(RBX::ModelTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ModelTool::~ModelTool()")]
 #[doc(alias = "__ZThn36_N3RBX9ModelToolD1Ev")]
-pub fn stub_689d2c() -> ! {
-    todo!("0x689d2c __ZThn36_N3RBX9ModelToolD1Ev")
+pub fn stub_689d2c() {
+    // IDA 0x689d2c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x689d34 — __ZN3RBX9ModelTool12onMouseHoverERKNS_7UIEventE
@@ -294,8 +294,8 @@ pub fn stub_689e28() -> ! {
 // type: int __fastcall(RBX::ModelTool *this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::ModelTool::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX9ModelTool13render3dAdornEPNS_5AdornE")]
-pub fn stub_689e6c() -> ! {
-    todo!("0x689e6c __ZThn4_N3RBX9ModelTool13render3dAdornEPNS_5AdornE")
+pub fn stub_689e6c() {
+    // IDA 0x689e6c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x689e74 — __ZN3RBX17anchorAllChildrenEN5boost10shared_ptrINS_8InstanceEEERKb
@@ -374,8 +374,8 @@ pub fn stub_68a5c8() -> ! {
 // type: void __fastcall(RBX::AnchorTool *__hidden this)
 #[doc(alias = "RBX::AnchorTool::~AnchorTool()")]
 #[doc(alias = "__ZN3RBX10AnchorToolD1Ev")]
-pub fn stub_68a61c() -> ! {
-    todo!("0x68a61c __ZN3RBX10AnchorToolD1Ev")
+pub fn stub_68a61c() {
+    // IDA 0x68a61c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68a620 — __ZN3RBX10AnchorToolD0Ev
@@ -383,8 +383,8 @@ pub fn stub_68a61c() -> ! {
 // type: void __fastcall(RBX::AnchorTool *__hidden this)
 #[doc(alias = "RBX::AnchorTool::~AnchorTool()")]
 #[doc(alias = "__ZN3RBX10AnchorToolD0Ev")]
-pub fn stub_68a620() -> ! {
-    todo!("0x68a620 __ZN3RBX10AnchorToolD0Ev")
+pub fn stub_68a620() {
+    // IDA 0x68a620: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68a6c0 — __ZThn36_N3RBX10AnchorToolD1Ev
@@ -392,8 +392,8 @@ pub fn stub_68a620() -> ! {
 // type: void __fastcall(RBX::AnchorTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AnchorTool::~AnchorTool()")]
 #[doc(alias = "__ZThn36_N3RBX10AnchorToolD1Ev")]
-pub fn stub_68a6c0() -> ! {
-    todo!("0x68a6c0 __ZThn36_N3RBX10AnchorToolD1Ev")
+pub fn stub_68a6c0() {
+    // IDA 0x68a6c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68a6c8 — __ZThn36_N3RBX10AnchorToolD0Ev
@@ -401,8 +401,8 @@ pub fn stub_68a6c0() -> ! {
 // type: void __fastcall(RBX::AnchorTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AnchorTool::~AnchorTool()")]
 #[doc(alias = "__ZThn36_N3RBX10AnchorToolD0Ev")]
-pub fn stub_68a6c8() -> ! {
-    todo!("0x68a6c8 __ZThn36_N3RBX10AnchorToolD0Ev")
+pub fn stub_68a6c8() {
+    // IDA 0x68a6c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68a76c — __ZN3RBX8LockToolD1Ev
@@ -410,8 +410,8 @@ pub fn stub_68a6c8() -> ! {
 // type: void __fastcall(RBX::LockTool *__hidden this)
 #[doc(alias = "RBX::LockTool::~LockTool()")]
 #[doc(alias = "__ZN3RBX8LockToolD1Ev")]
-pub fn stub_68a76c() -> ! {
-    todo!("0x68a76c __ZN3RBX8LockToolD1Ev")
+pub fn stub_68a76c() {
+    // IDA 0x68a76c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68a770 — __ZN3RBX8LockToolD0Ev
@@ -419,8 +419,8 @@ pub fn stub_68a76c() -> ! {
 // type: void __fastcall(RBX::LockTool *__hidden this)
 #[doc(alias = "RBX::LockTool::~LockTool()")]
 #[doc(alias = "__ZN3RBX8LockToolD0Ev")]
-pub fn stub_68a770() -> ! {
-    todo!("0x68a770 __ZN3RBX8LockToolD0Ev")
+pub fn stub_68a770() {
+    // IDA 0x68a770: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68a810 — __ZThn36_N3RBX8LockToolD1Ev
@@ -428,8 +428,8 @@ pub fn stub_68a770() -> ! {
 // type: void __fastcall(RBX::LockTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::LockTool::~LockTool()")]
 #[doc(alias = "__ZThn36_N3RBX8LockToolD1Ev")]
-pub fn stub_68a810() -> ! {
-    todo!("0x68a810 __ZThn36_N3RBX8LockToolD1Ev")
+pub fn stub_68a810() {
+    // IDA 0x68a810: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68a818 — __ZThn36_N3RBX8LockToolD0Ev
@@ -437,8 +437,8 @@ pub fn stub_68a810() -> ! {
 // type: void __fastcall(RBX::LockTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::LockTool::~LockTool()")]
 #[doc(alias = "__ZThn36_N3RBX8LockToolD0Ev")]
-pub fn stub_68a818() -> ! {
-    todo!("0x68a818 __ZThn36_N3RBX8LockToolD0Ev")
+pub fn stub_68a818() {
+    // IDA 0x68a818: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68a8bc — __ZNK3RBX8Instance13visitChildrenINS_10AnchorNodeEEEvRKT_
@@ -464,8 +464,8 @@ pub fn stub_68ac9c() -> ! {
 // type: void __fastcall(RBX::PartTool *__hidden this)
 #[doc(alias = "RBX::PartTool::~PartTool()")]
 #[doc(alias = "__ZN3RBX8PartToolD0Ev")]
-pub fn stub_68ada4() -> ! {
-    todo!("0x68ada4 __ZN3RBX8PartToolD0Ev")
+pub fn stub_68ada4() {
+    // IDA 0x68ada4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68ae44 — __ZN3RBX8PartToolD1Ev
@@ -473,8 +473,8 @@ pub fn stub_68ada4() -> ! {
 // type: void __fastcall(RBX::PartTool *__hidden this)
 #[doc(alias = "RBX::PartTool::~PartTool()")]
 #[doc(alias = "__ZN3RBX8PartToolD1Ev")]
-pub fn stub_68ae44() -> ! {
-    todo!("0x68ae44 __ZN3RBX8PartToolD1Ev")
+pub fn stub_68ae44() {
+    // IDA 0x68ae44: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68ae48 — __ZThn36_N3RBX8PartToolD0Ev
@@ -482,8 +482,8 @@ pub fn stub_68ae44() -> ! {
 // type: void __fastcall(RBX::PartTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartTool::~PartTool()")]
 #[doc(alias = "__ZThn36_N3RBX8PartToolD0Ev")]
-pub fn stub_68ae48() -> ! {
-    todo!("0x68ae48 __ZThn36_N3RBX8PartToolD0Ev")
+pub fn stub_68ae48() {
+    // IDA 0x68ae48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68ae50 — __ZN3RBX8PartToolD2Ev
@@ -491,8 +491,8 @@ pub fn stub_68ae48() -> ! {
 // type: void __fastcall(RBX::PartTool *__hidden this)
 #[doc(alias = "RBX::PartTool::~PartTool()")]
 #[doc(alias = "__ZN3RBX8PartToolD2Ev")]
-pub fn stub_68ae50() -> ! {
-    todo!("0x68ae50 __ZN3RBX8PartToolD2Ev")
+pub fn stub_68ae50() {
+    // IDA 0x68ae50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68af6c — __ZThn36_N3RBX8PartToolD1Ev
@@ -500,8 +500,8 @@ pub fn stub_68ae50() -> ! {
 // type: void __fastcall(RBX::PartTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartTool::~PartTool()")]
 #[doc(alias = "__ZThn36_N3RBX8PartToolD1Ev")]
-pub fn stub_68af6c() -> ! {
-    todo!("0x68af6c __ZThn36_N3RBX8PartToolD1Ev")
+pub fn stub_68af6c() {
+    // IDA 0x68af6c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68af74 — __ZN3RBX8PartTool12onMouseHoverERKNS_7UIEventE
@@ -527,8 +527,8 @@ pub fn stub_68b04c() -> ! {
 // type: _DWORD __fastcall(RBX::PartTool *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::PartTool::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX8PartTool13render3dAdornEPNS_5AdornE")]
-pub fn stub_68b060() -> ! {
-    todo!("0x68b060 __ZThn4_N3RBX8PartTool13render3dAdornEPNS_5AdornE")
+pub fn stub_68b060() {
+    // IDA 0x68b060: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68b074 — __ZN3RBX13FillToolColorC2Ev
@@ -572,8 +572,8 @@ pub fn stub_68b220() -> ! {
 // type: void __fastcall(RBX::FillToolColor *__hidden this)
 #[doc(alias = "RBX::FillToolColor::~FillToolColor()")]
 #[doc(alias = "__ZN3RBX13FillToolColorD1Ev")]
-pub fn stub_68b34c() -> ! {
-    todo!("0x68b34c __ZN3RBX13FillToolColorD1Ev")
+pub fn stub_68b34c() {
+    // IDA 0x68b34c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68b418 — __ZN3RBX8FillToolD1Ev
@@ -581,8 +581,8 @@ pub fn stub_68b34c() -> ! {
 // type: void __fastcall(RBX::FillTool *__hidden this)
 #[doc(alias = "RBX::FillTool::~FillTool()")]
 #[doc(alias = "__ZN3RBX8FillToolD1Ev")]
-pub fn stub_68b418() -> ! {
-    todo!("0x68b418 __ZN3RBX8FillToolD1Ev")
+pub fn stub_68b418() {
+    // IDA 0x68b418: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68b41c — __ZN3RBX8FillToolD0Ev
@@ -590,8 +590,8 @@ pub fn stub_68b418() -> ! {
 // type: void __fastcall(RBX::FillTool *__hidden this)
 #[doc(alias = "RBX::FillTool::~FillTool()")]
 #[doc(alias = "__ZN3RBX8FillToolD0Ev")]
-pub fn stub_68b41c() -> ! {
-    todo!("0x68b41c __ZN3RBX8FillToolD0Ev")
+pub fn stub_68b41c() {
+    // IDA 0x68b41c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68b4bc — __ZThn36_N3RBX8FillToolD1Ev
@@ -599,8 +599,8 @@ pub fn stub_68b41c() -> ! {
 // type: void __fastcall(RBX::FillTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FillTool::~FillTool()")]
 #[doc(alias = "__ZThn36_N3RBX8FillToolD1Ev")]
-pub fn stub_68b4bc() -> ! {
-    todo!("0x68b4bc __ZThn36_N3RBX8FillToolD1Ev")
+pub fn stub_68b4bc() {
+    // IDA 0x68b4bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68b4c4 — __ZThn36_N3RBX8FillToolD0Ev
@@ -608,8 +608,8 @@ pub fn stub_68b4bc() -> ! {
 // type: void __fastcall(RBX::FillTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FillTool::~FillTool()")]
 #[doc(alias = "__ZThn36_N3RBX8FillToolD0Ev")]
-pub fn stub_68b4c4() -> ! {
-    todo!("0x68b4c4 __ZThn36_N3RBX8FillToolD0Ev")
+pub fn stub_68b4c4() {
+    // IDA 0x68b4c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68b568 — __ZN3RBX11DropperToolD1Ev
@@ -617,8 +617,8 @@ pub fn stub_68b4c4() -> ! {
 // type: void __fastcall(RBX::DropperTool *__hidden this)
 #[doc(alias = "RBX::DropperTool::~DropperTool()")]
 #[doc(alias = "__ZN3RBX11DropperToolD1Ev")]
-pub fn stub_68b568() -> ! {
-    todo!("0x68b568 __ZN3RBX11DropperToolD1Ev")
+pub fn stub_68b568() {
+    // IDA 0x68b568: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68b56c — __ZN3RBX11DropperToolD0Ev
@@ -626,8 +626,8 @@ pub fn stub_68b568() -> ! {
 // type: void __fastcall(RBX::DropperTool *__hidden this)
 #[doc(alias = "RBX::DropperTool::~DropperTool()")]
 #[doc(alias = "__ZN3RBX11DropperToolD0Ev")]
-pub fn stub_68b56c() -> ! {
-    todo!("0x68b56c __ZN3RBX11DropperToolD0Ev")
+pub fn stub_68b56c() {
+    // IDA 0x68b56c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68b60c — __ZThn36_N3RBX11DropperToolD1Ev
@@ -635,8 +635,8 @@ pub fn stub_68b56c() -> ! {
 // type: void __fastcall(RBX::DropperTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DropperTool::~DropperTool()")]
 #[doc(alias = "__ZThn36_N3RBX11DropperToolD1Ev")]
-pub fn stub_68b60c() -> ! {
-    todo!("0x68b60c __ZThn36_N3RBX11DropperToolD1Ev")
+pub fn stub_68b60c() {
+    // IDA 0x68b60c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68b614 — __ZThn36_N3RBX11DropperToolD0Ev
@@ -644,8 +644,8 @@ pub fn stub_68b60c() -> ! {
 // type: void __fastcall(RBX::DropperTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DropperTool::~DropperTool()")]
 #[doc(alias = "__ZThn36_N3RBX11DropperToolD0Ev")]
-pub fn stub_68b614() -> ! {
-    todo!("0x68b614 __ZThn36_N3RBX11DropperToolD0Ev")
+pub fn stub_68b614() {
+    // IDA 0x68b614: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68b6b8 — __ZN3RBX12MaterialToolD1Ev
@@ -653,8 +653,8 @@ pub fn stub_68b614() -> ! {
 // type: void __fastcall(RBX::MaterialTool *__hidden this)
 #[doc(alias = "RBX::MaterialTool::~MaterialTool()")]
 #[doc(alias = "__ZN3RBX12MaterialToolD1Ev")]
-pub fn stub_68b6b8() -> ! {
-    todo!("0x68b6b8 __ZN3RBX12MaterialToolD1Ev")
+pub fn stub_68b6b8() {
+    // IDA 0x68b6b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68b6bc — __ZN3RBX12MaterialToolD0Ev
@@ -662,8 +662,8 @@ pub fn stub_68b6b8() -> ! {
 // type: void __fastcall(RBX::MaterialTool *__hidden this)
 #[doc(alias = "RBX::MaterialTool::~MaterialTool()")]
 #[doc(alias = "__ZN3RBX12MaterialToolD0Ev")]
-pub fn stub_68b6bc() -> ! {
-    todo!("0x68b6bc __ZN3RBX12MaterialToolD0Ev")
+pub fn stub_68b6bc() {
+    // IDA 0x68b6bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68b75c — __ZThn36_N3RBX12MaterialToolD1Ev
@@ -671,8 +671,8 @@ pub fn stub_68b6bc() -> ! {
 // type: void __fastcall(RBX::MaterialTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MaterialTool::~MaterialTool()")]
 #[doc(alias = "__ZThn36_N3RBX12MaterialToolD1Ev")]
-pub fn stub_68b75c() -> ! {
-    todo!("0x68b75c __ZThn36_N3RBX12MaterialToolD1Ev")
+pub fn stub_68b75c() {
+    // IDA 0x68b75c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68b764 — __ZThn36_N3RBX12MaterialToolD0Ev
@@ -680,8 +680,8 @@ pub fn stub_68b75c() -> ! {
 // type: void __fastcall(RBX::MaterialTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MaterialTool::~MaterialTool()")]
 #[doc(alias = "__ZThn36_N3RBX12MaterialToolD0Ev")]
-pub fn stub_68b764() -> ! {
-    todo!("0x68b764 __ZThn36_N3RBX12MaterialToolD0Ev")
+pub fn stub_68b764() {
+    // IDA 0x68b764: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68bb74 — __ZN3RBX11SurfaceToolC2EPNS_9WorkspaceE
@@ -698,8 +698,8 @@ pub fn stub_68bb74() -> ! {
 // type: void __fastcall(RBX::SurfaceTool *__hidden this)
 #[doc(alias = "RBX::SurfaceTool::~SurfaceTool()")]
 #[doc(alias = "__ZN3RBX11SurfaceToolD0Ev")]
-pub fn stub_68bcb0() -> ! {
-    todo!("0x68bcb0 __ZN3RBX11SurfaceToolD0Ev")
+pub fn stub_68bcb0() {
+    // IDA 0x68bcb0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68bd50 — __ZN3RBX11SurfaceToolD1Ev
@@ -707,8 +707,8 @@ pub fn stub_68bcb0() -> ! {
 // type: void __fastcall(RBX::SurfaceTool *__hidden this)
 #[doc(alias = "RBX::SurfaceTool::~SurfaceTool()")]
 #[doc(alias = "__ZN3RBX11SurfaceToolD1Ev")]
-pub fn stub_68bd50() -> ! {
-    todo!("0x68bd50 __ZN3RBX11SurfaceToolD1Ev")
+pub fn stub_68bd50() {
+    // IDA 0x68bd50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68bd54 — __ZThn36_N3RBX11SurfaceToolD0Ev
@@ -716,8 +716,8 @@ pub fn stub_68bd50() -> ! {
 // type: void __fastcall(RBX::SurfaceTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SurfaceTool::~SurfaceTool()")]
 #[doc(alias = "__ZThn36_N3RBX11SurfaceToolD0Ev")]
-pub fn stub_68bd54() -> ! {
-    todo!("0x68bd54 __ZThn36_N3RBX11SurfaceToolD0Ev")
+pub fn stub_68bd54() {
+    // IDA 0x68bd54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68bd5c — __ZN3RBX11SurfaceToolD2Ev
@@ -725,8 +725,8 @@ pub fn stub_68bd54() -> ! {
 // type: void __fastcall(RBX::SurfaceTool *__hidden this)
 #[doc(alias = "RBX::SurfaceTool::~SurfaceTool()")]
 #[doc(alias = "__ZN3RBX11SurfaceToolD2Ev")]
-pub fn stub_68bd5c() -> ! {
-    todo!("0x68bd5c __ZN3RBX11SurfaceToolD2Ev")
+pub fn stub_68bd5c() {
+    // IDA 0x68bd5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68be88 — __ZThn36_N3RBX11SurfaceToolD1Ev
@@ -734,8 +734,8 @@ pub fn stub_68bd5c() -> ! {
 // type: void __fastcall(RBX::SurfaceTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SurfaceTool::~SurfaceTool()")]
 #[doc(alias = "__ZThn36_N3RBX11SurfaceToolD1Ev")]
-pub fn stub_68be88() -> ! {
-    todo!("0x68be88 __ZThn36_N3RBX11SurfaceToolD1Ev")
+pub fn stub_68be88() {
+    // IDA 0x68be88: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68be90 — __ZN3RBX11SurfaceTool12onMouseHoverERKNS_7UIEventE
@@ -770,8 +770,8 @@ pub fn stub_68bfc8() -> ! {
 // type: _DWORD __fastcall(RBX::SurfaceTool *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::SurfaceTool::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX11SurfaceTool13render3dAdornEPNS_5AdornE")]
-pub fn stub_68c060() -> ! {
-    todo!("0x68c060 __ZThn4_N3RBX11SurfaceTool13render3dAdornEPNS_5AdornE")
+pub fn stub_68c060() {
+    // IDA 0x68c060: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68c068 — __ZN3RBX9DecalTool11onMouseMoveERKNS_7UIEventE
@@ -806,8 +806,8 @@ pub fn stub_68c2d8() -> ! {
 // type: _DWORD __fastcall(RBX::DecalTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DecalTool::onCancelOperation(void)")]
 #[doc(alias = "__ZThn88_N3RBX9DecalTool17onCancelOperationEv")]
-pub fn stub_68c300() -> ! {
-    todo!("0x68c300 __ZThn88_N3RBX9DecalTool17onCancelOperationEv")
+pub fn stub_68c300() {
+    // IDA 0x68c300: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68c30c — __ZN3RBX9DecalTool9onMouseUpERKNS_7UIEventE
@@ -931,8 +931,8 @@ pub fn stub_68c5bc() -> ! {
 // type: void __fastcall(RBX::DecalTool *__hidden this)
 #[doc(alias = "RBX::DecalTool::~DecalTool()")]
 #[doc(alias = "__ZN3RBX9DecalToolD1Ev")]
-pub fn stub_68c724() -> ! {
-    todo!("0x68c724 __ZN3RBX9DecalToolD1Ev")
+pub fn stub_68c724() {
+    // IDA 0x68c724: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68c808 — __ZN3RBX9DecalToolD0Ev
@@ -940,8 +940,8 @@ pub fn stub_68c724() -> ! {
 // type: void __fastcall(RBX::DecalTool *__hidden this)
 #[doc(alias = "RBX::DecalTool::~DecalTool()")]
 #[doc(alias = "__ZN3RBX9DecalToolD0Ev")]
-pub fn stub_68c808() -> ! {
-    todo!("0x68c808 __ZN3RBX9DecalToolD0Ev")
+pub fn stub_68c808() {
+    // IDA 0x68c808: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68c900 — __ZThn36_N3RBX9DecalToolD1Ev
@@ -949,8 +949,8 @@ pub fn stub_68c808() -> ! {
 // type: void __fastcall(RBX::DecalTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DecalTool::~DecalTool()")]
 #[doc(alias = "__ZThn36_N3RBX9DecalToolD1Ev")]
-pub fn stub_68c900() -> ! {
-    todo!("0x68c900 __ZThn36_N3RBX9DecalToolD1Ev")
+pub fn stub_68c900() {
+    // IDA 0x68c900: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68c9e4 — __ZThn36_N3RBX9DecalToolD0Ev
@@ -958,8 +958,8 @@ pub fn stub_68c900() -> ! {
 // type: void __fastcall(RBX::DecalTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DecalTool::~DecalTool()")]
 #[doc(alias = "__ZThn36_N3RBX9DecalToolD0Ev")]
-pub fn stub_68c9e4() -> ! {
-    todo!("0x68c9e4 __ZThn36_N3RBX9DecalToolD0Ev")
+pub fn stub_68c9e4() {
+    // IDA 0x68c9e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68cae0 — __ZN3RBX8FlatToolD1Ev
@@ -967,8 +967,8 @@ pub fn stub_68c9e4() -> ! {
 // type: void __fastcall(RBX::FlatTool *__hidden this)
 #[doc(alias = "RBX::FlatTool::~FlatTool()")]
 #[doc(alias = "__ZN3RBX8FlatToolD1Ev")]
-pub fn stub_68cae0() -> ! {
-    todo!("0x68cae0 __ZN3RBX8FlatToolD1Ev")
+pub fn stub_68cae0() {
+    // IDA 0x68cae0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68cae4 — __ZN3RBX8FlatToolD0Ev
@@ -976,8 +976,8 @@ pub fn stub_68cae0() -> ! {
 // type: void __fastcall(RBX::FlatTool *__hidden this)
 #[doc(alias = "RBX::FlatTool::~FlatTool()")]
 #[doc(alias = "__ZN3RBX8FlatToolD0Ev")]
-pub fn stub_68cae4() -> ! {
-    todo!("0x68cae4 __ZN3RBX8FlatToolD0Ev")
+pub fn stub_68cae4() {
+    // IDA 0x68cae4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68cb84 — __ZThn36_N3RBX8FlatToolD1Ev
@@ -985,8 +985,8 @@ pub fn stub_68cae4() -> ! {
 // type: void __fastcall(RBX::FlatTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FlatTool::~FlatTool()")]
 #[doc(alias = "__ZThn36_N3RBX8FlatToolD1Ev")]
-pub fn stub_68cb84() -> ! {
-    todo!("0x68cb84 __ZThn36_N3RBX8FlatToolD1Ev")
+pub fn stub_68cb84() {
+    // IDA 0x68cb84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68cb8c — __ZThn36_N3RBX8FlatToolD0Ev
@@ -994,8 +994,8 @@ pub fn stub_68cb84() -> ! {
 // type: void __fastcall(RBX::FlatTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FlatTool::~FlatTool()")]
 #[doc(alias = "__ZThn36_N3RBX8FlatToolD0Ev")]
-pub fn stub_68cb8c() -> ! {
-    todo!("0x68cb8c __ZThn36_N3RBX8FlatToolD0Ev")
+pub fn stub_68cb8c() {
+    // IDA 0x68cb8c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68cc30 — __ZN3RBX8GlueToolD1Ev
@@ -1003,8 +1003,8 @@ pub fn stub_68cb8c() -> ! {
 // type: void __fastcall(RBX::GlueTool *__hidden this)
 #[doc(alias = "RBX::GlueTool::~GlueTool()")]
 #[doc(alias = "__ZN3RBX8GlueToolD1Ev")]
-pub fn stub_68cc30() -> ! {
-    todo!("0x68cc30 __ZN3RBX8GlueToolD1Ev")
+pub fn stub_68cc30() {
+    // IDA 0x68cc30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68cc34 — __ZN3RBX8GlueToolD0Ev
@@ -1012,8 +1012,8 @@ pub fn stub_68cc30() -> ! {
 // type: void __fastcall(RBX::GlueTool *__hidden this)
 #[doc(alias = "RBX::GlueTool::~GlueTool()")]
 #[doc(alias = "__ZN3RBX8GlueToolD0Ev")]
-pub fn stub_68cc34() -> ! {
-    todo!("0x68cc34 __ZN3RBX8GlueToolD0Ev")
+pub fn stub_68cc34() {
+    // IDA 0x68cc34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68ccd4 — __ZThn36_N3RBX8GlueToolD1Ev
@@ -1021,8 +1021,8 @@ pub fn stub_68cc34() -> ! {
 // type: void __fastcall(RBX::GlueTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GlueTool::~GlueTool()")]
 #[doc(alias = "__ZThn36_N3RBX8GlueToolD1Ev")]
-pub fn stub_68ccd4() -> ! {
-    todo!("0x68ccd4 __ZThn36_N3RBX8GlueToolD1Ev")
+pub fn stub_68ccd4() {
+    // IDA 0x68ccd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68ccdc — __ZThn36_N3RBX8GlueToolD0Ev
@@ -1030,8 +1030,8 @@ pub fn stub_68ccd4() -> ! {
 // type: void __fastcall(RBX::GlueTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GlueTool::~GlueTool()")]
 #[doc(alias = "__ZThn36_N3RBX8GlueToolD0Ev")]
-pub fn stub_68ccdc() -> ! {
-    todo!("0x68ccdc __ZThn36_N3RBX8GlueToolD0Ev")
+pub fn stub_68ccdc() {
+    // IDA 0x68ccdc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68cd80 — __ZN3RBX8WeldToolD1Ev
@@ -1039,8 +1039,8 @@ pub fn stub_68ccdc() -> ! {
 // type: void __fastcall(RBX::WeldTool *__hidden this)
 #[doc(alias = "RBX::WeldTool::~WeldTool()")]
 #[doc(alias = "__ZN3RBX8WeldToolD1Ev")]
-pub fn stub_68cd80() -> ! {
-    todo!("0x68cd80 __ZN3RBX8WeldToolD1Ev")
+pub fn stub_68cd80() {
+    // IDA 0x68cd80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68cd84 — __ZN3RBX8WeldToolD0Ev
@@ -1048,8 +1048,8 @@ pub fn stub_68cd80() -> ! {
 // type: void __fastcall(RBX::WeldTool *__hidden this)
 #[doc(alias = "RBX::WeldTool::~WeldTool()")]
 #[doc(alias = "__ZN3RBX8WeldToolD0Ev")]
-pub fn stub_68cd84() -> ! {
-    todo!("0x68cd84 __ZN3RBX8WeldToolD0Ev")
+pub fn stub_68cd84() {
+    // IDA 0x68cd84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68ce24 — __ZThn36_N3RBX8WeldToolD1Ev
@@ -1057,8 +1057,8 @@ pub fn stub_68cd84() -> ! {
 // type: void __fastcall(RBX::WeldTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::WeldTool::~WeldTool()")]
 #[doc(alias = "__ZThn36_N3RBX8WeldToolD1Ev")]
-pub fn stub_68ce24() -> ! {
-    todo!("0x68ce24 __ZThn36_N3RBX8WeldToolD1Ev")
+pub fn stub_68ce24() {
+    // IDA 0x68ce24: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68ce2c — __ZThn36_N3RBX8WeldToolD0Ev
@@ -1066,8 +1066,8 @@ pub fn stub_68ce24() -> ! {
 // type: void __fastcall(RBX::WeldTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::WeldTool::~WeldTool()")]
 #[doc(alias = "__ZThn36_N3RBX8WeldToolD0Ev")]
-pub fn stub_68ce2c() -> ! {
-    todo!("0x68ce2c __ZThn36_N3RBX8WeldToolD0Ev")
+pub fn stub_68ce2c() {
+    // IDA 0x68ce2c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x68ced0 — __ZN3RBX9StudsToolD1Ev
@@ -1075,6 +1075,6 @@ pub fn stub_68ce2c() -> ! {
 // type: void __fastcall(RBX::StudsTool *__hidden this)
 #[doc(alias = "RBX::StudsTool::~StudsTool()")]
 #[doc(alias = "__ZN3RBX9StudsToolD1Ev")]
-pub fn stub_68ced0() -> ! {
-    todo!("0x68ced0 __ZN3RBX9StudsToolD1Ev")
+pub fn stub_68ced0() {
+    // IDA 0x68ced0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

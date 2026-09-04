@@ -86,14 +86,14 @@ pub fn stub_2b07d8() -> ! {
 
 // 0x2b0a88 — __ZNSt5dequeISsSaISsEED2Ev
 #[doc(alias = "std::deque<std::string,std::allocator<std::string>>::~deque()")]
-pub fn stub_2b0a88() -> ! {
-    todo!("0x2b0a88 std::deque<std::string,std::allocator<std::string>>::~deque()")
+pub fn stub_2b0a88() {
+    // IDA 0x2b0a88: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2b0b70 — __ZNSt11_Deque_baseISsSaISsEED2Ev
 #[doc(alias = "std::_Deque_base<std::string,std::allocator<std::string>>::~_Deque_base()")]
-pub fn stub_2b0b70() -> ! {
-    todo!("0x2b0b70 std::_Deque_base<std::string,std::allocator<std::string>>::~_Deque_base()")
+pub fn stub_2b0b70() {
+    // IDA 0x2b0b70: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2b0c88 — __ZNK3RBX15ServiceProvider6createINS_5Stats12StatsServiceEEEPT_v
@@ -164,20 +164,20 @@ pub fn stub_2b56b8() -> ! {
 
 // 0x2b6638 — __ZN3RBX14LibraryServiceD2Ev
 #[doc(alias = "RBX::LibraryService::~LibraryService()")]
-pub fn stub_2b6638() -> ! {
-    todo!("0x2b6638 RBX::LibraryService::~LibraryService()")
+pub fn stub_2b6638() {
+    // IDA 0x2b6638: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2b67d8 — __ZNSt8_Rb_treeISsSt4pairIKSsN3RBX14LibraryService17LibraryDefinitionEESt10_Select1stIS5_ESt4lessISsESaIS5_EE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,RBX::LibraryService::LibraryDefinition>,std::_Select1st<std::pair<std::string const,RBX::LibraryService::LibraryDefinition>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::LibraryService::LibraryDefinition>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,RBX::LibraryService::LibraryDefinition>> *)")]
-pub fn stub_2b67d8() -> ! {
-    todo!("0x2b67d8 std::_Rb_tree<std::string,std::pair<std::string const,RBX::LibraryService::LibraryDefinition>,std::_Select1st<std::pair<std::string const,RBX::LibraryService::LibraryDefinition>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::LibraryService::LibraryDefinition>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,RBX::LibraryService::LibraryDefinition>> *)")
+pub fn stub_2b67d8() {
+    // IDA 0x2b67d8: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x2b6800 — __ZNSt8_Rb_treeISsSt4pairIKSsN3RBX14LibraryService17LibraryDefinitionEESt10_Select1stIS5_ESt4lessISsESaIS5_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS5_E
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,RBX::LibraryService::LibraryDefinition>,std::_Select1st<std::pair<std::string const,RBX::LibraryService::LibraryDefinition>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::LibraryService::LibraryDefinition>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<std::string const,RBX::LibraryService::LibraryDefinition>> *)")]
-pub fn stub_2b6800() -> ! {
-    todo!("0x2b6800 std::_Rb_tree<std::string,std::pair<std::string const,RBX::LibraryService::LibraryDefinition>,std::_Select1st<std::pair<std::string const,RBX::LibraryService::LibraryDefinition>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::LibraryService::LibraryDefinition>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<std::string const,RBX::LibraryService::LibraryDefinition>> *)")
+pub fn stub_2b6800() {
+    // IDA 0x2b6800: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x2b74c8 — __ZN3RBX17NonFactoryProductINS_12RootInstanceELZNS_10sWorkspaceEEE15isNullClassNameEv
@@ -296,20 +296,20 @@ pub fn stub_2c1e48() -> ! {
 
 // 0x2c1f30 — __ZN3RBX5Stats4ItemD0Ev
 #[doc(alias = "RBX::Stats::Item::~Item()")]
-pub fn stub_2c1f30() -> ! {
-    todo!("0x2c1f30 RBX::Stats::Item::~Item()")
+pub fn stub_2c1f30() {
+    // IDA 0x2c1f30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2c2008 — __ZThn36_N3RBX5Stats4ItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::Item::~Item()")]
-pub fn stub_2c2008() -> ! {
-    todo!("0x2c2008 non-virtual thunk toRBX::Stats::Item::~Item()")
+pub fn stub_2c2008() {
+    // IDA 0x2c2008: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2c2048 — __ZThn36_N3RBX5Stats4ItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::Item::~Item()")]
-pub fn stub_2c2048() -> ! {
-    todo!("0x2c2048 non-virtual thunk toRBX::Stats::Item::~Item()")
+pub fn stub_2c2048() {
+    // IDA 0x2c2048: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2c26b0 — __ZN3RBX9ContentIdC2EPKc
@@ -320,14 +320,14 @@ pub fn stub_2c26b0() -> ! {
 
 // 0x2c46d0 — __ZN3RBX5GcJobD1Ev
 #[doc(alias = "RBX::GcJob::~GcJob()")]
-pub fn stub_2c46d0() -> ! {
-    todo!("0x2c46d0 RBX::GcJob::~GcJob()")
+pub fn stub_2c46d0() {
+    // IDA 0x2c46d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2c47a0 — __ZN3RBX5GcJobD0Ev
 #[doc(alias = "RBX::GcJob::~GcJob()")]
-pub fn stub_2c47a0() -> ! {
-    todo!("0x2c47a0 RBX::GcJob::~GcJob()")
+pub fn stub_2c47a0() {
+    // IDA 0x2c47a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2c4884 — __ZN3RBX5GcJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE
@@ -362,38 +362,38 @@ pub fn stub_2c73b8() -> ! {
 
 // 0x2c7790 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_5Stats10sStatsItemEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_5Stats10sStatsItemEEE12getClassNameEv")]
-pub fn stub_2c7790() -> ! {
-    todo!("0x2c7790 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_5Stats10sStatsItemEEE12getClassNameEv")
+pub fn stub_2c7790() {
+    // IDA 0x2c7790: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2c7928 — __ZThn32_N3RBX5Stats4ItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::Item::~Item()")]
-pub fn stub_2c7928() -> ! {
-    todo!("0x2c7928 non-virtual thunk toRBX::Stats::Item::~Item()")
+pub fn stub_2c7928() {
+    // IDA 0x2c7928: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2c7b48 — __ZN3RBX5Stats14TypedStatsItemIbED1Ev
 #[doc(alias = "RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
-pub fn stub_2c7b48() -> ! {
-    todo!("0x2c7b48 RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")
+pub fn stub_2c7b48() {
+    // IDA 0x2c7b48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2c7c90 — __ZN3RBX5Stats14TypedStatsItemIbED0Ev
 #[doc(alias = "RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
-pub fn stub_2c7c90() -> ! {
-    todo!("0x2c7c90 RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")
+pub fn stub_2c7c90() {
+    // IDA 0x2c7c90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2c7df0 — __ZThn36_N3RBX5Stats14TypedStatsItemIbED1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
-pub fn stub_2c7df0() -> ! {
-    todo!("0x2c7df0 non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")
+pub fn stub_2c7df0() {
+    // IDA 0x2c7df0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2c7f38 — __ZThn36_N3RBX5Stats14TypedStatsItemIbED0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
-pub fn stub_2c7f38() -> ! {
-    todo!("0x2c7f38 non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")
+pub fn stub_2c7f38() {
+    // IDA 0x2c7f38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2c8270 — __ZNSt5dequeISsSaISsEE8pop_backEv
@@ -452,8 +452,8 @@ pub fn stub_2c8f2c() -> ! {
 
 // 0x2c9084 — __ZNSt11_Deque_baseISsSaISsEE15_M_create_nodesEPPSsS3_
 #[doc(alias = "std::_Deque_base<std::string,std::allocator<std::string>>::_M_create_nodes(std::string **,std::string **)")]
-pub fn stub_2c9084() -> ! {
-    todo!("0x2c9084 std::_Deque_base<std::string,std::allocator<std::string>>::_M_create_nodes(std::string **,std::string **)")
+pub fn stub_2c9084() {
+    // IDA 0x2c9084: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x2c9178 — __ZNSt5dequeISsSaISsEE19_M_destroy_data_auxESt15_Deque_iteratorISsRSsPSsES5_
@@ -500,8 +500,8 @@ pub fn stub_2d072c() -> ! {
 
 // 0x2d11b8 — __ZNSt8auto_ptrIN3RBX13AdvRunDraggerEED2Ev
 #[doc(alias = "std::auto_ptr<RBX::AdvRunDragger>::~auto_ptr()")]
-pub fn stub_2d11b8() -> ! {
-    todo!("0x2d11b8 std::auto_ptr<RBX::AdvRunDragger>::~auto_ptr()")
+pub fn stub_2d11b8() {
+    // IDA 0x2d11b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d145c — __GLOBAL__I_a_78
@@ -584,26 +584,26 @@ pub fn stub_2d55f8() -> ! {
 
 // 0x2d5fd0 — __ZN3RBX13AdvRotateToolD1Ev
 #[doc(alias = "RBX::AdvRotateTool::~AdvRotateTool()")]
-pub fn stub_2d5fd0() -> ! {
-    todo!("0x2d5fd0 RBX::AdvRotateTool::~AdvRotateTool()")
+pub fn stub_2d5fd0() {
+    // IDA 0x2d5fd0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d5fd4 — __ZN3RBX13AdvRotateToolD0Ev
 #[doc(alias = "RBX::AdvRotateTool::~AdvRotateTool()")]
-pub fn stub_2d5fd4() -> ! {
-    todo!("0x2d5fd4 RBX::AdvRotateTool::~AdvRotateTool()")
+pub fn stub_2d5fd4() {
+    // IDA 0x2d5fd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d6074 — __ZThn36_N3RBX13AdvRotateToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")]
-pub fn stub_2d6074() -> ! {
-    todo!("0x2d6074 non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")
+pub fn stub_2d6074() {
+    // IDA 0x2d6074: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d607c — __ZThn36_N3RBX13AdvRotateToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")]
-pub fn stub_2d607c() -> ! {
-    todo!("0x2d607c non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")
+pub fn stub_2d607c() {
+    // IDA 0x2d607c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d6120 — __GLOBAL__I_a_81

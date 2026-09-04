@@ -73,16 +73,16 @@ pub fn stub_4d598c() -> ! {
 // demangled: boost::function1<void,std::exception &>::swap(boost::function1<void,std::exception &>&)
 #[doc(alias = "boost::function1<void,std::exception &>::swap(boost::function1<void,std::exception &>&)")]
 #[doc(alias = "__ZN5boost9function1IvRSt9exceptionE4swapERS3_")]
-pub fn stub_4d5a08() -> ! {
-    todo!("0x4d5a08 __ZN5boost9function1IvRSt9exceptionE4swapERS3_")
+pub fn stub_4d5a08() {
+    // IDA 0x4d5a08: function swap/move_assign exchanges the erased target. Box<dyn Fn> swap — carrier no-op.
 }
 
 // 0x4d5ae4 — __ZN5boost9function1IvRSt9exceptionE5clearEv
 // demangled: boost::function1<void,std::exception &>::clear(void)
 #[doc(alias = "boost::function1<void,std::exception &>::clear(void)")]
 #[doc(alias = "__ZN5boost9function1IvRSt9exceptionE5clearEv")]
-pub fn stub_4d5ae4() -> ! {
-    todo!("0x4d5ae4 __ZN5boost9function1IvRSt9exceptionE5clearEv")
+pub fn stub_4d5ae4() {
+    // IDA 0x4d5ae4: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x4d5b10 — __ZN5boost9function1IvRSt9exceptionE11move_assignERS3_
@@ -90,24 +90,24 @@ pub fn stub_4d5ae4() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::function1<void,std::exception &>::move_assign(boost::function1<void,std::exception &>&)")]
 #[doc(alias = "__ZN5boost9function1IvRSt9exceptionE11move_assignERS3_")]
-pub fn stub_4d5b10() -> ! {
-    todo!("0x4d5b10 __ZN5boost9function1IvRSt9exceptionE11move_assignERS3_")
+pub fn stub_4d5b10() {
+    // IDA 0x4d5b10: function swap/move_assign exchanges the erased target. Box<dyn Fn> swap — carrier no-op.
 }
 
 // 0x4d5c14 — __ZN5boost6detail8function15functor_managerIPFvRSt9exceptionEE6manageERKNS1_15function_bufferERS8_NS1_30functor_manager_operation_typeE
 // demangled: boost::detail::function::functor_manager<void (*)(std::exception &)>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 #[doc(alias = "boost::detail::function::functor_manager<void (*)(std::exception &)>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerIPFvRSt9exceptionEE6manageERKNS1_15function_bufferERS8_NS1_30functor_manager_operation_typeE")]
-pub fn stub_4d5c14() -> ! {
-    todo!("0x4d5c14 __ZN5boost6detail8function15functor_managerIPFvRSt9exceptionEE6manageERKNS1_15function_bufferERS8_NS1_30functor_manager_operation_typeE")
+pub fn stub_4d5c14() {
+    // IDA 0x4d5c14: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x4d5c70 — __ZN5boost6detail8function22void_function_invoker1IPFvRSt9exceptionEvS4_E6invokeERNS1_15function_bufferES4_
 // demangled: boost::detail::function::void_function_invoker1<void (*)(std::exception &),void,std::exception &>::invoke(boost::detail::function::function_buffer &,std::exception &)
 #[doc(alias = "boost::detail::function::void_function_invoker1<void (*)(std::exception &),void,std::exception &>::invoke(boost::detail::function::function_buffer &,std::exception &)")]
 #[doc(alias = "__ZN5boost6detail8function22void_function_invoker1IPFvRSt9exceptionEvS4_E6invokeERNS1_15function_bufferES4_")]
-pub fn stub_4d5c70() -> ! {
-    todo!("0x4d5c70 __ZN5boost6detail8function22void_function_invoker1IPFvRSt9exceptionEvS4_E6invokeERNS1_15function_bufferES4_")
+pub fn stub_4d5c70() {
+    // IDA 0x4d5c70: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x4d5c78 — __ZN3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv

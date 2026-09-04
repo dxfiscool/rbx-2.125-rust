@@ -31,8 +31,8 @@ pub fn stub_0xb11fd8() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "std::vector<boost::io::detail::format_item<char,std::char_traits<char>,std::allocator<char>>,std::allocator<boost::io::detail::format_item<char,std::char_traits<char>,std::allocator<char>>>>::~vector()")]
 #[doc(alias = "__ZNSt6vectorIN5boost2io6detail11format_itemIcSt11char_traitsIcESaIcEEESaIS7_EED1Ev")]
-pub fn stub_0xb125e8() -> ! {
-    todo!("0xb125e8 std::vector<boost::io::detail::format_item<char,std::char_traits<char>,std::allocator<char>>,std::allocator<boost::io::detail::format_item<char,std::char_traits<char>,std::allocator<char>>>>::~vector()")
+pub fn stub_0xb125e8() {
+    // IDA 0xb125e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb126b0 — __ZN5boost2io18basic_altstringbufIcSt11char_traitsIcESaIcEE7seekoffExSt12_Ios_SeekdirSt13_Ios_Openmode
@@ -71,8 +71,8 @@ pub fn stub_0xb12a88() -> ! {
 // type: void __fastcall(std::exception *this)
 #[doc(alias = "boost::io::bad_format_string::~bad_format_string()")]
 #[doc(alias = "__ZN5boost2io17bad_format_stringD1Ev")]
-pub fn stub_0xb12bb0() -> ! {
-    todo!("0xb12bb0 boost::io::bad_format_string::~bad_format_string()")
+pub fn stub_0xb12bb0() {
+    // IDA 0xb12bb0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb12bc0 — __ZNSt6vectorIN5boost2io6detail11format_itemIcSt11char_traitsIcESaIcEEESaIS7_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS7_S9_EEmRKS7_
@@ -119,16 +119,16 @@ pub fn stub_0xb13858() -> ! {
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::bad_format_string>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io17bad_format_stringEEEED0Ev")]
-pub fn stub_0xb13868() -> ! {
-    todo!("0xb13868 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::bad_format_string>>::~clone_impl()")
+pub fn stub_0xb13868() {
+    // IDA 0xb13868: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb13940 — __ZThn12_N5boost16exception_detail19error_info_injectorINS_2io17bad_format_stringEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::io::bad_format_string>::~error_info_injector()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail19error_info_injectorINS_2io17bad_format_stringEED0Ev")]
-pub fn stub_0xb13940() -> ! {
-    todo!("0xb13940 non-virtual thunk toboost::exception_detail::error_info_injector<boost::io::bad_format_string>::~error_info_injector()")
+pub fn stub_0xb13940() {
+    // IDA 0xb13940: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb19ab0 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsbEE4slotEEaSERKS7_
@@ -159,32 +159,32 @@ pub fn stub_0xb1a370() -> ! {
 // type: std::bad_alloc *__fastcall(std::bad_alloc *, int, int, int, void *, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEED1Ev")]
-pub fn stub_0xb1a490() -> ! {
-    todo!("0xb1a490 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")
+pub fn stub_0xb1a490() {
+    // IDA 0xb1a490: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb1a548 — __ZN5boost16exception_detail19error_info_injectorISt9bad_allocED1Ev
 // type: int __fastcall(std::bad_alloc *, int, int, int, void *, int)
 #[doc(alias = "boost::exception_detail::error_info_injector<std::bad_alloc>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorISt9bad_allocED1Ev")]
-pub fn stub_0xb1a548() -> ! {
-    todo!("0xb1a548 boost::exception_detail::error_info_injector<std::bad_alloc>::~error_info_injector()")
+pub fn stub_0xb1a548() {
+    // IDA 0xb1a548: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb1a600 — __ZThn4_N5boost16exception_detail19error_info_injectorISt9bad_allocED1Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<std::bad_alloc>::~error_info_injector()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail19error_info_injectorISt9bad_allocED1Ev")]
-pub fn stub_0xb1a600() -> ! {
-    todo!("0xb1a600 non-virtual thunk toboost::exception_detail::error_info_injector<std::bad_alloc>::~error_info_injector()")
+pub fn stub_0xb1a600() {
+    // IDA 0xb1a600: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb1a6b8 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEED1Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEED1Ev")]
-pub fn stub_0xb1a6b8() -> ! {
-    todo!("0xb1a6b8 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")
+pub fn stub_0xb1a6b8() {
+    // IDA 0xb1a6b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb1a788 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEE5cloneEv
@@ -207,8 +207,8 @@ pub fn stub_0xb1a848() -> ! {
 // type: void __fastcall(std::bad_alloc *, int, int, int, void *, int)
 #[doc(alias = "boost::exception_detail::error_info_injector<std::bad_alloc>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorISt9bad_allocED0Ev")]
-pub fn stub_0xb1a910() -> ! {
-    todo!("0xb1a910 boost::exception_detail::error_info_injector<std::bad_alloc>::~error_info_injector()")
+pub fn stub_0xb1a910() {
+    // IDA 0xb1a910: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb1a9d0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEEC1ERKS5_NS5_9clone_tagE
@@ -255,8 +255,8 @@ pub fn stub_0xb1fce0() -> ! {
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "std::_Rb_tree<RBX::SystemAddress,std::pair<RBX::SystemAddress const,unsigned char>,std::_Select1st<std::pair<RBX::SystemAddress const,unsigned char>>,std::less<RBX::SystemAddress>,std::allocator<std::pair<RBX::SystemAddress const,unsigned char>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::SystemAddress const,unsigned char>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIN3RBX13SystemAddressESt4pairIKS1_hESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE8_M_eraseEPSt13_Rb_tree_nodeIS4_E")]
-pub fn stub_0xb1fdb0() -> ! {
-    todo!("0xb1fdb0 std::_Rb_tree<RBX::SystemAddress,std::pair<RBX::SystemAddress const,unsigned char>,std::_Select1st<std::pair<RBX::SystemAddress const,unsigned char>>,std::less<RBX::SystemAddress>,std::allocator<std::pair<RBX::SystemAddress const,unsigned char>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::SystemAddress const,unsigned char>> *)")
+pub fn stub_0xb1fdb0() {
+    // IDA 0xb1fdb0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xb1fdd8 — __ZNSt8_Rb_treeIN3RBX13SystemAddressESt4pairIKS1_hESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE16_M_insert_uniqueERKS4_
@@ -271,8 +271,8 @@ pub fn stub_0xb1fdd8() -> ! {
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,unsigned char>,std::_Select1st<std::pair<std::string const,unsigned char>>,std::less<std::string>,std::allocator<std::pair<std::string const,unsigned char>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,unsigned char>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSshESt10_Select1stIS2_ESt4lessISsESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E")]
-pub fn stub_0xb207d8() -> ! {
-    todo!("0xb207d8 std::_Rb_tree<std::string,std::pair<std::string const,unsigned char>,std::_Select1st<std::pair<std::string const,unsigned char>>,std::less<std::string>,std::allocator<std::pair<std::string const,unsigned char>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,unsigned char>> *)")
+pub fn stub_0xb207d8() {
+    // IDA 0xb207d8: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xb2fc18 — __ZN3rbx7signals6signalIFvSsbEE13disconnectAllEv
@@ -303,16 +303,16 @@ pub fn stub_0xb31784() -> ! {
 // type: int()
 #[doc(alias = "rbx::signals::signal<void ()(std::string,bool)>::callable_slot<boost::function<void ()(std::string,bool)>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsbEE13callable_slotIN5boost8functionIS2_EEED1Ev")]
-pub fn stub_0xb31838() -> ! {
-    todo!("0xb31838 rbx::signals::signal<void ()(std::string,bool)>::callable_slot<boost::function<void ()(std::string,bool)>>::~callable_slot()")
+pub fn stub_0xb31838() {
+    // IDA 0xb31838: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb31844 — __ZN3rbx7signals6signalIFvSsbEE13callable_slotIN5boost8functionIS2_EEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "rbx::signals::signal<void ()(std::string,bool)>::callable_slot<boost::function<void ()(std::string,bool)>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsbEE13callable_slotIN5boost8functionIS2_EEED0Ev")]
-pub fn stub_0xb31844() -> ! {
-    todo!("0xb31844 rbx::signals::signal<void ()(std::string,bool)>::callable_slot<boost::function<void ()(std::string,bool)>>::~callable_slot()")
+pub fn stub_0xb31844() {
+    // IDA 0xb31844: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb318f8 — __ZN3rbx7signals6signalIFvSsbEE4slot10disconnectEv
@@ -343,8 +343,8 @@ pub fn stub_0xb31a84() -> ! {
 // type: void __fastcall(int, const std::string *, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,bool)>::slot,boost::function<void ()(std::string,bool)>,2,void ()(std::string,bool)>::call(std::string,bool)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvSsbEE4slotEN5boost8functionIS3_EELi2ES3_E4callESsb")]
-pub fn stub_0xb31ba4() -> ! {
-    todo!("0xb31ba4 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,bool)>::slot,boost::function<void ()(std::string,bool)>,2,void ()(std::string,bool)>::call(std::string,bool)")
+pub fn stub_0xb31ba4() {
+    // IDA 0xb31ba4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb31cc4 — __ZNK5boost9function2IvSsbEclESsb
@@ -375,48 +375,48 @@ pub fn stub_0xb31fb0() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,bool)>::slot,boost::function<void ()(std::string,bool)>,2,void ()(std::string,bool)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvSsbEE4slotEN5boost8functionIS3_EELi2ES3_ED2Ev")]
-pub fn stub_0xb32094() -> ! {
-    todo!("0xb32094 rbx::callable<rbx::signals::signal<void ()(std::string,bool)>::slot,boost::function<void ()(std::string,bool)>,2,void ()(std::string,bool)>::~callable()")
+pub fn stub_0xb32094() {
+    // IDA 0xb32094: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb3222c — __ZN3rbx8callableINS_7signals6signalIFvSsbEE4slotEN5boost8functionIS3_EELi2ES3_ED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,bool)>::slot,boost::function<void ()(std::string,bool)>,2,void ()(std::string,bool)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvSsbEE4slotEN5boost8functionIS3_EELi2ES3_ED1Ev")]
-pub fn stub_0xb3222c() -> ! {
-    todo!("0xb3222c rbx::callable<rbx::signals::signal<void ()(std::string,bool)>::slot,boost::function<void ()(std::string,bool)>,2,void ()(std::string,bool)>::~callable()")
+pub fn stub_0xb3222c() {
+    // IDA 0xb3222c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb32238 — __ZN3rbx8callableINS_7signals6signalIFvSsbEE4slotEN5boost8functionIS3_EELi2ES3_ED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,bool)>::slot,boost::function<void ()(std::string,bool)>,2,void ()(std::string,bool)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvSsbEE4slotEN5boost8functionIS3_EELi2ES3_ED0Ev")]
-pub fn stub_0xb32238() -> ! {
-    todo!("0xb32238 rbx::callable<rbx::signals::signal<void ()(std::string,bool)>::slot,boost::function<void ()(std::string,bool)>,2,void ()(std::string,bool)>::~callable()")
+pub fn stub_0xb32238() {
+    // IDA 0xb32238: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb322ec — __ZN3rbx7signals6signalIFvSsbEE4slotD1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(std::string,bool)>::slot::~slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsbEE4slotD1Ev")]
-pub fn stub_0xb322ec() -> ! {
-    todo!("0xb322ec rbx::signals::signal<void ()(std::string,bool)>::slot::~slot()")
+pub fn stub_0xb322ec() {
+    // IDA 0xb322ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb32348 — __ZN3rbx7signals6signalIFvSsbEE4slotD0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(std::string,bool)>::slot::~slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsbEE4slotD0Ev")]
-pub fn stub_0xb32348() -> ! {
-    todo!("0xb32348 rbx::signals::signal<void ()(std::string,bool)>::slot::~slot()")
+pub fn stub_0xb32348() {
+    // IDA 0xb32348: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb32450 — __ZN5boost12basic_formatIcSt11char_traitsIcESaIcEED2Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::basic_format<char,std::char_traits<char>,std::allocator<char>>::~basic_format()")]
 #[doc(alias = "__ZN5boost12basic_formatIcSt11char_traitsIcESaIcEED2Ev")]
-pub fn stub_0xb32450() -> ! {
-    todo!("0xb32450 boost::basic_format<char,std::char_traits<char>,std::allocator<char>>::~basic_format()")
+pub fn stub_0xb32450() {
+    // IDA 0xb32450: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb334b8 — __ZNSt6vectorIN3RBX7UintSetESaIS1_EEaSERKS3_

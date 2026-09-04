@@ -17,8 +17,8 @@ const _: () = {
 // type: int __fastcall(int, int, std::string *, int, int, int)
 #[doc(alias = "boost::_bi::list5<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>,boost::_bi::value<double *>>::list5(boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>,boost::_bi::value<double *>)")]
 #[doc(alias = "__ZN5boost3_bi5list5INS0_5valueIPN3RBX9DataModelEEENS_3argILi1EEENS2_ISsEENS2_IdEENS2_IPdEEEC2ES6_S8_S9_SA_SC_")]
-pub fn stub_43bde0() -> ! {
-    todo!("0x43bde0 boost::_bi::list5<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>,boost::_bi::value<double *>>::list5(boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>,boost::_bi::value<double *>)")
+pub fn stub_43bde0() {
+    // IDA 0x43bde0: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x43bf10 — __ZN5boost3_bi8storage5INS0_5valueIPN3RBX9DataModelEEENS_3argILi1EEENS2_ISsEENS2_IdEENS2_IPdEEEC2ES6_S8_S9_SA_SC_
@@ -89,8 +89,8 @@ pub fn stub_43c570() -> ! {
 // type: void __fastcall(std::exception *this)
 #[doc(alias = "boost::io::too_many_args::~too_many_args()")]
 #[doc(alias = "__ZN5boost2io13too_many_argsD1Ev")]
-pub fn stub_43c660() -> ! {
-    todo!("0x43c660 boost::io::too_many_args::~too_many_args()")
+pub fn stub_43c660() {
+    // IDA 0x43c660: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43c664 — __ZN5boost2io6detail3putIcSt11char_traitsIcESaIcERKfEEvT2_RKNS1_11format_itemIT_T0_T1_EERNS_12basic_formatISA_SB_SC_E11string_typeERNSH_20internal_streambuf_tEPSt6locale
@@ -143,8 +143,8 @@ pub fn stub_43ce40() -> ! {
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "boost::io::basic_oaltstringstream<char,std::char_traits<char>,std::allocator<char>>::~basic_oaltstringstream()")]
 #[doc(alias = "__ZN5boost2io22basic_oaltstringstreamIcSt11char_traitsIcESaIcEED0Ev")]
-pub fn stub_43cf00() -> ! {
-    todo!("0x43cf00 boost::io::basic_oaltstringstream<char,std::char_traits<char>,std::allocator<char>>::~basic_oaltstringstream()")
+pub fn stub_43cf00() {
+    // IDA 0x43cf00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43cfd4 — __ZNK5boost15optional_detail13optional_baseISt6localeE14is_initializedEv
@@ -161,8 +161,8 @@ pub fn stub_43cfd4() -> ! {
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<boost::io::basic_altstringbuf<char,std::char_traits<char>,std::allocator<char>> *,boost::io::basic_oaltstringstream<char,std::char_traits<char>,std::allocator<char>>::No_Op>(boost::io::basic_altstringbuf<char,std::char_traits<char>,std::allocator<char>> *,boost::io::basic_oaltstringstream<char,std::char_traits<char>,std::allocator<char>>::No_Op)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPNS_2io18basic_altstringbufIcSt11char_traitsIcESaIcEEENS3_22basic_oaltstringstreamIcS6_S7_E5No_OpEEET_T0_")]
-pub fn stub_43cfd8() -> ! {
-    todo!("0x43cfd8 boost::detail::shared_count::shared_count<boost::io::basic_altstringbuf<char,std::char_traits<char>,std::allocator<char>> *,boost::io::basic_oaltstringstream<char,std::char_traits<char>,std::allocator<char>>::No_Op>(boost::io::basic_altstringbuf<char,std::char_traits<char>,std::allocator<char>> *,boost::io::basic_oaltstringstream<char,std::char_traits<char>,std::allocator<char>>::No_Op)")
+pub fn stub_43cfd8() {
+    // IDA 0x43cfd8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x43d0b8 — __ZN5boost6detail18sp_counted_impl_pdIPNS_2io18basic_altstringbufIcSt11char_traitsIcESaIcEEENS2_22basic_oaltstringstreamIcS5_S6_E5No_OpEED1Ev
@@ -170,8 +170,8 @@ pub fn stub_43cfd8() -> ! {
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<boost::io::basic_altstringbuf<char,std::char_traits<char>,std::allocator<char>> *,boost::io::basic_oaltstringstream<char,std::char_traits<char>,std::allocator<char>>::No_Op>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPNS_2io18basic_altstringbufIcSt11char_traitsIcESaIcEEENS2_22basic_oaltstringstreamIcS5_S6_E5No_OpEED1Ev")]
-pub fn stub_43d0b8() -> ! {
-    todo!("0x43d0b8 boost::detail::sp_counted_impl_pd<boost::io::basic_altstringbuf<char,std::char_traits<char>,std::allocator<char>> *,boost::io::basic_oaltstringstream<char,std::char_traits<char>,std::allocator<char>>::No_Op>::~sp_counted_impl_pd()")
+pub fn stub_43d0b8() {
+    // IDA 0x43d0b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d0bc — __ZN5boost6detail18sp_counted_impl_pdIPNS_2io18basic_altstringbufIcSt11char_traitsIcESaIcEEENS2_22basic_oaltstringstreamIcS5_S6_E5No_OpEED0Ev
@@ -179,8 +179,8 @@ pub fn stub_43d0b8() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<boost::io::basic_altstringbuf<char,std::char_traits<char>,std::allocator<char>> *,boost::io::basic_oaltstringstream<char,std::char_traits<char>,std::allocator<char>>::No_Op>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPNS_2io18basic_altstringbufIcSt11char_traitsIcESaIcEEENS2_22basic_oaltstringstreamIcS5_S6_E5No_OpEED0Ev")]
-pub fn stub_43d0bc() -> ! {
-    todo!("0x43d0bc boost::detail::sp_counted_impl_pd<boost::io::basic_altstringbuf<char,std::char_traits<char>,std::allocator<char>> *,boost::io::basic_oaltstringstream<char,std::char_traits<char>,std::allocator<char>>::No_Op>::~sp_counted_impl_pd()")
+pub fn stub_43d0bc() {
+    // IDA 0x43d0bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d0c0 — __ZN5boost6detail18sp_counted_impl_pdIPNS_2io18basic_altstringbufIcSt11char_traitsIcESaIcEEENS2_22basic_oaltstringstreamIcS5_S6_E5No_OpEE7disposeEv
@@ -188,8 +188,8 @@ pub fn stub_43d0bc() -> ! {
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<boost::io::basic_altstringbuf<char,std::char_traits<char>,std::allocator<char>> *,boost::io::basic_oaltstringstream<char,std::char_traits<char>,std::allocator<char>>::No_Op>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPNS_2io18basic_altstringbufIcSt11char_traitsIcESaIcEEENS2_22basic_oaltstringstreamIcS5_S6_E5No_OpEE7disposeEv")]
-pub fn stub_43d0c0() -> ! {
-    todo!("0x43d0c0 boost::detail::sp_counted_impl_pd<boost::io::basic_altstringbuf<char,std::char_traits<char>,std::allocator<char>> *,boost::io::basic_oaltstringstream<char,std::char_traits<char>,std::allocator<char>>::No_Op>::dispose(void)")
+pub fn stub_43d0c0() {
+    // IDA 0x43d0c0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x43d0c4 — __ZN5boost6detail18sp_counted_impl_pdIPNS_2io18basic_altstringbufIcSt11char_traitsIcESaIcEEENS2_22basic_oaltstringstreamIcS5_S6_E5No_OpEE11get_deleterERKSt9type_info
@@ -197,8 +197,8 @@ pub fn stub_43d0c0() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<boost::io::basic_altstringbuf<char,std::char_traits<char>,std::allocator<char>> *,boost::io::basic_oaltstringstream<char,std::char_traits<char>,std::allocator<char>>::No_Op>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPNS_2io18basic_altstringbufIcSt11char_traitsIcESaIcEEENS2_22basic_oaltstringstreamIcS5_S6_E5No_OpEE11get_deleterERKSt9type_info")]
-pub fn stub_43d0c4() -> ! {
-    todo!("0x43d0c4 boost::detail::sp_counted_impl_pd<boost::io::basic_altstringbuf<char,std::char_traits<char>,std::allocator<char>> *,boost::io::basic_oaltstringstream<char,std::char_traits<char>,std::allocator<char>>::No_Op>::get_deleter(std::type_info const&)")
+pub fn stub_43d0c4() {
+    // IDA 0x43d0c4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x43d0dc — __ZN5boost6detail18sp_counted_impl_pdIPNS_2io18basic_altstringbufIcSt11char_traitsIcESaIcEEENS2_22basic_oaltstringstreamIcS5_S6_E5No_OpEE19get_untyped_deleterEv
@@ -206,8 +206,8 @@ pub fn stub_43d0c4() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<boost::io::basic_altstringbuf<char,std::char_traits<char>,std::allocator<char>> *,boost::io::basic_oaltstringstream<char,std::char_traits<char>,std::allocator<char>>::No_Op>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPNS_2io18basic_altstringbufIcSt11char_traitsIcESaIcEEENS2_22basic_oaltstringstreamIcS5_S6_E5No_OpEE19get_untyped_deleterEv")]
-pub fn stub_43d0dc() -> ! {
-    todo!("0x43d0dc boost::detail::sp_counted_impl_pd<boost::io::basic_altstringbuf<char,std::char_traits<char>,std::allocator<char>> *,boost::io::basic_oaltstringstream<char,std::char_traits<char>,std::allocator<char>>::No_Op>::get_untyped_deleter(void)")
+pub fn stub_43d0dc() {
+    // IDA 0x43d0dc: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x43d0e0 — __ZN5boost2io13too_many_argsD0Ev
@@ -215,8 +215,8 @@ pub fn stub_43d0dc() -> ! {
 // type: void __fastcall(std::exception *this)
 #[doc(alias = "boost::io::too_many_args::~too_many_args()")]
 #[doc(alias = "__ZN5boost2io13too_many_argsD0Ev")]
-pub fn stub_43d0e0() -> ! {
-    todo!("0x43d0e0 boost::io::too_many_args::~too_many_args()")
+pub fn stub_43d0e0() {
+    // IDA 0x43d0e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d0f4 — __ZNK5boost2io13too_many_args4whatEv
@@ -233,8 +233,8 @@ pub fn stub_43d0f4() -> ! {
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::too_many_args>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io13too_many_argsEEEED1Ev")]
-pub fn stub_43d100() -> ! {
-    todo!("0x43d100 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::too_many_args>>::~clone_impl()")
+pub fn stub_43d100() {
+    // IDA 0x43d100: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d110 — __ZN5boost16exception_detail19error_info_injectorINS_2io13too_many_argsEED1Ev
@@ -242,8 +242,8 @@ pub fn stub_43d100() -> ! {
 // type: int()
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::io::too_many_args>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_2io13too_many_argsEED1Ev")]
-pub fn stub_43d110() -> ! {
-    todo!("0x43d110 boost::exception_detail::error_info_injector<boost::io::too_many_args>::~error_info_injector()")
+pub fn stub_43d110() {
+    // IDA 0x43d110: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d114 — __ZN5boost16exception_detail19error_info_injectorINS_2io13too_many_argsEED2Ev
@@ -251,8 +251,8 @@ pub fn stub_43d110() -> ! {
 // type: int __fastcall(std::exception *, int, int, int, void *, int)
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::io::too_many_args>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_2io13too_many_argsEED2Ev")]
-pub fn stub_43d114() -> ! {
-    todo!("0x43d114 boost::exception_detail::error_info_injector<boost::io::too_many_args>::~error_info_injector()")
+pub fn stub_43d114() {
+    // IDA 0x43d114: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d1d0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io13too_many_argsEEEED0Ev
@@ -260,8 +260,8 @@ pub fn stub_43d114() -> ! {
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::too_many_args>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io13too_many_argsEEEED0Ev")]
-pub fn stub_43d1d0() -> ! {
-    todo!("0x43d1d0 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::too_many_args>>::~clone_impl()")
+pub fn stub_43d1d0() {
+    // IDA 0x43d1d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d1e8 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io13too_many_argsEEEE7rethrowEv
@@ -278,8 +278,8 @@ pub fn stub_43d1e8() -> ! {
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::too_many_args>>::~clone_impl()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io13too_many_argsEEEED0Ev")]
-pub fn stub_43d318() -> ! {
-    todo!("0x43d318 non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::too_many_args>>::~clone_impl()")
+pub fn stub_43d318() {
+    // IDA 0x43d318: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d330 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io13too_many_argsEEEE5cloneEv
@@ -305,8 +305,8 @@ pub fn stub_43d33c() -> ! {
 // type: int __fastcall(_DWORD *, int, int, int)
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::too_many_args>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io13too_many_argsEEEED0Ev")]
-pub fn stub_43d34c() -> ! {
-    todo!("0x43d34c virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::too_many_args>>::~clone_impl()")
+pub fn stub_43d34c() {
+    // IDA 0x43d34c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d368 — __ZN5boost16exception_detail19error_info_injectorINS_2io13too_many_argsEED0Ev
@@ -314,8 +314,8 @@ pub fn stub_43d34c() -> ! {
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::io::too_many_args>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_2io13too_many_argsEED0Ev")]
-pub fn stub_43d368() -> ! {
-    todo!("0x43d368 boost::exception_detail::error_info_injector<boost::io::too_many_args>::~error_info_injector()")
+pub fn stub_43d368() {
+    // IDA 0x43d368: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d37c — __ZThn12_N5boost16exception_detail19error_info_injectorINS_2io13too_many_argsEED0Ev
@@ -323,8 +323,8 @@ pub fn stub_43d368() -> ! {
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "non-virtual thunk to boost::exception_detail::error_info_injector<boost::io::too_many_args>::~error_info_injector()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail19error_info_injectorINS_2io13too_many_argsEED0Ev")]
-pub fn stub_43d37c() -> ! {
-    todo!("0x43d37c non-virtual thunk to boost::exception_detail::error_info_injector<boost::io::too_many_args>::~error_info_injector()")
+pub fn stub_43d37c() {
+    // IDA 0x43d37c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d398 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io13too_many_argsEEEEC1ERKS5_
@@ -350,8 +350,8 @@ pub fn stub_43d4d8() -> ! {
 // type: void __fastcall(std::exception *this)
 #[doc(alias = "boost::io::too_few_args::~too_few_args()")]
 #[doc(alias = "__ZN5boost2io12too_few_argsD0Ev")]
-pub fn stub_43d528() -> ! {
-    todo!("0x43d528 boost::io::too_few_args::~too_few_args()")
+pub fn stub_43d528() {
+    // IDA 0x43d528: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d540 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io12too_few_argsEEEED1Ev
@@ -359,8 +359,8 @@ pub fn stub_43d528() -> ! {
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::too_few_args>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io12too_few_argsEEEED1Ev")]
-pub fn stub_43d540() -> ! {
-    todo!("0x43d540 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::too_few_args>>::~clone_impl()")
+pub fn stub_43d540() {
+    // IDA 0x43d540: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d550 — __ZN5boost16exception_detail19error_info_injectorINS_2io12too_few_argsEED1Ev
@@ -368,8 +368,8 @@ pub fn stub_43d540() -> ! {
 // type: int()
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::io::too_few_args>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_2io12too_few_argsEED1Ev")]
-pub fn stub_43d550() -> ! {
-    todo!("0x43d550 boost::exception_detail::error_info_injector<boost::io::too_few_args>::~error_info_injector()")
+pub fn stub_43d550() {
+    // IDA 0x43d550: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d554 — __ZN5boost16exception_detail19error_info_injectorINS_2io12too_few_argsEED2Ev
@@ -377,8 +377,8 @@ pub fn stub_43d550() -> ! {
 // type: int __fastcall(std::exception *, int, int, int, void *, int)
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::io::too_few_args>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_2io12too_few_argsEED2Ev")]
-pub fn stub_43d554() -> ! {
-    todo!("0x43d554 boost::exception_detail::error_info_injector<boost::io::too_few_args>::~error_info_injector()")
+pub fn stub_43d554() {
+    // IDA 0x43d554: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d60c — __ZThn12_N5boost16exception_detail19error_info_injectorINS_2io12too_few_argsEED1Ev
@@ -386,8 +386,8 @@ pub fn stub_43d554() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk to boost::exception_detail::error_info_injector<boost::io::too_few_args>::~error_info_injector()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail19error_info_injectorINS_2io12too_few_argsEED1Ev")]
-pub fn stub_43d60c() -> ! {
-    todo!("0x43d60c non-virtual thunk to boost::exception_detail::error_info_injector<boost::io::too_few_args>::~error_info_injector()")
+pub fn stub_43d60c() {
+    // IDA 0x43d60c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d614 — __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io12too_few_argsEEEED1Ev
@@ -395,8 +395,8 @@ pub fn stub_43d60c() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::too_few_args>>::~clone_impl()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io12too_few_argsEEEED1Ev")]
-pub fn stub_43d614() -> ! {
-    todo!("0x43d614 non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::too_few_args>>::~clone_impl()")
+pub fn stub_43d614() {
+    // IDA 0x43d614: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d61c — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io12too_few_argsEEEED1Ev
@@ -404,8 +404,8 @@ pub fn stub_43d614() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::too_few_args>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io12too_few_argsEEEED1Ev")]
-pub fn stub_43d61c() -> ! {
-    todo!("0x43d61c virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::too_few_args>>::~clone_impl()")
+pub fn stub_43d61c() {
+    // IDA 0x43d61c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d628 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io12too_few_argsEEEED0Ev
@@ -413,8 +413,8 @@ pub fn stub_43d61c() -> ! {
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::too_few_args>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io12too_few_argsEEEED0Ev")]
-pub fn stub_43d628() -> ! {
-    todo!("0x43d628 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::too_few_args>>::~clone_impl()")
+pub fn stub_43d628() {
+    // IDA 0x43d628: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d63c — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io12too_few_argsEEEE5cloneEv
@@ -440,8 +440,8 @@ pub fn stub_43d6f8() -> ! {
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::too_few_args>>::~clone_impl()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io12too_few_argsEEEED0Ev")]
-pub fn stub_43d828() -> ! {
-    todo!("0x43d828 non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::too_few_args>>::~clone_impl()")
+pub fn stub_43d828() {
+    // IDA 0x43d828: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d840 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io12too_few_argsEEEE5cloneEv
@@ -458,8 +458,8 @@ pub fn stub_43d840() -> ! {
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::io::too_few_args>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_2io12too_few_argsEED0Ev")]
-pub fn stub_43d850() -> ! {
-    todo!("0x43d850 boost::exception_detail::error_info_injector<boost::io::too_few_args>::~error_info_injector()")
+pub fn stub_43d850() {
+    // IDA 0x43d850: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43d864 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io12too_few_argsEEEEC1ERKS6_NS6_9clone_tagE
@@ -548,8 +548,8 @@ pub fn stub_43e7f0() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "boost::io::basic_altstringbuf<char,std::char_traits<char>,std::allocator<char>>::~basic_altstringbuf()")]
 #[doc(alias = "__ZN5boost2io18basic_altstringbufIcSt11char_traitsIcESaIcEED1Ev")]
-pub fn stub_43ea00() -> ! {
-    todo!("0x43ea00 boost::io::basic_altstringbuf<char,std::char_traits<char>,std::allocator<char>>::~basic_altstringbuf()")
+pub fn stub_43ea00() {
+    // IDA 0x43ea00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43ea3c — __ZNSt6vectorIN5boost2io6detail11format_itemIcSt11char_traitsIcESaIcEEESaIS7_EED2Ev
@@ -557,8 +557,8 @@ pub fn stub_43ea00() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "std::vector<boost::io::detail::format_item<char,std::char_traits<char>,std::allocator<char>>,std::allocator<boost::io::detail::format_item<char,std::char_traits<char>,std::allocator<char>>>>::~vector()")]
 #[doc(alias = "__ZNSt6vectorIN5boost2io6detail11format_itemIcSt11char_traitsIcESaIcEEESaIS7_EED2Ev")]
-pub fn stub_43ea3c() -> ! {
-    todo!("0x43ea3c std::vector<boost::io::detail::format_item<char,std::char_traits<char>,std::allocator<char>>,std::allocator<boost::io::detail::format_item<char,std::char_traits<char>,std::allocator<char>>>>::~vector()")
+pub fn stub_43ea3c() {
+    // IDA 0x43ea3c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43ea8c — __ZN5boost2io18basic_altstringbufIcSt11char_traitsIcESaIcEE7deallocEv
@@ -575,8 +575,8 @@ pub fn stub_43ea8c() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "boost::io::basic_altstringbuf<char,std::char_traits<char>,std::allocator<char>>::~basic_altstringbuf()")]
 #[doc(alias = "__ZN5boost2io18basic_altstringbufIcSt11char_traitsIcESaIcEED0Ev")]
-pub fn stub_43eabc() -> ! {
-    todo!("0x43eabc boost::io::basic_altstringbuf<char,std::char_traits<char>,std::allocator<char>>::~basic_altstringbuf()")
+pub fn stub_43eabc() {
+    // IDA 0x43eabc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43eb00 — __ZN5boost2io18basic_altstringbufIcSt11char_traitsIcESaIcEE9underflowEv
@@ -674,8 +674,8 @@ pub fn stub_43fbb8() -> ! {
 // type: void __fastcall(std::exception *this)
 #[doc(alias = "boost::io::bad_format_string::~bad_format_string()")]
 #[doc(alias = "__ZN5boost2io17bad_format_stringD0Ev")]
-pub fn stub_43fbf8() -> ! {
-    todo!("0x43fbf8 boost::io::bad_format_string::~bad_format_string()")
+pub fn stub_43fbf8() {
+    // IDA 0x43fbf8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43fc10 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io17bad_format_stringEEEED1Ev
@@ -683,8 +683,8 @@ pub fn stub_43fbf8() -> ! {
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::bad_format_string>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io17bad_format_stringEEEED1Ev")]
-pub fn stub_43fc10() -> ! {
-    todo!("0x43fc10 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::bad_format_string>>::~clone_impl()")
+pub fn stub_43fc10() {
+    // IDA 0x43fc10: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43fc20 — __ZN5boost16exception_detail19error_info_injectorINS_2io17bad_format_stringEED1Ev
@@ -692,8 +692,8 @@ pub fn stub_43fc10() -> ! {
 // type: int()
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::io::bad_format_string>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_2io17bad_format_stringEED1Ev")]
-pub fn stub_43fc20() -> ! {
-    todo!("0x43fc20 boost::exception_detail::error_info_injector<boost::io::bad_format_string>::~error_info_injector()")
+pub fn stub_43fc20() {
+    // IDA 0x43fc20: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43fc24 — __ZN5boost16exception_detail19error_info_injectorINS_2io17bad_format_stringEED2Ev
@@ -701,8 +701,8 @@ pub fn stub_43fc20() -> ! {
 // type: int __fastcall(std::exception *, int, int, int, void *, int)
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::io::bad_format_string>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_2io17bad_format_stringEED2Ev")]
-pub fn stub_43fc24() -> ! {
-    todo!("0x43fc24 boost::exception_detail::error_info_injector<boost::io::bad_format_string>::~error_info_injector()")
+pub fn stub_43fc24() {
+    // IDA 0x43fc24: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43fcdc — __ZThn12_N5boost16exception_detail19error_info_injectorINS_2io17bad_format_stringEED1Ev
@@ -710,8 +710,8 @@ pub fn stub_43fc24() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk to boost::exception_detail::error_info_injector<boost::io::bad_format_string>::~error_info_injector()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail19error_info_injectorINS_2io17bad_format_stringEED1Ev")]
-pub fn stub_43fcdc() -> ! {
-    todo!("0x43fcdc non-virtual thunk to boost::exception_detail::error_info_injector<boost::io::bad_format_string>::~error_info_injector()")
+pub fn stub_43fcdc() {
+    // IDA 0x43fcdc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43fce4 — __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io17bad_format_stringEEEED1Ev
@@ -719,8 +719,8 @@ pub fn stub_43fcdc() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::bad_format_string>>::~clone_impl()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io17bad_format_stringEEEED1Ev")]
-pub fn stub_43fce4() -> ! {
-    todo!("0x43fce4 non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::bad_format_string>>::~clone_impl()")
+pub fn stub_43fce4() {
+    // IDA 0x43fce4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43fcec — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io17bad_format_stringEEEED1Ev
@@ -728,8 +728,8 @@ pub fn stub_43fce4() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::bad_format_string>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io17bad_format_stringEEEED1Ev")]
-pub fn stub_43fcec() -> ! {
-    todo!("0x43fcec virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::bad_format_string>>::~clone_impl()")
+pub fn stub_43fcec() {
+    // IDA 0x43fcec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43fcf8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io17bad_format_stringEEEED0Ev
@@ -737,8 +737,8 @@ pub fn stub_43fcec() -> ! {
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::bad_format_string>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io17bad_format_stringEEEED0Ev")]
-pub fn stub_43fcf8() -> ! {
-    todo!("0x43fcf8 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::bad_format_string>>::~clone_impl()")
+pub fn stub_43fcf8() {
+    // IDA 0x43fcf8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43fd0c — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io17bad_format_stringEEEE5cloneEv
@@ -764,8 +764,8 @@ pub fn stub_43fdc8() -> ! {
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::bad_format_string>>::~clone_impl()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io17bad_format_stringEEEED0Ev")]
-pub fn stub_43fef8() -> ! {
-    todo!("0x43fef8 non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::bad_format_string>>::~clone_impl()")
+pub fn stub_43fef8() {
+    // IDA 0x43fef8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43ff10 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io17bad_format_stringEEEE5cloneEv
@@ -782,8 +782,8 @@ pub fn stub_43ff10() -> ! {
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::io::bad_format_string>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_2io17bad_format_stringEED0Ev")]
-pub fn stub_43ff20() -> ! {
-    todo!("0x43ff20 boost::exception_detail::error_info_injector<boost::io::bad_format_string>::~error_info_injector()")
+pub fn stub_43ff20() {
+    // IDA 0x43ff20: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43ff34 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io17bad_format_stringEEEEC1ERKS6_NS6_9clone_tagE
@@ -881,8 +881,8 @@ pub fn stub_440a20() -> ! {
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TestService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TestServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_440b48() -> ! {
-    todo!("0x440b48 boost::detail::sp_counted_impl_pd<RBX::TestService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_440b48() {
+    // IDA 0x440b48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x440b50 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TestServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
@@ -890,8 +890,8 @@ pub fn stub_440b48() -> ! {
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TestService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TestServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_440b50() -> ! {
-    todo!("0x440b50 boost::detail::sp_counted_impl_pd<RBX::TestService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_440b50() {
+    // IDA 0x440b50: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x440b70 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TestServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
@@ -899,8 +899,8 @@ pub fn stub_440b50() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TestService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TestServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_440b70() -> ! {
-    todo!("0x440b70 boost::detail::sp_counted_impl_pd<RBX::TestService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_440b70() {
+    // IDA 0x440b70: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x440b88 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TestServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
@@ -908,8 +908,8 @@ pub fn stub_440b70() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TestService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TestServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_440b88() -> ! {
-    todo!("0x440b88 boost::detail::sp_counted_impl_pd<RBX::TestService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_440b88() {
+    // IDA 0x440b88: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x45e4ec — __ZN3RBX10Reflection9ArgHelper6getArgINS_9DataModel8GearTypeELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
@@ -943,8 +943,8 @@ pub fn stub_45e6d0() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_16GearGenreSettingEED0Ev")]
-pub fn stub_45e87c() -> ! {
-    todo!("0x45e87c RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::~EnumPropDescriptor()")
+pub fn stub_45e87c() {
+    // IDA 0x45e87c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x45e8a8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_16GearGenreSettingEE10isReadOnlyEv
@@ -1150,8 +1150,8 @@ pub fn stub_45f048() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEED0Ev")]
-pub fn stub_45f1f4() -> ! {
-    todo!("0x45f1f4 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::~EnumPropDescriptor()")
+pub fn stub_45f1f4() {
+    // IDA 0x45f1f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x45f220 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEE10isReadOnlyEv

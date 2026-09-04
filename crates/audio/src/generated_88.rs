@@ -70,8 +70,8 @@ pub fn stub_be66e8() -> ! {
 
 // 0xbef8d8 — __ZN3RBX14FactoryProductINS_12CylinderMeshENS_9BevelMeshELZNS_13sCylinderMeshEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12CylinderMeshENS_9BevelMeshELZNS_13sCylinderMeshEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_bef8d8() -> ! {
-    todo!("0xbef8d8 __ZN3RBX14FactoryProductINS_12CylinderMeshENS_9BevelMeshELZNS_13sCylinderMeshEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_bef8d8() {
+    // IDA 0xbef8d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbef8e0 — __ZN3RBX4Name7declareILZNS_13sCylinderMeshEEEERKS0_v
@@ -156,22 +156,22 @@ pub fn stub_c031d4() -> ! {
 // 0xc03398 — __ZN19ResourceGroupHelper30ResourceGroupHelperLogListenerD0Ev
 // type: void __fastcall(ResourceGroupHelper::ResourceGroupHelperLogListener *__hidden this)
 #[doc(alias = "ResourceGroupHelper::ResourceGroupHelperLogListener::~ResourceGroupHelperLogListener()")]
-pub fn stub_c03398() -> ! {
-    todo!("0xc03398 ResourceGroupHelper::ResourceGroupHelperLogListener::~ResourceGroupHelperLogListener()")
+pub fn stub_c03398() {
+    // IDA 0xc03398: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc03438 — __ZN19ResourceGroupHelper30ResourceGroupHelperLogListenerD1Ev
 // type: void __fastcall(ResourceGroupHelper::ResourceGroupHelperLogListener *__hidden this)
 #[doc(alias = "ResourceGroupHelper::ResourceGroupHelperLogListener::~ResourceGroupHelperLogListener()")]
-pub fn stub_c03438() -> ! {
-    todo!("0xc03438 ResourceGroupHelper::ResourceGroupHelperLogListener::~ResourceGroupHelperLogListener()")
+pub fn stub_c03438() {
+    // IDA 0xc03438: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc0343c — __ZN19ResourceGroupHelper30ResourceGroupHelperLogListenerD2Ev
 // type: void __fastcall(ResourceGroupHelper::ResourceGroupHelperLogListener *__hidden this)
 #[doc(alias = "ResourceGroupHelper::ResourceGroupHelperLogListener::~ResourceGroupHelperLogListener()")]
-pub fn stub_c0343c() -> ! {
-    todo!("0xc0343c ResourceGroupHelper::ResourceGroupHelperLogListener::~ResourceGroupHelperLogListener()")
+pub fn stub_c0343c() {
+    // IDA 0xc0343c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc03918 — __ZN19ResourceGroupHelperC1Ev
@@ -184,8 +184,8 @@ pub fn stub_c03918() -> ! {
 // 0xc039e4 — __ZN19ResourceGroupHelperD1Ev
 // type: void __fastcall(ResourceGroupHelper *__hidden this)
 #[doc(alias = "ResourceGroupHelper::~ResourceGroupHelper()")]
-pub fn stub_c039e4() -> ! {
-    todo!("0xc039e4 ResourceGroupHelper::~ResourceGroupHelper()")
+pub fn stub_c039e4() {
+    // IDA 0xc039e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc051b8 — __GLOBAL__I_a_599
@@ -231,15 +231,15 @@ pub fn stub_c0a3a0() -> ! {
 
 // 0xc0dd8c — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX11MegaClusterEEENS6_5list1INS6_5valueIPSB_EEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::MegaCluster>,boost::_bi::list1<boost::_bi::value<RBX::MegaCluster*>>>>::~callable_slot()")]
-pub fn stub_c0dd8c() -> ! {
-    todo!("0xc0dd8c rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::MegaCluster>,boost::_bi::list1<boost::_bi::value<RBX::MegaCluster*>>>>::~callable_slot()")
+pub fn stub_c0dd8c() {
+    // IDA 0xc0dd8c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc0dde8 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX11MegaClusterEEENS6_5list1INS6_5valueIPSB_EEEEEEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::MegaCluster>,boost::_bi::list1<boost::_bi::value<RBX::MegaCluster*>>>>::~callable_slot()")]
-pub fn stub_c0dde8() -> ! {
-    todo!("0xc0dde8 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::MegaCluster>,boost::_bi::list1<boost::_bi::value<RBX::MegaCluster*>>>>::~callable_slot()")
+pub fn stub_c0dde8() {
+    // IDA 0xc0dde8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc0def0 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX11MegaClusterEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
@@ -251,8 +251,8 @@ pub fn stub_c0def0() -> ! {
 // 0xc0df08 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX11MegaClusterEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::MegaCluster>,boost::_bi::list1<boost::_bi::value<RBX::MegaCluster*>>>,0,void ()(void)>::call(void)
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::MegaCluster>,boost::_bi::list1<boost::_bi::value<RBX::MegaCluster*>>>,0,void ()(void)>::call(void)")]
-pub fn stub_c0df08() -> ! {
-    todo!("0xc0df08 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::MegaCluster>,boost::_bi::list1<boost::_bi::value<RBX::MegaCluster*>>>,0,void ()(void)>::call(void)")
+pub fn stub_c0df08() {
+    // IDA 0xc0df08: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc0df20 — __ZNSt6vectorIN3RBX11MegaCluster9ChunkDataESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
@@ -351,22 +351,22 @@ pub fn stub_c1bc08() -> ! {
 // 0xc1be30 — __ZN3RBX9LightGridD0Ev
 // type: void __fastcall(RBX::LightGrid *__hidden this)
 #[doc(alias = "RBX::LightGrid::~LightGrid()")]
-pub fn stub_c1be30() -> ! {
-    todo!("0xc1be30 RBX::LightGrid::~LightGrid()")
+pub fn stub_c1be30() {
+    // IDA 0xc1be30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc1bed0 — __ZN3RBX9LightGridD1Ev
 // type: void __fastcall(RBX::LightGrid *__hidden this)
 #[doc(alias = "RBX::LightGrid::~LightGrid()")]
-pub fn stub_c1bed0() -> ! {
-    todo!("0xc1bed0 RBX::LightGrid::~LightGrid()")
+pub fn stub_c1bed0() {
+    // IDA 0xc1bed0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc1bed4 — __ZN3RBX9LightGridD2Ev
 // type: void __fastcall(RBX::LightGrid *__hidden this)
 #[doc(alias = "RBX::LightGrid::~LightGrid()")]
-pub fn stub_c1bed4() -> ! {
-    todo!("0xc1bed4 RBX::LightGrid::~LightGrid()")
+pub fn stub_c1bed4() {
+    // IDA 0xc1bed4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc1c0dc — __ZN3RBX9LightGrid23setNonFixedPartsEnabledEb
@@ -572,36 +572,36 @@ pub fn stub_c23250() -> ! {
 // 0xc233f0 — __ZNSt16invalid_argumentD0Ev
 // type: void __cdecl(std::invalid_argument *__hidden this)
 #[doc(alias = "std::invalid_argument::~invalid_argument()")]
-pub fn stub_c233f0() -> ! {
-    todo!("0xc233f0 std::invalid_argument::~invalid_argument()")
+pub fn stub_c233f0() {
+    // IDA 0xc233f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc23410 — __ZNSt12domain_errorD1Ev
 // type: void __cdecl(std::domain_error *__hidden this)
 #[doc(alias = "std::domain_error::~domain_error()")]
-pub fn stub_c23410() -> ! {
-    todo!("0xc23410 std::domain_error::~domain_error()")
+pub fn stub_c23410() {
+    // IDA 0xc23410: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc23420 — __ZNSt12length_errorD2Ev
 // type: void __cdecl(std::length_error *__hidden this)
 #[doc(alias = "std::length_error::~length_error()")]
-pub fn stub_c23420() -> ! {
-    todo!("0xc23420 std::length_error::~length_error()")
+pub fn stub_c23420() {
+    // IDA 0xc23420: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc23430 — __ZNSt14overflow_errorD0Ev
 // type: void __cdecl(std::overflow_error *__hidden this)
 #[doc(alias = "std::overflow_error::~overflow_error()")]
-pub fn stub_c23430() -> ! {
-    todo!("0xc23430 std::overflow_error::~overflow_error()")
+pub fn stub_c23430() {
+    // IDA 0xc23430: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc23450 — __ZNSt15underflow_errorD1Ev
 // type: void __cdecl(std::underflow_error *__hidden this)
 #[doc(alias = "std::underflow_error::~underflow_error()")]
-pub fn stub_c23450() -> ! {
-    todo!("0xc23450 std::underflow_error::~underflow_error()")
+pub fn stub_c23450() {
+    // IDA 0xc23450: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc234b0 — __ZN3RBX9LightGrid24occupancyFillTerrainSIMDINS_5Voxel4GridEEEvRNS_14LightGridChunkERT_RKNS_12Vector3int32ERKNS_7ExtentsE

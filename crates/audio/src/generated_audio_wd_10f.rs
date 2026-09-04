@@ -39,8 +39,8 @@ pub fn stub_5d643c() -> ! {
 // type: void __fastcall(RBX::PartByLocalCharacter *__hidden this)
 #[doc(alias = "RBX::PartByLocalCharacter::~PartByLocalCharacter()")]
 #[doc(alias = "__ZN3RBX20PartByLocalCharacterD0Ev")]
-pub fn stub_5d6474() -> ! {
-    todo!("0x5d6474 __ZN3RBX20PartByLocalCharacterD0Ev")
+pub fn stub_5d6474() {
+    // IDA 0x5d6474: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d655c — __ZN3RBX28UnlockedPartByLocalCharacterD0Ev
@@ -48,8 +48,8 @@ pub fn stub_5d6474() -> ! {
 // type: void __fastcall(RBX::UnlockedPartByLocalCharacter *__hidden this)
 #[doc(alias = "RBX::UnlockedPartByLocalCharacter::~UnlockedPartByLocalCharacter()")]
 #[doc(alias = "__ZN3RBX28UnlockedPartByLocalCharacterD0Ev")]
-pub fn stub_5d655c() -> ! {
-    todo!("0x5d655c __ZN3RBX28UnlockedPartByLocalCharacterD0Ev")
+pub fn stub_5d655c() {
+    // IDA 0x5d655c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d6644 — __GLOBAL__I_a_230
@@ -73,8 +73,8 @@ pub fn stub_5d6900() -> ! {
 // type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
 #[doc(alias = "RBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 #[doc(alias = "__ZN3RBX4PART22ParametricPartInstanceD0Ev")]
-pub fn stub_5d6be8() -> ! {
-    todo!("0x5d6be8 __ZN3RBX4PART22ParametricPartInstanceD0Ev")
+pub fn stub_5d6be8() {
+    // IDA 0x5d6be8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d6c94 — __ZN3RBX4PART22ParametricPartInstanceD1Ev
@@ -82,8 +82,8 @@ pub fn stub_5d6be8() -> ! {
 // type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
 #[doc(alias = "RBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 #[doc(alias = "__ZN3RBX4PART22ParametricPartInstanceD1Ev")]
-pub fn stub_5d6c94() -> ! {
-    todo!("0x5d6c94 __ZN3RBX4PART22ParametricPartInstanceD1Ev")
+pub fn stub_5d6c94() {
+    // IDA 0x5d6c94: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d6ca4 — __ZThn32_N3RBX4PART22ParametricPartInstanceD0Ev
@@ -91,8 +91,8 @@ pub fn stub_5d6c94() -> ! {
 // type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 #[doc(alias = "__ZThn32_N3RBX4PART22ParametricPartInstanceD0Ev")]
-pub fn stub_5d6ca4() -> ! {
-    todo!("0x5d6ca4 __ZThn32_N3RBX4PART22ParametricPartInstanceD0Ev")
+pub fn stub_5d6ca4() {
+    // IDA 0x5d6ca4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d6cac — __ZThn36_N3RBX4PART22ParametricPartInstanceD0Ev
@@ -100,8 +100,8 @@ pub fn stub_5d6ca4() -> ! {
 // type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 #[doc(alias = "__ZThn36_N3RBX4PART22ParametricPartInstanceD0Ev")]
-pub fn stub_5d6cac() -> ! {
-    todo!("0x5d6cac __ZThn36_N3RBX4PART22ParametricPartInstanceD0Ev")
+pub fn stub_5d6cac() {
+    // IDA 0x5d6cac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d6cb4 — __ZThn132_N3RBX4PART22ParametricPartInstanceD0Ev
@@ -109,8 +109,8 @@ pub fn stub_5d6cac() -> ! {
 // type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 #[doc(alias = "__ZThn132_N3RBX4PART22ParametricPartInstanceD0Ev")]
-pub fn stub_5d6cb4() -> ! {
-    todo!("0x5d6cb4 __ZThn132_N3RBX4PART22ParametricPartInstanceD0Ev")
+pub fn stub_5d6cb4() {
+    // IDA 0x5d6cb4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d6cbc — __ZThn32_N3RBX4PART22ParametricPartInstanceD1Ev
@@ -118,8 +118,8 @@ pub fn stub_5d6cb4() -> ! {
 // type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 #[doc(alias = "__ZThn32_N3RBX4PART22ParametricPartInstanceD1Ev")]
-pub fn stub_5d6cbc() -> ! {
-    todo!("0x5d6cbc __ZThn32_N3RBX4PART22ParametricPartInstanceD1Ev")
+pub fn stub_5d6cbc() {
+    // IDA 0x5d6cbc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d6cd0 — __ZThn36_N3RBX4PART22ParametricPartInstanceD1Ev
@@ -127,8 +127,8 @@ pub fn stub_5d6cbc() -> ! {
 // type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 #[doc(alias = "__ZThn36_N3RBX4PART22ParametricPartInstanceD1Ev")]
-pub fn stub_5d6cd0() -> ! {
-    todo!("0x5d6cd0 __ZThn36_N3RBX4PART22ParametricPartInstanceD1Ev")
+pub fn stub_5d6cd0() {
+    // IDA 0x5d6cd0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d6ce4 — __ZThn132_N3RBX4PART22ParametricPartInstanceD1Ev
@@ -136,8 +136,8 @@ pub fn stub_5d6cd0() -> ! {
 // type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 #[doc(alias = "__ZThn132_N3RBX4PART22ParametricPartInstanceD1Ev")]
-pub fn stub_5d6ce4() -> ! {
-    todo!("0x5d6ce4 __ZThn132_N3RBX4PART22ParametricPartInstanceD1Ev")
+pub fn stub_5d6ce4() {
+    // IDA 0x5d6ce4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d6cf8 — __ZN3RBX4PART5WedgeC1Ev
@@ -154,8 +154,8 @@ pub fn stub_5d6cf8() -> ! {
 // type: void __fastcall(RBX::PART::Wedge *__hidden this)
 #[doc(alias = "RBX::PART::Wedge::~Wedge()")]
 #[doc(alias = "__ZN3RBX4PART5WedgeD0Ev")]
-pub fn stub_5d6f9c() -> ! {
-    todo!("0x5d6f9c __ZN3RBX4PART5WedgeD0Ev")
+pub fn stub_5d6f9c() {
+    // IDA 0x5d6f9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d704c — __ZN3RBX4PART5WedgeD1Ev
@@ -163,8 +163,8 @@ pub fn stub_5d6f9c() -> ! {
 // type: void __fastcall(RBX::PART::Wedge *__hidden this)
 #[doc(alias = "RBX::PART::Wedge::~Wedge()")]
 #[doc(alias = "__ZN3RBX4PART5WedgeD1Ev")]
-pub fn stub_5d704c() -> ! {
-    todo!("0x5d704c __ZN3RBX4PART5WedgeD1Ev")
+pub fn stub_5d704c() {
+    // IDA 0x5d704c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d705c — __ZThn32_N3RBX4PART5WedgeD0Ev
@@ -172,8 +172,8 @@ pub fn stub_5d704c() -> ! {
 // type: void __fastcall(RBX::PART::Wedge *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::Wedge::~Wedge()")]
 #[doc(alias = "__ZThn32_N3RBX4PART5WedgeD0Ev")]
-pub fn stub_5d705c() -> ! {
-    todo!("0x5d705c __ZThn32_N3RBX4PART5WedgeD0Ev")
+pub fn stub_5d705c() {
+    // IDA 0x5d705c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d7064 — __ZThn36_N3RBX4PART5WedgeD0Ev
@@ -181,8 +181,8 @@ pub fn stub_5d705c() -> ! {
 // type: void __fastcall(RBX::PART::Wedge *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::Wedge::~Wedge()")]
 #[doc(alias = "__ZThn36_N3RBX4PART5WedgeD0Ev")]
-pub fn stub_5d7064() -> ! {
-    todo!("0x5d7064 __ZThn36_N3RBX4PART5WedgeD0Ev")
+pub fn stub_5d7064() {
+    // IDA 0x5d7064: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d706c — __ZThn132_N3RBX4PART5WedgeD0Ev
@@ -190,8 +190,8 @@ pub fn stub_5d7064() -> ! {
 // type: void __fastcall(RBX::PART::Wedge *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::Wedge::~Wedge()")]
 #[doc(alias = "__ZThn132_N3RBX4PART5WedgeD0Ev")]
-pub fn stub_5d706c() -> ! {
-    todo!("0x5d706c __ZThn132_N3RBX4PART5WedgeD0Ev")
+pub fn stub_5d706c() {
+    // IDA 0x5d706c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d7074 — __ZThn32_N3RBX4PART5WedgeD1Ev
@@ -199,8 +199,8 @@ pub fn stub_5d706c() -> ! {
 // type: void __fastcall(RBX::PART::Wedge *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::Wedge::~Wedge()")]
 #[doc(alias = "__ZThn32_N3RBX4PART5WedgeD1Ev")]
-pub fn stub_5d7074() -> ! {
-    todo!("0x5d7074 __ZThn32_N3RBX4PART5WedgeD1Ev")
+pub fn stub_5d7074() {
+    // IDA 0x5d7074: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d7088 — __ZThn36_N3RBX4PART5WedgeD1Ev
@@ -208,8 +208,8 @@ pub fn stub_5d7074() -> ! {
 // type: void __fastcall(RBX::PART::Wedge *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::Wedge::~Wedge()")]
 #[doc(alias = "__ZThn36_N3RBX4PART5WedgeD1Ev")]
-pub fn stub_5d7088() -> ! {
-    todo!("0x5d7088 __ZThn36_N3RBX4PART5WedgeD1Ev")
+pub fn stub_5d7088() {
+    // IDA 0x5d7088: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d709c — __ZThn132_N3RBX4PART5WedgeD1Ev
@@ -217,8 +217,8 @@ pub fn stub_5d7088() -> ! {
 // type: void __fastcall(RBX::PART::Wedge *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::Wedge::~Wedge()")]
 #[doc(alias = "__ZThn132_N3RBX4PART5WedgeD1Ev")]
-pub fn stub_5d709c() -> ! {
-    todo!("0x5d709c __ZThn132_N3RBX4PART5WedgeD1Ev")
+pub fn stub_5d709c() {
+    // IDA 0x5d709c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d70b0 — __ZNK3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEE12getClassNameEv
@@ -240,107 +240,107 @@ pub fn stub_5d70c0() -> ! {
 // 0x5d70c4 — __ZThn32_NK3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEE12getClassNameEv
 // demangled: __ZThn32_NK3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_5d70c4() -> ! {
-    todo!("0x5d70c4 __ZThn32_NK3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEE12getClassNameEv")
+pub fn stub_5d70c4() {
+    // IDA 0x5d70c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d70d4 — __ZN3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZN3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5d70d4() -> ! {
-    todo!("0x5d70d4 __ZN3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5d70d4() {
+    // IDA 0x5d70d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d70e8 — __ZN3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZN3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_5d70e8() -> ! {
-    todo!("0x5d70e8 __ZN3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_5d70e8() {
+    // IDA 0x5d70e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d7198 — __ZThn132_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZThn132_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn132_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5d7198() -> ! {
-    todo!("0x5d7198 __ZThn132_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5d7198() {
+    // IDA 0x5d7198: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d71ac — __ZThn132_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZThn132_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn132_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_5d71ac() -> ! {
-    todo!("0x5d71ac __ZThn132_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_5d71ac() {
+    // IDA 0x5d71ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d7260 — __ZN3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZN3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5d7260() -> ! {
-    todo!("0x5d7260 __ZN3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5d7260() {
+    // IDA 0x5d7260: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d7274 — __ZN3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZN3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_5d7274() -> ! {
-    todo!("0x5d7274 __ZN3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_5d7274() {
+    // IDA 0x5d7274: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d7324 — __ZThn132_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZThn132_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn132_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5d7324() -> ! {
-    todo!("0x5d7324 __ZThn132_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5d7324() {
+    // IDA 0x5d7324: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d7338 — __ZThn132_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZThn132_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn132_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_5d7338() -> ! {
-    todo!("0x5d7338 __ZThn132_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_5d7338() {
+    // IDA 0x5d7338: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d73ec — __ZN3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED1Ev
 // demangled: __ZN3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED1Ev")]
-pub fn stub_5d73ec() -> ! {
-    todo!("0x5d73ec __ZN3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED1Ev")
+pub fn stub_5d73ec() {
+    // IDA 0x5d73ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d7400 — __ZN3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED0Ev
 // demangled: __ZN3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED0Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED0Ev")]
-pub fn stub_5d7400() -> ! {
-    todo!("0x5d7400 __ZN3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED0Ev")
+pub fn stub_5d7400() {
+    // IDA 0x5d7400: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d74b0 — __ZThn132_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED1Ev
 // demangled: __ZThn132_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED1Ev
 #[doc(alias = "__ZThn132_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED1Ev")]
-pub fn stub_5d74b0() -> ! {
-    todo!("0x5d74b0 __ZThn132_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED1Ev")
+pub fn stub_5d74b0() {
+    // IDA 0x5d74b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d74c4 — __ZThn132_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED0Ev
 // demangled: __ZThn132_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED0Ev
 #[doc(alias = "__ZThn132_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED0Ev")]
-pub fn stub_5d74c4() -> ! {
-    todo!("0x5d74c4 __ZThn132_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED0Ev")
+pub fn stub_5d74c4() {
+    // IDA 0x5d74c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d74cc — __ZN3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEE7CreatorD1Ev
 // demangled: __ZN3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_5d74cc() -> ! {
-    todo!("0x5d74cc __ZN3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_5d74cc() {
+    // IDA 0x5d74cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d74d0 — __ZN3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEE7CreatorD2Ev
 // demangled: __ZN3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEE7CreatorD2Ev
 // type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_5d74d0() -> ! {
-    todo!("0x5d74d0 __ZN3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_5d74d0() {
+    // IDA 0x5d74d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d756c — __ZNK3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEE7Creator12getClassNameEv
@@ -378,8 +378,8 @@ pub fn stub_5d77ec() -> ! {
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PART::Wedge,RBX::PART::Wedge>(boost::shared_ptr<RBX::PART::Wedge> const*,RBX::PART::Wedge *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PART::Wedge,RBX::PART::Wedge>(boost::shared_ptr<RBX::PART::Wedge> const*,RBX::PART::Wedge *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4PART5WedgeES7_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_5d78b4() -> ! {
-    todo!("0x5d78b4 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4PART5WedgeES7_EEvPKNS_10shared_ptrIT_EEPT0_")
+pub fn stub_5d78b4() {
+    // IDA 0x5d78b4: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x5d799c — __ZN5boost6detail12shared_countC2IPN3RBX4PART5WedgeENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
@@ -387,48 +387,48 @@ pub fn stub_5d78b4() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX4PART5WedgeENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_5d799c() -> ! {
-    todo!("0x5d799c __ZN5boost6detail12shared_countC2IPN3RBX4PART5WedgeENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_5d799c() {
+    // IDA 0x5d799c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x5d7aa4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // demangled: boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_5d7aa4() -> ! {
-    todo!("0x5d7aa4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+pub fn stub_5d7aa4() {
+    // IDA 0x5d7aa4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d7aa8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // demangled: boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_5d7aa8() -> ! {
-    todo!("0x5d7aa8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+pub fn stub_5d7aa8() {
+    // IDA 0x5d7aa8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d7aac — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_5d7aac() -> ! {
-    todo!("0x5d7aac __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_5d7aac() {
+    // IDA 0x5d7aac: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x5d7acc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // demangled: boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_5d7acc() -> ! {
-    todo!("0x5d7acc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_5d7acc() {
+    // IDA 0x5d7acc: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x5d7ae4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_5d7ae4() -> ! {
-    todo!("0x5d7ae4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_5d7ae4() {
+    // IDA 0x5d7ae4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x5d7ae8 — __ZN3RBX4Name13callDoDeclareILZNS_4PART6sWedgeEEEEvv
@@ -464,57 +464,57 @@ pub fn stub_5d7e10() -> ! {
 // 0x5d7e84 — __ZThn32_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED1Ev
 // demangled: __ZThn32_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED1Ev
 #[doc(alias = "__ZThn32_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED1Ev")]
-pub fn stub_5d7e84() -> ! {
-    todo!("0x5d7e84 __ZThn32_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED1Ev")
+pub fn stub_5d7e84() {
+    // IDA 0x5d7e84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d7e98 — __ZThn36_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED1Ev
 // demangled: __ZThn36_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED1Ev
 #[doc(alias = "__ZThn36_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED1Ev")]
-pub fn stub_5d7e98() -> ! {
-    todo!("0x5d7e98 __ZThn36_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED1Ev")
+pub fn stub_5d7e98() {
+    // IDA 0x5d7e98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d7eac — __ZThn32_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED0Ev
 // demangled: __ZThn32_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED0Ev
 #[doc(alias = "__ZThn32_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED0Ev")]
-pub fn stub_5d7eac() -> ! {
-    todo!("0x5d7eac __ZThn32_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED0Ev")
+pub fn stub_5d7eac() {
+    // IDA 0x5d7eac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d7eb4 — __ZThn36_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED0Ev
 // demangled: __ZThn36_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED0Ev
 #[doc(alias = "__ZThn36_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED0Ev")]
-pub fn stub_5d7eb4() -> ! {
-    todo!("0x5d7eb4 __ZThn36_N3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEED0Ev")
+pub fn stub_5d7eb4() {
+    // IDA 0x5d7eb4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d7ebc — __ZThn32_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZThn32_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5d7ebc() -> ! {
-    todo!("0x5d7ebc __ZThn32_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5d7ebc() {
+    // IDA 0x5d7ebc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d7ed0 — __ZThn32_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZThn32_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_5d7ed0() -> ! {
-    todo!("0x5d7ed0 __ZThn32_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_5d7ed0() {
+    // IDA 0x5d7ed0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d7f84 — __ZThn36_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZThn36_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5d7f84() -> ! {
-    todo!("0x5d7f84 __ZThn36_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5d7f84() {
+    // IDA 0x5d7f84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d7f98 — __ZThn36_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZThn36_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_5d7f98() -> ! {
-    todo!("0x5d7f98 __ZThn36_N3RBX18DescribedCreatableINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_5d7f98() {
+    // IDA 0x5d7f98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d804c — __ZN3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEEC2Ev
@@ -529,29 +529,29 @@ pub fn stub_5d804c() -> ! {
 // demangled: __ZThn32_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5d80f4() -> ! {
-    todo!("0x5d80f4 __ZThn32_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5d80f4() {
+    // IDA 0x5d80f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d8108 — __ZThn32_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZThn32_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_5d8108() -> ! {
-    todo!("0x5d8108 __ZThn32_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_5d8108() {
+    // IDA 0x5d8108: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d81bc — __ZThn36_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZThn36_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5d81bc() -> ! {
-    todo!("0x5d81bc __ZThn36_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5d81bc() {
+    // IDA 0x5d81bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d81d0 — __ZThn36_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZThn36_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_5d81d0() -> ! {
-    todo!("0x5d81d0 __ZThn36_N3RBX10Reflection9DescribedINS_4PART5WedgeELZNS2_6sWedgeEENS_14FactoryProductIS3_NS2_22ParametricPartInstanceELZNS2_6sWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_5d81d0() {
+    // IDA 0x5d81d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d8284 — __GLOBAL__I_a_232

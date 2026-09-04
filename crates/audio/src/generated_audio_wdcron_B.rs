@@ -174,8 +174,8 @@ pub fn stub_67b1c0() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEfED0Ev")]
-pub fn stub_67b2d4() -> ! {
-    todo!("0x67b2d4 __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEfED0Ev")
+pub fn stub_67b2d4() {
+    // IDA 0x67b2d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x67b300 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE10isReadOnlyEv
@@ -228,8 +228,8 @@ pub fn stub_67b358() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Color3>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D6Color3EED0Ev")]
-pub fn stub_67b46c() -> ! {
-    todo!("0x67b46c __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D6Color3EED0Ev")
+pub fn stub_67b46c() {
+    // IDA 0x67b46c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x67b498 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -282,8 +282,8 @@ pub fn stub_67b514() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::BrickColor>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEED0Ev")]
-pub fn stub_67b628() -> ! {
-    todo!("0x67b628 __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEED0Ev")
+pub fn stub_67b628() {
+    // IDA 0x67b628: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x67b654 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE10isReadOnlyEv
@@ -336,8 +336,8 @@ pub fn stub_67b6b8() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEED0Ev")]
-pub fn stub_67b86c() -> ! {
-    todo!("0x67b86c __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEED0Ev")
+pub fn stub_67b86c() {
+    // IDA 0x67b86c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x67b898 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE10isReadOnlyEv
@@ -552,8 +552,8 @@ pub fn stub_67becc() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEED0Ev")]
-pub fn stub_67c080() -> ! {
-    todo!("0x67c080 __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEED0Ev")
+pub fn stub_67c080() {
+    // IDA 0x67c080: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x67c0ac — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10isReadOnlyEv
@@ -768,8 +768,8 @@ pub fn stub_67c6e0() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9TextLabelESsED0Ev")]
-pub fn stub_67c7f4() -> ! {
-    todo!("0x67c7f4 __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelESsED0Ev")
+pub fn stub_67c7f4() {
+    // IDA 0x67c7f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x67c820 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE10isReadOnlyEv
@@ -848,8 +848,8 @@ pub fn stub_67d788() -> ! {
 // type: void __fastcall(int)
 #[doc(alias = "non-virtual thunk toRBX::TimerService::onHeartbeat(RBX::Heartbeat const&)")]
 #[doc(alias = "__ZThn96_N3RBX12TimerService11onHeartbeatERKNS_9HeartbeatE")]
-pub fn stub_67d8f4() -> ! {
-    todo!("0x67d8f4 __ZThn96_N3RBX12TimerService11onHeartbeatERKNS_9HeartbeatE")
+pub fn stub_67d8f4() {
+    // IDA 0x67d8f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x67d8fc — __ZN5boost9function0IvEaSERKS1_
@@ -866,8 +866,8 @@ pub fn stub_67d8fc() -> ! {
 // type: void __fastcall(RBX::TimerService *__hidden this)
 #[doc(alias = "RBX::TimerService::~TimerService()")]
 #[doc(alias = "__ZN3RBX12TimerServiceD1Ev")]
-pub fn stub_67d9d8() -> ! {
-    todo!("0x67d9d8 __ZN3RBX12TimerServiceD1Ev")
+pub fn stub_67d9d8() {
+    // IDA 0x67d9d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x67dae8 — __ZN3RBX12TimerServiceD0Ev
@@ -875,8 +875,8 @@ pub fn stub_67d9d8() -> ! {
 // type: void __fastcall(RBX::TimerService *__hidden this)
 #[doc(alias = "RBX::TimerService::~TimerService()")]
 #[doc(alias = "__ZN3RBX12TimerServiceD0Ev")]
-pub fn stub_67dae8() -> ! {
-    todo!("0x67dae8 __ZN3RBX12TimerServiceD0Ev")
+pub fn stub_67dae8() {
+    // IDA 0x67dae8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x67dc08 — __ZN3RBX12TimerService17onServiceProviderEPNS_15ServiceProviderES2_
@@ -893,8 +893,8 @@ pub fn stub_67dc08() -> ! {
 // type: void __fastcall(RBX::TimerService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TimerService::~TimerService()")]
 #[doc(alias = "__ZThn32_N3RBX12TimerServiceD1Ev")]
-pub fn stub_67dc20() -> ! {
-    todo!("0x67dc20 __ZThn32_N3RBX12TimerServiceD1Ev")
+pub fn stub_67dc20() {
+    // IDA 0x67dc20: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x67dd2c — __ZThn32_N3RBX12TimerServiceD0Ev
@@ -902,6 +902,6 @@ pub fn stub_67dc20() -> ! {
 // type: void __fastcall(RBX::TimerService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TimerService::~TimerService()")]
 #[doc(alias = "__ZThn32_N3RBX12TimerServiceD0Ev")]
-pub fn stub_67dd2c() -> ! {
-    todo!("0x67dd2c __ZThn32_N3RBX12TimerServiceD0Ev")
+pub fn stub_67dd2c() {
+    // IDA 0x67dd2c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

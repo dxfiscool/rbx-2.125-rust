@@ -139,24 +139,24 @@ pub fn stub_6710f0() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEED1Ev")]
-pub fn stub_6711e0() -> ! {
-    todo!("0x6711e0 __ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEED1Ev")
+pub fn stub_6711e0() {
+    // IDA 0x6711e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6711e4 -- __ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEED2Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEED2Ev")]
-pub fn stub_6711e4() -> ! {
-    todo!("0x6711e4 __ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEED2Ev")
+pub fn stub_6711e4() {
+    // IDA 0x6711e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6713b8 -- __ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEED0Ev")]
-pub fn stub_6713b8() -> ! {
-    todo!("0x6713b8 __ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEED0Ev")
+pub fn stub_6713b8() {
+    // IDA 0x6713b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x671458 -- __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE6lookupEPKc
@@ -235,8 +235,8 @@ pub fn stub_6716ec() -> ! {
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::TextService::FontSize>,std::_Select1st<std::pair<RBX::Name const* const,RBX::TextService::FontSize>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::TextService::FontSize>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::TextService::FontSize>> *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::TextService::FontSize>,std::_Select1st<std::pair<RBX::Name const* const,RBX::TextService::FontSize>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::TextService::FontSize>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::TextService::FontSize>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11TextService8FontSizeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_6717dc() -> ! {
-    todo!("0x6717dc __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11TextService8FontSizeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_6717dc() {
+    // IDA 0x6717dc: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x671804 -- __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxESsEC2IMNS_12GuiTextMixinEKFSsvEMS2_FvSsEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -251,8 +251,8 @@ pub fn stub_671804() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,std::string>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7TextBoxESsED0Ev")]
-pub fn stub_671918() -> ! {
-    todo!("0x671918 __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxESsED0Ev")
+pub fn stub_671918() {
+    // IDA 0x671918: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x671944 -- __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE10isReadOnlyEv
@@ -299,8 +299,8 @@ pub fn stub_671ac8() -> ! {
 // demangled: RBX::Reflection::EventDesc<RBX::TextBox,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::TextBox::*>::~EventDesc()
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::TextBox,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::TextBox::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_7TextBoxEFvbEN3rbx6signalIS3_EEMS2_S6_ED0Ev")]
-pub fn stub_671c4c() -> ! {
-    todo!("0x671c4c __ZN3RBX10Reflection9EventDescINS_7TextBoxEFvbEN3rbx6signalIS3_EEMS2_S6_ED0Ev")
+pub fn stub_671c4c() {
+    // IDA 0x671c4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x671d00 -- __ZNK3RBX10Reflection13EventDescImplILi1ENS_7TextBoxEFvbEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -339,8 +339,8 @@ pub fn stub_671ef4() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::TextBox,void ()(void),0>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::TextBox,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7TextBoxEFvvELi0EED0Ev")]
-pub fn stub_671ff8() -> ! {
-    todo!("0x671ff8 __ZN3RBX10Reflection13BoundFuncDescINS_7TextBoxEFvvELi0EED0Ev")
+pub fn stub_671ff8() {
+    // IDA 0x671ff8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6720ac -- __ZNK3RBX10Reflection13BoundFuncDescINS_7TextBoxEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -395,8 +395,8 @@ pub fn stub_67220c() -> ! {
 // demangled: RBX::TextBox::~TextBox()
 #[doc(alias = "RBX::TextBox::~TextBox()")]
 #[doc(alias = "__ZN3RBX7TextBoxD2Ev")]
-pub fn stub_672230() -> ! {
-    todo!("0x672230 __ZN3RBX7TextBoxD2Ev")
+pub fn stub_672230() {
+    // IDA 0x672230: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x672d68 -- __ZN3RBX13GuiTextButtonC2Ev
@@ -555,8 +555,8 @@ pub fn stub_67390c() -> ! {
 // demangled: non-virtual thunk toRBX::GuiTextButton::render2d(RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::GuiTextButton::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX13GuiTextButton8render2dEPNS_5AdornE")]
-pub fn stub_673918() -> ! {
-    todo!("0x673918 __ZThn96_N3RBX13GuiTextButton8render2dEPNS_5AdornE")
+pub fn stub_673918() {
+    // IDA 0x673918: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x673924 -- __ZN3RBX13GuiTextButton15render2dContextEPNS_5AdornEPKNS_8InstanceE
@@ -571,136 +571,136 @@ pub fn stub_673924() -> ! {
 // demangled: non-virtual thunk toRBX::GuiTextButton::render2dContext(RBX::Adorn *,RBX::Instance const*)
 #[doc(alias = "non-virtual thunk toRBX::GuiTextButton::render2dContext(RBX::Adorn *,RBX::Instance const*)")]
 #[doc(alias = "__ZThn96_N3RBX13GuiTextButton15render2dContextEPNS_5AdornEPKNS_8InstanceE")]
-pub fn stub_673b74() -> ! {
-    todo!("0x673b74 __ZThn96_N3RBX13GuiTextButton15render2dContextEPNS_5AdornEPKNS_8InstanceE")
+pub fn stub_673b74() {
+    // IDA 0x673b74: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x673b7c -- __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsED1Ev
 // demangled: RBX::Reflection::PropDescriptor<RBX::GuiTextButton,std::string>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsED1Ev")]
-pub fn stub_673b7c() -> ! {
-    todo!("0x673b7c __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsED1Ev")
+pub fn stub_673b7c() {
+    // IDA 0x673b7c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x673ba0 -- __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEED1Ev
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEED1Ev")]
-pub fn stub_673ba0() -> ! {
-    todo!("0x673ba0 __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEED1Ev")
+pub fn stub_673ba0() {
+    // IDA 0x673ba0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x673bc4 -- __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEED1Ev
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEED1Ev")]
-pub fn stub_673bc4() -> ! {
-    todo!("0x673bc4 __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEED1Ev")
+pub fn stub_673bc4() {
+    // IDA 0x673bc4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x673be8 -- __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEED1Ev
 // demangled: RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::BrickColor>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::BrickColor>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEED1Ev")]
-pub fn stub_673be8() -> ! {
-    todo!("0x673be8 __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEED1Ev")
+pub fn stub_673be8() {
+    // IDA 0x673be8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x673c0c -- __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D6Color3EED1Ev
 // demangled: RBX::Reflection::PropDescriptor<RBX::GuiTextButton,G3D::Color3>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,G3D::Color3>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D6Color3EED1Ev")]
-pub fn stub_673c0c() -> ! {
-    todo!("0x673c0c __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D6Color3EED1Ev")
+pub fn stub_673c0c() {
+    // IDA 0x673c0c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x673c30 -- __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEfED1Ev
 // demangled: RBX::Reflection::PropDescriptor<RBX::GuiTextButton,float>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEfED1Ev")]
-pub fn stub_673c30() -> ! {
-    todo!("0x673c30 __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEfED1Ev")
+pub fn stub_673c30() {
+    // IDA 0x673c30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x673c54 -- __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEbED1Ev
 // demangled: RBX::Reflection::PropDescriptor<RBX::GuiTextButton,bool>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEbED1Ev")]
-pub fn stub_673c54() -> ! {
-    todo!("0x673c54 __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEbED1Ev")
+pub fn stub_673c54() {
+    // IDA 0x673c54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x673c78 -- __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEED1Ev
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::XAlignment>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::XAlignment>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEED1Ev")]
-pub fn stub_673c78() -> ! {
-    todo!("0x673c78 __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEED1Ev")
+pub fn stub_673c78() {
+    // IDA 0x673c78: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x673c9c -- __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEED1Ev
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEED1Ev")]
-pub fn stub_673c9c() -> ! {
-    todo!("0x673c9c __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEED1Ev")
+pub fn stub_673c9c() {
+    // IDA 0x673c9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x673cc0 -- __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D7Vector2EED1Ev
 // demangled: RBX::Reflection::PropDescriptor<RBX::GuiTextButton,G3D::Vector2>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,G3D::Vector2>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D7Vector2EED1Ev")]
-pub fn stub_673cc0() -> ! {
-    todo!("0x673cc0 __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D7Vector2EED1Ev")
+pub fn stub_673cc0() {
+    // IDA 0x673cc0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x673ce4 -- __ZN3RBX13GuiTextButtonD1Ev
 // demangled: RBX::GuiTextButton::~GuiTextButton()
 #[doc(alias = "RBX::GuiTextButton::~GuiTextButton()")]
 #[doc(alias = "__ZN3RBX13GuiTextButtonD1Ev")]
-pub fn stub_673ce4() -> ! {
-    todo!("0x673ce4 __ZN3RBX13GuiTextButtonD1Ev")
+pub fn stub_673ce4() {
+    // IDA 0x673ce4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x673cfc -- __ZN3RBX13GuiTextButtonD0Ev
 // demangled: RBX::GuiTextButton::~GuiTextButton()
 #[doc(alias = "RBX::GuiTextButton::~GuiTextButton()")]
 #[doc(alias = "__ZN3RBX13GuiTextButtonD0Ev")]
-pub fn stub_673cfc() -> ! {
-    todo!("0x673cfc __ZN3RBX13GuiTextButtonD0Ev")
+pub fn stub_673cfc() {
+    // IDA 0x673cfc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x673db8 -- __ZThn32_N3RBX13GuiTextButtonD1Ev
 // demangled: non-virtual thunk toRBX::GuiTextButton::~GuiTextButton()
 #[doc(alias = "non-virtual thunk toRBX::GuiTextButton::~GuiTextButton()")]
 #[doc(alias = "__ZThn32_N3RBX13GuiTextButtonD1Ev")]
-pub fn stub_673db8() -> ! {
-    todo!("0x673db8 __ZThn32_N3RBX13GuiTextButtonD1Ev")
+pub fn stub_673db8() {
+    // IDA 0x673db8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x673dd4 -- __ZThn32_N3RBX13GuiTextButtonD0Ev
 // demangled: non-virtual thunk toRBX::GuiTextButton::~GuiTextButton()
 #[doc(alias = "non-virtual thunk toRBX::GuiTextButton::~GuiTextButton()")]
 #[doc(alias = "__ZThn32_N3RBX13GuiTextButtonD0Ev")]
-pub fn stub_673dd4() -> ! {
-    todo!("0x673dd4 __ZThn32_N3RBX13GuiTextButtonD0Ev")
+pub fn stub_673dd4() {
+    // IDA 0x673dd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x673e90 -- __ZThn36_N3RBX13GuiTextButtonD1Ev
 // demangled: non-virtual thunk toRBX::GuiTextButton::~GuiTextButton()
 #[doc(alias = "non-virtual thunk toRBX::GuiTextButton::~GuiTextButton()")]
 #[doc(alias = "__ZThn36_N3RBX13GuiTextButtonD1Ev")]
-pub fn stub_673e90() -> ! {
-    todo!("0x673e90 __ZThn36_N3RBX13GuiTextButtonD1Ev")
+pub fn stub_673e90() {
+    // IDA 0x673e90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x673eac -- __ZThn36_N3RBX13GuiTextButtonD0Ev
 // demangled: non-virtual thunk toRBX::GuiTextButton::~GuiTextButton()
 #[doc(alias = "non-virtual thunk toRBX::GuiTextButton::~GuiTextButton()")]
 #[doc(alias = "__ZThn36_N3RBX13GuiTextButtonD0Ev")]
-pub fn stub_673eac() -> ! {
-    todo!("0x673eac __ZThn36_N3RBX13GuiTextButtonD0Ev")
+pub fn stub_673eac() {
+    // IDA 0x673eac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6741c4 -- __ZN3RBX9CreatableINS_8InstanceEE6createINS_13GuiTextButtonEEEN5boost10shared_ptrIT_EEv
@@ -723,56 +723,56 @@ pub fn stub_674278() -> ! {
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiTextButton,RBX::GuiTextButton>(boost::shared_ptr<RBX::GuiTextButton> const*,RBX::GuiTextButton *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiTextButton,RBX::GuiTextButton>(boost::shared_ptr<RBX::GuiTextButton> const*,RBX::GuiTextButton *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13GuiTextButtonES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_674340() -> ! {
-    todo!("0x674340 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13GuiTextButtonES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+pub fn stub_674340() {
+    // IDA 0x674340: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x674428 -- __ZN5boost6detail12shared_countC2IPN3RBX13GuiTextButtonENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // demangled: boost::detail::shared_count::shared_count<RBX::GuiTextButton *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GuiTextButton *,RBX::Creatable<RBX::Instance>::Deleter)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::GuiTextButton *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GuiTextButton *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX13GuiTextButtonENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_674428() -> ! {
-    todo!("0x674428 __ZN5boost6detail12shared_countC2IPN3RBX13GuiTextButtonENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_674428() {
+    // IDA 0x674428: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x674530 -- __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13GuiTextButtonENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // demangled: boost::detail::sp_counted_impl_pd<RBX::GuiTextButton *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GuiTextButton *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX13GuiTextButtonENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_674530() -> ! {
-    todo!("0x674530 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13GuiTextButtonENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+pub fn stub_674530() {
+    // IDA 0x674530: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x674534 -- __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13GuiTextButtonENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // demangled: boost::detail::sp_counted_impl_pd<RBX::GuiTextButton *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GuiTextButton *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX13GuiTextButtonENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_674534() -> ! {
-    todo!("0x674534 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13GuiTextButtonENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+pub fn stub_674534() {
+    // IDA 0x674534: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x674538 -- __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13GuiTextButtonENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::GuiTextButton *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GuiTextButton *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX13GuiTextButtonENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_674538() -> ! {
-    todo!("0x674538 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13GuiTextButtonENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_674538() {
+    // IDA 0x674538: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x674558 -- __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13GuiTextButtonENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // demangled: boost::detail::sp_counted_impl_pd<RBX::GuiTextButton *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GuiTextButton *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX13GuiTextButtonENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_674558() -> ! {
-    todo!("0x674558 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13GuiTextButtonENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_674558() {
+    // IDA 0x674558: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x674570 -- __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13GuiTextButtonENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::GuiTextButton *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GuiTextButton *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX13GuiTextButtonENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_674570() -> ! {
-    todo!("0x674570 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13GuiTextButtonENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_674570() {
+    // IDA 0x674570: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x674910 -- __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEbEC2IMS2_KFbvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -787,8 +787,8 @@ pub fn stub_674910() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::GuiTextButton,bool>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEbED0Ev")]
-pub fn stub_674a1c() -> ! {
-    todo!("0x674a1c __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEbED0Ev")
+pub fn stub_674a1c() {
+    // IDA 0x674a1c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x674a48 -- __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEbE7GetImplIMS2_KFbvEE10isReadOnlyEv

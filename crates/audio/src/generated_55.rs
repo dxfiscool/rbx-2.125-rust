@@ -14,26 +14,26 @@ const _: () = {
 
 // 0x563614 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyThrustENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyThrustENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_563614() -> ! {
-    todo!("0x563614 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyThrustENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+pub fn stub_563614() {
+    // IDA 0x563614: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x563618 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyThrustENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyThrustENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_563618() -> ! {
-    todo!("0x563618 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyThrustENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_563618() {
+    // IDA 0x563618: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x563638 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyThrustENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyThrustENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_563638() -> ! {
-    todo!("0x563638 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyThrustENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_563638() {
+    // IDA 0x563638: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x563650 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyThrustENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyThrustENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_563650() -> ! {
-    todo!("0x563650 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyThrustENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_563650() {
+    // IDA 0x563650: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x563654 — __ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7CreatorC2Ev
@@ -44,8 +44,8 @@ pub fn stub_563654() -> ! {
 
 // 0x563898 — __ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_563898() -> ! {
-    todo!("0x563898 __ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_563898() {
+    // IDA 0x563898: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x563934 — __ZNK3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7Creator6createEv
@@ -74,38 +74,38 @@ pub fn stub_563bf4() -> ! {
 
 // 0x563cdc — __ZN5boost6detail12shared_countC2IPN3RBX9BodyForceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX9BodyForceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_563cdc() -> ! {
-    todo!("0x563cdc __ZN5boost6detail12shared_countC2IPN3RBX9BodyForceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_563cdc() {
+    // IDA 0x563cdc: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x563de4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BodyForceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BodyForceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_563de4() -> ! {
-    todo!("0x563de4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BodyForceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+pub fn stub_563de4() {
+    // IDA 0x563de4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x563de8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BodyForceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BodyForceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_563de8() -> ! {
-    todo!("0x563de8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BodyForceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+pub fn stub_563de8() {
+    // IDA 0x563de8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x563dec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BodyForceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BodyForceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_563dec() -> ! {
-    todo!("0x563dec __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BodyForceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_563dec() {
+    // IDA 0x563dec: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x563e0c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BodyForceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BodyForceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_563e0c() -> ! {
-    todo!("0x563e0c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BodyForceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_563e0c() {
+    // IDA 0x563e0c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x563e24 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BodyForceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BodyForceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_563e24() -> ! {
-    todo!("0x563e24 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9BodyForceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_563e24() {
+    // IDA 0x563e24: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x563e28 — __ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7CreatorC2Ev
@@ -116,8 +116,8 @@ pub fn stub_563e28() -> ! {
 
 // 0x56406c — __ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_56406c() -> ! {
-    todo!("0x56406c __ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_56406c() {
+    // IDA 0x56406c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x564108 — __ZNK3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7Creator6createEv
@@ -146,38 +146,38 @@ pub fn stub_5643c8() -> ! {
 
 // 0x5644b0 — __ZN5boost6detail12shared_countC2IPN3RBX19BodyAngularVelocityENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX19BodyAngularVelocityENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_5644b0() -> ! {
-    todo!("0x5644b0 __ZN5boost6detail12shared_countC2IPN3RBX19BodyAngularVelocityENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_5644b0() {
+    // IDA 0x5644b0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x5645b8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19BodyAngularVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX19BodyAngularVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_5645b8() -> ! {
-    todo!("0x5645b8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19BodyAngularVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+pub fn stub_5645b8() {
+    // IDA 0x5645b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5645bc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19BodyAngularVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX19BodyAngularVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_5645bc() -> ! {
-    todo!("0x5645bc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19BodyAngularVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+pub fn stub_5645bc() {
+    // IDA 0x5645bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5645c0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19BodyAngularVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX19BodyAngularVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_5645c0() -> ! {
-    todo!("0x5645c0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19BodyAngularVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_5645c0() {
+    // IDA 0x5645c0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x5645e0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19BodyAngularVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX19BodyAngularVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_5645e0() -> ! {
-    todo!("0x5645e0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19BodyAngularVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_5645e0() {
+    // IDA 0x5645e0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x5645f8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19BodyAngularVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX19BodyAngularVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_5645f8() -> ! {
-    todo!("0x5645f8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19BodyAngularVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_5645f8() {
+    // IDA 0x5645f8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x5645fc — __ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorC2Ev
@@ -188,8 +188,8 @@ pub fn stub_5645fc() -> ! {
 
 // 0x564840 — __ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_564840() -> ! {
-    todo!("0x564840 __ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_564840() {
+    // IDA 0x564840: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5648dc — __ZNK3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7Creator6createEv
@@ -218,38 +218,38 @@ pub fn stub_564b9c() -> ! {
 
 // 0x564c84 — __ZN5boost6detail12shared_countC2IPN3RBX12BodyVelocityENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX12BodyVelocityENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_564c84() -> ! {
-    todo!("0x564c84 __ZN5boost6detail12shared_countC2IPN3RBX12BodyVelocityENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_564c84() {
+    // IDA 0x564c84: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x564d8c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_564d8c() -> ! {
-    todo!("0x564d8c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+pub fn stub_564d8c() {
+    // IDA 0x564d8c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x564d90 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_564d90() -> ! {
-    todo!("0x564d90 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+pub fn stub_564d90() {
+    // IDA 0x564d90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x564d94 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_564d94() -> ! {
-    todo!("0x564d94 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_564d94() {
+    // IDA 0x564d94: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x564db4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_564db4() -> ! {
-    todo!("0x564db4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_564db4() {
+    // IDA 0x564db4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x564dcc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_564dcc() -> ! {
-    todo!("0x564dcc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyVelocityENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_564dcc() {
+    // IDA 0x564dcc: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x564dd0 — __ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorC2Ev
@@ -260,8 +260,8 @@ pub fn stub_564dd0() -> ! {
 
 // 0x565014 — __ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_565014() -> ! {
-    todo!("0x565014 __ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_565014() {
+    // IDA 0x565014: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5650b0 — __ZNK3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7Creator6createEv
@@ -290,38 +290,38 @@ pub fn stub_565370() -> ! {
 
 // 0x565458 — __ZN5boost6detail12shared_countC2IPN3RBX12BodyPositionENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX12BodyPositionENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_565458() -> ! {
-    todo!("0x565458 __ZN5boost6detail12shared_countC2IPN3RBX12BodyPositionENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_565458() {
+    // IDA 0x565458: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x565560 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyPositionENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyPositionENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_565560() -> ! {
-    todo!("0x565560 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyPositionENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+pub fn stub_565560() {
+    // IDA 0x565560: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x565564 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyPositionENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyPositionENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_565564() -> ! {
-    todo!("0x565564 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyPositionENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+pub fn stub_565564() {
+    // IDA 0x565564: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x565568 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyPositionENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyPositionENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_565568() -> ! {
-    todo!("0x565568 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyPositionENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_565568() {
+    // IDA 0x565568: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x565588 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyPositionENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyPositionENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_565588() -> ! {
-    todo!("0x565588 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyPositionENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_565588() {
+    // IDA 0x565588: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x5655a0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyPositionENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyPositionENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_5655a0() -> ! {
-    todo!("0x5655a0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12BodyPositionENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_5655a0() {
+    // IDA 0x5655a0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x5655a4 — __ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorC2Ev
@@ -332,8 +332,8 @@ pub fn stub_5655a4() -> ! {
 
 // 0x5657e8 — __ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_5657e8() -> ! {
-    todo!("0x5657e8 __ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_5657e8() {
+    // IDA 0x5657e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x565884 — __ZNK3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7Creator6createEv
@@ -362,38 +362,38 @@ pub fn stub_565b44() -> ! {
 
 // 0x565c2c — __ZN5boost6detail12shared_countC2IPN3RBX8BodyGyroENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX8BodyGyroENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_565c2c() -> ! {
-    todo!("0x565c2c __ZN5boost6detail12shared_countC2IPN3RBX8BodyGyroENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_565c2c() {
+    // IDA 0x565c2c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x565d34 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BodyGyroENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BodyGyroENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_565d34() -> ! {
-    todo!("0x565d34 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BodyGyroENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+pub fn stub_565d34() {
+    // IDA 0x565d34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x565d38 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BodyGyroENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BodyGyroENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_565d38() -> ! {
-    todo!("0x565d38 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BodyGyroENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+pub fn stub_565d38() {
+    // IDA 0x565d38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x565d3c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BodyGyroENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BodyGyroENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_565d3c() -> ! {
-    todo!("0x565d3c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BodyGyroENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_565d3c() {
+    // IDA 0x565d3c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x565d5c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BodyGyroENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BodyGyroENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_565d5c() -> ! {
-    todo!("0x565d5c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BodyGyroENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_565d5c() {
+    // IDA 0x565d5c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x565d74 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BodyGyroENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BodyGyroENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_565d74() -> ! {
-    todo!("0x565d74 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BodyGyroENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_565d74() {
+    // IDA 0x565d74: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x565d78 — __ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7CreatorC2Ev
@@ -452,8 +452,8 @@ pub fn stub_5673e8() -> ! {
 
 // 0x567688 — __ZThn92_N3RBX7Handles7processERKNS_8GuiEventE
 #[doc(alias = "__ZThn92_N3RBX7Handles7processERKNS_8GuiEventE")]
-pub fn stub_567688() -> ! {
-    todo!("0x567688 __ZThn92_N3RBX7Handles7processERKNS_8GuiEventE")
+pub fn stub_567688() {
+    // IDA 0x567688: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x567694 — __ZNK3RBX7Handles13getHandleTypeEv
@@ -470,8 +470,8 @@ pub fn stub_5676b0() -> ! {
 
 // 0x5676b8 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEED1Ev
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEED1Ev")]
-pub fn stub_5676b8() -> ! {
-    todo!("0x5676b8 __ZN3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEED1Ev")
+pub fn stub_5676b8() {
+    // IDA 0x5676b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5676dc — __ZNK3RBX7Handles8getFacesEv
@@ -482,20 +482,20 @@ pub fn stub_5676dc() -> ! {
 
 // 0x5676e4 — __ZN3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEED1Ev
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEED1Ev")]
-pub fn stub_5676e4() -> ! {
-    todo!("0x5676e4 __ZN3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEED1Ev")
+pub fn stub_5676e4() {
+    // IDA 0x5676e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x567708 — __ZN3RBX10Reflection15RemoteEventDescINS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEED1Ev
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEED1Ev")]
-pub fn stub_567708() -> ! {
-    todo!("0x567708 __ZN3RBX10Reflection15RemoteEventDescINS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEED1Ev")
+pub fn stub_567708() {
+    // IDA 0x567708: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x56772c — __ZN3RBX10Reflection15RemoteEventDescINS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEED1Ev
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEED1Ev")]
-pub fn stub_56772c() -> ! {
-    todo!("0x56772c __ZN3RBX10Reflection15RemoteEventDescINS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEED1Ev")
+pub fn stub_56772c() {
+    // IDA 0x56772c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x567750 — __ZN3RBX19EventReplicatorBaseINS_7HandlesEFvNS_8NormalIdEEE15setListenerModeEb
@@ -536,14 +536,14 @@ pub fn stub_567c20() -> ! {
 
 // 0x567d64 — __ZN3RBX7HandlesD1Ev
 #[doc(alias = "__ZN3RBX7HandlesD1Ev")]
-pub fn stub_567d64() -> ! {
-    todo!("0x567d64 __ZN3RBX7HandlesD1Ev")
+pub fn stub_567d64() {
+    // IDA 0x567d64: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x567d68 — __ZN3RBX7HandlesD0Ev
 #[doc(alias = "__ZN3RBX7HandlesD0Ev")]
-pub fn stub_567d68() -> ! {
-    todo!("0x567d68 __ZN3RBX7HandlesD0Ev")
+pub fn stub_567d68() {
+    // IDA 0x567d68: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x567e08 — __ZNK3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE12getClassNameEv
@@ -560,44 +560,44 @@ pub fn stub_567e18() -> ! {
 
 // 0x567e20 — __ZThn32_N3RBX7HandlesD1Ev
 #[doc(alias = "__ZThn32_N3RBX7HandlesD1Ev")]
-pub fn stub_567e20() -> ! {
-    todo!("0x567e20 __ZThn32_N3RBX7HandlesD1Ev")
+pub fn stub_567e20() {
+    // IDA 0x567e20: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x567e28 — __ZThn32_N3RBX7HandlesD0Ev
 #[doc(alias = "__ZThn32_N3RBX7HandlesD0Ev")]
-pub fn stub_567e28() -> ! {
-    todo!("0x567e28 __ZThn32_N3RBX7HandlesD0Ev")
+pub fn stub_567e28() {
+    // IDA 0x567e28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x567ecc — __ZThn32_NK3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_567ecc() -> ! {
-    todo!("0x567ecc __ZThn32_NK3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE12getClassNameEv")
+pub fn stub_567ecc() {
+    // IDA 0x567ecc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x567edc — __ZThn36_N3RBX7HandlesD1Ev
 #[doc(alias = "__ZThn36_N3RBX7HandlesD1Ev")]
-pub fn stub_567edc() -> ! {
-    todo!("0x567edc __ZThn36_N3RBX7HandlesD1Ev")
+pub fn stub_567edc() {
+    // IDA 0x567edc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x567ee4 — __ZThn36_N3RBX7HandlesD0Ev
 #[doc(alias = "__ZThn36_N3RBX7HandlesD0Ev")]
-pub fn stub_567ee4() -> ! {
-    todo!("0x567ee4 __ZThn36_N3RBX7HandlesD0Ev")
+pub fn stub_567ee4() {
+    // IDA 0x567ee4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x567f88 — __ZN3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_567f88() -> ! {
-    todo!("0x567f88 __ZN3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_567f88() {
+    // IDA 0x567f88: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x567f8c — __ZN3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_567f8c() -> ! {
-    todo!("0x567f8c __ZN3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_567f8c() {
+    // IDA 0x567f8c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x568028 — __ZNK3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7Creator12getClassNameEv

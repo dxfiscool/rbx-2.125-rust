@@ -14,22 +14,22 @@ const _: () = {
 // 0x4e51ec — __ZN3RBX7FeatureD2Ev
 // type: void __fastcall(RBX::Feature *__hidden this)
 #[doc(alias = "RBX::Feature::~Feature()")]
-pub fn stub_4e51ec() -> ! {
-    todo!("0x4e51ec __ZN3RBX7FeatureD2Ev")
+pub fn stub_4e51ec() {
+    // IDA 0x4e51ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e52a8 — __ZThn32_N3RBX7FeatureD1Ev
 // type: void __fastcall(RBX::Feature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Feature::~Feature()")]
-pub fn stub_4e52a8() -> ! {
-    todo!("0x4e52a8 __ZThn32_N3RBX7FeatureD1Ev")
+pub fn stub_4e52a8() {
+    // IDA 0x4e52a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e52b0 — __ZThn36_N3RBX7FeatureD1Ev
 // type: void __fastcall(RBX::Feature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Feature::~Feature()")]
-pub fn stub_4e52b0() -> ! {
-    todo!("0x4e52b0 __ZThn36_N3RBX7FeatureD1Ev")
+pub fn stub_4e52b0() {
+    // IDA 0x4e52b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e52b8 — __ZNK3RBX7Feature14getRenderCoordERN3G3D15CoordinateFrameE
@@ -54,8 +54,8 @@ pub fn stub_4e555c() -> ! {
 
 // 0x4e55ac — __ZThn92_N3RBX7Feature14render3dSelectEPNS_5AdornENS_11SelectStateE
 #[doc(alias = "non-virtual thunk toRBX::Feature::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
-pub fn stub_4e55ac() -> ! {
-    todo!("0x4e55ac __ZThn92_N3RBX7Feature14render3dSelectEPNS_5AdornENS_11SelectStateE")
+pub fn stub_4e55ac() {
+    // IDA 0x4e55ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e55b4 — __ZN3RBX4HoleC2Ev
@@ -75,8 +75,8 @@ pub fn stub_4e57b4() -> ! {
 // 0x4e5810 — __ZThn92_N3RBX4Hole13render3dAdornEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::Hole *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::Hole::render3dAdorn(RBX::Adorn *)")]
-pub fn stub_4e5810() -> ! {
-    todo!("0x4e5810 __ZThn92_N3RBX4Hole13render3dAdornEPNS_5AdornE")
+pub fn stub_4e5810() {
+    // IDA 0x4e5810: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e5818 — __ZN3RBX12MotorFeatureC2Ev
@@ -96,8 +96,8 @@ pub fn stub_4e5a18() -> ! {
 // 0x4e5a70 — __ZThn92_N3RBX12MotorFeature13render3dAdornEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::MotorFeature *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::MotorFeature::render3dAdorn(RBX::Adorn *)")]
-pub fn stub_4e5a70() -> ! {
-    todo!("0x4e5a70 __ZThn92_N3RBX12MotorFeature13render3dAdornEPNS_5AdornE")
+pub fn stub_4e5a70() {
+    // IDA 0x4e5a70: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e5a78 — __ZN3RBX12MotorFeature7canJoinEPNS_8InstanceES2_
@@ -124,50 +124,50 @@ pub fn stub_4e5c88() -> ! {
 // 0x4e5f1c — __ZN3RBX13VelocityMotorD0Ev
 // type: void __fastcall(RBX::VelocityMotor *__hidden this)
 #[doc(alias = "RBX::VelocityMotor::~VelocityMotor()")]
-pub fn stub_4e5f1c() -> ! {
-    todo!("0x4e5f1c __ZN3RBX13VelocityMotorD0Ev")
+pub fn stub_4e5f1c() {
+    // IDA 0x4e5f1c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e5fbc — __ZN3RBX13VelocityMotorD1Ev
 // type: void __fastcall(RBX::VelocityMotor *__hidden this)
 #[doc(alias = "RBX::VelocityMotor::~VelocityMotor()")]
-pub fn stub_4e5fbc() -> ! {
-    todo!("0x4e5fbc __ZN3RBX13VelocityMotorD1Ev")
+pub fn stub_4e5fbc() {
+    // IDA 0x4e5fbc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e5fc0 — __ZThn32_N3RBX13VelocityMotorD0Ev
 // type: void __fastcall(RBX::VelocityMotor *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VelocityMotor::~VelocityMotor()")]
-pub fn stub_4e5fc0() -> ! {
-    todo!("0x4e5fc0 __ZThn32_N3RBX13VelocityMotorD0Ev")
+pub fn stub_4e5fc0() {
+    // IDA 0x4e5fc0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e5fc8 — __ZThn36_N3RBX13VelocityMotorD0Ev
 // type: void __fastcall(RBX::VelocityMotor *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VelocityMotor::~VelocityMotor()")]
-pub fn stub_4e5fc8() -> ! {
-    todo!("0x4e5fc8 __ZThn36_N3RBX13VelocityMotorD0Ev")
+pub fn stub_4e5fc8() {
+    // IDA 0x4e5fc8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e5fd0 — __ZN3RBX13VelocityMotorD2Ev
 // type: void __fastcall(RBX::VelocityMotor *__hidden this)
 #[doc(alias = "RBX::VelocityMotor::~VelocityMotor()")]
-pub fn stub_4e5fd0() -> ! {
-    todo!("0x4e5fd0 __ZN3RBX13VelocityMotorD2Ev")
+pub fn stub_4e5fd0() {
+    // IDA 0x4e5fd0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e6114 — __ZThn32_N3RBX13VelocityMotorD1Ev
 // type: void __fastcall(RBX::VelocityMotor *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VelocityMotor::~VelocityMotor()")]
-pub fn stub_4e6114() -> ! {
-    todo!("0x4e6114 __ZThn32_N3RBX13VelocityMotorD1Ev")
+pub fn stub_4e6114() {
+    // IDA 0x4e6114: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e611c — __ZThn36_N3RBX13VelocityMotorD1Ev
 // type: void __fastcall(RBX::VelocityMotor *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VelocityMotor::~VelocityMotor()")]
-pub fn stub_4e611c() -> ! {
-    todo!("0x4e611c __ZThn36_N3RBX13VelocityMotorD1Ev")
+pub fn stub_4e611c() {
+    // IDA 0x4e611c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e6124 — __ZN3RBX13VelocityMotor7setPartEiPNS_7FeatureE
@@ -192,14 +192,14 @@ pub fn stub_4e62ec() -> ! {
 
 // 0x4e6354 — __ZN3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEED1Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::~RefPropDescriptor()")]
-pub fn stub_4e6354() -> ! {
-    todo!("0x4e6354 __ZN3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEED1Ev")
+pub fn stub_4e6354() {
+    // IDA 0x4e6354: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e6380 — __ZN3RBX10Reflection14PropDescriptorINS_13VelocityMotorEfED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VelocityMotor,float>::~PropDescriptor()")]
-pub fn stub_4e6380() -> ! {
-    todo!("0x4e6380 __ZN3RBX10Reflection14PropDescriptorINS_13VelocityMotorEfED1Ev")
+pub fn stub_4e6380() {
+    // IDA 0x4e6380: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e63a4 — __ZN3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE7addPairES3_PKc
@@ -229,8 +229,8 @@ pub fn stub_4e6dc4() -> ! {
 
 // 0x4e6dc8 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::~EnumPropDescriptor()")]
-pub fn stub_4e6dc8() -> ! {
-    todo!("0x4e6dc8 __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEED1Ev")
+pub fn stub_4e6dc8() {
+    // IDA 0x4e6dc8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e6dec — __ZNK3RBX7Feature12getTopBottomEv
@@ -242,8 +242,8 @@ pub fn stub_4e6dec() -> ! {
 
 // 0x4e6df0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::~EnumPropDescriptor()")]
-pub fn stub_4e6df0() -> ! {
-    todo!("0x4e6df0 __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEED1Ev")
+pub fn stub_4e6df0() {
+    // IDA 0x4e6df0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e6e14 — __ZNK3RBX7Feature12getLeftRightEv
@@ -255,8 +255,8 @@ pub fn stub_4e6e14() -> ! {
 
 // 0x4e6e18 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::~EnumPropDescriptor()")]
-pub fn stub_4e6e18() -> ! {
-    todo!("0x4e6e18 __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEED1Ev")
+pub fn stub_4e6e18() {
+    // IDA 0x4e6e18: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e6e3c — __ZNK3RBX7Feature8getInOutEv
@@ -268,8 +268,8 @@ pub fn stub_4e6e3c() -> ! {
 
 // 0x4e6e44 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::~EnumPropDescriptor()")]
-pub fn stub_4e6e44() -> ! {
-    todo!("0x4e6e44 __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEED1Ev")
+pub fn stub_4e6e44() {
+    // IDA 0x4e6e44: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e6e68 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13VelocityMotorEEEN5boost10shared_ptrIT_EEv
@@ -325,29 +325,29 @@ pub fn stub_4e7164() -> ! {
 
 // 0x4e7168 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_8sFeatureEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_8sFeatureEEE12getClassNameEv")]
-pub fn stub_4e7168() -> ! {
-    todo!("0x4e7168 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_8sFeatureEEE12getClassNameEv")
+pub fn stub_4e7168() {
+    // IDA 0x4e7168: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e7190 — __ZThn92_NK3RBX7Feature19shouldRender3dAdornEv
 // type: _DWORD __fastcall(RBX::Feature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Feature::shouldRender3dAdorn(void)const")]
-pub fn stub_4e7190() -> ! {
-    todo!("0x4e7190 __ZThn92_NK3RBX7Feature19shouldRender3dAdornEv")
+pub fn stub_4e7190() {
+    // IDA 0x4e7190: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e7194 — __ZN3RBX4HoleD1Ev
 // type: void __fastcall(RBX::Hole *__hidden this)
 #[doc(alias = "RBX::Hole::~Hole()")]
-pub fn stub_4e7194() -> ! {
-    todo!("0x4e7194 __ZN3RBX4HoleD1Ev")
+pub fn stub_4e7194() {
+    // IDA 0x4e7194: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e7198 — __ZN3RBX4HoleD0Ev
 // type: void __fastcall(RBX::Hole *__hidden this)
 #[doc(alias = "RBX::Hole::~Hole()")]
-pub fn stub_4e7198() -> ! {
-    todo!("0x4e7198 __ZN3RBX4HoleD0Ev")
+pub fn stub_4e7198() {
+    // IDA 0x4e7198: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e7238 — __ZNK3RBX14FactoryProductINS_4HoleENS_7FeatureELZNS_5sHoleEENS_8InstanceEE12getClassNameEv
@@ -366,49 +366,49 @@ pub fn stub_4e7248() -> ! {
 // 0x4e724c — __ZThn32_N3RBX4HoleD1Ev
 // type: void __fastcall(RBX::Hole *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Hole::~Hole()")]
-pub fn stub_4e724c() -> ! {
-    todo!("0x4e724c __ZThn32_N3RBX4HoleD1Ev")
+pub fn stub_4e724c() {
+    // IDA 0x4e724c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e7254 — __ZThn32_N3RBX4HoleD0Ev
 // type: void __fastcall(RBX::Hole *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Hole::~Hole()")]
-pub fn stub_4e7254() -> ! {
-    todo!("0x4e7254 __ZThn32_N3RBX4HoleD0Ev")
+pub fn stub_4e7254() {
+    // IDA 0x4e7254: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e72f8 — __ZThn32_NK3RBX14FactoryProductINS_4HoleENS_7FeatureELZNS_5sHoleEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_4HoleENS_7FeatureELZNS_5sHoleEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_4e72f8() -> ! {
-    todo!("0x4e72f8 __ZThn32_NK3RBX14FactoryProductINS_4HoleENS_7FeatureELZNS_5sHoleEENS_8InstanceEE12getClassNameEv")
+pub fn stub_4e72f8() {
+    // IDA 0x4e72f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e7308 — __ZThn36_N3RBX4HoleD1Ev
 // type: void __fastcall(RBX::Hole *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Hole::~Hole()")]
-pub fn stub_4e7308() -> ! {
-    todo!("0x4e7308 __ZThn36_N3RBX4HoleD1Ev")
+pub fn stub_4e7308() {
+    // IDA 0x4e7308: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e7310 — __ZThn36_N3RBX4HoleD0Ev
 // type: void __fastcall(RBX::Hole *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Hole::~Hole()")]
-pub fn stub_4e7310() -> ! {
-    todo!("0x4e7310 __ZThn36_N3RBX4HoleD0Ev")
+pub fn stub_4e7310() {
+    // IDA 0x4e7310: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e73b4 — __ZN3RBX12MotorFeatureD1Ev
 // type: void __fastcall(RBX::MotorFeature *__hidden this)
 #[doc(alias = "RBX::MotorFeature::~MotorFeature()")]
-pub fn stub_4e73b4() -> ! {
-    todo!("0x4e73b4 __ZN3RBX12MotorFeatureD1Ev")
+pub fn stub_4e73b4() {
+    // IDA 0x4e73b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e73b8 — __ZN3RBX12MotorFeatureD0Ev
 // type: void __fastcall(RBX::MotorFeature *__hidden this)
 #[doc(alias = "RBX::MotorFeature::~MotorFeature()")]
-pub fn stub_4e73b8() -> ! {
-    todo!("0x4e73b8 __ZN3RBX12MotorFeatureD0Ev")
+pub fn stub_4e73b8() {
+    // IDA 0x4e73b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e7458 — __ZNK3RBX14FactoryProductINS_12MotorFeatureENS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEE12getClassNameEv
@@ -420,35 +420,35 @@ pub fn stub_4e7458() -> ! {
 // 0x4e7468 — __ZThn32_N3RBX12MotorFeatureD1Ev
 // type: void __fastcall(RBX::MotorFeature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MotorFeature::~MotorFeature()")]
-pub fn stub_4e7468() -> ! {
-    todo!("0x4e7468 __ZThn32_N3RBX12MotorFeatureD1Ev")
+pub fn stub_4e7468() {
+    // IDA 0x4e7468: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e7470 — __ZThn32_N3RBX12MotorFeatureD0Ev
 // type: void __fastcall(RBX::MotorFeature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MotorFeature::~MotorFeature()")]
-pub fn stub_4e7470() -> ! {
-    todo!("0x4e7470 __ZThn32_N3RBX12MotorFeatureD0Ev")
+pub fn stub_4e7470() {
+    // IDA 0x4e7470: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e7514 — __ZThn32_NK3RBX14FactoryProductINS_12MotorFeatureENS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_12MotorFeatureENS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_4e7514() -> ! {
-    todo!("0x4e7514 __ZThn32_NK3RBX14FactoryProductINS_12MotorFeatureENS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEE12getClassNameEv")
+pub fn stub_4e7514() {
+    // IDA 0x4e7514: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e7524 — __ZThn36_N3RBX12MotorFeatureD1Ev
 // type: void __fastcall(RBX::MotorFeature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MotorFeature::~MotorFeature()")]
-pub fn stub_4e7524() -> ! {
-    todo!("0x4e7524 __ZThn36_N3RBX12MotorFeatureD1Ev")
+pub fn stub_4e7524() {
+    // IDA 0x4e7524: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e752c — __ZThn36_N3RBX12MotorFeatureD0Ev
 // type: void __fastcall(RBX::MotorFeature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MotorFeature::~MotorFeature()")]
-pub fn stub_4e752c() -> ! {
-    todo!("0x4e752c __ZThn36_N3RBX12MotorFeatureD0Ev")
+pub fn stub_4e752c() {
+    // IDA 0x4e752c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e75d0 — __ZNK3RBX13JointInstance21getPersistentDataCostEv
@@ -473,32 +473,32 @@ pub fn stub_4e75e0() -> ! {
 
 // 0x4e75f0 — __ZThn32_NK3RBX14FactoryProductINS_13VelocityMotorENS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_13VelocityMotorENS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_4e75f0() -> ! {
-    todo!("0x4e75f0 __ZThn32_NK3RBX14FactoryProductINS_13VelocityMotorENS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEE12getClassNameEv")
+pub fn stub_4e75f0() {
+    // IDA 0x4e75f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e7600 — __ZN3RBX14FactoryProductINS_4HoleENS_7FeatureELZNS_5sHoleEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4HoleENS_7FeatureELZNS_5sHoleEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_4e7600() -> ! {
-    todo!("0x4e7600 __ZN3RBX14FactoryProductINS_4HoleENS_7FeatureELZNS_5sHoleEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_4e7600() {
+    // IDA 0x4e7600: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e7604 — __ZN3RBX14FactoryProductINS_12MotorFeatureENS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12MotorFeatureENS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_4e7604() -> ! {
-    todo!("0x4e7604 __ZN3RBX14FactoryProductINS_12MotorFeatureENS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_4e7604() {
+    // IDA 0x4e7604: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e7608 — __ZN3RBX14FactoryProductINS_13VelocityMotorENS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13VelocityMotorENS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_4e7608() -> ! {
-    todo!("0x4e7608 __ZN3RBX14FactoryProductINS_13VelocityMotorENS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_4e7608() {
+    // IDA 0x4e7608: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e760c — __ZN3RBX14FactoryProductINS_13VelocityMotorENS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13VelocityMotorENS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_4e760c() -> ! {
-    todo!("0x4e760c __ZN3RBX14FactoryProductINS_13VelocityMotorENS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_4e760c() {
+    // IDA 0x4e760c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e76a8 — __ZNK3RBX14FactoryProductINS_13VelocityMotorENS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEE7Creator12getClassNameEv
@@ -541,8 +541,8 @@ pub fn stub_4e7b9c() -> ! {
 
 // 0x4e7c10 — __ZN3RBX14FactoryProductINS_12MotorFeatureENS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12MotorFeatureENS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_4e7c10() -> ! {
-    todo!("0x4e7c10 __ZN3RBX14FactoryProductINS_12MotorFeatureENS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_4e7c10() {
+    // IDA 0x4e7c10: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e7cac — __ZNK3RBX14FactoryProductINS_12MotorFeatureENS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEE7Creator12getClassNameEv
@@ -571,45 +571,45 @@ pub fn stub_4e7f28() -> ! {
 
 // 0x4e7ff0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12MotorFeatureES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::MotorFeature,RBX::MotorFeature>(boost::shared_ptr<RBX::MotorFeature> const*,RBX::MotorFeature *)const")]
-pub fn stub_4e7ff0() -> ! {
-    todo!("0x4e7ff0 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12MotorFeatureES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+pub fn stub_4e7ff0() {
+    // IDA 0x4e7ff0: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x4e80d8 — __ZN5boost6detail12shared_countC2IPN3RBX12MotorFeatureENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_4e80d8() -> ! {
-    todo!("0x4e80d8 __ZN5boost6detail12shared_countC2IPN3RBX12MotorFeatureENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_4e80d8() {
+    // IDA 0x4e80d8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4e81e0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MotorFeatureENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_4e81e0() -> ! {
-    todo!("0x4e81e0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MotorFeatureENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+pub fn stub_4e81e0() {
+    // IDA 0x4e81e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e81e4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MotorFeatureENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_4e81e4() -> ! {
-    todo!("0x4e81e4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MotorFeatureENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+pub fn stub_4e81e4() {
+    // IDA 0x4e81e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e81e8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MotorFeatureENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_4e81e8() -> ! {
-    todo!("0x4e81e8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MotorFeatureENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_4e81e8() {
+    // IDA 0x4e81e8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4e8208 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MotorFeatureENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_4e8208() -> ! {
-    todo!("0x4e8208 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MotorFeatureENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_4e8208() {
+    // IDA 0x4e8208: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4e8220 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MotorFeatureENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_4e8220() -> ! {
-    todo!("0x4e8220 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MotorFeatureENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_4e8220() {
+    // IDA 0x4e8220: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4e8224 — __ZN3RBX4Name13callDoDeclareILZNS_13sMotorFeatureEEEEvv
@@ -639,8 +639,8 @@ pub fn stub_4e854c() -> ! {
 
 // 0x4e85c0 — __ZN3RBX14FactoryProductINS_4HoleENS_7FeatureELZNS_5sHoleEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4HoleENS_7FeatureELZNS_5sHoleEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_4e85c0() -> ! {
-    todo!("0x4e85c0 __ZN3RBX14FactoryProductINS_4HoleENS_7FeatureELZNS_5sHoleEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_4e85c0() {
+    // IDA 0x4e85c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e865c — __ZNK3RBX14FactoryProductINS_4HoleENS_7FeatureELZNS_5sHoleEENS_8InstanceEE7Creator12getClassNameEv

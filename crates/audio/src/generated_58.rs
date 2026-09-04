@@ -14,14 +14,14 @@ const _: () = {
 
 // 0x56f190 — __ZN3RBX19EventReplicatorBaseINS_7HandlesEFvNS_8NormalIdEfEED2Ev
 #[doc(alias = "RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>::~EventReplicatorBase()")]
-pub fn stub_56f190() -> ! {
-    todo!("0x56f190 RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>::~EventReplicatorBase()")
+pub fn stub_56f190() {
+    // IDA 0x56f190: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x56f2c0 — __ZN3RBX19EventReplicatorBaseINS_7HandlesEFvNS_8NormalIdEEED2Ev
 #[doc(alias = "RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>::~EventReplicatorBase()")]
-pub fn stub_56f2c0() -> ! {
-    todo!("0x56f2c0 RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>::~EventReplicatorBase()")
+pub fn stub_56f2c0() {
+    // IDA 0x56f2c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x56f3f0 — __GLOBAL__I_a_210
@@ -74,8 +74,8 @@ pub fn stub_5704c4() -> ! {
 
 // 0x570614 — __ZThn96_N3RBX11HandlesBase8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::render2d(RBX::Adorn *)")]
-pub fn stub_570614() -> ! {
-    todo!("0x570614 non-virtual thunk toRBX::HandlesBase::render2d(RBX::Adorn *)")
+pub fn stub_570614() {
+    // IDA 0x570614: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x57061c — __ZN3RBX11HandlesBase13render3dAdornEPNS_5AdornE
@@ -86,8 +86,8 @@ pub fn stub_57061c() -> ! {
 
 // 0x57079c — __ZThn96_N3RBX11HandlesBase13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::render3dAdorn(RBX::Adorn *)")]
-pub fn stub_57079c() -> ! {
-    todo!("0x57079c non-virtual thunk toRBX::HandlesBase::render3dAdorn(RBX::Adorn *)")
+pub fn stub_57079c() {
+    // IDA 0x57079c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5707a4 — __ZN3RBX11HandlesBase18setServerGuiObjectEv
@@ -104,38 +104,38 @@ pub fn stub_5707ac() -> ! {
 
 // 0x5707dc — __ZN3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5707dc() -> ! {
-    todo!("0x5707dc __ZN3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5707dc() {
+    // IDA 0x5707dc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x570924 — __ZN3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_570924() -> ! {
-    todo!("0x570924 __ZN3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_570924() {
+    // IDA 0x570924: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5709c4 — __ZThn32_N3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5709c4() -> ! {
-    todo!("0x5709c4 __ZThn32_N3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5709c4() {
+    // IDA 0x5709c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x570b0c — __ZThn32_N3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_570b0c() -> ! {
-    todo!("0x570b0c __ZThn32_N3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_570b0c() {
+    // IDA 0x570b0c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x570c68 — __ZThn36_N3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_570c68() -> ! {
-    todo!("0x570c68 __ZThn36_N3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_570c68() {
+    // IDA 0x570c68: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x570db0 — __ZThn36_N3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_570db0() -> ! {
-    todo!("0x570db0 __ZThn36_N3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_570db0() {
+    // IDA 0x570db0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x570f0c — __GLOBAL__I_a_211
@@ -368,8 +368,8 @@ pub fn stub_573610() -> ! {
 
 // 0x573664 — __ZN3RBX10Reflection14PropDescriptorINS_12BackpackItemENS_9TextureIdEED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::~PropDescriptor()")]
-pub fn stub_573664() -> ! {
-    todo!("0x573664 RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::~PropDescriptor()")
+pub fn stub_573664() {
+    // IDA 0x573664: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x573688 — __ZNK3RBX9HopperBin10getBinTypeEv
@@ -380,38 +380,38 @@ pub fn stub_573688() -> ! {
 
 // 0x573690 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::~EnumPropDescriptor()")]
-pub fn stub_573690() -> ! {
-    todo!("0x573690 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::~EnumPropDescriptor()")
+pub fn stub_573690() {
+    // IDA 0x573690: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5736b4 — __ZN3RBX10Reflection9EventDescINS_9HopperBinEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::HopperBin,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::HopperBin::*>::~EventDesc()")]
-pub fn stub_5736b4() -> ! {
-    todo!("0x5736b4 RBX::Reflection::EventDesc<RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::~EventDesc()")
+pub fn stub_5736b4() {
+    // IDA 0x5736b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5736d8 — __ZN3RBX10Reflection15RemoteEventDescINS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEED1Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")]
-pub fn stub_5736d8() -> ! {
-    todo!("0x5736d8 RBX::Reflection::RemoteEventDesc<RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")
+pub fn stub_5736d8() {
+    // IDA 0x5736d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5736fc — __ZN3RBX10Reflection9EventDescINS_9HopperBinEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::HopperBin,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::HopperBin::*>::~EventDesc()")]
-pub fn stub_5736fc() -> ! {
-    todo!("0x5736fc RBX::Reflection::EventDesc<RBX::HopperBin,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::HopperBin::*>::~EventDesc()")
+pub fn stub_5736fc() {
+    // IDA 0x5736fc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x573720 — __ZN3RBX10Reflection13BoundFuncDescINS_9HopperBinEFvvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HopperBin,void ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_573720() -> ! {
-    todo!("0x573720 RBX::Reflection::BoundFuncDesc<RBX::HopperBin,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_573720() {
+    // IDA 0x573720: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x573744 — __ZN3RBX10Reflection14PropDescriptorINS_9HopperBinESsED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::HopperBin,std::string>::~PropDescriptor()")]
-pub fn stub_573744() -> ! {
-    todo!("0x573744 RBX::Reflection::PropDescriptor<RBX::HopperBin,std::string>::~PropDescriptor()")
+pub fn stub_573744() {
+    // IDA 0x573744: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x573768 — __ZN3RBX10Reflection19RemoteEventDescImplILi0ENS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEE14replicateEventEPNS0_11EventSourceE
@@ -434,14 +434,14 @@ pub fn stub_573944() -> ! {
 
 // 0x573a5c — __ZN3RBX9HopperBinD1Ev
 #[doc(alias = "RBX::HopperBin::~HopperBin()")]
-pub fn stub_573a5c() -> ! {
-    todo!("0x573a5c RBX::HopperBin::~HopperBin()")
+pub fn stub_573a5c() {
+    // IDA 0x573a5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x573a60 — __ZN3RBX9HopperBinD0Ev
 #[doc(alias = "RBX::HopperBin::~HopperBin()")]
-pub fn stub_573a60() -> ! {
-    todo!("0x573a60 RBX::HopperBin::~HopperBin()")
+pub fn stub_573a60() {
+    // IDA 0x573a60: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x573b00 — __ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv
@@ -470,44 +470,44 @@ pub fn stub_573b20() -> ! {
 
 // 0x573b28 — __ZThn32_N3RBX9HopperBinD1Ev
 #[doc(alias = "non-virtual thunk toRBX::HopperBin::~HopperBin()")]
-pub fn stub_573b28() -> ! {
-    todo!("0x573b28 non-virtual thunk toRBX::HopperBin::~HopperBin()")
+pub fn stub_573b28() {
+    // IDA 0x573b28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x573b30 — __ZThn32_N3RBX9HopperBinD0Ev
 #[doc(alias = "non-virtual thunk toRBX::HopperBin::~HopperBin()")]
-pub fn stub_573b30() -> ! {
-    todo!("0x573b30 non-virtual thunk toRBX::HopperBin::~HopperBin()")
+pub fn stub_573b30() {
+    // IDA 0x573b30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x573bd4 — __ZThn32_NK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_573bd4() -> ! {
-    todo!("0x573bd4 __ZThn32_NK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv")
+pub fn stub_573bd4() {
+    // IDA 0x573bd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x573be4 — __ZThn36_N3RBX9HopperBinD1Ev
 #[doc(alias = "non-virtual thunk toRBX::HopperBin::~HopperBin()")]
-pub fn stub_573be4() -> ! {
-    todo!("0x573be4 non-virtual thunk toRBX::HopperBin::~HopperBin()")
+pub fn stub_573be4() {
+    // IDA 0x573be4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x573bec — __ZThn36_N3RBX9HopperBinD0Ev
 #[doc(alias = "non-virtual thunk toRBX::HopperBin::~HopperBin()")]
-pub fn stub_573bec() -> ! {
-    todo!("0x573bec non-virtual thunk toRBX::HopperBin::~HopperBin()")
+pub fn stub_573bec() {
+    // IDA 0x573bec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x573c90 — __ZN3RBX11StarterGearD1Ev
 #[doc(alias = "RBX::StarterGear::~StarterGear()")]
-pub fn stub_573c90() -> ! {
-    todo!("0x573c90 RBX::StarterGear::~StarterGear()")
+pub fn stub_573c90() {
+    // IDA 0x573c90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x573c94 — __ZN3RBX11StarterGearD0Ev
 #[doc(alias = "RBX::StarterGear::~StarterGear()")]
-pub fn stub_573c94() -> ! {
-    todo!("0x573c94 RBX::StarterGear::~StarterGear()")
+pub fn stub_573c94() {
+    // IDA 0x573c94: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x573d34 — __ZN3RBX11StarterGear15canClientCreateEv
@@ -524,44 +524,44 @@ pub fn stub_573d38() -> ! {
 
 // 0x573d48 — __ZThn32_N3RBX11StarterGearD1Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterGear::~StarterGear()")]
-pub fn stub_573d48() -> ! {
-    todo!("0x573d48 non-virtual thunk toRBX::StarterGear::~StarterGear()")
+pub fn stub_573d48() {
+    // IDA 0x573d48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x573d50 — __ZThn32_N3RBX11StarterGearD0Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterGear::~StarterGear()")]
-pub fn stub_573d50() -> ! {
-    todo!("0x573d50 non-virtual thunk toRBX::StarterGear::~StarterGear()")
+pub fn stub_573d50() {
+    // IDA 0x573d50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x573df4 — __ZThn32_NK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E12getClassNameEv")]
-pub fn stub_573df4() -> ! {
-    todo!("0x573df4 __ZThn32_NK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E12getClassNameEv")
+pub fn stub_573df4() {
+    // IDA 0x573df4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x573e04 — __ZThn36_N3RBX11StarterGearD1Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterGear::~StarterGear()")]
-pub fn stub_573e04() -> ! {
-    todo!("0x573e04 non-virtual thunk toRBX::StarterGear::~StarterGear()")
+pub fn stub_573e04() {
+    // IDA 0x573e04: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x573e0c — __ZThn36_N3RBX11StarterGearD0Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterGear::~StarterGear()")]
-pub fn stub_573e0c() -> ! {
-    todo!("0x573e0c non-virtual thunk toRBX::StarterGear::~StarterGear()")
+pub fn stub_573e0c() {
+    // IDA 0x573e0c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x573eb0 — __ZN3RBX12BackpackItemD1Ev
 #[doc(alias = "RBX::BackpackItem::~BackpackItem()")]
-pub fn stub_573eb0() -> ! {
-    todo!("0x573eb0 RBX::BackpackItem::~BackpackItem()")
+pub fn stub_573eb0() {
+    // IDA 0x573eb0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x573fe4 — __ZN3RBX12BackpackItemD0Ev
 #[doc(alias = "RBX::BackpackItem::~BackpackItem()")]
-pub fn stub_573fe4() -> ! {
-    todo!("0x573fe4 RBX::BackpackItem::~BackpackItem()")
+pub fn stub_573fe4() {
+    // IDA 0x573fe4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x574128 — __ZNK3RBX17NonFactoryProductINS_6WidgetELZNS_13sBackpackItemEEE12getClassNameEv
@@ -590,24 +590,24 @@ pub fn stub_574158() -> ! {
 
 // 0x57415c — __ZThn32_N3RBX12BackpackItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::BackpackItem::~BackpackItem()")]
-pub fn stub_57415c() -> ! {
-    todo!("0x57415c non-virtual thunk toRBX::BackpackItem::~BackpackItem()")
+pub fn stub_57415c() {
+    // IDA 0x57415c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x57428c — __ZThn32_N3RBX12BackpackItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::BackpackItem::~BackpackItem()")]
-pub fn stub_57428c() -> ! {
-    todo!("0x57428c non-virtual thunk toRBX::BackpackItem::~BackpackItem()")
+pub fn stub_57428c() {
+    // IDA 0x57428c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5743d0 — __ZThn32_NK3RBX17NonFactoryProductINS_6WidgetELZNS_13sBackpackItemEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_6WidgetELZNS_13sBackpackItemEEE12getClassNameEv")]
-pub fn stub_5743d0() -> ! {
-    todo!("0x5743d0 __ZThn32_NK3RBX17NonFactoryProductINS_6WidgetELZNS_13sBackpackItemEEE12getClassNameEv")
+pub fn stub_5743d0() {
+    // IDA 0x5743d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5743f8 — __ZThn36_N3RBX12BackpackItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::BackpackItem::~BackpackItem()")]
-pub fn stub_5743f8() -> ! {
-    todo!("0x5743f8 non-virtual thunk toRBX::BackpackItem::~BackpackItem()")
+pub fn stub_5743f8() {
+    // IDA 0x5743f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

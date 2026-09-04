@@ -14,16 +14,16 @@ const _: () = {
 // type: void __fastcall(Ogre::Texture *__hidden this)
 #[doc(alias = "Ogre::Texture::~Texture()")]
 #[doc(alias = "__ZN4Ogre7TextureD1Ev")]
-pub fn stub_e4754c() -> ! {
-    todo!("0xe4754c __ZN4Ogre7TextureD1Ev")
+pub fn stub_e4754c() {
+    // IDA 0xe4754c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xe475ac — __ZN4Ogre7TextureD0Ev
 // type: void __fastcall(Ogre::Texture *__hidden this)
 #[doc(alias = "Ogre::Texture::~Texture()")]
 #[doc(alias = "__ZN4Ogre7TextureD0Ev")]
-pub fn stub_e475ac() -> ! {
-    todo!("0xe475ac __ZN4Ogre7TextureD0Ev")
+pub fn stub_e475ac() {
+    // IDA 0xe475ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xe4768c — __ZN4Ogre7Texture14setTextureTypeENS_11TextureTypeE
@@ -268,24 +268,24 @@ pub fn stub_e4779c() -> ! {
 // type: void __fastcall(Ogre::TextureManager *__hidden this)
 #[doc(alias = "Ogre::TextureManager::~TextureManager()")]
 #[doc(alias = "__ZN4Ogre14TextureManagerD0Ev")]
-pub fn stub_e4789c() -> ! {
-    todo!("0xe4789c __ZN4Ogre14TextureManagerD0Ev")
+pub fn stub_e4789c() {
+    // IDA 0xe4789c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xe4793c — __ZN4Ogre14TextureManagerD1Ev
 // type: void __fastcall(Ogre::TextureManager *__hidden this)
 #[doc(alias = "Ogre::TextureManager::~TextureManager()")]
 #[doc(alias = "__ZN4Ogre14TextureManagerD1Ev")]
-pub fn stub_e4793c() -> ! {
-    todo!("0xe4793c __ZN4Ogre14TextureManagerD1Ev")
+pub fn stub_e4793c() {
+    // IDA 0xe4793c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xe47954 — __ZN4Ogre14TextureManagerD2Ev
 // type: void __fastcall(Ogre::TextureManager *__hidden this)
 #[doc(alias = "Ogre::TextureManager::~TextureManager()")]
 #[doc(alias = "__ZN4Ogre14TextureManagerD2Ev")]
-pub fn stub_e47954() -> ! {
-    todo!("0xe47954 __ZN4Ogre14TextureManagerD2Ev")
+pub fn stub_e47954() {
+    // IDA 0xe47954: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xe4796c — __ZN4Ogre14TextureManager16createOrRetrieveERKSsS2_bPNS_20ManualResourceLoaderEPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEENS_11TextureTypeEifbNS_11PixelFormatEb
@@ -474,15 +474,15 @@ pub fn stub_e4964c() -> ! {
 // type: void __fastcall(Ogre::TextureUnitState *__hidden this)
 #[doc(alias = "Ogre::TextureUnitState::~TextureUnitState()")]
 #[doc(alias = "__ZN4Ogre16TextureUnitStateD1Ev")]
-pub fn stub_e49650() -> ! {
-    todo!("0xe49650 __ZN4Ogre16TextureUnitStateD1Ev")
+pub fn stub_e49650() {
+    // IDA 0xe49650: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xe4965c — __ZN4Ogre16TextureUnitStateD2Ev
 // type: void __fastcall(Ogre::TextureUnitState *__hidden this)
 #[doc(alias = "Ogre::TextureUnitState::~TextureUnitState()")]
 #[doc(alias = "__ZN4Ogre16TextureUnitStateD2Ev")]
-pub fn stub_e4965c() -> ! {
-    todo!("0xe4965c __ZN4Ogre16TextureUnitStateD2Ev")
+pub fn stub_e4965c() {
+    // IDA 0xe4965c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 

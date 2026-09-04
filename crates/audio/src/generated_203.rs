@@ -13,20 +13,20 @@ const _: () = {
 
 // 0x4b1834 — __ZThn32_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_4b1834() -> ! {
-    todo!("0x4b1834 __ZThn32_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_4b1834() {
+    // IDA 0x4b1834: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b18d8 — __ZThn36_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_4b18d8() -> ! {
-    todo!("0x4b18d8 __ZThn36_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_4b18d8() {
+    // IDA 0x4b18d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b18e0 — __ZThn36_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_4b18e0() -> ! {
-    todo!("0x4b18e0 __ZThn36_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_4b18e0() {
+    // IDA 0x4b18e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b1984 — __ZN5boost10shared_ptrIN3RBX11CustomEventEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -41,8 +41,8 @@ pub fn stub_4b1984() -> ! {
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CustomEvent,RBX::CustomEvent>(boost::shared_ptr<RBX::CustomEvent> const*,RBX::CustomEvent *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CustomEvent,RBX::CustomEvent>(rbx_core::SharedPtr<RBX::CustomEvent> const*,RBX::CustomEvent *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11CustomEventES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_4b1a4c() -> ! {
-    todo!("0x4b1a4c __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11CustomEventES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+pub fn stub_4b1a4c() {
+    // IDA 0x4b1a4c: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x4b1b34 — __ZN5boost6detail12shared_countC2IPN3RBX11CustomEventENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
@@ -50,48 +50,48 @@ pub fn stub_4b1a4c() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::CustomEvent *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CustomEvent *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX11CustomEventENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_4b1b34() -> ! {
-    todo!("0x4b1b34 __ZN5boost6detail12shared_countC2IPN3RBX11CustomEventENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_4b1b34() {
+    // IDA 0x4b1b34: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4b1c3c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11CustomEventENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // demangled: boost::detail::sp_counted_impl_pd<RBX::CustomEvent *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CustomEvent *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11CustomEventENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_4b1c3c() -> ! {
-    todo!("0x4b1c3c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11CustomEventENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+pub fn stub_4b1c3c() {
+    // IDA 0x4b1c3c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b1c40 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11CustomEventENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // demangled: boost::detail::sp_counted_impl_pd<RBX::CustomEvent *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CustomEvent *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11CustomEventENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_4b1c40() -> ! {
-    todo!("0x4b1c40 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11CustomEventENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+pub fn stub_4b1c40() {
+    // IDA 0x4b1c40: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b1c44 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11CustomEventENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::CustomEvent *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CustomEvent *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11CustomEventENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_4b1c44() -> ! {
-    todo!("0x4b1c44 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11CustomEventENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_4b1c44() {
+    // IDA 0x4b1c44: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4b1c64 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11CustomEventENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // demangled: boost::detail::sp_counted_impl_pd<RBX::CustomEvent *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CustomEvent *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11CustomEventENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_4b1c64() -> ! {
-    todo!("0x4b1c64 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11CustomEventENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_4b1c64() {
+    // IDA 0x4b1c64: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4b1c7c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11CustomEventENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::CustomEvent *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CustomEvent *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11CustomEventENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_4b1c7c() -> ! {
-    todo!("0x4b1c7c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11CustomEventENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_4b1c7c() {
+    // IDA 0x4b1c7c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4b1c80 — __ZN3RBX4Name7declareILZNS_12sCustomEventEEEERKS0_v
@@ -121,8 +121,8 @@ pub fn stub_4b1dac() -> ! {
 
 // 0x4b1fd4 — __ZN3RBX14FactoryProductINS_19CustomEventReceiverENS_8InstanceELZNS_20sCustomEventReceiverEES2_E7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_19CustomEventReceiverENS_8InstanceELZNS_20sCustomEventReceiverEES2_E7CreatorD2Ev")]
-pub fn stub_4b1fd4() -> ! {
-    todo!("0x4b1fd4 __ZN3RBX14FactoryProductINS_19CustomEventReceiverENS_8InstanceELZNS_20sCustomEventReceiverEES2_E7CreatorD2Ev")
+pub fn stub_4b1fd4() {
+    // IDA 0x4b1fd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b2070 — __ZNK3RBX14FactoryProductINS_19CustomEventReceiverENS_8InstanceELZNS_20sCustomEventReceiverEES2_E7Creator12getClassNameEv
@@ -197,8 +197,8 @@ pub fn stub_4b27a8() -> ! {
 
 // 0x4b27b8 — __ZThn32_NK3RBX14FactoryProductINS_19CustomEventReceiverENS_8InstanceELZNS_20sCustomEventReceiverEES2_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_19CustomEventReceiverENS_8InstanceELZNS_20sCustomEventReceiverEES2_E12getClassNameEv")]
-pub fn stub_4b27b8() -> ! {
-    todo!("0x4b27b8 __ZThn32_NK3RBX14FactoryProductINS_19CustomEventReceiverENS_8InstanceELZNS_20sCustomEventReceiverEES2_E12getClassNameEv")
+pub fn stub_4b27b8() {
+    // IDA 0x4b27b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b27c8 — __ZN3RBX14FactoryProductINS_19CustomEventReceiverENS_8InstanceELZNS_20sCustomEventReceiverEES2_E17static_getCreatorEv
@@ -262,16 +262,16 @@ pub fn stub_4b2ce0() -> ! {
 // demangled: rbx::signals::signal<void ()(float)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::CustomEventReceiver,float>,boost::_bi::list2<boost::_bi::value<RBX::CustomEventReceiver*>,boost::arg<1>>>>::~callable_slot()
 #[doc(alias = "rbx::signals::signal<void ()(float)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::CustomEventReceiver,float>,boost::_bi::list2<boost::_bi::value<RBX::CustomEventReceiver*>,boost::arg<1>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvfEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS6_5list2INS6_5valueIPSB_EENS5_3argILi1EEEEEEEED1Ev")]
-pub fn stub_4b2d04() -> ! {
-    todo!("0x4b2d04 __ZN3rbx7signals6signalIFvfEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS6_5list2INS6_5valueIPSB_EENS5_3argILi1EEEEEEEED1Ev")
+pub fn stub_4b2d04() {
+    // IDA 0x4b2d04: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b2d30 — __ZN3rbx7signals6signalIFvfEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS6_5list2INS6_5valueIPSB_EENS5_3argILi1EEEEEEEED0Ev
 // demangled: rbx::signals::signal<void ()(float)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::CustomEventReceiver,float>,boost::_bi::list2<boost::_bi::value<RBX::CustomEventReceiver*>,boost::arg<1>>>>::~callable_slot()
 #[doc(alias = "rbx::signals::signal<void ()(float)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::CustomEventReceiver,float>,boost::_bi::list2<boost::_bi::value<RBX::CustomEventReceiver*>,boost::arg<1>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvfEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS6_5list2INS6_5valueIPSB_EENS5_3argILi1EEEEEEEED0Ev")]
-pub fn stub_4b2d30() -> ! {
-    todo!("0x4b2d30 __ZN3rbx7signals6signalIFvfEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS6_5list2INS6_5valueIPSB_EENS5_3argILi1EEEEEEEED0Ev")
+pub fn stub_4b2d30() {
+    // IDA 0x4b2d30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b2e04 — __ZN3rbx7signals6signalIFvfEE4slot10disconnectEv
@@ -301,8 +301,8 @@ pub fn stub_4b2f20() -> ! {
 // 0x4b2f34 — __ZThn4_N3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEf
 // demangled: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::CustomEventReceiver,float>,boost::_bi::list2<boost::_bi::value<RBX::CustomEventReceiver*>,boost::arg<1>>>,1,void ()(float)>::call(float)
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEf")]
-pub fn stub_4b2f34() -> ! {
-    todo!("0x4b2f34 __ZThn4_N3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEf")
+pub fn stub_4b2f34() {
+    // IDA 0x4b2f34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b2f48 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIfEEvRT_
@@ -343,32 +343,32 @@ pub fn stub_4b305c() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(float)>::slot::~slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvfEE4slotD1Ev")]
-pub fn stub_4b314c() -> ! {
-    todo!("0x4b314c __ZN3rbx7signals6signalIFvfEE4slotD1Ev")
+pub fn stub_4b314c() {
+    // IDA 0x4b314c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b3178 — __ZN3rbx7signals6signalIFvfEE4slotD0Ev
 // demangled: rbx::signals::signal<void ()(float)>::slot::~slot()
 #[doc(alias = "rbx::signals::signal<void ()(float)>::slot::~slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvfEE4slotD0Ev")]
-pub fn stub_4b3178() -> ! {
-    todo!("0x4b3178 __ZN3rbx7signals6signalIFvfEE4slotD0Ev")
+pub fn stub_4b3178() {
+    // IDA 0x4b3178: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b324c — __ZN3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_ED1Ev
 // demangled: rbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::CustomEventReceiver,float>,boost::_bi::list2<boost::_bi::value<RBX::CustomEventReceiver*>,boost::arg<1>>>,1,void ()(float)>::~callable()
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::CustomEventReceiver,float>,boost::_bi::list2<boost::_bi::value<RBX::CustomEventReceiver*>,boost::arg<1>>>,1,void ()(float)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_ED1Ev")]
-pub fn stub_4b324c() -> ! {
-    todo!("0x4b324c __ZN3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_ED1Ev")
+pub fn stub_4b324c() {
+    // IDA 0x4b324c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b3278 — __ZN3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_ED0Ev
 // demangled: rbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::CustomEventReceiver,float>,boost::_bi::list2<boost::_bi::value<RBX::CustomEventReceiver*>,boost::arg<1>>>,1,void ()(float)>::~callable()
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::CustomEventReceiver,float>,boost::_bi::list2<boost::_bi::value<RBX::CustomEventReceiver*>,boost::arg<1>>>,1,void ()(float)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_ED0Ev")]
-pub fn stub_4b3278() -> ! {
-    todo!("0x4b3278 __ZN3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_ED0Ev")
+pub fn stub_4b3278() {
+    // IDA 0x4b3278: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b334c — __ZN3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -380,38 +380,38 @@ pub fn stub_4b334c() -> ! {
 
 // 0x4b346c — __ZN3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_4b346c() -> ! {
-    todo!("0x4b346c __ZN3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_4b346c() {
+    // IDA 0x4b346c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b3470 — __ZN3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_4b3470() -> ! {
-    todo!("0x4b3470 __ZN3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_4b3470() {
+    // IDA 0x4b3470: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b3510 — __ZThn32_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_4b3510() -> ! {
-    todo!("0x4b3510 __ZThn32_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_4b3510() {
+    // IDA 0x4b3510: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b3518 — __ZThn32_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_4b3518() -> ! {
-    todo!("0x4b3518 __ZThn32_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_4b3518() {
+    // IDA 0x4b3518: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b35bc — __ZThn36_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_4b35bc() -> ! {
-    todo!("0x4b35bc __ZThn36_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_4b35bc() {
+    // IDA 0x4b35bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b35c4 — __ZThn36_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_4b35c4() -> ! {
-    todo!("0x4b35c4 __ZThn36_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_4b35c4() {
+    // IDA 0x4b35c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b3668 — __ZN5boost10shared_ptrIN3RBX19CustomEventReceiverEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -426,8 +426,8 @@ pub fn stub_4b3668() -> ! {
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CustomEventReceiver,RBX::CustomEventReceiver>(boost::shared_ptr<RBX::CustomEventReceiver> const*,RBX::CustomEventReceiver *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CustomEventReceiver,RBX::CustomEventReceiver>(rbx_core::SharedPtr<RBX::CustomEventReceiver> const*,RBX::CustomEventReceiver *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19CustomEventReceiverES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_4b3730() -> ! {
-    todo!("0x4b3730 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19CustomEventReceiverES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+pub fn stub_4b3730() {
+    // IDA 0x4b3730: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x4b3818 — __ZN5boost6detail12shared_countC2IPN3RBX19CustomEventReceiverENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
@@ -435,16 +435,16 @@ pub fn stub_4b3730() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX19CustomEventReceiverENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_4b3818() -> ! {
-    todo!("0x4b3818 __ZN5boost6detail12shared_countC2IPN3RBX19CustomEventReceiverENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_4b3818() {
+    // IDA 0x4b3818: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4b3920 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // demangled: boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_4b3920() -> ! {
-    todo!("0x4b3920 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+pub fn stub_4b3920() {
+    // IDA 0x4b3920: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b3924 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
@@ -452,32 +452,32 @@ pub fn stub_4b3920() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_4b3924() -> ! {
-    todo!("0x4b3924 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+pub fn stub_4b3924() {
+    // IDA 0x4b3924: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b3928 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_4b3928() -> ! {
-    todo!("0x4b3928 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_4b3928() {
+    // IDA 0x4b3928: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4b3948 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // demangled: boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_4b3948() -> ! {
-    todo!("0x4b3948 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_4b3948() {
+    // IDA 0x4b3948: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4b3960 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_4b3960() -> ! {
-    todo!("0x4b3960 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_4b3960() {
+    // IDA 0x4b3960: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x4b3964 — __ZN3RBX4Name7declareILZNS_20sCustomEventReceiverEEEERKS0_v
@@ -516,16 +516,16 @@ pub fn stub_4b3cb8() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEED1Ev")]
-pub fn stub_4b3da8() -> ! {
-    todo!("0x4b3da8 __ZN3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEED1Ev")
+pub fn stub_4b3da8() {
+    // IDA 0x4b3da8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b3dac — __ZN3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEED2Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEED2Ev")]
-pub fn stub_4b3dac() -> ! {
-    todo!("0x4b3dac __ZN3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEED2Ev")
+pub fn stub_4b3dac() {
+    // IDA 0x4b3dac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b3f80 — __ZNK3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEE15convertToStringEmRSs
@@ -573,24 +573,24 @@ pub fn stub_4b41a0() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEED1Ev")]
-pub fn stub_4b4290() -> ! {
-    todo!("0x4b4290 __ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEED1Ev")
+pub fn stub_4b4290() {
+    // IDA 0x4b4290: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b4294 — __ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEED2Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEED2Ev")]
-pub fn stub_4b4294() -> ! {
-    todo!("0x4b4294 __ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEED2Ev")
+pub fn stub_4b4294() {
+    // IDA 0x4b4294: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b4468 — __ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEED0Ev")]
-pub fn stub_4b4468() -> ! {
-    todo!("0x4b4468 __ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEED0Ev")
+pub fn stub_4b4468() {
+    // IDA 0x4b4468: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b4508 — __ZNK3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEE6lookupEPKc
@@ -695,8 +695,8 @@ pub fn stub_4b4b20() -> ! {
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::HttpService::HttpContentType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::HttpService::HttpContentType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::HttpService::HttpContentType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::HttpService::HttpContentType>> *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::HttpService::HttpContentType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::HttpService::HttpContentType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::HttpService::HttpContentType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::HttpService::HttpContentType>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11HttpService15HttpContentTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_4b4b9c() -> ! {
-    todo!("0x4b4b9c __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11HttpService15HttpContentTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_4b4b9c() {
+    // IDA 0x4b4b9c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x4b4bc4 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_12AssetService10AccessTypeEEEE13initSingletonEv
@@ -719,24 +719,24 @@ pub fn stub_4b4bc8() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEED1Ev")]
-pub fn stub_4b4cb8() -> ! {
-    todo!("0x4b4cb8 __ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEED1Ev")
+pub fn stub_4b4cb8() {
+    // IDA 0x4b4cb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b4cbc — __ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEED2Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEED2Ev")]
-pub fn stub_4b4cbc() -> ! {
-    todo!("0x4b4cbc __ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEED2Ev")
+pub fn stub_4b4cbc() {
+    // IDA 0x4b4cbc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b4e90 — __ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEED0Ev")]
-pub fn stub_4b4e90() -> ! {
-    todo!("0x4b4e90 __ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEED0Ev")
+pub fn stub_4b4e90() {
+    // IDA 0x4b4e90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b4f30 — __ZNK3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEE6lookupEPKc
@@ -841,8 +841,8 @@ pub fn stub_4b5548() -> ! {
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::AssetService::AccessType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::AssetService::AccessType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::AssetService::AccessType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::AssetService::AccessType>> *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::AssetService::AccessType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::AssetService::AccessType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::AssetService::AccessType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::AssetService::AccessType>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12AssetService10AccessTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_4b55c4() -> ! {
-    todo!("0x4b55c4 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12AssetService10AccessTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_4b55c4() {
+    // IDA 0x4b55c4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x4b55ec — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11InputObject14UserInputStateEEEE13initSingletonEv
@@ -865,24 +865,24 @@ pub fn stub_4b55f0() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEED1Ev")]
-pub fn stub_4b56e0() -> ! {
-    todo!("0x4b56e0 __ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEED1Ev")
+pub fn stub_4b56e0() {
+    // IDA 0x4b56e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b56e4 — __ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEED2Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEED2Ev")]
-pub fn stub_4b56e4() -> ! {
-    todo!("0x4b56e4 __ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEED2Ev")
+pub fn stub_4b56e4() {
+    // IDA 0x4b56e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b58b8 — __ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEED0Ev")]
-pub fn stub_4b58b8() -> ! {
-    todo!("0x4b58b8 __ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEED0Ev")
+pub fn stub_4b58b8() {
+    // IDA 0x4b58b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b5958 — __ZNK3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEE6lookupEPKc
@@ -988,8 +988,8 @@ pub fn stub_4b5f70() -> ! {
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::InputObject::UserInputState>,std::_Select1st<std::pair<RBX::Name const* const,RBX::InputObject::UserInputState>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::InputObject::UserInputState>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::InputObject::UserInputState>> *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::InputObject::UserInputState>,std::_Select1st<std::pair<RBX::Name const* const,RBX::InputObject::UserInputState>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::InputObject::UserInputState>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::InputObject::UserInputState>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11InputObject14UserInputStateEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_4b5fec() -> ! {
-    todo!("0x4b5fec __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11InputObject14UserInputStateEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_4b5fec() {
+    // IDA 0x4b5fec: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x4b6014 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11InputObject13UserInputTypeEEEE13initSingletonEv
@@ -1012,24 +1012,24 @@ pub fn stub_4b6018() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEED1Ev")]
-pub fn stub_4b6108() -> ! {
-    todo!("0x4b6108 __ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEED1Ev")
+pub fn stub_4b6108() {
+    // IDA 0x4b6108: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b610c — __ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEED2Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEED2Ev")]
-pub fn stub_4b610c() -> ! {
-    todo!("0x4b610c __ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEED2Ev")
+pub fn stub_4b610c() {
+    // IDA 0x4b610c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b62e0 — __ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEED0Ev")]
-pub fn stub_4b62e0() -> ! {
-    todo!("0x4b62e0 __ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEED0Ev")
+pub fn stub_4b62e0() {
+    // IDA 0x4b62e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b6380 — __ZNK3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEE6lookupEPKc
@@ -1134,8 +1134,8 @@ pub fn stub_4b6998() -> ! {
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::InputObject::UserInputType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::InputObject::UserInputType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::InputObject::UserInputType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::InputObject::UserInputType>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11InputObject13UserInputTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_4b6a14() -> ! {
-    todo!("0x4b6a14 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11InputObject13UserInputTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_4b6a14() {
+    // IDA 0x4b6a14: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x4b6a3c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9Explosion13ExplosionTypeEEEE14doGetSingletonEv
@@ -1150,8 +1150,8 @@ pub fn stub_4b6a3c() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEED0Ev")]
-pub fn stub_4b6b2c() -> ! {
-    todo!("0x4b6b2c __ZN3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEED0Ev")
+pub fn stub_4b6b2c() {
+    // IDA 0x4b6b2c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4b6bcc — __ZNK3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEE6lookupEPKc

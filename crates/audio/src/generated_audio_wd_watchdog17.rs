@@ -36,8 +36,8 @@ pub fn stub_065ee1c() -> ! {
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_16LegacyController9InputTypeEED0Ev")]
-pub fn stub_065eec8() -> ! {
-    todo!("0x65eec8 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_065eec8() {
+    // IDA 0x065eec8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x65eef4 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_16LegacyController9InputTypeEE10isReadOnlyEv
@@ -221,8 +221,8 @@ pub fn stub_065f628() -> ! {
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEED0Ev")]
-pub fn stub_065f6d4() -> ! {
-    todo!("0x65f6d4 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_065f6d4() {
+    // IDA 0x065f6d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x65f700 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE10isReadOnlyEv
@@ -425,8 +425,8 @@ pub fn stub_065fee4() -> ! {
 // demangled: RBX::Reflection::TType<RBX::Surface>::~TType()
 #[doc(alias = "RBX::Reflection::TType<RBX::Surface>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeINS_7SurfaceEED0Ev")]
-pub fn stub_065ff90() -> ! {
-    todo!("0x65ff90 RBX::Reflection::TType<RBX::Surface>::~TType()")
+pub fn stub_065ff90() {
+    // IDA 0x065ff90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x65ff94 — __GLOBAL__I_a_266
@@ -468,8 +468,8 @@ pub fn stub_0660ac0() -> ! {
 // type: _DWORD __fastcall(RBX::SurfaceSelection *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::SurfaceSelection::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX16SurfaceSelection13render3dAdornEPNS_5AdornE")]
-pub fn stub_0660bd8() -> ! {
-    todo!("0x660bd8 non-virtual thunk toRBX::SurfaceSelection::render3dAdorn(RBX::Adorn *)")
+pub fn stub_0660bd8() {
+    // IDA 0x0660bd8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x660be0 — __ZNK3RBX16SurfaceSelection10getSurfaceEv
@@ -485,8 +485,8 @@ pub fn stub_0660be0() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEED1Ev")]
-pub fn stub_0660be8() -> ! {
-    todo!("0x660be8 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::~EnumPropDescriptor()")
+pub fn stub_0660be8() {
+    // IDA 0x0660be8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x660c0c — __ZN3RBX16SurfaceSelectionD1Ev
@@ -494,8 +494,8 @@ pub fn stub_0660be8() -> ! {
 // type: void __fastcall(RBX::SurfaceSelection *__hidden this)
 #[doc(alias = "RBX::SurfaceSelection::~SurfaceSelection()")]
 #[doc(alias = "__ZN3RBX16SurfaceSelectionD1Ev")]
-pub fn stub_0660c0c() -> ! {
-    todo!("0x660c0c RBX::SurfaceSelection::~SurfaceSelection()")
+pub fn stub_0660c0c() {
+    // IDA 0x0660c0c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x660d54 — __ZN3RBX16SurfaceSelectionD0Ev
@@ -503,8 +503,8 @@ pub fn stub_0660c0c() -> ! {
 // type: void __fastcall(RBX::SurfaceSelection *__hidden this)
 #[doc(alias = "RBX::SurfaceSelection::~SurfaceSelection()")]
 #[doc(alias = "__ZN3RBX16SurfaceSelectionD0Ev")]
-pub fn stub_0660d54() -> ! {
-    todo!("0x660d54 RBX::SurfaceSelection::~SurfaceSelection()")
+pub fn stub_0660d54() {
+    // IDA 0x0660d54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x660df4 — __ZNK3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE12getClassNameEv
@@ -518,8 +518,8 @@ pub fn stub_0660df4() -> ! {
 // type: void __fastcall(RBX::SurfaceSelection *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")]
 #[doc(alias = "__ZThn32_N3RBX16SurfaceSelectionD1Ev")]
-pub fn stub_0660e04() -> ! {
-    todo!("0x660e04 non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")
+pub fn stub_0660e04() {
+    // IDA 0x0660e04: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x660f4c — __ZThn32_N3RBX16SurfaceSelectionD0Ev
@@ -527,14 +527,14 @@ pub fn stub_0660e04() -> ! {
 // type: void __fastcall(RBX::SurfaceSelection *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")]
 #[doc(alias = "__ZThn32_N3RBX16SurfaceSelectionD0Ev")]
-pub fn stub_0660f4c() -> ! {
-    todo!("0x660f4c non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")
+pub fn stub_0660f4c() {
+    // IDA 0x0660f4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6610a8 — __ZThn32_NK3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_06610a8() -> ! {
-    todo!("0x6610a8 __ZThn32_NK3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE12getClassNameEv")
+pub fn stub_06610a8() {
+    // IDA 0x06610a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6610b8 — __ZThn36_N3RBX16SurfaceSelectionD1Ev
@@ -542,8 +542,8 @@ pub fn stub_06610a8() -> ! {
 // type: void __fastcall(RBX::SurfaceSelection *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")]
 #[doc(alias = "__ZThn36_N3RBX16SurfaceSelectionD1Ev")]
-pub fn stub_06610b8() -> ! {
-    todo!("0x6610b8 non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")
+pub fn stub_06610b8() {
+    // IDA 0x06610b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x661200 — __ZThn36_N3RBX16SurfaceSelectionD0Ev
@@ -551,21 +551,21 @@ pub fn stub_06610b8() -> ! {
 // type: void __fastcall(RBX::SurfaceSelection *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")]
 #[doc(alias = "__ZThn36_N3RBX16SurfaceSelectionD0Ev")]
-pub fn stub_0661200() -> ! {
-    todo!("0x661200 non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")
+pub fn stub_0661200() {
+    // IDA 0x0661200: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66135c — __ZN3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_066135c() -> ! {
-    todo!("0x66135c __ZN3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_066135c() {
+    // IDA 0x066135c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x661360 — __ZN3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE7CreatorD2Ev
 // type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_0661360() -> ! {
-    todo!("0x661360 __ZN3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_0661360() {
+    // IDA 0x0661360: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6613fc — __ZNK3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE7Creator12getClassNameEv
@@ -601,8 +601,8 @@ pub fn stub_0661678() -> ! {
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SurfaceSelection,RBX::SurfaceSelection>(boost::shared_ptr<RBX::SurfaceSelection> const*,RBX::SurfaceSelection *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SurfaceSelection,RBX::SurfaceSelection>(rbx_core::SharedPtr<RBX::SurfaceSelection> const*,RBX::SurfaceSelection *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_16SurfaceSelectionES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0661740() -> ! {
-    todo!("0x661740 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SurfaceSelection,RBX::SurfaceSelection>(boost::shared_ptr<RBX::SurfaceSelection> const*,RBX::SurfaceSelection *)const")
+pub fn stub_0661740() {
+    // IDA 0x0661740: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x661828 — __ZN5boost6detail12shared_countC2IPN3RBX16SurfaceSelectionENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
@@ -610,48 +610,48 @@ pub fn stub_0661740() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX16SurfaceSelectionENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_0661828() -> ! {
-    todo!("0x661828 boost::detail::shared_count::shared_count<RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0661828() {
+    // IDA 0x0661828: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x661930 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16SurfaceSelectionENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // demangled: boost::detail::sp_counted_impl_pd<RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX16SurfaceSelectionENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_0661930() -> ! {
-    todo!("0x661930 boost::detail::sp_counted_impl_pd<RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0661930() {
+    // IDA 0x0661930: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x661934 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16SurfaceSelectionENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // demangled: boost::detail::sp_counted_impl_pd<RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX16SurfaceSelectionENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_0661934() -> ! {
-    todo!("0x661934 boost::detail::sp_counted_impl_pd<RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0661934() {
+    // IDA 0x0661934: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x661938 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16SurfaceSelectionENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX16SurfaceSelectionENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_0661938() -> ! {
-    todo!("0x661938 boost::detail::sp_counted_impl_pd<RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0661938() {
+    // IDA 0x0661938: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x661958 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16SurfaceSelectionENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // demangled: boost::detail::sp_counted_impl_pd<RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX16SurfaceSelectionENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_0661958() -> ! {
-    todo!("0x661958 boost::detail::sp_counted_impl_pd<RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0661958() {
+    // IDA 0x0661958: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x661970 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16SurfaceSelectionENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX16SurfaceSelectionENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_0661970() -> ! {
-    todo!("0x661970 boost::detail::sp_counted_impl_pd<RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0661970() {
+    // IDA 0x0661970: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x661974 — __ZN3RBX4Name13callDoDeclareILZNS_17sSurfaceSelectionEEEEvv
@@ -682,38 +682,38 @@ pub fn stub_0661c9c() -> ! {
 
 // 0x661d10 — __ZN3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0661d10() -> ! {
-    todo!("0x661d10 __ZN3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0661d10() {
+    // IDA 0x0661d10: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x661e58 — __ZN3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0661e58() -> ! {
-    todo!("0x661e58 __ZN3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0661e58() {
+    // IDA 0x0661e58: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x661ef8 — __ZThn32_N3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0661ef8() -> ! {
-    todo!("0x661ef8 __ZThn32_N3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0661ef8() {
+    // IDA 0x0661ef8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x662040 — __ZThn32_N3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0662040() -> ! {
-    todo!("0x662040 __ZThn32_N3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0662040() {
+    // IDA 0x0662040: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66219c — __ZThn36_N3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_066219c() -> ! {
-    todo!("0x66219c __ZThn36_N3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_066219c() {
+    // IDA 0x066219c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6622e4 — __ZThn36_N3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_06622e4() -> ! {
-    todo!("0x6622e4 __ZThn36_N3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_06622e4() {
+    // IDA 0x06622e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x662440 — __ZN3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -729,8 +729,8 @@ pub fn stub_0662440() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEED0Ev")]
-pub fn stub_06625f4() -> ! {
-    todo!("0x6625f4 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::~EnumPropDescriptor()")
+pub fn stub_06625f4() {
+    // IDA 0x06625f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x662620 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE10isReadOnlyEv

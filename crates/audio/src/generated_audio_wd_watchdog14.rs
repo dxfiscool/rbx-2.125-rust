@@ -120,8 +120,8 @@ pub fn stub_0658d90() -> ! {
 // demangled: RBX::Reflection::TType<RBX::Surface>::~TType()
 #[doc(alias = "RBX::Reflection::TType<RBX::Surface>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeINS_7SurfaceEED1Ev")]
-pub fn stub_0658e20() -> ! {
-    todo!("0x0658e20 RBX::Reflection::TType<RBX::Surface>::~TType()")
+pub fn stub_0658e20() {
+    // IDA 0x0658e20: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x0658e24 — __ZN3RBX10Reflection7Variant14genericConvertINS_11SurfaceTypeEEERT_v
@@ -146,144 +146,144 @@ pub fn stub_0658f8c() -> ! {
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEED1Ev")]
-pub fn stub_06590f4() -> ! {
-    todo!("0x06590f4 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_06590f4() {
+    // IDA 0x06590f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x0659118 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_16LegacyController9InputTypeEED1Ev
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_16LegacyController9InputTypeEED1Ev")]
-pub fn stub_0659118() -> ! {
-    todo!("0x0659118 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0659118() {
+    // IDA 0x0659118: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x065913c — __ZN3RBX21SurfacePropDescriptorILNS_8NormalIdE1EfED1Ev
 // demangled: RBX::SurfacePropDescriptor<(RBX::NormalId)1,float>::~SurfacePropDescriptor()
 #[doc(alias = "RBX::SurfacePropDescriptor<(RBX::NormalId)1,float>::~SurfacePropDescriptor()")]
 #[doc(alias = "__ZN3RBX21SurfacePropDescriptorILNS_8NormalIdE1EfED1Ev")]
-pub fn stub_065913c() -> ! {
-    todo!("0x065913c RBX::SurfacePropDescriptor<(RBX::NormalId)1,float>::~SurfacePropDescriptor()")
+pub fn stub_065913c() {
+    // IDA 0x065913c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x0659160 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_11SurfaceTypeEED1Ev
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_11SurfaceTypeEED1Ev")]
-pub fn stub_0659160() -> ! {
-    todo!("0x0659160 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0659160() {
+    // IDA 0x0659160: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x0659184 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_16LegacyController9InputTypeEED1Ev
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_16LegacyController9InputTypeEED1Ev")]
-pub fn stub_0659184() -> ! {
-    todo!("0x0659184 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0659184() {
+    // IDA 0x0659184: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x06591a8 — __ZN3RBX21SurfacePropDescriptorILNS_8NormalIdE4EfED1Ev
 // demangled: RBX::SurfacePropDescriptor<(RBX::NormalId)4,float>::~SurfacePropDescriptor()
 #[doc(alias = "RBX::SurfacePropDescriptor<(RBX::NormalId)4,float>::~SurfacePropDescriptor()")]
 #[doc(alias = "__ZN3RBX21SurfacePropDescriptorILNS_8NormalIdE4EfED1Ev")]
-pub fn stub_06591a8() -> ! {
-    todo!("0x06591a8 RBX::SurfacePropDescriptor<(RBX::NormalId)4,float>::~SurfacePropDescriptor()")
+pub fn stub_06591a8() {
+    // IDA 0x06591a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x06591cc — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_11SurfaceTypeEED1Ev
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_11SurfaceTypeEED1Ev")]
-pub fn stub_06591cc() -> ! {
-    todo!("0x06591cc RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_06591cc() {
+    // IDA 0x06591cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x06591f0 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_16LegacyController9InputTypeEED1Ev
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_16LegacyController9InputTypeEED1Ev")]
-pub fn stub_06591f0() -> ! {
-    todo!("0x06591f0 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_06591f0() {
+    // IDA 0x06591f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x0659214 — __ZN3RBX21SurfacePropDescriptorILNS_8NormalIdE3EfED1Ev
 // demangled: RBX::SurfacePropDescriptor<(RBX::NormalId)3,float>::~SurfacePropDescriptor()
 #[doc(alias = "RBX::SurfacePropDescriptor<(RBX::NormalId)3,float>::~SurfacePropDescriptor()")]
 #[doc(alias = "__ZN3RBX21SurfacePropDescriptorILNS_8NormalIdE3EfED1Ev")]
-pub fn stub_0659214() -> ! {
-    todo!("0x0659214 RBX::SurfacePropDescriptor<(RBX::NormalId)3,float>::~SurfacePropDescriptor()")
+pub fn stub_0659214() {
+    // IDA 0x0659214: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x0659238 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_11SurfaceTypeEED1Ev
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_11SurfaceTypeEED1Ev")]
-pub fn stub_0659238() -> ! {
-    todo!("0x0659238 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0659238() {
+    // IDA 0x0659238: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x065925c — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_16LegacyController9InputTypeEED1Ev
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_16LegacyController9InputTypeEED1Ev")]
-pub fn stub_065925c() -> ! {
-    todo!("0x065925c RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_065925c() {
+    // IDA 0x065925c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x0659280 — __ZN3RBX21SurfacePropDescriptorILNS_8NormalIdE0EfED1Ev
 // demangled: RBX::SurfacePropDescriptor<(RBX::NormalId)0,float>::~SurfacePropDescriptor()
 #[doc(alias = "RBX::SurfacePropDescriptor<(RBX::NormalId)0,float>::~SurfacePropDescriptor()")]
 #[doc(alias = "__ZN3RBX21SurfacePropDescriptorILNS_8NormalIdE0EfED1Ev")]
-pub fn stub_0659280() -> ! {
-    todo!("0x0659280 RBX::SurfacePropDescriptor<(RBX::NormalId)0,float>::~SurfacePropDescriptor()")
+pub fn stub_0659280() {
+    // IDA 0x0659280: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x06592a4 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_11SurfaceTypeEED1Ev
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_11SurfaceTypeEED1Ev")]
-pub fn stub_06592a4() -> ! {
-    todo!("0x06592a4 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_06592a4() {
+    // IDA 0x06592a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x06592c8 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_16LegacyController9InputTypeEED1Ev
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_16LegacyController9InputTypeEED1Ev")]
-pub fn stub_06592c8() -> ! {
-    todo!("0x06592c8 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_06592c8() {
+    // IDA 0x06592c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x06592ec — __ZN3RBX21SurfacePropDescriptorILNS_8NormalIdE5EfED1Ev
 // demangled: RBX::SurfacePropDescriptor<(RBX::NormalId)5,float>::~SurfacePropDescriptor()
 #[doc(alias = "RBX::SurfacePropDescriptor<(RBX::NormalId)5,float>::~SurfacePropDescriptor()")]
 #[doc(alias = "__ZN3RBX21SurfacePropDescriptorILNS_8NormalIdE5EfED1Ev")]
-pub fn stub_06592ec() -> ! {
-    todo!("0x06592ec RBX::SurfacePropDescriptor<(RBX::NormalId)5,float>::~SurfacePropDescriptor()")
+pub fn stub_06592ec() {
+    // IDA 0x06592ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x0659310 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_11SurfaceTypeEED1Ev
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_11SurfaceTypeEED1Ev")]
-pub fn stub_0659310() -> ! {
-    todo!("0x0659310 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0659310() {
+    // IDA 0x0659310: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x0659334 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_16LegacyController9InputTypeEED1Ev
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_16LegacyController9InputTypeEED1Ev")]
-pub fn stub_0659334() -> ! {
-    todo!("0x0659334 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0659334() {
+    // IDA 0x0659334: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x0659358 — __ZN3RBX21SurfacePropDescriptorILNS_8NormalIdE2EfED1Ev
 // demangled: RBX::SurfacePropDescriptor<(RBX::NormalId)2,float>::~SurfacePropDescriptor()
 #[doc(alias = "RBX::SurfacePropDescriptor<(RBX::NormalId)2,float>::~SurfacePropDescriptor()")]
 #[doc(alias = "__ZN3RBX21SurfacePropDescriptorILNS_8NormalIdE2EfED1Ev")]
-pub fn stub_0659358() -> ! {
-    todo!("0x0659358 RBX::SurfacePropDescriptor<(RBX::NormalId)2,float>::~SurfacePropDescriptor()")
+pub fn stub_0659358() {
+    // IDA 0x0659358: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x065937c — __ZN3RBX21SurfacePropDescriptorILNS_8NormalIdE2EfEC2IMNS_12PartInstanceEKFfS1_EMS4_FvS1_fEEEPKcSA_T_T0_NS_10Reflection18PropertyDescriptor13FunctionalityENS_8Security11PermissionsE
@@ -299,8 +299,8 @@ pub fn stub_065937c() -> ! {
 // demangled: RBX::SurfacePropDescriptor<(RBX::NormalId)2,float>::~SurfacePropDescriptor()
 #[doc(alias = "RBX::SurfacePropDescriptor<(RBX::NormalId)2,float>::~SurfacePropDescriptor()")]
 #[doc(alias = "__ZN3RBX21SurfacePropDescriptorILNS_8NormalIdE2EfED0Ev")]
-pub fn stub_0659490() -> ! {
-    todo!("0x0659490 RBX::SurfacePropDescriptor<(RBX::NormalId)2,float>::~SurfacePropDescriptor()")
+pub fn stub_0659490() {
+    // IDA 0x0659490: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x06594bc — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE2EfMNS_12PartInstanceEKFfS1_EMS2_FvS1_fEE10isReadOnlyEv
@@ -347,8 +347,8 @@ pub fn stub_0659508() -> ! {
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_16LegacyController9InputTypeEED0Ev")]
-pub fn stub_06595b4() -> ! {
-    todo!("0x06595b4 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_06595b4() {
+    // IDA 0x06595b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x06595e0 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_16LegacyController9InputTypeEE10isReadOnlyEv
@@ -541,8 +541,8 @@ pub fn stub_0659d84() -> ! {
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_11SurfaceTypeEED0Ev")]
-pub fn stub_0659e30() -> ! {
-    todo!("0x0659e30 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0659e30() {
+    // IDA 0x0659e30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x0659e5c — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_11SurfaceTypeEE10isReadOnlyEv
@@ -736,8 +736,8 @@ pub fn stub_065a600() -> ! {
 // demangled: RBX::SurfacePropDescriptor<(RBX::NormalId)5,float>::~SurfacePropDescriptor()
 #[doc(alias = "RBX::SurfacePropDescriptor<(RBX::NormalId)5,float>::~SurfacePropDescriptor()")]
 #[doc(alias = "__ZN3RBX21SurfacePropDescriptorILNS_8NormalIdE5EfED0Ev")]
-pub fn stub_065a714() -> ! {
-    todo!("0x065a714 RBX::SurfacePropDescriptor<(RBX::NormalId)5,float>::~SurfacePropDescriptor()")
+pub fn stub_065a714() {
+    // IDA 0x065a714: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x065a740 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE5EfMNS_12PartInstanceEKFfS1_EMS2_FvS1_fEE10isReadOnlyEv
@@ -784,8 +784,8 @@ pub fn stub_065a78c() -> ! {
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_16LegacyController9InputTypeEED0Ev")]
-pub fn stub_065a838() -> ! {
-    todo!("0x065a838 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_065a838() {
+    // IDA 0x065a838: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x065a864 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_16LegacyController9InputTypeEE10isReadOnlyEv

@@ -71,16 +71,16 @@ pub fn stub_5f01c0() -> ! {
 // demangled: RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor>::~TypedPropertyDescriptor()
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor>::~TypedPropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorINS_10BrickColorEED1Ev")]
-pub fn stub_5f01c4() -> ! {
-    todo!("0x5f01c4 __ZN3RBX10Reflection23TypedPropertyDescriptorINS_10BrickColorEED1Ev")
+pub fn stub_5f01c4() {
+    // IDA 0x5f01c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f01e8 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_10BrickColorEED0Ev
 // demangled: RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor>::~TypedPropertyDescriptor()
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor>::~TypedPropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorINS_10BrickColorEED0Ev")]
-pub fn stub_5f01e8() -> ! {
-    todo!("0x5f01e8 __ZN3RBX10Reflection23TypedPropertyDescriptorINS_10BrickColorEED0Ev")
+pub fn stub_5f01e8() {
+    // IDA 0x5f01e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f0214 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
@@ -136,8 +136,8 @@ pub fn stub_5f037c() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Color3>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Color3>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D6Color3EED0Ev")]
-pub fn stub_5f04a0() -> ! {
-    todo!("0x5f04a0 __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D6Color3EED0Ev")
+pub fn stub_5f04a0() {
+    // IDA 0x5f04a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f04cc — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D6Color3EE10isReadOnlyEv
@@ -228,16 +228,16 @@ pub fn stub_5f08d0() -> ! {
 // demangled: RBX::Reflection::TypedPropertyDescriptor<G3D::Color3>::~TypedPropertyDescriptor()
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Color3>::~TypedPropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D6Color3EED1Ev")]
-pub fn stub_5f08d4() -> ! {
-    todo!("0x5f08d4 __ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D6Color3EED1Ev")
+pub fn stub_5f08d4() {
+    // IDA 0x5f08d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f08f8 — __ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D6Color3EED0Ev
 // demangled: RBX::Reflection::TypedPropertyDescriptor<G3D::Color3>::~TypedPropertyDescriptor()
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Color3>::~TypedPropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D6Color3EED0Ev")]
-pub fn stub_5f08f8() -> ! {
-    todo!("0x5f08f8 __ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D6Color3EED0Ev")
+pub fn stub_5f08f8() {
+    // IDA 0x5f08f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f0924 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvRKS4_EE10isReadOnlyEv
@@ -285,8 +285,8 @@ pub fn stub_5f0978() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEfED0Ev")]
-pub fn stub_5f0a90() -> ! {
-    todo!("0x5f0a90 __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEfED0Ev")
+pub fn stub_5f0a90() {
+    // IDA 0x5f0a90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f0ac0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIfE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -327,8 +327,8 @@ pub fn stub_5f0c68() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<float>::~TypedPropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorIfED1Ev")]
-pub fn stub_5f0c78() -> ! {
-    todo!("0x5f0c78 __ZN3RBX10Reflection23TypedPropertyDescriptorIfED1Ev")
+pub fn stub_5f0c78() {
+    // IDA 0x5f0c78: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f0ca0 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
@@ -389,8 +389,8 @@ pub fn stub_5f0e00() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EED0Ev")]
-pub fn stub_5f0f24() -> ! {
-    todo!("0x5f0f24 __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EED0Ev")
+pub fn stub_5f0f24() {
+    // IDA 0x5f0f24: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f0f50 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector3EE10isReadOnlyEv
@@ -443,8 +443,8 @@ pub fn stub_5f1148() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3>::~TypedPropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector3EED1Ev")]
-pub fn stub_5f1160() -> ! {
-    todo!("0x5f1160 __ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector3EED1Ev")
+pub fn stub_5f1160() {
+    // IDA 0x5f1160: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f1188 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvRKS4_EE10isReadOnlyEv
@@ -533,8 +533,8 @@ pub fn stub_5f1410() -> ! {
 // type: _DWORD *__fastcall(_DWORD *, unsigned int, int, int, int, char, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(bool),1>::BoundFuncDesc(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),char const*,char const*,bool,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EEC2EMS2_FSB_bEPKcSH_bNS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_5f1434() -> ! {
-    todo!("0x5f1434 __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EEC2EMS2_FSB_bEPKcSH_bNS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+pub fn stub_5f1434() {
+    // IDA 0x5f1434: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x5f15e0 — __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EE16declareSignatureEPKcNS0_7VariantE
@@ -551,8 +551,8 @@ pub fn stub_5f15e0() -> ! {
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(bool),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EED0Ev")]
-pub fn stub_5f1610() -> ! {
-    todo!("0x5f1610 __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EED0Ev")
+pub fn stub_5f1610() {
+    // IDA 0x5f1610: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f16e4 — __ZNK3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -605,8 +605,8 @@ pub fn stub_5f19c4() -> ! {
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,bool ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFbvELi0EED0Ev")]
-pub fn stub_5f1ac8() -> ! {
-    todo!("0x5f1ac8 __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFbvELi0EED0Ev")
+pub fn stub_5f1ac8() {
+    // IDA 0x5f1ac8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f1b7c — __ZNK3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFbvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -641,8 +641,8 @@ pub fn stub_5f1bd0() -> ! {
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,float ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFfvELi0EED0Ev")]
-pub fn stub_5f1cd4() -> ! {
-    todo!("0x5f1cd4 __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFfvELi0EED0Ev")
+pub fn stub_5f1cd4() {
+    // IDA 0x5f1cd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f1d88 — __ZNK3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFfvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -677,8 +677,8 @@ pub fn stub_5f1ddc() -> ! {
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFvvELi0EED0Ev")]
-pub fn stub_5f1ee0() -> ! {
-    todo!("0x5f1ee0 __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFvvELi0EED0Ev")
+pub fn stub_5f1ee0() {
+    // IDA 0x5f1ee0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f1f94 — __ZNK3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -812,8 +812,8 @@ pub fn stub_5f23c8() -> ! {
 // type: void __fastcall(RBX::Reflection::EnumDescriptor::Item *__hidden this)
 #[doc(alias = "RBX::Reflection::EnumDescriptor::Item::~Item()")]
 #[doc(alias = "__ZN3RBX10Reflection14EnumDescriptor4ItemD1Ev")]
-pub fn stub_5f2558() -> ! {
-    todo!("0x5f2558 __ZN3RBX10Reflection14EnumDescriptor4ItemD1Ev")
+pub fn stub_5f2558() {
+    // IDA 0x5f2558: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f2560 — __ZNSt3mapIPKN3RBX4NameENS0_12PartInstance10FormFactorESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_

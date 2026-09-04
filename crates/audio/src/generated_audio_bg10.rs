@@ -26,8 +26,8 @@ pub fn stub_6bad44() -> ! {
 
 // 0x6baec8 — __ZN3RBX10Reflection9EventDescINS_5ValueIiLZNS_9sIntValueEEEEFviEN3rbx6signalIS4_EEMS3_S7_ED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueIiLZNS_9sIntValueEEEEFviEN3rbx6signalIS4_EEMS3_S7_ED0Ev")]
-pub fn stub_6baec8() -> ! {
-    todo!("0x6baec8 __ZN3RBX10Reflection9EventDescINS_5ValueIiLZNS_9sIntValueEEEEFviEN3rbx6signalIS4_EEMS3_S7_ED0Ev")
+pub fn stub_6baec8() {
+    // IDA 0x6baec8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6baf7c — __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIiLZNS_9sIntValueEEEEFviEN3rbx6signalIS4_EEMS3_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -160,120 +160,120 @@ pub fn stub_6bc71c() -> ! {
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "RBX::VehicleSeat::~VehicleSeat()")]
 #[doc(alias = "__ZN3RBX11VehicleSeatD0Ev")]
-pub fn stub_6bcb84() -> ! {
-    todo!("0x6bcb84 __ZN3RBX11VehicleSeatD0Ev")
+pub fn stub_6bcb84() {
+    // IDA 0x6bcb84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bcc30 — __ZN3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "RBX::VehicleSeat::~VehicleSeat()")]
 #[doc(alias = "__ZN3RBX11VehicleSeatD1Ev")]
-pub fn stub_6bcc30() -> ! {
-    todo!("0x6bcc30 __ZN3RBX11VehicleSeatD1Ev")
+pub fn stub_6bcc30() {
+    // IDA 0x6bcc30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bcc40 — __ZThn32_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 #[doc(alias = "__ZThn32_N3RBX11VehicleSeatD0Ev")]
-pub fn stub_6bcc40() -> ! {
-    todo!("0x6bcc40 __ZThn32_N3RBX11VehicleSeatD0Ev")
+pub fn stub_6bcc40() {
+    // IDA 0x6bcc40: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bcc48 — __ZThn36_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 #[doc(alias = "__ZThn36_N3RBX11VehicleSeatD0Ev")]
-pub fn stub_6bcc48() -> ! {
-    todo!("0x6bcc48 __ZThn36_N3RBX11VehicleSeatD0Ev")
+pub fn stub_6bcc48() {
+    // IDA 0x6bcc48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bcc50 — __ZThn132_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 #[doc(alias = "__ZThn132_N3RBX11VehicleSeatD0Ev")]
-pub fn stub_6bcc50() -> ! {
-    todo!("0x6bcc50 __ZThn132_N3RBX11VehicleSeatD0Ev")
+pub fn stub_6bcc50() {
+    // IDA 0x6bcc50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bcc58 — __ZThn348_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 #[doc(alias = "__ZThn348_N3RBX11VehicleSeatD0Ev")]
-pub fn stub_6bcc58() -> ! {
-    todo!("0x6bcc58 __ZThn348_N3RBX11VehicleSeatD0Ev")
+pub fn stub_6bcc58() {
+    // IDA 0x6bcc58: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bcc60 — __ZThn380_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 #[doc(alias = "__ZThn380_N3RBX11VehicleSeatD0Ev")]
-pub fn stub_6bcc60() -> ! {
-    todo!("0x6bcc60 __ZThn380_N3RBX11VehicleSeatD0Ev")
+pub fn stub_6bcc60() {
+    // IDA 0x6bcc60: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bcc68 — __ZThn500_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 #[doc(alias = "__ZThn500_N3RBX11VehicleSeatD0Ev")]
-pub fn stub_6bcc68() -> ! {
-    todo!("0x6bcc68 __ZThn500_N3RBX11VehicleSeatD0Ev")
+pub fn stub_6bcc68() {
+    // IDA 0x6bcc68: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bcc70 — __ZN3RBX11VehicleSeatD2Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "RBX::VehicleSeat::~VehicleSeat()")]
 #[doc(alias = "__ZN3RBX11VehicleSeatD2Ev")]
-pub fn stub_6bcc70() -> ! {
-    todo!("0x6bcc70 __ZN3RBX11VehicleSeatD2Ev")
+pub fn stub_6bcc70() {
+    // IDA 0x6bcc70: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bcfa0 — __ZThn32_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 #[doc(alias = "__ZThn32_N3RBX11VehicleSeatD1Ev")]
-pub fn stub_6bcfa0() -> ! {
-    todo!("0x6bcfa0 __ZThn32_N3RBX11VehicleSeatD1Ev")
+pub fn stub_6bcfa0() {
+    // IDA 0x6bcfa0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bcfb0 — __ZThn36_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 #[doc(alias = "__ZThn36_N3RBX11VehicleSeatD1Ev")]
-pub fn stub_6bcfb0() -> ! {
-    todo!("0x6bcfb0 __ZThn36_N3RBX11VehicleSeatD1Ev")
+pub fn stub_6bcfb0() {
+    // IDA 0x6bcfb0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bcfc0 — __ZThn132_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 #[doc(alias = "__ZThn132_N3RBX11VehicleSeatD1Ev")]
-pub fn stub_6bcfc0() -> ! {
-    todo!("0x6bcfc0 __ZThn132_N3RBX11VehicleSeatD1Ev")
+pub fn stub_6bcfc0() {
+    // IDA 0x6bcfc0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bcfd0 — __ZThn348_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 #[doc(alias = "__ZThn348_N3RBX11VehicleSeatD1Ev")]
-pub fn stub_6bcfd0() -> ! {
-    todo!("0x6bcfd0 __ZThn348_N3RBX11VehicleSeatD1Ev")
+pub fn stub_6bcfd0() {
+    // IDA 0x6bcfd0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bcfe4 — __ZThn380_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 #[doc(alias = "__ZThn380_N3RBX11VehicleSeatD1Ev")]
-pub fn stub_6bcfe4() -> ! {
-    todo!("0x6bcfe4 __ZThn380_N3RBX11VehicleSeatD1Ev")
+pub fn stub_6bcfe4() {
+    // IDA 0x6bcfe4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bcff8 — __ZThn500_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 #[doc(alias = "__ZThn500_N3RBX11VehicleSeatD1Ev")]
-pub fn stub_6bcff8() -> ! {
-    todo!("0x6bcff8 __ZThn500_N3RBX11VehicleSeatD1Ev")
+pub fn stub_6bcff8() {
+    // IDA 0x6bcff8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bd00c — __ZNK3RBX11VehicleSeat14shouldRender2dEv
@@ -288,8 +288,8 @@ pub fn stub_6bd00c() -> ! {
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::shouldRender2d(void)const")]
 #[doc(alias = "__ZThn108_NK3RBX11VehicleSeat14shouldRender2dEv")]
-pub fn stub_6bd020() -> ! {
-    todo!("0x6bd020 __ZThn108_NK3RBX11VehicleSeat14shouldRender2dEv")
+pub fn stub_6bd020() {
+    // IDA 0x6bd020: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bd034 — __ZN3RBX11VehicleSeat8render2dEPNS_5AdornE
@@ -304,8 +304,8 @@ pub fn stub_6bd034() -> ! {
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn108_N3RBX11VehicleSeat8render2dEPNS_5AdornE")]
-pub fn stub_6bd3ac() -> ! {
-    todo!("0x6bd3ac __ZThn108_N3RBX11VehicleSeat8render2dEPNS_5AdornE")
+pub fn stub_6bd3ac() {
+    // IDA 0x6bd3ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bd3b4 — __ZN3RBX11VehicleSeat15onSeatedChangedEbPNS_8HumanoidE
@@ -368,8 +368,8 @@ pub fn stub_6bdb44() -> ! {
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::getEngineBody(void)")]
 #[doc(alias = "__ZThn348_N3RBX11VehicleSeat13getEngineBodyEv")]
-pub fn stub_6bdb50() -> ! {
-    todo!("0x6bdb50 __ZThn348_N3RBX11VehicleSeat13getEngineBodyEv")
+pub fn stub_6bdb50() {
+    // IDA 0x6bdb50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bdb5c — __ZN3RBX11VehicleSeat12computeForceEb
@@ -392,8 +392,8 @@ pub fn stub_6bdb60() -> ! {
 // type: int __fastcall(RBX::VehicleSeat *this, bool)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::computeForce(bool)")]
 #[doc(alias = "__ZThn500_N3RBX11VehicleSeat12computeForceEb")]
-pub fn stub_6bdd2c() -> ! {
-    todo!("0x6bdd2c __ZThn500_N3RBX11VehicleSeat12computeForceEb")
+pub fn stub_6bdd2c() {
+    // IDA 0x6bdd2c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bdd34 — __ZN3RBX11VehicleSeat6stepUiEd
@@ -416,8 +416,8 @@ pub fn stub_6bdd8c() -> ! {
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this, double)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::stepUi(double)")]
 #[doc(alias = "__ZThn348_N3RBX11VehicleSeat6stepUiEd")]
-pub fn stub_6bde4c() -> ! {
-    todo!("0x6bde4c __ZThn348_N3RBX11VehicleSeat6stepUiEd")
+pub fn stub_6bde4c() {
+    // IDA 0x6bde4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bde60 — __ZN3RBX11VehicleSeat12doLoadHingesEPNS_9PrimitiveE
@@ -452,8 +452,8 @@ pub fn stub_6be0ac() -> ! {
 // 0x6be0c4 — __ZThn132_N3RBX11VehicleSeat25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
 #[doc(alias = "__ZThn132_N3RBX11VehicleSeat25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE")]
-pub fn stub_6be0c4() -> ! {
-    todo!("0x6be0c4 __ZThn132_N3RBX11VehicleSeat25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE")
+pub fn stub_6be0c4() {
+    // IDA 0x6be0c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6be0cc — __ZN3RBX11VehicleSeat4zoomEfRN3G3D15CoordinateFrameES3_
@@ -468,8 +468,8 @@ pub fn stub_6be0cc() -> ! {
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this, float, G3D::CoordinateFrame *, G3D::CoordinateFrame *)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")]
 #[doc(alias = "__ZThn132_N3RBX11VehicleSeat4zoomEfRN3G3D15CoordinateFrameES3_")]
-pub fn stub_6be23c() -> ! {
-    todo!("0x6be23c __ZThn132_N3RBX11VehicleSeat4zoomEfRN3G3D15CoordinateFrameES3_")
+pub fn stub_6be23c() {
+    // IDA 0x6be23c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6be248 — __ZN3RBX11VehicleSeat20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd
@@ -484,8 +484,8 @@ pub fn stub_6be248() -> ! {
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this, G3D::Vector3 *, G3D::CoordinateFrame *, double)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")]
 #[doc(alias = "__ZThn132_N3RBX11VehicleSeat20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd")]
-pub fn stub_6be4ac() -> ! {
-    todo!("0x6be4ac __ZThn132_N3RBX11VehicleSeat20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd")
+pub fn stub_6be4ac() {
+    // IDA 0x6be4ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6be4c4 — __ZNK3RBX8SeatImplINS_12PartInstanceEE11getDisabledEv
@@ -505,8 +505,8 @@ pub fn stub_6be4cc() -> ! {
 // 0x6be510 — __ZN3RBX10Reflection14PropDescriptorINS_11VehicleSeatEbED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VehicleSeat,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_11VehicleSeatEbED1Ev")]
-pub fn stub_6be510() -> ! {
-    todo!("0x6be510 __ZN3RBX10Reflection14PropDescriptorINS_11VehicleSeatEbED1Ev")
+pub fn stub_6be510() {
+    // IDA 0x6be510: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6be534 — __ZNK3RBX11VehicleSeat11getThrottleEv
@@ -520,8 +520,8 @@ pub fn stub_6be534() -> ! {
 // 0x6be53c — __ZN3RBX10Reflection14PropDescriptorINS_11VehicleSeatEiED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VehicleSeat,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_11VehicleSeatEiED1Ev")]
-pub fn stub_6be53c() -> ! {
-    todo!("0x6be53c __ZN3RBX10Reflection14PropDescriptorINS_11VehicleSeatEiED1Ev")
+pub fn stub_6be53c() {
+    // IDA 0x6be53c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6be560 — __ZNK3RBX11VehicleSeat8getSteerEv
@@ -543,8 +543,8 @@ pub fn stub_6be568() -> ! {
 // 0x6be570 — __ZN3RBX10Reflection14PropDescriptorINS_11VehicleSeatEfED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VehicleSeat,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_11VehicleSeatEfED1Ev")]
-pub fn stub_6be570() -> ! {
-    todo!("0x6be570 __ZN3RBX10Reflection14PropDescriptorINS_11VehicleSeatEfED1Ev")
+pub fn stub_6be570() {
+    // IDA 0x6be570: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6be594 — __ZNK3RBX11VehicleSeat12getTurnSpeedEv
@@ -645,8 +645,8 @@ pub fn stub_6beab4() -> ! {
 
 // 0x6beab8 — __ZThn32_NK3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_6beab8() -> ! {
-    todo!("0x6beab8 __ZThn32_NK3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE12getClassNameEv")
+pub fn stub_6beab8() {
+    // IDA 0x6beab8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6beac8 — __ZNK3RBX5Joint11getEdgeTypeEv
@@ -732,8 +732,8 @@ pub fn stub_6beb40() -> ! {
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::canStepUi(void)const")]
 #[doc(alias = "__ZThn348_NK3RBX11VehicleSeat9canStepUiEv")]
-pub fn stub_6beb44() -> ! {
-    todo!("0x6beb44 __ZThn348_NK3RBX11VehicleSeat9canStepUiEv")
+pub fn stub_6beb44() {
+    // IDA 0x6beb44: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6beb48 — __ZN3RBX5Joint9stepWorldEv
@@ -771,8 +771,8 @@ pub fn stub_6bec10() -> ! {
 // type: _DWORD __fastcall(RBX::KernelJoint *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::KernelJoint::getConnectorKernelType(void)const")]
 #[doc(alias = "__ZThn152_NK3RBX11KernelJoint22getConnectorKernelTypeEv")]
-pub fn stub_6bec14() -> ! {
-    todo!("0x6bec14 __ZThn152_NK3RBX11KernelJoint22getConnectorKernelTypeEv")
+pub fn stub_6bec14() {
+    // IDA 0x6bec14: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bec18 — __ZN3RBX9Connector14computeImpulseERf
@@ -794,8 +794,8 @@ pub fn stub_6bec1c() -> ! {
 // 0x6bec20 — __ZThn152_N3RBX11KernelJoint7getBodyENS_9Connector9BodyIndexE
 #[doc(alias = "non-virtual thunk toRBX::KernelJoint::getBody(RBX::Connector::BodyIndex)")]
 #[doc(alias = "__ZThn152_N3RBX11KernelJoint7getBodyENS_9Connector9BodyIndexE")]
-pub fn stub_6bec20() -> ! {
-    todo!("0x6bec20 __ZThn152_N3RBX11KernelJoint7getBodyENS_9Connector9BodyIndexE")
+pub fn stub_6bec20() {
+    // IDA 0x6bec20: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bec28 — __ZN3RBX9Connector15potentialEnergyEv
@@ -816,85 +816,85 @@ pub fn stub_6becf0() -> ! {
 // 0x6bf028 — __ZN3RBX8SeatImplINS_12PartInstanceEED1Ev
 #[doc(alias = "RBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZN3RBX8SeatImplINS_12PartInstanceEED1Ev")]
-pub fn stub_6bf028() -> ! {
-    todo!("0x6bf028 __ZN3RBX8SeatImplINS_12PartInstanceEED1Ev")
+pub fn stub_6bf028() {
+    // IDA 0x6bf028: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bf038 — __ZN3RBX8SeatImplINS_12PartInstanceEED0Ev
 #[doc(alias = "RBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZN3RBX8SeatImplINS_12PartInstanceEED0Ev")]
-pub fn stub_6bf038() -> ! {
-    todo!("0x6bf038 __ZN3RBX8SeatImplINS_12PartInstanceEED0Ev")
+pub fn stub_6bf038() {
+    // IDA 0x6bf038: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bf0e4 — __ZThn132_N3RBX8SeatImplINS_12PartInstanceEED1Ev
 #[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZThn132_N3RBX8SeatImplINS_12PartInstanceEED1Ev")]
-pub fn stub_6bf0e4() -> ! {
-    todo!("0x6bf0e4 __ZThn132_N3RBX8SeatImplINS_12PartInstanceEED1Ev")
+pub fn stub_6bf0e4() {
+    // IDA 0x6bf0e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bf0f8 — __ZThn132_N3RBX8SeatImplINS_12PartInstanceEED0Ev
 #[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZThn132_N3RBX8SeatImplINS_12PartInstanceEED0Ev")]
-pub fn stub_6bf0f8() -> ! {
-    todo!("0x6bf0f8 __ZThn132_N3RBX8SeatImplINS_12PartInstanceEED0Ev")
+pub fn stub_6bf0f8() {
+    // IDA 0x6bf0f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bf1a8 — __ZN3RBX13ActionStationINS_12PartInstanceEED1Ev
 #[doc(alias = "RBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 #[doc(alias = "__ZN3RBX13ActionStationINS_12PartInstanceEED1Ev")]
-pub fn stub_6bf1a8() -> ! {
-    todo!("0x6bf1a8 __ZN3RBX13ActionStationINS_12PartInstanceEED1Ev")
+pub fn stub_6bf1a8() {
+    // IDA 0x6bf1a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bf1bc — __ZN3RBX13ActionStationINS_12PartInstanceEED0Ev
 #[doc(alias = "RBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 #[doc(alias = "__ZN3RBX13ActionStationINS_12PartInstanceEED0Ev")]
-pub fn stub_6bf1bc() -> ! {
-    todo!("0x6bf1bc __ZN3RBX13ActionStationINS_12PartInstanceEED0Ev")
+pub fn stub_6bf1bc() {
+    // IDA 0x6bf1bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bf26c — __ZThn132_N3RBX13ActionStationINS_12PartInstanceEED1Ev
 #[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 #[doc(alias = "__ZThn132_N3RBX13ActionStationINS_12PartInstanceEED1Ev")]
-pub fn stub_6bf26c() -> ! {
-    todo!("0x6bf26c __ZThn132_N3RBX13ActionStationINS_12PartInstanceEED1Ev")
+pub fn stub_6bf26c() {
+    // IDA 0x6bf26c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bf280 — __ZThn132_N3RBX13ActionStationINS_12PartInstanceEED0Ev
 #[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 #[doc(alias = "__ZThn132_N3RBX13ActionStationINS_12PartInstanceEED0Ev")]
-pub fn stub_6bf280() -> ! {
-    todo!("0x6bf280 __ZThn132_N3RBX13ActionStationINS_12PartInstanceEED0Ev")
+pub fn stub_6bf280() {
+    // IDA 0x6bf280: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bf28c — __ZThn32_N3RBX13ActionStationINS_12PartInstanceEED1Ev
 #[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 #[doc(alias = "__ZThn32_N3RBX13ActionStationINS_12PartInstanceEED1Ev")]
-pub fn stub_6bf28c() -> ! {
-    todo!("0x6bf28c __ZThn32_N3RBX13ActionStationINS_12PartInstanceEED1Ev")
+pub fn stub_6bf28c() {
+    // IDA 0x6bf28c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bf2a0 — __ZThn36_N3RBX13ActionStationINS_12PartInstanceEED1Ev
 #[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 #[doc(alias = "__ZThn36_N3RBX13ActionStationINS_12PartInstanceEED1Ev")]
-pub fn stub_6bf2a0() -> ! {
-    todo!("0x6bf2a0 __ZThn36_N3RBX13ActionStationINS_12PartInstanceEED1Ev")
+pub fn stub_6bf2a0() {
+    // IDA 0x6bf2a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bf2b4 — __ZThn32_N3RBX13ActionStationINS_12PartInstanceEED0Ev
 #[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 #[doc(alias = "__ZThn32_N3RBX13ActionStationINS_12PartInstanceEED0Ev")]
-pub fn stub_6bf2b4() -> ! {
-    todo!("0x6bf2b4 __ZThn32_N3RBX13ActionStationINS_12PartInstanceEED0Ev")
+pub fn stub_6bf2b4() {
+    // IDA 0x6bf2b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bf2bc — __ZThn36_N3RBX13ActionStationINS_12PartInstanceEED0Ev
 #[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 #[doc(alias = "__ZThn36_N3RBX13ActionStationINS_12PartInstanceEED0Ev")]
-pub fn stub_6bf2bc() -> ! {
-    todo!("0x6bf2bc __ZThn36_N3RBX13ActionStationINS_12PartInstanceEED0Ev")
+pub fn stub_6bf2bc() {
+    // IDA 0x6bf2bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6bf2c4 — __ZN3RBX8SeatImplINS_12PartInstanceEE15isChildSeatWeldEPNS_8InstanceE

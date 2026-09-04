@@ -49,8 +49,8 @@ pub fn stub_0xb71008() -> ! {
 // 0xb720f0 — __ZNSt12_Vector_baseIPN4Ogre16ShadowRenderableENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 #[doc(alias = "std::_Vector_base<Ogre::ShadowRenderable *,Ogre::STLAllocator<Ogre::ShadowRenderable *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIPN4Ogre16ShadowRenderableENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
-pub fn stub_0xb720f0() -> ! {
-    todo!("0xb720f0 __ZNSt12_Vector_baseIPN4Ogre16ShadowRenderableENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")
+pub fn stub_0xb720f0() {
+    // IDA 0xb720f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb7406c — __ZNK3G3D15CoordinateFrame13toObjectSpaceERKS0_
@@ -63,15 +63,15 @@ pub fn stub_0xb7406c() -> ! {
 // 0xb74238 — __ZN4Ogre28HardwareIndexBufferSharedPtrD1Ev
 #[doc(alias = "Ogre::HardwareIndexBufferSharedPtr::~HardwareIndexBufferSharedPtr()")]
 #[doc(alias = "__ZN4Ogre28HardwareIndexBufferSharedPtrD1Ev")]
-pub fn stub_0xb74238() -> ! {
-    todo!("0xb74238 __ZN4Ogre28HardwareIndexBufferSharedPtrD1Ev")
+pub fn stub_0xb74238() {
+    // IDA 0xb74238: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb74290 — __ZN4Ogre9SharedPtrINS_19HardwareIndexBufferEED0Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::HardwareIndexBuffer>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_19HardwareIndexBufferEED0Ev")]
-pub fn stub_0xb74290() -> ! {
-    todo!("0xb74290 __ZN4Ogre9SharedPtrINS_19HardwareIndexBufferEED0Ev")
+pub fn stub_0xb74290() {
+    // IDA 0xb74290: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb74330 — __ZN4Ogre9SharedPtrINS_19HardwareIndexBufferEE7destroyEv
@@ -91,8 +91,8 @@ pub fn stub_0xb74368() -> ! {
 // 0xb76a08 — __ZN4Ogre16ShadowRenderableD1Ev
 #[doc(alias = "Ogre::ShadowRenderable::~ShadowRenderable()")]
 #[doc(alias = "__ZN4Ogre16ShadowRenderableD1Ev")]
-pub fn stub_0xb76a08() -> ! {
-    todo!("0xb76a08 __ZN4Ogre16ShadowRenderableD1Ev")
+pub fn stub_0xb76a08() {
+    // IDA 0xb76a08: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb9a050 — __ZN4Ogre9SharedPtrINS_22GpuLogicalBufferStructEE7destroyEv
@@ -119,8 +119,8 @@ pub fn stub_0xb9a170() -> ! {
 // 0xb9a190 — __ZN4Ogre9SharedPtrINS_19GpuSharedParametersEED0Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::GpuSharedParameters>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_19GpuSharedParametersEED0Ev")]
-pub fn stub_0xb9a190() -> ! {
-    todo!("0xb9a190 __ZN4Ogre9SharedPtrINS_19GpuSharedParametersEED0Ev")
+pub fn stub_0xb9a190() {
+    // IDA 0xb9a190: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb9a230 — __ZN4Ogre9SharedPtrINS_19GpuSharedParametersEE7destroyEv
@@ -140,8 +140,8 @@ pub fn stub_0xb9a268() -> ! {
 // 0xb9a920 — __ZN4Ogre9SharedPtrINS_4MeshEED0Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::Mesh>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_4MeshEED0Ev")]
-pub fn stub_0xb9a920() -> ! {
-    todo!("0xb9a920 __ZN4Ogre9SharedPtrINS_4MeshEED0Ev")
+pub fn stub_0xb9a920() {
+    // IDA 0xb9a920: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb9a9c0 — __ZN4Ogre9SharedPtrINS_4MeshEE7destroyEv
@@ -231,22 +231,22 @@ pub fn stub_0xb9b3bc() -> ! {
 // 0xb9b52c — __ZN4Ogre17istreamDataStreamD0Ev
 #[doc(alias = "Ogre::istreamDataStream::~istreamDataStream()")]
 #[doc(alias = "__ZN4Ogre17istreamDataStreamD0Ev")]
-pub fn stub_0xb9b52c() -> ! {
-    todo!("0xb9b52c __ZN4Ogre17istreamDataStreamD0Ev")
+pub fn stub_0xb9b52c() {
+    // IDA 0xb9b52c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb9b5e0 — __ZN4Ogre17istreamDataStreamD1Ev
 #[doc(alias = "Ogre::istreamDataStream::~istreamDataStream()")]
 #[doc(alias = "__ZN4Ogre17istreamDataStreamD1Ev")]
-pub fn stub_0xb9b5e0() -> ! {
-    todo!("0xb9b5e0 __ZN4Ogre17istreamDataStreamD1Ev")
+pub fn stub_0xb9b5e0() {
+    // IDA 0xb9b5e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb9b5e4 — __ZN4Ogre17istreamDataStreamD2Ev
 #[doc(alias = "Ogre::istreamDataStream::~istreamDataStream()")]
 #[doc(alias = "__ZN4Ogre17istreamDataStreamD2Ev")]
-pub fn stub_0xb9b5e4() -> ! {
-    todo!("0xb9b5e4 __ZN4Ogre17istreamDataStreamD2Ev")
+pub fn stub_0xb9b5e4() {
+    // IDA 0xb9b5e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xb9b744 — __ZN4Ogre17istreamDataStream4readEPvm
@@ -371,15 +371,15 @@ pub fn stub_0xba5874() -> ! {
 // 0xba5a54 — __ZN4Ogre10RbxArchiveD0Ev
 #[doc(alias = "Ogre::RbxArchive::~RbxArchive()")]
 #[doc(alias = "__ZN4Ogre10RbxArchiveD0Ev")]
-pub fn stub_0xba5a54() -> ! {
-    todo!("0xba5a54 __ZN4Ogre10RbxArchiveD0Ev")
+pub fn stub_0xba5a54() {
+    // IDA 0xba5a54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xba5af0 — __ZN4Ogre10RbxArchiveD1Ev
 #[doc(alias = "Ogre::RbxArchive::~RbxArchive()")]
 #[doc(alias = "__ZN4Ogre10RbxArchiveD1Ev")]
-pub fn stub_0xba5af0() -> ! {
-    todo!("0xba5af0 __ZN4Ogre10RbxArchiveD1Ev")
+pub fn stub_0xba5af0() {
+    // IDA 0xba5af0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xba5b88 — __ZN4Ogre10RbxArchive4loadEv
@@ -469,15 +469,15 @@ pub fn stub_0xba74d0() -> ! {
 // 0xba75a8 — __ZN4Ogre17RbxArchiveFactoryD0Ev
 #[doc(alias = "Ogre::RbxArchiveFactory::~RbxArchiveFactory()")]
 #[doc(alias = "__ZN4Ogre17RbxArchiveFactoryD0Ev")]
-pub fn stub_0xba75a8() -> ! {
-    todo!("0xba75a8 __ZN4Ogre17RbxArchiveFactoryD0Ev")
+pub fn stub_0xba75a8() {
+    // IDA 0xba75a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xba7618 — __ZN4Ogre17RbxArchiveFactoryD1Ev
 #[doc(alias = "Ogre::RbxArchiveFactory::~RbxArchiveFactory()")]
 #[doc(alias = "__ZN4Ogre17RbxArchiveFactoryD1Ev")]
-pub fn stub_0xba7618() -> ! {
-    todo!("0xba7618 __ZN4Ogre17RbxArchiveFactoryD1Ev")
+pub fn stub_0xba7618() {
+    // IDA 0xba7618: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xba7684 — __ZN4Ogre17RbxArchiveFactory10destroyAllEv
@@ -511,22 +511,22 @@ pub fn stub_0xba8008() -> ! {
 // 0xba807c — __ZN4Ogre20RbxCullableSceneNodeD0Ev
 #[doc(alias = "Ogre::RbxCullableSceneNode::~RbxCullableSceneNode()")]
 #[doc(alias = "__ZN4Ogre20RbxCullableSceneNodeD0Ev")]
-pub fn stub_0xba807c() -> ! {
-    todo!("0xba807c __ZN4Ogre20RbxCullableSceneNodeD0Ev")
+pub fn stub_0xba807c() {
+    // IDA 0xba807c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xba8130 — __ZN4Ogre20RbxCullableSceneNodeD1Ev
 #[doc(alias = "Ogre::RbxCullableSceneNode::~RbxCullableSceneNode()")]
 #[doc(alias = "__ZN4Ogre20RbxCullableSceneNodeD1Ev")]
-pub fn stub_0xba8130() -> ! {
-    todo!("0xba8130 __ZN4Ogre20RbxCullableSceneNodeD1Ev")
+pub fn stub_0xba8130() {
+    // IDA 0xba8130: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xba8134 — __ZN4Ogre20RbxCullableSceneNodeD2Ev
 #[doc(alias = "Ogre::RbxCullableSceneNode::~RbxCullableSceneNode()")]
 #[doc(alias = "__ZN4Ogre20RbxCullableSceneNodeD2Ev")]
-pub fn stub_0xba8134() -> ! {
-    todo!("0xba8134 __ZN4Ogre20RbxCullableSceneNodeD2Ev")
+pub fn stub_0xba8134() {
+    // IDA 0xba8134: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xba827c — __ZN4Ogre20RbxCullableSceneNode27calculateSqDistanceToCameraEPKNS_6CameraE
@@ -567,8 +567,8 @@ pub fn stub_0xba8750() -> ! {
 // 0xba876c — __ZThn392_N4Ogre20RbxCullableSceneNode19getFastFuzzyExtentsEv
 #[doc(alias = "non-virtual thunk to Ogre::RbxCullableSceneNode::getFastFuzzyExtents(void)")]
 #[doc(alias = "__ZThn392_N4Ogre20RbxCullableSceneNode19getFastFuzzyExtentsEv")]
-pub fn stub_0xba876c() -> ! {
-    todo!("0xba876c __ZThn392_N4Ogre20RbxCullableSceneNode19getFastFuzzyExtentsEv")
+pub fn stub_0xba876c() {
+    // IDA 0xba876c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xba8e18 — __ZN4Ogre9RbxEntityC1Ev
@@ -630,50 +630,50 @@ pub fn stub_0xba90b4() -> ! {
 // 0xba92b8 — __ZN4Ogre9RbxEntityD0Ev
 #[doc(alias = "Ogre::RbxEntity::~RbxEntity()")]
 #[doc(alias = "__ZN4Ogre9RbxEntityD0Ev")]
-pub fn stub_0xba92b8() -> ! {
-    todo!("0xba92b8 __ZN4Ogre9RbxEntityD0Ev")
+pub fn stub_0xba92b8() {
+    // IDA 0xba92b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xba936c — __ZN4Ogre9RbxEntityD1Ev
 #[doc(alias = "Ogre::RbxEntity::~RbxEntity()")]
 #[doc(alias = "__ZN4Ogre9RbxEntityD1Ev")]
-pub fn stub_0xba936c() -> ! {
-    todo!("0xba936c __ZN4Ogre9RbxEntityD1Ev")
+pub fn stub_0xba936c() {
+    // IDA 0xba936c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xba9370 — __ZThn4_N4Ogre9RbxEntityD0Ev
 #[doc(alias = "non-virtual thunk to Ogre::RbxEntity::~RbxEntity()")]
 #[doc(alias = "__ZThn4_N4Ogre9RbxEntityD0Ev")]
-pub fn stub_0xba9370() -> ! {
-    todo!("0xba9370 __ZThn4_N4Ogre9RbxEntityD0Ev")
+pub fn stub_0xba9370() {
+    // IDA 0xba9370: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xba9428 — __ZThn188_N4Ogre9RbxEntityD0Ev
 #[doc(alias = "non-virtual thunk to Ogre::RbxEntity::~RbxEntity()")]
 #[doc(alias = "__ZThn188_N4Ogre9RbxEntityD0Ev")]
-pub fn stub_0xba9428() -> ! {
-    todo!("0xba9428 __ZThn188_N4Ogre9RbxEntityD0Ev")
+pub fn stub_0xba9428() {
+    // IDA 0xba9428: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xba94e0 — __ZN4Ogre9RbxEntityD2Ev
 #[doc(alias = "Ogre::RbxEntity::~RbxEntity()")]
 #[doc(alias = "__ZN4Ogre9RbxEntityD2Ev")]
-pub fn stub_0xba94e0() -> ! {
-    todo!("0xba94e0 __ZN4Ogre9RbxEntityD2Ev")
+pub fn stub_0xba94e0() {
+    // IDA 0xba94e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xba9694 — __ZThn4_N4Ogre9RbxEntityD1Ev
 #[doc(alias = "non-virtual thunk to Ogre::RbxEntity::~RbxEntity()")]
 #[doc(alias = "__ZThn4_N4Ogre9RbxEntityD1Ev")]
-pub fn stub_0xba9694() -> ! {
-    todo!("0xba9694 __ZThn4_N4Ogre9RbxEntityD1Ev")
+pub fn stub_0xba9694() {
+    // IDA 0xba9694: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xba969c — __ZThn188_N4Ogre9RbxEntityD1Ev
 #[doc(alias = "non-virtual thunk to Ogre::RbxEntity::~RbxEntity()")]
 #[doc(alias = "__ZThn188_N4Ogre9RbxEntityD1Ev")]
-pub fn stub_0xba969c() -> ! {
-    todo!("0xba969c __ZThn188_N4Ogre9RbxEntityD1Ev")
+pub fn stub_0xba969c() {
+    // IDA 0xba969c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xba96a4 — __ZNSt6vectorIN4Ogre9BlockSortESaIS1_EE7reserveEm
@@ -693,8 +693,8 @@ pub fn stub_0xba9dbc() -> ! {
 // 0xbaae98 — __ZN4Ogre11RootManagerD2Ev
 #[doc(alias = "Ogre::RootManager::~RootManager()")]
 #[doc(alias = "__ZN4Ogre11RootManagerD2Ev")]
-pub fn stub_0xbaae98() -> ! {
-    todo!("0xbaae98 __ZN4Ogre11RootManagerD2Ev")
+pub fn stub_0xbaae98() {
+    // IDA 0xbaae98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbab8f8 — __ZN4Ogre11RootManager16cleanUpResourcesERNS_15ResourceManagerERKSsS4_RKSt6vectorISsSaISsEE

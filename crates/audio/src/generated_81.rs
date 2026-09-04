@@ -44,8 +44,8 @@ pub fn stub_889540() -> ! {
 
 // 0x889784 — __ZN9__gnu_cxx13new_allocatorISt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEEE7destroyEPS8_
 #[doc(alias = "__gnu_cxx::new_allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>::destroy(std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>*)")]
-pub fn stub_889784() {
-    // IDA 0x889784: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_889784() -> ! {
+    todo!("0x889784 __ZN9__gnu_cxx13new_allocatorISt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEEE7destroyEPS8_")
 }
 
 // 0x889828 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
@@ -56,44 +56,44 @@ pub fn stub_889828() {
 
 // 0x889858 — __ZNSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEEC2ERS0_RKS5_
 #[doc(alias = "std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>::pair(std::string const&,rbx_core::SharedPtr<RBX::Toolbar> const&)")]
-pub fn stub_889858() {
-    // IDA 0x889858: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_889858() -> ! {
+    todo!("0x889858 __ZNSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEEC2ERS0_RKS5_")
 }
 
 // 0x889914 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS7_ERKS7_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>,std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>> const&)")]
-pub fn stub_889914() {
-    // IDA 0x889914: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_889914() -> ! {
+    todo!("0x889914 __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS7_ERKS7_")
 }
 
 // 0x889a00 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE9_M_insertEPSt18_Rb_tree_node_baseSF_RKS7_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>> const&)")]
-pub fn stub_889a00() {
-    // IDA 0x889a00: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_889a00() -> ! {
+    todo!("0x889a00 __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE9_M_insertEPSt18_Rb_tree_node_baseSF_RKS7_")
 }
 
 // 0x889a50 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE16_M_insert_uniqueERKS7_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>>::_M_insert_unique(std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>> const&)")]
-pub fn stub_889a50() {
-    // IDA 0x889a50: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_889a50() -> ! {
+    todo!("0x889a50 __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE16_M_insert_uniqueERKS7_")
 }
 
 // 0x889ad4 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE14_M_create_nodeERKS7_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>>::_M_create_node(std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>> const&)")]
 pub fn stub_889ad4() {
-    // IDA 0x889ad4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x889ad4: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x889bdc — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE11lower_boundERS1_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>>::lower_bound(std::string const&)")]
-pub fn stub_889bdc() {
-    // IDA 0x889bdc: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_889bdc() -> ! {
+    todo!("0x889bdc __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE11lower_boundERS1_")
 }
 
 // 0x889c0c — __ZN5boost10shared_ptrIN3RBX7ToolbarEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Toolbar>::shared_ptr<RBX::Toolbar,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Toolbar *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_889c0c() {
-    // IDA 0x889c0c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_889c0c() -> ! {
+    todo!("0x889c0c __ZN5boost10shared_ptrIN3RBX7ToolbarEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
 }
 
 // 0x889cd4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7ToolbarES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -140,32 +140,32 @@ pub fn stub_889f04() {
 
 // 0x889f08 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE4findERS1_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>>::find(std::string const&)")]
-pub fn stub_889f08() {
-    // IDA 0x889f08: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_889f08() -> ! {
+    todo!("0x889f08 __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE4findERS1_")
 }
 
 // 0x889f58 — __ZNSt4listIN5boost10shared_ptrIN3RBX6PluginEEESaIS4_EEC2ERKS6_
 #[doc(alias = "std::list<rbx_core::SharedPtr<RBX::Plugin>,std::allocator<rbx_core::SharedPtr<RBX::Plugin>>>::list(std::list<rbx_core::SharedPtr<RBX::Plugin>,std::allocator<rbx_core::SharedPtr<RBX::Plugin>>> const&)")]
 pub fn stub_889f58() {
-    // IDA 0x889f58: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x889f58: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x88a020 — __ZNSt4listIN5boost10shared_ptrIN3RBX6PluginEEESaIS4_EE22_M_initialize_dispatchISt20_List_const_iteratorIS4_EEEvT_SA_St12__false_type
 #[doc(alias = "void std::list<rbx_core::SharedPtr<RBX::Plugin>,std::allocator<rbx_core::SharedPtr<RBX::Plugin>>>::_M_initialize_dispatch<std::_List_const_iterator<rbx_core::SharedPtr<RBX::Plugin>>>(std::_List_const_iterator<rbx_core::SharedPtr<RBX::Plugin>>,std::_List_const_iterator<rbx_core::SharedPtr<RBX::Plugin>>,std::__false_type)")]
-pub fn stub_88a020() {
-    // IDA 0x88a020: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_88a020() -> ! {
+    todo!("0x88a020 __ZNSt4listIN5boost10shared_ptrIN3RBX6PluginEEESaIS4_EE22_M_initialize_dispatchISt20_List_const_iteratorIS4_EEEvT_SA_St12__false_type")
 }
 
 // 0x88a044 — __ZNSt10_List_baseIN5boost10shared_ptrIN3RBX6PluginEEESaIS4_EE8_M_clearEv
 #[doc(alias = "std::_List_base<rbx_core::SharedPtr<RBX::Plugin>,std::allocator<rbx_core::SharedPtr<RBX::Plugin>>>::_M_clear(void)")]
-pub fn stub_88a044() {
-    // IDA 0x88a044: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_88a044() -> ! {
+    todo!("0x88a044 __ZNSt10_List_baseIN5boost10shared_ptrIN3RBX6PluginEEESaIS4_EE8_M_clearEv")
 }
 
 // 0x88a06c — __ZNSt4listIN5boost10shared_ptrIN3RBX6PluginEEESaIS4_EE14_M_create_nodeERKS4_
 #[doc(alias = "std::list<rbx_core::SharedPtr<RBX::Plugin>,std::allocator<rbx_core::SharedPtr<RBX::Plugin>>>::_M_create_node(rbx_core::SharedPtr<RBX::Plugin> const&)")]
 pub fn stub_88a06c() {
-    // IDA 0x88a06c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x88a06c: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x88a150 — __ZNSt8_Rb_treeIPN3RBX9DataModelESt4pairIKS2_NS0_13PluginManager14StateDataEntryEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS7_E
@@ -182,14 +182,14 @@ pub fn stub_88a228() {
 
 // 0x88a250 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EEC2ERKSD_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>>::_Rb_tree(std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>> const&)")]
-pub fn stub_88a250() {
-    // IDA 0x88a250: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_88a250() -> ! {
+    todo!("0x88a250 __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EEC2ERKSD_")
 }
 
 // 0x88a294 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE7_M_copyEPKSt13_Rb_tree_nodeIS7_EPSF_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>>::_M_copy(std::_Rb_tree_node<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>> const*,std::_Rb_tree_node<std::pair<std::string const,rbx_core::SharedPtr<RBX::Toolbar>>>*)")]
-pub fn stub_88a294() {
-    // IDA 0x88a294: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_88a294() -> ! {
+    todo!("0x88a294 __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX7ToolbarEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE7_M_copyEPKSt13_Rb_tree_nodeIS7_EPSF_")
 }
 
 // 0x88a3e8 — __ZNSt8_Rb_treeIPN3RBX9DataModelESt4pairIKS2_NS0_13PluginManager14StateDataEntryEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE16_M_insert_uniqueERKS7_
@@ -206,14 +206,14 @@ pub fn stub_88a450() -> ! {
 
 // 0x88a49c — __ZNSt8_Rb_treeIPN3RBX9DataModelESt4pairIKS2_NS0_13PluginManager14StateDataEntryEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE14_M_create_nodeERKS7_
 #[doc(alias = "std::_Rb_tree<RBX::DataModel *,std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>,std::_Select1st<std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>>,std::less<RBX::DataModel *>,std::allocator<std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>>>::_M_create_node(std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry> const&)")]
-pub fn stub_88a49c() -> ! {
-    todo!("0x88a49c std::_Rb_tree<RBX::DataModel *,std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>,std::_Select1st<std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>>,std::less<RBX::DataModel *>,std::allocator<std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>>>::_M_create_node(std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry> const&)")
+pub fn stub_88a49c() {
+    // IDA 0x88a49c: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x88a5c0 — __ZN5boost10shared_ptrIN3RBX6PluginEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Plugin>::shared_ptr<RBX::Plugin,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Plugin *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_88a5c0() {
-    // IDA 0x88a5c0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_88a5c0() -> ! {
+    todo!("0x88a5c0 __ZN5boost10shared_ptrIN3RBX6PluginEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
 }
 
 // 0x88a688 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_6PluginES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -296,8 +296,8 @@ pub fn stub_88aa14() {
 
 // 0x88aab8 — __ZN5boost10shared_ptrIN3RBX11PluginMouseEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::PluginMouse>::shared_ptr<RBX::PluginMouse,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PluginMouse *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_88aab8() {
-    // IDA 0x88aab8: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_88aab8() -> ! {
+    todo!("0x88aab8 __ZN5boost10shared_ptrIN3RBX11PluginMouseEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
 }
 
 // 0x88ab80 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11PluginMouseES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -380,32 +380,32 @@ pub fn stub_88af0c() {
 
 // 0x88afb0 — __ZNSt8_Rb_treeIPvSt4pairIKS0_N5boost10shared_ptrIN3RBX6ButtonEEEESt10_Select1stIS8_ESt4lessIS0_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 #[doc(alias = "std::_Rb_tree<void *,std::pair<void * const,rbx_core::SharedPtr<RBX::Button>>,std::_Select1st<std::pair<void * const,rbx_core::SharedPtr<RBX::Button>>>,std::less<void *>,std::allocator<std::pair<void * const,rbx_core::SharedPtr<RBX::Button>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<void * const,rbx_core::SharedPtr<RBX::Button>>>,std::pair<void * const,rbx_core::SharedPtr<RBX::Button>> const&)")]
-pub fn stub_88afb0() {
-    // IDA 0x88afb0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_88afb0() -> ! {
+    todo!("0x88afb0 __ZNSt8_Rb_treeIPvSt4pairIKS0_N5boost10shared_ptrIN3RBX6ButtonEEEESt10_Select1stIS8_ESt4lessIS0_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")
 }
 
 // 0x88b064 — __ZNSt8_Rb_treeIPvSt4pairIKS0_N5boost10shared_ptrIN3RBX6ButtonEEEESt10_Select1stIS8_ESt4lessIS0_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 #[doc(alias = "std::_Rb_tree<void *,std::pair<void * const,rbx_core::SharedPtr<RBX::Button>>,std::_Select1st<std::pair<void * const,rbx_core::SharedPtr<RBX::Button>>>,std::less<void *>,std::allocator<std::pair<void * const,rbx_core::SharedPtr<RBX::Button>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<void * const,rbx_core::SharedPtr<RBX::Button>> const&)")]
-pub fn stub_88b064() {
-    // IDA 0x88b064: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_88b064() -> ! {
+    todo!("0x88b064 __ZNSt8_Rb_treeIPvSt4pairIKS0_N5boost10shared_ptrIN3RBX6ButtonEEEESt10_Select1stIS8_ESt4lessIS0_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")
 }
 
 // 0x88b0b0 — __ZNSt8_Rb_treeIPvSt4pairIKS0_N5boost10shared_ptrIN3RBX6ButtonEEEESt10_Select1stIS8_ESt4lessIS0_ESaIS8_EE16_M_insert_uniqueERKS8_
 #[doc(alias = "std::_Rb_tree<void *,std::pair<void * const,rbx_core::SharedPtr<RBX::Button>>,std::_Select1st<std::pair<void * const,rbx_core::SharedPtr<RBX::Button>>>,std::less<void *>,std::allocator<std::pair<void * const,rbx_core::SharedPtr<RBX::Button>>>>::_M_insert_unique(std::pair<void * const,rbx_core::SharedPtr<RBX::Button>> const&)")]
-pub fn stub_88b0b0() {
-    // IDA 0x88b0b0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_88b0b0() -> ! {
+    todo!("0x88b0b0 __ZNSt8_Rb_treeIPvSt4pairIKS0_N5boost10shared_ptrIN3RBX6ButtonEEEESt10_Select1stIS8_ESt4lessIS0_ESaIS8_EE16_M_insert_uniqueERKS8_")
 }
 
 // 0x88b118 — __ZNSt8_Rb_treeIPvSt4pairIKS0_N5boost10shared_ptrIN3RBX6ButtonEEEESt10_Select1stIS8_ESt4lessIS0_ESaIS8_EE14_M_create_nodeERKS8_
 #[doc(alias = "std::_Rb_tree<void *,std::pair<void * const,rbx_core::SharedPtr<RBX::Button>>,std::_Select1st<std::pair<void * const,rbx_core::SharedPtr<RBX::Button>>>,std::less<void *>,std::allocator<std::pair<void * const,rbx_core::SharedPtr<RBX::Button>>>>::_M_create_node(std::pair<void * const,rbx_core::SharedPtr<RBX::Button>> const&)")]
 pub fn stub_88b118() {
-    // IDA 0x88b118: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x88b118: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x88b208 — __ZN5boost10shared_ptrIN3RBX6ButtonEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Button>::shared_ptr<RBX::Button,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Button *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_88b208() {
-    // IDA 0x88b208: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_88b208() -> ! {
+    todo!("0x88b208 __ZN5boost10shared_ptrIN3RBX6ButtonEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
 }
 
 // 0x88b2d0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_6ButtonES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -530,8 +530,8 @@ pub fn stub_88b8fc() {
 
 // 0x88b9b0 — __ZNK3RBX10Reflection13EventDescImplILi0ENS_6ButtonEFvvEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<0,RBX::Button,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Button::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
-pub fn stub_88b9b0() {
-    // IDA 0x88b9b0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_88b9b0() -> ! {
+    todo!("0x88b9b0 __ZNK3RBX10Reflection13EventDescImplILi0ENS_6ButtonEFvvEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")
 }
 
 // 0x88bbb4 — __ZNK3RBX10Reflection13EventDescImplILi0ENS_6ButtonEFvvEN3rbx6signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE
@@ -572,14 +572,14 @@ pub fn stub_88beb8() -> ! {
 
 // 0x88beec — __ZN3RBX10Reflection13BoundFuncDescINS_7ToolbarEFN5boost10shared_ptrINS_8InstanceEEESsSsSsELi3EEC2EMS2_FS6_SsSsSsEPKcSC_SC_SC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Toolbar,rbx_core::SharedPtr<RBX::Instance> ()(std::string,std::string,std::string),3>::BoundFuncDesc(rbx_core::SharedPtr<RBX::Instance> (RBX::Toolbar::*)(std::string,std::string,std::string),char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_88beec() {
-    // IDA 0x88beec: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_88beec() -> ! {
+    todo!("0x88beec __ZN3RBX10Reflection13BoundFuncDescINS_7ToolbarEFN5boost10shared_ptrINS_8InstanceEEESsSsSsELi3EEC2EMS2_FS6_SsSsSsEPKcSC_SC_SC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
 }
 
 // 0x88c104 — __ZN3RBX10Reflection13BoundFuncDescINS_7ToolbarEFN5boost10shared_ptrINS_8InstanceEEESsSsSsELi3EE16declareSignatureEPKcNS0_7VariantESA_SB_SA_SB_
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Toolbar,rbx_core::SharedPtr<RBX::Instance> ()(std::string,std::string,std::string),3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
-pub fn stub_88c104() {
-    // IDA 0x88c104: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_88c104() -> ! {
+    todo!("0x88c104 __ZN3RBX10Reflection13BoundFuncDescINS_7ToolbarEFN5boost10shared_ptrINS_8InstanceEEESsSsSsELi3EE16declareSignatureEPKcNS0_7VariantESA_SB_SA_SB_")
 }
 
 // 0x88c16c — __ZN3RBX10Reflection13BoundFuncDescINS_7ToolbarEFN5boost10shared_ptrINS_8InstanceEEESsSsSsELi3EED0Ev
@@ -590,24 +590,24 @@ pub fn stub_88c16c() {
 
 // 0x88c248 — __ZNK3RBX10Reflection13BoundFuncDescINS_7ToolbarEFN5boost10shared_ptrINS_8InstanceEEESsSsSsELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Toolbar,rbx_core::SharedPtr<RBX::Instance> ()(std::string,std::string,std::string),3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_88c248() {
-    // IDA 0x88c248: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_88c248() -> ! {
+    todo!("0x88c248 __ZNK3RBX10Reflection13BoundFuncDescINS_7ToolbarEFN5boost10shared_ptrINS_8InstanceEEESsSsSsELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")
 }
 
 // 0x88c4ac — __ZN3RBX10Reflection11Call3HelperINS_7ToolbarEMS2_FN5boost10shared_ptrINS_8InstanceEEESsSsSsESsSsSsS6_E4callEPS2_S8_RNS0_7VariantERKSsSE_SE_
 #[doc(alias = "RBX::Reflection::Call3Helper<RBX::Toolbar,rbx_core::SharedPtr<RBX::Instance> (RBX::Toolbar::*)(std::string,std::string,std::string),std::string,std::string,std::string,rbx_core::SharedPtr<RBX::Instance>>::call(RBX::Toolbar*,rbx_core::SharedPtr<RBX::Instance> (RBX::Toolbar::*)(std::string,std::string,std::string),RBX::Reflection::Variant &,std::string const&,std::string const&,std::string const&)")]
-pub fn stub_88c4ac() {
-    // IDA 0x88c4ac: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_88c4ac() -> ! {
+    todo!("0x88c4ac __ZN3RBX10Reflection11Call3HelperINS_7ToolbarEMS2_FN5boost10shared_ptrINS_8InstanceEEESsSsSsESsSsSsS6_E4callEPS2_S8_RNS0_7VariantERKSsSE_SE_")
 }
 
 // 0x88c748 — __ZN3RBX10Reflection13BoundFuncDescINS_6PluginEFN5boost10shared_ptrINS_8InstanceEEESsELi1EEC2EMS2_FS6_SsEPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Plugin,rbx_core::SharedPtr<RBX::Instance> ()(std::string),1>::BoundFuncDesc(rbx_core::SharedPtr<RBX::Instance> (RBX::Plugin::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_88c748() {
-    // IDA 0x88c748: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_88c748() -> ! {
+    todo!("0x88c748 __ZN3RBX10Reflection13BoundFuncDescINS_6PluginEFN5boost10shared_ptrINS_8InstanceEEESsELi1EEC2EMS2_FS6_SsEPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
 }
 
 // 0x88c8c0 — __ZN3RBX10Reflection13BoundFuncDescINS_6PluginEFN5boost10shared_ptrINS_8InstanceEEESsELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Plugin,rbx_core::SharedPtr<RBX::Instance> ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
-pub fn stub_88c8c0() {
-    // IDA 0x88c8c0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_88c8c0() -> ! {
+    todo!("0x88c8c0 __ZN3RBX10Reflection13BoundFuncDescINS_6PluginEFN5boost10shared_ptrINS_8InstanceEEESsELi1EE16declareSignatureEPKcNS0_7VariantE")
 }

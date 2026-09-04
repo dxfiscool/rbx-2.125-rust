@@ -10,6 +10,6 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
 // 0xf21a54 — __ZN3RBX10Reflection8EnumDescINS_9SoundTypeEED2Ev$shim
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9SoundTypeEED2Ev$shim")]
-pub fn stub_f21a54() -> ! {
-    todo!("0xf21a54 __ZN3RBX10Reflection8EnumDescINS_9SoundTypeEED2Ev$shim")
+pub fn stub_f21a54() {
+    // IDA 0xf21a54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

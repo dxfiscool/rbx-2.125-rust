@@ -14,22 +14,22 @@ const _: () = {
 // 0x3353c — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorENS3_5list2INS3_5valueIS6_EENSB_IS7_EEEEEEvE6invokeERNS1_15function_bufferE
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_selector>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_3353c() -> ! {
-    todo!("0x3353c boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_selector>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_3353c() {
+    // IDA 0x3353c: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x33548 — __ZN10TeleporterD1Ev
 // type: void __fastcall(Teleporter *__hidden this)
 #[doc(alias = "Teleporter::~Teleporter()")]
-pub fn stub_33548() -> ! {
-    todo!("0x33548 Teleporter::~Teleporter()")
+pub fn stub_33548() {
+    // IDA 0x33548: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3354c — __ZN10TeleporterD0Ev
 // type: void __fastcall(Teleporter *__hidden this)
 #[doc(alias = "Teleporter::~Teleporter()")]
-pub fn stub_3354c() -> ! {
-    todo!("0x3354c Teleporter::~Teleporter()")
+pub fn stub_3354c() {
+    // IDA 0x3354c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x33550 — __ZN10Teleporter10doTeleportERKSsS1_S1_
@@ -49,8 +49,8 @@ pub fn stub_33920() -> ! {
 // 0x33924 — __ZN5boost4bindIvP13PlaceLauncherSsSsSsS2_SsSsSsEENS_3_bi6bind_tIT_PFS5_T0_T1_T2_T3_ENS3_9list_av_4IT4_T5_T6_T7_E4typeEEESB_SD_SE_SF_SG_
 // type: int __fastcall(int, int, int, std::string *, std::string *, std::string *)
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list_av_4<PlaceLauncher *,std::string,std::string,std::string>::type> boost::bind<void,PlaceLauncher *,std::string,std::string,std::string,PlaceLauncher *,std::string,std::string,std::string>(void (*)(PlaceLauncher *,std::string,std::string,std::string),PlaceLauncher *,std::string,std::string,std::string)")]
-pub fn stub_33924() -> ! {
-    todo!("0x33924 boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list_av_4<PlaceLauncher *,std::string,std::string,std::string>::type> boost::bind<void,PlaceLauncher *,std::string,std::string,std::string,PlaceLauncher *,std::string,std::string,std::string>(void (*)(PlaceLauncher *,std::string,std::string,std::string),PlaceLauncher *,std::string,std::string,std::string)")
+pub fn stub_33924() {
+    // IDA 0x33924: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x33d00 — __ZN10Teleporter12teleportImplEP13PlaceLauncherSsSsSs
@@ -62,8 +62,8 @@ pub fn stub_33d00() -> ! {
 // 0x33db0 — __ZN5boost3_bi5list4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EC2ES5_S6_S6_S6_
 // type: int __fastcall(int, int, std::string *, int, std::string *)
 #[doc(alias = "boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::list4(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")]
-pub fn stub_33db0() -> ! {
-    todo!("0x33db0 boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::list4(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")
+pub fn stub_33db0() {
+    // IDA 0x33db0: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x33fe0 — __ZN5boost3_bi8storage4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EC2ES5_S6_S6_S6_
@@ -103,14 +103,14 @@ pub fn stub_34870() -> ! {
 
 // 0x34b40 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEE6manageERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_34b40() -> ! {
-    todo!("0x34b40 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_34b40() {
+    // IDA 0x34b40: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x34b5c — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_34b5c() -> ! {
-    todo!("0x34b5c boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_34b5c() {
+    // IDA 0x34b5c: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x34b70 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEbT_RNS1_15function_bufferE
@@ -144,8 +144,8 @@ pub fn stub_35200() -> ! {
 // 0x35438 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEE7managerERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, std::string *, std::string *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_35438() -> ! {
-    todo!("0x35438 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_35438() {
+    // IDA 0x35438: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x355c8 — __GLOBAL__I_a_8
@@ -504,15 +504,15 @@ pub fn stub_39018() -> ! {
 // 0x39020 — __ZN10RobloxViewD1Ev
 // type: void __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::~RobloxView()")]
-pub fn stub_39020() -> ! {
-    todo!("0x39020 RobloxView::~RobloxView()")
+pub fn stub_39020() {
+    // IDA 0x39020: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39024 — __ZN10RobloxViewD2Ev
 // type: void __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::~RobloxView()")]
-pub fn stub_39024() -> ! {
-    todo!("0x39024 RobloxView::~RobloxView()")
+pub fn stub_39024() {
+    // IDA 0x39024: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39674 — __ZN10RobloxView11create_viewEN5boost10shared_ptrIN3RBX4GameEEEjjSsSsSs
@@ -532,71 +532,71 @@ pub fn stub_39920() -> ! {
 // 0x39be0 — __ZNSt12domain_errorD0Ev
 // type: void __cdecl(std::domain_error *__hidden this)
 #[doc(alias = "std::domain_error::~domain_error()")]
-pub fn stub_39be0() -> ! {
-    todo!("0x39be0 std::domain_error::~domain_error()")
+pub fn stub_39be0() {
+    // IDA 0x39be0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39bf8 — __ZNSt12domain_errorD2Ev
 // type: void __cdecl(std::domain_error *__hidden this)
 #[doc(alias = "std::domain_error::~domain_error()")]
-pub fn stub_39bf8() -> ! {
-    todo!("0x39bf8 std::domain_error::~domain_error()")
+pub fn stub_39bf8() {
+    // IDA 0x39bf8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39c00 — __ZNSt16invalid_argumentD1Ev
 // type: void __cdecl(std::invalid_argument *__hidden this)
 #[doc(alias = "std::invalid_argument::~invalid_argument()")]
-pub fn stub_39c00() -> ! {
-    todo!("0x39c00 std::invalid_argument::~invalid_argument()")
+pub fn stub_39c00() {
+    // IDA 0x39c00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39c08 — __ZNSt12length_errorD0Ev
 // type: void __cdecl(std::length_error *__hidden this)
 #[doc(alias = "std::length_error::~length_error()")]
-pub fn stub_39c08() -> ! {
-    todo!("0x39c08 std::length_error::~length_error()")
+pub fn stub_39c08() {
+    // IDA 0x39c08: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39c20 — __ZNSt12out_of_rangeD1Ev
 // type: void __cdecl(std::out_of_range *__hidden this)
 #[doc(alias = "std::out_of_range::~out_of_range()")]
-pub fn stub_39c20() -> ! {
-    todo!("0x39c20 std::out_of_range::~out_of_range()")
+pub fn stub_39c20() {
+    // IDA 0x39c20: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39c28 — __ZNSt11range_errorD0Ev
 // type: void __cdecl(std::range_error *__hidden this)
 #[doc(alias = "std::range_error::~range_error()")]
-pub fn stub_39c28() -> ! {
-    todo!("0x39c28 std::range_error::~range_error()")
+pub fn stub_39c28() {
+    // IDA 0x39c28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39c40 — __ZNSt11range_errorD2Ev
 // type: void __cdecl(std::range_error *__hidden this)
 #[doc(alias = "std::range_error::~range_error()")]
-pub fn stub_39c40() -> ! {
-    todo!("0x39c40 std::range_error::~range_error()")
+pub fn stub_39c40() {
+    // IDA 0x39c40: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39c48 — __ZNSt14overflow_errorD1Ev
 // type: void __cdecl(std::overflow_error *__hidden this)
 #[doc(alias = "std::overflow_error::~overflow_error()")]
-pub fn stub_39c48() -> ! {
-    todo!("0x39c48 std::overflow_error::~overflow_error()")
+pub fn stub_39c48() {
+    // IDA 0x39c48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39c50 — __ZNSt15underflow_errorD0Ev
 // type: void __cdecl(std::underflow_error *__hidden this)
 #[doc(alias = "std::underflow_error::~underflow_error()")]
-pub fn stub_39c50() -> ! {
-    todo!("0x39c50 std::underflow_error::~underflow_error()")
+pub fn stub_39c50() {
+    // IDA 0x39c50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39c68 — __ZNSt15underflow_errorD2Ev
 // type: void __cdecl(std::underflow_error *__hidden this)
 #[doc(alias = "std::underflow_error::~underflow_error()")]
-pub fn stub_39c68() -> ! {
-    todo!("0x39c68 std::underflow_error::~underflow_error()")
+pub fn stub_39c68() {
+    // IDA 0x39c68: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x39c6c — __ZN3RBX13TaskScheduler14removeBlockingEN5boost10shared_ptrINS0_3JobEEENS1_8functionIFvvEEE
@@ -647,8 +647,8 @@ pub fn stub_3a0d4() -> ! {
 // 0x3a1b8 — __ZN17QuitEventListenerD1Ev
 // type: void __fastcall(QuitEventListener *__hidden this)
 #[doc(alias = "QuitEventListener::~QuitEventListener()")]
-pub fn stub_3a1b8() -> ! {
-    todo!("0x3a1b8 QuitEventListener::~QuitEventListener()")
+pub fn stub_3a1b8() {
+    // IDA 0x3a1b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3a1bc — __ZN5boost10shared_ptrIN3RBX4GameEEaSERKS3_

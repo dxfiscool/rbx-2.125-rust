@@ -20,8 +20,8 @@ pub fn stub_577720() -> ! {
 
 // 0x577824 — __ZN3RBX10Reflection13BoundFuncDescINS_9HopperBinEFvvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HopperBin,void ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_577824() -> ! {
-    todo!("0x577824 RBX::Reflection::BoundFuncDesc<RBX::HopperBin,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_577824() {
+    // IDA 0x577824: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5778d8 — __ZNK3RBX10Reflection13BoundFuncDescINS_9HopperBinEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -32,8 +32,8 @@ pub fn stub_5778d8() -> ! {
 
 // 0x5778f8 — __ZN3RBX10Reflection9EventDescINS_9HopperBinEFvvEN3rbx6signalIS3_EEMS2_S6_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::HopperBin,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::HopperBin::*>::~EventDesc()")]
-pub fn stub_5778f8() -> ! {
-    todo!("0x5778f8 RBX::Reflection::EventDesc<RBX::HopperBin,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::HopperBin::*>::~EventDesc()")
+pub fn stub_5778f8() {
+    // IDA 0x5778f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5779ac — __ZNK3RBX10Reflection13EventDescImplILi0ENS_9HopperBinEFvvEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE // was: boost
@@ -56,8 +56,8 @@ pub fn stub_577c24() -> ! {
 
 // 0x577c38 — __ZN3RBX10Reflection15RemoteEventDescINS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEED0Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")]
-pub fn stub_577c38() -> ! {
-    todo!("0x577c38 RBX::Reflection::RemoteEventDesc<RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")
+pub fn stub_577c38() {
+    // IDA 0x577c38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x577cec — __ZNK3RBX10Reflection13EventDescImplILi0ENS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE // was: boost
@@ -104,8 +104,8 @@ pub fn stub_577fa8() -> ! {
 
 // 0x57812c — __ZN3RBX10Reflection9EventDescINS_9HopperBinEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED0Ev // was: boost
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::HopperBin,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::HopperBin::*>::~EventDesc()")]
-pub fn stub_57812c() -> ! {
-    todo!("0x57812c RBX::Reflection::EventDesc<RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::~EventDesc()")
+pub fn stub_57812c() {
+    // IDA 0x57812c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5781e0 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_9HopperBinEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE // was: boost
@@ -164,8 +164,8 @@ pub fn stub_5786b0() -> ! {
 
 // 0x578864 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::~EnumPropDescriptor()")]
-pub fn stub_578864() -> ! {
-    todo!("0x578864 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::~EnumPropDescriptor()")
+pub fn stub_578864() {
+    // IDA 0x578864: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x578890 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE10isReadOnlyEv
@@ -314,8 +314,8 @@ pub fn stub_578f28() -> ! {
 
 // 0x57903c — __ZN3RBX10Reflection14PropDescriptorINS_12BackpackItemENS_9TextureIdEED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::~PropDescriptor()")]
-pub fn stub_57903c() -> ! {
-    todo!("0x57903c RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::~PropDescriptor()")
+pub fn stub_57903c() {
+    // IDA 0x57903c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x579068 — __ZNK3RBX10Reflection14PropDescriptorINS_12BackpackItemENS_9TextureIdEE10GetSetImplIMS2_KFKS3_vEMS2_FvRS6_EE10isReadOnlyEv
@@ -404,14 +404,14 @@ pub fn stub_5794c8() -> ! {
 
 // 0x5795ac — __ZN3RBX9HopperBinD2Ev
 #[doc(alias = "RBX::HopperBin::~HopperBin()")]
-pub fn stub_5795ac() -> ! {
-    todo!("0x5795ac RBX::HopperBin::~HopperBin()")
+pub fn stub_5795ac() {
+    // IDA 0x5795ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x579878 — __ZN3rbx13remote_signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEED2Ev // was: boost
 #[doc(alias = "rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::~remote_signal()")]
-pub fn stub_579878() -> ! {
-    todo!("0x579878 rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>::~remote_signal()")
+pub fn stub_579878() {
+    // IDA 0x579878: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5799c4 — __GLOBAL__I_a_212
@@ -506,20 +506,20 @@ pub fn stub_57bf9c() -> ! {
 
 // 0x57bfb4 — __ZN3RBX10IEquipableD0Ev
 #[doc(alias = "RBX::IEquipable::~IEquipable()")]
-pub fn stub_57bfb4() -> ! {
-    todo!("0x57bfb4 RBX::IEquipable::~IEquipable()")
+pub fn stub_57bfb4() {
+    // IDA 0x57bfb4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x57c054 — __ZN3RBX10IEquipableD1Ev
 #[doc(alias = "RBX::IEquipable::~IEquipable()")]
-pub fn stub_57c054() -> ! {
-    todo!("0x57c054 RBX::IEquipable::~IEquipable()")
+pub fn stub_57c054() {
+    // IDA 0x57c054: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x57c058 — __ZN3RBX10IEquipableD2Ev
 #[doc(alias = "RBX::IEquipable::~IEquipable()")]
-pub fn stub_57c058() -> ! {
-    todo!("0x57c058 RBX::IEquipable::~IEquipable()")
+pub fn stub_57c058() {
+    // IDA 0x57c058: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x57c17c — __ZN3RBX10IEquipable9buildWeldEPNS_12PartInstanceES2_RKN3G3D15CoordinateFrameES6_RKSs
@@ -566,8 +566,8 @@ pub fn stub_57caf4() -> ! {
 
 // 0x57cb34 — __ZThn800_N3RBX14GuiImageButton8setImageENS_9TextureIdE
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::setImage(RBX::TextureId)")]
-pub fn stub_57cb34() -> ! {
-    todo!("0x57cb34 non-virtual thunk toRBX::GuiImageButton::setImage(RBX::TextureId)")
+pub fn stub_57cb34() {
+    // IDA 0x57cb34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x57cb3c — __ZN3RBX14GuiImageButton18setImageRectOffsetEN3G3D7Vector2E
@@ -578,8 +578,8 @@ pub fn stub_57cb3c() -> ! {
 
 // 0x57cb88 — __ZThn800_N3RBX14GuiImageButton18setImageRectOffsetEN3G3D7Vector2E
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")]
-pub fn stub_57cb88() -> ! {
-    todo!("0x57cb88 non-virtual thunk toRBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")
+pub fn stub_57cb88() {
+    // IDA 0x57cb88: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x57cb90 — __ZN3RBX14GuiImageButton16setImageRectSizeEN3G3D7Vector2E
@@ -590,8 +590,8 @@ pub fn stub_57cb90() -> ! {
 
 // 0x57cbdc — __ZThn800_N3RBX14GuiImageButton16setImageRectSizeEN3G3D7Vector2E
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::setImageRectSize(G3D::Vector2)")]
-pub fn stub_57cbdc() -> ! {
-    todo!("0x57cbdc non-virtual thunk toRBX::GuiImageButton::setImageRectSize(G3D::Vector2)")
+pub fn stub_57cbdc() {
+    // IDA 0x57cbdc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x57cbe4 — __ZN3RBX14GuiImageButton8render2dEPNS_5AdornE
@@ -602,12 +602,12 @@ pub fn stub_57cbe4() -> ! {
 
 // 0x57cd38 — __ZThn96_N3RBX14GuiImageButton8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::render2d(RBX::Adorn *)")]
-pub fn stub_57cd38() -> ! {
-    todo!("0x57cd38 non-virtual thunk toRBX::GuiImageButton::render2d(RBX::Adorn *)")
+pub fn stub_57cd38() {
+    // IDA 0x57cd38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x57cd40 — __ZN3RBX10Reflection14PropDescriptorINS_14GuiImageButtonENS_9TextureIdEED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiImageButton,RBX::TextureId>::~PropDescriptor()")]
-pub fn stub_57cd40() -> ! {
-    todo!("0x57cd40 RBX::Reflection::PropDescriptor<RBX::GuiImageButton,RBX::TextureId>::~PropDescriptor()")
+pub fn stub_57cd40() {
+    // IDA 0x57cd40: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

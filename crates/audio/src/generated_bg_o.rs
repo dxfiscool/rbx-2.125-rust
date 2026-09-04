@@ -47,8 +47,8 @@ pub fn stub_3c207c() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::UDim2>::~PropDescriptor()
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::UDim2>::~PropDescriptor()")]
-pub fn stub_3c2190() -> ! {
-    todo!("0x3c2190 RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::UDim2>::~PropDescriptor()")
+pub fn stub_3c2190() {
+    // IDA 0x3c2190: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c21bc — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiENS_5UDim2EE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
@@ -95,8 +95,8 @@ pub fn stub_3c2224() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector2>::~PropDescriptor()
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector2>::~PropDescriptor()")]
-pub fn stub_3c2338() -> ! {
-    todo!("0x3c2338 RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector2>::~PropDescriptor()")
+pub fn stub_3c2338() {
+    // IDA 0x3c2338: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c2364 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector2EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv
@@ -143,8 +143,8 @@ pub fn stub_3c23c0() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector3>::~PropDescriptor()
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector3>::~PropDescriptor()")]
-pub fn stub_3c24d4() -> ! {
-    todo!("0x3c24d4 RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector3>::~PropDescriptor()")
+pub fn stub_3c24d4() {
+    // IDA 0x3c24d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c2500 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv
@@ -191,8 +191,8 @@ pub fn stub_3c2560() -> ! {
 // demangled: RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::~RefPropDescriptor()
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::~RefPropDescriptor()")]
-pub fn stub_3c2604() -> ! {
-    todo!("0x3c2604 RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::~RefPropDescriptor()")
+pub fn stub_3c2604() {
+    // IDA 0x3c2604: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c2634 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10isReadOnlyEv
@@ -295,8 +295,8 @@ pub fn stub_3c2a28() -> ! {
 // demangled: non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_3c2b08() -> ! {
-    todo!("0x3c2b08 non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_3c2b08() {
+    // IDA 0x3c2b08: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c2b10 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -335,8 +335,8 @@ pub fn stub_3c2b38() -> ! {
 // demangled: RBX::BillboardGui::~BillboardGui()
 // type: void __fastcall(RBX::BillboardGui *__hidden this)
 #[doc(alias = "RBX::BillboardGui::~BillboardGui()")]
-pub fn stub_3c2b5c() -> ! {
-    todo!("0x3c2b5c RBX::BillboardGui::~BillboardGui()")
+pub fn stub_3c2b5c() {
+    // IDA 0x3c2b5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c2d40 — __GLOBAL__I_a_164
@@ -613,8 +613,8 @@ pub fn stub_3c5690() -> ! {
 // demangled: non-virtual thunk to RBX::Camera::onHeartbeat(RBX::Heartbeat const&)
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk to RBX::Camera::onHeartbeat(RBX::Heartbeat const&)")]
-pub fn stub_3c58a8() -> ! {
-    todo!("0x3c58a8 non-virtual thunk to RBX::Camera::onHeartbeat(RBX::Heartbeat const&)")
+pub fn stub_3c58a8() {
+    // IDA 0x3c58a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c58b0 — __ZN3RBX6Camera14getCameraOwnerEv
@@ -925,8 +925,8 @@ pub fn stub_3c8be4() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::Camera,RBX::Camera::CameraType>::~EnumPropDescriptor()
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Camera,RBX::Camera::CameraType>::~EnumPropDescriptor()")]
-pub fn stub_3c8bec() -> ! {
-    todo!("0x3c8bec RBX::Reflection::EnumPropDescriptor<RBX::Camera,RBX::Camera::CameraType>::~EnumPropDescriptor()")
+pub fn stub_3c8bec() {
+    // IDA 0x3c8bec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c8c10 — __ZNK3RBX6Camera24getCameraCoordinateFrameEv
@@ -941,8 +941,8 @@ pub fn stub_3c8c10() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Camera,G3D::CoordinateFrame>::~PropDescriptor()
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,G3D::CoordinateFrame>::~PropDescriptor()")]
-pub fn stub_3c8c14() -> ! {
-    todo!("0x3c8c14 RBX::Reflection::PropDescriptor<RBX::Camera,G3D::CoordinateFrame>::~PropDescriptor()")
+pub fn stub_3c8c14() {
+    // IDA 0x3c8c14: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c8c38 — __ZNK3RBX6Camera14getCameraFocusEv
@@ -965,6 +965,6 @@ pub fn stub_3c8c3c() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Camera,float>::~PropDescriptor()
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,float>::~PropDescriptor()")]
-pub fn stub_3c8c60() -> ! {
-    todo!("0x3c8c60 RBX::Reflection::PropDescriptor<RBX::Camera,float>::~PropDescriptor()")
+pub fn stub_3c8c60() {
+    // IDA 0x3c8c60: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

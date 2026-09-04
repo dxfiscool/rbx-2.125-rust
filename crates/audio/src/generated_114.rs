@@ -15,8 +15,8 @@ const _: () = {
 // 0xf22e28 — __ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorD2Ev$shim
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_f22e28() -> ! {
-    todo!("0xf22e28 __ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_f22e28() {
+    // IDA 0xf22e28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf22e34 — __ZN3RBX4Name9doDeclareILZNS_10sPlayerGuiEEEERKS0_v$shim
@@ -43,8 +43,8 @@ pub fn stub_f22e4c() -> ! {
 // 0xf22e58 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN3RBX17StarterGuiService11CoreGuiTypeEbEES7_bNS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm$shim
 // type: int __fastcall(int, int, int, int, int, int, int, int, int)
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN3RBX17StarterGuiService11CoreGuiTypeEbEES7_bNS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm$shim")]
-pub fn stub_f22e58() -> ! {
-    todo!("0xf22e58 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN3RBX17StarterGuiService11CoreGuiTypeEbEES7_bNS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm$shim")
+pub fn stub_f22e58() {
+    // IDA 0xf22e58: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0xf22e64 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17StarterGuiService11CoreGuiTypeEEEE14doGetSingletonEv$shim
@@ -127,8 +127,8 @@ pub fn stub_f22edc() -> ! {
 // 0xf22ee8 — __ZN3RBX14FactoryProductINS_4PoseENS_8InstanceELZNS_5sPoseEES2_E7CreatorD2Ev$shim
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4PoseENS_8InstanceELZNS_5sPoseEES2_E7CreatorD2Ev$shim")]
-pub fn stub_f22ee8() -> ! {
-    todo!("0xf22ee8 __ZN3RBX14FactoryProductINS_4PoseENS_8InstanceELZNS_5sPoseEES2_E7CreatorD2Ev$shim")
+pub fn stub_f22ee8() {
+    // IDA 0xf22ee8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf22ef4 — __ZN3RBX4Name9doDeclareILZNS_5sPoseEEEERKS0_v$shim
@@ -155,8 +155,8 @@ pub fn stub_f22f0c() -> ! {
 // 0xf22f18 — __ZN3RBX7FWFinalINS_12FWPVInstanceEED2Ev$shim
 // type: int __fastcall(int, int, int, int, int, int)
 #[doc(alias = "__ZN3RBX7FWFinalINS_12FWPVInstanceEED2Ev$shim")]
-pub fn stub_f22f18() -> ! {
-    todo!("0xf22f18 __ZN3RBX7FWFinalINS_12FWPVInstanceEED2Ev$shim")
+pub fn stub_f22f18() {
+    // IDA 0xf22f18: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf22f24 — __ZNK3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEE14convertToIndexES3_$shim
@@ -183,8 +183,8 @@ pub fn stub_f22f3c() -> ! {
 // 0xf22f48 — __ZN5boost10scoped_ptrIN3RBX8SafeChatEED2Ev$shim
 // type: int __fastcall(int, int, int, int, int)
 #[doc(alias = "__ZN5boost10scoped_ptrIN3RBX8SafeChatEED2Ev$shim")]
-pub fn stub_f22f48() -> ! {
-    todo!("0xf22f48 __ZN5boost10scoped_ptrIN3RBX8SafeChatEED2Ev$shim")
+pub fn stub_f22f48() {
+    // IDA 0xf22f48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf22f54 — __ZNSt6vectorIPN3RBX10ChatOptionESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
@@ -218,15 +218,15 @@ pub fn stub_f22f78() -> ! {
 // 0xf22f84 — __ZN3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7CreatorD2Ev$shim
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_f22f84() -> ! {
-    todo!("0xf22f84 __ZN3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_f22f84() {
+    // IDA 0xf22f84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf22f90 — __ZN3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7CreatorD2Ev$shim
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_f22f90() -> ! {
-    todo!("0xf22f90 __ZN3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_f22f90() {
+    // IDA 0xf22f90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf22f9c — __ZNK3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7Creator12getClassNameEv$shim
@@ -260,8 +260,8 @@ pub fn stub_f22fc0() -> ! {
 // 0xf22fcc — __ZN3RBX8SeatImplINS_17BasicPartInstanceEED2Ev$shim
 // type: int __fastcall(int, int, int, int, int, rbx::signals::connection *, int, int, int, int)
 #[doc(alias = "__ZN3RBX8SeatImplINS_17BasicPartInstanceEED2Ev$shim")]
-pub fn stub_f22fcc() -> ! {
-    todo!("0xf22fcc __ZN3RBX8SeatImplINS_17BasicPartInstanceEED2Ev$shim")
+pub fn stub_f22fcc() {
+    // IDA 0xf22fcc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf22fd8 — __ZNK3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEE7Creator12getClassNameEv$shim
@@ -274,15 +274,15 @@ pub fn stub_f22fd8() -> ! {
 // 0xf22fe4 — __ZN3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED0Ev$shim
 // type: int __fastcall(int, int, int, int, int)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED0Ev$shim")]
-pub fn stub_f22fe4() -> ! {
-    todo!("0xf22fe4 __ZN3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED0Ev$shim")
+pub fn stub_f22fe4() {
+    // IDA 0xf22fe4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf22ff0 — __ZN3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEE7CreatorD2Ev$shim
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_f22ff0() -> ! {
-    todo!("0xf22ff0 __ZN3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_f22ff0() {
+    // IDA 0xf22ff0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf22ffc — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX8SeatImplINS4_17BasicPartInstanceEEEEENS0_5list1INS0_5valueIPS7_EEEEEclEv$shim
@@ -358,8 +358,8 @@ pub fn stub_f23068() -> ! {
 // 0xf23074 — __ZN3RBX14FactoryProductINS_12SelectionBoxENS_11PVAdornmentELZNS_13sSelectionBoxEENS_8InstanceEE7CreatorD2Ev$shim
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12SelectionBoxENS_11PVAdornmentELZNS_13sSelectionBoxEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_f23074() -> ! {
-    todo!("0xf23074 __ZN3RBX14FactoryProductINS_12SelectionBoxENS_11PVAdornmentELZNS_13sSelectionBoxEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_f23074() {
+    // IDA 0xf23074: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf23080 — __ZN3RBX4Name9doDeclareILZNS_13sSelectionBoxEEEERKS0_v$shim
@@ -386,22 +386,22 @@ pub fn stub_f23098() -> ! {
 // 0xf230a4 — __ZN3RBX18SelectionPartLassoD1Ev$shim
 // type: void __fastcall(RBX::SelectionPartLasso *)
 #[doc(alias = "__ZN3RBX18SelectionPartLassoD1Ev$shim")]
-pub fn stub_f230a4() -> ! {
-    todo!("0xf230a4 __ZN3RBX18SelectionPartLassoD1Ev$shim")
+pub fn stub_f230a4() {
+    // IDA 0xf230a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf230b0 — __ZN3RBX14FactoryProductINS_18SelectionPartLassoENS_14SelectionLassoELZNS_19sSelectionPartLassoEENS_8InstanceEE7CreatorD2Ev$shim
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_18SelectionPartLassoENS_14SelectionLassoELZNS_19sSelectionPartLassoEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_f230b0() -> ! {
-    todo!("0xf230b0 __ZN3RBX14FactoryProductINS_18SelectionPartLassoENS_14SelectionLassoELZNS_19sSelectionPartLassoEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_f230b0() {
+    // IDA 0xf230b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf230bc — __ZN3RBX14FactoryProductINS_19SelectionPointLassoENS_14SelectionLassoELZNS_20sSelectionPointLassoEENS_8InstanceEE7CreatorD2Ev$shim
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_19SelectionPointLassoENS_14SelectionLassoELZNS_20sSelectionPointLassoEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_f230bc() -> ! {
-    todo!("0xf230bc __ZN3RBX14FactoryProductINS_19SelectionPointLassoENS_14SelectionLassoELZNS_20sSelectionPointLassoEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_f230bc() {
+    // IDA 0xf230bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf230c8 — __ZNK3RBX14FactoryProductINS_19SelectionPointLassoENS_14SelectionLassoELZNS_20sSelectionPointLassoEENS_8InstanceEE7Creator12getClassNameEv$shim
@@ -449,8 +449,8 @@ pub fn stub_f23104() -> ! {
 // 0xf23110 — __ZN3RBX14FactoryProductINS_20SkateboardControllerENS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEE7CreatorD2Ev$shim
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_20SkateboardControllerENS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_f23110() -> ! {
-    todo!("0xf23110 __ZN3RBX14FactoryProductINS_20SkateboardControllerENS_10ControllerELZNS_21sSkateboardControllerEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_f23110() {
+    // IDA 0xf23110: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf2311c — __ZN3RBX4Name9doDeclareILZNS_21sSkateboardControllerEEEERKS0_v$shim
@@ -491,29 +491,29 @@ pub fn stub_f2314c() -> ! {
 // 0xf23158 — __ZN3RBX12PlatformImplINS_17BasicPartInstanceEED2Ev$shim
 // type: int __fastcall(int, int, int, int, int, rbx::signals::connection *, int, int, int, int)
 #[doc(alias = "__ZN3RBX12PlatformImplINS_17BasicPartInstanceEED2Ev$shim")]
-pub fn stub_f23158() -> ! {
-    todo!("0xf23158 __ZN3RBX12PlatformImplINS_17BasicPartInstanceEED2Ev$shim")
+pub fn stub_f23158() {
+    // IDA 0xf23158: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf23164 — __ZN3RBX14FactoryProductINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEED0Ev$shim
 // type: int __fastcall(int, int, int, int, int)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEED0Ev$shim")]
-pub fn stub_f23164() -> ! {
-    todo!("0xf23164 __ZN3RBX14FactoryProductINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEED0Ev$shim")
+pub fn stub_f23164() {
+    // IDA 0xf23164: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf23170 — __ZN3RBX13ActionStationINS_17BasicPartInstanceEED0Ev$shim
 // type: int __fastcall(int, int, int, int, int)
 #[doc(alias = "__ZN3RBX13ActionStationINS_17BasicPartInstanceEED0Ev$shim")]
-pub fn stub_f23170() -> ! {
-    todo!("0xf23170 __ZN3RBX13ActionStationINS_17BasicPartInstanceEED0Ev$shim")
+pub fn stub_f23170() {
+    // IDA 0xf23170: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf2317c — __ZN3RBX14FactoryProductINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEE7CreatorD2Ev$shim
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_f2317c() -> ! {
-    todo!("0xf2317c __ZN3RBX14FactoryProductINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_f2317c() {
+    // IDA 0xf2317c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf23188 — __ZN3RBX4Name9doDeclareILZNS_19sSkateboardPlatformEEEERKS0_v$shim
@@ -603,8 +603,8 @@ pub fn stub_f2320c() -> ! {
 // 0xf23218 — __ZN3RBX14FactoryProductINS_3SkyENS_8InstanceELZNS_4sSkyEES2_E7CreatorD2Ev$shim
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_3SkyENS_8InstanceELZNS_4sSkyEES2_E7CreatorD2Ev$shim")]
-pub fn stub_f23218() -> ! {
-    todo!("0xf23218 __ZN3RBX14FactoryProductINS_3SkyENS_8InstanceELZNS_4sSkyEES2_E7CreatorD2Ev$shim")
+pub fn stub_f23218() {
+    // IDA 0xf23218: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf23224 — __ZNK3RBX14FactoryProductINS_3SkyENS_8InstanceELZNS_4sSkyEES2_E7Creator12getClassNameEv$shim
@@ -631,8 +631,8 @@ pub fn stub_f2323c() -> ! {
 // 0xf23248 — __ZN3RBX14FactoryProductINS_5SmokeENS_8InstanceELZNS_6sSmokeEES2_E7CreatorD2Ev$shim
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5SmokeENS_8InstanceELZNS_6sSmokeEES2_E7CreatorD2Ev$shim")]
-pub fn stub_f23248() -> ! {
-    todo!("0xf23248 __ZN3RBX14FactoryProductINS_5SmokeENS_8InstanceELZNS_6sSmokeEES2_E7CreatorD2Ev$shim")
+pub fn stub_f23248() {
+    // IDA 0xf23248: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf23254 — __ZN3RBX4Name9doDeclareILZNS_6sSmokeEEEERKS0_v$shim
@@ -652,8 +652,8 @@ pub fn stub_f23260() -> ! {
 // 0xf2326c — __ZN3RBX8SparklesD2Ev$shim
 // type: void __fastcall(RBX::Sparkles *)
 #[doc(alias = "__ZN3RBX8SparklesD2Ev$shim")]
-pub fn stub_f2326c() -> ! {
-    todo!("0xf2326c __ZN3RBX8SparklesD2Ev$shim")
+pub fn stub_f2326c() {
+    // IDA 0xf2326c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf23278 — __ZNK3RBX14FactoryProductINS_8SparklesENS_8InstanceELZNS_9sSparklesEES2_E7Creator12getClassNameEv$shim
@@ -666,8 +666,8 @@ pub fn stub_f23278() -> ! {
 // 0xf23284 — __ZN3RBX8SparklesD0Ev$shim
 // type: void __fastcall(RBX::Sparkles *)
 #[doc(alias = "__ZN3RBX8SparklesD0Ev$shim")]
-pub fn stub_f23284() -> ! {
-    todo!("0xf23284 __ZN3RBX8SparklesD0Ev$shim")
+pub fn stub_f23284() {
+    // IDA 0xf23284: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf23290 — __ZNSt6vectorIPN3RBX13SpawnLocationESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
@@ -694,15 +694,15 @@ pub fn stub_f232a8() -> ! {
 // 0xf232b4 — __ZN3RBX14FactoryProductINS_13SpawnLocationENS_17BasicPartInstanceELZNS_14sSpawnLocationEENS_8InstanceEED0Ev$shim
 // type: int __fastcall(int, int, int, int, int)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13SpawnLocationENS_17BasicPartInstanceELZNS_14sSpawnLocationEENS_8InstanceEED0Ev$shim")]
-pub fn stub_f232b4() -> ! {
-    todo!("0xf232b4 __ZN3RBX14FactoryProductINS_13SpawnLocationENS_17BasicPartInstanceELZNS_14sSpawnLocationEENS_8InstanceEED0Ev$shim")
+pub fn stub_f232b4() {
+    // IDA 0xf232b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf232c0 — __ZN3RBX14FactoryProductINS_13SpawnLocationENS_17BasicPartInstanceELZNS_14sSpawnLocationEENS_8InstanceEE7CreatorD2Ev$shim
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13SpawnLocationENS_17BasicPartInstanceELZNS_14sSpawnLocationEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_f232c0() -> ! {
-    todo!("0xf232c0 __ZN3RBX14FactoryProductINS_13SpawnLocationENS_17BasicPartInstanceELZNS_14sSpawnLocationEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_f232c0() {
+    // IDA 0xf232c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf232cc — __ZN3RBX4Name9doDeclareILZNS_14sSpawnLocationEEEERKS0_v$shim

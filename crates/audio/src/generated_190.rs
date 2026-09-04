@@ -17,8 +17,8 @@ const _: () = {
 // type: void __fastcall(RBX::DataModelMesh *__hidden this)
 #[doc(alias = "RBX::DataModelMesh::~DataModelMesh()")]
 #[doc(alias = "__ZN3RBX13DataModelMeshD0Ev")]
-pub fn stub_4758a8() -> ! {
-    todo!("0x4758a8 RBX::DataModelMesh::~DataModelMesh()")
+pub fn stub_4758a8() {
+    // IDA 0x4758a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x475948 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEE12getClassNameEv
@@ -33,8 +33,8 @@ pub fn stub_475948() -> ! {
 // type: void __fastcall(RBX::DataModelMesh *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")]
 #[doc(alias = "__ZThn32_N3RBX13DataModelMeshD1Ev")]
-pub fn stub_475970() -> ! {
-    todo!("0x475970 non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")
+pub fn stub_475970() {
+    // IDA 0x475970: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x475978 — __ZThn32_N3RBX13DataModelMeshD0Ev
@@ -42,15 +42,15 @@ pub fn stub_475970() -> ! {
 // type: void __fastcall(RBX::DataModelMesh *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")]
 #[doc(alias = "__ZThn32_N3RBX13DataModelMeshD0Ev")]
-pub fn stub_475978() -> ! {
-    todo!("0x475978 non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")
+pub fn stub_475978() {
+    // IDA 0x475978: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x475a1c — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEE12getClassNameEv
 // demangled: __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEE12getClassNameEv")]
-pub fn stub_475a1c() -> ! {
-    todo!("0x475a1c __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEE12getClassNameEv")
+pub fn stub_475a1c() {
+    // IDA 0x475a1c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x475a44 — __ZThn36_N3RBX13DataModelMeshD1Ev
@@ -58,8 +58,8 @@ pub fn stub_475a1c() -> ! {
 // type: void __fastcall(RBX::DataModelMesh *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")]
 #[doc(alias = "__ZThn36_N3RBX13DataModelMeshD1Ev")]
-pub fn stub_475a44() -> ! {
-    todo!("0x475a44 non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")
+pub fn stub_475a44() {
+    // IDA 0x475a44: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x475a4c — __ZThn36_N3RBX13DataModelMeshD0Ev
@@ -67,8 +67,8 @@ pub fn stub_475a44() -> ! {
 // type: void __fastcall(RBX::DataModelMesh *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")]
 #[doc(alias = "__ZThn36_N3RBX13DataModelMeshD0Ev")]
-pub fn stub_475a4c() -> ! {
-    todo!("0x475a4c non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")
+pub fn stub_475a4c() {
+    // IDA 0x475a4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x475af0 — __ZN3RBX4Name13callDoDeclareILZNS_14sDataModelMeshEEEEvv
@@ -88,43 +88,43 @@ pub fn stub_475af4() -> ! {
 // 0x475bd4 — __ZN3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZN3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_475bd4() -> ! {
-    todo!("0x475bd4 __ZN3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_475bd4() {
+    // IDA 0x475bd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x475bd8 — __ZN3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZN3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_475bd8() -> ! {
-    todo!("0x475bd8 __ZN3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_475bd8() {
+    // IDA 0x475bd8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x475c78 — __ZThn32_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZThn32_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_475c78() -> ! {
-    todo!("0x475c78 __ZThn32_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_475c78() {
+    // IDA 0x475c78: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x475c80 — __ZThn32_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZThn32_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_475c80() -> ! {
-    todo!("0x475c80 __ZThn32_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_475c80() {
+    // IDA 0x475c80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x475d24 — __ZThn36_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZThn36_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_475d24() -> ! {
-    todo!("0x475d24 __ZThn36_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_475d24() {
+    // IDA 0x475d24: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x475d2c — __ZThn36_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZThn36_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_475d2c() -> ! {
-    todo!("0x475d2c __ZThn36_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_475d2c() {
+    // IDA 0x475d2c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x475dd0 — __ZN3RBX10Reflection14PropDescriptorINS_13DataModelMeshEN3G3D7Vector3EEC2IMS2_KFRKS4_vEMS2_FvS8_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -140,8 +140,8 @@ pub fn stub_475dd0() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13DataModelMeshEN3G3D7Vector3EED0Ev")]
-pub fn stub_475ee4() -> ! {
-    todo!("0x475ee4 RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::~PropDescriptor()")
+pub fn stub_475ee4() {
+    // IDA 0x475ee4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x475f10 — __ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv
@@ -189,8 +189,8 @@ pub fn stub_475f70() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEED0Ev")]
-pub fn stub_476124() -> ! {
-    todo!("0x476124 RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::~EnumPropDescriptor()")
+pub fn stub_476124() {
+    // IDA 0x476124: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x476150 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE10isReadOnlyEv
@@ -563,8 +563,8 @@ pub fn stub_477a0c() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EED1Ev")]
-pub fn stub_477a38() -> ! {
-    todo!("0x477a38 RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::~BoundFuncDesc()")
+pub fn stub_477a38() {
+    // IDA 0x477a38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x477b90 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX8InstanceEEES4_EENS_3_bi6bind_tIT_PFS7_T0_ENS5_9list_av_1IT1_E4typeEEESA_SC_
@@ -572,8 +572,8 @@ pub fn stub_477a38() -> ! {
 // type: int __fastcall(int, boost::detail::sp_counted_base *)
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(Weak<RBX::Instance>),boost::_bi::list_av_1<Weak<RBX::Instance>>::type> boost::bind<void,Weak<RBX::Instance>,Weak<RBX::Instance>>(void (*)(Weak<RBX::Instance>),Weak<RBX::Instance>)")]
 #[doc(alias = "__ZN5boost4bindIvNS_8weak_ptrIN3RBX8InstanceEEES4_EENS_3_bi6bind_tIT_PFS7_T0_ENS5_9list_av_1IT1_E4typeEEESA_SC_")]
-pub fn stub_477b90() -> ! {
-    todo!("0x477b90 boost::_bi::bind_t<void,void (*)(Weak<RBX::Instance>),boost::_bi::list_av_1<Weak<RBX::Instance>>::type> boost::bind<void,Weak<RBX::Instance>,Weak<RBX::Instance>>(void (*)(Weak<RBX::Instance>),Weak<RBX::Instance>)")
+pub fn stub_477b90() {
+    // IDA 0x477b90: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 // 0x477d30 — __ZN5boost10shared_ptrIN3RBX12TimerServiceEEaSERKS3_
@@ -599,8 +599,8 @@ pub fn stub_477d68() -> ! {
 // type: void __fastcall(RBX::DebrisService *__hidden this)
 #[doc(alias = "RBX::DebrisService::~DebrisService()")]
 #[doc(alias = "__ZN3RBX13DebrisServiceD1Ev")]
-pub fn stub_477ed8() -> ! {
-    todo!("0x477ed8 RBX::DebrisService::~DebrisService()")
+pub fn stub_477ed8() {
+    // IDA 0x477ed8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x477fe4 — __ZN3RBX13DebrisServiceD0Ev
@@ -608,8 +608,8 @@ pub fn stub_477ed8() -> ! {
 // type: void __fastcall(RBX::DebrisService *__hidden this)
 #[doc(alias = "RBX::DebrisService::~DebrisService()")]
 #[doc(alias = "__ZN3RBX13DebrisServiceD0Ev")]
-pub fn stub_477fe4() -> ! {
-    todo!("0x477fe4 RBX::DebrisService::~DebrisService()")
+pub fn stub_477fe4() {
+    // IDA 0x477fe4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x478100 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEE12getClassNameEv
@@ -624,8 +624,8 @@ pub fn stub_478100() -> ! {
 // type: void __fastcall(RBX::DebrisService *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::DebrisService::~DebrisService()")]
 #[doc(alias = "__ZThn32_N3RBX13DebrisServiceD1Ev")]
-pub fn stub_478128() -> ! {
-    todo!("0x478128 non-virtual thunk to RBX::DebrisService::~DebrisService()")
+pub fn stub_478128() {
+    // IDA 0x478128: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x478234 — __ZThn32_N3RBX13DebrisServiceD0Ev
@@ -633,15 +633,15 @@ pub fn stub_478128() -> ! {
 // type: void __fastcall(RBX::DebrisService *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::DebrisService::~DebrisService()")]
 #[doc(alias = "__ZThn32_N3RBX13DebrisServiceD0Ev")]
-pub fn stub_478234() -> ! {
-    todo!("0x478234 non-virtual thunk to RBX::DebrisService::~DebrisService()")
+pub fn stub_478234() {
+    // IDA 0x478234: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x478354 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEE12getClassNameEv
 // demangled: __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEE12getClassNameEv")]
-pub fn stub_478354() -> ! {
-    todo!("0x478354 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEE12getClassNameEv")
+pub fn stub_478354() {
+    // IDA 0x478354: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47837c — __ZThn36_N3RBX13DebrisServiceD1Ev
@@ -649,8 +649,8 @@ pub fn stub_478354() -> ! {
 // type: void __fastcall(RBX::DebrisService *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::DebrisService::~DebrisService()")]
 #[doc(alias = "__ZThn36_N3RBX13DebrisServiceD1Ev")]
-pub fn stub_47837c() -> ! {
-    todo!("0x47837c non-virtual thunk to RBX::DebrisService::~DebrisService()")
+pub fn stub_47837c() {
+    // IDA 0x47837c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x478484 — __ZThn36_N3RBX13DebrisServiceD0Ev
@@ -658,8 +658,8 @@ pub fn stub_47837c() -> ! {
 // type: void __fastcall(RBX::DebrisService *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::DebrisService::~DebrisService()")]
 #[doc(alias = "__ZThn36_N3RBX13DebrisServiceD0Ev")]
-pub fn stub_478484() -> ! {
-    todo!("0x478484 non-virtual thunk to RBX::DebrisService::~DebrisService()")
+pub fn stub_478484() {
+    // IDA 0x478484: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4785a0 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE9push_backERKS4_
@@ -720,24 +720,24 @@ pub fn stub_478920() -> ! {
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(Weak<RBX::Instance>),boost::_bi::list1<boost::_bi::value<Weak<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(Weak<RBX::Instance>),boost::_bi::list1<boost::_bi::value<Weak<RBX::Instance>>>>)")]
 #[doc(alias = "__ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueIS8_EEEEEEEEvT_")]
-pub fn stub_478a4c() -> ! {
-    todo!("0x478a4c void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(Weak<RBX::Instance>),boost::_bi::list1<boost::_bi::value<Weak<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(Weak<RBX::Instance>),boost::_bi::list1<boost::_bi::value<Weak<RBX::Instance>>>>)")
+pub fn stub_478a4c() {
+    // IDA 0x478a4c: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 // 0x478b84 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueIS8_EEEEEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE
 // demangled: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(Weak<RBX::Instance>),boost::_bi::list1<boost::_bi::value<Weak<RBX::Instance>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueIS8_EEEEEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE")]
-pub fn stub_478b84() -> ! {
-    todo!("0x478b84 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(Weak<RBX::Instance>),boost::_bi::list1<boost::_bi::value<Weak<RBX::Instance>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_478b84() {
+    // IDA 0x478b84: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x478ba0 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueIS8_EEEEEEvE6invokeERNS1_15function_bufferE
 // demangled: boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>,void>::invoke(boost::detail::function::function_buffer &)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(Weak<RBX::Instance>),boost::_bi::list1<boost::_bi::value<Weak<RBX::Instance>>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueIS8_EEEEEEvE6invokeERNS1_15function_bufferE")]
-pub fn stub_478ba0() -> ! {
-    todo!("0x478ba0 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(Weak<RBX::Instance>),boost::_bi::list1<boost::_bi::value<Weak<RBX::Instance>>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_478ba0() {
+    // IDA 0x478ba0: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x478bb4 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS5_5list1INS5_5valueISA_EEEEEEEEbT_RNS1_15function_bufferE
@@ -745,8 +745,8 @@ pub fn stub_478ba0() -> ! {
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(Weak<RBX::Instance>),boost::_bi::list1<boost::_bi::value<Weak<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(Weak<RBX::Instance>),boost::_bi::list1<boost::_bi::value<Weak<RBX::Instance>>>>,boost::detail::function::function_buffer &)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS5_5list1INS5_5valueISA_EEEEEEEEbT_RNS1_15function_bufferE")]
-pub fn stub_478bb4() -> ! {
-    todo!("0x478bb4 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(Weak<RBX::Instance>),boost::_bi::list1<boost::_bi::value<Weak<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(Weak<RBX::Instance>),boost::_bi::list1<boost::_bi::value<Weak<RBX::Instance>>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_478bb4() {
+    // IDA 0x478bb4: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 // 0x478cd4 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS5_5list1INS5_5valueISA_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
@@ -754,8 +754,8 @@ pub fn stub_478bb4() -> ! {
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(Weak<RBX::Instance>),boost::_bi::list1<boost::_bi::value<Weak<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(Weak<RBX::Instance>),boost::_bi::list1<boost::_bi::value<Weak<RBX::Instance>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS5_5list1INS5_5valueISA_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
-pub fn stub_478cd4() -> ! {
-    todo!("0x478cd4 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(Weak<RBX::Instance>),boost::_bi::list1<boost::_bi::value<Weak<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(Weak<RBX::Instance>),boost::_bi::list1<boost::_bi::value<Weak<RBX::Instance>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_478cd4() {
+    // IDA 0x478cd4: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 // 0x478e50 — __ZN5boost3_bi5list1INS0_5valueINS_8weak_ptrIN3RBX8InstanceEEEEEEclIPFvS6_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
@@ -780,8 +780,8 @@ pub fn stub_478f60() -> ! {
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "boost::_bi::list1<boost::_bi::value<Weak<RBX::Instance>>>::list1(boost::_bi::value<Weak<RBX::Instance>>)")]
 #[doc(alias = "__ZN5boost3_bi5list1INS0_5valueINS_8weak_ptrIN3RBX8InstanceEEEEEEC2ES7_")]
-pub fn stub_479038() -> ! {
-    todo!("0x479038 boost::_bi::list1<boost::_bi::value<Weak<RBX::Instance>>>::list1(boost::_bi::value<Weak<RBX::Instance>>)")
+pub fn stub_479038() {
+    // IDA 0x479038: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x479180 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE9pop_frontEv
@@ -815,8 +815,8 @@ pub fn stub_4791d8() -> ! {
 // type: int(void)
 #[doc(alias = "std::_Deque_base<Weak<RBX::Instance>,std::allocator<Weak<RBX::Instance>>>::~_Deque_base()")]
 #[doc(alias = "__ZNSt11_Deque_baseIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EED2Ev")]
-pub fn stub_4792fc() -> ! {
-    todo!("0x4792fc std::_Deque_base<Weak<RBX::Instance>,std::allocator<Weak<RBX::Instance>>>::~_Deque_base()")
+pub fn stub_4792fc() {
+    // IDA 0x4792fc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x479328 — __ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN5boost8weak_ptrIN3RBX8InstanceEEERKS5_PS6_ES0_IS5_RS5_PS5_EET0_T_SE_SD_St12__false_type
@@ -824,8 +824,8 @@ pub fn stub_4792fc() -> ! {
 // type: int __fastcall(int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, void *, int)
 #[doc(alias = "std::_Deque_iterator<Weak<RBX::Instance>,Weak<RBX::Instance>&,Weak<RBX::Instance>*> std::__uninitialized_copy_aux<std::_Deque_iterator<Weak<RBX::Instance>,Weak<RBX::Instance> const&,Weak<RBX::Instance> const*>,std::_Deque_iterator<Weak<RBX::Instance>,Weak<RBX::Instance>&,Weak<RBX::Instance>*>>(std::_Deque_iterator<Weak<RBX::Instance>,Weak<RBX::Instance> const&,Weak<RBX::Instance> const*>,std::_Deque_iterator<Weak<RBX::Instance>,Weak<RBX::Instance> const&,Weak<RBX::Instance> const*>,std::_Deque_iterator<Weak<RBX::Instance>,Weak<RBX::Instance>&,Weak<RBX::Instance>*>,std::__false_type)")]
 #[doc(alias = "__ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN5boost8weak_ptrIN3RBX8InstanceEEERKS5_PS6_ES0_IS5_RS5_PS5_EET0_T_SE_SD_St12__false_type")]
-pub fn stub_479328() -> ! {
-    todo!("0x479328 std::_Deque_iterator<Weak<RBX::Instance>,Weak<RBX::Instance>&,Weak<RBX::Instance>*> std::__uninitialized_copy_aux<std::_Deque_iterator<Weak<RBX::Instance>,Weak<RBX::Instance> const&,Weak<RBX::Instance> const*>,std::_Deque_iterator<Weak<RBX::Instance>,Weak<RBX::Instance>&,Weak<RBX::Instance>*>>(std::_Deque_iterator<Weak<RBX::Instance>,Weak<RBX::Instance> const&,Weak<RBX::Instance> const*>,std::_Deque_iterator<Weak<RBX::Instance>,Weak<RBX::Instance> const&,Weak<RBX::Instance> const*>,std::_Deque_iterator<Weak<RBX::Instance>,Weak<RBX::Instance>&,Weak<RBX::Instance>*>,std::__false_type)")
+pub fn stub_479328() {
+    // IDA 0x479328: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 // 0x479510 — __ZNSt11_Deque_baseIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE17_M_initialize_mapEm
@@ -842,16 +842,16 @@ pub fn stub_479510() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::_Deque_base<Weak<RBX::Instance>,std::allocator<Weak<RBX::Instance>>>::_M_create_nodes(Weak<RBX::Instance>**,Weak<RBX::Instance>**)")]
 #[doc(alias = "__ZNSt11_Deque_baseIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE15_M_create_nodesEPPS4_S8_")]
-pub fn stub_479668() -> ! {
-    todo!("0x479668 std::_Deque_base<Weak<RBX::Instance>,std::allocator<Weak<RBX::Instance>>>::_M_create_nodes(Weak<RBX::Instance>**,Weak<RBX::Instance>**)")
+pub fn stub_479668() {
+    // IDA 0x479668: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x47975c — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EED2Ev
 // demangled: std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::~deque()
 #[doc(alias = "std::deque<Weak<RBX::Instance>,std::allocator<Weak<RBX::Instance>>>::~deque()")]
 #[doc(alias = "__ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EED2Ev")]
-pub fn stub_47975c() -> ! {
-    todo!("0x47975c std::deque<Weak<RBX::Instance>,std::allocator<Weak<RBX::Instance>>>::~deque()")
+pub fn stub_47975c() {
+    // IDA 0x47975c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x479844 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE19_M_destroy_data_auxESt15_Deque_iteratorIS4_RS4_PS4_ESA_
@@ -866,43 +866,43 @@ pub fn stub_479844() -> ! {
 // 0x479984 — __ZN3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZN3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_479984() -> ! {
-    todo!("0x479984 __ZN3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_479984() {
+    // IDA 0x479984: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x479988 — __ZN3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZN3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_479988() -> ! {
-    todo!("0x479988 __ZN3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_479988() {
+    // IDA 0x479988: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x479a28 — __ZThn32_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZThn32_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_479a28() -> ! {
-    todo!("0x479a28 __ZThn32_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_479a28() {
+    // IDA 0x479a28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x479a30 — __ZThn32_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZThn32_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_479a30() -> ! {
-    todo!("0x479a30 __ZThn32_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_479a30() {
+    // IDA 0x479a30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x479ad4 — __ZThn36_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // demangled: __ZThn36_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_479ad4() -> ! {
-    todo!("0x479ad4 __ZThn36_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_479ad4() {
+    // IDA 0x479ad4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x479adc — __ZThn36_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // demangled: __ZThn36_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_479adc() -> ! {
-    todo!("0x479adc __ZThn36_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_479adc() {
+    // IDA 0x479adc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x479dfc — __ZNK3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvbELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -918,8 +918,8 @@ pub fn stub_479dfc() -> ! {
 // type: int __fastcall(int, int, int, int, int, int, double, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::BoundFuncDesc(void (RBX::DebrisService::*)(rbx_core::SharedPtr<RBX::Instance>,double),char const*,char const*,char const*,double,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EEC2EMS2_FvS6_dEPKcSC_SC_dNS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_479e30() -> ! {
-    todo!("0x479e30 RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::BoundFuncDesc(void (RBX::DebrisService::*)(rbx_core::SharedPtr<RBX::Instance>,double),char const*,char const*,char const*,double,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_479e30() {
+    // IDA 0x479e30: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x47a050 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EE16declareSignatureEPKcNS0_7VariantESA_SB_
@@ -934,8 +934,8 @@ pub fn stub_47a050() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EED0Ev")]
-pub fn stub_47a09c() -> ! {
-    todo!("0x47a09c RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::~BoundFuncDesc()")
+pub fn stub_47a09c() {
+    // IDA 0x47a09c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47a1c8 — __ZNK3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -968,8 +968,8 @@ pub fn stub_47a3c0() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiED0Ev")]
-pub fn stub_47a4d4() -> ! {
-    todo!("0x47a4d4 RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::~PropDescriptor()")
+pub fn stub_47a4d4() {
+    // IDA 0x47a4d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47a500 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv

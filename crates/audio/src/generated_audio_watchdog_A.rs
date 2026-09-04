@@ -736,8 +736,8 @@ pub fn stub_5926c0() {
 // demangled: boost::function3<void,std::string,int,int>::assign_to_own(boost::function3<void,std::string,int,int> const&)
 #[doc(alias = "boost::function3<void,std::string,int,int>::assign_to_own(boost::function3<void,std::string,int,int> const&)")]
 #[doc(alias = "__ZN5boost9function3IvSsiiE13assign_to_ownERKS1_")]
-pub fn stub_5927f0() -> ! {
-    todo!("0x5927f0 __ZN5boost9function3IvSsiiE13assign_to_ownERKS1_")
+pub fn stub_5927f0() {
+    // IDA 0x5927f0: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x592820 \u2014 __ZN3RBX10Reflection9EventDescINS_13InsertServiceEFvSsiiEN3rbx13remote_signalIS3_EEMS2_S6_EC2ES7_PKcSA_SA_SA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -872,8 +872,8 @@ pub fn stub_5936b0() -> ! {
 // demangled: boost::function2<void,std::string,RBX::ContentId>::clear(void)
 #[doc(alias = "boost::function2<void,std::string,RBX::ContentId>::clear(void)")]
 #[doc(alias = "__ZN5boost9function2IvSsN3RBX9ContentIdEE5clearEv")]
-pub fn stub_593818() -> ! {
-    todo!("0x593818 __ZN5boost9function2IvSsN3RBX9ContentIdEE5clearEv")
+pub fn stub_593818() {
+    // IDA 0x593818: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x593844 \u2014 __ZN5boost8functionIFvSsN3RBX9ContentIdEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS1_10Reflection18GenericSlotWrapperERKSsRKS2_EENS6_5list3INS6_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE

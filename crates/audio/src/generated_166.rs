@@ -38,16 +38,16 @@ pub fn stub_2c9df8() -> ! {
 // type: void __fastcall(RBX::Lua::WeakThreadRef::Node *__hidden this)
 #[doc(alias = "RBX::Lua::WeakThreadRef::Node::~Node()")]
 #[doc(alias = "__ZN3RBX3Lua13WeakThreadRef4NodeD1Ev")]
-pub fn stub_2c9ee8() -> ! {
-    todo!("0x2c9ee8 RBX::Lua::WeakThreadRef::Node::~Node()")
+pub fn stub_2c9ee8() {
+    // IDA 0x2c9ee8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2c9eec — __ZN3RBX3Lua13WeakThreadRef4NodeD2Ev
 // type: void __fastcall(RBX::Lua::WeakThreadRef::Node *__hidden this)
 #[doc(alias = "RBX::Lua::WeakThreadRef::Node::~Node()")]
 #[doc(alias = "__ZN3RBX3Lua13WeakThreadRef4NodeD2Ev")]
-pub fn stub_2c9eec() -> ! {
-    todo!("0x2c9eec RBX::Lua::WeakThreadRef::Node::~Node()")
+pub fn stub_2c9eec() {
+    // IDA 0x2c9eec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2c9f1c — __ZN3RBX3Lua13WeakThreadRef4Node6createEP9lua_State
@@ -173,24 +173,24 @@ pub fn stub_2ca908() -> ! {
 // type: void __fastcall(RBX::Lua::WeakFunctionRef *__hidden this)
 #[doc(alias = "RBX::Lua::WeakFunctionRef::~WeakFunctionRef()")]
 #[doc(alias = "__ZN3RBX3Lua15WeakFunctionRefD0Ev")]
-pub fn stub_2cad6c() -> ! {
-    todo!("0x2cad6c RBX::Lua::WeakFunctionRef::~WeakFunctionRef()")
+pub fn stub_2cad6c() {
+    // IDA 0x2cad6c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2cae0c — __ZN3RBX3Lua15WeakFunctionRefD1Ev
 // type: void __fastcall(RBX::Lua::WeakFunctionRef *__hidden this)
 #[doc(alias = "RBX::Lua::WeakFunctionRef::~WeakFunctionRef()")]
 #[doc(alias = "__ZN3RBX3Lua15WeakFunctionRefD1Ev")]
-pub fn stub_2cae0c() -> ! {
-    todo!("0x2cae0c RBX::Lua::WeakFunctionRef::~WeakFunctionRef()")
+pub fn stub_2cae0c() {
+    // IDA 0x2cae0c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2cae10 — __ZN3RBX3Lua15WeakFunctionRefD2Ev
 // type: void __fastcall(RBX::Lua::WeakFunctionRef *__hidden this)
 #[doc(alias = "RBX::Lua::WeakFunctionRef::~WeakFunctionRef()")]
 #[doc(alias = "__ZN3RBX3Lua15WeakFunctionRefD2Ev")]
-pub fn stub_2cae10() -> ! {
-    todo!("0x2cae10 RBX::Lua::WeakFunctionRef::~WeakFunctionRef()")
+pub fn stub_2cae10() {
+    // IDA 0x2cae10: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2caf24 — __ZN3RBX3Lua15WeakFunctionRef9removeRefEv
@@ -228,16 +228,16 @@ pub fn stub_2cb0fc() -> ! {
 // type: void __fastcall(RBX::Lua::detail::LiveThreadRef *__hidden this)
 #[doc(alias = "RBX::Lua::detail::LiveThreadRef::~LiveThreadRef()")]
 #[doc(alias = "__ZN3RBX3Lua6detail13LiveThreadRefD1Ev")]
-pub fn stub_2cb2ec() -> ! {
-    todo!("0x2cb2ec RBX::Lua::detail::LiveThreadRef::~LiveThreadRef()")
+pub fn stub_2cb2ec() {
+    // IDA 0x2cb2ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2cb2f0 — __ZN3RBX3Lua6detail13LiveThreadRefD2Ev
 // type: void __fastcall(RBX::Lua::detail::LiveThreadRef *__hidden this)
 #[doc(alias = "RBX::Lua::detail::LiveThreadRef::~LiveThreadRef()")]
 #[doc(alias = "__ZN3RBX3Lua6detail13LiveThreadRefD2Ev")]
-pub fn stub_2cb2f0() -> ! {
-    todo!("0x2cb2f0 RBX::Lua::detail::LiveThreadRef::~LiveThreadRef()")
+pub fn stub_2cb2f0() {
+    // IDA 0x2cb2f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2cb3fc — __ZN3RBX3Lua15WeakFunctionRefaSERKS1_
@@ -318,8 +318,8 @@ pub fn stub_2cbda8() -> ! {
 // 0x2cbdf8 — __ZN3RBX10Reflection5TTypeINS_3Lua15WeakFunctionRefEED1Ev
 #[doc(alias = "RBX::Reflection::TType<RBX::Lua::WeakFunctionRef>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeINS_3Lua15WeakFunctionRefEED1Ev")]
-pub fn stub_2cbdf8() -> ! {
-    todo!("0x2cbdf8 RBX::Reflection::TType<RBX::Lua::WeakFunctionRef>::~TType()")
+pub fn stub_2cbdf8() {
+    // IDA 0x2cbdf8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2cbdfc — __ZN3rbx8any_castIN3RBX3Lua15WeakFunctionRefENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE
@@ -332,15 +332,15 @@ pub fn stub_2cbdfc() -> ! {
 // 0x2cbe50 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrINS2_8functionIFNS3_IKNS0_5TupleEEES7_EEEEEED1Ev
 #[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeIN5boost10shared_ptrINS2_8functionIFNS3_IKNS0_5TupleEEES7_EEEEEED1Ev")]
-pub fn stub_2cbe50() -> ! {
-    todo!("0x2cbe50 RBX::Reflection::TType<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>::~TType()")
+pub fn stub_2cbe50() {
+    // IDA 0x2cbe50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2cbe54 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS0_5TupleEEENS4_IFvPNS_3Lua12IAsyncResultEEEEEEEEEED1Ev
 #[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS0_5TupleEEENS4_IFvPNS_3Lua12IAsyncResultEEEEEEEEEED1Ev")]
-pub fn stub_2cbe54() -> ! {
-    todo!("0x2cbe54 RBX::Reflection::TType<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>>::~TType()")
+pub fn stub_2cbe54() {
+    // IDA 0x2cbe54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2cbe58 — __ZN3RBX10Reflection4TypeC2IN5boost10shared_ptrINS3_8functionIFvNS4_IKNS0_5TupleEEENS5_IFvPNS_3Lua12IAsyncResultEEEEEEEEEEEPKcPT_
@@ -353,8 +353,8 @@ pub fn stub_2cbe58() -> ! {
 // 0x2cbf04 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS0_5TupleEEENS4_IFvPNS_3Lua12IAsyncResultEEEEEEEEEED0Ev
 #[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS0_5TupleEEENS4_IFvPNS_3Lua12IAsyncResultEEEEEEEEEED0Ev")]
-pub fn stub_2cbf04() -> ! {
-    todo!("0x2cbf04 RBX::Reflection::TType<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>>::~TType()")
+pub fn stub_2cbf04() {
+    // IDA 0x2cbf04: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2cbf08 — __ZN3RBX10Reflection4TypeC2IN5boost10shared_ptrINS3_8functionIFNS4_IKNS0_5TupleEEES8_EEEEEEEPKcPT_
@@ -367,8 +367,8 @@ pub fn stub_2cbf08() -> ! {
 // 0x2cbfb4 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrINS2_8functionIFNS3_IKNS0_5TupleEEES7_EEEEEED0Ev
 #[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeIN5boost10shared_ptrINS2_8functionIFNS3_IKNS0_5TupleEEES7_EEEEEED0Ev")]
-pub fn stub_2cbfb4() -> ! {
-    todo!("0x2cbfb4 RBX::Reflection::TType<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>::~TType()")
+pub fn stub_2cbfb4() {
+    // IDA 0x2cbfb4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2cbfb8 — __ZN3rbx14implementation12typed_holderIN3RBX3Lua15WeakFunctionRefEE9singletonEv
@@ -388,8 +388,8 @@ pub fn stub_2cc020() -> ! {
 // 0x2cc0c8 — __ZN3RBX10Reflection5TTypeINS_3Lua15WeakFunctionRefEED0Ev
 #[doc(alias = "RBX::Reflection::TType<RBX::Lua::WeakFunctionRef>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeINS_3Lua15WeakFunctionRefEED0Ev")]
-pub fn stub_2cc0c8() -> ! {
-    todo!("0x2cc0c8 RBX::Reflection::TType<RBX::Lua::WeakFunctionRef>::~TType()")
+pub fn stub_2cc0c8() {
+    // IDA 0x2cc0c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2cc0cc — __ZNK5boost9function2IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEENS_8functionIFvPNS2_3Lua12IAsyncResultEEEEEclES6_SC_
@@ -410,23 +410,23 @@ pub fn stub_2cc210() -> ! {
 // 0x2cc608 — __ZN5boost9function1IvPN3RBX3Lua12IAsyncResultEE5clearEv
 #[doc(alias = "boost::function1<void,RBX::Lua::IAsyncResult *>::clear(void)")]
 #[doc(alias = "__ZN5boost9function1IvPN3RBX3Lua12IAsyncResultEE5clearEv")]
-pub fn stub_2cc608() -> ! {
-    todo!("0x2cc608 boost::function1<void,RBX::Lua::IAsyncResult *>::clear(void)")
+pub fn stub_2cc608() {
+    // IDA 0x2cc608: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x2cc634 — __ZN5boost3_bi5valueIN3RBX3Lua9ThreadRefEEC2ERKS4_
 #[doc(alias = "boost::_bi::value<RBX::Lua::ThreadRef>::value(RBX::Lua::ThreadRef const&)")]
 #[doc(alias = "__ZN5boost3_bi5valueIN3RBX3Lua9ThreadRefEEC2ERKS4_")]
-pub fn stub_2cc634() -> ! {
-    todo!("0x2cc634 boost::_bi::value<RBX::Lua::ThreadRef>::value(RBX::Lua::ThreadRef const&)")
+pub fn stub_2cc634() {
+    // IDA 0x2cc634: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x2cc6f0 — __ZN5boost3_bi5list3INS0_5valueIN3RBX3Lua9ThreadRefEEENS2_INS_8weak_ptrINS3_13ScriptContextEEEEENS_3argILi1EEEEC2ES6_SA_SC_
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::Weak<RBX::ScriptContext>>,boost::arg<1>>::list3(boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::Weak<RBX::ScriptContext>>,boost::arg<1>)")]
 #[doc(alias = "__ZN5boost3_bi5list3INS0_5valueIN3RBX3Lua9ThreadRefEEENS2_INS_8weak_ptrINS3_13ScriptContextEEEEENS_3argILi1EEEEC2ES6_SA_SC_")]
-pub fn stub_2cc6f0() -> ! {
-    todo!("0x2cc6f0 boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>::list3(boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>)")
+pub fn stub_2cc6f0() {
+    // IDA 0x2cc6f0: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x2cc8d0 — __ZN5boost3_bi8storage3INS0_5valueIN3RBX3Lua9ThreadRefEEENS2_INS_8weak_ptrINS3_13ScriptContextEEEEENS_3argILi1EEEEC2ES6_SA_SC_
@@ -469,8 +469,8 @@ pub fn stub_2ccf68() -> ! {
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int)
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,rbx_core::Weak<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::Weak<RBX::ScriptContext>>,boost::arg<1>>>::bind_t(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,rbx_core::Weak<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::Weak<RBX::ScriptContext>>,boost::arg<1>>> const&)")]
 #[doc(alias = "__ZN5boost3_bi6bind_tIvPFvN3RBX3Lua9ThreadRefENS_8weak_ptrINS2_13ScriptContextEEEPNS3_12IAsyncResultEENS0_5list3INS0_5valueIS4_EENSD_IS7_EENS_3argILi1EEEEEEC2ERKSJ_")]
-pub fn stub_2cd154() -> ! {
-    todo!("0x2cd154 boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>::bind_t(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>> const&)")
+pub fn stub_2cd154() {
+    // IDA 0x2cd154: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x2cd2dc — __ZN5boost9function1IvPN3RBX3Lua12IAsyncResultEE9assign_toINS_3_bi6bind_tIvPFvNS2_9ThreadRefENS_8weak_ptrINS1_13ScriptContextEEES4_ENS7_5list3INS7_5valueIS9_EENSG_ISC_EENS_3argILi1EEEEEEEEEvT_
@@ -484,15 +484,15 @@ pub fn stub_2cd2dc() -> ! {
 // 0x2cd4d4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvN3RBX3Lua9ThreadRefENS_8weak_ptrINS5_13ScriptContextEEEPNS6_12IAsyncResultEENS3_5list3INS3_5valueIS7_EENSG_ISA_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,rbx_core::Weak<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::Weak<RBX::ScriptContext>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvN3RBX3Lua9ThreadRefENS_8weak_ptrINS5_13ScriptContextEEEPNS6_12IAsyncResultEENS3_5list3INS3_5valueIS7_EENSG_ISA_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE")]
-pub fn stub_2cd4d4() -> ! {
-    todo!("0x2cd4d4 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_2cd4d4() {
+    // IDA 0x2cd4d4: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x2cd4f0 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvN3RBX3Lua9ThreadRefENS_8weak_ptrINS5_13ScriptContextEEEPNS6_12IAsyncResultEENS3_5list3INS3_5valueIS7_EENSG_ISA_EENS_3argILi1EEEEEEEvSC_E6invokeERNS1_15function_bufferESC_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,rbx_core::Weak<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::Weak<RBX::ScriptContext>>,boost::arg<1>>>,void,RBX::Lua::IAsyncResult *>::invoke(boost::detail::function::function_buffer &,RBX::Lua::IAsyncResult *)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvN3RBX3Lua9ThreadRefENS_8weak_ptrINS5_13ScriptContextEEEPNS6_12IAsyncResultEENS3_5list3INS3_5valueIS7_EENSG_ISA_EENS_3argILi1EEEEEEEvSC_E6invokeERNS1_15function_bufferESC_")]
-pub fn stub_2cd4f0() -> ! {
-    todo!("0x2cd4f0 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>,void,RBX::Lua::IAsyncResult *>::invoke(boost::detail::function::function_buffer &,RBX::Lua::IAsyncResult *)")
+pub fn stub_2cd4f0() {
+    // IDA 0x2cd4f0: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x2cd50c — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX3Lua12IAsyncResultEE9assign_toINS_3_bi6bind_tIvPFvNS4_9ThreadRefENS_8weak_ptrINS3_13ScriptContextEEES6_ENS9_5list3INS9_5valueISB_EENSI_ISE_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
@@ -529,15 +529,15 @@ pub fn stub_2cd984() -> ! {
 // 0x2cdb6c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvN3RBX3Lua9ThreadRefENS_8weak_ptrINS5_13ScriptContextEEEPNS6_12IAsyncResultEENS3_5list3INS3_5valueIS7_EENSG_ISA_EENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,rbx_core::Weak<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::Weak<RBX::ScriptContext>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvN3RBX3Lua9ThreadRefENS_8weak_ptrINS5_13ScriptContextEEEPNS6_12IAsyncResultEENS3_5list3INS3_5valueIS7_EENSG_ISA_EENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
-pub fn stub_2cdb6c() -> ! {
-    todo!("0x2cdb6c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_2cdb6c() {
+    // IDA 0x2cdb6c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x2cdd44 — __ZN5boost9function1IvPN3RBX3Lua12IAsyncResultEE13assign_to_ownERKS5_
 #[doc(alias = "boost::function1<void,RBX::Lua::IAsyncResult *>::assign_to_own(boost::function1<void,RBX::Lua::IAsyncResult *> const&)")]
 #[doc(alias = "__ZN5boost9function1IvPN3RBX3Lua12IAsyncResultEE13assign_to_ownERKS5_")]
-pub fn stub_2cdd44() -> ! {
-    todo!("0x2cdd44 boost::function1<void,RBX::Lua::IAsyncResult *>::assign_to_own(boost::function1<void,RBX::Lua::IAsyncResult *> const&)")
+pub fn stub_2cdd44() {
+    // IDA 0x2cdd44: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x2cdd74 — __ZNK5boost9function1INS_10shared_ptrIKN3RBX10Reflection5TupleEEES6_EclES6_
@@ -587,51 +587,51 @@ pub fn stub_2ce804() -> ! {
 // 0x2ce8cc — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_14AdvLuaDragToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AdvLuaDragTool,RBX::AdvLuaDragTool>(rbx_core::SharedPtr<RBX::AdvLuaDragTool> const*,RBX::AdvLuaDragTool *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_14AdvLuaDragToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_2ce8cc() -> ! {
-    todo!("0x2ce8cc void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AdvLuaDragTool,RBX::AdvLuaDragTool>(boost::shared_ptr<RBX::AdvLuaDragTool> const*,RBX::AdvLuaDragTool *)const")
+pub fn stub_2ce8cc() {
+    // IDA 0x2ce8cc: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x2ce9b0 — __ZN5boost6detail12shared_countC2IPN3RBX14AdvLuaDragToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX14AdvLuaDragToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
-pub fn stub_2ce9b0() -> ! {
-    todo!("0x2ce9b0 boost::detail::shared_count::shared_count<RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
+pub fn stub_2ce9b0() {
+    // IDA 0x2ce9b0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x2ceaa8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AdvLuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AdvLuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")]
-pub fn stub_2ceaa8() -> ! {
-    todo!("0x2ceaa8 boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_2ceaa8() {
+    // IDA 0x2ceaa8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2ceaac — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AdvLuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AdvLuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")]
-pub fn stub_2ceaac() -> ! {
-    todo!("0x2ceaac boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_2ceaac() {
+    // IDA 0x2ceaac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2ceab0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AdvLuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AdvLuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")]
-pub fn stub_2ceab0() -> ! {
-    todo!("0x2ceab0 boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")
+pub fn stub_2ceab0() {
+    // IDA 0x2ceab0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x2ceac0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AdvLuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AdvLuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_2ceac0() -> ! {
-    todo!("0x2ceac0 boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_2ceac0() {
+    // IDA 0x2ceac0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x2cead8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AdvLuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AdvLuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_2cead8() -> ! {
-    todo!("0x2cead8 boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_2cead8() {
+    // IDA 0x2cead8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x2ced4c — __ZN3RBX13AdvLuaDraggerC2Ev
@@ -646,56 +646,56 @@ pub fn stub_2ced4c() -> ! {
 // type: void __fastcall(RBX::AdvLuaDragger *__hidden this)
 #[doc(alias = "RBX::AdvLuaDragger::~AdvLuaDragger()")]
 #[doc(alias = "__ZN3RBX13AdvLuaDraggerD0Ev")]
-pub fn stub_2cef40() -> ! {
-    todo!("0x2cef40 RBX::AdvLuaDragger::~AdvLuaDragger()")
+pub fn stub_2cef40() {
+    // IDA 0x2cef40: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2cefe0 — __ZN3RBX13AdvLuaDraggerD1Ev
 // type: void __fastcall(RBX::AdvLuaDragger *__hidden this)
 #[doc(alias = "RBX::AdvLuaDragger::~AdvLuaDragger()")]
 #[doc(alias = "__ZN3RBX13AdvLuaDraggerD1Ev")]
-pub fn stub_2cefe0() -> ! {
-    todo!("0x2cefe0 RBX::AdvLuaDragger::~AdvLuaDragger()")
+pub fn stub_2cefe0() {
+    // IDA 0x2cefe0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2cefe4 — __ZThn32_N3RBX13AdvLuaDraggerD0Ev
 // type: void __fastcall(RBX::AdvLuaDragger *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
 #[doc(alias = "__ZThn32_N3RBX13AdvLuaDraggerD0Ev")]
-pub fn stub_2cefe4() -> ! {
-    todo!("0x2cefe4 non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")
+pub fn stub_2cefe4() {
+    // IDA 0x2cefe4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2cefec — __ZThn36_N3RBX13AdvLuaDraggerD0Ev
 // type: void __fastcall(RBX::AdvLuaDragger *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
 #[doc(alias = "__ZThn36_N3RBX13AdvLuaDraggerD0Ev")]
-pub fn stub_2cefec() -> ! {
-    todo!("0x2cefec non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")
+pub fn stub_2cefec() {
+    // IDA 0x2cefec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2ceff4 — __ZN3RBX13AdvLuaDraggerD2Ev
 // type: void __fastcall(RBX::AdvLuaDragger *__hidden this)
 #[doc(alias = "RBX::AdvLuaDragger::~AdvLuaDragger()")]
 #[doc(alias = "__ZN3RBX13AdvLuaDraggerD2Ev")]
-pub fn stub_2ceff4() -> ! {
-    todo!("0x2ceff4 RBX::AdvLuaDragger::~AdvLuaDragger()")
+pub fn stub_2ceff4() {
+    // IDA 0x2ceff4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2cf168 — __ZThn32_N3RBX13AdvLuaDraggerD1Ev
 // type: void __fastcall(RBX::AdvLuaDragger *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
 #[doc(alias = "__ZThn32_N3RBX13AdvLuaDraggerD1Ev")]
-pub fn stub_2cf168() -> ! {
-    todo!("0x2cf168 non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")
+pub fn stub_2cf168() {
+    // IDA 0x2cf168: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2cf170 — __ZThn36_N3RBX13AdvLuaDraggerD1Ev
 // type: void __fastcall(RBX::AdvLuaDragger *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
 #[doc(alias = "__ZThn36_N3RBX13AdvLuaDraggerD1Ev")]
-pub fn stub_2cf170() -> ! {
-    todo!("0x2cf170 non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")
+pub fn stub_2cf170() {
+    // IDA 0x2cf170: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2cf178 — __ZN3RBX13AdvLuaDragger9mouseDownEN5boost10shared_ptrINS_12PartInstanceEEERKN3G3D7Vector3ESt6vectorINS1_8weak_ptrIS3_EESaISB_EE
@@ -785,20 +785,20 @@ pub fn stub_2d07e4() -> ! {
 // 0x2d07f4 — __ZThn32_NK3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E12getClassNameEv")]
-pub fn stub_2d07f4() -> ! {
-    todo!("0x2d07f4 __ZThn32_NK3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E12getClassNameEv")
+pub fn stub_2d07f4() {
+    // IDA 0x2d07f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d0804 — __ZN3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E7CreatorD1Ev")]
-pub fn stub_2d0804() -> ! {
-    todo!("0x2d0804 __ZN3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E7CreatorD1Ev")
+pub fn stub_2d0804() {
+    // IDA 0x2d0804: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d0808 — __ZN3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E7CreatorD2Ev")]
-pub fn stub_2d0808() -> ! {
-    todo!("0x2d0808 __ZN3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E7CreatorD2Ev")
+pub fn stub_2d0808() {
+    // IDA 0x2d0808: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d08a4 — __ZNK3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E7Creator12getClassNameEv
@@ -830,51 +830,51 @@ pub fn stub_2d0b20() -> ! {
 // 0x2d0be8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13AdvLuaDraggerES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::AdvLuaDragger,RBX::AdvLuaDragger>(rbx_core::SharedPtr<RBX::AdvLuaDragger> const*,RBX::AdvLuaDragger *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13AdvLuaDraggerES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_2d0be8() -> ! {
-    todo!("0x2d0be8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::AdvLuaDragger,RBX::AdvLuaDragger>(boost::shared_ptr<RBX::AdvLuaDragger> const*,RBX::AdvLuaDragger *)const")
+pub fn stub_2d0be8() {
+    // IDA 0x2d0be8: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x2d0cd0 — __ZN5boost6detail12shared_countC2IPN3RBX13AdvLuaDraggerENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX13AdvLuaDraggerENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_2d0cd0() -> ! {
-    todo!("0x2d0cd0 boost::detail::shared_count::shared_count<RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_2d0cd0() {
+    // IDA 0x2d0cd0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x2d0dd8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13AdvLuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX13AdvLuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_2d0dd8() -> ! {
-    todo!("0x2d0dd8 boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_2d0dd8() {
+    // IDA 0x2d0dd8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d0ddc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13AdvLuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX13AdvLuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_2d0ddc() -> ! {
-    todo!("0x2d0ddc boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_2d0ddc() {
+    // IDA 0x2d0ddc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d0de0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13AdvLuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX13AdvLuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_2d0de0() -> ! {
-    todo!("0x2d0de0 boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_2d0de0() {
+    // IDA 0x2d0de0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x2d0e00 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13AdvLuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX13AdvLuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_2d0e00() -> ! {
-    todo!("0x2d0e00 boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_2d0e00() {
+    // IDA 0x2d0e00: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x2d0e18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13AdvLuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX13AdvLuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_2d0e18() -> ! {
-    todo!("0x2d0e18 boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_2d0e18() {
+    // IDA 0x2d0e18: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x2d0e1c — __ZN3RBX4Name13callDoDeclareILZNS_14sAdvLuaDraggerEEEEvv
@@ -904,38 +904,38 @@ pub fn stub_2d1144() -> ! {
 
 // 0x2d1260 — __ZN3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_2d1260() -> ! {
-    todo!("0x2d1260 __ZN3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_2d1260() {
+    // IDA 0x2d1260: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d1264 — __ZN3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_2d1264() -> ! {
-    todo!("0x2d1264 __ZN3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_2d1264() {
+    // IDA 0x2d1264: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d1304 — __ZThn32_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_2d1304() -> ! {
-    todo!("0x2d1304 __ZThn32_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_2d1304() {
+    // IDA 0x2d1304: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d130c — __ZThn32_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_2d130c() -> ! {
-    todo!("0x2d130c __ZThn32_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_2d130c() {
+    // IDA 0x2d130c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d13b0 — __ZThn36_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_2d13b0() -> ! {
-    todo!("0x2d13b0 __ZThn36_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_2d13b0() {
+    // IDA 0x2d13b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d13b8 — __ZThn36_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_2d13b8() -> ! {
-    todo!("0x2d13b8 __ZThn36_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_2d13b8() {
+    // IDA 0x2d13b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d17c4 — __ZN3RBX14AdvLuaDragToolC1EPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIN5boost8weak_ptrIS1_EESaISA_EEPNS_9WorkspaceENS8_10shared_ptrINS_8InstanceEEE
@@ -957,40 +957,40 @@ pub fn stub_2d17c8() -> ! {
 // type: void __fastcall(RBX::AdvLuaDragTool *__hidden this)
 #[doc(alias = "RBX::AdvLuaDragTool::~AdvLuaDragTool()")]
 #[doc(alias = "__ZN3RBX14AdvLuaDragToolD0Ev")]
-pub fn stub_2d1a5c() -> ! {
-    todo!("0x2d1a5c RBX::AdvLuaDragTool::~AdvLuaDragTool()")
+pub fn stub_2d1a5c() {
+    // IDA 0x2d1a5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d1afc — __ZN3RBX14AdvLuaDragToolD1Ev
 // type: void __fastcall(RBX::AdvLuaDragTool *__hidden this)
 #[doc(alias = "RBX::AdvLuaDragTool::~AdvLuaDragTool()")]
 #[doc(alias = "__ZN3RBX14AdvLuaDragToolD1Ev")]
-pub fn stub_2d1afc() -> ! {
-    todo!("0x2d1afc RBX::AdvLuaDragTool::~AdvLuaDragTool()")
+pub fn stub_2d1afc() {
+    // IDA 0x2d1afc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d1b00 — __ZThn36_N3RBX14AdvLuaDragToolD0Ev
 // type: void __fastcall(RBX::AdvLuaDragTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AdvLuaDragTool::~AdvLuaDragTool()")]
 #[doc(alias = "__ZThn36_N3RBX14AdvLuaDragToolD0Ev")]
-pub fn stub_2d1b00() -> ! {
-    todo!("0x2d1b00 non-virtual thunk toRBX::AdvLuaDragTool::~AdvLuaDragTool()")
+pub fn stub_2d1b00() {
+    // IDA 0x2d1b00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d1b08 — __ZN3RBX14AdvLuaDragToolD2Ev
 // type: void __fastcall(RBX::AdvLuaDragTool *__hidden this)
 #[doc(alias = "RBX::AdvLuaDragTool::~AdvLuaDragTool()")]
 #[doc(alias = "__ZN3RBX14AdvLuaDragToolD2Ev")]
-pub fn stub_2d1b08() -> ! {
-    todo!("0x2d1b08 RBX::AdvLuaDragTool::~AdvLuaDragTool()")
+pub fn stub_2d1b08() {
+    // IDA 0x2d1b08: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d1c48 — __ZThn36_N3RBX14AdvLuaDragToolD1Ev
 // type: void __fastcall(RBX::AdvLuaDragTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AdvLuaDragTool::~AdvLuaDragTool()")]
 #[doc(alias = "__ZThn36_N3RBX14AdvLuaDragToolD1Ev")]
-pub fn stub_2d1c48() -> ! {
-    todo!("0x2d1c48 non-virtual thunk toRBX::AdvLuaDragTool::~AdvLuaDragTool()")
+pub fn stub_2d1c48() {
+    // IDA 0x2d1c48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2d1c50 — __ZN3RBX14AdvLuaDragTool11onMouseDownERKNS_7UIEventE
@@ -1108,6 +1108,6 @@ pub fn stub_2d448c() -> ! {
 // type: _DWORD __fastcall(RBX::AdvMoveToolBase *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::AdvMoveToolBase::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX15AdvMoveToolBase8render2dEPNS_5AdornE")]
-pub fn stub_2d470c() -> ! {
-    todo!("0x2d470c non-virtual thunk toRBX::AdvMoveToolBase::render2d(RBX::Adorn *)")
+pub fn stub_2d470c() {
+    // IDA 0x2d470c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

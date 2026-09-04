@@ -412,8 +412,8 @@ pub fn stub_3f93e4() -> ! {
 // type: void __fastcall(RBX::RunStateVerb *__hidden this)
 #[doc(alias = "RBX::RunStateVerb::~RunStateVerb()")]
 #[doc(alias = "__ZN3RBX12RunStateVerbD0Ev")]
-pub fn stub_3f9418() -> ! {
-    todo!("0x3f9418 RBX::RunStateVerb::~RunStateVerb()")
+pub fn stub_3f9418() {
+    // IDA 0x3f9418: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3f94b8 — __ZN3RBX12RunStateVerbD1Ev
@@ -421,8 +421,8 @@ pub fn stub_3f9418() -> ! {
 // type: void __fastcall(RBX::RunStateVerb *__hidden this)
 #[doc(alias = "RBX::RunStateVerb::~RunStateVerb()")]
 #[doc(alias = "__ZN3RBX12RunStateVerbD1Ev")]
-pub fn stub_3f94b8() -> ! {
-    todo!("0x3f94b8 RBX::RunStateVerb::~RunStateVerb()")
+pub fn stub_3f94b8() {
+    // IDA 0x3f94b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3f94bc — __ZN3RBX12RunStateVerbD2Ev
@@ -430,8 +430,8 @@ pub fn stub_3f94b8() -> ! {
 // type: void __fastcall(RBX::RunStateVerb *__hidden this)
 #[doc(alias = "RBX::RunStateVerb::~RunStateVerb()")]
 #[doc(alias = "__ZN3RBX12RunStateVerbD2Ev")]
-pub fn stub_3f94bc() -> ! {
-    todo!("0x3f94bc RBX::RunStateVerb::~RunStateVerb()")
+pub fn stub_3f94bc() {
+    // IDA 0x3f94bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3f9588 — __ZNK3RBX10RunCommand9isEnabledEv
@@ -493,8 +493,8 @@ pub fn stub_3f9714() -> ! {
 // type: void __fastcall(RBX::EditSelectionVerb *__hidden this)
 #[doc(alias = "RBX::EditSelectionVerb::~EditSelectionVerb()")]
 #[doc(alias = "__ZN3RBX17EditSelectionVerbD0Ev")]
-pub fn stub_3f97a8() -> ! {
-    todo!("0x3f97a8 RBX::EditSelectionVerb::~EditSelectionVerb()")
+pub fn stub_3f97a8() {
+    // IDA 0x3f97a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3f9848 — __ZN3RBX17EditSelectionVerbD1Ev
@@ -502,8 +502,8 @@ pub fn stub_3f97a8() -> ! {
 // type: void __fastcall(RBX::EditSelectionVerb *__hidden this)
 #[doc(alias = "RBX::EditSelectionVerb::~EditSelectionVerb()")]
 #[doc(alias = "__ZN3RBX17EditSelectionVerbD1Ev")]
-pub fn stub_3f9848() -> ! {
-    todo!("0x3f9848 RBX::EditSelectionVerb::~EditSelectionVerb()")
+pub fn stub_3f9848() {
+    // IDA 0x3f9848: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3f984c — __ZNK3RBX17EditSelectionVerb9isEnabledEv

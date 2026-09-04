@@ -16,29 +16,29 @@ const _: () = {
 // 0x4387e8 — __ZN3RBX14FactoryProductINS_19ServerScriptServiceENS_8InstanceELZNS_20sServerScriptServiceEES2_E7CreatorD1Ev
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_19ServerScriptServiceENS_8InstanceELZNS_20sServerScriptServiceEES2_E7CreatorD1Ev")]
-pub fn stub_4387e8() -> ! {
-    todo!("0x4387e8 __ZN3RBX14FactoryProductINS_19ServerScriptServiceENS_8InstanceELZNS_20sServerScriptServiceEES2_E7CreatorD1Ev")
+pub fn stub_4387e8() {
+    // IDA 0x4387e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4387ec — __ZN3RBX14FactoryProductINS_11TestServiceENS_8InstanceELZNS_12sTestServiceEES2_E7CreatorD1Ev
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11TestServiceENS_8InstanceELZNS_12sTestServiceEES2_E7CreatorD1Ev")]
-pub fn stub_4387ec() -> ! {
-    todo!("0x4387ec __ZN3RBX14FactoryProductINS_11TestServiceENS_8InstanceELZNS_12sTestServiceEES2_E7CreatorD1Ev")
+pub fn stub_4387ec() {
+    // IDA 0x4387ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4387f0 — __ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEED1Ev
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc()")]
-pub fn stub_4387f0() -> ! {
-    todo!("0x4387f0 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc()")
+pub fn stub_4387f0() {
+    // IDA 0x4387f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4387f4 — __ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc()")]
-pub fn stub_4387f4() -> ! {
-    todo!("0x4387f4 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc()")
+pub fn stub_4387f4() {
+    // IDA 0x4387f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x438894 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE6lookupEPKc
@@ -72,15 +72,15 @@ pub fn stub_438918() -> ! {
 // 0x438a5c — __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED1Ev
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")]
-pub fn stub_438a5c() -> ! {
-    todo!("0x438a5c RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")
+pub fn stub_438a5c() {
+    // IDA 0x438a5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x438a60 — __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")]
-pub fn stub_438a60() -> ! {
-    todo!("0x438a60 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")
+pub fn stub_438a60() {
+    // IDA 0x438a60: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x438b00 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE6lookupEPKc
@@ -114,15 +114,15 @@ pub fn stub_438b84() -> ! {
 // 0x438cc8 — __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED1Ev
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()")]
-pub fn stub_438cc8() -> ! {
-    todo!("0x438cc8 RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()")
+pub fn stub_438cc8() {
+    // IDA 0x438cc8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x438ccc — __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()")]
-pub fn stub_438ccc() -> ! {
-    todo!("0x438ccc RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()")
+pub fn stub_438ccc() {
+    // IDA 0x438ccc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x438d6c — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE6lookupEPKc
@@ -156,15 +156,15 @@ pub fn stub_438df0() -> ! {
 // 0x438f34 — __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED1Ev
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()")]
-pub fn stub_438f34() -> ! {
-    todo!("0x438f34 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()")
+pub fn stub_438f34() {
+    // IDA 0x438f34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x438f38 — __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()")]
-pub fn stub_438f38() -> ! {
-    todo!("0x438f38 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()")
+pub fn stub_438f38() {
+    // IDA 0x438f38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x438fd8 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE6lookupEPKc
@@ -198,15 +198,15 @@ pub fn stub_43905c() -> ! {
 // 0x4391a0 — __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEED1Ev
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()")]
-pub fn stub_4391a0() -> ! {
-    todo!("0x4391a0 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()")
+pub fn stub_4391a0() {
+    // IDA 0x4391a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4391a4 — __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()")]
-pub fn stub_4391a4() -> ! {
-    todo!("0x4391a4 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()")
+pub fn stub_4391a4() {
+    // IDA 0x4391a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x439244 — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE6lookupEPKc
@@ -296,8 +296,8 @@ pub fn stub_439834() -> ! {
 // 0x4398b0 — __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEED2Ev
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()")]
-pub fn stub_4398b0() -> ! {
-    todo!("0x4398b0 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()")
+pub fn stub_4398b0() {
+    // IDA 0x4398b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x439a84 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE15convertToStringERKS3_
@@ -359,8 +359,8 @@ pub fn stub_439eac() -> ! {
 // 0x439f28 — __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED2Ev
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()")]
-pub fn stub_439f28() -> ! {
-    todo!("0x439f28 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()")
+pub fn stub_439f28() {
+    // IDA 0x439f28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43a0fc — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE15convertToStringERKS3_
@@ -422,8 +422,8 @@ pub fn stub_43a524() -> ! {
 // 0x43a5a0 — __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED2Ev
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()")]
-pub fn stub_43a5a0() -> ! {
-    todo!("0x43a5a0 RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()")
+pub fn stub_43a5a0() {
+    // IDA 0x43a5a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43a774 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE15convertToStringERKS3_
@@ -485,8 +485,8 @@ pub fn stub_43ab9c() -> ! {
 // 0x43ac18 — __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED2Ev
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")]
-pub fn stub_43ac18() -> ! {
-    todo!("0x43ac18 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")
+pub fn stub_43ac18() {
+    // IDA 0x43ac18: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x43adec — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE15convertToStringERKS3_

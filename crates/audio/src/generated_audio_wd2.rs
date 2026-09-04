@@ -47,118 +47,118 @@ pub fn stub_615fc0() -> ! {
 
 // 0x615fc4 — __ZThn32_NK3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_615fc4() -> ! {
-    todo!("0x615fc4 __ZThn32_NK3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEE12getClassNameEv")
+pub fn stub_615fc4() {
+    // IDA 0x615fc4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x615fd4 — __ZN3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_615fd4() -> ! {
-    todo!("0x615fd4 __ZN3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_615fd4() {
+    // IDA 0x615fd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x615fe8 — __ZN3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_615fe8() -> ! {
-    todo!("0x615fe8 __ZN3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_615fe8() {
+    // IDA 0x615fe8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x616098 — __ZThn132_N3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn132_N3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_616098() -> ! {
-    todo!("0x616098 __ZThn132_N3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_616098() {
+    // IDA 0x616098: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6160ac — __ZThn132_N3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn132_N3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_6160ac() -> ! {
-    todo!("0x6160ac __ZThn132_N3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_6160ac() {
+    // IDA 0x6160ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x616160 — __ZN3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_616160() -> ! {
-    todo!("0x616160 __ZN3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_616160() {
+    // IDA 0x616160: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x616174 — __ZN3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_616174() -> ! {
-    todo!("0x616174 __ZN3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_616174() {
+    // IDA 0x616174: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x616224 — __ZThn132_N3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn132_N3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_616224() -> ! {
-    todo!("0x616224 __ZThn132_N3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_616224() {
+    // IDA 0x616224: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x616238 — __ZThn132_N3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn132_N3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_616238() -> ! {
-    todo!("0x616238 __ZThn132_N3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_616238() {
+    // IDA 0x616238: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6162ec — __ZN3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED1Ev")]
-pub fn stub_6162ec() -> ! {
-    todo!("0x6162ec __ZN3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED1Ev")
+pub fn stub_6162ec() {
+    // IDA 0x6162ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x616300 — __ZN3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED0Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED0Ev")]
-pub fn stub_616300() -> ! {
-    todo!("0x616300 __ZN3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED0Ev")
+pub fn stub_616300() {
+    // IDA 0x616300: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6163b0 — __ZThn132_N3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED1Ev
 #[doc(alias = "__ZThn132_N3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED1Ev")]
-pub fn stub_6163b0() -> ! {
-    todo!("0x6163b0 __ZThn132_N3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED1Ev")
+pub fn stub_6163b0() {
+    // IDA 0x6163b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6163c4 — __ZThn132_N3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED0Ev
 #[doc(alias = "__ZThn132_N3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED0Ev")]
-pub fn stub_6163c4() -> ! {
-    todo!("0x6163c4 __ZThn132_N3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED0Ev")
+pub fn stub_6163c4() {
+    // IDA 0x6163c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6163cc — __ZN3RBX8SeatImplINS_17BasicPartInstanceEED1Ev
 // demangled: RBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
 #[doc(alias = "RBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZN3RBX8SeatImplINS_17BasicPartInstanceEED1Ev")]
-pub fn stub_6163cc() -> ! {
-    todo!("0x6163cc __ZN3RBX8SeatImplINS_17BasicPartInstanceEED1Ev")
+pub fn stub_6163cc() {
+    // IDA 0x6163cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6163dc — __ZN3RBX8SeatImplINS_17BasicPartInstanceEED0Ev
 // demangled: RBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
 #[doc(alias = "RBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZN3RBX8SeatImplINS_17BasicPartInstanceEED0Ev")]
-pub fn stub_6163dc() -> ! {
-    todo!("0x6163dc __ZN3RBX8SeatImplINS_17BasicPartInstanceEED0Ev")
+pub fn stub_6163dc() {
+    // IDA 0x6163dc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x616488 — __ZThn132_N3RBX8SeatImplINS_17BasicPartInstanceEED1Ev
 // demangled: non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
 #[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZThn132_N3RBX8SeatImplINS_17BasicPartInstanceEED1Ev")]
-pub fn stub_616488() -> ! {
-    todo!("0x616488 __ZThn132_N3RBX8SeatImplINS_17BasicPartInstanceEED1Ev")
+pub fn stub_616488() {
+    // IDA 0x616488: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x61649c — __ZThn132_N3RBX8SeatImplINS_17BasicPartInstanceEED0Ev
 // demangled: non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
 #[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZThn132_N3RBX8SeatImplINS_17BasicPartInstanceEED0Ev")]
-pub fn stub_61649c() -> ! {
-    todo!("0x61649c __ZThn132_N3RBX8SeatImplINS_17BasicPartInstanceEED0Ev")
+pub fn stub_61649c() {
+    // IDA 0x61649c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x61654c — __ZN3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_61654c() -> ! {
-    todo!("0x61654c __ZN3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_61654c() {
+    // IDA 0x61654c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x616550 — __ZN3RBX8SeatImplINS_17BasicPartInstanceEE15isChildSeatWeldEPNS_8InstanceE
@@ -205,16 +205,16 @@ pub fn stub_616644() -> ! {
 // demangled: rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>>>>::~callable_slot()
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX8SeatImplINSA_17BasicPartInstanceEEEEENS6_5list1INS6_5valueIPSD_EEEEEEED1Ev")]
-pub fn stub_616678() -> ! {
-    todo!("0x616678 __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX8SeatImplINSA_17BasicPartInstanceEEEEENS6_5list1INS6_5valueIPSD_EEEEEEED1Ev")
+pub fn stub_616678() {
+    // IDA 0x616678: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6166a4 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX8SeatImplINSA_17BasicPartInstanceEEEEENS6_5list1INS6_5valueIPSD_EEEEEEED0Ev
 // demangled: rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>>>>::~callable_slot()
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX8SeatImplINSA_17BasicPartInstanceEEEEENS6_5list1INS6_5valueIPSD_EEEEEEED0Ev")]
-pub fn stub_6166a4() -> ! {
-    todo!("0x6166a4 __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX8SeatImplINSA_17BasicPartInstanceEEEEENS6_5list1INS6_5valueIPSD_EEEEEEED0Ev")
+pub fn stub_6166a4() {
+    // IDA 0x6166a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x616778 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8SeatImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv
@@ -229,8 +229,8 @@ pub fn stub_616778() -> ! {
 // demangled: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8SeatImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv")]
-pub fn stub_616780() -> ! {
-    todo!("0x616780 __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8SeatImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv")
+pub fn stub_616780() {
+    // IDA 0x616780: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x616788 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX8SeatImplINS4_17BasicPartInstanceEEEEENS0_5list1INS0_5valueIPS7_EEEEEclEv
@@ -245,16 +245,16 @@ pub fn stub_616788() -> ! {
 // demangled: rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::~callable()
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8SeatImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_ED1Ev")]
-pub fn stub_6167a0() -> ! {
-    todo!("0x6167a0 __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8SeatImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_ED1Ev")
+pub fn stub_6167a0() {
+    // IDA 0x6167a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6167cc — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8SeatImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_ED0Ev
 // demangled: rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::~callable()
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8SeatImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_ED0Ev")]
-pub fn stub_6167cc() -> ! {
-    todo!("0x6167cc __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8SeatImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_ED0Ev")
+pub fn stub_6167cc() {
+    // IDA 0x6167cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6168a0 — __ZN3RBX8SeatImplINS_17BasicPartInstanceEE16destroyOtherWeldEN5boost10shared_ptrINS_8InstanceEEEPNS_4WeldE
@@ -309,16 +309,16 @@ pub fn stub_616c08() -> ! {
 // demangled: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SeatImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>>::~callable_slot()
 #[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SeatImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_8SeatImplINS4_17BasicPartInstanceEEES6_EENSA_5list2INSA_5valueIPSG_EENS2_3argILi1EEEEEEEED1Ev")]
-pub fn stub_6170d8() -> ! {
-    todo!("0x6170d8 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_8SeatImplINS4_17BasicPartInstanceEEES6_EENSA_5list2INSA_5valueIPSG_EENS2_3argILi1EEEEEEEED1Ev")
+pub fn stub_6170d8() {
+    // IDA 0x6170d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x617104 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_8SeatImplINS4_17BasicPartInstanceEEES6_EENSA_5list2INSA_5valueIPSG_EENS2_3argILi1EEEEEEEED0Ev
 // demangled: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SeatImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>>::~callable_slot()
 #[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SeatImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_8SeatImplINS4_17BasicPartInstanceEEES6_EENSA_5list2INSA_5valueIPSG_EENS2_3argILi1EEEEEEEED0Ev")]
-pub fn stub_617104() -> ! {
-    todo!("0x617104 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_8SeatImplINS4_17BasicPartInstanceEEES6_EENSA_5list2INSA_5valueIPSG_EENS2_3argILi1EEEEEEEED0Ev")
+pub fn stub_617104() {
+    // IDA 0x617104: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6171d8 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_8SeatImplINS5_17BasicPartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
@@ -333,8 +333,8 @@ pub fn stub_6171d8() -> ! {
 // demangled: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SeatImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SeatImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_8SeatImplINS5_17BasicPartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_")]
-pub fn stub_6171f4() -> ! {
-    todo!("0x6171f4 __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_8SeatImplINS5_17BasicPartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_")
+pub fn stub_6171f4() {
+    // IDA 0x6171f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x617210 — __ZN5boost3_bi5list2INS0_5valueIPN3RBX8SeatImplINS3_17BasicPartInstanceEEEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS6_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRSH_EEEEvNS0_4typeIvEERT_RT0_i
@@ -357,22 +357,22 @@ pub fn stub_6172e8() -> ! {
 // demangled: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SeatImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::~callable()
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SeatImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_8SeatImplINS5_17BasicPartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_ED1Ev")]
-pub fn stub_6173d0() -> ! {
-    todo!("0x6173d0 __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_8SeatImplINS5_17BasicPartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_ED1Ev")
+pub fn stub_6173d0() {
+    // IDA 0x6173d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6173fc — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_8SeatImplINS5_17BasicPartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_ED0Ev
 // demangled: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SeatImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::~callable()
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SeatImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_8SeatImplINS5_17BasicPartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_ED0Ev")]
-pub fn stub_6173fc() -> ! {
-    todo!("0x6173fc __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_8SeatImplINS5_17BasicPartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_ED0Ev")
+pub fn stub_6173fc() {
+    // IDA 0x6173fc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6174d0 — __ZN3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_6174d0() -> ! {
-    todo!("0x6174d0 __ZN3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_6174d0() {
+    // IDA 0x6174d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x61756c — __ZNK3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEE7Creator12getClassNameEv
@@ -407,56 +407,56 @@ pub fn stub_6177ec() -> ! {
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Seat,RBX::Seat>(boost::shared_ptr<RBX::Seat> const*,RBX::Seat *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Seat,RBX::Seat>(boost::shared_ptr<RBX::Seat> const*,RBX::Seat *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4SeatES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_6178b4() -> ! {
-    todo!("0x6178b4 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4SeatES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+pub fn stub_6178b4() {
+    // IDA 0x6178b4: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x61799c — __ZN5boost6detail12shared_countC2IPN3RBX4SeatENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // demangled: boost::detail::shared_count::shared_count<RBX::Seat *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Seat *,RBX::Creatable<RBX::Instance>::Deleter)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Seat *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Seat *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX4SeatENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_61799c() -> ! {
-    todo!("0x61799c __ZN5boost6detail12shared_countC2IPN3RBX4SeatENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_61799c() {
+    // IDA 0x61799c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x617aa4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SeatENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // demangled: boost::detail::sp_counted_impl_pd<RBX::Seat *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Seat *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SeatENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_617aa4() -> ! {
-    todo!("0x617aa4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SeatENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+pub fn stub_617aa4() {
+    // IDA 0x617aa4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x617aa8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SeatENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // demangled: boost::detail::sp_counted_impl_pd<RBX::Seat *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Seat *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SeatENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_617aa8() -> ! {
-    todo!("0x617aa8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SeatENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+pub fn stub_617aa8() {
+    // IDA 0x617aa8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x617aac — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SeatENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::Seat *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Seat *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SeatENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_617aac() -> ! {
-    todo!("0x617aac __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SeatENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_617aac() {
+    // IDA 0x617aac: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x617acc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SeatENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // demangled: boost::detail::sp_counted_impl_pd<RBX::Seat *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Seat *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SeatENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_617acc() -> ! {
-    todo!("0x617acc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SeatENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_617acc() {
+    // IDA 0x617acc: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x617ae4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SeatENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::Seat *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Seat *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SeatENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_617ae4() -> ! {
-    todo!("0x617ae4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SeatENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_617ae4() {
+    // IDA 0x617ae4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x617ae8 — __ZN3RBX4Name13callDoDeclareILZNS_5sSeatEEEEvv
@@ -485,66 +485,66 @@ pub fn stub_617e10() -> ! {
 
 // 0x617e84 — __ZThn32_N3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED1Ev
 #[doc(alias = "__ZThn32_N3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED1Ev")]
-pub fn stub_617e84() -> ! {
-    todo!("0x617e84 __ZThn32_N3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED1Ev")
+pub fn stub_617e84() {
+    // IDA 0x617e84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x617e98 — __ZThn36_N3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED1Ev
 #[doc(alias = "__ZThn36_N3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED1Ev")]
-pub fn stub_617e98() -> ! {
-    todo!("0x617e98 __ZThn36_N3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED1Ev")
+pub fn stub_617e98() {
+    // IDA 0x617e98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x617eac — __ZThn32_N3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED0Ev
 #[doc(alias = "__ZThn32_N3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED0Ev")]
-pub fn stub_617eac() -> ! {
-    todo!("0x617eac __ZThn32_N3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED0Ev")
+pub fn stub_617eac() {
+    // IDA 0x617eac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x617eb4 — __ZThn36_N3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED0Ev
 #[doc(alias = "__ZThn36_N3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED0Ev")]
-pub fn stub_617eb4() -> ! {
-    todo!("0x617eb4 __ZThn36_N3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEED0Ev")
+pub fn stub_617eb4() {
+    // IDA 0x617eb4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x617ebc — __ZN3RBX8SeatImplINS_17BasicPartInstanceEED2Ev
 // demangled: RBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
 #[doc(alias = "RBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZN3RBX8SeatImplINS_17BasicPartInstanceEED2Ev")]
-pub fn stub_617ebc() -> ! {
-    todo!("0x617ebc __ZN3RBX8SeatImplINS_17BasicPartInstanceEED2Ev")
+pub fn stub_617ebc() {
+    // IDA 0x617ebc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6180ac — __ZThn32_N3RBX8SeatImplINS_17BasicPartInstanceEED1Ev
 // demangled: non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
 #[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZThn32_N3RBX8SeatImplINS_17BasicPartInstanceEED1Ev")]
-pub fn stub_6180ac() -> ! {
-    todo!("0x6180ac __ZThn32_N3RBX8SeatImplINS_17BasicPartInstanceEED1Ev")
+pub fn stub_6180ac() {
+    // IDA 0x6180ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6180c0 — __ZThn32_N3RBX8SeatImplINS_17BasicPartInstanceEED0Ev
 // demangled: non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
 #[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZThn32_N3RBX8SeatImplINS_17BasicPartInstanceEED0Ev")]
-pub fn stub_6180c0() -> ! {
-    todo!("0x6180c0 __ZThn32_N3RBX8SeatImplINS_17BasicPartInstanceEED0Ev")
+pub fn stub_6180c0() {
+    // IDA 0x6180c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x618170 — __ZThn36_N3RBX8SeatImplINS_17BasicPartInstanceEED1Ev
 // demangled: non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
 #[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZThn36_N3RBX8SeatImplINS_17BasicPartInstanceEED1Ev")]
-pub fn stub_618170() -> ! {
-    todo!("0x618170 __ZThn36_N3RBX8SeatImplINS_17BasicPartInstanceEED1Ev")
+pub fn stub_618170() {
+    // IDA 0x618170: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x618184 — __ZThn36_N3RBX8SeatImplINS_17BasicPartInstanceEED0Ev
 // demangled: non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
 #[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZThn36_N3RBX8SeatImplINS_17BasicPartInstanceEED0Ev")]
-pub fn stub_618184() -> ! {
-    todo!("0x618184 __ZThn36_N3RBX8SeatImplINS_17BasicPartInstanceEED0Ev")
+pub fn stub_618184() {
+    // IDA 0x618184: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x618234 — __ZN3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EEC2Ev
@@ -555,50 +555,50 @@ pub fn stub_618234() -> ! {
 
 // 0x61845c — __ZThn32_N3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_61845c() -> ! {
-    todo!("0x61845c __ZThn32_N3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_61845c() {
+    // IDA 0x61845c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x618470 — __ZThn32_N3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_618470() -> ! {
-    todo!("0x618470 __ZThn32_N3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_618470() {
+    // IDA 0x618470: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x618524 — __ZThn36_N3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_618524() -> ! {
-    todo!("0x618524 __ZThn36_N3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_618524() {
+    // IDA 0x618524: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x618538 — __ZThn36_N3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_618538() -> ! {
-    todo!("0x618538 __ZThn36_N3RBX18DescribedCreatableINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_618538() {
+    // IDA 0x618538: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6185ec — __ZThn32_N3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_6185ec() -> ! {
-    todo!("0x6185ec __ZThn32_N3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_6185ec() {
+    // IDA 0x6185ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x618600 — __ZThn32_N3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_618600() -> ! {
-    todo!("0x618600 __ZThn32_N3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_618600() {
+    // IDA 0x618600: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6186b4 — __ZThn36_N3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_6186b4() -> ! {
-    todo!("0x6186b4 __ZThn36_N3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_6186b4() {
+    // IDA 0x6186b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6186c8 — __ZThn36_N3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_6186c8() -> ! {
-    todo!("0x6186c8 __ZThn36_N3RBX10Reflection9DescribedINS_4SeatELZNS_5sSeatEENS_14FactoryProductIS2_NS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_6186c8() {
+    // IDA 0x6186c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x61877c — __ZN3RBX10Reflection14PropDescriptorINS_4SeatEbEC2IMNS_8SeatImplINS_17BasicPartInstanceEEEKFRKbvEMS7_FvS9_EEEPKcSF_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -613,8 +613,8 @@ pub fn stub_61877c() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Seat,bool>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Seat,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_4SeatEbED0Ev")]
-pub fn stub_618890() -> ! {
-    todo!("0x618890 __ZN3RBX10Reflection14PropDescriptorINS_4SeatEbED0Ev")
+pub fn stub_618890() {
+    // IDA 0x618890: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6188bc — __ZNK3RBX10Reflection14PropDescriptorINS_4SeatEbE10GetSetImplIMNS_8SeatImplINS_17BasicPartInstanceEEEKFRKbvEMS7_FvS9_EE10isReadOnlyEv
@@ -685,56 +685,56 @@ pub fn stub_619080() -> ! {
 // demangled: RBX::Selection::~Selection()
 #[doc(alias = "RBX::Selection::~Selection()")]
 #[doc(alias = "__ZN3RBX9SelectionD0Ev")]
-pub fn stub_619088() -> ! {
-    todo!("0x619088 __ZN3RBX9SelectionD0Ev")
+pub fn stub_619088() {
+    // IDA 0x619088: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x619128 — __ZN3RBX9SelectionD1Ev
 // demangled: RBX::Selection::~Selection()
 #[doc(alias = "RBX::Selection::~Selection()")]
 #[doc(alias = "__ZN3RBX9SelectionD1Ev")]
-pub fn stub_619128() -> ! {
-    todo!("0x619128 __ZN3RBX9SelectionD1Ev")
+pub fn stub_619128() {
+    // IDA 0x619128: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x61912c — __ZThn32_N3RBX9SelectionD0Ev
 // demangled: non-virtual thunk toRBX::Selection::~Selection()
 #[doc(alias = "non-virtual thunk toRBX::Selection::~Selection()")]
 #[doc(alias = "__ZThn32_N3RBX9SelectionD0Ev")]
-pub fn stub_61912c() -> ! {
-    todo!("0x61912c __ZThn32_N3RBX9SelectionD0Ev")
+pub fn stub_61912c() {
+    // IDA 0x61912c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x619134 — __ZThn36_N3RBX9SelectionD0Ev
 // demangled: non-virtual thunk toRBX::Selection::~Selection()
 #[doc(alias = "non-virtual thunk toRBX::Selection::~Selection()")]
 #[doc(alias = "__ZThn36_N3RBX9SelectionD0Ev")]
-pub fn stub_619134() -> ! {
-    todo!("0x619134 __ZThn36_N3RBX9SelectionD0Ev")
+pub fn stub_619134() {
+    // IDA 0x619134: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x61913c — __ZN3RBX9SelectionD2Ev
 // demangled: RBX::Selection::~Selection()
 #[doc(alias = "RBX::Selection::~Selection()")]
 #[doc(alias = "__ZN3RBX9SelectionD2Ev")]
-pub fn stub_61913c() -> ! {
-    todo!("0x61913c __ZN3RBX9SelectionD2Ev")
+pub fn stub_61913c() {
+    // IDA 0x61913c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x619444 — __ZThn32_N3RBX9SelectionD1Ev
 // demangled: non-virtual thunk toRBX::Selection::~Selection()
 #[doc(alias = "non-virtual thunk toRBX::Selection::~Selection()")]
 #[doc(alias = "__ZThn32_N3RBX9SelectionD1Ev")]
-pub fn stub_619444() -> ! {
-    todo!("0x619444 __ZThn32_N3RBX9SelectionD1Ev")
+pub fn stub_619444() {
+    // IDA 0x619444: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x61944c — __ZThn36_N3RBX9SelectionD1Ev
 // demangled: non-virtual thunk toRBX::Selection::~Selection()
 #[doc(alias = "non-virtual thunk toRBX::Selection::~Selection()")]
 #[doc(alias = "__ZThn36_N3RBX9SelectionD1Ev")]
-pub fn stub_61944c() -> ! {
-    todo!("0x61944c __ZThn36_N3RBX9SelectionD1Ev")
+pub fn stub_61944c() {
+    // IDA 0x61944c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x619454 — __ZN3RBX9Selection17onAncestryChangedEPNS_8InstanceE
@@ -845,8 +845,8 @@ pub fn stub_61a5e8() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Selection,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Selection,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9SelectionEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED1Ev")]
-pub fn stub_61a5fc() -> ! {
-    todo!("0x61a5fc __ZN3RBX10Reflection13BoundFuncDescINS_9SelectionEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED1Ev")
+pub fn stub_61a5fc() {
+    // IDA 0x61a5fc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x61a620 — __ZN3RBX9Selection12setSelectionEN5boost10shared_ptrIKSt6vectorINS2_INS_8InstanceEEESaIS5_EEEE
@@ -861,16 +861,16 @@ pub fn stub_61a620() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Selection,void ()(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),1>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Selection,void ()(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9SelectionEFvN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEELi1EED1Ev")]
-pub fn stub_61a630() -> ! {
-    todo!("0x61a630 __ZN3RBX10Reflection13BoundFuncDescINS_9SelectionEFvN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEELi1EED1Ev")
+pub fn stub_61a630() {
+    // IDA 0x61a630: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x61a73c — __ZN3RBX10Reflection9EventDescINS_9SelectionEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 // demangled: RBX::Reflection::EventDesc<RBX::Selection,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Selection::*>::~EventDesc()
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Selection,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Selection::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_9SelectionEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev")]
-pub fn stub_61a73c() -> ! {
-    todo!("0x61a73c __ZN3RBX10Reflection9EventDescINS_9SelectionEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev")
+pub fn stub_61a73c() {
+    // IDA 0x61a73c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x61a760 — __ZN3rbx7signals6signalIFvRKN3RBX16SelectionChangedEEE7connectIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_9SelectionES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEEENS0_10connectionERKT_

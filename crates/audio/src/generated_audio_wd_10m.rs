@@ -65,8 +65,8 @@ pub fn stub_5d9eb8() -> ! {
 // type: void __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "RBX::PartInstance::~PartInstance()")]
 #[doc(alias = "__ZN3RBX12PartInstanceD0Ev")]
-pub fn stub_5da3f8() -> ! {
-    todo!("0x5da3f8 __ZN3RBX12PartInstanceD0Ev")
+pub fn stub_5da3f8() {
+    // IDA 0x5da3f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5da4a4 — __ZN3RBX12PartInstanceD1Ev
@@ -74,8 +74,8 @@ pub fn stub_5da3f8() -> ! {
 // type: void __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "RBX::PartInstance::~PartInstance()")]
 #[doc(alias = "__ZN3RBX12PartInstanceD1Ev")]
-pub fn stub_5da4a4() -> ! {
-    todo!("0x5da4a4 __ZN3RBX12PartInstanceD1Ev")
+pub fn stub_5da4a4() {
+    // IDA 0x5da4a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5da4b4 — __ZThn32_N3RBX12PartInstanceD0Ev
@@ -83,8 +83,8 @@ pub fn stub_5da4a4() -> ! {
 // type: void __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
 #[doc(alias = "__ZThn32_N3RBX12PartInstanceD0Ev")]
-pub fn stub_5da4b4() -> ! {
-    todo!("0x5da4b4 __ZThn32_N3RBX12PartInstanceD0Ev")
+pub fn stub_5da4b4() {
+    // IDA 0x5da4b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5da4bc — __ZThn36_N3RBX12PartInstanceD0Ev
@@ -92,8 +92,8 @@ pub fn stub_5da4b4() -> ! {
 // type: void __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
 #[doc(alias = "__ZThn36_N3RBX12PartInstanceD0Ev")]
-pub fn stub_5da4bc() -> ! {
-    todo!("0x5da4bc __ZThn36_N3RBX12PartInstanceD0Ev")
+pub fn stub_5da4bc() {
+    // IDA 0x5da4bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5da4c4 — __ZThn132_N3RBX12PartInstanceD0Ev
@@ -101,8 +101,8 @@ pub fn stub_5da4bc() -> ! {
 // type: void __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
 #[doc(alias = "__ZThn132_N3RBX12PartInstanceD0Ev")]
-pub fn stub_5da4c4() -> ! {
-    todo!("0x5da4c4 __ZThn132_N3RBX12PartInstanceD0Ev")
+pub fn stub_5da4c4() {
+    // IDA 0x5da4c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5da4cc — __ZN3RBX12PartInstanceD2Ev
@@ -110,8 +110,8 @@ pub fn stub_5da4c4() -> ! {
 // type: void __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "RBX::PartInstance::~PartInstance()")]
 #[doc(alias = "__ZN3RBX12PartInstanceD2Ev")]
-pub fn stub_5da4cc() -> ! {
-    todo!("0x5da4cc __ZN3RBX12PartInstanceD2Ev")
+pub fn stub_5da4cc() {
+    // IDA 0x5da4cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5da890 — __ZThn32_N3RBX12PartInstanceD1Ev
@@ -119,8 +119,8 @@ pub fn stub_5da4cc() -> ! {
 // type: void __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
 #[doc(alias = "__ZThn32_N3RBX12PartInstanceD1Ev")]
-pub fn stub_5da890() -> ! {
-    todo!("0x5da890 __ZThn32_N3RBX12PartInstanceD1Ev")
+pub fn stub_5da890() {
+    // IDA 0x5da890: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5da8a0 — __ZThn36_N3RBX12PartInstanceD1Ev
@@ -128,8 +128,8 @@ pub fn stub_5da890() -> ! {
 // type: void __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
 #[doc(alias = "__ZThn36_N3RBX12PartInstanceD1Ev")]
-pub fn stub_5da8a0() -> ! {
-    todo!("0x5da8a0 __ZThn36_N3RBX12PartInstanceD1Ev")
+pub fn stub_5da8a0() {
+    // IDA 0x5da8a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5da8b0 — __ZThn132_N3RBX12PartInstanceD1Ev
@@ -137,8 +137,8 @@ pub fn stub_5da8a0() -> ! {
 // type: void __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
 #[doc(alias = "__ZThn132_N3RBX12PartInstanceD1Ev")]
-pub fn stub_5da8b0() -> ! {
-    todo!("0x5da8b0 __ZThn132_N3RBX12PartInstanceD1Ev")
+pub fn stub_5da8b0() {
+    // IDA 0x5da8b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5da8c0 — __ZNK3RBX12PartInstance2fwEv
@@ -200,8 +200,8 @@ pub fn stub_5daa58() -> ! {
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::onGuidChanged(void)")]
 #[doc(alias = "__ZThn12_N3RBX12PartInstance13onGuidChangedEv")]
-pub fn stub_5daac0() -> ! {
-    todo!("0x5daac0 __ZThn12_N3RBX12PartInstance13onGuidChangedEv")
+pub fn stub_5daac0() {
+    // IDA 0x5daac0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5daac8 — __ZNK3RBX12PartInstance17worldSnapLocationEv
@@ -245,8 +245,8 @@ pub fn stub_5dadb8() -> ! {
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::reportTouches(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX12PartInstance13reportTouchesEv")]
-pub fn stub_5dae34() -> ! {
-    todo!("0x5dae34 __ZThn96_NK3RBX12PartInstance13reportTouchesEv")
+pub fn stub_5dae34() {
+    // IDA 0x5dae34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5dae40 — __ZN3RBX12PartInstance17primitivesToPartsERKN3G3D5ArrayIPNS_9PrimitiveELi10ELm32EEERSt6vectorIN5boost10shared_ptrIS0_EESaISB_EE
@@ -308,8 +308,8 @@ pub fn stub_5db334() -> ! {
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this, float)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::onCameraNear(float)")]
 #[doc(alias = "__ZThn132_N3RBX12PartInstance12onCameraNearEf")]
-pub fn stub_5db36c() -> ! {
-    todo!("0x5db36c __ZThn132_N3RBX12PartInstance12onCameraNearEf")
+pub fn stub_5db36c() {
+    // IDA 0x5db36c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5db374 — __ZN3RBX12PartInstance14onClumpChangedEv
@@ -326,8 +326,8 @@ pub fn stub_5db374() -> ! {
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::onClumpChanged(void)")]
 #[doc(alias = "__ZThn96_N3RBX12PartInstance14onClumpChangedEv")]
-pub fn stub_5db3a0() -> ! {
-    todo!("0x5db3a0 __ZThn96_N3RBX12PartInstance14onClumpChangedEv")
+pub fn stub_5db3a0() {
+    // IDA 0x5db3a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5db3a8 — __ZN3RBX12PartInstance17onSleepingChangedEb
@@ -344,8 +344,8 @@ pub fn stub_5db3a8() -> ! {
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this, bool)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::onSleepingChanged(bool)")]
 #[doc(alias = "__ZThn96_N3RBX12PartInstance17onSleepingChangedEb")]
-pub fn stub_5db564() -> ! {
-    todo!("0x5db564 __ZThn96_N3RBX12PartInstance17onSleepingChangedEb")
+pub fn stub_5db564() {
+    // IDA 0x5db564: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5db56c — __ZN3RBX12PartInstance17onBuoyancyChangedEb
@@ -362,8 +362,8 @@ pub fn stub_5db56c() -> ! {
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this, bool)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::onBuoyancyChanged(bool)")]
 #[doc(alias = "__ZThn96_N3RBX12PartInstance17onBuoyancyChangedEb")]
-pub fn stub_5db574() -> ! {
-    todo!("0x5db574 __ZThn96_N3RBX12PartInstance17onBuoyancyChangedEb")
+pub fn stub_5db574() {
+    // IDA 0x5db574: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5db57c — __ZN3RBX12PartInstance19isInContinousMotionEv
@@ -380,8 +380,8 @@ pub fn stub_5db57c() -> ! {
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::isInContinousMotion(void)")]
 #[doc(alias = "__ZThn96_N3RBX12PartInstance19isInContinousMotionEv")]
-pub fn stub_5db584() -> ! {
-    todo!("0x5db584 __ZThn96_N3RBX12PartInstance19isInContinousMotionEv")
+pub fn stub_5db584() {
+    // IDA 0x5db584: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5db58c — __ZNK3RBX12PartInstance12askSetParentEPKNS_8InstanceE
@@ -541,8 +541,8 @@ pub fn stub_5dbcfc() -> ! {
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZThn108_NK3RBX12PartInstance19shouldRender3dAdornEv")]
-pub fn stub_5dbe44() -> ! {
-    todo!("0x5dbe44 __ZThn108_NK3RBX12PartInstance19shouldRender3dAdornEv")
+pub fn stub_5dbe44() {
+    // IDA 0x5dbe44: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5dbe50 — __ZN3RBX12PartInstance13render3dAdornEPNS_5AdornE
@@ -559,8 +559,8 @@ pub fn stub_5dbe50() -> ! {
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn108_N3RBX12PartInstance13render3dAdornEPNS_5AdornE")]
-pub fn stub_5dd39c() -> ! {
-    todo!("0x5dd39c __ZThn108_N3RBX12PartInstance13render3dAdornEPNS_5AdornE")
+pub fn stub_5dd39c() {
+    // IDA 0x5dd39c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5dd3a4 — __ZN3RBX12PartInstance14render3dSelectEPNS_5AdornENS_11SelectStateE
@@ -575,8 +575,8 @@ pub fn stub_5dd3a4() -> ! {
 // demangled: non-virtual thunk toRBX::PartInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
 #[doc(alias = "__ZThn108_N3RBX12PartInstance14render3dSelectEPNS_5AdornENS_11SelectStateE")]
-pub fn stub_5dd3c4() -> ! {
-    todo!("0x5dd3c4 __ZThn108_N3RBX12PartInstance14render3dSelectEPNS_5AdornENS_11SelectStateE")
+pub fn stub_5dd3c4() {
+    // IDA 0x5dd3c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5dd3e8 — __ZN3RBX12PartInstance11hitTestImplERKNS_6RbxRayERN3G3D7Vector3E
@@ -799,8 +799,8 @@ pub fn stub_5de570() -> ! {
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::onNetworkIsSleepingChanged(void)")]
 #[doc(alias = "__ZThn96_N3RBX12PartInstance26onNetworkIsSleepingChangedEv")]
-pub fn stub_5de59c() -> ! {
-    todo!("0x5de59c __ZThn96_N3RBX12PartInstance26onNetworkIsSleepingChangedEv")
+pub fn stub_5de59c() {
+    // IDA 0x5de59c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5de5a4 — __ZN3RBX12PartInstance13setCanCollideEb

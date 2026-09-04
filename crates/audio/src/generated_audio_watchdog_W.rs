@@ -21,8 +21,8 @@ pub fn stub_0x84c924() -> ! {
 // 0x84ca28 — __ZN3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFbvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GameBasicSettings,bool ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFbvELi0EED0Ev")]
-pub fn stub_0x84ca28() -> ! {
-    todo!("0x84ca28 __ZN3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFbvELi0EED0Ev")
+pub fn stub_0x84ca28() {
+    // IDA 0x84ca28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84cadc — __ZNK3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFbvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -49,8 +49,8 @@ pub fn stub_0x84cb30() -> ! {
 // 0x84cc44 — __ZN3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsEbED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsEbED0Ev")]
-pub fn stub_0x84cc44() -> ! {
-    todo!("0x84cc44 __ZN3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsEbED0Ev")
+pub fn stub_0x84cc44() {
+    // IDA 0x84cc44: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84cc70 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
@@ -91,8 +91,8 @@ pub fn stub_0x84ccc0() -> ! {
 // 0x84cdd4 — __ZN3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsESsED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsESsED0Ev")]
-pub fn stub_0x84cdd4() -> ! {
-    todo!("0x84cdd4 __ZN3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsESsED0Ev")
+pub fn stub_0x84cdd4() {
+    // IDA 0x84cdd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84ce00 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE10isReadOnlyEv
@@ -140,8 +140,8 @@ pub fn stub_0x84d13c() -> ! {
 // 0x84d188 — __ZN3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFvSsbELi2EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GameBasicSettings,void ()(std::string,bool),2>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFvSsbELi2EED0Ev")]
-pub fn stub_0x84d188() -> ! {
-    todo!("0x84d188 __ZN3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFvSsbELi2EED0Ev")
+pub fn stub_0x84d188() {
+    // IDA 0x84d188: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84d264 — __ZNK3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFvSsbELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -175,8 +175,8 @@ pub fn stub_0x84d66c() -> ! {
 // 0x84d69c — __ZN3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFbSsELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GameBasicSettings,bool ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFbSsELi1EED0Ev")]
-pub fn stub_0x84d69c() -> ! {
-    todo!("0x84d69c __ZN3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFbSsELi1EED0Ev")
+pub fn stub_0x84d69c() {
+    // IDA 0x84d69c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84d768 — __ZNK3RBX10Reflection13BoundFuncDescINS_17GameBasicSettingsEFbSsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -203,8 +203,8 @@ pub fn stub_0x84d9fc() -> ! {
 // 0x84dbb0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::RenderQualitySetting>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEED0Ev")]
-pub fn stub_0x84dbb0() -> ! {
-    todo!("0x84dbb0 __ZN3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEED0Ev")
+pub fn stub_0x84dbb0() {
+    // IDA 0x84dbb0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84dbdc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEE10isReadOnlyEv
@@ -378,8 +378,8 @@ pub fn stub_0x84e274() -> ! {
 // 0x84e428 — __ZN3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameSettings::UploadSetting>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEED0Ev")]
-pub fn stub_0x84e428() -> ! {
-    todo!("0x84e428 __ZN3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEED0Ev")
+pub fn stub_0x84e428() {
+    // IDA 0x84e428: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84e454 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE10isReadOnlyEv
@@ -546,8 +546,8 @@ pub fn stub_0x84ea7c() -> ! {
 // 0x84ec30 — __ZN3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::ControlMode>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEED0Ev")]
-pub fn stub_0x84ec30() -> ! {
-    todo!("0x84ec30 __ZN3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEED0Ev")
+pub fn stub_0x84ec30() {
+    // IDA 0x84ec30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x84ec5c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE10isReadOnlyEv

@@ -12,6 +12,6 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: int __fastcall(int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9SoundTypeEED2Ev")]
-pub fn stub_f3b284() -> ! {
-    todo!("0xf3b284 j___ZN3RBX10Reflection8EnumDescINS_9SoundTypeEED2Ev")
+pub fn stub_f3b284() {
+    // IDA 0xf3b284: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

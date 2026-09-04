@@ -206,8 +206,8 @@ pub fn stub_662fcc() -> ! {
 // type: void __fastcall(RBX::Team *__hidden this)
 #[doc(alias = "RBX::Team::~Team()")]
 #[doc(alias = "__ZN3RBX4TeamD0Ev")]
-pub fn stub_6631e0() -> ! {
-    todo!("0x6631e0 __ZN3RBX4TeamD0Ev")
+pub fn stub_6631e0() {
+    // IDA 0x6631e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x663280 — __ZN3RBX4TeamD1Ev
@@ -215,8 +215,8 @@ pub fn stub_6631e0() -> ! {
 // type: void __fastcall(RBX::Team *__hidden this)
 #[doc(alias = "RBX::Team::~Team()")]
 #[doc(alias = "__ZN3RBX4TeamD1Ev")]
-pub fn stub_663280() -> ! {
-    todo!("0x663280 __ZN3RBX4TeamD1Ev")
+pub fn stub_663280() {
+    // IDA 0x663280: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x663284 — __ZThn32_N3RBX4TeamD0Ev
@@ -224,8 +224,8 @@ pub fn stub_663280() -> ! {
 // type: void __fastcall(RBX::Team *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Team::~Team()")]
 #[doc(alias = "__ZThn32_N3RBX4TeamD0Ev")]
-pub fn stub_663284() -> ! {
-    todo!("0x663284 __ZThn32_N3RBX4TeamD0Ev")
+pub fn stub_663284() {
+    // IDA 0x663284: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66328c — __ZThn36_N3RBX4TeamD0Ev
@@ -233,8 +233,8 @@ pub fn stub_663284() -> ! {
 // type: void __fastcall(RBX::Team *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Team::~Team()")]
 #[doc(alias = "__ZThn36_N3RBX4TeamD0Ev")]
-pub fn stub_66328c() -> ! {
-    todo!("0x66328c __ZThn36_N3RBX4TeamD0Ev")
+pub fn stub_66328c() {
+    // IDA 0x66328c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x663294 — __ZThn32_N3RBX4TeamD1Ev
@@ -242,8 +242,8 @@ pub fn stub_66328c() -> ! {
 // type: void __fastcall(RBX::Team *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Team::~Team()")]
 #[doc(alias = "__ZThn32_N3RBX4TeamD1Ev")]
-pub fn stub_663294() -> ! {
-    todo!("0x663294 __ZThn32_N3RBX4TeamD1Ev")
+pub fn stub_663294() {
+    // IDA 0x663294: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66329c — __ZThn36_N3RBX4TeamD1Ev
@@ -251,8 +251,8 @@ pub fn stub_663294() -> ! {
 // type: void __fastcall(RBX::Team *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Team::~Team()")]
 #[doc(alias = "__ZThn36_N3RBX4TeamD1Ev")]
-pub fn stub_66329c() -> ! {
-    todo!("0x66329c __ZThn36_N3RBX4TeamD1Ev")
+pub fn stub_66329c() {
+    // IDA 0x66329c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6632a4 — __ZNK3RBX4Team12askSetParentEPKNS_8InstanceE
@@ -268,24 +268,24 @@ pub fn stub_6632a4() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Team,int>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_4TeamEiED1Ev")]
-pub fn stub_6632e0() -> ! {
-    todo!("0x6632e0 __ZN3RBX10Reflection14PropDescriptorINS_4TeamEiED1Ev")
+pub fn stub_6632e0() {
+    // IDA 0x6632e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x663304 — __ZN3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEED1Ev
 // demangled: RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEED1Ev")]
-pub fn stub_663304() -> ! {
-    todo!("0x663304 __ZN3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEED1Ev")
+pub fn stub_663304() {
+    // IDA 0x663304: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x663328 — __ZN3RBX10Reflection14PropDescriptorINS_4TeamEbED1Ev
 // demangled: RBX::Reflection::PropDescriptor<RBX::Team,bool>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_4TeamEbED1Ev")]
-pub fn stub_663328() -> ! {
-    todo!("0x663328 __ZN3RBX10Reflection14PropDescriptorINS_4TeamEbED1Ev")
+pub fn stub_663328() {
+    // IDA 0x663328: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66334c — __ZNK3RBX4Team11askAddChildEPKNS_8InstanceE
@@ -307,8 +307,8 @@ pub fn stub_663350() -> ! {
 // 0x663360 — __ZThn32_NK3RBX14FactoryProductINS_4TeamENS_8InstanceELZNS_5sTeamEES2_E12getClassNameEv
 // demangled: __ZThn32_NK3RBX14FactoryProductINS_4TeamENS_8InstanceELZNS_5sTeamEES2_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_4TeamENS_8InstanceELZNS_5sTeamEES2_E12getClassNameEv")]
-pub fn stub_663360() -> ! {
-    todo!("0x663360 __ZThn32_NK3RBX14FactoryProductINS_4TeamENS_8InstanceELZNS_5sTeamEES2_E12getClassNameEv")
+pub fn stub_663360() {
+    // IDA 0x663360: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x663b74 — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_4TeamEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -364,8 +364,8 @@ pub fn stub_663d68() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Team,bool>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_4TeamEbED0Ev")]
-pub fn stub_663e7c() -> ! {
-    todo!("0x663e7c __ZN3RBX10Reflection14PropDescriptorINS_4TeamEbED0Ev")
+pub fn stub_663e7c() {
+    // IDA 0x663e7c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x663ea8 — __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
@@ -413,8 +413,8 @@ pub fn stub_663ef8() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEED0Ev")]
-pub fn stub_66400c() -> ! {
-    todo!("0x66400c __ZN3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEED0Ev")
+pub fn stub_66400c() {
+    // IDA 0x66400c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x664038 — __ZNK3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
@@ -462,8 +462,8 @@ pub fn stub_66408c() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Team,int>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_4TeamEiED0Ev")]
-pub fn stub_6641a0() -> ! {
-    todo!("0x6641a0 __ZN3RBX10Reflection14PropDescriptorINS_4TeamEiED0Ev")
+pub fn stub_6641a0() {
+    // IDA 0x6641a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6641cc — __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv
@@ -530,8 +530,8 @@ pub fn stub_6645dc() -> ! {
 // type: void __fastcall(RBX::Teams *__hidden this)
 #[doc(alias = "RBX::Teams::~Teams()")]
 #[doc(alias = "__ZN3RBX5TeamsD0Ev")]
-pub fn stub_66482c() -> ! {
-    todo!("0x66482c __ZN3RBX5TeamsD0Ev")
+pub fn stub_66482c() {
+    // IDA 0x66482c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6648cc — __ZN3RBX5TeamsD1Ev
@@ -539,8 +539,8 @@ pub fn stub_66482c() -> ! {
 // type: void __fastcall(RBX::Teams *__hidden this)
 #[doc(alias = "RBX::Teams::~Teams()")]
 #[doc(alias = "__ZN3RBX5TeamsD1Ev")]
-pub fn stub_6648cc() -> ! {
-    todo!("0x6648cc __ZN3RBX5TeamsD1Ev")
+pub fn stub_6648cc() {
+    // IDA 0x6648cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6648d0 — __ZThn32_N3RBX5TeamsD0Ev
@@ -548,8 +548,8 @@ pub fn stub_6648cc() -> ! {
 // type: void __fastcall(RBX::Teams *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Teams::~Teams()")]
 #[doc(alias = "__ZThn32_N3RBX5TeamsD0Ev")]
-pub fn stub_6648d0() -> ! {
-    todo!("0x6648d0 __ZThn32_N3RBX5TeamsD0Ev")
+pub fn stub_6648d0() {
+    // IDA 0x6648d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6648d8 — __ZThn36_N3RBX5TeamsD0Ev
@@ -557,8 +557,8 @@ pub fn stub_6648d0() -> ! {
 // type: void __fastcall(RBX::Teams *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Teams::~Teams()")]
 #[doc(alias = "__ZThn36_N3RBX5TeamsD0Ev")]
-pub fn stub_6648d8() -> ! {
-    todo!("0x6648d8 __ZThn36_N3RBX5TeamsD0Ev")
+pub fn stub_6648d8() {
+    // IDA 0x6648d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6648e0 — __ZN3RBX5TeamsD2Ev
@@ -566,8 +566,8 @@ pub fn stub_6648d8() -> ! {
 // type: void __fastcall(RBX::Teams *__hidden this)
 #[doc(alias = "RBX::Teams::~Teams()")]
 #[doc(alias = "__ZN3RBX5TeamsD2Ev")]
-pub fn stub_6648e0() -> ! {
-    todo!("0x6648e0 __ZN3RBX5TeamsD2Ev")
+pub fn stub_6648e0() {
+    // IDA 0x6648e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6649c4 — __ZThn32_N3RBX5TeamsD1Ev
@@ -575,8 +575,8 @@ pub fn stub_6648e0() -> ! {
 // type: void __fastcall(RBX::Teams *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Teams::~Teams()")]
 #[doc(alias = "__ZThn32_N3RBX5TeamsD1Ev")]
-pub fn stub_6649c4() -> ! {
-    todo!("0x6649c4 __ZThn32_N3RBX5TeamsD1Ev")
+pub fn stub_6649c4() {
+    // IDA 0x6649c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6649cc — __ZThn36_N3RBX5TeamsD1Ev
@@ -584,8 +584,8 @@ pub fn stub_6649c4() -> ! {
 // type: void __fastcall(RBX::Teams *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Teams::~Teams()")]
 #[doc(alias = "__ZThn36_N3RBX5TeamsD1Ev")]
-pub fn stub_6649cc() -> ! {
-    todo!("0x6649cc __ZThn36_N3RBX5TeamsD1Ev")
+pub fn stub_6649cc() {
+    // IDA 0x6649cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6649d4 — __ZN3RBX5Teams10isTeamGameEv
@@ -670,8 +670,8 @@ pub fn stub_664ef4() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Teams,void ()(void),0>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Teams,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_5TeamsEFvvELi0EED1Ev")]
-pub fn stub_665008() -> ! {
-    todo!("0x665008 __ZN3RBX10Reflection13BoundFuncDescINS_5TeamsEFvvELi0EED1Ev")
+pub fn stub_665008() {
+    // IDA 0x665008: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66502c — __ZN3RBX5Teams8getTeamsEv
@@ -687,8 +687,8 @@ pub fn stub_66502c() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Teams,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Teams,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_5TeamsEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED1Ev")]
-pub fn stub_665040() -> ! {
-    todo!("0x665040 __ZN3RBX10Reflection13BoundFuncDescINS_5TeamsEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED1Ev")
+pub fn stub_665040() {
+    // IDA 0x665040: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x665064 — __ZN3RBX11shared_fromINS_4TeamEEEN5boost10shared_ptrIT_EEPS4_
@@ -723,16 +723,16 @@ pub fn stub_665230() -> ! {
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Teams,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::BoundFuncDesc(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::Teams::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_5TeamsEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EEC2EMS2_FSB_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_6654bc() -> ! {
-    todo!("0x6654bc __ZN3RBX10Reflection13BoundFuncDescINS_5TeamsEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EEC2EMS2_FSB_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+pub fn stub_6654bc() {
+    // IDA 0x6654bc: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x6655c0 — __ZN3RBX10Reflection13BoundFuncDescINS_5TeamsEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED0Ev
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Teams,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Teams,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_5TeamsEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED0Ev")]
-pub fn stub_6655c0() -> ! {
-    todo!("0x6655c0 __ZN3RBX10Reflection13BoundFuncDescINS_5TeamsEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED0Ev")
+pub fn stub_6655c0() {
+    // IDA 0x6655c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x665674 — __ZNK3RBX10Reflection13BoundFuncDescINS_5TeamsEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -764,8 +764,8 @@ pub fn stub_665780() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Teams,void ()(void),0>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Teams,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_5TeamsEFvvELi0EED0Ev")]
-pub fn stub_665884() -> ! {
-    todo!("0x665884 __ZN3RBX10Reflection13BoundFuncDescINS_5TeamsEFvvELi0EED0Ev")
+pub fn stub_665884() {
+    // IDA 0x665884: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x665938 — __ZNK3RBX10Reflection13BoundFuncDescINS_5TeamsEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE

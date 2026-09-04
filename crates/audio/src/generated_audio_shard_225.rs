@@ -14,22 +14,22 @@ const _: () = {
 // 0x796104 — __ZN5boost6detail12shared_countC2INS_6spirit7classic4impl14grammar_helperINS4_7grammarINS_13property_tree11json_parser12json_grammarINS8_11basic_ptreeISsSsSt4lessISsEEEEENS4_14parser_contextINS4_5nil_tEEEEESF_NS4_7scannerIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS4_16scanner_policiesINS4_28skip_parser_iteration_policyINS4_11alternativeINSU_INS4_12space_parserENS4_13confix_parserINS4_6strlitIPKcEENS4_11kleene_starINS4_14anychar_parserEEENSU_INS4_10eol_parserENS4_10end_parserEEENS4_21unary_parser_categoryENS4_10non_nestedENS4_9is_lexemeEEEEENSW_IS10_S13_S10_S17_S18_S19_EEEENS4_16iteration_policyEEENS4_12match_policyENS4_13action_policyEEEEEEEEEPT_
 #[doc(alias = "boost::detail::shared_count::shared_count<boost::spirit::classic::impl::grammar_helper<boost::spirit::classic::grammar<boost::property_tree::json_parser::json_grammar<boost::property_tree::basic_ptree<std::string,std::string,std::less<std::string>>>,boost::spirit::classic::parser_context<boost::spirit::classic::nil_t>>,boost::property_tree::json_parser::json_grammar<boost::property_tree::basic_ptree<std::string,std::string,std::less<std::string>>>,boost::spirit::classic::scanner<__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>,boost::spirit::classic::scanner_policies<boost::spirit::classic::skip_parser_iteration_policy<boost::spirit::classic::alternative<boost::spirit::classic::alternative<boost::spirit::classic::space_parser,boost::spirit::classic::confix_parser<boost::spirit::classic::strlit<char const*>,boost::spirit::classic::kleene_star<boost::spirit::classic::anychar_parser>,boost::spirit::classic::alternative<boost::spirit::classic::eol_parser,boost::spirit::classic::end_parser>,boost::spirit::classic::unary_parser_category,boost::spirit::classic::non_nested,boost::spirit::classic::is_lexeme>>,boost::spirit::classic::confix_parser<boost::spirit::classic::strlit<char const*>,boost::spirit::classic::kleene_star<boost::spirit::classic::anychar_parser>,boost::spirit::classic::strlit<char const*>,boost::spirit::classic::unary_parser_category,boost::spirit::classic::non_nested,boost::spirit::classic::is_lexeme>>,boost::spirit::classic::iteration_policy>,boost::spirit::classic::match_policy,boost::spirit::classic::action_policy>>>>(boost::spirit::classic::impl::grammar_helper<boost::spirit::classic::grammar<boost::property_tree::json_parser::json_grammar<boost::property_tree::basic_ptree<std::string,std::string,std::less<std::string>>>,boost::spirit::classic::parser_context<boost::spirit::classic::nil_t>>,boost::property_tree::json_parser::json_grammar<boost::property_tree::basic_ptree<std::string,std::string,std::less<std::string>>>,boost::spirit::classic::scanner<__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>,boost::spirit::classic::scanner_policies<boost::spirit::classic::skip_parser_iteration_policy<boost::spirit::classic::alternative<boost::spirit::classic::alternative<boost::spirit::classic::space_parser,boost::spirit::classic::confix_parser<boost::spirit::classic::strlit<char const*>,boost::spirit::classic::kleene_star<boost::spirit::classic::anychar_parser>,boost::spirit::classic::alternative<boost::spirit::classic::eol_parser,boost::spirit::classic::end_parser>,boost::spirit::classic::unary_parser_category,boost::spirit::classic::non_nested,boost::spirit::classic::is_lexeme>>,boost::spirit::classic::confix_parser<boost::spirit::classic::strlit<char const*>,boost::spirit::classic::kleene_star<boost::spirit::classic::anychar_parser>,boost::spirit::classic::strlit<char const*>,boost::spirit::classic::unary_parser_category,boost::spirit::classic::non_nested,boost::spirit::classic::is_lexeme>>,boost::spirit::classic::iteration_policy>,boost::spirit::classic::match_policy,boost::spirit::classic::action_policy>>> *)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2INS_6spirit7classic4impl14grammar_helperINS4_7grammarINS_13property_tree11json_parser12json_grammarINS8_11basic_ptreeISsSsSt4lessISsEEEEENS4_14parser_contextINS4_5nil_tEEEEESF_NS4_7scannerIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS4_16scanner_policiesINS4_28skip_parser_iteration_policyINS4_11alternativeINSU_INS4_12space_parserENS4_13confix_parserINS4_6strlitIPKcEENS4_11kleene_starINS4_14anychar_parserEEENSU_INS4_10eol_parserENS4_10end_parserEEENS4_21unary_parser_categoryENS4_10non_nestedENS4_9is_lexemeEEEEENSW_IS10_S13_S10_S17_S18_S19_EEEENS4_16iteration_policyEEENS4_12match_policyENS4_13action_policyEEEEEEEEEPT_")]
-pub fn stub_796104() -> ! {
-    todo!("0x796104 __ZN5boost6detail12shared_countC2INS_6spirit7classic4impl14grammar_helperINS4_7grammarINS_13property_tree11json_parser12json_grammarINS8_11basic_ptreeISsSsSt4lessISsEEEEENS4_14parser_contextINS4_5nil_tEEEEESF_NS4_7scannerIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS4_16scanner_policiesINS4_28skip_parser_iteration_policyINS4_11alternativeINSU_INS4_12space_parserENS4_13confix_parserINS4_6strlitIPKcEENS4_11kleene_starINS4_14anychar_parserEEENSU_INS4_10eol_parserENS4_10end_parserEEENS4_21unary_parser_categoryENS4_10non_nestedENS4_9is_lexemeEEEEENSW_IS10_S13_S10_S17_S18_S19_EEEENS4_16iteration_policyEEENS4_12match_policyENS4_13action_policyEEEEEEEEEPT_")
+pub fn stub_796104() {
+    // IDA 0x796104: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x796200 — __ZN5boost6detail17sp_counted_impl_pINS_6spirit7classic4impl14grammar_helperINS3_7grammarINS_13property_tree11json_parser12json_grammarINS7_11basic_ptreeISsSsSt4lessISsEEEEENS3_14parser_contextINS3_5nil_tEEEEESE_NS3_7scannerIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS3_16scanner_policiesINS3_28skip_parser_iteration_policyINS3_11alternativeINST_INS3_12space_parserENS3_13confix_parserINS3_6strlitIPKcEENS3_11kleene_starINS3_14anychar_parserEEENST_INS3_10eol_parserENS3_10end_parserEEENS3_21unary_parser_categoryENS3_10non_nestedENS3_9is_lexemeEEEEENSV_ISZ_S12_SZ_S16_S17_S18_EEEENS3_16iteration_policyEEENS3_12match_policyENS3_13action_policyEEEEEEEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::spirit::classic::impl::grammar_helper<boost::spirit::classic::grammar<boost::property_tree::json_parser::json_grammar<boost::property_tree::basic_ptree<std::string,std::string,std::less<std::string>>>,boost::spirit::classic::parser_context<boost::spirit::classic::nil_t>>,boost::property_tree::json_parser::json_grammar<boost::property_tree::basic_ptree<std::string,std::string,std::less<std::string>>>,boost::spirit::classic::scanner<__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>,boost::spirit::classic::scanner_policies<boost::spirit::classic::skip_parser_iteration_policy<boost::spirit::classic::alternative<boost::spirit::classic::alternative<boost::spirit::classic::space_parser,boost::spirit::classic::confix_parser<boost::spirit::classic::strlit<char const*>,boost::spirit::classic::kleene_star<boost::spirit::classic::anychar_parser>,boost::spirit::classic::alternative<boost::spirit::classic::eol_parser,boost::spirit::classic::end_parser>,boost::spirit::classic::unary_parser_category,boost::spirit::classic::non_nested,boost::spirit::classic::is_lexeme>>,boost::spirit::classic::confix_parser<boost::spirit::classic::strlit<char const*>,boost::spirit::classic::kleene_star<boost::spirit::classic::anychar_parser>,boost::spirit::classic::strlit<char const*>,boost::spirit::classic::unary_parser_category,boost::spirit::classic::non_nested,boost::spirit::classic::is_lexeme>>,boost::spirit::classic::iteration_policy>,boost::spirit::classic::match_policy,boost::spirit::classic::action_policy>>>>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_6spirit7classic4impl14grammar_helperINS3_7grammarINS_13property_tree11json_parser12json_grammarINS7_11basic_ptreeISsSsSt4lessISsEEEEENS3_14parser_contextINS3_5nil_tEEEEESE_NS3_7scannerIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS3_16scanner_policiesINS3_28skip_parser_iteration_policyINS3_11alternativeINST_INS3_12space_parserENS3_13confix_parserINS3_6strlitIPKcEENS3_11kleene_starINS3_14anychar_parserEEENST_INS3_10eol_parserENS3_10end_parserEEENS3_21unary_parser_categoryENS3_10non_nestedENS3_9is_lexemeEEEEENSV_ISZ_S12_SZ_S16_S17_S18_EEEENS3_16iteration_policyEEENS3_12match_policyENS3_13action_policyEEEEEEEED0Ev")]
-pub fn stub_796200() -> ! {
-    todo!("0x796200 __ZN5boost6detail17sp_counted_impl_pINS_6spirit7classic4impl14grammar_helperINS3_7grammarINS_13property_tree11json_parser12json_grammarINS7_11basic_ptreeISsSsSt4lessISsEEEEENS3_14parser_contextINS3_5nil_tEEEEESE_NS3_7scannerIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS3_16scanner_policiesINS3_28skip_parser_iteration_policyINS3_11alternativeINST_INS3_12space_parserENS3_13confix_parserINS3_6strlitIPKcEENS3_11kleene_starINS3_14anychar_parserEEENST_INS3_10eol_parserENS3_10end_parserEEENS3_21unary_parser_categoryENS3_10non_nestedENS3_9is_lexemeEEEEENSV_ISZ_S12_SZ_S16_S17_S18_EEEENS3_16iteration_policyEEENS3_12match_policyENS3_13action_policyEEEEEEEED0Ev")
+pub fn stub_796200() {
+    // IDA 0x796200: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x796208 — __ZN5boost6detail17sp_counted_impl_pINS_6spirit7classic4impl14grammar_helperINS3_7grammarINS_13property_tree11json_parser12json_grammarINS7_11basic_ptreeISsSsSt4lessISsEEEEENS3_14parser_contextINS3_5nil_tEEEEESE_NS3_7scannerIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS3_16scanner_policiesINS3_28skip_parser_iteration_policyINS3_11alternativeINST_INS3_12space_parserENS3_13confix_parserINS3_6strlitIPKcEENS3_11kleene_starINS3_14anychar_parserEEENST_INS3_10eol_parserENS3_10end_parserEEENS3_21unary_parser_categoryENS3_10non_nestedENS3_9is_lexemeEEEEENSV_ISZ_S12_SZ_S16_S17_S18_EEEENS3_16iteration_policyEEENS3_12match_policyENS3_13action_policyEEEEEEEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::spirit::classic::impl::grammar_helper<boost::spirit::classic::grammar<boost::property_tree::json_parser::json_grammar<boost::property_tree::basic_ptree<std::string,std::string,std::less<std::string>>>,boost::spirit::classic::parser_context<boost::spirit::classic::nil_t>>,boost::property_tree::json_parser::json_grammar<boost::property_tree::basic_ptree<std::string,std::string,std::less<std::string>>>,boost::spirit::classic::scanner<__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>,boost::spirit::classic::scanner_policies<boost::spirit::classic::skip_parser_iteration_policy<boost::spirit::classic::alternative<boost::spirit::classic::alternative<boost::spirit::classic::space_parser,boost::spirit::classic::confix_parser<boost::spirit::classic::strlit<char const*>,boost::spirit::classic::kleene_star<boost::spirit::classic::anychar_parser>,boost::spirit::classic::alternative<boost::spirit::classic::eol_parser,boost::spirit::classic::end_parser>,boost::spirit::classic::unary_parser_category,boost::spirit::classic::non_nested,boost::spirit::classic::is_lexeme>>,boost::spirit::classic::confix_parser<boost::spirit::classic::strlit<char const*>,boost::spirit::classic::kleene_star<boost::spirit::classic::anychar_parser>,boost::spirit::classic::strlit<char const*>,boost::spirit::classic::unary_parser_category,boost::spirit::classic::non_nested,boost::spirit::classic::is_lexeme>>,boost::spirit::classic::iteration_policy>,boost::spirit::classic::match_policy,boost::spirit::classic::action_policy>>>>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_6spirit7classic4impl14grammar_helperINS3_7grammarINS_13property_tree11json_parser12json_grammarINS7_11basic_ptreeISsSsSt4lessISsEEEEENS3_14parser_contextINS3_5nil_tEEEEESE_NS3_7scannerIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS3_16scanner_policiesINS3_28skip_parser_iteration_policyINS3_11alternativeINST_INS3_12space_parserENS3_13confix_parserINS3_6strlitIPKcEENS3_11kleene_starINS3_14anychar_parserEEENST_INS3_10eol_parserENS3_10end_parserEEENS3_21unary_parser_categoryENS3_10non_nestedENS3_9is_lexemeEEEEENSV_ISZ_S12_SZ_S16_S17_S18_EEEENS3_16iteration_policyEEENS3_12match_policyENS3_13action_policyEEEEEEEE19get_untyped_deleterEv")]
-pub fn stub_796208() -> ! {
-    todo!("0x796208 __ZN5boost6detail17sp_counted_impl_pINS_6spirit7classic4impl14grammar_helperINS3_7grammarINS_13property_tree11json_parser12json_grammarINS7_11basic_ptreeISsSsSt4lessISsEEEEENS3_14parser_contextINS3_5nil_tEEEEESE_NS3_7scannerIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS3_16scanner_policiesINS3_28skip_parser_iteration_policyINS3_11alternativeINST_INS3_12space_parserENS3_13confix_parserINS3_6strlitIPKcEENS3_11kleene_starINS3_14anychar_parserEEENST_INS3_10eol_parserENS3_10end_parserEEENS3_21unary_parser_categoryENS3_10non_nestedENS3_9is_lexemeEEEEENSV_ISZ_S12_SZ_S16_S17_S18_EEEENS3_16iteration_policyEEENS3_12match_policyENS3_13action_policyEEEEEEEE19get_untyped_deleterEv")
+pub fn stub_796208() {
+    // IDA 0x796208: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x79620c — __ZN5boost6spirit7classic4impl14object_with_idINS2_11grammar_tagEmEC2Ev
@@ -49,22 +49,22 @@ pub fn stub_7962d0() -> ! {
 // 0x796378 — __ZN5boost6detail17sp_counted_impl_pINS_6spirit7classic4impl26object_with_id_base_supplyImEEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::spirit::classic::impl::object_with_id_base_supply<unsigned long>>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_6spirit7classic4impl26object_with_id_base_supplyImEEED0Ev")]
-pub fn stub_796378() -> ! {
-    todo!("0x796378 __ZN5boost6detail17sp_counted_impl_pINS_6spirit7classic4impl26object_with_id_base_supplyImEEED0Ev")
+pub fn stub_796378() {
+    // IDA 0x796378: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x796380 — __ZN5boost6detail17sp_counted_impl_pINS_6spirit7classic4impl26object_with_id_base_supplyImEEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::spirit::classic::impl::object_with_id_base_supply<unsigned long>>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_6spirit7classic4impl26object_with_id_base_supplyImEEE19get_untyped_deleterEv")]
-pub fn stub_796380() -> ! {
-    todo!("0x796380 __ZN5boost6detail17sp_counted_impl_pINS_6spirit7classic4impl26object_with_id_base_supplyImEEE19get_untyped_deleterEv")
+pub fn stub_796380() {
+    // IDA 0x796380: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x796388 — __ZN5boost13property_tree17file_parser_errorD0Ev
 #[doc(alias = "boost::property_tree::file_parser_error::~file_parser_error()")]
 #[doc(alias = "__ZN5boost13property_tree17file_parser_errorD0Ev")]
-pub fn stub_796388() -> ! {
-    todo!("0x796388 __ZN5boost13property_tree17file_parser_errorD0Ev")
+pub fn stub_796388() {
+    // IDA 0x796388: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7963c0 — __ZN5boost13property_tree17file_parser_errorC2ERKSsS3_m
@@ -77,8 +77,8 @@ pub fn stub_7963c0() -> ! {
 // 0x796548 — __ZN5boost13property_tree11json_parser17json_parser_errorD0Ev
 #[doc(alias = "boost::property_tree::json_parser::json_parser_error::~json_parser_error()")]
 #[doc(alias = "__ZN5boost13property_tree11json_parser17json_parser_errorD0Ev")]
-pub fn stub_796548() -> ! {
-    todo!("0x796548 __ZN5boost13property_tree11json_parser17json_parser_errorD0Ev")
+pub fn stub_796548() {
+    // IDA 0x796548: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x796580 — __ZN5boost13property_tree17file_parser_error11format_whatERKSsS3_m
@@ -98,36 +98,36 @@ pub fn stub_796700() -> ! {
 // 0x7967e0 — __ZN5boost16exception_detail19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEED2Ev
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEED2Ev")]
-pub fn stub_7967e0() -> ! {
-    todo!("0x7967e0 __ZN5boost16exception_detail19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEED2Ev")
+pub fn stub_7967e0() {
+    // IDA 0x7967e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7968c0 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEED0Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>::~error_info_injector()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEED0Ev")]
-pub fn stub_7968c0() -> ! {
-    todo!("0x7968c0 __ZThn20_N5boost16exception_detail19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEED0Ev")
+pub fn stub_7968c0() {
+    // IDA 0x7968c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7968d8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED1Ev
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED1Ev")]
-pub fn stub_7968d8() -> ! {
-    todo!("0x7968d8 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED1Ev")
+pub fn stub_7968d8() {
+    // IDA 0x7968d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7968e8 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED1Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>>::~clone_impl()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED1Ev")]
-pub fn stub_7968e8() -> ! {
-    todo!("0x7968e8 __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED1Ev")
+pub fn stub_7968e8() {
+    // IDA 0x7968e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7968f0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED1Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED1Ev")]
-pub fn stub_7968f0() -> ! {
-    todo!("0x7968f0 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED1Ev")
+pub fn stub_7968f0() {
+    // IDA 0x7968f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x796900 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEE5cloneEv
@@ -140,8 +140,8 @@ pub fn stub_796900() -> ! {
 // 0x7969c0 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED0Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>>::~clone_impl()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED0Ev")]
-pub fn stub_7969c0() -> ! {
-    todo!("0x7969c0 __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED0Ev")
+pub fn stub_7969c0() {
+    // IDA 0x7969c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7969d8 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEE5cloneEv
@@ -203,15 +203,15 @@ pub fn stub_7971b0() -> ! {
 // 0x797270 — __ZN5boost3any6holderISsED1Ev
 #[doc(alias = "boost::any::holder<std::string>::~holder()")]
 #[doc(alias = "__ZN5boost3any6holderISsED1Ev")]
-pub fn stub_797270() -> ! {
-    todo!("0x797270 __ZN5boost3any6holderISsED1Ev")
+pub fn stub_797270() {
+    // IDA 0x797270: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x797294 — __ZN5boost3any6holderISsED0Ev
 #[doc(alias = "boost::any::holder<std::string>::~holder()")]
 #[doc(alias = "__ZN5boost3any6holderISsED0Ev")]
-pub fn stub_797294() -> ! {
-    todo!("0x797294 __ZN5boost3any6holderISsED0Ev")
+pub fn stub_797294() {
+    // IDA 0x797294: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7972c0 — __ZNK5boost3any6holderISsE4typeEv
@@ -238,64 +238,64 @@ pub fn stub_79738c() -> ! {
 // 0x797468 — __ZN5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED1Ev
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED1Ev")]
-pub fn stub_797468() -> ! {
-    todo!("0x797468 __ZN5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED1Ev")
+pub fn stub_797468() {
+    // IDA 0x797468: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x79746c — __ZN5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED2Ev
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED2Ev")]
-pub fn stub_79746c() -> ! {
-    todo!("0x79746c __ZN5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED2Ev")
+pub fn stub_79746c() {
+    // IDA 0x79746c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x797558 — __ZThn12_N5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED1Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>::~error_info_injector()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED1Ev")]
-pub fn stub_797558() -> ! {
-    todo!("0x797558 __ZThn12_N5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED1Ev")
+pub fn stub_797558() {
+    // IDA 0x797558: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x797560 — __ZN5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED0Ev
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED0Ev")]
-pub fn stub_797560() -> ! {
-    todo!("0x797560 __ZN5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED0Ev")
+pub fn stub_797560() {
+    // IDA 0x797560: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x797574 — __ZThn12_N5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED0Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>::~error_info_injector()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED0Ev")]
-pub fn stub_797574() -> ! {
-    todo!("0x797574 __ZThn12_N5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED0Ev")
+pub fn stub_797574() {
+    // IDA 0x797574: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x79758c — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED1Ev
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED1Ev")]
-pub fn stub_79758c() -> ! {
-    todo!("0x79758c __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED1Ev")
+pub fn stub_79758c() {
+    // IDA 0x79758c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x79759c — __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED1Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>>::~clone_impl()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED1Ev")]
-pub fn stub_79759c() -> ! {
-    todo!("0x79759c __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED1Ev")
+pub fn stub_79759c() {
+    // IDA 0x79759c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7975a4 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED1Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED1Ev")]
-pub fn stub_7975a4() -> ! {
-    todo!("0x7975a4 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED1Ev")
+pub fn stub_7975a4() {
+    // IDA 0x7975a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7975b0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED0Ev
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED0Ev")]
-pub fn stub_7975b0() -> ! {
-    todo!("0x7975b0 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED0Ev")
+pub fn stub_7975b0() {
+    // IDA 0x7975b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7975c4 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEE5cloneEv
@@ -315,8 +315,8 @@ pub fn stub_797680() -> ! {
 // 0x797764 — __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED0Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>>::~clone_impl()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED0Ev")]
-pub fn stub_797764() -> ! {
-    todo!("0x797764 __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED0Ev")
+pub fn stub_797764() {
+    // IDA 0x797764: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x79777c — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEE5cloneEv
@@ -336,8 +336,8 @@ pub fn stub_797788() -> ! {
 // 0x797798 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED0Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED0Ev")]
-pub fn stub_797798() -> ! {
-    todo!("0x797798 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED0Ev")
+pub fn stub_797798() {
+    // IDA 0x797798: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7977b4 — __ZN5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEEC2ERKS4_
@@ -420,43 +420,43 @@ pub fn stub_79849c() -> ! {
 // 0x7f03d8 — __ZN3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFvSsELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ContentProvider,void ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFvSsELi1EED1Ev")]
-pub fn stub_7f03d8() -> ! {
-    todo!("0x7f03d8 __ZN3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFvSsELi1EED1Ev")
+pub fn stub_7f03d8() {
+    // IDA 0x7f03d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f0418 — __ZN3RBX10Reflection14PropDescriptorINS_15ContentProviderESsED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ContentProvider,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15ContentProviderESsED1Ev")]
-pub fn stub_7f0418() -> ! {
-    todo!("0x7f0418 __ZN3RBX10Reflection14PropDescriptorINS_15ContentProviderESsED1Ev")
+pub fn stub_7f0418() {
+    // IDA 0x7f0418: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f043c — __ZN3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFviELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ContentProvider,void ()(int),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFviELi1EED1Ev")]
-pub fn stub_7f043c() -> ! {
-    todo!("0x7f043c __ZN3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFviELi1EED1Ev")
+pub fn stub_7f043c() {
+    // IDA 0x7f043c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f047c — __ZN3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFvNS_9ContentIdEELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ContentProvider,void ()(RBX::ContentId),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFvNS_9ContentIdEELi1EED1Ev")]
-pub fn stub_7f047c() -> ! {
-    todo!("0x7f047c __ZN3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFvNS_9ContentIdEELi1EED1Ev")
+pub fn stub_7f047c() {
+    // IDA 0x7f047c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f04bc — __ZN3RBX10Reflection14PropDescriptorINS_15ContentProviderEiED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ContentProvider,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15ContentProviderEiED1Ev")]
-pub fn stub_7f04bc() -> ! {
-    todo!("0x7f04bc __ZN3RBX10Reflection14PropDescriptorINS_15ContentProviderEiED1Ev")
+pub fn stub_7f04bc() {
+    // IDA 0x7f04bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f6bf0 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14delete_bucketsEv
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::delete_buckets(void)")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14delete_bucketsEv")]
-pub fn stub_7f6bf0() -> ! {
-    todo!("0x7f6bf0 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14delete_bucketsEv")
+pub fn stub_7f6bf0() {
+    // IDA 0x7f6bf0: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x7f6c40 — __ZNSt6vectorIN3RBX10Reflection7VariantESaIS2_EE9push_backERKS2_
@@ -490,15 +490,15 @@ pub fn stub_7f7234() -> ! {
 // 0x7f7344 — __ZN3RBX10Reflection14PropDescriptorINS_15ContentProviderEiED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ContentProvider,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15ContentProviderEiED0Ev")]
-pub fn stub_7f7344() -> ! {
-    todo!("0x7f7344 __ZN3RBX10Reflection14PropDescriptorINS_15ContentProviderEiED0Ev")
+pub fn stub_7f7344() {
+    // IDA 0x7f7344: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f7438 — __ZN3RBX10Reflection23TypedPropertyDescriptorIiED0Ev
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<int>::~TypedPropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorIiED0Ev")]
-pub fn stub_7f7438() -> ! {
-    todo!("0x7f7438 __ZN3RBX10Reflection23TypedPropertyDescriptorIiED0Ev")
+pub fn stub_7f7438() {
+    // IDA 0x7f7438: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f7464 — __ZNK3RBX10Reflection14PropDescriptorINS_15ContentProviderEiE7GetImplIMS2_KFivEE10isReadOnlyEv
@@ -546,8 +546,8 @@ pub fn stub_7f7724() -> ! {
 // 0x7f7754 — __ZN3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFvNS_9ContentIdEELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ContentProvider,void ()(RBX::ContentId),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFvNS_9ContentIdEELi1EED0Ev")]
-pub fn stub_7f7754() -> ! {
-    todo!("0x7f7754 __ZN3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFvNS_9ContentIdEELi1EED0Ev")
+pub fn stub_7f7754() {
+    // IDA 0x7f7754: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f7820 — __ZNK3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFvNS_9ContentIdEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -588,8 +588,8 @@ pub fn stub_7f7dec() -> ! {
 // 0x7f7e1c — __ZN3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFviELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ContentProvider,void ()(int),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFviELi1EED0Ev")]
-pub fn stub_7f7e1c() -> ! {
-    todo!("0x7f7e1c __ZN3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFviELi1EED0Ev")
+pub fn stub_7f7e1c() {
+    // IDA 0x7f7e1c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f7ef0 — __ZNK3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFviELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -609,8 +609,8 @@ pub fn stub_7f7f28() -> ! {
 // 0x7f8038 — __ZN3RBX10Reflection14PropDescriptorINS_15ContentProviderESsED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ContentProvider,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15ContentProviderESsED0Ev")]
-pub fn stub_7f8038() -> ! {
-    todo!("0x7f8038 __ZN3RBX10Reflection14PropDescriptorINS_15ContentProviderESsED0Ev")
+pub fn stub_7f8038() {
+    // IDA 0x7f8038: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f8068 — __ZNK3RBX10Reflection23TypedPropertyDescriptorISsE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -630,8 +630,8 @@ pub fn stub_7f8198() -> ! {
 // 0x7f82c0 — __ZN3RBX10Reflection23TypedPropertyDescriptorISsED0Ev
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<std::string>::~TypedPropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorISsED0Ev")]
-pub fn stub_7f82c0() -> ! {
-    todo!("0x7f82c0 __ZN3RBX10Reflection23TypedPropertyDescriptorISsED0Ev")
+pub fn stub_7f82c0() {
+    // IDA 0x7f82c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f82ec — __ZNK3RBX10Reflection14PropDescriptorINS_15ContentProviderESsE7GetImplIMS2_KFRKSsvEE10isReadOnlyEv
@@ -679,8 +679,8 @@ pub fn stub_7f85bc() -> ! {
 // 0x7f85ec — __ZN3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFvSsELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ContentProvider,void ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFvSsELi1EED0Ev")]
-pub fn stub_7f85ec() -> ! {
-    todo!("0x7f85ec __ZN3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFvSsELi1EED0Ev")
+pub fn stub_7f85ec() {
+    // IDA 0x7f85ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x7f86b8 — __ZNK3RBX10Reflection13BoundFuncDescINS_15ContentProviderEFvSsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE

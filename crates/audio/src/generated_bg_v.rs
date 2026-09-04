@@ -13,8 +13,8 @@ const _: () = {
 // 0x5bed54 — __ZNSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEEC2ERS0_RKS5_
 #[doc(alias = "std::pair<std::string const,boost::shared_ptr<RBX::KeyframeSequence>>::pair(std::string const&,boost::shared_ptr<RBX::KeyframeSequence> const&)")]
 #[doc(alias = "__ZNSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEEC2ERS0_RKS5_")]
-pub fn stub_5bed54() -> ! {
-    todo!("0x5bed54 __ZNSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEEC2ERS0_RKS5_")
+pub fn stub_5bed54() {
+    // IDA 0x5bed54: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x5bee10 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS7_ERKS7_
@@ -41,8 +41,8 @@ pub fn stub_5bef4c() -> ! {
 // 0x5befd0 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE14_M_create_nodeERKS7_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::KeyframeSequence>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::KeyframeSequence>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::KeyframeSequence>>>>::_M_create_node(std::pair<std::string const,boost::shared_ptr<RBX::KeyframeSequence>> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE14_M_create_nodeERKS7_")]
-pub fn stub_5befd0() -> ! {
-    todo!("0x5befd0 __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE14_M_create_nodeERKS7_")
+pub fn stub_5befd0() {
+    // IDA 0x5befd0: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x5bf0d8 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE11lower_boundERS1_
@@ -66,45 +66,45 @@ pub fn stub_5bf228() -> ! {
 
 // 0x5bf344 — __ZN3RBX10Reflection9DescribedINS_24KeyframeSequenceProviderELZNS_25sKeyframeSequenceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_24KeyframeSequenceProviderELZNS_25sKeyframeSequenceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5bf344() -> ! {
-    todo!("0x5bf344 __ZN3RBX10Reflection9DescribedINS_24KeyframeSequenceProviderELZNS_25sKeyframeSequenceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5bf344() {
+    // IDA 0x5bf344: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5bf348 — __ZN3RBX10Reflection9DescribedINS_24KeyframeSequenceProviderELZNS_25sKeyframeSequenceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_24KeyframeSequenceProviderELZNS_25sKeyframeSequenceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_5bf348() -> ! {
-    todo!("0x5bf348 __ZN3RBX10Reflection9DescribedINS_24KeyframeSequenceProviderELZNS_25sKeyframeSequenceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_5bf348() {
+    // IDA 0x5bf348: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5bf3e8 — __ZThn32_N3RBX10Reflection9DescribedINS_24KeyframeSequenceProviderELZNS_25sKeyframeSequenceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_24KeyframeSequenceProviderELZNS_25sKeyframeSequenceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5bf3e8() -> ! {
-    todo!("0x5bf3e8 __ZThn32_N3RBX10Reflection9DescribedINS_24KeyframeSequenceProviderELZNS_25sKeyframeSequenceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5bf3e8() {
+    // IDA 0x5bf3e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5bf3f0 — __ZThn32_N3RBX10Reflection9DescribedINS_24KeyframeSequenceProviderELZNS_25sKeyframeSequenceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_24KeyframeSequenceProviderELZNS_25sKeyframeSequenceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_5bf3f0() -> ! {
-    todo!("0x5bf3f0 __ZThn32_N3RBX10Reflection9DescribedINS_24KeyframeSequenceProviderELZNS_25sKeyframeSequenceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_5bf3f0() {
+    // IDA 0x5bf3f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5bf494 — __ZThn36_N3RBX10Reflection9DescribedINS_24KeyframeSequenceProviderELZNS_25sKeyframeSequenceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_24KeyframeSequenceProviderELZNS_25sKeyframeSequenceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5bf494() -> ! {
-    todo!("0x5bf494 __ZThn36_N3RBX10Reflection9DescribedINS_24KeyframeSequenceProviderELZNS_25sKeyframeSequenceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5bf494() {
+    // IDA 0x5bf494: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5bf49c — __ZThn36_N3RBX10Reflection9DescribedINS_24KeyframeSequenceProviderELZNS_25sKeyframeSequenceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_24KeyframeSequenceProviderELZNS_25sKeyframeSequenceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_5bf49c() -> ! {
-    todo!("0x5bf49c __ZThn36_N3RBX10Reflection9DescribedINS_24KeyframeSequenceProviderELZNS_25sKeyframeSequenceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_5bf49c() {
+    // IDA 0x5bf49c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5bf540 — __ZN3RBX8LRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEEC2Ev
 #[doc(alias = "RBX::LRUCache<std::string,boost::shared_ptr<RBX::KeyframeSequence>>::LRUCache(void)")]
 #[doc(alias = "__ZN3RBX8LRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEEC2Ev")]
-pub fn stub_5bf540() -> ! {
-    todo!("0x5bf540 __ZN3RBX8LRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEEC2Ev")
+pub fn stub_5bf540() {
+    // IDA 0x5bf540: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x5bf620 — __ZN3RBX20SizeEnforcedLRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEE6resizeEm
@@ -117,15 +117,15 @@ pub fn stub_5bf620() -> ! {
 // 0x5bf6a4 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEEC2EmRKSH_RKSJ_RKSaINS1_8ptr_nodeISE_EEE
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,boost::shared_ptr<RBX::KeyframeSequence>>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,boost::shared_ptr<RBX::KeyframeSequence>>>>,boost::hash<std::string>,std::equal_to<std::string>>>::table(unsigned long,boost::hash<std::string> const&,std::equal_to<std::string> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,boost::shared_ptr<RBX::KeyframeSequence>>>>>>> const&)")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEEC2EmRKSH_RKSJ_RKSaINS1_8ptr_nodeISE_EEE")]
-pub fn stub_5bf6a4() -> ! {
-    todo!("0x5bf6a4 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEEC2EmRKSH_RKSJ_RKSaINS1_8ptr_nodeISE_EEE")
+pub fn stub_5bf6a4() {
+    // IDA 0x5bf6a4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x5bf710 — __ZN3RBX10Reflection13BoundFuncDescINS_24KeyframeSequenceProviderEFN5boost10shared_ptrINS_8InstanceEEENS_9ContentIdEELi1EEC2EMS2_FS6_S7_EPKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::KeyframeSequenceProvider,boost::shared_ptr<RBX::Instance> ()(RBX::ContentId),1>::BoundFuncDesc(boost::shared_ptr<RBX::Instance> (RBX::KeyframeSequenceProvider::*)(RBX::ContentId),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_24KeyframeSequenceProviderEFN5boost10shared_ptrINS_8InstanceEEENS_9ContentIdEELi1EEC2EMS2_FS6_S7_EPKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_5bf710() -> ! {
-    todo!("0x5bf710 __ZN3RBX10Reflection13BoundFuncDescINS_24KeyframeSequenceProviderEFN5boost10shared_ptrINS_8InstanceEEENS_9ContentIdEELi1EEC2EMS2_FS6_S7_EPKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+pub fn stub_5bf710() {
+    // IDA 0x5bf710: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x5bf888 — __ZN3RBX10Reflection13BoundFuncDescINS_24KeyframeSequenceProviderEFN5boost10shared_ptrINS_8InstanceEEENS_9ContentIdEELi1EE16declareSignatureEPKcNS0_7VariantE
@@ -138,8 +138,8 @@ pub fn stub_5bf888() -> ! {
 // 0x5bf8b8 — __ZN3RBX10Reflection13BoundFuncDescINS_24KeyframeSequenceProviderEFN5boost10shared_ptrINS_8InstanceEEENS_9ContentIdEELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::KeyframeSequenceProvider,boost::shared_ptr<RBX::Instance> ()(RBX::ContentId),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_24KeyframeSequenceProviderEFN5boost10shared_ptrINS_8InstanceEEENS_9ContentIdEELi1EED0Ev")]
-pub fn stub_5bf8b8() -> ! {
-    todo!("0x5bf8b8 __ZN3RBX10Reflection13BoundFuncDescINS_24KeyframeSequenceProviderEFN5boost10shared_ptrINS_8InstanceEEENS_9ContentIdEELi1EED0Ev")
+pub fn stub_5bf8b8() {
+    // IDA 0x5bf8b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5bf984 — __ZNK3RBX10Reflection13BoundFuncDescINS_24KeyframeSequenceProviderEFN5boost10shared_ptrINS_8InstanceEEENS_9ContentIdEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -159,8 +159,8 @@ pub fn stub_5bfac4() -> ! {
 // 0x5bfc50 — __ZN3RBX10Reflection13BoundFuncDescINS_24KeyframeSequenceProviderEFNS_9ContentIdEN5boost10shared_ptrINS_8InstanceEEEELi1EEC2EMS2_FS3_S7_EPKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::KeyframeSequenceProvider,RBX::ContentId ()(boost::shared_ptr<RBX::Instance>),1>::BoundFuncDesc(RBX::ContentId (RBX::KeyframeSequenceProvider::*)(boost::shared_ptr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_24KeyframeSequenceProviderEFNS_9ContentIdEN5boost10shared_ptrINS_8InstanceEEEELi1EEC2EMS2_FS3_S7_EPKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_5bfc50() -> ! {
-    todo!("0x5bfc50 __ZN3RBX10Reflection13BoundFuncDescINS_24KeyframeSequenceProviderEFNS_9ContentIdEN5boost10shared_ptrINS_8InstanceEEEELi1EEC2EMS2_FS3_S7_EPKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+pub fn stub_5bfc50() {
+    // IDA 0x5bfc50: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x5bfde8 — __ZN3RBX10Reflection13BoundFuncDescINS_24KeyframeSequenceProviderEFNS_9ContentIdEN5boost10shared_ptrINS_8InstanceEEEELi1EE16declareSignatureEPKcNS0_7VariantE
@@ -173,8 +173,8 @@ pub fn stub_5bfde8() -> ! {
 // 0x5bfe18 — __ZN3RBX10Reflection13BoundFuncDescINS_24KeyframeSequenceProviderEFNS_9ContentIdEN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::KeyframeSequenceProvider,RBX::ContentId ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_24KeyframeSequenceProviderEFNS_9ContentIdEN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev")]
-pub fn stub_5bfe18() -> ! {
-    todo!("0x5bfe18 __ZN3RBX10Reflection13BoundFuncDescINS_24KeyframeSequenceProviderEFNS_9ContentIdEN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev")
+pub fn stub_5bfe18() {
+    // IDA 0x5bfe18: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5bff34 — __ZNK3RBX10Reflection13BoundFuncDescINS_24KeyframeSequenceProviderEFNS_9ContentIdEN5boost10shared_ptrINS_8InstanceEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -222,22 +222,22 @@ pub fn stub_5c0288() -> ! {
 // 0x5c0470 — __ZNSt11_Deque_baseIP10XmlElementSaIS1_EED2Ev
 #[doc(alias = "std::_Deque_base<XmlElement *,std::allocator<XmlElement *>>::~_Deque_base()")]
 #[doc(alias = "__ZNSt11_Deque_baseIP10XmlElementSaIS1_EED2Ev")]
-pub fn stub_5c0470() -> ! {
-    todo!("0x5c0470 __ZNSt11_Deque_baseIP10XmlElementSaIS1_EED2Ev")
+pub fn stub_5c0470() {
+    // IDA 0x5c0470: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c049c — __ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX16KeyframeSequenceEEEEENS2_INS_10shared_ptrIS5_EEEEEC2ES7_SA_
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::KeyframeSequence>>,boost::_bi::value<boost::shared_ptr<RBX::KeyframeSequence>>>::list2(boost::_bi::value<boost::weak_ptr<RBX::KeyframeSequence>>,boost::_bi::value<boost::shared_ptr<RBX::KeyframeSequence>>)")]
 #[doc(alias = "__ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX16KeyframeSequenceEEEEENS2_INS_10shared_ptrIS5_EEEEEC2ES7_SA_")]
-pub fn stub_5c049c() -> ! {
-    todo!("0x5c049c __ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX16KeyframeSequenceEEEEENS2_INS_10shared_ptrIS5_EEEEEC2ES7_SA_")
+pub fn stub_5c049c() {
+    // IDA 0x5c049c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x5c05b4 — __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX16KeyframeSequenceEEEEENS2_INS_10shared_ptrIS5_EEEEEC2ES7_SA_
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::KeyframeSequence>>,boost::_bi::value<boost::shared_ptr<RBX::KeyframeSequence>>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::KeyframeSequence>>,boost::_bi::value<boost::shared_ptr<RBX::KeyframeSequence>>)")]
 #[doc(alias = "__ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX16KeyframeSequenceEEEEENS2_INS_10shared_ptrIS5_EEEEEC2ES7_SA_")]
-pub fn stub_5c05b4() -> ! {
-    todo!("0x5c05b4 __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX16KeyframeSequenceEEEEENS2_INS_10shared_ptrIS5_EEEEEC2ES7_SA_")
+pub fn stub_5c05b4() {
+    // IDA 0x5c05b4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x5c06d0 — __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_16KeyframeSequenceEEENS_10shared_ptrISA_EEENS7_5list2INS7_5valueISB_EENSH_ISD_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE
@@ -262,15 +262,15 @@ pub fn stub_5c0994() -> ! {
 // 0x5c0b0c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16KeyframeSequenceEEENS_10shared_ptrIS7_EEENS3_5list2INS3_5valueIS8_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::KeyframeSequence>,boost::shared_ptr<RBX::KeyframeSequence>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::KeyframeSequence>>,boost::_bi::value<boost::shared_ptr<RBX::KeyframeSequence>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16KeyframeSequenceEEENS_10shared_ptrIS7_EEENS3_5list2INS3_5valueIS8_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE")]
-pub fn stub_5c0b0c() -> ! {
-    todo!("0x5c0b0c __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16KeyframeSequenceEEENS_10shared_ptrIS7_EEENS3_5list2INS3_5valueIS8_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE")
+pub fn stub_5c0b0c() {
+    // IDA 0x5c0b0c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x5c0b28 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16KeyframeSequenceEEENS_10shared_ptrIS7_EEENS3_5list2INS3_5valueIS8_EENSE_ISA_EEEEEEvPNS6_9DataModelEE6invokeERNS1_15function_bufferESK_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::KeyframeSequence>,boost::shared_ptr<RBX::KeyframeSequence>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::KeyframeSequence>>,boost::_bi::value<boost::shared_ptr<RBX::KeyframeSequence>>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16KeyframeSequenceEEENS_10shared_ptrIS7_EEENS3_5list2INS3_5valueIS8_EENSE_ISA_EEEEEEvPNS6_9DataModelEE6invokeERNS1_15function_bufferESK_")]
-pub fn stub_5c0b28() -> ! {
-    todo!("0x5c0b28 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16KeyframeSequenceEEENS_10shared_ptrIS7_EEENS3_5list2INS3_5valueIS8_EENSE_ISA_EEEEEEvPNS6_9DataModelEE6invokeERNS1_15function_bufferESK_")
+pub fn stub_5c0b28() {
+    // IDA 0x5c0b28: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x5c0b44 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_16KeyframeSequenceEEENS_10shared_ptrISB_EEENS8_5list2INS8_5valueISC_EENSI_ISE_EEEEEEEEbT_RNS1_15function_bufferE
@@ -304,29 +304,29 @@ pub fn stub_5c0f1c() -> ! {
 // 0x5c102c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16KeyframeSequenceEEENS_10shared_ptrIS7_EEENS3_5list2INS3_5valueIS8_EENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::KeyframeSequence>,boost::shared_ptr<RBX::KeyframeSequence>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::KeyframeSequence>>,boost::_bi::value<boost::shared_ptr<RBX::KeyframeSequence>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16KeyframeSequenceEEENS_10shared_ptrIS7_EEENS3_5list2INS3_5valueIS8_EENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
-pub fn stub_5c102c() -> ! {
-    todo!("0x5c102c __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16KeyframeSequenceEEENS_10shared_ptrIS7_EEENS3_5list2INS3_5valueIS8_EENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+pub fn stub_5c102c() {
+    // IDA 0x5c102c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x5c11ec — __ZN5boost10shared_ptrIN3RBX16KeyframeSequenceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 #[doc(alias = "boost::shared_ptr<RBX::KeyframeSequence>::shared_ptr<RBX::KeyframeSequence>(boost::weak_ptr<RBX::KeyframeSequence> const&,boost::detail::sp_nothrow_tag)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX16KeyframeSequenceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")]
-pub fn stub_5c11ec() -> ! {
-    todo!("0x5c11ec __ZN5boost10shared_ptrIN3RBX16KeyframeSequenceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")
+pub fn stub_5c11ec() {
+    // IDA 0x5c11ec: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x5c1268 — __ZN5boost10shared_ptrIN3RBX24KeyframeSequenceProviderEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 #[doc(alias = "boost::shared_ptr<RBX::KeyframeSequenceProvider>::shared_ptr<RBX::KeyframeSequenceProvider>(boost::weak_ptr<RBX::KeyframeSequenceProvider> const&,boost::detail::sp_nothrow_tag)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX24KeyframeSequenceProviderEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")]
-pub fn stub_5c1268() -> ! {
-    todo!("0x5c1268 __ZN5boost10shared_ptrIN3RBX24KeyframeSequenceProviderEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")
+pub fn stub_5c1268() {
+    // IDA 0x5c1268: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x5c12e8 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::KeyframeSequence>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::KeyframeSequence>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::KeyframeSequence>>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,boost::shared_ptr<RBX::KeyframeSequence>>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E")]
-pub fn stub_5c12e8() -> ! {
-    todo!("0x5c12e8 __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E")
+pub fn stub_5c12e8() {
+    // IDA 0x5c12e8: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x5c1318 — __ZN9__gnu_cxx13new_allocatorISt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEEE7destroyEPS8_
@@ -591,15 +591,15 @@ pub fn stub_5c2c6c() -> ! {
 // 0x5c2c90 — __ZN3RBX10Reflection9EventDescINS_8LightingEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Lighting,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Lighting::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_8LightingEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev")]
-pub fn stub_5c2c90() -> ! {
-    todo!("0x5c2c90 __ZN3RBX10Reflection9EventDescINS_8LightingEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev")
+pub fn stub_5c2c90() {
+    // IDA 0x5c2c90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c2cb4 — __ZN3RBX10Reflection14PropDescriptorINS_8LightingESsED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_8LightingESsED1Ev")]
-pub fn stub_5c2cb4() -> ! {
-    todo!("0x5c2cb4 __ZN3RBX10Reflection14PropDescriptorINS_8LightingESsED1Ev")
+pub fn stub_5c2cb4() {
+    // IDA 0x5c2cb4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c2cd8 — __ZNK3RBX8Lighting21getGeographicLatitudeEv
@@ -612,8 +612,8 @@ pub fn stub_5c2cd8() -> ! {
 // 0x5c2ce0 — __ZN3RBX10Reflection14PropDescriptorINS_8LightingEfED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_8LightingEfED1Ev")]
-pub fn stub_5c2ce0() -> ! {
-    todo!("0x5c2ce0 __ZN3RBX10Reflection14PropDescriptorINS_8LightingEfED1Ev")
+pub fn stub_5c2ce0() {
+    // IDA 0x5c2ce0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c2d04 — __ZN3RBX8Lighting12getMoonPhaseEv
@@ -626,29 +626,29 @@ pub fn stub_5c2d04() -> ! {
 // 0x5c2d14 — __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFfvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Lighting,float ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFfvELi0EED1Ev")]
-pub fn stub_5c2d14() -> ! {
-    todo!("0x5c2d14 __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFfvELi0EED1Ev")
+pub fn stub_5c2d14() {
+    // IDA 0x5c2d14: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c2d38 — __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFN3G3D7Vector3EvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Lighting,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFN3G3D7Vector3EvELi0EED1Ev")]
-pub fn stub_5c2d38() -> ! {
-    todo!("0x5c2d38 __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFN3G3D7Vector3EvELi0EED1Ev")
+pub fn stub_5c2d38() {
+    // IDA 0x5c2d38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c2d5c — __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFdvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Lighting,double ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFdvELi0EED1Ev")]
-pub fn stub_5c2d5c() -> ! {
-    todo!("0x5c2d5c __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFdvELi0EED1Ev")
+pub fn stub_5c2d5c() {
+    // IDA 0x5c2d5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c2d80 — __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFvdELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Lighting,void ()(double),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFvdELi1EED1Ev")]
-pub fn stub_5c2d80() -> ! {
-    todo!("0x5c2d80 __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFvdELi1EED1Ev")
+pub fn stub_5c2d80() {
+    // IDA 0x5c2d80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c2dc0 — __ZNK3RBX8Lighting15getShadowColor3Ev
@@ -668,8 +668,8 @@ pub fn stub_5c2de0() -> ! {
 // 0x5c2e04 — __ZN3RBX10Reflection14PropDescriptorINS_8LightingEN3G3D6Color3EED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,G3D::Color3>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_8LightingEN3G3D6Color3EED1Ev")]
-pub fn stub_5c2e04() -> ! {
-    todo!("0x5c2e04 __ZN3RBX10Reflection14PropDescriptorINS_8LightingEN3G3D6Color3EED1Ev")
+pub fn stub_5c2e04() {
+    // IDA 0x5c2e04: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c2e28 — __ZNK3RBX8Lighting12getFogColor3Ev

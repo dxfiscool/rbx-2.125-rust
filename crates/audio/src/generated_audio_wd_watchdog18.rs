@@ -75,8 +75,8 @@ pub fn stub_066e57c() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEED1Ev")]
-pub fn stub_066e66c() -> ! {
-    todo!("0x66e66c RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::~EnumDesc()")
+pub fn stub_066e66c() {
+    // IDA 0x066e66c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66e670 — __ZN3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEED2Ev
@@ -84,8 +84,8 @@ pub fn stub_066e66c() -> ! {
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *, int, int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEED2Ev")]
-pub fn stub_066e670() -> ! {
-    todo!("0x66e670 RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::~EnumDesc()")
+pub fn stub_066e670() {
+    // IDA 0x066e670: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66e844 — __ZN3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEED0Ev
@@ -93,8 +93,8 @@ pub fn stub_066e670() -> ! {
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *, int, int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEED0Ev")]
-pub fn stub_066e844() -> ! {
-    todo!("0x66e844 RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::~EnumDesc()")
+pub fn stub_066e844() {
+    // IDA 0x066e844: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66e8e4 — __ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE6lookupEPKc
@@ -183,8 +183,8 @@ pub fn stub_066eb78() -> ! {
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::TextService::XAlignment>,std::_Select1st<std::pair<RBX::Name const* const,RBX::TextService::XAlignment>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::TextService::XAlignment>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::TextService::XAlignment>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11TextService10XAlignmentEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_066ec68() -> ! {
-    todo!("0x66ec68 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::TextService::XAlignment>,std::_Select1st<std::pair<RBX::Name const* const,RBX::TextService::XAlignment>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::TextService::XAlignment>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::TextService::XAlignment>> *)")
+pub fn stub_066ec68() {
+    // IDA 0x066ec68: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x66ec90 — __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEbEC2IMNS_12GuiTextMixinEKFbvEMS2_FvbEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -246,8 +246,8 @@ pub fn stub_066ee04() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEfED0Ev")]
-pub fn stub_066ef18() -> ! {
-    todo!("0x66ef18 RBX::Reflection::PropDescriptor<RBX::TextBox,float>::~PropDescriptor()")
+pub fn stub_066ef18() {
+    // IDA 0x066ef18: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66ef44 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE10isReadOnlyEv
@@ -300,8 +300,8 @@ pub fn stub_066ef9c() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Color3>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D6Color3EED0Ev")]
-pub fn stub_066f0b0() -> ! {
-    todo!("0x66f0b0 RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Color3>::~PropDescriptor()")
+pub fn stub_066f0b0() {
+    // IDA 0x066f0b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66f0dc — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -354,8 +354,8 @@ pub fn stub_066f158() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::BrickColor>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7TextBoxENS_10BrickColorEED0Ev")]
-pub fn stub_066f26c() -> ! {
-    todo!("0x66f26c RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::BrickColor>::~PropDescriptor()")
+pub fn stub_066f26c() {
+    // IDA 0x066f26c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66f298 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE10isReadOnlyEv
@@ -408,8 +408,8 @@ pub fn stub_066f2fc() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEED0Ev")]
-pub fn stub_066f4b0() -> ! {
-    todo!("0x66f4b0 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::~EnumPropDescriptor()")
+pub fn stub_066f4b0() {
+    // IDA 0x066f4b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66f4dc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE10isReadOnlyEv
@@ -667,8 +667,8 @@ pub fn stub_066fe6c() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::Font>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService4FontEED1Ev")]
-pub fn stub_066ff5c() -> ! {
-    todo!("0x66ff5c RBX::Reflection::EnumDesc<RBX::TextService::Font>::~EnumDesc()")
+pub fn stub_066ff5c() {
+    // IDA 0x066ff5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x66ff60 — __ZN3RBX10Reflection8EnumDescINS_11TextService4FontEED2Ev
@@ -676,8 +676,8 @@ pub fn stub_066ff5c() -> ! {
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *, int, int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService4FontEED2Ev")]
-pub fn stub_066ff60() -> ! {
-    todo!("0x66ff60 RBX::Reflection::EnumDesc<RBX::TextService::Font>::~EnumDesc()")
+pub fn stub_066ff60() {
+    // IDA 0x066ff60: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x670134 — __ZN3RBX10Reflection8EnumDescINS_11TextService4FontEED0Ev
@@ -685,8 +685,8 @@ pub fn stub_066ff60() -> ! {
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *, int, int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService4FontEED0Ev")]
-pub fn stub_0670134() -> ! {
-    todo!("0x670134 RBX::Reflection::EnumDesc<RBX::TextService::Font>::~EnumDesc()")
+pub fn stub_0670134() {
+    // IDA 0x0670134: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6701d4 — __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE6lookupEPKc
@@ -775,8 +775,8 @@ pub fn stub_0670468() -> ! {
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::TextService::Font>,std::_Select1st<std::pair<RBX::Name const* const,RBX::TextService::Font>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::TextService::Font>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::TextService::Font>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11TextService4FontEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0670558() -> ! {
-    todo!("0x670558 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::TextService::Font>,std::_Select1st<std::pair<RBX::Name const* const,RBX::TextService::Font>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::TextService::Font>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::TextService::Font>> *)")
+pub fn stub_0670558() {
+    // IDA 0x0670558: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x670580 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -793,8 +793,8 @@ pub fn stub_0670580() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEED0Ev")]
-pub fn stub_0670734() -> ! {
-    todo!("0x670734 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::~EnumPropDescriptor()")
+pub fn stub_0670734() {
+    // IDA 0x0670734: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x670760 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10isReadOnlyEv

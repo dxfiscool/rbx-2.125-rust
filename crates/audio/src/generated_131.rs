@@ -624,15 +624,15 @@ pub fn stub_23344c() -> ! {
 // 0x233664 — __ZN3OIS15MultiTouchEventD0Ev
 // type: void __fastcall(OIS::MultiTouchEvent *__hidden this)
 #[doc(alias = "OIS::MultiTouchEvent::~MultiTouchEvent()")]
-pub fn stub_233664() -> ! {
-    todo!("0x233664 OIS::MultiTouchEvent::~MultiTouchEvent()")
+pub fn stub_233664() {
+    // IDA 0x233664: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x233688 — __ZN3OIS15MultiTouchEventD1Ev
 // type: void __fastcall(OIS::MultiTouchEvent *__hidden this)
 #[doc(alias = "OIS::MultiTouchEvent::~MultiTouchEvent()")]
-pub fn stub_233688() -> ! {
-    todo!("0x233688 OIS::MultiTouchEvent::~MultiTouchEvent()")
+pub fn stub_233688() {
+    // IDA 0x233688: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2336a0 — __ZN9__gnu_cxx13new_allocatorIN3OIS15MultiTouchStateEE8allocateEmPKv

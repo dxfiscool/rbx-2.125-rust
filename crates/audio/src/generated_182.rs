@@ -16,8 +16,8 @@ const _: () = {
 // type: void __fastcall(RBX::BevelMesh *__hidden this)
 #[doc(alias = "RBX::BevelMesh::~BevelMesh()")]
 #[doc(alias = "__ZN3RBX9BevelMeshD0Ev")]
-pub fn stub_3bf1b4() -> ! {
-    todo!("0x3bf1b4 RBX::BevelMesh::~BevelMesh()")
+pub fn stub_3bf1b4() {
+    // IDA 0x3bf1b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3bf254 — __ZNK3RBX17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEE12getClassNameEv
@@ -30,38 +30,38 @@ pub fn stub_3bf254() -> ! {
 // type: void __fastcall(RBX::BevelMesh *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BevelMesh::~BevelMesh()")]
 #[doc(alias = "__ZThn32_N3RBX9BevelMeshD1Ev")]
-pub fn stub_3bf27c() -> ! {
-    todo!("0x3bf27c non-virtual thunk toRBX::BevelMesh::~BevelMesh()")
+pub fn stub_3bf27c() {
+    // IDA 0x3bf27c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3bf284 — __ZThn32_N3RBX9BevelMeshD0Ev
 // type: void __fastcall(RBX::BevelMesh *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BevelMesh::~BevelMesh()")]
 #[doc(alias = "__ZThn32_N3RBX9BevelMeshD0Ev")]
-pub fn stub_3bf284() -> ! {
-    todo!("0x3bf284 non-virtual thunk toRBX::BevelMesh::~BevelMesh()")
+pub fn stub_3bf284() {
+    // IDA 0x3bf284: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3bf328 — __ZThn32_NK3RBX17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEE12getClassNameEv")]
-pub fn stub_3bf328() -> ! {
-    todo!("0x3bf328 __ZThn32_NK3RBX17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEE12getClassNameEv")
+pub fn stub_3bf328() {
+    // IDA 0x3bf328: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3bf350 — __ZThn36_N3RBX9BevelMeshD1Ev
 // type: void __fastcall(RBX::BevelMesh *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BevelMesh::~BevelMesh()")]
 #[doc(alias = "__ZThn36_N3RBX9BevelMeshD1Ev")]
-pub fn stub_3bf350() -> ! {
-    todo!("0x3bf350 non-virtual thunk toRBX::BevelMesh::~BevelMesh()")
+pub fn stub_3bf350() {
+    // IDA 0x3bf350: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3bf358 — __ZThn36_N3RBX9BevelMeshD0Ev
 // type: void __fastcall(RBX::BevelMesh *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BevelMesh::~BevelMesh()")]
 #[doc(alias = "__ZThn36_N3RBX9BevelMeshD0Ev")]
-pub fn stub_3bf358() -> ! {
-    todo!("0x3bf358 non-virtual thunk toRBX::BevelMesh::~BevelMesh()")
+pub fn stub_3bf358() {
+    // IDA 0x3bf358: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3bf3fc — __ZN3RBX4Name13callDoDeclareILZNS_10sBevelMeshEEEEvv
@@ -80,43 +80,43 @@ pub fn stub_3bf400() -> ! {
 // 0x3bf4e0 — __ZN3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_3bf4e0() -> ! {
-    todo!("0x3bf4e0 __ZN3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_3bf4e0() {
+    // IDA 0x3bf4e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3bf4e4 — __ZN3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_3bf4e4() -> ! {
-    todo!("0x3bf4e4 __ZN3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_3bf4e4() {
+    // IDA 0x3bf4e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3bf584 — __ZThn32_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_3bf584() -> ! {
-    todo!("0x3bf584 __ZThn32_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_3bf584() {
+    // IDA 0x3bf584: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3bf58c — __ZThn32_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_3bf58c() -> ! {
-    todo!("0x3bf58c __ZThn32_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_3bf58c() {
+    // IDA 0x3bf58c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3bf630 — __ZThn36_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_3bf630() -> ! {
-    todo!("0x3bf630 __ZThn36_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_3bf630() {
+    // IDA 0x3bf630: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3bf638 — __ZThn36_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_3bf638() -> ! {
-    todo!("0x3bf638 __ZThn36_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_3bf638() {
+    // IDA 0x3bf638: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3bf6dc — __ZN3RBX10Reflection14PropDescriptorINS_9BevelMeshEfEC2IMS2_KFKfvEMS2_FvfEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -131,8 +131,8 @@ pub fn stub_3bf6dc() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BevelMesh,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9BevelMeshEfED0Ev")]
-pub fn stub_3bf7f0() -> ! {
-    todo!("0x3bf7f0 RBX::Reflection::PropDescriptor<RBX::BevelMesh,float>::~PropDescriptor()")
+pub fn stub_3bf7f0() {
+    // IDA 0x3bf7f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3bf81c — __ZNK3RBX10Reflection14PropDescriptorINS_9BevelMeshEfE10GetSetImplIMS2_KFKfvEMS2_FvfEE10isReadOnlyEv
@@ -330,8 +330,8 @@ pub fn stub_3c0474() -> ! {
 // type: int __fastcall(int result)
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::onHeartbeat(RBX::Heartbeat const&)")]
 #[doc(alias = "__ZThn168_N3RBX12BillboardGui11onHeartbeatERKNS_9HeartbeatE")]
-pub fn stub_3c048c() -> ! {
-    todo!("0x3c048c non-virtual thunk toRBX::BillboardGui::onHeartbeat(RBX::Heartbeat const&)")
+pub fn stub_3c048c() {
+    // IDA 0x3c048c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c04a8 — __ZNK3RBX12BillboardGui25shouldRender3dSortedAdornEv
@@ -354,8 +354,8 @@ pub fn stub_3c057c() -> ! {
 // type: bool __fastcall(RBX::BillboardGui *this)
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::shouldRender3dSortedAdorn(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX12BillboardGui25shouldRender3dSortedAdornEv")]
-pub fn stub_3c066c() -> ! {
-    todo!("0x3c066c non-virtual thunk toRBX::BillboardGui::shouldRender3dSortedAdorn(void)const")
+pub fn stub_3c066c() {
+    // IDA 0x3c066c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c0678 — __ZNK3RBX12BillboardGui13getModelAdornEv
@@ -386,8 +386,8 @@ pub fn stub_3c0850() -> ! {
 // type: void __fastcall(RBX::BillboardGui *this, int)
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::render3dSortedPosition(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX12BillboardGui22render3dSortedPositionEv")]
-pub fn stub_3c0a28() -> ! {
-    todo!("0x3c0a28 non-virtual thunk toRBX::BillboardGui::render3dSortedPosition(void)const")
+pub fn stub_3c0a28() {
+    // IDA 0x3c0a28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c0a34 — __ZN3RBX12BillboardGui19render3dSortedAdornEPNS_5AdornE
@@ -402,8 +402,8 @@ pub fn stub_3c0a34() -> ! {
 // type: void __fastcall(RBX::BillboardGui *this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::render3dSortedAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX12BillboardGui19render3dSortedAdornEPNS_5AdornE")]
-pub fn stub_3c0e90() -> ! {
-    todo!("0x3c0e90 non-virtual thunk toRBX::BillboardGui::render3dSortedAdorn(RBX::Adorn *)")
+pub fn stub_3c0e90() {
+    // IDA 0x3c0e90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c0e98 — __ZN3RBX12BillboardGui7processERKNS_8GuiEventE
@@ -418,8 +418,8 @@ pub fn stub_3c0e98() -> ! {
 // type: unsigned int __fastcall(_QWORD *, int, _DWORD *, int)
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::process(RBX::GuiEvent const&)")]
 #[doc(alias = "__ZThn92_N3RBX12BillboardGui7processERKNS_8GuiEventE")]
-pub fn stub_3c0f34() -> ! {
-    todo!("0x3c0f34 non-virtual thunk toRBX::BillboardGui::process(RBX::GuiEvent const&)")
+pub fn stub_3c0f34() {
+    // IDA 0x3c0f34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c0f40 — __ZN3RBX12BillboardGui17onAncestorChangedERKNS_15AncestorChangedE
@@ -441,32 +441,32 @@ pub fn stub_3c0f58() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::~RefPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEED1Ev")]
-pub fn stub_3c0f7c() -> ! {
-    todo!("0x3c0f7c RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::~RefPropDescriptor()")
+pub fn stub_3c0f7c() {
+    // IDA 0x3c0f7c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c0fa8 — __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector3EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector3>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector3EED1Ev")]
-pub fn stub_3c0fa8() -> ! {
-    todo!("0x3c0fa8 RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector3>::~PropDescriptor()")
+pub fn stub_3c0fa8() {
+    // IDA 0x3c0fa8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c0fcc — __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector2EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector2>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector2EED1Ev")]
-pub fn stub_3c0fcc() -> ! {
-    todo!("0x3c0fcc RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector2>::~PropDescriptor()")
+pub fn stub_3c0fcc() {
+    // IDA 0x3c0fcc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c0ff0 — __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiENS_5UDim2EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::UDim2>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiENS_5UDim2EED1Ev")]
-pub fn stub_3c0ff0() -> ! {
-    todo!("0x3c0ff0 RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::UDim2>::~PropDescriptor()")
+pub fn stub_3c0ff0() {
+    // IDA 0x3c0ff0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c1014 — __ZNK3RBX12BillboardGui10getEnabledEv
@@ -481,8 +481,8 @@ pub fn stub_3c1014() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbED1Ev")]
-pub fn stub_3c101c() -> ! {
-    todo!("0x3c101c RBX::Reflection::PropDescriptor<RBX::BillboardGui,bool>::~PropDescriptor()")
+pub fn stub_3c101c() {
+    // IDA 0x3c101c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c1040 — __ZNK3RBX12BillboardGui9getActiveEv
@@ -521,16 +521,16 @@ pub fn stub_3c1130() -> ! {
 // type: void __fastcall(RBX::BillboardGui *__hidden this)
 #[doc(alias = "RBX::BillboardGui::~BillboardGui()")]
 #[doc(alias = "__ZN3RBX12BillboardGuiD1Ev")]
-pub fn stub_3c11f8() -> ! {
-    todo!("0x3c11f8 RBX::BillboardGui::~BillboardGui()")
+pub fn stub_3c11f8() {
+    // IDA 0x3c11f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c11fc — __ZN3RBX12BillboardGuiD0Ev
 // type: void __fastcall(RBX::BillboardGui *__hidden this)
 #[doc(alias = "RBX::BillboardGui::~BillboardGui()")]
 #[doc(alias = "__ZN3RBX12BillboardGuiD0Ev")]
-pub fn stub_3c11fc() -> ! {
-    todo!("0x3c11fc RBX::BillboardGui::~BillboardGui()")
+pub fn stub_3c11fc() {
+    // IDA 0x3c11fc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c129c — __ZN3RBX12BillboardGui17onServiceProviderEPNS_15ServiceProviderES2_
@@ -568,77 +568,77 @@ pub fn stub_3c12b8() -> ! {
 // type: void __fastcall(RBX::BillboardGui *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::~BillboardGui()")]
 #[doc(alias = "__ZThn32_N3RBX12BillboardGuiD1Ev")]
-pub fn stub_3c12bc() -> ! {
-    todo!("0x3c12bc non-virtual thunk toRBX::BillboardGui::~BillboardGui()")
+pub fn stub_3c12bc() {
+    // IDA 0x3c12bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c12c4 — __ZThn32_N3RBX12BillboardGuiD0Ev
 // type: void __fastcall(RBX::BillboardGui *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::~BillboardGui()")]
 #[doc(alias = "__ZThn32_N3RBX12BillboardGuiD0Ev")]
-pub fn stub_3c12c4() -> ! {
-    todo!("0x3c12c4 non-virtual thunk toRBX::BillboardGui::~BillboardGui()")
+pub fn stub_3c12c4() {
+    // IDA 0x3c12c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c1368 — __ZThn32_NK3RBX14FactoryProductINS_12BillboardGuiENS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_12BillboardGuiENS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_3c1368() -> ! {
-    todo!("0x3c1368 __ZThn32_NK3RBX14FactoryProductINS_12BillboardGuiENS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEE12getClassNameEv")
+pub fn stub_3c1368() {
+    // IDA 0x3c1368: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c1378 — __ZThn36_N3RBX12BillboardGuiD1Ev
 // type: void __fastcall(RBX::BillboardGui *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::~BillboardGui()")]
 #[doc(alias = "__ZThn36_N3RBX12BillboardGuiD1Ev")]
-pub fn stub_3c1378() -> ! {
-    todo!("0x3c1378 non-virtual thunk toRBX::BillboardGui::~BillboardGui()")
+pub fn stub_3c1378() {
+    // IDA 0x3c1378: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c1380 — __ZThn36_N3RBX12BillboardGuiD0Ev
 // type: void __fastcall(RBX::BillboardGui *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::~BillboardGui()")]
 #[doc(alias = "__ZThn36_N3RBX12BillboardGuiD0Ev")]
-pub fn stub_3c1380() -> ! {
-    todo!("0x3c1380 non-virtual thunk toRBX::BillboardGui::~BillboardGui()")
+pub fn stub_3c1380() {
+    // IDA 0x3c1380: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c1424 — __ZThn96_NK3RBX12BillboardGui9isVisibleERKN3G3D6Rect2DE
 // type: int()
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::isVisible(G3D::Rect2D const&)const")]
 #[doc(alias = "__ZThn96_NK3RBX12BillboardGui9isVisibleERKN3G3D6Rect2DE")]
-pub fn stub_3c1424() -> ! {
-    todo!("0x3c1424 non-virtual thunk toRBX::BillboardGui::isVisible(G3D::Rect2D const&)const")
+pub fn stub_3c1424() {
+    // IDA 0x3c1424: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c1428 — __ZThn168_N3RBX12BillboardGuiD1Ev
 // type: void __fastcall(RBX::BillboardGui *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::~BillboardGui()")]
 #[doc(alias = "__ZThn168_N3RBX12BillboardGuiD1Ev")]
-pub fn stub_3c1428() -> ! {
-    todo!("0x3c1428 non-virtual thunk toRBX::BillboardGui::~BillboardGui()")
+pub fn stub_3c1428() {
+    // IDA 0x3c1428: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c1430 — __ZThn168_N3RBX12BillboardGuiD0Ev
 // type: void __fastcall(RBX::BillboardGui *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::~BillboardGui()")]
 #[doc(alias = "__ZThn168_N3RBX12BillboardGuiD0Ev")]
-pub fn stub_3c1430() -> ! {
-    todo!("0x3c1430 non-virtual thunk toRBX::BillboardGui::~BillboardGui()")
+pub fn stub_3c1430() {
+    // IDA 0x3c1430: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c14d4 — __ZN3RBX14FactoryProductINS_12BillboardGuiENS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEE7CreatorD1Ev
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12BillboardGuiENS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_3c14d4() -> ! {
-    todo!("0x3c14d4 __ZN3RBX14FactoryProductINS_12BillboardGuiENS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_3c14d4() {
+    // IDA 0x3c14d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c14d8 — __ZN3RBX14FactoryProductINS_12BillboardGuiENS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEE7CreatorD2Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12BillboardGuiENS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_3c14d8() -> ! {
-    todo!("0x3c14d8 __ZN3RBX14FactoryProductINS_12BillboardGuiENS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_3c14d8() {
+    // IDA 0x3c14d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c1574 — __ZNK3RBX14FactoryProductINS_12BillboardGuiENS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEE7Creator12getClassNameEv
@@ -685,74 +685,74 @@ pub fn stub_3c1a68() -> ! {
 // type: void()
 #[doc(alias = "boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>::dummy::nonnull(void)")]
 #[doc(alias = "__ZN5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEE5dummy7nonnullEv")]
-pub fn stub_3c1adc() -> ! {
-    todo!("0x3c1adc boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>::dummy::nonnull(void)")
+pub fn stub_3c1adc() {
+    // IDA 0x3c1adc: function null-target guard. Option<Box<dyn Fn>>::is_some — carrier no-op.
 }
 
 // 0x3c1ae0 — __ZN5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEE4swapERS6_
 // type: void __fastcall(int, int, int, int)
 #[doc(alias = "boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>::swap(boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>&)")]
 #[doc(alias = "__ZN5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEE4swapERS6_")]
-pub fn stub_3c1ae0() -> ! {
-    todo!("0x3c1ae0 boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>::swap(boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>&)")
+pub fn stub_3c1ae0() {
+    // IDA 0x3c1ae0: function swap/move_assign exchanges the erased target. Box<dyn Fn> swap — carrier no-op.
 }
 
 // 0x3c1bbc — __ZN5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEE11move_assignERS6_
 // type: void __fastcall(int, int *, int, int, void *, int)
 #[doc(alias = "boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>::move_assign(boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>&)")]
 #[doc(alias = "__ZN5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEE11move_assignERS6_")]
-pub fn stub_3c1bbc() -> ! {
-    todo!("0x3c1bbc boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>::move_assign(boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>&)")
+pub fn stub_3c1bbc() {
+    // IDA 0x3c1bbc: function swap/move_assign exchanges the erased target. Box<dyn Fn> swap — carrier no-op.
 }
 
 // 0x3c1cc0 — __ZN5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEE13assign_to_ownERKS6_
 // type: int __fastcall(int result, int *)
 #[doc(alias = "boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>::assign_to_own(boost::function2<void,RBX::BillboardGui *,RBX::Adorn *> const&)")]
 #[doc(alias = "__ZN5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEE13assign_to_ownERKS6_")]
-pub fn stub_3c1cc0() -> ! {
-    todo!("0x3c1cc0 boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>::assign_to_own(boost::function2<void,RBX::BillboardGui *,RBX::Adorn *> const&)")
+pub fn stub_3c1cc0() {
+    // IDA 0x3c1cc0: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x3c1cf0 — __ZN3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::GuiLayerCollector *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_3c1cf0() -> ! {
-    todo!("0x3c1cf0 __ZN3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_3c1cf0() {
+    // IDA 0x3c1cf0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c1cf4 — __ZN3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::GuiLayerCollector *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_3c1cf4() -> ! {
-    todo!("0x3c1cf4 __ZN3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_3c1cf4() {
+    // IDA 0x3c1cf4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c1d94 — __ZThn32_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_3c1d94() -> ! {
-    todo!("0x3c1d94 __ZThn32_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_3c1d94() {
+    // IDA 0x3c1d94: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c1d9c — __ZThn32_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_3c1d9c() -> ! {
-    todo!("0x3c1d9c __ZThn32_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_3c1d9c() {
+    // IDA 0x3c1d9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c1e40 — __ZThn36_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_3c1e40() -> ! {
-    todo!("0x3c1e40 __ZThn36_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_3c1e40() {
+    // IDA 0x3c1e40: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c1e48 — __ZThn36_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_3c1e48() -> ! {
-    todo!("0x3c1e48 __ZThn36_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_3c1e48() {
+    // IDA 0x3c1e48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c1eec — __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -767,8 +767,8 @@ pub fn stub_3c1eec() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbED0Ev")]
-pub fn stub_3c2000() -> ! {
-    todo!("0x3c2000 RBX::Reflection::PropDescriptor<RBX::BillboardGui,bool>::~PropDescriptor()")
+pub fn stub_3c2000() {
+    // IDA 0x3c2000: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3c202c — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv

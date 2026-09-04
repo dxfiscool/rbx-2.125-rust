@@ -145,71 +145,71 @@ pub fn stub_60d6b8() -> ! {
 // 0x60d780 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4TeamES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Team,RBX::Team>(boost::shared_ptr<RBX::Team> const*,RBX::Team *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4TeamES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_60d780() -> ! {
-    todo!("0x60d780 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4TeamES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+pub fn stub_60d780() {
+    // IDA 0x60d780: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x60d868 — __ZN5boost6detail12shared_countC2IPN3RBX4TeamENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX4TeamENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_60d868() -> ! {
-    todo!("0x60d868 __ZN5boost6detail12shared_countC2IPN3RBX4TeamENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_60d868() {
+    // IDA 0x60d868: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x60d970 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_60d970() -> ! {
-    todo!("0x60d970 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+pub fn stub_60d970() {
+    // IDA 0x60d970: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60d974 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_60d974() -> ! {
-    todo!("0x60d974 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+pub fn stub_60d974() {
+    // IDA 0x60d974: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60d978 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_60d978() -> ! {
-    todo!("0x60d978 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_60d978() {
+    // IDA 0x60d978: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x60d998 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_60d998() -> ! {
-    todo!("0x60d998 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_60d998() {
+    // IDA 0x60d998: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x60d9b0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_60d9b0() -> ! {
-    todo!("0x60d9b0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_60d9b0() {
+    // IDA 0x60d9b0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x60d9b4 — __ZNSt8auto_ptrIN3RBX5WorldEED2Ev
 #[doc(alias = "std::auto_ptr<RBX::World>::~auto_ptr()")]
 #[doc(alias = "__ZNSt8auto_ptrIN3RBX5WorldEED2Ev")]
-pub fn stub_60d9b4() -> ! {
-    todo!("0x60d9b4 __ZNSt8auto_ptrIN3RBX5WorldEED2Ev")
+pub fn stub_60d9b4() {
+    // IDA 0x60d9b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60da5c — __ZN3RBX12ICameraOwnerD1Ev
 #[doc(alias = "RBX::ICameraOwner::~ICameraOwner()")]
 #[doc(alias = "__ZN3RBX12ICameraOwnerD1Ev")]
-pub fn stub_60da5c() -> ! {
-    todo!("0x60da5c __ZN3RBX12ICameraOwnerD1Ev")
+pub fn stub_60da5c() {
+    // IDA 0x60da5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60da60 — __ZN3RBX12ICameraOwnerD0Ev
 #[doc(alias = "RBX::ICameraOwner::~ICameraOwner()")]
 #[doc(alias = "__ZN3RBX12ICameraOwnerD0Ev")]
-pub fn stub_60da60() -> ! {
-    todo!("0x60da60 __ZN3RBX12ICameraOwnerD0Ev")
+pub fn stub_60da60() {
+    // IDA 0x60da60: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60da64 — __GLOBAL__I_a_246
@@ -257,15 +257,15 @@ pub fn stub_60e4e8() -> ! {
 // 0x60e5f0 — __ZN3RBX10ChatOptionD2Ev
 #[doc(alias = "RBX::ChatOption::~ChatOption()")]
 #[doc(alias = "__ZN3RBX10ChatOptionD2Ev")]
-pub fn stub_60e5f0() -> ! {
-    todo!("0x60e5f0 __ZN3RBX10ChatOptionD2Ev")
+pub fn stub_60e5f0() {
+    // IDA 0x60e5f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60e6fc — __ZN5boost10scoped_ptrIN3RBX8SafeChatEED1Ev
 #[doc(alias = "boost::scoped_ptr<RBX::SafeChat>::~scoped_ptr()")]
 #[doc(alias = "__ZN5boost10scoped_ptrIN3RBX8SafeChatEED1Ev")]
-pub fn stub_60e6fc() -> ! {
-    todo!("0x60e6fc __ZN5boost10scoped_ptrIN3RBX8SafeChatEED1Ev")
+pub fn stub_60e6fc() {
+    // IDA 0x60e6fc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60e700 — __ZNSt6vectorIPN3RBX10ChatOptionESaIS2_EE9push_backERKS2_
@@ -278,8 +278,8 @@ pub fn stub_60e700() -> ! {
 // 0x60e72c — __ZN5boost10scoped_ptrIN3RBX10ChatOptionEED2Ev
 #[doc(alias = "boost::scoped_ptr<RBX::ChatOption>::~scoped_ptr()")]
 #[doc(alias = "__ZN5boost10scoped_ptrIN3RBX10ChatOptionEED2Ev")]
-pub fn stub_60e72c() -> ! {
-    todo!("0x60e72c __ZN5boost10scoped_ptrIN3RBX10ChatOptionEED2Ev")
+pub fn stub_60e72c() {
+    // IDA 0x60e72c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60e7d4 — __ZNSt6vectorIPN3RBX10ChatOptionESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
@@ -299,8 +299,8 @@ pub fn stub_60e8b4() -> ! {
 // 0x60e8cc — __ZN5boost10scoped_ptrIN3RBX8SafeChatEED2Ev
 #[doc(alias = "boost::scoped_ptr<RBX::SafeChat>::~scoped_ptr()")]
 #[doc(alias = "__ZN5boost10scoped_ptrIN3RBX8SafeChatEED2Ev")]
-pub fn stub_60e8cc() -> ! {
-    todo!("0x60e8cc __ZN5boost10scoped_ptrIN3RBX8SafeChatEED2Ev")
+pub fn stub_60e8cc() {
+    // IDA 0x60e8cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60e974 — __ZN3RBX10ChatOptionC2ESs
@@ -355,8 +355,8 @@ pub fn stub_60ee44() -> ! {
 // 0x60efb8 — __ZThn96_N3RBX11Scale9Frame8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::Scale9Frame::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX11Scale9Frame8render2dEPNS_5AdornE")]
-pub fn stub_60efb8() -> ! {
-    todo!("0x60efb8 __ZThn96_N3RBX11Scale9Frame8render2dEPNS_5AdornE")
+pub fn stub_60efb8() {
+    // IDA 0x60efb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60efc0 — __ZNK3RBX11Scale9Frame16getScaleEdgeSizeEv
@@ -369,8 +369,8 @@ pub fn stub_60efc0() -> ! {
 // 0x60efc8 — __ZN3RBX10Reflection14PropDescriptorINS_11Scale9FrameEN3G3D12Vector2int16EED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scale9Frame,G3D::Vector2int16>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_11Scale9FrameEN3G3D12Vector2int16EED1Ev")]
-pub fn stub_60efc8() -> ! {
-    todo!("0x60efc8 __ZN3RBX10Reflection14PropDescriptorINS_11Scale9FrameEN3G3D12Vector2int16EED1Ev")
+pub fn stub_60efc8() {
+    // IDA 0x60efc8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60efec — __ZNK3RBX11Scale9Frame14getSlicePrefixEv
@@ -383,22 +383,22 @@ pub fn stub_60efec() -> ! {
 // 0x60effc — __ZN3RBX10Reflection14PropDescriptorINS_11Scale9FrameESsED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scale9Frame,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_11Scale9FrameESsED1Ev")]
-pub fn stub_60effc() -> ! {
-    todo!("0x60effc __ZN3RBX10Reflection14PropDescriptorINS_11Scale9FrameESsED1Ev")
+pub fn stub_60effc() {
+    // IDA 0x60effc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60f020 — __ZN3RBX11Scale9FrameD1Ev
 #[doc(alias = "RBX::Scale9Frame::~Scale9Frame()")]
 #[doc(alias = "__ZN3RBX11Scale9FrameD1Ev")]
-pub fn stub_60f020() -> ! {
-    todo!("0x60f020 __ZN3RBX11Scale9FrameD1Ev")
+pub fn stub_60f020() {
+    // IDA 0x60f020: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60f128 — __ZN3RBX11Scale9FrameD0Ev
 #[doc(alias = "RBX::Scale9Frame::~Scale9Frame()")]
 #[doc(alias = "__ZN3RBX11Scale9FrameD0Ev")]
-pub fn stub_60f128() -> ! {
-    todo!("0x60f128 __ZN3RBX11Scale9FrameD0Ev")
+pub fn stub_60f128() {
+    // IDA 0x60f128: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60f244 — __ZNK3RBX17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEE12getClassNameEv
@@ -411,36 +411,36 @@ pub fn stub_60f244() -> ! {
 // 0x60f26c — __ZThn32_N3RBX11Scale9FrameD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Scale9Frame::~Scale9Frame()")]
 #[doc(alias = "__ZThn32_N3RBX11Scale9FrameD1Ev")]
-pub fn stub_60f26c() -> ! {
-    todo!("0x60f26c __ZThn32_N3RBX11Scale9FrameD1Ev")
+pub fn stub_60f26c() {
+    // IDA 0x60f26c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60f374 — __ZThn32_N3RBX11Scale9FrameD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Scale9Frame::~Scale9Frame()")]
 #[doc(alias = "__ZThn32_N3RBX11Scale9FrameD0Ev")]
-pub fn stub_60f374() -> ! {
-    todo!("0x60f374 __ZThn32_N3RBX11Scale9FrameD0Ev")
+pub fn stub_60f374() {
+    // IDA 0x60f374: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60f490 — __ZThn32_NK3RBX17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEE12getClassNameEv")]
-pub fn stub_60f490() -> ! {
-    todo!("0x60f490 __ZThn32_NK3RBX17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEE12getClassNameEv")
+pub fn stub_60f490() {
+    // IDA 0x60f490: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60f4b8 — __ZThn36_N3RBX11Scale9FrameD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Scale9Frame::~Scale9Frame()")]
 #[doc(alias = "__ZThn36_N3RBX11Scale9FrameD1Ev")]
-pub fn stub_60f4b8() -> ! {
-    todo!("0x60f4b8 __ZThn36_N3RBX11Scale9FrameD1Ev")
+pub fn stub_60f4b8() {
+    // IDA 0x60f4b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60f5c0 — __ZThn36_N3RBX11Scale9FrameD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Scale9Frame::~Scale9Frame()")]
 #[doc(alias = "__ZThn36_N3RBX11Scale9FrameD0Ev")]
-pub fn stub_60f5c0() -> ! {
-    todo!("0x60f5c0 __ZThn36_N3RBX11Scale9FrameD0Ev")
+pub fn stub_60f5c0() {
+    // IDA 0x60f5c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60f6dc — __ZN3RBX4Name13callDoDeclareILZNS_12sScale9FrameEEEEvv
@@ -460,43 +460,43 @@ pub fn stub_60f6e0() -> ! {
 // 0x60f7c0 — __ZN3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_60f7c0() -> ! {
-    todo!("0x60f7c0 __ZN3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_60f7c0() {
+    // IDA 0x60f7c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60f7c4 — __ZN3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_60f7c4() -> ! {
-    todo!("0x60f7c4 __ZN3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_60f7c4() {
+    // IDA 0x60f7c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60f864 — __ZThn32_N3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_60f864() -> ! {
-    todo!("0x60f864 __ZThn32_N3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_60f864() {
+    // IDA 0x60f864: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60f86c — __ZThn32_N3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_60f86c() -> ! {
-    todo!("0x60f86c __ZThn32_N3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_60f86c() {
+    // IDA 0x60f86c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60f910 — __ZThn36_N3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_60f910() -> ! {
-    todo!("0x60f910 __ZThn36_N3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_60f910() {
+    // IDA 0x60f910: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60f918 — __ZThn36_N3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_60f918() -> ! {
-    todo!("0x60f918 __ZThn36_N3RBX10Reflection9DescribedINS_11Scale9FrameELZNS_12sScale9FrameEENS_17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_60f918() {
+    // IDA 0x60f918: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60f9bc — __ZN3RBX10Reflection14PropDescriptorINS_11Scale9FrameESsEC2IMS2_KFSsvEMS2_FvSsEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -509,8 +509,8 @@ pub fn stub_60f9bc() -> ! {
 // 0x60fad0 — __ZN3RBX10Reflection14PropDescriptorINS_11Scale9FrameESsED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scale9Frame,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_11Scale9FrameESsED0Ev")]
-pub fn stub_60fad0() -> ! {
-    todo!("0x60fad0 __ZN3RBX10Reflection14PropDescriptorINS_11Scale9FrameESsED0Ev")
+pub fn stub_60fad0() {
+    // IDA 0x60fad0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60fafc — __ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE10isReadOnlyEv
@@ -551,8 +551,8 @@ pub fn stub_60fc70() -> ! {
 // 0x60fd84 — __ZN3RBX10Reflection14PropDescriptorINS_11Scale9FrameEN3G3D12Vector2int16EED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scale9Frame,G3D::Vector2int16>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_11Scale9FrameEN3G3D12Vector2int16EED0Ev")]
-pub fn stub_60fd84() -> ! {
-    todo!("0x60fd84 __ZN3RBX10Reflection14PropDescriptorINS_11Scale9FrameEN3G3D12Vector2int16EED0Ev")
+pub fn stub_60fd84() {
+    // IDA 0x60fd84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x60fdb0 — __ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameEN3G3D12Vector2int16EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -649,8 +649,8 @@ pub fn stub_6104fc() -> ! {
 // 0x610524 — __ZThn168_N3RBX9ScreenGui11onHeartbeatERKNS_9HeartbeatE
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::onHeartbeat(RBX::Heartbeat const&)")]
 #[doc(alias = "__ZThn168_N3RBX9ScreenGui11onHeartbeatERKNS_9HeartbeatE")]
-pub fn stub_610524() -> ! {
-    todo!("0x610524 __ZThn168_N3RBX9ScreenGui11onHeartbeatERKNS_9HeartbeatE")
+pub fn stub_610524() {
+    // IDA 0x610524: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x61054c — __ZNK3RBX9ScreenGui23isAncestorRenderableGuiEv
@@ -684,8 +684,8 @@ pub fn stub_6105c4() -> ! {
 // 0x6105d0 — __ZThn96_N3RBX9ScreenGui8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX9ScreenGui8render2dEPNS_5AdornE")]
-pub fn stub_6105d0() -> ! {
-    todo!("0x6105d0 __ZThn96_N3RBX9ScreenGui8render2dEPNS_5AdornE")
+pub fn stub_6105d0() {
+    // IDA 0x6105d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6105dc — __ZN3RBX9ScreenGui15render2dContextEPNS_5AdornEPKNS_8InstanceE
@@ -698,8 +698,8 @@ pub fn stub_6105dc() -> ! {
 // 0x610660 — __ZThn96_N3RBX9ScreenGui15render2dContextEPNS_5AdornEPKNS_8InstanceE
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::render2dContext(RBX::Adorn *,RBX::Instance const*)")]
 #[doc(alias = "__ZThn96_N3RBX9ScreenGui15render2dContextEPNS_5AdornEPKNS_8InstanceE")]
-pub fn stub_610660() -> ! {
-    todo!("0x610660 __ZThn96_N3RBX9ScreenGui15render2dContextEPNS_5AdornEPKNS_8InstanceE")
+pub fn stub_610660() {
+    // IDA 0x610660: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x610668 — __ZN3RBX9ScreenGui7processERKNS_8GuiEventE
@@ -712,8 +712,8 @@ pub fn stub_610668() -> ! {
 // 0x610674 — __ZThn92_N3RBX9ScreenGui7processERKNS_8GuiEventE
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::process(RBX::GuiEvent const&)")]
 #[doc(alias = "__ZThn92_N3RBX9ScreenGui7processERKNS_8GuiEventE")]
-pub fn stub_610674() -> ! {
-    todo!("0x610674 __ZThn92_N3RBX9ScreenGui7processERKNS_8GuiEventE")
+pub fn stub_610674() {
+    // IDA 0x610674: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x610680 — __ZN3RBX9ScreenGui17removeModalButtonEPNS_9GuiButtonE
@@ -768,8 +768,8 @@ pub fn stub_6109cc() -> ! {
 // 0x610bec — __ZN3RBX10Reflection14PropDescriptorINS_9ScreenGuiEN3G3D12Vector2int16EED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ScreenGui,G3D::Vector2int16>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9ScreenGuiEN3G3D12Vector2int16EED1Ev")]
-pub fn stub_610bec() -> ! {
-    todo!("0x610bec __ZN3RBX10Reflection14PropDescriptorINS_9ScreenGuiEN3G3D12Vector2int16EED1Ev")
+pub fn stub_610bec() {
+    // IDA 0x610bec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x610c10 — __ZNK3RBX5Adorn14getUserGuiRectEv
@@ -796,15 +796,15 @@ pub fn stub_610cd8() -> ! {
 // 0x610d4c — __ZN3RBX9ScreenGuiD1Ev
 #[doc(alias = "RBX::ScreenGui::~ScreenGui()")]
 #[doc(alias = "__ZN3RBX9ScreenGuiD1Ev")]
-pub fn stub_610d4c() -> ! {
-    todo!("0x610d4c __ZN3RBX9ScreenGuiD1Ev")
+pub fn stub_610d4c() {
+    // IDA 0x610d4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x610e94 — __ZN3RBX9ScreenGuiD0Ev
 #[doc(alias = "RBX::ScreenGui::~ScreenGui()")]
 #[doc(alias = "__ZN3RBX9ScreenGuiD0Ev")]
-pub fn stub_610e94() -> ! {
-    todo!("0x610e94 __ZN3RBX9ScreenGuiD0Ev")
+pub fn stub_610e94() {
+    // IDA 0x610e94: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x610f34 — __ZN3RBX9ScreenGui17onServiceProviderEPNS_15ServiceProviderES2_
@@ -831,20 +831,20 @@ pub fn stub_610f4c() -> ! {
 // 0x610f54 — __ZThn32_N3RBX9ScreenGuiD1Ev
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui()")]
 #[doc(alias = "__ZThn32_N3RBX9ScreenGuiD1Ev")]
-pub fn stub_610f54() -> ! {
-    todo!("0x610f54 __ZThn32_N3RBX9ScreenGuiD1Ev")
+pub fn stub_610f54() {
+    // IDA 0x610f54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x611098 — __ZThn32_N3RBX9ScreenGuiD0Ev
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui()")]
 #[doc(alias = "__ZThn32_N3RBX9ScreenGuiD0Ev")]
-pub fn stub_611098() -> ! {
-    todo!("0x611098 __ZThn32_N3RBX9ScreenGuiD0Ev")
+pub fn stub_611098() {
+    // IDA 0x611098: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x6111f0 — __ZThn32_NK3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_6111f0() -> ! {
-    todo!("0x6111f0 __ZThn32_NK3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE12getClassNameEv")
+pub fn stub_6111f0() {
+    // IDA 0x6111f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

@@ -157,8 +157,8 @@ pub fn stub_065af98() -> ! {
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_11SurfaceTypeEED0Ev")]
-pub fn stub_065b044() -> ! {
-    todo!("0x065b044 __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_11SurfaceTypeEED0Ev")
+pub fn stub_065b044() {
+    // IDA 0x065b044: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x065b070 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_11SurfaceTypeEE10isReadOnlyEv
@@ -343,8 +343,8 @@ pub fn stub_065b7a4() -> ! {
 // demangled: RBX::SurfacePropDescriptor<(RBX::NormalId)0,float>::~SurfacePropDescriptor()
 #[doc(alias = "RBX::SurfacePropDescriptor<(RBX::NormalId)0,float>::~SurfacePropDescriptor()")]
 #[doc(alias = "__ZN3RBX21SurfacePropDescriptorILNS_8NormalIdE0EfED0Ev")]
-pub fn stub_065b8b8() -> ! {
-    todo!("0x065b8b8 __ZN3RBX21SurfacePropDescriptorILNS_8NormalIdE0EfED0Ev")
+pub fn stub_065b8b8() {
+    // IDA 0x065b8b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x065b8e4 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE0EfMNS_12PartInstanceEKFfS1_EMS2_FvS1_fEE10isReadOnlyEv
@@ -391,8 +391,8 @@ pub fn stub_065b930() -> ! {
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_16LegacyController9InputTypeEED0Ev")]
-pub fn stub_065b9dc() -> ! {
-    todo!("0x065b9dc __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_16LegacyController9InputTypeEED0Ev")
+pub fn stub_065b9dc() {
+    // IDA 0x065b9dc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x065ba08 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_16LegacyController9InputTypeEE10isReadOnlyEv
@@ -576,8 +576,8 @@ pub fn stub_065c13c() -> ! {
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_11SurfaceTypeEED0Ev")]
-pub fn stub_065c1e8() -> ! {
-    todo!("0x065c1e8 __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_11SurfaceTypeEED0Ev")
+pub fn stub_065c1e8() {
+    // IDA 0x065c1e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x065c214 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_11SurfaceTypeEE10isReadOnlyEv
@@ -762,8 +762,8 @@ pub fn stub_065c948() -> ! {
 // demangled: RBX::SurfacePropDescriptor<(RBX::NormalId)3,float>::~SurfacePropDescriptor()
 #[doc(alias = "RBX::SurfacePropDescriptor<(RBX::NormalId)3,float>::~SurfacePropDescriptor()")]
 #[doc(alias = "__ZN3RBX21SurfacePropDescriptorILNS_8NormalIdE3EfED0Ev")]
-pub fn stub_065ca5c() -> ! {
-    todo!("0x065ca5c __ZN3RBX21SurfacePropDescriptorILNS_8NormalIdE3EfED0Ev")
+pub fn stub_065ca5c() {
+    // IDA 0x065ca5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x065ca88 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE3EfMNS_12PartInstanceEKFfS1_EMS2_FvS1_fEE10isReadOnlyEv
@@ -810,6 +810,6 @@ pub fn stub_065cad4() -> ! {
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_16LegacyController9InputTypeEED0Ev")]
-pub fn stub_065cb80() -> ! {
-    todo!("0x065cb80 __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_16LegacyController9InputTypeEED0Ev")
+pub fn stub_065cb80() {
+    // IDA 0x065cb80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

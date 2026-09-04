@@ -63,8 +63,8 @@ pub fn stub_40e7c0() -> ! {
 // 0x40ea28 — __ZN3RBX9TToolVerbINS_9StudsToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
 #[doc(alias = "__ZN3RBX9TToolVerbINS_9StudsToolENS_12RunStateVerbEED0Ev")]
-pub fn stub_40ea28() -> ! {
-    todo!("0x40ea28 __ZN3RBX9TToolVerbINS_9StudsToolENS_12RunStateVerbEED0Ev")
+pub fn stub_40ea28() {
+    // IDA 0x40ea28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x40eac8 — __ZNK3RBX9TToolVerbINS_9StudsToolENS_12RunStateVerbEE9isCheckedEv
@@ -132,8 +132,8 @@ pub fn stub_40f1c0() -> ! {
 // 0x40f428 — __ZN3RBX9TToolVerbINS_8WeldToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
 #[doc(alias = "__ZN3RBX9TToolVerbINS_8WeldToolENS_12RunStateVerbEED0Ev")]
-pub fn stub_40f428() -> ! {
-    todo!("0x40f428 __ZN3RBX9TToolVerbINS_8WeldToolENS_12RunStateVerbEED0Ev")
+pub fn stub_40f428() {
+    // IDA 0x40f428: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x40f4c8 — __ZNK3RBX9TToolVerbINS_8WeldToolENS_12RunStateVerbEE9isCheckedEv
@@ -201,8 +201,8 @@ pub fn stub_40fbc0() -> ! {
 // 0x40fe28 — __ZN3RBX9TToolVerbINS_8GlueToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
 #[doc(alias = "__ZN3RBX9TToolVerbINS_8GlueToolENS_12RunStateVerbEED0Ev")]
-pub fn stub_40fe28() -> ! {
-    todo!("0x40fe28 __ZN3RBX9TToolVerbINS_8GlueToolENS_12RunStateVerbEED0Ev")
+pub fn stub_40fe28() {
+    // IDA 0x40fe28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x40fec8 — __ZNK3RBX9TToolVerbINS_8GlueToolENS_12RunStateVerbEE9isCheckedEv
@@ -270,8 +270,8 @@ pub fn stub_4105c0() -> ! {
 // 0x410828 — __ZN3RBX9TToolVerbINS_8FlatToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
 #[doc(alias = "__ZN3RBX9TToolVerbINS_8FlatToolENS_12RunStateVerbEED0Ev")]
-pub fn stub_410828() -> ! {
-    todo!("0x410828 __ZN3RBX9TToolVerbINS_8FlatToolENS_12RunStateVerbEED0Ev")
+pub fn stub_410828() {
+    // IDA 0x410828: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4108c8 — __ZNK3RBX9TToolVerbINS_8FlatToolENS_12RunStateVerbEE9isCheckedEv
@@ -339,8 +339,8 @@ pub fn stub_410fc0() -> ! {
 // 0x411228 — __ZN3RBX9TToolVerbINS_12AdvArrowToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
 #[doc(alias = "__ZN3RBX9TToolVerbINS_12AdvArrowToolENS_12RunStateVerbEED0Ev")]
-pub fn stub_411228() -> ! {
-    todo!("0x411228 __ZN3RBX9TToolVerbINS_12AdvArrowToolENS_12RunStateVerbEED0Ev")
+pub fn stub_411228() {
+    // IDA 0x411228: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4112c8 — __ZNK3RBX9TToolVerbINS_12AdvArrowToolENS_12RunStateVerbEE9isCheckedEv
@@ -367,8 +367,8 @@ pub fn stub_411410() -> ! {
 // 0x411660 — __ZN3RBX9TToolVerbINS_13AdvRotateToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
 #[doc(alias = "__ZN3RBX9TToolVerbINS_13AdvRotateToolENS_12RunStateVerbEED0Ev")]
-pub fn stub_411660() -> ! {
-    todo!("0x411660 __ZN3RBX9TToolVerbINS_13AdvRotateToolENS_12RunStateVerbEED0Ev")
+pub fn stub_411660() {
+    // IDA 0x411660: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x411700 — __ZNK3RBX9TToolVerbINS_13AdvRotateToolENS_12RunStateVerbEE9isCheckedEv
@@ -444,43 +444,43 @@ pub fn stub_411af8() -> ! {
 // 0x411afc — __ZN3RBX15AdvMoveToolBaseD2Ev
 // type: void __fastcall(RBX::AdvMoveToolBase *__hidden this)
 #[doc(alias = "__ZN3RBX15AdvMoveToolBaseD2Ev")]
-pub fn stub_411afc() -> ! {
-    todo!("0x411afc __ZN3RBX15AdvMoveToolBaseD2Ev")
+pub fn stub_411afc() {
+    // IDA 0x411afc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x411c14 — __ZN3RBX15AdvMoveToolBaseD1Ev
 // type: void __fastcall(RBX::AdvMoveToolBase *__hidden this)
 #[doc(alias = "__ZN3RBX15AdvMoveToolBaseD1Ev")]
-pub fn stub_411c14() -> ! {
-    todo!("0x411c14 __ZN3RBX15AdvMoveToolBaseD1Ev")
+pub fn stub_411c14() {
+    // IDA 0x411c14: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x411c18 — __ZN3RBX15AdvMoveToolBaseD0Ev
 // type: void __fastcall(RBX::AdvMoveToolBase *__hidden this)
 #[doc(alias = "__ZN3RBX15AdvMoveToolBaseD0Ev")]
-pub fn stub_411c18() -> ! {
-    todo!("0x411c18 __ZN3RBX15AdvMoveToolBaseD0Ev")
+pub fn stub_411c18() {
+    // IDA 0x411c18: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x411cb8 — __ZThn36_N3RBX15AdvMoveToolBaseD1Ev
 // type: void __fastcall(RBX::AdvMoveToolBase *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX15AdvMoveToolBaseD1Ev")]
-pub fn stub_411cb8() -> ! {
-    todo!("0x411cb8 __ZThn36_N3RBX15AdvMoveToolBaseD1Ev")
+pub fn stub_411cb8() {
+    // IDA 0x411cb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x411cc0 — __ZThn36_N3RBX15AdvMoveToolBaseD0Ev
 // type: void __fastcall(RBX::AdvMoveToolBase *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX15AdvMoveToolBaseD0Ev")]
-pub fn stub_411cc0() -> ! {
-    todo!("0x411cc0 __ZThn36_N3RBX15AdvMoveToolBaseD0Ev")
+pub fn stub_411cc0() {
+    // IDA 0x411cc0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x411cc8 — __ZNSt8auto_ptrIN3RBX11MegaDraggerEED2Ev
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(RBX::MegaDragger **)
 #[doc(alias = "__ZNSt8auto_ptrIN3RBX11MegaDraggerEED2Ev")]
-pub fn stub_411cc8() -> ! {
-    todo!("0x411cc8 __ZNSt8auto_ptrIN3RBX11MegaDraggerEED2Ev")
+pub fn stub_411cc8() {
+    // IDA 0x411cc8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x41208c — __ZN3RBX4Name7declareILZNS_14sAdvRotateToolEEEERKS0_v
@@ -506,8 +506,8 @@ pub fn stub_4120d4() -> ! {
 // 0x41233c — __ZN3RBX9TToolVerbINS_11AdvMoveToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
 #[doc(alias = "__ZN3RBX9TToolVerbINS_11AdvMoveToolENS_12RunStateVerbEED0Ev")]
-pub fn stub_41233c() -> ! {
-    todo!("0x41233c __ZN3RBX9TToolVerbINS_11AdvMoveToolENS_12RunStateVerbEED0Ev")
+pub fn stub_41233c() {
+    // IDA 0x41233c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4123dc — __ZNK3RBX9TToolVerbINS_11AdvMoveToolENS_12RunStateVerbEE9isCheckedEv
@@ -541,15 +541,15 @@ pub fn stub_4126e4() -> ! {
 // 0x4126e8 — __ZN3RBX11AdvMoveToolD1Ev
 // type: void __fastcall(RBX::AdvMoveTool *__hidden this)
 #[doc(alias = "__ZN3RBX11AdvMoveToolD1Ev")]
-pub fn stub_4126e8() -> ! {
-    todo!("0x4126e8 __ZN3RBX11AdvMoveToolD1Ev")
+pub fn stub_4126e8() {
+    // IDA 0x4126e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4126ec — __ZN3RBX11AdvMoveToolD0Ev
 // type: void __fastcall(RBX::AdvMoveTool *__hidden this)
 #[doc(alias = "__ZN3RBX11AdvMoveToolD0Ev")]
-pub fn stub_4126ec() -> ! {
-    todo!("0x4126ec __ZN3RBX11AdvMoveToolD0Ev")
+pub fn stub_4126ec() {
+    // IDA 0x4126ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x41278c — __ZNK3RBX11AdvMoveTool8isStickyEv
@@ -576,15 +576,15 @@ pub fn stub_41286c() -> ! {
 // 0x412870 — __ZThn36_N3RBX11AdvMoveToolD1Ev
 // type: void __fastcall(RBX::AdvMoveTool *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX11AdvMoveToolD1Ev")]
-pub fn stub_412870() -> ! {
-    todo!("0x412870 __ZThn36_N3RBX11AdvMoveToolD1Ev")
+pub fn stub_412870() {
+    // IDA 0x412870: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x412878 — __ZThn36_N3RBX11AdvMoveToolD0Ev
 // type: void __fastcall(RBX::AdvMoveTool *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX11AdvMoveToolD0Ev")]
-pub fn stub_412878() -> ! {
-    todo!("0x412878 __ZThn36_N3RBX11AdvMoveToolD0Ev")
+pub fn stub_412878() {
+    // IDA 0x412878: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x412b58 — __ZN3RBX4Name7declareILZNS_12sAdvMoveToolEEEERKS0_v
@@ -610,8 +610,8 @@ pub fn stub_412ba0() -> ! {
 // 0x412e08 — __ZN3RBX9TToolVerbINS_18MoveResizeJoinToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
 #[doc(alias = "__ZN3RBX9TToolVerbINS_18MoveResizeJoinToolENS_12RunStateVerbEED0Ev")]
-pub fn stub_412e08() -> ! {
-    todo!("0x412e08 __ZN3RBX9TToolVerbINS_18MoveResizeJoinToolENS_12RunStateVerbEED0Ev")
+pub fn stub_412e08() {
+    // IDA 0x412e08: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x412ea8 — __ZNK3RBX9TToolVerbINS_18MoveResizeJoinToolENS_12RunStateVerbEE9isCheckedEv
@@ -693,8 +693,8 @@ pub fn stub_4136b4() -> ! {
 // 0x41391c — __ZN3RBX9TToolVerbINS_14AxisRotateToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
 #[doc(alias = "__ZN3RBX9TToolVerbINS_14AxisRotateToolENS_12RunStateVerbEED0Ev")]
-pub fn stub_41391c() -> ! {
-    todo!("0x41391c __ZN3RBX9TToolVerbINS_14AxisRotateToolENS_12RunStateVerbEED0Ev")
+pub fn stub_41391c() {
+    // IDA 0x41391c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4139bc — __ZNK3RBX9TToolVerbINS_14AxisRotateToolENS_12RunStateVerbEE9isCheckedEv

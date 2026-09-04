@@ -62,16 +62,16 @@ pub fn stub_5ed9f0() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::NormalId>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NormalId>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_8NormalIdEED1Ev")]
-pub fn stub_5edae0() -> ! {
-    todo!("0x5edae0 __ZN3RBX10Reflection8EnumDescINS_8NormalIdEED1Ev")
+pub fn stub_5edae0() {
+    // IDA 0x5edae0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5edae8 — __ZN3RBX10Reflection8EnumDescINS_8NormalIdEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::NormalId>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NormalId>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_8NormalIdEED0Ev")]
-pub fn stub_5edae8() -> ! {
-    todo!("0x5edae8 __ZN3RBX10Reflection8EnumDescINS_8NormalIdEED0Ev")
+pub fn stub_5edae8() {
+    // IDA 0x5edae8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5edb88 — __ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE6lookupEPKc
@@ -173,8 +173,8 @@ pub fn stub_5ee058() -> ! {
 // type: void __fastcall(RBX::Reflection::FunctionDescriptor *__hidden this)
 #[doc(alias = "RBX::Reflection::FunctionDescriptor::~FunctionDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18FunctionDescriptorD0Ev")]
-pub fn stub_5ee060() -> ! {
-    todo!("0x5ee060 __ZN3RBX10Reflection18FunctionDescriptorD0Ev")
+pub fn stub_5ee060() {
+    // IDA 0x5ee060: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5ee114 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEiEC2IMS2_KFivEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -198,8 +198,8 @@ pub fn stub_5ee220() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::PartInstance,int>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEiED0Ev")]
-pub fn stub_5ee344() -> ! {
-    todo!("0x5ee344 __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEiED0Ev")
+pub fn stub_5ee344() {
+    // IDA 0x5ee344: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5ee370 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIiE10isReadOnlyEv
@@ -262,8 +262,8 @@ pub fn stub_5ee558() -> ! {
 // demangled: RBX::Reflection::TypedPropertyDescriptor<int>::~TypedPropertyDescriptor()
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<int>::~TypedPropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorIiED1Ev")]
-pub fn stub_5ee568() -> ! {
-    todo!("0x5ee568 __ZN3RBX10Reflection23TypedPropertyDescriptorIiED1Ev")
+pub fn stub_5ee568() {
+    // IDA 0x5ee568: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5ee590 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEiE7GetImplIMS2_KFivEE10isReadOnlyEv
@@ -319,8 +319,8 @@ pub fn stub_5ee7e4() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Faces>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Faces>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_5FacesEED0Ev")]
-pub fn stub_5ee908() -> ! {
-    todo!("0x5ee908 __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_5FacesEED0Ev")
+pub fn stub_5ee908() {
+    // IDA 0x5ee908: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5ee934 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_5FacesEE10isReadOnlyEv
@@ -410,16 +410,16 @@ pub fn stub_5eecd0() -> ! {
 // demangled: RBX::Reflection::TypedPropertyDescriptor<RBX::Faces>::~TypedPropertyDescriptor()
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Faces>::~TypedPropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorINS_5FacesEED1Ev")]
-pub fn stub_5eecd4() -> ! {
-    todo!("0x5eecd4 __ZN3RBX10Reflection23TypedPropertyDescriptorINS_5FacesEED1Ev")
+pub fn stub_5eecd4() {
+    // IDA 0x5eecd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5eecf8 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_5FacesEED0Ev
 // demangled: RBX::Reflection::TypedPropertyDescriptor<RBX::Faces>::~TypedPropertyDescriptor()
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Faces>::~TypedPropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorINS_5FacesEED0Ev")]
-pub fn stub_5eecf8() -> ! {
-    todo!("0x5eecf8 __ZN3RBX10Reflection23TypedPropertyDescriptorINS_5FacesEED0Ev")
+pub fn stub_5eecf8() {
+    // IDA 0x5eecf8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5eed24 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_5FacesEE7GetImplIMS2_KFS3_vEE10isReadOnlyEv
@@ -475,8 +475,8 @@ pub fn stub_5eef80() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::PartInstance,bool>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEbED0Ev")]
-pub fn stub_5ef0a4() -> ! {
-    todo!("0x5ef0a4 __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEbED0Ev")
+pub fn stub_5ef0a4() {
+    // IDA 0x5ef0a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5ef0d0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIbE10isReadOnlyEv
@@ -507,8 +507,8 @@ pub fn stub_5ef0f0() -> ! {
 // demangled: RBX::Reflection::TypedPropertyDescriptor<bool>::~TypedPropertyDescriptor()
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<bool>::~TypedPropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorIbED0Ev")]
-pub fn stub_5ef118() -> ! {
-    todo!("0x5ef118 __ZN3RBX10Reflection23TypedPropertyDescriptorIbED0Ev")
+pub fn stub_5ef118() {
+    // IDA 0x5ef118: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5ef144 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
@@ -556,8 +556,8 @@ pub fn stub_5ef194() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEED0Ev")]
-pub fn stub_5ef348() -> ! {
-    todo!("0x5ef348 __ZN3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEED0Ev")
+pub fn stub_5ef348() {
+    // IDA 0x5ef348: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5ef374 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE10isReadOnlyEv
@@ -802,8 +802,8 @@ pub fn stub_5efcbc() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEED0Ev")]
-pub fn stub_5efde0() -> ! {
-    todo!("0x5efde0 __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEED0Ev")
+pub fn stub_5efde0() {
+    // IDA 0x5efde0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5efe0c — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10BrickColorEE10isReadOnlyEv

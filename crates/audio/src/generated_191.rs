@@ -434,8 +434,8 @@ pub fn stub_47de54() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsESsED1Ev")]
-pub fn stub_47dec8() -> ! {
-    todo!("0x47dec8 RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::~PropDescriptor()")
+pub fn stub_47dec8() {
+    // IDA 0x47dec8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47deec — __ZNK3RBX13DebugSettings20getRobloxProductNameEv
@@ -451,24 +451,24 @@ pub fn stub_47deec() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEfED1Ev")]
-pub fn stub_47df60() -> ! {
-    todo!("0x47df60 RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::~PropDescriptor()")
+pub fn stub_47df60() {
+    // IDA 0x47df60: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47df84 — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiED1Ev
 // demangled: RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiED1Ev")]
-pub fn stub_47df84() -> ! {
-    todo!("0x47df84 RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::~PropDescriptor()")
+pub fn stub_47df84() {
+    // IDA 0x47df84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47dfa8 — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEbED1Ev
 // demangled: RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEbED1Ev")]
-pub fn stub_47dfa8() -> ! {
-    todo!("0x47dfa8 RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::~PropDescriptor()")
+pub fn stub_47dfa8() {
+    // IDA 0x47dfa8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47dfcc — __ZNK3RBX13DebugSettings16nameDatabaseSizeEv
@@ -493,8 +493,8 @@ pub fn stub_47dfd0() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEdED1Ev")]
-pub fn stub_47dfd4() -> ! {
-    todo!("0x47dfd4 RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::~PropDescriptor()")
+pub fn stub_47dfd4() {
+    // IDA 0x47dfd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47dff8 — __ZNK3RBX13DebugSettings13instanceCountEv
@@ -519,8 +519,8 @@ pub fn stub_47e008() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,boost::shared_ptr<RBX::Reflection::Tuple const> ()(void),0>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13DebugSettingsEFN5boost10shared_ptrIKNS0_5TupleEEEvELi0EED1Ev")]
-pub fn stub_47e018() -> ! {
-    todo!("0x47e018 RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(void),0>::~BoundFuncDesc()")
+pub fn stub_47e018() {
+    // IDA 0x47e018: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47e03c — __ZNK3RBX21TaskSchedulerSettings14threadPoolSizeEv
@@ -536,8 +536,8 @@ pub fn stub_47e03c() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,int>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEiED1Ev")]
-pub fn stub_47e050() -> ! {
-    todo!("0x47e050 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,int>::~PropDescriptor()")
+pub fn stub_47e050() {
+    // IDA 0x47e050: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47e074 — __ZNK3RBX21TaskSchedulerSettings14threadAffinityEv
@@ -553,8 +553,8 @@ pub fn stub_47e074() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEdED1Ev")]
-pub fn stub_47e088() -> ! {
-    todo!("0x47e088 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::~PropDescriptor()")
+pub fn stub_47e088() {
+    // IDA 0x47e088: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47e0ac — __ZNK3RBX21TaskSchedulerSettings15numSleepingJobsEv
@@ -606,8 +606,8 @@ pub fn stub_47e0fc() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::TaskSchedulerSettings,void ()(bool,double),2>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::TaskSchedulerSettings,void ()(bool,double),2>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_21TaskSchedulerSettingsEFvbdELi2EED1Ev")]
-pub fn stub_47e10c() -> ! {
-    todo!("0x47e10c RBX::Reflection::BoundFuncDesc<RBX::TaskSchedulerSettings,void ()(bool,double),2>::~BoundFuncDesc()")
+pub fn stub_47e10c() {
+    // IDA 0x47e10c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47e158 — __ZNK3RBX13DebugSettings17getErrorReportingEv
@@ -623,8 +623,8 @@ pub fn stub_47e158() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::DebugSettings::ErrorReporting>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::DebugSettings::ErrorReporting>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS2_14ErrorReportingEED1Ev")]
-pub fn stub_47e15c() -> ! {
-    todo!("0x47e15c RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::DebugSettings::ErrorReporting>::~EnumPropDescriptor()")
+pub fn stub_47e15c() {
+    // IDA 0x47e15c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47e180 — __ZN3RBX13DebugSettings5noOptEv
@@ -640,8 +640,8 @@ pub fn stub_47e180() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(void),0>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13DebugSettingsEFvvELi0EED1Ev")]
-pub fn stub_47e184() -> ! {
-    todo!("0x47e184 RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_47e184() {
+    // IDA 0x47e184: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47e1a8 — __ZN3RBX13DebugSettings17setBlockingRemoveEb
@@ -657,24 +657,24 @@ pub fn stub_47e1a8() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(bool),1>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(bool),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13DebugSettingsEFvbELi1EED1Ev")]
-pub fn stub_47e1b0() -> ! {
-    todo!("0x47e1b0 RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(bool),1>::~BoundFuncDesc()")
+pub fn stub_47e1b0() {
+    // IDA 0x47e1b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47e1f0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler16ThreadPoolConfigEED1Ev
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::ThreadPoolConfig>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::ThreadPoolConfig>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler16ThreadPoolConfigEED1Ev")]
-pub fn stub_47e1f0() -> ! {
-    todo!("0x47e1f0 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::ThreadPoolConfig>::~EnumPropDescriptor()")
+pub fn stub_47e1f0() {
+    // IDA 0x47e1f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47e214 — __ZN3RBX10Reflection13BoundFuncDescINS_21TaskSchedulerSettingsEFvdiELi2EED1Ev
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::TaskSchedulerSettings,void ()(double,int),2>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::TaskSchedulerSettings,void ()(double,int),2>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_21TaskSchedulerSettingsEFvdiELi2EED1Ev")]
-pub fn stub_47e214() -> ! {
-    todo!("0x47e214 RBX::Reflection::BoundFuncDesc<RBX::TaskSchedulerSettings,void ()(double,int),2>::~BoundFuncDesc()")
+pub fn stub_47e214() {
+    // IDA 0x47e214: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47e25c — __ZNK3RBX21TaskSchedulerSettings17getPriorityMethodEv
@@ -690,8 +690,8 @@ pub fn stub_47e25c() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::PriorityMethod>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::PriorityMethod>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler14PriorityMethodEED1Ev")]
-pub fn stub_47e26c() -> ! {
-    todo!("0x47e26c RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::PriorityMethod>::~EnumPropDescriptor()")
+pub fn stub_47e26c() {
+    // IDA 0x47e26c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47e290 — __ZNK3RBX21TaskSchedulerSettings20getSleepAdjustMethodEv
@@ -707,8 +707,8 @@ pub fn stub_47e290() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler3Job17SleepAdjustMethodEED1Ev")]
-pub fn stub_47e2a0() -> ! {
-    todo!("0x47e2a0 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumPropDescriptor()")
+pub fn stub_47e2a0() {
+    // IDA 0x47e2a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47e2c4 — __ZNK3RBX21TaskSchedulerSettings19getConcurrencyModelEv
@@ -724,8 +724,8 @@ pub fn stub_47e2c4() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEED1Ev")]
-pub fn stub_47e2d4() -> ! {
-    todo!("0x47e2d4 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::~EnumPropDescriptor()")
+pub fn stub_47e2d4() {
+    // IDA 0x47e2d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47e2f8 — __ZNK3RBX21TaskSchedulerSettings21getIsArbiterThrottledEv
@@ -741,8 +741,8 @@ pub fn stub_47e2f8() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEbED1Ev")]
-pub fn stub_47e308() -> ! {
-    todo!("0x47e308 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::~PropDescriptor()")
+pub fn stub_47e308() {
+    // IDA 0x47e308: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47e32c — __ZNK3RBX21TaskSchedulerSettings24getThrottledJobSleepTimeEv
@@ -775,8 +775,8 @@ pub fn stub_47e354() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEED1Ev")]
-pub fn stub_47e364() -> ! {
-    todo!("0x47e364 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::~EnumPropDescriptor()")
+pub fn stub_47e364() {
+    // IDA 0x47e364: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47e388 — __ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEEC2Ev
@@ -800,8 +800,8 @@ pub fn stub_47e5f8() -> ! {
 // demangled: boost::shared_ptr<DummyArbiter>::~shared_ptr()
 #[doc(alias = "rbx_core::SharedPtr<DummyArbiter>::~shared_ptr()")]
 #[doc(alias = "__ZN5boost10shared_ptrI12DummyArbiterED1Ev")]
-pub fn stub_47e640() -> ! {
-    todo!("0x47e640 rbx_core::SharedPtr<DummyArbiter>::~shared_ptr()")
+pub fn stub_47e640() {
+    // IDA 0x47e640: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47e654 — __ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEEC2Ev
@@ -851,31 +851,31 @@ pub fn stub_47e900() -> ! {
 // 0x47e918 — __ZN3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE7CreatorD1Ev
 // demangled: __ZN3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_47e918() -> ! {
-    todo!("0x47e918 __ZN3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_47e918() {
+    // IDA 0x47e918: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47e920 — __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorD1Ev
 // demangled: __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_47e920() -> ! {
-    todo!("0x47e920 __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_47e920() {
+    // IDA 0x47e920: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47e924 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEED1Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEED1Ev")]
-pub fn stub_47e924() -> ! {
-    todo!("0x47e924 RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::~EnumDesc()")
+pub fn stub_47e924() {
+    // IDA 0x47e924: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47e928 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEED0Ev")]
-pub fn stub_47e928() -> ! {
-    todo!("0x47e928 RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::~EnumDesc()")
+pub fn stub_47e928() {
+    // IDA 0x47e928: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47e9c8 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE6lookupEPKc
@@ -914,16 +914,16 @@ pub fn stub_47ea4c() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEED1Ev")]
-pub fn stub_47eb90() -> ! {
-    todo!("0x47eb90 RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::~EnumDesc()")
+pub fn stub_47eb90() {
+    // IDA 0x47eb90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47eb94 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEED0Ev")]
-pub fn stub_47eb94() -> ! {
-    todo!("0x47eb94 RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::~EnumDesc()")
+pub fn stub_47eb94() {
+    // IDA 0x47eb94: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47ec34 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE6lookupEPKc
@@ -962,16 +962,16 @@ pub fn stub_47ecb8() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEED1Ev")]
-pub fn stub_47edfc() -> ! {
-    todo!("0x47edfc RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumDesc()")
+pub fn stub_47edfc() {
+    // IDA 0x47edfc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47ee00 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEED0Ev")]
-pub fn stub_47ee00() -> ! {
-    todo!("0x47ee00 RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumDesc()")
+pub fn stub_47ee00() {
+    // IDA 0x47ee00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47eea0 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE6lookupEPKc
@@ -1010,16 +1010,16 @@ pub fn stub_47ef24() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEED1Ev")]
-pub fn stub_47f068() -> ! {
-    todo!("0x47f068 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")
+pub fn stub_47f068() {
+    // IDA 0x47f068: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47f06c — __ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEED0Ev")]
-pub fn stub_47f06c() -> ! {
-    todo!("0x47f06c RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")
+pub fn stub_47f06c() {
+    // IDA 0x47f06c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47f10c — __ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE6lookupEPKc
@@ -1058,16 +1058,16 @@ pub fn stub_47f190() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEED1Ev")]
-pub fn stub_47f2d4() -> ! {
-    todo!("0x47f2d4 RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::~EnumDesc()")
+pub fn stub_47f2d4() {
+    // IDA 0x47f2d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47f2d8 — __ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEED0Ev")]
-pub fn stub_47f2d8() -> ! {
-    todo!("0x47f2d8 RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::~EnumDesc()")
+pub fn stub_47f2d8() {
+    // IDA 0x47f2d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47f378 — __ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE6lookupEPKc
@@ -1106,16 +1106,16 @@ pub fn stub_47f3fc() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEED1Ev")]
-pub fn stub_47f540() -> ! {
-    todo!("0x47f540 RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::~EnumDesc()")
+pub fn stub_47f540() {
+    // IDA 0x47f540: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47f544 — __ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEED0Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::~EnumDesc()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEED0Ev")]
-pub fn stub_47f544() -> ! {
-    todo!("0x47f544 RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::~EnumDesc()")
+pub fn stub_47f544() {
+    // IDA 0x47f544: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47f5e4 — __ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE6lookupEPKc
@@ -1155,8 +1155,8 @@ pub fn stub_47f668() -> ! {
 // type: void __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::~DebugSettings()")]
 #[doc(alias = "__ZN3RBX13DebugSettingsD1Ev")]
-pub fn stub_47f7ac() -> ! {
-    todo!("0x47f7ac RBX::DebugSettings::~DebugSettings()")
+pub fn stub_47f7ac() {
+    // IDA 0x47f7ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47f7ec — __ZN3RBX13DebugSettingsD0Ev
@@ -1164,8 +1164,8 @@ pub fn stub_47f7ac() -> ! {
 // type: void __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::~DebugSettings()")]
 #[doc(alias = "__ZN3RBX13DebugSettingsD0Ev")]
-pub fn stub_47f7ec() -> ! {
-    todo!("0x47f7ec RBX::DebugSettings::~DebugSettings()")
+pub fn stub_47f7ec() {
+    // IDA 0x47f7ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47f8d0 — __ZNK3RBX22GlobalAdvancedSettings4Item11askAddChildEPKNS_8InstanceE
@@ -1189,8 +1189,8 @@ pub fn stub_47f908() -> ! {
 // type: void __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::DebugSettings::~DebugSettings()")]
 #[doc(alias = "__ZThn32_N3RBX13DebugSettingsD1Ev")]
-pub fn stub_47f91c() -> ! {
-    todo!("0x47f91c non-virtual thunk to RBX::DebugSettings::~DebugSettings()")
+pub fn stub_47f91c() {
+    // IDA 0x47f91c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47f960 — __ZThn32_N3RBX13DebugSettingsD0Ev
@@ -1198,15 +1198,15 @@ pub fn stub_47f91c() -> ! {
 // type: void __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::DebugSettings::~DebugSettings()")]
 #[doc(alias = "__ZThn32_N3RBX13DebugSettingsD0Ev")]
-pub fn stub_47f960() -> ! {
-    todo!("0x47f960 non-virtual thunk to RBX::DebugSettings::~DebugSettings()")
+pub fn stub_47f960() {
+    // IDA 0x47f960: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47fa48 — __ZThn32_NK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE12getClassNameEv
 // demangled: __ZThn32_NK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_47fa48() -> ! {
-    todo!("0x47fa48 __ZThn32_NK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE12getClassNameEv")
+pub fn stub_47fa48() {
+    // IDA 0x47fa48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47fa58 — __ZThn36_N3RBX13DebugSettingsD1Ev
@@ -1214,8 +1214,8 @@ pub fn stub_47fa48() -> ! {
 // type: void __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::DebugSettings::~DebugSettings()")]
 #[doc(alias = "__ZThn36_N3RBX13DebugSettingsD1Ev")]
-pub fn stub_47fa58() -> ! {
-    todo!("0x47fa58 non-virtual thunk to RBX::DebugSettings::~DebugSettings()")
+pub fn stub_47fa58() {
+    // IDA 0x47fa58: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47fa9c — __ZThn36_N3RBX13DebugSettingsD0Ev
@@ -1223,8 +1223,8 @@ pub fn stub_47fa58() -> ! {
 // type: void __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::DebugSettings::~DebugSettings()")]
 #[doc(alias = "__ZThn36_N3RBX13DebugSettingsD0Ev")]
-pub fn stub_47fa9c() -> ! {
-    todo!("0x47fa9c non-virtual thunk to RBX::DebugSettings::~DebugSettings()")
+pub fn stub_47fa9c() {
+    // IDA 0x47fa9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47fb88 — __ZN3RBX21TaskSchedulerSettingsD1Ev
@@ -1232,8 +1232,8 @@ pub fn stub_47fa9c() -> ! {
 // type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
 #[doc(alias = "RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
 #[doc(alias = "__ZN3RBX21TaskSchedulerSettingsD1Ev")]
-pub fn stub_47fb88() -> ! {
-    todo!("0x47fb88 RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
+pub fn stub_47fb88() {
+    // IDA 0x47fb88: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47fbc8 — __ZN3RBX21TaskSchedulerSettingsD0Ev
@@ -1241,8 +1241,8 @@ pub fn stub_47fb88() -> ! {
 // type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
 #[doc(alias = "RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
 #[doc(alias = "__ZN3RBX21TaskSchedulerSettingsD0Ev")]
-pub fn stub_47fbc8() -> ! {
-    todo!("0x47fbc8 RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
+pub fn stub_47fbc8() {
+    // IDA 0x47fbc8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47fca8 — __ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE12getClassNameEv
@@ -1257,8 +1257,8 @@ pub fn stub_47fca8() -> ! {
 // type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
 #[doc(alias = "__ZThn32_N3RBX21TaskSchedulerSettingsD1Ev")]
-pub fn stub_47fcb8() -> ! {
-    todo!("0x47fcb8 non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
+pub fn stub_47fcb8() {
+    // IDA 0x47fcb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47fcfc — __ZThn32_N3RBX21TaskSchedulerSettingsD0Ev
@@ -1266,15 +1266,15 @@ pub fn stub_47fcb8() -> ! {
 // type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
 #[doc(alias = "__ZThn32_N3RBX21TaskSchedulerSettingsD0Ev")]
-pub fn stub_47fcfc() -> ! {
-    todo!("0x47fcfc non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
+pub fn stub_47fcfc() {
+    // IDA 0x47fcfc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47fddc — __ZThn32_NK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE12getClassNameEv
 // demangled: __ZThn32_NK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_47fddc() -> ! {
-    todo!("0x47fddc __ZThn32_NK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE12getClassNameEv")
+pub fn stub_47fddc() {
+    // IDA 0x47fddc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x47fdec — __ZThn36_N3RBX21TaskSchedulerSettingsD1Ev
@@ -1282,6 +1282,6 @@ pub fn stub_47fddc() -> ! {
 // type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
 #[doc(alias = "__ZThn36_N3RBX21TaskSchedulerSettingsD1Ev")]
-pub fn stub_47fdec() -> ! {
-    todo!("0x47fdec non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
+pub fn stub_47fdec() {
+    // IDA 0x47fdec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

@@ -122,22 +122,22 @@ pub fn stub_a6d2bc() -> ! {
 // 0xa6d4c0 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer21BufferedCommandStructEED2Ev
 // type: int *__fastcall(int *)
 #[doc(alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::BufferedCommandStruct>::~ThreadsafeAllocatingQueue()")]
-pub fn stub_a6d4c0() -> ! {
-    todo!("0xa6d4c0 DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::BufferedCommandStruct>::~ThreadsafeAllocatingQueue()")
+pub fn stub_a6d4c0() {
+    // IDA 0xa6d4c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xa6d7a0 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer14RecvFromStructEED2Ev
 // type: int *__fastcall(int *)
 #[doc(alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::RecvFromStruct>::~ThreadsafeAllocatingQueue()")]
-pub fn stub_a6d7a0() -> ! {
-    todo!("0xa6d7a0 DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::RecvFromStruct>::~ThreadsafeAllocatingQueue()")
+pub fn stub_a6d7a0() {
+    // IDA 0xa6d7a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xa6da80 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer17SocketQueryOutputEED2Ev
 // type: int *__fastcall(int *)
 #[doc(alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::SocketQueryOutput>::~ThreadsafeAllocatingQueue()")]
-pub fn stub_a6da80() -> ! {
-    todo!("0xa6da80 DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::SocketQueryOutput>::~ThreadsafeAllocatingQueue()")
+pub fn stub_a6da80() {
+    // IDA 0xa6da80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xa6eaa4 — __ZN6RakNet9RakStringC1Ev
@@ -164,8 +164,8 @@ pub fn stub_a6ec58() -> ! {
 // 0xa6ec7c — __ZN6RakNet9RakStringD1Ev
 // type: void __fastcall(RakNet::RakString *__hidden this)
 #[doc(alias = "RakNet::RakString::~RakString()")]
-pub fn stub_a6ec7c() -> ! {
-    todo!("0xa6ec7c RakNet::RakString::~RakString()")
+pub fn stub_a6ec7c() {
+    // IDA 0xa6ec7c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xa6ec8c — __ZN6RakNet9RakString4FreeEv
@@ -220,8 +220,8 @@ pub fn stub_a6f358() -> ! {
 // 0xa6f3c0 — __ZN14DataStructures4ListIPN6RakNet9RakString12SharedStringEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "DataStructures::List<RakNet::RakString::SharedString *>::~List()")]
-pub fn stub_a6f3c0() -> ! {
-    todo!("0xa6f3c0 DataStructures::List<RakNet::RakString::SharedString *>::~List()")
+pub fn stub_a6f3c0() {
+    // IDA 0xa6f3c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xa6fa3c — __ZN6RakNet9RakThread6CreateEPFPvS1_ES1_i
@@ -241,8 +241,8 @@ pub fn stub_a70260() -> ! {
 // 0xa70270 — __ZN6RakNet12RakNetRandomD1Ev
 // type: void __fastcall(RakNet::RakNetRandom *__hidden this)
 #[doc(alias = "RakNet::RakNetRandom::~RakNetRandom()")]
-pub fn stub_a70270() -> ! {
-    todo!("0xa70270 RakNet::RakNetRandom::~RakNetRandom()")
+pub fn stub_a70270() {
+    // IDA 0xa70270: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xa70278 — __ZN6RakNet12RakNetRandom6SeedMTEj
@@ -290,15 +290,15 @@ pub fn stub_a7142c() -> ! {
 // 0xa715f8 — __ZN6RakNet16ReliabilityLayerD1Ev
 // type: void __fastcall(RakNet::ReliabilityLayer *__hidden this)
 #[doc(alias = "RakNet::ReliabilityLayer::~ReliabilityLayer()")]
-pub fn stub_a715f8() -> ! {
-    todo!("0xa715f8 RakNet::ReliabilityLayer::~ReliabilityLayer()")
+pub fn stub_a715f8() {
+    // IDA 0xa715f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xa71604 — __ZN6RakNet16ReliabilityLayerD2Ev
 // type: void __fastcall(RakNet::ReliabilityLayer *__hidden this)
 #[doc(alias = "RakNet::ReliabilityLayer::~ReliabilityLayer()")]
-pub fn stub_a71604() -> ! {
-    todo!("0xa71604 RakNet::ReliabilityLayer::~ReliabilityLayer()")
+pub fn stub_a71604() {
+    // IDA 0xa71604: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xa723c0 — __ZN6RakNet16ReliabilityLayer5ResetEbib
@@ -675,8 +675,8 @@ pub fn stub_a79900() -> ! {
 // 0xa79914 — __ZN6RakNet13SignaledEventD1Ev
 // type: void __fastcall(RakNet::SignaledEvent *__hidden this)
 #[doc(alias = "RakNet::SignaledEvent::~SignaledEvent()")]
-pub fn stub_a79914() -> ! {
-    todo!("0xa79914 RakNet::SignaledEvent::~SignaledEvent()")
+pub fn stub_a79914() {
+    // IDA 0xa79914: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xa79924 — __ZN6RakNet13SignaledEvent9InitEventEv

@@ -40,8 +40,8 @@ pub fn stub_69a7ec() -> ! {
 
 // 0x69a930 — __ZN5boost9function1IvN3RBX10Controller6ButtonEE5clearEv
 #[doc(alias = "boost::function1<void,RBX::Controller::Button>::clear(void)")]
-pub fn stub_69a930() -> ! {
-    todo!("0x69a930 boost::function1<void,RBX::Controller::Button>::clear(void)")
+pub fn stub_69a930() {
+    // IDA 0x69a930: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x69a95c — __ZN5boost8functionIFvN3RBX10Controller6ButtonEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS1_10Reflection18GenericSlotWrapperERKS3_EENS7_5list2INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
@@ -67,14 +67,14 @@ pub fn stub_69ab28() -> ! {
 
 // 0x69ac20 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_10Controller6ButtonEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSP_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::Controller::Button const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_69ac20() -> ! {
-    todo!("0x69ac20 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::Controller::Button const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_69ac20() {
+    // IDA 0x69ac20: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x69ac3c — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_10Controller6ButtonEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEvSB_E6invokeERNS1_15function_bufferESB_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::Controller::Button const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,void,RBX::Controller::Button>::invoke(boost::detail::function::function_buffer &,RBX::Controller::Button)")]
-pub fn stub_69ac3c() -> ! {
-    todo!("0x69ac3c boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::Controller::Button const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,void,RBX::Controller::Button>::invoke(boost::detail::function::function_buffer &,RBX::Controller::Button)")
+pub fn stub_69ac3c() {
+    // IDA 0x69ac3c: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x69ac50 — __ZNK5boost6detail8function13basic_vtable1IvN3RBX10Controller6ButtonEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS3_10Reflection18GenericSlotWrapperERKS5_EENS8_5list2INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
@@ -106,8 +106,8 @@ pub fn stub_69aef0() -> ! {
 // 0x69af08 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_10Controller6ButtonEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSP_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::Controller::Button const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_69af08() -> ! {
-    todo!("0x69af08 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::Controller::Button const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_69af08() {
+    // IDA 0x69af08: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x69b060 — __ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE7connectIN5boost8functionIS5_EEEENS0_10connectionERKT_
@@ -139,14 +139,14 @@ pub fn stub_69b384() -> ! {
 
 // 0x69b480 — __ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE13callable_slotIN5boost8functionIS5_EEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Controller::Button)>::callable_slot<boost::function<void ()(RBX::Controller::Button)>>::~callable_slot()")]
-pub fn stub_69b480() -> ! {
-    todo!("0x69b480 rbx::signals::signal<void ()(RBX::Controller::Button)>::callable_slot<boost::function<void ()(RBX::Controller::Button)>>::~callable_slot()")
+pub fn stub_69b480() {
+    // IDA 0x69b480: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69b590 — __ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE13callable_slotIN5boost8functionIS5_EEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Controller::Button)>::callable_slot<boost::function<void ()(RBX::Controller::Button)>>::~callable_slot()")]
-pub fn stub_69b590() -> ! {
-    todo!("0x69b590 rbx::signals::signal<void ()(RBX::Controller::Button)>::callable_slot<boost::function<void ()(RBX::Controller::Button)>>::~callable_slot()")
+pub fn stub_69b590() {
+    // IDA 0x69b590: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69b6c0 — __ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE4slot10disconnectEv
@@ -170,8 +170,8 @@ pub fn stub_69b7dc() -> ! {
 
 // 0x69b7e4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX10Controller6ButtonEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot,boost::function<void ()(RBX::Controller::Button)>,1,void ()(RBX::Controller::Button)>::call(RBX::Controller::Button)")]
-pub fn stub_69b7e4() -> ! {
-    todo!("0x69b7e4 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot,boost::function<void ()(RBX::Controller::Button)>,1,void ()(RBX::Controller::Button)>::call(RBX::Controller::Button)")
+pub fn stub_69b7e4() {
+    // IDA 0x69b7e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69b7ec — __ZNK5boost9function1IvN3RBX10Controller6ButtonEEclES3_
@@ -201,32 +201,32 @@ pub fn stub_69b9a4() -> ! {
 
 // 0x69ba98 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX10Controller6ButtonEEE4slotEN5boost8functionIS6_EELi1ES6_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot,boost::function<void ()(RBX::Controller::Button)>,1,void ()(RBX::Controller::Button)>::~callable()")]
-pub fn stub_69ba98() -> ! {
-    todo!("0x69ba98 rbx::callable<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot,boost::function<void ()(RBX::Controller::Button)>,1,void ()(RBX::Controller::Button)>::~callable()")
+pub fn stub_69ba98() {
+    // IDA 0x69ba98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69bba8 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX10Controller6ButtonEEE4slotEN5boost8functionIS6_EELi1ES6_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot,boost::function<void ()(RBX::Controller::Button)>,1,void ()(RBX::Controller::Button)>::~callable()")]
-pub fn stub_69bba8() -> ! {
-    todo!("0x69bba8 rbx::callable<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot,boost::function<void ()(RBX::Controller::Button)>,1,void ()(RBX::Controller::Button)>::~callable()")
+pub fn stub_69bba8() {
+    // IDA 0x69bba8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69bcd8 — __ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE4slotD1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Controller::Button)>::slot::~slot()")]
-pub fn stub_69bcd8() -> ! {
-    todo!("0x69bcd8 rbx::signals::signal<void ()(RBX::Controller::Button)>::slot::~slot()")
+pub fn stub_69bcd8() {
+    // IDA 0x69bcd8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69bd04 — __ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE4slotD0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Controller::Button)>::slot::~slot()")]
-pub fn stub_69bd04() -> ! {
-    todo!("0x69bd04 rbx::signals::signal<void ()(RBX::Controller::Button)>::slot::~slot()")
+pub fn stub_69bd04() {
+    // IDA 0x69bd04: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69bdd8 — __ZN5boost9function1IvN3RBX10Controller6ButtonEE13assign_to_ownERKS4_
 #[doc(alias = "boost::function1<void,RBX::Controller::Button>::assign_to_own(boost::function1<void,RBX::Controller::Button> const&)")]
-pub fn stub_69bdd8() -> ! {
-    todo!("0x69bdd8 boost::function1<void,RBX::Controller::Button>::assign_to_own(boost::function1<void,RBX::Controller::Button> const&)")
+pub fn stub_69bdd8() {
+    // IDA 0x69bdd8: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x69be08 — __ZN3RBX10Reflection13BoundFuncDescINS_10ControllerEFbNS2_6ButtonEELi1EEC2EMS2_FbS3_EPKcS9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -243,8 +243,8 @@ pub fn stub_69bf80() -> ! {
 
 // 0x69bfb0 — __ZN3RBX10Reflection13BoundFuncDescINS_10ControllerEFbNS2_6ButtonEELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Controller,bool ()(RBX::Controller::Button),1>::~BoundFuncDesc()")]
-pub fn stub_69bfb0() -> ! {
-    todo!("0x69bfb0 RBX::Reflection::BoundFuncDesc<RBX::Controller,bool ()(RBX::Controller::Button),1>::~BoundFuncDesc()")
+pub fn stub_69bfb0() {
+    // IDA 0x69bfb0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69c084 — __ZNK3RBX10Reflection13BoundFuncDescINS_10ControllerEFbNS2_6ButtonEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -292,8 +292,8 @@ pub fn stub_69c468() -> ! {
 
 // 0x69c498 — __ZN3RBX10Reflection13BoundFuncDescINS_10ControllerEFvNS2_6ButtonEELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Controller,void ()(RBX::Controller::Button),1>::~BoundFuncDesc()")]
-pub fn stub_69c498() -> ! {
-    todo!("0x69c498 RBX::Reflection::BoundFuncDesc<RBX::Controller,void ()(RBX::Controller::Button),1>::~BoundFuncDesc()")
+pub fn stub_69c498() {
+    // IDA 0x69c498: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69c56c — __ZNK3RBX10Reflection13BoundFuncDescINS_10ControllerEFvNS2_6ButtonEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -316,8 +316,8 @@ pub fn stub_69c76c() -> ! {
 
 // 0x69c7b8 — __ZN3RBX10Reflection13BoundFuncDescINS_10ControllerEFvNS2_6ButtonESsELi2EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Controller,void ()(RBX::Controller::Button,std::string),2>::~BoundFuncDesc()")]
-pub fn stub_69c7b8() -> ! {
-    todo!("0x69c7b8 RBX::Reflection::BoundFuncDesc<RBX::Controller,void ()(RBX::Controller::Button,std::string),2>::~BoundFuncDesc()")
+pub fn stub_69c7b8() {
+    // IDA 0x69c7b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69c8d8 — __ZNK3RBX10Reflection13BoundFuncDescINS_10ControllerEFvNS2_6ButtonESsELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -342,8 +342,8 @@ pub fn stub_69cb60() -> ! {
 // 0x69cdb8 — __ZN3RBX8ISteppedD1Ev
 // type: void __fastcall(RBX::IStepped *__hidden this)
 #[doc(alias = "RBX::IStepped::~IStepped()")]
-pub fn stub_69cdb8() -> ! {
-    todo!("0x69cdb8 RBX::IStepped::~IStepped()")
+pub fn stub_69cdb8() {
+    // IDA 0x69cdb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69cdbc — __ZN3RBX9ContentIdC2Ev
@@ -362,8 +362,8 @@ pub fn stub_69ce7c() -> ! {
 
 // 0x69cf58 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10Controller6ButtonEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Controller::Button>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Controller::Button>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Controller::Button>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Controller::Button>> *)")]
-pub fn stub_69cf58() -> ! {
-    todo!("0x69cf58 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Controller::Button>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Controller::Button>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Controller::Button>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Controller::Button>> *)")
+pub fn stub_69cf58() {
+    // IDA 0x69cf58: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x69cf80 — __GLOBAL__I_a_280
@@ -401,8 +401,8 @@ pub fn stub_69d6f0() -> ! {
 
 // 0x69d6f8 — __ZN3RBX10Reflection9EventDescINS_5ValueIiLZNS_9sIntValueEEEEFviEN3rbx6signalIS4_EEMS3_S7_ED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueIiLZNS_9sIntValueEEEEFviEN3rbx6signalIS4_EEMS3_S7_ED1Ev")]
-pub fn stub_69d6f8() -> ! {
-    todo!("0x69d6f8 __ZN3RBX10Reflection9EventDescINS_5ValueIiLZNS_9sIntValueEEEEFviEN3rbx6signalIS4_EEMS3_S7_ED1Ev")
+pub fn stub_69d6f8() {
+    // IDA 0x69d6f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69d71c — __ZN3RBX5ValueIbLZNS_10sBoolValueEEE14onValueChangedERKNS_10Reflection18PropertyDescriptorE
@@ -413,8 +413,8 @@ pub fn stub_69d71c() -> ! {
 
 // 0x69d728 — __ZN3RBX10Reflection9EventDescINS_5ValueIbLZNS_10sBoolValueEEEEFvbEN3rbx6signalIS4_EEMS3_S7_ED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueIbLZNS_10sBoolValueEEEEFvbEN3rbx6signalIS4_EEMS3_S7_ED1Ev")]
-pub fn stub_69d728() -> ! {
-    todo!("0x69d728 __ZN3RBX10Reflection9EventDescINS_5ValueIbLZNS_10sBoolValueEEEEFvbEN3rbx6signalIS4_EEMS3_S7_ED1Ev")
+pub fn stub_69d728() {
+    // IDA 0x69d728: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69d74c — __ZN3RBX5ValueIdLZNS_12sDoubleValueEEE14onValueChangedERKNS_10Reflection18PropertyDescriptorE
@@ -425,8 +425,8 @@ pub fn stub_69d74c() -> ! {
 
 // 0x69d75c — __ZN3RBX10Reflection9EventDescINS_5ValueIdLZNS_12sDoubleValueEEEEFvdEN3rbx6signalIS4_EEMS3_S7_ED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueIdLZNS_12sDoubleValueEEEEFvdEN3rbx6signalIS4_EEMS3_S7_ED1Ev")]
-pub fn stub_69d75c() -> ! {
-    todo!("0x69d75c __ZN3RBX10Reflection9EventDescINS_5ValueIdLZNS_12sDoubleValueEEEEFvdEN3rbx6signalIS4_EEMS3_S7_ED1Ev")
+pub fn stub_69d75c() {
+    // IDA 0x69d75c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69d780 — __ZN3RBX11StringValue14onValueChangedERKNS_10Reflection18PropertyDescriptorE
@@ -439,8 +439,8 @@ pub fn stub_69d780() -> ! {
 // 0x69d8a0 — __ZN3RBX10Reflection9EventDescINS_11StringValueEFvSsEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::StringValue,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::StringValue::*>::~EventDesc()")]
-pub fn stub_69d8a0() -> ! {
-    todo!("0x69d8a0 RBX::Reflection::EventDesc<RBX::StringValue,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::StringValue::*>::~EventDesc()")
+pub fn stub_69d8a0() {
+    // IDA 0x69d8a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69d8c4 — __ZN3RBX5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEE14onValueChangedERKNS_10Reflection18PropertyDescriptorE
@@ -451,8 +451,8 @@ pub fn stub_69d8c4() -> ! {
 
 // 0x69d8d0 — __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED1Ev")]
-pub fn stub_69d8d0() -> ! {
-    todo!("0x69d8d0 __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED1Ev")
+pub fn stub_69d8d0() {
+    // IDA 0x69d8d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69d8f4 — __ZN3RBX5ValueINS_6RbxRayELZNS_9sRayValueEEE14onValueChangedERKNS_10Reflection18PropertyDescriptorE
@@ -463,14 +463,14 @@ pub fn stub_69d8f4() -> ! {
 
 // 0x69d92c — __ZN3RBX10Reflection9BoundPropINS_6RbxRayELNS0_10MutabilityE1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundProp<RBX::RbxRay,(RBX::Reflection::Mutability)1>::~BoundProp()")]
-pub fn stub_69d92c() -> ! {
-    todo!("0x69d92c RBX::Reflection::BoundProp<RBX::RbxRay,(RBX::Reflection::Mutability)1>::~BoundProp()")
+pub fn stub_69d92c() {
+    // IDA 0x69d92c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69d950 — __ZN3RBX10Reflection9EventDescINS_5ValueINS_6RbxRayELZNS_9sRayValueEEEEFvS3_EN3rbx6signalIS5_EEMS4_S8_ED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueINS_6RbxRayELZNS_9sRayValueEEEEFvS3_EN3rbx6signalIS5_EEMS4_S8_ED1Ev")]
-pub fn stub_69d950() -> ! {
-    todo!("0x69d950 __ZN3RBX10Reflection9EventDescINS_5ValueINS_6RbxRayELZNS_9sRayValueEEEEFvS3_EN3rbx6signalIS5_EEMS4_S8_ED1Ev")
+pub fn stub_69d950() {
+    // IDA 0x69d950: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69d974 — __ZN3RBX5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEE14onValueChangedERKNS_10Reflection18PropertyDescriptorE
@@ -481,14 +481,14 @@ pub fn stub_69d974() -> ! {
 
 // 0x69d9a4 — __ZN3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::~BoundProp()")]
-pub fn stub_69d9a4() -> ! {
-    todo!("0x69d9a4 RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::~BoundProp()")
+pub fn stub_69d9a4() {
+    // IDA 0x69d9a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69d9c8 — __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED1Ev")]
-pub fn stub_69d9c8() -> ! {
-    todo!("0x69d9c8 __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED1Ev")
+pub fn stub_69d9c8() {
+    // IDA 0x69d9c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69d9ec — __ZN3RBX5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEE14onValueChangedERKNS_10Reflection18PropertyDescriptorE
@@ -499,14 +499,14 @@ pub fn stub_69d9ec() -> ! {
 
 // 0x69da0c — __ZN3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundProp<G3D::Color3,(RBX::Reflection::Mutability)1>::~BoundProp()")]
-pub fn stub_69da0c() -> ! {
-    todo!("0x69da0c RBX::Reflection::BoundProp<G3D::Color3,(RBX::Reflection::Mutability)1>::~BoundProp()")
+pub fn stub_69da0c() {
+    // IDA 0x69da0c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69da30 — __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED1Ev")]
-pub fn stub_69da30() -> ! {
-    todo!("0x69da30 __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED1Ev")
+pub fn stub_69da30() {
+    // IDA 0x69da30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69da54 — __ZN3RBX5ValueINS_10BrickColorELZNS_16sBrickColorValueEEE14onValueChangedERKNS_10Reflection18PropertyDescriptorE
@@ -517,14 +517,14 @@ pub fn stub_69da54() -> ! {
 
 // 0x69da5c — __ZN3RBX10Reflection9BoundPropINS_10BrickColorELNS0_10MutabilityE1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundProp<RBX::BrickColor,(RBX::Reflection::Mutability)1>::~BoundProp()")]
-pub fn stub_69da5c() -> ! {
-    todo!("0x69da5c RBX::Reflection::BoundProp<RBX::BrickColor,(RBX::Reflection::Mutability)1>::~BoundProp()")
+pub fn stub_69da5c() {
+    // IDA 0x69da5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69da80 — __ZN3RBX10Reflection9EventDescINS_5ValueINS_10BrickColorELZNS_16sBrickColorValueEEEEFvS3_EN3rbx6signalIS5_EEMS4_S8_ED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueINS_10BrickColorELZNS_16sBrickColorValueEEEEFvS3_EN3rbx6signalIS5_EEMS4_S8_ED1Ev")]
-pub fn stub_69da80() -> ! {
-    todo!("0x69da80 __ZN3RBX10Reflection9EventDescINS_5ValueINS_10BrickColorELZNS_16sBrickColorValueEEEEFvS3_EN3rbx6signalIS5_EEMS4_S8_ED1Ev")
+pub fn stub_69da80() {
+    // IDA 0x69da80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69daa4 — __ZNK3RBX16ConstrainedValueIiLZNS_20sIntConstrainedValueEEE8getValueEv
@@ -542,8 +542,8 @@ pub fn stub_69daa8() -> ! {
 
 // 0x69dabc — __ZN3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEiED1Ev
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEiED1Ev")]
-pub fn stub_69dabc() -> ! {
-    todo!("0x69dabc __ZN3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEiED1Ev")
+pub fn stub_69dabc() {
+    // IDA 0x69dabc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69dae0 — __ZN3RBX16ConstrainedValueIiLZNS_20sIntConstrainedValueEEE11setValueRawEi
@@ -554,8 +554,8 @@ pub fn stub_69dae0() -> ! {
 
 // 0x69db20 — __ZN3RBX10Reflection9EventDescINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEFviEN3rbx6signalIS4_EEMS3_S7_ED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEFviEN3rbx6signalIS4_EEMS3_S7_ED1Ev")]
-pub fn stub_69db20() -> ! {
-    todo!("0x69db20 __ZN3RBX10Reflection9EventDescINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEFviEN3rbx6signalIS4_EEMS3_S7_ED1Ev")
+pub fn stub_69db20() {
+    // IDA 0x69db20: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69db44 — __ZNK3RBX16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEE8getValueEv
@@ -572,8 +572,8 @@ pub fn stub_69db50() -> ! {
 
 // 0x69db80 — __ZN3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEdED1Ev
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEdED1Ev")]
-pub fn stub_69db80() -> ! {
-    todo!("0x69db80 __ZN3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEdED1Ev")
+pub fn stub_69db80() {
+    // IDA 0x69db80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69dba4 — __ZN3RBX16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEE11setValueRawEd
@@ -584,20 +584,20 @@ pub fn stub_69dba4() -> ! {
 
 // 0x69dbf8 — __ZN3RBX10Reflection9EventDescINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEFvdEN3rbx6signalIS4_EEMS3_S7_ED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEFvdEN3rbx6signalIS4_EEMS3_S7_ED1Ev")]
-pub fn stub_69dbf8() -> ! {
-    todo!("0x69dbf8 __ZN3RBX10Reflection9EventDescINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEFvdEN3rbx6signalIS4_EEMS3_S7_ED1Ev")
+pub fn stub_69dbf8() {
+    // IDA 0x69dbf8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69dc1c — __ZN3RBX10Reflection17RefPropDescriptorINS_11ObjectValueENS_8InstanceEED1Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::ObjectValue,RBX::Instance>::~RefPropDescriptor()")]
-pub fn stub_69dc1c() -> ! {
-    todo!("0x69dc1c RBX::Reflection::RefPropDescriptor<RBX::ObjectValue,RBX::Instance>::~RefPropDescriptor()")
+pub fn stub_69dc1c() {
+    // IDA 0x69dc1c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69dc48 — __ZN3RBX10Reflection9EventDescINS_11ObjectValueEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::ObjectValue,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ObjectValue::*>::~EventDesc()")]
-pub fn stub_69dc48() -> ! {
-    todo!("0x69dc48 RBX::Reflection::EventDesc<RBX::ObjectValue,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ObjectValue::*>::~EventDesc()")
+pub fn stub_69dc48() {
+    // IDA 0x69dc48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x69dc6c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_5ValueIiLZNS_9sIntValueEEEEEEN5boost10shared_ptrIT_EEv

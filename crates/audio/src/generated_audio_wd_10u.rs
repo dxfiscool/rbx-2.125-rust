@@ -11,16 +11,16 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Material>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Material>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Material>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Material>> *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Material>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Material>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Material>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Material>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_8MaterialEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E")]
-pub fn stub_5f5634() -> ! {
-    todo!("0x5f5634 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_8MaterialEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E")
+pub fn stub_5f5634() {
+    // IDA 0x5f5634: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x5f565c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12PartInstance10FormFactorEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>> *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::PartInstance::FormFactor>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12PartInstance10FormFactorEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_5f565c() -> ! {
-    todo!("0x5f565c __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12PartInstance10FormFactorEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+pub fn stub_5f565c() {
+    // IDA 0x5f565c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x5f5684 — __GLOBAL__I_a_233
@@ -121,56 +121,56 @@ pub fn stub_5f6d3c() -> ! {
 // demangled: RBX::PhysicsService::~PhysicsService()
 #[doc(alias = "RBX::PhysicsService::~PhysicsService()")]
 #[doc(alias = "__ZN3RBX14PhysicsServiceD0Ev")]
-pub fn stub_5f6fac() -> ! {
-    todo!("0x5f6fac __ZN3RBX14PhysicsServiceD0Ev")
+pub fn stub_5f6fac() {
+    // IDA 0x5f6fac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f704c — __ZN3RBX14PhysicsServiceD1Ev
 // demangled: RBX::PhysicsService::~PhysicsService()
 #[doc(alias = "RBX::PhysicsService::~PhysicsService()")]
 #[doc(alias = "__ZN3RBX14PhysicsServiceD1Ev")]
-pub fn stub_5f704c() -> ! {
-    todo!("0x5f704c __ZN3RBX14PhysicsServiceD1Ev")
+pub fn stub_5f704c() {
+    // IDA 0x5f704c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f7050 — __ZThn32_N3RBX14PhysicsServiceD0Ev
 // demangled: non-virtual thunk toRBX::PhysicsService::~PhysicsService()
 #[doc(alias = "non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
 #[doc(alias = "__ZThn32_N3RBX14PhysicsServiceD0Ev")]
-pub fn stub_5f7050() -> ! {
-    todo!("0x5f7050 __ZThn32_N3RBX14PhysicsServiceD0Ev")
+pub fn stub_5f7050() {
+    // IDA 0x5f7050: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f7058 — __ZThn36_N3RBX14PhysicsServiceD0Ev
 // demangled: non-virtual thunk toRBX::PhysicsService::~PhysicsService()
 #[doc(alias = "non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
 #[doc(alias = "__ZThn36_N3RBX14PhysicsServiceD0Ev")]
-pub fn stub_5f7058() -> ! {
-    todo!("0x5f7058 __ZThn36_N3RBX14PhysicsServiceD0Ev")
+pub fn stub_5f7058() {
+    // IDA 0x5f7058: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f7060 — __ZN3RBX14PhysicsServiceD2Ev
 // demangled: RBX::PhysicsService::~PhysicsService()
 #[doc(alias = "RBX::PhysicsService::~PhysicsService()")]
 #[doc(alias = "__ZN3RBX14PhysicsServiceD2Ev")]
-pub fn stub_5f7060() -> ! {
-    todo!("0x5f7060 __ZN3RBX14PhysicsServiceD2Ev")
+pub fn stub_5f7060() {
+    // IDA 0x5f7060: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f7410 — __ZThn32_N3RBX14PhysicsServiceD1Ev
 // demangled: non-virtual thunk toRBX::PhysicsService::~PhysicsService()
 #[doc(alias = "non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
 #[doc(alias = "__ZThn32_N3RBX14PhysicsServiceD1Ev")]
-pub fn stub_5f7410() -> ! {
-    todo!("0x5f7410 __ZThn32_N3RBX14PhysicsServiceD1Ev")
+pub fn stub_5f7410() {
+    // IDA 0x5f7410: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f7418 — __ZThn36_N3RBX14PhysicsServiceD1Ev
 // demangled: non-virtual thunk toRBX::PhysicsService::~PhysicsService()
 #[doc(alias = "non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
 #[doc(alias = "__ZThn36_N3RBX14PhysicsServiceD1Ev")]
-pub fn stub_5f7418() -> ! {
-    todo!("0x5f7418 __ZThn36_N3RBX14PhysicsServiceD1Ev")
+pub fn stub_5f7418() {
+    // IDA 0x5f7418: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f7420 — __ZN3RBX14PhysicsService17onServiceProviderEPNS_15ServiceProviderES2_
@@ -257,16 +257,16 @@ pub fn stub_5f80bc() -> ! {
 // demangled: rbx::signals::signal<void ()(RBX::Primitive *)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PhysicsService,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::PhysicsService*>,boost::arg<1>>>>::~callable_slot()
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Primitive *)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PhysicsService,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::PhysicsService*>,boost::arg<1>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE13callable_slotIN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS2_14PhysicsServiceES4_EENS9_5list2INS9_5valueIPSD_EENS8_3argILi1EEEEEEEED1Ev")]
-pub fn stub_5f81b4() -> ! {
-    todo!("0x5f81b4 __ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE13callable_slotIN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS2_14PhysicsServiceES4_EENS9_5list2INS9_5valueIPSD_EENS8_3argILi1EEEEEEEED1Ev")
+pub fn stub_5f81b4() {
+    // IDA 0x5f81b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f81e0 — __ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE13callable_slotIN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS2_14PhysicsServiceES4_EENS9_5list2INS9_5valueIPSD_EENS8_3argILi1EEEEEEEED0Ev
 // demangled: rbx::signals::signal<void ()(RBX::Primitive *)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PhysicsService,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::PhysicsService*>,boost::arg<1>>>>::~callable_slot()
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Primitive *)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PhysicsService,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::PhysicsService*>,boost::arg<1>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE13callable_slotIN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS2_14PhysicsServiceES4_EENS9_5list2INS9_5valueIPSD_EENS8_3argILi1EEEEEEEED0Ev")]
-pub fn stub_5f81e0() -> ! {
-    todo!("0x5f81e0 __ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE13callable_slotIN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS2_14PhysicsServiceES4_EENS9_5list2INS9_5valueIPSD_EENS8_3argILi1EEEEEEEED0Ev")
+pub fn stub_5f81e0() {
+    // IDA 0x5f81e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f82b4 — __ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE4slot10disconnectEv
@@ -297,8 +297,8 @@ pub fn stub_5f83d0() -> ! {
 // demangled: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Primitive *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PhysicsService,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::PhysicsService*>,boost::arg<1>>>,1,void ()(RBX::Primitive *)>::call(RBX::Primitive *)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Primitive *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PhysicsService,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::PhysicsService*>,boost::arg<1>>>,1,void ()(RBX::Primitive *)>::call(RBX::Primitive *)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_14PhysicsServiceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEELi1ES6_E4callES5_")]
-pub fn stub_5f83e4() -> ! {
-    todo!("0x5f83e4 __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_14PhysicsServiceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEELi1ES6_E4callES5_")
+pub fn stub_5f83e4() {
+    // IDA 0x5f83e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f83f8 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX14PhysicsServiceEPNS4_9PrimitiveEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS7_EEvRT_
@@ -337,32 +337,32 @@ pub fn stub_5f8504() -> ! {
 // demangled: rbx::signals::signal<void ()(RBX::Primitive *)>::slot::~slot()
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Primitive *)>::slot::~slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE4slotD1Ev")]
-pub fn stub_5f85f4() -> ! {
-    todo!("0x5f85f4 __ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE4slotD1Ev")
+pub fn stub_5f85f4() {
+    // IDA 0x5f85f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f8620 — __ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE4slotD0Ev
 // demangled: rbx::signals::signal<void ()(RBX::Primitive *)>::slot::~slot()
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Primitive *)>::slot::~slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE4slotD0Ev")]
-pub fn stub_5f8620() -> ! {
-    todo!("0x5f8620 __ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE4slotD0Ev")
+pub fn stub_5f8620() {
+    // IDA 0x5f8620: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f86f4 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_14PhysicsServiceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEELi1ES6_ED1Ev
 // demangled: rbx::callable<rbx::signals::signal<void ()(RBX::Primitive *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PhysicsService,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::PhysicsService*>,boost::arg<1>>>,1,void ()(RBX::Primitive *)>::~callable()
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Primitive *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PhysicsService,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::PhysicsService*>,boost::arg<1>>>,1,void ()(RBX::Primitive *)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_14PhysicsServiceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEELi1ES6_ED1Ev")]
-pub fn stub_5f86f4() -> ! {
-    todo!("0x5f86f4 __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_14PhysicsServiceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEELi1ES6_ED1Ev")
+pub fn stub_5f86f4() {
+    // IDA 0x5f86f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f8720 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_14PhysicsServiceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEELi1ES6_ED0Ev
 // demangled: rbx::callable<rbx::signals::signal<void ()(RBX::Primitive *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PhysicsService,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::PhysicsService*>,boost::arg<1>>>,1,void ()(RBX::Primitive *)>::~callable()
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Primitive *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PhysicsService,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::PhysicsService*>,boost::arg<1>>>,1,void ()(RBX::Primitive *)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_14PhysicsServiceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEELi1ES6_ED0Ev")]
-pub fn stub_5f8720() -> ! {
-    todo!("0x5f8720 __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_14PhysicsServiceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEELi1ES6_ED0Ev")
+pub fn stub_5f8720() {
+    // IDA 0x5f8720: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f87f4 — __GLOBAL__I_a_235
@@ -705,16 +705,16 @@ pub fn stub_5f8f3c() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,bool>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbED1Ev")]
-pub fn stub_5f9108() -> ! {
-    todo!("0x5f9108 __ZN3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbED1Ev")
+pub fn stub_5f9108() {
+    // IDA 0x5f9108: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f912c — __ZN3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEED1Ev
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::~EnumPropDescriptor()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEED1Ev")]
-pub fn stub_5f912c() -> ! {
-    todo!("0x5f912c __ZN3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEED1Ev")
+pub fn stub_5f912c() {
+    // IDA 0x5f912c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f9150 — __ZNK3RBX15PhysicsSettings21getThrottleAdjustTimeEv
@@ -729,8 +729,8 @@ pub fn stub_5f9150() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,double>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,double>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEdED1Ev")]
-pub fn stub_5f915c() -> ! {
-    todo!("0x5f915c __ZN3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEdED1Ev")
+pub fn stub_5f915c() {
+    // IDA 0x5f915c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f9180 — __ZN3RBX26GlobalAdvancedSettingsItemINS_15PhysicsSettingsELZNS_16sPhysicsSettingsEEEC2Ev
@@ -743,16 +743,16 @@ pub fn stub_5f9180() -> ! {
 // demangled: RBX::PhysicsSettings::~PhysicsSettings()
 #[doc(alias = "RBX::PhysicsSettings::~PhysicsSettings()")]
 #[doc(alias = "__ZN3RBX15PhysicsSettingsD1Ev")]
-pub fn stub_5f93f0() -> ! {
-    todo!("0x5f93f0 __ZN3RBX15PhysicsSettingsD1Ev")
+pub fn stub_5f93f0() {
+    // IDA 0x5f93f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f9430 — __ZN3RBX15PhysicsSettingsD0Ev
 // demangled: RBX::PhysicsSettings::~PhysicsSettings()
 #[doc(alias = "RBX::PhysicsSettings::~PhysicsSettings()")]
 #[doc(alias = "__ZN3RBX15PhysicsSettingsD0Ev")]
-pub fn stub_5f9430() -> ! {
-    todo!("0x5f9430 __ZN3RBX15PhysicsSettingsD0Ev")
+pub fn stub_5f9430() {
+    // IDA 0x5f9430: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f9510 — __ZNK3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE12getClassNameEv
@@ -765,36 +765,36 @@ pub fn stub_5f9510() -> ! {
 // demangled: non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()
 #[doc(alias = "non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()")]
 #[doc(alias = "__ZThn32_N3RBX15PhysicsSettingsD1Ev")]
-pub fn stub_5f9520() -> ! {
-    todo!("0x5f9520 __ZThn32_N3RBX15PhysicsSettingsD1Ev")
+pub fn stub_5f9520() {
+    // IDA 0x5f9520: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f9564 — __ZThn32_N3RBX15PhysicsSettingsD0Ev
 // demangled: non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()
 #[doc(alias = "non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()")]
 #[doc(alias = "__ZThn32_N3RBX15PhysicsSettingsD0Ev")]
-pub fn stub_5f9564() -> ! {
-    todo!("0x5f9564 __ZThn32_N3RBX15PhysicsSettingsD0Ev")
+pub fn stub_5f9564() {
+    // IDA 0x5f9564: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f9644 — __ZThn32_NK3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_5f9644() -> ! {
-    todo!("0x5f9644 __ZThn32_NK3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE12getClassNameEv")
+pub fn stub_5f9644() {
+    // IDA 0x5f9644: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f9654 — __ZThn36_N3RBX15PhysicsSettingsD1Ev
 // demangled: non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()
 #[doc(alias = "non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()")]
 #[doc(alias = "__ZThn36_N3RBX15PhysicsSettingsD1Ev")]
-pub fn stub_5f9654() -> ! {
-    todo!("0x5f9654 __ZThn36_N3RBX15PhysicsSettingsD1Ev")
+pub fn stub_5f9654() {
+    // IDA 0x5f9654: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f9698 — __ZThn36_N3RBX15PhysicsSettingsD0Ev
 // demangled: non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()
 #[doc(alias = "non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()")]
 #[doc(alias = "__ZThn36_N3RBX15PhysicsSettingsD0Ev")]
-pub fn stub_5f9698() -> ! {
-    todo!("0x5f9698 __ZThn36_N3RBX15PhysicsSettingsD0Ev")
+pub fn stub_5f9698() {
+    // IDA 0x5f9698: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

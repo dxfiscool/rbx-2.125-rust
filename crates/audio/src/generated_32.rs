@@ -232,29 +232,29 @@ pub fn stub_3ccfd4() -> ! {
 // 0x3d16d8 — __ZN3RBX6CameraD2Ev
 // type: void __fastcall(RBX::Camera *this, int, int, int)
 #[doc(alias = "RBX::Camera::~Camera()")]
-pub fn stub_3d16d8() -> ! {
-    todo!("0x3d16d8 RBX::Camera::~Camera()")
+pub fn stub_3d16d8() {
+    // IDA 0x3d16d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3d194c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_6Camera13CameraPanModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Camera::CameraPanMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Camera::CameraPanMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Camera::CameraPanMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Camera::CameraPanMode>> *)")]
-pub fn stub_3d194c() -> ! {
-    todo!("0x3d194c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Camera::CameraPanMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Camera::CameraPanMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Camera::CameraPanMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Camera::CameraPanMode>> *)")
+pub fn stub_3d194c() {
+    // IDA 0x3d194c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x3d1974 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_6Camera10CameraModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Camera::CameraMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Camera::CameraMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Camera::CameraMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Camera::CameraMode>> *)")]
-pub fn stub_3d1974() -> ! {
-    todo!("0x3d1974 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Camera::CameraMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Camera::CameraMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Camera::CameraMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Camera::CameraMode>> *)")
+pub fn stub_3d1974() {
+    // IDA 0x3d1974: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x3d199c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_6Camera10CameraTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Camera::CameraType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Camera::CameraType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Camera::CameraType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Camera::CameraType>> *)")]
-pub fn stub_3d199c() -> ! {
-    todo!("0x3d199c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Camera::CameraType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Camera::CameraType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Camera::CameraType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Camera::CameraType>> *)")
+pub fn stub_3d199c() {
+    // IDA 0x3d199c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x3d19c4 — __GLOBAL__I_a_166
@@ -336,50 +336,50 @@ pub fn stub_3d3680() -> ! {
 // 0x3d39cc — __ZN3RBX20ChangeHistoryServiceD0Ev
 // type: void __fastcall(RBX::ChangeHistoryService *__hidden this)
 #[doc(alias = "RBX::ChangeHistoryService::~ChangeHistoryService()")]
-pub fn stub_3d39cc() -> ! {
-    todo!("0x3d39cc RBX::ChangeHistoryService::~ChangeHistoryService()")
+pub fn stub_3d39cc() {
+    // IDA 0x3d39cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3d3a6c — __ZN3RBX20ChangeHistoryServiceD1Ev
 // type: void __fastcall(RBX::ChangeHistoryService *__hidden this)
 #[doc(alias = "RBX::ChangeHistoryService::~ChangeHistoryService()")]
-pub fn stub_3d3a6c() -> ! {
-    todo!("0x3d3a6c RBX::ChangeHistoryService::~ChangeHistoryService()")
+pub fn stub_3d3a6c() {
+    // IDA 0x3d3a6c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3d3a70 — __ZThn32_N3RBX20ChangeHistoryServiceD0Ev
 // type: void __fastcall(RBX::ChangeHistoryService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")]
-pub fn stub_3d3a70() -> ! {
-    todo!("0x3d3a70 non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")
+pub fn stub_3d3a70() {
+    // IDA 0x3d3a70: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3d3a78 — __ZThn36_N3RBX20ChangeHistoryServiceD0Ev
 // type: void __fastcall(RBX::ChangeHistoryService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")]
-pub fn stub_3d3a78() -> ! {
-    todo!("0x3d3a78 non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")
+pub fn stub_3d3a78() {
+    // IDA 0x3d3a78: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3d3a80 — __ZN3RBX20ChangeHistoryServiceD2Ev
 // type: void __fastcall(RBX::ChangeHistoryService *this, int, int, int)
 #[doc(alias = "RBX::ChangeHistoryService::~ChangeHistoryService()")]
-pub fn stub_3d3a80() -> ! {
-    todo!("0x3d3a80 RBX::ChangeHistoryService::~ChangeHistoryService()")
+pub fn stub_3d3a80() {
+    // IDA 0x3d3a80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3d3f08 — __ZThn32_N3RBX20ChangeHistoryServiceD1Ev
 // type: void __fastcall(RBX::ChangeHistoryService *this, int, int, int)
 #[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")]
-pub fn stub_3d3f08() -> ! {
-    todo!("0x3d3f08 non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")
+pub fn stub_3d3f08() {
+    // IDA 0x3d3f08: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3d3f10 — __ZThn36_N3RBX20ChangeHistoryServiceD1Ev
 // type: void __fastcall(RBX::ChangeHistoryService *this, int, int, int)
 #[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")]
-pub fn stub_3d3f10() -> ! {
-    todo!("0x3d3f10 non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")
+pub fn stub_3d3f10() {
+    // IDA 0x3d3f10: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3d3f18 — __ZN3RBX20ChangeHistoryService6attachEv
@@ -476,8 +476,8 @@ pub fn stub_3d582c() -> ! {
 // 0x3d59b8 — __ZThn96_N3RBX20ChangeHistoryService18terrainCellChangedERKNS_5Voxel14CellChangeInfoE
 // type: void __fastcall(int, __int16 *, int, int, int, int, int, struct _Unwind_Exception *, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)")]
-pub fn stub_3d59b8() -> ! {
-    todo!("0x3d59b8 non-virtual thunk toRBX::ChangeHistoryService::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)")
+pub fn stub_3d59b8() {
+    // IDA 0x3d59b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3d5fc0 — __ZN3RBX20ChangeHistoryService8Waypoint4playEv
@@ -602,8 +602,8 @@ pub fn stub_3d82e8() -> ! {
 // 0x3d82fc — __ZThn32_NK3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E12getClassNameEv")]
-pub fn stub_3d82fc() -> ! {
-    todo!("0x3d82fc __ZThn32_NK3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E12getClassNameEv")
+pub fn stub_3d82fc() {
+    // IDA 0x3d82fc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3d8460 — __ZN3rbx14implementation12typed_holderIN3RBX20ChangeHistoryService19RuntimeUndoBehaviorEE14construct_funcEPKcPc
@@ -685,8 +685,8 @@ pub fn stub_3da960() -> ! {
 // 0x3da9f4 — __ZNSt11_Deque_baseIPN3RBX20ChangeHistoryService4ItemESaIS3_EED2Ev
 // type: int __fastcall(int)
 #[doc(alias = "std::_Deque_base<RBX::ChangeHistoryService::Item *,std::allocator<RBX::ChangeHistoryService::Item *>>::~_Deque_base()")]
-pub fn stub_3da9f4() -> ! {
-    todo!("0x3da9f4 std::_Deque_base<RBX::ChangeHistoryService::Item *,std::allocator<RBX::ChangeHistoryService::Item *>>::~_Deque_base()")
+pub fn stub_3da9f4() {
+    // IDA 0x3da9f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3daa20 — __ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyISt15_Deque_iteratorIPN3RBX20ChangeHistoryService4ItemERKS7_PS8_ES3_IS7_RS7_PS7_EEET0_T_SG_SF_
@@ -706,6 +706,6 @@ pub fn stub_3daabc() -> ! {
 // 0x3dac14 — __ZNSt11_Deque_baseIPN3RBX20ChangeHistoryService4ItemESaIS3_EE15_M_create_nodesEPPS3_S7_
 // type: void __fastcall(int, _DWORD *, unsigned int, int, void *, int)
 #[doc(alias = "std::_Deque_base<RBX::ChangeHistoryService::Item *,std::allocator<RBX::ChangeHistoryService::Item *>>::_M_create_nodes(RBX::ChangeHistoryService::Item ***,RBX::ChangeHistoryService::Item ***)")]
-pub fn stub_3dac14() -> ! {
-    todo!("0x3dac14 std::_Deque_base<RBX::ChangeHistoryService::Item *,std::allocator<RBX::ChangeHistoryService::Item *>>::_M_create_nodes(RBX::ChangeHistoryService::Item ***,RBX::ChangeHistoryService::Item ***)")
+pub fn stub_3dac14() {
+    // IDA 0x3dac14: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }

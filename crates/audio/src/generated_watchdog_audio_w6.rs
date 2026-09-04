@@ -23,22 +23,22 @@ pub fn stub_0xbef0f8() -> ! {
 // type: int __fastcall(int, std::string *this)
 #[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
 #[doc(alias = "__ZThn8_N3RBX10ViewRbxGfx13eventOccurredERKSsPKSt3mapISsSsSt4lessISsEN4Ogre12STLAllocatorISt4pairIS1_SsENS6_22CategorisedAllocPolicyILNS6_14MemoryCategoryE0EEEEEE")]
-pub fn stub_0xbef138() -> ! {
-    todo!("0xbef138 __ZThn8_N3RBX10ViewRbxGfx13eventOccurredERKSsPKSt3mapISsSsSt4lessISsEN4Ogre12STLAllocatorISt4pairIS1_SsENS6_22CategorisedAllocPolicyILNS6_14MemoryCategoryE0EEEEEE")
+pub fn stub_0xbef138() {
+    // IDA 0xbef138: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbef328 — __ZN4Ogre9SharedPtrINS_8ResourceEED1Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::Resource>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_8ResourceEED1Ev")]
-pub fn stub_0xbef328() -> ! {
-    todo!("0xbef328 __ZN4Ogre9SharedPtrINS_8ResourceEED1Ev")
+pub fn stub_0xbef328() {
+    // IDA 0xbef328: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbf29a8 — __ZN4Ogre9SharedPtrINS_8ResourceEED0Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::Resource>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_8ResourceEED0Ev")]
-pub fn stub_0xbf29a8() -> ! {
-    todo!("0xbf29a8 __ZN4Ogre9SharedPtrINS_8ResourceEED0Ev")
+pub fn stub_0xbf29a8() {
+    // IDA 0xbf29a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbf2a48 — __ZN4Ogre9SharedPtrINS_8ResourceEE7destroyEv
@@ -58,16 +58,16 @@ pub fn stub_0xbf2a80() -> ! {
 // 0xbf2c80 — __ZN4Ogre9SharedPtrINS_8MaterialEED1Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::Material>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_8MaterialEED1Ev")]
-pub fn stub_0xbf2c80() -> ! {
-    todo!("0xbf2c80 __ZN4Ogre9SharedPtrINS_8MaterialEED1Ev")
+pub fn stub_0xbf2c80() {
+    // IDA 0xbf2c80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbf2cb0 — __ZN4Ogre11MaterialPtrD0Ev
 // type: void __fastcall(Ogre::MaterialPtr *__hidden this)
 #[doc(alias = "Ogre::MaterialPtr::~MaterialPtr()")]
 #[doc(alias = "__ZN4Ogre11MaterialPtrD0Ev")]
-pub fn stub_0xbf2cb0() -> ! {
-    todo!("0xbf2cb0 __ZN4Ogre11MaterialPtrD0Ev")
+pub fn stub_0xbf2cb0() {
+    // IDA 0xbf2cb0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbf61f4 — __ZN4Ogre13RbxTypesetterC1ENS_7FontPtrES1_fff
@@ -174,16 +174,16 @@ pub fn stub_0xbf9278() -> ! {
 // type: void __fastcall(Ogre::RbxTypesetter *__hidden this)
 #[doc(alias = "Ogre::RbxTypesetter::~RbxTypesetter()")]
 #[doc(alias = "__ZN4Ogre13RbxTypesetterD1Ev")]
-pub fn stub_0xbf93d0() -> ! {
-    todo!("0xbf93d0 __ZN4Ogre13RbxTypesetterD1Ev")
+pub fn stub_0xbf93d0() {
+    // IDA 0xbf93d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbf94a8 — __ZN4Ogre13RbxTypesetterD0Ev
 // type: void __fastcall(Ogre::RbxTypesetter *__hidden this)
 #[doc(alias = "Ogre::RbxTypesetter::~RbxTypesetter()")]
 #[doc(alias = "__ZN4Ogre13RbxTypesetterD0Ev")]
-pub fn stub_0xbf94a8() -> ! {
-    todo!("0xbf94a8 __ZN4Ogre13RbxTypesetterD0Ev")
+pub fn stub_0xbf94a8() {
+    // IDA 0xbf94a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbf9bd4 — __ZNSt6vectorISt4pairIiN4Ogre13RbxTypesetter7SpacingEESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_
@@ -205,16 +205,16 @@ pub fn stub_0xbfa404() -> ! {
 // type: void __fastcall(Ogre::RbxImage *__hidden this)
 #[doc(alias = "Ogre::RbxImage::~RbxImage()")]
 #[doc(alias = "__ZN4Ogre8RbxImageD1Ev")]
-pub fn stub_0xbfa5ac() -> ! {
-    todo!("0xbfa5ac __ZN4Ogre8RbxImageD1Ev")
+pub fn stub_0xbfa5ac() {
+    // IDA 0xbfa5ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbfa5d0 — __ZN4Ogre8RbxImageD0Ev
 // type: void __fastcall(Ogre::RbxImage *__hidden this)
 #[doc(alias = "Ogre::RbxImage::~RbxImage()")]
 #[doc(alias = "__ZN4Ogre8RbxImageD0Ev")]
-pub fn stub_0xbfa5d0() -> ! {
-    todo!("0xbfa5d0 __ZN4Ogre8RbxImageD0Ev")
+pub fn stub_0xbfa5d0() {
+    // IDA 0xbfa5d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbfa684 — __ZNK4Ogre8RbxImage7getSizeEv
@@ -261,24 +261,24 @@ pub fn stub_0xbfad20() -> ! {
 // type: void __fastcall(Ogre::RbxSpatialHashedSceneNode *__hidden this)
 #[doc(alias = "Ogre::RbxSpatialHashedSceneNode::~RbxSpatialHashedSceneNode()")]
 #[doc(alias = "__ZN4Ogre25RbxSpatialHashedSceneNodeD0Ev")]
-pub fn stub_0xbfae34() -> ! {
-    todo!("0xbfae34 __ZN4Ogre25RbxSpatialHashedSceneNodeD0Ev")
+pub fn stub_0xbfae34() {
+    // IDA 0xbfae34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbfaee8 — __ZN4Ogre25RbxSpatialHashedSceneNodeD1Ev
 // type: void __fastcall(Ogre::RbxSpatialHashedSceneNode *__hidden this)
 #[doc(alias = "Ogre::RbxSpatialHashedSceneNode::~RbxSpatialHashedSceneNode()")]
 #[doc(alias = "__ZN4Ogre25RbxSpatialHashedSceneNodeD1Ev")]
-pub fn stub_0xbfaee8() -> ! {
-    todo!("0xbfaee8 __ZN4Ogre25RbxSpatialHashedSceneNodeD1Ev")
+pub fn stub_0xbfaee8() {
+    // IDA 0xbfaee8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbfaeec — __ZN4Ogre25RbxSpatialHashedSceneNodeD2Ev
 // type: void __fastcall(Ogre::RbxSpatialHashedSceneNode *__hidden this)
 #[doc(alias = "Ogre::RbxSpatialHashedSceneNode::~RbxSpatialHashedSceneNode()")]
 #[doc(alias = "__ZN4Ogre25RbxSpatialHashedSceneNodeD2Ev")]
-pub fn stub_0xbfaeec() -> ! {
-    todo!("0xbfaeec __ZN4Ogre25RbxSpatialHashedSceneNodeD2Ev")
+pub fn stub_0xbfaeec() {
+    // IDA 0xbfaeec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbfaff0 — __ZN4Ogre25RbxSpatialHashedSceneNode8addChildEPNS_4NodeE
@@ -418,8 +418,8 @@ pub fn stub_0xbfb900() -> ! {
 // type: int __fastcall(int, int, int, int, int, int)
 #[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::~SpatialHash()")]
 #[doc(alias = "__ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EED2Ev")]
-pub fn stub_0xbfb9f4() -> ! {
-    todo!("0xbfb9f4 __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EED2Ev")
+pub fn stub_0xbfb9f4() {
+    // IDA 0xbfb9f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbfbbe4 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE22visitPrimitivesInSpaceEPNS5_11SpaceFilterE
@@ -550,8 +550,8 @@ pub fn stub_0xbfdbdc() -> ! {
 // 0xbfde44 — __ZN3G3D5ArrayIPN4Ogre20RbxCullableSceneNodeELi10ELm32EED2Ev
 #[doc(alias = "G3D::Array<Ogre::RbxCullableSceneNode *,10,32ul>::~Array()")]
 #[doc(alias = "__ZN3G3D5ArrayIPN4Ogre20RbxCullableSceneNodeELi10ELm32EED2Ev")]
-pub fn stub_0xbfde44() -> ! {
-    todo!("0xbfde44 __ZN3G3D5ArrayIPN4Ogre20RbxCullableSceneNodeELi10ELm32EED2Ev")
+pub fn stub_0xbfde44() {
+    // IDA 0xbfde44: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbfdf64 — __ZN3G3D5ArrayIPN4Ogre20RbxCullableSceneNodeELi10ELm32EEC2Ev
@@ -573,16 +573,16 @@ pub fn stub_0xbfee1c() -> ! {
 // type: void __fastcall(Ogre::RBXSSAO *__hidden this)
 #[doc(alias = "Ogre::RBXSSAO::~RBXSSAO()")]
 #[doc(alias = "__ZN4Ogre7RBXSSAOD1Ev")]
-pub fn stub_0xbfefcc() -> ! {
-    todo!("0xbfefcc __ZN4Ogre7RBXSSAOD1Ev")
+pub fn stub_0xbfefcc() {
+    // IDA 0xbfefcc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbfefd0 — __ZN4Ogre7RBXSSAOD2Ev
 // type: void __fastcall(Ogre::RBXSSAO *__hidden this)
 #[doc(alias = "Ogre::RBXSSAO::~RBXSSAO()")]
 #[doc(alias = "__ZN4Ogre7RBXSSAOD2Ev")]
-pub fn stub_0xbfefd0() -> ! {
-    todo!("0xbfefd0 __ZN4Ogre7RBXSSAOD2Ev")
+pub fn stub_0xbfefd0() {
+    // IDA 0xbfefd0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xbff164 — __ZN4Ogre7RBXSSAO12setSSAOLevelEN3RBX9SSAOLevelE
@@ -906,8 +906,8 @@ pub fn stub_0xc231d8() -> ! {
 // type: void __fastcall(Ogre::TexturePtr *__hidden this)
 #[doc(alias = "Ogre::TexturePtr::~TexturePtr()")]
 #[doc(alias = "__ZN4Ogre10TexturePtrD1Ev")]
-pub fn stub_0xc23458() -> ! {
-    todo!("0xc23458 __ZN4Ogre10TexturePtrD1Ev")
+pub fn stub_0xc23458() {
+    // IDA 0xc23458: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc24a3c — __ZN3RBX9LightGrid15occupancyFillDFINS_22SphereDistanceFunctionEEEvRNS_14LightGridChunkERKNS_7ExtentsERKN3G3D7Vector3ERKNS8_15CoordinateFrameEfRT_

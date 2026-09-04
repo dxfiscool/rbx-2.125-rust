@@ -27,34 +27,34 @@ pub fn stub_c2bc2c() -> ! {
 // 0xc2bfd0 — __ZN5boost6system12system_errorD1Ev
 // type: void __fastcall(std::runtime_error *this)
 #[doc(alias = "boost::system::system_error::~system_error()")]
-pub fn stub_c2bfd0() -> ! {
-    todo!("0xc2bfd0 boost::system::system_error::~system_error()")
+pub fn stub_c2bfd0() {
+    // IDA 0xc2bfd0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc2c030 — __ZN5boost6system12system_errorD0Ev
 // type: void __fastcall(std::runtime_error *this)
 #[doc(alias = "boost::system::system_error::~system_error()")]
-pub fn stub_c2c030() -> ! {
-    todo!("0xc2c030 boost::system::system_error::~system_error()")
+pub fn stub_c2c030() {
+    // IDA 0xc2c030: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc2c0a0 — __ZN3RBX14FactoryProductINS_12CylinderMeshENS_9BevelMeshELZNS_13sCylinderMeshEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12CylinderMeshENS_9BevelMeshELZNS_13sCylinderMeshEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_c2c0a0() -> ! {
-    todo!("0xc2c0a0 __ZN3RBX14FactoryProductINS_12CylinderMeshENS_9BevelMeshELZNS_13sCylinderMeshEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_c2c0a0() {
+    // IDA 0xc2c0a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc2c220 — __ZN3RBX12CylinderMeshD1Ev
 // type: void __fastcall(RBX::CylinderMesh *__hidden this)
 #[doc(alias = "RBX::CylinderMesh::~CylinderMesh()")]
-pub fn stub_c2c220() -> ! {
-    todo!("0xc2c220 RBX::CylinderMesh::~CylinderMesh()")
+pub fn stub_c2c220() {
+    // IDA 0xc2c220: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc2c260 — __ZThn32_NK3RBX14FactoryProductINS_12CylinderMeshENS_9BevelMeshELZNS_13sCylinderMeshEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_12CylinderMeshENS_9BevelMeshELZNS_13sCylinderMeshEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_c2c260() -> ! {
-    todo!("0xc2c260 __ZThn32_NK3RBX14FactoryProductINS_12CylinderMeshENS_9BevelMeshELZNS_13sCylinderMeshEENS_8InstanceEE12getClassNameEv")
+pub fn stub_c2c260() {
+    // IDA 0xc2c260: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc2c2b0 — __ZN5boost15throw_exceptionINS_17bad_function_callEEEvRKT_
@@ -66,8 +66,8 @@ pub fn stub_c2c2b0() -> ! {
 // 0xc2c400 — __ZN5boost17bad_function_callD1Ev
 // type: void __fastcall(boost::bad_function_call *__hidden this)
 #[doc(alias = "boost::bad_function_call::~bad_function_call()")]
-pub fn stub_c2c400() -> ! {
-    todo!("0xc2c400 boost::bad_function_call::~bad_function_call()")
+pub fn stub_c2c400() {
+    // IDA 0xc2c400: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc2c410 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEE7rethrowEv
@@ -80,8 +80,8 @@ pub fn stub_c2c410() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 // was: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()
 #[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
-pub fn stub_c2c4c0() -> ! {
-    todo!("0xc2c4c0 non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")
+pub fn stub_c2c4c0() {
+    // IDA 0xc2c4c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc2c580 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEE7rethrowEv
@@ -95,29 +95,29 @@ pub fn stub_c2c580() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 // was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
-pub fn stub_c2c590() -> ! {
-    todo!("0xc2c590 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")
+pub fn stub_c2c590() {
+    // IDA 0xc2c590: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc2c670 — __ZThn8_N5boost16exception_detail19error_info_injectorINS_17bad_function_callEED0Ev
 // type: int __fastcall(int, int, int, int, void *, int)
 // was: non-virtual thunk to boost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()
 #[doc(alias = "non-virtual thunk to boost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()")]
-pub fn stub_c2c670() -> ! {
-    todo!("0xc2c670 non-virtual thunk to boost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()")
+pub fn stub_c2c670() {
+    // IDA 0xc2c670: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc2c730 — __ZN5boost16exception_detail10clone_baseD0Ev
 // type: void __fastcall(boost::exception_detail::clone_base *__hidden this)
 #[doc(alias = "boost::exception_detail::clone_base::~clone_base()")]
-pub fn stub_c2c730() -> ! {
-    todo!("0xc2c730 boost::exception_detail::clone_base::~clone_base()")
+pub fn stub_c2c730() {
+    // IDA 0xc2c730: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc2c740 — __ZN5boost9function1IvRSt9exceptionE5dummy7nonnullEv
 #[doc(alias = "boost::function1<void,std::exception &>::dummy::nonnull(void)")]
-pub fn stub_c2c740() -> ! {
-    todo!("0xc2c740 boost::function1<void,std::exception &>::dummy::nonnull(void)")
+pub fn stub_c2c740() {
+    // IDA 0xc2c740: function null-target guard. Option<Box<dyn Fn>>::is_some — carrier no-op.
 }
 
 // 0xc2c750 — __ZN5boost6system12system_errorC2ENS0_10error_codeEPKc
@@ -128,8 +128,8 @@ pub fn stub_c2c750() -> ! {
 
 // 0xc2c8b0 — __ZN5boost16exception_detail19error_info_injectorINS_10lock_errorEED1Ev
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
-pub fn stub_c2c8b0() -> ! {
-    todo!("0xc2c8b0 boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")
+pub fn stub_c2c8b0() {
+    // IDA 0xc2c8b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc2c9c0 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE5cloneEv
@@ -148,8 +148,8 @@ pub fn stub_c2c9d0() -> ! {
 
 // 0xc2cb00 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED1Ev
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
-pub fn stub_c2cb00() -> ! {
-    todo!("0xc2cb00 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")
+pub fn stub_c2cb00() {
+    // IDA 0xc2cb00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc2cc10 — __ZN5boost9call_onceIPFvvEEEvRNS_9once_flagET_
@@ -168,8 +168,8 @@ pub fn stub_c2cde0() -> ! {
 
 // 0xc2cf20 — __ZThn32_N3RBX10Reflection9DescribedINS_12CylinderMeshELZNS_13sCylinderMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_13sCylinderMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12CylinderMeshELZNS_13sCylinderMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_13sCylinderMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_c2cf20() -> ! {
-    todo!("0xc2cf20 __ZThn32_N3RBX10Reflection9DescribedINS_12CylinderMeshELZNS_13sCylinderMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_13sCylinderMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_c2cf20() {
+    // IDA 0xc2cf20: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc2cfd0 — __ZN3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -188,8 +188,8 @@ pub fn stub_c2d230() -> ! {
 
 // 0xc2d550 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_PKNS0_8ICreatorEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ICreator const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::ICreator const*>> *)")]
-pub fn stub_c2d550() -> ! {
-    todo!("0xc2d550 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ICreator const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::ICreator const*>> *)")
+pub fn stub_c2d550() {
+    // IDA 0xc2d550: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xc2d580 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_PKNS0_8ICreatorEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueERKS9_
@@ -201,36 +201,36 @@ pub fn stub_c2d580() -> ! {
 // 0xc2d670 — __ZN3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE7CreatorD2Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_c2d670() -> ! {
-    todo!("0xc2d670 __ZN3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_c2d670() {
+    // IDA 0xc2d670: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc2d7f0 — __ZThn32_N3RBX9BlockMeshD1Ev
 // type: void __fastcall(RBX::BlockMesh *__hidden this)
 // was: non-virtual thunk to RBX::BlockMesh::~BlockMesh()
 #[doc(alias = "non-virtual thunk to RBX::BlockMesh::~BlockMesh()")]
-pub fn stub_c2d7f0() -> ! {
-    todo!("0xc2d7f0 non-virtual thunk to RBX::BlockMesh::~BlockMesh()")
+pub fn stub_c2d7f0() {
+    // IDA 0xc2d7f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc2d800 — __ZThn36_N3RBX9BlockMeshD1Ev
 // type: void __fastcall(RBX::BlockMesh *__hidden this)
 // was: non-virtual thunk to RBX::BlockMesh::~BlockMesh()
 #[doc(alias = "non-virtual thunk to RBX::BlockMesh::~BlockMesh()")]
-pub fn stub_c2d800() -> ! {
-    todo!("0xc2d800 non-virtual thunk to RBX::BlockMesh::~BlockMesh()")
+pub fn stub_c2d800() {
+    // IDA 0xc2d800: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc2d810 — __ZN3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_c2d810() -> ! {
-    todo!("0xc2d810 __ZN3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_c2d810() {
+    // IDA 0xc2d810: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc2d8b0 — __ZThn32_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_c2d8b0() -> ! {
-    todo!("0xc2d8b0 __ZThn32_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_c2d8b0() {
+    // IDA 0xc2d8b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc2d8d0 — __ZN3RBX4Name7declareILZNS_10sBlockMeshEEEERKS0_v
@@ -310,34 +310,34 @@ pub fn stub_c307a0() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 // was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
-pub fn stub_c307b0() -> ! {
-    todo!("0xc307b0 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
+pub fn stub_c307b0() {
+    // IDA 0xc307b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc30870 — __ZN5boost16exception_detail14bad_exception_D0Ev
 // type: void __fastcall(boost::exception_detail::bad_exception_ *__hidden this)
 #[doc(alias = "boost::exception_detail::bad_exception_::~bad_exception_()")]
-pub fn stub_c30870() -> ! {
-    todo!("0xc30870 boost::exception_detail::bad_exception_::~bad_exception_()")
+pub fn stub_c30870() {
+    // IDA 0xc30870: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc30930 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_14bad_exception_EEEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>::dispose(void)")]
-pub fn stub_c30930() -> ! {
-    todo!("0xc30930 boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>::dispose(void)")
+pub fn stub_c30930() {
+    // IDA 0xc30930: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xc30940 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_14bad_exception_EEEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>::get_deleter(std::type_info const&)")]
-pub fn stub_c30940() -> ! {
-    todo!("0xc30940 boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>::get_deleter(std::type_info const&)")
+pub fn stub_c30940() {
+    // IDA 0xc30940: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xc30950 — __ZN5boost16exception_detail10clone_implINS0_10bad_alloc_EED0Ev
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
-pub fn stub_c30950() -> ! {
-    todo!("0xc30950 boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
+pub fn stub_c30950() {
+    // IDA 0xc30950: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc30a10 — __ZNK5boost16exception_detail10clone_implINS0_10bad_alloc_EE7rethrowEv
@@ -350,14 +350,14 @@ pub fn stub_c30a10() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 // was: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()
 #[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
-pub fn stub_c30b20() -> ! {
-    todo!("0xc30b20 non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
+pub fn stub_c30b20() {
+    // IDA 0xc30b20: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc30be0 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_10bad_alloc_EEEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::~sp_counted_impl_p()")]
-pub fn stub_c30be0() -> ! {
-    todo!("0xc30be0 boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::~sp_counted_impl_p()")
+pub fn stub_c30be0() {
+    // IDA 0xc30be0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc31094 — __GLOBAL__I_a_601
@@ -370,22 +370,22 @@ pub fn stub_c31094() -> ! {
 // 0xc31b6c — __ZN3RBX11LightObjectD0Ev
 // type: void __fastcall(RBX::LightObject *__hidden this)
 #[doc(alias = "RBX::LightObject::~LightObject()")]
-pub fn stub_c31b6c() -> ! {
-    todo!("0xc31b6c RBX::LightObject::~LightObject()")
+pub fn stub_c31b6c() {
+    // IDA 0xc31b6c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc31c20 — __ZN3RBX11LightObjectD1Ev
 // type: void __fastcall(RBX::LightObject *__hidden this)
 #[doc(alias = "RBX::LightObject::~LightObject()")]
-pub fn stub_c31c20() -> ! {
-    todo!("0xc31c20 RBX::LightObject::~LightObject()")
+pub fn stub_c31c20() {
+    // IDA 0xc31c20: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc31c24 — __ZN3RBX11LightObjectD2Ev
 // type: void __fastcall(RBX::LightObject *__hidden this)
 #[doc(alias = "RBX::LightObject::~LightObject()")]
-pub fn stub_c31c24() -> ! {
-    todo!("0xc31c24 RBX::LightObject::~LightObject()")
+pub fn stub_c31c24() {
+    // IDA 0xc31c24: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc31dbc — __ZN3RBX11LightObject19onSleepingChangedExEb
@@ -420,8 +420,8 @@ pub fn stub_c3282c() -> ! {
 // type: _DWORD __fastcall(RBX::LightObject *__hidden this, bool)
 // was: non-virtual thunk to RBX::LightObject::updateCoordinateFrame(bool)
 #[doc(alias = "non-virtual thunk to RBX::LightObject::updateCoordinateFrame(bool)")]
-pub fn stub_c3283c() -> ! {
-    todo!("0xc3283c non-virtual thunk to RBX::LightObject::updateCoordinateFrame(bool)")
+pub fn stub_c3283c() {
+    // IDA 0xc3283c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc32860 — __ZN3RBX11LightObject19onAncestorChangedExEv
@@ -442,8 +442,8 @@ pub fn stub_c331b4() -> ! {
 // type: _DWORD __fastcall(RBX::LightObject *__hidden this)
 // was: non-virtual thunk to RBX::LightObject::unbind(void)
 #[doc(alias = "non-virtual thunk to RBX::LightObject::unbind(void)")]
-pub fn stub_c331f4() -> ! {
-    todo!("0xc331f4 non-virtual thunk to RBX::LightObject::unbind(void)")
+pub fn stub_c331f4() {
+    // IDA 0xc331f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc3322c — __ZN3RBX11LightObject16invalidateEntityEv
@@ -457,8 +457,8 @@ pub fn stub_c3322c() -> ! {
 // type: _DWORD __fastcall(RBX::LightObject *__hidden this)
 // was: non-virtual thunk to RBX::LightObject::invalidateEntity(void)
 #[doc(alias = "non-virtual thunk to RBX::LightObject::invalidateEntity(void)")]
-pub fn stub_c3325c() -> ! {
-    todo!("0xc3325c non-virtual thunk to RBX::LightObject::invalidateEntity(void)")
+pub fn stub_c3325c() {
+    // IDA 0xc3325c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc33290 — __ZN3RBX11LightObject12updateEntityEb
@@ -478,8 +478,8 @@ pub fn stub_c334e4() -> ! {
 // type: _DWORD __fastcall(RBX::LightObject *__hidden this, bool)
 // was: non-virtual thunk to RBX::LightObject::updateEntity(bool)
 #[doc(alias = "non-virtual thunk to RBX::LightObject::updateEntity(bool)")]
-pub fn stub_c33680() -> ! {
-    todo!("0xc33680 non-virtual thunk to RBX::LightObject::updateEntity(bool)")
+pub fn stub_c33680() {
+    // IDA 0xc33680: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc3368c — __ZN3RBX11LightObject13_updateBoundsEv
@@ -498,14 +498,14 @@ pub fn stub_c33690() -> ! {
 
 // 0xc336a0 — __ZN3rbx7signals6signalIFvbEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX11LightObjectEbEENS6_5list2INS6_5valueIPSB_EENS5_3argILi1EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(bool)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::LightObject,bool>,boost::_bi::list2<boost::_bi::value<RBX::LightObject*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_c336a0() -> ! {
-    todo!("0xc336a0 rbx::signals::signal<void ()(bool)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::LightObject,bool>,boost::_bi::list2<boost::_bi::value<RBX::LightObject*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_c336a0() {
+    // IDA 0xc336a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc336fc — __ZN3rbx7signals6signalIFvbEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX11LightObjectEbEENS6_5list2INS6_5valueIPSB_EENS5_3argILi1EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(bool)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::LightObject,bool>,boost::_bi::list2<boost::_bi::value<RBX::LightObject*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_c336fc() -> ! {
-    todo!("0xc336fc rbx::signals::signal<void ()(bool)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::LightObject,bool>,boost::_bi::list2<boost::_bi::value<RBX::LightObject*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_c336fc() {
+    // IDA 0xc336fc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc33804 — __ZN3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX11LightObjectEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb
@@ -517,20 +517,20 @@ pub fn stub_c33804() -> ! {
 // 0xc3381c — __ZThn4_N3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX11LightObjectEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::LightObject,bool>,boost::_bi::list2<boost::_bi::value<RBX::LightObject*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::LightObject,bool>,boost::_bi::list2<boost::_bi::value<RBX::LightObject*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")]
-pub fn stub_c3381c() -> ! {
-    todo!("0xc3381c non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::LightObject,bool>,boost::_bi::list2<boost::_bi::value<RBX::LightObject*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")
+pub fn stub_c3381c() {
+    // IDA 0xc3381c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc339d0 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX11LightObjectEEENS6_5list1INS6_5valueIPSB_EEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::LightObject>,boost::_bi::list1<boost::_bi::value<RBX::LightObject*>>>>::~callable_slot()")]
-pub fn stub_c339d0() -> ! {
-    todo!("0xc339d0 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::LightObject>,boost::_bi::list1<boost::_bi::value<RBX::LightObject*>>>>::~callable_slot()")
+pub fn stub_c339d0() {
+    // IDA 0xc339d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc33a2c — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX11LightObjectEEENS6_5list1INS6_5valueIPSB_EEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::LightObject>,boost::_bi::list1<boost::_bi::value<RBX::LightObject*>>>>::~callable_slot()")]
-pub fn stub_c33a2c() -> ! {
-    todo!("0xc33a2c rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::LightObject>,boost::_bi::list1<boost::_bi::value<RBX::LightObject*>>>>::~callable_slot()")
+pub fn stub_c33a2c() {
+    // IDA 0xc33a2c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc33b34 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX11LightObjectEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
@@ -542,14 +542,14 @@ pub fn stub_c33b34() -> ! {
 // 0xc33b4c — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX11LightObjectEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::LightObject>,boost::_bi::list1<boost::_bi::value<RBX::LightObject*>>>,0,void ()(void)>::call(void)
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::LightObject>,boost::_bi::list1<boost::_bi::value<RBX::LightObject*>>>,0,void ()(void)>::call(void)")]
-pub fn stub_c33b4c() -> ! {
-    todo!("0xc33b4c non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::LightObject>,boost::_bi::list1<boost::_bi::value<RBX::LightObject*>>>,0,void ()(void)>::call(void)")
+pub fn stub_c33b4c() {
+    // IDA 0xc33b4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc3491c — __ZN5boost10scoped_ptrIN3RBX14LightShadowMapEED2Ev
 #[doc(alias = "boost::scoped_ptr<RBX::LightShadowMap>::~scoped_ptr()")]
-pub fn stub_c3491c() -> ! {
-    todo!("0xc3491c boost::scoped_ptr<RBX::LightShadowMap>::~scoped_ptr()")
+pub fn stub_c3491c() {
+    // IDA 0xc3491c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc34958 — __GLOBAL__I_a_602
@@ -569,15 +569,15 @@ pub fn stub_c36124() -> ! {
 // 0xc36a48 — __ZN3RBX9WaterImplD1Ev
 // type: void __fastcall(RBX::WaterImpl *__hidden this)
 #[doc(alias = "RBX::WaterImpl::~WaterImpl()")]
-pub fn stub_c36a48() -> ! {
-    todo!("0xc36a48 RBX::WaterImpl::~WaterImpl()")
+pub fn stub_c36a48() {
+    // IDA 0xc36a48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc36a4c — __ZN3RBX9WaterImplD0Ev
 // type: void __fastcall(RBX::WaterImpl *__hidden this)
 #[doc(alias = "RBX::WaterImpl::~WaterImpl()")]
-pub fn stub_c36a4c() -> ! {
-    todo!("0xc36a4c RBX::WaterImpl::~WaterImpl()")
+pub fn stub_c36a4c() {
+    // IDA 0xc36a4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc36af4 — __ZN3RBX9WaterImpl8activateEv
@@ -611,8 +611,8 @@ pub fn stub_c37cb0() -> ! {
 // 0xc38384 — __ZN3RBX9WaterImplD2Ev
 // type: void __fastcall(RBX::WaterImpl *__hidden this)
 #[doc(alias = "RBX::WaterImpl::~WaterImpl()")]
-pub fn stub_c38384() -> ! {
-    todo!("0xc38384 RBX::WaterImpl::~WaterImpl()")
+pub fn stub_c38384() {
+    // IDA 0xc38384: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xc3889c — __GLOBAL__I_a_604

@@ -85,15 +85,15 @@ pub fn stub_23b43c() -> ! {
 // 0x23b4ac — __ZN5boost10filesystem6detail18utf8_codecvt_facetD1Ev
 // type: void __fastcall(boost::filesystem::detail::utf8_codecvt_facet *__hidden this)
 #[doc(alias = "boost::filesystem::detail::utf8_codecvt_facet::~utf8_codecvt_facet()")]
-pub fn stub_23b4ac() -> ! {
-    todo!("0x23b4ac boost::filesystem::detail::utf8_codecvt_facet::~utf8_codecvt_facet()")
+pub fn stub_23b4ac() {
+    // IDA 0x23b4ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23b4b8 — __ZN5boost10filesystem6detail18utf8_codecvt_facetD0Ev
 // type: void __fastcall(boost::filesystem::detail::utf8_codecvt_facet *__hidden this)
 #[doc(alias = "boost::filesystem::detail::utf8_codecvt_facet::~utf8_codecvt_facet()")]
-pub fn stub_23b4b8() -> ! {
-    todo!("0x23b4b8 boost::filesystem::detail::utf8_codecvt_facet::~utf8_codecvt_facet()")
+pub fn stub_23b4b8() {
+    // IDA 0x23b4b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23b4cc — __ZN5boost6system16generic_categoryEv
@@ -113,22 +113,22 @@ pub fn stub_23b508() -> ! {
 // 0x23b544 — __ZN12_GLOBAL__N_121system_error_categoryD1Ev
 // type: void __fastcall(_anonymous_namespace_::system_error_category *__hidden this)
 #[doc(alias = "anonymous namespace::system_error_category::~system_error_category()")]
-pub fn stub_23b544() -> ! {
-    todo!("0x23b544 anonymous namespace::system_error_category::~system_error_category()")
+pub fn stub_23b544() {
+    // IDA 0x23b544: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23b548 — __ZN12_GLOBAL__N_122generic_error_categoryD1Ev
 // type: void __fastcall(_anonymous_namespace_::generic_error_category *__hidden this)
 #[doc(alias = "anonymous namespace::generic_error_category::~generic_error_category()")]
-pub fn stub_23b548() -> ! {
-    todo!("0x23b548 anonymous namespace::generic_error_category::~generic_error_category()")
+pub fn stub_23b548() {
+    // IDA 0x23b548: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23b54c — __ZN12_GLOBAL__N_122generic_error_categoryD0Ev
 // type: void __fastcall(_anonymous_namespace_::generic_error_category *__hidden this)
 #[doc(alias = "anonymous namespace::generic_error_category::~generic_error_category()")]
-pub fn stub_23b54c() -> ! {
-    todo!("0x23b54c anonymous namespace::generic_error_category::~generic_error_category()")
+pub fn stub_23b54c() {
+    // IDA 0x23b54c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23b558 — __ZNK12_GLOBAL__N_122generic_error_category4nameEv
@@ -148,8 +148,8 @@ pub fn stub_23b564() -> ! {
 // 0x23b7cc — __ZN12_GLOBAL__N_121system_error_categoryD0Ev
 // type: void __fastcall(_anonymous_namespace_::system_error_category *__hidden this)
 #[doc(alias = "anonymous namespace::system_error_category::~system_error_category()")]
-pub fn stub_23b7cc() -> ! {
-    todo!("0x23b7cc anonymous namespace::system_error_category::~system_error_category()")
+pub fn stub_23b7cc() {
+    // IDA 0x23b7cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23b7d8 — __ZNK12_GLOBAL__N_121system_error_category4nameEv
@@ -246,8 +246,8 @@ pub fn stub_23d0c8() -> ! {
 // 0x23d0e8 — __ZN5boost9iostreams6detail9zlib_baseD2Ev
 // type: void __fastcall(void **this)
 #[doc(alias = "boost::iostreams::detail::zlib_base::~zlib_base()")]
-pub fn stub_23d0e8() -> ! {
-    todo!("0x23d0e8 boost::iostreams::detail::zlib_base::~zlib_base()")
+pub fn stub_23d0e8() {
+    // IDA 0x23d0e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23d0fc — __ZN5boost9iostreams6detail9zlib_base6beforeERPKcS4_RPcS6_
@@ -302,57 +302,57 @@ pub fn stub_23d238() -> ! {
 // 0x23d390 — __ZN5boost9iostreams10zlib_errorD1Ev
 // type: void __fastcall(boost::iostreams::zlib_error *__hidden this)
 #[doc(alias = "boost::iostreams::zlib_error::~zlib_error()")]
-pub fn stub_23d390() -> ! {
-    todo!("0x23d390 boost::iostreams::zlib_error::~zlib_error()")
+pub fn stub_23d390() {
+    // IDA 0x23d390: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23d39c — __ZN5boost9iostreams10zlib_errorD0Ev
 // type: void __fastcall(boost::iostreams::zlib_error *__hidden this)
 #[doc(alias = "boost::iostreams::zlib_error::~zlib_error()")]
-pub fn stub_23d39c() -> ! {
-    todo!("0x23d39c boost::iostreams::zlib_error::~zlib_error()")
+pub fn stub_23d39c() {
+    // IDA 0x23d39c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23d3b0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED1Ev
 // type: std::ios_base::failure *__fastcall(std::ios_base::failure *)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
-pub fn stub_23d3b0() -> ! {
-    todo!("0x23d3b0 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+pub fn stub_23d3b0() {
+    // IDA 0x23d3b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23d468 — __ZN5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED1Ev
 // type: int __fastcall(std::ios_base::failure *)
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
-pub fn stub_23d468() -> ! {
-    todo!("0x23d468 boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
+pub fn stub_23d468() {
+    // IDA 0x23d468: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23d520 — __ZThn12_N5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED1Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
-pub fn stub_23d520() -> ! {
-    todo!("0x23d520 non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
+pub fn stub_23d520() {
+    // IDA 0x23d520: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23d5d8 — __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED1Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
-pub fn stub_23d5d8() -> ! {
-    todo!("0x23d5d8 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+pub fn stub_23d5d8() {
+    // IDA 0x23d5d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23d690 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED1Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
-pub fn stub_23d690() -> ! {
-    todo!("0x23d690 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+pub fn stub_23d690() {
+    // IDA 0x23d690: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23d75c — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
 // type: void __fastcall(std::ios_base::failure *)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
-pub fn stub_23d75c() -> ! {
-    todo!("0x23d75c boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+pub fn stub_23d75c() {
+    // IDA 0x23d75c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23d818 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEE5cloneEv
@@ -372,8 +372,8 @@ pub fn stub_23d8d4() -> ! {
 // 0x23d984 — __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
-pub fn stub_23d984() -> ! {
-    todo!("0x23d984 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+pub fn stub_23d984() {
+    // IDA 0x23d984: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23da40 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEE5cloneEv
@@ -393,8 +393,8 @@ pub fn stub_23db04() -> ! {
 // 0x23db14 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
-pub fn stub_23db14() -> ! {
-    todo!("0x23db14 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+pub fn stub_23db14() {
+    // IDA 0x23db14: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23dbe8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEEC1ERKS6_
@@ -407,15 +407,15 @@ pub fn stub_23dbe8() -> ! {
 // 0x23dd30 — __ZN5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED0Ev
 // type: void __fastcall(std::ios_base::failure *)
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
-pub fn stub_23dd30() -> ! {
-    todo!("0x23dd30 boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
+pub fn stub_23dd30() {
+    // IDA 0x23dd30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23ddec — __ZThn12_N5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
-pub fn stub_23ddec() -> ! {
-    todo!("0x23ddec non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
+pub fn stub_23ddec() {
+    // IDA 0x23ddec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23dea8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEEC1ERKS6_NS6_9clone_tagE
@@ -659,15 +659,15 @@ pub fn stub_23ffb0() -> ! {
 // 0x2400f4 — __ZN3RBX13worker_threadD1Ev
 // type: void __fastcall(RBX::worker_thread *__hidden this)
 #[doc(alias = "RBX::worker_thread::~worker_thread()")]
-pub fn stub_2400f4() -> ! {
-    todo!("0x2400f4 RBX::worker_thread::~worker_thread()")
+pub fn stub_2400f4() {
+    // IDA 0x2400f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x240100 — __ZN3RBX13worker_threadD2Ev
 // type: void __fastcall(boost::mutex **this)
 #[doc(alias = "RBX::worker_thread::~worker_thread()")]
-pub fn stub_240100() -> ! {
-    todo!("0x240100 RBX::worker_thread::~worker_thread()")
+pub fn stub_240100() {
+    // IDA 0x240100: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2402c4 — __ZN3RBX13worker_thread4wakeEv
@@ -679,8 +679,8 @@ pub fn stub_2402c4() -> ! {
 
 // 0x2403cc — __ZN5boost19thread_specific_ptrISsED1Ev
 #[doc(alias = "boost::thread_specific_ptr<std::string>::~thread_specific_ptr()")]
-pub fn stub_2403cc() -> ! {
-    todo!("0x2403cc boost::thread_specific_ptr<std::string>::~thread_specific_ptr()")
+pub fn stub_2403cc() {
+    // IDA 0x2403cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x2403d8 — __ZN5boost19thread_specific_ptrISsE5resetEPSs

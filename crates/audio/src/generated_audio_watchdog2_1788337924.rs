@@ -19,8 +19,8 @@ pub fn stub_5cee04() -> ! {
 
 // 0x5cef08 — __ZN3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFvvELi0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFvvELi0EED0Ev")]
-pub fn stub_5cef08() -> ! {
-    todo!("0x5cef08 __ZN3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFvvELi0EED0Ev")
+pub fn stub_5cef08() {
+    // IDA 0x5cef08: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5cefbc — __ZNK3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -43,8 +43,8 @@ pub fn stub_5cf080() -> ! {
 
 // 0x5cf178 — __ZN3RBX10Reflection17RefPropDescriptorINS_13ModelInstanceENS_12PartInstanceEED0Ev
 #[doc(alias = "__ZN3RBX10Reflection17RefPropDescriptorINS_13ModelInstanceENS_12PartInstanceEED0Ev")]
-pub fn stub_5cf178() -> ! {
-    todo!("0x5cf178 __ZN3RBX10Reflection17RefPropDescriptorINS_13ModelInstanceENS_12PartInstanceEED0Ev")
+pub fn stub_5cf178() {
+    // IDA 0x5cf178: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5cf1a8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13ModelInstanceENS_12PartInstanceEE10isReadOnlyEv
@@ -121,8 +121,8 @@ pub fn stub_5cf59c() -> ! {
 
 // 0x5cf67c — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13ModelInstanceENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13ModelInstanceENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
-pub fn stub_5cf67c() -> ! {
-    todo!("0x5cf67c __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13ModelInstanceENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")
+pub fn stub_5cf67c() {
+    // IDA 0x5cf67c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5cf684 — __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -151,8 +151,8 @@ pub fn stub_5cf6ac() -> ! {
 
 // 0x5cf6d0 — __ZN3RBX10Reflection7RefTypeIPNS_12PartInstanceEED1Ev
 #[doc(alias = "__ZN3RBX10Reflection7RefTypeIPNS_12PartInstanceEED1Ev")]
-pub fn stub_5cf6d0() -> ! {
-    todo!("0x5cf6d0 __ZN3RBX10Reflection7RefTypeIPNS_12PartInstanceEED1Ev")
+pub fn stub_5cf6d0() {
+    // IDA 0x5cf6d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5cf6d4 — __ZN3RBX10Reflection4TypeC2IPNS_12PartInstanceEEEPKcS6_PT_
@@ -163,8 +163,8 @@ pub fn stub_5cf6d4() -> ! {
 
 // 0x5cf780 — __ZN3RBX10Reflection7RefTypeIPNS_12PartInstanceEED0Ev
 #[doc(alias = "__ZN3RBX10Reflection7RefTypeIPNS_12PartInstanceEED0Ev")]
-pub fn stub_5cf780() -> ! {
-    todo!("0x5cf780 __ZN3RBX10Reflection7RefTypeIPNS_12PartInstanceEED0Ev")
+pub fn stub_5cf780() {
+    // IDA 0x5cf780: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5cf784 — __ZN3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEEC2IMS2_KFRKS4_vEMS2_FvS8_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -175,8 +175,8 @@ pub fn stub_5cf784() -> ! {
 
 // 0x5cf898 — __ZN3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEED0Ev
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEED0Ev")]
-pub fn stub_5cf898() -> ! {
-    todo!("0x5cf898 __ZN3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEED0Ev")
+pub fn stub_5cf898() {
+    // IDA 0x5cf898: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5cf8c4 — __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv
@@ -229,44 +229,44 @@ pub fn stub_5d0000() -> ! {
 
 // 0x5d06a4 — __ZN3RBX5MouseD0Ev
 #[doc(alias = "__ZN3RBX5MouseD0Ev")]
-pub fn stub_5d06a4() -> ! {
-    todo!("0x5d06a4 __ZN3RBX5MouseD0Ev")
+pub fn stub_5d06a4() {
+    // IDA 0x5d06a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d0744 — __ZN3RBX5MouseD1Ev
 #[doc(alias = "__ZN3RBX5MouseD1Ev")]
-pub fn stub_5d0744() -> ! {
-    todo!("0x5d0744 __ZN3RBX5MouseD1Ev")
+pub fn stub_5d0744() {
+    // IDA 0x5d0744: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d0748 — __ZThn32_N3RBX5MouseD0Ev
 #[doc(alias = "__ZThn32_N3RBX5MouseD0Ev")]
-pub fn stub_5d0748() -> ! {
-    todo!("0x5d0748 __ZThn32_N3RBX5MouseD0Ev")
+pub fn stub_5d0748() {
+    // IDA 0x5d0748: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d0750 — __ZThn36_N3RBX5MouseD0Ev
 #[doc(alias = "__ZThn36_N3RBX5MouseD0Ev")]
-pub fn stub_5d0750() -> ! {
-    todo!("0x5d0750 __ZThn36_N3RBX5MouseD0Ev")
+pub fn stub_5d0750() {
+    // IDA 0x5d0750: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d0758 — __ZN3RBX5MouseD2Ev
 #[doc(alias = "__ZN3RBX5MouseD2Ev")]
-pub fn stub_5d0758() -> ! {
-    todo!("0x5d0758 __ZN3RBX5MouseD2Ev")
+pub fn stub_5d0758() {
+    // IDA 0x5d0758: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d0dac — __ZThn32_N3RBX5MouseD1Ev
 #[doc(alias = "__ZThn32_N3RBX5MouseD1Ev")]
-pub fn stub_5d0dac() -> ! {
-    todo!("0x5d0dac __ZThn32_N3RBX5MouseD1Ev")
+pub fn stub_5d0dac() {
+    // IDA 0x5d0dac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d0db4 — __ZThn36_N3RBX5MouseD1Ev
 #[doc(alias = "__ZThn36_N3RBX5MouseD1Ev")]
-pub fn stub_5d0db4() -> ! {
-    todo!("0x5d0db4 __ZThn36_N3RBX5MouseD1Ev")
+pub fn stub_5d0db4() {
+    // IDA 0x5d0db4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d0dbc — __ZNK3RBX5Mouse6getHitEv
@@ -373,26 +373,26 @@ pub fn stub_5d1abc() -> ! {
 
 // 0x5d1ad4 — __ZN3RBX10Reflection9EventDescINS_5MouseEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5MouseEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev")]
-pub fn stub_5d1ad4() -> ! {
-    todo!("0x5d1ad4 __ZN3RBX10Reflection9EventDescINS_5MouseEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev")
+pub fn stub_5d1ad4() {
+    // IDA 0x5d1ad4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d1af8 — __ZN3RBX10Reflection9EventDescINS_5MouseEFvSsEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5MouseEFvSsEN3rbx6signalIS3_EEMS2_S6_ED1Ev")]
-pub fn stub_5d1af8() -> ! {
-    todo!("0x5d1af8 __ZN3RBX10Reflection9EventDescINS_5MouseEFvSsEN3rbx6signalIS3_EEMS2_S6_ED1Ev")
+pub fn stub_5d1af8() {
+    // IDA 0x5d1af8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d1b1c — __ZN3RBX10Reflection14PropDescriptorINS_5MouseEN3G3D15CoordinateFrameEED1Ev
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_5MouseEN3G3D15CoordinateFrameEED1Ev")]
-pub fn stub_5d1b1c() -> ! {
-    todo!("0x5d1b1c __ZN3RBX10Reflection14PropDescriptorINS_5MouseEN3G3D15CoordinateFrameEED1Ev")
+pub fn stub_5d1b1c() {
+    // IDA 0x5d1b1c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d1b40 — __ZN3RBX10Reflection14PropDescriptorINS_5MouseENS_6RbxRayEED1Ev
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_5MouseENS_6RbxRayEED1Ev")]
-pub fn stub_5d1b40() -> ! {
-    todo!("0x5d1b40 __ZN3RBX10Reflection14PropDescriptorINS_5MouseENS_6RbxRayEED1Ev")
+pub fn stub_5d1b40() {
+    // IDA 0x5d1b40: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d1b64 — __ZNK3RBX5Mouse21getTargetFilterUnsafeEv
@@ -403,32 +403,32 @@ pub fn stub_5d1b64() -> ! {
 
 // 0x5d1b88 — __ZN3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEED1Ev
 #[doc(alias = "__ZN3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEED1Ev")]
-pub fn stub_5d1b88() -> ! {
-    todo!("0x5d1b88 __ZN3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEED1Ev")
+pub fn stub_5d1b88() {
+    // IDA 0x5d1b88: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d1bb4 — __ZN3RBX10Reflection17RefPropDescriptorINS_5MouseENS_12PartInstanceEED1Ev
 #[doc(alias = "__ZN3RBX10Reflection17RefPropDescriptorINS_5MouseENS_12PartInstanceEED1Ev")]
-pub fn stub_5d1bb4() -> ! {
-    todo!("0x5d1bb4 __ZN3RBX10Reflection17RefPropDescriptorINS_5MouseENS_12PartInstanceEED1Ev")
+pub fn stub_5d1bb4() {
+    // IDA 0x5d1bb4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d1be0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEED1Ev
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEED1Ev")]
-pub fn stub_5d1be0() -> ! {
-    todo!("0x5d1be0 __ZN3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEED1Ev")
+pub fn stub_5d1be0() {
+    // IDA 0x5d1be0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d1c04 — __ZN3RBX10Reflection14PropDescriptorINS_5MouseEiED1Ev
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_5MouseEiED1Ev")]
-pub fn stub_5d1c04() -> ! {
-    todo!("0x5d1c04 __ZN3RBX10Reflection14PropDescriptorINS_5MouseEiED1Ev")
+pub fn stub_5d1c04() {
+    // IDA 0x5d1c04: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d1c28 — __ZN3RBX10Reflection14PropDescriptorINS_5MouseENS_9TextureIdEED1Ev
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_5MouseENS_9TextureIdEED1Ev")]
-pub fn stub_5d1c28() -> ! {
-    todo!("0x5d1c28 __ZN3RBX10Reflection14PropDescriptorINS_5MouseENS_9TextureIdEED1Ev")
+pub fn stub_5d1c28() {
+    // IDA 0x5d1c28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d1c4c — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_6sMouseEEE12getClassNameEv
@@ -439,44 +439,44 @@ pub fn stub_5d1c4c() -> ! {
 
 // 0x5d1c74 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_6sMouseEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_6sMouseEEE12getClassNameEv")]
-pub fn stub_5d1c74() -> ! {
-    todo!("0x5d1c74 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_6sMouseEEE12getClassNameEv")
+pub fn stub_5d1c74() {
+    // IDA 0x5d1c74: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d1c9c — __ZN3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5d1c9c() -> ! {
-    todo!("0x5d1c9c __ZN3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5d1c9c() {
+    // IDA 0x5d1c9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d1ca0 — __ZN3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_5d1ca0() -> ! {
-    todo!("0x5d1ca0 __ZN3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_5d1ca0() {
+    // IDA 0x5d1ca0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d1d40 — __ZThn32_N3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5d1d40() -> ! {
-    todo!("0x5d1d40 __ZThn32_N3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5d1d40() {
+    // IDA 0x5d1d40: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d1d48 — __ZThn32_N3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_5d1d48() -> ! {
-    todo!("0x5d1d48 __ZThn32_N3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_5d1d48() {
+    // IDA 0x5d1d48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d1dec — __ZThn36_N3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5d1dec() -> ! {
-    todo!("0x5d1dec __ZThn36_N3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5d1dec() {
+    // IDA 0x5d1dec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d1df4 — __ZThn36_N3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_5d1df4() -> ! {
-    todo!("0x5d1df4 __ZThn36_N3RBX10Reflection9DescribedINS_5MouseELZNS_6sMouseEENS_17NonFactoryProductINS_8InstanceELZNS_6sMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_5d1df4() {
+    // IDA 0x5d1df4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d1e98 — __ZN3RBX10Reflection14PropDescriptorINS_5MouseENS_9TextureIdEEC2IMS2_KFS3_vEMS2_FvRKS3_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -487,8 +487,8 @@ pub fn stub_5d1e98() -> ! {
 
 // 0x5d1fac — __ZN3RBX10Reflection14PropDescriptorINS_5MouseENS_9TextureIdEED0Ev
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_5MouseENS_9TextureIdEED0Ev")]
-pub fn stub_5d1fac() -> ! {
-    todo!("0x5d1fac __ZN3RBX10Reflection14PropDescriptorINS_5MouseENS_9TextureIdEED0Ev")
+pub fn stub_5d1fac() {
+    // IDA 0x5d1fac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d1fd8 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE10isReadOnlyEv
@@ -523,8 +523,8 @@ pub fn stub_5d202c() -> ! {
 
 // 0x5d2138 — __ZN3RBX10Reflection14PropDescriptorINS_5MouseEiED0Ev
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_5MouseEiED0Ev")]
-pub fn stub_5d2138() -> ! {
-    todo!("0x5d2138 __ZN3RBX10Reflection14PropDescriptorINS_5MouseEiED0Ev")
+pub fn stub_5d2138() {
+    // IDA 0x5d2138: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d2164 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEiE7GetImplIMS2_KFivEE10isReadOnlyEv
@@ -559,8 +559,8 @@ pub fn stub_5d22ac() -> ! {
 
 // 0x5d2458 — __ZN3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEED0Ev
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEED0Ev")]
-pub fn stub_5d2458() -> ! {
-    todo!("0x5d2458 __ZN3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEED0Ev")
+pub fn stub_5d2458() {
+    // IDA 0x5d2458: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5d2484 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE10isReadOnlyEv

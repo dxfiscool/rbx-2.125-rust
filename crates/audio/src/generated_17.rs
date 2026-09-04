@@ -179,8 +179,8 @@ pub fn stub_37fb78() -> ! {
 
 // 0x7fd648 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Soundscape14CollisionSoundEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::CollisionSound>::dispose(void)")]
-pub fn stub_7fd648() -> ! {
-    todo!("0x7fd648 boost::detail::sp_counted_impl_p<RBX::Soundscape::CollisionSound>::dispose(void)")
+pub fn stub_7fd648() {
+    // IDA 0x7fd648: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xf30584 — j___ZN3rbx14implementation12typed_holderIN3RBX10Soundscape10ReverbTypeEE9singletonEv

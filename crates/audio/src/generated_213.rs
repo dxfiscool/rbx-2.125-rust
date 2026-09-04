@@ -717,8 +717,8 @@ pub fn stub_4e4efc() -> ! {
 // type: void __fastcall(RBX::Feature *__hidden this)
 #[doc(alias = "RBX::Feature::~Feature()")]
 #[doc(alias = "__ZN3RBX7FeatureD0Ev")]
-pub fn stub_4e5138() -> ! {
-    todo!("0x4e5138 __ZN3RBX7FeatureD0Ev")
+pub fn stub_4e5138() {
+    // IDA 0x4e5138: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e51d8 — __ZN3RBX7FeatureD1Ev
@@ -726,8 +726,8 @@ pub fn stub_4e5138() -> ! {
 // type: void __fastcall(RBX::Feature *__hidden this)
 #[doc(alias = "RBX::Feature::~Feature()")]
 #[doc(alias = "__ZN3RBX7FeatureD1Ev")]
-pub fn stub_4e51d8() -> ! {
-    todo!("0x4e51d8 __ZN3RBX7FeatureD1Ev")
+pub fn stub_4e51d8() {
+    // IDA 0x4e51d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e51dc — __ZThn32_N3RBX7FeatureD0Ev
@@ -735,8 +735,8 @@ pub fn stub_4e51d8() -> ! {
 // type: void __fastcall(RBX::Feature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Feature::~Feature()")]
 #[doc(alias = "__ZThn32_N3RBX7FeatureD0Ev")]
-pub fn stub_4e51dc() -> ! {
-    todo!("0x4e51dc __ZThn32_N3RBX7FeatureD0Ev")
+pub fn stub_4e51dc() {
+    // IDA 0x4e51dc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x4e51e4 — __ZThn36_N3RBX7FeatureD0Ev
@@ -744,6 +744,6 @@ pub fn stub_4e51dc() -> ! {
 // type: void __fastcall(RBX::Feature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Feature::~Feature()")]
 #[doc(alias = "__ZThn36_N3RBX7FeatureD0Ev")]
-pub fn stub_4e51e4() -> ! {
-    todo!("0x4e51e4 __ZThn36_N3RBX7FeatureD0Ev")
+pub fn stub_4e51e4() {
+    // IDA 0x4e51e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

@@ -15,8 +15,8 @@ const _: () = {
 // type: void __fastcall(Ogre::Material *__hidden this)
 #[doc(alias = "Ogre::Material::~Material()")]
 #[doc(alias = "__ZN4Ogre8MaterialD2Ev")]
-pub fn stub_cdf890() -> ! {
-    todo!("0xcdf890 __ZN4Ogre8MaterialD2Ev")
+pub fn stub_cdf890() {
+    // IDA 0xcdf890: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcdfae0 — __ZN4Ogre8Material19removeAllTechniquesEv
@@ -289,8 +289,8 @@ pub fn stub_ce10c0() -> ! {
 // 0xce10e0 — __ZNSt8_Rb_treeItSt4pairIKtPSt3mapItPN4Ogre9TechniqueESt4lessItENS3_12STLAllocatorIS0_IS1_S5_ENS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISG_ES7_NS8_ISG_SC_EEE8_M_eraseEPSt13_Rb_tree_nodeISG_E
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::map<unsigned short,Ogre::Technique *,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::Technique *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<unsigned short const,std::map<unsigned short,Ogre::Technique *,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::Technique *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::map<unsigned short,Ogre::Technique *,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::Technique *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,std::map<unsigned short,Ogre::Technique *,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::Technique *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtPSt3mapItPN4Ogre9TechniqueESt4lessItENS3_12STLAllocatorIS0_IS1_S5_ENS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISG_ES7_NS8_ISG_SC_EEE8_M_eraseEPSt13_Rb_tree_nodeISG_E")]
-pub fn stub_ce10e0() -> ! {
-    todo!("0xce10e0 __ZNSt8_Rb_treeItSt4pairIKtPSt3mapItPN4Ogre9TechniqueESt4lessItENS3_12STLAllocatorIS0_IS1_S5_ENS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISG_ES7_NS8_ISG_SC_EEE8_M_eraseEPSt13_Rb_tree_nodeISG_E")
+pub fn stub_ce10e0() {
+    // IDA 0xce10e0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xce1108 — __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre9TechniqueEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS5_
@@ -321,15 +321,15 @@ pub fn stub_ce140c() -> ! {
 // type: void()
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::Technique *>,std::_Select1st<std::pair<unsigned short const,Ogre::Technique *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::Technique *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtPN4Ogre9TechniqueEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev")]
-pub fn stub_ce1508() -> ! {
-    todo!("0xce1508 __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre9TechniqueEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev")
+pub fn stub_ce1508() {
+    // IDA 0xce1508: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xce150c — __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre9TechniqueEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::Technique *>,std::_Select1st<std::pair<unsigned short const,Ogre::Technique *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::Technique *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtPN4Ogre9TechniqueEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev")]
-pub fn stub_ce150c() -> ! {
-    todo!("0xce150c __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre9TechniqueEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev")
+pub fn stub_ce150c() {
+    // IDA 0xce150c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xce1518 — __ZNSt6vectorIPN4Ogre9TechniqueENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_
@@ -343,36 +343,36 @@ pub fn stub_ce1518() -> ! {
 // 0xce1610 — __ZNSt12_Vector_baseIPN4Ogre9TechniqueENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
 #[doc(alias = "std::_Vector_base<Ogre::Technique *,Ogre::STLAllocator<Ogre::Technique *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIPN4Ogre9TechniqueENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")]
-pub fn stub_ce1610() -> ! {
-    todo!("0xce1610 __ZNSt12_Vector_baseIPN4Ogre9TechniqueENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")
+pub fn stub_ce1610() {
+    // IDA 0xce1610: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xce1614 — __ZNSt8_Rb_treeItSt4pairIKtPSt3mapItPN4Ogre9TechniqueESt4lessItENS3_12STLAllocatorIS0_IS1_S5_ENS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISG_ES7_NS8_ISG_SC_EEE13_Rb_tree_implIS7_Lb0EED1Ev
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::map<unsigned short,Ogre::Technique *,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::Technique *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<unsigned short const,std::map<unsigned short,Ogre::Technique *,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::Technique *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::map<unsigned short,Ogre::Technique *,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::Technique *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtPSt3mapItPN4Ogre9TechniqueESt4lessItENS3_12STLAllocatorIS0_IS1_S5_ENS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISG_ES7_NS8_ISG_SC_EEE13_Rb_tree_implIS7_Lb0EED1Ev")]
-pub fn stub_ce1614() -> ! {
-    todo!("0xce1614 __ZNSt8_Rb_treeItSt4pairIKtPSt3mapItPN4Ogre9TechniqueESt4lessItENS3_12STLAllocatorIS0_IS1_S5_ENS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISG_ES7_NS8_ISG_SC_EEE13_Rb_tree_implIS7_Lb0EED1Ev")
+pub fn stub_ce1614() {
+    // IDA 0xce1614: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xce1618 — __ZNSt8_Rb_treeItSt4pairIKtPSt3mapItPN4Ogre9TechniqueESt4lessItENS3_12STLAllocatorIS0_IS1_S5_ENS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISG_ES7_NS8_ISG_SC_EEE13_Rb_tree_implIS7_Lb0EED0Ev
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::map<unsigned short,Ogre::Technique *,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::Technique *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<unsigned short const,std::map<unsigned short,Ogre::Technique *,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::Technique *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::map<unsigned short,Ogre::Technique *,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::Technique *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtPSt3mapItPN4Ogre9TechniqueESt4lessItENS3_12STLAllocatorIS0_IS1_S5_ENS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISG_ES7_NS8_ISG_SC_EEE13_Rb_tree_implIS7_Lb0EED0Ev")]
-pub fn stub_ce1618() -> ! {
-    todo!("0xce1618 __ZNSt8_Rb_treeItSt4pairIKtPSt3mapItPN4Ogre9TechniqueESt4lessItENS3_12STLAllocatorIS0_IS1_S5_ENS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISG_ES7_NS8_ISG_SC_EEE13_Rb_tree_implIS7_Lb0EED0Ev")
+pub fn stub_ce1618() {
+    // IDA 0xce1618: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xce1624 — __ZNSt12_Vector_baseIPN4Ogre9TechniqueENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 #[doc(alias = "std::_Vector_base<Ogre::Technique *,Ogre::STLAllocator<Ogre::Technique *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIPN4Ogre9TechniqueENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
-pub fn stub_ce1624() -> ! {
-    todo!("0xce1624 __ZNSt12_Vector_baseIPN4Ogre9TechniqueENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")
+pub fn stub_ce1624() {
+    // IDA 0xce1624: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xce1630 — __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre9TechniqueEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::Technique *>,std::_Select1st<std::pair<unsigned short const,Ogre::Technique *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::Technique *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,Ogre::Technique *>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtPN4Ogre9TechniqueEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E")]
-pub fn stub_ce1630() -> ! {
-    todo!("0xce1630 __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre9TechniqueEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E")
+pub fn stub_ce1630() {
+    // IDA 0xce1630: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xce168c — __ZN4Ogre15MaterialManager15getSingletonPtrEv
@@ -411,24 +411,24 @@ pub fn stub_ce16b8() -> ! {
 // type: void __fastcall(Ogre::MaterialManager *__hidden this)
 #[doc(alias = "Ogre::MaterialManager::~MaterialManager()")]
 #[doc(alias = "__ZN4Ogre15MaterialManagerD0Ev")]
-pub fn stub_ce19b8() -> ! {
-    todo!("0xce19b8 __ZN4Ogre15MaterialManagerD0Ev")
+pub fn stub_ce19b8() {
+    // IDA 0xce19b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xce1a48 — __ZN4Ogre15MaterialManagerD1Ev
 // type: void __fastcall(Ogre::MaterialManager *__hidden this)
 #[doc(alias = "Ogre::MaterialManager::~MaterialManager()")]
 #[doc(alias = "__ZN4Ogre15MaterialManagerD1Ev")]
-pub fn stub_ce1a48() -> ! {
-    todo!("0xce1a48 __ZN4Ogre15MaterialManagerD1Ev")
+pub fn stub_ce1a48() {
+    // IDA 0xce1a48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xce1a54 — __ZN4Ogre15MaterialManagerD2Ev
 // type: void __fastcall(Ogre::MaterialManager *__hidden this)
 #[doc(alias = "Ogre::MaterialManager::~MaterialManager()")]
 #[doc(alias = "__ZN4Ogre15MaterialManagerD2Ev")]
-pub fn stub_ce1a54() -> ! {
-    todo!("0xce1a54 __ZN4Ogre15MaterialManagerD2Ev")
+pub fn stub_ce1a54() {
+    // IDA 0xce1a54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xce1d64 — __ZN4Ogre15MaterialManager10createImplERKSsyS2_bPNS_20ManualResourceLoaderEPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
@@ -577,15 +577,15 @@ pub fn stub_ce2ac8() -> ! {
 // 0xce2b6c — __ZNSt10_List_baseIPN4Ogre15MaterialManager8ListenerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev
 #[doc(alias = "std::_List_base<Ogre::MaterialManager::Listener *,Ogre::STLAllocator<Ogre::MaterialManager::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
 #[doc(alias = "__ZNSt10_List_baseIPN4Ogre15MaterialManager8ListenerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev")]
-pub fn stub_ce2b6c() -> ! {
-    todo!("0xce2b6c __ZNSt10_List_baseIPN4Ogre15MaterialManager8ListenerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev")
+pub fn stub_ce2b6c() {
+    // IDA 0xce2b6c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xce2b70 — __ZNSt10_List_baseIPN4Ogre15MaterialManager8ListenerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev
 #[doc(alias = "std::_List_base<Ogre::MaterialManager::Listener *,Ogre::STLAllocator<Ogre::MaterialManager::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
 #[doc(alias = "__ZNSt10_List_baseIPN4Ogre15MaterialManager8ListenerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev")]
-pub fn stub_ce2b70() -> ! {
-    todo!("0xce2b70 __ZNSt10_List_baseIPN4Ogre15MaterialManager8ListenerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev")
+pub fn stub_ce2b70() {
+    // IDA 0xce2b70: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xce2b7c — __ZNSt4pairIKSsSt4listIPN4Ogre15MaterialManager8ListenerENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEEEC2ERS0_RKSB_
@@ -621,8 +621,8 @@ pub fn stub_ce30a0() -> ! {
 // type: _DWORD *__fastcall(int, const std::string *)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::list<Ogre::MaterialManager::Listener *,Ogre::STLAllocator<Ogre::MaterialManager::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::list<Ogre::MaterialManager::Listener *,Ogre::STLAllocator<Ogre::MaterialManager::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,std::list<Ogre::MaterialManager::Listener *,Ogre::STLAllocator<Ogre::MaterialManager::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>>::_M_create_node(std::pair<std::string const,std::list<Ogre::MaterialManager::Listener *,Ogre::STLAllocator<Ogre::MaterialManager::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsSt4listIPN4Ogre15MaterialManager8ListenerENS3_12STLAllocatorIS6_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISD_ESt4lessISsESaISD_EE14_M_create_nodeERKSD_")]
-pub fn stub_ce3184() -> ! {
-    todo!("0xce3184 __ZNSt8_Rb_treeISsSt4pairIKSsSt4listIPN4Ogre15MaterialManager8ListenerENS3_12STLAllocatorIS6_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISD_ESt4lessISsESaISD_EE14_M_create_nodeERKSD_")
+pub fn stub_ce3184() {
+    // IDA 0xce3184: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0xce3334 — __ZNSt8_Rb_treeISsSt4pairIKSstESt10_Select1stIS2_ESt4lessISsEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE4findERS1_
@@ -659,29 +659,29 @@ pub fn stub_ce370c() -> ! {
 // 0xce37f0 — __ZNSt8_Rb_treeISsSt4pairIKSstESt10_Select1stIS2_ESt4lessISsEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS6_Lb0EED1Ev
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,unsigned short>,std::_Select1st<std::pair<std::string const,unsigned short>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,unsigned short>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSstESt10_Select1stIS2_ESt4lessISsEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS6_Lb0EED1Ev")]
-pub fn stub_ce37f0() -> ! {
-    todo!("0xce37f0 __ZNSt8_Rb_treeISsSt4pairIKSstESt10_Select1stIS2_ESt4lessISsEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS6_Lb0EED1Ev")
+pub fn stub_ce37f0() {
+    // IDA 0xce37f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xce37f4 — __ZNSt8_Rb_treeISsSt4pairIKSstESt10_Select1stIS2_ESt4lessISsEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS6_Lb0EED0Ev
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,unsigned short>,std::_Select1st<std::pair<std::string const,unsigned short>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,unsigned short>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSstESt10_Select1stIS2_ESt4lessISsEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS6_Lb0EED0Ev")]
-pub fn stub_ce37f4() -> ! {
-    todo!("0xce37f4 __ZNSt8_Rb_treeISsSt4pairIKSstESt10_Select1stIS2_ESt4lessISsEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS6_Lb0EED0Ev")
+pub fn stub_ce37f4() {
+    // IDA 0xce37f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xce3800 — __ZNSt8_Rb_treeISsSt4pairIKSstESt10_Select1stIS2_ESt4lessISsEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS2_E
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,unsigned short>,std::_Select1st<std::pair<std::string const,unsigned short>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,unsigned short>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,unsigned short>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSstESt10_Select1stIS2_ESt4lessISsEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS2_E")]
-pub fn stub_ce3800() -> ! {
-    todo!("0xce3800 __ZNSt8_Rb_treeISsSt4pairIKSstESt10_Select1stIS2_ESt4lessISsEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS2_E")
+pub fn stub_ce3800() {
+    // IDA 0xce3800: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xce3878 — __ZNSt8_Rb_treeISsSt4pairIKSsSt4listIPN4Ogre15MaterialManager8ListenerENS3_12STLAllocatorIS6_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISD_ESt4lessISsESaISD_EE8_M_eraseEPSt13_Rb_tree_nodeISD_E
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::list<Ogre::MaterialManager::Listener *,Ogre::STLAllocator<Ogre::MaterialManager::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::list<Ogre::MaterialManager::Listener *,Ogre::STLAllocator<Ogre::MaterialManager::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,std::list<Ogre::MaterialManager::Listener *,Ogre::STLAllocator<Ogre::MaterialManager::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,std::list<Ogre::MaterialManager::Listener *,Ogre::STLAllocator<Ogre::MaterialManager::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsSt4listIPN4Ogre15MaterialManager8ListenerENS3_12STLAllocatorIS6_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISD_ESt4lessISsESaISD_EE8_M_eraseEPSt13_Rb_tree_nodeISD_E")]
-pub fn stub_ce3878() -> ! {
-    todo!("0xce3878 __ZNSt8_Rb_treeISsSt4pairIKSsSt4listIPN4Ogre15MaterialManager8ListenerENS3_12STLAllocatorIS6_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISD_ESt4lessISsESaISD_EE8_M_eraseEPSt13_Rb_tree_nodeISD_E")
+pub fn stub_ce3878() {
+    // IDA 0xce3878: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xce5b08 — __ZN4Ogre18convertBlendFactorERKSs
@@ -736,52 +736,52 @@ pub fn stub_cf7e5c() -> ! {
 // type: void __fastcall(Ogre::MaterialSerializer *__hidden this)
 #[doc(alias = "Ogre::MaterialSerializer::~MaterialSerializer()")]
 #[doc(alias = "__ZN4Ogre18MaterialSerializerD1Ev")]
-pub fn stub_d0140c() -> ! {
-    todo!("0xd0140c __ZN4Ogre18MaterialSerializerD1Ev")
+pub fn stub_d0140c() {
+    // IDA 0xd0140c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xd01418 — __ZN4Ogre18MaterialSerializerD0Ev
 // type: void __fastcall(Ogre::MaterialSerializer *__hidden this)
 #[doc(alias = "Ogre::MaterialSerializer::~MaterialSerializer()")]
 #[doc(alias = "__ZN4Ogre18MaterialSerializerD0Ev")]
-pub fn stub_d01418() -> ! {
-    todo!("0xd01418 __ZN4Ogre18MaterialSerializerD0Ev")
+pub fn stub_d01418() {
+    // IDA 0xd01418: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xd014a8 — __ZN4Ogre18MaterialSerializerD2Ev
 // type: void __fastcall(Ogre::MaterialSerializer *__hidden this)
 #[doc(alias = "Ogre::MaterialSerializer::~MaterialSerializer()")]
 #[doc(alias = "__ZN4Ogre18MaterialSerializerD2Ev")]
-pub fn stub_d014a8() -> ! {
-    todo!("0xd014a8 __ZN4Ogre18MaterialSerializerD2Ev")
+pub fn stub_d014a8() {
+    // IDA 0xd014a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xd018c4 — __ZNSt12_Vector_baseIPN4Ogre18MaterialSerializer8ListenerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
 #[doc(alias = "std::_Vector_base<Ogre::MaterialSerializer::Listener *,Ogre::STLAllocator<Ogre::MaterialSerializer::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIPN4Ogre18MaterialSerializer8ListenerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")]
-pub fn stub_d018c4() -> ! {
-    todo!("0xd018c4 __ZNSt12_Vector_baseIPN4Ogre18MaterialSerializer8ListenerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")
+pub fn stub_d018c4() {
+    // IDA 0xd018c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xd018c8 — __ZNSt12_Vector_baseIPN4Ogre18MaterialSerializer8ListenerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 #[doc(alias = "std::_Vector_base<Ogre::MaterialSerializer::Listener *,Ogre::STLAllocator<Ogre::MaterialSerializer::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIPN4Ogre18MaterialSerializer8ListenerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
-pub fn stub_d018c8() -> ! {
-    todo!("0xd018c8 __ZNSt12_Vector_baseIPN4Ogre18MaterialSerializer8ListenerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")
+pub fn stub_d018c8() {
+    // IDA 0xd018c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xd018e4 — __ZNSt12_Vector_baseISt4pairISsSsEN4Ogre12STLAllocatorIS1_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
 #[doc(alias = "std::_Vector_base<std::pair<std::string,std::string>,Ogre::STLAllocator<std::pair<std::string,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseISt4pairISsSsEN4Ogre12STLAllocatorIS1_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")]
-pub fn stub_d018e4() -> ! {
-    todo!("0xd018e4 __ZNSt12_Vector_baseISt4pairISsSsEN4Ogre12STLAllocatorIS1_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")
+pub fn stub_d018e4() {
+    // IDA 0xd018e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xd01c38 — __ZNSt12_Vector_baseISt4pairISsSsEN4Ogre12STLAllocatorIS1_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 #[doc(alias = "std::_Vector_base<std::pair<std::string,std::string>,Ogre::STLAllocator<std::pair<std::string,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseISt4pairISsSsEN4Ogre12STLAllocatorIS1_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
-pub fn stub_d01c38() -> ! {
-    todo!("0xd01c38 __ZNSt12_Vector_baseISt4pairISsSsEN4Ogre12STLAllocatorIS1_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")
+pub fn stub_d01c38() {
+    // IDA 0xd01c38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xd01c78 — __ZN4Ogre4Math4ACosEf

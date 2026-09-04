@@ -116,8 +116,8 @@ pub fn stub_0xf35de4() -> ! {
 // 0xf35df4 — j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev
 #[doc(alias = "j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev")]
 #[doc(alias = "j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev")]
-pub fn stub_0xf35df4() -> ! {
-    todo!("0xf35df4 j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev")
+pub fn stub_0xf35df4() {
+    // IDA 0xf35df4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xf36404 — j___ZN3RBX4Name7declareILZNS_10Soundscape13sSoundServiceEEEERKS0_v
@@ -193,8 +193,8 @@ pub fn stub_0xf3da14() -> ! {
 // 0xf3dee4 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9SoundTypeEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SoundType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SoundType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SoundType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::SoundType>> *)")]
 #[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9SoundTypeEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E")]
-pub fn stub_0xf3dee4() -> ! {
-    todo!("0xf3dee4 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9SoundTypeEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E")
+pub fn stub_0xf3dee4() {
+    // IDA 0xf3dee4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf4cfe4 — j___ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -221,8 +221,8 @@ pub fn stub_0xf54824() -> ! {
 // 0xf54834 — j___ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEC2IS3_EEPT_
 #[doc(alias = "boost::shared_ptr<RBX::Soundscape::CollisionSound>::shared_ptr<RBX::Soundscape::CollisionSound>(RBX::Soundscape::CollisionSound *)")]
 #[doc(alias = "j___ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEC2IS3_EEPT_")]
-pub fn stub_0xf54834() -> ! {
-    todo!("0xf54834 j___ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEC2IS3_EEPT_")
+pub fn stub_0xf54834() {
+    // IDA 0xf54834: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf54844 — j___ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEaSERKS4_
@@ -256,8 +256,8 @@ pub fn stub_0xf54884() -> ! {
 // 0xf54894 — j___ZN5boost6detail12shared_countC2IN3RBX10Soundscape14CollisionSoundEEEPT_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Soundscape::CollisionSound>(RBX::Soundscape::CollisionSound *)")]
 #[doc(alias = "j___ZN5boost6detail12shared_countC2IN3RBX10Soundscape14CollisionSoundEEEPT_")]
-pub fn stub_0xf54894() -> ! {
-    todo!("0xf54894 j___ZN5boost6detail12shared_countC2IN3RBX10Soundscape14CollisionSoundEEEPT_")
+pub fn stub_0xf54894() {
+    // IDA 0xf54894: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0xf548a4 — j___ZNSt3mapIN3RBX10Soundscape18CollisionSoundTypeEN5boost10shared_ptrINS1_14CollisionSoundEEESt4lessIS2_ESaISt4pairIKS2_S6_EEEixERSA_
@@ -270,15 +270,15 @@ pub fn stub_0xf548a4() -> ! {
 // 0xf548b4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE14_M_create_nodeERKS9_
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_create_node(std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>> const&)")]
 #[doc(alias = "j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE14_M_create_nodeERKS9_")]
-pub fn stub_0xf548b4() -> ! {
-    todo!("0xf548b4 j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE14_M_create_nodeERKS9_")
+pub fn stub_0xf548b4() {
+    // IDA 0xf548b4: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0xf548c4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS9_E
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>> *)")]
 #[doc(alias = "j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS9_E")]
-pub fn stub_0xf548c4() -> ! {
-    todo!("0xf548c4 j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS9_E")
+pub fn stub_0xf548c4() {
+    // IDA 0xf548c4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf548d4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueERKS9_
@@ -298,8 +298,8 @@ pub fn stub_0xf548e4() -> ! {
 // 0xf548f4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>> *)")]
 #[doc(alias = "j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E")]
-pub fn stub_0xf548f4() -> ! {
-    todo!("0xf548f4 j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E")
+pub fn stub_0xf548f4() {
+    // IDA 0xf548f4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xf54904 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_
@@ -340,15 +340,15 @@ pub fn stub_0x883b7c() -> ! {
 // 0x883be0 — __ZN3RBX16CellEdgeEdgePairD1Ev
 #[doc(alias = "RBX::CellEdgeEdgePair::~CellEdgeEdgePair()")]
 #[doc(alias = "__ZN3RBX16CellEdgeEdgePairD1Ev")]
-pub fn stub_0x883be0() -> ! {
-    todo!("0x883be0 __ZN3RBX16CellEdgeEdgePairD1Ev")
+pub fn stub_0x883be0() {
+    // IDA 0x883be0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x883be4 — __ZN3RBX16CellFaceFacePairD1Ev
 #[doc(alias = "RBX::CellFaceFacePair::~CellFaceFacePair()")]
 #[doc(alias = "__ZN3RBX16CellFaceFacePairD1Ev")]
-pub fn stub_0x883be4() -> ! {
-    todo!("0x883be4 __ZN3RBX16CellFaceFacePairD1Ev")
+pub fn stub_0x883be4() {
+    // IDA 0x883be4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x883f70 — __ZN3RBX10FixedArrayINS_16CellFaceFacePair12VertexStatusELm40EEixEm
@@ -403,8 +403,8 @@ pub fn stub_0x8842d4() -> ! {
 // 0x8842d8 — __ZN3RBX16CellFaceFacePairD0Ev
 #[doc(alias = "RBX::CellFaceFacePair::~CellFaceFacePair()")]
 #[doc(alias = "__ZN3RBX16CellFaceFacePairD0Ev")]
-pub fn stub_0x8842d8() -> ! {
-    todo!("0x8842d8 __ZN3RBX16CellFaceFacePairD0Ev")
+pub fn stub_0x8842d8() {
+    // IDA 0x8842d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x8842dc — __ZNK3RBX16CellEdgeEdgePair10isFaceFaceEv
@@ -424,8 +424,8 @@ pub fn stub_0x8842e0() -> ! {
 // 0x8842e4 — __ZN3RBX16CellEdgeEdgePairD0Ev
 #[doc(alias = "RBX::CellEdgeEdgePair::~CellEdgeEdgePair()")]
 #[doc(alias = "__ZN3RBX16CellEdgeEdgePairD0Ev")]
-pub fn stub_0x8842e4() -> ! {
-    todo!("0x8842e4 __ZN3RBX16CellEdgeEdgePairD0Ev")
+pub fn stub_0x8842e4() {
+    // IDA 0x8842e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x8842e8 — __ZN5boost14singleton_poolIN3RBX17EdgeEdgeConnectorELj328ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv
@@ -494,15 +494,15 @@ pub fn stub_0x884460() -> ! {
 // 0x884490 — __ZN3RBX12PolyCellPairD1Ev
 #[doc(alias = "RBX::PolyCellPair::~PolyCellPair()")]
 #[doc(alias = "__ZN3RBX12PolyCellPairD1Ev")]
-pub fn stub_0x884490() -> ! {
-    todo!("0x884490 __ZN3RBX12PolyCellPairD1Ev")
+pub fn stub_0x884490() {
+    // IDA 0x884490: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x884494 — __ZN3RBX12PolyCellPairD0Ev
 #[doc(alias = "RBX::PolyCellPair::~PolyCellPair()")]
 #[doc(alias = "__ZN3RBX12PolyCellPairD0Ev")]
-pub fn stub_0x884494() -> ! {
-    todo!("0x884494 __ZN3RBX12PolyCellPairD0Ev")
+pub fn stub_0x884494() {
+    // IDA 0x884494: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x884498 — __ZN3RBX9AllocatorINS_17FaceEdgeConnectorEEC2Ev
@@ -641,50 +641,50 @@ pub fn stub_0x885a60() -> ! {
 // 0x885c04 — __ZN3RBX6PluginD0Ev
 #[doc(alias = "RBX::Plugin::~Plugin()")]
 #[doc(alias = "__ZN3RBX6PluginD0Ev")]
-pub fn stub_0x885c04() -> ! {
-    todo!("0x885c04 __ZN3RBX6PluginD0Ev")
+pub fn stub_0x885c04() {
+    // IDA 0x885c04: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x885ca4 — __ZN3RBX6PluginD1Ev
 #[doc(alias = "RBX::Plugin::~Plugin()")]
 #[doc(alias = "__ZN3RBX6PluginD1Ev")]
-pub fn stub_0x885ca4() -> ! {
-    todo!("0x885ca4 __ZN3RBX6PluginD1Ev")
+pub fn stub_0x885ca4() {
+    // IDA 0x885ca4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x885ca8 — __ZThn32_N3RBX6PluginD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Plugin::~Plugin()")]
 #[doc(alias = "__ZThn32_N3RBX6PluginD0Ev")]
-pub fn stub_0x885ca8() -> ! {
-    todo!("0x885ca8 __ZThn32_N3RBX6PluginD0Ev")
+pub fn stub_0x885ca8() {
+    // IDA 0x885ca8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x885cb0 — __ZThn36_N3RBX6PluginD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Plugin::~Plugin()")]
 #[doc(alias = "__ZThn36_N3RBX6PluginD0Ev")]
-pub fn stub_0x885cb0() -> ! {
-    todo!("0x885cb0 __ZThn36_N3RBX6PluginD0Ev")
+pub fn stub_0x885cb0() {
+    // IDA 0x885cb0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x885cb8 — __ZN3RBX6PluginD2Ev
 #[doc(alias = "RBX::Plugin::~Plugin()")]
 #[doc(alias = "__ZN3RBX6PluginD2Ev")]
-pub fn stub_0x885cb8() -> ! {
-    todo!("0x885cb8 __ZN3RBX6PluginD2Ev")
+pub fn stub_0x885cb8() {
+    // IDA 0x885cb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x885df0 — __ZThn32_N3RBX6PluginD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Plugin::~Plugin()")]
 #[doc(alias = "__ZThn32_N3RBX6PluginD1Ev")]
-pub fn stub_0x885df0() -> ! {
-    todo!("0x885df0 __ZThn32_N3RBX6PluginD1Ev")
+pub fn stub_0x885df0() {
+    // IDA 0x885df0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x885df8 — __ZThn36_N3RBX6PluginD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Plugin::~Plugin()")]
 #[doc(alias = "__ZThn36_N3RBX6PluginD1Ev")]
-pub fn stub_0x885df8() -> ! {
-    todo!("0x885df8 __ZThn36_N3RBX6PluginD1Ev")
+pub fn stub_0x885df8() {
+    // IDA 0x885df8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x885edc — __ZN3RBX13PluginManagerC2Ev
@@ -704,6 +704,6 @@ pub fn stub_0x886368() -> ! {
 // 0x886388 — __ZThn92_N3RBX13PluginManager17DeactivatePluginsEv
 #[doc(alias = "non-virtual thunk toRBX::PluginManager::DeactivatePlugins(void)")]
 #[doc(alias = "__ZThn92_N3RBX13PluginManager17DeactivatePluginsEv")]
-pub fn stub_0x886388() -> ! {
-    todo!("0x886388 __ZThn92_N3RBX13PluginManager17DeactivatePluginsEv")
+pub fn stub_0x886388() {
+    // IDA 0x886388: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

@@ -158,16 +158,16 @@ pub fn stub_cbb3ac() -> ! {
 // type: void __fastcall(Ogre::VertexBufferBinding *__hidden this)
 #[doc(alias = "Ogre::VertexBufferBinding::~VertexBufferBinding()")]
 #[doc(alias = "__ZN4Ogre19VertexBufferBindingD0Ev")]
-pub fn stub_cbb3e4() -> ! {
-    todo!("0xcbb3e4 __ZN4Ogre19VertexBufferBindingD0Ev")
+pub fn stub_cbb3e4() {
+    // IDA 0xcbb3e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbb4d4 — __ZN4Ogre19VertexBufferBindingD1Ev
 // type: void __fastcall(Ogre::VertexBufferBinding *__hidden this)
 #[doc(alias = "Ogre::VertexBufferBinding::~VertexBufferBinding()")]
 #[doc(alias = "__ZN4Ogre19VertexBufferBindingD1Ev")]
-pub fn stub_cbb4d4() -> ! {
-    todo!("0xcbb4d4 __ZN4Ogre19VertexBufferBindingD1Ev")
+pub fn stub_cbb4d4() {
+    // IDA 0xcbb4d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbb5b8 — __ZN4Ogre19VertexBufferBinding10setBindingEtRKNS_29HardwareVertexBufferSharedPtrE
@@ -342,16 +342,16 @@ pub fn stub_cbc86c() -> ! {
 // type: int __fastcall(int result, int)
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::HardwareVertexBufferSharedPtr>,std::_Select1st<std::pair<unsigned short const,Ogre::HardwareVertexBufferSharedPtr>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::HardwareVertexBufferSharedPtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,Ogre::HardwareVertexBufferSharedPtr>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtN4Ogre29HardwareVertexBufferSharedPtrEESt10_Select1stIS4_ESt4lessItENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS4_E")]
-pub fn stub_cbc964() -> ! {
-    todo!("0xcbc964 __ZNSt8_Rb_treeItSt4pairIKtN4Ogre29HardwareVertexBufferSharedPtrEESt10_Select1stIS4_ESt4lessItENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS4_E")
+pub fn stub_cbc964() {
+    // IDA 0xcbc964: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xcbc98c — __ZNSt8_Rb_treeItSt4pairIKtN4Ogre29HardwareVertexBufferSharedPtrEESt10_Select1stIS4_ESt4lessItENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS4_E
 // type: void __fastcall(int, int)
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::HardwareVertexBufferSharedPtr>,std::_Select1st<std::pair<unsigned short const,Ogre::HardwareVertexBufferSharedPtr>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::HardwareVertexBufferSharedPtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<unsigned short const,Ogre::HardwareVertexBufferSharedPtr>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtN4Ogre29HardwareVertexBufferSharedPtrEESt10_Select1stIS4_ESt4lessItENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS4_E")]
-pub fn stub_cbc98c() -> ! {
-    todo!("0xcbc98c __ZNSt8_Rb_treeItSt4pairIKtN4Ogre29HardwareVertexBufferSharedPtrEESt10_Select1stIS4_ESt4lessItENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS4_E")
+pub fn stub_cbc98c() {
+    // IDA 0xcbc98c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xcbca88 — __ZNSt8_Rb_treeItSt4pairIKtN4Ogre29HardwareVertexBufferSharedPtrEESt10_Select1stIS4_ESt4lessItENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS4_ERKS4_
@@ -382,31 +382,31 @@ pub fn stub_cbcbe4() -> ! {
 // type: void()
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::HardwareVertexBufferSharedPtr>,std::_Select1st<std::pair<unsigned short const,Ogre::HardwareVertexBufferSharedPtr>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::HardwareVertexBufferSharedPtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtN4Ogre29HardwareVertexBufferSharedPtrEESt10_Select1stIS4_ESt4lessItENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED1Ev")]
-pub fn stub_cbcc50() -> ! {
-    todo!("0xcbcc50 __ZNSt8_Rb_treeItSt4pairIKtN4Ogre29HardwareVertexBufferSharedPtrEESt10_Select1stIS4_ESt4lessItENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED1Ev")
+pub fn stub_cbcc50() {
+    // IDA 0xcbcc50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbcc54 — __ZNSt8_Rb_treeItSt4pairIKtN4Ogre29HardwareVertexBufferSharedPtrEESt10_Select1stIS4_ESt4lessItENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED0Ev
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::HardwareVertexBufferSharedPtr>,std::_Select1st<std::pair<unsigned short const,Ogre::HardwareVertexBufferSharedPtr>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::HardwareVertexBufferSharedPtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtN4Ogre29HardwareVertexBufferSharedPtrEESt10_Select1stIS4_ESt4lessItENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED0Ev")]
-pub fn stub_cbcc54() -> ! {
-    todo!("0xcbcc54 __ZNSt8_Rb_treeItSt4pairIKtN4Ogre29HardwareVertexBufferSharedPtrEESt10_Select1stIS4_ESt4lessItENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED0Ev")
+pub fn stub_cbcc54() {
+    // IDA 0xcbcc54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbcc60 — __ZN4Ogre14HardwareBufferD1Ev
 // type: void __fastcall(Ogre::HardwareBuffer *__hidden this)
 #[doc(alias = "Ogre::HardwareBuffer::~HardwareBuffer()")]
 #[doc(alias = "__ZN4Ogre14HardwareBufferD1Ev")]
-pub fn stub_cbcc60() -> ! {
-    todo!("0xcbcc60 __ZN4Ogre14HardwareBufferD1Ev")
+pub fn stub_cbcc60() {
+    // IDA 0xcbcc60: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbcc64 — __ZN4Ogre14HardwareBufferD0Ev
 // type: void __fastcall(Ogre::HardwareBuffer *__hidden this)
 #[doc(alias = "Ogre::HardwareBuffer::~HardwareBuffer()")]
 #[doc(alias = "__ZN4Ogre14HardwareBufferD0Ev")]
-pub fn stub_cbcc64() -> ! {
-    todo!("0xcbcc64 __ZN4Ogre14HardwareBufferD0Ev")
+pub fn stub_cbcc64() {
+    // IDA 0xcbcc64: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbcd24 — __ZN4Ogre19HighLevelGpuProgramC2EPNS_15ResourceManagerERKSsyS4_bPNS_20ManualResourceLoaderE
@@ -437,24 +437,24 @@ pub fn stub_cbcdc4() -> ! {
 // type: void __fastcall(Ogre::HighLevelGpuProgram *__hidden this)
 #[doc(alias = "Ogre::HighLevelGpuProgram::~HighLevelGpuProgram()")]
 #[doc(alias = "__ZN4Ogre19HighLevelGpuProgramD0Ev")]
-pub fn stub_cbce38() -> ! {
-    todo!("0xcbce38 __ZN4Ogre19HighLevelGpuProgramD0Ev")
+pub fn stub_cbce38() {
+    // IDA 0xcbce38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbcec8 — __ZN4Ogre19HighLevelGpuProgramD1Ev
 // type: void __fastcall(Ogre::HighLevelGpuProgram *__hidden this)
 #[doc(alias = "Ogre::HighLevelGpuProgram::~HighLevelGpuProgram()")]
 #[doc(alias = "__ZN4Ogre19HighLevelGpuProgramD1Ev")]
-pub fn stub_cbcec8() -> ! {
-    todo!("0xcbcec8 __ZN4Ogre19HighLevelGpuProgramD1Ev")
+pub fn stub_cbcec8() {
+    // IDA 0xcbcec8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbced4 — __ZN4Ogre19HighLevelGpuProgramD2Ev
 // type: void __fastcall(Ogre::HighLevelGpuProgram *__hidden this)
 #[doc(alias = "Ogre::HighLevelGpuProgram::~HighLevelGpuProgram()")]
 #[doc(alias = "__ZN4Ogre19HighLevelGpuProgramD2Ev")]
-pub fn stub_cbced4() -> ! {
-    todo!("0xcbced4 __ZN4Ogre19HighLevelGpuProgramD2Ev")
+pub fn stub_cbced4() {
+    // IDA 0xcbced4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbcff0 — __ZN4Ogre19HighLevelGpuProgram16createParametersEv
@@ -548,24 +548,24 @@ pub fn stub_cbd96c() -> ! {
 // type: void __fastcall(Ogre::HighLevelGpuProgramManager *__hidden this)
 #[doc(alias = "Ogre::HighLevelGpuProgramManager::~HighLevelGpuProgramManager()")]
 #[doc(alias = "__ZN4Ogre26HighLevelGpuProgramManagerD0Ev")]
-pub fn stub_cbd98c() -> ! {
-    todo!("0xcbd98c __ZN4Ogre26HighLevelGpuProgramManagerD0Ev")
+pub fn stub_cbd98c() {
+    // IDA 0xcbd98c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbda1c — __ZN4Ogre26HighLevelGpuProgramManagerD1Ev
 // type: void __fastcall(Ogre::HighLevelGpuProgramManager *__hidden this)
 #[doc(alias = "Ogre::HighLevelGpuProgramManager::~HighLevelGpuProgramManager()")]
 #[doc(alias = "__ZN4Ogre26HighLevelGpuProgramManagerD1Ev")]
-pub fn stub_cbda1c() -> ! {
-    todo!("0xcbda1c __ZN4Ogre26HighLevelGpuProgramManagerD1Ev")
+pub fn stub_cbda1c() {
+    // IDA 0xcbda1c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbda28 — __ZN4Ogre26HighLevelGpuProgramManagerD2Ev
 // type: void __fastcall(Ogre::HighLevelGpuProgramManager *__hidden this)
 #[doc(alias = "Ogre::HighLevelGpuProgramManager::~HighLevelGpuProgramManager()")]
 #[doc(alias = "__ZN4Ogre26HighLevelGpuProgramManagerD2Ev")]
-pub fn stub_cbda28() -> ! {
-    todo!("0xcbda28 __ZN4Ogre26HighLevelGpuProgramManagerD2Ev")
+pub fn stub_cbda28() {
+    // IDA 0xcbda28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbdb4c — __ZN4Ogre26HighLevelGpuProgramManager13removeFactoryEPNS_26HighLevelGpuProgramFactoryE
@@ -595,8 +595,8 @@ pub fn stub_cbde78() -> ! {
 // type: void __fastcall(Ogre::HighLevelGpuProgramFactory *__hidden this)
 #[doc(alias = "Ogre::HighLevelGpuProgramFactory::~HighLevelGpuProgramFactory()")]
 #[doc(alias = "__ZN4Ogre26HighLevelGpuProgramFactoryD2Ev")]
-pub fn stub_cbe11c() -> ! {
-    todo!("0xcbe11c __ZN4Ogre26HighLevelGpuProgramFactoryD2Ev")
+pub fn stub_cbe11c() {
+    // IDA 0xcbe11c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbe120 — __ZNSt3mapISsPN4Ogre26HighLevelGpuProgramFactoryESt4lessISsENS0_12STLAllocatorISt4pairIKSsS2_ENS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEixERS7_
@@ -610,8 +610,8 @@ pub fn stub_cbe120() -> ! {
 // type: void __fastcall(Ogre::HighLevelGpuProgramPtr *__hidden this)
 #[doc(alias = "Ogre::HighLevelGpuProgramPtr::~HighLevelGpuProgramPtr()")]
 #[doc(alias = "__ZN4Ogre22HighLevelGpuProgramPtrD1Ev")]
-pub fn stub_cbe2dc() -> ! {
-    todo!("0xcbe2dc __ZN4Ogre22HighLevelGpuProgramPtrD1Ev")
+pub fn stub_cbe2dc() {
+    // IDA 0xcbe2dc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbe3cc — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre26HighLevelGpuProgramFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
@@ -648,29 +648,29 @@ pub fn stub_cbe7a4() -> ! {
 // 0xcbe888 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre26HighLevelGpuProgramFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::HighLevelGpuProgramFactory *>,std::_Select1st<std::pair<std::string const,Ogre::HighLevelGpuProgramFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::HighLevelGpuProgramFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre26HighLevelGpuProgramFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev")]
-pub fn stub_cbe888() -> ! {
-    todo!("0xcbe888 __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre26HighLevelGpuProgramFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev")
+pub fn stub_cbe888() {
+    // IDA 0xcbe888: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbe88c — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre26HighLevelGpuProgramFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::HighLevelGpuProgramFactory *>,std::_Select1st<std::pair<std::string const,Ogre::HighLevelGpuProgramFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::HighLevelGpuProgramFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre26HighLevelGpuProgramFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev")]
-pub fn stub_cbe88c() -> ! {
-    todo!("0xcbe88c __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre26HighLevelGpuProgramFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev")
+pub fn stub_cbe88c() {
+    // IDA 0xcbe88c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbe898 — __ZN4Ogre9SharedPtrINS_19HighLevelGpuProgramEED1Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::HighLevelGpuProgram>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_19HighLevelGpuProgramEED1Ev")]
-pub fn stub_cbe898() -> ! {
-    todo!("0xcbe898 __ZN4Ogre9SharedPtrINS_19HighLevelGpuProgramEED1Ev")
+pub fn stub_cbe898() {
+    // IDA 0xcbe898: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbe948 — __ZN4Ogre9SharedPtrINS_19HighLevelGpuProgramEED0Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::HighLevelGpuProgram>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_19HighLevelGpuProgramEED0Ev")]
-pub fn stub_cbe948() -> ! {
-    todo!("0xcbe948 __ZN4Ogre9SharedPtrINS_19HighLevelGpuProgramEED0Ev")
+pub fn stub_cbe948() {
+    // IDA 0xcbe948: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbea3c — __ZN4Ogre9SharedPtrINS_19HighLevelGpuProgramEE7destroyEv
@@ -691,31 +691,31 @@ pub fn stub_cbea74() -> ! {
 // type: void __fastcall(Ogre::HighLevelGpuProgramPtr *__hidden this)
 #[doc(alias = "Ogre::HighLevelGpuProgramPtr::~HighLevelGpuProgramPtr()")]
 #[doc(alias = "__ZN4Ogre22HighLevelGpuProgramPtrD0Ev")]
-pub fn stub_cbea90() -> ! {
-    todo!("0xcbea90 __ZN4Ogre22HighLevelGpuProgramPtrD0Ev")
+pub fn stub_cbea90() {
+    // IDA 0xcbea90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbeb84 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre26HighLevelGpuProgramFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::HighLevelGpuProgramFactory *>,std::_Select1st<std::pair<std::string const,Ogre::HighLevelGpuProgramFactory *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::HighLevelGpuProgramFactory *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::HighLevelGpuProgramFactory *>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre26HighLevelGpuProgramFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E")]
-pub fn stub_cbeb84() -> ! {
-    todo!("0xcbeb84 __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre26HighLevelGpuProgramFactoryEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E")
+pub fn stub_cbeb84() {
+    // IDA 0xcbeb84: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0xcbebfc — __ZN4Ogre18NullProgramFactoryD1Ev
 // type: void __fastcall(Ogre::NullProgramFactory *__hidden this)
 #[doc(alias = "Ogre::NullProgramFactory::~NullProgramFactory()")]
 #[doc(alias = "__ZN4Ogre18NullProgramFactoryD1Ev")]
-pub fn stub_cbebfc() -> ! {
-    todo!("0xcbebfc __ZN4Ogre18NullProgramFactoryD1Ev")
+pub fn stub_cbebfc() {
+    // IDA 0xcbebfc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbec00 — __ZN4Ogre18NullProgramFactoryD0Ev
 // type: void __fastcall(Ogre::NullProgramFactory *__hidden this)
 #[doc(alias = "Ogre::NullProgramFactory::~NullProgramFactory()")]
 #[doc(alias = "__ZN4Ogre18NullProgramFactoryD0Ev")]
-pub fn stub_cbec00() -> ! {
-    todo!("0xcbec00 __ZN4Ogre18NullProgramFactoryD0Ev")
+pub fn stub_cbec00() {
+    // IDA 0xcbec00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbec8c — __ZNK4Ogre18NullProgramFactory11getLanguageEv
@@ -746,16 +746,16 @@ pub fn stub_cbed80() -> ! {
 // type: void __fastcall(Ogre::NullProgram *__hidden this)
 #[doc(alias = "Ogre::NullProgram::~NullProgram()")]
 #[doc(alias = "__ZN4Ogre11NullProgramD1Ev")]
-pub fn stub_cbed94() -> ! {
-    todo!("0xcbed94 __ZN4Ogre11NullProgramD1Ev")
+pub fn stub_cbed94() {
+    // IDA 0xcbed94: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbeda0 — __ZN4Ogre11NullProgramD0Ev
 // type: void __fastcall(Ogre::NullProgram *__hidden this)
 #[doc(alias = "Ogre::NullProgram::~NullProgram()")]
 #[doc(alias = "__ZN4Ogre11NullProgramD0Ev")]
-pub fn stub_cbeda0() -> ! {
-    todo!("0xcbeda0 __ZN4Ogre11NullProgramD0Ev")
+pub fn stub_cbeda0() {
+    // IDA 0xcbeda0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0xcbee30 — __ZN4Ogre11NullProgram12setParameterERKSsS2_

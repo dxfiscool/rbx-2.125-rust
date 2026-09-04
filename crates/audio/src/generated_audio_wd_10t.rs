@@ -35,8 +35,8 @@ pub fn stub_5f28c0() -> ! {
 // demangled: std::vector<std::string,std::allocator<std::string>>::~vector()
 #[doc(alias = "std::vector<std::string,std::allocator<std::string>>::~vector()")]
 #[doc(alias = "__ZNSt6vectorISsSaISsEED2Ev")]
-pub fn stub_5f2a50() -> ! {
-    todo!("0x5f2a50 __ZNSt6vectorISsSaISsEED2Ev")
+pub fn stub_5f2a50() {
+    // IDA 0x5f2a50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f2b1c — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEfEC2IMS2_KFfvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -179,8 +179,8 @@ pub fn stub_5f3160() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::CoordinateFrame>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::CoordinateFrame>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D15CoordinateFrameEED0Ev")]
-pub fn stub_5f3290() -> ! {
-    todo!("0x5f3290 __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D15CoordinateFrameEED0Ev")
+pub fn stub_5f3290() {
+    // IDA 0x5f3290: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f32bc — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D15CoordinateFrameEE10isReadOnlyEv
@@ -259,16 +259,16 @@ pub fn stub_5f3738() -> ! {
 // demangled: RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>::~TypedPropertyDescriptor()
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>::~TypedPropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D15CoordinateFrameEED1Ev")]
-pub fn stub_5f3760() -> ! {
-    todo!("0x5f3760 __ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D15CoordinateFrameEED1Ev")
+pub fn stub_5f3760() {
+    // IDA 0x5f3760: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f3784 — __ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D15CoordinateFrameEED0Ev
 // demangled: RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>::~TypedPropertyDescriptor()
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>::~TypedPropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D15CoordinateFrameEED0Ev")]
-pub fn stub_5f3784() -> ! {
-    todo!("0x5f3784 __ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D15CoordinateFrameEED0Ev")
+pub fn stub_5f3784() {
+    // IDA 0x5f3784: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f37b0 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv
@@ -363,16 +363,16 @@ pub fn stub_5f3ae0() -> ! {
 // demangled: G3D::Array<RBX::Primitive *,10,32ul>::~Array()
 #[doc(alias = "G3D::Array<RBX::Primitive *,10,32ul>::~Array()")]
 #[doc(alias = "__ZN3G3D5ArrayIPN3RBX9PrimitiveELi10ELm32EED2Ev")]
-pub fn stub_5f3b30() -> ! {
-    todo!("0x5f3b30 __ZN3G3D5ArrayIPN3RBX9PrimitiveELi10ELm32EED2Ev")
+pub fn stub_5f3b30() {
+    // IDA 0x5f3b30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f3c08 — __ZN5boost8weak_ptrIN3RBX12PartInstanceEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
 // demangled: boost::weak_ptr<RBX::PartInstance>::weak_ptr<RBX::PartInstance>(boost::shared_ptr<RBX::PartInstance> const&,boost::detail::sp_enable_if_convertible<RBX::PartInstance,RBX::PartInstance>::type)
 #[doc(alias = "boost::weak_ptr<RBX::PartInstance>::weak_ptr<RBX::PartInstance>(boost::shared_ptr<RBX::PartInstance> const&,boost::detail::sp_enable_if_convertible<RBX::PartInstance,RBX::PartInstance>::type)")]
 #[doc(alias = "__ZN5boost8weak_ptrIN3RBX12PartInstanceEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE")]
-pub fn stub_5f3c08() -> ! {
-    todo!("0x5f3c08 __ZN5boost8weak_ptrIN3RBX12PartInstanceEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE")
+pub fn stub_5f3c08() {
+    // IDA 0x5f3c08: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 // 0x5f3c58 — __ZN5boost14singleton_poolIN3RBX18OnDemandPVInstanceELj24ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
@@ -435,24 +435,24 @@ pub fn stub_5f3e48() -> ! {
 // demangled: RBX::Instance::EventInvocationSignalData::~EventInvocationSignalData()
 #[doc(alias = "RBX::Instance::EventInvocationSignalData::~EventInvocationSignalData()")]
 #[doc(alias = "__ZN3RBX8Instance25EventInvocationSignalDataD1Ev")]
-pub fn stub_5f3e60() -> ! {
-    todo!("0x5f3e60 __ZN3RBX8Instance25EventInvocationSignalDataD1Ev")
+pub fn stub_5f3e60() {
+    // IDA 0x5f3e60: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f3e68 — __ZN3RBX10FWInstanceD2Ev
 // demangled: RBX::FWInstance::~FWInstance()
 #[doc(alias = "RBX::FWInstance::~FWInstance()")]
 #[doc(alias = "__ZN3RBX10FWInstanceD2Ev")]
-pub fn stub_5f3e68() -> ! {
-    todo!("0x5f3e68 __ZN3RBX10FWInstanceD2Ev")
+pub fn stub_5f3e68() {
+    // IDA 0x5f3e68: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f3f38 — __ZN3RBX10FWInstanceD1Ev
 // demangled: RBX::FWInstance::~FWInstance()
 #[doc(alias = "RBX::FWInstance::~FWInstance()")]
 #[doc(alias = "__ZN3RBX10FWInstanceD1Ev")]
-pub fn stub_5f3f38() -> ! {
-    todo!("0x5f3f38 __ZN3RBX10FWInstanceD1Ev")
+pub fn stub_5f3f38() {
+    // IDA 0x5f3f38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f3f40 — __ZN3RBX9AllocatorINS_10FWInstanceEEdlEPv
@@ -467,32 +467,32 @@ pub fn stub_5f3f40() -> ! {
 // demangled: RBX::FWBase::~FWBase()
 #[doc(alias = "RBX::FWBase::~FWBase()")]
 #[doc(alias = "__ZN3RBX6FWBaseD0Ev")]
-pub fn stub_5f3f80() -> ! {
-    todo!("0x5f3f80 __ZN3RBX6FWBaseD0Ev")
+pub fn stub_5f3f80() {
+    // IDA 0x5f3f80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f4020 — __ZN3RBX12FWPVInstanceD1Ev
 // demangled: RBX::FWPVInstance::~FWPVInstance()
 #[doc(alias = "RBX::FWPVInstance::~FWPVInstance()")]
 #[doc(alias = "__ZN3RBX12FWPVInstanceD1Ev")]
-pub fn stub_5f4020() -> ! {
-    todo!("0x5f4020 __ZN3RBX12FWPVInstanceD1Ev")
+pub fn stub_5f4020() {
+    // IDA 0x5f4020: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f4024 — __ZN3RBX12FWPVInstanceD0Ev
 // demangled: RBX::FWPVInstance::~FWPVInstance()
 #[doc(alias = "RBX::FWPVInstance::~FWPVInstance()")]
 #[doc(alias = "__ZN3RBX12FWPVInstanceD0Ev")]
-pub fn stub_5f4024() -> ! {
-    todo!("0x5f4024 __ZN3RBX12FWPVInstanceD0Ev")
+pub fn stub_5f4024() {
+    // IDA 0x5f4024: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f40d8 — __ZN3RBX8Instance23OutfitChangedSignalDataD0Ev
 // demangled: RBX::Instance::OutfitChangedSignalData::~OutfitChangedSignalData()
 #[doc(alias = "RBX::Instance::OutfitChangedSignalData::~OutfitChangedSignalData()")]
 #[doc(alias = "__ZN3RBX8Instance23OutfitChangedSignalDataD0Ev")]
-pub fn stub_5f40d8() -> ! {
-    todo!("0x5f40d8 __ZN3RBX8Instance23OutfitChangedSignalDataD0Ev")
+pub fn stub_5f40d8() {
+    // IDA 0x5f40d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f40dc — __ZN3RBX11SurfaceData5emptyEv
@@ -539,16 +539,16 @@ pub fn stub_5f4488() -> ! {
 // demangled: boost::thread_specific_ptr<RBX::Security::Context>::~thread_specific_ptr()
 #[doc(alias = "boost::thread_specific_ptr<RBX::Security::Context>::~thread_specific_ptr()")]
 #[doc(alias = "__ZN5boost19thread_specific_ptrIN3RBX8Security7ContextEED1Ev")]
-pub fn stub_5f45a0() -> ! {
-    todo!("0x5f45a0 __ZN5boost19thread_specific_ptrIN3RBX8Security7ContextEED1Ev")
+pub fn stub_5f45a0() {
+    // IDA 0x5f45a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f45a8 — __ZN5boost19thread_specific_ptrIN3RBX8Security7ContextEE11delete_dataD1Ev
 // demangled: boost::thread_specific_ptr<RBX::Security::Context>::delete_data::~delete_data()
 #[doc(alias = "boost::thread_specific_ptr<RBX::Security::Context>::delete_data::~delete_data()")]
 #[doc(alias = "__ZN5boost19thread_specific_ptrIN3RBX8Security7ContextEE11delete_dataD1Ev")]
-pub fn stub_5f45a8() -> ! {
-    todo!("0x5f45a8 __ZN5boost19thread_specific_ptrIN3RBX8Security7ContextEE11delete_dataD1Ev")
+pub fn stub_5f45a8() {
+    // IDA 0x5f45a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f45b0 — __ZN5boost19thread_specific_ptrIN3RBX8Security7ContextEE11delete_dataclEPv
@@ -563,16 +563,16 @@ pub fn stub_5f45b0() -> ! {
 // demangled: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::Security::Context>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::Security::Context>::delete_data>>::~sp_counted_impl_pd()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::Security::Context>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::Security::Context>::delete_data>>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrIN3RBX8Security7ContextEE11delete_dataENS0_14do_heap_deleteIS7_EEED0Ev")]
-pub fn stub_5f45c0() -> ! {
-    todo!("0x5f45c0 __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrIN3RBX8Security7ContextEE11delete_dataENS0_14do_heap_deleteIS7_EEED0Ev")
+pub fn stub_5f45c0() {
+    // IDA 0x5f45c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f45c8 — __ZN3RBX6RbxRayD0Ev
 // demangled: RBX::RbxRay::~RbxRay()
 #[doc(alias = "RBX::RbxRay::~RbxRay()")]
 #[doc(alias = "__ZN3RBX6RbxRayD0Ev")]
-pub fn stub_5f45c8() -> ! {
-    todo!("0x5f45c8 __ZN3RBX6RbxRayD0Ev")
+pub fn stub_5f45c8() {
+    // IDA 0x5f45c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f45d0 — __ZNK3RBX17copy_on_write_ptrISt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS5_EEEdeEv
@@ -635,32 +635,32 @@ pub fn stub_5f4868() -> ! {
 // demangled: boost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()
 #[doc(alias = "boost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorISt12length_errorED2Ev")]
-pub fn stub_5f4948() -> ! {
-    todo!("0x5f4948 __ZN5boost16exception_detail19error_info_injectorISt12length_errorED2Ev")
+pub fn stub_5f4948() {
+    // IDA 0x5f4948: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f4a00 — __ZThn8_N5boost16exception_detail19error_info_injectorISt12length_errorED1Ev
 // demangled: non-virtual thunk toboost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()")]
 #[doc(alias = "__ZThn8_N5boost16exception_detail19error_info_injectorISt12length_errorED1Ev")]
-pub fn stub_5f4a00() -> ! {
-    todo!("0x5f4a00 __ZThn8_N5boost16exception_detail19error_info_injectorISt12length_errorED1Ev")
+pub fn stub_5f4a00() {
+    // IDA 0x5f4a00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f4a08 — __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED1Ev
 // demangled: non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
 #[doc(alias = "__ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED1Ev")]
-pub fn stub_5f4a08() -> ! {
-    todo!("0x5f4a08 __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED1Ev")
+pub fn stub_5f4a08() {
+    // IDA 0x5f4a08: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f4a10 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED1Ev
 // demangled: virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED1Ev")]
-pub fn stub_5f4a10() -> ! {
-    todo!("0x5f4a10 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED1Ev")
+pub fn stub_5f4a10() {
+    // IDA 0x5f4a10: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f4a20 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEE5cloneEv
@@ -675,8 +675,8 @@ pub fn stub_5f4a20() -> ! {
 // demangled: non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
 #[doc(alias = "__ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED0Ev")]
-pub fn stub_5f4ae0() -> ! {
-    todo!("0x5f4ae0 __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED0Ev")
+pub fn stub_5f4ae0() {
+    // IDA 0x5f4ae0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f4af8 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEE5cloneEv
@@ -691,8 +691,8 @@ pub fn stub_5f4af8() -> ! {
 // demangled: boost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()
 #[doc(alias = "boost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorISt12length_errorED0Ev")]
-pub fn stub_5f4b08() -> ! {
-    todo!("0x5f4b08 __ZN5boost16exception_detail19error_info_injectorISt12length_errorED0Ev")
+pub fn stub_5f4b08() {
+    // IDA 0x5f4b08: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f4b20 — __ZN5boost16exception_detail19error_info_injectorISt12length_errorEC2ERKS2_
@@ -723,40 +723,40 @@ pub fn stub_5f4d70() -> ! {
 // demangled: RBX::OnDemandInstance::~OnDemandInstance()
 #[doc(alias = "RBX::OnDemandInstance::~OnDemandInstance()")]
 #[doc(alias = "__ZN3RBX16OnDemandInstanceD2Ev")]
-pub fn stub_5f4d78() -> ! {
-    todo!("0x5f4d78 __ZN3RBX16OnDemandInstanceD2Ev")
+pub fn stub_5f4d78() {
+    // IDA 0x5f4d78: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f4fdc — __ZN3RBX18OnDemandPVInstanceD1Ev
 // demangled: RBX::OnDemandPVInstance::~OnDemandPVInstance()
 #[doc(alias = "RBX::OnDemandPVInstance::~OnDemandPVInstance()")]
 #[doc(alias = "__ZN3RBX18OnDemandPVInstanceD1Ev")]
-pub fn stub_5f4fdc() -> ! {
-    todo!("0x5f4fdc __ZN3RBX18OnDemandPVInstanceD1Ev")
+pub fn stub_5f4fdc() {
+    // IDA 0x5f4fdc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f5008 — __ZN3RBX18OnDemandPVInstanceD0Ev
 // demangled: RBX::OnDemandPVInstance::~OnDemandPVInstance()
 #[doc(alias = "RBX::OnDemandPVInstance::~OnDemandPVInstance()")]
 #[doc(alias = "__ZN3RBX18OnDemandPVInstanceD0Ev")]
-pub fn stub_5f5008() -> ! {
-    todo!("0x5f5008 __ZN3RBX18OnDemandPVInstanceD0Ev")
+pub fn stub_5f5008() {
+    // IDA 0x5f5008: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f50dc — __ZN3RBX16OnDemandInstanceD1Ev
 // demangled: RBX::OnDemandInstance::~OnDemandInstance()
 #[doc(alias = "RBX::OnDemandInstance::~OnDemandInstance()")]
 #[doc(alias = "__ZN3RBX16OnDemandInstanceD1Ev")]
-pub fn stub_5f50dc() -> ! {
-    todo!("0x5f50dc __ZN3RBX16OnDemandInstanceD1Ev")
+pub fn stub_5f50dc() {
+    // IDA 0x5f50dc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f50e0 — __ZN3RBX16OnDemandInstanceD0Ev
 // demangled: RBX::OnDemandInstance::~OnDemandInstance()
 #[doc(alias = "RBX::OnDemandInstance::~OnDemandInstance()")]
 #[doc(alias = "__ZN3RBX16OnDemandInstanceD0Ev")]
-pub fn stub_5f50e0() -> ! {
-    todo!("0x5f50e0 __ZN3RBX16OnDemandInstanceD0Ev")
+pub fn stub_5f50e0() {
+    // IDA 0x5f50e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5f5198 — __ZN3rbx7signals6signalIFvbEE13disconnectAllEv

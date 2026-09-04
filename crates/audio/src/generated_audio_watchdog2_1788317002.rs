@@ -105,8 +105,8 @@ pub fn stub_53cce8() -> ! {
 // 0x53cdfc — __ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectEiED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectEiED0Ev")]
-pub fn stub_53cdfc() -> ! {
-    todo!("0x53cdfc __ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectEiED0Ev")
+pub fn stub_53cdfc() {
+    // IDA 0x53cdfc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x53ce28 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiObjectEiE10GetSetImplIMNS_9GuiBase2dEKFivEMS2_FviEE10isReadOnlyEv
@@ -189,8 +189,8 @@ pub fn stub_53d0e8() -> ! {
 // 0x53d20c — __ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectENS_5UDim2EED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,RBX::UDim2>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectENS_5UDim2EED0Ev")]
-pub fn stub_53d20c() -> ! {
-    todo!("0x53d20c __ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectENS_5UDim2EED0Ev")
+pub fn stub_53d20c() {
+    // IDA 0x53d20c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x53d238 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_5UDim2EE10isReadOnlyEv
@@ -238,15 +238,15 @@ pub fn stub_53d458() -> ! {
 // 0x53d480 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_5UDim2EED1Ev
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::UDim2>::~TypedPropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorINS_5UDim2EED1Ev")]
-pub fn stub_53d480() -> ! {
-    todo!("0x53d480 __ZN3RBX10Reflection23TypedPropertyDescriptorINS_5UDim2EED1Ev")
+pub fn stub_53d480() {
+    // IDA 0x53d480: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x53d4a4 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_5UDim2EED0Ev
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::UDim2>::~TypedPropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorINS_5UDim2EED0Ev")]
-pub fn stub_53d4a4() -> ! {
-    todo!("0x53d4a4 __ZN3RBX10Reflection23TypedPropertyDescriptorINS_5UDim2EED0Ev")
+pub fn stub_53d4a4() {
+    // IDA 0x53d4a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x53d4d0 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiObjectENS_5UDim2EE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
@@ -294,8 +294,8 @@ pub fn stub_53d980() -> ! {
 // 0x53da40 — __ZN3RBX10Reflection13BoundFuncDescINS_9GuiObjectEFbNS_5UDim2ENS2_20TweenEasingDirectionENS2_16TweenEasingStyleEfbNS_3Lua15WeakFunctionRefEELi6EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiObject,bool ()(RBX::UDim2,RBX::GuiObject::TweenEasingDirection,RBX::GuiObject::TweenEasingStyle,float,bool,RBX::Lua::WeakFunctionRef),6>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9GuiObjectEFbNS_5UDim2ENS2_20TweenEasingDirectionENS2_16TweenEasingStyleEfbNS_3Lua15WeakFunctionRefEELi6EED0Ev")]
-pub fn stub_53da40() -> ! {
-    todo!("0x53da40 __ZN3RBX10Reflection13BoundFuncDescINS_9GuiObjectEFbNS_5UDim2ENS2_20TweenEasingDirectionENS2_16TweenEasingStyleEfbNS_3Lua15WeakFunctionRefEELi6EED0Ev")
+pub fn stub_53da40() {
+    // IDA 0x53da40: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x53dae0 — __ZNK3RBX10Reflection13BoundFuncDescINS_9GuiObjectEFbNS_5UDim2ENS2_20TweenEasingDirectionENS2_16TweenEasingStyleEfbNS_3Lua15WeakFunctionRefEELi6EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -385,8 +385,8 @@ pub fn stub_53ec8c() -> ! {
 // 0x53ed6c — __ZN3RBX10Reflection13BoundFuncDescINS_9GuiObjectEFbNS_5UDim2ES3_NS2_20TweenEasingDirectionENS2_16TweenEasingStyleEfbNS_3Lua15WeakFunctionRefEELi7EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiObject,bool ()(RBX::UDim2,RBX::UDim2,RBX::GuiObject::TweenEasingDirection,RBX::GuiObject::TweenEasingStyle,float,bool,RBX::Lua::WeakFunctionRef),7>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9GuiObjectEFbNS_5UDim2ES3_NS2_20TweenEasingDirectionENS2_16TweenEasingStyleEfbNS_3Lua15WeakFunctionRefEELi7EED0Ev")]
-pub fn stub_53ed6c() -> ! {
-    todo!("0x53ed6c __ZN3RBX10Reflection13BoundFuncDescINS_9GuiObjectEFbNS_5UDim2ES3_NS2_20TweenEasingDirectionENS2_16TweenEasingStyleEfbNS_3Lua15WeakFunctionRefEELi7EED0Ev")
+pub fn stub_53ed6c() {
+    // IDA 0x53ed6c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x53ee0c — __ZNK3RBX10Reflection13BoundFuncDescINS_9GuiObjectEFbNS_5UDim2ES3_NS2_20TweenEasingDirectionENS2_16TweenEasingStyleEfbNS_3Lua15WeakFunctionRefEELi7EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -462,36 +462,36 @@ pub fn stub_53fb08() -> ! {
 // 0x53fb5c — __ZN3RBX9GuiButtonD2Ev
 #[doc(alias = "RBX::GuiButton::~GuiButton()")]
 #[doc(alias = "__ZN3RBX9GuiButtonD2Ev")]
-pub fn stub_53fb5c() -> ! {
-    todo!("0x53fb5c __ZN3RBX9GuiButtonD2Ev")
+pub fn stub_53fb5c() {
+    // IDA 0x53fb5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x53fea0 — __ZN3rbx13remote_signalIFvvEED2Ev
 #[doc(alias = "rbx::remote_signal<void ()(void)>::~remote_signal()")]
 #[doc(alias = "__ZN3rbx13remote_signalIFvvEED2Ev")]
-pub fn stub_53fea0() -> ! {
-    todo!("0x53fea0 __ZN3rbx13remote_signalIFvvEED2Ev")
+pub fn stub_53fea0() {
+    // IDA 0x53fea0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x53ffec — __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFvvEED2Ev
 #[doc(alias = "RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>::~EventReplicatorBase()")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFvvEED2Ev")]
-pub fn stub_53ffec() -> ! {
-    todo!("0x53ffec __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFvvEED2Ev")
+pub fn stub_53ffec() {
+    // IDA 0x53ffec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x54011c — __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEED2Ev
 #[doc(alias = "RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>::~EventReplicatorBase()")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEED2Ev")]
-pub fn stub_54011c() -> ! {
-    todo!("0x54011c __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEED2Ev")
+pub fn stub_54011c() {
+    // IDA 0x54011c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x54024c — __ZN5boost9function2IvPN3RBX9GuiObjectENS1_5UDim2EE5clearEv
 #[doc(alias = "boost::function2<void,RBX::GuiObject *,RBX::UDim2>::clear(void)")]
 #[doc(alias = "__ZN5boost9function2IvPN3RBX9GuiObjectENS1_5UDim2EE5clearEv")]
-pub fn stub_54024c() -> ! {
-    todo!("0x54024c __ZN5boost9function2IvPN3RBX9GuiObjectENS1_5UDim2EE5clearEv")
+pub fn stub_54024c() {
+    // IDA 0x54024c: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x540278 — __ZNK5boost9function1IvN3RBX9GuiObject11TweenStatusEEclES3_
@@ -504,15 +504,15 @@ pub fn stub_540278() -> ! {
 // 0x54033c — __ZN3RBX10Reflection13BoundFuncDescINS_9GuiObjectEFbNS_5UDim2ENS2_20TweenEasingDirectionENS2_16TweenEasingStyleEfbNS_3Lua15WeakFunctionRefEELi6EED2Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiObject,bool ()(RBX::UDim2,RBX::GuiObject::TweenEasingDirection,RBX::GuiObject::TweenEasingStyle,float,bool,RBX::Lua::WeakFunctionRef),6>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9GuiObjectEFbNS_5UDim2ENS2_20TweenEasingDirectionENS2_16TweenEasingStyleEfbNS_3Lua15WeakFunctionRefEELi6EED2Ev")]
-pub fn stub_54033c() -> ! {
-    todo!("0x54033c __ZN3RBX10Reflection13BoundFuncDescINS_9GuiObjectEFbNS_5UDim2ENS2_20TweenEasingDirectionENS2_16TweenEasingStyleEfbNS_3Lua15WeakFunctionRefEELi6EED2Ev")
+pub fn stub_54033c() {
+    // IDA 0x54033c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5404ac — __ZN3RBX10Reflection13BoundFuncDescINS_9GuiObjectEFbNS_5UDim2ES3_NS2_20TweenEasingDirectionENS2_16TweenEasingStyleEfbNS_3Lua15WeakFunctionRefEELi7EED2Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiObject,bool ()(RBX::UDim2,RBX::UDim2,RBX::GuiObject::TweenEasingDirection,RBX::GuiObject::TweenEasingStyle,float,bool,RBX::Lua::WeakFunctionRef),7>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9GuiObjectEFbNS_5UDim2ES3_NS2_20TweenEasingDirectionENS2_16TweenEasingStyleEfbNS_3Lua15WeakFunctionRefEELi7EED2Ev")]
-pub fn stub_5404ac() -> ! {
-    todo!("0x5404ac __ZN3RBX10Reflection13BoundFuncDescINS_9GuiObjectEFbNS_5UDim2ES3_NS2_20TweenEasingDirectionENS2_16TweenEasingStyleEfbNS_3Lua15WeakFunctionRefEELi7EED2Ev")
+pub fn stub_5404ac() {
+    // IDA 0x5404ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x541c1c — __ZNK3RBX10GuiService20getModalDialogStatusEv
@@ -693,15 +693,15 @@ pub fn stub_5449fc() -> ! {
 // 0x544a08 — __ZN3RBX10Reflection14PropDescriptorINS_10GuiServiceEdED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,double>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_10GuiServiceEdED1Ev")]
-pub fn stub_544a08() -> ! {
-    todo!("0x544a08 __ZN3RBX10Reflection14PropDescriptorINS_10GuiServiceEdED1Ev")
+pub fn stub_544a08() {
+    // IDA 0x544a08: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x544a2c — __ZN3RBX10Reflection14PropDescriptorINS_10GuiServiceEbED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_10GuiServiceEbED1Ev")]
-pub fn stub_544a2c() -> ! {
-    todo!("0x544a2c __ZN3RBX10Reflection14PropDescriptorINS_10GuiServiceEbED1Ev")
+pub fn stub_544a2c() {
+    // IDA 0x544a2c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x544a50 — __ZNK3RBX10GuiService12getIsWindowsEv

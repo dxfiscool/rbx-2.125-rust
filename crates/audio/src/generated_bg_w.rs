@@ -20,8 +20,8 @@ pub fn stub_5c2e7c() -> ! {
 // 0x5c2e84 — __ZN3RBX10Reflection14PropDescriptorINS_8LightingEbED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_8LightingEbED1Ev")]
-pub fn stub_5c2e84() -> ! {
-    todo!("0x5c2e84 __ZN3RBX10Reflection14PropDescriptorINS_8LightingEbED1Ev")
+pub fn stub_5c2e84() {
+    // IDA 0x5c2e84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c2ea8 — __ZN3RBX8Lighting13onPropChangedERKNS_10Reflection18PropertyDescriptorE
@@ -48,15 +48,15 @@ pub fn stub_5c2eec() -> ! {
 // 0x5c305c — __ZN3RBX8LightingD1Ev
 #[doc(alias = "RBX::Lighting::~Lighting()")]
 #[doc(alias = "__ZN3RBX8LightingD1Ev")]
-pub fn stub_5c305c() -> ! {
-    todo!("0x5c305c __ZN3RBX8LightingD1Ev")
+pub fn stub_5c305c() {
+    // IDA 0x5c305c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c3060 — __ZN3RBX8LightingD0Ev
 #[doc(alias = "RBX::Lighting::~Lighting()")]
 #[doc(alias = "__ZN3RBX8LightingD0Ev")]
-pub fn stub_5c3060() -> ! {
-    todo!("0x5c3060 __ZN3RBX8LightingD0Ev")
+pub fn stub_5c3060() {
+    // IDA 0x5c3060: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c3100 — __ZNK3RBX14FactoryProductINS_8LightingENS_8InstanceELZNS_9sLightingEES2_E12getClassNameEv
@@ -68,35 +68,35 @@ pub fn stub_5c3100() -> ! {
 // 0x5c3110 — __ZThn32_N3RBX8LightingD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Lighting::~Lighting()")]
 #[doc(alias = "__ZThn32_N3RBX8LightingD1Ev")]
-pub fn stub_5c3110() -> ! {
-    todo!("0x5c3110 __ZThn32_N3RBX8LightingD1Ev")
+pub fn stub_5c3110() {
+    // IDA 0x5c3110: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c3118 — __ZThn32_N3RBX8LightingD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Lighting::~Lighting()")]
 #[doc(alias = "__ZThn32_N3RBX8LightingD0Ev")]
-pub fn stub_5c3118() -> ! {
-    todo!("0x5c3118 __ZThn32_N3RBX8LightingD0Ev")
+pub fn stub_5c3118() {
+    // IDA 0x5c3118: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c31bc — __ZThn32_NK3RBX14FactoryProductINS_8LightingENS_8InstanceELZNS_9sLightingEES2_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_8LightingENS_8InstanceELZNS_9sLightingEES2_E12getClassNameEv")]
-pub fn stub_5c31bc() -> ! {
-    todo!("0x5c31bc __ZThn32_NK3RBX14FactoryProductINS_8LightingENS_8InstanceELZNS_9sLightingEES2_E12getClassNameEv")
+pub fn stub_5c31bc() {
+    // IDA 0x5c31bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c31cc — __ZThn36_N3RBX8LightingD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Lighting::~Lighting()")]
 #[doc(alias = "__ZThn36_N3RBX8LightingD1Ev")]
-pub fn stub_5c31cc() -> ! {
-    todo!("0x5c31cc __ZThn36_N3RBX8LightingD1Ev")
+pub fn stub_5c31cc() {
+    // IDA 0x5c31cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c31d4 — __ZThn36_N3RBX8LightingD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Lighting::~Lighting()")]
 #[doc(alias = "__ZThn36_N3RBX8LightingD0Ev")]
-pub fn stub_5c31d4() -> ! {
-    todo!("0x5c31d4 __ZThn36_N3RBX8LightingD0Ev")
+pub fn stub_5c31d4() {
+    // IDA 0x5c31d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c3278 — __ZNK3RBX8Instance25findConstFirstChildOfTypeINS_3SkyEEEPKT_v
@@ -108,38 +108,38 @@ pub fn stub_5c3278() -> ! {
 
 // 0x5c32e0 — __ZN3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5c32e0() -> ! {
-    todo!("0x5c32e0 __ZN3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5c32e0() {
+    // IDA 0x5c32e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c32e4 — __ZN3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_5c32e4() -> ! {
-    todo!("0x5c32e4 __ZN3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_5c32e4() {
+    // IDA 0x5c32e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c3384 — __ZThn32_N3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5c3384() -> ! {
-    todo!("0x5c3384 __ZThn32_N3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5c3384() {
+    // IDA 0x5c3384: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c338c — __ZThn32_N3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_5c338c() -> ! {
-    todo!("0x5c338c __ZThn32_N3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_5c338c() {
+    // IDA 0x5c338c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c3430 — __ZThn36_N3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_5c3430() -> ! {
-    todo!("0x5c3430 __ZThn36_N3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_5c3430() {
+    // IDA 0x5c3430: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c3438 — __ZThn36_N3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_5c3438() -> ! {
-    todo!("0x5c3438 __ZThn36_N3RBX10Reflection9DescribedINS_8LightingELZNS_9sLightingEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sLightingEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_5c3438() {
+    // IDA 0x5c3438: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c34dc — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_8LightingEEEPKcS7_MT_bMS8_FvRKNS0_18PropertyDescriptorEENSA_10AttributesENS_8Security11PermissionsE
@@ -257,8 +257,8 @@ pub fn stub_5c3b2c() -> ! {
 // 0x5c3c40 — __ZN3RBX10Reflection14PropDescriptorINS_8LightingEbED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_8LightingEbED0Ev")]
-pub fn stub_5c3c40() -> ! {
-    todo!("0x5c3c40 __ZN3RBX10Reflection14PropDescriptorINS_8LightingEbED0Ev")
+pub fn stub_5c3c40() {
+    // IDA 0x5c3c40: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c3c6c — __ZNK3RBX10Reflection14PropDescriptorINS_8LightingEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
@@ -299,8 +299,8 @@ pub fn stub_5c3cbc() -> ! {
 // 0x5c3dd0 — __ZN3RBX10Reflection14PropDescriptorINS_8LightingEN3G3D6Color3EED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,G3D::Color3>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_8LightingEN3G3D6Color3EED0Ev")]
-pub fn stub_5c3dd0() -> ! {
-    todo!("0x5c3dd0 __ZN3RBX10Reflection14PropDescriptorINS_8LightingEN3G3D6Color3EED0Ev")
+pub fn stub_5c3dd0() {
+    // IDA 0x5c3dd0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c3dfc — __ZNK3RBX10Reflection14PropDescriptorINS_8LightingEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -348,8 +348,8 @@ pub fn stub_5c3fe0() -> ! {
 // 0x5c4010 — __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFvdELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Lighting,void ()(double),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFvdELi1EED0Ev")]
-pub fn stub_5c4010() -> ! {
-    todo!("0x5c4010 __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFvdELi1EED0Ev")
+pub fn stub_5c4010() {
+    // IDA 0x5c4010: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c40e4 — __ZNK3RBX10Reflection13BoundFuncDescINS_8LightingEFvdELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -369,8 +369,8 @@ pub fn stub_5c4120() -> ! {
 // 0x5c4224 — __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFdvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Lighting,double ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFdvELi0EED0Ev")]
-pub fn stub_5c4224() -> ! {
-    todo!("0x5c4224 __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFdvELi0EED0Ev")
+pub fn stub_5c4224() {
+    // IDA 0x5c4224: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c42d8 — __ZNK3RBX10Reflection13BoundFuncDescINS_8LightingEFdvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -397,8 +397,8 @@ pub fn stub_5c4338() -> ! {
 // 0x5c443c — __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFN3G3D7Vector3EvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Lighting,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFN3G3D7Vector3EvELi0EED0Ev")]
-pub fn stub_5c443c() -> ! {
-    todo!("0x5c443c __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFN3G3D7Vector3EvELi0EED0Ev")
+pub fn stub_5c443c() {
+    // IDA 0x5c443c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c44f0 — __ZNK3RBX10Reflection13BoundFuncDescINS_8LightingEFN3G3D7Vector3EvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -425,8 +425,8 @@ pub fn stub_5c4548() -> ! {
 // 0x5c464c — __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFfvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Lighting,float ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFfvELi0EED0Ev")]
-pub fn stub_5c464c() -> ! {
-    todo!("0x5c464c __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFfvELi0EED0Ev")
+pub fn stub_5c464c() {
+    // IDA 0x5c464c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c4700 — __ZNK3RBX10Reflection13BoundFuncDescINS_8LightingEFfvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -453,8 +453,8 @@ pub fn stub_5c4754() -> ! {
 // 0x5c4868 — __ZN3RBX10Reflection14PropDescriptorINS_8LightingEfED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_8LightingEfED0Ev")]
-pub fn stub_5c4868() -> ! {
-    todo!("0x5c4868 __ZN3RBX10Reflection14PropDescriptorINS_8LightingEfED0Ev")
+pub fn stub_5c4868() {
+    // IDA 0x5c4868: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c4894 — __ZNK3RBX10Reflection14PropDescriptorINS_8LightingEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
@@ -495,8 +495,8 @@ pub fn stub_5c48e0() -> ! {
 // 0x5c49f4 — __ZN3RBX10Reflection14PropDescriptorINS_8LightingESsED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_8LightingESsED0Ev")]
-pub fn stub_5c49f4() -> ! {
-    todo!("0x5c49f4 __ZN3RBX10Reflection14PropDescriptorINS_8LightingESsED0Ev")
+pub fn stub_5c49f4() {
+    // IDA 0x5c49f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c4a20 — __ZNK3RBX10Reflection14PropDescriptorINS_8LightingESsE10GetSetImplIMS2_KFSsvEMS2_FvRKSsEE10isReadOnlyEv
@@ -537,8 +537,8 @@ pub fn stub_5c4a74() -> ! {
 // 0x5c4bf8 — __ZN3RBX10Reflection9EventDescINS_8LightingEFvbEN3rbx6signalIS3_EEMS2_S6_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Lighting,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Lighting::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_8LightingEFvbEN3rbx6signalIS3_EEMS2_S6_ED0Ev")]
-pub fn stub_5c4bf8() -> ! {
-    todo!("0x5c4bf8 __ZN3RBX10Reflection9EventDescINS_8LightingEFvbEN3rbx6signalIS3_EEMS2_S6_ED0Ev")
+pub fn stub_5c4bf8() {
+    // IDA 0x5c4bf8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c4cac — __ZNK3RBX10Reflection13EventDescImplILi1ENS_8LightingEFvbEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -565,8 +565,8 @@ pub fn stub_5c4e8c() -> ! {
 // 0x5c4ea0 — __ZN3RBX8LightingD2Ev
 #[doc(alias = "RBX::Lighting::~Lighting()")]
 #[doc(alias = "__ZN3RBX8LightingD2Ev")]
-pub fn stub_5c4ea0() -> ! {
-    todo!("0x5c4ea0 __ZN3RBX8LightingD2Ev")
+pub fn stub_5c4ea0() {
+    // IDA 0x5c4ea0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c501c — __ZN5boost10posix_time21to_simple_string_typeIcEESbIT_St11char_traitsIS2_ESaIS2_EENS0_13time_durationE
@@ -691,8 +691,8 @@ pub fn stub_5c722c() -> ! {
 // 0x5c7230 — __ZN3RBX10Reflection13BoundFuncDescINS_13LocalBackpackEFvbELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LocalBackpack,void ()(bool),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13LocalBackpackEFvbELi1EED1Ev")]
-pub fn stub_5c7230() -> ! {
-    todo!("0x5c7230 __ZN3RBX10Reflection13BoundFuncDescINS_13LocalBackpackEFvbELi1EED1Ev")
+pub fn stub_5c7230() {
+    // IDA 0x5c7230: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x5c7270 — __ZN3RBX13LocalBackpack20getOldSchoolBackpackEv

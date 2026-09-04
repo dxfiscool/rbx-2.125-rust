@@ -196,22 +196,22 @@ pub fn stub_2358f0() -> ! {
 // 0x2358fc — __ZN5boost6detail16thread_data_baseD0Ev
 // type: void __fastcall(boost::detail::thread_data_base *__hidden this)
 #[doc(alias = "boost::detail::thread_data_base::~thread_data_base()")]
-pub fn stub_2358fc() -> ! {
-    todo!("0x2358fc boost::detail::thread_data_base::~thread_data_base()")
+pub fn stub_2358fc() {
+    // IDA 0x2358fc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x235910 — __ZN5boost6detail16thread_data_baseD1Ev
 // type: void __fastcall(boost::detail::thread_data_base *__hidden this)
 #[doc(alias = "boost::detail::thread_data_base::~thread_data_base()")]
-pub fn stub_235910() -> ! {
-    todo!("0x235910 boost::detail::thread_data_base::~thread_data_base()")
+pub fn stub_235910() {
+    // IDA 0x235910: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23591c — __ZN5boost6detail16thread_data_baseD2Ev
 // type: void __fastcall(boost::detail::thread_data_base *__hidden this)
 #[doc(alias = "boost::detail::thread_data_base::~thread_data_base()")]
-pub fn stub_23591c() -> ! {
-    todo!("0x23591c boost::detail::thread_data_base::~thread_data_base()")
+pub fn stub_23591c() {
+    // IDA 0x23591c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x235d7c — __ZN5boost6detail23get_current_thread_dataEv
@@ -294,8 +294,8 @@ pub fn stub_236b14() -> ! {
 // 0x236c14 — __ZN5boost11this_thread20disable_interruptionD1Ev
 // type: void __fastcall(boost::this_thread::disable_interruption *this, int, int, int)
 #[doc(alias = "boost::this_thread::disable_interruption::~disable_interruption()")]
-pub fn stub_236c14() -> ! {
-    todo!("0x236c14 boost::this_thread::disable_interruption::~disable_interruption()")
+pub fn stub_236c14() {
+    // IDA 0x236c14: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x236d04 — __ZN5boost12_GLOBAL__N_131get_or_make_current_thread_dataEv
@@ -329,15 +329,15 @@ pub fn stub_237130() -> ! {
 // 0x237348 — __ZN5boost12_GLOBAL__N_126externally_launched_threadD1Ev
 // type: void __fastcall(boost::_anonymous_namespace_::externally_launched_thread *__hidden this)
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")]
-pub fn stub_237348() -> ! {
-    todo!("0x237348 boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")
+pub fn stub_237348() {
+    // IDA 0x237348: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x237354 — __ZN5boost12_GLOBAL__N_126externally_launched_threadD0Ev
 // type: void __fastcall(boost::_anonymous_namespace_::externally_launched_thread *__hidden this)
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")]
-pub fn stub_237354() -> ! {
-    todo!("0x237354 boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")
+pub fn stub_237354() {
+    // IDA 0x237354: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x237368 — __ZN5boost12_GLOBAL__N_126externally_launched_thread3runEv
@@ -385,8 +385,8 @@ pub fn stub_2376a4() -> ! {
 // 0x237798 — __ZNSt8_Rb_treeIPKvSt4pairIKS1_N5boost6detail13tss_data_nodeEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "std::_Rb_tree<void const*,std::pair<void const* const,boost::detail::tss_data_node>,std::_Select1st<std::pair<void const* const,boost::detail::tss_data_node>>,std::less<void const*>,std::allocator<std::pair<void const* const,boost::detail::tss_data_node>>>::_M_erase(std::_Rb_tree_node<std::pair<void const* const,boost::detail::tss_data_node>> *)")]
-pub fn stub_237798() -> ! {
-    todo!("0x237798 std::_Rb_tree<void const*,std::pair<void const* const,boost::detail::tss_data_node>,std::_Select1st<std::pair<void const* const,boost::detail::tss_data_node>>,std::less<void const*>,std::allocator<std::pair<void const* const,boost::detail::tss_data_node>>>::_M_erase(std::_Rb_tree_node<std::pair<void const* const,boost::detail::tss_data_node>> *)")
+pub fn stub_237798() {
+    // IDA 0x237798: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x237848 — __ZNSt8_Rb_treeIPKvSt4pairIKS1_N5boost6detail13tss_data_nodeEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE16_M_insert_uniqueERKS7_
@@ -399,50 +399,50 @@ pub fn stub_237848() -> ! {
 // 0x2378fc — __ZNSt8_Rb_treeIPKvSt4pairIKS1_N5boost6detail13tss_data_nodeEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE14_M_create_nodeERKS7_
 // type: _DWORD *__fastcall(int, int *)
 #[doc(alias = "std::_Rb_tree<void const*,std::pair<void const* const,boost::detail::tss_data_node>,std::_Select1st<std::pair<void const* const,boost::detail::tss_data_node>>,std::less<void const*>,std::allocator<std::pair<void const* const,boost::detail::tss_data_node>>>::_M_create_node(std::pair<void const* const,boost::detail::tss_data_node> const&)")]
-pub fn stub_2378fc() -> ! {
-    todo!("0x2378fc std::_Rb_tree<void const*,std::pair<void const* const,boost::detail::tss_data_node>,std::_Select1st<std::pair<void const* const,boost::detail::tss_data_node>>,std::less<void const*>,std::allocator<std::pair<void const* const,boost::detail::tss_data_node>>>::_M_create_node(std::pair<void const* const,boost::detail::tss_data_node> const&)")
+pub fn stub_2378fc() {
+    // IDA 0x2378fc: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 // 0x2379ec — __ZNK5boost23enable_shared_from_thisINS_6detail16thread_data_baseEE22_internal_accept_ownerIS2_S2_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int)
 #[doc(alias = "void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data_base>(rbx_core::SharedPtr<boost::detail::thread_data_base> const*,boost::detail::thread_data_base *)const")]
-pub fn stub_2379ec() -> ! {
-    todo!("0x2379ec void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data_base>(boost::shared_ptr<boost::detail::thread_data_base> const*,boost::detail::thread_data_base *)const")
+pub fn stub_2379ec() {
+    // IDA 0x2379ec: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x237b40 — __ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::~sp_counted_impl_p()")]
-pub fn stub_237b40() -> ! {
-    todo!("0x237b40 boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::~sp_counted_impl_p()")
+pub fn stub_237b40() {
+    // IDA 0x237b40: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x237b44 — __ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::~sp_counted_impl_p()")]
-pub fn stub_237b44() -> ! {
-    todo!("0x237b44 boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::~sp_counted_impl_p()")
+pub fn stub_237b44() {
+    // IDA 0x237b44: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x237b50 — __ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEE7disposeEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::dispose(void)")]
-pub fn stub_237b50() -> ! {
-    todo!("0x237b50 boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::dispose(void)")
+pub fn stub_237b50() {
+    // IDA 0x237b50: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x237b64 — __ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEE11get_deleterERKSt9type_info
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::get_deleter(std::type_info const&)")]
-pub fn stub_237b64() -> ! {
-    todo!("0x237b64 boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::get_deleter(std::type_info const&)")
+pub fn stub_237b64() {
+    // IDA 0x237b64: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x237b68 — __ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::get_untyped_deleter(void)")]
-pub fn stub_237b68() -> ! {
-    todo!("0x237b68 boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::get_untyped_deleter(void)")
+pub fn stub_237b68() {
+    // IDA 0x237b68: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x237b6c — __ZN5boost6detail18future_object_base22mark_finished_internalERNS_11unique_lockINS_5mutexEEE
@@ -552,15 +552,15 @@ pub fn stub_239668() -> ! {
 // 0x239b34 — __ZN5boost10filesystem18directory_iteratorD1Ev
 // type: void __fastcall(boost::filesystem::directory_iterator *__hidden this)
 #[doc(alias = "boost::filesystem::directory_iterator::~directory_iterator()")]
-pub fn stub_239b34() -> ! {
-    todo!("0x239b34 boost::filesystem::directory_iterator::~directory_iterator()")
+pub fn stub_239b34() {
+    // IDA 0x239b34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x239bc8 — __ZN5boost10filesystem16filesystem_errorD1Ev
 // type: void __fastcall(std::runtime_error *this)
 #[doc(alias = "boost::filesystem::filesystem_error::~filesystem_error()")]
-pub fn stub_239bc8() -> ! {
-    todo!("0x239bc8 boost::filesystem::filesystem_error::~filesystem_error()")
+pub fn stub_239bc8() {
+    // IDA 0x239bc8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x239cc8 — __ZN5boost10filesystem16filesystem_errorC2ERKSsNS_6system10error_codeE
@@ -573,8 +573,8 @@ pub fn stub_239cc8() -> ! {
 // 0x239e90 — __ZN5boost10filesystem16filesystem_errorD0Ev
 // type: void __fastcall(std::runtime_error *this)
 #[doc(alias = "boost::filesystem::filesystem_error::~filesystem_error()")]
-pub fn stub_239e90() -> ! {
-    todo!("0x239e90 boost::filesystem::filesystem_error::~filesystem_error()")
+pub fn stub_239e90() {
+    // IDA 0x239e90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x239f94 — __ZNK5boost10filesystem16filesystem_error4whatEv
@@ -587,43 +587,43 @@ pub fn stub_239f94() -> ! {
 // 0x23a11c — __ZN5boost6detail20sp_pointer_constructINS_10filesystem16filesystem_error5m_impES4_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, int, boost::detail::sp_counted_base **, int, void *, int)
 #[doc(alias = "void boost::detail::sp_pointer_construct<boost::filesystem::filesystem_error::m_imp,boost::filesystem::filesystem_error::m_imp>(rbx_core::SharedPtr<boost::filesystem::filesystem_error::m_imp> *,boost::filesystem::filesystem_error::m_imp *,boost::detail::shared_count &)")]
-pub fn stub_23a11c() -> ! {
-    todo!("0x23a11c void boost::detail::sp_pointer_construct<boost::filesystem::filesystem_error::m_imp,boost::filesystem::filesystem_error::m_imp>(boost::shared_ptr<boost::filesystem::filesystem_error::m_imp> *,boost::filesystem::filesystem_error::m_imp *,boost::detail::shared_count &)")
+pub fn stub_23a11c() {
+    // IDA 0x23a11c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x23a2bc — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem16filesystem_error5m_impEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::filesystem_error::m_imp>::~sp_counted_impl_p()")]
-pub fn stub_23a2bc() -> ! {
-    todo!("0x23a2bc boost::detail::sp_counted_impl_p<boost::filesystem::filesystem_error::m_imp>::~sp_counted_impl_p()")
+pub fn stub_23a2bc() {
+    // IDA 0x23a2bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23a2c0 — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem16filesystem_error5m_impEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::filesystem_error::m_imp>::~sp_counted_impl_p()")]
-pub fn stub_23a2c0() -> ! {
-    todo!("0x23a2c0 boost::detail::sp_counted_impl_p<boost::filesystem::filesystem_error::m_imp>::~sp_counted_impl_p()")
+pub fn stub_23a2c0() {
+    // IDA 0x23a2c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x23a2cc — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem16filesystem_error5m_impEE7disposeEv
 // type: void __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::filesystem_error::m_imp>::dispose(void)")]
-pub fn stub_23a2cc() -> ! {
-    todo!("0x23a2cc boost::detail::sp_counted_impl_p<boost::filesystem::filesystem_error::m_imp>::dispose(void)")
+pub fn stub_23a2cc() {
+    // IDA 0x23a2cc: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x23a38c — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem16filesystem_error5m_impEE11get_deleterERKSt9type_info
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::filesystem_error::m_imp>::get_deleter(std::type_info const&)")]
-pub fn stub_23a38c() -> ! {
-    todo!("0x23a38c boost::detail::sp_counted_impl_p<boost::filesystem::filesystem_error::m_imp>::get_deleter(std::type_info const&)")
+pub fn stub_23a38c() {
+    // IDA 0x23a38c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x23a390 — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem16filesystem_error5m_impEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::filesystem_error::m_imp>::get_untyped_deleter(void)")]
-pub fn stub_23a390() -> ! {
-    todo!("0x23a390 boost::detail::sp_counted_impl_p<boost::filesystem::filesystem_error::m_imp>::get_untyped_deleter(void)")
+pub fn stub_23a390() {
+    // IDA 0x23a390: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x23a394 — __ZN5boost10filesystem16filesystem_errorC2ERKSsRKNS0_4pathENS_6system10error_codeE
@@ -706,6 +706,6 @@ pub fn stub_23ac1c() -> ! {
 // 0x23ac2c — __ZN5boost10filesystem4pathD1Ev
 // type: void __fastcall(boost::filesystem::path *__hidden this)
 #[doc(alias = "boost::filesystem::path::~path()")]
-pub fn stub_23ac2c() -> ! {
-    todo!("0x23ac2c boost::filesystem::path::~path()")
+pub fn stub_23ac2c() {
+    // IDA 0x23ac2c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }

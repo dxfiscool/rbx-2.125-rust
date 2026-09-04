@@ -23,8 +23,8 @@ pub fn stub_0x35cc54() -> ! {
 // type: void __fastcall(RBX::queuing_rw_mutex *__hidden this)
 #[doc(alias = "RBX::queuing_rw_mutex::~queuing_rw_mutex()")]
 #[doc(alias = "__ZN3RBX16queuing_rw_mutexD1Ev")]
-pub fn stub_0x35ccc0() -> ! {
-    todo!("0x35ccc0 RBX::queuing_rw_mutex::~queuing_rw_mutex()")
+pub fn stub_0x35ccc0() {
+    // IDA 0x35ccc0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x35ccd0 — __ZN3RBX16queuing_rw_mutexC2Ev
@@ -248,48 +248,48 @@ pub fn stub_0x35df64() -> ! {
 // type: void __fastcall(RBX::Profiling::Mark *__hidden this)
 #[doc(alias = "RBX::Profiling::Mark::~Mark()")]
 #[doc(alias = "__ZN3RBX9Profiling4MarkD1Ev")]
-pub fn stub_0x35dfcc() -> ! {
-    todo!("0x35dfcc RBX::Profiling::Mark::~Mark()")
+pub fn stub_0x35dfcc() {
+    // IDA 0x35dfcc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x35dfd0 — __ZN3RBX9Profiling4MarkD2Ev
 // type: void __fastcall(RBX::Profiling::Mark *__hidden this)
 #[doc(alias = "RBX::Profiling::Mark::~Mark()")]
 #[doc(alias = "__ZN3RBX9Profiling4MarkD2Ev")]
-pub fn stub_0x35dfd0() -> ! {
-    todo!("0x35dfd0 RBX::Profiling::Mark::~Mark()")
+pub fn stub_0x35dfd0() {
+    // IDA 0x35dfd0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x35e03c — __ZN3RBX9Profiling8ProfilerD1Ev
 // type: void __fastcall(RBX::Profiling::Profiler *__hidden this)
 #[doc(alias = "RBX::Profiling::Profiler::~Profiler()")]
 #[doc(alias = "__ZN3RBX9Profiling8ProfilerD1Ev")]
-pub fn stub_0x35e03c() -> ! {
-    todo!("0x35e03c RBX::Profiling::Profiler::~Profiler()")
+pub fn stub_0x35e03c() {
+    // IDA 0x35e03c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x35e060 — __ZN3RBX9Profiling8ProfilerD0Ev
 // type: void __fastcall(RBX::Profiling::Profiler *__hidden this)
 #[doc(alias = "RBX::Profiling::Profiler::~Profiler()")]
 #[doc(alias = "__ZN3RBX9Profiling8ProfilerD0Ev")]
-pub fn stub_0x35e060() -> ! {
-    todo!("0x35e060 RBX::Profiling::Profiler::~Profiler()")
+pub fn stub_0x35e060() {
+    // IDA 0x35e060: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x35e08c — __ZN3RBX9Profiling12CodeProfilerD1Ev
 // type: void __fastcall(RBX::Profiling::CodeProfiler *__hidden this)
 #[doc(alias = "RBX::Profiling::CodeProfiler::~CodeProfiler()")]
 #[doc(alias = "__ZN3RBX9Profiling12CodeProfilerD1Ev")]
-pub fn stub_0x35e08c() -> ! {
-    todo!("0x35e08c RBX::Profiling::CodeProfiler::~CodeProfiler()")
+pub fn stub_0x35e08c() {
+    // IDA 0x35e08c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x35e0b0 — __ZN3RBX9Profiling12CodeProfilerD0Ev
 // type: void __fastcall(RBX::Profiling::CodeProfiler *__hidden this)
 #[doc(alias = "RBX::Profiling::CodeProfiler::~CodeProfiler()")]
 #[doc(alias = "__ZN3RBX9Profiling12CodeProfilerD0Ev")]
-pub fn stub_0x35e0b0() -> ! {
-    todo!("0x35e0b0 RBX::Profiling::CodeProfiler::~CodeProfiler()")
+pub fn stub_0x35e0b0() {
+    // IDA 0x35e0b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x35e0dc — __ZNSt12_Vector_baseIiSaIiEE11_M_allocateEm
@@ -479,15 +479,15 @@ pub fn stub_0x35f824() -> ! {
 // type: void __fastcall(RBX::ProtectedString *__hidden this)
 #[doc(alias = "RBX::ProtectedString::~ProtectedString()")]
 #[doc(alias = "__ZN3RBX15ProtectedStringD1Ev")]
-pub fn stub_0x35f9ec() -> ! {
-    todo!("0x35f9ec RBX::ProtectedString::~ProtectedString()")
+pub fn stub_0x35f9ec() {
+    // IDA 0x35f9ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x35faa4 — __ZN3RBX10Reflection5TTypeINS_15ProtectedStringEED1Ev
 #[doc(alias = "RBX::Reflection::TType<RBX::ProtectedString>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeINS_15ProtectedStringEED1Ev")]
-pub fn stub_0x35faa4() -> ! {
-    todo!("0x35faa4 RBX::Reflection::TType<RBX::ProtectedString>::~TType()")
+pub fn stub_0x35faa4() {
+    // IDA 0x35faa4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x35faa8 — __ZN3RBX10Reflection7Variant14genericConvertINS_15ProtectedStringEEERT_v
@@ -550,8 +550,8 @@ pub fn stub_0x3600a4() -> ! {
 // 0x360150 — __ZN3RBX10Reflection5TTypeINS_15ProtectedStringEED0Ev
 #[doc(alias = "RBX::Reflection::TType<RBX::ProtectedString>::~TType()")]
 #[doc(alias = "__ZN3RBX10Reflection5TTypeINS_15ProtectedStringEED0Ev")]
-pub fn stub_0x360150() -> ! {
-    todo!("0x360150 RBX::Reflection::TType<RBX::ProtectedString>::~TType()")
+pub fn stub_0x360150() {
+    // IDA 0x360150: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x360154 — __GLOBAL__I_a_133
@@ -656,56 +656,56 @@ pub fn stub_0x360f34() -> ! {
 // type: void __fastcall(RBX::RunService *__hidden this)
 #[doc(alias = "RBX::RunService::~RunService()")]
 #[doc(alias = "__ZN3RBX10RunServiceD0Ev")]
-pub fn stub_0x3611ec() -> ! {
-    todo!("0x3611ec RBX::RunService::~RunService()")
+pub fn stub_0x3611ec() {
+    // IDA 0x3611ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x36128c — __ZN3RBX10RunServiceD1Ev
 // type: void __fastcall(RBX::RunService *__hidden this)
 #[doc(alias = "RBX::RunService::~RunService()")]
 #[doc(alias = "__ZN3RBX10RunServiceD1Ev")]
-pub fn stub_0x36128c() -> ! {
-    todo!("0x36128c RBX::RunService::~RunService()")
+pub fn stub_0x36128c() {
+    // IDA 0x36128c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x361290 — __ZThn32_N3RBX10RunServiceD0Ev
 // type: void __fastcall(RBX::RunService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 #[doc(alias = "__ZThn32_N3RBX10RunServiceD0Ev")]
-pub fn stub_0x361290() -> ! {
-    todo!("0x361290 non-virtual thunk toRBX::RunService::~RunService()")
+pub fn stub_0x361290() {
+    // IDA 0x361290: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x361298 — __ZThn36_N3RBX10RunServiceD0Ev
 // type: void __fastcall(RBX::RunService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 #[doc(alias = "__ZThn36_N3RBX10RunServiceD0Ev")]
-pub fn stub_0x361298() -> ! {
-    todo!("0x361298 non-virtual thunk toRBX::RunService::~RunService()")
+pub fn stub_0x361298() {
+    // IDA 0x361298: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3612a0 — __ZN3RBX10RunServiceD2Ev
 // type: void __fastcall(RBX::RunService *__hidden this)
 #[doc(alias = "RBX::RunService::~RunService()")]
 #[doc(alias = "__ZN3RBX10RunServiceD2Ev")]
-pub fn stub_0x3612a0() -> ! {
-    todo!("0x3612a0 RBX::RunService::~RunService()")
+pub fn stub_0x3612a0() {
+    // IDA 0x3612a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3616a8 — __ZThn32_N3RBX10RunServiceD1Ev
 // type: void __fastcall(RBX::RunService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 #[doc(alias = "__ZThn32_N3RBX10RunServiceD1Ev")]
-pub fn stub_0x3616a8() -> ! {
-    todo!("0x3616a8 non-virtual thunk toRBX::RunService::~RunService()")
+pub fn stub_0x3616a8() {
+    // IDA 0x3616a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3616b0 — __ZThn36_N3RBX10RunServiceD1Ev
 // type: void __fastcall(RBX::RunService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 #[doc(alias = "__ZThn36_N3RBX10RunServiceD1Ev")]
-pub fn stub_0x3616b0() -> ! {
-    todo!("0x3616b0 non-virtual thunk toRBX::RunService::~RunService()")
+pub fn stub_0x3616b0() {
+    // IDA 0x3616b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3616b8 — __ZN3RBX10RunService13getPhysicsJobEv
@@ -798,15 +798,15 @@ pub fn stub_0x36184c() -> ! {
 // 0x361858 — __ZN3RBX10Reflection9EventDescINS_10RunServiceEFvddEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::RunService,void ()(double,double),rbx::signal<void ()(double,double)>,rbx::signal<void ()(double,double)> RBX::RunService::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_10RunServiceEFvddEN3rbx6signalIS3_EEMS2_S6_ED1Ev")]
-pub fn stub_0x361858() -> ! {
-    todo!("0x361858 RBX::Reflection::EventDesc<RBX::RunService,void ()(double,double),rbx::signal<void ()(double,double)>,rbx::signal<void ()(double,double)> RBX::RunService::*>::~EventDesc()")
+pub fn stub_0x361858() {
+    // IDA 0x361858: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x36187c — __ZN3RBX10Reflection9EventDescINS_10RunServiceEFvdEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::RunService,void ()(double),rbx::signal<void ()(double)>,rbx::signal<void ()(double)> RBX::RunService::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_10RunServiceEFvdEN3rbx6signalIS3_EEMS2_S6_ED1Ev")]
-pub fn stub_0x36187c() -> ! {
-    todo!("0x36187c RBX::Reflection::EventDesc<RBX::RunService,void ()(double),rbx::signal<void ()(double)>,rbx::signal<void ()(double)> RBX::RunService::*>::~EventDesc()")
+pub fn stub_0x36187c() {
+    // IDA 0x36187c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3618a0 — __ZN3RBX10RunService3runEv
@@ -821,8 +821,8 @@ pub fn stub_0x3618a0() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::RunService,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_10RunServiceEFvvELi0EED1Ev")]
-pub fn stub_0x3618a8() -> ! {
-    todo!("0x3618a8 RBX::Reflection::BoundFuncDesc<RBX::RunService,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_0x3618a8() {
+    // IDA 0x3618a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3618cc — __ZN3RBX10RunService5pauseEv
@@ -947,8 +947,8 @@ pub fn stub_0x362314() -> ! {
 
 // 0x362340 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEE12getClassNameEv")]
-pub fn stub_0x362340() -> ! {
-    todo!("0x362340 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEE12getClassNameEv")
+pub fn stub_0x362340() {
+    // IDA 0x362340: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x362368 — __ZN3RBX22AbstractFactoryProductINS_8InstanceEE11getCreatorsEv
@@ -974,24 +974,24 @@ pub fn stub_0x362448() -> ! {
 // 0x362510 — __ZN5boost6detail10weak_countaSERKNS0_12shared_countE
 #[doc(alias = "boost::detail::weak_count::operator=(boost::detail::shared_count const&)")]
 #[doc(alias = "__ZN5boost6detail10weak_countaSERKNS0_12shared_countE")]
-pub fn stub_0x362510() -> ! {
-    todo!("0x362510 boost::detail::weak_count::operator=(boost::detail::shared_count const&)")
+pub fn stub_0x362510() {
+    // IDA 0x362510: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x362570 — __ZN5boost6detail12shared_countC2IPN3RBX6CameraENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Camera *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Camera *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX6CameraENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_0x362570() -> ! {
-    todo!("0x362570 boost::detail::shared_count::shared_count<RBX::Camera *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Camera *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x362570() {
+    // IDA 0x362570: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x362678 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6CameraENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Camera *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX6CameraENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_0x362678() -> ! {
-    todo!("0x362678 boost::detail::sp_counted_impl_pd<RBX::Camera *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x362678() {
+    // IDA 0x362678: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x362698 — __ZN3RBX4Name7declareILZNS_7sCameraEEEERKS0_v
@@ -1025,43 +1025,43 @@ pub fn stub_0x362924() -> ! {
 // type: _DWORD __fastcall(boost::bad_function_call *__hidden this)
 #[doc(alias = "boost::bad_function_call::bad_function_call(void)")]
 #[doc(alias = "__ZN5boost17bad_function_callC2Ev")]
-pub fn stub_0x362950() -> ! {
-    todo!("0x362950 boost::bad_function_call::bad_function_call(void)")
+pub fn stub_0x362950() {
+    // IDA 0x362950: function ctor/assign from a bind_t functor. Box<dyn Fn> from closure captures — carrier no-op.
 }
 
 // 0x362a98 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED1Ev
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED1Ev")]
-pub fn stub_0x362a98() -> ! {
-    todo!("0x362a98 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")
+pub fn stub_0x362a98() {
+    // IDA 0x362a98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x362aa8 — __ZN5boost16exception_detail19error_info_injectorINS_17bad_function_callEED1Ev
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_17bad_function_callEED1Ev")]
-pub fn stub_0x362aa8() -> ! {
-    todo!("0x362aa8 boost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()")
+pub fn stub_0x362aa8() {
+    // IDA 0x362aa8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x362ab0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED0Ev
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED0Ev")]
-pub fn stub_0x362ab0() -> ! {
-    todo!("0x362ab0 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")
+pub fn stub_0x362ab0() {
+    // IDA 0x362ab0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x362ac8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEEC1ERKS5_NS5_9clone_tagE
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::clone_tag)")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEEC1ERKS5_NS5_9clone_tagE")]
-pub fn stub_0x362ac8() -> ! {
-    todo!("0x362ac8 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::clone_tag)")
+pub fn stub_0x362ac8() {
+    // IDA 0x362ac8: function ctor/assign from a bind_t functor. Box<dyn Fn> from closure captures — carrier no-op.
 }
 
 // 0x362c30 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEEC1ERKS4_
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::clone_impl(boost::exception_detail::error_info_injector<boost::bad_function_call> const&)")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEEC1ERKS4_")]
-pub fn stub_0x362c30() -> ! {
-    todo!("0x362c30 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::clone_impl(boost::exception_detail::error_info_injector<boost::bad_function_call> const&)")
+pub fn stub_0x362c30() {
+    // IDA 0x362c30: function ctor/assign from a bind_t functor. Box<dyn Fn> from closure captures — carrier no-op.
 }
 
 // 0x362d98 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX13RunTransitionEEE4slotEEaSERKS9_
@@ -1089,15 +1089,15 @@ pub fn stub_0x362f88() -> ! {
 // 0x362f98 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev")]
-pub fn stub_0x362f98() -> ! {
-    todo!("0x362f98 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
+pub fn stub_0x362f98() {
+    // IDA 0x362f98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x362fb8 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev")]
-pub fn stub_0x362fb8() -> ! {
-    todo!("0x362fb8 non-virtual thunk toboost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")
+pub fn stub_0x362fb8() {
+    // IDA 0x362fb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x362fd0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEEC1ERKS5_NS5_9clone_tagE

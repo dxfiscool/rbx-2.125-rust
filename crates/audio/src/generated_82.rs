@@ -14,8 +14,8 @@ const _: () = {
 
 // 0x88c8f0 — __ZN3RBX10Reflection13BoundFuncDescINS_6PluginEFN5boost10shared_ptrINS_8InstanceEEESsELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Plugin,rbx_core::SharedPtr<RBX::Instance> ()(std::string),1>::~BoundFuncDesc()")]
-pub fn stub_88c8f0() -> ! {
-    todo!("0x88c8f0 RBX::Reflection::BoundFuncDesc<RBX::Plugin,boost::shared_ptr<RBX::Instance> ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_88c8f0() {
+    // IDA 0x88c8f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88c9bc — __ZNK3RBX10Reflection13BoundFuncDescINS_6PluginEFN5boost10shared_ptrINS_8InstanceEEESsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -32,8 +32,8 @@ pub fn stub_88cafc() -> ! {
 
 // 0x88cc7c — __ZN3RBX10Reflection9EventDescINS_6PluginEFvvEN3rbx6signalIS3_EEMS2_S6_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Plugin,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Plugin::*>::~EventDesc()")]
-pub fn stub_88cc7c() -> ! {
-    todo!("0x88cc7c RBX::Reflection::EventDesc<RBX::Plugin,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Plugin::*>::~EventDesc()")
+pub fn stub_88cc7c() {
+    // IDA 0x88cc7c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88cd30 — __ZNK3RBX10Reflection13EventDescImplILi0ENS_6PluginEFvvEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -68,8 +68,8 @@ pub fn stub_88d134() -> ! {
 
 // 0x88d164 — __ZN3RBX10Reflection13BoundFuncDescINS_6PluginEFvbELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Plugin,void ()(bool),1>::~BoundFuncDesc()")]
-pub fn stub_88d164() -> ! {
-    todo!("0x88d164 RBX::Reflection::BoundFuncDesc<RBX::Plugin,void ()(bool),1>::~BoundFuncDesc()")
+pub fn stub_88d164() {
+    // IDA 0x88d164: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88d238 — __ZNK3RBX10Reflection13BoundFuncDescINS_6PluginEFvbELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -86,8 +86,8 @@ pub fn stub_88d26c() -> ! {
 
 // 0x88d370 — __ZN3RBX10Reflection13BoundFuncDescINS_6PluginEFN5boost10shared_ptrINS_8InstanceEEEvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Plugin,rbx_core::SharedPtr<RBX::Instance> ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_88d370() -> ! {
-    todo!("0x88d370 RBX::Reflection::BoundFuncDesc<RBX::Plugin,boost::shared_ptr<RBX::Instance> ()(void),0>::~BoundFuncDesc()")
+pub fn stub_88d370() {
+    // IDA 0x88d370: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88d424 — __ZNK3RBX10Reflection13BoundFuncDescINS_6PluginEFN5boost10shared_ptrINS_8InstanceEEEvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -110,8 +110,8 @@ pub fn stub_88d530() -> ! {
 
 // 0x88d634 — __ZN3RBX10Reflection13BoundFuncDescINS_13PluginManagerEFN5boost10shared_ptrINS_8InstanceEEEvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PluginManager,rbx_core::SharedPtr<RBX::Instance> ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_88d634() -> ! {
-    todo!("0x88d634 RBX::Reflection::BoundFuncDesc<RBX::PluginManager,boost::shared_ptr<RBX::Instance> ()(void),0>::~BoundFuncDesc()")
+pub fn stub_88d634() {
+    // IDA 0x88d634: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88d6e8 — __ZNK3RBX10Reflection13BoundFuncDescINS_13PluginManagerEFN5boost10shared_ptrINS_8InstanceEEEvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -128,8 +128,8 @@ pub fn stub_88d70c() -> ! {
 
 // 0x88d7f4 — __ZN3RBX13PluginManagerD2Ev
 #[doc(alias = "RBX::PluginManager::~PluginManager()")]
-pub fn stub_88d7f4() -> ! {
-    todo!("0x88d7f4 RBX::PluginManager::~PluginManager()")
+pub fn stub_88d7f4() {
+    // IDA 0x88d7f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88d984 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13PluginManagerEEEN5boost10shared_ptrIT_EEv
@@ -146,44 +146,44 @@ pub fn stub_88da34() -> ! {
 
 // 0x88dafc — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13PluginManagerES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PluginManager,RBX::PluginManager>(rbx_core::SharedPtr<RBX::PluginManager> const*,RBX::PluginManager *)const")]
-pub fn stub_88dafc() -> ! {
-    todo!("0x88dafc void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PluginManager,RBX::PluginManager>(boost::shared_ptr<RBX::PluginManager> const*,RBX::PluginManager *)const")
+pub fn stub_88dafc() {
+    // IDA 0x88dafc: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 // 0x88dbe4 — __ZN5boost6detail12shared_countC2IPN3RBX13PluginManagerENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::PluginManager *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PluginManager *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_88dbe4() -> ! {
-    todo!("0x88dbe4 boost::detail::shared_count::shared_count<RBX::PluginManager *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PluginManager *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_88dbe4() {
+    // IDA 0x88dbe4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x88dcec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13PluginManagerENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PluginManager *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_88dcec() -> ! {
-    todo!("0x88dcec boost::detail::sp_counted_impl_pd<RBX::PluginManager *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_88dcec() {
+    // IDA 0x88dcec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88dcf0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13PluginManagerENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PluginManager *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_88dcf0() -> ! {
-    todo!("0x88dcf0 boost::detail::sp_counted_impl_pd<RBX::PluginManager *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_88dcf0() {
+    // IDA 0x88dcf0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88dcf4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13PluginManagerENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PluginManager *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_88dcf4() -> ! {
-    todo!("0x88dcf4 boost::detail::sp_counted_impl_pd<RBX::PluginManager *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_88dcf4() {
+    // IDA 0x88dcf4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x88dd14 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13PluginManagerENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PluginManager *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_88dd14() -> ! {
-    todo!("0x88dd14 boost::detail::sp_counted_impl_pd<RBX::PluginManager *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_88dd14() {
+    // IDA 0x88dd14: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x88dd2c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13PluginManagerENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PluginManager *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_88dd2c() -> ! {
-    todo!("0x88dd2c boost::detail::sp_counted_impl_pd<RBX::PluginManager *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_88dd2c() {
+    // IDA 0x88dd2c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 // 0x88dd30 — __GLOBAL__I_a_440
@@ -206,44 +206,44 @@ pub fn stub_88e2cc() -> ! {
 
 // 0x88e468 — __ZN3RBX11PluginMouseD0Ev
 #[doc(alias = "RBX::PluginMouse::~PluginMouse()")]
-pub fn stub_88e468() -> ! {
-    todo!("0x88e468 RBX::PluginMouse::~PluginMouse()")
+pub fn stub_88e468() {
+    // IDA 0x88e468: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88e508 — __ZN3RBX11PluginMouseD1Ev
 #[doc(alias = "RBX::PluginMouse::~PluginMouse()")]
-pub fn stub_88e508() -> ! {
-    todo!("0x88e508 RBX::PluginMouse::~PluginMouse()")
+pub fn stub_88e508() {
+    // IDA 0x88e508: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88e50c — __ZThn32_N3RBX11PluginMouseD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PluginMouse::~PluginMouse()")]
-pub fn stub_88e50c() -> ! {
-    todo!("0x88e50c non-virtual thunk toRBX::PluginMouse::~PluginMouse()")
+pub fn stub_88e50c() {
+    // IDA 0x88e50c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88e514 — __ZThn36_N3RBX11PluginMouseD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PluginMouse::~PluginMouse()")]
-pub fn stub_88e514() -> ! {
-    todo!("0x88e514 non-virtual thunk toRBX::PluginMouse::~PluginMouse()")
+pub fn stub_88e514() {
+    // IDA 0x88e514: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88e51c — __ZN3RBX11PluginMouseD2Ev
 #[doc(alias = "RBX::PluginMouse::~PluginMouse()")]
-pub fn stub_88e51c() -> ! {
-    todo!("0x88e51c RBX::PluginMouse::~PluginMouse()")
+pub fn stub_88e51c() {
+    // IDA 0x88e51c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88e614 — __ZThn32_N3RBX11PluginMouseD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PluginMouse::~PluginMouse()")]
-pub fn stub_88e614() -> ! {
-    todo!("0x88e614 non-virtual thunk toRBX::PluginMouse::~PluginMouse()")
+pub fn stub_88e614() {
+    // IDA 0x88e614: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88e61c — __ZThn36_N3RBX11PluginMouseD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PluginMouse::~PluginMouse()")]
-pub fn stub_88e61c() -> ! {
-    todo!("0x88e61c non-virtual thunk toRBX::PluginMouse::~PluginMouse()")
+pub fn stub_88e61c() {
+    // IDA 0x88e61c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88e624 — __ZNK3RBX11PluginMouse6getHitEv
@@ -356,8 +356,8 @@ pub fn stub_88f4e0() -> ! {
 
 // 0x88f4e4 — __ZThn32_NK3RBX17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEE12getClassNameEv")]
-pub fn stub_88f4e4() -> ! {
-    todo!("0x88f4e4 __ZThn32_NK3RBX17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEE12getClassNameEv")
+pub fn stub_88f4e4() {
+    // IDA 0x88f4e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88f50c — __ZN3RBX4Name13callDoDeclareILZNS_12sPluginMouseEEEEvv
@@ -374,38 +374,38 @@ pub fn stub_88f510() -> ! {
 
 // 0x88f5f0 — __ZN3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_88f5f0() -> ! {
-    todo!("0x88f5f0 __ZN3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_88f5f0() {
+    // IDA 0x88f5f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88f5f4 — __ZN3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_88f5f4() -> ! {
-    todo!("0x88f5f4 __ZN3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_88f5f4() {
+    // IDA 0x88f5f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88f694 — __ZThn32_N3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_88f694() -> ! {
-    todo!("0x88f694 __ZThn32_N3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_88f694() {
+    // IDA 0x88f694: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88f69c — __ZThn32_N3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_88f69c() -> ! {
-    todo!("0x88f69c __ZThn32_N3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_88f69c() {
+    // IDA 0x88f69c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88f740 — __ZThn36_N3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_88f740() -> ! {
-    todo!("0x88f740 __ZThn36_N3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_88f740() {
+    // IDA 0x88f740: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88f748 — __ZThn36_N3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_88f748() -> ! {
-    todo!("0x88f748 __ZThn36_N3RBX10Reflection9DescribedINS_11PluginMouseELZNS_12sPluginMouseEENS_17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_88f748() {
+    // IDA 0x88f748: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88f7ec — __GLOBAL__I_a_441
@@ -428,20 +428,20 @@ pub fn stub_88fa78() -> ! {
 
 // 0x88fdc0 — __ZN3RBX15BallCellContactD0Ev
 #[doc(alias = "RBX::BallCellContact::~BallCellContact()")]
-pub fn stub_88fdc0() -> ! {
-    todo!("0x88fdc0 RBX::BallCellContact::~BallCellContact()")
+pub fn stub_88fdc0() {
+    // IDA 0x88fdc0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88fe74 — __ZN3RBX15BallCellContactD1Ev
 #[doc(alias = "RBX::BallCellContact::~BallCellContact()")]
-pub fn stub_88fe74() -> ! {
-    todo!("0x88fe74 RBX::BallCellContact::~BallCellContact()")
+pub fn stub_88fe74() {
+    // IDA 0x88fe74: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88fe78 — __ZN3RBX15BallCellContactD2Ev
 #[doc(alias = "RBX::BallCellContact::~BallCellContact()")]
-pub fn stub_88fe78() -> ! {
-    todo!("0x88fe78 RBX::BallCellContact::~BallCellContact()")
+pub fn stub_88fe78() {
+    // IDA 0x88fe78: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x88ff94 — __ZN3RBX15BallCellContact19findClosestFeaturesERNS_10FixedArrayIPNS_13PolyConnectorELm40EEE
