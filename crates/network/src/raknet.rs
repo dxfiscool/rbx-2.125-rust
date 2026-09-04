@@ -8175,130 +8175,250 @@ pub fn stub_892534(
 
 // 0x8e61c8 — __ZN3RBX20ContextActionService27setupLocalPlayerConnectionsEPNS_7Network6PlayerE
 #[doc(alias = "RBX::ContextActionService::setupLocalPlayerConnections(RBX::Network::Player *)")]
-pub fn stub_8e61c8() -> ! {
-    todo!("0x8e61c8 RBX::ContextActionService::setupLocalPlayerConnections(RBX::Network::Player *)")
+pub fn stub_8e61c8(
+    character: Option<u32>,
+    fire: &mut dyn FnMut(u32),
+    connect: &mut dyn FnMut(),
+) {
+    // IDA 0x8e61c8: present character fires localCharacterAdded, else connects the +288 signal.
+    crate::player::setup_local_player_connections(character, fire, connect);
 }
 
 // 0x9038d0 — __ZNK3RBX15ServiceProvider4findINS_7Network7PlayersEEEPT_v
 #[doc(alias = "RBX::Network::Players * RBX::ServiceProvider::find<RBX::Network::Players>(void)const")]
-pub fn stub_9038d0() -> ! {
-    todo!("0x9038d0 RBX::Network::Players * RBX::ServiceProvider::find<RBX::Network::Players>(void)const")
+pub fn stub_9038d0(
+    cached: Option<u32>,
+    cache_ready: bool,
+    lookup: &mut dyn FnMut() -> Option<u32>,
+    store: &mut dyn FnMut(u32),
+) -> Option<u32> {
+    // IDA 0x9038d0: call_once index (0x903908), +92 slot probe (0x90392e), findServiceByClassName fallback (0x9039a2).
+    crate::player::find_players_service(cached, cache_ready, lookup, store)
 }
 
 // 0x903c18 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_7Network7PlayersEEEmv
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::Network::Players>(void)")]
-pub fn stub_903c18() -> ! {
-    todo!("0x903c18 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::Network::Players>(void)")
+pub fn stub_903c18(allocate: &mut dyn FnMut() -> u32) -> u32 {
+    // IDA 0x903c18: once-only newIndex (original passes `(ServiceProvider *)1` as receiver).
+    crate::player::players_class_index(allocate)
 }
 
 // 0x94f8a0 — __ZN3RBX7Network23TopNErrorsPhysicsSenderC1ERNS0_10ReplicatorE
 #[doc(alias = "RBX::Network::TopNErrorsPhysicsSender::TopNErrorsPhysicsSender(RBX::Network::Replicator &)")]
-pub fn stub_94f8a0() -> ! {
-    todo!("0x94f8a0 RBX::Network::TopNErrorsPhysicsSender::TopNErrorsPhysicsSender(RBX::Network::Replicator &)")
+pub fn stub_94f8a0(packet_cache: Option<u32>) -> crate::physics::TopNErrorsPhysicsSender {
+    // IDA 0x94f8a0 (C1): tail-calls C2 (BL 0x94f8a4), then returns `this`.
+    let mut sender = crate::physics::TopNErrorsPhysicsSender::new();
+    sender.init(packet_cache);
+    sender
 }
 
 // 0x94f8ac — __ZN3RBX7Network23TopNErrorsPhysicsSenderC2ERNS0_10ReplicatorE
 #[doc(alias = "RBX::Network::TopNErrorsPhysicsSender::TopNErrorsPhysicsSender(RBX::Network::Replicator &)")]
-pub fn stub_94f8ac() -> ! {
-    todo!("0x94f8ac RBX::Network::TopNErrorsPhysicsSender::TopNErrorsPhysicsSender(RBX::Network::Replicator &)")
+pub fn stub_94f8ac(packet_cache: Option<u32>) -> crate::physics::TopNErrorsPhysicsSender {
+    // IDA 0x94f8ac (C2): base PhysicsSender ctor (0x94f8ce), vtable (0x94f8f8), map/vector init
+    // (0x94fa16..0x94fa84, max_load 1.0), select_fraction 0.05 (0x94faaa), ServiceProvider-root
+    // walk + find<PhysicsPacketCache> into +208 (0x94faea..0x94fc2a).
+    let mut sender = crate::physics::TopNErrorsPhysicsSender::new();
+    sender.init(packet_cache);
+    sender
 }
 
 // 0x94ff68 — __ZN3RBX7Network23TopNErrorsPhysicsSenderD0Ev
 #[doc(alias = "RBX::Network::TopNErrorsPhysicsSender::~TopNErrorsPhysicsSender()")]
-pub fn stub_94ff68() -> ! {
-    todo!("0x94ff68 RBX::Network::TopNErrorsPhysicsSender::~TopNErrorsPhysicsSender()")
+pub fn stub_94ff68(mut sender: crate::physics::TopNErrorsPhysicsSender) {
+    // IDA 0x94ff68 (D0): D2 body (BL 0x950014-equivalent) then operator delete; drop is the delete here.
+    sender.tear_down();
 }
 
 // 0x950008 — __ZN3RBX7Network23TopNErrorsPhysicsSenderD1Ev
 #[doc(alias = "RBX::Network::TopNErrorsPhysicsSender::~TopNErrorsPhysicsSender()")]
-pub fn stub_950008() -> ! {
-    todo!("0x950008 RBX::Network::TopNErrorsPhysicsSender::~TopNErrorsPhysicsSender()")
+pub fn stub_950008(sender: &mut crate::physics::TopNErrorsPhysicsSender) {
+    // IDA 0x950008 (D1): tail-calls D2 (BL 0x950014-equivalent).
+    sender.tear_down();
 }
 
 // 0x950014 — __ZN3RBX7Network23TopNErrorsPhysicsSenderD2Ev
 #[doc(alias = "RBX::Network::TopNErrorsPhysicsSender::~TopNErrorsPhysicsSender()")]
-pub fn stub_950014() -> ! {
-    todo!("0x950014 RBX::Network::TopNErrorsPhysicsSender::~TopNErrorsPhysicsSender()")
+pub fn stub_950014(sender: &mut crate::physics::TopNErrorsPhysicsSender) {
+    // IDA 0x950014 (D2): scoped_connection x2, weak-cache release, bucket free, map dtor, list clear, base dtor.
+    sender.tear_down();
 }
 
 // 0x9501c8 — __ZN3RBX7Network23TopNErrorsPhysicsSender4stepEv
 #[doc(alias = "RBX::Network::TopNErrorsPhysicsSender::step(void)")]
-pub fn stub_9501c8() -> ! {
-    todo!("0x9501c8 RBX::Network::TopNErrorsPhysicsSender::step(void)")
+#[allow(clippy::too_many_arguments)]
+pub fn stub_9501c8(
+    sender: &mut crate::physics::TopNErrorsPhysicsSender,
+    ensure_service: &mut dyn FnMut(),
+    for_each_part: &mut dyn FnMut(&mut dyn FnMut(u32)),
+    add_nugget: impl FnMut(u32),
+    reconnect: &mut dyn FnMut(),
+    drain_pending: &mut dyn FnMut(&mut dyn FnMut(u32)),
+    head_model: &mut dyn FnMut() -> Option<u32>,
+    refresh: &mut dyn FnMut(&mut Vec<crate::physics::TopNErrorsNugget>),
+    select: &mut dyn FnMut(&mut Vec<crate::physics::TopNErrorsNugget>),
+) -> Option<u32> {
+    // IDA 0x9501c8: service link (0x9501f8..0x95052e), part for_each (0x950556), slot
+    // reconnect (0x9505ae), pending drain (0x95065e), counter bump (0x9507e6), head model
+    // (0x9507b0), per-nugget refresh (0x9507ea..0x9509c8), descending re-sort (0x9509d2+).
+    crate::physics::top_n_errors_step(
+        sender,
+        ensure_service,
+        for_each_part,
+        add_nugget,
+        reconnect,
+        drain_pending,
+        head_model,
+        refresh,
+        select,
+    )
 }
 
 // 0x950fb4 — __ZN3RBX7Network23TopNErrorsPhysicsSender9addNuggetERNS_12PartInstanceE
 #[doc(alias = "RBX::Network::TopNErrorsPhysicsSender::addNugget(RBX::PartInstance &)")]
-pub fn stub_950fb4() -> ! {
-    todo!("0x950fb4 RBX::Network::TopNErrorsPhysicsSender::addNugget(RBX::PartInstance &)")
+pub fn stub_950fb4(part: u32, add: &mut dyn FnMut(u32)) {
+    // IDA 0x950fb4: shared_from<PartInstance> (0x950fd6, Arc pin engine-side) then addNugget2 (0x95100c).
+    add(part);
 }
 
 // 0x9511c8 — __ZN3RBX7Network23TopNErrorsPhysicsSender16onAddingAssemblyEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Network::TopNErrorsPhysicsSender::onAddingAssembly(rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_9511c8() -> ! {
-    todo!("0x9511c8 RBX::Network::TopNErrorsPhysicsSender::onAddingAssembly(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_9511c8(
+    instance: Option<u32>,
+    is_part: bool,
+    push: &mut dyn FnMut(Option<u32>),
+) {
+    // IDA 0x9511c8: null or non-Part instances assert (TopNErrorsPhysicsSender.cpp:204, 0x9512a4)
+    // and push an empty shared; Parts push into the +116 list (0x9512ee..0x951304).
+    let part = instance.filter(|_| is_part);
+    debug_assert!(part.is_some(), "part TopNErrorsPhysicsSender.cpp line: 204");
+    push(part);
 }
 
 // 0x9514c4 — __ZN3RBX7Network23TopNErrorsPhysicsSender10addNugget2EN5boost10shared_ptrINS_12PartInstanceEEE
 #[doc(alias = "RBX::Network::TopNErrorsPhysicsSender::addNugget2(rbx_core::SharedPtr<RBX::PartInstance>)")]
-pub fn stub_9514c4() -> ! {
-    todo!("0x9514c4 RBX::Network::TopNErrorsPhysicsSender::addNugget2(boost::shared_ptr<RBX::PartInstance>)")
+pub fn stub_9514c4(
+    sender: &mut crate::physics::TopNErrorsPhysicsSender,
+    part: u32,
+    rotation: [f32; 9],
+    translation: [f32; 3],
+) -> bool {
+    // IDA 0x9514c4: frame snapshot (0x951622..0x951658) + unordered_map emplace (0x951820).
+    sender.add_nugget2(part, rotation, translation)
 }
 
-// 0x952b38 — __ZN3RBX7Network23TopNErrorsPhysicsSender6Nugget12computeErrorERKN3G3D15CoordinateFrameEPKNS_13ModelInstanceEi
-#[doc(alias = "RBX::Network::TopNErrorsPhysicsSender::Nugget::computeError(G3D::CoordinateFrame const&,RBX::ModelInstance const*,int)")]
-pub fn stub_952b38() -> ! {
-    todo!("0x952b38 RBX::Network::TopNErrorsPhysicsSender::Nugget::computeError(G3D::CoordinateFrame const&,RBX::ModelInstance const*,int)")
+#[allow(clippy::too_many_arguments)]
+pub fn stub_952b38(
+    nugget: &mut crate::physics::TopNErrorsNugget,
+    counter: i32,
+    assembly_extent: Option<f32>,
+    frame: [f32; 3],
+    model: Option<[f32; 3]>,
+    same_model: bool,
+    rotation_delta: f32,
+    size_filter: i32,
+) -> bool {
+    // IDA 0x952b38: 20-step extent refresh (line 314/ComputeProp.h:38 asserts), range term,
+    // ancestor pin at f32::MAX, scale^2-weighted error over denom, 400.0 filter gate.
+    nugget.compute_error(
+        counter,
+        assembly_extent,
+        frame,
+        model,
+        same_model,
+        rotation_delta,
+        size_filter,
+    )
 }
 
-// 0x952d9c — __ZN3RBX7Network23TopNErrorsPhysicsSender10sendPacketEi14PacketPriorityPNS0_15ReplicatorStats18PhysicsSenderStatsE
-#[doc(alias = "RBX::Network::TopNErrorsPhysicsSender::sendPacket(int,PacketPriority,RBX::Network::ReplicatorStats::PhysicsSenderStats *)")]
-pub fn stub_952d9c() -> ! {
-    todo!("0x952d9c RBX::Network::TopNErrorsPhysicsSender::sendPacket(int,PacketPriority,RBX::Network::ReplicatorStats::PhysicsSenderStats *)")
+#[allow(clippy::too_many_arguments)]
+pub fn stub_952d9c(
+    mtu: u32,
+    max_packed: usize,
+    nugget_count: usize,
+    write_header: &mut dyn FnMut(),
+    send_one: &mut dyn FnMut(usize) -> bool,
+    bytes_written: &mut dyn FnMut() -> usize,
+    flush: &mut dyn FnMut(),
+    sample_total: &mut dyn FnMut(usize),
+) -> usize {
+    // IDA 0x952d9c: tag-27/timestamp/tag-133 headers, sendPhysicsData + lastSent snapshot per
+    // nugget (line 156 assert), mtu overflow flush via serializeId + ConcurrentRakPeer::Send,
+    // RunningAverage stats, tail flush; returns nuggets packed.
+    crate::physics::send_top_n_packet(
+        mtu,
+        max_packed,
+        nugget_count,
+        write_header,
+        send_one,
+        bytes_written,
+        flush,
+        sample_total,
+    )
 }
 
 // 0x953e68 — __ZSt8for_eachIN3RBX9Intrusive3SetINS0_12PartInstanceENS0_14PhysicsServiceEE8IteratorEN5boost3_bi6bind_tIvNS7_4_mfi3mf1IvNS0_7Network23TopNErrorsPhysicsSenderERS3_EENS8_5list2INS8_5valueIPSD_EENS7_3argILi1EEEEEEEET0_T_SP_SO_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::TopNErrorsPhysicsSender,RBX::PartInstance&>,boost::_bi::list2<boost::_bi::value<RBX::Network::TopNErrorsPhysicsSender*>,boost::arg<1>>> std::for_each<RBX::Intrusive::Set<RBX::PartInstance,RBX::PhysicsService>::Iterator,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::TopNErrorsPhysicsSender,RBX::PartInstance&>,boost::_bi::list2<boost::_bi::value<RBX::Network::TopNErrorsPhysicsSender*>,boost::arg<1>>>>(RBX::Intrusive::Set<RBX::PartInstance,RBX::PhysicsService>::Iterator,RBX::Intrusive::Set<RBX::PartInstance,RBX::PhysicsService>::Iterator,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::TopNErrorsPhysicsSender,RBX::PartInstance&>,boost::_bi::list2<boost::_bi::value<RBX::Network::TopNErrorsPhysicsSender*>,boost::arg<1>>>)")]
-pub fn stub_953e68() -> ! {
-    todo!("0x953e68 boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::TopNErrorsPhysicsSender,RBX::PartInstance&>,boost::_bi::list2<boost::_bi::value<RBX::Network::TopNErrorsPhysicsSender*>,boost::arg<1>>> std::for_each<RBX::Intrusive::Set<RBX::PartInstance,RBX::PhysicsService>::Iterator,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::TopNErrorsPhysicsSender,RBX::PartInstance&>,boost::_bi::list2<boost::_bi::value<RBX::Network::TopNErrorsPhysicsSender*>,boost::arg<1>>>>(RBX::Intrusive::Set<RBX::PartInstance,RBX::PhysicsService>::Iterator,RBX::Intrusive::Set<RBX::PartInstance,RBX::PhysicsService>::Iterator,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::TopNErrorsPhysicsSender,RBX::PartInstance&>,boost::_bi::list2<boost::_bi::value<RBX::Network::TopNErrorsPhysicsSender*>,boost::arg<1>>>)")
+pub fn stub_953e68(
+    next: &mut dyn FnMut() -> Option<u32>,
+    apply: &mut dyn FnMut(u32),
+) {
+    // IDA 0x953e68: loops the Intrusive::Set range (operator* 0x953e92, operator++ 0x953ea2)
+    // invoking the bound addNugget (0x953e9c); the TST selects the virtual/direct call form;
+    // returns the functor (engine-side copy, 0x953ec6..0x953ecc).
+    while let Some(part) = next() {
+        apply(part);
+    }
 }
 
 // 0x953edc — __ZNSt6vectorIPN3RBX7Network23TopNErrorsPhysicsSender6NuggetESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_
 #[doc(alias = "std::vector<RBX::Network::TopNErrorsPhysicsSender::Nugget *,std::allocator<RBX::Network::TopNErrorsPhysicsSender::Nugget *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::TopNErrorsPhysicsSender::Nugget **,std::vector<RBX::Network::TopNErrorsPhysicsSender::Nugget *,std::allocator<RBX::Network::TopNErrorsPhysicsSender::Nugget *>>>,RBX::Network::TopNErrorsPhysicsSender::Nugget * const&)")]
-pub fn stub_953edc() -> ! {
-    todo!("0x953edc std::vector<RBX::Network::TopNErrorsPhysicsSender::Nugget *,std::allocator<RBX::Network::TopNErrorsPhysicsSender::Nugget *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::TopNErrorsPhysicsSender::Nugget **,std::vector<RBX::Network::TopNErrorsPhysicsSender::Nugget *,std::allocator<RBX::Network::TopNErrorsPhysicsSender::Nugget *>>>,RBX::Network::TopNErrorsPhysicsSender::Nugget * const&)")
+pub fn stub_953edc<T>(vec: &mut Vec<T>, index: usize, value: T) {
+    // IDA 0x953edc: spare capacity shifts the tail right via memmove (0x953f0c..0x953f1e) and
+    // stores; otherwise reallocate at 2x (1 when empty, 0x953f2c..0x953f4e, length_error past
+    // 0x40000000), move both halves around the slot (0x953f52..0x953f82), and free the old array.
+    vec.insert(index.min(vec.len()), value);
 }
-
 // 0x953fd4 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKNS_10shared_ptrIKN3RBX12PartInstanceEEENS6_7Network23TopNErrorsPhysicsSender6NuggetEEES9_SD_NS_4hashIS9_EESt8equal_toIS9_EEEE12emplace_implINS1_13emplace_args1ISE_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISE_EEEEbERSA_RKT_
 #[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>>,rbx_core::SharedPtr<RBX::PartInstance const>,RBX::Network::TopNErrorsPhysicsSender::Nugget,boost::hash<rbx_core::SharedPtr<RBX::PartInstance const>>,std::equal_to<rbx_core::SharedPtr<RBX::PartInstance const>>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>>>(rbx_core::SharedPtr<RBX::PartInstance const> const&,boost::unordered::detail::emplace_args1<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>> const&)")]
-pub fn stub_953fd4() -> ! {
-    todo!("0x953fd4 std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>>,boost::shared_ptr<RBX::PartInstance const>,RBX::Network::TopNErrorsPhysicsSender::Nugget,boost::hash<boost::shared_ptr<RBX::PartInstance const>>,std::equal_to<boost::shared_ptr<RBX::PartInstance const>>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>>>(boost::shared_ptr<RBX::PartInstance const> const&,boost::unordered::detail::emplace_args1<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>> const&)")
+pub fn stub_953fd4(
+    sender: &mut crate::physics::TopNErrorsPhysicsSender,
+    part: u32,
+    rotation: [f32; 9],
+    translation: [f32; 3],
+) -> bool {
+    // IDA 0x953fd4: hash probe at `(h + (h >> 3)) % buckets` (0x954030..0x954044); hit returns
+    // the existing node with false, miss reserves (0x954450) and constructs the node (0x9541dc).
+    sender.add_nugget2(part, rotation, translation)
 }
-
 // 0x9541dc — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKNS_10shared_ptrIKN3RBX12PartInstanceEEENS6_7Network23TopNErrorsPhysicsSender6NuggetEEEEEE20construct_with_valueINS1_13emplace_args1ISE_EEEEvRKT_
 #[doc(alias = "void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>>>>::construct_with_value<boost::unordered::detail::emplace_args1<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>>>(boost::unordered::detail::emplace_args1<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>> const&)")]
-pub fn stub_9541dc() -> ! {
-    todo!("0x9541dc void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>>>>::construct_with_value<boost::unordered::detail::emplace_args1<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>>>(boost::unordered::detail::emplace_args1<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>> const&)")
+pub fn stub_9541dc<K, V>(pair: (K, V)) -> Box<(K, V)> {
+    // IDA 0x9541dc: fast_pool node alloc plus placement copy of the (shared_ptr, Nugget) pair
+    // (the G3D::Matrix3 word copy at 0x951714); the boxed pair is the node here.
+    Box::new(pair)
 }
-
 // 0x954450 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKNS_10shared_ptrIKN3RBX12PartInstanceEEENS6_7Network23TopNErrorsPhysicsSender6NuggetEEES9_SD_NS_4hashIS9_EESt8equal_toIS9_EEEE18reserve_for_insertEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>>,rbx_core::SharedPtr<RBX::PartInstance const>,RBX::Network::TopNErrorsPhysicsSender::Nugget,boost::hash<rbx_core::SharedPtr<RBX::PartInstance const>>,std::equal_to<rbx_core::SharedPtr<RBX::PartInstance const>>>>::reserve_for_insert(unsigned long)")]
-pub fn stub_954450() -> ! {
-    todo!("0x954450 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>>,boost::shared_ptr<RBX::PartInstance const>,RBX::Network::TopNErrorsPhysicsSender::Nugget,boost::hash<boost::shared_ptr<RBX::PartInstance const>>,std::equal_to<boost::shared_ptr<RBX::PartInstance const>>>>::reserve_for_insert(unsigned long)")
+pub fn stub_954450<K: Eq + std::hash::Hash, V>(map: &mut std::collections::HashMap<K, V>, extra: usize) {
+    // IDA 0x954450: grown need is `max(size + 1, size + size / 2)` (0x95446c..0x954478), bucketed
+    // up through `floor(need / max_load) + 1` on the prime list (0x95447a..0x9544c2, ml = 1.0).
+    map.reserve(extra);
 }
-
 // 0x9545f8 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKNS_10shared_ptrIKN3RBX12PartInstanceEEENS6_7Network23TopNErrorsPhysicsSender6NuggetEEES9_SD_NS_4hashIS9_EESt8equal_toIS9_EEEE14create_bucketsEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>>,rbx_core::SharedPtr<RBX::PartInstance const>,RBX::Network::TopNErrorsPhysicsSender::Nugget,boost::hash<rbx_core::SharedPtr<RBX::PartInstance const>>,std::equal_to<rbx_core::SharedPtr<RBX::PartInstance const>>>>::create_buckets(unsigned long)")]
-pub fn stub_9545f8() -> ! {
-    todo!("0x9545f8 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>>,boost::shared_ptr<RBX::PartInstance const>,RBX::Network::TopNErrorsPhysicsSender::Nugget,boost::hash<boost::shared_ptr<RBX::PartInstance const>>,std::equal_to<boost::shared_ptr<RBX::PartInstance const>>>>::create_buckets(unsigned long)")
+pub fn stub_9545f8<K: Eq + std::hash::Hash, V>(map: &mut std::collections::HashMap<K, V>, buckets: usize) {
+    // IDA 0x9545f8: fresh `(n + 1)`-word bucket array, zeroed (0x95461e..0x954632), old freed;
+    // `max_load_count = ceil(n * ml)` (0x954658..0x954692); past 0x40000000 throws bad_alloc.
+    map.reserve(buckets.saturating_sub(map.len()));
 }
-
 // 0x9546ac — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKNS_10shared_ptrIKN3RBX12PartInstanceEEENS6_7Network23TopNErrorsPhysicsSender6NuggetEEES9_SD_NS_4hashIS9_EESt8equal_toIS9_EEEE11erase_nodesEPNS1_8ptr_nodeISE_EESO_
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>>,rbx_core::SharedPtr<RBX::PartInstance const>,RBX::Network::TopNErrorsPhysicsSender::Nugget,boost::hash<rbx_core::SharedPtr<RBX::PartInstance const>>,std::equal_to<rbx_core::SharedPtr<RBX::PartInstance const>>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>> *,boost::unordered::detail::ptr_node<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>> *)")]
-pub fn stub_9546ac() -> ! {
-    todo!("0x9546ac boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>>,boost::shared_ptr<RBX::PartInstance const>,RBX::Network::TopNErrorsPhysicsSender::Nugget,boost::hash<boost::shared_ptr<RBX::PartInstance const>>,std::equal_to<boost::shared_ptr<RBX::PartInstance const>>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>> *,boost::unordered::detail::ptr_node<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::TopNErrorsPhysicsSender::Nugget>> *)")
+pub fn stub_9546ac(sender: &mut crate::physics::TopNErrorsPhysicsSender, part: u32) -> bool {
+    // IDA 0x9546ac: bucket located by node hash (0x9546dc), predecessor chain unlinked
+    // (0x954708..0x954722), then the [node, end) range destroyed node by node.
+    sender.erase_nugget(part)
 }
-
 // 0x954884 — __ZNK5boost4_mfi3mf1IvN3RBX7Network23TopNErrorsPhysicsSenderENS_10shared_ptrINS2_12PartInstanceEEEEclEPS4_S7_
 #[doc(alias = "boost::_mfi::mf1<void,RBX::Network::TopNErrorsPhysicsSender,rbx_core::SharedPtr<RBX::PartInstance>>::operator()(RBX::Network::TopNErrorsPhysicsSender*,rbx_core::SharedPtr<RBX::PartInstance>)const")]
 pub fn stub_954884<A>(slot: &mut dyn FnMut(A), a: A) {
@@ -8308,26 +8428,34 @@ pub fn stub_954884<A>(slot: &mut dyn FnMut(A), a: A) {
 
 // 0x954b00 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_7Network23TopNErrorsPhysicsSenderES6_EENSA_5list2INSA_5valueIPSF_EENS2_3argILi1EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::TopNErrorsPhysicsSender,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::TopNErrorsPhysicsSender*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_954b00() -> ! {
-    todo!("0x954b00 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::TopNErrorsPhysicsSender,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::TopNErrorsPhysicsSender*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_954b00(slot: &mut Option<crate::signal::SlotId>) {
+    // IDA 0x954b00 (D1): vtable := base `slot` (0x954b0a..0x954b1e), then the intrusive release
+    // of the bound-functor block (OSAtomicAdd32 0x954b2a..0x954b50); dropping the handle here.
+    *slot = None;
 }
 
 // 0x954b5c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_7Network23TopNErrorsPhysicsSenderES6_EENSA_5list2INSA_5valueIPSF_EENS2_3argILi1EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::TopNErrorsPhysicsSender,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::TopNErrorsPhysicsSender*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_954b5c() -> ! {
-    todo!("0x954b5c rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::TopNErrorsPhysicsSender,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::TopNErrorsPhysicsSender*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_954b5c(slot: Option<crate::signal::SlotId>) {
+    // IDA 0x954b5c (D0): D1 body (vtable reset + intrusive release, 0x954b78..0x954c00) then
+    // operator delete of the slot block (engine-side free of the malloc'd callable).
+    let _ = slot;
 }
 
 // 0x954c68 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network23TopNErrorsPhysicsSenderES7_EENSB_5list2INSB_5valueIPSG_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::TopNErrorsPhysicsSender,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::TopNErrorsPhysicsSender*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_954c68() -> ! {
-    todo!("0x954c68 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::TopNErrorsPhysicsSender,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::TopNErrorsPhysicsSender*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_954c68(slot: &mut dyn FnMut(Option<u32>), instance: Option<u32>) {
+    // IDA 0x954c68: shared_ptr<Instance> copy (spinlock inc 0x954cc2..0x954d08), then
+    // mf1::operator()(sender, instance) (0x954d1c, same shape as 0x954ff0) = onAddingAssembly.
+    crate::functor::invoke1(slot, instance);
 }
 
 // 0x954d84 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network23TopNErrorsPhysicsSenderES7_EENSB_5list2INSB_5valueIPSG_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::TopNErrorsPhysicsSender,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::TopNErrorsPhysicsSender*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_954d84() -> ! {
-    todo!("0x954d84 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::TopNErrorsPhysicsSender,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::TopNErrorsPhysicsSender*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_954d84(slot: &mut dyn FnMut(Option<u32>), instance: Option<u32>) {
+    // IDA 0x954d84: __ZThn4_ — the -4 `this` adjustment is folded into the field offsets
+    // ([R6,#0x14] vs [R6,#0x18] in 0x954c68); body tail-calls the 0x954c68 call.
+    stub_954c68(slot, instance);
 }
 
 // 0x954ff0 — __ZNK5boost4_mfi3mf1IvN3RBX7Network23TopNErrorsPhysicsSenderENS_10shared_ptrINS2_8InstanceEEEEclEPS4_S7_

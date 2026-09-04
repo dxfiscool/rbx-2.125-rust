@@ -21,6 +21,57 @@
 
 use std::collections::{HashMap, HashSet};
 
+/// `ContextActionService::setupLocalPlayerConnections` (IDA 0x8e61c8): with a
+/// character already present (`+23`, 0x8e61f4) it is pinned via `shared_from`
+/// and delivered straight to `localCharacterAdded` (0x8e6222..0x8e6242);
+/// otherwise the player's +288 character signal is connected to a
+/// `bind(localCharacterAdded, this)` slot (0x8e6272..0x8e6282). Refcount
+/// traffic stays engine-side; `fire`/`connect` are the two arms.
+pub fn setup_local_player_connections(
+    character: Option<u32>,
+    fire: &mut dyn FnMut(u32),
+    connect: &mut dyn FnMut(),
+) {
+    match character {
+        Some(model) => fire(model),
+        None => connect(),
+    }
+}
+
+/// `ServiceProvider::find<Players>` (IDA 0x9038d0): `call_once` publishes the
+/// class index (0x903908), then the +92 slot vector is probed at that index
+/// (0x90392e..0x903984) — a live entry returns immediately. Otherwise the
+/// vector grows (0x903968, engine-side) and a null `Players` class name bails
+/// (0x90398c); `findServiceByClassName` (0x9039a2) fills and caches the slot
+/// (0x9039be). `cache_ready` is the bounds check (0x903954); a cached miss
+/// still falls through to the name lookup.
+pub fn find_players_service(
+    cached: Option<u32>,
+    cache_ready: bool,
+    lookup: &mut dyn FnMut() -> Option<u32>,
+    store: &mut dyn FnMut(u32),
+) -> Option<u32> {
+    if cache_ready {
+        if let Some(hit) = cached {
+            return Some(hit);
+        }
+    }
+    let found = lookup()?;
+    store(found);
+    Some(found)
+}
+
+/// `ServiceProvider::doGetClassIndex<Players>` (IDA 0x903c18): `call_once`
+/// (`__cxa_guard_acquire`, 0x903c74..0x903c94) publishes
+/// `newIndex((ServiceProvider *)1)` once and returns it afterwards. The
+/// constant-`1` receiver is preserved in the comment; `allocate` runs once
+/// here via the process-wide slot.
+pub fn players_class_index(allocate: &mut dyn FnMut() -> u32) -> u32 {
+    use std::sync::OnceLock;
+    static INDEX: OnceLock<u32> = OnceLock::new();
+    *INDEX.get_or_init(|| allocate())
+}
+
 /// `RBX::Network::NetworkOwner` (IDA 0x5e1de8 / 0x5e1ef8): an 8-byte id
 /// copied from a function-local static into `this` and returned.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Hash)]

@@ -1274,11 +1274,316 @@ impl ErrorCompSender {
     }
 }
 
-/// `RBX::Network::TopNErrorsPhysicsSender` (IDA 0xb20e6c): a
-/// [`PhysicsSender`] variant; the error ranking stays engine-side, so the
-/// crate keeps a stateless marker for the shared-ownership seams below.
+/// `RBX::Network::TopNErrorsPhysicsSender` (IDA 0x94f8ac C2): the +116
+/// pending-part list, the +124 `boost::unordered::map<shared_ptr<Part const>,
+/// Nugget>`, the +148 send-order vector, the +200 physics-service and +208
+/// packet-cache weak links, the +216 step counter, and the +224/+228
+/// `scoped_connection` pair. The fast-pool init (0x94f926..0x94fa12), the
+/// prime-list bucket pick (0x94fa36..0x94fa76), and the `shared_ptr` control
+/// blocks are allocator/refcount detail that stays engine-side; `map` holds
+/// part -> nugget-vector index with `f32::MAX` hash capacity semantics via
+/// `HashMap`.
 #[derive(Clone, Debug, Default)]
-pub struct TopNErrorsPhysicsSender;
+pub struct TopNErrorsPhysicsSender {
+    /// `std::list<shared_ptr<PartInstance>>` at +116 (IDA 0x9512ee, 0x9507a4).
+    pub pending: Vec<u32>,
+    /// `std::vector<Nugget *>` at +148, kept descending by error (IDA 0x9509d2+).
+    pub nuggets: Vec<TopNErrorsNugget>,
+    /// `boost::unordered::map` at +124 (IDA 0x951820): part -> `nuggets` index.
+    pub map: HashMap<u32, usize>,
+    /// Weak `PhysicsService` link at +200 (IDA 0x95035e..0x950368).
+    pub physics_service: Option<u32>,
+    /// Weak `PhysicsPacketCache` link at +208 (IDA 0x94fbb2..0x94fc2a).
+    pub packet_cache: Option<u32>,
+    /// Step counter at +216 (IDA 0x9507e6).
+    pub step_counter: u32,
+    /// Fractional select threshold at +168 (`0x3FA999999999999A` = 0.05, IDA 0x94faaa).
+    pub select_fraction: f64,
+    /// Absolute select count at +180 (IDA 0x9509e8).
+    pub select_count: f64,
+    /// `onAddingAssembly` connection at +224/+228 (IDA 0x9505ae..0x9505e4).
+    pub connection: Option<crate::signal::SlotId>,
+    /// Byte at +196 forced to 1 (IDA 0x94fac0).
+    pub flag_196: bool,
+}
+
+impl TopNErrorsPhysicsSender {
+    /// IDA 0x94f8ac: empty tables, `max_load_factor` 1.0 (0x94fa84), null
+    /// links, counter 0, `select_fraction` 0.05, `select_count` 0.0.
+    pub fn new() -> Self {
+        Self {
+            select_fraction: 0.05,
+            flag_196: true,
+            ..Self::default()
+        }
+    }
+
+    /// IDA 0x94faea..0x94fc2a: keeps the `PhysicsPacketCache` found by walking
+    /// the replicator chain to the `ServiceProvider` root (`isA` +184
+    /// `find<PhysicsPacketCache>`, 0x94fb96..0x94fbb2). The walk and the
+    /// `shared_from` pin stay engine-side; the resolved handle lands at +208.
+    pub fn init(&mut self, packet_cache: Option<u32>) {
+        self.packet_cache = packet_cache;
+    }
+
+    /// IDA 0x950014 (D2, shared by D1 0x950008 and D0 0x94ff68): drops the two
+    /// `scoped_connection`s (+228/+224, 0x950076..0x950082), releases the weak
+    /// cache links, frees the bucket array, destroys the map (0x9500c0),
+    /// clears the pending list (0x9500cc), then the base `PhysicsSender` dtor
+    /// runs (0x9500d8, engine-side).
+    pub fn tear_down(&mut self) {
+        self.connection = None;
+        self.physics_service = None;
+        self.packet_cache = None;
+        self.map.clear();
+        self.nuggets.clear();
+        self.pending.clear();
+    }
+
+    /// `TopNErrorsPhysicsSender::addNugget2` (IDA 0x9514c4): snapshots the part
+    /// frame into a fresh `Nugget` and `emplace`s it (IDA 0x951820). A present
+    /// key keeps the old node and reports false; the frame reads stay
+    /// engine-side behind `rotation`/`translation`.
+    pub fn add_nugget2(&mut self, part: u32, rotation: [f32; 9], translation: [f32; 3]) -> bool {
+        if self.map.contains_key(&part) {
+            return false;
+        }
+        let index = self.nuggets.len();
+        self.nuggets.push(TopNErrorsNugget::new(part, rotation, translation));
+        self.map.insert(part, index);
+        true
+    }
+
+    /// IDA 0x95095c (`erase_nodes`) + 0x950974 (`memmove`): unlinks one map
+    /// node and compacts the send vector, rekeying the moved tail. Returns
+    /// whether a node was erased.
+    pub fn erase_nugget(&mut self, part: u32) -> bool {
+        let Some(index) = self.map.remove(&part) else {
+            return false;
+        };
+        self.nuggets.remove(index);
+        for (i, nugget) in self.nuggets.iter().enumerate().skip(index) {
+            self.map.insert(nugget.part, i);
+        }
+        true
+    }
+
+    /// IDA 0x9509d2+: orders the send vector descending by error — insertion
+    /// sort under 13 elements (0x950a12..0x950b3c), introsort above
+    /// (0x950a1a..0x950cc2). Both are descending (larger errors shift toward
+    /// the front, 0x950b04..0x950b08); the stable sort matches the small-N
+    /// path exactly and the large-N path up to equal-error order.
+    pub fn sort_descending(&mut self) {
+        self.nuggets.sort_by(|a, b| {
+            b.error.partial_cmp(&a.error).unwrap_or(std::cmp::Ordering::Equal)
+        });
+        for (i, nugget) in self.nuggets.iter().enumerate() {
+            self.map.insert(nugget.part, i);
+        }
+    }
+}
+
+/// `RBX::Network::TopNErrorsPhysicsSender::Nugget` (IDA 0x9514c4/0x952b38):
+/// word 0 the shared part, word 2 the error float, words 3..11 the last-sent
+/// rotation (`sumDeltaAxis` base at this+12, 0x952d00), words 12..14 the
+/// last-sent translation, byte 60 the send flag, word 16 the scale, word 17
+/// the assembly extent.
+#[derive(Clone, Debug, PartialEq)]
+pub struct TopNErrorsNugget {
+    pub part: u32,
+    pub rotation: [f32; 9],
+    pub translation: [f32; 3],
+    pub error: f32,
+    pub send: bool,
+    pub scale: f32,
+    pub extent: f32,
+}
+
+impl Default for TopNErrorsNugget {
+    fn default() -> Self {
+        Self {
+            part: 0,
+            rotation: [0.0; 9],
+            translation: [0.0; 3],
+            error: 0.0,
+            send: true,
+            scale: 2.0,
+            extent: 0.0,
+        }
+    }
+}
+
+impl TopNErrorsNugget {
+    /// IDA 0x951622..0x951810: rotation/translation snapshot of the part;
+    /// error 0.0 (0x951706/0x9517de), flag set (0x95164a), scale 2.0
+    /// (`0x40000000`, 0x951652), extent 0.0 (0x951658).
+    pub fn new(part: u32, rotation: [f32; 9], translation: [f32; 3]) -> Self {
+        Self { part, rotation, translation, ..Self::default() }
+    }
+
+    /// `Nugget::computeError` (IDA 0x952b38). Every 20th call refreshes the
+    /// extent from the const assembly (`getConstAssembly`, null asserts at
+    /// TopNErrorsPhysicsSender.cpp:314, `!dirty` asserts at ComputeProp.h:38;
+    /// 0x952b7c..0x952c3a) with `scale = min(2*extent, 50.0)` above 2.0 else
+    /// 2.0. `model` is the head model (`a3`, null skips the range term);
+    /// `same_model` is the +13 ancestor-chain hit (0x952ca8..0x952d72);
+    /// `rotation_delta` is `Math::sumDeltaAxis` (0x952d00); `size_filter` is
+    /// `DFInt::PhysicsCompressionSizeFilter` (0x952d52). Returns the +60 flag.
+    pub fn compute_error(
+        &mut self,
+        counter: i32,
+        assembly_extent: Option<f32>,
+        frame: [f32; 3],
+        model: Option<[f32; 3]>,
+        same_model: bool,
+        rotation_delta: f32,
+        size_filter: i32,
+    ) -> bool {
+        // IDA 0x952b38: `if (!(a4 % 20))`.
+        if counter % 20 == 0 {
+            let extent = assembly_extent
+                .expect("assembly TopNErrorsPhysicsSender.cpp line: 314");
+            // IDA 0x952c18..0x952c3a: extent store; `v5 = 2*extent`;
+            // `scale = min(v5, 50.0)` (`f32::from_bits(1112014848)`) past 2.0.
+            self.extent = extent;
+            let doubled = extent * 2.0;
+            self.scale = if doubled > 2.0 { doubled.min(50.0) } else { 2.0 };
+        }
+        // IDA 0x952c42..0x952ca4: `denom = |frame - model|^2 - extent^2`
+        // floored into (9.0, 1e6] (`f32::from_bits(1232348160)`); 9.0 without
+        // a model.
+        let mut denom = 9.0f32;
+        if let Some(head) = model {
+            let dist2 = (frame[0] - head[0]).powi(2)
+                + (frame[1] - head[1]).powi(2)
+                + (frame[2] - head[2]).powi(2)
+                - self.extent * self.extent;
+            if dist2 > 9.0 {
+                denom = dist2.min(1e6);
+            }
+        }
+        // IDA 0x952ca8..0x952d72: ancestor hit pins the error at `f32::MAX`
+        // (bits 2139095039) and forces the flag.
+        if same_model {
+            self.error = f32::MAX;
+            self.send = true;
+            return true;
+        }
+        // IDA 0x952cb4..0x952d42: `scale^2 * (|d|_1 + dAxis*extent*0.2) / denom`.
+        let linear = (frame[0] - self.translation[0]).abs()
+            + (frame[1] - self.translation[1]).abs()
+            + (frame[2] - self.translation[2]).abs();
+        self.error =
+            self.scale * self.scale * (linear + rotation_delta * self.extent * 0.2) / denom;
+        self.send = denom < 400.0;
+        // IDA 0x952d46..0x952d64: past 400 the error only survives when the
+        // scale beats the compression size filter, pinned at `f32::MAX`.
+        if denom >= 400.0 && self.scale > size_filter as f32 {
+            self.error = f32::MAX;
+            self.send = true;
+        }
+        self.send
+    }
+}
+
+/// Physics packet tags on the nugget stream (IDA 0x952f88 `<<(27)`, 0x95303c
+/// `<<(133)`).
+pub const PHYSICS_PACKET_TAG: u8 = 27;
+/// Nugget separator tag (IDA 0x95303c).
+pub const PHYSICS_NUGGET_TAG: u8 = 133;
+
+/// `TopNErrorsPhysicsSender::step` (IDA 0x9501c8): resolves the
+/// `PhysicsService` link once (`find<PhysicsService>`, asserts
+/// TopNErrorsPhysicsSender.cpp:56 at 0x9504de), `for_each`s the intrusive part
+/// set into `addNugget` (0x950556), (re)connects the `onAddingAssembly` slot
+/// (0x9505ae..0x9505e4 — the slot is freshly allocated each step, so the
+/// stored connection is always replaced), drains the pending list through
+/// `addNugget2` (0x95065e..0x9507ac), bumps the counter (0x9507e6), resolves
+/// the head model, refreshes every nugget, and re-sorts descending.
+/// Engine-side reads (frames, assemblies, linkage) arrive through the
+/// closures; `select` caps the send set to the +180 count (IDA 0x9509e8).
+#[allow(clippy::too_many_arguments)]
+pub fn top_n_errors_step(
+    sender: &mut TopNErrorsPhysicsSender,
+    ensure_service: &mut dyn FnMut(),
+    for_each_part: &mut dyn FnMut(&mut dyn FnMut(u32)),
+    mut add_nugget: impl FnMut(u32),
+    reconnect: &mut dyn FnMut(),
+    drain_pending: &mut dyn FnMut(&mut dyn FnMut(u32)),
+    head_model: &mut dyn FnMut() -> Option<u32>,
+    refresh: &mut dyn FnMut(&mut Vec<TopNErrorsNugget>),
+    select: &mut dyn FnMut(&mut Vec<TopNErrorsNugget>),
+) -> Option<u32> {
+    ensure_service(); // IDA 0x9501f8..0x95052e
+    for_each_part(&mut add_nugget); // IDA 0x950556
+    reconnect(); // IDA 0x9505ae..0x95065a
+    drain_pending(&mut |part| {
+        add_nugget(part);
+    }); // IDA 0x95065e..0x9507ac
+    sender.step_counter = sender.step_counter.wrapping_add(1); // IDA 0x9507e6
+    let head = head_model(); // IDA 0x9507b0..0x9507dc
+    refresh(&mut sender.nuggets); // IDA 0x9507ea..0x9509c8
+    sender.sort_descending(); // IDA 0x9509d2+
+    select(&mut sender.nuggets); // IDA 0x9509e8 top-N cut
+    for (i, nugget) in sender.nuggets.iter().enumerate() {
+        sender.map.insert(nugget.part, i);
+    }
+    head
+}
+
+/// `TopNErrorsPhysicsSender::sendPacket` (IDA 0x952d9c): packs up to
+/// `max_packed` nuggets into `getPhysicsMtuSize` (0x952dca) `BitStream`s —
+/// tag 27, the `GetTime` stamp (the part's `raknetTime` wins when set and
+/// asserts `timestamp >= raknetTime`, line 132; `NewRaknetTimestamp` repeats
+/// it), tag 133 — then `sendPhysicsData` per nugget (0x953120) with the
+/// `lastSent` snapshot on success (0x95318c..0x9531bc, asserting
+/// `lastSent == getCoordinateFrame()`, line 156). A stream past `mtu` bytes
+/// closes with `serializeId` (or `<<1` when streaming, 0x953276..0x953288)
+/// and `ConcurrentRakPeer::Send` (0x953314) plus the `RunningAverage` stats
+/// (0x9533d0..0x95349a); the tail flushes the open stream (0x9534ac..0x9536da)
+/// and samples the sent count at +160 (0x9536e8). Returns nuggets packed.
+/// Stream alloc, byte counting, send, and stats stay engine-side behind the
+/// closures.
+pub fn send_top_n_packet(
+    mtu: u32,
+    max_packed: usize,
+    nugget_count: usize,
+    write_header: &mut dyn FnMut(),
+    send_one: &mut dyn FnMut(usize) -> bool,
+    bytes_written: &mut dyn FnMut() -> usize,
+    flush: &mut dyn FnMut(),
+    sample_total: &mut dyn FnMut(usize),
+) -> usize {
+    let mut packed = 0usize;
+    let mut sent_ok = 0usize;
+    let mut open = false;
+    let mut i = 0;
+    while i < nugget_count {
+        if !open {
+            if packed >= max_packed {
+                break; // IDA 0x952e88
+            }
+            write_header(); // IDA 0x952f88..0x953054
+            packed += 1; // IDA 0x953044
+            open = true;
+        }
+        if send_one(i) {
+            // IDA 0x953120 + lastSent snapshot 0x95318c..0x9531bc.
+            sent_ok += 1; // IDA 0x953266
+            if bytes_written() > mtu as usize {
+                // IDA 0x953270: `(bits + 7) >> 3 > mtu`.
+                flush(); // IDA 0x953276..0x9534a4
+                open = false;
+            }
+        }
+        i += 1;
+    }
+    if open {
+        flush(); // IDA 0x9534ac..0x9536da
+    }
+    sample_total(sent_ok); // IDA 0x9536e8
+    packed
+}
 
 /// `RBX::Network::RoundRobinPhysicsSender` (IDA 0xb21030): a
 /// [`PhysicsSender`] variant; the round-robin cursor stays engine-side.
@@ -1303,7 +1608,7 @@ pub struct ErrorCompPhysicsSender;
 #[must_use]
 pub fn top_n_errors_physics_sender(
 ) -> rbx_core::SharedPtr<TopNErrorsPhysicsSender> {
-    rbx_core::SharedPtr::from(Box::new(TopNErrorsPhysicsSender))
+    rbx_core::SharedPtr::from(Box::new(TopNErrorsPhysicsSender::default()))
 }
 
 /// `sp_pointer_construct<PhysicsSender, RoundRobinPhysicsSender>` (IDA 0xb21030).
