@@ -49,6 +49,40 @@ pub(crate) static LOGIN_SEGUE_URL: parking_lot::Mutex<String> = parking_lot::Mut
 pub(crate) static LOGIN_SEGUE_PRELOADED: parking_lot::Mutex<String> =
     parking_lot::Mutex::new(String::new());
 
+/// Gap-filler AboutController observable state (IDA 0x20468-0x20cb4).
+/// The window rect, agreement HTML, localized label texts, web-view
+/// visibility, segue/dismiss/cookie counts and alert text record here;
+/// outlets keep opaque `id` handles (0 when unset) behind
+/// `objc_setProperty` retain glue.
+pub(crate) static ABOUT_WINDOW: parking_lot::Mutex<(f32, f32, f32, f32)> =
+    parking_lot::Mutex::new((0.0, 0.0, 0.0, 0.0));
+pub(crate) static ABOUT_BOUNDS: parking_lot::Mutex<(f32, f32, f32, f32)> =
+    parking_lot::Mutex::new((0.0, 0.0, 0.0, 0.0));
+pub(crate) static ABOUT_AGREEMENT_HIDDEN: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static ABOUT_WEB_SCROLL_ENABLED: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(true);
+pub(crate) static ABOUT_AGREEMENT_HTML: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+pub(crate) static ABOUT_LABEL_TEXTS: std::sync::LazyLock<
+    parking_lot::Mutex<std::collections::HashMap<String, String>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(std::collections::HashMap::new()));
+pub(crate) static ABOUT_AGREEMENT_URL: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+pub(crate) static ABOUT_TO_AGREEMENT_SEGUES: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static ABOUT_DISMISSALS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+pub(crate) static ABOUT_COOKIES_CLEARED: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LAST_ABOUT_ALERT: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+pub(crate) static ABOUT_OUTLETS: std::sync::LazyLock<
+    parking_lot::Mutex<std::collections::HashMap<String, usize>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(std::collections::HashMap::new()));
+pub(crate) fn about_outlet(name: &str) -> usize {
+    ABOUT_OUTLETS.lock().get(name).copied().unwrap_or(0)
+}
+pub(crate) fn set_about_outlet(name: &str, handle: usize) {
+    ABOUT_OUTLETS.lock().insert(name.to_owned(), handle);
+}
+
 // 0x1f380 — ___38-[LoginViewController onKeyboardHide:]_block_invoke
 #[doc(alias = "___38-[LoginViewController onKeyboardHide:]_block_invoke")]
 pub fn stub_0x1f380() {
@@ -770,78 +804,179 @@ pub fn stub_0x202ac(handle: usize) {
 // 0x202d0 — __GLOBAL__I_a_5
 #[doc(alias = "global constructor keyed to_a_5")]
 #[doc(alias = "__GLOBAL__I_a_5")]
-pub fn stub_0x202d0() -> ! {
-    todo!("0x202d0 global constructor keyed to_a_5")
+pub fn stub_0x202d0() {
+    // IDA 0x202d0: `__GLOBAL__I_a_5` — stores
+    // `boost::system::generic_category()` (x2) / `system_category()`
+    // singletons, runs `std::ios_base::Init`, and guards the
+    // `exception_ptr` static objects + `singleton_pool` storages
+    // (disasm 0x202d4-0x2041e; decompile unavailable, init thunk). Same
+    // cutover as stub_0x1d870; no body.
 }
 
 // 0x20468 — -[AboutController initWithCoder:]
 // type: AboutController *__cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController initWithCoder:]")]
-pub fn stub_0x20468() -> ! {
-    todo!("0x20468 -[AboutController initWithCoder:]")
+pub fn stub_0x20468(is_tablet: bool, screen_bounds: Option<(f32, f32, f32, f32)>) {
+    // IDA 0x20468: `initWithCoder:` supers `RobloxPageViewController
+    // initWithCoder:` (0x20486-0x20490, no target here) and sizes the
+    // window: (0, 0, 540, 508) on tablet (0x204c6-0x2050c), else the
+    // main-screen bounds, or zero when the screen is nil (0x20510-0x20560).
+    // Device/screen queries collapse into parameters, mirroring
+    // stub_0x1dd84.
+    *ABOUT_WINDOW.lock() = if is_tablet {
+        (0.0, 0.0, 540.0, 508.0)
+    } else {
+        screen_bounds.unwrap_or((0.0, 0.0, 0.0, 0.0))
+    };
 }
 
 // 0x2057c — -[AboutController dealloc]
 // type: void __cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController dealloc]")]
-pub fn stub_0x2057c() -> ! {
-    todo!("0x2057c -[AboutController dealloc]")
+pub fn stub_0x2057c() {
+    // IDA 0x2057c: `dealloc` releases the seven retained outlets
+    // (0x2057c-0x205f8) then super dealloc (0x205fa-0x20604). Release is
+    // drop glue; the outlet registry clears.
+    ABOUT_OUTLETS.lock().clear();
 }
 
 // 0x20644 — -[AboutController viewDidLoad]
 // type: void __cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController viewDidLoad]")]
-pub fn stub_0x20644() -> ! {
-    todo!("0x20644 -[AboutController viewDidLoad]")
+pub fn stub_0x20644(
+    agreements_html: Option<&str>,
+    terms: &str,
+    licensing: &str,
+    privacy: &str,
+    and_word: &str,
+    bundle_version: &str,
+    is_tablet: bool,
+    base_url: &str,
+    base_mobile_url: &str,
+    about_title: &str,
+    close_title: &str,
+    clear_cookies_title: &str,
+    legal_text: &str,
+) {
+    // IDA 0x20644: `viewDidLoad` supers (0x2065c-0x20666, no target
+    // here), hides the agreement web view (0x2066e-0x2067e), disables
+    // its scroll view when present (0x20680-0x206b0), and with
+    // `Agreements.html` in the bundle (0x206b2-0x206e2) localizes the
+    // template — `TermsOfService`/`LicensingAgreement`/`PrivacyPolicy`/
+    // `AndWord` over "Terms of Service"/"Licensing Agreement"/
+    // "Privacy Policy"/"and" — and loads it as text/html UTF-8
+    // (0x206e4-0x20844). Then the version label from `CFBundleVersion`
+    // (0x20850-0x2086c), the domain label from `RbxBaseUrl` on tablet
+    // else `RbxBaseMobileUrl` (0x2086e-0x208c4), the `AboutWord` nav
+    // title (0x208d2-0x20978), `CloseWord`/`ClearCookiesWord` buttons
+    // (0x20986-0x209de) and the `LegalText` body (0x209ea-0x20a36).
+    // Bundle/device queries collapse into parameters.
+    ABOUT_AGREEMENT_HIDDEN.store(true, std::sync::atomic::Ordering::SeqCst);
+    ABOUT_WEB_SCROLL_ENABLED.store(false, std::sync::atomic::Ordering::SeqCst);
+    if let Some(html) = agreements_html {
+        let page = html
+            .replace("Terms of Service", terms)
+            .replace("Licensing Agreement", licensing)
+            .replace("Privacy Policy", privacy)
+            .replace("and", and_word);
+        *ABOUT_AGREEMENT_HTML.lock() = page;
+    }
+    let mut texts = ABOUT_LABEL_TEXTS.lock();
+    texts.insert("versionLabel".to_owned(), bundle_version.to_owned());
+    texts.insert(
+        "domainName".to_owned(),
+        if is_tablet { base_url } else { base_mobile_url }.to_owned(),
+    );
+    texts.insert("navigationTitle".to_owned(), about_title.to_owned());
+    texts.insert("closeButton".to_owned(), close_title.to_owned());
+    texts.insert("clearCookies".to_owned(), clear_cookies_title.to_owned());
+    texts.insert("legalTextView".to_owned(), legal_text.to_owned());
 }
 
 // 0x20a7c — -[AboutController viewWillAppear:]
 // type: void __cdecl(AboutController *self, SEL, char)
 #[doc(alias = "-[AboutController viewWillAppear:]")]
-pub fn stub_0x20a7c() -> ! {
-    todo!("0x20a7c -[AboutController viewWillAppear:]")
+pub fn stub_0x20a7c() {
+    // IDA 0x20a7c: `viewWillAppear:` supers (0x20a90-0x20a9c, no target
+    // here) and sets the superview bounds from the window rect
+    // (0x20aa4-0x20ad8).
+    *ABOUT_BOUNDS.lock() = *ABOUT_WINDOW.lock();
 }
 
 // 0x20b00 — -[AboutController webViewDidFinishLoad:]
 // type: void __cdecl(AboutController *self, SEL, id)
-#[doc(alias = "-[AboutController webViewDidFinishLoad:]")]
-pub fn stub_0x20b00() -> ! {
-    todo!("0x20b00 -[AboutController webViewDidFinishLoad:]")
+pub fn stub_0x20b00(agreement_handle: usize, loaded_handle: usize) {
+    // IDA 0x20b00: `webViewDidFinishLoad:` unhides the agreement web
+    // view when it is the loaded view (0x20b00-0x20b1e). Handles cross
+    // as parameters for the pointer comparison.
+    if agreement_handle == loaded_handle {
+        ABOUT_AGREEMENT_HIDDEN.store(false, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x20b28 — -[AboutController webView:shouldStartLoadWithRequest:navigationType:]
 // type: char __cdecl(AboutController *self, SEL, id, id, int)
 #[doc(alias = "-[AboutController webView:shouldStartLoadWithRequest:navigationType:]")]
-pub fn stub_0x20b28() -> ! {
-    todo!("0x20b28 -[AboutController webView:shouldStartLoadWithRequest:navigationType:]")
+pub fn stub_0x20b28(url: Option<&str>) -> bool {
+    // IDA 0x20b28: `webView:shouldStartLoadWithRequest:` lets `file`
+    // URLs load inline (0x20b28-0x20b7c); anything else segues
+    // `AboutToAgreementSegue` with the URL (0x20b7e-0x20ba4) and
+    // cancels the load. A missing URL loads (0x20b58).
+    match url {
+        None => true,
+        Some(url) if url.contains("file") => true,
+        Some(url) => {
+            *ABOUT_AGREEMENT_URL.lock() = url.to_owned();
+            ABOUT_TO_AGREEMENT_SEGUES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            false
+        }
+    }
 }
 
 // 0x20bb0 — -[AboutController prepareForSegue:sender:]
 // type: void __cdecl(AboutController *self, SEL, id, id)
 #[doc(alias = "-[AboutController prepareForSegue:sender:]")]
-pub fn stub_0x20bb0() -> ! {
-    todo!("0x20bb0 -[AboutController prepareForSegue:sender:]")
+pub fn stub_0x20bb0(is_about_to_agreement: bool, sender_url: &str) {
+    // IDA 0x20bb0: `prepareForSegue:sender:` forwards the sender URL to
+    // the destination on the `AboutToAgreementSegue` identifier
+    // (0x20bb0-0x20bfa). The identifier query collapses into a
+    // parameter.
+    if is_about_to_agreement {
+        *ABOUT_AGREEMENT_URL.lock() = sender_url.to_owned();
+    }
 }
 
 // 0x20c14 — -[AboutController closeButtonPressed:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController closeButtonPressed:]")]
-pub fn stub_0x20c14() -> ! {
-    todo!("0x20c14 -[AboutController closeButtonPressed:]")
+pub fn stub_0x20c14() {
+    // IDA 0x20c14: `closeButtonPressed:` dismisses animated with no
+    // completion (0x20c14-0x20c26).
+    ABOUT_DISMISSALS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x20c28 — -[AboutController clearCookiesButtonPressed:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController clearCookiesButtonPressed:]")]
-pub fn stub_0x20c28() -> ! {
-    todo!("0x20c28 -[AboutController clearCookiesButtonPressed:]")
+pub fn stub_0x20c28(cookies_cleared_message: &str) {
+    // IDA 0x20c28: `clearCookiesButtonPressed:` clears the Roblox
+    // cookies (0x20c28-0x20c38, no target here) and shows a
+    // `RobloxAlert` with the `CookiesClearedMessage` text
+    // (0x20c3a-0x20cb0). The localized message crosses as a parameter.
+    ABOUT_COOKIES_CLEARED.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    *LAST_ABOUT_ALERT.lock() = cookies_cleared_message.to_owned();
 }
 
 // 0x20cb4 — -[AboutController viewDidUnload]
 // type: void __cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController viewDidUnload]")]
-pub fn stub_0x20cb4() -> ! {
-    todo!("0x20cb4 -[AboutController viewDidUnload]")
+pub fn stub_0x20cb4() {
+    // IDA 0x20cb4: `viewDidUnload` nils the domain-name + clear-cookies
+    // outlets (0x20cb4-0x20cd8) then super `viewDidUnload`
+    // (0x20cda-0x20ce4). Outlet release is drop glue; the two slots
+    // clear.
+    ABOUT_OUTLETS.lock().remove("domainName");
+    ABOUT_OUTLETS.lock().remove("clearCookies");
 }
 
 // 0x20d0c — -[AboutController navigationTitle]
