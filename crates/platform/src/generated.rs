@@ -9361,113 +9361,139 @@ pub fn stub_f5e884() -> ! {
 // 0x17df0 — +[Appirater setAppId:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[Appirater setAppId:]")]
-pub fn stub_17df0() -> ! {
-    todo!("0x17df0 +[Appirater setAppId:]")
+pub fn stub_17df0(app_id: &str) {
+    // delegate of crate::view_controllers::Appirater (IDA 0x17df0)
+    crate::view_controllers::Appirater::set_app_id(app_id);
 }
 
 // 0x17e00 — +[Appirater setDaysUntilPrompt:]
 // type: void __cdecl(id, SEL, double)
 #[doc(alias = "+[Appirater setDaysUntilPrompt:]")]
-pub fn stub_17e00() -> ! {
-    todo!("0x17e00 +[Appirater setDaysUntilPrompt:]")
+pub fn stub_17e00(days: f64) {
+    // delegate of crate::view_controllers::Appirater (IDA 0x17e00)
+    crate::view_controllers::Appirater::set_days_until_prompt(days);
 }
 
 // 0x17e14 — +[Appirater setUsesUntilPrompt:]
 // type: void __cdecl(id, SEL, int)
 #[doc(alias = "+[Appirater setUsesUntilPrompt:]")]
-pub fn stub_17e14() -> ! {
-    todo!("0x17e14 +[Appirater setUsesUntilPrompt:]")
+pub fn stub_17e14(uses: u32) {
+    // delegate of crate::view_controllers::Appirater (IDA 0x17e14)
+    crate::view_controllers::Appirater::set_uses_until_prompt(uses);
 }
 
 // 0x17e24 — +[Appirater setSignificantEventsUntilPrompt:]
 // type: void __cdecl(id, SEL, int)
 #[doc(alias = "+[Appirater setSignificantEventsUntilPrompt:]")]
-pub fn stub_17e24() -> ! {
-    todo!("0x17e24 +[Appirater setSignificantEventsUntilPrompt:]")
+pub fn stub_17e24(count: u32) {
+    // delegate of crate::view_controllers::Appirater (IDA 0x17e24)
+    crate::view_controllers::Appirater::set_significant_events_until_prompt(count);
 }
 
 // 0x17e34 — +[Appirater setTimeBeforeReminding:]
 // type: void __cdecl(id, SEL, double)
 #[doc(alias = "+[Appirater setTimeBeforeReminding:]")]
-pub fn stub_17e34() -> ! {
-    todo!("0x17e34 +[Appirater setTimeBeforeReminding:]")
+pub fn stub_17e34(days: f64) {
+    // delegate of crate::view_controllers::Appirater (IDA 0x17e34)
+    crate::view_controllers::Appirater::set_time_before_reminding(days);
 }
 
 // 0x17e48 — +[Appirater setDebug:]
 // type: void __cdecl(id, SEL, char)
 #[doc(alias = "+[Appirater setDebug:]")]
-pub fn stub_17e48() -> ! {
-    todo!("0x17e48 +[Appirater setDebug:]")
+pub fn stub_17e48(debug: bool) {
+    // delegate of crate::view_controllers::Appirater (IDA 0x17e48)
+    crate::view_controllers::Appirater::set_debug(debug);
 }
 
 // 0x17e58 — +[Appirater setDelegate:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[Appirater setDelegate:]")]
-pub fn stub_17e58() -> ! {
-    todo!("0x17e58 +[Appirater setDelegate:]")
+pub fn stub_17e58(delegate: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers::Appirater (IDA 0x17e58)
+    crate::view_controllers::Appirater::set_class_delegate(delegate);
 }
 
 // 0x17e68 — -[Appirater connectedToNetwork]
 // type: char __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater connectedToNetwork]")]
-pub fn stub_17e68() -> ! {
-    todo!("0x17e68 -[Appirater connectedToNetwork]")
+pub fn stub_17e68() -> bool {
+    // delegate of crate::view_controllers::Appirater (IDA 0x17e68)
+    crate::view_controllers::Appirater::shared_instance().connected_to_network()
 }
 
 // 0x17f80 — +[Appirater sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[Appirater sharedInstance]")]
-pub fn stub_17f80() -> ! {
-    todo!("0x17f80 +[Appirater sharedInstance]")
+pub fn stub_17f80() -> &'static crate::view_controllers::Appirater {
+    // delegate of crate::view_controllers::Appirater (IDA 0x17f80)
+    crate::view_controllers::Appirater::shared_instance()
 }
 
 // 0x17fe4 — ___27+[Appirater sharedInstance]_block_invoke
 // type: (unknown)
 #[doc(alias = "___27+[Appirater sharedInstance]_block_invoke")]
-pub fn stub_17fe4() -> ! {
-    todo!("0x17fe4 ___27+[Appirater sharedInstance]_block_invoke")
+pub fn stub_17fe4() -> &'static crate::view_controllers::Appirater {
+    // delegate of crate::view_controllers (IDA 0x17fe4)
+    crate::view_controllers::Appirater::init_shared()
 }
 
 // 0x180a8 — -[Appirater showRatingAlert]
 // type: void __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater showRatingAlert]")]
-pub fn stub_180a8() -> ! {
-    todo!("0x180a8 -[Appirater showRatingAlert]")
+pub fn stub_180a8() {
+    // delegate of crate::view_controllers::Appirater (IDA 0x180a8)
+    crate::view_controllers::Appirater::shared_instance().show_rating_alert();
 }
 
 // 0x183d8 — -[Appirater ratingConditionsHaveBeenMet]
 // type: char __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater ratingConditionsHaveBeenMet]")]
-pub fn stub_183d8() -> ! {
-    todo!("0x183d8 -[Appirater ratingConditionsHaveBeenMet]")
+pub fn stub_183d8(now_secs: f64) -> bool {
+    // delegate of crate::view_controllers::Appirater (IDA 0x183d8)
+    crate::view_controllers::Appirater::shared_instance()
+        .rating_conditions_have_been_met(now_secs)
 }
 
 // 0x185b0 — -[Appirater incrementUseCount]
 // type: void __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater incrementUseCount]")]
-pub fn stub_185b0() -> ! {
-    todo!("0x185b0 -[Appirater incrementUseCount]")
+pub fn stub_185b0(current_version: &str, now_secs: f64) {
+    // delegate of crate::view_controllers::Appirater (IDA 0x185b0)
+    crate::view_controllers::Appirater::shared_instance()
+        .increment_use_count(current_version, now_secs);
 }
 
 // 0x18878 — -[Appirater incrementSignificantEventCount]
 // type: void __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater incrementSignificantEventCount]")]
-pub fn stub_18878() -> ! {
-    todo!("0x18878 -[Appirater incrementSignificantEventCount]")
+pub fn stub_18878(current_version: &str, now_secs: f64) {
+    // delegate of crate::view_controllers::Appirater (IDA 0x18878)
+    crate::view_controllers::Appirater::shared_instance()
+        .increment_significant_event_count(current_version, now_secs);
 }
 
 // 0x18b18 — -[Appirater incrementAndRate:]
 // type: void __cdecl(Appirater *self, SEL, char)
 #[doc(alias = "-[Appirater incrementAndRate:]")]
-pub fn stub_18b18() -> ! {
-    todo!("0x18b18 -[Appirater incrementAndRate:]")
+pub fn stub_18b18(can_rate: bool, current_version: &str, now_secs: f64) {
+    // delegate of crate::view_controllers::Appirater (IDA 0x18b18)
+    let instance = crate::view_controllers::Appirater::shared_instance();
+    instance.increment_use_count(current_version, now_secs);
+    if can_rate
+        && instance.rating_conditions_have_been_met(now_secs)
+        && instance.connected_to_network()
+    {
+        stub_18bb4();
+    }
 }
 
 // 0x18bb4 — ___30-[Appirater incrementAndRate:]_block_invoke
 // type: (unknown)
 #[doc(alias = "___30-[Appirater incrementAndRate:]_block_invoke")]
-pub fn stub_18bb4() -> ! {
-    todo!("0x18bb4 ___30-[Appirater incrementAndRate:]_block_invoke")
+pub fn stub_18bb4() {
+    // delegate of crate::view_controllers (IDA 0x18bb4)
+    crate::view_controllers::Appirater::shared_instance().show_rating_alert();
 }
 
 // 0x18bdc — -[Appirater incrementSignificantEventAndRate:]
