@@ -238,6 +238,12 @@ pub fn read_norm_quat(
     *w = if w_sign { -w_mag } else { w_mag };
 }
 
+/// `RBX::Network::deserializeStringProperty` (IDA 0x960380): reads the
+/// string; the property setter runs engine-side.
+#[must_use]
+pub fn deserialize_string_property(stream: &mut BitStream) -> String {
+ stream.read_string()
+}
 /// `RBX::Network::serializeEnum` (IDA 0x95d5d0): the item's value index
 /// goes out over `bits` bits. The null-item and range asserts stay
 /// engine-side in release; debug builds check the range here.

@@ -388,6 +388,110 @@ impl SharedStringProtectedDictionary {
     }
 }
 
+/// `RBX::Network::IdSerializer` (IDA 0x960634): guid framing over a name
+/// dictionary plus a guid registry. Guids are `(name id, name text,
+/// extra bits)`; the registry lookup that resolves instances to guids
+/// stays engine-side, so callers pass the resolved triple (`None` for a
+/// null instance). `max_guid_bits` is the `+1176` field.
+#[derive(Clone, Debug, Default)]
+pub struct IdSerializer {
+ pub sender: NameSenderDictionary,
+ pub receiver: ReceiverDictionary,
+ pub max_guid_bits: u32,
+}
+
+impl IdSerializer {
+ /// `IdSerializer::trySerializeId` (IDA 0x960634): null writes 8 zero
+ /// bits and returns `true`; otherwise the registry registers engine-side
+ /// and the name goes out only if already known, followed by `extra`
+ /// over `max_guid_bits`.
+ pub fn try_serialize_id(&self, stream: &mut BitStream, id: Option<(usize, &str, u32)>) -> bool {
+ match id {
+ None => {
+ stream.write_bits(0, 8);
+ true
+ }
+ Some((name_id, text, extra)) => {
+ if self.sender.try_send(stream, name_id, text) {
+ stream.write_bits(extra, self.max_guid_bits as u8);
+ true
+ } else {
+ false
+ }
+ }
+ }
+ }
+
+ /// `IdSerializer::serializeId(Instance *)` (IDA 0x96068c) and
+ /// `sendId` (IDA 0x9607ac): null/empty writes 8 zero bits, otherwise
+ /// the name is sent unconditionally followed by `extra`.
+ pub fn serialize_id(&mut self, stream: &mut BitStream, id: Option<(usize, &str, u32)>) {
+ match id {
+ None => stream.write_bits(0, 8),
+ Some((name_id, text, extra)) => {
+ self.sender.send(stream, name_id, text);
+ stream.write_bits(extra, self.max_guid_bits as u8);
+ }
+ }
+ }
+
+ /// `IdSerializer::serializeId(Guid::Data)` (IDA 0x9607ec): no null
+ /// check; always sends.
+ pub fn serialize_guid(&mut self, stream: &mut BitStream, name_id: usize, text: &str, extra: u32) {
+ self.sender.send(stream, name_id, text);
+ stream.write_bits(extra, self.max_guid_bits as u8);
+ }
+
+ /// `IdSerializer::serializeIdWithoutDictionary` (IDA 0x960814): the
+ /// raw name string plus `extra` when present, else one empty string.
+ /// The `RakString` variant under `DisableGuidStringCompression` stays
+ /// engine-side.
+ pub fn serialize_id_without_dictionary(&self, stream: &mut BitStream, id: Option<(&str, u32)>) {
+ match id {
+ Some((name, extra)) => {
+ stream.write_string(name);
+ stream.write_bits(extra, self.max_guid_bits as u8);
+ }
+ None => stream.write_string(""),
+ }
+ }
+
+ /// `IdSerializer::deserializeId` (IDA 0x960a20): the 8-bit token
+ /// selects the default (0), a slot recall, or a fresh string publish;
+ /// then `extra` follows unless the name is null. Short reads panic
+ /// with the original message.
+ pub fn deserialize_id(&mut self, stream: &mut BitStream) -> (String, u32) {
+ let token = stream.read_bits(8).unwrap_or(0) as u8;
+ let name = if token == 0 {
+ String::new()
+ } else if token & 0x80 != 0 {
+ let fresh = stream.read_string();
+ self.receiver.learn(token, &fresh);
+ fresh
+ } else {
+ self.receiver.recall(token)
+ };
+ let extra = if !name.is_empty() {
+ stream.read_bits(self.max_guid_bits as u8).expect("BitStream >> RBX::Guid::Data failed")
+ } else {
+ 0
+ };
+ (name, extra)
+ }
+
+ /// `IdSerializer::deserializeIdWithoutDictionary` (IDA 0x960c8c):
+ /// same tail without the token framing.
+ pub fn deserialize_id_without_dictionary(&self, stream: &mut BitStream) -> (String, u32) {
+ let name = stream.read_string();
+ let extra = if !name.is_empty() {
+ stream.read_bits(self.max_guid_bits as u8).expect("BitStream >> RBX::Guid::Data failed")
+ } else {
+ 0
+ };
+ (name, extra)
+ }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -547,4 +651,83 @@ mod validated_learn_tests {
         assert!(dict.try_send(&mut t, 9, "Lighting"));
         assert_eq!(t.into_bytes(), vec![1]);
     }
+}
+
+#[cfg(test)]
+mod id_serializer_tests {
+ use super::*;
+
+ fn ser() -> IdSerializer {
+ IdSerializer { sender: NameSenderDictionary::new(), receiver: ReceiverDictionary::new(), max_guid_bits: 8 }
+ }
+
+ #[test]
+ fn null_writes_zero_byte() {
+ // IDA 0x960640/0x9606c4/0x9607d6: null ids are 8 zero bits.
+ let mut s = ser();
+ assert!(s.try_serialize_id(&mut BitStream::new(), None));
+ let mut w = BitStream::new();
+ assert!(s.try_serialize_id(&mut w, None));
+ assert_eq!(w.into_bytes(), vec![0]);
+ let mut w = BitStream::new();
+ s.serialize_id(&mut w, None);
+ assert_eq!(w.into_bytes(), vec![0]);
+ }
+
+ #[test]
+ fn try_only_sends_known() {
+ // IDA 0x960662: unknown names write nothing and return false.
+ let mut s = ser();
+ let mut w = BitStream::new();
+ assert!(!s.try_serialize_id(&mut w, Some((3, "Baseplate", 0xAB))));
+ assert_eq!(w.bits_written(), 0);
+ // After a real send the name recalls plus the extra bits.
+ let mut w = BitStream::new();
+ s.serialize_id(&mut w, Some((3, "Baseplate", 0xAB)));
+ assert!(w.bits_written() > 8);
+ let mut w = BitStream::new();
+ assert!(s.try_serialize_id(&mut w, Some((3, "Baseplate", 0xAB))));
+ let mut r = BitStream::from_bytes(&w.into_bytes());
+ assert_eq!(r.read_bits(8), Some(0));
+ assert_eq!(r.read_bits(8), Some(0xAB));
+ }
+
+ #[test]
+ fn guid_roundtrip_through_dictionaries() {
+ // Fresh-string publish on the sender recalls on a fresh receiver.
+ let mut tx = ser();
+ let mut rx = ser();
+ let mut w = BitStream::new();
+ tx.serialize_guid(&mut w, 5, "SpawnLocation", 0x3C);
+ let mut r = BitStream::from_bytes(&w.into_bytes());
+ assert_eq!(rx.deserialize_id(&mut r), ("SpawnLocation".to_owned(), 0x3C));
+ // Second send recalls the slot; the receiver recalls too. Slot 0 is
+ // used first, so occupy it, then recall slot 1 (recall code 0 reads
+ // back as the default string — the original's slot-0 quirk).
+ let mut w = BitStream::new();
+ tx.serialize_guid(&mut w, 6, "Waypoint", 0x3D);
+ let mut r = BitStream::from_bytes(&w.into_bytes());
+ assert_eq!(rx.deserialize_id(&mut r), ("Waypoint".to_owned(), 0x3D));
+ let mut w = BitStream::new();
+ tx.serialize_id(&mut w, Some((6, "Waypoint", 0x3E)));
+ let mut r = BitStream::from_bytes(&w.into_bytes());
+ assert_eq!(rx.deserialize_id(&mut r), ("Waypoint".to_owned(), 0x3E));
+ // Null token decodes to the default with zero extra.
+ let mut r = BitStream::from_bytes(&[0]);
+ assert_eq!(rx.deserialize_id(&mut r), (String::new(), 0));
+ }
+
+ #[test]
+ fn without_dictionary_is_raw() {
+ // IDA 0x960814/0x960c8c: no token framing.
+ let s = ser();
+ let mut w = BitStream::new();
+ s.serialize_id_without_dictionary(&mut w, Some(("Part", 0x11)));
+ let mut r = BitStream::from_bytes(&w.into_bytes());
+ assert_eq!(s.deserialize_id_without_dictionary(&mut r), ("Part".to_owned(), 0x11));
+ let mut w = BitStream::new();
+ s.serialize_id_without_dictionary(&mut w, None);
+ let mut r = BitStream::from_bytes(&w.into_bytes());
+ assert_eq!(s.deserialize_id_without_dictionary(&mut r), (String::new(), 0));
+ }
 }

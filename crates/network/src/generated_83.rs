@@ -731,94 +731,106 @@ pub fn stub_95fe40(stream: &mut crate::bitstream::BitStream, id: &str) {
 // demangled: void RBX::Network::serialize<RBX::UDim>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "void RBX::Network::serialize<RBX::UDim>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)")]
-pub fn stub_95ff60() -> ! {
-    todo!("0x95ff60 void RBX::Network::serialize<RBX::UDim>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)")
+pub fn stub_95ff60(stream: &mut crate::bitstream::BitStream, scale: f32, offset: i32) {
+ // IDA 0x95ff60: property value through <<UDim.
+ crate::custom_serializer::write_udim(stream, scale, offset)
 }
 
 // 0x95ff8c — __ZN3RBX7Network11deserializeINS_4UDimEEEvRNS_10Reflection8PropertyERN6RakNet9BitStreamE
 // demangled: void RBX::Network::deserialize<RBX::UDim>(RBX::Reflection::Property &,RakNet::BitStream &)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "void RBX::Network::deserialize<RBX::UDim>(RBX::Reflection::Property &,RakNet::BitStream &)")]
-pub fn stub_95ff8c() -> ! {
-    todo!("0x95ff8c void RBX::Network::deserialize<RBX::UDim>(RBX::Reflection::Property &,RakNet::BitStream &)")
+pub fn stub_95ff8c(stream: &mut crate::bitstream::BitStream) -> (f32, i32) {
+ // IDA 0x95ff8c: >>UDim, setter engine-side.
+ crate::custom_serializer::read_udim(stream)
 }
 
 // 0x95ffc4 — __ZN3RBX7Network9serializeINS_5UDim2EEEvRKNS_10Reflection13ConstPropertyERN6RakNet9BitStreamE
 // demangled: void RBX::Network::serialize<RBX::UDim2>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "void RBX::Network::serialize<RBX::UDim2>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)")]
-pub fn stub_95ffc4() -> ! {
-    todo!("0x95ffc4 void RBX::Network::serialize<RBX::UDim2>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)")
+pub fn stub_95ffc4(stream: &mut crate::bitstream::BitStream, x_scale: f32, x_offset: i32, y_scale: f32, y_offset: i32) {
+ // IDA 0x95ffc4: property value through <<UDim2.
+ crate::custom_serializer::write_udim2(stream, x_scale, x_offset, y_scale, y_offset)
 }
 
 // 0x960008 — __ZN3RBX7Network11deserializeINS_5UDim2EEEvRNS_10Reflection8PropertyERN6RakNet9BitStreamE
 // demangled: void RBX::Network::deserialize<RBX::UDim2>(RBX::Reflection::Property &,RakNet::BitStream &)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "void RBX::Network::deserialize<RBX::UDim2>(RBX::Reflection::Property &,RakNet::BitStream &)")]
-pub fn stub_960008() -> ! {
-    todo!("0x960008 void RBX::Network::deserialize<RBX::UDim2>(RBX::Reflection::Property &,RakNet::BitStream &)")
+pub fn stub_960008(stream: &mut crate::bitstream::BitStream) -> (f32, i32, f32, i32) {
+ // IDA 0x960008: >>UDim2, setter engine-side.
+ crate::custom_serializer::read_udim2(stream)
 }
 
 // 0x960064 — __ZN3RBX7Network9serializeINS_6RbxRayEEEvRKNS_10Reflection13ConstPropertyERN6RakNet9BitStreamE
 // demangled: void RBX::Network::serialize<RBX::RbxRay>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "void RBX::Network::serialize<RBX::RbxRay>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)")]
-pub fn stub_960064() -> ! {
-    todo!("0x960064 void RBX::Network::serialize<RBX::RbxRay>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)")
+pub fn stub_960064(stream: &mut crate::bitstream::BitStream, origin: [f32; 3], direction: [f32; 3]) {
+ // IDA 0x960064: property value through <<RbxRay.
+ crate::custom_serializer::write_rbx_ray(stream, origin, direction)
 }
 
 // 0x9600f0 — __ZN3RBX7Network11deserializeINS_6RbxRayEEEvRNS_10Reflection8PropertyERN6RakNet9BitStreamE
 // demangled: void RBX::Network::deserialize<RBX::RbxRay>(RBX::Reflection::Property &,RakNet::BitStream &)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "void RBX::Network::deserialize<RBX::RbxRay>(RBX::Reflection::Property &,RakNet::BitStream &)")]
-pub fn stub_9600f0() -> ! {
-    todo!("0x9600f0 void RBX::Network::deserialize<RBX::RbxRay>(RBX::Reflection::Property &,RakNet::BitStream &)")
+pub fn stub_9600f0(stream: &mut crate::bitstream::BitStream) -> ([f32; 3], [f32; 3]) {
+ // IDA 0x9600f0: >>RbxRay, setter engine-side.
+ crate::custom_serializer::read_rbx_ray(stream)
 }
 
 // 0x960178 — __ZN3RBX7Network9serializeINS_5FacesEEEvRKNS_10Reflection13ConstPropertyERN6RakNet9BitStreamE
 // demangled: void RBX::Network::serialize<RBX::Faces>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "void RBX::Network::serialize<RBX::Faces>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)")]
-pub fn stub_960178() -> ! {
-    todo!("0x960178 void RBX::Network::serialize<RBX::Faces>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)")
+pub fn stub_960178(stream: &mut crate::bitstream::BitStream, faces: i32) {
+ // IDA 0x960178: property value through <<Faces.
+ crate::custom_serializer::write_faces(stream, faces)
 }
 
 // 0x960194 — __ZN3RBX7Network11deserializeINS_5FacesEEEvRNS_10Reflection8PropertyERN6RakNet9BitStreamE
 // demangled: void RBX::Network::deserialize<RBX::Faces>(RBX::Reflection::Property &,RakNet::BitStream &)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "void RBX::Network::deserialize<RBX::Faces>(RBX::Reflection::Property &,RakNet::BitStream &)")]
-pub fn stub_960194() -> ! {
-    todo!("0x960194 void RBX::Network::deserialize<RBX::Faces>(RBX::Reflection::Property &,RakNet::BitStream &)")
+pub fn stub_960194(stream: &mut crate::bitstream::BitStream) -> i32 {
+ // IDA 0x960194: >>Faces, setter engine-side.
+ crate::custom_serializer::read_faces(stream)
 }
 
 // 0x9601c0 — __ZN3RBX7Network9serializeINS_4AxesEEEvRKNS_10Reflection13ConstPropertyERN6RakNet9BitStreamE
 // demangled: void RBX::Network::serialize<RBX::Axes>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "void RBX::Network::serialize<RBX::Axes>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)")]
-pub fn stub_9601c0() -> ! {
-    todo!("0x9601c0 void RBX::Network::serialize<RBX::Axes>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)")
+pub fn stub_9601c0(stream: &mut crate::bitstream::BitStream, axes: i32) {
+ // IDA 0x9601c0: property value through <<Axes.
+ crate::custom_serializer::write_axes(stream, axes)
 }
 
 // 0x9601dc — __ZN3RBX7Network11deserializeINS_4AxesEEEvRNS_10Reflection8PropertyERN6RakNet9BitStreamE
 // demangled: void RBX::Network::deserialize<RBX::Axes>(RBX::Reflection::Property &,RakNet::BitStream &)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "void RBX::Network::deserialize<RBX::Axes>(RBX::Reflection::Property &,RakNet::BitStream &)")]
-pub fn stub_9601dc() -> ! {
-    todo!("0x9601dc void RBX::Network::deserialize<RBX::Axes>(RBX::Reflection::Property &,RakNet::BitStream &)")
+pub fn stub_9601dc(stream: &mut crate::bitstream::BitStream) -> i32 {
+ // IDA 0x9601dc: >>Axes, setter engine-side.
+ crate::custom_serializer::read_axes(stream)
 }
 
 // 0x960208 — __ZN3RBX7Network9serializeINS_10BrickColorEEEvRKNS_10Reflection13ConstPropertyERN6RakNet9BitStreamE
 // demangled: void RBX::Network::serialize<RBX::BrickColor>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "void RBX::Network::serialize<RBX::BrickColor>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)")]
-pub fn stub_960208() -> ! {
-    todo!("0x960208 void RBX::Network::serialize<RBX::BrickColor>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)")
+pub fn stub_960208(stream: &mut crate::bitstream::BitStream, palette: u32) {
+ // IDA 0x960208: property value through <<BrickColor.
+ crate::custom_serializer::write_brick_color(stream, palette)
 }
 
 // 0x960234 — __ZN3RBX7Network11deserializeINS_10BrickColorEEEvRNS_10Reflection8PropertyERN6RakNet9BitStreamE
 // demangled: void RBX::Network::deserialize<RBX::BrickColor>(RBX::Reflection::Property &,RakNet::BitStream &)
 // type: int __fastcall(int, RakNet::BitStream *this)
 #[doc(alias = "void RBX::Network::deserialize<RBX::BrickColor>(RBX::Reflection::Property &,RakNet::BitStream &)")]
-pub fn stub_960234() -> ! {
-    todo!("0x960234 void RBX::Network::deserialize<RBX::BrickColor>(RBX::Reflection::Property &,RakNet::BitStream &)")
+pub fn stub_960234(stream: &mut crate::bitstream::BitStream) -> u32 {
+ // IDA 0x960234: >>BrickColor, setter engine-side.
+ crate::custom_serializer::read_brick_color(stream)
 }

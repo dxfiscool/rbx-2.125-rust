@@ -559,32 +559,36 @@ pub fn stub_95fe28(stream: &mut crate::bitstream::BitStream) -> (u32, u16) {
 // type: int __fastcall(int, RakNet::BitStream *this)
 #[doc(alias = "RBX::Network::IdSerializer::sendId(RakNet::BitStream &,RBX::Network::IdSerializer::Id const&)")]
 #[doc(alias = "__ZN3RBX7Network12IdSerializer6sendIdERN6RakNet9BitStreamERKNS1_2IdE")]
-pub fn stub_9607ac() -> ! {
-    todo!("0x9607ac __ZN3RBX7Network12IdSerializer6sendIdERN6RakNet9BitStreamERKNS1_2IdE")
+pub fn stub_9607ac(ser: &mut crate::string_dictionary::IdSerializer, stream: &mut crate::bitstream::BitStream, id: Option<(usize, &str, u32)>) {
+ // IDA 0x9607ac: guid send, empty writes zeros.
+ ser.serialize_id(stream, id)
 }
 
 // 0x9607ec — __ZN3RBX7Network12IdSerializer11serializeIdERN6RakNet9BitStreamERKNS_4Guid4DataE
 // type: _DWORD __fastcall(RBX::Network::IdSerializer *__hidden this, RakNet::BitStream *, const RBX::Guid::Data *)
 #[doc(alias = "RBX::Network::IdSerializer::serializeId(RakNet::BitStream &,RBX::Guid::Data const&)")]
 #[doc(alias = "__ZN3RBX7Network12IdSerializer11serializeIdERN6RakNet9BitStreamERKNS_4Guid4DataE")]
-pub fn stub_9607ec() -> ! {
-    todo!("0x9607ec __ZN3RBX7Network12IdSerializer11serializeIdERN6RakNet9BitStreamERKNS_4Guid4DataE")
+pub fn stub_9607ec(ser: &mut crate::string_dictionary::IdSerializer, stream: &mut crate::bitstream::BitStream, name_id: usize, text: &str, extra: u32) {
+ // IDA 0x9607ec: unconditional guid send.
+ ser.serialize_guid(stream, name_id, text, extra)
 }
 
 // 0x960a20 — __ZN3RBX7Network12IdSerializer13deserializeIdERN6RakNet9BitStreamERNS_4Guid4DataE
 // type: _DWORD __fastcall(RBX::Network::IdSerializer *__hidden this, RakNet::BitStream *, RBX::Guid::Data *)
 #[doc(alias = "RBX::Network::IdSerializer::deserializeId(RakNet::BitStream &,RBX::Guid::Data &)")]
 #[doc(alias = "__ZN3RBX7Network12IdSerializer13deserializeIdERN6RakNet9BitStreamERNS_4Guid4DataE")]
-pub fn stub_960a20() -> ! {
-    todo!("0x960a20 __ZN3RBX7Network12IdSerializer13deserializeIdERN6RakNet9BitStreamERNS_4Guid4DataE")
+pub fn stub_960a20(ser: &mut crate::string_dictionary::IdSerializer, stream: &mut crate::bitstream::BitStream) -> (String, u32) {
+ // IDA 0x960a20: token, name, extra bits.
+ ser.deserialize_id(stream)
 }
 
 // 0x960c8c — __ZN3RBX7Network12IdSerializer30deserializeIdWithoutDictionaryERN6RakNet9BitStreamERNS_4Guid4DataE
 // type: _DWORD __fastcall(RBX::Network::IdSerializer *__hidden this, RakNet::BitStream *, RBX::Guid::Data *)
 #[doc(alias = "RBX::Network::IdSerializer::deserializeIdWithoutDictionary(RakNet::BitStream &,RBX::Guid::Data &)")]
 #[doc(alias = "__ZN3RBX7Network12IdSerializer30deserializeIdWithoutDictionaryERN6RakNet9BitStreamERNS_4Guid4DataE")]
-pub fn stub_960c8c() -> ! {
-    todo!("0x960c8c __ZN3RBX7Network12IdSerializer30deserializeIdWithoutDictionaryERN6RakNet9BitStreamERNS_4Guid4DataE")
+pub fn stub_960c8c(ser: &crate::string_dictionary::IdSerializer, stream: &mut crate::bitstream::BitStream) -> (String, u32) {
+ // IDA 0x960c8c: raw name plus extra bits.
+ ser.deserialize_id_without_dictionary(stream)
 }
 
 // 0x965f98 — __ZN3RBX7Network16SenderDictionaryIPKNS_4NameEE7trySendERN6RakNet9BitStreamES4_
