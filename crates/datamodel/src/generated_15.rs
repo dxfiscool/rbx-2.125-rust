@@ -6,7 +6,7 @@
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 use parking_lot::Mutex;
 
@@ -15,7 +15,7 @@ use rbx_core::WeakPtr;
 use rbx_core::shared_ptr::{ControlBlockPd, CreatableInstanceDeleter};
 
 use crate::data_model::DataModel;
-use crate::generated_05::{Instance, instance_is_a};
+use crate::generated_05::{GuidData, Instance, PropertyDescriptor, Variant, instance_is_a};
 use crate::generated_13::Player;
 use crate::generated_14::PeerStatsItem;
 
@@ -49,14 +49,33 @@ pub struct ReplicatorJob {
     pub task_type: i32,
     pub data_model: WeakPtr<DataModel>,
 }
-/// Rust model of `RakNet::BitStream` as used by the replicator write path (IDA `0xadfcdc`): appended bits; byte packing lands with the RakNet model.
+/// Rust model of `RakNet::BitStream` as used by the replicator write path (IDA `0xadfcdc`): appended bits plus the read cursor; byte packing lands with the RakNet model.
 #[derive(Default)]
 pub struct ReplicatorBitStream {
     pub bits: Vec<bool>,
+    pub pos: usize,
 }
 impl ReplicatorBitStream {
     pub fn write_bit(&mut self, bit: bool) {
         self.bits.push(bit);
+    }
+    /// `BitStream::WriteBits` byte (IDA `0xaf7274`); LSB-first into the bit vec.
+    pub fn write_byte(&mut self, byte: u8) {
+        for i in 0..8 {
+            self.bits.push(byte >> i & 1 == 1);
+        }
+    }
+    /// Guid-word write standing in for `IdSerializer::serializeId` (IDA `0xaf725c`).
+    pub fn write_u32(&mut self, word: u32) {
+        for i in 0..32 {
+            self.bits.push(word >> i & 1 == 1);
+        }
+    }
+    /// Read-cursor consume for the read path (IDA `0xafcf70`); past-the-end reads false.
+    pub fn read_bit(&mut self) -> bool {
+        let bit = *self.bits.get(self.pos).unwrap_or(&false);
+        self.pos += 1;
+        bit
     }
 }
 /// Value kind behind the `typeinfo` compares in the write loops: string-likes (`std::string`, `ProtectedString`, `SystemAddress`) go through the non-cacheable path (IDA `0xadfe36`-`0xadfe64`); non-string non-ref properties go through the cacheable path (IDA `0xae0534`-`0xae056c`).
@@ -94,13 +113,30 @@ pub struct ReplicationData {
     pub flag_a: bool,
     pub flag_b: bool,
 }
-/// Rust model of `RBX::Network::Replicator`: top container at `+13` words (IDA `0xae3ae0`), replication map at `+1440` (IDA `0xae5dca`), pending queue (`ItemQueue::push_back`, IDA `0xae5b18`), data-model weak, and the local player behind the `+152` virtual (IDA `0xae6f16`).
 pub struct Replicator {
     pub top_container: Option<SharedPtr<Instance>>,
     pub data: HashMap<usize, ReplicationData>,
-    pub pending: Vec<SharedPtr<Instance>>,
+    pub pending: Vec<QueueItem>,
     pub data_model: WeakPtr<DataModel>,
     pub local_player: Option<SharedPtr<Player>>,
+    /// `+420`-word serialize-pending set (IDA `0xaf7d0c`): marked by `onPropertyChanged`, read by `isSerializePending`.
+    pub serialize_pending: HashSet<usize>,
+    /// `(desc, instance)` pair set walked by `filterChangedProperty` (IDA `0xaf9790`-`0xaf97c8`).
+    pub filtered_pairs: HashSet<(usize, usize)>,
+    /// `+428`-word exempt instance: skips filtering (IDA `0xaf9488`) and drops its remote events (IDA `0xaf8852`).
+    pub filter_exempt: Option<SharedPtr<Instance>>,
+    /// `+426`-word one-shot filter pair, consumed on match (IDA `0xaf950a`-`0xaf97da`).
+    pub filter_pair: Option<(usize, usize)>,
+    /// `+425`-word watched instance address (IDA `0xaf797c`, `0xaf7e34`).
+    pub parent_watch: Option<usize>,
+    /// `+365`-word mega-cluster instance (IDA `0xaff328`).
+    pub mega_cluster: Option<SharedPtr<Instance>>,
+    /// `+427`-word event target; null drops remote invocations (IDA `0xaf88bc`).
+    pub event_target: Option<usize>,
+    /// `+387`-word anchor for `remoteDeleteOnDisconnect` (IDA `0xafaaf6`).
+    pub delete_anchor: Option<SharedPtr<Instance>>,
+    /// `+1704`-word serializer token saved/set/restored around `IdSerializer::setRefValue` (IDA `0xaf6a38`-`0xaf6a52`).
+    pub serializer_token: usize,
 }
 impl Replicator {
     /// Virtual at `+284` (IDA `0xadfdba`): per-descriptor write gate in the property loops; base default takes every replicable property until overrides are modelled.
@@ -403,7 +439,8 @@ pub fn stub_ae516c(rep: &mut Replicator, child: &SharedPtr<Instance>) {
 pub fn stub_ae59c8(rep: &mut Replicator, inst: &SharedPtr<Instance>) {
     // IDA 0xae59c8: retained `SharedPtr` copy plus `ItemQueue::push_back`
     // (decompile 0xae5b18); the clone is the retain, `Drop` the release.
-    rep.pending.push(inst.clone());
+    // The exact item layout lands later; order and payload are preserved.
+    rep.pending.push(QueueItem::Instance(inst.clone()));
 }
 
 // 0xae5d90 — __ZN3RBX7Network10Replicator25disconnectReplicationDataEN5boost10shared_ptrINS_8InstanceEEE
@@ -501,179 +538,574 @@ pub fn stub_af5fe4(helper: *mut RemoteCheatHelper2, data_model: &WeakPtr<DataMod
     }
 }
 
+/// Items queued on the `+398`-word `ItemQueue` (IDA `0xaf8162`, `0xaf82d0`, `0xaf8d48`, `0xafa0d8`, `0xaf9bbc`): exact C++ layouts land later; push order and payloads are preserved.
+pub enum QueueItem {
+    /// `addToPendingItemsList` payload (IDA `0xae59c8`).
+    Instance(SharedPtr<Instance>),
+    /// `onPropertyChanged` payload (IDA `0xafa0d8`, `0xaf9bbc`).
+    Serialize(SharedPtr<Instance>),
+    /// `ReferencePropertyChangedItem(inst, propParent)` (IDA `0xaf82be`).
+    ReferenceChanged { instance: SharedPtr<Instance>, prop: &'static str },
+    /// `DeleteInstanceItem` (IDA `0xaf8150`).
+    Delete(SharedPtr<Instance>),
+    /// Remote-event item (IDA `0xaf8d48`): retained instance, event name, marshalled arg count.
+    RemoteEvent { instance: SharedPtr<Instance>, name: String, nargs: usize },
+}
+/// Pair behind `IdSerializer::WaitItem` (IDA `0xaf6994`-`0xaf69b0`): descriptor plus instance (offset to `+36` when non-null).
+pub struct IdWaitItem {
+    pub desc: *const PropertyDescriptor,
+    pub instance: *const Instance,
+}
+/// Words behind `Instance::ICombinedSignalData` (IDA `0xaf7982`-`0xaf798a`): the changed instance plus the retained payload.
+pub struct CombinedSignalData {
+    pub instance: SharedPtr<Instance>,
+    pub payload: Option<SharedPtr<Instance>>,
+}
+/// 0-arg `Replicator` member returning an `Instance`, bound by `BoundFuncDesc` (IDA `0xb050c8`).
+pub type ReplicatorGetMethod = fn(&Replicator) -> SharedPtr<Instance>;
+/// Rust model of `BoundFuncDesc<Replicator, SharedPtr<Instance>(void), 0>` (IDA `0xb050c8`): the `NetworkReplicator` class word, the method words at `+10`/`+11` (decompile 0xb051d6-0xb051d8), and the descriptor name/permissions/attributes.
+pub struct ReplicatorFuncDesc {
+    pub class: &'static str,
+    pub method: ReplicatorGetMethod,
+    pub name: String,
+    pub permissions: u32,
+    pub attributes: u32,
+}
+/// Rust model of the `list3<value<Replicator*>, arg<1>, value<function>>` bind behind `visitChildren<onChildAdded>` (IDA `0xb064b0`): unretained words; validity rides on the caller.
+#[derive(Clone, Copy)]
+pub struct ReplicatorChildBind {
+    pub rep: *const Replicator,
+    pub on_added: *const ChildAddedCallback,
+}
+/// Bool member behind `mf1<bool, Replicator, SharedPtr<Instance>>` (IDA `0xb06790`).
+pub type ReplicatorPredMethod = fn(&Replicator, &SharedPtr<Instance>) -> bool;
+/// Rust model of `Replicator::JoinDataItem` (IDA `0xb06c30`): the mutex-guarded join instance list.
+#[derive(Default)]
+pub struct JoinDataItem {
+    pub instances: Vec<SharedPtr<Instance>>,
+}
+/// Free function behind `bind_t<void, void (*)(Weak<DataModel>), list1<value<Weak<DataModel>>>>` (IDA `0xb09f10`): the retained weak plus the late-bound weak arg; the exact function lands with its caller.
+pub type WeakDataModelMethod = fn(&WeakPtr<DataModel>);
+/// Rust model of that bind: the retained weak (spinlock-guarded retain, decompile 0xb0a006-0xb0a018) plus the method word.
+#[derive(Clone)]
+pub struct WeakDataModelBind {
+    pub target: WeakPtr<DataModel>,
+    pub method: WeakDataModelMethod,
+}
+/// Resolve a `PropertyDescriptor` against the registered class table (`writeChangedProperty` carries the descriptor in hand, IDA `0xaf6a9c`, unlike the loops); unregistered descriptors synthesize a writable value entry, with `Parent` detected by name for the `propParent` branch (IDA `0xaf9528`).
+fn resolve_prop(inst: &SharedPtr<Instance>, desc: *const PropertyDescriptor) -> ReplicatedProperty {
+    // SAFETY: `desc` must point to a valid descriptor.
+    let name = unsafe { (*desc).name };
+    class_properties_of(inst.class_name).into_iter().find(|p| p.name == name).unwrap_or(ReplicatedProperty {
+        name,
+        kind: ReplicatedKind::Value,
+        can_replicate: true,
+        is_parent: name == "Parent",
+    })
+}
+/// Character-model address behind `Player::character` (IDA `0xae6f20`, `0xaf99fa`); the `ModelInstance*` stands in as an address until the inheritance model exists.
+fn character_address(rep: &Replicator) -> Option<*const ()> {
+    let player = rep.local_player.as_ref()?;
+    let character = player.character.lock();
+    character.as_ref().map(|c| SharedPtr::as_ptr(c) as *const ())
+}
 // 0xaf6960 — __ZN3RBX7Network10Replicator11setRefValueERNS0_12IdSerializer8WaitItemEPNS_8InstanceE
 #[doc(alias = "RBX::Network::Replicator::setRefValue(RBX::Network::IdSerializer::WaitItem &,RBX::Instance *)")]
 // was: RBX::Network::Replicator::setRefValue(RBX::Network::IdSerializer::WaitItem &,RBX::Instance *)
-pub fn stub_af6960() -> ! {
-    todo!("0xaf6960 RBX::Network::Replicator::setRefValue(RBX::Network::IdSerializer::WaitItem &,RBX::Instance *)")
+pub fn stub_af6960(rep: &mut Replicator, item: &IdWaitItem, inst: &SharedPtr<Instance>) {
+    // IDA 0xaf6960: the `(desc, inst + 36)` pair build (decompile
+    // 0xaf6994-0xaf69b0) with the `isMemberOf` assert (property.h:255); the
+    // `+1704` word save/set around `IdSerializer::setRefValue` (decompile
+    // 0xaf6a38-0xaf6a52). The serializer call lands with the IdSerializer
+    // model; the token holds the pair address as in the original.
+    let saved = rep.serializer_token;
+    rep.serializer_token = item as *const IdWaitItem as usize;
+    let _ = inst;
+    // IdSerializer::setRefValue(rep, item, inst) lands with a later batch.
+    rep.serializer_token = saved;
 }
 
 // 0xaf6a9c — __ZN3RBX7Network10Replicator20writeChangedPropertyEPKNS_8InstanceERKNS_10Reflection18PropertyDescriptorERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::Replicator::writeChangedProperty(RBX::Instance const*,RBX::Reflection::PropertyDescriptor const&,RakNet::BitStream &)")]
 // was: RBX::Network::Replicator::writeChangedProperty(RBX::Instance const*,RBX::Reflection::PropertyDescriptor const&,RakNet::BitStream &)
-pub fn stub_af6a9c() -> ! {
-    todo!("0xaf6a9c RBX::Network::Replicator::writeChangedProperty(RBX::Instance const*,RBX::Reflection::PropertyDescriptor const&,RakNet::BitStream &)")
+pub fn stub_af6a9c(rep: &Replicator, inst: &SharedPtr<Instance>, desc: *const PropertyDescriptor, out: &mut ReplicatorBitStream) {
+    // IDA 0xaf6a9c: the `+284` write gate (decompile 0xaf6ada); the
+    // `isMemberOf` assert (property.h:255); `writeItemType` plus
+    // `IdSerializer::serializeId` (decompile 0xaf6b8a-0xaf6b96); the stats
+    // tick (decompile 0xaf6d10-0xaf6d24); the terminal `+312` value write
+    // (decompile 0xaf6d30-0xaf6daa). Item/id codecs land later; the
+    // present-bit stands in.
+    let prop = resolve_prop(inst, desc);
+    if prop.can_replicate && rep.wants_property_desc(&prop) {
+        stub_adfe8c(rep, inst, &prop, out, true);
+    }
 }
 
 // 0xaf6f9c — __ZN3RBX7Network10Replicator23writeChangedRefPropertyEPKNS_8InstanceERKNS_10Reflection21RefPropertyDescriptorERKNS_4Guid4DataERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::Replicator::writeChangedRefProperty(RBX::Instance const*,RBX::Reflection::RefPropertyDescriptor const&,RBX::Guid::Data const&,RakNet::BitStream &)")]
 // was: RBX::Network::Replicator::writeChangedRefProperty(RBX::Instance const*,RBX::Reflection::RefPropertyDescriptor const&,RBX::Guid::Data const&,RakNet::BitStream &)
-pub fn stub_af6f9c() -> ! {
-    todo!("0xaf6f9c RBX::Network::Replicator::writeChangedRefProperty(RBX::Instance const*,RBX::Reflection::RefPropertyDescriptor const&,RBX::Guid::Data const&,RakNet::BitStream &)")
+pub fn stub_af6f9c(rep: &Replicator, inst: &SharedPtr<Instance>, desc: *const PropertyDescriptor, guid: &GuidData, out: &mut ReplicatorBitStream) {
+    // IDA 0xaf6f9c: the `+284` gate (decompile 0xaf6fe6); the `isMemberOf`
+    // assert; `writeItemType` plus `serializeId(instance)` (decompile
+    // 0xaf709a-0xaf70a8); a null name writes a zero byte (decompile
+    // 0xaf7266-0xaf7274), otherwise `serializeId(guid)` (decompile
+    // 0xaf725c). The id codec lands later; the guid words stand in. An
+    // empty descriptor name stands in for the null name.
+    // SAFETY: `desc` must point to a valid descriptor.
+    let name = unsafe { (*desc).name };
+    let prop = resolve_prop(inst, desc);
+    if !(prop.can_replicate && rep.wants_property_desc(&prop)) {
+        return;
+    }
+    let _ = inst;
+    if name.is_empty() {
+        out.write_byte(0);
+    } else {
+        out.write_u32(guid.lo);
+        out.write_u32(guid.hi);
+    }
 }
 
 // 0xaf7468 — __ZNK3RBX7Network10Replicator13wantReplicateEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::Replicator::wantReplicate(RBX::Instance const*)const")]
 // was: RBX::Network::Replicator::wantReplicate(RBX::Instance const*)const
-pub fn stub_af7468() -> ! {
-    todo!("0xaf7468 RBX::Network::Replicator::wantReplicate(RBX::Instance const*)const")
+pub fn stub_af7468(rep: &Replicator, inst: &SharedPtr<Instance>) -> bool {
+    // IDA 0xaf7468: class-mode bits at `classdesc + 296` (decompile
+    // 0xaf74be): `0` returns false; `1 | 3` returns true (decompile
+    // 0xaf75b4); `2` gates on the Player parent with the `parent + 120 ==
+    // player + 156` id match through the `+152` virtual (decompile
+    // 0xaf7584-0xaf75b0), false without a parent or player. Mode bits and
+    // id words land with the descriptor model; until then the base default
+    // replicates.
+    rep.want_replicate(inst)
 }
 
 // 0xaf7600 — __ZN3RBX7Network10Replicator20safeOnCombinedSignalEN5boost8weak_ptrIS1_EEPNS1_15ReplicationDataENS_8Instance18CombinedSignalTypeEPKNS7_19ICombinedSignalDataE
 #[doc(alias = "RBX::Network::Replicator::safeOnCombinedSignal(rbx_core::Weak<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)")]
 // was: RBX::Network::Replicator::safeOnCombinedSignal(boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)
-pub fn stub_af7600() -> ! {
-    todo!("0xaf7600 RBX::Network::Replicator::safeOnCombinedSignal(rbx_core::Weak<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)")
+pub fn stub_af7600(rep: Option<&mut Replicator>, data: &ReplicationData, kind: u32, sig: &CombinedSignalData) {
+    // IDA 0xaf7600: kinds `{0, 2}` (`(a3 & ~2) == 0`, decompile 0xaf7652)
+    // and kind `3` (decompile 0xaf7656) upgrade the weak (decompile
+    // 0xaf765e-0xaf7664) and forward to `onCombinedSignal`; other kinds
+    // return. A dead weak (`None`) forwards nowhere.
+    if kind & !2 != 0 && kind != 3 {
+        return;
+    }
+    if let Some(rep) = rep {
+        stub_af7838(rep, data, kind, sig);
+    }
 }
 
 // 0xaf7838 — __ZN3RBX7Network10Replicator16onCombinedSignalEPNS1_15ReplicationDataENS_8Instance18CombinedSignalTypeEPKNS4_19ICombinedSignalDataE
 #[doc(alias = "RBX::Network::Replicator::onCombinedSignal(RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)")]
 // was: RBX::Network::Replicator::onCombinedSignal(RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)
-pub fn stub_af7838() -> ! {
-    todo!("0xaf7838 RBX::Network::Replicator::onCombinedSignal(RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)")
+pub fn stub_af7838(rep: &mut Replicator, data: &ReplicationData, kind: u32, sig: &CombinedSignalData) {
+    // IDA 0xaf7838: the kind-3 arm runs the serialize/remove call (decompile
+    // 0xaf793e); other kinds with the data flag word (byte `+13`, decompile
+    // 0xaf78d0) take the `+276` gate (decompile 0xaf78ec), the map lookup
+    // (decompile 0xaf7912-0xaf7974), the `+365`/`+425` watch bookkeeping
+    // (decompile 0xaf797c-0xaf797e), then `onChildAdded` (decompile
+    // 0xaf7a08), which dedups. Serialize/remove lands later.
+    if kind == 3 {
+        return;
+    }
+    if !data.flag_a {
+        return;
+    }
+    if !rep.want_replicate(&sig.instance) {
+        return;
+    }
+    let addr = SharedPtr::as_ptr(&sig.instance) as usize;
+    let watched = rep.mega_cluster.as_ref().map(|m| SharedPtr::as_ptr(m) as usize);
+    if watched != Some(addr) {
+        rep.parent_watch = Some(addr);
+    }
+    stub_ae516c(rep, &sig.instance);
 }
 
 // 0xaf7cf4 — __ZNK3RBX7Network10Replicator18isSerializePendingEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::Replicator::isSerializePending(RBX::Instance const*)const")]
 // was: RBX::Network::Replicator::isSerializePending(RBX::Instance const*)const
-pub fn stub_af7cf4() -> ! {
-    todo!("0xaf7cf4 RBX::Network::Replicator::isSerializePending(RBX::Instance const*)const")
+pub fn stub_af7cf4(rep: &Replicator, inst: &SharedPtr<Instance>) -> bool {
+    // IDA 0xaf7cf4: the `+1632` mutex (decompile 0xaf7d04-0xaf7d08); the
+    // `+420`-word bucket lookup by `ptr + (ptr >> 3)` (decompile
+    // 0xaf7d0c-0xaf7d64); found != 0 (decompile 0xaf7d7a). `HashSet`
+    // membership is the same lookup; the lock rides on the borrow.
+    rep.serialize_pending.contains(&replication_key(inst))
 }
 
 // 0xaf7d80 — __ZN3RBX7Network10Replicator15onParentChangedEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Network::Replicator::onParentChanged(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Network::Replicator::onParentChanged(boost::shared_ptr<RBX::Instance>)
-pub fn stub_af7d80() -> ! {
-    todo!("0xaf7d80 RBX::Network::Replicator::onParentChanged(rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_af7d80(rep: &mut Replicator, inst: &SharedPtr<Instance>) {
+    // IDA 0xaf7d80: the PARENT (`*(inst + 13)`) map lookup (decompile
+    // 0xaf7dba-0xaf7e2c): a tracked parent with the `+425` watch on this
+    // instance clears the watch and returns (decompile 0xaf7e34-0xaf8242);
+    // a tracked parent otherwise queues a
+    // `ReferencePropertyChangedItem(inst, propParent)` on the `+398` queue
+    // and returns (decompile 0xaf82be-0xaf82d0); an untracked parent takes
+    // `disconnectReplicationData` with the `removedIt` assert
+    // (Replicator.cpp:1921) then queues a `DeleteInstanceItem` (decompile
+    // 0xaf7f58-0xaf8162).
+    // SAFETY: the parent word is read from a live instance; payload is
+    // never dereferenced.
+    let addr = SharedPtr::as_ptr(inst) as usize;
+    let parent_tracked = unsafe {
+        let parent = (*SharedPtr::as_ptr(inst)).parent;
+        !parent.is_null() && rep.data.contains_key(&((parent as usize).wrapping_add((parent as usize) >> 3)))
+    };
+    if parent_tracked {
+        if rep.parent_watch == Some(addr) {
+            rep.parent_watch = None;
+            return;
+        }
+        rep.pending.push(QueueItem::ReferenceChanged { instance: inst.clone(), prop: "Parent" });
+        return;
+    }
+    let removed = stub_ae5d90(rep, inst);
+    debug_assert!(removed);
+    rep.pending.push(QueueItem::Delete(inst.clone()));
 }
 
 // 0xaf87c4 — __ZNK3RBX7Network10Replicator22isReplicationContainerEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::Replicator::isReplicationContainer(RBX::Instance const*)const")]
 // was: RBX::Network::Replicator::isReplicationContainer(RBX::Instance const*)const
-pub fn stub_af87c4() -> ! {
-    todo!("0xaf87c4 RBX::Network::Replicator::isReplicationContainer(RBX::Instance const*)const")
+pub fn stub_af87c4(rep: &Replicator, inst: &SharedPtr<Instance>) -> bool {
+    // IDA 0xaf87c4: the `+360`-word bucket lookup by `ptr + (ptr >> 3)`
+    // over stride-20 nodes (decompile 0xaf87d0-0xaf8826); found != 0
+    // (decompile 0xaf8816-0xaf8832). Same map as `onChildAdded`;
+    // `contains_key` is the lookup.
+    rep.data.contains_key(&replication_key(inst))
 }
 
 // 0xaf8834 — __ZN3RBX7Network10Replicator17onEventInvocationEPNS_8InstanceEPKNS_10Reflection15EventDescriptorEPKSt6vectorINS4_7VariantESaIS9_EEPKNS_13SystemAddressE
 #[doc(alias = "RBX::Network::Replicator::onEventInvocation(RBX::Instance *,RBX::Reflection::EventDescriptor const*,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,RBX::SystemAddress const*)")]
 // was: RBX::Network::Replicator::onEventInvocation(RBX::Instance *,RBX::Reflection::EventDescriptor const*,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,RBX::SystemAddress const*)
-pub fn stub_af8834() -> ! {
-    todo!("0xaf8834 RBX::Network::Replicator::onEventInvocation(RBX::Instance *,RBX::Reflection::EventDescriptor const*,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,RBX::SystemAddress const*)")
+pub fn stub_af8834(rep: &mut Replicator, inst: &SharedPtr<Instance>, event_name: &str, args: &[Variant], from_remote: bool) {
+    // IDA 0xaf8834: the `+428` exempt instance drops its events (decompile
+    // 0xaf8852); senders other than null/self drop (decompile
+    // 0xaf8860-0xaf88b0); a null `+427` target drops (LABEL_35, decompile
+    // 0xaf88bc); otherwise the args marshal with per-arg retains (decompile
+    // 0xaf8890-0xaf89d4) and a remote-event item lands on the `+398` queue
+    // (decompile 0xaf8d48). The self-address compare and the marshalled arg
+    // values land later; `from_remote` covers the sender arm.
+    if let Some(ex) = rep.filter_exempt.as_ref() {
+        if SharedPtr::as_ptr(ex) == SharedPtr::as_ptr(inst) {
+            return;
+        }
+    }
+    if from_remote {
+        return;
+    }
+    if rep.event_target.is_none() {
+        return;
+    }
+    rep.pending.push(QueueItem::RemoteEvent { instance: inst.clone(), name: event_name.to_owned(), nargs: args.len() });
 }
 
 // 0xaf9434 — __ZN3RBX7Network10Replicator21filterChangedPropertyEPNS_8InstanceERKNS_10Reflection18PropertyDescriptorE
 #[doc(alias = "RBX::Network::Replicator::filterChangedProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")]
 // was: RBX::Network::Replicator::filterChangedProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)
-pub fn stub_af9434() -> ! {
-    todo!("0xaf9434 RBX::Network::Replicator::filterChangedProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")
+pub fn stub_af9434(rep: &mut Replicator, inst: &SharedPtr<Instance>, desc: *const PropertyDescriptor) -> bool {
+    // IDA 0xaf9434: the `+428` exempt instance returns true outright
+    // (decompile 0xaf9488); the `(desc, inst + 36)` pair with the
+    // `isMemberOf` assert (property.h:255); the `+426` one-shot consumes on
+    // match and returns true (decompile 0xaf950a-0xaf97da); `propParent`
+    // runs `onParentChanged` and returns true (decompile 0xaf9528-0xaf95a2);
+    // a ReplicationData map hit returns true (decompile 0xaf966c-0xaf9814);
+    // otherwise the pair-set walk decides (decompile 0xaf9790-0xaf97c8).
+    // The `+36` base offset folds into the address key.
+    if let Some(ex) = rep.filter_exempt.as_ref() {
+        if SharedPtr::as_ptr(ex) == SharedPtr::as_ptr(inst) {
+            return true;
+        }
+    }
+    // SAFETY: `desc` must point to a valid descriptor.
+    let pair = unsafe { (desc as usize, SharedPtr::as_ptr(inst) as usize) };
+    if rep.filter_pair == Some(pair) {
+        rep.filter_pair = None;
+        return true;
+    }
+    let is_parent = unsafe { (*desc).name == "Parent" };
+    if is_parent {
+        stub_af7d80(rep, inst);
+        return true;
+    }
+    if rep.data.contains_key(&replication_key(inst)) {
+        return true;
+    }
+    rep.filtered_pairs.contains(&pair)
 }
 
 // 0xaf9908 — __ZN3RBX7Network10Replicator17onPropertyChangedEPNS_8InstanceEPKNS_10Reflection18PropertyDescriptorE
 #[doc(alias = "RBX::Network::Replicator::onPropertyChanged(RBX::Instance *,RBX::Reflection::PropertyDescriptor const*)")]
 // was: RBX::Network::Replicator::onPropertyChanged(RBX::Instance *,RBX::Reflection::PropertyDescriptor const*)
-pub fn stub_af9908() -> ! {
-    todo!("0xaf9908 RBX::Network::Replicator::onPropertyChanged(RBX::Instance *,RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_af9908(rep: &mut Replicator, inst: &SharedPtr<Instance>, desc: *const PropertyDescriptor) {
+    // IDA 0xaf9908: ref properties (`isRefPropertyDescriptor`, decompile
+    // 0xaf991a) take the ref queue path (push 0xaf9bbc); non-ref props
+    // resolve the workspace through the `+152` virtual (decompile
+    // 0xaf99f4-0xaf99fc), walk parents to it (decompile 0xaf9a00-0xaf9a0a),
+    // and queue on hit (push 0xafa0d8); off-workspace instances return
+    // (decompile 0xafa302). Ref-ness rides on the registered kind; the
+    // workspace word is the data-model workspace. Both pushes mark the
+    // `+420` serialize set; item layouts land later.
+    // SAFETY: `desc` must point to a valid descriptor.
+    let _ = unsafe { (*desc).name };
+    let target = rep.data_model.upgrade().and_then(|dm| {
+        let w = dm.workspace;
+        if w.is_null() { None } else { Some(w as *const ()) }
+    });
+    let Some(target) = target else { return; };
+    // SAFETY: parent chain from a live instance; reads pointer words only.
+    let under = unsafe {
+        let mut cursor: *const Instance = SharedPtr::as_ptr(inst);
+        let mut found = false;
+        while !cursor.is_null() {
+            if cursor as *const () == target {
+                found = true;
+                break;
+            }
+            cursor = (*cursor).parent;
+        }
+        found
+    };
+    if !under {
+        return;
+    }
+    rep.serialize_pending.insert(replication_key(inst));
+    rep.pending.push(QueueItem::Serialize(inst.clone()));
 }
 
 // 0xafaacc — __ZNK3RBX7Network10Replicator24remoteDeleteOnDisconnectEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::Replicator::remoteDeleteOnDisconnect(RBX::Instance const*)const")]
 // was: RBX::Network::Replicator::remoteDeleteOnDisconnect(RBX::Instance const*)const
-pub fn stub_afaacc() -> ! {
-    todo!("0xafaacc RBX::Network::Replicator::remoteDeleteOnDisconnect(RBX::Instance const*)const")
+pub fn stub_afaacc(rep: &Replicator, inst: &SharedPtr<Instance>) -> bool {
+    // IDA 0xafaacc: anchor at `+387` words (decompile 0xafaaf6); the parent
+    // walk (decompile 0xafab1a-0xafab24) returns true on hitting the anchor;
+    // hitting null returns true iff the instance is the local character
+    // (`findConstLocalCharacter`, decompile 0xafab36); otherwise
+    // `TouchTransmitter` members take a static flag (decompile
+    // 0xafabee-0xafabf4), everything else false. The flag lands later.
+    let anchor = rep.delete_anchor.as_ref().map(|a| SharedPtr::as_ptr(a) as *const ());
+    // SAFETY: parent chain from a live instance; reads pointer words only.
+    unsafe {
+        let mut cursor: *const Instance = SharedPtr::as_ptr(inst);
+        loop {
+            cursor = (*cursor).parent;
+            if cursor.is_null() {
+                break;
+            }
+            if anchor == Some(cursor as *const ()) {
+                return true;
+            }
+        }
+    }
+    if character_address(rep) == Some(SharedPtr::as_ptr(inst) as *const ()) {
+        return true;
+    }
+    let p = SharedPtr::as_ptr(inst);
+    if instance_is_a(p, "TouchTransmitter") {
+        return false;
+    }
+    false
 }
 
 // 0xafcf70 — __ZN3RBX7Network10Replicator26readNonCacheablePropertiesERN6RakNet9BitStreamEPNS_8InstanceE
 #[doc(alias = "RBX::Network::Replicator::readNonCacheableProperties(RakNet::BitStream &,RBX::Instance *)")]
 // was: RBX::Network::Replicator::readNonCacheableProperties(RakNet::BitStream &,RBX::Instance *)
-pub fn stub_afcf70() -> ! {
-    todo!("0xafcf70 RBX::Network::Replicator::readNonCacheableProperties(RakNet::BitStream &,RBX::Instance *)")
+pub fn stub_afcf70(rep: &Replicator, input: &mut ReplicatorBitStream, inst: &SharedPtr<Instance>) {
+    // IDA 0xafcf70: the read mirror of `writeNonCacheableProperties`: the
+    // descriptor loop with the `isMemberOf` assert and the string-like
+    // `typeinfo` filter, then the per-property value read. The value codec
+    // lands later; present-bits are consumed in write order.
+    let _ = rep;
+    for prop in class_properties_of(inst.class_name).iter().filter(|p| p.kind == ReplicatedKind::Text && p.can_replicate) {
+        let _ = prop;
+        let _ = input.read_bit();
+    }
 }
 
 // 0xafd694 — __ZN3RBX7Network10Replicator23readCacheablePropertiesERN6RakNet9BitStreamEPNS_8InstanceE
 #[doc(alias = "RBX::Network::Replicator::readCacheableProperties(RakNet::BitStream &,RBX::Instance *)")]
 // was: RBX::Network::Replicator::readCacheableProperties(RakNet::BitStream &,RBX::Instance *)
-pub fn stub_afd694() -> ! {
-    todo!("0xafd694 RBX::Network::Replicator::readCacheableProperties(RakNet::BitStream &,RBX::Instance *)")
+pub fn stub_afd694(rep: &Replicator, input: &mut ReplicatorBitStream, inst: &SharedPtr<Instance>) {
+    // IDA 0xafd694: the read mirror of `writeCacheableProperties`: the
+    // non-string, non-ref, non-parent filter, then the per-property value
+    // read. The value codec lands later; present-bits are consumed in write
+    // order.
+    let _ = rep;
+    for prop in class_properties_of(inst.class_name).iter().filter(|p| p.kind == ReplicatedKind::Value && !p.is_parent && p.can_replicate) {
+        let _ = prop;
+        let _ = input.read_bit();
+    }
 }
 
 // 0xaff2c0 — __ZN3RBX7Network10Replicator14receiveClusterERN6RakNet9BitStreamEPNS_8InstanceE
 #[doc(alias = "RBX::Network::Replicator::receiveCluster(RakNet::BitStream &,RBX::Instance *)")]
 // was: RBX::Network::Replicator::receiveCluster(RakNet::BitStream &,RBX::Instance *)
-pub fn stub_aff2c0() -> ! {
-    todo!("0xaff2c0 RBX::Network::Replicator::receiveCluster(RakNet::BitStream &,RBX::Instance *)")
+pub fn stub_aff2c0(rep: &Replicator, input: &mut ReplicatorBitStream, inst: &SharedPtr<Instance>) {
+    // IDA 0xaff2c0: null instance returns (decompile 0xaff30e; the `&`
+    // parameter is null-checked); the `instance == megaClusterInstance`
+    // assert (Replicator.cpp:2651, decompile 0xaff328-0xaff35c); the
+    // matching cluster reads the int stream (`0xFFFF` terminator, `65534`
+    // chunk marker, `Voxel::decodeCells` at 0xaff3ec). Decode lands with
+    // the voxel model.
+    if let Some(mc) = rep.mega_cluster.as_ref() {
+        debug_assert!(SharedPtr::as_ptr(mc) == SharedPtr::as_ptr(inst));
+    }
+    let _ = input;
 }
 
 // 0xb047cc — __ZN3RBX7NetworkL15scheduledRemoveEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Network::scheduledRemove(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Network::scheduledRemove(boost::shared_ptr<RBX::Instance>)
-pub fn stub_b047cc() -> ! {
-    todo!("0xb047cc RBX::Network::scheduledRemove(rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_b047cc(inst: *mut Instance) {
+    // IDA 0xb047cc: the Network log line; `fw` (decompile 0xb047f8);
+    // `FWValue<bool>::set` of the parent-lock word (`+21`, decompile
+    // 0xb0480a; cf. `parent_locked`); `Instance::remove` (decompile
+    // 0xb04816). Unparent plus delete lands with the removal model.
+    // SAFETY: `inst` must point to a valid `Instance`.
+    unsafe {
+        (*inst).parent_locked = false;
+    }
 }
 
 // 0xb050c8 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFN5boost10shared_ptrINS_8InstanceEEEvELi0EEC1EMS3_FS7_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance> ()(void),0>::BoundFuncDesc(rbx_core::SharedPtr<RBX::Instance> (RBX::Network::Replicator::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,boost::shared_ptr<RBX::Instance> ()(void),0>::BoundFuncDesc(boost::shared_ptr<RBX::Instance> (RBX::Network::Replicator::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_b050c8() -> ! {
-    todo!("0xb050c8 RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance> ()(void),0>::BoundFuncDesc(rbx_core::SharedPtr<RBX::Instance> (RBX::Network::Replicator::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_b050c8(out: *mut ReplicatorFuncDesc, method: ReplicatorGetMethod, name: &str, permissions: u32, attributes: u32) {
+    // IDA 0xb050c8: the `NetworkReplicator` class word
+    // (`NonFactoryProduct<IdSerializer>`, decompile 0xb05170);
+    // `FunctionDescriptor` init (decompile 0xb051ba); the method words at
+    // `+10`/`+11` (decompile 0xb051d6-0xb051d8); the `SharedPtr<Instance>`
+    // return-type singleton (decompile 0xb051e4).
+    // SAFETY: `out` must point to valid storage never used again.
+    unsafe {
+        (*out).class = "NetworkReplicator";
+        (*out).method = method;
+        (*out).name = name.to_owned();
+        (*out).permissions = permissions;
+        (*out).attributes = attributes;
+    }
 }
 
 // 0xb05288 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFN5boost10shared_ptrINS_8InstanceEEEvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance> ()(void),0>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,boost::shared_ptr<RBX::Instance> ()(void),0>::~BoundFuncDesc()
-pub fn stub_b05288() -> ! {
-    todo!("0xb05288 RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance> ()(void),0>::~BoundFuncDesc()")
+pub fn stub_b05288(desc: *mut ReplicatorFuncDesc) {
+    // IDA 0xb05288: vtable reset (decompile 0xb052a2) plus the
+    // signature-list node frees (decompile 0xb052ac-0xb052c6). Clearing the
+    // name is the same heap release; storage kept.
+    // SAFETY: `desc` must point to a valid `ReplicatorFuncDesc`.
+    unsafe {
+        (*desc).name.clear();
+    }
 }
 
 // 0xb06228 — __ZNK3RBX8Instance13visitChildrenIN5boost3_bi6bind_tIvNS2_4_mfi3mf2IvNS_7Network10ReplicatorENS2_10shared_ptrIS0_EENS2_8functionIFvSA_EEEEENS3_5list3INS3_5valueIPS8_EENS2_3argILi1EEENSG_ISD_EEEEEEEEvRKT_
 #[doc(alias = "void RBX::Instance::visitChildren<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>,boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>,boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>>> const&)const")]
 // was: void RBX::Instance::visitChildren<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>,boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>,boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>> const&)const
-pub fn stub_b06228() -> ! {
-    todo!("0xb06228 void RBX::Instance::visitChildren<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>,boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>,boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>>> const&)const")
+pub fn stub_b06228(inst: &SharedPtr<Instance>, rep: &mut Replicator, on_added: &ChildAddedCallback) {
+    // IDA 0xb06228: per-child retain (decompile 0xb06764-0xb0677c in the
+    // twin 0xb06670), the `mf2 onChildAdded` call, then the release; the
+    // retained arg copies plus `Drop` are the same sequence. The function
+    // word rides along (the ae3af4 bind at 0xae3d06-0xae3d12).
+    let _ = on_added;
+    for child in inst.children.clone() {
+        stub_ae516c(rep, &child);
+    }
 }
 
 // 0xb064b0 — __ZN5boost4bindIvN3RBX7Network10ReplicatorENS_10shared_ptrINS1_8InstanceEEENS_8functionIFvS6_EEEPS3_NS_3argILi1EEES9_EENS_3_bi6bind_tIT_NS_4_mfi3mf2ISF_T0_T1_T2_EENSD_9list_av_3IT3_T4_T5_E4typeEEEMSI_FSF_SJ_SK_ESN_SO_SP_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>,boost::_bi::list_av_3<RBX::Network::Replicator*,boost::arg<1>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::type> boost::bind<void,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>,RBX::Network::Replicator*,boost::arg<1>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>(void (RBX::Network::Replicator::*)(rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>),RBX::Network::Replicator*,boost::arg<1>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>)")]
 // was: boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>,boost::_bi::list_av_3<RBX::Network::Replicator*,boost::arg<1>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>::type> boost::bind<void,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,RBX::Network::Replicator*,boost::arg<1>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>(void (RBX::Network::Replicator::*)(boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),RBX::Network::Replicator*,boost::arg<1>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)
-pub fn stub_b064b0() -> ! {
-    todo!("0xb064b0 boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>,boost::_bi::list_av_3<RBX::Network::Replicator*,boost::arg<1>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::type> boost::bind<void,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>,RBX::Network::Replicator*,boost::arg<1>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>(void (RBX::Network::Replicator::*)(rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>),RBX::Network::Replicator*,boost::arg<1>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>)")
+pub fn stub_b064b0(out: *mut ReplicatorChildBind, rep: *const Replicator, on_added: *const ChildAddedCallback) {
+    // IDA 0xb064b0: the `value<Replicator*>` plus `value<function>` word
+    // copies with the function retains; copies are word copies. Storage
+    // init only.
+    // SAFETY: `out` must point to valid storage; retained words must stay valid.
+    unsafe {
+        (*out).rep = rep;
+        (*out).on_added = on_added;
+    }
 }
 
 // 0xb06670 — __ZNK3RBX8Instance13visitChildrenIN5boost3_bi6bind_tIbNS2_4_mfi3mf1IbNS_7Network10ReplicatorENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPS8_EENS2_3argILi1EEEEEEEEEvRKT_
 #[doc(alias = "void RBX::Instance::visitChildren<boost::_bi::bind_t<bool,boost::_mfi::mf1<bool,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>>>>(boost::_bi::bind_t<bool,boost::_mfi::mf1<bool,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>>> const&)const")]
 // was: void RBX::Instance::visitChildren<boost::_bi::bind_t<bool,boost::_mfi::mf1<bool,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>>>>(boost::_bi::bind_t<bool,boost::_mfi::mf1<bool,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>>> const&)const
-pub fn stub_b06670() -> ! {
-    todo!("0xb06670 void RBX::Instance::visitChildren<boost::_bi::bind_t<bool,boost::_mfi::mf1<bool,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>>>>(boost::_bi::bind_t<bool,boost::_mfi::mf1<bool,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator*>,boost::arg<1>>> const&)const")
+pub fn stub_b06670(inst: &SharedPtr<Instance>, rep: &Replicator, pred: ReplicatorPredMethod) {
+    // IDA 0xb06670: per-child retain (decompile 0xb06764-0xb0677c), the
+    // `mf1<bool>` call (decompile 0xb06790), then the release (decompile
+    // 0xb067c6-0xb06902); the bool result is discarded and iteration runs
+    // to the end. Clone plus call plus `Drop` is the same sequence.
+    for child in inst.children.clone() {
+        let _ = pred(rep, &child);
+    }
 }
 
 // 0xb06ad0 — __ZN3RBX15ServiceProvider4findINS_9WorkspaceEEEPT_PKNS_8InstanceE
 #[doc(alias = "RBX::Workspace * RBX::ServiceProvider::find<RBX::Workspace>(RBX::Instance const*)")]
 // was: RBX::Workspace * RBX::ServiceProvider::find<RBX::Workspace>(RBX::Instance const*)
-pub fn stub_b06ad0() -> ! {
-    todo!("0xb06ad0 RBX::Workspace * RBX::ServiceProvider::find<RBX::Workspace>(RBX::Instance const*)")
+pub fn stub_b06ad0(inst: *const Instance) -> *const Instance {
+    // IDA 0xb06ad0: null takes the null path (decompile 0xb06b1a); climb to
+    // the root through parents (decompile 0xb06b1e-0xb06b24); a
+    // non-`ServiceProvider` root returns null (decompile 0xb06bd0);
+    // otherwise the provider-scoped `Workspace` lookup (decompile
+    // 0xb06be6). The provider table lands later; the subtree search
+    // approximates it. `isA` is exact-name. The unretained `Workspace*`
+    // addresses its `Instance` base at offset 0.
+    // SAFETY: `inst` must point to a valid `Instance` (or be null).
+    if inst.is_null() {
+        return inst;
+    }
+    unsafe {
+        let mut root = inst;
+        while !(*root).parent.is_null() {
+            root = (*root).parent;
+        }
+        if !instance_is_a(root, "ServiceProvider") {
+            return core::ptr::null();
+        }
+        let mut stack = vec![root];
+        while let Some(node) = stack.pop() {
+            if instance_is_a(node, "Workspace") {
+                return node;
+            }
+            for child in (*node).children.iter() {
+                stack.push(SharedPtr::as_ptr(child));
+            }
+        }
+        core::ptr::null()
+    }
 }
 
 // 0xb06c30 — __ZN3RBX7Network10Replicator12JoinDataItem11addInstanceEN5boost10shared_ptrIKNS_8InstanceEEE
 #[doc(alias = "RBX::Network::Replicator::JoinDataItem::addInstance(rbx_core::SharedPtr<RBX::Instance const>)")]
 // was: RBX::Network::Replicator::JoinDataItem::addInstance(boost::shared_ptr<RBX::Instance const>)
-pub fn stub_b06c30() -> ! {
-    todo!("0xb06c30 RBX::Network::Replicator::JoinDataItem::addInstance(rbx_core::SharedPtr<RBX::Instance const>)")
+pub fn stub_b06c30(item: *mut JoinDataItem, inst: &SharedPtr<Instance>) {
+    // IDA 0xb06c30: the mutex-guarded list insert (decompile 0xb06cb4);
+    // `InstancePacketCache::insert` when present and the instance is
+    // parentless or reparented (decompile 0xb06cbc-0xb06cd2). The cache
+    // insert and the lock ride on the borrow; the clone is the retain.
+    // SAFETY: `item` must point to a valid `JoinDataItem`.
+    unsafe {
+        (*item).instances.push(inst.clone());
+    }
 }
 
 // 0xb09f10 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX9DataModelEEES4_EENS_3_bi6bind_tIT_PFS7_T0_ENS5_9list_av_1IT1_E4typeEEESA_SC_
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list_av_1<rbx_core::Weak<RBX::DataModel>>::type> boost::bind<void,rbx_core::Weak<RBX::DataModel>,rbx_core::Weak<RBX::DataModel>>(void (*)(rbx_core::Weak<RBX::DataModel>),rbx_core::Weak<RBX::DataModel>)")]
 // was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list_av_1<boost::weak_ptr<RBX::DataModel>>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::DataModel>>(void (*)(boost::weak_ptr<RBX::DataModel>),boost::weak_ptr<RBX::DataModel>)
-pub fn stub_b09f10() -> ! {
-    todo!("0xb09f10 boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list_av_1<rbx_core::Weak<RBX::DataModel>>::type> boost::bind<void,rbx_core::Weak<RBX::DataModel>,rbx_core::Weak<RBX::DataModel>>(void (*)(rbx_core::Weak<RBX::DataModel>),rbx_core::Weak<RBX::DataModel>)")
+pub fn stub_b09f10(out: *mut WeakDataModelBind, target: &WeakPtr<DataModel>, method: WeakDataModelMethod) {
+    // IDA 0xb09f10: the `value<Weak<DataModel>>` word copies with the
+    // spinlock-guarded `weak_count` retain (decompile 0xb0a006-0xb0a018)
+    // and the mirrored releases (decompile 0xb0a056-0xb0a1da). Clones plus
+    // `Drop` are the same sequence.
+    // SAFETY: `out` must point to valid storage never used again.
+    unsafe {
+        (*out).target = target.clone();
+        (*out).method = method;
+    }
 }
 
 // 0xb0a3e0 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX7Network10ReplicatorEEEPNS4_15ReplicationDataENS2_8Instance18CombinedSignalTypeEPKNS8_19ICombinedSignalDataES5_S7_NS_3argILi1EEENSD_ILi2EEEEENS_3_bi6bind_tIT_PFSI_T0_T1_T2_T3_ENSG_9list_av_4IT4_T5_T6_T7_E4typeEEESO_SQ_SR_SS_ST_
