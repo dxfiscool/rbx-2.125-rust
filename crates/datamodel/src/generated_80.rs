@@ -272,9 +272,7 @@ pub fn stub_649cf4() -> ! {
 // 0x64ae00 — __ZN3RBX11shared_fromINS_9DataModelEEEN5boost10shared_ptrIT_EEPS4_
 #[doc(alias = "rbx_core::SharedPtr<RBX::DataModel> RBX::shared_from<RBX::DataModel>(RBX::DataModel*)")]
 // was: boost::shared_ptr<RBX::DataModel> RBX::shared_from<RBX::DataModel>(RBX::DataModel*)
-pub fn stub_64ae00() -> ! {
-    todo!("0x64ae00 rbx_core::SharedPtr<RBX::DataModel> RBX::shared_from<RBX::DataModel>(RBX::DataModel*)")
-}
+pub use crate::workspace::stub_0x64ae00 as stub_64ae00;
 
 // 0x64af70 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX9DataModelEEEPSsPSt9exceptionS4_NS_3argILi1EEENS8_ILi2EEEEENS_3_bi6bind_tIT_PFSD_T0_T1_T2_ENSB_9list_av_3IT3_T4_T5_E4typeEEESI_SK_SL_SM_
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list_av_3<rbx_core::Weak<RBX::DataModel>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,rbx_core::Weak<RBX::DataModel>,std::string *,std::exception *,rbx_core::Weak<RBX::DataModel>,boost::arg<1>,boost::arg<2>>(void (*)(rbx_core::Weak<RBX::DataModel>,std::string *,std::exception *),rbx_core::Weak<RBX::DataModel>,boost::arg<1>,boost::arg<2>)")]
