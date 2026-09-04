@@ -172,6 +172,50 @@ pub struct BoundFunc {
     pub permissions: u32,
     pub attributes: u32,
 }
+/// `RBX::Reflection::EnumPropDescriptor<C, E>` cutover (IDA 0x5f9d30,
+/// 0x4a5834): name/category/attributes/permissions, the live enum value and
+/// the item table. The getter/setter member-pointer pair (+44) folds into
+/// direct field access; the `EnumDesc` singleton link (+40/+48) folds into
+/// the owned table (same shape as `FaceNormalPropDesc` in descriptor.rs).
+#[derive(Debug, Clone)]
+pub struct EnumProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+    pub value: i32,
+    pub enum_desc: crate::enum_desc::EnumDesc,
+}
+
+impl EnumProp {
+    pub fn new(
+        name: &str,
+        category: &str,
+        initial: i32,
+        enum_desc: crate::enum_desc::EnumDesc,
+        attributes: u32,
+        permissions: u32,
+    ) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+            value: initial,
+            enum_desc,
+        }
+    }
+
+    /// `EnumDesc<T>::convertToIndex` (IDA 0x4aa47c): `ReleaseAssert(value>=0)`
+    /// (enumconverter.h:350), `value_ordinals[value]` or -1.
+    pub fn convert_to_index(&self, value: i32) -> i32 {
+        assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+        usize::try_from(value)
+            .ok()
+            .and_then(|slot| self.enum_desc.value_ordinals.get(slot).copied())
+            .unwrap_or(-1)
+    }
+}
 
 // 0x5f0a90 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEfED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::~PropDescriptor()")]
@@ -870,8 +914,17 @@ pub fn stub_0x5f915c() {
 
 // 0x5f9ba0 — __ZN3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEdEC2IMS2_KFdvEMS2_FvdEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,double>::PropDescriptor<double (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(double)>(char const*,char const*,double (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(double),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5f9ba0() -> ! {
-    todo!("0x5f9ba0 RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,double>::PropDescriptor<double (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(double)>(char const*,char const*,double (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(double),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5f9ba0(
+    name: &str,
+    category: &str,
+    initial: f64,
+    attributes: u32,
+    permissions: u32,
+) -> Prop<f64> {
+    // IDA 0x5f9ba0: `PropDescriptor<PhysicsSettings, double>` get/set ctor:
+    // `new` the GetSetImpl, forward into the `TypedPropertyDescriptor`
+    // ctor. Same shape as the PartInstance float twin at 0x5f0cec.
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x5f9cb4 — __ZN3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEdED0Ev
@@ -896,20 +949,35 @@ pub fn stub_0x5f9ce4() -> bool {
 
 // 0x5f9ce8 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,double>::GetSetImpl<double (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(double)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5f9ce8() -> ! {
-    todo!("0x5f9ce8 RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,double>::GetSetImpl<double (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(double)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5f9ce8(prop: &Prop<f64>) -> f64 {
+    // IDA 0x5f9ce8: `GetSetImpl<double>::getValue`: header strip, getter
+    // member-pointer decode, invoke.
+    prop.value
 }
 
 // 0x5f9d08 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE8setValueEPNS0_13DescribedBaseERKd
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,double>::GetSetImpl<double (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(double)>::setValue(RBX::Reflection::DescribedBase *,double const&)const")]
-pub fn stub_0x5f9d08() -> ! {
-    todo!("0x5f9d08 RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,double>::GetSetImpl<double (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(double)>::setValue(RBX::Reflection::DescribedBase *,double const&)const")
+pub fn stub_0x5f9d08(prop: &mut Prop<f64>, value: f64) {
+    // IDA 0x5f9d08: `GetSetImpl<double>::setValue`: header strip, setter
+    // member-pointer decode, invoke.
+    prop.value = value;
 }
 
 // 0x5f9d30 — __ZN3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::EnumPropDescriptor<RBX::EThrottle::EThrottleType (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(RBX::EThrottle::EThrottleType)>(char const*,char const*,RBX::EThrottle::EThrottleType (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(RBX::EThrottle::EThrottleType),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5f9d30() -> ! {
-    todo!("0x5f9d30 RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::EnumPropDescriptor<RBX::EThrottle::EThrottleType (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(RBX::EThrottle::EThrottleType)>(char const*,char const*,RBX::EThrottle::EThrottleType (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(RBX::EThrottle::EThrottleType),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5f9d30(
+    name: &str,
+    category: &str,
+    initial: i32,
+    attributes: u32,
+    permissions: u32,
+) -> EnumProp {
+    // IDA 0x5f9d30: `EnumPropDescriptor<PhysicsSettings, EThrottleType>`
+    // ctor: `new` the GetSetImpl holding the getter/setter pair, link the
+    // `EnumDesc<EThrottleType>` singleton at +40/+48 (same shape as 0x4a5834).
+    // The item pairs register in the singleton C2 (cf. 0x4aaef8); the table
+    // here clones that singleton link.
+    EnumProp::new(name, category, initial, crate::descriptor::stub_0x4aaef8().clone(), attributes, permissions)
 }
 
 // 0x5f9ee4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEED0Ev
@@ -932,26 +1000,41 @@ pub fn stub_0x5f9f20() {
 
 // 0x5f9f30 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE11equalValuesEPKNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5f9f30() -> ! {
-    todo!("0x5f9f30 RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5f9f30(a: &EnumProp, b: &EnumProp) -> bool {
+    // IDA 0x5f9f30: `equalValues`: get both sides via the +44 member,
+    // compare (same shape as 0x4a9fe0).
+    a.value == b.value
 }
 
 // 0x5f9f58 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x5f9f58() -> ! {
-    todo!("0x5f9f58 RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x5f9f58(prop: &EnumProp) -> Value {
+    // IDA 0x5f9f58: `getVariant`: get via the +44 member, tag
+    // `Type::getSingleton<int>`, `placement_any<int>` (same shape as
+    // 0x4aa008).
+    Value::Int(prop.value)
 }
 
 // 0x5f9f7c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x5f9f7c() -> ! {
-    todo!("0x5f9f7c RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x5f9f7c(prop: &mut EnumProp, value: &Value) {
+    // IDA 0x5f9f7c: `setVariant`: int payloads use `any_cast<int>` directly,
+    // else `Variant::convert<int>`, then set (same shape as 0x4aa02c).
+    prop.value = match value {
+        Value::Int(v) => *v,
+        Value::EnumValue(v) => *v,
+        Value::Float(v) => *v as i32,
+        Value::Bool(v) => *v as i32,
+        other => panic!("Variant::convert<int> on {other:?} (IDA 0x5f9f7c)"),
+    };
 }
 
 // 0x5fa0c8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE9copyValueEPKNS0_13DescribedBaseEPS6_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x5fa0c8() -> ! {
-    todo!("0x5fa0c8 RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x5fa0c8(dst: &mut EnumProp, src: &EnumProp) {
+    // IDA 0x5fa0c8: `copyValue`: get via the +44 member, set into the
+    // destination (same shape as 0x4aa178).
+    dst.value = src.value;
 }
 
 // 0x5fa0ec — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE14hasStringValueEv
@@ -963,62 +1046,115 @@ pub fn stub_0x5fa0ec() -> bool {
 
 // 0x5fa0f0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5fa0f0() -> ! {
-    todo!("0x5fa0f0 RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5fa0f0(prop: &EnumProp) -> String {
+    // IDA 0x5fa0f0: `getStringValue`: get via the +44 member, then
+    // `EnumDesc<EThrottleType>::convertToString` (same shape as 0x4aa1a0).
+    prop.enum_desc.lookup_name(prop.value).unwrap_or_default().to_owned()
 }
 
 // 0x5fa114 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x5fa114() -> ! {
-    todo!("0x5fa114 RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x5fa114(prop: &mut EnumProp, name: &str) -> bool {
+    // IDA 0x5fa114: `setStringValue`: `Name::lookup`, `convertToValue`; on
+    // 1 set and return 1, else 0 (same shape as 0x4aa1c4).
+    match prop.enum_desc.lookup_value(name) {
+        Some(v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x5fa154 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_0x5fa154() -> ! {
-    todo!("0x5fa154 RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x5fa154(prop: &EnumProp) -> i32 {
+    // IDA 0x5fa154: `writeValue`: get via the +44 member, `clearValue`,
+    // store the int tag + value, return it (same shape as 0x4aa204).
+    prop.value
 }
 
 // 0x5fa174 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_0x5fa174() -> ! {
-    todo!("0x5fa174 RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x5fa174(prop: &mut EnumProp, text: &str) -> bool {
+    // IDA 0x5fa174: `readValue`: element text into a string, `Name::lookup`,
+    // `convertToValue`; success sets (same shape as 0x4aa224). Empty/missing
+    // text leaves the object untouched.
+    match prop.enum_desc.lookup_value(text) {
+        Some(v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x5fa3b4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5fa3b4() -> ! {
-    todo!("0x5fa3b4 RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5fa3b4(prop: &EnumProp) -> i32 {
+    // IDA 0x5fa3b4: `getIndexValue` tail-jumps to
+    // `EnumDesc<EThrottleType>::convertToIndex` (same shape as 0x4aa464).
+    prop.convert_to_index(prop.value)
 }
 
 // 0x5fa3d0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_0x5fa3d0() -> ! {
-    todo!("0x5fa3d0 RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x5fa3d0(prop: &mut EnumProp, index: usize) -> bool {
+    // IDA 0x5fa3d0: `setIndexValue`: bounds-check against the enum count,
+    // load `values[index]`, set, return 1; else 0 (same shape as 0x4aa480).
+    match prop.enum_desc.values.get(index) {
+        Some(&v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x5fa404 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5fa404() -> ! {
-    todo!("0x5fa404 RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5fa404(prop: &EnumProp) -> i32 {
+    // IDA 0x5fa404: `getEnumValue` tail-jumps to the +44 member get
+    // (same shape as 0x4aa4b4).
+    prop.value
 }
 
 // 0x5fa40c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x5fa40c() -> ! {
-    todo!("0x5fa40c RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x5fa40c(prop: &mut EnumProp, value: i32) -> bool {
+    // IDA 0x5fa40c: `setEnumValue`: `find_if(items, equalValue)`; hit sets
+    // and returns 1, miss returns 0 (same shape as 0x4aa4bc).
+    if prop.enum_desc.items.iter().any(|it| it.value == value) {
+        prop.value = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x5fa458 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5fa458() -> ! {
-    todo!("0x5fa458 RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5fa458(prop: &EnumProp) -> Option<crate::enum_desc::EnumItem> {
+    // IDA 0x5fa458: `getEnumItem`: get the value, return
+    // `convertToItem(enumdesc, &v)` (same shape as 0x4aa508).
+    usize::try_from(prop.value)
+        .ok()
+        .and_then(|slot| prop.enum_desc.items_by_value.get(slot).copied().flatten())
+        .and_then(|idx| prop.enum_desc.items.get(idx).cloned())
 }
 
 // 0x5fa478 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_0x5fa478() -> ! {
-    todo!("0x5fa478 RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x5fa478(prop: &mut EnumProp, name: &str) -> bool {
+    // IDA 0x5fa478: `setStringValue` (`Name` overload): `convertToValue`,
+    // success sets and returns 1, else 0 (same shape as 0x4aa528).
+    match prop.enum_desc.lookup_value(name) {
+        Some(v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x5fa4ac — __ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE14convertToIndexES3_
@@ -1031,8 +1167,21 @@ pub fn stub_0x5fa4ac(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 
 // 0x5fa51c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x5fa51c() -> ! {
-    todo!("0x5fa51c RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x5fa51c(prop: &mut EnumProp, value: i32) -> bool {
+    // IDA 0x5fa51c: `setIntValue`: `value >= 0` and `value <
+    // value_to_value.size`, load `mapped = value_to_value[value]`;
+    // `mapped == -1` returns 0, else set and return 1 (same shape as
+    // 0x4aa55c).
+    match usize::try_from(value)
+        .ok()
+        .and_then(|slot| prop.enum_desc.value_to_value.get(slot).copied())
+    {
+        Some(mapped) if mapped != -1 => {
+            prop.value = mapped;
+            true
+        }
+        _ => false,
+    }
 }
 
 // 0x5fa55c — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -1051,20 +1200,33 @@ pub fn stub_0x5fa560() -> bool {
 
 // 0x5fa564 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::GetSetImpl<RBX::EThrottle::EThrottleType (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(RBX::EThrottle::EThrottleType)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5fa564() -> ! {
-    todo!("0x5fa564 RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::GetSetImpl<RBX::EThrottle::EThrottleType (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(RBX::EThrottle::EThrottleType)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5fa564(prop: &EnumProp) -> i32 {
+    // IDA 0x5fa564: `GetSetImpl<EThrottleType>::getValue` (+44 member):
+    // header strip, getter member-pointer decode, invoke.
+    prop.value
 }
 
 // 0x5fa584 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::GetSetImpl<RBX::EThrottle::EThrottleType (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(RBX::EThrottle::EThrottleType)>::setValue(RBX::Reflection::DescribedBase *,RBX::EThrottle::EThrottleType const&)const")]
-pub fn stub_0x5fa584() -> ! {
-    todo!("0x5fa584 RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::GetSetImpl<RBX::EThrottle::EThrottleType (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(RBX::EThrottle::EThrottleType)>::setValue(RBX::Reflection::DescribedBase *,RBX::EThrottle::EThrottleType const&)const")
+pub fn stub_0x5fa584(prop: &mut EnumProp, value: i32) {
+    // IDA 0x5fa584: `GetSetImpl<EThrottleType>::setValue` (+44 member):
+    // header strip, setter member-pointer decode, invoke.
+    prop.value = value;
 }
 
 // 0x5fa5a8 — __ZN3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,bool>::PropDescriptor<bool (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(bool)>(char const*,char const*,bool (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5fa5a8() -> ! {
-    todo!("0x5fa5a8 RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,bool>::PropDescriptor<bool (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(bool)>(char const*,char const*,bool (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5fa5a8(
+    name: &str,
+    category: &str,
+    initial: bool,
+    attributes: u32,
+    permissions: u32,
+) -> Prop<bool> {
+    // IDA 0x5fa5a8: `PropDescriptor<PhysicsSettings, bool>` get/set ctor:
+    // `new` the GetSetImpl, forward into the `TypedPropertyDescriptor`
+    // ctor. Same shape as the PartInstance float twin at 0x5f0cec.
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x5fa6bc — __ZN3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbED0Ev
@@ -1089,14 +1251,18 @@ pub fn stub_0x5fa6ec() -> bool {
 
 // 0x5fa6f0 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,bool>::GetSetImpl<bool (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5fa6f0() -> ! {
-    todo!("0x5fa6f0 RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,bool>::GetSetImpl<bool (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5fa6f0(prop: &Prop<bool>) -> bool {
+    // IDA 0x5fa6f0: `GetSetImpl<bool>::getValue` for PhysicsSettings:
+    // header strip, getter member-pointer decode, invoke.
+    prop.value
 }
 
 // 0x5fa714 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,bool>::GetSetImpl<bool (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_0x5fa714() -> ! {
-    todo!("0x5fa714 RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,bool>::GetSetImpl<bool (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_0x5fa714(prop: &mut Prop<bool>, value: bool) {
+    // IDA 0x5fa714: `GetSetImpl<bool>::setValue` for PhysicsSettings:
+    // header strip, setter member-pointer decode, invoke.
+    prop.value = value;
 }
 
 // 0x5fc1f4 — __ZN3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEEC1Ev
