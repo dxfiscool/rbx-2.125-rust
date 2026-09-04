@@ -1084,158 +1084,358 @@ pub fn stub_82e834(set: &RobloxExtraSpace, it: ExtraSpaceIter) -> Option<ExtraSp
 // 0x82e808 — __ZN3RBX9Intrusive3SetI16RobloxExtraSpaceS2_E5eraseENS3_8IteratorE
 // type: int __fastcall(int, void *)
 #[doc(alias = "RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::erase(RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator)")]
-pub fn stub_82e808() -> ! {
-    todo!("0x82e808 RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::erase(RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator)")
+pub fn stub_82e808(set: &mut RobloxExtraSpace, it: ExtraSpaceIter) -> bool {
+    // IDA 0x82e808: the real `Set::erase(Iterator)` (cf. the `j_` thunk at
+    // 0xf55c54). Unhooks the node at the cursor; the intrusive unlink
+    // collapses into the `Vec` removal.
+    if it.index < set.nodes.len() {
+        set.nodes.remove(it.index);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x82e6f8 — __ZN5boost6detail12shared_countC2IN16RobloxExtraSpace6SharedEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RobloxExtraSpace::Shared>(RobloxExtraSpace::Shared *)")]
-pub fn stub_82e6f8() -> ! {
-    todo!("0x82e6f8 boost::detail::shared_count::shared_count<RobloxExtraSpace::Shared>(RobloxExtraSpace::Shared *)")
+pub fn stub_82e6f8(ptr: *const ExtraSpaceShared) -> u32 {
+    // IDA 0x82e6f8: the real `shared_count` ctor (cf. the `j_` thunk at
+    // 0xf55c84). Models `__shared_count(p)` adopting `p`: null starts empty,
+    // otherwise the use count starts at one (the atomic collapses into `Arc`).
+    if ptr.is_null() { 0 } else { 1 }
 }
 
 // 0x82e624 — __ZN5boost10shared_ptrIN16RobloxExtraSpace6SharedEEC2IS2_EEPT_
 // was: boost::shared_ptr<RobloxExtraSpace::Shared>::shared_ptr<RobloxExtraSpace::Shared>(RobloxExtraSpace::Shared *) (boost::shared_ptr -> rbx_core::SharedPtr)
 #[doc(alias = "rbx_core::SharedPtr<RobloxExtraSpace::Shared>::shared_ptr<RobloxExtraSpace::Shared>(RobloxExtraSpace::Shared *)")]
-pub fn stub_82e624() -> ! {
-    todo!("0x82e624 boost::shared_ptr<RobloxExtraSpace::Shared>::shared_ptr<RobloxExtraSpace::Shared>(RobloxExtraSpace::Shared *)")
+pub fn stub_82e624(shared: ExtraSpaceShared) -> SharedPtr<ExtraSpaceShared> {
+    // IDA 0x82e624: the real `shared_ptr` ctor (cf. the `j_` thunk at
+    // 0xf55c74). `Arc::new` allocates object + control block together,
+    // matching `shared_ptr(p)` adopting a fresh object.
+    SharedPtr::new(shared)
 }
 
 // 0x82e530 — __ZN16RobloxExtraSpaceC2Ev
 // type: RobloxExtraSpace *__fastcall(RobloxExtraSpace *__hidden this)
 #[doc(alias = "RobloxExtraSpace::RobloxExtraSpace(void)")]
-pub fn stub_82e530() -> ! {
-    todo!("0x82e530 RobloxExtraSpace::RobloxExtraSpace(void)")
+pub fn stub_82e530() -> RobloxExtraSpace {
+    // IDA 0x82e530: the real `RobloxExtraSpace::RobloxExtraSpace()` C2 (cf.
+    // the `j_` thunk at 0xf55c34). The empty intrusive-set head is the
+    // default store.
+    RobloxExtraSpace::default()
 }
 
 // 0x82e308 — __ZN16RobloxExtraSpaceD2Ev
 // type: void __fastcall(RobloxExtraSpace *__hidden this)
 #[doc(alias = "RobloxExtraSpace::~RobloxExtraSpace()")]
-pub fn stub_82e308() -> ! {
-    todo!("0x82e308 RobloxExtraSpace::~RobloxExtraSpace()")
+pub fn stub_82e308(space: &mut RobloxExtraSpace) {
+    // IDA 0x82e308: the real `~RobloxExtraSpace` D2 (cf. the `j_` thunk at
+    // 0xf55c44). The member-by-member destruction collapses: dropping the
+    // node store runs the same release.
+    space.nodes.clear();
 }
 
 // 0x823d98 — __ZN3RBX9Intrusive3SetI16RobloxExtraSpaceS2_E4Hook6removeEv
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Hook::remove(void)")]
-pub fn stub_823d98() -> ! {
-    todo!("0x823d98 RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Hook::remove(void)")
+pub fn stub_823d98(hook: &mut ExtraSpaceNode) {
+    // IDA 0x823d98: the real `Hook::remove()` (cf. the `j_` thunk at
+    // 0xf55c04). Unhooks one node; the sibling/parent pointer fixups collapse
+    // into clearing `linked`.
+    hook.linked = false;
 }
 
 // 0x823b10 — __ZN3RBX9Intrusive3SetI16RobloxExtraSpaceS2_E6insertERS2_
 // type: int __fastcall(int, int, int, int, int, int, int, int, void *, int)
 #[doc(alias = "RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::insert(RobloxExtraSpace&)")]
-pub fn stub_823b10() -> ! {
-    todo!("0x823b10 RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::insert(RobloxExtraSpace&)")
+pub fn stub_823b10(set: &mut RobloxExtraSpace, node: ExtraSpaceNode) {
+    // IDA 0x823b10: the real `Set::insert(RobloxExtraSpace&)` (cf. the `j_`
+    // thunk at 0xf55c14). Links the node; the red-black hook collapses into
+    // the `Vec` push with `linked` set.
+    let mut node = node;
+    node.linked = true;
+    set.nodes.push(node);
 }
 
 // 0x8238a8 — __ZN16RobloxExtraSpaceC2EPS_
 // type: RobloxExtraSpace *__fastcall(RobloxExtraSpace *__hidden this, RobloxExtraSpace *)
 #[doc(alias = "RobloxExtraSpace::RobloxExtraSpace(RobloxExtraSpace*)")]
-pub fn stub_8238a8() -> ! {
-    todo!("0x8238a8 RobloxExtraSpace::RobloxExtraSpace(RobloxExtraSpace*)")
+pub fn stub_8238a8(other: &RobloxExtraSpace) -> RobloxExtraSpace {
+    // IDA 0x8238a8: the real `RobloxExtraSpace(RobloxExtraSpace*)` C2 (cf.
+    // the `j_` thunk at 0xf55bf4). Copies the node store; the fresh copy
+    // restarts id allocation past the max id.
+    let next_id = other.nodes.iter().map(|n| n.id.wrapping_add(1)).max().unwrap_or(0);
+    RobloxExtraSpace { nodes: other.nodes.clone(), next_id }
+}
+
+/// Allowlist behind `RBX::ContentProvider::isValidRobloxAssetUrl` (IDA
+/// `0x7ec350`): an asset URL is valid only when one of these appears before
+/// the `.com` of the lowercased URL.
+const ROBLOX_ASSET_URL_ALLOWLIST: [&str; 6] = [
+    ".roblox.com/asset/",
+    ".roblox.com//asset/",
+    "http://roblox.com/asset/",
+    "http://roblox.com//asset/",
+    ".robloxlabs.com/asset/",
+    ".robloxlabs.com//asset/",
+];
+
+/// Rust model of the `ContentProvider` asset-URL gate (IDA `0x7ec350`):
+/// counts the URLs rejected on the `blocking %s` arm. Non-`http` URLs and
+/// URLs without `/asset/` pass through (`v2 = 1` / `v14 = 0` arms).
+#[derive(Debug, Default)]
+pub struct RobloxAssetUrlFilter {
+    pub blocked: u32,
+}
+
+impl RobloxAssetUrlFilter {
+    /// Lowercase comparison, allowlist-before-`.com` check, and the
+    /// `asset/..` traversal trip (IDA `0x7ec350`); the `StandardOut::printf`
+    /// report collapses into the `blocked` counter.
+    pub fn is_valid_url(&mut self, url: &str) -> bool {
+        if !url.starts_with("http") {
+            return true;
+        }
+        let lower = url.to_lowercase();
+        if !lower.contains("/asset/") {
+            return true;
+        }
+        let dotcom = lower.find(".com").unwrap_or(usize::MAX);
+        let allowlisted = ROBLOX_ASSET_URL_ALLOWLIST
+            .iter()
+            .any(|pat| lower.find(pat).is_some_and(|i| i < dotcom));
+        if !allowlisted || lower.contains("asset/..") {
+            self.blocked = self.blocked.wrapping_add(1);
+            return false;
+        }
+        true
+    }
+}
+
+/// Rust model of `rbx_isRobloxSite` (IDA `0x7dd3c0`): sanitizes the URL
+/// (`createSanitizedURL`), reads the host, and reports whether it contains
+/// `.roblox.com`, else `.robloxlabs.com`. Substring match via
+/// `rangeOfString:` (`NSNotFound = 0x7FFFFFFF`), not a suffix match, as in
+/// the original. A missing host drains the pool and returns false.
+pub fn is_roblox_site(url: &str) -> bool {
+    let host = match url.find("://") {
+        Some(i) => url[i + 3..].split('/').next().unwrap_or(""),
+        None => url.split('/').next().unwrap_or(""),
+    };
+    if host.is_empty() {
+        return false;
+    }
+    if host.contains(".roblox.com") {
+        return true;
+    }
+    host.contains(".robloxlabs.com")
 }
 
 // 0x7ec350 — __ZN3RBX15ContentProvider21isValidRobloxAssetUrlENS_9ContentIdE
 #[doc(alias = "RBX::ContentProvider::isValidRobloxAssetUrl(RBX::ContentId)")]
-pub fn stub_7ec350() -> ! {
-    todo!("0x7ec350 RBX::ContentProvider::isValidRobloxAssetUrl(RBX::ContentId)")
+pub fn stub_7ec350(filter: &mut RobloxAssetUrlFilter, url: &str) -> bool {
+    // IDA 0x7ec350: `ContentProvider::isValidRobloxAssetUrl(ContentId)`;
+    // delegates to the filter model above.
+    filter.is_valid_url(url)
 }
 
 // 0x7dd3c0 — __Z16rbx_isRobloxSitePKc
 // type: _DWORD __fastcall(const char *)
 #[doc(alias = "rbx_isRobloxSite(char const*)")]
-pub fn stub_7dd3c0() -> ! {
-    todo!("0x7dd3c0 rbx_isRobloxSite(char const*)")
+pub fn stub_7dd3c0(url: &str) -> bool {
+    // IDA 0x7dd3c0: `rbx_isRobloxSite(char const*)`; delegates to the model
+    // above (sanitize + host substring check).
+    is_roblox_site(url)
+}
+
+/// `RobloxLocked` flag cell behind `RBX::Instance::getRobloxLocked` /
+/// `setRobloxLocked` (IDA `0x7034c4`/`0x6fee38`): byte `+22` of the `FWValue`
+/// block at `this + 17`, plus the `raisePropertyChanged(propRobloxLocked)`
+/// notifications raised by the setter.
+#[derive(Debug, Default)]
+pub struct InstanceRobloxLock {
+    pub locked: bool,
+    pub property_changed: u32,
 }
 
 // 0x7034c4 — __ZNK3RBX8Instance15getRobloxLockedEv
 // type: _DWORD __fastcall(RBX::Instance *__hidden this)
 #[doc(alias = "RBX::Instance::getRobloxLocked(void)const")]
-pub fn stub_7034c4() -> ! {
-    todo!("0x7034c4 RBX::Instance::getRobloxLocked(void)const")
+pub fn stub_7034c4(lock: &InstanceRobloxLock) -> bool {
+    // IDA 0x7034c4: loads byte `+22` of the `FWValue` block at `this + 17`
+    // (0x7034c8).
+    lock.locked
 }
 
 // 0x6fee38 — __ZN3RBX8Instance15setRobloxLockedEb
 // type: _DWORD __fastcall(RBX::Instance *__hidden this, bool)
 #[doc(alias = "RBX::Instance::setRobloxLocked(bool)")]
-pub fn stub_6fee38() -> ! {
-    todo!("0x6fee38 RBX::Instance::setRobloxLocked(bool)")
+pub fn stub_6fee38(lock: &mut InstanceRobloxLock, value: bool) -> bool {
+    // IDA 0x6fee38: when byte `+22` differs, `FWValue<bool>::set` stores it
+    // (0x6fee54) and `raisePropertyChanged(propRobloxLocked)` fires
+    // (0x6fee64); the notification collapses into the counter.
+    if lock.locked != value {
+        lock.locked = value;
+        lock.property_changed = lock.property_changed.wrapping_add(1);
+    }
+    lock.locked
+}
+
+/// `ScreenGui` created by `RBX::CoreGuiService::createRobloxScreenGui` (IDA
+/// `0x5fca54`): built via `Creatable<Instance>::create<ScreenGui>`, named
+/// `RobloxGui`, `setRobloxLocked(1)`, and parented to the service
+/// (`setParentInternal(gui, this, 0)`). Live instance refs stay opaque; the
+/// service parent is the `service` id.
+#[derive(Debug)]
+pub struct RobloxScreenGui {
+    pub name: String,
+    pub roblox_locked: bool,
+    pub parent: usize,
+}
+
+impl RobloxScreenGui {
+    pub fn new(service: usize) -> Self {
+        RobloxScreenGui { name: "RobloxGui".to_owned(), roblox_locked: true, parent: service }
+    }
 }
 
 // 0x5fca54 — __ZN3RBX14CoreGuiService21createRobloxScreenGuiEv
 // type: _DWORD __fastcall(RBX::CoreGuiService *__hidden this)
 #[doc(alias = "RBX::CoreGuiService::createRobloxScreenGui(void)")]
-pub fn stub_5fca54() -> ! {
-    todo!("0x5fca54 RBX::CoreGuiService::createRobloxScreenGui(void)")
+pub fn stub_5fca54(service: usize) -> RobloxScreenGui {
+    // IDA 0x5fca54: `create<ScreenGui>` + name `RobloxGui` +
+    // `setRobloxLocked(1)` + `setParentInternal(gui, this, 0)`; delegates to
+    // the constructor above.
+    RobloxScreenGui::new(service)
 }
 
 // 0x41be14 — __ZN3RBX9DataModel12saveToRobloxEN5boost8functionIFvbEEENS2_IFvSsEEE
 // type: void __fastcall(RBX::DataModel *, const RBX::Instance *)
 #[doc(alias = "RBX::DataModel::saveToRoblox(boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
-pub fn stub_41be14() -> ! {
-    todo!("0x41be14 RBX::DataModel::saveToRoblox(boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")
+pub fn stub_41be14(can_save: bool, visit_url: Option<&str>, on_success: Box<dyn Fn(bool)>, on_error: Box<dyn Fn(String)>) {
+    // IDA 0x41be14: a null model, `canSave != 1`, or a missing `Visit`
+    // service row (folded into `None`) fails the bool callback with `false`
+    // (LABEL_6); a visit URL not starting with `http` (`find("http") != 0`)
+    // fails the same way. Otherwise the `ContentId` + `internalSaveAsync`
+    // completion (out of slice) reports success; the string callback serves
+    // the async error path, which never fires here. `boost::function` becomes
+    // `Box<dyn Fn>`.
+    match (can_save, visit_url) {
+        (true, Some(url)) if url.starts_with("http") => on_success(true),
+        _ => on_success(false),
+    }
+    let _ = on_error;
 }
 
 // 0x3180dc — __ZN3RBX4Http12isRobloxSiteEPKc
 // type: _DWORD __fastcall(RBX::Http *__hidden this, const char *)
 #[doc(alias = "RBX::Http::isRobloxSite(char const*)")]
-pub fn stub_3180dc() -> ! {
-    todo!("0x3180dc RBX::Http::isRobloxSite(char const*)")
+pub fn stub_3180dc(http: usize, url: &str) -> bool {
+    // BUG: original at 0x3180dc forwards `this` instead of the url argument
+    // to `rbx_isRobloxSite` (`rbx_isRobloxSite((const char *)this)` at
+    // 0x3180ea), so the observable behavior is always false; the url never
+    // participates.
+    let _ = (http, url);
+    false
 }
+
+/// `RBX::Http::robloxResponceLock` static returned by
+/// `RBX::Http::getRobloxResponceLock` (IDA `0x316590`).
+static ROBLOX_RESPONSE_LOCK: std::sync::Mutex<()> = std::sync::Mutex::new(());
 
 // 0x316590 — __ZN3RBX4Http21getRobloxResponceLockEv
 // type: _DWORD __fastcall(RBX::Http *__hidden this)
 #[doc(alias = "RBX::Http::getRobloxResponceLock(void)")]
-pub fn stub_316590() -> ! {
-    todo!("0x316590 RBX::Http::getRobloxResponceLock(void)")
+pub fn stub_316590() -> &'static std::sync::Mutex<()> {
+    // IDA 0x316590: returns the `robloxResponceLock` static (0x31659c).
+    &ROBLOX_RESPONSE_LOCK
 }
 
 // 0x2cbc40 — __ZN16RobloxExtraSpace13createNewNodeEv
 // type: _DWORD __fastcall(RobloxExtraSpace *__hidden this)
 #[doc(alias = "RobloxExtraSpace::createNewNode(void)")]
-pub fn stub_2cbc40() -> ! {
-    todo!("0x2cbc40 RobloxExtraSpace::createNewNode(void)")
+pub fn stub_2cbc40(space: &mut RobloxExtraSpace) -> u32 {
+    // IDA 0x2cbc40: the real `RobloxExtraSpace::createNewNode()` (cf. the
+    // `j_` thunk at 0xf2ce14). Allocates one node and returns its id; the
+    // slab free-list collapses into the `Vec`.
+    let id = space.next_id;
+    space.next_id = space.next_id.wrapping_add(1);
+    space.nodes.push(ExtraSpaceNode { id, refs: 0, linked: false });
+    id
 }
 
 // 0x2c3e54 — __ZN3RBX9Intrusive3SetI16RobloxExtraSpaceS2_E8IteratorC2EPS2_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator::Iterator(RobloxExtraSpace*)")]
-pub fn stub_2c3e54() -> ! {
-    todo!("0x2c3e54 RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator::Iterator(RobloxExtraSpace*)")
+pub fn stub_2c3e54(index: usize) -> ExtraSpaceIter {
+    // IDA 0x2c3e54: the real `Iterator(RobloxExtraSpace*)` (cf. the `j_`
+    // thunk at 0xf2b4b4). Wraps the node position; the raw pointer collapses
+    // into the index.
+    ExtraSpaceIter { index }
 }
 
 // 0x2c3ca4 — __ZN3RBX9Intrusive3SetI16RobloxExtraSpaceS2_E8IteratorppEv
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator::operator++(void)")]
-pub fn stub_2c3ca4() -> ! {
-    todo!("0x2c3ca4 RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator::operator++(void)")
+pub fn stub_2c3ca4(it: &mut ExtraSpaceIter) {
+    // IDA 0x2c3ca4: the real `Iterator::operator++` (cf. the `j_` thunk at
+    // 0xf2b4c4). Advances the cursor by one node; the tree-successor walk
+    // collapses into the index step.
+    it.index = it.index.wrapping_add(1);
 }
 
 // 0x2c3af0 — __ZN3RBX9Intrusive3SetI16RobloxExtraSpaceS2_E8IteratorptEv
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator::operator->(void)")]
-pub fn stub_2c3af0() -> ! {
-    todo!("0x2c3af0 RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator::operator->(void)")
+pub fn stub_2c3af0(set: &RobloxExtraSpace, it: ExtraSpaceIter) -> Option<&ExtraSpaceNode> {
+    // IDA 0x2c3af0: the real `Iterator::operator->` (cf. the `j_` thunk at
+    // 0xf2b4d4). Borrows the node at the cursor; the end iterator yields
+    // `None`.
+    set.nodes.get(it.index)
 }
 
 // 0x2a4c6c — __ZN16RobloxExtraSpace21eraseRefsFromAllNodesEv
 // type: _DWORD __fastcall(RobloxExtraSpace *__hidden this)
 #[doc(alias = "RobloxExtraSpace::eraseRefsFromAllNodes(void)")]
-pub fn stub_2a4c6c() -> ! {
-    todo!("0x2a4c6c RobloxExtraSpace::eraseRefsFromAllNodes(void)")
+pub fn stub_2a4c6c(space: &mut RobloxExtraSpace) {
+    // IDA 0x2a4c6c: the real `eraseRefsFromAllNodes()` (cf. the `j_` thunk at
+    // 0xf2ad54). Walks every node clearing the back-refs; the per-node
+    // unlink collapses into zeroing `refs`.
+    for node in space.nodes.iter_mut() {
+        node.refs = 0;
+    }
+}
+
+/// `robloxPlace` flag behind `RBX::ScriptContext::setRobloxPlace` (IDA
+/// `0x29aa08`): byte `+285`, plus the `FLog::CoreScripts` `srp: %u` fast-log
+/// that collapses into the `logged` counter (FLog is out of slice).
+#[derive(Debug, Default)]
+pub struct ScriptRobloxPlace {
+    pub is_roblox_place: bool,
+    pub logged: u32,
 }
 
 // 0x29aa08 — __ZN3RBX13ScriptContext14setRobloxPlaceEb
 // type: _DWORD __fastcall(RBX::ScriptContext *__hidden this, char *)
 #[doc(alias = "RBX::ScriptContext::setRobloxPlace(bool)")]
-pub fn stub_29aa08() -> ! {
-    todo!("0x29aa08 RBX::ScriptContext::setRobloxPlace(bool)")
+pub fn stub_29aa08(place: &mut ScriptRobloxPlace, value: bool) {
+    // IDA 0x29aa08: stores byte `+285` (0x29aa12) and fast-logs `srp: %u`
+    // when `FLog::CoreScripts` is set (0x29aa1a); the log collapses into the
+    // counter.
+    place.is_roblox_place = value;
+    place.logged = place.logged.wrapping_add(1);
 }
 
 // 0x29a68c — __ZN3RBX13ScriptContext17loadRobloxLibraryEP9lua_State
 #[doc(alias = "RBX::ScriptContext::loadRobloxLibrary(lua_State *)")]
-pub fn stub_29a68c() -> ! {
-    todo!("0x29a68c RBX::ScriptContext::loadRobloxLibrary(lua_State *)")
+pub fn stub_29a68c(permission_granted: bool, name: &str, library_id: i32) -> Result<i32, String> {
+    // IDA 0x29a68c: `requirePermission(4)` (throws without it), reads the
+    // library name via `throwable_lua_tostring(L, -1)`, and returns
+    // `LibraryService::requestLibrary(...)` (out of slice; the id stands in
+    // for the granted library row).
+    if !permission_granted {
+        return Err(format!("requirePermission(4) denied for {name}"));
+    }
+    Ok(library_id)
 }

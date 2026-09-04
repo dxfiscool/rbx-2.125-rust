@@ -41,6 +41,10 @@ static EAGL_SUPPORT: std::sync::LazyLock<crate::view_controllers::Eagl2Support> 
     std::sync::LazyLock::new(crate::view_controllers::Eagl2Support::new);
 static EAGL_VC: std::sync::LazyLock<crate::view_controllers::Eagl2ViewController> =
     std::sync::LazyLock::new(crate::view_controllers::Eagl2ViewController::default);
+static EAGL_WINDOW: std::sync::LazyLock<crate::view_controllers::Eagl2Window> =
+    std::sync::LazyLock::new(crate::view_controllers::Eagl2Window::default);
+static EAGL_VIEW: std::sync::LazyLock<crate::view_controllers::Eagl2View> =
+    std::sync::LazyLock::new(crate::view_controllers::Eagl2View::new);
 use std::sync::atomic::{AtomicBool, AtomicI32, AtomicU32, Ordering};
 
 /// ControlView / ControlComponent harness backing the `stub_0x471c0..0x49e18`
@@ -3291,124 +3295,142 @@ pub fn stub_e8833c(support: crate::view_controllers::ObjCId) {
 // 0xe88388 — __ZN4Ogre11EAGL2WindowC1EPNS_12EAGL2SupportE
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, Ogre::EAGL2Support *)
 #[doc(alias = "Ogre::EAGL2Window::EAGL2Window(Ogre::EAGL2Support *)")]
-pub fn stub_e88388() -> ! {
-    todo!("0xe88388 Ogre::EAGL2Window::EAGL2Window(Ogre::EAGL2Support *)")
+pub fn stub_e88388(support: crate::view_controllers::ObjCId) -> crate::view_controllers::Eagl2Window {
+    // delegate of crate::view_controllers::Eagl2Window (IDA 0xe88388)
+    crate::view_controllers::Eagl2Window::new(support)
 }
 
 // 0xe884e4 — __ZN4Ogre11EAGL2WindowD0Ev
 // type: void __fastcall(Ogre::EAGL2Window *__hidden this)
 #[doc(alias = "Ogre::EAGL2Window::~EAGL2Window()")]
-pub fn stub_e884e4() -> ! {
-    todo!("0xe884e4 Ogre::EAGL2Window::~EAGL2Window()")
+pub fn stub_e884e4() {
+    // delegate of crate::view_controllers::Eagl2Window (IDA 0xe884e4)
+    EAGL_WINDOW.delete_d0();
 }
 
 // 0xe885b8 — __ZN4Ogre11EAGL2WindowD1Ev
 // type: void __fastcall(Ogre::EAGL2Window *__hidden this)
 #[doc(alias = "Ogre::EAGL2Window::~EAGL2Window()")]
-pub fn stub_e885b8() -> ! {
-    todo!("0xe885b8 Ogre::EAGL2Window::~EAGL2Window()")
+pub fn stub_e885b8() {
+    // delegate of crate::view_controllers::Eagl2Window (IDA 0xe885b8)
+    EAGL_WINDOW.destroy_d1();
 }
 
 // 0xe88680 — __ZN4Ogre11EAGL2Window7destroyEv
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
 #[doc(alias = "Ogre::EAGL2Window::destroy(void)")]
-pub fn stub_e88680() -> ! {
-    todo!("0xe88680 Ogre::EAGL2Window::destroy(void)")
+pub fn stub_e88680() {
+    // delegate of crate::view_controllers::Eagl2Window (IDA 0xe88680)
+    EAGL_WINDOW.destroy();
 }
 
 // 0xe886f8 — __ZN4Ogre11EAGL2Window13setFullscreenEbjj
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, bool, unsigned int, unsigned int)
 #[doc(alias = "Ogre::EAGL2Window::setFullscreen(bool,unsigned int,unsigned int)")]
-pub fn stub_e886f8() -> ! {
-    todo!("0xe886f8 Ogre::EAGL2Window::setFullscreen(bool,unsigned int,unsigned int)")
+pub fn stub_e886f8(fullscreen: bool, width: u32, height: u32) {
+    // delegate of crate::view_controllers::Eagl2Window (IDA 0xe886f8)
+    EAGL_WINDOW.set_fullscreen(fullscreen, width, height);
 }
 
 // 0xe886fc — __ZN4Ogre11EAGL2Window10repositionEii
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, int, int)
 #[doc(alias = "Ogre::EAGL2Window::reposition(int,int)")]
-pub fn stub_e886fc() -> ! {
-    todo!("0xe886fc Ogre::EAGL2Window::reposition(int,int)")
+pub fn stub_e886fc(x: i32, y: i32) {
+    // delegate of crate::view_controllers::Eagl2Window (IDA 0xe886fc)
+    EAGL_WINDOW.reposition(x, y);
 }
 
 // 0xe88700 — __ZN4Ogre11EAGL2Window6resizeEjj
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, unsigned int, unsigned int)
 #[doc(alias = "Ogre::EAGL2Window::resize(unsigned int,unsigned int)")]
-pub fn stub_e88700() -> ! {
-    todo!("0xe88700 Ogre::EAGL2Window::resize(unsigned int,unsigned int)")
+pub fn stub_e88700(width: u32, height: u32) {
+    // delegate of crate::view_controllers::Eagl2Window (IDA 0xe88700)
+    EAGL_WINDOW.resize(width, height);
 }
 
 // 0xe88800 — __ZN4Ogre11EAGL2Window20windowMovedOrResizedEv
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
 #[doc(alias = "Ogre::EAGL2Window::windowMovedOrResized(void)")]
-pub fn stub_e88800() -> ! {
-    todo!("0xe88800 Ogre::EAGL2Window::windowMovedOrResized(void)")
+pub fn stub_e88800() {
+    // delegate of crate::view_controllers::Eagl2Window (IDA 0xe88800)
+    EAGL_WINDOW.window_moved_or_resized();
 }
 
 // 0xe88894 — __ZN4Ogre11EAGL2Window12_beginUpdateEv
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
 #[doc(alias = "Ogre::EAGL2Window::_beginUpdate(void)")]
-pub fn stub_e88894() -> ! {
-    todo!("0xe88894 Ogre::EAGL2Window::_beginUpdate(void)")
+pub fn stub_e88894() {
+    // delegate of crate::view_controllers::Eagl2Window (IDA 0xe88894)
+    EAGL_WINDOW.begin_update();
 }
 
 // 0xe888bc — __ZN4Ogre11EAGL2Window23initNativeCreatedWindowEPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIKSsSsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
 #[doc(alias = "Ogre::EAGL2Window::initNativeCreatedWindow(std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
-pub fn stub_e888bc() -> ! {
-    todo!("0xe888bc Ogre::EAGL2Window::initNativeCreatedWindow(std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+pub fn stub_e888bc(video_mode: &str) {
+    // delegate of crate::view_controllers::Eagl2Window (IDA 0xe888bc)
+    EAGL_WINDOW.init_native_created_window(video_mode);
 }
 
 // 0xe89488 — __ZN4Ogre11EAGL2Window6createERKSsjjbPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
 #[doc(alias = "Ogre::EAGL2Window::create(std::string const&,unsigned int,unsigned int,bool,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
-pub fn stub_e89488() -> ! {
-    todo!("0xe89488 Ogre::EAGL2Window::create(std::string const&,unsigned int,unsigned int,bool,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+pub fn stub_e89488(name: &str, width: u32, height: u32, fullscreen: bool) {
+    // delegate of crate::view_controllers::Eagl2Window (IDA 0xe89488)
+    EAGL_WINDOW.create(name, width, height, fullscreen);
 }
 
 // 0xe89c80 — __ZN4Ogre11EAGL2Window11swapBuffersEb
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, bool)
 #[doc(alias = "Ogre::EAGL2Window::swapBuffers(bool)")]
-pub fn stub_e89c80() -> ! {
-    todo!("0xe89c80 Ogre::EAGL2Window::swapBuffers(bool)")
+pub fn stub_e89c80(vsync: bool) -> bool {
+    // delegate of crate::view_controllers::Eagl2Window (IDA 0xe89c80)
+    EAGL_WINDOW.swap_buffers(vsync)
 }
 
 // 0xe89f88 — __ZN4Ogre11EAGL2Window18getCustomAttributeERKSsPv
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, const std::string *, void *)
 #[doc(alias = "Ogre::EAGL2Window::getCustomAttribute(std::string const&,void *)")]
-pub fn stub_e89f88() -> ! {
-    todo!("0xe89f88 Ogre::EAGL2Window::getCustomAttribute(std::string const&,void *)")
+pub fn stub_e89f88(name: &str) -> Option<crate::view_controllers::ObjCId> {
+    // delegate of crate::view_controllers::Eagl2Window (IDA 0xe89f88)
+    EAGL_WINDOW.custom_attribute(name)
 }
 
 // 0xe8a038 — __ZN4Ogre11EAGL2Window20copyContentsToMemoryERKNS_8PixelBoxENS_12RenderTarget11FrameBufferE
 #[doc(alias = "Ogre::EAGL2Window::copyContentsToMemory(Ogre::PixelBox const&,Ogre::RenderTarget::FrameBuffer)")]
-pub fn stub_e8a038() -> ! {
-    todo!("0xe8a038 Ogre::EAGL2Window::copyContentsToMemory(Ogre::PixelBox const&,Ogre::RenderTarget::FrameBuffer)")
+pub fn stub_e8a038(valid_box: bool, width: u32, height: u32) -> Result<(), String> {
+    // delegate of crate::view_controllers::Eagl2Window (IDA 0xe8a038)
+    EAGL_WINDOW.copy_contents_to_memory(valid_box, width, height)
 }
 
 // 0xe8a554 — __ZNK4Ogre11EAGL2Window23requiresTextureFlippingEv
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
 #[doc(alias = "Ogre::EAGL2Window::requiresTextureFlipping(void)const")]
-pub fn stub_e8a554() -> ! {
-    todo!("0xe8a554 Ogre::EAGL2Window::requiresTextureFlipping(void)const")
+pub fn stub_e8a554() -> bool {
+    // delegate of crate::view_controllers::Eagl2Window (IDA 0xe8a554)
+    EAGL_WINDOW.requires_texture_flipping()
 }
 
 // 0xe8a568 — __ZNK4Ogre11EAGL2Window9isVisibleEv
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
 #[doc(alias = "Ogre::EAGL2Window::isVisible(void)const")]
-pub fn stub_e8a568() -> ! {
-    todo!("0xe8a568 Ogre::EAGL2Window::isVisible(void)const")
+pub fn stub_e8a568() -> bool {
+    // delegate of crate::view_controllers::Eagl2Window (IDA 0xe8a568)
+    EAGL_WINDOW.is_visible()
 }
 
 // 0xe8a570 — __ZN4Ogre11EAGL2Window10setVisibleEb
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, bool)
 #[doc(alias = "Ogre::EAGL2Window::setVisible(bool)")]
-pub fn stub_e8a570() -> ! {
-    todo!("0xe8a570 Ogre::EAGL2Window::setVisible(bool)")
+pub fn stub_e8a570(visible: bool) {
+    // delegate of crate::view_controllers::Eagl2Window (IDA 0xe8a570)
+    EAGL_WINDOW.set_visible(visible);
 }
 
 // 0xe8a590 — __ZNK4Ogre11EAGL2Window8isClosedEv
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
 #[doc(alias = "Ogre::EAGL2Window::isClosed(void)const")]
-pub fn stub_e8a590() -> ! {
-    todo!("0xe8a590 Ogre::EAGL2Window::isClosed(void)const")
+pub fn stub_e8a590() -> bool {
+    // delegate of crate::view_controllers::Eagl2Window (IDA 0xe8a590)
+    EAGL_WINDOW.is_closed()
 }
 
 // 0xf1f1c8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
@@ -4342,50 +4364,57 @@ pub fn stub_4db20() -> ! {
 // 0xe87e38 — -[EAGL2View description]
 // type: id __cdecl(EAGL2View *self, SEL)
 #[doc(alias = "-[EAGL2View description]")]
-pub fn stub_e87e38() -> ! {
-    todo!("0xe87e38 -[EAGL2View description]")
+pub fn stub_e87e38(frame: (f64, f64, f64, f64)) -> String {
+    // delegate of crate::view_controllers::Eagl2View (IDA 0xe87e38)
+    EAGL_VIEW.describe(frame)
 }
 
 // 0xe87f28 — +[EAGL2View layerClass]
 // type: Class __cdecl(id, SEL)
 #[doc(alias = "+[EAGL2View layerClass]")]
-pub fn stub_e87f28() -> ! {
-    todo!("0xe87f28 +[EAGL2View layerClass]")
+pub fn stub_e87f28() -> &'static str {
+    // delegate of crate::view_controllers::Eagl2View (IDA 0xe87f28)
+    crate::view_controllers::Eagl2View::layer_class()
 }
 
 // 0xe87f4c — -[EAGL2View layoutSubviews]
 // type: void __cdecl(EAGL2View *self, SEL)
 #[doc(alias = "-[EAGL2View layoutSubviews]")]
-pub fn stub_e87f4c() -> ! {
-    todo!("0xe87f4c -[EAGL2View layoutSubviews]")
+pub fn stub_e87f4c(orientation: i32) {
+    // delegate of crate::view_controllers::Eagl2View (IDA 0xe87f4c)
+    EAGL_VIEW.layout_subviews(orientation);
 }
 
 // 0xe880b4 — -[EAGL2View mWindowName]
 // type: basic_string<char, std::char_traits<char>, std::allocator<char> > __cdecl(EAGL2View *self, SEL)
 #[doc(alias = "-[EAGL2View mWindowName]")]
-pub fn stub_e880b4() -> ! {
-    todo!("0xe880b4 -[EAGL2View mWindowName]")
+pub fn stub_e880b4() -> String {
+    // delegate of crate::view_controllers::Eagl2View (IDA 0xe880b4)
+    EAGL_VIEW.m_window_name()
 }
 
 // 0xe880cc — -[EAGL2View setMWindowName:]
 // type: void __cdecl(EAGL2View *self, SEL, basic_string<char, std::char_traits<char>, std::allocator<char> >)
 #[doc(alias = "-[EAGL2View setMWindowName:]")]
-pub fn stub_e880cc() -> ! {
-    todo!("0xe880cc -[EAGL2View setMWindowName:]")
+pub fn stub_e880cc(name: &str) {
+    // delegate of crate::view_controllers::Eagl2View (IDA 0xe880cc)
+    EAGL_VIEW.set_m_window_name(name);
 }
 
 // 0xe880e8 — -[EAGL2View .cxx_destruct]
 // type: void __cdecl(EAGL2View *self, SEL)
 #[doc(alias = "-[EAGL2View .cxx_destruct]")]
-pub fn stub_e880e8() -> ! {
-    todo!("0xe880e8 -[EAGL2View .cxx_destruct]")
+pub fn stub_e880e8() {
+    // delegate of crate::view_controllers::Eagl2View (IDA 0xe880e8)
+    EAGL_VIEW.cxx_destruct();
 }
 
 // 0xe88140 — -[EAGL2View .cxx_construct]
 // type: id __cdecl(EAGL2View *self, SEL)
 #[doc(alias = "-[EAGL2View .cxx_construct]")]
-pub fn stub_e88140() -> ! {
-    todo!("0xe88140 -[EAGL2View .cxx_construct]")
+pub fn stub_e88140() -> crate::view_controllers::Eagl2View {
+    // delegate of crate::view_controllers::Eagl2View (IDA 0xe88140)
+    crate::view_controllers::Eagl2View::new()
 }
 
 // 0xf26da4 — RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)
