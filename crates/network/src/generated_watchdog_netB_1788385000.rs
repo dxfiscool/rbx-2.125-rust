@@ -761,8 +761,11 @@ pub fn stub_989114(stream: &mut crate::bitstream::BitStream) -> crate::physics::
 // type: void __fastcall(RBX::Network::Compressor *this, RakNet::BitStream *, G3D::Vector3 *)
 #[doc(alias = "RBX::Network::Compressor::readTranslation(RakNet::BitStream &,G3D::Vector3 &)")]
 #[doc(alias = "__ZN3RBX7Network10Compressor15readTranslationERN6RakNet9BitStreamERN3G3D7Vector3E")]
-pub fn stub_989268() -> ! {
-    todo!("0x989268 __ZN3RBX7Network10Compressor15readTranslationERN6RakNet9BitStreamERN3G3D7Vector3E")
+pub fn stub_989268(stream: &mut crate::bitstream::BitStream) -> [f32; 3] {
+ // IDA 0x989268: tag-dispatched translation read.
+ let mut out = [0.0; 3];
+ crate::physics::read_translation(stream, &mut out);
+ out
 }
 
 // 0x989738 — __ZN3RBX7Network10Compressor15writeCompressedERN6RakNet9BitStreamEPKcj
@@ -827,8 +830,9 @@ pub fn stub_999400() -> ! {
 // type: int __fastcall(int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::removeStats(RakNet::SystemAddress)")]
 #[doc(alias = "__ZN3RBX7Network17ConcurrentRakPeer11removeStatsEN6RakNet13SystemAddressE")]
-pub fn stub_999f78() -> ! {
-    todo!("0x999f78 __ZN3RBX7Network17ConcurrentRakPeer11removeStatsEN6RakNet13SystemAddressE")
+pub fn stub_999f78(erase: &mut dyn FnMut() -> u32) -> u32 {
+ // IDA 0x999f78: erase both map entries.
+ crate::peer::concurrent_remove_stats(erase)
 }
 
 // 0x99b398 — __ZN3RBX7Network17ConcurrentRakPeer4SendEN5boost10shared_ptrIKN6RakNet9BitStreamEEE14PacketPriority17PacketReliabilitycNS4_13SystemAddressEb
@@ -844,16 +848,18 @@ pub fn stub_99b398() -> ! {
 // type: __int64 __fastcall(int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::GetBandwidthExceeded(RakNet::SystemAddress)")]
 #[doc(alias = "__ZN3RBX7Network17ConcurrentRakPeer20GetBandwidthExceededEN6RakNet13SystemAddressE")]
-pub fn stub_99b884() -> ! {
-    todo!("0x99b884 __ZN3RBX7Network17ConcurrentRakPeer20GetBandwidthExceededEN6RakNet13SystemAddressE")
+pub fn stub_99b884(present: bool, exceeded: bool) -> bool {
+ // IDA 0x99b884: +272 flag, default false.
+ crate::peer::bandwidth_exceeded(present, exceeded)
 }
 
 // 0x99b990 — __ZN3RBX7Network17ConcurrentRakPeer28GetCongestionControlExceededEN6RakNet13SystemAddressE
 // type: __int64 __fastcall(int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::GetCongestionControlExceeded(RakNet::SystemAddress)")]
 #[doc(alias = "__ZN3RBX7Network17ConcurrentRakPeer28GetCongestionControlExceededEN6RakNet13SystemAddressE")]
-pub fn stub_99b990() -> ! {
-    todo!("0x99b990 __ZN3RBX7Network17ConcurrentRakPeer28GetCongestionControlExceededEN6RakNet13SystemAddressE")
+pub fn stub_99b990(present: bool, exceeded: bool) -> bool {
+ // IDA 0x99b990: +316 flag, default false.
+ crate::peer::congestion_control_exceeded(present, exceeded)
 }
 
 // 0x99bb00 — __ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob11updateStatsERSt4pairIKN6RakNet13SystemAddressENS2_15ConnectionStatsEE

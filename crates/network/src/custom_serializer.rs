@@ -585,6 +585,30 @@ pub fn read_coordinate_frame(stream: &mut BitStream) -> ([f32; 3], Option<u32>, 
  }
 }
 
+/// `Compressor::writeCompressed` (IDA 0x989738): gzip-compresses the
+/// bytes (boost::iostreams stays engine-side), then writes the
+/// compressed length as `uint` followed by the raw body.
+pub fn write_compressed(stream: &mut BitStream, data: &[u8], compress: &mut dyn FnMut(&[u8]) -> Vec<u8>) {
+ let out = compress(data);
+ stream.write_u32(out.len() as u32);
+ for b in &out {
+ stream.write_u8(*b);
+ }
+}
+
+/// `Compressor::readCompressed` (IDA 0x98a0e0): inverts
+/// [`write_compressed`]; short reads panic with original-flavored
+/// messages.
+#[must_use]
+pub fn read_compressed(stream: &mut BitStream, decompress: &mut dyn FnMut(&[u8]) -> Vec<u8>) -> Vec<u8> {
+ let len = stream.read_u32().expect("Compressor::readCompressed failed reading length");
+ let mut buf = vec![0u8; len as usize];
+ for b in &mut buf {
+ *b = stream.read_u8().expect("Compressor::readCompressed failed reading body");
+ }
+ decompress(&buf)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -738,5 +762,14 @@ mod tests {
         write_content_id(&mut s, "a\\b");
         let mut r = BitStream::from_bytes(&s.into_bytes());
         assert_eq!(read_content_id(&mut r), "a/b");
+    }
+    #[test]
+    fn compressed_framing_roundtrip() {
+        // IDA 0x989738/0x98a0e0: length-prefixed body; the codec itself
+        // is engine-side (identity stands in here).
+        let mut s = BitStream::new();
+        write_compressed(&mut s, b"hello", &mut |d| d.to_vec());
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        assert_eq!(read_compressed(&mut r, &mut |d| d.to_vec()), b"hello");
     }
 }

@@ -443,15 +443,17 @@ pub fn stub_998890() -> ! {
 // 0x999400 — __ZN3RBX7Network17ConcurrentRakPeer8addStatsEN6RakNet13SystemAddressEN5boost8functionIFvRKNS0_22ConcurrentRakPeerStatsEEEE
 // type: int __fastcall(int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::addStats(RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>)")]
-pub fn stub_999400() -> ! {
-    todo!("0x999400 __ZN3RBX7Network17ConcurrentRakPeer8addStatsEN6RakNet13SystemAddressEN5boost8functionIFvRKNS0_22ConcurrentRakPeerStatsEEEE")
+pub fn stub_999400(register: &mut dyn FnMut() -> u32) -> u32 {
+ // IDA 0x999400: stats update plus entry emplace.
+ crate::peer::concurrent_add_stats(register)
 }
 
 // 0x999f78 — __ZN3RBX7Network17ConcurrentRakPeer11removeStatsEN6RakNet13SystemAddressE
 // type: int __fastcall(int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::removeStats(RakNet::SystemAddress)")]
-pub fn stub_999f78() -> ! {
-    todo!("0x999f78 __ZN3RBX7Network17ConcurrentRakPeer11removeStatsEN6RakNet13SystemAddressE")
+pub fn stub_999f78(erase: &mut dyn FnMut() -> u32) -> u32 {
+ // IDA 0x999f78: erase both map entries.
+ crate::peer::concurrent_remove_stats(erase)
 }
 
 // 0x99a0fc — __ZN3RBX7Network17ConcurrentRakPeerC1EPN6RakNet16RakPeerInterfaceEPNS_9DataModelE
@@ -499,15 +501,17 @@ pub fn stub_99b848() -> ! {
 // 0x99b884 — __ZN3RBX7Network17ConcurrentRakPeer20GetBandwidthExceededEN6RakNet13SystemAddressE
 // type: __int64 __fastcall(int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::GetBandwidthExceeded(RakNet::SystemAddress)")]
-pub fn stub_99b884() -> ! {
-    todo!("0x99b884 __ZN3RBX7Network17ConcurrentRakPeer20GetBandwidthExceededEN6RakNet13SystemAddressE")
+pub fn stub_99b884(present: bool, exceeded: bool) -> bool {
+ // IDA 0x99b884: +272 flag, default false.
+ crate::peer::bandwidth_exceeded(present, exceeded)
 }
 
 // 0x99b990 — __ZN3RBX7Network17ConcurrentRakPeer28GetCongestionControlExceededEN6RakNet13SystemAddressE
 // type: __int64 __fastcall(int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::GetCongestionControlExceeded(RakNet::SystemAddress)")]
-pub fn stub_99b990() -> ! {
-    todo!("0x99b990 __ZN3RBX7Network17ConcurrentRakPeer28GetCongestionControlExceededEN6RakNet13SystemAddressE")
+pub fn stub_99b990(present: bool, exceeded: bool) -> bool {
+ // IDA 0x99b990: +316 flag, default false.
+ crate::peer::congestion_control_exceeded(present, exceeded)
 }
 
 // 0x99ba9c — __ZN3RBX7Network17ConcurrentRakPeer7rawPeerEv

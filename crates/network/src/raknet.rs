@@ -939,20 +939,25 @@ pub fn stub_989114(stream: &mut crate::bitstream::BitStream) -> crate::physics::
 
 // 0x989268 — __ZN3RBX7Network10Compressor15readTranslationERN6RakNet9BitStreamERN3G3D7Vector3E
 #[doc(alias = "RBX::Network::Compressor::readTranslation(RakNet::BitStream &,G3D::Vector3 &)")]
-pub fn stub_989268() -> ! {
-    todo!("0x989268 RBX::Network::Compressor::readTranslation(RakNet::BitStream &,G3D::Vector3 &)")
+pub fn stub_989268(stream: &mut crate::bitstream::BitStream) -> [f32; 3] {
+ // IDA 0x989268: tag-dispatched translation read.
+ let mut out = [0.0; 3];
+ crate::physics::read_translation(stream, &mut out);
+ out
 }
 
 // 0x989738 — __ZN3RBX7Network10Compressor15writeCompressedERN6RakNet9BitStreamEPKcj
 #[doc(alias = "RBX::Network::Compressor::writeCompressed(RakNet::BitStream &,char const*,unsigned int)")]
-pub fn stub_989738() -> ! {
-    todo!("0x989738 RBX::Network::Compressor::writeCompressed(RakNet::BitStream &,char const*,unsigned int)")
+pub fn stub_989738(stream: &mut crate::bitstream::BitStream, data: &[u8], compress: &mut dyn FnMut(&[u8]) -> Vec<u8>) {
+ // IDA 0x989738: gzip body with length prefix.
+ crate::custom_serializer::write_compressed(stream, data, compress)
 }
 
 // 0x98a0e0 — __ZN3RBX7Network10Compressor14readCompressedERN6RakNet9BitStreamERSs
 #[doc(alias = "RBX::Network::Compressor::readCompressed(RakNet::BitStream &,std::string &)")]
-pub fn stub_98a0e0() -> ! {
-    todo!("0x98a0e0 RBX::Network::Compressor::readCompressed(RakNet::BitStream &,std::string &)")
+pub fn stub_98a0e0(stream: &mut crate::bitstream::BitStream, decompress: &mut dyn FnMut(&[u8]) -> Vec<u8>) -> Vec<u8> {
+ // IDA 0x98a0e0: length-prefixed gzip body.
+ crate::custom_serializer::read_compressed(stream, decompress)
 }
 
 // 0x98a7e0 — __ZN6RakNet9BitStream13WriteNormQuatIfEEvT_S2_S2_S2_
@@ -1026,14 +1031,16 @@ pub fn stub_998490(stream: &mut crate::bitstream::BitStream, value: u16) {
 
 // 0x999400 — __ZN3RBX7Network17ConcurrentRakPeer8addStatsEN6RakNet13SystemAddressEN5boost8functionIFvRKNS0_22ConcurrentRakPeerStatsEEEE
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::addStats(RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>)")]
-pub fn stub_999400() -> ! {
-    todo!("0x999400 RBX::Network::ConcurrentRakPeer::addStats(RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>)")
+pub fn stub_999400(register: &mut dyn FnMut() -> u32) -> u32 {
+ // IDA 0x999400: stats update plus entry emplace.
+ crate::peer::concurrent_add_stats(register)
 }
 
 // 0x999f78 — __ZN3RBX7Network17ConcurrentRakPeer11removeStatsEN6RakNet13SystemAddressE
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::removeStats(RakNet::SystemAddress)")]
-pub fn stub_999f78() -> ! {
-    todo!("0x999f78 RBX::Network::ConcurrentRakPeer::removeStats(RakNet::SystemAddress)")
+pub fn stub_999f78(erase: &mut dyn FnMut() -> u32) -> u32 {
+ // IDA 0x999f78: erase both map entries.
+ crate::peer::concurrent_remove_stats(erase)
 }
 
 // 0x99a0fc — __ZN3RBX7Network17ConcurrentRakPeerC1EPN6RakNet16RakPeerInterfaceEPNS_9DataModelE
@@ -1056,14 +1063,16 @@ pub fn stub_99b398() -> ! {
 
 // 0x99b884 — __ZN3RBX7Network17ConcurrentRakPeer20GetBandwidthExceededEN6RakNet13SystemAddressE
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::GetBandwidthExceeded(RakNet::SystemAddress)")]
-pub fn stub_99b884() -> ! {
-    todo!("0x99b884 RBX::Network::ConcurrentRakPeer::GetBandwidthExceeded(RakNet::SystemAddress)")
+pub fn stub_99b884(present: bool, exceeded: bool) -> bool {
+ // IDA 0x99b884: +272 flag, default false.
+ crate::peer::bandwidth_exceeded(present, exceeded)
 }
 
 // 0x99b990 — __ZN3RBX7Network17ConcurrentRakPeer28GetCongestionControlExceededEN6RakNet13SystemAddressE
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::GetCongestionControlExceeded(RakNet::SystemAddress)")]
-pub fn stub_99b990() -> ! {
-    todo!("0x99b990 RBX::Network::ConcurrentRakPeer::GetCongestionControlExceeded(RakNet::SystemAddress)")
+pub fn stub_99b990(present: bool, exceeded: bool) -> bool {
+ // IDA 0x99b990: +316 flag, default false.
+ crate::peer::congestion_control_exceeded(present, exceeded)
 }
 
 // 0x99bb00 — __ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob11updateStatsERSt4pairIKN6RakNet13SystemAddressENS2_15ConnectionStatsEE
