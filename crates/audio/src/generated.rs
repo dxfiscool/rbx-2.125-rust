@@ -245,6 +245,105 @@ static SOUND_CHANNEL_NAME: LazyLock<String> = LazyLock::new(|| "Sound".to_owned(
 /// FactoryProduct<SoundChannel, Instance>::creatorPrivate (IDA 0x3787a0).
 /// The image keeps one static Creator; LazyLock never drops (atexit equivalent).
 static SOUND_CHANNEL_CREATOR: LazyLock<SoundChannelCreator> = LazyLock::new(|| SoundChannelCreator);
+/// Get/set access pairs behind the SoundChannel reflection descriptors
+/// (IDA 0x379958..0x37a24c). Each PropDescriptor/BoundProp template stores a
+/// member pointer (data offset, or a getter/setter pair); the host carries
+/// the same dispatch as closures over SoundChannel.
+pub struct SoundChannelBoolAccess {
+    pub get: Box<dyn Fn(&SoundChannel) -> bool + Send + Sync>,
+    pub set: Box<dyn Fn(&mut SoundChannel, bool) + Send + Sync>,
+}
+
+/// Getter-only access behind the read-only PropDescriptor<bool> (IDA 0x379b4c).
+pub struct SoundChannelBoolGetAccess {
+    pub get: Box<dyn Fn(&SoundChannel) -> bool + Send + Sync>,
+}
+
+/// Get/set access behind PropDescriptor<SoundChannel, int> (IDA 0x379f34).
+pub struct SoundChannelIntAccess {
+    pub get: Box<dyn Fn(&SoundChannel) -> i32 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut SoundChannel, i32) + Send + Sync>,
+}
+
+/// Get/set access behind PropDescriptor<SoundChannel, float> (IDA 0x37a0c0).
+pub struct SoundChannelFloatAccess {
+    pub get: Box<dyn Fn(&SoundChannel) -> f32 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut SoundChannel, f32) + Send + Sync>,
+}
+
+/// Get/set access behind PropDescriptor<SoundChannel, SoundId> (IDA 0x37a24c).
+pub struct SoundChannelSoundIdAccess {
+    pub get: Box<dyn Fn(&SoundChannel) -> SoundId + Send + Sync>,
+    pub set: Box<dyn Fn(&mut SoundChannel, SoundId) + Send + Sync>,
+}
+
+/// Bound member-void callable behind BoundFuncDesc<SoundChannel, void(), 0>
+/// (IDA 0x379780 keeps the member-pointer pair at +40 with a void return tag
+/// at +28; host: the closure plus its name/attributes).
+pub struct SoundChannelVoidFunc {
+    pub name: String,
+    pub call: Box<dyn Fn(&mut SoundChannel) + Send + Sync>,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// BoundProp<bool, Mutable> bound to SoundChannel (IDA 0x379958: base
+/// TypedPropertyDescriptor<bool> init plus the BoundPropGetSet member-offset
+/// block; host: name/category/access wiring).
+pub struct SoundChannelBoolProp {
+    pub name: String,
+    pub category: String,
+    pub access: SoundChannelBoolAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// PropDescriptor<SoundChannel, bool> with a getter only (IDA 0x379b4c: 0xC
+/// GetImpl block; get-only, so isReadOnly (0x379c84) is true).
+pub struct SoundChannelBoolGetDesc {
+    pub name: String,
+    pub category: String,
+    pub access: SoundChannelBoolGetAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// PropDescriptor<SoundChannel, bool> with a getter/setter pair (IDA 0x379dd0:
+/// 0x14 GetSetImpl block).
+pub struct SoundChannelBoolGetSetDesc {
+    pub name: String,
+    pub category: String,
+    pub access: SoundChannelBoolAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// PropDescriptor<SoundChannel, int> with a getter/setter pair (IDA 0x379f34).
+pub struct SoundChannelIntGetSetDesc {
+    pub name: String,
+    pub category: String,
+    pub access: SoundChannelIntAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// PropDescriptor<SoundChannel, float> with a getter/setter pair (IDA 0x37a0c0).
+pub struct SoundChannelFloatGetSetDesc {
+    pub name: String,
+    pub category: String,
+    pub access: SoundChannelFloatAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// PropDescriptor<SoundChannel, SoundId> with a getter/setter pair (IDA 0x37a24c).
+pub struct SoundChannelSoundIdGetSetDesc {
+    pub name: String,
+    pub category: String,
+    pub access: SoundChannelSoundIdAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
 
 /// RBX::Soundscape::SoundId — asset text plus the trailing word the
 /// placement_any assign copies (IDA 0x376cc4: string at +1, word at +2).
@@ -1437,8 +1536,23 @@ pub fn stub_3796dc() {
 // 0x379780 — __ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundChannelEFvvELi0EEC2EMS3_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, unsigned int, unsigned int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::BoundFuncDesc(void (RBX::Soundscape::SoundChannel::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_379780() -> ! {
-    todo!("0x379780 RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::BoundFuncDesc(void (RBX::Soundscape::SoundChannel::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_379780(
+    call: Box<dyn Fn(&mut SoundChannel) + Send + Sync>,
+    name: &str,
+    permissions: u32,
+    attributes: u32,
+) -> SoundChannelVoidFunc {
+    // IDA 0x379780: FunctionDescriptor base init over the SoundChannel class
+    // descriptor (0x3797a6..0x3797c6), vtable install (0x3797e2), the
+    // member-pointer pair stored at +40 (0x3797ee) and the void return tag
+    // (Type::getSingleton<void>) at +28 (0x379816). Host: the closure is the
+    // member pointer; the void tag is implied by its signature.
+    SoundChannelVoidFunc {
+        name: name.to_owned(),
+        call,
+        attributes,
+        permissions,
+    }
 }
 
 // 0x379884 — __ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundChannelEFvvELi0EED0Ev
@@ -1451,50 +1565,110 @@ pub fn stub_379884() {
 // 0x379938 — __ZNK3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundChannelEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_379938() -> ! {
-    todo!("0x379938 RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_379938(func: &SoundChannelVoidFunc, obj: &mut SoundChannel) {
+    // IDA 0x379938: null -> obj-36 DescribedBase-to-SoundChannel adjust
+    // (0x37993c..0x37993e), split the member pointer (fn at +40, encoding at
+    // +44), virtual-adjust when the low bit is set (0x37994e..0x379952),
+    // call it. The adjust/encoding is member-pointer mechanics with no Rust
+    // equivalent; the observable effect is the call.
+    (func.call)(obj);
 }
 
 // 0x379958 — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_10Soundscape12SoundChannelEEEPKcS8_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Soundscape::SoundChannel>(char const*,char const*,bool RBX::Soundscape::SoundChannel::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_379958() -> ! {
-    todo!("0x379958 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Soundscape::SoundChannel>(char const*,char const*,bool RBX::Soundscape::SoundChannel::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_379958(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&SoundChannel) -> bool + Send + Sync>,
+    set: Box<dyn Fn(&mut SoundChannel, bool) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> SoundChannelBoolProp {
+    // IDA 0x379958: TypedPropertyDescriptor<bool> base init (0x3799e0), fresh
+    // BoundPropGetSet block (0x14) holding the owner + member offset
+    // (0x379a0c..0x379a42), then attribute masking through isReadOnly
+    // (0x379a52: attrs &= ~0x14) and isWriteOnly (0x379a6e: attrs &= ~0x0c).
+    // Both queries return 0 (0x379ae8/0x379aec), so the masks never fire.
+    let mut attributes = attributes;
+    if stub_379ae8() {
+        attributes &= !0x14u32;
+    }
+    if stub_379aec() {
+        attributes &= !0x0cu32;
+    }
+    SoundChannelBoolProp {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: SoundChannelBoolAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x379ae8 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_10Soundscape12SoundChannelEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::isReadOnly(void)const")]
-pub fn stub_379ae8() -> ! {
-    todo!("0x379ae8 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::isReadOnly(void)const")
+pub fn stub_379ae8() -> bool {
+    // IDA 0x379ae8: BoundPropGetSet<bool, SoundChannel>::isReadOnly —
+    // hardcoded `return 0` (a mutable binding is never read-only).
+    false
 }
 
 // 0x379aec — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_10Soundscape12SoundChannelEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::isWriteOnly(void)const")]
-pub fn stub_379aec() -> ! {
-    todo!("0x379aec RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::isWriteOnly(void)const")
+pub fn stub_379aec() -> bool {
+    // IDA 0x379aec: BoundPropGetSet<bool, SoundChannel>::isWriteOnly —
+    // hardcoded `return 0` (a mutable binding is never write-only).
+    false
 }
 
 // 0x379af0 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_10Soundscape12SoundChannelEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_379af0() -> ! {
-    todo!("0x379af0 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_379af0(access: &SoundChannelBoolAccess, obj: &SoundChannel) -> bool {
+    // IDA 0x379af0: single byte load `*(member_offset(a1+8) + obj - 36)`
+    // (0x379af8) — a direct data-member binding with no virtual adjust.
+    (access.get)(obj)
 }
 
 // 0x379afc — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_10Soundscape12SoundChannelEE8setValueEPNS0_13DescribedBaseERKb
 // type: int __fastcall(int, int, unsigned __int8 *)
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_379afc() -> ! {
-    todo!("0x379afc RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_379afc(access: &SoundChannelBoolAccess, obj: &mut SoundChannel, value: bool) {
+    // IDA 0x379afc: member adjust + offset (0x379b04..0x379b0a), compare with
+    // early-out when equal (0x379b14..0x379b16), else store (0x379b18) and
+    // raisePropertyChanged through the Instance signal when the notify bits
+    // at +12/+16 are set (0x379b1a..0x379b46). The signal lives on Instance
+    // (datamodel side); the model keeps the compare-and-store.
+    if (access.get)(obj) != value {
+        (access.set)(obj, value);
+    }
 }
 
 // 0x379b4c — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbEC2IMS3_KFbvEiEEPKcS9_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::PropDescriptor<bool (RBX::Soundscape::SoundChannel::*)(void)const,int>(char const*,char const*,bool (RBX::Soundscape::SoundChannel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_379b4c() -> ! {
-    todo!("0x379b4c RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::PropDescriptor<bool (RBX::Soundscape::SoundChannel::*)(void)const,int>(char const*,char const*,bool (RBX::Soundscape::SoundChannel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_379b4c(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&SoundChannel) -> bool + Send + Sync>,
+    _tag: i32,
+    attributes: u32,
+    permissions: u32,
+) -> SoundChannelBoolGetDesc {
+    // IDA 0x379b4c: TypedPropertyDescriptor<bool> base init (0x379bea) over a
+    // fresh 0xC GetImpl block holding the getter + tag word (0x379b78..0x379ba2).
+    // The tag rides the member-pointer encoding on the getValue path; the
+    // closure absorbs it.
+    SoundChannelBoolGetDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: SoundChannelBoolGetAccess { get },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x379c58 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbED0Ev
@@ -1507,71 +1681,124 @@ pub fn stub_379c58() {
 // 0x379c84 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbE7GetImplIMS3_KFbvEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::isReadOnly(void)const")]
-pub fn stub_379c84() -> ! {
-    todo!("0x379c84 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::isReadOnly(void)const")
+pub fn stub_379c84() -> bool {
+    // IDA 0x379c84: GetImpl<bool getter>::isReadOnly — hardcoded `return 1`.
+    // The getter-only descriptor has no setter, so it reads as read-only
+    // (its setValue throws "can't set value", 0x379cb0).
+    true
 }
 
 // 0x379c88 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbE7GetImplIMS3_KFbvEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::isWriteOnly(void)const")]
-pub fn stub_379c88() -> ! {
-    todo!("0x379c88 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_379c88() -> bool {
+    // IDA 0x379c88: GetImpl<bool getter>::isWriteOnly — hardcoded `return 0`.
+    false
 }
 
 // 0x379c8c — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbE7GetImplIMS3_KFbvEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_379c8c() -> ! {
-    todo!("0x379c8c RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_379c8c(access: &SoundChannelBoolGetAccess, obj: &SoundChannel) -> bool {
+    // IDA 0x379c8c: null -> obj-36 adjust (0x379c92..0x379c94), split the
+    // member pointer (fn at +4, encoding at +8), virtual-adjust when the low
+    // bit is set (0x379ca6..0x379caa), call the getter (0x379cae).
+    (access.get)(obj)
 }
 
 // 0x379cb0 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbE7GetImplIMS3_KFbvEE8setValueEPNS0_13DescribedBaseERKb
 // type: void __noreturn()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
 pub fn stub_379cb0() -> ! {
-    todo!("0x379cb0 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+    // IDA 0x379cb0: GetImpl<bool getter>::setValue — __noreturn; builds
+    // std::runtime_error("can't set value") (0x379cdc..0x379d98) and throws
+    // it (0x379dc0). Host: the throw becomes a panic with the image message.
+    panic!("can't set value")
 }
 
 // 0x379dd0 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbEC2IMS3_KFbvEMS3_FvbEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::PropDescriptor<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>(char const*,char const*,bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_379dd0() -> ! {
-    todo!("0x379dd0 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::PropDescriptor<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>(char const*,char const*,bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_379dd0(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&SoundChannel) -> bool + Send + Sync>,
+    set: Box<dyn Fn(&mut SoundChannel, bool) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> SoundChannelBoolGetSetDesc {
+    // IDA 0x379dd0: TypedPropertyDescriptor<bool> base init (0x379e76) over a
+    // fresh 0x14 GetSetImpl block holding the getter + setter pairs
+    // (0x379dfe..0x379e38).
+    SoundChannelBoolGetSetDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: SoundChannelBoolAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x379ee4 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbE10GetSetImplIMS3_KFbvEMS3_FvbEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::isReadOnly(void)const")]
-pub fn stub_379ee4() -> ! {
-    todo!("0x379ee4 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::isReadOnly(void)const")
+pub fn stub_379ee4() -> bool {
+    // IDA 0x379ee4: GetSetImpl<bool getter/setter>::isReadOnly — hardcoded
+    // `return 0` (get/set-bound props are never read-only).
+    false
 }
 
 // 0x379ee8 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbE10GetSetImplIMS3_KFbvEMS3_FvbEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::isWriteOnly(void)const")]
-pub fn stub_379ee8() -> ! {
-    todo!("0x379ee8 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_379ee8() -> bool {
+    // IDA 0x379ee8: GetSetImpl<bool getter/setter>::isWriteOnly — hardcoded
+    // `return 0` (get/set-bound props are never write-only).
+    false
 }
 
 // 0x379eec — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbE10GetSetImplIMS3_KFbvEMS3_FvbEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_379eec() -> ! {
-    todo!("0x379eec RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_379eec(access: &SoundChannelBoolAccess, obj: &SoundChannel) -> bool {
+    // IDA 0x379eec: null -> obj-36 adjust (0x379ef2..0x379ef4), split the
+    // getter member pointer (fn at +4, encoding at +8), virtual-adjust when
+    // the low bit is set (0x379f06..0x379f0a), call it (0x379f0e).
+    (access.get)(obj)
 }
 
 // 0x379f10 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbE10GetSetImplIMS3_KFbvEMS3_FvbEE8setValueEPNS0_13DescribedBaseERKb
 // type: int __fastcall(int, int, unsigned __int8 *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_379f10() -> ! {
-    todo!("0x379f10 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_379f10(access: &SoundChannelBoolAccess, obj: &mut SoundChannel, value: bool) {
+    // IDA 0x379f10: null -> obj-36 adjust (0x379f16..0x379f18), split the
+    // setter member pointer (fn at +12, encoding at +16), virtual-adjust
+    // when the low bit is set (0x379f28..0x379f2c), call it. The original
+    // returns the (void) setter's word; the host drops it.
+    (access.set)(obj, value);
 }
 
 // 0x379f34 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEiEC2IMS3_KFivEMS3_FviEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::PropDescriptor<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>(char const*,char const*,int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_379f34() -> ! {
-    todo!("0x379f34 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::PropDescriptor<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>(char const*,char const*,int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_379f34(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&SoundChannel) -> i32 + Send + Sync>,
+    set: Box<dyn Fn(&mut SoundChannel, i32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> SoundChannelIntGetSetDesc {
+    // IDA 0x379f34: TypedPropertyDescriptor<int> base init (0x379fda) over a
+    // fresh 0x14 GetSetImpl block holding the getter + setter pairs
+    // (0x379f62..0x379f9c). Same ctor shape as the bool twin at 0x379dd0.
+    SoundChannelIntGetSetDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: SoundChannelIntAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x37a048 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEiED0Ev
@@ -1584,36 +1811,63 @@ pub fn stub_37a048() {
 // 0x37a074 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEiE10GetSetImplIMS3_KFivEMS3_FviEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::isReadOnly(void)const")]
-pub fn stub_37a074() -> ! {
-    todo!("0x37a074 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::isReadOnly(void)const")
+pub fn stub_37a074() -> bool {
+    // IDA 0x37a074: GetSetImpl<int getter/setter>::isReadOnly — hardcoded
+    // `return 0` (get/set-bound props are never read-only).
+    false
 }
 
 // 0x37a078 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEiE10GetSetImplIMS3_KFivEMS3_FviEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::isWriteOnly(void)const")]
-pub fn stub_37a078() -> ! {
-    todo!("0x37a078 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::isWriteOnly(void)const")
+pub fn stub_37a078() -> bool {
+    // IDA 0x37a078: GetSetImpl<int getter/setter>::isWriteOnly — hardcoded
+    // `return 0` (get/set-bound props are never write-only).
+    false
 }
 
 // 0x37a07c — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEiE10GetSetImplIMS3_KFivEMS3_FviEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_37a07c() -> ! {
-    todo!("0x37a07c RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_37a07c(access: &SoundChannelIntAccess, obj: &SoundChannel) -> i32 {
+    // IDA 0x37a07c: null -> obj-36 adjust (0x37a080..0x37a082), split the
+    // getter member pointer (fn at +4, encoding at +8), virtual-adjust when
+    // the low bit is set (0x37a092..0x37a096), call it.
+    (access.get)(obj)
 }
 
 // 0x37a09c — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEiE10GetSetImplIMS3_KFivEMS3_FviEE8setValueEPNS0_13DescribedBaseERKi
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")]
-pub fn stub_37a09c() -> ! {
-    todo!("0x37a09c RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+pub fn stub_37a09c(access: &SoundChannelIntAccess, obj: &mut SoundChannel, value: i32) {
+    // IDA 0x37a09c: null -> obj-36 adjust (0x37a0a2..0x37a0a4), split the
+    // setter member pointer (fn at +12, encoding at +16), virtual-adjust
+    // when the low bit is set (0x37a0b4..0x37a0b8), call it. The original
+    // returns the (void) setter's word; the host drops it.
+    (access.set)(obj, value);
 }
 
 // 0x37a0c0 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEfEC2IMS3_KFfvEMS3_FvfEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::PropDescriptor<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>(char const*,char const*,float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_37a0c0() -> ! {
-    todo!("0x37a0c0 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::PropDescriptor<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>(char const*,char const*,float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_37a0c0(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&SoundChannel) -> f32 + Send + Sync>,
+    set: Box<dyn Fn(&mut SoundChannel, f32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> SoundChannelFloatGetSetDesc {
+    // IDA 0x37a0c0: TypedPropertyDescriptor<float> base init (0x37a166) over a
+    // fresh 0x14 GetSetImpl block holding the getter + setter pairs
+    // (0x37a0ee..0x37a128). Same ctor shape as the bool twin at 0x379dd0.
+    SoundChannelFloatGetSetDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: SoundChannelFloatAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x37a1d4 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEfED0Ev
@@ -1626,36 +1880,63 @@ pub fn stub_37a1d4() {
 // 0x37a200 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEfE10GetSetImplIMS3_KFfvEMS3_FvfEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::isReadOnly(void)const")]
-pub fn stub_37a200() -> ! {
-    todo!("0x37a200 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::isReadOnly(void)const")
+pub fn stub_37a200() -> bool {
+    // IDA 0x37a200: GetSetImpl<float getter/setter>::isReadOnly — hardcoded
+    // `return 0` (get/set-bound props are never read-only).
+    false
 }
 
 // 0x37a204 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEfE10GetSetImplIMS3_KFfvEMS3_FvfEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::isWriteOnly(void)const")]
-pub fn stub_37a204() -> ! {
-    todo!("0x37a204 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::isWriteOnly(void)const")
+pub fn stub_37a204() -> bool {
+    // IDA 0x37a204: GetSetImpl<float getter/setter>::isWriteOnly — hardcoded
+    // `return 0` (get/set-bound props are never write-only).
+    false
 }
 
 // 0x37a208 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEfE10GetSetImplIMS3_KFfvEMS3_FvfEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_37a208() -> ! {
-    todo!("0x37a208 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_37a208(access: &SoundChannelFloatAccess, obj: &SoundChannel) -> f32 {
+    // IDA 0x37a208: null -> obj-36 adjust (0x37a20c..0x37a20e), split the
+    // getter member pointer (fn at +4, encoding at +8), virtual-adjust when
+    // the low bit is set (0x37a21e..0x37a222), call it.
+    (access.get)(obj)
 }
 
 // 0x37a228 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEfE10GetSetImplIMS3_KFfvEMS3_FvfEE8setValueEPNS0_13DescribedBaseERKf
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
-pub fn stub_37a228() -> ! {
-    todo!("0x37a228 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+pub fn stub_37a228(access: &SoundChannelFloatAccess, obj: &mut SoundChannel, value: f32) {
+    // IDA 0x37a228: null -> obj-36 adjust (0x37a22e..0x37a230), split the
+    // setter member pointer (fn at +12, encoding at +16), virtual-adjust
+    // when the low bit is set (0x37a240..0x37a244), call it. The original
+    // returns the (void) setter's word; the host drops it.
+    (access.set)(obj, value);
 }
 
 // 0x37a24c — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelENS2_7SoundIdEEC2IMS3_KFS4_vEMS3_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::PropDescriptor<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>(char const*,char const*,RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_37a24c() -> ! {
-    todo!("0x37a24c RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::PropDescriptor<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>(char const*,char const*,RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_37a24c(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&SoundChannel) -> SoundId + Send + Sync>,
+    set: Box<dyn Fn(&mut SoundChannel, SoundId) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> SoundChannelSoundIdGetSetDesc {
+    // IDA 0x37a24c: TypedPropertyDescriptor<SoundId> base init (0x37a2f2)
+    // over a fresh 0x14 GetSetImpl block holding the getter + setter pairs
+    // (0x37a27a..0x37a2b4). Same ctor shape as the bool twin at 0x379dd0.
+    SoundChannelSoundIdGetSetDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: SoundChannelSoundIdAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x37a360 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEEC2ERNS0_15ClassDescriptorEPKcS8_St8auto_ptrINS4_6GetSetEENS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
