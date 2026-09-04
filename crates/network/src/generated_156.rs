@@ -94,6 +94,18 @@ pub struct ControlViewInit {
     pub control_view: usize,
 }
 
+/// `boost::function0<void>` holding one `(int, game, JoinGameRequest)` functor (IDA 0x2f7d0).
+#[derive(Clone, Debug, Default)]
+pub struct VoidJoinCallback {
+    pub bound: Option<BindIntGameJoin>,
+}
+
+/// `boost::function0<void>` holding one `(int, cstr, game)` functor (IDA 0x2ff94).
+#[derive(Clone, Debug, Default)]
+pub struct VoidCstrCallback {
+    pub bound: Option<BindIntCstrGame>,
+}
+
 /// `boost::_bi::list5` payload: three strings plus `(page, game)` (IDA 0x2e700).
 #[derive(Clone, Debug, Default)]
 pub struct List5StringsPageGame {
@@ -818,8 +830,10 @@ pub fn stub_2f0f0(bound: BindIntGame) -> VoidCallback {
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>)")]
-pub fn stub_2f1d8() -> ! {
-    todo!("0x2f1d8 void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(int,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<int>,boost::_bi::value<boost::shared_p")
+pub fn stub_2f1d8(cb: &mut VoidCallback, bound: BindIntGame) {
+    // IDA 0x2f1d8: function0::assign_to: functor words + shared_count copied to the buffer, stored
+    // vtable installed.
+    cb.bound = Some(bound);
 }
 
 // 0x2f2d0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIiEENSC_IS8_EEEEEEE6manageERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE
@@ -827,8 +841,17 @@ pub fn stub_2f1d8() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_2f2d0() -> ! {
-    todo!("0x2f2d0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(int,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<int>,boost::_bi::value<boost::shared")
+pub fn stub_2f2d0(op: i32, out_type: &mut usize, out_flags: &mut u16) -> usize {
+    // IDA 0x2f2d0: op != 4 (get_type): tail-call functor_manager::manager table; else store the
+    // bind_t<int, game> typeinfo, clear flags, return it.
+    const MANAGER_TABLE: usize = 0x2f2d4;
+    const BIND_T_TYPEINFO: usize = 0x2f2e6;
+    if op != 4 {
+        return MANAGER_TABLE;
+    }
+    *out_type = BIND_T_TYPEINFO;
+    *out_flags = 0;
+    BIND_T_TYPEINFO
 }
 
 // 0x2f2ec — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIiEENSC_IS8_EEEEEEvE6invokeERNS1_15function_bufferE
@@ -836,8 +859,10 @@ pub fn stub_2f2d0() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_2f2ec() -> ! {
-    todo!("0x2f2ec boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(int,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<int>,boost::_bi::value<bo")
+pub fn stub_2f2ec(bound: &BindIntGame, invoke: &mut dyn FnMut(i32, usize)) {
+    // IDA 0x2f2ec: void_function_obj_invoker0::invoke: functor f from the buffer;
+    // list2::operator()<F(int, game), list0> calls f(arg0, game).
+    invoke(bound.arg0, bound.game.ptr);
 }
 
 // 0x2f300 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIiEENSE_ISA_EEEEEEEEbT_RNS1_15function_bufferE
@@ -845,8 +870,10 @@ pub fn stub_2f2ec() -> ! {
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>,boost::detail::functio")]
-pub fn stub_2f300() -> ! {
-    todo!("0x2f300 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(int,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<int>,boost::_bi:")
+pub fn stub_2f300(cb: &mut VoidCallback, bound: BindIntGame) -> bool {
+    // IDA 0x2f300: basic_vtable0::assign_to: functor + shared_count copied, stored vtable; true.
+    stub_2f1d8(cb, bound);
+    true
 }
 
 // 0x2f3e8 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIiEENSE_ISA_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
@@ -854,8 +881,10 @@ pub fn stub_2f300() -> ! {
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>,boost::detail::functio")]
-pub fn stub_2f3e8() -> ! {
-    todo!("0x2f3e8 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(int,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<int>,boost::_bi:")
+pub fn stub_2f3e8(cb: &mut VoidCallback, bound: BindIntGame) -> bool {
+    // IDA 0x2f3e8: tagged assign_to overload: vetted functor stored directly; true.
+    stub_2f1d8(cb, bound);
+    true
 }
 
 // 0x2f4fc — __ZN5boost3_bi5list2INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEclIPFviS7_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
@@ -863,8 +892,9 @@ pub fn stub_2f3e8() -> ! {
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>::operator()<void (*)(int,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(int,rbx_core::SharedPtr<RBX::Game>) &,boost::_bi::list0 &,int)")]
-pub fn stub_2f4fc() -> ! {
-    todo!("0x2f4fc void boost::_bi::list2<boost::_bi::value<int>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::operator()<void (*)(int,boost::shared_ptr<RBX::Game>),boost::_bi::list0>(boost::_bi:")
+pub fn stub_2f4fc(bound: &BindIntGame, invoke: &mut dyn FnMut(i32, usize)) {
+    // IDA 0x2f4fc: F = stored target; shared_count copied for the call; F(arg0, game); temp released.
+    invoke(bound.arg0, bound.game.ptr);
 }
 
 // 0x2f5d4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIiEENSC_IS8_EEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
@@ -872,8 +902,32 @@ pub fn stub_2f4fc() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_2f5d4() -> ! {
-    todo!("0x2f5d4 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(int,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<int>,boost::_bi::value<boost::shared")
+pub fn stub_2f5d4(
+    op: i32,
+    src: &mut Option<BindIntGame>,
+    dst: &mut Option<BindIntGame>,
+    release: &mut dyn FnMut(usize),
+) -> bool {
+    // IDA 0x2f5d4: 0 clone (new 0x10, field + shared_count copy, store); 1 move; 2 destroy (release,
+    // delete, clear); 3 check type.
+    match op {
+        0 => {
+            *dst = src.clone();
+            true
+        }
+        1 => {
+            *dst = src.take();
+            true
+        }
+        2 => {
+            if let Some(bound) = dst.take() {
+                release(bound.game.counted);
+            }
+            true
+        }
+        3 => true,
+        _ => false,
+    }
 }
 
 // 0x2f708 — __ZN5boost3_bi5list2INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEC2ES3_S8_
@@ -881,8 +935,9 @@ pub fn stub_2f5d4() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>::list2(boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>)")]
-pub fn stub_2f708() -> ! {
-    todo!("0x2f708 boost::_bi::list2<boost::_bi::value<int>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::list2(boost::_bi::value<int>,boost::_bi::value<boost::shared_ptr<RBX::Game>>)")
+pub fn stub_2f708(arg0: i32, game: SharedSlot) -> BindIntGame {
+    // IDA 0x2f708: list2 ctor: arg0 stored, game ptr + shared_count copied in.
+    BindIntGame { target: 0, arg0, game }
 }
 
 // 0x2f7d0 — __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS3_5list3INS3_5valueIiEENSD_IS8_EENSD_IS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE
@@ -890,8 +945,10 @@ pub fn stub_2f708() -> ! {
 // type: int __fastcall(int, struct _Unwind_Exception *lpuexcpt, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "__ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS3_5list3INS3_5valueIiEENSD_IS8_EENSD_IS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_2f7d0() -> ! {
-    todo!("0x2f7d0 __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS3_5list3INS3_5valueIiEENSD_IS8_EENSD_IS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_t")
+pub fn stub_2f7d0(bound: BindIntGameJoin) -> VoidJoinCallback {
+    // IDA 0x2f7d0: function0 ctor: *a1 = 0, bind_t words + shared_count copied, assign_to (0x2f8bc
+    // shape), temp released.
+    VoidJoinCallback { bound: Some(bound) }
 }
 
 // 0x2f8bc — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS3_5list3INS3_5valueIiEENSD_IS8_EENSD_IS9_EEEEEEEEvT_
@@ -899,8 +956,9 @@ pub fn stub_2f7d0() -> ! {
 // type: int __fastcall(int, boost::detail::sp_counted_base *, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest),boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<JoinGameRequest>>>>(boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest),boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value<boost::sh")]
-pub fn stub_2f8bc() -> ! {
-    todo!("0x2f8bc void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(int,boost::shared_ptr<RBX::Game>,JoinGameRequest),boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value")
+pub fn stub_2f8bc(cb: &mut VoidJoinCallback, bound: BindIntGameJoin) {
+    // IDA 0x2f8bc: function0::assign_to: functor words + shared_count copied, stored vtable installed.
+    cb.bound = Some(bound);
 }
 
 // 0x2f9bc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS3_5list3INS3_5valueIiEENSD_IS8_EENSD_IS9_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
@@ -908,8 +966,17 @@ pub fn stub_2f8bc() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest),boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<JoinGameRequest>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_")]
-pub fn stub_2f9bc() -> ! {
-    todo!("0x2f9bc boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(int,boost::shared_ptr<RBX::Game>,JoinGameRequest),boost::_bi::list3<boost::_bi::value<int>,boost::_bi::val")
+pub fn stub_2f9bc(op: i32, out_type: &mut usize, out_flags: &mut u16) -> usize {
+    // IDA 0x2f9bc: op != 4: tail-call functor_manager::manager table; else store the
+    // bind_t<int, game, JoinGameRequest> typeinfo, clear flags, return it.
+    const MANAGER_TABLE: usize = 0x2f9c0;
+    const BIND_T_TYPEINFO: usize = 0x2f9d2;
+    if op != 4 {
+        return MANAGER_TABLE;
+    }
+    *out_type = BIND_T_TYPEINFO;
+    *out_flags = 0;
+    BIND_T_TYPEINFO
 }
 
 // 0x2f9d8 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS3_5list3INS3_5valueIiEENSD_IS8_EENSD_IS9_EEEEEEvE6invokeERNS1_15function_bufferE
@@ -917,8 +984,10 @@ pub fn stub_2f9bc() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest),boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<JoinGameRequest>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_2f9d8() -> ! {
-    todo!("0x2f9d8 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(int,boost::shared_ptr<RBX::Game>,JoinGameRequest),boost::_bi::list3<boost::_bi::value<int>,boos")
+pub fn stub_2f9d8(bound: &BindIntGameJoin, invoke: &mut dyn FnMut(i32, usize, usize)) {
+    // IDA 0x2f9d8: void_function_obj_invoker0::invoke: functor f from the buffer;
+    // list3::operator()<F(int, game, JoinGameRequest), list0> calls f(arg0, game, join).
+    invoke(bound.arg0, bound.game.ptr, bound.join_request);
 }
 
 // 0x2f9ec — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS5_5list3INS5_5valueIiEENSF_ISA_EENSF_ISB_EEEEEEEEbT_RNS1_15function_bufferE
@@ -926,8 +995,10 @@ pub fn stub_2f9d8() -> ! {
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest),boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<JoinGameRequest>>>>(boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest),boost::_bi::list3<boost::_bi::value<int>,boost")]
-pub fn stub_2f9ec() -> ! {
-    todo!("0x2f9ec bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(int,boost::shared_ptr<RBX::Game>,JoinGameRequest),boost::_bi::list3<boost::_bi::value<")
+pub fn stub_2f9ec(cb: &mut VoidJoinCallback, bound: BindIntGameJoin) -> bool {
+    // IDA 0x2f9ec: basic_vtable0::assign_to: functor + shared_count copied, stored vtable; true.
+    stub_2f8bc(cb, bound);
+    true
 }
 
 // 0x2fad8 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS5_5list3INS5_5valueIiEENSF_ISA_EENSF_ISB_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
@@ -935,8 +1006,10 @@ pub fn stub_2f9ec() -> ! {
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest),boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<JoinGameRequest>>>>(boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest),boost::_bi::list3<boost::_bi::value<int>,boost")]
-pub fn stub_2fad8() -> ! {
-    todo!("0x2fad8 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(int,boost::shared_ptr<RBX::Game>,JoinGameRequest),boost::_bi::list3<boost::_bi::value<")
+pub fn stub_2fad8(cb: &mut VoidJoinCallback, bound: BindIntGameJoin) -> bool {
+    // IDA 0x2fad8: tagged assign_to overload: vetted functor stored directly; true.
+    stub_2f8bc(cb, bound);
+    true
 }
 
 // 0x2fbf4 — __ZN5boost3_bi5list3INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_I15JoinGameRequestEEEclIPFviS7_S9_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
@@ -944,8 +1017,10 @@ pub fn stub_2fad8() -> ! {
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<JoinGameRequest>>::operator()<void (*)(int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest),boost::_bi::list0>(boost::_bi::type<void>,void (*)(int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest) &,boost::_bi::list0 &,int)")]
-pub fn stub_2fbf4() -> ! {
-    todo!("0x2fbf4 void boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<JoinGameRequest>>::operator()<void (*)(int,boost::shared_ptr<RBX::Ga")
+pub fn stub_2fbf4(bound: &BindIntGameJoin, invoke: &mut dyn FnMut(i32, usize, usize)) {
+    // IDA 0x2fbf4: F = stored target; shared_count copied for the call; F(arg0, game, join); temp
+    // released.
+    invoke(bound.arg0, bound.game.ptr, bound.join_request);
 }
 
 // 0x2fcd4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS3_5list3INS3_5valueIiEENSD_IS8_EENSD_IS9_EEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
@@ -953,8 +1028,32 @@ pub fn stub_2fbf4() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest),boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<JoinGameRequest>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation")]
-pub fn stub_2fcd4() -> ! {
-    todo!("0x2fcd4 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(int,boost::shared_ptr<RBX::Game>,JoinGameRequest),boost::_bi::list3<boost::_bi::value<int>,boost::_bi::val")
+pub fn stub_2fcd4(
+    op: i32,
+    src: &mut Option<BindIntGameJoin>,
+    dst: &mut Option<BindIntGameJoin>,
+    release: &mut dyn FnMut(usize),
+) -> bool {
+    // IDA 0x2fcd4: 0 clone (new 0x14, field + shared_count copy, store); 1 move; 2 destroy (release,
+    // delete, clear); 3 check type.
+    match op {
+        0 => {
+            *dst = src.clone();
+            true
+        }
+        1 => {
+            *dst = src.take();
+            true
+        }
+        2 => {
+            if let Some(bound) = dst.take() {
+                release(bound.game.counted);
+            }
+            true
+        }
+        3 => true,
+        _ => false,
+    }
 }
 
 // 0x2fe0c — __ZN5boost3_bi5list3INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_I15JoinGameRequestEEEC2ES3_S8_SA_
@@ -962,8 +1061,9 @@ pub fn stub_2fcd4() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<JoinGameRequest>>::list3(boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<JoinGameRequest>)")]
-pub fn stub_2fe0c() -> ! {
-    todo!("0x2fe0c boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<JoinGameRequest>>::list3(boost::_bi::value<int>,boost::_bi::value<boost::")
+pub fn stub_2fe0c(arg0: i32, game: SharedSlot, join_request: usize) -> BindIntGameJoin {
+    // IDA 0x2fe0c: list3 ctor: shared_count copy of the game arg, storage3 pack, temp released.
+    stub_2fec4(arg0, game, join_request)
 }
 
 // 0x2fec4 — __ZN5boost3_bi8storage3INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_I15JoinGameRequestEEEC2ES3_S8_SA_
@@ -971,8 +1071,10 @@ pub fn stub_2fe0c() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<JoinGameRequest>>::storage3(boost::_bi::value<int>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<JoinGameRequest>)")]
-pub fn stub_2fec4() -> ! {
-    todo!("0x2fec4 boost::_bi::storage3<boost::_bi::value<int>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<JoinGameRequest>>::storage3(boost::_bi::value<int>,boost::_bi::value<b")
+pub fn stub_2fec4(arg0: i32, game: SharedSlot, join_request: usize) -> BindIntGameJoin {
+    // IDA 0x2fec4: storage3 ctor: arg0 stored, game ptr + shared_count copied in, join stored
+    // (target filled in by the bind wrapper at 0x2cc54).
+    BindIntGameJoin { target: 0, arg0, game, join_request }
 }
 
 // 0x2ff94 — __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list3INS3_5valueIiEENSE_IPKcEENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE
@@ -980,8 +1082,10 @@ pub fn stub_2fec4() -> ! {
 // type: boost::detail::sp_counted_base *__fastcall(boost::detail::sp_counted_base *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "__ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list3INS3_5valueIiEENSE_IPKcEENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_2ff94() -> ! {
-    todo!("0x2ff94 __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list3INS3_5valueIiEENSE_IPKcEENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_not")
+pub fn stub_2ff94(bound: BindIntCstrGame) -> VoidCstrCallback {
+    // IDA 0x2ff94: function0 ctor: *a1 = 0, bind_t words + shared_count copied, assign_to (0x30080
+    // shape), temp released.
+    VoidCstrCallback { bound: Some(bound) }
 }
 
 // 0x30080 — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list3INS3_5valueIiEENSE_IPKcEENSE_ISA_EEEEEEEEvT_
@@ -989,8 +1093,9 @@ pub fn stub_2ff94() -> ! {
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(int,std::string const&,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value<char const*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(int,std::string const&,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value<char co")]
-pub fn stub_30080() -> ! {
-    todo!("0x30080 void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(int,std::string const&,boost::shared_ptr<RBX::Game>),boost::_bi::list3<boost::_bi::value<int>,boost::_bi::va")
+pub fn stub_30080(cb: &mut VoidCstrCallback, bound: BindIntCstrGame) {
+    // IDA 0x30080: function0::assign_to: functor words + shared_count copied, stored vtable installed.
+    cb.bound = Some(bound);
 }
 
 // 0x3017c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list3INS3_5valueIiEENSE_IPKcEENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
@@ -998,8 +1103,17 @@ pub fn stub_30080() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(int,std::string const&,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value<char const*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_t")]
-pub fn stub_3017c() -> ! {
-    todo!("0x3017c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(int,std::string const&,boost::shared_ptr<RBX::Game>),boost::_bi::list3<boost::_bi::value<int>,boost::_bi::")
+pub fn stub_3017c(op: i32, out_type: &mut usize, out_flags: &mut u16) -> usize {
+    // IDA 0x3017c: op != 4: tail-call functor_manager::manager table; else store the
+    // bind_t<int, cstr, game> typeinfo, clear flags, return it.
+    const MANAGER_TABLE: usize = 0x30180;
+    const BIND_T_TYPEINFO: usize = 0x30192;
+    if op != 4 {
+        return MANAGER_TABLE;
+    }
+    *out_type = BIND_T_TYPEINFO;
+    *out_flags = 0;
+    BIND_T_TYPEINFO
 }
 
 // 0x30198 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list3INS3_5valueIiEENSE_IPKcEENSE_ISA_EEEEEEvE6invokeERNS1_15function_bufferE
@@ -1007,8 +1121,10 @@ pub fn stub_3017c() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(int,std::string const&,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value<char const*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_30198() -> ! {
-    todo!("0x30198 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(int,std::string const&,boost::shared_ptr<RBX::Game>),boost::_bi::list3<boost::_bi::value<int>,b")
+pub fn stub_30198(bound: &BindIntCstrGame, invoke: &mut dyn FnMut(i32, usize, usize)) {
+    // IDA 0x30198: void_function_obj_invoker0::invoke: functor f from the buffer;
+    // list3::operator()<F(int, string const&, game), list0> calls f(arg0, cstr, game).
+    invoke(bound.arg0, bound.cstr, bound.game.ptr);
 }
 
 // 0x301ac — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS5_5list3INS5_5valueIiEENSG_IPKcEENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferE
@@ -1016,8 +1132,10 @@ pub fn stub_30198() -> ! {
 // type: int __fastcall(int, int, boost::detail::sp_counted_base *, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(int,std::string const&,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value<char const*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(int,std::string const&,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list3<boost::_bi::value<int>,boo")]
-pub fn stub_301ac() -> ! {
-    todo!("0x301ac bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(int,std::string const&,boost::shared_ptr<RBX::Game>),boost::_bi::list3<boost::_bi::val")
+pub fn stub_301ac(cb: &mut VoidCstrCallback, bound: BindIntCstrGame) -> bool {
+    // IDA 0x301ac: basic_vtable0::assign_to: functor + shared_count copied, stored vtable; true.
+    stub_30080(cb, bound);
+    true
 }
 
 // 0x30298 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS5_5list3INS5_5valueIiEENSG_IPKcEENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
@@ -1025,8 +1143,10 @@ pub fn stub_301ac() -> ! {
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(int,std::string const&,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value<char const*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(int,std::string const&,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list3<boost::_bi::value<int>,boo")]
-pub fn stub_30298() -> ! {
-    todo!("0x30298 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(int,std::string const&,boost::shared_ptr<RBX::Game>),boost::_bi::list3<boost::_bi::val")
+pub fn stub_30298(cb: &mut VoidCstrCallback, bound: BindIntCstrGame) -> bool {
+    // IDA 0x30298: tagged assign_to overload: vetted functor stored directly; true.
+    stub_30080(cb, bound);
+    true
 }
 
 // 0x303b8 — __ZN5boost3_bi5list3INS0_5valueIiEENS2_IPKcEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEclIPFviRKSsSA_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
@@ -1034,8 +1154,10 @@ pub fn stub_30298() -> ! {
 // type: int(void)
 // was: boost::shared_ptr
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value<char const*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>::operator()<void (*)(int,std::string const&,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(int,std::string const&,rbx_core::SharedPtr<RBX::Game>) &,boost::_bi::list0 &,int)")]
-pub fn stub_303b8() -> ! {
-    todo!("0x303b8 void boost::_bi::list3<boost::_bi::value<int>,boost::_bi::value<char const*>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::operator()<void (*)(int,std::string const&,boost::sha")
+pub fn stub_303b8(bound: &BindIntCstrGame, invoke: &mut dyn FnMut(i32, usize, usize)) {
+    // IDA 0x303b8: temp std::string built from the bound cstr; F(arg0, str, game-copy); temps
+    // released (string contents stay behind the cstr handle).
+    invoke(bound.arg0, bound.cstr, bound.game.ptr);
 }
 
 // 0x30534 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list3INS3_5valueIiEENSE_IPKcEENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
