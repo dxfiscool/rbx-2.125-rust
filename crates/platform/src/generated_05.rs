@@ -11,159 +11,348 @@ const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
 
+/// Host model of the `Roblox *` object behind `sendAppEvent`/`postAppEvent`
+/// (IDA 0x63a08/0x63aac): the opaque identity of `this` plus the `RBX::CEvent *`
+/// cell at `this + 8` (`*((_DWORD *)this + 2)`, 0x63a28). `None` is `nil`.
+/// There is no ObjC runtime on the host, so the `FunctionMarshaller`
+/// alloc/init + `performSelectorOnMainThread:...` hop collapses into the
+/// `marshals` counter; the observable branch structure is 1:1.
+#[derive(Debug, Default)]
+pub struct RobloxAppHost {
+    pub this_id: usize,
+    pub app_event: Option<ManualAppEvent>,
+    pub marshals: u32,
+    pub waits: u32,
+    pub last_wait_until_done: Option<bool>,
+}
+
+/// Host model of `RBX::CEvent` behind the wait in `sendAppEvent`
+/// (IDA 0x63a9e `RBX::CEvent::Wait`).
+#[derive(Debug, Default)]
+pub struct ManualAppEvent {
+    pub signaled: bool,
+    pub wait_calls: u32,
+}
+
+impl ManualAppEvent {
+    pub fn wait(&mut self) {
+        self.wait_calls += 1;
+        self.signaled = true;
+    }
+}
+
+/// `Roblox::sendAppEvent` (IDA 0x63a08): marshal `marshallFunction` to the
+/// main thread, waiting until done only when there is no event (`v3 == 0`
+/// feeds `waitUntilDone`, 0x63a7c..0x63a8a); when the event is present,
+/// block in `RBX::CEvent::Wait` instead (0x63a90..0x63a9e).
+pub fn send_app_event(host: &mut RobloxAppHost) -> usize {
+    host.marshals += 1;
+    match host.app_event.as_mut() {
+        None => {
+            host.last_wait_until_done = Some(true);
+            0
+        }
+        Some(event) => {
+            host.last_wait_until_done = Some(false);
+            host.waits += 1;
+            event.wait();
+            0
+        }
+    }
+}
+
+/// `Roblox::postAppEvent` (IDA 0x63aac): same marshaller hop with
+/// `waitUntilDone:0` always (0x63b16 `MOVS R4,#0`); no event is loaded and
+/// no `CEvent::Wait` follows.
+pub fn post_app_event(host: &mut RobloxAppHost) -> usize {
+    host.marshals += 1;
+    host.last_wait_until_done = Some(false);
+    0
+}
+
+/// Run-loop drain mode pumped by `processAppEvents` (IDA 0x63b28
+/// `CFSTR("RobloxAppEvent")`).
+pub const ROBLOX_APP_EVENT_MODE: &str = "RobloxAppEvent";
+
+/// `kCFRunLoopRunHandledSource` compared at IDA 0x63b4c (`CMP R0,#4`).
+pub const RUN_LOOP_HANDLED_SOURCE: u32 = 4;
+
+/// `Roblox::processAppEvents` (IDA 0x63b28): run the `RobloxAppEvent` mode
+/// with zero timeout until the result is anything but
+/// `kCFRunLoopRunHandledSource`. `pump` stands in for
+/// `CFRunLoopRunInMode` (out of slice); the loop shape is 1:1.
+pub fn process_app_events(pump: &dyn Fn() -> u32) -> u32 {
+    loop {
+        let result = pump();
+        if result != RUN_LOOP_HANDLED_SOURCE {
+            return result;
+        }
+    }
+}
+
+/// `RBX::BaseScript::isRobloxScript` (IDA 0x28d544): `MOVS R0,#1; BX LR` —
+/// unconditionally true.
+pub fn base_script_is_roblox_script() -> bool {
+    true
+}
+
+/// Class-flag word behind `RBX::Script::isRobloxScript` (IDA 0x28d548):
+/// `type_tag` is `*(*(this + 0x5C) - 12)` (0x28d54c), `flag_84` is byte
+/// `this + 132`, `byte_87` is byte `this + 135`.
+#[derive(Debug, Clone, Copy, Default)]
+pub struct ScriptRobloxFlags {
+    pub type_tag: u32,
+    pub flag_84: bool,
+    pub byte_87: u8,
+}
+
+/// `RBX::Script::isRobloxScript` (IDA 0x28d548): a set class word means
+/// Roblox script (`result = 1`, 0x28d550..0x28d552); otherwise the flag at
+/// +132 gates the byte at +135, which doubles as the result when set.
+pub fn script_is_roblox_script(flags: &ScriptRobloxFlags) -> bool {
+    if flags.type_tag != 0 {
+        return true;
+    }
+    if !flags.flag_84 {
+        return false;
+    }
+    if flags.byte_87 != 0 {
+        return true;
+    }
+    false
+}
+
+/// Library-service cell behind `registerRobloxLibrary` (IDA 0x295628):
+/// `*(a1 + 768)` (`LDR R0,[R0,#0x300]`), the `this` forwarded to
+/// `RBX::LibraryService::registerLibrary`.
+#[derive(Debug, Clone, Copy, Default)]
+pub struct ScriptContextLibs {
+    pub library_service: usize,
+}
+
+/// `RBX::ScriptContext::registerRobloxLibrary` (IDA 0x295628): forwards both
+/// strings plus `is_roblox = 1` (`MOVS R3,#1`, 0x29562c) to
+/// `LibraryService::registerLibrary`, which lives out of slice so it arrives
+/// as a closure (bind/function become closures).
+pub fn register_roblox_library(
+    ctx: &ScriptContextLibs,
+    name: &str,
+    library: &str,
+    register: &dyn Fn(usize, &str, &str, bool) -> i32,
+) -> i32 {
+    register(ctx.library_service, name, library, true)
+}
+
+/// Shared dyld `_stub_helpers` carrier for the lazy-bind trampolines below
+/// (IDA 0xf6f8d0..0xf6f9a8: `LDR R12, =slot; B _stub_helpers`). The slot
+/// ordinal loaded into `R12` is the only per-trampoline payload, so it is
+/// the argument; the branch itself is a no-op here with no host dyld.
+pub fn stub_helpers(slot: u32) {
+    let _ = slot;
+}
+
 // 0x63a08 — __ZN6Roblox12sendAppEventEPv
 // type: id __fastcall(Roblox *this, void *)
 #[doc(alias = "Roblox::sendAppEvent(void *)")]
-pub fn stub_63a08() -> ! {
-    todo!("0x63a08 Roblox::sendAppEvent(void *)")
+pub fn stub_63a08(host: &mut RobloxAppHost) -> usize {
+    // IDA 0x63a08
+    send_app_event(host)
 }
 
 // 0x63aac — __ZN6Roblox12postAppEventEPv
 // type: id __fastcall(Roblox *this, void *)
 #[doc(alias = "Roblox::postAppEvent(void *)")]
-pub fn stub_63aac() -> ! {
-    todo!("0x63aac Roblox::postAppEvent(void *)")
+pub fn stub_63aac(host: &mut RobloxAppHost) -> usize {
+    // IDA 0x63aac
+    post_app_event(host)
 }
 
 // 0x63b28 — __ZN6Roblox16processAppEventsEv
 // type: CFRunLoopRunResult __fastcall(Roblox *this)
 #[doc(alias = "Roblox::processAppEvents(void)")]
-pub fn stub_63b28() -> ! {
-    todo!("0x63b28 Roblox::processAppEvents(void)")
+pub fn stub_63b28(pump: &dyn Fn() -> u32) -> u32 {
+    // IDA 0x63b28
+    process_app_events(pump)
 }
 
 // 0x28d544 — __ZNK3RBX10BaseScript14isRobloxScriptEv
 // type: _DWORD __fastcall(RBX::BaseScript *__hidden this)
 #[doc(alias = "RBX::BaseScript::isRobloxScript(void)const")]
-pub fn stub_28d544() -> ! {
-    todo!("0x28d544 RBX::BaseScript::isRobloxScript(void)const")
+pub fn stub_28d544() -> bool {
+    // IDA 0x28d544
+    base_script_is_roblox_script()
 }
 
 // 0x28d548 — __ZNK3RBX6Script14isRobloxScriptEv
 // type: _DWORD __fastcall(RBX::Script *__hidden this)
 #[doc(alias = "RBX::Script::isRobloxScript(void)const")]
-pub fn stub_28d548() -> ! {
-    todo!("0x28d548 RBX::Script::isRobloxScript(void)const")
+pub fn stub_28d548(flags: &ScriptRobloxFlags) -> bool {
+    // IDA 0x28d548
+    script_is_roblox_script(flags)
 }
 
 // 0x295628 — __ZN3RBX13ScriptContext21registerRobloxLibraryESsSs
 #[doc(alias = "RBX::ScriptContext::registerRobloxLibrary(std::string,std::string)")]
-pub fn stub_295628() -> ! {
-    todo!("0x295628 RBX::ScriptContext::registerRobloxLibrary(std::string,std::string)")
+pub fn stub_295628(
+    ctx: &ScriptContextLibs,
+    name: &str,
+    library: &str,
+    register: &dyn Fn(usize, &str, &str, bool) -> i32,
+) -> i32 {
+    // IDA 0x295628
+    register_roblox_library(ctx, name, library, register)
 }
 
 // 0xf6f8d0 — sub_F6F8D0
 #[doc(alias = "sub_F6F8D0")]
-pub fn stub_f6f8d0() -> ! {
-    todo!("0xf6f8d0 sub_F6F8D0")
+pub fn stub_f6f8d0() {
+    // IDA 0xf6f8d0: `LDR R12, =0x545D; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x545D)
 }
 
 // 0xf6f8dc — sub_F6F8DC
 #[doc(alias = "sub_F6F8DC")]
-pub fn stub_f6f8dc() -> ! {
-    todo!("0xf6f8dc sub_F6F8DC")
+pub fn stub_f6f8dc() {
+    // IDA 0xf6f8dc: `LDR R12, =0x5477; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5477)
 }
 
 // 0xf6f8e8 — sub_F6F8E8
 #[doc(alias = "sub_F6F8E8")]
-pub fn stub_f6f8e8() -> ! {
-    todo!("0xf6f8e8 sub_F6F8E8")
+pub fn stub_f6f8e8() {
+    // IDA 0xf6f8e8: `LDR R12, =0x5492; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5492)
 }
 
 // 0xf6f8f4 — sub_F6F8F4
 #[doc(alias = "sub_F6F8F4")]
-pub fn stub_f6f8f4() -> ! {
-    todo!("0xf6f8f4 sub_F6F8F4")
+pub fn stub_f6f8f4() {
+    // IDA 0xf6f8f4: `LDR R12, =0x54AE; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x54AE)
 }
 
 // 0xf6f900 — sub_F6F900
 #[doc(alias = "sub_F6F900")]
-pub fn stub_f6f900() -> ! {
-    todo!("0xf6f900 sub_F6F900")
+pub fn stub_f6f900() {
+    // IDA 0xf6f900: `LDR R12, =0x54D5; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x54D5)
 }
 
 // 0xf6f90c — sub_F6F90C
 #[doc(alias = "sub_F6F90C")]
-pub fn stub_f6f90c() -> ! {
-    todo!("0xf6f90c sub_F6F90C")
+pub fn stub_f6f90c() {
+    // IDA 0xf6f90c: `LDR R12, =0x54F8; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x54F8)
 }
 
 // 0xf6f918 — sub_F6F918
 #[doc(alias = "sub_F6F918")]
-pub fn stub_f6f918() -> ! {
-    todo!("0xf6f918 sub_F6F918")
+pub fn stub_f6f918() {
+    // IDA 0xf6f918: `LDR R12, =0x551B; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x551B)
 }
 
 // 0xf6f924 — sub_F6F924
 #[doc(alias = "sub_F6F924")]
-pub fn stub_f6f924() -> ! {
-    todo!("0xf6f924 sub_F6F924")
+pub fn stub_f6f924() {
+    // IDA 0xf6f924: `LDR R12, =0x5538; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5538)
 }
 
 // 0xf6f930 — sub_F6F930
 #[doc(alias = "sub_F6F930")]
-pub fn stub_f6f930() -> ! {
-    todo!("0xf6f930 sub_F6F930")
+pub fn stub_f6f930() {
+    // IDA 0xf6f930: `LDR R12, =0x5558; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5558)
 }
 
 // 0xf6f93c — sub_F6F93C
 #[doc(alias = "sub_F6F93C")]
-pub fn stub_f6f93c() -> ! {
-    todo!("0xf6f93c sub_F6F93C")
+pub fn stub_f6f93c() {
+    // IDA 0xf6f93c: `LDR R12, =0x5582; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5582)
 }
 
 // 0xf6f948 — sub_F6F948
 #[doc(alias = "sub_F6F948")]
-pub fn stub_f6f948() -> ! {
-    todo!("0xf6f948 sub_F6F948")
+pub fn stub_f6f948() {
+    // IDA 0xf6f948: `LDR R12, =0x55A6; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x55A6)
 }
 
 // 0xf6f954 — sub_F6F954
 #[doc(alias = "sub_F6F954")]
-pub fn stub_f6f954() -> ! {
-    todo!("0xf6f954 sub_F6F954")
+pub fn stub_f6f954() {
+    // IDA 0xf6f954: `LDR R12, =0x55C6; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x55C6)
 }
 
 // 0xf6f960 — sub_F6F960
 #[doc(alias = "sub_F6F960")]
-pub fn stub_f6f960() -> ! {
-    todo!("0xf6f960 sub_F6F960")
+pub fn stub_f6f960() {
+    // IDA 0xf6f960: `LDR R12, =0x55DD; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x55DD)
 }
 
 // 0xf6f96c — sub_F6F96C
 #[doc(alias = "sub_F6F96C")]
-pub fn stub_f6f96c() -> ! {
-    todo!("0xf6f96c sub_F6F96C")
+pub fn stub_f6f96c() {
+    // IDA 0xf6f96c: `LDR R12, =0x55FB; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x55FB)
 }
 
 // 0xf6f978 — sub_F6F978
 #[doc(alias = "sub_F6F978")]
-pub fn stub_f6f978() -> ! {
-    todo!("0xf6f978 sub_F6F978")
+pub fn stub_f6f978() {
+    // IDA 0xf6f978: `LDR R12, =0x5621; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5621)
 }
 
 // 0xf6f984 — sub_F6F984
 #[doc(alias = "sub_F6F984")]
-pub fn stub_f6f984() -> ! {
-    todo!("0xf6f984 sub_F6F984")
+pub fn stub_f6f984() {
+    // IDA 0xf6f984: `LDR R12, =0x5643; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5643)
 }
 
 // 0xf6f990 — sub_F6F990
 #[doc(alias = "sub_F6F990")]
-pub fn stub_f6f990() -> ! {
-    todo!("0xf6f990 sub_F6F990")
+pub fn stub_f6f990() {
+    // IDA 0xf6f990: `LDR R12, =0x565D; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x565D)
 }
 
 // 0xf6f99c — sub_F6F99C
 #[doc(alias = "sub_F6F99C")]
-pub fn stub_f6f99c() -> ! {
-    todo!("0xf6f99c sub_F6F99C")
+pub fn stub_f6f99c() {
+    // IDA 0xf6f99c: `LDR R12, =0x567C; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x567C)
 }
 
 // 0xf6f9a8 — sub_F6F9A8
 #[doc(alias = "sub_F6F9A8")]
-pub fn stub_f6f9a8() -> ! {
-    todo!("0xf6f9a8 sub_F6F9A8")
+pub fn stub_f6f9a8() {
+    // IDA 0xf6f9a8: `LDR R12, =0x56A3; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x56A3)
 }
 
 // 0xf6f9b4 — sub_F6F9B4
