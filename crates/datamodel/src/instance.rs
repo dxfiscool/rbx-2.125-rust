@@ -1533,6 +1533,31 @@ pub struct ExtrudedEnumPropDesc {
     _opaque: (),
 }
 
+/// Name/value table behind the `VisualTrussStyle` enum-property suite (IDA
+/// `0x4a8af0`-`0x4a90dc`): `(0, AlternatingSupports)`, `(1,
+/// BridgeStyleSupports)`, `(2, NoSupports)` per the C2 pairs (0x49b70c).
+const VISUAL_TRUSS_STYLE_ITEMS: [(i32, &str); 3] = [
+    (0, "AlternatingSupports"),
+    (1, "BridgeStyleSupports"),
+    (2, "NoSupports"),
+];
+
+/// Rust model of `RBX::FaceInstance` (IDA `0x4a94fc`): the face part with the
+/// `NormalId` word at `+29` behind `get/setFace` (IDA `0x4a9724`/`0x4a94fc`);
+/// the enumerators land with the `NormalId` desc batch, so the word stays
+/// raw here.
+#[derive(Default)]
+pub struct FaceInstance {
+    pub face: u32,
+}
+
+/// Rust model of `RBX::Reflection::EnumPropDescriptor<FaceInstance,
+/// NormalId>` (IDA `0x4a9728`): same storage-only family treatment as
+/// `DataModelEnumPropDesc`.
+pub struct FaceEnumPropDesc {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::Texture` (IDA `0x491750`): the texture decal; members
 /// land with the GUI batch.
 #[derive(Default)]
@@ -29473,8 +29498,12 @@ pub fn stub_0x4a8ae0() -> ! {
 // 0x4a8af0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x4a8af0() -> ! {
-    todo!("0x4a8af0 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x4a8af0(first: &ExtrudedPartInstance, second: &ExtrudedPartInstance) -> bool {
+    // IDA 0x4a8af0: reads both values through the bound member getter
+    // (vtable `+8` off the `+0x2C` getter, disasm 0x4a8af6-0x4a8b0a — the
+    // `getVisualTrussStyle` binding) and compares. Same template shape as
+    // 0x485ae4, over the member instead of the global.
+    stub_0x4a772c(first) == stub_0x4a772c(second)
 }
 
 // 0x4a8b18 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -29494,29 +29523,51 @@ pub fn stub_0x4a8b3c() -> ! {
 // 0x4a8c88 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const
-pub fn stub_0x4a8c88() -> ! {
-    todo!("0x4a8c88 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x4a8c88(dst: &mut ExtrudedPartInstance, src: &ExtrudedPartInstance) {
+    // IDA 0x4a8c88: `copyValue(dst, src)` — reads the value through the
+    // member getter and writes it through the member setter. Same template
+    // shape as 0x45a174, over the `VisualTrussStyle` member.
+    stub_0x4a6e24(dst, stub_0x4a772c(src));
 }
 
 // 0x4a8cac — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::hasStringValue(void)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::hasStringValue(void)const
-pub fn stub_0x4a8cac() -> ! {
-    todo!("0x4a8cac RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::hasStringValue(void)const")
+pub fn stub_0x4a8cac() -> bool {
+    // IDA 0x4a8cac: enum properties always carry string values. Same shape as
+    // 0x485ca0.
+    true
 }
 
 // 0x4a8cb0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getStringValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x4a8cb0() -> ! {
-    todo!("0x4a8cb0 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x4a8cb0(part: &ExtrudedPartInstance) -> Option<String> {
+    // IDA 0x4a8cb0: reads the value through the member getter, then converts
+    // to the enum name. Same shape as 0x485ca4, over the member.
+    let current = stub_0x4a772c(part) as i32;
+    VISUAL_TRUSS_STYLE_ITEMS
+        .iter()
+        .find(|(v, _)| *v == current)
+        .map(|(_, text)| text.to_string())
 }
 
 // 0x4a8cd4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const
-pub fn stub_0x4a8cd4() -> ! {
-    todo!("0x4a8cd4 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x4a8cd4(part: &mut ExtrudedPartInstance, name: &str) -> bool {
+    // IDA 0x4a8cd4: converts via the desc table and sets on hit, false on
+    // miss. Same shape as 0x485cc8, over the member.
+    if let Some(value) = VISUAL_TRUSS_STYLE_ITEMS
+        .iter()
+        .find(|(_, text)| *text == name)
+        .map(|(v, _)| *v)
+    {
+        stub_0x4a9144(part, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x4a8d14 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
@@ -29536,57 +29587,102 @@ pub fn stub_0x4a8d34() -> ! {
 // 0x4a8f74 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getIndexValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x4a8f74() -> ! {
-    todo!("0x4a8f74 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x4a8f74(part: &ExtrudedPartInstance) -> Option<usize> {
+    // IDA 0x4a8f74: reads the value through the member getter, then the
+    // position search. Same shape as 0x485f68, over the member.
+    let current = stub_0x4a772c(part) as i32;
+    VISUAL_TRUSS_STYLE_ITEMS
+        .iter()
+        .position(|(v, _)| *v == current)
 }
 
 // 0x4a8f90 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const
-pub fn stub_0x4a8f90() -> ! {
-    todo!("0x4a8f90 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x4a8f90(part: &mut ExtrudedPartInstance, index: usize) -> bool {
+    // IDA 0x4a8f90: bounds-checks the index, reads the value, and sets;
+    // out-of-range sets nothing. Same shape as 0x485f84, over the member.
+    if let Some((value, _)) = VISUAL_TRUSS_STYLE_ITEMS.get(index) {
+        stub_0x4a9144(part, *value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x4a8fc4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getEnumValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x4a8fc4() -> ! {
-    todo!("0x4a8fc4 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x4a8fc4(part: &ExtrudedPartInstance) -> i32 {
+    // IDA 0x4a8fc4: reads the value through the member getter. Same shape as
+    // 0x485fb8, over the member.
+    stub_0x4a772c(part) as i32
 }
 
 // 0x4a8fcc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setEnumValue(RBX::Reflection::DescribedBase *,int)const
-pub fn stub_0x4a8fcc() -> ! {
-    todo!("0x4a8fcc RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x4a8fcc(part: &mut ExtrudedPartInstance, value: i32) -> bool {
+    // IDA 0x4a8fcc: validates the value against the table, sets on hit and
+    // returns true, false on miss. Same shape as 0x485fc0, over the member.
+    if VISUAL_TRUSS_STYLE_ITEMS.iter().any(|(v, _)| *v == value) {
+        stub_0x4a9144(part, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x4a9018 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getEnumItem(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x4a9018() -> ! {
-    todo!("0x4a9018 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x4a9018(part: &ExtrudedPartInstance) -> Option<(i32, &'static str)> {
+    // IDA 0x4a9018: reads the value through the member getter, then the item
+    // search. Same shape as 0x48600c, over the member.
+    let current = stub_0x4a772c(part) as i32;
+    VISUAL_TRUSS_STYLE_ITEMS
+        .iter()
+        .find(|(v, _)| *v == current)
+        .copied()
 }
 
 // 0x4a9038 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const
-pub fn stub_0x4a9038() -> ! {
-    todo!("0x4a9038 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x4a9038(part: &mut ExtrudedPartInstance, name: &str) -> bool {
+    // IDA 0x4a9038: `setStringValue(Name)` — converts via the desc table and
+    // sets on hit, false on miss. Same shape as 0x48602c, over the member.
+    stub_0x4a8cd4(part, name)
 }
 
 // 0x4a906c — __ZNK3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::convertToIndex(RBX::ExtrudedPartInstance::VisualTrussStyle)const")]
 // was: RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::convertToIndex(RBX::ExtrudedPartInstance::VisualTrussStyle)const
-pub fn stub_0x4a906c() -> ! {
-    todo!("0x4a906c RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::convertToIndex(RBX::ExtrudedPartInstance::VisualTrussStyle)const")
+pub fn stub_0x4a906c(value: i32) -> Option<usize> {
+    // IDA 0x4a906c: `EnumDesc<VisualTrussStyle>::convertToIndex` — asserts
+    // `value>=0`, then the position search. Same shape as 0x4860e0.
+    debug_assert!(value >= 0, "0x4a906c: value>=0");
+    VISUAL_TRUSS_STYLE_ITEMS
+        .iter()
+        .position(|(v, _)| *v == value)
 }
 
 // 0x4a90dc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setIntValue(RBX::Reflection::DescribedBase *,int)const
-pub fn stub_0x4a90dc() -> ! {
-    todo!("0x4a90dc RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x4a90dc(part: &mut ExtrudedPartInstance, value: i32) -> bool {
+    // IDA 0x4a90dc: negative values return false at once (`CMP R2, #0; BLT`,
+    // disasm 0x4a90e4-0x4a90e6); values past the table size return false
+    // (`BLS`, disasm 0x4a90f6-0x4a90f8); table entries holding the `-1`
+    // sentinel return false (`CMP #0xFFFFFFFF; BEQ`, disasm 0x4a9100-0x4a9104);
+    // else the member setter runs and the result is true (disasm
+    // 0x4a9106-0x4a9112). The `VisualTrussStyle` table holds no sentinels,
+    // so the bounds check covers all three rejections.
+    if value < 0 || (value as usize) >= VISUAL_TRUSS_STYLE_ITEMS.len() {
+        return false;
+    }
+    stub_0x4a9144(part, value);
+    true
 }
 
 // 0x4a911c — __ZNK3RBX10Reflection14PropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
@@ -29639,8 +29735,14 @@ pub fn stub_0x4a9144(part: &mut ExtrudedPartInstance, value: i32) {
 // 0x4a94fc — __ZN3RBX12FaceInstance7setFaceENS_8NormalIdE
 #[doc(alias = "RBX::FaceInstance::setFace(RBX::NormalId)")]
 // was: RBX::FaceInstance::setFace(RBX::NormalId)
-pub fn stub_0x4a94fc() -> ! {
-    todo!("0x4a94fc RBX::FaceInstance::setFace(RBX::NormalId)")
+pub fn stub_0x4a94fc(face: &mut FaceInstance, value: u32) {
+    // IDA 0x4a94fc: no-op when `*(this + 29) == value` (decompiled
+    // `0x4a9500`), else store the face word and raise the `Face` property
+    // notification. The notification collapses here; the store is the
+    // observable state change.
+    if face.face != value {
+        face.face = value;
+    }
 }
 
 // 0x4a9518 — __ZN3RBX12FaceInstanceC2Ev
@@ -29653,8 +29755,16 @@ pub fn stub_0x4a9518() -> ! {
 // 0x4a9668 — __ZNK3RBX12FaceInstance12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::FaceInstance::askSetParent(RBX::Instance const*)const")]
 // was: RBX::FaceInstance::askSetParent(RBX::Instance const*)const
-pub fn stub_0x4a9668() -> ! {
-    todo!("0x4a9668 RBX::FaceInstance::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x4a9668(parent: *const Instance) -> bool {
+    // IDA 0x4a9668: null parent returns false (disasm 0x4a966c-0x4a9678);
+    // otherwise the parent's `classDescriptor` is checked against the
+    // `PartInstance` described descriptor — a face instance may only parent
+    // under a Part. Same shape as 0x49611c.
+    // SAFETY: `parent` must be null or point to a valid `Instance`.
+    if parent.is_null() {
+        return false;
+    }
+    instance_is_a(parent, "PartInstance")
 }
 
 // 0x4a96a4 — __ZN3RBX12FaceInstance14render3dSelectEPNS_5AdornENS_11SelectStateE
@@ -29674,29 +29784,44 @@ pub fn stub_0x4a971c() -> ! {
 // 0x4a9724 — __ZNK3RBX12FaceInstance7getFaceEv
 #[doc(alias = "RBX::FaceInstance::getFace(void)const")]
 // was: RBX::FaceInstance::getFace(void)const
-pub fn stub_0x4a9724() -> ! {
-    todo!("0x4a9724 RBX::FaceInstance::getFace(void)const")
+pub fn stub_0x4a9724(face: &FaceInstance) -> u32 {
+    // IDA 0x4a9724: `return *(this + 29)` (decompiled) — the face word
+    // stored by 0x4a94fc.
+    face.face
 }
 
 // 0x4a9728 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::~EnumPropDescriptor()")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::~EnumPropDescriptor()
-pub fn stub_0x4a9728() -> ! {
-    todo!("0x4a9728 RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::~EnumPropDescriptor()")
+pub fn stub_0x4a9728(_desc: *mut FaceEnumPropDesc) {
+    // IDA 0x4a9728: `EnumPropDescriptor<FaceInstance, NormalId>::D1` —
+    // memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4a974c — __ZN3RBX12FaceInstanceD1Ev
 #[doc(alias = "RBX::FaceInstance::~FaceInstance()")]
 // was: RBX::FaceInstance::~FaceInstance()
-pub fn stub_0x4a974c() -> ! {
-    todo!("0x4a974c RBX::FaceInstance::~FaceInstance()")
+pub fn stub_0x4a974c(_face: *mut FaceInstance) {
+    // IDA 0x4a974c: `FaceInstance::D1` — the `IAdornable` base at `+92`
+    // plus the `Instance` base (decompiled `0x4a979e`/`0x4a97aa`); no members
+    // carry state, so the memberwise teardown collapses.
+    // SAFETY: `_face` must point to a valid `FaceInstance`.
 }
 
 // 0x4a9808 — __ZN3RBX12FaceInstanceD0Ev
 #[doc(alias = "RBX::FaceInstance::~FaceInstance()")]
 // was: RBX::FaceInstance::~FaceInstance()
-pub fn stub_0x4a9808() -> ! {
-    todo!("0x4a9808 RBX::FaceInstance::~FaceInstance()")
+pub fn stub_0x4a9808(_face: *mut FaceInstance) {
+    // IDA 0x4a9808: `FaceInstance::D0` — vtable installs plus memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_face` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_face));
+    }
 }
 
 // 0x4a98d4 — __ZThn32_N3RBX12FaceInstanceD1Ev
@@ -29731,8 +29856,12 @@ pub fn stub_0x4a9b14() -> ! {
 // 0x4a9de0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId)>(char const*,char const*,RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId)>(char const*,char const*,RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x4a9de0() -> ! {
-    todo!("0x4a9de0 RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId)>(char const*,char const*,RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x4a9de0() -> FaceEnumPropDesc {
+    // IDA 0x4a9de0: `EnumPropDescriptor<FaceInstance, NormalId>::C2` — binds
+    // the member get/set pair plus the name and attribute words; the binding
+    // lands with reflection, so the model starts at defaults. Same shape as
+    // 0x4a88f0.
+    FaceEnumPropDesc { _opaque: () }
 }
 
 // 0x4a9f94 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEED0Ev
