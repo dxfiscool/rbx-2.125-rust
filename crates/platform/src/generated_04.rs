@@ -78,6 +78,19 @@ pub struct PageLaunchPrefix {
 #[derive(Debug, Default)]
 pub struct FlurryDataSender {
     pub pending: Vec<Vec<u8>>,
+    pub tasks: Vec<FlurryNetTask>,
+    pub runloop_started: bool,
+}
+
+/// One in-flight `FlurryDataSender` request (IDA `0xf0daa0`/`0xf0d9a8`/
+/// `0xf0d85c`): the opaque task id plus the completion flags set by
+/// `requestSuccessComplete:` / `unregisterTask:completedSuccessfuly:`.
+#[derive(Debug, Clone, Copy, Default)]
+pub struct FlurryNetTask {
+    pub id: usize,
+    pub response: usize,
+    pub completed: bool,
+    pub ok: bool,
 }
 
 impl FlurryDataSender {
@@ -101,13 +114,20 @@ pub struct FlurrySession {
     pub page_view_count: i32,
     pub pause_time: i64,
     pub accuracy: f64,
+    pub horizontal_accuracy: f64,
+    pub vertical_accuracy: f64,
     pub longitude: f64,
     pub latitude: f64,
     pub push_token: usize,
+    pub user_id: usize,
     pub age_years: i32,
     pub gender_id: usize,
     pub crash_reporting: bool,
+    pub event_logging: bool,
     pub reports_on_pause: bool,
+    pub reports_on_close: bool,
+    pub api_key: usize,
+    pub start_time: i64,
     pub session_open: bool,
     pub resuming: bool,
     pub page_views: u32,
@@ -117,7 +137,78 @@ pub struct FlurrySession {
     pub purchases: Vec<usize>,
 }
 
-/// One `recordEvent:withParameters:[timed:]` entry (IDA `0xf102a0`/`0xf10160`/
+/// Owner slot behind `-[FlurryImpl setupForApiKey:]` (IDA `0xf0f564`): the
+/// current session plus the archive count bumped by `archiveSession`.
+#[derive(Debug, Default)]
+pub struct FlurryImplState {
+    pub session: Option<FlurrySession>,
+    pub archived: u32,
+}
+
+/// Rust model of `Ogre::EAGLES2Context` (IDA `0xe8a6a4`..`0xe8b490`): the iOS
+/// `EAGLContext`-backed `GLES2Context`. GL object names stay plain `u32`
+/// (`0` is none); the `CAEAGLLayer *`/`EAGLSharegroup *` ctor args and the
+/// `EAGLContext *` itself stay opaque `usize` with no host GL runtime here.
+#[derive(Debug, Default)]
+pub struct Eagles2Context {
+    pub context: usize,
+    pub layer: usize,
+    pub sharegroup: usize,
+    pub framebuffer: u32,
+    pub renderbuffer: u32,
+    pub resolve_framebuffer: u32,
+    pub depthbuffer: u32,
+    pub current: bool,
+}
+
+impl Eagles2Context {
+    /// Rust model of `EAGLES2Context(CAEAGLLayer*, EAGLSharegroup*)` (IDA
+    /// `0xe8a6a4`): builds the `EAGLContext`, registers with the
+    /// `GLES2RenderSystem`, and creates the framebuffer. The `Ogre::Exception`
+    /// paths collapse into defaults; GL/EAGL calls collapse into nonzero ids.
+    pub fn new(layer: usize, sharegroup: usize) -> Self {
+        let mut ctx = Eagles2Context {
+            context: 1,
+            layer,
+            sharegroup,
+            ..Default::default()
+        };
+        ctx.create_framebuffer();
+        ctx
+    }
+
+    /// Rust model of `createFramebuffer` (IDA `0xe8ac58`): generates and binds
+    /// the frame/render/depth buffers against the layer storage and checks
+    /// completeness. Returns the GL completeness status (`0x8CD5` =
+    /// `GL_FRAMEBUFFER_COMPLETE` [INFERENCE: GLES2 enum value]).
+    pub fn create_framebuffer(&mut self) -> u32 {
+        self.framebuffer = 1;
+        self.renderbuffer = 2;
+        self.depthbuffer = 3;
+        0x8CD5
+    }
+
+    /// Rust model of `destroyFramebuffer` (IDA `0xe8abf8`): deletes the
+    /// frame/render buffers plus the conditional resolve/depth buffers
+    /// (`this + 11/12` guards at 0xe8ac1a/0xe8ac2c) and zeroes every name
+    /// (0xe8ac10/0xe8ac16/0xe8ac28/0xe8ac3c). The `glDelete*` calls collapse.
+    pub fn destroy_framebuffer(&mut self) {
+        self.framebuffer = 0;
+        self.renderbuffer = 0;
+        self.resolve_framebuffer = 0;
+        self.depthbuffer = 0;
+    }
+
+    /// Rust model of the `~EAGLES2Context` pair (IDA `0xe8aab4` D0 / `0xe8a970`
+    /// D1): unregisters from the `GLES2RenderSystem` (0xe8ab22), destroys the
+    /// framebuffer (0xe8ab2c), and clears the current `EAGLContext` when it is
+    /// ours (0xe8ab50). Drops collapse into the field reset.
+    pub fn destroy(&mut self) {
+        self.destroy_framebuffer();
+        self.context = 0;
+        self.current = false;
+    }
+}
 /// `0xf103d4`): opaque event/parameter ids plus the timed flag and the
 /// end marker set by `endTimedEvent:withParameters:`.
 #[derive(Debug, Clone, Copy, Default)]
@@ -713,163 +804,281 @@ pub fn stub_f0fb7c(session: &mut FlurrySession, enabled: bool) {
 
 // 0xf0fa84 — ___46-[FlurryImpl setSessionReportsOnCloseEnabled:]_block_invoke_0
 #[doc(alias = "___46-[FlurryImpl setSessionReportsOnCloseEnabled:]_block_invoke_0")]
-pub fn stub_f0fa84() -> ! {
-    todo!("0xf0fa84 ___46-[FlurryImpl setSessionReportsOnCloseEnabled:]_block_invoke_0")
+pub fn stub_f0fa84(session: &mut FlurrySession, enabled: bool) {
+    // IDA 0xf0fa84: `__block_invoke_0` for `-[FlurryImpl
+    // setSessionReportsOnCloseEnabled:]`; forwards `session` (0xf0fa98) to
+    // `setSessionReportsOnCloseEnabled:` with the captured `char`
+    // (`a1 + 24` at 0xf0fab0). Same `BOOL`-forward shape as 0xf0fb7c.
+    session.reports_on_close = enabled;
 }
 
 // 0xf0f974 — ___24-[FlurryImpl setUserID:]_block_invoke_0
 #[doc(alias = "___24-[FlurryImpl setUserID:]_block_invoke_0")]
-pub fn stub_f0f974() -> ! {
-    todo!("0xf0f974 ___24-[FlurryImpl setUserID:]_block_invoke_0")
+pub fn stub_f0f974(session: &mut FlurrySession, user_id: usize) {
+    // IDA 0xf0f974: `__block_invoke_0` for `-[FlurryImpl setUserID:]`;
+    // forwards `session` (0xf0f988) to `setUserID:` with the captured id
+    // (`a1 + 24` at 0xf0f99e). The `NSString` stays an opaque id.
+    session.user_id = user_id;
 }
 
 // 0xf0f880 — ___37-[FlurryImpl setEventLoggingEnabled:]_block_invoke_0
 #[doc(alias = "___37-[FlurryImpl setEventLoggingEnabled:]_block_invoke_0")]
-pub fn stub_f0f880() -> ! {
-    todo!("0xf0f880 ___37-[FlurryImpl setEventLoggingEnabled:]_block_invoke_0")
+pub fn stub_f0f880(session: &mut FlurrySession, enabled: bool) {
+    // IDA 0xf0f880: `__block_invoke_0` for `-[FlurryImpl
+    // setEventLoggingEnabled:]`; forwards `session` (0xf0f894) to
+    // `setEventLoggingEnabled:` with the captured `char` (`a1 + 24` at
+    // 0xf0f8ac). Same `BOOL`-forward shape as 0xf0fc74.
+    session.event_logging = enabled;
 }
 
 // 0xf0f768 — ___72-[FlurryImpl setLatitude:longitude:horizontalAccuracy:verticalAccuracy:]_block_invoke_0
 #[doc(alias = "___72-[FlurryImpl setLatitude:longitude:horizontalAccuracy:verticalAccuracy:]_block_invoke_0")]
-pub fn stub_f0f768() -> ! {
-    todo!("0xf0f768 ___72-[FlurryImpl setLatitude:longitude:horizontalAccuracy:verticalAccuracy:]_block_invoke_0")
+pub fn stub_f0f768(session: &mut FlurrySession, latitude: f64, longitude: f64, horizontal: f64, vertical: f64) {
+    // IDA 0xf0f768: `__block_invoke_0` for `-[FlurryImpl
+    // setLatitude:longitude:horizontalAccuracy:verticalAccuracy:]`; forwards
+    // `session` (`a1 + 40` at 0xf0f77e) with the six captured doubles
+    // (`a1 + 24/28/32/36/44/48` at 0xf0f7b4). Stores the location tuple.
+    session.latitude = latitude;
+    session.longitude = longitude;
+    session.horizontal_accuracy = horizontal;
+    session.vertical_accuracy = vertical;
 }
 
 // 0xf0f564 — ___29-[FlurryImpl setupForApiKey:]_block_invoke_0
 #[doc(alias = "___29-[FlurryImpl setupForApiKey:]_block_invoke_0")]
-pub fn stub_f0f564() -> ! {
-    todo!("0xf0f564 ___29-[FlurryImpl setupForApiKey:]_block_invoke_0")
+pub fn stub_f0f564(state: &mut FlurryImplState, api_key: usize, start_time: i64) -> bool {
+    // IDA 0xf0f564: `__block_invoke_0` for `-[FlurryImpl setupForApiKey:]`.
+    // With a session present (0xf0f57e): `archiveSession` (0xf0f594), then a
+    // nonzero api key (`a1 + 24` at 0xf0f598) builds
+    // `sessionWithNewEventsWithApiKey:startTime:` (0xf0f5ba/0xf0f5d4) and
+    // `setSession:` swaps it in (0xf0f5e4). Without a session (0xf0f5e6): a
+    // nonzero api key builds `sessionWithApiKey:startTime:` from the owner's
+    // `startTime` (0xf0f60a/0xf0f624) and `setSession:` installs it (0xf0f634).
+    // Returns whether a session is installed afterwards.
+    if state.session.is_some() {
+        state.archived = state.archived.wrapping_add(1);
+        if api_key != 0 {
+            state.session = Some(FlurrySession { api_key, start_time, session_open: true, ..Default::default() });
+        }
+    } else if api_key != 0 {
+        state.session = Some(FlurrySession { api_key, start_time, session_open: true, ..Default::default() });
+    }
+    state.session.is_some()
 }
 
 // 0xf0daa0 — ___51-[FlurryDataSender requestSuccessful:withResponse:]_block_invoke_0
 #[doc(alias = "___51-[FlurryDataSender requestSuccessful:withResponse:]_block_invoke_0")]
-pub fn stub_f0daa0() -> ! {
-    todo!("0xf0daa0 ___51-[FlurryDataSender requestSuccessful:withResponse:]_block_invoke_0")
+pub fn stub_f0daa0(sender: &mut FlurryDataSender, task: usize, response: usize) -> bool {
+    // IDA 0xf0daa0: `__block_invoke_0` for `-[FlurryDataSender
+    // requestSuccessful:withResponse:]`; forwards the captured sender
+    // (`a1 + 20`) to `requestSuccessComplete:withResponse:` with the task and
+    // response (`a1 + 24/28` at 0xf0dabe). Marks the task complete-ok.
+    for entry in sender.tasks.iter_mut() {
+        if entry.id == task {
+            entry.response = response;
+            entry.completed = true;
+            entry.ok = true;
+            return true;
+        }
+    }
+    false
 }
 
 // 0xf0d9a8 — ___50-[FlurryDataSender requestDidCancel:withResponse:]_block_invoke_0
 #[doc(alias = "___50-[FlurryDataSender requestDidCancel:withResponse:]_block_invoke_0")]
-pub fn stub_f0d9a8() -> ! {
-    todo!("0xf0d9a8 ___50-[FlurryDataSender requestDidCancel:withResponse:]_block_invoke_0")
+pub fn stub_f0d9a8(sender: &mut FlurryDataSender, task: usize) -> bool {
+    // IDA 0xf0d9a8: `__block_invoke_0` for `-[FlurryDataSender
+    // requestDidCancel:withResponse:]`; forwards to
+    // `unregisterTask:completedSuccessfuly:` with the task and `0`
+    // (0xf0d9c6). Drops the task; reports the passed completion flag.
+    sender.tasks.retain(|entry| entry.id != task);
+    false
 }
 
 // 0xf0d85c — ___48-[FlurryDataSender requestDidFail:withResponse:]_block_invoke_0
 #[doc(alias = "___48-[FlurryDataSender requestDidFail:withResponse:]_block_invoke_0")]
-pub fn stub_f0d85c() -> ! {
-    todo!("0xf0d85c ___48-[FlurryDataSender requestDidFail:withResponse:]_block_invoke_0")
+pub fn stub_f0d85c(sender: &mut FlurryDataSender, log_level: u32, task: usize) -> bool {
+    // IDA 0xf0d85c: `__block_invoke_0` for `-[FlurryDataSender
+    // requestDidFail:withResponse:]`; logs the session error via `NSLog`
+    // (0xf0d8a0) only when `[FlurryUtil logLevel] >= 2` (0xf0d880), then
+    // forwards to `unregisterTask:completedSuccessfuly:` with `0`
+    // (0xf0d8be). Same unregister tail as 0xf0d9a8.
+    let _ = log_level >= 2;
+    sender.tasks.retain(|entry| entry.id != task);
+    false
 }
 
 // 0xf0d5b0 — ___44-[FlurryDataSender sendData:withIdentifier:]_block_invoke_0
 #[doc(alias = "___44-[FlurryDataSender sendData:withIdentifier:]_block_invoke_0")]
-pub fn stub_f0d5b0() -> ! {
-    todo!("0xf0d5b0 ___44-[FlurryDataSender sendData:withIdentifier:]_block_invoke_0")
+pub fn stub_f0d5b0(sender: &mut FlurryDataSender) {
+    // IDA 0xf0d5b0: `__block_invoke_0` for `-[FlurryDataSender
+    // sendData:withIdentifier:]`; captures the sender (`a1 + 20` at
+    // 0xf0d5c8), reads `[NSRunLoop currentRunLoop]` (0xf0d5ce), and forwards
+    // to `startInRunLoop:` (0xf0d5e6). Flags the run-loop start; the run loop
+    // itself has no host runtime here.
+    sender.runloop_started = true;
 }
 
 // 0xe8b490 — __ZNK4Ogre14EAGLES2Context10getContextEv
 // type: _DWORD __fastcall(Ogre::EAGLES2Context *__hidden this)
 #[doc(alias = "Ogre::EAGLES2Context::getContext(void)const")]
-pub fn stub_e8b490() -> ! {
-    todo!("0xe8b490 Ogre::EAGLES2Context::getContext(void)const")
+pub fn stub_e8b490(ctx: &Eagles2Context) -> usize {
+    // IDA 0xe8b490: `Ogre::EAGLES2Context::getContext`; one load of the
+    // context word (`*(this + 3)` at 0xe8b492). Returns the opaque context.
+    ctx.context
 }
 
 // 0xe8b48c — __ZNK4Ogre14EAGLES2Context5cloneEv
 // type: _DWORD __fastcall(Ogre::EAGLES2Context *__hidden this)
 #[doc(alias = "Ogre::EAGLES2Context::clone(void)const")]
-pub fn stub_e8b48c() -> ! {
-    todo!("0xe8b48c Ogre::EAGLES2Context::clone(void)const")
+pub fn stub_e8b48c(_ctx: &Eagles2Context) {
+    // IDA 0xe8b488/0xe8b48c: `endCurrent`/`clone` are empty bodies (single
+    // `BX LR` at 0xe8b488/0xe8b48c); the GL context-switch work rides the
+    // `setCurrent` batch. Keeps the no-op shape.
 }
 
 // 0xe8b488 — __ZN4Ogre14EAGLES2Context10endCurrentEv
 // type: _DWORD __fastcall(Ogre::EAGLES2Context *__hidden this)
 #[doc(alias = "Ogre::EAGLES2Context::endCurrent(void)")]
-pub fn stub_e8b488() -> ! {
-    todo!("0xe8b488 Ogre::EAGLES2Context::endCurrent(void)")
+pub fn stub_e8b488(_ctx: &Eagles2Context) {
+    // IDA 0xe8b488: `Ogre::EAGLES2Context::endCurrent`; empty body, same as
+    // `clone` at 0xe8b48c (both collapse into `setCurrent` handling).
 }
 
 // 0xe8b298 — __ZN4Ogre14EAGLES2Context10setCurrentEv
 // type: _DWORD __fastcall(Ogre::EAGLES2Context *__hidden this)
 #[doc(alias = "Ogre::EAGLES2Context::setCurrent(void)")]
-pub fn stub_e8b298() -> ! {
-    todo!("0xe8b298 Ogre::EAGLES2Context::setCurrent(void)")
+pub fn stub_e8b298(ctx: &mut Eagles2Context) {
+    // IDA 0xe8b298: `Ogre::EAGLES2Context::setCurrent`; spills the
+    // callee-saved VFP regs (d8-d15) across the `EAGLContext
+    // setCurrentContext` switch, then restores them. The reg save/restore
+    // collapses; the switch itself is the `current` flag (no host GL here).
+    ctx.current = true;
 }
 
 // 0xe8ac58 — __ZN4Ogre14EAGLES2Context17createFramebufferEv
 // type: _DWORD __fastcall(Ogre::EAGLES2Context *__hidden this)
 #[doc(alias = "Ogre::EAGLES2Context::createFramebuffer(void)")]
-pub fn stub_e8ac58() -> ! {
-    todo!("0xe8ac58 Ogre::EAGLES2Context::createFramebuffer(void)")
+pub fn stub_e8ac58(ctx: &mut Eagles2Context) -> u32 {
+    // IDA 0xe8ac58: `Ogre::EAGLES2Context::createFramebuffer`; generates and
+    // binds the frame/render/depth buffers against the layer storage
+    // (`glGen/Bind/RenderbufferStorage`, byref size queries) and checks
+    // completeness. Delegates to the shared constructor (same as `new`).
+    ctx.create_framebuffer()
 }
 
 // 0xe8abf8 — __ZN4Ogre14EAGLES2Context18destroyFramebufferEv
 // type: _DWORD __fastcall(Ogre::EAGLES2Context *__hidden this)
 #[doc(alias = "Ogre::EAGLES2Context::destroyFramebuffer(void)")]
-pub fn stub_e8abf8() -> ! {
-    todo!("0xe8abf8 Ogre::EAGLES2Context::destroyFramebuffer(void)")
+pub fn stub_e8abf8(ctx: &mut Eagles2Context) {
+    // IDA 0xe8abf8: `Ogre::EAGLES2Context::destroyFramebuffer`; deletes the
+    // buffers (`glDeleteFramebuffers/Renderbuffers` at 0xe8ac04/0xe8ac12 plus
+    // the `+11/+12` conditional deletes at 0xe8ac24/0xe8ac36) and zeroes the
+    // names (0xe8ac10/0xe8ac16/0xe8ac28/0xe8ac3c). Delegates to the method.
+    ctx.destroy_framebuffer();
 }
 
 // 0xe8aab4 — __ZN4Ogre14EAGLES2ContextD1Ev
 // type: void __fastcall(Ogre::EAGLES2Context *__hidden this)
 #[doc(alias = "Ogre::EAGLES2Context::~EAGLES2Context()")]
-pub fn stub_e8aab4() -> ! {
-    todo!("0xe8aab4 Ogre::EAGLES2Context::~EAGLES2Context()")
+pub fn stub_e8aab4(ctx: &mut Eagles2Context) {
+    // IDA 0xe8aab4: `~EAGLES2Context` D0 (deleting destructor); unregisters
+    // from the `GLES2RenderSystem` (0xe8ab10/0xe8ab18/0xe8ab22), destroys the
+    // framebuffer (0xe8ab2c), clears a current `EAGLContext` when it is ours
+    // (0xe8ab50), then frees (`operator delete` via D0). The free collapses
+    // into the caller's drop; the rest delegates to `destroy`.
+    ctx.destroy();
 }
 
 // 0xe8a970 — __ZN4Ogre14EAGLES2ContextD0Ev
 // type: void __fastcall(Ogre::EAGLES2Context *__hidden this)
 #[doc(alias = "Ogre::EAGLES2Context::~EAGLES2Context()")]
-pub fn stub_e8a970() -> ! {
-    todo!("0xe8a970 Ogre::EAGLES2Context::~EAGLES2Context()")
+pub fn stub_e8a970(ctx: &mut Eagles2Context) {
+    // IDA 0xe8a970: `~EAGLES2Context` D1 (complete object destructor); same
+    // body as D0 at 0xe8aab4 minus the freeing delete (0xe8a9ac/0xe8a9cc/
+    // 0xe8a9d4/0xe8a9de/0xe8a9e8/0xe8aa0c). Delegates to `destroy`.
+    ctx.destroy();
 }
 
 // 0xe8a6a4 — __ZN4Ogre14EAGLES2ContextC2EP11CAEAGLLayerP14EAGLSharegroup
 // type: _DWORD __fastcall(Ogre::EAGLES2Context *__hidden this, CAEAGLLayer *, EAGLSharegroup *)
 #[doc(alias = "Ogre::EAGLES2Context::EAGLES2Context(CAEAGLLayer *,EAGLSharegroup *)")]
-pub fn stub_e8a6a4() -> ! {
-    todo!("0xe8a6a4 Ogre::EAGLES2Context::EAGLES2Context(CAEAGLLayer *,EAGLSharegroup *)")
+pub fn stub_e8a6a4(layer: usize, sharegroup: usize) -> Eagles2Context {
+    // IDA 0xe8a6a4: `EAGLES2Context(CAEAGLLayer*, EAGLSharegroup*)` C2;
+    // builds the `EAGLContext` from the layer/sharegroup, registers with the
+    // render system, and creates the framebuffer (byref drawable queries,
+    // `Ogre::Exception` paths on failure). Delegates to `new`.
+    Eagles2Context::new(layer, sharegroup)
 }
 
 // 0xe8a698 — __ZN4Ogre14EAGLES2ContextC1EP11CAEAGLLayerP14EAGLSharegroup
 // type: _DWORD __fastcall(Ogre::EAGLES2Context *__hidden this, CAEAGLLayer *, EAGLSharegroup *)
 #[doc(alias = "Ogre::EAGLES2Context::EAGLES2Context(CAEAGLLayer *,EAGLSharegroup *)")]
-pub fn stub_e8a698() -> ! {
-    todo!("0xe8a698 Ogre::EAGLES2Context::EAGLES2Context(CAEAGLLayer *,EAGLSharegroup *)")
+pub fn stub_e8a698(layer: usize, sharegroup: usize) -> Eagles2Context {
+    // IDA 0xe8a698: `EAGLES2Context` C1 (complete object ctor); single tail
+    // call to C2 at 0xe8a6a0. Forwards to the same constructor.
+    Eagles2Context::new(layer, sharegroup)
 }
 
 // 0x82ea28 — __ZN5boost6detail17sp_counted_impl_pIN16RobloxExtraSpace6SharedEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxExtraSpace::Shared>::get_untyped_deleter(void)")]
-pub fn stub_82ea28() -> ! {
-    todo!("0x82ea28 boost::detail::sp_counted_impl_p<RobloxExtraSpace::Shared>::get_untyped_deleter(void)")
+pub fn stub_82ea28() -> Option<usize> {
+    // IDA 0x82ea28: `sp_counted_impl_p<RobloxExtraSpace::Shared>::
+    // get_untyped_deleter()`; one `MOVS R0, #0` (0x82ea2a) — the
+    // pointer-impl control block never carries a deleter.
+    None
 }
 
 // 0x82ea24 — __ZN5boost6detail17sp_counted_impl_pIN16RobloxExtraSpace6SharedEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxExtraSpace::Shared>::get_deleter(std::type_info const&)")]
-pub fn stub_82ea24() -> ! {
-    todo!("0x82ea24 boost::detail::sp_counted_impl_p<RobloxExtraSpace::Shared>::get_deleter(std::type_info const&)")
+pub fn stub_82ea24() -> Option<usize> {
+    // IDA 0x82ea24: `sp_counted_impl_p<RobloxExtraSpace::Shared>::
+    // get_deleter()`; one `MOVS R0, #0` (0x82ea26), same as 0x82ea28.
+    None
 }
 
 // 0x82e9f0 — __ZN5boost6detail17sp_counted_impl_pIN16RobloxExtraSpace6SharedEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxExtraSpace::Shared>::dispose(void)")]
-pub fn stub_82e9f0() -> ! {
-    todo!("0x82e9f0 boost::detail::sp_counted_impl_p<RobloxExtraSpace::Shared>::dispose(void)")
+pub fn stub_82e9f0(space: &mut RobloxExtraSpace) {
+    // IDA 0x82e9f0: `sp_counted_impl_p<RobloxExtraSpace::Shared>::dispose()`;
+    // when the payload is present (0x82e9f8): walks the intrusive set erasing
+    // every node from `v4 + 2` via `Iterator`/`erase` (0x82e9fe/0x82ea06)
+    // then `operator delete`s the payload (0x82ea1a). The erase loop
+    // collapses into clearing the store; the delete collapses into drop.
+    space.nodes.clear();
 }
 
 // 0x82e9ec — __ZN5boost6detail17sp_counted_impl_pIN16RobloxExtraSpace6SharedEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxExtraSpace::Shared>::~sp_counted_impl_p()")]
-pub fn stub_82e9ec() -> ! {
-    todo!("0x82e9ec boost::detail::sp_counted_impl_p<RobloxExtraSpace::Shared>::~sp_counted_impl_p()")
+pub fn stub_82e9ec(shared: ExtraSpaceShared) {
+    // IDA 0x82e9ec: `sp_counted_impl_p<RobloxExtraSpace::Shared>::
+    // ~sp_counted_impl_p()` D0; `// attributes: thunk` tail-calling
+    // `operator delete(a1)`. Takes ownership and drops (dispose at 0x82e9f0
+    // already ran under the weak-unlock path).
+    let _ = shared;
 }
 
 // 0x82e9e8 — __ZN5boost6detail17sp_counted_impl_pIN16RobloxExtraSpace6SharedEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxExtraSpace::Shared>::~sp_counted_impl_p()")]
-pub fn stub_82e9e8() -> ! {
-    todo!("0x82e9e8 boost::detail::sp_counted_impl_p<RobloxExtraSpace::Shared>::~sp_counted_impl_p()")
+pub fn stub_82e9e8() {
+    // IDA 0x82e9e8: `sp_counted_impl_p<RobloxExtraSpace::Shared>::
+    // ~sp_counted_impl_p()` D2; empty body — members need no work here
+    // (control-block release rides D0 at 0x82e9ec).
 }
 
 // 0x82e834 — __ZN3RBX9Intrusive3SetI16RobloxExtraSpaceS2_E8IteratordeEv
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator::operator*(void)")]
-pub fn stub_82e834() -> ! {
-    todo!("0x82e834 RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator::operator*(void)")
+pub fn stub_82e834(set: &RobloxExtraSpace, it: ExtraSpaceIter) -> Option<ExtraSpaceNode> {
+    // IDA 0x82e834: the real `Intrusive::Set<...>::Iterator::operator*`
+    // (not a thunk): with `FLog::Asserts` off it returns the cursor as-is
+    // (0x82e88e, possibly null); with asserts on a null cursor hits
+    // `RBX::_internal::_debugHook`/break (0x82e8a4). `debug_assert` keeps the
+    // checked-build trap; release maps the null cursor to `None`.
+    // BUG: original at 0x82e834 hands a null cursor back to the caller when
+    // asserts are off instead of failing.
+    debug_assert!(it.index < set.nodes.len(), "0x82e834 Iterator::operator* null cursor");
+    set.nodes.get(it.index).copied()
 }
 
 // 0x82e808 — __ZN3RBX9Intrusive3SetI16RobloxExtraSpaceS2_E5eraseENS3_8IteratorE
