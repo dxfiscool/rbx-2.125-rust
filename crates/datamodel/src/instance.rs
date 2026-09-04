@@ -15,7 +15,7 @@ use std::any::Any;
 use std::collections::BTreeSet;
 use std::collections::BTreeMap;
 use std::collections::HashSet;
-use std::sync::atomic::{AtomicUsize, Ordering};
+use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
 use std::sync::OnceLock;
 
 /// Rust model of `CRenderSettingsItem` (IDA `0xef04`): field layout unmodeled;
@@ -32,8 +32,8 @@ pub struct LoginService {
     _opaque: (),
 }
 
-/// Rust model of `RBX::TaskSchedulerSettings` (IDA `0x324fc`): same shape.
-/// No `create` stub for this class exists in this file (partial cluster).
+/// Rust model of `RBX::TaskSchedulerSettings` (IDA `0x324fc`, `0x47c4dc`):
+/// same shape; the `create` at 0x4828e0 fills the partial cluster.
 #[derive(Default)]
 pub struct TaskSchedulerSettings {
     _opaque: (),
@@ -1369,6 +1369,33 @@ pub struct DataModelEventDesc {
     pub scriptable: bool,
     pub broadcast: bool,
 }
+
+/// Rust model of `RBX::DebugSettings` (IDA `0x47bd60`): the debug settings
+/// service; counters live in globals, members land with the service batch.
+#[derive(Default)]
+pub struct DebugSettings {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::BlockMesh` (IDA `0x482c78`): the block mesh; members
+/// land with the part batch.
+#[derive(Default)]
+pub struct BlockMesh {
+    _opaque: (),
+}
+
+/// Global instance counter behind `DebugSettings::getDataModelCount` (IDA
+/// `0x47bd60`, `Diagnostics::Countable<DataModel>::count`); writers land
+/// with the model lifecycle.
+static DATA_MODEL_COUNT: AtomicUsize = AtomicUsize::new(0);
+/// Global concurrency model behind `setConcurrencyModel` (IDA `0x47c4dc`,
+/// `DataModelArbiter::concurrencyModel`).
+static CONCURRENCY_MODEL: AtomicUsize = AtomicUsize::new(0);
+/// Global instance cap behind the `countLimit` accessors (IDA `0x47c5c8`).
+static COUNT_LIMIT: AtomicUsize = AtomicUsize::new(0);
+/// Global enforcement flag behind the `globallyEnforcedLimit` accessors (IDA
+/// `0x47c5e8`).
+static ENFORCE_LIMIT: AtomicBool = AtomicBool::new(false);
 
 /// Rust model of `G3D::Vector3` (IDA `0x475108`): three floats; NaN/Inf
 /// components sanitize to zero on mesh stores.
@@ -26746,92 +26773,144 @@ pub fn stub_0x47975c(queue: &mut std::collections::VecDeque<WeakPtr<Instance>>) 
 // 0x479844 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE19_M_destroy_data_auxESt15_Deque_iteratorIS4_RS4_PS4_ESA_
 #[doc(alias = "std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::_M_destroy_data_aux(std::_Deque_iterator<rbx_core::WeakPtr<RBX::Instance>,rbx_core::WeakPtr<RBX::Instance>&,rbx_core::WeakPtr<RBX::Instance>*>,std::_Deque_iterator<rbx_core::WeakPtr<RBX::Instance>,rbx_core::WeakPtr<RBX::Instance>&,rbx_core::WeakPtr<RBX::Instance>*>)")]
 // was: std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_destroy_data_aux(std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*>,std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*>)
-pub fn stub_0x479844() -> ! {
-    todo!("0x479844 std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_destroy_data_aux(std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*>,std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*>)")
+pub fn stub_0x479844(queue: &mut std::collections::VecDeque<WeakPtr<Instance>>) {
+    // IDA 0x479844 (`deque<weak<Instance>>::_M_destroy_data_aux`): destroys
+    // the element range in place; with no partial-range callers in the model
+    // the range collapses into a full clear. Same shape as 0x46e9e0.
+    queue.clear();
 }
 
 // 0x479e30 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EEC2EMS2_FvS6_dEPKcSC_SC_dNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::BoundFuncDesc(void (RBX::DebrisService::*)(rbx_core::SharedPtr<RBX::Instance>,double),char const*,char const*,char const*,double,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::BoundFuncDesc(void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),char const*,char const*,char const*,double,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x479e30() -> ! {
-    todo!("0x479e30 RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::BoundFuncDesc(void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),char const*,char const*,char const*,double,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x479e30() -> DebrisServiceFuncDesc {
+    // IDA 0x479e30: `BoundFuncDesc<DebrisService, void(shared, double)>::C2`
+    // — binds the member into the class descriptor; the binding lands with
+    // reflection, so the model starts empty. Same shape as 0x45c664.
+    DebrisServiceFuncDesc { _opaque: () }
 }
 
 // 0x47a050 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EE16declareSignatureEPKcNS0_7VariantESA_SB_
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)
-pub fn stub_0x47a050() -> ! {
-    todo!("0x47a050 RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+pub fn stub_0x47a050(_name: &str, _sig: &[Variant]) {
+    // IDA 0x47a050: `BoundFuncDesc<DebrisService, ...>::declareSignature` —
+    // same registration collapse as 0x3f0290.
 }
 
 // 0x47a09c — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::~BoundFuncDesc()
-pub fn stub_0x47a09c() -> ! {
-    todo!("0x47a09c RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::~BoundFuncDesc()")
+pub fn stub_0x47a09c(_desc: *mut DebrisServiceFuncDesc) {
+    // IDA 0x47a09c: `BoundFuncDesc<DebrisService, ...>::D0` — vtable install
+    // plus memberwise teardown; dropping the box is the same release. Twin of
+    // 0x45c878.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x47a1c8 — __ZNK3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
-pub fn stub_0x47a1c8() -> ! {
-    todo!("0x47a1c8 RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x47a1c8(service: &mut DebrisService, instance: &SharedPtr<Instance>, lifetime: f64) {
+    // IDA 0x47a1c8 (`BoundFuncDesc<DebrisService, void(shared, double)>::execute`,
+    // same unmarshal-then-member shape as 0x45e474): unmarshals the pair and
+    // invokes the bound member. The desc is scoped to `DebrisService` and the
+    // only `(shared<Instance>, double)` member in the model is `addItem`
+    // (0x477264), so the call collapses into it.
+    // NOTE: member identity by class-scoped elimination — re-verify if
+    // another such member is ever modeled.
+    stub_0x477264(service, instance, lifetime);
 }
 
 // 0x47a2cc — __ZN3RBX10Reflection11Call2HelperINS_13DebrisServiceEMS2_FvN5boost10shared_ptrINS_8InstanceEEEdES6_dvE4callEPS2_S8_RNS0_7VariantERKS6_RKd
 #[doc(alias = "RBX::Reflection::Call2Helper<RBX::DebrisService,void (RBX::DebrisService::*)(rbx_core::SharedPtr<RBX::Instance>,double),rbx_core::SharedPtr<RBX::Instance>,double,void>::call(RBX::DebrisService*,void (RBX::DebrisService::*)(rbx_core::SharedPtr<RBX::Instance>,double),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&,double const&)")]
 // was: RBX::Reflection::Call2Helper<RBX::DebrisService,void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),boost::shared_ptr<RBX::Instance>,double,void>::call(RBX::DebrisService*,void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,double const&)
-pub fn stub_0x47a2cc() -> ! {
-    todo!("0x47a2cc RBX::Reflection::Call2Helper<RBX::DebrisService,void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),boost::shared_ptr<RBX::Instance>,double,void>::call(RBX::DebrisService*,void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,double const&)")
+pub fn stub_0x47a2cc(
+    service: &mut DebrisService,
+    func: fn(&mut DebrisService, &SharedPtr<Instance>, f64),
+    instance: &SharedPtr<Instance>,
+    lifetime: f64,
+) {
+    // IDA 0x47a2cc (`Call2Helper<DebrisService, void(*)(shared, double)>::call`,
+    // same explicit-member shape as 0x45e4b4): resolves the member and applies
+    // it to `(service, instance, lifetime)`; the marshalling collapses into
+    // the direct call.
+    func(service, instance, lifetime);
 }
 
 // 0x47bd60 — __ZNK3RBX13DebugSettings17getDataModelCountEv
 #[doc(alias = "RBX::DebugSettings::getDataModelCount(void)const")]
 // was: RBX::DebugSettings::getDataModelCount(void)const
-pub fn stub_0x47bd60() -> ! {
-    todo!("0x47bd60 RBX::DebugSettings::getDataModelCount(void)const")
+pub fn stub_0x47bd60(_settings: &DebugSettings) -> usize {
+    // IDA 0x47bd60: returns the global `Countable<DataModel>::count` (decomp
+    // 0x47bd6e); writers land with the model lifecycle.
+    DATA_MODEL_COUNT.load(Ordering::Relaxed)
 }
 
 // 0x47c4dc — __ZN3RBX21TaskSchedulerSettings19setConcurrencyModelENS_16DataModelArbiter16ConcurrencyModelE
 #[doc(alias = "RBX::TaskSchedulerSettings::setConcurrencyModel(RBX::DataModelArbiter::ConcurrencyModel)")]
 // was: RBX::TaskSchedulerSettings::setConcurrencyModel(RBX::DataModelArbiter::ConcurrencyModel)
-pub fn stub_0x47c4dc() -> ! {
-    todo!("0x47c4dc RBX::TaskSchedulerSettings::setConcurrencyModel(RBX::DataModelArbiter::ConcurrencyModel)")
+pub fn stub_0x47c4dc(_settings: &TaskSchedulerSettings, value: i32) {
+    // IDA 0x47c4dc: when reflected settings apply and the value changes
+    // (decomp 0x47c4fe), stores the global `concurrencyModel` (decomp
+    // 0x47c50a) with a `PropertyChanged` raise; the flag check and the
+    // reflection notification collapse, and the store is the observable half.
+    // (The `DFFlag` gate defaults to applying.)
+    let current = CONCURRENCY_MODEL.load(Ordering::Relaxed);
+    if current != value as usize {
+        CONCURRENCY_MODEL.store(value as usize, Ordering::Relaxed);
+    }
 }
 
 // 0x47c5c8 — __ZNK3RBX13DebugSettings21getInstanceCountLimitEv
 #[doc(alias = "RBX::DebugSettings::getInstanceCountLimit(void)const")]
 // was: RBX::DebugSettings::getInstanceCountLimit(void)const
-pub fn stub_0x47c5c8() -> ! {
-    todo!("0x47c5c8 RBX::DebugSettings::getInstanceCountLimit(void)const")
+pub fn stub_0x47c5c8(_settings: &DebugSettings) -> usize {
+    // IDA 0x47c5c8: returns the global `countLimit` (decomp 0x47c5d6).
+    COUNT_LIMIT.load(Ordering::Relaxed)
 }
 
 // 0x47c5d8 — __ZN3RBX13DebugSettings21setInstanceCountLimitEi
 #[doc(alias = "RBX::DebugSettings::setInstanceCountLimit(int)")]
 // was: RBX::DebugSettings::setInstanceCountLimit(int)
-pub fn stub_0x47c5d8() -> ! {
-    todo!("0x47c5d8 RBX::DebugSettings::setInstanceCountLimit(int)")
+pub fn stub_0x47c5d8(_settings: &DebugSettings, limit: usize) {
+    // IDA 0x47c5d8: stores the global `countLimit` (decomp 0x47c5e4); the
+    // returned pointer (decomp 0x47c5e6) is a store artifact, so the store is
+    // the observable half.
+    COUNT_LIMIT.store(limit, Ordering::Relaxed);
 }
 
 // 0x47c5e8 — __ZNK3RBX13DebugSettings28getEnforceInstanceCountLimitEv
 #[doc(alias = "RBX::DebugSettings::getEnforceInstanceCountLimit(void)const")]
 // was: RBX::DebugSettings::getEnforceInstanceCountLimit(void)const
-pub fn stub_0x47c5e8() -> ! {
-    todo!("0x47c5e8 RBX::DebugSettings::getEnforceInstanceCountLimit(void)const")
+pub fn stub_0x47c5e8(_settings: &DebugSettings) -> bool {
+    // IDA 0x47c5e8: returns the global `globallyEnforcedLimit` flag (decomp
+    // 0x47c5f6).
+    ENFORCE_LIMIT.load(Ordering::Relaxed)
 }
 
 // 0x47c5f8 — __ZN3RBX13DebugSettings28setEnforceInstanceCountLimitEb
 #[doc(alias = "RBX::DebugSettings::setEnforceInstanceCountLimit(bool)")]
 // was: RBX::DebugSettings::setEnforceInstanceCountLimit(bool)
-pub fn stub_0x47c5f8() -> ! {
-    todo!("0x47c5f8 RBX::DebugSettings::setEnforceInstanceCountLimit(bool)")
+pub fn stub_0x47c5f8(_settings: &DebugSettings, enforce: bool) {
+    // IDA 0x47c5f8: stores the global `globallyEnforcedLimit` flag (decomp
+    // 0x47c604); the returned pointer (decomp 0x47c606) is a store artifact.
+    ENFORCE_LIMIT.store(enforce, Ordering::Relaxed);
 }
 
 // 0x47e2d4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::~EnumPropDescriptor()")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::~EnumPropDescriptor()
-pub fn stub_0x47e2d4() -> ! {
-    todo!("0x47e2d4 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::~EnumPropDescriptor()")
+pub fn stub_0x47e2d4() -> DataModelEnumPropDesc {
+    // IDA 0x47e2d4: `EnumPropDescriptor<TaskSchedulerSettings,
+    // ConcurrencyModel>::C2` — binds the enum property into the class
+    // descriptor; the binding lands with reflection, so the model starts
+    // empty. Same family box as the DataModel enum props (no behavioral
+    // divergence).
+    DataModelEnumPropDesc { _opaque: () }
 }
 
 // 0x47f8d0 — __ZNK3RBX22GlobalAdvancedSettings4Item11askAddChildEPKNS_8InstanceE
@@ -26844,43 +26923,62 @@ pub fn stub_0x47f8d0() -> ! {
 // 0x4828e0 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_21TaskSchedulerSettingsEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::TaskSchedulerSettings> RBX::Creatable<RBX::Instance>::create<RBX::TaskSchedulerSettings>(void)")]
 // was: boost::shared_ptr<RBX::TaskSchedulerSettings> RBX::Creatable<RBX::Instance>::create<RBX::TaskSchedulerSettings>(void)
-pub fn stub_0x4828e0() -> ! {
-    todo!("0x4828e0 boost::shared_ptr<RBX::TaskSchedulerSettings> RBX::Creatable<RBX::Instance>::create<RBX::TaskSchedulerSettings>(void)")
+pub fn stub_0x4828e0() -> SharedPtr<TaskSchedulerSettings> {
+    // IDA 0x4828e0: `Creatable::create<TaskSchedulerSettings>` — `operator
+    // new` + default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(TaskSchedulerSettings::default())
 }
 
 // 0x482990 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX21TaskSchedulerSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x482990() -> ! {
-    todo!("0x482990 boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x482990(block: *mut ControlBlockPd<TaskSchedulerSettings, CreatableInstanceDeleter>) {
+    // IDA 0x482990: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0. (D1/dispose sort into a later file run for this cluster.)
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x482998 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX21TaskSchedulerSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x482998() -> ! {
-    todo!("0x482998 boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x482998(block: *const ControlBlockPd<TaskSchedulerSettings, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x482998: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x4829b0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX21TaskSchedulerSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x4829b0() -> ! {
-    todo!("0x4829b0 boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x4829b0(block: *const ControlBlockPd<TaskSchedulerSettings, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x4829b0: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x482c00 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13DebugSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x482c00() -> ! {
-    todo!("0x482c00 boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x482c00(block: *mut ControlBlockPd<DebugSettings, CreatableInstanceDeleter>) {
+    // IDA 0x482c00: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x482c78 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9BlockMeshEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::BlockMesh> RBX::Creatable<RBX::Instance>::create<RBX::BlockMesh>(void)")]
 // was: boost::shared_ptr<RBX::BlockMesh> RBX::Creatable<RBX::Instance>::create<RBX::BlockMesh>(void)
-pub fn stub_0x482c78() -> ! {
-    todo!("0x482c78 boost::shared_ptr<RBX::BlockMesh> RBX::Creatable<RBX::Instance>::create<RBX::BlockMesh>(void)")
+pub fn stub_0x482c78() -> SharedPtr<BlockMesh> {
+    // IDA 0x482c78: `Creatable::create<BlockMesh>` — `operator new` + default
+    // ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(BlockMesh::default())
 }
 
 // 0x4831f4 — __ZN5boost10shared_ptrIN3RBX9BlockMeshEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
