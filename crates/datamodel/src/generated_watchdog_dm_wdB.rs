@@ -14,9 +14,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
 #[doc(alias = "RBX::ModelInstance::getPrimaryPartSetByUser(void)const")]
 #[doc(alias = "__ZNK3RBX13ModelInstance23getPrimaryPartSetByUserEv")]
-pub fn stub_5cb594() -> ! {
-    todo!("0x5cb594 RBX::ModelInstance::getPrimaryPartSetByUser(void)const")
-}
+pub use crate::instance::stub_0x5cb594 as stub_5cb594;
 
 // 0x5cb5b8 — __ZN3RBX13ModelInstance23setPrimaryPartSetByUserEPNS_12PartInstanceE
 // type: _DWORD __fastcall(RBX::ModelInstance *__hidden this, RBX::PartInstance *)
@@ -78,17 +76,13 @@ pub fn stub_5cbbf8() -> ! {
 // type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
 #[doc(alias = "RBX::ModelInstance::ModelInstance(void)")]
 #[doc(alias = "__ZN3RBX13ModelInstanceC1Ev")]
-pub fn stub_5cbe18() -> ! {
-    todo!("0x5cbe18 RBX::ModelInstance::ModelInstance(void)")
-}
+pub use crate::instance::stub_0x5cbe18 as stub_5cbe18;
 
 // 0x5cc128 — __ZN3RBX13ModelInstanceC2Ev
 // type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
 #[doc(alias = "RBX::ModelInstance::ModelInstance(void)")]
 #[doc(alias = "__ZN3RBX13ModelInstanceC2Ev")]
-pub fn stub_5cc128() -> ! {
-    todo!("0x5cc128 RBX::ModelInstance::ModelInstance(void)")
-}
+pub use crate::instance::stub_0x5cc128 as stub_5cc128;
 
 // 0x5cc458 — __ZN3RBX13ModelInstanceD0Ev
 // type: void __fastcall(RBX::ModelInstance *__hidden this)
@@ -213,9 +207,7 @@ pub fn stub_5cca4c() -> ! {
 // type: _DWORD __fastcall(RBX::ModelInstance *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::ModelInstance::askSetParent(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX13ModelInstance12askSetParentEPKNS_8InstanceE")]
-pub fn stub_5cca68() -> ! {
-    todo!("0x5cca68 RBX::ModelInstance::askSetParent(RBX::Instance const*)const")
-}
+pub use crate::instance::stub_0x5cca68 as stub_5cca68;
 
 // 0x5ccaa4 — __ZN3RBX13ModelInstance17onDescendantAddedEPNS_8InstanceE
 // type: _DWORD __fastcall(RBX::ModelInstance *__hidden this, RBX::Instance *)
