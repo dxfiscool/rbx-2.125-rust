@@ -3006,32 +3006,37 @@ pub fn stub_a62070(address_known: bool, direct_match: bool, index: i32, active: 
 
 // 0xa62178 — __ZNK6RakNet7RakPeer25GetIndexFromSystemAddressENS_13SystemAddressEb
 #[doc(alias = "RakNet::RakPeer::GetIndexFromSystemAddress(RakNet::SystemAddress,bool)const")]
-pub fn stub_a62178() -> ! {
-    todo!("0xa62178 RakNet::RakPeer::GetIndexFromSystemAddress(RakNet::SystemAddress,bool)const")
+pub fn stub_a62178(remotes: &[(crate::socket::SystemAddress, bool)], addr: &crate::socket::SystemAddress, unassigned: &crate::socket::SystemAddress, hint: Option<usize>) -> i32 {
+ // IDA 0xa62178: hint, active match, any match.
+ crate::socket::RakPeer::index_from_address(remotes, addr, unassigned, hint)
 }
 
 // 0xa622d8 — __ZN6RakNet7RakPeer16GetIndexFromGuidENS_10RakNetGUIDE
 #[doc(alias = "RakNet::RakPeer::GetIndexFromGuid(RakNet::RakNetGUID)")]
-pub fn stub_a622d8() -> ! {
-    todo!("0xa622d8 RakNet::RakPeer::GetIndexFromGuid(RakNet::RakNetGUID)")
+pub fn stub_a622d8(remotes: &[(u64, bool)], guid: u64, unassigned: u64, hint: Option<usize>) -> i32 {
+ // IDA 0xa622d8: guid version of the index scan.
+ crate::socket::RakPeer::index_from_guid(remotes, guid, unassigned, hint)
 }
 
 // 0xa623c8 — __ZNK6RakNet7RakPeer25GetIndexFromSystemAddressENS_13SystemAddressE
 #[doc(alias = "RakNet::RakPeer::GetIndexFromSystemAddress(RakNet::SystemAddress)const")]
-pub fn stub_a623c8() -> ! {
-    todo!("0xa623c8 RakNet::RakPeer::GetIndexFromSystemAddress(RakNet::SystemAddress)const")
+pub fn stub_a623c8(remotes: &[(crate::socket::SystemAddress, bool)], addr: &crate::socket::SystemAddress, unassigned: &crate::socket::SystemAddress, hint: Option<usize>) -> i32 {
+ // IDA 0xa623c8: same scan without the flag.
+ crate::socket::RakPeer::index_from_address(remotes, addr, unassigned, hint)
 }
 
 // 0xa623e8 — __ZN6RakNet7RakPeer25GetSystemAddressFromIndexEi
 #[doc(alias = "RakNet::RakPeer::GetSystemAddressFromIndex(int)")]
-pub fn stub_a623e8() -> ! {
-    todo!("0xa623e8 RakNet::RakPeer::GetSystemAddressFromIndex(int)")
+pub fn stub_a623e8(remotes: &[Option<crate::socket::SystemAddress>], index: i32, unassigned: crate::socket::SystemAddress) -> crate::socket::SystemAddress {
+ // IDA 0xa623e8: connected slot or unassigned.
+ crate::socket::RakPeer::system_address_from_index(remotes, index, unassigned)
 }
 
 // 0xa62440 — __ZN6RakNet7RakPeer16GetGUIDFromIndexEi
 #[doc(alias = "RakNet::RakPeer::GetGUIDFromIndex(int)")]
-pub fn stub_a62440() -> ! {
-    todo!("0xa62440 RakNet::RakPeer::GetGUIDFromIndex(int)")
+pub fn stub_a62440(remotes: &[Option<crate::socket::RakNetGuid>], index: i32, unassigned: crate::socket::RakNetGuid) -> crate::socket::RakNetGuid {
+ // IDA 0xa62440: guid mirror of the slot read.
+ crate::socket::RakPeer::guid_from_index(remotes, index, unassigned)
 }
 
 // 0xa624a4 — __ZNK6RakNet7RakPeer13GetSystemListERN14DataStructures4ListINS_13SystemAddressEEERNS2_INS_10RakNetGUIDEEE
@@ -3044,44 +3049,51 @@ pub fn stub_a624a4() -> ! {
 
 // 0xa62560 — __ZN6RakNet7RakPeer12AddToBanListEPKcj
 #[doc(alias = "RakNet::RakPeer::AddToBanList(char const*,unsigned int)")]
-pub fn stub_a62560() -> ! {
-    todo!("0xa62560 RakNet::RakPeer::AddToBanList(char const*,unsigned int)")
+pub fn stub_a62560(peer: &mut crate::socket::RakPeer, addr: &str, timeout_ms: u32, now_ms: u32) {
+ // IDA 0xa62560: insert or refresh the ban entry.
+ peer.add_to_ban_list(addr, timeout_ms, now_ms)
 }
 
 // 0xa62698 — __ZN6RakNet7RakPeer17RemoveFromBanListEPKc
 #[doc(alias = "RakNet::RakPeer::RemoveFromBanList(char const*)")]
-pub fn stub_a62698() -> ! {
-    todo!("0xa62698 RakNet::RakPeer::RemoveFromBanList(char const*)")
+pub fn stub_a62698(peer: &mut crate::socket::RakPeer, addr: Option<&str>) {
+ // IDA 0xa62698: exact swap-remove.
+ peer.remove_from_ban_list(addr)
 }
 
 // 0xa6273c — __ZN6RakNet7RakPeer12ClearBanListEv
 #[doc(alias = "RakNet::RakPeer::ClearBanList(void)")]
-pub fn stub_a6273c() -> ! {
-    todo!("0xa6273c RakNet::RakPeer::ClearBanList(void)")
+pub fn stub_a6273c(peer: &mut crate::socket::RakPeer) {
+ // IDA 0xa6273c: drop the whole list.
+ peer.clear_ban_list()
 }
 
 // 0xa627c8 — __ZN6RakNet7RakPeer29SetLimitIPConnectionFrequencyEb
 #[doc(alias = "RakNet::RakPeer::SetLimitIPConnectionFrequency(bool)")]
-pub fn stub_a627c8() -> ! {
-    todo!("0xa627c8 RakNet::RakPeer::SetLimitIPConnectionFrequency(bool)")
+pub fn stub_a627c8(peer: &mut crate::socket::RakPeer, limit: bool) {
+ // IDA 0xa627c8: store the limiter flag.
+ peer.set_limit_ip_connection_frequency(limit)
 }
 
 // 0xa627d0 — __ZN6RakNet7RakPeer8IsBannedEPKc
 #[doc(alias = "RakNet::RakPeer::IsBanned(char const*)")]
-pub fn stub_a627d0() -> ! {
-    todo!("0xa627d0 RakNet::RakPeer::IsBanned(char const*)")
+pub fn stub_a627d0(peer: &mut crate::socket::RakPeer, addr: &str, now_ms: u32) -> bool {
+ // IDA 0xa627d0: evict expired, then wildcard walk.
+ peer.is_banned(addr, now_ms)
 }
 
 // 0xa628c0 — __ZN6RakNet7RakPeer4PingENS_13SystemAddressE
 #[doc(alias = "RakNet::RakPeer::Ping(RakNet::SystemAddress)")]
-pub fn stub_a628c0() -> ! {
-    todo!("0xa628c0 RakNet::RakPeer::Ping(RakNet::SystemAddress)")
+pub fn stub_a628c0(active: bool, broadcast: bool, send: &mut dyn FnMut(bool)) {
+ // IDA 0xa628c0: forwards to the internal ping.
+ crate::socket::RakPeer::send_ping(active, broadcast, send)
 }
 
 // 0xa628e4 — __ZN6RakNet7RakPeer12PingInternalENS_13SystemAddressEb17PacketReliability
 #[doc(alias = "RakNet::RakPeer::PingInternal(RakNet::SystemAddress,bool,PacketReliability)")]
-pub fn stub_a628e4() -> ! {
-    todo!("0xa628e4 RakNet::RakPeer::PingInternal(RakNet::SystemAddress,bool,PacketReliability)")
+pub fn stub_a628e4(active: bool, broadcast: bool, send: &mut dyn FnMut(bool)) {
+ // IDA 0xa628e4: timestamped ping when active.
+ crate::socket::RakPeer::send_ping(active, broadcast, send)
 }
 
 // 0xa62af0 — __ZN6RakNet7RakPeer4PingEPKctbj

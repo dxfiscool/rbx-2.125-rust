@@ -293,6 +293,57 @@ mod tests {
         assert_eq!(RakPeer::connection_state(false, false, 2, false, 3), 5);
         assert_eq!(RakPeer::connection_state(false, false, 2, true, 3), 3);
     }
+    #[test]
+    fn index_ban_ping_gates() {
+        // IDA 0xa62178/0xa623c8/0xa622d8: index lookups with guards.
+        let un = SystemAddress::new();
+        let a = SystemAddress { family: 2, port: 100, binary: 10, debug_port: 100, system_index: 0 };
+        let b = SystemAddress { family: 2, port: 200, binary: 20, debug_port: 200, system_index: 0 };
+        let remotes = vec![(a, true), (b, false)];
+        assert_eq!(RakPeer::index_from_address(&remotes, &un, &un, None), -1);
+        assert_eq!(RakPeer::index_from_address(&remotes, &a, &un, Some(0)), 0);
+        assert_eq!(RakPeer::index_from_address(&remotes, &b, &un, Some(0)), 1);
+        assert_eq!(RakPeer::index_from_address(&remotes, &b, &un, None), 1);
+        assert_eq!(RakPeer::index_from_address(&[], &a, &un, None), -1);
+        let gremotes = vec![(7u64, true), (9u64, false)];
+        assert_eq!(RakPeer::index_from_guid(&gremotes, UNASSIGNED_RAKNET_GUID, UNASSIGNED_RAKNET_GUID, None), -1);
+        assert_eq!(RakPeer::index_from_guid(&gremotes, 9, 0, None), 1);
+        assert_eq!(RakPeer::index_from_guid(&gremotes, 42, 0, None), -1);
+        // IDA 0xa623e8/0xa62440: slot reads.
+        let addrs = vec![None, Some(a)];
+        assert_eq!(RakPeer::system_address_from_index(&addrs, 1, un), a);
+        assert_eq!(RakPeer::system_address_from_index(&addrs, 0, un), un);
+        assert_eq!(RakPeer::system_address_from_index(&addrs, 9, un), un);
+        let guids = vec![None, Some(RakNetGuid { g: 7, system_index: 0 })];
+        assert_eq!(RakPeer::guid_from_index(&guids, 1, RakNetGuid::new()).g, 7);
+        assert_eq!(RakPeer::guid_from_index(&guids, 0, RakNetGuid::new()), RakNetGuid::new());
+        // IDA 0xa62560/0xa62698/0xa6273c/0xa627c8/0xa627d0: ban list.
+        let mut peer = RakPeer::new();
+        peer.add_to_ban_list("", 100, 1000);
+        peer.add_to_ban_list("12345678901234567", 100, 1000);
+        assert!(peer.ban_list.is_empty());
+        peer.add_to_ban_list("10.0.0.1", 100, 1000);
+        peer.add_to_ban_list("10.0.0.1", 0, 2000);
+        assert_eq!(peer.ban_list, vec![("10.0.0.1".to_owned(), 0)]);
+        peer.add_to_ban_list("10.0.0.2", 100, 1000);
+        assert!(peer.is_banned("10.0.0.2", 1050));
+        assert!(!peer.is_banned("10.0.0.2", 1200));
+        assert!(!peer.is_banned("10.0.0.9", 1050));
+        peer.add_to_ban_list("192.168.*.*", 0, 0);
+        assert!(peer.is_banned("192.168.5.5", 99999));
+        peer.remove_from_ban_list(Some("192.168.*.*"));
+        assert!(!peer.is_banned("192.168.5.5", 99999));
+        peer.remove_from_ban_list(None);
+        peer.clear_ban_list();
+        assert!(peer.ban_list.is_empty());
+        peer.set_limit_ip_connection_frequency(true);
+        assert!(peer.limit_ip_connection_frequency);
+        // IDA 0xa628c0/0xa628e4: ping gates on activity.
+        let mut sent = Vec::new();
+        RakPeer::send_ping(false, true, &mut |b| sent.push(b));
+        RakPeer::send_ping(true, false, &mut |b| sent.push(b));
+        assert_eq!(sent, [false]);
+    }
 }
 
 /// `RakNet::UNASSIGNED_RAKNET_GUID` (IDA 0xa5c018).
@@ -647,6 +698,11 @@ pub struct RakPeer {
  pub next_send_receipt: u32,
  /// Maximum peers (IDA 0xa61888).
  pub max_peers: u16,
+ /// Ban entries `(pattern, expiry_ms)` at +788/792, `0` expiry means
+ /// forever (IDA 0xa62560).
+ pub ban_list: Vec<(String, u32)>,
+ /// IP connection-frequency limiter flag (IDA 0xa627c8).
+ pub limit_ip_connection_frequency: bool,
 }
 
 impl RakPeer {
@@ -867,6 +923,162 @@ impl RakPeer {
  return 5;
  }
  state
+ }
+
+ /// `RakPeer::GetIndexFromSystemAddress` (IDA 0xa62178/0xa623c8):
+ /// unassigned addresses map to -1; otherwise the hint wins when it
+ /// names an active match, else the first active match, else the
+ /// first match of any kind. The hash-vs-linear strategy split stays
+ /// engine-side.
+ #[must_use]
+ pub fn index_from_address(
+ remotes: &[(SystemAddress, bool)],
+ addr: &SystemAddress,
+ unassigned: &SystemAddress,
+ hint: Option<usize>,
+ ) -> i32 {
+ if addr.equals(unassigned) {
+ return -1;
+ }
+ if let Some(h) = hint {
+ if let Some((a, active)) = remotes.get(h) {
+ if *active && a.equals(addr) {
+ return h as i32;
+ }
+ }
+ }
+ if let Some(i) = remotes.iter().position(|(a, active)| *active && a.equals(addr)) {
+ return i as i32;
+ }
+ remotes.iter().position(|(a, _)| a.equals(addr)).map_or(-1, |i| i as i32)
+ }
+
+ /// `RakPeer::GetIndexFromGuid` (IDA 0xa622d8): same shape over guid
+ /// equality, with the unassigned guard.
+ #[must_use]
+ pub fn index_from_guid(
+ remotes: &[(u64, bool)],
+ guid: u64,
+ unassigned: u64,
+ hint: Option<usize>,
+ ) -> i32 {
+ if guid == unassigned {
+ return -1;
+ }
+ if let Some(h) = hint {
+ if let Some((g, active)) = remotes.get(h) {
+ if *active && *g == guid {
+ return h as i32;
+ }
+ }
+ }
+ if let Some(i) = remotes.iter().position(|(g, active)| *active && *g == guid) {
+ return i as i32;
+ }
+ remotes.iter().position(|(g, _)| *g == guid).map_or(-1, |i| i as i32)
+ }
+
+ /// `RakPeer::GetSystemAddressFromIndex` (IDA 0xa623e8): the slot
+ /// address when the index names a connected system, else unassigned.
+ #[must_use]
+ pub fn system_address_from_index(
+ remotes: &[Option<SystemAddress>],
+ index: i32,
+ unassigned: SystemAddress,
+ ) -> SystemAddress {
+ if index >= 0 {
+ if let Some(Some(addr)) = remotes.get(index as usize) {
+ return *addr;
+ }
+ }
+ unassigned
+ }
+
+ /// `RakPeer::GetGUIDFromIndex` (IDA 0xa62440): symmetric to
+ /// [`system_address_from_index`](Self::system_address_from_index).
+ #[must_use]
+ pub fn guid_from_index(
+ remotes: &[Option<RakNetGuid>],
+ index: i32,
+ unassigned: RakNetGuid,
+ ) -> RakNetGuid {
+ if index >= 0 {
+ if let Some(Some(guid)) = remotes.get(index as usize) {
+ return *guid;
+ }
+ }
+ unassigned
+ }
+
+ /// `RakPeer::AddToBanList` (IDA 0xa62560): empty or over-15-char
+ /// inputs are ignored; a known pattern refreshes its expiry
+ /// (`now + timeout`, or forever for zero), else it is appended.
+ pub fn add_to_ban_list(&mut self, addr: &str, timeout_ms: u32, now_ms: u32) {
+ if addr.is_empty() || addr.len() > 0xF {
+ return;
+ }
+ let expiry = if timeout_ms == 0 { 0 } else { now_ms.wrapping_add(timeout_ms) };
+ if let Some(entry) = self.ban_list.iter_mut().find(|(p, _)| p == addr) {
+ entry.1 = expiry;
+ } else {
+ self.ban_list.push((addr.to_owned(), expiry));
+ }
+ }
+
+ /// `RakPeer::RemoveFromBanList` (IDA 0xa62698): exact-match
+ /// swap-remove; ignored for null, empty, or over-long inputs.
+ pub fn remove_from_ban_list(&mut self, addr: Option<&str>) {
+ if let Some(a) = addr {
+ if a.is_empty() || a.len() > 0xF {
+ return;
+ }
+ if let Some(i) = self.ban_list.iter().position(|(p, _)| p == a) {
+ self.ban_list.swap_remove(i);
+ }
+ }
+ }
+
+ /// `RakPeer::ClearBanList` (IDA 0xa6273c).
+ pub fn clear_ban_list(&mut self) {
+ self.ban_list.clear();
+ }
+
+ /// `RakPeer::SetLimitIPConnectionFrequency` (IDA 0xa627c8).
+ pub fn set_limit_ip_connection_frequency(&mut self, limit: bool) {
+ self.limit_ip_connection_frequency = limit;
+ }
+
+ /// `RakPeer::IsBanned` (IDA 0xa627d0): expired entries are evicted
+ /// swap-last first; then the wildcard walk decides.
+ pub fn is_banned(&mut self, addr: &str, now_ms: u32) -> bool {
+ if addr.is_empty() || addr.len() > 0xF {
+ return false;
+ }
+ let mut i = 0;
+ while i < self.ban_list.len() {
+ let (expired, pattern) = {
+ let (p, expiry) = &self.ban_list[i];
+ (*expiry != 0 && *expiry < now_ms, p.clone())
+ };
+ if expired {
+ self.ban_list.swap_remove(i);
+ continue;
+ }
+ if ip_address_match(&pattern, addr) {
+ return true;
+ }
+ i += 1;
+ }
+ false
+ }
+
+ /// `RakPeer::Ping` (IDA 0xa628c0) / `PingInternal` (IDA 0xa628e4):
+ /// timestamped ping packet goes out when active; the broadcast arm
+ /// versus direct send stays engine-side.
+ pub fn send_ping(active: bool, broadcast: bool, send: &mut dyn FnMut(bool)) {
+ if active {
+ send(broadcast);
+ }
  }
 }
 
