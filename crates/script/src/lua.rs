@@ -3330,183 +3330,738 @@ mod lua_argument_bridge_tests {
     }
 }
 
+/// `lua_tonumber` host fallback behind [`stub_0x270448`] (and the
+/// `lua_tofloat` lanes of [`stub_0x2704e0`]): numbers pass through, numeric
+/// strings coerce, everything else (including out-of-range slots) is 0.0.
+fn lua_to_number_or_zero(thread: &LuaThreadState, index: usize) -> f64 {
+    match thread.slot(index) {
+        Some(LuaStackValue::Number(n)) => *n,
+        Some(LuaStackValue::String(s)) => s.parse::<f64>().unwrap_or(0.0),
+        _ => 0.0,
+    }
+}
+
+/// `luaL_checkudata(L, index, Vector3)` host check behind [`stub_0x2707dc`],
+/// [`stub_0x270afc`] and [`stub_0x270b48`]: a missing slot or a wrong-typed
+/// slot throws, like the C++ `luaL_checkudata` error.
+fn check_vector3_slot(thread: &LuaThreadState, index: usize) -> LuaVector3 {
+    match thread.slot(index) {
+        Some(LuaStackValue::Userdata(ud)) if ud.class == lua_bridge_class::VECTOR3 => match &ud.payload {
+            LuaUserdataPayload::Vector3(v) => *v,
+            _ => panic!("Vector3 expected"),
+        },
+        _ => panic!("Vector3 expected"),
+    }
+}
+
+/// `luaL_checkudata(L, index, RbxRay)` host check behind [`stub_0x270afc`]
+/// and [`stub_0x270b48`].
+fn check_rbx_ray_slot(thread: &LuaThreadState, index: usize) -> LuaRbxRay {
+    match thread.slot(index) {
+        Some(LuaStackValue::Userdata(ud)) if ud.class == lua_bridge_class::RAY => match &ud.payload {
+            LuaUserdataPayload::RbxRay(v) => *v,
+            _ => panic!("RbxRay expected"),
+        },
+        _ => panic!("RbxRay expected"),
+    }
+}
+
+/// `RbxRay::closestPoint` host math shared by [`stub_0x270afc`] and
+/// [`stub_0x270b48`]: the projection parameter is clamped to the half-line
+/// (`t >= 0`); a zero direction falls back to the origin.
+fn rbx_ray_closest_point(ray: &LuaRbxRay, point: &LuaVector3) -> LuaVector3 {
+    let dx = ray.direction.x;
+    let dy = ray.direction.y;
+    let dz = ray.direction.z;
+    let len2 = dx * dx + dy * dy + dz * dz;
+    if len2 == 0.0 {
+        return ray.origin;
+    }
+    let t = ((point.x - ray.origin.x) * dx + (point.y - ray.origin.y) * dy + (point.z - ray.origin.z) * dz) / len2;
+    let t = if t < 0.0 { 0.0 } else { t };
+    LuaVector3 { x: ray.origin.x + dx * t, y: ray.origin.y + dy * t, z: ray.origin.z + dz * t }
+}
+
+/// Normalized-copy core behind the `"unit"`/`"Unit"` arm of [`stub_0x2708ec`]
+/// (IDA 0x2709c0..0x270a2a: length via `sqrt`, reciprocal, per-lane
+/// multiply; an IEEE divide-by-zero flows through untouched, as on ARM).
+fn rbx_ray_unit(ray: &LuaRbxRay) -> LuaRbxRay {
+    let len = (ray.direction.x * ray.direction.x + ray.direction.y * ray.direction.y + ray.direction.z * ray.direction.z).sqrt();
+    let inv = 1.0 / len;
+    LuaRbxRay {
+        origin: ray.origin,
+        direction: LuaVector3 { x: ray.direction.x * inv, y: ray.direction.y * inv, z: ray.direction.z * inv },
+    }
+}
+
+/// Length guard behind [`stub_0x270230`] (IDA 0x2702a0): `0x30D40` (200000).
+pub const SUPER_LONG_STRING_LIMIT: usize = 0x30D40;
+
+/// `lua_pushcclosure` identities pushed by [`stub_0x2708ec`] for the
+/// `"ClosestPoint"`/`"Distance"` members: the callee EAs double as host ids.
+pub const CLOSEST_POINT_VECTOR3_FN: u64 = 0x270afc;
+pub const DISTANCE_VECTOR3_FN: u64 = 0x270b48;
+
 // 0x26e9c0 — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_
 // type: _DWORD *__fastcall(int, int)
 #[doc(alias = "G3D::Vector2int16* RBX::Lua::Bridge<G3D::Vector2int16,true>::pushNewObject<G3D::Vector2int16>(lua_State *,G3D::Vector2int16)")]
-pub fn stub_0x26e9c0() -> ! {
-    todo!("0x26e9c0 G3D::Vector2int16* RBX::Lua::Bridge<G3D::Vector2int16,true>::pushNewObject<G3D::Vector2int16>(lua_State *,G3D::Vector2int16)")
+pub fn stub_0x26e9c0(thread: &mut LuaThreadState, value: &LuaVector2i16) -> LuaVector2i16 {
+    // IDA 0x26e9c0: `lua_newuserdata(L, 4)` (0x26e9ca) + dword copy
+    // (0x26e9d4), `getfield(REGISTRY, className)` + `setmetatable`
+    // (0x26e9ee..0x26e9f8). Returns the new userdata payload.
+    push_new_object(thread, lua_bridge_class::VECTOR2INT16, LuaUserdataPayload::Vector2i16(*value));
+    *value
 }
 
 // 0x26eaf0 — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_
 // type: int __fastcall(int, int, __int16)
 #[doc(alias = "G3D::Vector3int16* RBX::Lua::Bridge<G3D::Vector3int16,true>::pushNewObject<G3D::Vector3int16>(lua_State *,G3D::Vector3int16)")]
-pub fn stub_0x26eaf0() -> ! {
-    todo!("0x26eaf0 G3D::Vector3int16* RBX::Lua::Bridge<G3D::Vector3int16,true>::pushNewObject<G3D::Vector3int16>(lua_State *,G3D::Vector3int16)")
+pub fn stub_0x26eaf0(thread: &mut LuaThreadState, value: &LuaVector3i16) -> LuaVector3i16 {
+    // IDA 0x26eaf0: `lua_newuserdata(L, 6)` (0x26eb00) + dword/word copy
+    // (0x26eb0a..0x26eb0c), `getfield`/`setmetatable` (0x26eb28..0x26eb32).
+    push_new_object(thread, lua_bridge_class::VECTOR3INT16, LuaUserdataPayload::Vector3i16(*value));
+    *value
 }
 
 // 0x26eb44 — __ZN3rbx8any_castIRKN5boost10shared_ptrINS1_8functionIFvNS2_IKN3RBX10Reflection5TupleEEENS3_IFvPNS4_3Lua12IAsyncResultEEEEEEEEENS4_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 // was: boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>> const& rbx::any_cast<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)
 #[doc(alias = "rbx_core::SharedPtr<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>> const& rbx::any_cast<rbx_core::SharedPtr<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0x26eb44() -> ! {
-    todo!("0x26eb44 boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>> const& rbx::any_cast<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_0x26eb44(variant: &ScriptVariant) -> LuaYieldingFn {
+    // IDA 0x26eb44: `rbx::any_cast<const SharedPtr<YieldingFn>&>` — holder
+    // type check, payload reference on match, `std::bad_cast` throw
+    // otherwise. The host `ScriptVariant` is the `placement_any<Region3>`.
+    match variant {
+        ScriptVariant::YieldingFn(func) => *func,
+        _ => panic!("std::bad_cast"),
+    }
 }
 
 // 0x26ef04 — __ZN3RBX3Lua12LuaArguments9pushArrayIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrINS_8InstanceEEESt6vectorIS8_SaIS8_EEEEEEiT_SF_P9lua_State
 // type: int __fastcall(char ****, char ****, int)
 // was: int RBX::Lua::LuaArguments::pushArray<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,lua_State *)
 #[doc(alias = "int RBX::Lua::LuaArguments::pushArray<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,lua_State *)")]
-pub fn stub_0x26ef04() -> ! {
-    todo!("0x26ef04 int RBX::Lua::LuaArguments::pushArray<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,lua_State *)")
+pub fn stub_0x26ef04(instances: &[Option<SharedPtr<LuaInstanceHandle>>], thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x26ef04: `createtable(n, 0)`, then per element the
+    // `ArgumentPusher::operator()(shared_ptr<Instance>)` push plus
+    // `lua_rawseti(-2, 1-based)`. Returns 1.
+    push_array_with(instances.len(), thread, |thread, index| {
+        stub_0x26dce4(&instances[index], thread);
+    })
 }
 
 // 0x26f1d4 — __ZN3RBX3Lua12LuaArguments9pushArrayIN9__gnu_cxx17__normal_iteratorIPKNS_10Reflection7VariantESt6vectorIS6_SaIS6_EEEEEEiT_SD_P9lua_State
 // type: int __fastcall(char ****, char ****, int)
 #[doc(alias = "int RBX::Lua::LuaArguments::pushArray<__gnu_cxx::__normal_iterator<RBX::Reflection::Variant const*,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>(__gnu_cxx::__normal_iterator<RBX::Reflection::Variant const*,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>,__gnu_cxx::__normal_iterator<RBX::Reflection::Variant const*,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>,lua_State *)")]
-pub fn stub_0x26f1d4() -> ! {
-    todo!("0x26f1d4 int RBX::Lua::LuaArguments::pushArray<__gnu_cxx::__normal_iterator<RBX::Reflection::Variant const*,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>(__gnu_cxx::__normal_iterator<RBX::Reflection::Variant const*,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>,__gnu_cxx::__normal_iterator<RBX::Reflection::Variant const*,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>,lua_State *)")
+pub fn stub_0x26f1d4(variants: &[ScriptVariant], thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x26f1d4: `lua_createtable(L, n, 0)` (0x26f1f6), then per element
+    // `withVariantValue<int, ArgumentPusher>` (0x26f224) with the
+    // `ReleaseAssert(count == 1, LuaArguments.h:213)` (0x26f226) plus
+    // `lua_rawseti(-2, 1-based)`. Returns 1.
+    push_array_with(variants.len(), thread, |thread, index| {
+        stub_0x26d0ec(&variants[index], thread);
+    })
 }
 
 // 0x26f280 — __ZN3rbx8any_castIRKN3RBX3Lua15WeakFunctionRefENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: _DWORD **__fastcall(_DWORD **)
 #[doc(alias = "RBX::Lua::WeakFunctionRef const& rbx::any_cast<RBX::Lua::WeakFunctionRef const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0x26f280() -> ! {
-    todo!("0x26f280 RBX::Lua::WeakFunctionRef const& rbx::any_cast<RBX::Lua::WeakFunctionRef const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_0x26f280(variant: &ScriptVariant) -> LuaWeakFunctionRef {
+    // IDA 0x26f280: `rbx::any_cast<const WeakFunctionRef&>` — holder type
+    // check, payload reference on match, `std::bad_cast` throw otherwise.
+    match variant {
+        ScriptVariant::Function(func) => *func,
+        _ => panic!("std::bad_cast"),
+    }
 }
 
 // 0x26fa78 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 // was: bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)
 #[doc(alias = "bool RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26fa78() -> ! {
-    todo!("0x26fa78 bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+pub fn stub_0x26fa78(_thread: &LuaThreadState, _index: usize, out: &mut ScriptVariant, slot: &LuaStackValue) -> bool {
+    // IDA 0x26fa78: `lua_touserdata` null → 0 (0x26fa8a..0x26fa92),
+    // `lua_getmetatable` false → 0 (0x26fa9c..0x26faa0), registry-`className`
+    // + `lua_rawequal` mismatch → 0 after `lua_settop(-3)`
+    // (0x26faba..0x26fada); on match `getSingleton<shared_ptr<Instance>>`
+    // tag + payload copy (0x26fae0..0x26fae8), return 1.
+    match instance_bridge_payload(slot) {
+        Some(handle) => {
+            *out = ScriptVariant::Instance(handle);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x26faf8 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_3Lua15WeakFunctionRefEEERS3_RKT_
 // type: int **__fastcall(int **, const RBX::Lua::WeakFunctionRef *)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::Lua::WeakFunctionRef>(RBX::Lua::WeakFunctionRef const&)")]
-pub fn stub_0x26faf8() -> ! {
-    todo!("0x26faf8 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::Lua::WeakFunctionRef>(RBX::Lua::WeakFunctionRef const&)")
+pub fn stub_0x26faf8<'a>(slot: &'a mut ScriptVariant, value: &LuaWeakFunctionRef) -> &'a mut ScriptVariant {
+    // IDA 0x26faf8: `placement_any<Region3>::operator=<WeakFunctionRef>` —
+    // holder already `WeakFunctionRef` → copy-assign in place (0x26fb30);
+    // else destroy the old payload (0x26fb24), copy-construct (0x26fb3c) and
+    // retag the holder (0x26fb40). Either way the same slot comes back.
+    *slot = ScriptVariant::Function(*value);
+    slot
 }
 
 // 0x26fb50 — __ZN3rbx14implementation12typed_holderIN3RBX3Lua15WeakFunctionRefEE14construct_funcEPKcPc
 // type: const RBX::Lua::WeakFunctionRef *__fastcall(const RBX::Lua::WeakFunctionRef *result, RBX::Lua::WeakFunctionRef *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Lua::WeakFunctionRef>::construct_func(char const*,char *)")]
-pub fn stub_0x26fb50() -> ! {
-    todo!("0x26fb50 rbx::implementation::typed_holder<RBX::Lua::WeakFunctionRef>::construct_func(char const*,char *)")
+pub fn stub_0x26fb50(source: &LuaWeakFunctionRef, dest: Option<&mut LuaWeakFunctionRef>) -> LuaWeakFunctionRef {
+    // IDA 0x26fb50: `typed_holder<WeakFunctionRef>::construct_func` — null
+    // buffer → return the source (0x26fb56); else copy-construct into it and
+    // return the new object (0x26fb5c).
+    match dest {
+        Some(slot) => {
+            *slot = *source;
+            *slot
+        }
+        None => *source,
+    }
 }
 
 // 0x26fb60 — __ZN3rbx14implementation12typed_holderIN3RBX3Lua15WeakFunctionRefEE13destruct_funcEPc
 // type: int __fastcall(int)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Lua::WeakFunctionRef>::destruct_func(char *)")]
-pub fn stub_0x26fb60() -> ! {
-    todo!("0x26fb60 rbx::implementation::typed_holder<RBX::Lua::WeakFunctionRef>::destruct_func(char *)")
+pub fn stub_0x26fb60(slot: &mut ScriptVariant) {
+    // IDA 0x26fb60: `typed_holder<WeakFunctionRef>::destruct_func` — virtual
+    // teardown through the holder vtable (`(*vptr)[1]`, i.e. the
+    // `WeakFunctionRef` dtor on the payload). Dropping the owned payload
+    // runs the same release; the slot reverts to void.
+    *slot = ScriptVariant::Void;
 }
 
 // 0x26ff94 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueINS3_INS_10Reflection13DescribedBaseEEEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 // was: bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<boost::shared_ptr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)
 #[doc(alias = "bool RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::getValue<rbx_core::SharedPtr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,rbx_core::SharedPtr<RBX::Reflection::DescribedBase> &)")]
-pub fn stub_0x26ff94() -> ! {
-    todo!("0x26ff94 bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<boost::shared_ptr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)")
+pub fn stub_0x26ff94(_thread: &LuaThreadState, _index: usize, out: &mut Option<SharedPtr<LuaInstanceHandle>>, slot: &LuaStackValue) -> bool {
+    // IDA 0x26ff94: same guard chain as 0x26fa78 (null userdata → 0,
+    // metatable/rawequal mismatch → 0 after settop(-3)); on match the
+    // `shared_ptr<DescribedBase>::operator=<Instance>` upcast copy
+    // (0x26fff8), return 1.
+    match instance_bridge_payload(slot) {
+        Some(handle) => {
+            *out = handle;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x270008 — __ZN3RBX3Lua6BridgeIPKNS_10Reflection14EnumDescriptor4ItemELb1EE8getValueIS6_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Reflection::EnumDescriptor::Item const*,true>::getValue<RBX::Reflection::EnumDescriptor::Item const*>(lua_State *,unsigned int,RBX::Reflection::EnumDescriptor::Item const* &)")]
-pub fn stub_0x270008() -> ! {
-    todo!("0x270008 bool RBX::Lua::Bridge<RBX::Reflection::EnumDescriptor::Item const*,true>::getValue<RBX::Reflection::EnumDescriptor::Item const*>(lua_State *,unsigned int,RBX::Reflection::EnumDescriptor::Item const* &)")
+pub fn stub_0x270008(_thread: &LuaThreadState, _index: usize, out: &mut LuaEnumItem, slot: &LuaStackValue) -> bool {
+    // IDA 0x270008: guard chain, then `*a3 = *v6` (0x27006c) — the
+    // `EnumDescriptor::Item const*` copy — return 1.
+    match bridge_payload(slot, lua_bridge_class::ENUMITEM) {
+        Some(LuaUserdataPayload::EnumItem(item)) => {
+            *out = item.clone();
+            true
+        }
+        _ => false,
+    }
 }
 
 // 0x270210 — __ZN3RBX3Lua17safe_lua_tostringEP9lua_Statei
 // type: const char *__fastcall(int, int)
 #[doc(alias = "RBX::Lua::safe_lua_tostring(lua_State *,int)")]
-pub fn stub_0x270210() -> ! {
-    todo!("0x270210 RBX::Lua::safe_lua_tostring(lua_State *,int)")
+pub fn stub_0x270210(thread: &LuaThreadState, index: usize) -> &str {
+    // IDA 0x270210: `lua_tolstring(L, idx, 0)` (0x270216); null → `""`
+    // (0x270224), else the string (0x270228).
+    match thread.slot(index) {
+        Some(LuaStackValue::String(s)) => s.as_str(),
+        _ => "",
+    }
 }
 
 // 0x270230 — __ZN3RBX3Lua22throwable_lua_tostringEP9lua_Statei
 // type: const char *__fastcall(int, int)
 #[doc(alias = "RBX::Lua::throwable_lua_tostring(lua_State *,int)")]
-pub fn stub_0x270230() -> ! {
-    todo!("0x270230 RBX::Lua::throwable_lua_tostring(lua_State *,int)")
+pub fn stub_0x270230(thread: &LuaThreadState, index: usize, shutdown_super_long_strings: bool) -> &str {
+    // IDA 0x270230: `lua_tolstring` null → `runtime_error("String
+    // expected")` throw (0x270280..0x270314); over-long string with
+    // `DFFlag::ShutdownScriptsThatGenerateSuperLongStrings` set →
+    // `runtime_error("String too long")` throw (0x2702a0..0x27036e).
+    let text = match thread.slot(index) {
+        Some(LuaStackValue::String(s)) => s.as_str(),
+        _ => panic!("String expected"),
+    };
+    if shutdown_super_long_strings && text.len() >= SUPER_LONG_STRING_LIMIT {
+        panic!("String too long");
+    }
+    text
 }
 
 // 0x270448 — __ZN3RBX3Lua11lua_tofloatEP9lua_Statei
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Lua::lua_tofloat(lua_State *,int)")]
-pub fn stub_0x270448() -> ! {
-    todo!("0x270448 RBX::Lua::lua_tofloat(lua_State *,int)")
+pub fn stub_0x270448(thread: &LuaThreadState, index: usize) -> f32 {
+    // IDA 0x270448: `lua_tonumber` double (0x27044c), then float-range
+    // clamp: +inf → +inf (0x270462), -inf → -inf (0x27046c), above
+    // `3.40282347e38` → `3.4028e38` (0x270492), below `-3.40282347e38` →
+    // `-3.4028e38` (0x27049c), else narrow (0x2704aa). NaN falls through all
+    // comparisons into the narrowing cast, staying NaN.
+    let v = lua_to_number_or_zero(thread, index);
+    if v == f64::INFINITY {
+        f32::INFINITY
+    } else if v == f64::NEG_INFINITY {
+        f32::NEG_INFINITY
+    } else if v > f32::MAX as f64 {
+        f32::MAX
+    } else if v < -(f32::MAX as f64) {
+        -f32::MAX
+    } else {
+        v as f32
+    }
 }
 
 // 0x2704e0 — __ZN3RBX3Lua12Color3Bridge9newColor3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Color3Bridge::newColor3(lua_State *)")]
-pub fn stub_0x2704e0() -> ! {
-    todo!("0x2704e0 RBX::Lua::Color3Bridge::newColor3(lua_State *)")
+pub fn stub_0x2704e0(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x2704e0: `n = min(gettop, 3)` lanes (0x270510..0x270540) read via
+    // `lua_tofloat(L, i)` (0x270534), missing lanes zero-filled
+    // (0x270546..0x270570); `Bridge<Color3>::pushNewObject` (0x270578);
+    // return 1.
+    let lanes = thread.stack_top().min(3);
+    let mut rgb = [0.0f32; 3];
+    for (lane, slot) in rgb.iter_mut().take(lanes).enumerate() {
+        *slot = stub_0x270448(thread, lane + 1);
+    }
+    let color = LuaColor3 { r: rgb[0], g: rgb[1], b: rgb[2] };
+    push_new_object(thread, lua_bridge_class::COLOR3, LuaUserdataPayload::Color3(color));
+    1
 }
 
 // 0x270594 — __ZN3RBX3Lua12Color3Bridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Color3Bridge::registerClassLibrary(lua_State *)")]
-pub fn stub_0x270594() -> ! {
-    todo!("0x270594 RBX::Lua::Color3Bridge::registerClassLibrary(lua_State *)")
+pub fn stub_0x270594(_thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x270594: `luaL_register(L, className, classLibrary)` (0x2705b2),
+    // `lua_setreadonly(L, -1, 1)` (0x2705be), pop the table (0x2705c4). The
+    // host keeps bridge class names in `lua_bridge_class` instead of a Lua
+    // registry, so registration is a no-op returning no values.
+    0
 }
 
 // 0x2705d0 — __ZN3RBX3Lua12Color3Bridge10pushColor3EP9lua_StateRKN3G3D6Color3E
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "RBX::Lua::Color3Bridge::pushColor3(lua_State *,G3D::Color3 const&)")]
-pub fn stub_0x2705d0() -> ! {
-    todo!("0x2705d0 RBX::Lua::Color3Bridge::pushColor3(lua_State *,G3D::Color3 const&)")
+pub fn stub_0x2705d0(thread: &mut LuaThreadState, value: &LuaColor3) -> LuaColor3 {
+    // IDA 0x2705d0: 3-dword copy into the temp (0x2705d8..0x2705e0), then
+    // `Bridge<Color3>::pushNewObject<Color3>` (0x2705ea).
+    push_new_object(thread, lua_bridge_class::COLOR3, LuaUserdataPayload::Color3(*value));
+    *value
 }
 
 // 0x2705ec — __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE8on_indexERKS3_PKcP9lua_State
 // type: int __fastcall(float *, char *__s1, int)
 #[doc(alias = "RBX::Lua::Bridge<G3D::Color3,true>::on_index(G3D::Color3 const&,char const*,lua_State *)")]
-pub fn stub_0x2705ec() -> ! {
-    todo!("0x2705ec RBX::Lua::Bridge<G3D::Color3,true>::on_index(G3D::Color3 const&,char const*,lua_State *)")
+pub fn stub_0x2705ec(color: &LuaColor3, key: &str, thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x2705ec: `"r"` → push x (0x27067a), `"g"` → push y (0x270680),
+    // `"b"` → push z (0x270674); anything else →
+    // `runtime_error("%s is not a valid member")` throw (0x2706c6..0x2706fe).
+    let component = if key == "r" {
+        color.r
+    } else if key == "g" {
+        color.g
+    } else if key == "b" {
+        color.b
+    } else {
+        panic!("{key} is not a valid member");
+    };
+    thread.push(LuaStackValue::Number(f64::from(component)));
+    1
 }
 
 // 0x270724 — __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE11on_newindexERS3_PKcP9lua_State
 // type: void __fastcall __noreturn(int, const char *)
 #[doc(alias = "RBX::Lua::Bridge<G3D::Color3,true>::on_newindex(G3D::Color3&,char const*,lua_State *)")]
-pub fn stub_0x270724() -> ! {
-    todo!("0x270724 RBX::Lua::Bridge<G3D::Color3,true>::on_newindex(G3D::Color3&,char const*,lua_State *)")
+pub fn stub_0x270724(key: &str) -> ! {
+    // IDA 0x270724 (`__noreturn`): unconditional
+    // `runtime_error("%s cannot be assigned to")` throw
+    // (0x270758..0x2707d0) — Color3 members are read-only.
+    panic!("{key} cannot be assigned to");
 }
 
 // 0x2707dc — __ZN3RBX3Lua12RbxRayBridge9newRbxRayEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::RbxRayBridge::newRbxRay(lua_State *)")]
-pub fn stub_0x2707dc() -> ! {
-    todo!("0x2707dc RBX::Lua::RbxRayBridge::newRbxRay(lua_State *)")
+pub fn stub_0x2707dc(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x2707dc: `n = min(gettop, 2)` (0x2707f4..0x2707fe); `n >= 1` →
+    // `luaL_checkudata(1, Vector3)` origin load (0x270828..0x27083a),
+    // `n >= 2` → `luaL_checkudata(2, Vector3)` direction load
+    // (0x270846..0x270852); missing lanes stay zero (0x270806..0x270812,
+    // 0x270858); vtable + 6-float `RbxRay` temp on the stack
+    // (0x270860..0x270892, confirmed by disasm), then
+    // `Bridge<RbxRay>::pushNewObject` (0x27089a); return 1.
+    let top = thread.stack_top().min(2);
+    let origin = if top >= 1 { check_vector3_slot(thread, 1) } else { LuaVector3::default() };
+    let direction = if top >= 2 { check_vector3_slot(thread, 2) } else { LuaVector3::default() };
+    push_new_object(thread, lua_bridge_class::RAY, LuaUserdataPayload::RbxRay(LuaRbxRay { origin, direction }));
+    1
 }
 
 // 0x2708b0 — __ZN3RBX3Lua12RbxRayBridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::RbxRayBridge::registerClassLibrary(lua_State *)")]
-pub fn stub_0x2708b0() -> ! {
-    todo!("0x2708b0 RBX::Lua::RbxRayBridge::registerClassLibrary(lua_State *)")
+pub fn stub_0x2708b0(_thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x2708b0: `luaL_register(L, className, classLibrary)` (0x2708ce),
+    // `lua_setreadonly(L, -1, 1)` (0x2708da), pop the table. Host no-op like
+    // [`stub_0x270594`]; no values returned.
+    0
 }
 
 // 0x2708ec — __ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE8on_indexERKS2_PKcP9lua_State
 // type: int __fastcall(int, char *__s1, int)
 #[doc(alias = "RBX::Lua::Bridge<RBX::RbxRay,true>::on_index(RBX::RbxRay const&,char const*,lua_State *)")]
-pub fn stub_0x2708ec() -> ! {
-    todo!("0x2708ec RBX::Lua::Bridge<RBX::RbxRay,true>::on_index(RBX::RbxRay const&,char const*,lua_State *)")
+pub fn stub_0x2708ec(ray: &LuaRbxRay, key: &str, thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x2708ec: `"Origin"` → push Vector3 copy of +4
+    // (0x2709bc..0x270a40); `"Direction"` → +16 (0x270a3c); `"unit"`/`"Unit"`
+    // → normalized-temp `pushNewObject` (0x2709c0..0x270a36, confirmed by
+    // disasm: `sqrt` + reciprocal + per-lane multiply); `"ClosestPoint"` /
+    // `"Distance"` → `lua_pushcclosure` (0x270a50..0x270a64); else
+    // `runtime_error("%s is not a valid member")`.
+    if key == "Origin" {
+        push_new_object(thread, lua_bridge_class::VECTOR3, LuaUserdataPayload::Vector3(ray.origin));
+    } else if key == "Direction" {
+        push_new_object(thread, lua_bridge_class::VECTOR3, LuaUserdataPayload::Vector3(ray.direction));
+    } else if key == "unit" || key == "Unit" {
+        let unit = rbx_ray_unit(ray);
+        push_new_object(thread, lua_bridge_class::RAY, LuaUserdataPayload::RbxRay(unit));
+    } else if key == "ClosestPoint" {
+        thread.push(LuaStackValue::Function(CLOSEST_POINT_VECTOR3_FN));
+    } else if key == "Distance" {
+        thread.push(LuaStackValue::Function(DISTANCE_VECTOR3_FN));
+    } else {
+        panic!("{key} is not a valid member");
+    }
+    1
 }
 
 // 0x270afc — __ZN3RBX3LuaL19closestPointVector3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::closestPointVector3(lua_State *)")]
-pub fn stub_0x270afc() -> ! {
-    todo!("0x270afc RBX::Lua::closestPointVector3(lua_State *)")
+pub fn stub_0x270afc(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x270afc: `luaL_checkudata(1, RbxRay)` (0x270b18),
+    // `luaL_checkudata(2, Vector3)` (0x270b2a), `RbxRay::closestPoint`
+    // (0x270b34), `Bridge<Vector3>::pushNewObject` (0x270b3e); return 1.
+    let ray = check_rbx_ray_slot(thread, 1);
+    let point = check_vector3_slot(thread, 2);
+    let closest = rbx_ray_closest_point(&ray, &point);
+    push_new_object(thread, lua_bridge_class::VECTOR3, LuaUserdataPayload::Vector3(closest));
+    1
 }
 
 // 0x270b48 — __ZN3RBX3LuaL15distanceVector3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::distanceVector3(lua_State *)")]
-pub fn stub_0x270b48() -> ! {
-    todo!("0x270b48 RBX::Lua::distanceVector3(lua_State *)")
+pub fn stub_0x270b48(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x270b48: `luaL_checkudata(1, RbxRay)` (0x270b62),
+    // `luaL_checkudata(2, Vector3)` (0x270b74), `RbxRay::distance`
+    // (0x270b7c), `lua_pushnumber`; return 1.
+    let ray = check_rbx_ray_slot(thread, 1);
+    let point = check_vector3_slot(thread, 2);
+    let closest = rbx_ray_closest_point(&ray, &point);
+    let dx = closest.x - point.x;
+    let dy = closest.y - point.y;
+    let dz = closest.z - point.z;
+    thread.push(LuaStackValue::Number(f64::from(dx * dx + dy * dy + dz * dz).sqrt()));
+    1
+}
+
+#[cfg(test)]
+mod bridge_push_batch_tests {
+    use super::*;
+
+    fn vector3_slot(v: LuaVector3) -> LuaStackValue {
+        LuaStackValue::Userdata(LuaUserdata { class: lua_bridge_class::VECTOR3.to_owned(), payload: LuaUserdataPayload::Vector3(v) })
+    }
+
+    fn ray_thread() -> LuaThreadState {
+        LuaThreadState {
+            stack: vec![
+                LuaStackValue::Userdata(LuaUserdata {
+                    class: lua_bridge_class::RAY.to_owned(),
+                    payload: LuaUserdataPayload::RbxRay(LuaRbxRay {
+                        origin: LuaVector3 { x: 0.0, y: 0.0, z: 0.0 },
+                        direction: LuaVector3 { x: 3.0, y: 0.0, z: 0.0 },
+                    }),
+                }),
+                vector3_slot(LuaVector3 { x: 5.0, y: 4.0, z: 0.0 }),
+            ],
+        }
+    }
+
+    #[test]
+    fn int16_push_new_objects_tag_and_copy() {
+        let mut thread = LuaThreadState::default();
+        let v2 = LuaVector2i16 { x: 1, y: -2 };
+        assert_eq!(stub_0x26e9c0(&mut thread, &v2), v2);
+        let v3 = LuaVector3i16 { x: 1, y: -2, z: 300 };
+        assert_eq!(stub_0x26eaf0(&mut thread, &v3), v3);
+        assert_eq!(thread.stack.len(), 2);
+        assert!(matches!(
+            &thread.stack[0],
+            LuaStackValue::Userdata(ud) if ud.class == lua_bridge_class::VECTOR2INT16 && ud.payload == LuaUserdataPayload::Vector2i16(v2)
+        ));
+        assert!(matches!(
+            &thread.stack[1],
+            LuaStackValue::Userdata(ud) if ud.class == lua_bridge_class::VECTOR3INT16 && ud.payload == LuaUserdataPayload::Vector3i16(v3)
+        ));
+    }
+
+    #[test]
+    fn any_cast_extracts_matching_holder() {
+        let yielding = ScriptVariant::YieldingFn(LuaYieldingFn { id: 9 });
+        assert_eq!(stub_0x26eb44(&yielding), LuaYieldingFn { id: 9 });
+        let func = ScriptVariant::Function(LuaWeakFunctionRef { id: 7 });
+        assert_eq!(stub_0x26f280(&func), LuaWeakFunctionRef { id: 7 });
+    }
+
+    #[test]
+    #[should_panic(expected = "std::bad_cast")]
+    fn any_cast_yielding_rejects_wrong_type() {
+        let _ = stub_0x26eb44(&ScriptVariant::Double(1.0));
+    }
+
+    #[test]
+    #[should_panic(expected = "std::bad_cast")]
+    fn any_cast_weak_fn_rejects_wrong_type() {
+        let _ = stub_0x26f280(&ScriptVariant::Void);
+    }
+
+    #[test]
+    fn push_arrays_build_lua_tables() {
+        let mut thread = LuaThreadState::default();
+        let variants = vec![ScriptVariant::Double(4.5), ScriptVariant::String("s".to_owned())];
+        assert_eq!(stub_0x26f1d4(&variants, &mut thread), 1);
+        assert!(matches!(&thread.stack[0], LuaStackValue::Table(t) if t.array.len() == 2));
+        let handle = SharedPtr::new(LuaInstanceHandle { name: "Part".to_owned() });
+        let instances = vec![Some(handle.clone()), None];
+        assert_eq!(stub_0x26ef04(&instances, &mut thread), 1);
+        match &thread.stack[1] {
+            LuaStackValue::Table(t) => {
+                assert!(matches!(&t.array[0], LuaStackValue::Userdata(_)));
+                assert_eq!(t.array[1], LuaStackValue::Nil);
+            }
+            other => panic!("expected table, got {other:?}"),
+        }
+        let mut empty = LuaThreadState::default();
+        assert_eq!(stub_0x26f1d4(&[], &mut empty), 1);
+        assert!(matches!(&empty.stack[0], LuaStackValue::Table(t) if t.array.is_empty()));
+    }
+
+    #[test]
+    fn placement_any_assign_construct_destroy() {
+        let mut slot = ScriptVariant::Double(1.0);
+        let back = stub_0x26faf8(&mut slot, &LuaWeakFunctionRef { id: 3 });
+        assert_eq!(*back, ScriptVariant::Function(LuaWeakFunctionRef { id: 3 }));
+        let mut dest = LuaWeakFunctionRef { id: 0 };
+        assert_eq!(stub_0x26fb50(&LuaWeakFunctionRef { id: 4 }, Some(&mut dest)), LuaWeakFunctionRef { id: 4 });
+        assert_eq!(dest, LuaWeakFunctionRef { id: 4 });
+        assert_eq!(stub_0x26fb50(&LuaWeakFunctionRef { id: 5 }, None), LuaWeakFunctionRef { id: 5 });
+        stub_0x26fb60(&mut slot);
+        assert_eq!(slot, ScriptVariant::Void);
+    }
+
+    #[test]
+    fn instance_bridges_accept_tagged_userdata_only() {
+        let thread = LuaThreadState::default();
+        let handle = SharedPtr::new(LuaInstanceHandle { name: "Part".to_owned() });
+        let slot = LuaStackValue::Userdata(LuaUserdata {
+            class: lua_bridge_class::INSTANCE.to_owned(),
+            payload: LuaUserdataPayload::Instance(Some(handle.clone())),
+        });
+        let mut out = ScriptVariant::Void;
+        assert!(stub_0x26fa78(&thread, 1, &mut out, &slot));
+        assert_eq!(out, ScriptVariant::Instance(Some(handle.clone())));
+        assert!(!stub_0x26fa78(&thread, 1, &mut out, &LuaStackValue::Nil));
+        assert!(!stub_0x26fa78(&thread, 1, &mut out, &LuaStackValue::Number(1.0)));
+        let mut described: Option<SharedPtr<LuaInstanceHandle>> = None;
+        assert!(stub_0x26ff94(&thread, 1, &mut described, &slot));
+        assert_eq!(described, Some(handle));
+        assert!(!stub_0x26ff94(&thread, 1, &mut described, &LuaStackValue::Nil));
+    }
+
+    #[test]
+    fn enum_item_bridge_copies_payload() {
+        let thread = LuaThreadState::default();
+        let item = LuaEnumItem { owner: "FormFactor".to_owned(), value: 2 };
+        let slot = LuaStackValue::Userdata(LuaUserdata {
+            class: lua_bridge_class::ENUMITEM.to_owned(),
+            payload: LuaUserdataPayload::EnumItem(item.clone()),
+        });
+        let mut out = LuaEnumItem::default();
+        assert!(stub_0x270008(&thread, 1, &mut out, &slot));
+        assert_eq!(out, item);
+        assert!(!stub_0x270008(&thread, 1, &mut out, &LuaStackValue::Number(2.0)));
+    }
+
+    #[test]
+    fn safe_tostring_falls_back_to_empty() {
+        let thread = LuaThreadState { stack: vec![LuaStackValue::String("hi".to_owned()), LuaStackValue::Number(1.0)] };
+        assert_eq!(stub_0x270210(&thread, 1), "hi");
+        assert_eq!(stub_0x270210(&thread, 2), "");
+        assert_eq!(stub_0x270210(&thread, 9), "");
+        assert_eq!(stub_0x270230(&thread, 1, false), "hi");
+    }
+
+    #[test]
+    #[should_panic(expected = "String expected")]
+    fn throwable_tostring_rejects_non_string() {
+        let thread = LuaThreadState { stack: vec![LuaStackValue::Number(1.0)] };
+        let _ = stub_0x270230(&thread, 1, false);
+    }
+
+    #[test]
+    #[should_panic(expected = "String too long")]
+    fn throwable_tostring_rejects_super_long() {
+        let thread = LuaThreadState { stack: vec![LuaStackValue::String("x".repeat(SUPER_LONG_STRING_LIMIT))] };
+        let _ = stub_0x270230(&thread, 1, true);
+    }
+
+    #[test]
+    fn tofloat_clamps_to_f32_range() {
+        let thread = LuaThreadState {
+            stack: vec![
+                LuaStackValue::Number(2.5),
+                LuaStackValue::Number(f64::INFINITY),
+                LuaStackValue::Number(f64::NEG_INFINITY),
+                LuaStackValue::Number(1e300),
+                LuaStackValue::Number(-1e300),
+                LuaStackValue::Bool(true),
+            ],
+        };
+        assert_eq!(stub_0x270448(&thread, 1), 2.5);
+        assert_eq!(stub_0x270448(&thread, 2), f32::INFINITY);
+        assert_eq!(stub_0x270448(&thread, 3), f32::NEG_INFINITY);
+        assert_eq!(stub_0x270448(&thread, 4), f32::MAX);
+        assert_eq!(stub_0x270448(&thread, 5), -f32::MAX);
+        assert_eq!(stub_0x270448(&thread, 6), 0.0);
+        assert_eq!(stub_0x270448(&thread, 99), 0.0);
+    }
+
+    #[test]
+    fn color3_constructors_and_indexing() {
+        let mut thread = LuaThreadState::default();
+        assert_eq!(stub_0x2704e0(&mut thread), 1);
+        assert!(matches!(
+            &thread.stack[0],
+            LuaStackValue::Userdata(ud) if ud.payload == LuaUserdataPayload::Color3(LuaColor3 { r: 0.0, g: 0.0, b: 0.0 })
+        ));
+        let mut thread = LuaThreadState { stack: vec![LuaStackValue::Number(0.5), LuaStackValue::Number(0.25)] };
+        assert_eq!(stub_0x2704e0(&mut thread), 1);
+        let color = LuaColor3 { r: 0.5, g: 0.25, b: 0.0 };
+        assert!(matches!(
+            thread.stack.last(),
+            Some(LuaStackValue::Userdata(ud)) if ud.payload == LuaUserdataPayload::Color3(color)
+        ));
+        let mut thread = LuaThreadState::default();
+        assert_eq!(stub_0x2705d0(&mut thread, &color), color);
+        let mut out = LuaThreadState::default();
+        assert_eq!(stub_0x2705ec(&color, "r", &mut out), 1);
+        assert_eq!(stub_0x2705ec(&color, "g", &mut out), 1);
+        assert_eq!(stub_0x2705ec(&color, "b", &mut out), 1);
+        assert_eq!(out.stack, vec![
+            LuaStackValue::Number(0.5),
+            LuaStackValue::Number(0.25),
+            LuaStackValue::Number(0.0),
+        ]);
+        assert_eq!(stub_0x270594(&mut LuaThreadState::default()), 0);
+    }
+
+    #[test]
+    #[should_panic(expected = "is not a valid member")]
+    fn color3_index_rejects_unknown_key() {
+        let color = LuaColor3 { r: 1.0, g: 0.0, b: 0.0 };
+        let _ = stub_0x2705ec(&color, "a", &mut LuaThreadState::default());
+    }
+
+    #[test]
+    #[should_panic(expected = "cannot be assigned to")]
+    fn color3_is_read_only() {
+        stub_0x270724("r");
+    }
+
+    #[test]
+    fn ray_constructors_and_indexing() {
+        let mut thread = LuaThreadState::default();
+        assert_eq!(stub_0x2707dc(&mut thread), 1);
+        assert!(matches!(
+            &thread.stack[0],
+            LuaStackValue::Userdata(ud) if ud.payload == LuaUserdataPayload::RbxRay(LuaRbxRay::default())
+        ));
+        let mut one_arg = LuaThreadState { stack: vec![vector3_slot(LuaVector3 { x: 1.0, y: 2.0, z: 3.0 })] };
+        assert_eq!(stub_0x2707dc(&mut one_arg), 1);
+        assert!(matches!(
+            &one_arg.stack[1],
+            LuaStackValue::Userdata(ud) if ud.payload == LuaUserdataPayload::RbxRay(LuaRbxRay {
+                origin: LuaVector3 { x: 1.0, y: 2.0, z: 3.0 },
+                direction: LuaVector3::default(),
+            })
+        ));
+        let ray = LuaRbxRay {
+            origin: LuaVector3 { x: 0.0, y: 0.0, z: 0.0 },
+            direction: LuaVector3 { x: 3.0, y: 0.0, z: 0.0 },
+        };
+        let mut out = LuaThreadState::default();
+        assert_eq!(stub_0x2708ec(&ray, "Origin", &mut out), 1);
+        assert_eq!(stub_0x2708ec(&ray, "Direction", &mut out), 1);
+        assert_eq!(stub_0x2708ec(&ray, "unit", &mut out), 1);
+        assert_eq!(stub_0x2708ec(&ray, "ClosestPoint", &mut out), 1);
+        assert_eq!(stub_0x2708ec(&ray, "Distance", &mut out), 1);
+        assert!(matches!(
+            &out.stack[2],
+            LuaStackValue::Userdata(ud) if ud.payload == LuaUserdataPayload::RbxRay(LuaRbxRay {
+                origin: LuaVector3 { x: 0.0, y: 0.0, z: 0.0 },
+                direction: LuaVector3 { x: 1.0, y: 0.0, z: 0.0 },
+            })
+        ));
+        assert_eq!(out.stack[3], LuaStackValue::Function(CLOSEST_POINT_VECTOR3_FN));
+        assert_eq!(out.stack[4], LuaStackValue::Function(DISTANCE_VECTOR3_FN));
+        assert_eq!(stub_0x2708b0(&mut LuaThreadState::default()), 0);
+    }
+
+    #[test]
+    #[should_panic(expected = "is not a valid member")]
+    fn ray_index_rejects_unknown_key() {
+        let _ = stub_0x2708ec(&LuaRbxRay::default(), "Length", &mut LuaThreadState::default());
+    }
+
+    #[test]
+    fn ray_closest_point_and_distance() {
+        let mut thread = ray_thread();
+        assert_eq!(stub_0x270afc(&mut thread), 1);
+        assert!(matches!(
+            thread.stack.last(),
+            Some(LuaStackValue::Userdata(ud)) if ud.payload == LuaUserdataPayload::Vector3(LuaVector3 { x: 5.0, y: 0.0, z: 0.0 })
+        ));
+        let mut thread = ray_thread();
+        assert_eq!(stub_0x270b48(&mut thread), 1);
+        assert_eq!(thread.stack.last(), Some(&LuaStackValue::Number(4.0)));
+        let mut behind = LuaThreadState {
+            stack: vec![
+                LuaStackValue::Userdata(LuaUserdata {
+                    class: lua_bridge_class::RAY.to_owned(),
+                    payload: LuaUserdataPayload::RbxRay(LuaRbxRay {
+                        origin: LuaVector3::default(),
+                        direction: LuaVector3 { x: 1.0, y: 0.0, z: 0.0 },
+                    }),
+                }),
+                vector3_slot(LuaVector3 { x: -2.0, y: 0.0, z: 0.0 }),
+            ],
+        };
+        assert_eq!(stub_0x270afc(&mut behind), 1);
+        assert!(matches!(
+            behind.stack.last(),
+            Some(LuaStackValue::Userdata(ud)) if ud.payload == LuaUserdataPayload::Vector3(LuaVector3 { x: 0.0, y: 0.0, z: 0.0 })
+        ));
+    }
 }
 
 // 0x270b98 — __ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE11on_newindexERS2_PKcP9lua_State
