@@ -46,28 +46,140 @@ pub const TEXTURE_TYPE_2D: u32 = 2;
 pub const TEXTURE_TYPE_3D: u32 = 4;
 
 /// was: `Ogre::TextureUnitState::TextureEffect` (value of the `mEffects` map).
+/// Flat layout from IDA `0xe4bd68`/`0xe4c2d4`: type@0, subtype@4, arg1@8,
+/// arg2@12, waveType@16, base@20, frequency@24, phase@28, amplitude@32,
+/// controller@36 (`LDR R0,[R4,#0x24]` at `0xe4bd72`).
 #[doc(alias = "Ogre::TextureUnitState::TextureEffect")]
 #[derive(Clone, Debug, Default)]
 pub struct TextureEffect {
     pub effect_type: u32,
+    pub subtype: i32,
     pub arg1: f32,
     pub arg2: f32,
+    pub wave_type: u32,
+    pub base: f32,
+    pub frequency: f32,
+    pub phase: f32,
+    pub amplitude: f32,
     /// ControllerManager handle from `createEffectController`; None = destroyed.
     pub controller: Option<u32>,
 }
 
+/// was: `Ogre::TextureUnitState::TextureEffectType` (`0xe4bc46`: `type <= 5`
+/// replaces the existing entry; 6 = `ET_TRANSFORM` allows several subtypes).
+/// Values from `setScrollAnimation` (`0xe4c20c`: 2/3/4), `setRotateAnimation`
+/// (`0xe4c2a0`: 5), `setTransformAnimation` (`0xe4c2d4`: 6), `setEnvironmentMap`
+/// (`0xe4be2c`: 0).
+#[doc(alias = "Ogre::TextureUnitState::TextureEffectType")]
+pub mod effect_type {
+    /// `ET_ENVIRONMENT_MAP` (IDA `0xe4be2c`).
+    pub const ENVIRONMENT_MAP: u32 = 0;
+    /// `ET_PROJECTIVE_TEXTURE` (no controller, IDA `0xe4bd8e` default arm).
+    pub const PROJECTIVE_TEXTURE: u32 = 1;
+    /// `ET_UVSCROLL` (IDA `0xe4c25a`).
+    pub const UV_SCROLL: u32 = 2;
+    /// `ET_USCROLL` (IDA `0xe4c270`).
+    pub const U_SCROLL: u32 = 3;
+    /// `ET_VSCROLL` (IDA `0xe4c288`).
+    pub const V_SCROLL: u32 = 4;
+    /// `ET_ROTATE` (IDA `0xe4c2c4`).
+    pub const ROTATE: u32 = 5;
+    /// `ET_TRANSFORM` (IDA `0xe4c368`).
+    pub const TRANSFORM: u32 = 6;
+}
+
+/// was: `Ogre::LayerBlendModeEx` — one blend-mode block (60 bytes).
+/// Colour block at +56, alpha block at +124 (IDA `0xe4be02`/`0xe4be06`).
+#[doc(alias = "Ogre::LayerBlendModeEx")]
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, PartialEq)]
+pub struct LayerBlendModeEx {
+    /// +0 blend type (`LBT_COLOUR`/`LBT_ALPHA`).
+    pub blend_type: u32,
+    /// +4 operation (`mAlphaBlendMode.operation`, IDA `0xe4bc14`).
+    pub operation: u32,
+    /// +8 first source (IDA `0xe4bc14`).
+    pub source1: u32,
+    /// +12 second source (IDA `0xe4bc14`).
+    pub source2: u32,
+    /// +16 colour arg 1 (`mColourBlendMode.colourArg1`, IDA `0xe4bbda`).
+    pub colour_arg1: ColourValue,
+    /// +32 colour arg 2 (IDA `0xe4bbea`).
+    pub colour_arg2: ColourValue,
+    /// +48 alpha arg 1 (`mAlphaBlendMode.alphaArg1`, IDA `0xe4bc18`).
+    pub alpha_arg1: f32,
+    /// +52 alpha arg 2 (IDA `0xe4bc1c`).
+    pub alpha_arg2: f32,
+    /// +56 manual factor (`mAlphaBlendMode.factor`, IDA `0xe4bc20`).
+    pub factor: f32,
+}
+
+/// was: `Ogre::TextureUnitState::UVWAddressingMode` — per-axis wrap mode.
+/// Returned by reference at +28 (IDA `0xe4be0a`).
+#[doc(alias = "Ogre::TextureUnitState::UVWAddressingMode")]
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct UvwAddressingMode {
+    pub u: u32,
+    pub v: u32,
+    pub w: u32,
+}
+
+/// was: `Ogre::Matrix4` — row-major 4x4 (`mTexModMatrix` at +208, IDA `0xe4bf58`).
+#[doc(alias = "Ogre::Matrix4")]
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Matrix4 {
+    pub m: [[f32; 4]; 4],
+}
+
+impl Matrix4 {
+    /// `Ogre::Matrix4::IDENTITY` (copied in at IDA `0xe4bfa8`..`0xe4bfb4`).
+    pub const IDENTITY: Self = Self {
+        m: [
+            [1.0, 0.0, 0.0, 0.0],
+            [0.0, 1.0, 0.0, 0.0],
+            [0.0, 0.0, 1.0, 0.0],
+            [0.0, 0.0, 0.0, 1.0],
+        ],
+    };
+
+    /// `Ogre::Matrix4::concatenate` (`0xd14830`): `out = a * b`, row-major.
+    /// IDA `0xd14888`: `out[0][j] = a[0][0]*b[0][j] + a[0][1]*b[1][j] + ...`.
+    pub fn concatenate(a: &Self, b: &Self) -> Self {
+        let mut m = [[0.0f32; 4]; 4];
+        for i in 0..4 {
+            for j in 0..4 {
+                m[i][j] = a.m[i][0] * b.m[0][j]
+                    + a.m[i][1] * b.m[1][j]
+                    + a.m[i][2] * b.m[2][j]
+                    + a.m[i][3] * b.m[3][j];
+            }
+        }
+        Self { m }
+    }
+}
+
+impl Default for Matrix4 {
+    fn default() -> Self {
+        Self::IDENTITY
+    }
+}
+
 /// was: `Ogre::TexturePtr` (`boost::shared_ptr<Ogre::Texture>`, 16 bytes each in `mTextures`).
-/// Only the loaded flag is modelled; the GPU resource itself is opaque.
+/// Only the loaded/prepared latches are modelled; the GPU resource itself is opaque.
 /// `boost::shared_ptr` maps to `rbx_core::SharedPtr` per AGENTS.md §4.
 #[derive(Clone, Debug, Default)]
 pub struct TextureSlot {
     pub loaded: bool,
+    /// `Texture::prepare` latch for `ensurePrepared` (IDA `0xe4c3a6`).
+    pub prepared: bool,
 }
 
 /// was: `Ogre::TextureUnitState` (OgreMain/src/OgreTextureUnitState.cpp, ogre-v1-6-4).
 /// Byte offsets are the IDA `(this + N)` word offsets mapped to bytes.
 #[doc(alias = "Ogre::TextureUnitState")]
-#[derive(Clone, Debug, Default)]
+#[derive(Clone, Debug)]
 pub struct TextureUnitState {
     /// +0 current frame index (`mCurrentFrame`, IDA `0xe4bb9a`).
     pub current_frame: u32,
@@ -83,24 +195,33 @@ pub struct TextureUnitState {
     pub num_mipmaps: i32,
     /// +24 texture coordinate set (`mTextureCoordSetIndex`, IDA `0xe4bbc2`).
     pub texture_coord_set: u32,
-    /// +60/+64/+68 colour blend op + sources (IDA `0xe4bbc8`..`0xe4bbd0`).
-    pub colour_op_ex: u32,
-    pub colour_src1: u32,
-    pub colour_src2: u32,
-    /// +72/+88 blend colour/alpha args (IDA `0xe4bbda`/`0xe4bbea`).
-    pub colour_arg1: ColourValue,
-    pub colour_arg2: ColourValue,
-    /// +112 manual blend factor (IDA `0xe4bbee`).
-    pub colour_blend_factor: f32,
+    /// +28 addressing mode (`mAddressMode`, `UVWAddressingMode`, IDA `0xe4be0a`).
+    pub addressing: UvwAddressingMode,
+    /// +40 border colour (`mBorderColour`, IDA `0xe4be22`).
+    pub border_colour: ColourValue,
+    /// +56 colour blend block (`mColourBlendMode`, IDA `0xe4be02`).
+    pub colour_blend: LayerBlendModeEx,
     /// +116 multipass fallback src/dst (IDA `0xe4bbfc`).
     pub colour_fallback_src: SceneBlendFactor,
     pub colour_fallback_dst: SceneBlendFactor,
+    /// +124 alpha blend block (`mAlphaBlendMode`, IDA `0xe4be06`).
+    pub alpha_blend: LayerBlendModeEx,
     /// +184 load-failed latch, cleared by the name setters (IDA `0xe4a96c`).
     pub load_failed: bool,
     /// +185 texture has alpha (`mIsAlpha`, IDA `0xe4bbb0`).
     pub is_alpha: bool,
     /// +186 hardware gamma (`mHwGammaEnabled`, IDA `0xe4bbb8`).
     pub hw_gamma_enabled: bool,
+    /// +187 matrix-recalc latch (`mRecalcTexMatrix`, IDA `0xe4bf04`).
+    pub recalc_tex_matrix: bool,
+    /// +188 scroll offsets (`mUMod`/`mVMod`, IDA `0xe4bf12`).
+    pub scroll: [f32; 2],
+    /// +196 scale (`mUScale`/`mVScale`, IDA `0xe4bf22`).
+    pub scale: [f32; 2],
+    /// +204 rotation (`mRotate`, `Radian`, IDA `0xe4bf30`).
+    pub rotate: f32,
+    /// +208 texture matrix (`mTexModMatrix`, IDA `0xe4bf54`).
+    pub tex_mod_matrix: Matrix4,
     /// +296 binding type (`mBindingType`, IDA `0xe4a90c`/`0xe4a918`).
     pub binding_type: BindingType,
     /// +300 content type (`mContentType`, IDA `0xe49ba8`/`0xe4a920`).
@@ -119,6 +240,45 @@ pub struct TextureUnitState {
     pub parent_dirty: bool,
     /// Local allocator for controller handles (no original address; glue only).
     next_handle: u32,
+}
+
+impl Default for TextureUnitState {
+    /// Matches the Ogre ctor defaults that IDA shows in use: unit scale,
+    /// identity texture matrix, everything else zero/empty.
+    fn default() -> Self {
+        Self {
+            current_frame: 0,
+            anim_duration: 0.0,
+            flag_08: 0,
+            texture_type: 0,
+            desired_format: 0,
+            num_mipmaps: 0,
+            texture_coord_set: 0,
+            addressing: UvwAddressingMode::default(),
+            border_colour: ColourValue::default(),
+            colour_blend: LayerBlendModeEx::default(),
+            colour_fallback_src: SceneBlendFactor::default(),
+            colour_fallback_dst: SceneBlendFactor::default(),
+            alpha_blend: LayerBlendModeEx::default(),
+            load_failed: false,
+            is_alpha: false,
+            hw_gamma_enabled: false,
+            recalc_tex_matrix: false,
+            scroll: [0.0, 0.0],
+            scale: [1.0, 1.0],
+            rotate: 0.0,
+            tex_mod_matrix: Matrix4::IDENTITY,
+            binding_type: BindingType::default(),
+            content_type: 0,
+            frames: Vec::new(),
+            textures: Vec::new(),
+            effects: Vec::new(),
+            parent_loaded: false,
+            anim_controller: None,
+            parent_dirty: false,
+            next_handle: 0,
+        }
+    }
 }
 
 impl TextureUnitState {
@@ -163,8 +323,19 @@ impl TextureUnitState {
         }
         // IDA 0xe49b30..0xe49b46: for each effect: createEffectController
         for i in 0..self.effects.len() {
-            let h = self.alloc_handle();
-            self.effects[i].controller = Some(h);
+            self.create_effect_controller(i);
+        }
+    }
+
+    /// Models `TextureUnitState::ensurePrepared` (called at IDA `0xe4c3a6`).
+    /// Original is const and calls `Texture::prepare` after gamma/checks;
+    /// modelled as a latch like `ensure_loaded`.
+    pub fn ensure_prepared(&mut self, index: u32) {
+        if self.load_failed {
+            return;
+        }
+        if let Some(slot) = self.textures.get_mut(index as usize) {
+            slot.prepared = true;
         }
     }
 
@@ -318,18 +489,382 @@ impl TextureUnitState {
         arg2: ColourValue,
         factor: f32,
     ) {
-        self.colour_op_ex = op;
-        self.colour_src1 = src1;
-        self.colour_src2 = src2;
-        self.colour_arg1 = arg1;
-        self.colour_arg2 = arg2;
-        self.colour_blend_factor = factor;
+        self.colour_blend.operation = op;
+        self.colour_blend.source1 = src1;
+        self.colour_blend.source2 = src2;
+        self.colour_blend.colour_arg1 = arg1;
+        self.colour_blend.colour_arg2 = arg2;
+        self.colour_blend.factor = factor;
     }
 
     /// IDA `0xe4bbfc`: store the multipass fallback pair (+116).
     pub fn set_colour_op_multipass_fallback(&mut self, src: SceneBlendFactor, dst: SceneBlendFactor) {
         self.colour_fallback_src = src;
         self.colour_fallback_dst = dst;
+    }
+    /// IDA `0xe4bc04`: store alpha blend op/sources at +128..+136 and the
+    /// alpha args + manual factor at +172..+180 (`mAlphaBlendMode`).
+    pub fn set_alpha_operation(
+        &mut self,
+        op: u32,
+        src1: u32,
+        src2: u32,
+        arg1: f32,
+        arg2: f32,
+        factor: f32,
+    ) {
+        // IDA 0xe4bc14: STRD over +128/+132/+136 (operation, source1, source2)
+        self.alpha_blend.operation = op;
+        self.alpha_blend.source1 = src1;
+        self.alpha_blend.source2 = src2;
+        // IDA 0xe4bc18..0xe4bc20: VSTR over +172/+176/+180
+        self.alpha_blend.alpha_arg1 = arg1;
+        self.alpha_blend.alpha_arg2 = arg2;
+        self.alpha_blend.factor = factor;
+    }
+
+    /// IDA `0xe4bc2c`: null the incoming controller, replace any same-type
+    /// entry (non-transform only), create the controller when loaded, insert.
+    pub fn add_effect(&mut self, mut effect: TextureEffect) {
+        // IDA 0xe4bc3c: effect.controller = 0
+        effect.controller = None;
+        // IDA 0xe4bc40..0xe4bc9a: type <= 5 → find + destroy controller + erase
+        // the existing node (upstream: `effect.type != ET_TRANSFORM`).
+        if effect.effect_type <= effect_type::ROTATE {
+            self.remove_effect(effect.effect_type);
+        }
+        // IDA 0xe4bca8..0xe4bcae: isLoaded(mParent) → createEffectController
+        if self.parent_loaded {
+            let index = self.effects.len();
+            self.effects.push(effect);
+            self.create_effect_controller(index);
+        } else {
+            // IDA 0xe4bcd6..0xe4bd5a: rb-tree insert without a controller
+            self.effects.push(effect);
+        }
+    }
+
+    /// IDA `0xe4bd68`: destroy the old controller, then allocate one per the
+    /// effect type via the ControllerManager singleton (modelled as a handle).
+    /// Types 0/1 (`ET_ENVIRONMENT_MAP`/`ET_PROJECTIVE_TEXTURE`) take the
+    /// `TBB` default arm at `0xe4bd8e`/`0xe4bdf2`, which skips the store, so
+    /// the controller stays null.
+    pub fn create_effect_controller(&mut self, index: usize) {
+        // IDA 0xe4bd72..0xe4bd82: controller → destroyController → 0
+        if let Some(effect) = self.effects.get_mut(index) {
+            effect.controller = None;
+        }
+        let kind = match self.effects.get(index) {
+            Some(effect) => effect.effect_type,
+            None => return,
+        };
+        // IDA 0xe4bd88..0xe4bdf0: switch (type - 2) over 2..6
+        let handle = match kind {
+            effect_type::UV_SCROLL
+            | effect_type::U_SCROLL
+            | effect_type::V_SCROLL
+            | effect_type::ROTATE
+            | effect_type::TRANSFORM => Some(self.alloc_handle()),
+            _ => None,
+        };
+        if let Some(effect) = self.effects.get_mut(index) {
+            effect.controller = handle;
+        }
+    }
+
+    /// IDA `0xe4bdf8`: `return mColourBlendFallbackSrc` (+116).
+    pub fn colour_blend_fallback_src(&self) -> SceneBlendFactor {
+        self.colour_fallback_src
+    }
+
+    /// IDA `0xe4bdfc`: `return mColourBlendFallbackDest` (+120).
+    pub fn colour_blend_fallback_dst(&self) -> SceneBlendFactor {
+        self.colour_fallback_dst
+    }
+
+    /// IDA `0xe4be00`: `return &mColourBlendMode` (+56).
+    pub fn colour_blend_mode(&self) -> &LayerBlendModeEx {
+        &self.colour_blend
+    }
+
+    /// IDA `0xe4be04`: `return &mAlphaBlendMode` (+124).
+    pub fn alpha_blend_mode(&self) -> &LayerBlendModeEx {
+        &self.alpha_blend
+    }
+
+    /// IDA `0xe4be08`: `return &mAddressMode` (+28).
+    pub fn texture_addressing_mode(&self) -> &UvwAddressingMode {
+        &self.addressing
+    }
+
+    /// IDA `0xe4be0c`: 12-byte copy of the `UVWAddressingMode` over +28.
+    pub fn set_texture_addressing_mode(&mut self, mode: UvwAddressingMode) {
+        // IDA 0xe4be12..0xe4be14: STR u/v/w over +28/+32/+36
+        self.addressing = mode;
+    }
+
+    /// IDA `0xe4be1c`: 16-byte copy of the `ColourValue` over +40.
+    pub fn set_texture_border_colour(&mut self, colour: ColourValue) {
+        // IDA 0xe4be22: VLD1.32/vst pair over +40..+56
+        self.border_colour = colour;
+    }
+
+    /// IDA `0xe4be28`: `return &mBorderColour` (+40).
+    pub fn texture_border_colour(&self) -> &ColourValue {
+        &self.border_colour
+    }
+
+    /// IDA `0xe4be2c`: enabled stores subtype and adds `ET_ENVIRONMENT_MAP`,
+    /// disabled removes it.
+    pub fn set_environment_map(&mut self, enable: bool, env_map_type: i32) {
+        if !enable {
+            // IDA 0xe4be34..0xe4be48: enable != 1 → removeEffect(ET_ENVIRONMENT_MAP)
+            self.remove_effect(effect_type::ENVIRONMENT_MAP);
+            return;
+        }
+        // IDA 0xe4be38..0xe4be44: eff = {ET_ENVIRONMENT_MAP, subtype}; addEffect
+        self.add_effect(TextureEffect {
+            effect_type: effect_type::ENVIRONMENT_MAP,
+            subtype: env_map_type,
+            ..TextureEffect::default()
+        });
+    }
+
+    /// IDA `0xe4be50`: destroy every controller in the `equal_range(type)`
+    /// span, then erase the span.
+    pub fn remove_effect(&mut self, effect_type_: u32) {
+        // IDA 0xe4be9a..0xe4bea4: destroyController per effect in range
+        for effect in self.effects.iter_mut() {
+            if effect.effect_type == effect_type_ {
+                effect.controller = None;
+            }
+        }
+        // IDA 0xe4bec4: rb-tree erase(first, last)
+        self.effects.retain(|e| e.effect_type != effect_type_);
+    }
+
+    /// IDA `0xe4bec8`: 64-byte copy of the `Matrix4` over +208, latch clear.
+    pub fn set_texture_transform(&mut self, xform: &Matrix4) {
+        // IDA 0xe4bee6..0xe4befe: four VLD/VST row pairs over +208..+272
+        self.tex_mod_matrix = *xform;
+        // IDA 0xe4bf04: mRecalcTexMatrix = false
+        self.recalc_tex_matrix = false;
+    }
+
+    /// IDA `0xe4bf0c`: store the scroll pair over +188, set the latch.
+    pub fn set_texture_scroll(&mut self, u: f32, v: f32) {
+        // IDA 0xe4bf12: STRD u,v over +188
+        self.scroll = [u, v];
+        // IDA 0xe4bf16: mRecalcTexMatrix = true
+        self.recalc_tex_matrix = true;
+    }
+
+    /// IDA `0xe4bf1c`: store the scale pair over +196, set the latch.
+    pub fn set_texture_scale(&mut self, u_scale: f32, v_scale: f32) {
+        // IDA 0xe4bf22: STRD over +196
+        self.scale = [u_scale, v_scale];
+        // IDA 0xe4bf26: mRecalcTexMatrix = true
+        self.recalc_tex_matrix = true;
+    }
+
+    /// IDA `0xe4bf2c`: store the `Radian` over +204, set the latch.
+    pub fn set_texture_rotate(&mut self, angle: f32) {
+        // IDA 0xe4bf30: STR over +204
+        self.rotate = angle;
+        // IDA 0xe4bf34: mRecalcTexMatrix = true
+        self.recalc_tex_matrix = true;
+    }
+
+    /// IDA `0xe4bf3c`: recalc when the latch is set, return `mTexModMatrix`.
+    pub fn texture_transform(&mut self) -> &Matrix4 {
+        // IDA 0xe4bf42..0xe4bf4c: mRecalcTexMatrix → recalcTextureMatrix
+        if self.recalc_tex_matrix {
+            self.recalc_texture_matrix();
+        }
+        // IDA 0xe4bf54: return this + 208
+        &self.tex_mod_matrix
+    }
+
+    /// IDA `0xe4bf58`: rebuild `mTexModMatrix` from scale/scroll/rotate.
+    /// Matches upstream `OgreTextureUnitState.cpp`: scale-about-centre by
+    /// inverse scale, then `xform = translate * xform`, then
+    /// `xform = rotate-about-centre * xform` (disasm `0xe4c034`/`0xe4c0ec`:
+    /// `R2 = accumulator`, `this = stage`, so `stage.concatenate(acc)`).
+    /// The original calls double-precision `cos`/`sin` (`0xe4c0c8`/`0xe4c0da`);
+    /// `&mut` stands in for the C++ mutable matrix member.
+    pub fn recalc_texture_matrix(&mut self) {
+        // IDA 0xe4bfa8..0xe4bfb4: xform = Matrix4::IDENTITY
+        let mut xform = Matrix4::IDENTITY;
+        // IDA 0xe4bfb8..0xe4bfd8: mUScale != 1 || mVScale != 1
+        if self.scale[0] != 1.0 || self.scale[1] != 1.0 {
+            // IDA 0xe4bfe6..0xe4c00a: inverse scale about the texture centre.
+            // VDIV/VADD flow: m00 = 1/sx, m11 = 1/sy,
+            // m03 = 0.5 - 0.5/sx, m13 = 0.5 - 0.5/sy (first matrix: direct).
+            let sx = 1.0 / self.scale[0];
+            let sy = 1.0 / self.scale[1];
+            xform.m[0][0] = sx;
+            xform.m[1][1] = sy;
+            xform.m[0][3] = 0.5 - 0.5 * sx;
+            xform.m[1][3] = 0.5 - 0.5 * sy;
+        }
+        // IDA 0xe4c012..0xe4c022: mUMod != 0 || mVMod != 0 (ITT EQ double test)
+        if self.scroll[0] != 0.0 || self.scroll[1] != 0.0 {
+            // IDA 0xe4c050..0xe4c076: stage = IDENTITY + (m03, m13) = scroll
+            let mut stage = Matrix4::IDENTITY;
+            stage.m[0][3] = self.scroll[0];
+            stage.m[1][3] = self.scroll[1];
+            xform = Matrix4::concatenate(&stage, &xform);
+        }
+        // IDA 0xe4c0a6..0xe4c0b4: mRotate != 0
+        if self.rotate != 0.0 {
+            // IDA 0xe4c0b6..0xe4c0d4: double cos/sin, back to float
+            let (sin_theta, cos_theta) = (self.rotate as f64).sin_cos();
+            let (sin_theta, cos_theta) = (sin_theta as f32, cos_theta as f32);
+            // IDA 0xe4c114..0xe4c15e: rotate about the texture centre:
+            // row0 = (cos, -sin, 0, 0.5 - 0.5cos + 0.5sin),
+            // row1 = (sin, cos, 0, 0.5 - 0.5sin - 0.5cos).
+            let mut stage = Matrix4::IDENTITY;
+            stage.m[0][0] = cos_theta;
+            stage.m[0][1] = -sin_theta;
+            stage.m[1][0] = sin_theta;
+            stage.m[1][1] = cos_theta;
+            stage.m[0][3] = 0.5 - 0.5 * cos_theta + 0.5 * sin_theta;
+            stage.m[1][3] = 0.5 - 0.5 * sin_theta - 0.5 * cos_theta;
+            xform = Matrix4::concatenate(&stage, &xform);
+        }
+        // IDA 0xe4c1ac..0xe4c1ca: store rows over +208, mRecalcTexMatrix = false
+        self.tex_mod_matrix = xform;
+        self.recalc_tex_matrix = false;
+    }
+
+    /// IDA `0xe4c1dc`: `mUMod = value`, latch set.
+    pub fn set_texture_u_scroll(&mut self, value: f32) {
+        // IDA 0xe4c1de: STR over +188
+        self.scroll[0] = value;
+        // IDA 0xe4c1e2: mRecalcTexMatrix = true
+        self.recalc_tex_matrix = true;
+    }
+
+    /// IDA `0xe4c1e8`: `mVMod = value`, latch set.
+    pub fn set_texture_v_scroll(&mut self, value: f32) {
+        // IDA 0xe4c1ea: STR over +192
+        self.scroll[1] = value;
+        // IDA 0xe4c1ee: mRecalcTexMatrix = true
+        self.recalc_tex_matrix = true;
+    }
+
+    /// IDA `0xe4c1f4`: `mUScale = value`, latch set.
+    pub fn set_texture_u_scale(&mut self, value: f32) {
+        // IDA 0xe4c1f6: STR over +196
+        self.scale[0] = value;
+        // IDA 0xe4c1fa: mRecalcTexMatrix = true
+        self.recalc_tex_matrix = true;
+    }
+
+    /// IDA `0xe4c200`: `mVScale = value`, latch set.
+    pub fn set_texture_v_scale(&mut self, value: f32) {
+        // IDA 0xe4c202: STR over +200
+        self.scale[1] = value;
+        // IDA 0xe4c206: mRecalcTexMatrix = true
+        self.recalc_tex_matrix = true;
+    }
+
+    /// IDA `0xe4c20c`: drop UV/U/V scroll effects, then add one back from the
+    /// speeds. Note the outer `a2 != 0` gate at `0xe4c242`: with `uSpeed == 0`
+    /// nothing is added even when `vSpeed != 0` (differs from upstream master,
+    /// preserved as observed).
+    pub fn set_scroll_animation(&mut self, u_speed: f32, v_speed: f32) {
+        // IDA 0xe4c21e..0xe4c22e: removeEffect(UV/USCROLL/VSCROLL)
+        self.remove_effect(effect_type::UV_SCROLL);
+        self.remove_effect(effect_type::U_SCROLL);
+        self.remove_effect(effect_type::V_SCROLL);
+        // IDA 0xe4c242: uSpeed != 0
+        if u_speed != 0.0 {
+            // IDA 0xe4c256..0xe4c25c: equal speeds → single UVSCROLL
+            if u_speed == v_speed {
+                self.add_effect(TextureEffect {
+                    effect_type: effect_type::UV_SCROLL,
+                    arg1: u_speed,
+                    ..TextureEffect::default()
+                });
+                return;
+            }
+            // IDA 0xe4c26a..0xe4c278: uSpeed != 0 → USSCROLL
+            if u_speed != 0.0 {
+                self.add_effect(TextureEffect {
+                    effect_type: effect_type::U_SCROLL,
+                    arg1: u_speed,
+                    ..TextureEffect::default()
+                });
+            }
+            // IDA 0xe4c284..0xe4c28a: vSpeed != 0 → VSCROLL
+            if v_speed != 0.0 {
+                self.add_effect(TextureEffect {
+                    effect_type: effect_type::V_SCROLL,
+                    arg1: v_speed,
+                    ..TextureEffect::default()
+                });
+            }
+        }
+    }
+
+    /// IDA `0xe4c2a0`: drop `ET_ROTATE`, add it back unless the speed is 0.
+    pub fn set_rotate_animation(&mut self, speed: f32) {
+        // IDA 0xe4c2ae: removeEffect(ET_ROTATE)
+        self.remove_effect(effect_type::ROTATE);
+        // IDA 0xe4c2be..0xe4c2ca: speed != 0 → addEffect({ET_ROTATE, speed})
+        if speed != 0.0 {
+            self.add_effect(TextureEffect {
+                effect_type: effect_type::ROTATE,
+                arg1: speed,
+                ..TextureEffect::default()
+            });
+        }
+    }
+
+    /// IDA `0xe4c2d4`: drop the `ET_TRANSFORM` entry with this subtype, then
+    /// add the new wave entry unless the wave params are all 0.
+    /// FIDELITY: the gate at `0xe4c362` tests base/phase/amplitude only —
+    /// frequency alone does not trigger creation; preserved as observed.
+    pub fn set_transform_animation(
+        &mut self,
+        ttype: i32,
+        wave_type: u32,
+        base: f32,
+        frequency: f32,
+        phase: f32,
+        amplitude: f32,
+    ) {
+        // IDA 0xe4c2e4..0xe4c328: erase the (TRANSFORM, subtype) node, if any
+        if let Some(pos) = self
+            .effects
+            .iter()
+            .position(|e| e.effect_type == effect_type::TRANSFORM && e.subtype == ttype)
+        {
+            self.effects.remove(pos);
+        }
+        // IDA 0xe4c362: base || phase || amplitude
+        if base != 0.0 || phase != 0.0 || amplitude != 0.0 {
+            // IDA 0xe4c368..0xe4c382: eff = {TRANSFORM, ...}; addEffect
+            self.add_effect(TextureEffect {
+                effect_type: effect_type::TRANSFORM,
+                subtype: ttype,
+                wave_type,
+                base,
+                frequency,
+                phase,
+                amplitude,
+                ..TextureEffect::default()
+            });
+        }
+    }
+
+    /// IDA `0xe4c390`: prepare every frame texture.
+    pub fn prepare(&mut self) {
+        // IDA 0xe4c396..0xe4c3b6: HIDWORD(size) != size → ensurePrepared(i++)
+        for i in 0..self.frames.len() as u32 {
+            self.ensure_prepared(i);
+        }
     }
 }
 
@@ -594,24 +1129,36 @@ pub fn stub_0xe4bbf8(state: &mut TextureUnitState, src: SceneBlendFactor, dst: S
 #[doc(alias = "Ogre::TextureUnitState::setAlphaOperation(Ogre::LayerBlendOperationEx,Ogre::LayerBlendSource,Ogre::LayerBlendSource,float,float,float)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState17setAlphaOperationENS_21LayerBlendOperationExENS_16LayerBlendSourceES2_fff")]
 // was: Ogre::TextureUnitState::setAlphaOperation(Ogre::LayerBlendOperationEx,Ogre::LayerBlendSource,Ogre::LayerBlendSource,float,float,float)
-// IDA 0xe4bc04: 10 insns (VLDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bc04() {
+// IDA 0xe4bc04: stores op/sources/args/factor at +128..+180 (see set_alpha_operation).
+pub fn stub_0xe4bc04(
+    state: &mut TextureUnitState,
+    op: u32,
+    src1: u32,
+    src2: u32,
+    arg1: f32,
+    arg2: f32,
+    factor: f32,
+) {
+    state.set_alpha_operation(op, src1, src2, arg1, arg2, factor)
 }
 
 // 0xe4bc2c — __ZN4Ogre16TextureUnitState9addEffectERNS0_13TextureEffectE
 #[doc(alias = "Ogre::TextureUnitState::addEffect(Ogre::TextureUnitState::TextureEffect &)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState9addEffectERNS0_13TextureEffectE")]
 // was: Ogre::TextureUnitState::addEffect(Ogre::TextureUnitState::TextureEffect &)
-// IDA 0xe4bc2c: 113 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bc2c() {
+// IDA 0xe4bc2c: null controller, replace same-type entry, insert (see add_effect).
+pub fn stub_0xe4bc2c(state: &mut TextureUnitState, effect: &TextureEffect) {
+    state.add_effect(effect.clone())
 }
 
 // 0xe4bd68 — __ZN4Ogre16TextureUnitState22createEffectControllerERNS0_13TextureEffectE
 #[doc(alias = "Ogre::TextureUnitState::createEffectController(Ogre::TextureUnitState::TextureEffect &)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState22createEffectControllerERNS0_13TextureEffectE")]
 // was: Ogre::TextureUnitState::createEffectController(Ogre::TextureUnitState::TextureEffect &)
-// IDA 0xe4bd68: 50 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bd68() {
+// IDA 0xe4bd68: destroy old controller, allocate per effect type (see create_effect_controller).
+// Original takes `TextureEffect &`; the index selects the element in `mEffects`.
+pub fn stub_0xe4bd68(state: &mut TextureUnitState, index: usize) {
+    state.create_effect_controller(index)
 }
 
 // 0xe4bdf8 — __ZNK4Ogre16TextureUnitState25getColourBlendFallbackSrcEv
@@ -619,8 +1166,9 @@ pub fn stub_0xe4bd68() {
 #[doc(alias = "Ogre::TextureUnitState::getColourBlendFallbackSrc(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState25getColourBlendFallbackSrcEv")]
 // was: Ogre::TextureUnitState::getColourBlendFallbackSrc(void)const
-// IDA 0xe4bdf8: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bdf8() {
+// IDA 0xe4bdf8: LDR R0,[R0,#116] (mColourBlendFallbackSrc).
+pub fn stub_0xe4bdf8(state: &TextureUnitState) -> SceneBlendFactor {
+    state.colour_blend_fallback_src()
 }
 
 // 0xe4bdfc — __ZNK4Ogre16TextureUnitState26getColourBlendFallbackDestEv
@@ -628,8 +1176,9 @@ pub fn stub_0xe4bdf8() {
 #[doc(alias = "Ogre::TextureUnitState::getColourBlendFallbackDest(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState26getColourBlendFallbackDestEv")]
 // was: Ogre::TextureUnitState::getColourBlendFallbackDest(void)const
-// IDA 0xe4bdfc: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bdfc() {
+// IDA 0xe4bdfc: LDR R0,[R0,#120] (mColourBlendFallbackDest).
+pub fn stub_0xe4bdfc(state: &TextureUnitState) -> SceneBlendFactor {
+    state.colour_blend_fallback_dst()
 }
 
 // 0xe4be00 — __ZNK4Ogre16TextureUnitState18getColourBlendModeEv
@@ -637,8 +1186,9 @@ pub fn stub_0xe4bdfc() {
 #[doc(alias = "Ogre::TextureUnitState::getColourBlendMode(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState18getColourBlendModeEv")]
 // was: Ogre::TextureUnitState::getColourBlendMode(void)const
-// IDA 0xe4be00: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4be00() {
+// IDA 0xe4be00: ADDS R0,#56 (mColourBlendMode).
+pub fn stub_0xe4be00(state: &TextureUnitState) -> &LayerBlendModeEx {
+    state.colour_blend_mode()
 }
 
 // 0xe4be04 — __ZNK4Ogre16TextureUnitState17getAlphaBlendModeEv
@@ -646,8 +1196,9 @@ pub fn stub_0xe4be00() {
 #[doc(alias = "Ogre::TextureUnitState::getAlphaBlendMode(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState17getAlphaBlendModeEv")]
 // was: Ogre::TextureUnitState::getAlphaBlendMode(void)const
-// IDA 0xe4be04: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4be04() {
+// IDA 0xe4be04: ADDS R0,#124 (mAlphaBlendMode).
+pub fn stub_0xe4be04(state: &TextureUnitState) -> &LayerBlendModeEx {
+    state.alpha_blend_mode()
 }
 
 // 0xe4be08 — __ZNK4Ogre16TextureUnitState24getTextureAddressingModeEv
@@ -655,16 +1206,18 @@ pub fn stub_0xe4be04() {
 #[doc(alias = "Ogre::TextureUnitState::getTextureAddressingMode(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState24getTextureAddressingModeEv")]
 // was: Ogre::TextureUnitState::getTextureAddressingMode(void)const
-// IDA 0xe4be08: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4be08() {
+// IDA 0xe4be08: ADDS R0,#28 (mAddressMode).
+pub fn stub_0xe4be08(state: &TextureUnitState) -> &UvwAddressingMode {
+    state.texture_addressing_mode()
 }
 
 // 0xe4be0c — __ZN4Ogre16TextureUnitState24setTextureAddressingModeERKNS0_17UVWAddressingModeE
 #[doc(alias = "Ogre::TextureUnitState::setTextureAddressingMode(Ogre::TextureUnitState::UVWAddressingMode const&)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState24setTextureAddressingModeERKNS0_17UVWAddressingModeE")]
 // was: Ogre::TextureUnitState::setTextureAddressingMode(Ogre::TextureUnitState::UVWAddressingMode const&)
-// IDA 0xe4be0c: 5 insns (VLDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4be0c() {
+// IDA 0xe4be0c: VLDR pair + STR over +28/+32/+36 (see set_texture_addressing_mode).
+pub fn stub_0xe4be0c(state: &mut TextureUnitState, mode: &UvwAddressingMode) {
+    state.set_texture_addressing_mode(*mode)
 }
 
 // 0xe4be1c — __ZN4Ogre16TextureUnitState22setTextureBorderColourERKNS_11ColourValueE
@@ -672,8 +1225,9 @@ pub fn stub_0xe4be0c() {
 #[doc(alias = "Ogre::TextureUnitState::setTextureBorderColour(Ogre::ColourValue const&)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState22setTextureBorderColourERKNS_11ColourValueE")]
 // was: Ogre::TextureUnitState::setTextureBorderColour(Ogre::ColourValue const&)
-// IDA 0xe4be1c: 4 insns (VLD1.32..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4be1c() {
+// IDA 0xe4be1c: VLD1.32 pair over +40 (see set_texture_border_colour).
+pub fn stub_0xe4be1c(state: &mut TextureUnitState, colour: &ColourValue) {
+    state.set_texture_border_colour(*colour)
 }
 
 // 0xe4be28 — __ZNK4Ogre16TextureUnitState22getTextureBorderColourEv
@@ -681,24 +1235,27 @@ pub fn stub_0xe4be1c() {
 #[doc(alias = "Ogre::TextureUnitState::getTextureBorderColour(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState22getTextureBorderColourEv")]
 // was: Ogre::TextureUnitState::getTextureBorderColour(void)const
-// IDA 0xe4be28: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4be28() {
+// IDA 0xe4be28: ADDS R0,#40 (mBorderColour).
+pub fn stub_0xe4be28(state: &TextureUnitState) -> &ColourValue {
+    state.texture_border_colour()
 }
 
 // 0xe4be2c — __ZN4Ogre16TextureUnitState17setEnvironmentMapEbNS0_10EnvMapTypeE
 #[doc(alias = "Ogre::TextureUnitState::setEnvironmentMap(bool,Ogre::TextureUnitState::EnvMapType)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState17setEnvironmentMapEbNS0_10EnvMapTypeE")]
 // was: Ogre::TextureUnitState::setEnvironmentMap(bool,Ogre::TextureUnitState::EnvMapType)
-// IDA 0xe4be2c: 15 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4be2c() {
+// IDA 0xe4be2c: enable ? addEffect({ET_ENVIRONMENT_MAP, subtype}) : removeEffect(0).
+pub fn stub_0xe4be2c(state: &mut TextureUnitState, enable: bool, env_map_type: i32) {
+    state.set_environment_map(enable, env_map_type)
 }
 
 // 0xe4be50 — __ZN4Ogre16TextureUnitState12removeEffectENS0_17TextureEffectTypeE
 #[doc(alias = "Ogre::TextureUnitState::removeEffect(Ogre::TextureUnitState::TextureEffectType)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState12removeEffectENS0_17TextureEffectTypeE")]
 // was: Ogre::TextureUnitState::removeEffect(Ogre::TextureUnitState::TextureEffectType)
-// IDA 0xe4be50: 46 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4be50() {
+// IDA 0xe4be50: destroy controllers in equal_range(type), erase the span (see remove_effect).
+pub fn stub_0xe4be50(state: &mut TextureUnitState, effect_type_: u32) {
+    state.remove_effect(effect_type_)
 }
 
 // 0xe4bec8 — __ZN4Ogre16TextureUnitState19setTextureTransformERKNS_7Matrix4E
@@ -706,8 +1263,9 @@ pub fn stub_0xe4be50() {
 #[doc(alias = "Ogre::TextureUnitState::setTextureTransform(Ogre::Matrix4 const&)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState19setTextureTransformERKNS_7Matrix4E")]
 // was: Ogre::TextureUnitState::setTextureTransform(Ogre::Matrix4 const&)
-// IDA 0xe4bec8: 18 insns (ADD.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bec8() {
+// IDA 0xe4bec8: 64-byte copy over +208, latch clear (see set_texture_transform).
+pub fn stub_0xe4bec8(state: &mut TextureUnitState, xform: &Matrix4) {
+    state.set_texture_transform(xform)
 }
 
 // 0xe4bf0c — __ZN4Ogre16TextureUnitState16setTextureScrollEff
@@ -715,8 +1273,9 @@ pub fn stub_0xe4bec8() {
 #[doc(alias = "Ogre::TextureUnitState::setTextureScroll(float,float)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState16setTextureScrollEff")]
 // was: Ogre::TextureUnitState::setTextureScroll(float,float)
-// IDA 0xe4bf0c: 6 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bf0c() {
+// IDA 0xe4bf0c: STRD u,v over +188; latch set (see set_texture_scroll).
+pub fn stub_0xe4bf0c(state: &mut TextureUnitState, u: f32, v: f32) {
+    state.set_texture_scroll(u, v)
 }
 
 // 0xe4bf1c — __ZN4Ogre16TextureUnitState15setTextureScaleEff
@@ -724,16 +1283,18 @@ pub fn stub_0xe4bf0c() {
 #[doc(alias = "Ogre::TextureUnitState::setTextureScale(float,float)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState15setTextureScaleEff")]
 // was: Ogre::TextureUnitState::setTextureScale(float,float)
-// IDA 0xe4bf1c: 6 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bf1c() {
+// IDA 0xe4bf1c: STRD over +196; latch set (see set_texture_scale).
+pub fn stub_0xe4bf1c(state: &mut TextureUnitState, u_scale: f32, v_scale: f32) {
+    state.set_texture_scale(u_scale, v_scale)
 }
 
 // 0xe4bf2c — __ZN4Ogre16TextureUnitState16setTextureRotateERKNS_6RadianE
 #[doc(alias = "Ogre::TextureUnitState::setTextureRotate(Ogre::Radian const&)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState16setTextureRotateERKNS_6RadianE")]
 // was: Ogre::TextureUnitState::setTextureRotate(Ogre::Radian const&)
-// IDA 0xe4bf2c: 5 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bf2c() {
+// IDA 0xe4bf2c: STR Radian over +204; latch set (see set_texture_rotate).
+pub fn stub_0xe4bf2c(state: &mut TextureUnitState, angle: f32) {
+    state.set_texture_rotate(angle)
 }
 
 // 0xe4bf3c — __ZNK4Ogre16TextureUnitState19getTextureTransformEv
@@ -741,8 +1302,9 @@ pub fn stub_0xe4bf2c() {
 #[doc(alias = "Ogre::TextureUnitState::getTextureTransform(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState19getTextureTransformEv")]
 // was: Ogre::TextureUnitState::getTextureTransform(void)const
-// IDA 0xe4bf3c: 10 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bf3c() {
+// IDA 0xe4bf3c: latch → recalcTextureMatrix; return this + 208 (see texture_transform).
+pub fn stub_0xe4bf3c(state: &mut TextureUnitState) -> &Matrix4 {
+    state.texture_transform()
 }
 
 // 0xe4bf58 — __ZNK4Ogre16TextureUnitState19recalcTextureMatrixEv
@@ -750,8 +1312,10 @@ pub fn stub_0xe4bf3c() {
 #[doc(alias = "Ogre::TextureUnitState::recalcTextureMatrix(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState19recalcTextureMatrixEv")]
 // was: Ogre::TextureUnitState::recalcTextureMatrix(void)const
-// IDA 0xe4bf58: 183 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4bf58() {
+// IDA 0xe4bf58: rebuild mTexModMatrix from scale/scroll/rotate (see recalc_texture_matrix).
+// Original is const (mutable member); `&mut` stands in here.
+pub fn stub_0xe4bf58(state: &mut TextureUnitState) {
+    state.recalc_texture_matrix()
 }
 
 // 0xe4c1dc — __ZN4Ogre16TextureUnitState17setTextureUScrollEf
@@ -759,8 +1323,9 @@ pub fn stub_0xe4bf58() {
 #[doc(alias = "Ogre::TextureUnitState::setTextureUScroll(float)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState17setTextureUScrollEf")]
 // was: Ogre::TextureUnitState::setTextureUScroll(float)
-// IDA 0xe4c1dc: 4 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4c1dc() {
+// IDA 0xe4c1dc: STR over +188 (mUMod); latch set.
+pub fn stub_0xe4c1dc(state: &mut TextureUnitState, value: f32) {
+    state.set_texture_u_scroll(value)
 }
 
 // 0xe4c1e8 — __ZN4Ogre16TextureUnitState17setTextureVScrollEf
@@ -768,8 +1333,9 @@ pub fn stub_0xe4c1dc() {
 #[doc(alias = "Ogre::TextureUnitState::setTextureVScroll(float)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState17setTextureVScrollEf")]
 // was: Ogre::TextureUnitState::setTextureVScroll(float)
-// IDA 0xe4c1e8: 4 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4c1e8() {
+// IDA 0xe4c1e8: STR over +192 (mVMod); latch set.
+pub fn stub_0xe4c1e8(state: &mut TextureUnitState, value: f32) {
+    state.set_texture_v_scroll(value)
 }
 
 // 0xe4c1f4 — __ZN4Ogre16TextureUnitState16setTextureUScaleEf
@@ -777,8 +1343,9 @@ pub fn stub_0xe4c1e8() {
 #[doc(alias = "Ogre::TextureUnitState::setTextureUScale(float)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState16setTextureUScaleEf")]
 // was: Ogre::TextureUnitState::setTextureUScale(float)
-// IDA 0xe4c1f4: 4 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4c1f4() {
+// IDA 0xe4c1f4: STR over +196 (mUScale); latch set.
+pub fn stub_0xe4c1f4(state: &mut TextureUnitState, value: f32) {
+    state.set_texture_u_scale(value)
 }
 
 // 0xe4c200 — __ZN4Ogre16TextureUnitState16setTextureVScaleEf
@@ -786,8 +1353,9 @@ pub fn stub_0xe4c1f4() {
 #[doc(alias = "Ogre::TextureUnitState::setTextureVScale(float)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState16setTextureVScaleEf")]
 // was: Ogre::TextureUnitState::setTextureVScale(float)
-// IDA 0xe4c200: 4 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4c200() {
+// IDA 0xe4c200: STR over +200 (mVScale); latch set.
+pub fn stub_0xe4c200(state: &mut TextureUnitState, value: f32) {
+    state.set_texture_v_scale(value)
 }
 
 // 0xe4c20c — __ZN4Ogre16TextureUnitState18setScrollAnimationEff
@@ -795,8 +1363,9 @@ pub fn stub_0xe4c200() {
 #[doc(alias = "Ogre::TextureUnitState::setScrollAnimation(float,float)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState18setScrollAnimationEff")]
 // was: Ogre::TextureUnitState::setScrollAnimation(float,float)
-// IDA 0xe4c20c: 51 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4c20c() {
+// IDA 0xe4c20c: drop UV/U/V effects, re-add from speeds (see set_scroll_animation).
+pub fn stub_0xe4c20c(state: &mut TextureUnitState, u_speed: f32, v_speed: f32) {
+    state.set_scroll_animation(u_speed, v_speed)
 }
 
 // 0xe4c2a0 — __ZN4Ogre16TextureUnitState18setRotateAnimationEf
@@ -804,8 +1373,9 @@ pub fn stub_0xe4c20c() {
 #[doc(alias = "Ogre::TextureUnitState::setRotateAnimation(float)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState18setRotateAnimationEf")]
 // was: Ogre::TextureUnitState::setRotateAnimation(float)
-// IDA 0xe4c2a0: 19 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4c2a0() {
+// IDA 0xe4c2a0: drop ET_ROTATE, re-add unless speed is 0 (see set_rotate_animation).
+pub fn stub_0xe4c2a0(state: &mut TextureUnitState, speed: f32) {
+    state.set_rotate_animation(speed)
 }
 
 // 0xe4c2d4 — __ZN4Ogre16TextureUnitState21setTransformAnimationENS0_20TextureTransformTypeENS_12WaveformTypeEffff
@@ -813,8 +1383,17 @@ pub fn stub_0xe4c2a0() {
 #[doc(alias = "Ogre::TextureUnitState::setTransformAnimation(Ogre::TextureUnitState::TextureTransformType,Ogre::WaveformType,float,float,float,float)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState21setTransformAnimationENS0_20TextureTransformTypeENS_12WaveformTypeEffff")]
 // was: Ogre::TextureUnitState::setTransformAnimation(Ogre::TextureUnitState::TextureTransformType,Ogre::WaveformType,float,float,float,float)
-// IDA 0xe4c2d4: 63 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4c2d4() {
+// IDA 0xe4c2d4: drop (TRANSFORM, subtype), add wave entry unless gated (see set_transform_animation).
+pub fn stub_0xe4c2d4(
+    state: &mut TextureUnitState,
+    ttype: i32,
+    wave_type: u32,
+    base: f32,
+    frequency: f32,
+    phase: f32,
+    amplitude: f32,
+) {
+    state.set_transform_animation(ttype, wave_type, base, frequency, phase, amplitude)
 }
 
 // 0xe4c390 — __ZN4Ogre16TextureUnitState8_prepareEv
@@ -822,8 +1401,9 @@ pub fn stub_0xe4c2d4() {
 #[doc(alias = "Ogre::TextureUnitState::_prepare(void)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState8_prepareEv")]
 // was: Ogre::TextureUnitState::_prepare(void)
-// IDA 0xe4c390: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4c390() {
+// IDA 0xe4c390: for each frame: ensurePrepared(i) (see prepare).
+pub fn stub_0xe4c390(state: &mut TextureUnitState) {
+    state.prepare()
 }
 
 // 0xe4c3bc — __ZNK4Ogre16TextureUnitState14ensurePreparedEm
@@ -1318,5 +1898,162 @@ mod texture_unit_state_tests {
         stub_0xe4acb8(&mut state, "flame.tga", 2, 0.0);
         assert!(stub_0xe4b8f0(&mut state, 1).is_some());
         assert!(stub_0xe4b8f0(&mut state, 7).is_none());
+    }
+
+    #[test]
+    fn alpha_operation_stores_op_sources_and_args() {
+        let mut state = TextureUnitState::default();
+        stub_0xe4bc04(&mut state, 3, 1, 2, 0.25, 0.75, 0.5);
+        let mode = stub_0xe4be04(&state);
+        assert_eq!(mode.operation, 3);
+        assert_eq!(mode.source1, 1);
+        assert_eq!(mode.source2, 2);
+        assert_eq!(mode.alpha_arg1, 0.25);
+        assert_eq!(mode.alpha_arg2, 0.75);
+        assert_eq!(mode.factor, 0.5);
+    }
+
+    #[test]
+    fn colour_blend_mode_and_fallback_round_trip() {
+        let mut state = TextureUnitState::default();
+        stub_0xe4bbc4(
+            &mut state,
+            7,
+            1,
+            2,
+            ColourValue { r: 1.0, g: 0.0, b: 0.0, a: 1.0 },
+            ColourValue { r: 0.0, g: 1.0, b: 0.0, a: 1.0 },
+            0.5,
+        );
+        assert_eq!(stub_0xe4be00(&state).operation, 7);
+        assert_eq!(stub_0xe4be00(&state).colour_arg1.r, 1.0);
+        stub_0xe4bbf8(
+            &mut state,
+            SceneBlendFactor::SourceAlpha,
+            SceneBlendFactor::OneMinusSourceAlpha,
+        );
+        assert_eq!(stub_0xe4bdf8(&state), SceneBlendFactor::SourceAlpha);
+        assert_eq!(stub_0xe4bdfc(&state), SceneBlendFactor::OneMinusSourceAlpha);
+    }
+
+    #[test]
+    fn addressing_and_border_colour_round_trip() {
+        let mut state = TextureUnitState::default();
+        let mode = UvwAddressingMode { u: 1, v: 2, w: 3 };
+        stub_0xe4be0c(&mut state, &mode);
+        assert_eq!(*stub_0xe4be08(&state), mode);
+        let colour = ColourValue { r: 0.1, g: 0.2, b: 0.3, a: 0.4 };
+        stub_0xe4be1c(&mut state, &colour);
+        assert_eq!(*stub_0xe4be28(&state), colour);
+    }
+
+    #[test]
+    fn add_effect_replaces_same_type_and_allocates_when_loaded() {
+        let mut state = TextureUnitState::default();
+        state.parent_loaded = true;
+        stub_0xe4c20c(&mut state, 1.5, 1.5);
+        assert_eq!(state.effects.len(), 1);
+        assert_eq!(state.effects[0].effect_type, effect_type::UV_SCROLL);
+        assert!(state.effects[0].controller.is_some());
+        // Equal-type re-add destroys the old controller and keeps one entry.
+        let first = state.effects[0].controller;
+        stub_0xe4c20c(&mut state, 2.0, 2.0);
+        assert_eq!(state.effects.len(), 1);
+        assert_eq!(state.effects[0].arg1, 2.0);
+        assert_ne!(state.effects[0].controller, first);
+        // Split speeds produce U + V entries.
+        stub_0xe4c20c(&mut state, 1.0, 2.0);
+        assert_eq!(state.effects.len(), 2);
+        // Zero uSpeed adds nothing (binary gate at 0xe4c242).
+        stub_0xe4c20c(&mut state, 0.0, 2.0);
+        assert!(state.effects.is_empty());
+    }
+
+    #[test]
+    fn rotate_and_envmap_effects() {
+        let mut state = TextureUnitState::default();
+        state.parent_loaded = true;
+        stub_0xe4c2a0(&mut state, 0.5);
+        assert_eq!(state.effects.len(), 1);
+        assert!(state.effects[0].controller.is_some());
+        stub_0xe4c2a0(&mut state, 0.0);
+        assert!(state.effects.is_empty());
+        stub_0xe4be2c(&mut state, true, 2);
+        assert_eq!(state.effects.len(), 1);
+        assert_eq!(state.effects[0].effect_type, effect_type::ENVIRONMENT_MAP);
+        assert_eq!(state.effects[0].subtype, 2);
+        // Envmap takes the TBB default arm: no controller.
+        assert!(state.effects[0].controller.is_none());
+        stub_0xe4be50(&mut state, effect_type::ENVIRONMENT_MAP);
+        assert!(state.effects.is_empty());
+    }
+
+    #[test]
+    fn transform_animation_gates_and_subtypes() {
+        let mut state = TextureUnitState::default();
+        // Frequency alone does not trigger creation (gate at 0xe4c362).
+        stub_0xe4c2d4(&mut state, 1, 0, 0.0, 2.0, 0.0, 0.0);
+        assert!(state.effects.is_empty());
+        stub_0xe4c2d4(&mut state, 1, 3, 0.5, 2.0, 0.25, 1.0);
+        assert_eq!(state.effects.len(), 1);
+        assert_eq!(state.effects[0].wave_type, 3);
+        assert_eq!(state.effects[0].frequency, 2.0);
+        // Same subtype replaces; other subtypes coexist.
+        stub_0xe4c2d4(&mut state, 1, 3, 0.75, 2.0, 0.25, 1.0);
+        assert_eq!(state.effects.len(), 1);
+        assert_eq!(state.effects[0].base, 0.75);
+        stub_0xe4c2d4(&mut state, 2, 3, 0.75, 2.0, 0.25, 1.0);
+        assert_eq!(state.effects.len(), 2);
+    }
+
+    #[test]
+    fn scroll_scale_rotate_set_latch_and_recalc() {
+        let mut state = TextureUnitState::default();
+        stub_0xe4bf0c(&mut state, 0.25, 0.5);
+        stub_0xe4bf1c(&mut state, 2.0, 4.0);
+        stub_0xe4bf2c(&mut state, 0.0);
+        assert!(state.recalc_tex_matrix);
+        stub_0xe4bf58(&mut state);
+        assert!(!state.recalc_tex_matrix);
+        let m = stub_0xe4bf3c(&mut state);
+        assert_eq!(m.m[0][0], 0.5);
+        assert_eq!(m.m[1][1], 0.25);
+        // Scroll composes as translate * scale (IDA 0xe4c076):
+        // m03 = 0.25 + 0.25, m13 = 0.375 + 0.5.
+        assert_eq!(m.m[0][3], 0.5);
+        assert_eq!(m.m[1][3], 0.875);
+        // U/V leaves touch one lane each.
+        stub_0xe4c1dc(&mut state, 0.0);
+        stub_0xe4c1e8(&mut state, 0.0);
+        stub_0xe4c1f4(&mut state, 1.0);
+        stub_0xe4c200(&mut state, 1.0);
+        stub_0xe4bf58(&mut state);
+        assert_eq!(stub_0xe4bf3c(&mut state).m, Matrix4::IDENTITY.m);
+    }
+
+    #[test]
+    fn rotate_90_degrees_about_centre() {
+        let mut state = TextureUnitState::default();
+        stub_0xe4bf2c(&mut state, std::f32::consts::FRAC_PI_2);
+        let m = stub_0xe4bf3c(&mut state).m;
+        assert!((m[0][0] - 0.0).abs() < 1e-6);
+        assert!((m[0][1] + 1.0).abs() < 1e-6);
+        assert!((m[1][0] - 1.0).abs() < 1e-6);
+        assert!((m[1][1] - 0.0).abs() < 1e-6);
+        assert!((m[0][3] - 1.0).abs() < 1e-6);
+        assert!((m[1][3] - 0.0).abs() < 1e-6);
+    }
+
+    #[test]
+    fn set_transform_skips_recalc_and_prepare_latches() {
+        let mut state = TextureUnitState::default();
+        let mut custom = Matrix4::IDENTITY;
+        custom.m[0][3] = 2.0;
+        stub_0xe4bec8(&mut state, &custom);
+        assert!(!state.recalc_tex_matrix);
+        assert_eq!(stub_0xe4bf3c(&mut state).m[0][3], 2.0);
+        stub_0xe4acb8(&mut state, "flame.tga", 2, 0.0);
+        stub_0xe4c390(&mut state);
+        assert!(state.textures.iter().all(|s| s.prepared));
     }
 }
