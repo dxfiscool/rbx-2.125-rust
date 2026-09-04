@@ -1415,6 +1415,89 @@ pub struct DialogRemoteEventDesc {
     pub broadcast: bool,
 }
 
+/// Rust model of `RBX::Reflection::BoundFuncDesc<DialogRoot, ...>` (IDA
+/// `0x498fa0`): field layout unmodeled; the bound descriptor lands with the
+/// reflection subsystem. Same treatment as `ChatBoundFuncDesc` (0x3f001c).
+#[derive(Default)]
+pub struct DialogBoundFuncDesc {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::BasicPartInstance::LegacyPartType` (IDA `0x49b52c`):
+/// `Ball = 0`, `Block = 1`, `Cylinder = 2` (decompile `0x49b530`).
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum LegacyPartType {
+    Ball = 0,
+    #[default]
+    Block = 1,
+    Cylinder = 2,
+}
+
+/// Rust model of `RBX::Reflection::EnumDesc<LegacyPartType>` (IDA `0x49b530`):
+/// the name/value table behind `addPair`.
+#[derive(Default)]
+pub struct LegacyPartTypeDesc {
+    pub pairs: Vec<(i32, String)>,
+}
+
+/// Rust model of `RBX::ExtrudedPartInstance::VisualTrussStyle` (IDA
+/// `0x49b708`): `AlternatingSupports = 0`, `BridgeStyleSupports = 1`,
+/// `NoSupports = 2` (disasm R1 immediates `0x49b7f6/0x49b80c/0x49b820`).
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum VisualTrussStyle {
+    #[default]
+    AlternatingSupports = 0,
+    BridgeStyleSupports = 1,
+    NoSupports = 2,
+}
+
+/// Rust model of `RBX::Reflection::EnumDesc<VisualTrussStyle>` (IDA
+/// `0x49b70c`).
+#[derive(Default)]
+pub struct VisualTrussStyleDesc {
+    pub pairs: Vec<(i32, String)>,
+}
+
+/// Rust model of `RBX::PrismInstance::NumSidesEnum` (IDA `0x49b964`):
+/// 3, 5, 6, 8, 10, 20 (disasm R1 immediates `0x49ba4c-0x49baba`).
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum PrismNumSides {
+    #[default]
+    Three = 3,
+    Five = 5,
+    Six = 6,
+    Eight = 8,
+    Ten = 10,
+    Twenty = 20,
+}
+
+/// Rust model of `RBX::Reflection::EnumDesc<Prism NumSides>` (IDA `0x49b968`).
+#[derive(Default)]
+pub struct PrismNumSidesDesc {
+    pub pairs: Vec<(i32, String)>,
+}
+
+/// Rust model of `RBX::PyramidInstance::NumSidesEnum` (IDA `0x49bb84`):
+/// 3, 4, 5, 6, 8, 10, 20 (disasm R1 immediates `0x49bc6c-0x49bcf0`).
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum PyramidNumSides {
+    #[default]
+    Three = 3,
+    Four = 4,
+    Five = 5,
+    Six = 6,
+    Eight = 8,
+    Ten = 10,
+    Twenty = 20,
+}
+
+/// Rust model of `RBX::Reflection::EnumDesc<Pyramid NumSides>` (IDA
+/// `0x49bb88`).
+#[derive(Default)]
+pub struct PyramidNumSidesDesc {
+    pub pairs: Vec<(i32, String)>,
+}
+
 /// Rust model of `RBX::Texture` (IDA `0x491750`): the texture decal; members
 /// land with the GUI batch.
 #[derive(Default)]
@@ -27755,10 +27838,9 @@ pub fn stub_0x49611c(parent: *const Instance) -> bool {
 // 0x49622c — __ZN3RBX10Reflection13BoundFuncDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_ELi2EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()
-pub fn stub_0x49622c(_desc: *mut DataModelFuncDesc) {
+pub fn stub_0x49622c(_desc: *mut DialogBoundFuncDesc) {
     // IDA 0x49622c: `BoundFuncDesc<DialogRoot, ...>::D1` — memberwise
-    // teardown; dropping the box is the same release. Same family box as the
-    // DataModel descs (no behavioral divergence).
+    // teardown; dropping the box is the same release. Twin of 0x3ec2e0.
     // SAFETY: `_desc` must be a live box pointer never used again.
     unsafe {
         drop(Box::from_raw(_desc));
@@ -27964,43 +28046,72 @@ pub fn stub_0x498cc4() -> ! {
 // 0x498cd8 — __ZN3RBX10Reflection9EventDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx13remote_signalIS7_EEMS2_SA_EC2ESB_PKcSE_SE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::DialogRoot::*>::EventDesc(rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::DialogRoot::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::EventDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::DialogRoot::*>::EventDesc(rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::DialogRoot::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x498cd8() -> ! {
-    todo!("0x498cd8 RBX::Reflection::EventDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::DialogRoot::*>::EventDesc(rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::DialogRoot::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x498cd8() -> DialogRemoteEventDesc {
+    // IDA 0x498cd8: `EventDesc<DialogRoot, ...>::C2` — wires the member
+    // event into the class descriptor; the flag words land with the
+    // reflection registry, so the model starts at defaults. Same shape as
+    // 0x3f26dc.
+    DialogRemoteEventDesc::default()
 }
 
 // 0x498ec8 — __ZN3RBX10Reflection9EventDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx13remote_signalIS7_EEMS2_SA_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::DialogRoot::*>::~EventDesc()")]
 // was: RBX::Reflection::EventDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::DialogRoot::*>::~EventDesc()
-pub fn stub_0x498ec8() -> ! {
-    todo!("0x498ec8 RBX::Reflection::EventDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::DialogRoot::*>::~EventDesc()")
+pub fn stub_0x498ec8(_desc: *mut DialogRemoteEventDesc) {
+    // IDA 0x498ec8: `EventDesc<DialogRoot, ...>::D1` — memberwise teardown;
+    // dropping the box is the same release. Twin of 0x3f2860.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x498eec — __ZN3RBX10Reflection9EventDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx13remote_signalIS7_EEMS2_SA_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::DialogRoot::*>::~EventDesc()")]
 // was: RBX::Reflection::EventDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::DialogRoot::*>::~EventDesc()
-pub fn stub_0x498eec() -> ! {
-    todo!("0x498eec RBX::Reflection::EventDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::DialogRoot::*>::~EventDesc()")
+pub fn stub_0x498eec(_desc: *mut DialogRemoteEventDesc) {
+    // IDA 0x498eec: `EventDesc<DialogRoot, ...>::D0` — vtable install plus
+    // memberwise teardown; dropping the box is the same release. Twin of
+    // 0x3f2884.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x498fa0 — __ZN3RBX10Reflection13BoundFuncDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_ELi2EEC2EMS2_FvS6_S6_EPKcSC_SC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),2>::BoundFuncDesc(void (RBX::DialogRoot::*)(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::BoundFuncDesc(void (RBX::DialogRoot::*)(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x498fa0() -> ! {
-    todo!("0x498fa0 RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::BoundFuncDesc(void (RBX::DialogRoot::*)(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x498fa0() -> DialogBoundFuncDesc {
+    // IDA 0x498fa0: `BoundFuncDesc<DialogRoot, ...>::C2` over `(member-fn,
+    // names, permissions, attributes)` — binds the dialog member function
+    // into the class descriptor; the binding lands with reflection, so the
+    // model starts at defaults. Same shape as 0x3f001c.
+    DialogBoundFuncDesc::default()
 }
 
 // 0x499170 — __ZN3RBX10Reflection13BoundFuncDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_ELi2EE16declareSignatureEPKcNS0_7VariantESA_SB_
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)
-pub fn stub_0x499170() -> ! {
-    todo!("0x499170 RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+pub fn stub_0x499170(_name: &str, _sig: &[Variant]) {
+    // IDA 0x499170: `BoundFuncDesc<DialogRoot, ...>::declareSignature` —
+    // registers the `(Instance, Instance)` signature words into the
+    // reflection signature table; the table lands with the reflection
+    // subsystem, so in datamodel scope the registration collapses. Same shape
+    // as 0x3f0290.
 }
 
 // 0x4991bc — __ZN3RBX10Reflection13BoundFuncDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_ELi2EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()
-pub fn stub_0x4991bc() -> ! {
-    todo!("0x4991bc RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()")
+pub fn stub_0x4991bc(_desc: *mut DialogBoundFuncDesc) {
+    // IDA 0x4991bc: `BoundFuncDesc<DialogRoot, ...>::D0` — vtable install
+    // plus memberwise teardown; dropping the box is the same release. Twin of
+    // 0x3f02f8.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4992e4 — __ZNK3RBX10Reflection13BoundFuncDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_ELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -28013,99 +28124,154 @@ pub fn stub_0x4992e4() -> ! {
 // 0x499408 — __ZN3RBX10Reflection11Call2HelperINS_10DialogRootEMS2_FvN5boost10shared_ptrINS_8InstanceEEES6_ES6_S6_vE4callEPS2_S8_RNS0_7VariantERKS6_SE_
 #[doc(alias = "RBX::Reflection::Call2Helper<RBX::DialogRoot,void (RBX::DialogRoot::*)(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,void>::call(RBX::DialogRoot*,void (RBX::DialogRoot::*)(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: RBX::Reflection::Call2Helper<RBX::DialogRoot,void (RBX::DialogRoot::*)(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,void>::call(RBX::DialogRoot*,void (RBX::DialogRoot::*)(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_0x499408() -> ! {
-    todo!("0x499408 RBX::Reflection::Call2Helper<RBX::DialogRoot,void (RBX::DialogRoot::*)(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,void>::call(RBX::DialogRoot*,void (RBX::DialogRoot::*)(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_0x499408(
+    root: &DialogRoot,
+    method: fn(&DialogRoot, SharedPtr<Instance>, SharedPtr<Instance>),
+    first: &SharedPtr<Instance>,
+    second: &SharedPtr<Instance>,
+) {
+    // IDA 0x499408 (`Call2Helper<DialogRoot, void (DialogRoot::*)(Instance,
+    // Instance), ...>::call`, decompiled head): invokes the dialog member
+    // function with retained `(Instance, Instance)` copies.
+    method(root, first.clone(), second.clone());
 }
 
 // 0x49ad94 — __ZN3rbx13remote_signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES5_EED2Ev
 #[doc(alias = "rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::~remote_signal()")]
 // was: rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~remote_signal()
-pub fn stub_0x49ad94() -> ! {
-    todo!("0x49ad94 rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~remote_signal()")
+pub fn stub_0x49ad94(_signal: *mut DialogRemoteSignal) {
+    // IDA 0x49ad94: `remote_signal<...>::D2Ev` — tears down the replication
+    // half; no members carry state, so the memberwise teardown collapses.
+    // Same shape as 0x3ed9e4.
+    // SAFETY: `_signal` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_signal));
+    }
 }
 
 // 0x49b52c — __ZN3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::EnumDesc(void)")]
 // was: RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::EnumDesc(void)
-pub fn stub_0x49b52c() -> ! {
-    todo!("0x49b52c RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::EnumDesc(void)")
+pub fn stub_0x49b52c() -> LegacyPartTypeDesc {
+    // IDA 0x49b52c: `EnumDesc<LegacyPartType>::C1` — `B.W` straight into C2
+    // (disasm 0x49b52c).
+    stub_0x49b530()
 }
 
 // 0x49b530 — __ZN3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::EnumDesc(void)")]
 // was: RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::EnumDesc(void)
-pub fn stub_0x49b530() -> ! {
-    todo!("0x49b530 RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::EnumDesc(void)")
+pub fn stub_0x49b530() -> LegacyPartTypeDesc {
+    // IDA 0x49b530: `EnumDesc<LegacyPartType>::C2` — base init plus
+    // `addPair(0, "Ball")`, `addPair(1, "Block")`, `addPair(2, "Cylinder")`
+    // (decompiled `0x49b614/0x49b62a/0x49b640`).
+    let mut desc = LegacyPartTypeDesc::default();
+    stub_0x49c15c(&mut desc, LegacyPartType::Ball as i32, "Ball");
+    stub_0x49c15c(&mut desc, LegacyPartType::Block as i32, "Block");
+    stub_0x49c15c(&mut desc, LegacyPartType::Cylinder as i32, "Cylinder");
+    desc
 }
 
 // 0x49b708 — __ZN3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::EnumDesc(void)")]
 // was: RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::EnumDesc(void)
-pub fn stub_0x49b708() -> ! {
-    todo!("0x49b708 RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::EnumDesc(void)")
+pub fn stub_0x49b708() -> VisualTrussStyleDesc {
+    // IDA 0x49b708: `EnumDesc<VisualTrussStyle>::C1` — `B.W` straight into C2
+    // (disasm 0x49b708).
+    stub_0x49b70c()
 }
 
 // 0x49b70c — __ZN3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::EnumDesc(void)")]
 // was: RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::EnumDesc(void)
-pub fn stub_0x49b70c() -> ! {
-    todo!("0x49b70c RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::EnumDesc(void)")
+pub fn stub_0x49b70c() -> VisualTrussStyleDesc {
+    // IDA 0x49b70c: `EnumDesc<VisualTrussStyle>::C2` — base init plus three
+    // `addPair` calls (disasm `0x49b7f6/0x49b80c/0x49b820`: values 0, 1, 2).
+    let mut desc = VisualTrussStyleDesc::default();
+    stub_0x49c4bc(&mut desc, VisualTrussStyle::AlternatingSupports as i32, "AlternatingSupports");
+    stub_0x49c4bc(&mut desc, VisualTrussStyle::BridgeStyleSupports as i32, "BridgeStyleSupports");
+    stub_0x49c4bc(&mut desc, VisualTrussStyle::NoSupports as i32, "NoSupports");
+    desc
 }
 
 // 0x49b964 — __ZN3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::EnumDesc(void)")]
 // was: RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::EnumDesc(void)
-pub fn stub_0x49b964() -> ! {
-    todo!("0x49b964 RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::EnumDesc(void)")
+pub fn stub_0x49b964() -> PrismNumSidesDesc {
+    // IDA 0x49b964: `EnumDesc<Prism NumSides>::C1` — `B.W` straight into C2
+    // (disasm 0x49b964).
+    stub_0x49b968()
 }
 
 // 0x49b968 — __ZN3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::EnumDesc(void)")]
 // was: RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::EnumDesc(void)
-pub fn stub_0x49b968() -> ! {
-    todo!("0x49b968 RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::EnumDesc(void)")
+pub fn stub_0x49b968() -> PrismNumSidesDesc {
+    // IDA 0x49b968: `EnumDesc<Prism NumSides>::C2` — base init plus six
+    // `addPair` calls (disasm `0x49ba4c-0x49baba`: 3, 5, 6, 8, 10, 20).
+    let mut desc = PrismNumSidesDesc::default();
+    for value in [3, 5, 6, 8, 10, 20] {
+        stub_0x49c81c(&mut desc, value, &value.to_string());
+    }
+    desc
 }
 
 // 0x49bb84 — __ZN3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::EnumDesc(void)")]
 // was: RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::EnumDesc(void)
-pub fn stub_0x49bb84() -> ! {
-    todo!("0x49bb84 RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::EnumDesc(void)")
+pub fn stub_0x49bb84() -> PyramidNumSidesDesc {
+    // IDA 0x49bb84: `EnumDesc<Pyramid NumSides>::C1` — `B.W` straight into C2
+    // (disasm 0x49bb84).
+    stub_0x49bb88()
 }
 
 // 0x49bb88 — __ZN3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::EnumDesc(void)")]
 // was: RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::EnumDesc(void)
-pub fn stub_0x49bb88() -> ! {
-    todo!("0x49bb88 RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::EnumDesc(void)")
+pub fn stub_0x49bb88() -> PyramidNumSidesDesc {
+    // IDA 0x49bb88: `EnumDesc<Pyramid NumSides>::C2` — base init plus seven
+    // `addPair` calls (disasm `0x49bc6c-0x49bcf0`: 3, 4, 5, 6, 8, 10, 20).
+    let mut desc = PyramidNumSidesDesc::default();
+    for value in [3, 4, 5, 6, 8, 10, 20] {
+        stub_0x49cb7c(&mut desc, value, &value.to_string());
+    }
+    desc
 }
 
 // 0x49c15c — __ZN3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::addPair(RBX::BasicPartInstance::LegacyPartType,char const*)")]
 // was: RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::addPair(RBX::BasicPartInstance::LegacyPartType,char const*)
-pub fn stub_0x49c15c() -> ! {
-    todo!("0x49c15c RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::addPair(RBX::BasicPartInstance::LegacyPartType,char const*)")
+pub fn stub_0x49c15c(desc: &mut LegacyPartTypeDesc, value: i32, name: &str) {
+    // IDA 0x49c15c: `EnumDesc<LegacyPartType>::addPair(value, name)` —
+    // appends the pair to the table. Same shape as 0x439058.
+    desc.pairs.push((value, name.to_string()));
 }
 
 // 0x49c4bc — __ZN3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::addPair(RBX::ExtrudedPartInstance::VisualTrussStyle,char const*)")]
 // was: RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::addPair(RBX::ExtrudedPartInstance::VisualTrussStyle,char const*)
-pub fn stub_0x49c4bc() -> ! {
-    todo!("0x49c4bc RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::addPair(RBX::ExtrudedPartInstance::VisualTrussStyle,char const*)")
+pub fn stub_0x49c4bc(desc: &mut VisualTrussStyleDesc, value: i32, name: &str) {
+    // IDA 0x49c4bc: `EnumDesc<VisualTrussStyle>::addPair(value, name)` —
+    // appends the pair to the table. Same shape as 0x439058.
+    desc.pairs.push((value, name.to_string()));
 }
 
 // 0x49c81c — __ZN3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::addPair(RBX::PrismInstance::NumSidesEnum,char const*)")]
 // was: RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::addPair(RBX::PrismInstance::NumSidesEnum,char const*)
-pub fn stub_0x49c81c() -> ! {
-    todo!("0x49c81c RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::addPair(RBX::PrismInstance::NumSidesEnum,char const*)")
+pub fn stub_0x49c81c(desc: &mut PrismNumSidesDesc, value: i32, name: &str) {
+    // IDA 0x49c81c: `EnumDesc<Prism NumSides>::addPair(value, name)` —
+    // appends the pair to the table. Same shape as 0x439058.
+    desc.pairs.push((value, name.to_string()));
 }
 
 // 0x49cb7c — __ZN3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::addPair(RBX::PyramidInstance::NumSidesEnum,char const*)")]
 // was: RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::addPair(RBX::PyramidInstance::NumSidesEnum,char const*)
-pub fn stub_0x49cb7c() -> ! {
-    todo!("0x49cb7c RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::addPair(RBX::PyramidInstance::NumSidesEnum,char const*)")
+pub fn stub_0x49cb7c(desc: &mut PyramidNumSidesDesc, value: i32, name: &str) {
+    // IDA 0x49cb7c: `EnumDesc<Pyramid NumSides>::addPair(value, name)` —
+    // appends the pair to the table. Same shape as 0x439058.
+    desc.pairs.push((value, name.to_string()));
 }
 
 // 0x49df7c — __ZNSt6vectorIN3RBX15PyramidInstance12NumSidesEnumESaIS2_EE6resizeEmS2_
