@@ -1820,15 +1820,17 @@ pub fn stub_9e7928() {
 // 0xa01898 — __ZN3RBX7Network18RakNetToRbxAddressERKN6RakNet13SystemAddressE
 #[doc(alias = "RBX::Network::RakNetToRbxAddress(RakNet::SystemAddress const&)")]
 // was: RBX::Network::RakNetToRbxAddress(RakNet::SystemAddress const&)
-pub fn stub_a01898() -> ! {
-    todo!("0xa01898 RBX::Network::RakNetToRbxAddress(RakNet::SystemAddress const&)")
+pub fn stub_a01898(binary_address: u32, port: u16) -> crate::player::RbxAddress {
+    // IDA 0xa01898: `GetBinaryAddress`/`GetPort` into the slot; returns the port in the struct.
+    crate::player::rak_net_to_rbx_address(binary_address, port)
 }
 
 // 0xa018b4 — __ZN3RBX7Network21RakNetAddressToStringERKN6RakNet13SystemAddressEbc
 #[doc(alias = "RBX::Network::RakNetAddressToString(RakNet::SystemAddress const&,bool,char)")]
 // was: RBX::Network::RakNetAddressToString(RakNet::SystemAddress const&,bool,char)
-pub fn stub_a018b4() -> ! {
-    todo!("0xa018b4 RBX::Network::RakNetAddressToString(RakNet::SystemAddress const&,bool,char)")
+pub fn stub_a018b4(binary_address: u32, port: u16, print_port: bool) -> String {
+    // IDA 0xa018b4: `SystemAddress::ToString` into a string.
+    crate::player::rak_net_address_to_string(binary_address, port, print_port)
 }
 
 // 0xa0ef50 — __ZN3RBX7Network7Players13OnReceiveChatEPNS0_6PlayerEPN6RakNet16RakPeerInterfaceEPNS4_6PacketEh
@@ -13817,73 +13819,92 @@ pub fn stub_a00330() {
 }
 
 // 0xa00564 — __ZN3RBX7Network8PropSync6detail4BaseINS2_10MasterItemEEC2ENS_4Time8IntervalE
-// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt)
-#[doc(alias = "RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::MasterItem>::Base(RBX::Time::Interval)")]
-pub fn stub_a00564() -> ! {
-    todo!("0xa00564 RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::MasterItem>::Base(RBX::Time::Interval)")
+pub fn stub_a00564() {
+    // IDA 0xa00564: `PropSync::Base` C2; the table stays engine-side.
 }
 
 // 0xa006b0 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network12FilterResultEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
-// type: void __fastcall(int, _DWORD *)
-#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::FilterResult>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::FilterResult>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::FilterResult>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Network::FilterResult>> *)")]
-pub fn stub_a006b0() -> ! {
-    todo!("0xa006b0 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::FilterResult>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::FilterResult>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::FilterResult>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Network::FilterResult>> *)")
+pub fn stub_a006b0() {
+    // IDA 0xa006b0: `Rb_tree<Name,FilterResult>::_M_erase`; no crate state.
 }
 
 // 0xa01f14 — __ZN3RBX7Network7Players13setMaxPlayersEi
-// type: RBX::Instance *__fastcall(RBX::Instance *this, int)
-#[doc(alias = "RBX::Network::Players::setMaxPlayers(int)")]
-pub fn stub_a01f14() -> ! {
-    todo!("0xa01f14 RBX::Network::Players::setMaxPlayers(int)")
+pub fn stub_a01f14(players: &mut crate::player::Players, max: i32, notify: &mut dyn FnMut()) {
+    // IDA 0xa01f14: negatives become 1; changes raise.
+    players.set_max_players(max, notify);
 }
 
 // 0xa01f40 — __ZNK3RBX7Network7Players23getLocalPlayerDangerousEv
-// type: int __fastcall(RBX::Network::Players *this)
-#[doc(alias = "RBX::Network::Players::getLocalPlayerDangerous(void)const")]
-pub fn stub_a01f40() -> ! {
-    todo!("0xa01f40 RBX::Network::Players::getLocalPlayerDangerous(void)const")
+pub fn stub_a01f40(players: &crate::player::Players) -> Option<u32> {
+    // IDA 0xa01f40: the +47 local-player row.
+    players.local_player()
 }
 
 // 0xa01f48 — __ZN3RBX7Network7Players21getPlayerInstanceByIDEi
-// type: void __fastcall(RBX::Network::Players *this, int, int)
-#[doc(alias = "RBX::Network::Players::getPlayerInstanceByID(int)")]
-pub fn stub_a01f48() -> ! {
-    todo!("0xa01f48 RBX::Network::Players::getPlayerInstanceByID(int)")
+pub fn stub_a01f48(players: &crate::player::Players, user_id: i32) -> Option<u32> {
+    // IDA 0xa01f48: `getPlayerByID` into the row.
+    players.player_instance_by_id(user_id)
 }
 
 // 0xa02170 — __ZN3RBX7Network7Players21setCharacterAutoSpawnEb
-// type: RBX::Instance *__fastcall(RBX::Instance *this, int)
-#[doc(alias = "RBX::Network::Players::setCharacterAutoSpawn(bool)")]
-pub fn stub_a02170() -> ! {
-    todo!("0xa02170 RBX::Network::Players::setCharacterAutoSpawn(bool)")
+pub fn stub_a02170(players: &mut crate::player::Players, spawn: bool, notify: &mut dyn FnMut()) {
+    // IDA 0xa02170: changes to +157 raise.
+    players.set_character_auto_spawn(spawn, notify);
 }
 
 // 0xa02198 — __ZN3RBX7Network7Players4chatESs
-// type: void __fastcall(RBX::Network::Players *, const std::string *)
-#[doc(alias = "RBX::Network::Players::chat(std::string)")]
-pub fn stub_a02198() -> ! {
-    todo!("0xa02198 RBX::Network::Players::chat(std::string)")
+pub fn stub_a02198(
+    stream: &mut crate::bitstream::BitStream,
+    sender_id: u32,
+    serialize_sender: &mut dyn FnMut(&mut crate::bitstream::BitStream, u32),
+    text: &str,
+    send: &mut dyn FnMut(&mut crate::bitstream::BitStream),
+    raise: &mut dyn FnMut(crate::player::ChatMessage),
+) {
+    // IDA 0xa02198: 135-byte packet plus a local kind-0 message.
+    crate::player::chat_packet(stream, false, sender_id, serialize_sender, text, send, raise);
 }
 
 // 0xa02d08 — __ZN3RBX7Network7Players8teamChatESs
-// type: void __fastcall(RBX::Network::Players *, const std::string *)
-#[doc(alias = "RBX::Network::Players::teamChat(std::string)")]
-pub fn stub_a02d08() -> ! {
-    todo!("0xa02d08 RBX::Network::Players::teamChat(std::string)")
+pub fn stub_a02d08(
+    stream: &mut crate::bitstream::BitStream,
+    sender_id: u32,
+    serialize_sender: &mut dyn FnMut(&mut crate::bitstream::BitStream, u32),
+    text: &str,
+    send: &mut dyn FnMut(&mut crate::bitstream::BitStream),
+    raise: &mut dyn FnMut(crate::player::ChatMessage),
+) {
+    // IDA 0xa02d08: 136-byte packet plus a local kind-1 message.
+    crate::player::chat_packet(stream, true, sender_id, serialize_sender, text, send, raise);
 }
 
 // 0xa03878 — __ZN3RBX7Network7Players11whisperChatESsN5boost10shared_ptrINS_8InstanceEEE
-// type: void __fastcall(RBX::Network::Players *, const std::string *, int)
-#[doc(alias = "RBX::Network::Players::whisperChat(std::string,rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_a03878() -> ! {
-    todo!("0xa03878 RBX::Network::Players::whisperChat(std::string,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_a03878(
+    stream: &mut crate::bitstream::BitStream,
+    sender_id: u32,
+    target_id: u32,
+    target_in_game: bool,
+    serialize_id: &mut dyn FnMut(&mut crate::bitstream::BitStream, u32),
+    text: &str,
+    send: &mut dyn FnMut(&mut crate::bitstream::BitStream),
+    raise: &mut dyn FnMut(crate::player::ChatMessage),
+) {
+    // IDA 0xa03878: target validation, then the 140-byte packet plus a kind-2 message.
+    crate::player::whisper_packet(stream, sender_id, target_id, target_in_game, serialize_id, text, send, raise);
 }
 
 // 0xa04c10 — __ZN3RBX7Network7Players14reportAbuseLuaEN5boost10shared_ptrINS_8InstanceEEESsSs
 // type: void __fastcall(RBX::Network::Players *, _DWORD *, int, int)
 #[doc(alias = "RBX::Network::Players::reportAbuseLua(rbx_core::SharedPtr<RBX::Instance>,std::string,std::string)")]
-pub fn stub_a04c10() -> ! {
-    todo!("0xa04c10 RBX::Network::Players::reportAbuseLua(boost::shared_ptr<RBX::Instance>,std::string,std::string)")
+pub fn stub_a04c10(
+    player_present: bool,
+    is_player: bool,
+    local_user_id: Option<i32>,
+    target_user_id: i32,
+    report: &mut dyn FnMut(),
+) -> bool {
+    // IDA 0xa04c10: nil/type/locality throws; real users file the report.
+    crate::player::report_abuse_lua(player_present, is_player, local_user_id, target_user_id, report)
 }
 
 // 0xa05160 — __ZN3RBX7Network7Players17createLocalPlayerEi
@@ -13897,15 +13918,17 @@ pub fn stub_a05160(players: &mut crate::player::Players, user_id: i32) -> u32 {
 // 0xa06340 — __ZN3RBX7Network7Players17setAbuseReportUrlESs
 // type: void __fastcall(int, const std::string *)
 #[doc(alias = "RBX::Network::Players::setAbuseReportUrl(std::string)")]
-pub fn stub_a06340() -> ! {
-    todo!("0xa06340 RBX::Network::Players::setAbuseReportUrl(std::string)")
+pub fn stub_a06340(players: &mut crate::player::Players, url: String) {
+    // IDA 0xa06340: stores the abuse-report endpoint.
+    players.set_abuse_report_url(url);
 }
 
 // 0xa06580 — __ZN3RBX7Network7Players16setChatFilterUrlESs
 // type: int __fastcall(int, const std::string *)
 #[doc(alias = "RBX::Network::Players::setChatFilterUrl(std::string)")]
-pub fn stub_a06580() -> ! {
-    todo!("0xa06580 RBX::Network::Players::setChatFilterUrl(std::string)")
+pub fn stub_a06580(players: &mut crate::player::Players, url: String) {
+    // IDA 0xa06580: stores the chat-filter endpoint.
+    players.set_chat_filter_url(url);
 }
 
 // 0xa0658c — __ZN3RBX7Network7Players26setBuildUserPermissionsUrlESs

@@ -116,6 +116,17 @@ impl ReplicatorTable {
 pub struct Players {
     next: u32,
     by_user: HashMap<i32, u32>,
+    /// `MaxPlayers` at +52 (IDA 0xa01f24..0xa01f30).
+    pub max_players: i32,
+    /// Character auto-spawn at +157 (IDA 0xa0217a..0xa02186; also read by
+    /// `installRemotePlayer`, IDA 0x9dc986).
+    pub auto_spawn: bool,
+    /// Local-player row for `getLocalPlayerDangerous` (IDA 0xa01f40..0xa01f44).
+    pub local_player: Option<u32>,
+    /// Abuse-report endpoint for `setAbuseReportUrl` (IDA 0xa06340).
+    pub abuse_report_url: String,
+    /// Chat-filter endpoint for `setChatFilterUrl` (IDA 0xa06580).
+    pub chat_filter_url: String,
 }
 
 impl Players {
@@ -134,6 +145,171 @@ impl Players {
     pub fn find_by_user(&self, user_id: i32) -> Option<u32> {
         self.by_user.get(&user_id).copied()
     }
+
+    /// `Players::setMaxPlayers` (IDA 0xa01f14): negatives become 1; a
+    /// change stores and raises `MaxPlayersChanged` (engine-side).
+    pub fn set_max_players(&mut self, max: i32, notify: &mut dyn FnMut()) {
+        // IDA 0xa01f1c..0xa01f1e.
+        let max = max.max(1);
+        // IDA 0xa01f24..0xa01f3a.
+        if self.max_players != max {
+            self.max_players = max;
+            notify();
+        }
+    }
+
+    /// `Players::getLocalPlayerDangerous` (IDA 0xa01f40): the +47 row.
+    pub fn local_player(&self) -> Option<u32> {
+        self.local_player
+    }
+
+    /// `Players::getPlayerInstanceByID` (IDA 0xa01f48): `getPlayerByID`
+    /// into the row (engine-side lookup mirrors [`Players::find_by_user`]).
+    pub fn player_instance_by_id(&self, user_id: i32) -> Option<u32> {
+        self.find_by_user(user_id)
+    }
+
+    /// `Players::setCharacterAutoSpawn` (IDA 0xa02170): a change stores
+    /// and raises the property (engine-side).
+    pub fn set_character_auto_spawn(&mut self, spawn: bool, notify: &mut dyn FnMut()) {
+        // IDA 0xa0217a..0xa02190.
+        if self.auto_spawn != spawn {
+            self.auto_spawn = spawn;
+            notify();
+        }
+    }
+
+    /// `Players::setAbuseReportUrl` (IDA 0xa06340): stores the endpoint.
+    pub fn set_abuse_report_url(&mut self, url: String) {
+        self.abuse_report_url = url;
+    }
+
+    /// `Players::setChatFilterUrl` (IDA 0xa06580): stores the endpoint.
+    pub fn set_chat_filter_url(&mut self, url: String) {
+        self.chat_filter_url = url;
+    }
+}
+
+/// One `RakNet::SystemAddress` translated by `RakNetToRbxAddress` (IDA
+/// 0xa01898..0xa018b2): the binary address plus the port it returns.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct RbxAddress {
+    pub binary: u32,
+    pub port: u16,
+}
+
+/// `RakNetToRbxAddress` (IDA 0xa01898): `GetBinaryAddress`/`GetPort`
+/// into the slot; returns the port.
+pub fn rak_net_to_rbx_address(binary_address: u32, port: u16) -> RbxAddress {
+    RbxAddress { binary: binary_address, port }
+}
+
+/// `RakNetAddressToString` (IDA 0xa018b4): `SystemAddress::ToString`
+/// into a string. `binary` is network order.
+pub fn rak_net_address_to_string(binary_address: u32, port: u16, print_port: bool) -> String {
+    let [a, b, c, d] = binary_address.to_be_bytes();
+    if print_port {
+        format!("{a}.{b}.{c}.{d}:{port}")
+    } else {
+        format!("{a}.{b}.{c}.{d}")
+    }
+}
+
+/// Chat packet tags (disasm `operator<<(uchar)`, IDA 0xa0221e/0xa02d8e/0xa0391e).
+pub const CHAT_BYTE: u8 = 135;
+/// `teamChat` tag (IDA 0xa02d8e).
+pub const TEAM_CHAT_BYTE: u8 = 136;
+/// `whisperChat` tag (IDA 0xa0391e).
+pub const WHISPER_CHAT_BYTE: u8 = 140;
+
+/// One `ChatMessage` (IDA 0xa025ec/0xa0315c/0xa03f44): the text, the
+/// sender row, and the channel (0 = chat, 1 = team, 2 = whisper).
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct ChatMessage {
+    pub sender: u32,
+    pub text: String,
+    pub channel: u8,
+}
+
+/// `Players::chat` (IDA 0xa02198) / `teamChat` (IDA 0xa02d08): `checkChat`
+/// (engine-side), then a 135/136-byte packet (sender id + text) sent at
+/// priority 1, plus a local `ChatMessage` (kind 0/1) through
+/// `raiseChatMessageSignal`. Registry, send, and signal stay engine-side
+/// behind the closures.
+pub fn chat_packet(
+    stream: &mut crate::bitstream::BitStream,
+    team: bool,
+    sender_id: u32,
+    serialize_sender: &mut dyn FnMut(&mut crate::bitstream::BitStream, u32),
+    text: &str,
+    send: &mut dyn FnMut(&mut crate::bitstream::BitStream),
+    raise: &mut dyn FnMut(ChatMessage),
+) {
+    stream.write_u8(if team { TEAM_CHAT_BYTE } else { CHAT_BYTE });
+    serialize_sender(stream, sender_id);
+    stream.write_string(text);
+    send(stream);
+    raise(ChatMessage {
+        sender: sender_id,
+        text: text.to_owned(),
+        channel: u8::from(team),
+    });
+}
+
+/// `Players::whisperChat` (IDA 0xa03878): `checkChat`, then the target
+/// must cast to a `Player` of this game (0xa038a2..0xa042a8, else
+/// `runtime_error("Player object is not a player to chat to")`, mirrored
+/// as a panic), then a 140-byte packet (both ids + text) plus a local
+/// kind-2 `ChatMessage`. Registry, send, and signal stay engine-side.
+pub fn whisper_packet(
+    stream: &mut crate::bitstream::BitStream,
+    sender_id: u32,
+    target_id: u32,
+    target_in_game: bool,
+    serialize_id: &mut dyn FnMut(&mut crate::bitstream::BitStream, u32),
+    text: &str,
+    send: &mut dyn FnMut(&mut crate::bitstream::BitStream),
+    raise: &mut dyn FnMut(ChatMessage),
+) {
+    if !target_in_game {
+        panic!("Player object is not a player to chat to");
+    }
+    stream.write_u8(WHISPER_CHAT_BYTE);
+    serialize_id(stream, sender_id);
+    serialize_id(stream, target_id);
+    stream.write_string(text);
+    send(stream);
+    raise(ChatMessage { sender: sender_id, text: text.to_owned(), channel: 2 });
+}
+
+/// `Players::reportAbuseLua` (IDA 0xa04c10): nil players throw
+/// ("Player must be non-nil", 0xa04c66), non-`Player`s throw ("player
+/// must be a Player object", 0xa04c7e), and reporting needs a local
+/// player ("You can only report-abuse from a client machine",
+/// 0xa04c88). With local and target user ids ≥ 1 the `"text;comment"`
+/// report goes to `reportAbuse` (0xa04c9e..0xa04d00, engine-side).
+/// Throws mirror as panics. Returns whether a report was filed.
+pub fn report_abuse_lua(
+    player_present: bool,
+    is_player: bool,
+    local_user_id: Option<i32>,
+    target_user_id: i32,
+    report: &mut dyn FnMut(),
+) -> bool {
+    if !player_present {
+        panic!("Player must be non-nil");
+    }
+    if !is_player {
+        panic!("player must be a Player object");
+    }
+    let Some(local) = local_user_id else {
+        panic!("You can only report-abuse from a client machine");
+    };
+    if local >= 1 && target_user_id >= 1 {
+        report();
+        return true;
+    }
+    false
 }
 
 /// `Player::loadData` routing (IDA 0xa7fbf0): guests (`user_id <= -1`,
@@ -524,5 +700,117 @@ mod tests {
             player_connect(&params, &ConnectWorld { connect_id: 3, ..base }),
             Err("Failed to connect to server, id 3".to_owned())
         );
+    }
+
+    #[test]
+    fn players_rows_and_flags() {
+        // IDA 0xa01f14/0xa01f40/0xa01f48/0xa02170.
+        let mut players = Players::new();
+        assert_eq!(players.local_player(), None);
+        players.local_player = Some(players.create_local_player(7));
+        assert_eq!(players.player_instance_by_id(7), players.local_player());
+        assert_eq!(players.player_instance_by_id(8), None);
+        let mut notified = 0;
+        players.set_max_players(-3, &mut || notified += 1);
+        assert_eq!((players.max_players, notified), (1, 1));
+        players.set_max_players(1, &mut || notified += 1);
+        assert_eq!(notified, 1);
+        players.set_character_auto_spawn(true, &mut || notified += 1);
+        assert!((players.auto_spawn, notified) == (true, 2));
+        let mut table = ReplicatorTable::new();
+        let h = table.create();
+        assert!(table.remove(h));
+        assert!(!table.remove(h));
+    }
+
+    #[test]
+    fn addresses_format() {
+        // IDA 0xa01898/0xa018b4.
+        let addr = rak_net_to_rbx_address(0x7F00_0001, 53640);
+        assert_eq!((addr.binary, addr.port), (0x7F00_0001, 53640));
+        assert_eq!(rak_net_address_to_string(0x7F00_0001, 53640, true), "127.0.0.1:53640");
+        assert_eq!(rak_net_address_to_string(0x7F00_0001, 53640, false), "127.0.0.1");
+    }
+
+    #[test]
+    fn chat_packets_tag_and_raise() {
+        // IDA 0xa02198/0xa02d08/0xa03878.
+        use crate::bitstream::BitStream;
+        let mut raised = Vec::new();
+        let mut s = BitStream::new();
+        chat_packet(
+            &mut s, false, 3,
+            &mut |st, id| st.write_u32(id),
+            "hi",
+            &mut |_| {},
+            &mut |m: ChatMessage| raised.push(m),
+        );
+        assert_eq!(raised, vec![ChatMessage { sender: 3, text: "hi".to_owned(), channel: 0 }]);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        assert_eq!(r.read_u8(), Some(CHAT_BYTE));
+        let mut s = BitStream::new();
+        chat_packet(
+            &mut s, true, 3,
+            &mut |st, id| st.write_u32(id),
+            "go",
+            &mut |_| {},
+            &mut |m: ChatMessage| raised.push(m),
+        );
+        assert_eq!(raised[1].channel, 1);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        assert_eq!(r.read_u8(), Some(TEAM_CHAT_BYTE));
+        let mut s = BitStream::new();
+        whisper_packet(
+            &mut s, 3, 9, true,
+            &mut |st, id| st.write_u32(id),
+            "psst",
+            &mut |_| {},
+            &mut |m: ChatMessage| raised.push(m),
+        );
+        assert_eq!(raised[2].channel, 2);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        assert_eq!(r.read_u8(), Some(WHISPER_CHAT_BYTE));
+        assert_eq!(r.read_u32(), Some(3));
+        assert_eq!(r.read_u32(), Some(9));
+    }
+
+    #[test]
+    #[should_panic(expected = "not a player to chat to")]
+    fn whisper_outside_game_throws() {
+        // IDA 0xa038a2..0xa042a8.
+        use crate::bitstream::BitStream;
+        let mut s = BitStream::new();
+        whisper_packet(
+            &mut s, 3, 9, false,
+            &mut |_, _| {}, "", &mut |_| {}, &mut |_| {},
+        );
+    }
+
+    #[test]
+    fn abuse_report_files_for_real_users() {
+        // IDA 0xa04c9e: local and target ids >= 1 file the report.
+        let mut filed = false;
+        assert!(report_abuse_lua(true, true, Some(5), 9, &mut || filed = true));
+        assert!(filed);
+        assert!(!report_abuse_lua(true, true, Some(5), 0, &mut || panic!("guest target")));
+        assert!(!report_abuse_lua(true, true, Some(0), 9, &mut || panic!("guest reporter")));
+    }
+
+    #[test]
+    #[should_panic(expected = "Player must be non-nil")]
+    fn abuse_nil_player_throws() {
+        let _ = report_abuse_lua(false, true, Some(1), 1, &mut || {});
+    }
+
+    #[test]
+    #[should_panic(expected = "player must be a Player object")]
+    fn abuse_non_player_throws() {
+        let _ = report_abuse_lua(true, false, Some(1), 1, &mut || {});
+    }
+
+    #[test]
+    #[should_panic(expected = "only report-abuse from a client machine")]
+    fn abuse_without_local_throws() {
+        let _ = report_abuse_lua(true, true, None, 1, &mut || {});
     }
 }
