@@ -1731,8 +1731,9 @@ pub fn stub_a36c8c(slot: &mut dyn FnMut()) {
 // 0xa36e40 — __ZNK5boost4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEE4callINS_10shared_ptrIS4_EESsSsS7_EEvRT_PKvRT0_RT1_RT2_
 #[doc(alias = "void boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>::call<rbx_core::SharedPtr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>(rbx_core::SharedPtr<RBX::Network::Players> &,void const*,std::string &,std::string &,RakNet::Packet * &)const")]
 // was: void boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>::call<boost::shared_ptr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>(boost::shared_ptr<RBX::Network::Players> &,void const*,std::string &,std::string &,RakNet::Packet * &)const
-pub fn stub_a36e40() -> ! {
-    todo!("0xa36e40 void boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>::call<boost::shared_ptr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>(boost::shared_ptr<RBX::Network::Players> &,void const*,std::string &,std::string &,RakNet::Packet * &)const")
+pub fn stub_a36e40<A, B, C>(slot: &mut dyn FnMut(A, B, C), a: A, b: B, c: C) {
+    // IDA 0xa36e40: `mf3::call` — member call plus three args (same shape as 0x9818d0).
+    crate::functor::invoke3(slot, a, b, c);
 }
 
 // 0xa37008 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENSF_ISsEESJ_NSF_ISC_EEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
@@ -5397,8 +5398,9 @@ pub fn stub_f610d4() -> ! {
 
 // 0xf610e4 — j___ZN5boost3_bi5list4INS0_5valueINS_10shared_ptrIN3RBX7Network7PlayersEEEEENS2_ISsEES9_NS2_IPN6RakNet6PacketEEEEclINS_4_mfi3mf3IvS6_SsSsSC_EENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>::operator()<boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *> &,boost::_bi::list0 &,int)")]
-pub fn stub_f610e4() -> ! {
-    todo!("0xf610e4 void boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>::operator()<boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *> &,boost::_bi::list0 &,int)")
+pub fn stub_f610e4<A, B, C>(slot: &mut dyn FnMut(A, B, C), a: A, b: B, c: C) {
+    // Thunk (IDA 0xf610e4): tail-jumps to `mf3::operator()` — member call plus three args.
+    crate::functor::invoke3(slot, a, b, c);
 }
 
 // 0xf611e4 — j___ZN5boost3_bi8storage4INS0_5valueINS_10shared_ptrIN3RBX7Network7PlayersEEEEENS2_ISsEES9_NS2_IPN6RakNet6PacketEEEEC2ES8_S9_S9_SD_
@@ -5428,8 +5430,9 @@ pub fn stub_f61384() -> ! {
 
 // 0xf616a4 — j___ZNK5boost4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEE4callINS_10shared_ptrIS4_EESsSsS7_EEvRT_PKvRT0_RT1_RT2_
 #[doc(alias = "void boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>::call<rbx_core::SharedPtr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>(rbx_core::SharedPtr<RBX::Network::Players> &,void const*,std::string &,std::string &,RakNet::Packet * &)const")]
-pub fn stub_f616a4() -> ! {
-    todo!("0xf616a4 void boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>::call<boost::shared_ptr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>(boost::shared_ptr<RBX::Network::Players> &,void const*,std::string &,std::string &,RakNet::Packet * &)const")
+pub fn stub_f616a4<A, B, C>(slot: &mut dyn FnMut(A, B, C), a: A, b: B, c: C) {
+    // Thunk (IDA 0xf616a4): tail-jumps to `mf3::call` — member call plus three args.
+    crate::functor::invoke3(slot, a, b, c);
 }
 
 // 0xf616f4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS5_5list4INS5_5valueINS_10shared_ptrISB_EEEENSH_ISsEESL_NSH_ISE_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
@@ -6395,8 +6398,9 @@ pub fn stub_68450c(slot: &mut dyn FnMut()) {
 
 // 0x6845e0 — __ZNK5boost4_mfi3mf1IvN3RBX4ToolENS_8weak_ptrINS2_7Network6PlayerEEEEclEPS3_S7_
 #[doc(alias = "boost::_mfi::mf1<void,RBX::Tool,rbx_core::WeakPtr<RBX::Network::Player>>::operator()(RBX::Tool*,rbx_core::WeakPtr<RBX::Network::Player>)const")]
-pub fn stub_6845e0() -> ! {
-    todo!("0x6845e0 boost::_mfi::mf1<void,RBX::Tool,boost::weak_ptr<RBX::Network::Player>>::operator()(RBX::Tool*,boost::weak_ptr<RBX::Network::Player>)const")
+pub fn stub_6845e0<A>(slot: &mut dyn FnMut(A), a: A) {
+    // IDA 0x6845e0: `mf1::operator()` — member call plus one arg (same shape as 0x9818d0).
+    crate::functor::invoke1(slot, a);
 }
 
 // 0x6846c8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4ToolENS_8weak_ptrINS7_7Network6PlayerEEEEENS3_5list2INS3_5valueIPS8_EENSF_ISC_EEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
@@ -6685,8 +6689,9 @@ pub fn stub_9546ac() -> ! {
 
 // 0x954884 — __ZNK5boost4_mfi3mf1IvN3RBX7Network23TopNErrorsPhysicsSenderENS_10shared_ptrINS2_12PartInstanceEEEEclEPS4_S7_
 #[doc(alias = "boost::_mfi::mf1<void,RBX::Network::TopNErrorsPhysicsSender,rbx_core::SharedPtr<RBX::PartInstance>>::operator()(RBX::Network::TopNErrorsPhysicsSender*,rbx_core::SharedPtr<RBX::PartInstance>)const")]
-pub fn stub_954884() -> ! {
-    todo!("0x954884 boost::_mfi::mf1<void,RBX::Network::TopNErrorsPhysicsSender,boost::shared_ptr<RBX::PartInstance>>::operator()(RBX::Network::TopNErrorsPhysicsSender*,boost::shared_ptr<RBX::PartInstance>)const")
+pub fn stub_954884<A>(slot: &mut dyn FnMut(A), a: A) {
+    // IDA 0x954884: `mf1::operator()` — member call plus one arg (same shape as 0x9818d0).
+    crate::functor::invoke1(slot, a);
 }
 
 // 0x954b00 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_7Network23TopNErrorsPhysicsSenderES6_EENSA_5list2INSA_5valueIPSF_EENS2_3argILi1EEEEEEEED1Ev
@@ -6715,8 +6720,9 @@ pub fn stub_954d84() -> ! {
 
 // 0x954ff0 — __ZNK5boost4_mfi3mf1IvN3RBX7Network23TopNErrorsPhysicsSenderENS_10shared_ptrINS2_8InstanceEEEEclEPS4_S7_
 #[doc(alias = "boost::_mfi::mf1<void,RBX::Network::TopNErrorsPhysicsSender,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::Network::TopNErrorsPhysicsSender*,rbx_core::SharedPtr<RBX::Instance>)const")]
-pub fn stub_954ff0() -> ! {
-    todo!("0x954ff0 boost::_mfi::mf1<void,RBX::Network::TopNErrorsPhysicsSender,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::TopNErrorsPhysicsSender*,boost::shared_ptr<RBX::Instance>)const")
+pub fn stub_954ff0<A>(slot: &mut dyn FnMut(A), a: A) {
+    // IDA 0x954ff0: `mf1::operator()` — member call plus one arg (same shape as 0x9818d0).
+    crate::functor::invoke1(slot, a);
 }
 
 // 0x955268 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKNS_10shared_ptrIKN3RBX12PartInstanceEEENS6_7Network23TopNErrorsPhysicsSender6NuggetEEES9_SD_NS_4hashIS9_EESt8equal_toIS9_EEEED2Ev
@@ -8052,8 +8058,9 @@ pub fn stub_98164c<A>(slot: &mut dyn FnMut(A), a: A) {
 
 // 0x9818d0 — __ZNK5boost4_mfi3mf3IvN3RBX7Network16ClientReplicatorERKNS2_4Guid4DataEPNS2_12PartInstanceENS_10shared_ptrINS2_8InstanceEEEEclEPS4_S8_SA_SD_
 #[doc(alias = "boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::Network::ClientReplicator*,RBX::Guid::Data const&,RBX::PartInstance *,rbx_core::SharedPtr<RBX::Instance>)const")]
-pub fn stub_9818d0() -> ! {
-    todo!("0x9818d0 boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::ClientReplicator*,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>)const")
+pub fn stub_9818d0<A, B, C>(slot: &mut dyn FnMut(A, B, C), a: A, b: B, c: C) {
+    // IDA 0x9818d0: virtual member dispatch (this-adjust + refcount guard) then `(obj->*mf)(args)`.
+    crate::functor::invoke3(slot, a, b, c);
 }
 
 // 0x9822cc — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf0IvNS4_7Network16ClientReplicatorEEENSA_5list1INSA_5valueIPSF_EEEEEEED1Ev
@@ -8756,8 +8763,9 @@ pub fn stub_9a9f14() -> ! {
 
 // 0x9aa9f4 — __ZNK5boost4_mfi3mf1IvN3RBX7Network22ErrorCompPhysicsSenderENS_10shared_ptrINS2_12PartInstanceEEEEclEPS4_S7_
 #[doc(alias = "boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,rbx_core::SharedPtr<RBX::PartInstance>>::operator()(RBX::Network::ErrorCompPhysicsSender*,rbx_core::SharedPtr<RBX::PartInstance>)const")]
-pub fn stub_9aa9f4() -> ! {
-    todo!("0x9aa9f4 boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,boost::shared_ptr<RBX::PartInstance>>::operator()(RBX::Network::ErrorCompPhysicsSender*,boost::shared_ptr<RBX::PartInstance>)const")
+pub fn stub_9aa9f4<A>(slot: &mut dyn FnMut(A), a: A) {
+    // IDA 0x9aa9f4: `mf1::operator()` — `ErrorCompPhysicsSender` member call plus `PartInstance`.
+    crate::functor::invoke1(slot, a);
 }
 
 // 0x9aac70 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_7Network22ErrorCompPhysicsSenderES6_EENSA_5list2INSA_5valueIPSF_EENS2_3argILi1EEEEEEEED1Ev
@@ -8786,8 +8794,9 @@ pub fn stub_9aaef4() -> ! {
 
 // 0x9ab160 — __ZNK5boost4_mfi3mf1IvN3RBX7Network22ErrorCompPhysicsSenderENS_10shared_ptrINS2_8InstanceEEEEclEPS4_S7_
 #[doc(alias = "boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::Network::ErrorCompPhysicsSender*,rbx_core::SharedPtr<RBX::Instance>)const")]
-pub fn stub_9ab160() -> ! {
-    todo!("0x9ab160 boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::ErrorCompPhysicsSender*,boost::shared_ptr<RBX::Instance>)const")
+pub fn stub_9ab160<A>(slot: &mut dyn FnMut(A), a: A) {
+    // IDA 0x9ab160: `mf1::operator()` — `ErrorCompPhysicsSender` member call plus `Instance`.
+    crate::functor::invoke1(slot, a);
 }
 
 // 0x9ab4a0 — __ZNK3RBX15ServiceProvider4findINS_7Network18PhysicsPacketCacheEEEPT_v
@@ -11061,8 +11070,9 @@ pub fn stub_9cdfd0() -> ! {
 #[doc(
     alias = "boost::_mfi::mf1<void,RBX::Network::Server,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::Server*,boost::shared_ptr<RBX::Instance>)const"
 )]
-pub fn stub_9ce23c() -> ! {
-    todo!("0x9ce23c boost::_mfi::mf1<void,RBX::Network::Server,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::Server*,boost::shared_ptr<RBX::Instance>)const")
+pub fn stub_9ce23c<A>(slot: &mut dyn FnMut(A), a: A) {
+    // IDA 0x9ce23c: `mf1::operator()` — `Server` member call plus `Instance`.
+    crate::functor::invoke1(slot, a);
 }
 
 // 0x9ceb44 — __ZN3RBX10Reflection9EventDescINS_7Network6ServerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_EC2ESC_PKcSF_SF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -14505,8 +14515,9 @@ pub fn stub_a27a04<A, B>(slot: &mut dyn FnMut(A, B), a: A, b: B) {
 // 0xa27be8 — __ZNK5boost4_mfi3mf3IvN3RBX7Network7PlayersEbNS_8weak_ptrINS3_6PlayerEEEiEclEPS4_bS7_i
 // type: void __fastcall(char **, int, int, int *, int)
 #[doc(alias = "boost::_mfi::mf3<void,RBX::Network::Players,bool,rbx_core::WeakPtr<RBX::Network::Player>,int>::operator()(RBX::Network::Players*,bool,rbx_core::WeakPtr<RBX::Network::Player>,int)const")]
-pub fn stub_a27be8() -> ! {
-    todo!("0xa27be8 boost::_mfi::mf3<void,RBX::Network::Players,bool,boost::weak_ptr<RBX::Network::Player>,int>::operator()(RBX::Network::Players*,bool,boost::weak_ptr<RBX::Network::Player>,int)const")
+pub fn stub_a27be8<A, B, C>(slot: &mut dyn FnMut(A, B, C), a: A, b: B, c: C) {
+    // IDA 0xa27be8: `mf3::operator()` — member call plus three args.
+    crate::functor::invoke3(slot, a, b, c);
 }
 
 // 0xa27f9c — __ZN3rbx8callableINS_7signals6signalIFvbiEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf3IvN3RBX7Network7PlayersEbNS6_8weak_ptrINSC_6PlayerEEEiEENS7_5list4INS7_5valueIPSD_EENS6_3argILi1EEENSJ_ISG_EENSM_ILi2EEEEEEELi2ES3_ED2Ev
@@ -14575,8 +14586,9 @@ pub fn stub_a28fe0() -> ! {
 // 0xa28ffc — __ZN5boost3_bi5list5INS0_5valueIPN3RBX7Network7PlayersEEENS2_IiEENS2_IPKcEENS_3argILi1EEENS2_IbEEEclINS_4_mfi3mf4IvS5_iRKSsSK_bEENS0_5list1IRSsEEEEvNS0_4typeIvEERT_RT0_i
 // type: void __fastcall(int *, char **, _DWORD *)
 #[doc(alias = "void boost::_bi::list5<boost::_bi::value<RBX::Network::Players *>,boost::_bi::value<int>,boost::_bi::value<char const*>,boost::arg<1>,boost::_bi::value<bool>>::operator()<boost::_mfi::mf4<void,RBX::Network::Players,int,std::string const&,std::string const&,bool>,boost::_bi::list1<std::string &>>(boost::_bi::type<void>,boost::_mfi::mf4<void,RBX::Network::Players,int,std::string const&,std::string const&,bool> &,boost::_bi::list1<std::string &> &,int)")]
-pub fn stub_a28ffc() -> ! {
-    todo!("0xa28ffc void boost::_bi::list5<boost::_bi::value<RBX::Network::Players *>,boost::_bi::value<int>,boost::_bi::value<char const*>,boost::arg<1>,boost::_bi::value<bool>>::operator()<boost::_mfi::mf4<void,RBX::Network::Players,int,std::string const&,std::string const&,bool>,boost::_bi::list1<std::string &>>(boost::_bi::type<void>,boost::_mfi::mf4<void,RBX::Network::Players,int,std::string const&,std::string const&,bool> &,boost::_bi::list1<std::string &> &,int)")
+pub fn stub_a28ffc<A, B, C, D>(slot: &mut dyn FnMut(A, B, C, D), a: A, b: B, c: C, d: D) {
+    // IDA 0xa28ffc: `mf4::operator()` — member call plus four args.
+    crate::functor::invoke4(slot, a, b, c, d);
 }
 
 // 0xa292a8 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX7Network7PlayersEiEENS6_5list2INS6_5valueIPSC_EENSF_IiEEEEEEED1Ev
@@ -14682,8 +14694,9 @@ pub fn stub_a2ac10<A, B, C>(slot: &mut dyn FnMut(A, B, C), a: A, b: B, c: C) {
 // 0xa2ae4c — __ZNK5boost4_mfi3mf4IvN3RBX7Network7PlayersEiSsSsSsEclEPS4_iSsSsSs
 // type: void __fastcall(char **, int, int, const std::string *, const std::string *, std::string *)
 #[doc(alias = "boost::_mfi::mf4<void,RBX::Network::Players,int,std::string,std::string,std::string>::operator()(RBX::Network::Players*,int,std::string,std::string,std::string)const")]
-pub fn stub_a2ae4c() -> ! {
-    todo!("0xa2ae4c boost::_mfi::mf4<void,RBX::Network::Players,int,std::string,std::string,std::string>::operator()(RBX::Network::Players*,int,std::string,std::string,std::string)const")
+pub fn stub_a2ae4c<A, B, C, D>(slot: &mut dyn FnMut(A, B, C, D), a: A, b: B, c: C, d: D) {
+    // IDA 0xa2ae4c: `mf4::operator()` — member call plus four args.
+    crate::functor::invoke4(slot, a, b, c, d);
 }
 
 // 0xa2ccc8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6ClientENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
@@ -15115,8 +15128,9 @@ pub fn stub_a3af34() -> ! {
 #[doc(
     alias = "boost::_mfi::mf2<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&>::operator()(RBX::Network::AbuseReport&,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&)const"
 )]
-pub fn stub_a3b00c() -> ! {
-    todo!("0xa3b00c boost::_mfi::mf2<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&>::operator()(RBX::Network::AbuseReport&,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&)const")
+pub fn stub_a3b00c<A, B>(slot: &mut dyn FnMut(A, B), a: A, b: B) {
+    // IDA 0xa3b00c: `mf2::operator()` — member call plus two args (shared-count traffic stays engine-side).
+    crate::functor::invoke2(slot, a, b);
 }
 
 // 0xa3b288 — __ZN5boost3_bi8storage3INS_17reference_wrapperIN3RBX7Network11AbuseReportEEENS0_5valueINS_10shared_ptrINS4_6PlayerEEEEENS_3argILi1EEEEC2ES6_SB_SD_
@@ -18035,8 +18049,9 @@ pub fn stub_aa2f88() -> ! {
 #[doc(
     alias = "boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::Player*,boost::shared_ptr<RBX::Instance>)const"
 )]
-pub fn stub_aa31f4() -> ! {
-    todo!("0xaa31f4 boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::Player*,boost::shared_ptr<RBX::Instance>)const")
+pub fn stub_aa31f4<A>(slot: &mut dyn FnMut(A), a: A) {
+    // IDA 0xaa31f4: `mf1::operator()` — `Player` member call plus `Instance`.
+    crate::functor::invoke1(slot, a);
 }
 
 // 0xaa4bf0 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvPFvRNSA_8weak_ptrINS2_7Network6PlayerEEEPKNS2_15ServiceProviderEENSB_5list2INSB_5valueISG_EENSO_ISK_EEEEEEED1Ev
@@ -21551,8 +21566,9 @@ pub fn stub_f62b44() -> ! {
 // 0xf62bc4 — j___ZNK5boost4_mfi3mf1IvN3RBX7Network6PlayerENS_10shared_ptrINS2_8InstanceEEEEclEPS4_S7_
 // type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "boost::_mfi::mf1<void,RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::Network::Player*,rbx_core::SharedPtr<RBX::Instance>)const")]
-pub fn stub_f62bc4() -> ! {
-    todo!("0xf62bc4 boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::Player*,boost::shared_ptr<RBX::Instance>)const")
+pub fn stub_f62bc4<A>(slot: &mut dyn FnMut(A), a: A) {
+    // Thunk (IDA 0xf62bc4): tail-jumps to `mf1::operator()` — member call on the receiver plus one arg.
+    crate::functor::invoke1(slot, a);
 }
 
 // 0xf62bd4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX7Network6PlayerEEENS5_5list1INS5_5valueINS_10shared_ptrISB_EEEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
@@ -21864,8 +21880,9 @@ pub fn stub_f630c4() -> ! {
 // 0xf630d4 — j___ZNK5boost4_mfi3mf1IvN3RBX7Network28InterpolatingPhysicsReceiverENS_10shared_ptrIS4_EEEclEPS4_S6_
 // type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>::operator()(RBX::Network::InterpolatingPhysicsReceiver*,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>)const")]
-pub fn stub_f630d4() -> ! {
-    todo!("0xf630d4 boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>::operator()(RBX::Network::InterpolatingPhysicsReceiver*,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>)const")
+pub fn stub_f630d4<A>(slot: &mut dyn FnMut(A), a: A) {
+    // Thunk (IDA 0xf630d4): tail-jumps to `mf1::operator()` — member call on the receiver plus one arg.
+    crate::functor::invoke1(slot, a);
 }
 
 // 0xf63104 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFN5boost10shared_ptrINS_8InstanceEEEvELi0EEC1EMS3_FS7_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
