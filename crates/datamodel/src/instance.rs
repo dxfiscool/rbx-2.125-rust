@@ -1721,6 +1721,27 @@ pub struct GameSettings {
     _opaque: (),
 }
 
+/// Rust model of `RBX::Selection` (IDA `0x50b39c`): the selection leaf;
+/// members land with the service batch.
+#[derive(Default)]
+pub struct Selection {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::GlobalBasicSettings` (IDA `0x50dd7c`): the global
+/// basic-settings leaf; members land with the settings batch.
+#[derive(Default)]
+pub struct GlobalBasicSettings {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::GlobalAdvancedSettings` (IDA `0x50e12c`): the global
+/// advanced-settings leaf; members land with the settings batch.
+#[derive(Default)]
+pub struct GlobalAdvancedSettings {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::Texture` (IDA `0x491750`): the texture decal; members
 /// land with the GUI batch.
 #[derive(Default)]
@@ -33252,8 +33273,10 @@ pub fn stub_0x509094() -> ! {
 // 0x50b39c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9SelectionEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::Selection> RBX::Creatable<RBX::Instance>::create<RBX::Selection>(void)")]
 // was: boost::shared_ptr<RBX::Selection> RBX::Creatable<RBX::Instance>::create<RBX::Selection>(void)
-pub fn stub_0x50b39c() -> ! {
-    todo!("0x50b39c boost::shared_ptr<RBX::Selection> RBX::Creatable<RBX::Instance>::create<RBX::Selection>(void)")
+pub fn stub_0x50b39c() -> SharedPtr<Selection> {
+    // IDA 0x50b39c: `Creatable::create<Selection>` — `operator new` +
+    // default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(Selection::default())
 }
 
 // 0x50b44c — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_9SelectionEEERS3_RKNS0_IT_EE
@@ -33266,43 +33289,60 @@ pub fn stub_0x50b44c() -> ! {
 // 0x50b688 — __ZN5boost10shared_ptrIN3RBX9SelectionEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Selection>::shared_ptr<RBX::Selection,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::Selection>::shared_ptr<RBX::Selection,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x50b688() -> ! {
-    todo!("0x50b688 boost::shared_ptr<RBX::Selection>::shared_ptr<RBX::Selection,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x50b688(ptr: *mut Selection, _deleter: CreatableInstanceDeleter) -> SharedPtr<Selection> {
+    // IDA 0x50b688: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(Selection::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x50b838 — __ZN5boost6detail12shared_countC2IPN3RBX9SelectionENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x50b838() -> ! {
-    todo!("0x50b838 boost::detail::shared_count::shared_count<RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x50b838(ptr: *mut Selection, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<Selection, CreatableInstanceDeleter> {
+    // IDA 0x50b838: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x50b940 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SelectionENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x50b940() -> ! {
-    todo!("0x50b940 boost::detail::sp_counted_impl_pd<RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x50b940(_block: *mut ControlBlockPd<Selection, CreatableInstanceDeleter>) {
+    // IDA 0x50b940: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x50b948 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SelectionENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x50b948() -> ! {
-    todo!("0x50b948 boost::detail::sp_counted_impl_pd<RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x50b948(_block: *mut ControlBlockPd<Selection, CreatableInstanceDeleter>) {
+    // IDA 0x50b948: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74. (No D0 sorts into this file run for this cluster.)
 }
 
 // 0x50b968 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SelectionENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x50b968() -> ! {
-    todo!("0x50b968 boost::detail::sp_counted_impl_pd<RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x50b968(block: *const ControlBlockPd<Selection, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x50b968: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x50b980 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SelectionENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x50b980() -> ! {
-    todo!("0x50b980 boost::detail::sp_counted_impl_pd<RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x50b980(block: *const ControlBlockPd<Selection, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x50b980: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x50caa0 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_N5boost10shared_ptrINS0_8InstanceEEEESt10_Select1stISA_ESt4lessIS3_ESaISA_EE8_M_eraseEPSt13_Rb_tree_nodeISA_E
@@ -33322,113 +33362,161 @@ pub fn stub_0x50cac8() -> ! {
 // 0x50dd7c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_19GlobalBasicSettingsEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::GlobalBasicSettings> RBX::Creatable<RBX::Instance>::create<RBX::GlobalBasicSettings>(void)")]
 // was: boost::shared_ptr<RBX::GlobalBasicSettings> RBX::Creatable<RBX::Instance>::create<RBX::GlobalBasicSettings>(void)
-pub fn stub_0x50dd7c() -> ! {
-    todo!("0x50dd7c boost::shared_ptr<RBX::GlobalBasicSettings> RBX::Creatable<RBX::Instance>::create<RBX::GlobalBasicSettings>(void)")
+pub fn stub_0x50dd7c() -> SharedPtr<GlobalBasicSettings> {
+    // IDA 0x50dd7c: `Creatable::create<GlobalBasicSettings>` — `operator
+    // new` + default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(GlobalBasicSettings::default())
 }
 
 // 0x50de2c — __ZN5boost10shared_ptrIN3RBX19GlobalBasicSettingsEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::GlobalBasicSettings>::shared_ptr<RBX::GlobalBasicSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::GlobalBasicSettings>::shared_ptr<RBX::GlobalBasicSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x50de2c() -> ! {
-    todo!("0x50de2c boost::shared_ptr<RBX::GlobalBasicSettings>::shared_ptr<RBX::GlobalBasicSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x50de2c(ptr: *mut GlobalBasicSettings, _deleter: CreatableInstanceDeleter) -> SharedPtr<GlobalBasicSettings> {
+    // IDA 0x50de2c: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(GlobalBasicSettings::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x50dfdc — __ZN5boost6detail12shared_countC2IPN3RBX19GlobalBasicSettingsENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x50dfdc() -> ! {
-    todo!("0x50dfdc boost::detail::shared_count::shared_count<RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x50dfdc(ptr: *mut GlobalBasicSettings, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<GlobalBasicSettings, CreatableInstanceDeleter> {
+    // IDA 0x50dfdc: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x50e0e4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19GlobalBasicSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x50e0e4() -> ! {
-    todo!("0x50e0e4 boost::detail::sp_counted_impl_pd<RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x50e0e4(_block: *mut ControlBlockPd<GlobalBasicSettings, CreatableInstanceDeleter>) {
+    // IDA 0x50e0e4: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x50e0e8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19GlobalBasicSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x50e0e8() -> ! {
-    todo!("0x50e0e8 boost::detail::sp_counted_impl_pd<RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x50e0e8(block: *mut ControlBlockPd<GlobalBasicSettings, CreatableInstanceDeleter>) {
+    // IDA 0x50e0e8: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x50e0ec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19GlobalBasicSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x50e0ec() -> ! {
-    todo!("0x50e0ec boost::detail::sp_counted_impl_pd<RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x50e0ec(_block: *mut ControlBlockPd<GlobalBasicSettings, CreatableInstanceDeleter>) {
+    // IDA 0x50e0ec: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x50e10c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19GlobalBasicSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x50e10c() -> ! {
-    todo!("0x50e10c boost::detail::sp_counted_impl_pd<RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x50e10c(block: *const ControlBlockPd<GlobalBasicSettings, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x50e10c: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x50e124 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19GlobalBasicSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x50e124() -> ! {
-    todo!("0x50e124 boost::detail::sp_counted_impl_pd<RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x50e124(block: *const ControlBlockPd<GlobalBasicSettings, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x50e124: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x50e12c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_22GlobalAdvancedSettingsEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::GlobalAdvancedSettings> RBX::Creatable<RBX::Instance>::create<RBX::GlobalAdvancedSettings>(void)")]
 // was: boost::shared_ptr<RBX::GlobalAdvancedSettings> RBX::Creatable<RBX::Instance>::create<RBX::GlobalAdvancedSettings>(void)
-pub fn stub_0x50e12c() -> ! {
-    todo!("0x50e12c boost::shared_ptr<RBX::GlobalAdvancedSettings> RBX::Creatable<RBX::Instance>::create<RBX::GlobalAdvancedSettings>(void)")
+pub fn stub_0x50e12c() -> SharedPtr<GlobalAdvancedSettings> {
+    // IDA 0x50e12c: `Creatable::create<GlobalAdvancedSettings>` — `operator
+    // new` + default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(GlobalAdvancedSettings::default())
 }
 
 // 0x50e1dc — __ZN5boost10shared_ptrIN3RBX22GlobalAdvancedSettingsEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::GlobalAdvancedSettings>::shared_ptr<RBX::GlobalAdvancedSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::GlobalAdvancedSettings>::shared_ptr<RBX::GlobalAdvancedSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x50e1dc() -> ! {
-    todo!("0x50e1dc boost::shared_ptr<RBX::GlobalAdvancedSettings>::shared_ptr<RBX::GlobalAdvancedSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x50e1dc(ptr: *mut GlobalAdvancedSettings, _deleter: CreatableInstanceDeleter) -> SharedPtr<GlobalAdvancedSettings> {
+    // IDA 0x50e1dc: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(GlobalAdvancedSettings::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x50e38c — __ZN5boost6detail12shared_countC2IPN3RBX22GlobalAdvancedSettingsENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x50e38c() -> ! {
-    todo!("0x50e38c boost::detail::shared_count::shared_count<RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x50e38c(ptr: *mut GlobalAdvancedSettings, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<GlobalAdvancedSettings, CreatableInstanceDeleter> {
+    // IDA 0x50e38c: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x50e494 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX22GlobalAdvancedSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x50e494() -> ! {
-    todo!("0x50e494 boost::detail::sp_counted_impl_pd<RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x50e494(_block: *mut ControlBlockPd<GlobalAdvancedSettings, CreatableInstanceDeleter>) {
+    // IDA 0x50e494: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x50e498 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX22GlobalAdvancedSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x50e498() -> ! {
-    todo!("0x50e498 boost::detail::sp_counted_impl_pd<RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x50e498(block: *mut ControlBlockPd<GlobalAdvancedSettings, CreatableInstanceDeleter>) {
+    // IDA 0x50e498: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x50e49c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX22GlobalAdvancedSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x50e49c() -> ! {
-    todo!("0x50e49c boost::detail::sp_counted_impl_pd<RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x50e49c(_block: *mut ControlBlockPd<GlobalAdvancedSettings, CreatableInstanceDeleter>) {
+    // IDA 0x50e49c: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x50e4bc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX22GlobalAdvancedSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x50e4bc() -> ! {
-    todo!("0x50e4bc boost::detail::sp_counted_impl_pd<RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x50e4bc(block: *const ControlBlockPd<GlobalAdvancedSettings, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x50e4bc: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x50e4d4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX22GlobalAdvancedSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x50e4d4() -> ! {
-    todo!("0x50e4d4 boost::detail::sp_counted_impl_pd<RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x50e4d4(block: *const ControlBlockPd<GlobalAdvancedSettings, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x50e4d4: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x50e4d8 — __ZNSt8_Rb_treeIN3RBX14InstanceHandleESt4pairIKS1_iESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE8_M_eraseEPSt13_Rb_tree_nodeIS4_E
