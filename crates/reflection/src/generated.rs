@@ -1532,39 +1532,166 @@ pub fn stub_0x12d68() -> ! {
     todo!("0x12d68 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
 }
 
+/// Minimal `CRenderSettingsItem` state visible to its enum descriptors (IDA 0x12fa8
+/// family): the enum-backed fields the `GetSetImpl` member pointers read and write.
+/// The real type lives in datamodel; descriptors only touch the reflected fields.
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
+pub struct RenderSettingsItemState {
+    pub quality_level: i32,
+    pub frame_rate_manager_mode: i32,
+}
+
+/// Get/set pair behind `EnumPropDescriptor<CRenderSettingsItem, QualityLevel>` (the +44
+/// member desc: IDA 0x12920 `new(0x14)` holding the getter/setter member pointers).
+pub struct QualityLevelAccess {
+    pub get: Box<dyn Fn(&RenderSettingsItemState) -> i32 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut RenderSettingsItemState, i32) + Send + Sync>,
+}
+
+/// `RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem, QualityLevel>` (IDA 0x12920).
+pub struct QualityLevelPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: QualityLevelAccess,
+    /// Singleton link stored at +40/+48 (same layout as the FaceInstance twin 0x4a9de0).
+    pub enum_desc: &'static crate::enum_desc::EnumDesc,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `Singleton<EnumDesc<QualityLevel>>::doGetSingleton`: guard-once construct +
+/// `__cxa_atexit`; the pairs come from C2 at 0x8e24, reused here so the singleton and
+/// the constructor can never drift apart. Rust: `LazyLock`.
+static QUALITY_LEVEL_DESC: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+    std::sync::LazyLock::new(stub_0x8e24);
+
+pub fn quality_level_enum_desc() -> &'static crate::enum_desc::EnumDesc {
+    &QUALITY_LEVEL_DESC
+}
+
+/// Get/set pair behind `EnumPropDescriptor<CRenderSettingsItem, FrameRateManagerMode>`.
+pub struct FrameRateManagerModeAccess {
+    pub get: Box<dyn Fn(&RenderSettingsItemState) -> i32 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut RenderSettingsItemState, i32) + Send + Sync>,
+}
+
+/// `RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem, FrameRateManagerMode>`
+/// (IDA 0x131a8).
+pub struct FrameRateManagerModePropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: FrameRateManagerModeAccess,
+    /// Singleton link stored at +40/+48 (same layout as the QualityLevel twin).
+    pub enum_desc: &'static crate::enum_desc::EnumDesc,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `Singleton<EnumDesc<FrameRateManagerMode>>::doGetSingleton` (IDA 0x1691c): guard-once
+/// construct + `__cxa_atexit`; C2 at 0x88c4 registers the pairs. Rust: `LazyLock`.
+/// Pairs grounded in decompiled 0x88c4 (`addPair(0, "Automatic")` at 0x89a8, `(1, "On")`
+/// at 0x89be, `(2, "Off")` at 0x89d4); the `"FramerateManagerMode"` name is grounded at
+/// 0x88fa via `enum_desc_crender_settings_frame_rate_manager_mode_ctor`.
+static FRAME_RATE_MANAGER_MODE_DESC: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+    std::sync::LazyLock::new(|| {
+        let mut d =
+            crate::enum_desc::enum_desc_crender_settings_frame_rate_manager_mode_ctor();
+        d.add_pair(0, "Automatic");
+        d.add_pair(1, "On");
+        d.add_pair(2, "Off");
+        d
+    });
+
+pub fn frame_rate_manager_mode_enum_desc() -> &'static crate::enum_desc::EnumDesc {
+    &FRAME_RATE_MANAGER_MODE_DESC
+}
+
 // 0x12fa8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x12fa8() -> ! {
-    todo!("0x12fa8 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE13getIndexValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x12fa8(desc: &QualityLevelPropDesc, obj: &RenderSettingsItemState) -> i32 {
+    // IDA 0x12fa8: `v = member(+44)->get(obj)` (vf+8, 0x12fb8), tail-jump to
+    // `EnumDesc<QualityLevel>::convertToIndex(enumdesc@+48, v)` (0x130a0). Same shape as
+    // the FaceInstance twin at 0x4aa464.
+    stub_0x130a0(desc.enum_desc, (desc.access.get)(obj))
 }
 // 0x12fc4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_0x12fc4() -> ! {
-    todo!("0x12fc4 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x12fc4(
+    desc: &QualityLevelPropDesc,
+    obj: &mut RenderSettingsItemState,
+    index: usize,
+) -> bool {
+    // IDA 0x12fc4: bounds-check against the enum count (0x12fd6), load `values[index]`
+    // (0x12fe0), `member(+44)->set(obj, v)` and return 1 (0x12fea-0x12fec), else 0.
+    // Same shape as the FaceInstance twin at 0x4aa480.
+    match desc.enum_desc.values.get(index) {
+        Some(&v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x12ff8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x12ff8() -> ! {
-    todo!("0x12ff8 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x12ff8(desc: &QualityLevelPropDesc, obj: &RenderSettingsItemState) -> i32 {
+    // IDA 0x12ff8: tail-jump to `member(+44)->get(obj)` (vf+8). Same shape as the
+    // FaceInstance twin at 0x4aa4b4.
+    (desc.access.get)(obj)
 }
 
 // 0x13000 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x13000() -> ! {
-    todo!("0x13000 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x13000(
+    desc: &QualityLevelPropDesc,
+    obj: &mut RenderSettingsItemState,
+    value: i32,
+) -> bool {
+    // IDA 0x13000: `find_if(items, bind(equalValue, _1, value))` (0x1302a); hit runs
+    // `member(+44)->set(obj, value)` and returns 1 (0x13032-0x13040), miss returns 0.
+    // Same shape as the FaceInstance twin at 0x4aa4bc.
+    if desc.enum_desc.items.iter().any(|it| it.value == value) {
+        (desc.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x1304c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x1304c() -> ! {
-    todo!("0x1304c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x1304c(
+    desc: &QualityLevelPropDesc,
+    obj: &RenderSettingsItemState,
+) -> Option<crate::enum_desc::EnumItem> {
+    // IDA 0x1304c: `v = member(+44)->get(obj)` (0x13052-0x1305e), return
+    // `convertToItem(enumdesc@+48, &v)` (0x1306a). Same shape as the FaceInstance twin
+    // at 0x4aa508.
+    let v = (desc.access.get)(obj);
+    usize::try_from(v)
+        .ok()
+        .and_then(|slot| desc.enum_desc.items_by_value.get(slot).copied().flatten())
+        .and_then(|idx| desc.enum_desc.items.get(idx).cloned())
 }
 
 // 0x1306c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_0x1306c() -> ! {
-    todo!("0x1306c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x1306c(
+    desc: &QualityLevelPropDesc,
+    obj: &mut RenderSettingsItemState,
+    name: &str,
+) -> bool {
+    // IDA 0x1306c (`Name` overload): `convertToValue(enumdesc@+48, name, &out)` (0x13082);
+    // success runs `member(+44)->set(obj, out)` and returns 1 (0x1308e-0x1309a), else 0.
+    // Same shape as the FaceInstance twin at 0x4aa528.
+    match desc.enum_desc.lookup_value(name) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x130a0 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToIndexES3_
@@ -1577,8 +1704,25 @@ pub fn stub_0x130a0(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 
 // 0x13110 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x13110() -> ! {
-    todo!("0x13110 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x13110(
+    desc: &QualityLevelPropDesc,
+    obj: &mut RenderSettingsItemState,
+    value: i32,
+) -> bool {
+    // IDA 0x13110: `if (value >= 0)` (0x1311a) and `value < value_to_value.size` (0x1312c),
+    // load `mapped = value_to_value[value]` (0x1312e); `mapped == -1` returns 0 (0x13138),
+    // else `member(+44)->set(obj, mapped)` and return 1 (0x1313a-0x13146). Same shape as
+    // the FaceInstance twin at 0x4aa55c.
+    match usize::try_from(value)
+        .ok()
+        .and_then(|slot| desc.enum_desc.value_to_value.get(slot).copied())
+    {
+        Some(mapped) if mapped != -1 => {
+            (desc.access.set)(obj, mapped);
+            true
+        }
+        _ => false,
+    }
 }
 
 // 0x13150 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -1597,20 +1741,45 @@ pub fn stub_0x13154() -> bool {
 
 // 0x13158 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x13158() -> ! {
-    todo!("0x13158 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x13158(access: &QualityLevelAccess, obj: &RenderSettingsItemState) -> i32 {
+    // IDA 0x13158: null→`obj-36` member adjust (0x1315a-0x13168), split the member pointer
+    // (offset at +8, encoding at +4), virtual-adjust if the low bit is set (0x1317c-0x13180),
+    // call the getter. The adjust/encoding is member-pointer mechanics with no Rust
+    // equivalent; the observable effect is the get. Same as 0x4aa5a4.
+    (access.get)(obj)
 }
 
 // 0x13184 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::QualityLevel const&)const")]
-pub fn stub_0x13184() -> ! {
-    todo!("0x13184 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::QualityLevel const&)const")
+pub fn stub_0x13184(access: &QualityLevelAccess, obj: &mut RenderSettingsItemState, value: i32) {
+    // IDA 0x13184: same member-pointer dispatch as stub_0x13158 through the setter
+    // (0x1318a-0x131a0); the observable effect is the set. Same shape as 0x4aa5c4.
+    (access.set)(obj, value);
 }
 
 // 0x131a8 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::EnumPropDescriptor<RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode)>(char const*,char const*,RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x131a8() -> ! {
-    todo!("0x131a8 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::EnumPropDescriptor<RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode)>(char const*,char const*,RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x131a8(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&RenderSettingsItemState) -> i32 + Send + Sync>,
+    set: Box<dyn Fn(&mut RenderSettingsItemState, i32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> FrameRateManagerModePropDesc {
+    // IDA 0x131a8: same EnumPropDescriptor ctor shape as 0x4a5834/0x4a9de0 — singleton link
+    // at +40/+48 (0x1325e/0x132c8), `new(0x14)` member desc at +44 holding (getter, setter)
+    // (0x13286-0x132ac); the read-only/write-only attribute masks (0x132d8/0x132f4) query a
+    // GetSetImpl that hardcodes 0, so they never fire and the model keeps `attributes`
+    // as passed.
+    FrameRateManagerModePropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: FrameRateManagerModeAccess { get, set },
+        enum_desc: frame_rate_manager_mode_enum_desc(),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x1335c — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEED0Ev
@@ -2036,8 +2205,12 @@ pub fn stub_0x3d2f4() -> ! {
 
 // 0x3d5b0 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::safe_static_do_get_mutex(void)")]
-pub fn stub_0x3d5b0() -> ! {
-    todo!("0x3d5b0 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::safe_static_do_get_mutex(void)")
+pub fn stub_0x3d5b0() -> &'static parking_lot::Mutex<()> {
+    // IDA 0x3d5b0: guard-once `operator new(0x2c)` + `mutex::mutex`, stored in the
+    // function-local static (decompiled 0x3d5b0). Rust: function-local `static`.
+    static RESULT: std::sync::LazyLock<parking_lot::Mutex<()>> =
+        std::sync::LazyLock::new(|| parking_lot::Mutex::new(()));
+    &RESULT
 }
 
 // 0x3d848 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE6removeEPNS8_4slotE
@@ -2048,8 +2221,14 @@ pub fn stub_0x3d848() -> ! {
 
 // 0x3d938 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slot22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot::safe_static_init_mutex(void)")]
-pub fn stub_0x3d938() -> ! {
-    todo!("0x3d938 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot::safe_static_init_mutex(void)")
+pub fn stub_0x3d938() -> &'static parking_lot::Mutex<()> {
+    // IDA 0x3d938: thunk (`B.W`, disasm 0x3d938) to `slot::safe_static_do_get_mutex`,
+    // which survives in this binary only as the import veneer at 0xf1f30c (no named
+    // body). The slot mutex is its own safe-static, so the cutover keeps a dedicated
+    // function-local static.
+    static RESULT: std::sync::LazyLock<parking_lot::Mutex<()>> =
+        std::sync::LazyLock::new(|| parking_lot::Mutex::new(()));
+    &RESULT
 }
 
 // 0x3d940 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotD0Ev
@@ -3920,7 +4099,7 @@ pub fn stub_0x25f690(
     // (0x25fad0). The trailing `declareSub` fan-out and the `staticData`/`allDescriptors`
     // ordered-list tail live behind separate EAs and land with those.
     match container.sorted.binary_search_by(|d| d.name.cmp(&desc.name)) {
-        Ok(pos) if rbx_core::SharedPtr::ptr_eq(&container.sorted[pos], &desc) => return,
+        Ok(pos) if !rbx_core::SharedPtr::ptr_eq(&container.sorted[pos], &desc) => return,
         Ok(pos) => container.sorted[pos] = rbx_core::SharedPtr::clone(&desc),
         Err(pos) => container.sorted.insert(pos, rbx_core::SharedPtr::clone(&desc)),
     }
@@ -4016,10 +4195,77 @@ pub fn stub_0x25fad0<'a>(
     // through the returned slot). `HashMap::entry().or_default()`.
     map.entry(key.to_owned()).or_default()
 }
+/// One `SignatureDescriptor::Item` (IDA 0x267fec: name + type + default `Variant`).
+/// Only the name participates in the descriptor-container cutover; the type link and the
+/// default value live behind separate EAs (0x267fec/0x26813c/0x2682e8).
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
+pub struct SignatureItem {
+    pub name: String,
+}
+
+/// `RBX::Reflection::FunctionDescriptor` state (IDA 0x260274): `Descriptor` base init,
+/// member name unconditionally interned from `"Function"`, owning class link,
+/// permissions, and an empty `SignatureDescriptor` item list; registration runs through
+/// `MemberDescriptorContainer<FunctionDescriptor>::declare` (class+120).
+#[derive(Debug, Default, Clone)]
+pub struct FunctionDescriptorState {
+    pub name: String,
+    pub class: usize,
+    pub permissions: u32,
+    pub attributes: u32,
+    pub signature: Vec<SignatureItem>,
+}
+
+/// `RBX::Reflection::YieldFunctionDescriptor` state (IDA 0x260394): same shape, member
+/// name unconditionally interned from `"YieldFunction"`, declared into the yield
+/// container (class+172).
+#[derive(Debug, Default, Clone)]
+pub struct YieldFunctionDescriptorState {
+    pub name: String,
+    pub class: usize,
+    pub permissions: u32,
+    pub attributes: u32,
+    pub signature: Vec<SignatureItem>,
+}
+
+/// `MemberDescriptorContainer<FunctionDescriptor>` (IDA 0x2604b8): name-sorted vector
+/// plus the `name → descriptor` hash map (`boost::unordered::table`, 0x260bc8).
+/// Descriptors are `SharedPtr` so the pointer-identity early-outs stay observable.
+#[derive(Debug, Default)]
+pub struct FunctionDescriptorContainer {
+    pub sorted: Vec<rbx_core::SharedPtr<FunctionDescriptorState>>,
+    pub by_name: std::collections::HashMap<
+        String,
+        Option<rbx_core::SharedPtr<FunctionDescriptorState>>,
+    >,
+}
+
+/// `MemberDescriptorContainer<YieldFunctionDescriptor>` (IDA 0x260638): same shape over
+/// the yield descriptors (`boost::unordered::table`, 0x260a40).
+#[derive(Debug, Default)]
+pub struct YieldFunctionDescriptorContainer {
+    pub sorted: Vec<rbx_core::SharedPtr<YieldFunctionDescriptorState>>,
+    pub by_name: std::collections::HashMap<
+        String,
+        Option<rbx_core::SharedPtr<YieldFunctionDescriptorState>>,
+    >,
+}
+
+/// `ClassDescriptor::allClasses` registry (IDA 0x2610ac): the ordered class list behind
+/// `staticData2`, filled once by `initStaticData2` under `call_once`.
+#[derive(Debug, Default)]
+pub struct ClassDescriptorRegistry {
+    pub classes: Vec<String>,
+}
+
 // 0x260110 — __ZNSt10_List_baseIN3RBX10Reflection19SignatureDescriptor4ItemESaIS3_EE8_M_clearEv
 #[doc(alias = "std::_List_base<RBX::Reflection::SignatureDescriptor::Item,std::allocator<RBX::Reflection::SignatureDescriptor::Item>>::_M_clear(void)")]
-pub fn stub_0x260110() -> ! {
-    todo!("0x260110 std::_List_base<RBX::Reflection::SignatureDescriptor::Item,std::allocator<RBX::Reflection::SignatureDescriptor::Item>>::_M_clear(void)")
+pub fn stub_0x260110(items: &mut Vec<SignatureItem>) {
+    // IDA 0x260110: `_List_base<Item>::_M_clear` — walk from the head node, run the item
+    // destructor hook when the node carries one (`v3`, 0x260122-0x26012a), `operator
+    // delete` each node until back at the sentinel (0x26012e-0x260136, decompiled
+    // 0x260110). `Vec::clear` drops every element in place: the same observable teardown.
+    items.clear();
 }
 
 // 0x260140 — __ZN3RBX10Reflection16MemberDescriptorD1Ev
@@ -4030,26 +4276,78 @@ pub fn stub_0x260140() {
 
 // 0x260274 — __ZN3RBX10Reflection18FunctionDescriptorC2ERNS0_15ClassDescriptorEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::FunctionDescriptor::FunctionDescriptor(RBX::Reflection::ClassDescriptor &,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x260274() -> ! {
-    todo!("0x260274 RBX::Reflection::FunctionDescriptor::FunctionDescriptor(RBX::Reflection::ClassDescriptor &,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x260274(class: usize, permissions: u32, attributes: u32) -> FunctionDescriptorState {
+    // IDA 0x260274: `Descriptor` base init, vtable off_122F768 → off_1222248, member name
+    // unconditionally interned from `"Function"` (+16, 0x2602a4-0x2602ce), class link (+20),
+    // permissions (+24), empty `SignatureDescriptor` (+28, 0x26031c), then
+    // `declare(class+120)` (0x26032a, decompiled 0x260274).
+    FunctionDescriptorState {
+        name: "Function".to_owned(),
+        class,
+        permissions,
+        attributes,
+        signature: Vec::new(),
+    }
 }
 
 // 0x260394 — __ZN3RBX10Reflection23YieldFunctionDescriptorC2ERNS0_15ClassDescriptorEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::YieldFunctionDescriptor::YieldFunctionDescriptor(RBX::Reflection::ClassDescriptor &,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x260394() -> ! {
-    todo!("0x260394 RBX::Reflection::YieldFunctionDescriptor::YieldFunctionDescriptor(RBX::Reflection::ClassDescriptor &,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x260394(
+    class: usize,
+    permissions: u32,
+    attributes: u32,
+) -> YieldFunctionDescriptorState {
+    // IDA 0x260394: same ctor shape as 0x260274 — `Descriptor` base init, member name
+    // unconditionally interned from `"YieldFunction"` (+16, 0x2603c4-0x2603ee), class link
+    // (+20), permissions (+24), vtable off_122F5E8, empty `SignatureDescriptor` (+28,
+    // 0x26043c), then `declare(class+172)` (0x26044a, decompiled 0x260394).
+    YieldFunctionDescriptorState {
+        name: "YieldFunction".to_owned(),
+        class,
+        permissions,
+        attributes,
+        signature: Vec::new(),
+    }
 }
 
 // 0x2604b8 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18FunctionDescriptorEE7declareEPS2_
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::FunctionDescriptor>::declare(RBX::Reflection::FunctionDescriptor*)")]
-pub fn stub_0x2604b8() -> ! {
-    todo!("0x2604b8 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::FunctionDescriptor>::declare(RBX::Reflection::FunctionDescriptor*)")
+pub fn stub_0x2604b8(
+    container: &mut FunctionDescriptorContainer,
+    desc: rbx_core::SharedPtr<FunctionDescriptorState>,
+) {
+    // IDA 0x2604b8: binary search by member-name key (+12, 0x2604c8-0x2604f6); re-declaring
+    // the same object returns early (0x260502), a *different* object under a taken name
+    // replaces the slot and fires `memberHidingHook` (0x260608-0x260634, unmodeled — no
+    // hook registry in this crate), otherwise sorted `vector::insert` (0x26052c→0x260808
+    // family) + `table::operator[]` name registration (0x260bc8). The trailing
+    // `declareSub` fan-out and the `staticData`/`allDescriptors` tail (0x260546-0x2605a0)
+    // live behind separate EAs and land with those. Same shape as 0x25f690.
+    match container.sorted.binary_search_by(|d| d.name.cmp(&desc.name)) {
+        Ok(pos) if !rbx_core::SharedPtr::ptr_eq(&container.sorted[pos], &desc) => return,
+        Ok(pos) => container.sorted[pos] = rbx_core::SharedPtr::clone(&desc),
+        Err(pos) => container.sorted.insert(pos, rbx_core::SharedPtr::clone(&desc)),
+    }
+    container.by_name.insert(desc.name.clone(), Some(desc));
 }
 
 // 0x260638 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE7declareEPS2_
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::declare(RBX::Reflection::YieldFunctionDescriptor*)")]
-pub fn stub_0x260638() -> ! {
-    todo!("0x260638 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::declare(RBX::Reflection::YieldFunctionDescriptor*)")
+pub fn stub_0x260638(
+    container: &mut YieldFunctionDescriptorContainer,
+    desc: rbx_core::SharedPtr<YieldFunctionDescriptorState>,
+) {
+    // IDA 0x260638: same `declare` instantiation shape as 0x2604b8 over the yield
+    // container — binary search by member-name key, pointer-identity early-out, replace
+    // under a taken name (`memberHidingHook`, unmodeled), otherwise sorted
+    // `vector::insert` (0x260808) + `table::operator[]` name registration (0x260a40).
+    // Same shape as 0x25f690.
+    match container.sorted.binary_search_by(|d| d.name.cmp(&desc.name)) {
+        Ok(pos) if !rbx_core::SharedPtr::ptr_eq(&container.sorted[pos], &desc) => return,
+        Ok(pos) => container.sorted[pos] = rbx_core::SharedPtr::clone(&desc),
+        Err(pos) => container.sorted.insert(pos, rbx_core::SharedPtr::clone(&desc)),
+    }
+    container.by_name.insert(desc.name.clone(), Some(desc));
 }
 
 // 0x2607b8 — __ZN3RBX10Reflection18FunctionDescriptorD1Ev
@@ -4066,20 +4364,61 @@ pub fn stub_0x2607e0() {
 
 // 0x260808 — __ZNSt6vectorIPN3RBX10Reflection23YieldFunctionDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
 #[doc(alias = "std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::YieldFunctionDescriptor **,std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>>,RBX::Reflection::YieldFunctionDescriptor * const&)")]
-pub fn stub_0x260808() -> ! {
-    todo!("0x260808 std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::YieldFunctionDescriptor **,std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>>,RBX::Reflection::YieldFunctionDescriptor * const&)")
+pub fn stub_0x260808(
+    vec: &mut Vec<rbx_core::SharedPtr<YieldFunctionDescriptorState>>,
+    index: usize,
+    desc: rbx_core::SharedPtr<YieldFunctionDescriptorState>,
+) {
+    // IDA 0x260808: single-element `vector::insert(pos, value)` — end-position fast path
+    // stores + bumps the finish pointer (0x26081e-0x260836), otherwise `_M_insert_aux`
+    // shifts (0x260822, decompiled 0x260808). `Vec::insert` is exactly that. Same shape
+    // as 0x25f898.
+    vec.insert(index, desc);
 }
 
 // 0x260840 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10declareSubEPS2_S4_
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::declareSub(RBX::Reflection::YieldFunctionDescriptor*,RBX::Reflection::YieldFunctionDescriptor*)")]
-pub fn stub_0x260840() -> ! {
-    todo!("0x260840 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::declareSub(RBX::Reflection::YieldFunctionDescriptor*,RBX::Reflection::YieldFunctionDescriptor*)")
+pub fn stub_0x260840(
+    container: &mut YieldFunctionDescriptorContainer,
+    desc: rbx_core::SharedPtr<YieldFunctionDescriptorState>,
+    replaceable: rbx_core::SharedPtr<YieldFunctionDescriptorState>,
+) {
+    // IDA 0x260840: `ReleaseAssert(replaceable != desc)` (member.h:216, 0x260860-0x2608a2);
+    // binary search by name (0x2608a6-0x2608d4), `ReleaseAssert(*iter != desc)` (:227,
+    // 0x2608dc-0x260912); the slot holding `replaceable` is overwritten and re-registered
+    // (0x260966-0x26097a), otherwise sorted insert (0x260938-0x26094a); same-name
+    // collisions fire `memberHidingHook` (0x2609a8-0x2609b2, unmodeled). ReleaseAsserts are
+    // plain asserts in this crate. Same shape as 0x25f8d0.
+    assert!(
+        !rbx_core::SharedPtr::ptr_eq(&replaceable, &desc),
+        "replaceable != descriptor (IDA 0x260840 member.h:216)"
+    );
+    let hit = container.sorted.binary_search_by(|d| d.name.cmp(&desc.name)).ok();
+    if let Some(pos) = hit {
+        assert!(
+            !rbx_core::SharedPtr::ptr_eq(&container.sorted[pos], &desc),
+            "*iter != descriptor (IDA 0x260840 member.h:227)"
+        );
+        if rbx_core::SharedPtr::ptr_eq(&container.sorted[pos], &replaceable) {
+            container.sorted[pos] = rbx_core::SharedPtr::clone(&desc);
+            container.by_name.insert(desc.name.clone(), Some(desc));
+            return;
+        }
+    }
+    stub_0x260638(container, desc);
 }
 
 // 0x2609c0 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10staticDataEv
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::staticData(void)")]
-pub fn stub_0x2609c0() -> ! {
-    todo!("0x2609c0 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::staticData(void)")
+pub fn stub_0x2609c0() -> &'static parking_lot::Mutex<YieldFunctionDescriptorContainer> {
+    // IDA 0x2609c0: `__cxa_guard` function-local static `Collection result` with an
+    // `__cxa_atexit(Collection::~Collection)` teardown (decompiled 0x2609c0). Rust:
+    // function-local `static`; Drop glue covers the exit teardown. Same shape as 0x25fa50.
+    static RESULT: std::sync::LazyLock<parking_lot::Mutex<YieldFunctionDescriptorContainer>> =
+        std::sync::LazyLock::new(|| {
+            parking_lot::Mutex::new(YieldFunctionDescriptorContainer::default())
+        });
+    &RESULT
 }
 
 // 0x260a28 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10CollectionD1Ev
@@ -4090,20 +4429,46 @@ pub fn stub_0x260a28() {
 
 // 0x260a40 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")]
-pub fn stub_0x260a40() -> ! {
-    todo!("0x260a40 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")
+pub fn stub_0x260a40<'a>(
+    map: &'a mut std::collections::HashMap<
+        String,
+        Option<rbx_core::SharedPtr<YieldFunctionDescriptorState>>,
+    >,
+    key: &str,
+) -> &'a mut Option<rbx_core::SharedPtr<YieldFunctionDescriptorState>> {
+    // IDA 0x260a40: `boost::unordered::table_impl::operator[]` — find-or-emplace-default
+    // (same instantiation shape as 0x25fad0). `HashMap::entry().or_default()`.
+    map.entry(key.to_owned()).or_default()
 }
 
 // 0x260bc8 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18FunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::FunctionDescriptor *>>,char const*,RBX::Reflection::FunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")]
-pub fn stub_0x260bc8() -> ! {
-    todo!("0x260bc8 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::FunctionDescriptor *>>,char const*,RBX::Reflection::FunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")
+pub fn stub_0x260bc8<'a>(
+    map: &'a mut std::collections::HashMap<
+        String,
+        Option<rbx_core::SharedPtr<FunctionDescriptorState>>,
+    >,
+    key: &str,
+) -> &'a mut Option<rbx_core::SharedPtr<FunctionDescriptorState>> {
+    // IDA 0x260bc8: `boost::unordered::table_impl::operator[]` — find-or-emplace-default
+    // (same instantiation shape as 0x25fad0). `HashMap::entry().or_default()`.
+    map.entry(key.to_owned()).or_default()
 }
 
 // 0x260d48 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18FunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE18reserve_for_insertEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::FunctionDescriptor *>>,char const*,RBX::Reflection::FunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::reserve_for_insert(unsigned long)")]
-pub fn stub_0x260d48() -> ! {
-    todo!("0x260d48 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::FunctionDescriptor *>>,char const*,RBX::Reflection::FunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::reserve_for_insert(unsigned long)")
+pub fn stub_0x260d48(
+    map: &mut std::collections::HashMap<
+        String,
+        Option<rbx_core::SharedPtr<FunctionDescriptorState>>,
+    >,
+    additional: usize,
+) {
+    // IDA 0x260d48: `reserve_for_insert(n)` — buckets present and short: `rehash_impl`
+    // (0x260d4c-0x260d74); no buckets yet: `create_buckets(max(buckets, min_buckets))`
+    // (0x260d78-0x260d8a, decompiled 0x260d48). `HashMap::reserve` is the same observable
+    // capacity guarantee.
+    map.reserve(additional);
 }
 
 // 0x260f78 — __ZN3RBX10Reflection16MemberDescriptorD0Ev
@@ -4114,8 +4479,13 @@ pub fn stub_0x260f78() {
 
 // 0x2610ac — __ZN3RBX10Reflection15ClassDescriptor10allClassesEv
 #[doc(alias = "RBX::Reflection::ClassDescriptor::allClasses(void)")]
-pub fn stub_0x2610ac() -> ! {
-    todo!("0x2610ac RBX::Reflection::ClassDescriptor::allClasses(void)")
+pub fn stub_0x2610ac() -> &'static parking_lot::Mutex<ClassDescriptorRegistry> {
+    // IDA 0x2610ac (disasm): `call_once(flag, initStaticData2)` (0x2610b8-0x2610c8), return
+    // `staticData2()` (0x2610cc-0x2610d0). Rust: function-local `static`; the one-time
+    // fill (`initStaticData2`, no in-crate stub) is unmodeled like `memberHidingHook`.
+    static RESULT: std::sync::LazyLock<parking_lot::Mutex<ClassDescriptorRegistry>> =
+        std::sync::LazyLock::new(|| parking_lot::Mutex::new(ClassDescriptorRegistry::default()));
+    &RESULT
 }
 
 // 0x261138 — __ZN3RBX10Reflection15ClassDescriptorC1Ev
@@ -16371,8 +16741,10 @@ pub fn stub_0x3d9f50() -> ! {
 
 // 0x3da040 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4slot22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::safe_static_init_mutex(void)")]
-pub fn stub_0x3da040() -> ! {
-    todo!("0x3da040 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::safe_static_init_mutex(void)")
+pub fn stub_0x3da040() -> &'static parking_lot::Mutex<()> {
+    // IDA 0x3da040: thunk (`B.W`, disasm 0x3da040) to `slot::safe_static_do_get_mutex`
+    // (0x46ca70).
+    stub_0x46ca70()
 }
 
 // 0x3da048 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4slotD0Ev
@@ -22888,8 +23260,12 @@ pub fn stub_0x46c958() -> ! {
 // 0x46ca70 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4slot24safe_static_do_get_mutexEv
 // was: rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::safe_static_do_get_mutex(void)
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::safe_static_do_get_mutex(void)")]
-pub fn stub_0x46ca70() -> ! {
-    todo!("0x46ca70 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::safe_static_do_get_mutex(void)")
+pub fn stub_0x46ca70() -> &'static parking_lot::Mutex<()> {
+    // IDA 0x46ca70: `slot::safe_static_do_get_mutex` for the `(SharedPtr<Instance>,
+    // PropertyDescriptor)` signal — same guard-once mutex shape as 0x3d5b0.
+    static RESULT: std::sync::LazyLock<parking_lot::Mutex<()>> =
+        std::sync::LazyLock::new(|| parking_lot::Mutex::new(()));
+    &RESULT
 }
 
 // 0x46cb60 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_8functionISC_EELi2ESC_ED1Ev
@@ -44007,4 +44383,124 @@ pub fn stub_0x5bff34() -> ! {
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::KeyframeSequenceProvider,RBX::ContentId (RBX::KeyframeSequenceProvider::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,RBX::ContentId>::call(RBX::KeyframeSequenceProvider*,RBX::ContentId (RBX::KeyframeSequenceProvider::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")]
 pub fn stub_0x5c001c() -> ! {
     todo!("0x5c001c RBX::Reflection::Call1Helper<RBX::KeyframeSequenceProvider,RBX::ContentId (RBX::KeyframeSequenceProvider::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,RBX::ContentId>::call(RBX::KeyframeSequenceProvider*,RBX::ContentId (RBX::KeyframeSequenceProvider::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")
+}
+#[cfg(test)]
+mod function_quality_signal_tests {
+    use super::*;
+
+    fn quality_desc() -> QualityLevelPropDesc {
+        QualityLevelPropDesc {
+            name: "QualityLevel".to_owned(),
+            category: "Rendering".to_owned(),
+            access: QualityLevelAccess {
+                get: Box::new(|s: &RenderSettingsItemState| s.quality_level),
+                set: Box::new(|s: &mut RenderSettingsItemState, v| s.quality_level = v),
+            },
+            enum_desc: quality_level_enum_desc(),
+            attributes: 0,
+            permissions: 0,
+        }
+    }
+
+    #[test]
+    fn quality_enum_round_trip() {
+        let desc = quality_desc();
+        let mut obj = RenderSettingsItemState::default();
+        assert!(stub_0x13000(&desc, &mut obj, 5));
+        assert_eq!(stub_0x12ff8(&desc, &obj), 5);
+        assert!(!stub_0x13000(&desc, &mut obj, 99));
+        assert_eq!(stub_0x12ff8(&desc, &obj), 5);
+    }
+
+    #[test]
+    fn quality_index_and_string_paths() {
+        let desc = quality_desc();
+        let mut obj = RenderSettingsItemState::default();
+        assert!(stub_0x12fc4(&desc, &mut obj, 0));
+        assert_eq!(stub_0x12fa8(&desc, &obj), stub_0x130a0(desc.enum_desc, 0));
+        assert!(stub_0x1306c(&desc, &mut obj, "Level05"));
+        assert_eq!(obj.quality_level, 5);
+        assert!(!stub_0x1306c(&desc, &mut obj, "Nope"));
+        assert!(stub_0x13110(&desc, &mut obj, 2));
+        assert!(!stub_0x13110(&desc, &mut obj, -1));
+        assert!(!stub_0x12fc4(&desc, &mut obj, 1_000_000));
+        assert!(stub_0x1304c(&desc, &obj).is_some());
+    }
+
+    #[test]
+    fn quality_getset_impl_forwards() {
+        let desc = quality_desc();
+        let mut obj = RenderSettingsItemState::default();
+        stub_0x13184(&desc.access, &mut obj, 7);
+        assert_eq!(stub_0x13158(&desc.access, &obj), 7);
+    }
+
+    #[test]
+    fn frame_rate_ctor_links_singleton() {
+        let desc = stub_0x131a8(
+            "FrameRateManager",
+            "Rendering",
+            Box::new(|s: &RenderSettingsItemState| s.frame_rate_manager_mode),
+            Box::new(|s: &mut RenderSettingsItemState, v| s.frame_rate_manager_mode = v),
+            0,
+            0,
+        );
+        assert_eq!(desc.enum_desc.lookup_value("On"), Some(1));
+        assert_eq!(desc.enum_desc.lookup_value("Off"), Some(2));
+        assert_eq!(desc.enum_desc.lookup_value("Automatic"), Some(0));
+    }
+
+    #[test]
+    fn function_declare_sorted_and_idempotent() {
+        let mut c = FunctionDescriptorContainer::default();
+        let state = stub_0x260274(7, 1, 2);
+        assert_eq!(state.name, "Function");
+        assert!(state.signature.is_empty());
+        let a = rbx_core::SharedPtr::from(Box::new(state));
+        stub_0x2604b8(&mut c, rbx_core::SharedPtr::clone(&a));
+        stub_0x2604b8(&mut c, rbx_core::SharedPtr::clone(&a));
+        assert_eq!(c.sorted.len(), 1);
+        assert!(c.by_name.contains_key("Function"));
+        let mut sig = vec![SignatureItem { name: "x".to_owned() }];
+        stub_0x260110(&mut sig);
+        assert!(sig.is_empty());
+    }
+
+    #[test]
+    fn yield_declare_sub_replaces() {
+        let mut c = YieldFunctionDescriptorContainer::default();
+        let mk = |p| {
+            let mut s = stub_0x260394(9, 0, 0);
+            s.permissions = p;
+            rbx_core::SharedPtr::from(Box::new(s))
+        };
+        let old = mk(1);
+        let new = mk(2);
+        stub_0x260638(&mut c, rbx_core::SharedPtr::clone(&old));
+        stub_0x260840(&mut c, rbx_core::SharedPtr::clone(&new), rbx_core::SharedPtr::clone(&old));
+        assert_eq!(c.sorted.len(), 1);
+        stub_0x260808(&mut c.sorted, 0, rbx_core::SharedPtr::clone(&new));
+        assert_eq!(c.sorted.len(), 2);
+        let slot = stub_0x260a40(&mut c.by_name, "YieldFunction");
+        assert!(slot.is_some());
+        stub_0x2609c0();
+    }
+
+    #[test]
+    fn func_map_helpers() {
+        let mut m: std::collections::HashMap<
+            String,
+            Option<rbx_core::SharedPtr<FunctionDescriptorState>>,
+        > = std::collections::HashMap::new();
+        stub_0x260d48(&mut m, 16);
+        assert!(stub_0x260bc8(&mut m, "k").is_none());
+        stub_0x2610ac();
+    }
+
+    #[test]
+    fn signal_statics_stable() {
+        assert!(std::ptr::eq(stub_0x3d5b0(), stub_0x3d5b0()));
+        assert!(std::ptr::eq(stub_0x3d938(), stub_0x3d938()));
+        assert!(std::ptr::eq(stub_0x3da040(), stub_0x46ca70()));
+    }
 }
