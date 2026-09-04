@@ -1144,27 +1144,50 @@ pub fn stub_0x19208() -> usize {
 // 0x19218 — -[Appirater setDelegate:]
 // type: void __cdecl(Appirater *self, SEL, id)
 #[doc(alias = "-[Appirater setDelegate:]")]
-pub fn stub_0x19218() -> ! {
-    todo!("0x19218 -[Appirater setDelegate:]")
+pub fn stub_0x19218(delegate: usize) {
+    // IDA 0x19218: `-[Appirater setDelegate:]` stores the object into the
+    // `_delegate` ivar (0x19224). Same opaque-pointer store as the `+` twin at
+    // stub_0x17e58; the ivar and the class global converge on APPIRATER_DELEGATE.
+    APPIRATER_DELEGATE.store(delegate, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x19228 — -[AppDelegate init]
 // type: AppDelegate *__cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate init]")]
-pub fn stub_0x19228() -> ! {
-    todo!("0x19228 -[AppDelegate init]")
+pub fn stub_0x19228() {
+    // IDA 0x19228: `-[AppDelegate init]` is only the `objc_msgSendSuper2` super
+    // call (0x19242-0x19252): no ivar stores. Struct construction is literal in
+    // Rust; C++ ivar construction lives on the separate `.cxx_construct` path
+    // (stub_0x1a5bc). No explicit body.
 }
 
 // 0x19254 — -[AppDelegate dealloc]
 // type: void __cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate dealloc]")]
-pub fn stub_0x19254() -> ! {
-    todo!("0x19254 -[AppDelegate dealloc]")
+pub fn stub_0x19254() {
+    // IDA 0x19254: `-[AppDelegate dealloc]` — `+[RobloxGoogleAnalytics release]`
+    // (0x19276, no retained host object), `-release` the `_window` ivar (0x1928a),
+    // `[super dealloc]` (0x192ac, runs as Drop). The ivar release is the
+    // observable: the window handle clears.
+    crate::generated_bg_3::APP_WINDOW_HANDLE.store(0, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x192b4 — -[AppDelegate application:didFinishLaunchingWithOptions:]
 // type: char __cdecl(AppDelegate *self, SEL, id, id)
 #[doc(alias = "-[AppDelegate application:didFinishLaunchingWithOptions:]")]
-pub fn stub_0x192b4() -> ! {
-    todo!("0x192b4 -[AppDelegate application:didFinishLaunchingWithOptions:]")
+pub fn stub_0x192b4() -> bool {
+    // IDA 0x192b4: `application:didFinishLaunchingWithOptions:` registers
+    // `warnings_preference=YES, wifionly_preference=NO` defaults (0x192f8-0x19366),
+    // touches the crash/session/analytics singletons (0x19384-0x193c4), runs the
+    // Flurry + Appirater blocks on a global queue (0x193d6-0x193ee), checks for
+    // updates (0x1940a), sets the cookie policy to 0 (0x19426-0x19438), restores
+    // the persisted login into CurrentPlayer (0x1945c-0x194ce), returns 1
+    // (0x194e4). Queue hops collapse to direct calls; platform-owned subsystems
+    // record into the shared gap-filler state (see generated_bg_3.rs).
+    crate::generated_bg_3::stub_0x194ec();
+    crate::generated_bg_3::stub_0x19514();
+    crate::generated_bg_3::app_upgrade_check();
+    crate::generated_bg_3::app_cookie_policy();
+    crate::generated_bg_3::app_restore_login();
+    true
 }

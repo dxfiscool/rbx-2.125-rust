@@ -7,186 +7,464 @@
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
+/// Gap-filler AppDelegate/lifecycle observable state (IDA 0x192b4-0x1ab70). The
+/// canonical UI subsystems (`PlaceLauncher`, `Flurry`, `UserDefaults`,
+/// `CurrentPlayer`, `GoogleAnalytics`, view controllers) live in `rbx_platform`,
+/// which depends on this crate, so their effects record here with matching
+/// shapes: `NSUserDefaults` keys become plain cells, one-shot analytics calls
+/// become counters, opaque `id` handles become `usize`. `RBX::StandardOut::printf`
+/// traces surface as `eprintln!` (the `rbx_platform::AppDelegate` precedent).
+pub(crate) static APP_PLACE_ID: std::sync::atomic::AtomicI32 = std::sync::atomic::AtomicI32::new(0);
+pub(crate) static APP_STATE: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+pub(crate) static APP_WINDOW_HANDLE: std::sync::atomic::AtomicUsize = std::sync::atomic::AtomicUsize::new(0);
+pub(crate) static APP_BG_TASK: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+pub(crate) static APP_MSG_OUT_DISCONNECTS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+static FLURRY_SESSION: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+static FLURRY_STARTS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+static APP_LOGIN_USER: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+static APP_LOGIN_PASS: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+static UPGRADE_CHECKS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+static LAST_PAGE_TRACK: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+static PAGE_TRACK_CALLS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+static DEBUG_COUNTERS_PRINTS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+static SESSION_REPORTS: parking_lot::Mutex<Vec<u32>> = parking_lot::Mutex::new(Vec::new());
+static COOKIE_ACCEPT_POLICY: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(1);
+static VIEW_DISABLED_CALLS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+static VIEW_ENABLED_CALLS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+static LEAVE_GAME_CALLS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+static START_GAME_CALLS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+static LAST_START_GAME_PLACE: std::sync::atomic::AtomicI32 = std::sync::atomic::AtomicI32::new(0);
+static LOGIN_PLACE_ID: std::sync::atomic::AtomicI32 = std::sync::atomic::AtomicI32::new(0);
+static JUMP_PLACE_ID: std::sync::atomic::AtomicI32 = std::sync::atomic::AtomicI32::new(0);
+static TRYLAUNCH_CALLS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+static TRYLAUNCH_ACTION: parking_lot::Mutex<TryLaunchAction> =
+    parking_lot::Mutex::new(TryLaunchAction::Unknown);
+/// Class name of the current top controller (test seam for stub_0x1a234; the
+/// original queries `topMostController` + `NSStringFromClass:` at 0x1a2fc-0x1a316).
+static TOP_CONTROLLER_CLASS: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+static SETTINGS_FETCHES: parking_lot::Mutex<Vec<(String, String)>> = parking_lot::Mutex::new(Vec::new());
+static IOS_SETTINGS_READS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+static MEMORY_BOUNCER_STOPS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+static LOGIN_TERMINATE_CALLS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+/// `-[AppDelegate TryLaunchPlace:]` dispatch outcome (IDA 0x1a334..0x1a488),
+/// mirroring `rbx_platform::LaunchAction`.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub(crate) enum TryLaunchAction {
+    LoginPlaceIdSet,
+    HomeJumpTriggered,
+    GameStarted,
+    GameInProgressJumpSet,
+    #[default]
+    Unknown,
+}
+/// View-controller presentation registry backing `_topMostController` /
+/// `topMostController` (IDA 0x1a098/0x1a124): controller id -> (presented id,
+/// is-navigation-controller, visible id). Empty registry matches the bare
+/// `v2 == a1 -> 0` fallthrough.
+#[derive(Debug, Clone, Copy, Default)]
+struct PresentedNode {
+    presented: Option<usize>,
+    is_nav: bool,
+    visible: Option<usize>,
+}
+static VIEW_REGISTRY: std::sync::LazyLock<parking_lot::Mutex<std::collections::HashMap<usize, PresentedNode>>> =
+    std::sync::LazyLock::new(|| parking_lot::Mutex::new(std::collections::HashMap::new()));
+static KEY_WINDOW_ROOT: std::sync::atomic::AtomicUsize = std::sync::atomic::AtomicUsize::new(0);
+/// `+[UpgradeCheckHelper checkForUpdate]` (IDA 0x1940a/0x19c0e).
+pub(crate) fn app_upgrade_check() {
+    UPGRADE_CHECKS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+}
+/// Cookie policy store behind 0x19426-0x19438 (`setCookieAcceptPolicy:0`).
+pub(crate) fn app_cookie_policy() {
+    COOKIE_ACCEPT_POLICY.store(0, std::sync::atomic::Ordering::SeqCst);
+}
+/// Login restore behind 0x1945c-0x194ce (`username`/`password` defaults into
+/// CurrentPlayer). Defaults and player collapse into the same cells; the
+/// round-trip documents the data flow.
+pub(crate) fn app_restore_login() {
+    let user = APP_LOGIN_USER.lock().clone();
+    let pass = APP_LOGIN_PASS.lock().clone();
+    *APP_LOGIN_USER.lock() = user;
+    *APP_LOGIN_PASS.lock() = pass;
+}
+fn app_track_page(page: &str) {
+    *LAST_PAGE_TRACK.lock() = page.to_owned();
+    PAGE_TRACK_CALLS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+}
+fn app_report_session(code: u32) {
+    SESSION_REPORTS.lock().push(code);
+}
+
 // 0x194ec — ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke")]
-pub fn stub_0x194ec() -> ! {
-    todo!("0x194ec ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke")
+pub fn stub_0x194ec() {
+    // IDA 0x194ec: the didFinishLaunching Flurry block — `+[Flurry startSession:]`
+    // with `FM7DNRW56339NC22K8GR` (0x1950e). Key + start count are the observables.
+    *FLURRY_SESSION.lock() = "FM7DNRW56339NC22K8GR".to_owned();
+    FLURRY_STARTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x19514 — ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2
 // type: void __cdecl(id)
 #[doc(alias = "___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2")]
-pub fn stub_0x19514() -> ! {
-    todo!("0x19514 ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2")
+pub fn stub_0x19514() {
+    // IDA 0x19514: the didFinishLaunching Appirater block — setAppId `431946152`
+    // (0x1953a), days 3.0 (0x19554), uses 10 (0x19568), remind 10.0 (0x19582),
+    // appLaunched:YES (0x1959a). Genuine in-crate wiring into the bg_2 Appirater
+    // cutovers (crate::generated_bg_2).
+    crate::generated_bg_2::stub_0x17df0("431946152");
+    crate::generated_bg_2::stub_0x17e00(3.0);
+    crate::generated_bg_2::stub_0x17e14(10);
+    crate::generated_bg_2::stub_0x17e34(10.0);
+    crate::generated_bg_2::stub_0x18ca0();
 }
 
 // 0x195a0 — -[AppDelegate applicationWillResignActive:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationWillResignActive:]")]
-pub fn stub_0x195a0() -> ! {
-    todo!("0x195a0 -[AppDelegate applicationWillResignActive:]")
+pub fn stub_0x195a0() {
+    // IDA 0x195a0: `applicationWillResignActive:` — begin/end `StandardOut`
+    // traces (0x19600/0x1965e, `eprintln!` here) around
+    // `disableViewBecauseGoingToBackground` (0x19640). The `sp_counted_base`
+    // releases (0x19606/0x19664) are `SharedPtr` drops with no target here.
+    eprintln!("AppDelegate applicationWillResignActive begin");
+    VIEW_DISABLED_CALLS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    eprintln!("AppDelegate applicationWillResignActive end");
 }
 
 // 0x196e4 — -[AppDelegate applicationDidEnterBackground:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationDidEnterBackground:]")]
-pub fn stub_0x196e4() -> ! {
-    todo!("0x196e4 -[AppDelegate applicationDidEnterBackground:]")
+pub fn stub_0x196e4() {
+    // IDA 0x196e4: `applicationDidEnterBackground:` — `RobloxAppState=tryBackground`
+    // + sync (0x19742-0x1975c), begin trace, `leaveGame` (0x197d4-0x197e6), drop the
+    // signup keys (0x1981e-0x1985a), persist the login (0x1986a-0x198fe),
+    // `reportSessionFor:1` (0x19926), page `RobloxApp/EnterBackGround` (0x1994e),
+    // end trace, then // BUG: original at 0x19992 removes the state key it just
+    // wrote and syncs again (0x199a4-0x199b6) — preserved as the empty state.
+    *APP_STATE.lock() = "tryBackground".to_owned();
+    eprintln!("AppDelegate applicationDidEnterBackground begin");
+    LEAVE_GAME_CALLS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    app_track_page("RobloxApp/EnterBackGround");
+    app_report_session(1);
+    eprintln!("AppDelegate applicationDidEnterBackground end");
+    *APP_STATE.lock() = String::new();
 }
 
 // 0x19a30 — -[AppDelegate applicationDidReceiveMemoryWarning:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationDidReceiveMemoryWarning:]")]
-pub fn stub_0x19a30() -> ! {
-    todo!("0x19a30 -[AppDelegate applicationDidReceiveMemoryWarning:]")
+pub fn stub_0x19a30() {
+    // IDA 0x19a30: `applicationDidReceiveMemoryWarning:` — trace (0x19a90) then
+    // `-[RobloxMemoryManager stopMemoryBouncer:0]` with a constant 0
+    // (0x19ac0-0x19ad8). The bouncer lives in platform (`MemoryManager`); the
+    // stop call records here.
+    eprintln!("Received out of memory warning (applicationDidReceiveMemoryWarning)");
+    MEMORY_BOUNCER_STOPS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x19b60 — -[AppDelegate applicationWillEnterForeground:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationWillEnterForeground:]")]
-pub fn stub_0x19b60() -> ! {
-    todo!("0x19b60 -[AppDelegate applicationWillEnterForeground:]")
+pub fn stub_0x19b60() {
+    // IDA 0x19b60: `applicationWillEnterForeground:` — begin trace (0x19bc0),
+    // `+[Appirater appEnteredForeground:1]` (0x19bf0, wired in-crate),
+    // `checkForUpdate` (0x19c0e), page `RobloxApp/EnterForeGround` (0x19c36),
+    // end trace (0x19c54).
+    eprintln!("AppDelegate applicationWillEnterForeground begin");
+    crate::generated_bg_2::stub_0x18e0c(true);
+    app_upgrade_check();
+    app_track_page("RobloxApp/EnterForeGround");
+    eprintln!("AppDelegate applicationWillEnterForeground end");
 }
 
 // 0x19cdc — -[AppDelegate applicationDidBecomeActive:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationDidBecomeActive:]")]
-pub fn stub_0x19cdc() -> ! {
-    todo!("0x19cdc -[AppDelegate applicationDidBecomeActive:]")
+pub fn stub_0x19cdc() {
+    // IDA 0x19cdc: `applicationDidBecomeActive:` — `RobloxAppState=tryForeground`
+    // + sync (0x19d3c-0x19d56), begin trace, `enableViewBecauseGoingToForeground`
+    // (0x19de0), `reportSessionFor:0` (0x19e0a), settings block on a global queue
+    // (0x19e14-0x19e22, stub_0x19f34), pending `appPlaceID` launches once and
+    // clears (0x19e32-0x19e48, stub_0x1a234), end trace, `RobloxAppState=inApp` +
+    // sync (0x19ea6-0x19eb8). Queue hop collapses to the direct call.
+    *APP_STATE.lock() = "tryForeground".to_owned();
+    eprintln!("AppDelegate applicationDidBecomeActive begin");
+    VIEW_ENABLED_CALLS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    app_report_session(0);
+    stub_0x19f34();
+    if APP_PLACE_ID.load(std::sync::atomic::Ordering::SeqCst) != 0 {
+        let place = APP_PLACE_ID.swap(0, std::sync::atomic::Ordering::SeqCst);
+        stub_0x1a234(place);
+    }
+    eprintln!("AppDelegate applicationDidBecomeActive end");
+    *APP_STATE.lock() = "inApp".to_owned();
 }
 
 // 0x19f34 — ___42-[AppDelegate applicationDidBecomeActive:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___42-[AppDelegate applicationDidBecomeActive:]_block_invoke")]
-pub fn stub_0x19f34() -> ! {
-    todo!("0x19f34 ___42-[AppDelegate applicationDidBecomeActive:]_block_invoke")
+pub fn stub_0x19f34() {
+    // IDA 0x19f34: the didBecomeActive settings block —
+    // `ClientAppSettings::Initialize` (0x19f38), `singleton` (0x19f3c),
+    // `FetchClientSettingsData("iOSAppSettings",
+    // "D6925E56-BFB9-4908-AAA2-A5B1EC4B2D79")` (0x19f56),
+    // `getiOSSettingsServiceWithForcedReadFromWeb:0` (0x19f78). The fetch targets
+    // are platform-owned; domain/id + read count record here.
+    SETTINGS_FETCHES.lock().push(("iOSAppSettings".to_owned(), "D6925E56-BFB9-4908-AAA2-A5B1EC4B2D79".to_owned()));
+    IOS_SETTINGS_READS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x19f7c — -[AppDelegate applicationWillTerminate:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationWillTerminate:]")]
-pub fn stub_0x19f7c() -> ! {
-    todo!("0x19f7c -[AppDelegate applicationWillTerminate:]")
+pub fn stub_0x19f7c() {
+    // IDA 0x19f7c: `applicationWillTerminate:` — logs the game/app state values
+    // (0x19fa0-0x19ff8, `eprintln!` shape), `RobloxAppState=terminated` + sync
+    // (0x1a01e-0x1a038), `LoginManager applicationWillTerminate` (0x1a054-0x1a064),
+    // page `RobloxApp/Exit` (0x1a092).
+    *APP_STATE.lock() = "terminated".to_owned();
+    LOGIN_TERMINATE_CALLS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    app_track_page("RobloxApp/Exit");
 }
 
 // 0x1a098 — __Z18_topMostControllerP16UIViewController
 // type: id __fastcall(id)
 #[doc(alias = "_topMostController(UIViewController *)")]
 #[doc(alias = "__Z18_topMostControllerP16UIViewController")]
-pub fn stub_0x1a098() -> ! {
-    todo!("0x1a098 _topMostController(UIViewController *)")
+pub fn stub_0x1a098(view: usize) -> usize {
+    // IDA 0x1a098: `_topMostController(view)` — walk the `presentedViewController`
+    // chain while non-nil (0x1a0ae-0x1a0c4); when the landing is a
+    // `UINavigationController`, take `visibleViewController` if non-nil
+    // (0x1a0fc-0x1a118); return 0 when the walk went nowhere (`v2 == a1`,
+    // 0x1a11c-0x1a11e). The chain resolves through the presentation registry.
+    let reg = VIEW_REGISTRY.lock();
+    let mut top = view;
+    let mut node = reg.get(&top);
+    while let Some(n) = node.and_then(|n| n.presented) {
+        top = n;
+        node = reg.get(&top);
+    }
+    if let Some(n) = reg.get(&top) {
+        if n.is_nav {
+            if let Some(v) = n.visible {
+                top = v;
+            }
+        }
+    }
+    if top == view {
+        return 0;
+    }
+    top
 }
 
 // 0x1a124 — __Z17topMostControllerv
 // type: _DWORD __fastcall()
 #[doc(alias = "topMostController(void)")]
 #[doc(alias = "__Z17topMostControllerv")]
-pub fn stub_0x1a124() -> ! {
-    todo!("0x1a124 topMostController(void)")
+pub fn stub_0x1a124() -> usize {
+    // IDA 0x1a124: `topMostController()` — `keyWindow.rootViewController`
+    // (0x1a140-0x1a160), then `_topMostController` until it returns 0,
+    // keeping the last non-zero (0x1a164-0x1a16c).
+    let mut current = KEY_WINDOW_ROOT.load(std::sync::atomic::Ordering::SeqCst);
+    loop {
+        let next = stub_0x1a098(current);
+        if next == 0 {
+            return current;
+        }
+        current = next;
+    }
 }
 
 // 0x1a174 — -[AppDelegate application:openURL:sourceApplication:annotation:]
 // type: char __cdecl(AppDelegate *self, SEL, id, id, id, id)
 #[doc(alias = "-[AppDelegate application:openURL:sourceApplication:annotation:]")]
-pub fn stub_0x1a174() -> ! {
-    todo!("0x1a174 -[AppDelegate application:openURL:sourceApplication:annotation:]")
+pub fn stub_0x1a174(url: &str) -> bool {
+    // IDA 0x1a174: `application:openURL:...` — logs the URL parts (0x1a18a);
+    // `absoluteString.hasPrefix("robloxmobile")` gates (0x1a19c-0x1a1c2, 0
+    // otherwise at 0x1a1bc); on match logs host/path (0x1a1e6/0x1a208), stores
+    // `host.intValue` into `appPlaceID` (0x1a22e) and returns 1 (0x1a230).
+    // `NSString` handling folds into `&str`; a non-numeric host parses as 0.
+    if !url.starts_with("robloxmobile") {
+        return false;
+    }
+    let host = url.split("://").nth(1).unwrap_or_default().split('/').next().unwrap_or_default();
+    APP_PLACE_ID.store(host.parse::<i32>().unwrap_or(0), std::sync::atomic::Ordering::SeqCst);
+    true
 }
 
 // 0x1a234 — -[AppDelegate TryLaunchPlace:]
 // type: void __cdecl(AppDelegate *self, SEL, int)
 #[doc(alias = "-[AppDelegate TryLaunchPlace:]")]
-pub fn stub_0x1a234() -> ! {
-    todo!("0x1a234 -[AppDelegate TryLaunchPlace:]")
+pub fn stub_0x1a234(place_id: i32) {
+    // IDA 0x1a234: `-TryLaunchPlace:` logs the root/top controller classes
+    // (0x1a288/0x1a2f2/0x1a316) and dispatches on the top class name:
+    // `LoginViewController` -> sharedInstance `setLoginPlaceId:` (0x1a334-0x1a3c2);
+    // `HomeViewController` -> `setJumpToPlaceID:` + `buttonForWebDidTouchUpInside:`
+    // (0x1a386-0x1a3c0); `RobloxNavBarViewController` -> PlaceLauncher
+    // `startGame:controller:request:presentGameAutomatically:` (0x1a3de-0x1a42a);
+    // `GameViewController` -> nav-bar `setJumpToPlaceIDGameInProgress:` (0x1a43e-0x1a47c);
+    // else the unknown log (0x1a488). Class-name queries collapse into
+    // TOP_CONTROLLER_CLASS; each arm records its outcome.
+    TRYLAUNCH_CALLS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    match TOP_CONTROLLER_CLASS.lock().as_str() {
+        "LoginViewController" => {
+            LOGIN_PLACE_ID.store(place_id, std::sync::atomic::Ordering::SeqCst);
+            *TRYLAUNCH_ACTION.lock() = TryLaunchAction::LoginPlaceIdSet;
+        }
+        "HomeViewController" => {
+            JUMP_PLACE_ID.store(place_id, std::sync::atomic::Ordering::SeqCst);
+            *TRYLAUNCH_ACTION.lock() = TryLaunchAction::HomeJumpTriggered;
+        }
+        "RobloxNavBarViewController" => {
+            LAST_START_GAME_PLACE.store(place_id, std::sync::atomic::Ordering::SeqCst);
+            START_GAME_CALLS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            *TRYLAUNCH_ACTION.lock() = TryLaunchAction::GameStarted;
+        }
+        "GameViewController" => {
+            JUMP_PLACE_ID.store(place_id, std::sync::atomic::Ordering::SeqCst);
+            *TRYLAUNCH_ACTION.lock() = TryLaunchAction::GameInProgressJumpSet;
+        }
+        _ => {
+            *TRYLAUNCH_ACTION.lock() = TryLaunchAction::Unknown;
+        }
+    }
 }
 
 // 0x1a494 — -[AppDelegate bgTask]
 // type: unsigned int __cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate bgTask]")]
-pub fn stub_0x1a494() -> ! {
-    todo!("0x1a494 -[AppDelegate bgTask]")
+pub fn stub_0x1a494() -> u32 {
+    // IDA 0x1a494: `-bgTask` — atomic load of the ivar under a barrier
+    // (0x1a4a0-0x1a4a6, `__dmb`). `SeqCst` carries the barrier.
+    APP_BG_TASK.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x1a4a8 — -[AppDelegate setBgTask:]
 // type: void __cdecl(AppDelegate *self, SEL, unsigned int)
 #[doc(alias = "-[AppDelegate setBgTask:]")]
-pub fn stub_0x1a4a8() -> ! {
-    todo!("0x1a4a8 -[AppDelegate setBgTask:]")
+pub fn stub_0x1a4a8(task: u32) {
+    // IDA 0x1a4a8: `-setBgTask:` — barrier, ivar store, barrier
+    // (0x1a4b0-0x1a4ba). `SeqCst` carries both barriers.
+    APP_BG_TASK.store(task, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1a4c0 — -[AppDelegate window]
 // type: UIWindow *__cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate window]")]
-pub fn stub_0x1a4c0() -> ! {
-    todo!("0x1a4c0 -[AppDelegate window]")
+pub fn stub_0x1a4c0() -> usize {
+    // IDA 0x1a4c0: `-window` returns the retained `_window` ivar (0x1a4ce).
+    // The window object is platform-owned; the opaque handle crosses here.
+    APP_WINDOW_HANDLE.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x1a4d0 — -[AppDelegate setWindow:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate setWindow:]")]
-pub fn stub_0x1a4d0() -> ! {
-    todo!("0x1a4d0 -[AppDelegate setWindow:]")
+pub fn stub_0x1a4d0(window: usize) {
+    // IDA 0x1a4d0: `-setWindow:` — `objc_setProperty` retain into the ivar
+    // (0x1a4ec). Retain collapses into the handle store.
+    APP_WINDOW_HANDLE.store(window, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1a4f4 — -[AppDelegate .cxx_destruct]
 // type: void __cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate .cxx_destruct]")]
-pub fn stub_0x1a4f4() -> ! {
-    todo!("0x1a4f4 -[AppDelegate .cxx_destruct]")
+pub fn stub_0x1a4f4() {
+    // IDA 0x1a4f4: `-[AppDelegate .cxx_destruct]` — disconnect the
+    // `messageOutConnection` scoped connection (0x1a552) and drop the weak slot
+    // ref when held (0x1a558-0x1a560). The connection wraps `rbx_core` signal
+    // machinery; the disconnect records here.
+    APP_MSG_OUT_DISCONNECTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1a5bc — -[AppDelegate .cxx_construct]
 // type: id __cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate .cxx_construct]")]
-pub fn stub_0x1a5bc() -> ! {
-    todo!("0x1a5bc -[AppDelegate .cxx_construct]")
+pub fn stub_0x1a5bc() {
+    // IDA 0x1a5bc: `-[AppDelegate .cxx_construct]` zeroes the connection weak
+    // slot (0x1a5ca). Zero-init is the cell default; no explicit body.
 }
 
 // 0x1a5d0 — __GLOBAL__I_a_1
 #[doc(alias = "__GLOBAL__I_a_1")]
-pub fn stub_0x1a5d0() -> ! {
-    todo!("0x1a5d0 global constructor keyed to_a_1")
+pub fn stub_0x1a5d0() {
+    // IDA 0x1a5d0: `__GLOBAL__I_a_1` — stores `boost::system::generic_category()` /
+    // `system_category()` singletons into `__MergedGlobals_35` (disasm 0x1a5d4-0x1a5ee;
+    // decompile unavailable, init thunk). Same cutover as stub_0x16e4c; no body.
 }
 
 // 0x1a768 — _main
 // type: int __fastcall(int argc, const char **argv, const char **envp)
 #[doc(alias = "_main")]
-pub fn stub_0x1a768() -> ! {
-    todo!("0x1a768 _main")
+pub fn stub_0x1a768(_argc: i32, _argv: usize, _envp: usize) -> i32 {
+    // IDA 0x1a768: `main` — autorelease pool alloc/init (0x1a788-0x1a7a0),
+    // `UIApplicationMain(argc, argv, @"UIApplication", @"AppDelegate")`
+    // (0x1a7ba), pool release (0x1a7ca), return its status (0x1a7d0). The host
+    // runloop has no target here; the entry shape is preserved, status 0.
+    0
 }
 
 // 0x1a7d4 — __GLOBAL__I_a_2
 #[doc(alias = "__GLOBAL__I_a_2")]
-pub fn stub_0x1a7d4() -> ! {
-    todo!("0x1a7d4 global constructor keyed to_a_2")
+pub fn stub_0x1a7d4() {
+    // IDA 0x1a7d4: `__GLOBAL__I_a_2` — stores `boost::system::generic_category()` /
+    // `system_category()` singletons into `__MergedGlobals_36` (disasm 0x1a7d8-0x1a7f2;
+    // decompile unavailable, init thunk). Same cutover as stub_0x16e4c; no body.
 }
 
 // 0x1a970 — -[DebugSettingsViewController initWithCoder:]
 // type: DebugSettingsViewController *__cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController initWithCoder:]")]
-pub fn stub_0x1a970() -> ! {
-    todo!("0x1a970 -[DebugSettingsViewController initWithCoder:]")
+/// `DebugSettingsViewController` ivars behind `-initWithCoder:` (IDA 0x1a970).
+#[derive(Debug, Clone)]
+pub(crate) struct DebugSettings {
+    pub(crate) window: (f32, f32, f32, f32),
+    pub(crate) keyboard_offset: i32,
+    pub(crate) display_items: Vec<String>,
+}
+pub fn stub_0x1a970(is_pad: bool, screen_bounds: (f32, f32, f32, f32)) -> DebugSettings {
+    // IDA 0x1a970: `-initWithCoder:` — super init (0x1a99c-0x1a9a0); on iPad idiom
+    // (0x1a9f4) the window rect is fixed to (0, 0, 540, 508) (0x1aa1c-0x1aa1e),
+    // otherwise it copies `UIScreen.mainScreen.bounds` (0x1aa4e-0x1aa76, or zero
+    // with no screen at 0x1aa6e); `keyboardOffset = 114` (0x1aa7a);
+    // `displayPickerArray` holds None/FPS/Summary/Physics/PhysicsAndOwner/Render
+    // (0x1aaa2-0x1ab12). Screen/idiom queries collapse into parameters.
+    let window = if is_pad { (0.0, 0.0, 540.0, 508.0) } else { screen_bounds };
+    DebugSettings {
+        window,
+        keyboard_offset: 114,
+        display_items: ["None", "FPS", "Summary", "Physics", "PhysicsAndOwner", "Render"]
+            .iter()
+            .map(|s| s.to_string())
+            .collect(),
+    }
 }
 
 // 0x1ab20 — -[DebugSettingsViewController dealloc]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController dealloc]")]
-pub fn stub_0x1ab20() -> ! {
-    todo!("0x1ab20 -[DebugSettingsViewController dealloc]")
+pub fn stub_0x1ab20() {
+    // IDA 0x1ab20: `-dealloc` — release `displayPickerArray` (0x1ab42), super
+    // dealloc (0x1ab5a-0x1ab64). Drop glue covers both; no explicit body.
 }
 
 // 0x1ab6c — -[DebugSettingsViewController reloadOldData]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController reloadOldData]")]
-pub fn stub_0x1ab6c() -> ! {
-    todo!("0x1ab6c -[DebugSettingsViewController reloadOldData]")
+pub fn stub_0x1ab6c() {
+    // IDA 0x1ab6c: `-reloadOldData` is an empty body (decompiled 0x1ab6c).
+    // No explicit body.
 }
 
 // 0x1ab70 — -[DebugSettingsViewController viewDidLoad]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController viewDidLoad]")]
-pub fn stub_0x1ab70() -> ! {
-    todo!("0x1ab70 -[DebugSettingsViewController viewDidLoad]")
+pub fn stub_0x1ab70() {
+    // IDA 0x1ab70: `-viewDidLoad` — super call (0x1ab8c-0x1ab96) then
+    // `reloadOldData` (0x1aba8, stub_0x1ab6c, empty). Sequences the call.
+    stub_0x1ab6c();
 }
 
 // 0x1abb0 — -[DebugSettingsViewController setDisplayUI]
