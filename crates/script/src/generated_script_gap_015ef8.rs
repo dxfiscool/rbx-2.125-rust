@@ -8,238 +8,302 @@
 
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+use rbx_reflection::enum_desc::EnumDesc;
+use rbx_reflection::generated::{
+    antialiasing_mode_enum_desc, frame_rate_manager_mode_enum_desc,
+    graphics_mode_enum_desc, quality_level_enum_desc, shadow_mode_enum_desc,
+};
+use rbx_reflection::generated_shard_dh::resolution_preset_enum_desc;
+use std::collections::BTreeMap;
 
 // 0x15ef8 — __ZNSt12_Vector_baseIN3RBX15CRenderSettings12GraphicsModeESaIS2_EE11_M_allocateEm
 // type: int(void)
 #[doc(alias = "std::_Vector_base<RBX::CRenderSettings::GraphicsMode,std::allocator<RBX::CRenderSettings::GraphicsMode>>::_M_allocate(unsigned long)")]
 #[doc(alias = "__ZNSt12_Vector_baseIN3RBX15CRenderSettings12GraphicsModeESaIS2_EE11_M_allocateEm")]
-pub fn stub_0x15ef8() -> ! {
-    todo!("0x15ef8 std::_Vector_base<RBX::CRenderSettings::GraphicsMode,std::allocator<RBX::CRenderSettings::GraphicsMode>>::_M_allocate(unsigned long)")
+pub fn stub_0x15ef8(cap: usize) -> Vec<i32> {
+    // IDA 0x15ef8 `_Vector_base<GraphicsMode>::_M_allocate` (cf. 0x145c4).
+    Vec::with_capacity(cap)
 }
 
 // 0x15f10 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX15CRenderSettings12GraphicsModeES6_EET0_T_S8_S7_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::CRenderSettings::GraphicsMode * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::GraphicsMode *,RBX::CRenderSettings::GraphicsMode *>(RBX::CRenderSettings::GraphicsMode *,RBX::CRenderSettings::GraphicsMode *,RBX::CRenderSettings::GraphicsMode *)")]
 #[doc(alias = "__ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX15CRenderSettings12GraphicsModeES6_EET0_T_S8_S7_")]
-pub fn stub_0x15f10() -> ! {
-    todo!("0x15f10 RBX::CRenderSettings::GraphicsMode * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::GraphicsMode *,RBX::CRenderSettings::GraphicsMode *>(RBX::CRenderSettings::GraphicsMode *,RBX::CRenderSettings::GraphicsMode *,RBX::CRenderSettings::GraphicsMode *)")
+pub fn stub_0x15f10(slots: &mut Vec<i32>, src: std::ops::Range<usize>, dst_end: usize) {
+    // IDA 0x15f10 `__copy_backward` over `GraphicsMode` slots (cf. 0x145dc).
+    slots.copy_within(src, dst_end);
 }
 
 // 0x15f4c — __ZNSt6vectorIN3RBX15CRenderSettings12GraphicsModeESaIS2_EE9push_backERKS2_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::vector<RBX::CRenderSettings::GraphicsMode,std::allocator<RBX::CRenderSettings::GraphicsMode>>::push_back(RBX::CRenderSettings::GraphicsMode const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings12GraphicsModeESaIS2_EE9push_backERKS2_")]
-pub fn stub_0x15f4c() -> ! {
-    todo!("0x15f4c std::vector<RBX::CRenderSettings::GraphicsMode,std::allocator<RBX::CRenderSettings::GraphicsMode>>::push_back(RBX::CRenderSettings::GraphicsMode const&)")
+pub fn stub_0x15f4c(slots: &mut Vec<i32>, value: i32) {
+    // IDA 0x15f4c `vector<GraphicsMode>::push_back` (cf. 0x144b8).
+    slots.push(value);
 }
 
 // 0x15f74 — __ZNSt6vectorIN3RBX15CRenderSettings12GraphicsModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 // type: int(void)
 #[doc(alias = "std::vector<RBX::CRenderSettings::GraphicsMode,std::allocator<RBX::CRenderSettings::GraphicsMode>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::GraphicsMode*,std::vector<RBX::CRenderSettings::GraphicsMode,std::allocator<RBX::CRenderSettings::GraphicsMode>>>,RBX::CRenderSettings::GraphicsMode const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings12GraphicsModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
-pub fn stub_0x15f74() -> ! {
-    todo!("0x15f74 std::vector<RBX::CRenderSettings::GraphicsMode,std::allocator<RBX::CRenderSettings::GraphicsMode>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::GraphicsMode*,std::vector<RBX::CRenderSettings::GraphicsMode,std::allocator<RBX::CRenderSettings::GraphicsMode>>>,RBX::CRenderSettings::GraphicsMode const&)")
+pub fn stub_0x15f74(slots: &mut Vec<i32>, pos: usize, value: i32) {
+    // IDA 0x15f74 `vector<GraphicsMode>::_M_insert_aux` (cf. 0x144e0).
+    let pos = pos.min(slots.len());
+    slots.insert(pos, value);
 }
 
 // 0x16058 — __ZNSt6vectorIN3RBX15CRenderSettings9AASamplesESaIS2_EE6resizeEmS2_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>::resize(unsigned long,RBX::CRenderSettings::AASamples)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings9AASamplesESaIS2_EE6resizeEmS2_")]
-pub fn stub_0x16058() -> ! {
-    todo!("0x16058 std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>::resize(unsigned long,RBX::CRenderSettings::AASamples)")
+pub fn stub_0x16058(slots: &mut Vec<i32>, len: usize, value: i32) {
+    // IDA 0x16058 `vector<AASamples>::resize(n, v)` (cf. 0x14484).
+    slots.resize(len, value);
 }
 
 // 0x1608c — __ZNSt6vectorIN3RBX15CRenderSettings9AASamplesESaIS2_EE9push_backERKS2_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>::push_back(RBX::CRenderSettings::AASamples const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings9AASamplesESaIS2_EE9push_backERKS2_")]
-pub fn stub_0x1608c() -> ! {
-    todo!("0x1608c std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>::push_back(RBX::CRenderSettings::AASamples const&)")
+pub fn stub_0x1608c(slots: &mut Vec<i32>, value: i32) {
+    // IDA 0x1608c `vector<AASamples>::push_back` (cf. 0x144b8).
+    slots.push(value);
 }
 
 // 0x160b4 — __ZNSt3mapIPKN3RBX4NameENS0_15CRenderSettings9AASamplesESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::map<RBX::Name const*,RBX::CRenderSettings::AASamples,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::operator[](RBX::Name const* const&)")]
 #[doc(alias = "__ZNSt3mapIPKN3RBX4NameENS0_15CRenderSettings9AASamplesESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")]
-pub fn stub_0x160b4() -> ! {
-    todo!("0x160b4 std::map<RBX::Name const*,RBX::CRenderSettings::AASamples,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::operator[](RBX::Name const* const&)")
+pub fn stub_0x160b4(map: &mut BTreeMap<u32, i32>, key: u32) -> &mut i32 {
+    // IDA 0x160b4 `map<Name const*, AASamples>::operator[]` (cf. 0x142b8).
+    map.entry(key).or_default()
 }
 
 // 0x1610c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings9AASamplesEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings9AASamplesEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")]
-pub fn stub_0x1610c() -> ! {
-    todo!("0x1610c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples> const&)")
+pub fn stub_0x1610c(map: &mut BTreeMap<u32, i32>, key: u32, value: i32) -> bool {
+    // IDA 0x1610c `_M_insert_unique(hint, pair)` (AASamples map; cf.
+    // 0x14310).
+    map.insert(key, value).is_none()
 }
 
 // 0x161c0 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings9AASamplesEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings9AASamplesEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")]
-pub fn stub_0x161c0() -> ! {
-    todo!("0x161c0 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples> const&)")
+pub fn stub_0x161c0(map: &mut BTreeMap<u32, i32>, key: u32, value: i32) -> Option<i32> {
+    // IDA 0x161c0 `_M_insert(pos, pair)` (AASamples map; cf. 0x143c4).
+    map.insert(key, value)
 }
 
 // 0x16218 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings9AASamplesEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings9AASamplesEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")]
-pub fn stub_0x16218() -> ! {
-    todo!("0x16218 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples> const&)")
+pub fn stub_0x16218(map: &mut BTreeMap<u32, i32>, key: u32, value: i32) -> bool {
+    // IDA 0x16218 `_M_insert_unique(pair)` (AASamples map; cf. 0x1441c).
+    map.insert(key, value).is_none()
 }
 
 // 0x16280 — __ZNSt6vectorIN3RBX15CRenderSettings9AASamplesESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 // type: int(void)
 #[doc(alias = "std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::AASamples*,std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>>,RBX::CRenderSettings::AASamples const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings9AASamplesESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
-pub fn stub_0x16280() -> ! {
-    todo!("0x16280 std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::AASamples*,std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>>,RBX::CRenderSettings::AASamples const&)")
+pub fn stub_0x16280(slots: &mut Vec<i32>, pos: usize, value: i32) {
+    // IDA 0x16280 `vector<AASamples>::_M_insert_aux` (cf. 0x144e0).
+    let pos = pos.min(slots.len());
+    slots.insert(pos, value);
 }
 
 // 0x16364 — __ZNSt12_Vector_baseIN3RBX15CRenderSettings9AASamplesESaIS2_EE11_M_allocateEm
 // type: int(void)
 #[doc(alias = "std::_Vector_base<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>::_M_allocate(unsigned long)")]
 #[doc(alias = "__ZNSt12_Vector_baseIN3RBX15CRenderSettings9AASamplesESaIS2_EE11_M_allocateEm")]
-pub fn stub_0x16364() -> ! {
-    todo!("0x16364 std::_Vector_base<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>::_M_allocate(unsigned long)")
+pub fn stub_0x16364(cap: usize) -> Vec<i32> {
+    // IDA 0x16364 `_Vector_base<AASamples>::_M_allocate` (cf. 0x145c4).
+    Vec::with_capacity(cap)
 }
 
 // 0x1637c — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX15CRenderSettings9AASamplesES6_EET0_T_S8_S7_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::CRenderSettings::AASamples * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::AASamples *,RBX::CRenderSettings::AASamples *>(RBX::CRenderSettings::AASamples *,RBX::CRenderSettings::AASamples *,RBX::CRenderSettings::AASamples *)")]
 #[doc(alias = "__ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX15CRenderSettings9AASamplesES6_EET0_T_S8_S7_")]
-pub fn stub_0x1637c() -> ! {
-    todo!("0x1637c RBX::CRenderSettings::AASamples * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::AASamples *,RBX::CRenderSettings::AASamples *>(RBX::CRenderSettings::AASamples *,RBX::CRenderSettings::AASamples *,RBX::CRenderSettings::AASamples *)")
+pub fn stub_0x1637c(slots: &mut Vec<i32>, src: std::ops::Range<usize>, dst_end: usize) {
+    // IDA 0x1637c `__copy_backward` over `AASamples` slots (cf. 0x145dc).
+    slots.copy_within(src, dst_end);
 }
 
 // 0x163b8 — __ZNSt6vectorIN3RBX15CRenderSettings9AASamplesESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 // type: int(void)
 #[doc(alias = "std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::AASamples*,std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>>,unsigned long,RBX::CRenderSettings::AASamples const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings9AASamplesESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")]
-pub fn stub_0x163b8() -> ! {
-    todo!("0x163b8 std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::AASamples*,std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>>,unsigned long,RBX::CRenderSettings::AASamples const&)")
+pub fn stub_0x163b8(slots: &mut Vec<i32>, pos: usize, count: usize, value: i32) {
+    // IDA 0x163b8 `vector<AASamples>::_M_fill_insert` (cf. 0x14618).
+    let pos = pos.min(slots.len());
+    slots.splice(pos..pos, std::iter::repeat_n(value, count));
 }
 
 // 0x16548 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings10ShadowModeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings10ShadowModeEEEE13initSingletonEv")]
-pub fn stub_0x16548() -> ! {
-    todo!("0x16548 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode> const>::initSingleton(void)")
+pub fn stub_0x16548() -> &'static EnumDesc {
+    // IDA 0x16548 `Singleton<EnumDesc<ShadowMode>>::initSingleton` (thunk):
+    // tail-calls `doGetSingleton` (0x1654c).
+    shadow_mode_enum_desc()
 }
 
 // 0x1654c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings10ShadowModeEEEE14doGetSingletonEv
 // type: void *()
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode> const>::doGetSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings10ShadowModeEEEE14doGetSingletonEv")]
-pub fn stub_0x1654c() -> ! {
-    todo!("0x1654c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode> const>::doGetSingleton(void)")
+pub fn stub_0x1654c() -> &'static EnumDesc {
+    // IDA 0x1654c `Singleton<EnumDesc<ShadowMode>>::doGetSingleton`:
+    // `__cxa_guard_acquire` call-once EnumDesc init (0x165a8..0x165c2) +
+    // `__cxa_atexit` dtor registration (0x165e0), returning the singleton
+    // (0x16610). Host folds the guard into the [`LazyLock`] singleton.
+    shadow_mode_enum_desc()
 }
 
 // 0x1663c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16ResolutionPresetEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16ResolutionPresetEEEE13initSingletonEv")]
-pub fn stub_0x1663c() -> ! {
-    todo!("0x1663c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset> const>::initSingleton(void)")
+pub fn stub_0x1663c() -> &'static EnumDesc {
+    // IDA 0x1663c `Singleton<EnumDesc<ResolutionPreset>>::initSingleton`
+    // (thunk -> 0x16640).
+    resolution_preset_enum_desc()
 }
 
 // 0x16640 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16ResolutionPresetEEEE14doGetSingletonEv
 // type: void *()
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset> const>::doGetSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16ResolutionPresetEEEE14doGetSingletonEv")]
-pub fn stub_0x16640() -> ! {
-    todo!("0x16640 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset> const>::doGetSingleton(void)")
+pub fn stub_0x16640() -> &'static EnumDesc {
+    // IDA 0x16640 `Singleton<EnumDesc<ResolutionPreset>>::doGetSingleton`:
+    // call-once init + atexit dtor + singleton return (cf. 0x1654c).
+    resolution_preset_enum_desc()
 }
 
 // 0x16730 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12QualityLevelEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12QualityLevelEEEE13initSingletonEv")]
-pub fn stub_0x16730() -> ! {
-    todo!("0x16730 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel> const>::initSingleton(void)")
+pub fn stub_0x16730() -> &'static EnumDesc {
+    // IDA 0x16730 `Singleton<EnumDesc<QualityLevel>>::initSingleton`
+    // (thunk).
+    quality_level_enum_desc()
 }
 
 // 0x16734 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12QualityLevelEEEE14doGetSingletonEv
 // type: void *()
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel> const>::doGetSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12QualityLevelEEEE14doGetSingletonEv")]
-pub fn stub_0x16734() -> ! {
-    todo!("0x16734 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel> const>::doGetSingleton(void)")
+pub fn stub_0x16734() -> &'static EnumDesc {
+    // IDA 0x16734 `Singleton<EnumDesc<QualityLevel>>::doGetSingleton` (cf.
+    // 0x1654c).
+    quality_level_enum_desc()
 }
 
 // 0x16824 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16AntialiasingModeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16AntialiasingModeEEEE13initSingletonEv")]
-pub fn stub_0x16824() -> ! {
-    todo!("0x16824 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode> const>::initSingleton(void)")
+pub fn stub_0x16824() -> &'static EnumDesc {
+    // IDA 0x16824 `Singleton<EnumDesc<AntialiasingMode>>::initSingleton`
+    // (thunk).
+    antialiasing_mode_enum_desc()
 }
 
 // 0x16828 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16AntialiasingModeEEEE14doGetSingletonEv
 // type: void *()
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode> const>::doGetSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16AntialiasingModeEEEE14doGetSingletonEv")]
-pub fn stub_0x16828() -> ! {
-    todo!("0x16828 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode> const>::doGetSingleton(void)")
+pub fn stub_0x16828() -> &'static EnumDesc {
+    // IDA 0x16828 `Singleton<EnumDesc<AntialiasingMode>>::doGetSingleton`
+    // (cf. 0x1654c).
+    antialiasing_mode_enum_desc()
 }
 
 // 0x16918 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings20FrameRateManagerModeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings20FrameRateManagerModeEEEE13initSingletonEv")]
-pub fn stub_0x16918() -> ! {
-    todo!("0x16918 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode> const>::initSingleton(void)")
+pub fn stub_0x16918() -> &'static EnumDesc {
+    // IDA 0x16918 `Singleton<EnumDesc<FrameRateManagerMode>>::initSingleton`
+    // (thunk).
+    frame_rate_manager_mode_enum_desc()
 }
 
 // 0x1691c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings20FrameRateManagerModeEEEE14doGetSingletonEv
 // type: void *()
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode> const>::doGetSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings20FrameRateManagerModeEEEE14doGetSingletonEv")]
-pub fn stub_0x1691c() -> ! {
-    todo!("0x1691c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode> const>::doGetSingleton(void)")
+pub fn stub_0x1691c() -> &'static EnumDesc {
+    // IDA 0x1691c `Singleton<EnumDesc<FrameRateManagerMode>>::doGetSingleton`
+    // (cf. 0x1654c).
+    frame_rate_manager_mode_enum_desc()
 }
 
 // 0x16a0c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12GraphicsModeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12GraphicsModeEEEE13initSingletonEv")]
-pub fn stub_0x16a0c() -> ! {
-    todo!("0x16a0c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode> const>::initSingleton(void)")
+pub fn stub_0x16a0c() -> &'static EnumDesc {
+    // IDA 0x16a0c `Singleton<EnumDesc<GraphicsMode>>::initSingleton`
+    // (thunk).
+    graphics_mode_enum_desc()
 }
 
 // 0x16a10 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12GraphicsModeEEEE14doGetSingletonEv
 // type: void *()
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode> const>::doGetSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12GraphicsModeEEEE14doGetSingletonEv")]
-pub fn stub_0x16a10() -> ! {
-    todo!("0x16a10 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode> const>::doGetSingleton(void)")
+pub fn stub_0x16a10() -> &'static EnumDesc {
+    // IDA 0x16a10 `Singleton<EnumDesc<GraphicsMode>>::doGetSingleton` (cf.
+    // 0x1654c).
+    graphics_mode_enum_desc()
 }
 
 // 0x16b00 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings9AASamplesEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings9AASamplesEEEE13initSingletonEv")]
-pub fn stub_0x16b00() -> ! {
-    todo!("0x16b00 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples> const>::initSingleton(void)")
+pub fn stub_0x16b00() -> &'static EnumDesc {
+    // IDA 0x16b00 `Singleton<EnumDesc<AASamples>>::initSingleton` (thunk).
+    crate::generated_wdog_script_B2_1788369654::aa_samples_enum_desc()
 }
 
 // 0x16b04 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings9AASamplesEEEE14doGetSingletonEv
 // type: void *()
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples> const>::doGetSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings9AASamplesEEEE14doGetSingletonEv")]
-pub fn stub_0x16b04() -> ! {
-    todo!("0x16b04 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples> const>::doGetSingleton(void)")
+pub fn stub_0x16b04() -> &'static EnumDesc {
+    // IDA 0x16b04 `Singleton<EnumDesc<AASamples>>::doGetSingleton` (cf.
+    // 0x1654c).
+    crate::generated_wdog_script_B2_1788369654::aa_samples_enum_desc()
 }
 
 // 0x16bf4 — __ZN19CRenderSettingsItemD2Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 #[doc(alias = "CRenderSettingsItem::~CRenderSettingsItem()")]
 #[doc(alias = "__ZN19CRenderSettingsItemD2Ev")]
-pub fn stub_0x16bf4() -> ! {
-    todo!("0x16bf4 CRenderSettingsItem::~CRenderSettingsItem()")
+pub fn stub_0x16bf4() {
+    // IDA 0x16bf4 `CRenderSettingsItem::~CRenderSettingsItem`: vtable resets
+    // (0x16c28..0x16c42), property-changed `disconnectAll` (0x16c74;
+    // `rbx::signals` -> [`rbx_core::signal::Signal`]), intrusive-ptr release
+    // (0x16c7a..0x16c82; `boost::intrusive_ptr` -> [`SharedPtr`]), member
+    // delete + string dtor (0x16c88..0x16c98), `Instance` base dtor
+    // (0x16cd2). Rust Drop glue covers all frees in place.
 }
 
 // 0x16d34 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16ResolutionPresetEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16ResolutionPresetEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0x16d34() -> ! {
-    todo!("0x16d34 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>> *)")
+pub fn stub_0x16d34(map: &mut BTreeMap<u32, i32>) {
+    // IDA 0x16d34 `_Rb_tree<Name, ResolutionPreset>::_M_erase(node)`:
+    // recursive left-subtree erase (0x16d46), node delete (0x16d4e), right
+    // walk (0x16d4c..0x16d56). Host has no tree nodes; the subtree
+    // granularity collapses to the owning map (callers here are whole-table
+    // teardowns), so both fold into clear.
+    map.clear();
 }
 
 // 0x16d5c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings12QualityLevelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
