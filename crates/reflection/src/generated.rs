@@ -3837,36 +3837,95 @@ pub fn stub_0x25f028(access: &LightBoolAccess, obj: &mut LightBoolState, value: 
     // (`LDRB R1, [R2]`, 0x25f046) -- `bool`, not a word (disasm 0x25f028-0x25f048).
     (access.set)(obj, value);
 }
+/// `RBX::Reflection::EventDescriptor` state (IDA 0x25f54c): the member name is
+/// unconditionally interned from `"Signals"`, plus the owning class link, permissions
+/// and attributes. The `SignatureDescriptor` item list starts empty; registration runs
+/// through `MemberDescriptorContainer::declare`.
+#[derive(Debug, Default, Clone)]
+pub struct EventDescriptorState {
+    pub name: String,
+    pub class: usize,
+    pub permissions: u32,
+    pub attributes: u32,
+    pub signature: Vec<String>,
+}
+
+/// `RBX::Reflection::RemoteEventCommon::Attributes` (IDA 0x25f66c): 12-byte blob with
+/// the flag byte set, the member link at +4 and the functionality at +8.
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
+pub struct RemoteEventAttributes {
+    pub deprecated: u8,
+    pub member: usize,
+    pub functionality: u32,
+}
+
+/// `MemberDescriptorContainer<EventDescriptor>` (IDA 0x25f690): name-sorted vector plus
+/// the `name → descriptor` hash map (`boost::unordered::table`, 0x25fad0). Descriptors
+/// are `SharedPtr` so the pointer-identity early-outs (`*iter == desc`) stay observable.
+#[derive(Debug, Default)]
+pub struct EventDescriptorContainer {
+    pub sorted: Vec<rbx_core::SharedPtr<EventDescriptorState>>,
+    pub by_name: std::collections::HashMap<
+        String,
+        Option<rbx_core::SharedPtr<EventDescriptorState>>,
+    >,
+}
+
 // 0x25f54c — __ZN3RBX10Reflection15EventDescriptorC2ERNS0_15ClassDescriptorEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDescriptor::EventDescriptor(RBX::Reflection::ClassDescriptor &,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x25f54c() -> ! {
-    todo!("0x25f54c RBX::Reflection::EventDescriptor::EventDescriptor(RBX::Reflection::ClassDescriptor &,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x25f54c(class: usize, permissions: u32, attributes: u32) -> EventDescriptorState {
+    // IDA 0x25f54c: `Descriptor` base init, vtable off_122F768 → off_122F5A8, member name
+    // unconditionally interned from `"Signals"` (+16), class link (+20), permissions (+24),
+    // empty `SignatureDescriptor` (+28), then `declare(class+68)` (decompiled 0x25f54c).
+    EventDescriptorState {
+        name: "Signals".to_owned(),
+        class,
+        permissions,
+        attributes,
+        signature: Vec::new(),
+    }
 }
-
 // 0x25f66c — __ZN3RBX10Reflection17RemoteEventCommon10Attributes10deprecatedENS1_13FunctionalityEPKNS0_16MemberDescriptorE
 #[doc(alias = "RBX::Reflection::RemoteEventCommon::Attributes::deprecated(RBX::Reflection::RemoteEventCommon::Functionality,RBX::Reflection::MemberDescriptor const*)")]
-pub fn stub_0x25f66c() -> ! {
-    todo!("0x25f66c RBX::Reflection::RemoteEventCommon::Attributes::deprecated(RBX::Reflection::RemoteEventCommon::Functionality,RBX::Reflection::MemberDescriptor const*)")
+pub fn stub_0x25f66c(functionality: u32, member: usize) -> RemoteEventAttributes {
+    // IDA 0x25f66c: 10-byte filler -- flag byte `*result = 1`, member link at +4,
+    // functionality at +8; returns the struct (decompiled 0x25f66c).
+    RemoteEventAttributes { deprecated: 1, member, functionality }
 }
-
 // 0x25f678 — __ZN3RBX10Reflection11EventSource18processRemoteEventERKNS0_15EventDescriptorERKSt6vectorINS0_7VariantESaIS6_EERKNS_13SystemAddressE
 #[doc(alias = "RBX::Reflection::EventSource::processRemoteEvent(RBX::Reflection::EventDescriptor const&,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&,RBX::SystemAddress const&)")]
 pub fn stub_0x25f678() -> ! {
-    todo!("0x25f678 RBX::Reflection::EventSource::processRemoteEvent(RBX::Reflection::EventDescriptor const&,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&,RBX::SystemAddress const&)")
+    // IDA 0x25f678: forwards `(desc, source)` through the descriptor vtable slot at +20
+    // (`(*(desc+20))(desc, source)`, decompiled 0x25f678); that slot is `__cxa_pure_virtual`
+    // (vtable off_122F5A8+20 holds import 0x13ac4dc). The base descriptor has no remote
+    // handler: calling it traps exactly like the C++ pure-virtual call.
+    panic!("pure virtual EventDescriptor remote dispatch (IDA 0x25f678)");
 }
-
 // 0x25f688 — __ZN3RBX10Reflection11EventSource20raiseEventInvocationERKNS0_15EventDescriptorERKSt6vectorINS0_7VariantESaIS6_EEPKNS_13SystemAddressE
 #[doc(alias = "RBX::Reflection::EventSource::raiseEventInvocation(RBX::Reflection::EventDescriptor const&,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&,RBX::SystemAddress const*)")]
-pub fn stub_0x25f688() -> ! {
-    todo!("0x25f688 RBX::Reflection::EventSource::raiseEventInvocation(RBX::Reflection::EventDescriptor const&,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&,RBX::SystemAddress const*)")
+pub fn stub_0x25f688() {
+    // IDA 0x25f688: a single `BX LR` -- the base `raiseEventInvocation` hook is
+    // intentionally empty.
 }
-
 // 0x25f690 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE7declareEPS2_
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::declare(RBX::Reflection::EventDescriptor*)")]
-pub fn stub_0x25f690() -> ! {
-    todo!("0x25f690 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::declare(RBX::Reflection::EventDescriptor*)")
+pub fn stub_0x25f690(
+    container: &mut EventDescriptorContainer,
+    desc: rbx_core::SharedPtr<EventDescriptorState>,
+) {
+    // IDA 0x25f690: binary search by member-name key (+12); re-declaring the same object
+    // returns early, a *different* object under a taken name replaces the slot (the
+    // `memberHidingHook` call there is unmodeled -- no hook registry in this crate),
+    // otherwise sorted `vector::insert` (0x25f898) + `table::operator[]` name registration
+    // (0x25fad0). The trailing `declareSub` fan-out and the `staticData`/`allDescriptors`
+    // ordered-list tail live behind separate EAs and land with those.
+    match container.sorted.binary_search_by(|d| d.name.cmp(&desc.name)) {
+        Ok(pos) if rbx_core::SharedPtr::ptr_eq(&container.sorted[pos], &desc) => return,
+        Ok(pos) => container.sorted[pos] = rbx_core::SharedPtr::clone(&desc),
+        Err(pos) => container.sorted.insert(pos, rbx_core::SharedPtr::clone(&desc)),
+    }
+    container.by_name.insert(desc.name.clone(), Some(desc));
 }
-
 // 0x25f810 — __ZN3RBX10Reflection15EventDescriptorD1Ev
 #[doc(alias = "RBX::Reflection::EventDescriptor::~EventDescriptor()")]
 pub fn stub_0x25f810() {
@@ -3883,27 +3942,63 @@ pub fn stub_0x25f838() -> bool {
 // 0x25f840 — __ZNK3RBX10Reflection15EventDescriptor9sendEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaIS5_EE
 #[doc(alias = "RBX::Reflection::EventDescriptor::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 pub fn stub_0x25f840() -> ! {
-    todo!("0x25f840 RBX::Reflection::EventDescriptor::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+    // IDA 0x25f840: the base `sendEvent` is a must-override trap -- `ReleaseAssert(false)`
+    // at include/reflection/event.h:159 (decompiled 0x25f840).
+    panic!("false file: include/reflection/event.h line: 159 (IDA 0x25f840)");
 }
-
 // 0x25f898 — __ZNSt6vectorIPN3RBX10Reflection15EventDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
 #[doc(alias = "std::vector<RBX::Reflection::EventDescriptor *,std::allocator<RBX::Reflection::EventDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::EventDescriptor **,std::vector<RBX::Reflection::EventDescriptor *,std::allocator<RBX::Reflection::EventDescriptor *>>>,RBX::Reflection::EventDescriptor * const&)")]
-pub fn stub_0x25f898() -> ! {
-    todo!("0x25f898 std::vector<RBX::Reflection::EventDescriptor *,std::allocator<RBX::Reflection::EventDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::EventDescriptor **,std::vector<RBX::Reflection::EventDescriptor *,std::allocator<RBX::Reflection::EventDescriptor *>>>,RBX::Reflection::EventDescriptor * const&)")
+pub fn stub_0x25f898(
+    vec: &mut Vec<rbx_core::SharedPtr<EventDescriptorState>>,
+    index: usize,
+    desc: rbx_core::SharedPtr<EventDescriptorState>,
+) {
+    // IDA 0x25f898: single-element `vector::insert(pos, value)` -- end-position fast path
+    // stores + bumps the finish pointer, otherwise `_M_insert_aux` shifts (disasm
+    // 0x25f898-0x25f8ce). `Vec::insert` is exactly that.
+    vec.insert(index, desc);
 }
-
 // 0x25f8d0 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE10declareSubEPS2_S4_
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::declareSub(RBX::Reflection::EventDescriptor*,RBX::Reflection::EventDescriptor*)")]
-pub fn stub_0x25f8d0() -> ! {
-    todo!("0x25f8d0 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::declareSub(RBX::Reflection::EventDescriptor*,RBX::Reflection::EventDescriptor*)")
+pub fn stub_0x25f8d0(
+    container: &mut EventDescriptorContainer,
+    desc: rbx_core::SharedPtr<EventDescriptorState>,
+    replaceable: rbx_core::SharedPtr<EventDescriptorState>,
+) {
+    // IDA 0x25f8d0: `ReleaseAssert(replaceable != desc)` (member.h:216); binary search by
+    // name, `ReleaseAssert(*iter != desc)` (:227); the slot holding `replaceable` is
+    // overwritten and re-registered, otherwise sorted insert; same-name collisions fire
+    // `memberHidingHook` (unmodeled). The `declareSub` recursion into subcontainers runs
+    // through the container's own sub-list (separate EAs). ReleaseAsserts are plain
+    // asserts in this crate, matching the enumconverter cutover.
+    assert!(
+        !rbx_core::SharedPtr::ptr_eq(&replaceable, &desc),
+        "replaceable != descriptor (IDA 0x25f8d0 member.h:216)"
+    );
+    let hit = container.sorted.binary_search_by(|d| d.name.cmp(&desc.name)).ok();
+    if let Some(pos) = hit {
+        assert!(
+            !rbx_core::SharedPtr::ptr_eq(&container.sorted[pos], &desc),
+            "*iter != descriptor (IDA 0x25f8d0 member.h:227)"
+        );
+        if rbx_core::SharedPtr::ptr_eq(&container.sorted[pos], &replaceable) {
+            container.sorted[pos] = rbx_core::SharedPtr::clone(&desc);
+            container.by_name.insert(desc.name.clone(), Some(desc));
+            return;
+        }
+    }
+    stub_0x25f690(container, desc);
 }
-
 // 0x25fa50 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE10staticDataEv
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::staticData(void)")]
-pub fn stub_0x25fa50() -> ! {
-    todo!("0x25fa50 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::staticData(void)")
+pub fn stub_0x25fa50() -> &'static parking_lot::Mutex<EventDescriptorContainer> {
+    // IDA 0x25fa50: `__cxa_guard` function-local static `Collection result` with an
+    // `__cxa_atexit(Collection::~Collection)` teardown (decompiled 0x25fa50). Rust:
+    // function-local `static`; Drop glue covers the exit teardown.
+    static RESULT: std::sync::LazyLock<parking_lot::Mutex<EventDescriptorContainer>> =
+        std::sync::LazyLock::new(|| parking_lot::Mutex::new(EventDescriptorContainer::default()));
+    &RESULT
 }
-
 // 0x25fab8 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE10CollectionD1Ev
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::Collection::~Collection()")]
 pub fn stub_0x25fab8() {
@@ -3912,10 +4007,15 @@ pub fn stub_0x25fab8() {
 
 // 0x25fad0 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection15EventDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::EventDescriptor *>>,char const*,RBX::Reflection::EventDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")]
-pub fn stub_0x25fad0() -> ! {
-    todo!("0x25fad0 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::EventDescriptor *>>,char const*,RBX::Reflection::EventDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")
+pub fn stub_0x25fad0<'a>(
+    map: &'a mut std::collections::HashMap<String, Option<rbx_core::SharedPtr<EventDescriptorState>>>,
+    key: &str,
+) -> &'a mut Option<rbx_core::SharedPtr<EventDescriptorState>> {
+    // IDA 0x25fad0: `boost::unordered::table_impl::operator[]` -- find-or-emplace-default
+    // (0x17c bytes of bucket internals; both `declare` call sites 0x25f716/0x25f7fc assign
+    // through the returned slot). `HashMap::entry().or_default()`.
+    map.entry(key.to_owned()).or_default()
 }
-
 // 0x260110 — __ZNSt10_List_baseIN3RBX10Reflection19SignatureDescriptor4ItemESaIS3_EE8_M_clearEv
 #[doc(alias = "std::_List_base<RBX::Reflection::SignatureDescriptor::Item,std::allocator<RBX::Reflection::SignatureDescriptor::Item>>::_M_clear(void)")]
 pub fn stub_0x260110() -> ! {
@@ -28073,16 +28173,21 @@ pub fn stub_0x4ab4dc() -> &'static crate::enum_desc::EnumDesc {
 }
 // 0x4abb28 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::safe_static_init_mutex(void)")]
-pub fn stub_0x4abb28() -> ! {
-    todo!("0x4abb28 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::safe_static_init_mutex(void)")
+pub fn stub_0x4abb28() {
+    // IDA 0x4abb28: unconditional `B.W` tail-jump into `safe_static_do_get_mutex`
+    // (disasm 0x4abb28); the returned mutex pointer is discarded.
+    let _ = stub_0x4abb2c();
 }
-
 // 0x4abb2c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::safe_static_do_get_mutex(void)")]
-pub fn stub_0x4abb2c() -> ! {
-    todo!("0x4abb2c rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::safe_static_do_get_mutex(void)")
+pub fn stub_0x4abb2c() -> &'static parking_lot::Mutex<()> {
+    // IDA 0x4abb2c: `__cxa_guard` function-local static heap `boost::mutex` (`new(0x2C)`,
+    // `mutex::mutex`), returns the pointer and never frees it (decompiled 0x4abb2c).
+    // Rust: LazyLock mutex; no explicit free.
+    static V: std::sync::LazyLock<parking_lot::Mutex<()>> =
+        std::sync::LazyLock::new(|| parking_lot::Mutex::new(()));
+    &V
 }
-
 // 0x4ac008 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13BindableEventES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BindableEvent,RBX::BindableEvent>(rbx_core::SharedPtr<RBX::BindableEvent> const*,RBX::BindableEvent *)const")]
 pub fn stub_0x4ac008() {
