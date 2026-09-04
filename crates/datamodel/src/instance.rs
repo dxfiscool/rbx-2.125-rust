@@ -1984,6 +1984,32 @@ pub struct Message {
     _opaque: (),
 }
 
+/// Rust model of `RBX::Mouse` (IDA `0x5d113c`): the mouse with the retained
+/// target-filter slot at `+116` behind `setTargetFilterUnsafe`; the `+41`
+/// arming flag behind `setTargetFilter` (IDA `0x5d112c`) lands with the input
+/// batch, so the gate stays out until its semantics are grounded.
+#[derive(Default)]
+pub struct Mouse {
+    pub target_filter: Option<SharedPtr<PVInstance>>,
+}
+
+/// Rust model of `RBX::Reflection::RefPropDescriptor<Mouse, PVInstance>`
+/// (IDA `0x5d1b88`): the conditionally-deleted heap payload plus attribute
+/// flags. Twin of `RocketRefPropDescriptor`.
+#[derive(Default)]
+pub struct MouseRefPropDescriptor {
+    pub owned: Option<Box<PVRefExtra>>,
+    pub read_only: bool,
+    pub write_only: bool,
+}
+
+/// Rust model of `RBX::PART::Wedge` (IDA `0x5d7738`): the wedge part leaf;
+/// members land with the part batch.
+#[derive(Default)]
+pub struct Wedge {
+    _opaque: (),
+}
+
 
 
 /// Rust model of `RBX::Reflection::PropDescriptor<ModelInstance, ...>` (IDA
@@ -42312,15 +42338,25 @@ pub fn stub_0x5ce9a0() -> ! {
 // 0x5ce9e4 — __ZN3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFN3G3D15CoordinateFrameEvELi0EEC2EMS2_FS4_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::CoordinateFrame ()(void),0>::BoundFuncDesc(G3D::CoordinateFrame (RBX::ModelInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::CoordinateFrame ()(void),0>::BoundFuncDesc(G3D::CoordinateFrame (RBX::ModelInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x5ce9e4() -> ! {
-    todo!("0x5ce9e4 RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::CoordinateFrame ()(void),0>::BoundFuncDesc(G3D::CoordinateFrame (RBX::ModelInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x5ce9e4() -> ModelFuncDesc {
+    // IDA 0x5ce9e4: `BoundFuncDesc<ModelInstance, CoordinateFrame>::C2` over
+    // `(member-fn, names, permissions, attributes)` — binds the member
+    // function into the class descriptor; the binding lands with reflection,
+    // so the model starts at defaults. Same shape as 0x5ce724.
+    ModelFuncDesc::default()
 }
 
 // 0x5ceae8 — __ZN3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFN3G3D15CoordinateFrameEvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::CoordinateFrame ()(void),0>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::CoordinateFrame ()(void),0>::~BoundFuncDesc()
-pub fn stub_0x5ceae8() -> ! {
-    todo!("0x5ceae8 RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::CoordinateFrame ()(void),0>::~BoundFuncDesc()")
+pub fn stub_0x5ceae8(_desc: *mut ModelFuncDesc) {
+    // IDA 0x5ceae8: `BoundFuncDesc<ModelInstance, CoordinateFrame>::D0` —
+    // vtable install plus memberwise teardown; dropping the box is the same
+    // release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5ceb9c — __ZNK3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFN3G3D15CoordinateFrameEvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -42340,15 +42376,22 @@ pub fn stub_0x5cebc0() -> ! {
 // 0x5cebf4 — __ZN3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFN3G3D7Vector3EvELi0EEC2EMS2_FS4_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::Vector3 ()(void),0>::BoundFuncDesc(G3D::Vector3 (RBX::ModelInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::Vector3 ()(void),0>::BoundFuncDesc(G3D::Vector3 (RBX::ModelInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x5cebf4() -> ! {
-    todo!("0x5cebf4 RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::Vector3 ()(void),0>::BoundFuncDesc(G3D::Vector3 (RBX::ModelInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x5cebf4() -> ModelFuncDesc {
+    // IDA 0x5cebf4: `BoundFuncDesc<ModelInstance, Vector3>::C2` — binds the
+    // member function into the class descriptor. Same shape as 0x5ce9e4.
+    ModelFuncDesc::default()
 }
 
 // 0x5cecf8 — __ZN3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFN3G3D7Vector3EvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::Vector3 ()(void),0>::~BoundFuncDesc()
-pub fn stub_0x5cecf8() -> ! {
-    todo!("0x5cecf8 RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")
+pub fn stub_0x5cecf8(_desc: *mut ModelFuncDesc) {
+    // IDA 0x5cecf8: `BoundFuncDesc<ModelInstance, Vector3>::D0` — vtable
+    // install plus memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5cedac — __ZNK3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFN3G3D7Vector3EvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -42368,29 +42411,43 @@ pub fn stub_0x5cedd0() -> ! {
 // 0x5cf784 — __ZN3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEEC2IMS2_KFRKS4_vEMS2_FvS8_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::PropDescriptor<G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&)>(char const*,char const*,G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::PropDescriptor<G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&)>(char const*,char const*,G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x5cf784() -> ! {
-    todo!("0x5cf784 RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::PropDescriptor<G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&)>(char const*,char const*,G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5cf784() -> ModelPropDesc {
+    // IDA 0x5cf784: `PropDescriptor<ModelInstance, CoordinateFrame>::C2` —
+    // binds the member get/set pair plus the name and attribute words; the
+    // binding lands with reflection, so the model starts at defaults. Same
+    // shape as 0x5aa50c.
+    ModelPropDesc { _opaque: () }
 }
 
 // 0x5cf898 — __ZN3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::~PropDescriptor()
-pub fn stub_0x5cf898() -> ! {
-    todo!("0x5cf898 RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::~PropDescriptor()")
+pub fn stub_0x5cf898(_desc: *mut ModelPropDesc) {
+    // IDA 0x5cf898: `PropDescriptor<ModelInstance, CoordinateFrame>::D0` —
+    // vtable install plus memberwise teardown; dropping the box is the same
+    // release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5cf8c4 — __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const
-pub fn stub_0x5cf8c4() -> ! {
-    todo!("0x5cf8c4 RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")
+pub fn stub_0x5cf8c4(_desc: &ModelPropDesc) -> bool {
+    // IDA 0x5cf8c4: `GetSetImpl<getter, setter>::isReadOnly` — `MOVS R0,
+    // #0` (disasm 0x5cf8c4); a get/set pair is never read-only.
+    false
 }
 
 // 0x5cf8c8 — __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const
-pub fn stub_0x5cf8c8() -> ! {
-    todo!("0x5cf8c8 RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")
+pub fn stub_0x5cf8c8(_desc: &ModelPropDesc) -> bool {
+    // IDA 0x5cf8c8: `GetSetImpl<getter, setter>::isWriteOnly` — `MOVS R0,
+    // #0` (disasm 0x5cf8c8); ...nor write-only.
+    false
 }
 
 // 0x5cf8cc — __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8getValueEPKNS0_13DescribedBaseE
@@ -42417,15 +42474,32 @@ pub fn stub_0x5d112c() -> ! {
 // 0x5d113c — __ZN3RBX5Mouse21setTargetFilterUnsafeEPNS_10PVInstanceE
 #[doc(alias = "RBX::Mouse::setTargetFilterUnsafe(RBX::PVInstance *)")]
 // was: RBX::Mouse::setTargetFilterUnsafe(RBX::PVInstance *)
-pub fn stub_0x5d113c() -> ! {
-    todo!("0x5d113c RBX::Mouse::setTargetFilterUnsafe(RBX::PVInstance *)")
+pub fn stub_0x5d113c(mouse: &mut Mouse, target: &SharedPtr<PVInstance>) {
+    // IDA 0x5d113c (`Mouse::setTargetFilterUnsafe`, decompiled
+    // `0x5d11c6`-`0x5d1210`): when the retained slot (`+116`, words
+    // `+29`/weak `+120`) differs from the new target, store the new target
+    // and raise the property notification. The notification collapses here;
+    // the conditional store is the observable state change.
+    let changed = match &mouse.target_filter {
+        Some(current) => !SharedPtr::ptr_eq(current, target),
+        None => true,
+    };
+    if changed {
+        mouse.target_filter = Some(target.clone());
+    }
 }
 
 // 0x5d1b88 — __ZN3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEED1Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::~RefPropDescriptor()")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::~RefPropDescriptor()
-pub fn stub_0x5d1b88() -> ! {
-    todo!("0x5d1b88 RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::~RefPropDescriptor()")
+pub fn stub_0x5d1b88(this: *mut MouseRefPropDescriptor) {
+    // IDA 0x5d1b88: `RefPropDescriptor<Mouse, PVInstance>::D1` — vtable
+    // resets (compiler-managed) plus the conditional `operator delete` of
+    // the heap payload. Same shape as 0x559448.
+    // SAFETY: `this` must point to a valid `MouseRefPropDescriptor`.
+    unsafe {
+        (*this).owned = None;
+    }
 }
 
 // 0x5d32a0 — __ZN3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -42445,15 +42519,21 @@ pub fn stub_0x5d3344() -> ! {
 // 0x5d3374 — __ZNK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::isReadOnly(void)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::isReadOnly(void)const
-pub fn stub_0x5d3374() -> ! {
-    todo!("0x5d3374 RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::isReadOnly(void)const")
+pub fn stub_0x5d3374(this: *const MouseRefPropDescriptor) -> bool {
+    // IDA 0x5d3374: reads the read-only flag out of the attribute word.
+    // Same shape as 0x561fd0.
+    // SAFETY: `this` must point to a valid `MouseRefPropDescriptor`.
+    unsafe { (*this).read_only }
 }
 
 // 0x5d3384 — __ZNK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::isWriteOnly(void)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::isWriteOnly(void)const
-pub fn stub_0x5d3384() -> ! {
-    todo!("0x5d3384 RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::isWriteOnly(void)const")
+pub fn stub_0x5d3384(this: *const MouseRefPropDescriptor) -> bool {
+    // IDA 0x5d3384: reads the write-only flag out of the attribute word.
+    // Same shape as 0x561fe0.
+    // SAFETY: `this` must point to a valid `MouseRefPropDescriptor`.
+    unsafe { (*this).write_only }
 }
 
 // 0x5d3394 — __ZNK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
@@ -42522,29 +42602,41 @@ pub fn stub_0x5d3748() -> ! {
 // 0x5d3850 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::isReadOnly(void)const
-pub fn stub_0x5d3850() -> ! {
-    todo!("0x5d3850 RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::isReadOnly(void)const")
+pub fn stub_0x5d3850(_desc: &MouseRefPropDescriptor) -> bool {
+    // IDA 0x5d3850: `GetSetImpl<getter, setter>::isReadOnly` — `MOVS R0,
+    // #0; BX LR` (disasm 0x5d3850-0x5d3852); a get/set pair is never
+    // read-only.
+    false
 }
 
 // 0x5d3854 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::isWriteOnly(void)const
-pub fn stub_0x5d3854() -> ! {
-    todo!("0x5d3854 RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::isWriteOnly(void)const")
+pub fn stub_0x5d3854(_desc: &MouseRefPropDescriptor) -> bool {
+    // IDA 0x5d3854: `GetSetImpl<getter, setter>::isWriteOnly` — `MOVS R0,
+    // #0` (disasm 0x5d3854); ...nor write-only.
+    false
 }
 
 // 0x5d3858 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x5d3858() -> ! {
-    todo!("0x5d3858 RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5d3858(mouse: &Mouse) -> Option<SharedPtr<PVInstance>> {
+    // IDA 0x5d3858: `GetSetImpl<getter, setter>::getValue` — invokes the
+    // bound target-filter getter, the retained slot at `+116` (see
+    // 0x5d113c).
+    mouse.target_filter.clone()
 }
 
 // 0x5d3878 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PVInstance * const&)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PVInstance * const&)const
-pub fn stub_0x5d3878() -> ! {
-    todo!("0x5d3878 RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PVInstance * const&)const")
+pub fn stub_0x5d3878(mouse: &mut Mouse, target: &SharedPtr<PVInstance>) {
+    // IDA 0x5d3878: `GetSetImpl<getter, setter>::setValue` — invokes the
+    // bound target-filter setter over the `+116` slot. Same shape as
+    // 0x5d113c minus the change check (the setter stores unconditionally;
+    // the notify collapses here).
+    mouse.target_filter = Some(target.clone());
 }
 
 // 0x5d6be8 — __ZN3RBX4PART22ParametricPartInstanceD0Ev
@@ -42606,36 +42698,53 @@ pub fn stub_0x5d6ce4() -> ! {
 // 0x5d7738 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_4PART5WedgeEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::PART::Wedge> RBX::Creatable<RBX::Instance>::create<RBX::PART::Wedge>(void)")]
 // was: boost::shared_ptr<RBX::PART::Wedge> RBX::Creatable<RBX::Instance>::create<RBX::PART::Wedge>(void)
-pub fn stub_0x5d7738() -> ! {
-    todo!("0x5d7738 boost::shared_ptr<RBX::PART::Wedge> RBX::Creatable<RBX::Instance>::create<RBX::PART::Wedge>(void)")
+pub fn stub_0x5d7738() -> SharedPtr<Wedge> {
+    // IDA 0x5d7738: `Creatable::create<Wedge>` — `operator new` + default
+    // ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(Wedge::default())
 }
 
 // 0x5d77ec — __ZN5boost10shared_ptrIN3RBX4PART5WedgeEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::PART::Wedge>::shared_ptr<RBX::PART::Wedge,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::PART::Wedge>::shared_ptr<RBX::PART::Wedge,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x5d77ec() -> ! {
-    todo!("0x5d77ec boost::shared_ptr<RBX::PART::Wedge>::shared_ptr<RBX::PART::Wedge,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x5d77ec(ptr: *mut Wedge, _deleter: CreatableInstanceDeleter) -> SharedPtr<Wedge> {
+    // IDA 0x5d77ec: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(Wedge::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x5d799c — __ZN5boost6detail12shared_countC2IPN3RBX4PART5WedgeENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x5d799c() -> ! {
-    todo!("0x5d799c boost::detail::shared_count::shared_count<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x5d799c(ptr: *mut Wedge, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<Wedge, CreatableInstanceDeleter> {
+    // IDA 0x5d799c: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x5d7aa4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x5d7aa4() -> ! {
-    todo!("0x5d7aa4 boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x5d7aa4(_block: *mut ControlBlockPd<Wedge, CreatableInstanceDeleter>) {
+    // IDA 0x5d7aa4 (`...Wedge...DeleterEED1Ev`): `BX LR` — empty; same as
+    // 0xf198.
 }
 
 // 0x5d7aa8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x5d7aa8() -> ! {
-    todo!("0x5d7aa8 boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x5d7aa8(block: *mut ControlBlockPd<Wedge, CreatableInstanceDeleter>) {
+    // IDA 0x5d7aa8 (`...Wedge...DeleterEED0Ev`): `B.W __ZdlPv$shim` — D0
+    // storage release only, same as 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x5d7aac — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
