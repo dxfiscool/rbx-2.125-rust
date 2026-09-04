@@ -441,57 +441,121 @@ pub fn stub_a4c674(head: *mut Option<SharedPtr<Chat4SlotNode>>, slot: *mut Chat4
 // 0xa4c934 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeENS_10shared_ptrINS4_8InstanceEEESsSA_EE4slotEEaSEPSD_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot*)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot*)
-pub fn stub_a4c934() -> ! {
-    todo!("0xa4c934 rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot*)")
+pub fn stub_a4c934(dst: *mut Option<SharedPtr<Chat4SlotNode>>, src: *mut Chat4SlotNode) {
+    // IDA 0xa4c934: move-assign (`aSEPSD_`, pointer `src`): null skips the
+    // add_ref (disasm 0xa4c944-0xa4c9a4, with the `strong < max - 10` assert),
+    // store (disasm 0xa4c9ac), release-old with virtual delete + free
+    // (disasm 0xa4c9b0-0xa4c9dc). The `Arc` clone is the add_ref and the
+    // overwritten `Option` drop is the release.
+    // SAFETY: `dst` must be writable; `src` must be null or a live
+    // `SharedPtr`-owned node pointer whose ownership moves to `dst`.
+    unsafe {
+        if src.is_null() {
+            *dst = None;
+        } else {
+            let owned = SharedPtr::from_raw(src);
+            let cloned = owned.clone();
+            core::mem::forget(owned);
+            *dst = Some(cloned);
+        }
+    }
 }
 
 // 0xa4c9e8 — __ZN3rbx7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS2_8InstanceEEESsS9_EE13callable_slotINS6_8functionISA_EEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::function<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::function<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>>::~callable_slot()
-pub fn stub_a4c9e8() -> ! {
-    todo!("0xa4c9e8 rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::function<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>>::~callable_slot()")
+pub fn stub_a4c9e8(slot: *mut Chat4SlotNode) {
+    // IDA 0xa4c9e8: `callable_slot` D1 delegates to `callable` D1 (disasm
+    // 0xa4c9f0) — vtable resets (compiler-managed) + function clear + link
+    // release; storage kept. Same body as 0x2b5b30.
+    // SAFETY: `slot` must point to a valid `Chat4SlotNode`.
+    unsafe {
+        (*slot).func = Chat4WrapperFunction::default();
+        (*slot).next = None;
+    }
 }
 
 // 0xa4c9f4 — __ZN3rbx7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS2_8InstanceEEESsS9_EE13callable_slotINS6_8functionISA_EEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::function<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::function<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>>::~callable_slot()
-pub fn stub_a4c9f4() -> ! {
-    todo!("0xa4c9f4 rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::function<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>>::~callable_slot()")
+pub fn stub_a4c9f4(slot: *mut Chat4SlotNode) {
+    // IDA 0xa4c9f4: `callable_slot` D0 — the D1 body plus `operator delete`;
+    // the box reclaim runs the field drops and frees together. Same shape
+    // as 0x2b5b5c.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
 }
 
 // 0xa4caa8 — __ZN3rbx7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS2_8InstanceEEESsS9_EE4slot10disconnectEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::disconnect(void)")]
 // was: rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::disconnect(void)
-pub fn stub_a4caa8() -> ! {
-    todo!("0xa4caa8 rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::disconnect(void)")
+pub fn stub_a4caa8(slot: *mut Chat4SlotNode) {
+    // IDA 0xa4caa8: no-op when the link word is null (disasm 0xa4cad2),
+    // else once-init the slot mutex (disasm 0xa4cb14-0xa4cb82), lock it
+    // (disasm 0xa4cb90), clear the link and `remove` from the list (disasm
+    // 0xa4cb94-0xa4cba0), unlock (disasm 0xa4cba8-0xa4cbb2). Clearing the
+    // callback and the successor is the unlink, and the static lock is the
+    // same guard. Same shape as the 0x2b5c30 twin.
+    // SAFETY: `slot` must point to a valid `Chat4SlotNode` with no
+    // concurrent/shared mutation.
+    unsafe {
+        if (*slot).next.is_some() {
+            let _guard = CHAT4_SLOT_STATIC_MUTEX.lock();
+            (*slot).func = Chat4WrapperFunction::default();
+            (*slot).next = None;
+        }
+    }
 }
 
 // 0xa4cc28 — __ZNK3rbx7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS2_8InstanceEEESsS9_EE4slot9connectedEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::connected(void)const")]
 // was: rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::connected(void)const
-pub fn stub_a4cc28() -> ! {
-    todo!("0xa4cc28 rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::connected(void)const")
+pub fn stub_a4cc28(slot: *const Chat4SlotNode) -> bool {
+    // IDA 0xa4cc28: `*(a1 + 12) != 0` (disasm 0xa4cc30) — the intrusive link
+    // word; same as 0x2b5d40.
+    // SAFETY: `slot` must point to a valid `Chat4SlotNode`.
+    unsafe { (*slot).next.is_some() }
 }
 
 // 0xa4cc34 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS3_8InstanceEEESsSA_EE4slotENS7_8functionISB_EELi4ESB_E4callES6_SA_SsSA_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::function<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>,4,void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::call(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: rbx::callable<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::function<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,4,void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::call(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)
-pub fn stub_a4cc34() -> ! {
-    todo!("0xa4cc34 rbx::callable<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::function<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>,4,void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::call(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_a4cc34(slot: &Chat4SlotNode, chat_type: PlayerChatType, speaker: &SharedPtr<Instance>, message: &str, recipient: &SharedPtr<Instance>) {
+    // IDA 0xa4cc34: retain the speaker (disasm 0xa4cc58-0xa4ccda), copy the
+    // message string (disasm 0xa4cce2), retain the recipient (disasm
+    // 0xa4cce8-0xa4cd3e), `function4::operator()` on the slot functor
+    // (disasm 0xa4cd50), then the mirrored releases (disasm 0xa4cd56-0xa4cece).
+    // Clones plus the operator() dispatch plus `Drop` are the same sequence.
+    stub_a4d148(&slot.func, chat_type, speaker, message, recipient);
 }
 
 // 0xa4d130 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS3_8InstanceEEESsSA_EE4slotENS7_8functionISB_EELi4ESB_E4callES6_SA_SsSA_
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::function<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>,4,void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::call(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::function<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,4,void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::call(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)
-pub fn stub_a4d130() -> ! {
-    todo!("0xa4d130 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::function<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>,4,void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::call(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_a4d130(slot: &Chat4SlotNode, chat_type: PlayerChatType, speaker: &SharedPtr<Instance>, message: &str, recipient: &SharedPtr<Instance>) {
+    // IDA 0xa4d130: non-virtual thunk — `a1 - 4` adjusts the `callable`
+    // subobject back to the slot base (disasm 0xa4d140), then tail-calls
+    // `callable::call`. The adjustment is a vtable-layout detail that
+    // collapses away here; direct delegation keeps the two bodies identical.
+    stub_a4cc34(slot, chat_type, speaker, message, recipient);
 }
 
 // 0xa4d148 — __ZNK5boost9function4IvN3RBX7Network7Players14PlayerChatTypeENS_10shared_ptrINS1_8InstanceEEESsS7_EclES4_S7_SsS7_
 #[doc(alias = "boost::function4<void,RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)const")]
 // was: boost::function4<void,RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)const
-pub fn stub_a4d148() -> ! {
-    todo!("0xa4d148 boost::function4<void,RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)const")
+pub fn stub_a4d148(func: &Chat4WrapperFunction, chat_type: PlayerChatType, speaker: &SharedPtr<Instance>, message: &str, recipient: &SharedPtr<Instance>) {
+    // IDA 0xa4d148: `bad_function_call` throw on the null vtable (disasm
+    // 0xa4d19e-0xa4d4ae), else retain both `shared_ptr` args plus a `string`
+    // copy (disasm 0xa4d1a6-0xa4d262), dispatch through the invoker vtable
+    // (disasm 0xa4d276), then the mirrored releases. The empty check plus
+    // the `execute4` dispatch plus `Drop` are the same sequence.
+    let target = func.target.as_ref().expect("0xa4d148: call to empty boost::function");
+    let speaker = speaker.clone();
+    let message = message.to_string();
+    let recipient = recipient.clone();
+    stub_a4b560(target, chat_type, &speaker, &message, &recipient);
 }
 
 // 0xa4d734 — __ZN3rbx7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS2_8InstanceEEESsS9_EE6removeEPNSB_4slotE
