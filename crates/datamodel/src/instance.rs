@@ -161,6 +161,77 @@ pub struct AdvLuaDragger {
     _opaque: (),
 }
 
+/// Rust model of `boost::_bi::bind_t<void, mf1<void, Accoutrement,
+/// SharedPtr<Instance>>, list2<value<Accoutrement*>, arg<1>>>` (IDA `0x39293c`):
+/// the bound target plus the member handler. Same shape as `HeartbeatBind`.
+#[derive(Clone, Copy)]
+pub struct AccoutrementBind {
+    pub func: fn(*const Accoutrement, &SharedPtr<Instance>),
+    pub target: *const Accoutrement,
+}
+
+/// The bound target travels inside `Signal` closures; sound under the
+/// slot-lifetime contract like `HeartbeatBind`.
+unsafe impl Send for AccoutrementBind {}
+unsafe impl Sync for AccoutrementBind {}
+
+/// Rust model of an `rbx::signals::signal<void ()(SharedPtr<Instance>)>::slot`
+/// link holding the accoutrement bind (IDA `0x3903f0` connect).
+pub struct AccSlotNode {
+    pub next: Option<SharedPtr<AccSlotNode>>,
+    pub bind: Option<AccoutrementBind>,
+}
+
+/// Connection handle returned by the 1-arg `signal::connect` (IDA `0x3903f0`).
+pub struct AccConnection {
+    pub keep: SharedPtr<dyn Any + Send + Sync>,
+}
+
+/// Rust model of `RBX::PVInstance` (IDA `0x39410c`): only the
+/// `enable_shared_from_this` weak owner is modeled so far.
+#[derive(Default)]
+pub struct PVInstance {
+    pub weak_owner: WeakPtr<PVInstance>,
+}
+
+/// Rust model of `RBX::PVAdornment` (IDA `0x393dd0`): the adornee link.
+#[derive(Default)]
+pub struct PVAdornment {
+    pub adornee: *const PVInstance,
+}
+
+/// Opaque heap payload owned by `PVRefPropDescriptor` (IDA `0x3940e0`).
+pub struct PVRefExtra {
+    pub words: [u32; 8],
+}
+
+/// Rust model of `RBX::Reflection::RefPropDescriptor<PVAdornment, PVInstance>`
+/// (IDA `0x3940e0`): the conditionally-deleted heap payload at `+11` plus the
+/// attribute flags behind the `+44` word (read-only first slot, write-only
+/// second). Twin of `RefPropDescriptor`.
+#[derive(Default)]
+pub struct PVRefPropDescriptor {
+    pub owned: Option<Box<PVRefExtra>>,
+    pub read_only: bool,
+    pub write_only: bool,
+}
+
+/// Rust model of `RBX::Reflection::RefType<PVInstance*>` (IDA `0x39501c`).
+pub struct PVRefType {
+    _opaque: (),
+}
+
+/// Once-init singleton storage (IDA `0x395078`-`0x3950be` guard + init
+/// collapse into the const initializer).
+static PV_REF_TYPE: PVRefType = PVRefType { _opaque: () };
+
+/// Rust model of `RBX::Stats::TypedStatsItem<unsigned>` (IDA `0x37dbf4`): the
+/// stored value; only the deleter-query pair exists in this file.
+#[derive(Default)]
+pub struct TypedStatsItemUint {
+    pub value: u32,
+}
+
 /// Rust model of `RBX::Soundscape::SoundService` (IDA `0x37d98c`): field layout
 /// unmodeled; referenced by stats items.
 #[derive(Default)]
@@ -4806,8 +4877,24 @@ pub fn stub_0x2f7d2c(
 // 0x2f7e84 — __ZN3RBX8Instance15queryTypedChildINS_10SelectableEEEPT_i
 #[doc(alias = "RBX::Selectable * RBX::Instance::queryTypedChild<RBX::Selectable>(int)")]
 // was: RBX::Selectable * RBX::Instance::queryTypedChild<RBX::Selectable>(int)
-pub fn stub_0x2f7e84() -> ! {
-    todo!("0x2f7e84 RBX::Selectable * RBX::Instance::queryTypedChild<RBX::Selectable>(int)")
+pub fn stub_0x2f7e84(this: *const Instance, index: usize) -> *const Instance {
+    // IDA 0x2f7e84: `queryTypedChild<Selectable>(index)` — `children[index]`
+    // (disasm 0x2f7e8c-0x2f7e94) `dynamic_cast` to `Selectable` (disasm
+    // 0x2f7eba), null on miss or failed cast (disasm 0x2f7e98-0x2f7ebe). The
+    // cast collapses into the exact class-name match (subclass gap
+    // documented at `instance_is_a`); no cast is performed, so the untyped
+    // pointer stays honest.
+    // SAFETY: `this` must point to a valid `Instance` whose subtree outlives
+    // the call.
+    unsafe {
+        // Explicit borrow: an implicit autoref through the raw pointer is rejected.
+        let children: &[SharedPtr<Instance>] = &(*this).children;
+        let child = children.get(index).map(SharedPtr::as_ptr);
+        match child {
+            Some(raw) if (*raw).class_name == "Selectable" => raw,
+            _ => core::ptr::null(),
+        }
+    }
 }
 
 // 0x2f7fcc — __ZNSt8_Rb_treeIN5boost10shared_ptrIN3RBX8InstanceEEES4_St9_IdentityIS4_ESt4lessIS4_ESaIS4_EE16_M_insert_uniqueERKS4_
@@ -5790,7 +5877,9 @@ pub fn stub_0x377154(instance: *const Instance) -> *const Instance {
             if instance_is_a(current, "SoundService") {
                 return current;
             }
-            for child in (*current).children.iter().rev() {
+            // Explicit borrow: an implicit autoref through the raw pointer is rejected.
+            let siblings: &[SharedPtr<Instance>] = unsafe { &(*current).children };
+            for child in siblings.iter().rev() {
                 stack.push(SharedPtr::as_ptr(child));
             }
         }
@@ -5964,29 +6053,41 @@ pub fn stub_0x37d98c(service: *const SoundService) -> SharedPtr<SoundServiceStat
 // 0x37dbf4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats14TypedStatsItemIjEENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<unsigned int> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<unsigned int> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x37dbf4() -> ! {
-    todo!("0x37dbf4 boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<unsigned int> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x37dbf4(_block: *mut ControlBlockPd<TypedStatsItemUint, CreatableInstanceDeleter>) {
+    // IDA 0x37dbf4: `BX LR` (disasm 0x37dbf4) — D1, empty; same as 0xf198.
 }
 
 // 0x37dbf8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats14TypedStatsItemIjEENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<unsigned int> *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<unsigned int> *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x37dbf8() -> ! {
-    todo!("0x37dbf8 boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<unsigned int> *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x37dbf8(block: *mut ControlBlockPd<TypedStatsItemUint, CreatableInstanceDeleter>) {
+    // IDA 0x37dbf8: `predelete` (disasm 0x37dc00), null early-out (disasm
+    // 0x37dc04-0x37dc08), deleter virtual-delete (disasm 0x37dc0a+); same
+    // shape as 0xf19c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
 }
 
 // 0x37dc18 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_5Stats14TypedStatsItemIiEEPKiEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Stats::TypedStatsItem<int>> RBX::Creatable<RBX::Instance>::create<RBX::Stats::TypedStatsItem<int>,int const*>(int const*)")]
 // was: boost::shared_ptr<RBX::Stats::TypedStatsItem<int>> RBX::Creatable<RBX::Instance>::create<RBX::Stats::TypedStatsItem<int>,int const*>(int const*)
-pub fn stub_0x37dc18() -> ! {
-    todo!("0x37dc18 boost::shared_ptr<RBX::Stats::TypedStatsItem<int>> RBX::Creatable<RBX::Instance>::create<RBX::Stats::TypedStatsItem<int>,int const*>(int const*)")
+pub fn stub_0x37dc18(value: *const i32) -> SharedPtr<TypedStatsItemInt> {
+    // IDA 0x37dc18: `create<TypedStatsItem<int>, int const*>` — threads the
+    // pointed-to int into construction (twin of the `bool` create at
+    // 0x2c7a3c); a null pointer reads as `0`.
+    // SAFETY: `value` must be null or point to a valid `i32`.
+    SharedPtr::new(TypedStatsItemInt { value: if value.is_null() { 0 } else { unsafe { *value } } })
 }
 
 // 0x37dd90 — __ZN5boost6detail12shared_countC2IPN3RBX5Stats14TypedStatsItemIiEENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Stats::TypedStatsItem<int> *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::TypedStatsItem<int> *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::Stats::TypedStatsItem<int> *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::TypedStatsItem<int> *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x37dd90() -> ! {
-    todo!("0x37dd90 boost::detail::shared_count::shared_count<RBX::Stats::TypedStatsItem<int> *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::TypedStatsItem<int> *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x37dd90(ptr: *mut TypedStatsItemInt, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<TypedStatsItemInt, CreatableInstanceDeleter> {
+    // IDA 0x37dd90: block-new shape, same as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x37e56c — __ZN5boost10shared_ptrI21SoundServiceStatsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
@@ -6120,29 +6221,53 @@ pub fn stub_0x38ff5c() -> ! {
 // 0x390234 — __ZN3RBX8Instance15queryTypedChildINS_13CameraSubjectEEEPT_i
 #[doc(alias = "RBX::CameraSubject * RBX::Instance::queryTypedChild<RBX::CameraSubject>(int)")]
 // was: RBX::CameraSubject * RBX::Instance::queryTypedChild<RBX::CameraSubject>(int)
-pub fn stub_0x390234() -> ! {
-    todo!("0x390234 RBX::CameraSubject * RBX::Instance::queryTypedChild<RBX::CameraSubject>(int)")
+pub fn stub_0x390234(this: *const Instance, index: usize) -> *const Instance {
+    // IDA 0x390234: `queryTypedChild<CameraSubject>(index)` — same indexed
+    // `dynamic_cast` shape as 0x2f7e84; exact class-name match, null on miss.
+    // SAFETY: `this` must point to a valid `Instance` whose subtree outlives
+    // the call.
+    unsafe {
+        // Explicit borrow: an implicit autoref through the raw pointer is rejected.
+        let children: &[SharedPtr<Instance>] = &(*this).children;
+        let child = children.get(index).map(SharedPtr::as_ptr);
+        match child {
+            Some(raw) if (*raw).class_name == "CameraSubject" => raw,
+            _ => core::ptr::null(),
+        }
+    }
 }
 
 // 0x3903f0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_12AccoutrementES6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>> const&)")]
 // was: rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>> const&)
-pub fn stub_0x3903f0() -> ! {
-    todo!("0x3903f0 rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>> const&)")
+pub fn stub_0x3903f0(sig: &Signal<SharedPtr<Instance>>, bind: &AccoutrementBind) -> AccConnection {
+    // IDA 0x3903f0: `signal::connect<bind_t>` with the concrete-closure `Arc`
+    // (cf. the `0x708c08` `Sized` fix); the handle owns the strong ref.
+    let retained = *bind;
+    let cb = SharedPtr::new(move |arg: SharedPtr<Instance>| {
+        let bound = retained;
+        (bound.func)(bound.target, &arg);
+    });
+    sig.connect(cb.clone());
+    AccConnection { keep: cb }
 }
 
 // 0x390654 — __ZNK3RBX12Accoutrement11askAddChildEPKNS_8InstanceE
 #[doc(alias = "RBX::Accoutrement::askAddChild(RBX::Instance const*)const")]
 // was: RBX::Accoutrement::askAddChild(RBX::Instance const*)const
-pub fn stub_0x390654() -> ! {
-    todo!("0x390654 RBX::Accoutrement::askAddChild(RBX::Instance const*)const")
+pub fn stub_0x390654(_this: *const Accoutrement, _child: *const Instance) -> bool {
+    // IDA 0x390654: `MOVS R0,#1; BX LR` (disasm 0x390654-0x390656) — an
+    // `Accoutrement` accepts any child.
+    true
 }
 
 // 0x390658 — __ZNK3RBX12Accoutrement12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::Accoutrement::askSetParent(RBX::Instance const*)const")]
 // was: RBX::Accoutrement::askSetParent(RBX::Instance const*)const
-pub fn stub_0x390658() -> ! {
-    todo!("0x390658 RBX::Accoutrement::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x390658(_this: *const Accoutrement, _parent: *const Instance) -> bool {
+    // IDA 0x390658: `MOVS R0,#1; BX LR` (disasm 0x390658-0x39065a) — an
+    // `Accoutrement` accepts any parent.
+    true
 }
 
 // 0x391798 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_3HatEEEN5boost10shared_ptrIT_EEv
@@ -6311,99 +6436,189 @@ pub fn stub_0x392398(block: *const ControlBlockPd<Accoutrement, CreatableInstanc
 // 0x392804 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_12AccoutrementES6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>>::~callable_slot()
-pub fn stub_0x392804() -> ! {
-    todo!("0x392804 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_0x392804(slot: *mut AccSlotNode) {
+    // IDA 0x392804: `callable_slot` D1 — vtable resets + function clear +
+    // link release; storage kept. Same body shape as the heartbeat callslot D1.
+    // SAFETY: `slot` must point to a valid `AccSlotNode`.
+    unsafe {
+        (*slot).bind = None;
+        (*slot).next = None;
+    }
 }
 
 // 0x392830 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_12AccoutrementES6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>>::~callable_slot()
-pub fn stub_0x392830() -> ! {
-    todo!("0x392830 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_0x392830(slot: *mut AccSlotNode) {
+    // IDA 0x392830: `callable_slot` D0 — the D1 body plus `operator delete`.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
 }
 
 // 0x392904 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12AccoutrementES7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x392904() -> ! {
-    todo!("0x392904 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x392904(slot: &AccSlotNode, arg: &SharedPtr<Instance>) {
+    // IDA 0x392904: `callable::call` retains the arg and invokes the bound
+    // mf1; clone + call + drop is the same pair. Twin of 0x3233ac.
+    if let Some(bind) = &slot.bind {
+        stub_0x39293c(bind.func, bind, &arg.clone());
+    }
 }
 
 // 0x392920 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12AccoutrementES7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x392920() -> ! {
-    todo!("0x392920 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x392920(slot: &AccSlotNode, arg: &SharedPtr<Instance>) {
+    // IDA 0x392920: non-virtual thunk into `callable::call` (IDA 0x392904).
+    stub_0x392904(slot, arg);
 }
 
 // 0x39293c — __ZN5boost3_bi5list2INS0_5valueIPN3RBX12AccoutrementEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<RBX::Accoutrement *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::Accoutrement,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::Accoutrement,rbx_core::SharedPtr<RBX::Instance>> &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance>&> &,int)")]
 // was: void boost::_bi::list2<boost::_bi::value<RBX::Accoutrement *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&> &,int)
-pub fn stub_0x39293c() -> ! {
-    todo!("0x39293c void boost::_bi::list2<boost::_bi::value<RBX::Accoutrement *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&> &,int)")
+pub fn stub_0x39293c(
+    func: fn(*const Accoutrement, &SharedPtr<Instance>),
+    bind: &AccoutrementBind,
+    arg: &SharedPtr<Instance>,
+) {
+    // IDA 0x39293c: `list2` operator() — `shared_count` retain of the incoming
+    // arg, then the stored mf1 callee on the bound target; release on scope
+    // exit collapses into clone + drop. Same shape as the objc list op.
+    func(bind.target, &arg.clone());
 }
 
 // 0x392a14 — __ZNK5boost4_mfi3mf1IvN3RBX12AccoutrementENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_
 #[doc(alias = "boost::_mfi::mf1<void,RBX::Accoutrement,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::Accoutrement*,rbx_core::SharedPtr<RBX::Instance>)const")]
 // was: boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Accoutrement*,boost::shared_ptr<RBX::Instance>)const
-pub fn stub_0x392a14() -> ! {
-    todo!("0x392a14 boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Accoutrement*,boost::shared_ptr<RBX::Instance>)const")
+pub fn stub_0x392a14(bind: &AccoutrementBind, arg: &SharedPtr<Instance>) {
+    // IDA 0x392a14: `mf1::operator()` applies the member to (target, arg);
+    // reads the callee from the bind and delegates to the list application.
+    // Twin of the 0x3233bc bind-op.
+    stub_0x39293c(bind.func, bind, arg);
 }
 
 // 0x392afc — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12AccoutrementES7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::~callable()")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::~callable()
-pub fn stub_0x392afc() -> ! {
-    todo!("0x392afc rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::~callable()")
+pub fn stub_0x392afc(slot: *mut AccSlotNode) {
+    // IDA 0x392afc: `callable` D1 — same clear + release body as 0x392804.
+    // SAFETY: `slot` must point to a valid `AccSlotNode`.
+    unsafe {
+        (*slot).bind = None;
+        (*slot).next = None;
+    }
 }
 
 // 0x392b28 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12AccoutrementES7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::~callable()")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::~callable()
-pub fn stub_0x392b28() -> ! {
-    todo!("0x392b28 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::~callable()")
+pub fn stub_0x392b28(slot: *mut AccSlotNode) {
+    // IDA 0x392b28: `callable` D0 — the D1 body plus `operator delete`.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
 }
 
 // 0x392bfc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX12AccoutrementENS_10shared_ptrINS7_8InstanceEEEEENS3_5list2INS3_5valueIPS8_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x392bfc() -> ! {
-    todo!("0x392bfc boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x392bfc(src: &AccoutrementBind, dst: &mut AccoutrementBind, op: FunctorOp) -> bool {
+    // IDA 0x392bfc: `functor_manager::manage` op dispatch (clone/move copy,
+    // destroy drops, check/get report). Twin of 0x31cd0.
+    match op {
+        FunctorOp::Clone | FunctorOp::Move => {
+            *dst = *src;
+            true
+        }
+        FunctorOp::Destroy => false,
+        FunctorOp::CheckType => {
+            *dst = *src;
+            true
+        }
+        FunctorOp::GetType => true,
+    }
 }
 
 // 0x392c5c — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX12AccoutrementENS_10shared_ptrINS7_8InstanceEEEEENS3_5list2INS3_5valueIPS8_EENS_3argILi1EEEEEEEvSB_E6invokeERNS1_15function_bufferESB_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,void,rbx_core::SharedPtr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,void,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x392c5c() -> ! {
-    todo!("0x392c5c boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,void,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x392c5c(bind: &AccoutrementBind, arg: &SharedPtr<Instance>) {
+    // IDA 0x392c5c: `void_function_obj_invoker1::invoke` tail-calls the
+    // `list2` operator(). Twin of 0x31d30.
+    stub_0x39293c(bind.func, bind, arg);
 }
 
 // 0x392c78 — __ZNK3RBX8Instance25findConstFirstChildOfTypeINS_12AccoutrementEEEPKT_v
 #[doc(alias = "RBX::Accoutrement const* RBX::Instance::findConstFirstChildOfType<RBX::Accoutrement>(void)const")]
 // was: RBX::Accoutrement const* RBX::Instance::findConstFirstChildOfType<RBX::Accoutrement>(void)const
-pub fn stub_0x392c78() -> ! {
-    todo!("0x392c78 RBX::Accoutrement const* RBX::Instance::findConstFirstChildOfType<RBX::Accoutrement>(void)const")
+pub fn stub_0x392c78(this: *const Instance) -> *const Instance {
+    // IDA 0x392c78: `findConstFirstChildOfType<Accoutrement>` — first direct
+    // child of dynamic type `Accoutrement`, else null. The cast collapses
+    // into the exact class-name match (subclass gap as in 0x2f7e84).
+    // SAFETY: `this` must point to a valid `Instance` whose subtree outlives
+    // the call.
+    unsafe {
+        // Explicit borrow: an implicit autoref through the raw pointer is rejected.
+        let children: &[SharedPtr<Instance>] = &(*this).children;
+        for child in children.iter() {
+            let raw = SharedPtr::as_ptr(child);
+            if (*raw).class_name == "Accoutrement" {
+                return raw;
+            }
+        }
+        core::ptr::null()
+    }
 }
 
 // 0x393dd0 — __ZN3RBX11PVAdornment10setAdorneeEPNS_10PVInstanceE
 #[doc(alias = "RBX::PVAdornment::setAdornee(RBX::PVInstance *)")]
 // was: RBX::PVAdornment::setAdornee(RBX::PVInstance *)
-pub fn stub_0x393dd0() -> ! {
-    todo!("0x393dd0 RBX::PVAdornment::setAdornee(RBX::PVInstance *)")
+pub fn stub_0x393dd0(this: *mut PVAdornment, adornee: *const PVInstance) {
+    // IDA 0x393dd0: `setAdornee` stores the adornee (decomp frame spills
+    // through the retain dance); the `shared_from` lock behind the incoming
+    // retain collapses into the store under the model-space contract.
+    // SAFETY: `this` must point to a valid `PVAdornment`; `adornee` must be
+    // null or live for the handle's lifetime.
+    unsafe {
+        (*this).adornee = adornee;
+    }
 }
 
 // 0x3940e0 — __ZN3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEED1Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::~RefPropDescriptor()")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::~RefPropDescriptor()
-pub fn stub_0x3940e0() -> ! {
-    todo!("0x3940e0 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::~RefPropDescriptor()")
+pub fn stub_0x3940e0(this: *mut PVRefPropDescriptor) {
+    // IDA 0x3940e0: two vtable resets (compiler-managed, disasm 0x3940f6-0x3940fa)
+    // plus the conditional `operator delete` of the `+11` payload (disasm
+    // 0x3940fc-0x394102). Same shape as 0x703498.
+    // SAFETY: `this` must point to a valid `PVRefPropDescriptor`.
+    unsafe {
+        (*this).owned = None;
+    }
 }
 
 // 0x39410c — __ZN3RBX11shared_fromINS_10PVInstanceEEEN5boost10shared_ptrIT_EEPS4_
 #[doc(alias = "rbx_core::SharedPtr<RBX::PVInstance> RBX::shared_from<RBX::PVInstance>(RBX::PVInstance*)")]
 // was: boost::shared_ptr<RBX::PVInstance> RBX::shared_from<RBX::PVInstance>(RBX::PVInstance*)
-pub fn stub_0x39410c() -> ! {
-    todo!("0x39410c boost::shared_ptr<RBX::PVInstance> RBX::shared_from<RBX::PVInstance>(RBX::PVInstance*)")
+pub fn stub_0x39410c(ptr: *const PVInstance) -> SharedPtr<PVInstance> {
+    // IDA 0x39410c: `shared_from<PVInstance>` — weak-owner lock with the
+    // mutex dance and `bad_weak_ptr` throw on expiry (decomp spills); minting
+    // from a live allocation is the same lock, and the throw maps to a panic
+    // like `weak_from` (IDA 0x7039e4).
+    // SAFETY: `ptr` must point into a live `SharedPtr<PVInstance>`.
+    unsafe {
+        if (*ptr).weak_owner.upgrade().is_none() {
+            panic!("0x39410c shared_from<PVInstance>: bad_weak_ptr");
+        }
+        let owned = SharedPtr::from_raw(ptr);
+        let out = owned.clone();
+        core::mem::forget(owned);
+        out
+    }
 }
 
 // 0x394f78 — __ZN3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -6416,29 +6631,44 @@ pub fn stub_0x394f78() -> ! {
 // 0x39501c — __ZN3RBX10Reflection7RefTypeIPNS_10PVInstanceEE9singletonEv
 #[doc(alias = "RBX::Reflection::RefType<RBX::PVInstance *>::singleton(void)")]
 // was: RBX::Reflection::RefType<RBX::PVInstance *>::singleton(void)
-pub fn stub_0x39501c() -> ! {
-    todo!("0x39501c RBX::Reflection::RefType<RBX::PVInstance *>::singleton(void)")
+pub fn stub_0x39501c() -> *const PVRefType {
+    // IDA 0x39501c: guard-checked once-init running `Type::Type<PVInstance*>`
+    // (disasm 0x395078-0x3950a6) then returning `&type` (disasm 0x3950ba); a
+    // `static` with const init is the same once-init.
+    &PV_REF_TYPE as *const PVRefType
 }
 
 // 0x395114 — __ZN3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEED0Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::~RefPropDescriptor()")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::~RefPropDescriptor()
-pub fn stub_0x395114() -> ! {
-    todo!("0x395114 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::~RefPropDescriptor()")
+pub fn stub_0x395114(this: *mut PVRefPropDescriptor) {
+    // IDA 0x395114: D0 — the D1 body (disasm 0x39512a-0x395134) plus
+    // `operator delete` (disasm 0x395136); the box reclaim is both.
+    // SAFETY: `this` must be a live box pointer that is never used again.
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 
 // 0x395144 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::isReadOnly(void)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::isReadOnly(void)const
-pub fn stub_0x395144() -> ! {
-    todo!("0x395144 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::isReadOnly(void)const")
+pub fn stub_0x395144(this: *const PVRefPropDescriptor) -> bool {
+    // IDA 0x395144: calls through the attribute word at `+44` (disasm
+    // 0x395150); the read-only flag collapses into the modeled field (set by
+    // the skipped C2 until descriptor construction lands).
+    // SAFETY: `this` must point to a valid `PVRefPropDescriptor`.
+    unsafe { (*this).read_only }
 }
 
 // 0x395154 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::isWriteOnly(void)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::isWriteOnly(void)const
-pub fn stub_0x395154() -> ! {
-    todo!("0x395154 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::isWriteOnly(void)const")
+pub fn stub_0x395154(this: *const PVRefPropDescriptor) -> bool {
+    // IDA 0x395154: same `+44`-word dispatch through the second slot (disasm
+    // 0x395160); the write-only flag collapses into the modeled field.
+    // SAFETY: `this` must point to a valid `PVRefPropDescriptor`.
+    unsafe { (*this).write_only }
 }
 
 // 0x395164 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
