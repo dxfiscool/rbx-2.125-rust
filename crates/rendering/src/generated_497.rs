@@ -9,13 +9,176 @@ use rbx_core::SharedPtr;
 
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
+/// Ogre::Vector3 mirror (xyz triple) backing emitter position/up params.
+/// Field layout matches the ARMv7 `Ogre::Vector3` read by `parseVector3`.
+#[derive(Clone, Copy, Debug, Default, PartialEq)]
+#[doc(alias = "Ogre::Vector3")]
+pub struct Vector3 {
+    pub x: f32,
+    pub y: f32,
+    pub z: f32,
+}
+
+impl Vector3 {
+    /// `Ogre::Vector3::ZERO` — default passed to `parseVector3` at IDA `0xd3d114`/`0xd3d2b8`.
+    pub const ZERO: Self = Self { x: 0.0, y: 0.0, z: 0.0 };
+}
+
+/// Ogre::ParticleEmitter parameter block backing the `EmitterCommands` wrappers below.
+/// `boost::shared_ptr<Ogre::ParticleEmitter>` maps to `rbx_core::SharedPtr` (`Arc`);
+/// the struct itself is plain data so `doGet`/`doSet` stay faithful without pointers.
+#[derive(Clone, Debug, Default)]
+#[doc(alias = "Ogre::ParticleEmitter")]
+pub struct ParticleEmitter {
+    pub position: Vector3,
+    pub up: Vector3,
+    pub angle: f32,
+    pub emission_rate: f32,
+    pub min_ttl: f32,
+    pub max_ttl: f32,
+    pub min_velocity: f32,
+    pub max_velocity: f32,
+    pub ttl: f32,
+    pub velocity: f32,
+    pub duration: f32,
+    pub min_duration: f32,
+    pub max_duration: f32,
+    pub repeat_delay: f32,
+    pub min_repeat_delay: f32,
+    pub max_repeat_delay: f32,
+    pub name: String,
+    pub emitted_emitter: String,
+}
+
+impl ParticleEmitter {
+    #[inline]
+    pub fn emission_rate(&self) -> f32 { self.emission_rate }
+    #[inline]
+    pub fn set_emission_rate(&mut self, value: f32) { self.emission_rate = value; }
+    #[inline]
+    pub fn max_ttl(&self) -> f32 { self.max_ttl }
+    #[inline]
+    pub fn set_max_ttl(&mut self, value: f32) { self.max_ttl = value; }
+    #[inline]
+    pub fn min_ttl(&self) -> f32 { self.min_ttl }
+    #[inline]
+    pub fn set_min_ttl(&mut self, value: f32) { self.min_ttl = value; }
+    #[inline]
+    pub fn max_velocity(&self) -> f32 { self.max_velocity }
+    #[inline]
+    pub fn set_max_velocity(&mut self, value: f32) { self.max_velocity = value; }
+    #[inline]
+    pub fn min_velocity(&self) -> f32 { self.min_velocity }
+    #[inline]
+    pub fn set_min_velocity(&mut self, value: f32) { self.min_velocity = value; }
+    #[inline]
+    pub fn position(&self) -> &Vector3 { &self.position }
+    #[inline]
+    pub fn set_position(&mut self, value: Vector3) { self.position = value; }
+    #[inline]
+    pub fn up(&self) -> &Vector3 { &self.up }
+    #[inline]
+    pub fn set_up(&mut self, value: Vector3) { self.up = value; }
+    #[inline]
+    pub fn ttl(&self) -> f32 { self.ttl }
+    #[inline]
+    pub fn set_ttl(&mut self, value: f32) { self.ttl = value; }
+    #[inline]
+    pub fn velocity(&self) -> f32 { self.velocity }
+    #[inline]
+    pub fn set_velocity(&mut self, value: f32) { self.velocity = value; }
+    #[inline]
+    pub fn duration(&self) -> f32 { self.duration }
+    #[inline]
+    pub fn set_duration(&mut self, value: f32) { self.duration = value; }
+    #[inline]
+    pub fn min_duration(&self) -> f32 { self.min_duration }
+    #[inline]
+    pub fn set_min_duration(&mut self, value: f32) { self.min_duration = value; }
+    #[inline]
+    pub fn max_duration(&self) -> f32 { self.max_duration }
+    #[inline]
+    pub fn set_max_duration(&mut self, value: f32) { self.max_duration = value; }
+    #[inline]
+    pub fn repeat_delay(&self) -> f32 { self.repeat_delay }
+    #[inline]
+    pub fn set_repeat_delay(&mut self, value: f32) { self.repeat_delay = value; }
+    #[inline]
+    pub fn min_repeat_delay(&self) -> f32 { self.min_repeat_delay }
+    #[inline]
+    pub fn set_min_repeat_delay(&mut self, value: f32) { self.min_repeat_delay = value; }
+    #[inline]
+    pub fn max_repeat_delay(&self) -> f32 { self.max_repeat_delay }
+    #[inline]
+    pub fn set_max_repeat_delay(&mut self, value: f32) { self.max_repeat_delay = value; }
+    #[inline]
+    pub fn name(&self) -> &str { &self.name }
+    #[inline]
+    pub fn set_name(&mut self, value: impl Into<String>) { self.name = value.into(); }
+    #[inline]
+    pub fn emitted_emitter(&self) -> &str { &self.emitted_emitter }
+    #[inline]
+    pub fn set_emitted_emitter(&mut self, value: impl Into<String>) { self.emitted_emitter = value.into(); }
+    /// Shared ownership form (`boost::shared_ptr<Ogre::ParticleEmitter>` → `SharedPtr`).
+    #[inline]
+    pub fn shared(self) -> SharedPtr<parking_lot::Mutex<Self>> {
+        SharedPtr::new(parking_lot::Mutex::new(self))
+    }
+}
+
+/// Ogre::StringConverter helpers used by every `EmitterCommands::doGet`/`doSet`.
+pub struct StringConverter;
+
+impl StringConverter {
+    /// IDA `0xd3d144`: `toString(Real, precision=6, width=0, fill=' ', flags=0)`.
+    // FIDELITY: Ogre streams with `precision(6)` = 6 significant digits; Rust has no
+    // one-shot equivalent, so format 6 decimals and trim — identical for the small
+    // magnitudes particle params use.
+    pub fn to_string_real(value: f32) -> String {
+        let s = format!("{value:.6}");
+        if s.contains('.') {
+            s.trim_end_matches('0').trim_end_matches('.').to_owned()
+        } else {
+            s
+        }
+    }
+    /// IDA `0xd3d2a0`: `toString(const Vector3&)` — space-joined components.
+    pub fn to_string_vector3(value: &Vector3) -> String {
+        format!(
+            "{} {} {}",
+            Self::to_string_real(value.x),
+            Self::to_string_real(value.y),
+            Self::to_string_real(value.z)
+        )
+    }
+    /// IDA `0xd3d16c`: `parseReal(const String&, Real default)` — unparseable keeps default.
+    pub fn parse_real(text: &str, default: f32) -> f32 {
+        text.trim().parse::<f32>().unwrap_or(default)
+    }
+    /// IDA `0xd3d114`/`0xd3d2b8`: `parseVector3(const String&, const Vector3& = ZERO)`.
+    // FIDELITY: Ogre returns the default unless exactly 3 components parse.
+    pub fn parse_vector3(text: &str, default: &Vector3) -> Vector3 {
+        let mut parts = text.split_whitespace();
+        match (parts.next(), parts.next(), parts.next()) {
+            (Some(x), Some(y), Some(z)) if parts.next().is_none() => Vector3 {
+                x: x.parse().unwrap_or(default.x),
+                y: y.parse().unwrap_or(default.y),
+                z: z.parse().unwrap_or(default.z),
+            },
+            _ => *default,
+        }
+    }
+}
+
 // 0xd3d114 — __ZN4Ogre15EmitterCommands5CmdUp5doSetEPvRKSs
 // type: _DWORD __fastcall(Ogre::EmitterCommands::CmdUp *__hidden this, void *, const std::string *)
 #[doc(alias = "Ogre::EmitterCommands::CmdUp::doSet(void *,std::string const&)")]
 #[doc(alias = "__ZN4Ogre15EmitterCommands5CmdUp5doSetEPvRKSs")]
 // was: Ogre::EmitterCommands::CmdUp::doSet(void *,std::string const&)
 // IDA 0xd3d114: 19 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d114() {
+pub fn stub_0xd3d114(target: &mut ParticleEmitter, value: &str) {
+    // IDA 0xd3d114: `parseVector3(value, Vector3::ZERO)` then vtable +60 `setUp`.
+    target.set_up(StringConverter::parse_vector3(value, &Vector3::ZERO));
 }
 
 // 0xd3d144 — __ZNK4Ogre15EmitterCommands15CmdEmissionRate5doGetEPKv
@@ -24,7 +187,9 @@ pub fn stub_0xd3d114() {
 #[doc(alias = "__ZNK4Ogre15EmitterCommands15CmdEmissionRate5doGetEPKv")]
 // was: Ogre::EmitterCommands::CmdEmissionRate::doGet(void const*)const
 // IDA 0xd3d144: 18 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d144() {
+pub fn stub_0xd3d144(target: &ParticleEmitter) -> String {
+    // IDA 0xd3d144: vtable +108 `getEmissionRate`; `StringConverter::toString(v, 6, 0, 32, 0)`.
+    StringConverter::to_string_real(target.emission_rate())
 }
 
 // 0xd3d16c — __ZN4Ogre15EmitterCommands15CmdEmissionRate5doSetEPvRKSs
@@ -33,7 +198,9 @@ pub fn stub_0xd3d144() {
 #[doc(alias = "__ZN4Ogre15EmitterCommands15CmdEmissionRate5doSetEPvRKSs")]
 // was: Ogre::EmitterCommands::CmdEmissionRate::doSet(void *,std::string const&)
 // IDA 0xd3d16c: 12 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d16c() {
+pub fn stub_0xd3d16c(target: &mut ParticleEmitter, value: &str) {
+    // IDA 0xd3d16c: `parseReal(value)` then vtable +104 `set_emission_rate`.
+    target.set_emission_rate(StringConverter::parse_real(value, 0.0));
 }
 
 // 0xd3d188 — __ZNK4Ogre15EmitterCommands9CmdMaxTTL5doGetEPKv
@@ -42,7 +209,9 @@ pub fn stub_0xd3d16c() {
 #[doc(alias = "__ZNK4Ogre15EmitterCommands9CmdMaxTTL5doGetEPKv")]
 // was: Ogre::EmitterCommands::CmdMaxTTL::doGet(void const*)const
 // IDA 0xd3d188: 18 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d188() {
+pub fn stub_0xd3d188(target: &ParticleEmitter) -> String {
+    // IDA 0xd3d188: vtable +136 `getMaxTtl`; `StringConverter::toString(v, 6, 0, 32, 0)`.
+    StringConverter::to_string_real(target.max_ttl())
 }
 
 // 0xd3d1b4 — __ZN4Ogre15EmitterCommands9CmdMaxTTL5doSetEPvRKSs
@@ -51,7 +220,9 @@ pub fn stub_0xd3d188() {
 #[doc(alias = "__ZN4Ogre15EmitterCommands9CmdMaxTTL5doSetEPvRKSs")]
 // was: Ogre::EmitterCommands::CmdMaxTTL::doSet(void *,std::string const&)
 // IDA 0xd3d1b4: 12 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d1b4() {
+pub fn stub_0xd3d1b4(target: &mut ParticleEmitter, value: &str) {
+    // IDA 0xd3d1b4: `parseReal(value)` then vtable +124 `set_max_ttl`.
+    target.set_max_ttl(StringConverter::parse_real(value, 0.0));
 }
 
 // 0xd3d1d0 — __ZNK4Ogre15EmitterCommands9CmdMinTTL5doGetEPKv
@@ -60,7 +231,9 @@ pub fn stub_0xd3d1b4() {
 #[doc(alias = "__ZNK4Ogre15EmitterCommands9CmdMinTTL5doGetEPKv")]
 // was: Ogre::EmitterCommands::CmdMinTTL::doGet(void const*)const
 // IDA 0xd3d1d0: 18 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d1d0() {
+pub fn stub_0xd3d1d0(target: &ParticleEmitter) -> String {
+    // IDA 0xd3d1d0: vtable +132 `getMinTtl`; `StringConverter::toString(v, 6, 0, 32, 0)`.
+    StringConverter::to_string_real(target.min_ttl())
 }
 
 // 0xd3d1fc — __ZN4Ogre15EmitterCommands9CmdMinTTL5doSetEPvRKSs
@@ -69,7 +242,9 @@ pub fn stub_0xd3d1d0() {
 #[doc(alias = "__ZN4Ogre15EmitterCommands9CmdMinTTL5doSetEPvRKSs")]
 // was: Ogre::EmitterCommands::CmdMinTTL::doSet(void *,std::string const&)
 // IDA 0xd3d1fc: 12 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d1fc() {
+pub fn stub_0xd3d1fc(target: &mut ParticleEmitter, value: &str) {
+    // IDA 0xd3d1fc: `parseReal(value)` then vtable +120 `set_min_ttl`.
+    target.set_min_ttl(StringConverter::parse_real(value, 0.0));
 }
 
 // 0xd3d218 — __ZNK4Ogre15EmitterCommands14CmdMaxVelocity5doGetEPKv
@@ -78,7 +253,9 @@ pub fn stub_0xd3d1fc() {
 #[doc(alias = "__ZNK4Ogre15EmitterCommands14CmdMaxVelocity5doGetEPKv")]
 // was: Ogre::EmitterCommands::CmdMaxVelocity::doGet(void const*)const
 // IDA 0xd3d218: 18 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d218() {
+pub fn stub_0xd3d218(target: &ParticleEmitter) -> String {
+    // IDA 0xd3d218: vtable +100 `getMaxVelocity`; `StringConverter::toString(v, 6, 0, 32, 0)`.
+    StringConverter::to_string_real(target.max_velocity())
 }
 
 // 0xd3d240 — __ZN4Ogre15EmitterCommands14CmdMaxVelocity5doSetEPvRKSs
@@ -87,7 +264,9 @@ pub fn stub_0xd3d218() {
 #[doc(alias = "__ZN4Ogre15EmitterCommands14CmdMaxVelocity5doSetEPvRKSs")]
 // was: Ogre::EmitterCommands::CmdMaxVelocity::doSet(void *,std::string const&)
 // IDA 0xd3d240: 12 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d240() {
+pub fn stub_0xd3d240(target: &mut ParticleEmitter, value: &str) {
+    // IDA 0xd3d240: `parseReal(value)` then vtable +88 `set_max_velocity`.
+    target.set_max_velocity(StringConverter::parse_real(value, 0.0));
 }
 
 // 0xd3d25c — __ZNK4Ogre15EmitterCommands14CmdMinVelocity5doGetEPKv
@@ -96,7 +275,9 @@ pub fn stub_0xd3d240() {
 #[doc(alias = "__ZNK4Ogre15EmitterCommands14CmdMinVelocity5doGetEPKv")]
 // was: Ogre::EmitterCommands::CmdMinVelocity::doGet(void const*)const
 // IDA 0xd3d25c: 18 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d25c() {
+pub fn stub_0xd3d25c(target: &ParticleEmitter) -> String {
+    // IDA 0xd3d25c: vtable +96 `getMinVelocity`; `StringConverter::toString(v, 6, 0, 32, 0)`.
+    StringConverter::to_string_real(target.min_velocity())
 }
 
 // 0xd3d284 — __ZN4Ogre15EmitterCommands14CmdMinVelocity5doSetEPvRKSs
@@ -105,7 +286,9 @@ pub fn stub_0xd3d25c() {
 #[doc(alias = "__ZN4Ogre15EmitterCommands14CmdMinVelocity5doSetEPvRKSs")]
 // was: Ogre::EmitterCommands::CmdMinVelocity::doSet(void *,std::string const&)
 // IDA 0xd3d284: 12 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d284() {
+pub fn stub_0xd3d284(target: &mut ParticleEmitter, value: &str) {
+    // IDA 0xd3d284: `parseReal(value)` then vtable +84 `set_min_velocity`.
+    target.set_min_velocity(StringConverter::parse_real(value, 0.0));
 }
 
 // 0xd3d2a0 — __ZNK4Ogre15EmitterCommands11CmdPosition5doGetEPKv
@@ -114,7 +297,9 @@ pub fn stub_0xd3d284() {
 #[doc(alias = "__ZNK4Ogre15EmitterCommands11CmdPosition5doGetEPKv")]
 // was: Ogre::EmitterCommands::CmdPosition::doGet(void const*)const
 // IDA 0xd3d2a0: 11 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d2a0() {
+pub fn stub_0xd3d2a0(target: &ParticleEmitter) -> String {
+    // IDA 0xd3d2a0: vtable +48 `getPosition`; `StringConverter::toString(const Vector3&)`.
+    StringConverter::to_string_vector3(target.position())
 }
 
 // 0xd3d2b8 — __ZN4Ogre15EmitterCommands11CmdPosition5doSetEPvRKSs
@@ -123,7 +308,9 @@ pub fn stub_0xd3d2a0() {
 #[doc(alias = "__ZN4Ogre15EmitterCommands11CmdPosition5doSetEPvRKSs")]
 // was: Ogre::EmitterCommands::CmdPosition::doSet(void *,std::string const&)
 // IDA 0xd3d2b8: 19 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d2b8() {
+pub fn stub_0xd3d2b8(target: &mut ParticleEmitter, value: &str) {
+    // IDA 0xd3d2b8: `parseVector3(value, Vector3::ZERO)` then vtable +44 `setPosition`.
+    target.set_position(StringConverter::parse_vector3(value, &Vector3::ZERO));
 }
 
 // 0xd3d2e8 — __ZNK4Ogre15EmitterCommands6CmdTTL5doGetEPKv
@@ -132,7 +319,9 @@ pub fn stub_0xd3d2b8() {
 #[doc(alias = "__ZNK4Ogre15EmitterCommands6CmdTTL5doGetEPKv")]
 // was: Ogre::EmitterCommands::CmdTTL::doGet(void const*)const
 // IDA 0xd3d2e8: 18 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d2e8() {
+pub fn stub_0xd3d2e8(target: &ParticleEmitter) -> String {
+    // IDA 0xd3d2e8: vtable +128 `getTtl`; `StringConverter::toString(v, 6, 0, 32, 0)`.
+    StringConverter::to_string_real(target.ttl())
 }
 
 // 0xd3d314 — __ZN4Ogre15EmitterCommands6CmdTTL5doSetEPvRKSs
@@ -141,16 +330,19 @@ pub fn stub_0xd3d2e8() {
 #[doc(alias = "__ZN4Ogre15EmitterCommands6CmdTTL5doSetEPvRKSs")]
 // was: Ogre::EmitterCommands::CmdTTL::doSet(void *,std::string const&)
 // IDA 0xd3d314: 12 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d314() {
+pub fn stub_0xd3d314(target: &mut ParticleEmitter, value: &str) {
+    // IDA 0xd3d314: `parseReal(value)` then vtable +112 `set_ttl`.
+    target.set_ttl(StringConverter::parse_real(value, 0.0));
 }
 
 // 0xd3d330 — __ZNK4Ogre15EmitterCommands11CmdVelocity5doGetEPKv
 // type: _DWORD __fastcall(Ogre::EmitterCommands::CmdVelocity *__hidden this, const void *)
 #[doc(alias = "Ogre::EmitterCommands::CmdVelocity::doGet(void const*)const")]
-#[doc(alias = "__ZNK4Ogre15EmitterCommands11CmdVelocity5doGetEPKv")]
 // was: Ogre::EmitterCommands::CmdVelocity::doGet(void const*)const
 // IDA 0xd3d330: 18 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d330() {
+pub fn stub_0xd3d330(target: &ParticleEmitter) -> String {
+    // IDA 0xd3d330: vtable +92 `getVelocity`; `StringConverter::toString(v, 6, 0, 32, 0)`.
+    StringConverter::to_string_real(target.velocity())
 }
 
 // 0xd3d358 — __ZN4Ogre15EmitterCommands11CmdVelocity5doSetEPvRKSs
@@ -159,7 +351,9 @@ pub fn stub_0xd3d330() {
 #[doc(alias = "__ZN4Ogre15EmitterCommands11CmdVelocity5doSetEPvRKSs")]
 // was: Ogre::EmitterCommands::CmdVelocity::doSet(void *,std::string const&)
 // IDA 0xd3d358: 12 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d358() {
+pub fn stub_0xd3d358(target: &mut ParticleEmitter, value: &str) {
+    // IDA 0xd3d358: `parseReal(value)` then vtable +76 `set_velocity`.
+    target.set_velocity(StringConverter::parse_real(value, 0.0));
 }
 
 // 0xd3d374 — __ZNK4Ogre15EmitterCommands11CmdDuration5doGetEPKv
@@ -168,7 +362,9 @@ pub fn stub_0xd3d358() {
 #[doc(alias = "__ZNK4Ogre15EmitterCommands11CmdDuration5doGetEPKv")]
 // was: Ogre::EmitterCommands::CmdDuration::doGet(void const*)const
 // IDA 0xd3d374: 18 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d374() {
+pub fn stub_0xd3d374(target: &ParticleEmitter) -> String {
+    // IDA 0xd3d374: vtable +196 `getDuration`; `StringConverter::toString(v, 6, 0, 32, 0)`.
+    StringConverter::to_string_real(target.duration())
 }
 
 // 0xd3d3a0 — __ZN4Ogre15EmitterCommands11CmdDuration5doSetEPvRKSs
@@ -177,7 +373,9 @@ pub fn stub_0xd3d374() {
 #[doc(alias = "__ZN4Ogre15EmitterCommands11CmdDuration5doSetEPvRKSs")]
 // was: Ogre::EmitterCommands::CmdDuration::doSet(void *,std::string const&)
 // IDA 0xd3d3a0: 12 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d3a0() {
+pub fn stub_0xd3d3a0(target: &mut ParticleEmitter, value: &str) {
+    // IDA 0xd3d3a0: `parseReal(value)` then vtable +192 `set_duration`.
+    target.set_duration(StringConverter::parse_real(value, 0.0));
 }
 
 // 0xd3d3bc — __ZNK4Ogre15EmitterCommands14CmdMinDuration5doGetEPKv
@@ -186,7 +384,9 @@ pub fn stub_0xd3d3a0() {
 #[doc(alias = "__ZNK4Ogre15EmitterCommands14CmdMinDuration5doGetEPKv")]
 // was: Ogre::EmitterCommands::CmdMinDuration::doGet(void const*)const
 // IDA 0xd3d3bc: 18 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d3bc() {
+pub fn stub_0xd3d3bc(target: &ParticleEmitter) -> String {
+    // IDA 0xd3d3bc: vtable +212 `getMinDuration`; `StringConverter::toString(v, 6, 0, 32, 0)`.
+    StringConverter::to_string_real(target.min_duration())
 }
 
 // 0xd3d3e8 — __ZN4Ogre15EmitterCommands14CmdMinDuration5doSetEPvRKSs
@@ -195,7 +395,9 @@ pub fn stub_0xd3d3bc() {
 #[doc(alias = "__ZN4Ogre15EmitterCommands14CmdMinDuration5doSetEPvRKSs")]
 // was: Ogre::EmitterCommands::CmdMinDuration::doSet(void *,std::string const&)
 // IDA 0xd3d3e8: 12 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d3e8() {
+pub fn stub_0xd3d3e8(target: &mut ParticleEmitter, value: &str) {
+    // IDA 0xd3d3e8: `parseReal(value)` then vtable +204 `set_min_duration`.
+    target.set_min_duration(StringConverter::parse_real(value, 0.0));
 }
 
 // 0xd3d404 — __ZNK4Ogre15EmitterCommands14CmdMaxDuration5doGetEPKv
@@ -204,7 +406,9 @@ pub fn stub_0xd3d3e8() {
 #[doc(alias = "__ZNK4Ogre15EmitterCommands14CmdMaxDuration5doGetEPKv")]
 // was: Ogre::EmitterCommands::CmdMaxDuration::doGet(void const*)const
 // IDA 0xd3d404: 18 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d404() {
+pub fn stub_0xd3d404(target: &ParticleEmitter) -> String {
+    // IDA 0xd3d404: vtable +216 `getMaxDuration`; `StringConverter::toString(v, 6, 0, 32, 0)`.
+    StringConverter::to_string_real(target.max_duration())
 }
 
 // 0xd3d430 — __ZN4Ogre15EmitterCommands14CmdMaxDuration5doSetEPvRKSs
@@ -213,7 +417,9 @@ pub fn stub_0xd3d404() {
 #[doc(alias = "__ZN4Ogre15EmitterCommands14CmdMaxDuration5doSetEPvRKSs")]
 // was: Ogre::EmitterCommands::CmdMaxDuration::doSet(void *,std::string const&)
 // IDA 0xd3d430: 12 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d430() {
+pub fn stub_0xd3d430(target: &mut ParticleEmitter, value: &str) {
+    // IDA 0xd3d430: `parseReal(value)` then vtable +208 `set_max_duration`.
+    target.set_max_duration(StringConverter::parse_real(value, 0.0));
 }
 
 // 0xd3d44c — __ZNK4Ogre15EmitterCommands14CmdRepeatDelay5doGetEPKv
@@ -222,7 +428,9 @@ pub fn stub_0xd3d430() {
 #[doc(alias = "__ZNK4Ogre15EmitterCommands14CmdRepeatDelay5doGetEPKv")]
 // was: Ogre::EmitterCommands::CmdRepeatDelay::doGet(void const*)const
 // IDA 0xd3d44c: 18 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d44c() {
+pub fn stub_0xd3d44c(target: &ParticleEmitter) -> String {
+    // IDA 0xd3d44c: vtable +224 `getRepeatDelay`; `StringConverter::toString(v, 6, 0, 32, 0)`.
+    StringConverter::to_string_real(target.repeat_delay())
 }
 
 // 0xd3d478 — __ZN4Ogre15EmitterCommands14CmdRepeatDelay5doSetEPvRKSs
@@ -231,7 +439,9 @@ pub fn stub_0xd3d44c() {
 #[doc(alias = "__ZN4Ogre15EmitterCommands14CmdRepeatDelay5doSetEPvRKSs")]
 // was: Ogre::EmitterCommands::CmdRepeatDelay::doSet(void *,std::string const&)
 // IDA 0xd3d478: 12 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xd3d478() {
+pub fn stub_0xd3d478(target: &mut ParticleEmitter, value: &str) {
+    // IDA 0xd3d478: `parseReal(value)` then vtable +220 `set_repeat_delay`.
+    target.set_repeat_delay(StringConverter::parse_real(value, 0.0));
 }
 
 // 0xd3d494 — __ZNK4Ogre15EmitterCommands17CmdMinRepeatDelay5doGetEPKv
