@@ -198,48 +198,81 @@ pub mod gui_textbox {
         static_get_creator();
         TEXTBOX_CLASS_NAME
     }
-    /// IDA 0x6696b4 Creator C2: `Name::declare(sTextBox)` once
-    /// (`call_once`/`doDeclare`, 0x6696ec-0x669702), `find == end` assert
-    /// (Object.h:244), `creators[name] = this`, `isConstructed = 666`, then
-    /// the `find != end` + `wasConstructed` post asserts (Object.h:250-251).
-    pub unsafe fn creator_construct(slot: *mut Creator) -> *mut Creator {
+    /// was: `FactoryProduct<T, ...>::Creator` class key — one shared
+    /// creators map, per-class name/vtable (TextBox batch 9, GuiTextButton
+    /// batch 11, GuiLabel/TextLabel batch 12).
+    #[derive(Clone, Copy)]
+    pub struct CreatorClass {
+        pub name: &'static str,
+        pub vtab: &'static str,
+    }
+    pub const TEXTBOX_CLASS: CreatorClass = CreatorClass {
+        name: TEXTBOX_CLASS_NAME,
+        vtab: TEXTBOX_CREATOR_VTAB,
+    };
+    /// IDA 0x6696b4/0x674658 Creator C2, generalized over the class: the
+    /// `DECLARED` once is per-class here (binary: per-`declare` flag).
+    pub unsafe fn creator_construct_as(
+        slot: *mut Creator,
+        class: &CreatorClass,
+        constructed: &AtomicBool,
+        addr: &AtomicUsize,
+    ) -> *mut Creator {
         use std::sync::LazyLock;
         static DECLARED: LazyLock<()> = LazyLock::new(|| {});
-        LazyLock::force(&DECLARED); // `Name::declare(sTextBox)` — names live in reflection
-        (*slot).vtab = TEXTBOX_CREATOR_VTAB; // IDA 0x6696ea (`a1->__sig`)
-        release_assert(!was_constructed(), "!wasConstructed() file: include/Util/Object.h line: 245");
+        LazyLock::force(&DECLARED); // `Name::declare(sX)` — names live in reflection
+        (*slot).vtab = class.vtab; // IDA 0x6696ea / 0x67468e (`a1->__sig`)
+        release_assert(!constructed.load(Ordering::SeqCst), "!wasConstructed() file: include/Util/Object.h line: 245");
         {
             let mut map = CREATORS.lock();
             // IDA 0x66972e-0x669744: `lower_bound` walk asserting absence.
             release_assert(
-                !map.contains_key(TEXTBOX_CLASS_NAME),
+                !map.contains_key(class.name),
                 "Class::getCreators().find(&name)==Class::getCreators().end() file: include/Util/Object.h line: 244",
             );
-            map.insert(TEXTBOX_CLASS_NAME, slot as usize); // IDA 0x6697f8-0x669814
+            map.insert(class.name, slot as usize); // IDA 0x6697f8-0x669814
         }
-        (*slot).name = TEXTBOX_CLASS_NAME;
-        CREATOR_ADDR.store(slot as usize, Ordering::SeqCst);
-        CREATOR_CONSTRUCTED.store(true, Ordering::SeqCst); // IDA 0x66981a: `= 666`
+        (*slot).name = class.name;
+        addr.store(slot as usize, Ordering::SeqCst);
+        constructed.store(true, Ordering::SeqCst); // IDA 0x66981a / 0x6747be: `= 666`
         {
             let map = CREATORS.lock();
             // IDA 0x66983a-0x66985c: `find != end` post assert ...
             release_assert(
-                map.get(TEXTBOX_CLASS_NAME) == Some(&(slot as usize)),
+                map.get(class.name) == Some(&(slot as usize)),
                 "Class::getCreators().find(&name)!=Class::getCreators().end() file: include/Util/Object.h line: 250",
             );
         }
         // IDA 0x6698a0-0x6698ea: `wasConstructed` post assert (Object.h:251).
-        release_assert(was_constructed(), "wasConstructed() file: include/Util/Object.h line: 251");
-        slot // IDA 0x6698f6
+        release_assert(constructed.load(Ordering::SeqCst), "wasConstructed() file: include/Util/Object.h line: 251");
+        slot // IDA 0x6698f6 / 0x67489a
     }
-    /// IDA 0x668fb8 Creator D2: vtable restore (`*a1 = &off_128D304`,
-    /// symbolic here), `wasConstructed` assert (Object.h:255), erase by
-    /// `getClassName` (IDA 0x669042-0x66904a).
-    pub unsafe fn creator_destroy(slot: *mut Creator) -> *mut Creator {
-        (*slot).vtab = TEXTBOX_CREATOR_VTAB; // IDA 0x668fda
-        release_assert(was_constructed(), "wasConstructed() file: include/Util/Object.h line: 255");
+    /// IDA 0x6696b4 Creator C2 for TextBox (wraps the shared template).
+    pub unsafe fn creator_construct(slot: *mut Creator) -> *mut Creator {
+        creator_construct_as(slot, &TEXTBOX_CLASS, &CREATOR_CONSTRUCTED, &CREATOR_ADDR)
+    }
+    pub unsafe fn creator_destroy_as(
+        slot: *mut Creator,
+        class: &CreatorClass,
+        constructed: &AtomicBool,
+    ) -> *mut Creator {
+        (*slot).vtab = class.vtab; // IDA 0x668fda / 0x673f7e (`*a1 = &off_...`)
+        release_assert(constructed.load(Ordering::SeqCst), "wasConstructed() file: include/Util/Object.h line: 255");
         CREATORS.lock().remove((*slot).name); // IDA 0x66904a
-        slot // IDA 0x669052
+        slot // IDA 0x669052 / 0x673ff6
+    }
+    /// IDA 0x668fb8 Creator D2 for TextBox (wraps the shared template; the
+    /// `*a1` restore word differs per class and is applied by the caller —
+    /// here it coincides with the TextBox vtable).
+    pub unsafe fn creator_destroy(slot: *mut Creator) -> *mut Creator {
+        creator_destroy_as(slot, &TEXTBOX_CLASS, &CREATOR_CONSTRUCTED)
+    }
+    /// IDA 0x6698f8/0x67489c `static_getCreator`, generalized: assert
+    /// (Object.h:282) then `&creatorPrivateE`.
+    pub fn static_get_creator_as(addr: &AtomicUsize, constructed: &AtomicBool) -> *const Creator {
+        // IDA 0x669908-0x66995a / 0x6748ac-0x6748fe.
+        release_assert(constructed.load(Ordering::SeqCst), "Creator::wasConstructed() file: include/Util/Object.h line: 282");
+        addr.load(Ordering::SeqCst) as *const Creator // IDA 0x66995a/0x66996a
     }
     /// was: `shared_ptr<Instance>` + `shared_count` out-pair of Creator
     /// `create` (IDA 0x6690dc): `*a1` takes the `+32` Instance-subobject
