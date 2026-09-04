@@ -4851,185 +4851,212 @@ pub fn stub_1efac() {
 // 0x1f004 — -[LoginViewController playNowDidTouchUpInside:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController playNowDidTouchUpInside:]")]
-pub fn stub_1f004() -> ! {
-    todo!("0x1f004 -[LoginViewController playNowDidTouchUpInside:]")
+pub fn stub_1f004(password_nonempty: bool) {
+    // delegate of crate::view_controllers (IDA 0x1f004)
+    crate::view_controllers::LoginViewController::shared_instance().play_now_did_touch_up_inside(password_nonempty);
 }
 
 // 0x1f0d4 — -[LoginViewController login:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController login:]")]
-pub fn stub_1f0d4() -> ! {
-    todo!("0x1f0d4 -[LoginViewController login:]")
+pub fn stub_1f0d4() {
+    // delegate of crate::view_controllers (IDA 0x1f0d4)
+    crate::view_controllers::LoginViewController::shared_instance().login();
 }
 
 // 0x1f1a0 — -[LoginViewController usernameDidEndOnExit:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController usernameDidEndOnExit:]")]
-pub fn stub_1f1a0() -> ! {
-    todo!("0x1f1a0 -[LoginViewController usernameDidEndOnExit:]")
+pub fn stub_1f1a0() {
+    // delegate of crate::view_controllers (IDA 0x1f1a0)
+    crate::view_controllers::LoginViewController::shared_instance().username_did_end_on_exit();
 }
 
 // 0x1f1c8 — -[LoginViewController passwordDidEndOnExit:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController passwordDidEndOnExit:]")]
-pub fn stub_1f1c8() -> ! {
-    todo!("0x1f1c8 -[LoginViewController passwordDidEndOnExit:]")
+pub fn stub_1f1c8() {
+    // delegate of crate::view_controllers (IDA 0x1f1c8)
+    crate::view_controllers::LoginViewController::shared_instance().password_did_end_on_exit();
 }
 
 // 0x1f260 — -[LoginViewController swiToggleRememberMyPassword:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController swiToggleRememberMyPassword:]")]
-pub fn stub_1f260() -> ! {
-    todo!("0x1f260 -[LoginViewController swiToggleRememberMyPassword:]")
+pub fn stub_1f260(is_on: bool) {
+    // delegate of crate::view_controllers (IDA 0x1f260)
+    crate::view_controllers::LoginViewController::shared_instance().swi_toggle_remember_my_password(is_on);
 }
 
 // 0x1f2c0 — -[LoginViewController loginButtonDidTouchUpInside:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController loginButtonDidTouchUpInside:]")]
-pub fn stub_1f2c0() -> ! {
-    todo!("0x1f2c0 -[LoginViewController loginButtonDidTouchUpInside:]")
+pub fn stub_1f2c0() {
+    // delegate of crate::view_controllers (IDA 0x1f2c0)
+    crate::view_controllers::LoginViewController::shared_instance().login_button_did_touch_up_inside();
 }
 
 // 0x1f2e0 — -[LoginViewController onKeyboardHide:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController onKeyboardHide:]")]
-pub fn stub_1f2e0() -> ! {
-    todo!("0x1f2e0 -[LoginViewController onKeyboardHide:]")
+pub fn stub_1f2e0() {
+    // delegate of crate::view_controllers (IDA 0x1f2e0)
+    crate::view_controllers::LoginViewController::shared_instance().on_keyboard_hide();
 }
 
 // 0x1f380 — ___38-[LoginViewController onKeyboardHide:]_block_invoke
 #[doc(alias = "___38-[LoginViewController onKeyboardHide:]_block_invoke")]
-pub fn stub_1f380() -> ! {
-    todo!("0x1f380 ___38-[LoginViewController onKeyboardHide:]_block_invoke")
+pub fn stub_1f380() {
+    // delegate of crate::view_controllers (IDA 0x1f380)
+    crate::view_controllers::LoginViewController::shared_instance().on_keyboard_hide_block();
 }
 
 // 0x1f3f8 — ___38-[LoginViewController onKeyboardHide:]_block_invoke_2
 #[doc(alias = "___38-[LoginViewController onKeyboardHide:]_block_invoke_2")]
-pub fn stub_1f3f8() -> ! {
-    todo!("0x1f3f8 ___38-[LoginViewController onKeyboardHide:]_block_invoke_2")
+pub fn stub_1f3f8() {
+    // delegate of crate::view_controllers (IDA 0x1f3f8)
+    crate::view_controllers::LoginViewController::shared_instance().on_keyboard_hide_block_2();
 }
 
 // 0x1f4a8 — -[LoginViewController onKeyboardShow:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController onKeyboardShow:]")]
-pub fn stub_1f4a8() -> ! {
-    todo!("0x1f4a8 -[LoginViewController onKeyboardShow:]")
+pub fn stub_1f4a8() {
+    // delegate of crate::view_controllers (IDA 0x1f4a8)
+    crate::view_controllers::LoginViewController::shared_instance().on_keyboard_show();
 }
 
 // 0x1f538 — ___38-[LoginViewController onKeyboardShow:]_block_invoke
 #[doc(alias = "___38-[LoginViewController onKeyboardShow:]_block_invoke")]
-pub fn stub_1f538() -> ! {
-    todo!("0x1f538 ___38-[LoginViewController onKeyboardShow:]_block_invoke")
+pub fn stub_1f538() {
+    // delegate of crate::view_controllers (IDA 0x1f538)
+    crate::view_controllers::LoginViewController::shared_instance().on_keyboard_show_block();
 }
 
 // 0x1f5e0 — ___38-[LoginViewController onKeyboardShow:]_block_invoke_2
 #[doc(alias = "___38-[LoginViewController onKeyboardShow:]_block_invoke_2")]
-pub fn stub_1f5e0() -> ! {
-    todo!("0x1f5e0 ___38-[LoginViewController onKeyboardShow:]_block_invoke_2")
+pub fn stub_1f5e0() {
+    // delegate of crate::view_controllers (IDA 0x1f5e0)
+    crate::view_controllers::LoginViewController::shared_instance().on_keyboard_show_block_2();
 }
 
 // 0x1f674 — ___38-[LoginViewController onKeyboardShow:]_block_invoke311
 // type: id __fastcall(int)
 #[doc(alias = "___38-[LoginViewController onKeyboardShow:]_block_invoke311")]
-pub fn stub_1f674() -> ! {
-    todo!("0x1f674 ___38-[LoginViewController onKeyboardShow:]_block_invoke311")
+pub fn stub_1f674() {
+    // delegate of crate::view_controllers (IDA 0x1f674)
+    crate::view_controllers::LoginViewController::shared_instance().on_keyboard_show_block_311();
 }
 
 // 0x1f6b0 — -[LoginViewController doLoginTransition]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController doLoginTransition]")]
-pub fn stub_1f6b0() -> ! {
-    todo!("0x1f6b0 -[LoginViewController doLoginTransition]")
+pub fn stub_1f6b0(remember_password: bool, username: &str, password: &str) {
+    // delegate of crate::view_controllers (IDA 0x1f6b0)
+    crate::view_controllers::LoginViewController::shared_instance().do_login_transition(remember_password, username, password);
 }
 
 // 0x1f808 — ___40-[LoginViewController doLoginTransition]_block_invoke
 #[doc(alias = "___40-[LoginViewController doLoginTransition]_block_invoke")]
-pub fn stub_1f808() -> ! {
-    todo!("0x1f808 ___40-[LoginViewController doLoginTransition]_block_invoke")
+pub fn stub_1f808() {
+    // delegate of crate::view_controllers (IDA 0x1f808)
+    crate::view_controllers::LoginViewController::shared_instance().do_login_transition_block();
 }
 
 // 0x1fd38 — -[LoginViewController prepareForSegue:sender:]
 // type: void __cdecl(LoginViewController *self, SEL, id, id)
 #[doc(alias = "-[LoginViewController prepareForSegue:sender:]")]
-pub fn stub_1fd38() -> ! {
-    todo!("0x1fd38 -[LoginViewController prepareForSegue:sender:]")
+pub fn stub_1fd38(is_nav_bar: bool, sender_is_button: bool, button_url: Option<&str>) {
+    // delegate of crate::view_controllers (IDA 0x1fd38)
+    crate::view_controllers::LoginViewController::shared_instance().prepare_for_segue(is_nav_bar, sender_is_button, button_url);
 }
 
 // 0x1fe70 — -[LoginViewController setLoginPlaceId:]
 // type: void __cdecl(LoginViewController *self, SEL, int)
 #[doc(alias = "-[LoginViewController setLoginPlaceId:]")]
-pub fn stub_1fe70() -> ! {
-    todo!("0x1fe70 -[LoginViewController setLoginPlaceId:]")
+pub fn stub_1fe70(place_id: i32, password_nonempty: bool) {
+    // delegate of crate::view_controllers (IDA 0x1fe70)
+    crate::view_controllers::LoginViewController::shared_instance().set_login_place_id_and_play_now(place_id, password_nonempty);
 }
 
 // 0x1ff5c — -[LoginViewController username]
 // type: UITextField *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController username]")]
-pub fn stub_1ff5c() -> ! {
-    todo!("0x1ff5c -[LoginViewController username]")
+pub fn stub_1ff5c() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x1ff5c)
+    crate::view_controllers::LoginViewController::shared_instance().username_outlet()
 }
 
 // 0x1ff6c — -[LoginViewController setUsername:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setUsername:]")]
-pub fn stub_1ff6c() -> ! {
-    todo!("0x1ff6c -[LoginViewController setUsername:]")
+pub fn stub_1ff6c(field: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x1ff6c)
+    crate::view_controllers::LoginViewController::shared_instance().set_username_outlet(field);
 }
 
 // 0x1ff90 — -[LoginViewController password]
 // type: UITextField *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController password]")]
-pub fn stub_1ff90() -> ! {
-    todo!("0x1ff90 -[LoginViewController password]")
+pub fn stub_1ff90() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x1ff90)
+    crate::view_controllers::LoginViewController::shared_instance().password_outlet()
 }
 
 // 0x1ffa0 — -[LoginViewController setPassword:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setPassword:]")]
-pub fn stub_1ffa0() -> ! {
-    todo!("0x1ffa0 -[LoginViewController setPassword:]")
+pub fn stub_1ffa0(field: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x1ffa0)
+    crate::view_controllers::LoginViewController::shared_instance().set_password_outlet(field);
 }
 
 // 0x1ffc4 — -[LoginViewController btnSkip]
 // type: UIButton *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController btnSkip]")]
-pub fn stub_1ffc4() -> ! {
-    todo!("0x1ffc4 -[LoginViewController btnSkip]")
+pub fn stub_1ffc4() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x1ffc4)
+    crate::view_controllers::LoginViewController::shared_instance().btn_skip()
 }
 
 // 0x1ffd4 — -[LoginViewController setBtnSkip:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setBtnSkip:]")]
-pub fn stub_1ffd4() -> ! {
-    todo!("0x1ffd4 -[LoginViewController setBtnSkip:]")
+pub fn stub_1ffd4(button: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x1ffd4)
+    crate::view_controllers::LoginViewController::shared_instance().set_btn_skip(button);
 }
 
 // 0x1fff8 — -[LoginViewController mainView]
 // type: UIView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController mainView]")]
-pub fn stub_1fff8() -> ! {
-    todo!("0x1fff8 -[LoginViewController mainView]")
+pub fn stub_1fff8() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x1fff8)
+    crate::view_controllers::LoginViewController::shared_instance().main_view()
 }
 
 // 0x20008 — -[LoginViewController setMainView:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setMainView:]")]
-pub fn stub_20008() -> ! {
-    todo!("0x20008 -[LoginViewController setMainView:]")
+pub fn stub_20008(view: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x20008)
+    crate::view_controllers::LoginViewController::shared_instance().set_main_view(view);
 }
 
 // 0x2002c — -[LoginViewController EnvironmentPicker]
 // type: UIPickerView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController EnvironmentPicker]")]
-pub fn stub_2002c() -> ! {
-    todo!("0x2002c -[LoginViewController EnvironmentPicker]")
+pub fn stub_2002c() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x2002c)
+    crate::view_controllers::LoginViewController::shared_instance().environment_picker()
 }
 
 // 0x2003c — -[LoginViewController setEnvironmentPicker:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setEnvironmentPicker:]")]
-pub fn stub_2003c() -> ! {
-    todo!("0x2003c -[LoginViewController setEnvironmentPicker:]")
+pub fn stub_2003c(picker: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x2003c)
+    crate::view_controllers::LoginViewController::shared_instance().set_environment_picker(picker);
 }
 
 // 0x20060 — -[LoginViewController rememberPwLabel]

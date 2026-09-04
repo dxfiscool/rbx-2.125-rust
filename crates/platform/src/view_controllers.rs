@@ -1821,6 +1821,34 @@ pub struct LoginViewController {
     activity_hidden: std::sync::atomic::AtomicBool,
     field_alpha_bits: std::sync::atomic::AtomicU32,
     login_animation_calls: std::sync::atomic::AtomicU32,
+    // Batch 2 (IDA 0x1f004..0x2002c): login actions, keyboard pan, segue, outlets.
+    username_outlet: parking_lot::Mutex<ObjCId>,
+    password_outlet: parking_lot::Mutex<ObjCId>,
+    btn_skip: parking_lot::Mutex<ObjCId>,
+    main_view: parking_lot::Mutex<ObjCId>,
+    environment_picker: parking_lot::Mutex<ObjCId>,
+    user_did_click_play_now: std::sync::atomic::AtomicBool,
+    play_now_taps: std::sync::atomic::AtomicU32,
+    login_button_taps: std::sync::atomic::AtomicU32,
+    login_calls: std::sync::atomic::AtomicU32,
+    last_login: parking_lot::Mutex<Option<(String, String)>>,
+    logouts: std::sync::atomic::AtomicU32,
+    guest_page_views: std::sync::atomic::AtomicU32,
+    first_responder_requests: std::sync::atomic::AtomicU32,
+    remember_password_sets: std::sync::atomic::AtomicU32,
+    remember_password: std::sync::atomic::AtomicBool,
+    scroll_offset: parking_lot::Mutex<(f32, f32)>,
+    background_pan_starts: std::sync::atomic::AtomicU32,
+    keyboard_hide_calls: std::sync::atomic::AtomicU32,
+    keyboard_show_calls: std::sync::atomic::AtomicU32,
+    keyboard_animation_calls: std::sync::atomic::AtomicU32,
+    bg_alpha_bits: std::sync::atomic::AtomicU32,
+    has_received_memory_warning: std::sync::atomic::AtomicBool,
+    do_login_transition_calls: std::sync::atomic::AtomicU32,
+    defaults_saved: parking_lot::Mutex<Option<(String, String)>>,
+    segue_preparations: std::sync::atomic::AtomicU32,
+    webview_cache_fetches: std::sync::atomic::AtomicU32,
+    last_segue_url: parking_lot::Mutex<String>,
 }
 
 impl LoginViewController {
@@ -2345,6 +2373,331 @@ impl LoginViewController {
     }
     pub fn is_activity_hidden(&self) -> bool {
         self.activity_hidden.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x1f004 — -[LoginViewController playNowDidTouchUpInside:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x1f004
+    #[doc(alias = "-[LoginViewController playNowDidTouchUpInside:]")]
+    #[doc = "-[LoginViewController playNowDidTouchUpInside:]"]
+    pub fn play_now_did_touch_up_inside(&self, password_nonempty: bool) {
+        // `userDidClickPlayNow = 1` (IDA 0x1f024); nonempty password field
+        // goes through `login:` (IDA 0x1f028..0x1f0ce), otherwise logout +
+        // guest page-view + `segueToHomeViewController:1`
+        // (IDA 0x1f064..0x1f0b6).
+        self.user_did_click_play_now.store(true, std::sync::atomic::Ordering::SeqCst);
+        self.play_now_taps.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        if password_nonempty {
+            self.login();
+        } else {
+            self.logouts.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            self.guest_page_views.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            self.segue_to_home_view_controller(true);
+        }
+    }
+    pub fn did_user_click_play_now(&self) -> bool {
+        self.user_did_click_play_now.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x1f0d4 — -[LoginViewController login:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x1f0d4
+    #[doc(alias = "-[LoginViewController login:]")]
+    #[doc = "-[LoginViewController login:]"]
+    pub fn login(&self) {
+        // Both fields `endEditing:` (IDA 0x1f0f0..0x1f122), `showLoggingIn`
+        // (IDA 0x1f134), then `doLoginWithUsername:password:` with the field
+        // texts (IDA 0x1f154..0x1f19a, LoginManager out of slice).
+        self.show_logging_in();
+        let user = self.username_text.lock().clone();
+        let pass = self.password_text.lock().clone();
+        *self.last_login.lock() = Some((user, pass));
+        self.login_calls.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn login_call_count(&self) -> u32 {
+        self.login_calls.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn last_login(&self) -> Option<(String, String)> {
+        self.last_login.lock().clone()
+    }
+    // 0x1f1a0 — -[LoginViewController usernameDidEndOnExit:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x1f1a0
+    #[doc(alias = "-[LoginViewController usernameDidEndOnExit:]")]
+    #[doc = "-[LoginViewController usernameDidEndOnExit:]"]
+    pub fn username_did_end_on_exit(&self) {
+        // Password field becomes first responder (IDA 0x1f1b0..0x1f1c4).
+        self.first_responder_requests.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    // 0x1f1c8 — -[LoginViewController passwordDidEndOnExit:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x1f1c8
+    #[doc(alias = "-[LoginViewController passwordDidEndOnExit:]")]
+    #[doc = "-[LoginViewController passwordDidEndOnExit:]"]
+    pub fn password_did_end_on_exit(&self) {
+        // Same login path as `login:` (IDA 0x1f1e0..0x1f25a).
+        self.login();
+    }
+    // 0x1f260 — -[LoginViewController swiToggleRememberMyPassword:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x1f260
+    #[doc(alias = "-[LoginViewController swiToggleRememberMyPassword:]")]
+    #[doc = "-[LoginViewController swiToggleRememberMyPassword:]"]
+    pub fn swi_toggle_remember_my_password(&self, is_on: bool) {
+        // Switch `isOn` forwarded to `setRememberPassword:`
+        // (IDA 0x1f282..0x1f2ba, LoginManager out of slice).
+        self.remember_password.store(is_on, std::sync::atomic::Ordering::SeqCst);
+        self.remember_password_sets.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn remember_password_value(&self) -> bool {
+        self.remember_password.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x1f2c0 — -[LoginViewController loginButtonDidTouchUpInside:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x1f2c0
+    #[doc(alias = "-[LoginViewController loginButtonDidTouchUpInside:]")]
+    #[doc = "-[LoginViewController loginButtonDidTouchUpInside:]"]
+    pub fn login_button_did_touch_up_inside(&self) {
+        // `userDidClickPlayNow = 0` then `login:` (IDA 0x1f2d6..0x1f2dc).
+        self.user_did_click_play_now.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.login_button_taps.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.login();
+    }
+    // 0x1f2e0 — -[LoginViewController onKeyboardHide:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x1f2e0
+    #[doc(alias = "-[LoginViewController onKeyboardHide:]")]
+    #[doc = "-[LoginViewController onKeyboardHide:]"]
+    pub fn on_keyboard_hide(&self) {
+        // Scroll offset reset to (0,0) (IDA 0x1f30c); unless a memory warning
+        // was received, restart the background pan and run the fade-back
+        // block inline (IDA 0x1f31e..0x1f376).
+        *self.scroll_offset.lock() = (0.0, 0.0);
+        self.keyboard_hide_calls.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        if !self.has_received_memory_warning.load(std::sync::atomic::Ordering::SeqCst) {
+            self.background_pan_starts.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            self.on_keyboard_hide_block();
+        }
+    }
+    // 0x1f380 — ___38-[LoginViewController onKeyboardHide:]_block_invoke
+    // IDA 0x1f380
+    #[doc(alias = "___38-[LoginViewController onKeyboardHide:]_block_invoke")]
+    #[doc = "___38-[LoginViewController onKeyboardHide:]_block_invoke"]
+    pub fn on_keyboard_hide_block(&self) {
+        // 0.3s `animateWithDuration:` fade (IDA 0x1f3c4..0x1f3ec) runs inline.
+        self.keyboard_animation_calls.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.on_keyboard_hide_block_2();
+    }
+    // 0x1f3f8 — ___38-[LoginViewController onKeyboardHide:]_block_invoke_2
+    // IDA 0x1f3f8
+    #[doc(alias = "___38-[LoginViewController onKeyboardHide:]_block_invoke_2")]
+    #[doc = "___38-[LoginViewController onKeyboardHide:]_block_invoke_2"]
+    pub fn on_keyboard_hide_block_2(&self) {
+        // Background, foreground, and both page layers back to alpha 1.0f
+        // (IDA 0x1f40c..0x1f45a, 1065353216 = 1.0f).
+        self.bg_alpha_bits.store(1065353216, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn background_alpha(&self) -> f32 {
+        f32::from_bits(self.bg_alpha_bits.load(std::sync::atomic::Ordering::SeqCst))
+    }
+    // 0x1f4a8 — -[LoginViewController onKeyboardShow:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x1f4a8
+    #[doc(alias = "-[LoginViewController onKeyboardShow:]")]
+    #[doc = "-[LoginViewController onKeyboardShow:]"]
+    pub fn on_keyboard_show(&self) {
+        // Scroll offset to (0,112) (IDA 0x1f4d8, 1122369536 = 112.0f);
+        // unless memory-warned, run the fade-out animation inline
+        // (IDA 0x1f4ea..0x1f530).
+        *self.scroll_offset.lock() = (0.0, 112.0);
+        self.keyboard_show_calls.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        if !self.has_received_memory_warning.load(std::sync::atomic::Ordering::SeqCst) {
+            self.on_keyboard_show_block();
+        }
+    }
+    pub fn scroll_offset(&self) -> (f32, f32) {
+        *self.scroll_offset.lock()
+    }
+    // 0x1f538 — ___38-[LoginViewController onKeyboardShow:]_block_invoke
+    // IDA 0x1f538
+    #[doc(alias = "___38-[LoginViewController onKeyboardShow:]_block_invoke")]
+    #[doc = "___38-[LoginViewController onKeyboardShow:]_block_invoke"]
+    pub fn on_keyboard_show_block(&self) {
+        // Fade-out animation with `stopBackgroundPan` completion
+        // (IDA 0x1f580..0x1f5d6) runs inline.
+        self.keyboard_animation_calls.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.on_keyboard_show_block_2();
+        self.on_keyboard_show_block_311();
+    }
+    // 0x1f5e0 — ___38-[LoginViewController onKeyboardShow:]_block_invoke_2
+    // IDA 0x1f5e0
+    #[doc(alias = "___38-[LoginViewController onKeyboardShow:]_block_invoke_2")]
+    #[doc = "___38-[LoginViewController onKeyboardShow:]_block_invoke_2"]
+    pub fn on_keyboard_show_block_2(&self) {
+        // All four layers to alpha 0 (IDA 0x1f5f4..0x1f63c).
+        self.bg_alpha_bits.store(0, std::sync::atomic::Ordering::SeqCst);
+    }
+    // 0x1f674 — ___38-[LoginViewController onKeyboardShow:]_block_invoke311
+    // IDA 0x1f674
+    #[doc(alias = "___38-[LoginViewController onKeyboardShow:]_block_invoke311")]
+    #[doc = "___38-[LoginViewController onKeyboardShow:]_block_invoke311"]
+    pub fn on_keyboard_show_block_311(&self) {
+        // `stopBackgroundPan` completion (IDA 0x1f674).
+        self.background_pan_stops.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    // 0x1f6b0 — -[LoginViewController doLoginTransition]
+    // type: void __cdecl(LoginViewController *self, SEL)
+    // IDA 0x1f6b0
+    #[doc(alias = "-[LoginViewController doLoginTransition]")]
+    #[doc = "-[LoginViewController doLoginTransition]"]
+    pub fn do_login_transition(&self, remember_password: bool, username: &str, password: &str) {
+        // Without `rememberPassword` the password field clears via the block
+        // (IDA 0x1f6d4..0x1f72e, inline); username/password persist to
+        // NSUserDefaults (IDA 0x1f752..0x1f7dc), then
+        // `segueToHomeViewController:userDidClickPlayNow` (IDA 0x1f7fc).
+        self.do_login_transition_calls.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        if !remember_password {
+            self.do_login_transition_block();
+        }
+        *self.defaults_saved.lock() = Some((username.to_owned(), password.to_owned()));
+        let after_load = self.user_did_click_play_now.load(std::sync::atomic::Ordering::SeqCst);
+        self.segue_to_home_view_controller(after_load);
+    }
+    pub fn do_login_transition_call_count(&self) -> u32 {
+        self.do_login_transition_calls.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn saved_defaults(&self) -> Option<(String, String)> {
+        self.defaults_saved.lock().clone()
+    }
+    // 0x1f808 — ___40-[LoginViewController doLoginTransition]_block_invoke
+    // IDA 0x1f808
+    #[doc(alias = "___40-[LoginViewController doLoginTransition]_block_invoke")]
+    #[doc = "___40-[LoginViewController doLoginTransition]_block_invoke"]
+    pub fn do_login_transition_block(&self) {
+        // Password field text cleared to nil (IDA 0x1f808).
+        self.password_text.lock().clear();
+    }
+    // 0x1fd38 — -[LoginViewController prepareForSegue:sender:]
+    // type: void __cdecl(LoginViewController *self, SEL, id, id)
+    // IDA 0x1fd38
+    #[doc(alias = "-[LoginViewController prepareForSegue:sender:]")]
+    #[doc = "-[LoginViewController prepareForSegue:sender:]"]
+    pub fn prepare_for_segue(&self, is_nav_bar: bool, sender_is_button: bool, button_url: Option<&str>) {
+        // Only `RobloxNavBarViewController` destinations qualify
+        // (IDA 0x1fd58..0x1fd8e); button senders supply the URL via
+        // `getUrlForButtonTag:` (IDA 0x1fd9c..0x1fe04), then the cached web
+        // view attaches (IDA 0x1fe24..0x1fe64, cache out of slice).
+        self.segue_preparations.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        if is_nav_bar {
+            if sender_is_button {
+                *self.last_segue_url.lock() = button_url.unwrap_or_default().to_owned();
+            }
+            self.webview_cache_fetches.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        }
+    }
+    pub fn last_segue_url(&self) -> String {
+        self.last_segue_url.lock().clone()
+    }
+    // 0x1fe70 — -[LoginViewController setLoginPlaceId:]
+    // type: void __cdecl(LoginViewController *self, SEL, int)
+    // IDA 0x1fe70
+    #[doc(alias = "-[LoginViewController setLoginPlaceId:]")]
+    #[doc = "-[LoginViewController setLoginPlaceId:]"]
+    pub fn set_login_place_id_and_play_now(&self, place_id: i32, password_nonempty: bool) {
+        // Logs, resolves the HomeViewController storyboard id and forwards
+        // the place id (IDA 0x1fe88..0x1ff2c, UIKit out of slice),
+        // then `userDidClickPlayNow = 1` + `playNowDidTouchUpInside:`
+        // (IDA 0x1ff46..0x1ff56).
+        self.set_login_place_id(place_id);
+        self.play_now_did_touch_up_inside(password_nonempty);
+    }
+    // 0x1ff5c — -[LoginViewController username]
+    // type: id __cdecl(LoginViewController *self, SEL)
+    // IDA 0x1ff5c
+    #[doc(alias = "-[LoginViewController username]")]
+    #[doc = "-[LoginViewController username]"]
+    pub fn username_outlet(&self) -> ObjCId {
+        // Retained `username_` ivar (IDA 0x1ff6a).
+        *self.username_outlet.lock()
+    }
+    // 0x1ff6c — -[LoginViewController setUsername:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x1ff6c
+    #[doc(alias = "-[LoginViewController setUsername:]")]
+    #[doc = "-[LoginViewController setUsername:]"]
+    pub fn set_username_outlet(&self, field: ObjCId) {
+        // `objc_setProperty(self, a2, 200, a3, 0, 0)` (IDA 0x1ff88).
+        *self.username_outlet.lock() = field;
+    }
+    // 0x1ff90 — -[LoginViewController password]
+    // type: id __cdecl(LoginViewController *self, SEL)
+    // IDA 0x1ff90
+    #[doc(alias = "-[LoginViewController password]")]
+    #[doc = "-[LoginViewController password]"]
+    pub fn password_outlet(&self) -> ObjCId {
+        // Retained `password_` ivar (IDA 0x1ff9e).
+        *self.password_outlet.lock()
+    }
+    // 0x1ffa0 — -[LoginViewController setPassword:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x1ffa0
+    #[doc(alias = "-[LoginViewController setPassword:]")]
+    #[doc = "-[LoginViewController setPassword:]"]
+    pub fn set_password_outlet(&self, field: ObjCId) {
+        // `objc_setProperty(self, a2, 204, a3, 0, 0)` (IDA 0x1ffbc).
+        *self.password_outlet.lock() = field;
+    }
+    // 0x1ffc4 — -[LoginViewController btnSkip]
+    // type: id __cdecl(LoginViewController *self, SEL)
+    // IDA 0x1ffc4
+    #[doc(alias = "-[LoginViewController btnSkip]")]
+    #[doc = "-[LoginViewController btnSkip]"]
+    pub fn btn_skip(&self) -> ObjCId {
+        // Retained `_btnSkip` ivar (IDA 0x1ffd2).
+        *self.btn_skip.lock()
+    }
+    // 0x1ffd4 — -[LoginViewController setBtnSkip:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x1ffd4
+    #[doc(alias = "-[LoginViewController setBtnSkip:]")]
+    #[doc = "-[LoginViewController setBtnSkip:]"]
+    pub fn set_btn_skip(&self, button: ObjCId) {
+        // `objc_setProperty(self, a2, 208, a3, 0, 0)` (IDA 0x1fff0).
+        *self.btn_skip.lock() = button;
+    }
+    // 0x1fff8 — -[LoginViewController mainView]
+    // type: id __cdecl(LoginViewController *self, SEL)
+    // IDA 0x1fff8
+    #[doc(alias = "-[LoginViewController mainView]")]
+    #[doc = "-[LoginViewController mainView]"]
+    pub fn main_view(&self) -> ObjCId {
+        // Retained `_mainView` ivar (IDA 0x20006).
+        *self.main_view.lock()
+    }
+    // 0x20008 — -[LoginViewController setMainView:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x20008
+    #[doc(alias = "-[LoginViewController setMainView:]")]
+    #[doc = "-[LoginViewController setMainView:]"]
+    pub fn set_main_view(&self, view: ObjCId) {
+        // `objc_setProperty(self, a2, 212, a3, 0, 0)` (IDA 0x20024).
+        *self.main_view.lock() = view;
+    }
+    // 0x2002c — -[LoginViewController EnvironmentPicker]
+    // type: id __cdecl(LoginViewController *self, SEL)
+    // IDA 0x2002c
+    #[doc(alias = "-[LoginViewController EnvironmentPicker]")]
+    #[doc = "-[LoginViewController EnvironmentPicker]"]
+    pub fn environment_picker(&self) -> ObjCId {
+        // Retained `_EnvironmentPicker` ivar (IDA 0x2003a).
+        *self.environment_picker.lock()
+    }
+    // 0x2003c — -[LoginViewController setEnvironmentPicker:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x2003c
+    #[doc(alias = "-[LoginViewController setEnvironmentPicker:]")]
+    #[doc = "-[LoginViewController setEnvironmentPicker:]"]
+    pub fn set_environment_picker(&self, picker: ObjCId) {
+        // Retained `_EnvironmentPicker` ivar store (IDA 0x2003c).
+        *self.environment_picker.lock() = picker;
     }
 }
 
