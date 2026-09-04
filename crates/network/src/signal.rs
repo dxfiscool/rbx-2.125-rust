@@ -51,6 +51,7 @@ impl SlotList {
         self.slots.clear();
     }
 
+
     pub fn len(&self) -> usize {
         self.slots.len()
     }
@@ -62,6 +63,24 @@ impl SlotList {
     pub fn contains(&self, id: SlotId) -> bool {
         self.slots.contains(&id)
     }
+}
+/// `EventDescBase::connect` (IDA 0x971db4): wraps the functor in a slot
+/// node, assigns it, inserts it into the event signal, and returns the
+/// connection — null when sourceless. Node malloc, vtables, and weak-ref
+/// traffic stay engine-side; the functor arrives pre-composed.
+pub fn connect<T>(
+    list: &mut SlotList,
+    slot: &mut Option<Box<T>>,
+    functor: T,
+    source_present: bool,
+) -> Option<SlotId> {
+    if !source_present {
+        // IDA 0x971db4: `*out = 0`.
+        return None;
+    }
+    super::functor::assign_to(slot, functor);
+    // IDA 0x971db4: `signal::insert(...)`, out = slot, weak-ref bump.
+    Some(list.insert())
 }
 
 #[cfg(test)]
@@ -83,6 +102,19 @@ mod tests {
         assert_eq!(list.len(), 1);
         list.disconnect_all();
         assert!(list.is_empty());
+    }
+
+    #[test]
+    fn connect_assigns_and_returns_handle() {
+        // IDA 0x971db4: sourceless connect yields null; otherwise the slot
+        // installs and links.
+        let mut list = SlotList::new();
+        let mut slot: Option<Box<fn()>> = None;
+        fn f() {}
+        assert_eq!(connect(&mut list, &mut slot, f as fn(), false), None);
+        assert!(list.is_empty());
+        let id = connect(&mut list, &mut slot, f as fn(), true).expect("handle");
+        assert!(list.contains(id));
     }
 
     #[test]

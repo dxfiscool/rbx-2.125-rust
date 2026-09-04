@@ -7643,8 +7643,14 @@ pub fn stub_971bec(list: &mut crate::signal::SlotList) {
 
 // 0x971db4 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsiSsEN3rbx6signalIS4_EEMS3_S7_E7connectEPNS0_11EventSourceERKN5boost8functionIS4_EE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,int,std::string)> const&)const")]
-pub fn stub_971db4() -> ! {
-    todo!("0x971db4 RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,int,std::string)> const&)const")
+pub fn stub_971db4<T>(
+    list: &mut crate::signal::SlotList,
+    slot: &mut Option<Box<T>>,
+    functor: T,
+    source_present: bool,
+) -> Option<crate::signal::SlotId> {
+    // IDA 0x971db4: malloc slot node, copy/assign the function, `insert`, out = slot + weak-ref (null when sourceless).
+    crate::signal::connect(list, slot, functor, source_present)
 }
 
 // 0x9744e0 — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_EC2ES8_PKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -7680,8 +7686,14 @@ pub fn stub_974e54(list: &mut crate::signal::SlotList) {
 
 // 0x974e70 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_E7connectEPNS0_11EventSourceERKN5boost8functionIS4_EE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string)> const&)const")]
-pub fn stub_974e70() -> ! {
-    todo!("0x974e70 RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string)> const&)const")
+pub fn stub_974e70<T>(
+    list: &mut crate::signal::SlotList,
+    slot: &mut Option<Box<T>>,
+    functor: T,
+    source_present: bool,
+) -> Option<crate::signal::SlotId> {
+    // IDA 0x974e70: `EventDescBase::connect` — wrap, assign, insert; null when sourceless.
+    crate::signal::connect(list, slot, functor, source_present)
 }
 
 // 0x975238 — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_EC2ESC_PKcSF_SF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -7717,8 +7729,14 @@ pub fn stub_975f00(list: &mut crate::signal::SlotList) {
 
 // 0x9760c4 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E7connectEPNS0_11EventSourceERKNS4_8functionIS8_EE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> const&)const")]
-pub fn stub_9760c4() -> ! {
-    todo!("0x9760c4 RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,boost::shared_ptr<RBX::Instance>)> const&)const")
+pub fn stub_9760c4<T>(
+    list: &mut crate::signal::SlotList,
+    slot: &mut Option<Box<T>>,
+    functor: T,
+    source_present: bool,
+) -> Option<crate::signal::SlotId> {
+    // IDA 0x9760c4: `EventDescBase::connect` — wrap, assign, insert; null when sourceless.
+    crate::signal::connect(list, slot, functor, source_present)
 }
 
 // 0x977bdc — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFviELi1EEC2EMS3_FviEPKcS9_iNS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -11139,8 +11157,14 @@ pub fn stub_9cf80c(list: &mut crate::signal::SlotList) {
 #[doc(
     alias = "RBX::Reflection::EventDescBase<RBX::Network::Server,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Server::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,boost::shared_ptr<RBX::Instance>)> const&)const"
 )]
-pub fn stub_9cf824() -> ! {
-    todo!("0x9cf824 RBX::Reflection::EventDescBase<RBX::Network::Server,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Server::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,boost::shared_ptr<RBX::Instance>)> const&)const")
+pub fn stub_9cf824<T>(
+    list: &mut crate::signal::SlotList,
+    slot: &mut Option<Box<T>>,
+    functor: T,
+    source_present: bool,
+) -> Option<crate::signal::SlotId> {
+    // IDA 0x9cf824: `EventDescBase::connect` — wrap, assign, insert; null when sourceless.
+    crate::signal::connect(list, slot, functor, source_present)
 }
 
 // 0x9cf9f8 — __ZN3RBX10Reflection9EventDescINS_7Network6ServerEFvN5boost10shared_ptrINS_8InstanceEEENS2_12FilterResultES7_SsEN3rbx6signalIS9_EEMS3_SC_EC2ESD_PKcSG_SG_SG_SG_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -11231,8 +11255,14 @@ pub fn stub_9d0f4c() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescBase<RBX::Network::Server,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)> RBX::Network::Server::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)> const&)const"
 )]
-pub fn stub_9d1464() -> ! {
-    todo!("0x9d1464 RBX::Reflection::EventDescBase<RBX::Network::Server,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)> RBX::Network::Server::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)> const&)const")
+pub fn stub_9d1464<T>(
+    list: &mut crate::signal::SlotList,
+    slot: &mut Option<Box<T>>,
+    functor: T,
+    source_present: bool,
+) -> Option<crate::signal::SlotId> {
+    // IDA 0x9d1464: `EventDescBase::connect` — wrap, assign, insert; null when sourceless.
+    crate::signal::connect(list, slot, functor, source_present)
 }
 
 // 0x9d1638 — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS1_8InstanceEEERKNS1_7Network12FilterResultES8_RKSsNS4_IS3_EENS_3argILi1EEENSG_ILi2EEENSG_ILi3EEENSG_ILi4EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf4ISN_T0_T1_T2_T3_T4_EENSL_9list_av_5IT5_T6_T7_T8_T9_E4typeEEEMSQ_FSN_SR_SS_ST_SU_ESX_SY_SZ_S10_S11_
@@ -12571,8 +12601,14 @@ pub fn stub_9ecef4(list: &mut crate::signal::SlotList) {
 // 0x9ed0b8 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network16ServerReplicatorEFvibiEN3rbx6signalIS4_EEMS3_S7_E7connectEPNS0_11EventSourceERKN5boost8functionIS4_EE
 // type: void __fastcall(int *, int, int, int *, int, void *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(int,bool,int)> const&)const")]
-pub fn stub_9ed0b8() -> ! {
-    todo!("0x9ed0b8 RBX::Reflection::EventDescBase<RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(int,bool,int)> const&)const")
+pub fn stub_9ed0b8<T>(
+    list: &mut crate::signal::SlotList,
+    slot: &mut Option<Box<T>>,
+    functor: T,
+    source_present: bool,
+) -> Option<crate::signal::SlotId> {
+    // IDA 0x9ed0b8: `EventDescBase::connect` — wrap, assign, insert; null when sourceless.
+    crate::signal::connect(list, slot, functor, source_present)
 }
 
 // 0x9ef7d8 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network16ServerReplicatorEFvvELi0EED0Ev
@@ -15519,8 +15555,9 @@ pub fn stub_a40d98() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescBase<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Players::*>::disconnectAll(RBX::Reflection::EventSource *)const"
 )]
-pub fn stub_a410f0() -> ! {
-    todo!("0xa410f0 RBX::Reflection::EventDescBase<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Players::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_a410f0(list: &mut crate::signal::SlotList) {
+    // IDA 0xa410f0: `EventDescBase::disconnectAll` — tears down the event signal (unlink all).
+    list.disconnect_all();
 }
 
 // 0xa41220 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network7PlayersEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E7connectEPNS0_11EventSourceERKNS4_8functionIS8_EE
@@ -15528,8 +15565,14 @@ pub fn stub_a410f0() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescBase<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Players::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(boost::shared_ptr<RBX::Instance>)> const&)const"
 )]
-pub fn stub_a41220() -> ! {
-    todo!("0xa41220 RBX::Reflection::EventDescBase<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Players::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(boost::shared_ptr<RBX::Instance>)> const&)const")
+pub fn stub_a41220<T>(
+    list: &mut crate::signal::SlotList,
+    slot: &mut Option<Box<T>>,
+    functor: T,
+    source_present: bool,
+) -> Option<crate::signal::SlotId> {
+    // IDA 0xa41220: `EventDescBase::connect` — wrap, assign, insert; null when sourceless.
+    crate::signal::connect(list, slot, functor, source_present)
 }
 
 // 0xa422b4 — __ZN3RBX10Reflection9EventDescINS_7Network7PlayersEFvN5boost10shared_ptrINS_8InstanceEEES7_NS_13FriendService15FriendEventTypeEEN3rbx6signalISA_EEMS3_SD_EC2ESE_PKcSH_SH_SH_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -15573,8 +15616,9 @@ pub fn stub_a42c9c() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescBase<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType)> RBX::Network::Players::*>::disconnectAll(RBX::Reflection::EventSource *)const"
 )]
-pub fn stub_a432e0() -> ! {
-    todo!("0xa432e0 RBX::Reflection::EventDescBase<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType)> RBX::Network::Players::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_a432e0(list: &mut crate::signal::SlotList) {
+    // IDA 0xa432e0: `EventDescBase::disconnectAll` — tears down the event signal (unlink all).
+    list.disconnect_all();
 }
 
 // 0xa434b0 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network7PlayersEFvN5boost10shared_ptrINS_8InstanceEEES7_NS_13FriendService15FriendEventTypeEEN3rbx6signalISA_EEMS3_SD_E7connectEPNS0_11EventSourceERKNS4_8functionISA_EE
@@ -15582,8 +15626,14 @@ pub fn stub_a432e0() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescBase<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType)> RBX::Network::Players::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType)> const&)const"
 )]
-pub fn stub_a434b0() -> ! {
-    todo!("0xa434b0 RBX::Reflection::EventDescBase<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType)> RBX::Network::Players::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType)> const&)const")
+pub fn stub_a434b0<T>(
+    list: &mut crate::signal::SlotList,
+    slot: &mut Option<Box<T>>,
+    functor: T,
+    source_present: bool,
+) -> Option<crate::signal::SlotId> {
+    // IDA 0xa434b0: `EventDescBase::connect` — wrap, assign, insert; null when sourceless.
+    crate::signal::connect(list, slot, functor, source_present)
 }
 
 // 0xa466a4 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFN5boost10shared_ptrINS_8InstanceEEES7_ELi1EEC2EMS3_FS7_S7_EPKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -15717,8 +15767,9 @@ pub fn stub_a488e0() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescBase<RBX::Network::Players,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Players::*>::disconnectAll(RBX::Reflection::EventSource *)const"
 )]
-pub fn stub_a48ae8() -> ! {
-    todo!("0xa48ae8 RBX::Reflection::EventDescBase<RBX::Network::Players,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Players::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_a48ae8(list: &mut crate::signal::SlotList) {
+    // IDA 0xa48ae8: `EventDescBase::disconnectAll` — tears down the event signal (unlink all).
+    list.disconnect_all();
 }
 
 // 0xa48cb8 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network7PlayersEFvSsEN3rbx6signalIS4_EEMS3_S7_E7connectEPNS0_11EventSourceERKN5boost8functionIS4_EE
@@ -15726,8 +15777,14 @@ pub fn stub_a48ae8() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescBase<RBX::Network::Players,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Players::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string)> const&)const"
 )]
-pub fn stub_a48cb8() -> ! {
-    todo!("0xa48cb8 RBX::Reflection::EventDescBase<RBX::Network::Players,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Players::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string)> const&)const")
+pub fn stub_a48cb8<T>(
+    list: &mut crate::signal::SlotList,
+    slot: &mut Option<Box<T>>,
+    functor: T,
+    source_present: bool,
+) -> Option<crate::signal::SlotId> {
+    // IDA 0xa48cb8: `EventDescBase::connect` — wrap, assign, insert; null when sourceless.
+    crate::signal::connect(list, slot, functor, source_present)
 }
 
 // 0xa49b0c — __ZN3RBX10Reflection9EventDescINS_7Network7PlayersEFvNS3_14PlayerChatTypeEN5boost10shared_ptrINS_8InstanceEEESsS8_EN3rbx6signalIS9_EEMS3_SC_EC2ESD_PKcSG_SG_SG_SG_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -15771,8 +15828,9 @@ pub fn stub_a4a600() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescBase<RBX::Network::Players,void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Players::*>::disconnectAll(RBX::Reflection::EventSource *)const"
 )]
-pub fn stub_a4ad50() -> ! {
-    todo!("0xa4ad50 RBX::Reflection::EventDescBase<RBX::Network::Players,void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Players::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_a4ad50(list: &mut crate::signal::SlotList) {
+    // IDA 0xa4ad50: `EventDescBase::disconnectAll` — tears down the event signal (unlink all).
+    list.disconnect_all();
 }
 
 // 0xa4ad68 — __ZN3rbx7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS2_8InstanceEEESsS9_EE13disconnectAllEv
@@ -15790,8 +15848,14 @@ pub fn stub_a4ad68(list: &mut crate::signal::SlotList) {
 #[doc(
     alias = "RBX::Reflection::EventDescBase<RBX::Network::Players,void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Players::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> const&)const"
 )]
-pub fn stub_a4af20() -> ! {
-    todo!("0xa4af20 RBX::Reflection::EventDescBase<RBX::Network::Players,void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Players::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> const&)const")
+pub fn stub_a4af20<T>(
+    list: &mut crate::signal::SlotList,
+    slot: &mut Option<Box<T>>,
+    functor: T,
+    source_present: bool,
+) -> Option<crate::signal::SlotId> {
+    // IDA 0xa4af20: `EventDescBase::connect` — wrap, assign, insert; null when sourceless.
+    crate::signal::connect(list, slot, functor, source_present)
 }
 
 // 0xa4b0f4 — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS1_7Network7Players14PlayerChatTypeERKNS_10shared_ptrINS1_8InstanceEEERKSsSD_NS9_IS3_EENS_3argILi1EEENSH_ILi2EEENSH_ILi3EEENSH_ILi4EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf4ISO_T0_T1_T2_T3_T4_EENSM_9list_av_5IT5_T6_T7_T8_T9_E4typeEEEMSR_FSO_SS_ST_SU_SV_ESY_SZ_S10_S11_S12_
@@ -18903,8 +18967,9 @@ pub fn stub_aae40c() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::disconnectAll(RBX::Reflection::EventSource *)const"
 )]
-pub fn stub_aae424() -> ! {
-    todo!("0xaae424 RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_aae424(list: &mut crate::signal::SlotList) {
+    // IDA 0xaae424: `EventDescBase::disconnectAll` — tears down the event signal (unlink all).
+    list.disconnect_all();
 }
 
 // 0xaae600 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEMS3_S7_EC2ES8_PKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -18993,8 +19058,9 @@ pub fn stub_aaf1cc() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>,rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*>::disconnectAll(RBX::Reflection::EventSource *)const"
 )]
-pub fn stub_aaf1e4() -> ! {
-    todo!("0xaaf1e4 RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>,rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_aaf1e4(list: &mut crate::signal::SlotList) {
+    // IDA 0xaaf1e4: `EventDescBase::disconnectAll` — tears down the event signal (unlink all).
+    list.disconnect_all();
 }
 
 // 0xab12d4 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEMS3_S9_EC2ESA_PKcSD_SD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -19083,8 +19149,9 @@ pub fn stub_ab2108() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(std::string,std::string,std::string),rbx::remote_signal<void ()(std::string,std::string,std::string)>,rbx::remote_signal<void ()(std::string,std::string,std::string)> RBX::Network::Player::*>::disconnectAll(RBX::Reflection::EventSource *)const"
 )]
-pub fn stub_ab2120() -> ! {
-    todo!("0xab2120 RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(std::string,std::string,std::string),rbx::remote_signal<void ()(std::string,std::string,std::string)>,rbx::remote_signal<void ()(std::string,std::string,std::string)> RBX::Network::Player::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_ab2120(list: &mut crate::signal::SlotList) {
+    // IDA 0xab2120: `EventDescBase::disconnectAll` — tears down the event signal (unlink all).
+    list.disconnect_all();
 }
 
 // 0xab412c — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsSsSsEN3rbx13remote_signalIS4_EEMS3_S7_EC2ES8_PKcSB_SB_SB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -19217,8 +19284,9 @@ pub fn stub_ab5b48() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)> RBX::Network::Player::*>::disconnectAll(RBX::Reflection::EventSource *)const"
 )]
-pub fn stub_ab5f20() -> ! {
-    todo!("0xab5f20 RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)> RBX::Network::Player::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_ab5f20(list: &mut crate::signal::SlotList) {
+    // IDA 0xab5f20: `EventDescBase::disconnectAll` — tears down the event signal (unlink all).
+    list.disconnect_all();
 }
 
 // 0xab60e4 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEENS_13FriendService12FriendStatusEEN3rbx6signalISA_EEMS3_SD_E7connectEPNS0_11EventSourceERKNS4_8functionISA_EE
@@ -19226,8 +19294,14 @@ pub fn stub_ab5f20() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)> RBX::Network::Player::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)> const&)const"
 )]
-pub fn stub_ab60e4() -> ! {
-    todo!("0xab60e4 RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)> RBX::Network::Player::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)> const&)const")
+pub fn stub_ab60e4<T>(
+    list: &mut crate::signal::SlotList,
+    slot: &mut Option<Box<T>>,
+    functor: T,
+    source_present: bool,
+) -> Option<crate::signal::SlotId> {
+    // IDA 0xab60e4: `EventDescBase::connect` — wrap, assign, insert; null when sourceless.
+    crate::signal::connect(list, slot, functor, source_present)
 }
 
 // 0xab8950 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvdEN3rbx6signalIS4_EEMS3_S7_EC2ES8_PKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
