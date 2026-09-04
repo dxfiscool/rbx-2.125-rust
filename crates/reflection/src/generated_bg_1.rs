@@ -8,12 +8,36 @@ use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 use rbx_core::signal::Signal;
 use std::sync::atomic::{AtomicBool, AtomicI32, Ordering};
+use std::sync::LazyLock;
+use std::sync::OnceLock;
+use rbx_core::shared_ptr::{ControlBlockPd, CreatableInstanceDeleter};
 
 // 0x84e0 — start
 // type: void __fastcall __noreturn(int, int, int, int, int argc, char *argv)
 #[doc(alias = "start")]
-pub fn stub_0x84e0() -> ! {
-    todo!("0x84e0 start")
+pub fn stub_0x84e0(argc: usize, argv: *const *const core::ffi::c_char) -> ! {
+    // IDA 0x84e0..0x8508 (`start`, ARM): `envp = &argv[argc + 1]` (0x84e0..0x84f4);
+    // skip past the terminating null (0x84f8 `LDR R4,[R3],#4` / 0x84fc `CMP`
+    // / 0x8500 `BNE`); `exit(main(argc, argv, envp))` (0x8504 `BLX _main`,
+    // 0x8508 `B _exit`).
+    // SAFETY: the CRT sets up `argv` with `argc + 2` readable slots.
+    unsafe {
+        let mut envp = argv.add(argc + 1);
+        while !(*envp).is_null() {
+            envp = envp.add(1);
+        }
+        std::process::exit(hosted_main(argc, argv, envp));
+    }
+}
+
+/// IDA 0x8504 `BLX _main`: the hosted entry point. Nothing in this crate
+/// links it, so it reports success [INFERENCE].
+fn hosted_main(
+    _argc: usize,
+    _argv: *const *const core::ffi::c_char,
+    _envp: *const *const core::ffi::c_char,
+) -> i32 {
+    0
 }
 
 /// IDA 0x9608..0x9794: `CRenderSettingsItem` slots touched by this shard's leaves.
@@ -52,6 +76,24 @@ pub struct CRenderSettingsItem {
     pub texture_cache_size: u32,
     /// +0xA4 dword, no signal. IDA 0x97c8 `STR.W R1,[R0,#0xA4]` / `BX LR`.
     pub mesh_cache_size: u32,
+    /// +146 dword video-memory budget (settings-subobject +50). IDA 0x9946
+    /// `STR.W R2,[R1,#0x92]` in the 0x97d0 ctor; same slot as
+    /// `CRenderSettings::video_memory_budget`.
+    pub video_memory_budget: u32,
+    /// +168 `std::string`, empty after construction. IDA 0x9876 points it at
+    /// `std::string::_Rep::_S_empty_rep_storage`.
+    pub string_168: String,
+    /// +172/+174 two `u16` lanes written as `800`/`600` (IDA 0x987e/0x988a);
+    /// the value pushed into `resolutions` (IDA 0x991a).
+    pub first_resolution: Vector2int16,
+    /// +176 `std::vector<G3D::Vector2int16>` (IDA 0x9896..0x98aa zero it).
+    pub resolutions: Vec<Vector2int16>,
+    /// +189 byte set to 1 by the ctor (IDA 0x98b0); role not observed.
+    pub byte_189: bool,
+    /// Name passed to the `+28` setter virtual (IDA 0x98f6/0x9904
+    /// `std::string("Rendering")`); the 0xb4fc base ctor stores
+    /// `"RenderSettings"` here first (IDA 0xb5ec/0xb5f8 `setName`).
+    pub render_category: String,
     /// +0xC0: `rbx::signals::signal_with_args<1, void(const PropertyDescriptor*)>`.
     /// Every setter below tail-calls it (`ADDS R0,#0xC0`) with its own
     /// `PropertyDescriptor` (`unk_130Cxxx`); modelled by descriptor name.
@@ -63,6 +105,80 @@ pub struct CRenderSettingsItem {
 pub static AA_SAMPLES: AtomicI32 = AtomicI32::new(0);
 /// IDA 0x9784/0x9794: `RBX::PartInstance::disableInterpolation` — a byte global.
 pub static DISABLE_INTERPOLATION: AtomicBool = AtomicBool::new(false);
+
+/// `G3D::Vector2int16`: two packed `int16` lanes. IDA 0xb740 moves one
+/// element with a single 4-byte `LDR`/`STR`, so `sizeof == 4` (0xf7f6
+/// `operator new(4 * n)`).
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
+#[repr(C)]
+pub struct Vector2int16 {
+    pub x: i16,
+    pub y: i16,
+}
+
+/// IDA 0x993a: `GetDXVideoMemorySize()` is compared against `&loc_F423FC + 3`
+/// (address-as-constant); above it the ctor stores the high budget.
+pub const VIDEO_MEMORY_THRESHOLD: u32 = 0xF423FF;
+/// IDA 0x993c: budget when video memory clears the threshold.
+pub const VIDEO_BUDGET_HIGH: u32 = 50_332_672;
+/// IDA 0x9926: budget otherwise.
+pub const VIDEO_BUDGET_LOW: u32 = 39_322_400;
+
+/// IDA 0x9922 `GetDXVideoMemorySize()`. The host has no DX video memory
+/// query, so this reports 0 and the ctor takes the low-budget arm [INFERENCE].
+fn get_dx_video_memory_size() -> u32 {
+    0
+}
+
+/// IDA 0x9922..0x9946: threshold select stored at item +146 (settings +50).
+fn video_memory_budget() -> u32 {
+    if get_dx_video_memory_size() > VIDEO_MEMORY_THRESHOLD {
+        VIDEO_BUDGET_HIGH
+    } else {
+        VIDEO_BUDGET_LOW
+    }
+}
+
+/// `sRenderSettings` declared name (IDA 0xf1dc `doDeclare`: guard-once
+/// `RBX::Name::declare`; the `sRenderSettings` text is "RenderSettings").
+pub static RENDER_SETTINGS_NAME: LazyLock<String> = LazyLock::new(|| "RenderSettings".to_owned());
+/// `FactoryProduct<CRenderSettingsItem,...>::Creator::isConstructedE`
+/// (IDA 0xf2bc stores `666` after registering; every `wasConstructed()`
+/// assert compares against it, e.g. 0xee22 `CMP R1,#0x29A`).
+pub static CREATOR_IS_CONSTRUCTED: AtomicI32 = AtomicI32::new(0);
+/// IDA `isConstructedE` sentinel (`0x29A`).
+pub const CREATOR_CONSTRUCTED_MAGIC: i32 = 666;
+/// `Class::getCreators()` registry (IDA 0xf2bc `std::map::operator[]`
+/// stores the Creator under the declared name).
+pub static CREATOR_REGISTRY: LazyLock<parking_lot::Mutex<Vec<&'static str>>> =
+    LazyLock::new(|| parking_lot::Mutex::new(Vec::new()));
+/// `GlobalAdvancedSettingsItem<CRenderSettingsItem>::sing` singleton slot
+/// (IDA 0xb4fc: second construct throws; 0xb626 stores `this`).
+static RENDER_SETTINGS_SING: OnceLock<usize> = OnceLock::new();
+/// `RBX::Reflection::ClassRegistrar<CRenderSettingsItem>::registrar`
+/// (IDA 0xb5b2 `++registrar` in the 0xb4fc base ctor).
+pub static CLASS_REGISTRAR_COUNT: AtomicI32 = AtomicI32::new(0);
+
+/// `FactoryProduct<CRenderSettingsItem,...>::Creator` (`creatorPrivate`,
+/// IDA 0xf500/0xf566). Construction state lives in
+/// `CREATOR_IS_CONSTRUCTED`, not in the value.
+pub struct RenderSettingsCreator {
+    _private: (),
+}
+/// IDA `creatorPrivate` singleton returned by 0xf500.
+static RENDER_SETTINGS_CREATOR: RenderSettingsCreator = RenderSettingsCreator { _private: () };
+
+/// IDA `wasConstructed()` assert prologue (0xedfc `Object.h:236`, 0xee84
+/// `Object.h:231`, 0xf500 `Object.h:282`): with asserts enabled,
+/// `isConstructedE == 666` or `ReleaseAssert` fires (via `FLog::Asserts` /
+/// `_debugHook` in the original; `debug_assert` here).
+fn assert_creator_constructed(what: &str) {
+    debug_assert_eq!(
+        CREATOR_IS_CONSTRUCTED.load(Ordering::SeqCst),
+        CREATOR_CONSTRUCTED_MAGIC,
+        "{what}"
+    );
+}
 
 /// IDA 0x9668: `LDRB` + `CBNZ`/`MOVNE` folds any nonzero flag byte to 1.
 /// Fields here are already `bool`, so this documents the original fold.
@@ -101,6 +217,17 @@ pub struct CRenderSettings {
     pub show_aggregation: bool,
     /// +0x3B byte, zero-extended into R0. IDA 0xb3b4 `LDRB.W R0,[R0,#0x3B]`.
     pub always_draw_connectors: bool,
+    /// +0x20 dword. IDA 0xb4cc `LDR R0,[R0,#0x20]`.
+    pub max_quality_level: i32,
+    /// +0x32 dword video-memory budget (item +146). Written by the item ctor
+    /// (IDA 0x9946 `STR.W R2,[R1,#0x92]`); see `video_memory_budget()`.
+    pub video_memory_budget: u32,
+    /// +0x3D byte, zero-extended into R0. IDA 0xb8b0 `LDRB.W R0,[R0,#0x3D]`.
+    pub eager_bulk_execution: bool,
+    /// +0x40 dword. IDA 0xb4f4 `LDR R0,[R0,#0x40]`.
+    pub texture_cache_size: u32,
+    /// +0x44 dword. IDA 0xb4f8 `LDR R0,[R0,#0x44]`.
+    pub mesh_cache_size: u32,
 }
 
 // 0x9608 — __ZN19CRenderSettingsItem15setGraphicsModeEN3RBX15CRenderSettings12GraphicsModeE
@@ -362,8 +489,35 @@ pub fn stub_0x97c8(this: *mut CRenderSettingsItem, value: u32) -> *mut CRenderSe
 // type: void __fastcall(CRenderSettingsItem *this)
 #[doc(alias = "CRenderSettingsItem::CRenderSettingsItem(void)")]
 #[doc(alias = "__ZN19CRenderSettingsItemC2Ev")]
-pub fn stub_0x97d0() -> ! {
-    todo!("0x97d0 CRenderSettingsItem::CRenderSettingsItem(void)")
+pub fn stub_0x97d0(this: *mut CRenderSettingsItem) -> *mut CRenderSettingsItem {
+    // SAFETY: `this` must point to valid uninitialized item storage.
+    unsafe {
+        // IDA 0x97f0: base `GlobalAdvancedSettingsItem` C2 (vtables at
+        // 0x983c..0x985c, `classDescriptor`, `setName("RenderSettings")`,
+        // singleton slot) — base-class state owned by 0xb4fc.
+        stub_0xb4fc(this);
+        let item = &mut *this;
+        // IDA 0x9828: `CRenderSettings::CRenderSettings(this + 96)` — the
+        // settings C2 owns the +96-subobject defaults (separate EA); the
+        // item-side mirrors below start from `Default`.
+        // IDA 0x9876: +168 string = empty.
+        item.string_168 = String::new();
+        // IDA 0x987e/0x988a: +172/+174 lanes = 800/600.
+        let first = Vector2int16 { x: 800, y: 600 };
+        item.first_resolution = first;
+        // IDA 0x9896..0x98aa: +176 vector = empty; 0x991a pushes the pair.
+        item.resolutions = Vec::new();
+        stub_0xb740(&mut item.resolutions, &first);
+        // IDA 0x98b0: +189 byte = 1.
+        item.byte_189 = true;
+        // IDA 0x98d0/0x98d8: signal safe-static mutex init — owned by `Signal`.
+        // IDA 0x98f6/0x9904: `+28` virtual call with `std::string("Rendering")`.
+        item.render_category = "Rendering".to_owned();
+        // IDA 0x9922..0x9946: `GetDXVideoMemorySize()` threshold select
+        // (`&loc_F423FC + 3`) stored at item +146 (settings +50).
+        item.video_memory_budget = video_memory_budget();
+        this
+    }
 }
 
 // 0x9ac8 — __ZN19CRenderSettingsItem19setAutoQualityLevelEi
@@ -570,47 +724,83 @@ pub fn stub_0xb4a4(this: *const CRenderSettings) -> i32 {
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getMaxQualityLevel(void)")]
 #[doc(alias = "__ZN3RBX15CRenderSettings18getMaxQualityLevelEv")]
-pub fn stub_0xb4cc() -> ! {
-    todo!("0xb4cc RBX::CRenderSettings::getMaxQualityLevel(void)")
+pub fn stub_0xb4cc(this: *const CRenderSettings) -> i32 {
+    // SAFETY: `this` must point to a valid `CRenderSettings`.
+    // IDA 0xb4cc `LDR R0,[R0,#0x20]`: plain +0x20 field load.
+    unsafe { (*this).max_quality_level }
 }
 
 // 0xb4f4 — __ZNK3RBX15CRenderSettings19getTextureCacheSizeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getTextureCacheSize(void)const")]
 #[doc(alias = "__ZNK3RBX15CRenderSettings19getTextureCacheSizeEv")]
-pub fn stub_0xb4f4() -> ! {
-    todo!("0xb4f4 RBX::CRenderSettings::getTextureCacheSize(void)const")
+pub fn stub_0xb4f4(this: *const CRenderSettings) -> i32 {
+    // SAFETY: `this` must point to a valid `CRenderSettings`.
+    // IDA 0xb4f4 `LDR R0,[R0,#0x40]`: plain +0x40 field load.
+    unsafe { (*this).texture_cache_size as i32 }
 }
 
 // 0xb4f8 — __ZNK3RBX15CRenderSettings16getMeshCacheSizeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getMeshCacheSize(void)const")]
 #[doc(alias = "__ZNK3RBX15CRenderSettings16getMeshCacheSizeEv")]
-pub fn stub_0xb4f8() -> ! {
-    todo!("0xb4f8 RBX::CRenderSettings::getMeshCacheSize(void)const")
+pub fn stub_0xb4f8(this: *const CRenderSettings) -> i32 {
+    // SAFETY: `this` must point to a valid `CRenderSettings`.
+    // IDA 0xb4f8 `LDR R0,[R0,#0x44]`: plain +0x44 field load.
+    unsafe { (*this).mesh_cache_size as i32 }
 }
 
 // 0xb4fc — __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEEC2Ev
 // type: RBX::Instance *__fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEEC2Ev")]
-pub fn stub_0xb4fc() -> ! {
-    todo!("0xb4fc __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEEC2Ev")
+pub fn stub_0xb4fc(this: *mut CRenderSettingsItem) -> *mut CRenderSettingsItem {
+    // SAFETY: `this` must point to valid uninitialized base storage.
+    // IDA 0xb4fc (`GlobalAdvancedSettingsItem` C2): 0xb51e
+    // `Instance::Instance(this, nullptr)` + vtable installs (0xb54e..0xb5e2)
+    // + `classDescriptor`/`registrar++` (0xb584..0xb5ba) are base-class state
+    // with no Rust subobject; the observable effects below are mirrored.
+    unsafe {
+        // IDA 0xb5ec/0xb5f8: `std::string("RenderSettings")` + `setName`.
+        // Stored on the item mirror (the derived ctor at 0x97d0 overwrites
+        // it via the `+28` virtual call — construction order preserved).
+        (*this).render_category = "RenderSettings".to_owned();
+        // IDA 0xb5b2: `++ClassRegistrar<CRenderSettingsItem>::registrar`.
+        CLASS_REGISTRAR_COUNT.fetch_add(1, Ordering::SeqCst);
+        // IDA 0xb622..0xb6b4: `if (sing) throw runtime_error("singleton %s
+        // already exists", "RenderSettings")`; 0xb626 `sing = this`.
+        // `OnceLock::set` failing is exactly the second-construct throw.
+        RENDER_SETTINGS_SING
+            .set(this as usize)
+            .unwrap_or_else(|_| panic!("singleton RenderSettings already exists"));
+        this
+    }
 }
 
 // 0xb740 — __ZNSt6vectorIN3G3D12Vector2int16ESaIS1_EE9push_backERKS1_
 // type: int __fastcall(int result, _DWORD *)
 #[doc(alias = "std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::push_back(G3D::Vector2int16 const&)")]
 #[doc(alias = "__ZNSt6vectorIN3G3D12Vector2int16ESaIS1_EE9push_backERKS1_")]
-pub fn stub_0xb740() -> ! {
-    todo!("0xb740 std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::push_back(G3D::Vector2int16 const&)")
+pub fn stub_0xb740<'a>(vec: &'a mut Vec<Vector2int16>, value: &Vector2int16) -> &'a mut Vec<Vector2int16> {
+    // IDA 0xb742..0xb75c: `finish = *(result + 4)`; unless `finish` reached
+    // `end_of_storage` (0xb74c `BEQ _M_insert_aux`, i.e. len == capacity),
+    // 4-byte copy the element and bump `finish`. `Vec::push` is that fast
+    // path; the full case delegates to 0xf704 like the original.
+    if vec.len() == vec.capacity() {
+        stub_0xf704(vec, vec.len(), *value);
+    } else {
+        vec.push(*value);
+    }
+    vec
 }
 
 // 0xb8b0 — __ZNK3RBX15CRenderSettings21getEagerBulkExecutionEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getEagerBulkExecution(void)const")]
 #[doc(alias = "__ZNK3RBX15CRenderSettings21getEagerBulkExecutionEv")]
-pub fn stub_0xb8b0() -> ! {
-    todo!("0xb8b0 RBX::CRenderSettings::getEagerBulkExecution(void)const")
+pub fn stub_0xb8b0(this: *const CRenderSettings) -> i32 {
+    // SAFETY: `this` must point to a valid `CRenderSettings`.
+    // IDA 0xb8b0 `LDRB.W R0,[R0,#0x3D]`: byte load, zero-extended into R0.
+    unsafe { i32::from((*this).eager_bulk_execution) }
 }
 
 // 0xb8b8 — __ZN19CRenderSettingsItemD1Ev
@@ -632,8 +822,11 @@ pub fn stub_0xb8bc() {
 // 0xb8d0 — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0xb8d0() -> ! {
-    todo!("0xb8d0 __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")
+pub fn stub_0xb8d0() -> &'static str {
+    // IDA 0xb8d0..0xb8dc: `Creator = static_getCreator()` then tail-calls
+    // `Creator::getClassName` on it — i.e. exactly 0xedfc's body.
+    let _ = stub_0xf500();
+    stub_0xedfc()
 }
 
 // 0xb8e0 — __ZThn32_N19CRenderSettingsItemD1Ev
@@ -656,8 +849,10 @@ pub fn stub_0xb8e8() {
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0xb900() -> &'static str {
-    // IDA 0xb900: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0xb900 family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
-    "CRenderSettingsItem"
+    // IDA `__ZThn32` thunk to 0xb8d0 (`this -= 32`, run body): returns what
+    // the body returns — 0xedfc shows that is the declared `sRenderSettings`
+    // name, not the C++ class-name spelling previously guessed here.
+    stub_0xedfc()
 }
 
 // 0xb910 — __ZThn36_N19CRenderSettingsItemD1Ev
@@ -701,47 +896,79 @@ pub fn stub_0xeccc() {
 // 0xedfc — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv
 // type: int(void)
 #[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_0xedfc() -> ! {
-    todo!("0xedfc __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_0xedfc() -> &'static str {
+    // IDA 0xedfc..0xee5c: `wasConstructed()` assert (`isConstructedE == 0x29A`,
+    // via `FLog::Asserts`/`_debugHook`/`ReleaseAssert`); 0xee60..0xee80:
+    // `call_once(Name declare)` then tail-calls `Name::doDeclare` (0xf1dc) —
+    // so this returns the declared `sRenderSettings` name.
+    assert_creator_constructed("wasConstructed()");
+    stub_0xf1d8()
 }
 
 // 0xee84 — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv
 // type: int __fastcall(int *)
 #[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv")]
-pub fn stub_0xee84() -> ! {
-    todo!("0xee84 __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv")
+pub fn stub_0xee84(out: *mut SharedPtr<CRenderSettingsItem>) -> *mut SharedPtr<CRenderSettingsItem> {
+    // IDA 0xee84..0xeee8: `wasConstructed()` assert, then 0xeeec
+    // `Creatable::create` into a stack `SharedPtr`; 0xeef2..0xeefe copies
+    // both words to `*a1`, biasing the pointer word by `+0x20` when non-null
+    // (the shared `DescribedBase` subobject — layout-selected, owned by the
+    // C++ object model; the whole `Arc` is stored here).
+    // SAFETY: `out` must point to valid `SharedPtr` storage.
+    assert_creator_constructed("wasConstructed()");
+    unsafe {
+        out.write(stub_0xef04());
+        out
+    }
 }
 
 // 0xef04 — __ZN3RBX9CreatableINS_8InstanceEE6createI19CRenderSettingsItemEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
 #[doc(alias = "rbx_core::SharedPtr<CRenderSettingsItem> RBX::Creatable<RBX::Instance>::create<CRenderSettingsItem>(void)")]
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createI19CRenderSettingsItemEEN5boost10shared_ptrIT_EEv")]
-pub fn stub_0xef04() -> ! {
-    todo!("0xef04 boost::shared_ptr<CRenderSettingsItem> RBX::Creatable<RBX::Instance>::create<CRenderSettingsItem>(void)")
+pub fn stub_0xef04() -> SharedPtr<CRenderSettingsItem> {
+    // IDA 0xef04..0xef6a: `operator new(0xC4)` (0xef38), in-place C2 ctor
+    // (0xef5c = 0x97d0, which runs the 0xb4fc base ctor first), then the
+    // `shared_ptr` adopt (0xef6a = 0xefb4). Box→Arc is the same single-owner
+    // adoption (`rbx_core::shared_ptr::shared_ptr_from_raw`).
+    let mut item = Box::new(CRenderSettingsItem::default());
+    stub_0x97d0(&mut *item);
+    stub_0xefb4(item)
 }
 
 // 0xefb4 — __ZN5boost10shared_ptrI19CRenderSettingsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<CRenderSettingsItem>::shared_ptr<CRenderSettingsItem,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrI19CRenderSettingsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_0xefb4() -> ! {
-    todo!("0xefb4 boost::shared_ptr<CRenderSettingsItem>::shared_ptr<CRenderSettingsItem,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0xefb4(px: Box<CRenderSettingsItem>) -> SharedPtr<CRenderSettingsItem> {
+    // IDA 0xefba..0xefd0: store `px`, build the `shared_count`, and when
+    // non-null `_internal_accept_owner<...>(px + 40)` for
+    // `enable_shared_from_this<DescribedBase>` — `Arc` adoption covers all
+    // three (weak support is intrinsic to the `Arc` control block).
+    rbx_core::shared_ptr::shared_ptr_from_raw(px)
 }
 
 // 0xefd8 — __ZNK5boost6detail15sp_counted_base9use_countEv
 // type: int __fastcall(boost::detail::sp_counted_base *this)
 #[doc(alias = "boost::detail::sp_counted_base::use_count(void)const")]
 #[doc(alias = "__ZNK5boost6detail15sp_counted_base9use_countEv")]
-pub fn stub_0xefd8() -> ! {
-    todo!("0xefd8 boost::detail::sp_counted_base::use_count(void)const")
+pub fn stub_0xefd8<T>(shared: &SharedPtr<T>) -> i32 {
+    // IDA 0xefd8..0xf078: hash `this` into `spinlock_pool<1>`, lock, load
+    // `use_count` (+1 word), unlock, return it. `Arc::strong_count` is the
+    // same control-block load under the block's own lock.
+    SharedPtr::strong_count(shared) as i32
 }
 
 // 0xf098 — __ZN5boost6detail12shared_countC2IP19CRenderSettingsItemN3RBX9CreatableINS5_8InstanceEE7DeleterEEET_T0_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IP19CRenderSettingsItemN3RBX9CreatableINS5_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_0xf098() -> ! {
-    todo!("0xf098 boost::detail::shared_count::shared_count<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0xf098(
+    px: Box<CRenderSettingsItem>,
+) -> ControlBlockPd<CRenderSettingsItem, CreatableInstanceDeleter> {
+    // IDA 0xf0c4..0xf10c: `operator new(0x14)`; `use_count = weak_count = 1`;
+    // vtable install; `px` stored (the deleter args are an empty tag type).
+    ControlBlockPd::new(px, CreatableInstanceDeleter)
 }
 
 // 0xf198 — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED1Ev
@@ -756,75 +983,136 @@ pub fn stub_0xf198() {
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_0xf19c() -> ! {
-    todo!("0xf19c boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0xf19c(block: &mut ControlBlockPd<CRenderSettingsItem, CreatableInstanceDeleter>) {
+    // IDA 0xf19e..0xf1b8: `px = this + 12`; `RBX::Instance::predelete(px)`;
+    // `if (px) virtual-delete(px)` (0xf1b8 via vtable +8, 0xf1ac returns).
+    // `predelete` is the datamodel-owned hook; the trailing delete is drop.
+    block.dispose_with(|_| {});
 }
 
 // 0xf1bc — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_0xf1bc() -> ! {
-    todo!("0xf1bc boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0xf1bc<'a>(
+    block: &'a ControlBlockPd<CRenderSettingsItem, CreatableInstanceDeleter>,
+    type_name: &str,
+) -> Option<CreatableInstanceDeleter> {
+    // IDA 0xf1c0..0xf1d2: return `this + 16` iff `ti.name` is
+    // `"N3RBX9CreatableINS_8InstanceEE7DeleterE"`, else null.
+    block.get_deleter(type_name)
 }
 
 // 0xf1d4 — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_0xf1d4() -> ! {
-    todo!("0xf1d4 boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0xf1d4(
+    block: &ControlBlockPd<CRenderSettingsItem, CreatableInstanceDeleter>,
+) -> CreatableInstanceDeleter {
+    // IDA 0xf1d6: unconditionally return `this + 16`.
+    block.get_untyped_deleter()
 }
 
 // 0xf1d8 — __ZN3RBX4Name13callDoDeclareILZ15sRenderSettingsEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZ15sRenderSettingsEEEvv")]
-pub fn stub_0xf1d8() -> ! {
-    todo!("0xf1d8 __ZN3RBX4Name13callDoDeclareILZ15sRenderSettingsEEEvv")
+pub fn stub_0xf1d8() -> &'static str {
+    // IDA 0xf1d8: thunk tail-calling `Name::doDeclare` (0xf1dc).
+    stub_0xf1dc()
 }
 
 // 0xf1dc — __ZN3RBX4Name9doDeclareILZ15sRenderSettingsEEERKS0_v
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZ15sRenderSettingsEEERKS0_v")]
-pub fn stub_0xf1dc() -> ! {
-    todo!("0xf1dc __ZN3RBX4Name9doDeclareILZ15sRenderSettingsEEERKS0_v")
+pub fn stub_0xf1dc() -> &'static str {
+    // IDA 0xf1dc..0xf290: guard-once (`__cxa_guard_acquire`/`release` around
+    // the function static, 0xf230..0xf262) `RBX::Name::declare(sRenderSettings)`
+    // (0xf24e), then return the cached name (0xf266..0xf27a). `LazyLock` is
+    // that guarded static; the `sRenderSettings` text is "RenderSettings".
+    RENDER_SETTINGS_NAME.as_str()
 }
 
 // 0xf2bc — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev
 // type: pthread_mutex_t *__fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_0xf2bc() -> ! {
-    todo!("0xf2bc __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev")
+pub fn stub_0xf2bc() -> &'static RenderSettingsCreator {
+    // IDA 0xf2f2: vtable install — no Rust equivalent.
+    // IDA 0xf2f4: `call_once(Name declare)` — ensure the product name exists.
+    let name = stub_0xf1d8();
+    {
+        let mut creators = CREATOR_REGISTRY.lock();
+        if !creators.contains(&name) {
+            creators.push(name);
+        }
+    }
+    // re-checks registration + `wasConstructed()` under `FLog::Asserts`.
+    CREATOR_IS_CONSTRUCTED.store(CREATOR_CONSTRUCTED_MAGIC, Ordering::SeqCst);
+    &RENDER_SETTINGS_CREATOR
 }
 
 // 0xf500 — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv
 // type: void *()
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_0xf500() -> ! {
-    todo!("0xf500 __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv")
+pub fn stub_0xf500() -> &'static RenderSettingsCreator {
+    // IDA 0xf500..0xf562: `wasConstructed()` assert
+    // (`isConstructedE == 0x29A`, `Object.h:282`) then return `creatorPrivate`.
+    assert_creator_constructed("Creator::wasConstructed()");
+    &RENDER_SETTINGS_CREATOR
 }
 
 // 0xf704 — __ZNSt6vectorIN3G3D12Vector2int16ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_
 // type: int __fastcall(int, char *, _DWORD *)
 #[doc(alias = "std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::_M_insert_aux(__gnu_cxx::__normal_iterator<G3D::Vector2int16*,std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>>,G3D::Vector2int16 const&)")]
 #[doc(alias = "__ZNSt6vectorIN3G3D12Vector2int16ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_")]
-pub fn stub_0xf704() -> ! {
-    todo!("0xf704 std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::_M_insert_aux(__gnu_cxx::__normal_iterator<G3D::Vector2int16*,std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>>,G3D::Vector2int16 const&)")
+pub fn stub_0xf704(vec: &mut Vec<Vector2int16>, pos: usize, value: Vector2int16) -> &mut Vec<Vector2int16> {
+    // IDA 0xf704..0xf7e4 (slow path: `finish == end_of_storage`): grow to
+    // `max(1, len * 3 / 2)`-ish (0xf73e..0xf7d8; `len == 0x3FFFFFFF` throws
+    // `length_error`, 0xf7d2..0xf7e4), copy `[first, pos)` + `value` +
+    // `[pos, finish)` over (via 0xf800's backward copy), free old storage
+    // (0xf7b0..0xf7c4). `Vec::insert` grows and shifts identically; the
+    // length-error arm is made explicit.
+    if vec.len() == 0x3FFF_FFFF {
+        panic!("vector::_M_insert_aux");
+    }
+    vec.insert(pos.min(vec.len()), value);
+    vec
 }
 
 // 0xf7e8 — __ZNSt12_Vector_baseIN3G3D12Vector2int16ESaIS1_EE11_M_allocateEm
 // type: int __fastcall(int, unsigned int)
 #[doc(alias = "std::_Vector_base<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::_M_allocate(unsigned long)")]
 #[doc(alias = "__ZNSt12_Vector_baseIN3G3D12Vector2int16ESaIS1_EE11_M_allocateEm")]
-pub fn stub_0xf7e8() -> ! {
-    todo!("0xf7e8 std::_Vector_base<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::_M_allocate(unsigned long)")
+pub fn stub_0xf7e8(n: usize) -> Vec<Vector2int16> {
+    // IDA 0xf7ea..0xf7fc: `n >= 0x40000000` throws `bad_alloc` (0xf7f2);
+    // else `operator new(4 * n)` (`sizeof(Vector2int16) == 4`, 0xf7f6).
+    // Returns reserved (length-0) storage like the fresh vector buffer.
+    if n >= 0x4000_0000 {
+        panic!("std::bad_alloc");
+    }
+    Vec::with_capacity(n)
 }
 
 // 0xf800 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3G3D12Vector2int16ES5_EET0_T_S7_S6_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "G3D::Vector2int16 * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<G3D::Vector2int16 *,G3D::Vector2int16 *>(G3D::Vector2int16 *,G3D::Vector2int16 *,G3D::Vector2int16 *)")]
 #[doc(alias = "__ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3G3D12Vector2int16ES5_EET0_T_S7_S6_")]
-pub fn stub_0xf800() -> ! {
-    todo!("0xf800 G3D::Vector2int16 * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<G3D::Vector2int16 *,G3D::Vector2int16 *>(G3D::Vector2int16 *,G3D::Vector2int16 *,G3D::Vector2int16 *)")
+pub fn stub_0xf800(
+    first: *const Vector2int16,
+    last: *const Vector2int16,
+    result: *mut Vector2int16,
+) -> *mut Vector2int16 {
+    // IDA 0xf800..0xf838: `n = (last - first)` elements copied back-to-front
+    // (0xf826..0xf832) so overlapping ranges shift correctly; `n < 1`
+    // returns `result` unchanged (0xf804). Returns `result - n` (0xf834).
+    // SAFETY: `[first, last)` must be readable and the `n` slots ending at
+    // `result` writable, all within one allocation.
+    unsafe {
+        let n = (last as usize).saturating_sub(first as usize)
+            / core::mem::size_of::<Vector2int16>();
+        // `ptr::copy` is `memmove`: overlap-safe like the backward loop.
+        core::ptr::copy(last.sub(n), result.sub(n), n);
+        result.sub(n)
+    }
 }
 
 // 0xf83c — __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev
@@ -1246,6 +1534,11 @@ mod render_settings_item_tests {
             enable_frm: true,
             show_aggregation: false,
             always_draw_connectors: true,
+            max_quality_level: 8,
+            video_memory_budget: 39_322_400,
+            eager_bulk_execution: true,
+            texture_cache_size: 512,
+            mesh_cache_size: 256,
         };
         let this = &settings as *const CRenderSettings;
         unsafe {
@@ -1260,11 +1553,161 @@ mod render_settings_item_tests {
             assert_eq!(stub_0xb49c(this), 1);
             assert_eq!(stub_0xb3e0(this), 0);
             assert_eq!(stub_0xb3b4(this), 1);
+            // IDA 0xb4cc/0xb4f4/0xb4f8/0xb8b0: +0x20/+0x40/+0x44/+0x3D loads.
+            assert_eq!(stub_0xb4cc(this), 8);
+            assert_eq!(stub_0xb4f4(this), 512);
+            assert_eq!(stub_0xb4f8(this), 256);
+            assert_eq!(stub_0xb8b0(this), 1);
         }
         // The aaSamples getter reads the global, ignoring `this`.
         AA_SAMPLES.store(9, Ordering::SeqCst);
         assert_eq!(stub_0xb3e8(this), 9);
         AA_SAMPLES.store(0, Ordering::SeqCst);
         let _ = &mut settings;
+    }
+
+    #[test]
+    fn render_settings_name_declare_is_idempotent() {
+        // IDA 0xf1dc: first call declares, later calls return the cache.
+        assert_eq!(stub_0xf1d8(), "RenderSettings");
+        assert_eq!(stub_0xf1dc(), "RenderSettings");
+        assert_eq!(stub_0xf1d8(), "RenderSettings");
+    }
+
+    #[test]
+    fn vector_push_back_grows_through_insert_aux() {
+        let pair = Vector2int16 { x: 800, y: 600 };
+        let mut vec = Vec::new();
+        // Empty: `finish == end_of_storage`, so the 0xf704 slow path grows.
+        stub_0xb740(&mut vec, &pair);
+        assert_eq!(vec, vec![pair]);
+        // Spare capacity: the inline fast path copies + bumps.
+        let mut roomy = Vec::with_capacity(4);
+        stub_0xb740(&mut roomy, &pair);
+        stub_0xb740(&mut roomy, &Vector2int16 { x: 1, y: 2 });
+        assert_eq!(
+            roomy,
+            vec![pair, Vector2int16 { x: 1, y: 2 }]
+        );
+    }
+
+    #[test]
+    fn vector_insert_aux_shifts_middle() {
+        let (a, b, c) = (
+            Vector2int16 { x: 1, y: 1 },
+            Vector2int16 { x: 2, y: 2 },
+            Vector2int16 { x: 3, y: 3 },
+        );
+        let mut vec = vec![a, b, c];
+        let mid = Vector2int16 { x: 9, y: 9 };
+        stub_0xf704(&mut vec, 1, mid);
+        assert_eq!(vec, vec![a, mid, b, c]);
+        // Past-the-end clamps like an `end()` iterator.
+        stub_0xf704(&mut vec, 99, mid);
+        assert_eq!(*vec.last().unwrap(), mid);
+    }
+
+    #[test]
+    fn vector_allocate_reserves_scaled_storage() {
+        let buf = stub_0xf7e8(16);
+        assert!(buf.capacity() >= 16 && buf.is_empty());
+        assert_eq!(core::mem::size_of::<Vector2int16>(), 4);
+    }
+
+    #[test]
+    #[should_panic(expected = "std::bad_alloc")]
+    fn vector_allocate_rejects_huge() {
+        // IDA 0xf7f0 `n >= 0x40000000` throws `bad_alloc`.
+        let _ = stub_0xf7e8(0x4000_0000);
+    }
+
+    #[test]
+    fn copy_backward_shifts_overlapping_ranges() {
+        let cell = |x: i16| Vector2int16 { x, y: x };
+        let mut items = vec![cell(1), cell(2), cell(3), cell(4)];
+        // Shift `[first, first + 3)` to end at `first + 4` (overlap).
+        let end = unsafe {
+            let first = items.as_ptr();
+            let result = items.as_mut_ptr().add(4);
+            let back = stub_0xf800(first, first.add(3), result);
+            assert_eq!(back, items.as_mut_ptr().add(1));
+            back
+        };
+        assert_eq!(items, vec![cell(1), cell(1), cell(2), cell(3)]);
+        let _ = end;
+        // Empty range: no write, returns `result` unchanged.
+        let mut solo = vec![cell(7)];
+        unsafe {
+            let first = solo.as_ptr();
+            let result = solo.as_mut_ptr().add(1);
+            assert_eq!(stub_0xf800(first, first, result), result);
+        }
+        assert_eq!(solo, vec![cell(7)]);
+    }
+
+    #[test]
+    fn control_block_counts_and_deleter_match() {
+        use rbx_core::shared_ptr::CREATABLE_INSTANCE_DELETER_TYPE_NAME;
+        let mut block = stub_0xf098(Box::new(CRenderSettingsItem::default()));
+        // IDA 0xf0fa: fresh `use_count` is 1 (`weak_count` likewise, untracked here).
+        assert_eq!(block.use_count(), 1);
+        assert!(block.get().is_some());
+        // IDA 0xf1c0..0xf1d2: deleter iff the type name matches.
+        assert!(stub_0xf1bc(&block, CREATABLE_INSTANCE_DELETER_TYPE_NAME).is_some());
+        assert!(stub_0xf1bc(&block, "i").is_none());
+        // IDA 0xf1d6: untyped deleter is unconditional.
+        let _ = stub_0xf1d4(&block);
+        // IDA 0xf19c..0xf1b8: dispose drops the pointee.
+        stub_0xf19c(&mut block);
+        assert!(block.get().is_none());
+    }
+
+    #[test]
+    fn use_count_tracks_shared_owners() {
+        let shared = stub_0xefb4(Box::new(CRenderSettingsItem::default()));
+        assert_eq!(stub_0xefd8(&shared), 1);
+        let second = SharedPtr::clone(&shared);
+        assert_eq!(stub_0xefd8(&shared), 2);
+        drop(second);
+        assert_eq!(stub_0xefd8(&shared), 1);
+    }
+
+    #[test]
+    fn creator_and_singleton_construction_flow() {
+        // IDA 0xf2f4..0xf422: declare-once, register, `isConstructedE = 666`.
+        // Idempotent: a second construction re-registers nothing new.
+        let before = CLASS_REGISTRAR_COUNT.load(Ordering::SeqCst);
+        let creator = stub_0xf2bc();
+        assert_eq!(
+            CREATOR_IS_CONSTRUCTED.load(Ordering::SeqCst),
+            CREATOR_CONSTRUCTED_MAGIC
+        );
+        assert!(CREATOR_REGISTRY.lock().contains(&"RenderSettings"));
+        assert!(std::ptr::eq(creator, stub_0xf2bc()));
+        // Name + class-name chain resolve to the declared product name.
+        assert_eq!(stub_0xf1dc(), "RenderSettings");
+        assert_eq!(stub_0xf500() as *const _, creator as *const _);
+        assert_eq!(stub_0xedfc(), "RenderSettings");
+        assert_eq!(stub_0xb8d0(), "RenderSettings");
+        assert_eq!(stub_0xb900(), "RenderSettings");
+        // The only in-test construction: base C2 (0xb4fc) then item C2
+        // (0x97d0) then adopt (0xefb4), via 0xee84 into caller storage.
+        let mut slot = std::mem::MaybeUninit::<SharedPtr<CRenderSettingsItem>>::uninit();
+        unsafe {
+            let out = stub_0xee84(slot.as_mut_ptr());
+            assert_eq!(out, slot.as_mut_ptr());
+            let created = slot.assume_init_read();
+            // IDA 0x987e/0x988a + 0x991a: first resolution 800x600 pushed.
+            assert_eq!(created.first_resolution, Vector2int16 { x: 800, y: 600 });
+            assert_eq!(created.resolutions, vec![Vector2int16 { x: 800, y: 600 }]);
+            assert!(created.byte_189);
+            assert!(created.string_168.is_empty());
+            // IDA 0x9904: derived name wins over the base 0xb5f8 store.
+            assert_eq!(created.render_category, "Rendering");
+            // IDA 0x9922..0x9946: host takes the low-budget arm.
+            assert_eq!(created.video_memory_budget, VIDEO_BUDGET_LOW);
+            assert_eq!(stub_0xefd8(&created), 1);
+        }
+        assert_eq!(CLASS_REGISTRAR_COUNT.load(Ordering::SeqCst), before + 1);
     }
 }
