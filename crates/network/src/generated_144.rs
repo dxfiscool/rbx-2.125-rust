@@ -559,8 +559,9 @@ pub fn stub_a06580(players: &mut crate::player::Players, url: String) {
 // demangled: RBX::Network::Players::setBuildUserPermissionsUrl(std::string)
 // type: int __fastcall(int, const std::string *)
 #[doc(alias = "RBX::Network::Players::setBuildUserPermissionsUrl(std::string)")]
-pub fn stub_a0658c() -> ! {
-    todo!("0xa0658c RBX::Network::Players::setBuildUserPermissionsUrl(std::string)")
+pub fn stub_a0658c(players: &mut crate::player::Players, url: String) {
+    // IDA 0xa0658c: stores the build-permissions endpoint.
+    players.set_build_user_permissions_url(url);
 }
 
 // 0xa06598 — __ZN3RBX7Network7Players19playerFromCharacterEN5boost10shared_ptrINS_8InstanceEEE
@@ -568,55 +569,62 @@ pub fn stub_a0658c() -> ! {
 // type: void __fastcall(int, int, _DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Network::Players::playerFromCharacter(rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_a06598() -> ! {
-    todo!("0xa06598 RBX::Network::Players::playerFromCharacter(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_a06598(players: &[(u32, u32)], character: u32) -> Option<u32> {
+    // IDA 0xa06598: list walk by character pointer; miss yields null.
+    crate::player::Players::player_from_character(players, character)
 }
 
 // 0xa06870 — __ZN3RBX7Network7Players14setSysStatsUrlESs
 // demangled: RBX::Network::Players::setSysStatsUrl(std::string)
 // type: int __fastcall(int, const std::string *)
 #[doc(alias = "RBX::Network::Players::setSysStatsUrl(std::string)")]
-pub fn stub_a06870() -> ! {
-    todo!("0xa06870 RBX::Network::Players::setSysStatsUrl(std::string)")
+pub fn stub_a06870(players: &mut crate::player::Players, url: String) {
+    // IDA 0xa06870: stores the sys-stats endpoint.
+    players.set_sys_stats_url(url);
 }
 
 // 0xa0687c — __ZN3RBX7Network7Players10setSysHashESs
 // demangled: RBX::Network::Players::setSysHash(std::string)
 // type: void __fastcall(int, std::string *)
 #[doc(alias = "RBX::Network::Players::setSysHash(std::string)")]
-pub fn stub_a0687c() -> ! {
-    todo!("0xa0687c RBX::Network::Players::setSysHash(std::string)")
+pub fn stub_a0687c(players: &mut crate::player::Players, hash: String) {
+    // IDA 0xa0687c: stores the sys hash.
+    players.set_sys_hash(hash);
 }
 
 // 0xa06ae8 — __ZN3RBX7Network7Players14setLoadDataUrlESs
 // demangled: RBX::Network::Players::setLoadDataUrl(std::string)
 // type: int __fastcall(int, const std::string *)
 #[doc(alias = "RBX::Network::Players::setLoadDataUrl(std::string)")]
-pub fn stub_a06ae8() -> ! {
-    todo!("0xa06ae8 RBX::Network::Players::setLoadDataUrl(std::string)")
+pub fn stub_a06ae8(players: &mut crate::player::Players, url: String) {
+    // IDA 0xa06ae8: stores the load-data endpoint.
+    players.set_load_data_url(url);
 }
 
 // 0xa06af4 — __ZN3RBX7Network7Players14setSaveDataUrlESs
 // demangled: RBX::Network::Players::setSaveDataUrl(std::string)
 // type: int __fastcall(int, const std::string *)
 #[doc(alias = "RBX::Network::Players::setSaveDataUrl(std::string)")]
-pub fn stub_a06af4() -> ! {
-    todo!("0xa06af4 RBX::Network::Players::setSaveDataUrl(std::string)")
+pub fn stub_a06af4(players: &mut crate::player::Players, url: String) {
+    // IDA 0xa06af4: stores the save-data endpoint.
+    players.set_save_data_url(url);
 }
 
 // 0xa06b00 — __ZN3RBX7Network7Players25setSaveLeaderboardDataUrlESs
 // demangled: RBX::Network::Players::setSaveLeaderboardDataUrl(std::string)
 // type: int __fastcall(int, const std::string *)
 #[doc(alias = "RBX::Network::Players::setSaveLeaderboardDataUrl(std::string)")]
-pub fn stub_a06b00() -> ! {
-    todo!("0xa06b00 RBX::Network::Players::setSaveLeaderboardDataUrl(std::string)")
+pub fn stub_a06b00(players: &mut crate::player::Players, url: String) {
+    // IDA 0xa06b00: stores the leaderboard-save endpoint.
+    players.set_save_leaderboard_data_url(url);
 }
 
 // 0xa06b0c — __ZN3RBX7Network7Players17addLeaderboardKeyESs
 // demangled: RBX::Network::Players::addLeaderboardKey(std::string)
 #[doc(alias = "RBX::Network::Players::addLeaderboardKey(std::string)")]
-pub fn stub_a06b0c() -> ! {
-    todo!("0xa06b0c RBX::Network::Players::addLeaderboardKey(std::string)")
+pub fn stub_a06b0c(players: &mut crate::player::Players, key: String) {
+    // IDA 0xa06b0c: appends the leaderboard key.
+    players.add_leaderboard_key(key);
 }
 
 // 0xa06b30 — __ZN3RBX7Network7Players13setChatOptionENS1_10ChatOptionE

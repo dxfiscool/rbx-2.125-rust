@@ -127,6 +127,20 @@ pub struct Players {
     pub abuse_report_url: String,
     /// Chat-filter endpoint for `setChatFilterUrl` (IDA 0xa06580).
     pub chat_filter_url: String,
+    /// Build-permissions endpoint (IDA 0xa0658c).
+    pub build_user_permissions_url: String,
+    /// Sys-stats endpoint (IDA 0xa06870).
+    pub sys_stats_url: String,
+    /// Sys hash (IDA 0xa0687c).
+    pub sys_hash: String,
+    /// Load-data endpoint template (IDA 0xa06ae8).
+    pub load_data_url: String,
+    /// Save-data endpoint (IDA 0xa06af4).
+    pub save_data_url: String,
+    /// Leaderboard-save endpoint (IDA 0xa06b00).
+    pub save_leaderboard_data_url: String,
+    /// Leaderboard keys (IDA 0xa06b0c).
+    pub leaderboard_keys: Vec<String>,
 }
 
 impl Players {
@@ -188,7 +202,50 @@ impl Players {
     pub fn set_chat_filter_url(&mut self, url: String) {
         self.chat_filter_url = url;
     }
+    /// `Players::setBuildUserPermissionsUrl` (IDA 0xa0658c).
+    pub fn set_build_user_permissions_url(&mut self, url: String) {
+        self.build_user_permissions_url = url;
+    }
+
+    /// `Players::setSysStatsUrl` (IDA 0xa06870).
+    pub fn set_sys_stats_url(&mut self, url: String) {
+        self.sys_stats_url = url;
+    }
+
+    /// `Players::setSysHash` (IDA 0xa0687c).
+    pub fn set_sys_hash(&mut self, hash: String) {
+        self.sys_hash = hash;
+    }
+
+    /// `Players::setLoadDataUrl` (IDA 0xa06ae8).
+    pub fn set_load_data_url(&mut self, url: String) {
+        self.load_data_url = url;
+    }
+
+    /// `Players::setSaveDataUrl` (IDA 0xa06af4).
+    pub fn set_save_data_url(&mut self, url: String) {
+        self.save_data_url = url;
+    }
+
+    /// `Players::setSaveLeaderboardDataUrl` (IDA 0xa06b00).
+    pub fn set_save_leaderboard_data_url(&mut self, url: String) {
+        self.save_leaderboard_data_url = url;
+    }
+
+    /// `Players::addLeaderboardKey` (IDA 0xa06b0c): appends the key.
+    pub fn add_leaderboard_key(&mut self, key: String) {
+        self.leaderboard_keys.push(key);
+    }
+
+    /// `Players::playerFromCharacter` (IDA 0xa06598): walks the player
+    /// list matching the character pointer (0xa06636..0xa0664c); a miss
+    /// yields null (0xa066bc). Lock traffic stays engine-side. The caller
+    /// passes `(player, character)` rows.
+    pub fn player_from_character(players: &[(u32, u32)], character: u32) -> Option<u32> {
+        players.iter().find(|(_, c)| *c == character).map(|(p, _)| *p)
+    }
 }
+
 
 /// One `RakNet::SystemAddress` translated by `RakNetToRbxAddress` (IDA
 /// 0xa01898..0xa018b2): the binary address plus the port it returns.
@@ -812,5 +869,38 @@ mod tests {
     #[should_panic(expected = "only report-abuse from a client machine")]
     fn abuse_without_local_throws() {
         let _ = report_abuse_lua(true, true, None, 1, &mut || {});
+    }
+
+    #[test]
+    fn endpoints_store_and_keys_append() {
+        // IDA 0xa06340/0xa06580/0xa0658c/0xa06870/0xa0687c/0xa06ae8/0xa06af4/0xa06b00/0xa06b0c.
+        let mut players = Players::new();
+        players.set_abuse_report_url("a".to_owned());
+        players.set_chat_filter_url("b".to_owned());
+        players.set_build_user_permissions_url("c".to_owned());
+        players.set_sys_stats_url("d".to_owned());
+        players.set_sys_hash("e".to_owned());
+        players.set_load_data_url("f".to_owned());
+        players.set_save_data_url("g".to_owned());
+        players.set_save_leaderboard_data_url("h".to_owned());
+        players.add_leaderboard_key("k".to_owned());
+        assert_eq!(players.abuse_report_url, "a");
+        assert_eq!(players.chat_filter_url, "b");
+        assert_eq!(players.build_user_permissions_url, "c");
+        assert_eq!(players.sys_stats_url, "d");
+        assert_eq!(players.sys_hash, "e");
+        assert_eq!(players.load_data_url, "f");
+        assert_eq!(players.save_data_url, "g");
+        assert_eq!(players.save_leaderboard_data_url, "h");
+        assert_eq!(players.leaderboard_keys, vec!["k".to_owned()]);
+    }
+
+    #[test]
+    fn character_lookup_hits_and_misses() {
+        // IDA 0xa06598: list walk by character pointer.
+        let rows = vec![(1, 10), (2, 20)];
+        assert_eq!(Players::player_from_character(&rows, 20), Some(2));
+        assert_eq!(Players::player_from_character(&rows, 30), None);
+        assert_eq!(Players::player_from_character(&[], 10), None);
     }
 }
