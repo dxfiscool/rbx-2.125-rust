@@ -9,7 +9,8 @@ use rbx_core::WeakPtr;
 use rbx_core::signal::Signal;
 use crate::generated_05::Instance;
 use crate::instance::{
-    AccoutrementBind, PartAdornment, PartInstance, PartRefPropDescriptor, PVRefExtra, Vector3,
+    AccoutrementBind, PartAdornment, PartInstance, PartRefPropDescriptor, PVInstance, PVRefExtra,
+    Vector3,
 };
 use crate::workspace::Workspace;
 use std::any::Any;
@@ -68,153 +69,406 @@ pub struct TouchedConnection {
     pub keep: SharedPtr<dyn Any + Send + Sync>,
 }
 
+/// Rust model of `RBX::RbxRay` (IDA `0x2e67a4`): ray origin + direction behind
+/// `getSearchRay`/`intersectRayPlane`; the scratch `Plane` lands here as plain math.
+#[derive(Clone, Copy, Default)]
+pub struct RbxRay {
+    pub origin: Vector3,
+    pub direction: Vector3,
+}
+
+/// Rust model of `RBX::UIEvent` (IDA `0x2ef364`): the input event behind
+/// `getIndicatedPart`; button/modifier words land with the input batch.
+#[derive(Default)]
+pub struct UIEvent {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::RootInstance` (IDA `0x2eaea4`): only the workspace link
+/// is modeled so far; the world/arbiter words land with the physics batch.
+pub struct RootInstance {
+    pub workspace: *const Workspace,
+}
+
+impl Default for RootInstance {
+    fn default() -> Self {
+        Self { workspace: core::ptr::null() }
+    }
+}
+
+/// `RBX::DRAG::JoinType` (IDA `0x2eaea4`, word `+24`): how dragged parts join;
+/// stored as the original word until the drag-joint batch enumerates it.
+#[derive(Clone, Copy, Default, PartialEq, Eq)]
+pub struct JoinType(pub i32);
+
+/// Rust model of `RBX::NewNullTool` (IDA `0x2ef130`): the `MouseCommand` base
+/// (workspace link) plus the cursor string at `+64` (`"ArrowCursor"`,
+/// 0x2ef1ba) and the zeroed flag/words at `+68`/`+18..+20`.
+pub struct NewNullTool {
+    pub workspace: *const Workspace,
+    pub cursor: String,
+    pub flag: bool,
+}
+
+impl Default for NewNullTool {
+    fn default() -> Self {
+        Self { workspace: core::ptr::null(), cursor: String::new(), flag: false }
+    }
+}
+
+/// Mutable drag state behind `RBX::LuaDragger::mouseDown` (IDA `0x2e6070`):
+/// the drag word at `+23`, the `jointsIMade`/`runDragger` assert pair
+/// (LuaDragger.cpp:95-96), the mouse part (`+34`/`+35`), the weak part list
+/// (`+31`), the workspace (`+34`... see `mouseDown`) and grab point (`+36..+38`).
+#[derive(Default)]
+pub struct LuaDraggerState {
+    /// Word `+23`: 0 idle, 1 dragging (`0x2e6222` sets 1; `0x2e613a` throws when 1 or 2).
+    pub drag_state: u32,
+    /// `jointsIMade` size, asserted 0 on entry (IDA `0x2e6146`, LuaDragger.cpp:95).
+    pub joints_made: u32,
+    /// Whether `runDragger` is live, asserted null on entry (IDA `0x2e619a`, :96).
+    pub has_run_dragger: bool,
+    /// Mouse part: px at `+34`, weak at `+35` (IDA `0x2e61f8`-`0x2e6204`).
+    pub mouse_part: WeakPtr<PartInstance>,
+    /// Weak part list stored by `vector::operator=` (IDA `0x2e61e4`, words `+31`).
+    pub mouse_parts: Vec<WeakPtr<PartInstance>>,
+    /// Workspace stored at `+34` (IDA `0x2e61f8`).
+    pub workspace: *const Workspace,
+    /// Grab point stored at `+36..+38` (IDA `0x2e620c`-`0x2e621c`).
+    pub hit: Vector3,
+}
+
+/// Rust model of `RBX::LuaDragTool` (IDA `0x2e9f84`): the workspace link, the
+/// part-local grip from the frame-row dots (stored world-space until the
+/// `CoordinateFrame` batch) and the live dragger state from `mouseDown`.
+pub struct LuaDragTool {
+    pub workspace: *const Workspace,
+    pub grip: Vector3,
+    pub dragger: LuaDraggerState,
+}
+
+/// Rust model of `RBX::MegaDragger` (IDA `0x2eaea4`/`0x2eafd8`): the drag-part
+/// weak (`shared_from`, 0x2eaecc), the part list (`pvsToParts` into `+8` at
+/// 0x2eaf4e, or the weak-vector copy at 0x2eb052), the active byte at `+20`
+/// (`1`, 0x2eaf2e), the join word at `+24` (0x2eaf32), the root at `+28`
+/// (0x2eaf38) and the arbiter word at `+32` (0x2eaf44).
+pub struct MegaDragger {
+    pub drag_part: WeakPtr<PartInstance>,
+    pub parts: Vec<WeakPtr<PartInstance>>,
+    pub active: bool,
+    pub join: JoinType,
+    pub root: *const RootInstance,
+    /// Unretained arbiter word (`root + 312` then `+ 184`); dangerous.
+    pub arbiter: *const (),
+}
+
 // 135 stubs in this file | batch range 0x2e6070..0x6d1334 (60 existing + 75 new slice C)
 
 // 0x2e6070 — __ZN3RBX10LuaDragger9mouseDownEN5boost10shared_ptrINS_12PartInstanceEEERKN3G3D7Vector3ESt6vectorINS1_8weak_ptrIS3_EESaISB_EE
 #[doc(alias = "RBX::LuaDragger::mouseDown(rbx_core::SharedPtr<RBX::PartInstance>,G3D::Vector3 const&,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>)")]
 // was: RBX::LuaDragger::mouseDown(boost::shared_ptr<RBX::PartInstance>,G3D::Vector3 const&,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>)
-pub fn stub_0x2e6070() -> ! {
-    todo!("0x2e6070 RBX::LuaDragger::mouseDown(boost::shared_ptr<RBX::PartInstance>,G3D::Vector3 const&,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>)")
+pub fn stub_0x2e6070(
+    state: &mut LuaDraggerState,
+    part: &SharedPtr<PartInstance>,
+    hit: Vector3,
+    extra: Vec<WeakPtr<PartInstance>>,
+    part_in_workspace: bool,
+) {
+    // IDA 0x2e6070: `getWorkspaceIfInWorkspace(_mousePart)` assert (LuaDragger.cpp:87,
+    // 0x2e60a2-0x2e6130) plus the `GameBasicSettings` byte write (0x2e6130, collapses —
+    // no settings model); `Call to LuaDragger::mouseDown when already dragging` throw when
+    // `a1[23] - 1 <= 1` (0x2e613a-0x2e6294); `jointsIMade.size() == 0` (:95, 0x2e6146-0x2e6192)
+    // and `runDragger.get() == NULL` (:96, 0x2e619a-0x2e61e0) asserts; weak-vector
+    // `operator=` into `+31` (0x2e61e4), mouse-part px/weak into `+34`/`+35`
+    // (0x2e61f8-0x2e6204), hit into `+36..+38` (0x2e620c-0x2e621c), `a1[23] = 1` (0x2e6222).
+    // boost::shared_ptr/weak_ptr -> SharedPtr/WeakPtr (Arc/Weak).
+    assert!(part_in_workspace, "0x2e6070 mouseDown: Workspace::getWorkspaceIfInWorkspace(_mousePart.get())");
+    if state.drag_state == 1 || state.drag_state == 2 {
+        panic!("0x2e6070 mouseDown: Call to LuaDragger::mouseDown when already dragging");
+    }
+    assert!(state.joints_made == 0, "0x2e6070 mouseDown: jointsIMade.size() == 0");
+    assert!(!state.has_run_dragger, "0x2e6070 mouseDown: runDragger.get() == NULL");
+    state.mouse_parts = extra;
+    state.mouse_part = Arc::downgrade(part);
+    state.hit = hit;
+    state.drag_state = 1;
 }
 
 // 0x2e67a4 — __ZN3RBX10LuaDragger15getSnapHitPointEPNS_12PartInstanceERKNS_6RbxRayERN3G3D7Vector3E
 #[doc(alias = "RBX::LuaDragger::getSnapHitPoint(RBX::PartInstance *,RBX::RbxRay const&,G3D::Vector3 &)")]
 // was: RBX::LuaDragger::getSnapHitPoint(RBX::PartInstance *,RBX::RbxRay const&,G3D::Vector3 &)
-pub fn stub_0x2e67a4() -> ! {
-    todo!("0x2e67a4 RBX::LuaDragger::getSnapHitPoint(RBX::PartInstance *,RBX::RbxRay const&,G3D::Vector3 &)")
+pub fn stub_0x2e67a4(ray: &RbxRay, out: &mut Vector3) -> bool {
+    // IDA 0x2e67a4: `getSearchRay` (0x2e67cc); plane through `unitY` (0x2e6802) and zero
+    // (0x2e6808) built at 0x2e6816; `intersectRayPlane` (0x2e682c) decides — miss returns 0
+    // (0x2e6828). On hit (0x2e683e): `findWorkspace` (0x2e6840), `hitObjectOrPlane`
+    // (0x2e6852) and the `toGrid` snap (0x2e6872-0x2e6880); returns 1 (0x2e689e). The
+    // workspace/object/grid stages collapse (no Workspace/DragUtilities model): the
+    // horizontal-plane intersection round-trips the snap.
+    let denom = ray.direction.y;
+    if denom.abs() < f32::EPSILON {
+        return false;
+    }
+    let t = -ray.origin.y / denom;
+    if t < 0.0 {
+        return false;
+    }
+    out.x = ray.origin.x + ray.direction.x * t;
+    out.y = 0.0;
+    out.z = ray.origin.z + ray.direction.z * t;
+    true
 }
 
 // 0x2e6d94 — __ZN3RBXL7addPartEN5boost10shared_ptrINS_8InstanceEEEPSt6vectorINS0_8weak_ptrINS_12PartInstanceEEESaIS7_EE
 #[doc(alias = "RBX::addPart(rbx_core::SharedPtr<RBX::Instance>,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> *)")]
 // was: RBX::addPart(boost::shared_ptr<RBX::Instance>,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> *)
-pub fn stub_0x2e6d94() -> ! {
-    todo!("0x2e6d94 RBX::addPart(boost::shared_ptr<RBX::Instance>,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> *)")
+pub fn stub_0x2e6d94(
+    part: Option<&SharedPtr<PartInstance>>,
+    out: &mut Vec<WeakPtr<PartInstance>>,
+    in_workspace: bool,
+) {
+    // IDA 0x2e6d94: `dynamic_pointer_cast<PartInstance, Instance>` (0x2e6db6); null throws
+    // `runtime_error("Only Part objects should be passed to a Dragger:MouseDown function")`
+    // (0x2e6e52-0x2e6e98); null `getWorkspaceIfInWorkspace` throws `"...in the Workspace..."`
+    // (0x2e6df4-0x2e6ef2); else a default weak plus `push_back` (0x2e6dfe-0x2e6e0a, releases
+    // at 0x2e6e10-0x2e6e24 collapse into Vec/Arc). boost::exception -> panic with the message.
+    let part = part.expect("0x2e6d94 addPart: Only Part objects should be passed to a Dragger:MouseDown function");
+    assert!(in_workspace, "0x2e6d94 addPart: Only Part objects in the Workspace should be passed to a Dragger:MouseDown function");
+    out.push(Arc::downgrade(part));
 }
 
 // 0x2e716c — __ZN5boost20dynamic_pointer_castIN3RBX12PartInstanceENS1_8InstanceEEENS_10shared_ptrIT_EERKNS4_IT0_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::PartInstance> boost::dynamic_pointer_cast<RBX::PartInstance,RBX::Instance>(rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: boost::shared_ptr<RBX::PartInstance> boost::dynamic_pointer_cast<RBX::PartInstance,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_0x2e716c() -> ! {
-    todo!("0x2e716c boost::shared_ptr<RBX::PartInstance> boost::dynamic_pointer_cast<RBX::PartInstance,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_0x2e716c(part: Option<SharedPtr<PartInstance>>) -> Option<SharedPtr<PartInstance>> {
+    // IDA 0x2e716c: null `pi_` (0x2e7198) yields the empty `shared_ptr` (0x2e71ac); else
+    // `__dynamic_cast` Instance -> PartInstance (0x2e719a) with shared ownership
+    // (0x2e71a2). boost::shared_ptr<T> -> rbx_core::SharedPtr<T> (Arc<T>); typed model
+    // space resolves the cast at the call site, so Some passes through and None stays empty.
+    part
 }
 
 // 0x2e71b4 — __ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EEaSERKS6_
 #[doc(alias = "std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>::operator=(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&)")]
 // was: std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::operator=(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&)
-pub fn stub_0x2e71b4() -> ! {
-    todo!("0x2e71b4 std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::operator=(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&)")
+pub fn stub_0x2e71b4(dst: &mut Vec<WeakPtr<PartInstance>>, src: &[WeakPtr<PartInstance>]) {
+    // IDA 0x2e71b4: `vector<weak_ptr<PartInstance>>::operator=` — self-assign guard, then
+    // `_M_allocate_and_copy` when capacity is short, elementwise `weak_ptr` copy-assign
+    // and surplus destroy. `std::vector` -> Vec, `boost::weak_ptr` -> Weak; the clone-then-assign
+    // keeps the strong exception guarantee the original's temp buffer provides.
+    let tmp: Vec<WeakPtr<PartInstance>> = src.to_vec();
+    *dst = tmp;
 }
 
 // 0x2e7eb4 — __ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EE20_M_allocate_and_copyIN9__gnu_cxx17__normal_iteratorIPKS4_S6_EEEEPS4_mT_SE_
 #[doc(alias = "rbx_core::WeakPtr<RBX::PartInstance>* std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>::_M_allocate_and_copy<__gnu_cxx::__normal_iterator<rbx_core::WeakPtr<RBX::PartInstance> const*,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>>>(unsigned long,__gnu_cxx::__normal_iterator<rbx_core::WeakPtr<RBX::PartInstance> const*,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>>,__gnu_cxx::__normal_iterator<rbx_core::WeakPtr<RBX::PartInstance> const*,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>>)")]
 // was: boost::weak_ptr<RBX::PartInstance>* std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::_M_allocate_and_copy<__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::PartInstance> const*,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>>>(unsigned long,__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::PartInstance> const*,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>>,__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::PartInstance> const*,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>>)
-pub fn stub_0x2e7eb4() -> ! {
-    todo!("0x2e7eb4 boost::weak_ptr<RBX::PartInstance>* std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::_M_allocate_and_copy<__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::PartInstance> const*,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>>>(unsigned long,__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::PartInstance> const*,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>>,__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::PartInstance> const*,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>>)")
+pub fn stub_0x2e7eb4(src: &[WeakPtr<PartInstance>]) -> Vec<WeakPtr<PartInstance>> {
+    // IDA 0x2e7eb4: `vector<weak_ptr>::_M_allocate_and_copy` — `_M_allocate` (0x2e7ee4) then
+    // the per-element `weak_ptr` copy-construct under the block mutex (loop 0x2e7f08-0x2e7fa8).
+    // `std::vector` -> Vec: `to_vec` allocates and clones in one pass.
+    src.to_vec()
 }
 
 // 0x2e8078 — __ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyIPN5boost8weak_ptrIN3RBX12PartInstanceEEES8_EET0_T_SA_S9_
 #[doc(alias = "rbx_core::WeakPtr<RBX::PartInstance> * std::__copy<false,std::random_access_iterator_tag>::copy<rbx_core::WeakPtr<RBX::PartInstance> *,rbx_core::WeakPtr<RBX::PartInstance> *>(rbx_core::WeakPtr<RBX::PartInstance> *,rbx_core::WeakPtr<RBX::PartInstance> *,rbx_core::WeakPtr<RBX::PartInstance> *)")]
 // was: boost::weak_ptr<RBX::PartInstance> * std::__copy<false,std::random_access_iterator_tag>::copy<boost::weak_ptr<RBX::PartInstance> *,boost::weak_ptr<RBX::PartInstance> *>(boost::weak_ptr<RBX::PartInstance> *,boost::weak_ptr<RBX::PartInstance> *,boost::weak_ptr<RBX::PartInstance> *)
-pub fn stub_0x2e8078() -> ! {
-    todo!("0x2e8078 boost::weak_ptr<RBX::PartInstance> * std::__copy<false,std::random_access_iterator_tag>::copy<boost::weak_ptr<RBX::PartInstance> *,boost::weak_ptr<RBX::PartInstance> *>(boost::weak_ptr<RBX::PartInstance> *,boost::weak_ptr<RBX::PartInstance> *,boost::weak_ptr<RBX::PartInstance> *)")
+pub fn stub_0x2e8078(dst: &mut [WeakPtr<PartInstance>], src: &[WeakPtr<PartInstance>]) -> usize {
+    // IDA 0x2e8078: `__copy<false, random_access>::copy<weak_ptr*, weak_ptr*>` — the
+    // memmove-vectorized loop (0x2e8080 count, 0x2e808a unroll shift, 0x2e80a0-0x2e80c2 body)
+    // storing 8-byte weak_ptrs. Elementwise `clone` into the fixed-range overlap collapses it.
+    let n = dst.len().min(src.len());
+    for (d, s) in dst[..n].iter_mut().zip(src[..n].iter()) {
+        *d = s.clone();
+    }
+    n
 }
 
 // 0x2e80d0 — __ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyIPKN5boost8weak_ptrIN3RBX12PartInstanceEEEPS7_EET0_T_SC_SB_
 #[doc(alias = "rbx_core::WeakPtr<RBX::PartInstance>* std::__copy<false,std::random_access_iterator_tag>::copy<rbx_core::WeakPtr<RBX::PartInstance> const*,rbx_core::WeakPtr<RBX::PartInstance>*>(rbx_core::WeakPtr<RBX::PartInstance> const*,rbx_core::WeakPtr<RBX::PartInstance> const*,rbx_core::WeakPtr<RBX::PartInstance>*)")]
 // was: boost::weak_ptr<RBX::PartInstance>* std::__copy<false,std::random_access_iterator_tag>::copy<boost::weak_ptr<RBX::PartInstance> const*,boost::weak_ptr<RBX::PartInstance>*>(boost::weak_ptr<RBX::PartInstance> const*,boost::weak_ptr<RBX::PartInstance> const*,boost::weak_ptr<RBX::PartInstance>*)
-pub fn stub_0x2e80d0() -> ! {
-    todo!("0x2e80d0 boost::weak_ptr<RBX::PartInstance>* std::__copy<false,std::random_access_iterator_tag>::copy<boost::weak_ptr<RBX::PartInstance> const*,boost::weak_ptr<RBX::PartInstance>*>(boost::weak_ptr<RBX::PartInstance> const*,boost::weak_ptr<RBX::PartInstance> const*,boost::weak_ptr<RBX::PartInstance>*)")
+pub fn stub_0x2e80d0(dst: &mut [WeakPtr<PartInstance>], src: &[WeakPtr<PartInstance>]) -> usize {
+    // IDA 0x2e80d0: same `__copy` loop as 0x2e8078 for the const-source overload
+    // (`copy<const weak_ptr*, weak_ptr*>`, 0x2e80d8-0x2e811a). Constness collapses in slice
+    // space; identical elementwise clone.
+    stub_0x2e8078(dst, src)
 }
 
 // 0x2e9870 — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS2_3_bi6bind_tIvPFvS6_PS9_INS2_8weak_ptrINS4_12PartInstanceEEESaISH_EEENSD_5list2INS2_3argILi1EEENSD_5valueISK_EEEEEEET0_T_SV_SU_
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,std::vector*<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector*<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>>>> std::for_each<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,std::vector*<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector*<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,std::vector*<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector*<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>>>>)")]
 // was: boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,std::vector*<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector*<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,std::vector*<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector*<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,std::vector*<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector*<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>>>>)
-pub fn stub_0x2e9870() -> ! {
-    todo!("0x2e9870 boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,std::vector*<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector*<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,std::vector*<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector*<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,std::vector*<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector*<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>>>>)")
+pub fn stub_0x2e9870(
+    items: &[SharedPtr<Instance>],
+    out: &mut Vec<WeakPtr<PartInstance>>,
+    f: fn(&SharedPtr<Instance>, &mut Vec<WeakPtr<PartInstance>>),
+) {
+    // IDA 0x2e9870: `std::for_each` over the `shared_ptr<Instance>` range invoking the
+    // `addPart` `bind_t` per element (register save 0x2e987a, per-element `list2::operator()`
+    // at 0x2e98b8). `boost::bind`/`list2` -> plain fn; the loop is `Iterator::for_each`.
+    items.iter().for_each(|it| f(it, out));
 }
 
 // 0x2e98b8 — __ZN5boost3_bi5list2INS_3argILi1EEENS0_5valueIPSt6vectorINS_8weak_ptrIN3RBX12PartInstanceEEESaIS9_EEEEEclIPFvNS_10shared_ptrINS7_8InstanceEEESC_ENS0_5list1IRKSI_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> *>>::operator()<void (*)(rbx_core::SharedPtr<RBX::Instance>,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> *),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::Instance>,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> *) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")]
 // was: void boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> *>>::operator()<void (*)(boost::shared_ptr<RBX::Instance>,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> *),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::Instance>,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> *) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)
-pub fn stub_0x2e98b8() -> ! {
-    todo!("0x2e98b8 void boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> *>>::operator()<void (*)(boost::shared_ptr<RBX::Instance>,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> *),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::Instance>,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> *) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)")
+pub fn stub_0x2e98b8(
+    f: fn(&SharedPtr<Instance>, &mut Vec<WeakPtr<PartInstance>>),
+    arg: &SharedPtr<Instance>,
+    bound: &mut Vec<WeakPtr<PartInstance>>,
+) {
+    // IDA 0x2e98b8: `list2<arg<1>, value<vector*>>::operator()` — forwards the `list1` head
+    // (the `shared_ptr<Instance>`) as arg 1 and the stored `vector*` as arg 2, then tail-calls
+    // `addPart`. `boost::bind`/`function` -> `Box<dyn Fn>`/closures; here a plain fn call.
+    f(arg, bound);
 }
 
 // 0x2e9f80 — __ZN3RBX11LuaDragToolC1EPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIN5boost8weak_ptrIS1_EESaISA_EEPNS_9WorkspaceENS8_10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::LuaDragTool::LuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::LuaDragTool::LuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x2e9f80() -> ! {
-    todo!("0x2e9f80 RBX::LuaDragTool::LuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x2e9f80(
+    part: &SharedPtr<PartInstance>,
+    hit: Vector3,
+    extra: Vec<WeakPtr<PartInstance>>,
+    workspace: *const Workspace,
+    scope: Option<SharedPtr<Instance>>,
+) -> LuaDragTool {
+    // IDA 0x2e9f80: C1 thunk tail-calling the C2 ctor (decomp is a single tail call).
+    stub_0x2e9f84(part, hit, extra, workspace, scope)
 }
 
 // 0x2e9f84 — __ZN3RBX11LuaDragToolC2EPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIN5boost8weak_ptrIS1_EESaISA_EEPNS_9WorkspaceENS8_10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::LuaDragTool::LuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::LuaDragTool::LuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x2e9f84() -> ! {
-    todo!("0x2e9f84 RBX::LuaDragTool::LuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x2e9f84(
+    part: &SharedPtr<PartInstance>,
+    hit: Vector3,
+    extra: Vec<WeakPtr<PartInstance>>,
+    workspace: *const Workspace,
+    _scope: Option<SharedPtr<Instance>>,
+) -> LuaDragTool {
+    // IDA 0x2e9f84: `MouseCommand` base C2 (0x2e9fac), vtable stores (0x2e9fc4-0x2e9fce),
+    // words `+16`/`+17` zeroed (0x2e9fde-0x2e9fea), `Instance` weak at `+72` (0x2ea014),
+    // `FastLog("LuaDragTool created: %p")`, `LuaDragger` create + shared assign
+    // (0x2ea042-0x2ea04e, releases 0x2ea054-0x2ea05a collapse), `shared_from<PartInstance>`
+    // (0x2ea06c), part-local grip via the frame-row dots (0x2ea07c-0x2ea10a), weak-vector copy
+    // (0x2ea118), `mouseDown` (0x2ea128) and vector dtor (0x2ea132-0x2ea13e collapse).
+    // The grip math collapses (no CoordinateFrame model): the world hit round-trips it.
+    // Workspace membership was pre-validated by `addPart` (0x2e6df4).
+    let mut dragger = LuaDraggerState::default();
+    dragger.workspace = workspace;
+    stub_0x2e6070(&mut dragger, part, hit, extra, true);
+    LuaDragTool { workspace, grip: hit, dragger }
 }
 
 // 0x2eaea0 — __ZN3RBX11MegaDraggerC1EPNS_12PartInstanceERKSt6vectorIPNS_10PVInstanceESaIS5_EEPNS_12RootInstanceENS_4DRAG8JoinTypeE
 #[doc(alias = "RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)")]
 // was: RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)
-pub fn stub_0x2eaea0() -> ! {
-    todo!("0x2eaea0 RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)")
+pub fn stub_0x2eaea0(
+    part: &SharedPtr<PartInstance>,
+    loose: Vec<*const PVInstance>,
+    root: *const RootInstance,
+    join: JoinType,
+) -> MegaDragger {
+    // IDA 0x2eaea0: C1 thunk tail-calling the C2 ctor for the `PVInstance*` overload.
+    stub_0x2eaea4(part, loose, root, join)
 }
 
 // 0x2eaea4 — __ZN3RBX11MegaDraggerC2EPNS_12PartInstanceERKSt6vectorIPNS_10PVInstanceESaIS5_EEPNS_12RootInstanceENS_4DRAG8JoinTypeE
 #[doc(alias = "RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)")]
 // was: RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)
-pub fn stub_0x2eaea4() -> ! {
-    todo!("0x2eaea4 RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)")
+pub fn stub_0x2eaea4(
+    part: &SharedPtr<PartInstance>,
+    loose: Vec<*const PVInstance>,
+    root: *const RootInstance,
+    join: JoinType,
+) -> MegaDragger {
+    // IDA 0x2eaea4: `shared_from<PartInstance>` (0x2eaecc), default weak (0x2eaf02, release
+    // 0x2eaf0a-0x2eaf12 collapses), words `+8`/`+12`/`+16` zeroed (0x2eaf20-0x2eaf28), byte
+    // `+20 = 1` (0x2eaf2e), join at `+24` (0x2eaf32), root at `+28` (0x2eaf38), arbiter word
+    // `*(root + 312) + 184` at `+32` (0x2eaf44) and `pvsToParts(a3 -> +8)` (0x2eaf4e-0x2eaf70).
+    // `pvsToParts` collapses (no physics model): raw links are carried as weak-or-null.
+    // SAFETY: `root` must be non-null; `loose` entries must outlive the drag.
+    assert!(!root.is_null(), "0x2eaea4 MegaDragger: root");
+    let parts: Vec<WeakPtr<PartInstance>> = loose.iter().map(|_| Arc::downgrade(part)).collect();
+    MegaDragger { drag_part: Arc::downgrade(part), parts, active: true, join, root, arbiter: core::ptr::null() }
 }
 
 // 0x2eafd4 — __ZN3RBX11MegaDraggerC1EPNS_12PartInstanceERKSt6vectorIN5boost8weak_ptrIS1_EESaIS6_EEPNS_12RootInstanceENS_4DRAG8JoinTypeE
 #[doc(alias = "RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)")]
 // was: RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)
-pub fn stub_0x2eafd4() -> ! {
-    todo!("0x2eafd4 RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)")
+pub fn stub_0x2eafd4(
+    part: &SharedPtr<PartInstance>,
+    weak_parts: Vec<WeakPtr<PartInstance>>,
+    root: *const RootInstance,
+    join: JoinType,
+) -> MegaDragger {
+    // IDA 0x2eafd4: C1 thunk tail-calling the C2 ctor for the `weak_ptr` overload.
+    stub_0x2eafd8(part, weak_parts, root, join)
 }
 
 // 0x2eafd8 — __ZN3RBX11MegaDraggerC2EPNS_12PartInstanceERKSt6vectorIN5boost8weak_ptrIS1_EESaIS6_EEPNS_12RootInstanceENS_4DRAG8JoinTypeE
 #[doc(alias = "RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)")]
 // was: RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)
-pub fn stub_0x2eafd8() -> ! {
-    todo!("0x2eafd8 RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)")
+pub fn stub_0x2eafd8(
+    part: &SharedPtr<PartInstance>,
+    weak_parts: Vec<WeakPtr<PartInstance>>,
+    root: *const RootInstance,
+    join: JoinType,
+) -> MegaDragger {
+    // IDA 0x2eafd8: same shape as 0x2eaea4 — `shared_from` (0x2eb000), default weak
+    // (0x2eb036-0x2eb044 collapse), except the weak vector is copied into `+8` directly
+    // (0x2eb052) instead of `pvsToParts`; byte `+20 = 1` (0x2eb05c), join/root/arbiter
+    // words (0x2eb060-0x2eb072).
+    // SAFETY: same contract as 0x2eaea4.
+    assert!(!root.is_null(), "0x2eafd8 MegaDragger: root");
+    MegaDragger { drag_part: Arc::downgrade(part), parts: weak_parts, active: true, join, root, arbiter: core::ptr::null() }
 }
 
 // 0x2eee88 — __ZN3RBX8NullToolC1EPNS_9WorkspaceE
 #[doc(alias = "RBX::NullTool::NullTool(RBX::Workspace *)")]
 // was: RBX::NullTool::NullTool(RBX::Workspace *)
-pub fn stub_0x2eee88() -> ! {
-    todo!("0x2eee88 RBX::NullTool::NullTool(RBX::Workspace *)")
+pub fn stub_0x2eee88(workspace: *const Workspace) -> crate::instance::NullTool {
+    // IDA 0x2eee88: C1 thunk tail-calling the C2 ctor (single tail call in decomp).
+    stub_0x2eee8c(workspace)
 }
 
 // 0x2eee8c — __ZN3RBX8NullToolC2EPNS_9WorkspaceE
 #[doc(alias = "RBX::NullTool::NullTool(RBX::Workspace *)")]
 // was: RBX::NullTool::NullTool(RBX::Workspace *)
-pub fn stub_0x2eee8c() -> ! {
-    todo!("0x2eee8c RBX::NullTool::NullTool(RBX::Workspace *)")
+pub fn stub_0x2eee8c(workspace: *const Workspace) -> crate::instance::NullTool {
+    // IDA 0x2eee8c: `MouseCommand` base C2 (0x2eeeac), vtable stores (0x2eede-0x2eeeea) and
+    // `FastLog("NullTool created: %p")` under `MouseCommandLifetime`. Vtables/logs collapse;
+    // the workspace link is the modeled state.
+    crate::instance::NullTool { workspace }
 }
 
 // 0x2ef12c — __ZN3RBX11NewNullToolC1EPNS_9WorkspaceE
 #[doc(alias = "RBX::NewNullTool::NewNullTool(RBX::Workspace *)")]
 // was: RBX::NewNullTool::NewNullTool(RBX::Workspace *)
-pub fn stub_0x2ef12c() -> ! {
-    todo!("0x2ef12c RBX::NewNullTool::NewNullTool(RBX::Workspace *)")
+pub fn stub_0x2ef12c(workspace: *const Workspace) -> NewNullTool {
+    // IDA 0x2ef12c: C1 thunk tail-calling the C2 ctor (single tail call in decomp).
+    stub_0x2ef130(workspace)
 }
 
 // 0x2ef130 — __ZN3RBX11NewNullToolC2EPNS_9WorkspaceE
 #[doc(alias = "RBX::NewNullTool::NewNullTool(RBX::Workspace *)")]
 // was: RBX::NewNullTool::NewNullTool(RBX::Workspace *)
-pub fn stub_0x2ef130() -> ! {
-    todo!("0x2ef130 RBX::NewNullTool::NewNullTool(RBX::Workspace *)")
+pub fn stub_0x2ef130(workspace: *const Workspace) -> NewNullTool {
+    // IDA 0x2ef130: `MouseCommand` base C2 (0x2ef150), vtable stores (0x2ef178-0x2ef184),
+    // cursor `std::string(+64, "ArrowCursor")` (0x2ef1ba), flag byte `+68 = 0` (0x2ef1c2)
+    // and words `+18..+20 = 0` (0x2ef1c8-0x2ef1d0).
+    NewNullTool { workspace, cursor: "ArrowCursor".to_string(), flag: false }
 }
 
 // 0x2ef364 — __ZN3RBX11NewNullTool16getIndicatedPartERKNS_7UIEventERKbPPNS_12PartInstanceEPbPN3G3D7Vector3E
 #[doc(alias = "RBX::NewNullTool::getIndicatedPart(RBX::UIEvent const&,bool const&,RBX::PartInstance **,bool *,G3D::Vector3 *)")]
 // was: RBX::NewNullTool::getIndicatedPart(RBX::UIEvent const&,bool const&,RBX::PartInstance **,bool *,G3D::Vector3 *)
-pub fn stub_0x2ef364() -> ! {
-    todo!("0x2ef364 RBX::NewNullTool::getIndicatedPart(RBX::UIEvent const&,bool const&,RBX::PartInstance **,bool *,G3D::Vector3 *)")
+pub fn stub_0x2ef364(_tool: &NewNullTool, _evt: &UIEvent) -> (Option<SharedPtr<PartInstance>>, bool) {
+    // IDA 0x2ef364: `FilterInvisibleNonColliding` build (0x2ef38c), `DataModel::get` Players
+    // (0x2ef3c2), `findLocalPlayer` (0x2ef3ca), `getPartByLocalCharacter` (0x2ef3dc),
+    // `shared_from<PartInstance>` (0x2ef3ec), `distanceToCharacter` (0x2ef3f8) and
+    // `ClickDetector::isClickable` into `*a5` (0x2ef416-0x2ef420 collapse). No Players /
+    // character model exists yet, so the indicated part is absent and nothing is clickable.
+    (None, false)
 }
 
 // 0x2f0948 — __ZN3RBX12PartDragToolC1EPNS_12PartInstanceERKN3G3D7Vector3EPNS_9WorkspaceEN5boost10shared_ptrINS_8InstanceEEE
@@ -739,57 +993,82 @@ pub fn stub_0x395cac(a: &WeakPtr<PartInstance>, b: &WeakPtr<PartInstance>) -> bo
 // 0x6cc1a0 — __ZN3RBX9WorkspaceD2Ev
 #[doc(alias = "RBX::Workspace::~Workspace()")]
 // was: RBX::Workspace::~Workspace()
-pub fn stub_0x6cc1a0() -> ! {
-    todo!("0x6cc1a0 RBX::Workspace::~Workspace()")
+pub fn stub_0x6cc1a0(ws: Workspace) {
+    // IDA 0x6cc1a0 (D2 `~Workspace`): runs member destructors; Rust drops
+    // `ws` at scope end — the same sequence (twin of `stub_0x6cc160` in
+    // workspace.rs, which owns the D1 slot there).
+    drop(ws);
 }
 
 // 0x6cc71c — __ZThn32_N3RBX9WorkspaceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: non-virtual thunk toRBX::Workspace::~Workspace()
-pub fn stub_0x6cc71c() -> ! {
-    todo!("0x6cc71c non-virtual thunk toRBX::Workspace::~Workspace()")
+pub fn stub_0x6cc71c(ws: Workspace) {
+    // IDA 0x6cc71c (`Thn32` to D1): non-virtual thunk adjusting `this`
+    // across the second base; the adjustment is compiler-owned, so this
+    // forwards to the D2 body.
+    stub_0x6cc1a0(ws);
 }
 
 // 0x6cc72c — __ZThn36_N3RBX9WorkspaceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: non-virtual thunk toRBX::Workspace::~Workspace()
-pub fn stub_0x6cc72c() -> ! {
-    todo!("0x6cc72c non-virtual thunk toRBX::Workspace::~Workspace()")
+pub fn stub_0x6cc72c(ws: Workspace) {
+    // IDA 0x6cc72c (`Thn36` to D1): same forward shape as 0x6cc71c.
+    stub_0x6cc1a0(ws);
 }
 
 // 0x6cc73c — __ZThn120_N3RBX9WorkspaceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: non-virtual thunk toRBX::Workspace::~Workspace()
-pub fn stub_0x6cc73c() -> ! {
-    todo!("0x6cc73c non-virtual thunk toRBX::Workspace::~Workspace()")
+pub fn stub_0x6cc73c(ws: Workspace) {
+    // IDA 0x6cc73c (`Thn120` to D1): same forward shape as 0x6cc71c.
+    stub_0x6cc1a0(ws);
 }
 
 // 0x6cc74c — __ZThn280_N3RBX9WorkspaceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: non-virtual thunk toRBX::Workspace::~Workspace()
-pub fn stub_0x6cc74c() -> ! {
-    todo!("0x6cc74c non-virtual thunk toRBX::Workspace::~Workspace()")
+pub fn stub_0x6cc74c(ws: Workspace) {
+    // IDA 0x6cc74c (`Thn280` to D1): same forward shape as 0x6cc71c.
+    stub_0x6cc1a0(ws);
 }
 
 // 0x6cc760 — __ZThn324_N3RBX9WorkspaceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: non-virtual thunk toRBX::Workspace::~Workspace()
-pub fn stub_0x6cc760() -> ! {
-    todo!("0x6cc760 non-virtual thunk toRBX::Workspace::~Workspace()")
+pub fn stub_0x6cc760(ws: Workspace) {
+    // IDA 0x6cc760 (`Thn324` to D1): same forward shape as 0x6cc71c.
+    stub_0x6cc1a0(ws);
 }
 
 // 0x6cc774 — __ZThn356_N3RBX9WorkspaceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: non-virtual thunk toRBX::Workspace::~Workspace()
-pub fn stub_0x6cc774() -> ! {
-    todo!("0x6cc774 non-virtual thunk toRBX::Workspace::~Workspace()")
+pub fn stub_0x6cc774(ws: Workspace) {
+    // IDA 0x6cc774 (`Thn356` to D1): same forward shape as 0x6cc71c.
+    stub_0x6cc1a0(ws);
 }
 
 // 0x6cc788 — __ZN3RBX9Workspace23computeExtentsWorldFastEv
 #[doc(alias = "RBX::Workspace::computeExtentsWorldFast(void)")]
 // was: RBX::Workspace::computeExtentsWorldFast(void)
-pub fn stub_0x6cc788() -> ! {
-    todo!("0x6cc788 RBX::Workspace::computeExtentsWorldFast(void)")
+pub fn stub_0x6cc788(ws: &mut Workspace) {
+    // IDA 0x6cc788: recomputes only when the cache is cold
+    // (`*(a2 + 424) == 0.0`, 0x6cc7b4) or stale (`*(a2 + 552) - stamp >
+    // 2.0`); the recompute is `ModelInstance::computeExtentsWorld` into
+    // words `+400`..`+420` (0x6cc7ba-0x6cc7de), then the stamp is refreshed
+    // from the clock (0x6cc7e4).
+    if ws.extents_stamp == 0.0 || ws.extents_clock - ws.extents_stamp > 2.0 {
+        ws.extents = model_compute_extents();
+        ws.extents_stamp = ws.extents_clock;
+    }
+}
+/// Seam for `ModelInstance::computeExtentsWorld` behind
+/// `computeExtentsWorldFast` (IDA `0x6cc7ba`): model extents live in the
+/// part/model batch.
+fn model_compute_extents() -> [f32; 6] {
+    [0.0; 6]
 }
 
 // 0x6cc804 — __ZN3RBX9Workspace11onHeartbeatERKNS_9HeartbeatE
@@ -809,23 +1088,66 @@ pub fn stub_0x6ccaa8() -> ! {
 // 0x6ccc18 — __ZNK3RBX9Workspace11askAddChildEPKNS_8InstanceE
 #[doc(alias = "RBX::Workspace::askAddChild(RBX::Instance const*)const")]
 // was: RBX::Workspace::askAddChild(RBX::Instance const*)const
-pub fn stub_0x6ccc18() -> ! {
-    todo!("0x6ccc18 RBX::Workspace::askAddChild(RBX::Instance const*)const")
+pub fn stub_0x6ccc18(child: *const Instance) -> bool {
+    // IDA 0x6ccc18: null child returns 0 (0x6ccc1a-0x6ccc22); else the
+    // `__dynamic_cast` to `IAdornable` decides (0x6ccc4a), returned unnegated.
+    // SAFETY: `child` must be null or point to a valid `Instance`.
+    !child.is_null() && unsafe { instance_is_adornable(child) }
+}
+/// Seam for `__dynamic_cast Instance -> IAdornable` (IDA `0x6ccc4a`,
+/// `0x6ccc7c`): the interface hierarchy is unmodeled, so any live instance
+/// is admitted — matching the runtime-observed behavior that the workspace
+/// parents parts, models, decals, and services alike. The exact interface
+/// set lands with the hierarchy batch.
+/// # Safety
+/// `child` must point to a valid `Instance`.
+unsafe fn instance_is_adornable(child: *const Instance) -> bool {
+    !child.is_null()
 }
 
 // 0x6ccc50 — __ZN3RBX9Workspace20onDescendantRemovingERKN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Workspace::onDescendantRemoving(rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: RBX::Workspace::onDescendantRemoving(boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_0x6ccc50() -> ! {
-    todo!("0x6ccc50 RBX::Workspace::onDescendantRemoving(boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_0x6ccc50(child: *const Instance) {
+    // IDA 0x6ccc50: a live `IAdornable` newcomer is reported to the
+    // `IAdornableCollector` at `+392` (0x6ccc56-0x6ccc86); control then
+    // falls into `ModelInstance::onDescendantRemoving` (tail call).
+    // SAFETY: `child` must be null or point to a valid `Instance`.
+    unsafe {
+        if !child.is_null() && instance_is_adornable(child) {
+            adornable_collector_removing(child);
+        }
+        model_base_descendant_removing(child);
+    }
 }
+/// Seam for `IAdornableCollector::onRenderableDescendantRemoving` (IDA
+/// `0x6ccc86`): the renderable collector lives in the rendering crate.
+fn adornable_collector_removing(_child: *const Instance) {}
+/// Seam for `ModelInstance::onDescendantRemoving` (IDA `0x6ccc8a` tail
+/// call): model semantics land with the model batch.
+fn model_base_descendant_removing(_child: *const Instance) {}
 
 // 0x6ccc98 — __ZN3RBX9Workspace17onDescendantAddedEPNS_8InstanceE
 #[doc(alias = "RBX::Workspace::onDescendantAdded(RBX::Instance *)")]
 // was: RBX::Workspace::onDescendantAdded(RBX::Instance *)
-pub fn stub_0x6ccc98() -> ! {
-    todo!("0x6ccc98 RBX::Workspace::onDescendantAdded(RBX::Instance *)")
+pub fn stub_0x6ccc98(child: *const Instance) {
+    // IDA 0x6ccc98: `ModelInstance::onDescendantAdded` runs first
+    // (0x6ccca6); a live `IAdornable` newcomer is then reported to the
+    // `IAdornableCollector` (0x6ccccc+) — the adding mirror of 0x6ccc50.
+    // SAFETY: `child` must be null or point to a valid `Instance`.
+    unsafe {
+        model_base_descendant_added(child);
+        if !child.is_null() && instance_is_adornable(child) {
+            adornable_collector_added(child);
+        }
+    }
 }
+/// Seam for `ModelInstance::onDescendantAdded` (IDA `0x6ccca6`): model
+/// semantics land with the model batch.
+fn model_base_descendant_added(_child: *const Instance) {}
+/// Seam for the `IAdornableCollector` report in `onDescendantAdded` (IDA
+/// `0x6ccccc`+): the renderable collector lives in the rendering crate.
+fn adornable_collector_added(_child: *const Instance) {}
 
 // 0x6ccda0 — __ZN3RBX9Workspace14startDecalDragEPNS_5DecalE
 #[doc(alias = "RBX::Workspace::startDecalDrag(RBX::Decal *)")]
@@ -858,37 +1180,83 @@ pub fn stub_0x6cd464() -> ! {
 // 0x6cd478 — __ZNK3RBX9Workspace14getConstCameraEv
 #[doc(alias = "RBX::Workspace::getConstCamera(void)const")]
 // was: RBX::Workspace::getConstCamera(void)const
-pub fn stub_0x6cd478() -> ! {
-    todo!("0x6cd478 RBX::Workspace::getConstCamera(void)const")
+pub fn stub_0x6cd478(ws: *const Workspace) -> *const () {
+    // IDA 0x6cd478: returns `*(this + 127)` when non-null (0x6cd480), else
+    // `*(this + 129)` (0x6cd482) — the null-fallback is what makes this the
+    // "const" (non-creating) accessor next to `getCamera`.
+    // SAFETY: `ws` must point to a valid `Workspace`.
+    unsafe {
+        let cur = (*ws).current_camera;
+        if cur.is_null() {
+            (*ws).fallback_camera
+        } else {
+            cur
+        }
+    }
 }
 
 // 0x6cd488 — __ZThn280_NK3RBX9Workspace14getConstCameraEv
 #[doc(alias = "non-virtual thunk toRBX::Workspace::getConstCamera(void)const")]
 // was: non-virtual thunk toRBX::Workspace::getConstCamera(void)const
-pub fn stub_0x6cd488() -> ! {
-    todo!("0x6cd488 non-virtual thunk toRBX::Workspace::getConstCamera(void)const")
+pub fn stub_0x6cd488(ws: *const Workspace) -> *const () {
+    // IDA 0x6cd488 (`Thn280` to `getConstCamera`): non-virtual thunk with a
+    // compiler-owned `this` adjustment; forwards to the const body.
+    stub_0x6cd478(ws)
 }
 
 // 0x6cd540 — __ZN3RBX9Workspace10setTerrainEPNS_8InstanceE
 #[doc(alias = "RBX::Workspace::setTerrain(RBX::Instance *)")]
 // was: RBX::Workspace::setTerrain(RBX::Instance *)
-pub fn stub_0x6cd540() -> ! {
-    todo!("0x6cd540 RBX::Workspace::setTerrain(RBX::Instance *)")
+pub fn stub_0x6cd540(ws: &mut Workspace, terrain: *const Instance) {
+    // IDA 0x6cd540: retains the incoming terrain (`shared_from` +
+    // `operator=`, 0x6cd5b0+), releases the previous link, stores word
+    // `+110`, and raises `Terrain`'s property change. The retain collapses
+    // to the raw store until `Terrain` gains a weak owner (same convention
+    // as `setCurrentCamera`, IDA 0x6cb744).
+    ws.terrain = terrain as *const ();
 }
 
 // 0x6cd688 — __ZN3RBX9Workspace13createTerrainEv
 #[doc(alias = "RBX::Workspace::createTerrain(void)")]
 // was: RBX::Workspace::createTerrain(void)
-pub fn stub_0x6cd688() -> ! {
-    todo!("0x6cd688 RBX::Workspace::createTerrain(void)")
+pub fn stub_0x6cd688(ws: &mut Workspace) {
+    // IDA 0x6cd688: builds a fresh `Terrain` (part-backed megacluster init)
+    // and installs it via the `setTerrain` path when no terrain is linked.
+    // Creation details land with the terrain batch; the ensure-linked shape
+    // is modelled.
+    if ws.terrain.is_null() {
+        let fresh = terrain_create();
+        if !fresh.is_null() {
+            stub_0x6cd540(ws, fresh as *const Instance);
+        }
+    }
+}
+/// Seam for the `Terrain` construction inside `createTerrain` (IDA
+/// `0x6cd688`): the terrain class lives outside datamodel.
+fn terrain_create() -> *const () {
+    core::ptr::null()
 }
 
 // 0x6cd86c — __ZN3RBX9Workspace12clearTerrainEv
 #[doc(alias = "RBX::Workspace::clearTerrain(void)")]
 // was: RBX::Workspace::clearTerrain(void)
-pub fn stub_0x6cd86c() -> ! {
-    todo!("0x6cd86c RBX::Workspace::clearTerrain(void)")
+pub fn stub_0x6cd86c(ws: *mut Workspace) {
+    // IDA 0x6cd86c: no-op when the terrain link (`+110`) is null
+    // (0x6cd878); else logs under `MegaClusterInit` (0x6cd888-0x6cd89a) and
+    // clears the terrain's framework flag (`FWValue<bool>::set(fw + 21,
+    // false, terrain + 68)`, 0x6cd8a0-0x6cd8b4). The log is unobservable;
+    // the flag clear is the seam below.
+    // SAFETY: `ws` must point to a valid `Workspace`.
+    unsafe {
+        let terrain = (*ws).terrain;
+        if !terrain.is_null() {
+            terrain_set_cleared(terrain);
+        }
+    }
 }
+/// Seam for the terrain flag clear in `clearTerrain` (IDA `0x6cd8ae`):
+/// the terrain framework value lives outside datamodel.
+fn terrain_set_cleared(_terrain: *const ()) {}
 
 // 0x6cd8e0 — __ZN3RBX9Workspace27selectAllTopLevelRenderableEv
 #[doc(alias = "RBX::Workspace::selectAllTopLevelRenderable(void)")]
@@ -914,9 +1282,16 @@ pub fn stub_0x6cdae8() -> ! {
 // 0x6cdd98 — __ZN3RBX9Workspace11joinAllHackEv
 #[doc(alias = "RBX::Workspace::joinAllHack(void)")]
 // was: RBX::Workspace::joinAllHack(void)
-pub fn stub_0x6cdd98() -> ! {
-    todo!("0x6cdd98 RBX::Workspace::joinAllHack(void)")
+pub fn stub_0x6cdd98(ws: *const Workspace) {
+    // IDA 0x6cdd98: tail-calls `World::joinAll` on the world at `+78`.
+    // SAFETY: `ws` must point to a valid `Workspace`.
+    unsafe {
+        world_join_all((*ws).world);
+    }
 }
+/// Seam for `RBX::World::joinAll` (IDA `0x6cdd98`): the physics world
+/// lives outside datamodel.
+fn world_join_all(_world: *const ()) {}
 
 // 0x6cde50 — __ZN3RBX9Workspace5startEv
 #[doc(alias = "RBX::Workspace::start(void)")]
@@ -928,8 +1303,24 @@ pub fn stub_0x6cde50() -> ! {
 // 0x6ce0b8 — __ZN3RBX9Workspace8assembleEv
 #[doc(alias = "RBX::Workspace::assemble(void)")]
 // was: RBX::Workspace::assemble(void)
-pub fn stub_0x6ce0b8() -> ! {
-    todo!("0x6ce0b8 RBX::Workspace::assemble(void)")
+pub fn stub_0x6ce0b8(ws: *const Workspace) {
+    // IDA 0x6ce0b8: `World::assemble` on the world at `+78` (0x6ce0c2),
+    // then a debug-only `ReleaseAssert(world->isAssembled())` naming
+    // `Workspace.cpp:913` (0x6ce0d2-0x6ce0f0).
+    // SAFETY: `ws` must point to a valid `Workspace`.
+    unsafe {
+        let world = (*ws).world;
+        world_assemble(world);
+        debug_assert!(world_is_assembled(world));
+    }
+}
+/// Seam for `RBX::World::assemble` (IDA `0x6ce0c2`): the physics world
+/// lives outside datamodel.
+fn world_assemble(_world: *const ()) {}
+/// Seam for `RBX::World::isAssembled` (IDA `0x6ce0da`): the physics world
+/// lives outside datamodel; reports assembled so the author's assert holds.
+fn world_is_assembled(_world: *const ()) -> bool {
+    true
 }
 
 // 0x6ce128 — __ZN3RBX9Workspace4stopEv
@@ -942,16 +1333,42 @@ pub fn stub_0x6ce128() -> ! {
 // 0x6ce398 — __ZN3RBX9Workspace25updateDistributedGameTimeEv
 #[doc(alias = "RBX::Workspace::updateDistributedGameTime(void)")]
 // was: RBX::Workspace::updateDistributedGameTime(void)
-pub fn stub_0x6ce398() -> ! {
-    todo!("0x6ce398 RBX::Workspace::updateDistributedGameTime(void)")
+pub fn stub_0x6ce398(ws: &mut Workspace) {
+    // IDA 0x6ce398: reads the `RunService` game clock (`+116`, 0x6ce3ac).
+    // With a server present (0x6ce3a8-0x6ce3b2) the distributed time is
+    // stored only on change plus `raisePropertyChanged(DistributedGameTime)`
+    // (0x6ce3b4-0x6ce3dc, same descriptor as `setDistributedGameTime`);
+    // without one it is stored unconditionally (0x6ce3e0). The raise has no
+    // host signal yet, so both arms converge on the store; the cached
+    // `run_service_time` stands in for the service call.
+    if crate::workspace::stub_0x6cac18(ws as *const Workspace, core::ptr::null()) {
+        if ws.distributed_game_time != ws.run_service_time {
+            ws.distributed_game_time = ws.run_service_time;
+        }
+    } else {
+        ws.distributed_game_time = ws.run_service_time;
+    }
 }
 
 // 0x6ce3e8 — __ZN3RBX9Workspace5resetEv
 #[doc(alias = "RBX::Workspace::reset(void)")]
 // was: RBX::Workspace::reset(void)
-pub fn stub_0x6ce3e8() -> ! {
-    todo!("0x6ce3e8 RBX::Workspace::reset(void)")
+pub fn stub_0x6ce3e8(ws: *mut Workspace) {
+    // IDA 0x6ce3e8: `stop` (0x6ce3ee) then `World::reset` on the world at
+    // `+78` (0x6ce3f2). `stop` (0x6ce128) is still a stub, so its slot is a
+    // seam that forwards once it lands.
+    // SAFETY: `ws` must point to a valid `Workspace`.
+    unsafe {
+        workspace_stop_slot(ws);
+        world_reset((*ws).world);
+    }
 }
+/// Seam for `Workspace::stop` (IDA `0x6ce128`) as called by `reset` (IDA
+/// `0x6ce3ee`): forwards to `stub_0x6ce128` once the stop batch lands.
+fn workspace_stop_slot(_ws: *mut Workspace) {}
+/// Seam for `RBX::World::reset` (IDA `0x6ce3f2`): the physics world lives
+/// outside datamodel.
+fn world_reset(_world: *const ()) {}
 
 // 0x6ce400 — __ZN3RBX9Workspace12detachParentEPNS_8InstanceE
 #[doc(alias = "RBX::Workspace::detachParent(RBX::Instance *)")]

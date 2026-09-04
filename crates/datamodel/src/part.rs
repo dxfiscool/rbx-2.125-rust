@@ -5,14 +5,27 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports)]
 
 use rbx_core::SharedPtr;
+use std::sync::atomic::{AtomicUsize, Ordering};
+
+/// Cached class index behind `doGetClassIndex<Workspace>` (IDA `0x2b7698`):
+/// assigned once from the provider index counter, same guard-once shape as
+/// `FILTERED_SELECTION_INDEX` (IDA `0x3ff958`).
+static WORKSPACE_INDEX: AtomicUsize = AtomicUsize::new(0);
 
 // 210 stubs in this file | batch range 0x2b7698..0x5db564
 
 // 0x2b7698 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_9WorkspaceEEEmv
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::Workspace>(void)")]
 // was: unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::Workspace>(void)
-pub fn stub_0x2b7698() -> ! {
-    todo!("0x2b7698 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::Workspace>(void)")
+pub fn stub_0x2b7698() -> usize {
+    // IDA 0x2b7698: `doGetClassIndex<Workspace>` — guard-once assignment
+    // from `ServiceProvider::newIndex`, then the cached index. Shares the
+    // crate counter via `alloc_class_index` so no two classes collide.
+    if WORKSPACE_INDEX.load(Ordering::Relaxed) == 0 {
+        let fresh = crate::instance::alloc_class_index();
+        WORKSPACE_INDEX.store(fresh, Ordering::Relaxed);
+    }
+    WORKSPACE_INDEX.load(Ordering::Relaxed)
 }
 
 // 0x2c02a8 — __ZN5boost14singleton_poolIN3RBX12PartInstance20OnDemandPartInstanceELj200ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv

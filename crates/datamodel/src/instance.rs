@@ -2571,6 +2571,15 @@ static CREATOR_TYPE_SINGLETON: OnceLock<EnumDesc> = OnceLock::new();
 /// Provider-wide class-index counter behind `ServiceProvider::newIndex`.
 static NEXT_CLASS_INDEX: AtomicUsize = AtomicUsize::new(1);
 
+/// Crate-shared allocator behind `ServiceProvider::newIndex` (cf. IDA
+/// `0x3ff9b4`-`0x3ff9d4`): hands out a fresh class index. The per-class
+/// `doGetClassIndex` caches (e.g. `FILTERED_SELECTION_INDEX`) guard-once on
+/// top of this; sibling modules (e.g. `part::stub_0x2b7698`) share it so two
+/// classes can never observe the same index.
+pub(crate) fn alloc_class_index() -> usize {
+    NEXT_CLASS_INDEX.fetch_add(1, Ordering::Relaxed)
+}
+
 /// Rust model of `RBX::ChatService::ChatColor` (IDA `0x3eb850`): the bubble
 /// color tag on a chat message; enumerators unmodeled.
 #[derive(Clone, Copy, Default, PartialEq, Eq)]

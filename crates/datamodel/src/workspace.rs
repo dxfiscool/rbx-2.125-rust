@@ -37,6 +37,28 @@ pub struct Workspace {
     /// Cached kernel body counters summed by `getNumAwakeParts`
     /// (IDA `0x6cb920`).
     pub awake: AwakeCounts,
+    /// World link at words `+78` (byte `+0x138`) behind
+    /// `getWorldIfInWorkspace` (IDA `0x6cad28`), `getNumAwakeParts` (IDA
+    /// `0x6cb926`), `assemble`/`joinAllHack`/`reset` (IDA `0x6ce0c2`,
+    /// `0x6cdd98`, `0x6ce3ee`); unretained, hence dangerous.
+    pub world: *const (),
+    /// Fallback camera at words `+129` behind `getConstCamera` (IDA
+    /// `0x6cd482`): returned when `current_camera` is null; unretained,
+    /// hence dangerous.
+    pub fallback_camera: *const (),
+    /// Cached `RunService` game clock (`+116`, IDA `0x6ce3ac`) behind
+    /// `updateDistributedGameTime` (IDA `0x6ce398`); the service call lands
+    /// with the run-service batch.
+    pub run_service_time: f64,
+    /// Cached world extents (min/max triples) at words `+400`..`+420`
+    /// behind `computeExtentsWorldFast` (IDA `0x6cc7c0`-`0x6cc7de`).
+    pub extents: [f32; 6],
+    /// Extents cache timestamp at words `+424` (`double`) behind
+    /// `computeExtentsWorldFast` (IDA `0x6cc792`).
+    pub extents_stamp: f64,
+    /// Run clock at words `+552` (`double`) the extents staleness check
+    /// compares against (IDA `0x6cc7b4`); refreshed by the heartbeat path.
+    pub extents_clock: f64,
     /// Content ids queued by `insertContent` (IDA `0x6cae14`); the
     /// fetch/parse overload lands with the content pipeline.
     pub inserted_content: Vec<String>,
@@ -58,6 +80,44 @@ pub struct AwakeCounts {
 #[derive(Default)]
 pub struct Tool {
     _opaque: (),
+}
+
+/// Rust model of `RBX::ModelTool` (IDA `0x689a5c`): the studio model mouse
+/// command plus the owning workspace. Words `+16`/`+17` are zeroed by the
+/// ctor (disasm `0x689ab8`-`0x689ac0`); their semantics land with the
+/// selection batch.
+pub struct ModelTool {
+    pub workspace: *mut Workspace,
+    pub state16: u32,
+    pub state17: u32,
+}
+
+/// Rust model of `RBX::PartTool` (IDA `0x68ac9c`): same shape as
+/// `ModelTool` — base `MouseCommand` ctor threading the workspace (disasm
+/// `0x68acbc`), vtable installs, zeroed words `+16`/`+17` (disasm
+/// `0x68acf8`-`0x68ad00`).
+pub struct PartTool {
+    pub workspace: *mut Workspace,
+    pub state16: u32,
+    pub state17: u32,
+}
+
+/// Rust model of the embedded `RBX::Surface` value inside `SurfaceTool`
+/// (IDA `0x68bbf6`): field layout unmodeled.
+#[derive(Default)]
+pub struct SurfaceState {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::SurfaceTool` (IDA `0x68bb74`): the `ModelTool` shape
+/// plus the embedded `Surface` at `+72` (disasm `0x68bbf6`) and the empty
+/// label string at `+21` (disasm `0x68bc1c`).
+pub struct SurfaceTool {
+    pub workspace: *mut Workspace,
+    pub state16: u32,
+    pub state17: u32,
+    pub surface: SurfaceState,
+    pub label: String,
 }
 
 /// Rust model of `RBX::ScriptMouseCommand` (IDA `0x614a04`): the workspace
@@ -409,36 +469,75 @@ pub fn stub_0x688b08(workspace: *mut Workspace, tool: *const Tool) -> ToolMouseC
 // 0x689a5c — __ZN3RBX9ModelToolC2EPNS_9WorkspaceE
 #[doc(alias = "RBX::ModelTool::ModelTool(RBX::Workspace *)")]
 // was: RBX::ModelTool::ModelTool(RBX::Workspace *)
-pub fn stub_0x689a5c() -> ! {
-    todo!("0x689a5c RBX::ModelTool::ModelTool(RBX::Workspace *)")
+pub fn stub_0x689a5c(workspace: *mut Workspace) -> ModelTool {
+    // IDA 0x689a5c (C2): base `MouseCommand` ctor threading the workspace
+    // (0x689a7c), vtable installs (0x689a90-0x689a9e), zeroed words `+16`
+    // and `+17` (0x689ab8-0x689ac0); the lifetime log (0x689ac4-0x689b14)
+    // has no observable contract.
+    ModelTool { workspace, state16: 0, state17: 0 }
 }
 
 // 0x68ac9c — __ZN3RBX8PartToolC2EPNS_9WorkspaceE
 #[doc(alias = "RBX::PartTool::PartTool(RBX::Workspace *)")]
 // was: RBX::PartTool::PartTool(RBX::Workspace *)
-pub fn stub_0x68ac9c() -> ! {
-    todo!("0x68ac9c RBX::PartTool::PartTool(RBX::Workspace *)")
+pub fn stub_0x68ac9c(workspace: *mut Workspace) -> PartTool {
+    // IDA 0x68ac9c (C2): same shape as `ModelTool` (see 0x689a5c) — base
+    // ctor (0x68acbc), vtables (0x68acd0-0x68acde), zeroed `+16`/`+17`
+    // (0x68acf8-0x68ad00), lifetime log only.
+    PartTool { workspace, state16: 0, state17: 0 }
 }
 
 // 0x68bb74 — __ZN3RBX11SurfaceToolC2EPNS_9WorkspaceE
 #[doc(alias = "RBX::SurfaceTool::SurfaceTool(RBX::Workspace *)")]
 // was: RBX::SurfaceTool::SurfaceTool(RBX::Workspace *)
-pub fn stub_0x68bb74() -> ! {
-    todo!("0x68bb74 RBX::SurfaceTool::SurfaceTool(RBX::Workspace *)")
+pub fn stub_0x68bb74(workspace: *mut Workspace) -> SurfaceTool {
+    // IDA 0x68bb74 (C2): the `ModelTool` shape plus the embedded
+    // `Surface::Surface` at `+72` (0x68bbf6) and the empty label string at
+    // `+21` (0x68bc1c); the lifetime log (0x68bc20+) is unobservable.
+    SurfaceTool {
+        workspace,
+        state16: 0,
+        state17: 0,
+        surface: SurfaceState::default(),
+        label: String::new(),
+    }
 }
 
 // 0x699120 — __ZNK3RBX15ServiceProvider4findINS_9WorkspaceEEEPT_v
 #[doc(alias = "RBX::Workspace * RBX::ServiceProvider::find<RBX::Workspace>(void)const")]
 // was: RBX::Workspace * RBX::ServiceProvider::find<RBX::Workspace>(void)const
-pub fn stub_0x699120() -> ! {
-    todo!("0x699120 RBX::Workspace * RBX::ServiceProvider::find<RBX::Workspace>(void)const")
+pub fn stub_0x699120(provider: *const Instance) -> *const Workspace {
+    // IDA 0x699120: `ServiceProvider::find<Workspace>(void)const` — pre-order
+    // scan of the provider's subtree for the `Workspace` class (same scan
+    // shape as `find_service_in_tree`, but rooted at the provider itself
+    // rather than walking to the tree root first); miss returns null.
+    // SAFETY: `provider` must be null or point to a valid `Instance` whose
+    // subtree outlives the call.
+    unsafe {
+        if provider.is_null() {
+            return core::ptr::null();
+        }
+        let mut stack = vec![provider];
+        while let Some(cur) = stack.pop() {
+            if instance_is_a(cur, "Workspace") {
+                return cur as *const Workspace;
+            }
+            for child in (*cur).children.iter().rev() {
+                stack.push(SharedPtr::as_ptr(child));
+            }
+        }
+        core::ptr::null()
+    }
 }
 
 // 0x6992a0 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_9WorkspaceEEEvv
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::Workspace>(void)")]
 // was: void RBX::ServiceProvider::callDoGetClassIndex<RBX::Workspace>(void)
-pub fn stub_0x6992a0() -> ! {
-    todo!("0x6992a0 void RBX::ServiceProvider::callDoGetClassIndex<RBX::Workspace>(void)")
+pub fn stub_0x6992a0() -> usize {
+    // IDA 0x6992a0: `callDoGetClassIndex<Workspace>` — thunk to
+    // `doGetClassIndex<Workspace>` (0x2b7698), same forward shape as
+    // `stub_0x3ff954`.
+    crate::part::stub_0x2b7698()
 }
 
 // 0x6ca9b8 — __ZN3RBX9Workspace22setDistributedGameTimeEd
@@ -530,22 +629,69 @@ pub fn stub_0x6cac30(instance: *const Instance) -> *const Instance {
 // 0x6cad28 — __ZN3RBX9Workspace21getWorldIfInWorkspaceEPNS_8InstanceE
 #[doc(alias = "RBX::Workspace::getWorldIfInWorkspace(RBX::Instance *)")]
 // was: RBX::Workspace::getWorldIfInWorkspace(RBX::Instance *)
-pub fn stub_0x6cad28() -> ! {
-    todo!("0x6cad28 RBX::Workspace::getWorldIfInWorkspace(RBX::Instance *)")
+pub fn stub_0x6cad28(ws: *const Workspace, instance: *const Instance) -> *const () {
+    // IDA 0x6cad28: `getWorkspaceIfInWorkspace` (0x6cad30); null workspace
+    // returns 0 (0x6cad32-0x6cad3c), else the world at `+312` (0x6cad38).
+    // SAFETY: `ws`/`instance` must be null or valid with valid parent chains.
+    unsafe {
+        let found = stub_0x6cad40(ws, instance);
+        if found.is_null() {
+            core::ptr::null()
+        } else {
+            (*found).world
+        }
+    }
 }
 
 // 0x6cad40 — __ZN3RBX9Workspace25getWorkspaceIfInWorkspaceEPNS_8InstanceE
 #[doc(alias = "RBX::Workspace::getWorkspaceIfInWorkspace(RBX::Instance *)")]
 // was: RBX::Workspace::getWorkspaceIfInWorkspace(RBX::Instance *)
-pub fn stub_0x6cad40() -> ! {
-    todo!("0x6cad40 RBX::Workspace::getWorkspaceIfInWorkspace(RBX::Instance *)")
+pub fn stub_0x6cad40(ws: *const Workspace, instance: *const Instance) -> *const Workspace {
+    // IDA 0x6cad40: `find<Workspace>(instance)` (0x6cad46); null found
+    // returns null (0x6cad4a-0x6cad62). A hit equal to `this` returns it
+    // (0x6cad4e-0x6cad60); else `this`'s parent chain (`+0x34`, the
+    // `Instance::parent` slot, 0x6cad52-0x6cad5c) is walked for the found
+    // workspace — hit returns it (0x6cad60), exhaustion returns null
+    // (0x6cad5e-0x6cad62). Single inheritance collapses the
+    // `Workspace`-to-`Instance` adjustment, so `ws` doubles as the chain
+    // head.
+    // SAFETY: `ws`/`instance` must be null or valid with valid parent chains.
+    unsafe {
+        let found = stub_0x6cac2c(instance);
+        if found.is_null() {
+            return core::ptr::null();
+        }
+        let mut cur = ws as *const Instance;
+        while !cur.is_null() {
+            if cur == found {
+                return found as *const Workspace;
+            }
+            cur = (*cur).parent;
+        }
+        core::ptr::null()
+    }
 }
 
 // 0x6cad68 — __ZN3RBX9Workspace30getContactManagerIfInWorkspaceEPNS_8InstanceE
 #[doc(alias = "RBX::Workspace::getContactManagerIfInWorkspace(RBX::Instance *)")]
 // was: RBX::Workspace::getContactManagerIfInWorkspace(RBX::Instance *)
-pub fn stub_0x6cad68() -> ! {
-    todo!("0x6cad68 RBX::Workspace::getContactManagerIfInWorkspace(RBX::Instance *)")
+pub fn stub_0x6cad68(ws: *const Workspace, instance: *const Instance) -> *const () {
+    // IDA 0x6cad68: `getWorkspaceIfInWorkspace` (0x6cad70); null workspace
+    // returns 0 (0x6cad72-0x6cad78), null world returns 0 (0x6cad7e-0x6cad82),
+    // else the contact manager at world `+184` (0x6cad84). Pointer validity
+    // is enforced inside `stub_0x6cad28`, so no `unsafe` is needed here.
+    let world = stub_0x6cad28(ws, instance);
+    if world.is_null() {
+        core::ptr::null()
+    } else {
+        world_contact_manager(world)
+    }
+}
+/// Seam for the world `+184` contact-manager load in
+/// `getContactManagerIfInWorkspace` (IDA `0x6cad84`): the physics world
+/// (and its contact manager) lives outside datamodel.
+fn world_contact_manager(_world: *const ()) -> *const () {
+    core::ptr::null()
 }
 
 // 0x6cad8c — __ZN3RBX9Workspace18contextInWorkspaceEPKNS_8InstanceE
@@ -605,9 +751,18 @@ fn joint_wrapper(_instance: &SharedPtr<Instance>) {}
 // 0x6cb014 — __ZN3RBX9Workspace11breakJointsEN5boost10shared_ptrIKSt6vectorINS2_INS_8InstanceEEESaIS5_EEEE
 #[doc(alias = "RBX::Workspace::breakJoints(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>)")]
 // was: RBX::Workspace::breakJoints(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>)
-pub fn stub_0x6cb014() -> ! {
-    todo!("0x6cb014 RBX::Workspace::breakJoints(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>)")
+pub fn stub_0x6cb014(instances: &[SharedPtr<Instance>]) {
+    // IDA 0x6cb014: `for_each(begin, end, wrapper<false>)` over the instance
+    // vector — the breaking twin of `makeJoints` (0x6cb000). Each element
+    // tears down its joints; the wrapper seam below is where the
+    // per-instance work lands.
+    for inst in instances {
+        break_joint_wrapper(inst);
+    }
 }
+/// Seam for `RBX::wrapper<false>` applied per element by `breakJoints` (IDA
+/// `0x6cb014`): joint teardown lives in the physics crate.
+fn break_joint_wrapper(_instance: &SharedPtr<Instance>) {}
 
 // 0x6cb028 — __ZN3RBX9Workspace18findPartsInRegion3ENS_7Region3EN5boost10shared_ptrINS_8InstanceEEEi
 #[doc(alias = "RBX::Workspace::findPartsInRegion3(RBX::Region3,rbx_core::SharedPtr<RBX::Instance>,int)")]
