@@ -127,6 +127,8 @@ pub struct Players {
     pub abuse_report_url: String,
     /// Chat-filter endpoint for `setChatFilterUrl` (IDA 0xa06580).
     pub chat_filter_url: String,
+    /// Chat option at +220 (IDA 0xa06b30..0xa06b34).
+    pub chat_option: u32,
     /// Build-permissions endpoint (IDA 0xa0658c).
     pub build_user_permissions_url: String,
     /// Sys-stats endpoint (IDA 0xa06870).
@@ -243,6 +245,102 @@ impl Players {
     /// passes `(player, character)` rows.
     pub fn player_from_character(players: &[(u32, u32)], character: u32) -> Option<u32> {
         players.iter().find(|(_, c)| *c == character).map(|(p, _)| *p)
+    }
+
+    /// `Players::setChatOption` (IDA 0xa06b30): stores the option at +220.
+    pub fn set_chat_option(&mut self, option: u32) {
+        self.chat_option = option;
+    }
+}
+
+/// `Players::isNetworkClient` (IDA 0xa06b38): null children are refused;
+/// a `Client` child is accepted via `isA` (disasm, same shape as
+/// `Server::askAddChild` at 0x9c9f74).
+pub fn is_network_client(child_present: bool, is_client: bool) -> bool {
+    if !child_present {
+        return false;
+    }
+    is_client
+}
+
+/// `Client::clientIsPresent` (IDA 0xa07ea0 via `Players::clientIsPresent`):
+/// resolves the root provider and reports whether it hosts a `Client`
+/// (mirrors `Server::serverIsPresent`, IDA 0x967744 family). Provider
+/// lookup stays engine-side.
+pub fn client_is_present(root_provider_present: bool, hosting_client: bool) -> bool {
+    if !root_provider_present {
+        return false;
+    }
+    hosting_client
+}
+
+/// `Players::frontendProcessing` (IDA 0xa07ec8): asserts
+/// `!testInDatamodel || serviceProvider != NULL` (Players.cpp:182); with
+/// a provider this is `!Server::serverIsPresent` (0xa07f30..0xa07f3a),
+/// else false. Provider lookup stays engine-side.
+pub fn frontend_processing(
+    provider_present: bool,
+    test_in_datamodel: bool,
+    server_present: bool,
+) -> bool {
+    debug_assert!(
+        !test_in_datamodel || provider_present,
+        "!testInDatamodel || serviceProvider!=NULL Client/Network/Players.cpp line: 182"
+    );
+    if !provider_present {
+        return false;
+    }
+    !crate::server::server_is_present(true, false, server_present)
+}
+
+/// `Players::backendProcessing` (IDA 0xa07f44): asserts
+/// `!testInDatamodel || serviceProvider != NULL` (Players.cpp:189); with
+/// a provider this is `!Client::clientIsPresent` (0xa07fac..0xa07fb6),
+/// else false. Provider lookup stays engine-side.
+pub fn backend_processing(provider_present: bool, test_in_datamodel: bool, client_present: bool) -> bool {
+    debug_assert!(
+        !test_in_datamodel || provider_present,
+        "!testInDatamodel || serviceProvider!=NULL Client/Network/Players.cpp line: 189"
+    );
+    if !provider_present {
+        return false;
+    }
+    !client_is_present(true, client_present)
+}
+
+/// `Players::getDistributedPhysicsEnabled` (IDA 0xa07eb8): the
+/// `NetworkSettings` +0xA0 flag (disasm singleton read). The settings
+/// live engine-side; this forwards the read.
+pub fn distributed_physics_enabled(enabled: bool) -> bool {
+    enabled
+}
+
+/// `Players::findLocalSimulatorAddress` (IDA 0xa07fc0): without
+/// distributed physics this is `Unassigned`; otherwise `Server` iff
+/// `serverIsPresent` (disasm 0xa07fcc..0xa08032).
+pub fn find_local_simulator_address(distributed: bool, server_present: bool) -> NetworkOwner {
+    if !distributed {
+        return NetworkOwner::server_unassigned();
+    }
+    if server_present {
+        NetworkOwner::server()
+    } else {
+        NetworkOwner::server_unassigned()
+    }
+}
+
+/// `Players::onChildChanged` (IDA 0xa0803c): when the changed child is the
+/// local player (+0xBC) and the property is `Player::prop_SuperSafeChat`,
+/// the +0xF4 bool signal fires with the player's value (disasm
+/// 0xa0803c..0xa08074). Otherwise ignored.
+pub fn on_child_changed(
+    is_local_player: bool,
+    is_supersafechat_prop: bool,
+    value: bool,
+    fire: &mut dyn FnMut(bool),
+) {
+    if is_local_player && is_supersafechat_prop {
+        fire(value);
     }
 }
 
@@ -902,5 +1000,35 @@ mod tests {
         assert_eq!(Players::player_from_character(&rows, 20), Some(2));
         assert_eq!(Players::player_from_character(&rows, 30), None);
         assert_eq!(Players::player_from_character(&[], 10), None);
+    }
+
+    #[test]
+    fn presence_and_processing_gates() {
+        // IDA 0xa06b30/0xa06b38/0xa07ea0/0xa07eb8/0xa07ec8/0xa07f44/0xa07fc0/0xa0803c.
+        let mut players = Players::new();
+        players.set_chat_option(2);
+        assert_eq!(players.chat_option, 2);
+        assert!(!is_network_client(false, true));
+        assert!(!is_network_client(true, false));
+        assert!(is_network_client(true, true));
+        assert!(!client_is_present(false, true));
+        assert!(client_is_present(true, true));
+        assert!(!frontend_processing(false, false, false));
+        assert!(frontend_processing(true, false, false));
+        assert!(!frontend_processing(true, false, true));
+        assert!(!backend_processing(false, false, false));
+        assert!(backend_processing(true, false, false));
+        assert!(!backend_processing(true, false, true));
+        assert!(distributed_physics_enabled(true));
+        assert!(!distributed_physics_enabled(false));
+        assert_eq!(find_local_simulator_address(false, true), NetworkOwner::server_unassigned());
+        assert_eq!(find_local_simulator_address(true, true), NetworkOwner::server());
+        assert_eq!(find_local_simulator_address(true, false), NetworkOwner::server_unassigned());
+        let mut fired = Vec::new();
+        on_child_changed(false, true, true, &mut |v| fired.push(v));
+        on_child_changed(true, false, true, &mut |v| fired.push(v));
+        assert!(fired.is_empty());
+        on_child_changed(true, true, true, &mut |v| fired.push(v));
+        assert_eq!(fired, vec![true]);
     }
 }

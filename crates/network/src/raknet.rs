@@ -13998,85 +13998,98 @@ pub fn stub_a06b0c(players: &mut crate::player::Players, key: String) {
 // 0xa06b30 — __ZN3RBX7Network7Players13setChatOptionENS1_10ChatOptionE
 // type: int __fastcall(int result, int)
 #[doc(alias = "RBX::Network::Players::setChatOption(RBX::Network::Players::ChatOption)")]
-pub fn stub_a06b30() -> ! {
-    todo!("0xa06b30 RBX::Network::Players::setChatOption(RBX::Network::Players::ChatOption)")
+pub fn stub_a06b30(players: &mut crate::player::Players, option: u32) {
+    // IDA 0xa06b30: stores the chat option at +220.
+    players.set_chat_option(option);
 }
 
 // 0xa06b38 — __ZN3RBX7Network7Players15isNetworkClientEPNS_8InstanceE
 // type: _DWORD __fastcall(RBX::Network::Players *__hidden this, RBX::Instance *)
 #[doc(alias = "RBX::Network::Players::isNetworkClient(RBX::Instance *)")]
-pub fn stub_a06b38() -> ! {
-    todo!("0xa06b38 RBX::Network::Players::isNetworkClient(RBX::Instance *)")
+pub fn stub_a06b38(child_present: bool, is_client: bool) -> bool {
+    // IDA 0xa06b38: null refused, `Client` accepted (disasm `isA` shape).
+    crate::player::is_network_client(child_present, is_client)
 }
 
 // 0xa06b74 — __ZN3RBX7Network7PlayersC1Ev
 // type: int __fastcall(RBX::Network::Players *this)
 #[doc(alias = "RBX::Network::Players::Players(void)")]
-pub fn stub_a06b74() -> ! {
-    todo!("0xa06b74 RBX::Network::Players::Players(void)")
+pub fn stub_a06b74() -> crate::player::Players {
+    // IDA 0xa06b74 (C1): fresh players with no rows and no endpoints.
+    crate::player::Players::new()
 }
 
 // 0xa06b80 — __ZN3RBX7Network7PlayersC2Ev
 // type: RBX::Instance *__fastcall(RBX::Network::Players *this)
 #[doc(alias = "RBX::Network::Players::Players(void)")]
-pub fn stub_a06b80() -> ! {
-    todo!("0xa06b80 RBX::Network::Players::Players(void)")
+pub fn stub_a06b80() -> crate::player::Players {
+    // IDA 0xa06b80 (C2): fresh players with no rows and no endpoints.
+    crate::player::Players::new()
 }
 
 // 0xa07ea0 — __ZN3RBX7Network7Players15clientIsPresentEPKNS_8InstanceEb
 // type: bool __fastcall(RBX::Network::Players *this, const RBX::Instance *, bool, const void *)
 #[doc(alias = "RBX::Network::Players::clientIsPresent(RBX::Instance const*,bool)")]
-pub fn stub_a07ea0() -> ! {
-    todo!("0xa07ea0 RBX::Network::Players::clientIsPresent(RBX::Instance const*,bool)")
+pub fn stub_a07ea0(root_provider_present: bool, hosting_client: bool) -> bool {
+    // IDA 0xa07ea0: delegates to `Client::clientIsPresent`.
+    crate::player::client_is_present(root_provider_present, hosting_client)
 }
 
 // 0xa07eac — __ZN3RBX7Network7Players15serverIsPresentEPKNS_8InstanceEb
 // type: bool __fastcall(RBX::Network::Players *this, const RBX::Instance *, bool, int (*)(const char *, ...))
 #[doc(alias = "RBX::Network::Players::serverIsPresent(RBX::Instance const*,bool)")]
-pub fn stub_a07eac() -> ! {
-    todo!("0xa07eac RBX::Network::Players::serverIsPresent(RBX::Instance const*,bool)")
+pub fn stub_a07eac(
+    root_provider_present: bool,
+    test_in_datamodel: bool,
+    hosting_server: bool,
+) -> bool {
+    // IDA 0xa07eac: delegates to `Server::serverIsPresent`.
+    crate::server::server_is_present(root_provider_present, test_in_datamodel, hosting_server)
 }
 
 // 0xa07eb8 — __ZN3RBX7Network7Players28getDistributedPhysicsEnabledEv
 // type: _DWORD __fastcall(RBX::Network::Players *__hidden this)
 #[doc(alias = "RBX::Network::Players::getDistributedPhysicsEnabled(void)")]
-pub fn stub_a07eb8() -> ! {
-    todo!("0xa07eb8 RBX::Network::Players::getDistributedPhysicsEnabled(void)")
+pub fn stub_a07eb8(enabled: bool) -> bool {
+    // IDA 0xa07eb8: the `NetworkSettings` +0xA0 flag (disasm singleton read).
+    crate::player::distributed_physics_enabled(enabled)
 }
 
 // 0xa07ec8 — __ZN3RBX7Network7Players18frontendProcessingEPKNS_8InstanceEb
 // type: bool __fastcall(RBX::Network::Players *this, const RBX::Instance *, bool)
 #[doc(alias = "RBX::Network::Players::frontendProcessing(RBX::Instance const*,bool)")]
-pub fn stub_a07ec8() -> ! {
-    todo!("0xa07ec8 RBX::Network::Players::frontendProcessing(RBX::Instance const*,bool)")
+pub fn stub_a07ec8(provider_present: bool, test_in_datamodel: bool, server_present: bool) -> bool {
+    // IDA 0xa07ec8: `!Server::serverIsPresent` behind the :182 assert.
+    crate::player::frontend_processing(provider_present, test_in_datamodel, server_present)
 }
 
 // 0xa07f44 — __ZN3RBX7Network7Players17backendProcessingEPKNS_8InstanceEb
 // type: bool __fastcall(RBX::Network::Players *this, const RBX::Instance *, bool)
 #[doc(alias = "RBX::Network::Players::backendProcessing(RBX::Instance const*,bool)")]
-pub fn stub_a07f44() -> ! {
-    todo!("0xa07f44 RBX::Network::Players::backendProcessing(RBX::Instance const*,bool)")
+pub fn stub_a07f44(provider_present: bool, test_in_datamodel: bool, client_present: bool) -> bool {
+    // IDA 0xa07f44: `!Client::clientIsPresent` behind the :189 assert.
+    crate::player::backend_processing(provider_present, test_in_datamodel, client_present)
 }
 
 // 0xa07fc0 — __ZN3RBX7Network7Players25findLocalSimulatorAddressEPKNS_8InstanceE
 // type: _DWORD __fastcall(RBX::Network::Players *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::Network::Players::findLocalSimulatorAddress(RBX::Instance const*)")]
-pub fn stub_a07fc0() -> ! {
-    todo!("0xa07fc0 RBX::Network::Players::findLocalSimulatorAddress(RBX::Instance const*)")
+pub fn stub_a07fc0(distributed: bool, server_present: bool) -> crate::player::NetworkOwner {
+    // IDA 0xa07fc0: `Unassigned` unless distributed with a server present (disasm).
+    crate::player::find_local_simulator_address(distributed, server_present)
 }
 
 // 0xa0803c — __ZN3RBX7Network7Players14onChildChangedEPNS_8InstanceERKNS_15PropertyChangedE
 // type: void __fastcall()
 #[doc(alias = "RBX::Network::Players::onChildChanged(RBX::Instance *,RBX::PropertyChanged const&)")]
-pub fn stub_a0803c() -> ! {
-    todo!("0xa0803c RBX::Network::Players::onChildChanged(RBX::Instance *,RBX::PropertyChanged const&)")
-}
-
-// 0xa0807c — __ZN3RBX7Network7PlayersD0Ev
-// type: void __fastcall(RBX::Network::Players *__hidden this)
-#[doc(alias = "RBX::Network::Players::~Players()")]
-pub fn stub_a0807c() -> ! {
-    todo!("0xa0807c RBX::Network::Players::~Players()")
+pub fn stub_a0803c(
+    is_local_player: bool,
+    is_supersafechat_prop: bool,
+    value: bool,
+    fire: &mut dyn FnMut(bool),
+) {
+    // IDA 0xa0803c: local-player SuperSafeChat changes fire the +0xF4 signal (disasm).
+    crate::player::on_child_changed(is_local_player, is_supersafechat_prop, value, fire);
 }
 
 // 0xa0811c — __ZN3RBX7Network7PlayersD1Ev
