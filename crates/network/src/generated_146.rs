@@ -35,8 +35,13 @@ pub fn stub_a12108() -> ! {
 // demangled: RBX::Network::Players::isMessageFiltered(std::string const&,std::string const&)const
 // type: bool __fastcall(RBX::Network::Players *this, const std::string *, const std::string *)
 #[doc(alias = "RBX::Network::Players::isMessageFiltered(std::string const&,std::string const&)const")]
-pub fn stub_a12c94() -> ! {
-    todo!("0xa12c94 RBX::Network::Players::isMessageFiltered(std::string const&,std::string const&)const")
+pub fn stub_a12c94(
+    post: &mut dyn FnMut(&str, &str) -> String,
+    url: &str,
+    text: &str,
+) -> bool {
+    // IDA 0xa12c94: posts to the filter URL; differs-from-"True" means filtered.
+    crate::player::is_message_filtered(post, url, text)
 }
 
 // 0xa12fb0 — __ZNK3RBX7Network7Players14getLoadDataUrlEi
@@ -52,24 +57,27 @@ pub fn stub_a12fb0(template: &str, user_id: i32) -> String {
 // demangled: RBX::Network::Players::getSaveDataUrl(int)const
 // type: void __fastcall(RBX::Network::Players *this, int, int)
 #[doc(alias = "RBX::Network::Players::getSaveDataUrl(int)const")]
-pub fn stub_a13104() -> ! {
-    todo!("0xa13104 RBX::Network::Players::getSaveDataUrl(int)const")
+pub fn stub_a13104(players: &crate::player::Players, user_id: i32) -> String {
+    // IDA 0xa13104: the stored save-data template with the user id.
+    players.save_data_url(user_id)
 }
 
 // 0xa13258 — __ZNK3RBX7Network7Players25getSaveLeaderboardDataUrlEi
 // demangled: RBX::Network::Players::getSaveLeaderboardDataUrl(int)const
 // type: void __fastcall(RBX::Network::Players *this, int, int)
 #[doc(alias = "RBX::Network::Players::getSaveLeaderboardDataUrl(int)const")]
-pub fn stub_a13258() -> ! {
-    todo!("0xa13258 RBX::Network::Players::getSaveLeaderboardDataUrl(int)const")
+pub fn stub_a13258(players: &crate::player::Players, user_id: i32) -> String {
+    // IDA 0xa13258: the stored leaderboard-save template with the user id.
+    players.save_leaderboard_data_url(user_id)
 }
 
 // 0xa133ac — __ZNK3RBX7Network7Players17hasLeaderboardKeyERKSs
 // demangled: RBX::Network::Players::hasLeaderboardKey(std::string const&)const
 // type: bool __fastcall(RBX::Network::Players *this, const void **)
 #[doc(alias = "RBX::Network::Players::hasLeaderboardKey(std::string const&)const")]
-pub fn stub_a133ac() -> ! {
-    todo!("0xa133ac RBX::Network::Players::hasLeaderboardKey(std::string const&)const")
+pub fn stub_a133ac(players: &crate::player::Players, key: &str) -> bool {
+    // IDA 0xa133ac: membership in the key list.
+    players.has_leaderboard_key(key)
 }
 
 // 0xa13478 — __ZNK3RBX7Network7Players19beginLeaderboardKeyEv

@@ -253,6 +253,24 @@ impl Players {
     pub fn set_chat_option(&mut self, option: u32) {
         self.chat_option = option;
     }
+
+    /// `Players::getSaveDataUrl` (IDA 0xa13104): the stored template
+    /// formatted with the user id (same `%d` shape as `getLoadDataUrl`).
+    pub fn save_data_url(&self, user_id: i32) -> String {
+        load_data_url(&self.save_data_url, user_id)
+    }
+
+    /// `Players::getSaveLeaderboardDataUrl` (IDA 0xa13258): the stored
+    /// template formatted with the user id.
+    pub fn save_leaderboard_data_url(&self, user_id: i32) -> String {
+        load_data_url(&self.save_leaderboard_data_url, user_id)
+    }
+
+    /// `Players::hasLeaderboardKey` (IDA 0xa133ac): membership in the key list.
+    pub fn has_leaderboard_key(&self, key: &str) -> bool {
+        self.leaderboard_keys.iter().any(|k| k == key)
+    }
+
     /// `Players::setConnection` (IDA 0xa0979c): stores the peer handle at
     /// +196. The handle stays engine-side; the crate keeps liveness.
     pub fn set_connection(&mut self, connected: bool) {
@@ -270,6 +288,16 @@ impl Players {
         self.leaderboard_keys.clear();
         self.peer_connected = false;
     }
+}
+/// `Players::isMessageFiltered` (IDA 0xa12c94): posts the text to the
+/// chat-filter URL and returns whether the response differs from "True"
+/// (0xa12d40..0xa12e0a). HTTP stays engine-side behind `post`.
+pub fn is_message_filtered(
+    post: &mut dyn FnMut(&str, &str) -> String,
+    url: &str,
+    text: &str,
+) -> bool {
+    post(url, text) != "True"
 }
 
 
@@ -1366,5 +1394,20 @@ mod tests {
         assert!(woke);
         assert_eq!(report.messages.len(), 1);
         assert_eq!(report.messages[0].text, "a");
+    }
+
+    #[test]
+    fn filter_and_save_urls() {
+        // IDA 0xa12c94/0xa13104/0xa13258/0xa133ac.
+        assert!(is_message_filtered(&mut |_, _| "Blocked".to_owned(), "http://f", "hi"));
+        assert!(!is_message_filtered(&mut |_, _| "True".to_owned(), "http://f", "hi"));
+        let mut players = Players::new();
+        players.set_save_data_url("http://s/%d".to_owned());
+        players.set_save_leaderboard_data_url("http://l/%d".to_owned());
+        assert_eq!(players.save_data_url(9), "http://s/9");
+        assert_eq!(players.save_leaderboard_data_url(9), "http://l/9");
+        assert!(!players.has_leaderboard_key("k"));
+        players.add_leaderboard_key("k".to_owned());
+        assert!(players.has_leaderboard_key("k"));
     }
 }
