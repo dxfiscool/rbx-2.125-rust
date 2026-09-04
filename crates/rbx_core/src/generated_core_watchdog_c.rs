@@ -181,6 +181,23 @@ pub mod billboard_prop {
             std::mem::transmute(resolve_target(imp.setter, this));
         target(this as *mut u8, value)
     }
+    /// IDA 0x3d0b80 float `getValue`: `return v3(v5)` — same member dispatch
+    /// as the Instance* `getValue` (0x3d09f4), float result.
+    pub unsafe fn get_float(imp: &GetSetImpl, obj: *const u8) -> f32 {
+        let this = resolve_this(obj, imp.getter.adj);
+        let target: extern "C" fn(*const u8) -> f32 =
+            std::mem::transmute(resolve_target(imp.getter, this));
+        target(this)
+    }
+
+    /// IDA 0x3d0ba0 float `setValue`: `v4(v6, *a3)` — the const-ref is
+    /// dereferenced by the caller glue (`LDR R1, [R2]`), forwarded by value.
+    pub unsafe fn set_float(imp: &GetSetImpl, obj: *mut u8, value: f32) {
+        let this = resolve_this(obj as *const u8, imp.setter.adj);
+        let target: extern "C" fn(*mut u8, f32) =
+            std::mem::transmute(resolve_target(imp.setter, this));
+        target(this as *mut u8, value)
+    }
 
     /// was: `RBX::Reflection::PropDescriptor<T, V>` storage. The owned `Box<GetSetImpl>`
     /// is the IDA `a1[10]` (`+0x28`) word freed by the dtor (`v2 = a1[10]; if (v2) delete`).
@@ -254,6 +271,12 @@ pub mod billboard_prop {
         extern "C" fn fake_bset(this: *mut u8, v: bool) {
             unsafe { *(this.add(36) as *mut bool) = v }
         }
+        extern "C" fn fake_fget(this: *const u8) -> f32 {
+            unsafe { *(this.add(36) as *const f32) }
+        }
+        extern "C" fn fake_fset(this: *mut u8, v: f32) {
+            unsafe { *(this.add(36) as *mut f32) = v }
+        }
         extern "C" fn fake_uget(out: *mut UDim2, this: *const u8) {
             unsafe { *out = *(this.add(36) as *const UDim2) }
         }
@@ -297,6 +320,12 @@ pub mod billboard_prop {
             v: Vector3,
         }
 
+        #[repr(C)]
+        struct FakeFloat {
+            pad: [u8; 36],
+            f: f32,
+        }
+
         fn described_of(fake: *const u8) -> *const u8 {
             fake.wrapping_add(DESCRIBED_BASE_BIAS)
         }
@@ -315,6 +344,17 @@ pub mod billboard_prop {
                 set_bool(&imp, described_of(base) as *mut u8, false);
             }
             assert_eq!(fake.b, false);
+        }
+        #[test]
+        fn float_get_set_roundtrip_direct() {
+            let mut fake = FakeFloat { pad: [0; 36], f: 1.5 };
+            let base = std::ptr::addr_of!(fake) as *const u8;
+            let imp = GetSetImpl { getter: direct(fake_fget as usize), setter: direct(fake_fset as usize) };
+            unsafe {
+                assert_eq!(get_float(&imp, described_of(base)), 1.5);
+                set_float(&imp, described_of(base) as *mut u8, 2.5);
+            }
+            assert_eq!(fake.f, 2.5);
         }
 
         #[test]
@@ -473,6 +513,31 @@ pub mod billboard_ref {
             this.attributes = (attr0, attr1, attr2);
             this.permissions = permissions;
             slot
+        }
+        /// Same ctor shape with caller vtables (IDA 0x3d043c Camera
+        /// `RefPropDescriptor`: `*a1 = &off_1240708`, `a1[10] = &off_124075C`,
+        /// `new GetSetImpl(off_12407C8, ...)` into `a1[11]`).
+        /// Returns `slot` (IDA `return a1`).
+        pub unsafe fn construct_with(
+            slot: *mut RefPropDescriptor,
+            vtable: &'static str,
+            sub_vtable: &'static str,
+            name: *const c_char,
+            category: *const c_char,
+            getter: MemberPtr,
+            setter: MemberPtr,
+            attr0: u32,
+            attr1: u32,
+            attr2: u32,
+            permissions: u32,
+        ) -> *mut RefPropDescriptor {
+            let out = Self::construct(
+                slot, name, category, getter, setter, attr0, attr1, attr2, permissions,
+            );
+            let this = &mut *slot;
+            this.vtable = vtable;
+            this.sub_vtable = sub_vtable;
+            out
         }
 
         /// IDA 0x3c2604 deleting-dtor shape: restore `off_123FF48` + `off_123FF9C`,

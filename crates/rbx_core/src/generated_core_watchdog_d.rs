@@ -5,215 +5,448 @@
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
 use crate::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+/// Batch 1: Camera descriptor vtables (IDA-grounded addresses). The
+/// `RefPropDescriptor<Camera, Instance>` C2 (0x3d043c) installs `*a1 =
+/// &off_1240708` (`__ZTV...RefPropDescriptorINS_6CameraENS_8InstanceEEE`
+/// 0x1240700 + 8) and `a1[10] = &off_124075C` (+0x5C); its `GetSetImpl` box
+/// installs `off_12407C8` (GetSetImpl vtable 0x12407c0 + 8). The
+/// `PropDescriptor<Camera, float>` C2 (0x3d0a38) installs `off_1240848`
+/// (0x1240840 + 8) with an `off_12408A8` GetSetImpl box; its D0 (0x3d0b4c)
+/// restores `off_1270A68` (TypedPropertyDescriptor<float> 0x1270a60 + 8).
+/// The `PropDescriptor<Camera, CoordinateFrame>` C2 (0x3d0bc4) installs
+/// `off_12408D8` (0x12408d0 + 8) with an `off_1240948` box; its D0 (0x3d0cd8)
+/// restores `off_1270DA8` (TypedPropertyDescriptor<CoordinateFrame> + 8).
+pub mod camera_desc {
+    /// was: `RefPropDescriptor<Camera, Instance>` vtable (IDA 0x3d043c/0x3d04e0).
+    pub const CAM_REF_DESC_VTAB: &str = "off_1240708"; // IDA 0x3d043c
+    /// was: `RefPropDescriptor<Camera, Instance>` sub-table (IDA 0x3d043c/0x3d04e0).
+    pub const CAM_REF_SUB_VTAB: &str = "off_124075C"; // IDA 0x3d043c
+    /// was: `GetSetImpl<Instance*, void(Instance*)>` vtable (IDA 0x3d043c).
+    pub const CAM_INST_GETSET_VTAB: &str = "off_12407C8"; // IDA 0x3d043c
+    /// was: `PropDescriptor<Camera, float>` vtable (IDA 0x3d0a38).
+    pub const CAM_FLOAT_DESC_VTAB: &str = "off_1240848"; // IDA 0x3d0a38
+    /// was: `GetSetImpl<float, void(float)>` vtable (IDA 0x3d0a38).
+    pub const CAM_FLOAT_GETSET_VTAB: &str = "off_12408A8"; // IDA 0x3d0a38
+    /// was: `TypedPropertyDescriptor<float>` vtable (IDA 0x3d0b4c).
+    pub const TYPED_FLOAT_VTAB: &str = "off_1270A68"; // IDA 0x3d0b4c
+    /// was: `PropDescriptor<Camera, CoordinateFrame>` vtable (IDA 0x3d0bc4).
+    pub const CAM_CF_DESC_VTAB: &str = "off_12408D8"; // IDA 0x3d0bc4
+    /// was: `GetSetImpl<CoordinateFrame, void(CoordinateFrame)>` vtable (IDA 0x3d0bc4).
+    pub const CAM_CF_GETSET_VTAB: &str = "off_1240948"; // IDA 0x3d0bc4
+    /// was: `TypedPropertyDescriptor<CoordinateFrame>` vtable (IDA 0x3d0cd8).
+    pub const TYPED_CF_VTAB: &str = "off_1270DA8"; // IDA 0x3d0cd8
+}
+
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(float),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // 0x3d0400 — __ZNK3RBX10Reflection13BoundFuncDescINS_6CameraEFvfELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // type: int __fastcall(int, int, int)
-pub fn stub_3d0400() -> ! {
-    todo!("0x3d0400 __ZNK3RBX10Reflection13BoundFuncDescINS_6CameraEFvfELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")
+pub unsafe fn stub_3d0400(
+    desc: &crate::generated_core_watchdog_c::camera_enum::BoundFuncDescriptor,
+    obj: *const u8,
+    arg: f32,
+    callee: &dyn crate::generated_core_watchdog_c::camera_boundfunc::FnCameraFloatVoid,
+) {
+    // IDA 0x3d0400: derived-36 + member pair + getArg<float,1> + member
+    // tail-call (float forwarded in R1 — same template as 0x3cf4f4/0x3cfc6c).
+    crate::generated_core_watchdog_c::camera_boundfunc::execute_float_void(desc, obj, arg, callee)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::RefPropDescriptor<RBX::Instance* (RBX::Camera::*)(void)const,void (RBX::Camera::*)(RBX::Instance*)>(char const*,char const*,RBX::Instance* (RBX::Camera::*)(void)const,void (RBX::Camera::*)(RBX::Instance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // 0x3d043c — __ZN3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int, int, int, int, int, int)
-pub fn stub_3d043c() -> ! {
-    todo!("0x3d043c __ZN3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub unsafe fn stub_3d043c(
+    slot: *mut crate::generated_core_watchdog_c::billboard_ref::RefPropDescriptor,
+    name: *const std::os::raw::c_char,
+    category: *const std::os::raw::c_char,
+    getter_func: usize,
+    getter_adj: usize,
+    setter_func: usize,
+    setter_adj: usize,
+    attr0: u32,
+    attr1: u32,
+    attr2: u32,
+    permissions: u32,
+) -> *mut crate::generated_core_watchdog_c::billboard_ref::RefPropDescriptor {
+    // IDA 0x3d043c: classDescriptor ensure + RefType<Instance*> singleton +
+    // PropertyDescriptor base init + off_1240708/off_124075C + new
+    // GetSetImpl(off_12407C8, {getfunc, getadj, setfunc, setadj}) into a1[11].
+    // Same template as the Billboard C2 (0x3c2560) with Camera vtables.
+    use crate::generated_core_watchdog_c::billboard_prop::MemberPtr;
+    crate::generated_core_watchdog_c::billboard_ref::RefPropDescriptor::construct_with(
+        slot,
+        camera_desc::CAM_REF_DESC_VTAB,
+        camera_desc::CAM_REF_SUB_VTAB,
+        name,
+        category,
+        MemberPtr { func: getter_func, adj: getter_adj },
+        MemberPtr { func: setter_func, adj: setter_adj },
+        attr0,
+        attr1,
+        attr2,
+        permissions,
+    )
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::~RefPropDescriptor()")]
 // 0x3d04e0 — __ZN3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEED0Ev
 // type: int __fastcall(_DWORD *)
-pub fn stub_3d04e0() -> ! {
-    todo!("0x3d04e0 __ZN3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEED0Ev")
+pub unsafe fn stub_3d04e0(
+    slot: *mut crate::generated_core_watchdog_c::billboard_ref::RefPropDescriptor,
+) {
+    // IDA 0x3d04e0 D0: off_1240708 + off_124075C, delete the a1[11] box
+    // (+ operator delete — slot stays caller-owned here).
+    crate::generated_core_watchdog_c::billboard_ref::RefPropDescriptor::destroy_with(
+        slot,
+        camera_desc::CAM_REF_DESC_VTAB,
+        camera_desc::CAM_REF_SUB_VTAB,
+    )
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::isReadOnly(void)const")]
 // 0x3d0510 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE10isReadOnlyEv
 // type: int __fastcall(int)
-pub fn stub_3d0510() -> ! {
-    todo!("0x3d0510 __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE10isReadOnlyEv")
+pub unsafe fn stub_3d0510(
+    desc: &crate::generated_core_watchdog_c::billboard_ref::RefPropDescriptor,
+) -> bool {
+    // IDA 0x3d0510: box +0 slot (GetSetImpl::isReadOnly) — return 0.
+    crate::generated_core_watchdog_c::billboard_ref::is_read_only(desc)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::isWriteOnly(void)const")]
 // 0x3d0520 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE11isWriteOnlyEv
 // type: int __fastcall(int)
-pub fn stub_3d0520() -> ! {
-    todo!("0x3d0520 __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE11isWriteOnlyEv")
+pub unsafe fn stub_3d0520(
+    desc: &crate::generated_core_watchdog_c::billboard_ref::RefPropDescriptor,
+) -> bool {
+    // IDA 0x3d0520: box +4 slot (GetSetImpl::isWriteOnly) — return 0.
+    crate::generated_core_watchdog_c::billboard_ref::is_write_only(desc)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 // 0x3d0530 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
 // type: bool __fastcall(int, int, int)
-pub fn stub_3d0530() -> ! {
-    todo!("0x3d0530 __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE11equalValuesEPKNS0_13DescribedBaseES7_")
+pub unsafe fn stub_3d0530(
+    desc: &crate::generated_core_watchdog_c::billboard_ref::RefPropDescriptor,
+    a: *const u8,
+    b: *const u8,
+) -> bool {
+    // IDA 0x3d0530: getValue(box, a2) == getValue(box, a3).
+    crate::generated_core_watchdog_c::billboard_ref::equal_values(desc, a, b)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 // 0x3d0558 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 // type: void __fastcall(int, int, _DWORD *, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-pub fn stub_3d0558() -> ! {
-    todo!("0x3d0558 __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
+pub unsafe fn stub_3d0558(
+    desc: &crate::generated_core_watchdog_c::billboard_ref::RefPropDescriptor,
+    obj: *const u8,
+) -> crate::generated_core_watchdog_c::billboard_ref::RefVariant {
+    // IDA 0x3d0558: getValue + shared_from<Instance> + derived+36 +
+    // DescribedBase-shared-ptr singleton + placement_any (refcount traffic no-op).
+    crate::generated_core_watchdog_c::billboard_ref::get_variant(desc, obj)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 // 0x3d0670 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 // type: void __fastcall(int, int, int)
-pub fn stub_3d0670() -> ! {
-    todo!("0x3d0670 __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")
+pub unsafe fn stub_3d0670(
+    desc: &crate::generated_core_watchdog_c::billboard_ref::RefPropDescriptor,
+    obj: *mut u8,
+    variant: &crate::generated_core_watchdog_c::billboard_ref::RefVariant,
+) {
+    // IDA 0x3d0670: Variant::get<shared_ptr<DescribedBase>> + desc+0x40 setter
+    // (base-36 back to derived for the box setter).
+    crate::generated_core_watchdog_c::billboard_ref::set_variant(desc, obj, variant)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 // 0x3d0738 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE9copyValueEPKNS0_13DescribedBaseEPS5_
 // type: int __fastcall(int, int, int)
-pub fn stub_3d0738() -> ! {
-    todo!("0x3d0738 __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE9copyValueEPKNS0_13DescribedBaseEPS5_")
+pub unsafe fn stub_3d0738(
+    desc: &crate::generated_core_watchdog_c::billboard_ref::RefPropDescriptor,
+    src: *const u8,
+    dst: *mut u8,
+) {
+    // IDA 0x3d0738: v6 = getValue(box, a2); setValue(box, a3, &v6).
+    crate::generated_core_watchdog_c::billboard_ref::copy_value(desc, src, dst)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 // 0x3d075c — __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 // type: void __fastcall(int, int, int)
-pub fn stub_3d075c() -> ! {
-    todo!("0x3d075c __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")
+pub unsafe fn stub_3d075c(
+    desc: &crate::generated_core_watchdog_c::billboard_ref::RefPropDescriptor,
+    obj: *const u8,
+    xml: *mut crate::generated_core_watchdog_c::billboard_ref::XmlElement,
+) {
+    // IDA 0x3d075c: getValue + derived+36 + InstanceHandle +
+    // XmlNameValuePair::setValue(a3 + 12).
+    crate::generated_core_watchdog_c::billboard_ref::write_value(desc, obj, xml)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-// 0x3d0830 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+// 0x3d0830 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE10readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 // type: int __fastcall(int, int, int, int)
-pub fn stub_3d0830() -> ! {
-    todo!("0x3d0830 __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
+pub unsafe fn stub_3d0830(
+    desc: &crate::generated_core_watchdog_c::billboard_ref::RefPropDescriptor,
+    obj: *mut u8,
+    xml: *const crate::generated_core_watchdog_c::billboard_ref::XmlElement,
+    binder: &dyn crate::generated_core_watchdog_c::billboard_ref::ReferenceBinder,
+) -> i32 {
+    // IDA 0x3d0830: if (a3) a3 += 12; binder[4](a4, a3, a2, a1 + 40) tail-call.
+    crate::generated_core_watchdog_c::billboard_ref::read_value(desc, obj, xml, binder)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
 // 0x3d0854 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE11getRefValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
-pub fn stub_3d0854() -> ! {
-    todo!("0x3d0854 __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE11getRefValueEPKNS0_13DescribedBaseE")
+pub unsafe fn stub_3d0854(
+    desc: &crate::generated_core_watchdog_c::billboard_ref::RefPropDescriptor,
+    obj: *const u8,
+) -> *const u8 {
+    // IDA 0x3d0854: result = getValue(box); if (result) result += 36.
+    crate::generated_core_watchdog_c::billboard_ref::get_ref_value(desc, obj)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
 // 0x3d0868 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE11setRefValueEPNS0_13DescribedBaseES6_
 // type: int __fastcall(int, int, void *lpsrc)
-pub fn stub_3d0868() -> ! {
-    todo!("0x3d0868 __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE11setRefValueEPNS0_13DescribedBaseES6_")
+pub unsafe fn stub_3d0868(
+    desc: &crate::generated_core_watchdog_c::billboard_ref::RefPropDescriptor,
+    obj: *mut u8,
+    src: *const u8,
+    is_instance: fn(*const u8) -> bool,
+) -> Result<(), crate::generated_core_watchdog_c::billboard_ref::BadCast> {
+    // IDA 0x3d0868: null passes through; non-null __dynamic_casts
+    // DescribedBase -> Instance (bad_cast throw on failure); setValue.
+    crate::generated_core_watchdog_c::billboard_ref::set_ref_value(desc, obj, src, is_instance)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
 // 0x3d08e4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
 // type: int __fastcall(int, int, int)
-pub fn stub_3d08e4() -> ! {
-    todo!("0x3d08e4 __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_")
+pub unsafe fn stub_3d08e4(
+    desc: &crate::generated_core_watchdog_c::billboard_ref::RefPropDescriptor,
+    obj: *mut u8,
+    src: *const u8,
+) {
+    // IDA 0x3d08e4: v3 = a3 ? a3 - 36 : 0 (no cast); setValue(box, a2, &v5).
+    crate::generated_core_watchdog_c::billboard_ref::set_ref_value_unsafe(desc, obj, src)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 // 0x3d0904 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 // type: void __fastcall(int, int, const shared_count *, int, boost::detail::sp_counted_base *, int, int, int, int, int)
-pub fn stub_3d0904() -> ! {
-    todo!("0x3d0904 __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")
+pub unsafe fn stub_3d0904(
+    desc: &crate::generated_core_watchdog_c::billboard_ref::RefPropDescriptor,
+    obj: *mut u8,
+    handle: *const crate::generated_core_watchdog_c::billboard_ref::InstanceHandle,
+) {
+    // IDA 0x3d0904: v22 = pi ? pi - 36; setValue(box, a2, &v24).
+    crate::generated_core_watchdog_c::billboard_ref::assign_idref(desc, obj, handle)
 }
 
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 // 0x3d09e4 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 // type: int __fastcall(int)
-pub fn stub_3d09e4() -> ! {
-    todo!("0x3d09e4 __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")
+pub unsafe fn stub_3d09e4(
+    this_adj: *const u8,
+    obj: *mut u8,
+    handle: *const crate::generated_core_watchdog_c::billboard_ref::InstanceHandle,
+) {
+    // IDA 0x3d09e4 Thn40: R0 -= 40, tail-jump to assignIDREF.
+    crate::generated_core_watchdog_c::billboard_ref::assign_idref_thunk(this_adj, obj, handle)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::Camera::*)(void)const,void (RBX::Camera::*)(RBX::Instance *)>::isReadOnly(void)const")]
 // 0x3d09ec — __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 // type: int()
-pub fn stub_3d09ec() -> ! {
-    todo!("0x3d09ec __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_3d09ec() -> bool {
+    // IDA 0x3d09ec: return 0.
+    false
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::Camera::*)(void)const,void (RBX::Camera::*)(RBX::Instance *)>::isWriteOnly(void)const")]
 // 0x3d09f0 — __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // type: int()
-pub fn stub_3d09f0() -> ! {
-    todo!("0x3d09f0 __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_3d09f0() -> bool {
+    // IDA 0x3d09f0: return 0.
+    false
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::Camera::*)(void)const,void (RBX::Camera::*)(RBX::Instance *)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // 0x3d09f4 — __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
-pub fn stub_3d09f4() -> ! {
-    todo!("0x3d09f4 __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")
+pub unsafe fn stub_3d09f4(
+    imp: *const crate::generated_core_watchdog_c::billboard_prop::GetSetImpl,
+    obj: *const u8,
+) -> *mut u8 {
+    // IDA 0x3d09f4: DescribedBase-36, (adj >> 1) adjust, virtual branch, tail-call getter.
+    crate::generated_core_watchdog_c::billboard_ref::get_instance(&*imp, obj)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::Camera::*)(void)const,void (RBX::Camera::*)(RBX::Instance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::Instance * const&)const")]
 // 0x3d0a14 — __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 // type: int __fastcall(int, int, _DWORD *)
-pub fn stub_3d0a14() -> ! {
-    todo!("0x3d0a14 __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")
+pub unsafe fn stub_3d0a14(
+    imp: *const crate::generated_core_watchdog_c::billboard_prop::GetSetImpl,
+    obj: *mut u8,
+    value: *mut u8,
+) {
+    // IDA 0x3d0a14: setter(this, *a3); void result.
+    crate::generated_core_watchdog_c::billboard_ref::set_instance(&*imp, obj, value)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,float>::PropDescriptor<float (RBX::Camera::*)(void)const,void (RBX::Camera::*)(float)>(char const*,char const*,float (RBX::Camera::*)(void)const,void (RBX::Camera::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // 0x3d0a38 — __ZN3RBX10Reflection14PropDescriptorINS_6CameraEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
-pub fn stub_3d0a38() -> ! {
-    todo!("0x3d0a38 __ZN3RBX10Reflection14PropDescriptorINS_6CameraEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub unsafe fn stub_3d0a38(
+    slot: *mut crate::generated_core_watchdog_c::billboard_prop::PropDescriptor,
+    name: *const std::os::raw::c_char,
+    category: *const std::os::raw::c_char,
+    getter_func: usize,
+    getter_adj: usize,
+    setter_func: usize,
+    setter_adj: usize,
+    attr0: u32,
+    attr1: u32,
+    attr2: u32,
+    permissions: u32,
+) -> *mut crate::generated_core_watchdog_c::billboard_prop::PropDescriptor {
+    // IDA 0x3d0a38: GetSetImpl vtable off_12408A8, descriptor vtable
+    // off_1240848, TypedPropertyDescriptor<float> base init.
+    // Same template as the Billboard UDim2 C2 (0x3c207c).
+    use crate::generated_core_watchdog_c::billboard_prop::MemberPtr;
+    crate::generated_core_watchdog_c::billboard_prop::PropDescriptor::construct(
+        slot,
+        name,
+        category,
+        MemberPtr { func: getter_func, adj: getter_adj },
+        MemberPtr { func: setter_func, adj: setter_adj },
+        camera_desc::CAM_FLOAT_DESC_VTAB,
+        attr0,
+        attr1,
+        attr2,
+        permissions,
+    )
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,float>::~PropDescriptor()")]
 // 0x3d0b4c — __ZN3RBX10Reflection14PropDescriptorINS_6CameraEfED0Ev
 // type: int __fastcall(_DWORD *)
-pub fn stub_3d0b4c() -> ! {
-    todo!("0x3d0b4c __ZN3RBX10Reflection14PropDescriptorINS_6CameraEfED0Ev")
+pub unsafe fn stub_3d0b4c(
+    slot: *mut crate::generated_core_watchdog_c::billboard_prop::PropDescriptor,
+) {
+    // IDA 0x3d0b4c: *a1 = &off_1270A68 (TypedPropertyDescriptor<float>);
+    // delete a1[10]; delete a1 (slot stays caller-owned here).
+    crate::generated_core_watchdog_c::billboard_prop::PropDescriptor::destroy(
+        slot,
+        camera_desc::TYPED_FLOAT_VTAB,
+    )
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,float>::GetSetImpl<float (RBX::Camera::*)(void)const,void (RBX::Camera::*)(float)>::isReadOnly(void)const")]
 // 0x3d0b78 — __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
 // type: int()
-pub fn stub_3d0b78() -> ! {
-    todo!("0x3d0b78 __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv")
+pub fn stub_3d0b78() -> bool {
+    // IDA 0x3d0b78: return 0.
+    false
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,float>::GetSetImpl<float (RBX::Camera::*)(void)const,void (RBX::Camera::*)(float)>::isWriteOnly(void)const")]
 // 0x3d0b7c — __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
 // type: int()
-pub fn stub_3d0b7c() -> ! {
-    todo!("0x3d0b7c __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv")
+pub fn stub_3d0b7c() -> bool {
+    // IDA 0x3d0b7c: return 0.
+    false
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,float>::GetSetImpl<float (RBX::Camera::*)(void)const,void (RBX::Camera::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // 0x3d0b80 — __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
-pub fn stub_3d0b80() -> ! {
-    todo!("0x3d0b80 __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE")
+pub unsafe fn stub_3d0b80(
+    imp: *const crate::generated_core_watchdog_c::billboard_prop::GetSetImpl,
+    obj: *const u8,
+) -> f32 {
+    // IDA 0x3d0b80: DescribedBase-36, (adj >> 1) adjust, virtual branch, tail-call getter.
+    crate::generated_core_watchdog_c::billboard_prop::get_float(&*imp, obj)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,float>::GetSetImpl<float (RBX::Camera::*)(void)const,void (RBX::Camera::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
 // 0x3d0ba0 — __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
 // type: int __fastcall(int, int, _DWORD *)
-pub fn stub_3d0ba0() -> ! {
-    todo!("0x3d0ba0 __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf")
+pub unsafe fn stub_3d0ba0(
+    imp: *const crate::generated_core_watchdog_c::billboard_prop::GetSetImpl,
+    obj: *mut u8,
+    value: f32,
+) {
+    // IDA 0x3d0ba0: LDR R1, [R2] deref, then setter(this, value); void result.
+    crate::generated_core_watchdog_c::billboard_prop::set_float(&*imp, obj, value)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,G3D::CoordinateFrame>::PropDescriptor<G3D::CoordinateFrame const& (RBX::Camera::*)(void)const,void (RBX::Camera::*)(G3D::CoordinateFrame const&)>(char const*,char const*,G3D::CoordinateFrame const& (RBX::Camera::*)(void)const,void (RBX::Camera::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // 0x3d0bc4 — __ZN3RBX10Reflection14PropDescriptorINS_6CameraEN3G3D15CoordinateFrameEEC2IMS2_KFRKS4_vEMS2_FvS8_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
-pub fn stub_3d0bc4() -> ! {
-    todo!("0x3d0bc4 __ZN3RBX10Reflection14PropDescriptorINS_6CameraEN3G3D15CoordinateFrameEEC2IMS2_KFRKS4_vEMS2_FvS8_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub unsafe fn stub_3d0bc4(
+    slot: *mut crate::generated_core_watchdog_c::billboard_prop::PropDescriptor,
+    name: *const std::os::raw::c_char,
+    category: *const std::os::raw::c_char,
+    getter_func: usize,
+    getter_adj: usize,
+    setter_func: usize,
+    setter_adj: usize,
+    attr0: u32,
+    attr1: u32,
+    attr2: u32,
+    permissions: u32,
+) -> *mut crate::generated_core_watchdog_c::billboard_prop::PropDescriptor {
+    // IDA 0x3d0bc4: GetSetImpl vtable off_1240948, descriptor vtable
+    // off_12408D8, TypedPropertyDescriptor<CoordinateFrame> base init.
+    // Same template as the float C2 (0x3d0a38).
+    use crate::generated_core_watchdog_c::billboard_prop::MemberPtr;
+    crate::generated_core_watchdog_c::billboard_prop::PropDescriptor::construct(
+        slot,
+        name,
+        category,
+        MemberPtr { func: getter_func, adj: getter_adj },
+        MemberPtr { func: setter_func, adj: setter_adj },
+        camera_desc::CAM_CF_DESC_VTAB,
+        attr0,
+        attr1,
+        attr2,
+        permissions,
+    )
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,G3D::CoordinateFrame>::~PropDescriptor()")]
 // 0x3d0cd8 — __ZN3RBX10Reflection14PropDescriptorINS_6CameraEN3G3D15CoordinateFrameEED0Ev
 // type: int __fastcall(_DWORD *)
-pub fn stub_3d0cd8() -> ! {
-    todo!("0x3d0cd8 __ZN3RBX10Reflection14PropDescriptorINS_6CameraEN3G3D15CoordinateFrameEED0Ev")
+pub unsafe fn stub_3d0cd8(
+    slot: *mut crate::generated_core_watchdog_c::billboard_prop::PropDescriptor,
+) {
+    // IDA 0x3d0cd8: *a1 = &off_1270DA8 (TypedPropertyDescriptor<CoordinateFrame>);
+    // delete a1[10]; delete a1 (slot stays caller-owned here).
+    crate::generated_core_watchdog_c::billboard_prop::PropDescriptor::destroy(
+        slot,
+        camera_desc::TYPED_CF_VTAB,
+    )
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Camera::*)(void)const,void (RBX::Camera::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")]
 // 0x3d0d04 — __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv
 // type: int()
-pub fn stub_3d0d04() -> ! {
-    todo!("0x3d0d04 __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv")
+pub fn stub_3d0d04() -> bool {
+    // IDA 0x3d0d04: return 0.
+    false
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Camera::*)(void)const,void (RBX::Camera::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")]
 // 0x3d0d08 — __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv
 // type: int()
-pub fn stub_3d0d08() -> ! {
-    todo!("0x3d0d08 __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv")
+pub fn stub_3d0d08() -> bool {
+    // IDA 0x3d0d08: return 0.
+    false
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Camera::*)(void)const,void (RBX::Camera::*)(G3D::CoordinateFrame const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
@@ -1047,4 +1280,279 @@ pub fn stub_3e2ffc() -> ! {
 // type: void __fastcall(_DWORD *)
 pub fn stub_3e3084() -> ! {
     todo!("0x3e3084 __ZNK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE7Creator6createEv")
+}
+
+#[cfg(test)]
+mod batch1_tests {
+    use super::camera_desc;
+    use crate::generated_core_watchdog_c::billboard_prop::{
+        GetSetImpl, MemberPtr, PropDescriptor,
+    };
+    use crate::generated_core_watchdog_c::billboard_ref::{
+        InstanceHandle, RefPropDescriptor, RefVariant,
+    };
+    use crate::generated_core_watchdog_c::camera_boundfunc::FnCameraFloatVoid;
+    extern "C" fn fake_get(this: *const u8) -> *mut u8 {
+        // Slot sits at +36 (4-mod-8); the binary is ARM (unaligned-safe).
+        unsafe { (this.add(36) as *const *mut u8).read_unaligned() }
+    }
+    extern "C" fn fake_set(this: *mut u8, v: *mut u8) {
+        unsafe { (this.add(36) as *mut *mut u8).write_unaligned(v) }
+    }
+    extern "C" fn fake_fget(this: *const u8) -> f32 {
+        unsafe { *(this.add(36) as *const f32) }
+    }
+    extern "C" fn fake_fset(this: *mut u8, v: f32) {
+        unsafe { *(this.add(36) as *mut f32) = v }
+    }
+
+    /// Instance* slot at +36 (pointer-sized, 4-mod-8 — always touched via
+    /// `read_unaligned`/`write_unaligned`, like the ARM binary).
+    #[repr(C)]
+    struct FakeInst {
+        pad: [u8; 44],
+    }
+    #[repr(C)]
+    struct FakeFloat {
+        pad: [u8; 36],
+        f: f32,
+    }
+
+    fn slot_of(fake: &FakeInst) -> *mut u8 {
+        unsafe { ((std::ptr::addr_of!(*fake) as *const u8).add(36) as *const *mut u8).read_unaligned() }
+    }
+    fn set_slot(fake: &mut FakeInst, v: *mut u8) {
+        unsafe { ((std::ptr::addr_of!(*fake) as *const u8).add(36) as *mut *mut u8).write_unaligned(v) }
+    }
+
+    fn direct(f: usize) -> MemberPtr {
+        MemberPtr { func: f, adj: 0 }
+    }
+
+    fn ref_desc() -> RefPropDescriptor {
+        RefPropDescriptor {
+            vtable: camera_desc::CAM_REF_DESC_VTAB,
+            sub_vtable: camera_desc::CAM_REF_SUB_VTAB,
+            name: String::from("CameraSubject"),
+            category: String::from("Camera"),
+            getset: Some(Box::new(GetSetImpl {
+                getter: direct(fake_get as usize),
+                setter: direct(fake_set as usize),
+            })),
+            attributes: (0, 0, 0),
+            permissions: 0,
+        }
+    }
+
+    fn described_of(fake: *const u8) -> *const u8 {
+        fake.wrapping_add(36)
+    }
+
+    fn imp_of(d: &RefPropDescriptor) -> *const GetSetImpl {
+        d.getset.as_deref().unwrap() as *const GetSetImpl
+    }
+
+    #[test]
+    fn ref_ctor_vtables_and_dtor_clears() {
+        let mut slot = RefPropDescriptor::default();
+        unsafe {
+            super::stub_3d043c(
+                &mut slot,
+                std::ptr::null(),
+                std::ptr::null(),
+                0x40,
+                0,
+                0x44,
+                0,
+                0,
+                0,
+                0,
+                0,
+            );
+        }
+        assert_eq!(slot.vtable, camera_desc::CAM_REF_DESC_VTAB);
+        assert_eq!(slot.sub_vtable, camera_desc::CAM_REF_SUB_VTAB);
+        assert!(slot.getset.is_some());
+        unsafe {
+            assert!(!super::stub_3d0510(&slot));
+            assert!(!super::stub_3d0520(&slot));
+            super::stub_3d04e0(&mut slot);
+        }
+        assert_eq!(slot.vtable, camera_desc::CAM_REF_DESC_VTAB);
+        assert!(slot.getset.is_none());
+    }
+
+    #[test]
+    fn ref_value_paths_roundtrip() {
+        let d = ref_desc();
+        let imp = imp_of(&d);
+        let mut fake = FakeInst { pad: [0; 44] };
+        set_slot(&mut fake, 0x600 as *mut u8);
+        let base = std::ptr::addr_of!(fake) as *const u8;
+        let mut other = FakeInst { pad: [0; 44] };
+        set_slot(&mut other, 0x601 as *mut u8);
+        let other_base = std::ptr::addr_of!(other) as *const u8;
+        unsafe {
+            assert!(super::stub_3d0530(&d, described_of(base), described_of(base)));
+            // NOTE: a null input would fault inside the member call, exactly as
+            // the binary does (null derived `this` passed to the getter).
+            assert!(!super::stub_3d0530(&d, described_of(base), described_of(other_base)));
+            assert_eq!(super::stub_3d09f4(imp, described_of(base)), 0x600 as *mut u8);
+            super::stub_3d0a14(imp, described_of(base) as *mut u8, 0x500 as *mut u8);
+            assert_eq!(slot_of(&fake), 0x500 as *mut u8);
+            let v = super::stub_3d0558(&d, described_of(base));
+            assert_eq!(v.ptr, (0x500usize + 36) as *const u8);
+            super::stub_3d0670(&d, described_of(base) as *mut u8, &v);
+            assert_eq!(slot_of(&fake), 0x500 as *mut u8);
+            let mut dst_fake = FakeInst { pad: [0; 44] };
+            let dst_base = std::ptr::addr_of!(dst_fake) as *const u8;
+            super::stub_3d0738(&d, described_of(base), described_of(dst_base) as *mut u8);
+            assert_eq!(slot_of(&dst_fake), 0x500 as *mut u8);
+            assert_eq!(
+                super::stub_3d0854(&d, described_of(base)),
+                (0x500usize + 36) as *const u8
+            );
+            super::stub_3d08e4(&d, described_of(base) as *mut u8, (0x700usize + 36) as *const u8);
+            assert_eq!(slot_of(&fake), 0x700 as *mut u8);
+            assert!(super::stub_3d0868(&d, described_of(base) as *mut u8, std::ptr::null(), |_| {
+                false
+            })
+            .is_ok());
+            assert!(super::stub_3d0868(
+                &d,
+                described_of(base) as *mut u8,
+                0x900 as *const u8,
+                |_| { false }
+            )
+            .is_err());
+            let h = InstanceHandle { pi: (0x800usize + 36) as *const u8, _count: 1 };
+            super::stub_3d0904(&d, described_of(base) as *mut u8, &h);
+            assert_eq!(slot_of(&fake), 0x800 as *mut u8);
+        }
+    }
+
+    #[test]
+    fn float_and_cf_descriptors() {
+        let mut slot = PropDescriptor::default();
+        unsafe {
+            super::stub_3d0a38(
+                &mut slot,
+                std::ptr::null(),
+                std::ptr::null(),
+                0x40,
+                0,
+                0x44,
+                0,
+                1,
+                2,
+                3,
+                4,
+            );
+        }
+        assert_eq!(slot.vtable, camera_desc::CAM_FLOAT_DESC_VTAB);
+        assert_eq!(slot.attributes, (1, 2, 3));
+        assert_eq!(slot.permissions, 4);
+        unsafe {
+            assert!(!super::stub_3d0b78());
+            assert!(!super::stub_3d0b7c());
+            super::stub_3d0b4c(&mut slot);
+        }
+        assert_eq!(slot.vtable, camera_desc::TYPED_FLOAT_VTAB);
+        assert!(slot.getset.is_none());
+        let mut cf = PropDescriptor::default();
+        unsafe {
+            super::stub_3d0bc4(
+                &mut cf,
+                std::ptr::null(),
+                std::ptr::null(),
+                0x50,
+                0,
+                0x54,
+                0,
+                0,
+                0,
+                0,
+                0,
+            );
+        }
+        assert_eq!(cf.vtable, camera_desc::CAM_CF_DESC_VTAB);
+        unsafe {
+            assert!(!super::stub_3d0d04());
+            assert!(!super::stub_3d0d08());
+            super::stub_3d0cd8(&mut cf);
+        }
+        assert_eq!(cf.vtable, camera_desc::TYPED_CF_VTAB);
+    }
+
+    #[test]
+    fn float_get_set_direct() {
+        let mut fake = FakeFloat { pad: [0; 36], f: 3.0 };
+        let base = std::ptr::addr_of!(fake) as *const u8;
+        let imp = GetSetImpl { getter: direct(fake_fget as usize), setter: direct(fake_fset as usize) };
+        unsafe {
+            assert_eq!(super::stub_3d0b80(&imp, described_of(base)), 3.0);
+            super::stub_3d0ba0(&imp, described_of(base) as *mut u8, 4.0);
+        }
+        assert_eq!(fake.f, 4.0);
+    }
+
+    struct FVoid {
+        seen: std::cell::Cell<f32>,
+    }
+    impl FnCameraFloatVoid for FVoid {
+        fn call(&self, _: *const u8, arg: f32) {
+            self.seen.set(arg);
+        }
+    }
+
+    #[test]
+    fn void_float_execute_forwards() {
+        use crate::generated_core_watchdog_c::camera_enum::BoundFuncDescriptor;
+        let d = BoundFuncDescriptor::default();
+        let f = FVoid { seen: std::cell::Cell::new(0.0) };
+        unsafe {
+            super::stub_3d0400(&d, 0x100 as *const u8, 2.0, &f);
+        }
+        assert_eq!(f.seen.get(), 2.0);
+    }
+
+    #[test]
+    fn refvariant_and_xml_shapes() {
+        let v = RefVariant { type_tag: "t", ptr: 0x100 as *const u8 };
+        assert_eq!(v.ptr, 0x100 as *const u8);
+        let d = ref_desc();
+        unsafe {
+            let mut xml = crate::generated_core_watchdog_c::billboard_ref::XmlElement::default();
+            let mut fake = FakeInst { pad: [0; 44] };
+            set_slot(&mut fake, 0x600 as *mut u8);
+            let base = std::ptr::addr_of!(fake) as *const u8;
+            super::stub_3d075c(&d, described_of(base), &mut xml);
+            assert_eq!(xml.value, (0x600usize + 36) as *const u8);
+        }
+    }
+
+    struct RecBinder {
+        seen_cookie: std::cell::Cell<usize>,
+    }
+    impl crate::generated_core_watchdog_c::billboard_ref::ReferenceBinder for RecBinder {
+        unsafe fn bind(&self, _slot: *const u8, _obj: *mut u8, cookie: *const u8) -> i32 {
+            self.seen_cookie.set(cookie as usize);
+            7
+        }
+    }
+
+    #[test]
+    fn read_value_hops_to_binder() {
+        let d = ref_desc();
+        let b = RecBinder { seen_cookie: std::cell::Cell::new(0) };
+        unsafe {
+            let xml = crate::generated_core_watchdog_c::billboard_ref::XmlElement::default();
+            let r = super::stub_3d0830(&d, 0x100 as *mut u8, &xml, &b);
+            assert_eq!(r, 7);
+            assert_eq!(
+                b.seen_cookie.get(),
+                (&d as *const RefPropDescriptor as usize) + 40
+            );
+        }
+    }
 }
