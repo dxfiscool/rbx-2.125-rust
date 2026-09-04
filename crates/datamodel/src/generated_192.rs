@@ -247,9 +247,7 @@ pub fn stub_0x3ae20() -> ! {
 
 // 0x3af08 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_10RunServiceEEEmv
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::RunService>(void)")]
-pub fn stub_0x3af08() -> ! {
-    todo!("0x3af08 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::RunService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_3af08 as stub_0x3af08;
 
 // 0x3b14c — __ZN5boost6detail12shared_countC2IN3RBX5Tasks8SequenceEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
@@ -342,9 +340,7 @@ pub fn stub_0x3b510() -> ! {
 // 0x3b518 — __ZNK3RBX15ServiceProvider4findINS_17ControllerServiceEEEPT_v
 // type: int __fastcall(pthread_mutex_t *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::ControllerService * RBX::ServiceProvider::find<RBX::ControllerService>(void)const")]
-pub fn stub_0x3b518() -> ! {
-    todo!("0x3b518 RBX::ControllerService * RBX::ServiceProvider::find<RBX::ControllerService>(void)const")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_3b518 as stub_0x3b518;
 
 // 0x3b7e0 — __ZN3RBX4Name7declareILZNS_18sControllerServiceEEEERKS0_v
 // type: int(void)
@@ -361,9 +357,7 @@ pub fn stub_0x3b828() -> ! {
 
 // 0x3b910 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_17ControllerServiceEEEmv
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::ControllerService>(void)")]
-pub fn stub_0x3b910() -> ! {
-    todo!("0x3b910 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::ControllerService>(void)")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_3b910 as stub_0x3b910;
 
 // 0x3bcb8 — __ZN3rbx20intrusive_ptr_targetINS_7signals10connection5islotEiLi0ELi0EEdlEPv
 // type: void __fastcall(void *)
