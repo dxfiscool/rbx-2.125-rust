@@ -2010,6 +2010,27 @@ pub struct Wedge {
     _opaque: (),
 }
 
+/// Rust model of `RBX::Instance::OutfitChangedSignalData` (IDA `0x5e2884`):
+/// empty teardown; the payload lands with the signal batch.
+pub struct OutfitChangedSignalData {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::OnDemandPVInstance` (IDA `0x5e10ac`): the on-demand
+/// instance with the zeroed word at `+5`; the allocator/pool members land
+/// with the framework batch.
+#[derive(Default)]
+pub struct OnDemandPVInstance {
+    pub word5: u32,
+}
+
+/// Rust model of `RBX::TouchTransmitter` (IDA `0x5e0ff8`): the touch
+/// transmitter leaf; members land with the part batch.
+#[derive(Default)]
+pub struct TouchTransmitter {
+    _opaque: (),
+}
+
 
 
 /// Rust model of `RBX::Reflection::PropDescriptor<ModelInstance, ...>` (IDA
@@ -43752,15 +43773,21 @@ pub fn stub_0x5e0f88() -> ! {
 // 0x5e0ff8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_16TouchTransmitterEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::TouchTransmitter> RBX::Creatable<RBX::Instance>::create<RBX::TouchTransmitter>(void)")]
 // was: boost::shared_ptr<RBX::TouchTransmitter> RBX::Creatable<RBX::Instance>::create<RBX::TouchTransmitter>(void)
-pub fn stub_0x5e0ff8() -> ! {
-    todo!("0x5e0ff8 boost::shared_ptr<RBX::TouchTransmitter> RBX::Creatable<RBX::Instance>::create<RBX::TouchTransmitter>(void)")
+pub fn stub_0x5e0ff8() -> SharedPtr<TouchTransmitter> {
+    // IDA 0x5e0ff8: `Creatable::create<TouchTransmitter>` — `operator new` +
+    // default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(TouchTransmitter::default())
 }
 
 // 0x5e10ac — __ZN3RBX18OnDemandPVInstanceC2Ev
 #[doc(alias = "RBX::OnDemandPVInstance::OnDemandPVInstance(void)")]
 // was: RBX::OnDemandPVInstance::OnDemandPVInstance(void)
-pub fn stub_0x5e10ac() -> ! {
-    todo!("0x5e10ac RBX::OnDemandPVInstance::OnDemandPVInstance(void)")
+pub fn stub_0x5e10ac() -> OnDemandPVInstance {
+    // IDA 0x5e10ac: `OnDemandPVInstance::C2` — `OnDemandInstance` base plus
+    // allocator init (both land with the framework batch); the word at `+5`
+    // is stored `0` (decompiled `0x5e111c`), so the model default is the
+    // constructed state.
+    OnDemandPVInstance::default()
 }
 
 // 0x5e1178 — __ZN3RBX9AllocatorINS_12PartInstance20OnDemandPartInstanceEEC2Ev
@@ -43808,8 +43835,21 @@ pub fn stub_0x5e15c0() -> ! {
 // 0x5e1610 — __ZN3RBX11shared_fromINS_12PartInstanceEEEN5boost10shared_ptrIT_EEPS4_
 #[doc(alias = "rbx_core::SharedPtr<RBX::PartInstance> RBX::shared_from<RBX::PartInstance>(RBX::PartInstance*)")]
 // was: boost::shared_ptr<RBX::PartInstance> RBX::shared_from<RBX::PartInstance>(RBX::PartInstance*)
-pub fn stub_0x5e1610() -> ! {
-    todo!("0x5e1610 boost::shared_ptr<RBX::PartInstance> RBX::shared_from<RBX::PartInstance>(RBX::PartInstance*)")
+pub fn stub_0x5e1610(ptr: *const PartInstance) -> SharedPtr<PartInstance> {
+    // IDA 0x5e1610: `shared_from<PartInstance>` — weak-owner lock with the
+    // mutex dance and `bad_weak_ptr` throw on expiry; minting from a live
+    // allocation is the same lock, and the throw maps to a panic. Same shape
+    // as 0x39410c.
+    // SAFETY: `ptr` must point into a live `SharedPtr<PartInstance>`.
+    unsafe {
+        if (*ptr).weak_owner.upgrade().is_none() {
+            panic!("0x5e1610 shared_from<PartInstance>: bad_weak_ptr");
+        }
+        let owned = SharedPtr::from_raw(ptr);
+        let out = owned.clone();
+        core::mem::forget(owned);
+        out
+    }
 }
 
 // 0x5e1780 — __ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EE9push_backERKS4_
@@ -43829,8 +43869,9 @@ pub fn stub_0x5e1810() -> ! {
 // 0x5e1978 — __ZN3RBX8Instance17onServiceProviderEPNS_15ServiceProviderES2_
 #[doc(alias = "RBX::Instance::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
 // was: RBX::Instance::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)
-pub fn stub_0x5e1978() -> ! {
-    todo!("0x5e1978 RBX::Instance::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
+pub fn stub_0x5e1978() {
+    // IDA 0x5e1978 (`Instance::onServiceProvider`, decompiled empty): the
+    // base hook does nothing.
 }
 
 // 0x5e197c — __ZN3RBX13FWDictionnaryINS_14FWPartInstanceEE17registerFlyweightEPNS_5FWRefE
@@ -43864,8 +43905,10 @@ pub fn stub_0x5e20e4() -> ! {
 // 0x5e2884 — __ZN3RBX8Instance23OutfitChangedSignalDataD1Ev
 #[doc(alias = "RBX::Instance::OutfitChangedSignalData::~OutfitChangedSignalData()")]
 // was: RBX::Instance::OutfitChangedSignalData::~OutfitChangedSignalData()
-pub fn stub_0x5e2884() -> ! {
-    todo!("0x5e2884 RBX::Instance::OutfitChangedSignalData::~OutfitChangedSignalData()")
+pub fn stub_0x5e2884(_data: *mut OutfitChangedSignalData) {
+    // IDA 0x5e2884 (`OutfitChangedSignalData::D1`, decompiled empty): no
+    // members carry state, so the memberwise teardown collapses.
+    // SAFETY: `_data` must point to a valid `OutfitChangedSignalData`.
 }
 
 // 0x5e2888 — __ZN3RBX12PartInstance13TouchedSignalclEN5boost10shared_ptrINS_8InstanceEEE
@@ -43892,36 +43935,50 @@ pub fn stub_0x5e29dc() -> ! {
 // 0x5e29e8 — __ZN3RBX8Instance15canClientCreateEv
 #[doc(alias = "RBX::Instance::canClientCreate(void)")]
 // was: RBX::Instance::canClientCreate(void)
-pub fn stub_0x5e29e8() -> ! {
-    todo!("0x5e29e8 RBX::Instance::canClientCreate(void)")
+pub fn stub_0x5e29e8(_this: *const Instance) -> bool {
+    // IDA 0x5e29e8 (`Instance::canClientCreate`, decompiled `return 0`): the
+    // client may never create instances through this path in this build.
+    // SAFETY: `_this` must be null or point to a valid `Instance`.
+    false
 }
 
 // 0x5e29f0 — __ZN3RBX8Instance12onChildAddedEPS0_
 #[doc(alias = "RBX::Instance::onChildAdded(RBX::Instance*)")]
 // was: RBX::Instance::onChildAdded(RBX::Instance*)
-pub fn stub_0x5e29f0() -> ! {
-    todo!("0x5e29f0 RBX::Instance::onChildAdded(RBX::Instance*)")
+pub fn stub_0x5e29f0(_this: *mut Instance, _child: *const Instance) {
+    // IDA 0x5e29f0 (`Instance::onChildAdded`, decompiled empty): the base
+    // hook does nothing.
+    // SAFETY: both must be null or point to valid `Instance`s.
 }
 
 // 0x5e29f8 — __ZNK3RBX10PVInstance13childHashCodeEv
 #[doc(alias = "RBX::PVInstance::childHashCode(void)const")]
 // was: RBX::PVInstance::childHashCode(void)const
-pub fn stub_0x5e29f8() -> ! {
-    todo!("0x5e29f8 RBX::PVInstance::childHashCode(void)const")
+pub fn stub_0x5e29f8(_this: *const PVInstance) -> u32 {
+    // IDA 0x5e29f8 (`PVInstance::childHashCode`, decompiled `return 0`).
+    // SAFETY: `_this` must be null or point to a valid `PVInstance`.
+    0
 }
 
 // 0x5e2a24 — __ZN3RBX12PartInstance23hasThreeDimensionalSizeEv
 #[doc(alias = "RBX::PartInstance::hasThreeDimensionalSize(void)")]
 // was: RBX::PartInstance::hasThreeDimensionalSize(void)
-pub fn stub_0x5e2a24() -> ! {
-    todo!("0x5e2a24 RBX::PartInstance::hasThreeDimensionalSize(void)")
+pub fn stub_0x5e2a24(_this: *const PartInstance) -> bool {
+    // IDA 0x5e2a24 (`PartInstance::hasThreeDimensionalSize`, decompiled
+    // `return 1`): parts always span three dimensions in this build.
+    // SAFETY: `_this` must be null or point to a valid `PartInstance`.
+    true
 }
 
 // 0x5e2a28 — __ZNK3RBX12PartInstance11getPartTypeEv
 #[doc(alias = "RBX::PartInstance::getPartType(void)const")]
 // was: RBX::PartInstance::getPartType(void)const
-pub fn stub_0x5e2a28() -> ! {
-    todo!("0x5e2a28 RBX::PartInstance::getPartType(void)const")
+pub fn stub_0x5e2a28(_this: *const PartInstance) -> i32 {
+    // IDA 0x5e2a28 (`PartInstance::getPartType`, decompiled `return 1`) —
+    // the part-type tag (outside the `LegacyPartType` 0-2 range, so kept as
+    // the raw tag like 0x4a7768).
+    // SAFETY: `_this` must be null or point to a valid `PartInstance`.
+    1
 }
 
 // 0x5e2a2c — __ZNK3RBX12PartInstance16getMinimumUiSizeEv
@@ -43941,36 +43998,53 @@ pub fn stub_0x5e2a78() -> ! {
 // 0x5e2ac8 — __ZNK3RBX12PartInstance19getResizeHandleMaskEv
 #[doc(alias = "RBX::PartInstance::getResizeHandleMask(void)const")]
 // was: RBX::PartInstance::getResizeHandleMask(void)const
-pub fn stub_0x5e2ac8() -> ! {
-    todo!("0x5e2ac8 RBX::PartInstance::getResizeHandleMask(void)const")
+pub fn stub_0x5e2ac8(_this: *const PartInstance) -> u32 {
+    // IDA 0x5e2ac8 (decompiled `0x5e2ad2`-`0x5e2ada`): builds the `Faces`
+    // mask with all six bits (`Faces(63)`) and returns it — every face
+    // resizes. The `Faces` bitmask stays raw until the part batch models it.
+    // SAFETY: `_this` must be null or point to a valid `PartInstance`.
+    63
 }
 
 // 0x5e2adc — __ZNK3RBX12PartInstance23getDragUtilitiesSupportEv
 #[doc(alias = "RBX::PartInstance::getDragUtilitiesSupport(void)const")]
 // was: RBX::PartInstance::getDragUtilitiesSupport(void)const
-pub fn stub_0x5e2adc() -> ! {
-    todo!("0x5e2adc RBX::PartInstance::getDragUtilitiesSupport(void)const")
+pub fn stub_0x5e2adc(_this: *const PartInstance) -> bool {
+    // IDA 0x5e2adc (decompiled `return 1`): parts always support the drag
+    // utilities in this build.
+    // SAFETY: `_this` must be null or point to a valid `PartInstance`.
+    true
 }
 
 // 0x5e2ae0 — __ZNK3RBX12PartInstance18getResizeIncrementEv
 #[doc(alias = "RBX::PartInstance::getResizeIncrement(void)const")]
 // was: RBX::PartInstance::getResizeIncrement(void)const
-pub fn stub_0x5e2ae0() -> ! {
-    todo!("0x5e2ae0 RBX::PartInstance::getResizeIncrement(void)const")
+pub fn stub_0x5e2ae0(_this: *const PartInstance) -> i32 {
+    // IDA 0x5e2ae0 (decompiled `return 1`): the Studio resize increment for
+    // plain parts (extruded parts use 2 per 0x4a7524).
+    // SAFETY: `_this` must be null or point to a valid `PartInstance`.
+    1
 }
 
 // 0x5e2ae4 — __ZNK3RBX12PartInstance25getMinimumResizeIncrementEv
 #[doc(alias = "RBX::PartInstance::getMinimumResizeIncrement(void)const")]
 // was: RBX::PartInstance::getMinimumResizeIncrement(void)const
-pub fn stub_0x5e2ae4() -> ! {
-    todo!("0x5e2ae4 RBX::PartInstance::getMinimumResizeIncrement(void)const")
+pub fn stub_0x5e2ae4(_this: *const PartInstance) -> u32 {
+    // IDA 0x5e2ae4 (decompiled `return 1008981770`): the minimum resize
+    // increment bits — `0x3C23D70A`, i.e. `0.01f` as raw `int`.
+    // SAFETY: `_this` must be null or point to a valid `PartInstance`.
+    1008981770
 }
 
 // 0x5e2af0 — __ZNK3RBX12PartInstance13getFormFactorEv
 #[doc(alias = "RBX::PartInstance::getFormFactor(void)const")]
 // was: RBX::PartInstance::getFormFactor(void)const
-pub fn stub_0x5e2af0() -> ! {
-    todo!("0x5e2af0 RBX::PartInstance::getFormFactor(void)const")
+pub fn stub_0x5e2af0(_this: *const PartInstance) -> i32 {
+    // IDA 0x5e2af0 (decompiled `return 0`): the default form-factor tag
+    // (the `FormFactor` table lands with the desc batch, so the raw tag
+    // crosses here).
+    // SAFETY: `_this` must be null or point to a valid `PartInstance`.
+    0
 }
 
 // 0x5e2af4 — __ZN3RBX12PartInstance11getLocationEv
@@ -44004,15 +44078,19 @@ pub fn stub_0x5e2b44() -> ! {
 // 0x5e2b60 — __ZN3RBX12PartInstance14getPrimaryPartEv
 #[doc(alias = "RBX::PartInstance::getPrimaryPart(void)")]
 // was: RBX::PartInstance::getPrimaryPart(void)
-pub fn stub_0x5e2b60() -> ! {
-    todo!("0x5e2b60 RBX::PartInstance::getPrimaryPart(void)")
+pub fn stub_0x5e2b60(_this: *mut PartInstance) {
+    // IDA 0x5e2b60 (`PartInstance::getPrimaryPart`, decompiled empty): no
+    // observable behavior in this build.
+    // SAFETY: `_this` must be null or point to a valid `PartInstance`.
 }
 
 // 0x5e2b64 — __ZNK3RBX12PartInstance16partNeeds3dAdornEv
 #[doc(alias = "RBX::PartInstance::partNeeds3dAdorn(void)const")]
 // was: RBX::PartInstance::partNeeds3dAdorn(void)const
-pub fn stub_0x5e2b64() -> ! {
-    todo!("0x5e2b64 RBX::PartInstance::partNeeds3dAdorn(void)const")
+pub fn stub_0x5e2b64(_this: *const PartInstance) -> bool {
+    // IDA 0x5e2b64 (decompiled `return 0`): plain parts need no 3D adorn.
+    // SAFETY: `_this` must be null or point to a valid `PartInstance`.
+    false
 }
 
 // 0x5e2b94 — __ZThn92_N3RBX12PartInstance14getPrimaryPartEv
@@ -44516,22 +44594,31 @@ pub fn stub_0x5e885c() -> ! {
 // 0x5e8890 — __ZN5boost10shared_ptrIN3RBX16TouchTransmitterEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::TouchTransmitter>::shared_ptr<RBX::TouchTransmitter,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::TouchTransmitter>::shared_ptr<RBX::TouchTransmitter,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x5e8890() -> ! {
-    todo!("0x5e8890 boost::shared_ptr<RBX::TouchTransmitter>::shared_ptr<RBX::TouchTransmitter,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x5e8890(ptr: *mut TouchTransmitter, _deleter: CreatableInstanceDeleter) -> SharedPtr<TouchTransmitter> {
+    // IDA 0x5e8890: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(TouchTransmitter::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x5e8a40 — __ZN5boost6detail12shared_countC2IPN3RBX16TouchTransmitterENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x5e8a40() -> ! {
-    todo!("0x5e8a40 boost::detail::shared_count::shared_count<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x5e8a40(ptr: *mut TouchTransmitter, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<TouchTransmitter, CreatableInstanceDeleter> {
+    // IDA 0x5e8a40: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x5e8b48 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16TouchTransmitterENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x5e8b48() -> ! {
-    todo!("0x5e8b48 boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x5e8b48(_block: *mut ControlBlockPd<TouchTransmitter, CreatableInstanceDeleter>) {
+    // IDA 0x5e8b48: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x5e8b4c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16TouchTransmitterENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
