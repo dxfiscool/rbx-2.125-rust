@@ -2630,13 +2630,30 @@ pub struct AnimatorBind {
 unsafe impl Send for AnimatorBind {}
 unsafe impl Sync for AnimatorBind {}
 
-/// Rust model of `RBX::PartInstance` (IDA `0x3a68d8`): only the
-/// `enable_shared_from_this` weak owner is modeled so far (same `+40`
-/// discipline); mesh/physics fields belong to part.rs.
+/// Rust model of `RBX::PartInstance` (IDA `0x3a68d8`): the
+/// `enable_shared_from_this` weak owner (same `+40` discipline), the `Locked`
+/// flag (name word `+48`, IDA `0x5de910`/`0x5e0e00`), the continuous-motion
+/// byte (`+257`, IDA `0x5db57c`) and the buoyancy-changed member signal
+/// (`+324`, IDA `0x5db56c`); mesh/physics fields belong to part.rs.
 #[derive(Default)]
 pub struct PartInstance {
     pub weak_owner: WeakPtr<PartInstance>,
     pub locked: bool,
+    pub in_continuous_motion: bool,
+    pub buoyancy_changed: Signal<bool>,
+}
+
+/// Rust model of `RBX::Reflection::PropDescriptor<PartInstance, ...>` (IDA
+/// `0x5e0538`): same storage-only family treatment as `DataModelFuncDesc`.
+pub struct PartPropDesc {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Reflection::BoundFuncDesc<PartInstance, ...>` (IDA
+/// `0x5e0c64`): same storage-only family treatment.
+#[derive(Default)]
+pub struct PartFuncDesc {
+    _opaque: (),
 }
 
 /// Rust model of `boost::_bi::bind_t<void, mf1<void, Accoutrement,
@@ -9664,7 +9681,12 @@ pub fn stub_0x3a68d8(ptr: *mut PartInstance) -> SharedPtr<PartInstance> {
     // deleter parameter absent.
     // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
     if ptr.is_null() {
-        return SharedPtr::new(PartInstance { weak_owner: WeakPtr::new(), locked: false });
+        return SharedPtr::new(PartInstance {
+            weak_owner: WeakPtr::new(),
+            locked: false,
+            in_continuous_motion: false,
+            buoyancy_changed: Signal::new(),
+        });
     }
     shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
@@ -42750,22 +42772,30 @@ pub fn stub_0x5d7aa8(block: *mut ControlBlockPd<Wedge, CreatableInstanceDeleter>
 // 0x5d7aac — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x5d7aac() -> ! {
-    todo!("0x5d7aac boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x5d7aac(_block: *mut ControlBlockPd<Wedge, CreatableInstanceDeleter>) {
+    // IDA 0x5d7aac (`...Wedge...DeleterEEdisposeEv`): `dispose` runs the
+    // deleter call plus the owned `delete` before the release path; under
+    // `SharedPtr` the `Arc` drop owns disposal and the deleter tag carries no
+    // state, so the body collapses. Same shape as 0x3dea74.
 }
 
 // 0x5d7acc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x5d7acc() -> ! {
-    todo!("0x5d7acc boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x5d7acc(block: *const ControlBlockPd<Wedge, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x5d7acc: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x5d7ae4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x5d7ae4() -> ! {
-    todo!("0x5d7ae4 boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x5d7ae4(block: *const ControlBlockPd<Wedge, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x5d7ae4: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x5d853c — __ZN3RBX12PartInstance22setCoordinateFrameRootERKN3G3D15CoordinateFrameE
@@ -42813,8 +42843,10 @@ pub fn stub_0x5db13c() -> ! {
 // 0x5db56c — __ZN3RBX12PartInstance17onBuoyancyChangedEb
 #[doc(alias = "RBX::PartInstance::onBuoyancyChanged(bool)")]
 // was: RBX::PartInstance::onBuoyancyChanged(bool)
-pub fn stub_0x5db56c() -> ! {
-    todo!("0x5db56c RBX::PartInstance::onBuoyancyChanged(bool)")
+pub fn stub_0x5db56c(part: &PartInstance, value: bool) {
+    // IDA 0x5db56c (`PartInstance::onBuoyancyChanged`, decompiled): fires
+    // the member `signal_with_args<1, bool>` at `this + 324` with the value.
+    part.buoyancy_changed.fire(value);
 }
 
 // 0x5db574 — __ZThn96_N3RBX12PartInstance17onBuoyancyChangedEb
@@ -42827,8 +42859,10 @@ pub fn stub_0x5db574() -> ! {
 // 0x5db57c — __ZN3RBX12PartInstance19isInContinousMotionEv
 #[doc(alias = "RBX::PartInstance::isInContinousMotion(void)")]
 // was: RBX::PartInstance::isInContinousMotion(void)
-pub fn stub_0x5db57c() -> ! {
-    todo!("0x5db57c RBX::PartInstance::isInContinousMotion(void)")
+pub fn stub_0x5db57c(part: &PartInstance) -> bool {
+    // IDA 0x5db57c: returns the continuous-motion byte at `+257`
+    // (decompiled `0x5db580`).
+    part.in_continuous_motion
 }
 
 // 0x5db584 — __ZThn96_N3RBX12PartInstance19isInContinousMotionEv
@@ -42841,8 +42875,16 @@ pub fn stub_0x5db584() -> ! {
 // 0x5db58c — __ZNK3RBX12PartInstance12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::PartInstance::askSetParent(RBX::Instance const*)const")]
 // was: RBX::PartInstance::askSetParent(RBX::Instance const*)const
-pub fn stub_0x5db58c() -> ! {
-    todo!("0x5db58c RBX::PartInstance::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x5db58c(parent: *const Instance) -> bool {
+    // IDA 0x5db58c: null parent returns false (disasm 0x5db590-0x5db59c);
+    // otherwise the parent's `classDescriptor` is checked against the `Model`
+    // described descriptor — a part may only parent under a model. Same shape
+    // as 0x5cca68.
+    // SAFETY: `parent` must be null or point to a valid `Instance`.
+    if parent.is_null() {
+        return false;
+    }
+    instance_is_a(parent, "ModelInstance")
 }
 
 // 0x5db5c8 — __ZN3RBX12PartInstance18fromConstPrimitiveEPKNS_9PrimitiveE
@@ -43192,8 +43234,13 @@ pub fn stub_0x5de7fc() -> ! {
 // 0x5de910 — __ZN3RBX12PartInstance13setPartLockedEb
 #[doc(alias = "RBX::PartInstance::setPartLocked(bool)")]
 // was: RBX::PartInstance::setPartLocked(bool)
-pub fn stub_0x5de910() -> ! {
-    todo!("0x5de910 RBX::PartInstance::setPartLocked(bool)")
+pub fn stub_0x5de910(part: &mut PartInstance, value: bool) {
+    // IDA 0x5de910 (decompiled `0x5de91c`-`0x5de928`): normalizes the name
+    // word `+48` and stores on change; the notification collapses here. The
+    // word is the `locked` flag read by 0x5e0e00.
+    if part.locked != value {
+        part.locked = value;
+    }
 }
 
 // 0x5de94c — __ZN3RBX12PartInstance9getLockedEPNS_8InstanceE
@@ -43395,22 +43442,37 @@ pub fn stub_0x5e04b4() -> ! {
 // 0x5e0538 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D15CoordinateFrameEED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::CoordinateFrame>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::CoordinateFrame>::~PropDescriptor()
-pub fn stub_0x5e0538() -> ! {
-    todo!("0x5e0538 RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::CoordinateFrame>::~PropDescriptor()")
+pub fn stub_0x5e0538(_desc: *mut PartPropDesc) {
+    // IDA 0x5e0538: `PropDescriptor<PartInstance, CoordinateFrame>::D1` —
+    // memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5e055c — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::~PropDescriptor()
-pub fn stub_0x5e055c() -> ! {
-    todo!("0x5e055c RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::~PropDescriptor()")
+pub fn stub_0x5e055c(_desc: *mut PartPropDesc) {
+    // IDA 0x5e055c: `PropDescriptor<PartInstance, Vector3>::D1` — memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5e0580 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEfED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::~PropDescriptor()
-pub fn stub_0x5e0580() -> ! {
-    todo!("0x5e0580 RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::~PropDescriptor()")
+pub fn stub_0x5e0580(_desc: *mut PartPropDesc) {
+    // IDA 0x5e0580: `PropDescriptor<PartInstance, float>::D1` — memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5e05a4 — __ZN3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEE7addPairES3_PKc
@@ -43423,8 +43485,13 @@ pub fn stub_0x5e05a4() -> ! {
 // 0x5e0c64 — __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFvvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,void ()(void),0>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::PartInstance,void ()(void),0>::~BoundFuncDesc()
-pub fn stub_0x5e0c64() -> ! {
-    todo!("0x5e0c64 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_0x5e0c64(_desc: *mut PartFuncDesc) {
+    // IDA 0x5e0c64: `BoundFuncDesc<PartInstance, void()>::D1` — memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5e0c88 — __ZN3RBX12PartInstance15getMassNonConstEv
@@ -43437,22 +43504,37 @@ pub fn stub_0x5e0c88() -> ! {
 // 0x5e0c98 — __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFfvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,float ()(void),0>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::PartInstance,float ()(void),0>::~BoundFuncDesc()
-pub fn stub_0x5e0c98() -> ! {
-    todo!("0x5e0c98 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,float ()(void),0>::~BoundFuncDesc()")
+pub fn stub_0x5e0c98(_desc: *mut PartFuncDesc) {
+    // IDA 0x5e0c98: `BoundFuncDesc<PartInstance, float()>::D1` — memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5e0cbc — __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFbvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,bool ()(void),0>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::PartInstance,bool ()(void),0>::~BoundFuncDesc()
-pub fn stub_0x5e0cbc() -> ! {
-    todo!("0x5e0cbc RBX::Reflection::BoundFuncDesc<RBX::PartInstance,bool ()(void),0>::~BoundFuncDesc()")
+pub fn stub_0x5e0cbc(_desc: *mut PartFuncDesc) {
+    // IDA 0x5e0cbc: `BoundFuncDesc<PartInstance, bool()>::D1` — memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5e0ce0 — __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(bool),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(bool),1>::~BoundFuncDesc()
-pub fn stub_0x5e0ce0() -> ! {
-    todo!("0x5e0ce0 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(bool),1>::~BoundFuncDesc()")
+pub fn stub_0x5e0ce0(_desc: *mut PartFuncDesc) {
+    // IDA 0x5e0ce0: `BoundFuncDesc<PartInstance, vector-getter>::D1` —
+    // memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5e0d20 — __ZNK3RBX12PartInstance9getColor3Ev
@@ -43472,8 +43554,13 @@ pub fn stub_0x5e0d38() -> ! {
 // 0x5e0d6c — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D6Color3EED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Color3>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Color3>::~PropDescriptor()
-pub fn stub_0x5e0d6c() -> ! {
-    todo!("0x5e0d6c RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Color3>::~PropDescriptor()")
+pub fn stub_0x5e0d6c(_desc: *mut PartPropDesc) {
+    // IDA 0x5e0d6c: `PropDescriptor<PartInstance, Color3>::D1` — memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5e0d90 — __ZNK3RBX12PartInstance8getColorEv
@@ -43486,8 +43573,13 @@ pub fn stub_0x5e0d90() -> ! {
 // 0x5e0d98 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::~PropDescriptor()
-pub fn stub_0x5e0d98() -> ! {
-    todo!("0x5e0d98 RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::BrickColor>::~PropDescriptor()")
+pub fn stub_0x5e0d98(_desc: *mut PartPropDesc) {
+    // IDA 0x5e0d98: `PropDescriptor<PartInstance, BrickColor>::D1` —
+    // memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5e0dbc — __ZNK3RBX12PartInstance17getRenderMaterialEv
@@ -43528,43 +43620,70 @@ pub fn stub_0x5e0df8() -> ! {
 // 0x5e0e00 — __ZNK3RBX12PartInstance13getPartLockedEv
 #[doc(alias = "RBX::PartInstance::getPartLocked(void)const")]
 // was: RBX::PartInstance::getPartLocked(void)const
-pub fn stub_0x5e0e00() -> ! {
-    todo!("0x5e0e00 RBX::PartInstance::getPartLocked(void)const")
+pub fn stub_0x5e0e00(part: &PartInstance) -> bool {
+    // IDA 0x5e0e00: returns the name word `+48` (decompiled `0x5e0e06`) —
+    // the `locked` flag stored by 0x5de910.
+    part.locked
 }
 
 // 0x5e0e08 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEbED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,bool>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,bool>::~PropDescriptor()
-pub fn stub_0x5e0e08() -> ! {
-    todo!("0x5e0e08 RBX::Reflection::PropDescriptor<RBX::PartInstance,bool>::~PropDescriptor()")
+pub fn stub_0x5e0e08(_desc: *mut PartPropDesc) {
+    // IDA 0x5e0e08: `PropDescriptor<PartInstance, bool>::D1` — memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5e0e2c — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_5FacesEED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Faces>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Faces>::~PropDescriptor()
-pub fn stub_0x5e0e2c() -> ! {
-    todo!("0x5e0e2c RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Faces>::~PropDescriptor()")
+pub fn stub_0x5e0e2c(_desc: *mut PartPropDesc) {
+    // IDA 0x5e0e2c: `PropDescriptor<PartInstance, Faces>::D1` — memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5e0e50 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEiED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,int>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,int>::~PropDescriptor()
-pub fn stub_0x5e0e50() -> ! {
-    todo!("0x5e0e50 RBX::Reflection::PropDescriptor<RBX::PartInstance,int>::~PropDescriptor()")
+pub fn stub_0x5e0e50(_desc: *mut PartPropDesc) {
+    // IDA 0x5e0e50: `PropDescriptor<PartInstance, int>::D1` — memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5e0e74 — __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFbNS_8NormalIdEiELi2EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,bool ()(RBX::NormalId,int),2>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::PartInstance,bool ()(RBX::NormalId,int),2>::~BoundFuncDesc()
-pub fn stub_0x5e0e74() -> ! {
-    todo!("0x5e0e74 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,bool ()(RBX::NormalId,int),2>::~BoundFuncDesc()")
+pub fn stub_0x5e0e74(_desc: *mut PartFuncDesc) {
+    // IDA 0x5e0e74: `BoundFuncDesc<PartInstance, bool(NormalId, int)>::D1` —
+    // memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5e0ebc — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_13SystemAddressEED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::SystemAddress>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::SystemAddress>::~PropDescriptor()
-pub fn stub_0x5e0ebc() -> ! {
-    todo!("0x5e0ebc RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::SystemAddress>::~PropDescriptor()")
+pub fn stub_0x5e0ebc(_desc: *mut PartPropDesc) {
+    // IDA 0x5e0ebc: `PropDescriptor<PartInstance, SystemAddress>::D1` —
+    // memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5e0ee0 — __ZN3RBX12PartInstance39getOrCreateLocalSimulationTouchedSignalEv
