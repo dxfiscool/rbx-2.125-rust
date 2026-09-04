@@ -6,6 +6,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use std::collections::HashMap;
 use crate::generated_137::AudioAppirater;
 
 // Ensure SharedPtr is seen as used — mirrors boost::shared_ptr<T> -> rbx_core::SharedPtr<T>
@@ -148,76 +149,326 @@ pub fn stub_19218(delegate: u64) {
     AudioAppirater::shared_set_delegate(delegate);
 }
 
+/// Audio-crate host for the `AppDelegate` ObjC cluster (IDA 0x19228..0x19f7c):
+/// lifecycle counters, launch defaults, login persistence slots, session
+/// reports, and the deep-link place id. `NSUserDefaults`/`UIAlertView`/
+/// `PlaceLauncher` collaborators collapse to host state; `id`/`UIWindow`
+/// tokens are `u64` (`0`/`None` is `nil`). Mirrors the platform crate
+/// `AppDelegate` model (which owns the full machine); audio cannot depend
+/// on platform (AGENTS.md DAG), so the slots these filler EAs touch live
+/// here.
+#[derive(Debug, Default)]
+pub struct AudioAppDelegate {
+    window: parking_lot::Mutex<Option<u64>>,
+    bg_task: std::sync::atomic::AtomicU32,
+    deallocated: std::sync::atomic::AtomicBool,
+    launch_calls: std::sync::atomic::AtomicU32,
+    resign_calls: std::sync::atomic::AtomicU32,
+    background_calls: std::sync::atomic::AtomicU32,
+    foreground_calls: std::sync::atomic::AtomicU32,
+    active_calls: std::sync::atomic::AtomicU32,
+    terminate_calls: std::sync::atomic::AtomicU32,
+    mem_warning_calls: std::sync::atomic::AtomicU32,
+    upgrade_checks: std::sync::atomic::AtomicU32,
+    cookie_policy: std::sync::atomic::AtomicU32,
+    defaults_str: parking_lot::Mutex<HashMap<String, String>>,
+    defaults_bool: parking_lot::Mutex<HashMap<String, bool>>,
+    sync_calls: std::sync::atomic::AtomicU32,
+    session_reports: parking_lot::Mutex<Vec<u32>>,
+    last_page_view: parking_lot::Mutex<String>,
+    flurry_key: parking_lot::Mutex<Option<String>>,
+    login_username: parking_lot::Mutex<String>,
+    login_password: parking_lot::Mutex<String>,
+    pending_place_id: std::sync::atomic::AtomicU32,
+    launched_place_ids: parking_lot::Mutex<Vec<u32>>,
+    fetch_settings_calls: std::sync::atomic::AtomicU32,
+    last_fetch_settings: parking_lot::Mutex<(String, String)>,
+    memory_bouncer_running: std::sync::atomic::AtomicBool,
+    place_launcher_mem_warnings: std::sync::atomic::AtomicU32,
+    place_launcher_view_disables: std::sync::atomic::AtomicU32,
+    place_launcher_view_enables: std::sync::atomic::AtomicU32,
+    place_launcher_leaves: std::sync::atomic::AtomicU32,
+}
+
+impl AudioAppDelegate {
+    /// `-[AppDelegate init]` (IDA 0x19228): only `objc_msgSendSuper2`
+    /// init; no ivar stores. Host `Default` covers it.
+    pub fn init() -> Self {
+        Self::default()
+    }
+
+    /// `-[AppDelegate dealloc]` (IDA 0x19254): `+[RobloxGoogleAnalytics
+    /// release]` (no retained host object), `-[UIWindow release]`, then
+    /// super dealloc (runs as drop).
+    pub fn dealloc(self) {
+        *self.window.lock() = None;
+        self.deallocated
+            .store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    fn register_bool_default(&self, key: &str, value: bool) {
+        self.defaults_bool.lock().insert(key.to_owned(), value);
+    }
+    fn set_object(&self, value: &str, key: &str) {
+        self.defaults_str
+            .lock()
+            .insert(key.to_owned(), value.to_owned());
+    }
+    fn object_for_key(&self, key: &str) -> String {
+        self.defaults_str.lock().get(key).cloned().unwrap_or_default()
+    }
+    fn remove_object_for_key(&self, key: &str) {
+        self.defaults_str.lock().remove(key);
+    }
+    fn synchronize(&self) {
+        self.sync_calls
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    fn report_session_for(&self, id: u32) {
+        self.session_reports.lock().push(id);
+    }
+    fn check_for_update(&self) {
+        self.upgrade_checks
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// `-[AppDelegate application:didFinishLaunchingWithOptions:]` (IDA
+    /// 0x192b4): defaults registration, reporter/GA counters, the two
+    /// global-queue blocks (run inline in order), upgrade check, cookie
+    /// policy, login restore. Returns 1. Mirrors the platform twin.
+    pub fn application_did_finish_launching(&self) -> bool {
+        self.register_bool_default("warnings_preference", true);
+        self.register_bool_default("wifionly_preference", false);
+        self.report_session_for(7);
+        stub_194ec(self);
+        stub_19514();
+        self.check_for_update();
+        self.cookie_policy
+            .store(0, std::sync::atomic::Ordering::SeqCst);
+        // Restore the persisted login (missing key reads as empty, like
+        // nil).
+        *self.login_username.lock() = self.object_for_key("username");
+        *self.login_password.lock() = self.object_for_key("password");
+        self.launch_calls
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        true
+    }
+
+    /// `-[AppDelegate applicationWillResignActive:]` (IDA 0x195a0):
+    /// begin/end trace + `disableViewBecauseGoingToBackground`.
+    pub fn application_will_resign_active(&self) {
+        eprintln!("AppDelegate applicationWillResignActive begin");
+        self.place_launcher_view_disables
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.resign_calls
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        eprintln!("AppDelegate applicationWillResignActive end");
+    }
+
+    /// `-[AppDelegate applicationDidEnterBackground:]` (IDA 0x196e4):
+    /// state persist, login persist, session report, page view — plus the
+    /// preserved BUG (removes the state key just written, then syncs).
+    /// Mirrors the platform twin.
+    pub fn application_did_enter_background(&self) {
+        eprintln!("AppDelegate applicationDidEnterBackground begin");
+        self.set_object("tryBackground", "RobloxAppState");
+        self.synchronize();
+        self.place_launcher_leaves
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.remove_object_for_key("signupusername");
+        self.remove_object_for_key("signupbirthdate");
+        self.remove_object_for_key("signupgender");
+        let username = self.login_username.lock().clone();
+        self.set_object(&username, "username");
+        let password = self.login_password.lock().clone();
+        self.set_object(&password, "password");
+        self.report_session_for(1);
+        *self.last_page_view.lock() = "RobloxApp/EnterBackGround".to_owned();
+        eprintln!("AppDelegate applicationDidEnterBackground end");
+        // BUG preserved: the original removes the state key it just wrote,
+        // then syncs (IDA 0x19992..0x199b6).
+        self.remove_object_for_key("RobloxAppState");
+        self.synchronize();
+        self.background_calls
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// `-[AppDelegate applicationDidReceiveMemoryWarning:]` (IDA 0x19a30):
+    /// trace + `stopMemoryBouncer:0`; when the bouncer reports nothing
+    /// stopped, forwards to `PlaceLauncher`. Mirrors the platform twin.
+    pub fn application_did_receive_memory_warning(&self) {
+        eprintln!("Received out of memory warning (applicationDidReceiveMemoryWarning)");
+        self.mem_warning_calls
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        if !self.stop_memory_bouncer() {
+            self.place_launcher_mem_warnings
+                .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        }
+    }
+    fn stop_memory_bouncer(&self) -> bool {
+        self.memory_bouncer_running
+            .swap(false, std::sync::atomic::Ordering::SeqCst)
+    }
+
+    /// `-[AppDelegate applicationWillEnterForeground:]` (IDA 0x19b60):
+    /// begin/end trace + Appirater foreground + upgrade check + page view.
+    /// Mirrors the platform twin.
+    pub fn application_will_enter_foreground(&self) {
+        use crate::generated_137::AudioAppirater;
+        eprintln!("AppDelegate applicationWillEnterForeground begin");
+        AudioAppirater::shared_note_entered_foreground();
+        self.check_for_update();
+        *self.last_page_view.lock() = "RobloxApp/EnterForeGround".to_owned();
+        self.foreground_calls
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        eprintln!("AppDelegate applicationWillEnterForeground end");
+    }
+
+    /// `-[AppDelegate applicationDidBecomeActive:]` (IDA 0x19cdc): state
+    /// persist, enable-view, session report, inline fetch-settings block,
+    /// pending deep-link place launch. Mirrors the platform twin.
+    pub fn application_did_become_active(&self) {
+        eprintln!("AppDelegate applicationDidBecomeActive begin");
+        self.set_object("tryForeground", "RobloxAppState");
+        self.synchronize();
+        self.place_launcher_view_enables
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.report_session_for(0);
+        stub_19f34(self);
+        let pending = self
+            .pending_place_id
+            .load(std::sync::atomic::Ordering::SeqCst);
+        if pending != 0 {
+            self.launched_place_ids.lock().push(pending);
+            self.pending_place_id
+                .store(0, std::sync::atomic::Ordering::SeqCst);
+        }
+        eprintln!("AppDelegate applicationDidBecomeActive end");
+        self.set_object("inApp", "RobloxAppState");
+        self.synchronize();
+        self.active_calls
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// `-[AppDelegate applicationWillTerminate:]` (IDA 0x19f7c).
+    pub fn application_will_terminate(&self) {
+        self.terminate_calls
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+}
+
 // 0x19228 — -[AppDelegate init]
 #[doc(alias = "-[AppDelegate init]")]
-pub fn stub_19228() -> ! {
-    todo!("0x19228 -[AppDelegate init]")
+pub fn stub_19228() -> AudioAppDelegate {
+    // IDA 0x19228 (`-[AppDelegate init]`): only `objc_msgSendSuper2` init;
+    // no ivar stores. Same as the platform 0x19228 anchor.
+    AudioAppDelegate::init()
 }
 
 // 0x19254 — -[AppDelegate dealloc]
 #[doc(alias = "-[AppDelegate dealloc]")]
-pub fn stub_19254() -> ! {
-    todo!("0x19254 -[AppDelegate dealloc]")
+pub fn stub_19254(delegate: AudioAppDelegate) {
+    // IDA 0x19254 (`-[AppDelegate dealloc]`): analytics release, window
+    // release, super dealloc (runs as drop). Same as the platform 0x19254
+    // anchor.
+    delegate.dealloc();
 }
 
 // 0x192b4 — -[AppDelegate application:didFinishLaunchingWithOptions:]
 #[doc(alias = "-[AppDelegate application:didFinishLaunchingWithOptions:]")]
-pub fn stub_192b4() -> ! {
-    todo!("0x192b4 -[AppDelegate application:didFinishLaunchingWithOptions:]")
+pub fn stub_192b4(delegate: &AudioAppDelegate) -> bool {
+    // IDA 0x192b4 (`-[AppDelegate
+    // application:didFinishLaunchingWithOptions:]`): defaults, reporters,
+    // launch blocks, upgrade check, cookie policy, login restore, returns
+    // 1. Same as the platform 0x192b4 anchor.
+    delegate.application_did_finish_launching()
 }
 
 // 0x194ec — ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke
 #[doc(alias = "___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke")]
-pub fn stub_194ec() -> ! {
-    todo!("0x194ec ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke")
+pub fn stub_194ec(delegate: &AudioAppDelegate) {
+    // IDA 0x194ec (launch block 1): `+[Flurry startSession:]` with the
+    // session key. Same as the platform 0x194ec anchor.
+    *delegate.flurry_key.lock() = Some("FM7DNRW56339NC22K8GR".to_owned());
 }
 
 // 0x19514 — ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2
 #[doc(alias = "___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2")]
-pub fn stub_19514() -> ! {
-    todo!("0x19514 ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2")
+pub fn stub_19514() {
+    // IDA 0x19514 (launch block 2): Appirater app id / days / uses / remind
+    // config + `appLaunched`. Same as the platform 0x19514 anchor.
+    crate::generated_137::stub_17df0("431946152");
+    crate::generated_137::stub_17e00(3.0);
+    crate::generated_137::stub_17e14(10);
+    crate::generated_137::stub_17e34(10.0);
+    crate::generated_137::AudioAppirater::shared_note_app_launched();
 }
 
 // 0x195a0 — -[AppDelegate applicationWillResignActive:]
 #[doc(alias = "-[AppDelegate applicationWillResignActive:]")]
-pub fn stub_195a0() -> ! {
-    todo!("0x195a0 -[AppDelegate applicationWillResignActive:]")
+pub fn stub_195a0(delegate: &AudioAppDelegate) {
+    // IDA 0x195a0 (`-[AppDelegate applicationWillResignActive:]`): trace +
+    // `disableViewBecauseGoingToBackground`. Same as the platform 0x195a0
+    // anchor.
+    delegate.application_will_resign_active();
 }
 
 // 0x196e4 — -[AppDelegate applicationDidEnterBackground:]
 #[doc(alias = "-[AppDelegate applicationDidEnterBackground:]")]
-pub fn stub_196e4() -> ! {
-    todo!("0x196e4 -[AppDelegate applicationDidEnterBackground:]")
+pub fn stub_196e4(delegate: &AudioAppDelegate) {
+    // IDA 0x196e4 (`-[AppDelegate applicationDidEnterBackground:]`): state
+    // + login persist, session report, page view, preserved state-key BUG.
+    // Same as the platform 0x196e4 anchor.
+    delegate.application_did_enter_background();
 }
 
 // 0x19a30 — -[AppDelegate applicationDidReceiveMemoryWarning:]
 #[doc(alias = "-[AppDelegate applicationDidReceiveMemoryWarning:]")]
-pub fn stub_19a30() -> ! {
-    todo!("0x19a30 -[AppDelegate applicationDidReceiveMemoryWarning:]")
+pub fn stub_19a30(delegate: &AudioAppDelegate) {
+    // IDA 0x19a30 (`-[AppDelegate applicationDidReceiveMemoryWarning:]`):
+    // trace + memory-bouncer stop with PlaceLauncher forward. Same as the
+    // platform 0x19a30 anchor.
+    delegate.application_did_receive_memory_warning();
 }
 
 // 0x19b60 — -[AppDelegate applicationWillEnterForeground:]
 #[doc(alias = "-[AppDelegate applicationWillEnterForeground:]")]
-pub fn stub_19b60() -> ! {
-    todo!("0x19b60 -[AppDelegate applicationWillEnterForeground:]")
+pub fn stub_19b60(delegate: &AudioAppDelegate) {
+    // IDA 0x19b60 (`-[AppDelegate applicationWillEnterForeground:]`):
+    // trace + Appirater foreground + upgrade check + page view. Same as the
+    // platform 0x19b60 anchor.
+    delegate.application_will_enter_foreground();
 }
 
 // 0x19cdc — -[AppDelegate applicationDidBecomeActive:]
 #[doc(alias = "-[AppDelegate applicationDidBecomeActive:]")]
-pub fn stub_19cdc() -> ! {
-    todo!("0x19cdc -[AppDelegate applicationDidBecomeActive:]")
+pub fn stub_19cdc(delegate: &AudioAppDelegate) {
+    // IDA 0x19cdc (`-[AppDelegate applicationDidBecomeActive:]`): state
+    // persist, enable-view, session report, fetch-settings block,
+    // deep-link launch. Same as the platform 0x19cdc anchor.
+    delegate.application_did_become_active();
 }
 
 // 0x19f34 — ___42-[AppDelegate applicationDidBecomeActive:]_block_invoke
 #[doc(alias = "___42-[AppDelegate applicationDidBecomeActive:]_block_invoke")]
-pub fn stub_19f34() -> ! {
-    todo!("0x19f34 ___42-[AppDelegate applicationDidBecomeActive:]_block_invoke")
+pub fn stub_19f34(delegate: &AudioAppDelegate) {
+    // IDA 0x19f34 (become-active block): client-settings init + fetch with
+    // the iOS settings service. Same as the platform 0x19f34 anchor.
+    delegate
+        .fetch_settings_calls
+        .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    *delegate.last_fetch_settings.lock() = (
+        "iOSAppSettings".to_owned(),
+        "D6925E56-BFB9-4908-AAA2-A5B1EC4B2D79".to_owned(),
+    );
 }
 
 // 0x19f7c — -[AppDelegate applicationWillTerminate:]
 #[doc(alias = "-[AppDelegate applicationWillTerminate:]")]
-pub fn stub_19f7c() -> ! {
-    todo!("0x19f7c -[AppDelegate applicationWillTerminate:]")
+pub fn stub_19f7c(delegate: &AudioAppDelegate) {
+    // IDA 0x19f7c (`-[AppDelegate applicationWillTerminate:]`). Same as the
+    // platform 0x19f7c anchor.
+    delegate.application_will_terminate();
 }
 
 // 0x1a098 — __Z18_topMostControllerP16UIViewController
