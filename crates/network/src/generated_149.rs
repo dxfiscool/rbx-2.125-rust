@@ -6,6 +6,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::generated_138::{EnumDescModel, RenderSettingsItem};
 
 // 0x152f0 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16AntialiasingModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode> const&)
@@ -303,212 +304,223 @@ pub fn stub_163b8(xs: &mut Vec<i32>, index: usize, n: usize, value: i32) {
     // IDA 0x163b8: vector<AASamples>::_M_fill_insert — n-copy fill at pos with spare/realloc paths (cf. 0x14618); splice with repeat covers all arms.
         xs.splice(index..index, std::iter::repeat(value).take(n));}
 
+/// Once-guarded `Singleton<EnumDesc<T>>` tables (IDA 0x1654c family):
+/// each image static runs the EnumDesc C2 under `__cxa_guard` + `__cxa_atexit`
+/// dtor; the host keeps a `LazyLock<EnumDescModel>` populated by the same
+/// C2 ports from `generated_138`.
+static SHADOW_MODE_ENUM_DESC: std::sync::LazyLock<EnumDescModel> = std::sync::LazyLock::new(|| { let mut d = EnumDescModel::default(); crate::generated_138::stub_8c4c(&mut d); d });
+static RESOLUTION_PRESET_ENUM_DESC: std::sync::LazyLock<EnumDescModel> = std::sync::LazyLock::new(|| { let mut d = EnumDescModel::default(); crate::generated_138::stub_9100(&mut d); d });
+static QUALITY_LEVEL_ENUM_DESC: std::sync::LazyLock<EnumDescModel> = std::sync::LazyLock::new(|| { let mut d = EnumDescModel::default(); crate::generated_138::stub_8e24(&mut d); d });
+static ANTIALIASING_MODE_ENUM_DESC: std::sync::LazyLock<EnumDescModel> = std::sync::LazyLock::new(|| { let mut d = EnumDescModel::default(); crate::generated_138::stub_8a88(&mut d); d });
+static FRAME_RATE_MANAGER_ENUM_DESC: std::sync::LazyLock<EnumDescModel> = std::sync::LazyLock::new(|| { let mut d = EnumDescModel::default(); crate::generated_138::stub_88c4(&mut d); d });
+static GRAPHICS_MODE_ENUM_DESC: std::sync::LazyLock<EnumDescModel> = std::sync::LazyLock::new(|| { let mut d = EnumDescModel::default(); crate::generated_138::stub_86d0(&mut d); d });
+static AA_SAMPLES_ENUM_DESC: std::sync::LazyLock<EnumDescModel> = std::sync::LazyLock::new(|| { let mut d = EnumDescModel::default(); crate::generated_138::stub_850c(&mut d); d });
 // 0x16548 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings10ShadowModeEEEE13initSingletonEv
 // demangled: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode> const>::initSingleton(void)
 // type: 
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode> const>::initSingleton(void)")]
-pub fn stub_16548() -> ! {
-    todo!("0x16548 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode> const>::initSingleton(void)")
-}
+pub fn stub_16548() -> &'static EnumDescModel {
+    // IDA 0x16548: Singleton<ShadowMode>::initSingleton — thunk tail-calling doGetSingleton (decompile: single shim call); LazyLock guard lives in the doGet port.
+    stub_1654c()}
 
 // 0x1654c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings10ShadowModeEEEE14doGetSingletonEv
 // demangled: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode> const>::doGetSingleton(void)
 // type: void *()
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode> const>::doGetSingleton(void)")]
-pub fn stub_1654c() -> ! {
-    todo!("0x1654c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode> const>::doGetSingleton(void)")
-}
+pub fn stub_1654c() -> &'static EnumDescModel {
+    // IDA 0x1654c: Singleton<ShadowMode>::doGetSingleton — guarded EnumDesc C2 (cf. 0x1654c: 0x165c2), atexit dtor (0x165e0), release (0x165e6), returns &s (0x16610). LazyLock is the guard; the C2 port populates.
+    &SHADOW_MODE_ENUM_DESC}
 
 // 0x1663c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16ResolutionPresetEEEE13initSingletonEv
 // demangled: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset> const>::initSingleton(void)
 // type: 
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset> const>::initSingleton(void)")]
-pub fn stub_1663c() -> ! {
-    todo!("0x1663c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset> const>::initSingleton(void)")
-}
+pub fn stub_1663c() -> &'static EnumDescModel {
+    // IDA 0x1663c: Singleton<ResolutionPreset>::initSingleton — thunk tail-calling doGetSingleton (decompile: single shim call); LazyLock guard lives in the doGet port.
+    stub_16640()}
 
 // 0x16640 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16ResolutionPresetEEEE14doGetSingletonEv
 // demangled: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset> const>::doGetSingleton(void)
 // type: void *()
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset> const>::doGetSingleton(void)")]
-pub fn stub_16640() -> ! {
-    todo!("0x16640 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset> const>::doGetSingleton(void)")
-}
+pub fn stub_16640() -> &'static EnumDescModel {
+    // IDA 0x16640: Singleton<ResolutionPreset>::doGetSingleton — guarded EnumDesc C2 (cf. 0x1654c: 0x165c2), atexit dtor (0x165e0), release (0x165e6), returns &s (0x16610). LazyLock is the guard; the C2 port populates.
+    &RESOLUTION_PRESET_ENUM_DESC}
 
 // 0x16730 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12QualityLevelEEEE13initSingletonEv
 // demangled: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel> const>::initSingleton(void)
 // type: 
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel> const>::initSingleton(void)")]
-pub fn stub_16730() -> ! {
-    todo!("0x16730 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel> const>::initSingleton(void)")
-}
+pub fn stub_16730() -> &'static EnumDescModel {
+    // IDA 0x16730: Singleton<QualityLevel>::initSingleton — thunk tail-calling doGetSingleton (decompile: single shim call); LazyLock guard lives in the doGet port.
+    stub_16734()}
 
 // 0x16734 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12QualityLevelEEEE14doGetSingletonEv
 // demangled: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel> const>::doGetSingleton(void)
 // type: void *()
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel> const>::doGetSingleton(void)")]
-pub fn stub_16734() -> ! {
-    todo!("0x16734 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel> const>::doGetSingleton(void)")
-}
+pub fn stub_16734() -> &'static EnumDescModel {
+    // IDA 0x16734: Singleton<QualityLevel>::doGetSingleton — guarded EnumDesc C2 (cf. 0x1654c: 0x165c2), atexit dtor (0x165e0), release (0x165e6), returns &s (0x16610). LazyLock is the guard; the C2 port populates.
+    &QUALITY_LEVEL_ENUM_DESC}
 
 // 0x16824 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16AntialiasingModeEEEE13initSingletonEv
 // demangled: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode> const>::initSingleton(void)
 // type: 
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode> const>::initSingleton(void)")]
-pub fn stub_16824() -> ! {
-    todo!("0x16824 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode> const>::initSingleton(void)")
-}
+pub fn stub_16824() -> &'static EnumDescModel {
+    // IDA 0x16824: Singleton<AntialiasingMode>::initSingleton — thunk tail-calling doGetSingleton (decompile: single shim call); LazyLock guard lives in the doGet port.
+    stub_16828()}
 
 // 0x16828 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16AntialiasingModeEEEE14doGetSingletonEv
 // demangled: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode> const>::doGetSingleton(void)
 // type: void *()
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode> const>::doGetSingleton(void)")]
-pub fn stub_16828() -> ! {
-    todo!("0x16828 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode> const>::doGetSingleton(void)")
-}
+pub fn stub_16828() -> &'static EnumDescModel {
+    // IDA 0x16828: Singleton<AntialiasingMode>::doGetSingleton — guarded EnumDesc C2 (cf. 0x1654c: 0x165c2), atexit dtor (0x165e0), release (0x165e6), returns &s (0x16610). LazyLock is the guard; the C2 port populates.
+    &ANTIALIASING_MODE_ENUM_DESC}
 
 // 0x16918 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings20FrameRateManagerModeEEEE13initSingletonEv
 // demangled: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode> const>::initSingleton(void)
 // type: 
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode> const>::initSingleton(void)")]
-pub fn stub_16918() -> ! {
-    todo!("0x16918 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode> const>::initSingleton(void)")
-}
+pub fn stub_16918() -> &'static EnumDescModel {
+    // IDA 0x16918: Singleton<FrameRateManagerMode>::initSingleton — thunk tail-calling doGetSingleton (decompile: single shim call); LazyLock guard lives in the doGet port.
+    stub_1691c()}
 
 // 0x1691c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings20FrameRateManagerModeEEEE14doGetSingletonEv
 // demangled: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode> const>::doGetSingleton(void)
 // type: void *()
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode> const>::doGetSingleton(void)")]
-pub fn stub_1691c() -> ! {
-    todo!("0x1691c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode> const>::doGetSingleton(void)")
-}
+pub fn stub_1691c() -> &'static EnumDescModel {
+    // IDA 0x1691c: Singleton<FrameRateManagerMode>::doGetSingleton — guarded EnumDesc C2 (cf. 0x1654c: 0x165c2), atexit dtor (0x165e0), release (0x165e6), returns &s (0x16610). LazyLock is the guard; the C2 port populates.
+    &FRAME_RATE_MANAGER_ENUM_DESC}
 
 // 0x16a0c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12GraphicsModeEEEE13initSingletonEv
 // demangled: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode> const>::initSingleton(void)
 // type: 
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode> const>::initSingleton(void)")]
-pub fn stub_16a0c() -> ! {
-    todo!("0x16a0c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode> const>::initSingleton(void)")
-}
+pub fn stub_16a0c() -> &'static EnumDescModel {
+    // IDA 0x16a0c: Singleton<GraphicsMode>::initSingleton — thunk tail-calling doGetSingleton (decompile: single shim call); LazyLock guard lives in the doGet port.
+    stub_16a10()}
 
 // 0x16a10 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12GraphicsModeEEEE14doGetSingletonEv
 // demangled: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode> const>::doGetSingleton(void)
 // type: void *()
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode> const>::doGetSingleton(void)")]
-pub fn stub_16a10() -> ! {
-    todo!("0x16a10 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode> const>::doGetSingleton(void)")
-}
+pub fn stub_16a10() -> &'static EnumDescModel {
+    // IDA 0x16a10: Singleton<GraphicsMode>::doGetSingleton — guarded EnumDesc C2 (cf. 0x1654c: 0x165c2), atexit dtor (0x165e0), release (0x165e6), returns &s (0x16610). LazyLock is the guard; the C2 port populates.
+    &GRAPHICS_MODE_ENUM_DESC}
 
 // 0x16b00 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings9AASamplesEEEE13initSingletonEv
 // demangled: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples> const>::initSingleton(void)
 // type: 
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples> const>::initSingleton(void)")]
-pub fn stub_16b00() -> ! {
-    todo!("0x16b00 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples> const>::initSingleton(void)")
-}
+pub fn stub_16b00() -> &'static EnumDescModel {
+    // IDA 0x16b00: Singleton<AASamples>::initSingleton — thunk tail-calling doGetSingleton (decompile: single shim call); LazyLock guard lives in the doGet port.
+    stub_16b04()}
 
 // 0x16b04 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings9AASamplesEEEE14doGetSingletonEv
 // demangled: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples> const>::doGetSingleton(void)
 // type: void *()
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples> const>::doGetSingleton(void)")]
-pub fn stub_16b04() -> ! {
-    todo!("0x16b04 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples> const>::doGetSingleton(void)")
-}
+pub fn stub_16b04() -> &'static EnumDescModel {
+    // IDA 0x16b04: Singleton<AASamples>::doGetSingleton — guarded EnumDesc C2 (cf. 0x1654c: 0x165c2), atexit dtor (0x165e0), release (0x165e6), returns &s (0x16610). LazyLock is the guard; the C2 port populates.
+    &AA_SAMPLES_ENUM_DESC}
 
 // 0x16bf4 — __ZN19CRenderSettingsItemD2Ev
 // demangled: CRenderSettingsItem::~CRenderSettingsItem()
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 #[doc(alias = "CRenderSettingsItem::~CRenderSettingsItem()")]
-pub fn stub_16bf4() -> ! {
-    todo!("0x16bf4 CRenderSettingsItem::~CRenderSettingsItem()")
-}
+pub fn stub_16bf4(item: &mut RenderSettingsItem) {
+    // IDA 0x16bf4: CRenderSettingsItem D2 — vtable resets (0x16c28..0x16c42), signal disconnectAll (0x16c74), slot release (0x16c7a..0x16c82), member delete + string dtor (0x16c88..0x16c98), GASI teardown; drops and disconnects fold into Rust ownership.
+    item.changed.disconnect_all();}
 
 // 0x16d34 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16ResolutionPresetEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>> *)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>> *)")]
-pub fn stub_16d34() -> ! {
-    todo!("0x16d34 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>> *)")
-}
+pub fn stub_16d34(map: &mut std::collections::HashMap<String, i32>) {
+    // IDA 0x16d34: _Rb_tree<ResolutionPreset>::_M_erase — recursive post-order node delete (cf. 0x16d34: 0x16d46..0x16d4e); the node heap folds into the HashMap.
+    map.clear();}
 
 // 0x16d5c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings12QualityLevelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>> *)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>> *)")]
-pub fn stub_16d5c() -> ! {
-    todo!("0x16d5c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>> *)")
-}
+pub fn stub_16d5c(map: &mut std::collections::HashMap<String, i32>) {
+    // IDA 0x16d5c: _Rb_tree<QualityLevel>::_M_erase — recursive post-order node delete (cf. 0x16d34: 0x16d46..0x16d4e); the node heap folds into the HashMap.
+    map.clear();}
 
 // 0x16d84 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings10ShadowModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>> *)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>> *)")]
-pub fn stub_16d84() -> ! {
-    todo!("0x16d84 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>> *)")
-}
+pub fn stub_16d84(map: &mut std::collections::HashMap<String, i32>) {
+    // IDA 0x16d84: _Rb_tree<ShadowMode>::_M_erase — recursive post-order node delete (cf. 0x16d34: 0x16d46..0x16d4e); the node heap folds into the HashMap.
+    map.clear();}
 
 // 0x16dac — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16AntialiasingModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>> *)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>> *)")]
-pub fn stub_16dac() -> ! {
-    todo!("0x16dac std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>> *)")
-}
+pub fn stub_16dac(map: &mut std::collections::HashMap<String, i32>) {
+    // IDA 0x16dac: _Rb_tree<AntialiasingMode>::_M_erase — recursive post-order node delete (cf. 0x16d34: 0x16d46..0x16d4e); the node heap folds into the HashMap.
+    map.clear();}
 
 // 0x16dd4 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings20FrameRateManagerModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>> *)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>> *)")]
-pub fn stub_16dd4() -> ! {
-    todo!("0x16dd4 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>> *)")
-}
+pub fn stub_16dd4(map: &mut std::collections::HashMap<String, i32>) {
+    // IDA 0x16dd4: _Rb_tree<FrameRateManagerMode>::_M_erase — recursive post-order node delete (cf. 0x16d34: 0x16d46..0x16d4e); the node heap folds into the HashMap.
+    map.clear();}
 
 // 0x16dfc — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings12GraphicsModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>> *)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>> *)")]
-pub fn stub_16dfc() -> ! {
-    todo!("0x16dfc std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>> *)")
-}
+pub fn stub_16dfc(map: &mut std::collections::HashMap<String, i32>) {
+    // IDA 0x16dfc: _Rb_tree<GraphicsMode>::_M_erase — recursive post-order node delete (cf. 0x16d34: 0x16d46..0x16d4e); the node heap folds into the HashMap.
+    map.clear();}
 
 // 0x16e24 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings9AASamplesEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>> *)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>> *)")]
-pub fn stub_16e24() -> ! {
-    todo!("0x16e24 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>> *)")
-}
+pub fn stub_16e24(map: &mut std::collections::HashMap<String, i32>) {
+    // IDA 0x16e24: _Rb_tree<AASamples>::_M_erase — recursive post-order node delete (cf. 0x16d34: 0x16d46..0x16d4e); the node heap folds into the HashMap.
+    map.clear();}
 
 // 0x16e4c — __GLOBAL__I_a
 // demangled: global constructor keyed to_a
 // type: 
 #[doc(alias = "global constructor keyed to_a")]
-pub fn stub_16e4c() -> ! {
-    todo!("0x16e4c global constructor keyed to_a")
+pub fn stub_16e4c() {
+    // IDA 0x16e4c: __GLOBAL__I_a — boost::system category static-inits (disasm: generic_category/system_category stores into MergedGlobals); was: boost::system -> std::io error categories, no host state — static-init no-op shell.
 }
 
 // 0x179e8 — __ZN3RBX9DataModel10serverSaveEv
 // demangled: RBX::DataModel::serverSave(void)
 // type: void __fastcall(RBX::DataModel *this)
 #[doc(alias = "RBX::DataModel::serverSave(void)")]
-pub fn stub_179e8() -> ! {
-    todo!("0x179e8 RBX::DataModel::serverSave(void)")
+pub fn stub_179e8() {
+    // IDA 0x179e8: DataModel::serverSave — empty body (decompile: single `;`); save pipeline lives in the datamodel crate — faithful no-op shell.
 }
 
 // 0x179ec — __ZN3RBX9DataModel17internalSaveAsyncENS_9ContentIdEN5boost8functionIFvbEEE
 // demangled: RBX::DataModel::internalSaveAsync(RBX::ContentId,boost::function<void ()(bool)>)
 // type: void()
 #[doc(alias = "RBX::DataModel::internalSaveAsync(RBX::ContentId,boost::function<void ()(bool)>)")]
-pub fn stub_179ec() -> ! {
-    todo!("0x179ec RBX::DataModel::internalSaveAsync(RBX::ContentId,boost::function<void ()(bool)>)")
+pub fn stub_179ec() {
+    // IDA 0x179ec: DataModel::internalSaveAsync — empty body (decompile: single `;`); save pipeline lives in the datamodel crate — faithful no-op shell.
 }
 
 // 0x179f0 — __ZN3RBX9DataModel12internalSaveENS_9ContentIdE
 // demangled: RBX::DataModel::internalSave(RBX::ContentId)
 // type: void()
 #[doc(alias = "RBX::DataModel::internalSave(RBX::ContentId)")]
-pub fn stub_179f0() -> ! {
-    todo!("0x179f0 RBX::DataModel::internalSave(RBX::ContentId)")
+pub fn stub_179f0() {
+    // IDA 0x179f0: DataModel::internalSave — empty body (decompile: single `;`); save pipeline lives in the datamodel crate — faithful no-op shell.
 }
 
 // 0x179f4 — __ZN3RBX9DataModel11uploadPlaceERKSsNS_8Instance10SaveFilterEN5boost8functionIFvNS5_10shared_ptrIKNS_10Reflection5TupleEEEEEENS6_IFvSsEEE
@@ -542,8 +554,8 @@ pub fn stub_17b80() -> ! {
 // demangled: global constructor keyed to_a_0
 // type: 
 #[doc(alias = "global constructor keyed to_a_0")]
-pub fn stub_17c58() -> ! {
-    todo!("0x17c58 global constructor keyed to_a_0")
+pub fn stub_17c58() {
+    // IDA 0x17c58: __GLOBAL__I_a — boost::system category static-inits (disasm: generic_category/system_category stores into MergedGlobals); was: boost::system -> std::io error categories, no host state — static-init no-op shell.
 }
 
 // 0x17df0 — +[Appirater setAppId:]
@@ -622,16 +634,16 @@ pub fn stub_17fe4() -> ! {
 // demangled: ___copy_helper_block_
 // type: 
 #[doc(alias = "___copy_helper_block_")]
-pub fn stub_18094() -> ! {
-    todo!("0x18094 ___copy_helper_block_")
+pub fn stub_18094() {
+    // IDA 0x18094: __copy_helper_block — _Block_object_assign shim over the captured object slot (cf. 0x18094: 0x1809a; 0x18bc8 uses +0x14, flag 3 = block retain); ObjC block ref traffic has no host carrier — faithful no-op shell.
 }
 
 // 0x180a0 — ___destroy_helper_block_
 // demangled: ___destroy_helper_block_
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_")]
-pub fn stub_180a0() -> ! {
-    todo!("0x180a0 ___destroy_helper_block_")
+pub fn stub_180a0() {
+    // IDA 0x180a0: __destroy_helper_block — _Block_object_dispose shim over the captured slot (cf. 0x180a0: 0x180a4); block release has no host carrier — faithful no-op shell.
 }
 
 // 0x180a8 — -[Appirater showRatingAlert]
@@ -686,16 +698,16 @@ pub fn stub_18bb4() -> ! {
 // demangled: ___copy_helper_block_125
 // type: 
 #[doc(alias = "___copy_helper_block_125")]
-pub fn stub_18bc8() -> ! {
-    todo!("0x18bc8 ___copy_helper_block_125")
+pub fn stub_18bc8() {
+    // IDA 0x18bc8: __copy_helper_block — _Block_object_assign shim over the captured object slot (cf. 0x18094: 0x1809a; 0x18bc8 uses +0x14, flag 3 = block retain); ObjC block ref traffic has no host carrier — faithful no-op shell.
 }
 
 // 0x18bd4 — ___destroy_helper_block_126
 // demangled: ___destroy_helper_block_126
 // type: 
 #[doc(alias = "___destroy_helper_block_126")]
-pub fn stub_18bd4() -> ! {
-    todo!("0x18bd4 ___destroy_helper_block_126")
+pub fn stub_18bd4() {
+    // IDA 0x18bd4: __destroy_helper_block — _Block_object_dispose shim over the captured slot (cf. 0x180a0: 0x18bd4); block release has no host carrier — faithful no-op shell.
 }
 
 // 0x18bdc — -[Appirater incrementSignificantEventAndRate:]
@@ -718,16 +730,16 @@ pub fn stub_18c78() -> ! {
 // demangled: ___copy_helper_block_130
 // type: 
 #[doc(alias = "___copy_helper_block_130")]
-pub fn stub_18c8c() -> ! {
-    todo!("0x18c8c ___copy_helper_block_130")
+pub fn stub_18c8c() {
+    // IDA 0x18c8c: __copy_helper_block_130 — same assign-shim template (disasm 0x18c8c..0x18c92: +0x14 slot, flag 3); no host carrier — faithful no-op shell.
 }
 
 // 0x18c98 — ___destroy_helper_block_131
 // demangled: ___destroy_helper_block_131
 // type: 
 #[doc(alias = "___destroy_helper_block_131")]
-pub fn stub_18c98() -> ! {
-    todo!("0x18c98 ___destroy_helper_block_131")
+pub fn stub_18c98() {
+    // IDA 0x18c98: __destroy_helper_block — _Block_object_dispose shim over the captured slot (cf. 0x180a0: 0x18c98); block release has no host carrier — faithful no-op shell.
 }
 
 // 0x18ca0 — +[Appirater appLaunched]
