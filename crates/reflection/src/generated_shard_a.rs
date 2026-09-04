@@ -143,6 +143,14 @@ impl Value {
             other => panic!("Variant::convert<Vector2int16> on {other:?}"),
         }
     }
+    /// `RBX::Reflection::Variant::convert<G3D::Vector2>`.
+    pub fn as_vector2(&self) -> [f32; 2] {
+        match self {
+            Value::Vector2(v) => *v,
+            other => panic!("Variant::convert<Vector2> on {other:?}"),
+        }
+    }
+
 }
 
 /// `RBX::Reflection::FunctionDescriptor::Arguments` cutover: positional
@@ -4990,8 +4998,16 @@ pub fn stub_0x665040() {
 
 // 0x6654bc — __ZN3RBX10Reflection13BoundFuncDescINS_5TeamsEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EEC2EMS2_FSB_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Teams,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(void),0>::BoundFuncDesc(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::Teams::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x6654bc() -> ! {
-    todo!("0x6654bc RBX::Reflection::BoundFuncDesc<RBX::Teams,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::BoundFuncDesc(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::Teams::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x6654bc(name: &str, member: usize, permissions: u32, attributes: u32) -> BoundFunc {
+    // IDA 0x6654bc: `BoundFuncDesc<Teams, InstanceList>::BoundFuncDesc`
+    // (same shape as 0x61c528).
+    BoundFunc {
+        name: name.to_owned(),
+        member,
+        signature: Signature { return_type: "InstanceList", args: Vec::new() },
+        permissions,
+        attributes,
+    }
 }
 
 // 0x6655c0 — __ZN3RBX10Reflection13BoundFuncDescINS_5TeamsEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED0Ev
@@ -5002,20 +5018,32 @@ pub fn stub_0x6655c0() {
 
 // 0x665674 — __ZNK3RBX10Reflection13BoundFuncDescINS_5TeamsEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Teams,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x665674() -> ! {
-    todo!("0x665674 RBX::Reflection::BoundFuncDesc<RBX::Teams,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x665674(_func: &BoundFunc, call: &dyn Fn() -> Vec<u32>) -> Value {
+    // IDA 0x665674: `BoundFuncDesc<InstanceList>::execute` for Teams
+    // forwards to `Call0Helper` (same shape as 0x61c6e0).
+    stub_0x665698(call)
 }
 
 // 0x665698 — __ZN3RBX10Reflection11Call0HelperINS_5TeamsEMS2_FN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvESB_E4callEPS2_SD_RNS0_7VariantE
 #[doc(alias = "RBX::Reflection::Call0Helper<RBX::Teams,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::Teams::*)(void),rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>>::call(RBX::Teams*,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::Teams::*)(void),RBX::Reflection::Variant &)")]
-pub fn stub_0x665698() -> ! {
-    todo!("0x665698 RBX::Reflection::Call0Helper<RBX::Teams,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::Teams::*)(void),boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>>::call(RBX::Teams*,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::Teams::*)(void),RBX::Reflection::Variant &)")
+pub fn stub_0x665698(call: &dyn Fn() -> Vec<u32>) -> Value {
+    // IDA 0x665698: `Call0Helper<InstanceList>::call` for Teams: invoke,
+    // tag the shared-vector return type, pack (same shape as 0x61c704).
+    Value::InstanceList(call())
 }
 
 // 0x665780 — __ZN3RBX10Reflection13BoundFuncDescINS_5TeamsEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Teams,void ()(void),0>::BoundFuncDesc(void (RBX::Teams::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x665780() -> ! {
-    todo!("0x665780 RBX::Reflection::BoundFuncDesc<RBX::Teams,void ()(void),0>::BoundFuncDesc(void (RBX::Teams::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x665780(name: &str, member: usize, permissions: u32, attributes: u32) -> BoundFunc {
+    // IDA 0x665780: `BoundFuncDesc<Teams, void>::BoundFuncDesc` (same shape
+    // as 0x5f1ddc).
+    BoundFunc {
+        name: name.to_owned(),
+        member,
+        signature: Signature { return_type: "void", args: Vec::new() },
+        permissions,
+        attributes,
+    }
 }
 
 // 0x665884 — __ZN3RBX10Reflection13BoundFuncDescINS_5TeamsEFvvELi0EED0Ev
@@ -5026,14 +5054,23 @@ pub fn stub_0x665884() {
 
 // 0x665938 — __ZNK3RBX10Reflection13BoundFuncDescINS_5TeamsEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Teams,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x665938() -> ! {
-    todo!("0x665938 RBX::Reflection::BoundFuncDesc<RBX::Teams,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x665938(_func: &BoundFunc, call: &dyn Fn()) {
+    // IDA 0x665938: `BoundFuncDesc<void>::execute` for Teams: header strip
+    // + member invoke (same shape as 0x5f1f94).
+    call();
 }
 
 // 0x667558 — __ZN3RBX7TextBox17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE
 #[doc(alias = "RBX::TextBox::onPropertyChanged(RBX::Reflection::PropertyDescriptor const&)")]
-pub fn stub_0x667558() -> ! {
-    todo!("0x667558 RBX::TextBox::onPropertyChanged(RBX::Reflection::PropertyDescriptor const&)")
+pub fn stub_0x667558(text_changed: bool, text: &str, mirror: &mut String) {
+    // IDA 0x667558: `TextBox::onPropertyChanged`: when the changed prop is
+    // the Text prop (`unk_13272F8`), copy the +135 text into the +152
+    // mirror when different (`strcmp` + `_M_mutate`, 0x66757c-0x6675b8),
+    // then chain to `GuiObject::onPropertyChanged`.
+    if text_changed && mirror.as_str() != text {
+        mirror.clear();
+        mirror.push_str(text);
+    }
 }
 
 // 0x66857c — __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEbED1Ev
@@ -5116,8 +5153,17 @@ pub fn stub_0x66939c() {
 
 // 0x66c194 — __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEbEC2IMS2_KFbvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::PropDescriptor<bool (RBX::TextBox::*)(void)const,int>(char const*,char const*,bool (RBX::TextBox::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x66c194() -> ! {
-    todo!("0x66c194 RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::PropDescriptor<bool (RBX::TextBox::*)(void)const,int>(char const*,char const*,bool (RBX::TextBox::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x66c194(
+    name: &str,
+    category: &str,
+    initial: bool,
+    attributes: u32,
+    permissions: u32,
+) -> Prop<bool> {
+    // IDA 0x66c194: `PropDescriptor<TextBox, bool>` read-only ctor (getter
+    // + `int` placeholder): `new` the GetImpl, forward into
+    // `TypedPropertyDescriptor<bool>` (same shape as 0x5f2b1c).
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x66c2a0 — __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEbED0Ev
@@ -5140,20 +5186,34 @@ pub fn stub_0x66c2d0() {
 
 // 0x66c2d4 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE7GetImplIMS2_KFbvEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetImpl<bool (RBX::TextBox::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x66c2d4() -> ! {
-    todo!("0x66c2d4 RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetImpl<bool (RBX::TextBox::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x66c2d4(prop: &Prop<bool>) -> bool {
+    // IDA 0x66c2d4: `GetImpl<bool>::getValue` for TextBox: header strip,
+    // getter member-pointer decode, invoke.
+    prop.value
 }
 
 // 0x66c2f8 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE7GetImplIMS2_KFbvEE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetImpl<bool (RBX::TextBox::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_0x66c2f8() -> ! {
-    todo!("0x66c2f8 RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetImpl<bool (RBX::TextBox::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_0x66c2f8() {
+    // IDA 0x66c2f8: `GetImpl<bool>::setValue` for TextBox (read-only):
+    // `throw runtime_error("can't set value")`.
+    panic!("can't set value (IDA 0x66c2f8)");
 }
 
 // 0x66c418 — __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EEC2IMS2_KFS4_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Vector2>::PropDescriptor<G3D::Vector2 (RBX::TextBox::*)(void)const,int>(char const*,char const*,G3D::Vector2 (RBX::TextBox::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x66c418() -> ! {
-    todo!("0x66c418 RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Vector2>::PropDescriptor<G3D::Vector2 (RBX::TextBox::*)(void)const,int>(char const*,char const*,G3D::Vector2 (RBX::TextBox::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x66c418(
+    name: &str,
+    category: &str,
+    initial: [f32; 2],
+    attributes: u32,
+    permissions: u32,
+) -> Prop<[f32; 2]> {
+    // IDA 0x66c418: `PropDescriptor<TextBox, Vector2>` read-only ctor
+    // (getter + `int` placeholder): `new` the GetImpl, forward into
+    // `TypedPropertyDescriptor<Vector2>` (same shape as 0x5f2b1c). Writes go
+    // through `GetImpl::setValue` (0x66c668) and throw.
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x66c524 — __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EED0Ev
@@ -5176,20 +5236,25 @@ pub fn stub_0x66c560() {
 
 // 0x66c570 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x66c570() -> ! {
-    todo!("0x66c570 RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x66c570(a: &Prop<[f32; 2]>, b: &Prop<[f32; 2]>) -> bool {
+    // IDA 0x66c570: `equalValues`: `getValue` both sides via slot 8,
+    // compare lane by lane.
+    a.value == b.value
 }
 
 // 0x66c5c0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x66c5c0() -> ! {
-    todo!("0x66c5c0 RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x66c5c0(prop: &Prop<[f32; 2]>) -> Value {
+    // IDA 0x66c5c0: `getVariant`: `getValue` via slot 8, tag
+    // `Type::getSingleton<Vector2>`, pack with `placement_any`.
+    Value::Vector2(prop.value)
 }
 
 // 0x66c5ec — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x66c5ec() -> ! {
-    todo!("0x66c5ec RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x66c5ec(dst: &mut Prop<[f32; 2]>, src: &Prop<[f32; 2]>) {
+    // IDA 0x66c5ec: `copyValue`: temp via slot 8, `setValue` via slot 12.
+    dst.value = src.value;
 }
 
 // 0x66c614 — __ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EED1Ev
@@ -5212,14 +5277,18 @@ pub fn stub_0x66c63c() {
 
 // 0x66c640 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Vector2>::GetImpl<G3D::Vector2 (RBX::TextBox::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x66c640() -> ! {
-    todo!("0x66c640 RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Vector2>::GetImpl<G3D::Vector2 (RBX::TextBox::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x66c640(prop: &Prop<[f32; 2]>) -> [f32; 2] {
+    // IDA 0x66c640: `GetImpl<Vector2>::getValue` for TextBox: header
+    // strip, getter member-pointer decode, invoke.
+    prop.value
 }
 
 // 0x66c668 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Vector2>::GetImpl<G3D::Vector2 (RBX::TextBox::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector2 const&)const")]
-pub fn stub_0x66c668() -> ! {
-    todo!("0x66c668 RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Vector2>::GetImpl<G3D::Vector2 (RBX::TextBox::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector2 const&)const")
+pub fn stub_0x66c668() {
+    // IDA 0x66c668: `GetImpl<Vector2>::setValue` for TextBox (read-only):
+    // `throw runtime_error("can't set value")`.
+    panic!("can't set value (IDA 0x66c668)");
 }
 
 // 0x66c788 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
