@@ -11,156 +11,332 @@ use rbx_core::SharedPtr;
 const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
+use std::collections::HashMap;
+
+use crate::generated_24::{PlacementAnyRegion3, stub_0xc90c, stub_0xc95c};
+
+/// Host image of `RBX::Reflection::EnumDesc<T>` tables read by the
+/// 0xc564..0xd7cc instantiations (App/include/reflection/enumconverter.h).
+/// Each instantiation keeps its own table set; the code below is shared.
+#[derive(Debug, Default)]
+pub struct RenderEnumDesc {
+    /// [this+0x28]/[this+40]: mapped value count (0xc5cc/0xc628 bound).
+    pub value_count: usize,
+    /// [this+0x90]: value -> item payload (0xc5cc source).
+    pub value_to_item: Vec<i32>,
+    /// [this+144]: value -> ordinal input for the string path (0xc628).
+    pub value_ordinals: Vec<i32>,
+    /// [this+108]: item index -> name (string source).
+    pub item_names: Vec<String>,
+    /// [this+120]: ordinal -> item payload (convertToItem source).
+    pub enum_to_item: Vec<i32>,
+    /// Primary + legacy Name-key -> value maps (convertToValue searches both).
+    pub name_to_value: HashMap<u32, i32>,
+    pub legacy_values: HashMap<u32, i32>,
+    /// Set once the D2 destructor has run (vtable retarget marker).
+    pub destroyed: bool,
+}
+
+/// MODEL of `FLog::Asserts`: the original gates every ReleaseAssert below on
+/// this flag (e.g. IDA 0xc7c8 `if (!FLog::Asserts) goto LABEL_13`).
+fn enum_asserts_enabled() -> bool {
+    true
+}
+
+/// Shared bounds check (enumconverter.h:262-263 / :273-274).
+fn enum_desc_check_value(len: usize, value: i32, neg_line: u32, size_line: u32) {
+    if enum_asserts_enabled() {
+        assert!(
+            value >= 0,
+            "value>=0 file: ../App/include/reflection/enumconverter.h line: {neg_line}"
+        );
+        assert!(
+            (value as usize) < len,
+            "(size_t)value<enumToItem.size() file: ../App/include/reflection/enumconverter.h line: {size_line}"
+        );
+    }
+}
+
+/// IDA convertToItem LABEL_13 core (0xca84..0xca9c): negative or overlarge
+/// reads 0, otherwise the ordinal slot.
+fn enum_desc_item(desc: &RenderEnumDesc, value: i32) -> i32 {
+    if value >= 0 && (value as usize) < desc.enum_to_item.len() {
+        desc.enum_to_item[value as usize]
+    } else {
+        0
+    }
+}
+
+/// convertToItem + asserts shared by the 0xc9d8/0xcfb8/0xd4f8 instantiations.
+fn enum_desc_item_of(desc: &RenderEnumDesc, value: i32) -> i32 {
+    enum_desc_check_value(desc.enum_to_item.len(), value, 273, 274);
+    enum_desc_item(desc, value)
+}
+
+/// IDA convertToString(const&) LABEL_13 core (0xc876..0xc896): negative or
+/// overlarge values stringify empty, otherwise the item name.
+fn enum_desc_name(desc: &RenderEnumDesc, value: i32) -> &str {
+    if value >= 0 && (value as usize) < desc.item_names.len() {
+        &desc.item_names[value as usize]
+    } else {
+        ""
+    }
+}
+
+/// convertToString(const&) + asserts shared by 0xc76c/0xcd4c/0xd28c/0xd7cc.
+fn enum_desc_string_to(desc: &RenderEnumDesc, value: i32, out: &mut String) {
+    // NOTE: the original asserts against enumToItem but indexes item_names;
+    // that quirk is preserved here.
+    enum_desc_check_value(desc.enum_to_item.len(), value, 262, 263);
+    out.clear();
+    out.push_str(enum_desc_name(desc, value));
+}
+
+/// IDA 0xcc34 lower_bound core: exact hit in either map writes the payload.
+fn enum_desc_value_by_name(desc: &RenderEnumDesc, name: u32, out: &mut i32) -> bool {
+    if let Some(&v) = desc
+        .name_to_value
+        .get(&name)
+        .or_else(|| desc.legacy_values.get(&name))
+    {
+        *out = v;
+        true
+    } else {
+        false
+    }
+}
+
+/// IDA 0xccdc loop: release each live item observer (host keeps none).
+fn enum_desc_release_items(_desc: &mut RenderEnumDesc) {}
+
+/// Shared D2 core (0xccb0/0xd1f0/0xd730): drop heap tables, mark destroyed.
+fn enum_desc_destroy(desc: &mut RenderEnumDesc) {
+    enum_desc_release_items(desc);
+    desc.value_to_item.clear();
+    desc.value_ordinals.clear();
+    desc.item_names.clear();
+    desc.enum_to_item.clear();
+    desc.name_to_value.clear();
+    desc.legacy_values.clear();
+    desc.value_count = 0;
+    desc.destroyed = true;
+}
+
+/// MODEL of `RBX::Name::lookup`: interns a C string to its key (FNV-1a/32
+/// stand-in for the interned `Name*` the maps are keyed on).
+fn intern_name(name: &str) -> u32 {
+    let mut hash: u32 = 0x811c_9dc5;
+    for byte in name.bytes() {
+        hash ^= u32::from(byte);
+        hash = hash.wrapping_mul(0x0100_0193);
+    }
+    hash
+}
 
 // 0xc564 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED1Ev — RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED1Ev")]
-pub fn stub_0xc564() -> ! {
-    todo!("0xc564 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED1Ev")
+pub fn stub_0xc564(desc: &mut RenderEnumDesc) {
+    // IDA 0xc564 (thunk): tail-calls the D2 destructor below.
+    stub_0xccb0(desc);
 }
 
 // 0xc568 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED0Ev — RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc() [0xc568]")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED0Ev")]
-pub fn stub_0xc568() -> ! {
-    todo!("0xc568 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED0Ev")
+pub fn stub_0xc568(desc: Box<RenderEnumDesc>) {
+    // IDA 0xc568: D1 destructor (0xc56e) + operator delete; consuming the Box
+    // frees the allocation, so only the explicit D2 step is modeled.
+    let mut desc = desc;
+    stub_0xccb0(&mut desc);
 }
 
 // 0xc57c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE6lookupEPKc — RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::lookup(char const*)const
 // type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::lookup(char const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE6lookupEPKc")]
-pub fn stub_0xc57c() -> ! {
-    todo!("0xc57c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE6lookupEPKc")
+pub fn stub_0xc57c(desc: &RenderEnumDesc, name: &str) -> i32 {
+    // IDA 0xc586..0xc5a8: Name::lookup, convertToValue, convertToItem on hit,
+    // 0 on miss.
+    let mut value = 0;
+    if enum_desc_value_by_name(desc, intern_name(name), &mut value) {
+        stub_0xc9d8(desc, value)
+    } else {
+        0
+    }
 }
 
 // 0xc5ac — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE6lookupERKNS0_7VariantE — RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::lookup(RBX::Reflection::Variant const&)const
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::lookup(RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE6lookupERKNS0_7VariantE")]
-pub fn stub_0xc5ac() -> ! {
-    todo!("0xc5ac __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE6lookupERKNS0_7VariantE")
+pub fn stub_0xc5ac(desc: &RenderEnumDesc, variant: &PlacementAnyRegion3) -> i32 {
+    // IDA 0xc5be: any_cast<ResolutionPreset const&>(variant + 4); host holders
+    // are unique per type, so identity subsumes the typeinfo-name fallback.
+    if variant.holder != stub_0xc95c() {
+        panic!("rbx::bad_placement_any_cast at IDA 0xc5ac");
+    }
+    stub_0xc9d8(desc, variant.storage as i32)
 }
 
 // 0xc5cc — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToValueEmRNS0_7VariantE — RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToValue(unsigned long,RBX::Reflection::Variant &)const
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToValueEmRNS0_7VariantE")]
-pub fn stub_0xc5cc() -> ! {
-    todo!("0xc5cc __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_0xc5cc(desc: &RenderEnumDesc, value: u32, out: &mut PlacementAnyRegion3) -> bool {
+    // IDA 0xc5d4..0xc5e6: HI([this+0x28] > value) gates the [this+0x90] load.
+    // BUG: original at 0xc5e8..0xc61c still stores the holder and runs
+    // operator= over the uninitialized stack temp when the bound fails; the
+    // host assigns 0 there instead and reports failure.
+    let hit = (value as usize) < desc.value_count
+        && (value as usize) < desc.value_to_item.len();
+    let temp = if hit { desc.value_to_item[value as usize] as u32 } else { 0 };
+    // 0xc5fc..0xc61c: singleton holder store + operator=<ResolutionPreset>.
+    out.holder = stub_0xc95c();
+    stub_0xc90c(out as *mut PlacementAnyRegion3, &temp as *const u32);
+    hit
 }
 
 // 0xc628 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE15convertToStringEmRSs — RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToString(unsigned long,std::string &)const
 // type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToString(unsigned long,std::string &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE15convertToStringEmRSs")]
-pub fn stub_0xc628() -> ! {
-    todo!("0xc628 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE15convertToStringEmRSs")
+pub fn stub_0xc628(desc: &RenderEnumDesc, value: u32, out: &mut String) -> bool {
+    // IDA 0xc67c: ([this+40] <= value) returns 0; 0xc68c: ordinal input is
+    // [this+144][value]; 0xc696: const&-overload fills a temp; 0xc6a2: assign.
+    if (value as usize) >= desc.value_count {
+        return false;
+    }
+    let ordinal = desc
+        .value_ordinals
+        .get(value as usize)
+        .copied()
+        .unwrap_or(value as i32);
+    let mut tmp = String::new();
+    stub_0xc76c(desc, ordinal, &mut tmp);
+    *out = tmp;
+    true
 }
 
 // 0xc76c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE15convertToStringERKS3_ — RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToString(RBX::CRenderSettings::ResolutionPreset const&)const
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToString(RBX::CRenderSettings::ResolutionPreset const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE15convertToStringERKS3_")]
-pub fn stub_0xc76c() -> ! {
-    todo!("0xc76c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE15convertToStringERKS3_")
+pub fn stub_0xc76c(desc: &RenderEnumDesc, value: i32, out: &mut String) {
+    // IDA 0xc76c: ResolutionPreset instantiation of the const& overload.
+    enum_desc_string_to(desc, value, out);
 }
 
 // 0xc9d8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE13convertToItemERKS3_ — RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToItem(RBX::CRenderSettings::ResolutionPreset const&)const
 // type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToItem(RBX::CRenderSettings::ResolutionPreset const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE13convertToItemERKS3_")]
-pub fn stub_0xc9d8() -> ! {
-    todo!("0xc9d8 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE13convertToItemERKS3_")
+pub fn stub_0xc9d8(desc: &RenderEnumDesc, value: i32) -> i32 {
+    // IDA 0xc9d8: ResolutionPreset instantiation; LABEL_13 core in helper.
+    enum_desc_item_of(desc, value)
 }
 
 // 0xcc34 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToValueERKNS_4NameERS3_ — RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToValue(RBX::Name const&,RBX::CRenderSettings::ResolutionPreset&)const
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToValue(RBX::Name const&,RBX::CRenderSettings::ResolutionPreset&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToValueERKNS_4NameERS3_")]
-pub fn stub_0xcc34() -> ! {
-    todo!("0xcc34 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_0xcc34(desc: &RenderEnumDesc, name: u32, out: &mut i32) -> bool {
+    // IDA 0xcc4a..0xccac: lower_bound over the primary map then the legacy
+    // map; exact hit writes the payload (*out) and returns 1.
+    enum_desc_value_by_name(desc, name, out)
 }
 
 // 0xccb0 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED2Ev — RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc() [0xccb0]")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED2Ev")]
-pub fn stub_0xccb0() -> ! {
-    todo!("0xccb0 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED2Ev")
+pub fn stub_0xccb0(desc: &mut RenderEnumDesc) {
+    // IDA 0xccce: vtable retarget; 0xccd4: registrar bump (host: none);
+    // 0xccdc..0xcd48: observer releases, heap deletes, names drop, both map
+    // erases, base EnumDescriptor dtor.
+    enum_desc_destroy(desc);
 }
 
 // 0xcd4c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE15convertToStringERKS3_ — RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToString(RBX::CRenderSettings::QualityLevel const&)const
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToString(RBX::CRenderSettings::QualityLevel const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE15convertToStringERKS3_")]
-pub fn stub_0xcd4c() -> ! {
-    todo!("0xcd4c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE15convertToStringERKS3_")
+pub fn stub_0xcd4c(desc: &RenderEnumDesc, value: i32, out: &mut String) {
+    // IDA 0xcd4c: QualityLevel instantiation; identical shape to 0xc76c.
+    enum_desc_string_to(desc, value, out);
 }
 
 // 0xcfb8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE13convertToItemERKS3_ — RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToItem(RBX::CRenderSettings::QualityLevel const&)const
 // type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToItem(RBX::CRenderSettings::QualityLevel const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE13convertToItemERKS3_")]
-pub fn stub_0xcfb8() -> ! {
-    todo!("0xcfb8 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE13convertToItemERKS3_")
+pub fn stub_0xcfb8(desc: &RenderEnumDesc, value: i32) -> i32 {
+    // IDA 0xcfb8: QualityLevel instantiation; identical shape to 0xc9d8.
+    enum_desc_item_of(desc, value)
 }
 
 // 0xd174 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToValueERKNS_4NameERS3_ — RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToValue(RBX::Name const&,RBX::CRenderSettings::QualityLevel&)const
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToValue(RBX::Name const&,RBX::CRenderSettings::QualityLevel&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToValueERKNS_4NameERS3_")]
-pub fn stub_0xd174() -> ! {
-    todo!("0xd174 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_0xd174(desc: &RenderEnumDesc, name: u32, out: &mut i32) -> bool {
+    // IDA 0xd174: QualityLevel instantiation; identical shape to 0xcc34.
+    enum_desc_value_by_name(desc, name, out)
 }
 
 // 0xd1f0 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED2Ev — RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::~EnumDesc()
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::~EnumDesc() [0xd1f0]")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED2Ev")]
-pub fn stub_0xd1f0() -> ! {
-    todo!("0xd1f0 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED2Ev")
+pub fn stub_0xd1f0(desc: &mut RenderEnumDesc) {
+    // IDA 0xd1f0: QualityLevel D2; identical shape to 0xccb0.
+    enum_desc_destroy(desc);
 }
 
 // 0xd28c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE15convertToStringERKS3_ — RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToString(RBX::CRenderSettings::ShadowMode const&)const
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToString(RBX::CRenderSettings::ShadowMode const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE15convertToStringERKS3_")]
-pub fn stub_0xd28c() -> ! {
-    todo!("0xd28c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE15convertToStringERKS3_")
+pub fn stub_0xd28c(desc: &RenderEnumDesc, value: i32, out: &mut String) {
+    // IDA 0xd28c: ShadowMode instantiation; identical shape to 0xc76c.
+    enum_desc_string_to(desc, value, out);
 }
 
 // 0xd4f8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE13convertToItemERKS3_ — RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToItem(RBX::CRenderSettings::ShadowMode const&)const
 // type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToItem(RBX::CRenderSettings::ShadowMode const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE13convertToItemERKS3_")]
-pub fn stub_0xd4f8() -> ! {
-    todo!("0xd4f8 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE13convertToItemERKS3_")
+pub fn stub_0xd4f8(desc: &RenderEnumDesc, value: i32) -> i32 {
+    // IDA 0xd4f8: ShadowMode instantiation; identical shape to 0xc9d8.
+    enum_desc_item_of(desc, value)
 }
 
 // 0xd6b4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToValueERKNS_4NameERS3_ — RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToValue(RBX::Name const&,RBX::CRenderSettings::ShadowMode&)const
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToValue(RBX::Name const&,RBX::CRenderSettings::ShadowMode&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToValueERKNS_4NameERS3_")]
-pub fn stub_0xd6b4() -> ! {
-    todo!("0xd6b4 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_0xd6b4(desc: &RenderEnumDesc, name: u32, out: &mut i32) -> bool {
+    // IDA 0xd6b4: ShadowMode instantiation; identical shape to 0xcc34.
+    enum_desc_value_by_name(desc, name, out)
 }
 
 // 0xd730 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED2Ev — RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::~EnumDesc()
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::~EnumDesc() [0xd730]")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED2Ev")]
-pub fn stub_0xd730() -> ! {
-    todo!("0xd730 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED2Ev")
+pub fn stub_0xd730(desc: &mut RenderEnumDesc) {
+    // IDA 0xd730: ShadowMode D2; identical shape to 0xccb0.
+    enum_desc_destroy(desc);
 }
 
 // 0xd7cc — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE15convertToStringERKS3_ — RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToString(RBX::CRenderSettings::AntialiasingMode const&)const
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToString(RBX::CRenderSettings::AntialiasingMode const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE15convertToStringERKS3_")]
-pub fn stub_0xd7cc() -> ! {
-    todo!("0xd7cc __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE15convertToStringERKS3_")
+pub fn stub_0xd7cc(desc: &RenderEnumDesc, value: i32, out: &mut String) {
+    // IDA 0xd7cc: AntialiasingMode instantiation; identical shape to 0xc76c.
+    enum_desc_string_to(desc, value, out);
 }
 
 // 0xda38 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE13convertToItemERKS3_ — RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToItem(RBX::CRenderSettings::AntialiasingMode const&)const

@@ -576,6 +576,9 @@ fn placement_any_holder_name(holder: *const PlacementAnyHolder) -> Option<&'stat
     if holder == stub_0xd47c() as *const PlacementAnyHolder {
         return Some("N3RBX15CRenderSettings10ShadowModeE");
     }
+    if holder == stub_0xd9bc() as *const PlacementAnyHolder {
+        return Some("N3RBX15CRenderSettings16AntialiasingModeE");
+    }
     None
 }
 
@@ -801,43 +804,97 @@ pub fn stub_0xd47c() -> *mut PlacementAnyHolder {
 // 0xd4e8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings10ShadowModeEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::construct_func(char const*,char *)")]
-pub fn stub_0xd4e8() -> ! {
-    todo!("0xd4e8 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings10ShadowModeEE14construct_funcEPKcPc")
+pub fn stub_0xd4e8(src: *const u32, dst: *mut u32) -> u32 {
+    // IDA 0xd4e8..0xd4f0: same shape as 0xc9c8.
+    unsafe {
+        if !dst.is_null() {
+            // 0xd4ea..0xd4ee
+            let value = *src;
+            *dst = value;
+            value // 0xd4f0
+        } else {
+            src as u32
+        }
+    }
 }
 
 // 0xd4f4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings10ShadowModeEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::destruct_func(char *)")]
-pub fn stub_0xd4f4() -> ! {
-    todo!("0xd4f4 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings10ShadowModeEE13destruct_funcEPc")
+pub fn stub_0xd4f4() {
+    // IDA 0xd4f4: empty body (see also `placement_any_noop_destruct`).
 }
 
 // 0xd5c4 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings10ShadowModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::ShadowMode const& rbx::any_cast<RBX::CRenderSettings::ShadowMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0xd5c4() -> ! {
-    todo!("0xd5c4 __ZN3rbx8any_castIRKN3RBX15CRenderSettings10ShadowModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0xd5c4(slot: *mut PlacementAnyRegion3) -> *mut u32 {
+    unsafe {
+        // Same shape as 0xcaa4 for the ShadowMode holder.
+        let holder = (*slot).holder;
+        let matches = holder == stub_0xd47c()
+            || placement_any_holder_name(holder)
+                == Some("N3RBX15CRenderSettings10ShadowModeE");
+        if !matches {
+            panic!("rbx::bad_placement_any_cast at IDA 0xd5c4");
+        }
+        &mut (*slot).storage
+    }
 }
 
 // 0xd96c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings16AntialiasingModeEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::AntialiasingMode>(RBX::CRenderSettings::AntialiasingMode const&)")]
-pub fn stub_0xd96c() -> ! {
-    todo!("0xd96c __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings16AntialiasingModeEEERS3_RKT_")
+pub fn stub_0xd96c(this: *mut PlacementAnyRegion3, value: *const u32) -> *mut PlacementAnyRegion3 {
+    unsafe {
+        let singleton = stub_0xd9bc(); // 0xd978
+        let current = (*this).holder; // 0xd984
+        if current == singleton {
+            // 0xd98c..0xd9a4: same type, just assign the value word.
+            (*this).storage = *value;
+        } else {
+            if !current.is_null() {
+                // 0xd990..0xd99c: destroy old payload, clear holder.
+                ((*current).destruct)(&mut (*this).storage);
+                (*this).holder = core::ptr::null_mut();
+            }
+            // 0xd9ae..0xd9b0
+            (*this).storage = *value;
+            (*this).holder = singleton;
+        }
+        this // 0xd9b8
+    }
 }
 
 // 0xd9bc — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::singleton(void)")]
-pub fn stub_0xd9bc() -> ! {
-    todo!("0xd9bc __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE9singletonEv")
+pub fn stub_0xd9bc() -> *mut PlacementAnyHolder {
+    // IDA 0xd9d6..0xda26: guarded init — s[0] = &typeinfo, s[1] = destruct,
+    // construct_func recorded alongside; same shape as 0xc95c.
+    static TYPE_ID_D9BC: u8 = 0;
+    static HOLDER_D9BC: LazyLock<PlacementAnyHolder> = LazyLock::new(|| PlacementAnyHolder {
+        type_id: &TYPE_ID_D9BC,
+        destruct: placement_any_noop_destruct,
+    });
+    &*HOLDER_D9BC as *const PlacementAnyHolder as *mut PlacementAnyHolder
 }
 
 // 0xda28 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::construct_func(char const*,char *)")]
-pub fn stub_0xda28() -> ! {
-    todo!("0xda28 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE14construct_funcEPKcPc")
+pub fn stub_0xda28(src: *const u32, dst: *mut u32) -> u32 {
+    // IDA 0xda28..0xda30: same shape as 0xc9c8.
+    unsafe {
+        if !dst.is_null() {
+            // 0xda2a..0xda2e
+            let value = *src;
+            *dst = value;
+            value // 0xda30
+        } else {
+            src as u32
+        }
+    }
 }
 
 // 0xda34 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE13destruct_funcEPc
