@@ -8,7 +8,7 @@
 
 use rbx_core::SharedPtr;
 use rbx_core::WeakPtr;
-use crate::data_model::DataModel;
+use crate::data_model::{DataModel, FunctorOp};
 use crate::generated_05::SignatureItem;
 use crate::generated_b::BoundMethod;
 
@@ -462,174 +462,523 @@ pub fn stub_0xf5bd34(out: *mut WeakPtr<OverlayDataModel>, this: *const OverlayDa
         core::ptr::write(out, weak);
     }
 }
+/// Rust model of `RBX::OverlayDataModel::JoinType` (IDA `0xf5be44`): the join
+/// word travels as-is.
+/// // BUG: enumerants land with a later batch; the word is opaque here.
+#[derive(Clone, Copy, Default, PartialEq, Eq)]
+pub struct OverlayJoinType(pub u32);
+/// Rust model of `boost::_bi::list2<value<weak_ptr<OverlayDataModel>>,
+/// value<string>>` (IDA `0xf5bdf4`, storage twin `0xf5bef4`): the retained
+/// weak plus the copied string.
+#[derive(Clone)]
+pub struct OverlayWeakStringList {
+    pub weak: WeakPtr<OverlayDataModel>,
+    pub text: String,
+}
+/// Invoker stored alongside the (weak, string) pair (cf. `0xf5bfa4`).
+pub type OverlayWeakStringFn = fn(WeakPtr<OverlayDataModel>, String);
+/// A `void (OverlayDataModel::*)(string const*, exception const*)`
+/// implementation behind `OverlaySharedStrExc::method_fn` once resolved. Both
+/// pointer args are opaque carriers — the exception layout has no model yet.
+pub type OverlayStrExcMethod = fn(*mut OverlayDataModel, *const String, *const ());
+/// Rust model of `boost::_bi::list3<value<shared_ptr<OverlayDataModel>>,
+/// arg<1>, arg<2>>` (IDA `0xf5be14`, storage twin `0xf5bf04`, `bind` twin
+/// `0xf5bf64`): the retained shared owner plus the member encoding; the list
+/// ctors leave the member default, `bind` fills it — twin of
+/// `OverlayVoidIntFunc`.
+#[derive(Clone)]
+pub struct OverlaySharedStrExc {
+    pub shared: SharedPtr<OverlayDataModel>,
+    pub method: BoundMethod,
+    pub method_fn: Option<OverlayStrExcMethod>,
+}
+/// Rust model of `boost::_bi::list3<value<OverlayDataModel*>, arg<1>, arg<2>>`
+/// (IDA `0xf5be34`): the unretained target plus the member encoding.
+#[derive(Clone, Copy)]
+pub struct OverlayRawStrExc {
+    pub target: *mut OverlayDataModel,
+    pub method: BoundMethod,
+    pub method_fn: Option<OverlayStrExcMethod>,
+}
+/// A `void (OverlayDataModel::*)(int, string, JoinType)` implementation
+/// behind `OverlayJoinList::method_fn` once resolved.
+pub type OverlayJoinMethod = fn(*mut OverlayDataModel, i32, String, OverlayJoinType);
+/// Rust model of `boost::_bi::list4<value<OverlayDataModel*>, value<int>,
+/// value<string>, value<JoinType>>` (IDA `0xf5be44`, storage twin `0xf5bf14`,
+/// `bind` twin `0xf5bf74`): the unretained target plus the copied args; the
+/// list/storage ctors leave the member default, `bind` fills it.
+#[derive(Clone)]
+pub struct OverlayJoinList {
+    pub target: *mut OverlayDataModel,
+    pub id: i32,
+    pub text: String,
+    pub join: OverlayJoinType,
+    pub method: BoundMethod,
+    pub method_fn: Option<OverlayJoinMethod>,
+}
+/// A `void (OverlayDataModel::*)()` implementation behind
+/// `OverlayNullaryBind::method_fn` once resolved.
+pub type OverlayNullaryMethod = fn(*mut OverlayDataModel);
+/// Rust model of `boost::_bi::bind_t<void, mf0<void, OverlayDataModel>,
+/// list1<value<OverlayDataModel*>>>` (IDA `0xf5beb4`).
+#[derive(Clone, Copy)]
+pub struct OverlayNullaryBind {
+    pub target: *mut OverlayDataModel,
+    pub method: BoundMethod,
+    pub method_fn: Option<OverlayNullaryMethod>,
+}
+/// Rust model of `boost::_bi::storage2<value<shared_ptr<OverlayDataModel>>,
+/// arg<1>>` (IDA `0xf5bed4`): the retained shared owner.
+#[derive(Clone)]
+pub struct OverlaySharedArgStore {
+    pub shared: SharedPtr<OverlayDataModel>,
+}
+/// Rust model of the `bind_t` built by `boost::bind` over the free
+/// `(weak_ptr<OverlayDataModel>, string)` function (IDA `0xf5bfa4`).
+#[derive(Clone)]
+pub struct OverlayWeakStringBind {
+    pub args: OverlayWeakStringList,
+    pub invoke: OverlayWeakStringFn,
+}
+/// Done-slot invokers behind `DmWeakDoneBind` (IDA `0xf5c0c4`): the map
+/// response and the error travel as opaque pointers.
+/// // BUG: payload layouts land with the DataModel async batch.
+pub type DmMapDoneFn = fn(WeakPtr<DataModel>, *const ());
+pub type DmErrorFn = fn(WeakPtr<DataModel>, *const ());
+/// Rust model of the `bind_t` behind `0xf5c0c4`: the retained weak plus the
+/// map/error done-slots.
+#[derive(Clone)]
+pub struct DmWeakDoneBind {
+    pub weak: WeakPtr<DataModel>,
+    pub on_map: Option<DmMapDoneFn>,
+    pub on_error: Option<DmErrorFn>,
+}
+/// Rust model of the `boost::function<void(string*, exception*)>` slot shared
+/// by the `0xf5c0b4`/`0xf5c0c4` binds.
+#[derive(Clone)]
+pub enum StrExcBind {
+    OverlayShared(OverlaySharedStrExc),
+    DmWeakDone(DmWeakDoneBind),
+}
+/// Nullable `function<void(string*, exception*)>` holding one Overlay bind.
+#[derive(Clone, Default)]
+pub struct StrExcCallback {
+    bind: Option<StrExcBind>,
+}
+impl StrExcCallback {
+    pub fn new() -> Self {
+        Self::default()
+    }
+    pub fn is_empty(&self) -> bool {
+        self.bind.is_none()
+    }
+    pub fn call(&self, s: *const String, e: *const ()) {
+        // A null exception selects the map done-slot, mirroring the free
+        // function dispatch behind 0xf5c0c4.
+        match &self.bind {
+            None => {}
+            Some(StrExcBind::OverlayShared(bind)) => {
+                if let Some(method) = bind.method_fn {
+                    method(
+                        std::sync::Arc::as_ptr(&bind.shared) as *mut OverlayDataModel,
+                        s,
+                        e,
+                    );
+                }
+            }
+            Some(StrExcBind::DmWeakDone(bind)) => {
+                let weak = bind.weak.clone();
+                if e.is_null() {
+                    if let Some(done) = bind.on_map {
+                        done(weak, s as *const ());
+                    }
+                } else if let Some(failed) = bind.on_error {
+                    failed(weak, e);
+                }
+            }
+        }
+    }
+}
+/// Rust model of the `boost::function0<void>` slot shared by the
+/// `0xf5c144`/`0xf5c154` binds (built by `0xf5c184`/`0xf5c194`).
+#[derive(Clone)]
+pub enum OverlayVoid0Bind {
+    Join(OverlayJoinList),
+    WeakString(OverlayWeakStringList, OverlayWeakStringFn),
+}
+/// Nullable `function0<void>` holding one Overlay bind.
+#[derive(Clone, Default)]
+pub struct OverlayVoid0Callback {
+    bind: Option<OverlayVoid0Bind>,
+}
+impl OverlayVoid0Callback {
+    pub fn new() -> Self {
+        Self::default()
+    }
+    pub fn is_empty(&self) -> bool {
+        self.bind.is_none()
+    }
+    pub fn call(&self) {
+        match &self.bind {
+            None => {}
+            Some(OverlayVoid0Bind::Join(bind)) => {
+                if let Some(method) = bind.method_fn {
+                    method(bind.target, bind.id, bind.text.clone(), bind.join);
+                }
+            }
+            Some(OverlayVoid0Bind::WeakString(args, invoke)) => {
+                invoke(args.weak.clone(), args.text.clone());
+            }
+        }
+    }
+}
 
 // 0xf5bd74 — j___ZN5boost10shared_ptrIN3RBX16OverlayDataModelEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 #[doc(alias = "SharedPtr<RBX::OverlayDataModel>::shared_ptr<RBX::OverlayDataModel>(rbx_core::Weak<RBX::OverlayDataModel> const&,boost::detail::sp_nothrow_tag)")]
 // was: boost::shared_ptr<RBX::OverlayDataModel>::shared_ptr<RBX::OverlayDataModel>(boost::weak_ptr<RBX::OverlayDataModel> const&,boost::detail::sp_nothrow_tag)
-pub fn stub_0xf5bd74() -> ! {
-    todo!("0xf5bd74 SharedPtr<RBX::OverlayDataModel>::shared_ptr<RBX::OverlayDataModel>(rbx_core::Weak<RBX::OverlayDataModel> const&,boost::detail::sp_nothrow_tag)")
+pub fn stub_0xf5bd74(weak: &WeakPtr<OverlayDataModel>) -> Option<SharedPtr<OverlayDataModel>> {
+    // IDA 0xf5bd74: __picsymbolstub4 into
+    // shared_ptr<OverlayDataModel>::shared_ptr(weak_ptr const&, sp_nothrow_tag)
+    // — the nothrow twin of the throwing 0xf5bd34 path: an expired weak yields
+    // an empty shared instead of throwing `bad_weak_ptr`, mapped to `None`.
+    weak.upgrade()
 }
 
 // 0xf5bdf4 — j___ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX16OverlayDataModelEEEEENS2_ISsEEEC2ES7_S8_
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>)")]
 // was: boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::weak_ptr<RBX::OverlayDataModel>>,boost::_bi::value<std::string>)
-pub fn stub_0xf5bdf4() -> ! {
-    todo!("0xf5bdf4 boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>)")
+pub fn stub_0xf5bdf4(weak: WeakPtr<OverlayDataModel>, text: String) -> OverlayWeakStringList {
+    // IDA 0xf5bdf4: __picsymbolstub4 into list2<value<weak>, value<string>>::C2
+    // — memberwise move of the weak (shared_count copy) plus the string copy.
+    OverlayWeakStringList { weak, text }
 }
 
 // 0xf5be04 — j___ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX16OverlayDataModelEEEEENS2_ISsEEEclIPFvS6_SsENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>::operator()<void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list0>(boost::_bi::type<void>,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string) &,boost::_bi::list0 &,int)")]
 // was: void boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>::operator()<void (*)(boost::weak_ptr<RBX::OverlayDataModel>,std::string),boost::_bi::list0>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::OverlayDataModel>,std::string) &,boost::_bi::list0 &,int)
-pub fn stub_0xf5be04() -> ! {
-    todo!("0xf5be04 void boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>::operator()<void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list0>(boost::_bi::type<void>,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string) &,boost::_bi::list0 &,int)")
+pub fn stub_0xf5be04(list: &OverlayWeakStringList, invoke: OverlayWeakStringFn) {
+    // IDA 0xf5be04: __picsymbolstub4 into
+    // list2<value<weak>, value<string>>::operator()<void(*)(weak, string), list0>
+    // — forwards the stored (weak, string) to the free function; cloning the
+    // weak re-arms the same weak_add_ref the list copy ran.
+    invoke(list.weak.clone(), list.text.clone());
 }
 
 // 0xf5be14 — j___ZN5boost3_bi5list3INS0_5valueINS_10shared_ptrIN3RBX16OverlayDataModelEEEEENS_3argILi1EEENS8_ILi2EEEEC2ES7_S9_SA_
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>::list3(boost::_bi::value<SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>)")]
 // was: boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>::list3(boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>)
-pub fn stub_0xf5be14() -> ! {
-    todo!("0xf5be14 boost::_bi::list3<boost::_bi::value<SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>::list3(boost::_bi::value<SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>)")
+pub fn stub_0xf5be14(shared: SharedPtr<OverlayDataModel>) -> OverlaySharedStrExc {
+    // IDA 0xf5be14: __picsymbolstub4 into list3<value<shared>, arg<1>,
+    // arg<2>>::C2 — retains the shared owner; the member encoding lands with
+    // the `bind` twin 0xf5bf64.
+    OverlaySharedStrExc { shared, method: BoundMethod::default(), method_fn: None }
 }
 
 // 0xf5be24 — j___ZN5boost3_bi5list3INS0_5valueINS_10shared_ptrIN3RBX16OverlayDataModelEEEEENS_3argILi1EEENS8_ILi2EEEEclINS_4_mfi3mf2IvS5_PKSsPKSt9exceptionEENS0_5list2IRPSsRPSH_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>::operator()<boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list2<std::string *&,std::exception*&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*> &,boost::_bi::list2<std::string *&,std::exception*&> &,int)")]
 // was: void boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>::operator()<boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list2<std::string *&,std::exception*&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*> &,boost::_bi::list2<std::string *&,std::exception*&> &,int)
-pub fn stub_0xf5be24() -> ! {
-    todo!("0xf5be24 void boost::_bi::list3<boost::_bi::value<SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>::operator()<boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list2<std::string *&,std::exception*&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*> &,boost::_bi::list2<std::string *&,std::exception*&> &,int)")
+pub fn stub_0xf5be24(list: &OverlaySharedStrExc, s: *const String, e: *const ()) {
+    // IDA 0xf5be24: __picsymbolstub4 into list3<value<shared>, arg<1>,
+    // arg<2>>::operator()<mf2<void, OverlayDataModel, string const*, exception
+    // const*>, list2<string*&, exception*&>> — `(shared.get()->*mf)(s, e)`;
+    // the late (string, exception) args ride `arg<1>/<2>`.
+    if let Some(method) = list.method_fn {
+        method(std::sync::Arc::as_ptr(&list.shared) as *mut OverlayDataModel, s, e);
+    }
 }
 
 // 0xf5be34 — j___ZN5boost3_bi5list3INS0_5valueIPN3RBX16OverlayDataModelEEENS_3argILi1EEENS7_ILi2EEEEclINS_4_mfi3mf2IvS4_PKSsPKSt9exceptionEENS0_5list2IRPSsRPSG_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::OverlayDataModel *>,boost::arg<1>,boost::arg<2>>::operator()<boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list2<std::string *&,std::exception*&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*> &,boost::_bi::list2<std::string *&,std::exception*&> &,int)")]
-pub fn stub_0xf5be34() -> ! {
-    todo!("0xf5be34 void boost::_bi::list3<boost::_bi::value<RBX::OverlayDataModel *>,boost::arg<1>,boost::arg<2>>::operator()<boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list2<std::string *&,std::exception*&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*> &,boost::_bi::list2<std::string *&,std::exception*&> &,int)")
+pub fn stub_0xf5be34(list: &OverlayRawStrExc, s: *const String, e: *const ()) {
+    // IDA 0xf5be34: __picsymbolstub4 into list3<value<OverlayDataModel*>,
+    // arg<1>, arg<2>>::operator()<mf2<...>, list2<...>> — same shape as
+    // 0xf5be24 over the unretained target.
+    if let Some(method) = list.method_fn {
+        method(list.target, s, e);
+    }
 }
 
 // 0xf5be44 — j___ZN5boost3_bi5list4INS0_5valueIPN3RBX16OverlayDataModelEEENS2_IiEENS2_ISsEENS2_INS4_8JoinTypeEEEEC2ES6_S7_S8_SA_
 #[doc(alias = "boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>::list4(boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>)")]
-pub fn stub_0xf5be44() -> ! {
-    todo!("0xf5be44 boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>::list4(boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>)")
+pub fn stub_0xf5be44(
+    target: *mut OverlayDataModel,
+    id: i32,
+    text: String,
+    join: OverlayJoinType,
+) -> OverlayJoinList {
+    // IDA 0xf5be44: __picsymbolstub4 into list4<value<Overlay*>, value<int>,
+    // value<string>, value<JoinType>>::C2 — memberwise copy of the four words;
+    // the member encoding lands with the `bind` twin 0xf5bf74.
+    OverlayJoinList { target, id, text, join, method: BoundMethod::default(), method_fn: None }
 }
 
 // 0xf5be54 — j___ZN5boost3_bi5list4INS0_5valueIPN3RBX16OverlayDataModelEEENS2_IiEENS2_ISsEENS2_INS4_8JoinTypeEEEEclINS_4_mfi3mf3IvS4_iSsS9_EENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>::operator()<boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType> &,boost::_bi::list0 &,int)")]
-pub fn stub_0xf5be54() -> ! {
-    todo!("0xf5be54 void boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>::operator()<boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType> &,boost::_bi::list0 &,int)")
+pub fn stub_0xf5be54(list: &OverlayJoinList) {
+    // IDA 0xf5be54: __picsymbolstub4 into list4<...>::operator()<mf3<void,
+    // OverlayDataModel, int, string, JoinType>, list0> — `(target->*mf)(id,
+    // text, join)` over the fully bound list.
+    if let Some(method) = list.method_fn {
+        method(list.target, list.id, list.text.clone(), list.join);
+    }
 }
 
 // 0xf5beb4 — j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX16OverlayDataModelEEENS0_5list1INS0_5valueIPS5_EEEEEclEv
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::OverlayDataModel>,boost::_bi::list1<boost::_bi::value<RBX::OverlayDataModel*>>>::operator()(void)")]
-pub fn stub_0xf5beb4() -> ! {
-    todo!("0xf5beb4 boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::OverlayDataModel>,boost::_bi::list1<boost::_bi::value<RBX::OverlayDataModel*>>>::operator()(void)")
+pub fn stub_0xf5beb4(bind: &OverlayNullaryBind) {
+    // IDA 0xf5beb4: __picsymbolstub4 into bind_t<void, mf0<void,
+    // OverlayDataModel>, list1<value<Overlay*>>>::operator() — `(target->*mf)()`.
+    if let Some(method) = bind.method_fn {
+        method(bind.target);
+    }
 }
 
 // 0xf5bed4 — j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX16OverlayDataModelEEEEENS_3argILi1EEEEC2ES7_S9_
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>>::storage2(boost::_bi::value<SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>)")]
 // was: boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>)
-pub fn stub_0xf5bed4() -> ! {
-    todo!("0xf5bed4 boost::_bi::storage2<boost::_bi::value<SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>>::storage2(boost::_bi::value<SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>)")
+pub fn stub_0xf5bed4(shared: SharedPtr<OverlayDataModel>) -> OverlaySharedArgStore {
+    // IDA 0xf5bed4: __picsymbolstub4 into storage2<value<shared>,
+    // arg<1>>::C2 — retains the shared owner; the `arg<1>` slot binds late.
+    OverlaySharedArgStore { shared }
 }
 
 // 0xf5bef4 — j___ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX16OverlayDataModelEEEEENS2_ISsEEEC2ES7_S8_
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>)")]
 // was: boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::OverlayDataModel>>,boost::_bi::value<std::string>)
-pub fn stub_0xf5bef4() -> ! {
-    todo!("0xf5bef4 boost::_bi::storage2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>)")
+pub fn stub_0xf5bef4(weak: WeakPtr<OverlayDataModel>, text: String) -> OverlayWeakStringList {
+    // IDA 0xf5bef4: __picsymbolstub4 into storage2<value<weak>,
+    // value<string>>::C2 — same (weak, string) pair as the list2 twin 0xf5bdf4.
+    OverlayWeakStringList { weak, text }
 }
 
 // 0xf5bf04 — j___ZN5boost3_bi8storage3INS0_5valueINS_10shared_ptrIN3RBX16OverlayDataModelEEEEENS_3argILi1EEENS8_ILi2EEEEC2ES7_S9_SA_
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>::storage3(boost::_bi::value<SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>)")]
 // was: boost::_bi::storage3<boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>::storage3(boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>)
-pub fn stub_0xf5bf04() -> ! {
-    todo!("0xf5bf04 boost::_bi::storage3<boost::_bi::value<SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>::storage3(boost::_bi::value<SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>)")
+pub fn stub_0xf5bf04(shared: SharedPtr<OverlayDataModel>) -> OverlaySharedStrExc {
+    // IDA 0xf5bf04: __picsymbolstub4 into storage3<value<shared>, arg<1>,
+    // arg<2>>::C2 — same retained owner as the list3 twin 0xf5be14.
+    OverlaySharedStrExc { shared, method: BoundMethod::default(), method_fn: None }
 }
 
 // 0xf5bf14 — j___ZN5boost3_bi8storage4INS0_5valueIPN3RBX16OverlayDataModelEEENS2_IiEENS2_ISsEENS2_INS4_8JoinTypeEEEEC2ES6_S7_S8_SA_
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>::storage4(boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>)")]
-pub fn stub_0xf5bf14() -> ! {
-    todo!("0xf5bf14 boost::_bi::storage4<boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>::storage4(boost::_bi::value<RBX::OverlayDataModel *>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>)")
+pub fn stub_0xf5bf14(
+    target: *mut OverlayDataModel,
+    id: i32,
+    text: String,
+    join: OverlayJoinType,
+) -> OverlayJoinList {
+    // IDA 0xf5bf14: __picsymbolstub4 into storage4<value<Overlay*>, value<int>,
+    // value<string>, value<JoinType>>::C2 — same four words as the list4 twin
+    // 0xf5be44.
+    OverlayJoinList { target, id, text, join, method: BoundMethod::default(), method_fn: None }
 }
 
 // 0xf5bf64 — j___ZN5boost4bindIvN3RBX16OverlayDataModelEPKSsPKSt9exceptionNS_10shared_ptrIS2_EENS_3argILi1EEENSA_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISF_T0_T1_T2_EENSD_9list_av_3IT3_T4_T5_E4typeEEEMSI_FSF_SJ_SK_ESN_SO_SP_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list_av_3<SharedPtr<RBX::OverlayDataModel>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::OverlayDataModel,std::string const*,std::exception const*,SharedPtr<RBX::OverlayDataModel>,boost::arg<1>,boost::arg<2>>(void (RBX::OverlayDataModel::*)(std::string const*,std::exception const*),SharedPtr<RBX::OverlayDataModel>,boost::arg<1>,boost::arg<2>)")]
 // was: boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list_av_3<boost::shared_ptr<RBX::OverlayDataModel>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::OverlayDataModel,std::string const*,std::exception const*,boost::shared_ptr<RBX::OverlayDataModel>,boost::arg<1>,boost::arg<2>>(void (RBX::OverlayDataModel::*)(std::string const*,std::exception const*),boost::shared_ptr<RBX::OverlayDataModel>,boost::arg<1>,boost::arg<2>)
-pub fn stub_0xf5bf64() -> ! {
-    todo!("0xf5bf64 boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list_av_3<SharedPtr<RBX::OverlayDataModel>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::OverlayDataModel,std::string const*,std::exception const*,SharedPtr<RBX::OverlayDataModel>,boost::arg<1>,boost::arg<2>>(void (RBX::OverlayDataModel::*)(std::string const*,std::exception const*),SharedPtr<RBX::OverlayDataModel>,boost::arg<1>,boost::arg<2>)")
+pub fn stub_0xf5bf64(
+    method_hi: u32,
+    method_lo: u32,
+    method_fn: OverlayStrExcMethod,
+    shared: SharedPtr<OverlayDataModel>,
+) -> OverlaySharedStrExc {
+    // IDA 0xf5bf64: __picsymbolstub4 into bind<void, OverlayDataModel, string
+    // const*, exception const*, shared_ptr, arg<1>, arg<2>> — member-pointer
+    // pair at the BoundMethod encoding (cf. 0xf5bb14) plus the retained owner.
+    OverlaySharedStrExc {
+        shared,
+        method: BoundMethod { raw: ((method_hi as u64) << 32) | method_lo as u64 },
+        method_fn: Some(method_fn),
+    }
 }
 
 // 0xf5bf74 — j___ZN5boost4bindIvN3RBX16OverlayDataModelEiSsNS2_8JoinTypeEPS2_iSsS3_EENS_3_bi6bind_tIT_NS_4_mfi3mf3IS7_T0_T1_T2_T3_EENS5_9list_av_4IT4_T5_T6_T7_E4typeEEEMSA_FS7_SB_SC_SD_ESG_SH_SI_SJ_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list_av_4<RBX::OverlayDataModel*,int,std::string,RBX::OverlayDataModel::JoinType>::type> boost::bind<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType,RBX::OverlayDataModel*,int,std::string,RBX::OverlayDataModel::JoinType>(void (RBX::OverlayDataModel::*)(int,std::string,RBX::OverlayDataModel::JoinType),RBX::OverlayDataModel*,int,std::string,RBX::OverlayDataModel::JoinType)")]
-pub fn stub_0xf5bf74() -> ! {
-    todo!("0xf5bf74 boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list_av_4<RBX::OverlayDataModel*,int,std::string,RBX::OverlayDataModel::JoinType>::type> boost::bind<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType,RBX::OverlayDataModel*,int,std::string,RBX::OverlayDataModel::JoinType>(void (RBX::OverlayDataModel::*)(int,std::string,RBX::OverlayDataModel::JoinType),RBX::OverlayDataModel*,int,std::string,RBX::OverlayDataModel::JoinType)")
+pub fn stub_0xf5bf74(
+    method_hi: u32,
+    method_lo: u32,
+    method_fn: OverlayJoinMethod,
+    target: *mut OverlayDataModel,
+    id: i32,
+    text: String,
+    join: OverlayJoinType,
+) -> OverlayJoinList {
+    // IDA 0xf5bf74: __picsymbolstub4 into bind<void, OverlayDataModel, int,
+    // string, JoinType, Overlay*, int, string, JoinType> — same member-pair
+    // encoding as 0xf5bf64 over the fully bound (target, id, text, join).
+    OverlayJoinList {
+        target,
+        id,
+        text,
+        join,
+        method: BoundMethod { raw: ((method_hi as u64) << 32) | method_lo as u64 },
+        method_fn: Some(method_fn),
+    }
 }
 
 // 0xf5bfa4 — j___ZN5boost4bindIvNS_8weak_ptrIN3RBX16OverlayDataModelEEESsS4_SsEENS_3_bi6bind_tIT_PFS7_T0_T1_ENS5_9list_av_2IT2_T3_E4typeEEESB_SD_SE_
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list_av_2<rbx_core::Weak<RBX::OverlayDataModel>,std::string>::type> boost::bind<void,rbx_core::Weak<RBX::OverlayDataModel>,std::string,rbx_core::Weak<RBX::OverlayDataModel>,std::string>(void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),rbx_core::Weak<RBX::OverlayDataModel>,std::string)")]
 // was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::OverlayDataModel>,std::string),boost::_bi::list_av_2<boost::weak_ptr<RBX::OverlayDataModel>,std::string>::type> boost::bind<void,boost::weak_ptr<RBX::OverlayDataModel>,std::string,boost::weak_ptr<RBX::OverlayDataModel>,std::string>(void (*)(boost::weak_ptr<RBX::OverlayDataModel>,std::string),boost::weak_ptr<RBX::OverlayDataModel>,std::string)
-pub fn stub_0xf5bfa4() -> ! {
-    todo!("0xf5bfa4 boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list_av_2<rbx_core::Weak<RBX::OverlayDataModel>,std::string>::type> boost::bind<void,rbx_core::Weak<RBX::OverlayDataModel>,std::string,rbx_core::Weak<RBX::OverlayDataModel>,std::string>(void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),rbx_core::Weak<RBX::OverlayDataModel>,std::string)")
+pub fn stub_0xf5bfa4(
+    weak: WeakPtr<OverlayDataModel>,
+    text: String,
+    invoke: OverlayWeakStringFn,
+) -> OverlayWeakStringBind {
+    // IDA 0xf5bfa4: __picsymbolstub4 into bind<void, weak_ptr, string, ...>
+    // over the free (weak, string) function — retains the pair plus its invoker.
+    OverlayWeakStringBind { args: OverlayWeakStringList { weak, text }, invoke }
 }
 
 // 0xf5c014 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX16OverlayDataModelEPKSsPKSt9exceptionEENS3_5list3INS3_5valueINS_10shared_ptrIS8_EEEENS_3argILi1EEENSK_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
-pub fn stub_0xf5c014() -> ! {
-    todo!("0xf5c014 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::OverlayDataModel,std::string const*,std::exception const*>,boost::_bi::list3<boost::_bi::value<SharedPtr<RBX::OverlayDataModel>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_0xf5c014(
+    src: &OverlaySharedStrExc,
+    dst: &mut Option<Box<OverlaySharedStrExc>>,
+    op: FunctorOp,
+) -> bool {
+    // IDA 0xf5c014: __picsymbolstub4 into functor_manager<bind_t<void, mf2,
+    // list3<value<shared>, arg<1>, arg<2>>>>::manager (mpl::bool_<false>,
+    // heap-only) — clone/move (ops 0/1) box the bind, destroy (op 2) clears
+    // the box; check/get (ops 3/4) always match this single-type manager
+    // (same arms as the GenericSlotWrapper manager 0x708ab0).
+    match op {
+        FunctorOp::Clone => {
+            *dst = Some(Box::new(src.clone()));
+            true
+        }
+        FunctorOp::Destroy => {
+            *dst = None;
+            true
+        }
+        FunctorOp::CheckType | FunctorOp::GetType => true,
+    }
 }
 
 // 0xf5c024 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX16OverlayDataModelEiSsNS8_8JoinTypeEEENS3_5list4INS3_5valueIPS8_EENSC_IiEENSC_ISsEENSC_IS9_EEEEEEE7managerERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_0xf5c024() -> ! {
-    todo!("0xf5c024 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_0xf5c024(
+    src: &OverlayJoinList,
+    dst: &mut Option<Box<OverlayJoinList>>,
+    op: FunctorOp,
+) -> bool {
+    // IDA 0xf5c024: __picsymbolstub4 into functor_manager<bind_t<void, mf3,
+    // list4<value<Overlay*>, value<int>, value<string>, value<JoinType>>>>::manager
+    // — same heap-box arms as 0xf5c014.
+    match op {
+        FunctorOp::Clone => {
+            *dst = Some(Box::new(src.clone()));
+            true
+        }
+        FunctorOp::Destroy => {
+            *dst = None;
+            true
+        }
+        FunctorOp::CheckType | FunctorOp::GetType => true,
+    }
 }
 
 // 0xf5c054 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16OverlayDataModelEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
-pub fn stub_0xf5c054() -> ! {
-    todo!("0xf5c054 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_0xf5c054(
+    src: &OverlayWeakStringBind,
+    dst: &mut Option<Box<OverlayWeakStringBind>>,
+    op: FunctorOp,
+) -> bool {
+    // IDA 0xf5c054: __picsymbolstub4 into functor_manager<bind_t<void,
+    // void(*)(weak<Overlay>, string), list2<value<weak>, value<string>>>>::manager
+    // — same heap-box arms as 0xf5c014.
+    match op {
+        FunctorOp::Clone => {
+            *dst = Some(Box::new(src.clone()));
+            true
+        }
+        FunctorOp::Destroy => {
+            *dst = None;
+            true
+        }
+        FunctorOp::CheckType | FunctorOp::GetType => true,
+    }
 }
 
 // 0xf5c0b4 — j___ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX16OverlayDataModelEPKSsPKS2_EENS7_5list3INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEENSN_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX16OverlayDataModelEPKSsPKS2_EENS7_5list3INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEENSN_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf5c0b4() -> ! {
-    todo!("0xf5c0b4 j___ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX16OverlayDataModelEPKSsPKS2_EENS7_5list3INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEENSN_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf5c0b4(slot: &mut StrExcCallback, bind: OverlaySharedStrExc) {
+    // IDA 0xf5c0b4: __picsymbolstub4 into function<void(string*,
+    // exception*)>::C2 from bind_t<void, mf2, list3<value<shared>, arg<1>,
+    // arg<2>>> — installs the bound (shared, member) pair plus the late
+    // (string, exception) args, same install shape as the DmVoidCallback C2s
+    // (0xf59bc4 et al.).
+    slot.bind = Some(StrExcBind::OverlayShared(bind));
 }
 
 // 0xf5c0c4 — j___ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvPKSsPKS2_NS_8weak_ptrIN3RBX9DataModelEEENS0_IFvNS_10shared_ptrIKNS_9unordered13unordered_mapISsNSE_10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIS9_SL_EEEEEEEEENS0_IFvSsEEEENS7_5list5INS_3argILi1EEENS13_ILi2EEENS7_5valueINSH_ISF_EEEENS16_ISX_EENS16_ISZ_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIS1D_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvPKSsPKS2_NS_8weak_ptrIN3RBX9DataModelEEENS0_IFvNS_10shared_ptrIKNS_9unordered13unordered_mapISsNSE_10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIS9_SL_EEEEEEEEENS0_IFvSsEEEENS7_5list5INS_3argILi1EEENS13_ILi2EEENS7_5valueINSH_ISF_EEEENS16_ISX_EENS16_ISZ_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIS1D_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf5c0c4() -> ! {
-    todo!("0xf5c0c4 j___ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvPKSsPKS2_NS_8weak_ptrIN3RBX9DataModelEEENS0_IFvNS_10shared_ptrIKNS_9unordered13unordered_mapISsNSE_10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIS9_SL_EEEEEEEEENS0_IFvSsEEEENS7_5list5INS_3argILi1EEENS13_ILi2EEENS7_5valueINSH_ISF_EEEENS16_ISX_EENS16_ISZ_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIS1D_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf5c0c4(slot: &mut StrExcCallback, bind: DmWeakDoneBind) {
+    // IDA 0xf5c0c4: __picsymbolstub4 into function<void(string*,
+    // exception*)>::C2 from bind_t<void, void(*)(string const*, exception
+    // const*, weak<DataModel>, function<void(shared<map>)>,
+    // function<void(string)>), list5<arg<1>, arg<2>, value<weak>, value<mapfn>,
+    // value<strfn>>> — installs the DataModel async done-pair; the response
+    // map is built from the body by the free function (see
+    // StrExcCallback::call).
+    slot.bind = Some(StrExcBind::DmWeakDone(bind));
 }
 
 // 0xf5c104 — j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16OverlayDataModelEEESsENS4_5list2INS4_5valueIS9_EENSD_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16OverlayDataModelEEESsENS4_5list2INS4_5valueIS9_EENSD_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf5c104() -> ! {
-    todo!("0xf5c104 j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16OverlayDataModelEEESsENS4_5list2INS4_5valueIS9_EENSD_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf5c104(
+    slot: &mut OverlayVoid0Callback,
+    args: OverlayWeakStringList,
+    invoke: OverlayWeakStringFn,
+) {
+    // IDA 0xf5c104: __picsymbolstub4 into function0<void>::C2 from
+    // bind_t<void, void(*)(weak<Overlay>, string), list2<...>> — same install
+    // as 0xf59bc4 for the Overlay (weak, string) pair.
+    slot.bind = Some(OverlayVoid0Bind::WeakString(args, invoke));
 }
 
 // 0xf5c144 — j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX16OverlayDataModelEiSsNS8_8JoinTypeEEENS3_5list4INS3_5valueIPS8_EENSC_IiEENSC_ISsEENSC_IS9_EEEEEEEEvT_
 #[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>)")]
-pub fn stub_0xf5c144() -> ! {
-    todo!("0xf5c144 void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::OverlayDataModel,int,std::string,RBX::OverlayDataModel::JoinType>,boost::_bi::list4<boost::_bi::value<RBX::OverlayDataModel*>,boost::_bi::value<int>,boost::_bi::value<std::string>,boost::_bi::value<RBX::OverlayDataModel::JoinType>>>)")
+pub fn stub_0xf5c144(slot: &mut OverlayVoid0Callback, bind: OverlayJoinList) {
+    // IDA 0xf5c144: function0<void>::assign_to over the mf3-join bind —
+    // overwrites the slot with the fully bound (target, id, text, join).
+    slot.bind = Some(OverlayVoid0Bind::Join(bind));
 }
 
 // 0xf5c154 — j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16OverlayDataModelEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEEEvT_
 #[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>)")]
 // was: void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>)
-pub fn stub_0xf5c154() -> ! {
-    todo!("0xf5c154 void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::OverlayDataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::Weak<RBX::OverlayDataModel>>,boost::_bi::value<std::string>>>)")
+pub fn stub_0xf5c154(
+    slot: &mut OverlayVoid0Callback,
+    args: OverlayWeakStringList,
+    invoke: OverlayWeakStringFn,
+) {
+    // IDA 0xf5c154: function0<void>::assign_to over the free (weak, string)
+    // bind — same overwrite as 0xf5c144 for the Overlay weak/string pair.
+    slot.bind = Some(OverlayVoid0Bind::WeakString(args, invoke));
 }
 
 // 0xf5c184 — j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX16OverlayDataModelEiSsNS8_8JoinTypeEEENS3_5list4INS3_5valueIPS8_EENSC_IiEENSC_ISsEENSC_IS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX16OverlayDataModelEiSsNS8_8JoinTypeEEENS3_5list4INS3_5valueIPS8_EENSC_IiEENSC_ISsEENSC_IS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf5c184() -> ! {
-    todo!("0xf5c184 j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX16OverlayDataModelEiSsNS8_8JoinTypeEEENS3_5list4INS3_5valueIPS8_EENSC_IiEENSC_ISsEENSC_IS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf5c184(slot: &mut OverlayVoid0Callback, bind: OverlayJoinList) {
+    // IDA 0xf5c184: __picsymbolstub4 into function0<void>::C2 from the
+    // mf3-join bind — same install as the assign_to twin 0xf5c144.
+    slot.bind = Some(OverlayVoid0Bind::Join(bind));
 }
 
 // 0xf5c194 — j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16OverlayDataModelEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16OverlayDataModelEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf5c194() -> ! {
-    todo!("0xf5c194 j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX16OverlayDataModelEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf5c194(
+    slot: &mut OverlayVoid0Callback,
+    args: OverlayWeakStringList,
+    invoke: OverlayWeakStringFn,
+) {
+    // IDA 0xf5c194: __picsymbolstub4 into function0<void>::C2 from the free
+    // (weak, string) bind — same install as the assign_to twin 0xf5c154.
+    slot.bind = Some(OverlayVoid0Bind::WeakString(args, invoke));
 }
 
 // 0xf5c254 — j___ZN5boost9function2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX16OverlayDataModelEPKSsPKS2_EENS6_5list3INS6_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEEvT_
