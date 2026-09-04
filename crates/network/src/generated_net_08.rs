@@ -47,11 +47,15 @@ pub struct FreeImageInfo {
     pub transparent_index: i32,
     pub icc_size: usize,
 }
+/// `std::map<std::string, FITAG*>` tag table (IDA 0x109c38 et al.).
+pub type TagMap = std::collections::BTreeMap<String, Vec<u8>>;
+/// `std::map<int, std::map<std::string, FITAG*>*>` domain table (IDA 0x109bf8 et al.).
+pub type DomainMap = std::collections::BTreeMap<i32, TagMap>;
 
 /// FreeImage metadata store: domain → (key → tag bytes) plus a walk cursor (IDA 0x108cdc).
 #[derive(Clone, Debug, Default)]
 pub struct FreeImageMetadata {
-    pub domains: std::collections::HashMap<i32, std::collections::BTreeMap<String, Vec<u8>>>,
+    pub domains: DomainMap,
     pub cursor: (i32, usize),
 }
 
@@ -1321,161 +1325,239 @@ pub fn stub_108f00(model: Option<&FreeImageMetadata>, domain: i32, key: Option<&
 
 // 0x1090ac — _FreeImage_SetMetadata
 #[doc(alias = "_FreeImage_SetMetadata")]
-pub fn stub_1090ac() -> ! {
-    todo!("0x1090ac _FreeImage_SetMetadata")
+pub fn stub_1090ac(model: &mut FreeImageMetadata, domain: i32, key: &str, tag: Vec<u8>) -> i32 {
+    // IDA 0x1090ac: null checks; find-or-create the domain map; find-or-create the tag; fill
+    // id/type/count/value; 1 on success.
+    if key.is_empty() {
+        return 0;
+    }
+    model.domains.entry(domain).or_default().insert(key.to_owned(), tag);
+    1
 }
 
 // 0x109578 — _FreeImage_CloneMetadata
 #[doc(alias = "_FreeImage_CloneMetadata")]
-pub fn stub_109578() -> ! {
-    todo!("0x109578 _FreeImage_CloneMetadata")
+pub fn stub_109578(dst: Option<&mut FreeImageMetadata>, src: Option<&FreeImageMetadata>) -> i32 {
+    // IDA 0x109578: null either → 0; else deep-copy every domain map (fresh tags); 1.
+    match (dst, src) {
+        (Some(d), Some(s)) => {
+            d.domains = s.domains.clone();
+            d.cursor = (0, 0);
+            1
+        }
+        _ => 0,
+    }
 }
 
 // 0x1097ac — _FreeImage_FindFirstMetadata
 #[doc(alias = "_FreeImage_FindFirstMetadata")]
-pub fn stub_1097ac() -> ! {
-    todo!("0x1097ac _FreeImage_FindFirstMetadata")
+pub fn stub_1097ac(model: Option<&mut FreeImageMetadata>, domain: i32) -> Option<(String, Vec<u8>)> {
+    // IDA 0x1097ac: null model → null; domain miss → null; else the first tag in tree order with
+    // the cursor reset to it.
+    let model = model?;
+    let first = model
+        .domains
+        .get(&domain)?
+        .iter()
+        .next()
+        .map(|(k, v)| (k.clone(), v.clone()));
+    if first.is_some() {
+        model.cursor = (domain, 1);
+    }
+    first
 }
 
 // 0x1098b4 — _FreeImage_Clone
 #[doc(alias = "_FreeImage_Clone")]
-pub fn stub_1098b4() -> ! {
-    todo!("0x1098b4 _FreeImage_Clone")
+pub fn stub_1098b4(
+    dib: Option<&FreeImageInfo>,
+    metadata: Option<&FreeImageMetadata>,
+    alloc: &mut dyn FnMut(&FreeImageInfo) -> Option<FreeImageInfo>,
+) -> (Option<FreeImageInfo>, Option<FreeImageMetadata>) {
+    // IDA 0x1098b4: null → null; else AllocateT by width/height/bpp, memcpy the pixels, clone the
+    // metadata maps.
+    let dib = match dib {
+        Some(d) => d,
+        None => return (None, None),
+    };
+    (alloc(dib), metadata.cloned())
 }
 
 // 0x109b88 — __Z13CalculateLineii
 // type: _DWORD __fastcall(int, int)
 #[doc(alias = "__Z13CalculateLineii")]
-pub fn stub_109b88() -> ! {
-    todo!("0x109b88 __Z13CalculateLineii")
+pub fn stub_109b88(width: i32, bpp: i32) -> i32 {
+    // IDA 0x109b88: (width * bpp + 7 (+ 7 more if negative)) >> 3.
+    let v = width * bpp;
+    (if v + 7 < 0 { v + 14 } else { v + 7 }) >> 3
 }
 
 // 0x109b9c — __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE4findERS1_
 #[doc(alias = "__ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE4findERS1_")]
-pub fn stub_109b9c() -> ! {
-    todo!("0x109b9c __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE4findERS1_")
+pub fn stub_109b9c(map: &DomainMap, key: i32) -> Option<&TagMap> {
+    // IDA 0x109b9c: BST find by key; end on miss.
+    map.get(&key)
 }
 
 // 0x109bf8 — __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE13_Rb_tree_implISF_Lb0EEC2ERKSaISt13_Rb_tree_nodeISC_EERKSF_
 #[doc(alias = "__ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE13_Rb_tree_implISF_Lb0EEC2ERKSaISt13_Rb_tree_nodeISC_EERKSF_")]
-pub fn stub_109bf8() -> ! {
-    todo!("0x109bf8 __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE13_Rb_tree_implISF_Lb0EEC2ERKSaISt13_Rb_tree_nodeISC_EERKSF_")
+pub fn stub_109bf8() -> DomainMap {
+    // IDA 0x109bf8: empty domain-tree header init.
+    std::collections::BTreeMap::new()
 }
 
 // 0x109c38 — __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE13_Rb_tree_implIS8_Lb0EEC2ERKSaISt13_Rb_tree_nodeIS4_EERKS8_
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE13_Rb_tree_implIS8_Lb0EEC2ERKSaISt13_Rb_tree_nodeIS4_EERKS8_")]
-pub fn stub_109c38() -> ! {
-    todo!("0x109c38 __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE13_Rb_tree_implIS8_Lb0EEC2ERKSaISt13_Rb_tree_nodeIS4_EERKS8_")
+pub fn stub_109c38() -> TagMap {
+    // IDA 0x109c38: empty tag-tree header init.
+    std::collections::BTreeMap::new()
 }
 
 // 0x109c78 — __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE11lower_boundERS1_
 #[doc(alias = "__ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE11lower_boundERS1_")]
-pub fn stub_109c78() -> ! {
-    todo!("0x109c78 __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE11lower_boundERS1_")
+pub fn stub_109c78(map: &DomainMap, key: i32) -> Option<i32> {
+    // IDA 0x109c78: lower_bound — first key not less than k (end if none).
+    map.range(key..).next().map(|(k, _)| *k)
 }
 
 // 0x109cac — __ZN9__gnu_cxx13new_allocatorISt4pairIKSsP5FITAGEE9constructEPS5_RKS5_
 #[doc(alias = "__ZN9__gnu_cxx13new_allocatorISt4pairIKSsP5FITAGEE9constructEPS5_RKS5_")]
-pub fn stub_109cac() -> ! {
-    todo!("0x109cac __ZN9__gnu_cxx13new_allocatorISt4pairIKSsP5FITAGEE9constructEPS5_RKS5_")
+pub fn stub_109cac(key: String, tag: Vec<u8>) -> (String, Vec<u8>) {
+    // IDA 0x109cac: allocator construct of pair<string const, FITAG*> in place.
+    (key, tag)
 }
 
 // 0x109d68 — __ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS2_IKSsS6_EEEEEE8allocateEmPKv
 #[doc(alias = "__ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS2_IKSsS6_EEEEEE8allocateEmPKv")]
-pub fn stub_109d68() -> ! {
-    todo!("0x109d68 __ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS2_IKSsS6_EEEEEE8allocateEmPKv")
+pub fn stub_109d68(count: usize) -> usize {
+    // IDA 0x109d68: count > 0xAAAAAAA → bad_alloc; else operator new(24 * count) size.
+    assert!(count <= 0xAAAAAAA);
+    24 * count
 }
 
 // 0x109d98 — __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE14_M_create_nodeERKSC_
 #[doc(alias = "__ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE14_M_create_nodeERKSC_")]
-pub fn stub_109d98() -> ! {
-    todo!("0x109d98 __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE14_M_create_nodeERKSC_")
+pub fn stub_109d98(key: i32, tags: TagMap) -> (i32, TagMap) {
+    // IDA 0x109d98: allocate one domain node; construct the pair in place.
+    (key, tags)
 }
 
 // 0x109dc8 — __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE9_M_insertEPSt18_Rb_tree_node_baseSJ_RKSC_
 #[doc(alias = "__ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE9_M_insertEPSt18_Rb_tree_node_baseSJ_RKSC_")]
-pub fn stub_109dc8() -> ! {
-    todo!("0x109dc8 __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE9_M_insertEPSt18_Rb_tree_node_baseSJ_RKSC_")
+pub fn stub_109dc8(map: &mut DomainMap, key: i32, tags: TagMap) {
+    // IDA 0x109dc8: hinted insert + red-black rebalance.
+    map.insert(key, tags);
 }
 
 // 0x109e4c — __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE16_M_insert_uniqueERKSC_
 #[doc(alias = "__ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE16_M_insert_uniqueERKSC_")]
-pub fn stub_109e4c() -> ! {
-    todo!("0x109e4c __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE16_M_insert_uniqueERKSC_")
+pub fn stub_109e4c(map: &mut DomainMap, key: i32, tags: TagMap) -> bool {
+    // IDA 0x109e4c: unique insert; false when the key already exists.
+    use std::collections::btree_map::Entry;
+    match map.entry(key) {
+        Entry::Vacant(e) => {
+            e.insert(tags);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x109f0c — __ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKSsP5FITAGEEE8allocateEmPKv
 #[doc(alias = "__ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKSsP5FITAGEEE8allocateEmPKv")]
-pub fn stub_109f0c() -> ! {
-    todo!("0x109f0c __ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKSsP5FITAGEEE8allocateEmPKv")
+pub fn stub_109f0c(count: usize) -> usize {
+    // IDA 0x109f0c: count > 0xAAAAAAA → bad_alloc; else operator new(24 * count) size.
+    assert!(count <= 0xAAAAAAA);
+    24 * count
 }
 
 // 0x109f3c — __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE14_M_create_nodeERKS4_
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE14_M_create_nodeERKS4_")]
-pub fn stub_109f3c() -> ! {
-    todo!("0x109f3c __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE14_M_create_nodeERKS4_")
+pub fn stub_109f3c(key: String, tag: Vec<u8>) -> (String, Vec<u8>) {
+    // IDA 0x109f3c: allocate one tag node; construct the pair in place.
+    (key, tag)
 }
 
 // 0x10a03c — __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS4_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS4_E")]
-pub fn stub_10a03c() -> ! {
-    todo!("0x10a03c __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS4_E")
+pub fn stub_10a03c(pair: (String, Vec<u8>)) {
+    // IDA 0x10a03c: destroy the tag node (string dtor + operator delete).
+    drop(pair);
 }
 
 // 0x10a0e4 — __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE8_M_eraseEPSt13_Rb_tree_nodeIS4_E
 // type: int __fastcall(int result, int)
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE8_M_eraseEPSt13_Rb_tree_nodeIS4_E")]
-pub fn stub_10a0e4() -> ! {
-    todo!("0x10a0e4 __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE8_M_eraseEPSt13_Rb_tree_nodeIS4_E")
+pub fn stub_10a0e4(map: &mut TagMap) {
+    // IDA 0x10a0e4: recursive post-order erase of the tag subtree.
+    map.clear();
 }
 
 // 0x10a124 — __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE8_M_eraseEPSt13_Rb_tree_nodeISC_E
 #[doc(alias = "__ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE8_M_eraseEPSt13_Rb_tree_nodeISC_E")]
-pub fn stub_10a124() -> ! {
-    todo!("0x10a124 __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE8_M_eraseEPSt13_Rb_tree_nodeISC_E")
+pub fn stub_10a124(map: &mut DomainMap) {
+    // IDA 0x10a124: recursive post-order erase of the domain subtree.
+    map.clear();
 }
 
 // 0x10a160 — __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE5eraseESt17_Rb_tree_iteratorIS4_E
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE5eraseESt17_Rb_tree_iteratorIS4_E")]
-pub fn stub_10a160() -> ! {
-    todo!("0x10a160 __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE5eraseESt17_Rb_tree_iteratorIS4_E")
+pub fn stub_10a160(map: &mut TagMap, key: &str) -> usize {
+    // IDA 0x10a160: rebalance-erase the node, destroy it, return the pre-erase size.
+    let old = map.len();
+    map.remove(key);
+    old
 }
 
 // 0x10a198 — __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE5eraseESt17_Rb_tree_iteratorISC_E
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "__ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE5eraseESt17_Rb_tree_iteratorISC_E")]
-pub fn stub_10a198() -> ! {
-    todo!("0x10a198 __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE5eraseESt17_Rb_tree_iteratorISC_E")
+pub fn stub_10a198(map: &mut DomainMap, key: i32) -> usize {
+    // IDA 0x10a198: rebalance-erase the node, operator delete, return the pre-erase size.
+    let old = map.len();
+    map.remove(&key);
+    old
 }
 
 // 0x10a1c8 — __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISC_ERKSC_
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "__ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISC_ERKSC_")]
-pub fn stub_10a1c8() -> ! {
-    todo!("0x10a1c8 __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapISsP5FITAGSt4lessISsESaIS0_IKSsS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISC_ERKSC_")
+pub fn stub_10a1c8(map: &mut DomainMap, key: i32, tags: TagMap) -> bool {
+    // IDA 0x10a1c8: hinted unique insert; false when the key already exists.
+    use std::collections::btree_map::Entry;
+    match map.entry(key) {
+        Entry::Vacant(e) => {
+            e.insert(tags);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x10a2ec — __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE11upper_boundERS1_
 // type: int __fastcall(int, std::string *this)
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE11upper_boundERS1_")]
-pub fn stub_10a2ec() -> ! {
-    todo!("0x10a2ec __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE11upper_boundERS1_")
+pub fn stub_10a2ec(map: &TagMap, key: &str) -> Option<String> {
+    // IDA 0x10a2ec: upper_bound — first key greater than k (keys iterate in tree order).
+    map.keys().find(|k| k.as_str() > key).cloned()
 }
 
 // 0x10a334 — __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE11lower_boundERS1_
 // type: int __fastcall(int, std::string *)
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE11lower_boundERS1_")]
-pub fn stub_10a334() -> ! {
-    todo!("0x10a334 __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE11lower_boundERS1_")
+pub fn stub_10a334(map: &TagMap, key: &str) -> Option<String> {
+    // IDA 0x10a334: lower_bound — first key not less than k (keys iterate in tree order).
+    map.keys().find(|k| k.as_str() >= key).cloned()
 }
 
 // 0x10a37c — __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE11equal_rangeERS1_
 // type: int __fastcall(int, int, std::string *)
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE11equal_rangeERS1_")]
-pub fn stub_10a37c() -> ! {
-    todo!("0x10a37c __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE11equal_rangeERS1_")
+pub fn stub_10a37c(map: &TagMap, key: &str) -> (Option<String>, Option<String>) {
+    // IDA 0x10a37c: equal_range — lower_bound + upper_bound pair.
+    (stub_10a334(map, key), stub_10a2ec(map, key))
 }
 
 // 0x10a3c4 — __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE4findERS1_
