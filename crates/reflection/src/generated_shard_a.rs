@@ -1979,34 +1979,106 @@ pub fn stub_0x61bd38() {
     // IDA 0x61bd38: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
+/// `RBX::Reflection::GenericSlotWrapper` cutover for this shard (cf. 0x4a40c8
+/// in descriptor.rs): a stored callable invoked with packed `Value` args.
+pub struct SlotWrapper {
+    pub invoke: Box<dyn Fn(&[Value]) + Send + Sync>,
+}
+
+/// `RBX::Reflection::EventDesc<C, Sig>` header cutover (IDA 0x61c078,
+/// 0x630a70): name/category/title, member-signal id, declared signature,
+/// permissions and attributes. The member-signal pointer (+40) folds into
+/// `member`.
+#[derive(Debug, Clone)]
+pub struct EventDesc {
+    pub name: String,
+    pub category: String,
+    pub title: String,
+    pub member: usize,
+    pub signature: Signature,
+    pub permissions: u32,
+    pub attributes: u32,
+}
+
+/// `RBX::Reflection::EventSource` for a zero-arg `rbx::signal<void()>`
+/// (IDA 0x61bdec/0x61bff0/0x61c064): owns the connected slots; strong refs
+/// live in `holders` because `Signal::connect` keeps only weak refs.
+#[derive(Default)]
+pub struct EventSource0 {
+    signal: Signal<()>,
+    holders: parking_lot::Mutex<Vec<(SharedPtr<SlotWrapper>, SharedPtr<dyn Fn(()) + Send + Sync>)>>,
+}
+
+impl EventSource0 {
+    pub fn disconnect_all(&self) {
+        self.holders.lock().clear();
+        self.signal.disconnect_all();
+    }
+}
+
 // 0x61bdec — __ZNK3RBX10Reflection13EventDescImplILi0ENS_9SelectionEFvvEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<0,RBX::Selection,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Selection::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
-pub fn stub_0x61bdec() -> ! {
-    todo!("0x61bdec RBX::Reflection::EventDescImpl<0,RBX::Selection,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Selection::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x61bdec(src: &EventSource0, wrapper: SharedPtr<SlotWrapper>) {
+    // IDA 0x61bdec: `EventDescImpl<0>::connectGeneric`: bind the
+    // `GenericSlotWrapper` into a slot on the member signal. Rust:
+    // `Signal::connect` (concrete closure type); the wrapper folds in.
+    let w = SharedPtr::clone(&wrapper);
+    let slot = SharedPtr::new(move |_: ()| (w.invoke)(&[]));
+    src.signal.connect(SharedPtr::clone(&slot));
+    src.holders.lock().push((wrapper, slot));
 }
 
 // 0x61bff0 — __ZNK3RBX10Reflection13EventDescImplILi0ENS_9SelectionEFvvEN3rbx6signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<0,RBX::Selection,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Selection::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
-pub fn stub_0x61bff0() -> ! {
-    todo!("0x61bff0 RBX::Reflection::EventDescImpl<0,RBX::Selection,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Selection::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0x61bff0(src: &EventSource0, args: &[Value]) {
+    // IDA 0x61bff0: `EventDescImpl<0>::fireEvent`:
+    // `ReleaseAssert(args.size() == 0)` (Event.h:295, 0x61c008-0x61c04e,
+    // with the `_debugHook` path), then invoke the member signal
+    // (0x61c04e-0x61c054).
+    assert!(args.is_empty(), "args.size() == 0 include/Reflection/Event.h:295 (IDA 0x61bff0)");
+    src.signal.fire(());
 }
 
 // 0x61c064 — __ZNK3RBX10Reflection13EventDescBaseINS_9SelectionEFvvEN3rbx6signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Selection,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Selection::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
-pub fn stub_0x61c064() -> ! {
-    todo!("0x61c064 RBX::Reflection::EventDescBase<RBX::Selection,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Selection::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_0x61c064(src: &EventSource0) {
+    // IDA 0x61c064: `EventDescBase::disconnectAll`: header strip
+    // (`a2 - 36`), `signal::disconnectAll` on the member signal at +40.
+    src.disconnect_all();
 }
 
 // 0x61c078 — __ZN3RBX10Reflection13BoundFuncDescINS_9SelectionEFvN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEELi1EEC2EMS2_FvSB_EPKcSH_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Selection,void ()(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),1>::BoundFuncDesc(void (RBX::Selection::*)(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x61c078() -> ! {
-    todo!("0x61c078 RBX::Reflection::BoundFuncDesc<RBX::Selection,void ()(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),1>::BoundFuncDesc(void (RBX::Selection::*)(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x61c078(
+    name: &str,
+    member: usize,
+    arg_name: &str,
+    permissions: u32,
+    attributes: u32,
+) -> BoundFunc {
+    // IDA 0x61c078: 1-arg void `BoundFuncDesc` ctor: class-descriptor fetch,
+    // `FunctionDescriptor` init, member pair at +40, default-arg slot at +48
+    // cleared (0x61c0fe), then `declareSignature` in-ctor (0x61c120-0x61c134).
+    let mut func = BoundFunc {
+        name: name.to_owned(),
+        member,
+        signature: Signature { return_type: "void", args: Vec::new() },
+        permissions,
+        attributes,
+    };
+    stub_0x61c210(&mut func, arg_name);
+    func
 }
 
 // 0x61c210 — __ZN3RBX10Reflection13BoundFuncDescINS_9SelectionEFvN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Selection,void ()(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x61c210() -> ! {
-    todo!("0x61c210 RBX::Reflection::BoundFuncDesc<RBX::Selection,void ()(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x61c210(func: &mut BoundFunc, arg_name: &str) {
+    // IDA 0x61c210: `declareSignature`: store the `void` return `Type` at
+    // +28 (0x61c220), `RBX::Name::declare` the arg name (0x61c22a),
+    // `getSingleton<InstanceList>` for it (0x61c22c),
+    // `SignatureDescriptor::addArgument` (0x61c23e).
+    func.signature.return_type = "void";
+    func.signature.args.push((arg_name.to_owned(), "InstanceList"));
 }
 
 // 0x61c240 — __ZN3RBX10Reflection13BoundFuncDescINS_9SelectionEFvN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEELi1EED0Ev
@@ -2017,20 +2089,44 @@ pub fn stub_0x61c240() {
 
 // 0x61c35c — __ZNK3RBX10Reflection13BoundFuncDescINS_9SelectionEFvN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Selection,void ()(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x61c35c() -> ! {
-    todo!("0x61c35c RBX::Reflection::BoundFuncDesc<RBX::Selection,void ()(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x61c35c(
+    args: &Arguments,
+    call: &dyn Fn(Vec<u32>),
+    default: Option<Vec<u32>>,
+) {
+    // IDA 0x61c35c: 1-arg void `execute`: `ArgHelper::getArg<InstanceList,
+    // 1>` then `Call1Helper<void>::call` (0x61c3c6 + tail-call).
+    let arg = match args.args.first() {
+        Some(Value::Nil) | None => default.unwrap_or_else(|| panic!("Argument 1 missing or nil (IDA 0x61c35c)")),
+        Some(Value::InstanceList(v)) => v.clone(),
+        Some(other) => panic!("Variant::convert<InstanceList> on {other:?} (IDA 0x61c35c)"),
+    };
+    stub_0x61c440(call, arg);
 }
 
 // 0x61c440 — __ZN3RBX10Reflection11Call1HelperINS_9SelectionEMS2_FvN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEESB_vE4callEPS2_SD_RNS0_7VariantERKSB_
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::Selection,void (RBX::Selection::*)(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>,void>::call(RBX::Selection*,void (RBX::Selection::*)(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),RBX::Reflection::Variant &,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> const&)")]
-pub fn stub_0x61c440() -> ! {
-    todo!("0x61c440 RBX::Reflection::Call1Helper<RBX::Selection,void (RBX::Selection::*)(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>,void>::call(RBX::Selection*,void (RBX::Selection::*)(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),RBX::Reflection::Variant &,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> const&)")
+pub fn stub_0x61c440(call: &dyn Fn(Vec<u32>), arg: Vec<u32>) {
+    // IDA 0x61c440: `Call1Helper<void>::call`: member-pointer decode,
+    // shared-arg refcount bump (0x61c4a6-0x61c4b8), invoke, release. No
+    // return packing for `void`; `Arc` clone/drop covers the refcounts.
+    call(arg);
 }
 
 // 0x61c528 — __ZN3RBX10Reflection13BoundFuncDescINS_9SelectionEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EEC2EMS2_FSB_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Selection,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(void),0>::BoundFuncDesc(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::Selection::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x61c528() -> ! {
-    todo!("0x61c528 RBX::Reflection::BoundFuncDesc<RBX::Selection,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(void),0>::BoundFuncDesc(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::Selection::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x61c528(name: &str, member: usize, permissions: u32, attributes: u32) -> BoundFunc {
+    // IDA 0x61c528: `BoundFuncDesc<Selection, InstanceList>::BoundFuncDesc`:
+    // class-descriptor fetch, `FunctionDescriptor` init, vtable install,
+    // member pair at +40, return type `Type::getSingleton<InstanceList>` at
+    // +28 (0x61c5be).
+    BoundFunc {
+        name: name.to_owned(),
+        member,
+        signature: Signature { return_type: "InstanceList", args: Vec::new() },
+        permissions,
+        attributes,
+    }
 }
 
 // 0x61c62c — __ZN3RBX10Reflection13BoundFuncDescINS_9SelectionEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED0Ev
@@ -2041,14 +2137,19 @@ pub fn stub_0x61c62c() {
 
 // 0x61c6e0 — __ZNK3RBX10Reflection13BoundFuncDescINS_9SelectionEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Selection,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x61c6e0() -> ! {
-    todo!("0x61c6e0 RBX::Reflection::BoundFuncDesc<RBX::Selection,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x61c6e0(_func: &BoundFunc, call: &dyn Fn() -> Vec<u32>) -> Value {
+    // IDA 0x61c6e0: `BoundFuncDesc<InstanceList>::execute` forwards to
+    // `Call0Helper<InstanceList>::call` (0x61c6e8-0x61c6ea + tail-call).
+    stub_0x61c704(call)
 }
 
 // 0x61c704 — __ZN3RBX10Reflection11Call0HelperINS_9SelectionEMS2_FN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvESB_E4callEPS2_SD_RNS0_7VariantE
 #[doc(alias = "RBX::Reflection::Call0Helper<RBX::Selection,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::Selection::*)(void),rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>>::call(RBX::Selection*,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::Selection::*)(void),RBX::Reflection::Variant &)")]
-pub fn stub_0x61c704() -> ! {
-    todo!("0x61c704 RBX::Reflection::Call0Helper<RBX::Selection,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::Selection::*)(void),rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>>::call(RBX::Selection*,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::Selection::*)(void),RBX::Reflection::Variant &)")
+pub fn stub_0x61c704(call: &dyn Fn() -> Vec<u32>) -> Value {
+    // IDA 0x61c704: `Call0Helper<InstanceList>::call`: header strip,
+    // member-pointer decode, invoke, tag the shared-vector return type, pack
+    // with `placement_any::operator=` (0x61c774-0x61c780).
+    Value::InstanceList(call())
 }
 
 // 0x61dbf4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12SelectionBoxES6_EEvPKNS_10shared_ptrIT_EEPT0_
