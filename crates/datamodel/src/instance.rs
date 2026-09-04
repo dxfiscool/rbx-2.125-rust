@@ -2065,6 +2065,14 @@ pub struct PoseFuncDesc {
     _opaque: (),
 }
 
+/// Rust model of `RBX::Reflection::EnumPropDescriptor<PrismInstance,
+/// NumSidesEnum>` (IDA `0x60814c`): same storage-only family treatment as
+/// `DataModelEnumPropDesc`; the value suite rides a `PrismInstance`-member
+/// batch (Get/SetNumSides are physics-backed).
+pub struct PrismEnumPropDesc {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::Reflection::EventDesc<PartInstance, void(Instance),
 /// TouchedSignal>` (IDA `0x5ea1cc`): the descriptor identity plus the
 /// locally-connected generic slots; the `TouchedSignal` member lives in
@@ -48126,57 +48134,81 @@ pub fn stub_0x60685c(ptr: *mut Pose, _deleter: CreatableInstanceDeleter) -> Cont
 // 0x606964 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PoseENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Pose *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Pose *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x606964() -> ! {
-    todo!("0x606964 boost::detail::sp_counted_impl_pd<RBX::Pose *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x606964(_block: *mut ControlBlockPd<Pose, CreatableInstanceDeleter>) {
+    // IDA 0x606964: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x606968 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PoseENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Pose *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Pose *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x606968() -> ! {
-    todo!("0x606968 boost::detail::sp_counted_impl_pd<RBX::Pose *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x606968(block: *mut ControlBlockPd<Pose, CreatableInstanceDeleter>) {
+    // IDA 0x606968: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x60696c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PoseENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Pose *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Pose *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x60696c() -> ! {
-    todo!("0x60696c boost::detail::sp_counted_impl_pd<RBX::Pose *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x60696c(_block: *mut ControlBlockPd<Pose, CreatableInstanceDeleter>) {
+    // IDA 0x60696c: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x60698c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PoseENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Pose *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Pose *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x60698c() -> ! {
-    todo!("0x60698c boost::detail::sp_counted_impl_pd<RBX::Pose *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x60698c(block: *const ControlBlockPd<Pose, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x60698c: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x6069a4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PoseENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Pose *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Pose *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x6069a4() -> ! {
-    todo!("0x6069a4 boost::detail::sp_counted_impl_pd<RBX::Pose *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x6069a4(block: *const ControlBlockPd<Pose, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x6069a4: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x607274 — __ZN3RBX10Reflection13BoundFuncDescINS_4PoseEFvN5boost10shared_ptrINS_8InstanceEEEELi1EEC2EMS2_FvS6_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Pose,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::Pose::*)(rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Pose,void ()(boost::shared_ptr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::Pose::*)(boost::shared_ptr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x607274() -> ! {
-    todo!("0x607274 RBX::Reflection::BoundFuncDesc<RBX::Pose,void ()(boost::shared_ptr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::Pose::*)(boost::shared_ptr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x607274() -> PoseFuncDesc {
+    // IDA 0x607274: `BoundFuncDesc<Pose, void(Instance)>::C2` over
+    // `(member-fn, names, permissions, attributes)` — binds the member
+    // function into the class descriptor; the binding lands with reflection,
+    // so the model starts at defaults. Same shape as 0x5b3028.
+    PoseFuncDesc::default()
 }
 
 // 0x60740c — __ZN3RBX10Reflection13BoundFuncDescINS_4PoseEFvN5boost10shared_ptrINS_8InstanceEEEELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Pose,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Pose,void ()(boost::shared_ptr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)
-pub fn stub_0x60740c() -> ! {
-    todo!("0x60740c RBX::Reflection::BoundFuncDesc<RBX::Pose,void ()(boost::shared_ptr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x60740c(_name: &str, _sig: &[Variant]) {
+    // IDA 0x60740c: `BoundFuncDesc<Pose, void(Instance)>::declareSignature`
+    // — registers the signature words into the reflection table. Same shape
+    // as 0x5b31c0.
 }
 
 // 0x60743c — __ZN3RBX10Reflection13BoundFuncDescINS_4PoseEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Pose,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Pose,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
-pub fn stub_0x60743c() -> ! {
-    todo!("0x60743c RBX::Reflection::BoundFuncDesc<RBX::Pose,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_0x60743c(_desc: *mut PoseFuncDesc) {
+    // IDA 0x60743c: `BoundFuncDesc<Pose, void(Instance)>::D0` — vtable
+    // install plus memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x607558 — __ZNK3RBX10Reflection13BoundFuncDescINS_4PoseEFvN5boost10shared_ptrINS_8InstanceEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -48189,22 +48221,37 @@ pub fn stub_0x607558() -> ! {
 // 0x60763c — __ZN3RBX10Reflection11Call1HelperINS_4PoseEMS2_FvN5boost10shared_ptrINS_8InstanceEEEES6_vE4callEPS2_S8_RNS0_7VariantERKS6_
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::Pose,void (RBX::Pose::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,void>::call(RBX::Pose*,void (RBX::Pose::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: RBX::Reflection::Call1Helper<RBX::Pose,void (RBX::Pose::*)(boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,void>::call(RBX::Pose*,void (RBX::Pose::*)(boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_0x60763c() -> ! {
-    todo!("0x60763c RBX::Reflection::Call1Helper<RBX::Pose,void (RBX::Pose::*)(boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,void>::call(RBX::Pose*,void (RBX::Pose::*)(boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_0x60763c(
+    pose: &Pose,
+    method: fn(&Pose, SharedPtr<Instance>),
+    arg: &SharedPtr<Instance>,
+) {
+    // IDA 0x60763c (`Call1Helper<Pose, void (Pose::*)(Instance), ...>::call`,
+    // same head shape as 0x54d8fc): invokes the member function with a
+    // retained `Instance` copy.
+    method(pose, arg.clone());
 }
 
 // 0x607724 — __ZN3RBX10Reflection13BoundFuncDescINS_4PoseEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EEC2EMS2_FSB_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Pose,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(void),0>::BoundFuncDesc(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::Pose::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Pose,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::BoundFuncDesc(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::Pose::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x607724() -> ! {
-    todo!("0x607724 RBX::Reflection::BoundFuncDesc<RBX::Pose,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::BoundFuncDesc(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::Pose::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x607724() -> PosePosesDesc {
+    // IDA 0x607724: `BoundFuncDesc<Pose, poses-getter>::C2` — binds the
+    // member function into the class descriptor; the binding lands with
+    // reflection, so the model starts at defaults. Same shape as 0x607274.
+    PosePosesDesc::default()
 }
 
 // 0x607828 — __ZN3RBX10Reflection13BoundFuncDescINS_4PoseEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Pose,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Pose,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()
-pub fn stub_0x607828() -> ! {
-    todo!("0x607828 RBX::Reflection::BoundFuncDesc<RBX::Pose,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()")
+pub fn stub_0x607828(_desc: *mut PosePosesDesc) {
+    // IDA 0x607828: `BoundFuncDesc<Pose, poses-getter>::D0` — vtable install
+    // plus memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x6078dc — __ZNK3RBX10Reflection13BoundFuncDescINS_4PoseEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -48238,22 +48285,36 @@ pub fn stub_0x607f24() -> ! {
 // 0x60814c — __ZN3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::~EnumPropDescriptor()")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::~EnumPropDescriptor()
-pub fn stub_0x60814c() -> ! {
-    todo!("0x60814c RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::~EnumPropDescriptor()")
+pub fn stub_0x60814c(_desc: *mut PrismEnumPropDesc) {
+    // IDA 0x60814c: `EnumPropDescriptor<PrismInstance, NumSidesEnum>::D1` —
+    // memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x608170 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::EnumPropDescriptor<RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum)>(char const*,char const*,RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::EnumPropDescriptor<RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum)>(char const*,char const*,RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x608170() -> ! {
-    todo!("0x608170 RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::EnumPropDescriptor<RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum)>(char const*,char const*,RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x608170() -> PrismEnumPropDesc {
+    // IDA 0x608170: `EnumPropDescriptor<PrismInstance, NumSidesEnum>::C2` —
+    // binds the member get/set pair plus the name and attribute words; the
+    // value suite rides a member batch. Same shape as 0x5b3028.
+    PrismEnumPropDesc { _opaque: () }
 }
 
 // 0x608324 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::~EnumPropDescriptor()")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::~EnumPropDescriptor()
-pub fn stub_0x608324() -> ! {
-    todo!("0x608324 RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::~EnumPropDescriptor()")
+pub fn stub_0x608324(_desc: *mut PrismEnumPropDesc) {
+    // IDA 0x608324: `EnumPropDescriptor<PrismInstance, NumSidesEnum>::D0` —
+    // vtable install plus memberwise teardown; dropping the box is the same
+    // release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x608350 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE10isReadOnlyEv
@@ -48378,8 +48439,14 @@ pub fn stub_0x6088b8() -> ! {
 // 0x6088ec — __ZNK3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::convertToIndex(RBX::PrismInstance::NumSidesEnum)const")]
 // was: RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::convertToIndex(RBX::PrismInstance::NumSidesEnum)const
-pub fn stub_0x6088ec() -> ! {
-    todo!("0x6088ec RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::convertToIndex(RBX::PrismInstance::NumSidesEnum)const")
+pub fn stub_0x6088ec(value: i32) -> Option<usize> {
+    // IDA 0x6088ec: `EnumDesc<Prism NumSides>::convertToIndex` — asserts
+    // `value>=0`, then the position search over the grounded C2 pairs
+    // (3, 5, 6, 8, 10, 20 per 0x49b968). Same shape as 0x4a906c.
+    debug_assert!(value >= 0, "0x6088ec: value>=0");
+    PRISM_NUM_SIDES_ITEMS
+        .iter()
+        .position(|(v, _)| *v == value)
 }
 
 // 0x60895c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE11setIntValueEPNS0_13DescribedBaseEi
@@ -48392,15 +48459,20 @@ pub fn stub_0x60895c() -> ! {
 // 0x60899c — __ZNK3RBX10Reflection14PropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::GetSetImpl<RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::GetSetImpl<RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum)>::isReadOnly(void)const
-pub fn stub_0x60899c() -> ! {
-    todo!("0x60899c RBX::Reflection::PropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::GetSetImpl<RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum)>::isReadOnly(void)const")
+pub fn stub_0x60899c(_desc: &PrismEnumPropDesc) -> bool {
+    // IDA 0x60899c: `GetSetImpl<getter, setter>::isReadOnly` — `MOVS R0,
+    // #0; BX LR` (disasm 0x60899c-0x60899e); a get/set pair is never
+    // read-only.
+    false
 }
 
 // 0x6089a0 — __ZNK3RBX10Reflection14PropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::GetSetImpl<RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::GetSetImpl<RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum)>::isWriteOnly(void)const
-pub fn stub_0x6089a0() -> ! {
-    todo!("0x6089a0 RBX::Reflection::PropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::GetSetImpl<RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum)>::isWriteOnly(void)const")
+pub fn stub_0x6089a0(_desc: &PrismEnumPropDesc) -> bool {
+    // IDA 0x6089a0: `GetSetImpl<getter, setter>::isWriteOnly` — `MOVS R0,
+    // #0` (disasm 0x6089a0); ...nor write-only.
+    false
 }
 
 // 0x6089a4 — __ZNK3RBX10Reflection14PropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -48469,15 +48541,22 @@ pub fn stub_0x609158() -> ! {
 // 0x609238 — __ZN3RBX10PVInstanceD0Ev
 #[doc(alias = "RBX::PVInstance::~PVInstance()")]
 // was: RBX::PVInstance::~PVInstance()
-pub fn stub_0x609238() -> ! {
-    todo!("0x609238 RBX::PVInstance::~PVInstance()")
+pub fn stub_0x609238(_this: *mut PVInstance) {
+    // IDA 0x609238: `PVInstance::D0` — vtable installs plus memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_this` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x6092d8 — __ZN3RBX10PVInstanceD1Ev
 #[doc(alias = "RBX::PVInstance::~PVInstance()")]
 // was: RBX::PVInstance::~PVInstance()
-pub fn stub_0x6092d8() -> ! {
-    todo!("0x6092d8 RBX::PVInstance::~PVInstance()")
+pub fn stub_0x6092d8(_this: *mut PVInstance) {
+    // IDA 0x6092d8: `PVInstance::D1` — base plus memberwise teardown; the
+    // weak owner needs no release here.
+    // SAFETY: `_this` must point to a valid `PVInstance`.
 }
 
 // 0x6092dc — __ZThn32_N3RBX10PVInstanceD0Ev
@@ -48497,8 +48576,10 @@ pub fn stub_0x6092e4() -> ! {
 // 0x6092ec — __ZN3RBX10PVInstanceD2Ev
 #[doc(alias = "RBX::PVInstance::~PVInstance()")]
 // was: RBX::PVInstance::~PVInstance()
-pub fn stub_0x6092ec() -> ! {
-    todo!("0x6092ec RBX::PVInstance::~PVInstance()")
+pub fn stub_0x6092ec(_this: *mut PVInstance) {
+    // IDA 0x6092ec: `PVInstance::D2` — vtable resets (compiler-managed) plus
+    // memberwise teardown; the weak owner needs no release here.
+    // SAFETY: `_this` must point to a valid `PVInstance`.
 }
 
 // 0x6092f0 — __ZThn32_N3RBX10PVInstanceD1Ev
