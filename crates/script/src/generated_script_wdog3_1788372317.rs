@@ -6,7 +6,9 @@
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
+use parking_lot::Mutex;
 use rbx_core::SharedPtr;
+use std::sync::LazyLock;
 
 const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
@@ -796,7 +798,7 @@ mod vehicle_seat_tests {
                 seat.num_hinges = 1;
             }
         };
-        let mut tickled = RefCell::new(Vec::new());
+        let tickled = RefCell::new(Vec::new());
         let mut tickle = |prim: u32| tickled.borrow_mut().push(prim);
         let mut seat = VehicleSeat::new();
         seat.world_token = 3;
@@ -1599,163 +1601,366 @@ mod joint_tests {
     }
 }
 
+// ---- FactoryProduct Creator host model (IDA 0x6bf288..0x6c5c04) ----
+// `FactoryProduct<T>::Creator` singletons (`creatorPrivate`) become
+// `ClassCreator` behind `LazyLock<Mutex<..>>` (cf. `stub_0x2609c0` in
+// `lua.rs`); `Name::declare` via `boost::call_once` and the
+// `getCreators` registry become injected callbacks; `isConstructed == 666`
+// becomes the `constructed` flag checked by `wasConstructed` (Object.h:255)
+// and `Creator::wasConstructed` (Object.h:282).
+
+/// Host `FactoryProduct<T>::Creator` (IDA 0x6bff04/0x6c59c0).
+#[derive(Debug)]
+pub struct ClassCreator {
+    /// The `sVehicleSeat`/`sVirtualUser` name tag.
+    pub class_name: &'static str,
+    /// `isConstructed == 666`.
+    pub constructed: bool,
+}
+
+impl ClassCreator {
+    /// Unconstructed creator; C2 fills it in.
+    pub const fn new(class_name: &'static str) -> Self {
+        Self { class_name, constructed: false }
+    }
+
+    /// C2 (IDA 0x6bff04/0x6c59c0): vtable install, `Name::declare` via
+    /// `call_once`, register in `getCreators`, `isConstructed = 666`.
+    pub fn construct(&mut self, declare: &mut dyn FnMut(&str), register: &mut dyn FnMut(&str)) {
+        declare(self.class_name);
+        register(self.class_name);
+        self.constructed = true;
+    }
+
+    /// `wasConstructed` gate (IDA 0x6bf804, Object.h:255).
+    pub fn check_constructed(&self) {
+        debug_assert!(
+            self.constructed,
+            "wasConstructed() file: include/Util/Object.h line: 255"
+        );
+    }
+
+    /// `Creator::getClassName` gate (IDA 0x6bf8a0/0x6c5360, Object.h:0x29A
+    /// call-site [INFERENCE on the exact line; mirrors Object.h:255]).
+    pub fn creator_class_name(&self) -> &'static str {
+        self.check_constructed();
+        self.class_name
+    }
+
+    /// `create` gate (IDA 0x6bf928/0x6c53e8): assert constructed, then build
+    /// the instance (`shared_ptr` → host token).
+    pub fn create_instance(&self, create: &mut dyn FnMut() -> u32) -> u32 {
+        self.check_constructed();
+        create()
+    }
+
+    /// D2 (IDA 0x6bf804/0x6c52c4): vtable reset + `wasConstructed` gate,
+    /// then removal from `getCreators`.
+    pub fn destroy(&mut self, unregister: &mut dyn FnMut(&str)) {
+        self.check_constructed();
+        unregister(self.class_name);
+    }
+}
+
+/// `creatorPrivate` for `VehicleSeat` (IDA 0x6c0148).
+pub static VEHICLE_SEAT_CREATOR: LazyLock<Mutex<ClassCreator>> =
+    LazyLock::new(|| Mutex::new(ClassCreator::new("VehicleSeat")));
+/// `creatorPrivate` for `VirtualUser` (IDA 0x6c5c04).
+pub static VIRTUAL_USER_CREATOR: LazyLock<Mutex<ClassCreator>> =
+    LazyLock::new(|| Mutex::new(ClassCreator::new("VirtualUser")));
+/// `creatorPrivate` for `Visit` (cf. IDA 0x6c8d70).
+pub static VISIT_CREATOR: LazyLock<Mutex<ClassCreator>> =
+    LazyLock::new(|| Mutex::new(ClassCreator::new("Visit")));
+
 // 0x6bf288 — __ZN3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_0x6bf288() -> ! {
-    todo!("0x6bf288")
+pub fn stub_0x6bf288(creator: &mut ClassCreator, unregister: &mut dyn FnMut(&str)) {
+    // IDA 0x6bf288: `// attributes: thunk` — tail-calls Creator D2
+    // (0x6bf804).
+    stub_0x6bf804(creator, unregister);
 }
 
 // 0x6bf804 — __ZN3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_0x6bf804() -> ! {
-    todo!("0x6bf804")
+pub fn stub_0x6bf804(creator: &mut ClassCreator, unregister: &mut dyn FnMut(&str)) {
+    // IDA 0x6bf804: vtable reset + `wasConstructed` gate (Object.h:255),
+    // then removal from `getCreators`.
+    creator.destroy(unregister);
 }
 
 // 0x6bf8a0 — __ZNK3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_0x6bf8a0() -> ! {
-    todo!("0x6bf8a0")
+pub fn stub_0x6bf8a0(creator: &ClassCreator) -> &'static str {
+    // IDA 0x6bf8a0: `wasConstructed` gate, then the `sVehicleSeat` name.
+    creator.creator_class_name()
 }
 
 // 0x6bf928 — __ZNK3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE7Creator6createEv")]
-pub fn stub_0x6bf928() -> ! {
-    todo!("0x6bf928")
+pub fn stub_0x6bf928(creator: &ClassCreator, create: &mut dyn FnMut() -> u32) -> u32 {
+    // IDA 0x6bf928: `wasConstructed` gate, then the `shared_ptr` instance
+    // build (`Creatable`); the host returns its token.
+    creator.create_instance(create)
 }
 
 // 0x6bff04 — __ZN3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE7CreatorC2Ev
 // type: int __fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_0x6bff04() -> ! {
-    todo!("0x6bff04")
+pub fn stub_0x6bff04(creator: &mut ClassCreator, declare: &mut dyn FnMut(&str), register: &mut dyn FnMut(&str)) {
+    // IDA 0x6bff04: vtable install, `Name::declare<sVehicleSeat>` via
+    // `call_once`, register in `getCreators`, `isConstructed = 666`.
+    creator.construct(declare, register);
 }
 
 // 0x6c0148 — __ZN3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE17static_getCreatorEv
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_0x6c0148() -> ! {
-    todo!("0x6c0148")
+pub fn stub_0x6c0148() -> &'static Mutex<ClassCreator> {
+    // IDA 0x6c0148: `Creator::wasConstructed` gate (Object.h:282), then the
+    // `creatorPrivate` singleton. The gate is a use-check, not a build
+    // check, so the host returns the singleton and each method re-checks on
+    // use (`check_constructed`).
+    &VEHICLE_SEAT_CREATOR
 }
 
 // 0x6c1478 — __ZThn32_N3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEED1Ev
 #[doc(alias = "__ZThn32_N3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEED1Ev")]
-pub fn stub_0x6c1478() -> ! {
-    todo!("0x6c1478")
+pub fn stub_0x6c1478(destroy_base: &mut dyn FnMut()) {
+    // IDA 0x6c1478: VTT load + `SUBS R0, #0x20`, then the FactoryProduct D1
+    // body (0x6bef48); flat host forwards directly.
+    stub_0x6bef48(destroy_base);
 }
 
 // 0x6c148c — __ZThn36_N3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEED1Ev
 #[doc(alias = "__ZThn36_N3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEED1Ev")]
-pub fn stub_0x6c148c() -> ! {
-    todo!("0x6c148c")
+pub fn stub_0x6c148c(destroy_base: &mut dyn FnMut()) {
+    // IDA 0x6c148c: VTT load + `SUBS R0, #0x24`, then the FactoryProduct D1
+    // body (0x6bef48).
+    stub_0x6bef48(destroy_base);
 }
 
 // 0x6c14a0 — __ZThn32_N3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEED0Ev")]
-pub fn stub_0x6c14a0() -> ! {
-    todo!("0x6c14a0")
+pub fn stub_0x6c14a0(destroy_base: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x6c14a0: `SUBS R0, #0x20` then `B.W D0 (0x6bef5c)`.
+    stub_0x6bef5c(destroy_base, free);
 }
 
 // 0x6c14a8 — __ZThn36_N3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEED0Ev
 #[doc(alias = "__ZThn36_N3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEED0Ev")]
-pub fn stub_0x6c14a8() -> ! {
-    todo!("0x6c14a8")
+pub fn stub_0x6c14a8(destroy_base: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x6c14a8: `SUBS R0, #0x24` then `B.W D0 (0x6bef5c)`.
+    stub_0x6bef5c(destroy_base, free);
 }
 
 // 0x6c4d20 — __ZNK3RBX14FactoryProductINS_11VirtualUserENS_8InstanceELZNS_12sVirtualUserEES2_E12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11VirtualUserENS_8InstanceELZNS_12sVirtualUserEES2_E12getClassNameEv")]
-pub fn stub_0x6c4d20() -> ! {
-    todo!("0x6c4d20")
+pub fn stub_0x6c4d20() -> &'static str {
+    // IDA 0x6c4d20: `static_getCreator` once-init, then
+    // `Creator::getClassName` — the `sVirtualUser` name.
+    "VirtualUser"
 }
 
 // 0x6c4ff0 — __ZThn32_NK3RBX14FactoryProductINS_11VirtualUserENS_8InstanceELZNS_12sVirtualUserEES2_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_11VirtualUserENS_8InstanceELZNS_12sVirtualUserEES2_E12getClassNameEv")]
-pub fn stub_0x6c4ff0() -> ! {
-    todo!("0x6c4ff0")
+pub fn stub_0x6c4ff0() -> &'static str {
+    // IDA 0x6c4ff0: Thn32 — `static_getCreator` + `Creator::getClassName`
+    // (0x6c4d20 body); flat host forwards directly.
+    stub_0x6c4d20()
 }
 
 // 0x6c52c0 — __ZN3RBX14FactoryProductINS_11VirtualUserENS_8InstanceELZNS_12sVirtualUserEES2_E7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11VirtualUserENS_8InstanceELZNS_12sVirtualUserEES2_E7CreatorD1Ev")]
-pub fn stub_0x6c52c0() -> ! {
-    todo!("0x6c52c0")
+pub fn stub_0x6c52c0(creator: &mut ClassCreator, unregister: &mut dyn FnMut(&str)) {
+    // IDA 0x6c52c0: `// attributes: thunk` — tail-calls Creator D2
+    // (0x6c52c4).
+    stub_0x6c52c4(creator, unregister);
 }
 
 // 0x6c52c4 — __ZN3RBX14FactoryProductINS_11VirtualUserENS_8InstanceELZNS_12sVirtualUserEES2_E7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11VirtualUserENS_8InstanceELZNS_12sVirtualUserEES2_E7CreatorD2Ev")]
-pub fn stub_0x6c52c4() -> ! {
-    todo!("0x6c52c4")
+pub fn stub_0x6c52c4(creator: &mut ClassCreator, unregister: &mut dyn FnMut(&str)) {
+    // IDA 0x6c52c4: vtable reset + `wasConstructed` gate (Object.h:255),
+    // then removal from `getCreators`.
+    creator.destroy(unregister);
 }
 
 // 0x6c5360 — __ZNK3RBX14FactoryProductINS_11VirtualUserENS_8InstanceELZNS_12sVirtualUserEES2_E7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11VirtualUserENS_8InstanceELZNS_12sVirtualUserEES2_E7Creator12getClassNameEv")]
-pub fn stub_0x6c5360() -> ! {
-    todo!("0x6c5360")
+pub fn stub_0x6c5360(creator: &ClassCreator) -> &'static str {
+    // IDA 0x6c5360: `wasConstructed` gate, then the `sVirtualUser` name.
+    creator.creator_class_name()
 }
 
 // 0x6c53e8 — __ZNK3RBX14FactoryProductINS_11VirtualUserENS_8InstanceELZNS_12sVirtualUserEES2_E7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11VirtualUserENS_8InstanceELZNS_12sVirtualUserEES2_E7Creator6createEv")]
-pub fn stub_0x6c53e8() -> ! {
-    todo!("0x6c53e8")
+pub fn stub_0x6c53e8(creator: &ClassCreator, create: &mut dyn FnMut() -> u32) -> u32 {
+    // IDA 0x6c53e8: `wasConstructed` gate, then the `shared_ptr` instance
+    // build; the host returns its token.
+    creator.create_instance(create)
 }
 
 // 0x6c59c0 — __ZN3RBX14FactoryProductINS_11VirtualUserENS_8InstanceELZNS_12sVirtualUserEES2_E7CreatorC2Ev
 // type: int __fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11VirtualUserENS_8InstanceELZNS_12sVirtualUserEES2_E7CreatorC2Ev")]
-pub fn stub_0x6c59c0() -> ! {
-    todo!("0x6c59c0")
+pub fn stub_0x6c59c0(creator: &mut ClassCreator, declare: &mut dyn FnMut(&str), register: &mut dyn FnMut(&str)) {
+    // IDA 0x6c59c0: vtable install, `Name::declare<sVirtualUser>` via
+    // `call_once`, register in `getCreators`, `isConstructed = 666`.
+    creator.construct(declare, register);
 }
 
 // 0x6c5c04 — __ZN3RBX14FactoryProductINS_11VirtualUserENS_8InstanceELZNS_12sVirtualUserEES2_E17static_getCreatorEv
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11VirtualUserENS_8InstanceELZNS_12sVirtualUserEES2_E17static_getCreatorEv")]
-pub fn stub_0x6c5c04() -> ! {
-    todo!("0x6c5c04")
+pub fn stub_0x6c5c04() -> &'static Mutex<ClassCreator> {
+    // IDA 0x6c5c04: `Creator::wasConstructed` gate (Object.h:282), then the
+    // `creatorPrivate` singleton; methods re-check on use.
+    &VIRTUAL_USER_CREATOR
 }
 
 // 0x6c78c0 — __ZN3RBX21VirtualHardwareDevice16renderGameCursorEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::VirtualHardwareDevice *__hidden this, RBX::Adorn *)
 #[doc(alias = "RBX::VirtualHardwareDevice::renderGameCursor(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX21VirtualHardwareDevice16renderGameCursorEPNS_5AdornE")]
-pub fn stub_0x6c78c0() -> ! {
-    todo!("0x6c78c0")
+pub fn stub_0x6c78c0() {
+    // IDA 0x6c78c0: empty body.
 }
 
 // 0x6c8d70 — __ZNK3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E12getClassNameEv")]
-pub fn stub_0x6c8d70() -> ! {
-    todo!("0x6c8d70")
+pub fn stub_0x6c8d70() -> &'static str {
+    // IDA 0x6c8d70: `static_getCreator` once-init, then
+    // `Creator::getClassName` — the `sVisit` name.
+    "Visit"
 }
 
 // 0x6c8d80 — __ZThn32_NK3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E12getClassNameEv")]
-pub fn stub_0x6c8d80() -> ! {
-    todo!("0x6c8d80")
+pub fn stub_0x6c8d80() -> &'static str {
+    // IDA 0x6c8d80: Thn32 — `static_getCreator` + `Creator::getClassName`
+    // (0x6c8d70 body); flat host forwards directly.
+    stub_0x6c8d70()
 }
 
 // 0x6d2d48 — __ZNK3RBX10IAdornable25shouldRender3dSortedAdornEv
 // type: _DWORD __fastcall(RBX::IAdornable *__hidden this)
 #[doc(alias = "RBX::IAdornable::shouldRender3dSortedAdorn(void)const")]
 #[doc(alias = "__ZNK3RBX10IAdornable25shouldRender3dSortedAdornEv")]
-pub fn stub_0x6d2d48() -> ! {
-    todo!("0x6d2d48")
+pub fn stub_0x6d2d48() -> bool {
+    // IDA 0x6d2d48: `return 0`.
+    false
 }
 
 // 0x6d2d50 — __ZN3RBX10IAdornable18renderBackground2dEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::IAdornable *__hidden this, RBX::Adorn *)
 #[doc(alias = "RBX::IAdornable::renderBackground2d(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX10IAdornable18renderBackground2dEPNS_5AdornE")]
-pub fn stub_0x6d2d50() -> ! {
-    todo!("0x6d2d50")
+pub fn stub_0x6d2d50() {
+    // IDA 0x6d2d50: empty body.
 }
 
 // 0x6d322c — __ZNK3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0x6d322c() -> ! {
-    todo!("0x6d322c")
+pub fn stub_0x6d322c() -> &'static str {
+    // IDA 0x6d322c: `static_getCreator` once-init, then
+    // `Creator::getClassName` — the `sModel` name. The `ModelInstance`
+    // `creatorPrivate` singleton lands with batch 5 (0x6d365c).
+    "Model"
 }
 
 // 0x6d354c — __ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED1Ev")]
-pub fn stub_0x6d354c() -> ! {
-    todo!("0x6d354c")
+pub fn stub_0x6d354c(destroy_base: &mut dyn FnMut()) {
+    // IDA 0x6d354c: D1 tail-calls the `PVInstance` base destroy; host
+    // delegates it.
+    destroy_base();
+}
+#[cfg(test)]
+mod creator_tests {
+    use super::*;
+    use std::cell::RefCell;
+    fn built(name: &'static str) -> ClassCreator {
+        let mut creator = ClassCreator::new(name);
+        let mut declare = |_: &str| {};
+        let mut register = |_: &str| {};
+        creator.construct(&mut declare, &mut register);
+        creator
+    }
+
+    #[test]
+    fn construct_registers_and_gates() {
+        let seen = RefCell::new(Vec::new());
+        let mut creator = ClassCreator::new("VehicleSeat");
+        assert!(!creator.constructed);
+        {
+            let mut declare = |name: &str| seen.borrow_mut().push(format!("declare:{name}"));
+            let mut register = |name: &str| seen.borrow_mut().push(format!("register:{name}"));
+            stub_0x6bff04(&mut creator, &mut declare, &mut register);
+        }
+        assert!(creator.constructed);
+        assert_eq!(*seen.borrow(), ["declare:VehicleSeat", "register:VehicleSeat"]);
+        assert_eq!(stub_0x6bf8a0(&creator), "VehicleSeat");
+        let mut create = || 42u32;
+        assert_eq!(stub_0x6bf928(&creator, &mut create), 42);
+        let mut unregistered = Vec::new();
+        let mut unregister = |name: &str| unregistered.push(name.to_owned());
+        stub_0x6bf288(&mut creator, &mut unregister);
+        stub_0x6bf804(&mut creator, &mut unregister);
+        assert_eq!(unregistered, ["VehicleSeat", "VehicleSeat"]);
+        let mut destroyed = 0;
+        let mut destroy = || destroyed += 1;
+        stub_0x6c1478(&mut destroy);
+        stub_0x6c148c(&mut destroy);
+        assert_eq!(destroyed, 2);
+    }
+
+    #[test]
+    fn virtual_user_creator_names_match() {
+        let creator = built("VirtualUser");
+        assert_eq!(stub_0x6c4d20(), "VirtualUser");
+        assert_eq!(stub_0x6c4ff0(), "VirtualUser");
+        assert_eq!(stub_0x6c5360(&creator), "VirtualUser");
+        let mut create = || 7u32;
+        assert_eq!(stub_0x6c53e8(&creator, &mut create), 7);
+        let mut unregistered = 0;
+        let mut unregister = |_: &str| unregistered += 1;
+        let mut owned = built("VirtualUser");
+        stub_0x6c52c0(&mut owned, &mut unregister);
+        stub_0x6c52c4(&mut owned, &mut unregister);
+        assert_eq!(unregistered, 2);
+    }
+
+    #[test]
+    fn singletons_carry_class_names() {
+        // Monotonic assertions only: any test may construct these first.
+        for (singleton, name) in [(stub_0x6c0148(), "VehicleSeat"), (stub_0x6c5c04(), "VirtualUser")] {
+            let mut declare = |_: &str| {};
+            let mut register = |_: &str| {};
+            singleton.lock().construct(&mut declare, &mut register);
+            assert!(singleton.lock().constructed);
+            assert_eq!(singleton.lock().class_name, name);
+        }
+    }
+
+    #[test]
+    #[should_panic(expected = "wasConstructed")]
+    fn unbuilt_creator_fails_the_gate() {
+        let creator = ClassCreator::new("VehicleSeat");
+        let _ = stub_0x6bf8a0(&creator);
+    }
+
+    #[test]
+    fn visit_model_and_adorn_defaults() {
+        assert_eq!(stub_0x6c8d70(), "Visit");
+        assert_eq!(stub_0x6c8d80(), "Visit");
+        assert_eq!(stub_0x6d322c(), "Model");
+        assert!(!stub_0x6d2d48());
+        stub_0x6c78c0();
+        stub_0x6d2d50();
+        let mut destroyed = 0;
+        let mut destroy = || destroyed += 1;
+        stub_0x6d354c(&mut destroy);
+        assert_eq!(destroyed, 1);
+    }
 }
 
 // 0x6d3560 — __ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED0Ev
