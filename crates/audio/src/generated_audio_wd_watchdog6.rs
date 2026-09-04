@@ -7,6 +7,7 @@
 use parking_lot::Mutex;
 use rbx_core::SharedPtr;
 use std::collections::HashMap;
+use std::sync::OnceLock;
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // IDA 0x62c208..0x62eda8 host-seam model types.
 /// Live slot of the 1-arg touched signal (IDA 0x62c208): the bound
@@ -32,6 +33,38 @@ pub type MoveStateMap = HashMap<u32, i32>;
 /// (see `stub_062c208`); distinct static per signal family, same convention
 /// as `MOVE_STATE_SIGNAL_MUTEX` in generated_audio_wd_watchdog5.
 static TOUCHED_SIGNAL_MUTEX: Mutex<()> = Mutex::new(());
+/// Host side of `BoundFuncDesc<SkateboardPlatform, void(Vector3), 1>`
+/// (IDA 0x62f4f8): name/doc/permissions/attributes plus the declared
+/// argument name once `declareSignature` runs (IDA 0x62f5b4). The
+/// member-function pair at +40 (IDA 0x62f574) folds into the caller's
+/// dispatch closure.
+pub struct SkateboardBoundFunc {
+    pub name: String,
+    pub doc: String,
+    pub permissions: u32,
+    pub attributes: u32,
+    pub signature_arg: Option<String>,
+}
+/// Host side of `RefPropDescriptor<SkateboardPlatform, T>` (IDA 0x62f7b8 /
+/// 0x63005c): name/category/attributes/permissions. The GetImpl box at +44
+/// (IDA 0x62f82c-0x62f846) folds into the caller's getter/setter closures.
+pub struct SkateboardRefProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+/// Host side of `Reflection::Type<T*>` (IDA 0x62ffac): the declared tag
+/// name (IDA 0x62ffec) registered in the all-types list (IDA 0x630048).
+pub struct SkateboardTypeDesc {
+    pub name: String,
+}
+/// Function-static `RefType<Humanoid *>` instance (see `stub_062f85c`).
+/// Runtime input (the init closure) required — OnceLock, not LazyLock.
+static HUMANOID_REF_TYPE: OnceLock<u32> = OnceLock::new();
+/// Function-static `RefType<SkateboardController *>` instance (see
+/// `stub_0630100`).
+static CONTROLLER_REF_TYPE: OnceLock<u32> = OnceLock::new();
 
 // 0x062c208 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_12PlatformImplINS4_17BasicPartInstanceEEES6_EENSA_5list2INSA_5valueIPSG_EENS2_3argILi1EEEEEEEEENS0_10connectionERKT_
 // demangled: rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>> const&)
@@ -836,8 +869,27 @@ pub fn stub_062f368(states: &mut Vec<i32>, index: usize, count: usize, value: i3
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::SkateboardPlatform,void ()(G3D::Vector3),1>::BoundFuncDesc(void (RBX::SkateboardPlatform::*)(G3D::Vector3),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::SkateboardPlatform,void ()(G3D::Vector3),1>::BoundFuncDesc(void (RBX::SkateboardPlatform::*)(G3D::Vector3),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_18SkateboardPlatformEFvN3G3D7Vector3EELi1EEC2EMS2_FvS4_EPKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_062f4f8() -> ! {
-    todo!("0x062f4f8 RBX::Reflection::BoundFuncDesc<RBX::SkateboardPlatform,void ()(G3D::Vector3),1>::BoundFuncDesc(void (RBX::SkateboardPlatform::*)(G3D::Vector3),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_062f4f8(
+    name: &str,
+    doc: &str,
+    permissions: u32,
+    attributes: u32,
+    declare: impl FnOnce(&mut SkateboardBoundFunc),
+) -> SkateboardBoundFunc {
+    // IDA 0x62f4f8 (BoundFuncDesc C2): classDescriptor base (0x62f530),
+    // FunctionDescriptor base (0x62f550), vtable install (0x62f566), the
+    // member-function pair at +40 (0x62f574, folds into dispatch closures),
+    // +48 = 0 (0x62f57e), return-type getSingleton<void> (0x62f5a0),
+    // declareSignature (0x62f5b4).
+    let mut desc = SkateboardBoundFunc {
+        name: name.to_owned(),
+        doc: doc.to_owned(),
+        permissions,
+        attributes,
+        signature_arg: None,
+    };
+    declare(&mut desc);
+    desc
 }
 
 // 0x062f670 — __ZN3RBX10Reflection13BoundFuncDescINS_18SkateboardPlatformEFvN3G3D7Vector3EELi1EE16declareSignatureEPKcNS0_7VariantE
@@ -845,8 +897,12 @@ pub fn stub_062f4f8() -> ! {
 // type: int(void)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::SkateboardPlatform,void ()(G3D::Vector3),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_18SkateboardPlatformEFvN3G3D7Vector3EELi1EE16declareSignatureEPKcNS0_7VariantE")]
-pub fn stub_062f670() -> ! {
-    todo!("0x062f670 RBX::Reflection::BoundFuncDesc<RBX::SkateboardPlatform,void ()(G3D::Vector3),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_062f670(desc: &mut SkateboardBoundFunc, arg_name: &str) {
+    // IDA 0x62f670 (declareSignature): return-type getSingleton<void> at
+    // +28 (0x62f680); Name::declare the argument (0x62f68a);
+    // getSingleton<Vector3> (0x62f68c); SignatureDescriptor::addArgument
+    // (0x62f69e).
+    desc.signature_arg = Some(arg_name.to_owned());
 }
 
 // 0x062f6a0 — __ZN3RBX10Reflection13BoundFuncDescINS_18SkateboardPlatformEFvN3G3D7Vector3EELi1EED0Ev
@@ -861,24 +917,51 @@ pub fn stub_062f6a0() {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::SkateboardPlatform,void ()(G3D::Vector3),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::SkateboardPlatform,void ()(G3D::Vector3),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13BoundFuncDescINS_18SkateboardPlatformEFvN3G3D7Vector3EELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")]
-pub fn stub_062f774() -> ! {
-    todo!("0x062f774 RBX::Reflection::BoundFuncDesc<RBX::SkateboardPlatform,void ()(G3D::Vector3),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_062f774(
+    target: u32,
+    adjust: u32,
+    arg: [f32; 3],
+    direct: impl FnOnce(u32, [f32; 3]),
+    virtual_call: impl FnOnce(u32, [f32; 3]),
+) {
+    // IDA 0x62f774 (BoundFuncDesc::execute): ArgHelper::getArg<Vector3>
+    // (0x62f798, the arg seam); member resolve with the odd-adjust vtable
+    // step (0x62f79c-0x62f7a8, cf. 0x62b93c); invoke (0x62f7b6).
+    if (adjust & 1) != 0 {
+        virtual_call(target, arg);
+    } else {
+        direct(target, arg);
+    }
 }
 
 // 0x062f7b8 — __ZN3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEEC2IMS2_KFPS3_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // demangled: RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::RefPropDescriptor<RBX::Humanoid* (RBX::SkateboardPlatform::*)(void)const,int>(char const*,char const*,RBX::Humanoid* (RBX::SkateboardPlatform::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::RefPropDescriptor<RBX::Humanoid* (RBX::SkateboardPlatform::*)(void)const,int>(char const*,char const*,RBX::Humanoid* (RBX::SkateboardPlatform::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEEC2IMS2_KFPS3_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_062f7b8() -> ! {
-    todo!("0x062f7b8 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::RefPropDescriptor<RBX::Humanoid* (RBX::SkateboardPlatform::*)(void)const,int>(char const*,char const*,RBX::Humanoid* (RBX::SkateboardPlatform::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_062f7b8(name: &str, category: &str, attributes: u32, permissions: u32) -> SkateboardRefProp {
+    // IDA 0x62f7b8 (RefPropDescriptor<Humanoid> C2):
+    // RefType<Humanoid*>::singleton (0x62f7ce); PropertyDescriptor base
+    // (0x62f810); vtable installs (0x62f826-0x62f828); GetImpl new with the
+    // member pair (0x62f82c-0x62f846, folds into getter/setter seams); flag
+    // mask &= 0xF3 at +28 (0x62f84e, a descriptor-fixed flag — attributes
+    // pass through unchanged).
+    SkateboardRefProp {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x062f85c — __ZN3RBX10Reflection7RefTypeIPNS_8HumanoidEE9singletonEv
 // demangled: RBX::Reflection::RefType<RBX::Humanoid *>::singleton(void)
 #[doc(alias = "RBX::Reflection::RefType<RBX::Humanoid *>::singleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection7RefTypeIPNS_8HumanoidEE9singletonEv")]
-pub fn stub_062f85c() -> ! {
-    todo!("0x062f85c RBX::Reflection::RefType<RBX::Humanoid *>::singleton(void)")
+pub fn stub_062f85c(init: impl FnOnce() -> u32) -> u32 {
+    // IDA 0x62f85c (RefType<Humanoid*>::singleton): guarded once-init
+    // (0x62f8b8); Type::Type<Humanoid*> (0x62f8e6); vtable install
+    // (0x62f8fa); guard release (0x62f8fe). OnceLock is the same once.
+    *HUMANOID_REF_TYPE.get_or_init(init)
 }
 
 // 0x062f954 — __ZN3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEED0Ev
@@ -893,24 +976,30 @@ pub fn stub_062f954() {
 // demangled: RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE10isReadOnlyEv")]
-pub fn stub_062f984() -> ! {
-    todo!("0x062f984 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::isReadOnly(void)const")
+pub fn stub_062f984(is_read_only: impl FnOnce() -> bool) -> bool {
+    // IDA 0x62f984 (RefProp::isReadOnly): delegates to the GetImpl vtable
+    // slot0 (0x62f990).
+    is_read_only()
 }
 
 // 0x062f994 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11isWriteOnlyEv
 // demangled: RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11isWriteOnlyEv")]
-pub fn stub_062f994() -> ! {
-    todo!("0x062f994 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::isWriteOnly(void)const")
+pub fn stub_062f994(is_write_only: impl FnOnce() -> bool) -> bool {
+    // IDA 0x62f994 (RefProp::isWriteOnly): delegates to the GetImpl vtable
+    // slot1 (0x62f9a0).
+    is_write_only()
 }
 
 // 0x062f9a4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11equalValuesEPKNS0_13DescribedBaseES7_
 // demangled: RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11equalValuesEPKNS0_13DescribedBaseES7_")]
-pub fn stub_062f9a4() -> ! {
-    todo!("0x062f9a4 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_062f9a4(get: impl Fn(u32) -> u32, a: u32, b: u32) -> bool {
+    // IDA 0x62f9a4 (RefProp::equalValues): v = getter(a) (0x62f9b4);
+    // return v == getter(b) (0x62f9ca).
+    get(a) == get(b)
 }
 
 // 0x062f9cc — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -918,48 +1007,70 @@ pub fn stub_062f9a4() -> ! {
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_062f9cc() -> ! {
-    todo!("0x062f9cc RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_062f9cc<T>(obj: u32, get: impl FnOnce(u32) -> Option<SharedPtr<T>>) -> Option<SharedPtr<T>> {
+    // IDA 0x62f9cc (RefProp::getVariant): v = GetImpl getter(obj)
+    // (0x62f9f0); shared_from (0x62f9f8, null stays null); the +36
+    // subobject adjust plus the Variant type/singleton write
+    // (0x62f9f8-0x62fa62) ride the caller's Variant; releases
+    // (0x62fa3a-0x62fa70) ride the dropped clones.
+    get(obj)
 }
 
 // 0x062fae4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 // demangled: RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_062fae4() -> ! {
-    todo!("0x062fae4 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_062fae4<T>(obj: u32, value: Option<SharedPtr<T>>, set: impl FnOnce(u32, Option<SharedPtr<T>>)) {
+    // IDA 0x62fae4 (RefProp::setVariant): shared = Variant::get<shared>
+    // (0x62fb08); setter dispatch through vtable+64 (0x62fb46); release
+    // (0x62fb4a-0x62fb52, the dropped clone).
+    set(obj, value);
 }
 
 // 0x062fbac — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE9copyValueEPKNS0_13DescribedBaseEPS5_
 // demangled: RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE9copyValueEPKNS0_13DescribedBaseEPS5_")]
-pub fn stub_062fbac() -> ! {
-    todo!("0x062fbac RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_062fbac(src: u32, dst: u32, get: impl FnOnce(u32) -> u32, set: impl FnOnce(u32, u32)) {
+    // IDA 0x62fbac (RefProp::copyValue): v = getter(src) (0x62fbbe);
+    // setter(dst, v) (0x62fbce).
+    let v = get(src);
+    set(dst, v);
 }
 
 // 0x062fbd0 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 // demangled: RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
-pub fn stub_062fbd0() -> ! {
-    todo!("0x062fbd0 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_062fbd0(get: impl FnOnce() -> Option<u32>, write: impl FnOnce(Option<u32>)) {
+    // IDA 0x62fbd0 (RefProp::writeValue): v = getter() (0x62fbf4); the +36
+    // DescribedBase adjust (0x62fbfc-0x62fbfe) collapses — host ids aren't
+    // pointers; null stays null either way; InstanceHandle wrap (0x62fc02);
+    // XmlNameValuePair::setValue (0x62fc3a); release (0x62fc40-0x62fc48 via
+    // drop).
+    write(get());
 }
 
 // 0x062fca4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 // demangled: RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_062fca4() -> ! {
-    todo!("0x062fca4 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_062fca4(read: impl FnOnce(Option<u32>) -> i32, handle: Option<u32>) -> i32 {
+    // IDA 0x62fca4 (RefProp::readValue): element = handle ? handle+12 :
+    // null (0x62fcb0-0x62fcb2); binder resolve dispatch (0x62fcb4). The +12
+    // element step rides in the handle seam.
+    read(handle)
 }
 
 // 0x062fcc8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11getRefValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::getRefValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11getRefValueEPKNS0_13DescribedBaseE")]
-pub fn stub_062fcc8() -> ! {
-    todo!("0x062fcc8 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::getRefValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_062fcc8(get: impl FnOnce() -> Option<u32>) -> Option<u32> {
+    // IDA 0x62fcc8 (RefProp::getRefValue): v = getter() (0x62fcd2); the +36
+    // DescribedBase adjust (0x62fcd6-0x62fcd8) collapses — host ids aren't
+    // pointers; null stays null either way (0x62fcd6).
+    get()
 }
 
 // 0x062fcdc — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11setRefValueEPNS0_13DescribedBaseES6_
@@ -967,16 +1078,32 @@ pub fn stub_062fcc8() -> ! {
 // type: int __fastcall(int, int, void *lpsrc)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11setRefValueEPNS0_13DescribedBaseES6_")]
-pub fn stub_062fcdc() -> ! {
-    todo!("0x062fcdc RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_062fcdc(
+    obj: u32,
+    value: Option<u32>,
+    is_humanoid: impl FnOnce(u32) -> bool,
+    set: impl FnOnce(u32, Option<u32>),
+) {
+    // IDA 0x62fcdc (RefProp::setRefValue): null passes through
+    // (0x62fce6-0x62fce8); __dynamic_cast to Humanoid (0x62fd0a); a failed
+    // cast throws bad_cast (0x62fd24-0x62fd52); setter dispatch (0x62fd20).
+    if let Some(v) = value {
+        if !is_humanoid(v) {
+            panic!("0x62fcdc std::bad_cast: setRefValue on non-Humanoid");
+        }
+    }
+    set(obj, value);
 }
 
 // 0x062fd58 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
 // demangled: RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_")]
-pub fn stub_062fd58() -> ! {
-    todo!("0x062fd58 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_062fd58(obj: u32, value: u32, set: impl FnOnce(u32, u32)) {
+    // IDA 0x62fd58 (RefProp::setRefValueUnsafe): null stays null, else the
+    // -36 DescribedBase adjust (0x62fd5e-0x62fd68); setter dispatch
+    // (0x62fd76).
+    set(obj, if value == 0 { 0 } else { value - 36 });
 }
 
 // 0x062fd78 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
@@ -984,8 +1111,13 @@ pub fn stub_062fd58() -> ! {
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
-pub fn stub_062fd78() -> ! {
-    todo!("0x062fd78 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_062fd78<T>(obj: u32, instance: &SharedPtr<T>, set: impl FnOnce(u32, &SharedPtr<T>)) {
+    // IDA 0x62fd78 (RefProp::assignIDREF): shared_count copy (0x62fda6);
+    // the null-stays-null/-36 adjust (0x62fdbc-0x62fde2) collapses — host
+    // ids aren't pointers; setter dispatch (0x62fdf2); release
+    // (0x62fdf6-0x62fdfe via drop).
+    let owned = SharedPtr::clone(instance);
+    set(obj, &owned);
 }
 
 // 0x062fe58 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
@@ -1000,24 +1132,40 @@ pub fn stub_062fe58() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid *>::GetImpl<RBX::Humanoid * (RBX::SkateboardPlatform::*)(void)const>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid *>::GetImpl<RBX::Humanoid * (RBX::SkateboardPlatform::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_8HumanoidEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv")]
-pub fn stub_062fe60() -> ! {
-    todo!("0x062fe60 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid *>::GetImpl<RBX::Humanoid * (RBX::SkateboardPlatform::*)(void)const>::isReadOnly(void)const")
+pub fn stub_062fe60() -> bool {
+    // IDA 0x62fe60 (GetImpl::isReadOnly): hardcoded 1 (0x62fe62) — the
+    // const member getter is never writable through this impl.
+    true
 }
 
 // 0x062fe64 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_8HumanoidEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid *>::GetImpl<RBX::Humanoid * (RBX::SkateboardPlatform::*)(void)const>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid *>::GetImpl<RBX::Humanoid * (RBX::SkateboardPlatform::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_8HumanoidEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv")]
-pub fn stub_062fe64() -> ! {
-    todo!("0x062fe64 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid *>::GetImpl<RBX::Humanoid * (RBX::SkateboardPlatform::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_062fe64() -> bool {
+    // IDA 0x62fe64 (GetImpl::isWriteOnly): hardcoded 0 (0x62fe66).
+    false
 }
 
 // 0x062fe68 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_8HumanoidEE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid *>::GetImpl<RBX::Humanoid * (RBX::SkateboardPlatform::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid *>::GetImpl<RBX::Humanoid * (RBX::SkateboardPlatform::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_8HumanoidEE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_062fe68() -> ! {
-    todo!("0x062fe68 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid *>::GetImpl<RBX::Humanoid * (RBX::SkateboardPlatform::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_062fe68(
+    obj: u32,
+    adjust: u32,
+    direct: impl FnOnce(u32) -> u32,
+    virtual_call: impl FnOnce(u32) -> u32,
+) -> u32 {
+    // IDA 0x62fe68 (GetImpl::getValue): the null-stays-null/-36 Described
+    // adjust (0x62fe6c-0x62fe6e) collapses — host ids aren't pointers;
+    // member resolve with the odd-adjust vtable step (0x62fe72-0x62fe82,
+    // cf. 0x62b93c); invoke (0x62fe82).
+    if (adjust & 1) != 0 {
+        virtual_call(obj)
+    } else {
+        direct(obj)
+    }
 }
 
 // 0x062fe88 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_8HumanoidEE7GetImplIMS2_KFS4_vEE8setValueEPNS0_13DescribedBaseERKS4_
@@ -1025,7 +1173,10 @@ pub fn stub_062fe68() -> ! {
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid *>::GetImpl<RBX::Humanoid * (RBX::SkateboardPlatform::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::Humanoid * const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_8HumanoidEE7GetImplIMS2_KFS4_vEE8setValueEPNS0_13DescribedBaseERKS4_")]
 pub fn stub_062fe88() -> ! {
-    todo!("0x062fe88 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid *>::GetImpl<RBX::Humanoid * (RBX::SkateboardPlatform::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::Humanoid * const&)const")
+    // IDA 0x62fe88 (GetImpl::setValue): always throws
+    // runtime_error("can't set value") (0x62feb4-0x62ff98) — the const
+    // getter has no setter.
+    panic!("can't set value");
 }
 
 // 0x062ffa8 — __ZN3RBX10Reflection7RefTypeIPNS_8HumanoidEED1Ev
@@ -1041,8 +1192,19 @@ pub fn stub_062ffa8() {
 // type: int(void)
 #[doc(alias = "RBX::Reflection::Type::Type<RBX::Humanoid *>(char const*,char const*,RBX::Humanoid * *)")]
 #[doc(alias = "__ZN3RBX10Reflection4TypeC2IPNS_8HumanoidEEEPKcS6_PT_")]
-pub fn stub_062ffac() -> ! {
-    todo!("0x062ffac RBX::Reflection::Type::Type<RBX::Humanoid *>(char const*,char const*,RBX::Humanoid * *)")
+pub fn stub_062ffac(
+    tag: &str,
+    declare: impl FnOnce(&str) -> String,
+    register: impl FnOnce(&str),
+) -> SkateboardTypeDesc {
+    // IDA 0x62ffac (Type<Humanoid*> C2): Descriptor base (0x62ffc2);
+    // vtable + typeinfo installs (0x62ffe2-0x62ffe4); Name::declare the tag
+    // (0x62ffec-0x62fff6); assert !tag.empty() (Type.h:77,
+    // 0x62fffa-0x630018); addToAllTypes (0x630048).
+    let name = declare(tag);
+    assert!(!name.is_empty(), "!this->tag.empty() Type.h:77");
+    register(&name);
+    SkateboardTypeDesc { name }
 }
 
 // 0x0630058 — __ZN3RBX10Reflection7RefTypeIPNS_8HumanoidEED0Ev
@@ -1057,16 +1219,27 @@ pub fn stub_0630058() {
 // demangled: RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::RefPropDescriptor<RBX::SkateboardController* (RBX::SkateboardPlatform::*)(void)const,int>(char const*,char const*,RBX::SkateboardController* (RBX::SkateboardPlatform::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::RefPropDescriptor<RBX::SkateboardController* (RBX::SkateboardPlatform::*)(void)const,int>(char const*,char const*,RBX::SkateboardController* (RBX::SkateboardPlatform::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEEC2IMS2_KFPS3_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_063005c() -> ! {
-    todo!("0x063005c RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::RefPropDescriptor<RBX::SkateboardController* (RBX::SkateboardPlatform::*)(void)const,int>(char const*,char const*,RBX::SkateboardController* (RBX::SkateboardPlatform::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_063005c(name: &str, category: &str, attributes: u32, permissions: u32) -> SkateboardRefProp {
+    // IDA 0x63005c (RefPropDescriptor<SkateboardController> C2): same shape
+    // as the Humanoid twin 0x62f7b8 — RefType<SkateboardController*>::
+    // singleton, PropertyDescriptor base, vtable installs, GetImpl new
+    // with the member pair, flag mask &= 0xF3 at +28.
+    SkateboardRefProp {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x0630100 — __ZN3RBX10Reflection7RefTypeIPNS_20SkateboardControllerEE9singletonEv
 // demangled: RBX::Reflection::RefType<RBX::SkateboardController *>::singleton(void)
 #[doc(alias = "RBX::Reflection::RefType<RBX::SkateboardController *>::singleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection7RefTypeIPNS_20SkateboardControllerEE9singletonEv")]
-pub fn stub_0630100() -> ! {
-    todo!("0x0630100 RBX::Reflection::RefType<RBX::SkateboardController *>::singleton(void)")
+pub fn stub_0630100(init: impl FnOnce() -> u32) -> u32 {
+    // IDA 0x630100 (RefType<SkateboardController*>::singleton): same
+    // guarded once-init shape as the Humanoid twin 0x62f85c.
+    *CONTROLLER_REF_TYPE.get_or_init(init)
 }
 
 // 0x06301f8 — __ZN3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEED0Ev
@@ -1081,24 +1254,30 @@ pub fn stub_06301f8() {
 // demangled: RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE10isReadOnlyEv")]
-pub fn stub_0630228() -> ! {
-    todo!("0x0630228 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::isReadOnly(void)const")
+pub fn stub_0630228(is_read_only: impl FnOnce() -> bool) -> bool {
+    // IDA 0x630228: delegates to the GetImpl vtable slot0 (0x630234);
+    // same shape as 0x62f984.
+    is_read_only()
 }
 
 // 0x0630238 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11isWriteOnlyEv
 // demangled: RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11isWriteOnlyEv")]
-pub fn stub_0630238() -> ! {
-    todo!("0x0630238 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::isWriteOnly(void)const")
+pub fn stub_0630238(is_write_only: impl FnOnce() -> bool) -> bool {
+    // IDA 0x630238: delegates to the GetImpl vtable slot1 (0x630244);
+    // same shape as 0x62f994.
+    is_write_only()
 }
 
 // 0x0630248 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11equalValuesEPKNS0_13DescribedBaseES7_
 // demangled: RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11equalValuesEPKNS0_13DescribedBaseES7_")]
-pub fn stub_0630248() -> ! {
-    todo!("0x0630248 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0630248(get: impl Fn(u32) -> u32, a: u32, b: u32) -> bool {
+    // IDA 0x630248: v = getter(a) (0x630258); return v == getter(b)
+    // (0x63026e); same shape as 0x62f9a4.
+    get(a) == get(b)
 }
 
 // 0x0630270 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -1106,8 +1285,10 @@ pub fn stub_0630248() -> ! {
 // type: void __fastcall(int, int, _DWORD *, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_0630270() -> ! {
-    todo!("0x0630270 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0630270<T>(obj: u32, get: impl FnOnce(u32) -> Option<SharedPtr<T>>) -> Option<SharedPtr<T>> {
+    // IDA 0x630270: v = GetImpl getter(obj) (0x630294); shared_from
+    // (0x63029c); Variant write rides the caller; same shape as 0x62f9cc.
+    get(obj)
 }
 
 // 0x0630388 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
@@ -1115,8 +1296,10 @@ pub fn stub_0630270() -> ! {
 // type: void __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_0630388() -> ! {
-    todo!("0x0630388 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0630388<T>(obj: u32, value: Option<SharedPtr<T>>, set: impl FnOnce(u32, Option<SharedPtr<T>>)) {
+    // IDA 0x630388: shared = Variant::get<shared> (0x6303ac); setter
+    // dispatch (0x6303e8); release via drop; same shape as 0x62fae4.
+    set(obj, value);
 }
 
 // 0x0630450 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE9copyValueEPKNS0_13DescribedBaseEPS5_
@@ -1124,8 +1307,11 @@ pub fn stub_0630388() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE9copyValueEPKNS0_13DescribedBaseEPS5_")]
-pub fn stub_0630450() -> ! {
-    todo!("0x0630450 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0630450(src: u32, dst: u32, get: impl FnOnce(u32) -> u32, set: impl FnOnce(u32, u32)) {
+    // IDA 0x630450: v = getter(src) (0x630462); setter(dst, v) (0x630472);
+    // same shape as 0x62fbac.
+    let v = get(src);
+    set(dst, v);
 }
 
 // 0x0630474 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
@@ -1133,8 +1319,11 @@ pub fn stub_0630450() -> ! {
 // type: void __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
-pub fn stub_0630474() -> ! {
-    todo!("0x0630474 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0630474(get: impl FnOnce() -> Option<u32>, write: impl FnOnce(Option<u32>)) {
+    // IDA 0x630474: v = getter() (0x630498); +36 collapses, null stays
+    // null (0x6304a0-0x6304a2); InstanceHandle wrap (0x6304a6); setValue
+    // (0x6304de); same shape as 0x62fbd0.
+    write(get());
 }
 
 // 0x0630548 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
@@ -1142,8 +1331,10 @@ pub fn stub_0630474() -> ! {
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_0630548() -> ! {
-    todo!("0x0630548 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0630548(read: impl FnOnce(Option<u32>) -> i32, handle: Option<u32>) -> i32 {
+    // IDA 0x630548: element = handle ? handle+12 : null (0x630554);
+    // binder resolve dispatch (0x63055a); same shape as 0x62fca4.
+    read(handle)
 }
 
 // 0x063056c — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11getRefValueEPKNS0_13DescribedBaseE
@@ -1151,8 +1342,10 @@ pub fn stub_0630548() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11getRefValueEPKNS0_13DescribedBaseE")]
-pub fn stub_063056c() -> ! {
-    todo!("0x063056c RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::getRefValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_063056c(get: impl FnOnce() -> Option<u32>) -> Option<u32> {
+    // IDA 0x63056c: v = getter() (0x630572); +36 collapses, null stays
+    // null (0x63057a); same shape as 0x62fcc8.
+    get()
 }
 
 // 0x0630580 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11setRefValueEPNS0_13DescribedBaseES6_
@@ -1160,8 +1353,22 @@ pub fn stub_063056c() -> ! {
 // type: int __fastcall(int, int, void *lpsrc)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11setRefValueEPNS0_13DescribedBaseES6_")]
-pub fn stub_0630580() -> ! {
-    todo!("0x0630580 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_0630580(
+    obj: u32,
+    value: Option<u32>,
+    is_controller: impl FnOnce(u32) -> bool,
+    set: impl FnOnce(u32, Option<u32>),
+) {
+    // IDA 0x630580: null passes through (0x63058a-0x63058c);
+    // __dynamic_cast to SkateboardController (0x6305ae); failed cast throws
+    // bad_cast (0x6305b2); setter dispatch (0x6305c4); same shape as
+    // 0x62fcdc.
+    if let Some(v) = value {
+        if !is_controller(v) {
+            panic!("0x630580 std::bad_cast: setRefValue on non-SkateboardController");
+        }
+    }
+    set(obj, value);
 }
 
 // 0x06305fc — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
@@ -1169,8 +1376,10 @@ pub fn stub_0630580() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_")]
-pub fn stub_06305fc() -> ! {
-    todo!("0x06305fc RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_06305fc(obj: u32, value: u32, set: impl FnOnce(u32, u32)) {
+    // IDA 0x6305fc: null stays null, else -36 (cf. 0x62fd5e-0x62fd68);
+    // setter dispatch; same shape as 0x62fd58.
+    set(obj, if value == 0 { 0 } else { value - 36 });
 }
 
 // 0x063061c — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
@@ -1178,8 +1387,11 @@ pub fn stub_06305fc() -> ! {
 // type: void __fastcall(int, int, const shared_count *, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
-pub fn stub_063061c() -> ! {
-    todo!("0x063061c RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_063061c<T>(obj: u32, instance: &SharedPtr<T>, set: impl FnOnce(u32, &SharedPtr<T>)) {
+    // IDA 0x63061c: shared_count copy; -36 collapses; setter dispatch;
+    // release via drop; same shape as 0x62fd78.
+    let owned = SharedPtr::clone(instance);
+    set(obj, &owned);
 }
 
 // 0x06306fc — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
@@ -1196,8 +1408,14 @@ pub fn stub_06306fc() {
 // type: void __fastcall(_QWORD *, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::SkateboardController> RBX::shared_from<RBX::SkateboardController>(RBX::SkateboardController*)")]
 #[doc(alias = "__ZN3RBX11shared_fromINS_20SkateboardControllerEEEN5boost10shared_ptrIT_EEPS4_")]
-pub fn stub_0630704() -> ! {
-    todo!("0x0630704 boost::shared_ptr<RBX::SkateboardController> RBX::shared_from<RBX::SkateboardController>(RBX::SkateboardController*)")
+pub fn stub_0630704<T>(slot: Option<&SharedPtr<T>>) -> Option<SharedPtr<T>> {
+    // IDA 0x630704 (shared_from<SkateboardController>): null -> empty
+    // (0x630752/0x6307e0); missing weak (0x63075c) or expired count
+    // (0x630798) -> throw bad_weak_ptr (0x63080a-0x630860); else addref +
+    // copy (0x63078a-0x6307c8). Same shape as stub_0629eec in
+    // generated_audio_wd_watchdog5; a borrowed Arc is always live so the
+    // throw is unrepresentable.
+    slot.map(SharedPtr::clone)
 }
 
 // 0x0630874 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_20SkateboardControllerEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
@@ -1205,8 +1423,10 @@ pub fn stub_0630704() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_20SkateboardControllerEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv")]
-pub fn stub_0630874() -> ! {
-    todo!("0x0630874 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::isReadOnly(void)const")
+pub fn stub_0630874() -> bool {
+    // IDA 0x630874 (GetImpl::isReadOnly): hardcoded 1 — same shape as
+    // 0x62fe60.
+    true
 }
 
 // 0x0630878 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_20SkateboardControllerEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv
@@ -1214,8 +1434,10 @@ pub fn stub_0630874() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_20SkateboardControllerEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv")]
-pub fn stub_0630878() -> ! {
-    todo!("0x0630878 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_0630878() -> bool {
+    // IDA 0x630878 (GetImpl::isWriteOnly): hardcoded 0 — same shape as
+    // 0x62fe64.
+    false
 }
 
 // 0x063087c — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_20SkateboardControllerEE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE
@@ -1223,8 +1445,19 @@ pub fn stub_0630878() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_20SkateboardControllerEE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_063087c() -> ! {
-    todo!("0x063087c RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_063087c(
+    obj: u32,
+    adjust: u32,
+    direct: impl FnOnce(u32) -> u32,
+    virtual_call: impl FnOnce(u32) -> u32,
+) -> u32 {
+    // IDA 0x63087c (GetImpl::getValue): -36 collapses; member resolve with
+    // the odd-adjust vtable step; invoke; same shape as 0x62fe68.
+    if (adjust & 1) != 0 {
+        virtual_call(obj)
+    } else {
+        direct(obj)
+    }
 }
 
 // 0x063089c — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_20SkateboardControllerEE7GetImplIMS2_KFS4_vEE8setValueEPNS0_13DescribedBaseERKS4_
@@ -1233,7 +1466,9 @@ pub fn stub_063087c() -> ! {
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::SkateboardController * const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_20SkateboardControllerEE7GetImplIMS2_KFS4_vEE8setValueEPNS0_13DescribedBaseERKS4_")]
 pub fn stub_063089c() -> ! {
-    todo!("0x063089c RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::SkateboardController * const&)const")
+    // IDA 0x63089c (GetImpl::setValue): always throws
+    // runtime_error("can't set value") — same shape as 0x62fe88.
+    panic!("can't set value");
 }
 
 // 0x06309bc — __ZN3RBX10Reflection7RefTypeIPNS_20SkateboardControllerEED1Ev
@@ -1250,8 +1485,18 @@ pub fn stub_06309bc() {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::Type::Type<RBX::SkateboardController *>(char const*,char const*,RBX::SkateboardController * *)")]
 #[doc(alias = "__ZN3RBX10Reflection4TypeC2IPNS_20SkateboardControllerEEEPKcS6_PT_")]
-pub fn stub_06309c0() -> ! {
-    todo!("0x06309c0 RBX::Reflection::Type::Type<RBX::SkateboardController *>(char const*,char const*,RBX::SkateboardController * *)")
+pub fn stub_06309c0(
+    tag: &str,
+    declare: impl FnOnce(&str) -> String,
+    register: impl FnOnce(&str),
+) -> SkateboardTypeDesc {
+    // IDA 0x6309c0 (Type<SkateboardController*> C2): Descriptor base;
+    // vtable + typeinfo installs; Name::declare the tag; assert
+    // !tag.empty() (Type.h:77); addToAllTypes; same shape as 0x62ffac.
+    let name = declare(tag);
+    assert!(!name.is_empty(), "!this->tag.empty() Type.h:77");
+    register(&name);
+    SkateboardTypeDesc { name }
 }
 
 // 0x0630a6c — __ZN3RBX10Reflection7RefTypeIPNS_20SkateboardControllerEED0Ev
