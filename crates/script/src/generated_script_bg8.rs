@@ -18,7 +18,8 @@ use crate::generated_wdog_script_B2_1788369654::{
 use rbx_reflection::descriptor::Variant;
 use rbx_reflection::enum_desc::EnumDesc;
 use rbx_reflection::generated::{
-    CRenderSettingsItemState, frame_rate_manager_mode_enum_desc, quality_level_enum_desc,
+    CRenderSettingsItemState, frame_rate_manager_mode_enum_desc,
+    graphics_mode_enum_desc, quality_level_enum_desc,
 };
 
 /// Get/set pair behind `EnumPropDescriptor<CRenderSettingsItem,
@@ -87,6 +88,25 @@ fn desc_string_of(desc: &EnumDesc, value: i32, out: &mut String) {
             out.push_str(name);
         }
     }
+}
+/// Get/set pair behind `EnumPropDescriptor<CRenderSettingsItem, GraphicsMode>`
+/// (IDA 0x13a30).
+pub struct CRenderSettingsGraphicsAccess {
+    pub get: Box<dyn Fn(&CRenderSettingsItemState) -> i32 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut CRenderSettingsItemState, i32) + Send + Sync>,
+}
+
+/// `RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem, GraphicsMode>`
+/// (IDA 0x13a30): same layout as the FrameRateManagerMode twin. The enum
+/// table reuses the reflection singleton; only the access pair is local
+/// (state types differ across crates).
+pub struct CRenderSettingsGraphicsProp {
+    pub name: String,
+    pub category: String,
+    pub access: CRenderSettingsGraphicsAccess,
+    pub enum_desc: &'static EnumDesc,
+    pub attributes: u32,
+    pub permissions: u32,
 }
 
 // 0x1304c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE11getEnumItemEPKNS0_13DescribedBaseE
@@ -496,224 +516,367 @@ pub fn stub_0x139d8() -> bool {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::GetSetImpl<RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_0x139dc() -> ! {
-    todo!("0x139dc __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_0x139dc() -> bool {
+    // IDA 0x139dc GetSetImpl `isWriteOnly`: hardcoded `return 0`.
+    false
 }
 
 // 0x139e0 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::GetSetImpl<RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x139e0() -> ! {
-    todo!("0x139e0 __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x139e0(access: &CRenderSettingsFrmAccess, obj: &CRenderSettingsItemState) -> i32 {
+    // IDA 0x139e0 GetSetImpl `getValue`: member-pointer adjust then the
+    // getter call (cf. 0x11240).
+    (access.get)(obj)
 }
 
 // 0x13a0c — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::GetSetImpl<RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::FrameRateManagerMode const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")]
-pub fn stub_0x13a0c() -> ! {
-    todo!("0x13a0c __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")
+pub fn stub_0x13a0c(access: &CRenderSettingsFrmAccess, obj: &mut CRenderSettingsItemState, value: i32) {
+    // IDA 0x13a0c GetSetImpl `setValue`: member adjust then the setter call
+    // (cf. 0x1126c).
+    (access.set)(obj, value)
 }
 
 // 0x13a30 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, char, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::EnumPropDescriptor<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>(char const*,char const*,RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0x13a30() -> ! {
-    todo!("0x13a30 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0x13a30(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&CRenderSettingsItemState) -> i32 + Send + Sync>,
+    set: Box<dyn Fn(&mut CRenderSettingsItemState, i32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> CRenderSettingsGraphicsProp {
+    // IDA 0x13a30 `EnumPropDescriptor<GraphicsMode>` ctor: same shape as the
+    // FrameRateManagerMode twin at 0x131a8 (`classDescriptor` init,
+    // `EnumDesc` singleton `call_once` init, base init, singleton links at
+    // +40/+48, `new(0x14)` GetSet impl, attribute masks).
+    CRenderSettingsGraphicsProp {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: CRenderSettingsGraphicsAccess { get, set },
+        enum_desc: graphics_mode_enum_desc(),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x13be4 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEED0Ev
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEED0Ev")]
-pub fn stub_0x13be4() -> ! {
-    todo!("0x13be4 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEED0Ev")
+pub fn stub_0x13be4() {
+    // IDA 0x13be4: D0 deleting destructor — vtable reset, member delete,
+    // `operator delete`; Arc Drop glue covers it (cf. 0x1335c).
 }
 
 // 0x13c10 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10isReadOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10isReadOnlyEv")]
-pub fn stub_0x13c10() -> ! {
-    todo!("0x13c10 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10isReadOnlyEv")
+pub fn stub_0x13c10(prop: &CRenderSettingsGraphicsProp) -> bool {
+    // IDA 0x13c10 `isReadOnly`: routes through the +44 GetSet impl.
+    // Get/set-bound enum props are never read-only (cf. 0x13388).
+    let _ = prop;
+    false
 }
 
 // 0x13c20 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11isWriteOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11isWriteOnlyEv")]
-pub fn stub_0x13c20() -> ! {
-    todo!("0x13c20 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11isWriteOnlyEv")
+pub fn stub_0x13c20(prop: &CRenderSettingsGraphicsProp) -> bool {
+    // IDA 0x13c20 `isWriteOnly`: routes through the +44 GetSet impl.
+    // Get/set-bound enum props are never write-only (cf. 0x13398).
+    let _ = prop;
+    false
 }
 
 // 0x13c30 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11equalValuesEPKNS0_13DescribedBaseES8_
 // type: bool __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11equalValuesEPKNS0_13DescribedBaseES8_")]
-pub fn stub_0x13c30() -> ! {
-    todo!("0x13c30 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11equalValuesEPKNS0_13DescribedBaseES8_")
+pub fn stub_0x13c30(prop: &CRenderSettingsGraphicsProp, obj: &CRenderSettingsItemState, value: i32) -> bool {
+    // IDA 0x13c30 `equalValues`: v5 = getValue(impl);
+    // return v5 == getValue(impl, a3) (cf. 0x133a8).
+    (prop.access.get)(obj) == value
 }
 
 // 0x13c58 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_0x13c58() -> ! {
-    todo!("0x13c58 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
+pub fn stub_0x13c58(prop: &CRenderSettingsGraphicsProp, obj: &CRenderSettingsItemState) -> Variant {
+    // IDA 0x13c58 `getVariant`: v5 = getIntValue,
+    // out = `Variant(int, v5)` via `Type::getSingleton<int>` +
+    // `operator=<int>`. `Variant::Int` is the out (cf. 0x133d0).
+    Variant::Int((prop.access.get)(obj))
 }
 
 // 0x13c7c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_0x13c7c() -> ! {
-    todo!("0x13c7c __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")
+pub fn stub_0x13c7c(prop: &CRenderSettingsGraphicsProp, obj: &mut CRenderSettingsItemState, variant: &Variant) {
+    // IDA 0x13c7c `setVariant`: int-typed variants read the `any_cast<int>`
+    // payload; anything else goes through the holder clone +
+    // `Variant::convert<int>`; then `setIntValue` (cf. 0x133f4).
+    let value = variant.convert_to_int();
+    (prop.access.set)(obj, value);
 }
 
 // 0x13dcc — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE9copyValueEPKNS0_13DescribedBaseEPS6_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE9copyValueEPKNS0_13DescribedBaseEPS6_")]
-pub fn stub_0x13dcc() -> ! {
-    todo!("0x13dcc __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE9copyValueEPKNS0_13DescribedBaseEPS6_")
+pub fn stub_0x13dcc(
+    prop: &CRenderSettingsGraphicsProp,
+    src: &CRenderSettingsItemState,
+    dst: &mut CRenderSettingsItemState,
+) {
+    // IDA 0x13dcc `copyValue`: v6 = getValue(src-impl), then
+    // setValue(dst-impl, &v6) (cf. 0x13544).
+    let value = (prop.access.get)(src);
+    (prop.access.set)(dst, value);
 }
 
 // 0x13df0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14hasStringValueEv
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14hasStringValueEv")]
-pub fn stub_0x13df0() -> ! {
-    todo!("0x13df0 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14hasStringValueEv")
+pub fn stub_0x13df0() -> bool {
+    // IDA 0x13df0 `hasStringValue`: hardcoded `return 1` (cf. 0x13568).
+    true
 }
 
 // 0x13df4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14getStringValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14getStringValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x13df4() -> ! {
-    todo!("0x13df4 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14getStringValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x13df4(prop: &CRenderSettingsGraphicsProp, obj: &CRenderSettingsItemState, out: &mut String) {
+    // IDA 0x13df4 `getStringValue`: v = getValue(impl), then
+    // `EnumDesc<GraphicsMode>::convertToString(desc, v, out)` (cf. 0x1356c).
+    let value = (prop.access.get)(obj);
+    desc_string_of(prop.enum_desc, value, out);
 }
 
 // 0x13e18 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14setStringValueEPNS0_13DescribedBaseERKSs
 // type: int __fastcall(int, const char *const *, int *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14setStringValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_0x13e18() -> ! {
-    todo!("0x13e18 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14setStringValueEPNS0_13DescribedBaseERKSs")
+pub fn stub_0x13e18(prop: &CRenderSettingsGraphicsProp, obj: &mut CRenderSettingsItemState, name: &str) -> bool {
+    // IDA 0x13e18 `setStringValue`: `Name::lookup(text)` +
+    // `EnumDesc::convertToValue`; on a hit `setValue` runs and 1 returns,
+    // otherwise 0 (cf. 0x13590).
+    if let Some(value) = prop.enum_desc.lookup_value(name) {
+        (prop.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x13e58 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
-pub fn stub_0x13e58() -> ! {
-    todo!("0x13e58 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")
+pub fn stub_0x13e58(
+    prop: &CRenderSettingsGraphicsProp,
+    obj: &CRenderSettingsItemState,
+    pair: &mut ScriptXmlNameValuePair,
+) -> u32 {
+    // IDA 0x13e58 `writeValue`: v = getValue, `clearValue`, type tag 5,
+    // payload v; returns 5 (cf. 0x135d0).
+    let value = (prop.access.get)(obj);
+    *pair = ScriptXmlNameValuePair { int_value: Some(value), text: None };
+    5
 }
 
 // 0x13e78 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 // type: void __fastcall(int, int, XmlElement *this)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_0x13e78() -> ! {
-    todo!("0x13e78 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
+pub fn stub_0x13e78(prop: &CRenderSettingsGraphicsProp, obj: &mut CRenderSettingsItemState, element: &ScriptXmlElement) {
+    // IDA 0x13e78 `readValue`: same shape as the earlier twins — xsi:nil
+    // returns; int payload runs `setIntValue`; string payload goes through
+    // `convertToValue` into `setValue`, empty string falls back to 0;
+    // anything else hits `ReleaseAssert(false)` (Reflection.h:359).
+    if element.is_xsi_nil {
+        return;
+    }
+    if let Some(value) = element.pair.int_value {
+        (prop.access.set)(obj, value);
+        return;
+    }
+    if let Some(text) = &element.pair.text {
+        if let Some(value) = prop.enum_desc.lookup_value(text) {
+            (prop.access.set)(obj, value);
+            return;
+        }
+        if text.is_empty() {
+            (prop.access.set)(obj, 0);
+            return;
+        }
+    }
+    panic!("false file: ../App/include/Reflection/Reflection.h line: 359");
 }
 
 // 0x140b8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE13getIndexValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE13getIndexValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x140b8() -> ! {
-    todo!("0x140b8 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE13getIndexValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x140b8(prop: &CRenderSettingsGraphicsProp, obj: &CRenderSettingsItemState) -> i32 {
+    // IDA 0x140b8 `getIndexValue`: v = getValue(impl), then
+    // `EnumDesc::convertToIndex(desc, v)` (cf. 0x13830).
+    let value = (prop.access.get)(obj);
+    desc_index_of(prop.enum_desc, value)
 }
 
 // 0x140d4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE13setIndexValueEPNS0_13DescribedBaseEm
 // type: int __fastcall(int, int, unsigned int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE13setIndexValueEPNS0_13DescribedBaseEm")]
-pub fn stub_0x140d4() -> ! {
-    todo!("0x140d4 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE13setIndexValueEPNS0_13DescribedBaseEm")
+pub fn stub_0x140d4(prop: &CRenderSettingsGraphicsProp, obj: &mut CRenderSettingsItemState, index: u32) -> bool {
+    // IDA 0x140d4 `setIndexValue`: count = [desc+40]; idx < count loads the
+    // ordinal from [desc+144][idx], runs `setValue` and returns 1; otherwise
+    // 0 (cf. 0x1384c).
+    if (index as usize) < prop.enum_desc.values.len() {
+        let ordinal = prop
+            .enum_desc
+            .value_ordinals
+            .get(index as usize)
+            .copied()
+            .unwrap_or(index as i32);
+        (prop.access.set)(obj, ordinal);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x14108 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE12getEnumValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE12getEnumValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x14108() -> ! {
-    todo!("0x14108 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE12getEnumValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x14108(prop: &CRenderSettingsGraphicsProp, obj: &CRenderSettingsItemState) -> i32 {
+    // IDA 0x14108 `getEnumValue`: `getValue(impl)` through the +44 GetSet
+    // impl (cf. 0x13880).
+    (prop.access.get)(obj)
 }
 
 // 0x14110 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE12setEnumValueEPNS0_13DescribedBaseEi
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE12setEnumValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0x14110() -> ! {
-    todo!("0x14110 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE12setEnumValueEPNS0_13DescribedBaseEi")
+pub fn stub_0x14110(prop: &CRenderSettingsGraphicsProp, obj: &mut CRenderSettingsItemState, value: i32) -> bool {
+    // IDA 0x14110 `setEnumValue`: `std::find_if` with `equalValue`; a hit
+    // runs `setValue` and returns 1, a miss returns 0 (cf. 0x13888).
+    if desc_has_value(prop.enum_desc, value) {
+        (prop.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x1415c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11getEnumItemEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11getEnumItemEPKNS0_13DescribedBaseE")]
-pub fn stub_0x1415c() -> ! {
-    todo!("0x1415c __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11getEnumItemEPKNS0_13DescribedBaseE")
+pub fn stub_0x1415c(prop: &CRenderSettingsGraphicsProp, obj: &CRenderSettingsItemState) -> i32 {
+    // IDA 0x1415c `getEnumItem`: v = getValue(impl), then
+    // `EnumDesc<GraphicsMode>::convertToItem(desc, v)` (cf. 0x138d4).
+    let value = (prop.access.get)(obj);
+    desc_item_of(prop.enum_desc, value)
 }
 
 // 0x1417c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
-pub fn stub_0x1417c() -> ! {
-    todo!("0x1417c __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")
+pub fn stub_0x1417c(prop: &CRenderSettingsGraphicsProp, obj: &mut CRenderSettingsItemState, name: &str) -> bool {
+    // IDA 0x1417c `setStringValue` (Name overload): `convertToValue` on the
+    // interned name; on a hit `setValue` runs and 1 returns, otherwise 0
+    // (cf. 0x138f4).
+    if let Some(value) = prop.enum_desc.lookup_value(name) {
+        (prop.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x141b0 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToIndexES3_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToIndex(RBX::CRenderSettings::GraphicsMode)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToIndexES3_")]
-pub fn stub_0x141b0() -> ! {
-    todo!("0x141b0 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToIndexES3_")
+pub fn stub_0x141b0(desc: &EnumDesc, value: i32) -> i32 {
+    // IDA 0x141b0 `convertToIndex`: GraphicsMode instantiation of the
+    // 0x13928 shape; LABEL_7 core in `desc_index_of`.
+    desc_index_of(desc, value)
 }
 
 // 0x14220 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11setIntValueEPNS0_13DescribedBaseEi
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0x14220() -> ! {
-    todo!("0x14220 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_0x14220(prop: &CRenderSettingsGraphicsProp, obj: &mut CRenderSettingsItemState, index: i32) -> bool {
+    // IDA 0x14220 `setIntValue`: negative indices fail; the [desc+132]
+    // ordinal table yields the payload, -1 entries fail; otherwise `setValue`
+    // runs and 1 returns (cf. 0x13998).
+    if index >= 0 {
+        if let Some(&payload) = prop.enum_desc.values.get(index as usize) {
+            if payload != -1 {
+                (prop.access.set)(obj, payload);
+                return true;
+            }
+        }
+    }
+    false
 }
 
 // 0x14260 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::GetSetImpl<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_0x14260() -> ! {
-    todo!("0x14260 __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_0x14260() -> bool {
+    // IDA 0x14260 GetSetImpl `isReadOnly`: hardcoded `return 0`.
+    false
 }
 
 // 0x14264 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::GetSetImpl<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_0x14264() -> ! {
-    todo!("0x14264 __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_0x14264() -> bool {
+    // IDA 0x14264 GetSetImpl `isWriteOnly`: hardcoded `return 0`.
+    false
 }
 
 // 0x14268 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::GetSetImpl<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x14268() -> ! {
-    todo!("0x14268 __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x14268(access: &CRenderSettingsGraphicsAccess, obj: &CRenderSettingsItemState) -> i32 {
+    // IDA 0x14268 GetSetImpl `getValue`: member-pointer adjust then the
+    // getter call (cf. 0x139e0).
+    (access.get)(obj)
 }
 
 // 0x14294 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::GetSetImpl<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::GraphicsMode const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")]
-pub fn stub_0x14294() -> ! {
-    todo!("0x14294 __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")
+pub fn stub_0x14294(access: &CRenderSettingsGraphicsAccess, obj: &mut CRenderSettingsItemState, value: i32) {
+    // IDA 0x14294 GetSetImpl `setValue`: member adjust then the setter call
+    // (cf. 0x13a0c).
+    (access.set)(obj, value)
 }
 
 // 0x142b8 — __ZNSt3mapIPKN3RBX4NameENS0_15CRenderSettings16ResolutionPresetESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
