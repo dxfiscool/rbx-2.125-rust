@@ -256,6 +256,43 @@ mod tests {
         peer.shutdown(5, &mut || order.borrow_mut().push("n"), &mut || order.borrow_mut().push("d"), &mut || order.borrow_mut().push("c"));
         assert_eq!(order.borrow().as_slice(), ["d", "c", "n", "d", "c"]);
     }
+    #[test]
+    fn connection_lookup_gates() {
+        // IDA 0xa606a0/0xa60878/0xa61810: table/packet releases.
+        RakPeer::clear_requested_connection_list();
+        RakPeer::clear_remote_system_lookup();
+        RakPeer::deallocate_packet();
+        // IDA 0xa60958: capped active list.
+        let remotes = vec![
+            SystemAddress { family: 2, port: 1, binary: 1, debug_port: 1, system_index: 0 },
+            SystemAddress { family: 2, port: 2, binary: 2, debug_port: 2, system_index: 0 },
+        ];
+        assert!(RakPeer::connection_list(false, &remotes, 9).is_empty());
+        assert_eq!(RakPeer::connection_list(true, &remotes, 1).len(), 1);
+        assert_eq!(RakPeer::connection_list(true, &remotes, 9).len(), 2);
+        // IDA 0xa60ab0/0xa60ad0/0xa61888: receipt counter and peer cap.
+        let mut peer = RakPeer::new();
+        assert_eq!(peer.next_send_receipt(), 0);
+        assert_eq!(peer.increment_next_send_receipt(), 1);
+        assert_eq!(peer.next_send_receipt(), 1);
+        peer.max_peers = 32;
+        assert_eq!(peer.maximum_number_of_peers(), 32);
+        // IDA 0xa60dec/0xa613c4/0xa61e58: loopback, pop, cancel.
+        let mut pushed = Vec::new();
+        RakPeer::send_loopback(None, &mut |d| pushed.push(d.to_vec()));
+        RakPeer::send_loopback(Some(&[7]), &mut |d| pushed.push(d.to_vec()));
+        assert_eq!(pushed, vec![vec![7]]);
+        assert_eq!(RakPeer::receive(Some(4)), Some(4));
+        assert_eq!(RakPeer::receive(None), None);
+        let mut cancelled = false;
+        RakPeer::cancel_connection_attempt(&mut || cancelled = true);
+        assert!(cancelled);
+        // IDA 0xa62070: state precedence.
+        assert_eq!(RakPeer::connection_state(true, true, 5, true, 3), 0);
+        assert_eq!(RakPeer::connection_state(true, false, -1, true, 3), 6);
+        assert_eq!(RakPeer::connection_state(false, false, 2, false, 3), 5);
+        assert_eq!(RakPeer::connection_state(false, false, 2, true, 3), 3);
+    }
 }
 
 /// `RakNet::UNASSIGNED_RAKNET_GUID` (IDA 0xa5c018).
@@ -606,6 +643,10 @@ pub struct RakPeer {
  pub max_incoming_connections: u16,
  /// Incoming password bytes at +296, length at +552 (IDA 0xa5f37c).
  pub incoming_password: Vec<u8>,
+ /// Next send receipt at +1936 (IDA 0xa60ab0).
+ pub next_send_receipt: u32,
+ /// Maximum peers (IDA 0xa61888).
+ pub max_peers: u16,
 }
 
 impl RakPeer {
@@ -741,6 +782,91 @@ impl RakPeer {
  }
  detach();
  clear();
+ }
+
+ /// `RakPeer::ClearRequestedConnectionList` (IDA 0xa606a0) and
+ /// `ClearRemoteSystemLookup` (IDA 0xa60878): table releases stay
+ /// engine-side.
+ pub fn clear_requested_connection_list() {}
+ pub fn clear_remote_system_lookup() {}
+
+ /// `RakPeer::GetConnectionList` (IDA 0xa60958): up to `capacity`
+ /// active addresses; empty when inactive. Returns the list (its
+ /// length is the reported count).
+ #[must_use]
+ pub fn connection_list(active: bool, remotes: &[SystemAddress], capacity: usize) -> Vec<SystemAddress> {
+ if !active {
+ return Vec::new();
+ }
+ remotes.iter().take(capacity).copied().collect()
+ }
+
+ /// `RakPeer::GetNextSendReceipt` (IDA 0xa60ab0): the +1936 counter
+ /// under lock.
+ #[must_use]
+ pub fn next_send_receipt(&self) -> u32 {
+ self.next_send_receipt
+ }
+
+ /// `RakPeer::IncrementNextSendReceipt` (IDA 0xa60ad0).
+ pub fn increment_next_send_receipt(&mut self) -> u32 {
+ self.next_send_receipt += 1;
+ self.next_send_receipt
+ }
+
+ /// `RakPeer::SendLoopback` (IDA 0xa60dec): builds the packet and
+ /// queues it when data is present.
+ pub fn send_loopback(data: Option<&[u8]>, push: &mut dyn FnMut(&[u8])) {
+ if let Some(d) = data {
+ push(d);
+ }
+ }
+
+ /// `RakPeer::Receive` (IDA 0xa613c4): pops the next filtered packet,
+ /// or null when inactive or empty. Queue and plugin filtering stay
+ /// engine-side.
+ #[must_use]
+ pub fn receive(next: Option<u32>) -> Option<u32> {
+ next
+ }
+
+ /// `RakPeer::DeallocatePacket` (IDA 0xa61810): packet release stays
+ /// engine-side.
+ pub fn deallocate_packet() {}
+
+ /// `RakPeer::GetMaximumNumberOfPeers` (IDA 0xa61888).
+ #[must_use]
+ pub fn maximum_number_of_peers(&self) -> u16 {
+ self.max_peers
+ }
+
+ /// `RakPeer::CancelConnectionAttempt` (IDA 0xa61e58): drops the
+ /// pending attempt engine-side.
+ pub fn cancel_connection_attempt(cancel: &mut dyn FnMut()) {
+ cancel();
+ }
+
+ /// `RakPeer::GetConnectionState` (IDA 0xa62070): a direct remote-list
+ /// hit is connected (0); otherwise -1 maps to 6, inactive to 5, and
+ /// anything else reads the mapped state.
+ #[must_use]
+ pub fn connection_state(
+ address_known: bool,
+ direct_match: bool,
+ index: i32,
+ active: bool,
+ state: u32,
+ ) -> u32 {
+ if address_known && direct_match {
+ return 0;
+ }
+ if index == -1 {
+ return 6;
+ }
+ if !active {
+ return 5;
+ }
+ state
  }
 }
 

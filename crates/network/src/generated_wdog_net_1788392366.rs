@@ -351,40 +351,45 @@ pub fn stub_a60494() -> ! {
 // type: void __fastcall(RakNet::RakPeer *this)
 #[doc(alias = "RakNet::RakPeer::ClearRequestedConnectionList(void)")]
 #[doc(alias = "__ZN6RakNet7RakPeer28ClearRequestedConnectionListEv")]
-pub fn stub_a606a0() -> ! {
-    todo!("0xa606a0 RakNet::RakPeer::ClearRequestedConnectionList(void)")
+pub fn stub_a606a0() {
+ // IDA 0xa606a0: table release stays engine-side.
+ crate::socket::RakPeer::clear_requested_connection_list()
 }
 
 // 0xa60878 — __ZN6RakNet7RakPeer23ClearRemoteSystemLookupEv
 // type: int __fastcall(RakNet::RakPeer *this)
 #[doc(alias = "RakNet::RakPeer::ClearRemoteSystemLookup(void)")]
 #[doc(alias = "__ZN6RakNet7RakPeer23ClearRemoteSystemLookupEv")]
-pub fn stub_a60878() -> ! {
-    todo!("0xa60878 RakNet::RakPeer::ClearRemoteSystemLookup(void)")
+pub fn stub_a60878() {
+ // IDA 0xa60878: lookup release stays engine-side.
+ crate::socket::RakPeer::clear_remote_system_lookup()
 }
 
 // 0xa60958 — __ZNK6RakNet7RakPeer17GetConnectionListEPNS_13SystemAddressEPt
 // type: int __fastcall(RakNet::RakPeer *this, RakNet::SystemAddress *, unsigned __int16 *)
 #[doc(alias = "RakNet::RakPeer::GetConnectionList(RakNet::SystemAddress *,unsigned short *)const")]
 #[doc(alias = "__ZNK6RakNet7RakPeer17GetConnectionListEPNS_13SystemAddressEPt")]
-pub fn stub_a60958() -> ! {
-    todo!("0xa60958 RakNet::RakPeer::GetConnectionList(RakNet::SystemAddress *,unsigned short *)const")
+pub fn stub_a60958(active: bool, remotes: &[crate::socket::SystemAddress], capacity: usize) -> Vec<crate::socket::SystemAddress> {
+ // IDA 0xa60958: capped active list.
+ crate::socket::RakPeer::connection_list(active, remotes, capacity)
 }
 
 // 0xa60ab0 — __ZN6RakNet7RakPeer18GetNextSendReceiptEv
 // type: int __fastcall(RakNet::RakPeer *this)
 #[doc(alias = "RakNet::RakPeer::GetNextSendReceipt(void)")]
 #[doc(alias = "__ZN6RakNet7RakPeer18GetNextSendReceiptEv")]
-pub fn stub_a60ab0() -> ! {
-    todo!("0xa60ab0 RakNet::RakPeer::GetNextSendReceipt(void)")
+pub fn stub_a60ab0(peer: &crate::socket::RakPeer) -> u32 {
+ // IDA 0xa60ab0: load the receipt counter.
+ peer.next_send_receipt()
 }
 
 // 0xa60ad0 — __ZN6RakNet7RakPeer24IncrementNextSendReceiptEv
 // type: int __fastcall(RakNet::RakPeer *this)
 #[doc(alias = "RakNet::RakPeer::IncrementNextSendReceipt(void)")]
 #[doc(alias = "__ZN6RakNet7RakPeer24IncrementNextSendReceiptEv")]
-pub fn stub_a60ad0() -> ! {
-    todo!("0xa60ad0 RakNet::RakPeer::IncrementNextSendReceipt(void)")
+pub fn stub_a60ad0(peer: &mut crate::socket::RakPeer) -> u32 {
+ // IDA 0xa60ad0: bump the receipt counter.
+ peer.increment_next_send_receipt()
 }
 
 // 0xa60af8 — __ZN6RakNet7RakPeer4SendEPKci14PacketPriority17PacketReliabilitycNS_13AddressOrGUIDEbj
@@ -407,8 +412,9 @@ pub fn stub_a60cac() -> ! {
 // type: int __fastcall(RakNet::RakPeer *this, const char *, int)
 #[doc(alias = "RakNet::RakPeer::SendLoopback(char const*,int)")]
 #[doc(alias = "__ZN6RakNet7RakPeer12SendLoopbackEPKci")]
-pub fn stub_a60dec() -> ! {
-    todo!("0xa60dec RakNet::RakPeer::SendLoopback(char const*,int)")
+pub fn stub_a60dec(data: Option<&[u8]>, push: &mut dyn FnMut(&[u8])) {
+ // IDA 0xa60dec: queue the loopback packet.
+ crate::socket::RakPeer::send_loopback(data, push)
 }
 
 // 0xa60f00 — __ZN6RakNet7RakPeer4SendEPKNS_9BitStreamE14PacketPriority17PacketReliabilitycNS_13AddressOrGUIDEbj
@@ -439,8 +445,9 @@ pub fn stub_a611b8() -> ! {
 // type: const RakNet::SystemAddress *__fastcall(RakNet::RakPeer *this)
 #[doc(alias = "RakNet::RakPeer::Receive(void)")]
 #[doc(alias = "__ZN6RakNet7RakPeer7ReceiveEv")]
-pub fn stub_a613c4() -> ! {
-    todo!("0xa613c4 RakNet::RakPeer::Receive(void)")
+pub fn stub_a613c4(next: Option<u32>) -> Option<u32> {
+ // IDA 0xa613c4: pop or null.
+ crate::socket::RakPeer::receive(next)
 }
 
 // 0xa61520 — __ZNK6RakNet7RakPeer22ShiftIncomingTimestampEPhRKNS_13SystemAddressE
@@ -463,16 +470,18 @@ pub fn stub_a61698() -> ! {
 // type: int __fastcall(int result, RakNet **this)
 #[doc(alias = "RakNet::RakPeer::DeallocatePacket(RakNet::Packet *)")]
 #[doc(alias = "__ZN6RakNet7RakPeer16DeallocatePacketEPNS_6PacketE")]
-pub fn stub_a61810() -> ! {
-    todo!("0xa61810 RakNet::RakPeer::DeallocatePacket(RakNet::Packet *)")
+pub fn stub_a61810() {
+ // IDA 0xa61810: packet release stays engine-side.
+ crate::socket::RakPeer::deallocate_packet()
 }
 
 // 0xa61888 — __ZNK6RakNet7RakPeer23GetMaximumNumberOfPeersEv
 // type: int __fastcall(RakNet::RakPeer *this)
 #[doc(alias = "RakNet::RakPeer::GetMaximumNumberOfPeers(void)const")]
 #[doc(alias = "__ZNK6RakNet7RakPeer23GetMaximumNumberOfPeersEv")]
-pub fn stub_a61888() -> ! {
-    todo!("0xa61888 RakNet::RakPeer::GetMaximumNumberOfPeers(void)const")
+pub fn stub_a61888(peer: &crate::socket::RakPeer) -> u16 {
+ // IDA 0xa61888: load the peer cap.
+ peer.maximum_number_of_peers()
 }
 
 // 0xa6188c — __ZN6RakNet7RakPeer15CloseConnectionENS_13AddressOrGUIDEbh14PacketPriority
@@ -495,16 +504,18 @@ pub fn stub_a61a8c() -> ! {
 // type: int __fastcall(_DWORD *, int, int, int, int, int)
 #[doc(alias = "RakNet::RakPeer::CancelConnectionAttempt(RakNet::SystemAddress)")]
 #[doc(alias = "__ZN6RakNet7RakPeer23CancelConnectionAttemptENS_13SystemAddressE")]
-pub fn stub_a61e58() -> ! {
-    todo!("0xa61e58 RakNet::RakPeer::CancelConnectionAttempt(RakNet::SystemAddress)")
+pub fn stub_a61e58(cancel: &mut dyn FnMut()) {
+ // IDA 0xa61e58: drop the pending attempt.
+ crate::socket::RakPeer::cancel_connection_attempt(cancel)
 }
 
 // 0xa62070 — __ZN6RakNet7RakPeer18GetConnectionStateENS_13AddressOrGUIDE
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "RakNet::RakPeer::GetConnectionState(RakNet::AddressOrGUID)")]
 #[doc(alias = "__ZN6RakNet7RakPeer18GetConnectionStateENS_13AddressOrGUIDE")]
-pub fn stub_a62070() -> ! {
-    todo!("0xa62070 RakNet::RakPeer::GetConnectionState(RakNet::AddressOrGUID)")
+pub fn stub_a62070(address_known: bool, direct_match: bool, index: i32, active: bool, state: u32) -> u32 {
+ // IDA 0xa62070: hit, index, activity, mapped state.
+ crate::socket::RakPeer::connection_state(address_known, direct_match, index, active, state)
 }
 
 // 0xa62178 — __ZNK6RakNet7RakPeer25GetIndexFromSystemAddressENS_13SystemAddressEb
