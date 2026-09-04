@@ -478,3 +478,4 @@ pub mod server;
 pub mod string_dictionary;
 pub mod id_serializer;
 pub mod functor;
+pub mod signal;

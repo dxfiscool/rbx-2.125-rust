@@ -1775,8 +1775,9 @@ pub fn stub_a3f9e8() -> ! {
 // 0xa5391c — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE13disconnectAllEv
 #[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::disconnectAll(void)")]
 // was: rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::disconnectAll(void)
-pub fn stub_a5391c() -> ! {
-    todo!("0xa5391c rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::disconnectAll(void)")
+pub fn stub_a5391c(list: &mut crate::signal::SlotList) {
+    // IDA 0xa5391c: `while (head)` unlink-all loop under the signal mutex, then release.
+    list.disconnect_all();
 }
 
 // 0xa5533c — __ZN6RakNet9BitStreamC1Ev
@@ -4554,8 +4555,9 @@ pub fn stub_b193d8() -> ! {
 
 // 0xb21580 — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE6insertEPNSF_4slotE
 #[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::insert(rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")]
-pub fn stub_b21580() -> ! {
-    todo!("0xb21580 rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::insert(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")
+pub fn stub_b21580(list: &mut crate::signal::SlotList) -> crate::signal::SlotId {
+    // IDA 0xb21580: `signal::insert` — link the node, yielding its id.
+    list.insert()
 }
 
 // 0xb21844 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSEPSH_
@@ -4584,8 +4586,9 @@ pub fn stub_b219b8() -> ! {
 
 // 0xb21a6c — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slot10disconnectEv
 #[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot::disconnect(void)")]
-pub fn stub_b21a6c() -> ! {
-    todo!("0xb21a6c rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot::disconnect(void)")
+pub fn stub_b21a6c(list: &mut crate::signal::SlotList, id: crate::signal::SlotId) {
+    // IDA 0xb21a6c: `slot::disconnect` — self-unlink, i.e. `remove`.
+    list.remove(id);
 }
 
 // 0xb21bec — __ZNK3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slot9connectedEv
@@ -4608,8 +4611,9 @@ pub fn stub_b21c28() -> ! {
 
 // 0xb21c58 — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE6removeEPNSF_4slotE
 #[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::remove(rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")]
-pub fn stub_b21c58() -> ! {
-    todo!("0xb21c58 rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::remove(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")
+pub fn stub_b21c58(list: &mut crate::signal::SlotList, id: crate::signal::SlotId) {
+    // IDA 0xb21c58: `remove` asserts `!intrusive_ptr_expired` (signal.h:261/284), then unlinks the node (head or interior via +8).
+    list.remove(id);
 }
 
 // 0xb21d44 — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slot22safe_static_init_mutexEv
@@ -5380,8 +5384,9 @@ pub fn stub_f605e4() -> ! {
 
 // 0xf60dd4 — j___ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE13disconnectAllEv
 #[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::disconnectAll(void)")]
-pub fn stub_f60dd4() -> ! {
-    todo!("0xf60dd4 rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::disconnectAll(void)")
+pub fn stub_f60dd4(list: &mut crate::signal::SlotList) {
+    // Thunk (IDA 0xf60dd4): tail-jumps to `signal::disconnectAll` — unlink every node.
+    list.disconnect_all();
 }
 
 // 0xf60de4 — j___ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE5mutexEv
@@ -5959,14 +5964,16 @@ pub fn stub_f63594() -> ! {
 
 // 0xf635d4 — j___ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE6insertEPNSF_4slotE
 #[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::insert(rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")]
-pub fn stub_f635d4() -> ! {
-    todo!("0xf635d4 rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::insert(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")
+pub fn stub_f635d4(list: &mut crate::signal::SlotList) -> crate::signal::SlotId {
+    // Thunk (IDA 0xf635d4): tail-jumps to `signal::insert` — link the node.
+    list.insert()
 }
 
 // 0xf635e4 — j___ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE6removeEPNSF_4slotE
 #[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::remove(rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")]
-pub fn stub_f635e4() -> ! {
-    todo!("0xf635e4 rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::remove(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")
+pub fn stub_f635e4(list: &mut crate::signal::SlotList, id: crate::signal::SlotId) {
+    // Thunk (IDA 0xf635e4): tail-jumps to `signal::remove` — unlink the slot node.
+    list.remove(id);
 }
 
 // 0xf63644 — j___ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED2Ev
@@ -6442,8 +6449,9 @@ pub fn stub_7a3bbc() -> ! {
 
 // 0x7a8b34 — __ZN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE6insertEPNS8_4slotE
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::insert(rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot *)")]
-pub fn stub_7a8b34() -> ! {
-    todo!("0x7a8b34 rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::insert(rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot *)")
+pub fn stub_7a8b34(list: &mut crate::signal::SlotList) -> crate::signal::SlotId {
+    // IDA 0x7a8b34: `signal::insert` — link the node, yielding its id.
+    list.insert()
 }
 
 // 0x7a8d40 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE4slotEEaSEPSB_
@@ -6472,8 +6480,9 @@ pub fn stub_7a8e88() -> ! {
 
 // 0x7a8f5c — __ZN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE4slot10disconnectEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot::disconnect(void)")]
-pub fn stub_7a8f5c() -> ! {
-    todo!("0x7a8f5c rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot::disconnect(void)")
+pub fn stub_7a8f5c(list: &mut crate::signal::SlotList, id: crate::signal::SlotId) {
+    // IDA 0x7a8f5c: `slot::disconnect` — self-unlink, i.e. `remove`.
+    list.remove(id);
 }
 
 // 0x7a906c — __ZNK3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE4slot9connectedEv
@@ -6503,8 +6512,9 @@ pub fn stub_7a9088<A>(slot: &mut dyn FnMut(A), a: A) {
 
 // 0x7a90a0 — __ZN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE6removeEPNS8_4slotE
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::remove(rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot *)")]
-pub fn stub_7a90a0() -> ! {
-    todo!("0x7a90a0 rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::remove(rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot *)")
+pub fn stub_7a90a0(list: &mut crate::signal::SlotList, id: crate::signal::SlotId) {
+    // IDA 0x7a90a0: `signal::remove` — unlink the slot node.
+    list.remove(id);
 }
 
 // 0x7a9190 — __ZN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE4slot22safe_static_init_mutexEv
@@ -7626,8 +7636,9 @@ pub fn stub_97189c() -> ! {
 
 // 0x971bec — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsiSsEN3rbx6signalIS4_EEMS3_S7_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
-pub fn stub_971bec() -> ! {
-    todo!("0x971bec RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_971bec(list: &mut crate::signal::SlotList) {
+    // IDA 0x971bec: `EventDescBase::disconnectAll` — tears down the event signal (unlink all).
+    list.disconnect_all();
 }
 
 // 0x971db4 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsiSsEN3rbx6signalIS4_EEMS3_S7_E7connectEPNS0_11EventSourceERKN5boost8functionIS4_EE
@@ -7662,8 +7673,9 @@ pub fn stub_974c4c() -> ! {
 
 // 0x974e54 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
-pub fn stub_974e54() -> ! {
-    todo!("0x974e54 RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_974e54(list: &mut crate::signal::SlotList) {
+    // IDA 0x974e54: `EventDescBase::disconnectAll` — tears down the event signal (unlink all).
+    list.disconnect_all();
 }
 
 // 0x974e70 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_E7connectEPNS0_11EventSourceERKN5boost8functionIS4_EE
@@ -7698,8 +7710,9 @@ pub fn stub_975a90() -> ! {
 
 // 0x975f00 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Client::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
-pub fn stub_975f00() -> ! {
-    todo!("0x975f00 RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_975f00(list: &mut crate::signal::SlotList) {
+    // IDA 0x975f00: `EventDescBase::disconnectAll` — tears down the event signal (unlink all).
+    list.disconnect_all();
 }
 
 // 0x9760c4 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E7connectEPNS0_11EventSourceERKNS4_8functionIS8_EE
@@ -11116,8 +11129,9 @@ pub fn stub_9cf39c() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescBase<RBX::Network::Server,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Server::*>::disconnectAll(RBX::Reflection::EventSource *)const"
 )]
-pub fn stub_9cf80c() -> ! {
-    todo!("0x9cf80c RBX::Reflection::EventDescBase<RBX::Network::Server,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Server::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_9cf80c(list: &mut crate::signal::SlotList) {
+    // IDA 0x9cf80c: `EventDescBase::disconnectAll` — tears down the event signal (unlink all).
+    list.disconnect_all();
 }
 
 // 0x9cf824 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ServerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E7connectEPNS0_11EventSourceERKNS4_8functionIS8_EE
@@ -11170,8 +11184,9 @@ pub fn stub_9d0448() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescBase<RBX::Network::Server,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)> RBX::Network::Server::*>::disconnectAll(RBX::Reflection::EventSource *)const"
 )]
-pub fn stub_9d0b8c() -> ! {
-    todo!("0x9d0b8c RBX::Reflection::EventDescBase<RBX::Network::Server,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)> RBX::Network::Server::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_9d0b8c(list: &mut crate::signal::SlotList) {
+    // IDA 0x9d0b8c: `EventDescBase::disconnectAll` — tears down the event signal (unlink all).
+    list.disconnect_all();
 }
 
 // 0x9d0ba4 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_7Network12FilterResultES6_SsEE13disconnectAllEv
@@ -11179,8 +11194,9 @@ pub fn stub_9d0b8c() -> ! {
 #[doc(
     alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::disconnectAll(void)"
 )]
-pub fn stub_9d0ba4() -> ! {
-    todo!("0x9d0ba4 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::disconnectAll(void)")
+pub fn stub_9d0ba4(list: &mut crate::signal::SlotList) {
+    // IDA 0x9d0ba4: `signal::disconnectAll` — unlink every node.
+    list.disconnect_all();
 }
 
 // 0x9d0d50 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_7Network12FilterResultES6_SsEE5mutexEv
@@ -11327,8 +11343,9 @@ pub fn stub_9d3124() -> ! {
 #[doc(
     alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot::disconnect(void)"
 )]
-pub fn stub_9d31d8() -> ! {
-    todo!("0x9d31d8 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot::disconnect(void)")
+pub fn stub_9d31d8(list: &mut crate::signal::SlotList, id: crate::signal::SlotId) {
+    // IDA 0x9d31d8: `slot::disconnect` — self-unlink, i.e. `remove`.
+    list.remove(id);
 }
 
 // 0x9d334c — __ZNK3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_7Network12FilterResultES6_SsEE4slot9connectedEv
@@ -11372,8 +11389,9 @@ pub fn stub_9d3878() -> ! {
 #[doc(
     alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::remove(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot *)"
 )]
-pub fn stub_9d3e6c() -> ! {
-    todo!("0x9d3e6c rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::remove(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot *)")
+pub fn stub_9d3e6c(list: &mut crate::signal::SlotList, id: crate::signal::SlotId) {
+    // IDA 0x9d3e6c: `signal::remove` — unlink the slot node.
+    list.remove(id);
 }
 
 // 0x9d3f58 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_7Network12FilterResultES6_SsEE4slot22safe_static_init_mutexEv
@@ -12545,8 +12563,9 @@ pub fn stub_9ecccc() -> ! {
 // 0x9ecef4 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network16ServerReplicatorEFvibiEN3rbx6signalIS4_EEMS3_S7_E13disconnectAllEPNS0_11EventSourceE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
-pub fn stub_9ecef4() -> ! {
-    todo!("0x9ecef4 RBX::Reflection::EventDescBase<RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_9ecef4(list: &mut crate::signal::SlotList) {
+    // IDA 0x9ecef4: `EventDescBase::disconnectAll` — tears down the event signal (unlink all).
+    list.disconnect_all();
 }
 
 // 0x9ed0b8 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network16ServerReplicatorEFvibiEN3rbx6signalIS4_EEMS3_S7_E7connectEPNS0_11EventSourceERKN5boost8functionIS4_EE
@@ -15761,8 +15780,9 @@ pub fn stub_a4ad50() -> ! {
 #[doc(
     alias = "rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::disconnectAll(void)"
 )]
-pub fn stub_a4ad68() -> ! {
-    todo!("0xa4ad68 rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::disconnectAll(void)")
+pub fn stub_a4ad68(list: &mut crate::signal::SlotList) {
+    // IDA 0xa4ad68: `signal::disconnectAll` — unlink every node.
+    list.disconnect_all();
 }
 
 // 0xa4af20 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network7PlayersEFvNS3_14PlayerChatTypeEN5boost10shared_ptrINS_8InstanceEEESsS8_EN3rbx6signalIS9_EEMS3_SC_E7connectEPNS0_11EventSourceERKNS5_8functionIS9_EE
@@ -15881,8 +15901,9 @@ pub fn stub_a4c9f4() -> ! {
 #[doc(
     alias = "rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::disconnect(void)"
 )]
-pub fn stub_a4caa8() -> ! {
-    todo!("0xa4caa8 rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::disconnect(void)")
+pub fn stub_a4caa8(list: &mut crate::signal::SlotList, id: crate::signal::SlotId) {
+    // IDA 0xa4caa8: `slot::disconnect` — self-unlink, i.e. `remove`.
+    list.remove(id);
 }
 
 // 0xa4cc28 — __ZNK3rbx7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS2_8InstanceEEESsS9_EE4slot9connectedEv
@@ -15926,8 +15947,9 @@ pub fn stub_a4d148() -> ! {
 #[doc(
     alias = "rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::remove(rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot *)"
 )]
-pub fn stub_a4d734() -> ! {
-    todo!("0xa4d734 rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::remove(rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot *)")
+pub fn stub_a4d734(list: &mut crate::signal::SlotList, id: crate::signal::SlotId) {
+    // IDA 0xa4d734: `signal::remove` — unlink the slot node (liveness assert engine-side).
+    list.remove(id);
 }
 
 // 0xa4d820 — __ZN3rbx7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS2_8InstanceEEESsS9_EE4slot22safe_static_init_mutexEv
