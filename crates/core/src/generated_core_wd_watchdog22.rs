@@ -519,184 +519,387 @@ pub unsafe fn stub_0x66adec(this: *mut u8, fini: &gui_textbox::GuiObjectFini) {
     stub_0x66ac90(this.sub(36), fini)
 }
 
+/// Batch 10: 26 IDA-grounded ports 0x66b478-0x6717dc — the `remote_signal`
+/// D2, `TextService` `isNullClassName`, and the four `placement_any<Region3>`
+/// families (`YAlignment`/`XAlignment`/`Font`/`FontSize`: `operator=`,
+/// `typed_holder` singleton/`construct_func`/`destruct_func`, `any_cast`,
+/// `_Rb_tree` `_M_erase`). Ports live in `region_any`; `stub_0x*` keeps the
+/// `#[doc(alias)]` + `// 0xADDR` carrier lines and wires into it.
+/// Conventions: holder identity is the singleton address (exactly like the
+/// binary compares `*a1 == &...::s`); `boost::throw_exception` -> `panic!`;
+/// `__cxa_guard_acquire` -> `LazyLock`; node storage is owner-allocated so
+/// `_M_erase` frees through a caller-supplied callback. `[INFERENCE]` marks
+/// what the binary does not pin down.
+pub mod region_any {
+    use std::sync::LazyLock;
+    /// was: `rbx::implementation::typed_holder<T>` — the two-word holder
+    /// `{typeinfo, destruct}` plus the registered construct target (the
+    /// `dword_128Dx` store at singleton-init, e.g. IDA 0x66d8ce).
+    pub struct TypedHolder {
+        pub type_name: &'static str,
+        pub destruct: fn(*mut usize),
+        pub construct: fn(*const usize, *mut usize),
+    }
+    /// IDA 0x66d8f0/0x66eb74/0x670464/0x6716e8 `destruct_func`: `;` (these
+    /// Ts are trivially destructible).
+    fn trivial_destruct(_payload: *mut usize) {}
+    /// IDA 0x66d8e4/0x66eb68/0x670458/0x6716dc `construct_func`: one word
+    /// copy (`result = *result; *a2 = result`).
+    fn word_construct(src: *const usize, dst: *mut usize) {
+        unsafe { dst.write(src.read()) }
+    }
+    static YALIGNMENT: LazyLock<TypedHolder> = LazyLock::new(|| TypedHolder {
+        type_name: "N3RBX11TextService10YAlignmentE", // IDA 0x66d97c
+        destruct: trivial_destruct,
+        construct: word_construct,
+    });
+    static XALIGNMENT: LazyLock<TypedHolder> = LazyLock::new(|| TypedHolder {
+        type_name: "N3RBX11TextService10XAlignmentE", // IDA 0x66ec00
+        destruct: trivial_destruct,
+        construct: word_construct,
+    });
+    static FONT: LazyLock<TypedHolder> = LazyLock::new(|| TypedHolder {
+        type_name: "N3RBX11TextService4FontE", // IDA 0x6704f0
+        destruct: trivial_destruct,
+        construct: word_construct,
+    });
+    static FONTSIZE: LazyLock<TypedHolder> = LazyLock::new(|| TypedHolder {
+        type_name: "N3RBX11TextService8FontSizeE", // IDA 0x671774
+        destruct: trivial_destruct,
+        construct: word_construct,
+    });
+    /// IDA 0x66d878/0x66eafc/0x6703ec/0x671670 `singleton`: guard-var +
+    /// `__cxa_guard_acquire` become `LazyLock`; the `s[0] = &typeinfo` /
+    /// `s[1] = destruct_func` / `dword = construct_func` stores become the
+    /// struct fields above.
+    pub fn yalignment_holder() -> &'static TypedHolder {
+        &YALIGNMENT
+    }
+    pub fn xalignment_holder() -> &'static TypedHolder {
+        &XALIGNMENT
+    }
+    pub fn font_holder() -> &'static TypedHolder {
+        &FONT
+    }
+    pub fn fontsize_holder() -> &'static TypedHolder {
+        &FONTSIZE
+    }
+    fn holder_for_addr(addr: usize) -> Option<&'static TypedHolder> {
+        for h in [yalignment_holder(), xalignment_holder(), font_holder(), fontsize_holder()] {
+            if std::ptr::from_ref(h) as usize == addr {
+                return Some(h);
+            }
+        }
+        None
+    }
+    /// was: `rbx::placement_any<RBX::Region3>` — holder word + payload word
+    /// (`*a1` / `a1[1]`).
+    #[repr(C)]
+    #[derive(Clone, Copy, Default, Debug, PartialEq, Eq)]
+    pub struct RegionAny {
+        pub holder: usize,
+        pub payload: usize,
+    }
+    impl RegionAny {
+        /// `operator=<T>` (IDA 0x66d828/0x66eaac/0x67039c/0x671620):
+        /// same-holder takes the payload-copy fast path (0x66d860);
+        /// otherwise destroy current (`v4[1](a1 + 1)`, a no-op call for these
+        /// Ts), clear (0x66d858), copy (0x66d86a), install (0x66d86c).
+        /// Foreign holders (address matches none of ours) skip the destruct
+        /// call — that address lives in the target binary (`[INFERENCE]` on
+        /// foreign layouts only; the walk itself is 1:1).
+        pub fn assign(&mut self, value: usize, holder: &'static TypedHolder) {
+            let holder_addr = std::ptr::from_ref(holder) as usize;
+            if self.holder == holder_addr {
+                self.payload = value; // IDA 0x66d860
+                return;
+            }
+            if self.holder != 0 {
+                if let Some(cur) = holder_for_addr(self.holder) {
+                    (cur.destruct)(&mut self.payload); // IDA 0x66d854
+                }
+                self.holder = 0; // IDA 0x66d858
+            }
+            self.payload = value; // IDA 0x66d86a
+            self.holder = holder_addr; // IDA 0x66d86c
+        }
+    }
+    /// was: `rbx::bad_placement_any_cast` (thrown as `std::bad_cast` with
+    /// `off_1221648`, e.g. IDA 0x66d9aa-0x66d9b2).
+    #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+    pub struct BadPlacementAnyCast(pub &'static str);
+    impl std::fmt::Display for BadPlacementAnyCast {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            write!(f, "bad placement_any_cast for {}", self.0)
+        }
+    }
+    impl std::error::Error for BadPlacementAnyCast {}
+    /// `any_cast<const T&>` (IDA 0x66d8f4/0x66eb78/0x670468/0x6716ec):
+    /// holder-identity fast path; typeinfo-name slow path (`void` when the
+    /// holder is null, 0x66d950); name mismatch throws (`boost::
+    /// throw_exception` -> `panic!`); success returns the payload address
+    /// (`a1 + 1`).
+    pub unsafe fn any_cast(any: *mut RegionAny, holder: &'static TypedHolder) -> *mut usize {
+        let cur_addr = (*any).holder;
+        if cur_addr != std::ptr::from_ref(holder) as usize {
+            let cur_name = holder_for_addr(cur_addr).map(|h| h.type_name).unwrap_or("v");
+            if cur_name != holder.type_name {
+                // IDA 0x66d9aa-0x66d9b2 + resume path 0x66d9c8-0x66d9d6.
+                panic!("{}", BadPlacementAnyCast(holder.type_name));
+            }
+        }
+        &mut (*any).payload // IDA 0x66d99a
+    }
+    /// was: `std::_Rb_tree_node_base` (`_M_color`, `_M_parent`, `_M_left`,
+    /// `_M_right`) — four words; erase reads `[3]` (right) and `[2]` (left).
+    #[repr(C)]
+    #[derive(Clone, Copy, Default, Debug)]
+    pub struct RbNodeBase {
+        pub words: [usize; 4],
+    }
+    impl RbNodeBase {
+        #[inline]
+        fn left(&self) -> *mut RbNodeBase {
+            self.words[2] as *mut RbNodeBase
+        }
+        #[inline]
+        fn right(&self) -> *mut RbNodeBase {
+            self.words[3] as *mut RbNodeBase
+        }
+    }
+    /// `_M_erase` (IDA 0x66d9e4/0x66ec68/0x670558/0x6717dc): null check, then
+    /// the do-loop — recurse right (`v2[3]`), save left (`v2[2]`), `operator
+    /// delete`, step left. Node storage (key `Name const*` + `pair` payload
+    /// past the header) is owner-allocated, so deletion runs through `free`;
+    /// the four monomorph stubs below all collapse into this helper.
+    pub unsafe fn rb_tree_erase(node: *mut RbNodeBase, free: unsafe fn(*mut u8)) {
+        let mut x = node;
+        while !x.is_null() {
+            // IDA 0x66d9f6/0x66ec7a: `_M_erase(v2[3])`.
+            rb_tree_erase((*x).right(), free);
+            let next = (*x).left(); // IDA 0x66d9fc
+            free(x as *mut u8); // IDA 0x66d9fe: `operator delete(v2)`
+            x = next; // IDA 0x66da02
+        }
+    }
+    /// IDA 0x66c0f4 `isNullClassName`: `className().empty() ==
+    /// (sClassName==NULL)` assert (Object.h:360), then `sTextService == 0`.
+    pub fn text_service_is_null_class_name(class_name_empty: bool, s_class_name_null: bool) -> bool {
+        crate::generated_core_wd_watchdog22::gui_textbox::release_assert(
+            class_name_empty == s_class_name_null,
+            "className().empty() == (sClassName==NULL) file: include/Util/Object.h line: 360",
+        );
+        s_class_name_null // IDA 0x66c190
+    }
+}
 // 0x66b478 — __ZN3rbx13remote_signalIFvN3RBX5UDim2EEED2Ev
 // type: int __fastcall(int, int, int, int, char, int)
 #[doc(alias = "__ZN3rbx13remote_signalIFvN3RBX5UDim2EEED2Ev")]
-pub fn stub_0x66b478() {
-    // IDA 0x66b478: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x66b478(slot: &mut gui_textbox::RemoteSignal) {
+    // IDA 0x66b478: `disconnectAll(a1 + 4)` + release, `disconnectAll(a1)` + release.
+    slot.disconnect_all()
 }
 
 // 0x66c0f4 — __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_12sTextServiceEEE15isNullClassNameEv
 // type: int(void)
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_8InstanceELZNS_12sTextServiceEEE15isNullClassNameEv")]
-pub fn stub_0x66c0f4() {
-    // IDA 0x66c0f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x66c0f4(class_name_empty: bool, s_class_name_null: bool) -> bool {
+    // IDA 0x66c0f4: assert + `sTextService == 0`.
+    region_any::text_service_is_null_class_name(class_name_empty, s_class_name_null)
 }
 
 // 0x66d828 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_11TextService10YAlignmentEEERS3_RKT_
 // type: int(void)
 #[doc(alias = "__ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_11TextService10YAlignmentEEERS3_RKT_")]
-pub fn stub_0x66d828() {
-    // IDA 0x66d828: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x66d828(any: &mut region_any::RegionAny, value: usize) -> &mut region_any::RegionAny {
+    // IDA 0x66d828: `operator=<YAlignment>`.
+    any.assign(value, region_any::yalignment_holder());
+    any
 }
 
 // 0x66d878 — __ZN3rbx14implementation12typed_holderIN3RBX11TextService10YAlignmentEE9singletonEv
 // type: int(void)
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService10YAlignmentEE9singletonEv")]
-pub fn stub_0x66d878() {
-    // IDA 0x66d878: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x66d878() -> &'static region_any::TypedHolder {
+    // IDA 0x66d878: guard-var singleton.
+    region_any::yalignment_holder()
 }
 
 // 0x66d8e4 — __ZN3rbx14implementation12typed_holderIN3RBX11TextService10YAlignmentEE14construct_funcEPKcPc
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService10YAlignmentEE14construct_funcEPKcPc")]
-pub fn stub_0x66d8e4() {
-    // IDA 0x66d8e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x66d8e4(src: *const usize, dst: *mut usize) {
+    // IDA 0x66d8e4: one-word copy.
+    (region_any::yalignment_holder().construct)(src, dst)
 }
 
 // 0x66d8f0 — __ZN3rbx14implementation12typed_holderIN3RBX11TextService10YAlignmentEE13destruct_funcEPc
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService10YAlignmentEE13destruct_funcEPc")]
-pub fn stub_0x66d8f0() {
-    // IDA 0x66d8f0: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
+pub fn stub_0x66d8f0(payload: *mut usize) {
+    // IDA 0x66d8f0: `;` (trivial T).
+    (region_any::yalignment_holder().destruct)(payload)
 }
 
 // 0x66d8f4 — __ZN3rbx8any_castIRKN3RBX11TextService10YAlignmentENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: int(void)
 #[doc(alias = "__ZN3rbx8any_castIRKN3RBX11TextService10YAlignmentENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
-pub fn stub_0x66d8f4() {
-    // IDA 0x66d8f4: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
+pub unsafe fn stub_0x66d8f4(any: *mut region_any::RegionAny) -> *mut usize {
+    // IDA 0x66d8f4: checked cast to `YAlignment`, payload address out.
+    region_any::any_cast(any, region_any::yalignment_holder())
 }
 
 // 0x66d9e4 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11TextService10YAlignmentEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: int(void)
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11TextService10YAlignmentEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0x66d9e4() {
-    // IDA 0x66d9e4: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub unsafe fn stub_0x66d9e4(node: *mut region_any::RbNodeBase, free: unsafe fn(*mut u8)) {
+    // IDA 0x66d9e4: `_M_erase` over `<Name const*, YAlignment>` nodes.
+    region_any::rb_tree_erase(node, free)
 }
 
 // 0x66eaac — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_11TextService10XAlignmentEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "__ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_11TextService10XAlignmentEEERS3_RKT_")]
-pub fn stub_0x66eaac() {
-    // IDA 0x66eaac: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x66eaac(any: &mut region_any::RegionAny, value: usize) -> &mut region_any::RegionAny {
+    // IDA 0x66eaac: `operator=<XAlignment>` (same template as 0x66d828).
+    any.assign(value, region_any::xalignment_holder());
+    any
 }
 
 // 0x66eafc — __ZN3rbx14implementation12typed_holderIN3RBX11TextService10XAlignmentEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService10XAlignmentEE9singletonEv")]
-pub fn stub_0x66eafc() {
-    // IDA 0x66eafc: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x66eafc() -> &'static region_any::TypedHolder {
+    // IDA 0x66eafc: guard-var singleton.
+    region_any::xalignment_holder()
 }
 
 // 0x66eb68 — __ZN3rbx14implementation12typed_holderIN3RBX11TextService10XAlignmentEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService10XAlignmentEE14construct_funcEPKcPc")]
-pub fn stub_0x66eb68() {
-    // IDA 0x66eb68: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x66eb68(src: *const usize, dst: *mut usize) {
+    // IDA 0x66eb68: one-word copy.
+    (region_any::xalignment_holder().construct)(src, dst)
 }
 
 // 0x66eb74 — __ZN3rbx14implementation12typed_holderIN3RBX11TextService10XAlignmentEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService10XAlignmentEE13destruct_funcEPc")]
-pub fn stub_0x66eb74() {
-    // IDA 0x66eb74: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x66eb74(payload: *mut usize) {
+    // IDA 0x66eb74: `;` (trivial T).
+    (region_any::xalignment_holder().destruct)(payload)
 }
 
 // 0x66eb78 — __ZN3rbx8any_castIRKN3RBX11TextService10XAlignmentENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "__ZN3rbx8any_castIRKN3RBX11TextService10XAlignmentENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
-pub fn stub_0x66eb78() {
-    // IDA 0x66eb78: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
+pub unsafe fn stub_0x66eb78(any: *mut region_any::RegionAny) -> *mut usize {
+    // IDA 0x66eb78: checked cast to `XAlignment`, payload address out.
+    region_any::any_cast(any, region_any::xalignment_holder())
 }
 
 // 0x66ec68 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11TextService10XAlignmentEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11TextService10XAlignmentEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0x66ec68() {
-    // IDA 0x66ec68: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub unsafe fn stub_0x66ec68(node: *mut region_any::RbNodeBase, free: unsafe fn(*mut u8)) {
+    // IDA 0x66ec68: `_M_erase` over `<Name const*, XAlignment>` nodes.
+    region_any::rb_tree_erase(node, free)
 }
 
 // 0x67039c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_11TextService4FontEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "__ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_11TextService4FontEEERS3_RKT_")]
-pub fn stub_0x67039c() {
-    // IDA 0x67039c: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x67039c(any: &mut region_any::RegionAny, value: usize) -> &mut region_any::RegionAny {
+    // IDA 0x67039c: `operator=<Font>` (same template as 0x66d828).
+    any.assign(value, region_any::font_holder());
+    any
 }
 
 // 0x6703ec — __ZN3rbx14implementation12typed_holderIN3RBX11TextService4FontEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService4FontEE9singletonEv")]
-pub fn stub_0x6703ec() {
-    // IDA 0x6703ec: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x6703ec() -> &'static region_any::TypedHolder {
+    // IDA 0x6703ec: guard-var singleton.
+    region_any::font_holder()
 }
 
 // 0x670458 — __ZN3rbx14implementation12typed_holderIN3RBX11TextService4FontEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService4FontEE14construct_funcEPKcPc")]
-pub fn stub_0x670458() {
-    // IDA 0x670458: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x670458(src: *const usize, dst: *mut usize) {
+    // IDA 0x670458: one-word copy.
+    (region_any::font_holder().construct)(src, dst)
 }
 
 // 0x670464 — __ZN3rbx14implementation12typed_holderIN3RBX11TextService4FontEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService4FontEE13destruct_funcEPc")]
-pub fn stub_0x670464() {
-    // IDA 0x670464: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x670464(payload: *mut usize) {
+    // IDA 0x670464: `;` (trivial T).
+    (region_any::font_holder().destruct)(payload)
 }
 
 // 0x670468 — __ZN3rbx8any_castIRKN3RBX11TextService4FontENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "__ZN3rbx8any_castIRKN3RBX11TextService4FontENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
-pub fn stub_0x670468() {
-    // IDA 0x670468: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
+pub unsafe fn stub_0x670468(any: *mut region_any::RegionAny) -> *mut usize {
+    // IDA 0x670468: checked cast to `Font`, payload address out.
+    region_any::any_cast(any, region_any::font_holder())
 }
 
 // 0x670558 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11TextService4FontEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11TextService4FontEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0x670558() {
-    // IDA 0x670558: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub unsafe fn stub_0x670558(node: *mut region_any::RbNodeBase, free: unsafe fn(*mut u8)) {
+    // IDA 0x670558: `_M_erase` over `<Name const*, Font>` nodes.
+    region_any::rb_tree_erase(node, free)
 }
 
 // 0x671620 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_11TextService8FontSizeEEERS3_RKT_
 // type: _DWORD *__fastcall(_DWORD *, _DWORD *)
 #[doc(alias = "__ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_11TextService8FontSizeEEERS3_RKT_")]
-pub fn stub_0x671620() {
-    // IDA 0x671620: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x671620(any: &mut region_any::RegionAny, value: usize) -> &mut region_any::RegionAny {
+    // IDA 0x671620: `operator=<FontSize>` (same template as 0x66d828).
+    any.assign(value, region_any::fontsize_holder());
+    any
 }
 
 // 0x671670 — __ZN3rbx14implementation12typed_holderIN3RBX11TextService8FontSizeEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService8FontSizeEE9singletonEv")]
-pub fn stub_0x671670() {
-    // IDA 0x671670: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x671670() -> &'static region_any::TypedHolder {
+    // IDA 0x671670: guard-var singleton.
+    region_any::fontsize_holder()
 }
 
 // 0x6716dc — __ZN3rbx14implementation12typed_holderIN3RBX11TextService8FontSizeEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService8FontSizeEE14construct_funcEPKcPc")]
-pub fn stub_0x6716dc() {
-    // IDA 0x6716dc: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x6716dc(src: *const usize, dst: *mut usize) {
+    // IDA 0x6716dc: one-word copy.
+    (region_any::fontsize_holder().construct)(src, dst)
 }
 
 // 0x6716e8 — __ZN3rbx14implementation12typed_holderIN3RBX11TextService8FontSizeEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService8FontSizeEE13destruct_funcEPc")]
-pub fn stub_0x6716e8() {
-    // IDA 0x6716e8: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x6716e8(payload: *mut usize) {
+    // IDA 0x6716e8: `;` (trivial T).
+    (region_any::fontsize_holder().destruct)(payload)
 }
 
 // 0x6716ec — __ZN3rbx8any_castIRKN3RBX11TextService8FontSizeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "__ZN3rbx8any_castIRKN3RBX11TextService8FontSizeENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
-pub fn stub_0x6716ec() {
-    // IDA 0x6716ec: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
+pub unsafe fn stub_0x6716ec(any: *mut region_any::RegionAny) -> *mut usize {
+    // IDA 0x6716ec: checked cast to `FontSize`, payload address out.
+    region_any::any_cast(any, region_any::fontsize_holder())
 }
 
 // 0x6717dc — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11TextService8FontSizeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11TextService8FontSizeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0x6717dc() {
-    // IDA 0x6717dc: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub unsafe fn stub_0x6717dc(node: *mut region_any::RbNodeBase, free: unsafe fn(*mut u8)) {
+    // IDA 0x6717dc: `_M_erase` over `<Name const*, FontSize>` nodes.
+    region_any::rb_tree_erase(node, free)
 }
 
 // 0x672230 — __ZN3RBX7TextBoxD2Ev
