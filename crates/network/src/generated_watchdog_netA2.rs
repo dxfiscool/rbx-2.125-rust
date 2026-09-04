@@ -364,8 +364,9 @@ pub fn stub_9bfa90() -> ! {
 // type: RBX::Network::PhysicsSender *__fastcall(RBX::Network::PhysicsSender *this, RBX::Network::Replicator *)
 #[doc(alias = "RBX::Network::PhysicsSender::PhysicsSender(RBX::Network::Replicator &)")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSenderC2ERNS0_10ReplicatorE")]
-pub fn stub_9c0908() -> ! {
-    todo!("0x9c0908 __ZN3RBX7Network13PhysicsSenderC2ERNS0_10ReplicatorE")
+pub fn stub_9c0908() -> crate::physics::PhysicsSender {
+    // IDA 0x9c0908: unordered-map buckets + G3D motor-angle array init.
+    crate::physics::PhysicsSender::new()
 }
 
 // 0x9c0a9c — __ZN3RBX7Network13PhysicsSender11onTouchStepERKNS_9TouchPairE

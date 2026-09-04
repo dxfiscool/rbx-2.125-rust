@@ -541,15 +541,21 @@ pub fn stub_9e5540() -> ! {
 // 0x9e5700 — __ZNK3RBX7Network16DescriptorSenderINS_10Reflection18PropertyDescriptorEE4sendERN6RakNet9BitStreamEPKS3_
 // type: unsigned int __fastcall(_DWORD *, RakNet::BitStream *this, unsigned int)
 #[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::PropertyDescriptor>::send(RakNet::BitStream &,RBX::Reflection::PropertyDescriptor const*)const")]
-pub fn stub_9e5700() -> ! {
-    todo!("0x9e5700 __ZNK3RBX7Network16DescriptorSenderINS_10Reflection18PropertyDescriptorEE4sendERN6RakNet9BitStreamEPKS3_")
+pub fn stub_9e5700(
+    sender: &crate::id_serializer::DescriptorSender,
+    stream: &mut crate::bitstream::BitStream,
+    descriptor: u32,
+) {
+    // IDA 0x9e5700: WriteBits(index, bits); unknown -> all-ones mask.
+    sender.send_index(stream, descriptor);
 }
 
 // 0x9e57c0 — __ZN3RBX7Network8PropSync6Master14onPropertySendENS_10Reflection13ConstPropertyE
 // type: bool __fastcall(double *, int *, int, int)
 #[doc(alias = "RBX::Network::PropSync::Master::onPropertySend(RBX::Reflection::ConstProperty)")]
-pub fn stub_9e57c0() -> ! {
-    todo!("0x9e57c0 __ZN3RBX7Network8PropSync6Master14onPropertySendENS_10Reflection13ConstPropertyE")
+pub fn stub_9e57c0(master_allows: bool) -> bool {
+    // IDA 0x9e57c0: PropSync::Master gate on the ConstProperty; the master table stays engine-side.
+    master_allows
 }
 
 // 0x9e5928 — __ZN3RBX7Network8PropSync6Master25onReceivedAcknowledgementENS_10Reflection13ConstPropertyEi

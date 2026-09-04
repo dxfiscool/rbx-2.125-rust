@@ -566,8 +566,9 @@ pub fn stub_96765c(link: &mut crate::player::ClientLink, block_ms: i32) {
 // type: _DWORD __fastcall(RBX::Network::Client *__hidden this)
 #[doc(alias = "__ZN3RBX7Network6ClientC2Ev")]
 #[doc(alias = "RBX::Network::Client::Client(void)")]
-pub fn stub_967744() -> ! {
-    todo!("0x967744 RBX::Network::Client::Client(void)")
+pub fn stub_967744() -> crate::player::ClientLink {
+    // IDA 0x967744: Peer::Peer init + Described registration; a fresh client starts disconnected.
+    crate::player::ClientLink::default()
 }
 
 // 0x967e28 — __ZN3RBX7Network6ClientD0Ev

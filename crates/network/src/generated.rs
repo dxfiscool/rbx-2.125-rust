@@ -1538,8 +1538,16 @@ pub fn stub_952d9c() -> ! {
 // 0x953b7c — __ZN3RBX7Network23TopNErrorsPhysicsSender13writeAssemblyERN6RakNet9BitStreamEPKNS_8AssemblyE
 // type: void __fastcall(RBX::Network::TopNErrorsPhysicsSender *this, RakNet::BitStream *, const RBX::Assembly *)
 #[doc(alias = "RBX::Network::TopNErrorsPhysicsSender::writeAssembly(RakNet::BitStream &,RBX::Assembly const*)")]
-pub fn stub_953b7c() -> ! {
-    todo!("0x953b7c RBX::Network::TopNErrorsPhysicsSender::writeAssembly(RakNet::BitStream &,RBX::Assembly const*)")
+pub fn stub_953b7c(
+    sender: &mut crate::physics::ErrorCompSender,
+    base: &mut crate::physics::PhysicsSender,
+    stream: &mut crate::bitstream::BitStream,
+    key: u32,
+    packet: &crate::physics::AssemblyPacket<'_>,
+    fingerprint: u64,
+) {
+    // IDA 0x953b7c: base write inside a bit-cursor snapshot + PhysicsPacketCache::update.
+    sender.write_assembly(base, stream, key, packet, fingerprint);
 }
 
 // 0x953e68 — __ZSt8for_eachIN3RBX9Intrusive3SetINS0_12PartInstanceENS0_14PhysicsServiceEE8IteratorEN5boost3_bi6bind_tIvNS7_4_mfi3mf1IvNS0_7Network23TopNErrorsPhysicsSenderERS3_EENS8_5list2INS8_5valueIPSD_EENS7_3argILi1EEEEEEEET0_T_SP_SO_

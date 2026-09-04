@@ -21,8 +21,16 @@ pub fn stub_903a48() -> ! {
 // type: void __fastcall(RBX::Network::TopNErrorsPhysicsSender *this, RakNet::BitStream *, const RBX::Assembly *)
 #[doc(alias = "RBX::Network::TopNErrorsPhysicsSender::writeAssembly(RakNet::BitStream &,RBX::Assembly const*)")]
 #[doc(alias = "__ZN3RBX7Network23TopNErrorsPhysicsSender13writeAssemblyERN6RakNet9BitStreamEPKNS_8AssemblyE")]
-pub fn stub_953b7c() -> ! {
-    todo!("0x953b7c __ZN3RBX7Network23TopNErrorsPhysicsSender13writeAssemblyERN6RakNet9BitStreamEPKNS_8AssemblyE")
+pub fn stub_953b7c(
+    sender: &mut crate::physics::ErrorCompSender,
+    base: &mut crate::physics::PhysicsSender,
+    stream: &mut crate::bitstream::BitStream,
+    key: u32,
+    packet: &crate::physics::AssemblyPacket<'_>,
+    fingerprint: u64,
+) {
+    // IDA 0x953b7c: base write inside a bit-cursor snapshot + PhysicsPacketCache::update.
+    sender.write_assembly(base, stream, key, packet, fingerprint);
 }
 
 // 0x957584 — __ZN5boost6detail8function15functor_managerIPFNS_10shared_ptrIN3RBX7Network16ServerReplicatorEEEN6RakNet13SystemAddressEPNS5_6ServerEPNS4_15NetworkSettingsEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE

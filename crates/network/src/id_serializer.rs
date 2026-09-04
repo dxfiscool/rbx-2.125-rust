@@ -433,15 +433,17 @@ impl DescriptorSender {
         self.bits
     }
 
-    /// `DescriptorSender<PropertyDescriptor>::send` (IDA 0x9e013c, via the
-    /// `this + 1304` sender): writes the dense index in `bits` bits.
-    /// Unknown descriptors panic, mirroring the original's inability to
-    /// encode them (engine-side always sends known ones).
+    /// `DescriptorSender<PropertyDescriptor>::send` (IDA 0x9e5700, via the
+    /// `this + 1304` sender): map lookup by descriptor pointer, asserting
+    /// `iter != descToId.end()` (Streaming.h:49, debug-only), then
+    /// `WriteBits(index, this + 24)`. An unknown descriptor writes the
+    /// all-ones mask (`0xFFFFFFFF >> (32 - bits)`) instead of throwing.
     pub fn send_index(&self, stream: &mut crate::bitstream::BitStream, descriptor: u32) {
-        let index = self
-            .index_of(descriptor)
-            .expect("DescriptorSender::send: unknown descriptor");
-        stream.write_bits(index, self.bits as u8);
+        let bits = self.bits;
+        match self.index_of(descriptor) {
+            Some(index) => stream.write_bits(index, bits as u8),
+            None => stream.write_bits(u32::MAX.checked_shr(32u32.saturating_sub(bits)).unwrap_or(0), bits as u8),
+        }
     }
 }
 
@@ -741,6 +743,7 @@ mod tests {
         assert_eq!(sender.index_of(99), None);
         assert_eq!(sender.bits(), 2);
 
+
         let classes = vec![("Player".to_owned(), 1u32)];
         let events = vec![(1u32, "Chatted".to_owned(), 7u32)];
         let mut rx = DescriptorReceiver::new(4);
@@ -755,6 +758,18 @@ mod tests {
         assert_eq!(rx.get(3), None);
         rx.learn_type(3, "int", &[("int".to_owned(), 42)]);
         assert_eq!(rx.get(3), Some(42));
+    }
+    #[test]
+    fn send_index_unknown_writes_all_ones() {
+        // IDA 0x9e5700: known → index in `bits`; unknown → all-ones mask.
+        use crate::bitstream::BitStream;
+        let sender = DescriptorSender::new(&[10, 20, 30]);
+        let mut s = BitStream::new();
+        sender.send_index(&mut s, 20);
+        sender.send_index(&mut s, 99);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        assert_eq!(r.read_bits(2), Some(1));
+        assert_eq!(r.read_bits(2), Some(0b11));
     }
 
     #[test]

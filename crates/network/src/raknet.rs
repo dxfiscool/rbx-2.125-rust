@@ -9,8 +9,16 @@ use rbx_core::SharedPtr;
 #[doc(
     alias = "RBX::Network::TopNErrorsPhysicsSender::writeAssembly(RakNet::BitStream &,RBX::Assembly const*)"
 )]
-pub fn stub_953b7c() -> ! {
-    todo!("0x953b7c RBX::Network::TopNErrorsPhysicsSender::writeAssembly(RakNet::BitStream &,RBX::Assembly const*)")
+pub fn stub_953b7c(
+    sender: &mut crate::physics::ErrorCompSender,
+    base: &mut crate::physics::PhysicsSender,
+    stream: &mut crate::bitstream::BitStream,
+    key: u32,
+    packet: &crate::physics::AssemblyPacket<'_>,
+    fingerprint: u64,
+) {
+    // IDA 0x953b7c: base write inside a bit-cursor snapshot + PhysicsPacketCache::update ("cache update failed" assert on miss, TopNErrorsPhysicsSender.cpp:274).
+    sender.write_assembly(base, stream, key, packet, fingerprint);
 }
 
 // 0x957584 — __ZN5boost6detail8function15functor_managerIPFNS_10shared_ptrIN3RBX7Network16ServerReplicatorEEEN6RakNet13SystemAddressEPNS5_6ServerEPNS4_15NetworkSettingsEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE
@@ -1644,8 +1652,13 @@ pub fn stub_9e2024(
 // 0x9e5700 — __ZNK3RBX7Network16DescriptorSenderINS_10Reflection18PropertyDescriptorEE4sendERN6RakNet9BitStreamEPKS3_
 #[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::PropertyDescriptor>::send(RakNet::BitStream &,RBX::Reflection::PropertyDescriptor const*)const")]
 // was: RBX::Network::DescriptorSender<RBX::Reflection::PropertyDescriptor>::send(RakNet::BitStream &,RBX::Reflection::PropertyDescriptor const*)const
-pub fn stub_9e5700() -> ! {
-    todo!("0x9e5700 RBX::Network::DescriptorSender<RBX::Reflection::PropertyDescriptor>::send(RakNet::BitStream &,RBX::Reflection::PropertyDescriptor const*)const")
+pub fn stub_9e5700(
+    sender: &crate::id_serializer::DescriptorSender,
+    stream: &mut crate::bitstream::BitStream,
+    descriptor: u32,
+) {
+    // IDA 0x9e5700: WriteBits(index, bits); unknown -> all-ones mask.
+    sender.send_index(stream, descriptor);
 }
 
 // 0x9e5cc0 — __ZN6RakNet16PluginInterface28OnDetachEv
@@ -7432,8 +7445,9 @@ pub fn stub_96765c(link: &mut crate::player::ClientLink, block_ms: i32) {
 
 // 0x967744 — __ZN3RBX7Network6ClientC2Ev
 #[doc(alias = "RBX::Network::Client::Client(void)")]
-pub fn stub_967744() -> ! {
-    todo!("0x967744 RBX::Network::Client::Client(void)")
+pub fn stub_967744() -> crate::player::ClientLink {
+    // IDA 0x967744: Peer::Peer init + Described registration; a fresh client starts disconnected.
+    crate::player::ClientLink::default()
 }
 
 // 0x967e28 — __ZN3RBX7Network6ClientD0Ev
@@ -10363,8 +10377,9 @@ pub fn stub_9bfa90() -> ! {
 // 0x9c0908 — __ZN3RBX7Network13PhysicsSenderC2ERNS0_10ReplicatorE
 // type: RBX::Network::PhysicsSender *__fastcall(RBX::Network::PhysicsSender *this, RBX::Network::Replicator *)
 #[doc(alias = "RBX::Network::PhysicsSender::PhysicsSender(RBX::Network::Replicator &)")]
-pub fn stub_9c0908() -> ! {
-    todo!("0x9c0908 RBX::Network::PhysicsSender::PhysicsSender(RBX::Network::Replicator &)")
+pub fn stub_9c0908() -> crate::physics::PhysicsSender {
+    // IDA 0x9c0908: unordered-map buckets + G3D motor-angle array init; the Replicator & link stays engine-side.
+    crate::physics::PhysicsSender::new()
 }
 
 // 0x9c0a9c — __ZN3RBX7Network13PhysicsSender11onTouchStepERKNS_9TouchPairE
@@ -12244,8 +12259,9 @@ pub fn stub_9e5540() -> ! {
 // 0x9e57c0 — __ZN3RBX7Network8PropSync6Master14onPropertySendENS_10Reflection13ConstPropertyE
 // type: bool __fastcall(double *, int *, int, int)
 #[doc(alias = "RBX::Network::PropSync::Master::onPropertySend(RBX::Reflection::ConstProperty)")]
-pub fn stub_9e57c0() -> ! {
-    todo!("0x9e57c0 RBX::Network::PropSync::Master::onPropertySend(RBX::Reflection::ConstProperty)")
+pub fn stub_9e57c0(master_allows: bool) -> bool {
+    // IDA 0x9e57c0: PropSync::Master gate on the ConstProperty; the master table stays engine-side.
+    master_allows
 }
 
 // 0x9e5928 — __ZN3RBX7Network8PropSync6Master25onReceivedAcknowledgementENS_10Reflection13ConstPropertyEi
