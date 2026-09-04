@@ -6,121 +6,174 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::generated_138::EnumDescModel;
+use crate::generated_140::XmlPropValue;
+
+
+/// QualityLevel `readValue` core — same template as 0x102cc; int cells go
+/// through the QualityLevel setIntValue port (0x13110).
+pub fn enum_prop_read_value_ql(desc: &EnumDescModel, value: XmlPropValue, set: impl Fn(i32)) {
+    match value {
+        XmlPropValue::Nil => {}
+        XmlPropValue::Int(i) => {
+            stub_13110(desc, i, &set);
+        }
+        XmlPropValue::Text(s) => {
+            let mut v = 0;
+            if crate::generated_139::stub_cc34(desc, &s, &mut v) {
+                set(v);
+            } else if s.is_empty() {
+                set(0);
+            }
+        }
+        XmlPropValue::Other => {}
+    }
+}
 
 // 0x12ce4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE14getStringValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getStringValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_12ce4() -> ! {
-    todo!("0x12ce4 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getStringValue(RBX::Reflection::DescribedBase const*)const")
-}
+pub fn stub_12ce4(desc: &EnumDescModel, get: impl Fn() -> i32, out: &mut String) {
+    // IDA 0x12ce4: EnumPropDescriptor::getStringValue — same get + convertToString template as 0x10248 (disasm: +0x2C/+0x30 loads, get via +8, convertToString call); delegates to the 0xc76c port.
+        crate::generated_139::stub_c76c(desc, get(), out);}
 
 // 0x12d08 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE14setStringValueEPNS0_13DescribedBaseERKSs
 // demangled: RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_12d08() -> ! {
-    todo!("0x12d08 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
-}
+pub fn stub_12d08(desc: &EnumDescModel, name: &str, set: impl Fn(i32)) -> bool {
+    // IDA 0x12d08: EnumPropDescriptor::setStringValue — same lookup + convertToValue + set template as 0x1026c/0x105d0; delegates to the 0xcc34 port.
+        let mut v = 0;
+    if crate::generated_139::stub_cc34(desc, name, &mut v) {
+        set(v);
+        true
+    } else {
+        false
+    }}
 
 // 0x12d48 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 // demangled: RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_12d48() -> ! {
-    todo!("0x12d48 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
-}
+pub fn stub_12d48(get: impl Fn() -> i32) -> (u32, i32) {
+    // IDA 0x12d48: EnumPropDescriptor::writeValue — same get + kind-tag-5 template as 0x102ac; the (kind, value) outputs travel as a pair.
+        (5, get())}
 
 // 0x12d68 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 // demangled: RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const
 // type: int __fastcall(int, int, XmlElement *this)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_12d68() -> ! {
-    todo!("0x12d68 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
-}
+pub fn stub_12d68(desc: &EnumDescModel, value: XmlPropValue, set: impl Fn(i32)) {
+    // IDA 0x12d68: EnumPropDescriptor::readValue — same xsi-nil/int/string template as 0x102cc; delegates int cells to the 0x10674 port and string cells to the 0xcc34 port (XmlPropValue carrier is shared from generated_140).
+        enum_prop_read_value_ql(desc, value, set);}
 
 // 0x12fa8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE13getIndexValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getIndexValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_12fa8() -> ! {
-    todo!("0x12fa8 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
-}
+pub fn stub_12fa8(desc: &EnumDescModel, get: impl Fn() -> i32) -> i32 {
+    // IDA 0x12fa8: EnumPropDescriptor::getIndexValue — same get + convertToIndex template as 0x1050c; delegates to the 0x10604 port.
+        stub_130a0(desc, get())}
 
 // 0x12fc4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE13setIndexValueEPNS0_13DescribedBaseEm
 // demangled: RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_12fc4() -> ! {
-    todo!("0x12fc4 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
-}
+pub fn stub_12fc4(desc: &EnumDescModel, index: usize, set: impl Fn(i32)) -> bool {
+    // IDA 0x12fc4: EnumPropDescriptor::setIndexValue — same legacy bound-check + set template as 0x10528.
+        if let Some(&v) = desc.legacy.get(index) {
+        set(v);
+        true
+    } else {
+        false
+    }}
 
 // 0x12ff8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE12getEnumValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getEnumValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_12ff8() -> ! {
-    todo!("0x12ff8 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
-}
+pub fn stub_12ff8(get: impl Fn() -> i32) -> i32 {
+    // IDA 0x12ff8: EnumPropDescriptor::getEnumValue — same impl-slot get template as 0x1055c.
+        get()}
 
 // 0x13000 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE12setEnumValueEPNS0_13DescribedBaseEi
 // demangled: RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setEnumValue(RBX::Reflection::DescribedBase *,int)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_13000() -> ! {
-    todo!("0x13000 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
-}
+pub fn stub_13000(desc: &EnumDescModel, value: i32, set: impl Fn(i32)) -> bool {
+    // IDA 0x13000: EnumPropDescriptor::setEnumValue — same find_if + set template as 0x10564; the host searches pairs.
+        if desc.pairs.iter().any(|(v, _)| *v == value) {
+        set(value);
+        true
+    } else {
+        false
+    }}
 
 // 0x1304c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE11getEnumItemEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getEnumItem(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_1304c() -> ! {
-    todo!("0x1304c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
-}
+pub fn stub_1304c(desc: &EnumDescModel, get: impl Fn() -> i32) -> i32 {
+    // IDA 0x1304c: EnumPropDescriptor::getEnumItem — same get + convertToItem template as 0x105b0; delegates to the 0xc9d8 port.
+        crate::generated_139::stub_c9d8(desc, get())}
 
 // 0x1306c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 // demangled: RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_1306c() -> ! {
-    todo!("0x1306c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
-}
+pub fn stub_1306c(desc: &EnumDescModel, name: &str, set: impl Fn(i32)) -> bool {
+    // IDA 0x1306c: EnumPropDescriptor::setStringValue — same lookup + convertToValue + set template as 0x1026c/0x105d0; delegates to the 0xcc34 port.
+        let mut v = 0;
+    if crate::generated_139::stub_cc34(desc, name, &mut v) {
+        set(v);
+        true
+    } else {
+        false
+    }}
 
 // 0x130a0 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToIndexES3_
 // demangled: RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToIndex(RBX::CRenderSettings::QualityLevel)const
 // type: int(void)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToIndex(RBX::CRenderSettings::QualityLevel)const")]
-pub fn stub_130a0() -> ! {
-    todo!("0x130a0 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToIndex(RBX::CRenderSettings::QualityLevel)const")
-}
+pub fn stub_130a0(desc: &EnumDescModel, value: i32) -> i32 {
+    // IDA 0x130a0: EnumDesc<QualityLevel>::convertToIndex — same assert + index-vector template as 0x10604 (value>=0, enumconverter.h:350); host pairs-position search on dense tables.
+        desc.pairs.iter().position(|(v, _)| *v == value).map(|p| p as i32).unwrap_or(-1)}
 
 // 0x13110 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE11setIntValueEPNS0_13DescribedBaseEi
 // demangled: RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setIntValue(RBX::Reflection::DescribedBase *,int)const
 // type: int(void)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_13110() -> ! {
-    todo!("0x13110 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
-}
+pub fn stub_13110(desc: &EnumDescModel, index: i32, set: impl Fn(i32)) -> bool {
+    // IDA 0x13110: EnumPropDescriptor::setIntValue — same table + -1-sentinel + set template as 0x10674.
+        if index >= 0 {
+        if let Some(&(v, _)) = desc.pairs.get(index as usize) {
+            if v != -1 {
+                set(v);
+                return true;
+            }
+        }
+    }
+    false}
 
 // 0x13150 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::isReadOnly(void)const")]
-pub fn stub_13150() -> ! {
-    todo!("0x13150 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::isReadOnly(void)const")
-}
+pub fn stub_13150() -> bool {
+    // IDA 0x13150: GetSetImpl<QualityLevel>::isReadOnly — same 0-return template as 0x106b4.
+        false}
 
 // 0x13154 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::isWriteOnly(void)const")]
-pub fn stub_13154() -> ! {
-    todo!("0x13154 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::isWriteOnly(void)const")
-}
+pub fn stub_13154() -> bool {
+    // IDA 0x13154: GetSetImpl<QualityLevel>::isWriteOnly — same 0-return template as 0x106b8.
+        false}
 
 // 0x13158 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::getValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_13158() -> ! {
-    todo!("0x13158 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::getValue(RBX::Reflection::DescribedBase const*)const")
-}
+pub fn stub_13158(get: impl Fn() -> i32) -> i32 {
+    // IDA 0x13158: GetSetImpl<QualityLevel>::getValue — same member-getter dispatch as 0x106bc; the getter travels as a closure.
+        get()}
 
 // 0x13184 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 // demangled: RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::QualityLevel const&)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::QualityLevel const&)const")]
-pub fn stub_13184() -> ! {
-    todo!("0x13184 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::GetSetImpl<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::QualityLevel const&)const")
-}
+pub fn stub_13184(set: impl Fn(i32), value: i32) {
+    // IDA 0x13184: GetSetImpl<QualityLevel>::setValue — same member-setter dispatch as 0x106e8; the setter travels as a closure.
+        set(value);}
 
 // 0x131a8 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // demangled: RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::EnumPropDescriptor<RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode)>(char const*,char const*,RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
