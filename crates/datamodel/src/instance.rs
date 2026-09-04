@@ -1600,6 +1600,33 @@ pub struct CustomEvent {
     _opaque: (),
 }
 
+/// Rust model of `RBX::CustomEventReceiver` (IDA `0x4b2220`): the
+/// custom-event-receiver leaf; members land with the event batch.
+#[derive(Default)]
+pub struct CustomEventReceiver {
+    _opaque: (),
+}
+
+/// Name/value table behind the `Pyramid NumSides` desc suite (IDA
+/// `0x4c542c`-`0x4c5db0`): 3, 4, 5, 6, 8, 10, 20 per the C2 pairs (0x49bb88).
+const PYRAMID_NUM_SIDES_ITEMS: [(i32, &str); 7] = [
+    (3, "3"), (4, "4"), (5, "5"), (6, "6"), (8, "8"), (10, "10"), (20, "20"),
+];
+
+/// Name/value table behind the `Prism NumSides` desc suite (IDA
+/// `0x4c5e54`-`0x4c63b0`): 3, 5, 6, 8, 10, 20 per the C2 pairs (0x49b968).
+const PRISM_NUM_SIDES_ITEMS: [(i32, &str); 6] = [
+    (3, "3"), (5, "5"), (6, "6"), (8, "8"), (10, "10"), (20, "20"),
+];
+
+/// Process-wide singleton behind `Singleton<EnumDesc<Pyramid NumSides>>`
+/// (IDA `0x4c542c`); twin of `CONCURRENCY_MODEL_SINGLETON` (0x48637c).
+static PYRAMID_NUM_SIDES_SINGLETON: OnceLock<EnumDesc> = OnceLock::new();
+
+/// Process-wide singleton behind `Singleton<EnumDesc<Prism NumSides>>` (IDA
+/// `0x4c5e54`); twin of `CONCURRENCY_MODEL_SINGLETON`.
+static PRISM_NUM_SIDES_SINGLETON: OnceLock<EnumDesc> = OnceLock::new();
+
 /// Rust model of `RBX::Texture` (IDA `0x491750`): the texture decal; members
 /// land with the GUI batch.
 #[derive(Default)]
@@ -30746,71 +30773,105 @@ pub fn stub_0x4b1c7c(block: *const ControlBlockPd<CustomEvent, CreatableInstance
 // 0x4b2220 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_19CustomEventReceiverEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::CustomEventReceiver> RBX::Creatable<RBX::Instance>::create<RBX::CustomEventReceiver>(void)")]
 // was: boost::shared_ptr<RBX::CustomEventReceiver> RBX::Creatable<RBX::Instance>::create<RBX::CustomEventReceiver>(void)
-pub fn stub_0x4b2220() -> ! {
-    todo!("0x4b2220 boost::shared_ptr<RBX::CustomEventReceiver> RBX::Creatable<RBX::Instance>::create<RBX::CustomEventReceiver>(void)")
+pub fn stub_0x4b2220() -> SharedPtr<CustomEventReceiver> {
+    // IDA 0x4b2220: `Creatable::create<CustomEventReceiver>` — `operator
+    // new` + default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(CustomEventReceiver::default())
 }
 
 // 0x4b2768 — __ZNK3RBX19CustomEventReceiver14askForbidChildEPKNS_8InstanceE
 #[doc(alias = "RBX::CustomEventReceiver::askForbidChild(RBX::Instance const*)const")]
 // was: RBX::CustomEventReceiver::askForbidChild(RBX::Instance const*)const
-pub fn stub_0x4b2768() -> ! {
-    todo!("0x4b2768 RBX::CustomEventReceiver::askForbidChild(RBX::Instance const*)const")
+pub fn stub_0x4b2768(_child: *const Instance) -> bool {
+    // IDA 0x4b2768: `MOVS R0, #1; BX LR` (disasm 0x4b2768-0x4b276a) — a
+    // custom-event receiver never forbids a child.
+    // SAFETY: `_child` must be null or point to a valid `Instance`.
+    true
 }
 
 // 0x4b276c — __ZNK3RBX19CustomEventReceiver12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::CustomEventReceiver::askSetParent(RBX::Instance const*)const")]
 // was: RBX::CustomEventReceiver::askSetParent(RBX::Instance const*)const
-pub fn stub_0x4b276c() -> ! {
-    todo!("0x4b276c RBX::CustomEventReceiver::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x4b276c(parent: *const Instance) -> bool {
+    // IDA 0x4b276c: null parent returns false (disasm 0x4b2770-0x4b277c);
+    // otherwise the parent's `classDescriptor` is checked against the
+    // `PartInstance` described descriptor. Same shape as 0x4b0e58.
+    // SAFETY: `parent` must be null or point to a valid `Instance`.
+    if parent.is_null() {
+        return false;
+    }
+    instance_is_a(parent, "PartInstance")
 }
 
 // 0x4b3668 — __ZN5boost10shared_ptrIN3RBX19CustomEventReceiverEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::CustomEventReceiver>::shared_ptr<RBX::CustomEventReceiver,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::CustomEventReceiver>::shared_ptr<RBX::CustomEventReceiver,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x4b3668() -> ! {
-    todo!("0x4b3668 boost::shared_ptr<RBX::CustomEventReceiver>::shared_ptr<RBX::CustomEventReceiver,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x4b3668(ptr: *mut CustomEventReceiver, _deleter: CreatableInstanceDeleter) -> SharedPtr<CustomEventReceiver> {
+    // IDA 0x4b3668: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(CustomEventReceiver::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x4b3818 — __ZN5boost6detail12shared_countC2IPN3RBX19CustomEventReceiverENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x4b3818() -> ! {
-    todo!("0x4b3818 boost::detail::shared_count::shared_count<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x4b3818(ptr: *mut CustomEventReceiver, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<CustomEventReceiver, CreatableInstanceDeleter> {
+    // IDA 0x4b3818: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x4b3920 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x4b3920() -> ! {
-    todo!("0x4b3920 boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x4b3920(_block: *mut ControlBlockPd<CustomEventReceiver, CreatableInstanceDeleter>) {
+    // IDA 0x4b3920: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x4b3924 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x4b3924() -> ! {
-    todo!("0x4b3924 boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x4b3924(block: *mut ControlBlockPd<CustomEventReceiver, CreatableInstanceDeleter>) {
+    // IDA 0x4b3924: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x4b3928 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x4b3928() -> ! {
-    todo!("0x4b3928 boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x4b3928(_block: *mut ControlBlockPd<CustomEventReceiver, CreatableInstanceDeleter>) {
+    // IDA 0x4b3928: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x4b3948 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x4b3948() -> ! {
-    todo!("0x4b3948 boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x4b3948(block: *const ControlBlockPd<CustomEventReceiver, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x4b3948: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x4b3960 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CustomEventReceiverENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x4b3960() -> ! {
-    todo!("0x4b3960 boost::detail::sp_counted_impl_pd<RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x4b3960(block: *const ControlBlockPd<CustomEventReceiver, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x4b3960: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x4c0c30 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_12PartInstance10FormFactorEEEE13initSingletonEv
@@ -30830,43 +30891,74 @@ pub fn stub_0x4c0c34() -> ! {
 // 0x4c542c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15PyramidInstance12NumSidesEnumEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum> const>::initSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum> const>::initSingleton(void)
-pub fn stub_0x4c542c() -> ! {
-    todo!("0x4c542c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum> const>::initSingleton(void)")
+pub fn stub_0x4c542c() {
+    // IDA 0x4c542c: `Singleton<EnumDesc<Pyramid NumSides>>::initSingleton` —
+    // runs the `C2` table-build into static storage once. Same shape as
+    // 0x48637c.
+    PYRAMID_NUM_SIDES_SINGLETON.get_or_init(|| EnumDesc {
+        name: "PyramidInstance::NumSidesEnum",
+        pairs: PYRAMID_NUM_SIDES_ITEMS.to_vec(),
+    });
 }
 
 // 0x4c5430 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15PyramidInstance12NumSidesEnumEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum> const>::doGetSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum> const>::doGetSingleton(void)
-pub fn stub_0x4c5430() -> ! {
-    todo!("0x4c5430 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum> const>::doGetSingleton(void)")
+pub fn stub_0x4c5430() -> &'static EnumDesc {
+    // IDA 0x4c5430: `Singleton<EnumDesc<Pyramid NumSides>>::doGetSingleton`
+    // — returns the static, initializing on first use. Same shape as
+    // 0x486380.
+    PYRAMID_NUM_SIDES_SINGLETON.get_or_init(|| EnumDesc {
+        name: "PyramidInstance::NumSidesEnum",
+        pairs: PYRAMID_NUM_SIDES_ITEMS.to_vec(),
+    })
 }
 
 // 0x4c5520 — __ZN3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEED1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::~EnumDesc()
-pub fn stub_0x4c5520() -> ! {
-    todo!("0x4c5520 RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::~EnumDesc()")
+pub fn stub_0x4c5520(_desc: *mut PyramidNumSidesDesc) {
+    // IDA 0x4c5520: `EnumDesc<Pyramid NumSides>::D1` — table teardown;
+    // dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4c5524 — __ZN3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::~EnumDesc()
-pub fn stub_0x4c5524() -> ! {
-    todo!("0x4c5524 RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::~EnumDesc()")
+pub fn stub_0x4c5524(_desc: *mut PyramidNumSidesDesc) {
+    // IDA 0x4c5524: `EnumDesc<Pyramid NumSides>::D2` — memberwise teardown of
+    // the base subobject; no members carry state, so the body collapses.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4c56f8 — __ZN3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEED0Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::~EnumDesc()
-pub fn stub_0x4c56f8() -> ! {
-    todo!("0x4c56f8 RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::~EnumDesc()")
+pub fn stub_0x4c56f8(_desc: *mut PyramidNumSidesDesc) {
+    // IDA 0x4c56f8: `EnumDesc<Pyramid NumSides>::D0` — vtable install plus
+    // table teardown; dropping the box is the same release. Twin of 0x486470.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4c5798 — __ZNK3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::lookup(char const*)const")]
 // was: RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::lookup(char const*)const
-pub fn stub_0x4c5798() -> ! {
-    todo!("0x4c5798 RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::lookup(char const*)const")
+pub fn stub_0x4c5798(name: &str) -> Option<(i32, &'static str)> {
+    // IDA 0x4c5798 (`EnumDesc<Pyramid NumSides>::lookup(name)`, decompiled):
+    // `Name::lookup`, then `convertToValue`, then `convertToItem` on
+    // success, null on miss. The item — not the bare value — crosses back.
+    let value = stub_0x4c5db0(name)?;
+    stub_0x4c5bf4(value)
 }
 
 // 0x4c57c8 — __ZNK3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEE6lookupERKNS0_7VariantE
@@ -30893,8 +30985,14 @@ pub fn stub_0x4c5844() -> ! {
 // 0x4c5988 — __ZNK3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::convertToString(RBX::PyramidInstance::NumSidesEnum const&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::convertToString(RBX::PyramidInstance::NumSidesEnum const&)const
-pub fn stub_0x4c5988() -> ! {
-    todo!("0x4c5988 RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::convertToString(RBX::PyramidInstance::NumSidesEnum const&)const")
+pub fn stub_0x4c5988(value: i32) -> Option<&'static str> {
+    // IDA 0x4c5988: `EnumDesc<Pyramid NumSides>::convertToString(value)` —
+    // the value-to-name search. Same shape as 0x486190.
+    debug_assert!((3..=20).contains(&value), "0x4c5988: value in range");
+    PYRAMID_NUM_SIDES_ITEMS
+        .iter()
+        .find(|(v, _)| *v == value)
+        .map(|(_, text)| *text)
 }
 
 // 0x4c5b28 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15PyramidInstance12NumSidesEnumEEERS3_RKT_
@@ -30928,8 +31026,13 @@ pub fn stub_0x4c5bf0() -> ! {
 // 0x4c5bf4 — __ZNK3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::convertToItem(RBX::PyramidInstance::NumSidesEnum const&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::convertToItem(RBX::PyramidInstance::NumSidesEnum const&)const
-pub fn stub_0x4c5bf4() -> ! {
-    todo!("0x4c5bf4 RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::convertToItem(RBX::PyramidInstance::NumSidesEnum const&)const")
+pub fn stub_0x4c5bf4(value: i32) -> Option<(i32, &'static str)> {
+    // IDA 0x4c5bf4: `EnumDesc<Pyramid NumSides>::convertToItem(value)` —
+    // the value-to-item search. Same shape as 0x48600c.
+    PYRAMID_NUM_SIDES_ITEMS
+        .iter()
+        .find(|(v, _)| *v == value)
+        .copied()
 }
 
 // 0x4c5cc0 — __ZN3rbx8any_castIRKN3RBX15PyramidInstance12NumSidesEnumENS1_7Region3EEET_RNS_13placement_anyIT0_EE
@@ -30942,8 +31045,13 @@ pub fn stub_0x4c5cc0() -> ! {
 // 0x4c5db0 — __ZNK3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::convertToValue(RBX::Name const&,RBX::PyramidInstance::NumSidesEnum&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::convertToValue(RBX::Name const&,RBX::PyramidInstance::NumSidesEnum&)const
-pub fn stub_0x4c5db0() -> ! {
-    todo!("0x4c5db0 RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::convertToValue(RBX::Name const&,RBX::PyramidInstance::NumSidesEnum&)const")
+pub fn stub_0x4c5db0(name: &str) -> Option<i32> {
+    // IDA 0x4c5db0: `EnumDesc<Pyramid NumSides>::convertToValue(Name)` —
+    // the name-to-value search. Same shape as 0x486060.
+    PYRAMID_NUM_SIDES_ITEMS
+        .iter()
+        .find(|(_, text)| *text == name)
+        .map(|(v, _)| *v)
 }
 
 // 0x4c5e2c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15PyramidInstance12NumSidesEnumEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
@@ -30956,43 +31064,78 @@ pub fn stub_0x4c5e2c() -> ! {
 // 0x4c5e54 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13PrismInstance12NumSidesEnumEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum> const>::initSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum> const>::initSingleton(void)
-pub fn stub_0x4c5e54() -> ! {
-    todo!("0x4c5e54 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum> const>::initSingleton(void)")
+pub fn stub_0x4c5e54() {
+    // IDA 0x4c5e54: `Singleton<EnumDesc<Prism NumSides>>::initSingleton` —
+    // runs the `C2` table-build into static storage once. Same shape as
+    // 0x4c542c.
+    PRISM_NUM_SIDES_SINGLETON.get_or_init(|| EnumDesc {
+        name: "PrismInstance::NumSidesEnum",
+        pairs: PRISM_NUM_SIDES_ITEMS.to_vec(),
+    });
 }
 
 // 0x4c5e58 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13PrismInstance12NumSidesEnumEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum> const>::doGetSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum> const>::doGetSingleton(void)
-pub fn stub_0x4c5e58() -> ! {
-    todo!("0x4c5e58 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum> const>::doGetSingleton(void)")
+pub fn stub_0x4c5e58() -> &'static EnumDesc {
+    // IDA 0x4c5e58: `Singleton<EnumDesc<Prism NumSides>>::doGetSingleton` —
+    // returns the static, initializing on first use. Same shape as 0x4c5430.
+    PRISM_NUM_SIDES_SINGLETON.get_or_init(|| EnumDesc {
+        name: "PrismInstance::NumSidesEnum",
+        pairs: PRISM_NUM_SIDES_ITEMS.to_vec(),
+    })
 }
 
 // 0x4c5f48 — __ZN3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEED1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::~EnumDesc()
-pub fn stub_0x4c5f48() -> ! {
-    todo!("0x4c5f48 RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::~EnumDesc()")
+pub fn stub_0x4c5f48(_desc: *mut PrismNumSidesDesc) {
+    // IDA 0x4c5f48: `EnumDesc<Prism NumSides>::D1` — table teardown; dropping
+    // the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4c5f4c — __ZN3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::~EnumDesc()
-pub fn stub_0x4c5f4c() -> ! {
-    todo!("0x4c5f4c RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::~EnumDesc()")
+pub fn stub_0x4c5f4c(_desc: *mut PrismNumSidesDesc) {
+    // IDA 0x4c5f4c: `EnumDesc<Prism NumSides>::D2` — memberwise teardown of
+    // the base subobject; no members carry state, so the body collapses.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4c6120 — __ZN3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEED0Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::~EnumDesc()
-pub fn stub_0x4c6120() -> ! {
-    todo!("0x4c6120 RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::~EnumDesc()")
+pub fn stub_0x4c6120(_desc: *mut PrismNumSidesDesc) {
+    // IDA 0x4c6120: `EnumDesc<Prism NumSides>::D0` — vtable install plus
+    // table teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4c61c0 — __ZNK3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::lookup(char const*)const")]
 // was: RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::lookup(char const*)const
-pub fn stub_0x4c61c0() -> ! {
-    todo!("0x4c61c0 RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::lookup(char const*)const")
+pub fn stub_0x4c61c0(name: &str) -> Option<(i32, &'static str)> {
+    // IDA 0x4c61c0 (`EnumDesc<Prism NumSides>::lookup(name)`): same
+    // lookup-then-`convertToValue`-then-`convertToItem` chain as 0x4c5798.
+    let value = PRISM_NUM_SIDES_ITEMS
+        .iter()
+        .find(|(_, text)| *text == name)
+        .map(|(v, _)| *v)?;
+    PRISM_NUM_SIDES_ITEMS
+        .iter()
+        .find(|(v, _)| *v == value)
+        .copied()
 }
 
 // 0x4c61f0 — __ZNK3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEE6lookupERKNS0_7VariantE
