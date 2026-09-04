@@ -980,6 +980,25 @@ pub struct IMetric {
     _opaque: (),
 }
 
+/// Rust model of `RBX::Reflection::BoundFuncDesc<DataModel, ...>` (IDA
+/// `0x431288`): the box is storage-only in every D1 below; one family type
+/// serves all `DataModel` bound descriptors until a member is modeled.
+pub struct DataModelFuncDesc {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Reflection::PropDescriptor<DataModel, ...>` (IDA
+/// `0x431628`): same storage-only family treatment as `DataModelFuncDesc`.
+pub struct DataModelPropDesc {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Reflection::BoundYieldFuncDesc<DataModel, ...>` (IDA
+/// `0x43164c`): same storage-only family treatment as `DataModelFuncDesc`.
+pub struct DataModelYieldDesc {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::SelectAllCommand` (IDA `0x415bc4`): the studio
 /// select-all command plus the owning data model.
 pub struct SelectAllCommand {
@@ -16104,8 +16123,12 @@ pub fn stub_0x430d10() -> ! {
 // 0x430df4 — __ZN3RBX9DataModel24allHackFlagsOredTogetherEv
 #[doc(alias = "RBX::DataModel::allHackFlagsOredTogether(void)")]
 // was: RBX::DataModel::allHackFlagsOredTogether(void)
-pub fn stub_0x430df4() -> ! {
-    todo!("0x430df4 RBX::DataModel::allHackFlagsOredTogether(void)")
+pub fn stub_0x430df4(model: &DataModel) -> i32 {
+    // IDA 0x430df4: locks the hack-flags mutex at `+3116` (decomp 0x430e0a),
+    // then ORs every flag in the vector (decomp 0x430e0e-0x430e2c). The lock
+    // collapses (no concurrent mutation in the model); the fold is the same
+    // OR.
+    model.hack_flags.iter().fold(0, |acc, flag| acc | flag)
 }
 
 // 0x431268 — __ZN5boost8functionIFvPN3RBX9DataModelEEED1Ev
@@ -16125,106 +16148,181 @@ pub fn stub_0x431278() -> ! {
 // 0x431288 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(void),0>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(void),0>::~BoundFuncDesc()
-pub fn stub_0x431288() -> ! {
-    todo!("0x431288 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_0x431288(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x431288: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4312ac — __ZN3RBX10Reflection9EventDescINS_9DataModelEFvN5boost10shared_ptrINS_8InstanceEEEPKNS0_18PropertyDescriptorEEN3rbx6signalISA_EEMS2_SD_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::DataModel,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)> RBX::DataModel::*>::~EventDesc()")]
 // was: RBX::Reflection::EventDesc<RBX::DataModel,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)> RBX::DataModel::*>::~EventDesc()
-pub fn stub_0x4312ac() -> ! {
-    todo!("0x4312ac RBX::Reflection::EventDesc<RBX::DataModel,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)> RBX::DataModel::*>::~EventDesc()")
+pub fn stub_0x4312ac(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x4312ac: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4312d0 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEENS_9ContentIdEELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(RBX::ContentId),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::ContentId),1>::~BoundFuncDesc()
-pub fn stub_0x4312d0() -> ! {
-    todo!("0x4312d0 RBX::Reflection::BoundFuncDesc<RBX::DataModel,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::ContentId),1>::~BoundFuncDesc()")
+pub fn stub_0x4312d0(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x4312d0: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x431310 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_9DataModelEFN5boost10shared_ptrIKNS0_5TupleEEENS_8Instance10SaveFilterEES7_Li1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(RBX::Instance::SaveFilter),rbx_core::SharedPtr<RBX::Reflection::Tuple const>,1>::~BoundYieldFuncDesc()")]
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,boost::shared_ptr<RBX::Reflection::Tuple const> ()(RBX::Instance::SaveFilter),boost::shared_ptr<RBX::Reflection::Tuple const>,1>::~BoundYieldFuncDesc()
-pub fn stub_0x431310() -> ! {
-    todo!("0x431310 RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,boost::shared_ptr<RBX::Reflection::Tuple const> ()(RBX::Instance::SaveFilter),boost::shared_ptr<RBX::Reflection::Tuple const>,1>::~BoundYieldFuncDesc()")
+pub fn stub_0x431310(_desc: *mut DataModelYieldDesc) {
+    // IDA 0x431310: `BoundYieldFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x431350 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFviELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int),1>::~BoundFuncDesc()
-pub fn stub_0x431350() -> ! {
-    todo!("0x431350 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int),1>::~BoundFuncDesc()")
+pub fn stub_0x431350(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x431350: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x431390 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvNS_9ContentIdEELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::ContentId),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::ContentId),1>::~BoundFuncDesc()
-pub fn stub_0x431390() -> ! {
-    todo!("0x431390 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::ContentId),1>::~BoundFuncDesc()")
+pub fn stub_0x431390(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x431390: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4313d0 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvbELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(bool),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(bool),1>::~BoundFuncDesc()
-pub fn stub_0x4313d0() -> ! {
-    todo!("0x4313d0 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(bool),1>::~BoundFuncDesc()")
+pub fn stub_0x4313d0(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x4313d0: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x431410 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFbvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,bool ()(void),0>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,bool ()(void),0>::~BoundFuncDesc()
-pub fn stub_0x431410() -> ! {
-    todo!("0x431410 RBX::Reflection::BoundFuncDesc<RBX::DataModel,bool ()(void),0>::~BoundFuncDesc()")
+pub fn stub_0x431410(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x431410: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x431434 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvSsELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string),1>::~BoundFuncDesc()
-pub fn stub_0x431434() -> ! {
-    todo!("0x431434 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_0x431434(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x431434: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x431474 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_9DataModelEFSsSsESsLi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,std::string ()(std::string),std::string,1>::~BoundYieldFuncDesc()")]
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,std::string ()(std::string),std::string,1>::~BoundYieldFuncDesc()
-pub fn stub_0x431474() -> ! {
-    todo!("0x431474 RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,std::string ()(std::string),std::string,1>::~BoundYieldFuncDesc()")
+pub fn stub_0x431474(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x431474: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4314b4 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_9DataModelEFSsSsSsESsLi2EED1Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,std::string ()(std::string,std::string),std::string,2>::~BoundYieldFuncDesc()")]
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,std::string ()(std::string,std::string),std::string,2>::~BoundYieldFuncDesc()
-pub fn stub_0x4314b4() -> ! {
-    todo!("0x4314b4 RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,std::string ()(std::string,std::string),std::string,2>::~BoundYieldFuncDesc()")
+pub fn stub_0x4314b4(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x4314b4: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4314fc — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFSsSsbELi2EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,std::string ()(std::string,bool),2>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,std::string ()(std::string,bool),2>::~BoundFuncDesc()
-pub fn stub_0x4314fc() -> ! {
-    todo!("0x4314fc RBX::Reflection::BoundFuncDesc<RBX::DataModel,std::string ()(std::string,bool),2>::~BoundFuncDesc()")
+pub fn stub_0x4314fc(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x4314fc: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x431544 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFSsSsSsbELi3EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,std::string ()(std::string,std::string,bool),3>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,std::string ()(std::string,std::string,bool),3>::~BoundFuncDesc()
-pub fn stub_0x431544() -> ! {
-    todo!("0x431544 RBX::Reflection::BoundFuncDesc<RBX::DataModel,std::string ()(std::string,std::string,bool),3>::~BoundFuncDesc()")
+pub fn stub_0x431544(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x431544: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x431594 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()
-pub fn stub_0x431594() -> ! {
-    todo!("0x431594 RBX::Reflection::BoundFuncDesc<RBX::DataModel,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()")
+pub fn stub_0x431594(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x431594: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4315b8 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvSsSsSsSsSsELi5EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string,std::string,std::string,std::string),5>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string,std::string,std::string,std::string),5>::~BoundFuncDesc()
-pub fn stub_0x4315b8() -> ! {
-    todo!("0x4315b8 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string,std::string,std::string,std::string),5>::~BoundFuncDesc()")
+pub fn stub_0x4315b8(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x4315b8: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x431618 — __ZNK3RBX9DataModel19getIsPersonalServerEv
@@ -16244,15 +16342,25 @@ pub fn stub_0x431620() -> ! {
 // 0x431628 — __ZN3RBX10Reflection14PropDescriptorINS_9DataModelEbED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::~PropDescriptor()
-pub fn stub_0x431628() -> ! {
-    todo!("0x431628 RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::~PropDescriptor()")
+pub fn stub_0x431628(_desc: *mut DataModelPropDesc) {
+    // IDA 0x431628: `PropDescriptor<DataModel, bool>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x43164c — __ZN3RBX10Reflection18BoundYieldFuncDescINS_9DataModelEFbvEbLi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,bool ()(void),bool,0>::~BoundYieldFuncDesc()")]
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,bool ()(void),bool,0>::~BoundYieldFuncDesc()
-pub fn stub_0x43164c() -> ! {
-    todo!("0x43164c RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,bool ()(void),bool,0>::~BoundYieldFuncDesc()")
+pub fn stub_0x43164c(_desc: *mut DataModelYieldDesc) {
+    // IDA 0x43164c: `BoundYieldFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431310.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x431768 — __ZN3RBX9DataModel22setUiMessageBrickCountEv
@@ -16265,43 +16373,73 @@ pub fn stub_0x431768() -> ! {
 // 0x43177c — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFdSsdELi2EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,double ()(std::string,double),2>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,double ()(std::string,double),2>::~BoundFuncDesc()
-pub fn stub_0x43177c() -> ! {
-    todo!("0x43177c RBX::Reflection::BoundFuncDesc<RBX::DataModel,double ()(std::string,double),2>::~BoundFuncDesc()")
+pub fn stub_0x43177c(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x43177c: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4317c4 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvdELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(double),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(double),1>::~BoundFuncDesc()
-pub fn stub_0x4317c4() -> ! {
-    todo!("0x4317c4 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(double),1>::~BoundFuncDesc()")
+pub fn stub_0x4317c4(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x4317c4: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x431804 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvibELi2EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,bool),2>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,bool),2>::~BoundFuncDesc()
-pub fn stub_0x431804() -> ! {
-    todo!("0x431804 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,bool),2>::~BoundFuncDesc()")
+pub fn stub_0x431804(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x431804: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x43184c — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFviNS2_11CreatorTypeEELi2EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,RBX::DataModel::CreatorType),2>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,RBX::DataModel::CreatorType),2>::~BoundFuncDesc()
-pub fn stub_0x43184c() -> ! {
-    todo!("0x43184c RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,RBX::DataModel::CreatorType),2>::~BoundFuncDesc()")
+pub fn stub_0x43184c(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x43184c: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x431894 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvNS2_5GenreEELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::Genre),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::Genre),1>::~BoundFuncDesc()
-pub fn stub_0x431894() -> ! {
-    todo!("0x431894 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::Genre),1>::~BoundFuncDesc()")
+pub fn stub_0x431894(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x431894: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4318d4 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvNS2_16GearGenreSettingEiELi2EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::GearGenreSetting,int),2>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::GearGenreSetting,int),2>::~BoundFuncDesc()
-pub fn stub_0x4318d4() -> ! {
-    todo!("0x4318d4 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::GearGenreSetting,int),2>::~BoundFuncDesc()")
+pub fn stub_0x4318d4(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x4318d4: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x43191c — __ZNK3RBX9DataModel12getWorkspaceEv

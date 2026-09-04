@@ -51,6 +51,9 @@ pub struct DataModel {
     pub game_loaded: bool,
     /// 0-arg member signal at `+2792` fired by `gameLoaded` (IDA `0x430018`).
     pub game_loaded_signal: rbx_core::signal::Signal<()>,
+    /// Hack-flags vector ORed by `allHackFlagsOredTogether` (IDA `0x430df4`,
+    /// mutex at `+3116`).
+    pub hack_flags: Vec<i32>,
 }
 
 // 46 stubs in this file | batch range 0xef04..0x28838c
