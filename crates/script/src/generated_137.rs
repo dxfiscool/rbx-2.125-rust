@@ -466,198 +466,234 @@ impl CRenderSettingsItem {
 
 // 0x9b48 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE7addPairES3_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
+// IDA 0x9b48: generic EnumDesc::addPair body (Name declare, vector grow, map insert); delegates to EnumDesc::add_pair.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::addPair(RBX::CRenderSettings::AASamples,char const*)")]
-pub fn stub_0x9b48() -> ! {
-    todo!("0x9b48 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE7addPairES3_PKc")
+pub fn enum_desc_aa_samples_add_pair(desc: &mut EnumDesc, value: i32, name: &str) {
+    desc.add_pair(value, name);
 }
 
 // 0x9ea8 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE7addPairES3_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
+// IDA 0x9ea8: same addPair instantiation for GraphicsMode; delegates to EnumDesc::add_pair.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::addPair(RBX::CRenderSettings::GraphicsMode,char const*)")]
-pub fn stub_0x9ea8() -> ! {
-    todo!("0x9ea8 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE7addPairES3_PKc")
+pub fn enum_desc_graphics_mode_add_pair(desc: &mut EnumDesc, value: i32, name: &str) {
+    desc.add_pair(value, name);
 }
 
 // 0xa208 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE9addLegacyEiPKcS3_
 // type: _DWORD *__fastcall(int, unsigned int, int, int)
+// IDA 0xa208: legacy-vector resize to index+1 with -1 fill, store value, map legacy name; delegates to EnumDesc::add_legacy.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::addLegacy(int,char const*,RBX::CRenderSettings::GraphicsMode)")]
-pub fn stub_0xa208() -> ! {
-    todo!("0xa208 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE9addLegacyEiPKcS3_")
+pub fn enum_desc_graphics_mode_add_legacy(desc: &mut EnumDesc, index: usize, name: &str, value: i32) {
+    desc.add_legacy(index, name, value);
 }
 
 // 0xa25c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE7addPairES3_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
+// IDA 0xa25c: same addPair instantiation for FrameRateManagerMode; delegates to EnumDesc::add_pair.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::addPair(RBX::CRenderSettings::FrameRateManagerMode,char const*)")]
-pub fn stub_0xa25c() -> ! {
-    todo!("0xa25c __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE7addPairES3_PKc")
+pub fn enum_desc_frame_rate_manager_mode_add_pair(desc: &mut EnumDesc, value: i32, name: &str) {
+    desc.add_pair(value, name);
 }
 
 // 0xa5bc — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE7addPairES3_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
+// IDA 0xa5bc: same addPair instantiation for AntialiasingMode; delegates to EnumDesc::add_pair.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::addPair(RBX::CRenderSettings::AntialiasingMode,char const*)")]
-pub fn stub_0xa5bc() -> ! {
-    todo!("0xa5bc __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE7addPairES3_PKc")
+pub fn enum_desc_antialiasing_mode_add_pair(desc: &mut EnumDesc, value: i32, name: &str) {
+    desc.add_pair(value, name);
 }
 
 // 0xa91c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE7addPairES3_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
+// IDA 0xa91c: same addPair instantiation for ShadowMode; delegates to EnumDesc::add_pair.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::addPair(RBX::CRenderSettings::ShadowMode,char const*)")]
-pub fn stub_0xa91c() -> ! {
-    todo!("0xa91c __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE7addPairES3_PKc")
+pub fn enum_desc_shadow_mode_add_pair(desc: &mut EnumDesc, value: i32, name: &str) {
+    desc.add_pair(value, name);
 }
 
 // 0xac7c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE7addPairES3_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
+// IDA 0xac7c: same addPair instantiation for QualityLevel; delegates to EnumDesc::add_pair.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::addPair(RBX::CRenderSettings::QualityLevel,char const*)")]
-pub fn stub_0xac7c() -> ! {
-    todo!("0xac7c __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE7addPairES3_PKc")
+pub fn enum_desc_quality_level_add_pair(desc: &mut EnumDesc, value: i32, name: &str) {
+    desc.add_pair(value, name);
 }
 
 // 0xafdc — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE7addPairES3_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
+// IDA 0xafdc: same addPair instantiation for ResolutionPreset; delegates to EnumDesc::add_pair.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::addPair(RBX::CRenderSettings::ResolutionPreset,char const*)")]
-pub fn stub_0xafdc() -> ! {
-    todo!("0xafdc __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE7addPairES3_PKc")
+pub fn enum_desc_resolution_preset_add_pair(desc: &mut EnumDesc, value: i32, name: &str) {
+    desc.add_pair(value, name);
 }
 
 // 0xb33c — __ZNK3RBX15CRenderSettings15getGraphicsModeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getGraphicsMode(void)const")]
-pub fn stub_0xb33c() -> ! {
-    todo!("0xb33c __ZNK3RBX15CRenderSettings15getGraphicsModeEv")
+// IDA 0xb33c: 2 insns (LDR [R0,#4]); returns the graphics-mode word.
+impl CRenderSettingsItem {
+    #[doc(alias = "RBX::CRenderSettings::getGraphicsMode(void)const")]
+    pub fn graphics_mode(&self) -> i32 {
+        self.graphics_mode
+    }
 }
 
 // 0xb340 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
+// IDA 0xb340: D1 dtor; restores EnumPropDescriptor vtable, deletes owned name slot if non-null; Rust Drop covers it.
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::~EnumPropDescriptor() [0xb340]")]
-pub fn stub_0xb340() -> ! {
-    todo!("0xb340 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEED1Ev")
+pub fn enum_prop_desc_graphics_mode_d1() {
 }
 
 // 0xb364 — __ZNK3RBX15CRenderSettings23getFrameRateManagerModeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getFrameRateManagerMode(void)const")]
-pub fn stub_0xb364() -> ! {
-    todo!("0xb364 __ZNK3RBX15CRenderSettings23getFrameRateManagerModeEv")
+// IDA 0xb364: 2 insns (LDR [R0,#0x10]); returns the frame-rate-manager-mode word.
+impl CRenderSettingsItem {
+    #[doc(alias = "RBX::CRenderSettings::getFrameRateManagerMode(void)const")]
+    pub fn frame_rate_manager_mode(&self) -> i32 {
+        self.frame_rate_manager_mode
+    }
 }
 
 // 0xb368 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
+// IDA 0xb368: D1 dtor; restores EnumPropDescriptor vtable, deletes owned name slot if non-null; Rust Drop covers it.
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::~EnumPropDescriptor() [0xb368]")]
-pub fn stub_0xb368() -> ! {
-    todo!("0xb368 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEED1Ev")
+pub fn enum_prop_desc_frame_rate_manager_mode_d1() {
 }
 
 // 0xb38c — __ZNK3RBX15CRenderSettings15getQualityLevelEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getQualityLevel(void)const")]
-pub fn stub_0xb38c() -> ! {
-    todo!("0xb38c __ZNK3RBX15CRenderSettings15getQualityLevelEv")
+// IDA 0xb38c: 2 insns (LDR [R0,#0x14]); returns the quality-level word.
+impl CRenderSettingsItem {
+    #[doc(alias = "RBX::CRenderSettings::getQualityLevel(void)const")]
+    pub fn quality_level(&self) -> i32 {
+        self.quality_level
+    }
 }
 
 // 0xb390 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
+// IDA 0xb390: D1 dtor; restores EnumPropDescriptor vtable, deletes owned name slot if non-null; Rust Drop covers it.
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::~EnumPropDescriptor() [0xb390]")]
-pub fn stub_0xb390() -> ! {
-    todo!("0xb390 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEED1Ev")
+pub fn enum_prop_desc_quality_level_d1() {
 }
 
 // 0xb3b4 — __ZNK3RBX15CRenderSettings23getAlwaysDrawConnectorsEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getAlwaysDrawConnectors(void)const")]
-pub fn stub_0xb3b4() -> ! {
-    todo!("0xb3b4 __ZNK3RBX15CRenderSettings23getAlwaysDrawConnectorsEv")
+// IDA 0xb3b4: 2 insns (LDRB [R0,#0x3B]); returns the always-draw-connectors byte.
+impl CRenderSettingsItem {
+    #[doc(alias = "RBX::CRenderSettings::getAlwaysDrawConnectors(void)const")]
+    pub fn always_draw_connectors(&self) -> bool {
+        self.always_draw_connectors
+    }
 }
 
 // 0xb3bc — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItembED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
+// IDA 0xb3bc: D1 dtor; restores TypedPropertyDescriptor<bool> vtable, deletes owned slot if non-null; Rust Drop covers it.
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::~PropDescriptor() [0xb3bc]")]
-pub fn stub_0xb3bc() -> ! {
-    todo!("0xb3bc __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItembED1Ev")
+pub fn prop_desc_bool_d1() {
 }
 
 // 0xb3e0 — __ZNK3RBX15CRenderSettings18getShowAggregationEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getShowAggregation(void)const")]
-pub fn stub_0xb3e0() -> ! {
-    todo!("0xb3e0 __ZNK3RBX15CRenderSettings18getShowAggregationEv")
+// IDA 0xb3e0: 2 insns (LDRB [R0,#0x3A]); returns the show-aggregation byte.
+impl CRenderSettingsItem {
+    #[doc(alias = "RBX::CRenderSettings::getShowAggregation(void)const")]
+    pub fn show_aggregation(&self) -> bool {
+        self.show_aggregation
+    }
 }
 
 // 0xb3e8 — __ZNK3RBX15CRenderSettings12getAASamplesEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getAASamples(void)const")]
-pub fn stub_0xb3e8() -> ! {
-    todo!("0xb3e8 __ZNK3RBX15CRenderSettings12getAASamplesEv")
+// IDA 0xb3e8: 5 insns; ignores this, returns the RBX::CRenderSettings::aaSamples global.
+impl CRenderSettingsItem {
+    #[doc(alias = "RBX::CRenderSettings::getAASamples(void)const")]
+    pub fn aa_samples(&self) -> i32 {
+        AA_SAMPLES.load(Ordering::Relaxed)
+    }
 }
 
 // 0xb3f8 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
+// IDA 0xb3f8: D1 dtor; restores EnumPropDescriptor vtable, deletes owned name slot if non-null; Rust Drop covers it.
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::~EnumPropDescriptor() [0xb3f8]")]
-pub fn stub_0xb3f8() -> ! {
-    todo!("0xb3f8 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEED1Ev")
+pub fn enum_prop_desc_aa_samples_d1() {
 }
 
 // 0xb41c — __ZNK3RBX15CRenderSettings13getShadowModeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getShadowMode(void)const")]
-pub fn stub_0xb41c() -> ! {
-    todo!("0xb41c __ZNK3RBX15CRenderSettings13getShadowModeEv")
+// IDA 0xb41c: 2 insns (LDR [R0,#0xC]); returns the shadow-mode word.
+impl CRenderSettingsItem {
+    #[doc(alias = "RBX::CRenderSettings::getShadowMode(void)const")]
+    pub fn shadow_mode(&self) -> i32 {
+        self.shadow_mode
+    }
 }
 
 // 0xb420 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
+// IDA 0xb420: D1 dtor; restores EnumPropDescriptor vtable, deletes owned name slot if non-null; Rust Drop covers it.
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::~EnumPropDescriptor() [0xb420]")]
-pub fn stub_0xb420() -> ! {
-    todo!("0xb420 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEED1Ev")
+pub fn enum_prop_desc_shadow_mode_d1() {
 }
 
 // 0xb444 — __ZNK3RBX15CRenderSettings19getAntialiasingModeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getAntialiasingMode(void)const")]
-pub fn stub_0xb444() -> ! {
-    todo!("0xb444 __ZNK3RBX15CRenderSettings19getAntialiasingModeEv")
+// IDA 0xb444: 2 insns (LDR [R0,#8]); returns the antialiasing-mode word.
+impl CRenderSettingsItem {
+    #[doc(alias = "RBX::CRenderSettings::getAntialiasingMode(void)const")]
+    pub fn antialiasing_mode(&self) -> i32 {
+        self.antialiasing_mode
+    }
 }
 
 // 0xb448 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
+// IDA 0xb448: D1 dtor; restores EnumPropDescriptor vtable, deletes owned name slot if non-null; Rust Drop covers it.
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::~EnumPropDescriptor() [0xb448]")]
-pub fn stub_0xb448() -> ! {
-    todo!("0xb448 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEED1Ev")
+pub fn enum_prop_desc_antialiasing_mode_d1() {
 }
 
 // 0xb46c — __ZNK3RBX15CRenderSettings25getDebugShowBoundingBoxesEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getDebugShowBoundingBoxes(void)const")]
-pub fn stub_0xb46c() -> ! {
-    todo!("0xb46c __ZNK3RBX15CRenderSettings25getDebugShowBoundingBoxesEv")
+// IDA 0xb46c: 2 insns (LDRB [R0,#0x28]); returns the debug-show-bounding-boxes byte.
+impl CRenderSettingsItem {
+    #[doc(alias = "RBX::CRenderSettings::getDebugShowBoundingBoxes(void)const")]
+    pub fn debug_show_bounding_boxes(&self) -> bool {
+        self.debug_show_bounding_boxes
+    }
 }
 
 // 0xb478 — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
+// IDA 0xb478: D1 dtor; restores TypedPropertyDescriptor<int> vtable, deletes owned slot if non-null; Rust Drop covers it.
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::~PropDescriptor()")]
-pub fn stub_0xb478() -> ! {
-    todo!("0xb478 __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiED1Ev")
+pub fn prop_desc_int_d1() {
 }
 
 // 0xb4a8 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
+// IDA 0xb4a8: D1 dtor; restores EnumPropDescriptor vtable, deletes owned name slot if non-null; Rust Drop covers it.
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::~EnumPropDescriptor() [0xb4a8]")]
-pub fn stub_0xb4a8() -> ! {
-    todo!("0xb4a8 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEED1Ev")
+pub fn enum_prop_desc_resolution_preset_d1() {
 }
 
 // 0xb4d0 — __ZN3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
+// IDA 0xb4d0: D1 dtor; restores FunctionDescriptor vtable, _M_clear of the signature list at +8; Rust Drop covers it.
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_0xb4d0() -> ! {
-    todo!("0xb4d0 __ZN3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EED1Ev")
+pub fn bound_func_desc_d1() {
 }
 
 // 0xb4fc — __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEEC2Ev
 // type: RBX::Instance *__fastcall(RBX::Instance *)
+// IDA 0xb4fc: Instance base ctor, vtable installs, ClassRegistrar++, +92 flag, name "RenderSettings"; field init shared with CRenderSettingsItem::new (IDA 0x97d0).
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEEC2Ev")]
-pub fn stub_0xb4fc() -> ! {
-    todo!("0xb4fc __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEEC2Ev")
+pub fn global_render_settings_item() -> CRenderSettingsItem {
+    CRenderSettingsItem::new()
 }
 
 // 0xb76c — __ZN3rbx7signals16signal_with_argsILi1EFvPKN3RBX10Reflection18PropertyDescriptorEEEclES6_
