@@ -15,7 +15,7 @@ use crate::generated_189::{
     PlacementAny, TypedHolder, creator_type_holder, gear_genre_setting_holder,
     gear_type_holder, genre_holder,
 };
-use crate::instance::{EnumDesc, stub_0x41d3d0, stub_0x41d590, stub_0x41d864, stub_0x41da24};
+use crate::instance::{EnumDesc, ScriptService, stub_0x41d3d0, stub_0x41d590, stub_0x41d864, stub_0x41da24};
 use std::sync::LazyLock;
 
 /// Shared `GearType` name/value table (IDA `0x41da24` pairs); seeded once
@@ -43,6 +43,44 @@ fn genre_desc() -> &'static EnumDesc {
 fn creator_type_desc() -> &'static EnumDesc {
     LazyLock::force(&CREATOR_TYPE_DESC)
 }
+/// Rust model of `RBX::Reflection::ClassDescriptor` (IDA `0x4419a8` family):
+/// the lazily built per-class descriptor hanging off the `Instance` base
+/// descriptor. `__cxa_guard` / `__cxa_atexit` collapse into `LazyLock`, the
+/// same treatment as `generated_190::RenderSettingsClass`.
+#[derive(Debug)]
+pub struct ClassDescriptor {
+    pub name: &'static str,
+}
+/// IDA 0x4419a8 `classDescriptor()::s` for `BaseScript`.
+static BASE_SCRIPT_CLASS: LazyLock<ClassDescriptor> =
+    LazyLock::new(|| ClassDescriptor { name: "BaseScript" });
+/// IDA 0x442248 `classDescriptor()::s` for `GuiImageButton`.
+static GUI_IMAGE_BUTTON_CLASS: LazyLock<ClassDescriptor> =
+    LazyLock::new(|| ClassDescriptor { name: "GuiImageButton" });
+/// IDA 0x4426c8 `classDescriptor()::s` for `GuiBase`.
+static GUI_BASE_CLASS: LazyLock<ClassDescriptor> =
+    LazyLock::new(|| ClassDescriptor { name: "GuiBase" });
+/// IDA 0x4430a0 `classDescriptor()::s` for `MegaClusterInstance`.
+static MEGA_CLUSTER_CLASS: LazyLock<ClassDescriptor> =
+    LazyLock::new(|| ClassDescriptor { name: "MegaClusterInstance" });
+/// IDA 0x4497f4 `classDescriptor()::s` for `ScriptService`.
+static SCRIPT_SERVICE_CLASS: LazyLock<ClassDescriptor> =
+    LazyLock::new(|| ClassDescriptor { name: "ScriptService" });
+/// Cached class index behind `doGetClassIndex<ScriptInformationProvider>`
+/// (IDA `0x44c550`).
+static SCRIPT_INFO_PROVIDER_INDEX: AtomicUsize = AtomicUsize::new(0);
+/// Cached class index behind `doGetClassIndex<DebrisService>` (IDA `0x44ca78`).
+static DEBRIS_SERVICE_INDEX: AtomicUsize = AtomicUsize::new(0);
+/// Cached class index behind `doGetClassIndex<GamePassService>` (IDA `0x44d278`).
+static GAME_PASS_SERVICE_INDEX: AtomicUsize = AtomicUsize::new(0);
+/// Cached class index behind `doGetClassIndex<SocialService>` (IDA `0x44da78`).
+static SOCIAL_SERVICE_INDEX: AtomicUsize = AtomicUsize::new(0);
+/// Cached class index behind `doGetClassIndex<InsertService>` (IDA `0x44e22c`).
+static INSERT_SERVICE_INDEX: AtomicUsize = AtomicUsize::new(0);
+/// Cached class index behind `doGetClassIndex<RenderHooksService>` (IDA `0x44e51c`).
+static RENDER_HOOKS_SERVICE_INDEX: AtomicUsize = AtomicUsize::new(0);
+/// Cached class index behind `doGetClassIndex<FriendService>` (IDA `0x44edcc`).
+static FRIEND_SERVICE_INDEX: AtomicUsize = AtomicUsize::new(0);
 
 /// Cached class index behind `doGetClassIndex<RunService>` (IDA `0x3af08`):
 /// guard-once assignment from the provider counter, shared crate-wide via
@@ -583,127 +621,341 @@ pub fn stub_43adec(value: i32, out: &mut String) {
 
 // 0x4419a8 — __ZN3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_4419a8() -> ! { todo!("0x4419a8 __ZN3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv") }
+pub fn stub_4419a8() -> &'static ClassDescriptor {
+    // IDA 0x4419a8: `Described<BaseScript,...>::classDescriptor()` —
+    // `__cxa_guard_acquire` once-check, base
+    // `Described<Instance>::classDescriptor()` touch, `ClassDescriptor` C2
+    // with ("BaseScript", base), `__cxa_atexit`, guard release, return the
+    // static. Guard/atexit collapse into `LazyLock`, the same shape as
+    // `generated_190::stub_0xfa00`.
+    LazyLock::force(&BASE_SCRIPT_CLASS)
+}
 
 // 0x442248 — __ZN3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_442248() -> ! { todo!("0x442248 __ZN3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv") }
+pub fn stub_442248() -> &'static ClassDescriptor {
+    // IDA 0x442248: `Described<GuiImageButton,...>::classDescriptor()` —
+    // same once-shape as 0x4419a8 with ("GuiImageButton", base).
+    LazyLock::force(&GUI_IMAGE_BUTTON_CLASS)
+}
 
 // 0x4426c8 — __ZN3RBX10Reflection9DescribedINS_7GuiBaseELZNS_8sGuiBaseEENS_17NonFactoryProductINS_8InstanceELZNS_8sGuiBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7GuiBaseELZNS_8sGuiBaseEENS_17NonFactoryProductINS_8InstanceELZNS_8sGuiBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_4426c8() -> ! { todo!("0x4426c8 __ZN3RBX10Reflection9DescribedINS_7GuiBaseELZNS_8sGuiBaseEENS_17NonFactoryProductINS_8InstanceELZNS_8sGuiBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv") }
+pub fn stub_4426c8() -> &'static ClassDescriptor {
+    // IDA 0x4426c8: `Described<GuiBase,...>::classDescriptor()` — same
+    // once-shape as 0x4419a8 with ("GuiBase", base).
+    LazyLock::force(&GUI_BASE_CLASS)
+}
 
 // 0x4430a0 — __ZN3RBX10Reflection9DescribedINS_19MegaClusterInstanceELZNS_12sMegaClusterEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sMegaClusterEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_19MegaClusterInstanceELZNS_12sMegaClusterEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sMegaClusterEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_4430a0() -> ! { todo!("0x4430a0 __ZN3RBX10Reflection9DescribedINS_19MegaClusterInstanceELZNS_12sMegaClusterEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sMegaClusterEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv") }
+pub fn stub_4430a0() -> &'static ClassDescriptor {
+    // IDA 0x4430a0: `Described<MegaClusterInstance,...>::classDescriptor()`
+    // — same once-shape as 0x4419a8 with ("MegaClusterInstance", base).
+    LazyLock::force(&MEGA_CLUSTER_CLASS)
+}
 
 // 0x4497f4 — __ZN3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_4497f4() -> ! { todo!("0x4497f4 __ZN3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv") }
+pub fn stub_4497f4() -> &'static ClassDescriptor {
+    // IDA 0x4497f4: `Described<ScriptService,...>::classDescriptor()` —
+    // same once-shape as 0x4419a8 with ("ScriptService", base).
+    LazyLock::force(&SCRIPT_SERVICE_CLASS)
+}
 
 // 0x449914 — __ZN3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_449914() -> ! { todo!("0x449914 __ZN3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_449914(_service: &mut ScriptService) {
+    // IDA 0x449914: `Described<ScriptService,...>::D1` tail-calls
+    // `Instance::~Instance`. Member drops collapse into Rust drop; drop
+    // glue, no-op. Same shape as `generated_190::stub_0xfb1c`.
+}
 
 // 0x449918 — __ZN3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_449918() -> ! { todo!("0x449918 __ZN3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_449918(_service: &mut ScriptService) {
+    // IDA 0x449918: `Described<ScriptService,...>::D0` — `Instance` D2
+    // then `operator delete`. The free collapses into Rust ownership.
+    // Same shape as `generated_190::stub_0xfb20`.
+}
 
 // 0x4499b8 — __ZThn32_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_4499b8() -> ! { todo!("0x4499b8 __ZThn32_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_4499b8(_service: &mut ScriptService) {
+    // IDA 0x4499b8: `ZThn32` D1 — `this -= 32`, then the D1 above. Same
+    // collapse as `generated_190::stub_0xfb34`.
+}
 
 // 0x4499c0 — __ZThn32_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_4499c0() -> ! { todo!("0x4499c0 __ZThn32_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_4499c0(_service: &mut ScriptService) {
+    // IDA 0x4499c0: `ZThn32` D0 — `this -= 32`, D0 + delete. Same collapse
+    // as `generated_190::stub_0xfb3c`.
+}
 
 // 0x449a64 — __ZThn36_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_449a64() -> ! { todo!("0x449a64 __ZThn36_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_449a64(_service: &mut ScriptService) {
+    // IDA 0x449a64: `ZThn36` D1 — `this -= 36`, then the D1 above. Same
+    // collapse as `generated_190::stub_0xfb54`.
+}
 
 // 0x449a6c — __ZThn36_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_449a6c() -> ! { todo!("0x449a6c __ZThn36_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_449a6c(_service: &mut ScriptService) {
+    // IDA 0x449a6c: `ZThn36` D0 — `this -= 36`, D0 + delete. Same collapse
+    // as `generated_190::stub_0xfb5c`.
+}
 
 // 0x44c550 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_25ScriptInformationProviderEEEmv
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_25ScriptInformationProviderEEEmv")]
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::ScriptInformationProvider>(void)")]
-pub fn stub_44c550() -> ! { todo!("0x44c550 __ZN3RBX15ServiceProvider15doGetClassIndexINS_25ScriptInformationProviderEEEmv") }
+pub fn stub_44c550() -> usize {
+    // IDA 0x44c550: `doGetClassIndex<ScriptInformationProvider>` —
+    // guard-once static `index = ServiceProvider::newIndex(1)`, then the
+    // cached index. Same shape as 0x3af08 above.
+    if SCRIPT_INFO_PROVIDER_INDEX.load(Ordering::Relaxed) == 0 {
+        let fresh = crate::instance::alloc_class_index();
+        SCRIPT_INFO_PROVIDER_INDEX.store(fresh, Ordering::Relaxed);
+    }
+    SCRIPT_INFO_PROVIDER_INDEX.load(Ordering::Relaxed)
+}
 
 // 0x44c6f0 — __ZNK3RBX15ServiceProvider4findINS_13DebrisServiceEEEPT_v
 #[doc(alias = "__ZNK3RBX15ServiceProvider4findINS_13DebrisServiceEEEPT_v")]
 #[doc(alias = "RBX::DebrisService * RBX::ServiceProvider::find<RBX::DebrisService>(void)const")]
-pub fn stub_44c6f0() -> ! { todo!("0x44c6f0 __ZNK3RBX15ServiceProvider4findINS_13DebrisServiceEEEPT_v") }
+pub fn stub_44c6f0(instance: *const Instance) -> *const Instance {
+    // IDA 0x44c6f0: `find<DebrisService>` — provider search then class
+    // scan, null on miss. Same root-walk + pre-order shape as
+    // `instance::stub_0x3ff614`, matching the `DebrisService` class.
+    // SAFETY: `instance` must be null or point to a valid `Instance` whose
+    // whole ancestry/subtree outlives the call.
+    unsafe {
+        let mut root = instance;
+        while !root.is_null() && !(*root).parent.is_null() {
+            root = (*root).parent;
+        }
+        if root.is_null() {
+            return core::ptr::null();
+        }
+        let mut stack: Vec<*const Instance> = vec![root];
+        while let Some(node) = stack.pop() {
+            if instance_is_a(node, "DebrisService") {
+                return node;
+            }
+            let mut children: Vec<*const Instance> = (*node)
+                .children
+                .iter()
+                .map(|child| SharedPtr::as_ptr(child) as *const Instance)
+                .collect();
+            children.reverse();
+            stack.extend(children);
+        }
+        core::ptr::null()
+    }
+}
 
 // 0x44ca74 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_13DebrisServiceEEEvv
 #[doc(alias = "__ZN3RBX15ServiceProvider19callDoGetClassIndexINS_13DebrisServiceEEEvv")]
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::DebrisService>(void)")]
-pub fn stub_44ca74() -> ! { todo!("0x44ca74 __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_13DebrisServiceEEEvv") }
+pub fn stub_44ca74() -> usize {
+    // IDA 0x44ca74: `callDoGetClassIndex<DebrisService>` — forwards to the
+    // cached `doGetClassIndex`. Same shape as `instance::stub_0x3ff954`.
+    stub_44ca78()
+}
 
 // 0x44ca78 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_13DebrisServiceEEEmv
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_13DebrisServiceEEEmv")]
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::DebrisService>(void)")]
-pub fn stub_44ca78() -> ! { todo!("0x44ca78 __ZN3RBX15ServiceProvider15doGetClassIndexINS_13DebrisServiceEEEmv") }
+pub fn stub_44ca78() -> usize {
+    // IDA 0x44ca78: `doGetClassIndex<DebrisService>` — guard-once static
+    // `index = ServiceProvider::newIndex(1)`, then the cached index.
+    // Same shape as 0x3af08 above.
+    if DEBRIS_SERVICE_INDEX.load(Ordering::Relaxed) == 0 {
+        let fresh = crate::instance::alloc_class_index();
+        DEBRIS_SERVICE_INDEX.store(fresh, Ordering::Relaxed);
+    }
+    DEBRIS_SERVICE_INDEX.load(Ordering::Relaxed)
+}
 
 // 0x44cef0 — __ZNK3RBX15ServiceProvider4findINS_15GamePassServiceEEEPT_v
 #[doc(alias = "__ZNK3RBX15ServiceProvider4findINS_15GamePassServiceEEEPT_v")]
 #[doc(alias = "RBX::GamePassService * RBX::ServiceProvider::find<RBX::GamePassService>(void)const")]
-pub fn stub_44cef0() -> ! { todo!("0x44cef0 __ZNK3RBX15ServiceProvider4findINS_15GamePassServiceEEEPT_v") }
+pub fn stub_44cef0(instance: *const Instance) -> *const Instance {
+    // IDA 0x44cef0: `find<GamePassService>` — same root-walk + pre-order
+    // shape as 0x44c6f0, matching the `GamePassService` class.
+    // SAFETY: same contract as 0x44c6f0.
+    unsafe {
+        let mut root = instance;
+        while !root.is_null() && !(*root).parent.is_null() {
+            root = (*root).parent;
+        }
+        if root.is_null() {
+            return core::ptr::null();
+        }
+        let mut stack: Vec<*const Instance> = vec![root];
+        while let Some(node) = stack.pop() {
+            if instance_is_a(node, "GamePassService") {
+                return node;
+            }
+            let mut children: Vec<*const Instance> = (*node)
+                .children
+                .iter()
+                .map(|child| SharedPtr::as_ptr(child) as *const Instance)
+                .collect();
+            children.reverse();
+            stack.extend(children);
+        }
+        core::ptr::null()
+    }
+}
 
 // 0x44d274 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_15GamePassServiceEEEvv
 #[doc(alias = "__ZN3RBX15ServiceProvider19callDoGetClassIndexINS_15GamePassServiceEEEvv")]
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::GamePassService>(void)")]
-pub fn stub_44d274() -> ! { todo!("0x44d274 __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_15GamePassServiceEEEvv") }
+pub fn stub_44d274() -> usize {
+    // IDA 0x44d274: `callDoGetClassIndex<GamePassService>` — forwards to
+    // the cached `doGetClassIndex`. Same shape as 0x44ca74.
+    stub_44d278()
+}
 
 // 0x44d278 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_15GamePassServiceEEEmv
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_15GamePassServiceEEEmv")]
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::GamePassService>(void)")]
-pub fn stub_44d278() -> ! { todo!("0x44d278 __ZN3RBX15ServiceProvider15doGetClassIndexINS_15GamePassServiceEEEmv") }
+pub fn stub_44d278() -> usize {
+    // IDA 0x44d278: `doGetClassIndex<GamePassService>` — guard-once static
+    // `index = ServiceProvider::newIndex(1)`, then the cached index.
+    // Same shape as 0x3af08 above.
+    if GAME_PASS_SERVICE_INDEX.load(Ordering::Relaxed) == 0 {
+        let fresh = crate::instance::alloc_class_index();
+        GAME_PASS_SERVICE_INDEX.store(fresh, Ordering::Relaxed);
+    }
+    GAME_PASS_SERVICE_INDEX.load(Ordering::Relaxed)
+}
 
 // 0x44d6f0 — __ZNK3RBX15ServiceProvider4findINS_13SocialServiceEEEPT_v
 #[doc(alias = "__ZNK3RBX15ServiceProvider4findINS_13SocialServiceEEEPT_v")]
 #[doc(alias = "RBX::SocialService * RBX::ServiceProvider::find<RBX::SocialService>(void)const")]
-pub fn stub_44d6f0() -> ! { todo!("0x44d6f0 __ZNK3RBX15ServiceProvider4findINS_13SocialServiceEEEPT_v") }
+pub fn stub_44d6f0(instance: *const Instance) -> *const Instance {
+    // IDA 0x44d6f0: `find<SocialService>` — same root-walk + pre-order
+    // shape as 0x44c6f0, matching the `SocialService` class.
+    // SAFETY: same contract as 0x44c6f0.
+    unsafe {
+        let mut root = instance;
+        while !root.is_null() && !(*root).parent.is_null() {
+            root = (*root).parent;
+        }
+        if root.is_null() {
+            return core::ptr::null();
+        }
+        let mut stack: Vec<*const Instance> = vec![root];
+        while let Some(node) = stack.pop() {
+            if instance_is_a(node, "SocialService") {
+                return node;
+            }
+            let mut children: Vec<*const Instance> = (*node)
+                .children
+                .iter()
+                .map(|child| SharedPtr::as_ptr(child) as *const Instance)
+                .collect();
+            children.reverse();
+            stack.extend(children);
+        }
+        core::ptr::null()
+    }
+}
 
 // 0x44da74 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_13SocialServiceEEEvv
 #[doc(alias = "__ZN3RBX15ServiceProvider19callDoGetClassIndexINS_13SocialServiceEEEvv")]
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::SocialService>(void)")]
-pub fn stub_44da74() -> ! { todo!("0x44da74 __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_13SocialServiceEEEvv") }
+pub fn stub_44da74() -> usize {
+    // IDA 0x44da74: `callDoGetClassIndex<SocialService>` — forwards to the
+    // cached `doGetClassIndex`. Same shape as 0x44ca74.
+    stub_44da78()
+}
 
 // 0x44da78 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_13SocialServiceEEEmv
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_13SocialServiceEEEmv")]
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::SocialService>(void)")]
-pub fn stub_44da78() -> ! { todo!("0x44da78 __ZN3RBX15ServiceProvider15doGetClassIndexINS_13SocialServiceEEEmv") }
+pub fn stub_44da78() -> usize {
+    // IDA 0x44da78: `doGetClassIndex<SocialService>` — guard-once static
+    // `index = ServiceProvider::newIndex(1)`, then the cached index.
+    // Same shape as 0x3af08 above.
+    if SOCIAL_SERVICE_INDEX.load(Ordering::Relaxed) == 0 {
+        let fresh = crate::instance::alloc_class_index();
+        SOCIAL_SERVICE_INDEX.store(fresh, Ordering::Relaxed);
+    }
+    SOCIAL_SERVICE_INDEX.load(Ordering::Relaxed)
+}
 
 // 0x44e228 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_13InsertServiceEEEvv
 #[doc(alias = "__ZN3RBX15ServiceProvider19callDoGetClassIndexINS_13InsertServiceEEEvv")]
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::InsertService>(void)")]
-pub fn stub_44e228() -> ! { todo!("0x44e228 __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_13InsertServiceEEEvv") }
+pub fn stub_44e228() -> usize {
+    // IDA 0x44e228: `callDoGetClassIndex<InsertService>` — forwards to the
+    // cached `doGetClassIndex`. Same shape as 0x44ca74.
+    stub_44e22c()
+}
 
 // 0x44e22c — __ZN3RBX15ServiceProvider15doGetClassIndexINS_13InsertServiceEEEmv
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_13InsertServiceEEEmv")]
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::InsertService>(void)")]
-pub fn stub_44e22c() -> ! { todo!("0x44e22c __ZN3RBX15ServiceProvider15doGetClassIndexINS_13InsertServiceEEEmv") }
+pub fn stub_44e22c() -> usize {
+    // IDA 0x44e22c: `doGetClassIndex<InsertService>` — guard-once static
+    // `index = ServiceProvider::newIndex(1)`, then the cached index.
+    // Same shape as 0x3af08 above.
+    if INSERT_SERVICE_INDEX.load(Ordering::Relaxed) == 0 {
+        let fresh = crate::instance::alloc_class_index();
+        INSERT_SERVICE_INDEX.store(fresh, Ordering::Relaxed);
+    }
+    INSERT_SERVICE_INDEX.load(Ordering::Relaxed)
+}
 
 // 0x44e518 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_18RenderHooksServiceEEEvv
 #[doc(alias = "__ZN3RBX15ServiceProvider19callDoGetClassIndexINS_18RenderHooksServiceEEEvv")]
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::RenderHooksService>(void)")]
-pub fn stub_44e518() -> ! { todo!("0x44e518 __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_18RenderHooksServiceEEEvv") }
+pub fn stub_44e518() -> usize {
+    // IDA 0x44e518: `callDoGetClassIndex<RenderHooksService>` — forwards to
+    // the cached `doGetClassIndex`. Same shape as 0x44ca74.
+    stub_44e51c()
+}
 
 // 0x44e51c — __ZN3RBX15ServiceProvider15doGetClassIndexINS_18RenderHooksServiceEEEmv
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_18RenderHooksServiceEEEmv")]
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::RenderHooksService>(void)")]
-pub fn stub_44e51c() -> ! { todo!("0x44e51c __ZN3RBX15ServiceProvider15doGetClassIndexINS_18RenderHooksServiceEEEmv") }
+pub fn stub_44e51c() -> usize {
+    // IDA 0x44e51c: `doGetClassIndex<RenderHooksService>` — guard-once
+    // static `index = ServiceProvider::newIndex(1)`, then the cached index.
+    // Same shape as 0x3af08 above.
+    if RENDER_HOOKS_SERVICE_INDEX.load(Ordering::Relaxed) == 0 {
+        let fresh = crate::instance::alloc_class_index();
+        RENDER_HOOKS_SERVICE_INDEX.store(fresh, Ordering::Relaxed);
+    }
+    RENDER_HOOKS_SERVICE_INDEX.load(Ordering::Relaxed)
+}
 
 // 0x44edc8 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_13FriendServiceEEEvv
 #[doc(alias = "__ZN3RBX15ServiceProvider19callDoGetClassIndexINS_13FriendServiceEEEvv")]
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::FriendService>(void)")]
-pub fn stub_44edc8() -> ! { todo!("0x44edc8 __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_13FriendServiceEEEvv") }
+pub fn stub_44edc8() -> usize {
+    // IDA 0x44edc8: `callDoGetClassIndex<FriendService>` — forwards to the
+    // cached `doGetClassIndex`. Same shape as 0x44ca74.
+    stub_44edcc()
+}
 
 // 0x44edcc — __ZN3RBX15ServiceProvider15doGetClassIndexINS_13FriendServiceEEEmv
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_13FriendServiceEEEmv")]
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::FriendService>(void)")]
-pub fn stub_44edcc() -> ! { todo!("0x44edcc __ZN3RBX15ServiceProvider15doGetClassIndexINS_13FriendServiceEEEmv") }
+pub fn stub_44edcc() -> usize {
+    // IDA 0x44edcc: `doGetClassIndex<FriendService>` — guard-once static
+    // `index = ServiceProvider::newIndex(1)`, then the cached index.
+    // Same shape as 0x3af08 above.
+    if FRIEND_SERVICE_INDEX.load(Ordering::Relaxed) == 0 {
+        let fresh = crate::instance::alloc_class_index();
+        FRIEND_SERVICE_INDEX.store(fresh, Ordering::Relaxed);
+    }
+    FRIEND_SERVICE_INDEX.load(Ordering::Relaxed)
+}
 
 // 0x44eea4 — __ZNK3RBX15ServiceProvider4findINS_15GeometryServiceEEEPT_v
 #[doc(alias = "__ZNK3RBX15ServiceProvider4findINS_15GeometryServiceEEEPT_v")]
