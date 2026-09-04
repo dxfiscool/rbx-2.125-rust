@@ -1517,6 +1517,22 @@ pub struct ForceField {
 /// (IDA `0x7059a0`) and `PAIR_SLOT_STATIC_MUTEX` (IDA `0x7094e4`).
 static IF_SLOT_STATIC_MUTEX: Mutex<()> = Mutex::new(());
 
+/// Rust model of `RBX::ExtrudedPartInstance` (IDA `0x4a6e80`): the extruded
+/// part with the `VisualTrussStyle` word at `+82` behind `get/setVisualTrussStyle`
+/// (IDA `0x4a772c`/`0x4a6e24`); the remaining `PartInstance` base lands with
+/// the part batch.
+#[derive(Default)]
+pub struct ExtrudedPartInstance {
+    pub visual_truss_style: VisualTrussStyle,
+}
+
+/// Rust model of `RBX::Reflection::EnumPropDescriptor<ExtrudedPartInstance,
+/// VisualTrussStyle>` (IDA `0x4a88f0`): same storage-only family treatment
+/// as `DataModelEnumPropDesc`.
+pub struct ExtrudedEnumPropDesc {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::Texture` (IDA `0x491750`): the texture decal; members
 /// land with the GUI batch.
 #[derive(Default)]
@@ -29182,29 +29198,49 @@ pub fn stub_0x4a5804() -> ! {
 // 0x4a6e24 — __ZN3RBX20ExtrudedPartInstance19setVisualTrussStyleENS0_16VisualTrussStyleE
 #[doc(alias = "RBX::ExtrudedPartInstance::setVisualTrussStyle(RBX::ExtrudedPartInstance::VisualTrussStyle)")]
 // was: RBX::ExtrudedPartInstance::setVisualTrussStyle(RBX::ExtrudedPartInstance::VisualTrussStyle)
-pub fn stub_0x4a6e24() -> ! {
-    todo!("0x4a6e24 RBX::ExtrudedPartInstance::setVisualTrussStyle(RBX::ExtrudedPartInstance::VisualTrussStyle)")
+pub fn stub_0x4a6e24(part: &mut ExtrudedPartInstance, style: VisualTrussStyle) {
+    // IDA 0x4a6e24: no-op when `a1[82] == style` (disasm 0x4a6e2a-0x4a6e30),
+    // else store the style word, raise the `styleXml` + type property
+    // notifications, flag on-demand write, and dirty the adornable render
+    // set. The notifications/render collapse here; the store is the
+    // observable state change.
+    if part.visual_truss_style != style {
+        part.visual_truss_style = style;
+    }
 }
 
 // 0x4a6e80 — __ZN3RBX20ExtrudedPartInstanceC1Ev
 #[doc(alias = "RBX::ExtrudedPartInstance::ExtrudedPartInstance(void)")]
 // was: RBX::ExtrudedPartInstance::ExtrudedPartInstance(void)
-pub fn stub_0x4a6e80() -> ! {
-    todo!("0x4a6e80 RBX::ExtrudedPartInstance::ExtrudedPartInstance(void)")
+pub fn stub_0x4a6e80() -> ExtrudedPartInstance {
+    // IDA 0x4a6e80: `ExtrudedPartInstance::C1` — `PartInstance` base init
+    // plus member setup; the style word `+82` is stored `0`
+    // (`MOVS R2, #0; STR.W R2, [R0, #0x148]`, disasm 0x4a6fdc-0x4a6ff0), so
+    // the model default (`AlternatingSupports = 0`) is the constructed
+    // state; the base init collapses.
+    ExtrudedPartInstance::default()
 }
 
 // 0x4a7184 — __ZN3RBX20ExtrudedPartInstanceD0Ev
 #[doc(alias = "RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 // was: RBX::ExtrudedPartInstance::~ExtrudedPartInstance()
-pub fn stub_0x4a7184() -> ! {
-    todo!("0x4a7184 RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
+pub fn stub_0x4a7184(_part: *mut ExtrudedPartInstance) {
+    // IDA 0x4a7184: `ExtrudedPartInstance::D0` — vtable installs plus
+    // memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_part` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_part));
+    }
 }
 
 // 0x4a7234 — __ZN3RBX20ExtrudedPartInstanceD1Ev
 #[doc(alias = "RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 // was: RBX::ExtrudedPartInstance::~ExtrudedPartInstance()
-pub fn stub_0x4a7234() -> ! {
-    todo!("0x4a7234 RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
+pub fn stub_0x4a7234(_part: *mut ExtrudedPartInstance) {
+    // IDA 0x4a7234: `ExtrudedPartInstance::D1` — a single
+    // `PartInstance::~PartInstance` call (decompiled); no members carry
+    // state, so the memberwise teardown collapses.
+    // SAFETY: `_part` must point to a valid `ExtrudedPartInstance`.
 }
 
 // 0x4a7244 — __ZThn32_N3RBX20ExtrudedPartInstanceD0Ev
@@ -29266,8 +29302,9 @@ pub fn stub_0x4a72a8() -> ! {
 // 0x4a7524 — __ZNK3RBX20ExtrudedPartInstance18getResizeIncrementEv
 #[doc(alias = "RBX::ExtrudedPartInstance::getResizeIncrement(void)const")]
 // was: RBX::ExtrudedPartInstance::getResizeIncrement(void)const
-pub fn stub_0x4a7524() -> ! {
-    todo!("0x4a7524 RBX::ExtrudedPartInstance::getResizeIncrement(void)const")
+pub fn stub_0x4a7524(_part: &ExtrudedPartInstance) -> i32 {
+    // IDA 0x4a7524: `return 2` (decompiled) — the Studio resize increment.
+    2
 }
 
 // 0x4a7528 — __ZNK3RBX20ExtrudedPartInstance19getResizeHandleMaskEv
@@ -29280,36 +29317,54 @@ pub fn stub_0x4a7528() -> ! {
 // 0x4a772c — __ZNK3RBX20ExtrudedPartInstance19getVisualTrussStyleEv
 #[doc(alias = "RBX::ExtrudedPartInstance::getVisualTrussStyle(void)const")]
 // was: RBX::ExtrudedPartInstance::getVisualTrussStyle(void)const
-pub fn stub_0x4a772c() -> ! {
-    todo!("0x4a772c RBX::ExtrudedPartInstance::getVisualTrussStyle(void)const")
+pub fn stub_0x4a772c(part: &ExtrudedPartInstance) -> VisualTrussStyle {
+    // IDA 0x4a772c: `return *(this + 82)` (decompiled) — the style word
+    // stored by 0x4a6e24.
+    part.visual_truss_style
 }
 
 // 0x4a7734 — __ZN3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumPropDescriptor()")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumPropDescriptor()
-pub fn stub_0x4a7734() -> ! {
-    todo!("0x4a7734 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumPropDescriptor()")
+pub fn stub_0x4a7734(_desc: *mut ExtrudedEnumPropDesc) {
+    // IDA 0x4a7734: `EnumPropDescriptor<ExtrudedPartInstance,
+    // VisualTrussStyle>::D1` — memberwise teardown; dropping the box is the
+    // same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4a7768 — __ZNK3RBX20ExtrudedPartInstance11getPartTypeEv
 #[doc(alias = "RBX::ExtrudedPartInstance::getPartType(void)const")]
 // was: RBX::ExtrudedPartInstance::getPartType(void)const
-pub fn stub_0x4a7768() -> ! {
-    todo!("0x4a7768 RBX::ExtrudedPartInstance::getPartType(void)const")
+pub fn stub_0x4a7768(_part: &ExtrudedPartInstance) -> i32 {
+    // IDA 0x4a7768: `return 3` (decompiled) — the extruded part-type tag
+    // (outside the `LegacyPartType` 0-2 range, so kept as the raw tag).
+    3
 }
 
 // 0x4a7de0 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_20ExtrudedPartInstanceEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::ExtrudedPartInstance> RBX::Creatable<RBX::Instance>::create<RBX::ExtrudedPartInstance>(void)")]
 // was: boost::shared_ptr<RBX::ExtrudedPartInstance> RBX::Creatable<RBX::Instance>::create<RBX::ExtrudedPartInstance>(void)
-pub fn stub_0x4a7de0() -> ! {
-    todo!("0x4a7de0 boost::shared_ptr<RBX::ExtrudedPartInstance> RBX::Creatable<RBX::Instance>::create<RBX::ExtrudedPartInstance>(void)")
+pub fn stub_0x4a7de0() -> SharedPtr<ExtrudedPartInstance> {
+    // IDA 0x4a7de0: `Creatable::create<ExtrudedPartInstance>` — `operator
+    // new` + default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(ExtrudedPartInstance::default())
 }
 
 // 0x4a7e94 — __ZN5boost10shared_ptrIN3RBX20ExtrudedPartInstanceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::ExtrudedPartInstance>::shared_ptr<RBX::ExtrudedPartInstance,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::ExtrudedPartInstance>::shared_ptr<RBX::ExtrudedPartInstance,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x4a7e94() -> ! {
-    todo!("0x4a7e94 boost::shared_ptr<RBX::ExtrudedPartInstance>::shared_ptr<RBX::ExtrudedPartInstance,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x4a7e94(ptr: *mut ExtrudedPartInstance, _deleter: CreatableInstanceDeleter) -> SharedPtr<ExtrudedPartInstance> {
+    // IDA 0x4a7e94: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(ExtrudedPartInstance::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x4a7f5c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_20ExtrudedPartInstanceES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -29322,57 +29377,83 @@ pub fn stub_0x4a7f5c() -> ! {
 // 0x4a8044 — __ZN5boost6detail12shared_countC2IPN3RBX20ExtrudedPartInstanceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x4a8044() -> ! {
-    todo!("0x4a8044 boost::detail::shared_count::shared_count<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x4a8044(ptr: *mut ExtrudedPartInstance, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<ExtrudedPartInstance, CreatableInstanceDeleter> {
+    // IDA 0x4a8044: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x4a814c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20ExtrudedPartInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x4a814c() -> ! {
-    todo!("0x4a814c boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x4a814c(_block: *mut ControlBlockPd<ExtrudedPartInstance, CreatableInstanceDeleter>) {
+    // IDA 0x4a814c: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x4a8150 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20ExtrudedPartInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x4a8150() -> ! {
-    todo!("0x4a8150 boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x4a8150(block: *mut ControlBlockPd<ExtrudedPartInstance, CreatableInstanceDeleter>) {
+    // IDA 0x4a8150: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x4a8154 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20ExtrudedPartInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x4a8154() -> ! {
-    todo!("0x4a8154 boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x4a8154(_block: *mut ControlBlockPd<ExtrudedPartInstance, CreatableInstanceDeleter>) {
+    // IDA 0x4a8154: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x4a8174 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20ExtrudedPartInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x4a8174() -> ! {
-    todo!("0x4a8174 boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x4a8174(block: *const ControlBlockPd<ExtrudedPartInstance, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x4a8174: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x4a818c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20ExtrudedPartInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x4a818c() -> ! {
-    todo!("0x4a818c boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x4a818c(block: *const ControlBlockPd<ExtrudedPartInstance, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x4a818c: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x4a88f0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::EnumPropDescriptor<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>(char const*,char const*,RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::EnumPropDescriptor<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>(char const*,char const*,RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x4a88f0() -> ! {
-    todo!("0x4a88f0 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::EnumPropDescriptor<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>(char const*,char const*,RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x4a88f0() -> ExtrudedEnumPropDesc {
+    // IDA 0x4a88f0: `EnumPropDescriptor<ExtrudedPartInstance,
+    // VisualTrussStyle>::C2` — binds the member get/set pair plus the name
+    // and attribute words; the binding lands with reflection, so the model
+    // starts at defaults. Same shape as 0x4858e4.
+    ExtrudedEnumPropDesc { _opaque: () }
 }
 
 // 0x4a8aa4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumPropDescriptor()")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumPropDescriptor()
-pub fn stub_0x4a8aa4() -> ! {
-    todo!("0x4a8aa4 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumPropDescriptor()")
+pub fn stub_0x4a8aa4(_desc: *mut ExtrudedEnumPropDesc) {
+    // IDA 0x4a8aa4: `EnumPropDescriptor<ExtrudedPartInstance,
+    // VisualTrussStyle>::D0` — vtable install plus memberwise teardown;
+    // dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4a8ad0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10isReadOnlyEv
@@ -29511,29 +29592,48 @@ pub fn stub_0x4a90dc() -> ! {
 // 0x4a911c — __ZNK3RBX10Reflection14PropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::isReadOnly(void)const
-pub fn stub_0x4a911c() -> ! {
-    todo!("0x4a911c RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::isReadOnly(void)const")
+pub fn stub_0x4a911c(_desc: &ExtrudedEnumPropDesc) -> bool {
+    // IDA 0x4a911c: `GetSetImpl<getter, setter>::isReadOnly` — `MOVS R0,
+    // #0; BX LR` (disasm 0x4a911c-0x4a911e); a get/set pair is never
+    // read-only.
+    false
 }
 
 // 0x4a9120 — __ZNK3RBX10Reflection14PropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::isWriteOnly(void)const
-pub fn stub_0x4a9120() -> ! {
-    todo!("0x4a9120 RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::isWriteOnly(void)const")
+pub fn stub_0x4a9120(_desc: &ExtrudedEnumPropDesc) -> bool {
+    // IDA 0x4a9120: `GetSetImpl<getter, setter>::isWriteOnly` — `MOVS R0,
+    // #0` (disasm 0x4a9120); ...nor write-only.
+    false
 }
 
 // 0x4a9124 — __ZNK3RBX10Reflection14PropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::getValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x4a9124() -> ! {
-    todo!("0x4a9124 RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x4a9124(part: &ExtrudedPartInstance) -> i32 {
+    // IDA 0x4a9124: `GetSetImpl<getter, setter>::getValue` — invokes the
+    // member getter (`getVisualTrussStyle`, 0x4a772c) through the bound
+    // member-function pointer. Same template shape as 0x486358.
+    stub_0x4a772c(part) as i32
 }
 
 // 0x4a9144 — __ZNK3RBX10Reflection14PropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::setValue(RBX::Reflection::DescribedBase *,RBX::ExtrudedPartInstance::VisualTrussStyle const&)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::setValue(RBX::Reflection::DescribedBase *,RBX::ExtrudedPartInstance::VisualTrussStyle const&)const
-pub fn stub_0x4a9144() -> ! {
-    todo!("0x4a9144 RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::setValue(RBX::Reflection::DescribedBase *,RBX::ExtrudedPartInstance::VisualTrussStyle const&)const")
+pub fn stub_0x4a9144(part: &mut ExtrudedPartInstance, value: i32) {
+    // IDA 0x4a9144: `GetSetImpl<getter, setter>::setValue` — invokes the
+    // member setter (`setVisualTrussStyle`, 0x4a6e24) through the bound
+    // member-function pointer. Same template shape as 0x48637c. Out-of-range
+    // values have no enumerator; the store keeps the raw word.
+    if let Some(style) = match value {
+        0 => Some(VisualTrussStyle::AlternatingSupports),
+        1 => Some(VisualTrussStyle::BridgeStyleSupports),
+        2 => Some(VisualTrussStyle::NoSupports),
+        _ => None,
+    } {
+        stub_0x4a6e24(part, style);
+    }
 }
 
 // 0x4a94fc — __ZN3RBX12FaceInstance7setFaceENS_8NormalIdE
