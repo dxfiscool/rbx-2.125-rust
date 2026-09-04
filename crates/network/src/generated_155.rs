@@ -847,28 +847,59 @@ where
     PlaceJoinOutcome::Joined { script_url: extract_join_script_url(&body) }
 }
 
+/// Host solo script selected by `joinGamePlaceIdSolo` (IDA 0x28d98).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum SoloJoinScript {
+    Workshop { base_url: String },
+    Visit { base_url: String, place_id: i32 },
+}
+
+impl SoloJoinScript {
+    pub fn source(&self) -> String {
+        match self {
+            SoloJoinScript::Workshop { base_url } => format!("game:Load('rbxasset://places/workshop/workshopStartPlace.rbxl') loadfile('{base_url}game/visit.ashx')()"),
+            SoloJoinScript::Visit { base_url, place_id } => format!("loadfile('{base_url}game/visit.ashx?placeid={place_id}')()"),
+        }
+    }
+}
+
 // 0x289a8 — -[PlaceLauncher startGame:controller:request:presentGameAutomatically:]
 // demangled: -[PlaceLauncher startGame:controller:request:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, int, id, int, char)
 #[doc(alias = "-[PlaceLauncher startGame:controller:request:presentGameAutomatically:]")]
-pub fn stub_289a8() -> ! {
-    todo!("0x289a8 -[PlaceLauncher startGame:controller:request:presentGameAutomatically:]")
+pub fn stub_289a8(has_launcher: bool, game_ready: bool, started: bool, place_id: i32, request: JoinGameRequest) -> Option<(PlaceIdJoin, bool)> {
+    // IDA 0x289a8: preloaded setup with isApp = (request == 2) (0x28a2a) gates binding joinGamePlaceId(placeId, request) (0x28a60) and startGame:controller:preloadedGame:presentGameAutomatically: whose result returns (0x28aa4..0x28b08) — the bool is the setup isApp flag.
+    if !has_launcher || !game_ready {
+        None
+    } else {
+        Some((PlaceIdJoin { place_id, request }, request == JoinGameRequest::AppStart))
+    }
 }
 
 // 0x28ba8 — -[PlaceLauncher startGameSolo:controller:presentGameAutomatically:]
 // demangled: -[PlaceLauncher startGameSolo:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, int, id, char)
 #[doc(alias = "-[PlaceLauncher startGameSolo:controller:presentGameAutomatically:]")]
-pub fn stub_28ba8() -> ! {
-    todo!("0x28ba8 -[PlaceLauncher startGameSolo:controller:presentGameAutomatically:]")
+pub fn stub_28ba8(has_launcher: bool, game_ready: bool, started: bool, place_id: i32) -> Option<(i32, bool)> {
+    // IDA 0x28ba8: preloaded setup (0x28c1e) gates binding joinGamePlaceIdSolo(placeId) (0x28c50) and startGame:controller:preloadedGame:presentGameAutomatically: whose result returns (0x28c94) — returns the bound place id + start result.
+    if !has_launcher || !game_ready {
+        None
+    } else {
+        Some((place_id, started))
+    }
 }
 
 // 0x28d98 — __ZL19joinGamePlaceIdSoloiN5boost10shared_ptrIN3RBX4GameEEE // was: boost::shared_ptr
 // demangled: joinGamePlaceIdSolo(int,boost::shared_ptr<RBX::Game>)
 // type: 
 #[doc(alias = "joinGamePlaceIdSolo(int,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_28d98() -> ! {
-    todo!("0x28d98 joinGamePlaceIdSolo(int,boost::shared_ptr<RBX::Game>)")
+pub fn stub_28d98(base_url: &str, place_id: i32) -> SoloJoinScript {
+    // IDA 0x28d98: registers the UserAgent default (0x28e16..0x28e8a); place < 1 loads the workshop start place + base visit.ashx (0x28ebc..0x28f68), else visit.ashx?placeid=N (0x28ec2..0x28efa); executeScript engine-side (0x28f96).
+    if place_id < 1 {
+        SoloJoinScript::Workshop { base_url: base_url.to_owned() }
+    } else {
+        SoloJoinScript::Visit { base_url: base_url.to_owned(), place_id }
+    }
 }
 
 // 0x29280 — -[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]
