@@ -630,7 +630,7 @@ pub fn stub_46a1c4() {
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::Reflection::Variant)>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),boost::_bi::list_av_2<boost::function<void ()(RBX::Reflection::Variant)>,boost::arg<1>>::type> boost::bind<void,boost::function<void ()(RBX::Reflection::Variant)>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Reflection::Variant)>,boost::arg<1>>(void (*)(boost::function<void ()(RBX::Reflection::Variant)>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),boost::function<void ()(RBX::Reflection::Variant)>,boost::arg<1>)")]
 #[doc(alias = "__ZN5boost4bindIvNS_8functionIFvN3RBX10Reflection7VariantEEEENS_10shared_ptrIKNS3_5TupleEEES6_NS_3argILi1EEEEENS_3_bi6bind_tIT_PFSF_T0_T1_ENSD_9list_av_2IT2_T3_E4typeEEESJ_SL_SM_")]
 pub fn stub_46a354() {
-    // IDA 0x46a354: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46a354: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x46a454 — __ZN5boost8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEC2INS_3_bi6bind_tIvPFvNS0_IFvNS3_7VariantEEEES6_ENSA_5list2INSA_5valueISE_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
@@ -638,7 +638,7 @@ pub fn stub_46a354() {
 #[doc(alias = "__ZN5boost8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEC2INS_3_bi6bind_tIvPFvNS0_IFvNS3_7VariantEEEES6_ENSA_5list2INSA_5valueISE_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
 #[doc(alias = "__ZN5boost8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEC2INS_3_bi6bind_tIvPFvNS0_IFvNS3_7VariantEEEES6_ENSA_5list2INSA_5valueISE_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
 pub fn stub_46a454() {
-    // IDA 0x46a454: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46a454: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x46a528 — __ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEC2INS_3_bi6bind_tIvPFvNS_8functionIFvNS3_7VariantEEEES6_ENS9_5list2INS9_5valueISE_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
@@ -646,7 +646,7 @@ pub fn stub_46a454() {
 #[doc(alias = "__ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEC2INS_3_bi6bind_tIvPFvNS_8functionIFvNS3_7VariantEEEES6_ENS9_5list2INS9_5valueISE_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
 #[doc(alias = "__ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEC2INS_3_bi6bind_tIvPFvNS_8functionIFvNS3_7VariantEEEES6_ENS9_5list2INS9_5valueISE_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
 pub fn stub_46a528() {
-    // IDA 0x46a528: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46a528: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x46a5fc — __ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8functionIFvNS3_7VariantEEEES6_ENS9_5list2INS9_5valueISE_EENS_3argILi1EEEEEEEEEvT_
@@ -654,7 +654,7 @@ pub fn stub_46a528() {
 #[doc(alias = "void boost::function1<void,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::Reflection::Variant)>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),boost::_bi::list2<boost::_bi::value<boost::function<void ()(RBX::Reflection::Variant)>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::Reflection::Variant)>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),boost::_bi::list2<boost::_bi::value<boost::function<void ()(RBX::Reflection::Variant)>>,boost::arg<1>>>)")]
 #[doc(alias = "__ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8functionIFvNS3_7VariantEEEES6_ENS9_5list2INS9_5valueISE_EENS_3argILi1EEEEEEEEEvT_")]
 pub fn stub_46a5fc() {
-    // IDA 0x46a5fc: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46a5fc: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x46a6e0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8functionIFvN3RBX10Reflection7VariantEEEENS_10shared_ptrIKNS7_5TupleEEEENS3_5list2INS3_5valueISA_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSP_NS1_30functor_manager_operation_typeE
@@ -662,7 +662,7 @@ pub fn stub_46a5fc() {
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::Reflection::Variant)>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),boost::_bi::list2<boost::_bi::value<boost::function<void ()(RBX::Reflection::Variant)>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8functionIFvN3RBX10Reflection7VariantEEEENS_10shared_ptrIKNS7_5TupleEEEENS3_5list2INS3_5valueISA_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSP_NS1_30functor_manager_operation_typeE")]
 pub fn stub_46a6e0() {
-    // IDA 0x46a6e0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46a6e0: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x46a6fc — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8functionIFvN3RBX10Reflection7VariantEEEENS_10shared_ptrIKNS7_5TupleEEEENS3_5list2INS3_5valueISA_EENS_3argILi1EEEEEEEvSE_E6invokeERNS1_15function_bufferESE_
@@ -671,7 +671,7 @@ pub fn stub_46a6e0() {
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::Reflection::Variant)>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),boost::_bi::list2<boost::_bi::value<boost::function<void ()(RBX::Reflection::Variant)>>,boost::arg<1>>>,void,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8functionIFvN3RBX10Reflection7VariantEEEENS_10shared_ptrIKNS7_5TupleEEEENS3_5list2INS3_5valueISA_EENS_3argILi1EEEEEEEvSE_E6invokeERNS1_15function_bufferESE_")]
 pub fn stub_46a6fc() {
-    // IDA 0x46a6fc: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46a6fc: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x46a714 — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8functionIFvNS5_7VariantEEEES8_ENSB_5list2INSB_5valueISG_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
@@ -679,7 +679,7 @@ pub fn stub_46a6fc() {
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::Reflection::Variant)>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),boost::_bi::list2<boost::_bi::value<boost::function<void ()(RBX::Reflection::Variant)>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::Reflection::Variant)>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),boost::_bi::list2<boost::_bi::value<boost::function<void ()(RBX::Reflection::Variant)>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8functionIFvNS5_7VariantEEEES8_ENSB_5list2INSB_5valueISG_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE")]
 pub fn stub_46a714() {
-    // IDA 0x46a714: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46a714: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x46a7ec — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8functionIFvNS5_7VariantEEEES8_ENSB_5list2INSB_5valueISG_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
@@ -687,7 +687,7 @@ pub fn stub_46a714() {
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::Reflection::Variant)>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),boost::_bi::list2<boost::_bi::value<boost::function<void ()(RBX::Reflection::Variant)>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::Reflection::Variant)>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),boost::_bi::list2<boost::_bi::value<boost::function<void ()(RBX::Reflection::Variant)>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8functionIFvNS5_7VariantEEEES8_ENSB_5list2INSB_5valueISG_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
 pub fn stub_46a7ec() {
-    // IDA 0x46a7ec: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46a7ec: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x46a8bc — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE14assign_functorINS_3_bi6bind_tIvPFvNS_8functionIFvNS5_7VariantEEEES8_ENSB_5list2INSB_5valueISG_EENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
@@ -695,7 +695,7 @@ pub fn stub_46a7ec() {
 #[doc(alias = "void boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::Reflection::Variant)>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),boost::_bi::list2<boost::_bi::value<boost::function<void ()(RBX::Reflection::Variant)>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::Reflection::Variant)>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),boost::_bi::list2<boost::_bi::value<boost::function<void ()(RBX::Reflection::Variant)>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE14assign_functorINS_3_bi6bind_tIvPFvNS_8functionIFvNS5_7VariantEEEES8_ENSB_5list2INSB_5valueISG_EENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")]
 pub fn stub_46a8bc() {
-    // IDA 0x46a8bc: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46a8bc: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x46a980 — __ZN5boost3_bi5list2INS0_5valueINS_8functionIFvN3RBX10Reflection7VariantEEEEEENS_3argILi1EEEEclIPFvS8_NS_10shared_ptrIKNS5_5TupleEEEENS0_5list1IRSH_EEEEvNS0_4typeIvEERT_RT0_i
@@ -704,7 +704,7 @@ pub fn stub_46a8bc() {
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<boost::function<void ()(RBX::Reflection::Variant)>>,boost::arg<1>>::operator()<void (*)(boost::function<void ()(RBX::Reflection::Variant)>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),boost::_bi::list1<rbx_core::SharedPtr<RBX::Reflection::Tuple const>&>>(boost::_bi::type<void>,void (*)(boost::function<void ()(RBX::Reflection::Variant)>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Reflection::Tuple const>&> &,int)")]
 #[doc(alias = "__ZN5boost3_bi5list2INS0_5valueINS_8functionIFvN3RBX10Reflection7VariantEEEEEENS_3argILi1EEEEclIPFvS8_NS_10shared_ptrIKNS5_5TupleEEEENS0_5list1IRSH_EEEEvNS0_4typeIvEERT_RT0_i")]
 pub fn stub_46a980() {
-    // IDA 0x46a980: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46a980: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 // 0x46aa8c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8functionIFvN3RBX10Reflection7VariantEEEENS_10shared_ptrIKNS7_5TupleEEEENS3_5list2INS3_5valueISA_EENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSP_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
@@ -713,7 +713,7 @@ pub fn stub_46a980() {
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::Reflection::Variant)>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),boost::_bi::list2<boost::_bi::value<boost::function<void ()(RBX::Reflection::Variant)>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8functionIFvN3RBX10Reflection7VariantEEEENS_10shared_ptrIKNS7_5TupleEEEENS3_5list2INS3_5valueISA_EENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSP_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
 pub fn stub_46aa8c() {
-    // IDA 0x46aa8c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46aa8c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x46abd4 — __ZN3RBX10Reflection9ArgHelper8try_enumILi1ENS_8Instance10SaveFilterEEEbRNS0_18FunctionDescriptor9ArgumentsERT0_PN5boost9enable_ifINSA_7is_enumIS8_EEvE4typeE
@@ -824,7 +824,7 @@ pub fn stub_46b6e0() {
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,RBX::Reflection::PropertyDescriptor const* const&>,boost::_bi::list_av_3<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,RBX::Reflection::PropertyDescriptor const* const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(rbx_core::SharedPtr<RBX::Instance> const&,RBX::Reflection::PropertyDescriptor const* const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")]
 #[doc(alias = "__ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS1_8InstanceEEERKPKNS2_18PropertyDescriptorENS4_IS3_EENS_3argILi1EEENSF_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISK_T0_T1_T2_EENSI_9list_av_3IT3_T4_T5_E4typeEEEMSN_FSK_SO_SP_ESS_ST_SU_")]
 pub fn stub_46b858() {
-    // IDA 0x46b858: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46b858: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x46b974 — __ZN3RBX10Reflection18GenericSlotWrapper8execute2IN5boost10shared_ptrINS_8InstanceEEEPKNS0_18PropertyDescriptorEEEvRKT_RKT0_
@@ -841,7 +841,7 @@ pub fn stub_46b974() {
 #[doc(alias = "boost::function2<void,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>::clear(void)")]
 #[doc(alias = "__ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS2_10Reflection18PropertyDescriptorEE5clearEv")]
 pub fn stub_46badc() {
-    // IDA 0x46badc: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46badc: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x46bb0c — __ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEEPKNS2_10Reflection18PropertyDescriptorEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS5_18GenericSlotWrapperERKS4_RKS8_EENSC_5list3INSC_5valueINS1_ISG_EEEENS_3argILi1EEENSQ_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISV_EE5valueEEE5valueEiE4typeE
@@ -850,7 +850,7 @@ pub fn stub_46badc() {
 #[doc(alias = "__ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEEPKNS2_10Reflection18PropertyDescriptorEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS5_18GenericSlotWrapperERKS4_RKS8_EENSC_5list3INSC_5valueINS1_ISG_EEEENS_3argILi1EEENSQ_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISV_EE5valueEEE5valueEiE4typeE")]
 #[doc(alias = "__ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEEPKNS2_10Reflection18PropertyDescriptorEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS5_18GenericSlotWrapperERKS4_RKS8_EENSC_5list3INSC_5valueINS1_ISG_EEEENS_3argILi1EEENSQ_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISV_EE5valueEEE5valueEiE4typeE")]
 pub fn stub_46bb0c() {
-    // IDA 0x46bb0c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46bb0c: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x46bbf0 — __ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS2_10Reflection18PropertyDescriptorEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS5_18GenericSlotWrapperERKS4_RKS8_EENSB_5list3INSB_5valueINS1_ISF_EEEENS_3argILi1EEENSP_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE
@@ -859,7 +859,7 @@ pub fn stub_46bb0c() {
 #[doc(alias = "__ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS2_10Reflection18PropertyDescriptorEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS5_18GenericSlotWrapperERKS4_RKS8_EENSB_5list3INSB_5valueINS1_ISF_EEEENS_3argILi1EEENSP_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE")]
 #[doc(alias = "__ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS2_10Reflection18PropertyDescriptorEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS5_18GenericSlotWrapperERKS4_RKS8_EENSB_5list3INSB_5valueINS1_ISF_EEEENS_3argILi1EEENSP_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE")]
 pub fn stub_46bbf0() {
-    // IDA 0x46bbf0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46bbf0: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x46bcd8 — __ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS2_10Reflection18PropertyDescriptorEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS5_18GenericSlotWrapperERKS4_RKS8_EENSB_5list3INSB_5valueINS1_ISF_EEEENS_3argILi1EEENSP_ILi2EEEEEEEEEvT_
@@ -868,7 +868,7 @@ pub fn stub_46bbf0() {
 #[doc(alias = "void boost::function2<void,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,RBX::Reflection::PropertyDescriptor const* const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,RBX::Reflection::PropertyDescriptor const* const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)")]
 #[doc(alias = "__ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS2_10Reflection18PropertyDescriptorEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS5_18GenericSlotWrapperERKS4_RKS8_EENSB_5list3INSB_5valueINS1_ISF_EEEENS_3argILi1EEENSP_ILi2EEEEEEEEEvT_")]
 pub fn stub_46bcd8() {
-    // IDA 0x46bcd8: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46bcd8: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x46bdd0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKPKNS8_18PropertyDescriptorEEENS3_5list3INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSP_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeE
@@ -876,7 +876,7 @@ pub fn stub_46bcd8() {
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,RBX::Reflection::PropertyDescriptor const* const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKPKNS8_18PropertyDescriptorEEENS3_5list3INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSP_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeE")]
 pub fn stub_46bdd0() {
-    // IDA 0x46bdd0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46bdd0: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x46bdec — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKPKNS8_18PropertyDescriptorEEENS3_5list3INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSP_ILi2EEEEEEEvSC_SH_E6invokeERNS1_15function_bufferESC_SH_
@@ -884,7 +884,7 @@ pub fn stub_46bdd0() {
 #[doc(alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,RBX::Reflection::PropertyDescriptor const* const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,void,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKPKNS8_18PropertyDescriptorEEENS3_5list3INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSP_ILi2EEEEEEEvSC_SH_E6invokeERNS1_15function_bufferESC_SH_")]
 pub fn stub_46bdec() {
-    // IDA 0x46bdec: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46bdec: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 // 0x46be00 — __ZNK5boost6detail8function13basic_vtable2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS7_18GenericSlotWrapperERKS6_RKSA_EENSD_5list3INSD_5valueINS3_ISH_EEEENS_3argILi1EEENSR_ILi2EEEEEEEEEbT_RNS1_15function_bufferE
@@ -893,7 +893,7 @@ pub fn stub_46bdec() {
 #[doc(alias = "bool boost::detail::function::basic_vtable2<void,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,RBX::Reflection::PropertyDescriptor const* const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,RBX::Reflection::PropertyDescriptor const* const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS7_18GenericSlotWrapperERKS6_RKSA_EENSD_5list3INSD_5valueINS3_ISH_EEEENS_3argILi1EEENSR_ILi2EEEEEEEEEbT_RNS1_15function_bufferE")]
 pub fn stub_46be00() {
-    // IDA 0x46be00: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46be00: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x46bee8 — __ZNK5boost6detail8function13basic_vtable2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS7_18GenericSlotWrapperERKS6_RKSA_EENSD_5list3INSD_5valueINS3_ISH_EEEENS_3argILi1EEENSR_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
@@ -902,7 +902,7 @@ pub fn stub_46be00() {
 #[doc(alias = "bool boost::detail::function::basic_vtable2<void,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,RBX::Reflection::PropertyDescriptor const* const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,RBX::Reflection::PropertyDescriptor const* const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS7_18GenericSlotWrapperERKS6_RKSA_EENSD_5list3INSD_5valueINS3_ISH_EEEENS_3argILi1EEENSR_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
 pub fn stub_46bee8() {
-    // IDA 0x46bee8: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46bee8: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x46bfcc — __ZNK5boost6detail8function13basic_vtable2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS7_18GenericSlotWrapperERKS6_RKSA_EENSD_5list3INSD_5valueINS3_ISH_EEEENS_3argILi1EEENSR_ILi2EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
@@ -910,7 +910,7 @@ pub fn stub_46bee8() {
 #[doc(alias = "void boost::detail::function::basic_vtable2<void,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,RBX::Reflection::PropertyDescriptor const* const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,RBX::Reflection::PropertyDescriptor const* const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS7_18GenericSlotWrapperERKS6_RKSA_EENSD_5list3INSD_5valueINS3_ISH_EEEENS_3argILi1EEENSR_ILi2EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")]
 pub fn stub_46bfcc() {
-    // IDA 0x46bfcc: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46bfcc: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x46c0a0 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS4_8InstanceEEERKPKNS5_18PropertyDescriptorEEENS0_5list3INS0_5valueINS7_IS6_EEEENS_3argILi1EEENSM_ILi2EEEEEEclIS9_SE_EEvRT_RT0_
@@ -919,7 +919,7 @@ pub fn stub_46bfcc() {
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,RBX::Reflection::PropertyDescriptor const* const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>(rbx_core::SharedPtr<RBX::Instance> &,RBX::Reflection::PropertyDescriptor const* &)")]
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS4_8InstanceEEERKPKNS5_18PropertyDescriptorEEENS0_5list3INS0_5valueINS7_IS6_EEEENS_3argILi1EEENSM_ILi2EEEEEEclIS9_SE_EEvRT_RT0_")]
 pub fn stub_46c0a0() {
-    // IDA 0x46c0a0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46c0a0: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 // 0x46c0bc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKPKNS8_18PropertyDescriptorEEENS3_5list3INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSP_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
@@ -928,7 +928,7 @@ pub fn stub_46c0a0() {
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,RBX::Reflection::PropertyDescriptor const* const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKPKNS8_18PropertyDescriptorEEENS3_5list3INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSP_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
 pub fn stub_46c0bc() {
-    // IDA 0x46c0bc: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46c0bc: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 // 0x46c214 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE7connectINS2_8functionISB_EEEENS0_10connectionERKT_
@@ -995,7 +995,7 @@ pub fn stub_46c878() {
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::call(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_8functionISC_EELi2ESC_E4callES7_SB_")]
 pub fn stub_46c950() {
-    // IDA 0x46c950: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46c950: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x46c958 — __ZNK5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS2_10Reflection18PropertyDescriptorEEclES4_S8_
@@ -1004,7 +1004,7 @@ pub fn stub_46c950() {
 #[doc(alias = "boost::function2<void,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>::operator()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)const")]
 #[doc(alias = "__ZNK5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS2_10Reflection18PropertyDescriptorEEclES4_S8_")]
 pub fn stub_46c958() {
-    // IDA 0x46c958: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46c958: function::operator() invoked the erased target. Closure call at the live site — carrier no-op.
 }
 
 // 0x46ca70 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4slot24safe_static_do_get_mutexEv
@@ -1045,7 +1045,7 @@ pub fn stub_46cda0() {
 #[doc(alias = "boost::function2<void,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>::assign_to_own(boost::function2<void,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*> const&)")]
 #[doc(alias = "__ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS2_10Reflection18PropertyDescriptorEE13assign_to_ownERKS9_")]
 pub fn stub_46cdd0() {
-    // IDA 0x46cdd0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46cdd0: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 // 0x46ce00 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -1175,7 +1175,7 @@ pub fn stub_46d778() {
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list_av_1<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>::type> boost::bind<void,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>(void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>)")]
 #[doc(alias = "__ZN5boost4bindIvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEES7_EENS_3_bi6bind_tIT_PFSA_T0_ENS8_9list_av_1IT1_E4typeEEESD_SF_")]
 pub fn stub_46d7a4() {
-    // IDA 0x46d7a4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46d7a4: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x46d8bc — __ZN3RBX9DataModel10LegacyLock14Implementation4taskEN5boost10shared_ptrINS2_6EventsEEE
@@ -1244,7 +1244,7 @@ pub fn stub_46dc54() {
 #[doc(alias = "boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>::list1(boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>)")]
 #[doc(alias = "__ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEEEEC2ESA_")]
 pub fn stub_46dc6c() {
-    // IDA 0x46dc6c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46dc6c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 // 0x46dd4c — __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS7_5list1INS7_5valueISD_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
@@ -1253,7 +1253,7 @@ pub fn stub_46dc6c() {
 #[doc(alias = "__ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS7_5list1INS7_5valueISD_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")]
 #[doc(alias = "__ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS7_5list1INS7_5valueISD_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")]
 pub fn stub_46dd4c() {
-    // IDA 0x46dd4c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46dd4c: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x46de28 — __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS6_5list1INS6_5valueISC_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE
@@ -1262,7 +1262,7 @@ pub fn stub_46dd4c() {
 #[doc(alias = "__ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS6_5list1INS6_5valueISC_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE")]
 #[doc(alias = "__ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS6_5list1INS6_5valueISC_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE")]
 pub fn stub_46de28() {
-    // IDA 0x46de28: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46de28: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 // 0x46df08 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS6_5list1INS6_5valueISC_EEEEEEEEvT_
@@ -1271,5 +1271,5 @@ pub fn stub_46de28() {
 #[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>>)")]
 #[doc(alias = "__ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS6_5list1INS6_5valueISC_EEEEEEEEvT_")]
 pub fn stub_46df08() {
-    // IDA 0x46df08: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x46df08: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
