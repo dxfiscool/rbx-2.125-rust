@@ -63,132 +63,152 @@ pub fn stub_95da34() -> ! {
 
 // 0x95dc58 — __ZN3RBXlsERN6RakNet9BitStreamEi
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,int)")]
-pub fn stub_95dc58() -> ! {
-    todo!("0x95dc58 RBX::operator<<(RakNet::BitStream &,int)")
+pub fn stub_95dc58(stream: &mut crate::bitstream::BitStream, value: i32) {
+    // IDA 0x95dc58: `Write<int>` — `ReverseBytes` + `WriteBits(..., 32, 1)`, big-endian.
+    stream.write_i32(value);
 }
 
 // 0x95dc70 — __ZN3RBXrsIlEERN6RakNet9BitStreamES3_RT_
 #[doc(alias = "RakNet::BitStream & RBX::operator>><long>(RakNet::BitStream &,long &)")]
-pub fn stub_95dc70() -> ! {
-    todo!("0x95dc70 RakNet::BitStream & RBX::operator>><long>(RakNet::BitStream &,long &)")
+pub fn stub_95dc70(stream: &mut crate::bitstream::BitStream) -> i32 {
+    // IDA 0x95dc70: `Read<long>` (armv7 4 bytes); throws on short reads.
+    stream.read_i32().expect("BitStream >> long failed")
 }
 
 // 0x95ddb4 — __ZN3RBXlsERN6RakNet9BitStreamERKy
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,unsigned long long const&)")]
-pub fn stub_95ddb4() -> ! {
-    todo!("0x95ddb4 RBX::operator<<(RakNet::BitStream &,unsigned long long const&)")
+pub fn stub_95ddb4(stream: &mut crate::bitstream::BitStream, value: u64) {
+    // IDA 0x95ddb4: `Write<unsigned long long>` — big-endian 8 bytes.
+    stream.write_u64(value);
 }
 
 // 0x95ddc4 — __ZN3RBXrsIyEERN6RakNet9BitStreamES3_RT_
 #[doc(
     alias = "RakNet::BitStream & RBX::operator>><unsigned long long>(RakNet::BitStream &,unsigned long long &)"
 )]
-pub fn stub_95ddc4() -> ! {
-    todo!("0x95ddc4 RakNet::BitStream & RBX::operator>><unsigned long long>(RakNet::BitStream &,unsigned long long &)")
+pub fn stub_95ddc4(stream: &mut crate::bitstream::BitStream) -> u64 {
+    // IDA 0x95ddc4: `Read<unsigned long long>`; throws on short reads.
+    stream.read_u64().expect("BitStream >> unsigned long long failed")
 }
 
 // 0x95df08 — __ZN3RBXlsERN6RakNet9BitStreamEl
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,long)")]
-pub fn stub_95df08() -> ! {
-    todo!("0x95df08 RBX::operator<<(RakNet::BitStream &,long)")
+pub fn stub_95df08(stream: &mut crate::bitstream::BitStream, value: i32) {
+    // IDA 0x95df08: `Write<long>` (armv7 4 bytes) — identical bytes to `Write<int>`.
+    stream.write_i32(value);
 }
 
 // 0x95df20 — __ZN3RBXrsIiEERN6RakNet9BitStreamES3_RT_
 #[doc(alias = "RakNet::BitStream & RBX::operator>><int>(RakNet::BitStream &,int &)")]
-pub fn stub_95df20() -> ! {
-    todo!("0x95df20 RakNet::BitStream & RBX::operator>><int>(RakNet::BitStream &,int &)")
+pub fn stub_95df20(stream: &mut crate::bitstream::BitStream) -> i32 {
+    // IDA 0x95df20: `Read<int>`; throws `runtime_error("BitStream >> int failed")` on short reads.
+    stream.read_i32().expect("BitStream >> int failed")
 }
 
 // 0x95e064 — __ZN3RBXlsERN6RakNet9BitStreamEj
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,unsigned int)")]
-pub fn stub_95e064() -> ! {
-    todo!("0x95e064 RBX::operator<<(RakNet::BitStream &,unsigned int)")
+pub fn stub_95e064(stream: &mut crate::bitstream::BitStream, value: u32) {
+    // IDA 0x95e064: `Write<unsigned int>` — big-endian.
+    stream.write_u32(value);
 }
 
 // 0x95e07c — __ZN3RBXrsIjEERN6RakNet9BitStreamES3_RT_
 #[doc(
     alias = "RakNet::BitStream & RBX::operator>><unsigned int>(RakNet::BitStream &,unsigned int &)"
 )]
-pub fn stub_95e07c() -> ! {
-    todo!("0x95e07c RakNet::BitStream & RBX::operator>><unsigned int>(RakNet::BitStream &,unsigned int &)")
+pub fn stub_95e07c(stream: &mut crate::bitstream::BitStream) -> u32 {
+    // IDA 0x95e07c: `Read<unsigned int>`; throws on short reads.
+    stream.read_u32().expect("BitStream >> unsigned int failed")
 }
 
 // 0x95e1c0 — __ZN3RBXrsImEERN6RakNet9BitStreamES3_RT_
 #[doc(
     alias = "RakNet::BitStream & RBX::operator>><unsigned long>(RakNet::BitStream &,unsigned long &)"
 )]
-pub fn stub_95e1c0() -> ! {
-    todo!("0x95e1c0 RakNet::BitStream & RBX::operator>><unsigned long>(RakNet::BitStream &,unsigned long &)")
+pub fn stub_95e1c0(stream: &mut crate::bitstream::BitStream) -> u32 {
+    // IDA 0x95e1c0: `Read<unsigned long>` (armv7 4 bytes); throws on short reads.
+    stream.read_u32().expect("BitStream >> unsigned long failed")
 }
 
 // 0x95e304 — __ZN3RBXrsIcEERN6RakNet9BitStreamES3_RT_
 #[doc(alias = "RakNet::BitStream & RBX::operator>><char>(RakNet::BitStream &,char &)")]
-pub fn stub_95e304() -> ! {
-    todo!("0x95e304 RakNet::BitStream & RBX::operator>><char>(RakNet::BitStream &,char &)")
+pub fn stub_95e304(stream: &mut crate::bitstream::BitStream) -> i8 {
+    // IDA 0x95e304: raw `ReadBits(..., 8, 1)`; throws `runtime_error("BitStream >> char failed")` on short reads.
+    stream.read_i8().expect("BitStream >> char failed")
 }
 
 // 0x95e44c — __ZN3RBXlsERN6RakNet9BitStreamEh
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,unsigned char)")]
-pub fn stub_95e44c() -> ! {
-    todo!("0x95e44c RBX::operator<<(RakNet::BitStream &,unsigned char)")
+pub fn stub_95e44c(stream: &mut crate::bitstream::BitStream, value: u8) {
+    // IDA 0x95e44c: raw 8-bit write (no reversal on single bytes).
+    stream.write_u8(value);
 }
 
 // 0x95e468 — __ZN3RBXrsIhEERN6RakNet9BitStreamES3_RT_
 #[doc(
     alias = "RakNet::BitStream & RBX::operator>><unsigned char>(RakNet::BitStream &,unsigned char &)"
 )]
-pub fn stub_95e468() -> ! {
-    todo!("0x95e468 RakNet::BitStream & RBX::operator>><unsigned char>(RakNet::BitStream &,unsigned char &)")
+pub fn stub_95e468(stream: &mut crate::bitstream::BitStream) -> u8 {
+    // IDA 0x95e468: raw 8-bit read; throws on short reads (same shape as `>>char`, 0x95e304).
+    stream.read_u8().expect("BitStream >> unsigned char failed")
 }
 
 // 0x95e5b0 — __ZN3RBXlsERN6RakNet9BitStreamEb
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,bool)")]
-pub fn stub_95e5b0() -> ! {
-    todo!("0x95e5b0 RBX::operator<<(RakNet::BitStream &,bool)")
+pub fn stub_95e5b0(stream: &mut crate::bitstream::BitStream, value: bool) {
+    // IDA 0x95e5b0: `value == 1 → Write1 else Write0` (exact equality).
+    stream.write_bool(value);
 }
 
 // 0x95e5cc — __ZN3RBXrsIbEERN6RakNet9BitStreamES3_RT_
 #[doc(alias = "RakNet::BitStream & RBX::operator>><bool>(RakNet::BitStream &,bool &)")]
-pub fn stub_95e5cc() -> ! {
-    todo!("0x95e5cc RakNet::BitStream & RBX::operator>><bool>(RakNet::BitStream &,bool &)")
+pub fn stub_95e5cc(stream: &mut crate::bitstream::BitStream) -> bool {
+    // IDA 0x95e5cc: bounds-check one bit (throws `"BitStream >> bool failed"`), read MSB-first, normalize to 0/1.
+    stream.read_bool().expect("BitStream >> bool failed")
 }
 
 // 0x95e730 — __ZN3RBXlsERN6RakNet9BitStreamEf
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,float)")]
-pub fn stub_95e730() -> ! {
-    todo!("0x95e730 RBX::operator<<(RakNet::BitStream &,float)")
+pub fn stub_95e730(stream: &mut crate::bitstream::BitStream, value: f32) {
+    // IDA 0x95e730: `Write<float>` — big-endian `f32` bits.
+    stream.write_f32(value);
 }
 
 // 0x95e748 — __ZN3RBXrsIfEERN6RakNet9BitStreamES3_RT_
 #[doc(alias = "RakNet::BitStream & RBX::operator>><float>(RakNet::BitStream &,float &)")]
-pub fn stub_95e748() -> ! {
-    todo!("0x95e748 RakNet::BitStream & RBX::operator>><float>(RakNet::BitStream &,float &)")
+pub fn stub_95e748(stream: &mut crate::bitstream::BitStream) -> f32 {
+    // IDA 0x95e748: `Read<float>`; throws on short reads (same shape as `>>int`, 0x95df20).
+    stream.read_f32().expect("BitStream >> float failed")
 }
 
 // 0x95e88c — __ZN3RBXlsERN6RakNet9BitStreamEd
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,double)")]
-pub fn stub_95e88c() -> ! {
-    todo!("0x95e88c RBX::operator<<(RakNet::BitStream &,double)")
+pub fn stub_95e88c(stream: &mut crate::bitstream::BitStream, value: f64) {
+    // IDA 0x95e88c: `Write<double>` — `ReverseBytes` + `WriteBits(..., 64, 1)`, big-endian.
+    stream.write_f64(value);
 }
 
 // 0x95e8b0 — __ZN3RBXrsIdEERN6RakNet9BitStreamES3_RT_
 #[doc(alias = "RakNet::BitStream & RBX::operator>><double>(RakNet::BitStream &,double &)")]
-pub fn stub_95e8b0() -> ! {
-    todo!("0x95e8b0 RakNet::BitStream & RBX::operator>><double>(RakNet::BitStream &,double &)")
+pub fn stub_95e8b0(stream: &mut crate::bitstream::BitStream) -> f64 {
+    // IDA 0x95e8b0: `Read<double>`; throws `runtime_error("BitStream >> double failed")` on short reads.
+    stream.read_f64().expect("BitStream >> double failed")
 }
 
 // 0x95e9f4 — __ZN3RBXlsERN6RakNet9BitStreamERKSs
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,std::string const&)")]
-pub fn stub_95e9f4() -> ! {
-    todo!("0x95e9f4 RBX::operator<<(RakNet::BitStream &,std::string const&)")
+pub fn stub_95e9f4(stream: &mut crate::bitstream::BitStream, s: &str) {
+    // IDA 0x95e9f4: big-endian length via `Write<ulong>` + Huffman payload (raw here; see `write_string`).
+    stream.write_string(s);
 }
 
 // 0x95eb04 — __ZN3RBXrsISsEERN6RakNet9BitStreamES3_RT_
 #[doc(
     alias = "RakNet::BitStream & RBX::operator>><std::string>(RakNet::BitStream &,std::string &)"
 )]
-pub fn stub_95eb04() -> ! {
-    todo!("0x95eb04 RakNet::BitStream & RBX::operator>><std::string>(RakNet::BitStream &,std::string &)")
+pub fn stub_95eb04(stream: &mut crate::bitstream::BitStream) -> String {
+    // IDA 0x95eb04: `Read<ulong>` length + `DecodeString`; panics mirror the `runtime_error` throws.
+    stream.read_string()
 }
 
 // 0x95edd0 — __ZN3RBXlsERN6RakNet9BitStreamERKNS_9ContentIdE

@@ -109,6 +109,31 @@ impl BitStream {
         self.read_bits(8).map(|v| v as u8)
     }
 
+    /// `RBX::operator<<(RakNet::BitStream &,bool)` (IDA 0x95e5b0):
+    /// `value == 1 → Write1 else Write0` — exact equality, preserved here
+    /// since Rust `bool` admits only 0/1 anyway.
+    pub fn write_bool(&mut self, value: bool) {
+        self.write_bit(value);
+    }
+
+    /// `RBX::operator>>(RakNet::BitStream &,bool &)` (IDA 0x95e5cc): one
+    /// MSB-first bit normalized to `false`/`true`; `None` past the end
+    /// (the original throws `runtime_error("BitStream >> bool failed")`).
+    pub fn read_bool(&mut self) -> Option<bool> {
+        self.read_bit()
+    }
+
+    /// `char` codecs (`RBX::operator>><char>`, IDA 0x95e304): a raw
+    /// `ReadBits(..., 8, 1)` byte — no `ReverseBytes` on this path, so
+    /// order-neutral like `u8`.
+    pub fn write_i8(&mut self, value: i8) {
+        self.write_u8(value as u8);
+    }
+
+    pub fn read_i8(&mut self) -> Option<i8> {
+        self.read_u8().map(|v| v as i8)
+    }
+
     /// `Write<unsigned short>` / `Read<unsigned short>` (IDA 0x98a7e0
     /// magnitudes): big-endian on the wire (`ReverseBytes` + `WriteBits`,
     /// IDA 0x962a24 pattern; `IsNetworkOrder` is 0, IDA 0xa55f48).
@@ -432,8 +457,29 @@ impl BitStream {
 }
 
 #[cfg(test)]
+
 mod tests {
     use super::*;
+    #[test]
+    fn bool_and_char_codecs() {
+        // IDA 0x95e5b0/0x95e5cc/0x95e304.
+        let mut s = BitStream::new();
+        s.write_bool(true);
+        s.write_bool(false);
+        s.write_i8(-5);
+        s.write_u8(0xAB);
+        // Bits: `1,0` then 0xFB then 0xAB MSB-first =
+        // `10|111111` `01|101010` `11|000000`.
+        assert_eq!(s.into_bytes(), vec![0xBE, 0xEA, 0xC0]);
+        let mut r = BitStream::from_bytes(&[0xBE, 0xEA, 0xC0]);
+        assert_eq!(r.read_bool(), Some(true));
+        assert_eq!(r.read_bool(), Some(false));
+        assert_eq!(r.read_i8(), Some(-5));
+        assert_eq!(r.read_u8(), Some(0xAB));
+        // 18 bits consumed of a 24-bit buffer; a truly empty stream reads None.
+        assert_eq!(r.bits_remaining(), 6);
+        assert_eq!(BitStream::new().read_bool(), None);
+    }
 
     #[test]
     fn bits_roundtrip_msb_first() {
