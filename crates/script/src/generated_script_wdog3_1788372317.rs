@@ -17,200 +17,520 @@ const _: () = {
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this, float)
 #[doc(alias = "RBX::VehicleSeat::setTurnSpeed(float)")]
 #[doc(alias = "__ZN3RBX11VehicleSeat12setTurnSpeedEf")]
-pub fn stub_0x6bc69c() -> ! {
-    todo!("0x6bc69c")
+// ---- RBX::VehicleSeat host model (IDA 0x6bc69c..0x6bd3b4) ----
+// `boost::shared_ptr<VehicleController>`/`weak_ptr` at +612/+616 become the
+// `controller_alive` flag (`weak_count::use_count != 0`, IDA 0x6bd00c);
+// `raisePropertyChanged` becomes the injected `notify` callback; multiple
+// inheritance base adjusts (`SUBS R0, #N` thunk heads) are no-ops in the
+// flat host layout and forward straight to the primary.
+
+/// Host `RBX::VehicleSeat` (IDA 0x6bc71c).
+/// Word offsets are C++ `float`/`_DWORD` slots (×4 = byte offset):
+/// MaxSpeed word 134, TurnSpeed word 135, Torque word 136, EnableHud byte
+/// 548, Throttle/Steer words 138/139, world link word 140, hinge count word
+/// 142, controller shared/weak words 153/154 (`+612`/`+616`).
+#[derive(Debug, Clone)]
+pub struct VehicleSeat {
+    /// Word 134 (byte 536): C1 stores 1103626240 (25.0).
+    pub max_speed: f32,
+    /// Word 135 (byte 540): `setTurnSpeed` (IDA 0x6bc69c); C1 stores 1.0.
+    pub turn_speed: f32,
+    /// Word 136 (byte 544): `setTorque` (IDA 0x6bc6c4); C1 stores 10.0.
+    pub torque: f32,
+    /// Byte 548: `setEnableHud` (IDA 0x6bc6ec); C1 stores 1.
+    pub enable_hud: bool,
+    /// Words 138/139: cleared by `onSeatedChanged` (IDA 0x6bd3b4).
+    /// Descriptor names are Throttle/Steer [INFERENCE: unk_1327E9C/unk_1327EC8].
+    pub throttle: f32,
+    /// Words 138/139: cleared by `onSeatedChanged` (IDA 0x6bd3b4).
+    pub steer: f32,
+    /// Word 140 (byte 560): world link; D2 `ReleaseAssert`s it is null
+    /// (IDA 0x6bcc70, VehicleSeat.cpp:54).
+    pub world_present: bool,
+    /// Word 142: hinge count, filled by `loadMotorsAndHinges` (IDA 0x6bdd8c).
+    pub num_hinges: i32,
+    /// Words 153/154 pair (`+612`/`+616`): controller held while seated
+    /// (IDA 0x6bd3b4/0x6bd00c).
+    pub controller_alive: bool,
+}
+
+impl VehicleSeat {
+    /// C1 defaults (IDA 0x6bc816..0x6bc8e0): MaxSpeed 25.0, TurnSpeed 1.0,
+    /// Torque 10.0, EnableHud true; the `setDisabled` call, the
+    /// `Edge::getPrimitive` asserts, and the vtable installs are host
+    /// no-ops (statically dispatched / asserted in D2).
+    pub fn new() -> Self {
+        Self {
+            max_speed: 25.0,
+            turn_speed: 1.0,
+            torque: 10.0,
+            enable_hud: true,
+            throttle: 0.0,
+            steer: 0.0,
+            world_present: false,
+            num_hinges: 0,
+            controller_alive: false,
+        }
+    }
+}
+
+impl Default for VehicleSeat {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+pub fn stub_0x6bc69c(seat: &mut VehicleSeat, value: f32, notify: &mut dyn FnMut(&str)) {
+    // IDA 0x6bc69c: `if (*(this+135) != a2) { *(this+135) = a2;
+    // raisePropertyChanged(TurnSpeed) }`.
+    if seat.turn_speed != value {
+        seat.turn_speed = value;
+        notify("TurnSpeed");
+    }
 }
 
 // 0x6bc6c4 — __ZN3RBX11VehicleSeat9setTorqueEf
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this, float)
 #[doc(alias = "RBX::VehicleSeat::setTorque(float)")]
 #[doc(alias = "__ZN3RBX11VehicleSeat9setTorqueEf")]
-pub fn stub_0x6bc6c4() -> ! {
-    todo!("0x6bc6c4")
+pub fn stub_0x6bc6c4(seat: &mut VehicleSeat, value: f32, notify: &mut dyn FnMut(&str)) {
+    // IDA 0x6bc6c4: `if (*(this+136) != a2) { *(this+136) = a2;
+    // raisePropertyChanged(Torque) }`.
+    if seat.torque != value {
+        seat.torque = value;
+        notify("Torque");
+    }
 }
 
 // 0x6bc6ec — __ZN3RBX11VehicleSeat12setEnableHudEb
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this, bool)
 #[doc(alias = "RBX::VehicleSeat::setEnableHud(bool)")]
 #[doc(alias = "__ZN3RBX11VehicleSeat12setEnableHudEb")]
-pub fn stub_0x6bc6ec() -> ! {
-    todo!("0x6bc6ec")
+pub fn stub_0x6bc6ec(seat: &mut VehicleSeat, value: bool, notify: &mut dyn FnMut(&str)) {
+    // IDA 0x6bc6ec: `if (*(this+548) != a2) { *(this+548) = a2;
+    // raisePropertyChanged(EnableHud) }`.
+    if seat.enable_hud != value {
+        seat.enable_hud = value;
+        notify("EnableHud");
+    }
 }
 
 // 0x6bc70c — __ZNK3RBX11VehicleSeat12getNumHingesEv
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "RBX::VehicleSeat::getNumHinges(void)const")]
 #[doc(alias = "__ZNK3RBX11VehicleSeat12getNumHingesEv")]
-pub fn stub_0x6bc70c() -> ! {
-    todo!("0x6bc70c")
+pub fn stub_0x6bc70c(seat: &mut VehicleSeat, load: &mut dyn FnMut(&mut VehicleSeat)) -> i32 {
+    // IDA 0x6bc70c: `loadMotorsAndHinges(this)` (0x6bdd8c) then return
+    // `*(this+142)`.
+    load(seat);
+    seat.num_hinges
 }
 
 // 0x6bc71c — __ZN3RBX11VehicleSeatC1Ev
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "RBX::VehicleSeat::VehicleSeat(void)")]
 #[doc(alias = "__ZN3RBX11VehicleSeatC1Ev")]
-pub fn stub_0x6bc71c() -> ! {
-    todo!("0x6bc71c")
+pub fn stub_0x6bc71c() -> VehicleSeat {
+    // IDA 0x6bc71c: Described/FactoryProduct/SeatImpl bases, Joint at +348,
+    // hinge arrays at +564/+580/+596, then the scalar defaults above.
+    VehicleSeat::new()
 }
 
 // 0x6bcb84 — __ZN3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "RBX::VehicleSeat::~VehicleSeat()")]
 #[doc(alias = "__ZN3RBX11VehicleSeatD0Ev")]
-pub fn stub_0x6bcb84() -> ! {
-    todo!("0x6bcb84")
+pub fn stub_0x6bcb84(seat: VehicleSeat) {
+    // IDA 0x6bcb84: D0 = D2 body (`stub_0x6bcc70`) then `operator delete`;
+    // the host `drop` frees the allocation the same way.
+    let mut seat = seat;
+    stub_0x6bcc70(&mut seat);
+    drop(seat);
 }
 
 // 0x6bcc30 — __ZN3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "RBX::VehicleSeat::~VehicleSeat() [0x6bcc30]")]
 #[doc(alias = "__ZN3RBX11VehicleSeatD1Ev")]
-pub fn stub_0x6bcc30() -> ! {
-    todo!("0x6bcc30")
+pub fn stub_0x6bcc30(seat: VehicleSeat) {
+    // IDA 0x6bcc30: D1 = D2 body only, no free (host stack discipline frees).
+    let mut seat = seat;
+    stub_0x6bcc70(&mut seat);
 }
 
 // 0x6bcc40 — __ZThn32_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 #[doc(alias = "__ZThn32_N3RBX11VehicleSeatD0Ev")]
-pub fn stub_0x6bcc40() -> ! {
-    todo!("0x6bcc40")
+pub fn stub_0x6bcc40(seat: VehicleSeat) {
+    // IDA 0x6bcc40: `SUBS R0, #0x20` then `B.W D0 (0x6bcb84)`; the -32
+    // base-to-complete adjust is a no-op in the flat host layout.
+    stub_0x6bcb84(seat);
 }
 
 // 0x6bcc48 — __ZThn36_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcc48]")]
 #[doc(alias = "__ZThn36_N3RBX11VehicleSeatD0Ev")]
-pub fn stub_0x6bcc48() -> ! {
-    todo!("0x6bcc48")
+pub fn stub_0x6bcc48(seat: VehicleSeat) {
+    // IDA 0x6bcc48: `SUBS R0, #0x24` then tail-call D0 (0x6bcb84).
+    stub_0x6bcb84(seat);
 }
 
 // 0x6bcc50 — __ZThn132_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcc50]")]
 #[doc(alias = "__ZThn132_N3RBX11VehicleSeatD0Ev")]
-pub fn stub_0x6bcc50() -> ! {
-    todo!("0x6bcc50")
+pub fn stub_0x6bcc50(seat: VehicleSeat) {
+    // IDA 0x6bcc50: `SUBS R0, #0x84` then tail-call D0 (0x6bcb84).
+    stub_0x6bcb84(seat);
 }
 
 // 0x6bcc58 — __ZThn348_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcc58]")]
 #[doc(alias = "__ZThn348_N3RBX11VehicleSeatD0Ev")]
-pub fn stub_0x6bcc58() -> ! {
-    todo!("0x6bcc58")
+pub fn stub_0x6bcc58(seat: VehicleSeat) {
+    // IDA 0x6bcc58: `SUB.W R0, #0x15C` then tail-call D0 (0x6bcb84).
+    stub_0x6bcb84(seat);
 }
 
 // 0x6bcc60 — __ZThn380_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcc60]")]
 #[doc(alias = "__ZThn380_N3RBX11VehicleSeatD0Ev")]
-pub fn stub_0x6bcc60() -> ! {
-    todo!("0x6bcc60")
+pub fn stub_0x6bcc60(seat: VehicleSeat) {
+    // IDA 0x6bcc60: `SUB.W R0, #0x17C` then tail-call D0 (0x6bcb84).
+    stub_0x6bcb84(seat);
 }
 
 // 0x6bcc68 — __ZThn500_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcc68]")]
 #[doc(alias = "__ZThn500_N3RBX11VehicleSeatD0Ev")]
-pub fn stub_0x6bcc68() -> ! {
-    todo!("0x6bcc68")
+pub fn stub_0x6bcc68(seat: VehicleSeat) {
+    // IDA 0x6bcc68: `SUB.W R0, #0x1F4` then tail-call D0 (0x6bcb84).
+    stub_0x6bcb84(seat);
 }
 
 // 0x6bcc70 — __ZN3RBX11VehicleSeatD2Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "RBX::VehicleSeat::~VehicleSeat() [0x6bcc70]")]
 #[doc(alias = "__ZN3RBX11VehicleSeatD2Ev")]
-pub fn stub_0x6bcc70() -> ! {
-    todo!("0x6bcc70")
+pub fn stub_0x6bcc70(seat: &mut VehicleSeat) {
+    // IDA 0x6bcc70: vtable resets (host: static dispatch, no-op) and member
+    // teardown, then the VehicleSeat.cpp:54-55 `ReleaseAssert`s
+    // (`world == NULL`, `Edge::getPrimitive(0/1) == NULL`). The joint edges
+    // stay null in the host model, so only the world link is checked; the
+    // +612 controller shared_ptr is released via the alive flag.
+    debug_assert!(
+        !seat.world_present,
+        "world == NULL file: /Volumes/MacintoshHD2/Developer/buildAgent/work/565213a28ede2fde/Client/App/v8datamodel/VehicleSeat.cpp line: 54"
+    );
+    seat.controller_alive = false;
 }
 
 // 0x6bcfa0 — __ZThn32_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcfa0]")]
 #[doc(alias = "__ZThn32_N3RBX11VehicleSeatD1Ev")]
-pub fn stub_0x6bcfa0() -> ! {
-    todo!("0x6bcfa0")
+pub fn stub_0x6bcfa0(seat: VehicleSeat) {
+    // IDA 0x6bcfa0: VTT load + `SUBS R0, #0x20` then `B.W D2 (0x6bcc70)`.
+    let mut seat = seat;
+    stub_0x6bcc70(&mut seat);
 }
 
 // 0x6bcfb0 — __ZThn36_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcfb0]")]
 #[doc(alias = "__ZThn36_N3RBX11VehicleSeatD1Ev")]
-pub fn stub_0x6bcfb0() -> ! {
-    todo!("0x6bcfb0")
+pub fn stub_0x6bcfb0(seat: VehicleSeat) {
+    // IDA 0x6bcfb0: VTT load + `SUBS R0, #0x24` then `B.W D2 (0x6bcc70)`.
+    let mut seat = seat;
+    stub_0x6bcc70(&mut seat);
 }
 
 // 0x6bcfc0 — __ZThn132_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcfc0]")]
 #[doc(alias = "__ZThn132_N3RBX11VehicleSeatD1Ev")]
-pub fn stub_0x6bcfc0() -> ! {
-    todo!("0x6bcfc0")
+pub fn stub_0x6bcfc0(seat: VehicleSeat) {
+    // IDA 0x6bcfc0: VTT load + `SUBS R0, #0x84` then `B.W D2 (0x6bcc70)`.
+    let mut seat = seat;
+    stub_0x6bcc70(&mut seat);
 }
 
 // 0x6bcfd0 — __ZThn348_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcfd0]")]
 #[doc(alias = "__ZThn348_N3RBX11VehicleSeatD1Ev")]
-pub fn stub_0x6bcfd0() -> ! {
-    todo!("0x6bcfd0")
+pub fn stub_0x6bcfd0(seat: VehicleSeat) {
+    // IDA 0x6bcfd0: VTT load + `SUB.W R0, #0x15C` then `B.W D2 (0x6bcc70)`.
+    let mut seat = seat;
+    stub_0x6bcc70(&mut seat);
 }
 
 // 0x6bcfe4 — __ZThn380_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcfe4]")]
 #[doc(alias = "__ZThn380_N3RBX11VehicleSeatD1Ev")]
-pub fn stub_0x6bcfe4() -> ! {
-    todo!("0x6bcfe4")
+pub fn stub_0x6bcfe4(seat: VehicleSeat) {
+    // IDA 0x6bcfe4: VTT load + `SUB.W R0, #0x17C` then `B.W D2 (0x6bcc70)`.
+    let mut seat = seat;
+    stub_0x6bcc70(&mut seat);
 }
 
 // 0x6bcff8 — __ZThn500_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcff8]")]
 #[doc(alias = "__ZThn500_N3RBX11VehicleSeatD1Ev")]
-pub fn stub_0x6bcff8() -> ! {
-    todo!("0x6bcff8")
+pub fn stub_0x6bcff8(seat: VehicleSeat) {
+    // IDA 0x6bcff8: VTT load + `SUB.W R0, #0x1F4` then `B.W D2 (0x6bcc70)`.
+    let mut seat = seat;
+    stub_0x6bcc70(&mut seat);
 }
 
 // 0x6bd00c — __ZNK3RBX11VehicleSeat14shouldRender2dEv
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "RBX::VehicleSeat::shouldRender2d(void)const")]
 #[doc(alias = "__ZNK3RBX11VehicleSeat14shouldRender2dEv")]
-pub fn stub_0x6bd00c() -> ! {
-    todo!("0x6bd00c")
+pub fn stub_0x6bd00c(seat: &VehicleSeat) -> bool {
+    // IDA 0x6bd00c: `return weak_count::use_count(this+616) != 0`.
+    seat.controller_alive
 }
 
 // 0x6bd020 — __ZThn108_NK3RBX11VehicleSeat14shouldRender2dEv
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::shouldRender2d(void)const")]
 #[doc(alias = "__ZThn108_NK3RBX11VehicleSeat14shouldRender2dEv")]
-pub fn stub_0x6bd020() -> ! {
-    todo!("0x6bd020")
+pub fn stub_0x6bd020(seat: &VehicleSeat) -> bool {
+    // IDA 0x6bd020: `ADD.W R0, #0x1FC` (108-base + 508 reaches the same
+    // +616 weak) then the primary body; flat host forwards directly.
+    stub_0x6bd00c(seat)
 }
 
 // 0x6bd034 — __ZN3RBX11VehicleSeat8render2dEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this, RBX::Adorn *)
 #[doc(alias = "RBX::VehicleSeat::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX11VehicleSeat8render2dEPNS_5AdornE")]
-pub fn stub_0x6bd034() -> ! {
-    todo!("0x6bd034")
+pub fn stub_0x6bd034(
+    seat: &VehicleSeat,
+    viewport: [f32; 4],
+    velocity: [f32; 3],
+    draw_rect: &mut dyn FnMut([f32; 4], [f32; 4]),
+    draw_text: &mut dyn FnMut(&str, [f32; 2], f32),
+) {
+    // IDA 0x6bd034: gated on EnableHud (byte +548). Viewport quad comes from
+    // `Adorn` vtab+32, speed is the PV velocity norm; half-extent is
+    // `speed*10*0.5` clamped at 500 once speed exceeds 100; the rect is
+    // `(cx-e, cy-10, cx+e, cy+10)` with `cx/cy` the viewport center biased
+    // +60 in y, drawn in `G3D::Color3::blue` (adorn vtab+64), plus a
+    // `"Speed: {int(speed)}"` label at the rect origin, size 12
+    // (1094713344, adorn vtab+76).
+    if !seat.enable_hud {
+        return;
+    }
+    let speed = (velocity[0] * velocity[0] + velocity[1] * velocity[1] + velocity[2] * velocity[2]).sqrt();
+    let half = (speed * 5.0).min(500.0);
+    let center_x = (viewport[0] + viewport[1]) * 0.5;
+    let center_y = (viewport[2] + viewport[3]) * 0.5 + 60.0;
+    let rect = [center_x - half, center_y - 10.0, center_x + half, center_y + 10.0];
+    draw_rect(rect, VEHICLE_SEAT_HUD_COLOR);
+    draw_text(&format!("Speed: {}", speed as i32), [rect[0], rect[1]], VEHICLE_SEAT_HUD_FONT_SIZE);
 }
+
+/// HUD swatch for [`stub_0x6bd034`] (IDA 0x6bd034): `G3D::Color3::blue`
+/// with alpha 1065353216 (1.0).
+pub const VEHICLE_SEAT_HUD_COLOR: [f32; 4] = [0.0, 0.0, 1.0, 1.0];
+/// HUD label size for [`stub_0x6bd034`] (IDA 0x6bd034: 1094713344 = 12.0).
+pub const VEHICLE_SEAT_HUD_FONT_SIZE: f32 = 12.0;
 
 // 0x6bd3ac — __ZThn108_N3RBX11VehicleSeat8render2dEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn108_N3RBX11VehicleSeat8render2dEPNS_5AdornE")]
-pub fn stub_0x6bd3ac() -> ! {
-    todo!("0x6bd3ac")
+pub fn stub_0x6bd3ac(
+    seat: &VehicleSeat,
+    viewport: [f32; 4],
+    velocity: [f32; 3],
+    draw_rect: &mut dyn FnMut([f32; 4], [f32; 4]),
+    draw_text: &mut dyn FnMut(&str, [f32; 2], f32),
+) {
+    // IDA 0x6bd3ac: `SUBS R0, #0x6C` then the primary `render2d`; flat host
+    // forwards directly.
+    stub_0x6bd034(seat, viewport, velocity, draw_rect, draw_text);
 }
 
 // 0x6bd3b4 — __ZN3RBX11VehicleSeat15onSeatedChangedEbPNS_8HumanoidE
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this, bool, RBX::Humanoid *)
 #[doc(alias = "RBX::VehicleSeat::onSeatedChanged(bool,RBX::Humanoid *)")]
 #[doc(alias = "__ZN3RBX11VehicleSeat15onSeatedChangedEbPNS_8HumanoidE")]
-pub fn stub_0x6bd3b4() -> ! {
-    todo!("0x6bd3b4")
+pub fn stub_0x6bd3b4(
+    seat: &mut VehicleSeat,
+    seated: bool,
+    humanoid_present: bool,
+    is_local_humanoid: bool,
+    unparent_controller: &mut dyn FnMut(),
+    on_local_seated: &mut dyn FnMut(),
+    on_local_unseated: &mut dyn FnMut(),
+    notify: &mut dyn FnMut(&str),
+    mark_render_dirty: &mut dyn FnMut(),
+) {
+    // IDA 0x6bd3b4: while the +616 controller weak is alive, unparent the
+    // +612 controller and release the shared/weak pair (words 153/154).
+    // When the humanoid is the local one, dispatch onLocalSeated (a2 == 1)
+    // vs onLocalUnseated, then zero nonzero Throttle (word 138,
+    // unk_1327E9C) and Steer (word 139, unk_1327EC8) with property-changed
+    // raises. Always ends with `IAdornable::shouldRenderSetDirty(+108)`.
+    if seat.controller_alive {
+        unparent_controller();
+        seat.controller_alive = false;
+    }
+    if humanoid_present && is_local_humanoid {
+        if seated {
+            on_local_seated();
+        } else {
+            on_local_unseated();
+        }
+        if seat.throttle != 0.0 {
+            seat.throttle = 0.0;
+            notify("Throttle");
+        }
+        if seat.steer != 0.0 {
+            seat.steer = 0.0;
+            notify("Steer");
+        }
+    }
+    mark_render_dirty();
+}
+
+#[cfg(test)]
+mod vehicle_seat_tests {
+    use super::*;
+    use std::cell::RefCell;
+
+    #[test]
+    fn ctor_matches_binary_defaults() {
+        let seat = stub_0x6bc71c();
+        assert_eq!(seat.max_speed, 25.0);
+        assert_eq!(seat.turn_speed, 1.0);
+        assert_eq!(seat.torque, 10.0);
+        assert!(seat.enable_hud);
+        assert!(!seat.controller_alive);
+    }
+
+    #[test]
+    fn setters_fire_once_on_change() {
+        let mut seat = VehicleSeat::new();
+        let log = RefCell::new(Vec::new());
+        let mut notify = |name: &str| log.borrow_mut().push(name.to_owned());
+        stub_0x6bc69c(&mut seat, 1.0, &mut notify);
+        stub_0x6bc6c4(&mut seat, 10.0, &mut notify);
+        stub_0x6bc6ec(&mut seat, true, &mut notify);
+        assert!(log.borrow().is_empty());
+        stub_0x6bc69c(&mut seat, 2.5, &mut notify);
+        stub_0x6bc6c4(&mut seat, 7.0, &mut notify);
+        stub_0x6bc6ec(&mut seat, false, &mut notify);
+        assert_eq!(*log.borrow(), ["TurnSpeed", "Torque", "EnableHud"]);
+        assert_eq!((seat.turn_speed, seat.torque, seat.enable_hud), (2.5, 7.0, false));
+    }
+
+    #[test]
+    fn hinges_come_from_loader() {
+        let mut seat = VehicleSeat::new();
+        let mut load = |seat: &mut VehicleSeat| seat.num_hinges = 4;
+        assert_eq!(stub_0x6bc70c(&mut seat, &mut load), 4);
+    }
+
+    #[test]
+    fn render_gates_on_hud_and_controller() {
+        let seat = VehicleSeat::new();
+        assert!(!stub_0x6bd00c(&seat));
+        assert!(!stub_0x6bd020(&seat));
+        let mut seated = VehicleSeat::new();
+        seated.controller_alive = true;
+        assert!(stub_0x6bd00c(&seated));
+        let mut rects = Vec::new();
+        let mut texts = Vec::new();
+        let mut draw_rect = |rect: [f32; 4], color: [f32; 4]| rects.push((rect, color));
+        let mut draw_text = |text: &str, at: [f32; 2], size: f32| texts.push((text.to_owned(), at, size));
+        stub_0x6bd034(&seated, [0.0, 100.0, 0.0, 50.0], [3.0, 4.0, 0.0], &mut draw_rect, &mut draw_text);
+        assert_eq!(rects.len(), 1);
+        assert_eq!(rects[0].0, [25.0, 75.0, 75.0, 95.0]);
+        assert_eq!(rects[0].1, VEHICLE_SEAT_HUD_COLOR);
+        assert_eq!(texts[0].0, "Speed: 5");
+        assert_eq!(texts[0].2, VEHICLE_SEAT_HUD_FONT_SIZE);
+        let mut hidden = VehicleSeat::new();
+        hidden.enable_hud = false;
+        let calls = std::cell::Cell::new(0);
+        let mut no_rect = |_: [f32; 4], _: [f32; 4]| calls.set(calls.get() + 1);
+        let mut no_text = |_: &str, _: [f32; 2], _: f32| calls.set(calls.get() + 1);
+        stub_0x6bd3ac(&hidden, [0.0, 100.0, 0.0, 50.0], [3.0, 4.0, 0.0], &mut no_rect, &mut no_text);
+        assert_eq!(calls.get(), 0);
+    }
+
+    #[test]
+    fn seated_change_releases_controller_and_zeroes_inputs() {
+        let mut seat = VehicleSeat::new();
+        seat.controller_alive = true;
+        seat.throttle = 1.0;
+        seat.steer = -0.5;
+        let log = RefCell::new(Vec::new());
+        {
+            let mut unparent = || log.borrow_mut().push("unparent".to_owned());
+            let mut seated_cb = || log.borrow_mut().push("seated".to_owned());
+            let mut unseated_cb = || log.borrow_mut().push("unseated".to_owned());
+            let mut notify = |name: &str| log.borrow_mut().push(format!("changed:{name}"));
+            let mut dirty = || log.borrow_mut().push("dirty".to_owned());
+            stub_0x6bd3b4(&mut seat, true, true, true, &mut unparent, &mut seated_cb, &mut unseated_cb, &mut notify, &mut dirty);
+        }
+        assert!(!seat.controller_alive);
+        assert_eq!((seat.throttle, seat.steer), (0.0, 0.0));
+        assert_eq!(*log.borrow(), ["unparent", "seated", "changed:Throttle", "changed:Steer", "dirty"]);
+    }
+
+    #[test]
+    fn non_local_seated_keeps_inputs_but_marks_dirty() {
+        let mut seat = VehicleSeat::new();
+        seat.throttle = 1.0;
+        let mut dirty = 0;
+        let mut noop_a = || {};
+        let mut noop_b = || {};
+        let mut noop_c = || {};
+        let mut notify = |_: &str| panic!("must not notify");
+        stub_0x6bd3b4(&mut seat, false, true, false, &mut noop_a, &mut noop_b, &mut noop_c, &mut notify, &mut || dirty += 1);
+        assert_eq!(dirty, 1);
+    }
+
+    #[test]
+    fn dtors_release_controller_and_thunks_forward() {
+        let mut seat = VehicleSeat::new();
+        seat.controller_alive = true;
+        stub_0x6bcc70(&mut seat);
+        assert!(!seat.controller_alive);
+        stub_0x6bcb84(VehicleSeat::new());
+        stub_0x6bcc30(VehicleSeat::new());
+        stub_0x6bcc40(VehicleSeat::new());
+        stub_0x6bcc48(VehicleSeat::new());
+        stub_0x6bcc50(VehicleSeat::new());
+        stub_0x6bcc58(VehicleSeat::new());
+        stub_0x6bcc60(VehicleSeat::new());
+        stub_0x6bcc68(VehicleSeat::new());
+        stub_0x6bcfa0(VehicleSeat::new());
+        stub_0x6bcfb0(VehicleSeat::new());
+        stub_0x6bcfc0(VehicleSeat::new());
+        stub_0x6bcfd0(VehicleSeat::new());
+        stub_0x6bcfe4(VehicleSeat::new());
+        stub_0x6bcff8(VehicleSeat::new());
+    }
+
+    #[test]
+    #[should_panic(expected = "world == NULL")]
+    fn d2_asserts_world_link() {
+        let mut seat = VehicleSeat::new();
+        seat.world_present = true;
+        stub_0x6bcc70(&mut seat);
+    }
 }
 
 // 0x6bd540 — __ZN3RBX11VehicleSeat13onLocalSeatedEPNS_8HumanoidE
