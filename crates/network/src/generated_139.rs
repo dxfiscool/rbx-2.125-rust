@@ -492,352 +492,511 @@ pub fn stub_c3a4(value: i32) -> i32 {
     value
 }
 
+/// Host stand-in for the `rbx::implementation::typed_holder<T>` singletons
+/// behind `placement_any<Region3>` (IDA 0xc95c/0xcf3c/0xd47c/0xd9bc/0xdefc):
+/// each image static is `{typeinfo, destruct_func, construct_func(ptr)}`
+/// guarded by `__cxa_guard_acquire`; the host keeps only the identity tag —
+/// values travel as plain `i32` slots, so construction/destruction fold away.
+pub struct EnumValueHolder {
+    pub type_name: &'static str,
+}
+
+/// was: `typed_holder<ResolutionPreset>::singleton()::s` (IDA 0xc95c).
+pub static RESOLUTION_PRESET_HOLDER: EnumValueHolder = EnumValueHolder {
+    type_name: "RBX::CRenderSettings::ResolutionPreset",
+};
+
+/// was: `typed_holder<QualityLevel>::singleton()::s` (IDA 0xcf3c).
+pub static QUALITY_LEVEL_HOLDER: EnumValueHolder = EnumValueHolder {
+    type_name: "RBX::CRenderSettings::QualityLevel",
+};
+
+/// was: `typed_holder<ShadowMode>::singleton()::s` (IDA 0xd47c).
+pub static SHADOW_MODE_HOLDER: EnumValueHolder = EnumValueHolder {
+    type_name: "RBX::CRenderSettings::ShadowMode",
+};
+
+/// was: `typed_holder<AntialiasingMode>::singleton()::s` (IDA 0xd9bc).
+pub static ANTIALIASING_MODE_HOLDER: EnumValueHolder = EnumValueHolder {
+    type_name: "RBX::CRenderSettings::AntialiasingMode",
+};
+
+/// was: `typed_holder<FrameRateManagerMode>::singleton()::s` (IDA 0xdefc).
+pub static FRAME_RATE_MANAGER_HOLDER: EnumValueHolder = EnumValueHolder {
+    type_name: "RBX::CRenderSettings::FrameRateManagerMode",
+};
+
 // 0xc3c4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToValueEmRNS0_7VariantE
 // type: 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_c3c4() -> ! {
-    todo!("0xc3c4 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_c3c4(desc: &EnumDescModel, index: usize, out: &mut i32) -> bool {
+    // IDA 0xc3c4: disasm 0xc3cc..0xc3de: LDR count +40 / CMP index / ITTTT HI gated legacy pair load; out = legacy[index], 1 on hit else 0.
+    if let Some(&v) = desc.legacy.get(index) {
+        *out = v;
+        true
+    } else {
+        false
+    }
 }
 
 // 0xc420 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_c420() -> ! {
-    todo!("0xc420 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE15convertToStringEmRSs")
+pub fn stub_c420(desc: &EnumDescModel, index: usize, out: &mut String) -> bool {
+    // IDA 0xc420: same convertToString template as 0xb9f8 — bound-checked item string assigned out, 1 on success, 0 when out of range.
+    if let Some((_, name)) = desc.pairs.get(index) {
+        out.clear();
+        out.push_str(name);
+        true
+    } else {
+        false
+    }
 }
 
 // 0xc564 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED1Ev
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()")]
-pub fn stub_c564() -> ! {
-    todo!("0xc564 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED1Ev")
+pub fn stub_c564() {
+    // IDA 0xc564: thunk tail-calling the ResolutionPreset EnumDesc D2 dtor (0xccb0); the host table drops with Rust ownership (disasm: single B.W — pure thunk).
 }
 
 // 0xc568 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()")]
-pub fn stub_c568() -> ! {
-    todo!("0xc568 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED0Ev")
+pub fn stub_c568() {
+    // IDA 0xc568: EnumDesc dtor + operator delete; the host table drops with Rust ownership instead. disasm: D2 call (0xc56e) + operator delete (0xc578).
 }
 
 // 0xc57c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::lookup(char const*)const")]
-pub fn stub_c57c() -> ! {
-    todo!("0xc57c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE6lookupEPKc")
+pub fn stub_c57c(desc: &EnumDescModel, name: &str) -> Option<i32> {
+    // IDA 0xc57c: disasm: Name::lookup (0xc588) + convertToValue<Name> (0xc592) + convertToItem; null on failure.
+    desc.lookup(name)
 }
 
 // 0xc5ac — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_c5ac() -> ! {
-    todo!("0xc5ac __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE6lookupERKNS0_7VariantE")
+pub fn stub_c5ac(value: i32) -> i32 {
+    // IDA 0xc5ac: disasm: any_cast (0xc5b6) + convertToItem (0xc5c2), no failure arm — the host carries the value directly.
+    value
 }
 
 // 0xc5cc — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToValueEmRNS0_7VariantE
 // type: 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_c5cc() -> ! {
-    todo!("0xc5cc __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_c5cc(desc: &EnumDescModel, index: usize, out: &mut i32) -> bool {
+    // IDA 0xc5cc: disasm 0xc5d4..0xc5e6: same LDR +40 / CMP / ITTTT HI gated pair load as 0xc3c4; out = legacy[index], 1 on hit else 0.
+    if let Some(&v) = desc.legacy.get(index) {
+        *out = v;
+        true
+    } else {
+        false
+    }
 }
 
 // 0xc628 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_c628() -> ! {
-    todo!("0xc628 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE15convertToStringEmRSs")
+pub fn stub_c628(desc: &EnumDescModel, index: usize, out: &mut String) -> bool {
+    // IDA 0xc628: same convertToString template as 0xb9f8 — bound-checked item string assigned out, 1 on success, 0 when out of range.
+    if let Some((_, name)) = desc.pairs.get(index) {
+        out.clear();
+        out.push_str(name);
+        true
+    } else {
+        false
+    }
 }
 
 // 0xc76c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToString(RBX::CRenderSettings::ResolutionPreset const&)const")]
-pub fn stub_c76c() -> ! {
-    todo!("0xc76c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE15convertToStringERKS3_")
+pub fn stub_c76c(desc: &EnumDescModel, value: i32, out: &mut String) {
+    // IDA 0xc76c: decompile: ReleaseAssert value>=0 (enumconverter.h:262) + value<enumToItem.size() (:263); empty string when negative/oversized, else enumToItem[value] (0xc876..0xc896). Host pairs search is the same observable mapping at any density.
+    out.clear();
+    if value >= 0 {
+        if let Some((_, name)) = desc.pairs.iter().find(|(v, _)| *v == value) {
+            out.push_str(name);
+        }
+    }
 }
 
 // 0xc90c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings16ResolutionPresetEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::ResolutionPreset>(RBX::CRenderSettings::ResolutionPreset const&)")]
-pub fn stub_c90c() -> ! {
-    todo!("0xc90c __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings16ResolutionPresetEEERS3_RKT_")
+pub fn stub_c90c(slot: &mut i32, value: i32) {
+    // IDA 0xc90c: decompile: singleton() (0xc918); holder match stores value only (0xc944), else destroy-old (0xc930..0xc93c) + store + install holder (0xc94e..0xc950). The holder tag folds into the ResolutionPreset typed_holder static; the host carries the POD value directly.
+    *slot = value;
 }
 
 // 0xc95c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16ResolutionPresetEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::singleton(void)")]
-pub fn stub_c95c() -> ! {
-    todo!("0xc95c __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16ResolutionPresetEE9singletonEv")
+pub fn stub_c95c() -> &'static EnumValueHolder {
+    // IDA 0xc95c: decompile: guard-checked static init {typeinfo, destruct_func, construct_func} (0xc976..0xc9b6); returns &s (0xc9c6); returns the holder static.
+    &RESOLUTION_PRESET_HOLDER
 }
 
 // 0xc9c8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16ResolutionPresetEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::construct_func(char const*,char *)")]
-pub fn stub_c9c8() -> ! {
-    todo!("0xc9c8 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16ResolutionPresetEE14construct_funcEPKcPc")
+pub fn stub_c9c8(dst: &mut i32, src: &i32) {
+    // IDA 0xc9c8: decompile: POD construct arm copying the int-sized enum (0xc9ca..0xc9d0) — int-sized enum copied into the slot.
+    *dst = *src;
 }
 
 // 0xc9d4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16ResolutionPresetEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::destruct_func(char *)")]
-pub fn stub_c9d4() -> ! {
-    todo!("0xc9d4 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16ResolutionPresetEE13destruct_funcEPc")
+pub fn stub_c9d4() {
+    // IDA 0xc9d4: decompile: empty body — no teardown (114 chars) — int-sized enum needs no teardown.
 }
 
 // 0xc9d8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToItem(RBX::CRenderSettings::ResolutionPreset const&)const")]
-pub fn stub_c9d8() -> ! {
-    todo!("0xc9d8 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE13convertToItemERKS3_")
+pub fn stub_c9d8(desc: &EnumDescModel, value: i32) -> i32 {
+    // IDA 0xc9d8: decompile: ReleaseAssert value>=0 (:273) + value<size (:274); in range returns enumToItem[value] (0xc984..0xc99c), else 0. Host pairs search matches at any density ([INFERENCE] on table layout only).
+    if value >= 0 {
+        if let Some((v, _)) = desc.pairs.iter().find(|(val, _)| *val == value) {
+            return *v;
+        }
+    }
+    0
 }
 
 // 0xcaa4 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings16ResolutionPresetENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::ResolutionPreset const& rbx::any_cast<RBX::CRenderSettings::ResolutionPreset const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_caa4() -> ! {
-    todo!("0xcaa4 __ZN3rbx8any_castIRKN3RBX15CRenderSettings16ResolutionPresetENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_caa4(value: i32) -> i32 {
+    // IDA 0xcaa4: decompile: holder typeinfo check (0xcace..0xcb10); mismatch throws std::bad_cast (0xcb62..0xcb86); hit returns value slot a1+1 (0xcb4a). Host slots are checked upstream — the bad_cast arm is documented, not rebuilt.
+    value
 }
 
 // 0xcb94 — __ZN5boost16exception_detail12refcount_ptrINS0_20error_info_containerEED2Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "boost::exception_detail::refcount_ptr<boost::exception_detail::error_info_container>::~refcount_ptr()")]
-pub fn stub_cb94() -> ! {
-    todo!("0xcb94 __ZN5boost16exception_detail12refcount_ptrINS0_20error_info_containerEED2Ev")
+pub fn stub_cb94() {
+    // IDA 0xcb94: decompile: releases the error_info_container ref when count hits 1 via vtable+16 (0xcbf2..0xcbf6). was: boost::exception_detail::refcount_ptr → anyhow/thiserror; the host stores no exception payload, so release folds into drop.
 }
 
 // 0xcc34 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToValue(RBX::Name const&,RBX::CRenderSettings::ResolutionPreset&)const")]
-pub fn stub_cc34() -> ! {
-    todo!("0xcc34 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_cc34(desc: &EnumDescModel, name: &str, out: &mut i32) -> bool {
+    // IDA 0xcc34: decompile: twin RB-tree lower_bounds over the name→value maps (0xcc4a..0xcc9e); hit stores node value + 1 (0xccaa..0xccac), miss 0. Host by_name merges both trees.
+    if let Some(&v) = desc.by_name.get(name) {
+        *out = v;
+        true
+    } else {
+        false
+    }
 }
 
 // 0xccb0 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED2Ev
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()")]
-pub fn stub_ccb0() -> ! {
-    todo!("0xccb0 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED2Ev")
+pub fn stub_ccb0() {
+    // IDA 0xccb0: D2 — decompile: _M_erase over both name→value maps (0xcd34/0xcd3e) + EnumDescriptor base dtor (0xcd48); host tables drop with Rust ownership.
 }
 
 // 0xcd4c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToString(RBX::CRenderSettings::QualityLevel const&)const")]
-pub fn stub_cd4c() -> ! {
-    todo!("0xcd4c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE15convertToStringERKS3_")
+pub fn stub_cd4c(desc: &EnumDescModel, value: i32, out: &mut String) {
+    // IDA 0xcd4c: same convertToString-value template as 0xc76c (asserts + bound-checked item string, empty when out of range). Host pairs search is the same observable mapping at any density.
+    out.clear();
+    if value >= 0 {
+        if let Some((_, name)) = desc.pairs.iter().find(|(v, _)| *v == value) {
+            out.push_str(name);
+        }
+    }
 }
 
 // 0xceec — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings12QualityLevelEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::QualityLevel>(RBX::CRenderSettings::QualityLevel const&)")]
-pub fn stub_ceec() -> ! {
-    todo!("0xceec __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings12QualityLevelEEERS3_RKT_")
+pub fn stub_ceec(slot: &mut i32, value: i32) {
+    // IDA 0xceec: same placement_any op= template as 0xc90c (singleton fetch + holder-match fast path, else destroy/store/install). The holder tag folds into the QualityLevel typed_holder static; the host carries the POD value directly.
+    *slot = value;
 }
 
 // 0xcf3c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12QualityLevelEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::singleton(void)")]
-pub fn stub_cf3c() -> ! {
-    todo!("0xcf3c __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12QualityLevelEE9singletonEv")
+pub fn stub_cf3c() -> &'static EnumValueHolder {
+    // IDA 0xcf3c: same singleton template as 0xc95c (guard-checked static {typeinfo, destruct, construct}); returns the holder static.
+    &QUALITY_LEVEL_HOLDER
 }
 
 // 0xcfa8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12QualityLevelEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::construct_func(char const*,char *)")]
-pub fn stub_cfa8() -> ! {
-    todo!("0xcfa8 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12QualityLevelEE14construct_funcEPKcPc")
+pub fn stub_cfa8(dst: &mut i32, src: &i32) {
+    // IDA 0xcfa8: same construct_func template as 0xc9c8 (POD copy arm) — int-sized enum copied into the slot.
+    *dst = *src;
 }
 
 // 0xcfb4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12QualityLevelEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::destruct_func(char *)")]
-pub fn stub_cfb4() -> ! {
-    todo!("0xcfb4 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12QualityLevelEE13destruct_funcEPc")
+pub fn stub_cfb4() {
+    // IDA 0xcfb4: same destruct_func template as 0xc9d4 (empty body) — int-sized enum needs no teardown.
 }
 
 // 0xcfb8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToItem(RBX::CRenderSettings::QualityLevel const&)const")]
-pub fn stub_cfb8() -> ! {
-    todo!("0xcfb8 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE13convertToItemERKS3_")
+pub fn stub_cfb8(desc: &EnumDescModel, value: i32) -> i32 {
+    // IDA 0xcfb8: same convertToItem template as 0xc9d8 (asserts + in-range item else 0). Host pairs search matches at any density ([INFERENCE] on table layout only).
+    if value >= 0 {
+        if let Some((v, _)) = desc.pairs.iter().find(|(val, _)| *val == value) {
+            return *v;
+        }
+    }
+    0
 }
 
 // 0xd084 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings12QualityLevelENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::QualityLevel const& rbx::any_cast<RBX::CRenderSettings::QualityLevel const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_d084() -> ! {
-    todo!("0xd084 __ZN3rbx8any_castIRKN3RBX15CRenderSettings12QualityLevelENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_d084(value: i32) -> i32 {
+    // IDA 0xd084: same any_cast template as 0xcaa4 (holder typeinfo check; bad_cast on mismatch; value slot on hit). Host slots are checked upstream — the bad_cast arm is documented, not rebuilt.
+    value
 }
 
 // 0xd174 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToValue(RBX::Name const&,RBX::CRenderSettings::QualityLevel&)const")]
-pub fn stub_d174() -> ! {
-    todo!("0xd174 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_d174(desc: &EnumDescModel, name: &str, out: &mut i32) -> bool {
+    // IDA 0xd174: same convertToValue<Name> template as 0xcc34 (twin RB-tree lower_bounds; hit stores node value + 1, else 0). Host by_name merges both trees.
+    if let Some(&v) = desc.by_name.get(name) {
+        *out = v;
+        true
+    } else {
+        false
+    }
 }
 
 // 0xd1f0 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED2Ev
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::~EnumDesc()")]
-pub fn stub_d1f0() -> ! {
-    todo!("0xd1f0 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED2Ev")
+pub fn stub_d1f0() {
+    // IDA 0xd1f0: D2 — same D2 template as 0xccb0 (two _M_erase + base dtor); host tables drop with Rust ownership.
 }
 
 // 0xd28c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToString(RBX::CRenderSettings::ShadowMode const&)const")]
-pub fn stub_d28c() -> ! {
-    todo!("0xd28c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE15convertToStringERKS3_")
+pub fn stub_d28c(desc: &EnumDescModel, value: i32, out: &mut String) {
+    // IDA 0xd28c: same convertToString-value template as 0xc76c (asserts + bound-checked item string, empty when out of range). Host pairs search is the same observable mapping at any density.
+    out.clear();
+    if value >= 0 {
+        if let Some((_, name)) = desc.pairs.iter().find(|(v, _)| *v == value) {
+            out.push_str(name);
+        }
+    }
 }
 
 // 0xd42c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings10ShadowModeEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::ShadowMode>(RBX::CRenderSettings::ShadowMode const&)")]
-pub fn stub_d42c() -> ! {
-    todo!("0xd42c __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings10ShadowModeEEERS3_RKT_")
+pub fn stub_d42c(slot: &mut i32, value: i32) {
+    // IDA 0xd42c: same placement_any op= template as 0xc90c (singleton fetch + holder-match fast path, else destroy/store/install). The holder tag folds into the ShadowMode typed_holder static; the host carries the POD value directly.
+    *slot = value;
 }
 
 // 0xd47c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings10ShadowModeEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::singleton(void)")]
-pub fn stub_d47c() -> ! {
-    todo!("0xd47c __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings10ShadowModeEE9singletonEv")
+pub fn stub_d47c() -> &'static EnumValueHolder {
+    // IDA 0xd47c: same singleton template as 0xc95c (guard-checked static {typeinfo, destruct, construct}); returns the holder static.
+    &SHADOW_MODE_HOLDER
 }
 
 // 0xd4e8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings10ShadowModeEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::construct_func(char const*,char *)")]
-pub fn stub_d4e8() -> ! {
-    todo!("0xd4e8 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings10ShadowModeEE14construct_funcEPKcPc")
+pub fn stub_d4e8(dst: &mut i32, src: &i32) {
+    // IDA 0xd4e8: same construct_func template as 0xc9c8 (POD copy arm) — int-sized enum copied into the slot.
+    *dst = *src;
 }
 
 // 0xd4f4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings10ShadowModeEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::destruct_func(char *)")]
-pub fn stub_d4f4() -> ! {
-    todo!("0xd4f4 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings10ShadowModeEE13destruct_funcEPc")
+pub fn stub_d4f4() {
+    // IDA 0xd4f4: same destruct_func template as 0xc9d4 (empty body) — int-sized enum needs no teardown.
 }
 
 // 0xd4f8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToItem(RBX::CRenderSettings::ShadowMode const&)const")]
-pub fn stub_d4f8() -> ! {
-    todo!("0xd4f8 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE13convertToItemERKS3_")
+pub fn stub_d4f8(desc: &EnumDescModel, value: i32) -> i32 {
+    // IDA 0xd4f8: same convertToItem template as 0xc9d8 (asserts + in-range item else 0). Host pairs search matches at any density ([INFERENCE] on table layout only).
+    if value >= 0 {
+        if let Some((v, _)) = desc.pairs.iter().find(|(val, _)| *val == value) {
+            return *v;
+        }
+    }
+    0
 }
 
 // 0xd5c4 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings10ShadowModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::ShadowMode const& rbx::any_cast<RBX::CRenderSettings::ShadowMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_d5c4() -> ! {
-    todo!("0xd5c4 __ZN3rbx8any_castIRKN3RBX15CRenderSettings10ShadowModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_d5c4(value: i32) -> i32 {
+    // IDA 0xd5c4: same any_cast template as 0xcaa4 (holder typeinfo check; bad_cast on mismatch; value slot on hit). Host slots are checked upstream — the bad_cast arm is documented, not rebuilt.
+    value
 }
 
 // 0xd6b4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToValue(RBX::Name const&,RBX::CRenderSettings::ShadowMode&)const")]
-pub fn stub_d6b4() -> ! {
-    todo!("0xd6b4 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_d6b4(desc: &EnumDescModel, name: &str, out: &mut i32) -> bool {
+    // IDA 0xd6b4: same convertToValue<Name> template as 0xcc34 (twin RB-tree lower_bounds; hit stores node value + 1, else 0). Host by_name merges both trees.
+    if let Some(&v) = desc.by_name.get(name) {
+        *out = v;
+        true
+    } else {
+        false
+    }
 }
 
 // 0xd730 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED2Ev
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::~EnumDesc()")]
-pub fn stub_d730() -> ! {
-    todo!("0xd730 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED2Ev")
+pub fn stub_d730() {
+    // IDA 0xd730: D2 — same D2 template as 0xccb0 (two _M_erase + base dtor); host tables drop with Rust ownership.
 }
 
 // 0xd7cc — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToString(RBX::CRenderSettings::AntialiasingMode const&)const")]
-pub fn stub_d7cc() -> ! {
-    todo!("0xd7cc __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE15convertToStringERKS3_")
+pub fn stub_d7cc(desc: &EnumDescModel, value: i32, out: &mut String) {
+    // IDA 0xd7cc: same convertToString-value template as 0xc76c (asserts + bound-checked item string, empty when out of range). Host pairs search is the same observable mapping at any density.
+    out.clear();
+    if value >= 0 {
+        if let Some((_, name)) = desc.pairs.iter().find(|(v, _)| *v == value) {
+            out.push_str(name);
+        }
+    }
 }
 
 // 0xd96c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings16AntialiasingModeEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::AntialiasingMode>(RBX::CRenderSettings::AntialiasingMode const&)")]
-pub fn stub_d96c() -> ! {
-    todo!("0xd96c __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings16AntialiasingModeEEERS3_RKT_")
+pub fn stub_d96c(slot: &mut i32, value: i32) {
+    // IDA 0xd96c: same placement_any op= template as 0xc90c (singleton fetch + holder-match fast path, else destroy/store/install). The holder tag folds into the AntialiasingMode typed_holder static; the host carries the POD value directly.
+    *slot = value;
 }
 
 // 0xd9bc — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::singleton(void)")]
-pub fn stub_d9bc() -> ! {
-    todo!("0xd9bc __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE9singletonEv")
+pub fn stub_d9bc() -> &'static EnumValueHolder {
+    // IDA 0xd9bc: same singleton template as 0xc95c (guard-checked static {typeinfo, destruct, construct}); returns the holder static.
+    &ANTIALIASING_MODE_HOLDER
 }
 
 // 0xda28 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::construct_func(char const*,char *)")]
-pub fn stub_da28() -> ! {
-    todo!("0xda28 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE14construct_funcEPKcPc")
+pub fn stub_da28(dst: &mut i32, src: &i32) {
+    // IDA 0xda28: same construct_func template as 0xc9c8 (POD copy arm) — int-sized enum copied into the slot.
+    *dst = *src;
 }
 
 // 0xda34 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::destruct_func(char *)")]
-pub fn stub_da34() -> ! {
-    todo!("0xda34 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE13destruct_funcEPc")
+pub fn stub_da34() {
+    // IDA 0xda34: same destruct_func template as 0xc9d4 (empty body) — int-sized enum needs no teardown.
 }
 
 // 0xda38 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToItem(RBX::CRenderSettings::AntialiasingMode const&)const")]
-pub fn stub_da38() -> ! {
-    todo!("0xda38 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE13convertToItemERKS3_")
+pub fn stub_da38(desc: &EnumDescModel, value: i32) -> i32 {
+    // IDA 0xda38: same convertToItem template as 0xc9d8 (asserts + in-range item else 0). Host pairs search matches at any density ([INFERENCE] on table layout only).
+    if value >= 0 {
+        if let Some((v, _)) = desc.pairs.iter().find(|(val, _)| *val == value) {
+            return *v;
+        }
+    }
+    0
 }
 
 // 0xdb04 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings16AntialiasingModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::AntialiasingMode const& rbx::any_cast<RBX::CRenderSettings::AntialiasingMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_db04() -> ! {
-    todo!("0xdb04 __ZN3rbx8any_castIRKN3RBX15CRenderSettings16AntialiasingModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_db04(value: i32) -> i32 {
+    // IDA 0xdb04: same any_cast template as 0xcaa4 (holder typeinfo check; bad_cast on mismatch; value slot on hit). Host slots are checked upstream — the bad_cast arm is documented, not rebuilt.
+    value
 }
 
 // 0xdbf4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToValue(RBX::Name const&,RBX::CRenderSettings::AntialiasingMode&)const")]
-pub fn stub_dbf4() -> ! {
-    todo!("0xdbf4 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_dbf4(desc: &EnumDescModel, name: &str, out: &mut i32) -> bool {
+    // IDA 0xdbf4: same convertToValue<Name> template as 0xcc34 (twin RB-tree lower_bounds; hit stores node value + 1, else 0). Host by_name merges both trees.
+    if let Some(&v) = desc.by_name.get(name) {
+        *out = v;
+        true
+    } else {
+        false
+    }
 }
 
 // 0xdc70 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED2Ev
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::~EnumDesc()")]
-pub fn stub_dc70() -> ! {
-    todo!("0xdc70 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED2Ev")
+pub fn stub_dc70() {
+    // IDA 0xdc70: D2 — same D2 template as 0xccb0 (two _M_erase + base dtor); host tables drop with Rust ownership.
 }
 
 // 0xdd0c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToString(RBX::CRenderSettings::FrameRateManagerMode const&)const")]
-pub fn stub_dd0c() -> ! {
-    todo!("0xdd0c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE15convertToStringERKS3_")
+pub fn stub_dd0c(desc: &EnumDescModel, value: i32, out: &mut String) {
+    // IDA 0xdd0c: same convertToString-value template as 0xc76c (asserts + bound-checked item string, empty when out of range). Host pairs search is the same observable mapping at any density.
+    out.clear();
+    if value >= 0 {
+        if let Some((_, name)) = desc.pairs.iter().find(|(v, _)| *v == value) {
+            out.push_str(name);
+        }
+    }
 }
 
 // 0xdeac — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings20FrameRateManagerModeEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::FrameRateManagerMode>(RBX::CRenderSettings::FrameRateManagerMode const&)")]
-pub fn stub_deac() -> ! {
-    todo!("0xdeac __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings20FrameRateManagerModeEEERS3_RKT_")
+pub fn stub_deac(slot: &mut i32, value: i32) {
+    // IDA 0xdeac: same placement_any op= template as 0xc90c (singleton fetch + holder-match fast path, else destroy/store/install). The holder tag folds into the FrameRateManagerMode typed_holder static; the host carries the POD value directly.
+    *slot = value;
 }
 
 // 0xdefc — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings20FrameRateManagerModeEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::FrameRateManagerMode>::singleton(void)")]
-pub fn stub_defc() -> ! {
-    todo!("0xdefc __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings20FrameRateManagerModeEE9singletonEv")
+pub fn stub_defc() -> &'static EnumValueHolder {
+    // IDA 0xdefc: same singleton template as 0xc95c (guard-checked static {typeinfo, destruct, construct}); returns the holder static.
+    &FRAME_RATE_MANAGER_HOLDER
 }
 
 // 0xdf68 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings20FrameRateManagerModeEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::FrameRateManagerMode>::construct_func(char const*,char *)")]
-pub fn stub_df68() -> ! {
-    todo!("0xdf68 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings20FrameRateManagerModeEE14construct_funcEPKcPc")
+pub fn stub_df68(dst: &mut i32, src: &i32) {
+    // IDA 0xdf68: same construct_func template as 0xc9c8 (POD copy arm) — int-sized enum copied into the slot.
+    *dst = *src;
 }
 
 // 0xdf74 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings20FrameRateManagerModeEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::FrameRateManagerMode>::destruct_func(char *)")]
-pub fn stub_df74() -> ! {
-    todo!("0xdf74 __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings20FrameRateManagerModeEE13destruct_funcEPc")
+pub fn stub_df74() {
+    // IDA 0xdf74: same destruct_func template as 0xc9d4 (empty body) — int-sized enum needs no teardown.
 }
