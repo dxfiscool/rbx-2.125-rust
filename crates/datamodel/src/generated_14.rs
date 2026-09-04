@@ -7,173 +7,335 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use rbx_core::shared_ptr::{ControlBlockPd, CreatableInstanceDeleter};
+use parking_lot::Mutex;
+use crate::generated_05::{FunctorOp, Instance};
+use crate::generated_13::{HttpRequestResult, ModelLoadBind, Player, PlayerInstMethod, PlayerMouse, stub_a91498};
+use crate::instance::{Backpack, ModelInstance};
+
+/// Rust model of an `rbx::signals::signal<void ()(SharedPtr<Instance>,
+/// FriendStatus)>::slot` link walked by `next` (IDA `0xaa1e70`): the
+/// intrusive successor becomes `next`; retain/release become `clone`/`drop`.
+/// Twin of `Chat4SlotNode` (IDA `0xa4c674`) with a 2-arg callback.
+pub struct FriendSlotNode {
+    pub next: Option<SharedPtr<FriendSlotNode>>,
+}
+/// Process-wide mutex behind the friend-signal `mutex`/`safe_static_init`
+/// pair (IDA `0xaa2074`, `0xaa223c`); per-instantiation twin of
+/// `CHAT4_SLOT_STATIC_MUTEX`.
+static FRIEND_SLOT_STATIC_MUTEX: Mutex<()> = Mutex::new(());
+/// Rust model of `boost::_bi::bind_t<void, mf1<void, Player,
+/// SharedPtr<Instance>>, list2<value<Player*>, arg<1>>>` (IDA `0xaa2d08`):
+/// the unretained player word plus the member pointer; the instance arg
+/// stays late-bound.
+#[derive(Clone, Copy)]
+pub struct PlayerInstBind {
+    pub player: *const Player,
+    pub method: PlayerInstMethod,
+}
+/// Rust model of the `callable_slot` node holding that bind (IDA `0xaa2d08`
+/// D1, `0xaa2d64` D0, `0xaa2e6c` call): the intrusive `+8` successor becomes
+/// `next`; the link release clears it.
+pub struct PlayerInstSlotNode {
+    pub next: Option<SharedPtr<PlayerInstSlotNode>>,
+    pub bind: PlayerInstBind,
+}
+/// Rust model of `boost::function2<void, RequestResult,
+/// SharedPtr<vector<SharedPtr<Instance>>>>` holding the `CharacterLoadHelper`
+/// bind (IDA `0xaa38cc`): nullability of the retained bind is the vtable
+/// word. Twin of `Chat4WrapperFunction`.
+#[derive(Clone, Default)]
+pub struct ModelLoadFunction {
+    pub target: Option<ModelLoadBind>,
+}
 
 // 0xaa1e2c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11PlayerMouseENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PlayerMouse *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::PlayerMouse *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_aa1e2c() -> ! {
-    todo!("0xaa1e2c boost::detail::sp_counted_impl_pd<RBX::PlayerMouse *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_aa1e2c(block: *mut ControlBlockPd<PlayerMouse, CreatableInstanceDeleter>) {
+    // IDA 0xaa1e2c: D0 — `operator delete(a1)` (decompile 0xaa1e30); the box
+    // reclaim runs the field drops and frees together. Twin of 0xaa1e28 (D1).
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0xaa1e38 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11PlayerMouseENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PlayerMouse *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::PlayerMouse *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_aa1e38() -> ! {
-    todo!("0xaa1e38 boost::detail::sp_counted_impl_pd<RBX::PlayerMouse *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_aa1e38(block: *mut ControlBlockPd<PlayerMouse, CreatableInstanceDeleter>) {
+    // IDA 0xaa1e38: `Instance::predelete(px)` (decompile 0xaa1e40), null-px
+    // early-out (decompile 0xaa1e46), then the virtual delete through `*px +
+    // 8` (decompile 0xaa1e50). `dispose_with` with the no-op predelete takes
+    // the payload — the delete. Same shape as 0xf19c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
 }
 
 // 0xaa1e54 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11PlayerMouseENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PlayerMouse *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::PlayerMouse *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_aa1e54() -> ! {
-    todo!("0xaa1e54 boost::detail::sp_counted_impl_pd<RBX::PlayerMouse *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_aa1e54(block: *const ControlBlockPd<PlayerMouse, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0xaa1e54: `strcmp` against
+    // `"N3RBX9CreatableINS_8InstanceEE7DeleterE"` (decompile 0xaa1e66),
+    // mismatch returns 0; a hit returns `this + 16`. Same shape as 0xf1bc.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0xaa1e6c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11PlayerMouseENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PlayerMouse *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::PlayerMouse *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_aa1e6c() -> ! {
-    todo!("0xaa1e6c boost::detail::sp_counted_impl_pd<RBX::PlayerMouse *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_aa1e6c(block: *const ControlBlockPd<PlayerMouse, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0xaa1e6c: unconditional `this + 16` (decompile 0xaa1e6e). Same
+    // shape as 0xf1d4.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0xaa1e70 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_13FriendService12FriendStatusEEE4nextERNS2_13intrusive_ptrINSA_4slotEEE
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot> &)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot> &)
-pub fn stub_aa1e70() -> ! {
-    todo!("0xaa1e70 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot> &)")
+pub fn stub_aa1e70(slot: &SharedPtr<FriendSlotNode>) -> Option<SharedPtr<FriendSlotNode>> {
+    // IDA 0xaa1e70: intrusive retain of the incoming slot (`OSAtomicAdd32(1)`
+    // + max-count assert, decompile 0xaa1ed4-0xaa1f38), `signal::mutex()` lock
+    // (decompile 0xaa1f3c-0xaa1f48), then the successor walk. The
+    // retain/release ride on the clones; the walk is the `next` clone under
+    // the static guard.
+    let _guard = FRIEND_SLOT_STATIC_MUTEX.lock();
+    slot.next.clone()
 }
 
 // 0xaa2074 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_13FriendService12FriendStatusEEE5mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::mutex(void)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::mutex(void)
-pub fn stub_aa2074() -> ! {
-    todo!("0xaa2074 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::mutex(void)")
+pub fn stub_aa2074() -> &'static Mutex<()> {
+    // IDA 0xaa2074: `call_once(once_init_mutex, safe_static_init_mutex)`
+    // (decompile 0xaa20a8) then the guard-checked
+    // `safe_static_do_get_mutex::value` init (decompile 0xaa20ec-0xaa211c),
+    // returning the value (decompile 0xaa214a). A `static` with `const` init
+    // is the same once-init; the pthread object lives inside `Mutex`. Twin
+    // of 0xa4d820.
+    &FRIEND_SLOT_STATIC_MUTEX
 }
 
 // 0xaa2188 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEENS5_13FriendService12FriendStatusEEE4slotEEaSERKSD_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot> const&)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot> const&)
-pub fn stub_aa2188() -> ! {
-    todo!("0xaa2188 boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::slot> const&)")
+pub fn stub_aa2188(dst: &mut Option<SharedPtr<FriendSlotNode>>, src: &Option<SharedPtr<FriendSlotNode>>) {
+    // IDA 0xaa2188: retain-new (`OSAtomicAdd32(1)` + max-count assert,
+    // decompile 0xaa219e-0xaa21f6), store (decompile 0xaa21fe), release-old
+    // with virtual delete + free at zero (decompile 0xaa220e-0xaa222e).
+    // Clone-assign plus `Drop` is the same sequence.
+    *dst = src.clone();
 }
 
 // 0xaa223c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_13FriendService12FriendStatusEEE22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::safe_static_init_mutex(void)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>::safe_static_init_mutex(void)
-pub fn stub_aa223c() -> ! {
-    todo!("0xaa223c rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)>::safe_static_init_mutex(void)")
+pub fn stub_aa223c() -> &'static Mutex<()> {
+    // IDA 0xaa223c: guard-checked once-init of
+    // `safe_static_do_get_mutex::value` (decompile 0xaa2294-0xaa2298),
+    // `operator new(0x2c)` + `mutex::mutex` (decompile 0xaa22ac-0xaa22b2). A
+    // `static` with `const` init is the same once-init. Twin of 0xa4d820.
+    &FRIEND_SLOT_STATIC_MUTEX
 }
 
 // 0xaa2cc0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BackpackENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_aa2cc0() -> ! {
-    todo!("0xaa2cc0 boost::detail::sp_counted_impl_pd<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_aa2cc0(_block: *mut ControlBlockPd<Backpack, CreatableInstanceDeleter>) {
+    // IDA 0xaa2cc0: D1 — empty; the vtable reset is compiler-managed and
+    // storage is released by the D0/owner path. Same shape as 0xf198.
 }
 
 // 0xaa2cc4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BackpackENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_aa2cc4() -> ! {
-    todo!("0xaa2cc4 boost::detail::sp_counted_impl_pd<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_aa2cc4(block: *mut ControlBlockPd<Backpack, CreatableInstanceDeleter>) {
+    // IDA 0xaa2cc4: D0 — the D1 body plus `operator delete`; the box reclaim
+    // runs the field drops and frees together. Twin of 0xaa1e2c.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0xaa2cd0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BackpackENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_aa2cd0() -> ! {
-    todo!("0xaa2cd0 boost::detail::sp_counted_impl_pd<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_aa2cd0(block: *mut ControlBlockPd<Backpack, CreatableInstanceDeleter>) {
+    // IDA 0xaa2cd0: `predelete` + null-px early-out + deleter delete — same
+    // shape as 0xaa1e38. Twin of 0xf19c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
 }
 
 // 0xaa2cec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BackpackENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_aa2cec() -> ! {
-    todo!("0xaa2cec boost::detail::sp_counted_impl_pd<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_aa2cec(block: *const ControlBlockPd<Backpack, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0xaa2cec: deleter-name `strcmp`, `this + 0x10` on hit — same shape
+    // as 0xaa1e54. Twin of 0xf1bc.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0xaa2d04 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8BackpackENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_aa2d04() -> ! {
-    todo!("0xaa2d04 boost::detail::sp_counted_impl_pd<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_aa2d04(block: *const ControlBlockPd<Backpack, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0xaa2d04: unconditional `this + 0x10` — same shape as 0xaa1e6c.
+    // Twin of 0xf1d4.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0xaa2d08 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_7Network6PlayerES6_EENSA_5list2INSA_5valueIPSF_EENS2_3argILi1EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>>::~callable_slot()
-pub fn stub_aa2d08() -> ! {
-    todo!("0xaa2d08 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_aa2d08(slot: *mut PlayerInstSlotNode) {
+    // IDA 0xaa2d08: `callable_slot` D1 — vtable resets (compiler-managed;
+    // decompile 0xaa2d1e-0xaa2d26) plus the intrusive link release at `+8`
+    // (decompile 0xaa2d2a-0xaa2d58); the bind word is untouched and storage
+    // is kept.
+    // SAFETY: `slot` must point to a valid `PlayerInstSlotNode`.
+    unsafe {
+        (*slot).next = None;
+    }
 }
 
 // 0xaa2d64 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_7Network6PlayerES6_EENSA_5list2INSA_5valueIPSF_EENS2_3argILi1EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>>::~callable_slot()
-pub fn stub_aa2d64() -> ! {
-    todo!("0xaa2d64 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_aa2d64(slot: *mut PlayerInstSlotNode) {
+    // IDA 0xaa2d64: `callable_slot` D0 — vtable resets plus the link release
+    // (decompile 0xaa2d94-0xaa2e04) plus `intrusive_ptr_target::operator
+    // delete` (decompile 0xaa2e10); the box reclaim runs the field drops and
+    // frees together.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
 }
 
 // 0xaa2e6c — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network6PlayerES7_EENSB_5list2INSB_5valueIPSG_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
-pub fn stub_aa2e6c() -> ! {
-    todo!("0xaa2e6c rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_aa2e6c(slot: &PlayerInstSlotNode, inst: &SharedPtr<Instance>) {
+    // IDA 0xaa2e6c: retained `shared_ptr` copy of the arg (spinlock-guarded
+    // `shared_count` bump, decompile 0xaa2ea0-0xaa2f10) then
+    // `mf1::operator()` on the bind words (decompile 0xaa2f20). Clone plus
+    // dispatch plus `Drop` is the same sequence.
+    let inst = inst.clone();
+    stub_aa31f4(&slot.bind, &inst);
 }
 
 // 0xaa2f88 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network6PlayerES7_EENSB_5list2INSB_5valueIPSG_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
-pub fn stub_aa2f88() -> ! {
-    todo!("0xaa2f88 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_aa2f88(slot: &PlayerInstSlotNode, inst: &SharedPtr<Instance>) {
+    // IDA 0xaa2f88: non-virtual thunk — adjusts the `callable` subobject back
+    // to the slot base, then tail-calls `callable::call`. The adjustment is a
+    // vtable-layout detail that collapses away here. Twin of 0xa4d130.
+    stub_aa2e6c(slot, inst);
 }
 
 // 0xaa31f4 — __ZNK5boost4_mfi3mf1IvN3RBX7Network6PlayerENS_10shared_ptrINS2_8InstanceEEEEclEPS4_S7_
 #[doc(alias = "boost::_mfi::mf1<void,RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::Network::Player*,rbx_core::SharedPtr<RBX::Instance>)const")]
 // was: boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::Player*,boost::shared_ptr<RBX::Instance>)const
-pub fn stub_aa31f4() -> ! {
-    todo!("0xaa31f4 boost::_mfi::mf1<void,RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::Network::Player*,rbx_core::SharedPtr<RBX::Instance>)const")
+pub fn stub_aa31f4(bind: &PlayerInstBind, inst: &SharedPtr<Instance>) {
+    // IDA 0xaa31f4: member-pointer adjust (`a2 + (tag >> 1)`, decompile
+    // 0xaa3242-0xaa3252), retained `shared_ptr` copy of the arg (decompile
+    // 0xaa3254-0xaa32a8), the member call (decompile 0xaa32b2), then the
+    // mirrored release. Clone plus the member call plus `Drop` is the same
+    // sequence; the member identity rides on the bind.
+    // SAFETY: `bind.player` must point to a valid `Player`.
+    let inst = inst.clone();
+    let player = unsafe { &*bind.player };
+    (bind.method)(player, &inst);
 }
 
 // 0xaa38cc — __ZN5boost9function2IvN3RBX14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINS4_INS1_8InstanceEEESaIS7_EEEEE9assign_toINS_3_bi6bind_tIvPFvNS4_INS1_13ModelInstanceEEES3_SA_ENSD_5list3INSD_5valueISG_EENS_3argILi1EEENSM_ILi2EEEEEEEEEvT_
 #[doc(alias = "void boost::function2<void,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>)")]
 // was: void boost::function2<void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>)
-pub fn stub_aa38cc() -> ! {
-    todo!("0xaa38cc void boost::function2<void,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>)")
+pub fn stub_aa38cc(dst: &mut ModelLoadFunction, src: &ModelLoadBind) {
+    // IDA 0xaa38cc: `function2::assign_to<bind_t>` spills the bind functor
+    // and heap-installs it through `basic_vtable2::assign_to` (IDA 0xaa3d80);
+    // the retained model clone is that same copy. Twin of 0xa4bd28.
+    dst.target = Some(src.clone());
 }
 
 // 0xaa3d3c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX13ModelInstanceEEENS6_14AsyncHttpQueue13RequestResultENS5_ISt6vectorINS5_INS6_8InstanceEEESaISD_EEEEENS3_5list3INS3_5valueIS8_EENS_3argILi1EEENSM_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_aa3d3c() -> ! {
-    todo!("0xaa3d3c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_aa3d3c(src: &ModelLoadBind, dst: &mut ModelLoadBind, op: FunctorOp) -> bool {
+    // IDA 0xaa3d3c: `functor_manager::manage` dispatches on `op`;
+    // discriminants mirror the `0x705780` family (0 clone, 1 move, 2
+    // destroy, 3 check-type, 4 get-type). Twin of 0xa4c1a0.
+    match op {
+        FunctorOp::Clone | FunctorOp::Move => {
+            *dst = src.clone();
+            true
+        }
+        FunctorOp::Destroy => false,
+        FunctorOp::CheckType => {
+            *dst = src.clone();
+            true
+        }
+        FunctorOp::GetType => true,
+    }
 }
 
 // 0xaa3d60 — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX13ModelInstanceEEENS6_14AsyncHttpQueue13RequestResultENS5_ISt6vectorINS5_INS6_8InstanceEEESaISD_EEEEENS3_5list3INS3_5valueIS8_EENS_3argILi1EEENSM_ILi2EEEEEEEvSA_SG_E6invokeERNS1_15function_bufferESA_SG_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>,void,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::invoke(boost::detail::function::function_buffer &,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>)")]
 // was: boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>,void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::invoke(boost::detail::function::function_buffer &,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>)
-pub fn stub_aa3d60() -> ! {
-    todo!("0xaa3d60 boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>,void,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::invoke(boost::detail::function::function_buffer &,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>)")
+pub fn stub_aa3d60(bind: &ModelLoadBind, result: HttpRequestResult, instances: &SharedPtr<Vec<SharedPtr<Instance>>>) {
+    // IDA 0xaa3d60: unwrap the buffer to the `bind_t` and tail-call the
+    // `list3::operator()` (IDA 0xaa4020) with the late-bound result and
+    // vector. The clones plus the `CharacterLoadHelper` dispatch (IDA
+    // 0xa91498) are the same sequence.
+    let instances = instances.clone();
+    stub_aa4020(bind, result, &instances);
 }
 
 // 0xaa3d80 — __ZNK5boost6detail8function13basic_vtable2IvN3RBX14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINS6_INS3_8InstanceEEESaIS9_EEEEE9assign_toINS_3_bi6bind_tIvPFvNS6_INS3_13ModelInstanceEEES5_SC_ENSF_5list3INSF_5valueISI_EENS_3argILi1EEENSO_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 #[doc(alias = "bool boost::detail::function::basic_vtable2<void,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // was: bool boost::detail::function::basic_vtable2<void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
-pub fn stub_aa3d80() -> ! {
-    todo!("0xaa3d80 bool boost::detail::function::basic_vtable2<void,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_aa3d80(dst: &mut ModelLoadFunction, src: &ModelLoadBind) -> bool {
+    // IDA 0xaa3d80: `basic_vtable2::assign_to<bind_t>` — heap-clone the bind
+    // words plus a `shared_count` retain; always succeeds for the small
+    // functor. The install is `function2::assign_to` (IDA 0xaa38cc).
+    stub_aa38cc(dst, src);
+    true
 }
 
 // 0xaa4020 — __ZN5boost3_bi5list3INS0_5valueINS_10shared_ptrIN3RBX13ModelInstanceEEEEENS_3argILi1EEENS8_ILi2EEEEclIPFvS6_NS4_14AsyncHttpQueue13RequestResultENS3_ISt6vectorINS3_INS4_8InstanceEEESaISH_EEEEENS0_5list2IRSE_RSK_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>::operator()<void (*)(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>),boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>) &,boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>&> &,int)")]
 // was: void boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>::operator()<void (*)(boost::shared_ptr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>),boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>) &,boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>&> &,int)
-pub fn stub_aa4020() -> ! {
-    todo!("0xaa4020 void boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>::operator()<void (*)(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>),boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>) &,boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>&> &,int)")
+pub fn stub_aa4020(bind: &ModelLoadBind, result: HttpRequestResult, instances: &SharedPtr<Vec<SharedPtr<Instance>>>) {
+    // IDA 0xaa4020: `list3::operator()` — the retained model (the `value`
+    // word) plus the late-bound result/vector forwarded to
+    // `CharacterLoadHelper` (IDA 0xa91498). Clones plus the call plus `Drop`
+    // mirror the arg-forwarding releases.
+    let model = bind.model.clone();
+    let instances = instances.clone();
+    stub_a91498(&model, result, &instances);
 }
 
 // 0xaa4478 — __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX13ModelInstanceEEENS6_14AsyncHttpQueue13RequestResultENS5_ISt6vectorINS5_INS6_8InstanceEEESaISD_EEEEENS3_5list3INS3_5valueIS8_EENS_3argILi1EEENSM_ILi2EEEEEEEE12manage_smallERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_aa4478() -> ! {
-    todo!("0xaa4478 boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::ModelInstance>>,boost::arg<1>,boost::arg<2>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_aa4478(src: &ModelLoadBind, dst: &mut ModelLoadBind, op: FunctorOp) -> bool {
+    // IDA 0xaa4478: `functor_manager_common::manage_small` — same op dispatch
+    // as `manage` (IDA 0xaa3d3c) for the small (inline) functor;
+    // discriminants mirror the `0x705780` family.
+    stub_aa3d3c(src, dst, op)
 }
 
 // 0xaa60bc — __ZN5boost3_bi8storage4INS_3argILi1EEENS2_ILi2EEENS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS5_INS6_INS7_9DataModelEEEEEEC2ERKSF_
