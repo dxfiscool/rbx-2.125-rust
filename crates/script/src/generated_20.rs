@@ -11,42 +11,77 @@ use rbx_core::SharedPtr;
 // 0x267ec — -[PlaceLauncher injectJoinScript:]
 // type: void __cdecl(PlaceLauncher *self, SEL, id)
 #[doc(alias = "-[PlaceLauncher injectJoinScript:]")]
-pub fn stub_0x267ec() -> ! {
-    todo!("0x267ec -[PlaceLauncher injectJoinScript:]")
+// IDA 0x267ec: UTF8String of the script (0x2681c), shared game from
+// self->rbxView (0x2682a..0x26866), bind joinGameWithJoinScript(script, game)
+// (0x2687e) then thread_wrapper dispatch on the "In..." worker thread
+// (0x2688a). MODEL: UIKit (NSString/objc_msgSend) and the worker thread are
+// not modeled; records the script bytes and flags the dispatch.
+pub fn stub_0x267ec(launcher: &mut PlaceLauncher, script: &[u8]) {
+    launcher.join_script = script.to_vec();
+    launcher.join_dispatched = true;
 }
 
 // 0x29280 — -[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, id, id, char)
 #[doc(alias = "-[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]")]
-pub fn stub_0x29280() -> ! {
-    todo!("0x29280 -[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]")
+// IDA 0x29280: nil self returns 0 (0x292ce); otherwise
+// setupPreloadedGameWithNonGameController:isApp: (0x292f4) must yield a game
+// (0x292fc) before the same joinGameWithJoinScript bind+dispatch as 0x267ec
+// (0x29314..0x29340). MODEL: preloading always succeeds here, so the result
+// is always 1 when self is present; the nil-self early-out is kept.
+pub fn stub_0x29280(launcher: Option<&mut PlaceLauncher>, script: &[u8]) -> bool {
+    match launcher {
+        None => false,
+        Some(l) => {
+            stub_0x267ec(l, script);
+            true
+        }
+    }
 }
 
 // 0x29ccc — -[PlaceLauncher teleport:withAuthentication:withScript:]
 // type: void __cdecl(PlaceLauncher *self, SEL, id, id, id)
 #[doc(alias = "-[PlaceLauncher teleport:withAuthentication:withScript:]")]
-pub fn stub_0x29ccc() -> ! {
-    todo!("0x29ccc -[PlaceLauncher teleport:withAuthentication:withScript:]")
+// IDA 0x29ccc: resolves MainViewController sharedInstance, builds the
+// SecurePlayerGame teleport context from place/auth/script ids and issues
+// the teleport through the game controller (block completion at 0x2a99c).
+// MODEL: UIKit/controller plumbing not modeled; records the script bytes and
+// flags the dispatch, same observable effect as 0x267ec.
+pub fn stub_0x29ccc(launcher: &mut PlaceLauncher, script: &[u8]) {
+    launcher.join_script = script.to_vec();
+    launcher.join_dispatched = true;
 }
 
 // 0x2a8c8 — ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke
 #[doc(alias = "___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke")]
-pub fn stub_0x2a8c8() -> ! {
-    todo!("0x2a8c8 ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke")
+// IDA 0x2a8c8: centers a 1x1 loading frame in the controller view: reads the
+// view frame (0x2a904/0x2a940), halves width/height via vmul_f32(..., 0.5)
+// (0x2a910/0x2a948), then setFrame:(x, y, 1.0, 1.0) (0x2a97a/0x2a984). A nil
+// view centers at (0, 0) (0x2a920..0x2a922). Pure rect math, exact.
+pub fn stub_0x2a8c8(view_frame: Option<(f32, f32, f32, f32)>) -> (f32, f32, f32, f32) {
+    match view_frame {
+        None => (0.0, 0.0, 1.0, 1.0),
+        Some((_, _, w, h)) => (w * 0.5, h * 0.5, 1.0, 1.0),
+    }
 }
 
 // 0x2a99c — ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke246
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke246")]
-pub fn stub_0x2a99c() -> ! {
-    todo!("0x2a99c ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke246")
+// IDA 0x2a99c: async teleport-completion block: retains the shared game
+// (0x2a9c8..0x2a9f6), swaps the game window on success and releases the
+// join context. MODEL: window/retain plumbing not modeled; marks the
+// teleport complete on the launcher.
+pub fn stub_0x2a99c(launcher: &mut PlaceLauncher) {
+    launcher.teleport_complete = true;
 }
 
 // 0x25f838 — __ZNK3RBX10Reflection15EventDescriptor12isScriptableEv
 // type: int __fastcall(RBX::Reflection::EventDescriptor *this)
 #[doc(alias = "RBX::Reflection::EventDescriptor::isScriptable(void)const")]
-pub fn stub_0x25f838() -> ! {
-    todo!("0x25f838 RBX::Reflection::EventDescriptor::isScriptable(void)const")
+// IDA 0x25f838: returns 1 (0x25f83a). Events are always script-visible.
+pub fn stub_0x25f838() -> bool {
+    true
 }
 
 // 0x26a6c0 — __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EEC2INS_9ContentIdEEET_
@@ -59,44 +94,43 @@ pub fn stub_0x26a6c0() -> ! {
 // 0x26a88c — __ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x26a88c() -> ! {
-    todo!("0x26a88c __ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
-}
+// IDA 0x26a88c (thunk): tail-calls RBX::BaseScript::~BaseScript. MODEL: the
+// instance has no modeled fields, so destruction is a no-op drop marker.
+pub fn stub_0x26a88c(_obj: &mut StarterScriptCore) {}
 
 // 0x26a890 — __ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x26a890() -> ! {
-    todo!("0x26a890 __ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
-}
+// IDA 0x26a890: dtor (0x26a8e0) + operator delete (0x26a8e6). MODEL: consuming
+// the Box runs the drop glue and frees the allocation, as delete does.
+pub fn stub_0x26a890(_obj: Box<StarterScriptCore>) {}
 
 // 0x26a930 — __ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x26a930() -> ! {
-    todo!("0x26a930 __ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
-}
+// IDA 0x26a930: SUBS R0, #0x20 then B.W RBX::BaseScript::~BaseScript — the
+// +32 secondary-base adjust for the D1 dtor above. Same no-op drop marker.
+pub fn stub_0x26a930(_obj: &mut StarterScriptCore) {}
 
 // 0x26a938 — __ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x26a938() -> ! {
-    todo!("0x26a938 __ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
-}
+// IDA 0x26a938: +32 this-adjust then the D0 dtor+delete above. MODEL: same
+// consuming-Box shape as 0x26a890.
+pub fn stub_0x26a938(_obj: Box<StarterScriptCore>) {}
 
 // 0x26a9dc — __ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x26a9dc() -> ! {
-    todo!("0x26a9dc __ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
-}
+// IDA 0x26a9dc: +36 this-adjust then the D1 dtor above. Same no-op marker.
+pub fn stub_0x26a9dc(_obj: &mut StarterScriptCore) {}
 
 // 0x26a9e4 — __ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x26a9e4() -> ! {
-    todo!("0x26a9e4 __ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
-}
+// IDA 0x26a9e4: +36 this-adjust then the D0 dtor+delete above. MODEL: same
+// consuming-Box shape as 0x26a890.
+pub fn stub_0x26a9e4(_obj: Box<StarterScriptCore>) {}
 
 // 0x26aa88 — __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: void *__fastcall(int, int, int, int, int, __guard *, int, int, int)
@@ -108,30 +142,30 @@ pub fn stub_0x26aa88() -> ! {
 // 0x26aba4 — __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x26aba4() -> ! {
-    todo!("0x26aba4 __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
-}
+// IDA 0x26aba4: Described<StarterScript,...> D1 — same BaseScript teardown as
+// 0x26a88c (D1 thunks share the base dtor). Same no-op drop marker.
+pub fn stub_0x26aba4(_obj: &mut StarterScriptCore) {}
 
 // 0x26aba8 — __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x26aba8() -> ! {
-    todo!("0x26aba8 __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
-}
+// IDA 0x26aba8: D0 dtor + operator delete, same shape as 0x26a890. MODEL:
+// consuming Box drops and frees.
+pub fn stub_0x26aba8(_obj: Box<StarterScriptCore>) {}
 
 // 0x26ac48 — __ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x26ac48() -> ! {
-    todo!("0x26ac48 __ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
-}
+// IDA 0x26ac48: +32 this-adjust then the D1 dtor above (same Thn32 pattern as
+// 0x26a930). Same no-op marker.
+pub fn stub_0x26ac48(_obj: &mut StarterScriptCore) {}
 
 // 0x26ac50 — __ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x26ac50() -> ! {
-    todo!("0x26ac50 __ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
-}
+// IDA 0x26ac50: +32 this-adjust then the D0 dtor+delete above. MODEL: same
+// consuming-Box shape as 0x26a890.
+pub fn stub_0x26ac50(_obj: Box<StarterScriptCore>) {}
 
 // 0x26acf4 — __ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
@@ -234,113 +268,243 @@ pub fn stub_0x26c830() -> ! {
 // 0x26c92c — __ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::CoordinateFrame,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26c92c() -> ! {
-    todo!("0x26c92c bool RBX::Lua::Bridge<G3D::CoordinateFrame,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+// IDA 0x26c92c: lua_touserdata (0x26c93e); when non-null and the slot
+// metatable rawequals Bridge::className[0] (0x26c950..0x26c988), writes
+// Type::getSingleton<CoordinateFrame> + placement copy (0x26c994..0x26c99c)
+// and returns 1; else 0. Same shape for 0x26c9a8..0x26d070, class tag only.
+pub fn stub_0x26c92c(l: &BridgeState, idx: i32, out: &mut BridgeVal) -> bool {
+    match l.get_cframe(idx) {
+        Some(v) => {
+            *out = BridgeVal::CFrame(v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x26c9a8 — __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Region3,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26c9a8() -> ! {
-    todo!("0x26c9a8 bool RBX::Lua::Bridge<RBX::Region3,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+// IDA 0x26c9a8: same metatable-check shape as 0x26c92c (0x26c9ba..0x26ca1c)
+// with the Region3 class tag and singleton.
+pub fn stub_0x26c9a8(l: &BridgeState, idx: i32, out: &mut BridgeVal) -> bool {
+    match l.get_region3(idx) {
+        Some(v) => {
+            *out = BridgeVal::Region3(v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x26ca24 — __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Region3int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26ca24() -> ! {
-    todo!("0x26ca24 bool RBX::Lua::Bridge<RBX::Region3int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+// IDA 0x26ca24: same metatable-check shape as 0x26c92c (0x26ca36..0x26ca98)
+// with the Region3int16 class tag and singleton.
+pub fn stub_0x26ca24(l: &BridgeState, idx: i32, out: &mut BridgeVal) -> bool {
+    match l.get_region3i16(idx) {
+        Some(v) => {
+            *out = BridgeVal::Region3i16(v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x26caa0 — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector3int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26caa0() -> ! {
-    todo!("0x26caa0 bool RBX::Lua::Bridge<G3D::Vector3int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+// IDA 0x26caa0: same metatable-check shape as 0x26c92c (0x26cab2..0x26cb14)
+// with the Vector3int16 class tag and singleton.
+pub fn stub_0x26caa0(l: &BridgeState, idx: i32, out: &mut BridgeVal) -> bool {
+    match l.get_vec3i16(idx) {
+        Some(v) => {
+            *out = BridgeVal::Vec3i16(v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x26cb1c — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector2int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26cb1c() -> ! {
-    todo!("0x26cb1c bool RBX::Lua::Bridge<G3D::Vector2int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+// IDA 0x26cb1c: same metatable-check shape as 0x26c92c (0x26cb2e..0x26cb90)
+// with the Vector2int16 class tag and singleton.
+pub fn stub_0x26cb1c(l: &BridgeState, idx: i32, out: &mut BridgeVal) -> bool {
+    match l.get_vec2i16(idx) {
+        Some(v) => {
+            *out = BridgeVal::Vec2i16(v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x26cb98 — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector3,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26cb98() -> ! {
-    todo!("0x26cb98 bool RBX::Lua::Bridge<G3D::Vector3,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+// IDA 0x26cb98: same metatable-check shape as 0x26c92c (0x26cbaa..0x26cc0c)
+// with the Vector3 class tag and singleton.
+pub fn stub_0x26cb98(l: &BridgeState, idx: i32, out: &mut BridgeVal) -> bool {
+    match l.get_vec3(idx) {
+        Some(v) => {
+            *out = BridgeVal::Vec3(v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x26cc14 — __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector2,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26cc14() -> ! {
-    todo!("0x26cc14 bool RBX::Lua::Bridge<G3D::Vector2,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+// IDA 0x26cc14: same metatable-check shape as 0x26c92c (0x26cc26..0x26cc88)
+// with the Vector2 class tag and singleton.
+pub fn stub_0x26cc14(l: &BridgeState, idx: i32, out: &mut BridgeVal) -> bool {
+    match l.get_vec2(idx) {
+        Some(v) => {
+            *out = BridgeVal::Vec2(v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x26cc90 — __ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::RbxRay,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26cc90() -> ! {
-    todo!("0x26cc90 bool RBX::Lua::Bridge<RBX::RbxRay,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+// IDA 0x26cc90: same metatable-check shape as 0x26c92c (0x26cca2..0x26cd04)
+// with the RbxRay class tag and singleton.
+pub fn stub_0x26cc90(l: &BridgeState, idx: i32, out: &mut BridgeVal) -> bool {
+    match l.get_ray(idx) {
+        Some(v) => {
+            *out = BridgeVal::Ray(v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x26cd0c — __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Color3,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26cd0c() -> ! {
-    todo!("0x26cd0c bool RBX::Lua::Bridge<G3D::Color3,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+// IDA 0x26cd0c: same metatable-check shape as 0x26c92c (0x26cd1e..0x26cd80)
+// with the Color3 class tag and singleton.
+pub fn stub_0x26cd0c(l: &BridgeState, idx: i32, out: &mut BridgeVal) -> bool {
+    match l.get_color3(idx) {
+        Some(v) => {
+            *out = BridgeVal::Color3(v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x26cd88 — __ZN3RBX3Lua6BridgeINS_10BrickColorELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::BrickColor,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26cd88() -> ! {
-    todo!("0x26cd88 bool RBX::Lua::Bridge<RBX::BrickColor,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+// IDA 0x26cd88: same metatable-check shape as 0x26c92c (0x26cd9a..0x26cdfc)
+// with the BrickColor class tag and singleton.
+pub fn stub_0x26cd88(l: &BridgeState, idx: i32, out: &mut BridgeVal) -> bool {
+    match l.get_brick(idx) {
+        Some(v) => {
+            *out = BridgeVal::Brick(v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x26ce04 — __ZN3RBX3Lua6BridgeINS_4UDimELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::UDim,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26ce04() -> ! {
-    todo!("0x26ce04 bool RBX::Lua::Bridge<RBX::UDim,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+// IDA 0x26ce04: same metatable-check shape as 0x26c92c (0x26ce16..0x26ce78)
+// with the UDim class tag and singleton.
+pub fn stub_0x26ce04(l: &BridgeState, idx: i32, out: &mut BridgeVal) -> bool {
+    match l.get_udim(idx) {
+        Some(v) => {
+            *out = BridgeVal::UDim(v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x26ce80 — __ZN3RBX3Lua6BridgeINS_5UDim2ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::UDim2,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26ce80() -> ! {
-    todo!("0x26ce80 bool RBX::Lua::Bridge<RBX::UDim2,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+// IDA 0x26ce80: same metatable-check shape as 0x26c92c (0x26ce92..0x26cef4)
+// with the UDim2 class tag and singleton.
+pub fn stub_0x26ce80(l: &BridgeState, idx: i32, out: &mut BridgeVal) -> bool {
+    match l.get_udim2(idx) {
+        Some(v) => {
+            *out = BridgeVal::UDim2(v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x26cefc — __ZN3RBX3Lua6BridgeINS_5FacesELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Faces,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26cefc() -> ! {
-    todo!("0x26cefc bool RBX::Lua::Bridge<RBX::Faces,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+// IDA 0x26cefc: same metatable-check shape as 0x26c92c (0x26cf0e..0x26cf70)
+// with the Faces class tag and singleton.
+pub fn stub_0x26cefc(l: &BridgeState, idx: i32, out: &mut BridgeVal) -> bool {
+    match l.get_faces(idx) {
+        Some(v) => {
+            *out = BridgeVal::Faces(v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x26cf78 — __ZN3RBX3Lua6BridgeINS_4AxesELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Axes,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26cf78() -> ! {
-    todo!("0x26cf78 bool RBX::Lua::Bridge<RBX::Axes,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+// IDA 0x26cf78: same metatable-check shape as 0x26c92c (0x26cf8a..0x26cfec)
+// with the Axes class tag and singleton.
+pub fn stub_0x26cf78(l: &BridgeState, idx: i32, out: &mut BridgeVal) -> bool {
+    match l.get_axes(idx) {
+        Some(v) => {
+            *out = BridgeVal::Axes(v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x26cff4 — __ZN3RBX3Lua6BridgeINS_6CellIDELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::CellID,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26cff4() -> ! {
-    todo!("0x26cff4 bool RBX::Lua::Bridge<RBX::CellID,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+// IDA 0x26cff4: same metatable-check shape as 0x26c92c (0x26d006..0x26d068)
+// with the CellID class tag and singleton.
+pub fn stub_0x26cff4(l: &BridgeState, idx: i32, out: &mut BridgeVal) -> bool {
+    match l.get_cell(idx) {
+        Some(v) => {
+            *out = BridgeVal::Cell(v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x26d070 — __ZN3RBX3Lua6BridgeINS_11InputObjectELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::InputObject,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26d070() -> ! {
-    todo!("0x26d070 bool RBX::Lua::Bridge<RBX::InputObject,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+// IDA 0x26d070: same metatable-check shape as 0x26c92c (0x26d082..0x26d0e4)
+// with the InputObject class tag and singleton.
+pub fn stub_0x26d070(l: &BridgeState, idx: i32, out: &mut BridgeVal) -> bool {
+    match l.get_input(idx) {
+        Some(v) => {
+            *out = BridgeVal::Input(v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x26d0ec — __ZN3RBX16withVariantValueIiNS_3Lua14ArgumentPusherEEET_RKNS_10Reflection7VariantET0_
@@ -437,8 +601,17 @@ pub fn stub_0x26ff94() -> ! {
 // 0x270008 — __ZN3RBX3Lua6BridgeIPKNS_10Reflection14EnumDescriptor4ItemELb1EE8getValueIS6_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Reflection::EnumDescriptor::Item const*,true>::getValue<RBX::Reflection::EnumDescriptor::Item const*>(lua_State *,unsigned int,RBX::Reflection::EnumDescriptor::Item const* &)")]
-pub fn stub_0x270008() -> ! {
-    todo!("0x270008 bool RBX::Lua::Bridge<RBX::Reflection::EnumDescriptor::Item const*,true>::getValue<RBX::Reflection::EnumDescriptor::Item const*>(lua_State *,unsigned int,RBX::Reflection::EnumDescriptor::Item const* &)")
+// IDA 0x270008: same metatable-check shape as 0x26c92c (0x27001a..0x270070),
+// but the out param takes the Item const* word itself (`*a3 = *v6` at
+// 0x27006c), not a Variant. MODEL: the pointer identity is the EnumItemPtr.
+pub fn stub_0x270008(l: &BridgeState, idx: i32, out: &mut EnumItemPtr) -> bool {
+    match l.get_enum_item(idx) {
+        Some(v) => {
+            *out = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // ── IMPL batch (25 stubs 0x272940..0x2735bc) ────────────────────────────────
@@ -489,6 +662,98 @@ pub const VECTOR2_CLASS: &str = "Vector2"; // IDA 0x272afc "Vector2"
 pub const BRICKCOLOR_CLASS: &str = "BrickColor"; // IDA 0x27309c..0x2730ba luaL_register
 pub const COLOR3_CLASS: &str = "Color3"; // IDA 0x2731d2 "Color3"
 
+// ── G3D/RBX value types for Bridge<T,true>::getValue ────────────────────────
+// Layouts from the userdata payloads copied by placement_any<T> at IDA
+// 0x26c99c..0x26d0e0: G3D vectors are packed f32/i16 lanes, Region3 is a
+// min/max vector pair, RbxRay is origin+direction, UDim is scale+offset,
+// Faces/Axes are NormalId bitmasks, CellID is four i32 lanes (16-byte copy
+// at IDA 0x26e12a..0x26e130: two double lanes + dword + shared ref).
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Vector3int16 {
+    pub x: i16,
+    pub y: i16,
+    pub z: i16,
+}
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Region3 {
+    pub min: Vector3,
+    pub max: Vector3,
+}
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Region3int16 {
+    pub min: Vector3int16,
+    pub max: Vector3int16,
+}
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct RbxRay {
+    pub origin: Vector3,
+    pub direction: Vector3,
+}
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct UDim {
+    pub scale: f32,
+    pub offset: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct UDim2 {
+    pub x: UDim,
+    pub y: UDim,
+}
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Faces(pub u32);
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Axes(pub u32);
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct CellID {
+    pub x: i32,
+    pub y: i32,
+    pub z: i32,
+    pub w: i32,
+}
+// MODEL: InputObject userdata holds a shared Instance ref; only the handle
+// identity is modeled, not the referent.
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct InputObject(pub u64);
+// MODEL: the enum-item bridge copies the Item const* word (IDA 0x27006c
+// `*a3 = *v6`); only the pointer identity is modeled.
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct EnumItemPtr(pub u32);
+// Marker for DescribedNonCreatable<StarterScript,...> destruction (IDA
+// 0x26a88c..0x26ac50): no fields modeled, drop glue only.
+#[derive(Debug, Default)]
+pub struct StarterScriptCore;
+// Minimal PlaceLauncher: the join/teleport script plus dispatch flags. UIKit
+// (NSString, objc_msgSend, view controllers) and the worker thread behind
+// thread_wrapper are not modeled (MODEL).
+#[derive(Debug, Default)]
+pub struct PlaceLauncher {
+    pub join_script: Vec<u8>,
+    pub join_dispatched: bool,
+    pub teleport_complete: bool,
+}
+pub const REGION3_CLASS: &str = "Region3";
+pub const REGION3INT16_CLASS: &str = "Region3int16";
+pub const VECTOR3INT16_CLASS: &str = "Vector3int16";
+pub const VECTOR2INT16_CLASS: &str = "Vector2int16";
+pub const RBXRAY_CLASS: &str = "RbxRay";
+pub const UDIM_CLASS: &str = "UDim";
+pub const UDIM2_CLASS: &str = "UDim2";
+pub const FACES_CLASS: &str = "Faces";
+pub const AXES_CLASS: &str = "Axes";
+pub const CELLID_CLASS: &str = "CellID";
+pub const INPUTOBJECT_CLASS: &str = "InputObject";
+
 // ── Minimal Lua-stack façade ───────────────────────────────────────────────
 // Same convention as generated_79.rs: positional args, userdata slots,
 // number/string results, class-library registration. Type mismatches panic,
@@ -504,6 +769,18 @@ pub enum BridgeVal {
     CFrame(CoordinateFrame),
     Color3(Color3),
     Brick(BrickColor),
+    Region3(Region3),
+    Region3i16(Region3int16),
+    Vec3i16(Vector3int16),
+    Vec2i16(Vector2int16),
+    Ray(RbxRay),
+    UDim(UDim),
+    UDim2(UDim2),
+    Faces(Faces),
+    Axes(Axes),
+    Cell(CellID),
+    Input(InputObject),
+    EnumItem(EnumItemPtr),
     Closure(&'static str),
     Table { readonly: bool },
 }
@@ -553,6 +830,101 @@ impl BridgeState {
     }
     pub fn push_brick(&mut self, v: BrickColor) {
         self.stack.push(BridgeVal::Brick(v));
+    }
+    // Bridge<T,true>::getValue userdata readers (IDA 0x26c92c..0x26d070,
+    // 0x270008): each checks the slot type — standing in for the
+    // lua_touserdata + metatable rawequal sequence — and copies the payload
+    // on match, else None (false) without raising. Variant out is the
+    // BridgeVal itself.
+    pub fn get_vec3(&self, idx: i32) -> Option<Vector3> {
+        match self.slot(idx) {
+            BridgeVal::Vec3(v) => Some(*v),
+            _ => None,
+        }
+    }
+    pub fn get_color3(&self, idx: i32) -> Option<Color3> {
+        match self.slot(idx) {
+            BridgeVal::Color3(v) => Some(*v),
+            _ => None,
+        }
+    }
+    pub fn get_brick(&self, idx: i32) -> Option<BrickColor> {
+        match self.slot(idx) {
+            BridgeVal::Brick(v) => Some(*v),
+            _ => None,
+        }
+    }
+    pub fn get_region3(&self, idx: i32) -> Option<Region3> {
+        match self.slot(idx) {
+            BridgeVal::Region3(v) => Some(*v),
+            _ => None,
+        }
+    }
+    pub fn get_region3i16(&self, idx: i32) -> Option<Region3int16> {
+        match self.slot(idx) {
+            BridgeVal::Region3i16(v) => Some(*v),
+            _ => None,
+        }
+    }
+    pub fn get_vec3i16(&self, idx: i32) -> Option<Vector3int16> {
+        match self.slot(idx) {
+            BridgeVal::Vec3i16(v) => Some(*v),
+            _ => None,
+        }
+    }
+    pub fn get_vec2i16(&self, idx: i32) -> Option<Vector2int16> {
+        match self.slot(idx) {
+            BridgeVal::Vec2i16(v) => Some(*v),
+            _ => None,
+        }
+    }
+    pub fn get_ray(&self, idx: i32) -> Option<RbxRay> {
+        match self.slot(idx) {
+            BridgeVal::Ray(v) => Some(*v),
+            _ => None,
+        }
+    }
+    pub fn get_udim(&self, idx: i32) -> Option<UDim> {
+        match self.slot(idx) {
+            BridgeVal::UDim(v) => Some(*v),
+            _ => None,
+        }
+    }
+    pub fn get_udim2(&self, idx: i32) -> Option<UDim2> {
+        match self.slot(idx) {
+            BridgeVal::UDim2(v) => Some(*v),
+            _ => None,
+        }
+    }
+    pub fn get_faces(&self, idx: i32) -> Option<Faces> {
+        match self.slot(idx) {
+            BridgeVal::Faces(v) => Some(*v),
+            _ => None,
+        }
+    }
+    pub fn get_axes(&self, idx: i32) -> Option<Axes> {
+        match self.slot(idx) {
+            BridgeVal::Axes(v) => Some(*v),
+            _ => None,
+        }
+    }
+    pub fn get_cell(&self, idx: i32) -> Option<CellID> {
+        match self.slot(idx) {
+            BridgeVal::Cell(v) => Some(*v),
+            _ => None,
+        }
+    }
+    pub fn get_input(&self, idx: i32) -> Option<InputObject> {
+        match self.slot(idx) {
+            BridgeVal::Input(v) => Some(*v),
+            _ => None,
+        }
+    }
+    pub fn get_enum_item(&self, idx: i32) -> Option<EnumItemPtr> {
+        match self.slot(idx) {
+            BridgeVal::EnumItem(v) => Some(*v),
+            _ => None,
+        }
     }
     fn slot(&self, idx: i32) -> &BridgeVal {
         // Callers here only use 1-based indices, as in the originals.
@@ -2472,5 +2844,139 @@ mod coordinate_frame_bridge_tests {
                 translation: Vector3 { x: 3.0, y: 7.0, z: 13.0 },
             }
         );
+    }
+}
+
+#[cfg(test)]
+mod launcher_getvalue_batch_tests {
+    use super::*;
+    fn state(vals: Vec<BridgeVal>) -> BridgeState {
+        let mut l = BridgeState::new();
+        for v in vals {
+            l.stack.push(v);
+        }
+        l
+    }
+    fn out() -> BridgeVal {
+        BridgeVal::Nil
+    }
+    #[test]
+    fn event_descriptor_is_always_scriptable() {
+        assert!(stub_0x25f838());
+    }
+    #[test]
+    fn starter_script_dtors_are_drop_markers() {
+        stub_0x26a88c(&mut StarterScriptCore);
+        stub_0x26a930(&mut StarterScriptCore);
+        stub_0x26a9dc(&mut StarterScriptCore);
+        stub_0x26aba4(&mut StarterScriptCore);
+        stub_0x26ac48(&mut StarterScriptCore);
+        stub_0x26a890(Box::new(StarterScriptCore));
+        stub_0x26a938(Box::new(StarterScriptCore));
+        stub_0x26a9e4(Box::new(StarterScriptCore));
+        stub_0x26aba8(Box::new(StarterScriptCore));
+        stub_0x26ac50(Box::new(StarterScriptCore));
+    }
+    #[test]
+    fn inject_records_script_and_flags_dispatch() {
+        let mut p = PlaceLauncher::default();
+        stub_0x267ec(&mut p, b"game:Join()");
+        assert_eq!(p.join_script, b"game:Join()");
+        assert!(p.join_dispatched);
+        assert!(!p.teleport_complete);
+    }
+    #[test]
+    fn start_game_needs_self_and_dispatches() {
+        let mut p = PlaceLauncher::default();
+        assert!(stub_0x29280(Some(&mut p), b"join"));
+        assert_eq!(p.join_script, b"join");
+        assert!(p.join_dispatched);
+        assert!(!stub_0x29280(None, b"join"));
+    }
+    #[test]
+    fn teleport_dispatch_and_completion_block() {
+        let mut p = PlaceLauncher::default();
+        stub_0x29ccc(&mut p, b"teleport");
+        assert_eq!(p.join_script, b"teleport");
+        assert!(p.join_dispatched);
+        stub_0x2a99c(&mut p);
+        assert!(p.teleport_complete);
+    }
+    #[test]
+    fn loading_frame_is_centered_1x1() {
+        assert_eq!(stub_0x2a8c8(Some((0.0, 0.0, 320.0, 480.0))), (160.0, 240.0, 1.0, 1.0));
+        assert_eq!(stub_0x2a8c8(None), (0.0, 0.0, 1.0, 1.0));
+    }
+    #[test]
+    fn getvalue_copies_on_tag_match_and_fails_silently() {
+        let cf = cframe_identity();
+        let l = state(vec![BridgeVal::CFrame(cf)]);
+        let mut o = out();
+        assert!(stub_0x26c92c(&l, 1, &mut o));
+        assert_eq!(o, BridgeVal::CFrame(cf));
+        let mut o = out();
+        assert!(!stub_0x26c9a8(&l, 1, &mut o));
+        assert_eq!(o, BridgeVal::Nil);
+    }
+    #[test]
+    fn getvalue_covers_every_value_bridge() {
+        let r3 = Region3 {
+            min: Vector3 { x: 0.0, y: 0.0, z: 0.0 },
+            max: Vector3 { x: 1.0, y: 2.0, z: 3.0 },
+        };
+        let r3i = Region3int16 {
+            min: Vector3int16 { x: 0, y: 0, z: 0 },
+            max: Vector3int16 { x: 1, y: 2, z: 3 },
+        };
+        let v3i = Vector3int16 { x: 4, y: 5, z: 6 };
+        let v2i = Vector2int16 { x: 7, y: 8 };
+        let v3 = Vector3 { x: 1.0, y: 2.0, z: 3.0 };
+        let v2 = Vector2 { x: 9.0, y: 10.0 };
+        let ray = RbxRay { origin: v3, direction: v3 };
+        let c3 = Color3 { r: 1.0, g: 0.5, b: 0.25 };
+        let bc = BrickColor(21);
+        let ud = UDim { scale: 0.5, offset: 3 };
+        let ud2 = UDim2 { x: ud, y: ud };
+        let cases: Vec<(BridgeVal, fn(&BridgeState, i32, &mut BridgeVal) -> bool)> = vec![
+            (BridgeVal::Region3(r3), stub_0x26c9a8),
+            (BridgeVal::Region3i16(r3i), stub_0x26ca24),
+            (BridgeVal::Vec3i16(v3i), stub_0x26caa0),
+            (BridgeVal::Vec2i16(v2i), stub_0x26cb1c),
+            (BridgeVal::Vec3(v3), stub_0x26cb98),
+            (BridgeVal::Vec2(v2), stub_0x26cc14),
+            (BridgeVal::Ray(ray), stub_0x26cc90),
+            (BridgeVal::Color3(c3), stub_0x26cd0c),
+            (BridgeVal::Brick(bc), stub_0x26cd88),
+            (BridgeVal::UDim(ud), stub_0x26ce04),
+            (BridgeVal::UDim2(ud2), stub_0x26ce80),
+            (BridgeVal::Faces(Faces(7)), stub_0x26cefc),
+            (BridgeVal::Axes(Axes(3)), stub_0x26cf78),
+            (
+                BridgeVal::Cell(CellID { x: 1, y: 2, z: 3, w: 4 }),
+                stub_0x26cff4,
+            ),
+            (BridgeVal::Input(InputObject(42)), stub_0x26d070),
+        ];
+        for (val, f) in cases {
+            let l = state(vec![val.clone()]);
+            let mut o = out();
+            assert!(f(&l, 1, &mut o), "getValue failed for {val:?}");
+            assert_eq!(o, val);
+            let other = state(vec![BridgeVal::Num(1.0)]);
+            let mut o = out();
+            assert!(!f(&other, 1, &mut o));
+            assert_eq!(o, BridgeVal::Nil);
+        }
+    }
+    #[test]
+    fn enum_item_getvalue_copies_the_item_word() {
+        let l = state(vec![BridgeVal::EnumItem(EnumItemPtr(0x1a2b3c))]);
+        let mut o = EnumItemPtr(0);
+        assert!(stub_0x270008(&l, 1, &mut o));
+        assert_eq!(o, EnumItemPtr(0x1a2b3c));
+        let other = state(vec![BridgeVal::Num(2.0)]);
+        let mut o = EnumItemPtr(0);
+        assert!(!stub_0x270008(&other, 1, &mut o));
+        assert_eq!(o, EnumItemPtr(0));
     }
 }
