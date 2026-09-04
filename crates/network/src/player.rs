@@ -1637,6 +1637,19 @@ mod tests {
         assert_eq!(PlayerChatType::Whisper as u32, 2);
         assert_eq!(num_players(7), 7);
     }
+    #[test]
+    fn descriptor_and_field_getters() {
+        // IDA D1s: the Rust side drops nothing.
+        drop_descriptor();
+        // IDA 0xa1ae40/0xa1aedc: struct field reads.
+        let mut players = Players::new();
+        assert_eq!(players.get_max_players(), players.max_players);
+        assert_eq!(players.get_character_auto_spawn(), players.auto_spawn);
+        players.max_players = 12;
+        players.auto_spawn = true;
+        assert_eq!(players.get_max_players(), 12);
+        assert!(players.get_character_auto_spawn());
+    }
 }
 
 /// `Players::findAncestorPlayer` (IDA 0xa14c94): the nearest Player
@@ -1852,4 +1865,24 @@ pub fn chat_option_from_value(name: &str) -> Option<u32> {
 #[must_use]
 pub fn num_players(count: usize) -> usize {
  count
+}
+
+/// Reflection descriptor `D1` destructors (IDA 0xa1ae1c/0xa1ae48/0xa1ae74/
+/// 0xa1aee4/0xa1af08/0xa1afb0/0xa1afbc/0xa1b004/0xa1b04c): each resets the
+/// vtable to its base, frees one heap member, and tail-calls the base
+/// destructor. All of that stays engine-side; the Rust side drops nothing.
+pub fn drop_descriptor() {}
+
+impl Players {
+ /// `Players::getMaxPlayers` (IDA 0xa1ae40): the `MaxPlayers` field.
+ #[must_use]
+ pub fn get_max_players(&self) -> i32 {
+ self.max_players
+ }
+
+ /// `Players::getCharacterAutoSpawn` (IDA 0xa1aedc): the auto-spawn flag.
+ #[must_use]
+ pub fn get_character_auto_spawn(&self) -> bool {
+ self.auto_spawn
+ }
 }

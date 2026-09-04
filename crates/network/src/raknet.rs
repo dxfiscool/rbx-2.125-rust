@@ -14640,78 +14640,89 @@ pub fn stub_a1adb8(count: usize) -> usize {
 // 0xa1ae1c — __ZN3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::~PropDescriptor()")]
-pub fn stub_a1ae1c() -> ! {
-    todo!("0xa1ae1c RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::~PropDescriptor()")
+pub fn stub_a1ae1c() {
+ // IDA 0xa1ae1c: chained descriptor destructor; the Rust side drops nothing.
+ crate::player::drop_descriptor()
 }
 
 // 0xa1ae40 — __ZNK3RBX7Network7Players13getMaxPlayersEv
 // type: int __fastcall(RBX::Network::Players *this)
 #[doc(alias = "RBX::Network::Players::getMaxPlayers(void)const")]
-pub fn stub_a1ae40() -> ! {
-    todo!("0xa1ae40 RBX::Network::Players::getMaxPlayers(void)const")
+pub fn stub_a1ae40(players: &crate::player::Players) -> i32 {
+ // IDA 0xa1ae40: the MaxPlayers field.
+ players.get_max_players()
 }
 
 // 0xa1ae48 — __ZN3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::~RefPropDescriptor()")]
-pub fn stub_a1ae48() -> ! {
-    todo!("0xa1ae48 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::~RefPropDescriptor()")
+pub fn stub_a1ae48() {
+ // IDA 0xa1ae48: chained descriptor destructor; the Rust side drops nothing.
+ crate::player::drop_descriptor()
 }
 
 // 0xa1ae74 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFN5boost10shared_ptrINS_8InstanceEEEiELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,rbx_core::SharedPtr<RBX::Instance> ()(int),1>::~BoundFuncDesc()")]
-pub fn stub_a1ae74() -> ! {
-    todo!("0xa1ae74 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(int),1>::~BoundFuncDesc()")
+pub fn stub_a1ae74() {
+ // IDA 0xa1ae74: chained descriptor destructor; the Rust side drops nothing.
+ crate::player::drop_descriptor()
 }
 
 // 0xa1aedc — __ZNK3RBX7Network7Players21getCharacterAutoSpawnEv
 // type: int __fastcall(RBX::Network::Players *this)
 #[doc(alias = "RBX::Network::Players::getCharacterAutoSpawn(void)const")]
-pub fn stub_a1aedc() -> ! {
-    todo!("0xa1aedc RBX::Network::Players::getCharacterAutoSpawn(void)const")
+pub fn stub_a1aedc(players: &crate::player::Players) -> bool {
+ // IDA 0xa1aedc: the auto-spawn flag.
+ players.get_character_auto_spawn()
 }
 
 // 0xa1aee4 — __ZN3RBX10Reflection14PropDescriptorINS_7Network7PlayersEbED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::~PropDescriptor()")]
-pub fn stub_a1aee4() -> ! {
-    todo!("0xa1aee4 RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::~PropDescriptor()")
+pub fn stub_a1aee4() {
+ // IDA 0xa1aee4: chained descriptor destructor; the Rust side drops nothing.
+ crate::player::drop_descriptor()
 }
 
 // 0xa1af08 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFvSsELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string),1>::~BoundFuncDesc()")]
-pub fn stub_a1af08() -> ! {
-    todo!("0xa1af08 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_a1af08() {
+ // IDA 0xa1af08: chained descriptor destructor; the Rust side drops nothing.
+ crate::player::drop_descriptor()
 }
 
 // 0xa1afb0 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EED1Ev
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")]
-pub fn stub_a1afb0() -> ! {
-    todo!("0xa1afb0 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()")
+pub fn stub_a1afb0() {
+ // IDA 0xa1afb0: chained descriptor destructor; the Rust side drops nothing.
+ crate::player::drop_descriptor()
 }
 
 // 0xa1afbc — __ZN3RBX10Reflection9EventDescINS_7Network7PlayersEFvNS3_14PlayerChatTypeEN5boost10shared_ptrINS_8InstanceEEESsS8_EN3rbx6signalIS9_EEMS3_SC_ED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Players,void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Players::*>::~EventDesc()")]
-pub fn stub_a1afbc() -> ! {
-    todo!("0xa1afbc RBX::Reflection::EventDesc<RBX::Network::Players,void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Players::*>::~EventDesc()")
+pub fn stub_a1afbc() {
+ // IDA 0xa1afbc: chained descriptor destructor; the Rust side drops nothing.
+ crate::player::drop_descriptor()
 }
 
 // 0xa1b004 — __ZN3RBX10Reflection9EventDescINS_7Network7PlayersEFvSsEN3rbx6signalIS4_EEMS3_S7_ED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Players,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Players::*>::~EventDesc()")]
-pub fn stub_a1b004() -> ! {
-    todo!("0xa1b004 RBX::Reflection::EventDesc<RBX::Network::Players,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Players::*>::~EventDesc()")
+pub fn stub_a1b004() {
+ // IDA 0xa1b004: chained descriptor destructor; the Rust side drops nothing.
+ crate::player::drop_descriptor()
 }
 
 // 0xa1b04c — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFvN5boost10shared_ptrINS_8InstanceEEESsSsELi3EED1Ev
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,std::string),3>::~BoundFuncDesc()")]
-pub fn stub_a1b04c() -> ! {
-    todo!("0xa1b04c RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>,std::string,std::string),3>::~BoundFuncDesc()")
+pub fn stub_a1b04c() {
+ // IDA 0xa1b04c: chained descriptor destructor; the Rust side drops nothing.
+ crate::player::drop_descriptor()
 }
 
 // 0xa1b058 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFN5boost10shared_ptrIKSt6vectorINS5_INS_8InstanceEEESaIS8_EEEEvELi0EEC1EMS3_FSC_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
