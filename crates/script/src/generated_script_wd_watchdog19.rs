@@ -1246,62 +1246,120 @@ pub fn stub_0x10528(prop: &CRenderSettingsResolutionProp, obj: &mut CRenderSetti
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE12getEnumValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x1055c() -> ! {
-    todo!("0x1055c __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE12getEnumValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x1055c(prop: &CRenderSettingsResolutionProp, obj: &CRenderSettingsItemState) -> i32 {
+    // IDA 0x1055c `getEnumValue`: `getValue(impl)` through the +44 GetSet
+    // impl (the +8 vtable slot); the enum payload is the stored int.
+    (prop.access.get)(obj)
 }
 
 // 0x10564 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE12setEnumValueEPNS0_13DescribedBaseEi — RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setEnumValue(RBX::Reflection::DescribedBase *,int)const
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE12setEnumValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0x10564() -> ! {
-    todo!("0x10564 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE12setEnumValueEPNS0_13DescribedBaseEi")
+pub fn stub_0x10564(prop: &CRenderSettingsResolutionProp, obj: &mut CRenderSettingsItemState, value: i32) -> bool {
+    // IDA 0x10564 `setEnumValue`: `std::find_if` with `equalValue` over the
+    // descriptor items (0x1058e); a hit runs the +12 `setValue` slot
+    // (0x105a2) and returns 1, a miss returns 0 (0x10590..0x105ac).
+    if prop.enum_desc.value_to_item.iter().any(|&v| v == value)
+        || prop.enum_desc.enum_to_item.iter().any(|&v| v == value)
+    {
+        (prop.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x105b0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE11getEnumItemEPKNS0_13DescribedBaseE — RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getEnumItem(RBX::Reflection::DescribedBase const*)const
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE11getEnumItemEPKNS0_13DescribedBaseE")]
-pub fn stub_0x105b0() -> ! {
-    todo!("0x105b0 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE11getEnumItemEPKNS0_13DescribedBaseE")
+pub fn stub_0x105b0(prop: &CRenderSettingsResolutionProp, obj: &CRenderSettingsItemState) -> i32 {
+    // IDA 0x105b0 `getEnumItem`: v = getValue(impl) (0x105c2), then
+    // `EnumDesc<ResolutionPreset>::convertToItem(desc, v)` (0x105ce ->
+    // stub_0xc9d8).
+    let value = (prop.access.get)(obj);
+    stub_0xc9d8(prop.enum_desc, value)
 }
 
 // 0x105d0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE — RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
-pub fn stub_0x105d0() -> ! {
-    todo!("0x105d0 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")
+pub fn stub_0x105d0(prop: &CRenderSettingsResolutionProp, obj: &mut CRenderSettingsItemState, name: u32) -> bool {
+    // IDA 0x105d0 `setStringValue` (Name overload): `convertToValue` on the
+    // interned name (0x105e6 -> stub_0xcc34); on a hit the +12 `setValue`
+    // slot runs (0x105fc) and 1 returns, otherwise 0 (0x105e8..0x10602).
+    // Cf. the std::string overload at 0x1026c, which interns first.
+    let mut value = 0;
+    if stub_0xcc34(prop.enum_desc, name, &mut value) {
+        (prop.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x10604 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToIndexES3_ — RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToIndex(RBX::CRenderSettings::ResolutionPreset)const
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToIndex(RBX::CRenderSettings::ResolutionPreset)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToIndexES3_")]
-pub fn stub_0x10604() -> ! {
-    todo!("0x10604 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToIndexES3_")
+pub fn stub_0x10604(desc: &RenderEnumDesc, value: i32) -> i32 {
+    // IDA 0x10604 `convertToIndex`: ReleaseAssert(value >= 0) gated on
+    // FLog::Asserts (0x10618..0x1064e, enumconverter.h:350); the [desc+156]
+    // index table (0x1065e..0x1066c) yields the slot for in-range values,
+    // -1 otherwise (0x10666..0x10672). Host models that table with
+    // `value_ordinals`.
+    if enum_asserts_enabled() {
+        assert!(
+            value >= 0,
+            "value>=0 file: ../App/include/reflection/enumconverter.h line: 350"
+        );
+    }
+    if value >= 0 {
+        if let Some(&slot) = desc.value_ordinals.get(value as usize) {
+            return slot;
+        }
+    }
+    -1
 }
 
 // 0x10674 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE11setIntValueEPNS0_13DescribedBaseEi — RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setIntValue(RBX::Reflection::DescribedBase *,int)const
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0x10674() -> ! {
-    todo!("0x10674 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_0x10674(prop: &CRenderSettingsResolutionProp, obj: &mut CRenderSettingsItemState, index: i32) -> bool {
+    // IDA 0x10674 `setIntValue`: negative indices fail (0x1067e); the
+    // [desc+132] ordinal table (0x10682..0x10690) yields the payload, -1
+    // entries fail (0x1069c); otherwise the +12 `setValue` slot runs
+    // (0x106a8) and 1 returns. Host models that table with `enum_to_item`.
+    if index >= 0 {
+        if let Some(&payload) = prop.enum_desc.enum_to_item.get(index as usize) {
+            if payload != -1 {
+                (prop.access.set)(obj, payload);
+                return true;
+            }
+        }
+    }
+    false
 }
 
 // 0x106b4 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv — RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::isReadOnly(void)const
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_0x106b4() -> ! {
-    todo!("0x106b4 __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_0x106b4() -> bool {
+    // IDA 0x106b4 GetSetImpl `isReadOnly`: hardcoded `return 0` (0x106b6);
+    // get/set-bound props are never read-only.
+    false
 }
 
 // 0x106b8 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv — RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::isWriteOnly(void)const
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_0x106b8() -> ! {
-    todo!("0x106b8 __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_0x106b8() -> bool {
+    // IDA 0x106b8 GetSetImpl `isWriteOnly`: hardcoded `return 0` (0x106ba);
+    // get/set-bound props are never write-only.
+    false
 }
