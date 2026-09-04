@@ -26121,8 +26121,14 @@ pub fn stub_0x476160() -> ! {
 // 0x476170 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x476170() -> ! {
-    todo!("0x476170 RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x476170(a: &DataModelMesh, b: &DataModelMesh) -> bool {
+    // IDA 0x476170: reads both values through the desc's member getter and
+    // compares. Only one `EnumPropDescriptor<DataModelMesh, LODType>` exists
+    // in the file, and member order points at the X axis (`+0x80`, cf.
+    // 0x475840); the getter collapses into `lod_x`.
+    // NOTE: axis identity by single-desc elimination — re-verify if a second
+    // LOD desc is ever modeled.
+    a.lod_x == b.lod_x
 }
 
 // 0x476198 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -26149,22 +26155,36 @@ pub fn stub_0x476308() -> ! {
 // 0x47632c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::hasStringValue(void)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::hasStringValue(void)const
-pub fn stub_0x47632c() -> ! {
-    todo!("0x47632c RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::hasStringValue(void)const")
+pub fn stub_0x47632c() -> bool {
+    // IDA 0x47632c: enum properties always carry string values. Same shape as
+    // 0x45ea88.
+    true
 }
 
 // 0x476330 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::getStringValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x476330() -> ! {
-    todo!("0x476330 RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x476330(mesh: &DataModelMesh) -> Option<String> {
+    // IDA 0x476330: reads the value through the member getter, then converts
+    // to the enum name. Same shape as 0x45ea8c over `lod_x` (see 0x476170
+    // note) — the LOD table lookup needs the `LODType` singleton, which sorts
+    // into a later file run, so the table is fixed here from the grounded
+    // C2 pairs (High=2, Medium=1, Low=0 per 0x474ef0).
+    [(2, "High"), (1, "Medium"), (0, "Low")].iter().find(|(v, _)| *v == mesh.lod_x).map(|(_, text)| text.to_string())
 }
 
 // 0x476354 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const
-pub fn stub_0x476354() -> ! {
-    todo!("0x476354 RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x476354(mesh: &mut DataModelMesh, name: &str) -> bool {
+    // IDA 0x476354: converts via the desc table and sets on hit, false on
+    // miss. Same shape as 0x45eab0 over `lod_x` (see 0x476170 note).
+    if let Some(value) = [("High", 2), ("Medium", 1), ("Low", 0)].iter().find(|(text, _)| *text == name).map(|(_, v)| *v) {
+        mesh.lod_x = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x476394 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
@@ -26184,120 +26204,187 @@ pub fn stub_0x4763b4() -> ! {
 // 0x4765f4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::getIndexValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x4765f4() -> ! {
-    todo!("0x4765f4 RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x4765f4(mesh: &DataModelMesh) -> Option<usize> {
+    // IDA 0x4765f4: reads the value through the member getter, then the
+    // position search. Same shape as 0x45ed50 over `lod_x` (see 0x476170
+    // note).
+    [(2, "High"), (1, "Medium"), (0, "Low")].iter().position(|(v, _)| *v == mesh.lod_x)
 }
 
 // 0x476610 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const
-pub fn stub_0x476610() -> ! {
-    todo!("0x476610 RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x476610(mesh: &mut DataModelMesh, index: usize) -> bool {
+    // IDA 0x476610: bounds-checks the index, reads the value, and sets;
+    // out-of-range sets nothing. Same shape as 0x45ed6c over `lod_x` (see
+    // 0x476170 note).
+    if let Some((value, _)) = [(2, "High"), (1, "Medium"), (0, "Low")].get(index) {
+        mesh.lod_x = *value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x476644 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::getEnumValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x476644() -> ! {
-    todo!("0x476644 RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x476644(mesh: &DataModelMesh) -> i32 {
+    // IDA 0x476644: reads the value through the member getter (decomp
+    // 0x476644). Same shape as 0x45eda0 over `lod_x` (see 0x476170 note).
+    mesh.lod_x
 }
 
 // 0x47664c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const
-pub fn stub_0x47664c() -> ! {
-    todo!("0x47664c RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x47664c(mesh: &mut DataModelMesh, value: i32) -> bool {
+    // IDA 0x47664c: validates the value against the table, sets on hit and
+    // returns true, false on miss. Same shape as 0x45eda8 over `lod_x` (see
+    // 0x476170 note).
+    if [(2, "High"), (1, "Medium"), (0, "Low")].iter().any(|(v, _)| *v == value) {
+        mesh.lod_x = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x476698 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::getEnumItem(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x476698() -> ! {
-    todo!("0x476698 RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x476698(mesh: &DataModelMesh) -> Option<(i32, &'static str)> {
+    // IDA 0x476698: reads the value through the member getter, then the item
+    // search. Same shape as 0x45edf4 over `lod_x` (see 0x476170 note).
+    [(2, "High"), (1, "Medium"), (0, "Low")].iter().find(|(v, _)| *v == mesh.lod_x).copied()
 }
 
 // 0x4766b8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const
-pub fn stub_0x4766b8() -> ! {
-    todo!("0x4766b8 RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x4766b8(mesh: &mut DataModelMesh, name: &str) -> bool {
+    // IDA 0x4766b8: converts via the desc table and sets on hit, false on
+    // miss. Same shape as 0x476354.
+    if let Some(value) = [("High", 2), ("Medium", 1), ("Low", 0)].iter().find(|(text, _)| *text == name).map(|(_, v)| *v) {
+        mesh.lod_x = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x4766ec — __ZNK3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::convertToIndex(RBX::DataModelMesh::LODType)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::convertToIndex(RBX::DataModelMesh::LODType)const
-pub fn stub_0x4766ec() -> ! {
-    todo!("0x4766ec RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::convertToIndex(RBX::DataModelMesh::LODType)const")
+pub fn stub_0x4766ec(value: i32) -> Option<usize> {
+    // IDA 0x4766ec: asserts `value>=0`, then the position search. Same shape
+    // as 0x45ee4c over the inline LOD table.
+    debug_assert!(value >= 0, "0x4766ec: value>=0");
+    [(2, "High"), (1, "Medium"), (0, "Low")].iter().position(|(v, _)| *v == value)
 }
 
 // 0x47675c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setIntValue(RBX::Reflection::DescribedBase *,int)const
-pub fn stub_0x47675c() -> ! {
-    todo!("0x47675c RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x47675c(mesh: &mut DataModelMesh, index: usize) -> bool {
+    // IDA 0x47675c: bounds-checks the index (skipping `-1` sentinel entries
+    // like 0x45eebc), reads the value, and sets. Same shape as 0x460198 over
+    // `lod_x` (see 0x476170 note).
+    if let Some((value, _)) = [(2, "High"), (1, "Medium"), (0, "Low")].get(index) {
+        if *value != -1 {
+            mesh.lod_x = *value;
+            return true;
+        }
+    }
+    false
 }
 
 // 0x47679c — __ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshENS2_7LODTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::isReadOnly(void)const
-pub fn stub_0x47679c() -> ! {
-    todo!("0x47679c RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::isReadOnly(void)const")
+pub fn stub_0x47679c() -> bool {
+    // IDA 0x47679c: `MOVS R0, #0; BX LR` (disasm 0x47679c-0x47679e) — a
+    // get/set pair is neither read-only...
+    false
 }
 
 // 0x4767a0 — __ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshENS2_7LODTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::isWriteOnly(void)const
-pub fn stub_0x4767a0() -> ! {
-    todo!("0x4767a0 RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::isWriteOnly(void)const")
+pub fn stub_0x4767a0() -> bool {
+    // IDA 0x4767a0: `MOVS R0, #0; BX LR` (disasm 0x4767a0-0x4767a2) — ...nor
+    // write-only.
+    false
 }
 
 // 0x4767a4 — __ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshENS2_7LODTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::getValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x4767a4() -> ! {
-    todo!("0x4767a4 RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x4767a4(mesh: &DataModelMesh) -> i32 {
+    // IDA 0x4767a4: `GetImpl<lod-getter>::getValue` invokes the bound member
+    // getter; the single-desc elimination (see 0x476170 note) collapses the
+    // read into `lod_x`.
+    mesh.lod_x
 }
 
 // 0x4767c4 — __ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshENS2_7LODTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::setValue(RBX::Reflection::DescribedBase *,RBX::DataModelMesh::LODType const&)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::setValue(RBX::Reflection::DescribedBase *,RBX::DataModelMesh::LODType const&)const
-pub fn stub_0x4767c4() -> ! {
-    todo!("0x4767c4 RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::setValue(RBX::Reflection::DescribedBase *,RBX::DataModelMesh::LODType const&)const")
+pub fn stub_0x4767c4(mesh: &mut DataModelMesh, value: i32) {
+    // IDA 0x4767c4: `GetSetImpl<lod-getter, lod-setter>::setValue` writes
+    // through the bound member setter (unlike the read-only `GetImpl`
+    // throwers); the single-desc elimination (see 0x476170 note) collapses
+    // the write into `lod_x`.
+    mesh.lod_x = value;
 }
 
 // 0x4767e8 — __ZNSt6vectorIN3RBX13DataModelMesh7LODTypeESaIS2_EE6resizeEmS2_
 #[doc(alias = "std::vector<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>::resize(unsigned long,RBX::DataModelMesh::LODType)")]
 // was: std::vector<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>::resize(unsigned long,RBX::DataModelMesh::LODType)
-pub fn stub_0x4767e8() -> ! {
-    todo!("0x4767e8 std::vector<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>::resize(unsigned long,RBX::DataModelMesh::LODType)")
+pub fn stub_0x4767e8(items: &mut Vec<i32>, len: usize, value: i32) {
+    // IDA 0x4767e8 (`vector<LODType>::resize`): same shape as 0x45a880.
+    items.resize(len, value);
 }
 
 // 0x47681c — __ZNSt6vectorIN3RBX13DataModelMesh7LODTypeESaIS2_EE9push_backERKS2_
 #[doc(alias = "std::vector<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>::push_back(RBX::DataModelMesh::LODType const&)")]
 // was: std::vector<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>::push_back(RBX::DataModelMesh::LODType const&)
-pub fn stub_0x47681c() -> ! {
-    todo!("0x47681c std::vector<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>::push_back(RBX::DataModelMesh::LODType const&)")
+pub fn stub_0x47681c(items: &mut Vec<i32>, value: i32) {
+    // IDA 0x47681c (`vector<LODType>::push_back`): same shape as 0x45a8b8.
+    items.push(value);
 }
 
 // 0x476844 — __ZNSt3mapIPKN3RBX4NameENS0_13DataModelMesh7LODTypeESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 #[doc(alias = "std::map<RBX::Name const*,RBX::DataModelMesh::LODType,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>>::operator[](RBX::Name const* const&)")]
 // was: std::map<RBX::Name const*,RBX::DataModelMesh::LODType,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>>::operator[](RBX::Name const* const&)
-pub fn stub_0x476844() -> ! {
-    todo!("0x476844 std::map<RBX::Name const*,RBX::DataModelMesh::LODType,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>>::operator[](RBX::Name const* const&)")
+pub fn stub_0x476844<'a>(map: &'a mut BTreeMap<String, i32>, key: &str) -> &'a mut i32 {
+    // IDA 0x476844 (`map<Name, LODType>::operator[]`): same lookup-or-create
+    // shape as 0x45a8e4.
+    map.entry(key.to_owned()).or_insert(0)
 }
 
 // 0x47689c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13DataModelMesh7LODTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>,std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>,std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType> const&)
-pub fn stub_0x47689c() -> ! {
-    todo!("0x47689c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>,std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType> const&)")
+pub fn stub_0x47689c(map: &mut BTreeMap<String, i32>, key: &str, value: i32) -> bool {
+    // IDA 0x47689c (`_Rb_tree::_M_insert_unique` with hint): same shape as
+    // 0x45af80.
+    use std::collections::btree_map::Entry;
+    match map.entry(key.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x476950 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13DataModelMesh7LODTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType> const&)
-pub fn stub_0x476950() -> ! {
-    todo!("0x476950 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType> const&)")
+pub fn stub_0x476950(map: &mut BTreeMap<String, i32>, key: &str, value: i32) {
+    // IDA 0x476950 (`_Rb_tree::_M_insert`): same plain insert as 0x45a9f0.
+    map.insert(key.to_owned(), value);
 }
 
 // 0x4769a8 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13DataModelMesh7LODTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
