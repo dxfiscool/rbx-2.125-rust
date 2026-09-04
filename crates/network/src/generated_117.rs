@@ -545,16 +545,21 @@ pub fn stub_965f98(
 // 0x966d78 — __ZN3RBX7Network6Client13playerConnectEiSsiii
 #[doc(alias = "__ZN3RBX7Network6Client13playerConnectEiSsiii")]
 #[doc(alias = "RBX::Network::Client::playerConnect(int,std::string,int,int,int)")]
-pub fn stub_966d78() -> ! {
-    todo!("0x966d78 RBX::Network::Client::playerConnect(int,std::string,int,int,int)")
+pub fn stub_966d78(
+    params: &crate::player::ConnectParams,
+    world: &crate::player::ConnectWorld,
+) -> Result<(), String> {
+    // IDA 0x966d78: `Players` lookup, local player, peer startup, DNS unless localhost, role gate, connect — error strings exact.
+    crate::player::player_connect(params, world)
 }
 
 // 0x96765c — __ZN3RBX7Network6Client10disconnectEi
 // type: _DWORD __fastcall(RBX::Network::Client *__hidden this, int)
 #[doc(alias = "__ZN3RBX7Network6Client10disconnectEi")]
 #[doc(alias = "RBX::Network::Client::disconnect(int)")]
-pub fn stub_96765c() -> ! {
-    todo!("0x96765c RBX::Network::Client::disconnect(int)")
+pub fn stub_96765c(link: &mut crate::player::ClientLink, block_ms: i32) {
+    // IDA 0x96765c: logs, unlock-parent visit, `removeAllChildren`, peer close + shutdown.
+    link.disconnect(block_ms);
 }
 
 // 0x967744 — __ZN3RBX7Network6ClientC2Ev

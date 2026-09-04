@@ -1481,8 +1481,9 @@ pub fn stub_9c3778() -> ! {
 // 0x9c72d0 — __ZL16createReplicatorN6RakNet13SystemAddressEPN3RBX7Network6ServerEPNS1_15NetworkSettingsE
 #[doc(alias = "createReplicator(RakNet::SystemAddress,RBX::Network::Server *,RBX::NetworkSettings *)")]
 // was: createReplicator(RakNet::SystemAddress,RBX::Network::Server *,RBX::NetworkSettings *)
-pub fn stub_9c72d0() -> ! {
-    todo!("0x9c72d0 createReplicator(RakNet::SystemAddress,RBX::Network::Server *,RBX::NetworkSettings *)")
+pub fn stub_9c72d0(table: &mut crate::player::ReplicatorTable) -> u32 {
+    // IDA 0x9c72d0: `new ServerReplicator` (0x17FC) + shared control block, owner-wired; returns the handle.
+    table.create()
 }
 
 // 0x9c9fb0 — __ZN3RBX7Network6Server9OnReceiveEPN6RakNet6PacketE
@@ -6263,8 +6264,9 @@ pub fn stub_4f1df8() -> ! {
 
 // 0x5e1de8 — __ZN3RBX7Network12NetworkOwner16ServerUnassignedEv
 #[doc(alias = "RBX::Network::NetworkOwner::ServerUnassigned(void)")]
-pub fn stub_5e1de8() -> ! {
-    todo!("0x5e1de8 RBX::Network::NetworkOwner::ServerUnassigned(void)")
+pub fn stub_5e1de8() -> crate::player::NetworkOwner {
+    // IDA 0x5e1de8: local `s = 1` (+ side word 1); copies the qword into `this` and returns it.
+    crate::player::NetworkOwner::server_unassigned()
 }
 
 // 0x5e1e40 — __ZN3RBX7Network12NetworkOwner16colorFromAddressERKNS_13SystemAddressE
@@ -6281,8 +6283,9 @@ pub fn stub_5e1eac() -> ! {
 
 // 0x5e1ef8 — __ZN3RBX7Network12NetworkOwner6ServerEv
 #[doc(alias = "RBX::Network::NetworkOwner::Server(void)")]
-pub fn stub_5e1ef8() -> ! {
-    todo!("0x5e1ef8 RBX::Network::NetworkOwner::Server(void)")
+pub fn stub_5e1ef8() -> crate::player::NetworkOwner {
+    // IDA 0x5e1ef8: local `s = 1` (+ zero side word); copies the qword into `this` and returns it.
+    crate::player::NetworkOwner::server()
 }
 
 // 0x5f6978 — __ZN3RBX19PhysicsInstructions22changeSimulationRadiusEPNS_7Network6PlayerEf
@@ -6433,8 +6436,9 @@ pub fn stub_684824() -> ! {
 
 // 0x6d1a38 — __ZN3RBX7Network7Players11getGameModeEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::Players::getGameMode(RBX::Instance const*)")]
-pub fn stub_6d1a38() -> ! {
-    todo!("0x6d1a38 RBX::Network::Players::getGameMode(RBX::Instance const*)")
+pub fn stub_6d1a38(client: bool, server: bool, local_player: bool, distributed_physics: bool) -> u32 {
+    // IDA 0x6d1a38: server mirrors the physics flag; client+local is 3/2; client-only 4; local-only 5; neither 6.
+    crate::player::game_mode(client, server, local_player, distributed_physics)
 }
 
 // 0x79d5a8 — __ZN3RBX14PlayerChatLineC2ENS_8ChatLine8ChatTypeEN5boost10shared_ptrINS_7Network6PlayerEEERKSsfb
@@ -7375,14 +7379,19 @@ pub fn stub_965e7c() -> ! {
 
 // 0x966d78 — __ZN3RBX7Network6Client13playerConnectEiSsiii
 #[doc(alias = "RBX::Network::Client::playerConnect(int,std::string,int,int,int)")]
-pub fn stub_966d78() -> ! {
-    todo!("0x966d78 RBX::Network::Client::playerConnect(int,std::string,int,int,int)")
+pub fn stub_966d78(
+    params: &crate::player::ConnectParams,
+    world: &crate::player::ConnectWorld,
+) -> Result<(), String> {
+    // IDA 0x966d78: `Players` lookup, local player, peer startup, DNS unless localhost, role gate, connect — error strings exact.
+    crate::player::player_connect(params, world)
 }
 
 // 0x96765c — __ZN3RBX7Network6Client10disconnectEi
 #[doc(alias = "RBX::Network::Client::disconnect(int)")]
-pub fn stub_96765c() -> ! {
-    todo!("0x96765c RBX::Network::Client::disconnect(int)")
+pub fn stub_96765c(link: &mut crate::player::ClientLink, block_ms: i32) {
+    // IDA 0x96765c: logs, unlock-parent visit, `removeAllChildren`, peer close + shutdown.
+    link.disconnect(block_ms);
 }
 
 // 0x967744 — __ZN3RBX7Network6ClientC2Ev
@@ -7531,8 +7540,9 @@ pub fn stub_96c5d0() -> ! {
 
 // 0x96ca10 — __ZN3RBX7Network6Client10disconnectEv
 #[doc(alias = "RBX::Network::Client::disconnect(void)")]
-pub fn stub_96ca10() -> ! {
-    todo!("0x96ca10 RBX::Network::Client::disconnect(void)")
+pub fn stub_96ca10(link: &mut crate::player::ClientLink) {
+    // IDA 0x96ca10: tail-calls `disconnect` with 3000.
+    link.disconnect_default();
 }
 
 // 0x96fd88 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network16ClientReplicatorES7_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -13476,8 +13486,9 @@ pub fn stub_a04c10() -> ! {
 // 0xa05160 — __ZN3RBX7Network7Players17createLocalPlayerEi
 // type: void __fastcall(pthread_mutex_t *this, int, int)
 #[doc(alias = "RBX::Network::Players::createLocalPlayer(int)")]
-pub fn stub_a05160() -> ! {
-    todo!("0xa05160 RBX::Network::Players::createLocalPlayer(int)")
+pub fn stub_a05160(players: &mut crate::player::Players, user_id: i32) -> u32 {
+    // IDA 0xa05160: allocates the local-player row.
+    players.create_local_player(user_id)
 }
 
 // 0xa06340 — __ZN3RBX7Network7Players17setAbuseReportUrlESs
@@ -13798,8 +13809,9 @@ pub fn stub_a12c94() -> ! {
 // 0xa12fb0 — __ZNK3RBX7Network7Players14getLoadDataUrlEi
 // type: void __fastcall(RBX::Network::Players *this, int, int)
 #[doc(alias = "RBX::Network::Players::getLoadDataUrl(int)const")]
-pub fn stub_a12fb0() -> ! {
-    todo!("0xa12fb0 RBX::Network::Players::getLoadDataUrl(int)const")
+pub fn stub_a12fb0(template: &str, user_id: i32) -> String {
+    // IDA 0xa12fb0: empty template throws `"No LoadData url set"`; else the template formatted with the user id.
+    crate::player::load_data_url(template, user_id)
 }
 
 // 0xa13104 — __ZNK3RBX7Network7Players14getSaveDataUrlEi
@@ -13965,22 +13977,25 @@ pub fn stub_a16cb0() -> ! {
 // 0xa16fa4 — __ZN3RBX7Network7Players16disconnectPlayerERNS_8InstanceEi
 // type: void __fastcall(RBX::Network::Players *this, RBX::Instance *, int)
 #[doc(alias = "RBX::Network::Players::disconnectPlayer(RBX::Instance &,int)")]
-pub fn stub_a16fa4() -> ! {
-    todo!("0xa16fa4 RBX::Network::Players::disconnectPlayer(RBX::Instance &,int)")
+pub fn stub_a16fa4(replicator_matches: bool, server_present: bool) -> crate::player::DisconnectAction {
+    // IDA 0xa16fa4: matching replicator gets `requestDisconnect`, firing `("server", false)` first when no server is present.
+    crate::player::disconnect_player(replicator_matches, server_present)
 }
 
 // 0xa172e4 — __ZN3RBX7Network7Players16disconnectPlayerEi
 // type: _DWORD __fastcall(RBX::Network::Players *__hidden this, int)
 #[doc(alias = "RBX::Network::Players::disconnectPlayer(int)")]
-pub fn stub_a172e4() -> ! {
-    todo!("0xa172e4 RBX::Network::Players::disconnectPlayer(int)")
+pub fn stub_a172e4(provider_present: bool, role_present: bool) -> bool {
+    // IDA 0xa172e4: without a provider or a `Server` under it this is a no-op; else routes to `disconnectPlayer`.
+    crate::player::disconnect_player_route(provider_present, role_present)
 }
 
 // 0xa17304 — __ZN3RBX7Network7Players21disconnectPlayerLocalEi
 // type: _DWORD __fastcall(RBX::Network::Players *__hidden this, int)
 #[doc(alias = "RBX::Network::Players::disconnectPlayerLocal(int)")]
-pub fn stub_a17304() -> ! {
-    todo!("0xa17304 RBX::Network::Players::disconnectPlayerLocal(int)")
+pub fn stub_a17304(provider_present: bool, role_present: bool) -> bool {
+    // IDA 0xa17304: without a provider or a `Client` under it this is a no-op; else routes to `disconnectPlayer`.
+    crate::player::disconnect_player_route(provider_present, role_present)
 }
 
 // 0xa17324 — __ZN3RBX7Network7Players16onRemoteSysStatsEiRKSsS3_b
@@ -16683,8 +16698,9 @@ pub fn stub_a7f320() -> ! {
 // 0xa7fbf0 — __ZN3RBX7Network6Player8loadDataEv
 // type: void __fastcall(RBX::Network::Player *this, const RBX::Instance *)
 #[doc(alias = "RBX::Network::Player::loadData(void)")]
-pub fn stub_a7fbf0() -> ! {
-    todo!("0xa7fbf0 RBX::Network::Player::loadData(void)")
+pub fn stub_a7fbf0(players_present: bool, user_id: i32, web_present: bool) -> crate::player::LoadDataRoute {
+    // IDA 0xa7fbf0: missing provider/Players throws; guest ids take the sync empty result, else the web fetch.
+    crate::player::load_data_route(players_present, user_id, web_present)
 }
 
 // 0xa802c8 — __ZN3RBX7Network6Player8saveDataEv

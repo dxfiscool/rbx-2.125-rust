@@ -43,8 +43,9 @@ pub fn stub_a12c94() -> ! {
 // demangled: RBX::Network::Players::getLoadDataUrl(int)const
 // type: void __fastcall(RBX::Network::Players *this, int, int)
 #[doc(alias = "RBX::Network::Players::getLoadDataUrl(int)const")]
-pub fn stub_a12fb0() -> ! {
-    todo!("0xa12fb0 RBX::Network::Players::getLoadDataUrl(int)const")
+pub fn stub_a12fb0(template: &str, user_id: i32) -> String {
+    // IDA 0xa12fb0: empty template throws `"No LoadData url set"`; else the template formatted with the user id.
+    crate::player::load_data_url(template, user_id)
 }
 
 // 0xa13104 — __ZNK3RBX7Network7Players14getSaveDataUrlEi

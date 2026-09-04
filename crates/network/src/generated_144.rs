@@ -482,8 +482,9 @@ pub fn stub_a04c10() -> ! {
 // demangled: RBX::Network::Players::createLocalPlayer(int)
 // type: void __fastcall(pthread_mutex_t *this, int, int)
 #[doc(alias = "RBX::Network::Players::createLocalPlayer(int)")]
-pub fn stub_a05160() -> ! {
-    todo!("0xa05160 RBX::Network::Players::createLocalPlayer(int)")
+pub fn stub_a05160(players: &mut crate::player::Players, user_id: i32) -> u32 {
+    // IDA 0xa05160: allocates the local-player row.
+    players.create_local_player(user_id)
 }
 
 // 0xa06340 — __ZN3RBX7Network7Players17setAbuseReportUrlESs

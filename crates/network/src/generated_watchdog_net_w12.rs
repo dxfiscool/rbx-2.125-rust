@@ -517,7 +517,9 @@ pub fn stub_0xa04c10() -> ! { todo!("0xa04c10 __ZN3RBX7Network7Players14reportAb
 // type: void __fastcall(pthread_mutex_t *this, int, int)
 #[doc(alias = "RBX::Network::Players::createLocalPlayer(int)")]
 #[doc(alias = "__ZN3RBX7Network7Players17createLocalPlayerEi")]
-pub fn stub_0xa05160() -> ! { todo!("0xa05160 __ZN3RBX7Network7Players17createLocalPlayerEi") }
+pub fn stub_0xa05160(players: &mut crate::player::Players, user_id: i32) -> u32 { // IDA 0xa05160: allocates the local-player row.
+    players.create_local_player(user_id)
+}
 
 // 0xa06340 — __ZN3RBX7Network7Players17setAbuseReportUrlESs
 // type: void __fastcall(int, const std::string *)

@@ -73,7 +73,9 @@ pub fn stub_0xa12c94() -> ! { todo!("0xa12c94 __ZNK3RBX7Network7Players17isMessa
 // type: void __fastcall(RBX::Network::Players *this, int, int)
 #[doc(alias = "RBX::Network::Players::getLoadDataUrl(int)const")]
 #[doc(alias = "__ZNK3RBX7Network7Players14getLoadDataUrlEi")]
-pub fn stub_0xa12fb0() -> ! { todo!("0xa12fb0 __ZNK3RBX7Network7Players14getLoadDataUrlEi") }
+pub fn stub_0xa12fb0(template: &str, user_id: i32) -> String { // IDA 0xa12fb0: empty template throws `"No LoadData url set"`.
+    crate::player::load_data_url(template, user_id)
+}
 
 // 0xa13104 — __ZNK3RBX7Network7Players14getSaveDataUrlEi
 // type: void __fastcall(RBX::Network::Players *this, int, int)

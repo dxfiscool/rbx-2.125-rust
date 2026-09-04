@@ -186,16 +186,18 @@ pub fn stub_a87d5c() -> ! {
 // demangled: RBX::Network::Player::LoadDataResultHelper(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)
 // type: void __fastcall(int *, int *, int, int, int, int, int, int, int, pthread_mutex_t *, int, int, int, int)
 #[doc(alias = "RBX::Network::Player::LoadDataResultHelper(rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")]
-pub fn stub_a87e84() -> ! {
-    todo!("0xa87e84 RBX::Network::Player::LoadDataResultHelper(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")
+pub fn stub_a87e84(player: Option<u32>, mut apply: impl FnMut(u32)) {
+    // IDA 0xa87e84: weak-player lock; a dead player skips, else the data map applies via `loadDataResult`.
+    crate::player::load_data_result_helper(player, apply);
 }
 
 // 0xa88274 — __ZN3RBX7Network6Player14loadDataResultEN5boost10shared_ptrIKSt3mapISsNS_10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEE
 // demangled: RBX::Network::Player::loadDataResult(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)
 // type: void __fastcall(int, int *, int, int, int, pthread_mutex_t *, int, int, int, void *, int, int, int, int)
 #[doc(alias = "RBX::Network::Player::loadDataResult(rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")]
-pub fn stub_a88274() -> ! {
-    todo!("0xa88274 RBX::Network::Player::loadDataResult(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")
+pub fn stub_a88274(waiters: usize) -> crate::player::AppliedData {
+    // IDA 0xa88274: installs the store (+208/+212), sets loaded (+116), raises the change, fires + clears waiters.
+    crate::player::load_data_result(waiters)
 }
 
 // 0xa88570 — __ZN3RBX7Network6Player24setWebPersonalServerRankEiN5boost8functionIFvbEEENS3_IFvSsEEE
