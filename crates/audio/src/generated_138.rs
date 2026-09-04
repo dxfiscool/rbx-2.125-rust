@@ -781,142 +781,247 @@ pub fn stub_1a7d4() {
     // 0x1a5d0. Static init — carrier no-op.
 }
 
+/// Audio-crate host for the nib-loaded `DebugSettingsViewController` panel
+/// (IDA 0x1a970..0x1b14c): nib-loaded state (`window` frame,
+/// `keyboardOffset`, `displayPickerArray`) plus the debug-display mode the
+/// panel edits. UIKit views have no host counterpart. Mirrors the platform
+/// crate `DebugSettingsViewController` model (which owns the full panel);
+/// audio cannot depend on platform (AGENTS.md DAG), so the slots these
+/// filler EAs touch live here.
+#[derive(Debug, Default)]
+pub struct AudioDebugSettingsViewController {
+    window_frame: parking_lot::Mutex<(f64, f64, f64, f64)>,
+    keyboard_offset: std::sync::atomic::AtomicI32,
+    display_picker_items: parking_lot::Mutex<Vec<String>>,
+    debug_display: std::sync::atomic::AtomicI32,
+    view_did_load_calls: std::sync::atomic::AtomicU32,
+    animation_runs: std::sync::atomic::AtomicU32,
+}
+
+impl AudioDebugSettingsViewController {
+    /// `-[DebugSettingsViewController initWithCoder:]` (IDA 0x1a970):
+    /// super init first (nil stays nil); iPad gets the fixed 540x508 panel,
+    /// otherwise the main-screen bounds; `keyboardOffset = 114`; six-item
+    /// picker array. Mirrors the platform twin.
+    pub fn init_with_coder(
+        super_ok: bool,
+        idiom_pad: bool,
+        screen_bounds: Option<(f64, f64, f64, f64)>,
+    ) -> Option<Self> {
+        if !super_ok {
+            return None;
+        }
+        let frame = if idiom_pad {
+            (0.0, 0.0, 540.0, 508.0)
+        } else {
+            screen_bounds.unwrap_or_default()
+        };
+        Some(Self {
+            window_frame: parking_lot::Mutex::new(frame),
+            keyboard_offset: std::sync::atomic::AtomicI32::new(114),
+            display_picker_items: parking_lot::Mutex::new(
+                ["None", "FPS", "Summary", "Physics", "PhysicsAndOwner", "Render"]
+                    .into_iter()
+                    .map(str::to_owned)
+                    .collect(),
+            ),
+            ..Self::default()
+        })
+    }
+
+    /// `-[DebugSettingsViewController dealloc]` (IDA 0x1ab20):
+    /// picker-array release + super dealloc (runs as drop).
+    pub fn dealloc(self) {}
+
+    /// `-[DebugSettingsViewController reloadOldData]` (IDA 0x1ab6c):
+    /// empty body.
+    pub fn reload_old_data(&self) {}
+
+    /// `-[DebugSettingsViewController viewDidLoad]` (IDA 0x1ab70): super
+    /// `viewDidLoad` then `reloadOldData`.
+    pub fn view_did_load(&self) {
+        self.view_did_load_calls
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.reload_old_data();
+    }
+
+    /// `getDebugDisplay` label mapping (IDA 0x1abe6..0x1ac02).
+    pub fn display_label(&self) -> &'static str {
+        match self.debug_display.load(std::sync::atomic::Ordering::SeqCst) {
+            1 => "FPS",
+            2 => "Summary",
+            3 => "Physics",
+            4 => "PhysicsAndOwner",
+            5 => "Render",
+            _ => "None",
+        }
+    }
+
+    /// `-[DebugSettingsViewController setDisplayUI]` (IDA 0x1abb0):
+    /// `viewWithTag:100` is always present on the host; the switch result
+    /// is `setText:`. Returns the label.
+    pub fn set_display_ui(&self) -> &'static str {
+        self.display_label()
+    }
+
+    /// `-[DebugSettingsViewController displayPickerDoneClicked:]` (IDA
+    /// 0x1ac80): animation dispatch (recorded), `selectedRowInComponent:0
+    /// >= 0` stores the debug display, finishes with `setDisplayUI`.
+    /// Returns the label.
+    pub fn display_picker_done_clicked(&self, selected_row: i32) -> &'static str {
+        self.animation_runs
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        if selected_row >= 0 {
+            self.debug_display
+                .store(selected_row, std::sync::atomic::Ordering::SeqCst);
+        }
+        self.set_display_ui()
+    }
+
+    /// `__56-[... displayPickerDoneClicked:]_block_invoke` (IDA 0x1ad78)
+    /// / `__46-[... displayTouchUp:]_block_invoke` (IDA 0x1afa0): frame
+    /// shuffle between the picker, self and the toolbar — pure UIKit
+    /// geometry, recorded.
+    pub fn display_picker_animation_frame(&self) {
+        self.animation_runs
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// `-[DebugSettingsViewController displayTouchUp:]` (IDA 0x1aed0):
+    /// same tag lookup + animation dispatch as done-clicked without the
+    /// picker store.
+    pub fn display_touch_up(&self) {
+        self.animation_runs
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+}
+
 // 0x1a970 — -[DebugSettingsViewController initWithCoder:]
 #[doc(alias = "-[DebugSettingsViewController initWithCoder:]")]
-pub fn stub_1a970() -> ! {
-    todo!("0x1a970 -[DebugSettingsViewController initWithCoder:]")
+pub fn stub_1a970(
+    super_ok: bool,
+    idiom_pad: bool,
+    screen_bounds: Option<(f64, f64, f64, f64)>,
+) -> Option<AudioDebugSettingsViewController> {
+    // IDA 0x1a970: super init, iPad fixed frame vs screen bounds,
+    // `keyboardOffset = 114`, six-item picker array. Same as the platform
+    // 0x1a970 anchor.
+    AudioDebugSettingsViewController::init_with_coder(super_ok, idiom_pad, screen_bounds)
 }
-
 // 0x1ab20 — -[DebugSettingsViewController dealloc]
 #[doc(alias = "-[DebugSettingsViewController dealloc]")]
-pub fn stub_1ab20() -> ! {
-    todo!("0x1ab20 -[DebugSettingsViewController dealloc]")
+pub fn stub_1ab20(controller: AudioDebugSettingsViewController) {
+    // IDA 0x1ab20: picker-array release + super dealloc (runs as drop).
+    // Same as the platform 0x1ab20 anchor.
+    controller.dealloc();
 }
-
 // 0x1ab6c — -[DebugSettingsViewController reloadOldData]
 #[doc(alias = "-[DebugSettingsViewController reloadOldData]")]
-pub fn stub_1ab6c() -> ! {
-    todo!("0x1ab6c -[DebugSettingsViewController reloadOldData]")
+pub fn stub_1ab6c(controller: &AudioDebugSettingsViewController) {
+    // IDA 0x1ab6c: empty body. Same as the platform 0x1ab6c anchor.
+    controller.reload_old_data();
 }
-
 // 0x1ab70 — -[DebugSettingsViewController viewDidLoad]
 #[doc(alias = "-[DebugSettingsViewController viewDidLoad]")]
-pub fn stub_1ab70() -> ! {
-    todo!("0x1ab70 -[DebugSettingsViewController viewDidLoad]")
+pub fn stub_1ab70(controller: &AudioDebugSettingsViewController) {
+    // IDA 0x1ab70: super `viewDidLoad` then `reloadOldData`. Same as the
+    // platform 0x1ab70 anchor.
+    controller.view_did_load();
 }
-
 // 0x1abb0 — -[DebugSettingsViewController setDisplayUI]
 #[doc(alias = "-[DebugSettingsViewController setDisplayUI]")]
-pub fn stub_1abb0() -> ! {
-    todo!("0x1abb0 -[DebugSettingsViewController setDisplayUI]")
+pub fn stub_1abb0(controller: &AudioDebugSettingsViewController) -> &'static str {
+    // IDA 0x1abb0: `viewWithTag:100` then the `getDebugDisplay` switch
+    // into `setText:`. Returns the label. Same as the platform 0x1abb0
+    // anchor.
+    controller.set_display_ui()
 }
-
 // 0x1ac80 — -[DebugSettingsViewController displayPickerDoneClicked:]
 #[doc(alias = "-[DebugSettingsViewController displayPickerDoneClicked:]")]
-pub fn stub_1ac80() -> ! {
-    todo!("0x1ac80 -[DebugSettingsViewController displayPickerDoneClicked:]")
+pub fn stub_1ac80(
+    controller: &AudioDebugSettingsViewController,
+    selected_row: i32,
+) -> &'static str {
+    // IDA 0x1ac80: tag lookup, animation dispatch, picker store,
+    // `setDisplayUI`. Returns the label. Same as the platform 0x1ac80
+    // anchor.
+    controller.display_picker_done_clicked(selected_row)
 }
-
 // 0x1ad78 — ___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke
 #[doc(alias = "___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke")]
-pub fn stub_1ad78() -> ! {
-    todo!("0x1ad78 ___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke")
+pub fn stub_1ad78(controller: &AudioDebugSettingsViewController) {
+    // IDA 0x1ad78: `setFrame:` shuffle over the picker/self/toolbar
+    // frames. Same as the platform 0x1ad78 anchor.
+    controller.display_picker_animation_frame();
 }
-
 // 0x1ae78 — ___copy_helper_block__0
 #[doc(alias = "___copy_helper_block__0")]
-pub fn stub_1ae78() -> ! {
-    todo!("0x1ae78 ___copy_helper_block__0")
+pub fn stub_1ae78(
+    picker_slot: &mut u64,
+    self_slot: &mut u64,
+    toolbar_slot: &mut u64,
+    picker_src: u64,
+    self_src: u64,
+    toolbar_src: u64,
+) {
+    // IDA 0x1ae78: `_Block_object_assign` x3 retaining the captures (two
+    // direct + one shim). Same as the platform 0x1ae78 anchor; `0` is
+    // `nil`.
+    *picker_slot = picker_src;
+    *self_slot = self_src;
+    *toolbar_slot = toolbar_src;
 }
-
 // 0x1aea8 — ___destroy_helper_block__0
 #[doc(alias = "___destroy_helper_block__0")]
-pub fn stub_1aea8() -> ! {
-    todo!("0x1aea8 ___destroy_helper_block__0")
+pub fn stub_1aea8(
+    picker_slot: &mut u64,
+    self_slot: &mut u64,
+    toolbar_slot: &mut u64,
+) {
+    // IDA 0x1aea8: `_Block_object_dispose` x3 releasing the captures.
+    // Same as the platform 0x1aea8 anchor.
+    *picker_slot = 0;
+    *self_slot = 0;
+    *toolbar_slot = 0;
 }
-
 // 0x1aed0 — -[DebugSettingsViewController displayTouchUp:]
 #[doc(alias = "-[DebugSettingsViewController displayTouchUp:]")]
-pub fn stub_1aed0() -> ! {
-    todo!("0x1aed0 -[DebugSettingsViewController displayTouchUp:]")
+pub fn stub_1aed0(controller: &AudioDebugSettingsViewController) {
+    // IDA 0x1aed0: same tag lookup + animation dispatch as 0x1ac80,
+    // without the picker store. Same as the platform 0x1aed0 anchor.
+    controller.display_touch_up();
 }
-
 // 0x1afa0 — ___46-[DebugSettingsViewController displayTouchUp:]_block_invoke
 #[doc(alias = "___46-[DebugSettingsViewController displayTouchUp:]_block_invoke")]
-pub fn stub_1afa0() -> ! {
-    todo!("0x1afa0 ___46-[DebugSettingsViewController displayTouchUp:]_block_invoke")
+pub fn stub_1afa0(controller: &AudioDebugSettingsViewController) {
+    // IDA 0x1afa0 (decompiled frame-shuffle block): same family as the
+    // 0x1ad78 animation block — pure UIKit geometry, recorded.
+    controller.display_picker_animation_frame();
 }
-
 // 0x1b11c — ___copy_helper_block_66
 #[doc(alias = "___copy_helper_block_66")]
-pub fn stub_1b11c() -> ! {
-    todo!("0x1b11c ___copy_helper_block_66")
+pub fn stub_1b11c(
+    first_slot: &mut u64,
+    second_slot: &mut u64,
+    third_slot: &mut u64,
+    first_src: u64,
+    second_src: u64,
+    third_src: u64,
+) {
+    // IDA 0x1b11c (disasm `__Block_object_assign` x3 at +0x14/+0x18/+0x1C):
+    // retain the three captures. Same shape as 0x1ae78.
+    *first_slot = first_src;
+    *second_slot = second_src;
+    *third_slot = third_src;
 }
-
 // 0x1b14c — ___destroy_helper_block_67
 #[doc(alias = "___destroy_helper_block_67")]
-pub fn stub_1b14c() -> ! {
-    todo!("0x1b14c ___destroy_helper_block_67")
-}
-
-// 0x1b170 — -[DebugSettingsViewController didReceiveMemoryWarning]
-#[doc(alias = "-[DebugSettingsViewController didReceiveMemoryWarning]")]
-pub fn stub_1b170() -> ! {
-    todo!("0x1b170 -[DebugSettingsViewController didReceiveMemoryWarning]")
-}
-
-// 0x1b19c — -[DebugSettingsViewController shouldAutorotateToInterfaceOrientation:]
-#[doc(alias = "-[DebugSettingsViewController shouldAutorotateToInterfaceOrientation:]")]
-pub fn stub_1b19c() -> ! {
-    todo!("0x1b19c -[DebugSettingsViewController shouldAutorotateToInterfaceOrientation:]")
-}
-
-// 0x1b224 — -[DebugSettingsViewController viewWillAppear:]
-#[doc(alias = "-[DebugSettingsViewController viewWillAppear:]")]
-pub fn stub_1b224() -> ! {
-    todo!("0x1b224 -[DebugSettingsViewController viewWillAppear:]")
-}
-
-// 0x1b2a8 — -[DebugSettingsViewController doneTouchUp:]
-#[doc(alias = "-[DebugSettingsViewController doneTouchUp:]")]
-pub fn stub_1b2a8() -> ! {
-    todo!("0x1b2a8 -[DebugSettingsViewController doneTouchUp:]")
-}
-
-// 0x1b2bc — -[DebugSettingsViewController numberOfComponentsInPickerView:]
-#[doc(alias = "-[DebugSettingsViewController numberOfComponentsInPickerView:]")]
-pub fn stub_1b2bc() -> ! {
-    todo!("0x1b2bc -[DebugSettingsViewController numberOfComponentsInPickerView:]")
-}
-
-// 0x1b2c0 — -[DebugSettingsViewController pickerView:numberOfRowsInComponent:]
-#[doc(alias = "-[DebugSettingsViewController pickerView:numberOfRowsInComponent:]")]
-pub fn stub_1b2c0() -> ! {
-    todo!("0x1b2c0 -[DebugSettingsViewController pickerView:numberOfRowsInComponent:]")
-}
-
-// 0x1b2e0 — -[DebugSettingsViewController pickerView:titleForRow:forComponent:]
-#[doc(alias = "-[DebugSettingsViewController pickerView:titleForRow:forComponent:]")]
-pub fn stub_1b2e0() -> ! {
-    todo!("0x1b2e0 -[DebugSettingsViewController pickerView:titleForRow:forComponent:]")
-}
-
-// 0x1b300 — -[DebugSettingsViewController disablesAutomaticKeyboardDismissal]
-#[doc(alias = "-[DebugSettingsViewController disablesAutomaticKeyboardDismissal]")]
-pub fn stub_1b300() -> ! {
-    todo!("0x1b300 -[DebugSettingsViewController disablesAutomaticKeyboardDismissal]")
-}
-
-// 0x1b304 — -[DebugSettingsViewController .cxx_construct]
-#[doc(alias = "-[DebugSettingsViewController .cxx_construct]")]
-pub fn stub_1b304() -> ! {
-    todo!("0x1b304 -[DebugSettingsViewController .cxx_construct]")
-}
-
-// 0x1b308 — __GLOBAL__I_a_3
-#[doc(alias = "__GLOBAL__I_a_3")]
-pub fn stub_1b308() -> ! {
-    todo!("0x1b308 global constructor keyed to_a_3")
+pub fn stub_1b14c(first_slot: &mut u64, second_slot: &mut u64, third_slot: &mut u64) {
+    // IDA 0x1b14c (disasm `__Block_object_dispose` x3 at +0x14/+0x18/+0x1C):
+    // release the three captures. Same shape as 0x1aea8; `0` is `nil`.
+    *first_slot = 0;
+    *second_slot = 0;
+    *third_slot = 0;
 }
 
 // 0x1b3d0 — -[HomeViewController initWithCoder:]
