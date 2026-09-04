@@ -3,6 +3,7 @@
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 //! Uses rbx_core::SharedPtr (not boost::shared_ptr). Sanitized: single quotes removed, boost::shared_ptr -> rbx_core::SharedPtr.
 
+use std::collections::HashMap;
 use rbx_core::SharedPtr;
 use crate::ogre::{ColourValue, SceneBlendFactor};
 
@@ -40,10 +41,50 @@ pub enum BindingType {
 }
 
 /// was: `Ogre::TextureUnitState::mTextureType` dimensionality.
-/// Values observed in IDA: 2 = 2D (`0xe4ab3e`), 4 = 3D (`0xe4ab3c`, `0xe4aca8`).
+/// Values observed in IDA: 2 = 2D (`0xe4ab3e`), 4 = 3D (`0xe4aca8`).
 pub const TEXTURE_TYPE_2D: u32 = 2;
 /// was: `Ogre::TextureUnitState::mTextureType` 3D value (`0xe4aca8`: `is3D = (type == 4)`).
 pub const TEXTURE_TYPE_3D: u32 = 4;
+
+/// was: `Ogre::FilterOptions` — per-axis filter choice (`mMinFilter` +272,
+/// `mMagFilter` +276, `mMipFilter` +280; IDA `0xe4d134`..`0xe4d164`).
+#[doc(alias = "Ogre::FilterOptions")]
+pub mod filter_option {
+    /// `FO_NONE` (IDA `0xe4d13c`: mip for `TFO_NONE`).
+    pub const NONE: u32 = 0;
+    /// `FO_POINT` (IDA `0xe4d134`: min/mag for `TFO_NONE`).
+    pub const POINT: u32 = 1;
+    /// `FO_LINEAR` (IDA `0xe4d142`: min/mag for `TFO_BILINEAR`).
+    pub const LINEAR: u32 = 2;
+    /// `FO_ANISOTROPIC` (IDA `0xe4d158`: min/mag for `TFO_ANISOTROPIC`).
+    pub const ANISOTROPIC: u32 = 3;
+}
+
+/// was: `Ogre::TextureFilterOptions` — preset selector for
+/// `setTextureFiltering` (IDA `0xe4d128` switch).
+#[doc(alias = "Ogre::TextureFilterOptions")]
+pub mod texture_filter_options {
+    /// `TFO_NONE` → point/point/none (IDA `0xe4d134`..`0xe4d13c`).
+    pub const NONE: u32 = 0;
+    /// `TFO_BILINEAR` → linear/linear/point (IDA `0xe4d142`..`0xe4d144`).
+    pub const BILINEAR: u32 = 1;
+    /// `TFO_TRILINEAR` → linear/linear/linear (IDA `0xe4d14a`..`0xe4d152`).
+    pub const TRILINEAR: u32 = 2;
+    /// `TFO_ANISOTROPIC` → anisotropic/anisotropic/linear (IDA `0xe4d158`..`0xe4d15a`).
+    pub const ANISOTROPIC: u32 = 3;
+}
+
+/// was: `Ogre::FilterType` — axis selector for `getTextureFiltering`
+/// (IDA `0xe4d18e`/`0xe4d192`: 2 = mip, 1 = mag, else min).
+#[doc(alias = "Ogre::FilterType")]
+pub mod filter_type {
+    /// `FT_MIN`.
+    pub const MIN: u32 = 0;
+    /// `FT_MAG`.
+    pub const MAG: u32 = 1;
+    /// `FT_MIP`.
+    pub const MIP: u32 = 2;
+}
 
 /// was: `Ogre::TextureUnitState::TextureEffect` (value of the `mEffects` map).
 /// Flat layout from IDA `0xe4bd68`/`0xe4c2d4`: type@0, subtype@4, arg1@8,
@@ -63,8 +104,10 @@ pub struct TextureEffect {
     pub amplitude: f32,
     /// ControllerManager handle from `createEffectController`; None = destroyed.
     pub controller: Option<u32>,
+    /// Projective-effect frustum (`Ogre::Frustum*` carried in the `addEffect`
+    /// arg block at IDA `0xe4d2e4`); None for non-projective effects.
+    pub frustum: Option<u32>,
 }
-
 /// was: `Ogre::TextureUnitState::TextureEffectType` (`0xe4bc46`: `type <= 5`
 /// replaces the existing entry; 6 = `ET_TRANSFORM` allows several subtypes).
 /// Values from `setScrollAnimation` (`0xe4c20c`: 2/3/4), `setRotateAnimation`
@@ -222,6 +265,30 @@ pub struct TextureUnitState {
     pub rotate: f32,
     /// +208 texture matrix (`mTexModMatrix`, IDA `0xe4bf54`).
     pub tex_mod_matrix: Matrix4,
+    /// +272 minification filter (`mMinFilter`, IDA `0xe4d134`..`0xe4d164`).
+    pub min_filter: u32,
+    /// +276 magnification filter (`mMagFilter`, IDA `0xe4d138`..`0xe4d160`).
+    pub mag_filter: u32,
+    /// +280 mipmap filter (`mMipFilter`, IDA `0xe4d13c`..`0xe4d164`).
+    pub mip_filter: u32,
+    /// +284 texture anisotropy (`mTextureAnisotropy`, IDA `0xe4d1f2`).
+    pub texture_anisotropy: u32,
+    /// +292 use-manager-default anisotropy latch (`mIsDefaultAnisotropy`, IDA `0xe4d1fe`).
+    pub is_default_anisotropy: bool,
+    /// +293 use-manager-default filtering latch (`mIsDefaultFiltering`, IDA `0xe4d194`/`0xe4d1b2`/`0xe4d1d2`).
+    pub is_default_filtering: bool,
+    /// +304 compositor MRT index (`setCompositorReference` third arg, IDA `0xe4d3d8`).
+    pub compositor_mrt_index: u32,
+    /// +340 unit name (`mName`, IDA `0xe4d2fc`).
+    pub name: String,
+    /// +344 texture-name alias (`mTextureNameAlias`, IDA `0xe4d330`/`0xe4d340`).
+    pub texture_name_alias: String,
+    /// +376 compositor reference name (`setCompositorReference` first arg, IDA `0xe4d3ca`).
+    pub compositor_name: String,
+    /// +380 compositor texture name (`setCompositorReference` second arg, IDA `0xe4d3d4`).
+    pub compositor_texture: String,
+    /// +384 parent pass (`mParent`, `Ogre::Pass*`, IDA `0xe4d3b4`); opaque handle, None = unset.
+    pub parent: Option<u32>,
     /// +296 binding type (`mBindingType`, IDA `0xe4a90c`/`0xe4a918`).
     pub binding_type: BindingType,
     /// +300 content type (`mContentType`, IDA `0xe49ba8`/`0xe4a920`).
@@ -232,7 +299,7 @@ pub struct TextureUnitState {
     pub textures: Vec<TextureSlot>,
     /// +356 effect list (original is a keyed `std::map`; insertion order kept).
     pub effects: Vec<TextureEffect>,
-    /// +384 parent pass loaded latch (models `Pass::isLoaded(mParent)`, IDA `0xe49ad0`).
+    /// Parent pass loaded latch (models `Pass::isLoaded(mParent)` at IDA `0xe49ad0`; glue only, no original address).
     pub parent_loaded: bool,
     /// +388 animation controller handle (`mAnimController`, IDA `0xe49a4a`).
     pub anim_controller: Option<u32>,
@@ -268,6 +335,18 @@ impl Default for TextureUnitState {
             scale: [1.0, 1.0],
             rotate: 0.0,
             tex_mod_matrix: Matrix4::IDENTITY,
+            min_filter: filter_option::LINEAR,
+            mag_filter: filter_option::LINEAR,
+            mip_filter: filter_option::POINT,
+            texture_anisotropy: 1,
+            is_default_anisotropy: true,
+            is_default_filtering: true,
+            compositor_mrt_index: 0,
+            name: String::new(),
+            texture_name_alias: String::new(),
+            compositor_name: String::new(),
+            compositor_texture: String::new(),
+            parent: None,
             binding_type: BindingType::default(),
             content_type: 0,
             frames: Vec::new(),
@@ -866,6 +945,213 @@ impl TextureUnitState {
             self.ensure_prepared(i);
         }
     }
+
+    /// IDA `0xe4d0fc`: `_getTexturePtr()` forwards to `_getTexturePtr(mCurrentFrame)`.
+    pub fn texture_ptr_current(&mut self) -> Option<&TextureSlot> {
+        // IDA 0xe4d106: _getTexturePtr(this, *this) — frame index at +0.
+        let frame = self.current_frame;
+        self.texture_ptr(frame)
+    }
+
+    /// IDA `0xe4d108`: `mTextures[mCurrentFrame] = texPtr` (`SharedPtr` assign at +328).
+    /// The model stores no texture values; installing a live pointer latches the slot loaded.
+    pub fn set_texture_ptr(&mut self) {
+        // IDA 0xe4d10e..0xe4d112: slot = mTextures.begin + mCurrentFrame; SharedPtr::operator=.
+        if let Some(slot) = self.textures.get_mut(self.current_frame as usize) {
+            slot.loaded = true;
+        }
+    }
+
+    /// IDA `0xe4d11c`: `return &mEffects` (+348).
+    pub fn effects_map(&self) -> &[TextureEffect] {
+        &self.effects
+    }
+
+    /// IDA `0xe4d124`: `setTextureFiltering(TextureFilterOptions)` preset switch.
+    pub fn set_filtering_preset(&mut self, preset: u32) {
+        // IDA 0xe4d134..0xe4d164: preset expands to (min, mag, mip); unknown values keep the triple.
+        match preset {
+            texture_filter_options::NONE => {
+                self.min_filter = filter_option::POINT;
+                self.mag_filter = filter_option::POINT;
+                self.mip_filter = filter_option::NONE;
+            }
+            texture_filter_options::BILINEAR => {
+                self.min_filter = filter_option::LINEAR;
+                self.mag_filter = filter_option::LINEAR;
+                self.mip_filter = filter_option::POINT;
+            }
+            texture_filter_options::TRILINEAR => {
+                self.min_filter = filter_option::LINEAR;
+                self.mag_filter = filter_option::LINEAR;
+                self.mip_filter = filter_option::LINEAR;
+            }
+            texture_filter_options::ANISOTROPIC => {
+                self.min_filter = filter_option::ANISOTROPIC;
+                self.mag_filter = filter_option::ANISOTROPIC;
+                self.mip_filter = filter_option::LINEAR;
+            }
+            _ => {}
+        }
+        // IDA 0xe4d16a..0xe4d174: mIsDefaultFiltering = false on every path, even default.
+        self.is_default_filtering = false;
+    }
+
+    /// IDA `0xe4d178`: `setTextureFiltering(min, mag, mip)` stores the triple over +272.
+    pub fn set_filtering(&mut self, min_filter: u32, mag_filter: u32, mip_filter: u32) {
+        // IDA 0xe4d17c: STRD triple; IDA 0xe4d182: mIsDefaultFiltering = false.
+        self.min_filter = min_filter;
+        self.mag_filter = mag_filter;
+        self.mip_filter = mip_filter;
+        self.is_default_filtering = false;
+    }
+
+    /// IDA `0xe4d188`: `getTextureFiltering(type)` — 2 = mip, 1 = mag, else min.
+    /// With the default latch set the original consults `MaterialManager::getSingleton()`
+    /// (`0xe4d1a2`/`0xe4d1c0`/`0xe4d1da`); no manager exists here, so the stored
+    /// value is returned.
+    /// // BUG: default-latch path at 0xe4d194/0xe4d1b2/0xe4d1d2 should return the
+    /// // manager default, not the stored triple.
+    pub fn filtering(&self, filter_type: u32) -> u32 {
+        if filter_type == filter_type::MIP {
+            self.mip_filter
+        } else if filter_type == filter_type::MAG {
+            self.mag_filter
+        } else {
+            self.min_filter
+        }
+    }
+
+    /// IDA `0xe4d1f0`: store anisotropy over +284, clear the default latch (+292).
+    pub fn set_anisotropy(&mut self, value: u32) {
+        // IDA 0xe4d1f2: STR; IDA 0xe4d1f6: mIsDefaultAnisotropy = false.
+        self.texture_anisotropy = value;
+        self.is_default_anisotropy = false;
+    }
+
+    /// IDA `0xe4d1fc`: stored value at +284 (`this[71]`), or the manager default
+    /// while the latch is set (`0xe4d20e`).
+    /// // BUG: default-latch path at 0xe4d20e should return
+    /// // `MaterialManager::getDefaultAnisotropy()`; the stored value is returned.
+    pub fn anisotropy(&self) -> u32 {
+        self.texture_anisotropy
+    }
+
+    /// IDA `0xe4d218`: `_unprepare` releases every `TexturePtr` in `mTextures` (+328).
+    pub fn unprepare(&mut self) {
+        // IDA 0xe4d226..0xe4d244: walk begin..end stepping 16 bytes (one
+        // SharedPtr each), release both words; empty slots are skipped.
+        for slot in self.textures.iter_mut() {
+            slot.loaded = false;
+            slot.prepared = false;
+        }
+    }
+
+    /// IDA `0xe4d2d4`: `setProjectiveTexturing(enabled, frustum)`.
+    /// Disabled removes the `ET_PROJECTIVE_TEXTURE` effect (`0xe4d2f0`);
+    /// enabled installs `{type 1, frustum}` via `addEffect` (`0xe4d2e0`..`0xe4d2ec`).
+    pub fn set_projective_texturing(&mut self, enabled: bool, frustum: Option<u32>) {
+        if enabled {
+            self.add_effect(TextureEffect {
+                effect_type: effect_type::PROJECTIVE_TEXTURE,
+                frustum,
+                ..TextureEffect::default()
+            });
+        } else {
+            self.remove_effect(effect_type::PROJECTIVE_TEXTURE);
+        }
+    }
+
+    /// Single-frame install shared by the `setTextureName` call sites
+    /// (IDA `0xe4d3a4`, `0xe4d39a` animated path excluded); the full
+    /// `0xe492bc` body lives in `generated_507`.
+    pub fn set_texture_name(&mut self, name: &str, texture_type: u32) {
+        self.content_type = ContentType::Named as u32;
+        self.load_failed = false;
+        self.frames.resize(1, String::new());
+        self.textures.resize(1, TextureSlot::default());
+        self.frames[0] = name.to_owned();
+        self.textures[0] = TextureSlot::default();
+        self.anim_duration = 0.0;
+        self.current_frame = 0;
+        self.flag_08 = 1;
+        self.texture_type = texture_type;
+        self.parent_dirty = true;
+    }
+
+    /// IDA `0xe4d2f8`: `mName = name` (+340); a blank alias adopts the name (+344).
+    pub fn set_name(&mut self, name: &str) {
+        // IDA 0xe4d2fc..0xe4d304: assign mName.
+        self.name = name.to_owned();
+        // IDA 0xe4d30c..0xe4d31c: *(mTextureNameAlias - 12) == 0 (blank alias)
+        // → mTextureNameAlias = mName.
+        if self.texture_name_alias.is_empty() {
+            self.texture_name_alias = self.name.clone();
+        }
+    }
+
+    /// IDA `0xe4d324`: `mTextureNameAlias = alias` (+344).
+    pub fn set_texture_name_alias(&mut self, alias: &str) {
+        // IDA 0xe4d330: string assign.
+        self.texture_name_alias = alias.to_owned();
+    }
+
+    /// IDA `0xe4d334`: `applyTextureAliases(aliasList, apply)` — resolve
+    /// `mTextureNameAlias` through the map and reinstall the target name.
+    pub fn apply_texture_aliases(
+        &mut self,
+        aliases: &HashMap<String, String>,
+        apply: bool,
+    ) -> bool {
+        // IDA 0xe4d340..0xe4d34c: blank alias → not found → false.
+        if self.texture_name_alias.is_empty() {
+            return false;
+        }
+        // IDA 0xe4d354..0xe4d364: map::find; miss (== end) → false.
+        let Some(target) = aliases.get(&self.texture_name_alias).cloned() else {
+            return false;
+        };
+        // IDA 0xe4d366..0xe4d36a: !apply → true with no change.
+        if !apply {
+            return true;
+        }
+        // IDA 0xe4d36c..0xe4d36e: +8 flag selects the cubic path.
+        if self.flag_08 != 0 {
+            // IDA 0xe4d370..0xe4d380: setCubicTextureName(target, forUVW = (type == 4)).
+            let for_uvw = self.texture_type == TEXTURE_TYPE_3D;
+            let names: Vec<String> = if for_uvw {
+                std::vec![target]
+            } else {
+                Self::cubic_face_names(&target).to_vec()
+            };
+            self.set_cubic_texture_name(&names, for_uvw);
+        } else if (self.frames.len() as u32) < 2 {
+            // IDA 0xe4d386..0xe4d3a4: fewer than 2 frames → setTextureName(target, type).
+            let texture_type = self.texture_type;
+            self.set_texture_name(&target, texture_type);
+        } else {
+            // IDA 0xe4d38e..0xe4d39a: setAnimatedTextureName(target, count, duration).
+            let num_frames = self.frames.len() as u32;
+            let duration = self.anim_duration;
+            let names = Self::animated_frame_names(&target, num_frames);
+            self.set_animated_texture_names(&names, num_frames, duration);
+        }
+        // IDA 0xe4d3a8: testResult = true.
+        true
+    }
+
+    /// IDA `0xe4d3b4`: `mParent = pass` (+384).
+    pub fn notify_parent(&mut self, parent: Option<u32>) {
+        self.parent = parent;
+    }
+
+    /// IDA `0xe4d3bc`: store the compositor reference triple (+376/+380/+304).
+    pub fn set_compositor_reference(&mut self, compositor: &str, texture: &str, mrt_index: u32) {
+        // IDA 0xe4d3ca: assign +376; IDA 0xe4d3d4: assign +380; IDA 0xe4d3d8: store +304.
+        self.compositor_name = compositor.to_owned();
+        self.compositor_texture = texture.to_owned();
+        self.compositor_mrt_index = mrt_index;
+    }
 }
 
 // 0xe49a3c — __ZN4Ogre16TextureUnitState7_unloadEv
@@ -1411,8 +1697,9 @@ pub fn stub_0xe4c390(state: &mut TextureUnitState) {
 #[doc(alias = "Ogre::TextureUnitState::ensurePrepared(unsigned long)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState14ensurePreparedEm")]
 // was: Ogre::TextureUnitState::ensurePrepared(unsigned long)const
-// IDA 0xe4c3bc: 609 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4c3bc() {
+// IDA 0xe4c3bc: load path mirrors `ensureLoaded` (TextureManager fetch at `0xe4cafc`); latch model in `ensure_prepared`.
+pub fn stub_0xe4c3bc(state: &mut TextureUnitState, index: u32) {
+    state.ensure_prepared(index)
 }
 
 // 0xe4ca5c — __ZNK4Ogre16TextureUnitState12ensureLoadedEm
@@ -1420,8 +1707,9 @@ pub fn stub_0xe4c3bc() {
 #[doc(alias = "Ogre::TextureUnitState::ensureLoaded(unsigned long)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState12ensureLoadedEm")]
 // was: Ogre::TextureUnitState::ensureLoaded(unsigned long)const
-// IDA 0xe4ca5c: 609 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4ca5c() {
+// IDA 0xe4ca5c: miss with a live parent loads via TextureManager (`0xe4cafc`..`0xe4cb70`); latch model in `ensure_loaded`.
+pub fn stub_0xe4ca5c(state: &mut TextureUnitState, index: u32) {
+    state.ensure_loaded(index)
 }
 
 // 0xe4d0fc — __ZNK4Ogre16TextureUnitState14_getTexturePtrEv
@@ -1429,8 +1717,9 @@ pub fn stub_0xe4ca5c() {
 #[doc(alias = "Ogre::TextureUnitState::_getTexturePtr(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState14_getTexturePtrEv")]
 // was: Ogre::TextureUnitState::_getTexturePtr(void)const
-// IDA 0xe4d0fc: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4d0fc() {
+// IDA 0xe4d0fc: `_getTexturePtr()` forwards to `_getTexturePtr(mCurrentFrame)` (see `texture_ptr_current`).
+pub fn stub_0xe4d0fc(state: &mut TextureUnitState) -> Option<&TextureSlot> {
+    state.texture_ptr_current()
 }
 
 // 0xe4d108 — __ZN4Ogre16TextureUnitState14_setTexturePtrERKNS_10TexturePtrE
@@ -1438,8 +1727,9 @@ pub fn stub_0xe4d0fc() {
 #[doc(alias = "Ogre::TextureUnitState::_setTexturePtr(Ogre::TexturePtr const&)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState14_setTexturePtrERKNS_10TexturePtrE")]
 // was: Ogre::TextureUnitState::_setTexturePtr(Ogre::TexturePtr const&)
-// IDA 0xe4d108: 7 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4d108() {
+// IDA 0xe4d108: `mTextures[mCurrentFrame] = texPtr` (see `set_texture_ptr`).
+pub fn stub_0xe4d108(state: &mut TextureUnitState) {
+    state.set_texture_ptr()
 }
 
 // 0xe4d11c — __ZNK4Ogre16TextureUnitState10getEffectsEv
@@ -1447,32 +1737,36 @@ pub fn stub_0xe4d108() {
 #[doc(alias = "Ogre::TextureUnitState::getEffects(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState10getEffectsEv")]
 // was: Ogre::TextureUnitState::getEffects(void)const
-// IDA 0xe4d11c: 2 insns (ADD.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4d11c() {
+// IDA 0xe4d11c: `return this + 348` = `&mEffects` (see `effects_map`).
+pub fn stub_0xe4d11c(state: &TextureUnitState) -> &[TextureEffect] {
+    state.effects_map()
 }
 
 // 0xe4d124 — __ZN4Ogre16TextureUnitState19setTextureFilteringENS_20TextureFilterOptionsE
 #[doc(alias = "Ogre::TextureUnitState::setTextureFiltering(Ogre::TextureFilterOptions)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState19setTextureFilteringENS_20TextureFilterOptionsE")]
 // was: Ogre::TextureUnitState::setTextureFiltering(Ogre::TextureFilterOptions)
-// IDA 0xe4d124: 28 insns (CMP..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4d124() {
+// IDA 0xe4d124: preset switch over `0xe4d128` (see `set_filtering_preset`).
+pub fn stub_0xe4d124(state: &mut TextureUnitState, preset: u32) {
+    state.set_filtering_preset(preset)
 }
 
 // 0xe4d178 — __ZN4Ogre16TextureUnitState19setTextureFilteringENS_13FilterOptionsES1_S1_
 #[doc(alias = "Ogre::TextureUnitState::setTextureFiltering(Ogre::FilterOptions,Ogre::FilterOptions,Ogre::FilterOptions)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState19setTextureFilteringENS_13FilterOptionsES1_S1_")]
 // was: Ogre::TextureUnitState::setTextureFiltering(Ogre::FilterOptions,Ogre::FilterOptions,Ogre::FilterOptions)
-// IDA 0xe4d178: 5 insns (ADD.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4d178() {
+// IDA 0xe4d178: `STRD` triple over +272, latch clear (see `set_filtering`).
+pub fn stub_0xe4d178(state: &mut TextureUnitState, min_filter: u32, mag_filter: u32, mip_filter: u32) {
+    state.set_filtering(min_filter, mag_filter, mip_filter)
 }
 
 // 0xe4d188 — __ZNK4Ogre16TextureUnitState19getTextureFilteringENS_10FilterTypeE
 #[doc(alias = "Ogre::TextureUnitState::getTextureFiltering(Ogre::FilterType)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState19getTextureFilteringENS_10FilterTypeE")]
 // was: Ogre::TextureUnitState::getTextureFiltering(Ogre::FilterType)const
-// IDA 0xe4d188: 40 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4d188() {
+// IDA 0xe4d188: axis select 2 = mip / 1 = mag / else min (see `filtering`).
+pub fn stub_0xe4d188(state: &TextureUnitState, filter_type: u32) -> u32 {
+    state.filtering(filter_type)
 }
 
 // 0xe4d1f0 — __ZN4Ogre16TextureUnitState20setTextureAnisotropyEj
@@ -1480,8 +1774,9 @@ pub fn stub_0xe4d188() {
 #[doc(alias = "Ogre::TextureUnitState::setTextureAnisotropy(unsigned int)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState20setTextureAnisotropyEj")]
 // was: Ogre::TextureUnitState::setTextureAnisotropy(unsigned int)
-// IDA 0xe4d1f0: 4 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4d1f0() {
+// IDA 0xe4d1f0: `STR` over +284, default latch clear (see `set_anisotropy`).
+pub fn stub_0xe4d1f0(state: &mut TextureUnitState, value: u32) {
+    state.set_anisotropy(value)
 }
 
 // 0xe4d1fc — __ZNK4Ogre16TextureUnitState20getTextureAnisotropyEv
@@ -1489,8 +1784,9 @@ pub fn stub_0xe4d1f0() {
 #[doc(alias = "Ogre::TextureUnitState::getTextureAnisotropy(void)const")]
 #[doc(alias = "__ZNK4Ogre16TextureUnitState20getTextureAnisotropyEv")]
 // was: Ogre::TextureUnitState::getTextureAnisotropy(void)const
-// IDA 0xe4d1fc: 10 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4d1fc() {
+// IDA 0xe4d1fc: stored +284 vs manager default on the latch (see `anisotropy`).
+pub fn stub_0xe4d1fc(state: &TextureUnitState) -> u32 {
+    state.anisotropy()
 }
 
 // 0xe4d218 — __ZN4Ogre16TextureUnitState10_unprepareEv
@@ -1498,8 +1794,9 @@ pub fn stub_0xe4d1fc() {
 #[doc(alias = "Ogre::TextureUnitState::_unprepare(void)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState10_unprepareEv")]
 // was: Ogre::TextureUnitState::_unprepare(void)
-// IDA 0xe4d218: 25 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4d218() {
+// IDA 0xe4d218: release every `TexturePtr` in `mTextures` (see `unprepare`).
+pub fn stub_0xe4d218(state: &mut TextureUnitState) {
+    state.unprepare()
 }
 
 // 0xe4d2d4 — __ZN4Ogre16TextureUnitState22setProjectiveTexturingEbPKNS_7FrustumE
@@ -1507,8 +1804,9 @@ pub fn stub_0xe4d218() {
 #[doc(alias = "Ogre::TextureUnitState::setProjectiveTexturing(bool,Ogre::Frustum const*)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState22setProjectiveTexturingEbPKNS_7FrustumE")]
 // was: Ogre::TextureUnitState::setProjectiveTexturing(bool,Ogre::Frustum const*)
-// IDA 0xe4d2d4: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4d2d4() {
+// IDA 0xe4d2d4: enabled installs `{type 1, frustum}`, else `removeEffect(1)` (see `set_projective_texturing`).
+pub fn stub_0xe4d2d4(state: &mut TextureUnitState, enabled: bool, frustum: Option<u32>) {
+    state.set_projective_texturing(enabled, frustum)
 }
 
 // 0xe4d2f8 — __ZN4Ogre16TextureUnitState7setNameERKSs
@@ -1516,8 +1814,9 @@ pub fn stub_0xe4d2d4() {
 #[doc(alias = "Ogre::TextureUnitState::setName(std::string const&)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState7setNameERKSs")]
 // was: Ogre::TextureUnitState::setName(std::string const&)
-// IDA 0xe4d2f8: 15 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4d2f8() {
+// IDA 0xe4d2f8: `mName = name`, blank alias adopts it (see `set_name`).
+pub fn stub_0xe4d2f8(state: &mut TextureUnitState, name: &str) {
+    state.set_name(name)
 }
 
 // 0xe4d324 — __ZN4Ogre16TextureUnitState19setTextureNameAliasERKSs
@@ -1525,16 +1824,22 @@ pub fn stub_0xe4d2f8() {
 #[doc(alias = "Ogre::TextureUnitState::setTextureNameAlias(std::string const&)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState19setTextureNameAliasERKSs")]
 // was: Ogre::TextureUnitState::setTextureNameAlias(std::string const&)
-// IDA 0xe4d324: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4d324() {
+// IDA 0xe4d324: `mTextureNameAlias = alias` (see `set_texture_name_alias`).
+pub fn stub_0xe4d324(state: &mut TextureUnitState, alias: &str) {
+    state.set_texture_name_alias(alias)
 }
 
 // 0xe4d334 — __ZN4Ogre16TextureUnitState19applyTextureAliasesERKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIKSsSsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEb
 #[doc(alias = "Ogre::TextureUnitState::applyTextureAliases(std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&,bool)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState19applyTextureAliasesERKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIKSsSsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEb")]
 // was: Ogre::TextureUnitState::applyTextureAliases(std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&,bool)
-// IDA 0xe4d334: 49 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4d334() {
+// IDA 0xe4d334: alias-map resolve over +344 with cubic/animated/single reinstall (see `apply_texture_aliases`).
+pub fn stub_0xe4d334(
+    state: &mut TextureUnitState,
+    aliases: &HashMap<String, String>,
+    apply: bool,
+) -> bool {
+    state.apply_texture_aliases(aliases, apply)
 }
 
 // 0xe4d3b4 — __ZN4Ogre16TextureUnitState13_notifyParentEPNS_4PassE
@@ -1542,8 +1847,9 @@ pub fn stub_0xe4d334() {
 #[doc(alias = "Ogre::TextureUnitState::_notifyParent(Ogre::Pass *)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState13_notifyParentEPNS_4PassE")]
 // was: Ogre::TextureUnitState::_notifyParent(Ogre::Pass *)
-// IDA 0xe4d3b4: 2 insns (STR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4d3b4() {
+// IDA 0xe4d3b4: `mParent = pass` over +384 (see `notify_parent`).
+pub fn stub_0xe4d3b4(state: &mut TextureUnitState, parent: Option<u32>) {
+    state.notify_parent(parent)
 }
 
 // 0xe4d3bc — __ZN4Ogre16TextureUnitState22setCompositorReferenceERKSsS2_m
@@ -1551,8 +1857,9 @@ pub fn stub_0xe4d3b4() {
 #[doc(alias = "Ogre::TextureUnitState::setCompositorReference(std::string const&,std::string const&,unsigned long)")]
 #[doc(alias = "__ZN4Ogre16TextureUnitState22setCompositorReferenceERKSsS2_m")]
 // was: Ogre::TextureUnitState::setCompositorReference(std::string const&,std::string const&,unsigned long)
-// IDA 0xe4d3bc: 12 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xe4d3bc() {
+// IDA 0xe4d3bc: compositor reference triple over +376/+380/+304 (see `set_compositor_reference`).
+pub fn stub_0xe4d3bc(state: &mut TextureUnitState, compositor: &str, texture: &str, mrt_index: u32) {
+    state.set_compositor_reference(compositor, texture, mrt_index)
 }
 
 // 0xe4d3e0 — __ZNSt6vectorIN4Ogre10TexturePtrENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEaSERKS7_
@@ -2055,5 +2362,156 @@ mod texture_unit_state_tests {
         stub_0xe4acb8(&mut state, "flame.tga", 2, 0.0);
         stub_0xe4c390(&mut state);
         assert!(state.textures.iter().all(|s| s.prepared));
+    }
+
+    #[test]
+    fn filtering_preset_expands_per_ida_switch() {
+        let mut state = TextureUnitState::default();
+        assert!(state.is_default_filtering);
+        stub_0xe4d124(&mut state, texture_filter_options::NONE);
+        assert_eq!(
+            (state.min_filter, state.mag_filter, state.mip_filter),
+            (filter_option::POINT, filter_option::POINT, filter_option::NONE)
+        );
+        assert!(!state.is_default_filtering);
+        stub_0xe4d124(&mut state, texture_filter_options::BILINEAR);
+        assert_eq!(
+            (state.min_filter, state.mag_filter, state.mip_filter),
+            (filter_option::LINEAR, filter_option::LINEAR, filter_option::POINT)
+        );
+        stub_0xe4d124(&mut state, texture_filter_options::TRILINEAR);
+        assert_eq!(state.mip_filter, filter_option::LINEAR);
+        stub_0xe4d124(&mut state, texture_filter_options::ANISOTROPIC);
+        assert_eq!(
+            (state.min_filter, state.mag_filter, state.mip_filter),
+            (
+                filter_option::ANISOTROPIC,
+                filter_option::ANISOTROPIC,
+                filter_option::LINEAR
+            )
+        );
+        // Unknown preset: triple kept, latch still cleared (IDA 0xe4d16a default arm).
+        stub_0xe4d124(&mut state, 99);
+        assert_eq!(state.min_filter, filter_option::ANISOTROPIC);
+        assert!(!state.is_default_filtering);
+    }
+
+    #[test]
+    fn explicit_triple_and_axis_select() {
+        let mut state = TextureUnitState::default();
+        stub_0xe4d178(
+            &mut state,
+            filter_option::POINT,
+            filter_option::LINEAR,
+            filter_option::NONE,
+        );
+        assert!(!state.is_default_filtering);
+        assert_eq!(stub_0xe4d188(&state, filter_type::MIN), filter_option::POINT);
+        assert_eq!(stub_0xe4d188(&state, filter_type::MAG), filter_option::LINEAR);
+        assert_eq!(stub_0xe4d188(&state, filter_type::MIP), filter_option::NONE);
+        // Any other selector reads min (IDA 0xe4d1d2 else arm).
+        assert_eq!(stub_0xe4d188(&state, 7), filter_option::POINT);
+    }
+
+    #[test]
+    fn anisotropy_store_clears_default_latch() {
+        let mut state = TextureUnitState::default();
+        assert!(state.is_default_anisotropy);
+        stub_0xe4d1f0(&mut state, 8);
+        assert!(!state.is_default_anisotropy);
+        assert_eq!(stub_0xe4d1fc(&state), 8);
+    }
+
+    #[test]
+    fn texture_ptr_round_trip_and_unprepare() {
+        let mut state = TextureUnitState::default();
+        stub_0xe4acb8(&mut state, "flame.tga", 2, 0.0);
+        stub_0xe4d108(&mut state);
+        assert!(stub_0xe4d0fc(&mut state).is_some());
+        assert!(stub_0xe4d0fc(&mut state).unwrap().loaded);
+        stub_0xe4b98c(&mut state, 1);
+        stub_0xe4d108(&mut state);
+        assert_eq!(stub_0xe4d11c(&state).len(), 0);
+        stub_0xe4d218(&mut state);
+        assert!(state.textures.iter().all(|s| !s.loaded && !s.prepared));
+        // Named-frame lookup lazy-loads again after release (IDA 0xe4b912..0xe4b988).
+        assert!(stub_0xe4d0fc(&mut state).unwrap().loaded);
+    }
+
+    #[test]
+    fn projective_texturing_installs_and_removes() {
+        let mut state = TextureUnitState::default();
+        stub_0xe4d2d4(&mut state, true, Some(42));
+        assert_eq!(state.effects.len(), 1);
+        assert_eq!(
+            state.effects[0].effect_type,
+            effect_type::PROJECTIVE_TEXTURE
+        );
+        assert_eq!(state.effects[0].frustum, Some(42));
+        // Re-enable replaces the entry (type 1 <= ROTATE, IDA 0xe4bc40).
+        stub_0xe4d2d4(&mut state, true, None);
+        assert_eq!(state.effects.len(), 1);
+        assert_eq!(state.effects[0].frustum, None);
+        stub_0xe4d2d4(&mut state, false, None);
+        assert!(stub_0xe4d11c(&state).is_empty());
+    }
+
+    #[test]
+    fn name_adopts_into_blank_alias_only() {
+        let mut state = TextureUnitState::default();
+        stub_0xe4d2f8(&mut state, "brick.png");
+        assert_eq!(state.name, "brick.png");
+        assert_eq!(state.texture_name_alias, "brick.png");
+        stub_0xe4d324(&mut state, "alias_a");
+        stub_0xe4d2f8(&mut state, "other.png");
+        assert_eq!(state.texture_name_alias, "alias_a");
+    }
+
+    #[test]
+    fn alias_apply_branches_match_ida() {
+        use std::collections::HashMap;
+        let mut aliases = HashMap::new();
+        aliases.insert("alias_a".to_owned(), "brick.png".to_owned());
+        // Blank alias → false (IDA 0xe4d34c).
+        let mut state = TextureUnitState::default();
+        assert!(!stub_0xe4d334(&mut state, &aliases, true));
+        // Miss → false (IDA 0xe4d364).
+        stub_0xe4d324(&mut state, "missing");
+        assert!(!stub_0xe4d334(&mut state, &aliases, true));
+        // Hit with apply=false → true, no change (IDA 0xe4d36a).
+        stub_0xe4d324(&mut state, "alias_a");
+        assert!(stub_0xe4d334(&mut state, &aliases, false));
+        assert!(state.frames.is_empty());
+        // Single-frame path installs the target (IDA 0xe4d3a4).
+        assert!(stub_0xe4d334(&mut state, &aliases, true));
+        assert_eq!(state.frames, std::vec!["brick.png".to_owned()]);
+        // Cubic path fans out six faces (IDA 0xe4d380).
+        state.flag_08 = 1;
+        assert!(stub_0xe4d334(&mut state, &aliases, true));
+        assert_eq!(state.frames.len(), 6);
+        assert_eq!(state.frames[0], "brick_fr.png");
+        // Animated path rebuilds numbered frames (IDA 0xe4d39a).
+        state.flag_08 = 0;
+        stub_0xe4acb8(&mut state, "flame.tga", 2, 1.5);
+        stub_0xe4d324(&mut state, "alias_a");
+        assert!(stub_0xe4d334(&mut state, &aliases, true));
+        assert_eq!(
+            state.frames,
+            std::vec!["brick_0.png".to_owned(), "brick_1.png".to_owned()]
+        );
+        assert_eq!(state.anim_duration, 1.5);
+    }
+
+    #[test]
+    fn notify_parent_and_compositor_reference() {
+        let mut state = TextureUnitState::default();
+        stub_0xe4d3b4(&mut state, Some(7));
+        assert_eq!(state.parent, Some(7));
+        stub_0xe4d3b4(&mut state, None);
+        assert_eq!(state.parent, None);
+        stub_0xe4d3bc(&mut state, "comp", "tex", 2);
+        assert_eq!(state.compositor_name, "comp");
+        assert_eq!(state.compositor_texture, "tex");
+        assert_eq!(state.compositor_mrt_index, 2);
     }
 }
