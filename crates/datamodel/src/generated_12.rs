@@ -16,8 +16,8 @@ use crate::data_model::{
 use crate::generated_05::{FunctorOp, Instance, SaveFilter};
 use crate::generated_296::OverlayDataModel;
 use crate::instance::{
-    Camera, CRenderSettingsItem, ControllerService, LoginService, ObjcInstanceBind,
-    Players, RunService, TaskSchedulerSettings,
+    Camera, CRenderSettingsItem, ControllerService, HttpService, Light, LoginService,
+    ObjcInstanceBind, Players, RunService, SpotLight, TaskSchedulerSettings,
 };
 use rbx_core::WeakPtr;
 use rbx_core::shared_ptr::{ControlBlockPd, CreatableInstanceDeleter};
@@ -847,93 +847,124 @@ pub fn stub_4bfcc(bind: &ObjcDataModelBind, dm: *mut DataModel) {
 // 0x258688 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_11HttpServiceEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::HttpService> RBX::Creatable<RBX::Instance>::create<RBX::HttpService>(void)")]
 // was: boost::shared_ptr<RBX::HttpService> RBX::Creatable<RBX::Instance>::create<RBX::HttpService>(void)
-pub fn stub_258688() -> ! {
-    todo!("0x258688 rbx_core::SharedPtr<RBX::HttpService> RBX::Creatable<RBX::Instance>::create<RBX::HttpService>(void)")
+pub fn stub_258688() -> SharedPtr<HttpService> {
+    // IDA 0x258688: default-construct + single-owner adoption. Canonical body
+    // lives at `crate::instance::stub_0x258688` (same bytes); delegate so the
+    // two shards cannot drift.
+    crate::instance::stub_0x258688()
 }
-
 // 0x258738 — __ZN5boost10shared_ptrIN3RBX11HttpServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::HttpService>::shared_ptr<RBX::HttpService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::HttpService>::shared_ptr<RBX::HttpService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_258738() -> ! {
-    todo!("0x258738 rbx_core::SharedPtr<RBX::HttpService>::shared_ptr<RBX::HttpService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_258738(ptr: *mut HttpService, deleter: CreatableInstanceDeleter) -> SharedPtr<HttpService> {
+    // IDA 0x258738: store px + `shared_count` ctor + null-px `accept_owner`
+    // skip. See `crate::instance::stub_0x258738`.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    crate::instance::stub_0x258738(ptr, deleter)
 }
-
 // 0x2588e8 — __ZN5boost6detail12shared_countC2IPN3RBX11HttpServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_2588e8() -> ! {
-    todo!("0x2588e8 boost::detail::shared_count::shared_count<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_2588e8(ptr: *mut HttpService, deleter: CreatableInstanceDeleter) -> ControlBlockPd<HttpService, CreatableInstanceDeleter> {
+    // IDA 0x2588e8: `new sp_counted_impl_pd` with use/weak counts at 1.
+    // See `crate::instance::stub_0x2588e8`.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    crate::instance::stub_0x2588e8(ptr, deleter)
 }
-
 // 0x2589f0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_2589f0() -> ! {
-    todo!("0x2589f0 boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_2589f0(block: *mut ControlBlockPd<HttpService, CreatableInstanceDeleter>) {
+    // IDA 0x2589f0: `BX LR` — empty. See `crate::instance::stub_0x2589f0`.
+    crate::instance::stub_0x2589f0(block)
 }
-
 // 0x2589f4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_2589f4() -> ! {
-    todo!("0x2589f4 boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_2589f4(block: *mut ControlBlockPd<HttpService, CreatableInstanceDeleter>) {
+    // IDA 0x2589f4: D0 storage release only. See `crate::instance::stub_0x2589f4`.
+    // SAFETY: `block` must be a live box pointer never used again.
+    crate::instance::stub_0x2589f4(block)
 }
-
 // 0x2589f8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_2589f8() -> ! {
-    todo!("0x2589f8 boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_2589f8(block: *mut ControlBlockPd<HttpService, CreatableInstanceDeleter>) {
+    // IDA 0x2589f8: `predelete` + null-px early-out + deleter delete.
+    // See `crate::instance::stub_0x2589f8`.
+    // SAFETY: `block` must point to a valid block.
+    crate::instance::stub_0x2589f8(block)
 }
-
 // 0x258a18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_258a18() -> ! {
-    todo!("0x258a18 boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_258a18(block: *const ControlBlockPd<HttpService, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x258a18: deleter-name `strcmp`, `this + 0x10` on hit.
+    // See `crate::instance::stub_0x258a18`.
+    // SAFETY: `block` must point to a valid block.
+    crate::instance::stub_0x258a18(block, type_name)
 }
-
 // 0x258a30 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_258a30() -> ! {
-    todo!("0x258a30 boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_258a30(block: *const ControlBlockPd<HttpService, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x258a30: unconditional `this + 0x10`.
+    // See `crate::instance::stub_0x258a30`.
+    // SAFETY: `block` must point to a valid block.
+    crate::instance::stub_0x258a30(block)
 }
 
 // 0x25bc38 — __ZNK3RBX5Light12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::Light::askSetParent(RBX::Instance const*)const")]
-pub fn stub_25bc38() -> ! {
-    todo!("0x25bc38 RBX::Light::askSetParent(RBX::Instance const*)const")
+pub fn stub_25bc38(this: *const Light, parent: *const Instance) -> bool {
+    // IDA 0x25bc38: null parent returns `0`; else the parent must be a
+    // `PartInstance` (`isA` check). Canonical body lives at
+    // `crate::instance::stub_0x25bc38`; delegate so the two shards cannot drift.
+    // SAFETY: `parent` must be null or point to a valid `Instance`.
+    crate::instance::stub_0x25bc38(this, parent)
 }
 
 // 0x25bc60 — __ZNK3RBX5Light11askAddChildEPKNS_8InstanceE
 #[doc(alias = "RBX::Light::askAddChild(RBX::Instance const*)const")]
-pub fn stub_25bc60() -> ! {
-    todo!("0x25bc60 RBX::Light::askAddChild(RBX::Instance const*)const")
+pub fn stub_25bc60(this: *const Light, child: *const Instance) -> bool {
+    // IDA 0x25bc60: `MOVS R0,#1` — a `Light` accepts any child.
+    // See `crate::instance::stub_0x25bc60`.
+    crate::instance::stub_0x25bc60(this, child)
 }
 
 // 0x25c4d0 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9SpotLightEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::SpotLight> RBX::Creatable<RBX::Instance>::create<RBX::SpotLight>(void)")]
 // was: boost::shared_ptr<RBX::SpotLight> RBX::Creatable<RBX::Instance>::create<RBX::SpotLight>(void)
-pub fn stub_25c4d0() -> ! {
-    todo!("0x25c4d0 rbx_core::SharedPtr<RBX::SpotLight> RBX::Creatable<RBX::Instance>::create<RBX::SpotLight>(void)")
+pub fn stub_25c4d0() -> SharedPtr<SpotLight> {
+    // IDA 0x25c4d0: default-construct + single-owner adoption. Canonical body
+    // lives at `crate::instance::stub_0x25c4d0` (same bytes); delegate so the
+    // two shards cannot drift.
+    crate::instance::stub_0x25c4d0()
 }
 
 // 0x25c580 — __ZN5boost10shared_ptrIN3RBX9SpotLightEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::SpotLight>::shared_ptr<RBX::SpotLight,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter)")]
-// was: boost::shared_ptr<RBX::SpotLight>::shared_ptr<RBX::SpotLight,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_25c580() -> ! {
-    todo!("0x25c580 rbx_core::SharedPtr<RBX::SpotLight>::shared_ptr<RBX::SpotLight,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_25c580(ptr: *mut SpotLight, deleter: CreatableInstanceDeleter) -> SharedPtr<SpotLight> {
+    // IDA 0x25c580: store px + `shared_count` ctor + null-px `accept_owner`
+    // skip. See `crate::instance::stub_0x25c580`.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    crate::instance::stub_0x25c580(ptr, deleter)
 }
 
 // 0x25c730 — __ZN5boost6detail12shared_countC2IPN3RBX9SpotLightENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_25c730() -> ! {
-    todo!("0x25c730 boost::detail::shared_count::shared_count<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_25c730(ptr: *mut SpotLight, deleter: CreatableInstanceDeleter) -> ControlBlockPd<SpotLight, CreatableInstanceDeleter> {
+    // IDA 0x25c730: `new sp_counted_impl_pd` with use/weak counts at 1.
+    // See `crate::instance::stub_0x25c730`.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    crate::instance::stub_0x25c730(ptr, deleter)
 }
 
 // 0x25c838 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SpotLightENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_25c838() -> ! {
-    todo!("0x25c838 boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_25c838(block: *mut ControlBlockPd<SpotLight, CreatableInstanceDeleter>) {
+    // IDA 0x25c838: `BX LR` — empty. See `crate::instance::stub_0x25c838`.
+    crate::instance::stub_0x25c838(block)
 }
 
 // 0x25c83c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SpotLightENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_25c83c() -> ! {
-    todo!("0x25c83c boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_25c83c(block: *mut ControlBlockPd<SpotLight, CreatableInstanceDeleter>) {
+    // IDA 0x25c83c: D0 storage release only. See `crate::instance::stub_0x25c83c`.
+    // SAFETY: `block` must be a live box pointer never used again.
+    crate::instance::stub_0x25c83c(block)
 }
