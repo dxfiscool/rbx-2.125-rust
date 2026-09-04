@@ -654,23 +654,17 @@ pub fn stub_f5d864() -> ! {
 // 0xf5d874 — j___ZNK3RBX14FactoryProductINS_14RemoteFunctionENS_8InstanceELZNS_15sRemoteFunctionEES2_E7Creator12getClassNameEv
 // type: int(void)
 #[doc(alias = "j___ZNK3RBX14FactoryProductINS_14RemoteFunctionENS_8InstanceELZNS_15sRemoteFunctionEES2_E7Creator12getClassNameEv")]
-pub fn stub_f5d874() -> ! {
-    todo!("0xf5d874 j___ZNK3RBX14FactoryProductINS_14RemoteFunctionENS_8InstanceELZNS_15sRemoteFunctionEES2_E7Creator12getClassNameEv")
-}
+pub use crate::generated_datamodel_delta_a::stub_0xf5d874 as stub_f5d874;
 
 // 0xf5ea84 — j___ZN5boost6threadC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModelEEEENS2_5list1INS2_5valueIS7_EEEEEEEET_NS_12disable_if_cIXsr5boost13thread_detail14is_convertibleIRSF_NS_6detail13thread_move_tISF_EEEE5valueEPNS0_5dummyEE4typeE
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "j___ZN5boost6threadC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModelEEEENS2_5list1INS2_5valueIS7_EEEEEEEET_NS_12disable_if_cIXsr5boost13thread_detail14is_convertibleIRSF_NS_6detail13thread_move_tISF_EEEE5valueEPNS0_5dummyEE4typeE")]
-pub fn stub_f5ea84() -> ! {
-    todo!("0xf5ea84 j___ZN5boost6threadC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModelEEEENS2_5list1INS2_5valueIS7_EEEEEEEET_NS_12disable_if_cIXsr5boost13thread_detail14is_convertibleIRSF_NS_6detail13thread_move_tISF_EEEE5valueEPNS0_5dummyEE4typeE")
-}
+pub use crate::generated_296::stub_0xf5ea84 as stub_f5ea84;
 
 // 0xf5ea94 — j___ZN5boost6threadC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEENS2_5list1INS2_5valueIS7_EEEEEEEET_NS_12disable_if_cIXsr5boost13thread_detail14is_convertibleIRSF_NS_6detail13thread_move_tISF_EEEE5valueEPNS0_5dummyEE4typeE
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "j___ZN5boost6threadC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEENS2_5list1INS2_5valueIS7_EEEEEEEET_NS_12disable_if_cIXsr5boost13thread_detail14is_convertibleIRSF_NS_6detail13thread_move_tISF_EEEE5valueEPNS0_5dummyEE4typeE")]
-pub fn stub_f5ea94() -> ! {
-    todo!("0xf5ea94 j___ZN5boost6threadC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEENS2_5list1INS2_5valueIS7_EEEEEEEET_NS_12disable_if_cIXsr5boost13thread_detail14is_convertibleIRSF_NS_6detail13thread_move_tISF_EEEE5valueEPNS0_5dummyEE4typeE")
-}
+pub use crate::generated_296::stub_0xf5ea94 as stub_f5ea94;
 
 // 0xf5ee24 — j___ZN3RBX14FactoryProductINS_15NetworkSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEE7CreatorC2Ev
 // type: int __fastcall(int, int, int, int, int, int, int, int, int)
