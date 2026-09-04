@@ -15,6 +15,7 @@ use std::any::Any;
 use std::collections::BTreeSet;
 use std::collections::BTreeMap;
 use std::collections::HashSet;
+use std::sync::atomic::{AtomicUsize, Ordering};
 
 /// Rust model of `CRenderSettingsItem` (IDA `0xef04`): field layout unmodeled;
 /// lifecycle runs through `Creatable` + `SharedPtr`. Raw pointers into this
@@ -530,6 +531,25 @@ pub struct SetManualJointToStrong {
     pub data_model: *const DataModel,
 }
 
+/// Rust model of `RBX::SetManualJointToInfinite` (IDA `0x3fc608`): the studio
+/// joint-strength command plus the owning data model.
+pub struct SetManualJointToInfinite {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::RotateAxisCommand` (IDA `0x3fcca8`): the studio
+/// rotate-about-axis command with its name plus the owning data model.
+pub struct RotateAxisCommand {
+    pub name: String,
+    pub data_model: *const DataModel,
+}
+
+/// Cached class index behind `doGetClassIndex<FilteredSelection>` (IDA
+/// `0x3ff958`): assigned once from the provider index counter.
+static FILTERED_SELECTION_INDEX: AtomicUsize = AtomicUsize::new(0);
+/// Provider-wide class-index counter behind `ServiceProvider::newIndex`.
+static NEXT_CLASS_INDEX: AtomicUsize = AtomicUsize::new(1);
+
 /// Rust model of `RBX::ChatService::ChatColor` (IDA `0x3eb850`): the bubble
 /// color tag on a chat message; enumerators unmodeled.
 #[derive(Clone, Copy, Default, PartialEq, Eq)]
@@ -1027,11 +1047,16 @@ fn apply_selection_difference(
     }
 }
 
-/// Rust model of `RBX::FilteredSelection<RBX::Instance>` (IDA `0x2f88fc`):
-/// filtered view with its own selected store until the predicate model lands.
+/// Rust model of `RBX::FilteredSelection<RBX::Instance>` (IDA `0x2f88fc`,
+/// `0x3ff598`): filtered view with its own selected store (until the
+/// predicate model lands), the root selection at `+100` (asserted non-null
+/// by `getSelection`), and the filtered raw-instance list at `+108` behind
+/// `onSelectionChanged`.
 #[derive(Default)]
 pub struct FilteredSelection {
     pub selected: Vec<SharedPtr<Instance>>,
+    pub root: Option<SharedPtr<SelectionService>>,
+    pub items: Vec<*const Instance>,
 }
 
 /// Rust model of `RBX::ServiceClient<RBX::FilteredSelection<RBX::Instance>>`
@@ -12219,37 +12244,47 @@ pub fn stub_0x3fc354(data_model: *const DataModel) -> SetManualJointToWeak {
 #[doc(alias = "RBX::SetManualJointToStrong::SetManualJointToStrong(RBX::DataModel *)")]
 // was: RBX::SetManualJointToStrong::SetManualJointToStrong(RBX::DataModel *)
 pub fn stub_0x3fc4ac(data_model: *const DataModel) -> SetManualJointToStrong {
-    // IDA 0x3fc4ac: C1 is `B.W C2` (same shape as 0x3f6054); inlined here
-    // since the C2 EA sorts into the next file run.
-    SetManualJointToStrong { data_model }
+    // IDA 0x3fc4ac: C1 is `B.W C2` (same shape as 0x3f6054) — delegates now
+    // that the C2 has landed.
+    stub_0x3fc4b0(data_model)
 }
 
 // 0x3fc4b0 — __ZN3RBX22SetManualJointToStrongC2EPNS_9DataModelE
 #[doc(alias = "RBX::SetManualJointToStrong::SetManualJointToStrong(RBX::DataModel *)")]
 // was: RBX::SetManualJointToStrong::SetManualJointToStrong(RBX::DataModel *)
-pub fn stub_0x3fc4b0() -> ! {
-    todo!("0x3fc4b0 RBX::SetManualJointToStrong::SetManualJointToStrong(RBX::DataModel *)")
+pub fn stub_0x3fc4b0(data_model: *const DataModel) -> SetManualJointToStrong {
+    // IDA 0x3fc4b0: `SetManualJointToStrong::C2(DataModel*)` — links the
+    // model.
+    SetManualJointToStrong { data_model }
 }
 
 // 0x3fc608 — __ZN3RBX24SetManualJointToInfiniteC1EPNS_9DataModelE
 #[doc(alias = "RBX::SetManualJointToInfinite::SetManualJointToInfinite(RBX::DataModel *)")]
 // was: RBX::SetManualJointToInfinite::SetManualJointToInfinite(RBX::DataModel *)
-pub fn stub_0x3fc608() -> ! {
-    todo!("0x3fc608 RBX::SetManualJointToInfinite::SetManualJointToInfinite(RBX::DataModel *)")
+pub fn stub_0x3fc608(data_model: *const DataModel) -> SetManualJointToInfinite {
+    // IDA 0x3fc608: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3fc60c(data_model)
 }
 
 // 0x3fc60c — __ZN3RBX24SetManualJointToInfiniteC2EPNS_9DataModelE
 #[doc(alias = "RBX::SetManualJointToInfinite::SetManualJointToInfinite(RBX::DataModel *)")]
 // was: RBX::SetManualJointToInfinite::SetManualJointToInfinite(RBX::DataModel *)
-pub fn stub_0x3fc60c() -> ! {
-    todo!("0x3fc60c RBX::SetManualJointToInfinite::SetManualJointToInfinite(RBX::DataModel *)")
+pub fn stub_0x3fc60c(data_model: *const DataModel) -> SetManualJointToInfinite {
+    // IDA 0x3fc60c: `SetManualJointToInfinite::C2(DataModel*)` — links the
+    // model.
+    SetManualJointToInfinite { data_model }
 }
 
 // 0x3fc764 — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS4_21BoolPropertyVerbSetItEET0_T_SF_SE_
 #[doc(alias = "RBX::BoolPropertyVerbSetIt std::for_each<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,RBX::BoolPropertyVerbSetIt>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,RBX::BoolPropertyVerbSetIt)")]
 // was: RBX::BoolPropertyVerbSetIt std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,RBX::BoolPropertyVerbSetIt>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,RBX::BoolPropertyVerbSetIt)
-pub fn stub_0x3fc764() -> ! {
-    todo!("0x3fc764 RBX::BoolPropertyVerbSetIt std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,RBX::BoolPropertyVerbSetIt>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,RBX::BoolPropertyVerbSetIt)")
+pub fn stub_0x3fc764(items: &[SharedPtr<Instance>], set: fn(&SharedPtr<Instance>)) {
+    // IDA 0x3fc764: `for_each` over the const shared range with
+    // `BoolPropertyVerbSetIt` — retains each element, applies the setter,
+    // releases; the functor collapses into the applied fn.
+    for item in items {
+        set(&item.clone());
+    }
 }
 
 // 0x3fc864 — __ZN3RBX15ServiceProvider6createINS_17FilteredSelectionINS_10PVInstanceEEEEEPT_PKNS_8InstanceE
@@ -12269,8 +12304,13 @@ pub fn stub_0x3fc900() -> ! {
 // 0x3fcb44 — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS2_3_bi6bind_tIvPFvS6_ENSD_5list1INS2_3argILi1EEEEEEEET0_T_SN_SM_
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::arg<1>>> std::for_each<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::arg<1>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::arg<1>>>)")]
 // was: boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::arg<1>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::arg<1>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::arg<1>>>)
-pub fn stub_0x3fcb44() -> ! {
-    todo!("0x3fcb44 boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::arg<1>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::arg<1>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::arg<1>>>)")
+pub fn stub_0x3fcb44(items: &[SharedPtr<Instance>], apply: fn(&SharedPtr<Instance>)) {
+    // IDA 0x3fcb44: `for_each` over the const shared range with a
+    // `bind_t<void(*)(shared), arg1>` free-function bind — same
+    // retain/apply/release loop as 0x3fc764.
+    for item in items {
+        apply(&item.clone());
+    }
 }
 
 // 0x3fcb84 — __ZN3RBX11shared_fromINS_13ModelInstanceEEEN5boost10shared_ptrIT_EEPS4_
@@ -12283,22 +12323,32 @@ pub fn stub_0x3fcb84() -> ! {
 // 0x3fcc6c — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS4_7UngroupEET0_T_SE_SD_
 #[doc(alias = "RBX::Ungroup std::for_each<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> *,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,RBX::Ungroup>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> *,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> *,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,RBX::Ungroup)")]
 // was: RBX::Ungroup std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,RBX::Ungroup>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,RBX::Ungroup)
-pub fn stub_0x3fcc6c() -> ! {
-    todo!("0x3fcc6c RBX::Ungroup std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,RBX::Ungroup>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,RBX::Ungroup)")
+pub fn stub_0x3fcc6c(items: &[SharedPtr<Instance>], ungroup: fn(&SharedPtr<Instance>)) {
+    // IDA 0x3fcc6c: `for_each` over the mutable shared range with the
+    // `Ungroup` functor — same retain/apply/release loop as 0x3fc764 (the
+    // functor's interior mutation collapses into the applied fn).
+    for item in items {
+        ungroup(&item.clone());
+    }
 }
 
 // 0x3fcca8 — __ZN3RBX17RotateAxisCommandC2ESsPNS_9DataModelE
 #[doc(alias = "RBX::RotateAxisCommand::RotateAxisCommand(std::string,RBX::DataModel *)")]
 // was: RBX::RotateAxisCommand::RotateAxisCommand(std::string,RBX::DataModel *)
-pub fn stub_0x3fcca8() -> ! {
-    todo!("0x3fcca8 RBX::RotateAxisCommand::RotateAxisCommand(std::string,RBX::DataModel *)")
+pub fn stub_0x3fcca8(name: String, data_model: *const DataModel) -> RotateAxisCommand {
+    // IDA 0x3fcca8: `RotateAxisCommand::C2(string, DataModel*)` — moves the
+    // name and links the model.
+    RotateAxisCommand { name, data_model }
 }
 
 // 0x3ff598 — __ZN3RBX17FilteredSelectionINS_8InstanceEE12getSelectionEv
 #[doc(alias = "RBX::FilteredSelection<RBX::Instance>::getSelection(void)")]
 // was: RBX::FilteredSelection<RBX::Instance>::getSelection(void)
-pub fn stub_0x3ff598() -> ! {
-    todo!("0x3ff598 RBX::FilteredSelection<RBX::Instance>::getSelection(void)")
+pub fn stub_0x3ff598(selection: &FilteredSelection) -> SharedPtr<SelectionService> {
+    // IDA 0x3ff598: `ReleaseAssert(rootSelection != NULL)` (decomp
+    // 0x3ff5aa-0x3ff5e8, Selection.h:247), then returns the root selection at
+    // `+100`; the assert becomes `expect` and the retained return a clone.
+    selection.root.as_ref().expect("0x3ff598: rootSelection!=NULL").clone()
 }
 
 // 0x3ff5f0 — __ZN3RBX9Selection12setSelectionIN9__gnu_cxx17__normal_iteratorIPPNS_8InstanceESt6vectorIS5_SaIS5_EEEEEEvT_SB_
@@ -12311,36 +12361,79 @@ pub fn stub_0x3ff5f0() -> ! {
 // 0x3ff614 — __ZNK3RBX15ServiceProvider4findINS_17FilteredSelectionINS_8InstanceEEEEEPT_v
 #[doc(alias = "RBX::FilteredSelection<RBX::Instance> * RBX::ServiceProvider::find<RBX::FilteredSelection<RBX::Instance>>(void)const")]
 // was: RBX::FilteredSelection<RBX::Instance> * RBX::ServiceProvider::find<RBX::FilteredSelection<RBX::Instance>>(void)const
-pub fn stub_0x3ff614() -> ! {
-    todo!("0x3ff614 RBX::FilteredSelection<RBX::Instance> * RBX::ServiceProvider::find<RBX::FilteredSelection<RBX::Instance>>(void)const")
+pub fn stub_0x3ff614(instance: *const Instance) -> *const Instance {
+    // IDA 0x3ff614: `find<FilteredSelection>(instance)` — provider search
+    // then class scan, null on miss. Same root-walk + pre-order shape as
+    // 0x3d6fc4, matching the `FilteredSelection` class.
+    // SAFETY: `instance` must be null or point to a valid `Instance` whose
+    // whole ancestry/subtree outlives the call.
+    unsafe {
+        let mut root = instance;
+        while !root.is_null() && !(*root).parent.is_null() {
+            root = (*root).parent;
+        }
+        if root.is_null() {
+            return core::ptr::null();
+        }
+        let mut stack: Vec<*const Instance> = vec![root];
+        while let Some(node) = stack.pop() {
+            if instance_is_a(node, "FilteredSelection") {
+                return node;
+            }
+            let mut children: Vec<*const Instance> = (*node)
+                .children
+                .iter()
+                .map(|child| SharedPtr::as_ptr(child) as *const Instance)
+                .collect();
+            children.reverse();
+            stack.extend(children);
+        }
+        core::ptr::null()
+    }
 }
 
 // 0x3ff954 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_17FilteredSelectionINS_8InstanceEEEEEvv
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::FilteredSelection<RBX::Instance>>(void)")]
 // was: void RBX::ServiceProvider::callDoGetClassIndex<RBX::FilteredSelection<RBX::Instance>>(void)
-pub fn stub_0x3ff954() -> ! {
-    todo!("0x3ff954 void RBX::ServiceProvider::callDoGetClassIndex<RBX::FilteredSelection<RBX::Instance>>(void)")
+pub fn stub_0x3ff954() -> usize {
+    // IDA 0x3ff954: `callDoGetClassIndex<FilteredSelection>` — forwards to
+    // the cached `doGetClassIndex`.
+    stub_0x3ff958()
 }
 
 // 0x3ff958 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_17FilteredSelectionINS_8InstanceEEEEEmv
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::FilteredSelection<RBX::Instance>>(void)")]
 // was: unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::FilteredSelection<RBX::Instance>>(void)
-pub fn stub_0x3ff958() -> ! {
-    todo!("0x3ff958 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::FilteredSelection<RBX::Instance>>(void)")
+pub fn stub_0x3ff958() -> usize {
+    // IDA 0x3ff958: `doGetClassIndex<FilteredSelection>` — guard-once
+    // assignment from `ServiceProvider::newIndex` (decomp 0x3ff9b4-0x3ff9d4),
+    // then the cached index; the guard collapses into a 0-sentinel atomic
+    // with the provider counter behind it.
+    if FILTERED_SELECTION_INDEX.load(Ordering::Relaxed) == 0 {
+        let fresh = NEXT_CLASS_INDEX.fetch_add(1, Ordering::Relaxed);
+        FILTERED_SELECTION_INDEX.store(fresh, Ordering::Relaxed);
+    }
+    FILTERED_SELECTION_INDEX.load(Ordering::Relaxed)
 }
 
 // 0x3ffa30 — __ZNK3RBX15ServiceProvider6createINS_17FilteredSelectionINS_8InstanceEEEEEPT_v
 #[doc(alias = "RBX::FilteredSelection<RBX::Instance> * RBX::ServiceProvider::create<RBX::FilteredSelection<RBX::Instance>>(void)const")]
 // was: RBX::FilteredSelection<RBX::Instance> * RBX::ServiceProvider::create<RBX::FilteredSelection<RBX::Instance>>(void)const
-pub fn stub_0x3ffa30() -> ! {
-    todo!("0x3ffa30 RBX::FilteredSelection<RBX::Instance> * RBX::ServiceProvider::create<RBX::FilteredSelection<RBX::Instance>>(void)const")
+pub fn stub_0x3ffa30() -> SharedPtr<FilteredSelection> {
+    // IDA 0x3ffa30: `ServiceProvider::create<FilteredSelection>` (void
+    // overload) — default-constructs the filtered selection; the provider
+    // registration lands with the service registry.
+    SharedPtr::new(FilteredSelection::default())
 }
 
 // 0x3ffbf8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_17FilteredSelectionIS1_EEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::FilteredSelection<RBX::Instance>> RBX::Creatable<RBX::Instance>::create<RBX::FilteredSelection<RBX::Instance>>(void)")]
 // was: boost::shared_ptr<RBX::FilteredSelection<RBX::Instance>> RBX::Creatable<RBX::Instance>::create<RBX::FilteredSelection<RBX::Instance>>(void)
-pub fn stub_0x3ffbf8() -> ! {
-    todo!("0x3ffbf8 boost::shared_ptr<RBX::FilteredSelection<RBX::Instance>> RBX::Creatable<RBX::Instance>::create<RBX::FilteredSelection<RBX::Instance>>(void)")
+pub fn stub_0x3ffbf8() -> SharedPtr<FilteredSelection> {
+    // IDA 0x3ffbf8: `Creatable::create<FilteredSelection>` — `operator new` +
+    // default ctor + adoption with the `Creatable` deleter; same collapse as
+    // 0xef04.
+    SharedPtr::new(FilteredSelection::default())
 }
 
 // 0x3ffca8 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_17FilteredSelectionIS2_EEEERS3_RKNS0_IT_EE
@@ -12353,57 +12446,111 @@ pub fn stub_0x3ffca8() -> ! {
 // 0x3ffcdc — __ZN3RBX17FilteredSelectionINS_8InstanceEEC2Ev
 #[doc(alias = "RBX::FilteredSelection<RBX::Instance>::FilteredSelection(void)")]
 // was: RBX::FilteredSelection<RBX::Instance>::FilteredSelection(void)
-pub fn stub_0x3ffcdc() -> ! {
-    todo!("0x3ffcdc RBX::FilteredSelection<RBX::Instance>::FilteredSelection(void)")
+pub fn stub_0x3ffcdc() -> FilteredSelection {
+    // IDA 0x3ffcdc: `FilteredSelection<Instance>::C2` — default-constructs
+    // the root link plus the empty filtered list.
+    FilteredSelection::default()
 }
 
 // 0x3ffe98 — __ZN3RBX17FilteredSelectionINS_8InstanceEED1Ev
 #[doc(alias = "RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")]
 // was: RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()
-pub fn stub_0x3ffe98() -> ! {
-    todo!("0x3ffe98 RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")
+pub fn stub_0x3ffe98(_selection: *mut FilteredSelection) {
+    // IDA 0x3ffe98: `FilteredSelection<Instance>::D1` — memberwise teardown
+    // of the root link and the filtered list; dropping the box is the same
+    // release.
+    // SAFETY: `_selection` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_selection));
+    }
 }
 
 // 0x3ffe9c — __ZN3RBX17FilteredSelectionINS_8InstanceEED0Ev
 #[doc(alias = "RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")]
 // was: RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()
-pub fn stub_0x3ffe9c() -> ! {
-    todo!("0x3ffe9c RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")
+pub fn stub_0x3ffe9c(_selection: *mut FilteredSelection) {
+    // IDA 0x3ffe9c: `FilteredSelection<Instance>::D0` — vtable install plus
+    // memberwise teardown; dropping the box is the same release. Twin of
+    // 0x3ffe98.
+    // SAFETY: `_selection` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_selection));
+    }
 }
 
 // 0x3fff3c — __ZN3RBX17FilteredSelectionINS_8InstanceEE17onAncestorChangedERKNS_15AncestorChangedE
 #[doc(alias = "RBX::FilteredSelection<RBX::Instance>::onAncestorChanged(RBX::AncestorChanged const&)")]
 // was: RBX::FilteredSelection<RBX::Instance>::onAncestorChanged(RBX::AncestorChanged const&)
-pub fn stub_0x3fff3c() -> ! {
-    todo!("0x3fff3c RBX::FilteredSelection<RBX::Instance>::onAncestorChanged(RBX::AncestorChanged const&)")
+pub fn stub_0x3fff3c(
+    selection: &mut FilteredSelection,
+    root: &SharedPtr<SelectionService>,
+    instance: *const Instance,
+) {
+    // IDA 0x3fff3c: re-roots the selection link (`shared_ptr` copy at `+100`,
+    // decomp 0x3fffba) and pushes the changed instance onto the filtered list
+    // (`push_back` at `+108`, decomp 0x40000e); the `AncestorChanged` event
+    // unmarshal collapses into the two params.
+    selection.root = Some(root.clone());
+    selection.items.push(instance);
 }
 
 // 0x400090 — __ZN3RBX17FilteredSelectionINS_8InstanceEE18onSelectionChangedERKNS_16SelectionChangedE
 #[doc(alias = "RBX::FilteredSelection<RBX::Instance>::onSelectionChanged(RBX::SelectionChanged const&)")]
 // was: RBX::FilteredSelection<RBX::Instance>::onSelectionChanged(RBX::SelectionChanged const&)
-pub fn stub_0x400090() -> ! {
-    todo!("0x400090 RBX::FilteredSelection<RBX::Instance>::onSelectionChanged(RBX::SelectionChanged const&)")
+pub fn stub_0x400090(selection: &mut FilteredSelection, added: *const Instance, removed: *const Instance) {
+    // IDA 0x400090: a non-null added instance is pushed onto the filtered
+    // list (decomp 0x4000a0-0x4000aa); a non-null removed instance is found
+    // and erased with a memmove close (decomp 0x4000ae-0x4000d8). The raw
+    // pointers are unretained on both sides, so no ownership changes.
+    if !added.is_null() {
+        selection.items.push(added);
+    }
+    if !removed.is_null() {
+        if let Some(pos) = selection.items.iter().position(|item| *item == removed) {
+            selection.items.remove(pos);
+        }
+    }
 }
 
 // 0x4000e4 — __ZThn32_N3RBX17FilteredSelectionINS_8InstanceEED1Ev
 #[doc(alias = "non-virtual thunk to RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")]
 // was: non-virtual thunk to RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()
-pub fn stub_0x4000e4() -> ! {
-    todo!("0x4000e4 non-virtual thunk to RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")
+pub fn stub_0x4000e4(selection: *const FilteredSelection, _this: *mut FilteredSelection) {
+    // IDA 0x4000e4: `__ZThn32_` thunk to the D1 — the `this - 32` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D1 of
+    // 0x3ffe98.
+    // SAFETY: `selection` must be a live box pointer never used again.
+    let _ = selection;
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x4000ec — __ZThn32_N3RBX17FilteredSelectionINS_8InstanceEED0Ev
 #[doc(alias = "non-virtual thunk to RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")]
 // was: non-virtual thunk to RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()
-pub fn stub_0x4000ec() -> ! {
-    todo!("0x4000ec non-virtual thunk to RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")
+pub fn stub_0x4000ec(selection: *const FilteredSelection) {
+    // IDA 0x4000ec: `__ZThn32_` thunk to the D0 — the `this - 32` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D0 of
+    // 0x3ffe9c.
+    // SAFETY: `selection` must be a live box pointer never used again.
+    unsafe {
+        let _ = Box::from_raw(selection as *mut FilteredSelection);
+    }
 }
 
 // 0x4000f8 — __ZThn36_N3RBX17FilteredSelectionINS_8InstanceEED1Ev
 #[doc(alias = "non-virtual thunk to RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")]
 // was: non-virtual thunk to RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()
-pub fn stub_0x4000f8() -> ! {
-    todo!("0x4000f8 non-virtual thunk to RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")
+pub fn stub_0x4000f8(selection: *const FilteredSelection, _this: *mut FilteredSelection) {
+    // IDA 0x4000f8: `__ZThn36_` thunk to the D1 — the `this - 36` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D1 of
+    // 0x3ffe98.
+    // SAFETY: `selection` must be a live box pointer never used again.
+    let _ = selection;
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x400100 — __ZThn36_N3RBX17FilteredSelectionINS_8InstanceEED0Ev
