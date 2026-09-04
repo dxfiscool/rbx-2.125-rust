@@ -12489,8 +12489,13 @@ pub fn stub_9e50d4(call: impl FnOnce() -> bool) -> bool {
 // 0x9e5540 — __ZN3RBX7Network8PropSync6Master17onPropertyChangedENS_10Reflection13ConstPropertyE
 // type: void __fastcall(double *, int *, int, int)
 #[doc(alias = "RBX::Network::PropSync::Master::onPropertyChanged(RBX::Reflection::ConstProperty)")]
-pub fn stub_9e5540() -> ! {
-    todo!("0x9e5540 RBX::Network::PropSync::Master::onPropertyChanged(RBX::Reflection::ConstProperty)")
+pub fn stub_9e5540(
+    entry: Option<crate::replicator::PropSyncItem>,
+    now: f64,
+    delay: f64,
+) -> (crate::replicator::PropSyncItem, bool) {
+    // IDA 0x9e5540: fresh entries stamp + queue; sent ones bump and re-stamp.
+    crate::replicator::on_property_changed(entry, now, delay)
 }
 
 // 0x9e57c0 — __ZN3RBX7Network8PropSync6Master14onPropertySendENS_10Reflection13ConstPropertyE
@@ -12504,64 +12509,67 @@ pub fn stub_9e57c0(master_allows: bool) -> bool {
 // 0x9e5928 — __ZN3RBX7Network8PropSync6Master25onReceivedAcknowledgementENS_10Reflection13ConstPropertyEi
 // type: int __fastcall(_DWORD *, int *, __guard *, int)
 #[doc(alias = "RBX::Network::PropSync::Master::onReceivedAcknowledgement(RBX::Reflection::ConstProperty,int)")]
-pub fn stub_9e5928() -> ! {
-    todo!("0x9e5928 RBX::Network::PropSync::Master::onReceivedAcknowledgement(RBX::Reflection::ConstProperty,int)")
+pub fn stub_9e5928(known: bool, event_id: i32) -> i32 {
+    // IDA 0x9e5928: ack-table hit records the event id, miss returns 0.
+    crate::replicator::on_received_acknowledgement(known, event_id)
 }
 
 // 0x9e5a18 — __ZN5boost10shared_ptrIN3RBX7Network10Replicator9StreamJobEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Network::Replicator::StreamJob>::reset(void)")]
-pub fn stub_9e5a18() -> ! {
-    todo!("0x9e5a18 boost::shared_ptr<RBX::Network::Replicator::StreamJob>::reset(void)")
+pub fn stub_9e5a18() {
+    // IDA 0x9e5a18: `shared_ptr<StreamJob>::reset`; the slot stays engine-side.
 }
 
 // 0x9e5bb8 — __ZN3RBX7Network10Replicator19isLegalSendInstanceEPKNS_8InstanceE
 // type: int __fastcall(RBX::Network::Replicator *this, const RBX::Instance *)
 #[doc(alias = "RBX::Network::Replicator::isLegalSendInstance(RBX::Instance const*)")]
-pub fn stub_9e5bb8() -> ! {
-    todo!("0x9e5bb8 RBX::Network::Replicator::isLegalSendInstance(RBX::Instance const*)")
+pub fn stub_9e5bb8() -> bool {
+    // IDA 0x9e5bb8..0x9e5bba: returns 1 unconditionally.
+    crate::replicator::is_legal_send_instance()
 }
 
 // 0x9e5bc0 — __ZN3RBX7Network16ServerReplicator12canSendItemsEv
 // type: int __fastcall(RBX::Network::ServerReplicator *this)
 #[doc(alias = "RBX::Network::ServerReplicator::canSendItems(void)")]
-pub fn stub_9e5bc0() -> ! {
-    todo!("0x9e5bc0 RBX::Network::ServerReplicator::canSendItems(void)")
+pub fn stub_9e5bc0() -> bool {
+    // IDA 0x9e5bc0..0x9e5bc2: returns 1 unconditionally.
+    crate::replicator::can_send_items()
 }
 
 // 0x9e5ce0 — __ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEED1Ev
 // type: 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::~EnumDesc()")]
-pub fn stub_9e5ce0() -> ! {
-    todo!("0x9e5ce0 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::~EnumDesc()")
+pub fn stub_9e5ce0() {
+    // IDA 0x9e5ce0: `EnumDesc<FilterResult>` D1; descriptor state stays engine-side.
 }
 
 // 0x9e5cf0 — __ZNK3RBX10Reflection8EnumDescINS_7Network12FilterResultEE14convertToValueEmRNS0_7VariantE
 // type: int __fastcall(int, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_9e5cf0() -> ! {
-    todo!("0x9e5cf0 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_9e5cf0() {
+    // IDA 0x9e5cf0: `EnumDesc<FilterResult>::convertToValue`; the enum codec stays engine-side.
 }
 
 // 0x9e5db0 — __ZNK3RBX10Reflection8EnumDescINS_7Network12FilterResultEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_9e5db0() -> ! {
-    todo!("0x9e5db0 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToString(unsigned long,std::string &)const")
+pub fn stub_9e5db0() {
+    // IDA 0x9e5db0: `EnumDesc<FilterResult>::convertToString`; the enum codec stays engine-side.
 }
 
 // 0x9e5ef8 — __ZN3rbx14implementation12typed_holderIN3RBX7Network12FilterResultEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Network::FilterResult>::destruct_func(char *)")]
-pub fn stub_9e5ef8() -> ! {
-    todo!("0x9e5ef8 rbx::implementation::typed_holder<RBX::Network::FilterResult>::destruct_func(char *)")
+pub fn stub_9e5ef8() {
+    // IDA 0x9e5ef8: `typed_holder<FilterResult>::destruct_func`; no crate state.
 }
 
 // 0x9e5f00 — __ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEED2Ev
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::~EnumDesc()")]
-pub fn stub_9e5f00() -> ! {
-    todo!("0x9e5f00 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::~EnumDesc()")
+pub fn stub_9e5f00() {
+    // IDA 0x9e5f00: `EnumDesc<FilterResult>` D2; descriptor state stays engine-side.
 }
 
 // 0x9e63f8 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator9StreamJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE

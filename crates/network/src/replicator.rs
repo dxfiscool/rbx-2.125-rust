@@ -437,6 +437,69 @@ pub fn receive_cluster(forward: impl FnOnce()) {
     forward();
 }
 
+/// One `PropSync::Master` item (IDA 0x9e5540): the change version, whether
+/// it was already sent, and the re-send stamp.
+#[derive(Clone, Copy, Debug, Default, PartialEq)]
+pub struct PropSyncItem {
+    pub version: u32,
+    pub version_sent: bool,
+    pub stamp: f64,
+}
+
+/// `PropSync::Master::onPropertyChanged` (IDA 0x9e5540): emplaces the
+/// property key into the master map; a fresh entry asserts `version == 0`
+/// (PropertySynchronization.h:155) and `!isVersionSent` (:156), stamps
+/// `now + delay`, and queues the key, while an existing version-sent
+/// entry bumps the version, clears the flag, and re-stamps
+/// (0x9e56d4..0x9e56f4). The map/queue stay engine-side. Returns the
+/// resulting entry plus whether it was queued.
+pub fn on_property_changed(
+    entry: Option<PropSyncItem>,
+    now: f64,
+    delay: f64,
+) -> (PropSyncItem, bool) {
+    match entry {
+        // IDA 0x9e55c6..0x9e56d2: fresh emplace, stamp, queue push.
+        None => (
+            PropSyncItem { version: 0, version_sent: false, stamp: now + delay },
+            true,
+        ),
+        // IDA 0x9e56d4..0x9e56f4: existing entry re-arms only when sent.
+        Some(mut item) => {
+            if item.version_sent {
+                item.version += 1;
+                item.version_sent = false;
+                item.stamp = now + delay;
+            }
+            (item, false)
+        }
+    }
+}
+
+/// `PropSync::Master::onReceivedAcknowledgement` (IDA 0x9e5928): hashes
+/// the (descriptor, instance) pair into the ack table
+/// (0x9e5996..0x9e59ae); on a key hit records the event id and returns
+/// it (0x9e5a06..0x9e5a08), else returns 0. The table stays engine-side.
+pub fn on_received_acknowledgement(known: bool, event_id: i32) -> i32 {
+    if known {
+        event_id
+    } else {
+        0
+    }
+}
+
+/// `Replicator::isLegalSendInstance` (IDA 0x9e5bb8): returns 1
+/// unconditionally (0x9e5bba).
+pub fn is_legal_send_instance() -> bool {
+    true
+}
+
+/// `ServerReplicator::canSendItems` (IDA 0x9e5bc0): returns 1
+/// unconditionally (0x9e5bc2).
+pub fn can_send_items() -> bool {
+    true
+}
+
 /// `ServerReplicator::readItem` dispatch (IDA 0x9dcc34): 8 reads a
 /// character request, 9 logs `"Rocky item found"` and throws
 /// `runtime_error("rocky")`, 0xA reads a prop acknowledgement, 0xC reads
@@ -763,5 +826,28 @@ mod tests {
         assert!(!on_received_property_changed(true, false, &mut || bumps += 1));
         assert!(!on_received_property_changed(false, true, &mut || bumps += 1));
         assert_eq!(bumps, 1);
+    }
+
+    #[test]
+    fn property_change_fresh_queues_sent_bumps() {
+        // IDA 0x9e5540: fresh stamps + queues; sent re-arms; quiet entries rest.
+        let (item, queued) = on_property_changed(None, 10.0, 1.5);
+        assert_eq!(item, PropSyncItem { version: 0, version_sent: false, stamp: 11.5 });
+        assert!(queued);
+        let sent = PropSyncItem { version: 3, version_sent: true, stamp: 0.0 };
+        let (item, queued) = on_property_changed(Some(sent), 20.0, 2.0);
+        assert_eq!(item, PropSyncItem { version: 4, version_sent: false, stamp: 22.0 });
+        assert!(!queued);
+        let quiet = PropSyncItem { version: 1, version_sent: false, stamp: 5.0 };
+        assert_eq!(on_property_changed(Some(quiet), 20.0, 2.0), (quiet, false));
+    }
+
+    #[test]
+    fn received_ack_records_on_hit() {
+        // IDA 0x9e5928: hit returns the event id, miss returns 0.
+        assert_eq!(on_received_acknowledgement(true, 42), 42);
+        assert_eq!(on_received_acknowledgement(false, 42), 0);
+        assert!(is_legal_send_instance());
+        assert!(can_send_items());
     }
     }
