@@ -2687,12 +2687,31 @@ pub struct Backpack {
     _opaque: (),
 }
 
-/// Rust model of `RBX::BasicPartInstance` (IDA `0x3bbf78`): the vtable
-/// blankets from C1/C2 collapse (compiler-managed); data members land with
-/// part.rs.
-#[derive(Default)]
+/// Rust model of `RBX::PartInstance::FormFactor` (IDA `0x3bb8e8`): `Symmetric
+/// = 0` (the `*a2 = 0` default in `validateFormFactor`, 0x3bc17a, plus the
+/// `SYMETRIC` asserts at 0x3bbeea-0x3bbf31 / image strings `0x10f8056` and
+/// `0x10f807b`); `Custom = 3` (the `v9 != 3` resize skip in `setFormFactorUi`,
+/// 0x3bb91e — a custom part keeps its size); `Brick = 1`, `Plate = 2` are the
+/// remaining dense values (`formFactor`/`formFactorRaw` image strings
+/// `0x10f7f3e`/`0x10f7f49`).
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum FormFactor {
+    #[default]
+    Symmetric = 0,
+    Brick = 1,
+    Plate = 2,
+    Custom = 3,
+}
+
+/// Rust model of `RBX::BasicPartInstance` (IDA `0x3bbff0`): the vtable
+/// blankets from C1/C2 collapse (compiler-managed); the `formFactor` word at
+/// `+82` (`setFormFactorXml`, 0x3bb97e) and the legacy-part-type word at `+83`
+/// (`setLegacyPartTypeXml`, 0x3bbe60; default `Block`, 0x3bc04c). Mesh and
+/// physics fields land with part.rs.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
 pub struct BasicPartInstance {
-    _opaque: (),
+    pub form_factor: FormFactor,
+    pub legacy_part_type: LegacyPartType,
 }
 
 /// Rust model of `RBX::KeyframeSequenceProvider` (IDA `0x396e44`): field layout
@@ -2751,6 +2770,23 @@ pub struct AnimatorBind {
 /// slot-lifetime contract like `HeartbeatBind`.
 unsafe impl Send for AnimatorBind {}
 unsafe impl Sync for AnimatorBind {}
+
+/// Member-function signature behind
+/// `RBX::Reflection::BoundFuncDesc<RBX::Animator, SharedPtr<Instance>
+/// (SharedPtr<Instance>), 1>` (IDA `0x3a6dc0`): `loadAnimation`.
+pub type AnimatorLoadFn = fn(&Animator, &SharedPtr<Instance>) -> SharedPtr<Instance>;
+
+/// Rust model of that `BoundFuncDesc` (IDA `0x3a4edc`): the signature list at
+/// `+8`, the bound `+12` payload (a `shared_ptr`-carrying heap word released
+/// at 0x3a4f42-0x3a4f50 — the retain collapses into the `Option`) and the
+/// member-pointer pair at `+10/+11` (stored 0x3a6e3c). Same treatment as
+/// `BoundYieldFuncDesc` (0x703444).
+#[derive(Default)]
+pub struct AnimatorBoundFuncDesc {
+    pub items: Vec<SignatureItem>,
+    pub bound: Option<SharedPtr<Instance>>,
+    pub member: Option<AnimatorLoadFn>,
+}
 
 /// Rust model of `RBX::PartInstance` (IDA `0x3a68d8`): the
 /// `enable_shared_from_this` weak owner (same `+40` discipline), the `Locked`
@@ -9678,8 +9714,22 @@ pub fn stub_0x3961b4(weak: &WeakPtr<PVInstance>) -> Option<SharedPtr<PVInstance>
 // 0x396c40 — __ZNK3RBX9Animation19getKeyframeSequenceEPKNS_8InstanceE
 #[doc(alias = "RBX::Animation::getKeyframeSequence(RBX::Instance const*)const")]
 // was: RBX::Animation::getKeyframeSequence(RBX::Instance const*)const
-pub fn stub_0x396c40() -> ! {
-    todo!("0x396c40 RBX::Animation::getKeyframeSequence(RBX::Instance const*)const")
+pub fn stub_0x396c40(animation: *const Instance, scope: *const Instance) -> Option<SharedPtr<KeyframeSequence>> {
+    // IDA 0x396c40: an empty animation id (the `*(a2 + 23) - 12` word,
+    // 0x396c78) yields an empty handle (0x396d12-0x396d28); else the
+    // `KeyframeSequenceProvider` lookup (0x396ca8, `create<...>` 0x396e44) —
+    // a null provider also yields empty (0x396d30-0x396d44) — and the
+    // provider resolves the id string at `a2 + 92` into the out handle
+    // (0x396cba-0x396cce, string rep released 0x396ce0-0x396d0a). The id
+    // string and the provider-side resolve ride the unmodeled provider
+    // subsystem; the modeled half keeps both empty paths.
+    // SAFETY: `animation`/`scope` must be null or point to valid `Instance`s.
+    let _ = animation;
+    if stub_0x396e44(scope).is_none() {
+        return None;
+    }
+    // Provider-side `getKeyframeSequence` unmodeled — empty until grounded.
+    None
 }
 
 // 0x396e44 — __ZN3RBX15ServiceProvider6createINS_24KeyframeSequenceProviderEEEPT_PKNS_8InstanceE
@@ -9707,36 +9757,111 @@ pub fn stub_0x3970bc(_this: *const Animation, _parent: *const Instance) -> bool 
 // 0x39bdb4 — __ZN3RBX19AnimationTrackState28triggerKeyframeReachedSignalERKN5boost10shared_ptrINS_8InstanceEEEdd
 #[doc(alias = "RBX::AnimationTrackState::triggerKeyframeReachedSignal(rbx_core::SharedPtr<RBX::Instance> const&,double,double)")]
 // was: RBX::AnimationTrackState::triggerKeyframeReachedSignal(boost::shared_ptr<RBX::Instance> const&,double,double)
-pub fn stub_0x39bdb4() -> ! {
-    todo!("0x39bdb4 RBX::AnimationTrackState::triggerKeyframeReachedSignal(boost::shared_ptr<RBX::Instance> const&,double,double)")
+pub fn stub_0x39bdb4(
+    candidate: &SharedPtr<Instance>,
+    _prev_time: f64,
+    _current_time: f64,
+) {
+    // IDA 0x39bdb4: a null shared candidate returns (0x39bde0); the described
+    // at `+36` must `isA Keyframe` (0x39be06-0x39be32; class string
+    // `0x110628b`) and be non-null (`v16 != 36`, 0x39be3a); the keyframe time
+    // at `+56` must fall in `(prev, current]` (0x39be3c-0x39be56). On pass,
+    // the track `fw` name (0x39be5e-0x39be6c) fires the `KeyframeReached`
+    // remote event (0x39be84, string rep released 0x39be96-0x39bedc).
+    // Keyframe times and the remote-event replicate ride the unmodeled
+    // keyframe/signal subsystems; the modeled half keeps the candidate gates.
+    let ptr = SharedPtr::as_ptr(candidate);
+    // SAFETY: `candidate` is a live model-space handle.
+    if !instance_is_a(ptr, "Keyframe") {
+        return;
+    }
 }
 
 // 0x3a395c — __ZN3RBX8Animator13loadAnimationEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Animator::loadAnimation(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Animator::loadAnimation(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x3a395c() -> ! {
-    todo!("0x3a395c RBX::Animator::loadAnimation(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x3a395c(
+    animator: &SharedPtr<Animator>,
+    animation: &SharedPtr<Instance>,
+) -> SharedPtr<AnimationTrack> {
+    // IDA 0x3a395c: a null/non-`Animation` arg throws
+    // `runtime_error("Argument error: must be an Animation object")`
+    // (0x3a39de-0x3a3b9a; string `0x10f78ef`); an embedded asset with a
+    // client/server present throws the Solo-mode error (0x3a39f0-0x3a3bda;
+    // string `0x10f7816`); a null Workspace link throws (0x3a3a30-0x3a3bf0;
+    // string `0x10f789e`). The embedded/network/workspace gates ride the
+    // Players/DataModel subsystems — unmodeled. The modeled tail resolves
+    // the sequence (0x3a3a52), creates the state (0x3a3a7a) and the track
+    // (0x3a3ace), releasing the spills (0x3a3a80-0x3a3b38).
+    let candidate = SharedPtr::as_ptr(animation);
+    // SAFETY: `animation` is a live model-space handle.
+    if !instance_is_a(candidate, "Animation") {
+        panic!("0x3a395c loadAnimation<Animator>: Argument error: must be an Animation object");
+    }
+    // The provider-lookup scope collapses to the animator handle; the lookup
+    // itself is `stub_0x396e44`.
+    let scope = SharedPtr::as_ptr(animator) as *const Instance;
+    let sequence = stub_0x396c40(candidate, scope);
+    let state = match sequence {
+        Some(seq) => stub_0x3a5218(&seq, animator),
+        // An unresolved (empty) sequence still yields a state — the original
+        // passes the possibly-empty handle into `create<>` unconditionally.
+        None => SharedPtr::new(AnimationTrackState {
+            sequence: None,
+            animator: Some(animator.clone()),
+        }),
+    };
+    stub_0x3a5380(&state, animator)
 }
 
 // 0x3a3d44 — __ZN3RBX8AnimatorC1EPNS_8InstanceE
 #[doc(alias = "RBX::Animator::Animator(RBX::Instance *)")]
 // was: RBX::Animator::Animator(RBX::Instance *)
-pub fn stub_0x3a3d44() -> ! {
-    todo!("0x3a3d44 RBX::Animator::Animator(RBX::Instance *)")
+pub fn stub_0x3a3d44(this: *mut Animator) {
+    // IDA 0x3a3d44: single `B.W Animator::C2` (disasm) — C1 delegates wholly.
+    // SAFETY: `this` must point to a valid (possibly uninit) `Animator`.
+    stub_0x3a3d48(this);
 }
 
 // 0x3a3d48 — __ZN3RBX8AnimatorC2EPNS_8InstanceE
 #[doc(alias = "RBX::Animator::Animator(RBX::Instance *)")]
 // was: RBX::Animator::Animator(RBX::Instance *)
-pub fn stub_0x3a3d48() -> ! {
-    todo!("0x3a3d48 RBX::Animator::Animator(RBX::Instance *)")
+pub fn stub_0x3a3d48(this: *mut Animator) {
+    // IDA 0x3a3d48: `Instance` base C2 (0x3a3d6c) + four vtable stores
+    // (0x3a3d9e-0x3a3db4) + `classDescriptor` + registrar++ (0x3a3dd6-0x3a3e02)
+    // + zero-init of the joint/torso words (0x3a3e08-0x3a3e7a) +
+    // `shared_from` weak link (0x3a3e86-0x3a3e9e) + `ISteppedLifetime` log
+    // (0x3a3eb0-0x3a3ec2). The `DFFlag::EnableNPCServerAnimation` torso hunt
+    // (0x3a3efe-0x3afb0: client/server + distributed-physics gates, Humanoid
+    // `isA`, Model `isA`, player-from-character veto, `getTorsoSlow` store at
+    // `+144`) rides the Humanoid/torso subsystem — unmodeled, like the bind
+    // target note on `Animator`.
+    // SAFETY: `this` must point to a valid (possibly uninit) `Animator`.
+    unsafe {
+        *this = Animator::default();
+    }
 }
 
 // 0x3a46a0 — __ZN3RBX8Animator25appendAnimatableJointsRecEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Animator::appendAnimatableJointsRec(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Animator::appendAnimatableJointsRec(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x3a46a0() -> ! {
-    todo!("0x3a46a0 RBX::Animator::appendAnimatableJointsRec(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x3a46a0(
+    joints: &mut Vec<SharedPtr<Instance>>,
+    candidate: &SharedPtr<Instance>,
+) -> Option<SharedPtr<Instance>> {
+    // IDA 0x3a46a0: a null candidate returns null (0x3a46a8-0x3a46de);
+    // `__dynamic_cast` Instance -> `IAnimatableJoint` (0x3a46ca; typeinfo
+    // string `0xfd83d0`) decides the `push_back` at `a1 + 112`
+    // (0x3a46d0-0x3a46d8). The joint vector lives at the unmodeled Animator
+    // `+112` word; the modeled half is the cast gate plus the retained push.
+    // The interface check collapses to an `isA` gate.
+    let ptr = SharedPtr::as_ptr(candidate);
+    // SAFETY: `candidate` is a live model-space handle.
+    if !instance_is_a(ptr, "IAnimatableJoint") {
+        return None;
+    }
+    joints.push(candidate.clone());
+    Some(candidate.clone())
 }
 
 // 0x3a4ea0 — __ZNK3RBX8Animator11askAddChildEPKNS_8InstanceE
@@ -9758,8 +9883,17 @@ pub fn stub_0x3a4ea0(child: *const Instance) -> bool {
 // 0x3a4edc — __ZN3RBX10Reflection13BoundFuncDescINS_8AnimatorEFN5boost10shared_ptrINS_8InstanceEEES6_ELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Animator,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Animator,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
-pub fn stub_0x3a4edc() -> ! {
-    todo!("0x3a4edc RBX::Reflection::BoundFuncDesc<RBX::Animator,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_0x3a4edc(this: *mut AnimatorBoundFuncDesc) {
+    // IDA 0x3a4edc: vtable reset (0x3a4f0a, compiler-managed), conditional
+    // release + delete of the `+12` bound payload (0x3a4f1e-0x3a4f50), then
+    // the base `SignatureDescriptor` D1 `_M_clear(a1 + 8)` (0x3a4f70). Same
+    // shape as the `BoundYieldFuncDesc` D1 (0x703444).
+    // SAFETY: `this` must point to a valid `AnimatorBoundFuncDesc`.
+    unsafe {
+        (*this).bound = None;
+        (*this).member = None;
+        (*this).items.clear();
+    }
 }
 
 // 0x3a5218 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_19AnimationTrackStateEN5boost10shared_ptrIKNS_16KeyframeSequenceEEENS6_INS_8AnimatorEEEEENS6_IT_EET0_T1_
@@ -9782,8 +9916,18 @@ pub fn stub_0x3a5218(
 // 0x3a5380 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_14AnimationTrackEN5boost10shared_ptrINS_19AnimationTrackStateEEENS6_INS_8AnimatorEEEEENS6_IT_EET0_T1_
 #[doc(alias = "rbx_core::SharedPtr<RBX::AnimationTrack> RBX::Creatable<RBX::Instance>::create<RBX::AnimationTrack,rbx_core::SharedPtr<RBX::AnimationTrackState>,rbx_core::SharedPtr<RBX::Animator>>(rbx_core::SharedPtr<RBX::AnimationTrackState>,rbx_core::SharedPtr<RBX::Animator>)")]
 // was: boost::shared_ptr<RBX::AnimationTrack> RBX::Creatable<RBX::Instance>::create<RBX::AnimationTrack,boost::shared_ptr<RBX::AnimationTrackState>,boost::shared_ptr<RBX::Animator>>(boost::shared_ptr<RBX::AnimationTrackState>,boost::shared_ptr<RBX::Animator>)
-pub fn stub_0x3a5380() -> ! {
-    todo!("0x3a5380 boost::shared_ptr<RBX::AnimationTrack> RBX::Creatable<RBX::Instance>::create<RBX::AnimationTrack,boost::shared_ptr<RBX::AnimationTrackState>,boost::shared_ptr<RBX::Animator>>(boost::shared_ptr<RBX::AnimationTrackState>,boost::shared_ptr<RBX::Animator>)")
+pub fn stub_0x3a5380(
+    state: &SharedPtr<AnimationTrackState>,
+    animator: &SharedPtr<Animator>,
+) -> SharedPtr<AnimationTrack> {
+    // IDA 0x3a5380: `operator new(0x78)` (0x3a53b2) + shared/weak retains of
+    // both args (0x3a53be-0x3a5406) + `AnimationTrack` ctor (0x3a541a) +
+    // adopt (0x3a542c, weak released 0x3a5432-0x3a543e). Same collapse as
+    // `create<AnimationTrackState>` (0x3a5218): both handles are retained
+    // into construction (the clones), then adopted. The track keeps no
+    // modeled fields yet.
+    let _ = (state.clone(), animator.clone());
+    SharedPtr::new(AnimationTrack::default())
 }
 
 // 0x3a55fc — __ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_8AnimatorENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvRKT_
@@ -10091,36 +10235,95 @@ pub fn stub_0x3a6bc0(block: *const ControlBlockP<PartInstance>) -> Option<Creata
 // 0x3a6dc0 — __ZN3RBX10Reflection13BoundFuncDescINS_8AnimatorEFN5boost10shared_ptrINS_8InstanceEEES6_ELi1EEC2EMS2_FS6_S6_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Animator,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::BoundFuncDesc(rbx_core::SharedPtr<RBX::Instance> (RBX::Animator::*)(rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Animator,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::BoundFuncDesc(boost::shared_ptr<RBX::Instance> (RBX::Animator::*)(boost::shared_ptr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x3a6dc0() -> ! {
-    todo!("0x3a6dc0 RBX::Reflection::BoundFuncDesc<RBX::Animator,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::BoundFuncDesc(boost::shared_ptr<RBX::Instance> (RBX::Animator::*)(boost::shared_ptr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x3a6dc0(
+    desc: *mut AnimatorBoundFuncDesc,
+    member: AnimatorLoadFn,
+    name: &'static str,
+    _arg_name: &'static str,
+) {
+    // IDA 0x3a6dc0: base `FunctionDescriptor` C2 (0x3a6e18, class head
+    // `sAnimator`) + vtable set (0x3a6e2e) + member-pair store at `+10/+11`
+    // (0x3a6e3c) + bound `+12` cleared (0x3a6e46) + void return-type singleton
+    // (0x3a6e6c) + `declareSignature` (0x3a6e7c, released 0x3a6e82-0x3a6e8e).
+    // Base, vtable, singletons, Permissions/Attributes and the argument name
+    // are compiler-managed or descriptor-domain here; the modeled half is the
+    // member store plus the signature declare.
+    // SAFETY: `desc` must point to a valid (possibly uninit) `AnimatorBoundFuncDesc`.
+    unsafe {
+        (*desc).member = Some(member);
+        (*desc).bound = None;
+    }
+    stub_0x3a6f58(desc, name);
 }
 
 // 0x3a6f58 — __ZN3RBX10Reflection13BoundFuncDescINS_8AnimatorEFN5boost10shared_ptrINS_8InstanceEEES6_ELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Animator,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Animator,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)
-pub fn stub_0x3a6f58() -> ! {
-    todo!("0x3a6f58 RBX::Reflection::BoundFuncDesc<RBX::Animator,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x3a6f58(desc: *mut AnimatorBoundFuncDesc, _name: &'static str) {
+    // IDA 0x3a6f58: return-type singleton `shared_ptr<Instance>` at `+28`
+    // (0x3a6f68), `Name::declare` of the argument name (0x3a6f72), then
+    // `addArgument` with a second `shared_ptr<Instance>` singleton
+    // (0x3a6f74-0x3a6f86). Type singletons collapse to names and the argument
+    // name collapses (`SignatureItem` carries the type name only); the
+    // `Variant` default collapses.
+    // SAFETY: `desc` must point to a valid `AnimatorBoundFuncDesc`.
+    unsafe {
+        (*desc).items.push(SignatureItem { type_name: "RBX::Instance" });
+    }
 }
 
 // 0x3a6f88 — __ZN3RBX10Reflection13BoundFuncDescINS_8AnimatorEFN5boost10shared_ptrINS_8InstanceEEES6_ELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Animator,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Animator,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
-pub fn stub_0x3a6f88() -> ! {
-    todo!("0x3a6f88 RBX::Reflection::BoundFuncDesc<RBX::Animator,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_0x3a6f88(desc: *mut AnimatorBoundFuncDesc) {
+    // IDA 0x3a6f88: same D1 body as 0x3a4edc (vtable reset 0x3a6fb6, bound
+    // release + delete 0x3a6fca-0x3a6ffc, `_M_clear` 0x3a7010-0x3a701a) plus
+    // `operator delete` of the descriptor itself (0x3a7020) — the D0 storage
+    // release. The box reclaim is both.
+    // SAFETY: `desc` must be a live box pointer never used again.
+    unsafe {
+        (*desc).bound = None;
+        (*desc).member = None;
+        (*desc).items.clear();
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0x3a70a4 — __ZNK3RBX10Reflection13BoundFuncDescINS_8AnimatorEFN5boost10shared_ptrINS_8InstanceEEES6_ELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Animator,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Animator,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
-pub fn stub_0x3a70a4() -> ! {
-    todo!("0x3a70a4 RBX::Reflection::BoundFuncDesc<RBX::Animator,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x3a70a4(
+    desc: *const AnimatorBoundFuncDesc,
+    obj: *const Animator,
+    arg: &SharedPtr<Instance>,
+) -> SharedPtr<Instance> {
+    // IDA 0x3a70a4: null `DescribedBase` stays null, else `-36` strip
+    // (0x3a70f4-0x3a70f6), member-pair fetch at `+40` (0x3a7104),
+    // `ArgHelper::getArg<shared<Instance>, 1>` (0x3a710e), then
+    // `Call1Helper::call` (0x3a7122, arg released 0x3a7128-0x3a7130). The
+    // strip collapses under the typed model and the arg unbox into `arg`.
+    // SAFETY: `desc` must point to a valid `AnimatorBoundFuncDesc`; `obj`
+    // must point to the valid `Animator` the descriptor is bound to.
+    let member = unsafe { (*desc).member }
+        .expect("0x3a70a4 execute<Animator>: unbound member");
+    stub_0x3a718c(member, unsafe { &*obj }, arg)
 }
 
 // 0x3a718c — __ZN3RBX10Reflection11Call1HelperINS_8AnimatorEMS2_FN5boost10shared_ptrINS_8InstanceEEES6_ES6_S6_E4callEPS2_S8_RNS0_7VariantERKS6_
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::Animator,rbx_core::SharedPtr<RBX::Instance> (RBX::Animator::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>::call(RBX::Animator*,rbx_core::SharedPtr<RBX::Instance> (RBX::Animator::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: RBX::Reflection::Call1Helper<RBX::Animator,boost::shared_ptr<RBX::Instance> (RBX::Animator::*)(boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>::call(RBX::Animator*,boost::shared_ptr<RBX::Instance> (RBX::Animator::*)(boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_0x3a718c() -> ! {
-    todo!("0x3a718c RBX::Reflection::Call1Helper<RBX::Animator,boost::shared_ptr<RBX::Instance> (RBX::Animator::*)(boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>::call(RBX::Animator*,boost::shared_ptr<RBX::Instance> (RBX::Animator::*)(boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_0x3a718c(
+    member: AnimatorLoadFn,
+    obj: &Animator,
+    arg: &SharedPtr<Instance>,
+) -> SharedPtr<Instance> {
+    // IDA 0x3a718c: the virtual-vs-direct member branch (`a3 & 1`,
+    // 0x3a71e8-0x3a71ec) collapses to the direct call; the incoming arg is
+    // retained across the call (0x3a71fe, released 0x3a723c-0x3a7244) and the
+    // return is boxed into a `shared<Instance>`-typed `Variant`
+    // (0x3a721e-0x3a722a). The retain is the clone; the member returns the
+    // track directly.
+    member(obj, &arg.clone())
 }
 
 // 0x3a8a58 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10ArcHandlesEEEN5boost10shared_ptrIT_EEv
@@ -10299,29 +10502,88 @@ pub fn stub_0x3b1824(ptr: *mut Backpack, _deleter: CreatableInstanceDeleter) -> 
 // 0x3bb8e8 — __ZN3RBX14FormFactorPart15setFormFactorUiENS_12PartInstance10FormFactorE
 #[doc(alias = "RBX::FormFactorPart::setFormFactorUi(RBX::PartInstance::FormFactor)")]
 // was: RBX::FormFactorPart::setFormFactorUi(RBX::PartInstance::FormFactor)
-pub fn stub_0x3bb8e8() -> ! {
-    todo!("0x3bb8e8 RBX::FormFactorPart::setFormFactorUi(RBX::PartInstance::FormFactor)")
+pub fn stub_0x3bb8e8(part: *mut BasicPartInstance, value: FormFactor) -> FormFactor {
+    // IDA 0x3bb8e8: current read through the `+336` virtual getter (0x3bb8fc);
+    // unchanged returns it (0x3bb906-0x3bb962). Else the `+244` lock
+    // (0x3bb910), the Xml store (0x3bb916) and — unless `Custom` (0x3bb91e) —
+    // the `getPartSizeUi`/round/`setPartSizeUnjoined` resize (0x3bb926-0x3bb952),
+    // then the `+240` unlock/return (0x3bb95e). Locking, resize and the
+    // virtual round-trip ride the unmodeled part-geometry domain; the modeled
+    // half is the compare-and-store.
+    // SAFETY: `part` must point to a valid `BasicPartInstance`.
+    unsafe {
+        if (*part).form_factor == value {
+            return value;
+        }
+        stub_0x3bb964(part, value)
+    }
 }
 
 // 0x3bb964 — __ZN3RBX14FormFactorPart16setFormFactorXmlENS_12PartInstance10FormFactorE
 #[doc(alias = "RBX::FormFactorPart::setFormFactorXml(RBX::PartInstance::FormFactor)")]
 // was: RBX::FormFactorPart::setFormFactorXml(RBX::PartInstance::FormFactor)
-pub fn stub_0x3bb964() -> ! {
-    todo!("0x3bb964 RBX::FormFactorPart::setFormFactorXml(RBX::PartInstance::FormFactor)")
+pub fn stub_0x3bb964(part: *mut BasicPartInstance, value: FormFactor) -> FormFactor {
+    // IDA 0x3bb964: `+82` compare-and-store (0x3bb96a-0x3bb97e) plus two
+    // `raisePropertyChanged` fires (0x3bb988-0x3bb996, `formFactor` pairs);
+    // unchanged returns current (0x3bb970-0x3bb972). Change notification rides
+    // the unmodeled signal domain.
+    // SAFETY: `part` must point to a valid `BasicPartInstance`.
+    unsafe {
+        if (*part).form_factor == value {
+            return value;
+        }
+        (*part).form_factor = value;
+        value
+    }
 }
 
 // 0x3bbe50 — __ZN3RBX17BasicPartInstance20setLegacyPartTypeXmlENS0_14LegacyPartTypeE
 #[doc(alias = "RBX::BasicPartInstance::setLegacyPartTypeXml(RBX::BasicPartInstance::LegacyPartType)")]
 // was: RBX::BasicPartInstance::setLegacyPartTypeXml(RBX::BasicPartInstance::LegacyPartType)
-pub fn stub_0x3bbe50() -> ! {
-    todo!("0x3bbe50 RBX::BasicPartInstance::setLegacyPartTypeXml(RBX::BasicPartInstance::LegacyPartType)")
+pub fn stub_0x3bbe50(part: *mut BasicPartInstance, value: LegacyPartType) -> LegacyPartType {
+    // IDA 0x3bbe50: `+83` compare (0x3bbe56-0x3bbe5c); on change store
+    // (0x3bbe60), `Primitive::setGeometryType` with `2` for `Block` else `1`
+    // (0x3bbe64-0x3bbe72), `setFormFactorXml(Symmetric)` unless the new type
+    // is `Block` (0x3bbe7c-0x3bbe82), two `raisePropertyChanged` fires
+    // (0x3bbe92-0x3bbea6), the on-demand `+180` flag (0x3bbeac-0x3bbeba) and
+    // the adorn-dirty mark (0x3bbec6). Geometry, notification and adorn
+    // domains are unmodeled; the modeled half is the store plus the
+    // form-factor reset.
+    // SAFETY: `part` must point to a valid `BasicPartInstance`.
+    unsafe {
+        if (*part).legacy_part_type == value {
+            return value;
+        }
+        (*part).legacy_part_type = value;
+        if value != LegacyPartType::Block {
+            stub_0x3bb964(part, FormFactor::Symmetric);
+        }
+        value
+    }
 }
 
 // 0x3bbecc — __ZN3RBX17BasicPartInstance19setLegacyPartTypeUiENS0_14LegacyPartTypeE
 #[doc(alias = "RBX::BasicPartInstance::setLegacyPartTypeUi(RBX::BasicPartInstance::LegacyPartType)")]
 // was: RBX::BasicPartInstance::setLegacyPartTypeUi(RBX::BasicPartInstance::LegacyPartType)
-pub fn stub_0x3bbecc() -> ! {
-    todo!("0x3bbecc RBX::BasicPartInstance::setLegacyPartTypeUi(RBX::BasicPartInstance::LegacyPartType)")
+pub fn stub_0x3bbecc(part: *mut BasicPartInstance, value: LegacyPartType) -> LegacyPartType {
+    // IDA 0x3bbecc: `ReleaseAssert(formFactor == SYMETRIC,
+    // BasicPartInstance.cpp:147)` (0x3bbee8-0x3bbf31; strings `0x10f8056` and
+    // `0x10f807b`); unchanged returns current (0x3bbf38-0x3bbf74). Else the
+    // `+244` lock (0x3bbf42), the Xml store (0x3bbf48), the non-`Block`
+    // `getPartSizeUi`/`setPartSizeUnjoined` resize (0x3bbf4e-0x3bbf5e),
+    // `safeMove` (0x3bbf64) and the `+240` unlock/return (0x3bbf70).
+    // Lock/resize/move ride the unmodeled part-geometry domain.
+    // SAFETY: `part` must point to a valid `BasicPartInstance`.
+    unsafe {
+        assert!(
+            (*part).form_factor == FormFactor::Symmetric,
+            "0x3bbecc setLegacyPartTypeUi: formFactor == PartInstance::SYMETRIC"
+        );
+        if (*part).legacy_part_type == value {
+            return value;
+        }
+        stub_0x3bbe50(part, value)
+    }
 }
 
 // 0x3bbf78 — __ZN3RBX17BasicPartInstanceC1Ev
@@ -10336,8 +10598,16 @@ pub fn stub_0x3bbf78(_this: *mut BasicPartInstance) {
 // 0x3bbff0 — __ZN3RBX17BasicPartInstanceC2Ev
 #[doc(alias = "RBX::BasicPartInstance::BasicPartInstance(void)")]
 // was: RBX::BasicPartInstance::BasicPartInstance(void)
-pub fn stub_0x3bbff0() -> ! {
-    todo!("0x3bbff0 RBX::BasicPartInstance::BasicPartInstance(void)")
+pub fn stub_0x3bbff0(this: *mut BasicPartInstance) {
+    // IDA 0x3bbff0: `DescribedCreatable` base C2 (0x3bbffa) + ten vtable
+    // stores (0x3bc00a-0x3bc046) + legacy-part-type default `Block`
+    // (`+83 = 1`, 0x3bc04c). Vtables are compiler-managed; the form factor
+    // keeps its base default (`Symmetric`, like `validateFormFactor`'s
+    // `*a2 = 0` at 0x3bc17a).
+    // SAFETY: `this` must point to a valid (possibly uninit) `BasicPartInstance`.
+    unsafe {
+        *this = BasicPartInstance::default();
+    }
 }
 
 // 0x3bc054 — __ZN3RBX17BasicPartInstanceD0Ev
@@ -10428,29 +10698,49 @@ pub fn stub_0x3bc15c(_this: *mut BasicPartInstance) {
 // 0x3bc170 — __ZN3RBX17BasicPartInstance18validateFormFactorERNS_12PartInstance10FormFactorE
 #[doc(alias = "RBX::BasicPartInstance::validateFormFactor(RBX::PartInstance::FormFactor &)")]
 // was: RBX::BasicPartInstance::validateFormFactor(RBX::PartInstance::FormFactor &)
-pub fn stub_0x3bc170() -> ! {
-    todo!("0x3bc170 RBX::BasicPartInstance::validateFormFactor(RBX::PartInstance::FormFactor &)")
+pub fn stub_0x3bc170(part: *const BasicPartInstance, form_factor: &mut FormFactor) -> bool {
+    // IDA 0x3bc170: a non-`Block` legacy type forces `Symmetric` and returns
+    // `0` (0x3bc176-0x3bc17a); `Block` returns `1` leaving the out word
+    // untouched (0x3bc17c).
+    // SAFETY: `part` must point to a valid `BasicPartInstance`.
+    unsafe {
+        if (*part).legacy_part_type != LegacyPartType::Block {
+            *form_factor = FormFactor::Symmetric;
+            return false;
+        }
+    }
+    true
 }
 
 // 0x3bc180 — __ZNK3RBX17BasicPartInstance11getPartTypeEv
 #[doc(alias = "RBX::BasicPartInstance::getPartType(void)const")]
 // was: RBX::BasicPartInstance::getPartType(void)const
-pub fn stub_0x3bc180() -> ! {
-    todo!("0x3bc180 RBX::BasicPartInstance::getPartType(void)const")
+pub fn stub_0x3bc180(part: *const BasicPartInstance) -> LegacyPartType {
+    // IDA 0x3bc180: words `0..2` return directly (0x3bc1de); `>= 3` hits
+    // `ReleaseAssert("0", BasicPartInstance.cpp:115)` then falls back to
+    // `Block` (0x3bc190-0x3bc1da). Out-of-range words are unrepresentable in
+    // the typed model, so the clamp arm is documented-only.
+    // SAFETY: `part` must point to a valid `BasicPartInstance`.
+    unsafe { (*part).legacy_part_type }
 }
 
 // 0x3bc1e0 — __ZN3RBX17BasicPartInstance23hasThreeDimensionalSizeEv
 #[doc(alias = "RBX::BasicPartInstance::hasThreeDimensionalSize(void)")]
 // was: RBX::BasicPartInstance::hasThreeDimensionalSize(void)
-pub fn stub_0x3bc1e0() -> ! {
-    todo!("0x3bc1e0 RBX::BasicPartInstance::hasThreeDimensionalSize(void)")
+pub fn stub_0x3bc1e0(part: *const BasicPartInstance) -> bool {
+    // IDA 0x3bc1e0: `+83 != Block` returns `0`, else `1` (0x3bc1e6-0x3bc1ea)
+    // — only `Block` has a three-dimensional size.
+    // SAFETY: `part` must point to a valid `BasicPartInstance`.
+    unsafe { (*part).legacy_part_type == LegacyPartType::Block }
 }
 
 // 0x3bc1ec — __ZNK3RBX17BasicPartInstance16partNeeds3dAdornEv
 #[doc(alias = "RBX::BasicPartInstance::partNeeds3dAdorn(void)const")]
 // was: RBX::BasicPartInstance::partNeeds3dAdorn(void)const
-pub fn stub_0x3bc1ec() -> ! {
-    todo!("0x3bc1ec RBX::BasicPartInstance::partNeeds3dAdorn(void)const")
+pub fn stub_0x3bc1ec(part: *const BasicPartInstance) -> bool {
+    // IDA 0x3bc1ec: `+83 == Cylinder` (0x3bc1f8).
+    // SAFETY: `part` must point to a valid `BasicPartInstance`.
+    unsafe { (*part).legacy_part_type == LegacyPartType::Cylinder }
 }
 
 // 0x3bc1fc — __ZN3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEED1Ev
@@ -10469,8 +10759,23 @@ pub fn stub_0x3bc1fc(this: *mut FFEnumPropDescriptor) {
 // 0x3bc220 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const
-pub fn stub_0x3bc220() -> ! {
-    todo!("0x3bc220 RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x3bc220(
+    _desc: *const FFEnumPropDescriptor,
+    obj: *mut BasicPartInstance,
+    value: FormFactor,
+) {
+    // IDA 0x3bc220: `xsi:nil` returns early (0x3bc244); an int payload routes
+    // through `setIntValue` (0x3bc28c-0x3bc29c); else a string payload goes
+    // through `Name::lookup` + `EnumDesc::convertToValue` into the `+44`
+    // member setter (0x3bc2aa-0x3bc306, `setFormFactorXml`); an empty string
+    // falls back to the defaulted setter (0x3bc328-0x3bc3d8) and any other
+    // miss hits `ReleaseAssert("false", Reflection.h:359)` (0x3bc360+). XML,
+    // names and the binder collapse into the resolved value — same collapse
+    // as the `RefProp` readValues (0x395464/0x395fac); the modeled half is
+    // the member store. The `FormFactorPart` base collapses to the derived
+    // part, like the `-36` strips.
+    // SAFETY: `obj` must point to a valid `BasicPartInstance`.
+    stub_0x3bb964(obj, value);
 }
 
 // 0x3bc460 — __ZN3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEED1Ev
@@ -10488,15 +10793,20 @@ pub fn stub_0x3bc460(this: *mut BPEnumPropDescriptor) {
 // 0x3bc484 — __ZNK3RBX17BasicPartInstance17getLegacyPartTypeEv
 #[doc(alias = "RBX::BasicPartInstance::getLegacyPartType(void)const")]
 // was: RBX::BasicPartInstance::getLegacyPartType(void)const
-pub fn stub_0x3bc484() -> ! {
-    todo!("0x3bc484 RBX::BasicPartInstance::getLegacyPartType(void)const")
+pub fn stub_0x3bc484(part: *const BasicPartInstance) -> LegacyPartType {
+    // IDA 0x3bc484: `return +83` (0x3bc488).
+    // SAFETY: `part` must point to a valid `BasicPartInstance`.
+    unsafe { (*part).legacy_part_type }
 }
 
 // 0x3bc6d8 — __ZN3RBX14FormFactorPart18validateFormFactorERNS_12PartInstance10FormFactorE
 #[doc(alias = "RBX::FormFactorPart::validateFormFactor(RBX::PartInstance::FormFactor &)")]
 // was: RBX::FormFactorPart::validateFormFactor(RBX::PartInstance::FormFactor &)
-pub fn stub_0x3bc6d8() -> ! {
-    todo!("0x3bc6d8 RBX::FormFactorPart::validateFormFactor(RBX::PartInstance::FormFactor &)")
+pub fn stub_0x3bc6d8(_part: *const BasicPartInstance, _form_factor: &mut FormFactor) {
+    // IDA 0x3bc6d8: empty body (single `;`) — the `FormFactorPart` base
+    // validation accepts everything; the `BasicPartInstance` override
+    // (0x3bc170) carries the real gate. The base parameter collapses to the
+    // derived part.
 }
 
 // 0x3bd46c — __ZN3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
