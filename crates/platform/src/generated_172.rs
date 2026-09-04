@@ -5,8 +5,11 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
-use std::sync::atomic::{AtomicU32, Ordering};
-use super::generated_171::RenderEnumDesc;
+use rbx_core::shared_ptr::{ControlBlockPd, CreatableInstanceDeleter};
+use rbx_core::signal::Signal;
+use std::sync::LazyLock;
+use std::sync::atomic::{AtomicBool, AtomicU32, Ordering};
+use super::generated_171::{RenderEnumDesc, RenderSettingsItem};
 
 const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
@@ -40,6 +43,12 @@ static ENUM_REGISTRAR_ANTIALIASING_MODE: AtomicU32 = AtomicU32::new(0);
 static ENUM_REGISTRAR_FRAME_RATE_MANAGER_MODE: AtomicU32 = AtomicU32::new(0);
 static ENUM_REGISTRAR_GRAPHICS_MODE: AtomicU32 = AtomicU32::new(0);
 static ENUM_REGISTRAR_AA_SAMPLES: AtomicU32 = AtomicU32::new(0);
+
+/// `FactoryProduct<CRenderSettingsItem,...>::Creator::isConstructed` (IDA
+/// `isConstructedE == 666` checks at 0xeccc/0xee84/0xf500, set by the C2 at
+/// 0xf2bc). Host process flag; the `creatorPrivate` singleton itself is
+/// folded into this bit.
+static CREATOR_IS_CONSTRUCTED: AtomicBool = AtomicBool::new(false);
 
 // 0xc154 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED1Ev
 // mangled: __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED1Ev
@@ -1201,24 +1210,39 @@ pub fn stub_ec30(desc: *mut RenderEnumDesc) {
 // mangled: __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD2Ev
 // type: int __fastcall(int)
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_eccc() -> ! {
-    todo!("0xeccc __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_eccc() {
+    // IDA 0xeccc (`Creator::D2`): vtable reset (host nop) +
+    // `ReleaseAssert(wasConstructed())` (`../App/include/Util/Object.h:255`,
+    // `isConstructed == 666`). Verified via IDA decompile.
+    debug_assert!(CREATOR_IS_CONSTRUCTED.load(Ordering::SeqCst), "wasConstructed() ../App/include/Util/Object.h:255");
 }
 
 // 0xedfc — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv
 // mangled: __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv
 // type: int(void)
 #[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_edfc() -> ! {
-    todo!("0xedfc __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_edfc() -> &'static str {
+    // IDA 0xedfc (`Creator::getClassName`): `ReleaseAssert(wasConstructed())`,
+    // `Name::declare<sRenderSettings>()`, tail-jump to
+    // `Name::doDeclare<sRenderSettings>()` (0xf1dc) returning the
+    // `RenderSettings` name. Same sequence as 0xb8d0 documents. Verified via
+    // IDA disasm (assert prologue vs `isConstructed == 0x29A`).
+    debug_assert!(CREATOR_IS_CONSTRUCTED.load(Ordering::SeqCst), "wasConstructed() ../App/include/Util/Object.h");
+    stub_f1dc()
 }
 
 // 0xee84 — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv
 // mangled: __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv
 // type: int __fastcall(int *)
 #[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv")]
-pub fn stub_ee84() -> ! {
-    todo!("0xee84 __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv")
+pub fn stub_ee84() -> SharedPtr<RenderSettingsItem> {
+    // IDA 0xee84 (`Creator::create`): `ReleaseAssert(wasConstructed())`
+    // (`Object.h:231`), `Creatable::create<CRenderSettingsItem>` (0xef04),
+    // then the `+32` thunk offset into the `shared_ptr` pair. Host: the fresh
+    // item behind `SharedPtr` (the `Instance` base offset is a layout detail
+    // with no host counterpart). Verified via IDA decompile.
+    debug_assert!(CREATOR_IS_CONSTRUCTED.load(Ordering::SeqCst), "wasConstructed() ../App/include/Util/Object.h:231");
+    stub_ef04()
 }
 
 // 0xef04 — __ZN3RBX9CreatableINS_8InstanceEE6createI19CRenderSettingsItemEEN5boost10shared_ptrIT_EEv
@@ -1226,8 +1250,13 @@ pub fn stub_ee84() -> ! {
 // type: void __fastcall(int)
 #[doc(alias = "rbx_core::SharedPtr<CRenderSettingsItem> RBX::Creatable<RBX::Instance>::create<CRenderSettingsItem>(void)")]
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-pub fn stub_ef04() -> ! {
-    todo!("0xef04 boost::shared_ptr<CRenderSettingsItem> RBX::Creatable<RBX::Instance>::create<CRenderSettingsItem>(void)")
+pub fn stub_ef04() -> SharedPtr<RenderSettingsItem> {
+    // IDA 0xef04 (`Creatable<Instance>::create<CRenderSettingsItem>`):
+    // `operator new(0xC4)`, `CRenderSettingsItem::CRenderSettingsItem`,
+    // `shared_ptr` ctor with the `Creatable::Deleter`. Host: default item
+    // adopted by `SharedPtr` (`Arc`); `boost::shared_ptr` never appears
+    // (AGENTS.md). Verified via IDA decompile.
+    SharedPtr::from(Box::new(RenderSettingsItem::default()))
 }
 
 // 0xefb4 — __ZN5boost10shared_ptrI19CRenderSettingsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
@@ -1235,87 +1264,125 @@ pub fn stub_ef04() -> ! {
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<CRenderSettingsItem>::shared_ptr<CRenderSettingsItem,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-pub fn stub_efb4() -> ! {
-    todo!("0xefb4 boost::shared_ptr<CRenderSettingsItem>::shared_ptr<CRenderSettingsItem,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_efb4(item: RenderSettingsItem) -> SharedPtr<RenderSettingsItem> {
+    // IDA 0xefb4 (`shared_ptr` ctor): `px = p`, `shared_count` control-block
+    // alloc (0xf098), `_internal_accept_owner` for the
+    // `enable_shared_from_this<DescribedBase>` base. Host: `Arc` adoption
+    // covers all three (cf. `shared_ptr_from_raw`). Verified via IDA
+    // decompile.
+    SharedPtr::from(Box::new(item))
 }
 
 // 0xefd8 — __ZNK5boost6detail15sp_counted_base9use_countEv
 // mangled: __ZNK5boost6detail15sp_counted_base9use_countEv
 // type: int __fastcall(boost::detail::sp_counted_base *this)
 #[doc(alias = "boost::detail::sp_counted_base::use_count(void)const")]
-pub fn stub_efd8() -> ! {
-    todo!("0xefd8 boost::detail::sp_counted_base::use_count(void)const")
+pub fn stub_efd8(shared: &SharedPtr<RenderSettingsItem>) -> usize {
+    // IDA 0xefd8 (`sp_counted_base::use_count`): spinlock-mutex lock, load
+    // `use_count`, unlock, return. Host `Arc::strong_count` is the same
+    // atomic load. Verified via IDA decompile.
+    SharedPtr::strong_count(shared)
 }
 
 // 0xf098 — __ZN5boost6detail12shared_countC2IP19CRenderSettingsItemN3RBX9CreatableINS5_8InstanceEE7DeleterEEET_T0_
 // mangled: __ZN5boost6detail12shared_countC2IP19CRenderSettingsItemN3RBX9CreatableINS5_8InstanceEE7DeleterEEET_T0_
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_f098() -> ! {
-    todo!("0xf098 boost::detail::shared_count::shared_count<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_f098(item: RenderSettingsItem) -> ControlBlockPd<RenderSettingsItem, CreatableInstanceDeleter> {
+    // IDA 0xf098 (`shared_count` ctor): `*a1 = 0`, `new 0x14` control block
+    // with both counts 1, vtable + `px` stores. Host: fresh
+    // `ControlBlockPd` (counts 1/1). Verified via IDA decompile.
+    ControlBlockPd::new(Box::new(item), CreatableInstanceDeleter)
 }
 
 // 0xf198 — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED1Ev
 // mangled: __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_f198() -> ! {
-    todo!("0xf198 boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_f198() {
+    // IDA 0xf198 (`sp_counted_impl_pd::D1`): empty body. Verified via IDA
+    // decompile.
 }
 
 // 0xf19c — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE7disposeEv
 // mangled: __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE7disposeEv
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_f19c() -> ! {
-    todo!("0xf19c boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_f19c(block: &mut ControlBlockPd<RenderSettingsItem, CreatableInstanceDeleter>) {
+    // IDA 0xf19c (`dispose`): `v2 = px`, `Instance::predelete(v2)`, then the
+    // virtual deleting dtor when non-null. Host: `predelete` is
+    // datamodel-owned (passed as the hook), the trailing delete is the drop.
+    // Verified via IDA decompile.
+    block.dispose_with(|_| {});
 }
 
 // 0xf1bc — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // mangled: __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_f1bc() -> ! {
-    todo!("0xf1bc boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_f1bc(block: &ControlBlockPd<RenderSettingsItem, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0xf1bc (`get_deleter`): `return a1 + 16` iff the queried
+    // `type_info` name is `N3RBX9CreatableINS_8InstanceEE7DeleterE`, else
+    // null. Host delegates to the block. Verified via IDA decompile.
+    block.get_deleter(type_name)
 }
 
 // 0xf1d4 — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // mangled: __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_f1d4() -> ! {
-    todo!("0xf1d4 boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_f1d4(block: &ControlBlockPd<RenderSettingsItem, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0xf1d4 (`get_untyped_deleter`): unconditionally `return a1 + 16`.
+    // Host delegates to the block. Verified via IDA decompile.
+    block.get_untyped_deleter()
 }
 
 // 0xf1d8 — __ZN3RBX4Name13callDoDeclareILZ15sRenderSettingsEEEvv
 // mangled: __ZN3RBX4Name13callDoDeclareILZ15sRenderSettingsEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZ15sRenderSettingsEEEvv")]
-pub fn stub_f1d8() -> ! {
-    todo!("0xf1d8 __ZN3RBX4Name13callDoDeclareILZ15sRenderSettingsEEEvv")
+pub fn stub_f1d8() -> &'static str {
+    // IDA 0xf1d8 (`Name::callDoDeclare<sRenderSettings>`): thunk tail-calling
+    // `doDeclare` (0xf1dc). Verified via IDA decompile.
+    stub_f1dc()
 }
 
 // 0xf1dc — __ZN3RBX4Name9doDeclareILZ15sRenderSettingsEEERKS0_v
 // mangled: __ZN3RBX4Name9doDeclareILZ15sRenderSettingsEEERKS0_v
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZ15sRenderSettingsEEERKS0_v")]
-pub fn stub_f1dc() -> ! {
-    todo!("0xf1dc __ZN3RBX4Name9doDeclareILZ15sRenderSettingsEEERKS0_v")
+pub fn stub_f1dc() -> &'static str {
+    // IDA 0xf1dc (`Name::doDeclare<sRenderSettings>`): `__cxa_guard` one-shot
+    // `Name::declare(&sRenderSettings)`, returns the interned name. Host
+    // folds the interned `RenderSettings` name into a `LazyLock` literal.
+    // Verified via IDA decompile.
+    static DECLARED: LazyLock<&'static str> = LazyLock::new(|| "RenderSettings");
+    *DECLARED
 }
 
 // 0xf2bc — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev
 // mangled: __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev
 // type: pthread_mutex_t *__fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_f2bc() -> ! {
-    todo!("0xf2bc __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev")
+pub fn stub_f2bc() {
+    // IDA 0xf2bc (`Creator::C2`): vtable store then `boost::call_once` with
+    // `callDoDeclare<sRenderSettings>` (0xf1d8) declaring the class name;
+    // the constructed marker (`isConstructed = 666`) arms the D2/create
+    // asserts. Host runs the declare thunk once and sets the flag. Verified
+    // via IDA decompile.
+    stub_f1d8();
+    CREATOR_IS_CONSTRUCTED.store(true, Ordering::SeqCst);
 }
 
 // 0xf500 — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv
 // mangled: __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv
 // type: void *()
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_f500() -> ! {
-    todo!("0xf500 __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv")
+pub fn stub_f500() {
+    // IDA 0xf500 (`static_getCreator`): `ReleaseAssert(Creator::
+    // wasConstructed())` (`Object.h:282`), returns `&creatorPrivate`. The
+    // singleton creator is folded into `CREATOR_IS_CONSTRUCTED`; the assert
+    // is the observable contract. Verified via IDA decompile.
+    debug_assert!(CREATOR_IS_CONSTRUCTED.load(Ordering::SeqCst), "Creator::wasConstructed() ../App/include/Util/Object.h:282");
 }
 
 // 0xf574 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4nextERN5boost13intrusive_ptrINS8_4slotEEE
@@ -1323,22 +1390,33 @@ pub fn stub_f500() -> ! {
 // type: int __fastcall(int, int *, int, int, char, int, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot> &)")]
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-pub fn stub_f574() -> ! {
-    todo!("0xf574 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot> &)")
+pub fn stub_f574(_signal: &Signal<u32>) {
+    // IDA 0xf574 (`signal<...>::next`): `call_once` mutex init,
+    // `intrusive_ptr_add_ref` on the slot, iterator advance to the next live
+    // slot. Host `Signal::fire` (cf. 0xb76c) subsumes the slot walk; the
+    // advance itself is drop glue — no-op. `Signal` is
+    // `rbx_core::signal::Signal`, never `boost`. Verified via IDA decompile.
 }
 
 // 0xf6dc — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE8on_errorERSt9exception
 // mangled: __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE8on_errorERSt9exception
 // type: int *()
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::on_error(std::exception &)")]
-pub fn stub_f6dc() -> ! {
-    todo!("0xf6dc rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::on_error(std::exception &)")
+pub fn stub_f6dc() {
+    // IDA 0xf6dc (`signal<...>::on_error`): loads the
+    // `slot_exception_handler`; when non-null invokes it, else returns the
+    // handler slot. Host `Signal::fire` handles slot errors inline; the
+    // default-handler path is a no-op. Verified via IDA decompile.
 }
 
 // 0xf704 — __ZNSt6vectorIN3G3D12Vector2int16ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_
 // mangled: __ZNSt6vectorIN3G3D12Vector2int16ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_
 // type: int __fastcall(int, char *, _DWORD *)
 #[doc(alias = "std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::_M_insert_aux(__gnu_cxx::__normal_iterator<G3D::Vector2int16*,std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>>,G3D::Vector2int16 const&)")]
-pub fn stub_f704() -> ! {
-    todo!("0xf704 std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::_M_insert_aux(__gnu_cxx::__normal_iterator<G3D::Vector2int16*,std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>>,G3D::Vector2int16 const&)")
+pub fn stub_f704(vec: &mut Vec<i32>, index: usize, value: i32) {
+    // IDA 0xf704 (`vector<Vector2int16>::_M_insert_aux`): capacity check,
+    // `length_error` at the `0x3FFFFFFF` cap, realloc + shift + insert at
+    // `pos`, else shift-right + store. `Vector2int16` is 4 bytes (host
+    // `i32`); `Vec::insert` covers both paths. Verified via IDA decompile.
+    vec.insert(index, value);
 }
