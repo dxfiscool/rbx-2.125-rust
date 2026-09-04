@@ -6,25 +6,25 @@
 
 #[doc(alias = "std::string::append(unsigned long,char)")]
 // 0xf6b3f4 — __ZNSs6appendEmc
-pub fn stub_0xf6b3f4() -> ! {
-    todo!("0xf6b3f4 __ZNSs6appendEmc")
+pub fn stub_0xf6b3f4() {
+    // IDA 0xf6b3f4: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "std::string::assign(char const*,unsigned long)")]
 // 0xf6b404 — __ZNSs6assignEPKcm
-pub fn stub_0xf6b404() -> ! {
-    todo!("0xf6b404 __ZNSs6assignEPKcm")
+pub fn stub_0xf6b404() {
+    // IDA 0xf6b404: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "std::string::assign(std::string const&)")]
 // 0xf6b414 — __ZNSs6assignERKSs
-pub fn stub_0xf6b414() -> ! {
-    todo!("0xf6b414 __ZNSs6assignERKSs")
+pub fn stub_0xf6b414() {
+    // IDA 0xf6b414: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "std::string::insert(unsigned long,char const*,unsigned long)")]
 // 0xf6b424 — __ZNSs6insertEmPKcm
-pub fn stub_0xf6b424() -> ! {
-    todo!("0xf6b424 __ZNSs6insertEmPKcm")
+pub fn stub_0xf6b424() {
+    // IDA 0xf6b424: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 

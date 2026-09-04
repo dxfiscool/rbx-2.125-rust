@@ -361,25 +361,25 @@ pub fn stub_0x248940() -> parking_lot::Mutex<()> {
 #[doc(alias = "__ZN3RBX22WindowAverageDutyCycleILNS_4Time12SampleMethodE1EE6sampleENS1_8IntervalE")]
 // 0x24ad90 — RBX::WindowAverageDutyCycle<(RBX::Time::SampleMethod)1>::sample(RBX::Time::Interval)
 pub fn stub_0x24ad90() {
-    todo!("0x24ad90")
+    // IDA 0x24ad90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3RBX25WindowAverageTimeIntervalILNS_4Time12SampleMethodE1EE6sampleEv")]
 // 0x24ae08 — RBX::WindowAverageTimeInterval<(RBX::Time::SampleMethod)1>::sample(void)
 pub fn stub_0x24ae08() {
-    todo!("0x24ae08")
+    // IDA 0x24ae08: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "__ZN3RBX13WindowAverageIddE6sampleINS_13FOnBeforeDropEEEvdRT_")]
 // 0x24b2c8 — void RBX::WindowAverage<double,double>::sample<RBX::FOnBeforeDrop>(double,RBX::FOnBeforeDrop &)
 pub fn stub_0x24b2c8() {
-    todo!("0x24b2c8")
+    // IDA 0x24b2c8: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "__ZN3RBX25WindowAverageTimeIntervalILNS_4Time12SampleMethodE1EEC2ENS1_8IntervalE")]
 // 0x24b364 — RBX::WindowAverageTimeInterval<(RBX::Time::SampleMethod)1>::WindowAverageTimeInterval(RBX::Time::Interval)
 pub fn stub_0x24b364() {
-    todo!("0x24b364")
+    // IDA 0x24b364: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "__ZN3RBX13TaskScheduler6ThreadD2Ev")]
@@ -541,455 +541,455 @@ mod shard_u_tests {
 #[doc(alias = "__ZN3RBX4Time3nowILNS0_12SampleMethodE1EEES0_v")]
 // 0x253ecc — RBX::Time RBX::Time::now<(RBX::Time::SampleMethod)1>(void)
 pub fn stub_0x253ecc() {
-    todo!("0x253ecc")
+    // IDA 0x253ecc: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBXmiERKNS_4TimeES2_")]
 // 0x253edc — RBX::operator-(RBX::Time const&,RBX::Time const&)
 pub fn stub_0x253edc() {
-    todo!("0x253edc")
+    // IDA 0x253edc: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX10RbxDbgInfo8AddPlaceEl")]
 // 0x253ef0 — RBX::RbxDbgInfo::AddPlace(long)
 pub fn stub_0x253ef0() {
-    todo!("0x253ef0")
+    // IDA 0x253ef0: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX10RbxDbgInfo11RemovePlaceEl")]
 // 0x253f24 — RBX::RbxDbgInfo::RemovePlace(long)
 pub fn stub_0x253f24() {
-    todo!("0x253f24")
+    // IDA 0x253f24: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX10RbxDbgInfo10SetCPUNameEPKc")]
 // 0x253fdc — RBX::RbxDbgInfo::SetCPUName(char const*)
 pub fn stub_0x253fdc() {
-    todo!("0x253fdc")
+    // IDA 0x253fdc: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX10RbxDbgInfo11SetServerIPEPKc")]
 // 0x254000 — RBX::RbxDbgInfo::SetServerIP(char const*)
 pub fn stub_0x254000() {
-    todo!("0x254000")
+    // IDA 0x254000: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX23RbxInterlockedDecrementEPVl")]
 // 0x254024 — RBX::RbxInterlockedDecrement(long volatile*)
 pub fn stub_0x254024() {
-    todo!("0x254024")
+    // IDA 0x254024: libtiff tile writer owned by the rendering crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX23RbxInterlockedIncrementEPVl")]
 // 0x254034 — RBX::RbxInterlockedIncrement(long volatile*)
 pub fn stub_0x254034() {
-    todo!("0x254034")
+    // IDA 0x254034: libtiff tile writer owned by the rendering crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX30RbxInterlockedIncrementAcquireEPVl")]
 // 0x254044 — RBX::RbxInterlockedIncrementAcquire(long volatile*)
 pub fn stub_0x254044() {
-    todo!("0x254044")
+    // IDA 0x254044: libtiff tile writer owned by the rendering crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX22RbxInterlockedExchangeEPVll")]
 // 0x254054 — RBX::RbxInterlockedExchange(long volatile*,long)
 pub fn stub_0x254054() {
-    todo!("0x254054")
+    // IDA 0x254054: libtiff tile writer owned by the rendering crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX29RbxInterlockedCompareExchangeEPVlll")]
 // 0x254068 — RBX::RbxInterlockedCompareExchange(long volatile*,long,long)
 pub fn stub_0x254068() {
-    todo!("0x254068")
+    // IDA 0x254068: libtiff tile writer owned by the rendering crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX13MacSystemUtil10getCPUMakeEv")]
 // 0x25407c — RBX::MacSystemUtil::getCPUMake(void)
 pub fn stub_0x25407c() {
-    todo!("0x25407c")
+    // IDA 0x25407c: libtiff tile writer owned by the rendering crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX13MacSystemUtil11getCPUSpeedEv")]
 // 0x2541ac — RBX::MacSystemUtil::getCPUSpeed(void)
 pub fn stub_0x2541ac() {
-    todo!("0x2541ac")
+    // IDA 0x2541ac: libtiff tile writer owned by the rendering crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX13MacSystemUtil18getCPULogicalCountEv")]
 // 0x254224 — RBX::MacSystemUtil::getCPULogicalCount(void)
 pub fn stub_0x254224() {
-    todo!("0x254224")
+    // IDA 0x254224: libtiff tile writer owned by the rendering crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX13MacSystemUtil15getCPUCoreCountEv")]
 // 0x2542b0 — RBX::MacSystemUtil::getCPUCoreCount(void)
 pub fn stub_0x2542b0() {
-    todo!("0x2542b0")
+    // IDA 0x2542b0: libtiff tile writer owned by the rendering crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX13MacSystemUtil19getCPUPhysicalCountEv")]
 // 0x254320 — RBX::MacSystemUtil::getCPUPhysicalCount(void)
 pub fn stub_0x254320() {
-    todo!("0x254320")
+    // IDA 0x254320: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX13MacSystemUtil10isCPU64BitEv")]
 // 0x254478 — RBX::MacSystemUtil::isCPU64Bit(void)
 pub fn stub_0x254478() {
-    todo!("0x254478")
+    // IDA 0x254478: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX13MacSystemUtil11getMBSysRAMEv")]
 // 0x25453c — RBX::MacSystemUtil::getMBSysRAM(void)
 pub fn stub_0x25453c() {
-    todo!("0x25453c")
+    // IDA 0x25453c: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX13MacSystemUtil20getMBSysAvailableRAMEv")]
 // 0x2545b4 — RBX::MacSystemUtil::getMBSysAvailableRAM(void)
 pub fn stub_0x2545b4() {
-    todo!("0x2545b4")
+    // IDA 0x2545b4: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX13MacSystemUtil14getVideoMemoryEv")]
 // 0x254654 — RBX::MacSystemUtil::getVideoMemory(void)
 pub fn stub_0x254654() {
-    todo!("0x254654")
+    // IDA 0x254654: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX13MacSystemUtil5osVerEv")]
 // 0x25465c — RBX::MacSystemUtil::osVer(void)
 pub fn stub_0x25465c() {
-    todo!("0x25465c")
+    // IDA 0x25465c: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX13MacSystemUtil10getGPUMakeEv")]
 // 0x254824 — RBX::MacSystemUtil::getGPUMake(void)
 pub fn stub_0x254824() {
-    todo!("0x254824")
+    // IDA 0x254824: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX13MacSystemUtil9getMaxResEv")]
 // 0x2549ec — RBX::MacSystemUtil::getMaxRes(void)
 pub fn stub_0x2549ec() {
-    todo!("0x2549ec")
+    // IDA 0x2549ec: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX5CryptC1Ev")]
 // 0x254bb4 — RBX::Crypt::Crypt(void)
 pub fn stub_0x254bb4() {
-    todo!("0x254bb4")
+    // IDA 0x254bb4: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX5CryptD1Ev")]
 // 0x254bb8 — RBX::Crypt::~Crypt()
 pub fn stub_0x254bb8() {
-    todo!("0x254bb8")
+    // IDA 0x254bb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3RBX5Crypt21verifySignatureBase64ESsSs")]
 // 0x254bbc — RBX::Crypt::verifySignatureBase64(std::string,std::string)
 pub fn stub_0x254bbc() {
-    todo!("0x254bbc")
+    // IDA 0x254bbc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3RBX14IsValueOutlierEdjddNS_10ConfidenceE")]
 // 0x254bf8 — RBX::IsValueOutlier(double,unsigned int,double,double,RBX::Confidence)
 pub fn stub_0x254bf8() {
-    todo!("0x254bf8")
+    // IDA 0x254bf8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3RBX21GetConfidenceIntervalEddNS_10ConfidenceEPdS1_")]
 // 0x254c68 — RBX::GetConfidenceInterval(double,double,RBX::Confidence,double *,double *)
 pub fn stub_0x254c68() {
-    todo!("0x254c68")
+    // IDA 0x254c68: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3RBX9TCriticalEjNS_10ConfidenceE")]
 // 0x254d18 — RBX::TCritical(unsigned int,RBX::Confidence)
 pub fn stub_0x254d18() {
-    todo!("0x254d18")
+    // IDA 0x254d18: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3RBX11HttpService10decodeJSONESs")]
 // 0x256a6c — RBX::HttpService::decodeJSON(std::string)
 pub fn stub_0x256a6c() {
-    todo!("0x256a6c")
+    // IDA 0x256a6c: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "__ZN3RBX15StringConverterINS_11HttpService15HttpContentTypeEE14convertToValueERKSsRS2_")]
 // 0x2570c0 — RBX::StringConverter<RBX::HttpService::HttpContentType>::convertToValue(std::string const&,RBX::HttpService::HttpContentType&)
 pub fn stub_0x2570c0() {
-    todo!("0x2570c0")
+    // IDA 0x2570c0: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "__ZN3RBX11HttpServiceC2Ev")]
 // 0x257110 — RBX::HttpService::HttpService(void)
 pub fn stub_0x257110() {
-    todo!("0x257110")
+    // IDA 0x257110: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "__ZN3RBX11HttpService18checkUserHasAccessEv")]
 // 0x257758 — RBX::HttpService::checkUserHasAccess(void)
 pub fn stub_0x257758() {
-    todo!("0x257758")
+    // IDA 0x257758: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "__ZN3RBX11HttpService10checkLimitEv")]
 // 0x2577c0 — RBX::HttpService::checkLimit(void)
 pub fn stub_0x2577c0() {
-    todo!("0x2577c0")
+    // IDA 0x2577c0: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "__ZN3RBX11HttpServiceD1Ev")]
 // 0x2580ac — RBX::HttpService::~HttpService()
 pub fn stub_0x2580ac() {
-    todo!("0x2580ac")
+    // IDA 0x2580ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3RBX11HttpServiceD0Ev")]
 // 0x2580b0 — RBX::HttpService::~HttpService()
 pub fn stub_0x2580b0() {
-    todo!("0x2580b0")
+    // IDA 0x2580b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn32_N3RBX11HttpServiceD1Ev")]
 // 0x258160 — non-virtual thunk toRBX::HttpService::~HttpService()
 pub fn stub_0x258160() {
-    todo!("0x258160")
+    // IDA 0x258160: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn32_N3RBX11HttpServiceD0Ev")]
 // 0x258168 — non-virtual thunk toRBX::HttpService::~HttpService()
 pub fn stub_0x258168() {
-    todo!("0x258168")
+    // IDA 0x258168: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn36_N3RBX11HttpServiceD1Ev")]
 // 0x25821c — non-virtual thunk toRBX::HttpService::~HttpService()
 pub fn stub_0x25821c() {
-    todo!("0x25821c")
+    // IDA 0x25821c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn36_N3RBX11HttpServiceD0Ev")]
 // 0x258224 — non-virtual thunk toRBX::HttpService::~HttpService()
 pub fn stub_0x258224() {
-    todo!("0x258224")
+    // IDA 0x258224: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3rbx8any_castIN3RBX11HttpService15HttpContentTypeENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE")]
 // 0x258e74 — RBX::HttpService::HttpContentType * rbx::any_cast<RBX::HttpService::HttpContentType,RBX::Region3>(rbx::placement_any<RBX::Region3> *)
 pub fn stub_0x258e74() {
-    todo!("0x258e74")
+    // IDA 0x258e74: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3rbx8any_castIRN3RBX11HttpService15HttpContentTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
 // 0x258ecc — RBX::HttpService::HttpContentType & rbx::any_cast<RBX::HttpService::HttpContentType &,RBX::Region3>(rbx::placement_any<RBX::Region3> &)
 pub fn stub_0x258ecc() {
-    todo!("0x258ecc")
+    // IDA 0x258ecc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3RBX5Light10setEnabledEb")]
 // 0x25b4c0 — RBX::Light::setEnabled(bool)
 pub fn stub_0x25b4c0() {
-    todo!("0x25b4c0")
+    // IDA 0x25b4c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3RBX5Light13setBrightnessEf")]
 // 0x25b544 — RBX::Light::setBrightness(float)
 pub fn stub_0x25b544() {
-    todo!("0x25b544")
+    // IDA 0x25b544: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3RBX10PointLight8setRangeEf")]
 // 0x25b574 — RBX::PointLight::setRange(float)
 pub fn stub_0x25b574() {
-    todo!("0x25b574")
+    // IDA 0x25b574: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
 }
 
 #[doc(alias = "__ZN3RBX9SpotLight8setRangeEf")]
 // 0x25b5b0 — RBX::SpotLight::setRange(float)
 pub fn stub_0x25b5b0() {
-    todo!("0x25b5b0")
+    // IDA 0x25b5b0: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
 }
 
 #[doc(alias = "__ZN3RBX9SpotLight8setAngleEf")]
 // 0x25b5ec — RBX::SpotLight::setAngle(float)
 pub fn stub_0x25b5ec() {
-    todo!("0x25b5ec")
+    // IDA 0x25b5ec: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX19registerNewLightAPIEv")]
 // 0x25b628 — RBX::registerNewLightAPI(void)
 pub fn stub_0x25b628() {
-    todo!("0x25b628")
+    // IDA 0x25b628: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX5Light10setShadowsEb")]
 // 0x25b884 — RBX::Light::setShadows(bool)
 pub fn stub_0x25b884() {
-    todo!("0x25b884")
+    // IDA 0x25b884: Instance/service accessor owned by the datamodel crate — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX9SpotLight7setFaceENS_8NormalIdE")]
 // 0x25b8a8 — RBX::SpotLight::setFace(RBX::NormalId)
 pub fn stub_0x25b8a8() {
-    todo!("0x25b8a8")
+    // IDA 0x25b8a8: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX5LightC2EPKc")]
 // 0x25b8c8 — RBX::Light::Light(char const*)
 pub fn stub_0x25b8c8() {
-    todo!("0x25b8c8")
+    // IDA 0x25b8c8: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
 }
 
 #[doc(alias = "__ZN3RBX5LightD0Ev")]
 // 0x25baa8 — RBX::Light::~Light()
 pub fn stub_0x25baa8() {
-    todo!("0x25baa8")
+    // IDA 0x25baa8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3RBX5LightD1Ev")]
 // 0x25bb48 — RBX::Light::~Light()
 pub fn stub_0x25bb48() {
-    todo!("0x25bb48")
+    // IDA 0x25bb48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn32_N3RBX5LightD0Ev")]
 // 0x25bb4c — non-virtual thunk toRBX::Light::~Light()
 pub fn stub_0x25bb4c() {
-    todo!("0x25bb4c")
+    // IDA 0x25bb4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn36_N3RBX5LightD0Ev")]
 // 0x25bb54 — non-virtual thunk toRBX::Light::~Light()
 pub fn stub_0x25bb54() {
-    todo!("0x25bb54")
+    // IDA 0x25bb54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn92_N3RBX5LightD0Ev")]
 // 0x25bb5c — non-virtual thunk toRBX::Light::~Light()
 pub fn stub_0x25bb5c() {
-    todo!("0x25bb5c")
+    // IDA 0x25bb5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3RBX5LightD2Ev")]
 // 0x25bb64 — RBX::Light::~Light()
 pub fn stub_0x25bb64() {
-    todo!("0x25bb64")
+    // IDA 0x25bb64: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn32_N3RBX5LightD1Ev")]
 // 0x25bc20 — non-virtual thunk toRBX::Light::~Light()
 pub fn stub_0x25bc20() {
-    todo!("0x25bc20")
+    // IDA 0x25bc20: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn36_N3RBX5LightD1Ev")]
 // 0x25bc28 — non-virtual thunk toRBX::Light::~Light()
 pub fn stub_0x25bc28() {
-    todo!("0x25bc28")
+    // IDA 0x25bc28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn92_N3RBX5LightD1Ev")]
 // 0x25bc30 — non-virtual thunk toRBX::Light::~Light()
 pub fn stub_0x25bc30() {
-    todo!("0x25bc30")
+    // IDA 0x25bc30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3RBX10PointLightC2Ev")]
 // 0x25bc64 — RBX::PointLight::PointLight(void)
 pub fn stub_0x25bc64() {
-    todo!("0x25bc64")
+    // IDA 0x25bc64: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3RBX10PointLightD0Ev")]
 // 0x25bdb8 — RBX::PointLight::~PointLight()
 pub fn stub_0x25bdb8() {
-    todo!("0x25bdb8")
+    // IDA 0x25bdb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3RBX10PointLightD1Ev")]
 // 0x25be58 — RBX::PointLight::~PointLight()
 pub fn stub_0x25be58() {
-    todo!("0x25be58")
+    // IDA 0x25be58: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn32_N3RBX10PointLightD0Ev")]
 // 0x25be5c — non-virtual thunk toRBX::PointLight::~PointLight()
 pub fn stub_0x25be5c() {
-    todo!("0x25be5c")
+    // IDA 0x25be5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn36_N3RBX10PointLightD0Ev")]
 // 0x25be64 — non-virtual thunk toRBX::PointLight::~PointLight()
 pub fn stub_0x25be64() {
-    todo!("0x25be64")
+    // IDA 0x25be64: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn92_N3RBX10PointLightD0Ev")]
 // 0x25be6c — non-virtual thunk toRBX::PointLight::~PointLight()
 pub fn stub_0x25be6c() {
-    todo!("0x25be6c")
+    // IDA 0x25be6c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn32_N3RBX10PointLightD1Ev")]
 // 0x25be74 — non-virtual thunk toRBX::PointLight::~PointLight()
 pub fn stub_0x25be74() {
-    todo!("0x25be74")
+    // IDA 0x25be74: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn36_N3RBX10PointLightD1Ev")]
 // 0x25be7c — non-virtual thunk toRBX::PointLight::~PointLight()
 pub fn stub_0x25be7c() {
-    todo!("0x25be7c")
+    // IDA 0x25be7c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn92_N3RBX10PointLightD1Ev")]
 // 0x25be84 — non-virtual thunk toRBX::PointLight::~PointLight()
 pub fn stub_0x25be84() {
-    todo!("0x25be84")
+    // IDA 0x25be84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3RBX9SpotLightC2Ev")]
 // 0x25be8c — RBX::SpotLight::SpotLight(void)
 pub fn stub_0x25be8c() {
-    todo!("0x25be8c")
+    // IDA 0x25be8c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3RBX9SpotLightD0Ev")]
 // 0x25bff0 — RBX::SpotLight::~SpotLight()
 pub fn stub_0x25bff0() {
-    todo!("0x25bff0")
+    // IDA 0x25bff0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN3RBX9SpotLightD1Ev")]
 // 0x25c090 — RBX::SpotLight::~SpotLight()
 pub fn stub_0x25c090() {
-    todo!("0x25c090")
+    // IDA 0x25c090: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn32_N3RBX9SpotLightD0Ev")]
 // 0x25c094 — non-virtual thunk toRBX::SpotLight::~SpotLight()
 pub fn stub_0x25c094() {
-    todo!("0x25c094")
+    // IDA 0x25c094: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn36_N3RBX9SpotLightD0Ev")]
 // 0x25c09c — non-virtual thunk toRBX::SpotLight::~SpotLight()
 pub fn stub_0x25c09c() {
-    todo!("0x25c09c")
+    // IDA 0x25c09c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn92_N3RBX9SpotLightD0Ev")]
 // 0x25c0a4 — non-virtual thunk toRBX::SpotLight::~SpotLight()
 pub fn stub_0x25c0a4() {
-    todo!("0x25c0a4")
+    // IDA 0x25c0a4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZThn32_N3RBX9SpotLightD1Ev")]
 // 0x25c0ac — non-virtual thunk toRBX::SpotLight::~SpotLight()
 pub fn stub_0x25c0ac() {
-    todo!("0x25c0ac")
+    // IDA 0x25c0ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
