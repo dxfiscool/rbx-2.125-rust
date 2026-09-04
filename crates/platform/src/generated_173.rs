@@ -5,217 +5,359 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use std::sync::LazyLock;
+use super::generated_171::{RenderPropDescriptor, RenderSettingsItem};
+use super::generated_172::{REGION_ANY_INT, RegionAny};
 
 const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
 
+/// Host model of the `Described<CRenderSettingsItem,...>::describedClassDescriptor`
+/// singleton (IDA 0xfa00): guard-once constructed class descriptor. The
+/// registration side effects (property/function table wiring) have no host
+/// counterpart; the name is the observable contract.
+#[derive(Debug)]
+pub struct RenderClassDescriptor {
+    pub name: &'static str,
+}
+
+/// Host model of `BoundFuncDesc<CRenderSettingsItem,int ()(void),0>` (IDA
+/// 0xfd0c): member-function pointer + name + permissions/attributes. The
+/// callable itself is supplied by the caller (host `fn` pointer); only the
+/// name is stored.
+#[derive(Debug, Clone)]
+pub struct RenderBoundFuncDesc {
+    pub func_name: String,
+}
+
 // 0xf7e8 — __ZNSt12_Vector_baseIN3G3D12Vector2int16ESaIS1_EE11_M_allocateEm
 // mangled: __ZNSt12_Vector_baseIN3G3D12Vector2int16ESaIS1_EE11_M_allocateEm
 // type: int __fastcall(int, unsigned int)
 #[doc(alias = "std::_Vector_base<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::_M_allocate(unsigned long)")]
-pub fn stub_f7e8() -> ! {
-    todo!("0xf7e8 std::_Vector_base<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::_M_allocate(unsigned long)")
+pub fn stub_f7e8(count: usize) -> Vec<i32> {
+    // IDA 0xf7e8 (`_Vector_base<Vector2int16>::_M_allocate`): `count >=
+    // 0x40000000` throws `bad_alloc`, else `operator new(4 * count)`.
+    // `Vector2int16` is 4 bytes (host `i32`). Verified via IDA decompile.
+    if count >= 0x40000000 {
+        panic!("std::bad_alloc");
+    }
+    Vec::with_capacity(count)
 }
 
 // 0xf800 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3G3D12Vector2int16ES5_EET0_T_S7_S6_
 // mangled: __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3G3D12Vector2int16ES5_EET0_T_S7_S6_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "G3D::Vector2int16 * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<G3D::Vector2int16 *,G3D::Vector2int16 *>(G3D::Vector2int16 *,G3D::Vector2int16 *,G3D::Vector2int16 *)")]
-pub fn stub_f800() -> ! {
-    todo!("0xf800 G3D::Vector2int16 * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<G3D::Vector2int16 *,G3D::Vector2int16 *>(G3D::Vector2int16 *,G3D::Vector2int16 *,G3D::Vector2int16 *)")
+pub fn stub_f800(data: &mut Vec<i32>, src_start: usize, src_end: usize, dest_end: usize) -> usize {
+    // IDA 0xf800 (`__copy_backward` for `Vector2int16*`): backward 4-byte
+    // element copy of `[first, last)` to just below `result`, returns the
+    // adjusted `result`. Host `copy_within` has the same overlap-safe
+    // backward semantics. Verified via IDA decompile.
+    let len = src_end - src_start;
+    data.copy_within(src_start..src_end, dest_end - len);
+    dest_end
 }
 
 // 0xf83c — __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev
 // mangled: __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev")]
-pub fn stub_f83c() -> ! {
-    todo!("0xf83c __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev")
+pub fn stub_f83c(_this: *mut RenderSettingsItem) {
+    // IDA 0xf83c (`GlobalAdvancedSettingsItem::D1`): vtable resets (host
+    // nop), `singE = 0`, `Instance::~Instance`. Member drops belong to the
+    // host owner — no-op. Verified via IDA decompile.
 }
 
 // 0xf87c — __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev
 // mangled: __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev")]
-pub fn stub_f87c() -> ! {
-    todo!("0xf87c __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev")
+pub fn stub_f87c(this: *mut RenderSettingsItem) {
+    // IDA 0xf87c (`GlobalAdvancedSettingsItem::D0`): same vtable resets +
+    // `singE = 0` + `Instance::D2` as 0xf83c, then `operator delete(this)`.
+    // Host: full drop + free; caller must have come from `Box::into_raw`.
+    // Verified via IDA decompile.
+    if this.is_null() {
+        return;
+    }
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 
 // 0xf8c8 — __ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev
 // mangled: __ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev
 // type: void __fastcall(_QWORD *)
 #[doc(alias = "__ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev")]
-pub fn stub_f8c8() -> ! {
-    todo!("0xf8c8 __ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev")
+pub fn stub_f8c8(this: *mut RenderSettingsItem) {
+    // IDA 0xf8c8..0xf90a (`__ZThn32_` D1): `this - 32` (`[R1,#-0x20]!`),
+    // vtable stores, `singE = 0`, tail-call `Instance::~Instance` — the D1
+    // at 0xf83c on the adjusted base. Host refs already point at the base;
+    // the adjustment is folded. Verified via IDA disasm.
+    stub_f83c(this)
 }
 
 // 0xf90c — __ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev
 // mangled: __ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev
 // type: int __fastcall(_QWORD *)
 #[doc(alias = "__ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev")]
-pub fn stub_f90c() -> ! {
-    todo!("0xf90c __ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev")
+pub fn stub_f90c(this: *mut RenderSettingsItem) {
+    // IDA 0xf90c..0xf962 (`__ZThn32_` D0): `this - 32`, vtable stores,
+    // `singE = 0`, `Instance::D2`, `operator delete` — the D0 at 0xf87c on
+    // the adjusted base. Verified via IDA disasm.
+    stub_f87c(this)
 }
 
 // 0xf964 — __ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev
 // mangled: __ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev")]
-pub fn stub_f964() -> ! {
-    todo!("0xf964 __ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev")
+pub fn stub_f964(this: *mut RenderSettingsItem) {
+    // IDA 0xf964..0xf9a6 (`__ZThn36_` D1): `this - 36` (`[R1,#-0x24]!`),
+    // vtable stores, `singE = 0`, tail-call `Instance::~Instance` — the D1
+    // at 0xf83c on the adjusted base. Verified via IDA disasm.
+    stub_f83c(this)
 }
 
 // 0xf9a8 — __ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev
 // mangled: __ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev")]
-pub fn stub_f9a8() -> ! {
-    todo!("0xf9a8 __ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev")
+pub fn stub_f9a8(this: *mut RenderSettingsItem) {
+    // IDA 0xf9a8..0xf9fe (`__ZThn36_` D0): `this - 36`, vtable stores,
+    // `singE = 0`, `Instance::D2`, `operator delete` — the D0 at 0xf87c on
+    // the adjusted base. Verified via IDA disasm.
+    stub_f87c(this)
 }
 
 // 0xfa00 — __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // mangled: __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: void *__fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_fa00() -> ! {
-    todo!("0xfa00 __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+pub fn stub_fa00() -> &'static RenderClassDescriptor {
+    // IDA 0xfa00 (`Described<CRenderSettingsItem,...>::classDescriptor`):
+    // `__cxa_guard` one-shot construction of the static
+    // `describedClassDescriptor` (property/function tables wired at init),
+    // returns its address. Host folds the tables; the name is the observable
+    // contract. Verified via IDA decompile (guard prologue).
+    static DESCRIPTOR: LazyLock<RenderClassDescriptor> =
+        LazyLock::new(|| RenderClassDescriptor { name: "RenderSettings" });
+    &DESCRIPTOR
 }
 
 // 0xfb1c — __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // mangled: __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_fb1c() -> ! {
-    todo!("0xfb1c __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_fb1c(_this: *mut RenderSettingsItem) {
+    // IDA 0xfb1c (`Described<CRenderSettingsItem,...>::D1`): thunk to
+    // `Instance::~Instance`. Member drops belong to the host owner — no-op.
+    // Verified via IDA decompile (`// attributes: thunk`).
 }
 
 // 0xfb20 — __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // mangled: __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: int __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_fb20() -> ! {
-    todo!("0xfb20 __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_fb20(this: *mut RenderSettingsItem) {
+    // IDA 0xfb20 (`Described<CRenderSettingsItem,...>::D0`):
+    // `Instance::~Instance` then `operator delete`. Host: full drop + free;
+    // caller must have come from `Box::into_raw`. Verified via IDA decompile.
+    if this.is_null() {
+        return;
+    }
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 
 // 0xfb34 — __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // mangled: __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_fb34() -> ! {
-    todo!("0xfb34 __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_fb34(this: *mut RenderSettingsItem) {
+    // IDA 0xfb34 (`__ZThn32_` D1): `this - 32` tail-call to the D1 at 0xfb1c.
+    // Host refs already point at the base; the adjustment is folded.
+    stub_fb1c(this)
 }
 
 // 0xfb3c — __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // mangled: __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_fb3c() -> ! {
-    todo!("0xfb3c __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_fb3c(this: *mut RenderSettingsItem) {
+    // IDA 0xfb3c (`__ZThn32_` D0): `this - 32` tail-call to the D0 at 0xfb20.
+    stub_fb20(this)
 }
 
 // 0xfb54 — __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // mangled: __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_fb54() -> ! {
-    todo!("0xfb54 __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_fb54(this: *mut RenderSettingsItem) {
+    // IDA 0xfb54 (`__ZThn36_` D1): `this - 36` tail-call to the D1 at 0xfb1c.
+    // Host refs already point at the base; the adjustment is folded.
+    stub_fb1c(this)
 }
 
 // 0xfb5c — __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // mangled: __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_fb5c() -> ! {
-    todo!("0xfb5c __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_fb5c(this: *mut RenderSettingsItem) {
+    // IDA 0xfb5c (`__ZThn36_` D0): `this - 36` tail-call to the D0 at 0xfb20.
+    stub_fb20(this)
 }
 
 // 0xfb74 — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiEC2IMNS_15CRenderSettingsEKFjvEMS2_FvjEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // mangled: __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiEC2IMNS_15CRenderSettingsEKFjvEMS2_FvjEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::PropDescriptor<unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int)>(char const*,char const*,unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_fb74() -> ! {
-    todo!("0xfb74 RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::PropDescriptor<unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int)>(char const*,char const*,unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_fb74(name: &str) -> RenderPropDescriptor {
+    // IDA 0xfb74 (`PropDescriptor<int>::C2` with `uint (CRenderSettings::*)()const`
+    // getter / `void (CRenderSettingsItem::*)(uint)` setter): base descriptor
+    // init (names, attributes, permissions) + `GetSetImpl` member-pointer
+    // pair install. Host stores the property name; the getter/setter pair
+    // travels with the caller's `fn` pointer (cf. 0xfcbc/0xfce8). Verified
+    // via IDA decompile (base-init prologue).
+    RenderPropDescriptor { prop_name: name.to_string(), extra: None }
 }
 
 // 0xfc88 — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiED0Ev
 // mangled: __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiED0Ev
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::~PropDescriptor()")]
-pub fn stub_fc88() -> ! {
-    todo!("0xfc88 RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::~PropDescriptor()")
+pub fn stub_fc88(desc: *mut RenderPropDescriptor) {
+    // IDA 0xfc88 (`PropDescriptor<int>::D0`): vtable reset (host nop),
+    // `delete a1[10]` (the impl box), `delete a1`. Host: drop the box, full
+    // drop + free; caller must have come from `Box::into_raw`. Verified via
+    // IDA decompile.
+    if desc.is_null() {
+        return;
+    }
+    unsafe {
+        (*desc).extra.take();
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0xfcb4 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFjvEMS2_FvjEE10isReadOnlyEv
 // mangled: __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFjvEMS2_FvjEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int)>::isReadOnly(void)const")]
-pub fn stub_fcb4() -> ! {
-    todo!("0xfcb4 RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int)>::isReadOnly(void)const")
+pub fn stub_fcb4() -> bool {
+    // IDA 0xfcb4 (`GetSetImpl<...>::isReadOnly`): `return 0` — the property
+    // has both getter and setter. Verified via IDA decompile.
+    false
 }
 
 // 0xfcb8 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFjvEMS2_FvjEE11isWriteOnlyEv
 // mangled: __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFjvEMS2_FvjEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int)>::isWriteOnly(void)const")]
-pub fn stub_fcb8() -> ! {
-    todo!("0xfcb8 RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int)>::isWriteOnly(void)const")
+pub fn stub_fcb8() -> bool {
+    // IDA 0xfcb8 (`GetSetImpl<...>::isWriteOnly`): `return 0`. Verified via
+    // IDA decompile.
+    false
 }
 
 // 0xfcbc — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFjvEMS2_FvjEE8getValueEPKNS0_13DescribedBaseE
 // mangled: __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFjvEMS2_FvjEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_fcbc() -> ! {
-    todo!("0xfcbc RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_fcbc(item: &RenderSettingsItem, get: fn(&RenderSettingsItem) -> i32) -> i32 {
+    // IDA 0xfcbc (`GetSetImpl<...>::getValue`): `DescribedBase` downcast with
+    // the `this - 36` / `+96` base adjustments, then the bound member getter
+    // (direct or virtual-bit dispatch). Host refs need no adjustment; the
+    // member pointer folds into the `fn` parameter. Verified via IDA
+    // decompile.
+    get(item)
 }
 
 // 0xfce8 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFjvEMS2_FvjEE8setValueEPNS0_13DescribedBaseERKi
 // mangled: __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFjvEMS2_FvjEE8setValueEPNS0_13DescribedBaseERKi
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")]
-pub fn stub_fce8() -> ! {
-    todo!("0xfce8 RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+pub fn stub_fce8(item: &mut RenderSettingsItem, value: i32, set: fn(&mut RenderSettingsItem, i32)) {
+    // IDA 0xfce8 (`GetSetImpl<...>::setValue`): same downcast/adjustment as
+    // `getValue`, then the bound member setter with the new value. Host
+    // folds the member pointer into the `fn` parameter. Verified via IDA
+    // decompile.
+    set(item, value)
 }
 
 // 0xfd0c — __ZN3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EEC2EMS2_FivEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // mangled: __ZN3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EEC2EMS2_FivEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int ()(void),0>::BoundFuncDesc(int (CRenderSettingsItem::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_fd0c() -> ! {
-    todo!("0xfd0c RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int ()(void),0>::BoundFuncDesc(int (CRenderSettingsItem::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_fd0c(name: &str) -> RenderBoundFuncDesc {
+    // IDA 0xfd0c (`BoundFuncDesc<int ()(void),0>::C2`): `classDescriptor()`
+    // (0xfa00) + `FunctionDescriptor` init with the member-function pointer
+    // and name. Host stores the function name; the callable travels with the
+    // caller's `fn` pointer (cf. 0xfe30). Verified via IDA decompile
+    // (descriptor-init prologue).
+    RenderBoundFuncDesc { func_name: name.to_string() }
 }
 
 // 0xfe04 — __ZN3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EED0Ev
 // mangled: __ZN3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EED0Ev
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_fe04() -> ! {
-    todo!("0xfe04 RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int ()(void),0>::~BoundFuncDesc()")
+pub fn stub_fe04(desc: *mut RenderBoundFuncDesc) {
+    // IDA 0xfe04 (`BoundFuncDesc<int ()(void),0>::D0`): vtable reset (host
+    // nop), signature-item list `_M_clear`, `operator delete`. Host: full
+    // drop + free; caller must have come from `Box::into_raw`. Verified via
+    // IDA decompile.
+    if desc.is_null() {
+        return;
+    }
+    unsafe {
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0xfe30 — __ZNK3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // mangled: __ZNK3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_fe30() -> ! {
-    todo!("0xfe30 RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_fe30(item: &RenderSettingsItem, method: fn(&RenderSettingsItem) -> i32, out: &mut i32) -> i32 {
+    // IDA 0xfe30 (`BoundFuncDesc<int ()(void),0>::execute`): `this - 36`
+    // base adjustment, `Call0Helper::call` (0xfe54) with the bound member
+    // function, result into the `Arguments` variant. Host calls the method
+    // and stores the int result. Verified via IDA decompile.
+    let value = method(item);
+    *out = value;
+    value
 }
 
 // 0xfe54 — __ZN3RBX10Reflection11Call0HelperI19CRenderSettingsItemMS2_FivEiE4callEPS2_S4_RNS0_7VariantE
 // mangled: __ZN3RBX10Reflection11Call0HelperI19CRenderSettingsItemMS2_FivEiE4callEPS2_S4_RNS0_7VariantE
 // type: int __fastcall(int, int (__fastcall *)(_DWORD), int, _DWORD *)
 #[doc(alias = "RBX::Reflection::Call0Helper<CRenderSettingsItem,int (CRenderSettingsItem::*)(void),int>::call(CRenderSettingsItem*,int (CRenderSettingsItem::*)(void),RBX::Reflection::Variant &)")]
-pub fn stub_fe54() -> ! {
-    todo!("0xfe54 RBX::Reflection::Call0Helper<CRenderSettingsItem,int (CRenderSettingsItem::*)(void),int>::call(CRenderSettingsItem*,int (CRenderSettingsItem::*)(void),RBX::Reflection::Variant &)")
+pub fn stub_fe54(item: &RenderSettingsItem, method: fn(&RenderSettingsItem) -> i32, out: &mut RegionAny) -> i32 {
+    // IDA 0xfe54 (`Call0Helper<...,int>::call`): member-pointer adjust
+    // (`a3 >> 1`, virtual-bit dispatch), call, `Type::getSingleton<int>`
+    // wrap, `placement_any<Region3> = int` store. Host calls the method and
+    // stores the int payload (`REGION_ANY_INT`). Verified via IDA decompile.
+    let value = method(item);
+    out.tag = REGION_ANY_INT;
+    out.value = value;
+    value
 }
 
 // 0xfe84 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // mangled: __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::EnumPropDescriptor<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>(char const*,char const*,RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_fe84() -> ! {
-    todo!("0xfe84 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::EnumPropDescriptor<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>(char const*,char const*,RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_fe84(name: &str) -> RenderPropDescriptor {
+    // IDA 0xfe84 (`EnumPropDescriptor<ResolutionPreset>::C2` with
+    // `ResolutionPreset (CRenderSettings::*)()const` getter /
+    // `void (CRenderSettingsItem::*)(ResolutionPreset)` setter): base +
+    // enum-descriptor wiring with the member-pointer pair. Host stores the
+    // property name; the pair travels with the caller. Verified via IDA
+    // decompile (ctor prologue).
+    RenderPropDescriptor { prop_name: name.to_string(), extra: None }
 }
 
 // 0x10038 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEED0Ev

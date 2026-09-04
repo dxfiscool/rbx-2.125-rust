@@ -33,6 +33,7 @@ pub const REGION_ANY_ANTIALIASING_MODE: u32 = 4;
 pub const REGION_ANY_FRAME_RATE_MANAGER_MODE: u32 = 5;
 pub const REGION_ANY_GRAPHICS_MODE: u32 = 6;
 pub const REGION_ANY_AA_SAMPLES: u32 = 7;
+pub const REGION_ANY_INT: u32 = 8;
 /// `EnumRegistrar<ResolutionPreset>::registrar` bumped by the D2 at 0xccd4.
 /// Siblings below bump their own registrar on D2 (IDA 0xd1f0/0xd730/0xdc70/
 /// 0xe1b0/0xe6f0/0xec30); the host folds each registrar into a counter.
