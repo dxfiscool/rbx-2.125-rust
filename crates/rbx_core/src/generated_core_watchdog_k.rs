@@ -904,6 +904,109 @@ pub mod render_settings {
         "CRenderSettingsItem"
     }
 
+    /// Batch 4: was: `RBX::Reflection::Variant` — the placement-any (`Region3`-sized)
+    /// that `convertToValue` fills via `Singleton::initSingleton` + `placement_any::=`
+    /// (IDA 0xb9c8-0xb9ec). Collapsed to the payload this batch observes; the
+    /// singleton/type-tag hop is a no-op here since the payload carries its type.
+    /// Unknown payloads stay `Empty` (`[INFERENCE]` — only `I32` is observed).
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+    pub enum Variant {
+        #[default]
+        Empty,
+        I32(i32),
+    }
+
+    impl EnumDescData {
+        /// Batch 4 shared port of `EnumDesc<T>::convertToValue(index, out)` (IDA 0xb99c
+        /// disasm; the 0xbba4/0xbdac/0xbfb4 instantiations are the same template):
+        /// `if (*(a1 + 40) > index) { out = *(*(a1 + 144) + 4 * index); return 1; }
+        /// return 0;` (0xb9a4-0xb9b6) then the singleton/placement-assign of the
+        /// variant (0xb9c8-0xb9ec, collapsed into the `Variant` write).
+        /// `[INFERENCE]` — which table word +40 sizes and whether +144 aliases one
+        /// of the addPair tables; behavior matches on every IDA-observed input:
+        /// in-range slots resolve (holes propagate `-1`, exactly like the unchecked
+        /// `STRHI`), out-of-range fails.
+        pub fn convert_to_value(&self, index: usize, out: &mut Variant) -> bool {
+            if index < self.value_vec.len() {
+                *out = Variant::I32(self.value_vec[index]);
+                true
+            } else {
+                false
+            }
+        }
+        /// Batch 4 shared port of `EnumDesc<T>::convertToString(value, out)`
+        /// (IDA 0xb9f8/0xbc00/0xbe08/0xc010): resolve the per-value name slot and
+        /// assign it out, returning 1 — else return 0 with `out` untouched. The inner
+        /// base-class stringify call (0xba66) is the identity on names here.
+        pub fn convert_to_string(&self, value: usize, out: &mut String) -> bool {
+            if value < self.value_vec.len() && self.value_vec[value] >= 0 {
+                if let Some(Some(name)) = self.name_slots.get(value) {
+                    *out = name.clone();
+                    return true;
+                }
+            }
+            false
+        }
+        /// Batch 4: was: `EnumDesc<T>::convertToItem(value)` — the item-pointer
+        /// table read both `lookup` overloads funnel into (IDA 0xb972/0xb998).
+        /// Null (miss) becomes `None`.
+        pub fn convert_to_item(&self, value: usize) -> Option<usize> {
+            self.item_index.get(value).copied().flatten()
+        }
+        /// Batch 4 shared port of `EnumDesc<T>::lookup(name)` (IDA 0xb94c/0xbb54/
+        /// 0xbd5c/0xbf64): `Name::lookup` (the `by_name` map here), then
+        /// `convertToValue`, then `convertToItem` — null/`0` on any miss (0xb968).
+        pub fn lookup_by_name(&self, name: &str) -> Option<usize> {
+            let value = *self.by_name.get(name)?;
+            if value < 0 {
+                return None;
+            }
+            self.convert_to_item(value as usize)
+        }
+        /// Batch 4 shared port of `EnumDesc<T>::lookup(variant)` (IDA 0xb97c/0xbb84/
+        /// 0xbd8c/0xbf94): `any_cast<const T&>` reads the payload (the `*(a2 + 4)`
+        /// word, 0xb98e), then `convertToItem`. Non-`I32` payloads miss.
+        pub fn lookup_by_value(&self, variant: &Variant) -> Option<usize> {
+            match *variant {
+                Variant::I32(v) if v >= 0 => self.convert_to_item(v as usize),
+                _ => None,
+            }
+        }
+        /// Batch 4: models `EnumDesc<T>::~EnumDesc() D2` member teardown (reached via
+        /// the per-enum D1 thunks; full D2 bodies live outside this batch): every
+        /// table the ctor/`addPair`/`addLegacy` fills is released and the counter
+        /// reset, with base-class dtors left to Rust `Drop`.
+        pub fn destroy_d2(&mut self) {
+            self.pairs.clear();
+            self.items.clear();
+            self.value_vec.clear();
+            self.index_vec.clear();
+            self.ordered.clear();
+            self.name_slots.clear();
+            self.name_strings.clear();
+            self.item_index.clear();
+            self.by_name.clear();
+            self.legacy.clear();
+            self.aliases.clear();
+            self.legacy_remap.clear();
+            self.counter = 0;
+            self.log_bits = 0;
+        }
+        /// Batch 4: D1 delegates to D2 (per the 0xb934-style thunks).
+        pub fn destroy_d1(&mut self) {
+            self.destroy_d2();
+        }
+    }
+
+    /// Batch 4, IDA 0xb930: `FactoryProduct<...>::Creator D1` — thunk to D2
+    /// (whose body is outside this batch); teardown collapses to a no-op with
+    /// members left to `Drop`.
+    pub fn render_settings_creator_d2() {}
+    /// Batch 4, IDA 0xb930 thunk target wrapper.
+    pub fn render_settings_creator_d1() {
+        render_settings_creator_d2();
+    }
+
     /// Batch 2: was: `RBX::Reflection::{Enum,}PropDescriptor` dtor core —
     /// `*a1 = <base vtable>; if (slot) operator delete(slot); return a1;`
     /// (IDA 0xb354/0xb37c/0xb3a4/0xb3d0). The owned slot (a1[11]/+44 for the enum
@@ -1604,191 +1707,241 @@ pub fn stub_b8e8(item: Box<render_settings::CRenderSettingsItem>) {
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")]
 // 0xb900 — __ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
 // type: int()
-pub fn stub_b900() -> ! {
-    todo!("0xb900 __ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")
+// IDA 0xb900: Thn32 to `FactoryProduct::getClassName` — same static-creator hop,
+// collapsed like 0xb8d0 (the `this`-bias of the thunk is a no-op here).
+pub fn stub_b900() -> &'static str {
+    render_settings::render_settings_item_class_name()
 }
 
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 // 0xb910 — __ZThn36_N19CRenderSettingsItemD1Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
-pub fn stub_b910() -> ! {
-    todo!("0xb910 __ZThn36_N19CRenderSettingsItemD1Ev")
+// IDA 0xb910: non-virtual thunk to D1 — incoming `this` biased -36 (0xb912),
+// a no-op in the flat layout; delegates to the D1 teardown.
+pub fn stub_b910(item: &mut render_settings::CRenderSettingsItem) {
+    item.destroy_d1()
 }
 
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 // 0xb918 — __ZThn36_N19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
-pub fn stub_b918() -> ! {
-    todo!("0xb918 __ZThn36_N19CRenderSettingsItemD0Ev")
+// IDA 0xb918: non-virtual thunk to D0 — same -36 bias, then D2 plus free.
+pub fn stub_b918(item: Box<render_settings::CRenderSettingsItem>) {
+    stub_b8bc(item)
 }
 
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev")]
 // 0xb930 — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev
 // type: int()
-pub fn stub_b930() -> ! {
-    todo!("0xb930 __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev")
+// IDA 0xb930: `FactoryProduct::Creator D1` — thunk to D2.
+pub fn stub_b930() {
+    render_settings::render_settings_creator_d1()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::~EnumDesc()")]
 // 0xb934 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED1Ev
 // type: int()
-pub fn stub_b934() -> ! {
-    todo!("0xb934 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED1Ev")
+// IDA 0xb934: `EnumDesc::D1` — thunk to the D2 member teardown.
+pub fn stub_b934(desc: &mut render_settings::EnumDescData) {
+    desc.destroy_d1()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::~EnumDesc()")]
 // 0xb938 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED0Ev
 // type: int __fastcall(int)
-pub fn stub_b938() -> ! {
-    todo!("0xb938 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED0Ev")
+// IDA 0xb938: `EnumDesc::D0` — D2 teardown plus `operator delete`.
+// Ownership moves in, mirroring the deleting-destructor contract.
+pub fn stub_b938(desc: Box<render_settings::EnumDescData>) {
+    let mut desc = desc;
+    desc.destroy_d2()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::lookup(char const*)const")]
 // 0xb94c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
-pub fn stub_b94c() -> ! {
-    todo!("0xb94c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE6lookupEPKc")
+// IDA 0xb94c: `lookup(name)` — `Name::lookup`, `convertToValue`,
+// `convertToItem`; miss yields null (`None` here).
+pub fn stub_b94c(desc: &render_settings::EnumDescData, name: &str) -> Option<usize> {
+    desc.lookup_by_name(name)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::lookup(RBX::Reflection::Variant const&)const")]
 // 0xb97c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
-pub fn stub_b97c() -> ! {
-    todo!("0xb97c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE6lookupERKNS0_7VariantE")
+// IDA 0xb97c: `lookup(variant)` — `any_cast` payload, `convertToItem`.
+pub fn stub_b97c(desc: &render_settings::EnumDescData, variant: &render_settings::Variant) -> Option<usize> {
+    desc.lookup_by_value(variant)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 // 0xb99c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToValueEmRNS0_7VariantE
-pub fn stub_b99c() -> ! {
-    todo!("0xb99c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToValueEmRNS0_7VariantE")
+// IDA 0xb99c: `convertToValue(index, out)` — per-value table read with
+// the `+40`-bound check; `false` leaves `out` untouched.
+pub fn stub_b99c(desc: &render_settings::EnumDescData, index: usize, out: &mut render_settings::Variant) -> bool {
+    desc.convert_to_value(index, out)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToString(unsigned long,std::string &)const")]
 // 0xb9f8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
-pub fn stub_b9f8() -> ! {
-    todo!("0xb9f8 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE15convertToStringEmRSs")
+// IDA 0xb9f8: `convertToString(value, out)` — name-slot assign on hit,
+// `out` untouched and `false` on miss.
+pub fn stub_b9f8(desc: &render_settings::EnumDescData, value: usize, out: &mut String) -> bool {
+    desc.convert_to_string(value, out)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::~EnumDesc()")]
 // 0xbb3c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED1Ev
 // type: int()
-pub fn stub_bb3c() -> ! {
-    todo!("0xbb3c __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED1Ev")
+// IDA 0xbb3c: `EnumDesc::D1` — thunk to the D2 member teardown.
+pub fn stub_bb3c(desc: &mut render_settings::EnumDescData) {
+    desc.destroy_d1()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::~EnumDesc()")]
 // 0xbb40 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED0Ev
 // type: int __fastcall(int)
-pub fn stub_bb40() -> ! {
-    todo!("0xbb40 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED0Ev")
+// IDA 0xbb40: `EnumDesc::D0` — D2 teardown plus `operator delete`.
+// Ownership moves in, mirroring the deleting-destructor contract.
+pub fn stub_bb40(desc: Box<render_settings::EnumDescData>) {
+    let mut desc = desc;
+    desc.destroy_d2()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::lookup(char const*)const")]
 // 0xbb54 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
-pub fn stub_bb54() -> ! {
-    todo!("0xbb54 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE6lookupEPKc")
+// IDA 0xbb54: `lookup(name)` — `Name::lookup`, `convertToValue`,
+// `convertToItem`; miss yields null (`None` here).
+pub fn stub_bb54(desc: &render_settings::EnumDescData, name: &str) -> Option<usize> {
+    desc.lookup_by_name(name)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::lookup(RBX::Reflection::Variant const&)const")]
 // 0xbb84 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
-pub fn stub_bb84() -> ! {
-    todo!("0xbb84 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE6lookupERKNS0_7VariantE")
+// IDA 0xbb84: `lookup(variant)` — `any_cast` payload, `convertToItem`.
+pub fn stub_bb84(desc: &render_settings::EnumDescData, variant: &render_settings::Variant) -> Option<usize> {
+    desc.lookup_by_value(variant)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 // 0xbba4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToValueEmRNS0_7VariantE
-pub fn stub_bba4() -> ! {
-    todo!("0xbba4 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToValueEmRNS0_7VariantE")
+// IDA 0xbba4: `convertToValue(index, out)` — per-value table read with
+// the `+40`-bound check; `false` leaves `out` untouched.
+pub fn stub_bba4(desc: &render_settings::EnumDescData, index: usize, out: &mut render_settings::Variant) -> bool {
+    desc.convert_to_value(index, out)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToString(unsigned long,std::string &)const")]
 // 0xbc00 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
-pub fn stub_bc00() -> ! {
-    todo!("0xbc00 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE15convertToStringEmRSs")
+// IDA 0xbc00: `convertToString(value, out)` — name-slot assign on hit,
+// `out` untouched and `false` on miss.
+pub fn stub_bc00(desc: &render_settings::EnumDescData, value: usize, out: &mut String) -> bool {
+    desc.convert_to_string(value, out)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")]
 // 0xbd44 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED1Ev
 // type: int()
-pub fn stub_bd44() -> ! {
-    todo!("0xbd44 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED1Ev")
+// IDA 0xbd44: `EnumDesc::D1` — thunk to the D2 member teardown.
+pub fn stub_bd44(desc: &mut render_settings::EnumDescData) {
+    desc.destroy_d1()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")]
 // 0xbd48 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED0Ev
 // type: int __fastcall(int)
-pub fn stub_bd48() -> ! {
-    todo!("0xbd48 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED0Ev")
+// IDA 0xbd48: `EnumDesc::D0` — D2 teardown plus `operator delete`.
+// Ownership moves in, mirroring the deleting-destructor contract.
+pub fn stub_bd48(desc: Box<render_settings::EnumDescData>) {
+    let mut desc = desc;
+    desc.destroy_d2()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::lookup(char const*)const")]
 // 0xbd5c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
-pub fn stub_bd5c() -> ! {
-    todo!("0xbd5c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE6lookupEPKc")
+// IDA 0xbd5c: `lookup(name)` — `Name::lookup`, `convertToValue`,
+// `convertToItem`; miss yields null (`None` here).
+pub fn stub_bd5c(desc: &render_settings::EnumDescData, name: &str) -> Option<usize> {
+    desc.lookup_by_name(name)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::lookup(RBX::Reflection::Variant const&)const")]
 // 0xbd8c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
-pub fn stub_bd8c() -> ! {
-    todo!("0xbd8c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE6lookupERKNS0_7VariantE")
+// IDA 0xbd8c: `lookup(variant)` — `any_cast` payload, `convertToItem`.
+pub fn stub_bd8c(desc: &render_settings::EnumDescData, variant: &render_settings::Variant) -> Option<usize> {
+    desc.lookup_by_value(variant)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 // 0xbdac — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToValueEmRNS0_7VariantE
-pub fn stub_bdac() -> ! {
-    todo!("0xbdac __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToValueEmRNS0_7VariantE")
+// IDA 0xbdac: `convertToValue(index, out)` — per-value table read with
+// the `+40`-bound check; `false` leaves `out` untouched.
+pub fn stub_bdac(desc: &render_settings::EnumDescData, index: usize, out: &mut render_settings::Variant) -> bool {
+    desc.convert_to_value(index, out)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToString(unsigned long,std::string &)const")]
 // 0xbe08 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
-pub fn stub_be08() -> ! {
-    todo!("0xbe08 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE15convertToStringEmRSs")
+// IDA 0xbe08: `convertToString(value, out)` — name-slot assign on hit,
+// `out` untouched and `false` on miss.
+pub fn stub_be08(desc: &render_settings::EnumDescData, value: usize, out: &mut String) -> bool {
+    desc.convert_to_string(value, out)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::~EnumDesc()")]
 // 0xbf4c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED1Ev
 // type: int()
-pub fn stub_bf4c() -> ! {
-    todo!("0xbf4c __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED1Ev")
+// IDA 0xbf4c: `EnumDesc::D1` — thunk to the D2 member teardown.
+pub fn stub_bf4c(desc: &mut render_settings::EnumDescData) {
+    desc.destroy_d1()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::~EnumDesc()")]
 // 0xbf50 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED0Ev
 // type: int __fastcall(int)
-pub fn stub_bf50() -> ! {
-    todo!("0xbf50 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED0Ev")
+// IDA 0xbf50: `EnumDesc::D0` — D2 teardown plus `operator delete`.
+// Ownership moves in, mirroring the deleting-destructor contract.
+pub fn stub_bf50(desc: Box<render_settings::EnumDescData>) {
+    let mut desc = desc;
+    desc.destroy_d2()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::lookup(char const*)const")]
 // 0xbf64 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
-pub fn stub_bf64() -> ! {
-    todo!("0xbf64 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE6lookupEPKc")
+// IDA 0xbf64: `lookup(name)` — `Name::lookup`, `convertToValue`,
+// `convertToItem`; miss yields null (`None` here).
+pub fn stub_bf64(desc: &render_settings::EnumDescData, name: &str) -> Option<usize> {
+    desc.lookup_by_name(name)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::lookup(RBX::Reflection::Variant const&)const")]
 // 0xbf94 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
-pub fn stub_bf94() -> ! {
-    todo!("0xbf94 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE6lookupERKNS0_7VariantE")
+// IDA 0xbf94: `lookup(variant)` — `any_cast` payload, `convertToItem`.
+pub fn stub_bf94(desc: &render_settings::EnumDescData, variant: &render_settings::Variant) -> Option<usize> {
+    desc.lookup_by_value(variant)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 // 0xbfb4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToValueEmRNS0_7VariantE
-pub fn stub_bfb4() -> ! {
-    todo!("0xbfb4 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToValueEmRNS0_7VariantE")
+// IDA 0xbfb4: `convertToValue(index, out)` — per-value table read with
+// the `+40`-bound check; `false` leaves `out` untouched.
+pub fn stub_bfb4(desc: &render_settings::EnumDescData, index: usize, out: &mut render_settings::Variant) -> bool {
+    desc.convert_to_value(index, out)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToString(unsigned long,std::string &)const")]
 // 0xc010 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
-pub fn stub_c010() -> ! {
-    todo!("0xc010 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE15convertToStringEmRSs")
+// IDA 0xc010: `convertToString(value, out)` — name-slot assign on hit,
+// `out` untouched and `false` on miss.
+pub fn stub_c010(desc: &render_settings::EnumDescData, value: usize, out: &mut String) -> bool {
+    desc.convert_to_string(value, out)
 }
