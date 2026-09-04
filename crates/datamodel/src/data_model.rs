@@ -11,6 +11,36 @@ use rbx_core::WeakPtr;
 #[derive(Default)]
 pub struct DataModel {
     pub weak_owner: WeakPtr<DataModel>,
+    /// Byte `+3436` behind `setRemoteBuildMode` (IDA `0x419fd8`) /
+    /// `getRemoteBuildMode` (IDA `0x419fe0`).
+    pub remote_build_mode: bool,
+    /// String at `+3440` behind `setServerSaveUrl` (IDA `0x419fe8`).
+    pub server_save_url: String,
+    /// String at `+3444` behind `setScreenshotSEOInfo` (IDA `0x41d3a4`).
+    pub screenshot_seo: String,
+    /// String at `+3448` behind `setVideoSEOInfo` (IDA `0x41d3ac`).
+    pub video_seo: String,
+    /// String at `+2988` behind `setUiMessage` (IDA `0x41c284`) /
+    /// `clearUiMessage` (IDA `0x41c28c`).
+    pub ui_message: String,
+    /// Word `+865` behind `setPlaceVersion` (IDA `0x41d210`).
+    pub place_version: i32,
+    /// Word at `+0xD7C` behind `setPlaceID` (IDA `0x41d260`).
+    pub place_id: i32,
+    /// Byte `+3456` behind `activateExperimentalFeatures` (IDA `0x41d2c8`).
+    pub experimental_features: bool,
+    /// Words `+866`/`+867` behind `setCreatorID` (IDA `0x41d2d0`).
+    pub creator_id: i32,
+    pub creator_type: i32,
+    /// Word `+868` behind `setGenre` (IDA `0x41d320`).
+    pub genre: i32,
+    /// Words `+869`/`+870` behind `setGear` (IDA `0x41d340`); `+870`
+    /// doubles as the allowed-gear bitmask read by `isGearTypeAllowed`
+    /// (IDA `0x41d390`, `+3480`).
+    pub gear_genre: i32,
+    pub gear_allowed: i32,
+    /// 0-arg member signal at `+2784` fired by `setGear` (IDA `0x41d37e`).
+    pub gear_changed: rbx_core::signal::Signal<()>,
 }
 
 // 46 stubs in this file | batch range 0xef04..0x28838c

@@ -14891,49 +14891,66 @@ pub fn stub_0x418690() -> ! {
 // 0x418778 — __ZN5boost6detail12shared_countC2IPN3RBX19CornerWedgeInstanceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x418778() -> ! {
-    todo!("0x418778 boost::detail::shared_count::shared_count<RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x418778(ptr: *mut CornerWedgeInstance, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<CornerWedgeInstance, CreatableInstanceDeleter> {
+    // IDA 0x418778: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x418880 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CornerWedgeInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x418880() -> ! {
-    todo!("0x418880 boost::detail::sp_counted_impl_pd<RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x418880(_block: *mut ControlBlockPd<CornerWedgeInstance, CreatableInstanceDeleter>) {
+    // IDA 0x418880: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x418884 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CornerWedgeInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x418884() -> ! {
-    todo!("0x418884 boost::detail::sp_counted_impl_pd<RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x418884(block: *mut ControlBlockPd<CornerWedgeInstance, CreatableInstanceDeleter>) {
+    // IDA 0x418884: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x418888 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CornerWedgeInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x418888() -> ! {
-    todo!("0x418888 boost::detail::sp_counted_impl_pd<RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x418888(_block: *mut ControlBlockPd<CornerWedgeInstance, CreatableInstanceDeleter>) {
+    // IDA 0x418888: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x4188a8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CornerWedgeInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x4188a8() -> ! {
-    todo!("0x4188a8 boost::detail::sp_counted_impl_pd<RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x4188a8(block: *const ControlBlockPd<CornerWedgeInstance, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x4188a8: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x4188c0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19CornerWedgeInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x4188c0() -> ! {
-    todo!("0x4188c0 boost::detail::sp_counted_impl_pd<RBX::CornerWedgeInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x4188c0(block: *const ControlBlockPd<CornerWedgeInstance, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x4188c0: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x419518 — __ZN3RBXL11dummyLoaderEPNS_9DataModelE
 #[doc(alias = "RBX::dummyLoader(RBX::DataModel *)")]
-pub fn stub_0x419518() -> ! {
-    todo!("0x419518 RBX::dummyLoader(RBX::DataModel *)")
+pub fn stub_0x419518(_model: *const DataModel) {
+    // IDA 0x419518: `RBX::dummyLoader(DataModel*)` — empty body (decomp is a
+    // lone `;`); the loader hook lands elsewhere.
 }
 
 // 0x41951c — __ZN3RBX9DataModel3getENS_9ContentIdE
@@ -14968,20 +14985,25 @@ pub fn stub_0x419e98() -> ! {
 
 // 0x419fd8 — __ZN3RBX9DataModel18setRemoteBuildModeEb
 #[doc(alias = "RBX::DataModel::setRemoteBuildMode(bool)")]
-pub fn stub_0x419fd8() -> ! {
-    todo!("0x419fd8 RBX::DataModel::setRemoteBuildMode(bool)")
+pub fn stub_0x419fd8(model: &mut DataModel, enabled: bool) {
+    // IDA 0x419fd8: stores the flag at `this + 3436` (decomp 0x419fd8) and
+    // returns `this`; the store is the observable half.
+    model.remote_build_mode = enabled;
 }
 
 // 0x419fe0 — __ZN3RBX9DataModel18getRemoteBuildModeEv
 #[doc(alias = "RBX::DataModel::getRemoteBuildMode(void)")]
-pub fn stub_0x419fe0() -> ! {
-    todo!("0x419fe0 RBX::DataModel::getRemoteBuildMode(void)")
+pub fn stub_0x419fe0(model: &DataModel) -> bool {
+    // IDA 0x419fe0: returns the flag at `this + 3436` (decomp 0x419fe4).
+    model.remote_build_mode
 }
 
 // 0x419fe8 — __ZN3RBX9DataModel16setServerSaveUrlESs
 #[doc(alias = "RBX::DataModel::setServerSaveUrl(std::string)")]
-pub fn stub_0x419fe8() -> ! {
-    todo!("0x419fe8 RBX::DataModel::setServerSaveUrl(std::string)")
+pub fn stub_0x419fe8(model: &mut DataModel, url: &str) {
+    // IDA 0x419fe8: assigns the string at `this + 3440` (decomp shows the
+    // `string::assign` at the head).
+    model.server_save_url = url.to_owned();
 }
 
 // 0x419ff0 — __ZN3RBX9DataModel12httpGetAsyncESsN5boost8functionIFvSsEEES4_
@@ -15042,8 +15064,10 @@ pub fn stub_0x41bcbc() -> ! {
 
 // 0x41be10 — __ZNK3RBX9DataModel12canSaveLocalEv
 #[doc(alias = "RBX::DataModel::canSaveLocal(void)const")]
-pub fn stub_0x41be10() -> ! {
-    todo!("0x41be10 RBX::DataModel::canSaveLocal(void)const")
+pub fn stub_0x41be10(_model: *const DataModel) -> bool {
+    // IDA 0x41be10: `return 0` (decomp 0x41be12) — local saves are never
+    // allowed on this build.
+    false
 }
 
 // 0x41be14 — __ZN3RBX9DataModel12saveToRobloxEN5boost8functionIFvbEEENS2_IFvSsEEE
@@ -15061,14 +15085,18 @@ pub fn stub_0x41c07c() -> ! {
 
 // 0x41c284 — __ZN3RBX9DataModel12setUiMessageESs
 #[doc(alias = "RBX::DataModel::setUiMessage(std::string)")]
-pub fn stub_0x41c284() -> ! {
-    todo!("0x41c284 RBX::DataModel::setUiMessage(std::string)")
+pub fn stub_0x41c284(model: &mut DataModel, message: &str) {
+    // IDA 0x41c284: assigns the string at `this + 2988` (decomp shows the
+    // `string::assign` at the head).
+    model.ui_message = message.to_owned();
 }
 
 // 0x41c28c — __ZN3RBX9DataModel14clearUiMessageEv
 #[doc(alias = "RBX::DataModel::clearUiMessage(void)")]
-pub fn stub_0x41c28c() -> ! {
-    todo!("0x41c28c RBX::DataModel::clearUiMessage(void)")
+pub fn stub_0x41c28c(model: &mut DataModel) {
+    // IDA 0x41c28c: assigns `""` to the string at `this + 2988` (decomp shows
+    // the empty `string::assign`); same field as 0x41c284.
+    model.ui_message.clear();
 }
 
 // 0x41c2a0 — __ZN3RBX9DataModel20getJobsExtendedStatsEv
@@ -15097,62 +15125,109 @@ pub fn stub_0x41d1f8() -> ! {
 
 // 0x41d210 — __ZN3RBX9DataModel15setPlaceVersionEi
 #[doc(alias = "RBX::DataModel::setPlaceVersion(int)")]
-pub fn stub_0x41d210() -> ! {
-    todo!("0x41d210 RBX::DataModel::setPlaceVersion(int)")
+pub fn stub_0x41d210(model: &mut DataModel, version: i32) {
+    // IDA 0x41d210: stores the version at word `+865` on change (decomp
+    // 0x41d23e-0x41d24a) and raises `PropertyChanged` (decomp 0x41d240); the
+    // reflection notification collapses (no listeners in the model).
+    if model.place_version != version {
+        model.place_version = version;
+    }
 }
 
 // 0x41d260 — __ZN3RBX9DataModel10setPlaceIDEib
 #[doc(alias = "RBX::DataModel::setPlaceID(int,bool)")]
-pub fn stub_0x41d260() -> ! {
-    todo!("0x41d260 RBX::DataModel::setPlaceID(int,bool)")
+pub fn stub_0x41d260(model: &mut DataModel, place_id: i32, _is_roblox_place: bool) {
+    // IDA 0x41d260: logs, records the debug place, stores the id at
+    // `+0xD7C` on change (disasm 0x41d290-0x41d2a0) with a `PropertyChanged`
+    // raise (disasm 0x41d2a6-0x41d2ac), then forwards the bool to
+    // `ScriptContext::setRobloxPlace` (disasm 0x41d2b0-0x41d2c2). The logging
+    // and reflection notification collapse; the ScriptContext forward lands
+    // with the script service.
+    if model.place_id != place_id {
+        model.place_id = place_id;
+    }
 }
 
 // 0x41d2c8 — __ZN3RBX9DataModel28activateExperimentalFeaturesEv
 #[doc(alias = "RBX::DataModel::activateExperimentalFeatures(void)")]
-pub fn stub_0x41d2c8() -> ! {
-    todo!("0x41d2c8 RBX::DataModel::activateExperimentalFeatures(void)")
+pub fn stub_0x41d2c8(model: &mut DataModel) {
+    // IDA 0x41d2c8: sets byte `+3456` to 1 (decomp 0x41d2ca) and returns
+    // `this`; the store is the observable half.
+    model.experimental_features = true;
 }
 
 // 0x41d2d0 — __ZN3RBX9DataModel12setCreatorIDEiNS0_11CreatorTypeE
 #[doc(alias = "RBX::DataModel::setCreatorID(int,RBX::DataModel::CreatorType)")]
-pub fn stub_0x41d2d0() -> ! {
-    todo!("0x41d2d0 RBX::DataModel::setCreatorID(int,RBX::DataModel::CreatorType)")
+pub fn stub_0x41d2d0(model: &mut DataModel, creator_id: i32, creator_type: i32) {
+    // IDA 0x41d2d0: stores the id at word `+866` and the type at `+867` on
+    // change (decomp 0x41d2de-0x41d30a) with `PropertyChanged` raises; the
+    // reflection notifications collapse.
+    if model.creator_id != creator_id {
+        model.creator_id = creator_id;
+    }
+    if model.creator_type != creator_type {
+        model.creator_type = creator_type;
+    }
 }
 
 // 0x41d320 — __ZN3RBX9DataModel8setGenreENS0_5GenreE
 #[doc(alias = "RBX::DataModel::setGenre(RBX::DataModel::Genre)")]
-pub fn stub_0x41d320() -> ! {
-    todo!("0x41d320 RBX::DataModel::setGenre(RBX::DataModel::Genre)")
+pub fn stub_0x41d320(model: &mut DataModel, genre: i32) {
+    // IDA 0x41d320: stores the genre at word `+868` on change (decomp
+    // 0x41d326-0x41d332) with a `PropertyChanged` raise; the reflection
+    // notification collapses.
+    if model.genre != genre {
+        model.genre = genre;
+    }
 }
 
 // 0x41d340 — __ZN3RBX9DataModel7setGearENS0_16GearGenreSettingEi
 #[doc(alias = "RBX::DataModel::setGear(RBX::DataModel::GearGenreSetting,int)")]
-pub fn stub_0x41d340() -> ! {
-    todo!("0x41d340 RBX::DataModel::setGear(RBX::DataModel::GearGenreSetting,int)")
+pub fn stub_0x41d340(model: &mut DataModel, genre: i32, value: i32) {
+    // IDA 0x41d340: stores the genre setting at word `+869` on change with a
+    // `PropertyChanged` raise (decomp 0x41d34e-0x41d35e), stores the second
+    // word at `+870` (decomp 0x41d368-0x41d372), then fires the 0-arg member
+    // signal at `+2784` (decomp 0x41d37e). The reflection notification
+    // collapses; the member fire stays.
+    if model.gear_genre != genre {
+        model.gear_genre = genre;
+    }
+    model.gear_allowed = value;
+    model.gear_changed.fire(());
 }
 
 // 0x41d384 — __ZNK3RBX9DataModel21getLightingDeprecatedEv
 #[doc(alias = "RBX::DataModel::getLightingDeprecated(void)const")]
-pub fn stub_0x41d384() -> ! {
-    todo!("0x41d384 RBX::DataModel::getLightingDeprecated(void)const")
+pub fn stub_0x41d384() -> bool {
+    // IDA 0x41d384: calls `find<Lighting>()` for its ensure-service side
+    // effect, then returns 0 (decomp 0x41d388-0x41d38c) — lighting is never
+    // reported deprecated on this build. The registry side effect lands with
+    // the service registry.
+    false
 }
 
 // 0x41d390 — __ZN3RBX9DataModel17isGearTypeAllowedENS0_8GearTypeE
 #[doc(alias = "RBX::DataModel::isGearTypeAllowed(RBX::DataModel::GearType)")]
-pub fn stub_0x41d390() -> ! {
-    todo!("0x41d390 RBX::DataModel::isGearTypeAllowed(RBX::DataModel::GearType)")
+pub fn stub_0x41d390(model: &DataModel, gear: u32) -> bool {
+    // IDA 0x41d390: tests bit `gear` of the word at `+3480` (decomp
+    // 0x41d3a0) — the allowed-gear mask stored by `setGear`.
+    (model.gear_allowed as u32 & (1 << gear)) != 0
 }
 
 // 0x41d3a4 — __ZN3RBX9DataModel20setScreenshotSEOInfoESs
 #[doc(alias = "RBX::DataModel::setScreenshotSEOInfo(std::string)")]
-pub fn stub_0x41d3a4() -> ! {
-    todo!("0x41d3a4 RBX::DataModel::setScreenshotSEOInfo(std::string)")
+pub fn stub_0x41d3a4(model: &mut DataModel, info: &str) {
+    // IDA 0x41d3a4: assigns the string at `this + 3444` (decomp shows the
+    // `string::assign` at the head).
+    model.screenshot_seo = info.to_owned();
 }
 
 // 0x41d3ac — __ZN3RBX9DataModel15setVideoSEOInfoESs
 #[doc(alias = "RBX::DataModel::setVideoSEOInfo(std::string)")]
-pub fn stub_0x41d3ac() -> ! {
-    todo!("0x41d3ac RBX::DataModel::setVideoSEOInfo(std::string)")
+pub fn stub_0x41d3ac(model: &mut DataModel, info: &str) {
+    // IDA 0x41d3ac: assigns the string at `this + 3448` (decomp shows the
+    // `string::assign` at the head).
+    model.video_seo = info.to_owned();
 }
 
 // 0x41d3b4 — __ZN3RBX9DataModel13addCustomStatESsSs
