@@ -6,6 +6,42 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+/// FMOD audio-queue codec descriptor (IDA 0x107170).
+static AUDIO_QUEUE_CODEC_DESC: std::sync::LazyLock<CodecDescriptor> =
+    std::sync::LazyLock::new(|| CodecDescriptor {
+        name: "FMOD Audio Queue Codec",
+        version: 65792,
+        kind: 2,
+        block_size: 24,
+        instance_bytes: 444,
+    });
+/// FMOD codec description table filled by `getDescriptionEx` (IDA 0x107170).
+#[derive(Clone, Debug, Default)]
+pub struct CodecDescriptor {
+    pub name: &'static str,
+    pub version: u32,
+    pub kind: u32,
+    pub block_size: u32,
+    pub instance_bytes: u32,
+}
+
+/// FreeImage bitmap header view for the `FreeImage_Get/Set*` accessors (IDA 0x107a78..0x107b68).
+#[derive(Clone, Debug, Default)]
+pub struct FreeImageInfo {
+    pub image_type: i32,
+    pub red_mask: u32,
+    pub green_mask: u32,
+    pub blue_mask: u32,
+    pub has_background: bool,
+    pub transparency_count: u32,
+    pub transparency_table: usize,
+    pub icc_profile: usize,
+    pub width: u32,
+    pub height: u32,
+    pub bpp: u32,
+    pub dots_per_meter_x: i32,
+    pub dots_per_meter_y: i32,
+}
 
 /// FMOD tremolo DSP instance state (IDA 0x105cdc).
 #[derive(Clone, Debug)]
@@ -77,6 +113,7 @@ pub struct CodecAudioQueue {
     pub primed: bool,
     pub stopping: bool,
     pub finished: bool,
+    pub carry: usize,
 }
 
 /// `HistoryBufferPool::alloc` rejection for a null out-pointer or zero count (IDA 0x1066bc).
@@ -565,161 +602,396 @@ pub fn stub_106eac(
 
 // 0x107090 — __ZN4FMOD15CodecAudioQueue19setPositionCallbackEP16FMOD_CODEC_STATEijj
 #[doc(alias = "__ZN4FMOD15CodecAudioQueue19setPositionCallbackEP16FMOD_CODEC_STATEijj")]
-pub fn stub_107090() -> ! {
-    todo!("0x107090 __ZN4FMOD15CodecAudioQueue19setPositionCallbackEP16FMOD_CODEC_STATEijj")
+pub fn stub_107090(
+    has_state: bool,
+    q: &mut CodecAudioQueue,
+    start_packet: u32,
+    audio_queue_stop: &mut dyn FnMut() -> i32,
+    audio_queue_set_property: &mut dyn FnMut(i32) -> i32,
+    audio_queue_start: &mut dyn FnMut() -> i32,
+    read_packet_table: &mut dyn FnMut(u32) -> Option<(u32, u32)>,
+    audio_queue_offline_render: &mut dyn FnMut() -> i32,
+    process_audio_queue: &mut dyn FnMut(&mut CodecAudioQueue) -> i32,
+) -> i32 {
+    // IDA 0x107090: state ? setPositionInternal(state - 28, ...) : setPositionInternal(0, ...).
+    let _ = has_state;
+    stub_106eac(
+        q,
+        start_packet,
+        audio_queue_stop,
+        audio_queue_set_property,
+        audio_queue_start,
+        read_packet_table,
+        audio_queue_offline_render,
+        process_audio_queue,
+    )
 }
 
 // 0x10709c — __ZN4FMOD15CodecAudioQueue13closeInternalEv
 // type: _DWORD __fastcall(FMOD::CodecAudioQueue *__hidden this)
 #[doc(alias = "__ZN4FMOD15CodecAudioQueue13closeInternalEv")]
-pub fn stub_10709c() -> ! {
-    todo!("0x10709c __ZN4FMOD15CodecAudioQueue13closeInternalEv")
+pub fn stub_10709c(
+    linked: &mut bool,
+    has_queue: bool,
+    dispose_queue: &mut dyn FnMut() -> i32,
+    has_file: bool,
+    close_file: &mut dyn FnMut() -> i32,
+    free_codec: &mut dyn FnMut(),
+) -> i32 {
+    // IDA 0x10709c: unlink the gCodecHead node; AudioQueueDispose (fail → 44, clear queue);
+    // AudioFileClose (fail → 44, clear file); MemPool::free the codec block (:205); 0.
+    *linked = false;
+    if has_queue {
+        if dispose_queue() != 0 {
+            return 44;
+        }
+    }
+    if has_file {
+        if close_file() != 0 {
+            return 44;
+        }
+    }
+    free_codec();
+    0
 }
 
 // 0x107164 — __ZN4FMOD15CodecAudioQueue13closeCallbackEP16FMOD_CODEC_STATE
 #[doc(alias = "__ZN4FMOD15CodecAudioQueue13closeCallbackEP16FMOD_CODEC_STATE")]
-pub fn stub_107164() -> ! {
-    todo!("0x107164 __ZN4FMOD15CodecAudioQueue13closeCallbackEP16FMOD_CODEC_STATE")
+pub fn stub_107164(
+    has_state: bool,
+    linked: &mut bool,
+    has_queue: bool,
+    dispose_queue: &mut dyn FnMut() -> i32,
+    has_file: bool,
+    close_file: &mut dyn FnMut() -> i32,
+    free_codec: &mut dyn FnMut(),
+) -> i32 {
+    // IDA 0x107164: state ? closeInternal(state - 28) : closeInternal(0).
+    let _ = has_state;
+    stub_10709c(linked, has_queue, dispose_queue, has_file, close_file, free_codec)
 }
 
 // 0x107170 — __ZN4FMOD15CodecAudioQueue16getDescriptionExEv
 // type: _DWORD __fastcall(FMOD::CodecAudioQueue *__hidden this)
 #[doc(alias = "__ZN4FMOD15CodecAudioQueue16getDescriptionExEv")]
-pub fn stub_107170() -> ! {
-    todo!("0x107170 __ZN4FMOD15CodecAudioQueue16getDescriptionExEv")
+pub fn stub_107170() -> &'static CodecDescriptor {
+    // IDA 0x107170: guard-checked once init of the audioQueueCodec descriptor; memset + fill
+    // ("FMOD Audio Queue Codec", 65792, 2, 24, 444, open/read/setPosition/close callbacks); return it.
+    &AUDIO_QUEUE_CODEC_DESC
 }
 
 // 0x107284 — __ZN4FMOD15CodecAudioQueue15setupAudioQueueEv
 // type: _DWORD __fastcall(FMOD::CodecAudioQueue *__hidden this)
 #[doc(alias = "__ZN4FMOD15CodecAudioQueue15setupAudioQueueEv")]
-pub fn stub_107284() -> ! {
-    todo!("0x107284 __ZN4FMOD15CodecAudioQueue15setupAudioQueueEv")
+pub fn stub_107284(
+    q: &mut CodecAudioQueue,
+    new_output: &mut dyn FnMut() -> i32,
+    channel_layout: &mut dyn FnMut() -> Option<usize>,
+    apply_layout: &mut dyn FnMut(usize) -> i32,
+    allocate_buffers: &mut dyn FnMut(&mut CodecAudioQueue) -> i32,
+) -> i32 {
+    // IDA 0x107284: AudioQueueNewOutput (fail → LABEL_5/44); optional 'mgiс' channel layout alloc;
+    // 'cmap' get (fail → 44); 'aqlc' set (fail → 44); buffer alloc/prime; 0.
+    if new_output() != 0 {
+        return 44;
+    }
+    if let Some(layout) = channel_layout() {
+        if apply_layout(layout) != 0 {
+            return 44;
+        }
+    }
+    allocate_buffers(q)
 }
 
 // 0x107598 — __ZN4FMOD15CodecAudioQueue12readInternalEPvjPj
 // type: _DWORD __fastcall(FMOD::CodecAudioQueue *__hidden this, void *, unsigned int, unsigned int *)
 #[doc(alias = "__ZN4FMOD15CodecAudioQueue12readInternalEPvjPj")]
-pub fn stub_107598() -> ! {
-    todo!("0x107598 __ZN4FMOD15CodecAudioQueue12readInternalEPvjPj")
+pub fn stub_107598(
+    q: &mut CodecAudioQueue,
+    out: &mut [u8],
+    max_bytes: usize,
+    render: &mut dyn FnMut(usize) -> Option<usize>,
+    stop: &mut dyn FnMut() -> i32,
+    dispose: &mut dyn FnMut() -> i32,
+    setup: &mut dyn FnMut(&mut CodecAudioQueue) -> i32,
+    reposition: &mut dyn FnMut(&mut CodecAudioQueue) -> i32,
+    copy_out: &mut dyn FnMut(&mut [u8], usize) -> usize,
+) -> (i32, usize) {
+    // IDA 0x107598: finished → 22; OfflineRender min(a3, stride) bytes (fail → 33); position +=
+    // rendered/frame_bytes; past total → stop (fail → 33), mark finished; empty render before total
+    // → dispose (fail → 44) + re-setup + reposition (fail → code); consume the carry offset into
+    // *a4 ([1B8] update); 0.
+    if q.finished {
+        return (22, 0);
+    }
+    let n = max_bytes.min(q.buffer_stride);
+    let available = match render(n / q.frame_bytes.max(1)) {
+        Some(b) => b,
+        None => return (33, 0),
+    };
+    q.position += available as f64 / q.frame_bytes.max(1) as f64;
+    if q.position >= q.total_frames as f64 {
+        if stop() != 0 {
+            return (33, 0);
+        }
+        q.finished = true;
+    } else if available == 0 {
+        if dispose() != 0 {
+            return (44, 0);
+        }
+        let rc = setup(q);
+        if rc != 0 {
+            return (rc, 0);
+        }
+        let rc = reposition(q);
+        if rc != 0 {
+            return (rc, 0);
+        }
+    }
+    if available < q.carry {
+        q.carry -= available;
+        return (0, 0);
+    }
+    let actual = copy_out(out, available - q.carry);
+    q.carry = 0;
+    (0, actual)
 }
 
 // 0x10773c — __ZN4FMOD15CodecAudioQueue12readCallbackEP16FMOD_CODEC_STATEPvjPj
 #[doc(alias = "__ZN4FMOD15CodecAudioQueue12readCallbackEP16FMOD_CODEC_STATEPvjPj")]
-pub fn stub_10773c() -> ! {
-    todo!("0x10773c __ZN4FMOD15CodecAudioQueue12readCallbackEP16FMOD_CODEC_STATEPvjPj")
+pub fn stub_10773c(
+    has_state: bool,
+    q: &mut CodecAudioQueue,
+    out: &mut [u8],
+    max_bytes: usize,
+    render: &mut dyn FnMut(usize) -> Option<usize>,
+    stop: &mut dyn FnMut() -> i32,
+    dispose: &mut dyn FnMut() -> i32,
+    setup: &mut dyn FnMut(&mut CodecAudioQueue) -> i32,
+    reposition: &mut dyn FnMut(&mut CodecAudioQueue) -> i32,
+    copy_out: &mut dyn FnMut(&mut [u8], usize) -> usize,
+) -> (i32, usize) {
+    // IDA 0x10773c: state ? readInternal(state - 28, ...) : readInternal(0, ...).
+    let _ = has_state;
+    stub_107598(q, out, max_bytes, render, stop, dispose, setup, reposition, copy_out)
 }
 
 // 0x107748 — __ZN4FMOD15CodecAudioQueue12openInternalEjP22FMOD_CREATESOUNDEXINFO
 #[doc(alias = "__ZN4FMOD15CodecAudioQueue12openInternalEjP22FMOD_CREATESOUNDEXINFO")]
-pub fn stub_107748() -> ! {
-    todo!("0x107748 __ZN4FMOD15CodecAudioQueue12openInternalEjP22FMOD_CREATESOUNDEXINFO")
+pub fn stub_107748(
+    q: &mut CodecAudioQueue,
+    flags: i32,
+    has_subclass: bool,
+    seek_start: &mut dyn FnMut() -> i32,
+    setup_file: &mut dyn FnMut(&mut CodecAudioQueue, bool) -> i32,
+    setup_queue: &mut dyn FnMut(&mut CodecAudioQueue) -> i32,
+    alloc_block: &mut dyn FnMut() -> bool,
+    link: &mut dyn FnMut(),
+) -> i32 {
+    // IDA 0x107748: gGlobal init; words 68/260/28/32/272 set (mode 24); File::seek(0) → return;
+    // setupAudioFile(a2 & 0x4000) → return; setupAudioQueue → return; calloc 0x128 (:146) → 44;
+    // codec + gCodecHead list links; 0.
+    q.mode = 24;
+    q.primed = false;
+    q.finished = false;
+    let _ = has_subclass;
+    let rc = seek_start();
+    if rc != 0 {
+        return rc;
+    }
+    let rc = setup_file(q, flags & 0x4000 != 0);
+    if rc != 0 {
+        return rc;
+    }
+    let rc = setup_queue(q);
+    if rc != 0 {
+        return rc;
+    }
+    if !alloc_block() {
+        return 44;
+    }
+    link();
+    0
 }
 
 // 0x1078d4 — __ZN4FMOD15CodecAudioQueue12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
 #[doc(alias = "__ZN4FMOD15CodecAudioQueue12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO")]
-pub fn stub_1078d4() -> ! {
-    todo!("0x1078d4 __ZN4FMOD15CodecAudioQueue12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO")
+pub fn stub_1078d4(
+    has_state: bool,
+    q: &mut CodecAudioQueue,
+    flags: i32,
+    has_subclass: bool,
+    seek_start: &mut dyn FnMut() -> i32,
+    setup_file: &mut dyn FnMut(&mut CodecAudioQueue, bool) -> i32,
+    setup_queue: &mut dyn FnMut(&mut CodecAudioQueue) -> i32,
+    alloc_block: &mut dyn FnMut() -> bool,
+    link: &mut dyn FnMut(),
+) -> i32 {
+    // IDA 0x1078d4: state ? openInternal(state - 28, ...) : openInternal(state, ...).
+    let _ = has_state;
+    stub_107748(q, flags, has_subclass, seek_start, setup_file, setup_queue, alloc_block, link)
 }
 
 // 0x1078e0 — __ZN4FMOD15CodecAudioQueue8resetAllEbb
 // type: _DWORD __fastcall(FMOD::CodecAudioQueue *__hidden this, bool, bool)
 #[doc(alias = "__ZN4FMOD15CodecAudioQueue8resetAllEbb")]
-pub fn stub_1078e0() -> ! {
-    todo!("0x1078e0 __ZN4FMOD15CodecAudioQueue8resetAllEbb")
+pub fn stub_1078e0(
+    codecs: &mut Vec<CodecAudioQueue>,
+    dispose_matching: bool,
+    reset: bool,
+    dispose_queue: &mut dyn FnMut(&mut CodecAudioQueue),
+    setup_queue: &mut dyn FnMut(&mut CodecAudioQueue) -> i32,
+    reposition: &mut dyn FnMut(&mut CodecAudioQueue) -> i32,
+) -> i32 {
+    // IDA 0x1078e0: walk gCodecHead; skip finished (byte+369); dispose when v11; skip when !v3;
+    // else setupAudioQueue (fail → return) then setPositionInternal (fail → return); end → 0.
+    for codec in codecs.iter_mut() {
+        if codec.finished {
+            continue;
+        }
+        if dispose_matching {
+            dispose_queue(codec);
+            if !reset {
+                continue;
+            }
+        } else if !reset {
+            continue;
+        }
+        let rc = setup_queue(codec);
+        if rc != 0 {
+            return rc;
+        }
+        let rc = reposition(codec);
+        if rc != 0 {
+            return rc;
+        }
+    }
+    0
 }
 
 // 0x1079e8 — __Z41__static_initialization_and_destruction_0ii_41
 // type: _DWORD __fastcall(int, int)
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_41")]
-pub fn stub_1079e8() -> ! {
-    todo!("0x1079e8 __Z41__static_initialization_and_destruction_0ii_41")
+pub fn stub_1079e8(result: i32, a2: i32, init: &mut dyn FnMut()) -> i32 {
+    // IDA 0x1079e8: if result == 1 && a2 == 0xFFFF: gCodecHead list head self-init.
+    if result == 1 && a2 == 0xFFFF {
+        init();
+    }
+    result
 }
 
 // 0x107a1c — __GLOBAL__I__ZN4FMOD15CodecAudioQueue10gCodecHeadE
 #[doc(alias = "__GLOBAL__I__ZN4FMOD15CodecAudioQueue10gCodecHeadE")]
-pub fn stub_107a1c() -> ! {
-    todo!("0x107a1c __GLOBAL__I__ZN4FMOD15CodecAudioQueue10gCodecHeadE")
+pub fn stub_107a1c(init: &mut dyn FnMut()) -> i32 {
+    // IDA 0x107a1c: global ctor keyed to gCodecHead → static_init(1, 0xFFFF).
+    stub_1079e8(1, 0xFFFF, init)
 }
 
 // 0x107a28 — __ZL22FreeImage_GetImageSizeiii
 // type: _DWORD __fastcall(int, int, int)
 #[doc(alias = "__ZL22FreeImage_GetImageSizeiii")]
-pub fn stub_107a28() -> ! {
-    todo!("0x107a28 __ZL22FreeImage_GetImageSizeiii")
+pub fn stub_107a28(width: u32, height: u32, bpp: u32, calculate_line: &mut dyn FnMut(u32, u32) -> u32) -> u32 {
+    // IDA 0x107a28: palette size clamped by bpp (out of 1..8 → header only); + 352-byte header;
+    // + aligned line pitch * height.
+    let (pad, header) = if bpp.wrapping_sub(1) > 7 {
+        (0, 352)
+    } else {
+        let entry = (4 << bpp) & 0xF;
+        (if entry != 0 { 16 - entry } else { 0 }, (4 << bpp) + 352)
+    };
+    pad + header + ((calculate_line(width, bpp) + 3) & !3) * height
 }
 
 // 0x107a78 — _FreeImage_GetImageType
 #[doc(alias = "_FreeImage_GetImageType")]
-pub fn stub_107a78() -> ! {
-    todo!("0x107a78 _FreeImage_GetImageType")
+pub fn stub_107a78(dib: Option<&FreeImageInfo>) -> i32 {
+    // IDA 0x107a78: null → 0, else the image type word.
+    dib.map(|d| d.image_type).unwrap_or(0)
 }
 
 // 0x107a88 — _FreeImage_GetRedMask
 #[doc(alias = "_FreeImage_GetRedMask")]
-pub fn stub_107a88() -> ! {
-    todo!("0x107a88 _FreeImage_GetRedMask")
+pub fn stub_107a88(dib: Option<&FreeImageInfo>) -> u32 {
+    // IDA 0x107a88: null → 0, else the red mask (+4).
+    dib.map(|d| d.red_mask).unwrap_or(0)
 }
 
 // 0x107a98 — _FreeImage_GetGreenMask
 #[doc(alias = "_FreeImage_GetGreenMask")]
-pub fn stub_107a98() -> ! {
-    todo!("0x107a98 _FreeImage_GetGreenMask")
+pub fn stub_107a98(dib: Option<&FreeImageInfo>) -> u32 {
+    // IDA 0x107a98: null → 0, else the green mask (+8).
+    dib.map(|d| d.green_mask).unwrap_or(0)
 }
 
 // 0x107aa8 — _FreeImage_GetBlueMask
 #[doc(alias = "_FreeImage_GetBlueMask")]
-pub fn stub_107aa8() -> ! {
-    todo!("0x107aa8 _FreeImage_GetBlueMask")
+pub fn stub_107aa8(dib: Option<&FreeImageInfo>) -> u32 {
+    // IDA 0x107aa8: null → 0, else the blue mask (+12).
+    dib.map(|d| d.blue_mask).unwrap_or(0)
 }
 
 // 0x107ab8 — _FreeImage_HasBackgroundColor
 #[doc(alias = "_FreeImage_HasBackgroundColor")]
-pub fn stub_107ab8() -> ! {
-    todo!("0x107ab8 _FreeImage_HasBackgroundColor")
+pub fn stub_107ab8(dib: Option<&FreeImageInfo>) -> bool {
+    // IDA 0x107ab8: null → false, else byte +19 != 0.
+    dib.map(|d| d.has_background).unwrap_or(false)
 }
 
 // 0x107ad4 — _FreeImage_GetTransparencyTable
 #[doc(alias = "_FreeImage_GetTransparencyTable")]
-pub fn stub_107ad4() -> ! {
-    todo!("0x107ad4 _FreeImage_GetTransparencyTable")
+pub fn stub_107ad4(dib: Option<&FreeImageInfo>) -> Option<usize> {
+    // IDA 0x107ad4: null → null, else the transparency table handle (+28).
+    dib.and_then(|d| if d.transparency_table == 0 { None } else { Some(d.transparency_table) })
 }
 
 // 0x107ae4 — _FreeImage_GetTransparencyCount
 // type: int __fastcall(int result)
 #[doc(alias = "_FreeImage_GetTransparencyCount")]
-pub fn stub_107ae4() -> ! {
-    todo!("0x107ae4 _FreeImage_GetTransparencyCount")
+pub fn stub_107ae4(dib: Option<&FreeImageInfo>) -> u32 {
+    // IDA 0x107ae4: null → 0, else the transparency count (+24).
+    dib.map(|d| d.transparency_count).unwrap_or(0)
 }
 
 // 0x107af4 — _FreeImage_GetICCProfile
 #[doc(alias = "_FreeImage_GetICCProfile")]
-pub fn stub_107af4() -> ! {
-    todo!("0x107af4 _FreeImage_GetICCProfile")
+pub fn stub_107af4(dib: Option<&FreeImageInfo>) -> Option<usize> {
+    // IDA 0x107af4: null → null, else the ICC profile handle (+284).
+    dib.and_then(|d| if d.icc_profile == 0 { None } else { Some(d.icc_profile) })
 }
 
 // 0x107b04 — _FreeImage_GetInfoHeader
 // type: int(void)
 #[doc(alias = "_FreeImage_GetInfoHeader")]
-pub fn stub_107b04() -> ! {
-    todo!("0x107b04 _FreeImage_GetInfoHeader")
+pub fn stub_107b04(base: Option<usize>) -> Option<usize> {
+    // IDA 0x107b04: null → null; else base + 308 + the alignment pad of (base + 300).
+    base.map(|b| {
+        let mut pad = (b + 300) & 0xF;
+        if pad != 0 {
+            pad = 16 - pad;
+        }
+        b + 308 + pad
+    })
 }
 
 // 0x107b28 — _FreeImage_SetDotsPerMeterY
 #[doc(alias = "_FreeImage_SetDotsPerMeterY")]
-pub fn stub_107b28() -> ! {
-    todo!("0x107b28 _FreeImage_SetDotsPerMeterY")
+pub fn stub_107b28(dib: &mut FreeImageInfo, dots_per_meter_y: i32) {
+    // IDA 0x107b28: null → no-op; else info header word 7 = y (via GetInfoHeader).
+    dib.dots_per_meter_y = dots_per_meter_y;
 }
 
 // 0x107b48 — _FreeImage_SetDotsPerMeterX
 #[doc(alias = "_FreeImage_SetDotsPerMeterX")]
-pub fn stub_107b48() -> ! {
-    todo!("0x107b48 _FreeImage_SetDotsPerMeterX")
+pub fn stub_107b48(dib: &mut FreeImageInfo, dots_per_meter_x: i32) {
+    // IDA 0x107b48: null → no-op; else info header word 6 = x (via GetInfoHeader).
+    dib.dots_per_meter_x = dots_per_meter_x;
 }
 
 // 0x107b68 — _FreeImage_GetDotsPerMeterY
 #[doc(alias = "_FreeImage_GetDotsPerMeterY")]
-pub fn stub_107b68() -> ! {
-    todo!("0x107b68 _FreeImage_GetDotsPerMeterY")
+pub fn stub_107b68(dib: Option<&FreeImageInfo>) -> i32 {
+    // IDA 0x107b68: null → 0, else info header word 7.
+    dib.map(|d| d.dots_per_meter_y).unwrap_or(0)
 }
 
 // 0x107b88 — _FreeImage_GetDotsPerMeterX
