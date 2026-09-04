@@ -437,166 +437,431 @@ pub fn remove_uievent_slot_45eb0(signal: &UiEventSignal, slot: &SharedPtr<UiEven
     }
 }
 
+/// was: `rbx::signals::signal<void ()(RBX::DataModel *)>::slot` — intrusive
+/// slot node. Same layout contract as `UiEventSlot` (+0x8 signal back-pointer
+/// released in D1, IDA 0x46240 pattern); the payload is a raw DataModel word.
+pub struct DataModelSlot {
+    callback: Mutex<Option<DataModelCallback>>,
+    signal: Mutex<Option<SharedPtr<DataModelSignal>>>,
+    next: Mutex<Option<SharedPtr<DataModelSlot>>>,
+}
+
+/// was: `rbx::signals::signal<void ()(RBX::DataModel *)>` — owns the intrusive
+/// slot-list head; mutations run under the class-wide static mutex.
+pub struct DataModelSignal {
+    head: Mutex<Option<SharedPtr<DataModelSlot>>>,
+}
+
+/// was: `rbx::signals::connection` for the DataModel signal — the weak ref the
+/// original adds is automatic for `Weak`, so only the strong slot is retained.
+pub struct DataModelConnection {
+    slot: SharedPtr<DataModelSlot>,
+}
+
+/// was: `boost::function<void ()(RBX::DataModel *)>` — Box<dyn Fn> is the
+/// boost::function mapping (AGENTS.md section 4). RBX::DataModel stays opaque.
+// IDA 0x49e7c: connect news a 32-byte callable_slot and inserts it (decompile).
+pub type DataModelCallback = Box<dyn Fn(*const c_void) + Send + Sync + 'static>;
+
+/// was: `rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::slot`
+/// — intrusive slot node; +0x8 signal back-pointer, functor at +0x10
+/// (IDA 0x4a148: ADDS R0,#0x10 before function1::op; 0x4a640 D1 clears +0x10).
+pub struct TextBoxSlot {
+    callback: Mutex<Option<TextBoxCallback>>,
+    signal: Mutex<Option<SharedPtr<TextBoxSignal>>>,
+    next: Mutex<Option<SharedPtr<TextBoxSlot>>>,
+}
+
+/// was: `rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>` —
+/// owns the intrusive slot-list head under the class-wide static mutex
+/// (IDA 0x4a28c: ReleaseAssert(item) then head-insert, decompile).
+pub struct TextBoxSignal {
+    head: Mutex<Option<SharedPtr<TextBoxSlot>>>,
+}
+
+/// was: `rbx::signals::connection` for the TextBox signal.
+pub struct TextBoxConnection {
+    slot: SharedPtr<TextBoxSlot>,
+}
+
+/// was: `boost::function<void ()(boost::shared_ptr<RBX::TextBox>)>` — Box<dyn
+/// Fn> per AGENTS.md section 4; the shared_ptr<TextBox> arg stays opaque.
+pub type TextBoxCallback = Box<dyn Fn(*const c_void) + Send + Sync + 'static>;
+
+/// was: `rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor
+/// const *)>::slot` — intrusive slot node; functor at +0x10 (IDA 0x4a148).
+pub struct PropDescSlot {
+    callback: Mutex<Option<PropDescCallback>>,
+    signal: Mutex<Option<SharedPtr<PropDescSignal>>>,
+    next: Mutex<Option<SharedPtr<PropDescSlot>>>,
+}
+
+/// was: `rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor
+/// const *)>` — owns the intrusive slot-list head.
+pub struct PropDescSignal {
+    head: Mutex<Option<SharedPtr<PropDescSlot>>>,
+}
+
+/// was: `boost::function<void ()(RBX::Reflection::PropertyDescriptor const *)>`.
+// IDA 0x4a158: operator() throws bad_function_call on empty (decompile).
+pub type PropDescCallback = Box<dyn Fn(*const c_void) + Send + Sync + 'static>;
+
+/// Signal-class static mutex for the TextBox signal (`safe_static_*`
+/// instantiations sort later in this file; the do_get wraps this).
+fn textbox_signal_mutex() -> &'static Mutex<()> {
+    static VALUE: LazyLock<Mutex<()>> = LazyLock::new(|| Mutex::new(()));
+    &VALUE
+}
+
+/// Slot-class static mutex for the TextBox signal slot (`slot::mutex()`
+/// once_init in IDA 0x4a7ec; the `safe_static_*` instantiation sorts later).
+fn textbox_slot_mutex() -> &'static Mutex<()> {
+    static VALUE: LazyLock<Mutex<()>> = LazyLock::new(|| Mutex::new(()));
+    &VALUE
+}
+
+/// Signal-class static mutex for the DataModel signal.
+fn datamodel_signal_mutex() -> &'static Mutex<()> {
+    static VALUE: LazyLock<Mutex<()>> = LazyLock::new(|| Mutex::new(()));
+    &VALUE
+}
+
+/// Callable-slot constructor shared by `connect` (IDA 0x49e7c) and the
+/// `callable` ctor instantiation that sorts later (0x4b5b8).
+fn new_datamodel_slot(
+    signal: &SharedPtr<DataModelSignal>,
+    callback: DataModelCallback,
+) -> SharedPtr<DataModelSlot> {
+    SharedPtr::new(DataModelSlot {
+        callback: Mutex::new(Some(callback)),
+        signal: Mutex::new(Some(SharedPtr::clone(signal))),
+        next: Mutex::new(None),
+    })
+}
+
+/// Head-insert shared by `connect` (IDA 0x49e7c) and the `insert`
+/// instantiation that sorts later (0x4b164, same signal.h:310 pattern as
+/// IDA 0x45554).
+fn push_datamodel_slot(signal: &DataModelSignal, slot: SharedPtr<DataModelSlot>) {
+    debug_assert!(SharedPtr::strong_count(&slot) > 0, "item");
+    let _guard = datamodel_signal_mutex().lock();
+    let mut head = signal.head.lock();
+    *slot.next.lock() = head.take();
+    *head = Some(slot);
+}
+
+/// Unlink-by-identity shared by `disconnect` (IDA 0x4a7ec) and the `remove`
+/// instantiation that sorts later (0x4aaf4, same pattern as IDA 0x45eb0).
+fn unlink_textbox_slot(signal: &TextBoxSignal, slot: &SharedPtr<TextBoxSlot>) {
+    debug_assert!(SharedPtr::strong_count(slot) > 0, "!intrusive_ptr_expired(item)");
+    let mut head = signal.head.lock();
+    let head_is_item = head
+        .as_ref()
+        .map(|current| SharedPtr::ptr_eq(current, slot))
+        .unwrap_or(false);
+    if head_is_item {
+        let next = head
+            .as_ref()
+            .and_then(|current| current.next.lock().clone());
+        *head = next;
+        return;
+    }
+    let mut predecessor = head.clone();
+    while let Some(node) = predecessor {
+        let next = node.next.lock().clone();
+        match next {
+            Some(following) if SharedPtr::ptr_eq(&following, slot) => {
+                *node.next.lock() = following.next.lock().clone();
+                break;
+            }
+            other => predecessor = other,
+        }
+    }
+}
+
 // 0x45fa0 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::safe_static_init_mutex(void)")]
-pub fn stub_45fa0() -> ! {
-    todo!("0x45fa0 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::safe_static_init_mutex(void)")
+pub fn init_uievent_slot_mutex_45fa0() -> &'static Mutex<()> {
+// IDA 0x45fa0: thunk tail-branch (B.W) into safe_static_do_get_mutex (disasm).
+    uievent_slot_mutex_45fa4()
 }
 
 // 0x45fa4 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::safe_static_do_get_mutex(void)")]
-pub fn stub_45fa4() -> ! {
-    todo!("0x45fa4 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::safe_static_do_get_mutex(void)")
+pub fn uievent_slot_mutex_45fa4() -> &'static Mutex<()> {
+// IDA 0x45fa4: __cxa_guard_acquire on the function-local value guard, then
+// boost::mutex::mutex at the value with __cxa_atexit dtor (decompile).
+// LazyLock folds the guard plus the atexit destroy.
+    uievent_slot_mutex()
 }
 
 // 0x46094 — __ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::~callable()")]
-pub fn stub_46094() -> ! {
-    todo!("0x46094 rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::~callable()")
+pub fn drop_uievent_callable_46094(slot: &SharedPtr<UiEventSlot>) {
+// IDA 0x46094: vtable reset, function3::clear on the embedded functor, vtable
+// reset to slot base, then intrusive_ptr_release of the +0x8 signal link
+// (decompile). Arc take is the release; vtable resets are drop glue.
+    clear_uievent_function_46464(slot);
+    slot.signal.lock().take();
 }
 
 // 0x46168 — __ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::~callable()")]
-pub fn stub_46168() -> ! {
-    todo!("0x46168 rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::~callable()")
+pub fn delete_uievent_callable_46168(slot: SharedPtr<UiEventSlot>) {
+// IDA 0x46168: D1 above plus operator delete (decompile); the Arc drop below
+// is the delete.
+    drop_uievent_callable_46094(&slot);
+    drop(slot);
 }
 
 // 0x46240 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slotD1Ev
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::~slot()")]
-pub fn stub_46240() -> ! {
-    todo!("0x46240 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::~slot()")
+pub fn drop_uievent_slot_46240(slot: &SharedPtr<UiEventSlot>) {
+// IDA 0x46240: vtable reset to slot base, then intrusive_ptr_release of the
+// +0x8 signal link (decompile). Plain slots never hold a functor, so the
+// callback take is a no-op for them and covers the callable path.
+    slot.callback.lock().take();
+    slot.signal.lock().take();
 }
 
 // 0x462ec — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slotD0Ev
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::~slot()")]
-pub fn stub_462ec() -> ! {
-    todo!("0x462ec rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::~slot()")
+pub fn delete_uievent_slot_462ec(slot: SharedPtr<UiEventSlot>) {
+// IDA 0x462ec: D1 above plus operator delete (decompile).
+    drop_uievent_slot_46240(&slot);
+    drop(slot);
 }
 
 // 0x4639c — __ZN5boost9function3IvbPvN3RBX7UIEventEE13assign_to_ownERKS4_
 // type: int(void)
 #[doc(alias = "boost::function3<void,bool,void *,RBX::UIEvent>::assign_to_own(boost::function3<void,bool,void *,RBX::UIEvent> const&)")]
-pub fn stub_4639c() -> ! {
-    todo!("0x4639c boost::function3<void,bool,void *,RBX::UIEvent>::assign_to_own(boost::function3<void,bool,void *,RBX::UIEvent> const&)")
+pub fn assign_uievent_function_4639c(slot: &SharedPtr<UiEventSlot>, callback: UiEventCallback) {
+// IDA 0x4639c: if the src vtable word is set, store it; small-object flag
+// (bit0) copies the inline words, else the manager-clone op runs through
+// (vtable & ~1) with (src+4, dst+4, 0) (decompile). Box<dyn Fn> is always the
+// indirect path, moved into the empty own storage here at construction
+// (IDA 0x459a4).
+    *slot.callback.lock() = Some(callback);
 }
 
 // 0x46464 — __ZN5boost9function3IvbPvN3RBX7UIEventEE5clearEv
 // type: int(void)
 #[doc(alias = "boost::function3<void,bool,void *,RBX::UIEvent>::clear(void)")]
-pub fn stub_46464() -> ! {
-    todo!("0x46464 boost::function3<void,bool,void *,RBX::UIEvent>::clear(void)")
+pub fn clear_uievent_function_46464(slot: &SharedPtr<UiEventSlot>) {
+// IDA 0x46464: if the vtable word is set and heap-managed (bit0 clear), run
+// the manager destroy op (op 2) through the vtable, then store 0 (decompile).
+// take() drops the functor (destroy) and leaves empty storage.
+    slot.callback.lock().take();
 }
 
 // 0x46490 — __GLOBAL__I_a_15
 #[doc(alias = "global constructor keyed to_a_15")]
-pub fn stub_46490() -> ! {
-    todo!("0x46490 global constructor keyed to_a_15")
+pub fn init_global_a15_46490() {
+// IDA 0x46490: global ctor keyed to _a_15 — boost::system generic/system
+// category slots plus once init (disasm; decompile failed). Same once-only
+// shape as 0x44924; the runtime owns iostream/category state.
+    static ONCE: Once = Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x46f64 — __GLOBAL__I_a_16
 #[doc(alias = "global constructor keyed to_a_16")]
-pub fn stub_46f64() -> ! {
-    todo!("0x46f64 global constructor keyed to_a_16")
+pub fn init_global_a16_46f64() {
+// IDA 0x46f64: global ctor keyed to _a_16 — same generic/system category
+// slots plus once init as 0x46490 (disasm; decompile failed).
+    static ONCE: Once = Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x47424 — __GLOBAL__I_a_17
 #[doc(alias = "global constructor keyed to_a_17")]
-pub fn stub_47424() -> ! {
-    todo!("0x47424 global constructor keyed to_a_17")
+pub fn init_global_a17_47424() {
+// IDA 0x47424: global ctor keyed to _a_17 — same generic/system category
+// slots plus once init as 0x46490 (disasm; decompile failed).
+    static ONCE: Once = Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x47c04 — ___copy_helper_block__8
 #[doc(alias = "___copy_helper_block__8")]
-pub fn stub_47c04() -> ! {
-    todo!("0x47c04 ___copy_helper_block__8")
+pub unsafe fn copy_block_capture_47c04(dst: *mut c_void, src: *const c_void) {
+// IDA 0x47c04: _Block_object_assign(dst+20, src+20, 3) (decompile+disasm).
+// Flag 3 is BLOCK_FIELD_IS_OBJECT: the runtime retains the captured object;
+// the host owns the retain, so only the pointer word moves here.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+    }
 }
 
 // 0x47c10 — ___destroy_helper_block__8
 #[doc(alias = "___destroy_helper_block__8")]
-pub fn stub_47c10() -> ! {
-    todo!("0x47c10 ___destroy_helper_block__8")
+pub unsafe fn destroy_block_capture_47c10(block: *mut c_void) {
+// IDA 0x47c10: _Block_object_dispose(block+20, 3) (decompile+disasm) — the
+// runtime releases the captured object; the word is cleared below.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x49e7c — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE7connectIN5boost8functionIS5_EEEENS0_10connectionERKT_
 // type: int __fastcall(char, boost::mutex *, int, int, int)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::DataModel *)>::connect<boost::function<void ()(RBX::DataModel *)>>(boost::function<void ()(RBX::DataModel *)> const&)")]
-pub fn stub_49e7c() -> ! {
-    todo!("0x49e7c rbx::signals::connection rbx::signals::signal<void ()(RBX::DataModel *)>::connect<boost::function<void ()(RBX::DataModel *)>>(boost::function<void ()(RBX::DataModel *)> const&)")
+pub fn connect_datamodel_signal_49e7c(
+    signal: &SharedPtr<DataModelSignal>,
+    callback: DataModelCallback,
+) -> DataModelConnection {
+// IDA 0x49e7c: operator new(32) a callable_slot, run the callable ctor
+// (vtable tags + signal link + assign_to_own), insert it, and weak-ref the
+// returned connection (decompile) — same shape as IDA 0x4546c.
+    let slot = new_datamodel_slot(signal, callback);
+    push_datamodel_slot(signal, SharedPtr::clone(&slot));
+    DataModelConnection { slot }
 }
 
 // 0x49f64 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE7connectINS2_8functionIS7_EEEENS0_10connectionERKT_
 // type: int __fastcall(char, boost::mutex *, int, int, int)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::connect<boost::function<void ()(rbx_core::SharedPtr<RBX::TextBox>)>>(boost::function<void ()(rbx_core::SharedPtr<RBX::TextBox>)> const&)")]
-pub fn stub_49f64() -> ! {
-    todo!("0x49f64 rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::connect<boost::function<void ()(boost::shared_ptr<RBX::TextBox>)>>(boost::function<void ()(boost::shared_ptr<RBX::TextBox>)> const&)")
+pub fn connect_textbox_signal_49f64(
+    signal: &SharedPtr<TextBoxSignal>,
+    callback: TextBoxCallback,
+) -> TextBoxConnection {
+// IDA 0x49f64: operator new(32) a callable_slot, callable ctor, insert, and
+// weak-ref the returned connection (decompile) — same shape as IDA 0x4546c.
+    let slot = new_textbox_callable_4a544(signal, callback);
+    insert_textbox_slot_4a28c(signal, SharedPtr::clone(&slot));
+    TextBoxConnection { slot }
 }
 
 // 0x4a04c — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost8functionIS8_EELi1ES8_EC2IPS9_EERKSD_T_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>*>(boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)> const&,rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>*)")]
-pub fn stub_4a04c() -> ! {
-    todo!("0x4a04c rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>*>(boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)> const&,rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>*)")
+pub fn new_propdesc_callable_4a04c(
+    signal: &SharedPtr<PropDescSignal>,
+    callback: PropDescCallback,
+) -> SharedPtr<PropDescSlot> {
+// IDA 0x4a04c: next=0, signal link=a3, vtable tags, functor-empty marker, then
+// function1::assign_to_own copies the functor in (decompile) — same shape as
+// IDA 0x459a4; the functor moves in here.
+    SharedPtr::new(PropDescSlot {
+        callback: Mutex::new(Some(callback)),
+        signal: Mutex::new(Some(SharedPtr::clone(signal))),
+        next: Mutex::new(None),
+    })
 }
 
 // 0x4a148 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost8functionIS8_EELi1ES8_E4callES7_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_4a148() -> ! {
-    todo!("0x4a148 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn call_propdesc_callable_4a148(slot: &SharedPtr<PropDescSlot>, desc: *const c_void) {
+// IDA 0x4a148: ADDS R0,#0x10 then B.W into function1::operator() (disasm) —
+// forwards to the embedded functor at this+0x10.
+    let callback = slot.callback.lock();
+    invoke_propdesc_function_4a158(callback.as_ref(), desc);
 }
 
 // 0x4a150 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost8functionIS8_EELi1ES8_E4callES7_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_4a150() -> ! {
-    todo!("0x4a150 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn call_propdesc_callable_thunk_4a150(slot: &SharedPtr<PropDescSlot>, desc: *const c_void) {
+// IDA 0x4a150: ADDS R0,#0xC then the same function1::operator() shim (disasm)
+// — this+0xC steps past the second vtable where 0x4a148 uses +0x10, then the
+// identical forward. Same slot carrier.
+    call_propdesc_callable_4a148(slot, desc);
 }
 
 // 0x4a158 — __ZNK5boost9function1IvPKN3RBX10Reflection18PropertyDescriptorEEclES5_
 // type: int(void)
 #[doc(alias = "boost::function1<void,RBX::Reflection::PropertyDescriptor const*>::operator()(RBX::Reflection::PropertyDescriptor const*)const")]
-pub fn stub_4a158() -> ! {
-    todo!("0x4a158 boost::function1<void,RBX::Reflection::PropertyDescriptor const*>::operator()(RBX::Reflection::PropertyDescriptor const*)const")
+pub fn invoke_propdesc_function_4a158(func: Option<&PropDescCallback>, desc: *const c_void) {
+// IDA 0x4a158: empty functor throws (runtime_error for bad_function_call),
+// else dispatches via the functor vtable (decompile) — same shape as
+// IDA 0x45dc8.
+    match func {
+        Some(callback) => callback(desc),
+        None => panic!("boost::bad_function_call"),
+    }
 }
 
 // 0x4a28c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE6insertEPNS8_4slotE
 // type: int __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::insert(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::slot *)")]
-pub fn stub_4a28c() -> ! {
-    todo!("0x4a28c rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::insert(rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::slot *)")
+pub fn insert_textbox_slot_4a28c(signal: &TextBoxSignal, slot: SharedPtr<TextBoxSlot>) {
+// IDA 0x4a28c: ReleaseAssert(item), call_once static-mutex init, lock_guard,
+// then head-insert on the intrusive list (decompile) — same shape as
+// IDA 0x45554.
+    debug_assert!(SharedPtr::strong_count(&slot) > 0, "item");
+    let _guard = textbox_signal_mutex().lock();
+    let mut head = signal.head.lock();
+    *slot.next.lock() = head.take();
+    *head = Some(slot);
 }
 
 // 0x4a49c — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX7TextBoxEEEEE4slotEEaSEPSA_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::slot>::operator=(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::slot*)")]
-pub fn stub_4a49c() -> ! {
-    todo!("0x4a49c boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::slot>::operator=(rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::slot*)")
+pub fn retain_textbox_slot_4a49c(slot: SharedPtr<TextBoxSlot>) -> SharedPtr<TextBoxSlot> {
+// IDA 0x4a49c: add_ref(new), swap, release(old) (decompile) — Arc move folds
+// addref+release, so return the retained slot.
+    slot
 }
 
 // 0x4a540 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::safe_static_init_mutex(void)")]
-pub fn stub_4a540() -> ! {
-    todo!("0x4a540 rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::safe_static_init_mutex(void)")
+pub fn init_textbox_signal_mutex_4a540() {
+// IDA 0x4a540: thunk tail-branch (B.W) into safe_static_do_get_mutex
+// (disasm). The do_get instantiation sorts later; force-init the shared
+// class-wide signal mutex here so both spellings alias one static.
+    let _ = textbox_signal_mutex();
 }
 
 // 0x4a544 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE4slotENS3_8functionIS8_EELi1ES8_EC2IPS9_EERKSC_T_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::TextBox>)>,1,void ()(rbx_core::SharedPtr<RBX::TextBox>)>::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>*>(boost::function<void ()(rbx_core::SharedPtr<RBX::TextBox>)> const&,rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>*)")]
-pub fn stub_4a544() -> ! {
-    todo!("0x4a544 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::slot,boost::function<void ()(boost::shared_ptr<RBX::TextBox>)>,1,void ()(boost::shared_ptr<RBX::TextBox>)>::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>*>(boost::function<void ()(boost::shared_ptr<RBX::TextBox>)> const&,rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>*)")
+pub fn new_textbox_callable_4a544(
+    signal: &SharedPtr<TextBoxSignal>,
+    callback: TextBoxCallback,
+) -> SharedPtr<TextBoxSlot> {
+// IDA 0x4a544: next=0, signal link=a3, vtable tags, functor-empty marker, then
+// function1::assign_to_own copies the functor in (decompile) — same shape as
+// IDA 0x459a4/0x4a04c; the functor moves in here.
+    SharedPtr::new(TextBoxSlot {
+        callback: Mutex::new(Some(callback)),
+        signal: Mutex::new(Some(SharedPtr::clone(signal))),
+        next: Mutex::new(None),
+    })
 }
 
 // 0x4a640 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE13callable_slotINS2_8functionIS7_EEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::callable_slot<boost::function<void ()(rbx_core::SharedPtr<RBX::TextBox>)>>::~callable_slot()")]
-pub fn stub_4a640() -> ! {
-    todo!("0x4a640 rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::TextBox>)>>::~callable_slot()")
+pub fn drop_textbox_callable_slot_4a640(slot: &SharedPtr<TextBoxSlot>) {
+// IDA 0x4a640: vtable reset, function1::clear on the embedded functor at
+// +0x10, vtable reset to slot base, then intrusive_ptr_release of the +0x8
+// signal link (decompile) — same shape as IDA 0x46094.
+    slot.callback.lock().take();
+    slot.signal.lock().take();
 }
 
 // 0x4a714 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE13callable_slotINS2_8functionIS7_EEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::callable_slot<boost::function<void ()(rbx_core::SharedPtr<RBX::TextBox>)>>::~callable_slot()")]
-pub fn stub_4a714() -> ! {
-    todo!("0x4a714 rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::TextBox>)>>::~callable_slot()")
+pub fn delete_textbox_callable_slot_4a714(slot: SharedPtr<TextBoxSlot>) {
+// IDA 0x4a714: D1 above plus operator delete (decompile); the Arc drop below
+// is the delete.
+    drop_textbox_callable_slot_4a640(&slot);
+    drop(slot);
 }
 
 // 0x4a7ec — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE4slot10disconnectEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::slot::disconnect(void)")]
-pub fn stub_4a7ec() -> ! {
-    todo!("0x4a7ec rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::slot::disconnect(void)")
+pub fn disconnect_textbox_slot_4a7ec(slot: &SharedPtr<TextBoxSlot>) {
+// IDA 0x4a7ec: if (slot->signal) { call_once slot-mutex init; lock; if still
+// set { slot->signal = 0; signal->remove(slot); } unlock; } (decompile) —
+// same shape as IDA 0x45c4c. The `remove` instantiation sorts later (0x4aaf4);
+// unlink below is the shared splice it wraps.
+    if slot.signal.lock().is_some() {
+        let _guard = textbox_slot_mutex().lock();
+        let signal = slot.signal.lock().take();
+        if let Some(signal) = signal {
+            unlink_textbox_slot(&signal, slot);
+        }
+    }
 }
 
 // 0x4a8fc — __ZNK3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE4slot9connectedEv
