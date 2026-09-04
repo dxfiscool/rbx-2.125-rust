@@ -1306,120 +1306,251 @@ pub mod gui_textbutton {
 // 0x672230 — __ZN3RBX7TextBoxD2Ev
 // type: void __fastcall(RBX::TextBox *this, int, int, int)
 #[doc(alias = "__ZN3RBX7TextBoxD2Ev")]
-pub fn stub_0x672230() {
-    // IDA 0x672230: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x672230(this: *mut u8, fini: &gui_textbutton::TextBoxD2Fini) {
+    // IDA 0x672230: seven vtable installs + member walk + `GuiObject` base.
+    gui_textbutton::textbox_d2(this, fini)
 }
 
 // 0x672d68 — __ZN3RBX13GuiTextButtonC2Ev
 // type: RBX::GuiButton *__fastcall(RBX::GuiTextButton *this)
 #[doc(alias = "__ZN3RBX13GuiTextButtonC2Ev")]
-pub fn stub_0x672d68() {
-    // IDA 0x672d68: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x672d68(this: *mut u8, ctor: &gui_textbutton::GuiTextButtonCtor) -> *mut u8 {
+    // IDA 0x672d68: base + vtable rounds + describe + `"Button"` + member table.
+    gui_textbutton::guitextbutton_construct(this, ctor);
+    this // IDA 0x672f7a
 }
 
 // 0x67303c — __ZN3RBX13GuiTextButton7setTextESs
 // type: void __fastcall(_DWORD *, unsigned int *)
 #[doc(alias = "__ZN3RBX13GuiTextButton7setTextESs")]
-pub fn stub_0x67303c() {
-    // IDA 0x67303c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x67303c(this: *mut u8, text: &str, svc: &gui_textbutton::GuiTextSvc) {
+    // IDA 0x67303c: normalize + profanity gate + compare + commit + 3 raises.
+    gui_textbutton::guitextbutton_set_text(this, text, svc)
 }
 
 // 0x6731f8 — __ZN3RBX13GuiTextButton11setFontSizeENS_11TextService8FontSizeE
 // type: int __fastcall(RBX::Instance *, int)
 #[doc(alias = "__ZN3RBX13GuiTextButton11setFontSizeENS_11TextService8FontSizeE")]
-pub fn stub_0x6731f8() {
-    // IDA 0x6731f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x6731f8(
+    this: *mut u8,
+    value: u32,
+    raise: gui_textbutton::RaiseHook,
+) -> u32 {
+    // IDA 0x6731f8: word-202 compare-store + raises (unk_13277D4, unk_1327724).
+    gui_textbutton::set_word(
+        this,
+        gui_textbutton::FONTSIZE_WORD,
+        value,
+        &[gui_textbutton::DESC_FONTSIZE, gui_textbutton::DESC_TEXT2],
+        raise,
+    )
 }
 
 // 0x673230 — __ZN3RBX13GuiTextButton7setFontENS_11TextService4FontE
 // type: int __fastcall(RBX::Instance *, int)
 #[doc(alias = "__ZN3RBX13GuiTextButton7setFontENS_11TextService4FontE")]
-pub fn stub_0x673230() {
-    // IDA 0x673230: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x673230(
+    this: *mut u8,
+    value: u32,
+    raise: gui_textbutton::RaiseHook,
+) -> u32 {
+    // IDA 0x673230: word-214 compare-store + raises (unk_1327808, unk_1327724).
+    gui_textbutton::set_word(
+        this,
+        gui_textbutton::FONT_WORD,
+        value,
+        &[gui_textbutton::DESC_FONT, gui_textbutton::DESC_TEXT2],
+        raise,
+    )
 }
 
 // 0x673268 — __ZN3RBX13GuiTextButton12setTextColorENS_10BrickColorE
 // type: int __fastcall(int, int)
 #[doc(alias = "__ZN3RBX13GuiTextButton12setTextColorENS_10BrickColorE")]
-pub fn stub_0x673268() {
-    // IDA 0x673268: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
+pub unsafe fn stub_0x673268(
+    this: *mut u8,
+    packed: u32,
+    color3: fn(u32) -> [f32; 3],
+    set_color3: unsafe fn(*mut u8, [f32; 3]) -> i32,
+) -> i32 {
+    // IDA 0x673268: `v4[3] = a2` pack (0x67326e), `BrickColor::color3`
+    // (0x673278), forward to `setTextColor3` (0x673286).
+    set_color3(this, color3(packed))
 }
 
 // 0x673308 — __ZN3RBX13GuiTextButton19setTextTransparencyEf
 // type: float *__fastcall(float *this, float)
 #[doc(alias = "__ZN3RBX13GuiTextButton19setTextTransparencyEf")]
-pub fn stub_0x673308() {
-    // IDA 0x673308: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
+pub unsafe fn stub_0x673308(
+    this: *mut f32,
+    value: f32,
+    raise: unsafe fn(*mut u8, &'static str) -> *mut u8,
+) -> *mut f32 {
+    // IDA 0x673308: float-206 compare-store + raise (unk_1327674).
+    gui_textbutton::set_float(this, gui_textbutton::TEXT_TRANSP_FLOAT, value, gui_textbutton::DESC_TRANSP, raise)
 }
 
 // 0x673330 — __ZN3RBX13GuiTextButton11setTextWrapEb
 // type: int __fastcall(RBX::GuiTextButton *this, int)
 #[doc(alias = "__ZN3RBX13GuiTextButton11setTextWrapEb")]
-pub fn stub_0x673330() {
-    // IDA 0x673330: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
+pub unsafe fn stub_0x673330(
+    this: *mut u8,
+    value: i32,
+    raise: gui_textbutton::RaiseHook,
+) -> i32 {
+    // IDA 0x673330: byte-844 compare-store + 3 raises.
+    gui_textbutton::set_byte(
+        this,
+        gui_textbutton::TEXTWRAP_BYTE,
+        value,
+        &[gui_textbutton::DESC_WRAP, gui_textbutton::DESC_TEXT2, gui_textbutton::DESC_TEXT3],
+        raise,
+    )
 }
 
 // 0x673370 — __ZN3RBX13GuiTextButton12setTextScaleEb
 // type: int __fastcall(RBX::GuiTextButton *this, int)
 #[doc(alias = "__ZN3RBX13GuiTextButton12setTextScaleEb")]
-pub fn stub_0x673370() {
-    // IDA 0x673370: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
+pub unsafe fn stub_0x673370(
+    this: *mut u8,
+    value: i32,
+    raise: gui_textbutton::RaiseHook,
+) -> i32 {
+    // IDA 0x673370: byte-845 compare (0x67337e); on change store (0x67338c) +
+    // raise (0x673396), then `setTextWrap(this, 1)` when enabling (0x67339c)
+    // else the two text raises (0x6733b0-0x6733be).
+    let slot = this.add(gui_textbutton::TEXTSCALE_BYTE);
+    if slot.read() as i32 != value {
+        slot.write(value as u8);
+        raise(this, gui_textbutton::DESC_SCALE);
+        if value == 1 {
+            return stub_0x673330(this, 1, raise);
+        }
+        raise(this, gui_textbutton::DESC_TEXT2);
+        return raise(this, gui_textbutton::DESC_TEXT3);
+    }
+    slot.read() as i32
 }
 
 // 0x6733c4 — __ZN3RBX13GuiTextButton13setXAlignmentENS_11TextService10XAlignmentE
 // type: int __fastcall(RBX::Instance *, int)
 #[doc(alias = "__ZN3RBX13GuiTextButton13setXAlignmentENS_11TextService10XAlignmentE")]
-pub fn stub_0x6733c4() {
-    // IDA 0x6733c4: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
+pub unsafe fn stub_0x6733c4(
+    this: *mut u8,
+    value: u32,
+    raise: gui_textbutton::RaiseHook,
+) -> u32 {
+    // IDA 0x6733c4: word-212 compare-store + 3 raises.
+    gui_textbutton::set_word(
+        this,
+        gui_textbutton::XA_WORD,
+        value,
+        &[gui_textbutton::DESC_XA, gui_textbutton::DESC_TEXT2, gui_textbutton::DESC_TEXT3],
+        raise,
+    )
 }
 
 // 0x673404 — __ZN3RBX13GuiTextButton13setYAlignmentENS_11TextService10YAlignmentE
 // type: int __fastcall(RBX::Instance *, int)
 #[doc(alias = "__ZN3RBX13GuiTextButton13setYAlignmentENS_11TextService10YAlignmentE")]
-pub fn stub_0x673404() {
-    // IDA 0x673404: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
+pub unsafe fn stub_0x673404(
+    this: *mut u8,
+    value: u32,
+    raise: gui_textbutton::RaiseHook,
+) -> u32 {
+    // IDA 0x673404: word-213 compare-store + 3 raises.
+    gui_textbutton::set_word(
+        this,
+        gui_textbutton::YA_WORD,
+        value,
+        &[gui_textbutton::DESC_YA, gui_textbutton::DESC_TEXT2, gui_textbutton::DESC_TEXT3],
+        raise,
+    )
 }
 
 // 0x673444 — __ZNK3RBX13GuiTextButton13getTextBoundsEv
 // type: void __fastcall(RBX::GuiTextButton *this, unsigned int, bool)
 #[doc(alias = "__ZNK3RBX13GuiTextButton13getTextBoundsEv")]
-pub fn stub_0x673444() {
-    // IDA 0x673444: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
+pub unsafe fn stub_0x673444(
+    button: *mut u8,
+    text: &str,
+    wrap: bool,
+    font_size: u32,
+    font: u32,
+    svc: &gui_textbutton::TextMeasureSvc,
+) -> [f32; 2] {
+    // IDA 0x673444: gates + wrap avail + layout + release. (`this` is the
+    // hidden by-value return slot; the button arrives as the second word.)
+    gui_textbutton::guitextbutton_text_bounds(button, text, wrap, font_size, font, svc)
 }
 
 // 0x6735d0 — __ZNK3RBX13GuiTextButton11getTextFitsEv
 // type: int __fastcall(RBX::GuiTextButton *this, int, bool)
 #[doc(alias = "__ZNK3RBX13GuiTextButton11getTextFitsEv")]
-pub fn stub_0x6735d0() {
-    // IDA 0x6735d0: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
+pub unsafe fn stub_0x6735d0(
+    button: *mut u8,
+    text: &str,
+    wrap: bool,
+    font_size: u32,
+    font: u32,
+    svc: &gui_textbutton::TextMeasureSvc,
+) -> bool {
+    // IDA 0x6735d0: gates + avail + fits flag + width-vs-rect compare.
+    gui_textbutton::guitextbutton_text_fits(button, text, wrap, font_size, font, svc)
 }
 
 // 0x6737e8 — __ZN3RBX13GuiTextButton25setTextStrokeTransparencyEf
 // type: float *__fastcall(float *this, float)
 #[doc(alias = "__ZN3RBX13GuiTextButton25setTextStrokeTransparencyEf")]
-pub fn stub_0x6737e8() {
-    // IDA 0x6737e8: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
+pub unsafe fn stub_0x6737e8(
+    this: *mut f32,
+    value: f32,
+    raise: unsafe fn(*mut u8, &'static str) -> *mut u8,
+) -> *mut f32 {
+    // IDA 0x6737e8: float-210 compare-store + raise (unk_13277A8).
+    gui_textbutton::set_float(this, gui_textbutton::STROKE_TRANSP_FLOAT, value, gui_textbutton::DESC_STROKE, raise)
 }
 
 // 0x673814 — __ZN3RBX13GuiTextButton14checkForResizeEv
 // type: int __fastcall(RBX::GuiTextButton *this)
 #[doc(alias = "__ZN3RBX13GuiTextButton14checkForResizeEv")]
-pub fn stub_0x673814() {
-    // IDA 0x673814: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
+pub unsafe fn stub_0x673814(
+    this: *mut u8,
+    check: unsafe fn(*mut u8),
+    raise: gui_textbutton::RaiseHook,
+) -> i32 {
+    // IDA 0x673814: `GuiObject::checkForResize` (0x67381a) then raises
+    // unk_1327724 (0x67382e) + unk_1327750, returning the last.
+    check(this);
+    raise(this, gui_textbutton::DESC_TEXT2);
+    raise(this, gui_textbutton::DESC_TEXT3)
 }
 
 // 0x673840 — __ZN3RBX13GuiTextButton21setTransparencyLegacyEf
 // type: int __fastcall(RBX::GuiTextButton *this, float)
 #[doc(alias = "__ZN3RBX13GuiTextButton21setTransparencyLegacyEf")]
-pub fn stub_0x673840() {
-    // IDA 0x673840: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
+pub unsafe fn stub_0x673840(
+    this: *mut u8,
+    value: f32,
+    raise: gui_textbutton::RaiseHook,
+    set_background: unsafe fn(*mut u8, f32) -> i32,
+) -> i32 {
+    // IDA 0x673840: float-206 compare-store + raise (unk_1327674), then the
+    // `GuiObject::setBackgroundTransparency` tail call.
+    if (this as *mut f32).add(gui_textbutton::TEXT_TRANSP_FLOAT).read() != value {
+        // IDA 0x67385a-0x673864
+        (this as *mut f32).add(gui_textbutton::TEXT_TRANSP_FLOAT).write(value);
+        raise(this, gui_textbutton::DESC_TRANSP); // IDA 0x673870
+    }
+    set_background(this, value)
 }
 
 // 0x673888 — __ZNK3RBX13GuiTextButton21getPersistentDataCostEv
 // type: int __fastcall(RBX::GuiTextButton *this)
 #[doc(alias = "__ZNK3RBX13GuiTextButton21getPersistentDataCostEv")]
-pub fn stub_0x673888() {
-    // IDA 0x673888: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
+pub fn stub_0x673888(base: i32, text_len: usize) -> i32 {
+    // IDA 0x673888: `Instance::getPersistentDataCost + max(len/100, 1) + 6`.
+    gui_textbutton::textbutton_persistent_cost(base, text_len)
 }
 
 // 0x67390c — __ZN3RBX13GuiTextButton8render2dEPNS_5AdornE
