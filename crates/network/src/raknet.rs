@@ -12119,8 +12119,9 @@ pub fn stub_9d86cc(table: &mut crate::player::ReplicatorTable, handle: u32) {
 // 0x9d86dc — __ZThn1192_N3RBX7Network16ServerReplicatorD1Ev
 // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
-pub fn stub_9d86dc() -> ! {
-    todo!("0x9d86dc non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")
+pub fn stub_9d86dc(table: &mut crate::player::ReplicatorTable, handle: u32) {
+    // IDA 0x9d86dc (ZThn1192 D1): adjusts `this`, then D1.
+    table.remove(handle);
 }
 
 // 0x9d8700 — __ZN3RBX7Network16ServerReplicator26readPlayerSimulationRegionERNS_7Region213WeightedPointE
@@ -12128,29 +12129,44 @@ pub fn stub_9d86dc() -> ! {
 #[doc(
     alias = "RBX::Network::ServerReplicator::readPlayerSimulationRegion(RBX::Region2::WeightedPoint &)"
 )]
-pub fn stub_9d8700() -> ! {
-    todo!("0x9d8700 RBX::Network::ServerReplicator::readPlayerSimulationRegion(RBX::Region2::WeightedPoint &)")
+pub fn stub_9d8700(
+    head: Option<(u32, f32, f32, f32)>,
+    adjust: &mut dyn FnMut(f32, f32, f32),
+) -> Option<u32> {
+    // IDA 0x9d8700: headless players select no region; else the StreamJob adjusts it.
+    crate::replicator::read_player_simulation_region(head, adjust)
 }
 
 // 0x9d8768 — __ZN3RBX7Network16ServerReplicator23checkDistributedReceiveEPNS_12PartInstanceE
 // type: bool __fastcall(RBX::Network::ServerReplicator *this, RBX::Mechanism **)
 #[doc(alias = "RBX::Network::ServerReplicator::checkDistributedReceive(RBX::PartInstance *)")]
-pub fn stub_9d8768() -> ! {
-    todo!("0x9d8768 RBX::Network::ServerReplicator::checkDistributedReceive(RBX::PartInstance *)")
+pub fn stub_9d8768(owner_is_self: bool, mechanism_matches: bool) -> bool {
+    // IDA 0x9d8768: owner match plus mechanism match.
+    crate::replicator::check_distributed_receive(owner_is_self, mechanism_matches)
 }
 
 // 0x9d87b8 — __ZN3RBX7Network16ServerReplicator20checkDistributedSendEPKNS_12PartInstanceE
 // type: int __fastcall(RBX::Network::ServerReplicator *this, RBX::Mechanism **, int)
 #[doc(alias = "RBX::Network::ServerReplicator::checkDistributedSend(RBX::PartInstance const*)")]
-pub fn stub_9d87b8() -> ! {
-    todo!("0x9d87b8 RBX::Network::ServerReplicator::checkDistributedSend(RBX::PartInstance const*)")
+pub fn stub_9d87b8(
+    part_present: bool,
+    mechanism_matches: bool,
+    owner_is_self: bool,
+) -> bool {
+    // IDA 0x9d87b8: part assert; differing owner plus mechanism match.
+    crate::replicator::check_distributed_send(part_present, mechanism_matches, owner_is_self)
 }
 
 // 0x9d885c — __ZN3RBX7Network16ServerReplicator24checkDistributedSendFastEPKNS_12PartInstanceE
 // type: bool __fastcall(RBX::Network::ServerReplicator *this, RBX::Mechanism **, int)
 #[doc(alias = "RBX::Network::ServerReplicator::checkDistributedSendFast(RBX::PartInstance const*)")]
-pub fn stub_9d885c() -> ! {
-    todo!("0x9d885c RBX::Network::ServerReplicator::checkDistributedSendFast(RBX::PartInstance const*)")
+pub fn stub_9d885c(
+    part_present: bool,
+    root_matches: bool,
+    owner_is_self: bool,
+) -> bool {
+    // IDA 0x9d885c: part/root asserts; the owner differs.
+    crate::replicator::check_distributed_send_fast(part_present, root_matches, owner_is_self)
 }
 
 // 0x9d8924 — __ZN3RBX7Network16ServerReplicator16rebroadcastEventERNS_10Reflection15EventInvocationE
@@ -12158,8 +12174,9 @@ pub fn stub_9d885c() -> ! {
 #[doc(
     alias = "RBX::Network::ServerReplicator::rebroadcastEvent(RBX::Reflection::EventInvocation &)"
 )]
-pub fn stub_9d8924() -> ! {
-    todo!("0x9d8924 RBX::Network::ServerReplicator::rebroadcastEvent(RBX::Reflection::EventInvocation &)")
+pub fn stub_9d8924(replicated: bool) -> bool {
+    // IDA 0x9d8924: forwards to `EventInvocation::replicateEvent`.
+    crate::replicator::rebroadcast_event(replicated)
 }
 
 // 0x9d8930 — __ZN3RBX7Network16ServerReplicator24shouldDelayAddingToWorldEN5boost10shared_ptrINS_8InstanceEEE
@@ -12167,8 +12184,15 @@ pub fn stub_9d8924() -> ! {
 #[doc(
     alias = "RBX::Network::ServerReplicator::shouldDelayAddingToWorld(boost::shared_ptr<RBX::Instance>)"
 )]
-pub fn stub_9d8930() -> ! {
-    todo!("0x9d8930 RBX::Network::ServerReplicator::shouldDelayAddingToWorld(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_9d8930(
+    is_player: bool,
+    remote_exists: bool,
+    auth_enabled: bool,
+    auth_flag: bool,
+    installed: &mut dyn FnMut(),
+) -> bool {
+    // IDA 0x9d8930: players install remotes; auth gates the delay.
+    crate::replicator::should_delay_adding_to_world(is_player, remote_exists, auth_enabled, auth_flag, installed)
 }
 
 // 0x9d8ef0 — __ZN3RBX7Network16ServerReplicator26addTopReplicationContainerEPNS_8InstanceEbbN5boost8functionIFvNS4_10shared_ptrIS2_EEEEE
@@ -12176,8 +12200,14 @@ pub fn stub_9d8930() -> ! {
 #[doc(
     alias = "RBX::Network::ServerReplicator::addTopReplicationContainer(RBX::Instance *,bool,bool,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)"
 )]
-pub fn stub_9d8ef0() -> ! {
-    todo!("0x9d8ef0 RBX::Network::ServerReplicator::addTopReplicationContainer(RBX::Instance *,bool,bool,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)")
+pub fn stub_9d8ef0(
+    base_add: &mut dyn FnMut(),
+    delay_flag: bool,
+    immediate: bool,
+    on_added: &mut dyn FnMut(),
+) {
+    // IDA 0x9d8ef0: base add, then the completion functor unless deferred.
+    crate::replicator::add_top_replication_container(base_add, delay_flag, immediate, on_added);
 }
 
 // 0x9d91d8 — __ZN3RBX7Network16ServerReplicator21isLegalDeleteInstanceEPNS_8InstanceE
@@ -12704,22 +12734,25 @@ pub fn stub_9e7870(target: &mut Option<crate::signal::SlotId>, other: Option<cra
 // 0x9e7f18 — __ZN3RBX7Network10Replicator19isLegalReceiveEventEPNS_8InstanceERKNS_10Reflection15EventDescriptorE
 // type: int __fastcall(RBX::Network::Replicator *this, RBX::Instance *, const RBX::Reflection::EventDescriptor *)
 #[doc(alias = "RBX::Network::Replicator::isLegalReceiveEvent(RBX::Instance *,RBX::Reflection::EventDescriptor const&)")]
-pub fn stub_9e7f18() -> ! {
-    todo!("0x9e7f18 RBX::Network::Replicator::isLegalReceiveEvent(RBX::Instance *,RBX::Reflection::EventDescriptor const&)")
+pub fn stub_9e7f18() -> bool {
+    // IDA 0x9e7f18..0x9e7f1a: returns 1 unconditionally.
+    crate::replicator::base_is_legal_receive_event()
 }
 
 // 0x9e7f20 — __ZN3RBX7Network10Replicator16rebroadcastEventERNS_10Reflection15EventInvocationE
 // type: void()
 #[doc(alias = "RBX::Network::Replicator::rebroadcastEvent(RBX::Reflection::EventInvocation &)")]
-pub fn stub_9e7f20() -> ! {
-    todo!("0x9e7f20 RBX::Network::Replicator::rebroadcastEvent(RBX::Reflection::EventInvocation &)")
+pub fn stub_9e7f20() {
+    // IDA 0x9e7f20: empty body.
+    crate::replicator::base_rebroadcast_event();
 }
 
 // 0x9e7f28 — __ZN3RBX7Network10Replicator20canReplicatePropertyERKNS_10Reflection13ConstPropertyE
 // type: int()
 #[doc(alias = "RBX::Network::Replicator::canReplicateProperty(RBX::Reflection::ConstProperty const&)")]
-pub fn stub_9e7f28() -> ! {
-    todo!("0x9e7f28 RBX::Network::Replicator::canReplicateProperty(RBX::Reflection::ConstProperty const&)")
+pub fn stub_9e7f28() -> bool {
+    // IDA 0x9e7f28..0x9e7f2a: returns 1 unconditionally.
+    crate::replicator::base_can_replicate_property()
 }
 
 // 0x9e8a8c — __ZN3RBX7Network16ServerReplicator15ServerStatsItemC2ERKN5boost10shared_ptrIKS1_EE

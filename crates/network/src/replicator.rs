@@ -662,6 +662,117 @@ pub fn data_out_step(expire_items: &mut dyn FnMut(), base_step: &mut dyn FnMut()
     base_step();
 }
 
+/// `ServerReplicator::readPlayerSimulationRegion` (IDA 0x9d8700): without
+/// a player, or a player without a character head, there is no region
+/// (0x9d871e..0x9d8736). Otherwise the head's `xz` plus the radius select
+/// the range and the `StreamJob` adjusts it (0x9d873e..0x9d875a,
+/// engine-side). Returns the head part id.
+pub fn read_player_simulation_region(
+    head: Option<(u32, f32, f32, f32)>,
+    adjust: &mut dyn FnMut(f32, f32, f32),
+) -> Option<u32> {
+    let (id, x, z, radius) = head?;
+    adjust(x, z, radius);
+    Some(id)
+}
+
+/// `ServerReplicator::checkDistributedReceive` (IDA 0x9d8768): the root
+/// moving part's mechanism must be this part's, and its network owner
+/// must be this replicator's address (0x9d877a..0x9d87b4).
+pub fn check_distributed_receive(owner_is_self: bool, mechanism_matches: bool) -> bool {
+    owner_is_self && mechanism_matches
+}
+
+/// `ServerReplicator::checkDistributedSend` (IDA 0x9d87b8): asserts the
+/// part (ServerReplicator.cpp:231); without a root mechanism the match
+/// fails, otherwise the owner must differ and the mechanism must match
+/// (0x9d8824..0x9d885a).
+pub fn check_distributed_send(
+    part_present: bool,
+    mechanism_matches: bool,
+    owner_is_self: bool,
+) -> bool {
+    debug_assert!(part_present, "part Client/Network/ServerReplicator.cpp line: 231");
+    mechanism_matches && !owner_is_self
+}
+
+/// `ServerReplicator::checkDistributedSendFast` (IDA 0x9d885c): asserts
+/// the part (:243) and the mechanism-root invariant (:244), then reports
+/// whether the owner differs (0x9d8906..0x9d8920).
+pub fn check_distributed_send_fast(
+    part_present: bool,
+    root_matches: bool,
+    owner_is_self: bool,
+) -> bool {
+    debug_assert!(part_present, "part Client/Network/ServerReplicator.cpp line: 243");
+    debug_assert!(
+        root_matches,
+        "getConstMechanismRootMovingPart(part) == part Client/Network/ServerReplicator.cpp line: 244"
+    );
+    !owner_is_self
+}
+
+/// `ServerReplicator::rebroadcastEvent` (IDA 0x9d8924): forwards to
+/// `EventInvocation::replicateEvent` (0x9d892e, engine-side).
+pub fn rebroadcast_event(replicated: bool) -> bool {
+    replicated
+}
+
+/// `Replicator::rebroadcastEvent` (IDA 0x9e7f20): empty body.
+pub fn base_rebroadcast_event() {}
+
+/// `Replicator::isLegalReceiveEvent` (IDA 0x9e7f18): returns 1
+/// unconditionally (0x9e7f1a).
+pub fn base_is_legal_receive_event() -> bool {
+    true
+}
+
+/// `Replicator::canReplicateProperty` (IDA 0x9e7f28): returns 1
+/// unconditionally (0x9e7f2a).
+pub fn base_can_replicate_property() -> bool {
+    true
+}
+
+/// `ServerReplicator::shouldDelayAddingToWorld` (IDA 0x9d8930):
+/// non-`Player` instances never delay (0x9d8962..0x9d8a32). A `Player`
+/// with an existing remote throws `runtime_error("remotePlayer already
+/// exists")` (0x9d8a9a..0x9d8d6e, mirrored as a panic); otherwise the
+/// remote installs with stream listeners and an early spawn calculation
+/// (engine-side), and the verdict is whether player authentication is
+/// enabled with its flag set (0x9d8c28..0x9d8c46).
+pub fn should_delay_adding_to_world(
+    is_player: bool,
+    remote_exists: bool,
+    auth_enabled: bool,
+    auth_flag: bool,
+    installed: &mut dyn FnMut(),
+) -> bool {
+    if !is_player {
+        return false;
+    }
+    if remote_exists {
+        panic!("remotePlayer already exists");
+    }
+    installed();
+    auth_enabled && auth_flag
+}
+
+/// `ServerReplicator::addTopReplicationContainer` (IDA 0x9d8ef0): runs
+/// the base `Replicator::addTopReplicationContainer` (0x9d8f8c,
+/// engine-side), then fires the completion functor unless
+/// `DelayAddTopReplicationInstance` defers it (0x9d8fc4..0x9d8fe6).
+pub fn add_top_replication_container(
+    base_add: &mut dyn FnMut(),
+    delay_flag: bool,
+    immediate: bool,
+    on_added: &mut dyn FnMut(),
+) {
+    base_add();
+    if !delay_flag || immediate {
+        on_added();
+    }
+}
+
 /// `ServerReplicator::readItem` dispatch (IDA 0x9dcc34): 8 reads a
 /// character request, 9 logs `"Rocky item found"` and throws
 /// `runtime_error("rocky")`, 0xA reads a prop acknowledgement, 0xC reads
@@ -1069,5 +1180,69 @@ mod tests {
         let order = core::cell::RefCell::new(Vec::new());
         data_out_step(&mut || order.borrow_mut().push("expire"), &mut || order.borrow_mut().push("base"));
         assert_eq!(order.into_inner(), vec!["expire", "base"]);
+    }
+
+    #[test]
+    fn distributed_checks_need_ownership() {
+        // IDA 0x9d8700/0x9d8768/0x9d87b8/0x9d885c/0x9d8924.
+        assert_eq!(read_player_simulation_region(None, &mut |_, _, _| panic!("no adjust")), None);
+        let mut adjusted = (0.0, 0.0, 0.0);
+        let head = read_player_simulation_region(
+            Some((7, 1.0, 2.0, 30.0)),
+            &mut |x, z, r| adjusted = (x, z, r),
+        );
+        assert_eq!(head, Some(7));
+        assert_eq!(adjusted, (1.0, 2.0, 30.0));
+        assert!(check_distributed_receive(true, true));
+        assert!(!check_distributed_receive(true, false));
+        assert!(!check_distributed_receive(false, true));
+        assert!(check_distributed_send(true, true, false));
+        assert!(!check_distributed_send(true, true, true));
+        assert!(!check_distributed_send(true, false, false));
+        assert!(check_distributed_send_fast(true, true, false));
+        assert!(!check_distributed_send_fast(true, true, true));
+        assert!(rebroadcast_event(true));
+        assert!(!rebroadcast_event(false));
+        base_rebroadcast_event();
+        assert!(base_is_legal_receive_event());
+        assert!(base_can_replicate_property());
+    }
+
+    #[test]
+    fn delay_needs_player_and_auth() {
+        // IDA 0x9d8930: non-players pass through; auth gates the delay.
+        let mut installed = false;
+        assert!(!should_delay_adding_to_world(false, false, true, true, &mut || installed = true));
+        assert!(!installed);
+        assert!(should_delay_adding_to_world(true, false, true, true, &mut || installed = true));
+        assert!(installed);
+        assert!(!should_delay_adding_to_world(true, false, true, false, &mut || {}));
+        assert!(!should_delay_adding_to_world(true, false, false, true, &mut || {}));
+    }
+
+    #[test]
+    #[should_panic(expected = "remotePlayer already exists")]
+    fn delay_duplicate_remote_throws() {
+        // IDA 0x9d8a9a: the duplicate remote throw mirrors as a panic.
+        let _ = should_delay_adding_to_world(true, true, false, false, &mut || {});
+    }
+
+    #[test]
+    fn top_container_defers_behind_flag() {
+        // IDA 0x9d8ef0: base always runs; the functor fires unless deferred.
+        let order = core::cell::RefCell::new(Vec::new());
+        add_top_replication_container(
+            &mut || order.borrow_mut().push("base"),
+            true, false,
+            &mut || order.borrow_mut().push("added"),
+        );
+        assert_eq!(order.into_inner(), vec!["base"]);
+        let order = core::cell::RefCell::new(Vec::new());
+        add_top_replication_container(
+            &mut || order.borrow_mut().push("base"),
+            false, false,
+            &mut || order.borrow_mut().push("added"),
+        );
+        assert_eq!(order.into_inner(), vec!["base", "added"]);
     }
     }
