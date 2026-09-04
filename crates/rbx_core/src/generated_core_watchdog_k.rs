@@ -19,8 +19,13 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 /// `__cxa`/throws -> none (every ported path is total). `[INFERENCE]` marks what the
 /// binary does not pin down; everything else follows the IDA pseudocode branch-for-branch.
 pub mod render_settings {
+    use std::collections::HashMap;
     use std::os::raw::{c_char, c_int};
     use std::sync::atomic::{AtomicBool, AtomicI32, Ordering};
+
+    /// Batch 2: IDA 0x9b48 `ReleaseAssert((int)value<=2304)`, enumconverter.h:211.
+    /// (The `value>=0` twin at line 210 is asserted at the same site.)
+    pub const MAX_ENUM_VALUE: i32 = 2304;
 
     /// IDA 0x84e0 `start` — raw process entry (`void __fastcall __noreturn start(...)`).
     /// `argv` points at the stacked `[argc, argv0, ..., NULL, envp0, ..., NULL]` block.
@@ -162,12 +167,45 @@ pub mod render_settings {
     /// `Vec`s preserve the IDA declaration order (lookup is linear, matching the tiny
     /// table sizes; `[INFERENCE]` — the original maps are tree-ordered, observable
     /// lookups are identical).
+    /// was: `RBX::Reflection::EnumDescriptor::Item` heap box (0x1C bytes, IDA 0x9b7e):
+    /// `Descriptor(name)` + vtable `off_1270CA8` + owner/value/index words.
+    #[derive(Debug, Clone)]
+    pub struct EnumItemEntry {
+        pub name: String,
+        pub value: i32,
+        /// was: `a1[10]` snapshot at insert (IDA 0x9be0 `*((_DWORD *)v38 + 6) = v30`).
+        pub index: u32,
+    }
+
     #[derive(Debug, Clone, Default)]
     pub struct EnumDescData {
         pub desc_name: &'static str,
         /// was: the installed vtable (`*a1 = &off_...` at each ctor tail).
         pub vtable: &'static str,
         pub pairs: Vec<(i32, String)>,
+        /// was: `Item*` vector at +7 (IDA 0x9bee `push_back(a1 + 7, ...)`).
+        pub items: Vec<EnumItemEntry>,
+        /// was: `vector<T>` at +33, `-1`-filled (IDA 0x9c14 resize, then `[a2] = a2`).
+        pub value_vec: Vec<i32>,
+        /// was: `vector<unsigned long>` at +39 holding the insert counter per value.
+        pub index_vec: Vec<u32>,
+        /// was: `vector<T>` at +36, values in declaration order (IDA 0x9d08).
+        pub ordered: Vec<i32>,
+        /// was: `vector<const Name*>` at +24, NullName-filled (IDA 0x9d2e).
+        /// `[INFERENCE]` — names stored owned here; null slots are `None`.
+        pub name_slots: Vec<Option<String>>,
+        /// was: `vector<string>` at +27, empty-filled then assigned (IDA 0x9d98).
+        pub name_strings: Vec<String>,
+        /// was: `vector<const Item*>` at +30, null-filled (IDA 0x9db8).
+        pub item_index: Vec<Option<usize>>,
+        /// was: `map<const Name*, T>` at +12 (IDA 0x9dd4 `operator[]`).
+        pub by_name: HashMap<String, i32>,
+        /// was: `a1[10]` insert counter (IDA 0x9dde).
+        pub counter: u32,
+        /// was: `a1[11] = floor(log2(counter))` (IDA 0x9de4 shift loop).
+        pub log_bits: i32,
+        /// was: `vector<T>` at +132 for legacy remap, `-1`-filled (IDA 0xa234).
+        pub legacy_remap: Vec<i32>,
         /// was: `addLegacy(value, name, flag)` entries.
         pub legacy: Vec<(i32, String, i32)>,
         /// was: extra `Name::declare` + `map::operator[]` alias inserts (the " (wide)"
@@ -176,13 +214,65 @@ pub mod render_settings {
     }
 
     impl EnumDescData {
-        /// was: `EnumDesc<T>::addPair(value, name)`.
+        /// Batch 2 full port of `EnumDesc<T>::addPair(value, name)` (IDA 0x9b48 body;
+        /// the 0x9ea8/0xa25c/0xa5bc/0xa91c/0xac7c/0xafdc instantiations are identical
+        /// apart from the type word — verified by diff): Item box alloc (0x9b7e),
+        /// owner/value/index words (0x9bd4-0x9be0), items push (0x9bee), `-1`-fill
+        /// resize of the value vector (0x9c14) with `[value] = value` (0x9c22), the
+        /// `value>=0` / `(int)value<=2304` ReleaseAsserts (enumconverter.h:210-211,
+        /// panics here), counter snapshot into the index vector (0x9cfc), ordered
+        /// push (0x9d08), NullName-fill resize of the name-pointer vector (0x9d2e),
+        /// empty-fill resize + assign of the name-string vector (0x9d68/0x9d98),
+        /// null-fill resize of the item-pointer vector (0x9db8), the name->value map
+        /// insert (0x9dd4), and the counter/log-bits update (0x9dde-0x9df6).
+        /// The declaration-order `pairs` list is kept alongside for stable iteration.
         pub fn add_pair(&mut self, value: i32, name: &str) {
+            assert!(value >= 0, "value>=0 file: ../App/include/reflection/enumconverter.h line: 210");
+            assert!(
+                value <= MAX_ENUM_VALUE,
+                "(int)value<=2304 file: ../App/include/reflection/enumconverter.h line: 211"
+            );
+            let index = self.counter;
+            self.items.push(EnumItemEntry { name: name.to_string(), value, index });
+            if self.value_vec.len() <= value as usize {
+                self.value_vec.resize(value as usize + 1, -1);
+            }
+            self.value_vec[value as usize] = value;
+            if self.index_vec.len() <= value as usize {
+                self.index_vec.resize(value as usize + 1, u32::MAX);
+            }
+            self.index_vec[value as usize] = index;
+            self.ordered.push(value);
+            if self.name_slots.len() <= value as usize {
+                self.name_slots.resize(value as usize + 1, None);
+            }
+            self.name_slots[value as usize] = Some(name.to_string());
+            if self.name_strings.len() <= value as usize {
+                self.name_strings.resize(value as usize + 1, String::new());
+            }
+            self.name_strings[value as usize] = name.to_string();
+            if self.item_index.len() <= value as usize {
+                self.item_index.resize(value as usize + 1, None);
+            }
+            self.item_index[value as usize] = Some(self.items.len() - 1);
+            self.by_name.insert(name.to_string(), value);
             self.pairs.push((value, name.to_string()));
+            self.counter = index + 1;
+            self.log_bits = 31 - self.counter.leading_zeros() as i32;
         }
-        /// was: `EnumDesc<T>::addLegacy(value, name, flag)` (IDA 0x880e).
-        pub fn add_legacy(&mut self, value: i32, name: &str, flag: i32) {
-            self.legacy.push((value, name.to_string(), flag));
+        /// Batch 2 full port of `EnumDesc<GraphicsMode>::addLegacy` (IDA 0xa208):
+        /// `-1`-fill resize of the +132 remap vector when `len <= index` (0xa22a),
+        /// `remap[index] = value` (0xa23a), then `Name::declare` + `map[+72] = value`
+        /// (0xa244/0xa24c). The `(index, name, value)` triple is kept in `legacy`
+        /// alongside; the ctor-time alias also lands in `aliases` via `add_alias`.
+        pub fn add_legacy(&mut self, index: i32, name: &str, value: i32) {
+            assert!(index >= 0, "value>=0 file: ../App/include/reflection/enumconverter.h line: 210");
+            if self.legacy_remap.len() <= index as usize {
+                self.legacy_remap.resize(index as usize + 1, -1);
+            }
+            self.legacy_remap[index as usize] = value;
+            self.legacy.push((index, name.to_string(), value));
+            self.add_alias(name, value);
         }
         /// was: `Name::declare` + `map::operator[] = value` alias insert.
         pub fn add_alias(&mut self, name: &str, value: i32) {
@@ -368,6 +458,11 @@ pub mod render_settings {
         }
     }
 
+    /// Batch 2: was: `unk_130C2AC` — shared by quality-level (0x9648) and
+    /// auto-quality-level (0x9ac8) setters alike.
+    pub const PROP_AUTO_QUALITY_LEVEL: &str = "unk_130C2AC";
+    /// Batch 2: was: `unk_130C1E8` for eager bulk execution (IDA 0x9b26).
+    pub const PROP_EAGER_BULK_EXECUTION: &str = "unk_130C1E8";
     /// was: `unk_130C***` property-descriptor ids passed to the signal `operator()`.
     pub const PROP_ALWAYS_DRAW_CONNECTORS: &str = "unk_130C030";
     pub const PROP_SHOW_AGGREGATION: &str = "unk_130C05C";
@@ -431,6 +526,10 @@ pub mod render_settings {
         pub texture_cache_size: u32,
         /// +164, IDA 0x97c8.
         pub mesh_cache_size: u32,
+        /// Batch 2: +124, IDA 0x9ac8 auto quality level.
+        pub auto_quality_level: i32,
+        /// Batch 2: +157, IDA 0x9b08 eager bulk execution flag.
+        pub eager_bulk_execution: bool,
         /// +168, IDA 0x98f6/0x9904 `setName("Rendering")`.
         pub name: String,
         /// +172/+174, IDA 0x987e/0x988a: 800x600.
@@ -612,6 +711,129 @@ pub mod render_settings {
         pub fn set_mesh_cache_size(&mut self, size: u32) -> &mut Self {
             self.mesh_cache_size = size;
             self
+        }
+
+        /// Batch 2, IDA 0x9ac8: store +124 when changed, emit `PROP_AUTO_QUALITY_LEVEL`
+        /// (same property id as the quality-level setter). Returns `this`.
+        pub fn set_auto_quality_level(&mut self, level: i32) -> &mut Self {
+            if self.auto_quality_level != level {
+                self.auto_quality_level = level;
+                self.changed.emit(PROP_AUTO_QUALITY_LEVEL);
+            }
+            self
+        }
+
+        /// Batch 2, IDA 0x9ae8 non-virtual thunk to `setAutoQualityLevel`: the incoming
+        /// `this` is the +96 `CRenderSettings` subobject, so the original biases every
+        /// access by -96 (`v2 = this - 96`, 0x9af4) — a no-op in this flat layout, where
+        /// the thunk delegates straight to the method.
+        pub fn set_auto_quality_level_thunk(&mut self, level: i32) -> &mut Self {
+            self.set_auto_quality_level(level)
+        }
+
+        /// Batch 2, IDA 0x9b08: store byte +157 when changed, emit
+        /// `PROP_EAGER_BULK_EXECUTION`. Returns `this`.
+        pub fn set_eager_bulk_execution(&mut self, value: bool) -> &mut Self {
+            if value != self.eager_bulk_execution {
+                self.eager_bulk_execution = value;
+                self.changed.emit(PROP_EAGER_BULK_EXECUTION);
+            }
+            self
+        }
+
+        /// Batch 2 getters. Note the original `this` is the +96 `CRenderSettings`
+        /// subobject, so its getter offsets are biased by -96 against the setters:
+        /// +4 -> item+100 (0xb33e), +16 -> item+112 (0xb366), +20 -> item+116
+        /// (0xb38e), +59 -> item+155 (0xb3b8), +58 -> item+154 (0xb3e4).
+        /// Batch 2, IDA 0xb33c `CRenderSettings::getGraphicsMode`.
+        pub fn graphics_mode(&self) -> GraphicsMode {
+            self.graphics_mode
+        }
+        /// Batch 2, IDA 0xb364 `CRenderSettings::getFrameRateManagerMode`.
+        pub fn frame_rate_manager_mode(&self) -> FrameRateManagerMode {
+            self.frame_rate_manager_mode
+        }
+        /// Batch 2, IDA 0xb38c `CRenderSettings::getQualityLevel`.
+        pub fn quality_level(&self) -> QualityLevel {
+            self.quality_level
+        }
+        /// Batch 2, IDA 0xb3b4 `CRenderSettings::getAlwaysDrawConnectors`.
+        pub fn always_draw_connectors(&self) -> bool {
+            self.always_draw_connectors
+        }
+        /// Batch 2, IDA 0xb3e0 `CRenderSettings::getShowAggregation`.
+        pub fn show_aggregation(&self) -> bool {
+            self.show_aggregation
+        }
+        /// Batch 2, IDA 0xb3e8 `CRenderSettings::getAASamples` — reads the global.
+        pub fn get_aa_samples() -> i32 {
+            AA_SAMPLES.load(Ordering::SeqCst)
+        }
+    }
+
+    /// Batch 2: was: `RBX::Reflection::{Enum,}PropDescriptor` dtor core —
+    /// `*a1 = <base vtable>; if (slot) operator delete(slot); return a1;`
+    /// (IDA 0xb354/0xb37c/0xb3a4/0xb3d0). The owned slot (a1[11]/+44 for the enum
+    /// descriptors, a1[10]/+40 for the bool one) is an `Option` here; destruction
+    /// restores the base vtable and drops it. Rust `Drop` would run implicitly —
+    /// this models the explicit base-restore the binary performs.
+    #[derive(Debug, Default)]
+    pub struct PropDescriptorBox {
+        pub vtable: &'static str,
+        pub owned: Option<Box<[u8]>>,
+    }
+
+    impl PropDescriptorBox {
+        pub fn destroy(&mut self, base_vtable: &'static str) {
+            self.vtable = base_vtable;
+            self.owned = None;
+        }
+    }
+
+    /// Batch 2, IDA 0xb340 `~EnumPropDescriptor<CRenderSettingsItem, GraphicsMode>`:
+    /// restore `off_12228E8`, free +44.
+    pub fn enum_prop_descriptor_graphics_mode_dtor(b: &mut PropDescriptorBox) {
+        b.destroy("off_12228E8");
+    }
+    /// Batch 2, IDA 0xb368 `~EnumPropDescriptor<CRenderSettingsItem, FrameRateManagerMode>`:
+    /// restore `off_1222848`, free +44.
+    pub fn enum_prop_descriptor_frame_rate_manager_mode_dtor(b: &mut PropDescriptorBox) {
+        b.destroy("off_1222848");
+    }
+    /// Batch 2, IDA 0xb390 `~EnumPropDescriptor<CRenderSettingsItem, QualityLevel>`:
+    /// restore `off_12227A8`, free +44.
+    pub fn enum_prop_descriptor_quality_level_dtor(b: &mut PropDescriptorBox) {
+        b.destroy("off_12227A8");
+    }
+    /// Batch 2, IDA 0xb3bc `~PropDescriptor<CRenderSettingsItem, bool>`:
+    /// restore `off_1222378`, free +40.
+    pub fn prop_descriptor_bool_dtor(b: &mut PropDescriptorBox) {
+        b.destroy("off_1222378");
+    }
+
+    /// Batch 2: was: `std::logic_error`/`length_error`/`out_of_range` dtors.
+    /// Rust `Drop` replaces the exception-object lifetime; these model the exact
+    /// thunk/delete split: D1/D2 run the base dtor only, D0 additionally frees.
+    pub mod std_exceptions {
+        use std::ffi::c_void;
+
+        /// IDA 0x9b2c/0x9b44 target `std::logic_error::~logic_error` — base-class
+        /// teardown; no owned state in this port.
+        pub unsafe fn logic_error_dtor(_this: *mut c_void) {}
+        /// IDA 0x9b2c `std::length_error::~length_error() D1` — thunk to the base
+        /// dtor, no delete.
+        pub unsafe fn length_error_d1(this: *mut c_void) {
+            logic_error_dtor(this);
+        }
+        /// IDA 0x9b44 `std::out_of_range::~out_of_range() D2` — base dtor, no delete.
+        pub unsafe fn out_of_range_d2(this: *mut c_void) {
+            logic_error_dtor(this);
+        }
+        /// IDA 0x9b30/0x9b36-0x9b40 `~out_of_range() D0` — base dtor plus
+        /// `operator delete(this)`; the caller hands ownership over.
+        pub unsafe fn out_of_range_d0(this: *mut c_void) {
+            logic_error_dtor(this);
+            drop(Box::from_raw(this as *mut u8));
         }
     }
 }
@@ -818,169 +1040,201 @@ pub fn stub_97d0(dx_video_memory_size: u32) -> render_settings::CRenderSettingsI
 #[doc(alias = "CRenderSettingsItem::setAutoQualityLevel(int)")]
 // 0x9ac8 — __ZN19CRenderSettingsItem19setAutoQualityLevelEi
 // type: int __fastcall(int this, int)
-pub fn stub_9ac8() -> ! {
-    todo!("0x9ac8 __ZN19CRenderSettingsItem19setAutoQualityLevelEi")
+// IDA 0x9ac8: store +124 when changed, emit `unk_130C2AC`. Returns `this`.
+pub fn stub_9ac8(item: &mut render_settings::CRenderSettingsItem, level: i32) -> &mut render_settings::CRenderSettingsItem {
+    item.set_auto_quality_level(level)
 }
 
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int)")]
 // 0x9ae8 — __ZThn96_N19CRenderSettingsItem19setAutoQualityLevelEi
 // type: int __fastcall(int this, int)
-pub fn stub_9ae8() -> ! {
-    todo!("0x9ae8 __ZThn96_N19CRenderSettingsItem19setAutoQualityLevelEi")
+// IDA 0x9ae8: non-virtual thunk, `this` biased -96 (subobject); same store+emit.
+pub fn stub_9ae8(item: &mut render_settings::CRenderSettingsItem, level: i32) -> &mut render_settings::CRenderSettingsItem {
+    item.set_auto_quality_level_thunk(level)
 }
 
 #[doc(alias = "CRenderSettingsItem::setEagerBulkExecution(bool)")]
 // 0x9b08 — __ZN19CRenderSettingsItem21setEagerBulkExecutionEb
 // type: int __fastcall(int this, int)
-pub fn stub_9b08() -> ! {
-    todo!("0x9b08 __ZN19CRenderSettingsItem21setEagerBulkExecutionEb")
+// IDA 0x9b08: store byte +157 when changed, emit `unk_130C1E8`. Returns `this`.
+pub fn stub_9b08(item: &mut render_settings::CRenderSettingsItem, value: bool) -> &mut render_settings::CRenderSettingsItem {
+    item.set_eager_bulk_execution(value)
 }
 
 #[doc(alias = "std::length_error::~length_error()")]
 // 0x9b2c — __ZNSt12length_errorD1Ev
 // type: void __cdecl(std::length_error *__hidden this)
-pub fn stub_9b2c() -> ! {
-    todo!("0x9b2c __ZNSt12length_errorD1Ev")
+// IDA 0x9b2c: `length_error::~length_error() D1` thunk to the base dtor.
+pub fn stub_9b2c(this: *mut std::ffi::c_void) {
+    unsafe { render_settings::std_exceptions::length_error_d1(this) }
 }
 
 #[doc(alias = "std::out_of_range::~out_of_range()")]
 // 0x9b30 — __ZNSt12out_of_rangeD0Ev
 // type: void __cdecl(std::out_of_range *__hidden this)
-pub fn stub_9b30() -> ! {
-    todo!("0x9b30 __ZNSt12out_of_rangeD0Ev")
+// IDA 0x9b30: `out_of_range::~out_of_range() D0` — dtor plus `operator delete`.
+// The caller hands ownership over, mirroring the deleting-destructor contract.
+pub fn stub_9b30(this: *mut std::ffi::c_void) {
+    unsafe { render_settings::std_exceptions::out_of_range_d0(this) }
 }
 
 #[doc(alias = "std::out_of_range::~out_of_range()")]
 // 0x9b44 — __ZNSt12out_of_rangeD2Ev
 // type: void __cdecl(std::out_of_range *__hidden this)
-pub fn stub_9b44() -> ! {
-    todo!("0x9b44 __ZNSt12out_of_rangeD2Ev")
+// IDA 0x9b44: `out_of_range::~out_of_range() D2` thunk to the base dtor.
+pub fn stub_9b44(this: *mut std::ffi::c_void) {
+    unsafe { render_settings::std_exceptions::out_of_range_d2(this) }
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::addPair(RBX::CRenderSettings::AASamples,char const*)")]
 // 0x9b48 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE7addPairES3_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
-pub fn stub_9b48() -> ! {
-    todo!("0x9b48 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE7addPairES3_PKc")
+// IDA 0x9b48: `aa_samples_desc` `addPair` instantiation — shared template body,
+// ported once on `EnumDescData::add_pair`; this records the per-type call.
+pub fn stub_9b48(desc: &mut render_settings::EnumDescData, value: i32, name: &str) {
+    desc.add_pair(value, name)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::addPair(RBX::CRenderSettings::GraphicsMode,char const*)")]
 // 0x9ea8 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE7addPairES3_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
-pub fn stub_9ea8() -> ! {
-    todo!("0x9ea8 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE7addPairES3_PKc")
+// IDA 0x9ea8: `graphics_mode_desc` `addPair` instantiation — shared template body,
+// ported once on `EnumDescData::add_pair`; this records the per-type call.
+pub fn stub_9ea8(desc: &mut render_settings::EnumDescData, value: i32, name: &str) {
+    desc.add_pair(value, name)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::addLegacy(int,char const*,RBX::CRenderSettings::GraphicsMode)")]
 // 0xa208 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE9addLegacyEiPKcS3_
 // type: _DWORD *__fastcall(int, unsigned int, int, int)
-pub fn stub_a208() -> ! {
-    todo!("0xa208 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE9addLegacyEiPKcS3_")
+// IDA 0xa208: `addLegacy(index, name, value)` — remap resize plus alias insert.
+pub fn stub_a208(desc: &mut render_settings::EnumDescData, index: i32, name: &str, value: i32) {
+    desc.add_legacy(index, name, value)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::addPair(RBX::CRenderSettings::FrameRateManagerMode,char const*)")]
 // 0xa25c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE7addPairES3_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
-pub fn stub_a25c() -> ! {
-    todo!("0xa25c __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE7addPairES3_PKc")
+// IDA 0xa25c: `frame_rate_manager_mode_desc` `addPair` instantiation — shared template body,
+// ported once on `EnumDescData::add_pair`; this records the per-type call.
+pub fn stub_a25c(desc: &mut render_settings::EnumDescData, value: i32, name: &str) {
+    desc.add_pair(value, name)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::addPair(RBX::CRenderSettings::AntialiasingMode,char const*)")]
 // 0xa5bc — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE7addPairES3_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
-pub fn stub_a5bc() -> ! {
-    todo!("0xa5bc __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE7addPairES3_PKc")
+// IDA 0xa5bc: `antialiasing_mode_desc` `addPair` instantiation — shared template body,
+// ported once on `EnumDescData::add_pair`; this records the per-type call.
+pub fn stub_a5bc(desc: &mut render_settings::EnumDescData, value: i32, name: &str) {
+    desc.add_pair(value, name)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::addPair(RBX::CRenderSettings::ShadowMode,char const*)")]
 // 0xa91c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE7addPairES3_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
-pub fn stub_a91c() -> ! {
-    todo!("0xa91c __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE7addPairES3_PKc")
+// IDA 0xa91c: `shadow_mode_desc` `addPair` instantiation — shared template body,
+// ported once on `EnumDescData::add_pair`; this records the per-type call.
+pub fn stub_a91c(desc: &mut render_settings::EnumDescData, value: i32, name: &str) {
+    desc.add_pair(value, name)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::addPair(RBX::CRenderSettings::QualityLevel,char const*)")]
 // 0xac7c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE7addPairES3_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
-pub fn stub_ac7c() -> ! {
-    todo!("0xac7c __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE7addPairES3_PKc")
+// IDA 0xac7c: `quality_level_desc` `addPair` instantiation — shared template body,
+// ported once on `EnumDescData::add_pair`; this records the per-type call.
+pub fn stub_ac7c(desc: &mut render_settings::EnumDescData, value: i32, name: &str) {
+    desc.add_pair(value, name)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::addPair(RBX::CRenderSettings::ResolutionPreset,char const*)")]
 // 0xafdc — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE7addPairES3_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
-pub fn stub_afdc() -> ! {
-    todo!("0xafdc __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE7addPairES3_PKc")
+// IDA 0xafdc: `resolution_preset_desc` `addPair` instantiation — shared template body,
+// ported once on `EnumDescData::add_pair`; this records the per-type call.
+pub fn stub_afdc(desc: &mut render_settings::EnumDescData, value: i32, name: &str) {
+    desc.add_pair(value, name)
 }
 
 #[doc(alias = "RBX::CRenderSettings::getGraphicsMode(void)const")]
 // 0xb33c — __ZNK3RBX15CRenderSettings15getGraphicsModeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-pub fn stub_b33c() -> ! {
-    todo!("0xb33c __ZNK3RBX15CRenderSettings15getGraphicsModeEv")
+// IDA 0xb33c: `getGraphicsMode` reads item+100 (subobject +4).
+pub fn stub_b33c(item: &render_settings::CRenderSettingsItem) -> render_settings::GraphicsMode {
+    item.graphics_mode()
 }
 
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::~EnumPropDescriptor()")]
 // 0xb340 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_b340() -> ! {
-    todo!("0xb340 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEED1Ev")
+// IDA 0xb340: `~EnumPropDescriptor<Item, GraphicsMode>` — restore off_12228E8, free +44.
+pub fn stub_b340(b: &mut render_settings::PropDescriptorBox) {
+    render_settings::enum_prop_descriptor_graphics_mode_dtor(b)
 }
 
 #[doc(alias = "RBX::CRenderSettings::getFrameRateManagerMode(void)const")]
 // 0xb364 — __ZNK3RBX15CRenderSettings23getFrameRateManagerModeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-pub fn stub_b364() -> ! {
-    todo!("0xb364 __ZNK3RBX15CRenderSettings23getFrameRateManagerModeEv")
+// IDA 0xb364: `getFrameRateManagerMode` reads item+112 (subobject +16).
+pub fn stub_b364(item: &render_settings::CRenderSettingsItem) -> render_settings::FrameRateManagerMode {
+    item.frame_rate_manager_mode()
 }
 
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::~EnumPropDescriptor()")]
 // 0xb368 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_b368() -> ! {
-    todo!("0xb368 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEED1Ev")
+// IDA 0xb368: `~EnumPropDescriptor<Item, FrameRateManagerMode>` — off_1222848, free +44.
+pub fn stub_b368(b: &mut render_settings::PropDescriptorBox) {
+    render_settings::enum_prop_descriptor_frame_rate_manager_mode_dtor(b)
 }
 
 #[doc(alias = "RBX::CRenderSettings::getQualityLevel(void)const")]
 // 0xb38c — __ZNK3RBX15CRenderSettings15getQualityLevelEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-pub fn stub_b38c() -> ! {
-    todo!("0xb38c __ZNK3RBX15CRenderSettings15getQualityLevelEv")
+// IDA 0xb38c: `getQualityLevel` reads item+116 (subobject +20).
+pub fn stub_b38c(item: &render_settings::CRenderSettingsItem) -> render_settings::QualityLevel {
+    item.quality_level()
 }
 
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::~EnumPropDescriptor()")]
 // 0xb390 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_b390() -> ! {
-    todo!("0xb390 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEED1Ev")
+// IDA 0xb390: `~EnumPropDescriptor<Item, QualityLevel>` — off_12227A8, free +44.
+pub fn stub_b390(b: &mut render_settings::PropDescriptorBox) {
+    render_settings::enum_prop_descriptor_quality_level_dtor(b)
 }
 
 #[doc(alias = "RBX::CRenderSettings::getAlwaysDrawConnectors(void)const")]
 // 0xb3b4 — __ZNK3RBX15CRenderSettings23getAlwaysDrawConnectorsEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-pub fn stub_b3b4() -> ! {
-    todo!("0xb3b4 __ZNK3RBX15CRenderSettings23getAlwaysDrawConnectorsEv")
+// IDA 0xb3b4: `getAlwaysDrawConnectors` reads byte item+155 (subobject +59).
+pub fn stub_b3b4(item: &render_settings::CRenderSettingsItem) -> bool {
+    item.always_draw_connectors()
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::~PropDescriptor()")]
 // 0xb3bc — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItembED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_b3bc() -> ! {
-    todo!("0xb3bc __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItembED1Ev")
+// IDA 0xb3bc: `~PropDescriptor<Item, bool>` — restore off_1222378, free +40.
+pub fn stub_b3bc(b: &mut render_settings::PropDescriptorBox) {
+    render_settings::prop_descriptor_bool_dtor(b)
 }
 
 #[doc(alias = "RBX::CRenderSettings::getShowAggregation(void)const")]
 // 0xb3e0 — __ZNK3RBX15CRenderSettings18getShowAggregationEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-pub fn stub_b3e0() -> ! {
-    todo!("0xb3e0 __ZNK3RBX15CRenderSettings18getShowAggregationEv")
+// IDA 0xb3e0: `getShowAggregation` reads byte item+154 (subobject +58).
+pub fn stub_b3e0(item: &render_settings::CRenderSettingsItem) -> bool {
+    item.show_aggregation()
 }
 
 #[doc(alias = "RBX::CRenderSettings::getAASamples(void)const")]
 // 0xb3e8 — __ZNK3RBX15CRenderSettings12getAASamplesEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-pub fn stub_b3e8() -> ! {
-    todo!("0xb3e8 __ZNK3RBX15CRenderSettings12getAASamplesEv")
+// IDA 0xb3e8: `getAASamples` reads the `aaSamples` global.
+pub fn stub_b3e8() -> i32 {
+    render_settings::CRenderSettingsItem::get_aa_samples()
 }
 
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::~EnumPropDescriptor()")]
