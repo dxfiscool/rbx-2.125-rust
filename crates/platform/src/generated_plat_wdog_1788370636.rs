@@ -9,217 +9,274 @@ const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
 
+static DELEGATE: std::sync::LazyLock<crate::view_controllers::AppDelegate> =
+    std::sync::LazyLock::new(crate::view_controllers::AppDelegate::default);
+
 // 0x19028 — -[Appirater alertView:clickedButtonAtIndex:]
 // type: void __cdecl(Appirater *self, SEL, id, int)
 #[doc(alias = "-[Appirater alertView:clickedButtonAtIndex:]")]
-pub fn stub_19028() -> ! {
-    todo!("0x19028 -[Appirater alertView:clickedButtonAtIndex:]")
+pub fn stub_19028(button_index: i32, now_secs: f64) {
+    // delegate of crate::view_controllers::Appirater (IDA 0x19028)
+    crate::view_controllers::Appirater::shared_instance()
+        .alert_view_clicked_button(button_index, now_secs);
 }
 
 // 0x19228 — -[AppDelegate init]
 // type: AppDelegate *__cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate init]")]
-pub fn stub_19228() -> ! {
-    todo!("0x19228 -[AppDelegate init]")
+pub fn stub_19228() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x19228)
+    &*DELEGATE as *const crate::view_controllers::AppDelegate as crate::view_controllers::ObjCId
 }
 
 // 0x19254 — -[AppDelegate dealloc]
 // type: void __cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate dealloc]")]
-pub fn stub_19254() -> ! {
-    todo!("0x19254 -[AppDelegate dealloc]")
+pub fn stub_19254() {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x19254)
+    crate::view_controllers::AppDelegate::init().dealloc();
 }
 
 // 0x192b4 — -[AppDelegate application:didFinishLaunchingWithOptions:]
 // type: char __cdecl(AppDelegate *self, SEL, id, id)
 #[doc(alias = "-[AppDelegate application:didFinishLaunchingWithOptions:]")]
-pub fn stub_192b4() -> ! {
-    todo!("0x192b4 -[AppDelegate application:didFinishLaunchingWithOptions:]")
+pub fn stub_192b4() -> bool {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x192b4)
+    DELEGATE.application_did_finish_launching()
 }
 
 // 0x194ec — ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke")]
-pub fn stub_194ec() -> ! {
-    todo!("0x194ec ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke")
+pub fn stub_194ec() {
+    // delegate of crate::view_controllers (IDA 0x194ec)
+    crate::view_controllers::did_finish_launching_flurry_block();
 }
 
 // 0x19514 — ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2
 // type: void __cdecl(id)
 #[doc(alias = "___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2")]
-pub fn stub_19514() -> ! {
-    todo!("0x19514 ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2")
+pub fn stub_19514() {
+    // delegate of crate::view_controllers (IDA 0x19514)
+    crate::view_controllers::did_finish_launching_appirater_block();
 }
 
 // 0x195a0 — -[AppDelegate applicationWillResignActive:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationWillResignActive:]")]
-pub fn stub_195a0() -> ! {
-    todo!("0x195a0 -[AppDelegate applicationWillResignActive:]")
+pub fn stub_195a0() {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x195a0)
+    DELEGATE.application_will_resign_active();
 }
 
 // 0x196e4 — -[AppDelegate applicationDidEnterBackground:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationDidEnterBackground:]")]
-pub fn stub_196e4() -> ! {
-    todo!("0x196e4 -[AppDelegate applicationDidEnterBackground:]")
+pub fn stub_196e4() {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x196e4)
+    DELEGATE.application_did_enter_background();
 }
 
 // 0x19a30 — -[AppDelegate applicationDidReceiveMemoryWarning:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationDidReceiveMemoryWarning:]")]
-pub fn stub_19a30() -> ! {
-    todo!("0x19a30 -[AppDelegate applicationDidReceiveMemoryWarning:]")
+pub fn stub_19a30() {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x19a30)
+    DELEGATE.application_did_receive_memory_warning();
 }
 
 // 0x19b60 — -[AppDelegate applicationWillEnterForeground:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationWillEnterForeground:]")]
-pub fn stub_19b60() -> ! {
-    todo!("0x19b60 -[AppDelegate applicationWillEnterForeground:]")
+pub fn stub_19b60() {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x19b60)
+    DELEGATE.application_will_enter_foreground();
 }
 
 // 0x19cdc — -[AppDelegate applicationDidBecomeActive:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationDidBecomeActive:]")]
-pub fn stub_19cdc() -> ! {
-    todo!("0x19cdc -[AppDelegate applicationDidBecomeActive:]")
+pub fn stub_19cdc() {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x19cdc)
+    DELEGATE.application_did_become_active();
 }
 
 // 0x19f34 — ___42-[AppDelegate applicationDidBecomeActive:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___42-[AppDelegate applicationDidBecomeActive:]_block_invoke")]
-pub fn stub_19f34() -> ! {
-    todo!("0x19f34 ___42-[AppDelegate applicationDidBecomeActive:]_block_invoke")
+pub fn stub_19f34() {
+    // delegate of crate::view_controllers (IDA 0x19f34)
+    crate::view_controllers::did_become_active_fetch_settings_block();
 }
 
 // 0x19f7c — -[AppDelegate applicationWillTerminate:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationWillTerminate:]")]
-pub fn stub_19f7c() -> ! {
-    todo!("0x19f7c -[AppDelegate applicationWillTerminate:]")
+pub fn stub_19f7c() {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x19f7c)
+    DELEGATE.application_will_terminate();
 }
 
 // 0x1a098 — __Z18_topMostControllerP16UIViewController
 // type: id __fastcall(id)
 #[doc(alias = "_topMostController(UIViewController *)")]
 #[doc(alias = "__Z18_topMostControllerP16UIViewController")]
-pub fn stub_1a098() -> ! {
-    todo!("0x1a098 __Z18_topMostControllerP16UIViewController")
+pub fn stub_1a098(
+    graph: &crate::view_controllers::ViewControllerGraph,
+    root: crate::view_controllers::ObjCId,
+) -> Option<crate::view_controllers::ObjCId> {
+    // delegate of crate::view_controllers (IDA 0x1a098)
+    crate::view_controllers::top_most_controller(graph, root)
 }
 
 // 0x1a174 — -[AppDelegate application:openURL:sourceApplication:annotation:]
 // type: char __cdecl(AppDelegate *self, SEL, id, id, id, id)
 #[doc(alias = "-[AppDelegate application:openURL:sourceApplication:annotation:]")]
-pub fn stub_1a174() -> ! {
-    todo!("0x1a174 -[AppDelegate application:openURL:sourceApplication:annotation:]")
+pub fn stub_1a174(
+    url_absolute_string: &str,
+    url_host: &str,
+    url_path: &str,
+    source_application: &str,
+    annotation: &str,
+) -> bool {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x1a174)
+    DELEGATE.application_open_url(
+        url_absolute_string,
+        url_host,
+        url_path,
+        source_application,
+        annotation,
+    )
 }
 
 // 0x1a234 — -[AppDelegate TryLaunchPlace:]
 // type: void __cdecl(AppDelegate *self, SEL, int)
 #[doc(alias = "-[AppDelegate TryLaunchPlace:]")]
-pub fn stub_1a234() -> ! {
-    todo!("0x1a234 -[AppDelegate TryLaunchPlace:]")
+pub fn stub_1a234(
+    place_id: i32,
+    top_controller_class: &str,
+) -> crate::view_controllers::LaunchAction {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x1a234)
+    DELEGATE.try_launch_place(place_id, top_controller_class)
 }
 
 // 0x1a494 — -[AppDelegate bgTask]
 // type: unsigned int __cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate bgTask]")]
-pub fn stub_1a494() -> ! {
-    todo!("0x1a494 -[AppDelegate bgTask]")
+pub fn stub_1a494() -> u32 {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x1a494)
+    DELEGATE.bg_task()
 }
 
 // 0x1a4a8 — -[AppDelegate setBgTask:]
 // type: void __cdecl(AppDelegate *self, SEL, unsigned int)
 #[doc(alias = "-[AppDelegate setBgTask:]")]
-pub fn stub_1a4a8() -> ! {
-    todo!("0x1a4a8 -[AppDelegate setBgTask:]")
+pub fn stub_1a4a8(task: u32) {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x1a4a8)
+    DELEGATE.set_bg_task(task);
 }
 
 // 0x1a4c0 — -[AppDelegate window]
 // type: UIWindow *__cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate window]")]
-pub fn stub_1a4c0() -> ! {
-    todo!("0x1a4c0 -[AppDelegate window]")
+pub fn stub_1a4c0() -> Option<crate::view_controllers::ObjCId> {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x1a4c0)
+    DELEGATE.window()
 }
 
 // 0x1a4d0 — -[AppDelegate setWindow:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate setWindow:]")]
-pub fn stub_1a4d0() -> ! {
-    todo!("0x1a4d0 -[AppDelegate setWindow:]")
+pub fn stub_1a4d0(window: Option<crate::view_controllers::ObjCId>) {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x1a4d0)
+    DELEGATE.set_window(window);
 }
 
 // 0x1a4f4 — -[AppDelegate .cxx_destruct]
 // type: void __cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate .cxx_destruct]")]
-pub fn stub_1a4f4() -> ! {
-    todo!("0x1a4f4 -[AppDelegate .cxx_destruct]")
+pub fn stub_1a4f4() {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x1a4f4)
+    DELEGATE.cxx_destruct();
 }
 
 // 0x1a5bc — -[AppDelegate .cxx_construct]
 // type: id __cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate .cxx_construct]")]
-pub fn stub_1a5bc() -> ! {
-    todo!("0x1a5bc -[AppDelegate .cxx_construct]")
+pub fn stub_1a5bc() {
+    // delegate of crate::view_controllers::AppDelegate (IDA 0x1a5bc)
+    DELEGATE.cxx_construct();
 }
 
 // 0x1a970 — -[DebugSettingsViewController initWithCoder:]
 // type: DebugSettingsViewController *__cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController initWithCoder:]")]
-pub fn stub_1a970() -> ! {
-    todo!("0x1a970 -[DebugSettingsViewController initWithCoder:]")
+pub fn stub_1a970(
+    super_ok: bool,
+    idiom_pad: bool,
+    screen_bounds: Option<(f64, f64, f64, f64)>,
+) -> Option<crate::generated_176::DebugSettingsViewController> {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1a970)
+    crate::generated_176::DebugSettingsViewController::init_with_coder(
+        super_ok,
+        idiom_pad,
+        screen_bounds,
+    )
 }
-
 // 0x1ab20 — -[DebugSettingsViewController dealloc]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController dealloc]")]
-pub fn stub_1ab20() -> ! {
-    todo!("0x1ab20 -[DebugSettingsViewController dealloc]")
+pub fn stub_1ab20(controller: crate::generated_176::DebugSettingsViewController) {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1ab20)
+    controller.dealloc();
 }
-
 // 0x1ab6c — -[DebugSettingsViewController reloadOldData]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController reloadOldData]")]
-pub fn stub_1ab6c() -> ! {
-    todo!("0x1ab6c -[DebugSettingsViewController reloadOldData]")
+pub fn stub_1ab6c(controller: &crate::generated_176::DebugSettingsViewController) {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1ab6c)
+    controller.reload_old_data();
 }
-
 // 0x1ab70 — -[DebugSettingsViewController viewDidLoad]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController viewDidLoad]")]
-pub fn stub_1ab70() -> ! {
-    todo!("0x1ab70 -[DebugSettingsViewController viewDidLoad]")
+pub fn stub_1ab70(controller: &crate::generated_176::DebugSettingsViewController) {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1ab70)
+    controller.view_did_load();
 }
-
 // 0x1abb0 — -[DebugSettingsViewController setDisplayUI]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController setDisplayUI]")]
-pub fn stub_1abb0() -> ! {
-    todo!("0x1abb0 -[DebugSettingsViewController setDisplayUI]")
+pub fn stub_1abb0(
+    controller: &crate::generated_176::DebugSettingsViewController,
+) -> &'static str {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1abb0)
+    controller.set_display_ui()
 }
-
 // 0x1ac80 — -[DebugSettingsViewController displayPickerDoneClicked:]
 // type: void __cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController displayPickerDoneClicked:]")]
-pub fn stub_1ac80() -> ! {
-    todo!("0x1ac80 -[DebugSettingsViewController displayPickerDoneClicked:]")
+pub fn stub_1ac80(
+    controller: &crate::generated_176::DebugSettingsViewController,
+    selected_row: i32,
+) -> &'static str {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1ac80)
+    controller.display_picker_done_clicked(selected_row)
 }
-
 // 0x1ad78 — ___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke")]
-pub fn stub_1ad78() -> ! {
-    todo!("0x1ad78 ___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke")
+pub fn stub_1ad78(controller: &crate::generated_176::DebugSettingsViewController) {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1ad78)
+    controller.display_picker_animation_frame();
 }
-
 // 0x1aed0 — -[DebugSettingsViewController displayTouchUp:]
 // type: void __cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController displayTouchUp:]")]
-pub fn stub_1aed0() -> ! {
-    todo!("0x1aed0 -[DebugSettingsViewController displayTouchUp:]")
+pub fn stub_1aed0(controller: &crate::generated_176::DebugSettingsViewController) {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1aed0)
+    controller.display_touch_up();
 }
-
 // 0x1afa0 — ___46-[DebugSettingsViewController displayTouchUp:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___46-[DebugSettingsViewController displayTouchUp:]_block_invoke")]
@@ -286,8 +343,9 @@ pub fn stub_1b300() -> ! {
 // 0x1b304 — -[DebugSettingsViewController .cxx_construct]
 // type: id __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController .cxx_construct]")]
-pub fn stub_1b304() -> ! {
-    todo!("0x1b304 -[DebugSettingsViewController .cxx_construct]")
+pub fn stub_1b304(controller: &crate::generated_176::DebugSettingsViewController) {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1b304)
+    controller.cxx_construct();
 }
 
 // 0x1b3d0 — -[HomeViewController initWithCoder:]

@@ -4,6 +4,7 @@
 pub mod movable;
 pub mod ogre;
 pub mod render_settings;
+pub mod roblox_view;
 
 pub mod generated;
 pub mod generated_03;
