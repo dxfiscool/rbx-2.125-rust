@@ -4,179 +4,375 @@
 #![allow(unused_imports)]
 use rbx_core::SharedPtr;
 
+/// `RBX::Reflection::BoundProp<T, Mutability>` (IDA 0x81142c/0x811bb8/0x811dac/0x811fb0):
+/// base `TypedPropertyDescriptor<T>` init plus a `new(0x14)` member desc installed at +40
+/// holding the owner and the member offset; a stale member is deleted (drop glue). The
+/// trailing `isReadOnly`/`isWriteOnly` attribute masks never fire: both virtuals hardcode 0
+/// (e.g. 0x8115bc/0x8115c0). All four instantiations below share this layout.
+#[derive(Debug, Clone)]
+pub struct BoundPropDesc {
+    pub name: String,
+    pub category: String,
+    pub member_offset: usize,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
 // 0x81142c - __ZN3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EEC2INS_11TestServiceEEEPKcS7_MT_SsNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundProp<RBX::TestService>(char const*,char const*,std::string  RBX::TestService::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EEC2INS_11TestServiceEEEPKcS7_MT_SsNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0x81142c() -> ! {
-    todo!("0x81142c RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundProp<RBX::TestService>(char const*,char const*,std::string  RBX::TestService::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x81142c(
+    name: &str,
+    category: &str,
+    member_offset: usize,
+    attributes: u32,
+    permissions: u32,
+) -> BoundPropDesc {
+    // IDA 0x81142c: base `TypedPropertyDescriptor<string>` init (0x8114b4), temp release
+    // (0x8114bc-0x8114be), vtable off_1222568 (0x8114d2), `new(0x14)` member desc holding
+    // (owner, offset) installed at +40 over the deleted stale member (0x8114e0-0x811516),
+    // then `if (isReadOnly() == 1) attrs &= ~0x14` (0x811526-0x811530) and
+    // `if (isWriteOnly() == 1) attrs &= ~0x0C` (0x811542-0x81154c). Both virtuals
+    // hardcode 0 (see stub_0x8115bc/stub_0x8115c0), so the masks never fire.
+    let mut attributes = attributes;
+    if stub_0x8115bc() {
+        attributes &= !0x14;
+    }
+    if stub_0x8115c0() {
+        attributes &= !0x0C;
+    }
+    BoundPropDesc { name: name.to_owned(), category: category.to_owned(), member_offset, attributes, permissions }
 }
 
 // 0x8115bc - __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv")]
-pub fn stub_0x8115bc() -> ! {
-    todo!("0x8115bc RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isReadOnly(void)const")
+pub fn stub_0x8115bc() -> bool {
+    // IDA 0x8115bc: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (0x8115be).
+    // Mutable bound props are never read-only.
+    false
 }
 
 // 0x8115c0 - __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv")]
-pub fn stub_0x8115c0() -> ! {
-    todo!("0x8115c0 RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isWriteOnly(void)const")
+pub fn stub_0x8115c0() -> bool {
+    // IDA 0x8115c0: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (0x8115c2).
+    // Mutable bound props are never write-only.
+    false
 }
 
 // 0x8115c4 - __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x8115c4() -> ! {
-    todo!("0x8115c4 RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x8115c4(current: &str) -> String {
+    // IDA 0x8115c4: member-offset adjust (`a3 ? a3 - 36 : 0`, 0x8115ca-0x8115cc), member
+    // pointer load (0x8115da), `string::string` copy-construct of the bound member.
+    // The adjust is member-pointer mechanics over an unmodeled instance; the copy is
+    // the observable effect.
+    current.to_owned()
 }
 
 // 0x8115dc - __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE8setValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE8setValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_0x8115dc() -> ! {
-    todo!("0x8115dc RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x8115dc(current: &mut String, value: &str) -> bool {
+    // IDA 0x8115dc: `string::compare` (0x8115fa); equal returns 0 (0x81162e). Else
+    // `string::assign` (0x811604), validator dispatch through the +12/+16 pair when
+    // present (0x811608-0x811626), `raisePropertyChanged` (0x81163e). Validator and
+    // change-notification live outside this crate; the stored update is the effect.
+    if *current == value {
+        return false;
+    }
+    *current = value.to_owned();
+    true
 }
 
 // 0x811644 - __ZN3RBX10Reflection13BoundFuncDescINS_14FunctionalTestEFvSsELi1EEC2EMS2_FvSsEPKcS8_SsNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::FunctionalTest,void ()(std::string),1>::BoundFuncDesc(void (RBX::FunctionalTest::*)(std::string),char const*,char const*,std::string,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_14FunctionalTestEFvSsELi1EEC2EMS2_FvSsEPKcS8_SsNS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_0x811644() -> ! {
-    todo!("0x811644 RBX::Reflection::BoundFuncDesc<RBX::FunctionalTest,void ()(std::string),1>::BoundFuncDesc(void (RBX::FunctionalTest::*)(std::string),char const*,char const*,std::string,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x811644(
+    name: &str,
+    category: &str,
+    member0: usize,
+    member1: usize,
+    arg_name: &str,
+    _default: &str,
+    permissions: u32,
+    attributes: u32,
+) -> crate::generated_09::CoreGuiBoundFuncDesc {
+    // IDA 0x811644: base `FunctionDescriptor` init (0x81169c), vtable off_12A6DB8
+    // (0x8116b0), member-function pair at +40 (0x8116be), `scoped_ptr<string>` default
+    // at +48 (`new(4)` + `string::string` copy, 0x8116f4-0x811704),
+    // `Type::getSingleton<string>` (0x81170e), `typed_holder<string>` default staging
+    // (0x811722-0x81173a), `declareSignature()` (0x811744) fixing a void return with one
+    // `string` argument (see stub_0x811814). Same shape as stub_0x602cf0.
+    crate::generated_09::CoreGuiBoundFuncDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        member: (member0, member1),
+        return_type: "void",
+        args: vec![crate::generated_09::CoreGuiBoundFuncSigItem {
+            name: arg_name.to_owned(),
+            type_name: "string",
+        }],
+        permissions,
+        attributes,
+    }
+    // NOTE: `_default` seeds the +48 scoped default (0x8116f4-0x811704) and the
+    // typed_holder staging (0x811722-0x81173a); both are C++ lifetime machinery with no
+    // Rust equivalent once the signature item carries the name. Drop glue covers them.
 }
 
 // 0x811814 - __ZN3RBX10Reflection13BoundFuncDescINS_14FunctionalTestEFvSsELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::FunctionalTest,void ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_14FunctionalTestEFvSsELi1EE16declareSignatureEPKcNS0_7VariantE")]
-pub fn stub_0x811814() -> ! {
-    todo!("0x811814 RBX::Reflection::BoundFuncDesc<RBX::FunctionalTest,void ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x811814(
+    desc: &mut crate::generated_09::CoreGuiBoundFuncDesc,
+    arg_name: &str,
+    _default: &crate::descriptor::Variant,
+) {
+    // IDA 0x811814: return type fixed to `Type::getSingleton<void>` at +28
+    // (0x811824), `Name::declare(arg name)` (0x81182e), argument type
+    // `Type::getSingleton<string>` (0x811830), `SignatureDescriptor::addArgument`
+    // (0x811842). Same shape as stub_0x602e68.
+    desc.return_type = "void";
+    desc.args.push(crate::generated_09::CoreGuiBoundFuncSigItem {
+        name: arg_name.to_owned(),
+        type_name: "string",
+    });
 }
 
 // 0x811844 - __ZN3RBX10Reflection13BoundFuncDescINS_14FunctionalTestEFvSsELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::FunctionalTest,void ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_14FunctionalTestEFvSsELi1EED0Ev")]
-pub fn stub_0x811844() -> ! {
-    todo!("0x811844 RBX::Reflection::BoundFuncDesc<RBX::FunctionalTest,void ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_0x811844() {
+    // IDA 0x811844: D0 deleting destructor: vtable reset (0x811882), `scoped_ptr<string>`
+    // teardown at +48 (0x8118a8), signature list clear (0x8118c6), `operator delete`
+    // (0x8118cc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x81194c - __ZNK3RBX10Reflection13BoundFuncDescINS_14FunctionalTestEFvSsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::FunctionalTest,void ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13BoundFuncDescINS_14FunctionalTestEFvSsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")]
-pub fn stub_0x81194c() -> ! {
-    todo!("0x81194c RBX::Reflection::BoundFuncDesc<RBX::FunctionalTest,void ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x81194c(target: &dyn Fn(String), arg: &str) {
+    // IDA 0x81194c: member-offset adjust (0x81199c-0x81199e), member pair load
+    // (0x8119a2-0x8119a8), `ArgHelper::getArg<string, 1>` (0x8119b8),
+    // `Call1Helper::call` (0x8119c8), temp string teardown (0x8119da-0x811a20, drop glue).
+    // The adjust is member-pointer mechanics; the caller passes the extracted arg.
+    stub_0x811a88(target, arg.to_owned());
 }
 
 // 0x811a88 - __ZN3RBX10Reflection11Call1HelperINS_14FunctionalTestEMS2_FvSsESsvE4callEPS2_S4_RNS0_7VariantERKSs
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::FunctionalTest,void (RBX::FunctionalTest::*)(std::string),std::string,void>::call(RBX::FunctionalTest*,void (RBX::FunctionalTest::*)(std::string),RBX::Reflection::Variant &,std::string const&)")]
 #[doc(alias = "__ZN3RBX10Reflection11Call1HelperINS_14FunctionalTestEMS2_FvSsESsvE4callEPS2_S4_RNS0_7VariantERKSs")]
-pub fn stub_0x811a88() -> ! {
-    todo!("0x811a88 RBX::Reflection::Call1Helper<RBX::FunctionalTest,void (RBX::FunctionalTest::*)(std::string),std::string,void>::call(RBX::FunctionalTest*,void (RBX::FunctionalTest::*)(std::string),RBX::Reflection::Variant &,std::string const&)")
+pub fn stub_0x811a88(target: &dyn Fn(String), arg: String) {
+    // IDA 0x811a88: member-pointer dispatch (`adj >> 1`, virtual via `adj & 1`,
+    // 0x811ad4-0x811ae4), by-value `string::string` copy (0x811aee), invoke
+    // `(target.*member)(arg)` (0x811afa), copy teardown (0x811b0a-0x811b50, drop glue).
+    // Void return.
+    target(arg);
 }
 
 // 0x811bb8 - __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_14FunctionalTestEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::FunctionalTest>(char const*,char const*,bool RBX::FunctionalTest::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_14FunctionalTestEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0x811bb8() -> ! {
-    todo!("0x811bb8 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::FunctionalTest>(char const*,char const*,bool RBX::FunctionalTest::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x811bb8(
+    name: &str,
+    category: &str,
+    member_offset: usize,
+    attributes: u32,
+    permissions: u32,
+) -> BoundPropDesc {
+    // IDA 0x811bb8: base `TypedPropertyDescriptor<bool>` init (0x811c40), temp release
+    // (0x811c48-0x811c4a), vtable off_12226F8 (0x811c5e), `new(0x14)` member desc holding
+    // (owner, offset) installed at +40 over the deleted stale member (0x811c6c-0x811ca2),
+    // then `if (isReadOnly() == 1) attrs &= ~0x14` (0x811cb2-0x811cbc) and
+    // `if (isWriteOnly() == 1) attrs &= ~0x0C` (0x811cce-0x811cd8). Both virtuals
+    // hardcode 0 (see stub_0x811d48/stub_0x811d4c), so the masks never fire.
+    // Same shape as stub_0x81142c.
+    let mut attributes = attributes;
+    if stub_0x811d48() {
+        attributes &= !0x14;
+    }
+    if stub_0x811d4c() {
+        attributes &= !0x0C;
+    }
+    BoundPropDesc { name: name.to_owned(), category: category.to_owned(), member_offset, attributes, permissions }
 }
 
 // 0x811d48 - __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE10isReadOnlyEv")]
-pub fn stub_0x811d48() -> ! {
-    todo!("0x811d48 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::isReadOnly(void)const")
+pub fn stub_0x811d48() -> bool {
+    // IDA 0x811d48: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (0x811d4a).
+    false
 }
 
 // 0x811d4c - __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE11isWriteOnlyEv")]
-pub fn stub_0x811d4c() -> ! {
-    todo!("0x811d4c RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::isWriteOnly(void)const")
+pub fn stub_0x811d4c() -> bool {
+    // IDA 0x811d4c: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (0x811d4e).
+    false
 }
 
 // 0x811d50 - __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x811d50() -> ! {
-    todo!("0x811d50 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x811d50(current: bool) -> bool {
+    // IDA 0x811d50: single statement -- direct member byte load `*(a1+8) + a2 - 36`
+    // (0x811d58). Note the original applies no null guard to the instance here, unlike
+    // its siblings; the copy is the observable effect.
+    current
 }
 
 // 0x811d5c - __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE8setValueEPNS0_13DescribedBaseERKb")]
-pub fn stub_0x811d5c() -> ! {
-    todo!("0x811d5c RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_0x811d5c(current: &mut bool, value: bool) -> bool {
+    // IDA 0x811d5c: byte compare (0x811d74); equal returns the old value (0x811d76). Else
+    // byte store (0x811d78), validator dispatch through the +12/+16 pair when present
+    // (0x811d7a-0x811d98), `raisePropertyChanged` (0x811da6). Same shape as stub_0x8115dc.
+    if *current == value {
+        return false;
+    }
+    *current = value;
+    true
 }
 
 // 0x811dac - __ZN3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EEC2INS_14FunctionalTestEEEPKcS7_MT_dNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundProp<RBX::FunctionalTest>(char const*,char const*,double RBX::FunctionalTest::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EEC2INS_14FunctionalTestEEEPKcS7_MT_dNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0x811dac() -> ! {
-    todo!("0x811dac RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundProp<RBX::FunctionalTest>(char const*,char const*,double RBX::FunctionalTest::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x811dac(
+    name: &str,
+    category: &str,
+    member_offset: usize,
+    attributes: u32,
+    permissions: u32,
+) -> BoundPropDesc {
+    // IDA 0x811dac: base `TypedPropertyDescriptor<double>` init (0x811e34), temp release
+    // (0x811e3c-0x811e3e), vtable off_128B6F8 (0x811e52), `new(0x14)` member desc holding
+    // (owner, offset) installed at +40 over the deleted stale member (0x811e60-0x811e96),
+    // then `if (isReadOnly() == 1) attrs &= ~0x14` (0x811ea6-0x811eb0) and
+    // `if (isWriteOnly() == 1) attrs &= ~0x0C` (0x811ec2-0x811ecc). Both virtuals
+    // hardcode 0 (see stub_0x811f3c/stub_0x811f40), so the masks never fire.
+    // Same shape as stub_0x81142c.
+    let mut attributes = attributes;
+    if stub_0x811f3c() {
+        attributes &= !0x14;
+    }
+    if stub_0x811f40() {
+        attributes &= !0x0C;
+    }
+    BoundPropDesc { name: name.to_owned(), category: category.to_owned(), member_offset, attributes, permissions }
 }
 
 // 0x811f3c - __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE10isReadOnlyEv")]
-pub fn stub_0x811f3c() -> ! {
-    todo!("0x811f3c RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::isReadOnly(void)const")
+pub fn stub_0x811f3c() -> bool {
+    // IDA 0x811f3c: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (0x811f3e).
+    false
 }
 
 // 0x811f40 - __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE11isWriteOnlyEv")]
-pub fn stub_0x811f40() -> ! {
-    todo!("0x811f40 RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::isWriteOnly(void)const")
+pub fn stub_0x811f40() -> bool {
+    // IDA 0x811f40: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (0x811f42).
+    false
 }
 
 // 0x811f44 - __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x811f44() -> ! {
-    todo!("0x811f44 RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x811f44(current: f64) -> f64 {
+    // IDA 0x811f44: single statement -- direct member qword load `*(a1+8) + a2 - 36`
+    // (0x811f50). Same shape as stub_0x811d50.
+    current
 }
 
 // 0x811f54 - __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE8setValueEPNS0_13DescribedBaseERKd
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::setValue(RBX::Reflection::DescribedBase *,double const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE8setValueEPNS0_13DescribedBaseERKd")]
-pub fn stub_0x811f54() -> ! {
-    todo!("0x811f54 RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::setValue(RBX::Reflection::DescribedBase *,double const&)const")
+pub fn stub_0x811f54(current: &mut f64, value: f64) -> bool {
+    // IDA 0x811f54: qword compare (0x811f78); equal returns the old value (0x811f7a). Else
+    // qword store (0x811f7c), validator dispatch through the +12/+16 pair when present
+    // (0x811f80-0x811f9e), `raisePropertyChanged` (0x811fac). Same shape as stub_0x8115dc.
+    if *current == value {
+        return false;
+    }
+    *current = value;
+    true
 }
 
 // 0x811fb0 - __ZN3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EEC2INS_14FunctionalTestEEEPKcS7_MT_SsNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundProp<RBX::FunctionalTest>(char const*,char const*,std::string  RBX::FunctionalTest::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EEC2INS_14FunctionalTestEEEPKcS7_MT_SsNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0x811fb0() -> ! {
-    todo!("0x811fb0 RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundProp<RBX::FunctionalTest>(char const*,char const*,std::string  RBX::FunctionalTest::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x811fb0(
+    name: &str,
+    category: &str,
+    member_offset: usize,
+    attributes: u32,
+    permissions: u32,
+) -> BoundPropDesc {
+    // IDA 0x811fb0: base `TypedPropertyDescriptor<string>` init (0x812038), temp release
+    // (0x812040-0x812042), vtable off_1222568 (0x812056), `new(0x14)` member desc holding
+    // (owner, offset) installed at +40 over the deleted stale member (0x812064-0x81209a),
+    // then `if (isReadOnly() == 1) attrs &= ~0x14` (0x8120aa-0x8120b4) and
+    // `if (isWriteOnly() == 1) attrs &= ~0x0C` (0x8120c6-0x8120d0). Both virtuals
+    // hardcode 0 (see stub_0x812140/stub_0x812144), so the masks never fire.
+    // Same shape as stub_0x81142c.
+    let mut attributes = attributes;
+    if stub_0x812140() {
+        attributes &= !0x14;
+    }
+    if stub_0x812144() {
+        attributes &= !0x0C;
+    }
+    BoundPropDesc { name: name.to_owned(), category: category.to_owned(), member_offset, attributes, permissions }
 }
 
 // 0x812140 - __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE10isReadOnlyEv")]
-pub fn stub_0x812140() -> ! {
-    todo!("0x812140 RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::isReadOnly(void)const")
+pub fn stub_0x812140() -> bool {
+    // IDA 0x812140: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (0x812142).
+    false
 }
 
 // 0x812144 - __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE11isWriteOnlyEv")]
-pub fn stub_0x812144() -> ! {
-    todo!("0x812144 RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::isWriteOnly(void)const")
+pub fn stub_0x812144() -> bool {
+    // IDA 0x812144: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (0x812146).
+    false
 }
 
 // 0x812148 - __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x812148() -> ! {
-    todo!("0x812148 RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x812148(current: &str) -> String {
+    // IDA 0x812148: member-offset adjust (`a3 ? a3 - 36 : 0`, 0x81214e-0x812150), member
+    // pointer load (0x81215e), `string::string` copy-construct of the bound member.
+    // Same shape as stub_0x8115c4.
+    current.to_owned()
 }
 
 // 0x812160 - __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE8setValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_14FunctionalTestEE8setValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_0x812160() -> ! {
-    todo!("0x812160 RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::FunctionalTest>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x812160(current: &mut String, value: &str) -> bool {
+    // IDA 0x812160: `string::compare` (0x81217e); equal returns 0 (0x8121b2). Else
+    // `string::assign` (0x812188), validator dispatch through the +12/+16 pair when
+    // present (0x81218c-0x8121aa), `raisePropertyChanged` (0x8121c2).
+    // Same shape as stub_0x8115dc.
+    if *current == value {
+        return false;
+    }
+    *current = value.to_owned();
+    true
 }
 
 // 0x815524 - __ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFvbSsN5boost10shared_ptrINS_8InstanceEEEiELi4EED2Ev
