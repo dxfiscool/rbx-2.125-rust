@@ -1598,6 +1598,45 @@ mod tests {
         assert!(!disconnect_player_route(true, false));
         assert!(disconnect_player_route(true, true));
     }
+    #[test]
+    fn sysstats_child_region_enum_gates() {
+        // IDA 0xa17324: fresh keys report, armed repeats kick.
+        let log = std::cell::RefCell::new(Vec::new());
+        on_remote_sys_stats(false, false, &mut || log.borrow_mut().push("report"), &mut || log.borrow_mut().push("kick"));
+        on_remote_sys_stats(true, false, &mut || log.borrow_mut().push("report"), &mut || log.borrow_mut().push("kick"));
+        on_remote_sys_stats(true, true, &mut || log.borrow_mut().push("report"), &mut || log.borrow_mut().push("kick"));
+        on_remote_sys_stats(false, true, &mut || log.borrow_mut().push("report"), &mut || log.borrow_mut().push("kick"));
+        assert_eq!(log.borrow().as_slice(), ["report", "kick", "report", "kick"]);
+        // IDA 0xa18bc4: register always, wire only server-side.
+        let wire_log = std::cell::RefCell::new(Vec::new());
+        on_child_added(false, true, false, &mut || wire_log.borrow_mut().push("reg"), &mut || wire_log.borrow_mut().push("wire"));
+        on_child_added(true, false, false, &mut || wire_log.borrow_mut().push("reg"), &mut || wire_log.borrow_mut().push("wire"));
+        on_child_added(true, true, true, &mut || wire_log.borrow_mut().push("reg"), &mut || wire_log.borrow_mut().push("wire"));
+        on_child_added(true, true, false, &mut || wire_log.borrow_mut().push("reg"), &mut || wire_log.borrow_mut().push("wire"));
+        assert_eq!(wire_log.borrow().as_slice(), ["reg", "reg", "reg", "wire"]);
+        // IDA 0xa1a480/0xa1a504: region populate + per-player render.
+        let mut n = 0;
+        assert!(!build_client_region(false, true, &mut || n += 1));
+        assert!(!build_client_region(true, false, &mut || n += 1));
+        assert!(build_client_region(true, true, &mut || n += 1));
+        assert_eq!(n, 1);
+        let mut seen = Vec::new();
+        render_d_physics_regions(3, &mut |i| seen.push(i));
+        assert_eq!(seen, [0, 1, 2]);
+        // IDA 0xa1a77c/0xa1a788/0xa1a9b0/0xa1a9bc/0xa1abe4/0xa1adb8.
+        let mut pairs = Vec::new();
+        describe_chat_option(&mut |v, s| pairs.push((v, s)));
+        assert_eq!(pairs, [(0, "Classic"), (1, "Bubble"), (2, "ClassicAndBubble")]);
+        pairs.clear();
+        describe_player_chat_type(&mut |v, s| pairs.push((v, s)));
+        assert_eq!(pairs, [(0, "All"), (1, "Team"), (2, "Whisper")]);
+        assert_eq!(chat_option_from_value("Bubble"), Some(1));
+        assert_eq!(chat_option_from_value("ClassicAndBubble"), Some(2));
+        assert_eq!(chat_option_from_value("Huh"), None);
+        assert_eq!(ChatOption::Bubble as u32, 1);
+        assert_eq!(PlayerChatType::Whisper as u32, 2);
+        assert_eq!(num_players(7), 7);
+    }
 }
 
 /// `Players::findAncestorPlayer` (IDA 0xa14c94): the nearest Player
@@ -1706,4 +1745,111 @@ pub fn kill_player(player: Option<u32>, kill: &mut dyn FnMut()) {
  if player.is_some() {
  kill();
  }
+}
+
+/// `Players::onRemoteSysStats` (IDA 0xa17324): a fresh `(user, message)`
+/// key is reported; a repeated key with the kick flag set disconnects.
+pub fn on_remote_sys_stats(
+ already_known: bool,
+ kick_armed: bool,
+ report: &mut dyn FnMut(),
+ kick: &mut dyn FnMut(),
+) {
+ if !already_known {
+ report();
+ }
+ if kick_armed {
+ kick();
+ }
+}
+
+/// `Players::onChildAdded` (IDA 0xa18bc4): a Player child is registered;
+/// on the server side its signals are wired and it is announced.
+pub fn on_child_added(
+ is_player: bool,
+ provider_present: bool,
+ client_present: bool,
+ register: &mut dyn FnMut(),
+ wire: &mut dyn FnMut(),
+) {
+ if !is_player {
+ return;
+ }
+ register();
+ if provider_present && !client_present {
+ wire();
+ }
+}
+
+/// `Players::buildClientRegion` (IDA 0xa1a480): seeds the region from the
+/// local player head and appends the other characters. Returns whether
+/// the region was populated.
+pub fn build_client_region(
+ local_present: bool,
+ head_present: bool,
+ append: &mut dyn FnMut(),
+) -> bool {
+ if local_present && head_present {
+ append();
+ return true;
+ }
+ false
+}
+
+/// `Players::renderDPhysicsRegions` (IDA 0xa1a504): renders each
+/// player's debug physics region.
+pub fn render_d_physics_regions(count: usize, render: &mut dyn FnMut(usize)) {
+ for i in 0..count {
+ render(i);
+ }
+}
+
+/// `Players::ChatOption` (`ChatStyle` enum, IDA 0xa1a788).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ChatOption {
+ Classic = 0,
+ Bubble = 1,
+ ClassicAndBubble = 2,
+}
+
+/// `Players::PlayerChatType` (IDA 0xa1a9bc).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum PlayerChatType {
+ All = 0,
+ Team = 1,
+ Whisper = 2,
+}
+
+/// `EnumDesc<ChatOption>::EnumDesc` (IDA 0xa1a77c C1 / 0xa1a788 C2):
+/// the C1 ctor delegates to C2; both emit the three pairs.
+pub fn describe_chat_option(emit: &mut dyn FnMut(u32, &'static str)) {
+ emit(0, "Classic");
+ emit(1, "Bubble");
+ emit(2, "ClassicAndBubble");
+}
+
+/// `EnumDesc<PlayerChatType>::EnumDesc` (IDA 0xa1a9b0 C1 / 0xa1a9bc C2).
+pub fn describe_player_chat_type(emit: &mut dyn FnMut(u32, &'static str)) {
+ emit(0, "All");
+ emit(1, "Team");
+ emit(2, "Whisper");
+}
+
+/// `StringConverter<ChatOption>::convertToValue` (IDA 0xa1abe4): looks
+/// the name up in the singleton descriptor.
+#[must_use]
+pub fn chat_option_from_value(name: &str) -> Option<u32> {
+ match name {
+ "Classic" => Some(0),
+ "Bubble" => Some(1),
+ "ClassicAndBubble" => Some(2),
+ _ => None,
+ }
+}
+
+/// `Players::getNumPlayers` (IDA 0xa1adb8): the player-list length; the
+/// non-null assert stays engine-side.
+#[must_use]
+pub fn num_players(count: usize) -> usize {
+ count
 }

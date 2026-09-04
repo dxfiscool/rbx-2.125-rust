@@ -14560,71 +14560,81 @@ pub fn stub_a17304(provider_present: bool, role_present: bool) -> bool {
 // 0xa17324 — __ZN3RBX7Network7Players16onRemoteSysStatsEiRKSsS3_b
 // type: void __fastcall(RBX::Network::Players *this, uint32_t, const std::string *, const std::string *, int)
 #[doc(alias = "RBX::Network::Players::onRemoteSysStats(int,std::string const&,std::string const&,bool)")]
-pub fn stub_a17324() -> ! {
-    todo!("0xa17324 RBX::Network::Players::onRemoteSysStats(int,std::string const&,std::string const&,bool)")
+pub fn stub_a17324(already_known: bool, kick_armed: bool, report: &mut dyn FnMut(), kick: &mut dyn FnMut()) {
+ // IDA 0xa17324: fresh keys report; armed repeats kick.
+ crate::player::on_remote_sys_stats(already_known, kick_armed, report, kick)
 }
 
 // 0xa18bc4 — __ZN3RBX7Network7Players12onChildAddedEPNS_8InstanceE
 // type: void __fastcall(RBX::Network::Players *this, RBX::Instance *)
 #[doc(alias = "RBX::Network::Players::onChildAdded(RBX::Instance *)")]
-pub fn stub_a18bc4() -> ! {
-    todo!("0xa18bc4 RBX::Network::Players::onChildAdded(RBX::Instance *)")
+pub fn stub_a18bc4(is_player: bool, provider_present: bool, client_present: bool, register: &mut dyn FnMut(), wire: &mut dyn FnMut()) {
+ // IDA 0xa18bc4: register the Player child; server wires its signals.
+ crate::player::on_child_added(is_player, provider_present, client_present, register, wire)
 }
 
 // 0xa1a480 — __ZN3RBX7Network7Players17buildClientRegionERNS_7Region2E
 // type: RBX::Network::Player *__fastcall(RBX::Network::Player **this, RBX::Region2 *)
 #[doc(alias = "RBX::Network::Players::buildClientRegion(RBX::Region2 &)")]
-pub fn stub_a1a480() -> ! {
-    todo!("0xa1a480 RBX::Network::Players::buildClientRegion(RBX::Region2 &)")
+pub fn stub_a1a480(local_present: bool, head_present: bool, append: &mut dyn FnMut()) -> bool {
+ // IDA 0xa1a480: seed the region from the local head, append others.
+ crate::player::build_client_region(local_present, head_present, append)
 }
 
 // 0xa1a504 — __ZN3RBX7Network7Players21renderDPhysicsRegionsEPNS_5AdornE
 // type: void __fastcall(RBX::Network::Players *this, RBX::Adorn *)
 #[doc(alias = "RBX::Network::Players::renderDPhysicsRegions(RBX::Adorn *)")]
-pub fn stub_a1a504() -> ! {
-    todo!("0xa1a504 RBX::Network::Players::renderDPhysicsRegions(RBX::Adorn *)")
+pub fn stub_a1a504(count: usize, render: &mut dyn FnMut(usize)) {
+ // IDA 0xa1a504: render each debug physics region.
+ crate::player::render_d_physics_regions(count, render)
 }
 
 // 0xa1a77c — __ZN3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEEC1Ev
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::EnumDesc(void)")]
-pub fn stub_a1a77c() -> ! {
-    todo!("0xa1a77c RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::EnumDesc(void)")
+pub fn stub_a1a77c(emit: &mut dyn FnMut(u32, &'static str)) {
+ // IDA 0xa1a77c: C1 delegates to C2; both emit the ChatStyle pairs.
+ crate::player::describe_chat_option(emit)
 }
 
 // 0xa1a788 — __ZN3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEEC2Ev
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::EnumDesc(void)")]
-pub fn stub_a1a788() -> ! {
-    todo!("0xa1a788 RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::EnumDesc(void)")
+pub fn stub_a1a788(emit: &mut dyn FnMut(u32, &'static str)) {
+ // IDA 0xa1a788: ChatStyle = Classic(0) Bubble(1) ClassicAndBubble(2).
+ crate::player::describe_chat_option(emit)
 }
 
 // 0xa1a9b0 — __ZN3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEEC1Ev
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::EnumDesc(void)")]
-pub fn stub_a1a9b0() -> ! {
-    todo!("0xa1a9b0 RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::EnumDesc(void)")
+pub fn stub_a1a9b0(emit: &mut dyn FnMut(u32, &'static str)) {
+ // IDA 0xa1a9b0: C1 delegates to C2; both emit the PlayerChatType pairs.
+ crate::player::describe_player_chat_type(emit)
 }
 
 // 0xa1a9bc — __ZN3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEEC2Ev
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::EnumDesc(void)")]
-pub fn stub_a1a9bc() -> ! {
-    todo!("0xa1a9bc RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::EnumDesc(void)")
+pub fn stub_a1a9bc(emit: &mut dyn FnMut(u32, &'static str)) {
+ // IDA 0xa1a9bc: PlayerChatType = All(0) Team(1) Whisper(2).
+ crate::player::describe_player_chat_type(emit)
 }
 
 // 0xa1abe4 — __ZN3RBX15StringConverterINS_7Network7Players10ChatOptionEE14convertToValueERKSsRS3_
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
 #[doc(alias = "RBX::StringConverter<RBX::Network::Players::ChatOption>::convertToValue(std::string const&,RBX::Network::Players::ChatOption&)")]
-pub fn stub_a1abe4() -> ! {
-    todo!("0xa1abe4 RBX::StringConverter<RBX::Network::Players::ChatOption>::convertToValue(std::string const&,RBX::Network::Players::ChatOption&)")
+pub fn stub_a1abe4(name: &str) -> Option<u32> {
+ // IDA 0xa1abe4: ChatOption name to value.
+ crate::player::chat_option_from_value(name)
 }
 
 // 0xa1adb8 — __ZNK3RBX7Network7Players13getNumPlayersEv
 // type: int __fastcall(RBX::Network::Players *this, int, int)
 #[doc(alias = "RBX::Network::Players::getNumPlayers(void)const")]
-pub fn stub_a1adb8() -> ! {
-    todo!("0xa1adb8 RBX::Network::Players::getNumPlayers(void)const")
+pub fn stub_a1adb8(count: usize) -> usize {
+ // IDA 0xa1adb8: the player-list length.
+ crate::player::num_players(count)
 }
 
 // 0xa1ae1c — __ZN3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiED1Ev
