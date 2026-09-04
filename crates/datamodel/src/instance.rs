@@ -371,6 +371,85 @@ pub struct CameraVerb {
     pub workspace: *const crate::workspace::Workspace,
 }
 
+/// Rust model of `RBX::FirstPersonCommand` (IDA `0x3f6054`): the studio
+/// first-person toggle plus the owning data model.
+pub struct FirstPersonCommand {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::ToggleViewMode` (IDA `0x3f61cc`): the studio
+/// view-mode toggle plus the owning data model.
+pub struct ToggleViewMode {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::StatsCommand` (IDA `0x3f637c`): the studio stats
+/// overlay command plus the owning data model.
+pub struct StatsCommand {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::RenderStatsCommand` (IDA `0x3f6a8c`): the studio
+/// render-stats command plus the owning data model.
+pub struct RenderStatsCommand {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::SummaryStatsCommand` (IDA `0x3f71b8`): the studio
+/// summary-stats command plus the owning data model.
+pub struct SummaryStatsCommand {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::CustomStatsCommand` (IDA `0x3f77d4`): the studio
+/// custom-stats command plus the owning data model.
+pub struct CustomStatsCommand {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::NetworkStatsCommand` (IDA `0x3f7df0`): the studio
+/// network-stats command plus the owning data model.
+pub struct NetworkStatsCommand {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::PhysicsStatsCommand` (IDA `0x3f8570`): the studio
+/// physics-stats command plus the owning data model.
+pub struct PhysicsStatsCommand {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::EngineStatsCommand` (IDA `0x3f8e6c`): the studio
+/// engine-stats command plus the owning data model.
+pub struct EngineStatsCommand {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::JoinCommand` (IDA `0x3f9004`): the studio join command
+/// plus the owning data model.
+pub struct JoinCommand {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::RunStateVerb` (IDA `0x3f93e4`): the studio run-state
+/// verb plus the owning data model.
+pub struct RunStateVerb {
+    pub name: String,
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::GroupSelectionVerb` (IDA `0x3f986c`): the studio
+/// group-selection verb plus the owning data model.
+pub struct GroupSelectionVerb {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::SnapSelectionVerb` (IDA `0x3f9ab0`): the studio
+/// snap-selection verb plus the owning data model.
+pub struct SnapSelectionVerb {
+    pub data_model: *const DataModel,
+}
+
 /// Rust model of `RBX::ChatService::ChatColor` (IDA `0x3eb850`): the bubble
 /// color tag on a chat message; enumerators unmodeled.
 #[derive(Clone, Copy, Default, PartialEq, Eq)]
@@ -554,6 +633,7 @@ unsafe impl Sync for AnimatorBind {}
 #[derive(Default)]
 pub struct PartInstance {
     pub weak_owner: WeakPtr<PartInstance>,
+    pub locked: bool,
 }
 
 /// Rust model of `boost::_bi::bind_t<void, mf1<void, Accoutrement,
@@ -7572,7 +7652,7 @@ pub fn stub_0x3a68d8(ptr: *mut PartInstance) -> SharedPtr<PartInstance> {
     // deleter parameter absent.
     // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
     if ptr.is_null() {
-        return SharedPtr::new(PartInstance { weak_owner: WeakPtr::new() });
+        return SharedPtr::new(PartInstance { weak_owner: WeakPtr::new(), locked: false });
     }
     shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
@@ -11643,183 +11723,215 @@ pub fn stub_0x3f5a4c(name: String, workspace: *const crate::workspace::Workspace
 // 0x3f604c — __ZN3RBXL15SetCanNotSelectEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::SetCanNotSelect(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::SetCanNotSelect(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x3f604c() -> ! {
-    todo!("0x3f604c RBX::SetCanNotSelect(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x3f604c(part: *mut PartInstance, locked: bool) {
+    // IDA 0x3f604c: forwards to `PartInstance::setLocked(part, true-tag,
+    // locked)` (decomp 0x3f604c); the context tag collapses and the lock
+    // lands on the part.
+    // SAFETY: `part` must point to a valid `PartInstance`.
+    unsafe {
+        (*part).locked = locked;
+    }
 }
 
 // 0x3f6054 — __ZN3RBX18FirstPersonCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::FirstPersonCommand::FirstPersonCommand(RBX::DataModel *)")]
 // was: RBX::FirstPersonCommand::FirstPersonCommand(RBX::DataModel *)
-pub fn stub_0x3f6054() -> ! {
-    todo!("0x3f6054 RBX::FirstPersonCommand::FirstPersonCommand(RBX::DataModel *)")
+pub fn stub_0x3f6054(data_model: *const DataModel) -> FirstPersonCommand {
+    // IDA 0x3f6054: C1 is `B.W C2` (disasm 0x3f6054) — delegates.
+    stub_0x3f6058(data_model)
 }
 
 // 0x3f6058 — __ZN3RBX18FirstPersonCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::FirstPersonCommand::FirstPersonCommand(RBX::DataModel *)")]
 // was: RBX::FirstPersonCommand::FirstPersonCommand(RBX::DataModel *)
-pub fn stub_0x3f6058() -> ! {
-    todo!("0x3f6058 RBX::FirstPersonCommand::FirstPersonCommand(RBX::DataModel *)")
+pub fn stub_0x3f6058(data_model: *const DataModel) -> FirstPersonCommand {
+    // IDA 0x3f6058: `FirstPersonCommand::C2(DataModel*)` — links the model.
+    FirstPersonCommand { data_model }
 }
 
 // 0x3f61cc — __ZN3RBX14ToggleViewModeC1EPNS_9DataModelE
 #[doc(alias = "RBX::ToggleViewMode::ToggleViewMode(RBX::DataModel *)")]
 // was: RBX::ToggleViewMode::ToggleViewMode(RBX::DataModel *)
-pub fn stub_0x3f61cc() -> ! {
-    todo!("0x3f61cc RBX::ToggleViewMode::ToggleViewMode(RBX::DataModel *)")
+pub fn stub_0x3f61cc(data_model: *const DataModel) -> ToggleViewMode {
+    // IDA 0x3f61cc: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3f61d0(data_model)
 }
 
 // 0x3f61d0 — __ZN3RBX14ToggleViewModeC2EPNS_9DataModelE
 #[doc(alias = "RBX::ToggleViewMode::ToggleViewMode(RBX::DataModel *)")]
 // was: RBX::ToggleViewMode::ToggleViewMode(RBX::DataModel *)
-pub fn stub_0x3f61d0() -> ! {
-    todo!("0x3f61d0 RBX::ToggleViewMode::ToggleViewMode(RBX::DataModel *)")
+pub fn stub_0x3f61d0(data_model: *const DataModel) -> ToggleViewMode {
+    // IDA 0x3f61d0: `ToggleViewMode::C2(DataModel*)` — links the model.
+    ToggleViewMode { data_model }
 }
 
 // 0x3f637c — __ZN3RBX12StatsCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::StatsCommand::StatsCommand(RBX::DataModel *)")]
 // was: RBX::StatsCommand::StatsCommand(RBX::DataModel *)
-pub fn stub_0x3f637c() -> ! {
-    todo!("0x3f637c RBX::StatsCommand::StatsCommand(RBX::DataModel *)")
+pub fn stub_0x3f637c(data_model: *const DataModel) -> StatsCommand {
+    // IDA 0x3f637c: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3f6380(data_model)
 }
 
 // 0x3f6380 — __ZN3RBX12StatsCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::StatsCommand::StatsCommand(RBX::DataModel *)")]
 // was: RBX::StatsCommand::StatsCommand(RBX::DataModel *)
-pub fn stub_0x3f6380() -> ! {
-    todo!("0x3f6380 RBX::StatsCommand::StatsCommand(RBX::DataModel *)")
+pub fn stub_0x3f6380(data_model: *const DataModel) -> StatsCommand {
+    // IDA 0x3f6380: `StatsCommand::C2(DataModel*)` — links the model.
+    StatsCommand { data_model }
 }
 
 // 0x3f6a8c — __ZN3RBX18RenderStatsCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::RenderStatsCommand::RenderStatsCommand(RBX::DataModel *)")]
 // was: RBX::RenderStatsCommand::RenderStatsCommand(RBX::DataModel *)
-pub fn stub_0x3f6a8c() -> ! {
-    todo!("0x3f6a8c RBX::RenderStatsCommand::RenderStatsCommand(RBX::DataModel *)")
+pub fn stub_0x3f6a8c(data_model: *const DataModel) -> RenderStatsCommand {
+    // IDA 0x3f6a8c: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3f6a90(data_model)
 }
 
 // 0x3f6a90 — __ZN3RBX18RenderStatsCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::RenderStatsCommand::RenderStatsCommand(RBX::DataModel *)")]
 // was: RBX::RenderStatsCommand::RenderStatsCommand(RBX::DataModel *)
-pub fn stub_0x3f6a90() -> ! {
-    todo!("0x3f6a90 RBX::RenderStatsCommand::RenderStatsCommand(RBX::DataModel *)")
+pub fn stub_0x3f6a90(data_model: *const DataModel) -> RenderStatsCommand {
+    // IDA 0x3f6a90: `RenderStatsCommand::C2(DataModel*)` — links the model.
+    RenderStatsCommand { data_model }
 }
 
 // 0x3f71b8 — __ZN3RBX19SummaryStatsCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::SummaryStatsCommand::SummaryStatsCommand(RBX::DataModel *)")]
 // was: RBX::SummaryStatsCommand::SummaryStatsCommand(RBX::DataModel *)
-pub fn stub_0x3f71b8() -> ! {
-    todo!("0x3f71b8 RBX::SummaryStatsCommand::SummaryStatsCommand(RBX::DataModel *)")
+pub fn stub_0x3f71b8(data_model: *const DataModel) -> SummaryStatsCommand {
+    // IDA 0x3f71b8: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3f71bc(data_model)
 }
 
 // 0x3f71bc — __ZN3RBX19SummaryStatsCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::SummaryStatsCommand::SummaryStatsCommand(RBX::DataModel *)")]
 // was: RBX::SummaryStatsCommand::SummaryStatsCommand(RBX::DataModel *)
-pub fn stub_0x3f71bc() -> ! {
-    todo!("0x3f71bc RBX::SummaryStatsCommand::SummaryStatsCommand(RBX::DataModel *)")
+pub fn stub_0x3f71bc(data_model: *const DataModel) -> SummaryStatsCommand {
+    // IDA 0x3f71bc: `SummaryStatsCommand::C2(DataModel*)` — links the model.
+    SummaryStatsCommand { data_model }
 }
 
 // 0x3f77d4 — __ZN3RBX18CustomStatsCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::CustomStatsCommand::CustomStatsCommand(RBX::DataModel *)")]
 // was: RBX::CustomStatsCommand::CustomStatsCommand(RBX::DataModel *)
-pub fn stub_0x3f77d4() -> ! {
-    todo!("0x3f77d4 RBX::CustomStatsCommand::CustomStatsCommand(RBX::DataModel *)")
+pub fn stub_0x3f77d4(data_model: *const DataModel) -> CustomStatsCommand {
+    // IDA 0x3f77d4: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3f77d8(data_model)
 }
 
 // 0x3f77d8 — __ZN3RBX18CustomStatsCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::CustomStatsCommand::CustomStatsCommand(RBX::DataModel *)")]
 // was: RBX::CustomStatsCommand::CustomStatsCommand(RBX::DataModel *)
-pub fn stub_0x3f77d8() -> ! {
-    todo!("0x3f77d8 RBX::CustomStatsCommand::CustomStatsCommand(RBX::DataModel *)")
+pub fn stub_0x3f77d8(data_model: *const DataModel) -> CustomStatsCommand {
+    // IDA 0x3f77d8: `CustomStatsCommand::C2(DataModel*)` — links the model.
+    CustomStatsCommand { data_model }
 }
 
 // 0x3f7df0 — __ZN3RBX19NetworkStatsCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::NetworkStatsCommand::NetworkStatsCommand(RBX::DataModel *)")]
 // was: RBX::NetworkStatsCommand::NetworkStatsCommand(RBX::DataModel *)
-pub fn stub_0x3f7df0() -> ! {
-    todo!("0x3f7df0 RBX::NetworkStatsCommand::NetworkStatsCommand(RBX::DataModel *)")
+pub fn stub_0x3f7df0(data_model: *const DataModel) -> NetworkStatsCommand {
+    // IDA 0x3f7df0: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3f7df4(data_model)
 }
 
 // 0x3f7df4 — __ZN3RBX19NetworkStatsCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::NetworkStatsCommand::NetworkStatsCommand(RBX::DataModel *)")]
 // was: RBX::NetworkStatsCommand::NetworkStatsCommand(RBX::DataModel *)
-pub fn stub_0x3f7df4() -> ! {
-    todo!("0x3f7df4 RBX::NetworkStatsCommand::NetworkStatsCommand(RBX::DataModel *)")
+pub fn stub_0x3f7df4(data_model: *const DataModel) -> NetworkStatsCommand {
+    // IDA 0x3f7df4: `NetworkStatsCommand::C2(DataModel*)` — links the model.
+    NetworkStatsCommand { data_model }
 }
 
 // 0x3f8570 — __ZN3RBX19PhysicsStatsCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::PhysicsStatsCommand::PhysicsStatsCommand(RBX::DataModel *)")]
 // was: RBX::PhysicsStatsCommand::PhysicsStatsCommand(RBX::DataModel *)
-pub fn stub_0x3f8570() -> ! {
-    todo!("0x3f8570 RBX::PhysicsStatsCommand::PhysicsStatsCommand(RBX::DataModel *)")
+pub fn stub_0x3f8570(data_model: *const DataModel) -> PhysicsStatsCommand {
+    // IDA 0x3f8570: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3f8574(data_model)
 }
 
 // 0x3f8574 — __ZN3RBX19PhysicsStatsCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::PhysicsStatsCommand::PhysicsStatsCommand(RBX::DataModel *)")]
 // was: RBX::PhysicsStatsCommand::PhysicsStatsCommand(RBX::DataModel *)
-pub fn stub_0x3f8574() -> ! {
-    todo!("0x3f8574 RBX::PhysicsStatsCommand::PhysicsStatsCommand(RBX::DataModel *)")
+pub fn stub_0x3f8574(data_model: *const DataModel) -> PhysicsStatsCommand {
+    // IDA 0x3f8574: `PhysicsStatsCommand::C2(DataModel*)` — links the model.
+    PhysicsStatsCommand { data_model }
 }
 
 // 0x3f8e6c — __ZN3RBX18EngineStatsCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::EngineStatsCommand::EngineStatsCommand(RBX::DataModel *)")]
 // was: RBX::EngineStatsCommand::EngineStatsCommand(RBX::DataModel *)
-pub fn stub_0x3f8e6c() -> ! {
-    todo!("0x3f8e6c RBX::EngineStatsCommand::EngineStatsCommand(RBX::DataModel *)")
+pub fn stub_0x3f8e6c(data_model: *const DataModel) -> EngineStatsCommand {
+    // IDA 0x3f8e6c: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3f8e70(data_model)
 }
 
 // 0x3f8e70 — __ZN3RBX18EngineStatsCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::EngineStatsCommand::EngineStatsCommand(RBX::DataModel *)")]
 // was: RBX::EngineStatsCommand::EngineStatsCommand(RBX::DataModel *)
-pub fn stub_0x3f8e70() -> ! {
-    todo!("0x3f8e70 RBX::EngineStatsCommand::EngineStatsCommand(RBX::DataModel *)")
+pub fn stub_0x3f8e70(data_model: *const DataModel) -> EngineStatsCommand {
+    // IDA 0x3f8e70: `EngineStatsCommand::C2(DataModel*)` — links the model.
+    EngineStatsCommand { data_model }
 }
 
 // 0x3f9004 — __ZN3RBX11JoinCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::JoinCommand::JoinCommand(RBX::DataModel *)")]
 // was: RBX::JoinCommand::JoinCommand(RBX::DataModel *)
-pub fn stub_0x3f9004() -> ! {
-    todo!("0x3f9004 RBX::JoinCommand::JoinCommand(RBX::DataModel *)")
+pub fn stub_0x3f9004(data_model: *const DataModel) -> JoinCommand {
+    // IDA 0x3f9004: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3f9008(data_model)
 }
 
 // 0x3f9008 — __ZN3RBX11JoinCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::JoinCommand::JoinCommand(RBX::DataModel *)")]
 // was: RBX::JoinCommand::JoinCommand(RBX::DataModel *)
-pub fn stub_0x3f9008() -> ! {
-    todo!("0x3f9008 RBX::JoinCommand::JoinCommand(RBX::DataModel *)")
+pub fn stub_0x3f9008(data_model: *const DataModel) -> JoinCommand {
+    // IDA 0x3f9008: `JoinCommand::C2(DataModel*)` — links the model.
+    JoinCommand { data_model }
 }
 
 // 0x3f93e4 — __ZN3RBX12RunStateVerbC2ESsPNS_9DataModelE
 #[doc(alias = "RBX::RunStateVerb::RunStateVerb(std::string,RBX::DataModel *)")]
 // was: RBX::RunStateVerb::RunStateVerb(std::string,RBX::DataModel *)
-pub fn stub_0x3f93e4() -> ! {
-    todo!("0x3f93e4 RBX::RunStateVerb::RunStateVerb(std::string,RBX::DataModel *)")
+pub fn stub_0x3f93e4(name: String, data_model: *const DataModel) -> RunStateVerb {
+    // IDA 0x3f93e4: `RunStateVerb::C2(string, DataModel*)` — moves the name
+    // and links the model. Same shape as 0x3f5368.
+    RunStateVerb { name, data_model }
 }
 
 // 0x3f986c — __ZN3RBX18GroupSelectionVerbC1EPNS_9DataModelE
 #[doc(alias = "RBX::GroupSelectionVerb::GroupSelectionVerb(RBX::DataModel *)")]
 // was: RBX::GroupSelectionVerb::GroupSelectionVerb(RBX::DataModel *)
-pub fn stub_0x3f986c() -> ! {
-    todo!("0x3f986c RBX::GroupSelectionVerb::GroupSelectionVerb(RBX::DataModel *)")
+pub fn stub_0x3f986c(data_model: *const DataModel) -> GroupSelectionVerb {
+    // IDA 0x3f986c: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3f9870(data_model)
 }
 
 // 0x3f9870 — __ZN3RBX18GroupSelectionVerbC2EPNS_9DataModelE
 #[doc(alias = "RBX::GroupSelectionVerb::GroupSelectionVerb(RBX::DataModel *)")]
 // was: RBX::GroupSelectionVerb::GroupSelectionVerb(RBX::DataModel *)
-pub fn stub_0x3f9870() -> ! {
-    todo!("0x3f9870 RBX::GroupSelectionVerb::GroupSelectionVerb(RBX::DataModel *)")
+pub fn stub_0x3f9870(data_model: *const DataModel) -> GroupSelectionVerb {
+    // IDA 0x3f9870: `GroupSelectionVerb::C2(DataModel*)` — links the model.
+    GroupSelectionVerb { data_model }
 }
 
 // 0x3f9ab0 — __ZN3RBX17SnapSelectionVerbC1EPNS_9DataModelE
 #[doc(alias = "RBX::SnapSelectionVerb::SnapSelectionVerb(RBX::DataModel *)")]
 // was: RBX::SnapSelectionVerb::SnapSelectionVerb(RBX::DataModel *)
-pub fn stub_0x3f9ab0() -> ! {
-    todo!("0x3f9ab0 RBX::SnapSelectionVerb::SnapSelectionVerb(RBX::DataModel *)")
+pub fn stub_0x3f9ab0(data_model: *const DataModel) -> SnapSelectionVerb {
+    // IDA 0x3f9ab0: C1 delegates to C2 (same `B.W` shape as 0x3f6054).
+    stub_0x3f9ab4(data_model)
 }
 
 // 0x3f9ab4 — __ZN3RBX17SnapSelectionVerbC2EPNS_9DataModelE
 #[doc(alias = "RBX::SnapSelectionVerb::SnapSelectionVerb(RBX::DataModel *)")]
 // was: RBX::SnapSelectionVerb::SnapSelectionVerb(RBX::DataModel *)
-pub fn stub_0x3f9ab4() -> ! {
-    todo!("0x3f9ab4 RBX::SnapSelectionVerb::SnapSelectionVerb(RBX::DataModel *)")
+pub fn stub_0x3f9ab4(data_model: *const DataModel) -> SnapSelectionVerb {
+    // IDA 0x3f9ab4: `SnapSelectionVerb::C2(DataModel*)` — links the model.
+    SnapSelectionVerb { data_model }
 }
 
 // 0x3f9ce0 — __ZN3RBXL11SurfaceSwapILNS_11SurfaceTypeE2ELS1_3EEEvN5boost10shared_ptrINS_8InstanceEEE
