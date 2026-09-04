@@ -1260,100 +1260,192 @@ pub fn stub_0x1cc54(
     url
 }
 
+/// Gap-filler HomeViewController segue/outlet state (IDA 0x1cfe8-0x1d35c).
+/// Segue destinations, the web-view cache manager and `jumpToPlaceID` have
+/// no target in this crate, so `prepareForSegue:` records the resolved URL
+/// + jump id + preloaded attach; outlet getters/setters keep opaque `id`
+/// handles (0 when unset) behind `objc_setProperty` retain glue.
+static JUMP_TO_PLACE_ID: std::sync::atomic::AtomicI32 = std::sync::atomic::AtomicI32::new(0);
+static LAST_SEGUE_URL: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+static LAST_SEGUE_JUMP_ID: std::sync::atomic::AtomicI32 = std::sync::atomic::AtomicI32::new(0);
+static LAST_PRELOADED_ATTACH: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+static HOME_OUTLETS: std::sync::LazyLock<parking_lot::Mutex<std::collections::HashMap<String, usize>>> =
+    std::sync::LazyLock::new(|| parking_lot::Mutex::new(std::collections::HashMap::new()));
+pub(crate) fn home_outlet(name: &str) -> usize {
+    HOME_OUTLETS.lock().get(name).copied().unwrap_or(0)
+}
+pub(crate) fn set_home_outlet(name: &str, handle: usize) {
+    HOME_OUTLETS.lock().insert(name.to_owned(), handle);
+}
+/// `prepareForSegue:` sender shape (IDA 0x1cfe8): button tags resolve via
+/// `getUrlForButtonTag:`, search fields add their text as the query, the
+/// home controller itself maps to tag 10, anything else skips `setUrl:`.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum SegueSender {
+    Button(i32),
+    SearchField(i32),
+    Home,
+    Other,
+}
+
 // 0x1cfe8 — -[HomeViewController prepareForSegue:sender:]
 // type: void __cdecl(HomeViewController *self, SEL, id, id)
 #[doc(alias = "-[HomeViewController prepareForSegue:sender:]")]
-pub fn stub_0x1cfe8() -> ! {
-    todo!("0x1cfe8 -[HomeViewController prepareForSegue:sender:]")
+pub fn stub_0x1cfe8(
+    dest_is_navbar: bool,
+    sender: SegueSender,
+    search_text: &str,
+    is_tablet: bool,
+    base_url: &str,
+    search_url: &str,
+) {
+    // IDA 0x1cfe8: `prepareForSegue:sender:` ignores non-navbar destinations
+    // (0x1d044 fallthrough). With `jumpToPlaceID` set (0x1d060) it points
+    // the destination at the item URL, fires
+    // `setJumpToPlacePageAndLaunchGameWithID:` and clears the id
+    // (0x1d098-0x1d0c0); otherwise button senders resolve their tag
+    // (0x1d0d8-0x1d11a), text fields add their text as the query
+    // (0x1d12a-0x1d190), the home controller maps to tag 10 (0x1d196-0x1d1bc)
+    // and other senders skip `setUrl:` (0x1d1a8 goto LABEL_12). Every path
+    // ends attaching the preloaded web view for the destination URL
+    // (0x1d1d4-0x1d232). Class queries collapse into parameters; the cache
+    // manager has no target here, so the attached URL records.
+    if !dest_is_navbar {
+        return;
+    }
+    let jump = JUMP_TO_PLACE_ID.swap(0, std::sync::atomic::Ordering::SeqCst);
+    let url = if jump != 0 {
+        LAST_SEGUE_JUMP_ID.store(jump, std::sync::atomic::Ordering::SeqCst);
+        // BUG: the format string carries `%ld` but the decompile shows no
+        // value argument at 0x1d084; the literal is preserved.
+        "http://www.roblox.com/----item?id=%ld".to_owned()
+    } else {
+        match sender {
+            SegueSender::Button(tag) => stub_0x1cc1c(tag, true, is_tablet, base_url, search_url),
+            SegueSender::SearchField(tag) => {
+                stub_0x1cc54(tag, true, search_text, is_tablet, base_url, search_url)
+            }
+            SegueSender::Home => stub_0x1cc1c(10, true, is_tablet, base_url, search_url),
+            SegueSender::Other => LAST_SEGUE_URL.lock().clone(),
+        }
+    };
+    *LAST_SEGUE_URL.lock() = url.clone();
+    *LAST_PRELOADED_ATTACH.lock() = url;
 }
 
 // 0x1d238 — -[HomeViewController viewMustSegueAfterLoad]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController viewMustSegueAfterLoad]")]
-pub fn stub_0x1d238() -> ! {
-    todo!("0x1d238 -[HomeViewController viewMustSegueAfterLoad]")
+pub fn stub_0x1d238() {
+    // IDA 0x1d238: `viewMustSegueAfterLoad` sets the flag (0x1d244) that
+    // `viewDidAppear:` consumes (stub_0x1c888).
+    SEGUE_AFTER_LOAD.store(true, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1d248 — -[HomeViewController setJumpToPlaceID:]
 // type: void __cdecl(HomeViewController *self, SEL, int)
 #[doc(alias = "-[HomeViewController setJumpToPlaceID:]")]
-pub fn stub_0x1d248() -> ! {
-    todo!("0x1d248 -[HomeViewController setJumpToPlaceID:]")
+pub fn stub_0x1d248(jump_to_place: i32) {
+    // IDA 0x1d248: `setJumpToPlaceID:` stores the global (0x1d252) that
+    // `prepareForSegue:` consumes (stub_0x1cfe8).
+    JUMP_TO_PLACE_ID.store(jump_to_place, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1d258 — -[HomeViewController blueFrame]
 // type: UIImageView *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController blueFrame]")]
-pub fn stub_0x1d258() -> ! {
-    todo!("0x1d258 -[HomeViewController blueFrame]")
+pub fn stub_0x1d258() -> usize {
+    // IDA 0x1d258: `blueFrame` returns the `_blueFrame` ivar (0x1d266).
+    // Opaque `id` handle; 0 when unset.
+    home_outlet("blueFrame")
 }
 
 // 0x1d268 — -[HomeViewController setBlueFrame:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBlueFrame:]")]
-pub fn stub_0x1d268() -> ! {
-    todo!("0x1d268 -[HomeViewController setBlueFrame:]")
+pub fn stub_0x1d268(handle: usize) {
+    // IDA 0x1d268: `setBlueFrame:` retains via `objc_setProperty` (offset
+    // 196, 0x1d284). Retain is drop glue; the handle records.
+    set_home_outlet("blueFrame", handle);
 }
 
 // 0x1d28c — -[HomeViewController imgAvatar]
 // type: UIImageView *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController imgAvatar]")]
-pub fn stub_0x1d28c() -> ! {
-    todo!("0x1d28c -[HomeViewController imgAvatar]")
+pub fn stub_0x1d28c() -> usize {
+    // IDA 0x1d28c: `imgAvatar` returns the `_imgAvatar` ivar (0x1d29a).
+    // Opaque `id` handle; 0 when unset.
+    home_outlet("imgAvatar")
 }
 
 // 0x1d29c — -[HomeViewController setImgAvatar:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setImgAvatar:]")]
-pub fn stub_0x1d29c() -> ! {
-    todo!("0x1d29c -[HomeViewController setImgAvatar:]")
+pub fn stub_0x1d29c(handle: usize) {
+    // IDA 0x1d29c: `setImgAvatar:` retains via `objc_setProperty` (offset
+    // 200, 0x1d2b8). Retain is drop glue; the handle records.
+    set_home_outlet("imgAvatar", handle);
 }
 
 // 0x1d2c0 — -[HomeViewController lblPlayerName]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController lblPlayerName]")]
-pub fn stub_0x1d2c0() -> ! {
-    todo!("0x1d2c0 -[HomeViewController lblPlayerName]")
+pub fn stub_0x1d2c0() -> usize {
+    // IDA 0x1d2c0: `lblPlayerName` returns the `_lblPlayerName` ivar
+    // (0x1d2ce). Opaque `id` handle; 0 when unset.
+    home_outlet("lblPlayerName")
 }
 
 // 0x1d2d0 — -[HomeViewController setLblPlayerName:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setLblPlayerName:]")]
-pub fn stub_0x1d2d0() -> ! {
-    todo!("0x1d2d0 -[HomeViewController setLblPlayerName:]")
+pub fn stub_0x1d2d0(handle: usize) {
+    // IDA 0x1d2d0: `setLblPlayerName:` retains via `objc_setProperty`
+    // (offset 204, 0x1d2ec). Retain is drop glue; the handle records.
+    set_home_outlet("lblPlayerName", handle);
 }
 
 // 0x1d2f4 — -[HomeViewController placeId]
 // type: UITextField *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController placeId]")]
-pub fn stub_0x1d2f4() -> ! {
-    todo!("0x1d2f4 -[HomeViewController placeId]")
+pub fn stub_0x1d2f4() -> usize {
+    // IDA 0x1d2f4: `placeId` returns the `_placeId` ivar (0x1d302).
+    // Opaque `id` handle; 0 when unset.
+    home_outlet("placeId")
 }
 
 // 0x1d304 — -[HomeViewController setPlaceId:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setPlaceId:]")]
-pub fn stub_0x1d304() -> ! {
-    todo!("0x1d304 -[HomeViewController setPlaceId:]")
+pub fn stub_0x1d304(handle: usize) {
+    // IDA 0x1d304: `setPlaceId:` retains via `objc_setProperty` (offset
+    // 208, 0x1d320). Retain is drop glue; the handle records.
+    set_home_outlet("placeId", handle);
 }
 
 // 0x1d328 — -[HomeViewController portId]
 // type: UITextField *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController portId]")]
-pub fn stub_0x1d328() -> ! {
-    todo!("0x1d328 -[HomeViewController portId]")
+pub fn stub_0x1d328() -> usize {
+    // IDA 0x1d328: `portId` returns the `_portId` ivar (0x1d336).
+    // Opaque `id` handle; 0 when unset.
+    home_outlet("portId")
 }
 
 // 0x1d338 — -[HomeViewController setPortId:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setPortId:]")]
-pub fn stub_0x1d338() -> ! {
-    todo!("0x1d338 -[HomeViewController setPortId:]")
+pub fn stub_0x1d338(handle: usize) {
+    // IDA 0x1d338: `setPortId:` retains via `objc_setProperty` (offset
+    // 212, 0x1d354). Retain is drop glue; the handle records.
+    set_home_outlet("portId", handle);
 }
 
 // 0x1d35c — -[HomeViewController ipId]
 // type: UITextField *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController ipId]")]
-pub fn stub_0x1d35c() -> ! {
-    todo!("0x1d35c -[HomeViewController ipId]")
+pub fn stub_0x1d35c() -> usize {
+    // IDA 0x1d35c: `ipId` returns the `_ipId` ivar (0x1d36a).
+    // Opaque `id` handle; 0 when unset.
+    home_outlet("ipId")
 }

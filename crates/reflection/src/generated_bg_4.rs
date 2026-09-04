@@ -10,113 +10,146 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0x1d36c — -[HomeViewController setIpId:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setIpId:]")]
-pub fn stub_0x1d36c() -> ! {
-    todo!("0x1d36c -[HomeViewController setIpId:]")
+pub fn stub_0x1d36c(handle: usize) {
+    // IDA 0x1d36c: `setIpId:` retains via `objc_setProperty` (offset 216,
+    // 0x1d388). Retain is drop glue; the handle records in the bg_3 outlet
+    // registry.
+    crate::generated_bg_3::set_home_outlet("ipId", handle);
 }
 
 // 0x1d390 — -[HomeViewController btnPlaceLauncher]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController btnPlaceLauncher]")]
-pub fn stub_0x1d390() -> ! {
-    todo!("0x1d390 -[HomeViewController btnPlaceLauncher]")
+pub fn stub_0x1d390() -> usize {
+    // IDA 0x1d390: `btnPlaceLauncher` returns the `_btnPlaceLauncher` ivar
+    // (0x1d39e). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("btnPlaceLauncher")
 }
 
 // 0x1d3a0 — -[HomeViewController setBtnPlaceLauncher:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBtnPlaceLauncher:]")]
-pub fn stub_0x1d3a0() -> ! {
-    todo!("0x1d3a0 -[HomeViewController setBtnPlaceLauncher:]")
+pub fn stub_0x1d3a0(handle: usize) {
+    // IDA 0x1d3a0: `setBtnPlaceLauncher:` retains via `objc_setProperty`
+    // (offset 220, 0x1d3bc). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("btnPlaceLauncher", handle);
 }
 
 // 0x1d3c4 — -[HomeViewController btnGames]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController btnGames]")]
-pub fn stub_0x1d3c4() -> ! {
-    todo!("0x1d3c4 -[HomeViewController btnGames]")
+pub fn stub_0x1d3c4() -> usize {
+    // IDA 0x1d3c4: `btnGames` returns the `_btnGames` ivar (0x1d3d2).
+    // Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("btnGames")
 }
 
 // 0x1d3d4 — -[HomeViewController setBtnGames:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBtnGames:]")]
-pub fn stub_0x1d3d4() -> ! {
-    todo!("0x1d3d4 -[HomeViewController setBtnGames:]")
+pub fn stub_0x1d3d4(handle: usize) {
+    // IDA 0x1d3d4: `setBtnGames:` retains via `objc_setProperty` (offset
+    // 224, 0x1d3f0). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("btnGames", handle);
 }
 
 // 0x1d3f8 — -[HomeViewController btnDebugSettings]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController btnDebugSettings]")]
-pub fn stub_0x1d3f8() -> ! {
-    todo!("0x1d3f8 -[HomeViewController btnDebugSettings]")
+pub fn stub_0x1d3f8() -> usize {
+    // IDA 0x1d3f8: `btnDebugSettings` returns the `_btnDebugSettings` ivar
+    // (0x1d406). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("btnDebugSettings")
 }
 
 // 0x1d408 — -[HomeViewController setBtnDebugSettings:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBtnDebugSettings:]")]
-pub fn stub_0x1d408() -> ! {
-    todo!("0x1d408 -[HomeViewController setBtnDebugSettings:]")
+pub fn stub_0x1d408(handle: usize) {
+    // IDA 0x1d408: `setBtnDebugSettings:` retains via `objc_setProperty`
+    // (offset 228, 0x1d424). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("btnDebugSettings", handle);
 }
 
 // 0x1d42c — -[HomeViewController lblRobux]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController lblRobux]")]
-pub fn stub_0x1d42c() -> ! {
-    todo!("0x1d42c -[HomeViewController lblRobux]")
+pub fn stub_0x1d42c() -> usize {
+    // IDA 0x1d42c: `lblRobux` returns the `_lblRobux` ivar (0x1d43a).
+    // Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("lblRobux")
 }
 
 // 0x1d43c — -[HomeViewController setLblRobux:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setLblRobux:]")]
-pub fn stub_0x1d43c() -> ! {
-    todo!("0x1d43c -[HomeViewController setLblRobux:]")
+pub fn stub_0x1d43c(handle: usize) {
+    // IDA 0x1d43c: `setLblRobux:` retains via `objc_setProperty` (offset
+    // 232, 0x1d458). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("lblRobux", handle);
 }
 
 // 0x1d460 — -[HomeViewController lblTix]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController lblTix]")]
-pub fn stub_0x1d460() -> ! {
-    todo!("0x1d460 -[HomeViewController lblTix]")
+pub fn stub_0x1d460() -> usize {
+    // IDA 0x1d460: `lblTix` returns the `_lblTix` ivar (0x1d46e).
+    // Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("lblTix")
 }
 
 // 0x1d470 — -[HomeViewController setLblTix:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setLblTix:]")]
-pub fn stub_0x1d470() -> ! {
-    todo!("0x1d470 -[HomeViewController setLblTix:]")
+pub fn stub_0x1d470(handle: usize) {
+    // IDA 0x1d470: `setLblTix:` retains via `objc_setProperty` (offset
+    // 236, 0x1d48c). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("lblTix", handle);
 }
 
 // 0x1d494 — -[HomeViewController btnMessages]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController btnMessages]")]
-pub fn stub_0x1d494() -> ! {
-    todo!("0x1d494 -[HomeViewController btnMessages]")
+pub fn stub_0x1d494() -> usize {
+    // IDA 0x1d494: `btnMessages` returns the `_btnMessages` ivar (0x1d4a2).
+    // Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("btnMessages")
 }
 
 // 0x1d4a4 — -[HomeViewController setBtnMessages:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBtnMessages:]")]
-pub fn stub_0x1d4a4() -> ! {
-    todo!("0x1d4a4 -[HomeViewController setBtnMessages:]")
+pub fn stub_0x1d4a4(handle: usize) {
+    // IDA 0x1d4a4: `setBtnMessages:` retains via `objc_setProperty` (offset
+    // 240, 0x1d4c0). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("btnMessages", handle);
 }
 
 // 0x1d4c8 — -[HomeViewController gameLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController gameLabel]")]
-pub fn stub_0x1d4c8() -> ! {
-    todo!("0x1d4c8 -[HomeViewController gameLabel]")
+pub fn stub_0x1d4c8() -> usize {
+    // IDA 0x1d4c8: `gameLabel` returns the `_gameLabel` ivar (0x1d4d6).
+    // Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("gameLabel")
 }
 
 // 0x1d4d8 — -[HomeViewController setGameLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setGameLabel:]")]
-pub fn stub_0x1d4d8() -> ! {
-    todo!("0x1d4d8 -[HomeViewController setGameLabel:]")
+pub fn stub_0x1d4d8(handle: usize) {
+    // IDA 0x1d4d8: `setGameLabel:` retains via `objc_setProperty` (offset
+    // 244, 0x1d4f4). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("gameLabel", handle);
 }
 
 // 0x1d4fc — -[HomeViewController catalogLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController catalogLabel]")]
-pub fn stub_0x1d4fc() -> ! {
-    todo!("0x1d4fc -[HomeViewController catalogLabel]")
+pub fn stub_0x1d4fc() -> usize {
+    // IDA 0x1d4fc: `catalogLabel` returns the `_catalogLabel` ivar
+    // (0x1d50a). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("catalogLabel")
 }
 
 // 0x1d50c — -[HomeViewController setCatalogLabel:]
