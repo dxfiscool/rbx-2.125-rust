@@ -5,6 +5,102 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+// ---- Batch-2 models: generic descriptor ctors (jump-stub targets) ----
+// Every `todo!` below is a `__picsymbolstub4` PLT jump (`LDR R12,=ptr; ADD
+// R12,PC; LDR PC,[R12]` — verified by disasm for one of each kind:
+// 0xf3df04 PropDescriptor ctor, 0xf3df14 RefPropDescriptor ctor, 0xf3df24
+// EnumPropDescriptor ctor, 0xf3df64 Type ctor, 0xf3df74 RefType singleton,
+// 0xf3e154 setIntValue, 0xf3e424 TypedPropertyDescriptor ctor, 0xf3e474
+// BoundProp ctor, 0xf3ecb4 EventDesc ctor; siblings are same-kind jumps).
+// The ports construct the canonical descriptor objects directly, mirroring
+// the Explosion instantiations in `descriptor.rs` (ctor 0x4a5834, event ctor
+// 0x4a38b8, `setIntValue` 0x4a6028). Member-function/get-set pointers have no
+// Rust form here and are elided (cf. 0x4a5a14 "member descriptors unmodeled").
+
+/// `RBX::Reflection::PropDescriptor<C,T>` / `TypedPropertyDescriptor<T>`
+/// metadata (IDA 0x4a5834 shape: name, category, member access at +44,
+/// attributes, permissions).
+#[derive(Debug, Clone)]
+pub struct ValuePropDesc {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `RBX::Reflection::EnumPropDescriptor<C,E>` metadata: value desc plus the
+/// linked enum type whose singleton lives at +40/+48 (IDA 0x4a58ea/0x4a5954).
+#[derive(Debug, Clone)]
+pub struct EnumPropDesc {
+    pub base: ValuePropDesc,
+    pub enum_type: &'static str,
+}
+
+/// `RBX::Reflection::RefPropDescriptor<C,T>` metadata (IDA 0xf3df14 shape).
+#[derive(Debug, Clone)]
+pub struct RefPropDesc {
+    pub base: ValuePropDesc,
+    pub target_type: &'static str,
+}
+
+/// `RBX::Reflection::EventDesc<C,Sig>` metadata: member-signal pointer at +40
+/// plus one signature item per signal arg (IDA 0x4a38b8).
+#[derive(Debug, Clone)]
+pub struct EventDescMeta {
+    pub base: ValuePropDesc,
+    pub signature: Vec<(String, &'static str)>,
+}
+
+/// `RBX::Reflection::Type` / `RefType<T>` metadata (IDA 0xf3df64 shape).
+#[derive(Debug, Clone)]
+pub struct ReflectionTypeMeta {
+    pub name: String,
+    pub category: String,
+}
+
+/// `RBX::Reflection::BoundProp<T,Mut>` generic descriptor (IDA 0xf3e474 shape:
+/// member pointer + default value, attributes/permissions via ValuePropDesc).
+#[derive(Debug, Clone)]
+pub struct BoundPropDesc<T> {
+    pub base: ValuePropDesc,
+    pub default: T,
+}
+
+/// Integer cell an `EnumPropDescriptor::setIntValue` writes through (the
+/// `DescribedBase` member at +44 in 0x4a6028 terms).
+#[derive(Debug, Clone, Default)]
+pub struct EnumIntCell {
+    pub value: i32,
+}
+
+/// Shared `EnumPropDescriptor::setIntValue` core, mirroring 0x4a6028: `value
+/// >= 0` (0x4a6032) and `value < value_to_value.size` (0x4a6044) load
+/// `mapped = value_to_value[value]` (0x4a6046); `mapped == -1` returns false
+/// (0x4a6050), else the member set runs and it returns true (0x4a605c).
+pub fn enum_prop_set_int_value(
+    desc: &crate::enum_desc::EnumDesc,
+    cell: &mut EnumIntCell,
+    value: i32,
+) -> bool {
+    match usize::try_from(value)
+        .ok()
+        .and_then(|slot| desc.value_to_value.get(slot).copied())
+    {
+        Some(mapped) if mapped != -1 => {
+            cell.value = mapped;
+            true
+        }
+        _ => false,
+    }
+}
+
+/// `RBX::Reflection::RefType<RBX::Hole *>::singleton` backing store (IDA
+/// 0xf3df74: guard-once construct + `__cxa_atexit`; Rust: `LazyLock`).
+static HOLE_REF_TYPE: std::sync::LazyLock<ReflectionTypeMeta> =
+    std::sync::LazyLock::new(|| ReflectionTypeMeta {
+        name: "Hole".to_owned(),
+        category: "Hole".to_owned(),
+    });
 
 // 0xf3d6c4 — j___ZNK3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEE15convertToStringERKS3_
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEE15convertToStringERKS3_")]
@@ -476,50 +572,58 @@ pub fn stub_0xf3db04() {
 
 // 0xf3df04 — j___ZN3RBX10Reflection14PropDescriptorINS_13VelocityMotorEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "j___ZN3RBX10Reflection14PropDescriptorINS_13VelocityMotorEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0xf3df04() -> ! {
-    todo!("0xf3df04 j___ZN3RBX10Reflection14PropDescriptorINS_13VelocityMotorEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0xf3df04(name: &str, category: &str, attributes: u32, permissions: u32) -> ValuePropDesc {
+    // IDA 0xf3df04: picsymbolstub jump to `PropDescriptor<VelocityMotor,float>::PropDescriptor` (disasm `LDR PC,[R12]`); base `PropertyDescriptor` init + get/set member pair at +44 (cf. 0x4a5834).
+    ValuePropDesc { name: name.to_owned(), category: category.to_owned(), attributes, permissions }
 }
 
 // 0xf3df14 — j___ZN3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "j___ZN3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0xf3df14() -> ! {
-    todo!("0xf3df14 j___ZN3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0xf3df14(name: &str, category: &str, attributes: u32, permissions: u32) -> RefPropDesc {
+    // IDA 0xf3df14: picsymbolstub jump to `RefPropDescriptor<VelocityMotor,Hole*>::RefPropDescriptor` (disasm `LDR PC,[R12]`); same base init with a `Hole*` get/set member pair.
+    RefPropDesc { base: ValuePropDesc { name: name.to_owned(), category: category.to_owned(), attributes, permissions }, target_type: "RBX::Hole*" }
 }
 
 // 0xf3df24 — j___ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "j___ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0xf3df24() -> ! {
-    todo!("0xf3df24 j___ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0xf3df24(name: &str, category: &str, attributes: u32, permissions: u32) -> EnumPropDesc {
+    // IDA 0xf3df24: picsymbolstub jump to `EnumPropDescriptor<Feature,InOut>::EnumPropDescriptor` (disasm `LDR PC,[R12]`); base init + `Singleton<EnumDesc<InOut>>` link at +40/+48 (cf. 0x4a58ea/0x4a5954).
+    EnumPropDesc { base: ValuePropDesc { name: name.to_owned(), category: category.to_owned(), attributes, permissions }, enum_type: "RBX::Feature::InOut" }
 }
 
 // 0xf3df34 — j___ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "j___ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0xf3df34() -> ! {
-    todo!("0xf3df34 j___ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0xf3df34(name: &str, category: &str, attributes: u32, permissions: u32) -> EnumPropDesc {
+    // IDA 0xf3df34: picsymbolstub jump to `EnumPropDescriptor<Feature,LeftRight>::EnumPropDescriptor` (disasm `LDR PC,[R12]`); same shape as 0xf3df24.
+    EnumPropDesc { base: ValuePropDesc { name: name.to_owned(), category: category.to_owned(), attributes, permissions }, enum_type: "RBX::Feature::LeftRight" }
 }
 
 // 0xf3df44 — j___ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "j___ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0xf3df44() -> ! {
-    todo!("0xf3df44 j___ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0xf3df44(name: &str, category: &str, attributes: u32, permissions: u32) -> EnumPropDesc {
+    // IDA 0xf3df44: picsymbolstub jump to `EnumPropDescriptor<Feature,TopBottom>::EnumPropDescriptor` (disasm `LDR PC,[R12]`); same shape as 0xf3df24.
+    EnumPropDesc { base: ValuePropDesc { name: name.to_owned(), category: category.to_owned(), attributes, permissions }, enum_type: "RBX::Feature::TopBottom" }
 }
 
 // 0xf3df54 — j___ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "j___ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0xf3df54() -> ! {
-    todo!("0xf3df54 j___ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0xf3df54(name: &str, category: &str, attributes: u32, permissions: u32) -> EnumPropDesc {
+    // IDA 0xf3df54: picsymbolstub jump to `EnumPropDescriptor<Feature,NormalId>::EnumPropDescriptor` (disasm `LDR PC,[R12]`); same shape as 0xf3df24.
+    EnumPropDesc { base: ValuePropDesc { name: name.to_owned(), category: category.to_owned(), attributes, permissions }, enum_type: "RBX::NormalId" }
 }
 
 // 0xf3df64 — j___ZN3RBX10Reflection4TypeC2IPNS_4HoleEEEPKcS6_PT_
 #[doc(alias = "j___ZN3RBX10Reflection4TypeC2IPNS_4HoleEEEPKcS6_PT_")]
-pub fn stub_0xf3df64() -> ! {
-    todo!("0xf3df64 j___ZN3RBX10Reflection4TypeC2IPNS_4HoleEEEPKcS6_PT_")
+pub fn stub_0xf3df64(name: &str, category: &str) -> ReflectionTypeMeta {
+    // IDA 0xf3df64: picsymbolstub jump to `Type::Type<Hole*>(char const*,char const*,Hole**)` (disasm `LDR PC,[R12]`); stores the name/category pair.
+    ReflectionTypeMeta { name: name.to_owned(), category: category.to_owned() }
 }
 
 // 0xf3df74 — j___ZN3RBX10Reflection7RefTypeIPNS_4HoleEE9singletonEv
 #[doc(alias = "j___ZN3RBX10Reflection7RefTypeIPNS_4HoleEE9singletonEv")]
-pub fn stub_0xf3df74() -> ! {
-    todo!("0xf3df74 j___ZN3RBX10Reflection7RefTypeIPNS_4HoleEE9singletonEv")
+pub fn stub_0xf3df74() -> &'static ReflectionTypeMeta {
+    // IDA 0xf3df74: picsymbolstub jump to `RefType<Hole*>::singleton` (disasm `LDR PC,[R12]`); guard-once init -- Rust `LazyLock` (cf. 0x4b6a3c).
+    &HOLE_REF_TYPE
 }
 
 // 0xf3df84 — j___ZN3RBX10Reflection8EnumDescINS_7Feature5InOutEE7addPairES3_PKc
@@ -545,26 +649,30 @@ pub fn stub_0xf3dfa4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &s
 
 // 0xf3e154 — j___ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "j___ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0xf3e154() -> ! {
-    todo!("0xf3e154 j___ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_0xf3e154(desc: &crate::enum_desc::EnumDesc, cell: &mut EnumIntCell, value: i32) -> bool {
+    // IDA 0xf3e154: picsymbolstub jump to `EnumPropDescriptor<Feature,InOut>::setIntValue` (disasm `LDR PC,[R12]`); `value_to_value` map + member set (cf. 0x4a6028).
+    enum_prop_set_int_value(desc, cell, value)
 }
 
 // 0xf3e164 — j___ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "j___ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0xf3e164() -> ! {
-    todo!("0xf3e164 j___ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_0xf3e164(desc: &crate::enum_desc::EnumDesc, cell: &mut EnumIntCell, value: i32) -> bool {
+    // IDA 0xf3e164: picsymbolstub jump to `EnumPropDescriptor<Feature,LeftRight>::setIntValue` (disasm `LDR PC,[R12]`); same shape as 0xf3e154.
+    enum_prop_set_int_value(desc, cell, value)
 }
 
 // 0xf3e174 — j___ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "j___ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0xf3e174() -> ! {
-    todo!("0xf3e174 j___ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_0xf3e174(desc: &crate::enum_desc::EnumDesc, cell: &mut EnumIntCell, value: i32) -> bool {
+    // IDA 0xf3e174: picsymbolstub jump to `EnumPropDescriptor<Feature,TopBottom>::setIntValue` (disasm `LDR PC,[R12]`); same shape as 0xf3e154.
+    enum_prop_set_int_value(desc, cell, value)
 }
 
 // 0xf3e184 — j___ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "j___ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0xf3e184() -> ! {
-    todo!("0xf3e184 j___ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_0xf3e184(desc: &crate::enum_desc::EnumDesc, cell: &mut EnumIntCell, value: i32) -> bool {
+    // IDA 0xf3e184: picsymbolstub jump to `EnumPropDescriptor<Feature,NormalId>::setIntValue` (disasm `LDR PC,[R12]`); same shape as 0xf3e154.
+    enum_prop_set_int_value(desc, cell, value)
 }
 
 // 0xf3e194 — j___ZNK3RBX10Reflection8EnumDescINS_7Feature5InOutEE14convertToIndexES3_
@@ -611,26 +719,31 @@ pub fn stub_0xf3e214() {
 
 // 0xf3e424 — j___ZN3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEEC2ERNS0_15ClassDescriptorEPKcS7_St8auto_ptrINS3_6GetSetEENS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "j___ZN3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEEC2ERNS0_15ClassDescriptorEPKcS7_St8auto_ptrINS3_6GetSetEENS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0xf3e424() -> ! {
-    todo!("0xf3e424 j___ZN3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEEC2ERNS0_15ClassDescriptorEPKcS7_St8auto_ptrINS3_6GetSetEENS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0xf3e424(class: &str, name: &str, category: &str, attributes: u32, permissions: u32) -> ValuePropDesc {
+    // IDA 0xf3e424: picsymbolstub jump to `TypedPropertyDescriptor<MeshId>::TypedPropertyDescriptor(ClassDescriptor&,char const*,char const*,auto_ptr<GetSet>,Attributes,Permissions)` (disasm `LDR PC,[R12]`); class link + owned GetSet sink into the base init.
+    let _ = class;
+    ValuePropDesc { name: name.to_owned(), category: category.to_owned(), attributes, permissions }
 }
 
 // 0xf3e454 — j___ZN3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "j___ZN3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0xf3e454() -> ! {
-    todo!("0xf3e454 j___ZN3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0xf3e454(name: &str, category: &str, attributes: u32, permissions: u32) -> ValuePropDesc {
+    // IDA 0xf3e454: picsymbolstub jump to `PropDescriptor<Fire,Color3>::PropDescriptor` (disasm `LDR PC,[R12]`); same base init as 0xf3df04 with a `Color3` member pair.
+    ValuePropDesc { name: name.to_owned(), category: category.to_owned(), attributes, permissions }
 }
 
 // 0xf3e464 — j___ZN3RBX10Reflection14PropDescriptorINS_4FireEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "j___ZN3RBX10Reflection14PropDescriptorINS_4FireEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0xf3e464() -> ! {
-    todo!("0xf3e464 j___ZN3RBX10Reflection14PropDescriptorINS_4FireEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0xf3e464(name: &str, category: &str, attributes: u32, permissions: u32) -> ValuePropDesc {
+    // IDA 0xf3e464: picsymbolstub jump to `PropDescriptor<Fire,float>::PropDescriptor` (disasm `LDR PC,[R12]`); same base init as 0xf3df04 with a `float` member pair.
+    ValuePropDesc { name: name.to_owned(), category: category.to_owned(), attributes, permissions }
 }
 
 // 0xf3e474 — j___ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_4FireEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "j___ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_4FireEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0xf3e474() -> ! {
-    todo!("0xf3e474 j___ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_4FireEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0xf3e474(name: &str, category: &str, default: bool, attributes: u32, permissions: u32) -> BoundPropDesc<bool> {
+    // IDA 0xf3e474: picsymbolstub jump to `BoundProp<bool,Mutability(1)>::BoundProp<Fire>` (disasm `LDR PC,[R12]`); binds the `Fire` member data pointer plus default.
+    BoundPropDesc { base: ValuePropDesc { name: name.to_owned(), category: category.to_owned(), attributes, permissions }, default }
 }
 
 // 0xf3e504 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4FireES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -641,8 +754,9 @@ pub fn stub_0xf3e504() {
 
 // 0xf3e514 — j___ZN3RBX10Reflection14PropDescriptorINS_4FlagENS_10BrickColorEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "j___ZN3RBX10Reflection14PropDescriptorINS_4FlagENS_10BrickColorEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0xf3e514() -> ! {
-    todo!("0xf3e514 j___ZN3RBX10Reflection14PropDescriptorINS_4FlagENS_10BrickColorEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0xf3e514(name: &str, category: &str, attributes: u32, permissions: u32) -> ValuePropDesc {
+    // IDA 0xf3e514: picsymbolstub jump to `PropDescriptor<Flag,BrickColor>::PropDescriptor` (disasm `LDR PC,[R12]`); same base init as 0xf3df04 with a `BrickColor` member pair.
+    ValuePropDesc { name: name.to_owned(), category: category.to_owned(), attributes, permissions }
 }
 
 // 0xf3e5c4 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4FlagES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -653,8 +767,9 @@ pub fn stub_0xf3e5c4() {
 
 // 0xf3e5e4 — j___ZN3RBX10Reflection14PropDescriptorINS_9FlagStandENS_10BrickColorEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "j___ZN3RBX10Reflection14PropDescriptorINS_9FlagStandENS_10BrickColorEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0xf3e5e4() -> ! {
-    todo!("0xf3e5e4 j___ZN3RBX10Reflection14PropDescriptorINS_9FlagStandENS_10BrickColorEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0xf3e5e4(name: &str, category: &str, attributes: u32, permissions: u32) -> ValuePropDesc {
+    // IDA 0xf3e5e4: picsymbolstub jump to `PropDescriptor<FlagStand,BrickColor>::PropDescriptor` (disasm `LDR PC,[R12]`); same base init as 0xf3df04 with a `BrickColor` member pair.
+    ValuePropDesc { name: name.to_owned(), category: category.to_owned(), attributes, permissions }
 }
 
 // 0xf3e7a4 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_16FlagStandServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -671,8 +786,9 @@ pub fn stub_0xf3e7b4() {
 
 // 0xf3e844 — j___ZN3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "j___ZN3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0xf3e844() -> ! {
-    todo!("0xf3e844 j___ZN3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0xf3e844(name: &str, category: &str, attributes: u32, permissions: u32) -> EnumPropDesc {
+    // IDA 0xf3e844: picsymbolstub jump to `EnumPropDescriptor<Frame,Style>::EnumPropDescriptor` (disasm `LDR PC,[R12]`); same shape as 0xf3df24.
+    EnumPropDesc { base: ValuePropDesc { name: name.to_owned(), category: category.to_owned(), attributes, permissions }, enum_type: "RBX::Frame::Style" }
 }
 
 // 0xf3e854 — j___ZN3RBX10Reflection8EnumDescINS_5Frame5StyleEE7addPairES3_PKc
@@ -684,8 +800,9 @@ pub fn stub_0xf3e854(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &s
 
 // 0xf3e864 — j___ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "j___ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0xf3e864() -> ! {
-    todo!("0xf3e864 j___ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_0xf3e864(desc: &crate::enum_desc::EnumDesc, cell: &mut EnumIntCell, value: i32) -> bool {
+    // IDA 0xf3e864: picsymbolstub jump to `EnumPropDescriptor<Frame,Style>::setIntValue` (disasm `LDR PC,[R12]`); same shape as 0xf3e154.
+    enum_prop_set_int_value(desc, cell, value)
 }
 
 // 0xf3e874 — j___ZNK3RBX10Reflection8EnumDescINS_5Frame5StyleEE14convertToIndexES3_
@@ -698,14 +815,16 @@ pub fn stub_0xf3e874(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 
 // 0xf3ec44 — j___ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "j___ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0xf3ec44() -> ! {
-    todo!("0xf3ec44 j___ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0xf3ec44(name: &str, category: &str, attributes: u32, permissions: u32) -> EnumPropDesc {
+    // IDA 0xf3ec44: picsymbolstub jump to `EnumPropDescriptor<GameSettings,VideoQuality>::EnumPropDescriptor` (disasm `LDR PC,[R12]`); same shape as 0xf3df24.
+    EnumPropDesc { base: ValuePropDesc { name: name.to_owned(), category: category.to_owned(), attributes, permissions }, enum_type: "RBX::GameSettings::VideoQuality" }
 }
 
 // 0xf3ec54 — j___ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "j___ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0xf3ec54() -> ! {
-    todo!("0xf3ec54 j___ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0xf3ec54(name: &str, category: &str, attributes: u32, permissions: u32) -> EnumPropDesc {
+    // IDA 0xf3ec54: picsymbolstub jump to `EnumPropDescriptor<GameSettings,UploadSetting>::EnumPropDescriptor` (disasm `LDR PC,[R12]`); same shape as 0xf3df24.
+    EnumPropDesc { base: ValuePropDesc { name: name.to_owned(), category: category.to_owned(), attributes, permissions }, enum_type: "RBX::GameSettings::UploadSetting" }
 }
 
 // 0xf3ec64 — j___ZN3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEE7addPairES3_PKc
@@ -724,38 +843,44 @@ pub fn stub_0xf3ec74(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &s
 
 // 0xf3ec84 — j___ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_12GameSettingsEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "j___ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_12GameSettingsEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0xf3ec84() -> ! {
-    todo!("0xf3ec84 j___ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_12GameSettingsEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0xf3ec84(name: &str, category: &str, default: bool, attributes: u32, permissions: u32) -> BoundPropDesc<bool> {
+    // IDA 0xf3ec84: picsymbolstub jump to `BoundProp<bool,Mutability(1)>::BoundProp<GameSettings>` (disasm `LDR PC,[R12]`); same shape as 0xf3e474.
+    BoundPropDesc { base: ValuePropDesc { name: name.to_owned(), category: category.to_owned(), attributes, permissions }, default }
 }
 
 // 0xf3ec94 — j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_12GameSettingsEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_12GameSettingsEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0xf3ec94() -> ! {
-    todo!("0xf3ec94 j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_12GameSettingsEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0xf3ec94(name: &str, category: &str, default: f32, attributes: u32, permissions: u32) -> BoundPropDesc<f32> {
+    // IDA 0xf3ec94: picsymbolstub jump to `BoundProp<float,Mutability(1)>::BoundProp<GameSettings>` (disasm `LDR PC,[R12]`); same shape as 0xf3e474 with a `float` default.
+    BoundPropDesc { base: ValuePropDesc { name: name.to_owned(), category: category.to_owned(), attributes, permissions }, default }
 }
 
 // 0xf3eca4 — j___ZN3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EEC2INS_12GameSettingsEEEPKcS7_MT_iNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "j___ZN3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EEC2INS_12GameSettingsEEEPKcS7_MT_iNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0xf3eca4() -> ! {
-    todo!("0xf3eca4 j___ZN3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EEC2INS_12GameSettingsEEEPKcS7_MT_iNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0xf3eca4(name: &str, category: &str, default: i32, attributes: u32, permissions: u32) -> BoundPropDesc<i32> {
+    // IDA 0xf3eca4: picsymbolstub jump to `BoundProp<int,Mutability(1)>::BoundProp<GameSettings>` (disasm `LDR PC,[R12]`); same shape as 0xf3e474 with an `int` default.
+    BoundPropDesc { base: ValuePropDesc { name: name.to_owned(), category: category.to_owned(), attributes, permissions }, default }
 }
 
 // 0xf3ecb4 — j___ZN3RBX10Reflection9EventDescINS_12GameSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "j___ZN3RBX10Reflection9EventDescINS_12GameSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_0xf3ecb4() -> ! {
-    todo!("0xf3ecb4 j___ZN3RBX10Reflection9EventDescINS_12GameSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+pub fn stub_0xf3ecb4(name: &str, category: &str, permissions: u32, attributes: u32) -> EventDescMeta {
+    // IDA 0xf3ecb4: picsymbolstub jump to `EventDesc<GameSettings,void(bool)>::EventDesc` (disasm `LDR PC,[R12]`); base init + member-signal at +40 and one `(name, bool)` signature item (cf. 0x4a38b8).
+    EventDescMeta { base: ValuePropDesc { name: name.to_owned(), category: category.to_owned(), attributes, permissions }, signature: vec![(category.to_owned(), "bool")] }
 }
 
 // 0xf3ed04 — j___ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "j___ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0xf3ed04() -> ! {
-    todo!("0xf3ed04 j___ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_0xf3ed04(desc: &crate::enum_desc::EnumDesc, cell: &mut EnumIntCell, value: i32) -> bool {
+    // IDA 0xf3ed04: picsymbolstub jump to `EnumPropDescriptor<GameSettings,VideoQuality>::setIntValue` (disasm `LDR PC,[R12]`); same shape as 0xf3e154.
+    enum_prop_set_int_value(desc, cell, value)
 }
 
 // 0xf3ed14 — j___ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "j___ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0xf3ed14() -> ! {
-    todo!("0xf3ed14 j___ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_0xf3ed14(desc: &crate::enum_desc::EnumDesc, cell: &mut EnumIntCell, value: i32) -> bool {
+    // IDA 0xf3ed14: picsymbolstub jump to `EnumPropDescriptor<GameSettings,UploadSetting>::setIntValue` (disasm `LDR PC,[R12]`); same shape as 0xf3e154.
+    enum_prop_set_int_value(desc, cell, value)
 }
 
 // 0xf3ed24 — j___ZNK3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEE14convertToIndexES3_
