@@ -632,25 +632,25 @@ pub fn stub_95fe28(stream: &mut crate::bitstream::BitStream) -> (u32, u16) {
 // type: int __fastcall(int, RakNet::BitStream *this)
 #[doc(alias = "RBX::Network::IdSerializer::sendId(RakNet::BitStream &,RBX::Network::IdSerializer::Id const&)")]
 #[doc(alias = "__ZN3RBX7Network12IdSerializer6sendIdERN6RakNet9BitStreamERKNS1_2IdE")]
-pub fn stub_9607ac(ser: &mut crate::string_dictionary::IdSerializer, stream: &mut crate::bitstream::BitStream, id: Option<(usize, &str, u32)>) {
+pub fn stub_9607ac(ser: &mut crate::id_serializer::IdSerializer, stream: &mut crate::bitstream::BitStream, id: &crate::id_serializer::IdValue) {
  // IDA 0x9607ac: guid send, empty writes zeros.
- ser.serialize_id(stream, id)
+ ser.send_id(stream, id)
 }
 
 // 0x9607ec — __ZN3RBX7Network12IdSerializer11serializeIdERN6RakNet9BitStreamERKNS_4Guid4DataE
 // type: _DWORD __fastcall(RBX::Network::IdSerializer *__hidden this, RakNet::BitStream *, const RBX::Guid::Data *)
 #[doc(alias = "RBX::Network::IdSerializer::serializeId(RakNet::BitStream &,RBX::Guid::Data const&)")]
 #[doc(alias = "__ZN3RBX7Network12IdSerializer11serializeIdERN6RakNet9BitStreamERKNS_4Guid4DataE")]
-pub fn stub_9607ec(ser: &mut crate::string_dictionary::IdSerializer, stream: &mut crate::bitstream::BitStream, name_id: usize, text: &str, extra: u32) {
+pub fn stub_9607ec(ser: &mut crate::id_serializer::IdSerializer, stream: &mut crate::bitstream::BitStream, guid: &crate::id_serializer::GuidData) {
  // IDA 0x9607ec: unconditional guid send.
- ser.serialize_guid(stream, name_id, text, extra)
+ ser.serialize_guid(stream, guid)
 }
 
 // 0x960a20 — __ZN3RBX7Network12IdSerializer13deserializeIdERN6RakNet9BitStreamERNS_4Guid4DataE
 // type: _DWORD __fastcall(RBX::Network::IdSerializer *__hidden this, RakNet::BitStream *, RBX::Guid::Data *)
 #[doc(alias = "RBX::Network::IdSerializer::deserializeId(RakNet::BitStream &,RBX::Guid::Data &)")]
 #[doc(alias = "__ZN3RBX7Network12IdSerializer13deserializeIdERN6RakNet9BitStreamERNS_4Guid4DataE")]
-pub fn stub_960a20(ser: &mut crate::string_dictionary::IdSerializer, stream: &mut crate::bitstream::BitStream) -> (String, u32) {
+pub fn stub_960a20(ser: &mut crate::id_serializer::IdSerializer, stream: &mut crate::bitstream::BitStream) -> crate::id_serializer::GuidData {
  // IDA 0x960a20: token, name, extra bits.
  ser.deserialize_id(stream)
 }
@@ -659,7 +659,7 @@ pub fn stub_960a20(ser: &mut crate::string_dictionary::IdSerializer, stream: &mu
 // type: _DWORD __fastcall(RBX::Network::IdSerializer *__hidden this, RakNet::BitStream *, RBX::Guid::Data *)
 #[doc(alias = "RBX::Network::IdSerializer::deserializeIdWithoutDictionary(RakNet::BitStream &,RBX::Guid::Data &)")]
 #[doc(alias = "__ZN3RBX7Network12IdSerializer30deserializeIdWithoutDictionaryERN6RakNet9BitStreamERNS_4Guid4DataE")]
-pub fn stub_960c8c(ser: &crate::string_dictionary::IdSerializer, stream: &mut crate::bitstream::BitStream) -> (String, u32) {
+pub fn stub_960c8c(ser: &mut crate::id_serializer::IdSerializer, stream: &mut crate::bitstream::BitStream) -> crate::id_serializer::GuidData {
  // IDA 0x960c8c: raw name plus extra bits.
  ser.deserialize_id_without_dictionary(stream)
 }
@@ -677,32 +677,36 @@ pub fn stub_965f98(dict: &crate::string_dictionary::NameSenderDictionary, stream
 // type: void __fastcall(int, unsigned __int8 **)
 #[doc(alias = "RBX::Network::Client::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")]
 #[doc(alias = "__ZN3RBX7Network6Client25OnFailedConnectionAttemptEPN6RakNet6PacketENS2_33PI2_FailedConnectionAttemptReasonE")]
-pub fn stub_968fb0() -> ! {
-    todo!("0x968fb0 RBX::Network::Client::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")
+pub fn stub_968fb0(code: u8, fire: &mut dyn FnMut(u8, String)) {
+ // IDA 0x968fb0: log the failure, fire (address, code, message).
+ crate::client::on_failed_connection_attempt(code, fire)
 }
 
 // 0x9694b4 — __ZThn92_N3RBX7Network6Client25OnFailedConnectionAttemptEPN6RakNet6PacketENS2_33PI2_FailedConnectionAttemptReasonE
 // type: void __fastcall(int, unsigned __int8 **)
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")]
 #[doc(alias = "__ZThn92_N3RBX7Network6Client25OnFailedConnectionAttemptEPN6RakNet6PacketENS2_33PI2_FailedConnectionAttemptReasonE")]
-pub fn stub_9694b4() -> ! {
-    todo!("0x9694b4 non-virtual thunk toRBX::Network::Client::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")
+pub fn stub_9694b4(code: u8, fire: &mut dyn FnMut(u8, String)) {
+ // IDA 0x9694b4: non-virtual thunk, same behavior.
+ crate::client::on_failed_connection_attempt(code, fire)
 }
 
 // 0x969704 — __ZN3RBX7Network6Client9OnReceiveEPN6RakNet6PacketE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Network::Client::OnReceive(RakNet::Packet *)")]
 #[doc(alias = "__ZN3RBX7Network6Client9OnReceiveEPN6RakNet6PacketE")]
-pub fn stub_969704() -> ! {
-    todo!("0x969704 RBX::Network::Client::OnReceive(RakNet::Packet *)")
+pub fn stub_969704(kind: u8, code: u8, disconnect: &mut dyn FnMut(), invalid_password: &mut dyn FnMut(u8), accepted: &mut dyn FnMut()) -> u32 {
+ // IDA 0x969704: dispatch 21/22, 24, 16; always returns 1.
+ crate::client::client_on_receive(kind, code, disconnect, invalid_password, accepted)
 }
 
 // 0x96c474 — __ZThn92_N3RBX7Network6Client9OnReceiveEPN6RakNet6PacketE
 // type: int __fastcall(int, int)
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::OnReceive(RakNet::Packet *)")]
 #[doc(alias = "__ZThn92_N3RBX7Network6Client9OnReceiveEPN6RakNet6PacketE")]
-pub fn stub_96c474() -> ! {
-    todo!("0x96c474 non-virtual thunk toRBX::Network::Client::OnReceive(RakNet::Packet *)")
+pub fn stub_96c474(kind: u8, code: u8, disconnect: &mut dyn FnMut(), invalid_password: &mut dyn FnMut(u8), accepted: &mut dyn FnMut()) -> u32 {
+ // IDA 0x96c474: non-virtual thunk, same dispatch.
+ crate::client::client_on_receive(kind, code, disconnect, invalid_password, accepted)
 }
 
 // 0x96d6d0 — __ZNK3RBX14FactoryProductINS_7Network6ClientENS1_4PeerELZNS1_7sClientEENS_8InstanceEE12getClassNameEv

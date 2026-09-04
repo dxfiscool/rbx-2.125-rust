@@ -568,78 +568,78 @@ pub fn stub_960234(stream: &mut crate::bitstream::BitStream) -> u32 {
 // 0x96025c — __ZN3RBX7Network11deserializeINS_9ContentIdEEEvRNS_10Reflection8PropertyERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::deserialize<RBX::ContentId>(RBX::Reflection::Property &,RakNet::BitStream &)")]
 pub fn stub_96025c(stream: &mut crate::bitstream::BitStream) -> String {
- // IDA 0x96025c: >>ContentId, setter engine-side.
- crate::custom_serializer::read_content_id(stream)
+ // IDA 0x96025c: >>string, setter engine-side.
+ crate::id_serializer::deserialize_content_id(stream)
 }
 
 // 0x960380 — __ZN3RBX7Network25deserializeStringPropertyERNS_10Reflection8PropertyERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::deserializeStringProperty(RBX::Reflection::Property &,RakNet::BitStream &)")]
 pub fn stub_960380(stream: &mut crate::bitstream::BitStream) -> String {
  // IDA 0x960380: string property, setter engine-side.
- crate::custom_serializer::deserialize_string_property(stream)
+ crate::id_serializer::deserialize_string_property(stream)
 }
 
 // 0x960634 — __ZN3RBX7Network12IdSerializer14trySerializeIdERN6RakNet9BitStreamEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::IdSerializer::trySerializeId(RakNet::BitStream &,RBX::Instance const*)")]
-pub fn stub_960634(ser: &crate::string_dictionary::IdSerializer, stream: &mut crate::bitstream::BitStream, id: Option<(usize, &str, u32)>) -> bool {
+pub fn stub_960634(ser: &mut crate::id_serializer::IdSerializer, stream: &mut crate::bitstream::BitStream, instance: Option<crate::id_serializer::GuidData>) -> bool {
  // IDA 0x960634: registry + known-name-only send.
- ser.try_serialize_id(stream, id)
+ ser.try_serialize_id(stream, instance)
 }
 
 // 0x96068c — __ZN3RBX7Network12IdSerializer11serializeIdERN6RakNet9BitStreamEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::IdSerializer::serializeId(RakNet::BitStream &,RBX::Instance const*)")]
-pub fn stub_96068c(ser: &mut crate::string_dictionary::IdSerializer, stream: &mut crate::bitstream::BitStream, id: Option<(usize, &str, u32)>) {
+pub fn stub_96068c(ser: &mut crate::id_serializer::IdSerializer, stream: &mut crate::bitstream::BitStream, instance: Option<crate::id_serializer::GuidData>) {
  // IDA 0x96068c: registry + unconditional send.
- ser.serialize_id(stream, id)
+ ser.serialize_id(stream, instance)
 }
 
 // 0x9607ac — __ZN3RBX7Network12IdSerializer6sendIdERN6RakNet9BitStreamERKNS1_2IdE
 #[doc(alias = "RBX::Network::IdSerializer::sendId(RakNet::BitStream &,RBX::Network::IdSerializer::Id const&)")]
-pub fn stub_9607ac(ser: &mut crate::string_dictionary::IdSerializer, stream: &mut crate::bitstream::BitStream, id: Option<(usize, &str, u32)>) {
+pub fn stub_9607ac(ser: &mut crate::id_serializer::IdSerializer, stream: &mut crate::bitstream::BitStream, id: &crate::id_serializer::IdValue) {
  // IDA 0x9607ac: guid send, empty writes zeros.
- ser.serialize_id(stream, id)
+ ser.send_id(stream, id)
 }
 
 // 0x9607ec — __ZN3RBX7Network12IdSerializer11serializeIdERN6RakNet9BitStreamERKNS_4Guid4DataE
 #[doc(alias = "RBX::Network::IdSerializer::serializeId(RakNet::BitStream &,RBX::Guid::Data const&)")]
-pub fn stub_9607ec(ser: &mut crate::string_dictionary::IdSerializer, stream: &mut crate::bitstream::BitStream, name_id: usize, text: &str, extra: u32) {
+pub fn stub_9607ec(ser: &mut crate::id_serializer::IdSerializer, stream: &mut crate::bitstream::BitStream, guid: &crate::id_serializer::GuidData) {
  // IDA 0x9607ec: unconditional guid send.
- ser.serialize_guid(stream, name_id, text, extra)
+ ser.serialize_guid(stream, guid)
 }
 
 // 0x960814 — __ZN3RBX7Network12IdSerializer28serializeIdWithoutDictionaryERN6RakNet9BitStreamEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::IdSerializer::serializeIdWithoutDictionary(RakNet::BitStream &,RBX::Instance const*)")]
-pub fn stub_960814(ser: &crate::string_dictionary::IdSerializer, stream: &mut crate::bitstream::BitStream, name: Option<&str>, extra: u32) {
+pub fn stub_960814(ser: &mut crate::id_serializer::IdSerializer, stream: &mut crate::bitstream::BitStream, instance: Option<crate::id_serializer::GuidData>) {
  // IDA 0x960814: raw name plus extra bits.
- ser.serialize_id_without_dictionary(stream, name.map(|n| (n, extra)))
+ ser.serialize_id_without_dictionary(stream, instance)
 }
 
 // 0x960a20 — __ZN3RBX7Network12IdSerializer13deserializeIdERN6RakNet9BitStreamERNS_4Guid4DataE
 #[doc(alias = "RBX::Network::IdSerializer::deserializeId(RakNet::BitStream &,RBX::Guid::Data &)")]
-pub fn stub_960a20(ser: &mut crate::string_dictionary::IdSerializer, stream: &mut crate::bitstream::BitStream) -> (String, u32) {
+pub fn stub_960a20(ser: &mut crate::id_serializer::IdSerializer, stream: &mut crate::bitstream::BitStream) -> crate::id_serializer::GuidData {
  // IDA 0x960a20: token, name, extra bits.
  ser.deserialize_id(stream)
 }
 
 // 0x960c8c — __ZN3RBX7Network12IdSerializer30deserializeIdWithoutDictionaryERN6RakNet9BitStreamERNS_4Guid4DataE
 #[doc(alias = "RBX::Network::IdSerializer::deserializeIdWithoutDictionary(RakNet::BitStream &,RBX::Guid::Data &)")]
-pub fn stub_960c8c(ser: &crate::string_dictionary::IdSerializer, stream: &mut crate::bitstream::BitStream) -> (String, u32) {
+pub fn stub_960c8c(ser: &mut crate::id_serializer::IdSerializer, stream: &mut crate::bitstream::BitStream) -> crate::id_serializer::GuidData {
  // IDA 0x960c8c: raw name plus extra bits.
  ser.deserialize_id_without_dictionary(stream)
 }
 
 // 0x961094 — __ZN3RBX7Network12IdSerializer20serializeInstanceRefEPKNS_8InstanceERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::IdSerializer::serializeInstanceRef(RBX::Instance const*,RakNet::BitStream &)")]
-pub fn stub_961094(ser: &mut crate::string_dictionary::IdSerializer, stream: &mut crate::bitstream::BitStream, id: Option<(usize, &str, u32)>) {
- // IDA 0x961094: instance ref through serialize_id.
- ser.serialize_id(stream, id)
+pub fn stub_961094(ser: &mut crate::id_serializer::IdSerializer, stream: &mut crate::bitstream::BitStream, instance: Option<crate::id_serializer::GuidData>) {
+ // IDA 0x961094: identical body to serializeId.
+ ser.serialize_id(stream, instance)
 }
 
 // 0x9610e0 — __ZN3RBX7Network12IdSerializer22deserializeInstanceRefERN6RakNet9BitStreamERPNS_8InstanceERNS_4Guid4DataE
 #[doc(alias = "RBX::Network::IdSerializer::deserializeInstanceRef(RakNet::BitStream &,RBX::Instance *&,RBX::Guid::Data &)")]
-pub fn stub_9610e0(ser: &mut crate::string_dictionary::IdSerializer, stream: &mut crate::bitstream::BitStream, resolve: &mut dyn FnMut(String, u32) -> Option<u32>) -> Option<u32> {
+pub fn stub_9610e0(ser: &mut crate::id_serializer::IdSerializer, stream: &mut crate::bitstream::BitStream, lookup: &std::collections::HashMap<crate::id_serializer::GuidData, u32>) -> (Option<u32>, crate::id_serializer::GuidData) {
  // IDA 0x9610e0: id plus registry lookup.
- ser.deserialize_instance_ref(stream, resolve)
+ ser.deserialize_instance_ref(stream, lookup)
 }
 
 // 0x962a24 — __ZN6RakNet9BitStream5WriteIiEEvRKT_
@@ -749,32 +749,37 @@ pub fn stub_965f98(dict: &crate::string_dictionary::NameSenderDictionary, stream
 
 // 0x968fb0 — __ZN3RBX7Network6Client25OnFailedConnectionAttemptEPN6RakNet6PacketENS2_33PI2_FailedConnectionAttemptReasonE
 #[doc(alias = "RBX::Network::Client::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")]
-pub fn stub_968fb0() -> ! {
-    todo!("0x968fb0 RBX::Network::Client::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")
+pub fn stub_968fb0(code: u8, fire: &mut dyn FnMut(u8, String)) {
+ // IDA 0x968fb0: log the failure, fire (address, code, message).
+ crate::client::on_failed_connection_attempt(code, fire)
 }
 
 // 0x9694b4 — __ZThn92_N3RBX7Network6Client25OnFailedConnectionAttemptEPN6RakNet6PacketENS2_33PI2_FailedConnectionAttemptReasonE
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")]
-pub fn stub_9694b4() -> ! {
-    todo!("0x9694b4 non-virtual thunk toRBX::Network::Client::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")
+pub fn stub_9694b4(code: u8, fire: &mut dyn FnMut(u8, String)) {
+ // IDA 0x9694b4: non-virtual thunk, same behavior.
+ crate::client::on_failed_connection_attempt(code, fire)
 }
 
 // 0x969704 — __ZN3RBX7Network6Client9OnReceiveEPN6RakNet6PacketE
 #[doc(alias = "RBX::Network::Client::OnReceive(RakNet::Packet *)")]
-pub fn stub_969704() -> ! {
-    todo!("0x969704 RBX::Network::Client::OnReceive(RakNet::Packet *)")
+pub fn stub_969704(kind: u8, code: u8, disconnect: &mut dyn FnMut(), invalid_password: &mut dyn FnMut(u8), accepted: &mut dyn FnMut()) -> u32 {
+ // IDA 0x969704: dispatch 21/22, 24, 16; always returns 1.
+ crate::client::client_on_receive(kind, code, disconnect, invalid_password, accepted)
 }
 
 // 0x96c474 — __ZThn92_N3RBX7Network6Client9OnReceiveEPN6RakNet6PacketE
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::OnReceive(RakNet::Packet *)")]
-pub fn stub_96c474() -> ! {
-    todo!("0x96c474 non-virtual thunk toRBX::Network::Client::OnReceive(RakNet::Packet *)")
+pub fn stub_96c474(kind: u8, code: u8, disconnect: &mut dyn FnMut(), invalid_password: &mut dyn FnMut(u8), accepted: &mut dyn FnMut()) -> u32 {
+ // IDA 0x96c474: non-virtual thunk, same dispatch.
+ crate::client::client_on_receive(kind, code, disconnect, invalid_password, accepted)
 }
 
 // 0x96d260 — __ZN6RakNet16PluginInterface29OnReceiveEPNS_6PacketE
 #[doc(alias = "RakNet::PluginInterface2::OnReceive(RakNet::Packet *)")]
-pub fn stub_96d260() -> ! {
-    todo!("0x96d260 RakNet::PluginInterface2::OnReceive(RakNet::Packet *)")
+pub fn stub_96d260() -> u32 {
+ // IDA 0x96d260: base continues processing.
+ crate::client::plugin_on_receive()
 }
 
 // 0x97afc8 — __ZN3RBX7Network16ClientReplicatorC1EN6RakNet13SystemAddressEPNS0_6ClientES3_PNS_15NetworkSettingsE
