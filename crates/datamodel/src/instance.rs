@@ -8,7 +8,7 @@ use rbx_core::SharedPtr;
 use crate::data_model::DataModel;
 use rbx_core::WeakPtr;
 use rbx_core::shared_ptr::{ControlBlockP, ControlBlockPd, CreatableInstanceDeleter, shared_ptr_from_raw};
-use crate::generated_05::{EventDescPayload, FunctorOp, GenericSlotWrapper, Instance, PropertyDescriptor, SLOT_EXCEPTION_HANDLER, SignatureItem, SlotNode, Variant, instance_is_a};
+use crate::generated_05::{EventDescPayload, FunctorOp, GenericSlotWrapper, Instance, PropertyDescriptor, SLOT_EXCEPTION_HANDLER, SaveFilter, SignatureItem, SlotNode, Variant, instance_is_a};
 use rbx_core::signal::Signal;
 use parking_lot::Mutex;
 use std::any::Any;
@@ -4133,11 +4133,76 @@ pub fn stub_0x25d228(block: *const ControlBlockPd<PointLight, CreatableInstanceD
     unsafe { (*block).get_untyped_deleter() }
 }
 
+
+/// Rust model of `RBX::Reflection::DescribedBase` (IDA `0x26c350`): the common
+/// reflection base behind cross-type `shared_ptr` assignment. Canonical home
+/// is the reflection crate; only the assign target is modeled here.
+#[derive(Default)]
+pub struct DescribedBase {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::FWBase` (IDA `0x5e60b8`): same opaque shape; assign
+/// target for `FWPartInstance` shared pointers.
+#[derive(Default)]
+pub struct FWBase {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::OverlayDataModel` (IDA `0x3a2ec`): same opaque shape;
+/// move-assign source for `DataModel` shared pointers.
+#[derive(Default)]
+pub struct OverlayDataModel {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::FWPartInstance` (IDA `0x5e60b8`): same opaque shape.
+#[derive(Default)]
+pub struct FWPartInstance {
+    _opaque: (),
+}
+
+/// `rbx::placement_any<Region3>` enum payload (IDA `0x4395ac` ff.): the
+/// Region3 holder union is unmodeled, so each enum instantiation stores its
+/// discriminant word here.
+#[derive(Default)]
+pub struct EnumSlot {
+    pub word: i32,
+}
+
+/// Marker newtypes for the `placement_any<Region3>` enum instantiations below
+/// (IDA `0x439c24` ff.): each carries the 4-byte discriminant stored into
+/// `EnumSlot`. Canonical enum definitions land with the reflection crate.
+#[derive(Clone, Copy, Default)]
+pub struct GearTypeTag(pub i32);
+#[derive(Clone, Copy, Default)]
+pub struct CreatorTypeTag(pub i32);
+#[derive(Clone, Copy, Default)]
+pub struct ConcurrencyModelTag(pub i32);
+#[derive(Clone, Copy, Default)]
+pub struct PyramidNumSidesTag(pub i32);
+#[derive(Clone, Copy, Default)]
+pub struct PrismNumSidesTag(pub i32);
+#[derive(Clone, Copy, Default)]
+pub struct VisualTrussStyleTag(pub i32);
+#[derive(Clone, Copy, Default)]
+pub struct LegacyPartTypeTag(pub i32);
+#[derive(Clone, Copy, Default)]
+pub struct LODTag(pub i32);
+
 // 0x26c350 — __ZN5boost10shared_ptrIN3RBX10Reflection13DescribedBaseEEaSINS1_8InstanceEEERS4_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Reflection::DescribedBase>& rbx_core::SharedPtr<RBX::Reflection::DescribedBase>::operator=<RBX::Instance>(rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: boost::shared_ptr<RBX::Reflection::DescribedBase>& boost::shared_ptr<RBX::Reflection::DescribedBase>::operator=<RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_0x26c350() -> ! {
-    todo!("0x26c350 boost::shared_ptr<RBX::Reflection::DescribedBase>& boost::shared_ptr<RBX::Reflection::DescribedBase>::operator=<RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_0x26c350(dst: &mut SharedPtr<DescribedBase>, src: &SharedPtr<DescribedBase>) -> SharedPtr<DescribedBase> {
+    // IDA 0x26c350: `shared_ptr<DescribedBase>::operator=` from `shared_ptr<RBX::Instance>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::Instance*` →
+    // `DescribedBase*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x26c38c — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrIN5boost10shared_ptrINS_10Reflection13DescribedBaseEEEEEbP9lua_StatejRT_
@@ -4547,8 +4612,16 @@ pub fn stub_0x28f0b4() -> SharedPtr<RuntimeScriptService> {
 // 0x28f164 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_20RuntimeScriptServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::RuntimeScriptService>(rbx_core::SharedPtr<RBX::RuntimeScriptService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::RuntimeScriptService>(boost::shared_ptr<RBX::RuntimeScriptService> const&)
-pub fn stub_0x28f164() -> ! {
-    todo!("0x28f164 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::RuntimeScriptService>(boost::shared_ptr<RBX::RuntimeScriptService> const&)")
+pub fn stub_0x28f164(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x28f164: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::RuntimeScriptService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::RuntimeScriptService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x28f62c — __ZN5boost10shared_ptrIN3RBX20RuntimeScriptServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -4900,8 +4973,16 @@ pub fn stub_0x2a6674(content: ContentId) -> SharedPtr<StarterScript> {
 // 0x2a6728 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13ScriptContextEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::ScriptContext>(rbx_core::SharedPtr<RBX::ScriptContext> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ScriptContext>(boost::shared_ptr<RBX::ScriptContext> const&)
-pub fn stub_0x2a6728() -> ! {
-    todo!("0x2a6728 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ScriptContext>(boost::shared_ptr<RBX::ScriptContext> const&)")
+pub fn stub_0x2a6728(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x2a6728: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::ScriptContext>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::ScriptContext*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x2a675c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10CoreScriptENS_9ContentIdEEEN5boost10shared_ptrIT_EET0_
@@ -5462,8 +5543,16 @@ pub fn stub_0x2b0e50() -> SharedPtr<StatsService> {
 // 0x2b0f00 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_5Stats12StatsServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::Stats::StatsService>(rbx_core::SharedPtr<RBX::Stats::StatsService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::Stats::StatsService>(boost::shared_ptr<RBX::Stats::StatsService> const&)
-pub fn stub_0x2b0f00() -> ! {
-    todo!("0x2b0f00 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::Stats::StatsService>(boost::shared_ptr<RBX::Stats::StatsService> const&)")
+pub fn stub_0x2b0f00(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x2b0f00: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::Stats::StatsService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::Stats::StatsService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x2b1220 — __ZN5boost10shared_ptrIN3RBX5Stats12StatsServiceEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -5501,8 +5590,16 @@ pub fn stub_0x2b1828() -> SharedPtr<ContentProvider> {
 // 0x2b18d8 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_15ContentProviderEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::ContentProvider>(rbx_core::SharedPtr<RBX::ContentProvider> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ContentProvider>(boost::shared_ptr<RBX::ContentProvider> const&)
-pub fn stub_0x2b18d8() -> ! {
-    todo!("0x2b18d8 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ContentProvider>(boost::shared_ptr<RBX::ContentProvider> const&)")
+pub fn stub_0x2b18d8(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x2b18d8: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::ContentProvider>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::ContentProvider*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x2b1920 — __ZN5boost6detail12shared_countC2IPN3RBX15ContentProviderENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
@@ -8589,8 +8686,16 @@ pub fn stub_0x37677c() -> SharedPtr<StockSound> {
 // 0x376a90 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSI21SoundServiceStatsItemEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<SoundServiceStatsItem>(rbx_core::SharedPtr<SoundServiceStatsItem> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<SoundServiceStatsItem>(boost::shared_ptr<SoundServiceStatsItem> const&)
-pub fn stub_0x376a90() -> ! {
-    todo!("0x376a90 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<SoundServiceStatsItem>(boost::shared_ptr<SoundServiceStatsItem> const&)")
+pub fn stub_0x376a90(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x376a90: `shared_ptr<Instance>::operator=` from `shared_ptr<SoundServiceStatsItem>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `SoundServiceStatsItem*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x377154 — __ZN3RBX15ServiceProvider4findINS_10Soundscape12SoundServiceEEEPT_PKNS_8InstanceE
@@ -12526,8 +12631,16 @@ pub fn stub_0x3d746c(
 // 0x3d7558 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSI22ChangeHistoryStatsItemEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<ChangeHistoryStatsItem>(rbx_core::SharedPtr<ChangeHistoryStatsItem> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<ChangeHistoryStatsItem>(boost::shared_ptr<ChangeHistoryStatsItem> const&)
-pub fn stub_0x3d7558() -> ! {
-    todo!("0x3d7558 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<ChangeHistoryStatsItem>(boost::shared_ptr<ChangeHistoryStatsItem> const&)")
+pub fn stub_0x3d7558(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x3d7558: `shared_ptr<Instance>::operator=` from `shared_ptr<ChangeHistoryStatsItem>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `ChangeHistoryStatsItem*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x3d76f0 — __ZN3RBX20ChangeHistoryService8Waypoint7getItemEN5boost10shared_ptrINS_8InstanceEEE
@@ -14434,8 +14547,16 @@ pub fn stub_0x3f17f8(_desc: *mut ClickRemoteEventDesc) {
 // 0x3f181c — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_12PartInstanceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::PartInstance>(rbx_core::SharedPtr<RBX::PartInstance> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::PartInstance>(boost::shared_ptr<RBX::PartInstance> const&)
-pub fn stub_0x3f181c() -> ! {
-    todo!("0x3f181c boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::PartInstance>(boost::shared_ptr<RBX::PartInstance> const&)")
+pub fn stub_0x3f181c(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x3f181c: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::PartInstance>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::PartInstance*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x3f1850 — __ZN3RBX10Reflection19RemoteEventDescImplILi1ENS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE21fireAndReplicateEventEPS2_S6_
@@ -15676,8 +15797,16 @@ pub fn stub_0x3ffbf8() -> SharedPtr<FilteredSelection> {
 // 0x3ffca8 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_17FilteredSelectionIS2_EEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::FilteredSelection<RBX::Instance>>(rbx_core::SharedPtr<RBX::FilteredSelection<RBX::Instance>> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FilteredSelection<RBX::Instance>>(boost::shared_ptr<RBX::FilteredSelection<RBX::Instance>> const&)
-pub fn stub_0x3ffca8() -> ! {
-    todo!("0x3ffca8 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FilteredSelection<RBX::Instance>>(boost::shared_ptr<RBX::FilteredSelection<RBX::Instance>> const&)")
+pub fn stub_0x3ffca8(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x3ffca8: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::FilteredSelection<RBX::Instance>>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::FilteredSelection<RBX::Instance>*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x3ffcdc — __ZN3RBX17FilteredSelectionINS_8InstanceEEC2Ev
@@ -16008,8 +16137,16 @@ pub fn stub_0x400bcc() -> SharedPtr<FilteredSelection> {
 // 0x400c7c — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_17FilteredSelectionINS1_13ModelInstanceEEEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::FilteredSelection<RBX::ModelInstance>>(rbx_core::SharedPtr<RBX::FilteredSelection<RBX::ModelInstance>> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FilteredSelection<RBX::ModelInstance>>(boost::shared_ptr<RBX::FilteredSelection<RBX::ModelInstance>> const&)
-pub fn stub_0x400c7c() -> ! {
-    todo!("0x400c7c boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FilteredSelection<RBX::ModelInstance>>(boost::shared_ptr<RBX::FilteredSelection<RBX::ModelInstance>> const&)")
+pub fn stub_0x400c7c(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x400c7c: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::FilteredSelection<RBX::ModelInstance>>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::FilteredSelection<RBX::ModelInstance>*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x400cb0 — __ZN3RBX17FilteredSelectionINS_13ModelInstanceEEC2Ev
@@ -16405,8 +16542,16 @@ pub fn stub_0x402214() -> SharedPtr<FilteredSelection> {
 // 0x4022c4 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_17FilteredSelectionINS1_10PVInstanceEEEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::FilteredSelection<RBX::PVInstance>>(rbx_core::SharedPtr<RBX::FilteredSelection<RBX::PVInstance>> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FilteredSelection<RBX::PVInstance>>(boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>> const&)
-pub fn stub_0x4022c4() -> ! {
-    todo!("0x4022c4 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FilteredSelection<RBX::PVInstance>>(boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>> const&)")
+pub fn stub_0x4022c4(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x4022c4: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::FilteredSelection<RBX::PVInstance>>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::FilteredSelection<RBX::PVInstance>*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x4022f8 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_17FilteredSelectionINS_10PVInstanceEEEEEvv
@@ -19977,8 +20122,11 @@ pub fn stub_0x43940c(desc: &EnumDesc, value: i32) -> Option<&'static str> {
 // 0x4395ac — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_8Instance10SaveFilterEEERS3_RKT_
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::Instance::SaveFilter>(RBX::Instance::SaveFilter const&)")]
 // was: rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::Instance::SaveFilter>(RBX::Instance::SaveFilter const&)
-pub fn stub_0x4395ac() -> ! {
-    todo!("0x4395ac rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::Instance::SaveFilter>(RBX::Instance::SaveFilter const&)")
+pub fn stub_0x4395ac(dst: &mut EnumSlot, src: SaveFilter) {
+    // IDA 0x4395ac: `placement_any<Region3>::operator=(RBX::Instance::SaveFilter)` — destroys
+    // any mismatched holder, then copy-constructs the enum payload in place.
+    // The Region3 holder union is unmodeled: the discriminant word is kept.
+    dst.word = src.0 as i32;
 }
 
 // 0x4395fc — __ZN3rbx14implementation12typed_holderIN3RBX8Instance10SaveFilterEE9singletonEv
@@ -20046,8 +20194,11 @@ pub fn stub_0x439a84(desc: &EnumDesc, value: i32) -> Option<&'static str> {
 // 0x439c24 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel8GearTypeEEERS3_RKT_
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DataModel::GearType>(RBX::DataModel::GearType const&)")]
 // was: rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DataModel::GearType>(RBX::DataModel::GearType const&)
-pub fn stub_0x439c24() -> ! {
-    todo!("0x439c24 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DataModel::GearType>(RBX::DataModel::GearType const&)")
+pub fn stub_0x439c24(dst: &mut EnumSlot, src: GearTypeTag) {
+    // IDA 0x439c24: `placement_any<Region3>::operator=(RBX::DataModel::GearType)` — destroys
+    // any mismatched holder, then copy-constructs the enum payload in place.
+    // The Region3 holder union is unmodeled: the discriminant word is kept.
+    dst.word = src.0;
 }
 
 // 0x439c74 — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel8GearTypeEE9singletonEv
@@ -20232,8 +20383,11 @@ pub fn stub_0x43adec(desc: &EnumDesc, value: i32) -> Option<&'static str> {
 // 0x43af8c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel11CreatorTypeEEERS3_RKT_
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DataModel::CreatorType>(RBX::DataModel::CreatorType const&)")]
 // was: rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DataModel::CreatorType>(RBX::DataModel::CreatorType const&)
-pub fn stub_0x43af8c() -> ! {
-    todo!("0x43af8c rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DataModel::CreatorType>(RBX::DataModel::CreatorType const&)")
+pub fn stub_0x43af8c(dst: &mut EnumSlot, src: CreatorTypeTag) {
+    // IDA 0x43af8c: `placement_any<Region3>::operator=(RBX::DataModel::CreatorType)` — destroys
+    // any mismatched holder, then copy-constructs the enum payload in place.
+    // The Region3 holder union is unmodeled: the discriminant word is kept.
+    dst.word = src.0;
 }
 
 // 0x43afdc — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel11CreatorTypeEE9singletonEv
@@ -20738,8 +20892,16 @@ pub fn stub_0x448914() -> SharedPtr<AssetService> {
 // 0x4489c4 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_12AssetServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::AssetService>(rbx_core::SharedPtr<RBX::AssetService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::AssetService>(boost::shared_ptr<RBX::AssetService> const&)
-pub fn stub_0x4489c4() -> ! {
-    todo!("0x4489c4 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::AssetService>(boost::shared_ptr<RBX::AssetService> const&)")
+pub fn stub_0x4489c4(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x4489c4: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::AssetService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::AssetService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x448c00 — __ZN5boost10shared_ptrIN3RBX12AssetServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -20825,8 +20987,16 @@ pub fn stub_0x448fa4() -> SharedPtr<ScriptService> {
 // 0x449148 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13ScriptServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::ScriptService>(rbx_core::SharedPtr<RBX::ScriptService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ScriptService>(boost::shared_ptr<RBX::ScriptService> const&)
-pub fn stub_0x449148() -> ! {
-    todo!("0x449148 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ScriptService>(boost::shared_ptr<RBX::ScriptService> const&)")
+pub fn stub_0x449148(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x449148: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::ScriptService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::ScriptService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x449b10 — __ZN5boost10shared_ptrIN3RBX13ScriptServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -20912,8 +21082,16 @@ pub fn stub_0x449f84() -> SharedPtr<ContextActionService> {
 // 0x44a034 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_20ContextActionServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::ContextActionService>(rbx_core::SharedPtr<RBX::ContextActionService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ContextActionService>(boost::shared_ptr<RBX::ContextActionService> const&)
-pub fn stub_0x44a034() -> ! {
-    todo!("0x44a034 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ContextActionService>(boost::shared_ptr<RBX::ContextActionService> const&)")
+pub fn stub_0x44a034(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x44a034: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::ContextActionService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::ContextActionService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x44a270 — __ZN5boost10shared_ptrIN3RBX20ContextActionServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -21026,8 +21204,16 @@ pub fn stub_0x44a744() -> SharedPtr<FWService> {
 // 0x44a7f4 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_9FWServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::FWService>(rbx_core::SharedPtr<RBX::FWService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FWService>(boost::shared_ptr<RBX::FWService> const&)
-pub fn stub_0x44a7f4() -> ! {
-    todo!("0x44a7f4 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FWService>(boost::shared_ptr<RBX::FWService> const&)")
+pub fn stub_0x44a7f4(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x44a7f4: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::FWService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::FWService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x44a828 — __ZN5boost10shared_ptrIN3RBX9FWServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -21125,8 +21311,16 @@ pub fn stub_0x44ad94() -> SharedPtr<PersonalServerService> {
 // 0x44ae44 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_21PersonalServerServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::PersonalServerService>(rbx_core::SharedPtr<RBX::PersonalServerService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::PersonalServerService>(boost::shared_ptr<RBX::PersonalServerService> const&)
-pub fn stub_0x44ae44() -> ! {
-    todo!("0x44ae44 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::PersonalServerService>(boost::shared_ptr<RBX::PersonalServerService> const&)")
+pub fn stub_0x44ae44(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x44ae44: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::PersonalServerService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::PersonalServerService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x44b080 — __ZN5boost10shared_ptrIN3RBX21PersonalServerServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -21213,8 +21407,16 @@ pub fn stub_0x44b594() -> SharedPtr<TeleportService> {
 // 0x44b644 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_15TeleportServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::TeleportService>(rbx_core::SharedPtr<RBX::TeleportService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::TeleportService>(boost::shared_ptr<RBX::TeleportService> const&)
-pub fn stub_0x44b644() -> ! {
-    todo!("0x44b644 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::TeleportService>(boost::shared_ptr<RBX::TeleportService> const&)")
+pub fn stub_0x44b644(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x44b644: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::TeleportService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::TeleportService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x44b880 — __ZN5boost10shared_ptrIN3RBX15TeleportServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -21300,8 +21502,16 @@ pub fn stub_0x44bd94() -> SharedPtr<CookiesService> {
 // 0x44be44 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_14CookiesServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::CookiesService>(rbx_core::SharedPtr<RBX::CookiesService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::CookiesService>(boost::shared_ptr<RBX::CookiesService> const&)
-pub fn stub_0x44be44() -> ! {
-    todo!("0x44be44 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::CookiesService>(boost::shared_ptr<RBX::CookiesService> const&)")
+pub fn stub_0x44be44(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x44be44: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::CookiesService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::CookiesService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x44c080 — __ZN5boost10shared_ptrIN3RBX14CookiesServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -21400,8 +21610,16 @@ pub fn stub_0x44c864() -> SharedPtr<DebrisService> {
 // 0x44c914 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13DebrisServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::DebrisService>(rbx_core::SharedPtr<RBX::DebrisService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::DebrisService>(boost::shared_ptr<RBX::DebrisService> const&)
-pub fn stub_0x44c914() -> ! {
-    todo!("0x44c914 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::DebrisService>(boost::shared_ptr<RBX::DebrisService> const&)")
+pub fn stub_0x44c914(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x44c914: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::DebrisService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::DebrisService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x44cb50 — __ZN5boost10shared_ptrIN3RBX13DebrisServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -21487,8 +21705,16 @@ pub fn stub_0x44d064() -> SharedPtr<GamePassService> {
 // 0x44d114 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_15GamePassServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::GamePassService>(rbx_core::SharedPtr<RBX::GamePassService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::GamePassService>(boost::shared_ptr<RBX::GamePassService> const&)
-pub fn stub_0x44d114() -> ! {
-    todo!("0x44d114 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::GamePassService>(boost::shared_ptr<RBX::GamePassService> const&)")
+pub fn stub_0x44d114(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x44d114: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::GamePassService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::GamePassService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x44d350 — __ZN5boost10shared_ptrIN3RBX15GamePassServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -21574,8 +21800,16 @@ pub fn stub_0x44d864() -> SharedPtr<SocialService> {
 // 0x44d914 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13SocialServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::SocialService>(rbx_core::SharedPtr<RBX::SocialService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::SocialService>(boost::shared_ptr<RBX::SocialService> const&)
-pub fn stub_0x44d914() -> ! {
-    todo!("0x44d914 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::SocialService>(boost::shared_ptr<RBX::SocialService> const&)")
+pub fn stub_0x44d914(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x44d914: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::SocialService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::SocialService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x44db50 — __ZN5boost10shared_ptrIN3RBX13SocialServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -21684,8 +21918,16 @@ pub fn stub_0x44e074(ptr: *mut InsertService, _deleter: CreatableInstanceDeleter
 // 0x44e180 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13InsertServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::InsertService>(rbx_core::SharedPtr<RBX::InsertService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::InsertService>(boost::shared_ptr<RBX::InsertService> const&)
-pub fn stub_0x44e180() -> ! {
-    todo!("0x44e180 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::InsertService>(boost::shared_ptr<RBX::InsertService> const&)")
+pub fn stub_0x44e180(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x44e180: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::InsertService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::InsertService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x44e308 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_18RenderHooksServiceEEEN5boost10shared_ptrIT_EEv
@@ -21700,8 +21942,16 @@ pub fn stub_0x44e308() -> SharedPtr<RenderHooksService> {
 // 0x44e3b8 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_18RenderHooksServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::RenderHooksService>(rbx_core::SharedPtr<RBX::RenderHooksService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::RenderHooksService>(boost::shared_ptr<RBX::RenderHooksService> const&)
-pub fn stub_0x44e3b8() -> ! {
-    todo!("0x44e3b8 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::RenderHooksService>(boost::shared_ptr<RBX::RenderHooksService> const&)")
+pub fn stub_0x44e3b8(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x44e3b8: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::RenderHooksService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::RenderHooksService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x44e5f4 — __ZN5boost10shared_ptrIN3RBX18RenderHooksServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -21810,8 +22060,16 @@ pub fn stub_0x44eae4(ptr: *mut FriendService, _deleter: CreatableInstanceDeleter
 // 0x44ed20 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13FriendServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::FriendService>(rbx_core::SharedPtr<RBX::FriendService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FriendService>(boost::shared_ptr<RBX::FriendService> const&)
-pub fn stub_0x44ed20() -> ! {
-    todo!("0x44ed20 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FriendService>(boost::shared_ptr<RBX::FriendService> const&)")
+pub fn stub_0x44ed20(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x44ed20: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::FriendService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::FriendService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x44f018 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_15GeometryServiceEEEN5boost10shared_ptrIT_EEv
@@ -21826,8 +22084,16 @@ pub fn stub_0x44f018() -> SharedPtr<GeometryService> {
 // 0x44f0c8 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_15GeometryServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::GeometryService>(rbx_core::SharedPtr<RBX::GeometryService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::GeometryService>(boost::shared_ptr<RBX::GeometryService> const&)
-pub fn stub_0x44f0c8() -> ! {
-    todo!("0x44f0c8 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::GeometryService>(boost::shared_ptr<RBX::GeometryService> const&)")
+pub fn stub_0x44f0c8(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x44f0c8: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::GeometryService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::GeometryService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x44f224 — __ZN5boost10shared_ptrIN3RBX15GeometryServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -21972,8 +22238,16 @@ pub fn stub_0x44f900(block: *const ControlBlockPd<BadgeService, CreatableInstanc
 // 0x44fdcc — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_12BadgeServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::BadgeService>(rbx_core::SharedPtr<RBX::BadgeService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::BadgeService>(boost::shared_ptr<RBX::BadgeService> const&)
-pub fn stub_0x44fdcc() -> ! {
-    todo!("0x44fdcc boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::BadgeService>(boost::shared_ptr<RBX::BadgeService> const&)")
+pub fn stub_0x44fdcc(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x44fdcc: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::BadgeService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::BadgeService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x45012c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_14PhysicsServiceEEEN5boost10shared_ptrIT_EEv
@@ -21988,8 +22262,16 @@ pub fn stub_0x45012c() -> SharedPtr<PhysicsService> {
 // 0x4501dc — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_14PhysicsServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::PhysicsService>(rbx_core::SharedPtr<RBX::PhysicsService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::PhysicsService>(boost::shared_ptr<RBX::PhysicsService> const&)
-pub fn stub_0x4501dc() -> ! {
-    todo!("0x4501dc boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::PhysicsService>(boost::shared_ptr<RBX::PhysicsService> const&)")
+pub fn stub_0x4501dc(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x4501dc: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::PhysicsService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::PhysicsService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x45079c — __ZN3RBX9Intrusive3SetINS_12PartInstanceENS_14PhysicsServiceEE5eraseENS4_8IteratorE
@@ -22121,8 +22403,16 @@ pub fn stub_0x4515f0() -> SharedPtr<CollectionService> {
 // 0x4516a0 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_17CollectionServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::CollectionService>(rbx_core::SharedPtr<RBX::CollectionService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::CollectionService>(boost::shared_ptr<RBX::CollectionService> const&)
-pub fn stub_0x4516a0() -> ! {
-    todo!("0x4516a0 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::CollectionService>(boost::shared_ptr<RBX::CollectionService> const&)")
+pub fn stub_0x4516a0(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x4516a0: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::CollectionService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::CollectionService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x4518dc — __ZN5boost10shared_ptrIN3RBX17CollectionServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -22209,8 +22499,16 @@ pub fn stub_0x451c7c() -> SharedPtr<JointsService> {
 // 0x451d2c — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13JointsServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::JointsService>(rbx_core::SharedPtr<RBX::JointsService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::JointsService>(boost::shared_ptr<RBX::JointsService> const&)
-pub fn stub_0x451d2c() -> ! {
-    todo!("0x451d2c boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::JointsService>(boost::shared_ptr<RBX::JointsService> const&)")
+pub fn stub_0x451d2c(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x451d2c: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::JointsService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::JointsService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x451d60 — __ZN5boost10shared_ptrIN3RBX13JointsServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -22427,8 +22725,16 @@ pub fn stub_0x452cc4(_block: *mut ControlBlockPd<SoundscapeSoundService, Creatab
 // 0x452f10 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_10Soundscape12SoundServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::Soundscape::SoundService>(rbx_core::SharedPtr<RBX::Soundscape::SoundService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::Soundscape::SoundService>(boost::shared_ptr<RBX::Soundscape::SoundService> const&)
-pub fn stub_0x452f10() -> ! {
-    todo!("0x452f10 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::Soundscape::SoundService>(boost::shared_ptr<RBX::Soundscape::SoundService> const&)")
+pub fn stub_0x452f10(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x452f10: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::Soundscape::SoundService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::Soundscape::SoundService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x452f48 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10RunServiceEEEN5boost10shared_ptrIT_EEv
@@ -22443,8 +22749,16 @@ pub fn stub_0x452f48() -> SharedPtr<RunService> {
 // 0x452ff8 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_10RunServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::RunService>(rbx_core::SharedPtr<RBX::RunService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::RunService>(boost::shared_ptr<RBX::RunService> const&)
-pub fn stub_0x452ff8() -> ! {
-    todo!("0x452ff8 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::RunService>(boost::shared_ptr<RBX::RunService> const&)")
+pub fn stub_0x452ff8(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x452ff8: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::RunService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::RunService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x453040 — __ZN5boost10shared_ptrIN3RBX14CoreGuiServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -22485,8 +22799,16 @@ pub fn stub_0x453374() -> SharedPtr<StarterGuiService> {
 // 0x453424 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_17StarterGuiServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::StarterGuiService>(rbx_core::SharedPtr<RBX::StarterGuiService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::StarterGuiService>(boost::shared_ptr<RBX::StarterGuiService> const&)
-pub fn stub_0x453424() -> ! {
-    todo!("0x453424 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::StarterGuiService>(boost::shared_ptr<RBX::StarterGuiService> const&)")
+pub fn stub_0x453424(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x453424: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::StarterGuiService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::StarterGuiService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x453660 — __ZN5boost10shared_ptrIN3RBX17StarterGuiServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -22646,8 +22968,16 @@ pub fn stub_0x454434() -> SharedPtr<LocalBackpack> {
 // 0x4544e4 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13LocalBackpackEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::LocalBackpack>(rbx_core::SharedPtr<RBX::LocalBackpack> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::LocalBackpack>(boost::shared_ptr<RBX::LocalBackpack> const&)
-pub fn stub_0x4544e4() -> ! {
-    todo!("0x4544e4 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::LocalBackpack>(boost::shared_ptr<RBX::LocalBackpack> const&)")
+pub fn stub_0x4544e4(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x4544e4: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::LocalBackpack>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::LocalBackpack*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x454720 — __ZN5boost10shared_ptrIN3RBX13LocalBackpackEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -22872,8 +23202,16 @@ pub fn stub_0x4559d8(block: *const ControlBlockPd<ChatService, CreatableInstance
 // 0x455ea4 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_11ChatServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::ChatService>(rbx_core::SharedPtr<RBX::ChatService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ChatService>(boost::shared_ptr<RBX::ChatService> const&)
-pub fn stub_0x455ea4() -> ! {
-    todo!("0x455ea4 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ChatService>(boost::shared_ptr<RBX::ChatService> const&)")
+pub fn stub_0x455ea4(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x455ea4: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::ChatService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::ChatService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x456090 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10GuiServiceEEEN5boost10shared_ptrIT_EEv
@@ -22888,8 +23226,16 @@ pub fn stub_0x456090() -> SharedPtr<GuiService> {
 // 0x456140 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_10GuiServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::GuiService>(rbx_core::SharedPtr<RBX::GuiService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::GuiService>(boost::shared_ptr<RBX::GuiService> const&)
-pub fn stub_0x456140() -> ! {
-    todo!("0x456140 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::GuiService>(boost::shared_ptr<RBX::GuiService> const&)")
+pub fn stub_0x456140(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x456140: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::GuiService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::GuiService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x456174 — __ZN5boost10shared_ptrIN3RBX10GuiServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -22975,8 +23321,16 @@ pub fn stub_0x4565e8() -> SharedPtr<KeyframeSequenceProvider> {
 // 0x456698 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_24KeyframeSequenceProviderEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::KeyframeSequenceProvider>(rbx_core::SharedPtr<RBX::KeyframeSequenceProvider> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::KeyframeSequenceProvider>(boost::shared_ptr<RBX::KeyframeSequenceProvider> const&)
-pub fn stub_0x456698() -> ! {
-    todo!("0x456698 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::KeyframeSequenceProvider>(boost::shared_ptr<RBX::KeyframeSequenceProvider> const&)")
+pub fn stub_0x456698(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x456698: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::KeyframeSequenceProvider>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::KeyframeSequenceProvider*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x4567f4 — __ZN5boost10shared_ptrIN3RBX24KeyframeSequenceProviderEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -23062,8 +23416,16 @@ pub fn stub_0x456d08() -> SharedPtr<ContentFilter> {
 // 0x456db8 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13ContentFilterEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::ContentFilter>(rbx_core::SharedPtr<RBX::ContentFilter> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ContentFilter>(boost::shared_ptr<RBX::ContentFilter> const&)
-pub fn stub_0x456db8() -> ! {
-    todo!("0x456db8 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ContentFilter>(boost::shared_ptr<RBX::ContentFilter> const&)")
+pub fn stub_0x456db8(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x456db8: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::ContentFilter>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::ContentFilter*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x456ff4 — __ZN5boost10shared_ptrIN3RBX13ContentFilterEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -29582,8 +29944,11 @@ pub fn stub_0x486560() -> ! {
 // 0x486598 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_16DataModelArbiter16ConcurrencyModelEEERS3_RKT_
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DataModelArbiter::ConcurrencyModel>(RBX::DataModelArbiter::ConcurrencyModel const&)")]
 // was: rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DataModelArbiter::ConcurrencyModel>(RBX::DataModelArbiter::ConcurrencyModel const&)
-pub fn stub_0x486598() -> ! {
-    todo!("0x486598 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DataModelArbiter::ConcurrencyModel>(RBX::DataModelArbiter::ConcurrencyModel const&)")
+pub fn stub_0x486598(dst: &mut EnumSlot, src: ConcurrencyModelTag) {
+    // IDA 0x486598: `placement_any<Region3>::operator=(RBX::DataModelArbiter::ConcurrencyModel)` — destroys
+    // any mismatched holder, then copy-constructs the enum payload in place.
+    // The Region3 holder union is unmodeled: the discriminant word is kept.
+    dst.word = src.0;
 }
 
 // 0x4865e8 — __ZN3rbx14implementation12typed_holderIN3RBX16DataModelArbiter16ConcurrencyModelEE9singletonEv
@@ -32912,8 +33277,11 @@ pub fn stub_0x4c5988(value: i32) -> Option<&'static str> {
 // 0x4c5b28 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15PyramidInstance12NumSidesEnumEEERS3_RKT_
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::PyramidInstance::NumSidesEnum>(RBX::PyramidInstance::NumSidesEnum const&)")]
 // was: rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::PyramidInstance::NumSidesEnum>(RBX::PyramidInstance::NumSidesEnum const&)
-pub fn stub_0x4c5b28() -> ! {
-    todo!("0x4c5b28 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::PyramidInstance::NumSidesEnum>(RBX::PyramidInstance::NumSidesEnum const&)")
+pub fn stub_0x4c5b28(dst: &mut EnumSlot, src: PyramidNumSidesTag) {
+    // IDA 0x4c5b28: `placement_any<Region3>::operator=(RBX::PyramidInstance::NumSidesEnum)` — destroys
+    // any mismatched holder, then copy-constructs the enum payload in place.
+    // The Region3 holder union is unmodeled: the discriminant word is kept.
+    dst.word = src.0;
 }
 
 // 0x4c5b78 — __ZN3rbx14implementation12typed_holderIN3RBX15PyramidInstance12NumSidesEnumEE9singletonEv
@@ -33089,8 +33457,11 @@ pub fn stub_0x4c63b0(value: i32) -> Option<&'static str> {
 // 0x4c6550 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_13PrismInstance12NumSidesEnumEEERS3_RKT_
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::PrismInstance::NumSidesEnum>(RBX::PrismInstance::NumSidesEnum const&)")]
 // was: rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::PrismInstance::NumSidesEnum>(RBX::PrismInstance::NumSidesEnum const&)
-pub fn stub_0x4c6550() -> ! {
-    todo!("0x4c6550 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::PrismInstance::NumSidesEnum>(RBX::PrismInstance::NumSidesEnum const&)")
+pub fn stub_0x4c6550(dst: &mut EnumSlot, src: PrismNumSidesTag) {
+    // IDA 0x4c6550: `placement_any<Region3>::operator=(RBX::PrismInstance::NumSidesEnum)` — destroys
+    // any mismatched holder, then copy-constructs the enum payload in place.
+    // The Region3 holder union is unmodeled: the discriminant word is kept.
+    dst.word = src.0;
 }
 
 // 0x4c65a0 — __ZN3rbx14implementation12typed_holderIN3RBX13PrismInstance12NumSidesEnumEE9singletonEv
@@ -33267,8 +33638,11 @@ pub fn stub_0x4c6dd8(value: i32) -> Option<&'static str> {
 // 0x4c6f78 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_20ExtrudedPartInstance16VisualTrussStyleEEERS3_RKT_
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::ExtrudedPartInstance::VisualTrussStyle>(RBX::ExtrudedPartInstance::VisualTrussStyle const&)")]
 // was: rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::ExtrudedPartInstance::VisualTrussStyle>(RBX::ExtrudedPartInstance::VisualTrussStyle const&)
-pub fn stub_0x4c6f78() -> ! {
-    todo!("0x4c6f78 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::ExtrudedPartInstance::VisualTrussStyle>(RBX::ExtrudedPartInstance::VisualTrussStyle const&)")
+pub fn stub_0x4c6f78(dst: &mut EnumSlot, src: VisualTrussStyleTag) {
+    // IDA 0x4c6f78: `placement_any<Region3>::operator=(RBX::ExtrudedPartInstance::VisualTrussStyle)` — destroys
+    // any mismatched holder, then copy-constructs the enum payload in place.
+    // The Region3 holder union is unmodeled: the discriminant word is kept.
+    dst.word = src.0;
 }
 
 // 0x4c6fc8 — __ZN3rbx14implementation12typed_holderIN3RBX20ExtrudedPartInstance16VisualTrussStyleEE9singletonEv
@@ -33444,8 +33818,11 @@ pub fn stub_0x4c9678(value: i32) -> Option<&'static str> {
 // 0x4c9818 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_17BasicPartInstance14LegacyPartTypeEEERS3_RKT_
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::BasicPartInstance::LegacyPartType>(RBX::BasicPartInstance::LegacyPartType const&)")]
 // was: rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::BasicPartInstance::LegacyPartType>(RBX::BasicPartInstance::LegacyPartType const&)
-pub fn stub_0x4c9818() -> ! {
-    todo!("0x4c9818 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::BasicPartInstance::LegacyPartType>(RBX::BasicPartInstance::LegacyPartType const&)")
+pub fn stub_0x4c9818(dst: &mut EnumSlot, src: LegacyPartTypeTag) {
+    // IDA 0x4c9818: `placement_any<Region3>::operator=(RBX::BasicPartInstance::LegacyPartType)` — destroys
+    // any mismatched holder, then copy-constructs the enum payload in place.
+    // The Region3 holder union is unmodeled: the discriminant word is kept.
+    dst.word = src.0;
 }
 
 // 0x4c9868 — __ZN3rbx14implementation12typed_holderIN3RBX17BasicPartInstance14LegacyPartTypeEE9singletonEv
@@ -33620,8 +33997,11 @@ pub fn stub_0x4cfcfc(value: i32) -> Option<&'static str> {
 // 0x4cfe9c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_13DataModelMesh7LODTypeEEERS3_RKT_
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DataModelMesh::LODType>(RBX::DataModelMesh::LODType const&)")]
 // was: rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DataModelMesh::LODType>(RBX::DataModelMesh::LODType const&)
-pub fn stub_0x4cfe9c() -> ! {
-    todo!("0x4cfe9c rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DataModelMesh::LODType>(RBX::DataModelMesh::LODType const&)")
+pub fn stub_0x4cfe9c(dst: &mut EnumSlot, src: LODTag) {
+    // IDA 0x4cfe9c: `placement_any<Region3>::operator=(RBX::DataModelMesh::LODType)` — destroys
+    // any mismatched holder, then copy-constructs the enum payload in place.
+    // The Region3 holder union is unmodeled: the discriminant word is kept.
+    dst.word = src.0;
 }
 
 // 0x4cfeec — __ZN3rbx14implementation12typed_holderIN3RBX13DataModelMesh7LODTypeEE9singletonEv
@@ -34431,8 +34811,16 @@ pub fn stub_0x4f6440() -> SharedPtr<FlagStandService> {
 // 0x4f64f0 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_16FlagStandServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::FlagStandService>(rbx_core::SharedPtr<RBX::FlagStandService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FlagStandService>(boost::shared_ptr<RBX::FlagStandService> const&)
-pub fn stub_0x4f64f0() -> ! {
-    todo!("0x4f64f0 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FlagStandService>(boost::shared_ptr<RBX::FlagStandService> const&)")
+pub fn stub_0x4f64f0(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x4f64f0: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::FlagStandService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::FlagStandService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x4f6600 — __ZN5boost10shared_ptrIN3RBX16FlagStandServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -34814,8 +35202,16 @@ pub fn stub_0x4fed3c() -> SharedPtr<ScriptInformationProvider> {
 // 0x4fedec — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_25ScriptInformationProviderEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::ScriptInformationProvider>(rbx_core::SharedPtr<RBX::ScriptInformationProvider> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ScriptInformationProvider>(boost::shared_ptr<RBX::ScriptInformationProvider> const&)
-pub fn stub_0x4fedec() -> ! {
-    todo!("0x4fedec boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ScriptInformationProvider>(boost::shared_ptr<RBX::ScriptInformationProvider> const&)")
+pub fn stub_0x4fedec(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x4fedec: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::ScriptInformationProvider>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::ScriptInformationProvider*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x4fee20 — __ZN5boost6detail12shared_countC2IPN3RBX25ScriptInformationProviderENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
@@ -35081,8 +35477,16 @@ pub fn stub_0x50b39c() -> SharedPtr<Selection> {
 // 0x50b44c — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_9SelectionEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::Selection>(rbx_core::SharedPtr<RBX::Selection> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::Selection>(boost::shared_ptr<RBX::Selection> const&)
-pub fn stub_0x50b44c() -> ! {
-    todo!("0x50b44c boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::Selection>(boost::shared_ptr<RBX::Selection> const&)")
+pub fn stub_0x50b44c(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x50b44c: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::Selection>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::Selection*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x50b688 — __ZN5boost10shared_ptrIN3RBX9SelectionEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -36182,8 +36586,16 @@ pub fn stub_0x535584() -> SharedPtr<TweenService> {
 // 0x535634 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_12TweenServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::TweenService>(rbx_core::SharedPtr<RBX::TweenService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::TweenService>(boost::shared_ptr<RBX::TweenService> const&)
-pub fn stub_0x535634() -> ! {
-    todo!("0x535634 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::TweenService>(boost::shared_ptr<RBX::TweenService> const&)")
+pub fn stub_0x535634(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x535634: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::TweenService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::TweenService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 // 0x535870 — __ZN5boost10shared_ptrIN3RBX12TweenServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::TweenService>::shared_ptr<RBX::TweenService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TweenService *,RBX::Creatable<RBX::Instance>::Deleter)")]
@@ -36453,8 +36865,16 @@ pub fn stub_0x54ba48() -> SharedPtr<CoreGuiService> {
 // 0x54baf8 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_14CoreGuiServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::CoreGuiService>(rbx_core::SharedPtr<RBX::CoreGuiService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::CoreGuiService>(boost::shared_ptr<RBX::CoreGuiService> const&)
-pub fn stub_0x54baf8() -> ! {
-    todo!("0x54baf8 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::CoreGuiService>(boost::shared_ptr<RBX::CoreGuiService> const&)")
+pub fn stub_0x54baf8(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x54baf8: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::CoreGuiService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::CoreGuiService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x54bb2c — __ZN5boost6detail12shared_countC2IPN3RBX14CoreGuiServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
@@ -37800,8 +38220,16 @@ pub fn stub_0x585e6c() -> ! {
 // 0x5864b4 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13ModelInstanceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::ModelInstance>(rbx_core::SharedPtr<RBX::ModelInstance> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ModelInstance>(boost::shared_ptr<RBX::ModelInstance> const&)
-pub fn stub_0x5864b4() -> ! {
-    todo!("0x5864b4 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ModelInstance>(boost::shared_ptr<RBX::ModelInstance> const&)")
+pub fn stub_0x5864b4(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x5864b4: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::ModelInstance>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::ModelInstance*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x5864e8 — __ZN3RBX10Reflection19RemoteEventDescImplILi2ENS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE21fireAndReplicateEventEPS2_SsS6_
@@ -38089,8 +38517,16 @@ pub fn stub_0x58c788() -> SharedPtr<LuaWebService> {
 // 0x58c838 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13LuaWebServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::LuaWebService>(rbx_core::SharedPtr<RBX::LuaWebService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::LuaWebService>(boost::shared_ptr<RBX::LuaWebService> const&)
-pub fn stub_0x58c838() -> ! {
-    todo!("0x58c838 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::LuaWebService>(boost::shared_ptr<RBX::LuaWebService> const&)")
+pub fn stub_0x58c838(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x58c838: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::LuaWebService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::LuaWebService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x58c870 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13LuaWebServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
@@ -39908,8 +40344,16 @@ pub fn stub_0x5ac944() -> ! {
 // 0x5acb20 — __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_4SnapEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::Snap>(rbx_core::SharedPtr<RBX::Snap> const&)")]
 // was: boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::Snap>(boost::shared_ptr<RBX::Snap> const&)
-pub fn stub_0x5acb20() -> ! {
-    todo!("0x5acb20 boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::Snap>(boost::shared_ptr<RBX::Snap> const&)")
+pub fn stub_0x5acb20(dst: &mut SharedPtr<JointInstance>, src: &SharedPtr<JointInstance>) -> SharedPtr<JointInstance> {
+    // IDA 0x5acb20: `shared_ptr<JointInstance>::operator=` from `shared_ptr<RBX::Snap>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::Snap*` →
+    // `JointInstance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x5acb54 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_4SnapEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
@@ -39927,8 +40371,16 @@ pub fn stub_0x5acb54(_joint: *const ()) -> SharedPtr<Snap> {
 // 0x5acc08 — __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_4WeldEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::Weld>(rbx_core::SharedPtr<RBX::Weld> const&)")]
 // was: boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::Weld>(boost::shared_ptr<RBX::Weld> const&)
-pub fn stub_0x5acc08() -> ! {
-    todo!("0x5acc08 boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::Weld>(boost::shared_ptr<RBX::Weld> const&)")
+pub fn stub_0x5acc08(dst: &mut SharedPtr<JointInstance>, src: &SharedPtr<JointInstance>) -> SharedPtr<JointInstance> {
+    // IDA 0x5acc08: `shared_ptr<JointInstance>::operator=` from `shared_ptr<RBX::Weld>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::Weld*` →
+    // `JointInstance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x5acc3c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_4WeldEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
@@ -39944,8 +40396,16 @@ pub fn stub_0x5acc3c(_joint: *const ()) -> SharedPtr<Weld> {
 // 0x5accf0 — __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_4GlueEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::Glue>(rbx_core::SharedPtr<RBX::Glue> const&)")]
 // was: boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::Glue>(boost::shared_ptr<RBX::Glue> const&)
-pub fn stub_0x5accf0() -> ! {
-    todo!("0x5accf0 boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::Glue>(boost::shared_ptr<RBX::Glue> const&)")
+pub fn stub_0x5accf0(dst: &mut SharedPtr<JointInstance>, src: &SharedPtr<JointInstance>) -> SharedPtr<JointInstance> {
+    // IDA 0x5accf0: `shared_ptr<JointInstance>::operator=` from `shared_ptr<RBX::Glue>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::Glue*` →
+    // `JointInstance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x5acd24 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_4GlueEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
@@ -39961,8 +40421,16 @@ pub fn stub_0x5acd24(_joint: *const ()) -> SharedPtr<Glue> {
 // 0x5acdd8 — __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_6RotateEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::Rotate>(rbx_core::SharedPtr<RBX::Rotate> const&)")]
 // was: boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::Rotate>(boost::shared_ptr<RBX::Rotate> const&)
-pub fn stub_0x5acdd8() -> ! {
-    todo!("0x5acdd8 boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::Rotate>(boost::shared_ptr<RBX::Rotate> const&)")
+pub fn stub_0x5acdd8(dst: &mut SharedPtr<JointInstance>, src: &SharedPtr<JointInstance>) -> SharedPtr<JointInstance> {
+    // IDA 0x5acdd8: `shared_ptr<JointInstance>::operator=` from `shared_ptr<RBX::Rotate>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::Rotate*` →
+    // `JointInstance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x5ace0c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_6RotateEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
@@ -39978,8 +40446,16 @@ pub fn stub_0x5ace0c(_joint: *const ()) -> SharedPtr<Rotate> {
 // 0x5acec0 — __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_7RotatePEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::RotateP>(rbx_core::SharedPtr<RBX::RotateP> const&)")]
 // was: boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::RotateP>(boost::shared_ptr<RBX::RotateP> const&)
-pub fn stub_0x5acec0() -> ! {
-    todo!("0x5acec0 boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::RotateP>(boost::shared_ptr<RBX::RotateP> const&)")
+pub fn stub_0x5acec0(dst: &mut SharedPtr<JointInstance>, src: &SharedPtr<JointInstance>) -> SharedPtr<JointInstance> {
+    // IDA 0x5acec0: `shared_ptr<JointInstance>::operator=` from `shared_ptr<RBX::RotateP>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::RotateP*` →
+    // `JointInstance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x5acef4 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_7RotatePEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
@@ -39995,8 +40471,16 @@ pub fn stub_0x5acef4(_joint: *const ()) -> SharedPtr<RotateP> {
 // 0x5acfa8 — __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_7RotateVEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::RotateV>(rbx_core::SharedPtr<RBX::RotateV> const&)")]
 // was: boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::RotateV>(boost::shared_ptr<RBX::RotateV> const&)
-pub fn stub_0x5acfa8() -> ! {
-    todo!("0x5acfa8 boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::RotateV>(boost::shared_ptr<RBX::RotateV> const&)")
+pub fn stub_0x5acfa8(dst: &mut SharedPtr<JointInstance>, src: &SharedPtr<JointInstance>) -> SharedPtr<JointInstance> {
+    // IDA 0x5acfa8: `shared_ptr<JointInstance>::operator=` from `shared_ptr<RBX::RotateV>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::RotateV*` →
+    // `JointInstance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x5acfdc — __ZN3RBX9CreatableINS_8InstanceEE6createINS_7RotateVEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
@@ -42625,8 +43109,16 @@ pub fn stub_0x380a4() -> ! {
 // 0x3a2ec — __ZN5boost10shared_ptrIN3RBX9DataModelEEaSINS1_16OverlayDataModelEEERS3_ONS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::DataModel>& rbx_core::SharedPtr<RBX::DataModel>::operator=<RBX::OverlayDataModel>(rbx_core::SharedPtr<RBX::OverlayDataModel> &&)")]
 // was: boost::shared_ptr<RBX::DataModel>& boost::shared_ptr<RBX::DataModel>::operator=<RBX::OverlayDataModel>(boost::shared_ptr<RBX::OverlayDataModel> &&)
-pub fn stub_0x3a2ec() -> ! {
-    todo!("0x3a2ec boost::shared_ptr<RBX::DataModel>& boost::shared_ptr<RBX::DataModel>::operator=<RBX::OverlayDataModel>(boost::shared_ptr<RBX::OverlayDataModel> &&)")
+pub fn stub_0x3a2ec(dst: &mut SharedPtr<DataModel>, src: &SharedPtr<DataModel>) -> SharedPtr<DataModel> {
+    // IDA 0x3a2ec: `shared_ptr<DataModel>::operator=` from `shared_ptr<RBX::OverlayDataModel>` — (move variant: identical retain/swap/release traffic)
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::OverlayDataModel*` →
+    // `DataModel*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x3ecf0 — __ZN10RobloxView9RenderJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerEN5boost10shared_ptrINS1_9DataModelEEE
@@ -45560,8 +46052,11 @@ pub fn stub_0x5e44b4() -> ! {
 // 0x5e4654 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_12PartInstance10FormFactorEEERS3_RKT_
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::PartInstance::FormFactor>(RBX::PartInstance::FormFactor const&)")]
 // was: rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::PartInstance::FormFactor>(RBX::PartInstance::FormFactor const&)
-pub fn stub_0x5e4654() -> ! {
-    todo!("0x5e4654 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::PartInstance::FormFactor>(RBX::PartInstance::FormFactor const&)")
+pub fn stub_0x5e4654(dst: &mut EnumSlot, src: FormFactor) {
+    // IDA 0x5e4654: `placement_any<Region3>::operator=(RBX::PartInstance::FormFactor)` — destroys
+    // any mismatched holder, then copy-constructs the enum payload in place.
+    // The Region3 holder union is unmodeled: the discriminant word is kept.
+    dst.word = src as i32;
 }
 
 // 0x5e46a4 — __ZN3rbx14implementation12typed_holderIN3RBX12PartInstance10FormFactorEE9singletonEv
@@ -45757,8 +46252,16 @@ pub fn stub_0x5e5ca8() -> ! {
 // 0x5e60b8 — __ZN5boost10shared_ptrIN3RBX6FWBaseEEaSINS1_14FWPartInstanceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::FWBase>& rbx_core::SharedPtr<RBX::FWBase>::operator=<RBX::FWPartInstance>(rbx_core::SharedPtr<RBX::FWPartInstance> const&)")]
 // was: boost::shared_ptr<RBX::FWBase>& boost::shared_ptr<RBX::FWBase>::operator=<RBX::FWPartInstance>(boost::shared_ptr<RBX::FWPartInstance> const&)
-pub fn stub_0x5e60b8() -> ! {
-    todo!("0x5e60b8 boost::shared_ptr<RBX::FWBase>& boost::shared_ptr<RBX::FWBase>::operator=<RBX::FWPartInstance>(boost::shared_ptr<RBX::FWPartInstance> const&)")
+pub fn stub_0x5e60b8(dst: &mut SharedPtr<FWBase>, src: &SharedPtr<FWBase>) -> SharedPtr<FWBase> {
+    // IDA 0x5e60b8: `shared_ptr<FWBase>::operator=` from `shared_ptr<RBX::FWPartInstance>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::FWPartInstance*` →
+    // `FWBase*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x5e60ec — __ZN3RBX11shared_fromINS_14FWPartInstanceEEEN5boost10shared_ptrIT_EEPS4_
@@ -47915,8 +48418,16 @@ pub fn stub_0x5fcc18() -> ! {
 // 0x5fd3d4 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_9ScreenGuiEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::ScreenGui>(rbx_core::SharedPtr<RBX::ScreenGui> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ScreenGui>(boost::shared_ptr<RBX::ScreenGui> const&)
-pub fn stub_0x5fd3d4() -> ! {
-    todo!("0x5fd3d4 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ScreenGui>(boost::shared_ptr<RBX::ScreenGui> const&)")
+pub fn stub_0x5fd3d4(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x5fd3d4: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::ScreenGui>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::ScreenGui*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x5fd408 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9ScreenGuiEEEN5boost10shared_ptrIT_EEv
@@ -48895,8 +49406,16 @@ pub fn stub_0x7c140c() -> ! {
 // 0x7c14bc — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_17FilteredSelectionINS1_12PartInstanceEEEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::FilteredSelection<RBX::PartInstance>>(rbx_core::SharedPtr<RBX::FilteredSelection<RBX::PartInstance>> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FilteredSelection<RBX::PartInstance>>(boost::shared_ptr<RBX::FilteredSelection<RBX::PartInstance>> const&)
-pub fn stub_0x7c14bc() -> ! {
-    todo!("0x7c14bc boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FilteredSelection<RBX::PartInstance>>(boost::shared_ptr<RBX::FilteredSelection<RBX::PartInstance>> const&)")
+pub fn stub_0x7c14bc(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x7c14bc: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::FilteredSelection<RBX::PartInstance>>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::FilteredSelection<RBX::PartInstance>*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x7c14f0 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_17FilteredSelectionINS_12PartInstanceEEEEEvv
@@ -53167,8 +53686,16 @@ pub fn stub_0x6d5e38() -> ! {
 // 0x6d5ee8 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_18StarterPackServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::StarterPackService>(rbx_core::SharedPtr<RBX::StarterPackService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::StarterPackService>(boost::shared_ptr<RBX::StarterPackService> const&)
-pub fn stub_0x6d5ee8() -> ! {
-    todo!("0x6d5ee8 rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::StarterPackService>(rbx_core::SharedPtr<RBX::StarterPackService> const&)")
+pub fn stub_0x6d5ee8(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x6d5ee8: `shared_ptr<Instance>::operator=` from `shared_ptr<RBX::StarterPackService>` —
+    // `shared_count` copy addrefs the source, the adjusted px is stored, the
+    // old pi is released (cf. disasm 0x31782-0x317a0). The `RBX::StarterPackService*` →
+    // `Instance*` adjustment is unmodeled (no hierarchy yet), so the source
+    // arrives post-adjustment — the same convention as
+    // `generated_12::stub_31728`. Clone-assign + return is the addref /
+    // store / release / return-`*this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x6d5f28 — __ZN5boost6detail12shared_countC2IPN3RBX18StarterPackServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
