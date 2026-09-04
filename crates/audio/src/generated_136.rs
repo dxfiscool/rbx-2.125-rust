@@ -1554,72 +1554,144 @@ pub fn stub_14618(vec: &mut Vec<i32>, index: usize, n: usize, value: i32) {
 
 // 0x147a8 — __ZNSt3mapIPKN3RBX4NameENS0_15CRenderSettings12QualityLevelESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 #[doc(alias = "std::map<RBX::Name const*,RBX::CRenderSettings::QualityLevel,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::operator[](RBX::Name const* const&)")]
-pub fn stub_147a8() -> ! {
-    todo!("0x147a8 std::map<RBX::Name const*,RBX::CRenderSettings::QualityLevel,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::operator[](RBX::Name const* const&)")
+pub fn stub_147a8<'a>(map: &'a mut NamePresetMap, name: &str) -> &'a mut i32 {
+    // IDA 0x147a8 (`map::operator[]`, decompiled lower_bound walk for the
+    // key; on miss `_M_insert_unique` a default-constructed mapped value,
+    // host: `or_default` = 0; returns the mapped reference): same shape as
+    // 0x142b8. was: std::map -> HashMap (AGENTS.md section 4).
+    map.entry(name.to_owned()).or_default()
 }
 
 // 0x14800 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings12QualityLevelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel> const&)")]
-pub fn stub_14800() -> ! {
-    todo!("0x14800 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel> const&)")
+pub fn stub_14800(map: &mut NamePresetMap, name: &str, value: i32) -> bool {
+    // IDA 0x14800 (`_Rb_tree::_M_insert_unique` hint overload, decompiled
+    // empty-tree/head/less-than paths, node alloc + rebalance + count++ on
+    // miss): the hint position has no host effect; reports whether the key
+    // was newly inserted. Same shape as 0x14310.
+    use std::collections::hash_map::Entry;
+    match map.entry(name.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x148b4 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings12QualityLevelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel> const&)")]
-pub fn stub_148b4() -> ! {
-    todo!("0x148b4 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel> const&)")
+pub fn stub_148b4(map: &mut NamePresetMap, name: &str, value: i32) -> Option<i32> {
+    // IDA 0x148b4 (`_Rb_tree::_M_insert`, decompiled node alloc + pair copy
+    // + `_Rb_tree_insert_and_rebalance` + count++): unconditional node
+    // insert; the host returns the displaced value, if any. Same shape as
+    // 0x143c4.
+    map.insert(name.to_owned(), value)
 }
 
 // 0x1490c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings12QualityLevelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel> const&)")]
-pub fn stub_1490c() -> ! {
-    todo!("0x1490c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel> const&)")
+pub fn stub_1490c(map: &mut NamePresetMap, name: &str, value: i32) -> bool {
+    // IDA 0x1490c (`_Rb_tree::_M_insert_unique` key overload, decompiled
+    // lower_bound walk + exact-key recheck): reports whether the key was
+    // newly inserted. Same shape as 0x1441c.
+    use std::collections::hash_map::Entry;
+    match map.entry(name.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x14974 — __ZNSt6vectorIN3RBX15CRenderSettings12QualityLevelESaIS2_EE6resizeEmS2_
 #[doc(alias = "std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::resize(unsigned long,RBX::CRenderSettings::QualityLevel)")]
-pub fn stub_14974() -> ! {
-    todo!("0x14974 std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::resize(unsigned long,RBX::CRenderSettings::QualityLevel)")
+pub fn stub_14974(vec: &mut Vec<i32>, n: usize) {
+    // IDA 0x14974 (`vector::resize`, decompiled grow check tail-calling
+    // `_M_fill_insert`, shrink finish reset): growing value-fills with
+    // `QualityLevel()` (= 0), shrinking drops the tail. Same shape as
+    // 0x14484.
+    vec.resize(n, 0);
 }
 
 // 0x149a8 — __ZNSt6vectorIN3RBX15CRenderSettings12QualityLevelESaIS2_EE9push_backERKS2_
 #[doc(alias = "std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::push_back(RBX::CRenderSettings::QualityLevel const&)")]
-pub fn stub_149a8() -> ! {
-    todo!("0x149a8 std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::push_back(RBX::CRenderSettings::QualityLevel const&)")
+pub fn stub_149a8<'a>(vec: &'a mut Vec<i32>, value: &i32) -> &'a mut Vec<i32> {
+    // IDA 0x149a8 (`vector::push_back`, decompiled finish/capacity check,
+    // in-place store or `_M_insert_aux` growth): both paths are `Vec::push`.
+    // Same shape as 0x144b8.
+    vec.push(*value);
+    vec
 }
 
 // 0x149d0 — __ZNSt6vectorIN3RBX15CRenderSettings12QualityLevelESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::QualityLevel*,std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>>,RBX::CRenderSettings::QualityLevel const&)")]
-pub fn stub_149d0() -> ! {
-    todo!("0x149d0 std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::QualityLevel*,std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>>,RBX::CRenderSettings::QualityLevel const&)")
+pub fn stub_149d0<'a>(vec: &'a mut Vec<i32>, index: usize, value: &i32) -> &'a mut Vec<i32> {
+    // IDA 0x149d0 (`vector::_M_insert_aux`, decompiled doubled growth w/
+    // max_size cap, allocate, prefix copy, place, suffix copy, delete old +
+    // republish): grow + memmove; host `Vec::insert` is both paths. Same
+    // shape as 0x144e0.
+    vec.insert(index, *value);
+    vec
 }
 
 // 0x14ab4 — __ZNSt12_Vector_baseIN3RBX15CRenderSettings12QualityLevelESaIS2_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::_M_allocate(unsigned long)")]
-pub fn stub_14ab4() -> ! {
-    todo!("0x14ab4 std::_Vector_base<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::_M_allocate(unsigned long)")
+pub fn stub_14ab4(n: usize) -> Vec<i32> {
+    // IDA 0x14ab4 (`_Vector_base::_M_allocate`, decompiled large-`n`
+    // `__throw_bad_alloc` guard): fresh lanes; host capacity-only Vec. Same
+    // shape as 0x145c4.
+    assert!(n < 0x40000000, "std::bad_alloc (IDA 0x14ab4)");
+    Vec::with_capacity(n)
 }
 
 // 0x14acc — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX15CRenderSettings12QualityLevelES6_EET0_T_S8_S7_
 #[doc(alias = "RBX::CRenderSettings::QualityLevel * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::QualityLevel *,RBX::CRenderSettings::QualityLevel *>(RBX::CRenderSettings::QualityLevel *,RBX::CRenderSettings::QualityLevel *,RBX::CRenderSettings::QualityLevel *)")]
-pub fn stub_14acc() -> ! {
-    todo!("0x14acc RBX::CRenderSettings::QualityLevel * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::QualityLevel *,RBX::CRenderSettings::QualityLevel *>(RBX::CRenderSettings::QualityLevel *,RBX::CRenderSettings::QualityLevel *,RBX::CRenderSettings::QualityLevel *)")
+pub fn stub_14acc(
+    buf: &mut [i32],
+    first: usize,
+    last: usize,
+    result_end: usize,
+) -> usize {
+    // IDA 0x14acc (`__copy_b`, copy_backward, decompiled `n = last-first`
+    // backward word loop): host `copy_within` (memmove). Same shape as
+    // 0x145dc.
+    let n = last - first;
+    if n >= 1 {
+        buf.copy_within(first..last, result_end - n);
+    }
+    result_end - n
 }
 
 // 0x14b08 — __ZNSt6vectorIN3RBX15CRenderSettings12QualityLevelESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 #[doc(alias = "std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::QualityLevel*,std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>>,unsigned long,RBX::CRenderSettings::QualityLevel const&)")]
-pub fn stub_14b08() -> ! {
-    todo!("0x14b08 std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::QualityLevel*,std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>>,unsigned long,RBX::CRenderSettings::QualityLevel const&)")
+pub fn stub_14b08(vec: &mut Vec<i32>, index: usize, n: usize, value: i32) {
+    // IDA 0x14b08 (`vector::_M_fill_insert`, decompiled growth computation +
+    // allocate + prefix/value/suffix fills): inserts `n` copies of `value`
+    // at `index`; the reallocation dance has no host effect beyond the
+    // insert. Same shape as 0x14618.
+    let tail = vec.split_off(index);
+    vec.extend(std::iter::repeat_n(value, n));
+    vec.extend(tail);
 }
 
 // 0x14c98 — __ZNSt6vectorIN3RBX15CRenderSettings10ShadowModeESaIS2_EE6resizeEmS2_
 #[doc(alias = "std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::resize(unsigned long,RBX::CRenderSettings::ShadowMode)")]
-pub fn stub_14c98() -> ! {
-    todo!("0x14c98 std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::resize(unsigned long,RBX::CRenderSettings::ShadowMode)")
+pub fn stub_14c98(vec: &mut Vec<i32>, n: usize) {
+    // IDA 0x14c98 (`vector::resize`, decompiled grow check tail-calling
+    // `_M_fill_insert`, shrink finish reset): growing value-fills with
+    // `ShadowMode()` (= 0), shrinking drops the tail. Same shape as
+    // 0x14484.
+    vec.resize(n, 0);
 }
 
 // 0x14ccc — __ZNSt6vectorIN3RBX15CRenderSettings10ShadowModeESaIS2_EE9push_backERKS2_
 #[doc(alias = "std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::push_back(RBX::CRenderSettings::ShadowMode const&)")]
-pub fn stub_14ccc() -> ! {
-    todo!("0x14ccc std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::push_back(RBX::CRenderSettings::ShadowMode const&)")
+pub fn stub_14ccc<'a>(vec: &'a mut Vec<i32>, value: &i32) -> &'a mut Vec<i32> {
+    // IDA 0x14ccc (`vector::push_back`, decompiled finish/capacity check,
+    // in-place store or `_M_insert_aux` growth): both paths are `Vec::push`.
+    // Same shape as 0x144b8.
+    vec.push(*value);
+    vec
 }

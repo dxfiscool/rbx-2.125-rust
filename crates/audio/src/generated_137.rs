@@ -6,6 +6,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::generated_136::NamePresetMap;
 
 // Ensure SharedPtr is seen as used — mirrors boost::shared_ptr<T> -> rbx_core::SharedPtr<T>
 const _: () = {
@@ -14,110 +15,230 @@ const _: () = {
 
 // 0x14cf4 — __ZNSt3mapIPKN3RBX4NameENS0_15CRenderSettings10ShadowModeESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 #[doc(alias = "std::map<RBX::Name const*,RBX::CRenderSettings::ShadowMode,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::operator[](RBX::Name const* const&)")]
-pub fn stub_14cf4() -> ! {
-    todo!("0x14cf4 std::map<RBX::Name const*,RBX::CRenderSettings::ShadowMode,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::operator[](RBX::Name const* const&)")
+pub fn stub_14cf4<'a>(map: &'a mut NamePresetMap, name: &str) -> &'a mut i32 {
+    // IDA 0x14cf4 (`map::operator[]`, decompiled lower_bound walk for the
+    // key; on miss `_M_insert_unique` a default-constructed mapped value,
+    // host: `or_default` = 0; returns the mapped reference): same shape as
+    // 0x142b8. was: std::map -> HashMap (AGENTS.md section 4).
+    map.entry(name.to_owned()).or_default()
 }
 
 // 0x14d4c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings10ShadowModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode> const&)")]
-pub fn stub_14d4c() -> ! {
-    todo!("0x14d4c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode> const&)")
+pub fn stub_14d4c(map: &mut NamePresetMap, name: &str, value: i32) -> bool {
+    // IDA 0x14d4c (`_Rb_tree::_M_insert_unique` hint overload, decompiled
+    // empty-tree/head/less-than paths, node alloc + rebalance + count++ on
+    // miss): the hint position has no host effect; reports whether the key
+    // was newly inserted. Same shape as 0x14310.
+    use std::collections::hash_map::Entry;
+    match map.entry(name.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x14e00 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings10ShadowModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode> const&)")]
-pub fn stub_14e00() -> ! {
-    todo!("0x14e00 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode> const&)")
+pub fn stub_14e00(map: &mut NamePresetMap, name: &str, value: i32) -> Option<i32> {
+    // IDA 0x14e00 (`_Rb_tree::_M_insert`, decompiled node alloc + pair copy
+    // + `_Rb_tree_insert_and_rebalance` + count++): unconditional node
+    // insert; the host returns the displaced value, if any. Same shape as
+    // 0x143c4.
+    map.insert(name.to_owned(), value)
 }
 
 // 0x14e58 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings10ShadowModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode> const&)")]
-pub fn stub_14e58() -> ! {
-    todo!("0x14e58 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode> const&)")
+pub fn stub_14e58(map: &mut NamePresetMap, name: &str, value: i32) -> bool {
+    // IDA 0x14e58 (`_Rb_tree::_M_insert_unique` key overload, decompiled
+    // lower_bound walk + exact-key recheck): reports whether the key was
+    // newly inserted. Same shape as 0x1441c.
+    use std::collections::hash_map::Entry;
+    match map.entry(name.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x14ec0 — __ZNSt6vectorIN3RBX15CRenderSettings10ShadowModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::ShadowMode*,std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>>,RBX::CRenderSettings::ShadowMode const&)")]
-pub fn stub_14ec0() -> ! {
-    todo!("0x14ec0 std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::ShadowMode*,std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>>,RBX::CRenderSettings::ShadowMode const&)")
+pub fn stub_14ec0<'a>(vec: &'a mut Vec<i32>, index: usize, value: &i32) -> &'a mut Vec<i32> {
+    // IDA 0x14ec0 (`vector::_M_insert_aux`, decompiled doubled growth w/
+    // max_size cap, allocate, prefix copy, place, suffix copy, delete old +
+    // republish): grow + memmove; host `Vec::insert` is both paths. Same
+    // shape as 0x144e0.
+    vec.insert(index, *value);
+    vec
 }
 
 // 0x14fa4 — __ZNSt12_Vector_baseIN3RBX15CRenderSettings10ShadowModeESaIS2_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::_M_allocate(unsigned long)")]
-pub fn stub_14fa4() -> ! {
-    todo!("0x14fa4 std::_Vector_base<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::_M_allocate(unsigned long)")
+pub fn stub_14fa4(n: usize) -> Vec<i32> {
+    // IDA 0x14fa4 (`_Vector_base::_M_allocate`, decompiled large-`n`
+    // `__throw_bad_alloc` guard): fresh lanes; host capacity-only Vec. Same
+    // shape as 0x145c4.
+    assert!(n < 0x40000000, "std::bad_alloc (IDA 0x14fa4)");
+    Vec::with_capacity(n)
 }
 
 // 0x14fbc — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX15CRenderSettings10ShadowModeES6_EET0_T_S8_S7_
 #[doc(alias = "RBX::CRenderSettings::ShadowMode * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::ShadowMode *,RBX::CRenderSettings::ShadowMode *>(RBX::CRenderSettings::ShadowMode *,RBX::CRenderSettings::ShadowMode *,RBX::CRenderSettings::ShadowMode *)")]
-pub fn stub_14fbc() -> ! {
-    todo!("0x14fbc RBX::CRenderSettings::ShadowMode * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::ShadowMode *,RBX::CRenderSettings::ShadowMode *>(RBX::CRenderSettings::ShadowMode *,RBX::CRenderSettings::ShadowMode *,RBX::CRenderSettings::ShadowMode *)")
+pub fn stub_14fbc(
+    buf: &mut [i32],
+    first: usize,
+    last: usize,
+    result_end: usize,
+) -> usize {
+    // IDA 0x14fbc (`__copy_b`, copy_backward, decompiled `n = last-first`
+    // backward word loop): host `copy_within` (memmove). Same shape as
+    // 0x145dc.
+    let n = last - first;
+    if n >= 1 {
+        buf.copy_within(first..last, result_end - n);
+    }
+    result_end - n
 }
 
 // 0x14ff8 — __ZNSt6vectorIN3RBX15CRenderSettings10ShadowModeESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
-#[doc(alias = "std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::ShadowMode*,std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>>,unsigned long,RBX::CRenderSettings::ShadowMode const&)")]
-pub fn stub_14ff8() -> ! {
-    todo!("0x14ff8 std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::ShadowMode*,std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>>,unsigned long,RBX::CRenderSettings::ShadowMode const&)")
+#[doc(alias = "std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::ShadowMode*,std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>>,RBX::CRenderSettings::ShadowMode const&)")]
+pub fn stub_14ff8(vec: &mut Vec<i32>, index: usize, n: usize, value: i32) {
+    // IDA 0x14ff8 (`vector::_M_fill_insert`, decompiled growth computation +
+    // allocate + prefix/value/suffix fills): inserts `n` copies of `value`
+    // at `index`; the reallocation dance has no host effect beyond the
+    // insert. Same shape as 0x14618.
+    let tail = vec.split_off(index);
+    vec.extend(std::iter::repeat_n(value, n));
+    vec.extend(tail);
 }
 
 // 0x15188 — __ZNSt6vectorIN3RBX15CRenderSettings16AntialiasingModeESaIS2_EE6resizeEmS2_
 #[doc(alias = "std::vector<RBX::CRenderSettings::AntialiasingMode,std::allocator<RBX::CRenderSettings::AntialiasingMode>>::resize(unsigned long,RBX::CRenderSettings::AntialiasingMode)")]
-pub fn stub_15188() -> ! {
-    todo!("0x15188 std::vector<RBX::CRenderSettings::AntialiasingMode,std::allocator<RBX::CRenderSettings::AntialiasingMode>>::resize(unsigned long,RBX::CRenderSettings::AntialiasingMode)")
+pub fn stub_15188(vec: &mut Vec<i32>, n: usize) {
+    // IDA 0x15188 (`vector::resize`, decompiled grow check tail-calling
+    // `_M_fill_insert`, shrink finish reset): growing value-fills with
+    // `AntialiasingMode()` (= 0), shrinking drops the tail. Same shape as
+    // 0x14484.
+    vec.resize(n, 0);
 }
 
 // 0x151bc — __ZNSt6vectorIN3RBX15CRenderSettings16AntialiasingModeESaIS2_EE9push_backERKS2_
 #[doc(alias = "std::vector<RBX::CRenderSettings::AntialiasingMode,std::allocator<RBX::CRenderSettings::AntialiasingMode>>::push_back(RBX::CRenderSettings::AntialiasingMode const&)")]
-pub fn stub_151bc() -> ! {
-    todo!("0x151bc std::vector<RBX::CRenderSettings::AntialiasingMode,std::allocator<RBX::CRenderSettings::AntialiasingMode>>::push_back(RBX::CRenderSettings::AntialiasingMode const&)")
+pub fn stub_151bc<'a>(vec: &'a mut Vec<i32>, value: &i32) -> &'a mut Vec<i32> {
+    // IDA 0x151bc (`vector::push_back`, decompiled finish/capacity check,
+    // in-place store or `_M_insert_aux` growth): both paths are `Vec::push`.
+    // Same shape as 0x144b8.
+    vec.push(*value);
+    vec
 }
 
 // 0x151e4 — __ZNSt3mapIPKN3RBX4NameENS0_15CRenderSettings16AntialiasingModeESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 #[doc(alias = "std::map<RBX::Name const*,RBX::CRenderSettings::AntialiasingMode,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>>::operator[](RBX::Name const* const&)")]
-pub fn stub_151e4() -> ! {
-    todo!("0x151e4 std::map<RBX::Name const*,RBX::CRenderSettings::AntialiasingMode,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>>::operator[](RBX::Name const* const&)")
+pub fn stub_151e4<'a>(map: &'a mut NamePresetMap, name: &str) -> &'a mut i32 {
+    // IDA 0x151e4 (`map::operator[]`, decompiled lower_bound walk for the
+    // key; on miss `_M_insert_unique` a default-constructed mapped value,
+    // host: `or_default` = 0; returns the mapped reference): same shape as
+    // 0x142b8. was: std::map -> HashMap (AGENTS.md section 4).
+    map.entry(name.to_owned()).or_default()
 }
 
 // 0x1523c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16AntialiasingModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>,std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode> const&)")]
-pub fn stub_1523c() -> ! {
-    todo!("0x1523c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>,std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode> const&)")
+pub fn stub_1523c(map: &mut NamePresetMap, name: &str, value: i32) -> bool {
+    // IDA 0x1523c (`_Rb_tree::_M_insert_unique` hint overload, decompiled
+    // empty-tree/head/less-than paths, node alloc + rebalance + count++ on
+    // miss): the hint position has no host effect; reports whether the key
+    // was newly inserted. Same shape as 0x14310.
+    use std::collections::hash_map::Entry;
+    match map.entry(name.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x152f0 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16AntialiasingModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode> const&)")]
-pub fn stub_152f0() -> ! {
-    todo!("0x152f0 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode> const&)")
+pub fn stub_152f0(map: &mut NamePresetMap, name: &str, value: i32) -> Option<i32> {
+    // IDA 0x152f0 (`_Rb_tree::_M_insert`, decompiled node alloc + pair copy
+    // + `_Rb_tree_insert_and_rebalance` + count++): unconditional node
+    // insert; the host returns the displaced value, if any. Same shape as
+    // 0x143c4.
+    map.insert(name.to_owned(), value)
 }
 
 // 0x15348 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16AntialiasingModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode> const&)")]
-pub fn stub_15348() -> ! {
-    todo!("0x15348 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode> const&)")
+pub fn stub_15348(map: &mut NamePresetMap, name: &str, value: i32) -> bool {
+    // IDA 0x15348 (`_Rb_tree::_M_insert_unique` key overload, decompiled
+    // lower_bound walk + exact-key recheck): reports whether the key was
+    // newly inserted. Same shape as 0x1441c.
+    use std::collections::hash_map::Entry;
+    match map.entry(name.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x153b0 — __ZNSt6vectorIN3RBX15CRenderSettings16AntialiasingModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::CRenderSettings::AntialiasingMode,std::allocator<RBX::CRenderSettings::AntialiasingMode>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::AntialiasingMode*,std::vector<RBX::CRenderSettings::AntialiasingMode,std::allocator<RBX::CRenderSettings::AntialiasingMode>>>,RBX::CRenderSettings::AntialiasingMode const&)")]
-pub fn stub_153b0() -> ! {
-    todo!("0x153b0 std::vector<RBX::CRenderSettings::AntialiasingMode,std::allocator<RBX::CRenderSettings::AntialiasingMode>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::AntialiasingMode*,std::vector<RBX::CRenderSettings::AntialiasingMode,std::allocator<RBX::CRenderSettings::AntialiasingMode>>>,RBX::CRenderSettings::AntialiasingMode const&)")
+pub fn stub_153b0<'a>(vec: &'a mut Vec<i32>, index: usize, value: &i32) -> &'a mut Vec<i32> {
+    // IDA 0x153b0 (`vector::_M_insert_aux`, decompiled doubled growth w/
+    // max_size cap, allocate, prefix copy, place, suffix copy, delete old +
+    // republish): grow + memmove; host `Vec::insert` is both paths. Same
+    // shape as 0x144e0.
+    vec.insert(index, *value);
+    vec
 }
 
 // 0x15494 — __ZNSt12_Vector_baseIN3RBX15CRenderSettings16AntialiasingModeESaIS2_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::CRenderSettings::AntialiasingMode,std::allocator<RBX::CRenderSettings::AntialiasingMode>>::_M_allocate(unsigned long)")]
-pub fn stub_15494() -> ! {
-    todo!("0x15494 std::_Vector_base<RBX::CRenderSettings::AntialiasingMode,std::allocator<RBX::CRenderSettings::AntialiasingMode>>::_M_allocate(unsigned long)")
+pub fn stub_15494(n: usize) -> Vec<i32> {
+    // IDA 0x15494 (`_Vector_base::_M_allocate`, decompiled large-`n`
+    // `__throw_bad_alloc` guard): fresh lanes; host capacity-only Vec. Same
+    // shape as 0x145c4.
+    assert!(n < 0x40000000, "std::bad_alloc (IDA 0x15494)");
+    Vec::with_capacity(n)
 }
 
 // 0x154ac — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX15CRenderSettings16AntialiasingModeES6_EET0_T_S8_S7_
 #[doc(alias = "RBX::CRenderSettings::AntialiasingMode * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::AntialiasingMode *,RBX::CRenderSettings::AntialiasingMode *>(RBX::CRenderSettings::AntialiasingMode *,RBX::CRenderSettings::AntialiasingMode *,RBX::CRenderSettings::AntialiasingMode *)")]
-pub fn stub_154ac() -> ! {
-    todo!("0x154ac RBX::CRenderSettings::AntialiasingMode * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::AntialiasingMode *,RBX::CRenderSettings::AntialiasingMode *>(RBX::CRenderSettings::AntialiasingMode *,RBX::CRenderSettings::AntialiasingMode *,RBX::CRenderSettings::AntialiasingMode *)")
+pub fn stub_154ac(
+    buf: &mut [i32],
+    first: usize,
+    last: usize,
+    result_end: usize,
+) -> usize {
+    // IDA 0x154ac (`__copy_b`, copy_backward, decompiled `n = last-first`
+    // backward word loop): host `copy_within` (memmove). Same shape as
+    // 0x145dc.
+    let n = last - first;
+    if n >= 1 {
+        buf.copy_within(first..last, result_end - n);
+    }
+    result_end - n
 }
 
 // 0x154e8 — __ZNSt6vectorIN3RBX15CRenderSettings16AntialiasingModeESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 #[doc(alias = "std::vector<RBX::CRenderSettings::AntialiasingMode,std::allocator<RBX::CRenderSettings::AntialiasingMode>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::AntialiasingMode*,std::vector<RBX::CRenderSettings::AntialiasingMode,std::allocator<RBX::CRenderSettings::AntialiasingMode>>>,unsigned long,RBX::CRenderSettings::AntialiasingMode const&)")]
-pub fn stub_154e8() -> ! {
-    todo!("0x154e8 std::vector<RBX::CRenderSettings::AntialiasingMode,std::allocator<RBX::CRenderSettings::AntialiasingMode>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::AntialiasingMode*,std::vector<RBX::CRenderSettings::AntialiasingMode,std::allocator<RBX::CRenderSettings::AntialiasingMode>>>,unsigned long,RBX::CRenderSettings::AntialiasingMode const&)")
+pub fn stub_154e8(vec: &mut Vec<i32>, index: usize, n: usize, value: i32) {
+    // IDA 0x154e8 (`vector::_M_fill_insert`, decompiled growth computation +
+    // allocate + prefix/value/suffix fills): inserts `n` copies of `value`
+    // at `index`; the reallocation dance has no host effect beyond the
+    // insert. Same shape as 0x14618.
+    let tail = vec.split_off(index);
+    vec.extend(std::iter::repeat_n(value, n));
+    vec.extend(tail);
 }
 
 // 0x15678 — __ZNSt6vectorIN3RBX15CRenderSettings20FrameRateManagerModeESaIS2_EE6resizeEmS2_
