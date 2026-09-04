@@ -11,6 +11,7 @@ use std::sync::atomic::{AtomicBool, AtomicI32, Ordering};
 use std::sync::LazyLock;
 use std::sync::OnceLock;
 use rbx_core::shared_ptr::{ControlBlockPd, CreatableInstanceDeleter};
+use std::collections::BTreeMap;
 
 // 0x84e0 — start
 // type: void __fastcall __noreturn(int, int, int, int, int argc, char *argv)
@@ -1157,204 +1158,344 @@ pub fn stub_0xf9a8() {
     // IDA 0xf9a8: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
+/// `RBX::Name const*` keys of the `CRenderSettings` enum maps below.
+/// IDA 0x142b8/0x14cf4 (`less<RBX::Name const*>`) orders by the pointer itself
+/// (decompiled `v4[1]._M_color >= *a2`); the address is the key.
+pub type NameKey = usize;
+/// `RBX::CRenderSettings::{ResolutionPreset, QualityLevel, ShadowMode}` payloads.
+/// All three are 4-byte enums (IDA moves one element per `LDR`/`STR`, `4 * n`
+/// allocation scaling, `>> 2` length math).
+pub type ResolutionPreset = i32;
+pub type QualityLevel = i32;
+pub type ShadowMode = i32;
+/// `std::map<RBX::Name const*, ...>` instantiations below.
+/// `BTreeMap` preserves the ordered-map semantics (`unordered_map` would be `HashMap`).
+pub type ResolutionPresetNameMap = BTreeMap<NameKey, ResolutionPreset>;
+pub type QualityLevelNameMap = BTreeMap<NameKey, QualityLevel>;
+pub type ShadowModeNameMap = BTreeMap<NameKey, ShadowMode>;
+
 // 0x142b8 — __ZNSt3mapIPKN3RBX4NameENS0_15CRenderSettings16ResolutionPresetESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 // type: _Rb_tree_node_base **__fastcall(int, int *)
 #[doc(alias = "std::map<RBX::Name const*,RBX::CRenderSettings::ResolutionPreset,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::operator[](RBX::Name const* const&)")]
 #[doc(alias = "__ZNSt3mapIPKN3RBX4NameENS0_15CRenderSettings16ResolutionPresetESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")]
-pub fn stub_0x142b8() -> ! {
-    todo!("0x142b8 std::map<RBX::Name const*,RBX::CRenderSettings::ResolutionPreset,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::operator[](RBX::Name const* const&)")
+pub fn stub_0x142b8<'a>(map: &'a mut ResolutionPresetNameMap, key: NameKey) -> &'a mut ResolutionPreset {
+    // IDA 0x142b8: map::operator[] -- lower_bound walk (0x142d0 loop), miss inserts a
+    // value-initialized node and returns its reference. `entry().or_default()` is that.
+    // IDA 0x142b8
+    map.entry(key).or_default()
 }
 
 // 0x14310 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16ResolutionPresetEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 // type: _Rb_tree_node_base *__fastcall(int, _Rb_tree_node_base *, unsigned int *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16ResolutionPresetEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")]
-pub fn stub_0x14310() -> ! {
-    todo!("0x14310 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::C")
+pub fn stub_0x14310(map: &mut ResolutionPresetNameMap, key: NameKey, value: ResolutionPreset) -> bool {
+    // IDA 0x14310: _Rb_tree::_M_insert_unique with position hint -- the hint only seeds
+    // the search; a present key is a no-op returning the existing node. Returns inserted.
+    // IDA 0x14310
+    use std::collections::btree_map::Entry;
+    match map.entry(key) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x143c4 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16ResolutionPresetEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 // type: int __fastcall(int, int, _Rb_tree_node_base *, int *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16ResolutionPresetEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")]
-pub fn stub_0x143c4() -> ! {
-    todo!("0x143c4 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Na")
+pub fn stub_0x143c4(map: &mut ResolutionPresetNameMap, key: NameKey, value: ResolutionPreset) -> &mut ResolutionPreset {
+    // IDA 0x143c4: _Rb_tree::_M_insert -- `operator new(0x18)`, copy the pair
+    // (0x143f4), `Rb_tree_insert_and_rebalance`; the caller guarantees a miss, so the
+    // node is always linked. `insert` then reborrow the value slot is that link.
+    // IDA 0x143c4
+    map.insert(key, value);
+    map.get_mut(&key).expect("just inserted")
 }
 
 // 0x1441c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16ResolutionPresetEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16ResolutionPresetEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")]
-pub fn stub_0x1441c() -> ! {
-    todo!("0x1441c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CRenderSettings::Resolut")
+pub fn stub_0x1441c(map: &mut ResolutionPresetNameMap, key: NameKey, value: ResolutionPreset) -> bool {
+    // IDA 0x1441c: _Rb_tree::_M_insert_unique(value) without hint -- find-or-link, single
+    // node on miss. Returns whether a node was inserted.
+    // IDA 0x1441c
+    use std::collections::btree_map::Entry;
+    match map.entry(key) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x14484 — __ZNSt6vectorIN3RBX15CRenderSettings16ResolutionPresetESaIS2_EE6resizeEmS2_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::resize(unsigned long,RBX::CRenderSettings::ResolutionPreset)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings16ResolutionPresetESaIS2_EE6resizeEmS2_")]
-pub fn stub_0x14484() -> ! {
-    todo!("0x14484 std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::resize(unsigned long,RBX::CRenderSettings::ResolutionPreset)")
+pub fn stub_0x14484(vec: &mut Vec<ResolutionPreset>, len: usize, value: ResolutionPreset) {
+    // IDA 0x14484: vector::resize -- shrink truncates the finish pointer
+    // (`start + 4 * n`, 0x144a2), grow delegates to _M_fill_insert (0x144ac).
+    // IDA 0x14484
+    vec.resize(len, value);
 }
 
 // 0x144b8 — __ZNSt6vectorIN3RBX15CRenderSettings16ResolutionPresetESaIS2_EE9push_backERKS2_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::push_back(RBX::CRenderSettings::ResolutionPreset const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings16ResolutionPresetESaIS2_EE9push_backERKS2_")]
-pub fn stub_0x144b8() -> ! {
-    todo!("0x144b8 std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::push_back(RBX::CRenderSettings::ResolutionPreset const&)")
+pub fn stub_0x144b8(vec: &mut Vec<ResolutionPreset>, value: &ResolutionPreset) {
+    // IDA 0x144b8: vector::push_back -- fast path stores and bumps finish (0x144cc),
+    // full storage delegates to _M_insert_aux (0x144da).
+    // IDA 0x144b8
+    vec.push(*value);
 }
 
 // 0x144e0 — __ZNSt6vectorIN3RBX15CRenderSettings16ResolutionPresetESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 // type: int(void)
 #[doc(alias = "std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::ResolutionPreset*,std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>>,RBX::CRenderSettings::ResolutionPreset const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings16ResolutionPresetESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
-pub fn stub_0x144e0() -> ! {
-    todo!("0x144e0 std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::ResolutionPreset*,std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>>,RBX::CRenderSettings::ResolutionPreset const&)")
+pub fn stub_0x144e0(vec: &mut Vec<ResolutionPreset>, index: usize, value: &ResolutionPreset) {
+    // IDA 0x144e0: vector::_M_insert_aux -- full storage reallocates (2x or len+1 via
+    // _M_allocate, moves elements, constructs the new one); otherwise shifts the tail
+    // with __copy_backward and assigns. `Vec::insert` is that.
+    // IDA 0x144e0
+    vec.insert(index, *value);
 }
 
 // 0x145c4 — __ZNSt12_Vector_baseIN3RBX15CRenderSettings16ResolutionPresetESaIS2_EE11_M_allocateEm
 // type: int(void)
 #[doc(alias = "std::_Vector_base<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::_M_allocate(unsigned long)")]
 #[doc(alias = "__ZNSt12_Vector_baseIN3RBX15CRenderSettings16ResolutionPresetESaIS2_EE11_M_allocateEm")]
-pub fn stub_0x145c4() -> ! {
-    todo!("0x145c4 std::_Vector_base<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::_M_allocate(unsigned long)")
+pub fn stub_0x145c4(n: usize) -> Vec<ResolutionPreset> {
+    // IDA 0x145c4: _Vector_base::_M_allocate -- `__throw_bad_alloc` when n >= 0x40000000
+    // (0x145cc), else `operator new(4 * n)`. Capacity-only; length stays 0.
+    // IDA 0x145c4
+    assert!(n < 0x4000_0000, "bad_alloc");
+    Vec::with_capacity(n)
 }
 
 // 0x145dc — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX15CRenderSettings16ResolutionPresetES6_EET0_T_S8_S7_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::CRenderSettings::ResolutionPreset * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::ResolutionPreset *,RBX::CRenderSettings::ResolutionPreset *>(RBX::CRenderSettings::ResolutionPreset *,RBX::CRenderSettings::ResolutionPreset *,RBX::CRenderSettings::ResolutionPreset *)")]
 #[doc(alias = "__ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX15CRenderSettings16ResolutionPresetES6_EET0_T_S8_S7_")]
-pub fn stub_0x145dc() -> ! {
-    todo!("0x145dc RBX::CRenderSettings::ResolutionPreset * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::ResolutionPreset *,RBX::CRenderSettings::ResolutionPreset *>(RBX::CRenderSettings::ResolutionPreset *,RBX::CRenderSettings::ResolutionPreset *,RBX::CRenderSettings::ResolutionPreset *)")
+pub fn stub_0x145dc(buf: &mut Vec<ResolutionPreset>, src: std::ops::Range<usize>, dest_end: usize) -> usize {
+    // IDA 0x145dc: __copy_backward dword loop (unrolled at 0x1460e), moving
+    // `[first, last)` to end at `result`. Overlap-safe backward memmove.
+    // IDA 0x145dc
+    let dest_start = dest_end - src.len();
+    buf.copy_within(src, dest_start);
+    dest_start
 }
 
 // 0x14618 — __ZNSt6vectorIN3RBX15CRenderSettings16ResolutionPresetESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 // type: int(void)
 #[doc(alias = "std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::ResolutionPreset*,std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>>,unsigned long,RBX::CRenderSettings::ResolutionPreset const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings16ResolutionPresetESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")]
-pub fn stub_0x14618() -> ! {
-    todo!("0x14618 std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::ResolutionPreset*,std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>>,unsigned long,RBX::CRenderSettings::ResolutionPreset const&)")
+pub fn stub_0x14618(vec: &mut Vec<ResolutionPreset>, index: usize, n: usize, value: &ResolutionPreset) {
+    // IDA 0x14618: vector::_M_fill_insert -- reallocates and fills when short, else
+    // shifts the tail and fill-assigns the gap. `splice` with `repeat` is that.
+    // IDA 0x14618
+    vec.splice(index..index, std::iter::repeat_n(*value, n));
 }
 
 // 0x147a8 — __ZNSt3mapIPKN3RBX4NameENS0_15CRenderSettings12QualityLevelESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::map<RBX::Name const*,RBX::CRenderSettings::QualityLevel,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::operator[](RBX::Name const* const&)")]
 #[doc(alias = "__ZNSt3mapIPKN3RBX4NameENS0_15CRenderSettings12QualityLevelESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")]
-pub fn stub_0x147a8() -> ! {
-    todo!("0x147a8 std::map<RBX::Name const*,RBX::CRenderSettings::QualityLevel,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::operator[](RBX::Name const* const&)")
+pub fn stub_0x147a8<'a>(map: &'a mut QualityLevelNameMap, key: NameKey) -> &'a mut QualityLevel {
+    // IDA 0x147a8: map::operator[] -- lower_bound walk, miss inserts a
+    // value-initialized node and returns its reference. `entry().or_default()` is that.
+    // IDA 0x147a8
+    map.entry(key).or_default()
 }
 
 // 0x14800 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings12QualityLevelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings12QualityLevelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")]
-pub fn stub_0x14800() -> ! {
-    todo!("0x14800 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::CRenderSettin")
+pub fn stub_0x14800(map: &mut QualityLevelNameMap, key: NameKey, value: QualityLevel) -> bool {
+    // IDA 0x14800: _Rb_tree::_M_insert_unique with position hint -- the hint only seeds
+    // the search; a present key is a no-op returning the existing node. Returns inserted.
+    // IDA 0x14800
+    use std::collections::btree_map::Entry;
+    match map.entry(key) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x148b4 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings12QualityLevelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings12QualityLevelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")]
-pub fn stub_0x148b4() -> ! {
-    todo!("0x148b4 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* co")
+pub fn stub_0x148b4(map: &mut QualityLevelNameMap, key: NameKey, value: QualityLevel) -> &mut QualityLevel {
+    // IDA 0x148b4: _Rb_tree::_M_insert -- allocates the node, copies the pair,
+    // `Rb_tree_insert_and_rebalance`; the caller guarantees a miss, so the node is
+    // always linked. `insert` then reborrow the value slot is that link.
+    // IDA 0x148b4
+    map.insert(key, value);
+    map.get_mut(&key).expect("just inserted")
 }
 
 // 0x1490c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings12QualityLevelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 // type: int __fastcall(int, int, int *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings12QualityLevelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")]
-pub fn stub_0x1490c() -> ! {
-    todo!("0x1490c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel> const")
+pub fn stub_0x1490c(map: &mut QualityLevelNameMap, key: NameKey, value: QualityLevel) -> bool {
+    // IDA 0x1490c: _Rb_tree::_M_insert_unique(value) without hint -- find-or-link, single
+    // node on miss. Returns whether a node was inserted.
+    // IDA 0x1490c
+    use std::collections::btree_map::Entry;
+    match map.entry(key) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x14974 — __ZNSt6vectorIN3RBX15CRenderSettings12QualityLevelESaIS2_EE6resizeEmS2_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::resize(unsigned long,RBX::CRenderSettings::QualityLevel)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings12QualityLevelESaIS2_EE6resizeEmS2_")]
-pub fn stub_0x14974() -> ! {
-    todo!("0x14974 std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::resize(unsigned long,RBX::CRenderSettings::QualityLevel)")
+pub fn stub_0x14974(vec: &mut Vec<QualityLevel>, len: usize, value: QualityLevel) {
+    // IDA 0x14974: vector::resize -- shrink truncates the finish pointer, grow delegates
+    // to _M_fill_insert.
+    // IDA 0x14974
+    vec.resize(len, value);
 }
 
 // 0x149a8 — __ZNSt6vectorIN3RBX15CRenderSettings12QualityLevelESaIS2_EE9push_backERKS2_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::push_back(RBX::CRenderSettings::QualityLevel const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings12QualityLevelESaIS2_EE9push_backERKS2_")]
-pub fn stub_0x149a8() -> ! {
-    todo!("0x149a8 std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::push_back(RBX::CRenderSettings::QualityLevel const&)")
+pub fn stub_0x149a8(vec: &mut Vec<QualityLevel>, value: &QualityLevel) {
+    // IDA 0x149a8: vector::push_back -- fast path stores and bumps finish, full storage
+    // delegates to _M_insert_aux.
+    // IDA 0x149a8
+    vec.push(*value);
 }
 
 // 0x149d0 — __ZNSt6vectorIN3RBX15CRenderSettings12QualityLevelESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 // type: int(void)
 #[doc(alias = "std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::QualityLevel*,std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>>,RBX::CRenderSettings::QualityLevel const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings12QualityLevelESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
-pub fn stub_0x149d0() -> ! {
-    todo!("0x149d0 std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::QualityLevel*,std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>>,RBX::CRenderSettings::QualityLevel const&)")
+pub fn stub_0x149d0(vec: &mut Vec<QualityLevel>, index: usize, value: &QualityLevel) {
+    // IDA 0x149d0: vector::_M_insert_aux -- full storage reallocates (2x or len+1 via
+    // _M_allocate, moves elements, constructs the new one); otherwise shifts the tail
+    // with __copy_backward and assigns. `Vec::insert` is that.
+    // IDA 0x149d0
+    vec.insert(index, *value);
 }
 
 // 0x14ab4 — __ZNSt12_Vector_baseIN3RBX15CRenderSettings12QualityLevelESaIS2_EE11_M_allocateEm
 // type: int(void)
 #[doc(alias = "std::_Vector_base<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::_M_allocate(unsigned long)")]
 #[doc(alias = "__ZNSt12_Vector_baseIN3RBX15CRenderSettings12QualityLevelESaIS2_EE11_M_allocateEm")]
-pub fn stub_0x14ab4() -> ! {
-    todo!("0x14ab4 std::_Vector_base<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::_M_allocate(unsigned long)")
+pub fn stub_0x14ab4(n: usize) -> Vec<QualityLevel> {
+    // IDA 0x14ab4: _Vector_base::_M_allocate -- `__throw_bad_alloc` when n >= 0x40000000,
+    // else `operator new(4 * n)`. Capacity-only; length stays 0.
+    // IDA 0x14ab4
+    assert!(n < 0x4000_0000, "bad_alloc");
+    Vec::with_capacity(n)
 }
 
 // 0x14acc — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX15CRenderSettings12QualityLevelES6_EET0_T_S8_S7_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::CRenderSettings::QualityLevel * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::QualityLevel *,RBX::CRenderSettings::QualityLevel *>(RBX::CRenderSettings::QualityLevel *,RBX::CRenderSettings::QualityLevel *,RBX::CRenderSettings::QualityLevel *)")]
 #[doc(alias = "__ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX15CRenderSettings12QualityLevelES6_EET0_T_S8_S7_")]
-pub fn stub_0x14acc() -> ! {
-    todo!("0x14acc RBX::CRenderSettings::QualityLevel * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::QualityLevel *,RBX::CRenderSettings::QualityLevel *>(RBX::CRenderSettings::QualityLevel *,RBX::CRenderSettings::QualityLevel *,RBX::CRenderSettings::QualityLevel *)")
+pub fn stub_0x14acc(buf: &mut Vec<QualityLevel>, src: std::ops::Range<usize>, dest_end: usize) -> usize {
+    // IDA 0x14acc: __copy_backward dword loop, moving `[first, last)` to end at
+    // `result`. Overlap-safe backward memmove.
+    // IDA 0x14acc
+    let dest_start = dest_end - src.len();
+    buf.copy_within(src, dest_start);
+    dest_start
 }
 
 // 0x14b08 — __ZNSt6vectorIN3RBX15CRenderSettings12QualityLevelESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 // type: int(void)
 #[doc(alias = "std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::QualityLevel*,std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>>,unsigned long,RBX::CRenderSettings::QualityLevel const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings12QualityLevelESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")]
-pub fn stub_0x14b08() -> ! {
-    todo!("0x14b08 std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::QualityLevel*,std::vector<RBX::CRenderSettings::QualityLevel,std::allocator<RBX::CRenderSettings::QualityLevel>>>,unsigned long,RBX::CRenderSettings::QualityLevel const&)")
+pub fn stub_0x14b08(vec: &mut Vec<QualityLevel>, index: usize, n: usize, value: &QualityLevel) {
+    // IDA 0x14b08: vector::_M_fill_insert -- reallocates and fills when short, else
+    // shifts the tail and fill-assigns the gap. `splice` with `repeat` is that.
+    // IDA 0x14b08
+    vec.splice(index..index, std::iter::repeat_n(*value, n));
 }
 
 // 0x14c98 — __ZNSt6vectorIN3RBX15CRenderSettings10ShadowModeESaIS2_EE6resizeEmS2_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::resize(unsigned long,RBX::CRenderSettings::ShadowMode)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings10ShadowModeESaIS2_EE6resizeEmS2_")]
-pub fn stub_0x14c98() -> ! {
-    todo!("0x14c98 std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::resize(unsigned long,RBX::CRenderSettings::ShadowMode)")
+pub fn stub_0x14c98(vec: &mut Vec<ShadowMode>, len: usize, value: ShadowMode) {
+    // IDA 0x14c98: vector::resize -- shrink truncates the finish pointer, grow delegates
+    // to _M_fill_insert.
+    // IDA 0x14c98
+    vec.resize(len, value);
 }
 
 // 0x14ccc — __ZNSt6vectorIN3RBX15CRenderSettings10ShadowModeESaIS2_EE9push_backERKS2_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::push_back(RBX::CRenderSettings::ShadowMode const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings10ShadowModeESaIS2_EE9push_backERKS2_")]
-pub fn stub_0x14ccc() -> ! {
-    todo!("0x14ccc std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::push_back(RBX::CRenderSettings::ShadowMode const&)")
+pub fn stub_0x14ccc(vec: &mut Vec<ShadowMode>, value: &ShadowMode) {
+    // IDA 0x14ccc: vector::push_back -- fast path stores and bumps finish (decompiled
+    // 0x14ccc), full storage delegates to _M_insert_aux.
+    // IDA 0x14ccc
+    vec.push(*value);
 }
 
 // 0x14cf4 — __ZNSt3mapIPKN3RBX4NameENS0_15CRenderSettings10ShadowModeESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::map<RBX::Name const*,RBX::CRenderSettings::ShadowMode,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::operator[](RBX::Name const* const&)")]
 #[doc(alias = "__ZNSt3mapIPKN3RBX4NameENS0_15CRenderSettings10ShadowModeESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")]
-pub fn stub_0x14cf4() -> ! {
-    todo!("0x14cf4 std::map<RBX::Name const*,RBX::CRenderSettings::ShadowMode,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::operator[](RBX::Name const* const&)")
+pub fn stub_0x14cf4<'a>(map: &'a mut ShadowModeNameMap, key: NameKey) -> &'a mut ShadowMode {
+    // IDA 0x14cf4: map::operator[] -- lower_bound walk (same shape as 0x142b8), miss
+    // inserts a value-initialized node and returns its reference.
+    // IDA 0x14cf4
+    map.entry(key).or_default()
 }
 
 // 0x14d4c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings10ShadowModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings10ShadowModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")]
-pub fn stub_0x14d4c() -> ! {
-    todo!("0x14d4c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::CRenderSettings::Sh")
+pub fn stub_0x14d4c(map: &mut ShadowModeNameMap, key: NameKey, value: ShadowMode) -> bool {
+    // IDA 0x14d4c: _Rb_tree::_M_insert_unique with position hint -- the hint only seeds
+    // the search; a present key is a no-op returning the existing node. Returns inserted.
+    // IDA 0x14d4c
+    use std::collections::btree_map::Entry;
+    match map.entry(key) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x14e00 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings10ShadowModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings10ShadowModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")]
-pub fn stub_0x14e00() -> ! {
-    todo!("0x14e00 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RB")
+pub fn stub_0x14e00(map: &mut ShadowModeNameMap, key: NameKey, value: ShadowMode) -> &mut ShadowMode {
+    // IDA 0x14e00: _Rb_tree::_M_insert -- allocates the node, copies the pair,
+    // `Rb_tree_insert_and_rebalance`; the caller guarantees a miss, so the node is
+    // always linked. `insert` then reborrow the value slot is that link.
+    // IDA 0x14e00
+    map.insert(key, value);
+    map.get_mut(&key).expect("just inserted")
 }
 
 #[cfg(test)]
