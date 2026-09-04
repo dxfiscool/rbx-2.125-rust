@@ -2221,3 +2221,738 @@ pub fn jump_metric_text(job: &RenderJob, name: &str) -> String {
     job.metric_text(name)
 }
 
+// 0x1d390 cluster — HomeViewController button ivar + PlaceLauncher lifecycle (IDA 0x1d390..0x289a8).
+
+/// `RBXDidLeaveGameNotification` (IDA 0x24800..0x24830).
+pub const DID_LEAVE_GAME_NOTIFICATION: &str = "RBXDidLeaveGameNotification";
+/// `RBXStartLeaveGameNotification` (IDA 0x2483c..0x24860).
+pub const START_LEAVE_GAME_NOTIFICATION: &str = "RBXStartLeaveGameNotification";
+/// `RBXGameFinishedLoadingNotification` (IDA 0x2486c..0x24890).
+pub const GAME_FINISHED_LOADING_NOTIFICATION: &str = "RBXGameFinishedLoadingNotification";
+
+/// Reachability behind `-[PlaceLauncher prepareGame]` (IDA 0x24b52..0x24c8a).
+/// Apple values: 0 = no service, 1 = WiFi, 2 = cellular (WWAN).
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum ReachabilityStatus {
+    /// `currentReachabilityStatus == 0`: no network.
+    NoService,
+    /// Cellular (`== 2`): gated by the `wifionly_preference`.
+    Cellular,
+    /// WiFi (`== 1`, default): proceeds.
+    #[default]
+    Wifi,
+}
+
+/// Join target bound into the `function0<void>` the `start*` leaves run.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum JoinTarget {
+    /// `joinLocalGame(placeId, ip, game)` (IDA 0x26c58..0x26c90).
+    LocalIp(String),
+    /// `loadLocalApp(path, game)` (IDA 0x270ea..0x27122).
+    FilePath(String),
+    /// `joinGamePlaceId(placeId, game, request)` (IDA 0x27738..0x2776a).
+    PlaceId {
+        request: i32,
+    },
+    /// `joinGameWithJoinScript(script, game)` on the `InjectStartScript` thread (IDA 0x267ec..0x268de).
+    Script(String),
+}
+
+/// Pending join bound by a `start*` leaf for `startGame:controller:preloadedGame:presentGameAutomatically:`.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct JoinRequest {
+    pub place_id: i32,
+    pub target: JoinTarget,
+    pub game_id: u32,
+    pub present_automatically: bool,
+}
+
+/// Minimal `HomeViewController` counterpart: the `_btnPlaceLauncher` ivar
+/// (offset 220) behind the accessor pair.
+#[derive(Debug, Default)]
+pub struct HomeViewControllerState {
+    btn_place_launcher: parking_lot::Mutex<ObjCId>,
+}
+
+impl HomeViewControllerState {
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    // 0x1d390 — -[HomeViewController btnPlaceLauncher]
+    // type: UIButton *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d390
+    #[doc(alias = "-[HomeViewController btnPlaceLauncher]")]
+    #[doc = "-[HomeViewController btnPlaceLauncher]"]
+    pub fn btn_place_launcher(&self) -> ObjCId {
+        // `return self->_btnPlaceLauncher` (IDA 0x1d390..0x1d39e).
+        *self.btn_place_launcher.lock()
+    }
+
+    // 0x1d3a0 — -[HomeViewController setBtnPlaceLauncher:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d3a0
+    #[doc(alias = "-[HomeViewController setBtnPlaceLauncher:]")]
+    #[doc = "-[HomeViewController setBtnPlaceLauncher:]"]
+    pub fn set_btn_place_launcher(&self, btn: ObjCId) {
+        // `objc_setProperty(self, a2, 220, a3, 0, 0)` (IDA 0x1d3a0..0x1d3bc):
+        // retained ivar store at offset 220.
+        *self.btn_place_launcher.lock() = btn;
+    }
+}
+
+/// Minimal `PlaceLauncher` counterpart (IDA 0x246d8..0x289a8): the `rbxView`
+/// ivar, play-state flags, notification names, join bindings, and counters for
+/// the UIKit/render-system steps that live out of slice. `SharedPtr` is
+/// `rbx_core::SharedPtr` (`Arc`), never `boost::shared_ptr`; `boost::bind`
+/// targets become [`JoinRequest`] rows, the `InjectStartScript`
+/// `boost::thread` a detached `std::thread`.
+#[derive(Debug, Default)]
+pub struct PlaceLauncher {
+    view: parking_lot::Mutex<Option<SharedPtr<RobloxView>>>,
+    has_received_memory_warning: AtomicBool,
+    is_currently_playing_game: AtomicBool,
+    last_place_id: parking_lot::Mutex<i32>,
+    teleporter_callback_set: AtomicBool,
+    did_leave_game_notification: parking_lot::Mutex<String>,
+    start_leave_game_notification: parking_lot::Mutex<String>,
+    game_finished_loading_notification: parking_lot::Mutex<String>,
+    last_non_game_controller: parking_lot::Mutex<Option<ObjCId>>,
+    ogre_view_controller_present: AtomicBool,
+    reachability: parking_lot::Mutex<ReachabilityStatus>,
+    wifi_only: AtomicBool,
+    warnings_preference: AtomicBool,
+    max_place_parts: parking_lot::Mutex<i32>,
+    current_part_count: parking_lot::Mutex<i32>,
+    prepare_calls: AtomicU32,
+    check_part_dispatches: AtomicU32,
+    part_warnings: AtomicU32,
+    game_finished_loading_posts: AtomicU32,
+    deferred_finish_loading: AtomicU32,
+    failure_forwards: AtomicU32,
+    datamodel_connections: AtomicU32,
+    open_url_connections: AtomicU32,
+    child_added_connections: AtomicU32,
+    login_prompt_connections: AtomicU32,
+    main_dispatches: AtomicU32,
+    control_view_tasks: AtomicU32,
+    inject_dispatches: AtomicU32,
+    next_game_id: AtomicU32,
+    last_game_secure: AtomicBool,
+    last_game_is_app: AtomicBool,
+    idle_timer_disabled: AtomicBool,
+    join_requests: parking_lot::Mutex<Vec<JoinRequest>>,
+    alerts: parking_lot::Mutex<Vec<String>>,
+    analytics_events: parking_lot::Mutex<Vec<(String, String, String)>>,
+}
+
+/// `+[PlaceLauncher sharedInstance]` (IDA 0x24974): `dispatch_once` is the
+/// process-wide `LazyLock`.
+pub fn shared_place_launcher() -> &'static PlaceLauncher {
+    static LAUNCHER: std::sync::LazyLock<PlaceLauncher> =
+        std::sync::LazyLock::new(PlaceLauncher::new);
+    &LAUNCHER
+}
+
+// 0x24974 — +[PlaceLauncher sharedInstance]
+// type: id __cdecl(id, SEL)
+// IDA 0x24974
+#[doc(alias = "+[PlaceLauncher sharedInstance]")]
+pub fn shared_place_launcher_id() -> ObjCId {
+    // `dispatch_once(&dword_130C440, block)` then `return dword_130C444`
+    // (IDA 0x24974..0x249c2); the singleton address is the identity.
+    shared_place_launcher() as *const PlaceLauncher as ObjCId
+}
+
+// 0x249d0 — ___31+[PlaceLauncher sharedInstance]_block_invoke
+// type: id __fastcall(int)
+// IDA 0x249d0
+#[doc(alias = "___31+[PlaceLauncher sharedInstance]_block_invoke")]
+pub fn shared_place_launcher_block() -> ObjCId {
+    // `alloc` + `init` stored to `dword_130C444` (IDA 0x249d0..0x24a02); the
+    // process-wide singleton is the store.
+    shared_place_launcher().init_launcher();
+    shared_place_launcher_id()
+}
+
+// 0x2613c — ___43-[PlaceLauncher setupDatamodelConnections:]_block_invoke
+// type: void __cdecl(id)
+// IDA 0x2613c
+#[doc(alias = "___43-[PlaceLauncher setupDatamodelConnections:]_block_invoke")]
+pub fn setup_datamodel_connections_block(slot: &PlaceLauncherViewSlot) {
+    // `-[RobloxMemoryManager startFreeMemoryChecker]` (IDA 0x2613c..0x2616c).
+    slot.set_free_memory_checker_running(true);
+}
+
+impl PlaceLauncher {
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    // 0x246d8 — -[PlaceLauncher init]
+    // type: PlaceLauncher *__cdecl(PlaceLauncher *self, SEL)
+    // IDA 0x246d8
+    #[doc(alias = "-[PlaceLauncher init]")]
+    #[doc = "-[PlaceLauncher init]"]
+    pub fn init_launcher(&self) {
+        // `rbxView = 0; hasReceivedMemoryWarning = 0; isCurrentlyPlayingGame = 0;
+        // lastPlaceId = 0` (IDA 0x24760..0x24780).
+        self.view.lock().take();
+        self.has_received_memory_warning.store(false, Ordering::SeqCst);
+        self.is_currently_playing_game.store(false, Ordering::SeqCst);
+        *self.last_place_id.lock() = 0;
+        // Fresh `Teleporter` + `TeleportService::SetCallback` (IDA 0x2478e..0x247dc).
+        self.teleporter_callback_set.store(true, Ordering::SeqCst);
+        // The three `initWithString:` notification names (IDA 0x24800..0x24890).
+        *self.did_leave_game_notification.lock() = DID_LEAVE_GAME_NOTIFICATION.to_owned();
+        *self.start_leave_game_notification.lock() = START_LEAVE_GAME_NOTIFICATION.to_owned();
+        *self.game_finished_loading_notification.lock() =
+            GAME_FINISHED_LOADING_NOTIFICATION.to_owned();
+    }
+
+    // 0x248dc — -[PlaceLauncher dealloc]
+    // type: void __cdecl(PlaceLauncher *self, SEL)
+    // IDA 0x248dc
+    #[doc(alias = "-[PlaceLauncher dealloc]")]
+    #[doc = "-[PlaceLauncher dealloc]"]
+    pub fn dealloc_launcher(&self) {
+        // `TeleportService::SetCallback(0)` + teleporter release (IDA 0x248e8..0x24902).
+        self.teleporter_callback_set.store(false, Ordering::SeqCst);
+        // The three `release`s (IDA 0x24920..0x24948); `super dealloc` is out of slice.
+        self.did_leave_game_notification.lock().clear();
+        self.start_leave_game_notification.lock().clear();
+        self.game_finished_loading_notification.lock().clear();
+    }
+
+    // 0x24a18 — -[PlaceLauncher getIsCurrentlyPlayingGame]
+    // type: char __cdecl(PlaceLauncher *self, SEL)
+    // IDA 0x24a18
+    #[doc(alias = "-[PlaceLauncher getIsCurrentlyPlayingGame]")]
+    #[doc = "-[PlaceLauncher getIsCurrentlyPlayingGame]"]
+    pub fn is_currently_playing_game(&self) -> bool {
+        // `return self->isCurrentlyPlayingGame` (IDA 0x24a18..0x24a26).
+        self.is_currently_playing_game.load(Ordering::SeqCst)
+    }
+
+    // 0x24a28 — -[PlaceLauncher getDidLeaveGameNotification]
+    // IDA 0x24a28
+    #[doc(alias = "-[PlaceLauncher getDidLeaveGameNotification]")]
+    #[doc = "-[PlaceLauncher getDidLeaveGameNotification]"]
+    pub fn did_leave_game_notification(&self) -> String {
+        self.did_leave_game_notification.lock().clone()
+    }
+
+    // 0x24a38 — -[PlaceLauncher getStartLeaveGameNotification]
+    // IDA 0x24a38
+    #[doc(alias = "-[PlaceLauncher getStartLeaveGameNotification]")]
+    #[doc = "-[PlaceLauncher getStartLeaveGameNotification]"]
+    pub fn start_leave_game_notification(&self) -> String {
+        self.start_leave_game_notification.lock().clone()
+    }
+
+    // 0x24a48 — -[PlaceLauncher getGameFinishedLoadingNotification]
+    // IDA 0x24a48
+    #[doc(alias = "-[PlaceLauncher getGameFinishedLoadingNotification]")]
+    #[doc = "-[PlaceLauncher getGameFinishedLoadingNotification]"]
+    pub fn game_finished_loading_notification(&self) -> String {
+        self.game_finished_loading_notification.lock().clone()
+    }
+
+    // 0x24a58 — -[PlaceLauncher handleStartGameFailure]
+    // type: void __cdecl(PlaceLauncher *self, SEL)
+    // IDA 0x24a58
+    #[doc(alias = "-[PlaceLauncher handleStartGameFailure]")]
+    #[doc = "-[PlaceLauncher handleStartGameFailure]"]
+    pub fn handle_start_game_failure(&self) {
+        // Forward to the last-non-game controller when present (IDA 0x24a76..0x24a98).
+        if self.last_non_game_controller.lock().is_some() {
+            self.failure_forwards.fetch_add(1, Ordering::SeqCst);
+        }
+        // `self->isCurrentlyPlayingGame = 0` (IDA 0x24aaa).
+        self.is_currently_playing_game.store(false, Ordering::SeqCst);
+    }
+
+    // 0x24ab0 — -[PlaceLauncher prepareGame]
+    // type: bool __cdecl(PlaceLauncher *self, SEL)
+    // IDA 0x24ab0
+    #[doc(alias = "-[PlaceLauncher prepareGame]")]
+    #[doc = "-[PlaceLauncher prepareGame]"]
+    pub fn prepare_game(&self) -> bool {
+        self.prepare_calls.fetch_add(1, Ordering::SeqCst);
+        // Asset folder + `Game::globalInit` + teleport base URL (IDA 0x24aea..0x24b36).
+        // Reachability gate (IDA 0x24b52..0x24c8a).
+        match *self.reachability.lock() {
+            ReachabilityStatus::NoService => {
+                // `printf("PlaceLauncher: No Network Connection available")` then
+                // the `ConnectionError` alert (IDA 0x24c2e..0x24cb4).
+                self.alerts.lock().push("ConnectionError".to_owned());
+                return false;
+            }
+            ReachabilityStatus::Cellular if self.wifi_only.load(Ordering::SeqCst) => {
+                // The `wifionly_preference` `WiFiOnlyError` alert (IDA 0x24bb8..0x24cb4).
+                self.alerts.lock().push("WiFiOnlyError".to_owned());
+                return false;
+            }
+            ReachabilityStatus::Cellular | ReachabilityStatus::Wifi => {}
+        }
+        // `DataModel::hash = "ios"`, settings `loadState`, scheduler
+        // thread-pool config (IDA 0x24ccc..0x24eac); applied out of slice.
+        true
+    }
+
+    // 0x25080 — -[PlaceLauncher setLastPlaceId:]
+    // type: void __cdecl(PlaceLauncher *self, SEL, int)
+    // IDA 0x25080
+    #[doc(alias = "-[PlaceLauncher setLastPlaceId:]")]
+    #[doc = "-[PlaceLauncher setLastPlaceId:]"]
+    pub fn set_last_place_id(&self, place_id: i32) {
+        // `self->lastPlaceId = a3` (IDA 0x25080..0x2508c).
+        *self.last_place_id.lock() = place_id;
+    }
+
+    // 0x25090 — -[PlaceLauncher checkPlacePartCount]
+    // type: void __cdecl(PlaceLauncher *self, SEL)
+    // IDA 0x25090
+    #[doc(alias = "-[PlaceLauncher checkPlacePartCount]")]
+    #[doc = "-[PlaceLauncher checkPlacePartCount]"]
+    pub fn check_place_part_count(&self) {
+        // `warnings_preference` gate (IDA 0x250b0..0x250da).
+        if !self.warnings_preference.load(Ordering::SeqCst) {
+            return;
+        }
+        // `dispatch_async(global_queue, block)` (IDA 0x250ec..0x25124); the block
+        // runs inline here.
+        self.check_part_dispatches.fetch_add(1, Ordering::SeqCst);
+        self.check_place_part_count_block();
+    }
+
+    // 0x2512c — ___36-[PlaceLauncher checkPlacePartCount]_block_invoke
+    // IDA 0x2512c
+    #[doc(alias = "___36-[PlaceLauncher checkPlacePartCount]_block_invoke")]
+    #[doc = "___36-[PlaceLauncher checkPlacePartCount]_block_invoke"]
+    pub fn check_place_part_count_block(&self) -> bool {
+        // `maxParts` from the iOS settings service (IDA 0x25178..0x25198).
+        let max = *self.max_place_parts.lock();
+        if max < 1 {
+            return false;
+        }
+        // rbxView -> game -> datamodel -> workspace nil chain (IDA 0x251ae..0x25222).
+        if self.view.lock().is_none() {
+            return false;
+        }
+        let parts = *self.current_part_count.lock();
+        if parts <= max {
+            return false;
+        }
+        // Analytics `PlayErrors/TooManyParts` labeled with lastPlaceId
+        // (IDA 0x252fc..0x25362).
+        let place = *self.last_place_id.lock();
+        self.analytics_events.lock().push((
+            "PlayErrors".to_owned(),
+            "TooManyParts".to_owned(),
+            place.to_string(),
+        ));
+        // `RobloxAlertWithMessage` for `WarnTooManyParts` (IDA 0x25384).
+        self.alerts.lock().push(format!("WarnTooManyParts:{parts}>{max}"));
+        self.part_warnings.fetch_add(1, Ordering::SeqCst);
+        true
+    }
+
+    // 0x253e0 — -[PlaceLauncher placeDidFinishLoading]
+    // type: void __cdecl(PlaceLauncher *self, SEL)
+    // IDA 0x253e0
+    #[doc(alias = "-[PlaceLauncher placeDidFinishLoading]")]
+    #[doc = "-[PlaceLauncher placeDidFinishLoading]"]
+    pub fn place_did_finish_loading(&self) {
+        // Post `gameFinishedLoadingNotification` with nil userInfo (IDA 0x25400..0x25424).
+        self.game_finished_loading_posts.fetch_add(1, Ordering::SeqCst);
+        // `checkPlacePartCount` (IDA 0x2543c).
+        self.check_place_part_count();
+    }
+
+    // 0x25498 — -[PlaceLauncher finishGameSetup:gameViewController:]
+    // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Game>, id)
+    // IDA 0x25498
+    #[doc(alias = "-[PlaceLauncher finishGameSetup:gameViewController:]")]
+    #[doc = "-[PlaceLauncher finishGameSetup:gameViewController:]"]
+    pub fn finish_game_setup(
+        &self,
+        game: &SharedPtr<GameHandle>,
+        game_view_controller: ObjCId,
+        screen_w: u32,
+        screen_h: u32,
+        datamodel_ready: bool,
+        overlay_ready: bool,
+    ) {
+        // `RobloxView::create_view(game, screenW, screenH, window, view, ...)`
+        // from `mainScreen.bounds` via `objc_msgSend_stret` (IDA 0x254e8..0x256d2);
+        // the window/view id strings reduce to the controller tag here.
+        let tag = game_view_controller.to_string();
+        let view = create_view(game.id, screen_w, screen_h, &tag, &tag, &tag);
+        *self.view.lock() = Some(view);
+        // A loaded datamodel calls through; otherwise `placeDidFinishLoading`
+        // is deferred into the datamodel signal (IDA 0x25730..0x257e8).
+        if datamodel_ready {
+            self.place_did_finish_loading();
+        } else {
+            self.deferred_finish_loading.fetch_add(1, Ordering::SeqCst);
+        }
+        // `setupDatamodelConnections:` for the datamodel and, when present, the
+        // overlay datamodel (IDA 0x257f2..0x258a4).
+        self.setup_datamodel_connections(true, true);
+        if overlay_ready {
+            self.setup_datamodel_connections(true, false);
+        }
+    }
+
+    // 0x25e00 — -[PlaceLauncher setupDatamodelConnections:]
+    // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::DataModel>)
+    // IDA 0x25e00
+    #[doc(alias = "-[PlaceLauncher setupDatamodelConnections:]")]
+    #[doc = "-[PlaceLauncher setupDatamodelConnections:]"]
+    pub fn setup_datamodel_connections(&self, has_gui_service: bool, has_login_service: bool) {
+        // `GuiService::openUrlWindow` connect (IDA 0x25e2a..0x25eea).
+        if has_gui_service {
+            self.open_url_connections.fetch_add(1, Ordering::SeqCst);
+        }
+        // `dispatch_async(main, ...)` free-memory-checker kick (IDA 0x25f04).
+        self.main_dispatches.fetch_add(1, Ordering::SeqCst);
+        // `Players::childAdded:` connect + connection store (IDA 0x25f18..0x25fcc).
+        self.child_added_connections.fetch_add(1, Ordering::SeqCst);
+        // `LoginService::handlePromptLoginSignal` connect (IDA 0x25fd2..0x2606c).
+        if has_login_service {
+            self.login_prompt_connections.fetch_add(1, Ordering::SeqCst);
+        }
+        self.datamodel_connections.fetch_add(1, Ordering::SeqCst);
+    }
+
+    // 0x26170 — -[PlaceLauncher setLastNonGameController:]
+    // type: void __cdecl(PlaceLauncher *self, SEL, id)
+    // IDA 0x26170
+    #[doc(alias = "-[PlaceLauncher setLastNonGameController:]")]
+    #[doc = "-[PlaceLauncher setLastNonGameController:]"]
+    pub fn set_last_non_game_controller(&self, controller: Option<ObjCId>) -> bool {
+        // Forward to `MainViewController` (IDA 0x26190..0x261a2); owned here.
+        *self.last_non_game_controller.lock() = controller;
+        // `if (a3 && ![self prepareGame]) [self handleStartGameFailure]` (IDA 0x261a8..0x261d4).
+        if controller.is_some() && !self.prepare_game() {
+            self.handle_start_game_failure();
+            return false;
+        }
+        true
+    }
+
+    // 0x261d8 — -[PlaceLauncher createGame:presentGameAutomatically:]
+    // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Game>, char)
+    // IDA 0x261d8
+    #[doc(alias = "-[PlaceLauncher createGame:presentGameAutomatically:]")]
+    #[doc = "-[PlaceLauncher createGame:presentGameAutomatically:]"]
+    pub fn create_game(&self, game: &SharedPtr<GameHandle>, _present: bool) {
+        // `self->hasReceivedMemoryWarning = 0` (IDA 0x26212); the
+        // `presentGameAutomatically` flag is unused below (kept for selector shape).
+        self.has_received_memory_warning.store(false, Ordering::SeqCst);
+        // `-[PlaceLauncher deleteRobloxView]` (IDA 0x26216; see 0x25440).
+        self.view.lock().take();
+        // A fresh `GameViewController` becomes the ogre controller while a
+        // last-non-game controller exists (IDA 0x26236..0x262d0).
+        if self.last_non_game_controller.lock().is_some() {
+            self.ogre_view_controller_present.store(true, Ordering::SeqCst);
+            // `finishGameSetup:gameViewController:` (IDA 0x262d8..0x2630a).
+            self.finish_game_setup(game, NIL_ID, 0, 0, false, false);
+            // `DataModel::submitTask(..., initControlView, ...)` (IDA 0x26320..0x2638a).
+            self.control_view_tasks.fetch_add(1, Ordering::SeqCst);
+        }
+    }
+
+    // 0x26520 — -[PlaceLauncher setupGame:isApp:]
+    // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, PlaceLauncher *self, SEL, id, char)
+    // IDA 0x26520
+    #[doc(alias = "-[PlaceLauncher setupGame:isApp:]")]
+    #[doc = "-[PlaceLauncher setupGame:isApp:]"]
+    pub fn setup_game(&self, controller: ObjCId, is_app: bool) -> Option<SharedPtr<GameHandle>> {
+        // Forwards to `setupGame:unsecuredGame:isApp:` with `unsecured = 0`
+        // (IDA 0x26520..0x26544); a nil self yields a null game (IDA 0x2654c..0x2654e),
+        // which `&self` already excludes.
+        self.setup_game_unsecured(controller, false, is_app)
+    }
+
+    // 0x26558 — -[PlaceLauncher setupGame:unsecuredGame:isApp:]
+    // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, PlaceLauncher *self, SEL, id, char, char)
+    // IDA 0x26558
+    #[doc(alias = "-[PlaceLauncher setupGame:unsecuredGame:isApp:]")]
+    #[doc = "-[PlaceLauncher setupGame:unsecuredGame:isApp:]"]
+    pub fn setup_game_unsecured(
+        &self,
+        controller: ObjCId,
+        unsecured: bool,
+        is_app: bool,
+    ) -> Option<SharedPtr<GameHandle>> {
+        // `if (self->isCurrentlyPlayingGame) return null` (IDA 0x26594..0x265bc).
+        if self.is_currently_playing_game.load(Ordering::SeqCst) {
+            return None;
+        }
+        // `ClientAppSettings::Initialize` + `FetchClientSettingsData("iOSAppSettings", ...)`
+        // + forced iOS-settings read (IDA 0x265ca..0x26610); settings live out of slice.
+        // `-[UIApplication setIdleTimerDisabled:1]` (IDA 0x2662e..0x26642).
+        self.idle_timer_disabled.store(true, Ordering::SeqCst);
+        // `self->isCurrentlyPlayingGame = 1` (IDA 0x26650).
+        self.is_currently_playing_game.store(true, Ordering::SeqCst);
+        // `-[PlaceLauncher setLastNonGameController:]` (IDA 0x2665c).
+        self.set_last_non_game_controller(Some(controller));
+        // `new SecurePlayerGame` vs `new UnsecuredStudioGame(baseURL, isApp)`
+        // (IDA 0x26668..0x266ec); the kind bit is what this slice observes.
+        let id = self.next_game_id.fetch_add(1, Ordering::SeqCst) + 1;
+        self.last_game_secure.store(!unsecured, Ordering::SeqCst);
+        self.last_game_is_app.store(is_app, Ordering::SeqCst);
+        Some(wrap_game(id))
+    }
+
+    // 0x26784 — -[PlaceLauncher setupPreloadedGameWithNonGameController:unsecuredGame:isApp:]
+    // IDA 0x26784
+    #[doc(alias = "-[PlaceLauncher setupPreloadedGameWithNonGameController:unsecuredGame:isApp:]")]
+    #[doc = "-[PlaceLauncher setupPreloadedGameWithNonGameController:unsecuredGame:isApp:]"]
+    pub fn setup_preloaded_game_unsecured(
+        &self,
+        controller: ObjCId,
+        unsecured: bool,
+        is_app: bool,
+    ) -> Option<SharedPtr<GameHandle>> {
+        // Forwards to `setupGame:unsecuredGame:isApp:` (IDA 0x26784..0x267a8).
+        self.setup_game_unsecured(controller, unsecured, is_app)
+    }
+
+    // 0x267bc — -[PlaceLauncher setupPreloadedGameWithNonGameController:isApp:]
+    // IDA 0x267bc
+    #[doc(alias = "-[PlaceLauncher setupPreloadedGameWithNonGameController:isApp:]")]
+    #[doc = "-[PlaceLauncher setupPreloadedGameWithNonGameController:isApp:]"]
+    pub fn setup_preloaded_game(
+        &self,
+        controller: ObjCId,
+        is_app: bool,
+    ) -> Option<SharedPtr<GameHandle>> {
+        // Forwards to `setupGame:isApp:` (IDA 0x267bc..0x267d8).
+        self.setup_game(controller, is_app)
+    }
+
+    // 0x267ec — -[PlaceLauncher injectJoinScript:]
+    // type: void __cdecl(PlaceLauncher *self, SEL, id)
+    // IDA 0x267ec
+    #[doc(alias = "-[PlaceLauncher injectJoinScript:]")]
+    #[doc = "-[PlaceLauncher injectJoinScript:]"]
+    pub fn inject_join_script(&self, script: &str) {
+        // The `UTF8String` + `joinGameWithJoinScript(script, game)` bind rows are
+        // built on the caller thread (IDA 0x2681c..0x2688a); only execution moves.
+        let game_id = self.view.lock().as_ref().and_then(|v| v.game_id()).unwrap_or(0);
+        self.join_requests.lock().push(JoinRequest {
+            place_id: *self.last_place_id.lock(),
+            target: JoinTarget::Script(script.to_owned()),
+            game_id,
+            present_automatically: false,
+        });
+        // Fresh `boost::thread` named `"InjectStartScript"` which detaches at
+        // `~thread` (IDA 0x268a0..0x268b2); a detached `std::thread` is the detach.
+        self.inject_dispatches.fetch_add(1, Ordering::SeqCst);
+        let owned = script.to_owned();
+        std::thread::spawn(move || {
+            let _ = (owned, game_id);
+        });
+    }
+
+    // 0x29490 — -[PlaceLauncher startGame:controller:preloadedGame:presentGameAutomatically:]
+    // IDA 0x29490 (next batch; shared by the start* leaves below).
+    #[doc(alias = "-[PlaceLauncher startGame:controller:preloadedGame:presentGameAutomatically:]")]
+    #[doc = "-[PlaceLauncher startGame:controller:preloadedGame:presentGameAutomatically:]"]
+    pub fn start_preloaded_game(
+        &self,
+        game: &SharedPtr<GameHandle>,
+        _controller: ObjCId,
+        present: bool,
+    ) -> bool {
+        // `createGame:presentGameAutomatically:` then report success.
+        self.create_game(game, present);
+        true
+    }
+
+    // 0x26bb8 — -[PlaceLauncher startGameLocal:ipAddress:controller:presentGameAutomatically:]
+    // type: char __cdecl(PlaceLauncher *self, SEL, int, id, id, char)
+    // IDA 0x26bb8
+    #[doc(alias = "-[PlaceLauncher startGameLocal:ipAddress:controller:presentGameAutomatically:]")]
+    #[doc = "-[PlaceLauncher startGameLocal:ipAddress:controller:presentGameAutomatically:]"]
+    pub fn start_game_local(
+        &self,
+        place_id: i32,
+        ip: &str,
+        controller: ObjCId,
+        present: bool,
+    ) -> bool {
+        // `setupPreloadedGameWithNonGameController:unsecuredGame:isApp:` with
+        // `unsecured = 1` (IDA 0x26c06..0x26c3c); nil game means failure.
+        let Some(game) = self.setup_preloaded_game_unsecured(controller, true, false) else {
+            return false;
+        };
+        // Bind `joinLocalGame(placeId, ip, game)` (IDA 0x26c58..0x26c90).
+        self.join_requests.lock().push(JoinRequest {
+            place_id,
+            target: JoinTarget::LocalIp(ip.to_owned()),
+            game_id: game.id,
+            present_automatically: present,
+        });
+        // `startGame:controller:preloadedGame:presentGameAutomatically:` (IDA 0x26c96..0x26cc8).
+        self.start_preloaded_game(&game, controller, present)
+    }
+
+    // 0x27054 — -[PlaceLauncher startAppWithFile:controller:presentGameAutomatically:]
+    // type: char __cdecl(PlaceLauncher *self, SEL, id, id, char)
+    // IDA 0x27054
+    #[doc(alias = "-[PlaceLauncher startAppWithFile:controller:presentGameAutomatically:]")]
+    #[doc = "-[PlaceLauncher startAppWithFile:controller:presentGameAutomatically:]"]
+    pub fn start_app_with_file(&self, path: &str, controller: ObjCId, present: bool) -> bool {
+        // Preloaded file-app game (`isApp = 1`; trailing bind flags are truncated
+        // in pseudo, IDA 0x270a2..0x270d4); nil game means failure.
+        let Some(game) = self.setup_preloaded_game_unsecured(controller, true, true) else {
+            return false;
+        };
+        // Bind `loadLocalApp(path, game)` (IDA 0x270ea..0x27122).
+        self.join_requests.lock().push(JoinRequest {
+            place_id: 0,
+            target: JoinTarget::FilePath(path.to_owned()),
+            game_id: game.id,
+            present_automatically: present,
+        });
+        // `startGame:controller:preloadedGame:presentGameAutomatically:` (IDA 0x27128..0x2715a).
+        self.start_preloaded_game(&game, controller, present)
+    }
+
+    // 0x276b0 — -[PlaceLauncher startAppWithId:controller:presentGameAutomatically:]
+    // type: char __cdecl(PlaceLauncher *self, SEL, int, id, char)
+    // IDA 0x276b0
+    #[doc(alias = "-[PlaceLauncher startAppWithId:controller:presentGameAutomatically:]")]
+    #[doc = "-[PlaceLauncher startAppWithId:controller:presentGameAutomatically:]"]
+    pub fn start_app_with_id(&self, place_id: i32, controller: ObjCId, present: bool) -> bool {
+        // `setupPreloadedGameWithNonGameController:isApp:` with `isApp = 1`
+        // (IDA 0x276fe..0x27732); nil game means failure.
+        let Some(game) = self.setup_preloaded_game(controller, true) else {
+            return false;
+        };
+        // Bind `joinGamePlaceId(placeId, game, request = 2)` (IDA 0x27738..0x2776a).
+        self.join_requests.lock().push(JoinRequest {
+            place_id,
+            target: JoinTarget::PlaceId {
+                request: 2,
+            },
+            game_id: game.id,
+            present_automatically: present,
+        });
+        // `startGame:controller:preloadedGame:presentGameAutomatically:` (IDA 0x27770..0x277a2).
+        self.start_preloaded_game(&game, controller, present)
+    }
+
+    // 0x289a8 — -[PlaceLauncher startGame:controller:request:presentGameAutomatically:]
+    // type: char __cdecl(PlaceLauncher *self, SEL, int, id, int, char)
+    // IDA 0x289a8
+    #[doc(alias = "-[PlaceLauncher startGame:controller:request:presentGameAutomatically:]")]
+    #[doc = "-[PlaceLauncher startGame:controller:request:presentGameAutomatically:]"]
+    pub fn start_game_request(
+        &self,
+        place_id: i32,
+        controller: ObjCId,
+        request: i32,
+        present: bool,
+    ) -> bool {
+        // `setupPreloadedGameWithNonGameController:isApp:` with `isApp = (request == 2)`
+        // (IDA 0x289f6..0x28a32); nil game means failure.
+        let Some(game) = self.setup_preloaded_game(controller, request == 2) else {
+            return false;
+        };
+        // Bind `joinGamePlaceId(placeId, game, request)` (IDA 0x28a38..0x28a6c).
+        self.join_requests.lock().push(JoinRequest {
+            place_id,
+            target: JoinTarget::PlaceId {
+                request,
+            },
+            game_id: game.id,
+            present_automatically: present,
+        });
+        // `startGame:controller:preloadedGame:presentGameAutomatically:` (IDA 0x28a72..0x28aa4).
+        self.start_preloaded_game(&game, controller, present)
+    }
+
+    pub fn last_place_id(&self) -> i32 {
+        *self.last_place_id.lock()
+    }
+    pub fn last_non_game_controller(&self) -> Option<ObjCId> {
+        *self.last_non_game_controller.lock()
+    }
+    pub fn has_view(&self) -> bool {
+        self.view.lock().is_some()
+    }
+    pub fn teleporter_callback_set(&self) -> bool {
+        self.teleporter_callback_set.load(Ordering::SeqCst)
+    }
+    pub fn idle_timer_disabled(&self) -> bool {
+        self.idle_timer_disabled.load(Ordering::SeqCst)
+    }
+    pub fn ogre_view_controller_present(&self) -> bool {
+        self.ogre_view_controller_present.load(Ordering::SeqCst)
+    }
+    pub fn last_game_secure(&self) -> bool {
+        self.last_game_secure.load(Ordering::SeqCst)
+    }
+    pub fn last_game_is_app(&self) -> bool {
+        self.last_game_is_app.load(Ordering::SeqCst)
+    }
+    pub fn prepare_calls(&self) -> u32 {
+        self.prepare_calls.load(Ordering::SeqCst)
+    }
+    pub fn check_part_dispatches(&self) -> u32 {
+        self.check_part_dispatches.load(Ordering::SeqCst)
+    }
+    pub fn part_warnings(&self) -> u32 {
+        self.part_warnings.load(Ordering::SeqCst)
+    }
+    pub fn game_finished_loading_posts(&self) -> u32 {
+        self.game_finished_loading_posts.load(Ordering::SeqCst)
+    }
+    pub fn deferred_finish_loading(&self) -> u32 {
+        self.deferred_finish_loading.load(Ordering::SeqCst)
+    }
+    pub fn failure_forwards(&self) -> u32 {
+        self.failure_forwards.load(Ordering::SeqCst)
+    }
+    pub fn datamodel_connections(&self) -> u32 {
+        self.datamodel_connections.load(Ordering::SeqCst)
+    }
+    pub fn control_view_tasks(&self) -> u32 {
+        self.control_view_tasks.load(Ordering::SeqCst)
+    }
+    pub fn inject_dispatches(&self) -> u32 {
+        self.inject_dispatches.load(Ordering::SeqCst)
+    }
+    pub fn join_request_count(&self) -> usize {
+        self.join_requests.lock().len()
+    }
+    pub fn last_join_request(&self) -> Option<JoinRequest> {
+        self.join_requests.lock().last().cloned()
+    }
+    pub fn alerts(&self) -> Vec<String> {
+        self.alerts.lock().clone()
+    }
+    pub fn analytics_event_count(&self) -> usize {
+        self.analytics_events.lock().len()
+    }
+    pub fn set_reachability(&self, reachability: ReachabilityStatus) {
+        *self.reachability.lock() = reachability;
+    }
+    pub fn set_wifi_only(&self, wifi_only: bool) {
+        self.wifi_only.store(wifi_only, Ordering::SeqCst);
+    }
+    pub fn set_warnings_preference(&self, enabled: bool) {
+        self.warnings_preference.store(enabled, Ordering::SeqCst);
+    }
+    pub fn set_max_place_parts(&self, max: i32) {
+        *self.max_place_parts.lock() = max;
+    }
+    pub fn set_current_part_count(&self, parts: i32) {
+        *self.current_part_count.lock() = parts;
+    }
+}

@@ -27,213 +27,286 @@ static RENDER_SLOT: std::sync::LazyLock<
 static VU_SLOT: std::sync::LazyLock<
     parking_lot::Mutex<Option<SharedPtr<crate::roblox_view::ViewUpdateJob>>>,
 > = std::sync::LazyLock::new(|| parking_lot::Mutex::new(None));
+static LAUNCHER: std::sync::LazyLock<crate::roblox_view::PlaceLauncher> =
+    std::sync::LazyLock::new(crate::roblox_view::PlaceLauncher::new);
+static HOME: std::sync::LazyLock<crate::roblox_view::HomeViewControllerState> =
+    std::sync::LazyLock::new(crate::roblox_view::HomeViewControllerState::new);
 // 0x1d390 — -[HomeViewController btnPlaceLauncher]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController btnPlaceLauncher]")]
-pub fn stub_1d390() -> ! {
-    todo!("0x1d390 -[HomeViewController btnPlaceLauncher]")
+pub fn stub_1d390() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x1d390)
+    HOME.btn_place_launcher()
 }
 
 // 0x1d3a0 — -[HomeViewController setBtnPlaceLauncher:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBtnPlaceLauncher:]")]
-pub fn stub_1d3a0() -> ! {
-    todo!("0x1d3a0 -[HomeViewController setBtnPlaceLauncher:]")
+pub fn stub_1d3a0(btn: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x1d3a0)
+    HOME.set_btn_place_launcher(btn);
 }
 
 // 0x246d8 — -[PlaceLauncher init]
 // type: PlaceLauncher *__cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher init]")]
-pub fn stub_246d8() -> ! {
-    todo!("0x246d8 -[PlaceLauncher init]")
+pub fn stub_246d8() {
+    // delegate of crate::roblox_view (IDA 0x246d8)
+    LAUNCHER.init_launcher();
 }
 
 // 0x248dc — -[PlaceLauncher dealloc]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher dealloc]")]
-pub fn stub_248dc() -> ! {
-    todo!("0x248dc -[PlaceLauncher dealloc]")
+pub fn stub_248dc() {
+    // delegate of crate::roblox_view (IDA 0x248dc)
+    LAUNCHER.dealloc_launcher();
 }
 
 // 0x24974 — +[PlaceLauncher sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[PlaceLauncher sharedInstance]")]
-pub fn stub_24974() -> ! {
-    todo!("0x24974 +[PlaceLauncher sharedInstance]")
+pub fn stub_24974() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x24974)
+    crate::roblox_view::shared_place_launcher_id()
 }
 
 // 0x249d0 — ___31+[PlaceLauncher sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___31+[PlaceLauncher sharedInstance]_block_invoke")]
-pub fn stub_249d0() -> ! {
-    todo!("0x249d0 ___31+[PlaceLauncher sharedInstance]_block_invoke")
+pub fn stub_249d0() -> crate::roblox_view::ObjCId {
+    // delegate of crate::roblox_view (IDA 0x249d0)
+    crate::roblox_view::shared_place_launcher_block()
 }
 
 // 0x24a18 — -[PlaceLauncher getIsCurrentlyPlayingGame]
 // type: char __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher getIsCurrentlyPlayingGame]")]
-pub fn stub_24a18() -> ! {
-    todo!("0x24a18 -[PlaceLauncher getIsCurrentlyPlayingGame]")
+pub fn stub_24a18() -> bool {
+    // delegate of crate::roblox_view (IDA 0x24a18)
+    LAUNCHER.is_currently_playing_game()
 }
 
 // 0x24a28 — -[PlaceLauncher getDidLeaveGameNotification]
 // type: id __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher getDidLeaveGameNotification]")]
-pub fn stub_24a28() -> ! {
-    todo!("0x24a28 -[PlaceLauncher getDidLeaveGameNotification]")
+pub fn stub_24a28() -> String {
+    // delegate of crate::roblox_view (IDA 0x24a28)
+    LAUNCHER.did_leave_game_notification()
 }
 
 // 0x24a38 — -[PlaceLauncher getStartLeaveGameNotification]
 // type: id __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher getStartLeaveGameNotification]")]
-pub fn stub_24a38() -> ! {
-    todo!("0x24a38 -[PlaceLauncher getStartLeaveGameNotification]")
+pub fn stub_24a38() -> String {
+    // delegate of crate::roblox_view (IDA 0x24a38)
+    LAUNCHER.start_leave_game_notification()
 }
 
 // 0x24a48 — -[PlaceLauncher getGameFinishedLoadingNotification]
 // type: id __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher getGameFinishedLoadingNotification]")]
-pub fn stub_24a48() -> ! {
-    todo!("0x24a48 -[PlaceLauncher getGameFinishedLoadingNotification]")
+pub fn stub_24a48() -> String {
+    // delegate of crate::roblox_view (IDA 0x24a48)
+    LAUNCHER.game_finished_loading_notification()
 }
 
 // 0x24a58 — -[PlaceLauncher handleStartGameFailure]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher handleStartGameFailure]")]
-pub fn stub_24a58() -> ! {
-    todo!("0x24a58 -[PlaceLauncher handleStartGameFailure]")
+pub fn stub_24a58() {
+    // delegate of crate::roblox_view (IDA 0x24a58)
+    LAUNCHER.handle_start_game_failure();
 }
 
 // 0x24ab0 — -[PlaceLauncher prepareGame]
 // type: bool __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher prepareGame]")]
-pub fn stub_24ab0() -> ! {
-    todo!("0x24ab0 -[PlaceLauncher prepareGame]")
+pub fn stub_24ab0() -> bool {
+    // delegate of crate::roblox_view (IDA 0x24ab0)
+    LAUNCHER.prepare_game()
 }
 
 // 0x25080 — -[PlaceLauncher setLastPlaceId:]
 // type: void __cdecl(PlaceLauncher *self, SEL, int)
 #[doc(alias = "-[PlaceLauncher setLastPlaceId:]")]
-pub fn stub_25080() -> ! {
-    todo!("0x25080 -[PlaceLauncher setLastPlaceId:]")
+pub fn stub_25080(place_id: i32) {
+    // delegate of crate::roblox_view (IDA 0x25080)
+    LAUNCHER.set_last_place_id(place_id);
 }
 
 // 0x25090 — -[PlaceLauncher checkPlacePartCount]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher checkPlacePartCount]")]
-pub fn stub_25090() -> ! {
-    todo!("0x25090 -[PlaceLauncher checkPlacePartCount]")
+pub fn stub_25090() {
+    // delegate of crate::roblox_view (IDA 0x25090)
+    LAUNCHER.check_place_part_count();
 }
 
 // 0x2512c — ___36-[PlaceLauncher checkPlacePartCount]_block_invoke
 #[doc(alias = "___36-[PlaceLauncher checkPlacePartCount]_block_invoke")]
-pub fn stub_2512c() -> ! {
-    todo!("0x2512c ___36-[PlaceLauncher checkPlacePartCount]_block_invoke")
+pub fn stub_2512c() -> bool {
+    // delegate of crate::roblox_view (IDA 0x2512c)
+    LAUNCHER.check_place_part_count_block()
 }
 
 // 0x253e0 — -[PlaceLauncher placeDidFinishLoading]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher placeDidFinishLoading]")]
-pub fn stub_253e0() -> ! {
-    todo!("0x253e0 -[PlaceLauncher placeDidFinishLoading]")
+pub fn stub_253e0() {
+    // delegate of crate::roblox_view (IDA 0x253e0)
+    LAUNCHER.place_did_finish_loading();
 }
 
 // 0x25498 — -[PlaceLauncher finishGameSetup:gameViewController:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Game>, id)
 #[doc(alias = "-[PlaceLauncher finishGameSetup:gameViewController:]")]
-pub fn stub_25498() -> ! {
-    todo!("0x25498 -[PlaceLauncher finishGameSetup:gameViewController:]")
+pub fn stub_25498(game_id: u32, game_view_controller: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x25498)
+    LAUNCHER.finish_game_setup(
+        &crate::roblox_view::wrap_game(game_id),
+        game_view_controller,
+        0,
+        0,
+        false,
+        false,
+    );
 }
 
 // 0x25e00 — -[PlaceLauncher setupDatamodelConnections:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::DataModel>)
 #[doc(alias = "-[PlaceLauncher setupDatamodelConnections:]")]
-pub fn stub_25e00() -> ! {
-    todo!("0x25e00 -[PlaceLauncher setupDatamodelConnections:]")
+pub fn stub_25e00() {
+    // delegate of crate::roblox_view (IDA 0x25e00)
+    LAUNCHER.setup_datamodel_connections(true, true);
 }
 
 // 0x2613c — ___43-[PlaceLauncher setupDatamodelConnections:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___43-[PlaceLauncher setupDatamodelConnections:]_block_invoke")]
-pub fn stub_2613c() -> ! {
-    todo!("0x2613c ___43-[PlaceLauncher setupDatamodelConnections:]_block_invoke")
+pub fn stub_2613c() {
+    // delegate of crate::roblox_view (IDA 0x2613c)
+    crate::roblox_view::setup_datamodel_connections_block(&PLACE_SLOT);
 }
 
 // 0x26170 — -[PlaceLauncher setLastNonGameController:]
 // type: void __cdecl(PlaceLauncher *self, SEL, id)
 #[doc(alias = "-[PlaceLauncher setLastNonGameController:]")]
-pub fn stub_26170() -> ! {
-    todo!("0x26170 -[PlaceLauncher setLastNonGameController:]")
+pub fn stub_26170(controller: crate::roblox_view::ObjCId) -> bool {
+    // delegate of crate::roblox_view (IDA 0x26170)
+    LAUNCHER.set_last_non_game_controller(Some(controller))
 }
 
 // 0x261d8 — -[PlaceLauncher createGame:presentGameAutomatically:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Game>, char)
 #[doc(alias = "-[PlaceLauncher createGame:presentGameAutomatically:]")]
-pub fn stub_261d8() -> ! {
-    todo!("0x261d8 -[PlaceLauncher createGame:presentGameAutomatically:]")
+pub fn stub_261d8(game_id: u32, present: bool) {
+    // delegate of crate::roblox_view (IDA 0x261d8)
+    LAUNCHER.create_game(&crate::roblox_view::wrap_game(game_id), present);
 }
 
 // 0x26520 — -[PlaceLauncher setupGame:isApp:]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, PlaceLauncher *self, SEL, id, char)
 #[doc(alias = "-[PlaceLauncher setupGame:isApp:]")]
-pub fn stub_26520() -> ! {
-    todo!("0x26520 -[PlaceLauncher setupGame:isApp:]")
+pub fn stub_26520(
+    controller: crate::roblox_view::ObjCId,
+    is_app: bool,
+) -> Option<SharedPtr<crate::roblox_view::GameHandle>> {
+    // delegate of crate::roblox_view (IDA 0x26520)
+    LAUNCHER.setup_game(controller, is_app)
 }
 
 // 0x26558 — -[PlaceLauncher setupGame:unsecuredGame:isApp:]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, PlaceLauncher *self, SEL, id, char, char)
 #[doc(alias = "-[PlaceLauncher setupGame:unsecuredGame:isApp:]")]
-pub fn stub_26558() -> ! {
-    todo!("0x26558 -[PlaceLauncher setupGame:unsecuredGame:isApp:]")
+pub fn stub_26558(
+    controller: crate::roblox_view::ObjCId,
+    unsecured: bool,
+    is_app: bool,
+) -> Option<SharedPtr<crate::roblox_view::GameHandle>> {
+    // delegate of crate::roblox_view (IDA 0x26558)
+    LAUNCHER.setup_game_unsecured(controller, unsecured, is_app)
 }
 
 // 0x26784 — -[PlaceLauncher setupPreloadedGameWithNonGameController:unsecuredGame:isApp:]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, PlaceLauncher *self, SEL, id, char, char)
 #[doc(alias = "-[PlaceLauncher setupPreloadedGameWithNonGameController:unsecuredGame:isApp:]")]
-pub fn stub_26784() -> ! {
-    todo!("0x26784 -[PlaceLauncher setupPreloadedGameWithNonGameController:unsecuredGame:isApp:]")
+pub fn stub_26784(
+    controller: crate::roblox_view::ObjCId,
+    unsecured: bool,
+    is_app: bool,
+) -> Option<SharedPtr<crate::roblox_view::GameHandle>> {
+    // delegate of crate::roblox_view (IDA 0x26784)
+    LAUNCHER.setup_preloaded_game_unsecured(controller, unsecured, is_app)
 }
 
 // 0x267bc — -[PlaceLauncher setupPreloadedGameWithNonGameController:isApp:]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, PlaceLauncher *self, SEL, id, char)
 #[doc(alias = "-[PlaceLauncher setupPreloadedGameWithNonGameController:isApp:]")]
-pub fn stub_267bc() -> ! {
-    todo!("0x267bc -[PlaceLauncher setupPreloadedGameWithNonGameController:isApp:]")
+pub fn stub_267bc(
+    controller: crate::roblox_view::ObjCId,
+    is_app: bool,
+) -> Option<SharedPtr<crate::roblox_view::GameHandle>> {
+    // delegate of crate::roblox_view (IDA 0x267bc)
+    LAUNCHER.setup_preloaded_game(controller, is_app)
 }
 
 // 0x267ec — -[PlaceLauncher injectJoinScript:]
 // type: void __cdecl(PlaceLauncher *self, SEL, id)
 #[doc(alias = "-[PlaceLauncher injectJoinScript:]")]
-pub fn stub_267ec() -> ! {
-    todo!("0x267ec -[PlaceLauncher injectJoinScript:]")
+pub fn stub_267ec(script: &str) {
+    // delegate of crate::roblox_view (IDA 0x267ec)
+    LAUNCHER.inject_join_script(script);
 }
 
 // 0x26bb8 — -[PlaceLauncher startGameLocal:ipAddress:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, int, id, id, char)
 #[doc(alias = "-[PlaceLauncher startGameLocal:ipAddress:controller:presentGameAutomatically:]")]
-pub fn stub_26bb8() -> ! {
-    todo!("0x26bb8 -[PlaceLauncher startGameLocal:ipAddress:controller:presentGameAutomatically:]")
+pub fn stub_26bb8(
+    place_id: i32,
+    ip: &str,
+    controller: crate::roblox_view::ObjCId,
+    present: bool,
+) -> bool {
+    // delegate of crate::roblox_view (IDA 0x26bb8)
+    LAUNCHER.start_game_local(place_id, ip, controller, present)
 }
 
 // 0x27054 — -[PlaceLauncher startAppWithFile:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, id, id, char)
 #[doc(alias = "-[PlaceLauncher startAppWithFile:controller:presentGameAutomatically:]")]
-pub fn stub_27054() -> ! {
-    todo!("0x27054 -[PlaceLauncher startAppWithFile:controller:presentGameAutomatically:]")
+pub fn stub_27054(
+    path: &str,
+    controller: crate::roblox_view::ObjCId,
+    present: bool,
+) -> bool {
+    // delegate of crate::roblox_view (IDA 0x27054)
+    LAUNCHER.start_app_with_file(path, controller, present)
 }
 
 // 0x276b0 — -[PlaceLauncher startAppWithId:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, int, id, char)
 #[doc(alias = "-[PlaceLauncher startAppWithId:controller:presentGameAutomatically:]")]
-pub fn stub_276b0() -> ! {
-    todo!("0x276b0 -[PlaceLauncher startAppWithId:controller:presentGameAutomatically:]")
+pub fn stub_276b0(
+    place_id: i32,
+    controller: crate::roblox_view::ObjCId,
+    present: bool,
+) -> bool {
+    // delegate of crate::roblox_view (IDA 0x276b0)
+    LAUNCHER.start_app_with_id(place_id, controller, present)
 }
 
 // 0x289a8 — -[PlaceLauncher startGame:controller:request:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, int, id, int, char)
 #[doc(alias = "-[PlaceLauncher startGame:controller:request:presentGameAutomatically:]")]
-pub fn stub_289a8() -> ! {
-    todo!("0x289a8 -[PlaceLauncher startGame:controller:request:presentGameAutomatically:]")
+pub fn stub_289a8(
+    place_id: i32,
+    controller: crate::roblox_view::ObjCId,
+    request: i32,
+    present: bool,
+) -> bool {
+    // delegate of crate::roblox_view (IDA 0x289a8)
+    LAUNCHER.start_game_request(place_id, controller, request, present)
 }
 
 // 0x28ba8 — -[PlaceLauncher startGameSolo:controller:presentGameAutomatically:]
