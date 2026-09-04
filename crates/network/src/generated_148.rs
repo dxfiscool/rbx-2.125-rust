@@ -852,6 +852,7 @@ pub fn stub_a5b9cc() -> ! {
 // demangled: RakNet::SystemAddress::SystemAddress(void)
 // type: int __fastcall(int this)
 #[doc(alias = "RakNet::SystemAddress::SystemAddress(void)")]
-pub fn stub_a5bfec() -> ! {
-    todo!("0xa5bfec RakNet::SystemAddress::SystemAddress(void)")
+pub fn stub_a5bfec() -> crate::socket::SystemAddress {
+ // IDA 0xa5bfec: zeroed with the IPv4 family byte.
+ crate::socket::SystemAddress::new()
 }

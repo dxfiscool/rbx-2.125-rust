@@ -2495,32 +2495,37 @@ pub fn stub_a5b5b0(present: bool, verbose: u32, sent_per_sec: u64, received_per_
 
 // 0xa5bfec — __ZN6RakNet13SystemAddressC1Ev
 #[doc(alias = "RakNet::SystemAddress::SystemAddress(void)")]
-pub fn stub_a5bfec() -> ! {
-    todo!("0xa5bfec RakNet::SystemAddress::SystemAddress(void)")
+pub fn stub_a5bfec() -> crate::socket::SystemAddress {
+ // IDA 0xa5bfec: zeroed with the IPv4 family byte.
+ crate::socket::SystemAddress::new()
 }
 
 // 0xa5c004 — __ZN6RakNet10RakNetGUIDC1Ev
 #[doc(alias = "RakNet::RakNetGUID::RakNetGUID(void)")]
-pub fn stub_a5c004() -> ! {
-    todo!("0xa5c004 RakNet::RakNetGUID::RakNetGUID(void)")
+pub fn stub_a5c004() -> crate::socket::RakNetGuid {
+ // IDA 0xa5c004: unassigned guid.
+ crate::socket::RakNetGuid::new()
 }
 
 // 0xa5c024 — __ZN6RakNet13SystemAddressaSERKS0_
 #[doc(alias = "RakNet::SystemAddress::operator=(RakNet::SystemAddress const&)")]
-pub fn stub_a5c024() -> ! {
-    todo!("0xa5c024 RakNet::SystemAddress::operator=(RakNet::SystemAddress const&)")
+pub fn stub_a5c024(dst: &mut crate::socket::SystemAddress, src: &crate::socket::SystemAddress) {
+ // IDA 0xa5c024: copy assign.
+ dst.assign(src)
 }
 
 // 0xa5c038 — __ZNK6RakNet10RakNetGUIDneERKS0_
 #[doc(alias = "RakNet::RakNetGUID::operator!=(RakNet::RakNetGUID const&)const")]
-pub fn stub_a5c038() -> ! {
-    todo!("0xa5c038 RakNet::RakNetGUID::operator!=(RakNet::RakNetGUID const&)const")
+pub fn stub_a5c038(a: &crate::socket::RakNetGuid, b: &crate::socket::RakNetGuid) -> bool {
+ // IDA 0xa5c038: guid-only inequality.
+ a.not_equal(b)
 }
 
 // 0xa5c04c — __ZN6RakNet13SystemAddress9ToIntegerERKS0_
 #[doc(alias = "RakNet::SystemAddress::ToInteger(RakNet::SystemAddress const&)")]
-pub fn stub_a5c04c() -> ! {
-    todo!("0xa5c04c RakNet::SystemAddress::ToInteger(RakNet::SystemAddress const&)")
+pub fn stub_a5c04c(addr: &crate::socket::SystemAddress) -> u32 {
+ // IDA 0xa5c04c: SuperFastHash over port plus address.
+ addr.to_integer()
 }
 
 // 0xa5c068 — __ZNK6RakNet13SystemAddress8ToStringEbc
@@ -2543,56 +2548,65 @@ pub fn stub_a5c0b0() -> ! {
 
 // 0xa5c0d8 — __ZNK6RakNet13SystemAddress19EqualsExcludingPortERKS0_
 #[doc(alias = "RakNet::SystemAddress::EqualsExcludingPort(RakNet::SystemAddress const&)const")]
-pub fn stub_a5c0d8() -> ! {
-    todo!("0xa5c0d8 RakNet::SystemAddress::EqualsExcludingPort(RakNet::SystemAddress const&)const")
+pub fn stub_a5c0d8(a: &crate::socket::SystemAddress, b: &crate::socket::SystemAddress) -> bool {
+ // IDA 0xa5c0d8: binary compare for IPv4.
+ a.equals_excluding_port(b)
 }
 
 // 0xa5c0f0 — __ZNK6RakNet13SystemAddress16GetBinaryAddressEv
 #[doc(alias = "RakNet::SystemAddress::GetBinaryAddress(void)const")]
-pub fn stub_a5c0f0() -> ! {
-    todo!("0xa5c0f0 RakNet::SystemAddress::GetBinaryAddress(void)const")
+pub fn stub_a5c0f0(addr: &crate::socket::SystemAddress) -> u32 {
+ // IDA 0xa5c0f0: raw address word.
+ addr.binary_address()
 }
 
 // 0xa5c0f4 — __ZNK6RakNet13SystemAddress7GetPortEv
 #[doc(alias = "RakNet::SystemAddress::GetPort(void)const")]
-pub fn stub_a5c0f4() -> ! {
-    todo!("0xa5c0f4 RakNet::SystemAddress::GetPort(void)const")
+pub fn stub_a5c0f4(addr: &crate::socket::SystemAddress) -> u16 {
+ // IDA 0xa5c0f4: byte-swapped port.
+ addr.port()
 }
 
 // 0xa5c0fc — __ZNK6RakNet13SystemAddress19GetPortNetworkOrderEv
 #[doc(alias = "RakNet::SystemAddress::GetPortNetworkOrder(void)const")]
-pub fn stub_a5c0fc() -> ! {
-    todo!("0xa5c0fc RakNet::SystemAddress::GetPortNetworkOrder(void)const")
+pub fn stub_a5c0fc(addr: &crate::socket::SystemAddress) -> u16 {
+ // IDA 0xa5c0fc: raw port image.
+ addr.port_network_order()
 }
 
 // 0xa5c100 — __ZN6RakNet13SystemAddress19SetPortNetworkOrderEt
 #[doc(alias = "RakNet::SystemAddress::SetPortNetworkOrder(unsigned short)")]
-pub fn stub_a5c100() -> ! {
-    todo!("0xa5c100 RakNet::SystemAddress::SetPortNetworkOrder(unsigned short)")
+pub fn stub_a5c100(addr: &mut crate::socket::SystemAddress, port: u16) {
+ // IDA 0xa5c100: store the raw port image.
+ addr.set_port_network_order(port)
 }
 
 // 0xa5c108 — __ZNK6RakNet13SystemAddresseqERKS0_
 #[doc(alias = "RakNet::SystemAddress::operator==(RakNet::SystemAddress const&)const")]
-pub fn stub_a5c108() -> ! {
-    todo!("0xa5c108 RakNet::SystemAddress::operator==(RakNet::SystemAddress const&)const")
+pub fn stub_a5c108(a: &crate::socket::SystemAddress, b: &crate::socket::SystemAddress) -> bool {
+ // IDA 0xa5c108: ports, family gate, then address.
+ a.equals(b)
 }
 
 // 0xa5c12c — __ZNK6RakNet13SystemAddressneERKS0_
 #[doc(alias = "RakNet::SystemAddress::operator!=(RakNet::SystemAddress const&)const")]
-pub fn stub_a5c12c() -> ! {
-    todo!("0xa5c12c RakNet::SystemAddress::operator!=(RakNet::SystemAddress const&)const")
+pub fn stub_a5c12c(a: &crate::socket::SystemAddress, b: &crate::socket::SystemAddress) -> bool {
+ // IDA 0xa5c12c: negated equality.
+ a.not_equals(b)
 }
 
 // 0xa5c154 — __ZNK6RakNet13SystemAddress12GetIPVersionEv
 #[doc(alias = "RakNet::SystemAddress::GetIPVersion(void)const")]
-pub fn stub_a5c154() -> ! {
-    todo!("0xa5c154 RakNet::SystemAddress::GetIPVersion(void)const")
+pub fn stub_a5c154(addr: &crate::socket::SystemAddress) -> u32 {
+ // IDA 0xa5c154: 4 for IPv4, else 6.
+ addr.ip_version()
 }
 
 // 0xa5c160 — __ZNK6RakNet13SystemAddress10GetIPPROTOEv
 #[doc(alias = "RakNet::SystemAddress::GetIPPROTO(void)const")]
-pub fn stub_a5c160() -> ! {
-    todo!("0xa5c160 RakNet::SystemAddress::GetIPPROTO(void)const")
+pub fn stub_a5c160(_addr: &crate::socket::SystemAddress) -> u32 {
+ // IDA 0xa5c160: always 0.
+ 0
 }
 
 // 0xa5c164 — __ZN6RakNet13SystemAddress13SetToLoopbackEh

@@ -23,24 +23,27 @@ pub fn stub_a51fe4() -> ! {
 // type: bool __fastcall(int, int)
 #[doc(alias = "RakNet::SystemAddress::operator!=(RakNet::SystemAddress const&)const")]
 #[doc(alias = "__ZNK6RakNet13SystemAddressneERKS0_")]
-pub fn stub_a5c12c() -> ! {
-    todo!("0xa5c12c RakNet::SystemAddress::operator!=(RakNet::SystemAddress const&)const")
+pub fn stub_a5c12c(a: &crate::socket::SystemAddress, b: &crate::socket::SystemAddress) -> bool {
+ // IDA 0xa5c12c: negated equality.
+ a.not_equals(b)
 }
 
 // 0xa5c154 — __ZNK6RakNet13SystemAddress12GetIPVersionEv
 // type: int __fastcall(RakNet::SystemAddress *this)
 #[doc(alias = "RakNet::SystemAddress::GetIPVersion(void)const")]
 #[doc(alias = "__ZNK6RakNet13SystemAddress12GetIPVersionEv")]
-pub fn stub_a5c154() -> ! {
-    todo!("0xa5c154 RakNet::SystemAddress::GetIPVersion(void)const")
+pub fn stub_a5c154(addr: &crate::socket::SystemAddress) -> u32 {
+ // IDA 0xa5c154: 4 for IPv4, else 6.
+ addr.ip_version()
 }
 
 // 0xa5c160 — __ZNK6RakNet13SystemAddress10GetIPPROTOEv
 // type: int __fastcall(RakNet::SystemAddress *this)
 #[doc(alias = "RakNet::SystemAddress::GetIPPROTO(void)const")]
 #[doc(alias = "__ZNK6RakNet13SystemAddress10GetIPPROTOEv")]
-pub fn stub_a5c160() -> ! {
-    todo!("0xa5c160 RakNet::SystemAddress::GetIPPROTO(void)const")
+pub fn stub_a5c160(_addr: &crate::socket::SystemAddress) -> u32 {
+ // IDA 0xa5c160: always 0.
+ 0
 }
 
 // 0xa5c164 — __ZN6RakNet13SystemAddress13SetToLoopbackEh
