@@ -891,117 +891,218 @@ pub fn stub_16e24() {
 // 0x16e4c — __GLOBAL__I_a
 // was: global constructor keyed to_a
 #[doc(alias = "global constructor keyed to_a")]
-pub fn stub_16e4c() -> ! {
-    todo!("0x16e4c global constructor keyed to_a")
+pub fn stub_16e4c() {
+    // IDA 0x16e4c (global static ctor: `boost::system::generic_category` /
+    // `system_category` stores 0x16e56..0x16e70, `std::ios_base::Init::Init`
+    // + `__cxa_atexit` 0x16e72..0x16e94, registrar guards after 0x16e98):
+    // host statics need no init; ErrorCode categories have no host
+    // counterpart. Static init — carrier no-op.
 }
 
 // 0x179e8 — __ZN3RBX9DataModel10serverSaveEv
 #[doc(alias = "RBX::DataModel::serverSave(void)")]
-pub fn stub_179e8() -> ! {
-    todo!("0x179e8 RBX::DataModel::serverSave(void)")
+pub fn stub_179e8() {
+    // IDA 0x179e8 (decompiled empty body `;`): no observable behavior.
+    // DataModel is owned by the datamodel crate; carrier no-op here.
 }
 
 // 0x179ec — __ZN3RBX9DataModel17internalSaveAsyncENS_9ContentIdEN5boost8functionIFvbEEE
 #[doc(alias = "RBX::DataModel::internalSaveAsync(RBX::ContentId,boost::function<void ()(bool)>)")]
-pub fn stub_179ec() -> ! {
-    todo!("0x179ec RBX::DataModel::internalSaveAsync(RBX::ContentId,boost::function<void ()(bool)>)")
+pub fn stub_179ec() {
+    // IDA 0x179ec (decompiled empty body `;`): no observable behavior.
+    // was: boost::function -> Box<dyn Fn> (AGENTS.md section 4); nothing to
+    // invoke. Carrier no-op.
 }
 
 // 0x179f0 — __ZN3RBX9DataModel12internalSaveENS_9ContentIdE
 #[doc(alias = "RBX::DataModel::internalSave(RBX::ContentId)")]
-pub fn stub_179f0() -> ! {
-    todo!("0x179f0 RBX::DataModel::internalSave(RBX::ContentId)")
+pub fn stub_179f0() {
+    // IDA 0x179f0 (decompiled empty body `;`): no observable behavior.
+    // Carrier no-op.
 }
 
 // 0x179f4 — __ZN3RBX9DataModel11uploadPlaceERKSsNS_8Instance10SaveFilterEN5boost8functionIFvNS5_10shared_ptrIKNS_10Reflection5TupleEEEEEENS6_IFvSsEEE
 #[doc(alias = "RBX::DataModel::uploadPlace(std::string const&,RBX::Instance::SaveFilter,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)")]
-pub fn stub_179f4() -> ! {
-    todo!("0x179f4 RBX::DataModel::uploadPlace(std::string const&,RBX::Instance::SaveFilter,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)")
+pub fn stub_179f4() {
+    // IDA 0x179f4..0x17aa2 (decompiled 0x179f4..: `operator new(0xC)`,
+    // null `shared_ptr<Tuple>` + aliasing const copy, `sp_counted_base`
+    // `release`; no other calls): net-nothing shared_ptr juggling — was:
+    // boost::shared_ptr -> rbx_core::SharedPtr (Arc), whose Drop covers the
+    // release. Carrier no-op.
 }
 
 // 0x17c58 — __GLOBAL__I_a_0
 // was: global constructor keyed to_a_0
 #[doc(alias = "global constructor keyed to_a_0")]
-pub fn stub_17c58() -> ! {
-    todo!("0x17c58 global constructor keyed to_a_0")
+pub fn stub_17c58() {
+    // IDA 0x17c58 (global static ctor twin of 0x16e4c: boost category
+    // stores 0x17c5c..0x17c76, `std::ios_base::Init::Init` +
+    // `__cxa_atexit` 0x17c78..0x17c9a, exception-object guards after
+    // 0x17c9e): static init — carrier no-op.
+}
+
+/// Audio-crate host for the `Appirater` ObjC class cluster (IDA
+/// 0x17df0..0x180a8): class-level config slots plus the `dispatch_once`
+/// shared instance. `NSUserDefaults` persistence and `UIAlertView` collapse
+/// to plain host state; `id` tokens are `u64` (`0` is `nil`). Mirrors the
+/// platform crate `Appirater` model (which owns the full state machine);
+/// audio cannot depend on platform (AGENTS.md DAG), so the slots these
+/// filler EAs touch live here.
+#[derive(Debug, Default)]
+pub struct AudioAppirater {
+    app_id: parking_lot::Mutex<String>,
+    days_until_prompt: parking_lot::Mutex<f64>,
+    uses_until_prompt: std::sync::atomic::AtomicU32,
+    significant_events_until_prompt: std::sync::atomic::AtomicU32,
+    time_before_reminding: parking_lot::Mutex<f64>,
+    debug: std::sync::atomic::AtomicBool,
+    pending_delegate: parking_lot::Mutex<u64>,
+    delegate: parking_lot::Mutex<u64>,
+    resign_active_observed: std::sync::atomic::AtomicBool,
+    network_reachable: std::sync::atomic::AtomicBool,
+    rating_alert_shows: std::sync::atomic::AtomicU32,
+    rating_alert_visible: std::sync::atomic::AtomicBool,
+}
+
+impl AudioAppirater {
+    fn shared() -> &'static Self {
+        static APPIRATER: std::sync::LazyLock<AudioAppirater> =
+            std::sync::LazyLock::new(|| {
+                let appirater = AudioAppirater::default();
+                // Reachability reads clean on a live device, so the
+                // `connectedToNetwork` (IDA 0x17e68) fast path starts
+                // reachable.
+                appirater
+                    .network_reachable
+                    .store(true, std::sync::atomic::Ordering::SeqCst);
+                appirater
+            });
+        &APPIRATER
+    }
 }
 
 // 0x17df0 — +[Appirater setAppId:]
 #[doc(alias = "+[Appirater setAppId:]")]
-pub fn stub_17df0() -> ! {
-    todo!("0x17df0 +[Appirater setAppId:]")
+pub fn stub_17df0(app_id: &str) {
+    // IDA 0x17df0 (`+[Appirater setAppId:]`, ObjC class setter): stores the
+    // class-level app id slot.
+    *AudioAppirater::shared().app_id.lock() = app_id.to_owned();
 }
 
 // 0x17e00 — +[Appirater setDaysUntilPrompt:]
 #[doc(alias = "+[Appirater setDaysUntilPrompt:]")]
-pub fn stub_17e00() -> ! {
-    todo!("0x17e00 +[Appirater setDaysUntilPrompt:]")
+pub fn stub_17e00(days: f64) {
+    // IDA 0x17e00 (`+[Appirater setDaysUntilPrompt:]`): stores the
+    // class-level days-until-prompt slot.
+    *AudioAppirater::shared().days_until_prompt.lock() = days;
 }
 
 // 0x17e14 — +[Appirater setUsesUntilPrompt:]
 #[doc(alias = "+[Appirater setUsesUntilPrompt:]")]
-pub fn stub_17e14() -> ! {
-    todo!("0x17e14 +[Appirater setUsesUntilPrompt:]")
+pub fn stub_17e14(uses: u32) {
+    // IDA 0x17e14 (`+[Appirater setUsesUntilPrompt:]`): stores the
+    // class-level uses-until-prompt slot.
+    AudioAppirater::shared()
+        .uses_until_prompt
+        .store(uses, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x17e24 — +[Appirater setSignificantEventsUntilPrompt:]
 #[doc(alias = "+[Appirater setSignificantEventsUntilPrompt:]")]
-pub fn stub_17e24() -> ! {
-    todo!("0x17e24 +[Appirater setSignificantEventsUntilPrompt:]")
+pub fn stub_17e24(count: u32) {
+    // IDA 0x17e24 (`+[Appirater setSignificantEventsUntilPrompt:]`): stores
+    // the class-level significant-events-until-prompt slot.
+    AudioAppirater::shared()
+        .significant_events_until_prompt
+        .store(count, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x17e34 — +[Appirater setTimeBeforeReminding:]
 #[doc(alias = "+[Appirater setTimeBeforeReminding:]")]
-pub fn stub_17e34() -> ! {
-    todo!("0x17e34 +[Appirater setTimeBeforeReminding:]")
+pub fn stub_17e34(days: f64) {
+    // IDA 0x17e34 (`+[Appirater setTimeBeforeReminding:]`): stores the
+    // class-level time-before-reminding slot.
+    *AudioAppirater::shared().time_before_reminding.lock() = days;
 }
 
 // 0x17e48 — +[Appirater setDebug:]
 #[doc(alias = "+[Appirater setDebug:]")]
-pub fn stub_17e48() -> ! {
-    todo!("0x17e48 +[Appirater setDebug:]")
+pub fn stub_17e48(debug: bool) {
+    // IDA 0x17e48 (`+[Appirater setDebug:]`): stores the class-level debug
+    // slot.
+    AudioAppirater::shared()
+        .debug
+        .store(debug, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x17e58 — +[Appirater setDelegate:]
 #[doc(alias = "+[Appirater setDelegate:]")]
-pub fn stub_17e58() -> ! {
-    todo!("0x17e58 +[Appirater setDelegate:]")
+pub fn stub_17e58(delegate: u64) {
+    // IDA 0x17e58 (`+[Appirater setDelegate:]`): stores the class-level
+    // delegate slot consumed by the `sharedInstance` block (0x17fe4); `0`
+    // is `nil`.
+    *AudioAppirater::shared().pending_delegate.lock() = delegate;
 }
 
 // 0x17e68 — -[Appirater connectedToNetwork]
 #[doc(alias = "-[Appirater connectedToNetwork]")]
-pub fn stub_17e68() -> ! {
-    todo!("0x17e68 -[Appirater connectedToNetwork]")
+pub fn stub_17e68() -> bool {
+    // IDA 0x17e68 (`-[Appirater connectedToNetwork]` reachability check):
+    // host reachability starts clean (cf. `AudioAppirater::shared`).
+    AudioAppirater::shared()
+        .network_reachable
+        .load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x17f80 — +[Appirater sharedInstance]
 #[doc(alias = "+[Appirater sharedInstance]")]
-pub fn stub_17f80() -> ! {
-    todo!("0x17f80 +[Appirater sharedInstance]")
+pub fn stub_17f80() -> &'static AudioAppirater {
+    // IDA 0x17f80 (`+[Appirater sharedInstance]`: nil-check +
+    // `dispatch_once` over the 0x17fe4 block): `LazyLock` is the once cell.
+    AudioAppirater::shared()
 }
 
 // 0x17fe4 — ___27+[Appirater sharedInstance]_block_invoke
 #[doc(alias = "___27+[Appirater sharedInstance]_block_invoke")]
-pub fn stub_17fe4() -> ! {
-    todo!("0x17fe4 ___27+[Appirater sharedInstance]_block_invoke")
+pub fn stub_17fe4() -> &'static AudioAppirater {
+    // IDA 0x17fe4 (`__27+[Appirater sharedInstance]_block_invoke`:
+    // `[[Appirater alloc] init]`, `setDelegate:` from the class-level slot,
+    // `addObserver:...appWillResignActive`): publishes the shared instance,
+    // moves the pending delegate onto it, and arms the resign-active
+    // observer flag.
+    let inst = AudioAppirater::shared();
+    *inst.delegate.lock() = *inst.pending_delegate.lock();
+    inst.resign_active_observed
+        .store(true, std::sync::atomic::Ordering::SeqCst);
+    inst
 }
 
 // 0x18094 — ___copy_helper_block_
 #[doc(alias = "___copy_helper_block_")]
-pub fn stub_18094() -> ! {
-    todo!("0x18094 ___copy_helper_block_")
+pub fn stub_18094() {
+    // IDA 0x18094 (`__copy_helper_block_`: `_Block_object_assign` of the
+    // captured `self` at +20): ARC `Block_copy` — carrier no-op.
 }
 
 // 0x180a0 — ___destroy_helper_block_
 #[doc(alias = "___destroy_helper_block_")]
-pub fn stub_180a0() -> ! {
-    todo!("0x180a0 ___destroy_helper_block_")
+pub fn stub_180a0() {
+    // IDA 0x180a0 (`__destroy_helper_block_`: `_Block_object_dispose` of
+    // the capture at +20): ARC `Block_release` — carrier no-op.
 }
 
 // 0x180a8 — -[Appirater showRatingAlert]
 #[doc(alias = "-[Appirater showRatingAlert]")]
-pub fn stub_180a8() -> ! {
-    todo!("0x180a8 -[Appirater showRatingAlert]")
+pub fn stub_180a8() {
+    // IDA 0x180a8 (`-[Appirater showRatingAlert]`: localized bundle strings
+    // + `UIAlertView` presentation, delegate-gated): the alert view
+    // collapses to the visible flag + show count; the delegate gating and
+    // presentation live in the platform crate twin.
+    let inst = AudioAppirater::shared();
+    inst.rating_alert_shows
+        .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    inst.rating_alert_visible
+        .store(true, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x183d8 — -[Appirater ratingConditionsHaveBeenMet]
