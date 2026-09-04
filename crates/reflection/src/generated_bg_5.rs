@@ -7,142 +7,249 @@
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
+/// Gap-filler LoginViewController keyboard/transition observable state
+/// (IDA 0x1f380-0x1f854). The scrolled offset, password text, guest-tap
+/// flag and home-segue counts live in `generated_bg_4`; the background
+/// scene alphas, keyboard-show counts, pan stops, saved-defaults pair
+/// and segue dispatches record here with matching shapes.
+pub(crate) static LOGIN_BG_ALPHA_BITS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0x3f800000);
+pub(crate) static LOGIN_FG_ALPHA_BITS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0x3f800000);
+pub(crate) static LOGIN_BG_COPY_ALPHA_BITS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0x3f800000);
+pub(crate) static LOGIN_FG_COPY_ALPHA_BITS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0x3f800000);
+pub(crate) static LOGIN_KEYBOARD_SHOWS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LOGIN_KEYBOARD_SHOW_DISPATCHES: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LOGIN_BACKGROUND_PAN_STOPS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LOGIN_DEFAULTS: parking_lot::Mutex<(String, String)> =
+    parking_lot::Mutex::new((String::new(), String::new()));
+pub(crate) static LOGIN_HOME_SEGUE_DISPATCHES: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+/// Fade the four background-scene views together (IDA 0x1f3f8/0x1f5e0).
+/// `imgBackground`/`imgForeground` plus the `foregroundCopy` /
+/// `backgroundCopy` superclass ivars always move as one.
+pub(crate) fn set_login_scene_alpha(bits: u32) {
+    LOGIN_BG_ALPHA_BITS.store(bits, std::sync::atomic::Ordering::SeqCst);
+    LOGIN_FG_ALPHA_BITS.store(bits, std::sync::atomic::Ordering::SeqCst);
+    LOGIN_BG_COPY_ALPHA_BITS.store(bits, std::sync::atomic::Ordering::SeqCst);
+    LOGIN_FG_COPY_ALPHA_BITS.store(bits, std::sync::atomic::Ordering::SeqCst);
+}
+
 // 0x1f380 — ___38-[LoginViewController onKeyboardHide:]_block_invoke
 #[doc(alias = "___38-[LoginViewController onKeyboardHide:]_block_invoke")]
-pub fn stub_0x1f380() -> ! {
-    todo!("0x1f380 ___38-[LoginViewController onKeyboardHide:]_block_invoke")
+pub fn stub_0x1f380() {
+    // IDA 0x1f380: the hide block runs the 0.3s fade-in animation
+    // (0x1f380-0x1f3f4, stub_0x1f3f8). The animation hop collapses to the
+    // direct call.
+    stub_0x1f3f8();
 }
 
 // 0x1f3f8 — ___38-[LoginViewController onKeyboardHide:]_block_invoke_2
 #[doc(alias = "___38-[LoginViewController onKeyboardHide:]_block_invoke_2")]
-pub fn stub_0x1f3f8() -> ! {
-    todo!("0x1f3f8 ___38-[LoginViewController onKeyboardHide:]_block_invoke_2")
+pub fn stub_0x1f3f8() {
+    // IDA 0x1f3f8: the hide fade-in restores the background-scene alpha
+    // to 1.0 (0x1f3f8-0x1f47c, 0x3f800000): `imgBackground`,
+    // `imgForeground` and the `foregroundCopy`/`backgroundCopy`
+    // superclass ivars (disasm 0x1f442-0x1f46e).
+    set_login_scene_alpha(0x3f800000);
 }
 
 // 0x1f480 — ___copy_helper_block_300
 #[doc(alias = "___copy_helper_block_300")]
-pub fn stub_0x1f480() -> ! {
-    todo!("0x1f480 ___copy_helper_block_300")
+pub fn stub_0x1f480(_dst: usize, _src: usize) {
+    // IDA 0x1f480: `__copy_helper_block_300` — one `_Block_object_assign`
+    // retain (0x1f480-0x1f486, same shape as stub_0x18094). No explicit
+    // body.
 }
 
 // 0x1f48c — ___destroy_helper_block_301
 #[doc(alias = "___destroy_helper_block_301")]
-pub fn stub_0x1f48c() -> ! {
-    todo!("0x1f48c ___destroy_helper_block_301")
+pub fn stub_0x1f48c(_block: usize) {
+    // IDA 0x1f48c: `__destroy_helper_block_301` — one
+    // `_Block_object_dispose` release (0x1f48c-0x1f490, same shape as
+    // stub_0x180a0). No explicit body.
 }
 
 // 0x1f494 — ___copy_helper_block_305
 #[doc(alias = "___copy_helper_block_305")]
-pub fn stub_0x1f494() -> ! {
-    todo!("0x1f494 ___copy_helper_block_305")
+pub fn stub_0x1f494(_dst: usize, _src: usize) {
+    // IDA 0x1f494: `__copy_helper_block_305` — one `_Block_object_assign`
+    // retain (0x1f494-0x1f49a, same shape as stub_0x18094). No explicit
+    // body.
 }
 
 // 0x1f4a0 — ___destroy_helper_block_306
 #[doc(alias = "___destroy_helper_block_306")]
-pub fn stub_0x1f4a0() -> ! {
-    todo!("0x1f4a0 ___destroy_helper_block_306")
+pub fn stub_0x1f4a0(_block: usize) {
+    // IDA 0x1f4a0: `__destroy_helper_block_306` — one
+    // `_Block_object_dispose` release (0x1f4a0-0x1f4a4, same shape as
+    // stub_0x180a0). No explicit body.
 }
 
 // 0x1f4a8 — -[LoginViewController onKeyboardShow:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController onKeyboardShow:]")]
-pub fn stub_0x1f4a8() -> ! {
-    todo!("0x1f4a8 -[LoginViewController onKeyboardShow:]")
+pub fn stub_0x1f4a8(has_received_memory_warning: bool) {
+    // IDA 0x1f4a8: `onKeyboardShow:` shifts the scroll offset to (0, 115)
+    // animated (0x1f4a8-0x1f4f6, 115.0 = 0x42e60000) and, unless the
+    // controller has received a memory warning (0x1f4f8-0x1f508),
+    // dispatches the show block on main (0x1f50c-0x1f534, stub_0x1f538).
+    // The warning flag crosses as a parameter, mirroring stub_0x1f2e0;
+    // the queue hop collapses to the direct call.
+    *crate::generated_bg_4::LOGIN_SCROLL_OFFSET.lock() = (0.0, 115.0);
+    LOGIN_KEYBOARD_SHOWS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    if !has_received_memory_warning {
+        LOGIN_KEYBOARD_SHOW_DISPATCHES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        stub_0x1f538();
+    }
 }
 
 // 0x1f538 — ___38-[LoginViewController onKeyboardShow:]_block_invoke
 #[doc(alias = "___38-[LoginViewController onKeyboardShow:]_block_invoke")]
-pub fn stub_0x1f538() -> ! {
-    todo!("0x1f538 ___38-[LoginViewController onKeyboardShow:]_block_invoke")
+pub fn stub_0x1f538() {
+    // IDA 0x1f538: the show block runs the 0.3s fade-out animation
+    // (stub_0x1f5e0) with the pan-stop completion (stub_0x1f674)
+    // (0x1f538-0x1f5da). Both hops collapse to direct calls.
+    stub_0x1f5e0();
+    stub_0x1f674();
 }
 
 // 0x1f5e0 — ___38-[LoginViewController onKeyboardShow:]_block_invoke_2
 #[doc(alias = "___38-[LoginViewController onKeyboardShow:]_block_invoke_2")]
-pub fn stub_0x1f5e0() -> ! {
-    todo!("0x1f5e0 ___38-[LoginViewController onKeyboardShow:]_block_invoke_2")
+pub fn stub_0x1f5e0() {
+    // IDA 0x1f5e0: the show fade-out zeroes the background-scene alpha
+    // (0x1f5e0-0x1f656): `imgBackground`, `imgForeground` and the
+    // `foregroundCopy`/`backgroundCopy` superclass ivars, mirroring
+    // stub_0x1f3f8.
+    set_login_scene_alpha(0);
 }
 
 // 0x1f660 — ___copy_helper_block_308
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_308")]
-pub fn stub_0x1f660() -> ! {
-    todo!("0x1f660 ___copy_helper_block_308")
+pub fn stub_0x1f660(_dst: usize, _src: usize) {
+    // IDA 0x1f660: `__copy_helper_block_308` — one `_Block_object_assign`
+    // retain (0x1f660-0x1f666, same shape as stub_0x18094). No explicit
+    // body.
 }
 
 // 0x1f66c — ___destroy_helper_block_309
 #[doc(alias = "___destroy_helper_block_309")]
-pub fn stub_0x1f66c() -> ! {
-    todo!("0x1f66c ___destroy_helper_block_309")
+pub fn stub_0x1f66c(_block: usize) {
+    // IDA 0x1f66c: `__destroy_helper_block_309` — one
+    // `_Block_object_dispose` release (0x1f66c-0x1f670, same shape as
+    // stub_0x180a0). No explicit body.
 }
 
 // 0x1f674 — ___38-[LoginViewController onKeyboardShow:]_block_invoke311
 // type: id __fastcall(int)
 #[doc(alias = "___38-[LoginViewController onKeyboardShow:]_block_invoke311")]
-pub fn stub_0x1f674() -> ! {
-    todo!("0x1f674 ___38-[LoginViewController onKeyboardShow:]_block_invoke311")
+pub fn stub_0x1f674() {
+    // IDA 0x1f674: the show-animation completion stops the background
+    // pan (0x1f674-0x1f67c).
+    LOGIN_BACKGROUND_PAN_STOPS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1f688 — ___copy_helper_block_314
 #[doc(alias = "___copy_helper_block_314")]
-pub fn stub_0x1f688() -> ! {
-    todo!("0x1f688 ___copy_helper_block_314")
+pub fn stub_0x1f688(_dst: usize, _src: usize) {
+    // IDA 0x1f688: `__copy_helper_block_314` — one `_Block_object_assign`
+    // retain (0x1f688-0x1f68e, same shape as stub_0x18094). No explicit
+    // body.
 }
 
 // 0x1f694 — ___destroy_helper_block_315
 #[doc(alias = "___destroy_helper_block_315")]
-pub fn stub_0x1f694() -> ! {
-    todo!("0x1f694 ___destroy_helper_block_315")
+pub fn stub_0x1f694(_block: usize) {
+    // IDA 0x1f694: `__destroy_helper_block_315` — one
+    // `_Block_object_dispose` release (0x1f694-0x1f698, same shape as
+    // stub_0x180a0). No explicit body.
 }
 
 // 0x1f69c — ___copy_helper_block_320
 #[doc(alias = "___copy_helper_block_320")]
-pub fn stub_0x1f69c() -> ! {
-    todo!("0x1f69c ___copy_helper_block_320")
+pub fn stub_0x1f69c(_dst: usize, _src: usize) {
+    // IDA 0x1f69c: `__copy_helper_block_320` — one `_Block_object_assign`
+    // retain (0x1f69c-0x1f6a2, same shape as stub_0x18094). No explicit
+    // body.
 }
 
 // 0x1f6a8 — ___destroy_helper_block_321
 #[doc(alias = "___destroy_helper_block_321")]
-pub fn stub_0x1f6a8() -> ! {
-    todo!("0x1f6a8 ___destroy_helper_block_321")
+pub fn stub_0x1f6a8(_block: usize) {
+    // IDA 0x1f6a8: `__destroy_helper_block_321` — one
+    // `_Block_object_dispose` release (0x1f6a8-0x1f6ac, same shape as
+    // stub_0x180a0). No explicit body.
 }
 
 // 0x1f6b0 — -[LoginViewController doLoginTransition]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController doLoginTransition]")]
-pub fn stub_0x1f6b0() -> ! {
-    todo!("0x1f6b0 -[LoginViewController doLoginTransition]")
+pub fn stub_0x1f6b0(remember_password: bool, username: &str, password: &str) {
+    // IDA 0x1f6b0: `doLoginTransition` clears the password field on main
+    // when `LoginManager getRememberPassword` is unset (0x1f6c6-0x1f706,
+    // stub_0x1f808), saves the `UserInfo CurrentPlayer` username/password
+    // into `NSUserDefaults` (0x1f708-0x1f78c), and segues home with the
+    // guest-tap flag (0x1f78e-0x1f806, stub_0x1f854). The manager/player
+    // queries cross as parameters, mirroring stub_0x1e2ec; the queue hop
+    // collapses to the direct call.
+    if !remember_password {
+        stub_0x1f808();
+    }
+    crate::generated_bg_4::LOGIN_TRANSITIONS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    *LOGIN_DEFAULTS.lock() = (username.to_owned(), password.to_owned());
+    let guest = crate::generated_bg_4::USER_DID_CLICK_PLAY_NOW.load(std::sync::atomic::Ordering::SeqCst);
+    stub_0x1f854(guest);
 }
 
 // 0x1f808 — ___40-[LoginViewController doLoginTransition]_block_invoke
 #[doc(alias = "___40-[LoginViewController doLoginTransition]_block_invoke")]
-pub fn stub_0x1f808() -> ! {
-    todo!("0x1f808 ___40-[LoginViewController doLoginTransition]_block_invoke")
+pub fn stub_0x1f808() {
+    // IDA 0x1f808: the transition block clears the password field via
+    // `setText:` with nil (0x1f808-0x1f828) — the same observable as
+    // stub_0x1ed04.
+    crate::generated_bg_4::LOGIN_PASSWORD_TEXT.lock().clear();
 }
 
 // 0x1f82c — ___copy_helper_block_323
 #[doc(alias = "___copy_helper_block_323")]
-pub fn stub_0x1f82c() -> ! {
-    todo!("0x1f82c ___copy_helper_block_323")
+pub fn stub_0x1f82c(_dst: usize, _src: usize) {
+    // IDA 0x1f82c: `__copy_helper_block_323` — one `_Block_object_assign`
+    // retain (0x1f82c-0x1f832, same shape as stub_0x18094). No explicit
+    // body.
 }
 
 // 0x1f838 — ___destroy_helper_block_324
 #[doc(alias = "___destroy_helper_block_324")]
-pub fn stub_0x1f838() -> ! {
-    todo!("0x1f838 ___destroy_helper_block_324")
+pub fn stub_0x1f838(_block: usize) {
+    // IDA 0x1f838: `__destroy_helper_block_324` — one
+    // `_Block_object_dispose` release (0x1f838-0x1f83c, same shape as
+    // stub_0x180a0). No explicit body.
 }
 
 // 0x1f840 — -[LoginViewController externalSegueToHomeViewController:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController externalSegueToHomeViewController:]")]
-pub fn stub_0x1f840() -> ! {
-    todo!("0x1f840 -[LoginViewController externalSegueToHomeViewController:]")
+pub fn stub_0x1f840() {
+    // IDA 0x1f840: `externalSegueToHomeViewController:` segues home
+    // unanimated (0x1f840-0x1f852, stub_0x1f854).
+    stub_0x1f854(false);
 }
 
 // 0x1f854 — -[LoginViewController segueToHomeViewController:]
 // type: void __cdecl(LoginViewController *self, SEL, char)
 #[doc(alias = "-[LoginViewController segueToHomeViewController:]")]
-pub fn stub_0x1f854() -> ! {
-    todo!("0x1f854 -[LoginViewController segueToHomeViewController:]")
+pub fn stub_0x1f854(animated: bool) {
+    // IDA 0x1f854: `segueToHomeViewController:` records the animated home
+    // segue and dispatches the segue block on main (0x1f854-0x1f8ac,
+    // stub_0x1f8b0). The queue hop collapses when the block lands.
+    crate::generated_bg_4::record_home_segue(animated);
+    LOGIN_HOME_SEGUE_DISPATCHES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1f8b0 — ___49-[LoginViewController segueToHomeViewController:]_block_invoke

@@ -75,8 +75,13 @@ pub(crate) static LOGIN_KEYBOARD_HIDES: std::sync::atomic::AtomicU32 =
     std::sync::atomic::AtomicU32::new(0);
 pub(crate) static LOGIN_BACKGROUND_PANS: std::sync::atomic::AtomicU32 =
     std::sync::atomic::AtomicU32::new(0);
-pub(crate) static LOGIN_KEYBOARD_HIDE_DISPATCHES: std::sync::atomic::AtomicU32 =
-    std::sync::atomic::AtomicU32::new(0);
+/// `-[LoginViewController segueToHomeViewController:]` delivery (IDA
+/// 0x1f854, `generated_bg_5`). The animated flag + segue count record;
+/// the block dispatch records at the call site.
+pub(crate) fn record_home_segue(animated: bool) {
+    LOGIN_HOME_SEGUES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    LAST_HOME_SEGUE_ANIMATED.store(animated, std::sync::atomic::Ordering::SeqCst);
+}
 /// `-[LoginManager doLoginWithUsername:password:]` delivery behind
 /// `login:` / `passwordDidEndOnExit:` (IDA 0x1f0d4/0x1f1c8). The manager
 /// has no target here; the credentials + attempt count record.
@@ -910,13 +915,14 @@ pub fn stub_0x1ec68(_block: usize) {
 // 0x1ec84 — -[LoginViewController gotLoginSuccessfulNotification:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController gotLoginSuccessfulNotification:]")]
-pub fn stub_0x1ec84() {
+pub fn stub_0x1ec84(remember_password: bool, username: &str, password: &str) {
     // IDA 0x1ec84: `gotLoginSuccessfulNotification:` warms the store
     // manager (0x1eca4, no target here), runs `doLoginTransition`
-    // (0x1ecb6), and dispatches the completion block on main
-    // (0x1ece8-0x1ecfc, stub_0x1ed04). The transition records; the queue
-    // hop collapses to the direct call.
-    LOGIN_TRANSITIONS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    // (0x1ecb6, stub_0x1f6b0), and dispatches the completion block on
+    // main (0x1ece8-0x1ecfc, stub_0x1ed04). The manager/player queries
+    // behind the transition cross as parameters; both hops collapse to
+    // direct calls.
+    crate::generated_bg_5::stub_0x1f6b0(remember_password, username, password);
     stub_0x1ed04();
 }
 
@@ -1084,19 +1090,18 @@ pub fn stub_0x1f004() {
     // IDA 0x1f004: `playNowDidTouchUpInside:` flags the guest tap
     // (`_userDidClickPlayNow = 1`, 0x1f008-0x1f024) and, with a non-empty
     // password field (0x1f028-0x1f04e), falls through to `login:`
-    // (0x1f050-0x1f064); with an empty one it logs out (0x1f068-0x1f090),
-    // tracks the `Login/GuestMode` page view (0x1f094-0x1f0b6), and segues
-    // home animated (0x1f0ba-0x1f0ce, stub_0x1f854). The manager/analytics
-    // hops after the branch record; the `login:` hop collapses to the
-    // direct call.
+    // (0x1f050-0x1f064, stub_0x1f0d4); with an empty one it logs out
+    // (0x1f068-0x1f090), tracks the `Login/GuestMode` page view
+    // (0x1f094-0x1f0b6), and segues home animated (0x1f0ba-0x1f0ce,
+    // stub_0x1f854). The manager/analytics hops after the branch record;
+    // both selector hops collapse to direct calls.
     USER_DID_CLICK_PLAY_NOW.store(true, std::sync::atomic::Ordering::SeqCst);
     if !LOGIN_PASSWORD_TEXT.lock().is_empty() {
         stub_0x1f0d4();
     } else {
         LOGIN_LOGOUTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
         *LAST_PAGE_TRACKING.lock() = "Login/GuestMode".to_owned();
-        LOGIN_HOME_SEGUES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
-        LAST_HOME_SEGUE_ANIMATED.store(true, std::sync::atomic::Ordering::SeqCst);
+        crate::generated_bg_5::stub_0x1f854(true);
     }
 }
 
@@ -1170,13 +1175,12 @@ pub fn stub_0x1f2e0(has_received_memory_warning: bool) {
     // animated (0x1f2e8-0x1f30c) and, unless the controller has received a
     // memory warning (0x1f310-0x1f320), restarts the background pan
     // (0x1f322-0x1f330) and dispatches the hide block on main
-    // (0x1f334-0x1f376, stub_0x1f380 in generated_bg_5). The warning flag
-    // crosses as a parameter; the queue hop collapses when the block
-    // lands.
+    // (0x1f334-0x1f376, stub_0x1f380). The warning flag crosses as a
+    // parameter; the queue hop collapses to the direct call.
     *LOGIN_SCROLL_OFFSET.lock() = (0.0, 0.0);
     LOGIN_KEYBOARD_HIDES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
     if !has_received_memory_warning {
         LOGIN_BACKGROUND_PANS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
-        LOGIN_KEYBOARD_HIDE_DISPATCHES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        crate::generated_bg_5::stub_0x1f380();
     }
 }
