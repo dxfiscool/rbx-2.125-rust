@@ -1691,8 +1691,9 @@ pub fn stub_a355a0() -> ! {
 // 0xa361b0 — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENSF_ISsEESJ_NSF_ISC_EEEEEEEEvT_
 #[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>)")]
 // was: void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>)
-pub fn stub_a361b0() -> ! {
-    todo!("0xa361b0 void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>)")
+pub fn stub_a361b0<T>(slot: &mut Option<Box<T>>, functor: T) {
+    // IDA 0xa361b0: `function0::assign_to` — installs the bind into the `function` object (void return).
+    crate::functor::assign_to(slot, functor);
 }
 
 // 0xa368fc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENSF_ISsEESJ_NSF_ISC_EEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
@@ -6343,8 +6344,9 @@ pub fn stub_683ee0() -> ! {
 
 // 0x684130 — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4ToolENS_8weak_ptrINS7_7Network6PlayerEEEEENS3_5list2INS3_5valueIPS8_EENSF_ISC_EEEEEEEEvT_
 #[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::list2<boost::_bi::value<RBX::Tool*>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::list2<boost::_bi::value<RBX::Tool*>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>>>)")]
-pub fn stub_684130() -> ! {
-    todo!("0x684130 void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,boost::weak_ptr<RBX::Network::Player>>,boost::_bi::list2<boost::_bi::value<RBX::Tool*>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,boost::weak_ptr<RBX::Network::Player>>,boost::_bi::list2<boost::_bi::value<RBX::Tool*>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>>>)")
+pub fn stub_684130<T>(slot: &mut Option<Box<T>>, functor: T) {
+    // IDA 0x684130: `function0::assign_to` — installs the bind into the `function` object (void return).
+    crate::functor::assign_to(slot, functor);
 }
 
 // 0x68422c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4ToolENS_8weak_ptrINS7_7Network6PlayerEEEEENS3_5list2INS3_5valueIPS8_EENSF_ISC_EEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE
@@ -6370,8 +6372,9 @@ pub fn stub_684260<T>(slot: &mut Option<Box<T>>, functor: T) -> bool {
 
 // 0x68434c — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4ToolENS_8weak_ptrINS9_7Network6PlayerEEEEENS5_5list2INS5_5valueIPSA_EENSH_ISE_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::list2<boost::_bi::value<RBX::Tool*>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::list2<boost::_bi::value<RBX::Tool*>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_68434c() -> ! {
-    todo!("0x68434c bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,boost::weak_ptr<RBX::Network::Player>>,boost::_bi::list2<boost::_bi::value<RBX::Tool*>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,boost::weak_ptr<RBX::Network::Player>>,boost::_bi::list2<boost::_bi::value<RBX::Tool*>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_68434c<T>(slot: &mut Option<Box<T>>, functor: T) -> bool {
+    // IDA 0x68434c: `basic_vtable0::assign_to` (function_obj_tag overload) — installs the bind, `return 1`.
+    crate::functor::assign_to(slot, functor)
 }
 
 // 0x684434 — __ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4ToolENS_8weak_ptrINS9_7Network6PlayerEEEEENS5_5list2INS5_5valueIPSA_EENSH_ISE_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
@@ -11222,8 +11225,9 @@ pub fn stub_9d1c9c() -> ! {
 #[doc(
     alias = "void boost::function4<void,boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,RBX::Network::FilterResult const&,boost::shared_ptr<RBX::Instance> const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,RBX::Network::FilterResult const&,boost::shared_ptr<RBX::Instance> const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>)"
 )]
-pub fn stub_9d2464() -> ! {
-    todo!("0x9d2464 void boost::function4<void,boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,RBX::Network::FilterResult const&,boost::shared_ptr<RBX::Instance> const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,RBX::Network::FilterResult const&,boost::shared_ptr<RBX::Instance> const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>)")
+pub fn stub_9d2464<T>(slot: &mut Option<Box<T>>, functor: T) {
+    // IDA 0x9d2464: `function4::assign_to` — installs the bind into the `function` object (void return).
+    crate::functor::assign_to(slot, functor);
 }
 
 // 0x9d28dc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf4IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKNS7_7Network12FilterResultESE_RKSsEENS3_5list5INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSQ_ILi2EEENSQ_ILi3EEENSQ_ILi4EEEEEEEE6manageERKNS1_15function_bufferERSY_NS1_30functor_manager_operation_typeE
@@ -12628,8 +12632,9 @@ pub fn stub_9f19f4() -> ! {
 // 0x9f220c — __ZN5boost9function2IN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEESsE9assign_toINS_3_bi6bind_tIS3_PFS3_NS4_INS_8functionIFNS4_INS1_10Reflection5TupleEEENS4_IKSD_EEEEEEES6_SsENS9_5list3INS9_5valueISJ_EENS_3argILi1EEENSP_ILi2EEEEEEEEEvT_
 // type: void __fastcall(pthread_mutex_t *, int *, int, int, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int, int)
 #[doc(alias = "void boost::function2<RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,std::string),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,std::string),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>)")]
-pub fn stub_9f220c() -> ! {
-    todo!("0x9f220c void boost::function2<RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,std::string),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,std::string),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>)")
+pub fn stub_9f220c<T>(slot: &mut Option<Box<T>>, functor: T) {
+    // IDA 0x9f220c: `function2::assign_to` — installs the bind into the `function` object (void return).
+    crate::functor::assign_to(slot, functor);
 }
 
 // 0x9f267c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIN3RBX7Network12FilterResultEPFS7_NS_10shared_ptrINS_8functionIFNS8_INS5_10Reflection5TupleEEENS8_IKSB_EEEEEEENS8_INS5_8InstanceEEESsENS3_5list3INS3_5valueISH_EENS_3argILi1EEENSP_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeE
@@ -12784,8 +12789,9 @@ pub fn stub_9f5800() -> ! {
 // 0x9f6200 — __ZN5boost9function3IN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEESsNS1_10Reflection7VariantEE9assign_toINS_3_bi6bind_tIS3_PFS3_NS4_INS_8functionIFNS4_INS7_5TupleEEENS4_IKSE_EEEEEEES6_SsS8_ENSB_5list4INSB_5valueISK_EENS_3argILi1EEENSQ_ILi2EEENSQ_ILi3EEEEEEEEEvT_
 // type: void __fastcall(pthread_mutex_t *, int *, int, int, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int, int)
 #[doc(alias = "void boost::function3<RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant),boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant),boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>)")]
-pub fn stub_9f6200() -> ! {
-    todo!("0x9f6200 void boost::function3<RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string,RBX::Reflection::Variant>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,std::string,RBX::Reflection::Variant),boost::_bi::list4<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,std::string,RBX::Reflection::Variant),boost::_bi::list4<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>)")
+pub fn stub_9f6200<T>(slot: &mut Option<Box<T>>, functor: T) {
+    // IDA 0x9f6200: `function3::assign_to` — installs the bind into the `function` object (void return).
+    crate::functor::assign_to(slot, functor);
 }
 
 // 0x9f6670 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIN3RBX7Network12FilterResultEPFS7_NS_10shared_ptrINS_8functionIFNS8_INS5_10Reflection5TupleEEENS8_IKSB_EEEEEEENS8_INS5_8InstanceEEESsNSA_7VariantEENS3_5list4INS3_5valueISH_EENS_3argILi1EEENSQ_ILi2EEENSQ_ILi3EEEEEEEE6manageERKNS1_15function_bufferERSX_NS1_30functor_manager_operation_typeE
@@ -12941,8 +12947,9 @@ pub fn stub_9f963c() -> ! {
 // 0x9f9bec — __ZN5boost9function1IN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEEE9assign_toINS_3_bi6bind_tIS3_PFS3_NS4_INS_8functionIFNS4_INS1_10Reflection5TupleEEENS4_IKSD_EEEEEEES6_ENS9_5list2INS9_5valueISJ_EENS_3argILi1EEEEEEEEEvT_
 // type: void __fastcall(pthread_mutex_t *, int *, int, int, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int, int)
 #[doc(alias = "void boost::function1<RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>>>)")]
-pub fn stub_9f9bec() -> ! {
-    todo!("0x9f9bec void boost::function1<RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>>>)")
+pub fn stub_9f9bec<T>(slot: &mut Option<Box<T>>, functor: T) {
+    // IDA 0x9f9bec: `function1::assign_to` — installs the bind into the `function` object (void return).
+    crate::functor::assign_to(slot, functor);
 }
 
 // 0x9fa05c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIN3RBX7Network12FilterResultEPFS7_NS_10shared_ptrINS_8functionIFNS8_INS5_10Reflection5TupleEEENS8_IKSB_EEEEEEENS8_INS5_8InstanceEEEENS3_5list2INS3_5valueISH_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSU_NS1_30functor_manager_operation_typeE
@@ -13098,8 +13105,9 @@ pub fn stub_9fcf30() -> ! {
 // 0x9fd4e0 — __ZN5boost9function2IN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEES6_E9assign_toINS_3_bi6bind_tIS3_PFS3_NS4_INS_8functionIFNS4_INS1_10Reflection5TupleEEENS4_IKSD_EEEEEEES6_S6_ENS9_5list3INS9_5valueISJ_EENS_3argILi1EEENSP_ILi2EEEEEEEEEvT_
 // type: void __fastcall(pthread_mutex_t *, int *, int, int, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int, int)
 #[doc(alias = "void boost::function2<RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>)")]
-pub fn stub_9fd4e0() -> ! {
-    todo!("0x9fd4e0 void boost::function2<RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>)")
+pub fn stub_9fd4e0<T>(slot: &mut Option<Box<T>>, functor: T) {
+    // IDA 0x9fd4e0: `function2::assign_to` — installs the bind into the `function` object (void return).
+    crate::functor::assign_to(slot, functor);
 }
 
 // 0x9fd950 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIN3RBX7Network12FilterResultEPFS7_NS_10shared_ptrINS_8functionIFNS8_INS5_10Reflection5TupleEEENS8_IKSB_EEEEEEENS8_INS5_8InstanceEEESJ_ENS3_5list3INS3_5valueISH_EENS_3argILi1EEENSP_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeE
@@ -14750,8 +14758,9 @@ pub fn stub_a2eee4() -> ! {
 // 0xa2f6ec — __ZN5boost9function1IvNS_10shared_ptrIN3RBX8InstanceEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_7Network7PlayersEEES4_N3G3D7Vector3EENS7_5list3INS7_5valueISC_EENS_3argILi1EEENSI_ISE_EEEEEEEEvT_
 // type: void __fastcall(_DWORD *, int)
 #[doc(alias = "void boost::function1<void,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>)")]
-pub fn stub_a2f6ec() -> ! {
-    todo!("0xa2f6ec void boost::function1<void,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>)")
+pub fn stub_a2f6ec<T>(slot: &mut Option<Box<T>>, functor: T) {
+    // IDA 0xa2f6ec: `function1::assign_to` — installs the bind into the `function` object (void return).
+    crate::functor::assign_to(slot, functor);
 }
 
 // 0xa2f8dc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX7Network7PlayersEEENS_10shared_ptrINS6_8InstanceEEEN3G3D7Vector3EENS3_5list3INS3_5valueIS9_EENS_3argILi1EEENSI_ISE_EEEEEEE6manageERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeE
@@ -15107,8 +15116,9 @@ pub fn stub_a3b288() -> ! {
 #[doc(
     alias = "void boost::function0<RBX::worker_thread::work_result>::assign_to<boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>>>)"
 )]
-pub fn stub_a3b8e0() -> ! {
-    todo!("0xa3b8e0 void boost::function0<RBX::worker_thread::work_result>::assign_to<boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>>>)")
+pub fn stub_a3b8e0<T>(slot: &mut Option<Box<T>>, functor: T) {
+    // IDA 0xa3b8e0: `function0::assign_to` — installs the bind into the `function` object (void return).
+    crate::functor::assign_to(slot, functor);
 }
 
 // 0xa3bccc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIN3RBX13worker_thread11work_resultEPFS7_NS_10shared_ptrINS5_7Network13AbuseReporter4dataEEESsENS3_5list2INS3_5valueISC_EENSG_ISsEEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE
@@ -18077,8 +18087,9 @@ pub fn stub_aa4eb4() -> ! {
 #[doc(
     alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>)"
 )]
-pub fn stub_aa5318() -> ! {
-    todo!("0xaa5318 void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>)")
+pub fn stub_aa5318<T>(slot: &mut Option<Box<T>>, functor: T) {
+    // IDA 0xaa5318: `function0::assign_to` — installs the bind into the `function` object (void return).
+    crate::functor::assign_to(slot, functor);
 }
 
 // 0xaa5500 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRNS_8weak_ptrIN3RBX7Network6PlayerEEEPKNS6_15ServiceProviderEENS3_5list2INS3_5valueIS9_EENSH_ISD_EEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
@@ -18269,8 +18280,9 @@ pub fn stub_aa786c() -> ! {
 #[doc(
     alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Player>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Player>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>>>)"
 )]
-pub fn stub_aa7e00() -> ! {
-    todo!("0xaa7e00 void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Player>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Player>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>>>)")
+pub fn stub_aa7e00<T>(slot: &mut Option<Box<T>>, functor: T) {
+    // IDA 0xaa7e00: `function0::assign_to` — installs the bind into the `function` object (void return).
+    crate::functor::assign_to(slot, functor);
 }
 
 // 0xaa8278 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX7Network6PlayerEEENS3_5list1INS3_5valueINS_10shared_ptrIS9_EEEEEEEEE6manageERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE
@@ -18297,8 +18309,9 @@ pub fn stub_aa829c(slot: &mut dyn FnMut()) {
 #[doc(
     alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Player>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Player>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const"
 )]
-pub fn stub_aa82bc() -> ! {
-    todo!("0xaa82bc bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Player>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Player>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_aa82bc<T>(slot: &mut Option<Box<T>>, functor: T) -> bool {
+    // IDA 0xaa82bc: `basic_vtable0::assign_to` — installs the bind, `return 1`.
+    crate::functor::assign_to(slot, functor)
 }
 
 // 0xaa85a4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX7Network6PlayerEEENS3_5list1INS3_5valueINS_10shared_ptrIS9_EEEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
@@ -18343,8 +18356,9 @@ pub fn stub_aa8f50(slot: &mut dyn FnMut()) {
 #[doc(
     alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Player,bool,std::string>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::_bi::value<bool>,boost::_bi::value<char const*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Player,bool,std::string>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::_bi::value<bool>,boost::_bi::value<char const*>>>,boost::detail::function::function_buffer &)const"
 )]
-pub fn stub_aa8f68() -> ! {
-    todo!("0xaa8f68 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Player,bool,std::string>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::_bi::value<bool>,boost::_bi::value<char const*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Player,bool,std::string>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::_bi::value<bool>,boost::_bi::value<char const*>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_aa8f68<T>(slot: &mut Option<Box<T>>, functor: T) -> bool {
+    // IDA 0xaa8f68: `basic_vtable0::assign_to` — installs the bind, `return 1`.
+    crate::functor::assign_to(slot, functor)
 }
 
 // 0xaa9408 — __ZN5boost3_bi5list3INS0_5valueINS_10shared_ptrIN3RBX7Network6PlayerEEEEENS2_IbEENS2_IPKcEEEclINS_4_mfi3mf2IvS6_bSsEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
@@ -18424,8 +18438,9 @@ pub fn stub_aa9fb8() -> ! {
 #[doc(
     alias = "void boost::function1<void,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>)"
 )]
-pub fn stub_aaa378() -> ! {
-    todo!("0xaaa378 void boost::function1<void,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>)")
+pub fn stub_aaa378<T>(slot: &mut Option<Box<T>>, functor: T) {
+    // IDA 0xaaa378: `function1::assign_to` — installs the bind into the `function` object (void return).
+    crate::functor::assign_to(slot, functor);
 }
 
 // 0xaaa55c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX7Network6PlayerEEENS_10shared_ptrIKSt3mapISsNS6_10Reflection7VariantESt4lessISsESaISt4pairIKSsSD_EEEEEENS3_5list2INS3_5valueIS9_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSX_NS1_30functor_manager_operation_typeE
@@ -18453,8 +18468,9 @@ pub fn stub_aaa580<A>(slot: &mut dyn FnMut(A), a: A) {
 #[doc(
     alias = "bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const"
 )]
-pub fn stub_aaa598() -> ! {
-    todo!("0xaaa598 bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_aaa598<T>(slot: &mut Option<Box<T>>, functor: T) -> bool {
+    // IDA 0xaaa598: `basic_vtable1::assign_to` — installs the bind, `return 1`.
+    crate::functor::assign_to(slot, functor)
 }
 
 // 0xaaa764 — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS7_EEEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS5_7Network6PlayerEEESG_ENSJ_5list2INSJ_5valueISO_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
@@ -20869,8 +20885,9 @@ pub fn stub_acc8ac<A, B>(slot: &mut dyn FnMut(A, B), a: A, b: B) {
 // 0xacc8c8 — __ZN5boost3_bi5list6INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS9_ILi2EEENS2_ISsEENS2_IbEENS2_IdEEEclIPFvS7_NS4_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINSJ_INS4_8InstanceEEESaISM_EEEESsbdENS0_5list2IRSI_RSP_EEEEvNS0_4typeIvEERT_RT0_i
 // type: void __fastcall(int *, pthread_mutex_t **, int)
 #[doc(alias = "void boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>::operator()<void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>&>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double) &,boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>&> &,int)")]
-pub fn stub_acc8c8() -> ! {
-    todo!("0xacc8c8 void boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>::operator()<void (*)(boost::weak_ptr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,std::string,bool,double),boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,std::string,bool,double) &,boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>&> &,int)")
+pub fn stub_acc8c8<A, B>(slot: &mut dyn FnMut(A, B), a: A, b: B) {
+    // IDA 0xacc8c8: `list6::operator()` — calls the bound target with stored values plus the `list2(RequestResult, Instances)` call-time args.
+    crate::functor::invoke2(slot, a, b);
 }
 
 // 0xaccd24 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX7Network6PlayerEEENS6_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINSC_INS6_8InstanceEEESaISF_EEEESsbdENS3_5list6INS3_5valueIS9_EENS_3argILi1EEENSO_ILi2EEENSM_ISsEENSM_IbEENSM_IdEEEEEEE7managerERKNS1_15function_bufferERSX_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
@@ -20933,8 +20950,9 @@ pub fn stub_acdd50<A>(slot: &mut dyn FnMut(A), a: A) {
 // 0xacdd6c — __ZN5boost3_bi5list3INS0_5valueISsEENS2_INS_8weak_ptrIN3RBX7Network6PlayerEEEEENS2_INS4_INS5_9DataModelEEEEEEclIPFvSsS8_SB_ENS0_5list1IRPSA_EEEEvNS0_4typeIvEERT_RT0_i
 // type: void __fastcall(struct _Unwind_Exception **, void (__fastcall **)(int *, struct _Unwind_Exception **, struct _Unwind_Exception **))
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>>::operator()<void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(std::string,rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::WeakPtr<RBX::DataModel>) &,boost::_bi::list1<RBX::DataModel*&> &,int)")]
-pub fn stub_acdd6c() -> ! {
-    todo!("0xacdd6c void boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>::operator()<void (*)(std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>) &,boost::_bi::list1<RBX::DataModel*&> &,int)")
+pub fn stub_acdd6c<A>(slot: &mut dyn FnMut(A), a: A) {
+    // IDA 0xacdd6c: `list3::operator()` — calls the bound target with stored values plus the `list1(DataModel*)` call-time arg.
+    crate::functor::invoke1(slot, a);
 }
 
 // 0xace0fc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsNS_8weak_ptrIN3RBX7Network6PlayerEEENS5_INS6_9DataModelEEEENS3_5list3INS3_5valueISsEENSF_IS9_EENSF_ISB_EEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
@@ -21491,43 +21509,49 @@ pub fn stub_f62bc4() -> ! {
 // 0xf62bd4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX7Network6PlayerEEENS5_5list1INS5_5valueINS_10shared_ptrISB_EEEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, void *, int, int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Player>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Player>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Player>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Player>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_f62bd4() -> ! {
-    todo!("0xf62bd4 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Player>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Player>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_f62bd4<T>(slot: &mut Option<Box<T>>, functor: T) -> bool {
+    // Thunk (IDA 0xf62bd4): tail-jumps to `basic_vtable0::assign_to` — installs the bind, `return 1`.
+    crate::functor::assign_to(slot, functor)
 }
 
 // 0xf62be4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX7Network6PlayerEbSsEENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENSE_IbEENSE_IPKcEEEEEEEEbT_RNS1_15function_bufferE
 // type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, void *, int, int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Player,bool,std::string>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Player>>,boost::_bi::value<bool>,boost::_bi::value<char const*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Player,bool,std::string>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Player>>,boost::_bi::value<bool>,boost::_bi::value<char const*>>>,boost::detail::function::function_buffer &)const")]
-pub fn stub_f62be4() -> ! {
-    todo!("0xf62be4 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Player,bool,std::string>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::_bi::value<bool>,boost::_bi::value<char const*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Player,bool,std::string>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::_bi::value<bool>,boost::_bi::value<char const*>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_f62be4<T>(slot: &mut Option<Box<T>>, functor: T) -> bool {
+    // Thunk (IDA 0xf62be4): tail-jumps to `basic_vtable0::assign_to` — installs the bind, `return 1`.
+    crate::functor::assign_to(slot, functor)
 }
 
 // 0xf62bf4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvRNS_8weak_ptrIN3RBX7Network6PlayerEEEPKNS8_15ServiceProviderEENS5_5list2INS5_5valueISB_EENSJ_ISF_EEEEEEEEbT_RNS1_15function_bufferE
 // type: int(void)
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,boost::detail::function::function_buffer &)const")]
-pub fn stub_f62bf4() -> ! {
-    todo!("0xf62bf4 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_f62bf4<T>(slot: &mut Option<Box<T>>, functor: T) -> bool {
+    // Thunk (IDA 0xf62bf4): tail-jumps to `basic_vtable0::assign_to` — installs the bind, `return 1`.
+    crate::functor::assign_to(slot, functor)
 }
 
 // 0xf62c04 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvRNS_8weak_ptrIN3RBX7Network6PlayerEEEPKNS8_15ServiceProviderEENS5_5list2INS5_5valueISB_EENSJ_ISF_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int, int, int, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, void *, int, int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_f62c04() -> ! {
-    todo!("0xf62c04 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_f62c04<T>(slot: &mut Option<Box<T>>, functor: T) -> bool {
+    // Thunk (IDA 0xf62c04): tail-jumps to `basic_vtable0::assign_to` — installs the bind, `return 1`.
+    crate::functor::assign_to(slot, functor)
 }
 
 // 0xf62c14 — j___ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS7_EEEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS5_7Network6PlayerEEESG_ENSJ_5list2INSJ_5valueISO_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
 // type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")]
-pub fn stub_f62c14() -> ! {
-    todo!("0xf62c14 bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_f62c14<T>(slot: &mut Option<Box<T>>, functor: T) -> bool {
+    // Thunk (IDA 0xf62c14): tail-jumps to `basic_vtable1::assign_to` — installs the bind, `return 1`.
+    crate::functor::assign_to(slot, functor)
 }
 
 // 0xf62c24 — j___ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS7_EEEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS5_7Network6PlayerEEESG_ENSJ_5list2INSJ_5valueISO_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int, int, int, int, pthread_mutex_t *, int, int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_f62c24() -> ! {
-    todo!("0xf62c24 bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_f62c24<T>(slot: &mut Option<Box<T>>, functor: T) -> bool {
+    // Thunk (IDA 0xf62c24): tail-jumps to `basic_vtable1::assign_to` — installs the bind, `return 1`.
+    crate::functor::assign_to(slot, functor)
 }
 
 // 0xf62dd4 — j___ZNSt6vectorIN3RBX7Network6Player14MembershipTypeESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
