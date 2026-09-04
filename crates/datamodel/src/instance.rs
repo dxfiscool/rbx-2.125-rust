@@ -161,6 +161,34 @@ pub struct AdvLuaDragger {
     _opaque: (),
 }
 
+/// Rust model of `RBX::ArcHandles` (IDA `0x3a8a58`): same opaque shape.
+#[derive(Default)]
+pub struct ArcHandles {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::PartAdornment` (IDA `0x3ac3c8`): the `IAdornable` at
+/// `+96` and the weak at `+34` (torn down by D1) are unmodeled; the
+/// `Instance` base collapses.
+#[derive(Default)]
+pub struct PartAdornment {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Backpack` (IDA `0x3b16ac`): same opaque shape.
+#[derive(Default)]
+pub struct Backpack {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::BasicPartInstance` (IDA `0x3bbf78`): the vtable
+/// blankets from C1/C2 collapse (compiler-managed); data members land with
+/// part.rs.
+#[derive(Default)]
+pub struct BasicPartInstance {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::KeyframeSequenceProvider` (IDA `0x396e44`): field layout
 /// unmodeled; produced through the provider search.
 #[derive(Default)]
@@ -7314,8 +7342,11 @@ pub fn stub_0x3a6bbc(block: *const ControlBlockP<PartInstance>) -> Option<Creata
 // 0x3a6bc0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12PartInstanceEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::PartInstance>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_p<RBX::PartInstance>::get_untyped_deleter(void)
-pub fn stub_0x3a6bc0() -> ! {
-    todo!("0x3a6bc0 boost::detail::sp_counted_impl_p<RBX::PartInstance>::get_untyped_deleter(void)")
+pub fn stub_0x3a6bc0(block: *const ControlBlockP<PartInstance>) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x3a6bc0: `return 0` — a plain `_p` block never carries a deleter
+    // (`ControlBlockP::get_untyped_deleter`, cf. 0x463e70 grounding).
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x3a6dc0 — __ZN3RBX10Reflection13BoundFuncDescINS_8AnimatorEFN5boost10shared_ptrINS_8InstanceEEES6_ELi1EEC2EMS2_FS6_S6_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -7356,120 +7387,174 @@ pub fn stub_0x3a718c() -> ! {
 // 0x3a8a58 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10ArcHandlesEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::ArcHandles> RBX::Creatable<RBX::Instance>::create<RBX::ArcHandles>(void)")]
 // was: boost::shared_ptr<RBX::ArcHandles> RBX::Creatable<RBX::Instance>::create<RBX::ArcHandles>(void)
-pub fn stub_0x3a8a58() -> ! {
-    todo!("0x3a8a58 boost::shared_ptr<RBX::ArcHandles> RBX::Creatable<RBX::Instance>::create<RBX::ArcHandles>(void)")
+pub fn stub_0x3a8a58() -> SharedPtr<ArcHandles> {
+    // IDA 0x3a8a58: `operator new(0x168)` (disasm 0x3a8a76-0x3a8a7a; 360 bytes)
+    // + default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(ArcHandles::default())
 }
 
 // 0x3a8b0c — __ZN5boost10shared_ptrIN3RBX10ArcHandlesEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::ArcHandles>::shared_ptr<RBX::ArcHandles,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::ArcHandles>::shared_ptr<RBX::ArcHandles,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x3a8b0c() -> ! {
-    todo!("0x3a8b0c boost::shared_ptr<RBX::ArcHandles>::shared_ptr<RBX::ArcHandles,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x3a8b0c(ptr: *mut ArcHandles, _deleter: CreatableInstanceDeleter) -> SharedPtr<ArcHandles> {
+    // IDA 0x3a8b0c: store px + `shared_count` ctor + null-skip; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(ArcHandles::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x3a8cbc — __ZN5boost6detail12shared_countC2IPN3RBX10ArcHandlesENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x3a8cbc() -> ! {
-    todo!("0x3a8cbc boost::detail::shared_count::shared_count<RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x3a8cbc(ptr: *mut ArcHandles, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<ArcHandles, CreatableInstanceDeleter> {
+    // IDA 0x3a8cbc: block-new shape, same as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x3a8dc4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ArcHandlesENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x3a8dc4() -> ! {
-    todo!("0x3a8dc4 boost::detail::sp_counted_impl_pd<RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x3a8dc4(_block: *mut ControlBlockPd<ArcHandles, CreatableInstanceDeleter>) {
+    // IDA 0x3a8dc4: `BX LR` — empty (canonical D1 slot); same as 0xf198.
 }
 
 // 0x3a8dc8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ArcHandlesENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x3a8dc8() -> ! {
-    todo!("0x3a8dc8 boost::detail::sp_counted_impl_pd<RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x3a8dc8(block: *mut ControlBlockPd<ArcHandles, CreatableInstanceDeleter>) {
+    // IDA 0x3a8dc8: `B.W __ZdlPv$shim` — D0 storage release only (canonical
+    // D0 slot); same as 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x3a8dcc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ArcHandlesENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x3a8dcc() -> ! {
-    todo!("0x3a8dcc boost::detail::sp_counted_impl_pd<RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x3a8dcc(block: *mut ControlBlockPd<ArcHandles, CreatableInstanceDeleter>) {
+    // IDA 0x3a8dcc: `predelete` + null early-out + deleter virtual-delete
+    // (canonical dispose slot); same shape as 0xf19c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
 }
 
 // 0x3a8dec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ArcHandlesENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x3a8dec() -> ! {
-    todo!("0x3a8dec boost::detail::sp_counted_impl_pd<RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x3a8dec(block: *const ControlBlockPd<ArcHandles, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x3a8dec: deleter-name `strcmp`, `this + 0x10` on hit (canonical
+    // get_deleter slot); same shape as 0xf1bc.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x3a8e04 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ArcHandlesENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x3a8e04() -> ! {
-    todo!("0x3a8e04 boost::detail::sp_counted_impl_pd<RBX::ArcHandles *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x3a8e04(block: *const ControlBlockPd<ArcHandles, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x3a8e04: unconditional `this + 0x10` (canonical untyped slot);
+    // same as 0xf1d4.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x3ac3c8 — __ZN3RBX13PartAdornmentD1Ev
 #[doc(alias = "RBX::PartAdornment::~PartAdornment()")]
 // was: RBX::PartAdornment::~PartAdornment()
-pub fn stub_0x3ac3c8() -> ! {
-    todo!("0x3ac3c8 RBX::PartAdornment::~PartAdornment()")
+pub fn stub_0x3ac3c8(_this: *mut PartAdornment) {
+    // IDA 0x3ac3c8: vtable resets (disasm 0x3ac3f8-0x3ac428, compiler-managed),
+    // `weak_release` of the `+34` weak (disasm 0x3ac430-0x3ac458),
+    // `IAdornable` dtor at `+96` (disasm 0x3ac464), `Instance` dtor (disasm
+    // 0x3ac470). All members are unmodeled, so the teardown collapses to
+    // nothing observable.
 }
 
 // 0x3ac510 — __ZN3RBX13PartAdornmentD0Ev
 #[doc(alias = "RBX::PartAdornment::~PartAdornment()")]
 // was: RBX::PartAdornment::~PartAdornment()
-pub fn stub_0x3ac510() -> ! {
-    todo!("0x3ac510 RBX::PartAdornment::~PartAdornment()")
+pub fn stub_0x3ac510(adornment: *mut PartAdornment) {
+    // IDA 0x3ac510: D0 — the D1 body plus `operator delete`; the box reclaim
+    // runs the (empty) field drops and frees together.
+    // SAFETY: `adornment` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(adornment));
+    }
 }
 
 // 0x3ac5b4 — __ZThn32_N3RBX13PartAdornmentD1Ev
 #[doc(alias = "non-virtual thunk to RBX::PartAdornment::~PartAdornment()")]
 // was: non-virtual thunk to RBX::PartAdornment::~PartAdornment()
-pub fn stub_0x3ac5b4() -> ! {
-    todo!("0x3ac5b4 non-virtual thunk to RBX::PartAdornment::~PartAdornment()")
+pub fn stub_0x3ac5b4(this: *mut PartAdornment) {
+    // IDA 0x3ac5b4: `Thn32` D1 thunk — `this - 32` selects the `PartAdornment`
+    // subobject (disasm prologue), then tail-calls D1 (IDA 0x3ac3c8). The
+    // adjustment collapses (single modeled address space).
+    // SAFETY: `this` must point to a valid `PartAdornment`.
+    stub_0x3ac3c8(this);
 }
 
 // 0x3ac6fc — __ZThn32_N3RBX13PartAdornmentD0Ev
 #[doc(alias = "non-virtual thunk to RBX::PartAdornment::~PartAdornment()")]
 // was: non-virtual thunk to RBX::PartAdornment::~PartAdornment()
-pub fn stub_0x3ac6fc() -> ! {
-    todo!("0x3ac6fc non-virtual thunk to RBX::PartAdornment::~PartAdornment()")
+pub fn stub_0x3ac6fc(adornment: *mut PartAdornment) {
+    // IDA 0x3ac6fc: `Thn32` D0 thunk — `this - 32` then tail-calls D0 (IDA
+    // 0x3ac510). Same collapse as 0x3ac5b4.
+    // SAFETY: `adornment` must be a live box pointer never used again.
+    stub_0x3ac510(adornment);
 }
 
 // 0x3ac85c — __ZThn36_N3RBX13PartAdornmentD1Ev
 #[doc(alias = "non-virtual thunk to RBX::PartAdornment::~PartAdornment()")]
 // was: non-virtual thunk to RBX::PartAdornment::~PartAdornment()
-pub fn stub_0x3ac85c() -> ! {
-    todo!("0x3ac85c non-virtual thunk to RBX::PartAdornment::~PartAdornment()")
+pub fn stub_0x3ac85c(this: *mut PartAdornment) {
+    // IDA 0x3ac85c: `Thn36` D1 thunk — `this - 36` then D1 (IDA 0x3ac3c8).
+    // SAFETY: `this` must point to a valid `PartAdornment`.
+    stub_0x3ac3c8(this);
 }
 
 // 0x3ac9a4 — __ZThn36_N3RBX13PartAdornmentD0Ev
 #[doc(alias = "non-virtual thunk to RBX::PartAdornment::~PartAdornment()")]
 // was: non-virtual thunk to RBX::PartAdornment::~PartAdornment()
-pub fn stub_0x3ac9a4() -> ! {
-    todo!("0x3ac9a4 non-virtual thunk to RBX::PartAdornment::~PartAdornment()")
+pub fn stub_0x3ac9a4(adornment: *mut PartAdornment) {
+    // IDA 0x3ac9a4: `Thn36` D0 thunk — `this - 36` then D0 (IDA 0x3ac510).
+    // SAFETY: `adornment` must be a live box pointer never used again.
+    stub_0x3ac510(adornment);
 }
 
 // 0x3b16ac — __ZN3RBX9CreatableINS_8InstanceEE6createINS_8BackpackEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::Backpack> RBX::Creatable<RBX::Instance>::create<RBX::Backpack>(void)")]
 // was: boost::shared_ptr<RBX::Backpack> RBX::Creatable<RBX::Instance>::create<RBX::Backpack>(void)
-pub fn stub_0x3b16ac() -> ! {
-    todo!("0x3b16ac boost::shared_ptr<RBX::Backpack> RBX::Creatable<RBX::Instance>::create<RBX::Backpack>(void)")
+pub fn stub_0x3b16ac() -> SharedPtr<Backpack> {
+    // IDA 0x3b16ac: `operator new(0x98)` (disasm 0x3b16ca-0x3b16cc; 152 bytes)
+    // + default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(Backpack::default())
 }
 
 // 0x3b175c — __ZN5boost10shared_ptrIN3RBX8BackpackEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Backpack>::shared_ptr<RBX::Backpack,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::Backpack>::shared_ptr<RBX::Backpack,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x3b175c() -> ! {
-    todo!("0x3b175c boost::shared_ptr<RBX::Backpack>::shared_ptr<RBX::Backpack,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x3b175c(ptr: *mut Backpack, _deleter: CreatableInstanceDeleter) -> SharedPtr<Backpack> {
+    // IDA 0x3b175c: store px + `shared_count` ctor + null-skip; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(Backpack::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x3b1824 — __ZN5boost6detail12shared_countC2IPN3RBX8BackpackENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x3b1824() -> ! {
-    todo!("0x3b1824 boost::detail::shared_count::shared_count<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x3b1824(ptr: *mut Backpack, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<Backpack, CreatableInstanceDeleter> {
+    // IDA 0x3b1824: block-new shape, same as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x3bb8e8 — __ZN3RBX14FormFactorPart15setFormFactorUiENS_12PartInstance10FormFactorE
@@ -7503,8 +7588,10 @@ pub fn stub_0x3bbecc() -> ! {
 // 0x3bbf78 — __ZN3RBX17BasicPartInstanceC1Ev
 #[doc(alias = "RBX::BasicPartInstance::BasicPartInstance(void)")]
 // was: RBX::BasicPartInstance::BasicPartInstance(void)
-pub fn stub_0x3bbf78() -> ! {
-    todo!("0x3bbf78 RBX::BasicPartInstance::BasicPartInstance(void)")
+pub fn stub_0x3bbf78(_this: *mut BasicPartInstance) {
+    // IDA 0x3bbf78: C1 is vtable-blanket initialization only (ten vtable
+    // stores, disasm 0x3bbf96-0x3bbfe2, plus the `DescribedCreatable` base
+    // C2): compiler-managed in Rust, no data members touched — empty.
 }
 
 // 0x3bbff0 — __ZN3RBX17BasicPartInstanceC2Ev
@@ -7517,15 +7604,22 @@ pub fn stub_0x3bbff0() -> ! {
 // 0x3bc054 — __ZN3RBX17BasicPartInstanceD0Ev
 #[doc(alias = "RBX::BasicPartInstance::~BasicPartInstance()")]
 // was: RBX::BasicPartInstance::~BasicPartInstance()
-pub fn stub_0x3bc054() -> ! {
-    todo!("0x3bc054 RBX::BasicPartInstance::~BasicPartInstance()")
+pub fn stub_0x3bc054(part: *mut BasicPartInstance) {
+    // IDA 0x3bc054: D0 — base dtor plus `operator delete` (disasm 0x3bc0b2-0x3bc0b8);
+    // the box reclaim is both.
+    // SAFETY: `part` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(part));
+    }
 }
 
 // 0x3bc104 — __ZN3RBX17BasicPartInstanceD1Ev
 #[doc(alias = "RBX::BasicPartInstance::~BasicPartInstance()")]
 // was: RBX::BasicPartInstance::~BasicPartInstance()
-pub fn stub_0x3bc104() -> ! {
-    todo!("0x3bc104 RBX::BasicPartInstance::~BasicPartInstance()")
+pub fn stub_0x3bc104(_this: *mut BasicPartInstance) {
+    // IDA 0x3bc104: D1 calls the `PartInstance` base dtor only (disasm
+    // 0x3bc110); the base teardown collapses (unmodeled members), so empty —
+    // twin of the `PartAdornment` D1 treatment.
 }
 
 // 0x3bc114 — __ZThn32_N3RBX17BasicPartInstanceD0Ev
