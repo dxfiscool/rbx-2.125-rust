@@ -1554,202 +1554,1188 @@ mod script_teardown_tests {
     }
 }
 
+// ---- RBX::Lua::LuaArguments getters + Bridge/SharedPtrBridge getValue cluster (IDA 0x26b148..0x26cd0c) ----
+// Ground truth per stub: `decompile(ea)` via IDA MCP, plus `disasm(ea)` for
+// 0x26b55c/0x26c38c/0x26c830 whose SjLj pseudo is truncated.
+// Boost mapping (AGENTS.md section 4): `boost::shared_ptr<T>` ->
+// [`SharedPtr`] (`Arc`); `rbx::placement_any<RBX::Region3>`/`any_cast` ->
+// [`ScriptVariant`]; `__cxa_throw(std::runtime_error)` -> panic carrying
+// [`LuaTableKeysMustBeStrings`]; Lua C API (`lua_gettop`, `lua_type`, ...)
+// runs against the host [`LuaThreadState`] below.
+// Unmodeled throughout: real `lua_State` interning/GC, registry metatables
+// (class names are host stand-ins for each `Bridge<T>::className[0]`), and
+// the absolute `lua_State*` identity (`this+19` becomes a struct field).
+
+/// `lua_type` tags as observed in the getter decompiles: string == 4
+/// (IDA 0x26b490), number == 3 (0x26b68a/0x26b712), boolean == 1 (0x26b6ca),
+/// nil == 0, table == 5, function == 6, userdata == 7 (all in 0x26b788).
+pub const LUA_TNIL: i32 = 0;
+pub const LUA_TBOOLEAN: i32 = 1;
+pub const LUA_TNUMBER: i32 = 3;
+pub const LUA_TSTRING: i32 = 4;
+pub const LUA_TTABLE: i32 = 5;
+pub const LUA_TFUNCTION: i32 = 6;
+pub const LUA_TUSERDATA: i32 = 7;
+
+/// Host `G3D::Vector3` payload (IDA 0x26c230 copies 3 dwords, 0x26c292..).
+#[derive(Debug, Clone, Copy, Default, PartialEq)]
+pub struct LuaVector3 {
+    pub x: f32,
+    pub y: f32,
+    pub z: f32,
+}
+
+/// Host `G3D::Vector3int16` payload (IDA 0x26c1a2 copies dword + word pair).
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct LuaVector3i16 {
+    pub x: i16,
+    pub y: i16,
+    pub z: i16,
+}
+
+/// Host `G3D::Vector2` payload.
+#[derive(Debug, Clone, Copy, Default, PartialEq)]
+pub struct LuaVector2 {
+    pub x: f32,
+    pub y: f32,
+}
+
+/// Host `G3D::Vector2int16` payload.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct LuaVector2i16 {
+    pub x: i16,
+    pub y: i16,
+}
+
+/// Host `RBX::Region3` payload (IDA 0x26c2be copies 4 double-pairs).
+#[derive(Debug, Clone, Copy, Default, PartialEq)]
+pub struct LuaRegion3 {
+    pub min: LuaVector3,
+    pub max: LuaVector3,
+}
+
+/// Host `RBX::Region3int16` payload.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct LuaRegion3i16 {
+    pub min: LuaVector3i16,
+    pub max: LuaVector3i16,
+}
+
+/// Host `G3D::CoordinateFrame` payload.
+#[derive(Debug, Clone, Copy, Default, PartialEq)]
+pub struct LuaCoordinateFrame {
+    pub position: LuaVector3,
+    pub rotation: [[f32; 3]; 3],
+}
+
+/// Host `G3D::Color3` payload.
+#[derive(Debug, Clone, Copy, Default, PartialEq)]
+pub struct LuaColor3 {
+    pub r: f32,
+    pub g: f32,
+    pub b: f32,
+}
+
+/// Host `RBX::BrickColor` payload (stored color number).
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct LuaBrickColor {
+    pub number: u32,
+}
+
+/// Host `RBX::UDim` payload.
+#[derive(Debug, Clone, Copy, Default, PartialEq)]
+pub struct LuaUDim {
+    pub scale: f32,
+    pub offset: i32,
+}
+
+/// Host `RBX::UDim2` payload.
+#[derive(Debug, Clone, Copy, Default, PartialEq)]
+pub struct LuaUDim2 {
+    pub x: LuaUDim,
+    pub y: LuaUDim,
+}
+
+/// Host `RBX::RbxRay` payload.
+#[derive(Debug, Clone, Copy, Default, PartialEq)]
+pub struct LuaRbxRay {
+    pub origin: LuaVector3,
+    pub direction: LuaVector3,
+}
+
+/// Host `RBX::Faces` payload (face-set bitmask).
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct LuaFaces {
+    pub bits: u8,
+}
+
+/// Host `RBX::Axes` payload (axis-set bitmask).
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct LuaAxes {
+    pub bits: u8,
+}
+
+/// Host `RBX::CellID` payload.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct LuaCellId {
+    pub x: i32,
+    pub y: i32,
+    pub z: i32,
+}
+
+/// Host `RBX::InputObject` payload (only the input-kind tag is modeled; the
+/// engine-side key/button state lives outside the script bridge).
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct LuaInputObject {
+    pub kind: u32,
+}
+
+/// Host `RBX::Instance` (`DescribedBase`) handle behind every
+/// `SharedPtrBridge<RBX::Instance>` extraction (IDA 0x26b55c/0x26c38c).
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct LuaInstanceHandle {
+    pub name: String,
+}
+
+/// Host `EnumDescriptor::Item` userdata payload (IDA 0x26b764 reads
+/// `v13+16` owner type and `v13+20` item value).
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct LuaEnumItem {
+    pub owner: String,
+    pub value: i32,
+}
+
+/// Host `RBX::Reflection::EnumDescriptor` for [`stub_0x26b6e4`]: descriptor
+/// name plus the valid values scanned by `__find_if` (IDA 0x26b734..).
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct LuaEnumDescriptor {
+    pub name: String,
+    pub values: Vec<i32>,
+}
+
+/// Typed userdata payload behind every `Bridge<T, ...>::getValue` in this
+/// batch. The `class` tag on [`LuaUserdata`] plays the role of the
+/// `lua_getmetatable` + registry-`className` + `lua_rawequal` check shared by
+/// all typed bridges (IDA 0x26c160..0x26c1a0 and siblings).
+#[derive(Debug, Clone, PartialEq)]
+pub enum LuaUserdataPayload {
+    Vector3(LuaVector3),
+    Vector3i16(LuaVector3i16),
+    Vector2(LuaVector2),
+    Vector2i16(LuaVector2i16),
+    Region3(LuaRegion3),
+    Region3i16(LuaRegion3i16),
+    CoordinateFrame(LuaCoordinateFrame),
+    Color3(LuaColor3),
+    BrickColor(LuaBrickColor),
+    UDim(LuaUDim),
+    UDim2(LuaUDim2),
+    RbxRay(LuaRbxRay),
+    Faces(LuaFaces),
+    Axes(LuaAxes),
+    CellId(LuaCellId),
+    InputObject(LuaInputObject),
+    Instance(Option<SharedPtr<LuaInstanceHandle>>),
+    EnumItem(LuaEnumItem),
+}
+
+/// Host Lua userdata slot: registry class name plus typed payload.
+#[derive(Debug, Clone, PartialEq)]
+pub struct LuaUserdata {
+    pub class: String,
+    pub payload: LuaUserdataPayload,
+}
+
+/// Registry class names checked by each bridge (host stand-ins for the
+/// `Bridge<T>::className[0]` registry fields pushed via `lua_getfield`
+/// at 0x26c17e and siblings).
+pub mod lua_bridge_class {
+    pub const VECTOR3: &str = "Vector3";
+    pub const VECTOR3INT16: &str = "Vector3int16";
+    pub const VECTOR2: &str = "Vector2";
+    pub const VECTOR2INT16: &str = "Vector2int16";
+    pub const REGION3: &str = "Region3";
+    pub const REGION3INT16: &str = "Region3int16";
+    pub const CFRAME: &str = "CoordinateFrame";
+    pub const COLOR3: &str = "Color3";
+    pub const BRICKCOLOR: &str = "BrickColor";
+    pub const UDIM: &str = "UDim";
+    pub const UDIM2: &str = "UDim2";
+    pub const RAY: &str = "Ray";
+    pub const FACES: &str = "Faces";
+    pub const AXES: &str = "Axes";
+    pub const CELLID: &str = "CellId";
+    pub const INPUTOBJECT: &str = "InputObject";
+    pub const INSTANCE: &str = "Instance";
+    pub const ENUMITEM: &str = "EnumItem";
+}
+
+/// Host `RBX::Lua::WeakFunctionRef` (IDA 0x26ba70..0x26ba9a): identity of the
+/// Lua function slot read by `lua_tofunction`.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Hash)]
+pub struct LuaWeakFunctionRef {
+    pub id: u64,
+}
+
+/// Host table key: only string keys survive `LuaArguments::get` (IDA
+/// 0x26bd04 throws `runtime_error("keys must be strings")` otherwise).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum LuaTableKey {
+    Str(String),
+    Other(String),
+}
+
+/// Host Lua table: positional array plus named entries (mirrors the
+/// `lua_objlen` array path vs `lua_next` map path split at IDA 0x26b9a2).
+#[derive(Debug, Clone, Default, PartialEq)]
+pub struct LuaTable {
+    pub array: Vec<LuaStackValue>,
+    pub named: Vec<(LuaTableKey, LuaStackValue)>,
+}
+
+/// Host Lua stack slot.
+#[derive(Debug, Clone, PartialEq)]
+pub enum LuaStackValue {
+    Nil,
+    Bool(bool),
+    Number(f64),
+    String(String),
+    Table(LuaTable),
+    Function(u64),
+    Userdata(LuaUserdata),
+}
+
+/// Host `lua_State` view: the value stack (`lua_gettop` == `len`, IDA
+/// 0x26b47a and siblings). Slots are 1-based like Lua stack indices.
+#[derive(Debug, Clone, Default, PartialEq)]
+pub struct LuaThreadState {
+    pub stack: Vec<LuaStackValue>,
+}
+
+impl LuaThreadState {
+    pub fn stack_top(&self) -> usize {
+        self.stack.len()
+    }
+    pub fn slot(&self, index: usize) -> Option<&LuaStackValue> {
+        self.stack.get(index.checked_sub(1)?)
+    }
+    pub fn lua_type(&self, index: usize) -> Option<i32> {
+        Some(match self.slot(index)? {
+            LuaStackValue::Nil => LUA_TNIL,
+            LuaStackValue::Bool(_) => LUA_TBOOLEAN,
+            LuaStackValue::Number(_) => LUA_TNUMBER,
+            LuaStackValue::String(_) => LUA_TSTRING,
+            LuaStackValue::Table(_) => LUA_TTABLE,
+            LuaStackValue::Function(_) => LUA_TFUNCTION,
+            LuaStackValue::Userdata(_) => LUA_TUSERDATA,
+        })
+    }
+    pub fn push(&mut self, value: LuaStackValue) -> usize {
+        self.stack.push(value);
+        self.stack.len()
+    }
+}
+
+/// Host `RBX::Lua::LuaArguments`: argument-frame base (`this+18`, added to
+/// the 0-based arg in every getter, IDA 0x26b474) plus the thread state
+/// (`this+19`, the `lua_State*`).
+#[derive(Debug, Clone, Default, PartialEq)]
+pub struct LuaArguments {
+    pub base: usize,
+    pub thread: LuaThreadState,
+}
+
+impl LuaArguments {
+    pub fn new(base: usize, stack: Vec<LuaStackValue>) -> Self {
+        Self { base, thread: LuaThreadState { stack } }
+    }
+    /// Absolute 1-based stack index for `arg` (`v5 = base + a2`); `None`
+    /// when `v5 > lua_gettop` (IDA 0x26b480), the shared early-0 path.
+    pub fn arg_slot(&self, arg: usize) -> Option<&LuaStackValue> {
+        let index = self.base.checked_add(arg)?;
+        if index == 0 || index > self.thread.stack_top() {
+            return None;
+        }
+        self.thread.slot(index)
+    }
+}
+
+/// Host `RBX::Reflection::Variant` behind `get`/`push` (IDA 0x26b788/0x26c138):
+/// the type-singleton word plus the `placement_any` payload.
+#[derive(Debug, Clone, PartialEq)]
+pub enum ScriptVariant {
+    Void,
+    Bool(bool),
+    Double(f64),
+    String(String),
+    Vector3(LuaVector3),
+    Vector3i16(LuaVector3i16),
+    Vector2(LuaVector2),
+    Vector2i16(LuaVector2i16),
+    Region3(LuaRegion3),
+    Region3i16(LuaRegion3i16),
+    CoordinateFrame(LuaCoordinateFrame),
+    Color3(LuaColor3),
+    BrickColor(LuaBrickColor),
+    UDim(LuaUDim),
+    UDim2(LuaUDim2),
+    RbxRay(LuaRbxRay),
+    Faces(LuaFaces),
+    Axes(LuaAxes),
+    CellId(LuaCellId),
+    InputObject(LuaInputObject),
+    Instance(Option<SharedPtr<LuaInstanceHandle>>),
+    EnumValue { descriptor: String, value: i32 },
+    TableVec(Vec<ScriptVariant>),
+    TableMap(HashMap<String, ScriptVariant>),
+    Function(LuaWeakFunctionRef),
+}
+
+/// Thrown (`__cxa_throw`, IDA 0x26beca) when a table key is not a string
+/// (IDA 0x26bd04); the host panics carrying it since `get` returns `int`.
+#[derive(Debug, Clone, PartialEq, Eq, thiserror::Error)]
+#[error("keys must be strings")]
+pub struct LuaTableKeysMustBeStrings;
+
+/// Shared metatable-guard behind the typed bridges: `lua_touserdata`
+/// (null -> 0, IDA 0x26c152..0x26c156), `lua_getmetatable` (false -> 0,
+/// 0x26c160..0x26c164), registry-`className` fetch + `lua_rawequal`
+/// (mismatch -> 0 after `lua_settop(-3)`, 0x26c17e..0x26c1a0).
+fn bridge_payload<'a>(value: &'a LuaStackValue, class: &str) -> Option<&'a LuaUserdataPayload> {
+    let userdata = match value {
+        LuaStackValue::Userdata(ud) => ud,
+        _ => return None,
+    };
+    if userdata.class != class {
+        return None;
+    }
+    Some(&userdata.payload)
+}
+
+/// `Bridge<shared_ptr<Instance>, false>` host extraction shared by
+/// [`stub_0x26c38c`] and [`stub_0x26c830`]: the `Instance`-class userdata
+/// holds the payload; anything else fails. (The callee EA itself is outside
+/// this batch, so the class check mirrors the sibling bridges.)
+fn instance_bridge_payload(value: &LuaStackValue) -> Option<Option<SharedPtr<LuaInstanceHandle>>> {
+    match bridge_payload(value, lua_bridge_class::INSTANCE)? {
+        LuaUserdataPayload::Instance(handle) => Some(handle.clone()),
+        _ => None,
+    }
+}
+
+/// Recursive `LuaArguments::get` core for table elements (IDA 0x26bd4a calls
+/// itself with `-1` per value after `lua_rawgeti`/`lua_next`).
+fn stack_value_to_variant(value: &LuaStackValue, reject_nil: bool) -> Option<ScriptVariant> {
+    match value {
+        LuaStackValue::Nil => {
+            if reject_nil {
+                None
+            } else {
+                Some(ScriptVariant::Void)
+            }
+        }
+        LuaStackValue::Bool(b) => Some(ScriptVariant::Bool(*b)),
+        LuaStackValue::Number(n) => Some(ScriptVariant::Double(*n)),
+        LuaStackValue::String(s) => Some(ScriptVariant::String(s.clone())),
+        LuaStackValue::Function(id) => Some(ScriptVariant::Function(LuaWeakFunctionRef { id: *id })),
+        LuaStackValue::Table(table) => Some(table_to_variant(table, reject_nil)),
+        LuaStackValue::Userdata(_) => Some(userdata_to_variant(value)),
+    }
+}
+
+/// Table arm of `get` (IDA 0x26b99e..0x26be72): `lua_objlen >= 1` walks
+/// `lua_rawgeti` 1..n into a vector; otherwise `lua_next` over string keys
+/// into a map (`keys must be strings` on other keys), an empty table falling
+/// back to an empty vector.
+fn table_to_variant(table: &LuaTable, reject_nil: bool) -> ScriptVariant {
+    if !table.array.is_empty() {
+        // IDA 0x26b9b0..0x26ba0c: sized vector, rawgeti/get/settop per lane.
+        let items = table
+            .array
+            .iter()
+            .map(|slot| stack_value_to_variant(slot, reject_nil).unwrap_or(ScriptVariant::Void))
+            .collect();
+        return ScriptVariant::TableVec(items);
+    }
+    // IDA 0x26bc90..0x26bddc: push nil + lua_next loop with settop(-2) pops.
+    let mut map = HashMap::new();
+    for (key, slot) in &table.named {
+        let name = match key {
+            LuaTableKey::Str(name) => name.clone(),
+            LuaTableKey::Other(debug) => std::panic::panic_any((LuaTableKeysMustBeStrings, debug.clone())),
+        };
+        let value = stack_value_to_variant(slot, reject_nil).unwrap_or(ScriptVariant::Void);
+        map.insert(name, value);
+    }
+    if map.is_empty() {
+        // IDA 0x26be48: no entries make a shared empty vector, not a map.
+        ScriptVariant::TableVec(Vec::new())
+    } else {
+        ScriptVariant::TableMap(map)
+    }
+}
+
+/// Userdata arm of `get` (IDA 0x26baa8..0x26bc70): tries each typed bridge in
+/// order and always succeeds — every attempt pre-sets the 1 result
+/// (`v16 = 1` before each call), so total failure falls through to a void
+/// variant rather than 0.
+fn userdata_to_variant(value: &LuaStackValue) -> ScriptVariant {
+    macro_rules! try_bridge {
+        ($class:expr, $arm:ident, $wrap:expr, $out:expr) => {
+            if bridge_variant(value, $class, $wrap, $out, |payload| match payload {
+                LuaUserdataPayload::$arm(v) => Some(v.clone()),
+                _ => None,
+            }) {
+                return (*$out).clone();
+            }
+        };
+    }
+    let mut out = ScriptVariant::Void;
+    if stub_0x26c830_bridge(value, &mut out) { return out; }
+    try_bridge!(lua_bridge_class::CFRAME, CoordinateFrame, ScriptVariant::CoordinateFrame, &mut out);
+    try_bridge!(lua_bridge_class::REGION3, Region3, ScriptVariant::Region3, &mut out);
+    try_bridge!(lua_bridge_class::REGION3INT16, Region3i16, ScriptVariant::Region3i16, &mut out);
+    try_bridge!(lua_bridge_class::VECTOR3INT16, Vector3i16, ScriptVariant::Vector3i16, &mut out);
+    try_bridge!(lua_bridge_class::VECTOR2INT16, Vector2i16, ScriptVariant::Vector2i16, &mut out);
+    try_bridge!(lua_bridge_class::VECTOR3, Vector3, ScriptVariant::Vector3, &mut out);
+    try_bridge!(lua_bridge_class::VECTOR2, Vector2, ScriptVariant::Vector2, &mut out);
+    try_bridge!(lua_bridge_class::RAY, RbxRay, ScriptVariant::RbxRay, &mut out);
+    try_bridge!(lua_bridge_class::COLOR3, Color3, ScriptVariant::Color3, &mut out);
+    try_bridge!(lua_bridge_class::BRICKCOLOR, BrickColor, ScriptVariant::BrickColor, &mut out);
+    try_bridge!(lua_bridge_class::UDIM, UDim, ScriptVariant::UDim, &mut out);
+    try_bridge!(lua_bridge_class::UDIM2, UDim2, ScriptVariant::UDim2, &mut out);
+    try_bridge!(lua_bridge_class::FACES, Faces, ScriptVariant::Faces, &mut out);
+    try_bridge!(lua_bridge_class::AXES, Axes, ScriptVariant::Axes, &mut out);
+    try_bridge!(lua_bridge_class::CELLID, CellId, ScriptVariant::CellId, &mut out);
+    try_bridge!(lua_bridge_class::INPUTOBJECT, InputObject, ScriptVariant::InputObject, &mut out);
+    out
+}
+
+/// Typed `Bridge<T, true>::getValue<Variant>` core shared by the Variant
+/// overloads below: class check, then `getSingleton<T>` tag + payload copy
+/// (IDA 0x26c994..0x26c9a0 and siblings).
+fn bridge_variant<T: Clone>(
+    value: &LuaStackValue,
+    class: &str,
+    wrap: fn(T) -> ScriptVariant,
+    out: &mut ScriptVariant,
+    extract: fn(&LuaUserdataPayload) -> Option<T>,
+) -> bool {
+    match bridge_payload(value, class).and_then(extract) {
+        Some(payload) => {
+            *out = wrap(payload);
+            true
+        }
+        None => false,
+    }
+}
+
 // 0x26b148 — __ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x26b148() -> ! {
-    todo!("0x26b148 __ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x26b148(handle: &mut AdjustedScriptHandle) {
+    // IDA 0x26b148: `SUBS R0, #0x24` then `B.W
+    // RBX::BaseScript::~BaseScript` (0x26b14a) — Thn36 adjustor destroys the
+    // `BaseScript` subobject 36 bytes back.
+    debug_assert_eq!(handle.base_delta, 36);
+    destroy_base_script(&mut handle.state);
 }
 
 // 0x26b150 — __ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x26b150() -> ! {
-    todo!("0x26b150 __ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x26b150(handle: Box<AdjustedScriptHandle>) {
+    // IDA 0x26b150: Thn36 D0 — adjust by 36, run the D1 above, then
+    // `operator delete` (mirrors the Thn36 D0 siblings at 0x26a9e4 etc.).
+    debug_assert_eq!(handle.base_delta, 36);
+    let AdjustedScriptHandle { mut state, .. } = *handle;
+    destroy_base_script(&mut state);
 }
 
 // 0x26b464 — __ZNK3RBX3Lua12LuaArguments9getStringEiRSs
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, std::string *)
 #[doc(alias = "RBX::Lua::LuaArguments::getString(int,std::string &)const")]
-pub fn stub_0x26b464() -> ! {
-    todo!("0x26b464 RBX::Lua::LuaArguments::getString(int,std::string &)const")
+pub fn stub_0x26b464(args: &LuaArguments, arg: usize, out: &mut String) -> i32 {
+    // IDA 0x26b464: idx = base + a2; idx > gettop -> 0; lua_type != 4
+    // (string) -> 0; else assign(tolstring) and return 1.
+    match args.arg_slot(arg) {
+        Some(LuaStackValue::String(text)) => {
+            *out = text.clone();
+            1
+        }
+        _ => 0,
+    }
 }
 
 // 0x26b4ac — __ZNK3RBX3Lua12LuaArguments15getVector3int16EiRN3G3D12Vector3int16E
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, G3D::Vector3int16 *)
 #[doc(alias = "RBX::Lua::LuaArguments::getVector3int16(int,G3D::Vector3int16 &)const")]
-pub fn stub_0x26b4ac() -> ! {
-    todo!("0x26b4ac RBX::Lua::LuaArguments::getVector3int16(int,G3D::Vector3int16 &)const")
+pub fn stub_0x26b4ac(args: &LuaArguments, arg: usize, out: &mut LuaVector3i16) -> i32 {
+    // IDA 0x26b4ac: bounds check, then Bridge<Vector3int16>::getValue
+    // (0x26b4d0); the int return is the bridge bool.
+    match args.arg_slot(arg) {
+        Some(slot) => i32::from(stub_0x26c140(&args.thread, args.base + arg, out, slot)),
+        None => 0,
+    }
 }
 
 // 0x26b4d8 — __ZNK3RBX3Lua12LuaArguments15getRegion3int16EiRNS_12Region3int16E
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, RBX::Region3int16 *)
 #[doc(alias = "RBX::Lua::LuaArguments::getRegion3int16(int,RBX::Region3int16 &)const")]
-pub fn stub_0x26b4d8() -> ! {
-    todo!("0x26b4d8 RBX::Lua::LuaArguments::getRegion3int16(int,RBX::Region3int16 &)const")
+pub fn stub_0x26b4d8(args: &LuaArguments, arg: usize, out: &mut LuaRegion3i16) -> i32 {
+    // IDA 0x26b4d8: bounds check, then Bridge<Region3int16>::getValue.
+    match args.arg_slot(arg) {
+        Some(slot) => i32::from(stub_0x26c1b8(&args.thread, args.base + arg, out, slot)),
+        None => 0,
+    }
 }
 
 // 0x26b504 — __ZNK3RBX3Lua12LuaArguments10getVector3EiRN3G3D7Vector3E
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, G3D::Vector3 *)
 #[doc(alias = "RBX::Lua::LuaArguments::getVector3(int,G3D::Vector3 &)const")]
-pub fn stub_0x26b504() -> ! {
-    todo!("0x26b504 RBX::Lua::LuaArguments::getVector3(int,G3D::Vector3 &)const")
+pub fn stub_0x26b504(args: &LuaArguments, arg: usize, out: &mut LuaVector3) -> i32 {
+    // IDA 0x26b504: bounds check, then Bridge<Vector3>::getValue (0x26b528).
+    match args.arg_slot(arg) {
+        Some(slot) => i32::from(stub_0x26c230(&args.thread, args.base + arg, out, slot)),
+        None => 0,
+    }
 }
 
 // 0x26b530 — __ZNK3RBX3Lua12LuaArguments10getRegion3EiRNS_7Region3E
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, RBX::Region3 *)
 #[doc(alias = "RBX::Lua::LuaArguments::getRegion3(int,RBX::Region3 &)const")]
-pub fn stub_0x26b530() -> ! {
-    todo!("0x26b530 RBX::Lua::LuaArguments::getRegion3(int,RBX::Region3 &)const")
+pub fn stub_0x26b530(args: &LuaArguments, arg: usize, out: &mut LuaRegion3) -> i32 {
+    // IDA 0x26b530: bounds check, then Bridge<Region3>::getValue (0x26b554).
+    match args.arg_slot(arg) {
+        Some(slot) => i32::from(stub_0x26c2ac(&args.thread, args.base + arg, out, slot)),
+        None => 0,
+    }
 }
 
 // 0x26b55c — __ZNK3RBX3Lua12LuaArguments9getObjectEiRN5boost10shared_ptrINS_10Reflection13DescribedBaseEEE
 // type: int __fastcall(int, int, int)
 // was: RBX::Lua::LuaArguments::getObject(int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)const
 #[doc(alias = "RBX::Lua::LuaArguments::getObject(int,rbx_core::SharedPtr<RBX::Reflection::DescribedBase> &)const")]
-pub fn stub_0x26b55c() -> ! {
-    todo!("0x26b55c RBX::Lua::LuaArguments::getObject(int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)const")
+pub fn stub_0x26b55c(args: &LuaArguments, arg: usize, out: &mut Option<SharedPtr<LuaInstanceHandle>>) -> i32 {
+    // IDA 0x26b55c (disasm): idx = base + a2 (0x26b5b6); idx > gettop -> 0
+    // (0x26b5ba). lua_type (0x26b5c6): 7 (userdata) -> SharedPtrBridge getPtr
+    // (0x26b5d6), whose bool is the result; 0 (nil) -> null assign
+    // (0x26b5e2..0x26b5f0) and return 1; any other type -> 0 (0x26b5de).
+    match args.arg_slot(arg) {
+        Some(LuaStackValue::Nil) => {
+            *out = None;
+            1
+        }
+        Some(slot) if args.thread.lua_type(args.base + arg) == Some(LUA_TUSERDATA) => {
+            i32::from(stub_0x26c38c(&args.thread, args.base + arg, out, slot))
+        }
+        _ => 0,
+    }
 }
 
 // 0x26b660 — __ZNK3RBX3Lua12LuaArguments9getDoubleEiRd
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, double *)
 #[doc(alias = "RBX::Lua::LuaArguments::getDouble(int,double &)const")]
-pub fn stub_0x26b660() -> ! {
-    todo!("0x26b660 RBX::Lua::LuaArguments::getDouble(int,double &)const")
+pub fn stub_0x26b660(args: &LuaArguments, arg: usize, out: &mut f64) -> i32 {
+    // IDA 0x26b660: idx bounds check; lua_type != 3 (number) -> 0; else
+    // *out = lua_tonumber and return 1.
+    match args.arg_slot(arg) {
+        Some(LuaStackValue::Number(n)) => {
+            *out = *n;
+            1
+        }
+        _ => 0,
+    }
 }
 
 // 0x26b6a0 — __ZNK3RBX3Lua12LuaArguments7getBoolEiRb
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, bool *)
 #[doc(alias = "RBX::Lua::LuaArguments::getBool(int,bool &)const")]
-pub fn stub_0x26b6a0() -> ! {
-    todo!("0x26b6a0 RBX::Lua::LuaArguments::getBool(int,bool &)const")
+pub fn stub_0x26b6a0(args: &LuaArguments, arg: usize, out: &mut bool) -> i32 {
+    // IDA 0x26b6a0: idx bounds check; lua_type != 1 (boolean) -> 0; else
+    // *out = lua_toboolean != 0 and return 1.
+    match args.arg_slot(arg) {
+        Some(LuaStackValue::Bool(b)) => {
+            *out = *b;
+            1
+        }
+        _ => 0,
+    }
 }
 
 // 0x26b6e4 — __ZNK3RBX3Lua12LuaArguments7getEnumEiRKNS_10Reflection14EnumDescriptorERi
 // type: bool __fastcall(RBX::Lua::LuaArguments *this, int, const RBX::Reflection::EnumDescriptor *, int *)
 #[doc(alias = "RBX::Lua::LuaArguments::getEnum(int,RBX::Reflection::EnumDescriptor const&,int &)const")]
-pub fn stub_0x26b6e4() -> ! {
-    todo!("0x26b6e4 RBX::Lua::LuaArguments::getEnum(int,RBX::Reflection::EnumDescriptor const&,int &)const")
+pub fn stub_0x26b6e4(args: &LuaArguments, arg: usize, desc: &LuaEnumDescriptor, out: &mut i32) -> bool {
+    // IDA 0x26b6e4: idx = base + a2 (0x26b6fa); over the top -> false.
+    // Number (type 3): *out = (int)lua_tonumber, then __find_if over the
+    // descriptor values with the equalValue predicate — membership decides.
+    // Userdata (type 7): Bridge<EnumDescriptor::Item const*>::getValue, then
+    // the item owner type must equal the descriptor (Type::operator!= at
+    // 0x26b76c); on match *out = item value (v11+20 at 0x26b778).
+    let Some(slot) = args.arg_slot(arg) else { return false };
+    match slot {
+        LuaStackValue::Number(n) => {
+            *out = *n as i32;
+            desc.values.contains(out)
+        }
+        LuaStackValue::Userdata(ud) => match &ud.payload {
+            LuaUserdataPayload::EnumItem(item) if ud.class == lua_bridge_class::ENUMITEM && item.owner == desc.name => {
+                *out = item.value;
+                true
+            }
+            _ => false,
+        },
+        _ => false,
+    }
 }
 
 // 0x26b788 — __ZN3RBX3Lua12LuaArguments3getEP9lua_StateiRNS_10Reflection7VariantEb
 // type: int __fastcall(struct _Unwind_Exception *, int, int, int)
 #[doc(alias = "RBX::Lua::LuaArguments::get(lua_State *,int,RBX::Reflection::Variant &,bool)")]
-pub fn stub_0x26b788() -> ! {
-    todo!("0x26b788 RBX::Lua::LuaArguments::get(lua_State *,int,RBX::Reflection::Variant &,bool)")
+pub fn stub_0x26b788(thread: &LuaThreadState, index: usize, out: &mut ScriptVariant, fail_on_nil: bool) -> i32 {
+    // IDA 0x26b788: gettop < idx -> 0 (0x26b800). Then a lua_type switch
+    // (0x26b814): 0 nil -> void iff !a4 else 0; 1 bool; 3 number; 4 string;
+    // 5 table (array rawgeti loop vs lua_next map loop, 0x26b99e..); 6
+    // function -> WeakFunctionRef; 7 userdata -> Enums/SharedPtrBridge/typed
+    // bridge chain with void fallback (0x26baa8..0x26bc70); default -> void.
+    // Every taken arm returns 1.
+    let Some(slot) = thread.slot(index).filter(|_| index <= thread.stack_top()) else { return 0 };
+    match slot {
+        LuaStackValue::Nil => {
+            if fail_on_nil {
+                0
+            } else {
+                *out = ScriptVariant::Void;
+                1
+            }
+        }
+        LuaStackValue::Bool(b) => {
+            *out = ScriptVariant::Bool(*b);
+            1
+        }
+        LuaStackValue::Number(n) => {
+            *out = ScriptVariant::Double(*n);
+            1
+        }
+        LuaStackValue::String(text) => {
+            *out = ScriptVariant::String(text.clone());
+            1
+        }
+        LuaStackValue::Table(table) => {
+            *out = table_to_variant(table, fail_on_nil);
+            1
+        }
+        LuaStackValue::Function(id) => {
+            // IDA 0x26ba70: lua_tofunction into a WeakFunctionRef temp, then
+            // getSingleton<WeakFunctionRef> + placement copy.
+            *out = ScriptVariant::Function(LuaWeakFunctionRef { id: *id });
+            1
+        }
+        LuaStackValue::Userdata(_) => {
+            *out = userdata_to_variant(slot);
+            1
+        }
+    }
 }
 
 // 0x26c138 — __ZN3RBX3Lua12LuaArguments4pushERKNS_10Reflection7VariantEP9lua_State
 // type: int()
 #[doc(alias = "RBX::Lua::LuaArguments::push(RBX::Reflection::Variant const&,lua_State *)")]
-pub fn stub_0x26c138() -> ! {
-    todo!("0x26c138 RBX::Lua::LuaArguments::push(RBX::Reflection::Variant const&,lua_State *)")
+pub fn stub_0x26c138(variant: &ScriptVariant, thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x26c138: thunk to withVariantValue<int, ArgumentPusher> — pushes
+    // one stack slot per variant arm (the inverse of the `get` dispatch
+    // above) and returns the pushed count.
+    thread.push(variant_to_stack(variant));
+    1
+}
+
+/// `ArgumentPusher` arm mirror used by [`stub_0x26c138`]: one pushed slot
+/// per variant, userdata carrying its bridge class tag.
+fn variant_to_stack(variant: &ScriptVariant) -> LuaStackValue {
+    let userdata = |class: &str, payload: LuaUserdataPayload| {
+        LuaStackValue::Userdata(LuaUserdata { class: class.to_owned(), payload })
+    };
+    match variant {
+        ScriptVariant::Void => LuaStackValue::Nil,
+        ScriptVariant::Bool(b) => LuaStackValue::Bool(*b),
+        ScriptVariant::Double(n) => LuaStackValue::Number(*n),
+        ScriptVariant::String(s) => LuaStackValue::String(s.clone()),
+        ScriptVariant::Vector3(v) => userdata(lua_bridge_class::VECTOR3, LuaUserdataPayload::Vector3(*v)),
+        ScriptVariant::Vector3i16(v) => userdata(lua_bridge_class::VECTOR3INT16, LuaUserdataPayload::Vector3i16(*v)),
+        ScriptVariant::Vector2(v) => userdata(lua_bridge_class::VECTOR2, LuaUserdataPayload::Vector2(*v)),
+        ScriptVariant::Vector2i16(v) => userdata(lua_bridge_class::VECTOR2INT16, LuaUserdataPayload::Vector2i16(*v)),
+        ScriptVariant::Region3(v) => userdata(lua_bridge_class::REGION3, LuaUserdataPayload::Region3(*v)),
+        ScriptVariant::Region3i16(v) => userdata(lua_bridge_class::REGION3INT16, LuaUserdataPayload::Region3i16(*v)),
+        ScriptVariant::CoordinateFrame(v) => userdata(lua_bridge_class::CFRAME, LuaUserdataPayload::CoordinateFrame(*v)),
+        ScriptVariant::Color3(v) => userdata(lua_bridge_class::COLOR3, LuaUserdataPayload::Color3(*v)),
+        ScriptVariant::BrickColor(v) => userdata(lua_bridge_class::BRICKCOLOR, LuaUserdataPayload::BrickColor(*v)),
+        ScriptVariant::UDim(v) => userdata(lua_bridge_class::UDIM, LuaUserdataPayload::UDim(*v)),
+        ScriptVariant::UDim2(v) => userdata(lua_bridge_class::UDIM2, LuaUserdataPayload::UDim2(*v)),
+        ScriptVariant::RbxRay(v) => userdata(lua_bridge_class::RAY, LuaUserdataPayload::RbxRay(*v)),
+        ScriptVariant::Faces(v) => userdata(lua_bridge_class::FACES, LuaUserdataPayload::Faces(*v)),
+        ScriptVariant::Axes(v) => userdata(lua_bridge_class::AXES, LuaUserdataPayload::Axes(*v)),
+        ScriptVariant::CellId(v) => userdata(lua_bridge_class::CELLID, LuaUserdataPayload::CellId(*v)),
+        ScriptVariant::InputObject(v) => userdata(lua_bridge_class::INPUTOBJECT, LuaUserdataPayload::InputObject(*v)),
+        ScriptVariant::Instance(handle) => userdata(lua_bridge_class::INSTANCE, LuaUserdataPayload::Instance(handle.clone())),
+        ScriptVariant::EnumValue { descriptor, value } => userdata(
+            lua_bridge_class::ENUMITEM,
+            LuaUserdataPayload::EnumItem(LuaEnumItem { owner: descriptor.clone(), value: *value }),
+        ),
+        ScriptVariant::TableVec(items) => LuaStackValue::Table(LuaTable {
+            array: items.iter().map(variant_to_stack).collect(),
+            named: Vec::new(),
+        }),
+        ScriptVariant::TableMap(map) => LuaStackValue::Table(LuaTable {
+            array: Vec::new(),
+            named: map.iter().map(|(k, v)| (LuaTableKey::Str(k.clone()), variant_to_stack(v))).collect(),
+        }),
+        ScriptVariant::Function(func) => LuaStackValue::Function(func.id),
+    }
 }
 
 // 0x26c140 — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE8getValueIS3_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector3int16,true>::getValue<G3D::Vector3int16>(lua_State *,unsigned int,G3D::Vector3int16 &)")]
-pub fn stub_0x26c140() -> ! {
-    todo!("0x26c140 bool RBX::Lua::Bridge<G3D::Vector3int16,true>::getValue<G3D::Vector3int16>(lua_State *,unsigned int,G3D::Vector3int16 &)")
+pub fn stub_0x26c140(_thread: &LuaThreadState, _index: usize, out: &mut LuaVector3i16, slot: &LuaStackValue) -> bool {
+    // IDA 0x26c140: touserdata (null -> 0), metatable (false -> 0),
+    // className fetch + rawequal (mismatch -> settop(-3), 0), else copy the
+    // dword + word pair (0x26c1a2..0x26c1aa) and return 1.
+    match bridge_payload(slot, lua_bridge_class::VECTOR3INT16) {
+        Some(LuaUserdataPayload::Vector3i16(v)) => {
+            *out = *v;
+            true
+        }
+        _ => false,
+    }
 }
 
 // 0x26c1b8 — __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE8getValueIS2_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Region3int16,true>::getValue<RBX::Region3int16>(lua_State *,unsigned int,RBX::Region3int16 &)")]
-pub fn stub_0x26c1b8() -> ! {
-    todo!("0x26c1b8 bool RBX::Lua::Bridge<RBX::Region3int16,true>::getValue<RBX::Region3int16>(lua_State *,unsigned int,RBX::Region3int16 &)")
+pub fn stub_0x26c1b8(_thread: &LuaThreadState, _index: usize, out: &mut LuaRegion3i16, slot: &LuaStackValue) -> bool {
+    // IDA 0x26c1b8: same guard chain; copies the two qwords (0x26c218..).
+    match bridge_payload(slot, lua_bridge_class::REGION3INT16) {
+        Some(LuaUserdataPayload::Region3i16(v)) => {
+            *out = *v;
+            true
+        }
+        _ => false,
+    }
 }
 
 // 0x26c230 — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE8getValueIS3_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector3,true>::getValue<G3D::Vector3>(lua_State *,unsigned int,G3D::Vector3 &)")]
-pub fn stub_0x26c230() -> ! {
-    todo!("0x26c230 bool RBX::Lua::Bridge<G3D::Vector3,true>::getValue<G3D::Vector3>(lua_State *,unsigned int,G3D::Vector3 &)")
+pub fn stub_0x26c230(_thread: &LuaThreadState, _index: usize, out: &mut LuaVector3, slot: &LuaStackValue) -> bool {
+    // IDA 0x26c230: same guard chain; copies 3 dwords (0x26c292..0x26c298).
+    match bridge_payload(slot, lua_bridge_class::VECTOR3) {
+        Some(LuaUserdataPayload::Vector3(v)) => {
+            *out = *v;
+            true
+        }
+        _ => false,
+    }
 }
 
 // 0x26c2ac — __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE8getValueIS2_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Region3,true>::getValue<RBX::Region3>(lua_State *,unsigned int,RBX::Region3 &)")]
-pub fn stub_0x26c2ac() -> ! {
-    todo!("0x26c2ac bool RBX::Lua::Bridge<RBX::Region3,true>::getValue<RBX::Region3>(lua_State *,unsigned int,RBX::Region3 &)")
+pub fn stub_0x26c2ac(_thread: &LuaThreadState, _index: usize, out: &mut LuaRegion3, slot: &LuaStackValue) -> bool {
+    // IDA 0x26c2ac: same guard chain; copies 4 double-pairs (0x26c310..).
+    match bridge_payload(slot, lua_bridge_class::REGION3) {
+        Some(LuaUserdataPayload::Region3(v)) => {
+            *out = *v;
+            true
+        }
+        _ => false,
+    }
 }
 
 // 0x26c38c — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrIN5boost10shared_ptrINS_10Reflection13DescribedBaseEEEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 // was: bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<boost::shared_ptr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)
 #[doc(alias = "bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<rbx_core::SharedPtr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,rbx_core::SharedPtr<RBX::Reflection::DescribedBase> &)")]
-pub fn stub_0x26c38c() -> ! {
-    todo!("0x26c38c bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<boost::shared_ptr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)")
+pub fn stub_0x26c38c(_thread: &LuaThreadState, _index: usize, out: &mut Option<SharedPtr<LuaInstanceHandle>>, slot: &LuaStackValue) -> bool {
+    // IDA 0x26c38c (disasm): lua_type first (0x26c3ae): nonzero ->
+    // Bridge<shared_ptr<Instance>, false>::getValue<DescribedBase> and return
+    // its bool (0x26c3ee); zero (nil) -> null assign + release dance and
+    // return 1 (0x26c3f6..0x26c418).
+    match slot {
+        LuaStackValue::Nil => {
+            *out = None;
+            true
+        }
+        _ => match instance_bridge_payload(slot) {
+            Some(handle) => {
+                *out = handle;
+                true
+            }
+            None => false,
+        },
+    }
+}
+
+/// [`stub_0x26c830`]'s callee shape reused by [`userdata_to_variant`]:
+/// `Instance`-bridge extraction into a Variant slot.
+fn stub_0x26c830_bridge(slot: &LuaStackValue, out: &mut ScriptVariant) -> bool {
+    match instance_bridge_payload(slot) {
+        Some(handle) => {
+            *out = ScriptVariant::Instance(handle);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x26c830 — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26c830() -> ! {
-    todo!("0x26c830 bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+pub fn stub_0x26c830(_thread: &LuaThreadState, _index: usize, out: &mut ScriptVariant, slot: &LuaStackValue) -> bool {
+    // IDA 0x26c830 (disasm): lua_type (0x26c852): nonzero ->
+    // Bridge<shared_ptr<Instance>, false>::getValue<Variant> (0x26c894);
+    // zero (nil) -> Variant = typed null shared_ptr<Instance>
+    // (getSingleton at 0x26c8a8 + placement copy at 0x26c8ba) and return 1.
+    match slot {
+        LuaStackValue::Nil => {
+            *out = ScriptVariant::Instance(None);
+            true
+        }
+        _ => stub_0x26c830_bridge(slot, out),
+    }
 }
 
 // 0x26c92c — __ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::CoordinateFrame,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26c92c() -> ! {
-    todo!("0x26c92c bool RBX::Lua::Bridge<G3D::CoordinateFrame,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+pub fn stub_0x26c92c(_thread: &LuaThreadState, _index: usize, out: &mut ScriptVariant, slot: &LuaStackValue) -> bool {
+    // IDA 0x26c92c: guard chain, then getSingleton<CoordinateFrame> +
+    // placement copy (0x26c994..0x26c99c), return 1.
+    bridge_variant(
+        slot,
+        lua_bridge_class::CFRAME,
+        ScriptVariant::CoordinateFrame,
+        out,
+        |payload| match payload {
+            LuaUserdataPayload::CoordinateFrame(v) => Some(*v),
+            _ => None,
+        },
+    )
 }
 
 // 0x26c9a8 — __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Region3,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26c9a8() -> ! {
-    todo!("0x26c9a8 bool RBX::Lua::Bridge<RBX::Region3,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+pub fn stub_0x26c9a8(_thread: &LuaThreadState, _index: usize, out: &mut ScriptVariant, slot: &LuaStackValue) -> bool {
+    // IDA 0x26c9a8: guard chain, then getSingleton<Region3> + copy.
+    bridge_variant(
+        slot,
+        lua_bridge_class::REGION3,
+        ScriptVariant::Region3,
+        out,
+        |payload| match payload {
+            LuaUserdataPayload::Region3(v) => Some(*v),
+            _ => None,
+        },
+    )
 }
 
 // 0x26ca24 — __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Region3int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26ca24() -> ! {
-    todo!("0x26ca24 bool RBX::Lua::Bridge<RBX::Region3int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+pub fn stub_0x26ca24(_thread: &LuaThreadState, _index: usize, out: &mut ScriptVariant, slot: &LuaStackValue) -> bool {
+    // IDA 0x26ca24: guard chain, then getSingleton<Region3int16> + copy.
+    bridge_variant(
+        slot,
+        lua_bridge_class::REGION3INT16,
+        ScriptVariant::Region3i16,
+        out,
+        |payload| match payload {
+            LuaUserdataPayload::Region3i16(v) => Some(*v),
+            _ => None,
+        },
+    )
 }
 
 // 0x26caa0 — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector3int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26caa0() -> ! {
-    todo!("0x26caa0 bool RBX::Lua::Bridge<G3D::Vector3int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+pub fn stub_0x26caa0(_thread: &LuaThreadState, _index: usize, out: &mut ScriptVariant, slot: &LuaStackValue) -> bool {
+    // IDA 0x26caa0: guard chain, then getSingleton<Vector3int16> + copy.
+    bridge_variant(
+        slot,
+        lua_bridge_class::VECTOR3INT16,
+        ScriptVariant::Vector3i16,
+        out,
+        |payload| match payload {
+            LuaUserdataPayload::Vector3i16(v) => Some(*v),
+            _ => None,
+        },
+    )
 }
 
 // 0x26cb1c — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector2int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26cb1c() -> ! {
-    todo!("0x26cb1c bool RBX::Lua::Bridge<G3D::Vector2int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+pub fn stub_0x26cb1c(_thread: &LuaThreadState, _index: usize, out: &mut ScriptVariant, slot: &LuaStackValue) -> bool {
+    // IDA 0x26cb1c: guard chain, then getSingleton<Vector2int16> + copy.
+    bridge_variant(
+        slot,
+        lua_bridge_class::VECTOR2INT16,
+        ScriptVariant::Vector2i16,
+        out,
+        |payload| match payload {
+            LuaUserdataPayload::Vector2i16(v) => Some(*v),
+            _ => None,
+        },
+    )
 }
 
 // 0x26cb98 — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector3,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26cb98() -> ! {
-    todo!("0x26cb98 bool RBX::Lua::Bridge<G3D::Vector3,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+pub fn stub_0x26cb98(_thread: &LuaThreadState, _index: usize, out: &mut ScriptVariant, slot: &LuaStackValue) -> bool {
+    // IDA 0x26cb98: guard chain, then getSingleton<Vector3> + copy.
+    bridge_variant(
+        slot,
+        lua_bridge_class::VECTOR3,
+        ScriptVariant::Vector3,
+        out,
+        |payload| match payload {
+            LuaUserdataPayload::Vector3(v) => Some(*v),
+            _ => None,
+        },
+    )
 }
 
 // 0x26cc14 — __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector2,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26cc14() -> ! {
-    todo!("0x26cc14 bool RBX::Lua::Bridge<G3D::Vector2,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+pub fn stub_0x26cc14(_thread: &LuaThreadState, _index: usize, out: &mut ScriptVariant, slot: &LuaStackValue) -> bool {
+    // IDA 0x26cc14: guard chain, then getSingleton<Vector2> + copy.
+    bridge_variant(
+        slot,
+        lua_bridge_class::VECTOR2,
+        ScriptVariant::Vector2,
+        out,
+        |payload| match payload {
+            LuaUserdataPayload::Vector2(v) => Some(*v),
+            _ => None,
+        },
+    )
 }
 
 // 0x26cc90 — __ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::RbxRay,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26cc90() -> ! {
-    todo!("0x26cc90 bool RBX::Lua::Bridge<RBX::RbxRay,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+pub fn stub_0x26cc90(_thread: &LuaThreadState, _index: usize, out: &mut ScriptVariant, slot: &LuaStackValue) -> bool {
+    // IDA 0x26cc90: guard chain, then getSingleton<RbxRay> + copy.
+    bridge_variant(
+        slot,
+        lua_bridge_class::RAY,
+        ScriptVariant::RbxRay,
+        out,
+        |payload| match payload {
+            LuaUserdataPayload::RbxRay(v) => Some(*v),
+            _ => None,
+        },
+    )
 }
 
 // 0x26cd0c — __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Color3,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26cd0c() -> ! {
-    todo!("0x26cd0c bool RBX::Lua::Bridge<G3D::Color3,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+pub fn stub_0x26cd0c(_thread: &LuaThreadState, _index: usize, out: &mut ScriptVariant, slot: &LuaStackValue) -> bool {
+    // IDA 0x26cd0c: guard chain, then getSingleton<Color3> + copy.
+    bridge_variant(
+        slot,
+        lua_bridge_class::COLOR3,
+        ScriptVariant::Color3,
+        out,
+        |payload| match payload {
+            LuaUserdataPayload::Color3(v) => Some(*v),
+            _ => None,
+        },
+    )
+}
+
+#[cfg(test)]
+mod lua_argument_bridge_tests {
+    use super::*;
+
+    fn args(stack: Vec<LuaStackValue>) -> LuaArguments {
+        LuaArguments::new(1, stack)
+    }
+
+    fn userdata(class: &str, payload: LuaUserdataPayload) -> LuaStackValue {
+        LuaStackValue::Userdata(LuaUserdata { class: class.to_owned(), payload })
+    }
+
+    #[test]
+    fn thn36_adjusts_by_36_then_destroys() {
+        let mut handle = AdjustedScriptHandle {
+            state: BaseScriptState { source: "s".to_owned(), service_bound: true },
+            base_delta: 36,
+        };
+        stub_0x26b148(&mut handle);
+        assert!(handle.state.source.is_empty() && !handle.state.service_bound);
+        stub_0x26b150(Box::new(AdjustedScriptHandle {
+            state: BaseScriptState { source: "s".to_owned(), service_bound: true },
+            base_delta: 36,
+        }));
+    }
+
+    #[test]
+    fn scalar_getters_check_type_and_bounds() {
+        let a = args(vec![LuaStackValue::String("hi".to_owned()), LuaStackValue::Number(2.5), LuaStackValue::Bool(true)]);
+        let mut text = String::new();
+        assert_eq!(stub_0x26b464(&a, 0, &mut text), 1);
+        assert_eq!(text, "hi");
+        assert_eq!(stub_0x26b464(&a, 1, &mut text), 0);
+        assert_eq!(stub_0x26b464(&a, 9, &mut text), 0);
+        let mut number = 0.0;
+        assert_eq!(stub_0x26b660(&a, 1, &mut number), 1);
+        assert_eq!(number, 2.5);
+        assert_eq!(stub_0x26b660(&a, 0, &mut number), 0);
+        let mut flag = false;
+        assert_eq!(stub_0x26b6a0(&a, 2, &mut flag), 1);
+        assert!(flag);
+        assert_eq!(stub_0x26b6a0(&a, 1, &mut flag), 0);
+    }
+
+    #[test]
+    fn typed_getters_delegate_to_bridges() {
+        let vec = LuaVector3 { x: 1.0, y: 2.0, z: 3.0 };
+        let a = args(vec![userdata(lua_bridge_class::VECTOR3, LuaUserdataPayload::Vector3(vec))]);
+        let mut out = LuaVector3::default();
+        assert_eq!(stub_0x26b504(&a, 0, &mut out), 1);
+        assert_eq!(out, vec);
+        let wrong = args(vec![LuaStackValue::Number(1.0)]);
+        assert_eq!(stub_0x26b504(&wrong, 0, &mut out), 0);
+        assert_eq!(stub_0x26b504(&a, 5, &mut out), 0);
+        let region = LuaRegion3 { min: vec, max: vec };
+        let b = args(vec![userdata(lua_bridge_class::REGION3, LuaUserdataPayload::Region3(region))]);
+        let mut rout = LuaRegion3::default();
+        assert_eq!(stub_0x26b530(&b, 0, &mut rout), 1);
+        assert_eq!(rout, region);
+    }
+
+    #[test]
+    fn get_object_accepts_nil_and_instance_only() {
+        let handle = SharedPtr::new(LuaInstanceHandle { name: "Part".to_owned() });
+        let a = args(vec![
+            LuaStackValue::Nil,
+            userdata(lua_bridge_class::INSTANCE, LuaUserdataPayload::Instance(Some(handle.clone()))),
+            LuaStackValue::Number(1.0),
+        ]);
+        let mut out: Option<SharedPtr<LuaInstanceHandle>> = Some(handle.clone());
+        assert_eq!(stub_0x26b55c(&a, 0, &mut out), 1);
+        assert!(out.is_none());
+        assert_eq!(stub_0x26b55c(&a, 1, &mut out), 1);
+        assert_eq!(out, Some(handle));
+        assert_eq!(stub_0x26b55c(&a, 2, &mut out), 0);
+        assert_eq!(stub_0x26b55c(&a, 7, &mut out), 0);
+    }
+
+    #[test]
+    fn get_enum_validates_membership_and_writes_first() {
+        let desc = LuaEnumDescriptor { name: "FormFactor".to_owned(), values: vec![0, 1, 2] };
+        let a = args(vec![LuaStackValue::Number(1.0), LuaStackValue::Number(9.0)]);
+        let mut value = -1;
+        assert!(stub_0x26b6e4(&a, 0, &desc, &mut value));
+        assert_eq!(value, 1);
+        // IDA 0x26b734 writes *out before the find_if: failure still clobbers.
+        assert!(!stub_0x26b6e4(&a, 1, &desc, &mut value));
+        assert_eq!(value, 9);
+        let item = args(vec![userdata(
+            lua_bridge_class::ENUMITEM,
+            LuaUserdataPayload::EnumItem(LuaEnumItem { owner: "FormFactor".to_owned(), value: 2 }),
+        )]);
+        assert!(stub_0x26b6e4(&item, 0, &desc, &mut value));
+        assert_eq!(value, 2);
+        let foreign = LuaEnumDescriptor { name: "Other".to_owned(), values: vec![2] };
+        assert!(!stub_0x26b6e4(&item, 0, &foreign, &mut value));
+    }
+
+    #[test]
+    fn get_dispatch_covers_all_lua_types() {
+        let thread = LuaThreadState {
+            stack: vec![
+                LuaStackValue::Nil,
+                LuaStackValue::Bool(true),
+                LuaStackValue::Number(3.0),
+                LuaStackValue::String("x".to_owned()),
+                LuaStackValue::Table(LuaTable {
+                    array: vec![LuaStackValue::Number(1.0), LuaStackValue::Bool(false)],
+                    named: Vec::new(),
+                }),
+                LuaStackValue::Function(7),
+                userdata(lua_bridge_class::COLOR3, LuaUserdataPayload::Color3(LuaColor3 { r: 1.0, g: 0.0, b: 0.0 })),
+            ],
+        };
+        let mut out = ScriptVariant::Void;
+        assert_eq!(stub_0x26b788(&thread, 1, &mut out, false), 1);
+        assert_eq!(out, ScriptVariant::Void);
+        assert_eq!(stub_0x26b788(&thread, 1, &mut out, true), 0);
+        assert_eq!(stub_0x26b788(&thread, 2, &mut out, false), 1);
+        assert_eq!(out, ScriptVariant::Bool(true));
+        assert_eq!(stub_0x26b788(&thread, 3, &mut out, false), 1);
+        assert_eq!(out, ScriptVariant::Double(3.0));
+        assert_eq!(stub_0x26b788(&thread, 4, &mut out, false), 1);
+        assert_eq!(out, ScriptVariant::String("x".to_owned()));
+        assert_eq!(stub_0x26b788(&thread, 5, &mut out, false), 1);
+        assert_eq!(out, ScriptVariant::TableVec(vec![ScriptVariant::Double(1.0), ScriptVariant::Bool(false)]));
+        assert_eq!(stub_0x26b788(&thread, 6, &mut out, false), 1);
+        assert_eq!(out, ScriptVariant::Function(LuaWeakFunctionRef { id: 7 }));
+        assert_eq!(stub_0x26b788(&thread, 7, &mut out, false), 1);
+        assert_eq!(out, ScriptVariant::Color3(LuaColor3 { r: 1.0, g: 0.0, b: 0.0 }));
+        assert_eq!(stub_0x26b788(&thread, 99, &mut out, false), 0);
+        // Unknown userdata still returns 1 with a void fallback (IDA v16 = 1).
+        let unknown = LuaThreadState {
+            stack: vec![userdata("Nope", LuaUserdataPayload::Faces(LuaFaces { bits: 1 }))],
+        };
+        assert_eq!(stub_0x26b788(&unknown, 1, &mut out, false), 1);
+        assert_eq!(out, ScriptVariant::Void);
+    }
+
+    #[test]
+    #[should_panic]
+    fn get_table_rejects_non_string_keys() {
+        let thread = LuaThreadState {
+            stack: vec![LuaStackValue::Table(LuaTable {
+                array: Vec::new(),
+                named: vec![(LuaTableKey::Other("1".to_owned()), LuaStackValue::Bool(true))],
+            })],
+        };
+        let mut out = ScriptVariant::Void;
+        let _ = stub_0x26b788(&thread, 1, &mut out, false);
+    }
+
+    #[test]
+    fn push_roundtrips_through_get() {
+        let mut thread = LuaThreadState::default();
+        assert_eq!(stub_0x26c138(&ScriptVariant::Double(4.5), &mut thread), 1);
+        assert_eq!(stub_0x26c138(&ScriptVariant::String("s".to_owned()), &mut thread), 1);
+        let mut out = ScriptVariant::Void;
+        assert_eq!(stub_0x26b788(&thread, 1, &mut out, false), 1);
+        assert_eq!(out, ScriptVariant::Double(4.5));
+        assert_eq!(stub_0x26b788(&thread, 2, &mut out, false), 1);
+        assert_eq!(out, ScriptVariant::String("s".to_owned()));
+    }
+
+    #[test]
+    fn bridge_variant_overloads_tag_and_copy() {
+        let frame = LuaCoordinateFrame { position: LuaVector3 { x: 1.0, y: 0.0, z: 0.0 }, rotation: [[1.0; 3]; 3] };
+        let slot = userdata(lua_bridge_class::CFRAME, LuaUserdataPayload::CoordinateFrame(frame));
+        let thread = LuaThreadState { stack: vec![slot.clone()] };
+        let mut out = ScriptVariant::Void;
+        assert!(stub_0x26c92c(&thread, 1, &mut out, &slot));
+        assert_eq!(out, ScriptVariant::CoordinateFrame(frame));
+        assert!(!stub_0x26c92c(&thread, 1, &mut out, &LuaStackValue::Nil));
+        let mut nil_out = ScriptVariant::Bool(true);
+        assert!(stub_0x26c830(&thread, 1, &mut nil_out, &LuaStackValue::Nil));
+        assert_eq!(nil_out, ScriptVariant::Instance(None));
+    }
 }
 
 // 0x26cd88 — __ZN3RBX3Lua6BridgeINS_10BrickColorELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_

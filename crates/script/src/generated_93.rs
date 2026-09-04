@@ -8,63 +8,183 @@
 
 use rbx_core::SharedPtr;
 
+// ---- FriendService scriptable flags + PersonalServerService/BindableFunction yield-desc cluster (IDA 0x84527c..0x89f9a4) ----
+// Ground truth per stub: `decompile(ea)` + `disasm(ea)` via IDA MCP.
+// Boost mapping (AGENTS.md section 4): boost::shared_ptr -> rbx_core::SharedPtr
+// (Arc); boost::function/bind -> Box<dyn Fn> closures; boost::unordered_map ->
+// HashMap.
+// Unmodeled throughout: C++ vtable installs, RTTI unwind tables, std::string
+// copy-on-write internals (String covers the observable copy), and the
+// Name::declare interning pool (names kept raw).
+
+/// was: `RBX::Reflection::RemoteEventDesc<...>` flag word at +0x30 whose bit 0
+/// is the scriptable bit (IDA 0x84527c/0x846a1c: `LDR R0,[R0,#0x30]; AND #1`).
+#[derive(Debug, Clone, Copy, Default)]
+pub struct RemoteEventFlags {
+    /// Flag word at +0x30.
+    pub word_0x30: u32,
+}
+
+/// Shared isScriptable body (IDA 0x84527c, 0x846a1c): bit 0 of +0x30.
+fn remote_event_is_scriptable(flags: &RemoteEventFlags) -> bool {
+    flags.word_0x30 & 1 != 0
+}
+
+/// was: `RBX::Reflection::SignatureDescriptor::Item` — one entry of the
+/// signature list cleared at D1/D0 (IDA 0x892a8a/0x894366 `_M_clear` on +8).
+#[derive(Clone, Debug, Default)]
+pub struct YieldSignatureItem {
+    /// Argument name (was: interned Name; kept raw).
+    pub name: String,
+    /// Argument type tag (was: Type singleton ref).
+    pub type_tag: u8,
+}
+
+/// was: `RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,
+/// std::string ()(int), std::string, 1>` — yield descriptor: member-fn pair at
+/// +0x28 (IDA 0x8941b8 `STRD R10,R11,[R0,#0x28]`), owned member at +0x30
+/// (IDA 0x892a6a `LDR [R4,#0x30]`, deleted when non-null), signature list at
+/// +8 (IDA 0x892a8a `_M_clear(a1+8)`).
+#[derive(Default)]
+pub struct PersonalServerYieldDesc {
+    /// Bound member fn (was: member pair (void*, adjust) at +0x28).
+    pub method: Option<fn(i32) -> String>,
+    /// Owned member at +0x30 (deleted when non-null).
+    pub owned: Option<Box<u8>>,
+    /// Signature items (+8 list).
+    pub signature: Vec<YieldSignatureItem>,
+    /// Return-type tag (IDA 0x8942c4: Type<string> stored at +0x1C).
+    pub return_type_tag: u8,
+}
+
+/// Shared D1 body (IDA 0x892a54): vtable reset, delete +0x30 member when
+/// non-null (0x892a6a..0x892a70), base vtable reset + signature clear
+/// (0x892a86/0x892a8a).
+fn personal_server_yield_destroy(desc: &mut PersonalServerYieldDesc) {
+    // IDA 0x892a68/0x892a86: vtable resets (unmodeled words).
+    // IDA 0x892a6a..0x892a70.
+    desc.owned.take();
+    // IDA 0x892a8a.
+    desc.signature.clear();
+}
+
+/// was: `RBX::Reflection::BoundYieldFuncDesc<RBX::BindableFunction,
+/// shared_ptr<Tuple const> ()(shared_ptr<Tuple const>), ...>` — yield
+/// descriptor: scoped member at +0x30 (IDA 0x89fa08 `scoped_ptr dtor`),
+/// signature list at +8 (IDA 0x89fa28 `_M_clear`).
+#[derive(Default)]
+pub struct BindableFunctionYieldDesc {
+    /// Scoped member at +0x30 (was: scoped_ptr<shared_ptr<Tuple const>>).
+    pub member: Option<SharedPtr<Vec<u8>>>,
+    /// Bound member fn (was: pair at +0x28; set by C2 0x8a1acc).
+    pub member_method: Option<fn(Option<SharedPtr<Vec<u8>>>) -> Option<SharedPtr<Vec<u8>>>>,
+    /// Signature items (+8 list).
+    pub signature: Vec<YieldSignatureItem>,
+    /// Return-type tag (tuple type, IDA 0x8a1c58).
+    pub return_type_tag: u8,
+}
+
 // 0x84527c — __ZNK3RBX10Reflection15RemoteEventDescINS_13FriendServiceEFviiNS2_12FriendStatusEEN3rbx13remote_signalIS4_EEE12isScriptableEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::FriendService,void ()(int,int,RBX::FriendService::FriendStatus),rbx::remote_signal<void ()(int,int,RBX::FriendService::FriendStatus)>>::isScriptable(void)const")]
-pub fn stub_0x84527c() -> ! {
-    todo!("0x84527c __ZNK3RBX10Reflection15RemoteEventDescINS_13FriendServiceEFviiNS2_12FriendStatusEEN3rbx13remote_signalIS4_EEE12isScriptableEv")
+// IDA 0x84527c: `LDR R0,[R0,#0x30]; AND #1; BX LR` — scriptable bit.
+pub fn stub_0x84527c(flags: &RemoteEventFlags) -> bool {
+    // IDA 0x84527c
+    remote_event_is_scriptable(flags)
 }
 
 // 0x846a1c — __ZNK3RBX10Reflection15RemoteEventDescINS_13FriendServiceEFviiNS2_15FriendEventTypeEEN3rbx13remote_signalIS4_EEE12isScriptableEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::FriendService,void ()(int,int,RBX::FriendService::FriendEventType),rbx::remote_signal<void ()(int,int,RBX::FriendService::FriendEventType)>>::isScriptable(void)const")]
-pub fn stub_0x846a1c() -> ! {
-    todo!("0x846a1c __ZNK3RBX10Reflection15RemoteEventDescINS_13FriendServiceEFviiNS2_15FriendEventTypeEEN3rbx13remote_signalIS4_EEE12isScriptableEv")
+// IDA 0x846a1c: identical shape to 0x84527c (`LDR [R0,#0x30]; AND #1`).
+pub fn stub_0x846a1c(flags: &RemoteEventFlags) -> bool {
+    // IDA 0x846a1c
+    remote_event_is_scriptable(flags)
 }
 
 // 0x892a54 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_21PersonalServerServiceEFSsiESsLi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,std::string ()(int),std::string,1>::~BoundYieldFuncDesc()")]
-pub fn stub_0x892a54() -> ! {
-    todo!("0x892a54 __ZN3RBX10Reflection18BoundYieldFuncDescINS_21PersonalServerServiceEFSsiESsLi1EED1Ev")
+// IDA 0x892a54 (D1): destroy in place, no free (returns a1, 0x892a90).
+pub fn stub_0x892a54(desc: &mut PersonalServerYieldDesc) {
+    // IDA 0x892a54
+    personal_server_yield_destroy(desc);
 }
 
 // 0x89413c — __ZN3RBX10Reflection18BoundYieldFuncDescINS_21PersonalServerServiceEFSsiESsLi1EEC2EMS2_FviN5boost8functionIFvSsEEES8_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: _DWORD *__fastcall(_DWORD *, unsigned int, int, int, int, int, int, int)
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,std::string ()(int),std::string,1>::BoundYieldFuncDesc(void (RBX::PersonalServerService::*)(int,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,std::string ()(int),std::string,1>::BoundYieldFuncDesc(void (RBX::PersonalServerService::*)(int,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x89413c() -> ! {
-    todo!("0x89413c __ZN3RBX10Reflection18BoundYieldFuncDescINS_21PersonalServerServiceEFSsiESsLi1EEC2EMS2_FviN5boost8functionIFvSsEEES8_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+// IDA 0x89413c (C2): base Described + YieldFunctionDescriptor init
+// (0x894174/0x894194); member pair stored at +0x28 (0x8941b8); +0x30 zeroed
+// (0x8941c2); return-type void singleton + declareSignature(a5) (0x8941e8..0x8941f8).
+// MODEL: vtable installs and the describedClassDescriptor statics unmodeled;
+// the (a2,a3) member pair becomes the resolved fn.
+pub fn stub_0x89413c(method: fn(i32) -> String, arg_name: String) -> PersonalServerYieldDesc {
+    // IDA 0x89413c
+    let mut desc = PersonalServerYieldDesc { method: Some(method), ..PersonalServerYieldDesc::default() };
+    stub_0x8942b4(&mut desc, arg_name);
+    desc
 }
 
 // 0x8942b4 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_21PersonalServerServiceEFSsiESsLi1EE16declareSignatureEPKcNS0_7VariantE
 // type: int __fastcall(int, int, int *)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,std::string ()(int),std::string,1>::declareSignature(char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x8942b4() -> ! {
-    todo!("0x8942b4 __ZN3RBX10Reflection18BoundYieldFuncDescINS_21PersonalServerServiceEFSsiESsLi1EE16declareSignatureEPKcNS0_7VariantE")
+// IDA 0x8942b4: return type = Type<string> (0x8942c4); Name::declare(a2)
+// (0x8942ce); arg type = Type<int> (0x8942d0); addArgument (0x8942e2).
+// MODEL: type singletons become tags (1 = string, 2 = int).
+pub fn stub_0x8942b4(desc: &mut PersonalServerYieldDesc, arg_name: String) {
+    // IDA 0x8942b4
+    desc.return_type_tag = 1;
+    desc.signature.push(YieldSignatureItem { name: arg_name, type_tag: 2 });
 }
 
 // 0x8942e4 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_21PersonalServerServiceEFSsiESsLi1EED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,std::string ()(int),std::string,1>::~BoundYieldFuncDesc() [0x8942e4]")]
-pub fn stub_0x8942e4() -> ! {
-    todo!("0x8942e4 __ZN3RBX10Reflection18BoundYieldFuncDescINS_21PersonalServerServiceEFSsiESsLi1EED0Ev")
+// IDA 0x8942e4 (D0): D1 body (0x89431c..0x894366) + operator delete (0x89436c).
+// MODEL: consuming Box drops members and frees — same observable.
+pub fn stub_0x8942e4(desc: Box<PersonalServerYieldDesc>) {
+    // IDA 0x8942e4
+    drop(desc);
 }
 
 // 0x8943b8 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_21PersonalServerServiceEFSsiESsLi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSB_IFvSsEEE
 // type: void __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, char, int, int, int, char, int, int, int, char, int, int, int, int, char, int, int, int, int, int, int, int)
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,std::string ()(int),std::string,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,std::string ()(int),std::string,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
-pub fn stub_0x8943b8() -> ! {
-    todo!("0x8943b8 __ZNK3RBX10Reflection18BoundYieldFuncDescINS_21PersonalServerServiceEFSsiESsLi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSB_IFvSsEEE")
+// IDA 0x8943b8: target = a2 ? a2-36 : 0 (0x894412..0x894414); member pair at
+// +0x28/+0x2C with virtual adjust (0x8943ec..0x89442a); getArg<int,1>
+// (0x894440); resume_adapter<string> bound into the string continuation
+// (0x894464..0x894470); invoke (0x894492); all four function temps cleared
+// (0x89449a..0x8944bc). MODEL: null target is skipped (the original would
+// fault the member call); the resume adapter applies `resume` to the result.
+pub fn stub_0x8943b8(
+    desc: &PersonalServerYieldDesc,
+    target_present: bool,
+    arg0: i32,
+    resume: &dyn Fn(String),
+) {
+    // IDA 0x8943b8
+    if !target_present {
+        return;
+    }
+    if let Some(method) = desc.method {
+        let result = method(arg0);
+        resume(result);
+    }
 }
 
 // 0x89f9a4 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_16BindableFunctionEFN5boost10shared_ptrIKNS0_5TupleEEES7_ES7_Li1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::BindableFunction,boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>),boost::shared_ptr<RBX::Reflection::Tuple const>,1>::~BoundYieldFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::BindableFunction,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>),rbx_core::SharedPtr<RBX::Reflection::Tuple const>,1>::~BoundYieldFuncDesc()")]
-pub fn stub_0x89f9a4() -> ! {
-    todo!("0x89f9a4 __ZN3RBX10Reflection18BoundYieldFuncDescINS_16BindableFunctionEFN5boost10shared_ptrIKNS0_5TupleEEES7_ES7_Li1EED1Ev")
+// IDA 0x89f9a4 (D1): vtable reset (0x89f9e2); scoped member dtor at +0x30
+// (0x89fa08); base vtable reset + signature _M_clear at +8 (0x89fa1c/0x89fa28).
+pub fn stub_0x89f9a4(desc: &mut BindableFunctionYieldDesc) {
+    // IDA 0x89f9a4
+    desc.member.take();
+    desc.signature.clear();
 }
 
 // 0x8a1acc — __ZN3RBX10Reflection18BoundYieldFuncDescINS_16BindableFunctionEFN5boost10shared_ptrIKNS0_5TupleEEES7_ES7_Li1EEC2EMS2_FvS7_NS3_8functionIFvS7_EEENSA_IFvSsEEEEPKcSI_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
