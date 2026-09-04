@@ -34,50 +34,57 @@ pub fn stub_a5c160(_addr: &crate::socket::SystemAddress) -> u32 {
 // 0xa5c164 — __ZN6RakNet13SystemAddress13SetToLoopbackEh
 // type: int __fastcall(RakNet::SystemAddress *this, int)
 #[doc(alias = "RakNet::SystemAddress::SetToLoopback(unsigned char)")]
-pub fn stub_a5c164() -> ! {
-    todo!("0xa5c164 RakNet::SystemAddress::SetToLoopback(unsigned char)")
+pub fn stub_a5c164(addr: &mut crate::socket::SystemAddress, ipv4: bool) {
+ // IDA 0xa5c164: loopback for the family.
+ addr.set_to_loopback(ipv4)
 }
 
 // 0xa5c18c — __ZNK6RakNet13SystemAddress12ToString_OldEbPcc
 // type: char *__fastcall(RakNet::SystemAddress *this, int, char *, char)
 #[doc(alias = "RakNet::SystemAddress::ToString_Old(bool,char *,char)const")]
-pub fn stub_a5c18c() -> ! {
-    todo!("0xa5c18c RakNet::SystemAddress::ToString_Old(bool,char *,char)const")
+pub fn stub_a5c18c(addr: &crate::socket::SystemAddress, print_port: bool, delimiter: char) -> String {
+ // IDA 0xa5c18c: sentinel or dotted text.
+ addr.to_string_old(print_port, delimiter)
 }
 
 // 0xa5c220 — __ZN6RakNet13SystemAddressC1EPKct
 // type: RakNet::SystemAddress *__fastcall(RakNet::SystemAddress *this, const char *, unsigned int)
 #[doc(alias = "RakNet::SystemAddress::SystemAddress(char const*,unsigned short)")]
-pub fn stub_a5c220() -> ! {
-    todo!("0xa5c220 RakNet::SystemAddress::SystemAddress(char const*,unsigned short)")
+pub fn stub_a5c220(host: &str, port: u16, resolve: &mut dyn FnMut(&str) -> Option<u32>) -> crate::socket::SystemAddress {
+ // IDA 0xa5c220: family, address, port images.
+ crate::socket::SystemAddress::from_host_port(host, port, resolve)
 }
 
 // 0xa5c250 — __ZN6RakNet13SystemAddress22FromStringExplicitPortEPKcti
 // type: int __fastcall(RakNet::SystemAddress *this, const char *, unsigned int, int)
 #[doc(alias = "RakNet::SystemAddress::FromStringExplicitPort(char const*,unsigned short,int)")]
-pub fn stub_a5c250() -> ! {
-    todo!("0xa5c250 RakNet::SystemAddress::FromStringExplicitPort(char const*,unsigned short,int)")
+pub fn stub_a5c250(host: &str, port: u16, resolve: &mut dyn FnMut(&str) -> Option<u32>) -> crate::socket::SystemAddress {
+ // IDA 0xa5c250: address plus explicit port.
+ crate::socket::SystemAddress::from_string_explicit_port(host, port, resolve)
 }
 
 // 0xa5c274 — __ZN6RakNet13SystemAddress15FixForIPVersionERKS0_
 // type: int __fastcall(RakNet::SystemAddress *this, const RakNet::SystemAddress *)
 #[doc(alias = "RakNet::SystemAddress::FixForIPVersion(RakNet::SystemAddress const&)")]
-pub fn stub_a5c274() -> ! {
-    todo!("0xa5c274 RakNet::SystemAddress::FixForIPVersion(RakNet::SystemAddress const&)")
+pub fn stub_a5c274(addr: &mut crate::socket::SystemAddress, other: &crate::socket::SystemAddress) {
+ // IDA 0xa5c274: v6 loopback to v4 against IPv4.
+ addr.fix_for_ip_version(other)
 }
 
 // 0xa5c320 — __ZN6RakNet13SystemAddress16SetBinaryAddressEPKcc
 // type: int __fastcall(RakNet::SystemAddress *this, RakNet::SocketLayer *__s, unsigned __int8)
 #[doc(alias = "RakNet::SystemAddress::SetBinaryAddress(char const*,char)")]
-pub fn stub_a5c320() -> ! {
-    todo!("0xa5c320 RakNet::SystemAddress::SetBinaryAddress(char const*,char)")
+pub fn stub_a5c320(addr: &mut crate::socket::SystemAddress, host: &str, resolve: &mut dyn FnMut(&str) -> Option<u32>) {
+ // IDA 0xa5c320: dotted, localhost, or DNS parse.
+ addr.set_binary_address(host, resolve)
 }
 
 // 0xa5c498 — __ZN6RakNet13SystemAddress8CopyPortERKS0_
 // type: int __fastcall(int this, const RakNet::SystemAddress *)
 #[doc(alias = "RakNet::SystemAddress::CopyPort(RakNet::SystemAddress const&)")]
-pub fn stub_a5c498() -> ! {
-    todo!("0xa5c498 RakNet::SystemAddress::CopyPort(RakNet::SystemAddress const&)")
+pub fn stub_a5c498(dst: &mut crate::socket::SystemAddress, src: &crate::socket::SystemAddress) {
+ // IDA 0xa5c498: port and debug images.
+ dst.copy_port(src)
 }
 
 // 0xa5c4a4 — __ZNK6RakNet10RakNetGUIDeqERKS0_

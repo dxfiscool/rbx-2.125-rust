@@ -154,6 +154,44 @@ mod tests {
         assert!(g.not_equal(&h) && g != h);
         assert!(!g.not_equal(&g));
     }
+    #[test]
+    fn address_string_cluster() {
+        // IDA 0xa5c320: dotted, localhost, DNS, and port suffixes.
+        let mut no_dns = |_: &str| None;
+        let mut a = SystemAddress::new();
+        a.set_binary_address("10.0.0.5:1234", &mut no_dns);
+        assert_eq!((a.dotted(), a.port, a.debug_port), ("10.0.0.5".to_owned(), 1234, 1234));
+        a.set_binary_address("localhost8080", &mut no_dns);
+        assert_eq!((a.dotted(), a.port), ("127.0.0.1".to_owned(), 8080));
+        a.set_binary_address("example.com", &mut |h| (h == "example.com").then_some(0x0100_007Fu32));
+        assert_eq!(a.dotted(), "127.0.0.1");
+        // IDA 0xa5c220/0xa5c250/0xa5c498/0xa5c164/0xa5c274.
+        let mut no_dns = |_: &str| None;
+        let b = SystemAddress::from_host_port("192.168.1.2", 53640, &mut no_dns);
+        assert_eq!((b.dotted(), b.port, b.system_index), ("192.168.1.2".to_owned(), 53640, 0xFFFF));
+        let c = SystemAddress::from_string_explicit_port("192.168.1.2", 80, &mut no_dns);
+        assert_eq!((c.port, c.system_index), (80, 0));
+        let mut d = SystemAddress::new();
+        d.copy_port(&b);
+        assert_eq!((d.port, d.debug_port), (53640, 53640));
+        d.set_to_loopback(true);
+        assert_eq!(d.dotted(), "127.0.0.1");
+        d.set_to_loopback(false);
+        assert_eq!(d.family, 6);
+        d.fix_for_ip_version(&SystemAddress::new());
+        assert_eq!((d.family, d.dotted()), (2, "127.0.0.1".to_owned()));
+        // IDA 0xa5c18c/0xa5c068: sentinel plus dotted forms.
+        let mut u = SystemAddress::new();
+        u.port = 0xFFFF;
+        u.binary = 0xFFFF_FFFF;
+        assert_eq!(u.to_string_old(true, ':'), "UNASSIGNED_SYSTEM_ADDRESS");
+        assert_eq!(b.to_string_old(true, ':'), format!("192.168.1.2:53640"));
+        assert_eq!(b.to_string_old(false, ':'), "192.168.1.2");
+        assert_eq!(b.address_to_string(true), "192.168.1.2:53640");
+        // IDA 0xa5c0b0: socket descriptor.
+        assert_eq!(socket_descriptor(123, Some("h")).host, "h");
+        assert_eq!(socket_descriptor(123, None).host, "");
+    }
 }
 
 /// `RakNet::UNASSIGNED_RAKNET_GUID` (IDA 0xa5c018).
@@ -199,6 +237,10 @@ pub struct SystemAddress {
  pub family: u8,
  pub port: u16,
  pub binary: u32,
+ /// Debug port image at +16 (IDA 0xa5c414/0xa5c26e): tracks the port.
+ pub debug_port: u16,
+ /// Word at +18 (IDA 0xa5c24a): set to all-ones by the host/port ctor.
+ pub system_index: u16,
 }
 
 impl Default for SystemAddress {
@@ -219,7 +261,7 @@ impl SystemAddress {
  /// `SystemAddress::SystemAddress` (IDA 0xa5bfec): zeroed storage
  /// with the IPv4 family byte.
  pub fn new() -> Self {
- Self { family: 2, port: 0, binary: 0 }
+ Self { family: 2, port: 0, binary: 0, debug_port: 0, system_index: 0 }
  }
 
  /// `SystemAddress::operator=` (IDA 0xa5c024).
@@ -302,6 +344,147 @@ impl SystemAddress {
  pub fn ip_proto(&self) -> u32 {
  0
  }
+
+ /// Dotted quad of the raw address (IDA 0xa5c1ea `inet_ntoa`).
+ #[must_use]
+ pub fn dotted(&self) -> String {
+ let o = self.binary.to_le_bytes();
+ format!("{}.{}.{}.{}", o[0], o[1], o[2], o[3])
+ }
+
+ /// Whether this is the unassigned sentinel (IDA 0xa5c1a8..0xa5c1b8:
+ /// IPv4 plus the `word_137FC02` port and `dword_137FC04` address,
+ /// all-ones in practice).
+ #[must_use]
+ pub fn is_unassigned(&self) -> bool {
+ self.family == 2 && self.port == 0xFFFF && self.binary == 0xFFFF_FFFF
+ }
+
+ /// `SystemAddress::ToString_Old` (IDA 0xa5c18c): the sentinel name,
+ /// else dotted plus the delimiter and decimal port when asked. The
+ /// original returns a pointer 10 past the buffer on the sentinel arm;
+ /// only the buffer text is modeled.
+ #[must_use]
+ pub fn to_string_old(&self, print_port: bool, delimiter: char) -> String {
+ if self.is_unassigned() {
+ return "UNASSIGNED_SYSTEM_ADDRESS".to_owned();
+ }
+ if print_port {
+ format!("{}{}{}", self.dotted(), delimiter, self.port)
+ } else {
+ self.dotted()
+ }
+ }
+
+ /// `SystemAddress::ToString` (IDA 0xa5c068/0xa5c0a4): same text via a
+ /// rotating static buffer engine-side; this returns an owned copy.
+ #[must_use]
+ pub fn address_to_string(&self, print_port: bool) -> String {
+ self.to_string_old(print_port, ':')
+ }
+
+ /// Parse a dotted quad like `inet_addr` (IDA 0xa5c3fc).
+ fn parse_dotted(text: &str) -> Option<u32> {
+ let mut octets = [0u8; 4];
+ let mut parts = text.split('.');
+ for o in &mut octets {
+ *o = parts.next()?.parse::<u8>().ok()?;
+ }
+ if parts.next().is_some() {
+ return None;
+ }
+ Some(u32::from_le_bytes(octets))
+ }
+
+ /// `SystemAddress::SetBinaryAddress` (IDA 0xa5c320): dotted
+ /// `[host][:port]`, `localhost`, or DNS via `resolve`. The port sticks
+ /// only when the address parses, like the original.
+ pub fn set_binary_address(&mut self, host: &str, resolve: &mut dyn FnMut(&str) -> Option<u32>) {
+ let starts_numeric = host.as_bytes().first().is_some_and(|&c| c.is_ascii_digit() || c == b'-');
+ if starts_numeric || host.contains(':') {
+ let (ip, port) = match host.split_once(':') {
+ Some((ip, port)) => (ip, port.parse::<u16>().ok()),
+ None => (host, None),
+ };
+ if let Some(binary) = Self::parse_dotted(ip) {
+ self.binary = binary;
+ if let Some(port) = port {
+ self.port = port;
+ self.debug_port = port;
+ }
+ }
+ } else if let Some(rest) = host.strip_prefix("localhost") {
+ self.binary = u32::from_le_bytes([127, 0, 0, 1]);
+ if let Ok(port) = rest.parse::<u16>() {
+ self.port = port;
+ self.debug_port = port;
+ }
+ } else if let Some(binary) = resolve(host) {
+ self.binary = binary;
+ }
+ }
+
+ /// `SystemAddress::SystemAddress(host, port)` (IDA 0xa5c220): family
+ /// plus address, the port images, and the all-ones word.
+ pub fn from_host_port(host: &str, port: u16, resolve: &mut dyn FnMut(&str) -> Option<u32>) -> Self {
+ let mut addr = Self::new();
+ addr.set_binary_address(host, resolve);
+ addr.port = port;
+ addr.debug_port = port;
+ addr.system_index = 0xFFFF;
+ addr
+ }
+
+ /// `SystemAddress::FromStringExplicitPort` (IDA 0xa5c250): same
+ /// without the trailing word.
+ pub fn from_string_explicit_port(host: &str, port: u16, resolve: &mut dyn FnMut(&str) -> Option<u32>) -> Self {
+ let mut addr = Self::new();
+ addr.set_binary_address(host, resolve);
+ addr.port = port;
+ addr.debug_port = port;
+ addr
+ }
+
+ /// `SystemAddress::SetToLoopback` (IDA 0xa5c164): `127.0.0.1` for
+ /// IPv4; IPv6 loopback only flips the family (the 16-byte address
+ /// stays engine-side).
+ pub fn set_to_loopback(&mut self, ipv4: bool) {
+ if ipv4 {
+ self.family = 2;
+ self.binary = u32::from_le_bytes([127, 0, 0, 1]);
+ } else {
+ self.family = 6;
+ }
+ }
+
+ /// `SystemAddress::CopyPort` (IDA 0xa5c498): the port and debug
+ /// images.
+ pub fn copy_port(&mut self, other: &Self) {
+ self.port = other.port;
+ self.debug_port = other.debug_port;
+ }
+
+ /// `SystemAddress::FixForIPVersion` (IDA 0xa5c274): an IPv6 loopback
+ /// talking to IPv4 becomes `127.0.0.1`.
+ pub fn fix_for_ip_version(&mut self, other: &Self) {
+ if self.family != 2 && other.family == 2 {
+ self.set_to_loopback(true);
+ }
+ }
+}
+
+/// `RakNet::SocketDescriptor` (IDA 0xa5c0b0): the port plus an optional
+/// host string; the remaining words stay engine-side.
+#[derive(Clone, Debug, Default)]
+pub struct SocketDescriptor {
+ pub port: u16,
+ pub host: String,
+}
+
+/// `SocketDescriptor::SocketDescriptor` (IDA 0xa5c0b0).
+#[must_use]
+pub fn socket_descriptor(port: u16, host: Option<&str>) -> SocketDescriptor {
+ SocketDescriptor { port, host: host.unwrap_or("").to_owned() }
 }
 
 /// `SuperFastHashIncremental` (IDA 0xa7cb08, Paul Hsieh's hash as
