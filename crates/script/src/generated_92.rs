@@ -51,16 +51,15 @@ pub struct LuaState {
 pub type LuaAlloc = unsafe fn(ud: *mut u8, ptr: *mut u8, osize: usize, nsize: usize) -> *mut u8;
 
 // Value-stack slot. Extends the old number-only model (the file header
-// anticipated string/table/closure needs): numbers keep their behavior, and
-// the string-lib fns below add Str. Gmatch carries string.gmatch iterator
-// state (stock wraps subject/pattern/pos in a C closure with 3 upvalues and
-// reads them via pseudo-indices; one state value plays that role here).
 #[derive(Clone, Debug)]
 pub enum StackVal {
     Nil,
     Num(f64),
     Str(Vec<u8>),
     Gmatch(GmatchIter),
+    // Raw-model table block (luaH_new product, e.g. open_func's anchor).
+    // Stock tags these LUA_TTABLE; codegen/table access is unmodeled.
+    Table(*mut usize),
 }
 
 // string.gmatch iterator: subject + pattern + 1-based resume offset. Mirrors
@@ -287,6 +286,7 @@ fn lua_type(l: *mut LuaState, idx: i32) -> i32 {
         StackVal::Nil => LUA_TNIL,
         StackVal::Num(_) => LUA_TNUMBER,
         StackVal::Str(_) => LUA_TSTRING,
+        StackVal::Table(_) => LUA_TTABLE,
         // The iterator state stands in for gmatch's C closure.
         StackVal::Gmatch(_) => LUA_TFUNCTION,
     }
@@ -2160,32 +2160,99 @@ pub unsafe fn stub_0x82c0c0(dst: *mut u8, src: *const u8, n: usize) -> *mut u8 {
 pub unsafe fn stub_0x82c334(l: *mut LuaState, source: &[u8], name: &[u8]) -> LuaProto {
     // The interned name is what luaX_setinput keeps (lex chunkname pointer);
     // the table entry is the observable part here.
-    let _chunkname = stub_0x82eb98(l, name.as_ptr(), name.len());
-    // IDA luaX_setinput(L, lex, z, chunkname).
-    let mut lex = ParserLex { source: source.to_vec(), pos: 0, line: 1 };
+    let chunkname = stub_0x82eb98(l, name.as_ptr(), name.len());
+    let z = ParserZio { data: source.to_vec(), n: source.len(), p: 0 };
+    let mut lex = ParserLex::new(l, name);
+    stub_0x82a994(l, &mut lex, z); // IDA luaX_setinput
     // IDA open_func(lex, funcstate): blank function state, one anchor block.
-    let mut fs = ParserFunc { nactvar: 0, freereg: 0, nknum: 0 };
+    let mut fs = ParserFunc::new();
+    open_func(l, &mut lex, &mut fs, chunkname); // IDA 0x82c3a0
     // IDA luaX_next(lex): read the first token.
     lex_next(&mut lex);
     // IDA chunk(lex): parse the block; then expect TK_EOS (287).
     parse_chunk(&mut lex, &mut fs);
-    if !lex_at_eos(&lex) {
-        panic!("lua: <eof> expected");
+    if lex.token != TK_EOS {
+        error_expected(&lex, TK_EOS); // IDA 0x82de5c (noreturn)
     }
-    // IDA close_func(lex): seal the prototype and return it.
+    // IDA close_func(lex): seal the prototype and return it (EA 0x82cb20;
+    // needs removevars/luaK_ret codegen — next parser batch).
     LuaProto { source: lex.source.clone(), nparams: fs.nactvar }
 }
-// Lexer input: the Zio byte stream plus current line (luaX_setinput fills
+// End-of-stream token id (IDA 287, luaX_tokens past the 21 reserved words).
+const TK_EOS: i32 = 287;
+// Reader input: the Zio byte stream (stock chains a reader callback; the
+// bytes are modeled directly) plus the n/p cursor luaX_setinput consumes.
+pub struct ParserZio {
+    data: Vec<u8>,
+    n: usize,
+    p: usize,
+}
+// Lexer input (llex LexState, only the lanes luaX_setinput/open_func and the
+// error path touch). `l` backs error_expected's pushfstring (IDA lex + 40).
 pub struct ParserLex {
+    l: *mut LuaState,
     source: Vec<u8>,
     pos: usize,
     line: i32,
+    decpoint: u8,
+    token: i32,
+    lookahead: i32,
+    fs_depth: usize,
+    buff: Vec<u8>,
+    nbuff: usize,
+    current: i32,
+    linenumber: i32,
+    lastline: i32,
+    z: ParserZio,
 }
-// Open function state (lparser FuncState, only the counters named here).
+impl ParserLex {
+    fn new(l: *mut LuaState, name: &[u8]) -> Self {
+        ParserLex {
+            l,
+            source: name.to_vec(),
+            pos: 0,
+            line: 1,
+            decpoint: 0,
+            token: 0,
+            lookahead: 0,
+            fs_depth: 0,
+            buff: Vec::new(),
+            nbuff: 0,
+            current: 0,
+            linenumber: 0,
+            lastline: 0,
+            z: ParserZio { data: Vec::new(), n: 0, p: 0 },
+        }
+    }
+}
+// Open function state (lparser FuncState chain link + counters).
 pub struct ParserFunc {
-    nactvar: u8,
+    f_proto: *mut usize,
+    prev_depth: usize,
+    h_table: *mut usize,
+    pc: usize,
     freereg: u8,
+    nactvar: u8,
     nknum: usize,
+    np: usize,
+    lasttarget: i32,
+    jpc: i32,
+}
+impl ParserFunc {
+    fn new() -> Self {
+        ParserFunc {
+            f_proto: std::ptr::null_mut(),
+            prev_depth: 0,
+            h_table: std::ptr::null_mut(),
+            pc: 0,
+            freereg: 0,
+            nactvar: 0,
+            nknum: 0,
+            np: 0,
+            lasttarget: 0,
+            jpc: 0,
+        }
+    }
 }
 // Compiled chunk (lparser Proto, code tables unmodeled).
 pub struct LuaProto {
@@ -2202,11 +2269,105 @@ fn lex_next(lex: &mut ParserLex) {
 fn lex_at_eos(lex: &ParserLex) -> bool {
     lex.pos >= lex.source.len()
 }
-// IDA chunk(): the lparser.c parse core (statlist, code gen). Out-of-shard
-// EAs; panics until that batch lands so no caller can mistake this for a
+// IDA chunk() at 0x82c440: the lparser.c parse core (40+ decompiler locals;
+// statement dispatch, expression parsing, code generation). Too big for this
+// batch; panics until that batch lands so no caller mistakes this for a
 // working parser.
 fn parse_chunk(_lex: &mut ParserLex, _fs: &mut ParserFunc) {
     panic!("luaY_parser: lparser chunk() core not yet modeled");
+}
+// 0x82a994 — __Z13luaX_setinputP9lua_StateP8LexStateP3ZioP7TString
+#[doc(alias = "luaX_setinput(lua_State *,LexState *,Zio *,TString *)")]
+// IDA 0x82a994: seed the lexer (decpoint '.', L, lookahead TK_EOS, reader,
+// fresh func chain, line 1/1, chunk name), size the dynamic buffer to 32
+// (luaZ_resizebuffer), then read the first input char: consume the Zio
+// cursor when bytes remain, else luaZ_fill (EOZ when the slice is dry).
+pub unsafe fn stub_0x82a994(l: *mut LuaState, lex: &mut ParserLex, z: ParserZio) {
+    lex.decpoint = b'.'; // IDA +56
+    lex.l = l; // IDA +40
+    lex.lookahead = TK_EOS; // IDA +24
+    lex.z = z; // IDA +44
+    lex.fs_depth = 0; // IDA +36: no open function
+    lex.linenumber = 1; // IDA +4
+    lex.lastline = 1; // IDA +8
+    lex.buff.clear(); // IDA luaZ_resizebuffer to LUA_MINBUFFER
+    lex.buff.reserve(32);
+    lex.nbuff = 32;
+    if lex.z.n == 0 {
+        lex.current = luaZ_fill_eoz(); // IDA luaZ_fill, EA 0x8338c8
+    } else {
+        lex.z.n -= 1;
+        lex.current = lex.z.data[lex.z.p] as i32;
+        lex.z.p += 1;
+    }
+}
+// IDA luaZ_fill (EA 0x8338c8) on a dry slice reader: end of stream (-1,
+// EOZ). The refill-via-callback path needs the embedder reader.
+fn luaZ_fill_eoz() -> i32 {
+    -1
+}
+// IDA luaF_newproto (EA 0x8298bc): fresh function prototype. Only the source
+// (+32) and +75 lanes are touched by open/close_func here, so a 20-word mm
+// block stands in for the true Proto layout until that batch.
+unsafe fn luaF_newproto(l: *mut LuaState) -> *mut usize {
+    mm(l, std::ptr::null_mut(), 0, 20)
+}
+// 0x82c3a0 — __ZL9open_funcP8LexStateP9FuncState
+#[doc(alias = "open_func(LexState *,FuncState *)")]
+// IDA 0x82c3a0: allocate the prototype, chain the function state onto the
+// lexer, blank the codegen counters, stamp source/flags on the prototype,
+// and anchor a fresh table (luaH_new, in-file) by pushing it as a table
+// value on L's stack (growing first, as the stack_last check does).
+pub unsafe fn open_func(
+    l: *mut LuaState,
+    lex: &mut ParserLex,
+    fs: &mut ParserFunc,
+    source_ts: *mut usize,
+) {
+    let f = luaF_newproto(l); // IDA v5
+    fs.f_proto = f; // IDA fs->f
+    fs.prev_depth = lex.fs_depth; // IDA fs->prev = ls->fs
+    lex.fs_depth += 1; // IDA ls->fs = fs
+    fs.pc = 0; // IDA +24ish: pc
+    fs.lasttarget = -1; // IDA +28ish
+    fs.jpc = -1; // IDA +32ish
+    fs.freereg = 0;
+    fs.nknum = 0;
+    fs.np = 0;
+    fs.nactvar = 0; // IDA +43/+47 byte lanes
+    sw(f, 8, source_ts as usize); // IDA proto +32 = source
+    sb(f, 75, 2); // IDA proto +75 = 2
+    let h = luaH_new(l, 0, 0); // IDA anchor table
+    fs.h_table = h;
+    luaL_checkstack(l);
+    (*l).stack.push(StackVal::Table(h)); // IDA push + tag 5 + top++
+}
+// IDA luaX_token2str (EA 0x82a848): printable token name. Only TK_EOS is
+// needed on this path; the full reserved-word table lands with the lexer.
+fn luaX_token2str(token: i32) -> &'static str {
+    if token == TK_EOS {
+        "<eof>"
+    } else {
+        "<unknown>"
+    }
+}
+// IDA luaX_syntaxerror (EA 0x82a960): noreturn syntax-error report. Stock
+// prefixes chunk:line via luaO_chunkid; the message lane below is the
+// observable part here.
+unsafe fn luaX_syntaxerror(lex: &ParserLex, msg: *const u8) -> ! {
+    let bytes = std::slice::from_raw_parts(msg, c_strlen(msg));
+    panic!("lua syntax error: {}", String::from_utf8_lossy(bytes));
+}
+// 0x82de5c — __ZL14error_expectedP8LexStatei
+#[doc(alias = "error_expected(LexState *,int)")]
+// IDA 0x82de5c: report "'X' expected" for the wanted token and raise. Reads
+// L off the lexer (IDA +40) for the pushfstring.
+pub unsafe fn error_expected(lex: &ParserLex, token: i32) -> ! {
+    let want = luaX_token2str(token);
+    let mut wn = want.as_bytes().to_vec();
+    wn.push(0);
+    let p = stub_0x82c0a0(lex.l, b"'%s' expected\0".as_ptr(), &[FmtArg::Str(wn.as_ptr())]);
+    luaX_syntaxerror(lex, p);
 }
 
 // 0x82df78 — __Z14luaE_newthreadP9lua_State
@@ -4251,6 +4412,75 @@ mod lifecycle_tests {
             let l = &mut l as *mut LuaState;
             stub_0x82eaf4(l, 32);
             let _ = stub_0x82c334(l, b"return 1", b"chunk");
+        }
+    }
+}
+
+#[cfg(test)]
+mod parser_framing_tests {
+    use super::*;
+
+    fn lex_state(l: *mut LuaState, name: &[u8], g: &mut [usize; 64]) -> (ParserLex, ParserZio) {
+        unsafe {
+            (*l).raw[0x10 / 4] = g.as_mut_ptr() as usize;
+            stub_0x82eaf4(l, 32);
+        }
+        let z = ParserZio { data: b"return 1".to_vec(), n: 8, p: 0 };
+        (ParserLex::new(l, name), z)
+    }
+
+    #[test]
+    fn setinput_seeds_lexer() {
+        unsafe {
+            let mut g = [0usize; 64];
+            let mut l = LuaState::new();
+            let l = &mut l as *mut LuaState;
+            let (mut lex, z) = lex_state(l, b"chunk", &mut g);
+            stub_0x82a994(l, &mut lex, z);
+            assert_eq!(lex.decpoint, b'.');
+            assert_eq!(lex.lookahead, 287);
+            assert_eq!((lex.linenumber, lex.lastline), (1, 1));
+            assert_eq!(lex.nbuff, 32);
+            assert_eq!(lex.current, b'r' as i32);
+            // Dry reader yields EOZ instead of filling.
+            let (mut lex2, _) = lex_state(l, b"e", &mut g);
+            let dry = ParserZio { data: Vec::new(), n: 0, p: 0 };
+            stub_0x82a994(l, &mut lex2, dry);
+            assert_eq!(lex2.current, -1);
+        }
+    }
+
+    #[test]
+    fn open_func_chains_and_anchors() {
+        unsafe {
+            let mut g = [0usize; 64];
+            let mut l = LuaState::new();
+            let l = &mut l as *mut LuaState;
+            let (mut lex, z) = lex_state(l, b"chunk", &mut g);
+            stub_0x82a994(l, &mut lex, z);
+            let ts = stub_0x82eb98(l, b"chunk".as_ptr(), 5);
+            let mut fs = ParserFunc::new();
+            open_func(l, &mut lex, &mut fs, ts);
+            assert!(!fs.f_proto.is_null());
+            assert_eq!(lex.fs_depth, 1);
+            assert_eq!((fs.pc, fs.freereg, fs.nactvar), (0, 0, 0));
+            assert_eq!((fs.lasttarget, fs.jpc), (-1, -1));
+            assert_eq!(lw(fs.f_proto, 8), ts as usize); // proto +32 source
+            assert_eq!(lb(fs.f_proto, 75), 2);
+            assert!(matches!(&(&*l).stack[(&*l).stack.len() - 1], StackVal::Table(_)));
+            assert_eq!(lua_type(l, -1), LUA_TTABLE);
+        }
+    }
+
+    #[test]
+    #[should_panic(expected = "'<eof>' expected")]
+    fn error_expected_names_token() {
+        unsafe {
+            let mut g = [0usize; 64];
+            let mut l = LuaState::new();
+            let l = &mut l as *mut LuaState;
+            let (lex, _) = lex_state(l, b"chunk", &mut g);
+            error_expected(&lex, TK_EOS);
         }
     }
 }

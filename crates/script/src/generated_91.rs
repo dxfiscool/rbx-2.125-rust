@@ -256,9 +256,23 @@ pub fn stub_0x828560() -> ! {
 // 0x8285f4 — __Z20luaD_rawrunprotectedP9lua_StatePFvS0_PvES1_
 // type: int __fastcall(int, int, int, int, int, int, int, int, void *, int)
 #[doc(alias = "luaD_rawrunprotected(lua_State *,void (*)(lua_State *,void *),void *)")]
-pub fn stub_0x8285f4() -> ! {
-    todo!("0x8285f4 __Z20luaD_rawrunprotectedP9lua_StatePFvS0_PvES1_")
+// IDA 0x8285f4: chain a fresh error handler at L + 104 (status 0, previous
+// link saved), run f(L, ud), restore the chain, return the status. The
+// decompile shows only the happy path; errors arrive via luaD_throw's
+// longjmp past the call. Panics play that role here: a panic restores the
+// chain and reports 1. L is opaque in this shard (raw words only).
+pub unsafe fn stub_0x8285f4(l: *mut u8, f: ProtectedFn, ud: *mut u8) -> i32 {
+    const ERRJMP: usize = 104;
+    let slot = l.add(ERRJMP) as *mut usize;
+    let prev = *slot;
+    *slot = 0xCA11; // chained-handler marker (address of the stock lj record)
+    let r = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| f(l, ud)));
+    *slot = prev; // IDA 0x82865e: restore, both paths
+    if r.is_ok() { 0 } else { 1 } // IDA v20 status
 }
+// Protected-call body: fn(L, ud). Matches the Pfunc shape IDA calls at
+// 0x828658 (a2(v21, a3)).
+pub type ProtectedFn = unsafe fn(*mut u8, *mut u8);
 
 // 0x828740 — __Z17luaD_reallocstackP9lua_Statei
 #[doc(alias = "luaD_reallocstack(lua_State *,int)")]
@@ -658,4 +672,34 @@ pub fn stub_0x82b618() -> ! {
 #[doc(alias = "math_cosh(lua_State *)")]
 pub fn stub_0x82b63c() -> ! {
     todo!("0x82b63c __ZL9math_coshP9lua_State")
+}
+
+#[cfg(test)]
+mod rawrunprotected_tests {
+    use super::*;
+
+    unsafe fn ok_fn(_l: *mut u8, ud: *mut u8) {
+        *ud.add(0) = 7;
+    }
+
+    unsafe fn boom_fn(_l: *mut u8, _ud: *mut u8) {
+        panic!("throw");
+    }
+
+    #[test]
+    fn chains_restores_and_reports() {
+        unsafe {
+            // Fake L words with a recognizable prior handler at +104.
+            let mut words = [0usize; 32];
+            let l = words.as_mut_ptr() as *mut u8;
+            *(l.add(104) as *mut usize) = 0x1234;
+            let mut flag = [0u8; 1];
+            assert_eq!(stub_0x8285f4(l, ok_fn, flag.as_mut_ptr()), 0);
+            assert_eq!(flag[0], 7);
+            assert_eq!(*(l.add(104) as *mut usize), 0x1234);
+            // A throwing body restores the chain and reports 1.
+            assert_eq!(stub_0x8285f4(l, boom_fn, flag.as_mut_ptr()), 1);
+            assert_eq!(*(l.add(104) as *mut usize), 0x1234);
+        }
+    }
 }
