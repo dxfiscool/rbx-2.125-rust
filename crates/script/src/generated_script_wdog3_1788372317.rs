@@ -1641,9 +1641,20 @@ impl ClassCreator {
     }
 
     /// `Creator::getClassName` gate (IDA 0x6bf8a0/0x6c5360, Object.h:0x29A
-    /// call-site [INFERENCE on the exact line; mirrors Object.h:255]).
+    /// call-site [INFERENCE on the exact line; mirrors Object.h:255], and
+    /// IDA 0x6d36d0 at Object.h:236).
     pub fn creator_class_name(&self) -> &'static str {
         self.check_constructed();
+        self.class_name
+    }
+
+    /// Line-parameterized gate for creators whose assert site is known
+    /// exactly (IDA 0x6d36d0, Object.h:236).
+    pub fn creator_class_name_at(&self, line: u32) -> &'static str {
+        debug_assert!(
+            self.constructed,
+            "wasConstructed() file: include/Util/Object.h line: {line}"
+        );
         self.class_name
     }
 
@@ -1671,6 +1682,9 @@ pub static VIRTUAL_USER_CREATOR: LazyLock<Mutex<ClassCreator>> =
 /// `creatorPrivate` for `Visit` (cf. IDA 0x6c8d70).
 pub static VISIT_CREATOR: LazyLock<Mutex<ClassCreator>> =
     LazyLock::new(|| Mutex::new(ClassCreator::new("Visit")));
+/// `creatorPrivate` for `ModelInstance` (IDA 0x6d365c).
+pub static MODEL_CREATOR: LazyLock<Mutex<ClassCreator>> =
+    LazyLock::new(|| Mutex::new(ClassCreator::new("Model")));
 
 // 0x6bf288 — __ZN3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE7CreatorD1Ev")]
@@ -1862,9 +1876,9 @@ pub fn stub_0x6d2d50() {
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0x6d322c() -> &'static str {
     // IDA 0x6d322c: `static_getCreator` once-init, then
-    // `Creator::getClassName` — the `sModel` name. The `ModelInstance`
-    // `creatorPrivate` singleton lands with batch 5 (0x6d365c).
-    "Model"
+    // `Creator::getClassName` (0x6d36d0) — the `sModel` name, gated at
+    // Object.h:236 through the singleton.
+    MODEL_CREATOR.lock().creator_class_name_at(236)
 }
 
 // 0x6d354c — __ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED1Ev
@@ -1949,9 +1963,77 @@ mod creator_tests {
     }
 
     #[test]
+    fn model_creator_names_match() {
+        let mut creator = ClassCreator::new("Model");
+        let mut declare = |_: &str| {};
+        let mut register = |_: &str| {};
+        stub_0x6d3a78(&mut creator, &mut declare, &mut register);
+        assert!(creator.constructed);
+        assert_eq!(stub_0x6d36d0(&creator), "Model");
+        let mut create = || 11u32;
+        assert_eq!(stub_0x6d3908(&creator, &mut create), 11);
+        let mut unregistered = 0;
+        let mut unregister = |_: &str| unregistered += 1;
+        stub_0x6d3610(&mut creator, &mut unregister);
+        stub_0x6d3614(&mut creator, &mut unregister);
+        stub_0x6d3628(&mut creator, &mut unregister);
+        stub_0x6d386c(&mut creator, &mut unregister);
+        assert_eq!(unregistered, 4);
+        let mut freed = 0;
+        let mut unregister_free = |_: &str| {};
+        let mut free = || freed += 1;
+        stub_0x6d363c(&mut creator, &mut unregister_free, &mut free);
+        stub_0x6d3654(&mut creator, &mut unregister_free, &mut free);
+        let destroyed = RefCell::new(0);
+        let mut destroy = || *destroyed.borrow_mut() += 1;
+        let mut free_d0 = || *destroyed.borrow_mut() += 10;
+        stub_0x6d3560(&mut destroy, &mut free_d0);
+        assert_eq!(*destroyed.borrow(), 11);
+        // The Thn32 name path goes through the singleton (monotonic:
+        // constructing here is idempotent for every test order).
+        let mut nodeclare = |_: &str| {};
+        let mut noregister = |_: &str| {};
+        stub_0x6d365c().lock().construct(&mut nodeclare, &mut noregister);
+        assert_eq!(stub_0x6d3644(), "Model");
+        assert_eq!(stub_0x6d322c(), "Model");
+    }
+
+    #[test]
+    fn stats_and_service_names() {
+        assert_eq!(stub_0x6d40c8(), "Stats");
+        assert!(!stub_0x6d4508("UserInputService"));
+    }
+
+    #[test]
+    #[should_panic(expected = "!className().empty()")]
+    fn null_class_name_asserts_empty() {
+        let _ = stub_0x6d4508("");
+    }
+
+    #[test]
+    fn tool_base_dtors_delegate() {
+        stub_0x6dd374();
+        let mut destroyed = 0;
+        let mut freed = 0;
+        let mut destroy = || destroyed += 1;
+        let mut free = || freed += 1;
+        stub_0x6dd378(&mut destroy);
+        stub_0x6dd380(&mut destroy, &mut free);
+        stub_0x6dd388(&mut destroy);
+        stub_0x6dd38c(&mut destroy, &mut free);
+        stub_0x6dd42c(&mut destroy);
+        assert_eq!((destroyed, freed), (5, 2));
+    }
+
+    #[test]
     fn visit_model_and_adorn_defaults() {
         assert_eq!(stub_0x6c8d70(), "Visit");
         assert_eq!(stub_0x6c8d80(), "Visit");
+        // The `Model` name is gated on the singleton; construct it first
+        // (idempotent across test orders, cf. `model_creator_names_match`).
+        let mut nodeclare = |_: &str| {};
+        let mut noregister = |_: &str| {};
+        stub_0x6d365c().lock().construct(&mut nodeclare, &mut noregister);
         assert_eq!(stub_0x6d322c(), "Model");
         assert!(!stub_0x6d2d48());
         stub_0x6c78c0();
@@ -1965,131 +2047,172 @@ mod creator_tests {
 
 // 0x6d3560 — __ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED0Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED0Ev")]
-pub fn stub_0x6d3560() -> ! {
-    todo!("0x6d3560")
+pub fn stub_0x6d3560(destroy_base: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x6d3560: D0 = `PVInstance` base destroy then `operator delete`.
+    destroy_base();
+    free();
 }
 
 // 0x6d3610 — __ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_0x6d3610() -> ! {
-    todo!("0x6d3610")
+pub fn stub_0x6d3610(creator: &mut ClassCreator, unregister: &mut dyn FnMut(&str)) {
+    // IDA 0x6d3610: `// attributes: thunk` — tail-calls Creator D2
+    // (0x6d386c).
+    stub_0x6d386c(creator, unregister);
 }
 
 // 0x6d3614 — __ZThn32_N3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED1Ev
 #[doc(alias = "__ZThn32_N3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED1Ev")]
-pub fn stub_0x6d3614() -> ! {
-    todo!("0x6d3614")
+pub fn stub_0x6d3614(creator: &mut ClassCreator, unregister: &mut dyn FnMut(&str)) {
+    // IDA 0x6d3614: VTT load + `SUBS R0, #0x20`, then the D2 body; flat host
+    // forwards directly.
+    stub_0x6d386c(creator, unregister);
 }
 
 // 0x6d3628 — __ZThn36_N3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED1Ev
 #[doc(alias = "__ZThn36_N3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED1Ev")]
-pub fn stub_0x6d3628() -> ! {
-    todo!("0x6d3628")
+pub fn stub_0x6d3628(creator: &mut ClassCreator, unregister: &mut dyn FnMut(&str)) {
+    // IDA 0x6d3628: VTT load + `SUBS R0, #0x24`, then the D2 body.
+    stub_0x6d386c(creator, unregister);
 }
 
 // 0x6d363c — __ZThn32_N3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED0Ev
 #[doc(alias = "__ZThn32_N3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED0Ev")]
-pub fn stub_0x6d363c() -> ! {
-    todo!("0x6d363c")
+pub fn stub_0x6d363c(creator: &mut ClassCreator, unregister: &mut dyn FnMut(&str), free: &mut dyn FnMut()) {
+    // IDA 0x6d363c: `SUBS R0, #0x20` then `B.W CreatorD0`: D2 plus delete.
+    stub_0x6d386c(creator, unregister);
+    free();
 }
 
 // 0x6d3644 — __ZThn32_NK3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0x6d3644() -> ! {
-    todo!("0x6d3644")
+pub fn stub_0x6d3644() -> &'static str {
+    // IDA 0x6d3644: Thn32 — `static_getCreator` + `Creator::getClassName`
+    // (0x6d36d0 body); the host goes through the `ModelInstance` singleton.
+    MODEL_CREATOR.lock().creator_class_name_at(236)
 }
 
 // 0x6d3654 — __ZThn36_N3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED0Ev
 #[doc(alias = "__ZThn36_N3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED0Ev")]
-pub fn stub_0x6d3654() -> ! {
-    todo!("0x6d3654")
+pub fn stub_0x6d3654(creator: &mut ClassCreator, unregister: &mut dyn FnMut(&str), free: &mut dyn FnMut()) {
+    // IDA 0x6d3654: `SUBS R0, #0x24` then `B.W CreatorD0`: D2 plus delete.
+    stub_0x6d386c(creator, unregister);
+    free();
 }
 
 // 0x6d365c — __ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE17static_getCreatorEv
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_0x6d365c() -> ! {
-    todo!("0x6d365c")
+pub fn stub_0x6d365c() -> &'static Mutex<ClassCreator> {
+    // IDA 0x6d365c: `Creator::wasConstructed` gate (Object.h:282), then the
+    // `creatorPrivate` singleton; methods re-check on use.
+    &MODEL_CREATOR
 }
 
 // 0x6d36d0 — __ZNK3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_0x6d36d0() -> ! {
-    todo!("0x6d36d0")
+pub fn stub_0x6d36d0(creator: &ClassCreator) -> &'static str {
+    // IDA 0x6d36d0: `wasConstructed` gate (Object.h:236), then
+    // `Name::declare<sModel>`.
+    creator.creator_class_name_at(236)
 }
 
 // 0x6d386c — __ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_0x6d386c() -> ! {
-    todo!("0x6d386c")
+pub fn stub_0x6d386c(creator: &mut ClassCreator, unregister: &mut dyn FnMut(&str)) {
+    // IDA 0x6d386c: vtable reset + `wasConstructed` gate (Object.h:255),
+    // then removal from `getCreators`.
+    creator.destroy(unregister);
 }
 
 // 0x6d3908 — __ZNK3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7Creator6createEv")]
-pub fn stub_0x6d3908() -> ! {
-    todo!("0x6d3908")
+pub fn stub_0x6d3908(creator: &ClassCreator, create: &mut dyn FnMut() -> u32) -> u32 {
+    // IDA 0x6d3908: `wasConstructed` gate, then the `shared_ptr` instance
+    // build; the host returns its token.
+    creator.create_instance(create)
 }
 
 // 0x6d3a78 — __ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7CreatorC2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_0x6d3a78() -> ! {
-    todo!("0x6d3a78")
+pub fn stub_0x6d3a78(creator: &mut ClassCreator, declare: &mut dyn FnMut(&str), register: &mut dyn FnMut(&str)) {
+    // IDA 0x6d3a78: vtable install, `Name::declare<sModel>` (returned in
+    // R5), register in `getCreators`, `isConstructed = 666`.
+    creator.construct(declare, register);
 }
 
 // 0x6d40c8 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_5Stats6sStatsEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_5Stats6sStatsEEE12getClassNameEv")]
-pub fn stub_0x6d40c8() -> ! {
-    todo!("0x6d40c8")
+pub fn stub_0x6d40c8() -> &'static str {
+    // IDA 0x6d40c8: Thn32 straight into `Name::declare<sStats>` — the
+    // `sStats` name.
+    "Stats"
 }
 
 // 0x6d4508 — __ZN3RBX14FactoryProductINS_16UserInputServiceENS_8InstanceELZNS_17sUserInputServiceEES2_E15isNullClassNameEv
 #[doc(alias = "__ZN3RBX14FactoryProductINS_16UserInputServiceENS_8InstanceELZNS_17sUserInputServiceEES2_E15isNullClassNameEv")]
-pub fn stub_0x6d4508() -> ! {
-    todo!("0x6d4508")
+pub fn stub_0x6d4508(class_name: &str) -> bool {
+    // IDA 0x6d4508: `static_getCreator` + `Creator::getClassName`, then
+    // `ReleaseAssert(!className().empty(), Object.h:292)`; returns whether
+    // the name is the null name, i.e. whether it is empty.
+    debug_assert!(!class_name.is_empty(), "!className().empty() file: include/Util/Object.h line: 292");
+    class_name.is_empty()
 }
 
 // 0x6dd374 — __ZN3RBX16AdvArrowToolBase9setCursorESs
 #[doc(alias = "RBX::AdvArrowToolBase::setCursor(std::string)")]
 #[doc(alias = "__ZN3RBX16AdvArrowToolBase9setCursorESs")]
-pub fn stub_0x6dd374() -> ! {
-    todo!("0x6dd374")
+pub fn stub_0x6dd374() {
+    // IDA 0x6dd374: empty body.
 }
 
 // 0x6dd378 — __ZThn36_N3RBX16AdvArrowToolBaseD1Ev
 // type: void __fastcall(RBX::AdvArrowToolBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AdvArrowToolBase::~AdvArrowToolBase()")]
 #[doc(alias = "__ZThn36_N3RBX16AdvArrowToolBaseD1Ev")]
-pub fn stub_0x6dd378() -> ! {
-    todo!("0x6dd378")
+pub fn stub_0x6dd378(destroy: &mut dyn FnMut()) {
+    // IDA 0x6dd378: `SUBS R0, #0x24` then `B.W AdvArrowToolBaseD2`; the D2
+    // body lives outside this file, so the host delegates the base destroy
+    // (the -36 adjust is a no-op in the flat layout).
+    destroy();
 }
 
 // 0x6dd380 — __ZThn36_N3RBX16AdvArrowToolBaseD0Ev
 // type: void __fastcall(RBX::AdvArrowToolBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AdvArrowToolBase::~AdvArrowToolBase() [0x6dd380]")]
 #[doc(alias = "__ZThn36_N3RBX16AdvArrowToolBaseD0Ev")]
-pub fn stub_0x6dd380() -> ! {
-    todo!("0x6dd380")
+pub fn stub_0x6dd380(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x6dd380: `SUBS R0, #0x24` then `B.W AdvArrowToolBaseD0`: base
+    // destroy plus delete.
+    destroy();
+    free();
 }
 
 // 0x6dd388 — __ZN3RBX13ArrowToolBaseD1Ev
 // type: void __fastcall(RBX::ArrowToolBase *__hidden this)
 #[doc(alias = "RBX::ArrowToolBase::~ArrowToolBase()")]
 #[doc(alias = "__ZN3RBX13ArrowToolBaseD1Ev")]
-pub fn stub_0x6dd388() -> ! {
-    todo!("0x6dd388")
+pub fn stub_0x6dd388(destroy: &mut dyn FnMut()) {
+    // IDA 0x6dd388: `// attributes: thunk` — `B.W ArrowToolBaseD2`; the D2
+    // body lives outside this file, so the host delegates the base destroy.
+    destroy();
 }
 
 // 0x6dd38c — __ZN3RBX13ArrowToolBaseD0Ev
 // type: void __fastcall(RBX::ArrowToolBase *__hidden this)
 #[doc(alias = "RBX::ArrowToolBase::~ArrowToolBase() [0x6dd38c]")]
 #[doc(alias = "__ZN3RBX13ArrowToolBaseD0Ev")]
-pub fn stub_0x6dd38c() -> ! {
-    todo!("0x6dd38c")
+pub fn stub_0x6dd38c(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x6dd38c: D0 = D2 body then `operator delete`.
+    destroy();
+    free();
 }
 
 // 0x6dd42c — __ZThn36_N3RBX13ArrowToolBaseD1Ev
 // type: void __fastcall(RBX::ArrowToolBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ArrowToolBase::~ArrowToolBase()")]
 #[doc(alias = "__ZThn36_N3RBX13ArrowToolBaseD1Ev")]
-pub fn stub_0x6dd42c() -> ! {
-    todo!("0x6dd42c")
+pub fn stub_0x6dd42c(destroy: &mut dyn FnMut()) {
+    // IDA 0x6dd42c: `SUBS R0, #0x24` then `B.W ArrowToolBaseD2`; flat host
+    // forwards the base destroy directly.
+    destroy();
 }
