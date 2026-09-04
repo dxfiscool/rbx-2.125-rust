@@ -232,6 +232,19 @@ impl BitStream {
         self.read_u64().map(f64::from_bits)
     }
 
+    /// `WriteFloat16` / `ReadFloat16` (IDA 0x95f996 / 0x95fa80): the value
+    /// clamped to `[min, max]` and normalized to a full-range `u16`.
+    pub fn write_float16(&mut self, value: f32, min: f32, max: f32) {
+        let clamped = value.clamp(min, max);
+        let q = ((clamped - min) / (max - min) * 65535.0).round() as u32;
+        self.write_u16(q.min(65535) as u16);
+    }
+
+    pub fn read_float16(&mut self, min: f32, max: f32) -> Option<f32> {
+        self.read_u16()
+            .map(|q| min + (q as f32 / 65535.0) * (max - min))
+    }
+
     /// `RakNet::BitStream::IsNetworkOrder` (IDA 0xa55f48): the internal
     /// check returns 0, so every `Write<T>`/`Read<T>` template takes the
     /// `ReverseBytes` arm on little-endian hosts.

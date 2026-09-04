@@ -43,8 +43,9 @@ pub fn stub_9575e0<R, A, B, C>(slot: &mut dyn FnMut(A, B, C) -> R, a: A, b: B, c
 #[doc(
     alias = "RBX::Network::serializeEnum(RBX::Reflection::EnumDescriptor const*,RBX::Reflection::Variant const&,RakNet::BitStream &)"
 )]
-pub fn stub_95d5d0() -> ! {
-    todo!("0x95d5d0 RBX::Network::serializeEnum(RBX::Reflection::EnumDescriptor const*,RBX::Reflection::Variant const&,RakNet::BitStream &)")
+pub fn stub_95d5d0(stream: &mut crate::bitstream::BitStream, value_index: u32, enum_count: u32, bits: u8) {
+ // IDA 0x95d5d0: value index over `bits` bits.
+ crate::custom_serializer::serialize_enum(stream, value_index, enum_count, bits)
 }
 
 // 0x95d694 — __ZN3RBX7Network15deserializeEnumEPKNS_10Reflection14EnumDescriptorERNS1_7VariantERN6RakNet9BitStreamE
@@ -59,8 +60,9 @@ pub fn stub_95d694() -> ! {
 #[doc(
     alias = "RBX::Network::serializeEnumProperty(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)"
 )]
-pub fn stub_95d968() -> ! {
-    todo!("0x95d968 RBX::Network::serializeEnumProperty(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)")
+pub fn stub_95d968(stream: &mut crate::bitstream::BitStream, value: u32, enum_count: u32, bits: u8) {
+ // IDA 0x95d968: property value over `bits` bits.
+ crate::custom_serializer::serialize_enum_property(stream, value, enum_count, bits)
 }
 
 // 0x95da34 — __ZN3RBX7Network23deserializeEnumPropertyERNS_10Reflection8PropertyERN6RakNet9BitStreamE
@@ -223,8 +225,9 @@ pub fn stub_95eb04(stream: &mut crate::bitstream::BitStream) -> String {
 
 // 0x95edd0 — __ZN3RBXlsERN6RakNet9BitStreamERKNS_9ContentIdE
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,RBX::ContentId const&)")]
-pub fn stub_95edd0() -> ! {
-    todo!("0x95edd0 RBX::operator<<(RakNet::BitStream &,RBX::ContentId const&)")
+pub fn stub_95edd0(stream: &mut crate::bitstream::BitStream, id: &str) {
+ // IDA 0x95edd0: ContentId via the string writer.
+ crate::custom_serializer::write_content_id(stream, id)
 }
 
 // 0x95ede0 — __ZN3RBXrsINS_9ContentIdEEERN6RakNet9BitStreamES4_RT_
@@ -237,56 +240,65 @@ pub fn stub_95ede0() -> ! {
 
 // 0x95efcc — __ZN3RBXlsERN6RakNet9BitStreamERKNS_10BrickColorE
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,RBX::BrickColor const&)")]
-pub fn stub_95efcc() -> ! {
-    todo!("0x95efcc RBX::operator<<(RakNet::BitStream &,RBX::BrickColor const&)")
+pub fn stub_95efcc(stream: &mut crate::bitstream::BitStream, palette: u32) {
+ // IDA 0x95efcc: palette index over 6 bits.
+ crate::custom_serializer::write_brick_color(stream, palette)
 }
 
 // 0x95eff0 — __ZN3RBXlsERN6RakNet9BitStreamERKNS_4UDimE
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,RBX::UDim const&)")]
-pub fn stub_95eff0() -> ! {
-    todo!("0x95eff0 RBX::operator<<(RakNet::BitStream &,RBX::UDim const&)")
+pub fn stub_95eff0(stream: &mut crate::bitstream::BitStream, scale: f32, offset: i32) {
+ // IDA 0x95eff0: scale float, offset as int.
+ crate::custom_serializer::write_udim(stream, scale, offset)
 }
 
 // 0x95f014 — __ZN3RBXlsERN6RakNet9BitStreamERKNS_5UDim2E
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,RBX::UDim2 const&)")]
-pub fn stub_95f014() -> ! {
-    todo!("0x95f014 RBX::operator<<(RakNet::BitStream &,RBX::UDim2 const&)")
+pub fn stub_95f014(stream: &mut crate::bitstream::BitStream, x_scale: f32, x_offset: i32, y_scale: f32, y_offset: i32) {
+ // IDA 0x95f014: two UDims.
+ crate::custom_serializer::write_udim2(stream, x_scale, x_offset, y_scale, y_offset)
 }
 
 // 0x95f050 — __ZN3RBXlsERN6RakNet9BitStreamERKNS_6RbxRayE
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,RBX::RbxRay const&)")]
-pub fn stub_95f050() -> ! {
-    todo!("0x95f050 RBX::operator<<(RakNet::BitStream &,RBX::RbxRay const&)")
+pub fn stub_95f050(stream: &mut crate::bitstream::BitStream, origin: [f32; 3], direction: [f32; 3]) {
+ // IDA 0x95f050: origin then direction.
+ crate::custom_serializer::write_rbx_ray(stream, origin, direction)
 }
 
 // 0x95f0d8 — __ZN3RBXlsERN6RakNet9BitStreamERKN3G3D7Vector3E
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,G3D::Vector3 const&)")]
-pub fn stub_95f0d8() -> ! {
-    todo!("0x95f0d8 RBX::operator<<(RakNet::BitStream &,G3D::Vector3 const&)")
+pub fn stub_95f0d8(stream: &mut crate::bitstream::BitStream, v: [f32; 3]) {
+ // IDA 0x95f0d8: three floats.
+ crate::custom_serializer::write_vector3(stream, v)
 }
 
 // 0x95f124 — __ZN3RBXlsERN6RakNet9BitStreamERKNS_5FacesE
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,RBX::Faces const&)")]
-pub fn stub_95f124() -> ! {
-    todo!("0x95f124 RBX::operator<<(RakNet::BitStream &,RBX::Faces const&)")
+pub fn stub_95f124(stream: &mut crate::bitstream::BitStream, faces: i32) {
+ // IDA 0x95f124: one int.
+ crate::custom_serializer::write_faces(stream, faces)
 }
 
 // 0x95f134 — __ZN3RBXlsERN6RakNet9BitStreamERKNS_4AxesE
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,RBX::Axes const&)")]
-pub fn stub_95f134() -> ! {
-    todo!("0x95f134 RBX::operator<<(RakNet::BitStream &,RBX::Axes const&)")
+pub fn stub_95f134(stream: &mut crate::bitstream::BitStream, axes: i32) {
+ // IDA 0x95f134: one int.
+ crate::custom_serializer::write_axes(stream, axes)
 }
 
 // 0x95f144 — __ZN3RBXlsERN6RakNet9BitStreamERKN3G3D6Color3E
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,G3D::Color3 const&)")]
-pub fn stub_95f144() -> ! {
-    todo!("0x95f144 RBX::operator<<(RakNet::BitStream &,G3D::Color3 const&)")
+pub fn stub_95f144(stream: &mut crate::bitstream::BitStream, v: [f32; 3]) {
+ // IDA 0x95f144: three floats.
+ crate::custom_serializer::write_color3(stream, v)
 }
 
 // 0x95f168 — __ZN3RBX7Network16writeBrickVectorERN6RakNet9BitStreamERKN3G3D7Vector3E
 #[doc(alias = "RBX::Network::writeBrickVector(RakNet::BitStream &,G3D::Vector3 const&)")]
-pub fn stub_95f168() -> ! {
-    todo!("0x95f168 RBX::Network::writeBrickVector(RakNet::BitStream &,G3D::Vector3 const&)")
+pub fn stub_95f168(stream: &mut crate::bitstream::BitStream, v: [f32; 3]) {
+ // IDA 0x95f168: flag plus quantized or float vector.
+ crate::custom_serializer::write_brick_vector(stream, v)
 }
 
 // 0x95f2cc — __ZN3RBX7Network15readBrickVectorERN6RakNet9BitStreamERN3G3D7Vector3E
@@ -297,8 +309,9 @@ pub fn stub_95f2cc() -> ! {
 
 // 0x95f664 — __ZN3RBXlsERN6RakNet9BitStreamERKN3G3D7Vector2E
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,G3D::Vector2 const&)")]
-pub fn stub_95f664() -> ! {
-    todo!("0x95f664 RBX::operator<<(RakNet::BitStream &,G3D::Vector2 const&)")
+pub fn stub_95f664(stream: &mut crate::bitstream::BitStream, v: [f32; 2]) {
+ // IDA 0x95f664: two floats.
+ crate::custom_serializer::write_vector2(stream, v)
 }
 
 // 0x95f69c — __ZN3RBXrsIN3G3D7Vector2EEERN6RakNet9BitStreamES5_RT_
@@ -311,8 +324,9 @@ pub fn stub_95f69c() -> ! {
 
 // 0x95f6b4 — __ZN3RBXlsERN6RakNet9BitStreamERKNS_12StreamRegion2IdE
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,RBX::StreamRegion::Id const&)")]
-pub fn stub_95f6b4() -> ! {
-    todo!("0x95f6b4 RBX::operator<<(RakNet::BitStream &,RBX::StreamRegion::Id const&)")
+pub fn stub_95f6b4(stream: &mut crate::bitstream::BitStream, v: [i32; 3]) {
+ // IDA 0x95f6b4: flag plus bytes or ints.
+ crate::custom_serializer::write_region2_id(stream, v)
 }
 
 // 0x95f750 — __ZN3RBXrsINS_12StreamRegion2IdEEERN6RakNet9BitStreamES5_RT_
@@ -333,8 +347,9 @@ pub fn stub_95f7dc() -> ! {
 
 // 0x95f800 — __ZN3RBXlsERN6RakNet9BitStreamEs
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,short)")]
-pub fn stub_95f800() -> ! {
-    todo!("0x95f800 RBX::operator<<(RakNet::BitStream &,short)")
+pub fn stub_95f800(stream: &mut crate::bitstream::BitStream, value: i16) {
+ // IDA 0x95f800: Write<short>.
+ crate::custom_serializer::write_short(stream, value)
 }
 
 // 0x95f818 — __ZN3RBXrsIsEERN6RakNet9BitStreamES3_RT_
@@ -345,8 +360,9 @@ pub fn stub_95f818() -> ! {
 
 // 0x95f828 — __ZN3RBXlsERN6RakNet9BitStreamERKN3G3D12Vector3int16E
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,G3D::Vector3int16 const&)")]
-pub fn stub_95f828() -> ! {
-    todo!("0x95f828 RBX::operator<<(RakNet::BitStream &,G3D::Vector3int16 const&)")
+pub fn stub_95f828(stream: &mut crate::bitstream::BitStream, v: [i16; 3]) {
+ // IDA 0x95f828: three shorts.
+ crate::custom_serializer::write_vector3i16(stream, v)
 }
 
 // 0x95f864 — __ZN3RBXrsIN3G3D12Vector3int16EEERN6RakNet9BitStreamES5_RT_
@@ -359,8 +375,9 @@ pub fn stub_95f864() -> ! {
 
 // 0x95f884 — __ZN3RBXlsERN6RakNet9BitStreamERKN3G3D12Vector2int16E
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,G3D::Vector2int16 const&)")]
-pub fn stub_95f884() -> ! {
-    todo!("0x95f884 RBX::operator<<(RakNet::BitStream &,G3D::Vector2int16 const&)")
+pub fn stub_95f884(stream: &mut crate::bitstream::BitStream, v: [i16; 2]) {
+ // IDA 0x95f884: two shorts.
+ crate::custom_serializer::write_vector2i16(stream, v)
 }
 
 // 0x95f8b0 — __ZN3RBXrsIN3G3D12Vector2int16EEERN6RakNet9BitStreamES5_RT_
@@ -373,8 +390,9 @@ pub fn stub_95f8b0() -> ! {
 
 // 0x95f8c8 — __ZN3RBXlsERN6RakNet9BitStreamERKN3G3D15CoordinateFrameE
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,G3D::CoordinateFrame const&)")]
-pub fn stub_95f8c8() -> ! {
-    todo!("0x95f8c8 RBX::operator<<(RakNet::BitStream &,G3D::CoordinateFrame const&)")
+pub fn stub_95f8c8(stream: &mut crate::bitstream::BitStream, translation: [f32; 3], orient: Option<u32>, quat: [f32; 4]) {
+ // IDA 0x95f8c8: clamped translation, orient id or quat.
+ crate::custom_serializer::write_coordinate_frame(stream, translation, orient, quat)
 }
 
 // 0x95f9d0 — __ZN3RBXrsIN3G3D15CoordinateFrameEEERN6RakNet9BitStreamES5_RT_
@@ -427,8 +445,9 @@ pub fn stub_95fde0() -> ! {
 
 // 0x95fe04 — __ZN3RBXlsERN6RakNet9BitStreamENS_13SystemAddressE
 #[doc(alias = "RBX::operator<<(RakNet::BitStream &,RBX::SystemAddress)")]
-pub fn stub_95fe04() -> ! {
-    todo!("0x95fe04 RBX::operator<<(RakNet::BitStream &,RBX::SystemAddress)")
+pub fn stub_95fe04(stream: &mut crate::bitstream::BitStream, address: u32, port: u16) {
+ // IDA 0x95fe04: address then port.
+ crate::custom_serializer::write_system_address(stream, address, port)
 }
 
 // 0x95fe28 — __ZN3RBXrsINS_13SystemAddressEEERN6RakNet9BitStreamES4_RT_
@@ -439,8 +458,9 @@ pub fn stub_95fe28() -> ! {
 
 // 0x95fe40 — __ZN3RBX7Network9serializeINS_9ContentIdEEEvRKNS_10Reflection13ConstPropertyERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::serialize<RBX::ContentId>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)")]
-pub fn stub_95fe40() -> ! {
-    todo!("0x95fe40 void RBX::Network::serialize<RBX::ContentId>(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)")
+pub fn stub_95fe40(stream: &mut crate::bitstream::BitStream, id: &str) {
+ // IDA 0x95fe40: property ContentId via the string writer.
+ crate::custom_serializer::write_content_id(stream, id)
 }
 
 // 0x95ff60 — __ZN3RBX7Network9serializeINS_4UDimEEEvRKNS_10Reflection13ConstPropertyERN6RakNet9BitStreamE
